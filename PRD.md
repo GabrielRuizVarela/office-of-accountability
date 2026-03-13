@@ -1,6 +1,6 @@
 # Product Requirements Document: Office of Accountability
 
-**Version:** 0.2
+**Version:** 0.3
 **Date:** 2026-03-13
 **Status:** Pre-Development
 **Scope:** Argentina (federal + provincial, congress-first)
@@ -9,24 +9,24 @@
 
 ## 1. Problem Statement
 
-Argentine citizens have no unified, queryable public record that connects what politicians *promise*, how they *vote*, who *funds* them, and what *community mandates* they are ignoring. Existing tools (e.g., Como Votó, HVN) cover individual dimensions in isolation. No platform closes the loop: community-identified problems → proposed solutions → mandates → politician accountability.
+Argentine citizens have no connected, queryable knowledge graph that links what politicians *promise*, how they *vote*, who *funds* them, and what legislation they support or block. Existing tools (e.g., Como Voto, HVN) cover individual dimensions in isolation. No platform lets citizens explore connections, add their own research, build investigation threads, and share findings backed by graph data.
 
-The result: accountability is fragmented, context is absent, and citizens have no coordinated mechanism to move from *observation* to *action*.
+The result: political knowledge is fragmented across news articles, social media threads, and PDFs. Patterns that would be obvious in a connected graph — a donor funding a legislator who votes favorably on that donor's industry — remain invisible because no tool connects the dots.
 
 ---
 
 ## 2. Vision & Core Loop
 
-The **Office of Accountability** is a civic action platform built as a knowledge graph for Argentine politics. It links politicians, votes, legislation, donors, community promises, and citizen mandates into a single queryable system.
+The **Office of Accountability** is a civic knowledge platform built as an interactive graph for Argentine politics. It links politicians, votes, legislation, donors, promises, organizations, and user-contributed research into a single explorable, queryable system.
 
-The platform closes four loops:
+The platform enables four activities:
 
-1. **Observe** — Track what politicians promise and how they vote
-2. **Organize** — Form issue-based coalitions that verify and endorse findings
-3. **Act** — Research, propose, and reach consensus on community solutions
-4. **Hold Accountable** — Score politicians against community mandates with contextual fairness
+1. **Explore** — Browse the visual graph, discover connections between politicians, votes, money, and legislation. Click a node, see its connections fan out. Drag, zoom, filter, save views
+2. **Connect** — Add nodes (people, organizations, events, documents) and draw edges. Extend the graph freely with sourced data
+3. **Investigate** — Create investigation threads that cite graph data, connect dots, and build narratives backed by evidence
+4. **Share** — Publish investigations. Some gain visibility, most are quiet research. The value is the knowledge existing in the graph
 
-**Design contract with users:** This is an opt-in transparency platform. All votes, delegations, and coalition activities are public by default. Transparency is a feature, not a bug — public records enable community auditing of the platform itself and prevent coordinated manipulation.
+**Design contract with users:** This is an opt-in transparency platform. All contributions, endorsements, and coalition activities are public by default. Transparency is a feature, not a bug — public records enable community auditing of the platform itself and prevent coordinated manipulation.
 
 ---
 
@@ -34,12 +34,12 @@ The platform closes four loops:
 
 | Principle | Description |
 |-----------|-------------|
-| **Contextual Fairness** | Accountability is never binary. Constraints (budget, legal, physical capacity) are auditable data points, not accepted excuses. |
+| **Graph-First** | Every piece of political knowledge is a node or edge in the graph. If it is not in the graph, it does not exist on the platform. |
 | **Transparent Provenance** | Every node and edge in the graph carries: source URL, submission date, submitter, tier, and confidence score. |
-| **Trust via Skin-in-the-Game** | Consensus mechanisms require users to stake reputation, not just cast votes. |
-| **Plural Truth** | When coalitions disagree, the system shows both interpretations with clear sourcing rather than forcing a single narrative. |
-| **Closed Accountability Loop** | Community-generated solutions become mandates that bind politician scorecards. |
-| **Full Public Transparency** | All user votes, delegations, and coalition activities are public. Users consent to this on signup. This enables external auditing of the platform's own integrity. |
+| **Open Schema** | Users can create any node type and draw any edge type. The platform seeds the graph with official data; users extend it freely. |
+| **Plural Truth** | When users or coalitions disagree, the system shows both interpretations with clear sourcing rather than forcing a single narrative. |
+| **Emergent Accountability** | The graph IS the evidence. When enough investigations connect a politician to broken promises, the pattern is visible. No algorithmic score needed at the core level. |
+| **Full Public Transparency** | All user contributions, endorsements, and coalition activities are public. Users consent to this on signup. This enables external auditing of the platform's own integrity. |
 | **Opinion, Not Verdict** | The platform presents data and community assessments. It never labels a politician as guilty of corruption — it presents correlated facts and community opinion, framed as such. |
 
 ---
@@ -54,340 +54,330 @@ The platform closes four loops:
 | `Politician` | name, jurisdiction_id, party, bloc, coalition, chamber, photo_url, terms | Elected official |
 | `Jurisdiction` | level (federal/provincial/municipal), name, parent_id | Geographic/electoral unit |
 | `Promise` | text, source_url, date, status | Public commitment (speech, manifesto, interview) |
-| `LegislativeVote` | acta_id, date, position (afirmativo/negativo/abstención/ausente), chamber | Official vote record — sourced from HCDN/Senado APIs |
+| `LegislativeVote` | acta_id, date, position (afirmativo/negativo/abstencion/ausente), chamber | Official vote record — sourced from HCDN/Senado APIs |
 | `Legislation` | title, text_url, status, tags, expediente_id, chamber | Bill or law — sourced from HCDN/Senado |
 | `Donor` | name, type (individual/empresa/sindicato/pac) | Campaign finance contributor |
-| `Coalition` | name, focus_tags, reputation_score, created_at | User-organized accountability group |
-| `Problem` | location, jurisdiction_id, description, severity, status | Community-reported civic issue |
-| `Proposal` | title, description, cost_estimate, technical_risk, status | Community-drafted solution to a Problem |
+| `Organization` | name, type, description, website | Any organization relevant to the political graph |
+| `Event` | title, date, location, description, source_url | A political event, meeting, scandal, protest, or incident |
+| `Document` | title, url, type, published_at, summary | Official document, report, budget, or filing |
+| `Location` | name, type (city/province/address), coordinates | Geographic reference point |
+| `Claim` | text, claim_type, status, source_url | An assertion about a relationship or fact — the generalized form of a Finding |
+| `Investigation` | title, body, status, published_at | Long-form document with graph references — the primary user-created content type |
+| `Coalition` | name, focus_tags, description, created_at | User-organized collaboration group |
 | `Evidence` | type, url, summary, uploaded_by | Data, studies, PDFs, expert analysis |
-| `Mandate` | title, threshold_met_at, required_legislation_tags, status | Proposal that reached community consensus |
-| `Constraint` | type (presupuestario/legal/físico/jurisdiccional), severity, verified_status | Claimed limitation submitted by politician or community |
-| `Finding` | claim_type, description, status | Reified assertion about a relationship (used for coalition endorsements) — see section 4.2 |
 
 ### 4.2 Edge Types (Relationships)
 
 **Politician activity:**
 
-| Edge | From → To | Properties |
+| Edge | From -> To | Properties |
 |------|-----------|-----------|
-| `REPRESENTS` | Politician → Jurisdiction | chamber, period |
-| `MADE_PROMISE` | Politician → Promise | date, source_url |
-| `CAST_LEGISLATIVE_VOTE` | Politician → LegislativeVote | — |
-| `ON` | LegislativeVote → Legislation | — |
-| `DONATED_TO` | Donor → Politician | amount, date, cycle |
-| `CLAIMS_CONSTRAINT` | Politician → Constraint | date, source_url |
-| `MADE_ATTEMPT` | Politician → Proposal | outcome (blocked/approved), blocked_by_id |
-| `SIGNED_MANDATE` | Politician → Mandate | date |
+| `REPRESENTS` | Politician -> Jurisdiction | chamber, period |
+| `MADE_PROMISE` | Politician -> Promise | date, source_url |
+| `CAST_LEGISLATIVE_VOTE` | Politician -> LegislativeVote | -- |
+| `ON` | LegislativeVote -> Legislation | -- |
+| `DONATED_TO` | Donor -> Politician | amount, date, cycle |
+| `AFFILIATED_WITH` | Politician -> Organization | role, period |
 
-**Accountability relationships (endorsable via Findings):**
+**Graph connections (user-created):**
 
-| Edge | From → To | Properties |
+| Edge | From -> To | Properties |
 |------|-----------|-----------|
-| `RELATES_TO` | LegislativeVote → Promise | finding_id (via Finding node) |
-| `ALIGNS_WITH` | Mandate → Legislation | match_score, finding_id |
+| `FUNDED` | Organization/Donor -> Organization/Politician | amount, date, source_url |
+| `LED_TO` | Event -> Legislation/Event/Claim | description |
+| `RELATED_TO` | Any -> Any | relationship_type, description |
+| `MEMBER_OF_ORG` | Politician/User -> Organization | role, period |
+| `LOCATED_IN` | Event/Organization -> Location | -- |
+| `EVIDENCED_BY` | Claim -> Evidence/Document | -- |
+| `CONTRADICTED_BY` | Claim -> Evidence/Document | -- |
 
-**Finding pattern (replaces edge-on-edge anti-pattern):**
+**Claim pattern (generalized Finding):**
 
 ```
-(LegislativeVote) -[:SUBJECT_OF]-> (Finding) -[:CLAIM_ABOUT]-> (Promise)
-(Coalition)       -[:ENDORSED]->   (Finding)
-(User)            -[:SUBMITTED]->  (Finding)
-(Evidence)        -[:SUPPORTS]->   (Finding)
-(Evidence)        -[:CONTRADICTS]-> (Finding)
+(LegislativeVote) -[:SUBJECT_OF]-> (Claim) -[:CLAIM_ABOUT]-> (Promise)
+(User)            -[:SUBMITTED]->  (Claim)
+(Evidence)        -[:SUPPORTS]->   (Claim)
+(Evidence)        -[:CONTRADICTS]-> (Claim)
 ```
 
-`Finding` node properties: `claim_type` (fulfills/breaks/partially_fulfills), `description`, `status` (pending/endorsed/disputed/rejected), `confidence_score`
+`Claim` node properties: `claim_type` (fulfills/breaks/partially_fulfills/aligns_with/conflicts_with), `text`, `status` (pending/endorsed/disputed), `confidence_score`
 
-**Community action:**
+**Investigation relationships:**
 
-| Edge | From → To | Properties |
+| Edge | From -> To | Properties |
 |------|-----------|-----------|
-| `MEMBER_OF` | User → Coalition | role (admin/verifier/member), joined_at |
-| `FOLLOWS` | User → Coalition | followed_at |
-| `DELEGATES_TO` | User → User | scope (coalition_id or global), revoked_at |
-| `CAST_PLATFORM_VOTE` | User → Proposal/Finding/Constraint | weight, rationale |
-| `PROPOSES` | Coalition → Proposal | date |
-| `AUDITS` | Coalition → Constraint | verdict (válido/exagerado/falso), evidence_ids, endorsed_by_count |
-| `ADDRESSES` | Proposal → Problem | coverage_score |
-| `MEMBER_OF` | Politician → Jurisdiction | — |
+| `REFERENCES` | Investigation -> Any node | context, section |
+| `AUTHORED_BY` | Investigation -> User | role (author/collaborator) |
+| `PUBLISHED_BY` | Investigation -> Coalition | date |
+| `EMBEDS` | Investigation -> Any node | position_in_document |
+
+**Endorsement:**
+
+| Edge | From -> To | Properties |
+|------|-----------|-----------|
+| `ENDORSED` | User -> Claim/Edge | date, confidence |
+| `COALITION_ENDORSED` | Coalition -> Claim | confidence, threshold_met_at |
+
+**Coalition membership:**
+
+| Edge | From -> To | Properties |
+|------|-----------|-----------|
+| `MEMBER_OF` | User -> Coalition | role (admin/editor/viewer), joined_at |
+| `FOLLOWS` | User -> Coalition | followed_at |
 
 **Trust:**
 
-| Edge | From → To | Properties |
+| Edge | From -> To | Properties |
 |------|-----------|-----------|
-| `SUBMITTED` | User → Evidence/Problem/Proposal/Finding | date |
-| `ENDORSED` | Coalition → Finding | confidence, threshold_met_at |
+| `SUBMITTED` | User -> Evidence/Claim/Investigation | date |
 
 ---
 
 ## 5. Feature Areas
 
-### 5.1 Data Foundation (Gold-Tier: Como Votó Integration)
+### 5.1 Data Foundation (Gold-Tier: Como Voto Integration)
 
-The [Como Votó](https://github.com/rquiroga7/Como_voto) project already provides:
-- Full voting records for Cámara de Diputados (HCDN) and Senado from official APIs
-- Legislator names, blocs, provinces, coalition classification (~600+ parties → PJ/PRO/LLA/OTROS)
+The [Como Voto](https://github.com/rquiroga7/Como_voto) project already provides:
+- Full voting records for Camara de Diputados (HCDN) and Senado from official APIs
+- Legislator names, blocs, provinces, coalition classification (~600+ parties -> PJ/PRO/LLA/OTROS)
 - Daily automated updates via GitHub Actions
 - Legislator photos (official sources + Wikipedia/Wikidata fallbacks)
-- Election data 1983–2023
+- Election data 1983-2023
 
-**Integration strategy:** Ingest Como Votó's output JSON as the initial Gold-tier seed. Maintain a live sync pipeline from the same HCDN/Senado sources. This gives the platform a fully populated graph at launch — every Diputado and Senador with their full vote history.
+**Integration strategy:** Ingest Como Voto's output JSON as the initial Gold-tier seed. Maintain a live sync pipeline from the same HCDN/Senado sources. This gives the platform a fully populated graph at launch — every Diputado and Senador with their full vote history.
 
 **Data format compatibility:**
 ```
-Como Votó output → normalize to platform schema:
-  legislator.name         → Politician.name
-  legislator.bloc         → Politician.bloc
-  legislator.province     → Politician.jurisdiction (→ Jurisdiction node)
-  legislator.coalition    → Politician.coalition
-  votacion.acta_id        → LegislativeVote.acta_id
-  votacion.title          → Legislation.title
-  votacion.date           → LegislativeVote.date
-  vote_code (1-5)         → LegislativeVote.position
+Como Voto output -> normalize to platform schema:
+  legislator.name         -> Politician.name
+  legislator.bloc         -> Politician.bloc
+  legislator.province     -> Politician.jurisdiction (-> Jurisdiction node)
+  legislator.coalition    -> Politician.coalition
+  votacion.acta_id        -> LegislativeVote.acta_id
+  votacion.title          -> Legislation.title
+  votacion.date           -> LegislativeVote.date
+  vote_code (1-5)         -> LegislativeVote.position
 ```
 
 **Data Tiers:**
 
 | Tier | Source | Handling |
 |------|--------|---------|
-| Gold | Official HCDN/Senado APIs (via Como Votó pipeline) | Auto-accepted, hashed on ingestion |
-| Silver | Reputable Argentine sources (Infobae, La Nación, Clarín, Chequeado) | Auto-accepted with mandatory citation |
-| Bronze | User/Coalition submissions | Requires community verification before publication |
+| Gold | Official HCDN/Senado APIs (via Como Voto pipeline) | Auto-accepted, hashed on ingestion |
+| Silver | Reputable Argentine sources (Infobae, La Nacion, Clarin, Chequeado) | Auto-accepted with mandatory citation |
+| Bronze | User/Coalition submissions | Requires community endorsement before high visibility |
 
 **Provenance requirements:** Every node and edge carries `source_url`, `submitted_by`, `submitted_at`, `tier`, `confidence_score`, `ingestion_hash`. Every state change is append-only in the audit log.
 
 ---
 
-### 5.2 Accountability Graph (Core)
+### 5.2 Graph Engine (Core)
 
-**Politician Profile**
+The graph engine is the central feature of the platform. Everything else — politician profiles, investigations, coalitions — is built on top of the graph.
 
-Each profile shows:
+**Visual Explorer**
+
+Interactive node-and-edge graph visualization. Click a politician node and see connections fan out to votes, donors, promises, user-added entities. Core interactions:
+
+- Drag, zoom, pan across the graph
+- Click any node to expand its connections
+- Filter by node type, tier, date range, jurisdiction
+- Save views as named snapshots (personal or coalition-shared)
+- Highlight paths between two selected nodes
+- Color-code nodes by type, tier, or custom attribute
+- Collapse/expand clusters for readability
+- Full-screen mode for deep exploration
+
+**Query Builder**
+
+Structured queries against the graph. Results render as sub-graphs that can be saved, shared, or embedded in investigations.
+
+Example queries:
+- "Show all paths between Donor X and Legislation Y within 3 hops"
+- "Diputados whose donors have interests in mining and voted X on law Y"
+- "All promises made by Legislator Z that have claims of BREAKS against them"
+- "Organizations connected to both Politician A and Politician B"
+
+The query builder provides a visual interface for constructing these queries — users do not need to write query syntax. Advanced users can access a text-based query mode.
+
+**Open Schema**
+
+Users can create any node type and draw typed edges between them. The seeded political data (Como Voto) provides the foundation; users extend freely.
+
+Core node types (Person, Organization, Event, Document, Location, Claim) are built-in with structured properties. Users can add custom properties to any node.
+
+Edge types are open — users define the relationship label and add properties. Common edge types (FUNDED, LED_TO, MEMBER_OF_ORG) are provided as templates with suggested properties.
+
+**Provenance on Everything**
+
+Every user-added node and edge carries:
+- Who added it
+- When
+- Source URL (optional but encouraged; absence is a visible signal)
+- Tier (Bronze for user submissions; Silver if citing a reputable source)
+- Endorsement count from other users
+
+**Politician Profile (Graph-Rendered View)**
+
+Each politician profile is a rendered view of all connections to that politician node in the graph. It shows:
+
 - Chamber, bloc, coalition (PJ/PRO/LLA/OTROS), province/jurisdiction
 - Vote history (all `LegislativeVote` records, searchable and filterable)
-- Promise list with fulfillment status per promise
+- Promise list with linked claims showing fulfillment status
 - Donor relationships (amount, date, cycle)
-- Constraint claims with audit verdicts
-- Accountability score (see below)
-- Community Findings (endorsed by coalitions)
-- Response field: any politician with a verified account can post rebuttals displayed prominently alongside findings
+- Connected organizations, events, and documents
+- Community investigations that reference this politician
+- Response field: any politician with a verified account can post rebuttals displayed prominently alongside claims
 
-**Promise Tracker**
+The profile is not a separate feature — it is a pre-built graph query that renders all edges connected to that `Politician` node.
 
-Side-by-side view: "What they said" → "How they voted"
+**Promise Tracker (Graph View)**
+
+Side-by-side view: "What they said" -> "How they voted"
+
+Promise tracking is implemented as edges and claims in the graph:
+- `MADE_PROMISE` edge connects Politician to Promise node
+- Users create `Claim` nodes asserting that a `LegislativeVote` fulfills, breaks, or partially fulfills a Promise
+- Other users endorse or dispute these claims
+- The Promise node aggregates all claims about it, showing the weight of evidence
 
 Promise `status` state machine:
 ```
-AI-extracted:   EXTRACTED → VERIFIED → TRACKED → { CUMPLIDA | INCUMPLIDA | PARCIALMENTE | VENCIDA | REEMPLAZADA }
-User-submitted: SUBMITTED → VERIFIED → TRACKED → { CUMPLIDA | INCUMPLIDA | PARCIALMENTE | VENCIDA | REEMPLAZADA }
+AI-extracted:   EXTRACTED -> VERIFIED -> TRACKED -> { CUMPLIDA | INCUMPLIDA | PARCIALMENTE | VENCIDA | REEMPLAZADA }
+User-submitted: SUBMITTED -> VERIFIED -> TRACKED -> { CUMPLIDA | INCUMPLIDA | PARCIALMENTE | VENCIDA | REEMPLAZADA }
 ```
 
 - `EXTRACTED`: AI-parsed from speech/manifesto — requires human verification before advancing
 - `SUBMITTED`: User-submitted with source URL — enters verification queue directly
-- `VERIFIED`: Confirmed by ≥3 coalition Verifiers as accurate and attributable
+- `VERIFIED`: Confirmed by multiple endorsements as accurate and attributable
 - `TRACKED`: Actively monitored against legislative votes
 - Terminal states: `CUMPLIDA` (fulfilled), `INCUMPLIDA` (broken), `PARCIALMENTE` (partially fulfilled), `VENCIDA` (expired/no longer relevant), `REEMPLAZADA` (superseded by newer commitment)
 
-Each transition requires: actor (user/coalition/system), evidence node, timestamp.
-
 **User-facing display labels:**
-- `TRACKED` → "En seguimiento"
-- `CUMPLIDA` → "Cumplida"
-- `INCUMPLIDA` → "Incumplida"
-- `PARCIALMENTE` → "Parcialmente cumplida"
-- `VENCIDA` → "Vencida"
-- `REEMPLAZADA` → "Reemplazada"
+- `TRACKED` -> "En seguimiento"
+- `CUMPLIDA` -> "Cumplida"
+- `INCUMPLIDA` -> "Incumplida"
+- `PARCIALMENTE` -> "Parcialmente cumplida"
+- `VENCIDA` -> "Vencida"
+- `REEMPLAZADA` -> "Reemplazada"
 
-**Money Flow Visualizer**
+**Money Flow Visualizer (Graph View)**
 
-Interactive graph: Donor → Politician → Committee → LegislativeVote. Highlights patterns between contributions and voting alignment. Framed as factual data presentation — no automated correlation labels. Community Findings (submitted and endorsed by coalitions) provide the interpretive layer.
-
-**Accountability Score**
-
-Each `Politician ↔ Problem` pair generates a contextual score. Score depends on: (1) was there a Mandate? (2) did the politician sign/support it? (3) were their claimed constraints audited?
-
-| Grade | Label | Condition |
-|-------|-------|-----------|
-| A | Proactivo | Supported Community Mandate AND verified constraints were real OR no real constraints existed |
-| B | Condicionado | Tried to support Mandate but verified constraints blocked action |
-| C | Negligente | Ignored Mandate AND claimed constraints were audited as weak or false |
-| D | Obstructivo | Actively blocked solutions AND claimed constraints were audited as false |
-| — | Sin mandato | No community Mandate exists yet for this problem — score is withheld |
-| — | Pendiente | Constraint audit in progress — score shown with "under review" badge |
-
-**Important:** A/B/C/D scores are only displayed when the minimum inputs exist (a Mandate + either a constraint audit verdict or no constraint claim). When inputs are missing, the profile shows data and status rather than a premature score. This prevents empty or misleading grades.
-
-**Query Builder**
-
-Advanced search across the graph:
-- "Diputados que reclamaron restricción presupuestaria y votaron a favor de baja de impuestos"
-- "Senadores cuyos donantes tienen intereses en el sector minero y votaron X en ley Y"
-- "Mandatos con más del 70% de endorsement que ningún legislador firmó"
+Pre-built graph query: Donor -> Politician -> Committee -> LegislativeVote. Renders as an interactive sub-graph highlighting patterns between contributions and voting alignment. Framed as factual data presentation — no automated correlation labels. User-created claims and investigations provide the interpretive layer.
 
 ---
 
-### 5.3 Coalitions
+### 5.3 Investigations
 
-Coalitions are dynamic, issue-based collectives — not parties. Membership is earned through verified contribution.
+Investigations are the primary content type that users create. They are long-form documents — similar to Notion pages — that reference and embed graph nodes and sub-graphs as evidence.
+
+**Investigation Features**
+
+- Rich text editor with headings, lists, links, images
+- Embed graph nodes inline: reference a Politician, Vote, or Claim and it renders as an interactive card within the document
+- Embed sub-graphs: paste a saved graph query and it renders as a mini interactive graph within the investigation
+- Solo or collaborative: investigations can be personal or shared within a coalition workspace
+- Versioned: every edit is saved with author and timestamp
+- Status: `Draft -> Published -> Archived`
+- Tags for discoverability
+
+**Investigation Workflow**
+
+1. User creates a new investigation (solo or within a coalition)
+2. Explores the graph, finds patterns, saves relevant sub-graphs
+3. Writes the investigation document, embedding graph references as evidence
+4. Publishes — investigation becomes visible to all users
+5. Other users can endorse the investigation, adding credibility
+6. Investigation references create `REFERENCES` edges in the graph, making the investigation discoverable from any node it cites
+
+**Endorsement Model**
+
+- Any user can endorse a claim or edge in the graph
+- Endorsements are public and carry the endorser's verification tier
+- Coalition endorsements carry the coalition's collective reputation
+- Endorsement count is visible on every claim — higher endorsement signals higher community confidence
+- No formal threshold required — visibility is organic, not gated
+
+---
+
+### 5.4 Coalitions (Collaboration Groups)
+
+Coalitions are simple collaboration groups for users who share a research interest. They are not governance structures.
 
 **Capabilities**
-- Create with focus tags (`#inundaciones`, `#córdoba`, `#anticorrupción`)
-- Roles: `Admin`, `Verifier`, `Member`
+
+- Create with focus tags (`#inundaciones`, `#cordoba`, `#anticorrupcion`)
+- Shared investigation workspaces: coalition members can co-edit investigations
+- Shared graph views: saved queries visible to all coalition members
+- Coalition-endorsed claims carry the coalition's name and reputation
+- Subscribe to graph alerts (e.g., "when Legislator X votes on something tagged #medioambiente")
+- Export coalition-endorsed investigations as PDF reports and share cards
+
+**Roles**
+
+| Role | Capabilities |
+|------|-------------|
+| `Admin` | Manage membership, configure coalition settings, publish official reports |
+| `Editor` | Create and edit investigations, endorse claims on behalf of coalition, add nodes/edges |
+| `Viewer` | View coalition workspace, saved queries, and investigations |
+
+**Membership**
+
 - Open join or invite-only (Admin configures)
-- Collectively propose and endorse Findings
-- Stake reputation on verification verdicts
-- Pool resources (crowdfund FOIA requests, legal analysis)
-- Subscribe to graph alerts (e.g., "cuando Legislador X vote sobre algo etiquetado #medioambiente")
-- Export coalition-endorsed findings as PDF reports and share cards
+- Members can leave at any time
+- Admin can remove members
 
-**Coalition Governance (progressive rollout)**
+**Coalition Reputation**
 
-| Mechanism | When Active | Description |
-|-----------|------------|-------------|
-| Simple majority | Phase 1 | Basic yes/no vote on Findings and Proposals |
-| Liquid Democracy | Phase 2 | Delegate vote to trusted member; public and revocable |
-| Quadratic Voting | Phase 2 | For resource allocation; prevents wealthy-member dominance |
-| Holographic Consensus | Phase 3 | Only contested votes go to full coalition; routine approvals auto-pass |
+A coalition's reputation is derived from:
+- Number of endorsed investigations
+- Accuracy track record (do their claims hold up over time?)
+- Member verification tiers
+- Activity level
 
-**Cross-Coalition Dynamics**
-- Inter-coalition dispute resolution for conflicting endorsements
-- Formal alliance / co-endorsement between coalitions
-- Forkable Findings: when coalitions disagree, both interpretations are displayed with sourcing
-
-**Coalition Health Score**
-
-Publicly visible metric to flag capture risk:
-- Geographic diversity of members
-- Voting correlation (flags coordinated/homogeneous behavior)
-- Audit accuracy track record (did endorsed verdicts hold up?)
-- Funding transparency (optional, declared by Admin)
+Coalition reputation is publicly visible. Endorsements from high-reputation coalitions carry more visible weight.
 
 ---
 
-### 5.4 Proactive Problem Solving (Civic R&D)
+### 5.5 Accountability as Emergent Property
 
-**Problem Submission**
-- Form: title, jurisdiction, description, evidence links
-- Auto-linked to electoral jurisdiction (Politician scope)
-- Deduplication: if similar problem exists, suggest merging
-- Problem status: `Abierto → Investigando → Con mandato → Resuelto → Archivado`
+The platform does not compute accountability scores. Instead, accountability emerges from the graph itself.
 
-**Proposal Workspace**
-- Coalition-scoped collaborative drafting space
-- Rich text + evidence attachment (PDFs, external links)
-- Time-boxed sprints (default 4 weeks) to prevent stagnation
-- AI-assisted summaries of uploaded documents (labeled as AI summary)
-- Versioned: every edit is saved with author + timestamp
-- Proposal lifecycle: `Borrador → Abierto a comentarios → Votación → { Mandato | Rechazado | Archivado }`
+**How it works:**
 
-**Dual-Track Consensus**
+- When enough investigations connect a politician to broken promises, the pattern is visible in the graph
+- A politician's profile shows all claims, investigations, and connections — users draw their own conclusions
+- The graph IS the evidence. No algorithmic intermediary is needed
+- Community endorsements surface the most credible claims
+- Multiple perspectives are preserved — when users disagree, both interpretations are visible with their respective evidence
 
-| Track | Mechanism | Goal |
-|-------|-----------|------|
-| Factibilidad | Expert-weighted vote (Phase 2: expertise tags) | Does the solution technically work? |
-| Preferencia | Community vote (simple majority Phase 1, Quadratic Phase 2) | Does the community want this solution? |
-| Predicción | Prediction markets (Phase 3) | Stress-test against real-world outcomes |
+**No score is not no accountability.** A politician profile densely connected to claims of broken promises, donor conflicts, and well-endorsed investigations tells a clear story without needing an A/B/C/D label.
 
-**Citizen Mandate**
-
-When a proposal clears both tracks:
-1. Creates a `Mandate` node — publicly visible
-2. AI scans existing legislation for alignment matches (flagged for human review)
-3. Politicians can formally "Sign" the mandate (creates a `Promise` node + `SIGNED_MANDATE` edge)
-4. All subsequent `LegislativeVote` records on aligned legislation update the politician's accountability score
-
-**Expertise Verification (Phase 2)**
-
-Users can request an expertise badge:
-- Peer-vouched within coalition (3 existing experts confirm)
-- LinkedIn OAuth (job title/education parsing)
-- Credentials document upload (reviewed by coalition admins)
-
-Expertise tags: `ingeniero_civil`, `economista`, `abogado`, `hidrólogo`, `médico`, etc.
+**Future possibility:** Automated scoring can be layered on top of the graph data in later phases. Any such scoring would be derived from community-contributed knowledge, not a core feature. See Future Vision appendix.
 
 ---
 
-### 5.5 Constraint-Adjusted Accountability
+## 6. Identity & Access
 
-**The Constraint Audit Workflow**
-
-1. **Claim submitted**: Politician (or coalition on their behalf) submits a `Constraint` node with type, description, and evidence link. Status: `Sin verificar`.
-2. **Audit triggered**: Any coalition tagged to the relevant jurisdiction or issue can open an audit. Minimum 5 Verifiers required. If no single coalition has 5, a cross-coalition pool can be formed from coalitions tagged to the same jurisdiction/issue.
-3. **Evidence gathering**: Verifiers upload counter-evidence (budget reports, land registry, infrastructure data, official records). All evidence attached to the Constraint node.
-4. **Vote**: Verifiers vote: `Válido` / `Exagerado` / `Falso`. Requires simple majority (Phase 1), expertise-weighted (Phase 2).
-5. **Verdict published**: Coalition verdict displayed on politician profile under "Claims vs. Realidad". Verdict is itself a `Finding` — subject to dispute.
-
-**What verdicts mean:**
-- `Válido`: Constraint was real. Score adjusted in politician's favor.
-- `Exagerado`: Constraint existed but was overstated. Partial adjustment.
-- `Falso`: Constraint did not exist. Score penalized. If another constraint (Conflict of Interest pattern) is observed in the data, coalition submits a separate Finding — framed as opinion with cited evidence.
-
-**Excuse Tracker (UI)**
-- Dedicated section on politician profile: "Argumentos Presentados"
-- Visual: Verified vs. Disputed vs. Pending constraints over time
-- "Most contested claims" surfaced publicly
-
-**AI Pre-Verification (Phase 2)**
-- AI scans official budget PDFs to flag budget claims vs. actual allocations
-- Alert to verifiers: "Legislador alega sin presupuesto, pero los datos del Ministerio de Economía muestran superávit en la categoría X"
-- **All AI outputs labeled as preliminary** — require human verifier review before display
-- Hidden constraint data (if source is unavailable): marked `No verificable` — treated as a negative signal, never neutral
-
-**Example — Flooding Scenario (Río Cuarto, Córdoba)**
-
-| Step | Event |
-|------|-------|
-| Problem | Inundaciones reportadas en Río Cuarto, zona X |
-| Dato | Estación SMN + red de sensores: capacidad de desagüe al 98% (hard constraint — auto-ingested) |
-| Coalición | Propone "Bombeo de emergencia" (corto plazo) + "Expansión de desagüe" (largo plazo) |
-| Legislador | Vota a favor del bombeo ✅, en contra de la expansión. Alega "No hay terrenos disponibles" |
-| Auditoría | Coalición consulta el catastro — hay terrenos, pero son propiedad de un donante |
-| Veredicto | Constraint = `Falso` (conflicto de interés observado en los datos) |
-| Score | Aprobado en emergencia, `Negligente` en solución estructural |
-| Vista pública | "Gestionó la emergencia. Bloqueó la solución permanente. Ver relación con donante [link]" |
-
----
-
-## 6. Consensus & Governance Architecture
-
-### 6.1 Identity & Sybil Resistance
-
-**Verification tiers (progressive):**
+### 6.1 Verification Tiers
 
 | Tier | Method | Capability |
 |------|--------|-----------|
-| 0 — Observador | Ninguna | Ver todo, sin votar |
-| 1 — Participante | Email + teléfono verificado | Votar (peso limitado), unirse a coaliciones |
-| 2 — Verificador | DNI / CUIL verification (via AFIP or Renaper API, Phase 2) | Votar con peso completo, ser Verifier en coalición |
-| 3 — Experto | Peer-vouched expertise badge | Voto ponderado por expertise en dual-track |
-| 4 — Político verificado | Cuenta oficial verificada | Responder a hallazgos, firmar mandatos |
-
-**Anti-sybil measures:**
-- Account age + minimum activity before voting eligibility
-- Graph-based sybil detection: analyze creation patterns, IP/device clustering, vote correlation
-- Rate limits on account creation per IP/phone range
-- Anomaly alerts: sudden coordinated vote shifts trigger community review flag
+| 0 — Observador | None | View all public data, no writes |
+| 1 — Participante | Email + phone verified | Add nodes/edges, create investigations, join coalitions, endorse claims |
+| 2 — Verificado | DNI / CUIL verification (via AFIP or Renaper API, Phase 2) | Higher endorsement weight, create coalitions |
+| 3 — Politico verificado | Official verified account | Respond to claims, post rebuttals on profile |
 
 ### 6.2 Reputation System
 
-- Non-transferable reputation points earned through: verified contributions, accurate audit verdicts, proposal approvals
-- Audit accuracy track record: if a coalition endorses a Finding that is later overturned, members lose reputation
+- Non-transferable reputation points earned through: verified contributions, endorsement accuracy, investigation quality
 - Cold start: new users receive a base reputation sufficient to participate at Tier 1 level
 - Reputation decay: inactive accounts lose weight gradually (prevents hoarding)
 - Full formula published and auditable publicly
 
-### 6.3 Anti-Capture Measures
+### 6.3 Audit Log
 
-- Minimum reputation to create a coalition
-- Coalition health score (section 5.3) publicly visible
-- All vote and delegation records are public — the community audits itself
-- Inter-coalition dispute resolution: conflicting verdicts trigger a cross-coalition jury (randomly selected from non-involved coalitions)
-- Findings require endorsement from ≥2 independent coalitions for highest visibility tier
-
-### 6.4 Audit Log
-
-Every state change (node creation, edge creation, vote cast, verdict published, score updated) is appended to an immutable audit log:
+Every state change (node creation, edge creation, endorsement, investigation publication) is appended to an immutable audit log:
 - Storage: versioned S3 with Object Lock (compliance mode) + MFA Delete
 - Format: structured JSON events, no PII in the log (user IDs only, resolvable via the main DB)
 - Hash chain: each event includes the hash of the previous event for tamper detection
@@ -402,7 +392,7 @@ Every state change (node creation, edge creation, vote cast, verdict published, 
 
 **Primary recommendation: PostgreSQL-first**
 
-The MVP graph (Politician → Vote → Legislation → Promise) involves 2-3 hop traversals. PostgreSQL handles this efficiently with:
+The MVP graph (Politician -> Vote -> Legislation -> Promise) involves 2-3 hop traversals. PostgreSQL handles this efficiently with:
 - Recursive CTEs for path traversal
 - JSONB for flexible node properties
 - Foreign key relationships for most edges
@@ -417,41 +407,43 @@ For now, PostgreSQL + Redis (Upstash for hosted) is the target stack.
 |-------|-----------|-------|
 | Frontend + API | Next.js (App Router, Route Handlers) | SSR for SEO; tRPC for type-safe client-server |
 | Database | PostgreSQL | Primary store for all graph data + transactional data |
-| Cache | Redis (Upstash) | Materialized politician scores, session cache, vote tallies |
-| Auth | NextAuth.js + email/password + social login | MFA required for Verifier tier and above |
+| Cache | Redis (Upstash) | Materialized views, session cache, query result cache |
+| Auth | NextAuth.js + email/password + social login | MFA required for Tier 2 and above |
+| Graph Visualization | D3.js / Cytoscape.js / vis.js | Interactive graph explorer — evaluate all three in Phase 1 |
+| Rich Text Editor | TipTap | Investigation documents with graph node embeds |
+| Graph Query Layer | Custom query builder UI over PostgreSQL | Visual query construction; text mode for advanced users |
 | AI/LLM | Claude API | Async batch jobs only — never inline blocking calls |
 | Maps | Leaflet (open-source) | Phase 2 — jurisdiction polygon visualization |
 | Audit Log | S3 (versioned, Object Lock) | Append-only event log |
-| Hosting | Vercel (frontend) + Railway or Fly.io (backend services) | — |
-| Scraping | Como Votó pipeline (fork + extend) | Gold-tier data ingestion |
+| Hosting | Vercel (frontend) + Railway or Fly.io (backend services) | -- |
+| Scraping | Como Voto pipeline (fork + extend) | Gold-tier data ingestion |
 
 ### 7.3 Service Architecture (Modular Monolith)
 
 A single deployable application with three logical modules. Extract to services when scaling evidence justifies it.
 
 ```
-┌─────────────────────────────────────────────┐
-│              Next.js Application              │
-│                                               │
-│  ┌─────────────┐  ┌──────────────────────┐   │
-│  │    CORE      │  │     COMMUNITY        │   │
-│  │              │  │                      │   │
-│  │ Graph CRUD   │  │ Coalitions           │   │
-│  │ Ingestion    │  │ Voting / Delegation  │   │
-│  │ Politician   │  │ Reputation           │   │
-│  │  profiles    │  │ Proposals            │   │
-│  │ Provenance   │  │ Mandate creation     │   │
-│  └─────────────┘  └──────────────────────┘   │
-│                                               │
-│  ┌─────────────────────────────────────────┐  │
-│  │              ANALYSIS                   │  │
-│  │                                         │  │
-│  │  Scoring engine   Constraint auditing   │  │
-│  │  Query builder    AI batch jobs         │  │
-│  │  Export / reports                       │  │
-│  └─────────────────────────────────────────┘  │
-└─────────────────────────────────────────────┘
-         │                    │
++---------------------------------------------+
+|              Next.js Application              |
+|                                               |
+|  +-------------+  +----------------------+   |
+|  |    CORE      |  |     COMMUNITY        |   |
+|  |              |  |                      |   |
+|  | Graph CRUD   |  | Coalitions           |   |
+|  | Ingestion    |  | Investigations       |   |
+|  | Politician   |  | Endorsements         |   |
+|  |  profiles    |  | Reputation           |   |
+|  | Provenance   |  | Node/edge CRUD       |   |
+|  +-------------+  +----------------------+   |
+|                                               |
+|  +-----------------------------------------+  |
+|  |              ANALYSIS                   |  |
+|  |                                         |  |
+|  |  Graph explorer   Query builder         |  |
+|  |  AI batch jobs     Export / reports      |  |
+|  +-----------------------------------------+  |
++---------------------------------------------+
+         |                    |
     PostgreSQL              Redis
     + S3 audit log
 ```
@@ -465,7 +457,7 @@ interface ProvenanceRecord {
   submitted_by: string       // user_id
   submitted_at: Date
   tier: 'gold' | 'silver' | 'bronze'
-  confidence_score: number   // 0–1
+  confidence_score: number   // 0-1
   ingestion_hash: string     // SHA-256 of canonical input
 }
 
@@ -478,40 +470,55 @@ interface VersionedNode {
   provenance: ProvenanceRecord
 }
 
-// Finding (replaces edge-on-edge)
-interface Finding extends VersionedNode {
+// Claim (generalized Finding)
+interface Claim extends VersionedNode {
   subject_id: string          // e.g., LegislativeVote id
   subject_type: NodeType
   claim_about_id: string      // e.g., Promise id
   claim_about_type: NodeType
-  claim_type: 'fulfills' | 'breaks' | 'partially_fulfills' | 'aligns_with'
-  description: string
-  status: 'pending' | 'endorsed' | 'disputed' | 'rejected'
+  claim_type: 'fulfills' | 'breaks' | 'partially_fulfills' | 'aligns_with' | 'conflicts_with'
+  text: string
+  status: 'pending' | 'endorsed' | 'disputed'
   endorsement_count: number
   evidence_ids: string[]
 }
 
-// Constraint
-interface Constraint extends VersionedNode {
-  type: 'presupuestario' | 'legal' | 'físico' | 'jurisdiccional'
-  severity: number            // 0–1
-  verified_status: 'sin_verificar' | 'válido' | 'exagerado' | 'falso' | 'no_verificable'
-  claimed_by: string          // politician_id
-  audit_coalition_id: string | null
-  verdict_at: Date | null
+// Investigation
+interface Investigation extends VersionedNode {
+  title: string
+  body: string                // Rich text (TipTap JSON or HTML)
+  status: 'draft' | 'published' | 'archived'
+  author_ids: string[]
+  coalition_id: string | null
+  tags: string[]
+  referenced_node_ids: string[]  // All nodes referenced/embedded
+  endorsement_count: number
+}
+
+// Graph Edge (user-created)
+interface GraphEdge {
+  id: string
+  from_id: string
+  from_type: NodeType
+  to_id: string
+  to_type: NodeType
+  relationship_type: string   // e.g., FUNDED, LED_TO, RELATED_TO
+  properties: Record<string, unknown>
+  provenance: ProvenanceRecord
+  endorsement_count: number
 }
 ```
 
 ### 7.5 AI Integration Rules
 
-LLMs are used for three tasks: promise extraction from speeches, document summarization for proposal workspaces, and budget claim pre-verification. Rules that apply to all three:
+LLMs are used for two tasks: promise extraction from speeches and document summarization for investigations. Rules that apply to both:
 
-1. **Never authoritative.** All LLM outputs create a `pending_review` Finding, never a published fact.
-2. **Always labeled.** Every AI-generated content carries a "Análisis preliminar IA — requiere revisión humana" badge.
+1. **Never authoritative.** All LLM outputs create a `pending` Claim, never a published fact.
+2. **Always labeled.** Every AI-generated content carries a "Analisis preliminar IA — requiere revision humana" badge.
 3. **Deterministic.** Temperature = 0, structured JSON output with Zod validation, results cached by input hash.
 4. **Auditable.** Every LLM call logs: model version, input text, raw output, extracted result, and the user/event that triggered it.
 5. **Degradable.** If Claude API is unavailable, ingestion falls back to manual entry — AI is an accelerator, not a dependency.
-6. **Prompt injection defense.** PDFs are rendered to image → OCR before passing text to the LLM. No raw PDF text extraction.
+6. **Prompt injection defense.** PDFs are rendered to image -> OCR before passing text to the LLM. No raw PDF text extraction.
 
 ---
 
@@ -522,10 +529,9 @@ LLMs are used for three tasks: promise extraction from speeches, document summar
 | Role | Who | Capabilities |
 |------|-----|-------------|
 | `observador` | Unauthenticated / unverified | View all public data, no writes |
-| `participante` | Email + phone verified | Submit Problems, join Coalitions, cast platform votes (Tier 1 weight) |
-| `verificador` | DNI/CUIL verified (Phase 2) | Full voting weight, serve as Coalition Verifier, audit constraints |
-| `experto` | Peer-vouched expertise | Expertise-weighted votes on feasibility track |
-| `político_verificado` | Identity verified politician | Respond to Findings, submit Constraint claims, sign Mandates, submit Problems/Promises (marked as politician-sourced) |
+| `participante` | Email + phone verified | Add nodes/edges, create investigations, join coalitions, endorse claims |
+| `verificado` | DNI/CUIL verified (Phase 2) | Higher endorsement weight, create coalitions, all participante capabilities |
+| `politico_verificado` | Identity verified politician | Respond to claims, post rebuttals on profile, add nodes/edges (marked as politician-sourced) |
 | `moderador` | Platform staff | Flag/hide content pending review, handle legal takedowns |
 | `admin` | Platform operators | Full access, user management, data corrections |
 
@@ -533,17 +539,16 @@ LLMs are used for three tasks: promise extraction from speeches, document summar
 
 | Role | Capabilities |
 |------|-------------|
-| `member` | View coalition workspace, cast votes |
-| `verifier` | Propose and vote on Findings, audit Constraints |
-| `admin` | Manage membership, set coalition governance rules, create official reports |
+| `viewer` | View coalition workspace, saved queries, and investigations |
+| `editor` | Create/edit investigations, endorse claims on behalf of coalition, add nodes/edges to shared workspace |
+| `admin` | Manage membership, configure coalition settings, publish official reports |
 
 ### 8.3 Permission Rules
 
 - Coalition Admins can only manage their own coalition
-- No single user can approve their own Finding submissions
-- Finding endorsement requires ≥3 Verifiers; constraint audit verdict requires ≥5 Verifiers
-- Admin actions (data deletion, score overrides, user bans) require two-admin approval + audit log entry
-- Politicians can only respond to Findings about themselves
+- No single user can endorse their own claim submissions (endorsement requires a different user)
+- Admin actions (data deletion, user bans) require two-admin approval + audit log entry
+- Politicians can only respond to claims about themselves
 
 ---
 
@@ -552,43 +557,43 @@ LLMs are used for three tasks: promise extraction from speeches, document summar
 ### 9.1 Critical Flows (MVP)
 
 **New user onboarding:**
-1. Land on public page → see politician profiles without registering
-2. "Participar" CTA → email + phone verification
-3. Select focus interests (tags) → shown relevant coalitions and open Problems
-4. Transparency consent: explicit acknowledgment that votes/delegations are public
+1. Land on public page -> see politician profiles and graph without registering
+2. "Participar" CTA -> email + phone verification
+3. Select focus interests (tags) -> shown relevant coalitions and active investigations
+4. Transparency consent: explicit acknowledgment that contributions and endorsements are public
 
 **Politician profile creation (seeded data):**
-1. Automated ingestion from Como Votó pipeline creates profiles for all 257 Diputados + 72 Senadores
+1. Automated ingestion from Como Voto pipeline creates profiles for all 257 Diputados + 72 Senadores
 2. Admin reviews and publishes batch
 3. Politician can claim account via verified email domain or official credential upload
 
-**Promise submission:**
-1. User submits: politician, text, source URL, date
-2. System checks for duplicates
-3. Sent to coalition verification queue (or auto-approved if Silver/Gold source)
-4. Coalition vote: 3 Verifiers approve → Promise becomes visible on profile
-5. Verifiers can link to existing LegislativeVote via a Finding
+**Adding nodes and edges:**
+1. User clicks "Add to graph" from any context (explorer, profile, investigation)
+2. Selects node type (Person, Organization, Event, Document, Location, Claim)
+3. Fills in properties + source URL
+4. Node appears in graph immediately as Bronze-tier
+5. Other users can endorse or dispute the node
+6. User draws edges between existing nodes with a relationship type and optional properties
 
-**Coalition verification flow:**
-1. Verifier proposes a Finding: "LegislativeVote X breaks/fulfills Promise Y"
-2. Coalition vote opens (72h default window, configurable by Admin)
-3. Quorum: ≥3 Verifiers must vote
-4. Simple majority decides: endorsed/rejected
-5. Endorsed Finding visible on politician profile with coalition badge and evidence
+**Creating an investigation:**
+1. User creates new investigation (solo or within a coalition)
+2. Explores graph, clicks "Add to investigation" on relevant nodes
+3. Writes narrative in rich text editor with embedded graph references
+4. Previews — embedded nodes render as interactive cards
+5. Publishes — investigation appears in public feed and is linked to all referenced nodes
+6. Other users discover the investigation from any node it references
 
-**Problem → Mandate pipeline:**
-1. User submits Problem (jurisdiction, description, evidence)
-2. Coalition adopts Problem → opens Proposal workspace
-3. Coalition drafts Proposal with evidence, cost estimate, timeline
-4. Sprint ends (4 weeks) → voting opens to all Coalition members
-5. Simple majority → Mandate created
-6. Mandate published publicly; auto-scan for matching legislation
-7. Politicians notified (if verified account) or Mandate displayed on their profile regardless
+**Endorsing a claim or edge:**
+1. User views a claim or user-added edge in the graph
+2. Reviews the source URL and evidence
+3. Clicks "Endorse" — their endorsement is public with their verification tier
+4. Endorsement count increases, surfacing the claim to more users
 
-**Accountability score display:**
-- Score only shown when: Mandate exists for this Problem + either a constraint audit verdict is available or no constraint was claimed
-- Otherwise: shows "Sin mandato aún" or "Auditoría en curso"
-- Never shows A/B/C/D with insufficient data
+**Coalition creation:**
+1. Verified user creates coalition with name, description, focus tags
+2. Configures: open join or invite-only
+3. Invites initial members
+4. Members begin co-editing investigations and endorsing claims as a group
 
 ### 9.2 Data Correction Flow
 
@@ -600,7 +605,7 @@ LLMs are used for three tasks: promise extraction from speeches, document summar
 
 ### 9.3 Content Moderation Flow
 
-1. Any user can flag content as: spam / desinformación / acoso / contenido ilegal
+1. Any user can flag content as: spam / desinformacion / acoso / contenido ilegal
 2. Flags queue to Moderators (reviewed within 48h SLA)
 3. Moderator can: dismiss / hide pending review / remove + notify user / escalate to Admin
 4. Removed content preserved in audit log (not deleted, just not displayed)
@@ -612,91 +617,80 @@ LLMs are used for three tasks: promise extraction from speeches, document summar
 
 ### 10.1 Argentine Legal Context
 
-- **Ley de Acceso a la Información Pública (Ley 27.275)**: Government data used is already public record
-- **Constitución Nacional Art. 14 / 32**: Freedom of press and opinion protects community assessments framed as opinion
-- **Código Civil y Comercial Art. 1770**: Defamation protection — the platform must never assert facts it cannot prove
-- **PDPA equivalent**: Argentina has Ley 25.326 (Protección de Datos Personales) — all user PII must be treated accordingly
+- **Ley de Acceso a la Informacion Publica (Ley 27.275)**: Government data used is already public record
+- **Constitucion Nacional Art. 14 / 32**: Freedom of press and opinion protects community assessments framed as opinion
+- **Codigo Civil y Comercial Art. 1770**: Defamation protection — the platform must never assert facts it cannot prove
+- **PDPA equivalent**: Argentina has Ley 25.326 (Proteccion de Datos Personales) — all user PII must be treated accordingly
 
 ### 10.2 Framing Rules (enforced by design)
 
 The platform **never** automatically labels a politician as corrupt, guilty, or dishonest. It:
 - Presents factual data (votes, donor amounts, budget figures) from cited official sources
-- Shows community Findings framed explicitly as "community assessment" with visible sourcing
-- Labels constraint verdicts as "community audit verdict — not a legal determination"
+- Shows community claims framed explicitly as "community assessment" with visible sourcing
+- Labels all user-contributed content with provenance tier and endorsement count
 - Provides a prominent rebuttal field on every politician profile
-- Every Finding includes a disclaimer: "Este es un análisis comunitario basado en datos públicos, no una determinación legal"
+- Every claim includes a disclaimer: "Este es un analisis comunitario basado en datos publicos, no una determinacion legal"
 
 ### 10.3 Content Policy
 
 - No personal attacks on private individuals (family members, staff)
 - Political figures are public figures for purposes of their public duties — their public actions are fair game
-- Allegations of criminal conduct are not permitted — only factual patterns ("recibió donación de X, votó favorable a X")
+- Allegations of criminal conduct are not permitted — only factual patterns ("recibio donacion de X, voto favorable a X")
 - Mandatory source citation on all Bronze-tier submissions
 - DMCA / Argentine equivalent takedown process defined before launch
 
 ### 10.4 Politician Right to Response
 
 Any politician with a verified account has:
-- A permanent response field displayed prominently alongside each Finding
-- The right to submit counter-evidence attached to a Constraint or Finding (Bronze-tier, subject to audit)
+- A permanent response field displayed prominently alongside each claim
+- The right to submit counter-evidence (Bronze-tier, subject to community endorsement)
 - A formal dispute channel to flag alleged factual errors (goes to Moderation queue)
 
 ---
 
 ## 11. Phased Delivery
 
-### Phase 1 — Core Graph + Coalitions (Foundation)
+### Phase 1 — Graph Engine + Investigations (Foundation)
 
-**Goal:** Validate the core accountability loop with seeded data and early coalition users.
+**Goal:** Deliver the interactive graph explorer with seeded data, investigation documents, and basic coalitions.
 
 | Feature | Difficulty |
 |---------|-----------|
-| PostgreSQL schema + Politician/Vote/Legislation/Promise nodes | Medium |
-| Como Votó ingestion pipeline (seed 257 Diputados + 72 Senadores) | Medium |
-| Politician profile pages (votes, promises, score placeholder) | Medium |
-| Promise Tracker (side-by-side view with Finding status) | Medium |
+| PostgreSQL schema + all node types (Politician, Vote, Legislation, Promise, Organization, Event, Document, Location, Claim, Investigation) | Medium |
+| Como Voto ingestion pipeline (seed 257 Diputados + 72 Senadores) | Medium |
+| Graph visual explorer (D3.js/Cytoscape.js — drag, zoom, filter, expand) | Hard |
+| Node and edge CRUD (add nodes, draw edges, set properties, attach sources) | Medium |
+| Basic query builder (filter by type, date, jurisdiction; path between two nodes) | Medium-Hard |
+| Politician profile pages (graph-rendered view of all connections) | Medium |
+| Promise Tracker (side-by-side view with claim status) | Medium |
+| Investigation editor (rich text + graph node embeds) | Hard |
+| Endorsement system (endorse claims, edges, investigations) | Medium |
 | User auth + verification tiers (Tier 0 + Tier 1) | Medium |
-| Coalition creation, membership, basic roles | Hard |
-| Collective verification flow (Finding proposal → vote → endorsed badge) | Hard |
-| Problem submission form + jurisdiction linking | Easy-Medium |
-| Manual data ingestion admin tools | Medium |
+| Coalition creation, membership, basic roles (Admin/Editor/Viewer) | Medium |
 | Public audit trail (view history per node) | Medium-Hard |
-| Content moderation tooling (flag → queue → moderator action) | Medium |
+| Content moderation tooling (flag -> queue -> moderator action) | Medium |
 | Permission model (all roles defined and enforced) | Medium |
 
-### Phase 2 — Proactive Module + Advanced Governance
+### Phase 2 — Advanced Graph + Rich Investigations
 
-**Goal:** Enable community R&D loop, improve voting quality.
-
-| Feature | Difficulty |
-|---------|-----------|
-| Proposal drafting workspace (rich text, versioned, coalition-scoped) | Medium-Hard |
-| Dual-track consensus (feasibility + preference voting) | Hard |
-| Mandate creation + legislation alignment scan | Hard |
-| Liquid democracy delegation | Hard |
-| Quadratic voting (resource allocation) | Hard |
-| Constraint audit flow (full verdict system) | Hard |
-| A/B/C/D accountability score (algorithm defined + displayed) | Very Hard |
-| CUIL/DNI identity verification (Tier 2) | Medium |
-| Expertise badge system | Medium |
-| AI-assisted document summarization (proposals) | Medium |
-| AI constraint pre-verification (labeled as preliminary) | Hard |
-| Automated HCDN/Senado scraping pipeline (fork Como Votó) | Medium |
-
-### Phase 3 — Advanced Consensus + Scale
-
-**Goal:** Harden consensus mechanisms, expand coverage, reach sustainability.
+**Goal:** Deepen the graph experience, enrich investigation tools, add AI assistance.
 
 | Feature | Difficulty |
 |---------|-----------|
-| Holographic consensus | Hard |
-| Prediction markets | Very Hard |
+| Advanced graph queries (multi-hop, sub-graph extraction, complex filters) | Hard |
+| Rich investigation editor with inline graph embeds (interactive sub-graphs in documents) | Hard |
+| Coalition analytics (reputation tracking, activity metrics) | Medium |
+| AI-assisted investigation tools (auto-suggest related nodes, summarize documents) | Medium-Hard |
+| AI-assisted promise extraction from speeches | Medium |
+| DNI/CUIL identity verification (Tier 2) | Medium |
+| Automated HCDN/Senado scraping pipeline (fork Como Voto) | Medium |
 | Map-based jurisdiction visualization (Leaflet) | Medium |
-| Inter-coalition dispute resolution (cross-coalition jury) | Hard |
 | Public API (journalists, researchers, external tools) | Medium |
-| Province-level coverage (legislature data beyond Congress) | Hard |
-| Neo4j migration (if traversal complexity justifies it) | Very Hard |
-| Transparency report + open-source scoring algorithm | Medium |
+| Coalition-endorsed investigation export (PDF reports, share cards) | Medium |
+
+### Phase 3 — Future Vision
+
+See Future Vision appendix (Section 14).
 
 ---
 
@@ -704,42 +698,84 @@ Any politician with a verified account has:
 
 | Risk | Severity | Mitigation |
 |------|----------|-----------|
-| **Score computed from insufficient data** | Critical | Score only displayed when minimum inputs exist; "Sin mandato" / "Pendiente" shown otherwise |
-| **Coalition capture by political actors** | Critical | Coalition health score; minimum reputation to create; cross-coalition jury for disputed verdicts |
-| **Sybil voting attacks** | Critical | Progressive verification tiers; graph-based anomaly detection; voting weight gated on verification |
+| **Graph data quality (low-quality user contributions)** | Critical | Tiered trust model; provenance on every record; endorsement signals quality; Bronze-tier content requires endorsement for high visibility |
+| **Investigation integrity (misleading narratives)** | Critical | All claims must cite graph data; endorsement model surfaces credible investigations; multiple perspectives preserved |
+| **Cold start (empty user-contributed graph)** | High | Como Voto integration seeds full Congress at launch; invite initial coalition anchors before public launch; pre-build investigation templates |
 | **Legal challenge (defamation)** | Critical | Opinion-framed labels only; mandatory citations; right to rebuttal; Argentine legal counsel retained pre-launch |
-| **AI prompt injection via PDFs** | High | PDF → image → OCR pipeline; output schema validation; human review required before publication |
-| **Cold start (empty platform)** | High | Como Votó integration seeds full Congress at launch; invite initial coalition anchors before public launch |
-| **Accountability score gaming** | High | Score algorithm open-source; community auditable; formula changes require community vote |
-| **Data quality drift** | High | Tiered trust model; provenance on every record; "Unverifiable" is a negative signal |
-| **Public voting chills participation** | Medium | Users explicitly consent on signup; framing: transparency is a feature and a defense against manipulation |
+| **AI prompt injection via PDFs** | High | PDF -> image -> OCR pipeline; output schema validation; human review required before publication |
+| **Graph visualization performance** | High | Lazy loading of graph neighborhoods; limit initial render to 2-3 hops; server-side pre-computation of common views |
+| **Schema abuse (nonsense nodes/edges)** | Medium | Moderation queue for flagged content; reputation loss for removed contributions; rate limits on node creation |
+| **Public contributions chill participation** | Medium | Users explicitly consent on signup; framing: transparency is a feature and a defense against manipulation |
 | **Key person risk** | Medium | Open-source codebase; documented operational procedures; bus-factor-resistant credential management |
+| **Graph query complexity** | Medium | PostgreSQL-first with optimization; monitor query performance; Neo4j migration trigger defined (500k+ nodes, 4+ hop queries) |
 
 ---
 
 ## 13. Open Questions
 
 1. **Monetization**: Coalition premium features (advanced analytics, priority support), grants (Wikimedia, Open Society, NED), or fully free/donation-based?
-2. **Politician participation**: Active outreach to legislators to claim verified accounts and engage with Mandates?
-3. **Data partnerships**: Formal agreement with Como Votó author (rquiroga7) and/or Chequeado, Poder Ciudadano, Fundar?
-4. **Coalition identity**: Allow custom coalition branding (logo, colors) or uniform platform UI to maintain visual neutrality?
+2. **Politician participation**: Active outreach to legislators to claim verified accounts and engage with the platform?
+3. **Data partnerships**: Formal agreement with Como Voto author (rquiroga7) and/or Chequeado, Poder Ciudadano, Fundar?
+4. **Graph visualization library**: D3.js vs. Cytoscape.js vs. vis.js — each has tradeoffs in customization, performance, and learning curve. Prototype with two before committing.
 5. **Initial coalition seeding**: Which 2-3 well-known Argentine civil society orgs to onboard as anchor coalitions at launch?
-6. **Score algorithm definition**: Who defines the initial A/B/C/D formula weights? Community vote, editorial committee, or technical team?
+6. **Investigation discoverability**: How to surface high-quality investigations without creating popularity bias? Chronological feed, endorsement-weighted, editorial picks, or algorithm?
+7. **Open schema limits**: How open should the node/edge schema be? Fully open risks noise; too constrained limits user expression. Start with core types + "Other" with free-form properties?
 
 ---
 
-## 14. Glossary
+## 14. Future Vision
+
+The following features are intentionally deferred from the core platform. They represent a governance and scoring layer that can be built on top of the graph engine and investigation system once the knowledge base is mature.
+
+### Accountability Scoring
+
+- A/B/C/D accountability scores per politician per issue
+- Algorithmic scoring derived from graph data: promises kept/broken, voting record, donor conflicts
+- Only meaningful when the graph contains sufficient community-contributed data
+
+### Governance Mechanisms
+
+- **Liquid Democracy**: Delegate your endorsement weight to a trusted user; public and revocable
+- **Quadratic Voting**: For coalition resource allocation decisions; prevents wealthy-member dominance
+- **Holographic Consensus**: Only contested decisions go to full coalition vote; routine approvals auto-pass
+- **Prediction Markets**: Stress-test claims against real-world outcomes
+
+### Advanced Accountability
+
+- **Constraint Audit Workflow**: Formal process for auditing politician claims of constraints (budget, legal, physical limitations). Coalition-driven verification with structured verdicts (Valido / Exagerado / Falso)
+- **Citizen Mandates**: Community proposals that clear consensus become formal civic demands linked to politician scorecards
+- **Dual-Track Consensus**: Expert-weighted feasibility track + community preference track for evaluating proposals
+- **Proactive Problem Solving (Civic R&D)**: Structured problem -> proposal -> mandate pipeline with time-boxed sprints
+
+### Platform Integrity
+
+- **Sybil Resistance**: Graph-based sybil detection, IP/device clustering analysis, vote correlation anomaly detection
+- **Cross-Coalition Dispute Resolution**: Conflicting claims trigger a cross-coalition jury (randomly selected from non-involved coalitions)
+- **Expertise Verification**: Peer-vouched expertise badges for domain-specific endorsement weighting
+- **Coalition Health Score**: Publicly visible metric covering geographic diversity, endorsement accuracy, and activity patterns
+
+### Scale
+
+- Province-level coverage (legislature data beyond Congress)
+- Neo4j migration (if traversal complexity justifies it at 500k+ nodes)
+- Transparency report + open-source scoring algorithm
+- International expansion framework
+
+---
+
+## 15. Glossary
 
 | Term | Definition |
 |------|-----------|
-| **Mandate / Mandato** | A community Proposal that cleared dual-track consensus and became an official civic demand linked to politicians |
-| **Finding** | A reified assertion about a relationship (e.g., "This vote breaks this promise") — submitted by users, endorsed by coalitions |
-| **Constraint / Restricción** | A claimed limitation (presupuestaria, legal, física) submitted to contextualize a politician's inaction |
-| **Constraint Audit** | Coalition-driven process that votes whether a claimed constraint is Válido / Exagerado / Falso |
-| **Contextual Score** | A politician's A–D accountability rating for a specific Problem — only displayed when mandate + audit inputs are available |
-| **Dual-Track Consensus** | Two parallel processes: expert-weighted feasibility track + community preference track |
-| **Coalition** | User-organized, issue-based group that collectively verifies data, proposes solutions, and endorses Findings |
-| **Liquid Democracy** | Members vote directly or delegate their vote to a trusted peer (public, revocable) |
-| **Tiered Trust** | Gold (official APIs) / Silver (reputable press) / Bronze (user submissions) — determines default confidence and review requirements |
-| **Finding Reification** | Graph modeling pattern: instead of an edge-on-edge (impossible), a `Finding` node acts as the subject of endorsement, evidence, and dispute |
-| **Como Votó** | Open-source Argentine voting tracker (rquiroga7/Como_voto) used as the Gold-tier data source for legislative votes |
+| **Claim** | An assertion about a relationship in the graph (e.g., "This vote breaks this promise") — submitted by users, endorsed by other users and coalitions. Generalized form of a Finding |
+| **Investigation** | A long-form document that references and embeds graph nodes and sub-graphs as evidence. The primary user-created content type |
+| **Coalition** | User-organized collaboration group that shares investigation workspaces, graph views, and collective endorsements |
+| **Endorsement** | A public signal of agreement with a claim, edge, or investigation. Carries the endorser's verification tier and reputation |
+| **Tiered Trust** | Gold (official APIs) / Silver (reputable press) / Bronze (user submissions) — determines default confidence and visibility |
+| **Graph Explorer** | The interactive visual interface for browsing the knowledge graph — click, drag, zoom, filter, expand connections |
+| **Query Builder** | Structured interface for running queries against the graph (e.g., "paths between Donor X and Legislation Y within 3 hops") |
+| **Open Schema** | The principle that users can create any node type and draw any edge type, extending the graph beyond seeded political data |
+| **Provenance** | The metadata attached to every node and edge: who added it, when, source URL, tier, confidence score |
+| **Como Voto** | Open-source Argentine voting tracker (rquiroga7/Como_voto) used as the Gold-tier data source for legislative votes |
+| **Node** | Any entity in the knowledge graph: a politician, vote, organization, event, document, claim, or investigation |
+| **Edge** | A typed relationship between two nodes: FUNDED, CAST_LEGISLATIVE_VOTE, REFERENCES, LED_TO, etc. |
