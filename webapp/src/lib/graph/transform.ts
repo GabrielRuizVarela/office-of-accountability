@@ -145,6 +145,57 @@ export function transformNodeRecords(records: readonly Neo4jRecord[]): GraphData
 }
 
 /**
+ * Transform the result of a multi-hop expand query.
+ *
+ * Takes the center node, all discovered target nodes, and all relationships
+ * along the paths. Builds an elementId → appId lookup to correctly resolve
+ * relationship endpoints.
+ */
+export function transformExpandResult(
+  centerNode: Node,
+  targetNodes: readonly Node[],
+  relationships: readonly Relationship[],
+): GraphData {
+  // Build elementId → app-level ID lookup for relationship resolution
+  const elementIdToAppId = new Map<string, string>()
+  const nodeMap = new Map<string, GraphNode>()
+
+  // Always include the center node
+  const center = transformNode(centerNode)
+  nodeMap.set(center.id, center)
+  elementIdToAppId.set(centerNode.elementId, center.id)
+
+  // Add all target nodes
+  for (const target of targetNodes) {
+    const graphNode = transformNode(target)
+    nodeMap.set(graphNode.id, graphNode)
+    elementIdToAppId.set(target.elementId, graphNode.id)
+  }
+
+  // Transform relationships, resolving elementIds to app-level IDs
+  const links: GraphLink[] = []
+  const seenRelIds = new Set<string>()
+
+  for (const rel of relationships) {
+    if (seenRelIds.has(rel.elementId)) continue
+    seenRelIds.add(rel.elementId)
+
+    const sourceId = elementIdToAppId.get(rel.startNodeElementId)
+    const targetId = elementIdToAppId.get(rel.endNodeElementId)
+
+    // Skip relationships where either endpoint is not in our result set
+    if (!sourceId || !targetId) continue
+
+    links.push(transformRelationship(rel, sourceId, targetId))
+  }
+
+  return {
+    nodes: [...nodeMap.values()],
+    links,
+  }
+}
+
+/**
  * Merge multiple GraphData objects into one, deduplicating nodes by id.
  */
 export function mergeGraphData(...graphs: readonly GraphData[]): GraphData {
