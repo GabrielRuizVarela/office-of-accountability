@@ -81,12 +81,14 @@ export interface ForceGraphHandle {
   zoomIn: () => void
   zoomOut: () => void
   zoomToFit: () => void
+  centerOnNode: (nodeId: string) => void
 }
 
 export interface ForceGraphProps {
   readonly data: GraphData
   readonly onNodeClick?: (nodeId: string) => void
   readonly selectedNodeId?: string | null
+  readonly focusedNodeId?: string | null
   readonly visibleLabels?: ReadonlySet<string> | null
   readonly width?: number
   readonly height?: number
@@ -101,6 +103,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     data,
     onNodeClick,
     selectedNodeId,
+    focusedNodeId,
     visibleLabels,
     width,
     height,
@@ -130,6 +133,16 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       const fg = graphRef.current
       if (!fg) return
       fg.zoomToFit(400, 40)
+    },
+    centerOnNode(nodeId: string) {
+      const fg = graphRef.current
+      if (!fg) return
+      // Access internal graph data via the untyped kapsule method
+      const internalGraphData = (fg as unknown as { graphData(): { nodes: NodeObject<FGNode>[] } }).graphData()
+      const node = internalGraphData.nodes.find((n) => n.id === nodeId)
+      if (node && typeof node.x === 'number' && typeof node.y === 'number') {
+        fg.centerAt(node.x, node.y, 300)
+      }
     },
   }))
 
@@ -192,6 +205,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       const x = node.x ?? 0
       const y = node.y ?? 0
       const isSelected = selectedNodeId === fgNode.id
+      const isFocused = focusedNodeId === fgNode.id
       const radius = isSelected ? 6 : 4
 
       // Node circle
@@ -212,8 +226,20 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         ctx.stroke()
       }
 
-      // Label text (only show when zoomed in enough)
-      if (globalScale > 1.5 || isSelected) {
+      // Keyboard focus ring (dashed)
+      if (isFocused && !isSelected) {
+        ctx.save()
+        ctx.beginPath()
+        ctx.arc(x, y, radius + 3, 0, 2 * Math.PI)
+        ctx.setLineDash([3 / globalScale, 2 / globalScale])
+        ctx.strokeStyle = '#facc15' // yellow-400
+        ctx.lineWidth = 1.5
+        ctx.stroke()
+        ctx.restore()
+      }
+
+      // Label text (only show when zoomed in enough, or node is selected/focused)
+      if (globalScale > 1.5 || isSelected || isFocused) {
         const fontSize = Math.max(12 / globalScale, 2)
         ctx.font = `${fontSize}px sans-serif`
         ctx.textAlign = 'center'
@@ -222,7 +248,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         ctx.fillText(fgNode._label, x, y + radius + 2)
       }
     },
-    [selectedNodeId],
+    [selectedNodeId, focusedNodeId],
   )
 
   // Pointer area for custom-rendered nodes

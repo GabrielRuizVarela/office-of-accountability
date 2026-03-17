@@ -8,6 +8,7 @@ import type { ForceGraphHandle } from '../../components/graph/ForceGraph'
 import { NodeDetailPanel } from '../../components/graph/NodeDetailPanel'
 import { SearchBar } from '../../components/graph/SearchBar'
 import { TypeFilter } from '../../components/graph/TypeFilter'
+import { useGraphKeyboardNav } from '../../components/graph/useGraphKeyboardNav'
 import { ZoomControls } from '../../components/graph/ZoomControls'
 import type { GraphData } from '../../lib/neo4j/types'
 
@@ -132,6 +133,22 @@ export default function ExplorarPage() {
   const handleZoomOut = useCallback(() => graphRef.current?.zoomOut(), [])
   const handleZoomToFit = useCallback(() => graphRef.current?.zoomToFit(), [])
 
+  // Center on node (for keyboard nav)
+  const handleCenterOnNode = useCallback(
+    (nodeId: string) => graphRef.current?.centerOnNode(nodeId),
+    [],
+  )
+
+  // Keyboard navigation
+  const { focusedNodeId } = useGraphKeyboardNav({
+    nodes: graphData.nodes,
+    visibleLabels,
+    selectedNodeId,
+    onExpand: handleNodeClick,
+    onDeselect: handleClosePanel,
+    onCenterOnNode: handleCenterOnNode,
+  })
+
   const hasData = graphData.nodes.length > 0
 
   return (
@@ -197,6 +214,26 @@ export default function ExplorarPage() {
             </div>
           )}
 
+          {/* Keyboard nav hint */}
+          {hasData && focusedNodeId && (
+            <div className="absolute bottom-4 left-4 z-10">
+              <div className="rounded-lg border border-zinc-800 bg-zinc-900/90 px-3 py-2 text-xs text-zinc-500 backdrop-blur-sm">
+                <span className="text-zinc-400">Tab</span> navegar
+                {' · '}
+                <span className="text-zinc-400">Enter</span> expandir
+                {' · '}
+                <span className="text-zinc-400">Esc</span> cerrar
+              </div>
+            </div>
+          )}
+
+          {/* Screen reader live region */}
+          <div className="sr-only" role="status" aria-live="polite" aria-atomic="true">
+            {focusedNodeId
+              ? `Nodo enfocado: ${graphData.nodes.find((n) => n.id === focusedNodeId)?.properties.name ?? focusedNodeId}`
+              : ''}
+          </div>
+
           {/* Zoom controls overlay */}
           {hasData && (
             <div className="absolute bottom-4 right-4 z-10">
@@ -215,6 +252,7 @@ export default function ExplorarPage() {
               data={graphData}
               onNodeClick={handleNodeClick}
               selectedNodeId={selectedNodeId}
+              focusedNodeId={focusedNodeId}
               visibleLabels={visibleLabels}
             />
           )}
