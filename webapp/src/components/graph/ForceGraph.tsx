@@ -1,7 +1,6 @@
 'use client'
 
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react'
-import ForceGraph2D from 'react-force-graph-2d'
 import type { ForceGraphMethods, NodeObject } from 'react-force-graph-2d'
 
 import type { GraphData, GraphNode } from '../../lib/neo4j/types'
@@ -98,6 +97,19 @@ export interface ForceGraphProps {
 // Component
 // ---------------------------------------------------------------------------
 
+// Lazy-loaded ForceGraph2D — the library accesses `window` at import time,
+// so it cannot be imported during SSR.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type ForceGraph2DComponent = React.ComponentType<any>
+
+let ForceGraph2DPromise: Promise<ForceGraph2DComponent> | null = null
+function getForceGraph2D(): Promise<ForceGraph2DComponent> {
+  if (!ForceGraph2DPromise) {
+    ForceGraph2DPromise = import('react-force-graph-2d').then((m) => m.default)
+  }
+  return ForceGraph2DPromise
+}
+
 export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function ForceGraph(
   {
     data,
@@ -113,6 +125,12 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
   const graphRef = useRef<ForceGraphMethods<FGNode, FGLink> | undefined>(undefined)
   const containerRef = useRef<HTMLDivElement>(null)
   const [dimensions, setDimensions] = useState({ width: width ?? 800, height: height ?? 600 })
+  const [ForceGraph2D, setForceGraph2D] = useState<ForceGraph2DComponent | null>(null)
+
+  // Dynamically import ForceGraph2D on mount (client-only)
+  useEffect(() => {
+    getForceGraph2D().then((Component) => setForceGraph2D(() => Component))
+  }, [])
 
   // Expose zoom controls to parent
   const ZOOM_STEP = 1.5
@@ -290,6 +308,10 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     if (typeof vote === 'string') return `${link.type}: ${vote}`
     return link.type
   }, [])
+
+  if (!ForceGraph2D) {
+    return <div ref={containerRef} className="flex h-full w-full items-center justify-center text-zinc-600">Cargando grafo...</div>
+  }
 
   return (
     <div ref={containerRef} className="h-full w-full">

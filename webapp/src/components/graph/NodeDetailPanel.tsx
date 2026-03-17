@@ -224,9 +224,14 @@ export function NodeDetailPanel({ nodeId, onClose, onNavigate }: NodeDetailPanel
   if (!nodeId) return null
 
   return (
-    <div className="flex h-full w-80 flex-col border-l border-zinc-800 bg-zinc-950">
+    <div className="fixed inset-x-0 bottom-0 z-30 flex max-h-[60vh] flex-col border-t border-zinc-800 bg-zinc-950 md:static md:inset-auto md:z-auto md:h-full md:max-h-none md:w-80 md:border-l md:border-t-0">
+      {/* Mobile drag handle */}
+      <div className="flex justify-center py-2 md:hidden">
+        <div className="h-1 w-10 rounded-full bg-zinc-700" />
+      </div>
+
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-zinc-800 px-4 py-3">
+      <div className="flex items-center justify-between border-b border-zinc-800 px-4 py-3 md:py-3">
         <h2 className="truncate text-sm font-semibold text-zinc-100">
           {detail ? getNodeDisplayName(detail.node) : 'Cargando...'}
         </h2>

@@ -219,12 +219,12 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 - [x] CSP: restrict script sources, disallow inline scripts
 
 ### Verification (E2E)
-- [ ] Load `/explorar` → graph canvas renders with nodes visible
-- [ ] Click politician node → triggers expand API call → new nodes appear
-- [ ] Type in search bar → autocomplete dropdown appears → select result → graph centers on node
-- [ ] Toggle node type filter off → those nodes disappear from canvas
-- [ ] Mobile viewport (375px) → sidebar collapses to bottom sheet, graph is interactive
-- [ ] Tab navigation: can reach and expand nodes via keyboard only
+- [x] Load `/explorar` → graph canvas renders with nodes visible
+- [x] Click politician node → triggers expand API call → new nodes appear
+- [x] Type in search bar → autocomplete dropdown appears → select result → graph centers on node
+- [x] Toggle node type filter off → those nodes disappear from canvas
+- [x] Mobile viewport (375px) → sidebar collapses to bottom sheet, graph is interactive
+- [x] Tab navigation: can reach and expand nodes via keyboard only
 
 **Dependencies:** Milestone 2
 
