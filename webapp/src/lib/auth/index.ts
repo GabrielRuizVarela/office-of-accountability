@@ -11,3 +11,4 @@ export {
   type SignUpInput,
   type SignInInput,
 } from './types'
+export { getSession, type AppSession, type SessionUser } from './session'
