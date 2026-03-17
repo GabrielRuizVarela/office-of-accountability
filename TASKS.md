@@ -283,7 +283,7 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 - [x] Auth.js setup: email + password provider (credentials)
 - [ ] Optional social login (Google OAuth)
 - [ ] User registration with email verification
-- [ ] User profile page (`/perfil`)
+- [x] User profile page (`/perfil`)
 - [x] Role system:
   - `observador` — no account, read-only (default)
   - `participante` — registered user, can create investigations
