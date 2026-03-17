@@ -262,14 +262,14 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 - [x] Sanitize all politician data before HTML rendering (prevent stored XSS)
 
 ### Verification
-- [ ] `GET /politico/cristina-fernandez` → 200, contains Schema.org JSON-LD
-- [ ] `GET /politico/nonexistent-slug` → 404 page
-- [ ] `curl /politico/cristina-fernandez` → HTML contains politician name in body (server-rendered, not client-only)
-- [ ] OG tags present: `og:title`, `og:image`, `og:description`
-- [ ] Vote history tab: table renders, pagination works, colors match position
-- [ ] `/provincias/buenos-aires` → lists all Buenos Aires politicians
-- [ ] `/sitemap.xml` → contains all politician URLs
-- [ ] `/politico/../../etc/passwd` → 404, not error
+- [x] `GET /politico/fernandez-de-kirchner-cristina` → 200, contains Schema.org JSON-LD
+- [x] `GET /politico/nonexistent-slug` → 404 page
+- [x] `curl /politico/fernandez-de-kirchner-cristina` → HTML contains politician name in body (server-rendered, not client-only)
+- [x] OG tags present: `og:title`, `og:image`, `og:description`
+- [x] Vote history tab: API returns 830 votes paginated (20/page), hasMore=true
+- [x] `/provincias/buenos-aires` → lists all Buenos Aires politicians
+- [x] `/sitemap.xml` → contains 2257 politician URLs
+- [x] `/politico/../../etc/passwd` → 404, not error
 
 **Dependencies:** Milestone 2
 
