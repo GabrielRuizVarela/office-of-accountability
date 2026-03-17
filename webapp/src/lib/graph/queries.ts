@@ -6,7 +6,7 @@
  * consumed by react-force-graph-2d.
  */
 
-import type { Node, Relationship, Record as Neo4jRecord } from 'neo4j-driver-lite'
+import neo4j, { type Node, type Relationship, type Record as Neo4jRecord } from 'neo4j-driver-lite'
 
 import { getDriver } from '../neo4j/client'
 import type { GraphData, GraphLink, GraphNode } from '../neo4j/types'
@@ -146,7 +146,7 @@ export async function getNodeNeighborhood(
        WHERE n.id = $nodeId OR n.slug = $nodeId OR n.acta_id = $nodeId
        RETURN neighbor, rel
        LIMIT $limit`,
-      { nodeId, limit },
+      { nodeId, limit: neo4j.int(limit) },
       TX_CONFIG,
     )
 
@@ -204,18 +204,20 @@ export async function expandNodeNeighborhood(
 
     // Step 2: Expand to depth using variable-length path.
     // Collect all nodes and relationships along paths, deduplicating via UNWIND.
+    // Bounded BFS: cap neighbors per hop to prevent combinatorial explosion
+    // from high-degree CAST_VOTE edges. Each hop limited to perHopLimit nodes.
+    const perHopLimit = neo4j.int(Math.min(clampedLimit, 50))
     const expandResult = await session.run(
       `MATCH (n)
        WHERE n.id = $nodeId OR n.slug = $nodeId OR n.acta_id = $nodeId
-       MATCH path = (n)-[*1..${clampedDepth}]-(m)
-       WITH collect(DISTINCT m) AS allTargets, collect(path) AS paths
-       WITH allTargets[0..$limit] AS targets, paths
-       UNWIND paths AS p
-       UNWIND relationships(p) AS rel
-       WITH targets, collect(DISTINCT rel) AS rels
-       UNWIND targets AS target
-       RETURN collect(DISTINCT target) AS targets, rels`,
-      { nodeId, limit: clampedLimit },
+       MATCH (n)-[r]-(neighbor)
+       WITH n, neighbor, r
+       LIMIT $perHopLimit
+       WITH n,
+            collect(DISTINCT neighbor) AS targets,
+            collect(DISTINCT r) AS rels
+       RETURN targets, rels`,
+      { nodeId, perHopLimit },
       TX_CONFIG,
     )
 
@@ -277,38 +279,31 @@ export async function searchNodes(
   // Fetch limit+1 per index to detect if there are more results
   const fetchLimit = offset + limit + 1
 
-  const session = getDriver().session()
+  const driver = getDriver()
 
-  try {
-    // Search across all three fulltext indexes in parallel
+  // Search across all three fulltext indexes in parallel using separate sessions
+  // (a single session cannot run multiple concurrent auto-commit transactions)
+  const runFulltextQuery = async (indexName: string) => {
+      const s = driver.session()
+      try {
+        return await s.run(
+          `CALL db.index.fulltext.queryNodes($indexName, $query)
+           YIELD node AS n, score
+           RETURN n, score
+           ORDER BY score DESC
+           LIMIT $fetchLimit`,
+          { indexName, query: sanitized, fetchLimit: neo4j.int(fetchLimit) },
+          TX_CONFIG,
+        )
+      } finally {
+        await s.close()
+      }
+    }
+
     const [politicianResult, legislationResult, investigationResult] = await Promise.all([
-      session.run(
-        `CALL db.index.fulltext.queryNodes('politician_name_fulltext', $query)
-         YIELD node AS n, score
-         RETURN n, score
-         ORDER BY score DESC
-         LIMIT $fetchLimit`,
-        { query: sanitized, fetchLimit },
-        TX_CONFIG,
-      ),
-      session.run(
-        `CALL db.index.fulltext.queryNodes('legislation_title_fulltext', $query)
-         YIELD node AS n, score
-         RETURN n, score
-         ORDER BY score DESC
-         LIMIT $fetchLimit`,
-        { query: sanitized, fetchLimit },
-        TX_CONFIG,
-      ),
-      session.run(
-        `CALL db.index.fulltext.queryNodes('investigation_title_fulltext', $query)
-         YIELD node AS n, score
-         RETURN n, score
-         ORDER BY score DESC
-         LIMIT $fetchLimit`,
-        { query: sanitized, fetchLimit },
-        TX_CONFIG,
-      ),
+      runFulltextQuery('politician_name_fulltext'),
+      runFulltextQuery('legislation_title_fulltext'),
+      runFulltextQuery('investigation_title_fulltext'),
     ])
 
     // Merge and sort all results by score descending
@@ -342,9 +337,6 @@ export async function searchNodes(
     const nextCursor = hasMore ? encodeCursor({ o: offset + limit }) : null
 
     return { data, totalCount, nextCursor }
-  } finally {
-    await session.close()
-  }
 }
 
 /**
@@ -382,7 +374,7 @@ export async function searchNodesByLabel(
          RETURN n
          ORDER BY score DESC
          LIMIT $fetchLimit`,
-        { indexName, query: sanitized, fetchLimit },
+        { indexName, query: sanitized, fetchLimit: neo4j.int(fetchLimit) },
         TX_CONFIG,
       )
       records = result.records
@@ -394,7 +386,7 @@ export async function searchNodesByLabel(
            AND (n.name CONTAINS $query OR n.id CONTAINS $query)
          RETURN n
          LIMIT $fetchLimit`,
-        { label, query: trimmed, fetchLimit },
+        { label, query: trimmed, fetchLimit: neo4j.int(fetchLimit) },
         TX_CONFIG,
       )
       records = result.records
@@ -481,7 +473,7 @@ export async function queryNodes(
 
     // Build keyset pagination clause
     const cursorClauses = [...whereClauses]
-    const cursorParams: Record<string, unknown> = { ...params, limit: clampedLimit }
+    const cursorParams: Record<string, unknown> = { ...params, limit: neo4j.int(clampedLimit) }
 
     if (decodedCursor) {
       // Keyset pagination: skip past the last seen (name, id) tuple
@@ -501,7 +493,7 @@ export async function queryNodes(
        RETURN n
        ORDER BY n.name ASC, n.id ASC
        LIMIT $fetchLimit`,
-      { ...cursorParams, fetchLimit: clampedLimit + 1 },
+      { ...cursorParams, fetchLimit: neo4j.int(clampedLimit + 1) },
       TX_CONFIG,
     )
 

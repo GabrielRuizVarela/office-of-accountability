@@ -15,9 +15,14 @@ const BASE_URL = 'https://raw.githubusercontent.com/rquiroga7/Como_voto/main/doc
 const LEGISLATORS_URL = `${BASE_URL}/legislators.json`
 const VOTACIONES_URL = `${BASE_URL}/votaciones.json`
 
-/** Build URL for a per-legislator detail file */
-const legislatorDetailUrl = (nameKey: string): string =>
-  `${BASE_URL}/legislators/${encodeURIComponent(nameKey)}.json`
+/** Build URL for a per-legislator detail file.
+ * Como Voto filenames use `__` for comma-space and `_` for spaces:
+ * "ABAD, MAXIMILIANO" → "ABAD__MAXIMILIANO.json"
+ */
+const legislatorDetailUrl = (nameKey: string): string => {
+  const fileName = nameKey.replace(/, /g, '__').replace(/ /g, '_')
+  return `${BASE_URL}/legislators/${encodeURIComponent(fileName)}.json`
+}
 
 /** Fetch JSON from a URL with timeout */
 async function fetchJson<T>(url: string, signal?: AbortSignal): Promise<T> {
@@ -56,13 +61,14 @@ export interface FetchVotingSessionsResult {
 
 /**
  * Fetch and validate the votaciones.json file.
- * Returns all voting sessions with Zod validation applied.
+ * The file is a dict keyed by chamber; we flatten into a single array.
  */
 export async function fetchVotingSessions(
   signal?: AbortSignal,
 ): Promise<FetchVotingSessionsResult> {
   const raw = await fetchJson<unknown>(VOTACIONES_URL, signal)
-  const sessions = VotingSessionsFileSchema.parse(raw)
+  const parsed = VotingSessionsFileSchema.parse(raw)
+  const sessions = [...parsed.diputados, ...parsed.senadores]
 
   return {
     sessions,
