@@ -160,7 +160,7 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 - [x] `GET /api/graph/expand/[id]?depth=1` — expand connections (configurable depth, default 1, max 3)
 - [x] `GET /api/graph/search?q=` — full-text search across Politician.name, Legislation.title
 - [x] `GET /api/graph/query` — structured graph queries (node type filters, date range, jurisdiction)
-- [ ] Cursor-based pagination on search and query endpoints
+- [x] Cursor-based pagination on search and query endpoints
 
 ### Security & Rate Limiting
 - [x] Input validation with Zod on all query parameters
