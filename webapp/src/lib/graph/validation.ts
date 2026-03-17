@@ -35,6 +35,16 @@ const NEO4J_ELEMENT_ID_RE = /^[0-9]+:[a-zA-Z0-9_-]+:[0-9]+$/
  * - Slug (e.g. "cristina-fernandez-de-kirchner")
  * - Neo4j element ID (e.g. "4:neo4j:123")
  */
+/**
+ * Validates politician slugs: lowercase alphanumeric with hyphens only.
+ * Rejects traversal attempts (../), encoded slashes, underscores, dots.
+ */
+export const politicianSlugSchema = z
+  .string()
+  .min(1, 'Slug must not be empty')
+  .max(200, 'Slug must not exceed 200 characters')
+  .regex(SLUG_RE, 'Slug must contain only lowercase alphanumeric characters and hyphens')
+
 export const nodeIdSchema = z
   .string()
   .min(1, 'Node ID must not be empty')

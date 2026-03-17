@@ -16,13 +16,7 @@
 
 import { z } from 'zod/v4'
 
-import { getPoliticianBySlug, getPoliticianVoteHistory } from '@/lib/graph'
-
-const slugSchema = z
-  .string()
-  .min(1)
-  .max(200)
-  .regex(/^[\w-]+$/, 'Slug must contain only alphanumeric characters and hyphens')
+import { getPoliticianBySlug, getPoliticianVoteHistory, politicianSlugSchema } from '@/lib/graph'
 
 const pageSchema = z.coerce.number().int().min(1).default(1)
 const limitSchema = z.coerce.number().int().min(1).max(100).default(20)
@@ -33,7 +27,7 @@ export async function GET(
 ): Promise<Response> {
   const { slug } = await params
 
-  const slugResult = slugSchema.safeParse(slug)
+  const slugResult = politicianSlugSchema.safeParse(slug)
   if (!slugResult.success) {
     return Response.json({ success: false, error: 'Invalid slug format' }, { status: 400 })
   }
@@ -58,14 +52,21 @@ export async function GET(
 
     const data = await getPoliticianVoteHistory(slugResult.data, pageResult.data, limitResult.data)
 
-    return Response.json({
-      success: true,
-      data,
-      meta: {
-        slug: slugResult.data,
-        name: politician.name,
+    return Response.json(
+      {
+        success: true,
+        data,
+        meta: {
+          slug: slugResult.data,
+          name: politician.name,
+        },
       },
-    })
+      {
+        headers: {
+          'Cache-Control': 'public, max-age=300, s-maxage=900, stale-while-revalidate=1800',
+        },
+      },
+    )
   } catch (error) {
     const isConnectionError =
       error instanceof Error &&

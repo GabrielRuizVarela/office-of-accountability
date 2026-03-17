@@ -14,11 +14,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { getPoliticianBySlug, getPoliticianVoteHistory } from '@/lib/graph'
+import { getPoliticianBySlug, getPoliticianVoteHistory, politicianSlugSchema } from '@/lib/graph'
 import type { PoliticianProfile } from '@/lib/graph'
 
 import { PoliticianGraph } from '@/components/politician/PoliticianGraph'
 import { VoteHistoryTable } from '@/components/politician/VoteHistoryTable'
+
+// ---------------------------------------------------------------------------
+// ISR: revalidate every 15 minutes (bounded staleness)
+// ---------------------------------------------------------------------------
+
+export const revalidate = 900
 
 // ---------------------------------------------------------------------------
 // Types
@@ -34,6 +40,11 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
+
+  if (!politicianSlugSchema.safeParse(slug).success) {
+    return { title: 'Politico no encontrado' }
+  }
+
   const politician = await getPoliticianBySlug(slug)
 
   if (!politician) {
@@ -74,6 +85,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function PoliticianPage({ params }: PageProps) {
   const { slug } = await params
+
+  if (!politicianSlugSchema.safeParse(slug).success) {
+    notFound()
+  }
 
   const [politician, voteHistory] = await Promise.all([
     getPoliticianBySlug(slug),
