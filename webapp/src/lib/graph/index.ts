@@ -13,8 +13,9 @@ export {
   expandNodeNeighborhood,
   searchNodes,
   searchNodesByLabel,
+  queryNodes,
 } from './queries'
-export type { SearchResult } from './queries'
+export type { SearchResult, StructuredQueryFilters, StructuredQueryResult } from './queries'
 
 export {
   getPoliticianBySlug,

@@ -9,7 +9,7 @@
 import type { Node, Relationship, Record as Neo4jRecord } from 'neo4j-driver-lite'
 
 import { getDriver } from '../neo4j/client'
-import type { GraphData } from '../neo4j/types'
+import type { GraphData, GraphLink, GraphNode } from '../neo4j/types'
 
 import {
   emptyGraphData,
@@ -17,6 +17,7 @@ import {
   transformNeighborRecords,
   transformNode,
   transformNodeRecords,
+  transformRelationship,
 } from './transform'
 
 // ---------------------------------------------------------------------------
@@ -28,6 +29,12 @@ const DEFAULT_SEARCH_LIMIT = 20
 const DEFAULT_EXPAND_DEPTH = 1
 const MAX_EXPAND_DEPTH = 3
 const MAX_EXPAND_NODES = 500
+
+/** Maximum query execution time in milliseconds (security: prevent graph bombs) */
+const QUERY_TIMEOUT_MS = 5_000
+
+/** Transaction config applied to all user-facing queries */
+const TX_CONFIG = { timeout: QUERY_TIMEOUT_MS }
 
 // ---------------------------------------------------------------------------
 // Node neighborhood
@@ -56,6 +63,7 @@ export async function getNodeNeighborhood(
        RETURN n
        LIMIT 1`,
       { nodeId },
+      TX_CONFIG,
     )
 
     if (centerResult.records.length === 0) {
@@ -71,6 +79,7 @@ export async function getNodeNeighborhood(
        RETURN neighbor, rel
        LIMIT $limit`,
       { nodeId, limit },
+      TX_CONFIG,
     )
 
     return transformNeighborRecords(centerNode, neighborResult.records)
@@ -116,6 +125,7 @@ export async function expandNodeNeighborhood(
        RETURN n
        LIMIT 1`,
       { nodeId },
+      TX_CONFIG,
     )
 
     if (centerResult.records.length === 0) {
@@ -138,6 +148,7 @@ export async function expandNodeNeighborhood(
        UNWIND targets AS target
        RETURN collect(DISTINCT target) AS targets, rels`,
       { nodeId, limit: clampedLimit },
+      TX_CONFIG,
     )
 
     if (expandResult.records.length === 0) {
@@ -199,6 +210,7 @@ export async function searchNodes(
          ORDER BY score DESC
          LIMIT $limit`,
         { query: sanitized, limit },
+        TX_CONFIG,
       ),
       session.run(
         `CALL db.index.fulltext.queryNodes('legislation_title_fulltext', $query)
@@ -207,6 +219,7 @@ export async function searchNodes(
          ORDER BY score DESC
          LIMIT $limit`,
         { query: sanitized, limit },
+        TX_CONFIG,
       ),
       session.run(
         `CALL db.index.fulltext.queryNodes('investigation_title_fulltext', $query)
@@ -215,6 +228,7 @@ export async function searchNodes(
          ORDER BY score DESC
          LIMIT $limit`,
         { query: sanitized, limit },
+        TX_CONFIG,
       ),
     ])
 
@@ -265,6 +279,7 @@ export async function searchNodesByLabel(
          ORDER BY score DESC
          LIMIT $limit`,
         { indexName, query: sanitized, limit },
+        TX_CONFIG,
       )
       records = result.records
     } else {
@@ -276,6 +291,7 @@ export async function searchNodesByLabel(
          RETURN n
          LIMIT $limit`,
         { label, query: trimmed, limit },
+        TX_CONFIG,
       )
       records = result.records
     }
@@ -285,6 +301,202 @@ export async function searchNodesByLabel(
   } finally {
     await session.close()
   }
+}
+
+// ---------------------------------------------------------------------------
+// Structured query
+// ---------------------------------------------------------------------------
+
+/** Structured query filters for graph exploration */
+export interface StructuredQueryFilters {
+  readonly label?: string
+  readonly dateFrom?: string
+  readonly dateTo?: string
+  readonly jurisdiction?: string
+  readonly relType?: string
+}
+
+/** Structured query result with pagination metadata */
+export interface StructuredQueryResult {
+  readonly data: GraphData
+  readonly totalCount: number
+}
+
+const DEFAULT_QUERY_LIMIT = 50
+const MAX_QUERY_LIMIT = 200
+
+/**
+ * Query nodes using structured filters: label, date range, jurisdiction.
+ *
+ * Builds a parameterized Cypher MATCH dynamically based on provided filters.
+ * All user input is passed as Cypher parameters (never interpolated).
+ *
+ * Returns matching nodes with their first-degree relationships to other
+ * matched nodes, plus a total count for pagination.
+ */
+export async function queryNodes(
+  filters: StructuredQueryFilters,
+  limit: number = DEFAULT_QUERY_LIMIT,
+  offset: number = 0,
+): Promise<StructuredQueryResult> {
+  const clampedLimit = Math.min(Math.max(1, Math.floor(limit)), MAX_QUERY_LIMIT)
+  const clampedOffset = Math.max(0, Math.floor(offset))
+
+  const session = getDriver().session()
+
+  try {
+    const { whereClauses, params } = buildWhereClause(filters)
+    const whereStr = whereClauses.length > 0 ? `WHERE ${whereClauses.join(' AND ')}` : ''
+
+    // Count total matching nodes
+    const countResult = await session.run(
+      `MATCH (n) ${whereStr} RETURN count(n) AS total`,
+      params,
+      TX_CONFIG,
+    )
+
+    const totalCount =
+      countResult.records.length > 0
+        ? toJsNumber(countResult.records[0].get('total'))
+        : 0
+
+    if (totalCount === 0) {
+      return { data: emptyGraphData(), totalCount: 0 }
+    }
+
+    // Fetch matching nodes with pagination
+    const nodeResult = await session.run(
+      `MATCH (n) ${whereStr}
+       RETURN n
+       ORDER BY n.name ASC, n.id ASC
+       SKIP $offset
+       LIMIT $limit`,
+      { ...params, offset: clampedOffset, limit: clampedLimit },
+      TX_CONFIG,
+    )
+
+    if (nodeResult.records.length === 0) {
+      return { data: emptyGraphData(), totalCount }
+    }
+
+    // Collect node IDs for relationship query
+    const nodeIds: string[] = nodeResult.records.map((record) => {
+      const node = record.get('n') as Node
+      return node.elementId
+    })
+
+    // Fetch relationships between matched nodes
+    const relResult = await session.run(
+      `MATCH (a)-[r]-(b)
+       WHERE elementId(a) IN $nodeIds AND elementId(b) IN $nodeIds
+       RETURN DISTINCT r, elementId(startNode(r)) AS startId, elementId(endNode(r)) AS endId`,
+      { nodeIds },
+      TX_CONFIG,
+    )
+
+    const data = transformQueryResult(nodeResult.records, relResult.records)
+    return { data, totalCount }
+  } finally {
+    await session.close()
+  }
+}
+
+/**
+ * Build WHERE clause fragments and params from structured filters.
+ * All values are passed as Cypher parameters to prevent injection.
+ */
+function buildWhereClause(filters: StructuredQueryFilters): {
+  readonly whereClauses: readonly string[]
+  readonly params: Record<string, unknown>
+} {
+  const whereClauses: string[] = []
+  const params: Record<string, unknown> = {}
+
+  if (filters.label) {
+    whereClauses.push('$label IN labels(n)')
+    params.label = filters.label
+  }
+
+  if (filters.dateFrom) {
+    whereClauses.push('n.date >= $dateFrom')
+    params.dateFrom = filters.dateFrom
+  }
+
+  if (filters.dateTo) {
+    whereClauses.push('n.date <= $dateTo')
+    params.dateTo = filters.dateTo
+  }
+
+  if (filters.jurisdiction) {
+    whereClauses.push('n.jurisdiction = $jurisdiction')
+    params.jurisdiction = filters.jurisdiction
+  }
+
+  if (filters.relType) {
+    whereClauses.push(`EXISTS { (n)-[:${sanitizeRelType(filters.relType)}]-() }`)
+    // relType is validated by Zod enum at the route level, not interpolated from user input
+  }
+
+  return { whereClauses, params }
+}
+
+/**
+ * Ensure relationship type contains only safe characters.
+ * This is a defense-in-depth measure — the route validates via Zod enum.
+ */
+function sanitizeRelType(relType: string): string {
+  return relType.replace(/[^A-Z_]/g, '')
+}
+
+/**
+ * Transform query results with nodes and inter-node relationships
+ * into GraphData format.
+ */
+function transformQueryResult(
+  nodeRecords: readonly Neo4jRecord[],
+  relRecords: readonly Neo4jRecord[],
+): GraphData {
+  const nodeMap = new Map<string, GraphNode>()
+  const elementIdToAppId = new Map<string, string>()
+
+  for (const record of nodeRecords) {
+    const node = record.get('n') as Node
+    const graphNode = transformNode(node)
+    nodeMap.set(graphNode.id, graphNode)
+    elementIdToAppId.set(node.elementId, graphNode.id)
+  }
+
+  const links: GraphLink[] = []
+  const seenRelIds = new Set<string>()
+
+  for (const record of relRecords) {
+    const rel = record.get('r') as Relationship
+    if (seenRelIds.has(rel.elementId)) continue
+    seenRelIds.add(rel.elementId)
+
+    const startElementId = record.get('startId') as string
+    const endElementId = record.get('endId') as string
+    const sourceId = elementIdToAppId.get(startElementId)
+    const targetId = elementIdToAppId.get(endElementId)
+
+    if (!sourceId || !targetId) continue
+
+    links.push(transformRelationship(rel, sourceId, targetId))
+  }
+
+  return {
+    nodes: [...nodeMap.values()],
+    links,
+  }
+}
+
+/** Safely convert Neo4j Integer or number to JS number */
+function toJsNumber(value: unknown): number {
+  if (typeof value === 'number') return value
+  if (value && typeof value === 'object' && 'toNumber' in value) {
+    return (value as { toNumber(): number }).toNumber()
+  }
+  return 0
 }
 
 // ---------------------------------------------------------------------------
