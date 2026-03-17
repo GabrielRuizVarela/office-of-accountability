@@ -111,6 +111,20 @@ export function UserMenu() {
 
           {/* Menu items */}
           <div className="py-1">
+            <Link
+              href="/perfil"
+              onClick={() => setIsOpen(false)}
+              className="block w-full px-4 py-2 text-left text-sm text-zinc-300 transition-colors hover:bg-zinc-800 hover:text-zinc-100"
+            >
+              Mi perfil
+            </Link>
+            <Link
+              href="/mis-investigaciones"
+              onClick={() => setIsOpen(false)}
+              className="block w-full px-4 py-2 text-left text-sm text-zinc-300 transition-colors hover:bg-zinc-800 hover:text-zinc-100"
+            >
+              Mis investigaciones
+            </Link>
             <button
               type="button"
               onClick={handleSignOut}
