@@ -205,9 +205,9 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 
 ### Controls & Navigation
 - [x] Filter sidebar: filter by node type (checkboxes), date range (for votes/legislation)
-- [ ] Zoom controls + minimap for orientation
+- [x] Zoom controls + minimap for orientation
 - [x] Search bar with autocomplete (hits `/api/graph/search`)
-- [ ] Keyboard navigation: Tab between nodes, Enter to expand, Escape to deselect
+- [x] Keyboard navigation: Tab between nodes, Enter to expand, Escape to deselect
 - [x] Loading states + empty states
 
 ### Mobile
