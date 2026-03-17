@@ -390,32 +390,34 @@ Every state change (node creation, edge creation, endorsement, investigation pub
 
 ### 7.1 Database Strategy
 
-**Primary recommendation: PostgreSQL-first**
+**Primary store: Neo4j 5 Community**
 
-The MVP graph (Politician -> Vote -> Legislation -> Promise) involves 2-3 hop traversals. PostgreSQL handles this efficiently with:
-- Recursive CTEs for path traversal
-- JSONB for flexible node properties
-- Foreign key relationships for most edges
+Graph traversals are the core product — politicians, votes, donors, legislation, and investigations form a densely connected knowledge graph. Neo4j is the primary store from day one:
 
-**When to add Neo4j/Neptune:** When traversals regularly exceed 4+ hops across millions of nodes AND query complexity (e.g., "find all legislators connected to a donor network within 3 degrees") justifies the operational overhead of a second database. Re-evaluate at 500k+ nodes.
+- Native graph storage and index-free adjacency for efficient multi-hop traversals
+- Cypher query language maps directly to the domain (paths, patterns, variable-length relationships)
+- br-acc (World-Open-Graph/br-acc) validates Neo4j at 220M+ nodes with a similar political accountability domain
+- Full-text search indexes built into Neo4j for node search
+- APOC library for batch operations, data import, and graph algorithms
 
-For now, PostgreSQL + Redis (Upstash for hosted) is the target stack.
+**PostgreSQL:** Only if needed later for purely relational data (user sessions, auth tables, audit log metadata). Not required at launch.
 
 ### 7.2 Full Stack
 
 | Layer | Technology | Notes |
 |-------|-----------|-------|
-| Frontend + API | Next.js (App Router, Route Handlers) | SSR for SEO; tRPC for type-safe client-server |
-| Database | PostgreSQL | Primary store for all graph data + transactional data |
-| Cache | Redis (Upstash) | Materialized views, session cache, query result cache |
-| Auth | NextAuth.js + email/password + social login | MFA required for Tier 2 and above |
-| Graph Visualization | D3.js / Cytoscape.js / vis.js | Interactive graph explorer — evaluate all three in Phase 1 |
+| Frontend + API + SSR | Vinext (App Router, Route Handlers, Server Components) | Next.js API surface on Vite, deploys to Cloudflare Workers |
+| Graph Database | Neo4j 5 Community | Primary store for all graph data |
+| Graph Driver | neo4j-driver (official JS/TS) | Connection pooling, transaction support |
+| Graph Visualization | react-force-graph-2d | Interactive graph explorer (validated by br-acc's GraphCanvas pattern) |
 | Rich Text Editor | TipTap | Investigation documents with graph node embeds |
-| Graph Query Layer | Custom query builder UI over PostgreSQL | Visual query construction; text mode for advanced users |
+| Auth | Auth.js (next-auth v5) + email/password + social login | Milestone 6; MFA required for Tier 2 and above |
 | AI/LLM | Claude API | Async batch jobs only — never inline blocking calls |
-| Maps | Leaflet (open-source) | Phase 2 — jurisdiction polygon visualization |
+| Maps | Leaflet (open-source) | Future — jurisdiction polygon visualization |
 | Audit Log | S3 (versioned, Object Lock) | Append-only event log |
-| Hosting | Vercel (frontend) + Railway or Fly.io (backend services) | -- |
+| Containerization | Docker Compose | Neo4j + Vinext dev environment |
+| Hosting | Cloudflare Workers/Pages (frontend/SSR) + Railway or Fly.io (Neo4j) | Zero cold starts via Cloudflare edge |
+| ISR Cache | Cloudflare KV | Incremental Static Regeneration for politician pages |
 | Scraping | Como Voto pipeline (fork + extend) | Gold-tier data ingestion |
 
 ### 7.3 Service Architecture (Modular Monolith)
@@ -424,7 +426,7 @@ A single deployable application with three logical modules. Extract to services 
 
 ```
 +---------------------------------------------+
-|              Next.js Application              |
+|              Vinext Application                |
 |                                               |
 |  +-------------+  +----------------------+   |
 |  |    CORE      |  |     COMMUNITY        |   |
@@ -443,9 +445,9 @@ A single deployable application with three logical modules. Extract to services 
 |  |  AI batch jobs     Export / reports      |  |
 |  +-----------------------------------------+  |
 +---------------------------------------------+
-         |                    |
-    PostgreSQL              Redis
-    + S3 audit log
+              |
+         Neo4j 5 Community
+         + S3 audit log
 ```
 
 ### 7.4 Key Data Schemas
@@ -656,9 +658,9 @@ Any politician with a verified account has:
 
 | Feature | Difficulty |
 |---------|-----------|
-| PostgreSQL schema + all node types (Politician, Vote, Legislation, Promise, Organization, Event, Document, Location, Claim, Investigation) | Medium |
+| Neo4j schema + constraints + indexes for all node types (Politician, Vote, Legislation, Promise, Organization, Event, Document, Location, Claim, Investigation) | Medium |
 | Como Voto ingestion pipeline (seed 257 Diputados + 72 Senadores) | Medium |
-| Graph visual explorer (D3.js/Cytoscape.js — drag, zoom, filter, expand) | Hard |
+| Graph visual explorer (react-force-graph-2d — drag, zoom, filter, expand) | Hard |
 | Node and edge CRUD (add nodes, draw edges, set properties, attach sources) | Medium |
 | Basic query builder (filter by type, date, jurisdiction; path between two nodes) | Medium-Hard |
 | Politician profile pages (graph-rendered view of all connections) | Medium |
@@ -707,7 +709,7 @@ See Future Vision appendix (Section 14).
 | **Schema abuse (nonsense nodes/edges)** | Medium | Moderation queue for flagged content; reputation loss for removed contributions; rate limits on node creation |
 | **Public contributions chill participation** | Medium | Users explicitly consent on signup; framing: transparency is a feature and a defense against manipulation |
 | **Key person risk** | Medium | Open-source codebase; documented operational procedures; bus-factor-resistant credential management |
-| **Graph query complexity** | Medium | PostgreSQL-first with optimization; monitor query performance; Neo4j migration trigger defined (500k+ nodes, 4+ hop queries) |
+| **Graph query complexity** | Medium | Neo4j native graph traversals; Cypher query optimization; monitor with Neo4j Browser and EXPLAIN/PROFILE |
 
 ---
 
@@ -716,7 +718,7 @@ See Future Vision appendix (Section 14).
 1. **Monetization**: Coalition premium features (advanced analytics, priority support), grants (Wikimedia, Open Society, NED), or fully free/donation-based?
 2. **Politician participation**: Active outreach to legislators to claim verified accounts and engage with the platform?
 3. **Data partnerships**: Formal agreement with Como Voto author (rquiroga7) and/or Chequeado, Poder Ciudadano, Fundar?
-4. **Graph visualization library**: D3.js vs. Cytoscape.js vs. vis.js — each has tradeoffs in customization, performance, and learning curve. Prototype with two before committing.
+4. **Graph visualization library**: Decided — react-force-graph-2d (validated by br-acc at scale). Evaluate 3D variant later if needed.
 5. **Initial coalition seeding**: Which 2-3 well-known Argentine civil society orgs to onboard as anchor coalitions at launch?
 6. **Investigation discoverability**: How to surface high-quality investigations without creating popularity bias? Chronological feed, endorsement-weighted, editorial picks, or algorithm?
 7. **Open schema limits**: How open should the node/edge schema be? Fully open risks noise; too constrained limits user expression. Start with core types + "Other" with free-form properties?
@@ -757,7 +759,7 @@ The following features are intentionally deferred from the core platform. They r
 ### Scale
 
 - Province-level coverage (legislature data beyond Congress)
-- Neo4j migration (if traversal complexity justifies it at 500k+ nodes)
+- Neo4j clustering / sharding if single instance becomes insufficient
 - Transparency report + open-source scoring algorithm
 - International expansion framework
 

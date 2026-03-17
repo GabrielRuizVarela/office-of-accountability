@@ -221,10 +221,11 @@ Too many nodes, overlapping labels, no clear starting point. The Investigator lo
 
 ## Key Decisions Still Needed
 
-| Decision | Impact | Options |
-|----------|--------|---------|
-| **Graph visualization library** | Core UX, performance on mobile, developer velocity | D3.js (maximum control, steep learning curve) vs. Cytoscape.js (graph-specific, good mobile) vs. Sigma.js (large graphs, WebGL) |
-| **Investigation document format** | How investigations cite graph data, export options | Structured markdown with node references vs. rich text editor vs. notebook-style blocks |
+| Decision | Impact | Status |
+|----------|--------|--------|
+| **Graph visualization library** | Core UX, performance on mobile, developer velocity | **Decided: react-force-graph-2d** (validated by br-acc at 220M+ nodes) |
+| **Database** | Core data layer | **Decided: Neo4j 5 Community** (graph-native, no PostgreSQL-first deferral) |
+| **Investigation document format** | How investigations cite graph data, export options | **Decided: TipTap** with custom graph node embed + sub-graph embed extensions |
 | **Graph editing freedom** | Data quality vs. contributor engagement | Open (anyone can add, community endorses) vs. moderated (submissions reviewed) vs. hybrid (open add, flagging system) |
 | **Politician outreach** | Whether politicians claim accounts at launch | Active outreach -> richer data but political entanglement vs. passive -> organic but slower |
 | **Monetization** | Sustainability model | Coalition premium features vs. grants (NED, Open Society) vs. donation-based |
