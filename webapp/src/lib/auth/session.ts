@@ -58,9 +58,20 @@ export async function getSession(): Promise<AppSession | null> {
 
     if (!token?.email) return null
 
+    // Check if token was marked expired by idle timeout
+    if (token.expired) return null
+
+    // Check idle timeout (7 days since last activity)
+    const IDLE_TIMEOUT_MS = 7 * 24 * 60 * 60 * 1000
+    const lastActive = typeof token.lastActive === 'number' ? token.lastActive : Date.now()
+    if (Date.now() - lastActive > IDLE_TIMEOUT_MS) return null
+
+    const userId = (token.id as string) ?? token.sub ?? ''
+    if (!userId) return null
+
     return {
       user: {
-        id: (token.id as string) ?? token.sub ?? '',
+        id: userId,
         email: token.email,
         name: token.name ?? null,
         image: token.picture ?? null,

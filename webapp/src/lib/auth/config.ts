@@ -16,7 +16,7 @@ import { Neo4jAdapter } from './neo4j-adapter'
 import { isAccountLocked, parseLockoutState, recordFailedAttempt, resetFailedAttempts } from './lockout'
 import { verifyPassword } from './password'
 import { signInSchema } from './types'
-import { readQuery } from '../neo4j/client'
+import { readQuery, executeWrite } from '../neo4j/client'
 
 function getAuthConfig(): AuthConfig {
   const secret = process.env.AUTH_SECRET
@@ -93,9 +93,13 @@ function getAuthConfig(): AuthConfig {
       Google({
         clientId: googleId,
         clientSecret: googleSecret,
+        allowDangerousEmailAccountLinking: true,
       }),
     )
   }
+
+  const IDLE_TIMEOUT_MS = 7 * 24 * 60 * 60 * 1000 // 7 days
+  const ABSOLUTE_MAX_AGE = 30 * 24 * 60 * 60 // 30 days in seconds
 
   return {
     providers,
@@ -103,6 +107,7 @@ function getAuthConfig(): AuthConfig {
     secret,
     session: {
       strategy: 'jwt',
+      maxAge: ABSOLUTE_MAX_AGE,
     },
     pages: {
       signIn: '/auth/signin',
@@ -110,21 +115,65 @@ function getAuthConfig(): AuthConfig {
     },
     callbacks: {
       async jwt({ token, user }) {
+        const now = Date.now()
+
         if (user) {
           return {
             ...token,
             id: user.id,
+            lastActive: now,
           }
         }
-        return token
+
+        // Check idle timeout (7 days since last activity)
+        const lastActive = typeof token.lastActive === 'number' ? token.lastActive : now
+        if (now - lastActive > IDLE_TIMEOUT_MS) {
+          // Return empty token to invalidate the session
+          return { ...token, expired: true }
+        }
+
+        // Update last activity timestamp
+        return {
+          ...token,
+          lastActive: now,
+        }
       },
       async session({ session, token }) {
+        // If token was marked as expired by idle timeout, return expired session
+        if (token.expired) {
+          return {
+            ...session,
+            expires: new Date(0).toISOString(),
+            user: {
+              ...session.user,
+              id: '',
+            },
+          }
+        }
+
         return {
           ...session,
           user: {
             ...session.user,
             id: token.id as string,
           },
+        }
+      },
+    },
+    events: {
+      async linkAccount({ user, account }) {
+        // When a Google OAuth account is linked, mark email as verified (tier 1)
+        // Google has already verified the email address
+        if (account.provider === 'google' && user.id) {
+          const now = new Date().toISOString()
+          await executeWrite(
+            `MATCH (u:User {id: $userId})
+             WHERE u.emailVerified IS NULL OR u.verification_tier < 1
+             SET u.emailVerified = $now,
+                 u.verification_tier = 1,
+                 u.updated_at = $now`,
+            { userId: user.id, now },
+          )
         }
       },
     },
