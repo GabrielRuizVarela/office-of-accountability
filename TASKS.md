@@ -281,8 +281,8 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 
 ### Auth Setup
 - [x] Auth.js setup: email + password provider (credentials)
-- [ ] Optional social login (Google OAuth)
-- [ ] User registration with email verification
+- [x] Optional social login (Google OAuth)
+- [x] User registration with email verification
 - [x] User profile page (`/perfil`)
 - [x] Role system:
   - `observador` — no account, read-only (default)
@@ -297,11 +297,11 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
   - Registration: 3 accounts/hour per IP
   - Password reset: 3 requests/hour per email
 - [x] Account lockout: temporary lock after 10 failed login attempts (15min lockout, counter resets on success or expiry)
-- [ ] Email verification tokens: expire after 24h, single-use
-- [ ] Password requirements: min 8 chars, check against breached password list (haveibeenpwned k-anonymity API)
+- [x] Email verification tokens: expire after 24h, single-use
+- [x] Password requirements: min 8 chars, check against breached password list (haveibeenpwned k-anonymity API)
 - [x] Auth middleware: protect all mutation API routes
-- [ ] Session expiry: 7 days idle, 30 days absolute
-- [ ] Secure password reset flow: time-constant token comparison, expire on use
+- [x] Session expiry: 7 days idle, 30 days absolute
+- [x] Secure password reset flow: time-constant token comparison, expire on use
 
 ### Verification
 - [ ] Register with email → verification email sent → verify → can log in
