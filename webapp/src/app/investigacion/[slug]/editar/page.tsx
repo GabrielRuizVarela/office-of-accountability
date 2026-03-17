@@ -16,6 +16,7 @@ import {
   InvestigationForm,
   type InvestigationFormData,
 } from '@/components/investigation/InvestigationForm'
+import { fetchWithCsrf } from '@/lib/fetch-with-csrf'
 
 // ---------------------------------------------------------------------------
 // State
@@ -144,7 +145,7 @@ function EditInvestigationContent() {
         throw new Error('No se pudo identificar la investigación')
       }
 
-      const res = await fetch(`/api/investigations/${state.investigationId}`, {
+      const res = await fetchWithCsrf(`/api/investigations/${state.investigationId}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -173,7 +174,7 @@ function EditInvestigationContent() {
       throw new Error('No se pudo identificar la investigación')
     }
 
-    const res = await fetch(`/api/investigations/${state.investigationId}`, {
+    const res = await fetchWithCsrf(`/api/investigations/${state.investigationId}`, {
       method: 'DELETE',
     })
 

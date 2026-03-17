@@ -291,7 +291,7 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 ### Security
 - [x] Password hashing: bcrypt with cost factor >= 12
 - [x] Session tokens: HTTP-only, Secure, SameSite=Lax cookies
-- [ ] CSRF protection on all state-changing endpoints
+- [x] CSRF protection on all state-changing endpoints
 - [x] Rate limiting on auth endpoints:
   - Login: 5 attempts/min per IP, 10 attempts/hour per email
   - Registration: 3 accounts/hour per IP

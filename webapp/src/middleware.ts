@@ -1,12 +1,26 @@
 /**
- * Edge middleware for rate limiting and security headers.
+ * Edge middleware for rate limiting, security headers, and CSRF protection.
  *
  * Applied to all /api/* routes. Uses in-memory sliding window
  * rate limiting with tiered limits per endpoint category.
+ *
+ * CSRF: Sets a signed CSRF cookie on every response. Validates
+ * X-CSRF-Token header on POST/PATCH/DELETE requests (except Auth.js
+ * routes, which handle their own CSRF).
  */
 
 import { NextResponse, type NextRequest } from 'next/server'
 import { checkRateLimit, rateLimitHeaders, RATE_LIMITS } from '@/lib/rate-limit'
+import {
+  CSRF_COOKIE_NAME,
+  CSRF_HEADER_NAME,
+  generateCsrfToken,
+  signCsrfToken,
+  verifyCsrfToken,
+  parseCsrfCookie,
+  buildCsrfCookieValue,
+  buildCsrfSetCookie,
+} from '@/lib/auth/csrf'
 
 /** Extract client IP from request headers */
 function getClientIp(request: NextRequest): string {
@@ -35,6 +49,47 @@ function getRateLimitTier(pathname: string, method: string) {
   return { config: RATE_LIMITS.api, prefix: 'api' }
 }
 
+/** Check if this is a state-changing method that requires CSRF validation */
+function isMutationMethod(method: string): boolean {
+  return method === 'POST' || method === 'PATCH' || method === 'PUT' || method === 'DELETE'
+}
+
+/** Routes exempt from CSRF validation (they handle their own CSRF) */
+function isCsrfExempt(pathname: string): boolean {
+  // Auth.js routes handle their own CSRF tokens
+  if (pathname.startsWith('/api/auth/')) return true
+  return false
+}
+
+/** Validate the CSRF token from the request header against the cookie */
+async function validateCsrf(request: NextRequest): Promise<boolean> {
+  const secret = process.env.AUTH_SECRET
+  if (!secret) return false
+
+  // Read the CSRF cookie
+  const cookieValue = request.cookies.get(CSRF_COOKIE_NAME)?.value
+  if (!cookieValue) return false
+
+  const parsed = parseCsrfCookie(cookieValue)
+  if (!parsed) return false
+
+  // Verify the cookie signature (prevents cookie tampering)
+  const cookieValid = await verifyCsrfToken(parsed.token, parsed.signature, secret)
+  if (!cookieValid) return false
+
+  // Compare the header token against the cookie token
+  const headerToken = request.headers.get(CSRF_HEADER_NAME)
+  if (!headerToken) return false
+
+  // Constant-time comparison
+  if (headerToken.length !== parsed.token.length) return false
+  let mismatch = 0
+  for (let i = 0; i < headerToken.length; i++) {
+    mismatch |= headerToken.charCodeAt(i) ^ parsed.token.charCodeAt(i)
+  }
+  return mismatch === 0
+}
+
 /** Security response headers applied to all matched routes */
 const SECURITY_HEADERS: HeadersInit = {
   'X-Content-Type-Options': 'nosniff',
@@ -44,11 +99,62 @@ const SECURITY_HEADERS: HeadersInit = {
   'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
 }
 
-export function middleware(request: NextRequest) {
+/** Set the CSRF cookie on a response if it doesn't exist yet */
+async function ensureCsrfCookie(
+  request: NextRequest,
+  response: NextResponse,
+): Promise<void> {
+  const secret = process.env.AUTH_SECRET
+  if (!secret) return
+
+  // Check if a valid CSRF cookie already exists
+  const existing = request.cookies.get(CSRF_COOKIE_NAME)?.value
+  if (existing) {
+    const parsed = parseCsrfCookie(existing)
+    if (parsed) {
+      const valid = await verifyCsrfToken(parsed.token, parsed.signature, secret)
+      if (valid) return // Cookie is still valid
+    }
+  }
+
+  // Generate a new CSRF token + signature
+  const token = generateCsrfToken()
+  const signature = await signCsrfToken(token, secret)
+  const cookieValue = buildCsrfCookieValue(token, signature)
+  const isSecure = request.headers.get('x-forwarded-proto') === 'https'
+
+  response.headers.append(
+    'Set-Cookie',
+    buildCsrfSetCookie(cookieValue, isSecure),
+  )
+}
+
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
   const method = request.method
 
-  // Only rate-limit API routes
+  // CSRF validation for state-changing API requests
+  if (
+    pathname.startsWith('/api/') &&
+    isMutationMethod(method) &&
+    !isCsrfExempt(pathname)
+  ) {
+    const csrfValid = await validateCsrf(request)
+    if (!csrfValid) {
+      return new NextResponse(
+        JSON.stringify({ success: false, error: 'CSRF token missing or invalid' }),
+        {
+          status: 403,
+          headers: {
+            'Content-Type': 'application/json',
+            ...SECURITY_HEADERS,
+          },
+        },
+      )
+    }
+  }
+
+  // Rate limit API routes
   if (pathname.startsWith('/api/')) {
     const ip = getClientIp(request)
     const { config, prefix } = getRateLimitTier(pathname, method)
@@ -75,14 +181,18 @@ export function middleware(request: NextRequest) {
       response.headers.set(name, value)
     }
 
+    // Set CSRF cookie on all responses
+    await ensureCsrfCookie(request, response)
+
     return response
   }
 
-  // For non-API routes, add security headers only
+  // For non-API routes, add security headers + CSRF cookie
   const response = NextResponse.next()
   for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
     response.headers.set(name, value)
   }
+  await ensureCsrfCookie(request, response)
 
   return response
 }
