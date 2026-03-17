@@ -6,8 +6,8 @@ export default function Home() {
           Oficina de Rendición de Cuentas
         </h1>
         <p className="max-w-md text-lg text-zinc-600 dark:text-zinc-400">
-          Plataforma de conocimiento cívico para la política argentina.
-          Explorá las conexiones entre legisladores, votaciones y legislación.
+          Plataforma de conocimiento cívico para la política argentina. Explorá las conexiones entre
+          legisladores, votaciones y legislación.
         </p>
         <div className="flex gap-4">
           <a
