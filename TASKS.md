@@ -246,7 +246,7 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
   - **Investigaciones** — empty state until M6 ("Proximamente")
 - [x] Vote history: filterable by date/legislation, paginated, color-coded by position
   - Afirmativo (green), Negativo (red), Abstencion (yellow), Ausente (gray)
-- [ ] Province-first browse page: `/provincias/[province]` — list politicians by province
+- [x] Province-first browse page: `/provincias/[province]` — list politicians by province
 - [x] Fuzzy search with accent handling (e.g., "Cristina" matches "Cristina Fernandez")
 - [x] Breadcrumb navigation: Home > Provincia > Politician
 
