@@ -5,11 +5,21 @@
  * All queries use parameterized Cypher (no string interpolation).
  */
 
-import type { Record as Neo4jRecord } from 'neo4j-driver-lite'
+import neo4j, { type Record as Neo4jRecord } from 'neo4j-driver-lite'
 
 import { getDriver } from '../neo4j/client'
 
 import { transformNode } from './transform'
+
+// ---------------------------------------------------------------------------
+// Constants
+// ---------------------------------------------------------------------------
+
+/** Maximum query execution time in milliseconds (security: prevent graph bombs) */
+const QUERY_TIMEOUT_MS = 5_000
+
+/** Transaction config applied to all user-facing queries */
+const TX_CONFIG = { timeout: QUERY_TIMEOUT_MS }
 
 // ---------------------------------------------------------------------------
 // Types
@@ -73,6 +83,7 @@ export async function getPoliticianBySlug(slug: string): Promise<PoliticianProfi
        RETURN p, party, prov
        LIMIT 1`,
       { slug },
+      TX_CONFIG,
     )
 
     if (result.records.length === 0) {
@@ -142,6 +153,7 @@ export async function getPoliticianVoteHistory(
         `MATCH (p:Politician {slug: $slug})-[:CAST_VOTE]->(v:LegislativeVote)
          RETURN count(v) AS total`,
         { slug },
+        TX_CONFIG,
       ),
       session.run(
         `MATCH (p:Politician {slug: $slug})-[cv:CAST_VOTE]->(v:LegislativeVote)
@@ -150,6 +162,7 @@ export async function getPoliticianVoteHistory(
          SKIP $skip
          LIMIT $limit`,
         { slug, skip: toNeo4jInt(skip), limit: toNeo4jInt(limit) },
+        TX_CONFIG,
       ),
     ])
 
@@ -184,6 +197,8 @@ export async function getAllPoliticianSlugs(): Promise<readonly string[]> {
        WHERE p.slug IS NOT NULL
        RETURN p.slug AS slug
        ORDER BY p.slug`,
+      {},
+      TX_CONFIG,
     )
 
     return result.records.map((r: Neo4jRecord) => r.get('slug') as string)
@@ -208,9 +223,8 @@ function asNumber(value: unknown): number {
   return 0
 }
 
-function toNeo4jInt(value: number): number {
-  // neo4j-driver-lite accepts plain JS numbers for integers in params
-  return value
+function toNeo4jInt(value: number) {
+  return neo4j.int(value)
 }
 
 function extractCount(records: Neo4jRecord[]): number {
