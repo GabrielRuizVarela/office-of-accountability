@@ -208,6 +208,122 @@ export async function getAllPoliticianSlugs(): Promise<readonly string[]> {
 }
 
 // ---------------------------------------------------------------------------
+// Province queries
+// ---------------------------------------------------------------------------
+
+/** Summary of a politician for listing pages */
+export interface PoliticianSummary {
+  readonly id: string
+  readonly name: string
+  readonly slug: string
+  readonly chamber: string
+  readonly bloc: string
+  readonly coalition: string
+  readonly photo: string
+  readonly totalVotes: number
+  readonly presencePct: number
+  readonly party: string
+}
+
+/** Province with its politician count */
+export interface ProvinceInfo {
+  readonly id: string
+  readonly name: string
+  readonly politicianCount: number
+}
+
+/**
+ * Fetch all politicians representing a given province (by province slug).
+ *
+ * Returns null if the province doesn't exist.
+ */
+export async function getPoliticiansByProvince(
+  provinceSlug: string,
+): Promise<{ readonly province: ProvinceInfo; readonly politicians: readonly PoliticianSummary[] } | null> {
+  const session = getDriver().session()
+
+  try {
+    // First check province exists and get its info
+    const provinceResult = await session.run(
+      `MATCH (prov:Province {id: $provinceSlug})
+       OPTIONAL MATCH (p:Politician)-[:REPRESENTS]->(prov)
+       RETURN prov.name AS name, prov.id AS id, count(p) AS politicianCount`,
+      { provinceSlug },
+      TX_CONFIG,
+    )
+
+    if (provinceResult.records.length === 0 || !provinceResult.records[0].get('name')) {
+      return null
+    }
+
+    const provinceRecord = provinceResult.records[0]
+    const province: ProvinceInfo = {
+      id: asString(provinceRecord.get('id')),
+      name: asString(provinceRecord.get('name')),
+      politicianCount: asNumber(provinceRecord.get('politicianCount')),
+    }
+
+    // Fetch politicians
+    const politiciansResult = await session.run(
+      `MATCH (p:Politician)-[:REPRESENTS]->(prov:Province {id: $provinceSlug})
+       OPTIONAL MATCH (p)-[:MEMBER_OF]->(party:Party)
+       RETURN p, party.name AS partyName
+       ORDER BY p.name`,
+      { provinceSlug },
+      TX_CONFIG,
+    )
+
+    const politicians = politiciansResult.records.map((record: Neo4jRecord): PoliticianSummary => {
+      const node = transformNode(record.get('p'))
+      const props = node.properties
+
+      return {
+        id: node.id,
+        name: asString(props.name),
+        slug: asString(props.slug),
+        chamber: asString(props.chamber),
+        bloc: asString(props.bloc),
+        coalition: asString(props.coalition),
+        photo: asString(props.photo),
+        totalVotes: asNumber(props.total_votes),
+        presencePct: asNumber(props.presence_pct),
+        party: asString(record.get('partyName')),
+      }
+    })
+
+    return { province, politicians }
+  } finally {
+    await session.close()
+  }
+}
+
+/**
+ * Fetch all provinces with their politician counts for index/sitemap.
+ */
+export async function getAllProvinces(): Promise<readonly ProvinceInfo[]> {
+  const session = getDriver().session()
+
+  try {
+    const result = await session.run(
+      `MATCH (prov:Province)
+       OPTIONAL MATCH (p:Politician)-[:REPRESENTS]->(prov)
+       RETURN prov.id AS id, prov.name AS name, count(p) AS politicianCount
+       ORDER BY prov.name`,
+      {},
+      TX_CONFIG,
+    )
+
+    return result.records.map((record: Neo4jRecord): ProvinceInfo => ({
+      id: asString(record.get('id')),
+      name: asString(record.get('name')),
+      politicianCount: asNumber(record.get('politicianCount')),
+    }))
+  } finally {
+    await session.close()
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Internal helpers
 // ---------------------------------------------------------------------------
 
