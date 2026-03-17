@@ -16,6 +16,9 @@ import type { PoliticianSummary } from '@/lib/graph'
 // Slug validation
 // ---------------------------------------------------------------------------
 
+/** ISR: revalidate every 15 minutes (bounded staleness) */
+export const revalidate = 900
+
 /** Province slugs: lowercase alphanumeric + hyphens, 1-100 chars */
 const PROVINCE_SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 
