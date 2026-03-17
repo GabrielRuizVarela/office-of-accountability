@@ -10,6 +10,12 @@ import type { QueryResult } from './types'
 
 let driver: Driver | null = null
 
+/** Maximum query execution time in milliseconds (security: prevent graph bombs) */
+const QUERY_TIMEOUT_MS = 5_000
+
+/** Transaction config applied to all user-facing queries */
+const TX_CONFIG = { timeout: QUERY_TIMEOUT_MS }
+
 /**
  * Returns a singleton Neo4j driver instance.
  * Uses neo4j-driver-lite for ESM/Workers compatibility.
@@ -48,7 +54,7 @@ export async function readQuery<T>(
   const session = getDriver().session({ defaultAccessMode: neo4j.session.READ })
 
   try {
-    const result = await session.run(cypher, params)
+    const result = await session.run(cypher, params, TX_CONFIG)
     return toQueryResult(result.records, result.summary, transform)
   } finally {
     await session.close()
@@ -70,7 +76,7 @@ export async function writeQuery<T>(
   const session = getDriver().session({ defaultAccessMode: neo4j.session.WRITE })
 
   try {
-    const result = await session.run(cypher, params)
+    const result = await session.run(cypher, params, TX_CONFIG)
     return toQueryResult(result.records, result.summary, transform)
   } finally {
     await session.close()
@@ -88,7 +94,7 @@ export async function executeWrite(
   const session = getDriver().session({ defaultAccessMode: neo4j.session.WRITE })
 
   try {
-    const result = await session.run(cypher, params)
+    const result = await session.run(cypher, params, TX_CONFIG)
     return toQueryResult(result.records, result.summary, () => undefined as never)
   } finally {
     await session.close()
@@ -104,7 +110,7 @@ export async function withReadTransaction<T>(
   const session = getDriver().session({ defaultAccessMode: neo4j.session.READ })
 
   try {
-    return await session.executeRead((tx) => work(tx))
+    return await session.executeRead((tx) => work(tx), TX_CONFIG)
   } finally {
     await session.close()
   }
@@ -119,7 +125,7 @@ export async function withWriteTransaction<T>(
   const session = getDriver().session({ defaultAccessMode: neo4j.session.WRITE })
 
   try {
-    return await session.executeWrite((tx) => work(tx))
+    return await session.executeWrite((tx) => work(tx), TX_CONFIG)
   } finally {
     await session.close()
   }
