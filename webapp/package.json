@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@auth/core": "^0.34.3",
+    "@resvg/resvg-wasm": "^2.6.2",
     "@tiptap/extension-image": "^3.20.3",
     "@tiptap/extension-link": "^3.20.3",
     "@tiptap/pm": "^3.20.3",
@@ -27,6 +28,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-force-graph-2d": "^1.29.1",
+    "satori": "^0.25.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
