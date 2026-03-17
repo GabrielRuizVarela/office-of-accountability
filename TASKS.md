@@ -296,7 +296,7 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
   - Login: 5 attempts/min per IP, 10 attempts/hour per email
   - Registration: 3 accounts/hour per IP
   - Password reset: 3 requests/hour per email
-- [ ] Account lockout: temporary lock after 10 failed login attempts
+- [x] Account lockout: temporary lock after 10 failed login attempts (15min lockout, counter resets on success or expiry)
 - [ ] Email verification tokens: expire after 24h, single-use
 - [ ] Password requirements: min 8 chars, check against breached password list (haveibeenpwned k-anonymity API)
 - [x] Auth middleware: protect all mutation API routes
