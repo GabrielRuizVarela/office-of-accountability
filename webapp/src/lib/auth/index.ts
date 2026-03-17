@@ -1,5 +1,6 @@
 export { Neo4jAdapter } from './neo4j-adapter'
 export { hashPassword, verifyPassword } from './password'
+export { checkBreachedPassword, validatePasswordStrength } from './password-strength'
 export { authConfig } from './config'
 export {
   signUpSchema,
@@ -12,6 +13,13 @@ export {
   type SignInInput,
 } from './types'
 export { getSession, type AppSession, type SessionUser } from './session'
+export {
+  createVerificationToken,
+  consumeVerificationToken,
+  markEmailVerified,
+  updateUserPassword,
+  getUserNameByEmail,
+} from './verification'
 export {
   generateCsrfToken,
   signCsrfToken,
