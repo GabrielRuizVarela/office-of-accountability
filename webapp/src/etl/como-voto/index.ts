@@ -64,3 +64,6 @@ export {
 } from './transformer'
 
 export type { TransformResult, TransformInput } from './transformer'
+
+export { loadAll } from './loader'
+export type { LoadResult, LoadOptions, LoadStepResult } from './loader'
