@@ -159,13 +159,13 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 - [x] `GET /api/graph/node/[id]` — single node + 1-hop connections
 - [x] `GET /api/graph/expand/[id]?depth=1` — expand connections (configurable depth, default 1, max 3)
 - [x] `GET /api/graph/search?q=` — full-text search across Politician.name, Legislation.title
-- [ ] `GET /api/graph/query` — structured graph queries (node type filters, date range, jurisdiction)
+- [x] `GET /api/graph/query` — structured graph queries (node type filters, date range, jurisdiction)
 - [ ] Cursor-based pagination on search and query endpoints
 
 ### Security & Rate Limiting
 - [x] Input validation with Zod on all query parameters
 - [x] Depth parameter clamped to max 3 (prevent expensive traversals)
-- [ ] Query timeout: 5s max per Neo4j query (prevent graph bombs)
+- [x] Query timeout: 5s max per Neo4j query (prevent graph bombs)
 - [x] Rate limiting via Cloudflare Rate Limiting Rules:
   - Read endpoints: 60 req/min per IP
   - Search endpoint: 30 req/min per IP (heavier query)
