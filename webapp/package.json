@@ -8,7 +8,8 @@
     "start": "vite preview",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "dev:next": "next dev"
+    "dev:next": "next dev",
+    "db:init-schema": "npx tsx scripts/init-schema.ts"
   },
   "dependencies": {
     "neo4j-driver-lite": "^5.28.3",
