@@ -43,7 +43,7 @@ export function getDriver(): Driver {
 export async function readQuery<T>(
   cypher: string,
   params: Record<string, unknown> = {},
-  transform: (record: Neo4jRecord) => T
+  transform: (record: Neo4jRecord) => T,
 ): Promise<QueryResult<T>> {
   const session = getDriver().session({ defaultAccessMode: neo4j.session.READ })
 
@@ -65,7 +65,7 @@ export async function readQuery<T>(
 export async function writeQuery<T>(
   cypher: string,
   params: Record<string, unknown> = {},
-  transform: (record: Neo4jRecord) => T
+  transform: (record: Neo4jRecord) => T,
 ): Promise<QueryResult<T>> {
   const session = getDriver().session({ defaultAccessMode: neo4j.session.WRITE })
 
@@ -83,7 +83,7 @@ export async function writeQuery<T>(
  */
 export async function executeWrite(
   cypher: string,
-  params: Record<string, unknown> = {}
+  params: Record<string, unknown> = {},
 ): Promise<QueryResult<never>> {
   const session = getDriver().session({ defaultAccessMode: neo4j.session.WRITE })
 
@@ -99,7 +99,7 @@ export async function executeWrite(
  * Run a callback within a managed read transaction with automatic retries.
  */
 export async function withReadTransaction<T>(
-  work: (tx: { run: Session['run'] }) => Promise<T>
+  work: (tx: { run: Session['run'] }) => Promise<T>,
 ): Promise<T> {
   const session = getDriver().session({ defaultAccessMode: neo4j.session.READ })
 
@@ -114,7 +114,7 @@ export async function withReadTransaction<T>(
  * Run a callback within a managed write transaction with automatic retries.
  */
 export async function withWriteTransaction<T>(
-  work: (tx: { run: Session['run'] }) => Promise<T>
+  work: (tx: { run: Session['run'] }) => Promise<T>,
 ): Promise<T> {
   const session = getDriver().session({ defaultAccessMode: neo4j.session.WRITE })
 
@@ -153,7 +153,7 @@ export async function closeDriver(): Promise<void> {
 function toQueryResult<T>(
   records: Neo4jRecord[],
   summary: ResultSummary,
-  transform: (record: Neo4jRecord) => T
+  transform: (record: Neo4jRecord) => T,
 ): QueryResult<T> {
   return {
     records: records.map(transform),
@@ -166,7 +166,5 @@ function toQueryResult<T>(
 
 function extractCounters(summary: ResultSummary): Record<string, number> {
   const stats = summary.counters.updates()
-  return Object.fromEntries(
-    Object.entries(stats).filter(([, v]) => v > 0)
-  )
+  return Object.fromEntries(Object.entries(stats).filter(([, v]) => v > 0))
 }

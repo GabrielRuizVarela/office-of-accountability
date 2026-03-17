@@ -17,7 +17,7 @@ export function loadNeo4jConfig(): Neo4jConfig {
 
   if (!result.success) {
     throw new Error(
-      `Neo4j configuration error: ${result.error.issues.map((i) => i.message).join(', ')}`
+      `Neo4j configuration error: ${result.error.issues.map((i) => i.message).join(', ')}`,
     )
   }
 
