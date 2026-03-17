@@ -408,7 +408,7 @@ Graph traversals are the core product — politicians, votes, donors, legislatio
 |-------|-----------|-------|
 | Frontend + API + SSR | Vinext (App Router, Route Handlers, Server Components) | Next.js API surface on Vite, deploys to Cloudflare Workers |
 | Graph Database | Neo4j 5 Community | Primary store for all graph data |
-| Graph Driver | neo4j-driver (official JS/TS) | Connection pooling, transaction support |
+| Graph Driver | neo4j-driver-lite (Bolt over WebSocket) | ESM/browser build — Workers-native WebSocket transport. HTTP API fallback if WS fails |
 | Graph Visualization | react-force-graph-2d | Interactive graph explorer (validated by br-acc's GraphCanvas pattern) |
 | Rich Text Editor | TipTap | Investigation documents with graph node embeds |
 | Auth | Auth.js (next-auth v5) + email/password + social login | Milestone 6; MFA required for Tier 2 and above |
