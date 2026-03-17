@@ -12,10 +12,10 @@
  *   - jurisdiction (optional): jurisdiction filter (nacional, provincial, municipal)
  *   - relType (optional): filter to nodes with this relationship type
  *   - limit (optional): max nodes to return (1-200, default 50)
- *   - offset (optional): pagination offset (>= 0, default 0)
+ *   - cursor (optional): opaque cursor from previous response's nextCursor
  *
  * Responses:
- *   - 200: { success, data: { nodes, links }, meta: { totalCount, limit, offset } }
+ *   - 200: { success, data: { nodes, links }, meta: { totalCount, limit, nextCursor } }
  *   - 400: invalid parameters
  *   - 504: query timed out
  *   - 503: Neo4j unreachable
@@ -52,7 +52,7 @@ const relTypeSchema = z
 
 const limitSchema = z.coerce.number().int().min(1).max(200).default(50)
 
-const offsetSchema = z.coerce.number().int().min(0).default(0)
+const cursorSchema = z.string().min(1).max(500).optional()
 
 export async function GET(request: Request): Promise<Response> {
   const url = new URL(request.url)
@@ -113,10 +113,10 @@ export async function GET(request: Request): Promise<Response> {
     )
   }
 
-  const offsetResult = offsetSchema.safeParse(url.searchParams.get('offset') ?? undefined)
-  if (!offsetResult.success) {
+  const cursorResult = cursorSchema.safeParse(url.searchParams.get('cursor') ?? undefined)
+  if (!cursorResult.success) {
     return Response.json(
-      { success: false, error: 'Invalid offset (must be non-negative integer)' },
+      { success: false, error: 'Invalid cursor parameter' },
       { status: 400 },
     )
   }
@@ -149,7 +149,7 @@ export async function GET(request: Request): Promise<Response> {
         relType: relTypeResult.data,
       },
       limitResult.data,
-      offsetResult.data,
+      cursorResult.data,
     )
 
     return Response.json({
@@ -158,7 +158,7 @@ export async function GET(request: Request): Promise<Response> {
       meta: {
         totalCount: result.totalCount,
         limit: limitResult.data,
-        offset: offsetResult.data,
+        nextCursor: result.nextCursor,
         nodeCount: result.data.nodes.length,
         linkCount: result.data.links.length,
       },

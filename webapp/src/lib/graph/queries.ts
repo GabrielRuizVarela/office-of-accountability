@@ -37,6 +37,74 @@ const QUERY_TIMEOUT_MS = 5_000
 const TX_CONFIG = { timeout: QUERY_TIMEOUT_MS }
 
 // ---------------------------------------------------------------------------
+// Cursor utilities
+// ---------------------------------------------------------------------------
+
+/** Cursor payload for query endpoint (keyset pagination by name + id) */
+interface QueryCursor {
+  readonly n: string  // last seen name
+  readonly i: string  // last seen id
+}
+
+/** Cursor payload for search endpoint (offset-wrapped) */
+interface SearchCursor {
+  readonly o: number  // offset
+}
+
+/**
+ * Encode a cursor payload as a URL-safe, opaque base64 string.
+ */
+function encodeCursor(payload: QueryCursor | SearchCursor): string {
+  return Buffer.from(JSON.stringify(payload), 'utf-8').toString('base64url')
+}
+
+/**
+ * Decode and validate a query cursor string.
+ * Returns null if the cursor is malformed.
+ */
+function decodeQueryCursor(cursor: string): QueryCursor | null {
+  try {
+    const parsed: unknown = JSON.parse(Buffer.from(cursor, 'base64url').toString('utf-8'))
+    if (
+      typeof parsed === 'object' &&
+      parsed !== null &&
+      'n' in parsed &&
+      'i' in parsed &&
+      typeof (parsed as QueryCursor).n === 'string' &&
+      typeof (parsed as QueryCursor).i === 'string'
+    ) {
+      return { n: (parsed as QueryCursor).n, i: (parsed as QueryCursor).i }
+    }
+    return null
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Decode and validate a search cursor string.
+ * Returns null if the cursor is malformed.
+ */
+function decodeSearchCursor(cursor: string): SearchCursor | null {
+  try {
+    const parsed: unknown = JSON.parse(Buffer.from(cursor, 'base64url').toString('utf-8'))
+    if (
+      typeof parsed === 'object' &&
+      parsed !== null &&
+      'o' in parsed &&
+      typeof (parsed as SearchCursor).o === 'number' &&
+      Number.isInteger((parsed as SearchCursor).o) &&
+      (parsed as SearchCursor).o >= 0
+    ) {
+      return { o: (parsed as SearchCursor).o }
+    }
+    return null
+  } catch {
+    return null
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Node neighborhood
 // ---------------------------------------------------------------------------
 
@@ -171,10 +239,11 @@ export async function expandNodeNeighborhood(
 // Fulltext search
 // ---------------------------------------------------------------------------
 
-/** Search result with relevance score */
+/** Search result with cursor-based pagination */
 export interface SearchResult {
   readonly data: GraphData
   readonly totalCount: number
+  readonly nextCursor: string | null
 }
 
 /**
@@ -183,20 +252,30 @@ export interface SearchResult {
  * Uses Neo4j fulltext search with Lucene syntax.
  * Searches across: politician names, legislation titles, investigation titles.
  *
- * Returns matching nodes as GraphData (no links) plus total count.
+ * Supports cursor-based pagination. The cursor encodes the current offset
+ * (opaque to the client). Pass `cursor` from a previous response's
+ * `nextCursor` to fetch the next page.
+ *
+ * Returns matching nodes as GraphData (no links) plus total count and nextCursor.
  */
 export async function searchNodes(
   query: string,
   limit: number = DEFAULT_SEARCH_LIMIT,
+  cursor?: string,
 ): Promise<SearchResult> {
   const trimmed = query.trim()
 
   if (trimmed.length === 0) {
-    return { data: emptyGraphData(), totalCount: 0 }
+    return { data: emptyGraphData(), totalCount: 0, nextCursor: null }
   }
+
+  const offset = cursor ? (decodeSearchCursor(cursor)?.o ?? 0) : 0
 
   // Escape special Lucene characters and add wildcard for partial matching
   const sanitized = sanitizeLuceneQuery(trimmed)
+
+  // Fetch limit+1 per index to detect if there are more results
+  const fetchLimit = offset + limit + 1
 
   const session = getDriver().session()
 
@@ -206,42 +285,63 @@ export async function searchNodes(
       session.run(
         `CALL db.index.fulltext.queryNodes('politician_name_fulltext', $query)
          YIELD node AS n, score
-         RETURN n
+         RETURN n, score
          ORDER BY score DESC
-         LIMIT $limit`,
-        { query: sanitized, limit },
+         LIMIT $fetchLimit`,
+        { query: sanitized, fetchLimit },
         TX_CONFIG,
       ),
       session.run(
         `CALL db.index.fulltext.queryNodes('legislation_title_fulltext', $query)
          YIELD node AS n, score
-         RETURN n
+         RETURN n, score
          ORDER BY score DESC
-         LIMIT $limit`,
-        { query: sanitized, limit },
+         LIMIT $fetchLimit`,
+        { query: sanitized, fetchLimit },
         TX_CONFIG,
       ),
       session.run(
         `CALL db.index.fulltext.queryNodes('investigation_title_fulltext', $query)
          YIELD node AS n, score
-         RETURN n
+         RETURN n, score
          ORDER BY score DESC
-         LIMIT $limit`,
-        { query: sanitized, limit },
+         LIMIT $fetchLimit`,
+        { query: sanitized, fetchLimit },
         TX_CONFIG,
       ),
     ])
 
-    const allRecords: Neo4jRecord[] = [
+    // Merge and sort all results by score descending
+    const allRecords: Array<{ record: Neo4jRecord; score: number }> = [
       ...politicianResult.records,
       ...legislationResult.records,
       ...investigationResult.records,
-    ]
+    ].map((record) => ({
+      record,
+      score: typeof record.get('score') === 'number' ? record.get('score') as number : 0,
+    }))
 
-    const data = transformNodeRecords(allRecords)
-    const totalCount = data.nodes.length
+    allRecords.sort((a, b) => b.score - a.score)
 
-    return { data, totalCount }
+    // Deduplicate by node elementId (a node might appear in multiple indexes)
+    const seen = new Set<string>()
+    const dedupedRecords: Neo4jRecord[] = []
+    for (const { record } of allRecords) {
+      const node = record.get('n') as Node
+      if (!seen.has(node.elementId)) {
+        seen.add(node.elementId)
+        dedupedRecords.push(record)
+      }
+    }
+
+    const totalCount = dedupedRecords.length
+    const pageRecords = dedupedRecords.slice(offset, offset + limit)
+    const hasMore = offset + limit < totalCount
+
+    const data = transformNodeRecords(pageRecords)
+    const nextCursor = hasMore ? encodeCursor({ o: offset + limit }) : null
+
+    return { data, totalCount, nextCursor }
   } finally {
     await session.close()
   }
@@ -252,18 +352,22 @@ export async function searchNodes(
  *
  * Uses the appropriate fulltext index based on the label.
  * Falls back to property CONTAINS for labels without fulltext indexes.
+ * Supports cursor-based pagination via opaque cursor tokens.
  */
 export async function searchNodesByLabel(
   query: string,
   label: string,
   limit: number = DEFAULT_SEARCH_LIMIT,
+  cursor?: string,
 ): Promise<SearchResult> {
   const trimmed = query.trim()
 
   if (trimmed.length === 0) {
-    return { data: emptyGraphData(), totalCount: 0 }
+    return { data: emptyGraphData(), totalCount: 0, nextCursor: null }
   }
 
+  const offset = cursor ? (decodeSearchCursor(cursor)?.o ?? 0) : 0
+  const fetchLimit = offset + limit + 1
   const indexName = LABEL_TO_FULLTEXT_INDEX[label]
   const session = getDriver().session()
 
@@ -277,8 +381,8 @@ export async function searchNodesByLabel(
          YIELD node AS n, score
          RETURN n
          ORDER BY score DESC
-         LIMIT $limit`,
-        { indexName, query: sanitized, limit },
+         LIMIT $fetchLimit`,
+        { indexName, query: sanitized, fetchLimit },
         TX_CONFIG,
       )
       records = result.records
@@ -289,15 +393,21 @@ export async function searchNodesByLabel(
          WHERE $label IN labels(n)
            AND (n.name CONTAINS $query OR n.id CONTAINS $query)
          RETURN n
-         LIMIT $limit`,
-        { label, query: trimmed, limit },
+         LIMIT $fetchLimit`,
+        { label, query: trimmed, fetchLimit },
         TX_CONFIG,
       )
       records = result.records
     }
 
-    const data = transformNodeRecords(records)
-    return { data, totalCount: data.nodes.length }
+    const totalCount = records.length
+    const pageRecords = records.slice(offset, offset + limit)
+    const hasMore = offset + limit < totalCount
+
+    const data = transformNodeRecords(pageRecords)
+    const nextCursor = hasMore ? encodeCursor({ o: offset + limit }) : null
+
+    return { data, totalCount, nextCursor }
   } finally {
     await session.close()
   }
@@ -316,10 +426,11 @@ export interface StructuredQueryFilters {
   readonly relType?: string
 }
 
-/** Structured query result with pagination metadata */
+/** Structured query result with cursor-based pagination metadata */
 export interface StructuredQueryResult {
   readonly data: GraphData
   readonly totalCount: number
+  readonly nextCursor: string | null
 }
 
 const DEFAULT_QUERY_LIMIT = 50
@@ -331,16 +442,20 @@ const MAX_QUERY_LIMIT = 200
  * Builds a parameterized Cypher MATCH dynamically based on provided filters.
  * All user input is passed as Cypher parameters (never interpolated).
  *
+ * Supports cursor-based (keyset) pagination using `(name, id)` as the sort key.
+ * Pass the `cursor` from a previous response's `nextCursor` to fetch the next page.
+ *
  * Returns matching nodes with their first-degree relationships to other
- * matched nodes, plus a total count for pagination.
+ * matched nodes, plus a total count and nextCursor.
  */
 export async function queryNodes(
   filters: StructuredQueryFilters,
   limit: number = DEFAULT_QUERY_LIMIT,
-  offset: number = 0,
+  cursor?: string,
 ): Promise<StructuredQueryResult> {
   const clampedLimit = Math.min(Math.max(1, Math.floor(limit)), MAX_QUERY_LIMIT)
-  const clampedOffset = Math.max(0, Math.floor(offset))
+
+  const decodedCursor = cursor ? decodeQueryCursor(cursor) : null
 
   const session = getDriver().session()
 
@@ -361,26 +476,60 @@ export async function queryNodes(
         : 0
 
     if (totalCount === 0) {
-      return { data: emptyGraphData(), totalCount: 0 }
+      return { data: emptyGraphData(), totalCount: 0, nextCursor: null }
     }
 
-    // Fetch matching nodes with pagination
+    // Build keyset pagination clause
+    const cursorClauses = [...whereClauses]
+    const cursorParams: Record<string, unknown> = { ...params, limit: clampedLimit }
+
+    if (decodedCursor) {
+      // Keyset pagination: skip past the last seen (name, id) tuple
+      cursorClauses.push(
+        '((n.name > $cursorName) OR (n.name = $cursorName AND n.id > $cursorId))',
+      )
+      cursorParams.cursorName = decodedCursor.n
+      cursorParams.cursorId = decodedCursor.i
+    }
+
+    const cursorWhereStr =
+      cursorClauses.length > 0 ? `WHERE ${cursorClauses.join(' AND ')}` : ''
+
+    // Fetch matching nodes with keyset pagination (limit + 1 to detect hasMore)
     const nodeResult = await session.run(
-      `MATCH (n) ${whereStr}
+      `MATCH (n) ${cursorWhereStr}
        RETURN n
        ORDER BY n.name ASC, n.id ASC
-       SKIP $offset
-       LIMIT $limit`,
-      { ...params, offset: clampedOffset, limit: clampedLimit },
+       LIMIT $fetchLimit`,
+      { ...cursorParams, fetchLimit: clampedLimit + 1 },
       TX_CONFIG,
     )
 
     if (nodeResult.records.length === 0) {
-      return { data: emptyGraphData(), totalCount }
+      return { data: emptyGraphData(), totalCount, nextCursor: null }
+    }
+
+    // Check if there are more results beyond this page
+    const hasMore = nodeResult.records.length > clampedLimit
+    const pageRecords = hasMore
+      ? nodeResult.records.slice(0, clampedLimit)
+      : nodeResult.records
+
+    // Build nextCursor from the last node in this page
+    let nextCursor: string | null = null
+    if (hasMore) {
+      const lastNode = pageRecords[pageRecords.length - 1].get('n') as Node
+      const lastName = typeof lastNode.properties.name === 'string'
+        ? lastNode.properties.name
+        : ''
+      const lastId = typeof lastNode.properties.id === 'string'
+        ? lastNode.properties.id
+        : lastNode.elementId
+      nextCursor = encodeCursor({ n: lastName, i: lastId })
     }
 
     // Collect node IDs for relationship query
-    const nodeIds: string[] = nodeResult.records.map((record) => {
+    const nodeIds: string[] = pageRecords.map((record) => {
       const node = record.get('n') as Node
       return node.elementId
     })
@@ -394,8 +543,8 @@ export async function queryNodes(
       TX_CONFIG,
     )
 
-    const data = transformQueryResult(nodeResult.records, relResult.records)
-    return { data, totalCount }
+    const data = transformQueryResult(pageRecords, relResult.records)
+    return { data, totalCount, nextCursor }
   } finally {
     await session.close()
   }
