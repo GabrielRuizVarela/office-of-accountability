@@ -13,6 +13,7 @@ import Credentials from '@auth/core/providers/credentials'
 import Google from '@auth/core/providers/google'
 
 import { Neo4jAdapter } from './neo4j-adapter'
+import { isAccountLocked, parseLockoutState, recordFailedAttempt, resetFailedAttempts } from './lockout'
 import { verifyPassword } from './password'
 import { signInSchema } from './types'
 import { readQuery } from '../neo4j/client'
@@ -39,7 +40,9 @@ function getAuthConfig(): AuthConfig {
           `MATCH (u:User {email: $email})
            RETURN u.id AS id, u.email AS email, u.name AS name,
                   u.image AS image, u.password_hash AS passwordHash,
-                  u.verification_tier AS verificationTier`,
+                  u.verification_tier AS verificationTier,
+                  u.failed_login_attempts AS failedAttempts,
+                  u.locked_until AS lockedUntil`,
           { email },
           (record) => ({
             id: String(record.get('id')),
@@ -48,6 +51,8 @@ function getAuthConfig(): AuthConfig {
             image: record.get('image') ? String(record.get('image')) : null,
             passwordHash: record.get('passwordHash') ? String(record.get('passwordHash')) : null,
             verificationTier: Number(record.get('verificationTier') ?? 0),
+            failedAttempts: record.get('failedAttempts'),
+            lockedUntil: record.get('lockedUntil'),
           }),
         )
 
@@ -55,8 +60,21 @@ function getAuthConfig(): AuthConfig {
         if (!user) return null
         if (!user.passwordHash) return null
 
+        const lockoutState = parseLockoutState(user.failedAttempts, user.lockedUntil)
+
+        if (isAccountLocked(lockoutState)) {
+          return null
+        }
+
         const valid = await verifyPassword(password, user.passwordHash)
-        if (!valid) return null
+        if (!valid) {
+          await recordFailedAttempt(user.id, lockoutState)
+          return null
+        }
+
+        if (lockoutState.failedAttempts > 0) {
+          await resetFailedAttempts(user.id)
+        }
 
         return {
           id: user.id,
