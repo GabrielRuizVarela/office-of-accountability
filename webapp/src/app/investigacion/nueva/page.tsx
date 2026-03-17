@@ -14,6 +14,7 @@ import {
   InvestigationForm,
   type InvestigationFormData,
 } from '@/components/investigation/InvestigationForm'
+import { fetchWithCsrf } from '@/lib/fetch-with-csrf'
 
 function CreateInvestigationContent() {
   const { session, status } = useSession()
@@ -25,7 +26,7 @@ function CreateInvestigationContent() {
   }, [status])
 
   const handleSave = useCallback(async (data: InvestigationFormData): Promise<string> => {
-    const res = await fetch('/api/investigations', {
+    const res = await fetchWithCsrf('/api/investigations', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
