@@ -43,6 +43,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${politician.name} — Votaciones y perfil | ORC`
   const description = buildDescription(politician)
 
+  const ogImage = `/api/og/politician/${slug}`
+
   return {
     title,
     description,
@@ -52,11 +54,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'profile',
       url: `/politico/${slug}`,
       siteName: 'Oficina de Rendición de Cuentas',
+      images: [{ url: ogImage, width: 1200, height: 630, alt: politician.name }],
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title,
       description,
+      images: [ogImage],
     },
     alternates: {
       canonical: `/politico/${slug}`,

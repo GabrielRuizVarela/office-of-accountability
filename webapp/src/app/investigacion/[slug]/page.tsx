@@ -44,6 +44,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description =
     investigation.summary || `Investigación publicada en la Oficina de Rendición de Cuentas`
 
+  const ogImage = `/api/og/investigation/${slug}`
+
   return {
     title,
     description,
@@ -53,6 +55,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       url: `/investigacion/${slug}`,
       siteName: 'Oficina de Rendición de Cuentas',
+      images: [{ url: ogImage, width: 1200, height: 630, alt: investigation.title }],
       ...(investigation.published_at && {
         publishedTime: investigation.published_at,
       }),
@@ -64,6 +67,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title,
       description,
+      images: [ogImage],
     },
     alternates: {
       canonical: `/investigacion/${slug}`,
