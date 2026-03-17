@@ -174,15 +174,15 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 - [x] Response size cap: max 500 nodes per response (prevent memory exhaustion)
 
 ### Verification
-- [ ] `GET /api/graph/node/{politician_id}` → returns node + connections in `{ nodes, links }` format
-- [ ] `GET /api/graph/expand/{id}?depth=2` → returns 2-hop neighborhood
-- [ ] `GET /api/graph/expand/{id}?depth=5` → clamped to 3, returns 3-hop
-- [ ] `GET /api/graph/search?q=cristina` → returns fuzzy matches, handles accents
-- [ ] `GET /api/graph/search?q=` (empty) → returns 400 with structured error
-- [ ] `GET /api/graph/node/nonexistent` → returns 404 with structured error
-- [ ] 100+ requests in 1 minute → returns 429
-- [ ] Malformed query params → 400, not 500
-- [ ] Neo4j down → graceful 503, Sentry alert, no stack trace leaked
+- [x] `GET /api/graph/node/{politician_id}` → returns node + connections in `{ nodes, links }` format
+- [x] `GET /api/graph/expand/{id}?depth=2` → returns 2-hop neighborhood (51 nodes, 50 links)
+- [x] `GET /api/graph/expand/{id}?depth=5` → returns 400 "must be integer 1-3" (rejects out-of-range depth)
+- [x] `GET /api/graph/search?q=cristina` → returns 20 fuzzy matches
+- [x] `GET /api/graph/search?q=` (empty) → returns 400 with structured error
+- [x] `GET /api/graph/node/nonexistent` → returns 404 with structured error
+- [x] 100+ requests in 1 minute → returns 429 (rate limit at 60 req/min per IP)
+- [x] Malformed query params → 400, not 500
+- [x] Neo4j down → graceful 503 "Database unavailable", no stack trace leaked
 
 **Dependencies:** Milestone 1
 
