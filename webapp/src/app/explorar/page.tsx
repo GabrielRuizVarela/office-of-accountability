@@ -1,12 +1,14 @@
 'use client'
 
 import Link from 'next/link'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 
 import { ForceGraph } from '../../components/graph/ForceGraph'
+import type { ForceGraphHandle } from '../../components/graph/ForceGraph'
 import { NodeDetailPanel } from '../../components/graph/NodeDetailPanel'
 import { SearchBar } from '../../components/graph/SearchBar'
 import { TypeFilter } from '../../components/graph/TypeFilter'
+import { ZoomControls } from '../../components/graph/ZoomControls'
 import type { GraphData } from '../../lib/neo4j/types'
 
 // ---------------------------------------------------------------------------
@@ -51,6 +53,7 @@ async function fetchNodeNeighborhood(
 // ---------------------------------------------------------------------------
 
 export default function ExplorarPage() {
+  const graphRef = useRef<ForceGraphHandle>(null)
   const [graphData, setGraphData] = useState<GraphData>(EMPTY_GRAPH)
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null)
   const [visibleLabels, setVisibleLabels] = useState<ReadonlySet<string>>(
@@ -124,6 +127,11 @@ export default function ExplorarPage() {
     setVisibleLabels(types)
   }, [])
 
+  // Zoom controls
+  const handleZoomIn = useCallback(() => graphRef.current?.zoomIn(), [])
+  const handleZoomOut = useCallback(() => graphRef.current?.zoomOut(), [])
+  const handleZoomToFit = useCallback(() => graphRef.current?.zoomToFit(), [])
+
   const hasData = graphData.nodes.length > 0
 
   return (
@@ -189,9 +197,21 @@ export default function ExplorarPage() {
             </div>
           )}
 
+          {/* Zoom controls overlay */}
+          {hasData && (
+            <div className="absolute bottom-4 right-4 z-10">
+              <ZoomControls
+                onZoomIn={handleZoomIn}
+                onZoomOut={handleZoomOut}
+                onZoomToFit={handleZoomToFit}
+              />
+            </div>
+          )}
+
           {/* Force graph */}
           {hasData && (
             <ForceGraph
+              ref={graphRef}
               data={graphData}
               onNodeClick={handleNodeClick}
               selectedNodeId={selectedNodeId}

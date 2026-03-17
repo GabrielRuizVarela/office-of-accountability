@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import ForceGraph2D from 'react-force-graph-2d'
 import type { ForceGraphMethods, NodeObject } from 'react-force-graph-2d'
 
@@ -77,6 +77,12 @@ function toFGData(data: GraphData): FGGraphData {
 // Props
 // ---------------------------------------------------------------------------
 
+export interface ForceGraphHandle {
+  zoomIn: () => void
+  zoomOut: () => void
+  zoomToFit: () => void
+}
+
 export interface ForceGraphProps {
   readonly data: GraphData
   readonly onNodeClick?: (nodeId: string) => void
@@ -90,17 +96,42 @@ export interface ForceGraphProps {
 // Component
 // ---------------------------------------------------------------------------
 
-export function ForceGraph({
-  data,
-  onNodeClick,
-  selectedNodeId,
-  visibleLabels,
-  width,
-  height,
-}: ForceGraphProps) {
+export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function ForceGraph(
+  {
+    data,
+    onNodeClick,
+    selectedNodeId,
+    visibleLabels,
+    width,
+    height,
+  },
+  ref,
+) {
   const graphRef = useRef<ForceGraphMethods<FGNode, FGLink> | undefined>(undefined)
   const containerRef = useRef<HTMLDivElement>(null)
   const [dimensions, setDimensions] = useState({ width: width ?? 800, height: height ?? 600 })
+
+  // Expose zoom controls to parent
+  const ZOOM_STEP = 1.5
+  useImperativeHandle(ref, () => ({
+    zoomIn() {
+      const fg = graphRef.current
+      if (!fg) return
+      const currentZoom = fg.zoom()
+      fg.zoom(currentZoom * ZOOM_STEP, 300)
+    },
+    zoomOut() {
+      const fg = graphRef.current
+      if (!fg) return
+      const currentZoom = fg.zoom()
+      fg.zoom(currentZoom / ZOOM_STEP, 300)
+    },
+    zoomToFit() {
+      const fg = graphRef.current
+      if (!fg) return
+      fg.zoomToFit(400, 40)
+    },
+  }))
 
   // Responsive sizing
   useEffect(() => {
@@ -264,4 +295,4 @@ export function ForceGraph({
       />
     </div>
   )
-}
+})
