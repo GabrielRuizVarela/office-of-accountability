@@ -48,3 +48,19 @@ export type {
   FetchLegislatorDetailsResult,
   FetchError,
 } from './fetcher'
+
+export {
+  slugify,
+  parseComoVotoDate,
+  transformPolitician,
+  transformPoliticianWithDetail,
+  transformParties,
+  transformProvinces,
+  transformVotingSession,
+  transformCastVotes,
+  transformMemberOf,
+  transformRepresents,
+  transformAll,
+} from './transformer'
+
+export type { TransformResult, TransformInput } from './transformer'
