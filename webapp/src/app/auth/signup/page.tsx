@@ -125,12 +125,13 @@ export default function SignUpPage() {
           signInRes.status === 302 ||
           signInRes.status === 200
         ) {
-          window.location.href = '/'
+          // Redirect to home — verification email was sent
+          window.location.href = '/?registered=true'
           return
         }
 
         // Registration succeeded but auto-signin failed — redirect to sign-in
-        window.location.href = '/auth/signin'
+        window.location.href = '/auth/signin?registered=true'
       } catch {
         dispatch({ type: 'SET_ERROR', error: 'Error de conexión. Intenta de nuevo.' })
       }
