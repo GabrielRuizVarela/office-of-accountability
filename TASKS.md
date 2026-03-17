@@ -253,7 +253,7 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 ### SEO
 - [x] Schema.org structured data: `Person` + `GovernmentOrganization`
 - [x] OG tags: auto-generated per politician (name, party, province, photo)
-- [ ] `sitemap.xml` generation: all politician slugs + province pages
+- [x] `sitemap.xml` generation: all politician slugs + province pages
 - [x] Canonical URLs to prevent duplicate content
 
 ### Security
