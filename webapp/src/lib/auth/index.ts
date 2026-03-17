@@ -1,5 +1,6 @@
 export { Neo4jAdapter } from './neo4j-adapter'
 export { hashPassword, verifyPassword } from './password'
+export { authConfig } from './config'
 export {
   signUpSchema,
   signInSchema,
