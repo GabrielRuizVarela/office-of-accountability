@@ -2,12 +2,18 @@ export {
   transformNode,
   transformRelationship,
   transformNeighborRecords,
+  transformExpandResult,
   transformNodeRecords,
   mergeGraphData,
   emptyGraphData,
 } from './transform'
 
-export { getNodeNeighborhood, searchNodes, searchNodesByLabel } from './queries'
+export {
+  getNodeNeighborhood,
+  expandNodeNeighborhood,
+  searchNodes,
+  searchNodesByLabel,
+} from './queries'
 export type { SearchResult } from './queries'
 
 export {
