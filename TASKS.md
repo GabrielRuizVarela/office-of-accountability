@@ -170,7 +170,7 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
   - Read endpoints: 60 req/min per IP
   - Search endpoint: 30 req/min per IP (heavier query)
 - [x] Error handling: structured error responses, no Neo4j internals leaked
-- [ ] Node ID validation: reject non-UUID/non-integer IDs before query
+- [x] Node ID validation: reject non-UUID/non-integer IDs before query
 - [x] Response size cap: max 500 nodes per response (prevent memory exhaustion)
 
 ### Verification
