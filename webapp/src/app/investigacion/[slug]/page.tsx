@@ -18,6 +18,7 @@ import { getInvestigationBySlug } from '@/lib/investigation'
 import type { Investigation } from '@/lib/investigation'
 
 import { InvestigationBodyView } from '@/components/investigation/InvestigationBodyView'
+import { PrintButton } from '@/components/investigation/PrintButton'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -151,6 +152,11 @@ export default async function InvestigationPage({ params }: PageProps) {
             ))}
           </div>
         )}
+
+        {/* Actions */}
+        <div className="mt-6 print:hidden">
+          <PrintButton />
+        </div>
 
         {/* Divider */}
         <hr className="my-8 border-zinc-800" />

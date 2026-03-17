@@ -24,3 +24,121 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ---------------------------------------------------------------------------
+ * Print styles — converts dark theme to clean printable layout for PDF export
+ * --------------------------------------------------------------------------- */
+
+@media print {
+  /* White background, black text */
+  body,
+  .min-h-screen {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Hide non-content elements */
+  header,
+  footer,
+  nav,
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  /* Remove dark backgrounds from content area */
+  main,
+  article,
+  div {
+    background: transparent !important;
+    border-color: #d1d5db !important;
+  }
+
+  /* Text colors for print */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: black !important;
+  }
+
+  p,
+  span,
+  li,
+  td,
+  th,
+  time,
+  a {
+    color: #1f2937 !important;
+  }
+
+  /* Tag pills: light background for print */
+  a[href*='/investigaciones?tag='],
+  .rounded-full {
+    background: #f3f4f6 !important;
+    color: #374151 !important;
+    border: 1px solid #d1d5db !important;
+    text-decoration: none !important;
+  }
+
+  /* Graph node embed pills: light style */
+  [data-node-id] {
+    background: #f3f4f6 !important;
+    border: 1px solid #d1d5db !important;
+    color: #374151 !important;
+    text-decoration: none !important;
+  }
+
+  /* TipTap prose: override dark theme */
+  .prose,
+  .prose-invert,
+  .prose-zinc {
+    color: #1f2937 !important;
+  }
+
+  .prose a {
+    color: #2563eb !important;
+  }
+
+  .prose blockquote {
+    border-color: #9ca3af !important;
+    color: #4b5563 !important;
+  }
+
+  .prose code {
+    background: #f3f4f6 !important;
+    color: #1f2937 !important;
+  }
+
+  .prose pre {
+    background: #f9fafb !important;
+    border: 1px solid #d1d5db !important;
+  }
+
+  .prose pre code {
+    color: #1f2937 !important;
+  }
+
+  .prose hr {
+    border-color: #d1d5db !important;
+  }
+
+  /* Images: constrain to page width */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* Avoid page breaks inside headings and after them */
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  /* Page margins */
+  @page {
+    margin: 2cm;
+  }
+}
