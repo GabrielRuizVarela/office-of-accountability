@@ -15,19 +15,19 @@ import { z } from 'zod/v4'
 // ---------------------------------------------------------------------------
 
 /** Chamber identifier */
-export const ChamberSchema = z.enum(['diputados', 'senadores'])
+export const ChamberSchema = z.enum(['diputados', 'senadores', 'diputados+senadores'])
 export type Chamber = z.infer<typeof ChamberSchema>
 
 /** Coalition codes used in Como Voto */
-export const CoalitionSchema = z.enum(['PJ', 'UCR', 'PRO', 'LLA', 'OTROS'])
+export const CoalitionSchema = z.enum(['PJ', 'UCR', 'PRO', 'JxC', 'LLA', 'OTROS'])
 export type Coalition = z.infer<typeof CoalitionSchema>
 
-/** Vote value as cast by a legislator */
-export const VoteValueSchema = z.enum(['AFIRMATIVO', 'NEGATIVO', 'ABSTENCION', 'AUSENTE', ''])
+/** Vote value as cast by a legislator (free-form string in source data) */
+export const VoteValueSchema = z.string()
 export type VoteValue = z.infer<typeof VoteValueSchema>
 
-/** Vote type classification */
-export const VoteTypeSchema = z.enum(['EN GENERAL', 'EN PARTICULAR', ''])
+/** Vote type classification (free-form string in source data) */
+export const VoteTypeSchema = z.string()
 export type VoteType = z.infer<typeof VoteTypeSchema>
 
 /**
@@ -148,8 +148,11 @@ export const VotingSessionSchema = z.object({
 })
 export type VotingSession = z.infer<typeof VotingSessionSchema>
 
-/** Array of voting sessions (the full votaciones.json file) */
-export const VotingSessionsFileSchema = z.array(VotingSessionSchema)
+/** Voting sessions file — dict keyed by chamber, each value is an array of sessions */
+export const VotingSessionsFileSchema = z.object({
+  diputados: z.array(VotingSessionSchema),
+  senadores: z.array(VotingSessionSchema),
+})
 
 // ---------------------------------------------------------------------------
 // Neo4j node parameter types — used by the loader to MERGE nodes
