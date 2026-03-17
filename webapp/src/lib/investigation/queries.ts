@@ -18,6 +18,16 @@ import type {
 } from './types'
 
 // ---------------------------------------------------------------------------
+// Constants
+// ---------------------------------------------------------------------------
+
+/** Maximum query execution time in milliseconds (security: prevent graph bombs) */
+const QUERY_TIMEOUT_MS = 5_000
+
+/** Transaction config applied to all user-facing queries */
+const TX_CONFIG = { timeout: QUERY_TIMEOUT_MS }
+
+// ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
@@ -191,7 +201,7 @@ export async function createInvestigation(
       }
 
       return createResult
-    })
+    }, TX_CONFIG)
 
     return mapInvestigationWithAuthor(result.records[0])
   } finally {
@@ -219,6 +229,7 @@ export async function getInvestigationBySlug(
        RETURN i, author
        LIMIT 1`,
       { slug },
+      TX_CONFIG,
     )
 
     if (result.records.length === 0) {
@@ -245,6 +256,7 @@ export async function getInvestigationById(id: string): Promise<InvestigationWit
        RETURN i, author
        LIMIT 1`,
       { id },
+      TX_CONFIG,
     )
 
     if (result.records.length === 0) {
@@ -373,7 +385,7 @@ export async function updateInvestigation(
       }
 
       return updateResult
-    })
+    }, TX_CONFIG)
 
     if (!result || result.records.length === 0) {
       return null
@@ -422,7 +434,7 @@ export async function deleteInvestigation(id: string, authorId: string): Promise
       )
 
       return true
-    })
+    }, TX_CONFIG)
   } finally {
     await session.close()
   }
@@ -466,6 +478,7 @@ export async function listInvestigations(
          WHERE true ${tagFilter}
          RETURN count(i) AS total`,
         params,
+        TX_CONFIG,
       ),
       session.run(
         `MATCH (i:Investigation {status: 'published'})
@@ -476,6 +489,7 @@ export async function listInvestigations(
          SKIP $skip
          LIMIT $limit`,
         params,
+        TX_CONFIG,
       ),
     ])
 
@@ -512,6 +526,7 @@ export async function listMyInvestigations(
         `MATCH (i:Investigation {author_id: $authorId})
          RETURN count(i) AS total`,
         { authorId },
+        TX_CONFIG,
       ),
       session.run(
         `MATCH (i:Investigation {author_id: $authorId})
@@ -521,6 +536,7 @@ export async function listMyInvestigations(
          SKIP $skip
          LIMIT $limit`,
         { authorId, skip, limit },
+        TX_CONFIG,
       ),
     ])
 
@@ -562,6 +578,7 @@ export async function getInvestigationsReferencingNode(
        ORDER BY i.published_at DESC
        LIMIT $limit`,
       { nodeId, limit },
+      TX_CONFIG,
     )
 
     return result.records.map(mapListItem)
@@ -583,6 +600,8 @@ export async function getAllTags(): Promise<readonly string[]> {
        UNWIND i.tags AS tag
        RETURN DISTINCT tag
        ORDER BY tag`,
+      {},
+      TX_CONFIG,
     )
 
     return result.records.map((r: Neo4jRecord) => r.get('tag') as string)
