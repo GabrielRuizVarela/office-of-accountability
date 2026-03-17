@@ -104,11 +104,7 @@ const BTREE_INDEXES = [
  * Build Cypher for a unique node property constraint.
  * Uses IF NOT EXISTS for idempotent execution.
  */
-function uniqueConstraintCypher(
-  name: string,
-  label: string,
-  property: string,
-): string {
+function uniqueConstraintCypher(name: string, label: string, property: string): string {
   return `CREATE CONSTRAINT ${name} IF NOT EXISTS FOR (n:${label}) REQUIRE n.${property} IS UNIQUE`
 }
 
@@ -130,11 +126,7 @@ function fulltextIndexCypher(
  * Build Cypher for a standard range index on a single property.
  * Uses IF NOT EXISTS for idempotent execution.
  */
-function rangeIndexCypher(
-  name: string,
-  label: string,
-  property: string,
-): string {
+function rangeIndexCypher(name: string, label: string, property: string): string {
   return `CREATE INDEX ${name} IF NOT EXISTS FOR (n:${label}) ON (n.${property})`
 }
 
@@ -173,9 +165,7 @@ export async function initializeSchema(): Promise<SchemaInitResult> {
   // Create full-text indexes
   for (const idx of FULLTEXT_INDEXES) {
     try {
-      await executeWrite(
-        fulltextIndexCypher(idx.name, idx.labels, idx.properties),
-      )
+      await executeWrite(fulltextIndexCypher(idx.name, idx.labels, idx.properties))
       fulltextIndexesCreated += 1
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error)
