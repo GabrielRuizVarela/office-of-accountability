@@ -32,4 +32,4 @@ export type {
   VoteHistoryResult,
 } from './politician-queries'
 
-export { nodeIdSchema } from './validation'
+export { nodeIdSchema, politicianSlugSchema } from './validation'

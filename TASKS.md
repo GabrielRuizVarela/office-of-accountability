@@ -257,8 +257,8 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 - [x] Canonical URLs to prevent duplicate content
 
 ### Security
-- [ ] Slug validation: reject traversal attempts (`../`, encoded slashes)
-- [ ] ISR cache: set appropriate `stale-while-revalidate` — no serving stale data indefinitely
+- [x] Slug validation: reject traversal attempts (`../`, encoded slashes)
+- [x] ISR cache: set appropriate `stale-while-revalidate` — no serving stale data indefinitely
 - [x] Sanitize all politician data before HTML rendering (prevent stored XSS)
 
 ### Verification
