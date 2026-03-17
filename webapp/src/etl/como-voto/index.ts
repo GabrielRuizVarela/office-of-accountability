@@ -34,3 +34,17 @@ export type {
   MemberOfRelParams,
   RepresentsRelParams,
 } from './types'
+
+export {
+  fetchLegislators,
+  fetchVotingSessions,
+  fetchLegislatorDetail,
+  fetchLegislatorDetails,
+} from './fetcher'
+
+export type {
+  FetchLegislatorsResult,
+  FetchVotingSessionsResult,
+  FetchLegislatorDetailsResult,
+  FetchError,
+} from './fetcher'
