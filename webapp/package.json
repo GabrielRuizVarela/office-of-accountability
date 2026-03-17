@@ -1,0 +1,33 @@
+{
+  "name": "webapp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "start": "vite preview",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "dev:next": "next dev"
+  },
+  "dependencies": {
+    "next": "16.1.7",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-rsc": "^0.5.21",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.7",
+    "react-server-dom-webpack": "^19.2.4",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vinext": "^0.0.30",
+    "vite": "^8.0.0"
+  },
+  "type": "module"
+}
