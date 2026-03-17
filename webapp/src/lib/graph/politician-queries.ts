@@ -1,0 +1,234 @@
+/**
+ * Politician-specific query functions for profile pages.
+ *
+ * These queries power the server-rendered /politico/[slug] pages.
+ * All queries use parameterized Cypher (no string interpolation).
+ */
+
+import type { Record as Neo4jRecord } from 'neo4j-driver-lite'
+
+import { getDriver } from '../neo4j/client'
+
+import { transformNode } from './transform'
+
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
+
+/** Politician profile data returned by getPoliticianBySlug */
+export interface PoliticianProfile {
+  readonly id: string
+  readonly name: string
+  readonly fullName: string
+  readonly slug: string
+  readonly chamber: string
+  readonly province: string
+  readonly bloc: string
+  readonly coalition: string
+  readonly photo: string
+  readonly totalVotes: number
+  readonly presencePct: number
+  readonly properties: Readonly<Record<string, unknown>>
+  readonly party: { readonly id: string; readonly name: string } | null
+  readonly provinceNode: { readonly id: string; readonly name: string } | null
+}
+
+/** A single vote record in the politician's vote history */
+export interface VoteRecord {
+  readonly sessionId: string
+  readonly sessionTitle: string
+  readonly sessionDate: string
+  readonly sessionResult: string
+  readonly sessionType: string
+  readonly vote: string
+  readonly chamber: string
+}
+
+/** Paginated vote history result */
+export interface VoteHistoryResult {
+  readonly votes: readonly VoteRecord[]
+  readonly totalCount: number
+  readonly page: number
+  readonly limit: number
+  readonly hasMore: boolean
+}
+
+// ---------------------------------------------------------------------------
+// getPoliticianBySlug
+// ---------------------------------------------------------------------------
+
+/**
+ * Fetch a politician profile by slug, including their current party and province.
+ *
+ * Returns null if no politician with that slug exists.
+ */
+export async function getPoliticianBySlug(slug: string): Promise<PoliticianProfile | null> {
+  const session = getDriver().session()
+
+  try {
+    const result = await session.run(
+      `MATCH (p:Politician {slug: $slug})
+       OPTIONAL MATCH (p)-[:MEMBER_OF]->(party:Party)
+       OPTIONAL MATCH (p)-[:REPRESENTS]->(prov:Province)
+       RETURN p, party, prov
+       LIMIT 1`,
+      { slug },
+    )
+
+    if (result.records.length === 0) {
+      return null
+    }
+
+    const record = result.records[0]
+    const politicianNode = transformNode(record.get('p'))
+    const props = politicianNode.properties
+
+    const partyNode = record.get('party')
+    const provNode = record.get('prov')
+
+    return {
+      id: politicianNode.id,
+      name: asString(props.name),
+      fullName: asString(props.full_name),
+      slug: asString(props.slug),
+      chamber: asString(props.chamber),
+      province: asString(props.province),
+      bloc: asString(props.bloc),
+      coalition: asString(props.coalition),
+      photo: asString(props.photo),
+      totalVotes: asNumber(props.total_votes),
+      presencePct: asNumber(props.presence_pct),
+      properties: props,
+      party: partyNode
+        ? {
+            id: asString(transformNode(partyNode).id),
+            name: asString(transformNode(partyNode).properties.name),
+          }
+        : null,
+      provinceNode: provNode
+        ? {
+            id: asString(transformNode(provNode).id),
+            name: asString(transformNode(provNode).properties.name),
+          }
+        : null,
+    }
+  } finally {
+    await session.close()
+  }
+}
+
+// ---------------------------------------------------------------------------
+// getPoliticianVoteHistory
+// ---------------------------------------------------------------------------
+
+/**
+ * Fetch paginated vote history for a politician.
+ *
+ * Returns the politician's CAST_VOTE relationships with their linked
+ * LegislativeVote sessions, sorted by date descending (most recent first).
+ */
+export async function getPoliticianVoteHistory(
+  slug: string,
+  page: number = 1,
+  limit: number = 20,
+): Promise<VoteHistoryResult> {
+  const skip = (page - 1) * limit
+  const session = getDriver().session()
+
+  try {
+    // Run count + page queries in parallel
+    const [countResult, pageResult] = await Promise.all([
+      session.run(
+        `MATCH (p:Politician {slug: $slug})-[:CAST_VOTE]->(v:LegislativeVote)
+         RETURN count(v) AS total`,
+        { slug },
+      ),
+      session.run(
+        `MATCH (p:Politician {slug: $slug})-[cv:CAST_VOTE]->(v:LegislativeVote)
+         RETURN cv.vote AS vote, v
+         ORDER BY v.date DESC
+         SKIP $skip
+         LIMIT $limit`,
+        { slug, skip: toNeo4jInt(skip), limit: toNeo4jInt(limit) },
+      ),
+    ])
+
+    const totalCount = extractCount(countResult.records)
+    const votes = pageResult.records.map(mapVoteRecord)
+
+    return {
+      votes,
+      totalCount,
+      page,
+      limit,
+      hasMore: skip + votes.length < totalCount,
+    }
+  } finally {
+    await session.close()
+  }
+}
+
+// ---------------------------------------------------------------------------
+// getAllPoliticianSlugs
+// ---------------------------------------------------------------------------
+
+/**
+ * Fetch all politician slugs for static page generation and sitemap.
+ */
+export async function getAllPoliticianSlugs(): Promise<readonly string[]> {
+  const session = getDriver().session()
+
+  try {
+    const result = await session.run(
+      `MATCH (p:Politician)
+       WHERE p.slug IS NOT NULL
+       RETURN p.slug AS slug
+       ORDER BY p.slug`,
+    )
+
+    return result.records.map((r: Neo4jRecord) => r.get('slug') as string)
+  } finally {
+    await session.close()
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Internal helpers
+// ---------------------------------------------------------------------------
+
+function asString(value: unknown): string {
+  return typeof value === 'string' ? value : ''
+}
+
+function asNumber(value: unknown): number {
+  if (typeof value === 'number') return value
+  if (value && typeof value === 'object' && 'toNumber' in value) {
+    return (value as { toNumber: () => number }).toNumber()
+  }
+  return 0
+}
+
+function toNeo4jInt(value: number): number {
+  // neo4j-driver-lite accepts plain JS numbers for integers in params
+  return value
+}
+
+function extractCount(records: Neo4jRecord[]): number {
+  if (records.length === 0) return 0
+  return asNumber(records[0].get('total'))
+}
+
+function mapVoteRecord(record: Neo4jRecord): VoteRecord {
+  const voteNode = transformNode(record.get('v'))
+  const props = voteNode.properties
+
+  return {
+    sessionId: voteNode.id,
+    sessionTitle: asString(props.title),
+    sessionDate: asString(props.date),
+    sessionResult: asString(props.result),
+    sessionType: asString(props.type),
+    vote: asString(record.get('vote')),
+    chamber: asString(props.chamber),
+  }
+}
