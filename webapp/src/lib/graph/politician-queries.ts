@@ -144,18 +144,18 @@ export async function getPoliticianVoteHistory(
   limit: number = 20,
 ): Promise<VoteHistoryResult> {
   const skip = (page - 1) * limit
-  const session = getDriver().session()
+  const countSession = getDriver().session()
+  const pageSession = getDriver().session()
 
   try {
-    // Run count + page queries in parallel
     const [countResult, pageResult] = await Promise.all([
-      session.run(
+      countSession.run(
         `MATCH (p:Politician {slug: $slug})-[:CAST_VOTE]->(v:LegislativeVote)
          RETURN count(v) AS total`,
         { slug },
         TX_CONFIG,
       ),
-      session.run(
+      pageSession.run(
         `MATCH (p:Politician {slug: $slug})-[cv:CAST_VOTE]->(v:LegislativeVote)
          RETURN cv.vote AS vote, v
          ORDER BY v.date DESC
@@ -177,7 +177,7 @@ export async function getPoliticianVoteHistory(
       hasMore: skip + votes.length < totalCount,
     }
   } finally {
-    await session.close()
+    await Promise.all([countSession.close(), pageSession.close()])
   }
 }
 
