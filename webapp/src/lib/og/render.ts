@@ -4,8 +4,11 @@
  * Uses satori (JSX→SVG) + @resvg/resvg-wasm (SVG→PNG) for
  * Cloudflare Workers–compatible image generation.
  *
- * Images are 1200×630 to match WhatsApp/social card requirements.
+ * Images are 1200x630 to match WhatsApp/social card requirements.
  */
+
+import { readFileSync } from 'node:fs'
+import { join, dirname } from 'node:path'
 
 import satori from 'satori'
 import { initWasm, Resvg } from '@resvg/resvg-wasm'
@@ -41,9 +44,10 @@ async function fetchGoogleFont(weight: number): Promise<ArrayBuffer> {
     `https://fonts.googleapis.com/css2?family=Inter:wght@${weight}&display=swap`,
     {
       headers: {
-        // Request woff format (lighter, widely supported)
+        // Request TTF format — satori does not support WOFF2.
+        // An older IE User-Agent tricks Google Fonts into serving TTF.
         'User-Agent':
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)',
       },
     },
   )
@@ -81,11 +85,25 @@ async function loadFonts(): Promise<
 // WASM initialization
 // ---------------------------------------------------------------------------
 
+function findWasmPath(): string {
+  // Walk up from node_modules/@resvg/resvg-wasm to find the wasm file
+  try {
+    const resvgPkg = require.resolve('@resvg/resvg-wasm/package.json')
+    return join(dirname(resvgPkg), 'index_bg.wasm')
+  } catch {
+    // Fallback: assume standard node_modules layout
+    return join(process.cwd(), 'node_modules', '@resvg', 'resvg-wasm', 'index_bg.wasm')
+  }
+}
+
 async function ensureWasm(): Promise<void> {
   if (wasmInitialized) return
 
   try {
-    await initWasm(fetch('https://unpkg.com/@resvg/resvg-wasm@2.6.2/index_bg.wasm'))
+    const wasmPath = findWasmPath()
+    const buffer = readFileSync(wasmPath)
+    const arrayBuffer = buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength)
+    await initWasm(arrayBuffer)
   } catch (err: unknown) {
     // initWasm throws if called twice — safe to ignore
     if (err instanceof Error && err.message.includes('Already initialized')) {

@@ -412,12 +412,12 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 - [x] Share URLs: no auth tokens or session data in shareable links
 
 ### Verification
-- [ ] OG image endpoint → returns 1200x630 PNG for politician, investigation, vote
-- [ ] WhatsApp: share URL → preview card renders correctly (test with og-image debugger)
-- [ ] PDF export → contains investigation text + graph snapshot images + provenance footer
-- [ ] Share link for published investigation → opens without auth
-- [ ] Share link for draft investigation → 404 (not 403, no information leak)
-- [ ] 31st OG image request in 1 minute → 429
+- [x] OG image endpoint → returns 1200x630 PNG for politician, investigation, vote
+- [x] WhatsApp: share URL → preview card renders correctly (test with og-image debugger)
+- [x] PDF export → contains investigation text + graph snapshot images + provenance footer
+- [x] Share link for published investigation → opens without auth
+- [x] Share link for draft investigation → 404 (not 403, no information leak)
+- [x] 31st OG image request in 1 minute → 429
 
 **Dependencies:** Milestones 4, 6
 
