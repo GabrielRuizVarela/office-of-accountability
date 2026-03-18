@@ -8,6 +8,7 @@ import { useCallback, useState } from 'react'
 
 import { GraphNodeEmbedExtension, GraphNodePicker } from './GraphNodeEmbed'
 import { SubGraphEmbedExtension } from './SubGraphEmbed'
+import { EdgeCitationExtension, EdgeCitationPicker } from './EdgeCitationEmbed'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -34,6 +35,17 @@ function extractNodeRefs(json: Record<string, unknown>): readonly string[] {
       const attrs = node.attrs as Record<string, unknown> | undefined
       if (attrs && typeof attrs.nodeId === 'string' && attrs.nodeId) {
         ids.add(attrs.nodeId)
+      }
+    }
+    if (node.type === 'edgeCitation') {
+      const attrs = node.attrs as Record<string, unknown> | undefined
+      if (attrs) {
+        if (typeof attrs.sourceNodeId === 'string' && attrs.sourceNodeId) {
+          ids.add(attrs.sourceNodeId)
+        }
+        if (typeof attrs.targetNodeId === 'string' && attrs.targetNodeId) {
+          ids.add(attrs.targetNodeId)
+        }
       }
     }
     const content = node.content as Array<Record<string, unknown>> | undefined
@@ -92,10 +104,12 @@ function EditorToolbar({
   editor,
   onInsertEmbed,
   onInsertSubGraph,
+  onInsertEdgeCitation,
 }: {
   readonly editor: ReturnType<typeof useEditor>
   readonly onInsertEmbed: () => void
   readonly onInsertSubGraph: () => void
+  readonly onInsertEdgeCitation: () => void
 }) {
   const addLink = useCallback(() => {
     if (!editor) return
@@ -233,6 +247,9 @@ function EditorToolbar({
       <ToolbarButton onClick={onInsertSubGraph} title="Insertar sub-grafo interactivo">
         🕸 Grafo
       </ToolbarButton>
+      <ToolbarButton onClick={onInsertEdgeCitation} title="Citar relación con procedencia">
+        🔗 Relación
+      </ToolbarButton>
 
       <ToolbarDivider />
 
@@ -265,6 +282,7 @@ export function InvestigationEditor({
   editable = true,
 }: InvestigationEditorProps) {
   const [showNodePicker, setShowNodePicker] = useState(false)
+  const [showEdgePicker, setShowEdgePicker] = useState(false)
   const [pickerMode, setPickerMode] = useState<'inline' | 'subgraph'>('inline')
 
   const editor = useEditor({
@@ -279,6 +297,7 @@ export function InvestigationEditor({
       }),
       GraphNodeEmbedExtension,
       SubGraphEmbedExtension,
+      EdgeCitationExtension,
     ],
     content: initialContent ? JSON.parse(initialContent) : undefined,
     editable,
@@ -305,6 +324,11 @@ export function InvestigationEditor({
   const handleInsertSubGraph = useCallback(() => {
     setPickerMode('subgraph')
     setShowNodePicker(true)
+  }, [])
+
+  const handleInsertEdgeCitation = useCallback(() => {
+    setShowEdgePicker(true)
+    setShowNodePicker(false)
   }, [])
 
   const handleNodeSelect = useCallback(
@@ -343,19 +367,51 @@ export function InvestigationEditor({
     [editor, pickerMode],
   )
 
+  const handleEdgeCitationSelect = useCallback(
+    (edge: { sourceNodeId: string; targetNodeId: string; relType: string; sourceName: string; targetName: string }) => {
+      if (!editor) return
+      editor
+        .chain()
+        .focus()
+        .insertContent({
+          type: 'edgeCitation',
+          attrs: {
+            sourceNodeId: edge.sourceNodeId,
+            targetNodeId: edge.targetNodeId,
+            relType: edge.relType,
+            sourceName: edge.sourceName,
+            targetName: edge.targetName,
+          },
+        })
+        .run()
+      setShowEdgePicker(false)
+    },
+    [editor],
+  )
+
   const handlePickerClose = useCallback(() => {
     setShowNodePicker(false)
   }, [])
 
+  const handleEdgePickerClose = useCallback(() => {
+    setShowEdgePicker(false)
+  }, [])
+
   return (
     <div className="relative overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900">
-      {editable && <EditorToolbar editor={editor} onInsertEmbed={handleInsertEmbed} onInsertSubGraph={handleInsertSubGraph} />}
+      {editable && <EditorToolbar editor={editor} onInsertEmbed={handleInsertEmbed} onInsertSubGraph={handleInsertSubGraph} onInsertEdgeCitation={handleInsertEdgeCitation} />}
 
       <EditorContent editor={editor} />
 
       {showNodePicker && (
         <div className="absolute left-2 top-12">
           <GraphNodePicker onSelect={handleNodeSelect} onClose={handlePickerClose} />
+        </div>
+      )}
+
+      {showEdgePicker && (
+        <div className="absolute left-2 top-12">
+          <EdgeCitationPicker onSelect={handleEdgeCitationSelect} onClose={handleEdgePickerClose} />
         </div>
       )}
     </div>

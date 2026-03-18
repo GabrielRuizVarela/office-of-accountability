@@ -14,6 +14,7 @@ import StarterKit from '@tiptap/starter-kit'
 import { EditorContent, NodeViewWrapper, ReactNodeViewRenderer, useEditor } from '@tiptap/react'
 
 import { SubGraphEmbedReadExtension } from './SubGraphEmbed'
+import { EdgeCitationReadExtension } from './EdgeCitationEmbed'
 
 // ---------------------------------------------------------------------------
 // Label colors (matches ForceGraph / SearchBar / GraphNodeEmbed)
@@ -111,6 +112,7 @@ export function InvestigationBodyView({ content }: InvestigationBodyViewProps) {
       }),
       GraphNodeEmbedReadExtension,
       SubGraphEmbedReadExtension,
+      EdgeCitationReadExtension,
     ],
     content: content ? JSON.parse(content) : undefined,
     editable: false,

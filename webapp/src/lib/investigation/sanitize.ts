@@ -160,6 +160,17 @@ export function extractEmbeddedNodeIds(bodyJson: string): readonly string[] {
         ids.add(attrs.nodeId)
       }
     }
+    if (node.type === 'edgeCitation') {
+      const attrs = node.attrs as Record<string, unknown> | undefined
+      if (attrs) {
+        if (typeof attrs.sourceNodeId === 'string' && attrs.sourceNodeId) {
+          ids.add(attrs.sourceNodeId)
+        }
+        if (typeof attrs.targetNodeId === 'string' && attrs.targetNodeId) {
+          ids.add(attrs.targetNodeId)
+        }
+      }
+    }
     if (node.content) {
       for (const child of node.content) {
         walk(child)

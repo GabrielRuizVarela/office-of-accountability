@@ -14,6 +14,7 @@ export {
   searchNodes,
   searchNodesByLabel,
   queryNodes,
+  getEdgeProvenance,
 } from './queries'
 export type { SearchResult, StructuredQueryFilters, StructuredQueryResult } from './queries'
 
