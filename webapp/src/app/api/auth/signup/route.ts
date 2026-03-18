@@ -149,6 +149,10 @@ export async function POST(request: Request): Promise<Response> {
       return Response.json({ success: false, error: 'Database unavailable' }, { status: 503 })
     }
 
-    throw error
+    console.error('Signup error:', error)
+    return Response.json(
+      { success: false, error: 'Internal server error' },
+      { status: 500 },
+    )
   }
 }

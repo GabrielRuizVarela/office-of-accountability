@@ -196,8 +196,9 @@ export function Neo4jAdapter(): Adapter {
     async useVerificationToken({ identifier, token }) {
       const result = await writeQuery(
         `MATCH (vt:VerificationToken {identifier: $identifier, token: $token})
+         WITH vt, vt.identifier AS identifier, vt.token AS token, vt.expires AS expires
          DELETE vt
-         RETURN vt.identifier AS identifier, vt.token AS token, vt.expires AS expires`,
+         RETURN identifier, token, expires`,
         { identifier, token },
         (record: Neo4jRecord) => ({
           identifier: String(record.get('identifier')),
