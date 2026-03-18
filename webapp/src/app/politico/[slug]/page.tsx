@@ -16,6 +16,7 @@ import { notFound } from 'next/navigation'
 
 import { getPoliticianBySlug, getPoliticianVoteHistory, politicianSlugSchema } from '@/lib/graph'
 import type { PoliticianProfile } from '@/lib/graph'
+import { getInvestigationsReferencingNode } from '@/lib/investigation'
 
 import { PoliticianGraph } from '@/components/politician/PoliticianGraph'
 import { VoteHistoryTable } from '@/components/politician/VoteHistoryTable'
@@ -90,9 +91,10 @@ export default async function PoliticianPage({ params }: PageProps) {
     notFound()
   }
 
-  const [politician, voteHistory] = await Promise.all([
+  const [politician, voteHistory, relatedInvestigations] = await Promise.all([
     getPoliticianBySlug(slug),
     getPoliticianVoteHistory(slug, 1, 20),
+    getInvestigationsReferencingNode(slug, 10),
   ])
 
   if (!politician) {
@@ -186,6 +188,39 @@ export default async function PoliticianPage({ params }: PageProps) {
             </Link>
           </p>
         </section>
+
+        {/* Related investigations */}
+        {relatedInvestigations.length > 0 && (
+          <section className="mb-8">
+            <h2 className="mb-4 text-xl font-semibold text-zinc-100">Investigaciones</h2>
+            <div className="space-y-3">
+              {relatedInvestigations.map((inv) => (
+                <Link
+                  key={inv.id}
+                  href={`/investigacion/${inv.slug}`}
+                  className="block rounded-lg border border-zinc-800 bg-zinc-900/50 px-4 py-3 transition-colors hover:border-zinc-700 hover:bg-zinc-900"
+                >
+                  <h3 className="font-medium text-zinc-100">{inv.title}</h3>
+                  {inv.summary && (
+                    <p className="mt-1 line-clamp-2 text-sm text-zinc-400">{inv.summary}</p>
+                  )}
+                  <div className="mt-2 flex items-center gap-3 text-xs text-zinc-500">
+                    {inv.author_name && <span>{inv.author_name}</span>}
+                    {inv.published_at && (
+                      <time dateTime={inv.published_at}>
+                        {new Date(inv.published_at).toLocaleDateString('es-AR', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        })}
+                      </time>
+                    )}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Vote history */}
         <VoteHistoryTable slug={slug} initialData={voteHistory} />

@@ -116,6 +116,7 @@ export function InvestigationBodyView({ content }: InvestigationBodyViewProps) {
     ],
     content: content ? JSON.parse(content) : undefined,
     editable: false,
+    immediatelyRender: false,
     editorProps: {
       attributes: {
         class: 'prose prose-invert prose-zinc max-w-none px-0 py-0 outline-none focus:outline-none',
