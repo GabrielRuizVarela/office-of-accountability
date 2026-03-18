@@ -29,6 +29,11 @@ import {
   deleteInvestigation,
 } from '@/lib/investigation'
 import { getSession } from '@/lib/auth/session'
+import {
+  sanitizeTipTapBody,
+  extractEmbeddedNodeIds,
+  validateEmbeddedNodeIds,
+} from '@/lib/investigation/sanitize'
 
 const idSchema = z.string().min(1).max(200)
 
@@ -112,7 +117,43 @@ export async function PATCH(
   }
 
   try {
-    const result = await updateInvestigation(idResult.data, parsed.data, session.user.id)
+    // Sanitize TipTap body if provided
+    let sanitizedInput = { ...parsed.data }
+    if (parsed.data.body !== undefined) {
+      let sanitizedBody: string
+      try {
+        sanitizedBody = sanitizeTipTapBody(parsed.data.body)
+      } catch {
+        return Response.json(
+          { success: false, error: 'Invalid body format: must be valid TipTap JSON' },
+          { status: 400 },
+        )
+      }
+
+      // Validate embedded node IDs
+      const embeddedIds = extractEmbeddedNodeIds(sanitizedBody)
+      if (embeddedIds.length > 0) {
+        const missing = await validateEmbeddedNodeIds(embeddedIds)
+        if (missing.length > 0) {
+          return Response.json(
+            {
+              success: false,
+              error: 'Embedded nodes not found',
+              details: missing,
+            },
+            { status: 400 },
+          )
+        }
+      }
+
+      sanitizedInput = {
+        ...sanitizedInput,
+        body: sanitizedBody,
+        referenced_node_ids: embeddedIds.length > 0 ? [...embeddedIds] : sanitizedInput.referenced_node_ids,
+      }
+    }
+
+    const result = await updateInvestigation(idResult.data, sanitizedInput, session.user.id)
 
     if (!result) {
       return Response.json({ success: false, error: 'Investigation not found' }, { status: 404 })

@@ -332,7 +332,7 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 - [x] `PATCH /api/investigations/[id]` — update investigation (author only)
 - [x] `DELETE /api/investigations/[id]` — delete investigation (author only, drafts immediate, published require confirm)
 - [x] Input validation with Zod on all mutation routes
-- [ ] On publish: create `(:Investigation)-[:REFERENCES]->(node)` edges for all embedded nodes
+- [x] On publish: create `(:Investigation)-[:REFERENCES]->(node)` edges for all embedded nodes
 
 ### TipTap Editor
 - [x] Base TipTap editor: headings, lists, links, images, blockquotes
@@ -357,13 +357,13 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 
 ### Security & Rate Limiting
 - [x] Authorization: only author can edit/delete their own investigations
-- [ ] TipTap content sanitization: strip dangerous HTML, validate embed node IDs exist
-- [ ] Embedded node IDs: validate against Neo4j before saving (prevent phantom references)
+- [x] TipTap content sanitization: strip dangerous HTML, validate embed node IDs exist
+- [x] Embedded node IDs: validate against Neo4j before saving (prevent phantom references)
 - [x] Rate limiting on mutations:
   - Create: 10 investigations/hour per user
   - Update: 60 updates/hour per user
-- [ ] Body size limit: 500KB max per investigation (prevent storage abuse)
-- [ ] Slug generation: sanitize, deduplicate (append `-2`, `-3` on collision)
+- [x] Body size limit: 500KB max per investigation (prevent storage abuse)
+- [x] Slug generation: sanitize, deduplicate (append `-2`, `-3` on collision)
 - [ ] Image uploads: validate MIME type, max 5MB, scan for embedded scripts
 
 ### Verification

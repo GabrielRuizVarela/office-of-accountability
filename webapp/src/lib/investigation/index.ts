@@ -27,3 +27,9 @@ export {
   getInvestigationsReferencingNode,
   getAllTags,
 } from './queries'
+
+export {
+  sanitizeTipTapBody,
+  extractEmbeddedNodeIds,
+  validateEmbeddedNodeIds,
+} from './sanitize'
