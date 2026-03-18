@@ -50,6 +50,41 @@ const UNIQUE_CONSTRAINTS = [
     label: 'User',
     property: 'email',
   },
+  {
+    name: 'epstein_person_id_unique',
+    label: 'Person',
+    property: 'id',
+  },
+  {
+    name: 'epstein_flight_id_unique',
+    label: 'Flight',
+    property: 'id',
+  },
+  {
+    name: 'epstein_location_id_unique',
+    label: 'Location',
+    property: 'id',
+  },
+  {
+    name: 'epstein_document_id_unique',
+    label: 'Document',
+    property: 'id',
+  },
+  {
+    name: 'epstein_event_id_unique',
+    label: 'Event',
+    property: 'id',
+  },
+  {
+    name: 'epstein_organization_id_unique',
+    label: 'Organization',
+    property: 'id',
+  },
+  {
+    name: 'epstein_legal_case_id_unique',
+    label: 'LegalCase',
+    property: 'id',
+  },
 ] as const
 
 /** Full-text indexes for search across text fields */
@@ -68,6 +103,21 @@ const FULLTEXT_INDEXES = [
     name: 'investigation_title_fulltext',
     labels: ['Investigation'],
     properties: ['title', 'summary'],
+  },
+  {
+    name: 'epstein_person_name_fulltext',
+    labels: ['Person'],
+    properties: ['name', 'role', 'description'],
+  },
+  {
+    name: 'epstein_document_title_fulltext',
+    labels: ['Document'],
+    properties: ['title', 'summary'],
+  },
+  {
+    name: 'epstein_event_title_fulltext',
+    labels: ['Event'],
+    properties: ['title', 'description'],
   },
 ] as const
 
@@ -97,6 +147,46 @@ const BTREE_INDEXES = [
     name: 'user_verification_tier_index',
     label: 'User',
     property: 'verification_tier',
+  },
+  {
+    name: 'person_slug_index',
+    label: 'Person',
+    property: 'slug',
+  },
+  {
+    name: 'person_caso_slug_index',
+    label: 'Person',
+    property: 'caso_slug',
+  },
+  {
+    name: 'location_slug_index',
+    label: 'Location',
+    property: 'slug',
+  },
+  {
+    name: 'document_slug_index',
+    label: 'Document',
+    property: 'slug',
+  },
+  {
+    name: 'event_date_index',
+    label: 'Event',
+    property: 'date',
+  },
+  {
+    name: 'flight_date_index',
+    label: 'Flight',
+    property: 'date',
+  },
+  {
+    name: 'organization_slug_index',
+    label: 'Organization',
+    property: 'slug',
+  },
+  {
+    name: 'legal_case_slug_index',
+    label: 'LegalCase',
+    property: 'slug',
   },
 ] as const
 
