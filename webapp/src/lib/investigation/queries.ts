@@ -5,7 +5,7 @@
  * On publish, REFERENCES edges are created to embedded graph nodes.
  */
 
-import type { Record as Neo4jRecord } from 'neo4j-driver-lite'
+import neo4j, { type Record as Neo4jRecord } from 'neo4j-driver-lite'
 
 import { getDriver } from '../neo4j/client'
 
@@ -22,7 +22,7 @@ import type {
 // ---------------------------------------------------------------------------
 
 /** Maximum query execution time in milliseconds (security: prevent graph bombs) */
-const QUERY_TIMEOUT_MS = 5_000
+const QUERY_TIMEOUT_MS = 15_000
 
 /** Transaction config applied to all user-facing queries */
 const TX_CONFIG = { timeout: QUERY_TIMEOUT_MS }
@@ -501,24 +501,25 @@ export async function listInvestigations(
   tag?: string,
 ): Promise<InvestigationListResult> {
   const skip = (page - 1) * limit
-  const session = getDriver().session()
+  const countSession = getDriver().session()
+  const pageSession = getDriver().session()
 
   try {
     const tagFilter = tag ? 'AND $tag IN i.tags' : ''
-    const params: Record<string, unknown> = { skip, limit }
+    const params: Record<string, unknown> = { skip: neo4j.int(skip), limit: neo4j.int(limit) }
     if (tag) {
       params.tag = tag
     }
 
     const [countResult, pageResult] = await Promise.all([
-      session.run(
+      countSession.run(
         `MATCH (i:Investigation {status: 'published'})
          WHERE true ${tagFilter}
          RETURN count(i) AS total`,
         params,
         TX_CONFIG,
       ),
-      session.run(
+      pageSession.run(
         `MATCH (i:Investigation {status: 'published'})
          WHERE true ${tagFilter}
          OPTIONAL MATCH (author:User)-[:AUTHORED]->(i)
@@ -542,7 +543,7 @@ export async function listInvestigations(
       hasMore: skip + items.length < totalCount,
     }
   } finally {
-    await session.close()
+    await Promise.all([countSession.close(), pageSession.close()])
   }
 }
 
@@ -556,24 +557,25 @@ export async function listMyInvestigations(
   limit: number = 12,
 ): Promise<InvestigationListResult> {
   const skip = (page - 1) * limit
-  const session = getDriver().session()
+  const countSession = getDriver().session()
+  const pageSession = getDriver().session()
 
   try {
     const [countResult, pageResult] = await Promise.all([
-      session.run(
+      countSession.run(
         `MATCH (i:Investigation {author_id: $authorId})
          RETURN count(i) AS total`,
         { authorId },
         TX_CONFIG,
       ),
-      session.run(
+      pageSession.run(
         `MATCH (i:Investigation {author_id: $authorId})
          OPTIONAL MATCH (author:User)-[:AUTHORED]->(i)
          RETURN i, author
          ORDER BY i.updated_at DESC
          SKIP $skip
          LIMIT $limit`,
-        { authorId, skip, limit },
+        { authorId, skip: neo4j.int(skip), limit: neo4j.int(limit) },
         TX_CONFIG,
       ),
     ])
@@ -589,7 +591,7 @@ export async function listMyInvestigations(
       hasMore: skip + items.length < totalCount,
     }
   } finally {
-    await session.close()
+    await Promise.all([countSession.close(), pageSession.close()])
   }
 }
 
@@ -615,7 +617,7 @@ export async function getInvestigationsReferencingNode(
        RETURN i, author
        ORDER BY i.published_at DESC
        LIMIT $limit`,
-      { nodeId, limit },
+      { nodeId, limit: neo4j.int(limit) },
       TX_CONFIG,
     )
 
