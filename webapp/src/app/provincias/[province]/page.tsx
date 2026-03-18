@@ -11,6 +11,7 @@ import { notFound } from 'next/navigation'
 
 import { getPoliticiansByProvince } from '@/lib/graph'
 import type { PoliticianSummary } from '@/lib/graph'
+import { ShareButton } from '@/components/ui/ShareButton'
 
 // ---------------------------------------------------------------------------
 // Slug validation
@@ -121,6 +122,13 @@ export default async function ProvincePage({ params }: PageProps) {
           {province.politicianCount} legislador{province.politicianCount !== 1 ? 'es' : ''} registrado
           {province.politicianCount !== 1 ? 's' : ''}
         </p>
+
+        <div className="mt-4">
+          <ShareButton
+            text={`Legisladores de ${province.name} — Oficina de Rendición de Cuentas`}
+            title={`Legisladores de ${province.name} | ORC`}
+          />
+        </div>
 
         {/* Diputados */}
         {diputados.length > 0 && (

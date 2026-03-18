@@ -19,6 +19,7 @@ import type { PoliticianProfile } from '@/lib/graph'
 import { getInvestigationsReferencingNode } from '@/lib/investigation'
 
 import { PoliticianGraph } from '@/components/politician/PoliticianGraph'
+import { ShareButton } from '@/components/ui/ShareButton'
 import { VoteHistoryTable } from '@/components/politician/VoteHistoryTable'
 
 // ---------------------------------------------------------------------------
@@ -171,6 +172,14 @@ export default async function PoliticianPage({ params }: PageProps) {
           <StatCard label="Presencia" value={`${Math.round(politician.presencePct)}%`} />
           <StatCard label="Cámara" value={formatChamber(politician.chamber)} />
           <StatCard label="Provincia" value={politician.province || 'N/D'} />
+        </div>
+
+        {/* Share */}
+        <div className="mb-8">
+          <ShareButton
+            text={`Mirá el perfil de ${politician.name} en la Oficina de Rendición de Cuentas`}
+            title={`${politician.name} — ORC`}
+          />
         </div>
 
         {/* Graph sub-view */}
