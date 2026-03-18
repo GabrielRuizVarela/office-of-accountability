@@ -41,7 +41,7 @@ body {
   header,
   footer,
   nav,
-  .print\\:hidden {
+  [class~="print:hidden"] {
     display: none !important;
   }
 
