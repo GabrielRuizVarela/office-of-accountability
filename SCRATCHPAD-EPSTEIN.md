@@ -964,3 +964,114 @@ The 24-iteration exploration reveals that the Epstein network was not an anomaly
 The Office of Accountability knowledge graph — with 65 nodes today, potentially 3,000-5,000 at full scale — provides the SAME capability that Julie K. Brown used manually: cross-referencing public data to find patterns that captured institutions refuse to see. The MiroFish simulation adds AI-powered analysis that can generate hypotheses from the graph structure itself.
 
 The investigation continues.
+
+---
+
+## Iteration 25 — Witness Deep Dive: MCC Guards + Camera Failure
+*2026-03-18 ~22:55 UTC*
+
+**Query:** Guards Tova Noel and Michael Thomas falsified records, were shopping/sleeping. Cameras malfunctioned. Negligence or deliberate? Statistical odds of simultaneous failures?
+
+**Agent: Leslie Wexner:**
+- Negligence appears "systematic rather than merely accidental"
+- Long-standing culture of non-enforcement, not one-time lapse
+- Simultaneous camera failure + guard absence: "statistically, random camera failures are rare"
+- Implies security team knew cameras were compromised, failed to report
+- "Calculated removal of oversight to facilitate a death inevitable without intervention"
+
+**Agent: Alan Dershowitz:**
+- "Probability of two independent failures at exact moment of high-profile death is astronomically low"
+- "Multiple points of failure rarely align by chance"
+- Camera malfunction + guard knowledge of schedule = "intentional human shield strategy"
+- Guards absent so they could "claim no visual confirmation" — shielding from liability
+- "Negligence serves as the vehicle for a deliberate act of omission"
+
+**Agent: Bill Clinton:**
+- Staffing shortages make routine protocol violations common in federal detention
+- But Epstein case "transcends typical negligence" due to specific factor combination
+- Guards admitted log falsification + camera timing + immediate suspension before full investigation
+- "If random negligence, cameras would likely be functional or guards present"
+- "Statistical odds of this specific convergence are so low — must assume intent or conspiracy of silence"
+
+**Key Findings:**
+- Three simultaneous failures: (1) guard absence, (2) log falsification, (3) camera malfunction
+- Each failure alone is plausible; all three together at the exact time strains credibility
+- Guards accepted deferred prosecution — avoided prison, avoided testifying about what they knew
+- Deferred prosecution = another form of silence purchasing (parallels NPA structure)
+- Pattern: same mechanism used at every level — legal deals that trade silence for freedom
+- Whether murder or negligence, the SYSTEMIC EFFECT is identical: key testimony permanently lost
+
+---
+
+## Iteration 26 — Flight Deep Dive: Private Aviation Regulatory Gaps
+*2026-03-18 ~23:00 UTC*
+
+**Query:** Specific regulatory gaps in private aviation Epstein exploited. FAA private vs commercial requirements. Could trafficking operate without private jets? Policy reforms?
+
+**Agent: Jeffrey Epstein:**
+- Exploited "gray zone" where FAA private flight rules override commercial manifest requirements
+- Commercial: full TSA screening + 100% manifest reconciliation (49 CFR Part 1547)
+- Private: pilot responsible for manifest but "enforcement historically lax"
+- No random integrity checks on private manifests
+- "Without these jets, trafficking network would have collapsed"
+- Gap: pilot's word on passenger numbers was sufficient legal compliance
+
+**Agent: Ghislaine Maxwell:**
+- "Commercial aviation treats every passenger as vetted entity; private treats aircraft as private estate"
+- No federal mandate for pre-boarding identity verification on private flights
+- Victims flown "disguised as legitimate business associates or family members"
+- "If commercial flights, TSA would have identified minors immediately"
+- Private jet was "regulatory shield" not just transport
+- Post-conviction: FAA strengthened manifest accuracy rules, but culture unchanged
+
+**Agent: Alan Dershowitz:**
+- 49 U.S.C. § 44909: private operators must maintain manifest but FAA inspection authority is weak
+- Lack of "mandatory independent verification of who was on board before takeoff"
+- Trafficking could theoretically use commercial but multi-leg routing would expose to TSA
+- Private jet "eliminated the friction of travel"
+
+**Key Findings:**
+- Private aviation was ESSENTIAL to the operation — not optional infrastructure
+- Regulatory asymmetry: commercial passengers fully screened, private passengers on honor system
+- Specific gap: no independent verification of private jet passenger identities
+- FAA authority to inspect private aircraft manifests significantly weaker than commercial
+- Post-case reforms: stronger manifest requirements BUT fundamental private/commercial gap persists
+- Policy implication: mandatory identity verification for ALL aviation passengers would close gap
+- Pattern: Epstein exploited regulatory gaps in EVERY domain (banking, jurisdiction, aviation)
+
+---
+
+## Iteration 27 — Legal Deep Dive: Statute of Limitations as Protection Mechanism
+*2026-03-18 ~23:05 UTC*
+
+**Query:** How did statute of limitations interact with NPA's silencing? Did the network deliberately run out the clock? Which states reformed? Current legal landscape?
+
+**Agent: Ghislaine Maxwell:**
+- NPA was "architectural keystone" — froze judicial process while statute clock kept running
+- Engineered situation where state had no leverage: victims "contractually and psychologically bound"
+- Didn't just wait for law to expire — "engineered a situation" where prosecution was impossible
+- Once public record breached (Herald investigation), NPA could no longer shield from civil litigation
+
+**Agent: Alan Dershowitz:**
+- "Running out the clock" was deliberate legal strategy
+- Early 2000s: many states had 5-year limitation periods for sex crimes
+- NPA ensured victims not interviewed during critical prosecution window
+- Created "legal immunity shield based on TIME rather than evidence"
+- Logic failed: statute of limitations is procedural bar, not moral absolution
+- Civil liability: statutes often tolled until plaintiff discovers perpetrator identity
+
+**Agent: Bill Clinton:**
+- Several states (NY, CA) enacted "tolling" statutes — pausing clock until victim turns 26
+- Legislative response acknowledges fear/coercion prevented timely reporting
+- Federal TVPA removed statute of limitations entirely for trafficking offenses
+- NDA exposure opened civil lawsuit avenues (calculated from date of DISCOVERY, not abuse)
+- "Network's strategy of waiting for law to expire has been neutralized by reforms"
+
+**Key Findings:**
+- NPA + NDAs + statute of limitations = triple lock preventing prosecution
+- Network DESIGNED the silence period to outlast prosecution windows
+- Key reform: discovery rule — clock starts when victim LEARNS of harm, not when harm occurs
+- Federal TVPA has no statute of limitations for trafficking — permanent exposure
+- NY/CA tolling reforms were DIRECT response to Epstein case
+- Pattern: the legal system was weaponized as a temporal shield — time itself became a defense
+- Current landscape: civil remedies remain viable even where criminal prosecution is time-barred
