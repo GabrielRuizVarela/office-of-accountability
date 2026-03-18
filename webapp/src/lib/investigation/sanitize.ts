@@ -154,7 +154,7 @@ export function extractEmbeddedNodeIds(bodyJson: string): readonly string[] {
   const ids = new Set<string>()
 
   function walk(node: TipTapNode) {
-    if (node.type === 'graphNodeEmbed') {
+    if (node.type === 'graphNodeEmbed' || node.type === 'subGraphEmbed') {
       const attrs = node.attrs as Record<string, unknown> | undefined
       if (attrs && typeof attrs.nodeId === 'string' && attrs.nodeId) {
         ids.add(attrs.nodeId)

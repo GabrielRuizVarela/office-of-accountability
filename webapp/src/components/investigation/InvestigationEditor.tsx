@@ -7,6 +7,7 @@ import { EditorContent, useEditor } from '@tiptap/react'
 import { useCallback, useState } from 'react'
 
 import { GraphNodeEmbedExtension, GraphNodePicker } from './GraphNodeEmbed'
+import { SubGraphEmbedExtension } from './SubGraphEmbed'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -29,7 +30,7 @@ function extractNodeRefs(json: Record<string, unknown>): readonly string[] {
   const ids = new Set<string>()
 
   function walk(node: Record<string, unknown>) {
-    if (node.type === 'graphNodeEmbed') {
+    if (node.type === 'graphNodeEmbed' || node.type === 'subGraphEmbed') {
       const attrs = node.attrs as Record<string, unknown> | undefined
       if (attrs && typeof attrs.nodeId === 'string' && attrs.nodeId) {
         ids.add(attrs.nodeId)
@@ -90,9 +91,11 @@ function ToolbarDivider() {
 function EditorToolbar({
   editor,
   onInsertEmbed,
+  onInsertSubGraph,
 }: {
   readonly editor: ReturnType<typeof useEditor>
   readonly onInsertEmbed: () => void
+  readonly onInsertSubGraph: () => void
 }) {
   const addLink = useCallback(() => {
     if (!editor) return
@@ -227,6 +230,9 @@ function EditorToolbar({
       <ToolbarButton onClick={onInsertEmbed} title="Insertar referencia a nodo del grafo">
         📊 Nodo
       </ToolbarButton>
+      <ToolbarButton onClick={onInsertSubGraph} title="Insertar sub-grafo interactivo">
+        🕸 Grafo
+      </ToolbarButton>
 
       <ToolbarDivider />
 
@@ -259,6 +265,7 @@ export function InvestigationEditor({
   editable = true,
 }: InvestigationEditorProps) {
   const [showNodePicker, setShowNodePicker] = useState(false)
+  const [pickerMode, setPickerMode] = useState<'inline' | 'subgraph'>('inline')
 
   const editor = useEditor({
     extensions: [
@@ -271,6 +278,7 @@ export function InvestigationEditor({
         HTMLAttributes: { class: 'max-w-full rounded-lg' },
       }),
       GraphNodeEmbedExtension,
+      SubGraphEmbedExtension,
     ],
     content: initialContent ? JSON.parse(initialContent) : undefined,
     editable,
@@ -290,27 +298,49 @@ export function InvestigationEditor({
   })
 
   const handleInsertEmbed = useCallback(() => {
+    setPickerMode('inline')
+    setShowNodePicker(true)
+  }, [])
+
+  const handleInsertSubGraph = useCallback(() => {
+    setPickerMode('subgraph')
     setShowNodePicker(true)
   }, [])
 
   const handleNodeSelect = useCallback(
     (node: { id: string; label: string; name: string }) => {
       if (!editor) return
-      editor
-        .chain()
-        .focus()
-        .insertContent({
-          type: 'graphNodeEmbed',
-          attrs: {
-            nodeId: node.id,
-            label: node.label,
-            name: node.name,
-          },
-        })
-        .run()
+
+      if (pickerMode === 'subgraph') {
+        editor
+          .chain()
+          .focus()
+          .insertContent({
+            type: 'subGraphEmbed',
+            attrs: {
+              nodeId: node.id,
+              label: node.label,
+              name: node.name,
+            },
+          })
+          .run()
+      } else {
+        editor
+          .chain()
+          .focus()
+          .insertContent({
+            type: 'graphNodeEmbed',
+            attrs: {
+              nodeId: node.id,
+              label: node.label,
+              name: node.name,
+            },
+          })
+          .run()
+      }
       setShowNodePicker(false)
     },
-    [editor],
+    [editor, pickerMode],
   )
 
   const handlePickerClose = useCallback(() => {
@@ -319,7 +349,7 @@ export function InvestigationEditor({
 
   return (
     <div className="relative overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900">
-      {editable && <EditorToolbar editor={editor} onInsertEmbed={handleInsertEmbed} />}
+      {editable && <EditorToolbar editor={editor} onInsertEmbed={handleInsertEmbed} onInsertSubGraph={handleInsertSubGraph} />}
 
       <EditorContent editor={editor} />
 

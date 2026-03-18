@@ -13,6 +13,8 @@ import Image from '@tiptap/extension-image'
 import StarterKit from '@tiptap/starter-kit'
 import { EditorContent, NodeViewWrapper, ReactNodeViewRenderer, useEditor } from '@tiptap/react'
 
+import { SubGraphEmbedReadExtension } from './SubGraphEmbed'
+
 // ---------------------------------------------------------------------------
 // Label colors (matches ForceGraph / SearchBar / GraphNodeEmbed)
 // ---------------------------------------------------------------------------
@@ -108,6 +110,7 @@ export function InvestigationBodyView({ content }: InvestigationBodyViewProps) {
         HTMLAttributes: { class: 'max-w-full rounded-lg' },
       }),
       GraphNodeEmbedReadExtension,
+      SubGraphEmbedReadExtension,
     ],
     content: content ? JSON.parse(content) : undefined,
     editable: false,
