@@ -396,7 +396,7 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
   - Per politician: photo + name + party + key stats
   - Per vote: legislator photo + vote position + legislation title
 - [x] OG tag generation for every shareable URL
-- [ ] "Compartir por WhatsApp" first-class button on every page
+- [x] "Compartir por WhatsApp" first-class button on every page
 
 ### Export
 - [x] Share link with preview for investigations
@@ -406,9 +406,9 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 
 ### Security & Rate Limiting
 - [x] OG image generation: rate limit 30 req/min per IP (image generation is CPU-heavy)
-- [ ] PDF export: rate limit 5 exports/hour per user
-- [ ] OG image: validate slug input, reject path traversal
-- [ ] PDF: sanitize investigation content before rendering (no script execution in PDF engine)
+- [x] PDF export: rate limit 5 exports/hour per user (N/A — client-side window.print(), no server endpoint)
+- [x] OG image: validate slug input, reject path traversal
+- [x] PDF: sanitize investigation content before rendering (N/A — client-side print; TipTap sanitize.ts strips scripts on save)
 - [x] Share URLs: no auth tokens or session data in shareable links
 
 ### Verification

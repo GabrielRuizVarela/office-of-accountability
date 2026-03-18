@@ -10,6 +10,7 @@
 import React from 'react'
 
 import { getPoliticianBySlug } from '@/lib/graph'
+import { politicianSlugSchema } from '@/lib/graph/validation'
 import { ogImageResponse } from '@/lib/og'
 
 // ---------------------------------------------------------------------------
@@ -22,7 +23,12 @@ export async function GET(
 ): Promise<Response> {
   const { slug } = await params
 
-  const politician = await getPoliticianBySlug(slug)
+  const parsed = politicianSlugSchema.safeParse(slug)
+  if (!parsed.success) {
+    return new Response('Not found', { status: 404 })
+  }
+
+  const politician = await getPoliticianBySlug(parsed.data)
 
   if (!politician) {
     return new Response('Politician not found', { status: 404 })

@@ -9,6 +9,7 @@
 
 import React from 'react'
 
+import { politicianSlugSchema } from '@/lib/graph/validation'
 import { getInvestigationBySlug } from '@/lib/investigation'
 import { ogImageResponse } from '@/lib/og'
 
@@ -22,7 +23,12 @@ export async function GET(
 ): Promise<Response> {
   const { slug } = await params
 
-  const data = await getInvestigationBySlug(slug)
+  const parsed = politicianSlugSchema.safeParse(slug)
+  if (!parsed.success) {
+    return new Response('Not found', { status: 404 })
+  }
+
+  const data = await getInvestigationBySlug(parsed.data)
 
   if (!data || data.investigation.status !== 'published') {
     return new Response('Investigation not found', { status: 404 })
