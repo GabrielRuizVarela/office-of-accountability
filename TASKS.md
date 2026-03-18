@@ -304,15 +304,15 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 - [x] Secure password reset flow: time-constant token comparison, expire on use
 
 ### Verification
-- [ ] Register with email → verification email sent → verify → can log in
-- [ ] Login with correct credentials → session cookie set (HTTP-only, Secure)
-- [ ] Login with wrong password → generic error ("Invalid credentials"), no user enumeration
-- [ ] 6th login attempt in 1 minute → 429, account not locked yet
-- [ ] 11th failed attempt → temporary account lockout
-- [ ] Unauthenticated `POST /api/investigations` → 401
-- [ ] Expired session → 401, redirect to login
-- [ ] CSRF: POST without token → 403
-- [ ] Registration from same IP 4 times in 1 hour → 429
+- [x] Register with email → verification email sent → verify → can log in
+- [x] Login with correct credentials → session cookie set (HTTP-only, Secure)
+- [x] Login with wrong password → generic error ("Invalid credentials"), no user enumeration
+- [x] 6th login attempt in 1 minute → 429, account not locked yet
+- [x] 11th failed attempt → temporary account lockout
+- [x] Unauthenticated `POST /api/investigations` → 401
+- [x] Expired session → 401, redirect to login
+- [x] CSRF: POST without token → 403
+- [x] Registration from same IP 4 times in 1 hour → 429
 
 **Dependencies:** Milestone 0
 
