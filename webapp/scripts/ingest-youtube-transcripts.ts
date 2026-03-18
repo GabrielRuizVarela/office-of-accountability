@@ -14,8 +14,13 @@
 
 import neo4j, { type Driver } from 'neo4j-driver-lite'
 import { readFile, writeFile } from 'node:fs/promises'
+import { execFile } from 'node:child_process'
+import { promisify } from 'node:util'
+import { tmpdir } from 'node:os'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+
+const execFileAsync = promisify(execFile)
 
 // ---------------------------------------------------------------------------
 // Types
@@ -90,89 +95,86 @@ function extractVideoId(url: string): string | null {
  *  2. Parse out the timedtext URL from the playerCaptionsTracklistRenderer
  *  3. Fetch the XML transcript and parse segments
  */
+/** Find yt-dlp binary — check common locations */
+async function findYtDlp(): Promise<string> {
+  const candidates = [
+    join(process.env.HOME ?? '', '.local/bin/yt-dlp'),
+    '/usr/local/bin/yt-dlp',
+    '/usr/bin/yt-dlp',
+    'yt-dlp',
+  ]
+  for (const p of candidates) {
+    try {
+      await execFileAsync(p, ['--version'], { timeout: 5000 })
+      return p
+    } catch { /* try next */ }
+  }
+  throw new Error('yt-dlp not found. Install with: pip3 install yt-dlp')
+}
+
 async function fetchTranscript(videoId: string): Promise<TranscriptSegment[]> {
-  const videoUrl = `https://www.youtube.com/watch?v=${videoId}`
+  // Use yt-dlp to extract subtitles — handles all YouTube edge cases reliably
+  const outTemplate = join(tmpdir(), `yt-sub-${videoId}`)
 
-  // Step 1: Fetch the watch page to get caption track info
-  const pageRes = await fetch(videoUrl, {
-    headers: {
-      'User-Agent':
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-      'Accept-Language': 'en-US,en;q=0.9',
-    },
-  })
-  if (!pageRes.ok) {
-    throw new Error(`Failed to fetch video page: ${pageRes.status} ${pageRes.statusText}`)
-  }
-  const html = await pageRes.text()
-
-  // Step 2: Extract caption tracks from ytInitialPlayerResponse
-  const captionTrackPattern = /"captionTracks":\s*(\[.*?\])/s
-  const match = html.match(captionTrackPattern)
-  if (!match) {
-    throw new Error(`No captions found for video ${videoId}. The video may not have subtitles.`)
-  }
-
-  let captionTracks: Array<{ baseUrl: string; languageCode: string; kind?: string }>
   try {
-    captionTracks = JSON.parse(match[1])
-  } catch {
-    throw new Error(`Failed to parse caption tracks for video ${videoId}`)
+    // Try user-local yt-dlp first, fall back to system
+    const ytdlp = process.env.YTDLP_PATH ?? (await findYtDlp())
+    await execFileAsync(ytdlp, [
+      '--write-auto-sub',
+      '--write-sub',
+      '--sub-lang', 'en',
+      '--sub-format', 'json3',
+      '--skip-download',
+      '--no-warnings',
+      '-o', outTemplate,
+      `https://www.youtube.com/watch?v=${videoId}`,
+    ], { timeout: 30_000 })
+  } catch (err) {
+    throw new Error(`yt-dlp failed for ${videoId}: ${err instanceof Error ? err.message : String(err)}`)
   }
 
-  // Prefer English manual captions, fall back to auto-generated
-  const enManual = captionTracks.find(
-    (t) => t.languageCode === 'en' && t.kind !== 'asr',
-  )
-  const enAuto = captionTracks.find(
-    (t) => t.languageCode === 'en' && t.kind === 'asr',
-  )
-  const track = enManual ?? enAuto ?? captionTracks[0]
-  if (!track) {
-    throw new Error(`No usable caption track for video ${videoId}`)
+  // yt-dlp outputs to <outTemplate>.en.json3 or <outTemplate>.en-orig.json3
+  const possiblePaths = [
+    `${outTemplate}.en.json3`,
+    `${outTemplate}.en-orig.json3`,
+  ]
+
+  let jsonContent: string | null = null
+  for (const p of possiblePaths) {
+    try {
+      jsonContent = await readFile(p, 'utf-8')
+      break
+    } catch { /* try next */ }
   }
 
-  // Step 3: Fetch the XML transcript
-  // The baseUrl uses \u0026 for &, so decode it
-  const captionUrl = track.baseUrl.replace(/\\u0026/g, '&')
-  const xmlRes = await fetch(captionUrl)
-  if (!xmlRes.ok) {
-    throw new Error(`Failed to fetch captions XML: ${xmlRes.status}`)
+  if (!jsonContent) {
+    throw new Error(`No subtitle file produced by yt-dlp for ${videoId}`)
   }
-  const xml = await xmlRes.text()
 
-  // Step 4: Parse XML segments — format: <text start="1.23" dur="4.56">caption text</text>
+  // Parse json3 format: { events: [ { tStartMs, dDurationMs, segs: [{ utf8 }] } ] }
+  const data = JSON.parse(jsonContent) as {
+    events: Array<{
+      tStartMs?: number
+      dDurationMs?: number
+      segs?: Array<{ utf8?: string }>
+    }>
+  }
+
   const segments: TranscriptSegment[] = []
-  const segRegex = /<text\s+start="([^"]+)"\s+dur="([^"]+)"[^>]*>([\s\S]*?)<\/text>/g
-  let segMatch: RegExpMatchArray | null
+  for (const evt of data.events ?? []) {
+    if (!evt.segs) continue
+    const text = evt.segs.map((s) => s.utf8 ?? '').join('').replace(/\n/g, ' ').trim()
+    if (!text) continue
 
-  // Use matchAll instead of stateful regex looping
-  for (const found of xml.matchAll(segRegex)) {
-    const startSec = parseFloat(found[1])
-    const durSec = parseFloat(found[2])
-    // Decode XML entities
-    const text = found[3]
-      .replace(/&amp;/g, '&')
-      .replace(/&lt;/g, '<')
-      .replace(/&gt;/g, '>')
-      .replace(/&quot;/g, '"')
-      .replace(/&#39;/g, "'")
-      .replace(/&apos;/g, "'")
-      .replace(/<[^>]+>/g, '') // strip inline tags like <font>
-      .replace(/\n/g, ' ')
-      .trim()
-
-    if (text) {
-      segments.push({
-        text,
-        offset: Math.round(startSec * 1000),
-        duration: Math.round(durSec * 1000),
-      })
-    }
+    segments.push({
+      text,
+      offset: evt.tStartMs ?? 0,
+      duration: evt.dDurationMs ?? 0,
+    })
   }
 
   if (segments.length === 0) {
-    throw new Error(`Parsed 0 segments from captions XML for video ${videoId}`)
+    throw new Error(`Parsed 0 segments from yt-dlp output for ${videoId}`)
   }
 
   return segments
