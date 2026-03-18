@@ -364,7 +364,7 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
   - Update: 60 updates/hour per user
 - [x] Body size limit: 500KB max per investigation (prevent storage abuse)
 - [x] Slug generation: sanitize, deduplicate (append `-2`, `-3` on collision)
-- [ ] Image uploads: validate MIME type, max 5MB, scan for embedded scripts
+- [x] Image uploads: validate MIME type, max 5MB, scan for embedded scripts
 
 ### Verification
 - [ ] Create investigation with graph node embeds → saves TipTap JSON to Neo4j

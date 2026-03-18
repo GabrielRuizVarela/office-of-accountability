@@ -4,11 +4,12 @@ import Link from '@tiptap/extension-link'
 import Image from '@tiptap/extension-image'
 import StarterKit from '@tiptap/starter-kit'
 import { EditorContent, useEditor } from '@tiptap/react'
-import { useCallback, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 
 import { GraphNodeEmbedExtension, GraphNodePicker } from './GraphNodeEmbed'
 import { SubGraphEmbedExtension } from './SubGraphEmbed'
 import { EdgeCitationExtension, EdgeCitationPicker } from './EdgeCitationEmbed'
+import { fetchWithCsrf } from '@/lib/fetch-with-csrf'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -105,11 +106,13 @@ function EditorToolbar({
   onInsertEmbed,
   onInsertSubGraph,
   onInsertEdgeCitation,
+  onUploadImage,
 }: {
   readonly editor: ReturnType<typeof useEditor>
   readonly onInsertEmbed: () => void
   readonly onInsertSubGraph: () => void
   readonly onInsertEdgeCitation: () => void
+  readonly onUploadImage: () => void
 }) {
   const addLink = useCallback(() => {
     if (!editor) return
@@ -125,13 +128,6 @@ function EditorToolbar({
     }
 
     editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
-  }, [editor])
-
-  const addImage = useCallback(() => {
-    if (!editor) return
-    const url = window.prompt('URL de la imagen:')
-    if (!url) return
-    editor.chain().focus().setImage({ src: url }).run()
   }, [editor])
 
   if (!editor) return null
@@ -234,7 +230,7 @@ function EditorToolbar({
       <ToolbarButton onClick={addLink} isActive={editor.isActive('link')} title="Enlace">
         🔗
       </ToolbarButton>
-      <ToolbarButton onClick={addImage} title="Imagen">
+      <ToolbarButton onClick={onUploadImage} title="Subir imagen">
         🖼
       </ToolbarButton>
 
@@ -284,6 +280,8 @@ export function InvestigationEditor({
   const [showNodePicker, setShowNodePicker] = useState(false)
   const [showEdgePicker, setShowEdgePicker] = useState(false)
   const [pickerMode, setPickerMode] = useState<'inline' | 'subgraph'>('inline')
+  const [uploadStatus, setUploadStatus] = useState<string | null>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const editor = useEditor({
     extensions: [
@@ -315,6 +313,49 @@ export function InvestigationEditor({
       },
     },
   })
+
+  const handleUploadImage = useCallback(() => {
+    fileInputRef.current?.click()
+  }, [])
+
+  const handleFileSelected = useCallback(
+    async (event: React.ChangeEvent<HTMLInputElement>) => {
+      const file = event.target.files?.[0]
+      if (!file || !editor) return
+
+      // Reset input so the same file can be re-selected
+      event.target.value = ''
+
+      setUploadStatus('Subiendo imagen...')
+
+      try {
+        const formData = new FormData()
+        formData.append('file', file)
+
+        const response = await fetchWithCsrf('/api/investigations/images', {
+          method: 'POST',
+          body: formData,
+        })
+
+        const result = await response.json() as { success: boolean; data?: { url: string }; error?: string }
+
+        if (!result.success) {
+          setUploadStatus(result.error ?? 'Error al subir imagen')
+          setTimeout(() => setUploadStatus(null), 4000)
+          return
+        }
+
+        if (result.data?.url) {
+          editor.chain().focus().setImage({ src: result.data.url }).run()
+        }
+        setUploadStatus(null)
+      } catch {
+        setUploadStatus('Error de red al subir imagen')
+        setTimeout(() => setUploadStatus(null), 4000)
+      }
+    },
+    [editor],
+  )
 
   const handleInsertEmbed = useCallback(() => {
     setPickerMode('inline')
@@ -399,7 +440,30 @@ export function InvestigationEditor({
 
   return (
     <div className="relative overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900">
-      {editable && <EditorToolbar editor={editor} onInsertEmbed={handleInsertEmbed} onInsertSubGraph={handleInsertSubGraph} onInsertEdgeCitation={handleInsertEdgeCitation} />}
+      {editable && (
+        <>
+          <EditorToolbar
+            editor={editor}
+            onInsertEmbed={handleInsertEmbed}
+            onInsertSubGraph={handleInsertSubGraph}
+            onInsertEdgeCitation={handleInsertEdgeCitation}
+            onUploadImage={handleUploadImage}
+          />
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/jpeg,image/png,image/gif,image/webp"
+            onChange={handleFileSelected}
+            className="hidden"
+            aria-hidden="true"
+          />
+          {uploadStatus && (
+            <div className="border-b border-zinc-700 bg-zinc-800/50 px-3 py-1.5 text-xs text-zinc-400">
+              {uploadStatus}
+            </div>
+          )}
+        </>
+      )}
 
       <EditorContent editor={editor} />
 
