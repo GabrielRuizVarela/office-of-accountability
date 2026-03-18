@@ -367,20 +367,20 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 - [x] Image uploads: validate MIME type, max 5MB, scan for embedded scripts
 
 ### Verification
-- [ ] Create investigation with graph node embeds → saves TipTap JSON to Neo4j
-- [ ] Publish investigation → `REFERENCES` edges created for all embedded nodes
-- [ ] `GET /investigacion/[slug]` → server-rendered HTML contains embedded node data
-- [ ] Embedded graph node card → clicking navigates to `/politico/[slug]`
-- [ ] `/investigaciones` → lists only published investigations, not drafts
-- [ ] Author edits own investigation → 200
-- [ ] Other user edits same investigation → 403
-- [ ] Author deletes own draft → 200, node removed
-- [ ] Delete published investigation → confirmation required
-- [ ] Investigation references politician → appears on politician's Investigations tab
-- [ ] `/mis-investigaciones` → shows only current user's investigations
-- [ ] TipTap body with `<script>` tag → stripped on save
-- [ ] Embed with non-existent node ID → rejected with 400
-- [ ] 11th investigation created in 1 hour → 429
+- [x] Create investigation with graph node embeds → saves TipTap JSON to Neo4j
+- [x] Publish investigation → `REFERENCES` edges created for all embedded nodes
+- [x] `GET /investigacion/[slug]` → server-rendered HTML contains embedded node data
+- [x] Embedded graph node card → clicking navigates to `/politico/[slug]`
+- [x] `/investigaciones` → lists only published investigations, not drafts
+- [x] Author edits own investigation → 200
+- [x] Other user edits same investigation → 403
+- [x] Author deletes own draft → 200, node removed
+- [x] Delete published investigation → confirmation required
+- [x] Investigation references politician → appears on politician's Investigations tab
+- [x] `/mis-investigaciones` → shows only current user's investigations
+- [x] TipTap body with `<script>` tag → stripped on save
+- [x] Embed with non-existent node ID → rejected with 400
+- [x] 11th investigation created in 1 hour → 429
 
 **Dependencies:** Milestones 2, 3 (for graph embeds), 5 (for auth)
 

@@ -31,7 +31,7 @@ const MAX_EXPAND_DEPTH = 3
 const MAX_EXPAND_NODES = 500
 
 /** Maximum query execution time in milliseconds (security: prevent graph bombs) */
-const QUERY_TIMEOUT_MS = 5_000
+const QUERY_TIMEOUT_MS = 15_000
 
 /** Transaction config applied to all user-facing queries */
 const TX_CONFIG = { timeout: QUERY_TIMEOUT_MS }
