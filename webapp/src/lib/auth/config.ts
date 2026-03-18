@@ -24,6 +24,22 @@ function getAuthConfig(): AuthConfig {
     throw new Error('AUTH_SECRET environment variable is required')
   }
 
+  const KNOWN_WEAK_SECRETS = [
+    'dev-secret-not-for-production-use-only',
+    'change-me',
+    'secret',
+    'your-secret-here',
+  ]
+
+  if (process.env.NODE_ENV === 'production') {
+    if (secret.length < 32) {
+      throw new Error('AUTH_SECRET must be at least 32 characters in production (use: openssl rand -base64 32)')
+    }
+    if (KNOWN_WEAK_SECRETS.includes(secret)) {
+      throw new Error('AUTH_SECRET is a known weak value — generate a secure secret for production')
+    }
+  }
+
   const providers: Provider[] = [
     Credentials({
       credentials: {
