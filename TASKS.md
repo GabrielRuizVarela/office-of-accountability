@@ -440,7 +440,7 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 - [ ] Pre-launch: recruit 2-3 anchor investigators (journalists, NGO analysts)
 
 ### Security Audit
-- [ ] Dependency audit: `npm audit`, no critical/high vulnerabilities
+- [x] Dependency audit: `npm audit`, no critical/high vulnerabilities
 - [ ] Secret scan: no API keys, passwords, or tokens in repo (use `gitleaks` or equivalent)
 - [ ] Penetration test: auth bypass, IDOR on investigations, Cypher injection via search, XSS via graph data
 - [ ] Cloudflare WAF rules: block common attack patterns (SQLi, path traversal, etc.)
