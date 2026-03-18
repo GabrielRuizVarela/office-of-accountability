@@ -58,6 +58,8 @@ function isMutationMethod(method: string): boolean {
 function isCsrfExempt(pathname: string): boolean {
   // Auth.js routes handle their own CSRF tokens
   if (pathname.startsWith('/api/auth/')) return true
+  // Simulation routes are internal analysis tools, no mutation
+  if (pathname.startsWith('/api/caso/') && pathname.includes('/simulation/')) return true
   return false
 }
 
