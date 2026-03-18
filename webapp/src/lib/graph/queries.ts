@@ -663,3 +663,85 @@ function sanitizeLuceneQuery(query: string): string {
   // Add wildcard suffix for partial matching (e.g., "cris" matches "cristina")
   return `${escaped}*`
 }
+
+// ---------------------------------------------------------------------------
+// Edge provenance
+// ---------------------------------------------------------------------------
+
+interface EdgeProvenanceData {
+  readonly source_url?: string
+  readonly tier?: string
+  readonly confidence_score?: number
+  readonly submitted_by?: string
+  readonly created_at?: string
+}
+
+/**
+ * Fetch provenance metadata for a specific relationship between two nodes.
+ *
+ * Looks up the relationship by matching source/target node IDs (by id, slug,
+ * or acta_id) and relationship type. Returns provenance properties from the
+ * relationship itself.
+ */
+export async function getEdgeProvenance(
+  sourceId: string,
+  targetId: string,
+  relType: string,
+): Promise<EdgeProvenanceData | null> {
+  // Sanitize relType to prevent injection (only uppercase letters + underscore)
+  const safeRelType = relType.replace(/[^A-Z_]/g, '')
+  if (!safeRelType) return null
+
+  const session = getDriver().session()
+
+  try {
+    const result = await session.run(
+      `MATCH (s)-[r:${safeRelType}]->(t)
+       WHERE (s.id = $sourceId OR s.slug = $sourceId OR s.acta_id = $sourceId)
+         AND (t.id = $targetId OR t.slug = $targetId OR t.acta_id = $targetId)
+       RETURN r
+       LIMIT 1`,
+      { sourceId, targetId },
+      TX_CONFIG,
+    )
+
+    if (result.records.length === 0) {
+      // Try reverse direction
+      const reverseResult = await session.run(
+        `MATCH (s)-[r:${safeRelType}]->(t)
+         WHERE (s.id = $targetId OR s.slug = $targetId OR s.acta_id = $targetId)
+           AND (t.id = $sourceId OR t.slug = $sourceId OR t.acta_id = $sourceId)
+         RETURN r
+         LIMIT 1`,
+        { sourceId, targetId },
+        TX_CONFIG,
+      )
+
+      if (reverseResult.records.length === 0) return null
+
+      const rel = reverseResult.records[0].get('r') as Relationship
+      return extractProvenance(rel)
+    }
+
+    const rel = result.records[0].get('r') as Relationship
+    return extractProvenance(rel)
+  } finally {
+    await session.close()
+  }
+}
+
+function extractProvenance(rel: Relationship): EdgeProvenanceData {
+  const props = rel.properties as Record<string, unknown>
+  return {
+    source_url: typeof props.source_url === 'string' ? props.source_url : undefined,
+    tier: typeof props.tier === 'string' ? props.tier : undefined,
+    confidence_score:
+      typeof props.confidence_score === 'number'
+        ? props.confidence_score
+        : props.confidence_score && typeof props.confidence_score === 'object' && 'toNumber' in props.confidence_score
+          ? (props.confidence_score as { toNumber(): number }).toNumber()
+          : undefined,
+    submitted_by: typeof props.submitted_by === 'string' ? props.submitted_by : undefined,
+    created_at: typeof props.created_at === 'string' ? props.created_at : undefined,
+  }
+}
