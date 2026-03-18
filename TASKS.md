@@ -337,7 +337,7 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 ### TipTap Editor
 - [x] Base TipTap editor: headings, lists, links, images, blockquotes
 - [x] Custom extension: **Graph node embed** — renders as interactive card showing node properties
-- [ ] Custom extension: **Sub-graph embed** — renders react-force-graph-2d inline within the document
+- [x] Custom extension: **Sub-graph embed** — renders react-force-graph-2d inline within the document
 - [ ] Custom extension: **Edge/relationship citation** — inline reference with provenance tooltip
 
 ### Reading Experience
