@@ -1671,3 +1671,134 @@ The combination of knowledge graphs + local LLMs + public data creates a capabil
 
 ### Key Thesis:
 The Epstein case demonstrates that when ALL institutional accountability mechanisms are captured, only external actors (journalists, civic platforms) can break through. This platform exists to be that external actor — at scale.
+
+---
+
+## Iteration 40 — Witness/Victim: Recruitment Geography
+*2026-03-19 ~00:35 UTC*
+
+**Query:** Geographic patterns in victim recruitment. Referral chains. Socioeconomic targeting. Geography of recruitment vs geography of abuse.
+
+**Agent: Jeffrey Epstein:**
+- Recruitment hyper-localized around Palm Beach properties — "West End" neighborhoods
+- Chain started with single 14-year-old "gatekeeper" victim
+- Targeted families facing financial strain despite high property values
+- Recruitment geography: concentric around FL residences
+- Abuse geography: expanded globally via private jets (NY, London, Paris)
+- "Decoupled site of selection from site of exploitation"
+
+**Agent: Ghislaine Maxwell:**
+- Referral chain was "social gatekeeping" not explicit victim-recruiting-victim
+- First victim became "trusted companion who lowered defenses of next girl"
+- Targeted vulnerabilities: fear of social decline, desire for luxury, household instability
+- "Recruitment pool geographically confined to South Florida; abuse was global enterprise"
+
+**Agent: Alan Dershowitz:**
+- Court records establish specific "geographic funnel" — neighborhoods adjacent to Palm Beach residence
+- Chain of referrals: each girl served as reference point for next
+- Targeted gap between "public image and private reality" in affluent-but-precarious families
+- Recruitment within tight radius; abuse across continents
+
+**Key Findings:**
+- TWO DISTINCT GEOGRAPHIES: recruitment (local, concentrated) vs abuse (global, dispersed)
+- Referral chain was social engineering — trust-based, not coercion-based recruitment
+- Targeted SPECIFIC socioeconomic vulnerability: affluent communities with hidden financial strain
+- The local recruitment pattern is why Palm Beach Police found the trail first
+- This geographic pattern is a DETECTION SIGNAL for the Hive-Defense system (iter 30):
+  - Concentrated recruitment from specific neighborhoods near a private residence
+  - Combined with dispersed travel patterns to remote/private locations
+  - This signature is computationally detectable in a knowledge graph
+
+---
+
+## Iteration 41 — Legal Deep Dive: What Settlements Hide
+*2026-03-19 ~00:40 UTC*
+
+**Query:** What evidence/testimony is LOST when cases settle? What would Andrew trial and JPMorgan trial have exposed? Systemic problem with buying out of public trials?
+
+**Agent: Jeffrey Epstein:**
+- "Settlements convert criminal liability into a financial transaction"
+- $290M JPMorgan payment was "a price for silence" not a penalty for crime
+- Trial discovery would force production of flight logs, emails, financial records
+- JPMorgan trial would have exposed "how they knowingly facilitated access to my island for minors"
+- "The system works exactly as intended"
+
+**Agent: Ghislaine Maxwell:**
+- Settlements allow accusers to withdraw "without establishing factual record of what happened"
+- Andrew trial would have required: testimony under oath about movements, knowledge of ages, direct interactions
+- Settlement hid "precise nature of involvement — consensual, coerced, or negligent"
+- JPMorgan trial would have exposed "compliance officers either incompetent or complicit"
+- "Confidentiality clauses prevent public from seeing full extent of conspiracy"
+
+**Agent: Alan Dershowitz:**
+- Settlement ≠ hiding truth in theory, but creates "systemic problem" in practice
+- Allegations remain "untested by cross-examination"
+- Andrew trial would have provided "definitive judicial finding" on conduct
+- JPMorgan trial would have forced admission of "systemic AML failures"
+- Creates "two-tiered justice: rich buy privacy, poor remain in public eye"
+
+**What Would Have Been Exposed (by case):**
+
+| Settlement | What Trial Would Have Revealed | Lost Evidence Type |
+|-----------|-------------------------------|-------------------|
+| Giuffre v Andrew | Andrew's movements, knowledge of victim ages, direct interactions | Sworn testimony under cross-examination |
+| Doe v JPMorgan | Internal compliance culture, specific ignored red flags, decision chain | Internal emails, board minutes, compliance reports |
+| Doe v Deutsche Bank | Onboarding approval process, who authorized Epstein post-JPMorgan | Relationship manager communications |
+| Individual victim settlements | Specific abuse details, names of other perpetrators present | Victim depositions + corroborating evidence |
+
+**Key Findings:**
+- Every settlement REMOVES evidence from the public record
+- The most valuable evidence — internal bank communications, sworn testimony under cross-examination — is exactly what settlements prevent
+- Settlements create a KNOWLEDGE ASYMMETRY: defendants know the full truth; public knows only what leaks
+- This is the core mechanism by which wealth purchases impunity — not through corruption but through legal procedure
+- Reform needed: mandatory public disclosure of facts (not terms) in settlements involving public interest
+- Pattern: the legal system's settlement mechanism is the 9th layer of the protection stack
+
+---
+
+## Iteration 42 — Meta: Comparison to ICIJ Panama Papers Methodology
+*2026-03-19 ~00:45 UTC*
+
+**Query:** How does this platform parallel ICIJ's Panama Papers approach? What can we learn? Could an open-source civic platform achieve equivalent scale?
+
+**Agent: Jeffrey Epstein:**
+- ICIJ mapped structure but "failed to map intent or the human element"
+- Financial graphs are static; human networks are dynamic, rely on social pressure
+- Shell companies were vessels — real network was human trafficking
+- "Their graph showed where money went; it didn't show the victims"
+
+**Agent: Alan Dershowitz:**
+- "Chasm between mapping tax evasion and exposing sex trafficking"
+- Panama Papers relied on assumption of corruption within banking sector
+- Epstein barrier: deliberate evidence destruction + invocation of privilege
+- ICIJ coordinated 400 journalists chasing PUBLIC records and leaks
+- Epstein equivalent needs "unified legal front to challenge admissibility of suppressed evidence"
+- Open-source platform lacks subpoena power for sealed court records
+
+**Agent: Ghislaine Maxwell:**
+- ICIJ exposed money but "missed the mechanism"
+- Didn't capture "social graph" allowing victim movement between locations
+- ICIJ coordination relied on journalist trust; Epstein network relied on victim fear + intermediary ambition
+- Need model that ingests NON-FINANCIAL data: travel patterns, social media, testimonies
+
+**Comparison Matrix:**
+
+| Dimension | ICIJ/Panama Papers | OOA/Epstein Platform |
+|-----------|-------------------|---------------------|
+| Data source | 11.5M leaked documents | Public court records, flight logs, news |
+| Graph size | 785K entities, 2.5M relationships | 65 nodes, 73 relationships (expandable) |
+| Node types | Companies, people, addresses | People, flights, locations, events, docs, orgs, cases |
+| Core insight | Financial opacity via offshore shells | Human trafficking via social capital |
+| Coordination | 400 journalists, 80 countries | Open-source, citizen investigators |
+| AI layer | Limited (NLP for document parsing) | Swarm intelligence simulation (MiroFish) |
+| Legal barrier | Documents already leaked | Many records still sealed |
+| Impact | Tax reforms, PM resignations, criminal charges | TBD — platform operational |
+
+**Key Findings:**
+- ICIJ proves knowledge graphs CAN break open elite networks at scale
+- But ICIJ had leaked documents — we have only public records + sealed court files
+- Key advantage of this platform: AI SIMULATION layer (MiroFish) generates hypotheses from structure
+- ICIJ needed $4.5M+ budget; this platform runs on consumer hardware (~$500 GPU)
+- The democratization gap: ICIJ required institutional journalism; this platform enables citizen investigation
+- Missing capability: subpoena power — the platform can show WHERE to look but cannot force disclosure
+- Partnership model: platform generates leads → journalists/lawyers pursue with legal tools
