@@ -17,6 +17,14 @@ const LABEL_COLORS: Readonly<Record<string, string>> = {
   Legislation: '#ef4444', // red-500
   Investigation: '#ec4899', // pink-500
   User: '#6b7280', // gray-500
+  // Epstein investigation node types
+  Person: '#3b82f6', // blue-500
+  Flight: '#f97316', // orange-500
+  Location: '#10b981', // emerald-500
+  Document: '#ef4444', // red-500
+  Event: '#f59e0b', // amber-500
+  Organization: '#8b5cf6', // violet-500
+  LegalCase: '#ec4899', // pink-500
 }
 
 const DEFAULT_NODE_COLOR = '#94a3b8' // slate-400
@@ -297,6 +305,27 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         return '#059669' // emerald-600
       case 'REFERENCES':
         return '#dc2626' // red-600
+      // Epstein investigation relationship types
+      case 'ASSOCIATED_WITH':
+        return '#6366f1' // indigo-500
+      case 'FLEW_WITH':
+        return '#f97316' // orange-500
+      case 'VISITED':
+        return '#10b981' // emerald-500
+      case 'OWNED':
+        return '#a855f7' // purple-500
+      case 'EMPLOYED_BY':
+      case 'AFFILIATED_WITH':
+        return '#8b5cf6' // violet-500
+      case 'MENTIONED_IN':
+        return '#ef4444' // red-500
+      case 'PARTICIPATED_IN':
+        return '#f59e0b' // amber-500
+      case 'FILED_IN':
+      case 'DOCUMENTED_BY':
+        return '#ec4899' // pink-500
+      case 'FINANCED':
+        return '#22c55e' // green-500
       default:
         return '#334155' // slate-700
     }
