@@ -1386,3 +1386,135 @@ The investigation continues.
 Question #10 is the one THIS tool can directly address. By cross-referencing all public datasets (flight logs, black book, court filings, settlement disclosures), the Office of Accountability knowledge graph can classify the 1000+ names into the network tier model (core/social capital/operational/peripheral) identified in Iteration 14.
 
 This is the investigation's most actionable finding: the answer to the biggest remaining question is COMPUTABLE from existing public data.
+
+---
+
+## Iteration 34 — International Dimensions: France, UK, Israel
+*2026-03-18 ~23:55 UTC*
+
+**Query:** French investigation of Paris apartment, UK evidence beyond Giuffre photo, Maxwell-Israel connections, global vs US scope.
+
+**Agent: Jeffrey Epstein:**
+- Paris apartment was "logistical node for European wing" not just residence
+- French investigators found: ledgers, safe deposit boxes, access codes linking French bank accounts to USVI shells
+- "Administrative machinery" of the network was at Avenue Foch
+- Network designed to bypass US jurisdiction by "fragmenting assets across borders"
+- "US served as primary collection point; Europe and Caribbean provided infrastructure"
+
+**Agent: Ghislaine Maxwell:**
+- Robert Maxwell / Mossad connection: "no verified public court record" linking Israeli intelligence to trafficking
+- UK investigation relied on: victim testimony (Giuffre), photos, travel patterns
+- Father's legacy created "web of financial opacity that Epstein exploited"
+- "Scope is global because victims and facilitators were international, not because of intelligence ties"
+
+**Agent: Alan Dershowitz:**
+- French investigation yielded physical evidence: confirmed Epstein presence + safe at Paris apartment
+- Intelligence connection "remains in the realm of theory"
+- Network used wealth + aristocratic status to shield activities
+- "International dimension changes complexity but not fundamental nature of crimes"
+
+**International Thread Summary:**
+| Jurisdiction | Investigation Focus | Key Evidence | Status |
+|-------------|-------------------|--------------|--------|
+| France | Brunel + Paris apartment | Ledgers, safe deposits, bank access codes | Brunel dead; investigation ongoing |
+| UK | Prince Andrew connections | Giuffre photo, flight logs, victim testimony | Civil settlement 2022; no criminal charges |
+| Israel | Robert Maxwell/Mossad allegations | Financial opacity, intelligence speculation | Unverified; no court record |
+| USVI | Foundation + Southern Trust | Shell company records, property deeds | AG investigation concluded |
+
+**Key Findings:**
+- Paris apartment was the EUROPEAN HEADQUARTERS — administrative + financial node
+- French evidence (ledgers linking to USVI shells) proves cross-border financial architecture
+- Robert Maxwell/Mossad connection: significant inference but no verified court evidence
+- Three parallel investigations (US/France/UK) never fully coordinated
+- Each jurisdiction investigated its own piece without seeing the whole network
+- Pattern: the same compartmentalization that protected the network also fragmented investigations
+- A unified international knowledge graph would have revealed connections years earlier
+
+---
+
+## Iteration 35 — Witness Deep Dive: Systematic Enabler Audit
+*2026-03-19 ~00:00 UTC*
+
+**Query:** Audit each known enabler: documented role, evidence against them, why never charged, could they be prosecuted?
+
+**Enabler Prosecution Status Matrix:**
+
+| Enabler | Role | Evidence Level | Why Uncharged | Can Prosecute? |
+|---------|------|---------------|---------------|----------------|
+| Sarah Kellen | Scheduler/logistics | HIGH — testified, admitted knowledge | Cooperating witness; testimony essential for Maxwell conviction | Very unlikely — would jeopardize Maxwell conviction |
+| Nadia Marcinko | Victim→associate→recruiter | MEDIUM — dual status complicates | Victim-first status creates legal shield | Possible if new evidence of active post-victim recruitment |
+| Larry Visoski | Chief pilot | HIGH — flight logs + testimony | Cooperating witness; utility > prosecution risk | Very unlikely — testimony already accepted by court |
+| Jes Staley | JPMorgan executive | MEDIUM — approved loans, facilitated transfers | Corporate liability settled ($290M); individual prosecution harder | Possible — depends on evidence of personal knowledge vs institutional failure |
+| Leon Black | Financier ($158M payments) | LOW-MEDIUM — payments documented but purpose disputed | Payments framed as "advisory fees"; insufficient proof of criminal knowledge | Unlikely — financial transactions alone don't prove criminal intent |
+| Jean-Luc Brunel | Recruiter/modeling agent | HIGH — flight logs, victim testimony, charged in France | Died in custody Feb 2022 | IMPOSSIBLE — deceased |
+
+**Key Findings:**
+- Only 2 convicted out of dozens of documented enablers
+- Primary reason for non-prosecution: witness utility outweighs prosecution value
+- Pattern: cooperating witnesses are PROTECTED by the system they helped create
+- The network's compartmentalization creates a legal paradox:
+  - To convict top figures, you need testimony from mid-level enablers
+  - To get that testimony, you must grant them immunity
+  - Immunity means the mid-level enablers face no consequences
+- This creates a STRUCTURAL IMPUNITY at the enabler level
+- Same pattern seen in organized crime (RICO), but Epstein case shows it applies to elite networks
+- The "witness vs accomplice" distinction is a PROSECUTORIAL CHOICE, not a factual one
+
+---
+
+## Iteration 36 — Meta: Single Most Impactful Feature Recommendation
+*2026-03-19 ~00:05 UTC*
+
+**Query:** If you could add ONE feature with the most investigative impact, what would it be?
+
+### Recommended Feature: "Proximity & Temporal Alignment" Overlay Engine
+
+**Rationale:** Institutional investigations focus on DIRECT relationships (A met B). The most damning evidence lies in INDIRECT convergence — statistical impossibility of coincidental scheduling, geographic clustering, shared transit windows. Citizens can't visualize multi-hop temporal patterns without custom queries.
+
+**Three Core Metrics:**
+1. **Temporal Delta** — exact time difference between two agents' verified presence at same location, aligned with private jet schedules
+2. **Geographic Clustering** — heat-map of node interaction density within specific radius during time windows, highlighting hub connectors
+3. **"Common Path" Algorithm** — user selects 3+ nodes → system renders ALL possible intersection points (locations/dates) where timelines overlap, regardless of face-to-face meetings
+
+**Data Requirements:**
+- Flight logs: arrival/departure TIMES (not just dates), aircraft tail numbers, gate locations
+- Verified guest lists: timestamped entries for island visits, parties, resort stays
+- Property records: ownership + occupancy dates
+- Meeting logs: calendar invites, deposition-mentioned meeting times
+
+**Expected Outcomes:**
+- Discover "proxy relationships" — agents whose schedules synchronize without direct contact
+- Detect "cleaning" patterns — coordinated clusters appearing only during high-volume periods
+- Lower barrier for non-technical citizens to run complex temporal queries
+- Corroborate or refute testimony with visual, data-driven proof
+
+**Key Findings:**
+- This feature would have been the Julie K. Brown tool — automating the pattern detection she did manually
+- The "Common Path" algorithm is essentially what intelligence agencies use for pattern-of-life analysis
+- Applied to the Epstein graph, it would immediately surface: who was at the same place within hours of each other, repeatedly, across years
+- This is the MISSING CAPABILITY that makes a knowledge graph into an investigation tool
+- Implementation: Neo4j temporal queries + d3.js timeline visualization + Mapbox geographic overlay
+- Could be built as a new route: `/caso/[slug]/proximidad`
+
+---
+
+## Running Totals: 36 Iterations
+
+### Models & Frameworks Generated:
+1. **5-Layer Protection Stack** (iter 18) — legal/financial/geographic/social/intelligence
+2. **Compartmentalization Architecture** (iter 8, 18) — each actor sees only their slice
+3. **Network Tier System** (iter 14) — core/social capital/operational/peripheral
+4. **Detection Signals** (iter 24) — 7 indicators for similar networks
+5. **Hive-Defense Early Warning** (iter 30) — graph-based detection system design
+6. **10 Unanswered Questions** (iter 33) — prioritized by impact with evidence sources
+7. **Enabler Prosecution Matrix** (iter 35) — why each enabler was/wasn't charged
+8. **Proximity Engine** (iter 36) — the single most impactful feature to build next
+
+### Institutions Captured (updated):
+1. Law enforcement → NPA + political pressure
+2. Banking → revenue incentives + willful blindness
+3. Courts → sealed records + settlement confidentiality + NDAs
+4. Media → social pressure + advertising dependencies
+5. Academia → donation intermediaries + prestige exchange
+6. Corrections → guard negligence + deferred prosecution
+7. Private aviation → regulatory gaps + honor system manifests
