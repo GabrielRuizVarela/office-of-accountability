@@ -48,7 +48,7 @@ function asStringArray(value: unknown): readonly string[] {
   return []
 }
 
-function generateSlug(title: string): string {
+function slugify(title: string): string {
   return title
     .toLowerCase()
     .normalize('NFD')
@@ -58,6 +58,44 @@ function generateSlug(title: string): string {
     .replace(/-+/g, '-') // collapse hyphens
     .replace(/^-|-$/g, '') // trim leading/trailing hyphens
     .slice(0, 200)
+}
+
+/**
+ * Generate a unique slug for an investigation.
+ * Appends -2, -3, etc. on collision with existing slugs.
+ */
+async function generateUniqueSlug(
+  title: string,
+  excludeId?: string,
+): Promise<string> {
+  const base = slugify(title)
+  if (!base) return `inv-${Date.now().toString(36)}`
+
+  const dbSession = getDriver().session()
+  try {
+    const result = await dbSession.run(
+      `MATCH (i:Investigation)
+       WHERE i.slug STARTS WITH $base
+       ${excludeId ? 'AND i.id <> $excludeId' : ''}
+       RETURN i.slug AS slug`,
+      { base, ...(excludeId ? { excludeId } : {}) },
+      TX_CONFIG,
+    )
+
+    const existing = new Set(
+      result.records.map((r: Neo4jRecord) => r.get('slug') as string),
+    )
+
+    if (!existing.has(base)) return base
+
+    let suffix = 2
+    while (existing.has(`${base}-${suffix}`)) {
+      suffix++
+    }
+    return `${base}-${suffix}`
+  } finally {
+    await dbSession.close()
+  }
 }
 
 function generateId(): string {
@@ -143,7 +181,7 @@ export async function createInvestigation(
 ): Promise<InvestigationWithAuthor> {
   const now = new Date().toISOString()
   const id = generateId()
-  const slug = generateSlug(input.title)
+  const slug = await generateUniqueSlug(input.title)
   const isPublished = input.status === 'published'
 
   const session = getDriver().session()
@@ -312,7 +350,7 @@ export async function updateInvestigation(
         setClauses.push('i.title = $title')
         setClauses.push('i.slug = $slug')
         params.title = input.title
-        params.slug = generateSlug(input.title)
+        params.slug = await generateUniqueSlug(input.title, id)
       }
       if (input.summary !== undefined) {
         setClauses.push('i.summary = $summary')
