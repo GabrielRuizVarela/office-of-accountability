@@ -20,6 +20,11 @@ import {
   listInvestigations,
 } from '@/lib/investigation'
 import { getSession } from '@/lib/auth/session'
+import {
+  sanitizeTipTapBody,
+  extractEmbeddedNodeIds,
+  validateEmbeddedNodeIds,
+} from '@/lib/investigation/sanitize'
 
 function isConnectionError(error: unknown): boolean {
   return (
@@ -53,7 +58,41 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   try {
-    const result = await createInvestigation(parsed.data, session.user.id)
+    // Sanitize TipTap body — strip dangerous HTML, event handlers, javascript: URIs
+    let sanitizedBody: string
+    try {
+      sanitizedBody = sanitizeTipTapBody(parsed.data.body)
+    } catch {
+      return Response.json(
+        { success: false, error: 'Invalid body format: must be valid TipTap JSON' },
+        { status: 400 },
+      )
+    }
+
+    // Extract and validate embedded node IDs from the body content
+    const embeddedIds = extractEmbeddedNodeIds(sanitizedBody)
+    if (embeddedIds.length > 0) {
+      const missing = await validateEmbeddedNodeIds(embeddedIds)
+      if (missing.length > 0) {
+        return Response.json(
+          {
+            success: false,
+            error: 'Embedded nodes not found',
+            details: missing,
+          },
+          { status: 400 },
+        )
+      }
+    }
+
+    // Use sanitized body and validated embedded IDs as referenced_node_ids
+    const input = {
+      ...parsed.data,
+      body: sanitizedBody,
+      referenced_node_ids: embeddedIds.length > 0 ? [...embeddedIds] : (parsed.data.referenced_node_ids ?? []),
+    }
+
+    const result = await createInvestigation(input, session.user.id)
 
     return Response.json(
       {
