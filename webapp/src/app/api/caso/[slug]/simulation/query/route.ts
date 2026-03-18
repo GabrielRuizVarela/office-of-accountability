@@ -62,7 +62,8 @@ export async function POST(
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'Qwen3.5-9B-Q5_K_M.gguf',
-        messages: sim.messages,
+        // Send only system prompt + last user message to fit in context window
+        messages: [sim.messages[0], sim.messages[sim.messages.length - 1]],
         temperature: 0.7,
         max_tokens: 1024,
         chat_template_kwargs: { enable_thinking: false },
