@@ -441,7 +441,7 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 
 ### Security Audit
 - [x] Dependency audit: `npm audit`, no critical/high vulnerabilities
-- [ ] Secret scan: no API keys, passwords, or tokens in repo (use `gitleaks` or equivalent)
+- [x] Secret scan: no API keys, passwords, or tokens in repo (use `gitleaks` or equivalent)
 - [ ] Penetration test: auth bypass, IDOR on investigations, Cypher injection via search, XSS via graph data
 - [ ] Cloudflare WAF rules: block common attack patterns (SQLi, path traversal, etc.)
 - [ ] Rate limiting review: all endpoints have appropriate limits
