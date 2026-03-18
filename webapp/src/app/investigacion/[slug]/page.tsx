@@ -19,6 +19,7 @@ import type { Investigation } from '@/lib/investigation'
 
 import { InvestigationBodyView } from '@/components/investigation/InvestigationBodyView'
 import { PrintButton } from '@/components/investigation/PrintButton'
+import { ShareButton } from '@/components/ui/ShareButton'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -154,7 +155,11 @@ export default async function InvestigationPage({ params }: PageProps) {
         )}
 
         {/* Actions */}
-        <div className="mt-6 print:hidden">
+        <div className="mt-6 flex items-center gap-3 print:hidden">
+          <ShareButton
+            text={`${investigation.title} — Investigación en la Oficina de Rendición de Cuentas`}
+            title={investigation.title}
+          />
           <PrintButton />
         </div>
 
