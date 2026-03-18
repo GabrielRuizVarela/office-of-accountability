@@ -92,6 +92,37 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Featured investigation: Caso Libra */}
+      <section className="mx-auto max-w-6xl px-4 pb-12">
+        <Link
+          href="/caso/caso-libra"
+          className="group flex flex-col gap-4 rounded-xl border border-purple-600/30 bg-gradient-to-br from-zinc-900 to-purple-950/20 p-6 transition-colors hover:border-purple-500/50 sm:p-8"
+        >
+          <div className="flex items-center gap-2 text-xs text-purple-400">
+            <span className="inline-block h-2 w-2 rounded-full bg-purple-500" />
+            Investigacion destacada
+          </div>
+          <h2 className="text-2xl font-bold text-zinc-50 group-hover:text-purple-300 sm:text-3xl">
+            Caso Libra: La Memecoin del Presidente
+          </h2>
+          <p className="max-w-2xl text-sm leading-relaxed text-zinc-400">
+            El 14 de febrero de 2025, Milei promovio $LIBRA a 19M de seguidores. El precio colapso
+            94% en horas. 114,000+ billeteras perdieron $251M+. Explora la evidencia: blockchain,
+            registros parlamentarios, pericias telefonicas.
+          </p>
+          <div className="flex gap-4 text-sm">
+            <span className="font-semibold text-purple-400">$251M+</span>
+            <span className="text-zinc-600">|</span>
+            <span className="text-zinc-400">114,000+ billeteras</span>
+            <span className="text-zinc-600">|</span>
+            <span className="text-zinc-400">94% caida</span>
+          </div>
+          <span className="text-sm font-medium text-purple-400 group-hover:text-purple-300">
+            Explorar investigacion &rarr;
+          </span>
+        </Link>
+      </section>
+
       {/* Section cards */}
       <section className="mx-auto max-w-6xl px-4 pb-16">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
