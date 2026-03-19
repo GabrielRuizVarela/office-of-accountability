@@ -118,4 +118,5 @@ export interface MaybeSameAsRelParams {
   readonly politician_id: string
   readonly officer_id: string
   readonly confidence: number
+  readonly match_method: string
 }

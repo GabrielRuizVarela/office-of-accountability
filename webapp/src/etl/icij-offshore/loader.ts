@@ -134,7 +134,7 @@ async function loadIntermediaryOfRels(items: readonly IntermediaryOfRelParams[])
 async function loadRegisteredAtRels(items: readonly RegisteredAtRelParams[]): Promise<LoadStepResult> {
   return runBatched('REGISTERED_AT', items, REL_BATCH_SIZE, `
     UNWIND $batch AS r
-    MATCH (e {icij_id: r.entity_icij_id})
+    MATCH (e:OffshoreEntity {icij_id: r.entity_icij_id})
     MATCH (a:OffshoreAddress {icij_id: r.address_icij_id})
     MERGE (e)-[:REGISTERED_AT]->(a)
   `)
@@ -146,7 +146,8 @@ async function loadMaybeSameAsRels(items: readonly MaybeSameAsRelParams[]): Prom
     MATCH (p:Politician {id: r.politician_id})
     MATCH (o:OffshoreOfficer {icij_id: r.officer_icij_id})
     MERGE (p)-[rel:MAYBE_SAME_AS]->(o)
-    SET rel.confidence = r.confidence
+    SET rel.confidence = r.confidence,
+        rel.match_method = r.match_method
   `)
 }
 
