@@ -156,4 +156,5 @@ export interface MaybeSameAsAppointmentRelParams {
   readonly politician_id: string
   readonly appointment_id: string
   readonly confidence: number
+  readonly match_method: string
 }

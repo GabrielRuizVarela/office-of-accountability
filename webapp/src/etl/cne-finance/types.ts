@@ -98,6 +98,7 @@ export interface DonorMaybeSameAsRelParams {
   readonly politician_id: string
   readonly donor_id: string
   readonly confidence: number
+  readonly match_method: string
 }
 
 export interface PartyFinanceMaybeSameRelParams {

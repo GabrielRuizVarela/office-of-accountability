@@ -214,7 +214,8 @@ function matchPoliticians(
       matches.push({
         politician_id: politicianId,
         officer_icij_id: officer.icij_id,
-        confidence: 1.0,
+        confidence: 0.8,
+        match_method: 'normalized_name',
       })
     }
   }

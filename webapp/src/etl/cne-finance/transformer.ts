@@ -168,7 +168,8 @@ function matchDonorsToPoliticians(
       matches.push({
         politician_id: politicianId,
         donor_id: donor.donor_id,
-        confidence: 1.0,
+        confidence: 0.8,
+        match_method: 'normalized_name',
       })
     }
   }

@@ -204,7 +204,8 @@ function matchPoliticians(
       matches.push({
         politician_id: politicianId,
         appointment_id: appt.appointment_id,
-        confidence: 1.0,
+        confidence: 0.8,
+        match_method: 'normalized_name',
       })
     }
   }
