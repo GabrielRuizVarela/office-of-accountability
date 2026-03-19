@@ -29,6 +29,8 @@ export interface EpsteinDocument {
 
 Update the Zod `documentSchema` to include the new fields. Update `toDocumentProps` in `queries.ts` to extract them from Neo4j nodes. Neo4j stores `key_findings` as a native string array property.
 
+Note on date sorting: partial dates like `"2006"` sort correctly against full dates like `"2006-01-15"` in lexicographic order, which is the sort strategy used in the flat filtered view.
+
 ### Files modified
 - `src/lib/caso-epstein/types.ts` — interface + Zod schema
 - `src/lib/caso-epstein/queries.ts` — `toDocumentProps` helper
@@ -64,14 +66,16 @@ New `MENTIONED_IN` relationships connect persons to new documents. New `FILED_IN
 
 Replace the stub detail page with a full evidence page that pulls graph connections.
 
-### New query: `getDocumentBySlug(slug)`
+### New query: `getDocumentBySlug(casoSlug, slug)`
+
+Signature: `getDocumentBySlug(casoSlug: string, slug: string)` — follows the existing convention of scoping all queries by `caso_slug` to ensure data isolation between investigations.
 
 Single Cypher query returning:
 - The document node with all properties
 - People mentioned (`MENTIONED_IN` relationships)
 - Legal cases filed in (`FILED_IN` relationships)
 - Events documented by (`DOCUMENTED_BY` relationships)
-- Cross-referenced documents (other docs sharing at least one person with this doc)
+- Cross-referenced documents (other docs sharing at least one person with this doc, LIMIT 10 to keep response times predictable)
 
 This replaces the current approach of fetching all documents and filtering client-side.
 
@@ -127,7 +131,7 @@ The listing page gets a search bar and toggles between category view and filtere
 - **Clear:** Returns to category view
 
 ### Search
-Client-side text search across title, summary, and key_findings. No API needed — the page already fetches all documents server-side.
+Client-side text search across title, summary, and key_findings. No API needed — the page already fetches all documents server-side. For `key_findings` (a `string[]`), search checks each element's text individually rather than matching on the array as a whole.
 
 ### Filter chips
 Horizontal row of toggleable type badges with counts. Multiple can be active simultaneously.
@@ -142,9 +146,13 @@ Summary (3-line clamp)
 ```
 
 ### Architecture
-- `EvidenciaPage` (server component) fetches documents with a new query that includes date, key_findings, and mentioned-person count
+- `EvidenciaPage` (server component) fetches documents with a new query that includes date, key_findings, and mentioned-person count (as `EpsteinDocumentWithCount` — extends `EpsteinDocument` with a computed `mentionedPersonCount: number` to keep the core interface aligned with the Neo4j node shape)
 - Passes data to new `EvidenceExplorer` client component managing search/filter state
 - `EvidenceExplorer` renders either grouped view or flat filtered view
+
+### Cleanup
+- Extract the duplicated `TYPE_LABELS` map (currently in `DocumentCard.tsx`, `[docSlug]/page.tsx`, and `evidencia/page.tsx`) into a shared constant in `types.ts`
+- Remove the unused `sourceUrl` prop from `DocumentCard` (it is accepted but never rendered)
 
 ### Files modified
 - `src/lib/caso-epstein/queries.ts` — updated `getDocuments` query to include person counts
