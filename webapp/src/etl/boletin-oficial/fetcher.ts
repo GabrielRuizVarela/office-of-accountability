@@ -63,15 +63,16 @@ async function downloadFile(url: string, destPath: string): Promise<void> {
 // CSV parsing helpers
 // ---------------------------------------------------------------------------
 
-async function parsePipeDelimitedCsv<T>(filePath: string): Promise<T[]> {
+async function parseAuthoritesCsv<T>(filePath: string): Promise<T[]> {
   const records: T[] = []
   const parser = createReadStream(filePath, { encoding: 'utf-8' }).pipe(
     parse({
       columns: true,
       skip_empty_lines: true,
       relax_column_count: true,
-      delimiter: '|',
+      delimiter: ',',
       quote: '"',
+      bom: true,
     }),
   )
   for await (const record of parser) {
@@ -89,6 +90,7 @@ async function parseCommaCsv<T>(filePath: string): Promise<T[]> {
       relax_column_count: true,
       delimiter: ',',
       quote: '"',
+      bom: true,
     }),
   )
   for await (const record of parser) {
@@ -126,8 +128,8 @@ export async function fetchBoletinData(): Promise<FetchBoletinResult> {
   const authPath = join(DATA_DIR, 'estructura-20191209.csv')
   await downloadFile(AUTHORITIES_URL, authPath)
 
-  console.log('  Parsing authorities CSV (pipe-delimited)...')
-  const allAuthorities = await parsePipeDelimitedCsv<AuthorityRow>(authPath)
+  console.log('  Parsing authorities CSV...')
+  const allAuthorities = await parseAuthoritesCsv<AuthorityRow>(authPath)
   const namedAuthorities = allAuthorities.filter(
     (a) =>
       (a.autoridad_nombre && a.autoridad_nombre.trim() !== '') ||
