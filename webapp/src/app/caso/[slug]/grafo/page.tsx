@@ -132,8 +132,8 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
       </div>
 
       {/* Graph + Detail Panel */}
-      <div className="flex flex-1 overflow-hidden">
-        <div className="flex-1">
+      <div className="flex min-h-0 flex-1 overflow-hidden">
+        <div className="min-h-0 flex-1">
           <ForceGraph
             ref={graphRef}
             data={data}
