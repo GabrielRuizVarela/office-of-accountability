@@ -61,7 +61,8 @@ export async function GET(
     const eventsResult = await s2.run(
       `MATCH (p1:Person)-[:PARTICIPATED_IN]->(evt:Event)<-[:PARTICIPATED_IN]-(p2:Person)
        WHERE p1.slug IN $slugs AND p2.slug IN $slugs AND p1.slug < p2.slug
-       RETURN p1.name AS person1, p2.name AS person2, evt.title AS event, evt.date AS date, evt.event_type AS type
+       RETURN p1.name AS person1, p1.slug AS slug1, p2.name AS person2, p2.slug AS slug2,
+              evt.title AS event, evt.date AS date, evt.event_type AS type
        ORDER BY evt.date`,
       { slugs },
     )
@@ -71,7 +72,8 @@ export async function GET(
     const docsResult = await s3.run(
       `MATCH (p1:Person)-[:MENTIONED_IN]->(doc:Document)<-[:MENTIONED_IN]-(p2:Person)
        WHERE p1.slug IN $slugs AND p2.slug IN $slugs AND p1.slug < p2.slug
-       RETURN p1.name AS person1, p2.name AS person2, doc.title AS document, doc.doc_type AS type`,
+       RETURN p1.name AS person1, p1.slug AS slug1, p2.name AS person2, p2.slug AS slug2,
+              doc.title AS document, doc.slug AS docSlug, doc.doc_type AS type`,
       { slugs },
     )
     await s3.close()
@@ -89,12 +91,14 @@ export async function GET(
           visit1Desc: str(r, 'visit1'), visit2Desc: str(r, 'visit2'),
         })),
         sharedEvents: eventsResult.records.map((r) => ({
-          person1: str(r, 'person1'), person2: str(r, 'person2'),
+          person1: str(r, 'person1'), slug1: str(r, 'slug1'),
+          person2: str(r, 'person2'), slug2: str(r, 'slug2'),
           event: str(r, 'event'), date: str(r, 'date'), type: str(r, 'type'),
         })),
         sharedDocuments: docsResult.records.map((r) => ({
-          person1: str(r, 'person1'), person2: str(r, 'person2'),
-          document: str(r, 'document'), type: str(r, 'type'),
+          person1: str(r, 'person1'), slug1: str(r, 'slug1'),
+          person2: str(r, 'person2'), slug2: str(r, 'slug2'),
+          document: str(r, 'document'), docSlug: str(r, 'docSlug'), type: str(r, 'type'),
         })),
         persons,
       },

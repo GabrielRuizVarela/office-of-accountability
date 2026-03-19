@@ -39,7 +39,9 @@ interface CoLocation {
 
 interface SharedEvent {
   readonly person1: string
+  readonly slug1: string
   readonly person2: string
+  readonly slug2: string
   readonly event: string
   readonly date: string
   readonly type: string
@@ -47,8 +49,11 @@ interface SharedEvent {
 
 interface SharedDocument {
   readonly person1: string
+  readonly slug1: string
   readonly person2: string
+  readonly slug2: string
   readonly document: string
+  readonly docSlug: string
   readonly type: string
 }
 
@@ -335,7 +340,9 @@ export function ProximityPanel({ casoSlug }: ProximityPanelProps) {
                     key={`${loc.locSlug}-${loc.slug1}-${loc.slug2}-${i}`}
                     className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4"
                   >
-                    <h3 className="mb-2 font-medium text-zinc-100">{loc.location}</h3>
+                    <h3 className="mb-2 font-medium text-zinc-100">
+                      <Link href={`/caso/${casoSlug}/grafo`} className="hover:text-emerald-400 transition-colors">{loc.location}</Link>
+                    </h3>
                     {loc.coordinates && (
                       <p className="mb-2 text-xs text-zinc-500">{loc.coordinates}</p>
                     )}
@@ -378,9 +385,11 @@ export function ProximityPanel({ casoSlug }: ProximityPanelProps) {
                       </span>
                     </div>
                     <div>
-                      <h3 className="font-medium text-zinc-100">{evt.event}</h3>
+                      <Link href={`/caso/${casoSlug}/cronologia`} className="font-medium text-zinc-100 hover:text-blue-400 transition-colors">{evt.event}</Link>
                       <p className="mt-1 text-sm text-zinc-400">
-                        {evt.person1} & {evt.person2}
+                        <Link href={`/caso/${casoSlug}/actor/${evt.slug1}`} className="hover:text-zinc-200 transition-colors">{evt.person1}</Link>
+                        {' & '}
+                        <Link href={`/caso/${casoSlug}/actor/${evt.slug2}`} className="hover:text-zinc-200 transition-colors">{evt.person2}</Link>
                       </p>
                     </div>
                   </div>
@@ -405,9 +414,12 @@ export function ProximityPanel({ casoSlug }: ProximityPanelProps) {
                       {doc.type.replace(/_/g, ' ')}
                     </span>
                     <div>
-                      <h3 className="font-medium text-zinc-100">{doc.document}</h3>
+                      <Link href={`/caso/${casoSlug}/evidencia/${doc.docSlug}`} className="font-medium text-zinc-100 hover:text-blue-400 transition-colors">{doc.document}</Link>
                       <p className="mt-1 text-sm text-zinc-400">
-                        Mentions {doc.person1} & {doc.person2}
+                        Mentions{' '}
+                        <Link href={`/caso/${casoSlug}/actor/${doc.slug1}`} className="hover:text-zinc-200 transition-colors">{doc.person1}</Link>
+                        {' & '}
+                        <Link href={`/caso/${casoSlug}/actor/${doc.slug2}`} className="hover:text-zinc-200 transition-colors">{doc.person2}</Link>
                       </p>
                     </div>
                   </div>
