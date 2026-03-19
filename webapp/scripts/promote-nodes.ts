@@ -24,6 +24,10 @@ async function main(): Promise<void> {
 
   if (wave) {
     const waveNum = parseInt(wave)
+    if (isNaN(waveNum)) {
+      console.error('Usage: --wave N expects a valid integer')
+      process.exit(1)
+    }
     await executeWrite(
       `MATCH (n) WHERE n.ingestion_wave = $wave AND n.caso_slug = 'caso-epstein'
        SET n.confidence_tier = $tier`,
