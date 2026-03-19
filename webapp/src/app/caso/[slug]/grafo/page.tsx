@@ -1,11 +1,23 @@
 'use client'
 
-import { useEffect, useRef, useState, use, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, use } from 'react'
 
 import { ForceGraph } from '../../../../components/graph/ForceGraph'
 import type { ForceGraphHandle } from '../../../../components/graph/ForceGraph'
+import { GraphToolbar } from '../../../../components/graph/GraphToolbar'
+import { NodeContextMenu } from '../../../../components/graph/NodeContextMenu'
+import { NodeDetailPanel } from '../../../../components/graph/NodeDetailPanel'
+import { PathFinder } from '../../../../components/graph/PathFinder'
+import { SearchBar } from '../../../../components/graph/SearchBar'
+import { bfsShortestPath, pathLinkKeys } from '../../../../lib/graph/algorithms'
+import { getLabelColor, getLabelDisplayName } from '../../../../lib/graph/constants'
+import { listInvestigations, saveInvestigation } from '../../../../lib/graph/investigation'
+import { mergeGraphData } from '../../../../lib/graph/transform'
 import type { GraphData, GraphNode, GraphLink } from '../../../../lib/neo4j/types'
-import { CASO_EPSTEIN_SLUG } from '../../../../lib/caso-epstein/types'
+
+// ---------------------------------------------------------------------------
+// Label config for the case graph
+// ---------------------------------------------------------------------------
 
 const LABEL_CONFIG: ReadonlyArray<{ label: string; color: string; name: string }> = [
   { label: 'Person', color: '#3b82f6', name: 'People' },
@@ -17,15 +29,45 @@ const LABEL_CONFIG: ReadonlyArray<{ label: string; color: string; name: string }
   { label: 'Flight', color: '#f97316', name: 'Flights' },
 ]
 
+// ---------------------------------------------------------------------------
+// Component
+// ---------------------------------------------------------------------------
+
 export default function GrafoPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params)
   const graphRef = useRef<ForceGraphHandle>(null)
-  const [data, setData] = useState<GraphData>({ nodes: [], links: [] })
-  const [isLoading, setIsLoading] = useState(true)
+
+  // Graph data & UI state
+  const [graphData, setGraphData] = useState<GraphData>({ nodes: [], links: [] })
+  const [isInitialLoading, setIsInitialLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null)
   const [visibleLabels, setVisibleLabels] = useState<Set<string> | null>(null)
   const [tierFilter, setTierFilter] = useState<string>('all')
+  const [pinnedNodeIds, setPinnedNodeIds] = useState<Set<string>>(new Set())
+
+  // Undo stack
+  const [undoStack, setUndoStack] = useState<GraphData[]>([])
+  const undoStackRef = useRef<GraphData[]>([])
+  const graphDataRef = useRef(graphData)
+  graphDataRef.current = graphData
+
+  // Path finding
+  const [showPathFinder, setShowPathFinder] = useState(false)
+  const [pathHighlight, setPathHighlight] = useState<{ nodeIds: Set<string>; linkKeys: Set<string> } | null>(null)
+  const [pathSourceId, setPathSourceId] = useState<string | null>(null)
+  const [pathTargetId, setPathTargetId] = useState<string | null>(null)
+
+  // Context menu
+  const [contextMenu, setContextMenu] = useState<{ nodeId: string; x: number; y: number } | null>(null)
+
+  // First-load zoom
+  const isFirstLoad = useRef(true)
+
+  // ---------------------------------------------------------------------------
+  // Load initial graph data
+  // ---------------------------------------------------------------------------
 
   useEffect(() => {
     async function fetchGraph() {
@@ -33,64 +75,306 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
         const res = await fetch(`/api/caso/${slug}/graph`)
         if (!res.ok) throw new Error('Failed to load graph data')
         const json = await res.json()
-        setData(json.data)
+        setGraphData(json.data)
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load graph')
       } finally {
-        setIsLoading(false)
+        setIsInitialLoading(false)
       }
     }
     fetchGraph()
   }, [slug])
 
-  // TODO(optimization): wire tierFilter to the server-side query layer instead of
-  // filtering client-side. The API route at /api/caso/[slug]/graph already accepts
-  // a `tiers` param and getInvestigationGraph() supports ConfidenceTier[]. Doing
-  // this requires converting GrafoPage from 'use client' to a hybrid pattern
-  // (e.g., passing tier as a searchParam to a Server Component wrapper that fetches
-  // the filtered graph, then hydrates the ForceGraph client component).
+  // Zoom to fit after initial load
+  useEffect(() => {
+    if (!isInitialLoading && graphData.nodes.length > 0 && isFirstLoad.current) {
+      isFirstLoad.current = false
+      setTimeout(() => graphRef.current?.zoomToFit(), 300)
+    }
+  }, [isInitialLoading, graphData.nodes.length])
+
+  // ---------------------------------------------------------------------------
+  // Tier filtering (client-side)
+  // ---------------------------------------------------------------------------
+
   const filteredData = useMemo<GraphData>(() => {
-    if (tierFilter === 'all') return data
+    if (tierFilter === 'all') return graphData
     let nodes: GraphNode[]
     if (tierFilter === 'verified') {
-      nodes = data.nodes.filter(
+      nodes = graphData.nodes.filter(
         (n) => (n.properties as Record<string, unknown>).confidence_tier !== 'bronze',
       )
     } else {
-      // gold only
-      nodes = data.nodes.filter((n) => {
+      nodes = graphData.nodes.filter((n) => {
         const tier = (n.properties as Record<string, unknown>).confidence_tier
         return !tier || tier === 'gold'
       })
     }
     const nodeIds = new Set(nodes.map((n) => n.id))
-    const links: GraphLink[] = data.links.filter(
-      (l) => nodeIds.has(l.source) && nodeIds.has(l.target),
+    const links: GraphLink[] = graphData.links.filter(
+      (l) => {
+        const src = typeof l.source === 'string' ? l.source : (l.source as unknown as { id: string }).id
+        const tgt = typeof l.target === 'string' ? l.target : (l.target as unknown as { id: string }).id
+        return nodeIds.has(src) && nodeIds.has(tgt)
+      },
     )
     return { nodes, links }
-  }, [data, tierFilter])
+  }, [graphData, tierFilter])
+
+  // ---------------------------------------------------------------------------
+  // Expand-in-place
+  // ---------------------------------------------------------------------------
+
+  const expandNode = useCallback(async (nodeId: string) => {
+    setIsLoading(true)
+    try {
+      const response = await fetch(
+        `/api/graph/expand/${encodeURIComponent(nodeId)}?depth=1&limit=50`,
+      )
+      if (!response.ok) return
+      const json = await response.json()
+      if (!json.success || !json.data) return
+
+      const newData = json.data as GraphData
+
+      // Save to undo stack
+      undoStackRef.current = [...undoStackRef.current.slice(-9), graphDataRef.current]
+      setUndoStack(undoStackRef.current)
+
+      // Get current positions
+      const positionMap = new Map<string, { x: number; y: number; vx: number; vy: number }>()
+      const internalNodes = graphRef.current?.getInternalNodes() ?? []
+      for (const n of internalNodes) {
+        if (typeof n.x === 'number' && typeof n.y === 'number') {
+          positionMap.set(n.id as string, { x: n.x, y: n.y, vx: n.vx ?? 0, vy: n.vy ?? 0 })
+        }
+      }
+      const expandedPos = positionMap.get(nodeId) ?? { x: 0, y: 0 }
+
+      const merged = mergeGraphData(graphDataRef.current, newData)
+      const positioned = {
+        nodes: merged.nodes.map((node) => {
+          const existing = positionMap.get(node.id)
+          if (existing) return { ...node, x: existing.x, y: existing.y, vx: existing.vx, vy: existing.vy }
+          return { ...node, x: expandedPos.x + (Math.random() - 0.5) * 40, y: expandedPos.y + (Math.random() - 0.5) * 40 }
+        }),
+        links: merged.links,
+      }
+
+      setGraphData(positioned as GraphData)
+      setSelectedNodeId(nodeId)
+    } catch (err) {
+      if (err instanceof DOMException && err.name === 'AbortError') return
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
+
+  // ---------------------------------------------------------------------------
+  // Undo / Clear / Pin
+  // ---------------------------------------------------------------------------
+
+  const undo = useCallback(() => {
+    const stack = undoStackRef.current
+    if (stack.length === 0) return
+    const last = stack[stack.length - 1]
+    undoStackRef.current = stack.slice(0, -1)
+    setUndoStack(undoStackRef.current)
+    setGraphData(last)
+  }, [])
+
+  const clearGraph = useCallback(() => {
+    setGraphData({ nodes: [], links: [] })
+    undoStackRef.current = []
+    setUndoStack([])
+    setSelectedNodeId(null)
+    setPinnedNodeIds(new Set())
+  }, [])
+
+  const togglePin = useCallback((nodeId: string) => {
+    setPinnedNodeIds((prev) => {
+      const next = new Set(prev)
+      if (next.has(nodeId)) {
+        next.delete(nodeId)
+        graphRef.current?.unpinNode(nodeId)
+      } else {
+        next.add(nodeId)
+        graphRef.current?.pinNode(nodeId)
+      }
+      return next
+    })
+  }, [])
+
+  const unpinAll = useCallback(() => {
+    setPinnedNodeIds(new Set())
+    graphRef.current?.unpinAll()
+  }, [])
+
+  // ---------------------------------------------------------------------------
+  // Collapse
+  // ---------------------------------------------------------------------------
+
+  const collapseNode = useCallback((nodeId: string) => {
+    undoStackRef.current = [...undoStackRef.current.slice(-9), graphDataRef.current]
+    setUndoStack(undoStackRef.current)
+
+    const currentData = graphDataRef.current
+    const resolveId = (val: string | unknown) =>
+      typeof val === 'string' ? val : (val as { id: string }).id
+
+    const nodeLinks = currentData.links.filter(l =>
+      resolveId(l.source) === nodeId || resolveId(l.target) === nodeId)
+    const neighborIds = new Set(nodeLinks.map(l =>
+      resolveId(l.source) === nodeId ? resolveId(l.target) : resolveId(l.source)))
+
+    const exclusiveIds = new Set<string>()
+    for (const nId of neighborIds) {
+      if (pinnedNodeIds.has(nId)) continue
+      const otherLinks = currentData.links.filter(l => {
+        const src = resolveId(l.source)
+        const tgt = resolveId(l.target)
+        return (src === nId || tgt === nId) && src !== nodeId && tgt !== nodeId
+      })
+      if (otherLinks.length === 0) exclusiveIds.add(nId)
+    }
+    if (exclusiveIds.size === 0) return
+
+    setGraphData({
+      nodes: currentData.nodes.filter(n => !exclusiveIds.has(n.id)),
+      links: currentData.links.filter(l => !exclusiveIds.has(resolveId(l.source)) && !exclusiveIds.has(resolveId(l.target))),
+    } as GraphData)
+  }, [pinnedNodeIds])
+
+  // ---------------------------------------------------------------------------
+  // Path finding
+  // ---------------------------------------------------------------------------
+
+  const findPath = useCallback(async (sourceId: string, targetId: string) => {
+    const clientPath = bfsShortestPath(graphDataRef.current, sourceId, targetId)
+    if (clientPath) {
+      setPathHighlight({ nodeIds: new Set(clientPath), linkKeys: pathLinkKeys(graphDataRef.current, clientPath) })
+      return
+    }
+    setIsLoading(true)
+    try {
+      const params = new URLSearchParams({ source: sourceId, target: targetId })
+      const res = await fetch(`/api/graph/path?${params.toString()}`)
+      if (!res.ok) return
+      const json = await res.json()
+      if (!json.success) return
+      const merged = mergeGraphData(graphDataRef.current, json.data)
+      setGraphData(merged)
+      if (json.paths?.[0]) {
+        setPathHighlight({ nodeIds: new Set(json.paths[0] as string[]), linkKeys: pathLinkKeys(merged, json.paths[0] as string[]) })
+      }
+    } finally { setIsLoading(false) }
+  }, [])
+
+  // ---------------------------------------------------------------------------
+  // Save / Load
+  // ---------------------------------------------------------------------------
+
+  const handleSave = useCallback(() => {
+    const name = window.prompt('Nombre de la investigación:')
+    if (!name) return
+    const internalNodes = graphRef.current?.getInternalNodes() ?? []
+    const pinnedPositions = [...pinnedNodeIds].map(id => {
+      const n = internalNodes.find(node => node.id === id)
+      return { id, x: n?.x ?? 0, y: n?.y ?? 0 }
+    })
+    const result = saveInvestigation({
+      name,
+      savedAt: new Date().toISOString(),
+      nodeIds: graphDataRef.current.nodes.map(n => n.id),
+      pinnedPositions,
+    })
+    if (!result.ok && result.warning) window.alert(result.warning)
+  }, [pinnedNodeIds])
+
+  const handleLoad = useCallback(async () => {
+    const investigations = listInvestigations()
+    if (investigations.length === 0) { window.alert('No hay investigaciones guardadas.'); return }
+    const names = investigations.map((inv, i) => `${i + 1}. ${inv.name} (${new Date(inv.savedAt).toLocaleDateString()})`).join('\n')
+    const choice = window.prompt(`Investigaciones guardadas:\n${names}\n\nIngresa el número:`)
+    if (!choice) return
+    const index = parseInt(choice, 10) - 1
+    if (isNaN(index) || index < 0 || index >= investigations.length) return
+
+    const inv = investigations[index]
+    setIsLoading(true)
+    try {
+      const nodeIds = inv.nodeIds.slice(0, 50)
+      const allData: GraphData[] = []
+      for (let i = 0; i < nodeIds.length; i += 10) {
+        const batch = nodeIds.slice(i, i + 10)
+        const results = await Promise.all(
+          batch.map(async (nodeId) => {
+            const res = await fetch(`/api/graph/expand/${encodeURIComponent(nodeId)}?depth=0&limit=1`)
+            if (!res.ok) return null
+            const json = await res.json()
+            return json.success && json.data ? (json.data as GraphData) : null
+          }),
+        )
+        for (const r of results) { if (r) allData.push(r) }
+      }
+      if (allData.length === 0) return
+      let merged = allData[0]
+      for (let i = 1; i < allData.length; i++) merged = mergeGraphData(merged, allData[i])
+      setPinnedNodeIds(new Set(inv.pinnedPositions.map(p => p.id)))
+      setGraphData(merged)
+      setTimeout(() => {
+        for (const pos of inv.pinnedPositions) graphRef.current?.pinNode(pos.id)
+        graphRef.current?.zoomToFit()
+      }, 500)
+    } finally { setIsLoading(false) }
+  }, [])
+
+  // ---------------------------------------------------------------------------
+  // Event handlers
+  // ---------------------------------------------------------------------------
+
+  const handleNodeClick = useCallback((nodeId: string) => {
+    setSelectedNodeId(nodeId)
+    if (!showPathFinder) setPathHighlight(null)
+  }, [showPathFinder])
+
+  const handleNavigate = useCallback((nodeId: string) => {
+    expandNode(nodeId)
+  }, [expandNode])
+
+  const handleSearchSelect = useCallback((nodeId: string) => {
+    expandNode(nodeId)
+  }, [expandNode])
+
+  const handleNodeRightClick = useCallback((nodeId: string, x: number, y: number) => {
+    setContextMenu({ nodeId, x, y })
+    setSelectedNodeId(nodeId)
+  }, [])
+
+  const closeContextMenu = useCallback(() => setContextMenu(null), [])
 
   const toggleLabel = (label: string) => {
     setVisibleLabels((prev) => {
       if (!prev) {
-        // First toggle: show all except this one
         const allLabels = new Set(LABEL_CONFIG.map((l) => l.label))
         allLabels.delete(label)
         return allLabels
       }
       const next = new Set(prev)
-      if (next.has(label)) {
-        next.delete(label)
-      } else {
-        next.add(label)
-      }
-      // If all are visible, reset to null (show all)
+      if (next.has(label)) next.delete(label)
+      else next.add(label)
       if (next.size === LABEL_CONFIG.length) return null
       return next
     })
   }
 
-  if (isLoading) {
+  const hasData = filteredData.nodes.length > 0
+
+  // ---------------------------------------------------------------------------
+  // Render
+  // ---------------------------------------------------------------------------
+
+  if (isInitialLoading) {
     return (
       <div className="flex h-[calc(100vh-8rem)] items-center justify-center text-zinc-500">
         Loading network graph...
@@ -110,6 +394,12 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
     <div className="flex h-[calc(100vh-8rem)] flex-col">
       {/* Controls bar */}
       <div className="flex items-center gap-2 border-b border-zinc-800 px-4 py-2">
+        {/* Search */}
+        <div className="w-64">
+          <SearchBar onSelect={handleSearchSelect} placeholder="Search nodes..." />
+        </div>
+
+        {/* Label filters */}
         <div className="flex flex-1 flex-wrap gap-1.5">
           {LABEL_CONFIG.map(({ label, color, name }) => {
             const isActive = !visibleLabels || visibleLabels.has(label)
@@ -118,9 +408,7 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
                 key={label}
                 onClick={() => toggleLabel(label)}
                 className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-colors ${
-                  isActive
-                    ? 'bg-zinc-800 text-zinc-200'
-                    : 'bg-zinc-900 text-zinc-600'
+                  isActive ? 'bg-zinc-800 text-zinc-200' : 'bg-zinc-900 text-zinc-600'
                 }`}
               >
                 <span
@@ -137,168 +425,110 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
         <select
           value={tierFilter}
           onChange={(e) => setTierFilter(e.target.value)}
-          className="bg-zinc-800 text-zinc-100 border border-zinc-700 rounded px-2 py-1 text-xs"
+          className="rounded border border-zinc-700 bg-zinc-800 px-2 py-1 text-xs text-zinc-100"
         >
           <option value="all">All data</option>
           <option value="verified">Verified only</option>
           <option value="gold">Gold only</option>
         </select>
-
-        {/* Zoom controls */}
-        <div className="flex gap-1">
-          <button
-            onClick={() => graphRef.current?.zoomIn()}
-            className="rounded-md bg-zinc-800 px-2 py-1 text-xs text-zinc-300 hover:bg-zinc-700"
-            aria-label="Zoom in"
-          >
-            +
-          </button>
-          <button
-            onClick={() => graphRef.current?.zoomOut()}
-            className="rounded-md bg-zinc-800 px-2 py-1 text-xs text-zinc-300 hover:bg-zinc-700"
-            aria-label="Zoom out"
-          >
-            −
-          </button>
-          <button
-            onClick={() => graphRef.current?.zoomToFit()}
-            className="rounded-md bg-zinc-800 px-2 py-1 text-xs text-zinc-300 hover:bg-zinc-700"
-            aria-label="Zoom to fit"
-          >
-            Fit
-          </button>
-        </div>
       </div>
+
+      {/* Path finder bar */}
+      {showPathFinder && (
+        <PathFinder
+          onFindPath={findPath}
+          onClose={() => { setShowPathFinder(false); setPathHighlight(null); setPathSourceId(null); setPathTargetId(null) }}
+          initialSourceId={pathSourceId}
+          initialTargetId={pathTargetId}
+        />
+      )}
+
+      {/* Toolbar */}
+      <GraphToolbar
+        onFindPath={() => setShowPathFinder(true)}
+        onClearGraph={clearGraph}
+        onSave={handleSave}
+        onLoad={handleLoad}
+        onUnpinAll={unpinAll}
+        onUndo={undo}
+        canUndo={undoStack.length > 0}
+        hasData={hasData}
+      />
 
       {/* Graph + Detail Panel */}
       <div className="flex min-h-0 flex-1 overflow-hidden">
-        <div className="min-h-0 flex-1">
-          <ForceGraph
-            ref={graphRef}
-            data={filteredData}
-            selectedNodeId={selectedNodeId}
-            onNodeClick={setSelectedNodeId}
-            visibleLabels={visibleLabels}
-          />
-        </div>
-
-        {/* Inline detail panel */}
-        {selectedNodeId && (() => {
-          const node = data.nodes.find((n) => n.id === selectedNodeId)
-          if (!node) return null
-          const connectedLinks = data.links.filter(
-            (l) => l.source === selectedNodeId || l.target === selectedNodeId,
-          )
-          const neighborIds = new Set(
-            connectedLinks.map((l) =>
-              l.source === selectedNodeId ? l.target : l.source,
-            ),
-          )
-          const neighbors = data.nodes.filter((n) => neighborIds.has(n.id))
-
-          const LABEL_COLORS_MAP: Record<string, string> = {
-            Person: '#3b82f6', Organization: '#8b5cf6', Location: '#10b981',
-            Event: '#f59e0b', Document: '#ef4444', LegalCase: '#ec4899', Flight: '#f97316',
-          }
-
-          return (
-            <div className="flex h-full w-80 flex-col border-l border-zinc-800 bg-zinc-950 overflow-y-auto">
-              {/* Header */}
-              <div className="flex items-center justify-between border-b border-zinc-800 px-4 py-3">
-                <h2 className="truncate text-sm font-semibold text-zinc-100">
-                  {String(node.properties.name ?? node.properties.title ?? node.id)}
-                </h2>
-                <button
-                  onClick={() => setSelectedNodeId(null)}
-                  className="rounded p-1 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200"
-                >
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-
-              {/* Labels */}
-              <div className="border-b border-zinc-800 px-4 py-3">
-                <div className="flex flex-wrap gap-1.5">
-                  {node.labels.map((label) => (
-                    <span
-                      key={label}
-                      className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium"
-                      style={{
-                        backgroundColor: `${LABEL_COLORS_MAP[label] ?? '#94a3b8'}20`,
-                        color: LABEL_COLORS_MAP[label] ?? '#94a3b8',
-                      }}
-                    >
-                      <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: LABEL_COLORS_MAP[label] ?? '#94a3b8' }} />
-                      {label}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Properties */}
-              <div className="border-b border-zinc-800 px-4 py-3">
-                <h3 className="mb-2 text-xs font-medium uppercase tracking-wider text-zinc-500">Properties</h3>
-                <dl className="space-y-1.5">
-                  {Object.entries(node.properties)
-                    .filter(([k]) => !['id', 'caso_slug', 'slug'].includes(k))
-                    .map(([key, value]) => (
-                      <div key={key} className="flex gap-2 text-sm">
-                        <dt className="flex-shrink-0 text-zinc-500">{key.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}</dt>
-                        <dd className="min-w-0 truncate text-zinc-300">{String(value ?? '-')}</dd>
-                      </div>
-                    ))}
-                </dl>
-              </div>
-
-              {/* Connections */}
-              <div className="px-4 py-3">
-                <h3 className="mb-2 text-xs font-medium uppercase tracking-wider text-zinc-500">
-                  Connections ({connectedLinks.length})
-                </h3>
-                <ul className="space-y-0.5">
-                  {connectedLinks.map((link, i) => {
-                    const neighborId = link.source === selectedNodeId ? link.target : link.source
-                    const neighbor = data.nodes.find((n) => n.id === neighborId)
-                    if (!neighbor) return null
-                    const direction = link.source === selectedNodeId ? '→' : '←'
-                    return (
-                      <li key={`${link.source}-${link.target}-${link.type}-${i}`}>
-                        <button
-                          onClick={() => {
-                            setSelectedNodeId(neighborId)
-                            graphRef.current?.centerOnNode(neighborId)
-                          }}
-                          className="group flex w-full items-center gap-2 rounded px-2 py-1 text-left text-sm hover:bg-zinc-800/50"
-                        >
-                          <span className="text-zinc-600">{direction}</span>
-                          <span
-                            className="h-2 w-2 flex-shrink-0 rounded-full"
-                            style={{ backgroundColor: LABEL_COLORS_MAP[neighbor.labels[0]] ?? '#94a3b8' }}
-                          />
-                          <span className="min-w-0 flex-1 truncate text-zinc-300 group-hover:text-zinc-100">
-                            {String(neighbor.properties.name ?? neighbor.properties.title ?? neighbor.id)}
-                          </span>
-                          <span className="flex-shrink-0 text-xs text-zinc-600">{link.type.replace(/_/g, ' ')}</span>
-                        </button>
-                      </li>
-                    )
-                  })}
-                </ul>
+        <div className="relative min-h-0 flex-1">
+          {/* Loading indicator */}
+          {isLoading && (
+            <div className="absolute left-1/2 top-4 z-10 -translate-x-1/2">
+              <div className="flex items-center gap-2 rounded-full bg-zinc-900/90 px-4 py-2 text-sm text-zinc-400 shadow-lg backdrop-blur-sm">
+                <div className="h-3 w-3 animate-spin rounded-full border-2 border-zinc-600 border-t-blue-500" />
+                Loading...
               </div>
             </div>
-          )
-        })()}
+          )}
+
+          {hasData && (
+            <ForceGraph
+              ref={graphRef}
+              data={filteredData}
+              selectedNodeId={selectedNodeId}
+              onNodeClick={handleNodeClick}
+              onNodeRightClick={handleNodeRightClick}
+              visibleLabels={visibleLabels}
+              pinnedNodeIds={pinnedNodeIds}
+              pathHighlight={pathHighlight}
+            />
+          )}
+
+          {/* Context menu */}
+          {contextMenu && (
+            <NodeContextMenu
+              x={contextMenu.x} y={contextMenu.y} onClose={closeContextMenu}
+              actions={[
+                { label: pinnedNodeIds.has(contextMenu.nodeId) ? 'Unpin' : 'Pin',
+                  icon: <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M16 12V4h1a1 1 0 100-2H7a1 1 0 000 2h1v8l-2 2v2h5v6l1 1 1-1v-6h5v-2l-2-2z" /></svg>,
+                  onClick: () => togglePin(contextMenu.nodeId) },
+                { label: 'Expand',
+                  icon: <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" /></svg>,
+                  onClick: () => expandNode(contextMenu.nodeId) },
+                { label: 'Collapse',
+                  icon: <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M20 12H4" /></svg>,
+                  onClick: () => collapseNode(contextMenu.nodeId) },
+                { label: 'Path from here',
+                  icon: <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>,
+                  onClick: () => { setPathSourceId(contextMenu.nodeId); setShowPathFinder(true) } },
+                { label: 'Path to here',
+                  icon: <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" /></svg>,
+                  onClick: () => { setPathTargetId(contextMenu.nodeId); setShowPathFinder(true) } },
+              ]}
+            />
+          )}
+        </div>
+
+        {/* Detail panel */}
+        {selectedNodeId && (
+          <NodeDetailPanel
+            nodeId={selectedNodeId}
+            onClose={() => setSelectedNodeId(null)}
+            onNavigate={handleNavigate}
+            onExpand={expandNode}
+            onTogglePin={togglePin}
+            isPinned={pinnedNodeIds.has(selectedNodeId)}
+          />
+        )}
       </div>
 
-      {/* Node count */}
+      {/* Status bar */}
       <div className="border-t border-zinc-800 px-4 py-1.5 text-xs text-zinc-500">
         {filteredData.nodes.length} nodes · {filteredData.links.length} connections
         {tierFilter !== 'all' && (
           <span className="ml-2 text-amber-400">
             ({tierFilter === 'verified' ? 'verified' : 'gold'} filter active)
           </span>
+        )}
+        {pinnedNodeIds.size > 0 && (
+          <span className="ml-2">{pinnedNodeIds.size} pinned</span>
         )}
       </div>
     </div>
