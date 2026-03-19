@@ -188,6 +188,31 @@ const BTREE_INDEXES = [
     label: 'LegalCase',
     property: 'slug',
   },
+  {
+    name: 'node_confidence_tier_index',
+    label: 'Person',
+    property: 'confidence_tier',
+  },
+  {
+    name: 'node_ingestion_wave_index',
+    label: 'Person',
+    property: 'ingestion_wave',
+  },
+  {
+    name: 'document_confidence_tier_index',
+    label: 'Document',
+    property: 'confidence_tier',
+  },
+  {
+    name: 'organization_confidence_tier_index',
+    label: 'Organization',
+    property: 'confidence_tier',
+  },
+  {
+    name: 'event_confidence_tier_index',
+    label: 'Event',
+    property: 'confidence_tier',
+  },
 ] as const
 
 /**
