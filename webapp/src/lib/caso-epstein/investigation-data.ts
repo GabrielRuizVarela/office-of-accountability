@@ -602,6 +602,38 @@ export const FACTCHECK_ITEMS: FactcheckItem[] = [
     source: 'Tara Palmeri reporting',
     source_url: 'https://www.tarapalmeri.com/p/what-epsteins-bodyguard-warned-about',
   },
+  {
+    id: 'fc-kellen-gatekeeper',
+    claim_en: 'Sarah Kellen bridged 10,367 otherwise-unconnected pairs in the network — 3x more than anyone below Epstein and Maxwell — with 9 relationship types including FACILITATED_ABUSE',
+    claim_es: 'Sarah Kellen conectó 10,367 pares de personas no conectadas en la red — 3 veces más que cualquier persona por debajo de Epstein y Maxwell — con 9 tipos de relaciones incluyendo FACILITATED_ABUSE',
+    status: 'confirmed' as const,
+    source: 'Neo4j graph bridge analysis',
+    source_url: 'https://www.justice.gov/epstein',
+  },
+  {
+    id: 'fc-kahn-invisible-broker',
+    claim_en: 'Richard D. Kahn had 16 verified communication partners including Bill Clinton, Noam Chomsky, and Marvin Minsky — the most connected communicator after Epstein himself, yet never publicly scrutinized until 2026',
+    claim_es: 'Richard D. Kahn tenía 16 socios de comunicación verificados incluyendo a Bill Clinton, Noam Chomsky y Marvin Minsky — el comunicador más conectado después de Epstein, sin escrutinio público hasta 2026',
+    status: 'confirmed' as const,
+    source: 'Neo4j communication network analysis, DOJ files',
+    source_url: 'https://www.pbs.org/newshour/politics/epsteins-longtime-accountant-testifies-on-his-wealth-and-business-ties',
+  },
+  {
+    id: 'fc-little-st-james-12',
+    claim_en: 'Little St. James Island had 12 verified visitors including two heads of state (Clinton, Prince Andrew), a financier who paid $170M+ (Black), and a victim (Giuffre)',
+    claim_es: 'La Isla Little St. James tuvo 12 visitantes verificados incluyendo dos jefes de estado (Clinton, Príncipe Andrew), un financista que pagó $170M+ (Black) y una víctima (Giuffre)',
+    status: 'confirmed' as const,
+    source: 'Neo4j location overlap analysis, court documents, flight logs',
+    source_url: 'https://www.justice.gov/epstein',
+  },
+  {
+    id: 'fc-mc2-triple-financed',
+    claim_en: 'MC2 Model Management connects to Epstein through a triple FINANCED chain — the deepest financial path in the graph — with both Brunel (FACILITATED_ABUSE) and Maxwell connected',
+    claim_es: 'MC2 Model Management se conecta a Epstein a través de una cadena triple de FINANCIAMIENTO — la ruta financiera más profunda en el grafo — con Brunel (FACILITÓ_ABUSO) y Maxwell conectados',
+    status: 'confirmed' as const,
+    source: 'Neo4j financial path analysis',
+    source_url: 'https://www.courtlistener.com/docket/17318513/united-states-v-maxwell/',
+  },
 ]
 
 // ---------------------------------------------------------------------------
