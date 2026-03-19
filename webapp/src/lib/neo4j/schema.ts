@@ -50,6 +50,37 @@ const UNIQUE_CONSTRAINTS = [
     label: 'User',
     property: 'email',
   },
+  // Caso Libra nodes
+  {
+    name: 'caso_libra_person_id_unique',
+    label: 'CasoLibraPerson',
+    property: 'id',
+  },
+  {
+    name: 'caso_libra_event_id_unique',
+    label: 'CasoLibraEvent',
+    property: 'id',
+  },
+  {
+    name: 'caso_libra_document_id_unique',
+    label: 'CasoLibraDocument',
+    property: 'id',
+  },
+  {
+    name: 'caso_libra_organization_id_unique',
+    label: 'CasoLibraOrganization',
+    property: 'id',
+  },
+  {
+    name: 'caso_libra_token_id_unique',
+    label: 'CasoLibraToken',
+    property: 'id',
+  },
+  {
+    name: 'caso_libra_wallet_address_unique',
+    label: 'CasoLibraWallet',
+    property: 'address',
+  },
 ] as const
 
 /** Full-text indexes for search across text fields */
@@ -67,6 +98,22 @@ const FULLTEXT_INDEXES = [
   {
     name: 'investigation_title_fulltext',
     labels: ['Investigation'],
+    properties: ['title', 'summary'],
+  },
+  // Caso Libra fulltext
+  {
+    name: 'caso_libra_person_name_fulltext',
+    labels: ['CasoLibraPerson'],
+    properties: ['name', 'role'],
+  },
+  {
+    name: 'caso_libra_event_title_fulltext',
+    labels: ['CasoLibraEvent'],
+    properties: ['title', 'description'],
+  },
+  {
+    name: 'caso_libra_document_title_fulltext',
+    labels: ['CasoLibraDocument'],
     properties: ['title', 'summary'],
   },
 ] as const
@@ -97,6 +144,32 @@ const BTREE_INDEXES = [
     name: 'user_verification_tier_index',
     label: 'User',
     property: 'verification_tier',
+  },
+  // Caso Libra range indexes
+  {
+    name: 'caso_libra_person_slug_index',
+    label: 'CasoLibraPerson',
+    property: 'slug',
+  },
+  {
+    name: 'caso_libra_event_date_index',
+    label: 'CasoLibraEvent',
+    property: 'date',
+  },
+  {
+    name: 'caso_libra_event_slug_index',
+    label: 'CasoLibraEvent',
+    property: 'slug',
+  },
+  {
+    name: 'caso_libra_document_slug_index',
+    label: 'CasoLibraDocument',
+    property: 'slug',
+  },
+  {
+    name: 'caso_libra_organization_slug_index',
+    label: 'CasoLibraOrganization',
+    property: 'slug',
   },
 ] as const
 
