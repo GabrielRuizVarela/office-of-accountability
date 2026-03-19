@@ -49,6 +49,9 @@ export interface ForceGraphHandle {
   zoomOut: () => void
   zoomToFit: () => void
   centerOnNode: (nodeId: string) => void
+  /** Access internal force graph node state (positions, velocities) */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getInternalNodes: () => Array<{ id: any; x?: number; y?: number; vx?: number; vy?: number }>
 }
 
 export interface ForceGraphProps {
@@ -129,6 +132,12 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       if (node && typeof node.x === 'number' && typeof node.y === 'number') {
         fg.centerAt(node.x, node.y, 300)
       }
+    },
+    getInternalNodes() {
+      const fg = graphRef.current
+      if (!fg) return []
+      const internalGraphData = (fg as unknown as { graphData(): { nodes: NodeObject<FGNode>[] } }).graphData()
+      return internalGraphData?.nodes ?? []
     },
   }))
 
