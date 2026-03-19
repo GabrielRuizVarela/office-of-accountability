@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useMemo } from 'react'
+import { getLabelColor, getLabelDisplayName } from '../../lib/graph/constants'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -10,44 +11,6 @@ export interface TypeFilterProps {
   readonly availableTypes: readonly string[]
   readonly visibleTypes: ReadonlySet<string>
   readonly onChange: (visibleTypes: ReadonlySet<string>) => void
-}
-
-// ---------------------------------------------------------------------------
-// Constants
-// ---------------------------------------------------------------------------
-
-const LABEL_COLORS: Readonly<Record<string, string>> = {
-  Politician: '#3b82f6',
-  Party: '#8b5cf6',
-  Province: '#10b981',
-  LegislativeVote: '#f59e0b',
-  Legislation: '#ef4444',
-  Investigation: '#ec4899',
-  User: '#6b7280',
-}
-
-const LABEL_DISPLAY: Readonly<Record<string, string>> = {
-  Politician: 'Politicos',
-  Party: 'Partidos',
-  Province: 'Provincias',
-  LegislativeVote: 'Votaciones',
-  Legislation: 'Legislacion',
-  Investigation: 'Investigaciones',
-  User: 'Usuarios',
-}
-
-const DEFAULT_COLOR = '#94a3b8'
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-function getLabelColor(label: string): string {
-  return LABEL_COLORS[label] ?? DEFAULT_COLOR
-}
-
-function getLabelDisplayName(label: string): string {
-  return LABEL_DISPLAY[label] ?? label
 }
 
 // ---------------------------------------------------------------------------
