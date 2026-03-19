@@ -15,6 +15,7 @@
  * `content_source` is set to 'courtlistener' | 'documentcloud' | 'doj'.
  */
 
+import neo4j from 'neo4j-driver-lite'
 import { readQuery, executeWrite, verifyConnectivity, closeDriver } from '../src/lib/neo4j/client'
 import { saveResumeState, loadResumeState } from '../src/lib/ingestion/quality'
 
@@ -331,7 +332,7 @@ async function main(): Promise<void> {
      ORDER BY connections DESC
      LIMIT $limit
      RETURN d.id AS id, d.title AS title, d.source_url AS sourceUrl, d.slug AS slug`,
-    { casoSlug: CASO_SLUG, limit },
+    { casoSlug: CASO_SLUG, limit: neo4j.int(limit) },
     (record) => ({
       id: record.get('id') as string,
       title: record.get('title') as string,
