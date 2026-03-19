@@ -21,11 +21,14 @@ export function InvestigationNav({ slug }: InvestigationNavProps) {
   const base = `/caso/${slug}`
 
   const tabs: readonly NavTab[] = [
-    { href: base, label: 'Resumen' },
-    { href: `${base}/grafo`, label: 'Grafo' },
+    { href: base, label: 'Inicio' },
+    { href: `${base}/resumen`, label: 'Que paso' },
+    { href: `${base}/investigacion`, label: 'Pruebas' },
     { href: `${base}/cronologia`, label: 'Cronologia' },
-    { href: `${base}/dinero`, label: 'Dinero' },
+    { href: `${base}/dinero`, label: 'El dinero' },
     { href: `${base}/evidencia`, label: 'Evidencia' },
+    { href: `${base}/grafo`, label: 'Conexiones' },
+    { href: `${base}/simular`, label: 'Simular' },
   ]
 
   return (
