@@ -27,8 +27,12 @@ export async function POST(request: NextRequest): Promise<Response> {
       return NextResponse.json({ error: 'Scenario description is required.' }, { status: 400 })
     }
 
-    if (rounds < 1 || rounds > 100) {
-      return NextResponse.json({ error: 'Rounds must be between 1 and 100.' }, { status: 400 })
+    if (!Number.isFinite(rounds) || rounds < 1 || rounds > 100) {
+      return NextResponse.json({ error: 'Rounds must be a number between 1 and 100.' }, { status: 400 })
+    }
+
+    if (agentCount !== undefined && (!Number.isFinite(agentCount) || agentCount < 1 || agentCount > 50)) {
+      return NextResponse.json({ error: 'Agent count must be a number between 1 and 50.' }, { status: 400 })
     }
 
     const response = await fetch(`${MIROFISH_API_URL}/simulate`, {
@@ -46,7 +50,7 @@ export async function POST(request: NextRequest): Promise<Response> {
       console.error('MiroFish simulate error:', response.status, text)
       return NextResponse.json(
         { error: 'Simulation backend returned an error.' },
-        { status: response.status },
+        { status: 502 },
       )
     }
 
