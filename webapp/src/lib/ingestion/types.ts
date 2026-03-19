@@ -1,6 +1,6 @@
 export type ConfidenceTier = 'gold' | 'silver' | 'bronze'
 
-export type IngestionSource = 'seed' | 'rhowardstone' | 'epstein-exposed' | 'courtlistener' | 'documentcloud' | 'doj' | 'community'
+export type IngestionSource = 'seed' | 'rhowardstone' | 'epstein-exposed' | 'courtlistener' | 'documentcloud' | 'doj' | 'community' | 'dleerdefi'
 
 export interface IngestionMeta {
   readonly ingestion_wave: number
