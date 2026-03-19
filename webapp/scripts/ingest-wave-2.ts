@@ -342,11 +342,18 @@ async function createFlightNode(id: string, flight: EpsteinFlight): Promise<void
 // Ingest: Documents (capped at MAX_DOCUMENT_PAGES per run)
 // ---------------------------------------------------------------------------
 
-async function ingestDocuments(startPage: number): Promise<{
+async function ingestDocuments(
+  nameMap: Map<string, { id: string; name: string }>,
+  slugMap: Map<string, { id: string; name: string }>,
+  conflicts: ConflictRecord[],
+  startPage: number,
+): Promise<{
   docsCreated: number
+  docsSkipped: number
   lastDocPage: number
 }> {
   let docsCreated = 0
+  let docsSkipped = 0
   let currentPage = startPage
 
   console.log(
@@ -357,11 +364,41 @@ async function ingestDocuments(startPage: number): Promise<{
     const result = await getDocuments(currentPage, PAGE_SIZE)
 
     for (const doc of result.data) {
-      await createDocumentNode(toDocumentId(doc.id), doc)
+      const dedupMatch = dedup(doc.title, nameMap, slugMap)
+
+      if (dedupMatch.result === 'exact_match') {
+        docsSkipped++
+        continue
+      }
+
+      if (dedupMatch.result === 'fuzzy_match') {
+        conflicts.push({
+          incomingId: toDocumentId(doc.id),
+          incomingName: doc.title,
+          existingId: dedupMatch.existingId!,
+          existingName: dedupMatch.existingName!,
+          matchType: 'fuzzy_match',
+          distance: dedupMatch.distance,
+          source: SOURCE,
+          wave: WAVE,
+        })
+        // Fall through — still create the bronze node
+      }
+
+      const neo4jId = toDocumentId(doc.id)
+      await createDocumentNode(neo4jId, doc)
+
+      const norm = normalizeName(doc.title)
+      const slug = toSlug(doc.title)
+      nameMap.set(norm, { id: neo4jId, name: doc.title })
+      slugMap.set(slug, { id: neo4jId, name: doc.title })
+
       docsCreated++
     }
 
-    console.log(`  Page ${currentPage}: ${result.data.length} docs (${docsCreated} total)`)
+    console.log(
+      `  Page ${currentPage}: ${result.data.length} docs (${docsCreated} created, ${docsSkipped} skipped)`,
+    )
 
     if (!result.hasMore) {
       break
@@ -375,8 +412,10 @@ async function ingestDocuments(startPage: number): Promise<{
     }
   }
 
-  console.log(`  Documents done: ${docsCreated} created (stopped at page ${currentPage})`)
-  return { docsCreated, lastDocPage: currentPage }
+  console.log(
+    `  Documents done: ${docsCreated} created, ${docsSkipped} skipped (stopped at page ${currentPage})`,
+  )
+  return { docsCreated, docsSkipped, lastDocPage: currentPage }
 }
 
 async function createDocumentNode(id: string, doc: EpsteinDocument): Promise<void> {
@@ -504,7 +543,12 @@ async function main(): Promise<void> {
   })
 
   // ── Phase 3: Documents (capped) ───────────────────────────────────────────
-  const { docsCreated, lastDocPage } = await ingestDocuments(documentsStartPage)
+  const { docsCreated, docsSkipped, lastDocPage } = await ingestDocuments(
+    nameMap,
+    slugMap,
+    conflicts,
+    documentsStartPage,
+  )
 
   saveResumeState(WAVE, {
     wave: WAVE,
@@ -512,7 +556,8 @@ async function main(): Promise<void> {
     personsPage: 'done',
     flightsPage: 'done',
     documentsPage: lastDocPage + 1,
-    nodesProcessed: personNodesCreated + personNodesSkipped + flightNodesCreated + docsCreated,
+    nodesProcessed:
+      personNodesCreated + personNodesSkipped + flightNodesCreated + docsCreated + docsSkipped,
     startedAt: new Date().toISOString(),
     phase: docsCreated >= MAX_DOCUMENT_PAGES * PAGE_SIZE ? 'documents_partial' : 'complete',
   })
@@ -522,13 +567,14 @@ async function main(): Promise<void> {
   console.log(`\nConflicts saved to: ${conflictPath}`)
 
   const totalNodesCreated = personNodesCreated + flightNodesCreated + docsCreated
+  const totalNodesSkipped = personNodesSkipped + docsSkipped
   const totalEdgesCreated = edgesCreated
 
   const report: WaveReport = {
     wave: WAVE,
     source: SOURCE,
     nodesCreated: totalNodesCreated,
-    nodesSkipped: personNodesSkipped,
+    nodesSkipped: totalNodesSkipped,
     edgesCreated: totalEdgesCreated,
     edgesSkipped,
     conflicts,
