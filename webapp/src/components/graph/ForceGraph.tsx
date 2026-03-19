@@ -218,14 +218,17 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     state.showImportant = state.showImportant ? zoom > 0.8 : zoom > 1.0
   }, [])
 
-  // Node click handler
+  // Node click handler — use ref so the callback identity never changes
+  // (ForceGraph2D kapsule may not update callbacks reliably on re-renders)
+  const onNodeClickRef = useRef(onNodeClick)
+  onNodeClickRef.current = onNodeClick
   const handleNodeClick = useCallback(
     (node: NodeObject<FGNode>) => {
-      if (onNodeClick && typeof node.id === 'string') {
-        onNodeClick(node.id)
+      if (onNodeClickRef.current && typeof node.id === 'string') {
+        onNodeClickRef.current(node.id)
       }
     },
-    [onNodeClick],
+    [],
   )
 
   // Node visibility filter
@@ -364,10 +367,13 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     return link.type
   }, [])
 
-  // Right-click context menu — uses React onContextMenu for reliable preventDefault
+  // Right-click context menu — uses ref for stable callback identity
+  const onNodeRightClickRef = useRef(onNodeRightClick)
+  onNodeRightClickRef.current = onNodeRightClick
+
   const handleContextMenu = useCallback(
     (e: React.MouseEvent) => {
-      if (!onNodeRightClick) return
+      if (!onNodeRightClickRef.current) return
       e.preventDefault()
       const fg = graphRef.current
       if (!fg) return
@@ -391,9 +397,9 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
           closest = { id: node.id as string, dist }
         }
       }
-      if (closest) onNodeRightClick(closest.id, e.clientX, e.clientY)
+      if (closest) onNodeRightClickRef.current(closest.id, e.clientX, e.clientY)
     },
-    [onNodeRightClick],
+    [],
   )
 
   // Long-press for mobile context menu
@@ -455,9 +461,10 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         enableZoomInteraction={true}
         enablePanInteraction={true}
         enableNodeDrag={true}
-        cooldownTicks={100}
-        d3AlphaDecay={0.02}
-        d3VelocityDecay={0.3}
+        warmupTicks={50}
+        cooldownTicks={0}
+        d3AlphaDecay={0.05}
+        d3VelocityDecay={0.4}
         minZoom={0.5}
         maxZoom={20}
       />
