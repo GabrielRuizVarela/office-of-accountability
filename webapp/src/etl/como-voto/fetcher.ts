@@ -7,13 +7,27 @@
  * @see https://github.com/rquiroga7/Como_voto
  */
 
-import { LegislatorsFileSchema, VotingSessionsFileSchema, LegislatorDetailSchema } from './types'
-import type { CompactLegislator, LegislatorDetail, VotingSession } from './types'
+import {
+  LegislatorsFileSchema,
+  VotingSessionsFileSchema,
+  LegislatorDetailSchema,
+  LawNamesFileSchema,
+  ElectionLegislatorsFileSchema,
+} from './types'
+import type {
+  CompactLegislator,
+  LegislatorDetail,
+  VotingSession,
+  ElectionLegislatorsFile,
+} from './types'
 
 const BASE_URL = 'https://raw.githubusercontent.com/rquiroga7/Como_voto/main/docs/data'
 
 const LEGISLATORS_URL = `${BASE_URL}/legislators.json`
 const VOTACIONES_URL = `${BASE_URL}/votaciones.json`
+const LAW_NAMES_URL = `${BASE_URL}/law_names.json`
+const ELECTION_LEGISLATORS_URL =
+  'https://raw.githubusercontent.com/rquiroga7/Como_voto/main/data/election_legislators.json'
 
 /** Build URL for a per-legislator detail file.
  * Como Voto filenames use `__` for comma-space and `_` for spaces:
@@ -73,6 +87,46 @@ export async function fetchVotingSessions(
   return {
     sessions,
     count: sessions.length,
+  }
+}
+
+export interface FetchLawNamesResult {
+  readonly lawNames: readonly string[]
+  readonly count: number
+}
+
+/**
+ * Fetch and validate the law_names.json file.
+ * Returns a flat array of law name display strings.
+ */
+export async function fetchLawNames(signal?: AbortSignal): Promise<FetchLawNamesResult> {
+  const raw = await fetchJson<unknown>(LAW_NAMES_URL, signal)
+  const lawNames = LawNamesFileSchema.parse(raw)
+
+  return {
+    lawNames,
+    count: lawNames.length,
+  }
+}
+
+export interface FetchElectionLegislatorsResult {
+  readonly electionData: ElectionLegislatorsFile
+  readonly yearCount: number
+}
+
+/**
+ * Fetch and validate the election_legislators.json file.
+ * Returns election data keyed by year, then by chamber.
+ */
+export async function fetchElectionLegislators(
+  signal?: AbortSignal,
+): Promise<FetchElectionLegislatorsResult> {
+  const raw = await fetchJson<unknown>(ELECTION_LEGISLATORS_URL, signal)
+  const electionData = ElectionLegislatorsFileSchema.parse(raw)
+
+  return {
+    electionData,
+    yearCount: Object.keys(electionData).length,
   }
 }
 
