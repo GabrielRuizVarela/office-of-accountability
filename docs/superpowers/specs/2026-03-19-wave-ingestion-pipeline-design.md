@@ -102,7 +102,11 @@ webapp/src/lib/ingestion/
 ├── dedup.ts                    — fuzzy matching (normalization, Levenshtein)
 ├── quality.ts                  — review report generation, conflict logging
 └── epstein-exposed-client.ts   — API client for Wave 2
+```
 
+Note: `wave-runner.ts` was omitted — wave scripts have sufficiently different control flow (file vs API vs enrichment) that a shared runner would add abstraction without reducing code.
+
+```
 webapp/scripts/
 ├── ingest-wave-1.ts            — GitHub data import
 ├── ingest-wave-2.ts            — Epstein Exposed API import
