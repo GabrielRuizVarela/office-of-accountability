@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 import { DocumentCard } from '../../../../components/investigation/DocumentCard'
-import { CASO_EPSTEIN_SLUG } from '../../../../lib/caso-epstein/types'
+import { CASO_EPSTEIN_SLUG, DOCUMENT_TYPE_LABELS_PLURAL } from '../../../../lib/caso-epstein/types'
 import { getDocuments } from '../../../../lib/caso-epstein/queries'
 
 interface PageProps {
@@ -25,17 +25,6 @@ export default async function EvidenciaPage({ params }: PageProps) {
     grouped.set(doc.doc_type, group)
   }
 
-  const typeLabels: Record<string, string> = {
-    court_filing: 'Court Filings',
-    deposition: 'Depositions',
-    fbi: 'FBI Records',
-    flight_log: 'Flight Logs',
-    police_report: 'Police Reports',
-    financial: 'Financial Records',
-    media_investigation: 'Investigative Journalism',
-    medical: 'Medical Records',
-  }
-
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <h1 className="mb-2 text-3xl font-bold text-zinc-50">Evidence</h1>
@@ -48,7 +37,7 @@ export default async function EvidenciaPage({ params }: PageProps) {
           <div key={docType}>
             <h2 className="mb-3 flex items-center gap-2 text-sm font-semibold text-zinc-300">
               <span className="inline-block h-2 w-2 rounded-full bg-red-500" />
-              {typeLabels[docType] ?? docType} ({docs.length})
+              {DOCUMENT_TYPE_LABELS_PLURAL[docType as keyof typeof DOCUMENT_TYPE_LABELS_PLURAL] ?? docType} ({docs.length})
             </h2>
             <div className="grid gap-3 sm:grid-cols-2">
               {docs.map((doc) => (
@@ -58,7 +47,8 @@ export default async function EvidenciaPage({ params }: PageProps) {
                   slug={doc.slug}
                   docType={doc.doc_type}
                   summary={doc.summary}
-                  sourceUrl={doc.source_url}
+                  date={doc.date}
+                  mentionedPersonCount={doc.mentionedPersonCount}
                   casoSlug={slug}
                 />
               ))}
