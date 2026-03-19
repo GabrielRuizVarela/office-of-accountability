@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: 'Epstein Investigation — Network Analysis',
     description:
-      'Interactive investigation into the Jeffrey Epstein network — 5,784 entities, 941K+ relationships. Explore connections between 1,827 persons, 3,630 locations, 196 documents, and 39 events through court records, DOJ file releases, flight logs, and investigative reporting.',
+      'Interactive investigation into the Jeffrey Epstein network — 6,622 documented entities, 953K+ verified relationships, 293 web-verified. Explore connections between persons, organizations, locations, and events through court records, DOJ file releases, flight logs, and investigative reporting.',
   }
 }
 
