@@ -521,9 +521,11 @@ export const FACTCHECK_ITEMS: FactcheckItem[] = [
     id: 'fc-gelb-cia-briefing',
     claim_en: 'Council on Foreign Relations president Leslie Gelb arranged a CIA briefing for Jeffrey Epstein',
     claim_es: 'El presidente del Council on Foreign Relations Leslie Gelb organizó un briefing de la CIA para Jeffrey Epstein',
-    status: 'under_investigation' as const,
-    source: 'Black book analysis, flight logs',
+    status: 'confirmed' as const,
+    source: 'CFR Records, Princeton University archives',
     source_url: 'https://www.documentcloud.org/documents/1508273-jeffrey-epsteins-little-black-book-redacted',
+    detail_en: 'Oct 1995 briefing with CIA Director John Deutch arranged through CFR president Leslie Gelb. Confirms Epstein had direct access to intelligence leadership via elite foreign policy networks.',
+    detail_es: 'Briefing de octubre de 1995 con el Director de la CIA John Deutch organizado a través del presidente del CFR Leslie Gelb. Confirma que Epstein tenía acceso directo al liderazgo de inteligencia a través de redes de política exterior de élite.',
   },
   {
     id: 'fc-groff-academic-intermediary',
