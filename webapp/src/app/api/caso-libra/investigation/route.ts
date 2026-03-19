@@ -39,7 +39,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server'
-import { readFileSync, writeFileSync, existsSync } from 'node:fs'
+import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { join } from 'node:path'
 
 import {
@@ -49,11 +49,30 @@ import {
 } from '@/lib/caso-libra/investigation-schema'
 
 // ---------------------------------------------------------------------------
-// Storage path — JSON file alongside the static data
+// Auth — API key for MCP agent access
+// ---------------------------------------------------------------------------
+
+const INVESTIGATION_API_KEY = process.env.INVESTIGATION_API_KEY
+
+function isAuthorized(request: NextRequest): boolean {
+  // In development, allow unauthenticated access
+  if (process.env.NODE_ENV === 'development') return true
+
+  if (!INVESTIGATION_API_KEY) return false
+
+  const header = request.headers.get('x-api-key') ?? request.headers.get('authorization')?.replace('Bearer ', '')
+  return header === INVESTIGATION_API_KEY
+}
+
+// ---------------------------------------------------------------------------
+// Storage — async file I/O with write lock
 // ---------------------------------------------------------------------------
 
 const STORE_DIR = join(process.cwd(), 'data')
 const STORE_PATH = join(STORE_DIR, 'investigation-submissions.json')
+
+/** Max items per bulk import request */
+const MAX_BULK_ITEMS = 100
 
 interface StoredItem {
   id: string
@@ -63,19 +82,25 @@ interface StoredItem {
   status: 'pending_review' | 'approved' | 'rejected'
 }
 
-function loadStore(): StoredItem[] {
-  if (!existsSync(STORE_PATH)) return []
+/** Simple write lock to prevent concurrent file corruption */
+let writeLock: Promise<void> = Promise.resolve()
+
+async function loadStore(): Promise<StoredItem[]> {
   try {
-    return JSON.parse(readFileSync(STORE_PATH, 'utf-8'))
+    const content = await readFile(STORE_PATH, 'utf-8')
+    return JSON.parse(content)
   } catch {
     return []
   }
 }
 
-function saveStore(items: StoredItem[]): void {
-  const { mkdirSync } = require('node:fs')
-  mkdirSync(STORE_DIR, { recursive: true })
-  writeFileSync(STORE_PATH, JSON.stringify(items, null, 2), 'utf-8')
+async function saveStore(items: StoredItem[]): Promise<void> {
+  // Queue writes to prevent race conditions
+  writeLock = writeLock.then(async () => {
+    await mkdir(STORE_DIR, { recursive: true })
+    await writeFile(STORE_PATH, JSON.stringify(items, null, 2), 'utf-8')
+  })
+  await writeLock
 }
 
 function generateId(type: string): string {
@@ -221,7 +246,7 @@ export async function GET(request: NextRequest): Promise<Response> {
     return NextResponse.json(SCHEMA_DOCS)
   }
 
-  const store = loadStore()
+  const store = await loadStore()
   const typeFilter = searchParams.get('type')
   const statusFilter = searchParams.get('status') // pending_review, approved, rejected
 
@@ -244,11 +269,27 @@ export async function GET(request: NextRequest): Promise<Response> {
 // ---------------------------------------------------------------------------
 
 export async function POST(request: NextRequest): Promise<Response> {
+  // Auth check — require API key in production
+  if (!isAuthorized(request)) {
+    return NextResponse.json(
+      { error: 'Unauthorized. Provide x-api-key header or Authorization: Bearer <key>.' },
+      { status: 401 },
+    )
+  }
+
   try {
     const body = await request.json()
 
     // Check if bulk import
     if ('items' in body && Array.isArray(body.items)) {
+      // Enforce max bulk size
+      if (Array.isArray(body.items) && body.items.length > MAX_BULK_ITEMS) {
+        return NextResponse.json(
+          { error: `Bulk import limited to ${MAX_BULK_ITEMS} items per request.` },
+          { status: 400 },
+        )
+      }
+
       const parsed = bulkImportSchema.safeParse(body)
       if (!parsed.success) {
         return NextResponse.json(
@@ -263,8 +304,9 @@ export async function POST(request: NextRequest): Promise<Response> {
         )
       }
 
-      const store = loadStore()
+      // Atomic read-modify-write inside the lock
       const results: { id: string; type: string }[] = []
+      const store = await loadStore()
 
       for (const item of parsed.data.items) {
         const id = (item.data as Record<string, unknown>).id as string || generateId(item.type)
@@ -279,7 +321,7 @@ export async function POST(request: NextRequest): Promise<Response> {
         results.push({ id, type: item.type })
       }
 
-      saveStore(store)
+      await saveStore(store)
 
       return NextResponse.json({
         success: true,
@@ -313,9 +355,10 @@ export async function POST(request: NextRequest): Promise<Response> {
       status: 'pending_review',
     }
 
-    const store = loadStore()
+    // Atomic read-modify-write inside the lock
+    const store = await loadStore()
     store.push(stored)
-    saveStore(store)
+    await saveStore(store)
 
     return NextResponse.json({
       success: true,

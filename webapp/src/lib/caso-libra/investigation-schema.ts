@@ -80,7 +80,7 @@ export const factcheckInputSchema = z.object({
 
 export const eventInputSchema = z.object({
   id: z.string().min(1).optional(),
-  date: z.string().regex(/^\d{4}-\d{2}-\d{2}/, 'Date must be YYYY-MM-DD format'),
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Date must be YYYY-MM-DD format'),
   title_es: z.string().min(5, 'Spanish title must be at least 5 characters'),
   title_en: z.string().min(5, 'English title must be at least 5 characters'),
   description_es: z.string().min(10),
@@ -115,7 +115,7 @@ export const moneyFlowInputSchema = z.object({
   from_label: z.string().min(1, 'Source label is required'),
   to_label: z.string().min(1, 'Destination label is required'),
   amount_usd: z.number().positive('Amount must be positive'),
-  date: z.string().regex(/^\d{4}-\d{2}-\d{2}/, 'Date must be YYYY-MM-DD format'),
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Date must be YYYY-MM-DD format'),
   source: z.string().min(1, 'Source is required'),
 })
 
@@ -124,7 +124,7 @@ export const evidenceInputSchema = z.object({
   title: z.string().min(5, 'Title must be at least 5 characters'),
   type_es: z.string().min(3),
   type_en: z.string().min(3),
-  date: z.string().regex(/^\d{4}-\d{2}-\d{2}/, 'Date must be YYYY-MM-DD format'),
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Date must be YYYY-MM-DD format'),
   summary_es: z.string().min(10),
   summary_en: z.string().min(10),
   source_url: z.string().url('Must be a valid URL'),
@@ -141,7 +141,7 @@ export const statInputSchema = z.object({
 
 export const governmentResponseInputSchema = z.object({
   id: z.string().min(1).optional(),
-  date: z.string().regex(/^\d{4}-\d{2}-\d{2}/, 'Date must be YYYY-MM-DD format'),
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Date must be YYYY-MM-DD format'),
   action_es: z.string().min(10),
   action_en: z.string().min(10),
   effect_es: z.string().min(10),
@@ -171,7 +171,7 @@ export type InvestigationSubmission = z.infer<typeof investigationSubmissionSche
 // ---------------------------------------------------------------------------
 
 export const bulkImportSchema = z.object({
-  items: z.array(investigationSubmissionSchema).min(1, 'At least one item is required'),
+  items: z.array(investigationSubmissionSchema).min(1, 'At least one item is required').max(100, 'Maximum 100 items per request'),
 })
 
 export type BulkImport = z.infer<typeof bulkImportSchema>
