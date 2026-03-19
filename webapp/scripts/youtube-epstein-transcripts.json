@@ -1,0 +1,2334 @@
+{
+  "_meta": {
+    "generated_at": "2026-03-19T01:17:59.539Z",
+    "video_count": 7,
+    "total_entity_mentions": 243,
+    "total_unique_entities": [
+      "Bill Clinton",
+      "Donald Trump",
+      "Ghislaine Maxwell",
+      "Jeffrey Epstein",
+      "Jes Staley",
+      "Leon Black",
+      "Leslie Wexner",
+      "Metropolitan Correctional Center",
+      "Palm Beach Mansion",
+      "Prince Andrew"
+    ],
+    "pipeline_version": "1.0.0",
+    "description": "YouTube transcript ingestion for the Epstein investigation knowledge graph. Entity mentions are matched against the caso-epstein Neo4j graph nodes."
+  },
+  "results": [
+    {
+      "video_id": "kq59osmQtsE",
+      "url": "https://www.youtube.com/watch?v=kq59osmQtsE",
+      "title": "",
+      "source_type": "news",
+      "transcript_text": "60 Minutes Rewind. Convicted sex offender Jeffrey Epstein has been accused of sexually assaulting countless teenage girls. Last July, the wealthy finance here was arrested and many of his victims were looking forward to finally facing him in court. But weeks after his arrest, Epstein was found dead in his jail cell. The medical examiner concluded that Jeffrey Epstein killed himself. Since then, conspiracy theories have flourished. Epstein was connected to a long list of rich and powerful people. Some suspect he was killed because of what he knew or what he threatened to tell. How did one of the most high-profile inmates in the country end up dead in a federal jail? After a fivemonth investigation, 60 Minutes has obtained photos, some of them graphic autopsy photos and evidence from inside Jeffrey Epstein's cell. This is the cell where Jeffrey Epstein was found on Saturday morning, August 10th, 2019. There are dozens of photos taken by the medical examiner's office that day. On the floor, a mattress and piles of sheets. Several nooes that appear to be fashioned from the orange bed linens are laid out. His medicines photographed, but no body. >> Is there a photograph of when he was found dead in the cell? >> No, there's no photograph taken of Mr. Epstein in the cell. >> Dr. Michael Boden observed the 4-hour autopsy for Jeffrey Epstein's brother, Mark. Boden, a renowned forensic pathologist who's taken controversial positions over his decadesl long career, is investigating Epstein's death for his client. >> Do you think there was foul play here? >> The forensic evidence released so far, including autopsy, point much more to murder and strangulation than the suicide and suicidal hanging. I hesitate to make a final opinion until all the evidence is in. People will say, \"Well, you're being paid by Mark Epstein, so of course you're going to say that something suspicious is going on.\" >> That's a reasonable thing for some people to think, but our job is to find what the truth is just to find out whether it's a homicide or a suicide. Uh, we're still haven't gotten all the information. Guards found Epstein at approximately 6:33 a.m. and sources say one of them could be overheard saying, \"Breathe, Epstein, breathe.\" >> I thought at the time, >> Dr. Bodton believes based on the autopsy that Epstein died around 4:30 that morning, 2 hours earlier. The guards say they came in at 6:30. They found him. They call emergency services. They tried to do CPR with him, but he's dead. But rather than leave the body there, they take the body to an emergency room. >> Yeah. >> Is that normal protocol? >> No, that's that's not normal protocol. The EMS people normally and especially in a jail should not move a dead body. >> He's right. Bureau of Prison Protocol mandates a suicide scene should be treated with the same level of protection as any crime scene in which a death has occurred. 60 Minutes reviewed hundreds of graphic photographs from the autopsy of Jeffrey Epstein and inside his cell there are two nooes. A bit of orange sheet tied to the great of a window. On the top bunk, bottles and medicine stand upright. Below it, another piece of fabric is tied through a hole on the bed about four feet from the ground. Did Epstein, who was nearly 6 feet tall and 185 lbs, somehow lean in and hang himself from the lower bunk? We don't know. These are the known facts. On July 6th, Jeffrey Epstein was booked into the Metropolitan Correctional Center or MCC in downtown Manhattan, a federal highsecurity holding facility for inmates awaiting trial. Suicides at the MCC are rare. The last one was 14 years ago. The jail has temporarily housed everyone from Mexican drug lord El Chapo to mafia boss John Gotti and fraudster Bernie Maid off. >> MCC is the worst jail or prison I've ever been to by far. >> It's not a club fed. >> It's not a club anything. It is dirty. It's insectinfested, rodentinfested. It was built for about 350 and it houses over 700. So, the inmates are packed in. >> Bruce Bquett is the lawyer for Epstein's first cellmate, 52-year-old Nick Tartagleon, a Brrawy former police officer accused of murdering four men. They shared a cell in the shoe, the special housing unit, which is considered safer than general population. >> Jail's a tough place. The rules don't exist the way they do in society. Somebody like Jeffrey Epstein, uh, you know, an elderly, rich white male is going to have a tough time in general population. >> Epstein was directing money to be deposited in other inmates commissary accounts in exchange for his protection, sources say, because he feared for his life. But the government says Epstein was suicidal and made his first failed suicide attempt weeks after he arrived. According to court documents, on July 23rd, a guard found Epstein on the floor of a cell with the strip of bed sheet around his neck. Epstein claimed his cellmate, Nick Tartagleó, attacked him. >> Epstein says that Nick tried to kill him. Nick says absolutely nothing like that happened. >> Uh, it's not just Nick says absolutely nothing happened. Absolutely nothing happened. No one says that uh Nick tried to kill Epstein. Epstein was moved to the psych unit and placed on suicide watch. But one week later, Epstein, at the direction of the MCC's psychological staff, was taken off suicide watch and required to have an assigned cellmate. >> This was a monumental failure on all levels, and that's why it has fueled the conspiracies. And I understand that. >> Cameron Lindsay is a former federal prison warden. who should have made sure that he wasn't taken off suicide watch in your opinion. >> The leadership of the facility should have stepped in and said, \"While I appreciate the perspective of you, chief psychologist, I'm going to override that decision and we're going to leave Epstein on suicide watch, especially subsequent to the suicide attempt that he had.\" >> Epstein was moved back to the shoe and assigned a new cellmate. We reviewed photos and interviewed jail employees to create this composite of the area. Each tier of the shoe has eight cells, usually with two inmates per cell. Epstein cell 220 was about 15 ft away and up a set of stairs from the guard station with a single locked gate between them. The gate is the only way in or out of the tier. Lawyers say the day before Epstein was found dead, he was upbeat and looking forward to an appeal hearing on his bail. That same day, his cellmate was released and no new cellmate was assigned, even though he was required to have one. Michael Thomas and Tova Noel are the two guards who were working the overnight shift on the shoe. Court documents say Epstein was escorted into his cell by Toban Noel at approximately 7:49 p.m. Then the guards didn't check in on him again until shortly after 6:30 a.m. the next morning. >> So in the shoe, they should be checked in on every 30 minutes. >> They should be checked on every 30 minutes. It's my understanding based on the documents that I examine, the two officers that were working in the special housing unit allegedly falsified the records and did not do any rounds for approximately 8 hours. >> How big of a deal is that? >> That's a huge, huge deal. This is one of the most basic operational aspects of managing a jail or prison. >> Instead, federal prosecutors say surveillance video makes clear the guards searched the internet and appeared to have been asleep. Both guards were working overtime. >> When you're being forced to stay over shifts, not go home and see your family, you start to see um people take shortcuts. >> Tyrone Coington is the president of the union that represents the guards who both now face criminal charges and have pleaded not guilty. >> I absolutely believe that these staff members are being made a scapegoat >> because it was Jeffrey Epste. >> Because it was Jeffrey Epstein. Coington doesn't think there was any foul play and he says there should be surveillance video to prove it. In November, Attorney General William Bar told reporters he personally reviewed surveillance video that showed nobody entered the area where Epstein was held. But sources say a second camera inside the tier, the one that could have seen Epstein's cell door and the doors of other inmates, was not working that night. The theories that are out there, one of them is that it was another inmate who may have killed Jeffrey Epstein. >> Come on, >> you don't believe that. >> He was found hanging in his cell. Um, he had tried to commit suicide before that. He was a very wealthy man who was looking at a lifetime in prison. You know, sometimes a cigar is just a cigar. >> So Epstein's taken off suicide watch. The day before he kills himself, his roommate is uh removed from the cell. The cameras on his tier are not working. The guards fell asleep. It seems almost impossible to think all of those things could happen in that way. >> It does. And that's what makes this so shocking. I mean, this is a failure on multiple levels. >> Do you think there's any way that Jeffrey Epstein could have been murdered? >> Absolutely. Unequivocally not. >> The story will continue after this. There was a note in Jeffrey Epstein's cell. He wrote that one guard kept me in a locked shower stall for one hour. Noel, the guard, sent me burnt food, giant bugs crawling over my hands. No fun. Dr. Michael Boden says if anyone thought Jeffrey Epstein was suicidal, they wouldn't have let him have a ballpoint pen that could be used to harm himself or someone else. The other thing we just noticed looking at the photos, it appears he had some kind of sleep apnea machine. You can see a long electrical cord. >> Yes, there were other wires and cords present that it would have been easy to uh use to hang oneself within a few minutes. >> But the key reason Dr. Boden thinks Jeffrey Epstein's death might be a homicide is because of the unusual fractures he saw in Epstein's neck. There were fractures of the left, the right thyroid cartilage and the left hyoid bone. >> This is an autopsy photo of Epstein's broken hyoid bone, a U-shaped bone that sits under the jaw that part of the tongue attaches to. The thyroid cartilage sits at the front of the neck. >> I have never seen three fractures like this in a suicidal hanging. Sometimes there's a fracture of the higher bone or a fracture of the thyroid cartilage, >> but not three. >> Very unusual to have two and not three. And going over over a thousand jail hangings, suicides in the New York City state prisons over the past 40, 50 years, no one had three fractures. What kind? >> The New York City Medical Examiner's Office disputes Bodton's theory, saying that fractures of the hyoid bone and cartilage can be seen in suicides and homicides, and they stand firmly behind their finding of suicide by hanging. Then there's the two nooes. This was the one that was sketched and included in the autopsy by the medical examiner, presumably because they thought it was used in Epstein's death. But Dr. Boden says that noose and the wounds on Jeffrey Epstein's neck don't appear to match. >> What do you see when you see these two things together? >> What I see here is that this noose doesn't match the liature furrow mark. It's uh wider than this. >> To the naked eye, it looks like there's some blood here. And it doesn't look like there's any blood on this noose. >> That's right. This looks like a clean noose that was never used to compress anybody's neck. There's also something that's striking about the photos. The wound is down here. You'd think if somebody hung themselves, the wound would be maybe up here. >> Yes. Most hanging, especially free hangings, the ligature slides up to beneath the the uh jawbone, the mandible. Here, it's in the middle of the neck. >> Dr. Boden says a wound straight across the neck is more common when a victim is strangled by a wire or cord. He and Epstein's brother, Mark, met with the government and asked to see any forensic testing and any video, but they say they were told the ongoing criminal case against the two guards prevents the Justice Department from releasing any information. >> So, the criminal charges are now basically a firewall for the family to get any information about >> from the Justice Department. >> The charges have also silenced the guards. The attorney for guard Michael Thomas says five months after Epstein's death, Thomas has still not spoken to investigators or revealed how he alone found Epstein's body. Disappointed that they never got to face Epstein in court, many victims are now angry that the investigation into his death has left so many questions still unanswered.",
+      "segment_count": 356,
+      "duration_seconds": 846,
+      "entity_mentions": [
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 6080,
+          "timestamp_formatted": "00:00:06",
+          "segment_text": "Convicted sex offender Jeffrey Epstein"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 20800,
+          "timestamp_formatted": "00:00:20",
+          "segment_text": "weeks after his arrest, Epstein was"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 25600,
+          "timestamp_formatted": "00:00:25",
+          "segment_text": "examiner concluded that Jeffrey Epstein"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 30560,
+          "timestamp_formatted": "00:00:30",
+          "segment_text": "theories have flourished. Epstein was"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 56160,
+          "timestamp_formatted": "00:00:56",
+          "segment_text": "from inside Jeffrey Epstein's cell."
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 59840,
+          "timestamp_formatted": "00:00:59",
+          "segment_text": "This is the cell where Jeffrey Epstein"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 90000,
+          "timestamp_formatted": "00:01:30",
+          "segment_text": "Epstein"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 95119,
+          "timestamp_formatted": "00:01:35",
+          "segment_text": "autopsy for Jeffrey Epstein's brother,"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 105119,
+          "timestamp_formatted": "00:01:45",
+          "segment_text": "is investigating Epstein's death for his"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 128080,
+          "timestamp_formatted": "00:02:08",
+          "segment_text": "you're being paid by Mark Epstein, so of"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 146160,
+          "timestamp_formatted": "00:02:26",
+          "segment_text": "information. Guards found Epstein at"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 154560,
+          "timestamp_formatted": "00:02:34",
+          "segment_text": "\"Breathe, Epstein, breathe.\""
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 160000,
+          "timestamp_formatted": "00:02:40",
+          "segment_text": "that Epstein died around 4:30 that"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 202959,
+          "timestamp_formatted": "00:03:22",
+          "segment_text": "autopsy of Jeffrey Epstein and inside"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 221120,
+          "timestamp_formatted": "00:03:41",
+          "segment_text": "the ground. Did Epstein, who was nearly"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 236959,
+          "timestamp_formatted": "00:03:56",
+          "segment_text": "Jeffrey Epstein was booked into the"
+        },
+        {
+          "entity_id": "ep-org-mcc",
+          "entity_name": "Metropolitan Correctional Center",
+          "entity_label": "Organization",
+          "matched_text": "Metropolitan Correctional Center",
+          "timestamp_ms": 238799,
+          "timestamp_formatted": "00:03:58",
+          "segment_text": "Metropolitan Correctional Center or MCC"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 282240,
+          "timestamp_formatted": "00:04:42",
+          "segment_text": ">> Bruce Bquett is the lawyer for Epstein's"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 304479,
+          "timestamp_formatted": "00:05:04",
+          "segment_text": "Somebody like Jeffrey Epstein, uh, you"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 314080,
+          "timestamp_formatted": "00:05:14",
+          "segment_text": ">> Epstein was directing money to be"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 323440,
+          "timestamp_formatted": "00:05:23",
+          "segment_text": "life. But the government says Epstein"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 334479,
+          "timestamp_formatted": "00:05:34",
+          "segment_text": "23rd, a guard found Epstein on the floor"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 339759,
+          "timestamp_formatted": "00:05:39",
+          "segment_text": "around his neck. Epstein claimed his"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 345840,
+          "timestamp_formatted": "00:05:45",
+          "segment_text": ">> Epstein says that Nick tried to kill"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 357840,
+          "timestamp_formatted": "00:05:57",
+          "segment_text": "to kill Epstein. Epstein was moved to"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 362960,
+          "timestamp_formatted": "00:06:02",
+          "segment_text": "watch. But one week later, Epstein, at"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 399680,
+          "timestamp_formatted": "00:06:39",
+          "segment_text": "Epstein on suicide watch, especially"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 406720,
+          "timestamp_formatted": "00:06:46",
+          "segment_text": ">> Epstein was moved back to the shoe and"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 421280,
+          "timestamp_formatted": "00:07:01",
+          "segment_text": "Epstein cell 220 was about 15 ft away"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 434560,
+          "timestamp_formatted": "00:07:14",
+          "segment_text": "day before Epstein was found dead, he"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 453440,
+          "timestamp_formatted": "00:07:33",
+          "segment_text": "the shoe. Court documents say Epstein"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 526560,
+          "timestamp_formatted": "00:08:46",
+          "segment_text": ">> Because it was Jeffrey Epstein. Coington"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 542480,
+          "timestamp_formatted": "00:09:02",
+          "segment_text": "where Epstein was held. But sources say"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 548080,
+          "timestamp_formatted": "00:09:08",
+          "segment_text": "that could have seen Epstein's cell door"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 558000,
+          "timestamp_formatted": "00:09:18",
+          "segment_text": "Jeffrey Epstein."
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 574240,
+          "timestamp_formatted": "00:09:34",
+          "segment_text": ">> So Epstein's taken off suicide watch."
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 599760,
+          "timestamp_formatted": "00:09:59",
+          "segment_text": "Jeffrey Epstein could have been"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 610880,
+          "timestamp_formatted": "00:10:10",
+          "segment_text": "There was a note in Jeffrey Epstein's"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 627200,
+          "timestamp_formatted": "00:10:27",
+          "segment_text": "thought Jeffrey Epstein was suicidal,"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 656560,
+          "timestamp_formatted": "00:10:56",
+          "segment_text": "Jeffrey Epstein's death might be a"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 661279,
+          "timestamp_formatted": "00:11:01",
+          "segment_text": "fractures he saw in Epstein's neck."
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 672240,
+          "timestamp_formatted": "00:11:12",
+          "segment_text": ">> This is an autopsy photo of Epstein's"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 736240,
+          "timestamp_formatted": "00:12:16",
+          "segment_text": "used in Epstein's death. But Dr. Boden"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 741440,
+          "timestamp_formatted": "00:12:21",
+          "segment_text": "Jeffrey Epstein's neck don't appear to"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 795600,
+          "timestamp_formatted": "00:13:15",
+          "segment_text": "Epstein's brother, Mark, met with the"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 822160,
+          "timestamp_formatted": "00:13:42",
+          "segment_text": "Thomas says five months after Epstein's"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 831040,
+          "timestamp_formatted": "00:13:51",
+          "segment_text": "found Epstein's body. Disappointed that"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 833760,
+          "timestamp_formatted": "00:13:53",
+          "segment_text": "they never got to face Epstein in court,"
+        }
+      ],
+      "unique_entities": [
+        "Jeffrey Epstein",
+        "Metropolitan Correctional Center"
+      ],
+      "ingested_at": "2026-03-19T01:17:36.281Z"
+    },
+    {
+      "video_id": "1jDPzW9COsU",
+      "url": "https://www.youtube.com/watch?v=1jDPzW9COsU",
+      "title": "",
+      "source_type": "news",
+      "transcript_text": "we were underage we were little girls I was 16 that was 16 I started going to him when I was like 14 15 14 turning 15 if you think at 14 $200 that's a lot of money at 14 years olds I mean that's a lot of money now she's like oh you know do you need to make any extra money he gets a lot of massages from girls they were recruited by someone who was adept at finding girls that would be willing to go to a house for a few hundred dollars it started out giving me in a back rub but many cases it turned into something far worse than that elevated to a crime and a serious crime in some cases sexual batteries my life would have been different if I would have never went to Geoffrey Epstein's house it was just a dark turning point in my life on June 30th 2008 Jeffrey Epstein a Palm Beach multi-millionaire hedge fund manager received what might have been the most lenient plea deal for a serial sex offender in US history the Miami Herald identified over 60 of his victims just young middle and high school girls at the time of the abuse more than a decade later several of them are talking for the first time about how they were molested by Epstein and believe they were betrayed by the very prosecutors who were supposed to hold Epstein accountable they came from fairly disadvantaged backgrounds there was some dysfunction and their families the lure of a lot of money was more than they were able to resist I went from an abusive situation to being a runaway to living in foster homes to just already being hardened by life on the streets the other girls that I personally know of that way we're coming from trailer parks that were having gun shootings drugs my mother was on drugs at the time and she could have provide for me and I was pretty much homeless one child would be lord over would be paid substantial sums of money would be offered the further inducement of being paid a bounty for anybody else that she was able to bring to Epstein a network developed where many young girls in the same kinds of circumstance wound up being victimized three of us slid into the backseat for the cab and we drove and I remember just driving down Okeechobee Boulevard and thinking how I had never been on Palm Beach Island before and my home to our life that I had to live in West Palm Beach by the time I was 16 I brought him up to 75 girls all the ages of you know 14 15 16 people going from eighth grade to ninth grade at just school parties that's where I would recruit him from all Jeffrey cared about was go find me more girls his appetite was insatiable he couldn't stop he wanted new fresh young faces every single day the sheer volume of girls the frequency sometimes several were many in the same day the age of the girls in some cases there were victims that didn't know each other had never met each other but they had a basically the same story I remember there was a staircase and it was like kind of like a spiral almost and she brings us up the stairs it was like spiral stairs she walked into his bedroom around his bed and - almost like a very little Hall and then it was another door and that's where everything would happen was in his bathroom he would have a dresser and it was filled with like the first drawer was lotion and then like the third drawer down was like sex toys so you we would take the massage table out and set it up in the middle of the room and then he came in with his white towel on around him and then he just laid down in his towel on his stomach and he was just talking to people on the phone when he flipped flipped over that's when he said okay you can go ahead and take off your shirt and pants but you can stay in your underwear he would want us to stand next to him and he would masturbate while he stared at us touched us to pull his nipples and to play with them in between his fingers and also while I was playing with his nipples he kept doing that stuff to me but he was very aggressive like wouldn't he would do it and then he tried to put his finger in my underwear and I like jumped back and I went I pulled back and I was like whoa and he's like no no no it's okay it's okay I'm sorry I'm sorry I won't do that I won't do that and then he went back to doing that he's like just on the outside and I'm like I'm like oh it ended with sexual abuse and intercourse and then a pat on the back you've done a really good job like you know thank you very much and here's $200 you know before you know it I'm being lent out to politicians and to academics and to people that you rural tea and people that you just you would never think like how did you get into that position of power in the first place if you're this disgusting evil decrepit person on the inside Epstein then in his 50s was also suspected of organizing sex activities with underage girls at his homes in New York City New Mexico and on his private island in the Caribbean you're talking about hundreds of children all over the world victims that were alleged sex slaves of Jeffrey Epstein that they broke over from Eastern Bloc countries I've seen hundreds and hundreds of girls go through Jeffrey swinging door his ever revolving door this guy is big-time he knows people that know people that know people flight logs from his plane and his address book read like a who's who of some of the richest and most famous and powerful people in the world celebrities actors philanthropist academics and world leaders it's really disappointing to look as a lawyer to look at this circumstance and see how did this happen one individual commits one abuse of a minor and at one instance of a of a minor and there held account for years and years through the criminal justice system this individual abused hundreds of girls and nothing happened it's really really unfortunate we look at that and we say how did the criminal justice system fail these girls in such a significant way how has that happened there was ample physical evidence and witness testimony to support the girls stories including notepad seized from Epstein's home with their names and phone numbers along with phone records despite the corroborating evidence Palm Beach State Attorney Barry crusher wanted to charge Epstein only with a misdemeanor and once that happened it was clear to me that justice would not be served by the state attorney and the handling of the case and were referred to the FBI and then there were many many more victims after that time Epstein hired somebody that would impress the state Attorney Barry Krisher to drop the investigation the US Attorney's Office got involved with this case with Jeffrey Epstein's a list of defense attorneys that are extremely well known and extremely powerful I think these attorneys were able to manipulate the sitting u.s. attorney and the assistant US attorney working the cases a few things happen in this case that there are my law enforcement career I've done four seen before the US Attorney's here had an indictment and they was sending it back and forth to Jeffrey's lawyers for changes never seen anything like that before I started getting somewhat of an inclination that this is a situation where somehow for some reason the defendant and the government are working together against the victims although that kind of conspiracy theory sounds so preposterous that I didn't want to believe it a subsequent FBI investigation found a sprawling network of victims and enough evidence to fill a fifty-three page indictment with federal sex crime charges but Miami US attorney Alexander Acosta signed off on a secret plea bargain while deliberately not informing Epstein's victims the deal granted Epstein and his accomplices immunity from federal prosecution Epstein pleaded guilty in state court to two prostitution charges and served 13 months Epstein's punishment was like that of no other sex offender in Florida he had a private space in a vacant wing of the Palm Beach County stockade but records show he spent limited time there he was allowed to go to his private West Palm Beach office where he spent up to 12 hours a day six days a week often accepting visitors including female friends what he had a plane too was a joke the sentence he served it was even a bigger joke and then his probation was a slap in everybody's face the government by that agreement was definitely putting their name on something that they believed at that moment was ending the prosecution the possibility of prosecution and ending the victims rights right there that's what the government believed how can you do that to all these all these girls how can you tell them that what he did was okay Acosta now president Trump's Labor Secretary didn't explain why he sealed the details of Epstein's plea so that no one would know the scope of Epstein's crimes or who was involved years later he said he and his staff were bombarded by Epstein's army of legal superstars who launched a year-long assault against him and other prosecutors that they took all the way to the US Attorney General in Washington DC if you don't let the victims be a part of the solution there is no solution and in the case of Jeffrey Epstein the prosecutors created a universe that excluded the victims and disempowered them for a second time and empowered the perpetrator that is absolutely unacceptable really if you think about it too hard it's scary because this is our government that's supposed to protect us but has done everything to protect you know a pedophile federal prosecutors claim they achieved a victory by forcing Epstein to register as a sex offender but there's no agency that regularly monitors his whereabouts he lists his residents as the US Virgin Islands but his flight records show that he takes trips around the United States and Europe and his new private plane this is probably the most unjust outcome of any case that I've been involved in in 40 years I think it's something that the government just can't ignore anymore there's so many of us that they just can't forget about it it's not something that's gonna be yesterday's news since then about two dozen civil lawsuits have been filed in connection with the case including one set to go to trial in December in state court in Palm Beach County that could finally expose more about Epstein's crimes how many people were involved and why his case was dismissed by federal prosecutors another case filed by Epstein's victims in federal court seeks to invalidate Epstein's plea deal and send him to prison I am involved in this case in defending the integrity of the justice system in making sure that we do everything we can to be sure that justice is not bought he needs to be behind bars he needs to be behind bars for the rest of his life there was way too many girls for him not to be that's just a mind-blowing [Music] [Music] [Applause] you",
+      "segment_count": 293,
+      "duration_seconds": 735,
+      "entity_mentions": [
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 56820,
+          "timestamp_formatted": "00:00:56",
+          "segment_text": "Geoffrey Epstein's house it was just a"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 62220,
+          "timestamp_formatted": "00:01:02",
+          "segment_text": "30th 2008 Jeffrey Epstein a Palm Beach"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 84840,
+          "timestamp_formatted": "00:01:24",
+          "segment_text": "molested by Epstein and believe they"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 89130,
+          "timestamp_formatted": "00:01:29",
+          "segment_text": "who were supposed to hold Epstein"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 145680,
+          "timestamp_formatted": "00:02:25",
+          "segment_text": "able to bring to Epstein a network"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 331580,
+          "timestamp_formatted": "00:05:31",
+          "segment_text": "inside Epstein then in his 50s was also"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 354919,
+          "timestamp_formatted": "00:05:54",
+          "segment_text": "slaves of Jeffrey Epstein that they"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 413810,
+          "timestamp_formatted": "00:06:53",
+          "segment_text": "notepad seized from Epstein's home with"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 422090,
+          "timestamp_formatted": "00:07:02",
+          "segment_text": "wanted to charge Epstein only with a"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 437870,
+          "timestamp_formatted": "00:07:17",
+          "segment_text": "Epstein hired somebody that would"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 450110,
+          "timestamp_formatted": "00:07:30",
+          "segment_text": "case with Jeffrey Epstein's a list of"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 507890,
+          "timestamp_formatted": "00:08:27",
+          "segment_text": "informing Epstein's victims the deal"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 510200,
+          "timestamp_formatted": "00:08:30",
+          "segment_text": "granted Epstein and his accomplices"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 514090,
+          "timestamp_formatted": "00:08:34",
+          "segment_text": "Epstein pleaded guilty in state court to"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 519710,
+          "timestamp_formatted": "00:08:39",
+          "segment_text": "Epstein's punishment was like that of no"
+        },
+        {
+          "entity_id": "ep-donald-trump",
+          "entity_name": "Donald Trump",
+          "entity_label": "Person",
+          "matched_text": "Trump",
+          "timestamp_ms": 570860,
+          "timestamp_formatted": "00:09:30",
+          "segment_text": "okay Acosta now president Trump's Labor"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 576110,
+          "timestamp_formatted": "00:09:36",
+          "segment_text": "the details of Epstein's plea so that no"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 578120,
+          "timestamp_formatted": "00:09:38",
+          "segment_text": "one would know the scope of Epstein's"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 584330,
+          "timestamp_formatted": "00:09:44",
+          "segment_text": "by Epstein's army of legal superstars"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 600950,
+          "timestamp_formatted": "00:10:00",
+          "segment_text": "Jeffrey Epstein the prosecutors created"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 626150,
+          "timestamp_formatted": "00:10:26",
+          "segment_text": "a victory by forcing Epstein to register"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 669259,
+          "timestamp_formatted": "00:11:09",
+          "segment_text": "more about Epstein's crimes how many"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 675790,
+          "timestamp_formatted": "00:11:15",
+          "segment_text": "another case filed by Epstein's victims"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 680300,
+          "timestamp_formatted": "00:11:20",
+          "segment_text": "Epstein's plea deal and send him to"
+        }
+      ],
+      "unique_entities": [
+        "Donald Trump",
+        "Jeffrey Epstein"
+      ],
+      "ingested_at": "2026-03-19T01:17:39.654Z"
+    },
+    {
+      "video_id": "EmMV67i7j_k",
+      "url": "https://www.youtube.com/watch?v=EmMV67i7j_k",
+      "title": "",
+      "source_type": "news",
+      "transcript_text": "Now, videos included in the latest drop provide a disturbing look inside the life of the convicted sex offender. More than 2,000 videos make up hours of footage, and it includes videos recorded by Epstein, received from others, or downloaded from the internet. Joining me now is Tanya Lukanova, a video journalist at the Free Press. She dug through hours of that video and uh can give us some analysis on what she saw. But we should note free press and CBS News share a parent company in Paramount Sky Dance. Tanya, good morning. Um, it's traumatic for people to even dig through these files and see what they see, but you've done that. I'm curious what jumped out at you that wasn't clear before. >> I think that the biggest revelation here is in the sort of in the overall find of the in the in the sheer volume of these files. um you know these files you can think of like if you were to see somebody's laptop or their phone or of their devices sort of like what kind of window into their psyche and private world can you glimpse at there and I think we have not seen a new app scene we've seen this this videos reveal the same app scene over and over again operating in plain sight um surrounded by enablers insulated by wealth and completely confident that this videos belong to him and they will never be sort of made public. >> But you were telling me in the break that that's almost what jumps out at you because he's recording these women and girls while he's speaking to them thinking no one will ever see this footage. >> The sheer volume of sexually explicit materials that he has asked his victims to send to him that have been found in his devices is sort of telling in and of itself. Um, but you know, for anybody who's who's asking how something like this could have been happening for so long, um, and in plain sight, I think these videos do a lot in terms of answering that question. Um, and it they really reveal the benality of Epstein's evil. I think um, you know, I think he's been such a myth mythological creature. Um, mythical I should say creature. He's been um you know we try to ascribe him some qualities that he might not possess because of because it's hard to kind of wrap our brain around how something like this could be happening and I think this video go these videos together watched together go a long way in terms of explaining how something like this could be happening >> now there is also a two-hour interview conducted by Steve Bannon what did that reveal >> that well first of all as you know the emails have also revealed sort of a friendship of sorts that has been going on between Epstein and Steve Bannon. That is a bizarre interview. It was apparently intended for a sympathetic documentary that was meant to rehabilitate Ebstein's image. Uh it was conducted sometime in 2019. Um it's really meandering. It's almost 2 hours long. It goes through a number of topics. They talk about politics, economics, science, Epstein's ascent to elite institutions. But one of the bizarre moments comes at the very end where Steve Bannon sort of out of nowhere begins to pressure uh Epstein on whether he is the devil himself. The conversation starts um for they start talking about you know Bannon first asks him um you know what does he think of institutions accepting money from somebody like himself which is a tier one sexual predator. Um and Epstein defends his philanthropy by arguing that you know the recipients of the funds would not care about the source of the money. And he says if the devil himself told mothers in Pakistan whose childrens are receiving polio vaccines that you know I'm going to exchange some money for your children's lives. Um and then that's where Bannon interjects and he goes do you think you're um devil himself? And Epstein tries to laugh it off and Bannon bizarrely presses him on this subject. He's like no it's a serious question. Do you think you're the devil himself? and it ends up being one of the last questions. Then um Epstein cuts cut cuts him off in a couple of minutes and says he has to go. >> Quite revealing of the psyche, the twisted logic that was used and how close he was to powerful people for so long. Really fascinating to get your take. Uh Tanya Lukanova, thank you very much for being here. Thank you so much.",
+      "segment_count": 116,
+      "duration_seconds": 253,
+      "entity_mentions": [
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 13120,
+          "timestamp_formatted": "00:00:13",
+          "segment_text": "by Epstein, received from others, or"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 121200,
+          "timestamp_formatted": "00:02:01",
+          "segment_text": "really reveal the benality of Epstein's"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 159040,
+          "timestamp_formatted": "00:02:39",
+          "segment_text": "on between Epstein and Steve Bannon."
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 177760,
+          "timestamp_formatted": "00:02:57",
+          "segment_text": "economics, science, Epstein's ascent to"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 187040,
+          "timestamp_formatted": "00:03:07",
+          "segment_text": "nowhere begins to pressure uh Epstein on"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 202879,
+          "timestamp_formatted": "00:03:22",
+          "segment_text": "one sexual predator. Um and Epstein"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 225120,
+          "timestamp_formatted": "00:03:45",
+          "segment_text": "himself? And Epstein tries to laugh it"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 236480,
+          "timestamp_formatted": "00:03:56",
+          "segment_text": "Epstein cuts cut cuts him off in a"
+        }
+      ],
+      "unique_entities": [
+        "Jeffrey Epstein"
+      ],
+      "ingested_at": "2026-03-19T01:17:46.228Z"
+    },
+    {
+      "video_id": "KACKbPWEGo4",
+      "url": "https://www.youtube.com/watch?v=KACKbPWEGo4",
+      "title": "",
+      "source_type": "news",
+      "transcript_text": "So, three million pages of documents, 180,000 images, and 2,000 videos. The latest release of files related to the pedophile Jeffrey Epstein is shocking in its size and its content. Investigations are now underway in at least 10 countries. We're still combing through the detail, and every day we uncover more and more about the crimes of the disgraced Financia and the people he was connected to. Well, over the next half an hour, we'll discuss the key revelations uncovered so far and the seismic impacts they've had. We have analysis from our chief North America correspondent Gary O'Donahu in Washington. In Windsor, our senior royal correspondent Daniela Ralph. Our political correspondent Nick Erdley is in Westminster. Our analysis editor Ros Atkins is in our BBC verify hub. And our business editor, Simon Jack, is here with me in London, as is Normia Ikbau, who's been looking at the response from the victims and their families. Plenty to digest, but it all started exactly a week ago. Today, we are producing more than 3 million pages, including more than 2,000 videos and 180,000 images. In total, that means that the department produced approximately three and a half million pages in compliance with the act. >> Well, it's been a whirlwind week. By Friday evening, the new document showed Epstein and the former Prince Andrew kept a close relationship long after he was convicted in 2008. By the next morning, a photo had emerged of Andrew crouched on all fours over an unidentified woman. He has yet to comment on the latest release of documents, but has always denied any wrongdoing. On Sunday, Peter Mandlesson was back in the spotlight. Documents revealed Epstein paid $75,000 into accounts linked to the former UK ambassador to the US between 2003 and 2004. He said he has no record or recollection of receiving the sums and didn't know whether the documents were authentic. Police have now started searches of two of his properties. On Monday, emails which appear to be from Sarah Ferguson, Andrew's ex-wife and former Duchess of York, illustrated the closeness of her relationship with Epstein, even whilst he was in prison. In one, she calls him the brother she always wished for. The emails do not indicate any wrongdoing. By Tuesday, the Met police launched an investigation into Peter Mandlesson. document suggested he'd been passing market sensitive material to Epstein when he was business secretary in Gordon Brown's government in the middle of the financial crisis of 2008. He maintains he did not act criminally and did not act did not act for personal gain. Well, Epstein had connections everywhere from Norway to Poland to Australia. Among them, Bill Gates. On Wednesday, the billionaire said he regretted every minute he spent with Jeffrey Epstein. Among the latest branch of documents, Epstein accused Gates of contracting a sexually transmitted infection from Russian girls, a claim he denies. On Thursday, the prime minister himself was facing huge pressure for appointing Mandlesson as US ambassador. Karma fronted the media to apologize. Well, at the heart of this scandal are the victims, the survivors of the abuse orchestrated by Epstein. Our correspondent, Nomi Igba, has been following the scandal for a number of years. And Nomia, for the victims, there are multiple strands, aren't there? Satisfaction because they campaigned for so long for this. Fury at the way that many have been identified, and fear that perhaps some of the worst hasn't been released here. >> That's right. so many strands because Matthew isn't just one abuser or one crime. Yes, Epstein was at the center of it. His web spann governments, royalty, finance, intelligence link circles in the US and the UK, years of institutional failure. But we are going through these documents one by one as journalists. We're analyzing. We're verifying. But for survivors, this is this is their life. This is their with a case of reopening their trauma, their abuse. And in many cases, they're discovering aspects of their abuse that they didn't know. And you touched on it there. Uh the Department of Justice, this is staggering. They accidentally released information about survivors who did not want to be identified, who've now been identified, and lawyers have said it's caused irreparable harm to them. I want you to have a listen to Marina Lassera. Now, she's originally from Brazil, now lives in the US. She met Epstein when she was 14 years old and he went on to exploit her for three years. This is what she had to say on seeing those files. When I seen my files that are no longer obviously in the DOJ's website, I was in shock because there are things in there that I did not know and I had to find out on that Friday when it was released. And it has drained me because I cannot stop thinking about it. And I I'm just I'm heartbroken about this. I'm extremely extremely stressed. I'm frustrated. I'm sad. I'm feeling every emotion and they are not good. I'm going to be honest. >> Marina speaking there to BBC News night. Let's also hear now from Ashley Rubbrite who was introduced to Epstein sometime after she turned 15. She had this to say on the fight for justice. >> We didn't choose this fight. We would have much rather have just been moms or you know gone after our careers and him just be a distant memory. Um but you know we weren't able to heal in peace. So now we're screaming in public because we don't have a choice anymore. and also Amanda Roberts. She spoke to the BBC News Night program. Now, she is a sister-in-law of Virginia Du Fray who is one of the most prominent accusers of Epstein and the former Prince Andrew. She was in that infamous photo where Mattbassen Windsor is seen with this arm around her. Glain Maxwell, who's also in that photo, who was convicted in 2021 as Epstein's co-conspirator, has confirmed seemingly that that photo is real. The former prince has always denied any wrongdoing. He previously even questioned whether that photo was real. He claimed it was doctorred and said he'd never met Jeffrey. Now, Virginia died by suicide in April 2025. Have a listen to what her sister-in-law, Amanda Roberts, had to say. >> It's a whirlwind. I think this moment I felt a moment of like such overwhelming emotion because I wish that she was here to see this. Um, she fought so hard and so long against all odds and she still was just so she was so strong for everyone, not just for her, but for her survivor sisters and every single survivor who has been discounted. Um, and so this moment, it's it's a bittersweet moment because we're we're proud of her and her accomplishments. And finally, I think the world is really beginning to see the truth and so we're proud of her, but we we miss her greatly in this moment because she should be she should be reing, you know, in this moment. >> Amanda Roberts. Now, the only institution doing any kind of investigation is Congress, but they don't have charging powers. They are due to hear from, as I mentioned, the person that has been convicted, the only person, Gla Maxwell. She is due to give a deposition next week. That is likely to retraumatize survivors, especially because yes, they wanted these files released, but they want accountability. They want investigations. They want people arrested. They want people charged. They want people jailed. and so releasing these files and there's more to come yet. We understand for them it's simply not a closed chapter. >> Nomia, thanks very much. Let's focus now on the epicenter of this entire scandal and the politics around the release of these documents in the United States. Let's go to our chief North America correspondent Gary O' Donahue. And Gary, Donald Trump resisted this move for a year. Now he's saying the country should move on. So talk me through the reaction there has been there. Well, there's been horror really at a lot of the fresh revelations that have come out of these 3 million plus documents over the last few days. And of course, people are still going through those things, still finding things, still finding photographs, still finding uh identifying information about some of the the survivors. In fact, the Department of Justice said that it expected to have released information erroneously and had set up an email address beforehand for people to get in touch to have things brought down. So, they knew this was coming down the line, but they argue they were under a deadline. They say their work is done, that their review of these documents is over, and that there is no grounds to prosecute anyone, anyone at all, apart from Epstein, of course, who's dead, and Gilelay Maxwell, who's in prison for 20 years. No other prosecutions currently being looked at. That is something, of course, that's uh incredibly difficult for many of the survivors to contemplate. They think, \"How can there be so much information, so much circumstantial information without anyone else being held accountable?\" And of course, we do know that the FBI were looking into co-conspirators, a number of co-conspirators, but we still don't know who those people are and uh to what extent they were investigated and what reasons there might have been for not prosecuting them. So, there's that. And as Nom was saying, Congress is the only real body that's looking into this. Now, it's a Republicanled House of Representatives. It's conducting its investigations. Yesesca Maxwell next week, but also at the end of the month, the Clintons, the Clintons will be here in Congress giving evidence to that committee. They declined, refused to do so for months, but it was the threat of contempt proceedings and potentially jail that has made them decide to come here. And they want to do it in public. We'll see whether that happens. If it does, Matthew, that will keep this thing going in a big way. Gary, a quick one. The material not released. Will that ever become public? >> Well, there's certainly a lot of pressure from members of Congress on both sides, in fact, and indeed from the survivors to get that stuff released. It's pretty vague about what it is. Some some of it apparently is child pornography. Some of it is images of death. It was described as by the deputy assistant, deputy attorney general. But he also said there was other material that was sort of a personal nature, medical nature. And people will be saying, \"What is it? What can we see? Can we see the the redactions in the stuff that has been published?\" All these questions remain. And yes, of course, there are still some documents in New York that may come out as well, but still a bunch of questions about the material that's already out there and what they're keeping back. Gary, thanks very much. Well, let's go from Washington to Westminster and to our political correspondent, Nick Erdley. And Nick, such a contrast between what is happening in the US and happening here because there has been a political earthquake in the last week with the prime minister fighting to stay in his job. >> Well, it absolutely has. The impact of the publication of these files has been profound in the UK. We already knew that Lord Mandlesen had been sacked as US ambassador because more links with Jeffrey Epstein had emerged last year, but this tranch of documents shows a very different relationship. It shows just how close they were, but also that Lord Mandlesson appears to have passed some sensitive information on to Jeffrey Epstein. Sensitive UK government information from when Lord Mandles was business secretary here. Stuff that included discussion over asset sales in the UK government, including information about a potential Eurozone bailout after the financial crisis. And that has really led to the earthquake you talk about in British politics because Lord Mandlesson is now no longer a member of the House of Lords. He's no longer a member of the Labour Party in which he was so consequential for the past few decades. There is now a massive question over the prime minister himself and whether his future is guaranteed because of his judgment of putting Lord Mandelen in the US ambassador job in the first place. So it is no exaggeration to say that the publication of these files could potentially bring down a prime minister. >> Well, exactly on that documentation and the paperwork that's going to become public, uh, real peril about what actually might come out, not just around the appointment, but wider. >> Yeah, absolutely. So, one of the knock-on consequences of the Epstein files in the UK has been one, a police investigation into Lord Mandlesson. two, parliament voting to publish all the information the UK government holds about the vetting process for Lord Manden getting the US ambassador job and crucially all communications between Lord Mandolson, government ministers and special advisers whilst Lord Mandlesson was US ambassador. That's potentially a huge amount of embarrassing and potentially damaging information. Now, we might not see all of it publicly. There's a process going on where uh a committee of parliamentarians will decide if some stuff has to be held back because it's sensitive either for national security or international relations. That's pretty controversial in and of itself, but we are going to see a lot of information published by the UK government. A lot of it could be very problematic for number 10. Number 10 says it shows it will show that Lord Mandlesson lied during his vetting process. My understanding is Lord Mandlesson insists he was accurate in the answers he gave. But all of this comes back to that tranch of documents published in the US. Had that not been published, this trickle down of crisis for the UK government wouldn't have happened. As it stands this afternoon, Kier Starmer is still in his job, but plenty of his own MPs, Labour MPs, aren't sure how long that will be the case. >> Nick, thanks very much. Let's go straight to Windsor and our senior royal correspondent, Daniela Ralph. And Daniela, as we've already touched on, we've seen that new grim photo of Andrew crouching over a young woman, an email that appears to confirm the picture with Virginia Guprey was real. Grubby emails from Sarah Ferguson with her taking her daughters to meet Epstein in the week after his release from prison. It is devastating stuff, isn't it? >> It is. It's been a really difficult and damaging week for the royal family. And what has become crystal clear reading through so many of those emails this week is that the relationship between Jeffrey Epstein, Andrew Mountbatton Windsor, and Sarah Ferguson, his ex-wife, was very close. And in reading them all, you also get a sense of the power play in the relationship as well. And it's very clear that the power lay with Jeffrey Epstein. When you read the exchanges, his replies to them are quite curt are quite factual. But their responses to him are al almost over complimentary. They're fing. They're even desperate at times in tone. And I think looking at this latest drop of Epstein files has taught us a lot about the nature of the relationship between the three of them. Um the photos as you mentioned as well have also been extremely damaging and really unsettling. I think perhaps that one that emerged last weekend or a series of them of a barefoot Andrew Mountbatton Windsor casually dressed leaning over uh someone a woman lying down on the ground. We think that is in Jeffrey Epstein's uh home in Manhattan. It's not clear what the context is or quite was going what was going on. But again, it is damaging. It is unsettling. It's upsetting. And again, as you say, that photo, the photo that really in my mind marks the start of the downfall of Andrew Mountbatten Windsor, of him standing with Virginia Grey, with Galain Maxwell in the background, a photo he said he had no recollection of. He he even questioned during his BBC interview whether it had been doctorred in some way. We now know from an exchange of emails between Jeffrey Epste and Gain Maxwell that it appears that Galain Maxwell says that photo is real. and Danella, growing pressure for the police to investigate Andrew and growing pressure on the palace and the king to do more to pressurize Andrew to cooperate with the US authorities. But we see in these emails countless efforts to do that that have been frustrated. >> Yes. all sorts of different paths that the authorities have taken to try and persuade Andrew Mountbatton Windsor over the year to talk to them to share information with them that just hasn't been successful. And it's been really interesting uh watching the response from the royal household from Buckingham Palace over the course of the past week. We haven't heard anything directly except from Prince Edward um Andrew Mountbaten Winder's younger brother who was asked a question about it at a conference he was speaking at in Dubai and said that his thoughts were with the victims. He said there are a lot of victims in this situation. The king and queen have out been out and about in the UK this week. Uh they were thrown questions, people shouted questions at them but there was no response from them either. Um sources uh within the royal household do say to us that you know at the end of the day whether Andrew Mountbatten Windsor gives evidence to the authorities is ultimately going to be down to one thing and that is his conscience. >> Daniela thanks very much. Well Jeffrey Epstein kept friends in high places. The British royal family is not the only one under pressure. The crown princess of Norway Metamarit features hundreds of times in the latest Files release relating to Epstein. She expressed a deep regret for her friendship with Epstein that continued even after his conviction. And there are many giants of business in those files. Let's turn to our business editor, Simon Jack. He's in the studio here with me. And Simon, as Nomia was saying earlier, this was a huge web, wasn't it, of of power, of money, of influence, of abuse. So, what have you picked out? >> You're right. It's a staggering network um of the richest and most powerful people in the world. In fact, um if you are extremely rich and powerful, there's every chance you will be mentioned in these files either as a correspondent or come up in correspondence. I should say there's no suggestion that just appearing in these documents is any implication of any wrongdoing. But it is a formidable roll call. Elon Musk, Richard Branson, Bill Gates, Leon Black, a big private equity guy, Sergey Bin, founder of Gula, Google, um, big bankers, Muhammad bin Salman, etc. Um, all of them are there in a kind of network. If you scratch my back, I'll scratch yours, make introductions, etc. We've got some more flesh on the bones of things that have all already cost some of the top people um, their jobs. For example, Jez Staley you just had there, that's Leon Black, who is the founder of Apollo. they both had to step down because of their associations with um Epstein without admitting any wrongdoing. Uh you've also seen people like Richard Branson. He said I visit him a couple of times um but I regret that relationship only a few occasions more than 12 years ago was limited to a group of business settings. And then you've got sort of politicians as well, economists like Larry Summers. Um Elon Musk of course is in there. He was uh inquiring about attending a party there to which he never attended. and Bill Gates the history of um with him and uh Epstein goes back several years but I think what's interesting about this is if you look at Staley back Ben WG proser who um founded a PR company with Peter Mandlesson he stepped down from his own business just a year ago so this network which was meant to confer advantage and power and favoritism and getting you in is actually had incredibly corrosive effect um on some of the people who've been involved with him >> and it is worth underlining just the staggering nature of what is in those emails around Peter Mandlesson and what he was sending to Epstein around the time of the financial crisis sometimes within minutes of important meetings. That's I think that and actually the current governor of the Bank of England got actually quite emotional the other day um saying that he said he couldn't believe uh he was shocked at the fact that details of possible things like sales of government assets the break of RBS the bank a eurozone bailout big conversations in sensitive conversations in close quarters relayed within minutes uh by Peter Mandelson to Jeffrey Epstein to be passed on to his banking contacts and uh Andrew Bailey, I've never seen him like this. He said, \"I don't want to sound pious, but is this is for all of us. How is that we live in a society in which this has happened and the cover up happened as well.\" So, there are investigations about whether those leaks about very sensitive matters uh constitute misconduct in a public office. That investigation is ongoing as Nick was talking about. And also, a lot of people have asked me, is this insider dealing? Is there stuff that he said that people could trade on? You know, possibly yes. The the the the definition of that is incredibly narrow. You have to prove that I would have bought this share because it was going to go up anyway. I think that's very difficult. But I think overall, Andrew Bailey expressed the view of many in the business community. They were pretty shocked this stuff was getting out. >> It's worth asking you. You've covered business for for decades. Have you seen anything quite like this? >> No, I never seen anything quite like this where there are so many um tendrils if you like to so many people. I mean, it's not just in in the in US business. It's in UK business. Muhammad bin Salman is in these um is in this correspondence. You've got as you're talking about people in Norway. Uh there are some families in France which are come up in correspondence. It's actually amazing how um actually a sort of lawyer from Brooklyn managed to construct this web and as I say the idea was to try and confer a bit of advantage and favor and ended up being very corrosive for all concerned. >> Simon, thank you for taking me through all of that. Let's head to the BBC Verify hub and our analysis editor, Ros Atkins. And Ros, just take us through the work BBC Verify has been doing on this cache of documents. >> Hello, Matthew. Well, the scale and the nature of this release of files has definitely to a degree shaped our work as you've been discussing. There are millions of files, emails, letters, photos, audio, and video. And the way that they were put online by the Department of Justice doesn't necessarily make them particularly easy to search and sift, which is why we've seen new developments throughout the last week as the BBC and other news organizations have searched through the vast amount of files. And there are different aspects of the work that we've been doing. Our data scientists have been producing different pieces of code to help us identify files of interest. We've also been verifying the location of some of the photos that have been released. And we've assessed close to a thousand videos. And there are different challenges that have come with that work. The videos, for example, frequently come with no additional information at all. So, no date, no location, no details of where the files are from. In addition, we've had to take great care with the language in our reporting. For example, in some videos, we're describing young females because we can't be sure if the videos show young women or girls. And then we have to reference the redaction errors made by the Department of Justice. You were discussing this earlier. Some of the photos and videos show survivors of Jeffrey Epstein and they can be identified. Some of these files have been taken offline by the Department of Justice, but not all. Needless to say, the BBC is taking great care to not identify the survivors affected by these redaction errors. All of this relates to the files that have been published. We should also say we're working to highlight fake files that are circulating. We're seeing fake emails claiming to be from Elon Musk, fake images claiming to show Sora Mandani, the New York mayor. Now, some of these fakes have had millions of views. And of course, it's important for us to highlight that they are not from the batch of files that were released. >> Ros, how do we see this story going? >> Well, I think we can definitely expect more stories stories to emerge from this batch of files. The work goes on by the BBC and by many other news organizations and because of the number of files even though we've all been working on this story for a week more details will emerge. And there's one other thing that I would emphasize and Nick was talking about this earlier. This act of transparency in the US with the Department of Justice sharing these files is potentially leading to further transparency in Westminster. We understand senior UK government figures may well have to share their electronic communications, their emails and messages that were exchanged with Peter Mandlesson. BBC understands that could be up to a 100,000 documents, which means there's going to be a lot more for all of us to see. And that, Matthew, isn't just about Peter Mandlesson. It may give us insights into how the UK perceives its relations with the US and perhaps how some UK officials see Donald Trump, too. So for all of those reasons for number 10, this story is far from over. >> Just in about 45 seconds, Rosit element, and they'll be feeling it in number 10. They'll be feeling it in a variety of capitals and individuals. There is so much that none of us really know what is still to come. And that could have all sorts of ramifications and consequences. Well, you're quite right because the Trump administration has moved around its position on how many files it will release, if it's going to release any. At one stage, Donald Trump did not seem to be committed to that happening. There was some criticism from within his own supporters, and now we've seen this uh really significant release of files in the last week. It's not clear how many further files will be released, but of course, we know further files do exist, and we know files outside of the Epstein files also exist. have just been talking about transparency in Westminster. And so, of course, anyone who's been involved in sending those messages will be wondering, will they be put in the public domain?",
+      "segment_count": 712,
+      "duration_seconds": 1615,
+      "entity_mentions": [
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 8400,
+          "timestamp_formatted": "00:00:08",
+          "segment_text": "pedophile Jeffrey Epstein is shocking in"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Prince Andrew",
+          "timestamp_ms": 89280,
+          "timestamp_formatted": "00:01:29",
+          "segment_text": "Epstein and the former Prince Andrew"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 89280,
+          "timestamp_formatted": "00:01:29",
+          "segment_text": "Epstein and the former Prince Andrew"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 96720,
+          "timestamp_formatted": "00:01:36",
+          "segment_text": "morning, a photo had emerged of Andrew"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 111759,
+          "timestamp_formatted": "00:01:51",
+          "segment_text": "revealed Epstein paid $75,000 into"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 135040,
+          "timestamp_formatted": "00:02:15",
+          "segment_text": "Sarah Ferguson, Andrew's ex-wife and"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 141920,
+          "timestamp_formatted": "00:02:21",
+          "segment_text": "Epstein, even whilst he was in prison."
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 158480,
+          "timestamp_formatted": "00:02:38",
+          "segment_text": "sensitive material to Epstein when he"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 172640,
+          "timestamp_formatted": "00:02:52",
+          "segment_text": "Epstein had connections everywhere from"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 182800,
+          "timestamp_formatted": "00:03:02",
+          "segment_text": "minute he spent with Jeffrey Epstein."
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 187440,
+          "timestamp_formatted": "00:03:07",
+          "segment_text": "Epstein accused Gates of contracting a"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 213360,
+          "timestamp_formatted": "00:03:33",
+          "segment_text": "orchestrated by Epstein. Our"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 240159,
+          "timestamp_formatted": "00:04:00",
+          "segment_text": "crime. Yes, Epstein was at the center of"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 287919,
+          "timestamp_formatted": "00:04:47",
+          "segment_text": "met Epstein when she was 14 years old"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 336720,
+          "timestamp_formatted": "00:05:36",
+          "segment_text": "who was introduced to Epstein sometime"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Prince Andrew",
+          "timestamp_ms": 379120,
+          "timestamp_formatted": "00:06:19",
+          "segment_text": "Epstein and the former Prince Andrew."
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 379120,
+          "timestamp_formatted": "00:06:19",
+          "segment_text": "Epstein and the former Prince Andrew."
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 385759,
+          "timestamp_formatted": "00:06:25",
+          "segment_text": "around her. Glain Maxwell, who's also in"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 390960,
+          "timestamp_formatted": "00:06:30",
+          "segment_text": "Epstein's co-conspirator, has confirmed"
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 478800,
+          "timestamp_formatted": "00:07:58",
+          "segment_text": "person, Gla Maxwell. She is due to give"
+        },
+        {
+          "entity_id": "ep-donald-trump",
+          "entity_name": "Donald Trump",
+          "entity_label": "Person",
+          "matched_text": "Donald Trump",
+          "timestamp_ms": 516479,
+          "timestamp_formatted": "00:08:36",
+          "segment_text": "Donald Trump resisted this move for a"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 573040,
+          "timestamp_formatted": "00:09:33",
+          "segment_text": "from Epstein, of course, who's dead, and"
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 575519,
+          "timestamp_formatted": "00:09:35",
+          "segment_text": "Gilelay Maxwell, who's in prison for 20"
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 620079,
+          "timestamp_formatted": "00:10:20",
+          "segment_text": "investigations. Yesesca Maxwell next"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 727200,
+          "timestamp_formatted": "00:12:07",
+          "segment_text": "Jeffrey Epstein had emerged last year,"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 741360,
+          "timestamp_formatted": "00:12:21",
+          "segment_text": "Epstein. Sensitive UK government"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 810240,
+          "timestamp_formatted": "00:13:30",
+          "segment_text": "knock-on consequences of the Epstein"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 913360,
+          "timestamp_formatted": "00:15:13",
+          "segment_text": "we've seen that new grim photo of Andrew"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 926000,
+          "timestamp_formatted": "00:15:26",
+          "segment_text": "daughters to meet Epstein in the week"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 943839,
+          "timestamp_formatted": "00:15:43",
+          "segment_text": "Jeffrey Epstein, Andrew Mountbatton"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 943839,
+          "timestamp_formatted": "00:15:43",
+          "segment_text": "Jeffrey Epstein, Andrew Mountbatton"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 957120,
+          "timestamp_formatted": "00:15:57",
+          "segment_text": "with Jeffrey Epstein. When you read the"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 972880,
+          "timestamp_formatted": "00:16:12",
+          "segment_text": "Epstein files has taught us a lot about"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 986720,
+          "timestamp_formatted": "00:16:26",
+          "segment_text": "them of a barefoot Andrew Mountbatton"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 996240,
+          "timestamp_formatted": "00:16:36",
+          "segment_text": "Epstein's uh home in Manhattan. It's not"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 1011120,
+          "timestamp_formatted": "00:16:51",
+          "segment_text": "Andrew Mountbatten Windsor, of him"
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 1015440,
+          "timestamp_formatted": "00:16:55",
+          "segment_text": "Maxwell in the background, a photo he"
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 1028799,
+          "timestamp_formatted": "00:17:08",
+          "segment_text": "Maxwell that it appears that Galain"
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 1030400,
+          "timestamp_formatted": "00:17:10",
+          "segment_text": "Maxwell says that photo is real. and"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 1036880,
+          "timestamp_formatted": "00:17:16",
+          "segment_text": "to investigate Andrew and growing"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 1041039,
+          "timestamp_formatted": "00:17:21",
+          "segment_text": "do more to pressurize Andrew to"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 1056400,
+          "timestamp_formatted": "00:17:36",
+          "segment_text": "persuade Andrew Mountbatton Windsor over"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 1073200,
+          "timestamp_formatted": "00:17:53",
+          "segment_text": "except from Prince Edward um Andrew"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 1097440,
+          "timestamp_formatted": "00:18:17",
+          "segment_text": "the end of the day whether Andrew"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 1108880,
+          "timestamp_formatted": "00:18:28",
+          "segment_text": "Epstein kept friends in high places. The"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 1119840,
+          "timestamp_formatted": "00:18:39",
+          "segment_text": "relating to Epstein. She expressed a"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 1123679,
+          "timestamp_formatted": "00:18:43",
+          "segment_text": "Epstein that continued even after his"
+        },
+        {
+          "entity_id": "ep-leon-black",
+          "entity_name": "Leon Black",
+          "entity_label": "Person",
+          "matched_text": "Leon Black",
+          "timestamp_ms": 1167200,
+          "timestamp_formatted": "00:19:27",
+          "segment_text": "Richard Branson, Bill Gates, Leon Black,"
+        },
+        {
+          "entity_id": "ep-jes-staley",
+          "entity_name": "Jes Staley",
+          "entity_label": "Person",
+          "matched_text": "Staley",
+          "timestamp_ms": 1188080,
+          "timestamp_formatted": "00:19:48",
+          "segment_text": "For example, Jez Staley you just had"
+        },
+        {
+          "entity_id": "ep-leon-black",
+          "entity_name": "Leon Black",
+          "entity_label": "Person",
+          "matched_text": "Leon Black",
+          "timestamp_ms": 1190080,
+          "timestamp_formatted": "00:19:50",
+          "segment_text": "there, that's Leon Black, who is the"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 1196720,
+          "timestamp_formatted": "00:19:56",
+          "segment_text": "um Epstein without admitting any"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 1225120,
+          "timestamp_formatted": "00:20:25",
+          "segment_text": "Epstein goes back several years but I"
+        },
+        {
+          "entity_id": "ep-jes-staley",
+          "entity_name": "Jes Staley",
+          "entity_label": "Person",
+          "matched_text": "Staley",
+          "timestamp_ms": 1229120,
+          "timestamp_formatted": "00:20:29",
+          "segment_text": "if you look at Staley back Ben WG proser"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 1255600,
+          "timestamp_formatted": "00:20:55",
+          "segment_text": "he was sending to Epstein around the"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 1286400,
+          "timestamp_formatted": "00:21:26",
+          "segment_text": "uh by Peter Mandelson to Jeffrey Epstein"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 1291360,
+          "timestamp_formatted": "00:21:31",
+          "segment_text": "and uh Andrew Bailey, I've never seen"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 1327120,
+          "timestamp_formatted": "00:22:07",
+          "segment_text": "But I think overall, Andrew Bailey"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 1457279,
+          "timestamp_formatted": "00:24:17",
+          "segment_text": "Jeffrey Epstein and they can be"
+        },
+        {
+          "entity_id": "ep-donald-trump",
+          "entity_name": "Donald Trump",
+          "entity_label": "Person",
+          "matched_text": "Trump",
+          "timestamp_ms": 1547520,
+          "timestamp_formatted": "00:25:47",
+          "segment_text": "Trump, too. So for all of those reasons"
+        },
+        {
+          "entity_id": "ep-donald-trump",
+          "entity_name": "Donald Trump",
+          "entity_label": "Person",
+          "matched_text": "Trump",
+          "timestamp_ms": 1576960,
+          "timestamp_formatted": "00:26:16",
+          "segment_text": "Trump administration has moved around"
+        },
+        {
+          "entity_id": "ep-donald-trump",
+          "entity_name": "Donald Trump",
+          "entity_label": "Person",
+          "matched_text": "Donald Trump",
+          "timestamp_ms": 1582880,
+          "timestamp_formatted": "00:26:22",
+          "segment_text": "At one stage, Donald Trump did not seem"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 1600559,
+          "timestamp_formatted": "00:26:40",
+          "segment_text": "and we know files outside of the Epstein"
+        }
+      ],
+      "unique_entities": [
+        "Donald Trump",
+        "Ghislaine Maxwell",
+        "Jeffrey Epstein",
+        "Jes Staley",
+        "Leon Black",
+        "Prince Andrew"
+      ],
+      "ingested_at": "2026-03-19T01:17:49.744Z"
+    },
+    {
+      "video_id": "XhbwI-245_o",
+      "url": "https://www.youtube.com/watch?v=XhbwI-245_o",
+      "title": "",
+      "source_type": "news",
+      "transcript_text": "Hello and welcome to Extra Minutes, the 60 Minutes podcast. I'm Amelia Adams and today I'm joined by the fabulous Tara Brown. >> Hi, thank you. >> To discuss something that which just keeps making headlines all around the world, the Epstein Files. >> The Epstein Files. and we're seeing more photos and reading more often heavily redacted files and getting a little bit more detail as to what exactly >> is in these elusive files. >> Yes, we are. I mean, there are 3 million of them. >> That's a lot. >> That's a lot. There's another 3 million apparently that yet to be kind of processed and and revealed. There's certainly calls for those >> extra 3 million to be dumped. Um I think it's a mess >> to be honest. um for people who are trolling through it, you don't try and trying to find context. Uh what leads to what is very difficult. Um but what what is clear is that Jeffrey Epstein was a very well-connected person, wasn't he? >> How big a scandal do you believe this is? >> This spans four presidents, part of a two decadel long cover up. You know, we've seen that some of the richest people on the planet have the lowest moral standards on the planet. >> The communication between people is not just about salacious images and salacious text messages, but it was about finances and trade, >> business. And so many people have been named in that respect who are quite innocent really of any um any other sort of wrongdoing. Just people who had emails with not even Jeffrey Epstein himself, perhaps Gain Maxwell or someone in their circle. There's names popping up in the files that don't really mean a lot. But then of course there are names popping up that do mean a lot more. >> Yeah. and without a proper investigation. And everybody says just because your name appears in the files does not mean that you're guilty of anything. And that's a standard. Certainly people's reputations are being tarnished and whether that is um rightfully or not is yet to be determined. Um because really it's just like this dump of information. Um putting it together is still what is being done. and um calls uh by congressmen that the Department of Justice investigate properly so we know who to point the finger at and who not to. I mean the people pursuing Jeffrey Epstein and his co-conspirators believe that there are people within those files who should be prosecuted >> held to account. Yeah. I guess if nothing else we are learning just how extraordinarily powerful and connected Jeffrey Epstein was and uh what type of a man he was really which you have been investigating thoroughly for for some years now. >> Yeah. I mean, if we start with the type of man he was, if you like, I mean, his beginnings were very humble, you know, a workingclass kid from Brooklyn, um, but with a drive to be wealthy, very wealthy, whatever the cost. >> And, and that's what's revealed itself, right, as he's got older. I mean, as a kid, it was just, I'm going to be very wealthy one day and I'm going to get out of this neighborhood. Um, what at what cost has come become clearer with time. Um, but, you know, morality, >> honesty, none of that. none of that from mattered. Um, he really did. He lied his way. >> So, he really cheated and lied his way >> right from the beginning. You know, he he conned himself into a very prestigious school in Manhattan. One of the most prestigious in Manhattan, Dalton School. Uh, he didn't have a teach any teaching credentials and he's becomes their star maths and physics teacher until they realized he wasn't really a great teacher and they turfed him out. He was a teacher who seemed to show up at social events, parties, gatherings. Everything seemed very blurred in terms of the boundaries between students and him. >> He gets to bear sterns and lies about completing two university degrees. It was just a fabrication. >> What struck you the most because you've spoken to people who really knew him from a young age and throughout those years as he was making himself as a man if you like. What has struck you the most um from those people's recollections about Jeffrey Epstein, who he was, who he wanted to and and ultimately did become? >> Well, I think as we've discussed this identification that he wanted to be wealthy, he wanted to be out of that neighborhood, you know, moving away from from working class, you know, to I don't think anybody guessed it was to the heights that he reached in terms of his contacts. Um and I I and I think that while people at a very young age recognize that in him, they didn't ever guess what he would be accused of doing. >> Yeah. >> You know, that he would be involved in a sex trafficking ring, probably the largest ever. Um that, you know, that he uh would acquire so much wealth. >> Yeah. >> Which really, you know, according to investigations, really came about by lying and stealing from others. Jeffrey Epstein back at the time I went to school with him told a classmate of ours that he would definitely be rich someday. But uh nobody could have ever envisioned that Jeffrey Epstein would turn into the villain that we now know of. Perhaps most surprisingly, um, to me at least, is that, you know, the crimes that we know he committed and the many more that he, you know, has been accused of in terms of sex trafficking, sex with young girls, um, those things have not led to any as yet, we should say, um, major arrests or scandals from these files. in fact that the the arrests that have been made in Britain have been nothing to do with young women or Jeffrey Epstein's sexual proclivities or sex trafficking ring. >> No, but history shows it's always about the money. Follow the money, the money trail. >> Well, as we know, you know, the >> with the former Prince Andrew >> Mount Batton Windsor, you know, he's he's facing allegations of um misconduct in public office. It's it's got nothing to do with the sex trafficking ring. It's got nothing to do with Virginia Guprey. It's about sharing trade secrets uh with the the disgraced financia and similarly with Mandlesson. So, uh and and abroad as well. It it is interesting that uh in the UK heads have rolled. >> Yeah. >> Um >> and and big heads. >> Big heads. Biggest scalps you could probably imagine. Absolutely. Um >> they're not seeing the same yet in the United States. >> No. And I I do wonder if that will follow. >> Yeah. There are people calling for it. >> If you went to the island where women were raped to have a vacation with a known sex offender and now you're embarrassed, I'm sorry. >> There's lots of embarrassing stuff, but is there actually criminal stuff in these files in your opinion? >> Oh, absolutely. The question is, are the allegations true or not? And the way you determine that is you have an investigation and you have a trial and that's how you get to the truth in this country. And all of those steps have been truncated because these are rich and powerful men. >> Where it moves from now, it'll be interesting. I think it'll come down to pressure >> and um agitation >> and I think people are agitated >> and rightly so. >> And rightly so. and and the the momentum of that agitation seems to persist. >> Well, it's been such a hot political issue in the United States for a long time, but certainly for the last 6 months, it has plagued President Trump. You know, everything he has tried to do, not only domestically, but on the world stage, he's got a press pack following him around saying, \"What about the Epstein files? You know, release the Epstein files.\" it is just haunting him and badgering him um to a point where well now you know we're seeing the release of more of them. >> Yes. And I I look I think the calls for the other three million to be um released is really can only be the only thing to stop it I think because when there is no transparency for the remaining files then the allegations and conspiracies that there is a cover up at play here >> that's right >> uh you know sounds strongly it's until there's no more to see here I think that will haunt uh President Trump. You have interviewed so many survivors of Jeffrey Epstein and Gileain Maxwell over the years and they've all been waiting in a sense for this moment, haven't they? Of of accountability of, you know, it was like the files were the thing that would finally show the world that what happened to them was real and true and awful and people would be held to account. >> Um, yet it feels like that moment hasn't hasn't quite arrived. I think because the files are so flawed, you know, as we spoke earlier, they are a mess. Um, in many instances, those survivors have been hurt. It's their identification that has been exposed, their names, their security numbers, their, you know, all their their addresses. Uh, they're they're the ones who were never meant to be exposed. And yet, the people who are being accused of being co-conspirators have their faces blacked out. Yeah. Um, so it's the unfairness of that I think means they haven't been able to grab this moment. >> Yes. I worry that they're not even going to have to answer for any of this. And and that's just heartbreaking. It never goes away. It haunts you and it sneaks up on you in the worst ways. There shouldn't be this so much of the shame that we carry. This shame is not for us to carry. It's for them to carry. It seems unimaginable that given the stories that you know we've been told firsthand and the things that we know um there are not names or people in those files that could be identified. It was I mean and we should remind people too he did have a large and active and horrific sex trafficking scheme. I mean, we know that. >> Yes. So, who were these women trafficked to? >> Right. Who who who are these elusive people? Um, and will their names ever, you know, be released without redaction? >> Well, again, and and that's a big question because it's part of the transparency act that these files be released transparently, that we know what's in them, we know who's in them. Um some of the congressmen have been given access to further files uh where those redactions are removed. >> But there are there are still faces and names that are obscured because they arrived from the FBI to the Department of Justice in that state. >> Yeah. >> So it's it's it's got to go back one step and then it's got to go back another step. And I I I just don't know at this stage uh whether those redactions will ever be lifted, but that's the call. So they're in there. It's it's, you know, frustratingly close. >> It is. >> Um and then we're left with those photos of, you know, >> Jeffrey himself or or the former Prince Andrew or Bill Clinton in what looks like suggestive, you know, potentially inappropriate situations, but we don't still really know enough >> Yes. >> about what was happening. as you as you mentioned, it's it's the context that we're still missing. >> That's right. And again, the the only way that's going to be resolved is if there's a proper investigation and there there are allegations of criminal behavior. The al you know, an investigation will prove if they are substantiated or not. Um, and that's all they're calling for. >> Where do you see, and this is an impossible question to to answer, but don't ask. The world is is speculating and predicting. Where do you see it going from here? Um, and we've talked about the states. There are plenty of people sort of redfaced and apologizing and even resigning actually, but there haven't been any big arrests yet. Um, and at the same time, as we said, there are so many women who are just waiting for their moment of accountability. Do you see that happening? >> Well, look, we saw it with Virginia. We saw vindication at least with Virginia >> um in in the Epstein files, you know, Glenn Maxwell emails somebody to say that Virginia had a photo taken with Prince Andrew. >> I mean, and there it is. >> And there it is. >> Yeah. The lie exposed. >> Absolutely. Glenn Maxwell on the record. I know it's not real. >> I don't believe that. I don't believe it's real for a second. In fact, I'm sure it's not >> rubbish. You know, the former Prince Andrew, that's a fake. How do you explain that with your arm? >> That's me. But but whether that's my hand or whether that's um the position I I but I don't I have simply no recollection of a photograph ever being taken. >> Rubbish, you know. So there is truth in those files and I guess it just has to play out and uh and I you know I don't know I don't know enough to say whether it's obfiscation, if it's just the bulk of the files. uh if it's a cover up. Uh but as I said, I think there's pressure and there's pressure to answer some of those questions. And so I I think we'll see more come out of this this year. >> You do wonder what goes through Glenn Maxwell's head as she sits in jail every time there's a fresh dump of photos and files, don't you? >> Well, you know, from from from what she's said in the past, it's like she tries to use it to her benefit. you know, I will not appear before Congress, but I will tell you something if you do something for me. >> Always wheeling and dealing >> always >> to the end. >> Well, as you say, I think we'll uh we'll be seeing more and hearing more and we'll continue to report on it. So, thank you, Tara, for your investigations. And if you've missed Tara's stories, you should definitely catch up on N now uh or on the 60 Minutes Australia YouTube page.",
+      "segment_count": 394,
+      "duration_seconds": 877,
+      "entity_mentions": [
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 19199,
+          "timestamp_formatted": "00:00:19",
+          "segment_text": "world, the Epstein Files."
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 21439,
+          "timestamp_formatted": "00:00:21",
+          "segment_text": ">> The Epstein Files. and we're seeing more"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 60640,
+          "timestamp_formatted": "00:01:00",
+          "segment_text": "is clear is that Jeffrey Epstein was a"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 105759,
+          "timestamp_formatted": "00:01:45",
+          "segment_text": "emails with not even Jeffrey Epstein"
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 107920,
+          "timestamp_formatted": "00:01:47",
+          "segment_text": "himself, perhaps Gain Maxwell or someone"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 155280,
+          "timestamp_formatted": "00:02:35",
+          "segment_text": "Epstein and his co-conspirators believe"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 170160,
+          "timestamp_formatted": "00:02:50",
+          "segment_text": "Jeffrey Epstein was and uh what type of"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 260160,
+          "timestamp_formatted": "00:04:20",
+          "segment_text": "recollections about Jeffrey Epstein, who"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 310880,
+          "timestamp_formatted": "00:05:10",
+          "segment_text": "from others. Jeffrey Epstein back at the"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 322160,
+          "timestamp_formatted": "00:05:22",
+          "segment_text": "Jeffrey Epstein would turn into the"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 355520,
+          "timestamp_formatted": "00:05:55",
+          "segment_text": "with young women or Jeffrey Epstein's"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Prince Andrew",
+          "timestamp_ms": 368319,
+          "timestamp_formatted": "00:06:08",
+          "segment_text": ">> with the former Prince Andrew"
+        },
+        {
+          "entity_id": "ep-donald-trump",
+          "entity_name": "Donald Trump",
+          "entity_label": "Person",
+          "matched_text": "Trump",
+          "timestamp_ms": 470000,
+          "timestamp_formatted": "00:07:50",
+          "segment_text": "months, it has plagued President Trump."
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 480720,
+          "timestamp_formatted": "00:08:00",
+          "segment_text": "Epstein files? You know, release the"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 482319,
+          "timestamp_formatted": "00:08:02",
+          "segment_text": "Epstein files.\" it is just haunting him"
+        },
+        {
+          "entity_id": "ep-donald-trump",
+          "entity_name": "Donald Trump",
+          "entity_label": "Person",
+          "matched_text": "Trump",
+          "timestamp_ms": 520399,
+          "timestamp_formatted": "00:08:40",
+          "segment_text": "will haunt uh President Trump. You have"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 525519,
+          "timestamp_formatted": "00:08:45",
+          "segment_text": "survivors of Jeffrey Epstein and Gileain"
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 527760,
+          "timestamp_formatted": "00:08:47",
+          "segment_text": "Maxwell over the years and they've all"
+        },
+        {
+          "entity_id": "ep-bill-clinton",
+          "entity_name": "Bill Clinton",
+          "entity_label": "Person",
+          "matched_text": "Bill Clinton",
+          "timestamp_ms": 702399,
+          "timestamp_formatted": "00:11:42",
+          "segment_text": "Andrew or Bill Clinton in what looks"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 702399,
+          "timestamp_formatted": "00:11:42",
+          "segment_text": "Andrew or Bill Clinton in what looks"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 767040,
+          "timestamp_formatted": "00:12:47",
+          "segment_text": ">> um in in the Epstein files, you know,"
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 770399,
+          "timestamp_formatted": "00:12:50",
+          "segment_text": "Glenn Maxwell emails somebody to say"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Prince Andrew",
+          "timestamp_ms": 775200,
+          "timestamp_formatted": "00:12:55",
+          "segment_text": "Prince Andrew."
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 780639,
+          "timestamp_formatted": "00:13:00",
+          "segment_text": ">> Absolutely. Glenn Maxwell on the record."
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 790560,
+          "timestamp_formatted": "00:13:10",
+          "segment_text": "Andrew, that's a fake. How do you"
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 834880,
+          "timestamp_formatted": "00:13:54",
+          "segment_text": "Maxwell's head as she sits in jail every"
+        }
+      ],
+      "unique_entities": [
+        "Bill Clinton",
+        "Donald Trump",
+        "Ghislaine Maxwell",
+        "Jeffrey Epstein",
+        "Prince Andrew"
+      ],
+      "ingested_at": "2026-03-19T01:17:52.823Z"
+    },
+    {
+      "video_id": "Yqb59n69Z80",
+      "url": "https://www.youtube.com/watch?v=Yqb59n69Z80",
+      "title": "",
+      "source_type": "news",
+      "transcript_text": "[Music] got me wondering how I got into this mix hey everyone this is Derek and we're here at the Palm Beach County Courthouse just wrapped up the Civil Trial dealing with Mr Bradley Edwards attorney who's represented many of the victims of uh Jeffrey Epstein first off thank you so much for your work and for everything you've done absolutely you're welcome so just go ahead and give everybody a rundown of what happened today what took place and why we're not going to be here for 10 days well the this was a this was originated out of a case where I represented a number of victims of Jeffrey Epstein's uh serial child molestation and at some point in time Mr Epstein didn't like the way in which I was Prosecuting those cases um a bit too aggressive for him so he filed a lawsuit against me making all kinds of false allegations but he had a lot of lawyers took a lot of time I had had to get my own lawyer who you saw Jack scarola and we've been defending that case for since 2009 when I got that case dismissed against against uh me I sued him so today was supposed to be my malicious prosecution action where I was to prove that the action he filed against me was malicious and it was false well he settled that case for an undisclosed monetary amount but also a very clear public apology affirming ing what this trial would have proven which is all of the allegations he made against me were false and all of the allegations I made against him were true absolutely which is a big step because those allegations obviously as you said were related to his many victims now some of the things that we've I've been digging and finding out and most recently the Miami Herald has kind of helped this case go wider because as you yourself you've been litigating this for a decade now yeah other independent journalists and a few in the mainstream have been talking about it and as you said usually focusing on the salacious kind of tidbits of who's connected to what not but you do you did mention that you know there are victims all around the world EP had houses in New Mexico New York Paris his Island and it seems that there are victims in each of those places where he was located can you elaborate any more on that or are you able to well I mean if you just look at some of the evidence in the case such as the police reports and the message pads left at his house you will very quickly realize the frequency with which in with which he engaged in that type of activity and then you just look he doesn't stay in one he travels around he travels to his various places there was a document that we uncovered at one point in time that came from his home where he listed massage and under massage were the names of basically all of the Florida victims but it wasn't only a Florida section there was a California Section massage New Mexico massage uh Virgin Island massage and so it begs the question what is he doing in these various places and is it any different than what he was doing here and why you know the US attorney's office took a lot of heat for the way they handled this and the lenient deal that that they gave him but what other us attorney's office has investigated anything has he even attempted to investigate anything so I think that today is a powerful day because it at least tells victims you can stand up your will your voice will be heard and people side with you these days and against the perpetrator whereas that wasn't always the case even 10 years ago I mean we we are in a different time no absolutely I would say even the fact that this is being reported on the mainstream and it's actually getting pressed like is is a is a shift and the document you mentioned a moment ago listing the massages is that the little black book the holy grail that every you know I think that's the way you refer to in the documents right right exactly and that's actually a document that his housekeeper stole from him at some point in time and a long story but eventually tried to sell it to me and then I had to cooperate with the FBI and um yeah he gets more time than Epstein does he got more time and then I think he died as soon as he got shortly after that which very unfortunate cuz he was one of the only people that we talked to who showed up to a deposition that was not represented by a lawyer that was being paid for by Jeffrey Epstein or he didn't take the fifth like many of the other Witnesses he was willing to speak he was willing to speak and willing to tell the truth and then he just decided to do something stupid and illegal and and and ruined all of the The credibility that came along with him I mean that was one of the most unfortunate and sad parts of of the entire investigation will that piece of evidence still be admissible in court or is it tainted now that he's tried to sell it or how how does that well it should still be admissible because Jeffrey Epstein himself for instance could authenticate that document I mean it came from his house anyone who's ever seen that document in his house probably has the ability to authenticate the document plus if you look at the numbers in it there's just no other possible way to accumulate the information in that book without it being totally authentic yeah absolutely now just one more question on that document um and this goes to the the more salacious rumors but I would like you to just whatever you can say on it obviously our current president has had relationships with I've seen in the past and there are those uh Katie Johnson and maybe other victims who have accused Trump of being involved in things like this um in my experience Trump supporters will not listen to anything along those lines obviously we're not a court of law here right now but are those claims of those that case was dropped it was dropped before it went to to court in your opinion as a lawyer and your experience is there anything you can say as to the validity of those claims or whether or not there will be any you know any more about that nothing at all I the only thing that I can say about President Trump is that he is the only person who in 2009 when I served a lot of subpoenas on a lot of people or at least gave notice to some pretty uh connected people that I was going that I wanted to talk to them he is the only person who picked up the phone and said let's just talk I'll give you as much time as you want I'll tell you what you need to know and was very helpful in the information that he gave and gave no indication whatsoever that he was involved in anything untour whatsoever but had good information that checked out and that helped us and that we didn't have to take a a deposition of him that was in 2009 that was in 2009 so do you know if there's any truth to James Patterson's claims that Trump kicked Epstein out of the marago I've definitely heard that I I definitely heard that and I don't know that it was Trump himself as opposed to a manager there Trump's Club so people credit him Trump I I've heard the rumor that epsteam was kicked out of there for allegedly trying to pick up somebody's daughter something like that but I think I did Chase that down as far as I could and and never was able to confirm it but I I heard it I'm on the same same boat with that um and just as far as Mar Lago that's where Virginia Roberts was kind of brought into the whole scheme right via that's where she was recruited yeah absolutely so that's where she was recruited and brought to Jeffrey Epstein's house so you know the story of someone else being recruited there is is not so farfetched absolutely it's believable all right well I know you're busy anything else you'd like to just leave the audience with as far as what we can expect going forward how they might be able to support I mean you guys did a great press conference here kind of putting the impetus on the press and on the people who really you're in the you're in the courtrooms doing what you can what we can't do and myself as a journalist and other people out there sharing content sharing articles what can we do now well look what I do is help Crime Victims yeah whether it's somebody who was the victim of a violent crime or a sexual assault that's what I do and that's where the focus should be so anything that the media can do to help reframe the whole picture to focus more on the victims not in a way of putting a camera in their face and just tell me all the bad stuff so I can move on but what did you go through and and what would help you heal and and look be courageous and reward the courage for coming forward rather than nitpick the little things the flaws that each victim may have when they come forward I mean that that's what scares them all into silence and so the the more the more this is out in the light the less it's going to happen I always say I don't want to have a job yeah if this doesn't happen anymore I'm out of a job I'll find something else to do it'll be a great place thank you so much for your work and your time than all right work",
+      "segment_count": 238,
+      "duration_seconds": 506,
+      "entity_mentions": [
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 18600,
+          "timestamp_formatted": "00:00:18",
+          "segment_text": "Jeffrey Epstein first off thank you so"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 38440,
+          "timestamp_formatted": "00:00:38",
+          "segment_text": "Jeffrey Epstein's uh serial child"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 44520,
+          "timestamp_formatted": "00:00:44",
+          "segment_text": "Epstein didn't like the way in which I"
+        },
+        {
+          "entity_id": "ep-leon-black",
+          "entity_name": "Leon Black",
+          "entity_label": "Person",
+          "matched_text": "Black",
+          "timestamp_ms": 217599,
+          "timestamp_formatted": "00:03:37",
+          "segment_text": "the little black book the holy grail"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 236599,
+          "timestamp_formatted": "00:03:56",
+          "segment_text": "Epstein does he got more time and then I"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 249040,
+          "timestamp_formatted": "00:04:09",
+          "segment_text": "Epstein or he didn't take the fifth like"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 276039,
+          "timestamp_formatted": "00:04:36",
+          "segment_text": "Jeffrey Epstein himself for instance"
+        },
+        {
+          "entity_id": "ep-donald-trump",
+          "entity_name": "Donald Trump",
+          "entity_label": "Person",
+          "matched_text": "Trump",
+          "timestamp_ms": 310960,
+          "timestamp_formatted": "00:05:10",
+          "segment_text": "victims who have accused Trump of being"
+        },
+        {
+          "entity_id": "ep-donald-trump",
+          "entity_name": "Donald Trump",
+          "entity_label": "Person",
+          "matched_text": "Trump",
+          "timestamp_ms": 314560,
+          "timestamp_formatted": "00:05:14",
+          "segment_text": "experience Trump supporters will not"
+        },
+        {
+          "entity_id": "ep-donald-trump",
+          "entity_name": "Donald Trump",
+          "entity_label": "Person",
+          "matched_text": "Trump",
+          "timestamp_ms": 339039,
+          "timestamp_formatted": "00:05:39",
+          "segment_text": "Trump is that he is the only person who"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 382880,
+          "timestamp_formatted": "00:06:22",
+          "segment_text": "claims that Trump kicked Epstein out of"
+        },
+        {
+          "entity_id": "ep-donald-trump",
+          "entity_name": "Donald Trump",
+          "entity_label": "Person",
+          "matched_text": "Trump",
+          "timestamp_ms": 382880,
+          "timestamp_formatted": "00:06:22",
+          "segment_text": "claims that Trump kicked Epstein out of"
+        },
+        {
+          "entity_id": "ep-donald-trump",
+          "entity_name": "Donald Trump",
+          "entity_label": "Person",
+          "matched_text": "Trump",
+          "timestamp_ms": 387880,
+          "timestamp_formatted": "00:06:27",
+          "segment_text": "that it was Trump himself as opposed to"
+        },
+        {
+          "entity_id": "ep-donald-trump",
+          "entity_name": "Donald Trump",
+          "entity_label": "Person",
+          "matched_text": "Trump",
+          "timestamp_ms": 390120,
+          "timestamp_formatted": "00:06:30",
+          "segment_text": "a manager there Trump's Club so people"
+        },
+        {
+          "entity_id": "ep-donald-trump",
+          "entity_name": "Donald Trump",
+          "entity_label": "Person",
+          "matched_text": "Trump",
+          "timestamp_ms": 393319,
+          "timestamp_formatted": "00:06:33",
+          "segment_text": "credit him Trump I I've heard the rumor"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 420400,
+          "timestamp_formatted": "00:07:00",
+          "segment_text": "Epstein's house so you know the story of"
+        }
+      ],
+      "unique_entities": [
+        "Donald Trump",
+        "Jeffrey Epstein",
+        "Leon Black"
+      ],
+      "ingested_at": "2026-03-19T01:17:56.103Z"
+    },
+    {
+      "video_id": "5gCBepkLxO8",
+      "url": "https://www.youtube.com/watch?v=5gCBepkLxO8",
+      "title": "",
+      "source_type": "news",
+      "transcript_text": "When disgraced sex offender Jeffrey Epstein died in prison in 2019, many thought he'd take his secrets with him. Welcome to Miss Mojo. Today, we're unpacking the timeline of Jeffrey Epstein's rise, crimes, and downfall, culminating in the release of the so-called Epstein files. And now, with the files being unsealed in new DOJ memos hitting headlines, we're breaking down how decades of secrecy have shaped the fight for accountability. >> Monica, let's start with you. Some of Trump's top Justice Department officials now say they want federal prosecutors to speak to convicted Epstein co-conspirator Galed Maxwell. So what is behind this move? >> Would you raise your right hand, please? >> Yes. >> Do you sound soly swear that testimony about to give away the truth, the whole truth, and nothing but the truth to help you get? >> Yes, I do. >> Could you please give us your name? >> Jeffrey Epstein. Jeffrey Epstein was born January 20th, 1953 in Brooklyn and raised in Seiki, a gated community at the western tip of Coney Island. The boy, affectionately nicknamed Epi by his peers, excelled in math and piano, skipped grades, and attended the interlock and music program. He later took courses at Cooper Union and NYU's Karant Institute, but left before receiving a degree. Those facts matter. The credential gap contrasts sharply with the elite rooms he'd soon enter. His early narrative, talent, ambition, and restlessness, foreshadows the sinister leaps to come, where social access, not diplomas, would prove decisive. >> I was one who's very good at mathematics. It's what made you interested. >> It was solving puzzles. It's a strange feeling when you get the right answer to a puzzle. >> He never graduated from college. However, he was able because of his intelligence to find work at the Dalton School on the Upper East Side in Manhattan. In 1974, Epstein became a physics/math teacher at Manhattan's elite Dalton School despite lacking a completed college degree. Through Dalton, he met Alan Ace Greenberg of investment services firm Bayer Sterns, a connection that pride open Wall Street's door. >> So, he thought the best place for me to start would be an employee in the American Stock Exchange and then later moved up to the trading desk and learned all different areas of the firm according to the margin department. He was he was amazing. >> The Dalton period reads less like a teaching stint than a launchpad. from classroom to boardroom via proximity to privilege. >> Dalton is a private school on the Upper East Side that's historically been associated with the tippity top of the 1%. >> Jeffrey Epstein was my math teacher for the two years he was at Dalton. He had this thick Brooklyn accent. He was so personable and so charismatic and he found what I think was a brilliant way to meet rich people, which is through their children. This is the first clear pivot from raw aptitude to leveraged access. An early case study in how elite institutions can bestow social capital that shoots down the need for formal credentials. Here's a guy who was smart, charming, cunning. He knew how to read people and get what he needed from them. In 1980, Epstein even appears in Cosmo magazine as a bachelor of the month. And he's described as a financial strategist who talks only to people who make over a million a year. Epste joined Bear Sterns in the late 1970s and by 1980 was a limited partner. In 1988, he founded Jay Epstein in company, claiming to advise ultra-wealthy clients. The public record, however, shows striking concentration. His most consequential patron was Lesie Wexner, who granted Epstein's sweeping power of attorney in 1991, a relationship that helped explain the Jets, mansions, and outsized aura. >> I just want to say it's it one thing that's very clear when people say, you know, please share names. Um there are names that are very well known like that of Les Wexner who everyone knows supplied an enormous amount of um Epstein's you know financial wealth and allowed this operation to happen. So it's I think confusing to many of us why there have not been more ramifications for for him. >> Even allies later alleged vast sums went missing. Others questioned his fee structure and client list. To this day, the mechanics of his wealth, fees, leverage, and access remain unusually hard to follow for a man who so publicly flaunted his extravagant lifestyle. >> This boat captain, Guy Dom, fied Epstein to and from the island. >> There was a time I took Jeffrey Epstein's party of four out here to the island, and it's basically a woman about his age and a couple of girls that looked like they were 13, 14, maybe 15 years old, sisters. And I dropped them off. didn't think anything of it. >> Epste acquired Little St. James in the US Virgin Islands in 1998 for roughly $8 million. Over the next two decades, the island became central to survivor accounts and law enforcement narratives about abuse with later unsealed records and reports cementing its notoriety. >> And that's where he has his complex where he lives, which is his official residence as well. And that these young girls and women were subject to uh sexual assault, sexual exploitation. um through coercion, false imprisonment. >> A crash but painfully accurate nickname captured what prosecutors and witnesses described a secluded hub where isolation, staff control, and air travel logistics enabled exploitation allegedly by some of society's richest, most powerful elites. The island's subsequent sale with neighboring Great St. James underscored how real estate assets were enshed in legal claims and estate settlements long after Epstein's death. The island is now owned by a billionaire investor who bought it two years ago for $60 million. He reportedly plans to turn it into a luxury 25 room resort, which explains the presence of all those workers. A temple that Epstein built at the top of the island has been boarded up and painted over. >> In 2005, Palm Beach police began investigating tips about underage girls being brought to Epstein's mansion for massages. Detectives documented a pattern: recruitment, cash payments, coercion, and referrals of friends. The local state attorney's office moved toward a single solicitation charge, prompting outrage inside law enforcement. >> Will you agree that you exchange money for sexual gratification with at least 50 girls at your Palm Beach mansion? >> At the present time, my attorneys have counseledled me that cannot provide answers to any questions relevant to this lawsuit. >> Survivors persistence and investigative spade work exposed a network far larger than initial charging decisions suggested. This is the inflection point where private whispers became sworn statements and search warrants. And yet, the system's first real test of will yielded only partial traction, foreshadowing the controversial compromises to come. >> The girls that were involved in this, they really could not have been more separated and different from the world of Palm Beach. They're living in trailer park homes. Some of them had probably never even been to the island. The targets, the victims were as vulnerable as you could possibly be. A 2006 Palm Beach grand jury returned just two charges despite police recommending multiple felonies. Investigators then turned to the FBI, which built a broader interstate case suggesting dozens of underage victims and organized facilitation. Even as federal leverage grew, Epstein's legal team negotiated aggressively. The original case involved a very limited search warrant or set of search warrants and didn't take as much investigatory material. It should have seized. If I were the FBI director, then it wouldn't have happened. The search warrants were limited to small time periods to include 2002 to 2005 and 1997 to 2001. Years later, internal DOJ reviews and court rulings would spotlight serious governmental missteps in victim's rights issues tied to this phase. The takeaway is stark. By 2007, federal authorities had the outlines of a trafficking enterprise. if the outcome would not reflect the investigation's scope. >> Mr. Aass allowed Epstein to enter in 2008 to a plea and nonprosecution agreement which then the courts issued mandates and protective orders legally prohibiting anyone from ever seeing that material ever again without the permission of the court. The non-prosecution agreements also barred future prosecutions for those involved at that time of those individuals. In 2008, Epstein pleaded guilty in Florida state court to solicitation charges, including a minor, and served just short of 13 months with liberal work release privileges. Are you released from jail at some time? Do you have to report back to jail on a daily basis? >> Yes, I report back to jail at 8:00 p.m. >> Every single day? >> Yes, sir. >> And is it 7 days a week that you're out on work release? >> No, sir. >> How many days a week are you out on work release? >> Six. Secretly, a federal nonprosecution agreement or NPA immunized potential co-conspirators and was not disclosed to victims. A violation of federal judge later flagged under the Crime Victim's Rights Act. Though efforts to unwind the deal ultimately ran out of steam, the NPA became the emblem of institutional failure, elite defense power, prosecutorial deference, and a justice system that protected the well-connected while sidelining survivors. Its consequences reverberated into every subsequent proceeding. Little about the agreement had come to light until this month. A few weeks ago, the government opposed two of Epstein's victims, Jane Doe 1 and Jane Doe 2, alleged federal prosecutors entered into an agreement without their knowledge and then covered it up until just days before Epstein entered his plea in court. In July 2019, Epstein was arrested by the FBI and NYPD upon returning to New York from France. He was charged with trafficking and conspiracy, alleging conduct from 2002 to 2005 in the states of New York and Florida with a structured recruitment pipeline and payments to victims and recruiters. Bail was denied. His mansion on East 71st Street was raided early Sunday morning as agents hauled out multiple bags of evidence from disgraced financeier Jeffrey Epstein. We're told the 66-year-old registered sex offender had just landed at Teterboro Airport on Saturday, returning home from France when he was arrested. The case reframed prior failures. Federal prosecutors now spotlighted scale, intent, and interstate patterns that the 2008 resolution had obscured. For survivors, it was long deferred validation that their accounts described a system, not isolated incidents, and that the federal court would finally hear the evidence in full. There's been a severe miscarriage of justice, a delay in accountability, and we've all come together beautifully and tragically um which feels healing and devastating all at the same time to speak out and to be fueled by each other's voices in a way that I don't know that we've had the opportunity to in the past. >> Just over a month later, Epstein was found unresponsive in his MCC New York cell. The NYC medical examiner ruled that he died by his own hand. The DOJ inspector general later detailed cascading failures, staffing shortages, unperformed rounds, falsified logs, and a missing cellmate. All while a high-risisk detainee had recently been on heightened monitoring. Prosecutors say Tova Noel and Michael Thomas repeatedly failed to conduct mandated 30inut inmate checks on the disgraced millionaire who was awaiting trial on sex trafficking charges, allegedly browsing the internet, looking at furniture and motorcycles and even sleeping at their desks just 15 ft away from Epstein's cell instead of making rounds. The watchdog found no evidence of foul play, but nevertheless documented negligence and misconduct that shredded public trust. The outcome erased the prospect of a full federal trial record and shifted accountability onto co-conspirators and institutions. >> 6-year-old was supposed to face trial beginning in June 2020 for sex trafficking and abusing dozens of teenage girls. Authorities are promising that the potential for justice for those victims does not die with Epstein. Epstein's closest associate, Gileain Maxwell, was arrested in 2020, convicted in 2021, and in June of 2022 received 20 years in federal prison for sex trafficking related crimes. Prosecutors argued she recruited and groomed young girls normalized abuse and helped maintain Epstein's supply chain. The sentence, upheld on appeal, became a proxy for Epstein's trial that never was. Vivid testimony, corroborating records, and survivor impact statements that formalized the enterprise in the eyes of the court. It also heightened pressure to unseal more records tied to their operations. >> So, you do have the deputy attorney general saying that he was directed by the attorney general, Pam Bondi, to schedule this meeting. And we're getting confirmation from Gileain Maxwell's own attorney. And you see there that comment from Todd Blanch. He writes, \"No one is above the law and no lead is off limits.\" But again, it's really unclear what kind of a lead there could be here. After Maxwell's conviction, Judge Loretta Presca began unsealing tanches in Juy versus Maxwell with major releases in January 2024. Depositions, exhibits, and name references contextualized to the civil case, though not an official client list. The disclosures amplified survivor narratives and clarified who appeared where, and why, while redactions protected victims identities. >> More than 150 Jane and John Doe's witnesses and associates like Bill Clinton. He's not accused of wrongdoing, but in the court documents, an alleged victim was asked about the former president. Did Jeffrey ever talk to you about Bill Clinton? He said one time that Clinton likes them young, referring to girls. Parallel reporting collated thousands of pages, giving the public its first coherent view beyond rumor. Even so, significant materials, grand jury records, full digital evidence, and investigative work product remain sealed or outside the civil docket. Prince Andrew is also named in the unsealed documents. Epstein instructed Jane Doe number three that she was to give the prince whatever he demanded. >> This has been a better kept secret than you know than than nuclear launch codes. >> In July of 2025, the DOJ and FBI released a memo summarized in their comprehensive review. No credible evidence of a client list, no corroborated blackmail program, and no basis to revisit the official determination of Epstein's manner of death. The memo also warned that further broad releases would be constrained by privacy laws and ongoing matters. >> Uh the judge said that in this case he did not find compelling reason to make this information public and in fact he found compelling reasons against doing so. Principally uh potential uh injuries uh to to some of the victims in this case. >> Coverage emphasized that only a partial batch of records had been disclosed and that key categories remain sealed, sustaining bipartisan pressure for transparency in Congress and beyond. the controversy shifted from what exists to what the public is allowed to see. >> The judge also noted that again this was not an investigative grand jury. This was a one day of testimony from a single FBI agent summing up what they found in that investigation and presenting it to a grand jury for indictment. So, a lot of the questions people thought might be answered in this in these transcripts probably aren't answered. But in any event, uh we're not going to see them, at least for now, because this judge is blocking the Justice Department's attempts to get them released. Before we continue, be sure to subscribe to our channel and ring the bell to get notified about our latest videos. You have the option to be notified for occasional videos or all of them. If you're on your phone, make sure you go into your settings and switch on notifications. Since October 2025, the Epstein saga has entered a new and uncomfortable chapter. The posterous release of Virginia Du Freay's memoir, Nobody's Girl, reignited global attention by restating and expanding her long-standing allegations against Jeffrey Epstein and Prince Andrew. While there are no new claims in the book, it makes for a harrowing read, which paints a picture of a web of rich and powerful people abusing young women. Prince Andrew has consistently denied any wrongdoing and says he doesn't recall meeting Virginia Jafrey. But yesterday, the Metropolitan Police confirmed it was actively looking into reports that Prince Andrew tried to obtain personal information about her through his personal protection team. Juy, who died in April 2025, had previously settled her civil lawsuit with Andrew in 2022, with the prince denying all wrongdoing. But the memoir's publication triggered immediate fallout. Andrew announced he would stop using the title Duke of York and relinquish remaining honors. And Buckingham Palace confirmed that King Charles had begun a formal process to remove his styles and titles entirely. The result is renewed scrutiny of Andrew's public standing, a stark reminder that Epstein's shadow continues to reach far. >> Uh now, this is strikes me as extremely serious and draws the palace perilously close to to what was going on those years ago. What did they know about Andrew and his activities? and why didn't they do something about it? Those are the questions which are now being asked. >> The Epstein saga didn't end with his death or with Gileain Maxwell's sentencing. Each new document released from depositions to DOJ memos adds more fuel to the debate over who knew what and how much justice remains hidden behind redactions. The Epstein files are more than records. They're a reminder of how institutions bend, break, or look away when the powerful are involved. >> You've seen most of the files. Uh, who, if anyone did Epstein traffic these young women to besides himself? >> Himself. There is no credible information, none. If there were, I would bring the case yesterday that he traffked to other individuals and the information we have again is limited. >> So, the answer is no one. >> Which part of Jeffrey Epstein's story shocked you the most? Is there anything we missed? Be sure to let us know in the comments below.",
+      "segment_count": 505,
+      "duration_seconds": 1035,
+      "entity_mentions": [
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 2080,
+          "timestamp_formatted": "00:00:02",
+          "segment_text": "Epstein died in prison in 2019, many"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 10960,
+          "timestamp_formatted": "00:00:10",
+          "segment_text": "Epstein's rise, crimes, and downfall,"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 14639,
+          "timestamp_formatted": "00:00:14",
+          "segment_text": "so-called Epstein files. And now, with"
+        },
+        {
+          "entity_id": "ep-donald-trump",
+          "entity_name": "Donald Trump",
+          "entity_label": "Person",
+          "matched_text": "Trump",
+          "timestamp_ms": 25920,
+          "timestamp_formatted": "00:00:25",
+          "segment_text": "Trump's top Justice Department officials"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 30400,
+          "timestamp_formatted": "00:00:30",
+          "segment_text": "speak to convicted Epstein"
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 31679,
+          "timestamp_formatted": "00:00:31",
+          "segment_text": "co-conspirator Galed Maxwell. So what is"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 48399,
+          "timestamp_formatted": "00:00:48",
+          "segment_text": ">> Jeffrey Epstein. Jeffrey Epstein was"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 102640,
+          "timestamp_formatted": "00:01:42",
+          "segment_text": "Manhattan. In 1974, Epstein became a"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 142319,
+          "timestamp_formatted": "00:02:22",
+          "segment_text": ">> Jeffrey Epstein was my math teacher for"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 174000,
+          "timestamp_formatted": "00:02:54",
+          "segment_text": "In 1980, Epstein even appears in Cosmo"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 191519,
+          "timestamp_formatted": "00:03:11",
+          "segment_text": "Epstein in company, claiming to advise"
+        },
+        {
+          "entity_id": "ep-leslie-wexner",
+          "entity_name": "Leslie Wexner",
+          "entity_label": "Person",
+          "matched_text": "Wexner",
+          "timestamp_ms": 198879,
+          "timestamp_formatted": "00:03:18",
+          "segment_text": "patron was Lesie Wexner, who granted"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 200879,
+          "timestamp_formatted": "00:03:20",
+          "segment_text": "Epstein's sweeping power of attorney in"
+        },
+        {
+          "entity_id": "ep-leslie-wexner",
+          "entity_name": "Leslie Wexner",
+          "entity_label": "Person",
+          "matched_text": "Wexner",
+          "timestamp_ms": 214799,
+          "timestamp_formatted": "00:03:34",
+          "segment_text": "of Les Wexner who everyone knows"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 219040,
+          "timestamp_formatted": "00:03:39",
+          "segment_text": "Epstein's you know financial wealth and"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 242560,
+          "timestamp_formatted": "00:04:02",
+          "segment_text": ">> This boat captain, Guy Dom, fied Epstein"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 248720,
+          "timestamp_formatted": "00:04:08",
+          "segment_text": "Epstein's party of four out here to the"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 313680,
+          "timestamp_formatted": "00:05:13",
+          "segment_text": "settlements long after Epstein's death."
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 327440,
+          "timestamp_formatted": "00:05:27",
+          "segment_text": "workers. A temple that Epstein built at"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 337759,
+          "timestamp_formatted": "00:05:37",
+          "segment_text": "being brought to Epstein's mansion for"
+        },
+        {
+          "entity_id": "ep-palm-beach-mansion",
+          "entity_name": "Palm Beach Mansion",
+          "entity_label": "Location",
+          "matched_text": "Palm Beach Mansion",
+          "timestamp_ms": 355840,
+          "timestamp_formatted": "00:05:55",
+          "segment_text": "50 girls at your Palm Beach mansion?"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 416000,
+          "timestamp_formatted": "00:06:56",
+          "segment_text": "grew, Epstein's legal team negotiated"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 450880,
+          "timestamp_formatted": "00:07:30",
+          "segment_text": ">> Mr. Aass allowed Epstein to enter in"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 472880,
+          "timestamp_formatted": "00:07:52",
+          "segment_text": "2008, Epstein pleaded guilty in Florida"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 532240,
+          "timestamp_formatted": "00:08:52",
+          "segment_text": "opposed two of Epstein's victims, Jane"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 541600,
+          "timestamp_formatted": "00:09:01",
+          "segment_text": "it up until just days before Epstein"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 546880,
+          "timestamp_formatted": "00:09:06",
+          "segment_text": "Epstein was arrested by the FBI and NYPD"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 570480,
+          "timestamp_formatted": "00:09:30",
+          "segment_text": "financeier Jeffrey Epstein. We're told"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 623600,
+          "timestamp_formatted": "00:10:23",
+          "segment_text": ">> Just over a month later, Epstein was"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 662560,
+          "timestamp_formatted": "00:11:02",
+          "segment_text": "from Epstein's cell instead of making"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 689200,
+          "timestamp_formatted": "00:11:29",
+          "segment_text": "victims does not die with Epstein."
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 691279,
+          "timestamp_formatted": "00:11:31",
+          "segment_text": "Epstein's closest associate, Gileain"
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 693600,
+          "timestamp_formatted": "00:11:33",
+          "segment_text": "Maxwell, was arrested in 2020, convicted"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 706880,
+          "timestamp_formatted": "00:11:46",
+          "segment_text": "maintain Epstein's supply chain. The"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 710560,
+          "timestamp_formatted": "00:11:50",
+          "segment_text": "proxy for Epstein's trial that never"
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 730560,
+          "timestamp_formatted": "00:12:10",
+          "segment_text": "confirmation from Gileain Maxwell's own"
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 744880,
+          "timestamp_formatted": "00:12:24",
+          "segment_text": "After Maxwell's conviction, Judge"
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 748959,
+          "timestamp_formatted": "00:12:28",
+          "segment_text": "in Juy versus Maxwell with major"
+        },
+        {
+          "entity_id": "ep-bill-clinton",
+          "entity_name": "Bill Clinton",
+          "entity_label": "Person",
+          "matched_text": "Clinton",
+          "timestamp_ms": 771200,
+          "timestamp_formatted": "00:12:51",
+          "segment_text": "Clinton. He's not accused of wrongdoing,"
+        },
+        {
+          "entity_id": "ep-bill-clinton",
+          "entity_name": "Bill Clinton",
+          "entity_label": "Person",
+          "matched_text": "Bill Clinton",
+          "timestamp_ms": 780480,
+          "timestamp_formatted": "00:13:00",
+          "segment_text": "about Bill Clinton? He said one time"
+        },
+        {
+          "entity_id": "ep-bill-clinton",
+          "entity_name": "Bill Clinton",
+          "entity_label": "Person",
+          "matched_text": "Clinton",
+          "timestamp_ms": 782800,
+          "timestamp_formatted": "00:13:02",
+          "segment_text": "that Clinton likes them young, referring"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 800240,
+          "timestamp_formatted": "00:13:20",
+          "segment_text": "Andrew is also named in the unsealed"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 802480,
+          "timestamp_formatted": "00:13:22",
+          "segment_text": "documents. Epstein instructed Jane Doe"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 825200,
+          "timestamp_formatted": "00:13:45",
+          "segment_text": "determination of Epstein's manner of"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 899199,
+          "timestamp_formatted": "00:14:59",
+          "segment_text": "Since October 2025, the Epstein saga has"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 912160,
+          "timestamp_formatted": "00:15:12",
+          "segment_text": "against Jeffrey Epstein and Prince"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 913839,
+          "timestamp_formatted": "00:15:13",
+          "segment_text": "Andrew. While there are no new claims in"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Prince Andrew",
+          "timestamp_ms": 923600,
+          "timestamp_formatted": "00:15:23",
+          "segment_text": "Prince Andrew has consistently denied"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Prince Andrew",
+          "timestamp_ms": 933600,
+          "timestamp_formatted": "00:15:33",
+          "segment_text": "reports that Prince Andrew tried to"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 943920,
+          "timestamp_formatted": "00:15:43",
+          "segment_text": "with Andrew in 2022, with the prince"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 950320,
+          "timestamp_formatted": "00:15:50",
+          "segment_text": "Andrew announced he would stop using the"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 962000,
+          "timestamp_formatted": "00:16:02",
+          "segment_text": "scrutiny of Andrew's public standing, a"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 963920,
+          "timestamp_formatted": "00:16:03",
+          "segment_text": "stark reminder that Epstein's shadow"
+        },
+        {
+          "entity_id": "ep-prince-andrew",
+          "entity_name": "Prince Andrew",
+          "entity_label": "Person",
+          "matched_text": "Andrew",
+          "timestamp_ms": 976959,
+          "timestamp_formatted": "00:16:16",
+          "segment_text": "Andrew and his activities? and why"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 983199,
+          "timestamp_formatted": "00:16:23",
+          "segment_text": ">> The Epstein saga didn't end with his"
+        },
+        {
+          "entity_id": "ep-ghislaine-maxwell",
+          "entity_name": "Ghislaine Maxwell",
+          "entity_label": "Person",
+          "matched_text": "Maxwell",
+          "timestamp_ms": 984880,
+          "timestamp_formatted": "00:16:24",
+          "segment_text": "death or with Gileain Maxwell's"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 994639,
+          "timestamp_formatted": "00:16:34",
+          "segment_text": "behind redactions. The Epstein files are"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Epstein",
+          "timestamp_ms": 1006959,
+          "timestamp_formatted": "00:16:46",
+          "segment_text": "Uh, who, if anyone did Epstein traffic"
+        },
+        {
+          "entity_id": "ep-jeffrey-epstein",
+          "entity_name": "Jeffrey Epstein",
+          "entity_label": "Person",
+          "matched_text": "Jeffrey Epstein",
+          "timestamp_ms": 1026559,
+          "timestamp_formatted": "00:17:06",
+          "segment_text": ">> Which part of Jeffrey Epstein's story"
+        }
+      ],
+      "unique_entities": [
+        "Bill Clinton",
+        "Donald Trump",
+        "Ghislaine Maxwell",
+        "Jeffrey Epstein",
+        "Leslie Wexner",
+        "Palm Beach Mansion",
+        "Prince Andrew"
+      ],
+      "ingested_at": "2026-03-19T01:17:59.539Z"
+    }
+  ]
+}
