@@ -364,20 +364,18 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     return link.type
   }, [])
 
-  // Right-click / long-press context menu
-  useEffect(() => {
-    if (!onNodeRightClick) return
-    const container = containerRef.current
-    if (!container) return
-    const canvas = container.querySelector('canvas')
-    if (!canvas) return
-
-    let longPressTimer: ReturnType<typeof setTimeout> | null = null
-
-    const handleContextMenu = (e: MouseEvent) => {
+  // Right-click context menu — uses React onContextMenu for reliable preventDefault
+  const handleContextMenu = useCallback(
+    (e: React.MouseEvent) => {
+      if (!onNodeRightClick) return
       e.preventDefault()
       const fg = graphRef.current
       if (!fg) return
+      const container = containerRef.current
+      if (!container) return
+      const canvas = container.querySelector('canvas')
+      if (!canvas) return
+
       const rect = canvas.getBoundingClientRect()
       const graphCoords = (fg as unknown as { screen2GraphCoords(x: number, y: number): { x: number; y: number } })
         .screen2GraphCoords(e.clientX - rect.left, e.clientY - rect.top)
@@ -394,37 +392,47 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         }
       }
       if (closest) onNodeRightClick(closest.id, e.clientX, e.clientY)
-    }
+    },
+    [onNodeRightClick],
+  )
 
-    const handleTouchStart = (e: TouchEvent) => {
+  // Long-press for mobile context menu
+  const longPressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const handleTouchStart = useCallback(
+    (e: React.TouchEvent) => {
+      if (!onNodeRightClick) return
       const touch = e.touches[0]
       if (!touch) return
-      longPressTimer = setTimeout(() => {
-        handleContextMenu(new MouseEvent('contextmenu', { clientX: touch.clientX, clientY: touch.clientY }))
+      longPressTimerRef.current = setTimeout(() => {
+        handleContextMenu({
+          preventDefault: () => {},
+          clientX: touch.clientX,
+          clientY: touch.clientY,
+        } as unknown as React.MouseEvent)
       }, 500)
+    },
+    [onNodeRightClick, handleContextMenu],
+  )
+  const handleTouchEnd = useCallback(() => {
+    if (longPressTimerRef.current) {
+      clearTimeout(longPressTimerRef.current)
+      longPressTimerRef.current = null
     }
-    const handleTouchEnd = () => { if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null } }
-
-    canvas.addEventListener('contextmenu', handleContextMenu)
-    canvas.addEventListener('touchstart', handleTouchStart, { passive: true })
-    canvas.addEventListener('touchend', handleTouchEnd)
-    canvas.addEventListener('touchmove', handleTouchEnd)
-
-    return () => {
-      canvas.removeEventListener('contextmenu', handleContextMenu)
-      canvas.removeEventListener('touchstart', handleTouchStart)
-      canvas.removeEventListener('touchend', handleTouchEnd)
-      canvas.removeEventListener('touchmove', handleTouchEnd)
-      if (longPressTimer) clearTimeout(longPressTimer)
-    }
-  }, [onNodeRightClick, ForceGraph2D])
+  }, [])
 
   if (!ForceGraph2D) {
     return <div ref={containerRef} className="flex h-full w-full items-center justify-center text-zinc-600">Cargando grafo...</div>
   }
 
   return (
-    <div ref={containerRef} className="h-full w-full">
+    <div
+      ref={containerRef}
+      className="h-full w-full"
+      onContextMenu={handleContextMenu}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchMove={handleTouchEnd}
+    >
       <ForceGraph2D
         ref={graphRef}
         graphData={fgData}
