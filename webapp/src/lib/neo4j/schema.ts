@@ -213,6 +213,16 @@ const BTREE_INDEXES = [
     label: 'Event',
     property: 'confidence_tier',
   },
+  {
+    name: 'location_confidence_tier_index',
+    label: 'Location',
+    property: 'confidence_tier',
+  },
+  {
+    name: 'legalcase_confidence_tier_index',
+    label: 'LegalCase',
+    property: 'confidence_tier',
+  },
 ] as const
 
 /**
