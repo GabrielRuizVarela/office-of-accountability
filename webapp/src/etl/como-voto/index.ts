@@ -11,6 +11,9 @@ export {
   LegislatorDetailSchema,
   VotingSessionSchema,
   VotingSessionsFileSchema,
+  LawNamesFileSchema,
+  ElectionEntrySchema,
+  ElectionLegislatorsFileSchema,
 } from './types'
 
 export type {
@@ -33,6 +36,17 @@ export type {
   CastVoteRelParams,
   MemberOfRelParams,
   RepresentsRelParams,
+  ElectionEntry,
+  ElectionLegislatorsFile,
+  TermNodeParams,
+  LegislationParams,
+  ElectionParams,
+  ServedTermRelParams,
+  TermPartyRelParams,
+  TermProvinceRelParams,
+  VoteOnRelParams,
+  RanInRelParams,
+  LawNamePatchParams,
 } from './types'
 
 export {
@@ -40,6 +54,8 @@ export {
   fetchVotingSessions,
   fetchLegislatorDetail,
   fetchLegislatorDetails,
+  fetchLawNames,
+  fetchElectionLegislators,
 } from './fetcher'
 
 export type {
@@ -47,6 +63,8 @@ export type {
   FetchVotingSessionsResult,
   FetchLegislatorDetailsResult,
   FetchError,
+  FetchLawNamesResult,
+  FetchElectionLegislatorsResult,
 } from './fetcher'
 
 export {
@@ -61,6 +79,10 @@ export {
   transformMemberOf,
   transformRepresents,
   transformAll,
+  normalizeName,
+  transformTerms,
+  transformLegislation,
+  transformElections,
 } from './transformer'
 
 export type { TransformResult, TransformInput } from './transformer'
