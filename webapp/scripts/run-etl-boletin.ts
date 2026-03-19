@@ -11,6 +11,10 @@
  */
 
 import 'dotenv/config'
+
+// ETL batches need more time than the default 5s query timeout
+process.env.NEO4J_QUERY_TIMEOUT_MS = process.env.NEO4J_QUERY_TIMEOUT_MS || '60000'
+
 import { closeDriver, verifyConnectivity, readQuery } from '../src/lib/neo4j/client'
 import { fetchBoletinData } from '../src/etl/boletin-oficial'
 import { transformBoletinAll } from '../src/etl/boletin-oficial'
