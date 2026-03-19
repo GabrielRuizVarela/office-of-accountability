@@ -528,42 +528,246 @@ Ratings: VERIFIED / PARTIALLY VERIFIED / UNVERIFIED / INACCURATE / MISLEADING
 
 ---
 
-# === FINAL SUMMARY: FACT-CHECK COMPLETE ===
+## Iteration 23 — The Media Blackout (2008-2018)
 
-## Totals Across All 52 Iterations (~150 claims checked)
+| # | Claim | Rating | Notes |
+|---|-------|--------|-------|
+| 1 | Near-total media silence on Epstein for a decade (2008-2018) | PARTIALLY VERIFIED | Significant underreporting but not total silence. Scattered articles (Daily Beast 2010, 2011). ABC News had Virginia Roberts Giuffre story ready in 2015 and killed it. Major outlets largely avoided sustained investigation. |
+| 2 | Miami Herald bypassed traditional gatekeepers | **VERIFIED** | Julie K. Brown's "Perversion of Justice" (Nov 2018) widely credited with re-opening the case. |
+| 3 | Herald focused on victims rather than celebrity names | **VERIFIED** | Brown's methodology documented in her book — tracked down and interviewed victims directly. |
+| 4 | Herald was regional paper, not national media | **VERIFIED** | Miami Herald is regional. Brown was local investigative reporter. |
+| 5 | Journalists who threatened exposure faced consequences | PARTIALLY VERIFIED | ABC's Amy Robach described being pressured; Dershowitz confirmed he pressured ABC to kill the story. Widespread retaliation beyond ABC incident not well-documented. |
+| 6 | Court records were sealed, making casual journalism impossible | **VERIFIED** | Many Epstein documents sealed for years. Major Giuffre v. Maxwell unsealing didn't begin until Jan 2024. |
+| 7 | Media organizations relying on advertising revenue avoided digging | **UNVERIFIED** | Plausible structural argument but no specific evidence. ABC spike related to legal threats and palace/Dershowitz pressure, not advertising. |
+
+**Sources:** Wikipedia (Julie K. Brown), Newsweek, FAIR, ABC News, NPR
+
+---
+
+## Skipped Meta/Design Iterations — No Factual Claims to Verify
+
+The following iterations are analytical frameworks, design proposals, or methodological reflections without specific verifiable factual claims:
+
+- **Iteration 21** — Meta: What Would a Complete Knowledge Graph Look Like? (design)
+- **Iteration 24** — Meta: Structural Comparison to Other Trafficking Networks (analytical)
+- **Iteration 30** — Meta: Graph-Based Early Warning System Design (design)
+- **Iteration 33** — Meta: The 10 Definitive Unanswered Questions (analytical)
+- **Iteration 36** — Meta: Single Most Impactful Feature Recommendation (design)
+- **Iteration 39** — Meta: Final Reflection on Methodology (meta)
+- **Iteration 45** — Closing: Letter to Future Investigators (meta)
+- **Iteration 47** — Technical: Flight Log Ingestion Pipeline Design (technical)
+- **Iteration 48** — Vision: The Civic Intelligence Platform (design)
+- **Iteration 49** — Detection: Signals of Currently Operating Networks (analytical)
+- **Iteration 50** — Meta: Quantifying 50 Iterations (self-referential)
+
+---
+
+## Iteration 38 — 2026 Prosecution Roadmap
+
+| # | Claim | Rating | Notes |
+|---|-------|--------|-------|
+| 1 | Most pre-2006 abuse charges barred by SOL | PARTIALLY VERIFIED | General federal SOL for sex trafficking was 10 years. 2022 Eliminating Limits to Justice Act removed civil SOL but does not revive already-barred claims. Criminal SOL remains a barrier for older offenses. |
+| 2 | TVPA can be used if prosecutors prove continuous trafficking | PARTIALLY VERIFIED | TVPA is real tool; "continuing enterprise" can extend liability. But scratchpad's "no-SOL provision" is oversimplified — 2022 Act eliminated civil SOL; criminal analysis more nuanced. |
+| 3 | RICO harder with Epstein dead | **VERIFIED** | RICO requires proving enterprise existed as continuing unit. Epstein's death makes proving organizational continuity significantly harder. |
+| 4 | 2024 documents revealed no "smoking gun" for political figures | **VERIFIED** | Jan 2024 unsealing (~950 pages) revealed names but, as TIME noted, "say little about the actions taken by individuals outside of Epstein." |
+| 5 | Prince Andrew civil case settled | **VERIFIED** | Feb 2022, no admission of liability. |
+| 6 | Bill Clinton evidence limited to flight logs | PARTIALLY VERIFIED | Flight logs show 16-26 trips (2002-2003). But additional evidence exists: correspondence between Clinton's team and Maxwell, White House visitor logs, campaign donations. Giuffre explicitly stated Clinton not involved in sexual misconduct. "Flight logs only" understates documentary record, though none is evidence of criminal conduct. |
+| 7 | Leon Black $158M documented payments (2012-2017) | **VERIFIED** | Confirmed by Dechert review, Senate Finance Committee, CNN, CNBC. Senate later found total may be $170M. |
+| 8 | Jes Staley: 1,200 emails with Epstein, FCA ban | **VERIFIED** | ~1,200 emails (2008-2012). FCA fined and permanently banned him (upheld June 2025). JPMorgan brought him as third-party defendant. |
+| 9 | Kellen immune due to NPA, "cooperator" | PARTIALLY VERIFIED | Named in NPA with immunity — correct. But calling her "cooperator" is misleading — immunity was blanket grant in Epstein's deal, not a personal cooperation agreement. No evidence she provided testimony. |
+| 10 | Wexner POA described as "pre-2001" | **INACCURATE** | POA granted July 1991, revoked September 2007. "Pre-2001" mischaracterizes the 16-year period. Same error as iterations 22 and 58. |
+| 11 | Most prosecutable targets in 2026 are Staley and Black | PARTIALLY VERIFIED | Reasonable legal analysis. Staley faces active regulatory action; Black faces Senate investigation. Both have recent, documentable financial exposure. Whether either faces criminal prosecution remains speculative. |
+
+**Sources:** CNN, CNBC, Senate Finance Committee, TIME, NPR, Wikipedia (Jes Staley), Banking Dive, Rolling Stone
+
+---
+
+## Iteration 42 — Comparison to ICIJ Panama Papers Methodology
+
+| # | Claim | Rating | Notes |
+|---|-------|--------|-------|
+| 1 | Panama Papers involved 11.5M leaked documents | **VERIFIED** | 11.5M documents totaling 2.6TB from Mossack Fonseca. |
+| 2 | ICIJ coordinated 400 journalists in 80 countries | **VERIFIED** | ~400 journalists from 100+ media outlets in ~80 countries, 25 languages. |
+| 3 | Panama Papers graph: 785K entities, 2.5M relationships | PARTIALLY VERIFIED | 785K matches the broader ICIJ Offshore Leaks Database total (including Paradise Papers), NOT Panama Papers alone (~214K entities). Current database exceeds 810K. The "2.5M relationships" figure is **unverified**. |
+| 4 | ICIJ's AI layer was "limited (NLP for document parsing)" | PARTIALLY VERIFIED | ICIJ used technology for processing 2.6TB including some NLP. Characterizing as "limited" is debatable — state-of-the-art for 2016 but limited vs. modern LLMs. |
+| 5 | Impact: tax reforms, PM resignations, criminal charges | **VERIFIED** | Iceland PM resigned April 5, 2016. Pakistan PM removed. $1.36B+ recovered in taxes. Criminal investigations in multiple jurisdictions. |
+| 6 | ICIJ needed $4.5M+ budget | **UNVERIFIED** | ICIJ's total organizational revenue ~$5.9-6.4M/year (2021-22). No specific Panama Papers budget publicly disclosed. |
+| 7 | Panama Papers sourced from leaked docs vs. Epstein from public records | **VERIFIED** | Correct distinction. Panama Papers leaked from Mossack Fonseca. Epstein investigation relies on court records, flight logs, news. |
+| 8 | Many Epstein records still sealed | **VERIFIED** | Despite 2024 and 2026 DOJ releases, many records remain sealed. |
+
+**Sources:** ICIJ, Wikipedia (Panama Papers), Neo4j blog, Congress.gov
+
+---
+
+## Iteration 53 — FBI Raid — What Happened to the CDs?
+
+| # | Claim | Rating | Notes |
+|---|-------|--------|-------|
+| 1 | July 6, 2019: Epstein arrested at Teterboro | **VERIFIED** | FBI-NYPD task force arrested him upon landing from Paris. |
+| 2 | July 8, 2019: FBI raids townhouse, seizes safe with CDs | PARTIALLY VERIFIED — **date wrong** | Raid occurred July 6-7, 2019 (not July 8). Agent Kelly Maguire led search starting ~5:30pm July 6. Safe sawed open on fifth floor — contained CDs, hard drives, diamonds, cash, passports. Initial warrant didn't cover CDs; retrieved later via broader warrant. |
+| 3 | CDs were labeled with associate names | PARTIALLY VERIFIED | CDs were labeled, but primarily with content descriptions ("Misc nudes 1," "Girl pics nude") and some individual names. Not a systematic catalog of associates. |
+| 4 | Evidence was "not introduced" into Maxwell trial | **INACCURATE** | Photographs of CDs WERE entered into evidence during Maxwell trial. FBI agents testified about CDs and contents during Week 2 testimony. |
+| 5 | 2024 unsealing relates to depositions, NOT physical evidence | **VERIFIED** | Jan 2024 unsealing: ~4,553 pages from Giuffre v. Maxwell — deposition transcripts, discovery exhibits, legal memoranda. Not physical evidence. |
+| 6 | Physical evidence still in FBI custody as of 2026 | PARTIALLY VERIFIED | DOJ confirmed possession of 40 computers, 70 CDs, 26 storage drives, 6 recording devices (~300GB). DOJ released 3.5M pages of documents, but digital/physical media disposition not fully public. |
+| 7 | Safe was "never fully decrypted" | **UNVERIFIED** | No public source confirms or denies encryption status of digital media. Safe itself was physically opened with a saw. |
+
+**Sources:** Yahoo News, Law & Crime, Fox News, CNN, NPR, DOJ, Wikipedia (Epstein files)
+
+---
+
+## Iteration 54 — Why No Internal Whistleblower for 20 Years?
+
+| # | Claim | Rating | Notes |
+|---|-------|--------|-------|
+| 1 | Sherron Watkins was the Enron whistleblower | **VERIFIED** | VP of corporate development, wrote Aug 2001 memo to CEO Lay. Time Person of the Year 2002. |
+| 2 | Tyler Shultz was the Theranos whistleblower | **VERIFIED** | Key whistleblower (alongside Erika Cheung). First to report to regulators. Crucial source for Carreyrou's WSJ expose. |
+| 3 | Mark Felt was Watergate's Deep Throat | **VERIFIED** | FBI Deputy Director, revealed May 2005 via Vanity Fair. |
+| 4 | No insider voluntarily came forward for 20+ years | **INACCURATE** | Maria Farmer filed FBI complaint in September 1996 reporting Epstein and Maxwell. She was a victim/insider (worked for Epstein as artist). True that no member of Epstein's financial/social inner circle (non-victim) voluntarily blew the whistle. |
+| 5 | Julie K. Brown broke the story via Miami Herald in 2018 | **VERIFIED** | "Perversion of Justice" Nov 2018. George Polk Award. Led to 2019 arrest, Acosta resignation. |
+| 6 | Time to exposure: Enron ~1 year, Theranos ~3 years, Watergate ~2 years | **MISLEADING** | Watergate ~2 years: correct. Theranos: fraud began ~2003, exposed 2015 = ~12 years (not 3). Enron: fraud through 1990s, exposed 2001 = ~5-10 years (not 1). Only accurate if measuring from specific internal whistleblower events, not fraud duration. |
+
+**Sources:** Wikipedia (Watkins, Shultz, Felt, Maria Farmer), CNN, NPR
+
+---
+
+## Iteration 55 — Network Analysis: What Happens When Central Nodes Are Removed?
+
+| # | Claim | Rating | Notes |
+|---|-------|--------|-------|
+| 1 | Epstein dead (2019), Maxwell imprisoned, Brunel dead in custody | **VERIFIED** | Epstein Aug 10, 2019 MCC NYC. Maxwell convicted Dec 2021, sentenced 20 years, at FPC Bryan TX. Brunel found hanged La Sante Prison Feb 19, 2022. |
+| 2 | Shell companies/trusts don't dissolve when creator dies | **VERIFIED** | Epstein created "The 1953 Trust" two days before death. Shell companies (Plan D LLC, Maple Inc., Great St. Jim LLC, Liquid Funding Ltd.) continued under co-executors Indyke and Kahn. |
+| 3 | Associates engaged in "taint severing" — restructuring assets | PARTIALLY VERIFIED | Estate shrank from ~$600M to ~$150M through settlements and restructuring. Courts challenged some transfers as sham transactions. Term "taint severing" not used in sources but behavior documented. |
+| 4 | Peripheral network now harder to trace than pre-arrest | **UNVERIFIED** | Analytical assertion. No public source directly compares traceability before and after arrest. Plausible but not documented. |
+
+**Sources:** Wikipedia (Estate of Jeffrey Epstein), Wealth Management, Dallas Elder Lawyer, DOJ
+
+---
+
+## Iteration 56 — Evidence Preservation
+
+| # | Claim | Rating | Notes |
+|---|-------|--------|-------|
+| 1 | Shell company filings have <6 months half-life | **UNVERIFIED** | No evidence supports this concept. Corporate record retention after dissolution governed by state/federal rules, typically 3-7 years. "Half-life" framing appears fabricated. |
+| 2 | PACER case number: SDNY 1:15-ma-00984 | **INACCURATE** | Case number does not exist. Actual Epstein cases: **1:19-cr-00490** (2019 criminal) and **1:15-cv-07433** (Giuffre v. Maxwell civil). This is an AI hallucination. |
+| 3 | Court transcripts preserved indefinitely in PACER | PARTIALLY VERIFIED | Federal criminal files "almost always preserved." But PACER doesn't guarantee indefinite retention for all records. Older docs (pre-2003) may be at NARA. |
+| 4 | FAA aircraft registration records publicly accessible | **VERIFIED** | FAA N-Number registry at registry.faa.gov provides free public lookup. Some owners can request withholding of personal info. |
+| 5 | IRS Form 990 filings publicly available for foundations | **VERIFIED** | Per IRS rules. Accessible via ProPublica Nonprofit Explorer, GuideStar. Private foundations (990-PF) must additionally disclose contributor info. |
+
+**Sources:** eCFR, FAA, IRS, ProPublica, PACER
+
+---
+
+## Iteration 57 — Citizen Investigator Guide
+
+| # | Claim | Rating | Notes |
+|---|-------|--------|-------|
+| 1 | PACER case number 1:15-ma-00984 | **INACCURATE** | Same fabricated case number as iteration 56. Real: **1:19-cr-00490** and **1:15-cv-07433**. |
+| 2 | AI generates hypotheses "80% of which need verification" | PARTIALLY VERIFIED | Based on this fact-check, ~42% fully verified, ~32% partially verified, ~16% inaccurate — roughly consistent with the self-assessment as a ballpark. |
+| 3 | Documentation methodology recommendations | N/A (methodology) | Best practices, not factual claims. Cannot be fact-checked. |
+
+---
+
+## Iteration 58 — Financial Mystery: Where Did the Money Come From?
+
+| # | Claim | Rating | Notes |
+|---|-------|--------|-------|
+| 1 | J. Epstein & Co existed, held licenses in US and UK | PARTIALLY VERIFIED | Firm existed — confirmed via OpenSecrets. Epstein left Bear Stearns 1981 to found it, renamed to Financial Trust Company 1996 (USVI). **No evidence of UK financial licenses.** UK Companies House shows "Jeffrey Epstein" directorship Mar-Nov 2002 but unclear if same person and not a financial services license. |
+| 2 | Wexner was the ONLY confirmed client | **INACCURATE** | Historically reported as only *publicly known* client. But Epstein's accountant Richard Kahn testified to Congress (March 2026) naming five clients: **Les Wexner, Glenn Dubin, Steven Sinofsky, the Rothschilds, and Leon Black**. |
+| 3 | POA dates: 1990-2001 | **INACCURATE** | Granted **July 1991**, revoked **September 2007**. Same error as iterations 22 and 38. Off by 6 years on end date. |
+| 4 | Epstein's estimated wealth: $500-600M | **VERIFIED** | Estate papers: $559-578M. Prosecutors: "at least $500M." |
+| 5 | $34M townhouse transfer from Wexner | **INACCURATE** | Actual price: **~$20M** (1998). $34M appears in no source. Same error as iteration 5. Property later sold for ~$51M (2021). |
+| 6 | $158M from Leon Black post-conviction | **VERIFIED** | Confirmed: 2012-2017, all post-2008. Senate investigators later said $170M. |
+| 7 | Leon Black paid for "advisory" services | **VERIFIED** | Tax strategy, estate planning, philanthropy advice. Saved Black ~$600M in estate taxes. Payments "inexplicably large." |
+| 8 | "No verified client list" | **MISLEADING** | No formal public "client list" existed for years, but clients identified through congressional testimony (Kahn, March 2026), court proceedings, and journalism. Five clients now confirmed under oath. |
+| 9 | Little St. James $22M | **INACCURATE** | Actual: **$7.95M** via L.S.J. LLC (April 1998). Same error as iteration 5. Islands later listed at $125M, sold for $60M (2023). |
+
+**Sources:** OpenSecrets, UK Companies House, Senate Finance Committee, CNN, CNBC, PBS, Wikipedia, Epstein Wiki
+
+---
+
+## Iteration 59 — Survivor-Centered: What the Survivors Built
+
+| # | Claim | Rating | Notes |
+|---|-------|--------|-------|
+| 1 | $125K victim compensation fund | **MISLEADING** | Appears to be typo for $125M. The VCP distributed ~$121M to ~135-150 survivors. $125M was the upper ceiling. |
+| 2 | NDA reform legislation in NY and CA targeting abuse-covering NDAs | PARTIALLY VERIFIED | Both NY (2018, amended 2019) and CA (Silenced No More Act, STAND Act) passed NDA reforms. Federal Speak Out Act (2022) also. However, driven by #MeToo broadly, not specifically Epstein. |
+| 3 | SOL tolling provisions for trafficking victims | **VERIFIED** | Multiple states enacted tolling. Federal Eliminating Limits to Justice for Trafficking Victims Act (2022) removed SOL for civil child sex trafficking claims. At least 19 states allow trafficking charges at any time. |
+| 4 | Federal TVPA eliminating time bars | **VERIFIED** | 2022 amendment removed SOL for federal civil claims under 18 USC §1595. Note: amendment to TVPA framework, not original 2000 TVPA. |
+| 5 | Mandatory victim impact statements in sentencing | **INACCURATE** | Victim impact statements existed since 1976 (first used in Fresno County, CA). Federal victims have the *right* to be heard but it's not mandatory. Predates Epstein by decades. NOT a survivor achievement from this case. |
+| 6 | $365M+ in settlements (JPMorgan $290M + Deutsche Bank $75M) | PARTIALLY VERIFIED | Math correct for those two bank settlements. But omits: JPMorgan USVI $75M, USVI estate $105M, ~$49M other estate settlements, 2026 estate settlement ($35M), Prince Andrew ~$12M. True total exceeds **$569M+**. Significantly understated. |
+| 7 | Giuffre "forced legal recognition: trafficking as continuous crime" | **UNVERIFIED** | Giuffre's legal impact was significant but her cases were settled, not adjudicated to precedent. The posthumous "Virginia's Law" proposal (2026) better captures her legislative legacy. |
+| 8 | Courtney Wild's specific advocacy achievements | **VERIFIED** | Wild's 12+ year legal battle: federal judge ruled (2019) prosecutors violated CVRA. "Courtney Wild Reinforcing Crime Victims' Rights Act" introduced in Congress (reintroduced 2025). |
+| 9 | "At least 150 documented victims" | PARTIALLY VERIFIED | Aligns with VCP-eligible claimants (~150). But conservative: FBI confirmed 34-40 minors; Brown identified ~80; DOJ reported **1,200+ victims and relatives** in its files. 150 is a defensible floor, not a ceiling. |
+
+**Sources:** ABC News (VCP), Al Jazeera, NPR, CNBC, DOJ, Congress.gov, PBS
+
+---
+
+## Iteration 60 — Final: The Investigation's Thesis in One Page
+
+| # | Claim | Rating | Notes |
+|---|-------|--------|-------|
+| 1 | Network operated ~20 years (1990s-2019) | **VERIFIED** | Earliest victim allegations from mid-1990s; Epstein died Aug 10, 2019. |
+| 2 | "At least 150 documented victims" | PARTIALLY VERIFIED | VCP-eligible: ~150. DOJ total: 1,200+. 150 is conservative. |
+| 3 | Epstein: 13-month sentence | **INACCURATE** | **Sentenced to 18 months**, served ~13 months with work release (12 hrs/day, 6 days/week at private office). Must distinguish sentence from time served. |
+| 4 | Maxwell: 20-year sentence | **VERIFIED** | June 28, 2022, by Judge Alison Nathan. Upheld on appeal Sept 2024. |
+| 5 | 2 custodial deaths (Epstein, Brunel) — both ruled suicide | **VERIFIED** | Both confirmed. Epstein: NYC Medical Examiner. Brunel: French authorities (formal conclusion 2023). |
+| 6 | $486M in settlements (VCP + JPMorgan + Deutsche Bank) | PARTIALLY VERIFIED | Math correct: $121M + $290M + $75M = $486M. But significantly understates total — true figure exceeds **$569M+** including USVI, estate, and additional settlements. |
+| 7 | 0 prosecutions of high-profile associates | **VERIFIED** | Beyond Epstein (plea) and Maxwell (convicted), no high-profile associate criminally prosecuted. Brunel charged but died before trial. |
+| 8 | Julie K. Brown broke the story in 2018 | **VERIFIED** | "Perversion of Justice" Nov 2018. George Polk Award. |
+| 9 | "60 iterations generated: 12 analytical models..." | N/A (self-referential) | Claim about MiroFish's own output. Not externally verifiable. |
+| 10 | Epstein's sentence: 13 months (repeated) | **INACCURATE** | Same as #3. Sentence was 18 months; served ~13 months. |
+
+**Sources:** DOJ, NPR, CNN, CNBC, PBS, Wikipedia, Al Jazeera
+
+---
+
+# === FINAL SUMMARY: FACT-CHECK COMPLETE (UPDATED 2026-03-18) ===
+
+## Totals Across All 60 Iterations (~231 claims checked)
 
 | Rating | Count | % |
 |--------|-------|---|
-| **VERIFIED** | 62 | 41% |
-| PARTIALLY VERIFIED | 52 | 35% |
-| UNVERIFIED / SPECULATIVE | 14 | 9% |
-| **INACCURATE / MISLEADING** | 22 | 15% |
+| **VERIFIED** | 98 | 42% |
+| PARTIALLY VERIFIED | 74 | 32% |
+| UNVERIFIED / SPECULATIVE | 22 | 10% |
+| **INACCURATE / MISLEADING** | 37 | 16% |
 
-## Top 10 Most Significant Corrections
+*11 Meta/design iterations (21, 24, 30, 33, 36, 39, 45, 47, 48, 49, 50) contained no verifiable factual claims.*
+
+## Top 15 Most Significant Corrections
 
 1. **"No evidence of trafficking at Zorro Ranch"** (iter 15) → FLATLY WRONG. Victim testimony in court + NM investigation reopened 2026
-2. **POA revoked 2001** (iter 22) → Actually **2007**. Off by 6 years. Epstein had 16 years access, not 11
+2. **POA revoked 2001** (iter 22, 38, 58) → Actually **2007**. Off by 6 years. Error repeated across 3 iterations
 3. **Brunel "testified against Epstein/Maxwell"** (iter 4) → NEVER TESTIFIED. Giuffre testified against Brunel
 4. **Maxwell "admitted to recruiting" at trial** (iter 4) → DID NOT TESTIFY. Exercised 5th Amendment
 5. **Jes Staley "CEO of JPMorgan"** (iter 7, 35) → Head of private bank/investment bank. Jamie Dimon was CEO
 6. **Kellen "cooperating witness essential for Maxwell conviction"** (iter 35) → DID NOT TESTIFY. Invoked 5th. Protected by NPA immunity
-7. **Townhouse "$34M"** (iter 5) → Actual price ~$20M. $34M appears in no source
-8. **Little St. James "$22M via Island Fund LLC"** (iter 5) → Actual: $7.95M via L.S.J. LLC. Both price and entity fabricated
+7. **Townhouse "$34M"** (iter 5, 58) → Actual price ~$20M. $34M appears in no source. Error repeated
+8. **Little St. James "$22M via Island Fund LLC"** (iter 5, 58) → Actual: $7.95M via L.S.J. LLC. Both price and entity fabricated. Error repeated
 9. **Joi Ito resigned "2018 before arrest"** (iter 28) → Resigned Sept 7, 2019 — AFTER arrest AND death
 10. **Intelligence connection treated as near-established** (iter 9) → Rests on SINGLE anonymous source; Acosta denied under oath; DOJ found no evidence of blackmail (July 2025 memo)
+11. **PACER case number 1:15-ma-00984** (iter 56, 57) → Fabricated. Real cases: 1:19-cr-00490 and 1:15-cv-07433. Hallucinated citation repeated across iterations
+12. **Wexner was "ONLY confirmed client"** (iter 58) → Kahn testified to Congress (March 2026) naming 5 clients: Wexner, Dubin, Sinofsky, Rothschilds, Black
+13. **CDs "not introduced" into Maxwell trial** (iter 53) → Photos of CDs WERE entered as evidence. FBI agents testified about them in Week 2
+14. **"No insider came forward for 20+ years"** (iter 54) → Maria Farmer filed FBI complaint September 1996
+15. **Epstein sentence "13 months"** (iter 60) → Sentenced to 18 months, served ~13 months. Conflates sentence with time served
 
 ## Top 10 Most Solidly Verified Findings
 
-1. **JPMorgan compliance ignored red flags** — internal emails extensively documented
-2. **NPA granted sweeping immunity** to Epstein + all co-conspirators, concealed from victims
+1. **JPMorgan compliance ignored red flags** — internal emails extensively documented (Cutler, Langford, SARs)
+2. **NPA granted sweeping immunity** to Epstein + all co-conspirators, concealed from victims (CVRA violation)
 3. **MCC triple failure** — guard absence, log falsification, camera malfunction all confirmed
-4. **Julie K. Brown / Miami Herald** was the sole catalyst that broke the case
-5. **Maxwell convicted on 5 felony counts**, 20-year sentence upheld through SCOTUS
+4. **Julie K. Brown / Miami Herald** was the sole catalyst that broke the case (2018)
+5. **Maxwell convicted on 5 felony counts**, 20-year sentence upheld through SCOTUS (Oct 2025)
 6. **Both Epstein and Brunel died in custody** before trial, both ruled suicide
 7. **Shell company network** (34+ entities, 52.9% USVI) obscured financial flows
 8. **Leon Black paid $170M** post-conviction for "advisory" — USVI acknowledged it funded operations
 9. **Victim recruitment concentrated in Palm Beach** — socioeconomically targeted
 10. **No inter-bank alert system** allowed Epstein to bank-shop from JPMorgan to Deutsche Bank
+11. **Total settlements exceed $569M+** — VCP $121M, JPMorgan $365M, Deutsche Bank $225M, estate settlements, Prince Andrew ~$12M
+12. **Jes Staley permanently banned by FCA** (upheld June 2025) — 1,200 emails with Epstein documented
+13. **Courtney Wild CVRA victory** — federal judge ruled prosecutors violated Crime Victims' Rights Act (2019)
 
 ## Systemic Hallucination Patterns
 
@@ -575,10 +779,29 @@ The 9B model consistently:
 - **Cites wrong statutes** (49 CFR 1547 vs 1544, TVPA vs Adam Walsh Act)
 - **Conflates roles** (Staley: division head → CEO, Kellen: silent → cooperating witness)
 - **Treats single-source speculation as established fact** (intelligence connection)
+- **Fabricates case numbers** (PACER 1:15-ma-00984 — does not exist)
+- **Repeats errors across iterations** (townhouse price, POA dates, island price appear wrong 2-3 times each)
+- **Conflates sentence with time served** (18 months sentenced vs ~13 months served)
+- **Understates totals** ($486M settlements vs actual $569M+; "150 victims" vs DOJ's 1,200+)
+
+## Remaining Open Questions Requiring Primary Source Verification
+
+1. **What is on the seized CDs/hard drives?** DOJ confirmed possession of 40 computers, 70 CDs, 26 drives, 6 recording devices (~300GB). Contents not publicly analyzed.
+2. **Who are the 5 confirmed Epstein clients?** Kahn testimony (March 2026) named Wexner, Dubin, Sinofsky, Rothschilds, Black — needs transcript verification.
+3. **Did Epstein hold UK financial licenses?** UK Companies House shows directorship but no confirmed financial services authorization.
+4. **What happened to evidence after Maxwell trial?** Physical media disposition not publicly disclosed.
+5. **True total of all settlements?** Exceeds $569M+ but pending Bank of America settlement and 2026 estate claims not finalized.
+6. **NM Zorro Ranch investigation findings?** First-ever search conducted 2026; results not yet public.
+7. **Prince Andrew UK arrest (Feb 2026)?** Status and outcome of UK proceedings unclear.
+8. **Virginia's Law status?** Proposed 2026 federal legislation — passage status unknown.
+9. **Full scope of DOJ Epstein Files release?** 3.5M pages released but completeness disputed; digital media not included.
+10. **Actual origin of Epstein's wealth?** Kahn's 5-client testimony helps but hybrid model (advisory + POA + undisclosed sources) still not fully resolved.
 
 ## Overall Assessment
 
-The MiroFish investigation is **genuinely valuable as a hypothesis-generation tool**. Its broad narratives, analytical frameworks (protection stack, network tiers, institutional capture), and structural insights are largely sound. But **specific claims — names, dates, prices, entities, statutes — must be independently verified before use in any published investigation**. The ~15% inaccuracy rate, concentrated in fabricated specifics presented with high confidence, is the most dangerous characteristic for an accountability platform.
+The MiroFish investigation is **genuinely valuable as a hypothesis-generation tool**. Its broad narratives, analytical frameworks (protection stack, network tiers, institutional capture), and structural insights are largely sound. But **specific claims — names, dates, prices, entities, statutes — must be independently verified before use in any published investigation**. The ~16% inaccuracy rate, concentrated in fabricated specifics presented with high confidence, is the most dangerous characteristic for an accountability platform.
 
-*"The tool works not because the AI is always right, but because it generates hypotheses faster than any human researcher could."* — SCRATCHPAD-EPSTEIN.md, Iteration 39. This fact-check confirms that assessment.
+**Error repetition is a critical pattern:** The same wrong figures ($34M townhouse, $22M island, POA 1990-2001) recur across multiple iterations, compounding the risk. A single verification pass catches these, but automated systems must flag repeated claims for single-source verification.
+
+*"The tool works not because the AI is always right, but because it generates hypotheses faster than any human researcher could."* — SCRATCHPAD-EPSTEIN.md, Iteration 39. This fact-check confirms that assessment across all 60 iterations.
 
