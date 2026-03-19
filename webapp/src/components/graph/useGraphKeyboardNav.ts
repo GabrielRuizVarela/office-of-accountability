@@ -27,6 +27,8 @@ export function useGraphKeyboardNav({
   onUndo,
 }: GraphKeyboardNavOptions): GraphKeyboardNavResult {
   const [focusedIndex, setFocusedIndex] = useState<number>(-1)
+  const focusedIndexRef = useRef(focusedIndex)
+  focusedIndexRef.current = focusedIndex
   const visibleNodesRef = useRef<readonly GraphNode[]>([])
 
   // Compute visible nodes (filtered by label)
@@ -88,15 +90,9 @@ export function useGraphKeyboardNav({
         }
         case 'Enter': {
           event.preventDefault()
-          setFocusedIndex((prev) => {
-            const node = prev >= 0 && prev < currentVisible.length
-              ? currentVisible[prev]
-              : null
-            if (node) {
-              onExpand(node.id)
-            }
-            return prev
-          })
+          const idx = focusedIndexRef.current
+          const node = idx >= 0 && idx < currentVisible.length ? currentVisible[idx] : null
+          if (node) onExpand(node.id)
           break
         }
         case 'Escape': {
