@@ -9,6 +9,8 @@ interface DocumentCardProps {
   readonly date: string
   readonly mentionedPersonCount: number
   readonly casoSlug: string
+  readonly confidence_tier?: string
+  readonly source?: string
 }
 
 export function DocumentCard({
@@ -19,18 +21,25 @@ export function DocumentCard({
   date,
   mentionedPersonCount,
   casoSlug,
+  confidence_tier,
+  source,
 }: DocumentCardProps) {
   return (
     <Link
       href={`/caso/${casoSlug}/evidencia/${slug}`}
       className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 transition-colors hover:border-zinc-700"
     >
-      <div className="mb-1 flex items-center gap-2">
+      <div className="mb-1 flex items-center gap-2 flex-wrap">
         <span className="rounded bg-red-500/10 px-1.5 py-0.5 text-[10px] font-medium text-red-400">
           {DOCUMENT_TYPE_LABELS[docType as keyof typeof DOCUMENT_TYPE_LABELS] ?? docType}
         </span>
         {date && (
           <span className="text-[10px] text-zinc-500">{date}</span>
+        )}
+        {confidence_tier && confidence_tier !== 'gold' && (
+          <span className="text-xs px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">
+            {confidence_tier === 'silver' ? '✓ verified' : 'unverified'}{source ? ` · ${source}` : ''}
+          </span>
         )}
       </div>
       <h3 className="text-sm font-semibold text-zinc-100 group-hover:text-blue-400">
