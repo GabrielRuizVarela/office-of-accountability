@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState, use } from 'react'
+import { useEffect, useRef, useState, use, useMemo } from 'react'
 
 import { ForceGraph } from '../../../../components/graph/ForceGraph'
 import type { ForceGraphHandle } from '../../../../components/graph/ForceGraph'
@@ -25,6 +25,7 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
   const [error, setError] = useState<string | null>(null)
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null)
   const [visibleLabels, setVisibleLabels] = useState<Set<string> | null>(null)
+  const [tierFilter, setTierFilter] = useState<string>('all')
 
   useEffect(() => {
     async function fetchGraph() {
@@ -41,6 +42,27 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
     }
     fetchGraph()
   }, [slug])
+
+  const filteredData = useMemo<GraphData>(() => {
+    if (tierFilter === 'all') return data
+    let nodes: GraphNode[]
+    if (tierFilter === 'verified') {
+      nodes = data.nodes.filter(
+        (n) => (n.properties as Record<string, unknown>).confidence_tier !== 'bronze',
+      )
+    } else {
+      // gold only
+      nodes = data.nodes.filter((n) => {
+        const tier = (n.properties as Record<string, unknown>).confidence_tier
+        return !tier || tier === 'gold'
+      })
+    }
+    const nodeIds = new Set(nodes.map((n) => n.id))
+    const links: GraphLink[] = data.links.filter(
+      (l) => nodeIds.has(l.source) && nodeIds.has(l.target),
+    )
+    return { nodes, links }
+  }, [data, tierFilter])
 
   const toggleLabel = (label: string) => {
     setVisibleLabels((prev) => {
@@ -105,6 +127,17 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
           })}
         </div>
 
+        {/* Confidence tier filter */}
+        <select
+          value={tierFilter}
+          onChange={(e) => setTierFilter(e.target.value)}
+          className="bg-zinc-800 text-zinc-100 border border-zinc-700 rounded px-2 py-1 text-xs"
+        >
+          <option value="all">All data</option>
+          <option value="verified">Verified only</option>
+          <option value="gold">Gold only</option>
+        </select>
+
         {/* Zoom controls */}
         <div className="flex gap-1">
           <button
@@ -136,7 +169,7 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
         <div className="min-h-0 flex-1">
           <ForceGraph
             ref={graphRef}
-            data={data}
+            data={filteredData}
             selectedNodeId={selectedNodeId}
             onNodeClick={setSelectedNodeId}
             visibleLabels={visibleLabels}
@@ -255,7 +288,12 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
 
       {/* Node count */}
       <div className="border-t border-zinc-800 px-4 py-1.5 text-xs text-zinc-500">
-        {data.nodes.length} nodes · {data.links.length} connections
+        {filteredData.nodes.length} nodes · {filteredData.links.length} connections
+        {tierFilter !== 'all' && (
+          <span className="ml-2 text-amber-400">
+            ({tierFilter === 'verified' ? 'verified' : 'gold'} filter active)
+          </span>
+        )}
       </div>
     </div>
   )

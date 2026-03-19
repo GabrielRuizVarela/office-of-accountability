@@ -234,6 +234,9 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       const isSelected = selectedNodeId === fgNode.id
       const isFocused = focusedNodeId === fgNode.id
       const radius = isSelected ? 6 : 4
+      const isBronze = (fgNode as unknown as { properties?: { confidence_tier?: string } }).properties?.confidence_tier === 'bronze'
+
+      ctx.globalAlpha = isBronze ? 0.5 : 1.0
 
       // Node circle
       ctx.beginPath()
@@ -274,6 +277,8 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         ctx.fillStyle = '#e2e8f0' // slate-200
         ctx.fillText(fgNode._label, x, y + radius + 2)
       }
+
+      ctx.globalAlpha = 1.0
     },
     [selectedNodeId, focusedNodeId],
   )
