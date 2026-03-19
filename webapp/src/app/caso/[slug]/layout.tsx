@@ -36,17 +36,6 @@ export default async function CasoLayout({
               Caso Libra
             </Link>
           </div>
-          <nav className="flex items-center gap-4 text-sm">
-            <Link href="/" className="text-zinc-400 hover:text-zinc-100">
-              Inicio
-            </Link>
-            <Link href="/caso/caso-libra/resumen" className="text-zinc-400 hover:text-zinc-100">
-              Que paso
-            </Link>
-            <Link href="/caso/caso-libra/investigacion" className="text-zinc-400 hover:text-zinc-100">
-              Pruebas
-            </Link>
-          </nav>
         </div>
         <InvestigationNav slug={slug} />
       </header>
