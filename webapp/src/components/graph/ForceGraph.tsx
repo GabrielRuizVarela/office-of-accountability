@@ -112,6 +112,28 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     getForceGraph2D().then((Component) => setForceGraph2D(() => Component))
   }, [])
 
+  // Access internal force simulation nodes via d3Force
+  // graphData() is NOT exposed on the ref — use d3Force('link').links() for links
+  // and traverse the simulation's nodes array for node state (x, y, fx, fy)
+  function getInternalNodes(): NodeObject<FGNode>[] {
+    const fg = graphRef.current
+    if (!fg) return []
+    // The d3 simulation nodes are accessible through the force engine
+    try {
+      const sim = (fg as unknown as { d3Force: (name: string) => unknown }).d3Force('charge')
+      // The simulation object itself has .nodes() but we can't access it directly.
+      // Instead, use the fact that fgData.nodes are mutated in-place by the simulation
+      // with x, y, vx, vy, fx, fy properties added at runtime.
+      return fgData.nodes as unknown as NodeObject<FGNode>[]
+    } catch {
+      return []
+    }
+  }
+
+  function findInternalNode(nodeId: string): NodeObject<FGNode> | undefined {
+    return getInternalNodes().find((n) => n.id === nodeId)
+  }
+
   // Expose zoom controls to parent
   const ZOOM_STEP = 1.5
   useImperativeHandle(ref, () => ({
@@ -133,41 +155,23 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       fg.zoomToFit(400, 40)
     },
     centerOnNode(nodeId: string) {
-      const fg = graphRef.current
-      if (!fg) return
-      // Access internal graph data via the untyped kapsule method
-      const internalGraphData = (fg as unknown as { graphData(): { nodes: NodeObject<FGNode>[] } }).graphData()
-      const node = internalGraphData.nodes.find((n) => n.id === nodeId)
+      const node = findInternalNode(nodeId)
       if (node && typeof node.x === 'number' && typeof node.y === 'number') {
-        fg.centerAt(node.x, node.y, 300)
+        graphRef.current?.centerAt(node.x, node.y, 300)
       }
     },
     pinNode(nodeId: string) {
-      const fg = graphRef.current
-      if (!fg) return
-      const internalData = (fg as unknown as { graphData(): { nodes: NodeObject<FGNode>[] } }).graphData()
-      const node = internalData.nodes.find((n) => n.id === nodeId)
+      const node = findInternalNode(nodeId)
       if (node) { node.fx = node.x; node.fy = node.y }
     },
     unpinNode(nodeId: string) {
-      const fg = graphRef.current
-      if (!fg) return
-      const internalData = (fg as unknown as { graphData(): { nodes: NodeObject<FGNode>[] } }).graphData()
-      const node = internalData.nodes.find((n) => n.id === nodeId)
+      const node = findInternalNode(nodeId)
       if (node) { node.fx = undefined; node.fy = undefined }
     },
     unpinAll() {
-      const fg = graphRef.current
-      if (!fg) return
-      const internalData = (fg as unknown as { graphData(): { nodes: NodeObject<FGNode>[] } }).graphData()
-      for (const node of internalData.nodes) { node.fx = undefined; node.fy = undefined }
+      for (const node of getInternalNodes()) { node.fx = undefined; node.fy = undefined }
     },
-    getInternalNodes() {
-      const fg = graphRef.current
-      if (!fg) return []
-      const internalGraphData = (fg as unknown as { graphData(): { nodes: NodeObject<FGNode>[] } }).graphData()
-      return internalGraphData?.nodes ?? []
-    },
+    getInternalNodes,
   }))
 
   // Responsive sizing — ignore tiny heights that occur before flex layout settles
