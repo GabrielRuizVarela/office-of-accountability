@@ -24,8 +24,8 @@
  * should be scoped or rate-limited separately with a higher page size.
  */
 
-import { readQuery, executeWrite, verifyConnectivity, closeDriver } from '../src/lib/neo4j/client'
-import { normalizeName, toSlug, dedup } from '../src/lib/ingestion/dedup'
+import { executeWrite, verifyConnectivity, closeDriver } from '../src/lib/neo4j/client'
+import { normalizeName, toSlug, dedup, buildExistingMaps } from '../src/lib/ingestion/dedup'
 import {
   saveConflicts,
   printReport,
@@ -73,41 +73,6 @@ function toFlightId(flightId: string): string {
 
 function toDocumentId(docId: string): string {
   return `ep-w2-doc-${docId}`
-}
-
-// ---------------------------------------------------------------------------
-// Build existing node dedup maps from all caso-epstein nodes
-// ---------------------------------------------------------------------------
-
-async function buildExistingMaps(): Promise<{
-  nameMap: Map<string, { id: string; name: string }>
-  slugMap: Map<string, { id: string; name: string }>
-}> {
-  const nameMap = new Map<string, { id: string; name: string }>()
-  const slugMap = new Map<string, { id: string; name: string }>()
-
-  const labels = ['Person', 'Organization', 'Location', 'Event', 'Document', 'LegalCase']
-  for (const label of labels) {
-    const result = await readQuery(
-      `MATCH (n:${label}) WHERE n.caso_slug = $casoSlug RETURN n.id AS id, n.name AS name, n.slug AS slug`,
-      { casoSlug: CASO_SLUG },
-      (record) => ({
-        id: record.get('id') as string,
-        name: record.get('name') as string,
-        slug: record.get('slug') as string | null,
-      }),
-    )
-
-    for (const row of result.records) {
-      if (!row.id || !row.name) continue
-      const norm = normalizeName(row.name)
-      nameMap.set(norm, { id: row.id, name: row.name })
-      const slug = row.slug ?? toSlug(row.name)
-      slugMap.set(slug, { id: row.id, name: row.name })
-    }
-  }
-
-  return { nameMap, slugMap }
 }
 
 // ---------------------------------------------------------------------------
@@ -454,7 +419,7 @@ async function createDocumentNode(id: string, doc: EpsteinDocument): Promise<voi
       date: doc.date ?? null,
       doc_source: doc.source ?? null,
       category: doc.category ?? null,
-      tags: (doc.tags ?? []).join('; '),
+      tags: doc.tags ?? [],
       pdf_url: doc.pdf_url ?? null,
       source_url: doc.source_url ?? null,
       page_count: doc.page_count ?? null,
@@ -502,7 +467,7 @@ async function main(): Promise<void> {
 
   // ── Build dedup maps ─────────────────────────────────────────────────────
   console.log('\nBuilding dedup maps from existing caso-epstein nodes...')
-  const { nameMap, slugMap } = await buildExistingMaps()
+  const { nameMap, slugMap } = await buildExistingMaps(CASO_SLUG)
   console.log(`  Existing nodes indexed: ${nameMap.size}`)
 
   const conflicts: ConflictRecord[] = []
