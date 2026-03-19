@@ -35,8 +35,8 @@ const t = {
     es: 'La Red Epstein',
   },
   subtitle: {
-    en: 'How a single financial relationship built a trafficking empire shielded by wealth, power, and institutional failure. 198 documented entities, 431 verified relationships, 39 events spanning 2005–2026. Built from court records, DOJ file releases, and investigative reporting.',
-    es: 'Como una sola relacion financiera construyo un imperio de trafico protegido por riqueza, poder y fracaso institucional. 198 entidades documentadas, 431 relaciones verificadas, 39 eventos entre 2005–2026. Basado en registros judiciales, archivos del DOJ y periodismo de investigacion.',
+    en: 'How a single financial relationship built a trafficking empire shielded by wealth, power, and institutional failure. 5,784 documented entities, 941K+ verified relationships, 39 events spanning 2005–2026. Built from court records, DOJ file releases, flight logs, and investigative reporting.',
+    es: 'Como una sola relacion financiera construyo un imperio de trafico protegido por riqueza, poder y fracaso institucional. 5,784 entidades documentadas, 941K+ relaciones verificadas, 39 eventos entre 2005–2026. Basado en registros judiciales, archivos del DOJ, bitacoras de vuelo y periodismo de investigacion.',
   },
   readStory: {
     en: 'Read the full story',
@@ -59,8 +59,8 @@ const t = {
     es: 'Investigacion verificada',
   },
   investigationDesc: {
-    en: '20 factchecked claims, 22 actors, money flows, evidence chain, and government response',
-    es: '20 afirmaciones verificadas, 22 actores, flujos de dinero, cadena de evidencia y respuesta gubernamental',
+    en: '20 factchecked claims, 1,827 persons, money flows, evidence chain, and government response',
+    es: '20 afirmaciones verificadas, 1,827 personas, flujos de dinero, cadena de evidencia y respuesta gubernamental',
   },
   networkGraph: {
     en: 'Network Graph',
