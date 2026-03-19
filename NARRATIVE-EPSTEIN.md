@@ -1,6 +1,6 @@
 # The Epstein Network: A Cohesive History Based on Evidence
 
-*Compiled from 6,622 knowledge graph nodes, 941,000+ documented relationships, 1,828 identified persons, 44 YouTube transcripts, 4 scratchpads of analysis, and verified web research across 3 data sources: manual curation (gold tier), DOJ flight logs (rhowardstone dataset), and Epstein Exposed API. 293 verified persons have been promoted to silver tier. Every claim below is sourced from court records, congressional testimony, DOJ file releases, or verified investigative reporting.*
+*Compiled from 10,636 knowledge graph nodes, 941,000+ documented relationships, 3,948 documented flights, 1,828 identified persons, 44 YouTube transcripts, 4 scratchpads of analysis, and verified web research across 3 data sources: manual curation (gold tier), DOJ flight logs (rhowardstone dataset), and Epstein Exposed API. 293 verified persons have been promoted to silver tier. Every claim below is sourced from court records, congressional testimony, DOJ file releases, or verified investigative reporting.*
 
 ---
 
@@ -171,9 +171,36 @@ The file releases triggered a cascade of consequences:
 
 ---
 
-## X. The Pattern: What the Evidence Reveals
+## X. The Flight Network: What 3,948 Flights Reveal
 
-Across 6,622 documented entities and 941,000+ verified relationships, the Epstein network reveals a consistent architecture:
+The complete flight dataset — 3,948 documented flights across all Epstein aircraft — constitutes the most granular operational record of the network. When analyzed as a temporal and geographic system, it reveals patterns invisible to any single case file.
+
+**Scale and growth.** The knowledge graph now contains 10,636 nodes, 3,948 flights — 53x growth from the 198 starting nodes. This expansion reflects the scope of the network's documented reach, not an expansion of the crimes themselves.
+
+**Pre-conviction versus post-conviction operation.** In the eight years before his 2007 conviction, Epstein logged approximately 1,565 flights — averaging 196 per year. In the eleven years after (through 2018), the operation continued at 44% of peak capacity with approximately 945 flights averaging 86 per year. The NPA did not stop the operation; it reduced its pace.
+
+**USVI flights increased during the FBI investigation.** The most operationally significant finding is that flights to St. Thomas — the gateway to Little St. James Island — did not decrease when law enforcement closed in. They accelerated:
+
+- 2004: 29 USVI flights
+- 2005: 41 USVI flights (Palm Beach investigation begins March 2005)
+- 2006: 51 USVI flights (FBI launches federal investigation)
+- 2007: 69 USVI flights (Florida grand jury returns indictment)
+
+Peak island activity occurred during the precise years the Non-Prosecution Agreement was being negotiated. This suggests one of three explanations: operational defiance, movement of evidence or assets to USVI jurisdiction, or acceleration of activity before the expected legal crackdown. The USVI's own government, through First Lady Cecile de Jongh, helped Epstein avoid local sex offender registration requirements from 2007-2015 — making the island jurisdiction a structural haven.
+
+**The Paris-London triangle.** A distinct flight pattern connects Epstein's New York base to his European operations: Teterboro (NJ) → Le Bourget (Paris) → London Luton, all on the Boeing 727. This triangle mapped directly onto the Brunel/MC2 recruitment infrastructure. Epstein's Avenue Foch apartment served as the Paris node; his London connections through Maxwell and Prince Andrew formed the London terminus. The Le Bourget private airport, like Teterboro, offered minimal passenger screening relative to commercial aviation.
+
+**Bedford/Hanscom: The Harvard-MIT pipeline.** Hanscom Field in Bedford, MA was the third most-used airport with 170 flights — an upward revision from earlier estimates. Its proximity to Harvard and MIT is not coincidental. Larry Summers' honeymoon flight in December 2005 — Bedford to St. Thomas, with Ghislaine Maxwell aboard — documents that the academic-to-island pipeline operated even during the period the Palm Beach investigation was underway. Martin Nowak, Harvard professor and director of the Program for Evolutionary Dynamics, maintained a personal office for Epstein in his lab for nine years; Epstein visited the Harvard campus 40+ times between 2010 and 2018, all post-conviction.
+
+**Aircraft hierarchy.** The Boeing 727 (tail N908JE) — the "Lolita Express" — was not merely the most famous aircraft in the network. It was the most-used, logging 939 documented flights. The Gulfstream G-II (N909JE) followed with 677 flights, and the Gulfstream G550 (N212JE) logged 532. The 727's dominance reflects its capacity: large enough for group travel between properties, yet still operating under private aviation's minimal manifest requirements.
+
+**The flight data gap.** Despite 3,948 flights in the database, approximately 500 have full passenger manifests with handwritten passenger entries — the most actionable subset for victim identification. Roughly 1,208 are FAA/ADS-B tracking records showing aircraft movement without passenger data. The complete passenger record of the Epstein flight network remains one of the largest unresolved evidentiary gaps in the case.
+
+---
+
+## XI. The Pattern: What the Evidence Reveals
+
+Across 10,636 documented entities and 941,000+ verified relationships, the Epstein network reveals a consistent architecture:
 
 **Compartmentalization was the operating principle.** The pilot saw flights but not the cabin. The banker saw transactions but not their purpose. The recruiter saw models but not victims. The lawyer saw plea deals but not the network's scope. Each actor had plausible deniability by design.
 
@@ -187,9 +214,9 @@ Across 6,622 documented entities and 941,000+ verified relationships, the Epstei
 
 ---
 
-## XI. The Network Clusters: What the Graph Reveals
+## XII. The Network Clusters: What the Graph Reveals
 
-With 6,622 nodes and 941,000+ edges, the expanded graph resolves into five distinct clusters that illuminate the network's organizational logic:
+With 10,636 nodes and 941,000+ edges, the expanded graph resolves into five distinct clusters that illuminate the network's organizational logic:
 
 **1. Core Hub: The Command Structure.** Epstein, Maxwell, Kellen, and Visoski form the irreducible core — the four persons without whom the operation could not function. Epstein provided capital and social access. Maxwell managed recruitment and social cover. Kellen coordinated victim logistics. Visoski piloted the aircraft that moved people between properties.
 
@@ -215,7 +242,7 @@ The expansion from 22 to 1,828 identified persons surfaced several figures whose
 
 ---
 
-## XII. What Remains Unanswered
+## XIII. What Remains Unanswered
 
 1. **What is on the CDs?** The physical evidence seized from Epstein's safe — left unsecured between warrants, returned by his attorney in suitcases — has never been publicly analyzed.
 
@@ -233,7 +260,7 @@ The expansion from 22 to 1,828 identified persons surfaced several figures whose
 
 ---
 
-*This narrative is based on the knowledge graph of the Office of Accountability platform: 6,622 nodes, 941,000+ relationships, 39 events spanning 2005-2026, 1,828 identified persons (293 silver-tier verified), 44 YouTube sources with 1,220+ entity mentions, 3 integrated data sources (manual gold-tier curation, DOJ flight logs via rhowardstone, Epstein Exposed API), and verified web research from court records, congressional testimony, and investigative reporting.*
+*This narrative is based on the knowledge graph of the Office of Accountability platform: 10,636 nodes, 941,000+ relationships, 3,948 documented flights, 39 events spanning 2005-2026, 1,828 identified persons (293 silver-tier verified), 44 YouTube sources with 1,220+ entity mentions, 3 integrated data sources (manual gold-tier curation, DOJ flight logs via rhowardstone, Epstein Exposed API), and verified web research from court records, congressional testimony, and investigative reporting.*
 
 *The investigation continues. The graph grows. The questions remain.*
 

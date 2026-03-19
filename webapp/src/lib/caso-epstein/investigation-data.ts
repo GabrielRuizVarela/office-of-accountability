@@ -668,6 +668,41 @@ export const FACTCHECK_ITEMS: FactcheckItem[] = [
     source: 'Neo4j route analysis',
     source_url: 'https://epsteinexposed.com/flights',
   },
+  // -- New findings: flight analysis session --
+  {
+    id: 'fc-usvi-peak-during-investigation',
+    claim_en: 'USVI flights INCREASED from 29 to 69 per year (2004-2007) during the FBI investigation and NPA negotiation — Epstein flew to his island more during the investigation, not less',
+    claim_es: 'Los vuelos a USVI AUMENTARON de 29 a 69 por año (2004-2007) durante la investigación del FBI y la negociación del NPA — Epstein voló más a su isla durante la investigación, no menos',
+    status: 'confirmed' as const,
+    source: 'Neo4j flight timeline analysis of 3,948 flights',
+    source_url: 'https://epsteinexposed.com/flights',
+    detail_en: 'This suggests either defiance, evidence movement, or operational acceleration before the expected crackdown.',
+    detail_es: 'Esto sugiere desafío, movimiento de evidencia o aceleración operacional antes de la represión esperada.',
+  },
+  {
+    id: 'fc-paris-triangle',
+    claim_en: 'A Teterboro-Paris-London flight triangle connected Epstein\'s NYC base to his Paris apartment (Avenue Foch) and London (Maxwell/Prince Andrew connections) via Le Bourget private airport',
+    claim_es: 'Un triángulo de vuelos Teterboro-París-Londres conectaba la base de Epstein en NYC con su apartamento en París (Avenue Foch) y Londres (conexiones Maxwell/Príncipe Andrew) vía el aeropuerto privado Le Bourget',
+    status: 'confirmed' as const,
+    source: 'Neo4j flight route analysis',
+    source_url: 'https://epsteinexposed.com/flights',
+  },
+  {
+    id: 'fc-nowak-office-9-years',
+    claim_en: 'Epstein maintained a personal office in Harvard professor Martin Nowak\'s Program for Evolutionary Dynamics lab for 9 years and visited 40+ times post-conviction (2010-2018)',
+    claim_es: 'Epstein mantuvo una oficina personal en el laboratorio del Programa de Dinámica Evolutiva del profesor Martin Nowak de Harvard durante 9 años y visitó más de 40 veces después de su condena (2010-2018)',
+    status: 'confirmed' as const,
+    source: 'Harvard OGC Epstein Report',
+    source_url: 'https://ogc.harvard.edu/file_url/208',
+  },
+  {
+    id: 'fc-summers-honeymoon-island',
+    claim_en: 'Larry Summers visited Epstein\'s island during his December 2005 honeymoon, flying Bedford MA to St. Thomas with Ghislaine Maxwell aboard',
+    claim_es: 'Larry Summers visitó la isla de Epstein durante su luna de miel en diciembre de 2005, volando de Bedford MA a St. Thomas con Ghislaine Maxwell a bordo',
+    status: 'confirmed' as const,
+    source: 'Harvard Crimson, Boston Globe',
+    source_url: 'https://www.thecrimson.com/article/2025/11/21/summers-honeymoon-epstein-island/',
+  },
 ]
 
 // ---------------------------------------------------------------------------
@@ -1315,6 +1350,40 @@ export const ACTORS: Actor[] = [
     nationality: 'American',
     status_en: 'Deceased — died January 2019',
     status_es: 'Fallecido — murió enero de 2019',
+  },
+  // -- New actors: flight analysis session --
+  {
+    id: 'act-nowak',
+    name: 'Martin Nowak',
+    role_en: 'Harvard professor — hosted Epstein in PED lab for 9 years post-conviction',
+    role_es: 'Profesor de Harvard — albergó a Epstein en el laboratorio PED durante 9 años post-condena',
+    description_en: 'Harvard professor and director of the Program for Evolutionary Dynamics (PED). Epstein maintained a personal office in Nowak\'s lab for nine years and visited the Harvard campus 40+ times between 2010 and 2018, all after his 2008 conviction. The Harvard OGC Epstein Report documented the arrangement. Nowak left Harvard in 2020.',
+    description_es: 'Profesor de Harvard y director del Programa de Dinámica Evolutiva (PED). Epstein mantuvo una oficina personal en el laboratorio de Nowak durante nueve años y visitó el campus de Harvard más de 40 veces entre 2010 y 2018, todo después de su condena de 2008. El Informe Epstein de la OGC de Harvard documentó el acuerdo. Nowak dejó Harvard en 2020.',
+    nationality: 'Austrian/American',
+    status_en: 'Left Harvard 2020 — not charged',
+    status_es: 'Dejó Harvard en 2020 — no imputado',
+  },
+  {
+    id: 'act-kamen',
+    name: 'Dean Kamen',
+    role_en: 'Inventor — Bedford resident, Billionaire\'s Dinners with Epstein',
+    role_es: 'Inventor — residente de Bedford, Cenas de Millonarios con Epstein',
+    description_en: 'Prolific inventor and entrepreneur (DEKA Research, Segway) based in Manchester, NH and Bedford area. Participated in Epstein\'s "Billionaire\'s Dinners" alongside figures such as Lawrence Krauss and other scientists. His proximity to Hanscom Field, Epstein\'s third most-used airport with 170 flights, places him geographically within the Harvard-MIT-Bedford pipeline.',
+    description_es: 'Prolífico inventor y empresario (DEKA Research, Segway) con base en Manchester, NH y el área de Bedford. Participó en las "Cenas de Millonarios" de Epstein junto a figuras como Lawrence Krauss y otros científicos. Su proximidad al campo Hanscom, el tercer aeropuerto más utilizado de Epstein con 170 vuelos, lo sitúa geográficamente dentro del pipeline Harvard-MIT-Bedford.',
+    nationality: 'American',
+    status_en: 'Not charged — connection documented via social events',
+    status_es: 'No imputado — conexión documentada a través de eventos sociales',
+  },
+  {
+    id: 'act-borgerson',
+    name: 'Scott Borgerson',
+    role_en: 'CargoMetrics CEO — Maxwell\'s partner in Manchester-by-the-Sea',
+    role_es: 'CEO de CargoMetrics — pareja de Maxwell en Manchester-by-the-Sea',
+    description_en: 'CEO of CargoMetrics, a maritime data analytics company, and Ghislaine Maxwell\'s partner during her years of hiding in the United States. Maxwell was arrested at their shared home in Bradford, New Hampshire. His relationship with Maxwell places him in the network\'s post-Epstein operational period.',
+    description_es: 'CEO de CargoMetrics, empresa de análisis de datos marítimos, y pareja de Ghislaine Maxwell durante sus años de ocultación en Estados Unidos. Maxwell fue arrestada en su hogar compartido en Bradford, New Hampshire. Su relación con Maxwell lo sitúa en el período operativo de la red post-Epstein.',
+    nationality: 'American',
+    status_en: 'Not charged',
+    status_es: 'No imputado',
   },
 ]
 
