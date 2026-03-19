@@ -377,29 +377,45 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
 
     const handler = (e: MouseEvent) => {
       if (!onNodeRightClickRef.current) return
-      e.preventDefault()
-      e.stopPropagation()
       const fg = graphRef.current
       if (!fg) return
       const canvas = container.querySelector('canvas')
       if (!canvas) return
 
+      // Use graph2ScreenCoords to convert each node's position to screen coords
       const rect = canvas.getBoundingClientRect()
-      const graphCoords = (fg as unknown as { screen2GraphCoords(x: number, y: number): { x: number; y: number } })
-        .screen2GraphCoords(e.clientX - rect.left, e.clientY - rect.top)
-      const internalData = (fg as unknown as { graphData(): { nodes: Array<{ id: string; x?: number; y?: number }> } }).graphData()
+      const mouseX = e.clientX - rect.left
+      const mouseY = e.clientY - rect.top
+
+      // Access internal nodes via the kapsule graphData() method
+      let internalNodes: Array<{ id: string; x?: number; y?: number }>
+      try {
+        const kapsule = fg as unknown as { graphData?: () => { nodes: Array<{ id: string; x?: number; y?: number }> } }
+        if (typeof kapsule.graphData !== 'function') return
+        internalNodes = kapsule.graphData().nodes
+      } catch { return }
+
+      // Convert graph coords to screen coords for hit testing
+      const g2s = fg as unknown as { graph2ScreenCoords?: (x: number, y: number) => { x: number; y: number } }
+      if (typeof g2s.graph2ScreenCoords !== 'function') return
 
       let closest: { id: string; dist: number } | null = null
-      for (const node of internalData.nodes) {
+      for (const node of internalNodes) {
         if (typeof node.x !== 'number' || typeof node.y !== 'number') continue
-        const dx = graphCoords.x - node.x
-        const dy = graphCoords.y - node.y
+        const screenPos = g2s.graph2ScreenCoords(node.x, node.y)
+        const dx = mouseX - screenPos.x
+        const dy = mouseY - screenPos.y
         const dist = Math.sqrt(dx * dx + dy * dy)
-        if (dist < 15 && (!closest || dist < closest.dist)) {
+        if (dist < 20 && (!closest || dist < closest.dist)) {
           closest = { id: node.id as string, dist }
         }
       }
-      if (closest) onNodeRightClickRef.current(closest.id, e.clientX, e.clientY)
+
+      if (closest) {
+        e.preventDefault()
+        e.stopPropagation()
+        onNodeRightClickRef.current(closest.id, e.clientX, e.clientY)
+      }
     }
 
     // capture: true ensures we fire before the canvas or browser default
