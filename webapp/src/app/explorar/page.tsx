@@ -7,10 +7,12 @@ import { ForceGraph } from '../../components/graph/ForceGraph'
 import type { ForceGraphHandle } from '../../components/graph/ForceGraph'
 import { NodeContextMenu } from '../../components/graph/NodeContextMenu'
 import { NodeDetailPanel } from '../../components/graph/NodeDetailPanel'
+import { PathFinder } from '../../components/graph/PathFinder'
 import { SearchBar } from '../../components/graph/SearchBar'
 import { TypeFilter } from '../../components/graph/TypeFilter'
 import { useGraphKeyboardNav } from '../../components/graph/useGraphKeyboardNav'
 import { ZoomControls } from '../../components/graph/ZoomControls'
+import { bfsShortestPath, pathLinkKeys } from '../../lib/graph/algorithms'
 import { mergeGraphData } from '../../lib/graph/transform'
 import type { GraphData } from '../../lib/neo4j/types'
 
@@ -44,6 +46,11 @@ export default function ExplorarPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [undoStack, setUndoStack] = useState<GraphData[]>([])
   const undoStackRef = useRef<GraphData[]>([])
+
+  const [showPathFinder, setShowPathFinder] = useState(false)
+  const [pathHighlight, setPathHighlight] = useState<{ nodeIds: Set<string>; linkKeys: Set<string> } | null>(null)
+  const [pathSourceId, setPathSourceId] = useState<string | null>(null)
+  const [pathTargetId, setPathTargetId] = useState<string | null>(null)
 
   // Ref to avoid stale closures over graphData
   const graphDataRef = useRef(graphData)
@@ -221,6 +228,34 @@ export default function ExplorarPage() {
     setGraphData({ nodes: newNodes, links: newLinks } as GraphData)
   }, [pinnedNodeIds])
 
+  // Find shortest path between two nodes
+  const findPath = useCallback(async (sourceId: string, targetId: string) => {
+    // Try client-side BFS first (only works if both nodes are already in the graph)
+    const clientPath = bfsShortestPath(graphDataRef.current, sourceId, targetId)
+    if (clientPath) {
+      const nodeIds = new Set(clientPath)
+      const lKeys = pathLinkKeys(graphDataRef.current, clientPath)
+      setPathHighlight({ nodeIds, linkKeys: lKeys })
+      return
+    }
+    // Fallback to server-side shortest path
+    setIsLoading(true)
+    try {
+      const params = new URLSearchParams({ source: sourceId, target: targetId })
+      const res = await fetch(`/api/graph/path?${params.toString()}`)
+      if (!res.ok) return
+      const json = await res.json()
+      if (!json.success) return
+      const merged = mergeGraphData(graphDataRef.current, json.data)
+      setGraphData(merged)
+      if (json.paths?.[0]) {
+        const nodeIds = new Set(json.paths[0] as string[])
+        const lKeys = pathLinkKeys(merged, json.paths[0] as string[])
+        setPathHighlight({ nodeIds, linkKeys: lKeys })
+      }
+    } finally { setIsLoading(false) }
+  }, [])
+
   // Search result selected — expand that node into the graph
   const handleSearchSelect = useCallback(
     (nodeId: string) => {
@@ -229,12 +264,13 @@ export default function ExplorarPage() {
     [expandNode],
   )
 
-  // Node clicked in the graph — select it (no load)
+  // Node clicked in the graph — select it (no load), clear path highlight
   const handleNodeClick = useCallback(
     (nodeId: string) => {
       setSelectedNodeId(nodeId)
+      if (!showPathFinder) setPathHighlight(null)
     },
-    [],
+    [showPathFinder],
   )
 
   // Navigate from detail panel — expand the target node
@@ -291,6 +327,16 @@ export default function ExplorarPage() {
         </Link>
         <SearchBar onSelect={handleSearchSelect} />
       </header>
+
+      {/* Path finder bar */}
+      {showPathFinder && (
+        <PathFinder
+          onFindPath={findPath}
+          onClose={() => { setShowPathFinder(false); setPathHighlight(null); setPathSourceId(null); setPathTargetId(null) }}
+          initialSourceId={pathSourceId}
+          initialTargetId={pathTargetId}
+        />
+      )}
 
       {/* Main area */}
       <div className="relative flex flex-1 overflow-hidden">
@@ -384,6 +430,7 @@ export default function ExplorarPage() {
               focusedNodeId={focusedNodeId}
               visibleLabels={visibleLabels}
               pinnedNodeIds={pinnedNodeIds}
+              pathHighlight={pathHighlight}
             />
           )}
 
@@ -401,8 +448,12 @@ export default function ExplorarPage() {
                 { label: 'Colapsar',
                   icon: <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M20 12H4" /></svg>,
                   onClick: () => collapseNode(contextMenu.nodeId) },
-                { label: 'Ruta desde aqui', icon: <svg className="h-4 w-4" />, onClick: () => {}, disabled: true },
-                { label: 'Ruta hasta aqui', icon: <svg className="h-4 w-4" />, onClick: () => {}, disabled: true },
+                { label: 'Ruta desde aqui',
+                  icon: <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>,
+                  onClick: () => { setPathSourceId(contextMenu.nodeId); setShowPathFinder(true) } },
+                { label: 'Ruta hasta aqui',
+                  icon: <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" /></svg>,
+                  onClick: () => { setPathTargetId(contextMenu.nodeId); setShowPathFinder(true) } },
               ]}
             />
           )}

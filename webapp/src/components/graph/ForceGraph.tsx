@@ -253,6 +253,10 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
 
       ctx.globalAlpha = isBronze ? 0.5 : 1.0
 
+      if (pathHighlight && !pathHighlight.nodeIds.has(fgNode.id) && !isSelected) {
+        ctx.globalAlpha = 0.15
+      }
+
       // Node circle
       ctx.beginPath()
       ctx.arc(x, y, radius, 0, 2 * Math.PI)
@@ -310,7 +314,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
 
       ctx.globalAlpha = 1.0
     },
-    [selectedNodeId, focusedNodeId, degreeMap, importanceThreshold, pinnedNodeIds],
+    [selectedNodeId, focusedNodeId, degreeMap, importanceThreshold, pinnedNodeIds, pathHighlight],
   )
 
   // Pointer area for custom-rendered nodes
@@ -338,8 +342,20 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     return `${fgNode._label} (${getLabelDisplayName(label)})`
   }, [])
 
-  // Link color based on type
-  const linkColor = useCallback((link: FGLink) => getLinkColor(link.type), [])
+  // Link color based on type — highlight path links when active
+  const linkColor = useCallback((link: FGLink) => {
+    if (pathHighlight) {
+      const src = typeof link.source === 'string' ? link.source : (link.source as unknown as {id:string}).id
+      const tgt = typeof link.target === 'string' ? link.target : (link.target as unknown as {id:string}).id
+      const key = `${src}:${tgt}:${link.type}`
+      const reverseKey = `${tgt}:${src}:${link.type}`
+      if (pathHighlight.linkKeys.has(key) || pathHighlight.linkKeys.has(reverseKey)) {
+        return '#60a5fa' // bright blue
+      }
+      return '#1a1a2e' // very dim
+    }
+    return getLinkColor(link.type)
+  }, [pathHighlight])
 
   // Link label
   const linkLabel = useCallback((link: FGLink) => {
