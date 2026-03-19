@@ -5,6 +5,7 @@ import { useCallback, useMemo, useRef, useState } from 'react'
 
 import { ForceGraph } from '../../components/graph/ForceGraph'
 import type { ForceGraphHandle } from '../../components/graph/ForceGraph'
+import { GraphToolbar } from '../../components/graph/GraphToolbar'
 import { NodeContextMenu } from '../../components/graph/NodeContextMenu'
 import { NodeDetailPanel } from '../../components/graph/NodeDetailPanel'
 import { PathFinder } from '../../components/graph/PathFinder'
@@ -13,6 +14,7 @@ import { TypeFilter } from '../../components/graph/TypeFilter'
 import { useGraphKeyboardNav } from '../../components/graph/useGraphKeyboardNav'
 import { ZoomControls } from '../../components/graph/ZoomControls'
 import { bfsShortestPath, pathLinkKeys } from '../../lib/graph/algorithms'
+import { listInvestigations, saveInvestigation } from '../../lib/graph/investigation'
 import { mergeGraphData } from '../../lib/graph/transform'
 import type { GraphData } from '../../lib/neo4j/types'
 
@@ -37,6 +39,7 @@ const ALL_NODE_TYPES: readonly string[] = [
 
 export default function ExplorarPage() {
   const graphRef = useRef<ForceGraphHandle>(null)
+  const isFirstLoad = useRef(true)
   const [graphData, setGraphData] = useState<GraphData>(EMPTY_GRAPH)
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null)
   const [visibleLabels, setVisibleLabels] = useState<ReadonlySet<string>>(
@@ -132,6 +135,10 @@ export default function ExplorarPage() {
       }
 
       setGraphData(positioned as GraphData)
+      if (isFirstLoad.current) {
+        isFirstLoad.current = false
+        setTimeout(() => graphRef.current?.zoomToFit(), 300)
+      }
       setSelectedNodeId(nodeId)
     } catch (error) {
       if (error instanceof DOMException && error.name === 'AbortError') return
@@ -178,6 +185,75 @@ export default function ExplorarPage() {
     undoStackRef.current = []
     setUndoStack([])
     setSelectedNodeId(null)
+  }, [])
+
+  // Save investigation handler
+  const handleSave = useCallback(() => {
+    const name = window.prompt('Nombre de la investigación:')
+    if (!name) return
+    const internalNodes = graphRef.current?.getInternalNodes() ?? []
+    const pinnedPositions = [...pinnedNodeIds].map(id => {
+      const n = internalNodes.find(node => node.id === id)
+      return { id, x: n?.x ?? 0, y: n?.y ?? 0 }
+    })
+    const result = saveInvestigation({
+      name,
+      savedAt: new Date().toISOString(),
+      nodeIds: graphDataRef.current.nodes.map(n => n.id),
+      pinnedPositions,
+    })
+    if (!result.ok && result.warning) {
+      window.alert(result.warning)
+    }
+  }, [pinnedNodeIds])
+
+  // Load investigation handler
+  const handleLoad = useCallback(async () => {
+    const investigations = listInvestigations()
+    if (investigations.length === 0) {
+      window.alert('No hay investigaciones guardadas.')
+      return
+    }
+    const names = investigations.map((inv, i) => `${i + 1}. ${inv.name} (${new Date(inv.savedAt).toLocaleDateString()})`).join('\n')
+    const choice = window.prompt(`Investigaciones guardadas:\n${names}\n\nIngresa el número:`)
+    if (!choice) return
+    const index = parseInt(choice, 10) - 1
+    if (isNaN(index) || index < 0 || index >= investigations.length) return
+
+    const inv = investigations[index]
+    setIsLoading(true)
+    try {
+      // Fetch each node's neighborhood to rebuild the graph
+      const allData: GraphData[] = []
+      for (const nodeId of inv.nodeIds.slice(0, 50)) {
+        const res = await fetch(`/api/graph/expand/${encodeURIComponent(nodeId)}?depth=0&limit=1`)
+        if (res.ok) {
+          const json = await res.json()
+          if (json.success && json.data) allData.push(json.data)
+        }
+      }
+      if (allData.length === 0) return
+
+      let merged = allData[0]
+      for (let i = 1; i < allData.length; i++) {
+        merged = mergeGraphData(merged, allData[i])
+      }
+
+      // Restore pinned positions
+      const pinnedIds = new Set(inv.pinnedPositions.map(p => p.id))
+      setPinnedNodeIds(pinnedIds)
+      setGraphData(merged)
+
+      // Restore pin positions after render
+      setTimeout(() => {
+        for (const pos of inv.pinnedPositions) {
+          graphRef.current?.pinNode(pos.id)
+        }
+        graphRef.current?.zoomToFit()
+      }, 500)
+    } finally {
+      setIsLoading(false)
+    }
   }, [])
 
   // Context menu state
@@ -338,6 +414,18 @@ export default function ExplorarPage() {
         />
       )}
 
+      {/* Toolbar */}
+      <GraphToolbar
+        onFindPath={() => setShowPathFinder(true)}
+        onClearGraph={clearGraph}
+        onSave={handleSave}
+        onLoad={handleLoad}
+        onUnpinAll={unpinAll}
+        onUndo={undo}
+        canUndo={undoStack.length > 0}
+        hasData={hasData}
+      />
+
       {/* Main area */}
       <div className="relative flex flex-1 overflow-hidden">
         {/* Graph canvas */}
@@ -395,6 +483,8 @@ export default function ExplorarPage() {
                 <span className="text-zinc-400">Tab</span> navegar
                 {' · '}
                 <span className="text-zinc-400">Enter</span> expandir
+                {' · '}
+                <span className="text-zinc-400">Ctrl+Z</span> deshacer
                 {' · '}
                 <span className="text-zinc-400">Esc</span> cerrar
               </div>
