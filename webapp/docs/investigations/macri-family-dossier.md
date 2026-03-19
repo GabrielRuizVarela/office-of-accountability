@@ -26,7 +26,7 @@
 
 | Entity | Jurisdiction | Key Person | Status |
 |--------|-------------|------------|--------|
-| **Fleg Trading Ltd** | Bahamas | Mauricio (Director/VP) | Judicially cleared — "not a partner nor shareholder" |
+| **Fleg Trading Ltd** | Bahamas | Mauricio (Director/VP) | **Judicially cleared** (Judge Fraga: "not a partner nor shareholder," briefly accepted director position) |
 | **Kagemusha SA** | Panama | Mauricio (Director) | Same judicial outcome |
 | **BF Corporation SA** | Panama | Gianfranco (50%) + Mariano (50%) | Funds moved to Safra Bank Switzerland. German bank ordered to **destroy all correspondence**. Gianfranco declared USD 4M via blanqueo. |
 | **Latium Investments Inc** | Panama | Jorge Macri + Carlos Libedinsky | Libedinsky declared ARS 61.9M via blanqueo |

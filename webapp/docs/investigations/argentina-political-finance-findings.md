@@ -58,7 +58,7 @@ Notable self-donors:
 - Mauricio Macri — ARS 100,000 to Juntos por el Cambio 2019
 - Máximo Kirchner — ARS 50,000 to Frente de Todos 2019
 
-**Data gap:** Donation amounts not yet ingested in graph (present in source data).
+**Data gap resolved:** Donation amounts now loaded (cycle 2 fix).
 
 ### Politician ↔ Government Appointment (24 confirmed)
 
@@ -78,7 +78,7 @@ Politicians appearing in 2+ external datasets:
 
 | Politician | Party | Datasets | Notes |
 |-----------|-------|----------|-------|
-| Mauricio Macri | PRO | Donor, GovernmentAppointment | Documented offshore history (Fleg Trading, Kagemusha — separate from this graph). Contractor-donor campaign violations documented by Chequeado. |
+| Mauricio Macri | PRO | Donor, GovernmentAppointment | Documented offshore history (Fleg Trading, Kagemusha — judicially cleared for Fleg Trading but entities confirmed). Chequeado found ~ARS 3M in donations from *employees of contractor companies* (circumventing Art. 15 prohibition on corporate donations). |
 | Fernando Sánchez | Coalición Cívica | Donor, GovernmentAppointment | Legislator → government appointee revolving door. CC-ARI faced allegations of fictitious donations. |
 | Graciela Susana Villata | Frente Cívico - Córdoba | Donor, GovernmentAppointment | Lower risk without additional evidence. |
 
