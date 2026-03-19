@@ -352,7 +352,7 @@ Los politicos con conexiones corporativas votan sistematicamente a favor de la d
 
 ~~**Romero, Juan Carlos** (Cambio Federal, Salta): segun los registros de la IGJ, figura vinculado a **41 empresas**. Voto AFIRMATIVO en la Ley Bases.~~ **FALSO POSITIVO CONFIRMADO:** Las 41 posiciones en directorios corresponden a un **Juan Carlos Romero diferente** — el dueño del grupo de transporte ERSA, con sede en Corrientes. La homonimia fue resuelta mediante verificacion cruzada de datos corporativos. El senador salteño puede tener intereses empresariales, pero las 41 empresas no son suyas.
 
-**Kueider, Edgardo** (Unidad Federal, Entre Rios): Voto AFIRMATIVO en la Ley Bases — **el voto de desempate** que permitio la aprobacion de la ley insignia del gobierno de Milei.
+**Kueider, Edgardo** (Unidad Federal, Entre Rios): Voto AFIRMATIVO en la Ley Bases — **un voto clave** que permitio la aprobacion de la ley insignia del gobierno de Milei.
 
 Lo que vino despues convierte a Kueider en el caso mas espectacular de esta investigacion. Sus empresas **BETAIL SA** y **EDEKOM SA**, registradas en la IGJ, son sociedades pantalla confirmadas: las direcciones legales son falsas. BETAIL fue utilizada para adquirir **departamentos de lujo en Parana**.
 
@@ -360,7 +360,7 @@ En **diciembre de 2024**, Kueider fue detenido intentando cruzar la frontera con
 
 En **marzo de 2025**, la justicia arresto a **7 asociados y testaferros** de Kueider. En los allanamientos se encontraron **videos de Kueider manipulando fajos de billetes en efectivo**.
 
-La secuencia completa merece detenimiento: un senador vota la ley mas importante del periodo legislativo — proporcionando el voto decisivo —, opera empresas fantasma con domicilios falsos, compra propiedades de lujo a traves de esas pantallas, es atrapado con mas de doscientos mil dolares en efectivo en la frontera, y termina con siete testaferros presos y videos incriminatorios.
+La secuencia completa merece detenimiento: un senador vota la ley mas importante del periodo legislativo — proporcionando uno de los 36 votos afirmativos (el desempate lo resolvio la vicepresidenta Villarruel) —, opera empresas fantasma con domicilios falsos, compra propiedades de lujo a traves de esas pantallas, es atrapado con mas de doscientos mil dolares en efectivo en la frontera, y termina con siete testaferros presos y videos incriminatorios.
 
 No hay presuncion aqui. Hay hechos judiciales, videos y arrestos. Fuentes: Infobae, La Nacion.
 
@@ -592,7 +592,7 @@ Para fortalecer esta investigacion:
 
 ### Una nota final
 
-Esta investigacion no acusa a nadie. Los datos publicos no prueban delitos — prueban conexiones, coincidencias y patrones que merecen explicacion. Pero cuando esas conexiones involucran a un expresidente cuya familia blanqueo ARS 900 millones con su propia ley, a legisladoras con offshores activas mientras votan presupuestos, a un senador que dio el voto de desempate para la ley mas importante del periodo y fue atrapado meses despues con doscientos mil dolares en efectivo en la frontera, a otro senador cuya consultora privada cobraba del propio Congreso donde el legislaba, a agentes fiscales con presuntas sociedades en Panama, y a una fundacion partidaria con 19 miembros confirmados por DNI que diseña las leyes que sus propios directivos votan — entonces los datos no necesitan acusar a nadie.
+Esta investigacion no acusa a nadie. Los datos publicos no prueban delitos — prueban conexiones, coincidencias y patrones que merecen explicacion. Pero cuando esas conexiones involucran a un expresidente cuya familia blanqueo ARS 900 millones con su propia ley, a legisladoras con offshores activas mientras votan presupuestos, a un senador que dio un voto clave para la ley mas importante del periodo y fue atrapado meses despues con doscientos mil dolares en efectivo en la frontera, a otro senador cuya consultora privada cobraba del propio Congreso donde el legislaba, a agentes fiscales con presuntas sociedades en Panama, y a una fundacion partidaria con 19 miembros confirmados por DNI que diseña las leyes que sus propios directivos votan — entonces los datos no necesitan acusar a nadie.
 
 Los datos preguntan. Y las preguntas exigen respuestas.
 
