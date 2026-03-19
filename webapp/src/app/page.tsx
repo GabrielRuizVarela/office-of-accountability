@@ -116,6 +116,36 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Featured investigation — Caso Epstein */}
+      <section className="mx-auto max-w-6xl px-4 pb-16">
+        <h2 className="mb-6 text-xl font-bold text-zinc-50 sm:text-2xl">
+          Investigación destacada
+        </h2>
+        <Link
+          href="/caso/caso-epstein"
+          className="group flex flex-col gap-4 rounded-lg border border-red-500/20 bg-zinc-900/50 p-6 transition-colors hover:border-red-500/40 hover:bg-zinc-900 sm:flex-row sm:items-center sm:gap-8"
+        >
+          <div className="flex-1">
+            <div className="mb-2 flex items-center gap-2">
+              <span className="rounded bg-red-500/10 px-2 py-0.5 text-[10px] font-medium text-red-400">
+                Caso
+              </span>
+              <span className="text-xs text-zinc-500">45 documentos · 15 actores · 19 eventos</span>
+            </div>
+            <h3 className="text-lg font-semibold text-zinc-100 transition-colors group-hover:text-red-400 sm:text-xl">
+              Caso Epstein — Red de tráfico y poder
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+              Grafo de conocimiento con 198 entidades y 431 relaciones documentadas. Incluye documentos
+              judiciales, registros de vuelo, análisis de proximidad y simulación de red.
+            </p>
+          </div>
+          <span className="shrink-0 text-sm text-zinc-500 transition-colors group-hover:text-red-400">
+            Explorar →
+          </span>
+        </Link>
+      </section>
+
       {/* Latest investigations */}
       {latestInvestigations.length > 0 && (
         <section className="border-t border-zinc-800 bg-zinc-900/30">
