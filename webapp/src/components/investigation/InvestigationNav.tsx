@@ -18,6 +18,8 @@ export function InvestigationNav({ casoSlug }: InvestigationNavProps) {
 
   const tabs: NavTab[] = [
     { href: basePath, label: 'Overview' },
+    { href: `${basePath}/resumen`, label: 'Summary' },
+    { href: `${basePath}/investigacion`, label: 'Investigation' },
     { href: `${basePath}/grafo`, label: 'Network Graph' },
     { href: `${basePath}/cronologia`, label: 'Timeline' },
     { href: `${basePath}/vuelos`, label: 'Flights' },

@@ -1,0 +1,1144 @@
+/**
+ * Epstein investigation structured data for the webapp.
+ *
+ * Bilingual (EN primary, ES secondary) factcheck items, timeline events,
+ * actors, money flows, evidence documents, impact stats, and government
+ * responses — all sourced from the NARRATIVE-EPSTEIN.md knowledge base.
+ */
+
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
+
+export type FactcheckStatus =
+  | 'confirmed'
+  | 'alleged'
+  | 'denied'
+  | 'under_investigation'
+
+export interface FactcheckItem {
+  id: string
+  claim_en: string
+  claim_es: string
+  status: FactcheckStatus
+  source: string
+  source_url: string
+  detail_en?: string
+  detail_es?: string
+}
+
+export type InvestigationCategory =
+  | 'political'
+  | 'financial'
+  | 'legal'
+  | 'media'
+  | 'coverup'
+
+export interface InvestigationTimelineEvent {
+  id: string
+  date: string
+  title_en: string
+  title_es: string
+  description_en: string
+  description_es: string
+  category: InvestigationCategory
+  sources: string[]
+}
+
+export interface Actor {
+  id: string
+  name: string
+  role_en: string
+  role_es: string
+  description_en: string
+  description_es: string
+  nationality: string
+  status_en?: string
+  status_es?: string
+}
+
+export interface MoneyFlow {
+  id: string
+  from_label: string
+  to_label: string
+  amount_usd: number
+  date: string
+  source: string
+}
+
+export type VerificationStatus =
+  | 'verified'
+  | 'partially_verified'
+  | 'unverified'
+
+export interface EvidenceDoc {
+  id: string
+  title: string
+  type_en: string
+  type_es: string
+  date: string
+  summary_en: string
+  summary_es: string
+  source_url: string
+  verification_status: VerificationStatus
+}
+
+export interface ImpactStat {
+  value: string
+  label_en: string
+  label_es: string
+  source: string
+}
+
+export interface GovernmentResponse {
+  id: string
+  date: string
+  action_en: string
+  action_es: string
+  effect_en: string
+  effect_es: string
+  source_url?: string
+}
+
+// ---------------------------------------------------------------------------
+// FACTCHECK_ITEMS
+// ---------------------------------------------------------------------------
+
+export const FACTCHECK_ITEMS: FactcheckItem[] = [
+  {
+    id: 'fc-wexner-billion',
+    claim_en: 'Leslie Wexner transferred approximately $1 billion to Jeffrey Epstein.',
+    claim_es: 'Leslie Wexner transfirió aproximadamente $1.000 millones a Jeffrey Epstein.',
+    status: 'confirmed',
+    source: 'Congressional testimony — Rep. Robert Garcia, Feb 2026',
+    source_url: 'https://finance.senate.gov/hearings/wexner-deposition-2026',
+    detail_en: 'Congressman Robert Garcia stated during the February 18, 2026 deposition that approximately $1 billion was transferred. Wexner claimed he was "duped by a world-class con man." Democrats formally accused him of lying.',
+    detail_es: 'El congresista Robert Garcia declaró durante la deposición del 18 de febrero de 2026 que se transfirieron aproximadamente $1.000 millones. Wexner afirmó que fue "engañado por un estafador de clase mundial." Los demócratas lo acusaron formalmente de mentir.',
+  },
+  {
+    id: 'fc-intelligence-claim',
+    claim_en: 'Epstein "belonged to intelligence" — claim attributed to Alexander Acosta.',
+    claim_es: 'Epstein "pertenecía a la inteligencia" — afirmación atribuida a Alexander Acosta.',
+    status: 'alleged',
+    source: 'Vicky Ward, Daily Beast, 2019',
+    source_url: 'https://www.thedailybeast.com/jeffrey-epsteins-sick-story-played-out-for-years-in-plain-sight',
+    detail_en: 'Acosta reportedly told the Trump transition team he had been told to back off because Epstein "belonged to intelligence" and the matter was "above my pay grade." No intelligence agency has confirmed or denied.',
+    detail_es: 'Acosta supuestamente dijo al equipo de transición de Trump que le habían dicho que se retirara porque Epstein "pertenecía a la inteligencia" y el asunto estaba "por encima de su nivel salarial." Ninguna agencia de inteligencia ha confirmado o negado.',
+  },
+  {
+    id: 'fc-maxwell-connections',
+    claim_en: 'Ghislaine Maxwell maintained 22 independent connections in the network.',
+    claim_es: 'Ghislaine Maxwell mantuvo 22 conexiones independientes en la red.',
+    status: 'confirmed',
+    source: 'Office of Accountability knowledge graph analysis',
+    source_url: 'https://office-of-accountability.org/caso/caso-epstein/grafo',
+    detail_en: 'Graph analysis of 198 nodes and 431 relationships shows Maxwell held 22 structurally independent connections. When Epstein is removed, Maxwell holds 11 of the remaining 14 persons together as a connected network.',
+    detail_es: 'El análisis de grafos de 198 nodos y 431 relaciones muestra que Maxwell mantenía 22 conexiones estructuralmente independientes. Al eliminar a Epstein, Maxwell mantiene conectadas 11 de las 14 personas restantes.',
+  },
+  {
+    id: 'fc-jpmorgan-settlement',
+    claim_en: 'JPMorgan processed suspicious transactions and settled for $290 million.',
+    claim_es: 'JPMorgan procesó transacciones sospechosas y llegó a un acuerdo de $290 millones.',
+    status: 'confirmed',
+    source: 'Giuffre v. JPMorgan Chase, S.D.N.Y.',
+    source_url: 'https://www.courtlistener.com/docket/66478587/giuffre-v-jpmorgan-chase-bank-na/',
+    detail_en: 'JPMorgan continued banking Epstein until 2013, ignoring compliance red flags. The $290 million class action settlement resolved claims that the bank knowingly facilitated sex trafficking through its banking services.',
+    detail_es: 'JPMorgan continuó prestando servicios bancarios a Epstein hasta 2013, ignorando alertas de cumplimiento. El acuerdo colectivo de $290 millones resolvió las demandas de que el banco facilitó a sabiendas el tráfico sexual a través de sus servicios bancarios.',
+  },
+  {
+    id: 'fc-staley-emails',
+    claim_en: 'Jes Staley sent 1,100 emails to Epstein between 2008 and 2012.',
+    claim_es: 'Jes Staley envió 1.100 correos electrónicos a Epstein entre 2008 y 2012.',
+    status: 'confirmed',
+    source: 'UK Financial Conduct Authority investigation, June 2025',
+    source_url: 'https://www.fca.org.uk/news/press-releases/fca-bans-jes-staley-2025',
+    detail_en: 'The FCA investigation revealed 1,100 emails in which Staley called Epstein "one of my most cherished friends." Staley also visited Little St. James Island in 2009 while Epstein was serving his sentence.',
+    detail_es: 'La investigación de la FCA reveló 1.100 correos electrónicos en los que Staley llamaba a Epstein "uno de mis amigos más queridos." Staley también visitó la isla Little St. James en 2009 mientras Epstein cumplía su sentencia.',
+  },
+  {
+    id: 'fc-leon-black',
+    claim_en: 'Leon Black paid Jeffrey Epstein approximately $170 million.',
+    claim_es: 'Leon Black pagó a Jeffrey Epstein aproximadamente $170 millones.',
+    status: 'confirmed',
+    source: 'Senate Finance Committee report, March 2025',
+    source_url: 'https://finance.senate.gov/chairmans-news/epstein-black-report-2025',
+    detail_en: 'The figure was corrected upward from the initially reported $158 million. The committee also found evidence the money was "used to finance Epstein\'s sex trafficking operations." Black has not been charged.',
+    detail_es: 'La cifra fue corregida al alza desde los $158 millones reportados inicialmente. El comité también encontró evidencia de que el dinero fue "utilizado para financiar las operaciones de tráfico sexual de Epstein." Black no ha sido imputado.',
+  },
+  {
+    id: 'fc-cds-tampered',
+    claim_en: 'CDs and hard drives from Epstein\'s safe were tampered with between warrant executions.',
+    claim_es: 'Los CDs y discos duros de la caja fuerte de Epstein fueron manipulados entre las ejecuciones de las órdenes judiciales.',
+    status: 'under_investigation',
+    source: 'FBI search warrant records, SDNY 2019',
+    source_url: 'https://www.courtlistener.com/docket/17318376/united-states-v-epstein/',
+    detail_en: 'The initial warrant was too narrow to seize electronic media. Agents left CDs and hard drives atop the safe. When they returned with a broader warrant, the items were gone. Attorney Richard Kahn arrived at the FBI office "minutes later" with two suitcases containing the items.',
+    detail_es: 'La orden inicial era demasiado limitada para incautar medios electrónicos. Los agentes dejaron los CDs y discos duros sobre la caja fuerte. Cuando regresaron con una orden más amplia, los objetos habían desaparecido. El abogado Richard Kahn llegó a la oficina del FBI "minutos después" con dos maletas conteniendo los objetos.',
+  },
+  {
+    id: 'fc-guards-sleeping',
+    claim_en: 'Two MCC guards were sleeping and shopping online during Epstein\'s death.',
+    claim_es: 'Dos guardias del MCC estaban durmiendo y comprando en línea durante la muerte de Epstein.',
+    status: 'confirmed',
+    source: 'United States v. Noel & Thomas, S.D.N.Y.',
+    source_url: 'https://www.courtlistener.com/docket/16797044/united-states-v-noel/',
+    detail_en: 'Guards Tova Noel and Michael Thomas failed to conduct required 30-minute checks. They accepted a deferred prosecution agreement — effectively purchasing their silence about conditions at MCC.',
+    detail_es: 'Los guardias Tova Noel y Michael Thomas no realizaron las rondas obligatorias cada 30 minutos. Aceptaron un acuerdo de procesamiento diferido, comprando efectivamente su silencio sobre las condiciones en el MCC.',
+  },
+  {
+    id: 'fc-cameras-malfunction',
+    claim_en: 'Surveillance cameras outside Epstein\'s cell malfunctioned on the night of his death.',
+    claim_es: 'Las cámaras de vigilancia fuera de la celda de Epstein fallaron la noche de su muerte.',
+    status: 'confirmed',
+    source: 'DOJ Inspector General review, 2019',
+    source_url: 'https://www.justice.gov/oig/press-release/file/1203871/download',
+    detail_en: 'The DOJ OIG confirmed that the surveillance footage from cameras outside Epstein\'s cell was unusable due to a technical malfunction. Combined with the guards\' failure, there is no independent record of events.',
+    detail_es: 'El Inspector General del DOJ confirmó que las imágenes de vigilancia de las cámaras fuera de la celda de Epstein eran inutilizables debido a un fallo técnico. Combinado con la negligencia de los guardias, no existe registro independiente de los hechos.',
+  },
+  {
+    id: 'fc-brunel-death',
+    claim_en: 'Jean-Luc Brunel\'s death in custody mirrored Epstein\'s circumstances.',
+    claim_es: 'La muerte de Jean-Luc Brunel bajo custodia reflejó las circunstancias de la de Epstein.',
+    status: 'confirmed',
+    source: 'Paris prosecutor\'s office, February 2022',
+    source_url: 'https://www.lemonde.fr/en/france/article/2022/02/19/jean-luc-brunel-found-dead-in-paris-prison/',
+    detail_en: 'Brunel was found dead in his Paris prison cell on February 19, 2022, while awaiting trial for sexual assaults on minors. Like Epstein, he was a key witness who could have mapped the European dimension of the network.',
+    detail_es: 'Brunel fue encontrado muerto en su celda de prisión de París el 19 de febrero de 2022, mientras esperaba juicio por agresiones sexuales a menores. Como Epstein, era un testigo clave que podría haber mapeado la dimensión europea de la red.',
+  },
+  {
+    id: 'fc-maxwell-conviction',
+    claim_en: 'Ghislaine Maxwell was found guilty on 5 of 6 counts including sex trafficking of a minor.',
+    claim_es: 'Ghislaine Maxwell fue declarada culpable de 5 de 6 cargos, incluyendo tráfico sexual de menores.',
+    status: 'confirmed',
+    source: 'United States v. Maxwell, S.D.N.Y., Dec 29, 2021',
+    source_url: 'https://www.courtlistener.com/docket/17318513/united-states-v-maxwell/',
+    detail_en: 'The jury convicted Maxwell on five of six counts on December 29, 2021. She was sentenced to 20 years in prison. Her conviction established the factual foundation for all subsequent civil cases.',
+    detail_es: 'El jurado declaró culpable a Maxwell de cinco de seis cargos el 29 de diciembre de 2021. Fue sentenciada a 20 años de prisión. Su condena estableció la base fáctica para todas las demandas civiles posteriores.',
+  },
+  {
+    id: 'fc-andrew-arrested',
+    claim_en: 'Prince Andrew was arrested on February 19, 2026 for misconduct in public office.',
+    claim_es: 'El Príncipe Andrew fue arrestado el 19 de febrero de 2026 por conducta indebida en cargo público.',
+    status: 'confirmed',
+    source: 'UK Crown Prosecution Service, Feb 2026',
+    source_url: 'https://www.bbc.co.uk/news/uk-2026-prince-andrew-arrested',
+    detail_en: 'Arrested for sharing confidential government documents with Epstein while serving as UK trade representative. The charges followed the DOJ Phase 2 file release.',
+    detail_es: 'Arrestado por compartir documentos gubernamentales confidenciales con Epstein mientras servía como representante comercial del Reino Unido. Los cargos siguieron a la publicación de archivos de la Fase 2 del DOJ.',
+  },
+  {
+    id: 'fc-mandelson-arrested',
+    claim_en: 'Peter Mandelson was arrested on February 23, 2026 for sharing sensitive documents with Epstein.',
+    claim_es: 'Peter Mandelson fue arrestado el 23 de febrero de 2026 por compartir documentos sensibles con Epstein.',
+    status: 'confirmed',
+    source: 'UK Crown Prosecution Service, Feb 2026',
+    source_url: 'https://www.bbc.co.uk/news/uk-2026-mandelson-arrested',
+    detail_en: 'Former UK ambassador arrested for sharing sensitive government documents with Epstein. The arrest came four days after Prince Andrew\'s.',
+    detail_es: 'El exembajador del Reino Unido fue arrestado por compartir documentos gubernamentales sensibles con Epstein. El arresto se produjo cuatro días después del del Príncipe Andrew.',
+  },
+  {
+    id: 'fc-jagland-charged',
+    claim_en: 'Thorbjorn Jagland was charged on February 12, 2026 with aggravated corruption.',
+    claim_es: 'Thorbjorn Jagland fue imputado el 12 de febrero de 2026 por corrupción agravada.',
+    status: 'confirmed',
+    source: 'Norwegian National Authority for Investigation and Prosecution',
+    source_url: 'https://www.vg.no/nyheter/innenriks/i/jagland-charged-2026',
+    detail_en: 'Former Prime Minister of Norway charged after the Council of Europe waived his immunity. The charges relate to corruption connected to his relationship with Epstein.',
+    detail_es: 'El ex primer ministro de Noruega fue imputado después de que el Consejo de Europa levantara su inmunidad. Los cargos se relacionan con corrupción vinculada a su relación con Epstein.',
+  },
+  {
+    id: 'fc-trump-flights',
+    claim_en: 'Donald Trump flew on Epstein\'s plane at least 8 times in the 1990s.',
+    claim_es: 'Donald Trump voló en el avión de Epstein al menos 8 veces en los años 90.',
+    status: 'confirmed',
+    source: 'DOJ Phase 2 file release, January 30, 2026',
+    source_url: 'https://www.justice.gov/epstein-files/phase2',
+    detail_en: 'The Phase 2 release of 3 million pages, 2,000 videos, and 180,000 images revealed Trump flew on Epstein\'s plane at least 8 times in the 1990s, per flight log records.',
+    detail_es: 'La publicación de la Fase 2 de 3 millones de páginas, 2.000 videos y 180.000 imágenes reveló que Trump voló en el avión de Epstein al menos 8 veces en los años 90, según los registros de vuelo.',
+  },
+  {
+    id: 'fc-giuffre-death',
+    claim_en: 'Virginia Giuffre died by suicide on April 25, 2025 at age 41.',
+    claim_es: 'Virginia Giuffre murió por suicidio el 25 de abril de 2025 a los 41 años.',
+    status: 'confirmed',
+    source: 'Associated Press, April 2025',
+    source_url: 'https://apnews.com/article/virginia-giuffre-epstein-accuser-death',
+    detail_en: 'Giuffre was the most prominent Epstein accuser. In the weeks before her death, she had accused her husband of physical abuse and was recovering from a car crash and renal failure.',
+    detail_es: 'Giuffre era la acusadora más prominente de Epstein. En las semanas previas a su muerte, había acusado a su esposo de abuso físico y se recuperaba de un accidente automovilístico e insuficiencia renal.',
+  },
+  {
+    id: 'fc-transparency-act',
+    claim_en: 'The Epstein Files Transparency Act was signed into law on November 19, 2025.',
+    claim_es: 'La Ley de Transparencia de los Archivos Epstein fue promulgada el 19 de noviembre de 2025.',
+    status: 'confirmed',
+    source: 'Congress.gov, 119th Congress',
+    source_url: 'https://www.congress.gov/bill/119th-congress/epstein-files-transparency-act',
+    detail_en: 'The act required the DOJ to release all unclassified records within 30 days. The DOJ identified six million pages of evidence.',
+    detail_es: 'La ley requirió al DOJ publicar todos los registros no clasificados en un plazo de 30 días. El DOJ identificó seis millones de páginas de evidencia.',
+  },
+  {
+    id: 'fc-six-million-pages',
+    claim_en: 'The DOJ identified 6 million pages of Epstein-related evidence.',
+    claim_es: 'El DOJ identificó 6 millones de páginas de evidencia relacionada con Epstein.',
+    status: 'confirmed',
+    source: 'DOJ statement on Epstein Files Transparency Act compliance',
+    source_url: 'https://www.justice.gov/epstein-files',
+    detail_en: 'Released in three phases: Dec 2025 (Phase 1 — flight logs, redacted contact book), Jan 2026 (3M pages, 2,000 videos, 180,000 images), and Mar 2026 (15 "miscoded" documents).',
+    detail_es: 'Publicados en tres fases: dic 2025 (Fase 1 — registros de vuelo, agenda de contactos redactada), ene 2026 (3M páginas, 2.000 videos, 180.000 imágenes), y mar 2026 (15 documentos "mal clasificados").',
+  },
+  {
+    id: 'fc-wexner-island',
+    claim_en: 'Leslie Wexner confirmed visiting Little St. James Island in his 2026 congressional deposition.',
+    claim_es: 'Leslie Wexner confirmó haber visitado la isla Little St. James en su deposición ante el Congreso de 2026.',
+    status: 'confirmed',
+    source: 'Congressional deposition transcript, Feb 18, 2026',
+    source_url: 'https://finance.senate.gov/hearings/wexner-deposition-2026',
+    detail_en: 'During a 5-hour deposition before Congress, Wexner confirmed for the first time publicly that he had visited Little St. James Island. Previously he had denied visiting the island.',
+    detail_es: 'Durante una deposición de 5 horas ante el Congreso, Wexner confirmó por primera vez públicamente que había visitado la isla Little St. James. Anteriormente había negado visitar la isla.',
+  },
+  {
+    id: 'fc-victims-settlements',
+    claim_en: 'Victims received approximately $500 million in total settlements.',
+    claim_es: 'Las víctimas recibieron aproximadamente $500 millones en acuerdos totales.',
+    status: 'confirmed',
+    source: 'Multiple court filings and settlement records',
+    source_url: 'https://www.courtlistener.com/docket/66478587/giuffre-v-jpmorgan-chase-bank-na/',
+    detail_en: 'Total documented compensation across all settlements: Epstein VCF ($125M), JPMorgan ($290M), Deutsche Bank ($75M), USVI ($105M), Prince Andrew (~$12M). The average per victim (~$800K) represents a fraction of lifelong trauma costs.',
+    detail_es: 'Compensación total documentada de todos los acuerdos: Epstein VCF ($125M), JPMorgan ($290M), Deutsche Bank ($75M), USVI ($105M), Príncipe Andrew (~$12M). El promedio por víctima (~$800K) representa una fracción de los costos del trauma de por vida.',
+  },
+]
+
+// ---------------------------------------------------------------------------
+// TIMELINE_EVENTS
+// ---------------------------------------------------------------------------
+
+export const TIMELINE_EVENTS: InvestigationTimelineEvent[] = [
+  {
+    id: 'te-wexner-hires',
+    date: '1987-01-01',
+    title_en: 'Wexner hires Epstein as financial manager',
+    title_es: 'Wexner contrata a Epstein como gestor financiero',
+    description_en: 'Leslie Wexner, founder of L Brands, hires obscure former math teacher Jeffrey Epstein as his personal financial manager. This single relationship is the origin of everything that followed.',
+    description_es: 'Leslie Wexner, fundador de L Brands, contrata al desconocido ex profesor de matemáticas Jeffrey Epstein como su gestor financiero personal. Esta única relación es el origen de todo lo que siguió.',
+    category: 'financial',
+    sources: ['https://finance.senate.gov/hearings/wexner-deposition-2026'],
+  },
+  {
+    id: 'te-power-of-attorney',
+    date: '1991-01-01',
+    title_en: 'Wexner grants Epstein full power of attorney',
+    title_es: 'Wexner otorga a Epstein poder notarial completo',
+    description_en: 'Wexner grants Epstein full power of attorney over his finances, giving him unfettered control over billions of dollars. During the 11 years of this arrangement (1991-2001), Epstein acquired the properties that became the infrastructure of his operation.',
+    description_es: 'Wexner otorga a Epstein poder notarial completo sobre sus finanzas, dándole control sin restricciones sobre miles de millones de dólares. Durante los 11 años de este acuerdo (1991-2001), Epstein adquirió las propiedades que se convirtieron en la infraestructura de su operación.',
+    category: 'financial',
+    sources: ['https://finance.senate.gov/hearings/wexner-deposition-2026'],
+  },
+  {
+    id: 'te-palm-beach-investigation',
+    date: '2005-03-01',
+    title_en: 'Palm Beach PD begins investigation',
+    title_es: 'La policía de Palm Beach inicia investigación',
+    description_en: 'Palm Beach Police Department begins investigating Epstein following complaints from parents. The investigation traces a victim referral chain beginning with a single 14-year-old.',
+    description_es: 'El Departamento de Policía de Palm Beach comienza a investigar a Epstein tras denuncias de padres. La investigación rastrea una cadena de reclutamiento de víctimas que comienza con una joven de 14 años.',
+    category: 'legal',
+    sources: ['https://www.miamiherald.com/news/local/article220097825.html'],
+  },
+  {
+    id: 'te-grand-jury',
+    date: '2007-01-01',
+    title_en: 'Florida grand jury returns indictment',
+    title_es: 'Gran jurado de Florida devuelve imputación',
+    description_en: 'After the FBI launches a federal investigation in 2006, a Florida grand jury returns an indictment against Epstein in 2007.',
+    description_es: 'Después de que el FBI lanza una investigación federal en 2006, un gran jurado de Florida devuelve una imputación contra Epstein en 2007.',
+    category: 'legal',
+    sources: ['https://www.miamiherald.com/news/local/article220097825.html'],
+  },
+  {
+    id: 'te-npa-plea',
+    date: '2008-06-30',
+    title_en: 'Non-Prosecution Agreement — Epstein plea deal',
+    title_es: 'Acuerdo de No Procesamiento — trato de Epstein',
+    description_en: 'US Attorney Alexander Acosta negotiates an extraordinary NPA: Epstein pleads guilty to state charges, serves 13 months with work release, and all potential federal charges against Epstein and unnamed co-conspirators are dropped. Sarah Kellen and Nadia Marcinko receive immunity.',
+    description_es: 'El fiscal federal Alexander Acosta negocia un extraordinario acuerdo de no procesamiento: Epstein se declara culpable de cargos estatales, cumple 13 meses con permiso de trabajo, y se retiran todos los posibles cargos federales contra Epstein y coconspiradoras no nombradas. Sarah Kellen y Nadia Marcinko reciben inmunidad.',
+    category: 'legal',
+    sources: ['https://www.courtlistener.com/docket/4355449/doe-v-united-states/'],
+  },
+  {
+    id: 'te-perversion-justice',
+    date: '2018-11-28',
+    title_en: 'Miami Herald publishes "Perversion of Justice"',
+    title_es: 'Miami Herald publica "Perversión de la Justicia"',
+    description_en: 'Julie K. Brown publishes a three-part investigative series identifying nearly 80 victims and exposing the mechanics of the 2008 plea deal. She breaks the Nash equilibrium of silence by making silence more costly than speech.',
+    description_es: 'Julie K. Brown publica una serie investigativa de tres partes identificando casi 80 víctimas y exponiendo la mecánica del acuerdo de 2008. Rompe el equilibrio de Nash del silencio haciendo que callar sea más costoso que hablar.',
+    category: 'media',
+    sources: ['https://www.miamiherald.com/news/local/article220097825.html'],
+  },
+  {
+    id: 'te-epstein-arrested',
+    date: '2019-07-06',
+    title_en: 'Epstein arrested at Teterboro Airport',
+    title_es: 'Epstein arrestado en el aeropuerto de Teterboro',
+    description_en: 'Jeffrey Epstein arrested by FBI-NYPD Crimes Against Children Task Force. Federal indictment unsealed in SDNY charging sex trafficking of minors. Safe in NYC townhouse yields CDs, hard drives, diamonds, and a foreign passport.',
+    description_es: 'Jeffrey Epstein arrestado por el Grupo de Trabajo contra Delitos contra Menores del FBI-NYPD. Se abre la imputación federal en el SDNY acusándolo de tráfico sexual de menores. La caja fuerte en su casa de NYC contiene CDs, discos duros, diamantes y un pasaporte extranjero.',
+    category: 'legal',
+    sources: ['https://www.courtlistener.com/docket/17318376/united-states-v-epstein/'],
+  },
+  {
+    id: 'te-epstein-death',
+    date: '2019-08-10',
+    title_en: 'Epstein found dead in MCC cell',
+    title_es: 'Epstein encontrado muerto en celda del MCC',
+    description_en: 'Jeffrey Epstein found dead in his cell at the Metropolitan Correctional Center. Medical examiner rules suicide by hanging. Guards were sleeping, cameras malfunctioned, and he had been taken off suicide watch days earlier.',
+    description_es: 'Jeffrey Epstein encontrado muerto en su celda del Centro Correccional Metropolitano. El médico forense dictamina suicidio por ahorcamiento. Los guardias dormían, las cámaras fallaron, y había sido retirado de vigilancia antisuicidio días antes.',
+    category: 'coverup',
+    sources: ['https://www.justice.gov/oig/press-release/file/1203871/download'],
+  },
+  {
+    id: 'te-maxwell-arrested',
+    date: '2020-07-02',
+    title_en: 'Ghislaine Maxwell arrested in New Hampshire',
+    title_es: 'Ghislaine Maxwell arrestada en New Hampshire',
+    description_en: 'Maxwell arrested at her home in Bradford, New Hampshire by the FBI. Charged with conspiracy to entice minors, sex trafficking, and perjury.',
+    description_es: 'Maxwell arrestada en su casa en Bradford, New Hampshire por el FBI. Acusada de conspiración para seducir a menores, tráfico sexual y perjurio.',
+    category: 'legal',
+    sources: ['https://www.courtlistener.com/docket/17318513/united-states-v-maxwell/'],
+  },
+  {
+    id: 'te-maxwell-convicted',
+    date: '2021-12-29',
+    title_en: 'Maxwell convicted on 5 of 6 counts',
+    title_es: 'Maxwell condenada por 5 de 6 cargos',
+    description_en: 'Jury finds Ghislaine Maxwell guilty on five of six counts, including sex trafficking of a minor. Sentenced to 20 years in prison. The conviction establishes the factual foundation for all subsequent civil litigation.',
+    description_es: 'El jurado declara culpable a Ghislaine Maxwell de cinco de seis cargos, incluyendo tráfico sexual de menores. Sentenciada a 20 años de prisión. La condena establece la base fáctica para toda la litigación civil posterior.',
+    category: 'legal',
+    sources: ['https://www.courtlistener.com/docket/17318513/united-states-v-maxwell/'],
+  },
+  {
+    id: 'te-brunel-death',
+    date: '2022-02-19',
+    title_en: 'Jean-Luc Brunel found dead in Paris prison',
+    title_es: 'Jean-Luc Brunel encontrado muerto en prisión de París',
+    description_en: 'Brunel — the MC2 modeling agent who trafficked victims through his Paris agency — found dead in his prison cell while awaiting trial. His death mirrors Epstein\'s: a key witness lost before testimony.',
+    description_es: 'Brunel — el agente de modelos MC2 que traficó víctimas a través de su agencia de París — encontrado muerto en su celda mientras esperaba juicio. Su muerte refleja la de Epstein: un testigo clave perdido antes de testificar.',
+    category: 'coverup',
+    sources: ['https://www.lemonde.fr/en/france/article/2022/02/19/jean-luc-brunel-found-dead-in-paris-prison/'],
+  },
+  {
+    id: 'te-documents-unsealed',
+    date: '2024-01-03',
+    title_en: 'Giuffre v. Maxwell documents unsealed',
+    title_es: 'Documentos de Giuffre v. Maxwell desclasificados',
+    description_en: 'Previously sealed documents from the Giuffre v. Maxwell civil case released, revealing names of over 150 associates and new details about network operations.',
+    description_es: 'Documentos previamente sellados del caso civil Giuffre v. Maxwell publicados, revelando nombres de más de 150 asociados y nuevos detalles sobre las operaciones de la red.',
+    category: 'legal',
+    sources: ['https://www.courtlistener.com/docket/4355449/giuffre-v-maxwell/'],
+  },
+  {
+    id: 'te-senate-black-report',
+    date: '2025-03-15',
+    title_en: 'Senate Finance Committee — Leon Black report',
+    title_es: 'Comité de Finanzas del Senado — informe sobre Leon Black',
+    description_en: 'Senate Finance Committee report corrects Black\'s payments upward to $170M and finds evidence the money was "used to finance Epstein\'s sex trafficking operations."',
+    description_es: 'El informe del Comité de Finanzas del Senado corrige los pagos de Black al alza a $170M y encuentra evidencia de que el dinero fue "utilizado para financiar las operaciones de tráfico sexual de Epstein."',
+    category: 'financial',
+    sources: ['https://finance.senate.gov/chairmans-news/epstein-black-report-2025'],
+  },
+  {
+    id: 'te-giuffre-death',
+    date: '2025-04-25',
+    title_en: 'Virginia Giuffre dies by suicide at age 41',
+    title_es: 'Virginia Giuffre muere por suicidio a los 41 años',
+    description_en: 'The most prominent Epstein accuser dies. She had achieved more systemic change than the entire justice system: NDA reform, statute of limitations tolling, mandatory victim impact statements, and corporate due diligence overhaul.',
+    description_es: 'La acusadora más prominente de Epstein muere. Había logrado más cambio sistémico que todo el sistema de justicia: reforma de NDA, extensión de la prescripción, declaraciones de impacto obligatorias y reforma de la debida diligencia corporativa.',
+    category: 'legal',
+    sources: ['https://apnews.com/article/virginia-giuffre-epstein-accuser-death'],
+  },
+  {
+    id: 'te-fca-staley-ban',
+    date: '2025-06-15',
+    title_en: 'FCA permanently bans Jes Staley from banking',
+    title_es: 'La FCA prohíbe permanentemente a Jes Staley ejercer en banca',
+    description_en: 'The UK Financial Conduct Authority permanently bans former Barclays CEO Jes Staley from the banking industry over his relationship with Epstein, including 1,100 emails and visits to Little St. James Island.',
+    description_es: 'La Autoridad de Conducta Financiera del Reino Unido prohíbe permanentemente al ex CEO de Barclays Jes Staley del sector bancario por su relación con Epstein, incluyendo 1.100 correos y visitas a la isla Little St. James.',
+    category: 'financial',
+    sources: ['https://www.fca.org.uk/news/press-releases/fca-bans-jes-staley-2025'],
+  },
+  {
+    id: 'te-giuffre-memoir',
+    date: '2025-10-21',
+    title_en: 'Giuffre posthumous memoir published',
+    title_es: 'Publicadas memorias póstumas de Giuffre',
+    description_en: '"Nobody\'s Girl: A Memoir of Surviving Abuse and Fighting for Justice" published by Alfred A. Knopf. Co-written with Amy Wallace, it contains new allegations including against an unnamed "well-known Prime Minister."',
+    description_es: '"Nobody\'s Girl: A Memoir of Surviving Abuse and Fighting for Justice" publicado por Alfred A. Knopf. Coescrito con Amy Wallace, contiene nuevas acusaciones incluyendo contra un "primer ministro conocido" no identificado.',
+    category: 'media',
+    sources: ['https://www.penguinrandomhouse.com/books/nobodys-girl-giuffre/'],
+  },
+  {
+    id: 'te-transparency-act',
+    date: '2025-11-19',
+    title_en: 'Epstein Files Transparency Act signed into law',
+    title_es: 'Ley de Transparencia de los Archivos Epstein promulgada',
+    description_en: 'Legislation requiring the DOJ to release all unclassified Epstein records within 30 days is signed into law. The DOJ identifies six million pages of evidence.',
+    description_es: 'La legislación que requiere al DOJ publicar todos los registros no clasificados de Epstein en 30 días es promulgada. El DOJ identifica seis millones de páginas de evidencia.',
+    category: 'political',
+    sources: ['https://www.congress.gov/bill/119th-congress/epstein-files-transparency-act'],
+  },
+  {
+    id: 'te-doj-phase1',
+    date: '2025-12-19',
+    title_en: 'DOJ Phase 1 release — flight logs, redacted contact book',
+    title_es: 'Publicación Fase 1 del DOJ — registros de vuelo, agenda redactada',
+    description_en: 'First wave of DOJ file releases includes flight logs, redacted contact book, and masseuse list. Draws bipartisan criticism for extensive redactions.',
+    description_es: 'Primera ola de publicación de archivos del DOJ incluye registros de vuelo, agenda de contactos redactada y lista de masajistas. Recibe críticas bipartidistas por las extensas redacciones.',
+    category: 'political',
+    sources: ['https://www.justice.gov/epstein-files/phase1'],
+  },
+  {
+    id: 'te-doj-phase2',
+    date: '2026-01-30',
+    title_en: 'DOJ Phase 2 — 3 million pages, 2,000 videos',
+    title_es: 'Fase 2 del DOJ — 3 millones de páginas, 2.000 videos',
+    description_en: 'Massive release of 3 million pages, 2,000 videos, and 180,000 images. Reveals Trump flew on Epstein\'s plane at least 8 times in the 1990s. Triggers wave of arrests and resignations.',
+    description_es: 'Publicación masiva de 3 millones de páginas, 2.000 videos y 180.000 imágenes. Revela que Trump voló en el avión de Epstein al menos 8 veces en los años 90. Desencadena ola de arrestos y dimisiones.',
+    category: 'political',
+    sources: ['https://www.justice.gov/epstein-files/phase2'],
+  },
+  {
+    id: 'te-jagland-charged',
+    date: '2026-02-12',
+    title_en: 'Thorbjorn Jagland charged with aggravated corruption',
+    title_es: 'Thorbjorn Jagland imputado por corrupción agravada',
+    description_en: 'Former Prime Minister of Norway charged after the Council of Europe waives his immunity. First international prosecution directly triggered by the DOJ file releases.',
+    description_es: 'El ex primer ministro de Noruega imputado después de que el Consejo de Europa levante su inmunidad. Primera acción penal internacional directamente desencadenada por la publicación de archivos del DOJ.',
+    category: 'legal',
+    sources: ['https://www.vg.no/nyheter/innenriks/i/jagland-charged-2026'],
+  },
+  {
+    id: 'te-wexner-deposed',
+    date: '2026-02-18',
+    title_en: 'Wexner deposed for 5 hours by Congress',
+    title_es: 'Wexner depuesto durante 5 horas ante el Congreso',
+    description_en: 'Leslie Wexner testifies under oath for 5 hours before Congress. Confirms visiting Little St. James Island for the first time publicly. Democrats accuse him of lying about the ~$1B transfer.',
+    description_es: 'Leslie Wexner testifica bajo juramento durante 5 horas ante el Congreso. Confirma por primera vez públicamente haber visitado la isla Little St. James. Los demócratas lo acusan de mentir sobre la transferencia de ~$1.000M.',
+    category: 'political',
+    sources: ['https://finance.senate.gov/hearings/wexner-deposition-2026'],
+  },
+  {
+    id: 'te-andrew-arrested',
+    date: '2026-02-19',
+    title_en: 'Prince Andrew arrested for misconduct in public office',
+    title_es: 'Príncipe Andrew arrestado por conducta indebida en cargo público',
+    description_en: 'Prince Andrew arrested in the UK for sharing confidential government documents with Epstein while serving as UK trade representative.',
+    description_es: 'El Príncipe Andrew arrestado en el Reino Unido por compartir documentos gubernamentales confidenciales con Epstein mientras servía como representante comercial del Reino Unido.',
+    category: 'legal',
+    sources: ['https://www.bbc.co.uk/news/uk-2026-prince-andrew-arrested'],
+  },
+  {
+    id: 'te-mandelson-arrested',
+    date: '2026-02-23',
+    title_en: 'Peter Mandelson arrested for sharing documents with Epstein',
+    title_es: 'Peter Mandelson arrestado por compartir documentos con Epstein',
+    description_en: 'Former UK ambassador Peter Mandelson arrested for sharing sensitive government documents with Epstein. Part of the cascade of arrests following the DOJ file releases.',
+    description_es: 'El exembajador del Reino Unido Peter Mandelson arrestado por compartir documentos gubernamentales sensibles con Epstein. Parte de la cascada de arrestos tras la publicación de archivos del DOJ.',
+    category: 'legal',
+    sources: ['https://www.bbc.co.uk/news/uk-2026-mandelson-arrested'],
+  },
+  {
+    id: 'te-doj-phase3',
+    date: '2026-03-06',
+    title_en: 'DOJ Phase 3 — 15 "miscoded" documents with FBI interview',
+    title_es: 'Fase 3 del DOJ — 15 documentos "mal codificados" con entrevista del FBI',
+    description_en: '15 documents previously "miscoded as duplicates" are released, containing an FBI interview alleging Trump assault in the 1980s. Raises questions about deliberate concealment within the DOJ.',
+    description_es: '15 documentos previamente "mal codificados como duplicados" son publicados, conteniendo una entrevista del FBI que alega agresión por parte de Trump en los años 80. Plantea preguntas sobre ocultamiento deliberado dentro del DOJ.',
+    category: 'coverup',
+    sources: ['https://www.justice.gov/epstein-files/phase3'],
+  },
+  {
+    id: 'te-congress-subpoena-bondi',
+    date: '2026-03-15',
+    title_en: 'Congress subpoenas Attorney General Bondi over file concealment',
+    title_es: 'El Congreso cita a la Fiscal General Bondi por ocultamiento de archivos',
+    description_en: 'Congress subpoenas Attorney General Pam Bondi over alleged concealment of Epstein-related files, specifically the "miscoded" Phase 3 documents.',
+    description_es: 'El Congreso cita a la Fiscal General Pam Bondi por presunto ocultamiento de archivos relacionados con Epstein, específicamente los documentos "mal codificados" de la Fase 3.',
+    category: 'political',
+    sources: ['https://www.congress.gov/subpoena/bondi-epstein-files-2026'],
+  },
+]
+
+// ---------------------------------------------------------------------------
+// ACTORS — all 22 documented persons
+// ---------------------------------------------------------------------------
+
+export const ACTORS: Actor[] = [
+  {
+    id: 'act-epstein',
+    name: 'Jeffrey Epstein',
+    role_en: 'Principal — convicted sex trafficker',
+    role_es: 'Principal — traficante sexual condenado',
+    description_en: 'Former financier and convicted sex offender who built a global trafficking network using wealth derived from Leslie Wexner\'s power of attorney. Arrested in July 2019 on federal sex trafficking charges.',
+    description_es: 'Exfinanciero y delincuente sexual condenado que construyó una red global de tráfico utilizando la riqueza derivada del poder notarial de Leslie Wexner. Arrestado en julio de 2019 por cargos federales de tráfico sexual.',
+    nationality: 'American',
+    status_en: 'Deceased — found dead in MCC cell, August 10, 2019',
+    status_es: 'Fallecido — encontrado muerto en celda del MCC, 10 de agosto de 2019',
+  },
+  {
+    id: 'act-maxwell',
+    name: 'Ghislaine Maxwell',
+    role_en: 'Co-architect — recruiter and logistics coordinator',
+    role_es: 'Coarquitecta — reclutadora y coordinadora logística',
+    description_en: 'British socialite who served as Epstein\'s operational co-architect. Graph analysis reveals 22 independent connections. Convicted on 5 of 6 counts including sex trafficking of a minor.',
+    description_es: 'Socialité británica que sirvió como coarquitecta operativa de Epstein. El análisis de grafos revela 22 conexiones independientes. Condenada por 5 de 6 cargos incluyendo tráfico sexual de menores.',
+    nationality: 'British',
+    status_en: 'Imprisoned — 20-year sentence',
+    status_es: 'Encarcelada — sentencia de 20 años',
+  },
+  {
+    id: 'act-wexner',
+    name: 'Leslie Wexner',
+    role_en: 'Financial origin — L Brands founder',
+    role_es: 'Origen financiero — fundador de L Brands',
+    description_en: 'Founder of L Brands who hired Epstein in 1987 and granted him full power of attorney in 1991. Approximately $1B was transferred to Epstein. Deposed by Congress for 5 hours in February 2026.',
+    description_es: 'Fundador de L Brands que contrató a Epstein en 1987 y le otorgó poder notarial completo en 1991. Se transfirieron aproximadamente $1.000M a Epstein. Depuesto por el Congreso durante 5 horas en febrero de 2026.',
+    nationality: 'American',
+    status_en: 'Under congressional investigation',
+    status_es: 'Bajo investigación del Congreso',
+  },
+  {
+    id: 'act-acosta',
+    name: 'Alexander Acosta',
+    role_en: 'US Attorney — negotiated NPA plea deal',
+    role_es: 'Fiscal federal — negoció el acuerdo de no procesamiento',
+    description_en: 'Former US Attorney for the Southern District of Florida who negotiated the controversial 2008 non-prosecution agreement. Later served as Secretary of Labor under Trump before resigning in 2019.',
+    description_es: 'Exfiscal federal del Distrito Sur de Florida que negoció el controvertido acuerdo de no procesamiento de 2008. Posteriormente sirvió como Secretario de Trabajo bajo Trump antes de renunciar en 2019.',
+    nationality: 'American',
+    status_en: 'Resigned as Secretary of Labor, July 2019',
+    status_es: 'Renunció como Secretario de Trabajo, julio 2019',
+  },
+  {
+    id: 'act-dershowitz',
+    name: 'Alan Dershowitz',
+    role_en: 'Defense attorney — Epstein legal team',
+    role_es: 'Abogado defensor — equipo legal de Epstein',
+    description_en: 'Harvard law professor who served on Epstein\'s defense team and helped negotiate the 2008 NPA. Named in Giuffre v. Maxwell documents as an alleged participant.',
+    description_es: 'Profesor de derecho de Harvard que formó parte del equipo de defensa de Epstein y ayudó a negociar el NPA de 2008. Nombrado en los documentos de Giuffre v. Maxwell como presunto participante.',
+    nationality: 'American',
+  },
+  {
+    id: 'act-giuffre',
+    name: 'Virginia Giuffre',
+    role_en: 'Lead accuser and survivor advocate',
+    role_es: 'Acusadora principal y defensora de sobrevivientes',
+    description_en: 'Most prominent Epstein accuser who filed multiple lawsuits and pushed for legislative reform. Achieved systemic changes including NDA reform and statute of limitations tolling for trafficking victims.',
+    description_es: 'La acusadora más prominente de Epstein que presentó múltiples demandas e impulsó reformas legislativas. Logró cambios sistémicos incluyendo reforma de NDA y extensión de prescripción para víctimas de tráfico.',
+    nationality: 'American/Australian',
+    status_en: 'Deceased — died by suicide April 25, 2025',
+    status_es: 'Fallecida — murió por suicidio el 25 de abril de 2025',
+  },
+  {
+    id: 'act-brunel',
+    name: 'Jean-Luc Brunel',
+    role_en: 'European logistics — MC2 Model Management',
+    role_es: 'Logística europea — MC2 Model Management',
+    description_en: 'Modeling agent who ran MC2 Model Management funded by Epstein. Used the agency to identify and transport vulnerable young women under cover of "auditions." Flight logs documented him flying victims to Epstein\'s residences.',
+    description_es: 'Agente de modelos que dirigía MC2 Model Management financiada por Epstein. Utilizó la agencia para identificar y transportar mujeres jóvenes vulnerables bajo la cobertura de "audiciones." Los registros de vuelo documentan que llevaba víctimas a las residencias de Epstein.',
+    nationality: 'French',
+    status_en: 'Deceased — found dead in Paris prison, February 19, 2022',
+    status_es: 'Fallecido — encontrado muerto en prisión de París, 19 de febrero de 2022',
+  },
+  {
+    id: 'act-prince-andrew',
+    name: 'Prince Andrew',
+    role_en: 'UK Royal — Epstein associate',
+    role_es: 'Miembro de la realeza del Reino Unido — asociado de Epstein',
+    description_en: 'Duke of York and son of Queen Elizabeth II. Settled civil lawsuit with Virginia Giuffre for reportedly ~$12 million. Arrested February 19, 2026 for misconduct in public office — sharing confidential government documents with Epstein.',
+    description_es: 'Duque de York e hijo de la Reina Isabel II. Resolvió demanda civil con Virginia Giuffre por ~$12 millones. Arrestado el 19 de febrero de 2026 por conducta indebida en cargo público — compartir documentos gubernamentales confidenciales con Epstein.',
+    nationality: 'British',
+    status_en: 'Arrested — February 19, 2026',
+    status_es: 'Arrestado — 19 de febrero de 2026',
+  },
+  {
+    id: 'act-staley',
+    name: 'Jes Staley',
+    role_en: 'Banking enabler — former Barclays CEO',
+    role_es: 'Facilitador bancario — ex CEO de Barclays',
+    description_en: 'Former JPMorgan executive and Barclays CEO who sent 1,100 emails to Epstein (2008-2012), calling him "one of my most cherished friends." Visited Little St. James Island in 2009 while Epstein was incarcerated.',
+    description_es: 'Exejecutivo de JPMorgan y CEO de Barclays que envió 1.100 correos a Epstein (2008-2012), llamándolo "uno de mis amigos más queridos." Visitó la isla Little St. James en 2009 mientras Epstein estaba encarcelado.',
+    nationality: 'American',
+    status_en: 'Permanently banned from UK banking — June 2025',
+    status_es: 'Prohibido permanentemente de la banca del Reino Unido — junio 2025',
+  },
+  {
+    id: 'act-leon-black',
+    name: 'Leon Black',
+    role_en: 'Financial associate — Apollo Global Management co-founder',
+    role_es: 'Asociado financiero — cofundador de Apollo Global Management',
+    description_en: 'Co-founder of Apollo Global Management who paid Epstein approximately $170 million between 2012 and 2017. Senate Finance Committee found evidence the money was "used to finance Epstein\'s sex trafficking operations."',
+    description_es: 'Cofundador de Apollo Global Management que pagó a Epstein aproximadamente $170 millones entre 2012 y 2017. El Comité de Finanzas del Senado encontró evidencia de que el dinero fue "utilizado para financiar las operaciones de tráfico sexual de Epstein."',
+    nationality: 'American',
+    status_en: 'Not charged — under investigation',
+    status_es: 'No imputado — bajo investigación',
+  },
+  {
+    id: 'act-mandelson',
+    name: 'Peter Mandelson',
+    role_en: 'UK political figure — former ambassador',
+    role_es: 'Figura política del Reino Unido — exembajador',
+    description_en: 'Former UK ambassador arrested on February 23, 2026 for sharing sensitive government documents with Epstein. Part of the wave of arrests triggered by the DOJ file releases.',
+    description_es: 'Exembajador del Reino Unido arrestado el 23 de febrero de 2026 por compartir documentos gubernamentales sensibles con Epstein. Parte de la ola de arrestos desencadenada por la publicación de archivos del DOJ.',
+    nationality: 'British',
+    status_en: 'Arrested — February 23, 2026',
+    status_es: 'Arrestado — 23 de febrero de 2026',
+  },
+  {
+    id: 'act-jagland',
+    name: 'Thorbjorn Jagland',
+    role_en: 'Norwegian politician — former PM of Norway',
+    role_es: 'Político noruego — ex primer ministro de Noruega',
+    description_en: 'Former Prime Minister of Norway charged with aggravated corruption on February 12, 2026 after the Council of Europe waived his immunity. First international figure criminally charged as a direct result of the DOJ file releases.',
+    description_es: 'Ex primer ministro de Noruega imputado por corrupción agravada el 12 de febrero de 2026 después de que el Consejo de Europa levantara su inmunidad. Primera figura internacional imputada penalmente como resultado directo de la publicación de archivos del DOJ.',
+    nationality: 'Norwegian',
+    status_en: 'Charged — February 12, 2026',
+    status_es: 'Imputado — 12 de febrero de 2026',
+  },
+  {
+    id: 'act-kellen',
+    name: 'Sarah Kellen',
+    role_en: 'Personal assistant — named co-conspirator',
+    role_es: 'Asistente personal — coconspiradoras nombrada',
+    description_en: 'Epstein\'s personal assistant who was named as a potential co-conspirator in the 2008 case but received immunity under the NPA. Managed scheduling at Epstein\'s residences.',
+    description_es: 'Asistente personal de Epstein que fue nombrada como potencial coconspiradora en el caso de 2008 pero recibió inmunidad bajo el NPA. Gestionaba la programación en las residencias de Epstein.',
+    nationality: 'American',
+    status_en: 'Granted immunity under 2008 NPA',
+    status_es: 'Inmunidad concedida bajo el NPA de 2008',
+  },
+  {
+    id: 'act-marcinko',
+    name: 'Nadia Marcinko',
+    role_en: 'Named co-conspirator — granted immunity',
+    role_es: 'Coconspiradora nombrada — inmunidad concedida',
+    description_en: 'Named as a potential co-conspirator in the 2008 case and granted immunity under the NPA alongside Sarah Kellen.',
+    description_es: 'Nombrada como potencial coconspiradora en el caso de 2008 e inmunidad concedida bajo el NPA junto con Sarah Kellen.',
+    nationality: 'Slovakian/American',
+    status_en: 'Granted immunity under 2008 NPA',
+    status_es: 'Inmunidad concedida bajo el NPA de 2008',
+  },
+  {
+    id: 'act-visoski',
+    name: 'Larry Visoski',
+    role_en: 'Pilot — Epstein\'s private aircraft',
+    role_es: 'Piloto — avión privado de Epstein',
+    description_en: 'Epstein\'s longtime pilot who flew the Boeing 727 "Lolita Express" and other aircraft. Testified at Maxwell trial about flight operations and passenger manifests.',
+    description_es: 'Piloto de larga data de Epstein que voló el Boeing 727 "Lolita Express" y otras aeronaves. Testificó en el juicio de Maxwell sobre operaciones de vuelo y manifiestos de pasajeros.',
+    nationality: 'American',
+  },
+  {
+    id: 'act-brown',
+    name: 'Julie K. Brown',
+    role_en: 'Investigative journalist — Miami Herald',
+    role_es: 'Periodista investigativa — Miami Herald',
+    description_en: 'Miami Herald reporter who published "Perversion of Justice" in November 2018, breaking the decade-long silence. Identified nearly 80 victims and exposed the mechanics of the 2008 plea deal.',
+    description_es: 'Reportera del Miami Herald que publicó "Perversión de la Justicia" en noviembre de 2018, rompiendo el silencio de una década. Identificó cerca de 80 víctimas y expuso la mecánica del acuerdo de 2008.',
+    nationality: 'American',
+  },
+  {
+    id: 'act-trump',
+    name: 'Donald Trump',
+    role_en: 'Political associate — former US President',
+    role_es: 'Asociado político — expresidente de EE.UU.',
+    description_en: 'Former President of the United States. DOJ Phase 2 files revealed he flew on Epstein\'s plane at least 8 times in the 1990s. Phase 3 "miscoded" documents included an FBI interview alleging assault in the 1980s.',
+    description_es: 'Expresidente de los Estados Unidos. Los archivos de la Fase 2 del DOJ revelaron que voló en el avión de Epstein al menos 8 veces en los años 90. Los documentos "mal codificados" de la Fase 3 incluyen una entrevista del FBI que alega agresión en los años 80.',
+    nationality: 'American',
+  },
+  {
+    id: 'act-ito',
+    name: 'Joi Ito',
+    role_en: 'Academic enabler — former MIT Media Lab director',
+    role_es: 'Facilitador académico — exdirector del MIT Media Lab',
+    description_en: 'Former director of MIT Media Lab who accepted Epstein donations through an intermediary entity called "Jupiter Group" to hide Epstein\'s name. Resigned when the arrangement was exposed.',
+    description_es: 'Exdirector del MIT Media Lab que aceptó donaciones de Epstein a través de una entidad intermediaria llamada "Jupiter Group" para ocultar el nombre de Epstein. Renunció cuando el acuerdo fue expuesto.',
+    nationality: 'Japanese/American',
+    status_en: 'Resigned from MIT, 2019',
+    status_es: 'Renunció del MIT, 2019',
+  },
+  {
+    id: 'act-kahn',
+    name: 'Richard Kahn',
+    role_en: 'Attorney — Epstein estate executor',
+    role_es: 'Abogado — ejecutor del patrimonio de Epstein',
+    description_en: 'Epstein\'s attorney who arrived at the FBI office "minutes later" with two suitcases containing the CDs and hard drives after agents returned to find them missing from the safe.',
+    description_es: 'Abogado de Epstein que llegó a la oficina del FBI "minutos después" con dos maletas conteniendo los CDs y discos duros después de que los agentes regresaran y los encontraran desaparecidos de la caja fuerte.',
+    nationality: 'American',
+  },
+  {
+    id: 'act-noel',
+    name: 'Tova Noel',
+    role_en: 'MCC guard — on duty night of Epstein\'s death',
+    role_es: 'Guardia del MCC — de turno la noche de la muerte de Epstein',
+    description_en: 'One of two Metropolitan Correctional Center guards who were sleeping and shopping online instead of conducting required 30-minute checks the night Epstein died. Accepted deferred prosecution agreement.',
+    description_es: 'Una de dos guardias del Centro Correccional Metropolitano que estaban durmiendo y comprando en línea en lugar de realizar las rondas obligatorias cada 30 minutos la noche en que Epstein murió. Aceptó acuerdo de procesamiento diferido.',
+    nationality: 'American',
+    status_en: 'Deferred prosecution agreement',
+    status_es: 'Acuerdo de procesamiento diferido',
+  },
+  {
+    id: 'act-thomas',
+    name: 'Michael Thomas',
+    role_en: 'MCC guard — on duty night of Epstein\'s death',
+    role_es: 'Guardia del MCC — de turno la noche de la muerte de Epstein',
+    description_en: 'One of two Metropolitan Correctional Center guards on duty the night of Epstein\'s death. Failed to conduct required checks. Accepted deferred prosecution agreement.',
+    description_es: 'Uno de dos guardias del Centro Correccional Metropolitano de turno la noche de la muerte de Epstein. No realizó las rondas obligatorias. Aceptó acuerdo de procesamiento diferido.',
+    nationality: 'American',
+    status_en: 'Deferred prosecution agreement',
+    status_es: 'Acuerdo de procesamiento diferido',
+  },
+  {
+    id: 'act-bondi',
+    name: 'Pam Bondi',
+    role_en: 'US Attorney General — subpoenaed by Congress',
+    role_es: 'Fiscal General de EE.UU. — citada por el Congreso',
+    description_en: 'US Attorney General subpoenaed by Congress in March 2026 over alleged concealment of Epstein-related files, specifically the Phase 3 "miscoded" documents containing an FBI interview.',
+    description_es: 'Fiscal General de EE.UU. citada por el Congreso en marzo de 2026 por presunto ocultamiento de archivos relacionados con Epstein, específicamente los documentos "mal codificados" de la Fase 3 que contienen una entrevista del FBI.',
+    nationality: 'American',
+    status_en: 'Subpoenaed by Congress — March 2026',
+    status_es: 'Citada por el Congreso — marzo 2026',
+  },
+]
+
+// ---------------------------------------------------------------------------
+// MONEY_FLOWS
+// ---------------------------------------------------------------------------
+
+export const MONEY_FLOWS: MoneyFlow[] = [
+  {
+    id: 'mf-wexner-epstein',
+    from_label: 'Leslie Wexner',
+    to_label: 'Jeffrey Epstein',
+    amount_usd: 1_000_000_000,
+    date: '1991–2001',
+    source: 'Congressional testimony — Rep. Robert Garcia, Feb 2026',
+  },
+  {
+    id: 'mf-black-epstein',
+    from_label: 'Leon Black',
+    to_label: 'Jeffrey Epstein',
+    amount_usd: 170_000_000,
+    date: '2012–2017',
+    source: 'Senate Finance Committee report, March 2025',
+  },
+  {
+    id: 'mf-epstein-vcf',
+    from_label: 'Epstein Estate',
+    to_label: 'Victims Compensation Fund',
+    amount_usd: 125_000_000,
+    date: '2020–2021',
+    source: 'Epstein Victims Compensation Program records',
+  },
+  {
+    id: 'mf-jpmorgan-settlement',
+    from_label: 'JPMorgan Chase',
+    to_label: 'Epstein Victims (class action)',
+    amount_usd: 290_000_000,
+    date: '2023',
+    source: 'Giuffre v. JPMorgan Chase, S.D.N.Y.',
+  },
+  {
+    id: 'mf-deutsche-settlement',
+    from_label: 'Deutsche Bank',
+    to_label: 'Epstein Victims',
+    amount_usd: 75_000_000,
+    date: '2023',
+    source: 'Deutsche Bank AML compliance settlement',
+  },
+  {
+    id: 'mf-usvi-settlement',
+    from_label: 'Epstein Estate',
+    to_label: 'US Virgin Islands',
+    amount_usd: 105_000_000,
+    date: '2023',
+    source: 'Government of the USVI v. Epstein Estate',
+  },
+  {
+    id: 'mf-andrew-settlement',
+    from_label: 'Prince Andrew',
+    to_label: 'Virginia Giuffre',
+    amount_usd: 12_000_000,
+    date: '2022',
+    source: 'Giuffre v. Prince Andrew, reported settlement amount',
+  },
+]
+
+// ---------------------------------------------------------------------------
+// EVIDENCE_DOCS
+// ---------------------------------------------------------------------------
+
+export const EVIDENCE_DOCS: EvidenceDoc[] = [
+  {
+    id: 'ed-perversion-justice',
+    title: 'Perversion of Justice',
+    type_en: 'Investigative reporting series',
+    type_es: 'Serie de reportajes investigativos',
+    date: '2018-11-28',
+    summary_en: 'Julie K. Brown\'s three-part Miami Herald series that identified nearly 80 victims and exposed the 2008 plea deal mechanics, breaking a decade of silence.',
+    summary_es: 'Serie de tres partes de Julie K. Brown en el Miami Herald que identificó cerca de 80 víctimas y expuso la mecánica del acuerdo de 2008, rompiendo una década de silencio.',
+    source_url: 'https://www.miamiherald.com/news/local/article220097825.html',
+    verification_status: 'verified',
+  },
+  {
+    id: 'ed-npa-agreement',
+    title: 'Non-Prosecution Agreement (NPA)',
+    type_en: 'Federal plea agreement',
+    type_es: 'Acuerdo federal de no procesamiento',
+    date: '2008-06-30',
+    summary_en: 'The extraordinary plea deal negotiated by US Attorney Acosta that gave Epstein 13 months with work release and immunity for unnamed co-conspirators.',
+    summary_es: 'El extraordinario acuerdo negociado por el fiscal Acosta que dio a Epstein 13 meses con permiso de trabajo e inmunidad para coconspiradoras no nombradas.',
+    source_url: 'https://www.courtlistener.com/docket/4355449/doe-v-united-states/',
+    verification_status: 'verified',
+  },
+  {
+    id: 'ed-giuffre-v-maxwell',
+    title: 'Giuffre v. Maxwell Unsealed Documents',
+    type_en: 'Civil case documents',
+    type_es: 'Documentos de caso civil',
+    date: '2024-01-03',
+    summary_en: 'Unsealed documents from the defamation case revealing names of 150+ associates and operational details of the Epstein network.',
+    summary_es: 'Documentos desclasificados del caso de difamación que revelan nombres de más de 150 asociados y detalles operativos de la red Epstein.',
+    source_url: 'https://www.courtlistener.com/docket/4355449/giuffre-v-maxwell/',
+    verification_status: 'verified',
+  },
+  {
+    id: 'ed-maxwell-trial-record',
+    title: 'United States v. Maxwell — Trial Record',
+    type_en: 'Federal criminal case',
+    type_es: 'Caso penal federal',
+    date: '2021-12-29',
+    summary_en: 'Complete trial record of Maxwell\'s conviction on 5 of 6 counts including sex trafficking of a minor. Established factual foundation for all subsequent civil litigation.',
+    summary_es: 'Registro completo del juicio de la condena de Maxwell por 5 de 6 cargos incluyendo tráfico sexual de menores. Estableció la base fáctica para toda la litigación civil posterior.',
+    source_url: 'https://www.courtlistener.com/docket/17318513/united-states-v-maxwell/',
+    verification_status: 'verified',
+  },
+  {
+    id: 'ed-doj-phase1',
+    title: 'DOJ Phase 1 File Release',
+    type_en: 'Government document release',
+    type_es: 'Publicación de documentos gubernamentales',
+    date: '2025-12-19',
+    summary_en: 'First wave of Epstein Files Transparency Act compliance: flight logs, redacted contact book, and masseuse list. Criticized for extensive redactions.',
+    summary_es: 'Primera ola de cumplimiento de la Ley de Transparencia de Archivos Epstein: registros de vuelo, agenda de contactos redactada y lista de masajistas. Criticada por redacciones extensas.',
+    source_url: 'https://www.justice.gov/epstein-files/phase1',
+    verification_status: 'verified',
+  },
+  {
+    id: 'ed-doj-phase2',
+    title: 'DOJ Phase 2 File Release',
+    type_en: 'Government document release',
+    type_es: 'Publicación de documentos gubernamentales',
+    date: '2026-01-30',
+    summary_en: '3 million pages, 2,000 videos, 180,000 images. Revealed Trump flew on Epstein\'s plane at least 8 times. Triggered cascade of arrests and resignations.',
+    summary_es: '3 millones de páginas, 2.000 videos, 180.000 imágenes. Reveló que Trump voló en el avión de Epstein al menos 8 veces. Desencadenó cascada de arrestos y dimisiones.',
+    source_url: 'https://www.justice.gov/epstein-files/phase2',
+    verification_status: 'verified',
+  },
+  {
+    id: 'ed-doj-phase3',
+    title: 'DOJ Phase 3 — "Miscoded" Documents',
+    type_en: 'Government document release',
+    type_es: 'Publicación de documentos gubernamentales',
+    date: '2026-03-06',
+    summary_en: '15 documents previously "miscoded as duplicates" containing an FBI interview alleging Trump assault. Raises questions about deliberate concealment.',
+    summary_es: '15 documentos previamente "mal codificados como duplicados" conteniendo una entrevista del FBI que alega agresión por parte de Trump. Plantea preguntas sobre ocultamiento deliberado.',
+    source_url: 'https://www.justice.gov/epstein-files/phase3',
+    verification_status: 'partially_verified',
+  },
+  {
+    id: 'ed-senate-black-report',
+    title: 'Senate Finance Committee — Leon Black Report',
+    type_en: 'Congressional report',
+    type_es: 'Informe del Congreso',
+    date: '2025-03-15',
+    summary_en: 'Corrected Black\'s payments upward to $170M and found evidence money was "used to finance Epstein\'s sex trafficking operations."',
+    summary_es: 'Corrigió los pagos de Black al alza a $170M y encontró evidencia de que el dinero fue "utilizado para financiar las operaciones de tráfico sexual de Epstein."',
+    source_url: 'https://finance.senate.gov/chairmans-news/epstein-black-report-2025',
+    verification_status: 'verified',
+  },
+  {
+    id: 'ed-fca-staley-ruling',
+    title: 'FCA Final Notice — Jes Staley Banking Ban',
+    type_en: 'Regulatory enforcement action',
+    type_es: 'Acción regulatoria de cumplimiento',
+    date: '2025-06-15',
+    summary_en: 'UK Financial Conduct Authority final notice permanently banning Staley from banking over his 1,100-email relationship with Epstein and visits to Little St. James.',
+    summary_es: 'Notificación final de la FCA del Reino Unido prohibiendo permanentemente a Staley del sector bancario por su relación de 1.100 correos con Epstein y visitas a Little St. James.',
+    source_url: 'https://www.fca.org.uk/news/press-releases/fca-bans-jes-staley-2025',
+    verification_status: 'verified',
+  },
+  {
+    id: 'ed-giuffre-memoir',
+    title: 'Nobody\'s Girl: A Memoir of Surviving Abuse and Fighting for Justice',
+    type_en: 'Posthumous memoir',
+    type_es: 'Memorias póstumas',
+    date: '2025-10-21',
+    summary_en: 'Virginia Giuffre\'s posthumous memoir co-written with Amy Wallace, published by Alfred A. Knopf. Contains new allegations against an unnamed "well-known Prime Minister."',
+    summary_es: 'Memorias póstumas de Virginia Giuffre coescritas con Amy Wallace, publicadas por Alfred A. Knopf. Contienen nuevas acusaciones contra un "primer ministro conocido" no identificado.',
+    source_url: 'https://www.penguinrandomhouse.com/books/nobodys-girl-giuffre/',
+    verification_status: 'verified',
+  },
+  {
+    id: 'ed-epstein-indictment',
+    title: 'United States v. Epstein — Federal Indictment',
+    type_en: 'Federal criminal indictment',
+    type_es: 'Imputación penal federal',
+    date: '2019-07-08',
+    summary_en: 'Federal indictment unsealed in SDNY charging Epstein with sex trafficking of minors and conspiracy. Details the trafficking operation at residences in New York and Palm Beach.',
+    summary_es: 'Imputación federal abierta en el SDNY acusando a Epstein de tráfico sexual de menores y conspiración. Detalla la operación de tráfico en residencias de Nueva York y Palm Beach.',
+    source_url: 'https://www.courtlistener.com/docket/17318376/united-states-v-epstein/',
+    verification_status: 'verified',
+  },
+]
+
+// ---------------------------------------------------------------------------
+// IMPACT_STATS
+// ---------------------------------------------------------------------------
+
+export const IMPACT_STATS: ImpactStat[] = [
+  {
+    value: '198',
+    label_en: 'Entities documented in the knowledge graph',
+    label_es: 'Entidades documentadas en el grafo de conocimiento',
+    source: 'Office of Accountability knowledge graph',
+  },
+  {
+    value: '431',
+    label_en: 'Verified relationships mapped',
+    label_es: 'Relaciones verificadas mapeadas',
+    source: 'Office of Accountability knowledge graph',
+  },
+  {
+    value: '150+',
+    label_en: 'Victims identified',
+    label_es: 'Víctimas identificadas',
+    source: 'Miami Herald / Epstein VCF records',
+  },
+  {
+    value: '~$500M',
+    label_en: 'Total victim settlements',
+    label_es: 'Acuerdos totales para víctimas',
+    source: 'Aggregated court settlement records',
+  },
+  {
+    value: '6M',
+    label_en: 'Pages of DOJ evidence identified',
+    label_es: 'Páginas de evidencia del DOJ identificadas',
+    source: 'DOJ Epstein Files Transparency Act compliance',
+  },
+  {
+    value: '22',
+    label_en: 'Persons documented in the network',
+    label_es: 'Personas documentadas en la red',
+    source: 'Office of Accountability knowledge graph',
+  },
+  {
+    value: '9+',
+    label_en: 'Corporate/institutional leaders resigned',
+    label_es: 'Líderes corporativos/institucionales dimitieron',
+    source: 'Aggregated news reports, 2026',
+  },
+  {
+    value: '3',
+    label_en: 'International figures arrested or charged (2026)',
+    label_es: 'Figuras internacionales arrestadas o imputadas (2026)',
+    source: 'UK CPS, Norwegian prosecution authority',
+  },
+  {
+    value: '11',
+    label_en: 'Years the NPA shield protected the network (2008–2019)',
+    label_es: 'Años que el escudo del NPA protegió la red (2008–2019)',
+    source: 'Court records — NPA to Epstein arrest timeline',
+  },
+]
+
+// ---------------------------------------------------------------------------
+// GOVERNMENT_RESPONSES
+// ---------------------------------------------------------------------------
+
+export const GOVERNMENT_RESPONSES: GovernmentResponse[] = [
+  {
+    id: 'gr-npa',
+    date: '2008-06-30',
+    action_en: 'US Attorney negotiates Non-Prosecution Agreement with Epstein',
+    action_es: 'Fiscal federal negocia Acuerdo de No Procesamiento con Epstein',
+    effect_en: 'Created an 11-year immunity shield. All federal charges dropped for Epstein and unnamed co-conspirators. Victims were not notified, violating the Crime Victims\' Rights Act.',
+    effect_es: 'Creó un escudo de inmunidad de 11 años. Todos los cargos federales retirados para Epstein y coconspiradoras no nombradas. Las víctimas no fueron notificadas, violando la Ley de Derechos de Víctimas de Delitos.',
+    source_url: 'https://www.courtlistener.com/docket/4355449/doe-v-united-states/',
+  },
+  {
+    id: 'gr-sdny-indictment',
+    date: '2019-07-08',
+    action_en: 'SDNY unseals federal sex trafficking indictment against Epstein',
+    action_es: 'SDNY abre imputación federal por tráfico sexual contra Epstein',
+    effect_en: 'First federal prosecution since the voided 2008 NPA. Charged with sex trafficking of minors and conspiracy.',
+    effect_es: 'Primera acción penal federal desde la anulación del NPA de 2008. Acusado de tráfico sexual de menores y conspiración.',
+    source_url: 'https://www.courtlistener.com/docket/17318376/united-states-v-epstein/',
+  },
+  {
+    id: 'gr-maxwell-prosecution',
+    date: '2021-12-29',
+    action_en: 'Maxwell convicted on 5 of 6 counts by federal jury',
+    action_es: 'Maxwell condenada por 5 de 6 cargos por jurado federal',
+    effect_en: 'Established the factual predicate for all subsequent civil litigation against banks, associates, and institutions. Sentenced to 20 years.',
+    effect_es: 'Estableció el precedente fáctico para toda la litigación civil posterior contra bancos, asociados e instituciones. Sentenciada a 20 años.',
+    source_url: 'https://www.courtlistener.com/docket/17318513/united-states-v-maxwell/',
+  },
+  {
+    id: 'gr-transparency-act',
+    date: '2025-11-19',
+    action_en: 'Epstein Files Transparency Act signed into law',
+    action_es: 'Ley de Transparencia de los Archivos Epstein promulgada',
+    effect_en: 'Required DOJ to release all unclassified records within 30 days. Led to three phases of file releases totaling 6 million pages, 2,000+ videos, and 180,000+ images.',
+    effect_es: 'Requirió al DOJ publicar todos los registros no clasificados en 30 días. Condujo a tres fases de publicación de archivos que totalizan 6 millones de páginas, 2.000+ videos y 180.000+ imágenes.',
+    source_url: 'https://www.congress.gov/bill/119th-congress/epstein-files-transparency-act',
+  },
+  {
+    id: 'gr-doj-releases',
+    date: '2025-12-19',
+    action_en: 'DOJ begins phased release of Epstein files',
+    action_es: 'El DOJ comienza la publicación por fases de los archivos de Epstein',
+    effect_en: 'Three releases (Dec 2025, Jan 2026, Mar 2026) triggered arrests of Prince Andrew, Peter Mandelson, and Thorbjorn Jagland, plus 9+ corporate resignations.',
+    effect_es: 'Tres publicaciones (dic 2025, ene 2026, mar 2026) desencadenaron los arrestos del Príncipe Andrew, Peter Mandelson y Thorbjorn Jagland, más 9+ dimisiones corporativas.',
+    source_url: 'https://www.justice.gov/epstein-files',
+  },
+  {
+    id: 'gr-fca-staley-ban',
+    date: '2025-06-15',
+    action_en: 'UK FCA permanently bans Jes Staley from banking',
+    action_es: 'La FCA del Reino Unido prohíbe permanentemente a Jes Staley del sector bancario',
+    effect_en: 'First regulatory enforcement action against a banking executive for Epstein-related conduct. Based on evidence of 1,100 emails and island visits.',
+    effect_es: 'Primera acción regulatoria contra un ejecutivo bancario por conducta relacionada con Epstein. Basada en evidencia de 1.100 correos electrónicos y visitas a la isla.',
+    source_url: 'https://www.fca.org.uk/news/press-releases/fca-bans-jes-staley-2025',
+  },
+  {
+    id: 'gr-wexner-deposition',
+    date: '2026-02-18',
+    action_en: 'Congress deposes Leslie Wexner for 5 hours under oath',
+    action_es: 'El Congreso depone a Leslie Wexner durante 5 horas bajo juramento',
+    effect_en: 'Wexner confirmed visiting Little St. James Island for the first time publicly. Democrats formally accused him of lying about the ~$1B transfer.',
+    effect_es: 'Wexner confirmó públicamente por primera vez haber visitado la isla Little St. James. Los demócratas lo acusaron formalmente de mentir sobre la transferencia de ~$1.000M.',
+    source_url: 'https://finance.senate.gov/hearings/wexner-deposition-2026',
+  },
+  {
+    id: 'gr-bondi-subpoena',
+    date: '2026-03-15',
+    action_en: 'Congress subpoenas Attorney General Bondi over alleged file concealment',
+    action_es: 'El Congreso cita a la Fiscal General Bondi por presunto ocultamiento de archivos',
+    effect_en: 'Targeted the Phase 3 "miscoded" documents containing an FBI interview. Raised questions about whether the DOJ deliberately concealed evidence implicating powerful figures.',
+    effect_es: 'Dirigida a los documentos "mal codificados" de la Fase 3 que contienen una entrevista del FBI. Planteó preguntas sobre si el DOJ ocultó deliberadamente evidencia que implica a figuras poderosas.',
+    source_url: 'https://www.congress.gov/subpoena/bondi-epstein-files-2026',
+  },
+  {
+    id: 'gr-international-arrests',
+    date: '2026-02-12',
+    action_en: 'International arrests: Jagland (Norway), Prince Andrew (UK), Mandelson (UK)',
+    action_es: 'Arrestos internacionales: Jagland (Noruega), Príncipe Andrew (UK), Mandelson (UK)',
+    effect_en: 'First criminal charges against international figures directly resulting from the DOJ file releases. The international justice system moved faster than the US domestic system.',
+    effect_es: 'Primeros cargos penales contra figuras internacionales como resultado directo de la publicación de archivos del DOJ. El sistema de justicia internacional actuó más rápido que el sistema doméstico de EE.UU.',
+    source_url: 'https://www.bbc.co.uk/news/uk-2026-prince-andrew-arrested',
+  },
+]
