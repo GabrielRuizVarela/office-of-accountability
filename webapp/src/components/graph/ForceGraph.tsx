@@ -192,8 +192,8 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     return () => observer.disconnect()
   }, [width, height])
 
-  // Convert to force graph format
-  const fgData = toFGData(data)
+  // Convert to force graph format — memoize to avoid restarting simulation on re-renders
+  const fgData = useMemo(() => toFGData(data), [data])
 
   const { degreeMap, importanceThreshold } = useMemo(() => {
     const dm = new Map<string, number>()
@@ -417,7 +417,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       canvas.removeEventListener('touchmove', handleTouchEnd)
       if (longPressTimer) clearTimeout(longPressTimer)
     }
-  }, [onNodeRightClick])
+  }, [onNodeRightClick, ForceGraph2D])
 
   if (!ForceGraph2D) {
     return <div ref={containerRef} className="flex h-full w-full items-center justify-center text-zinc-600">Cargando grafo...</div>
