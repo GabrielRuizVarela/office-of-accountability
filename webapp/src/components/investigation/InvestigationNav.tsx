@@ -28,7 +28,7 @@ export function InvestigationNav({ slug }: InvestigationNavProps) {
     { href: `${base}/dinero`, label: 'El dinero' },
     { href: `${base}/evidencia`, label: 'Evidencia' },
     { href: `${base}/grafo`, label: 'Conexiones' },
-    { href: `${base}/simular`, label: 'Simular' },
+    { href: `${base}/simular`, label: 'Predicciones' },
   ]
 
   return (
