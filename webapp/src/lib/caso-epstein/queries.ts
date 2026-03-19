@@ -38,6 +38,10 @@ const TX_CONFIG = { timeout: QUERY_TIMEOUT_MS }
 
 function toPersonProps(node: Node): EpsteinPerson {
   const p = node.properties as Record<string, unknown>
+  // `as EpsteinPerson` is required because TS infers `confidence_tier` as
+  // `ConfidenceTier | undefined` from the conditional expression, which does not
+  // narrow to the optional property type without a cast. Removing it causes a
+  // "Type '... | undefined' is not assignable to type 'ConfidenceTier'" error.
   return {
     id: typeof p.id === 'string' ? p.id : '',
     name: typeof p.name === 'string' ? p.name : '',

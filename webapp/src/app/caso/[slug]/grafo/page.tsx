@@ -43,6 +43,12 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
     fetchGraph()
   }, [slug])
 
+  // TODO(optimization): wire tierFilter to the server-side query layer instead of
+  // filtering client-side. The API route at /api/caso/[slug]/graph already accepts
+  // a `tiers` param and getInvestigationGraph() supports ConfidenceTier[]. Doing
+  // this requires converting GrafoPage from 'use client' to a hybrid pattern
+  // (e.g., passing tier as a searchParam to a Server Component wrapper that fetches
+  // the filtered graph, then hydrates the ForceGraph client component).
   const filteredData = useMemo<GraphData>(() => {
     if (tierFilter === 'all') return data
     let nodes: GraphNode[]
