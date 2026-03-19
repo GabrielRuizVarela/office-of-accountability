@@ -225,7 +225,7 @@ async function tryDojPdf(sourceUrl: string): Promise<ContentResult | null> {
       const { PDFParse } = await import('pdf-parse')
       const parser = new PDFParse({ data: Buffer.from(buffer) })
       const textResult = await parser.getText()
-      const content = (textResult as { text?: string }).text?.trim() ?? ''
+      const content = textResult.text?.trim() ?? ''
 
       if (content.length < 50) return null
 

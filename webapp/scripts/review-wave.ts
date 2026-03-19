@@ -6,7 +6,12 @@ import { getDriver, verifyConnectivity, closeDriver } from '../src/lib/neo4j/cli
 import { loadConflicts } from '../src/lib/ingestion/quality'
 
 const wave = parseInt(process.argv.find((a) => a.startsWith('--wave='))?.split('=')[1] ??
-  process.argv[process.argv.indexOf('--wave') + 1] ?? '1')
+  process.argv[process.argv.indexOf('--wave') + 1] ?? '')
+
+if (isNaN(wave)) {
+  console.error('Usage: npx tsx scripts/review-wave.ts --wave N')
+  process.exit(1)
+}
 
 async function main(): Promise<void> {
   const connected = await verifyConnectivity()
