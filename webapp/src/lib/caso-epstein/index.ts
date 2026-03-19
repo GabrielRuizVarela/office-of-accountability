@@ -3,6 +3,7 @@ export type {
   EpsteinFlight,
   EpsteinLocation,
   EpsteinDocument,
+  EpsteinDocumentWithCount,
   EpsteinEvent,
   EpsteinOrganization,
   EpsteinLegalCase,
@@ -23,6 +24,8 @@ export {
   organizationSchema,
   legalCaseSchema,
   CASO_EPSTEIN_SLUG,
+  DOCUMENT_TYPE_LABELS,
+  DOCUMENT_TYPE_LABELS_PLURAL,
 } from './types'
 
 export {

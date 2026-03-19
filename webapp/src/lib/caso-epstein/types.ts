@@ -79,6 +79,14 @@ export interface EpsteinDocument {
   readonly doc_type: DocumentType
   readonly source_url: string
   readonly summary: string
+  readonly date: string
+  readonly key_findings: string[]
+  readonly excerpt: string
+  readonly page_count: number | null
+}
+
+export interface EpsteinDocumentWithCount extends EpsteinDocument {
+  readonly mentionedPersonCount: number
 }
 
 export interface EpsteinEvent {
@@ -150,7 +158,33 @@ export const documentSchema = z.object({
   ]),
   source_url: z.string().max(2000),
   summary: z.string().max(5000),
+  date: z.string().min(1).max(30),
+  key_findings: z.array(z.string().max(1000)),
+  excerpt: z.string().max(5000),
+  page_count: z.number().int().positive().nullable(),
 })
+
+export const DOCUMENT_TYPE_LABELS: Record<DocumentType, string> = {
+  court_filing: 'Court Filing',
+  deposition: 'Deposition',
+  fbi: 'FBI Record',
+  flight_log: 'Flight Log',
+  police_report: 'Police Report',
+  financial: 'Financial Record',
+  media_investigation: 'Investigative Journalism',
+  medical: 'Medical Record',
+}
+
+export const DOCUMENT_TYPE_LABELS_PLURAL: Record<DocumentType, string> = {
+  court_filing: 'Court Filings',
+  deposition: 'Depositions',
+  fbi: 'FBI Records',
+  flight_log: 'Flight Logs',
+  police_report: 'Police Reports',
+  financial: 'Financial Records',
+  media_investigation: 'Investigative Journalism',
+  medical: 'Medical Records',
+}
 
 export const eventSchema = z.object({
   title: z.string().min(1).max(500),
