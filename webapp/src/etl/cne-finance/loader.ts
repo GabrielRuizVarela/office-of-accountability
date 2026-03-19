@@ -109,10 +109,9 @@ async function loadDonatedToRels(
     UNWIND $batch AS r
     MATCH (d:Donor {donor_id: r.donor_id})
     MATCH (p:PoliticalPartyFinance {party_finance_id: r.party_finance_id})
-    MATCH (don:CampaignDonation {donation_id: r.donation_id})
-    MERGE (d)-[rel:DONATED_TO]->(p)
-    ON CREATE SET rel.first_donation = don.date_iso
-    SET rel.last_donation = don.date_iso
+    MERGE (d)-[rel:DONATED_TO {donation_id: r.donation_id}]->(p)
+    SET rel.amount = r.amount,
+        rel.date_iso = r.date_iso
   `)
 }
 
