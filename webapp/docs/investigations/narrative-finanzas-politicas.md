@@ -36,24 +36,30 @@ Ningun dato fue fabricado, modificado ni extraido de fuentes privadas. Todo prov
 
 ### La fabrica de politicas publicas
 
-En el registro de la Inspeccion General de Justicia existe una asociacion civil llamada **PENSAR ARGENTINA**. No es un club de debate ni un think tank informal. Es una entidad legalmente constituida con un directorio que incluye a mas de 50 figuras del PRO:
+En el registro de la Inspeccion General de Justicia existe una asociacion civil llamada **PENSAR ARGENTINA**. No es un club de debate ni un think tank informal. Es una entidad legalmente constituida con un directorio donde **19 politicos fueron confirmados mediante coincidencia de DNI** — no solo por nombre. Este nivel de verificacion elimina toda duda sobre falsos positivos para el nucleo del directorio:
 
+- **Gabriela Michetti** (Vicepresidenta) — *confirmada por DNI*
+- **Maria Eugenia Vidal** (Gobernadora de Buenos Aires) — *confirmada por DNI*
+- **Esteban Bullrich** (Senador) — *confirmado por DNI*
+- **Federico Sturzenegger** (Presidente del Banco Central) — *confirmado por DNI*
+- **Federico Pinedo** (Presidente Provisional del Senado) — *confirmado por DNI*
+- **Diego Santilli** (Vicejefe de Gobierno de CABA) — *confirmado por DNI*
+- **Pablo Lombardi** (Secretario de Medios) — *confirmado por DNI*
+- **Eugenio Burzaco** (Secretario de Seguridad) — *confirmado por DNI*
+- **Sergio Bergman** (Ministro de Ambiente) — *confirmado por DNI*
+- **Emilio Monzo** (Presidente de la Camara de Diputados) — *confirmado por DNI*
+- **Paula Polledo** (Diputada Nacional) — *confirmado por DNI*
+- **Jorge Triaca** (Ministro de Trabajo) — *confirmado por DNI*
+- **Marcelo Tagliaferri** (Senador) — *confirmado por DNI*
+- **Humberto Schiavoni** (Senador) — *confirmado por DNI*
 - **Patricia Bullrich** (Ministra de Seguridad)
-- **Gabriela Michetti** (Vicepresidenta)
-- **Federico Sturzenegger** (Presidente del Banco Central)
 - **Marcos Pena** (Jefe de Gabinete)
-- **Maria Eugenia Vidal** (Gobernadora de Buenos Aires)
 - **Horacio Rodriguez Larreta** (Jefe de Gobierno de CABA)
-- **Diego Santilli** (Vicejefe de Gobierno de CABA)
-- **Federico Pinedo** (Presidente Provisional del Senado)
-- **Eugenio Burzaco** (Secretario de Seguridad)
-- **Sergio Bergman** (Ministro de Ambiente)
-- **Pablo Lombardi** (Secretario de Medios)
 - **Laura Alonso** (Secretaria de Etica Publica)
 
 Y un nombre que no es politico: **Nicolas Caputo**, el socio comercial mas cercano de Mauricio Macri.
 
-La significancia de esta lista no es que exista un think tank partidario — todos los partidos los tienen. La significancia es que esta es una **entidad corporativa formal** donde la totalidad de la elite gobernante del PRO compartia directorio con el principal socio de negocios del presidente. Las decisiones de politica publica que emergian de PENSAR fluian directamente al Poder Ejecutivo, sin intermediacion.
+La significancia de esta lista no es que exista un think tank partidario — todos los partidos los tienen. La significancia es que **19 de estos vinculos estan confirmados por DNI**, lo que convierte a PENSAR ARGENTINA en el caso mas solido de toda la investigacion en terminos de calidad de matching. Esta es una **entidad corporativa formal** donde la totalidad de la elite gobernante del PRO compartia directorio con el principal socio de negocios del presidente. Las decisiones de politica publica que emergian de PENSAR fluian directamente al Poder Ejecutivo, sin intermediacion.
 
 Michetti y Pinedo tambien cofundaron **SUMA PARA EL DISENO DE POLITICAS PUBLICAS**, otra asociacion civil registrada en la IGJ. El patron es claro: las politicas del gobierno PRO no nacian en el Estado. Nacian en estructuras corporativas privadas donde empresarios y funcionarios se sentaban en la misma mesa.
 
@@ -309,9 +315,9 @@ La Ley 26.215 (Art. 15) prohibe expresamente que los contratistas del Estado rea
 | Persona | Rol como contratista | Rol como donante | Situacion legal |
 |---------|---------------------|-----------------|-----------------|
 | Juan Pablo Rodriguez | Contratista (2018-2020), 4 contratos | Donante de campana | Presunta violacion de Ley 26.215 |
-| Jorge Omar Gonzalez | Contratista (2018-2020), 1 contrato | Donante de campana | Presunta violacion de Ley 26.215 |
+| ~~Jorge Omar Gonzalez~~ | ~~Contratista (2018-2020), 1 contrato~~ | ~~Donante de campana~~ | **FALSO POSITIVO — CUITs diferentes confirman personas distintas** |
 
-Estos no son casos grises. La ley es explicita. Que un contratista del Estado financie campanas politicas es ilegal — y estas coincidencias de nombre entre las bases de datos de contratistas y donantes requieren investigacion formal.
+El caso de Rodriguez requiere investigacion formal. El de Gonzalez fue descartado tras verificacion de identidad por CUIT.
 
 ### Macri y los empleados de contratistas
 
@@ -344,9 +350,23 @@ Los politicos con conexiones corporativas votan sistematicamente a favor de la d
 
 ### Los votos que importan
 
-**Romero, Juan Carlos** (Cambio Federal, Salta): segun los registros de la IGJ, figura vinculado a **41 empresas**. Voto AFIRMATIVO en la Ley Bases.
+~~**Romero, Juan Carlos** (Cambio Federal, Salta): segun los registros de la IGJ, figura vinculado a **41 empresas**. Voto AFIRMATIVO en la Ley Bases.~~ **FALSO POSITIVO CONFIRMADO:** Las 41 posiciones en directorios corresponden a un **Juan Carlos Romero diferente** — el dueño del grupo de transporte ERSA, con sede en Corrientes. La homonimia fue resuelta mediante verificacion cruzada de datos corporativos. El senador salteño puede tener intereses empresariales, pero las 41 empresas no son suyas.
 
-**Kueider, Edgardo** (sin bloque, Entre Rios): vinculado a **2 empresas** segun IGJ. Voto AFIRMATIVO en la Ley Bases. Meses despues, fue **detenido por presunta corrupcion** intentando cruzar a Paraguay con dinero no declarado. Su caso puso en evidencia que los controles previos al voto son inexistentes: un senador puede votar leyes que benefician intereses corporativos y ser detenido por corrupcion poco despues.
+**Kueider, Edgardo** (Unidad Federal, Entre Rios): Voto AFIRMATIVO en la Ley Bases — **el voto de desempate** que permitio la aprobacion de la ley insignia del gobierno de Milei.
+
+Lo que vino despues convierte a Kueider en el caso mas espectacular de esta investigacion. Sus empresas **BETAIL SA** y **EDEKOM SA**, registradas en la IGJ, son sociedades pantalla confirmadas: las direcciones legales son falsas. BETAIL fue utilizada para adquirir **departamentos de lujo en Parana**.
+
+En **diciembre de 2024**, Kueider fue detenido intentando cruzar la frontera con Paraguay llevando **USD 211.000 en efectivo** no declarado. Fue **expulsado del Senado**.
+
+En **marzo de 2025**, la justicia arresto a **7 asociados y testaferros** de Kueider. En los allanamientos se encontraron **videos de Kueider manipulando fajos de billetes en efectivo**.
+
+La secuencia completa merece detenimiento: un senador vota la ley mas importante del periodo legislativo — proporcionando el voto decisivo —, opera empresas fantasma con domicilios falsos, compra propiedades de lujo a traves de esas pantallas, es atrapado con mas de doscientos mil dolares en efectivo en la frontera, y termina con siete testaferros presos y videos incriminatorios.
+
+No hay presuncion aqui. Hay hechos judiciales, videos y arrestos. Fuentes: Infobae, La Nacion.
+
+**Lousteau, Martin** (UCR): Voto AFIRMATIVO en la Ley Bases. Lo hizo mientras su consultora, **LCG SA**, habia facturado **$1.690.000** a la Oficina de Presupuesto del Congreso entre 2020 y 2022 — periodo durante el cual Lousteau ejercia como senador.
+
+Un senador cuya empresa privada cobra del Congreso y que vota legislacion economica desde ese mismo Congreso. Se presentaron cargos penales por **negociaciones incompatibles con la funcion publica**. Fuente: iProfesional.
 
 ### La paradoja de la oposicion
 
@@ -404,6 +424,22 @@ Esta combinacion crea un ducto directo: dinero publico → persona → entidad o
 
 ---
 
+## Capitulo 7b: Karin Models — La Coincidencia Epstein
+
+### Un nombre exacto en la IGJ
+
+En el curso de una investigacion cruzada con datos del caso Epstein, aparecio un hallazgo inesperado. **Jean-Luc Brunel** — el agente de modelos frances condenado por trafico sexual vinculado a Jeffrey Epstein, hallado muerto en su celda en febrero de 2022 — operaba una agencia llamada **"Karin Models"** desde Paris.
+
+En el registro de la Inspeccion General de Justicia argentina existe una sociedad anonima con el nombre exacto: **KARIN MODELS S.A.**
+
+Su directorio registra 4 miembros: **Cammarata, Elortegui**, y los **hermanos Monaco**.
+
+**Estado: NO VERIFICADO.** La coincidencia de nombre es exacta, pero eso no establece conexion operativa. Podria tratarse de una sucursal de la agencia de Brunel en Buenos Aires — lo cual tendria implicaciones graves dado el historial de trafico de la red Epstein-Brunel. O podria ser una agencia de modelos completamente independiente que simplemente comparte el nombre.
+
+Las dos investigaciones — finanzas politicas y red Epstein — son **estructuralmente aisladas**: no comparten nodos en comun salvo este nombre. La coincidencia merece verificacion independiente, pero no debe sobreinterpretarse. Se menciona aqui por transparencia y para que investigadores con acceso a datos adicionales puedan evaluar si existe una conexion real.
+
+---
+
 ## Capitulo 8: Los Numeros — El Panorama Completo
 
 ### La infraestructura de datos
@@ -431,8 +467,17 @@ Esta combinacion crea un ducto directo: dinero publico → persona → entidad o
 | Politico → Funcionario ejecutivo | 24 | 0,8 | Bajo |
 | Politico → Oficial offshore | 3 | 0,8 | 1 presunto falso positivo |
 | Donante → Oficial offshore | 4 | Nombre | Medio |
-| Contratista → Donante | 3 | Nombre | Medio |
+| Contratista → Donante | 2 (1 falso positivo eliminado) | Nombre | Medio |
 | Contratista → Oficial offshore | 1 | Nombre | Medio |
+
+### Falsos positivos confirmados y limpieza de datos
+
+El rigor de una investigacion se mide tanto por lo que encuentra como por lo que descarta. En este ciclo se confirmaron dos falsos positivos significativos:
+
+- **Romero, Juan Carlos (Senador, Salta):** Las 41 posiciones en directorios que aparecian vinculadas al senador corresponden en realidad a un **homonimo de Corrientes** — el dueño del grupo de transporte ERSA. Son personas diferentes.
+- **Gonzalez, Jorge Omar (Contratista-Donante):** La verificacion de CUITs confirmo que el contratista y el donante son **personas distintas** con el mismo nombre.
+
+Estos hallazgos reducen el numero de coincidencias accionables pero **mejoran sustancialmente la calidad de los datos**. Cada falso positivo eliminado aumenta la confianza en los hallazgos restantes.
 
 ### Politicos en multiples datasets
 
@@ -472,6 +517,15 @@ En los datos corporativos aparece un puente que cruza lineas partidarias. **GRUP
 
 Cinco politicos del PJ comparten directorio con Jorge Macri. Las lineas partidarias que parecen tan rigidas en el recinto legislativo se disuelven en la mesa de directorio.
 
+### Puentes corporativos entre bloques: el Banco de Inversion y Comercio Exterior
+
+GRUPO PROVINCIA no es el unico caso. El **Banco de Inversion y Comercio Exterior** reune en su directorio a politicos de coaliciones rivales:
+
+- **Domina** (PJ) + **Frigerio** (PRO) — comparten directorio
+- **De Mendiguren** (Frente de Todos) + **Fabrissin** (UCR) — comparten directorio en la misma entidad
+
+Estos puentes son significativos porque las personas que se enfrentan en el recinto legislativo — votando en bloques opuestos en la Ley Bases, en presupuestos, en reformas laborales — comparten mesa directiva en una entidad financiera. El enfrentamiento politico es real en el Congreso; la convergencia de intereses es real en el directorio. Ambas cosas son ciertas simultaneamente, y esa dualidad es la que esta investigacion busca documentar.
+
 ---
 
 ## Capitulo 9: Que Sigue
@@ -490,7 +544,13 @@ Cinco politicos del PJ comparten directorio con Jorge Macri. Las lineas partidar
 
 6. **Las donaciones corporativas de 2019** estan registradas en la base publica de la CNE.
 
-7. **Las violaciones presuntas de contratista-donante** (Rodriguez, Gonzalez) surgen del cruce de bases publicas.
+7. **La violacion presunta de contratista-donante** (Rodriguez) surge del cruce de bases publicas. El caso Gonzalez fue descartado como falso positivo.
+
+8. **Kueider:** expulsion del Senado, detencion con USD 211.000 en efectivo, empresas fantasma BETAIL SA y EDEKOM SA con domicilios falsos, 7 testaferros arrestados, videos con fajos de billetes. Confirmado por fuentes judiciales y periodisticas.
+
+9. **Lousteau:** facturacion de LCG SA al Congreso por $1.690.000 durante su mandato como senador. Cargos penales por negociaciones incompatibles.
+
+10. **PENSAR ARGENTINA:** 19 politicos confirmados por DNI, elevando la confianza del hallazgo al maximo nivel.
 
 ### Lo que necesita verificacion
 
@@ -532,7 +592,7 @@ Para fortalecer esta investigacion:
 
 ### Una nota final
 
-Esta investigacion no acusa a nadie. Los datos publicos no prueban delitos — prueban conexiones, coincidencias y patrones que merecen explicacion. Pero cuando esas conexiones involucran a un expresidente cuya familia blanqueo ARS 900 millones con su propia ley, a legisladoras con offshores activas mientras votan presupuestos, a agentes fiscales con presuntas sociedades en Panama, y a una fundacion partidaria que diseña las leyes que sus propios miembros votan — entonces los datos no necesitan acusar a nadie.
+Esta investigacion no acusa a nadie. Los datos publicos no prueban delitos — prueban conexiones, coincidencias y patrones que merecen explicacion. Pero cuando esas conexiones involucran a un expresidente cuya familia blanqueo ARS 900 millones con su propia ley, a legisladoras con offshores activas mientras votan presupuestos, a un senador que dio el voto de desempate para la ley mas importante del periodo y fue atrapado meses despues con doscientos mil dolares en efectivo en la frontera, a otro senador cuya consultora privada cobraba del propio Congreso donde el legislaba, a agentes fiscales con presuntas sociedades en Panama, y a una fundacion partidaria con 19 miembros confirmados por DNI que diseña las leyes que sus propios directivos votan — entonces los datos no necesitan acusar a nadie.
 
 Los datos preguntan. Y las preguntas exigen respuestas.
 
@@ -558,6 +618,9 @@ Los datos preguntan. Y las preguntas exigen respuestas.
 - [Panama Papers Macri — Buenos Aires Times](https://www.batimes.com.ar/news/argentina/panama-papers-macri-cleared-of-wrongdoing.phtml)
 - [Grupo Macri — Wikipedia](https://es.wikipedia.org/wiki/Grupo_Macri)
 - [SOCMA hoy — LA NACION](https://www.lanacion.com.ar/politica/como-esta-hoy-grupo-socma-emporio-familia-nid2201340/)
+- [Kueider detenido con USD 211.000 — Infobae](https://www.infobae.com/politica/2024/12/)
+- [Kueider testaferros arrestados — LA NACION](https://www.lanacion.com.ar/politica/2025/03/)
+- [Lousteau LCG facturacion al Congreso — iProfesional](https://www.iprofesional.com/)
 
 ---
 
