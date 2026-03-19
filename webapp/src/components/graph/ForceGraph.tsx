@@ -64,6 +64,7 @@ export interface ForceGraphProps {
   readonly focusedNodeId?: string | null
   readonly visibleLabels?: ReadonlySet<string> | null
   readonly pinnedNodeIds?: ReadonlySet<string>
+  readonly onNodeRightClick?: (nodeId: string, screenX: number, screenY: number) => void
   readonly pathHighlight?: { nodeIds: ReadonlySet<string>; linkKeys: ReadonlySet<string> } | null
   readonly width?: number
   readonly height?: number
@@ -90,6 +91,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
   {
     data,
     onNodeClick,
+    onNodeRightClick,
     selectedNodeId,
     focusedNodeId,
     visibleLabels,
@@ -345,6 +347,61 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     if (typeof vote === 'string') return `${link.type}: ${vote}`
     return link.type
   }, [])
+
+  // Right-click / long-press context menu
+  useEffect(() => {
+    if (!onNodeRightClick) return
+    const container = containerRef.current
+    if (!container) return
+    const canvas = container.querySelector('canvas')
+    if (!canvas) return
+
+    let longPressTimer: ReturnType<typeof setTimeout> | null = null
+
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault()
+      const fg = graphRef.current
+      if (!fg) return
+      const rect = canvas.getBoundingClientRect()
+      const graphCoords = (fg as unknown as { screen2GraphCoords(x: number, y: number): { x: number; y: number } })
+        .screen2GraphCoords(e.clientX - rect.left, e.clientY - rect.top)
+      const internalData = (fg as unknown as { graphData(): { nodes: Array<{ id: string; x?: number; y?: number }> } }).graphData()
+
+      let closest: { id: string; dist: number } | null = null
+      for (const node of internalData.nodes) {
+        if (typeof node.x !== 'number' || typeof node.y !== 'number') continue
+        const dx = graphCoords.x - node.x
+        const dy = graphCoords.y - node.y
+        const dist = Math.sqrt(dx * dx + dy * dy)
+        if (dist < 15 && (!closest || dist < closest.dist)) {
+          closest = { id: node.id as string, dist }
+        }
+      }
+      if (closest) onNodeRightClick(closest.id, e.clientX, e.clientY)
+    }
+
+    const handleTouchStart = (e: TouchEvent) => {
+      const touch = e.touches[0]
+      if (!touch) return
+      longPressTimer = setTimeout(() => {
+        handleContextMenu(new MouseEvent('contextmenu', { clientX: touch.clientX, clientY: touch.clientY }))
+      }, 500)
+    }
+    const handleTouchEnd = () => { if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null } }
+
+    canvas.addEventListener('contextmenu', handleContextMenu)
+    canvas.addEventListener('touchstart', handleTouchStart, { passive: true })
+    canvas.addEventListener('touchend', handleTouchEnd)
+    canvas.addEventListener('touchmove', handleTouchEnd)
+
+    return () => {
+      canvas.removeEventListener('contextmenu', handleContextMenu)
+      canvas.removeEventListener('touchstart', handleTouchStart)
+      canvas.removeEventListener('touchend', handleTouchEnd)
+      canvas.removeEventListener('touchmove', handleTouchEnd)
+      if (longPressTimer) clearTimeout(longPressTimer)
+    }
+  }, [onNodeRightClick])
 
   if (!ForceGraph2D) {
     return <div ref={containerRef} className="flex h-full w-full items-center justify-center text-zinc-600">Cargando grafo...</div>
