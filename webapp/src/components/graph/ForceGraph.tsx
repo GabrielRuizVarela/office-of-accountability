@@ -367,90 +367,25 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     return link.type
   }, [])
 
-  // Right-click context menu — native capture listener to fire before canvas
+  // Right-click handler — use ref for stable callback + library's built-in onNodeRightClick
   const onNodeRightClickRef = useRef(onNodeRightClick)
   onNodeRightClickRef.current = onNodeRightClick
 
-  useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
-
-    const handler = (e: MouseEvent) => {
-      if (!onNodeRightClickRef.current) return
-      const fg = graphRef.current
-      if (!fg) return
-      const canvas = container.querySelector('canvas')
-      if (!canvas) return
-
-      // Use graph2ScreenCoords to convert each node's position to screen coords
-      const rect = canvas.getBoundingClientRect()
-      const mouseX = e.clientX - rect.left
-      const mouseY = e.clientY - rect.top
-
-      // Access internal nodes via the kapsule graphData() method
-      let internalNodes: Array<{ id: string; x?: number; y?: number }>
-      try {
-        const kapsule = fg as unknown as { graphData?: () => { nodes: Array<{ id: string; x?: number; y?: number }> } }
-        if (typeof kapsule.graphData !== 'function') return
-        internalNodes = kapsule.graphData().nodes
-      } catch { return }
-
-      // Convert graph coords to screen coords for hit testing
-      const g2s = fg as unknown as { graph2ScreenCoords?: (x: number, y: number) => { x: number; y: number } }
-      if (typeof g2s.graph2ScreenCoords !== 'function') return
-
-      let closest: { id: string; dist: number } | null = null
-      for (const node of internalNodes) {
-        if (typeof node.x !== 'number' || typeof node.y !== 'number') continue
-        const screenPos = g2s.graph2ScreenCoords(node.x, node.y)
-        const dx = mouseX - screenPos.x
-        const dy = mouseY - screenPos.y
-        const dist = Math.sqrt(dx * dx + dy * dy)
-        if (dist < 20 && (!closest || dist < closest.dist)) {
-          closest = { id: node.id as string, dist }
-        }
+  const handleNodeRightClick = useCallback(
+    (node: NodeObject<FGNode>, event: MouseEvent) => {
+      if (onNodeRightClickRef.current && typeof node.id === 'string') {
+        event.preventDefault()
+        onNodeRightClickRef.current(node.id, event.clientX, event.clientY)
       }
+    },
+    [],
+  )
 
-      if (closest) {
-        e.preventDefault()
-        e.stopPropagation()
-        onNodeRightClickRef.current(closest.id, e.clientX, e.clientY)
-      }
-    }
-
-    // capture: true ensures we fire before the canvas or browser default
-    container.addEventListener('contextmenu', handler, { capture: true })
-    return () => container.removeEventListener('contextmenu', handler, { capture: true })
-  }, [])
-
-  // Keep the React handler just to prevent default on the container
+  // Prevent browser context menu on the graph area when right-click handler is set
   const handleContextMenu = useCallback((e: React.MouseEvent) => {
     if (onNodeRightClickRef.current) e.preventDefault()
   }, [])
 
-  // Long-press for mobile context menu
-  const longPressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const handleTouchStart = useCallback(
-    (e: React.TouchEvent) => {
-      if (!onNodeRightClick) return
-      const touch = e.touches[0]
-      if (!touch) return
-      longPressTimerRef.current = setTimeout(() => {
-        handleContextMenu({
-          preventDefault: () => {},
-          clientX: touch.clientX,
-          clientY: touch.clientY,
-        } as unknown as React.MouseEvent)
-      }, 500)
-    },
-    [onNodeRightClick, handleContextMenu],
-  )
-  const handleTouchEnd = useCallback(() => {
-    if (longPressTimerRef.current) {
-      clearTimeout(longPressTimerRef.current)
-      longPressTimerRef.current = null
-    }
-  }, [])
 
   if (!ForceGraph2D) {
     return <div ref={containerRef} className="flex h-full w-full items-center justify-center text-zinc-600">Cargando grafo...</div>
@@ -461,9 +396,6 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       ref={containerRef}
       className="h-full w-full"
       onContextMenu={handleContextMenu}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      onTouchMove={handleTouchEnd}
     >
       <ForceGraph2D
         ref={graphRef}
@@ -483,6 +415,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         linkCurvature={0.1}
         nodeLabel={nodeTooltip as (node: object) => string}
         onNodeClick={handleNodeClick}
+        onNodeRightClick={handleNodeRightClick}
         onZoom={(transform: { k: number }) => updateLabelState(transform.k)}
         enableZoomInteraction={true}
         enablePanInteraction={true}
