@@ -9,7 +9,11 @@ export async function GET(
 ) {
   // Currently only the Epstein case is supported — accept any slug
   try {
-    const data = await getInvestigationGraph(CASO_EPSTEIN_SLUG)
+    // Parse optional tier filter from query params; default to gold+silver for performance
+    const { searchParams } = new URL(request.url)
+    const tiersParam = searchParams.get('tiers')
+    const tiers = tiersParam ? tiersParam.split(',') as ('gold' | 'silver' | 'bronze')[] : undefined
+    const data = await getInvestigationGraph(CASO_EPSTEIN_SLUG, tiers)
     return Response.json({ success: true, data })
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
