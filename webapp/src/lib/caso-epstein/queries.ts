@@ -14,6 +14,7 @@ import { transformNode, transformRelationship } from '../graph/transform'
 
 import {
   CASO_EPSTEIN_SLUG,
+  type ConfidenceTier,
   type EpsteinPerson,
   type EpsteinEvent,
   type EpsteinDocument,
@@ -44,7 +45,10 @@ function toPersonProps(node: Node): EpsteinPerson {
     role: typeof p.role === 'string' ? p.role : '',
     description: typeof p.description === 'string' ? p.description : '',
     nationality: typeof p.nationality === 'string' ? p.nationality : '',
-  }
+    confidence_tier: typeof p.confidence_tier === 'string' ? p.confidence_tier as ConfidenceTier : undefined,
+    source: typeof p.source === 'string' ? p.source : undefined,
+    ingestion_wave: typeof p.ingestion_wave === 'number' ? p.ingestion_wave : undefined,
+  } as EpsteinPerson
 }
 
 function toEventProps(node: Node): EpsteinEvent {
@@ -55,6 +59,9 @@ function toEventProps(node: Node): EpsteinEvent {
     date: typeof p.date === 'string' ? p.date : '',
     event_type: typeof p.event_type === 'string' ? p.event_type : 'legal',
     description: typeof p.description === 'string' ? p.description : '',
+    confidence_tier: typeof p.confidence_tier === 'string' ? p.confidence_tier as ConfidenceTier : undefined,
+    source: typeof p.source === 'string' ? p.source : undefined,
+    ingestion_wave: typeof p.ingestion_wave === 'number' ? p.ingestion_wave : undefined,
   } as EpsteinEvent
 }
 
@@ -77,6 +84,9 @@ function toDocumentProps(node: Node): EpsteinDocument {
       : p.page_count && typeof p.page_count === 'object' && 'low' in p.page_count
         ? (p.page_count as { low: number }).low
         : null,
+    confidence_tier: typeof p.confidence_tier === 'string' ? p.confidence_tier as ConfidenceTier : undefined,
+    source: typeof p.source === 'string' ? p.source : undefined,
+    ingestion_wave: typeof p.ingestion_wave === 'number' ? p.ingestion_wave : undefined,
   } as EpsteinDocument
 }
 
@@ -90,6 +100,9 @@ function toLegalCaseProps(node: Node): EpsteinLegalCase {
     court: typeof p.court === 'string' ? p.court : '',
     status: typeof p.status === 'string' ? p.status : 'filed',
     date_filed: typeof p.date_filed === 'string' ? p.date_filed : '',
+    confidence_tier: typeof p.confidence_tier === 'string' ? p.confidence_tier as ConfidenceTier : undefined,
+    source: typeof p.source === 'string' ? p.source : undefined,
+    ingestion_wave: typeof p.ingestion_wave === 'number' ? p.ingestion_wave : undefined,
   } as EpsteinLegalCase
 }
 
@@ -142,13 +155,14 @@ function buildGraphData(nodes: readonly Node[], rels: readonly Relationship[]): 
  * Matches all nodes with `caso_slug` matching the given slug,
  * then collects all relationships between them.
  */
-export async function getInvestigationGraph(casoSlug: string): Promise<GraphData> {
+export async function getInvestigationGraph(casoSlug: string, tiers?: ConfidenceTier[]): Promise<GraphData> {
   const session = getDriver().session()
 
   try {
     const result = await session.run(
       `MATCH (n)
        WHERE n.caso_slug = $casoSlug
+         AND (size($tiers) = 0 OR n.confidence_tier IN $tiers)
        WITH collect(n) AS nodes
        UNWIND nodes AS a
        UNWIND nodes AS b
@@ -157,7 +171,7 @@ export async function getInvestigationGraph(casoSlug: string): Promise<GraphData
        OPTIONAL MATCH (a)-[r]-(b)
        WITH nodes, collect(DISTINCT r) AS rels
        RETURN nodes, rels`,
-      { casoSlug },
+      { casoSlug, tiers: tiers ?? [] },
       TX_CONFIG,
     )
 
@@ -184,16 +198,17 @@ export async function getInvestigationGraph(casoSlug: string): Promise<GraphData
 /**
  * Fetch all Event nodes for the investigation, ordered by date ascending.
  */
-export async function getTimeline(casoSlug: string): Promise<EpsteinEvent[]> {
+export async function getTimeline(casoSlug: string, tiers?: ConfidenceTier[]): Promise<EpsteinEvent[]> {
   const session = getDriver().session()
 
   try {
     const result = await session.run(
       `MATCH (e:Event)
        WHERE e.caso_slug = $casoSlug
+         AND (size($tiers) = 0 OR e.confidence_tier IN $tiers)
        RETURN e
        ORDER BY e.date ASC`,
-      { casoSlug },
+      { casoSlug, tiers: tiers ?? [] },
       TX_CONFIG,
     )
 
@@ -302,16 +317,17 @@ export async function getFlightLog(casoSlug: string): Promise<GraphData> {
 /**
  * Fetch all Person nodes in the investigation, ordered by name.
  */
-export async function getActors(casoSlug: string): Promise<EpsteinPerson[]> {
+export async function getActors(casoSlug: string, tiers?: ConfidenceTier[]): Promise<EpsteinPerson[]> {
   const session = getDriver().session()
 
   try {
     const result = await session.run(
       `MATCH (p:Person)
        WHERE p.caso_slug = $casoSlug
+         AND (size($tiers) = 0 OR p.confidence_tier IN $tiers)
        RETURN p
        ORDER BY p.name ASC`,
-      { casoSlug },
+      { casoSlug, tiers: tiers ?? [] },
       TX_CONFIG,
     )
 
@@ -328,17 +344,18 @@ export async function getActors(casoSlug: string): Promise<EpsteinPerson[]> {
 /**
  * Fetch all Document nodes in the investigation, with mention counts.
  */
-export async function getDocuments(casoSlug: string): Promise<EpsteinDocumentWithCount[]> {
+export async function getDocuments(casoSlug: string, tiers?: ConfidenceTier[]): Promise<EpsteinDocumentWithCount[]> {
   const session = getDriver().session()
 
   try {
     const result = await session.run(
       `MATCH (d:Document)
        WHERE d.caso_slug = $casoSlug
+         AND (size($tiers) = 0 OR d.confidence_tier IN $tiers)
        OPTIONAL MATCH (p:Person)-[:MENTIONED_IN]->(d)
        RETURN d, count(p) AS personCount
        ORDER BY d.title ASC`,
-      { casoSlug },
+      { casoSlug, tiers: tiers ?? [] },
       TX_CONFIG,
     )
 
