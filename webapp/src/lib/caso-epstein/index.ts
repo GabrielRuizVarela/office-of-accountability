@@ -47,4 +47,7 @@ export {
   getDocuments,
   getLegalCases,
   getLocationNetwork,
+  getDocumentBySlug,
 } from './queries'
+
+export type { DocumentDetail } from './queries'

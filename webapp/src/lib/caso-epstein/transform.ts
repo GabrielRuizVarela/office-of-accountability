@@ -28,6 +28,21 @@ function strOrNull(props: Record<string, unknown>, key: string): string | null {
   return typeof v === 'string' ? v : null
 }
 
+/** Safely extract a string array property from a Neo4j node */
+function strArray(props: Record<string, unknown>, key: string): string[] {
+  const v = props[key]
+  return Array.isArray(v) ? v.filter((item): item is string => typeof item === 'string') : []
+}
+
+/** Safely extract a nullable number property */
+function numOrNull(props: Record<string, unknown>, key: string): number | null {
+  const v = props[key]
+  if (typeof v === 'number') return v
+  // Neo4j integers come as { low, high } objects
+  if (v && typeof v === 'object' && 'low' in v) return (v as { low: number }).low
+  return null
+}
+
 /** Convert a Neo4j Node to an EpsteinPerson */
 export function toPerson(node: Node): EpsteinPerson {
   const p = node.properties as Record<string, unknown>
@@ -77,6 +92,10 @@ export function toDocument(node: Node): EpsteinDocument {
     doc_type: str(p, 'doc_type') as EpsteinDocument['doc_type'],
     source_url: str(p, 'source_url'),
     summary: str(p, 'summary'),
+    date: str(p, 'date'),
+    key_findings: strArray(p, 'key_findings'),
+    excerpt: str(p, 'excerpt'),
+    page_count: numOrNull(p, 'page_count'),
   }
 }
 
