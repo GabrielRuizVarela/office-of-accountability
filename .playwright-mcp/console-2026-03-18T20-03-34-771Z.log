@@ -1,0 +1,2 @@
+[      86ms] [WARNING] <link rel=preload> must have a valid `as` value @ http://localhost:5176/node_modules/.vite/deps/react-dom_client.js?v=99002f7a:14090
+[   19144ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ http://localhost:5176/api/caso/caso-epstein/simulation/query:0
