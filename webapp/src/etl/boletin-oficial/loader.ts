@@ -123,7 +123,8 @@ async function loadMaybeSameAsRels(
     MATCH (p:Politician {id: r.politician_id})
     MATCH (a:GovernmentAppointment {appointment_id: r.appointment_id})
     MERGE (p)-[rel:MAYBE_SAME_AS]->(a)
-    SET rel.confidence = r.confidence
+    SET rel.confidence = r.confidence,
+        rel.match_method = r.match_method
   `)
 }
 
