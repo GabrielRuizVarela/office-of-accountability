@@ -37,6 +37,9 @@ export { bfsShortestPath, pathLinkKeys } from './algorithms'
 
 export { nodeIdSchema, politicianSlugSchema } from './validation'
 
+export { listInvestigations, saveInvestigation, deleteInvestigation } from './investigation'
+export type { SavedInvestigation } from './investigation'
+
 export {
   LABEL_COLORS,
   DEFAULT_NODE_COLOR,
