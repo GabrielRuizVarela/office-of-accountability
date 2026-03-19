@@ -136,3 +136,35 @@ Politicians with the most board seats overwhelmingly support economic deregulati
 ## Data Quality: Confirmed False Positives
 
 Fernandez Carlos Alberto (108 boards) is confirmed as **multiple different people** sharing a common name — simultaneously "inspector," "jefe de sección," "Director de Planificación de Seguridad de Frontera," and "Diputado Nacional." Name-only matching inflates common names.
+
+## Connection Map 10: PENSAR ARGENTINA — The PRO Policy Factory
+
+**Most significant structural finding.** PENSAR ARGENTINA is registered as a formal civil association in the IGJ corporate registry with 50+ PRO politicians and technocrats as board members/socios:
+
+Key members (from IGJ BoardMember data):
+- Patricia Bullrich (Minister of Security)
+- Eugenio Burzaco (Security Secretary)
+- Sergio Bergman (Environment Minister)
+- Federico Pinedo (Senate President)
+- Gabriela Michetti (Vice President)
+- Federico Sturzenegger (Central Bank President)
+- María Eugenia Vidal (Buenos Aires Province Governor)
+- Diego Santilli (Buenos Aires City Deputy Mayor)
+- Horacio Rodríguez Larreta (Buenos Aires City Mayor)
+- Marcos Peña (Chief of Staff)
+- Nicolás Caputo (Macri's closest business partner)
+- Pablo Lombardi (Media Secretary)
+
+**Significance:** This is not a loose political alliance — it's a **formally registered corporate entity** where the entire PRO governing elite sat on the same board alongside Macri's personal business partner. Policy decisions flowed from this think tank directly to the executive branch.
+
+Also co-founded: **SUMA PARA EL DISEÑO DE POLITICAS PUBLICAS** (Michetti + Pinedo).
+
+## Connection Map 11: Cross-Party Corporate Bridges
+
+| Politician 1 | Politician 2 | Shared Entity | Type |
+|-------------|-------------|---------------|------|
+| Caballero | Gonzalez | NACION SEGUROS | State insurance |
+| Michetti | Pinedo | PENSAR ARGENTINA | PRO think tank |
+| Heller | Lopez | CREDICOOP | Cooperative banking |
+| Amadeo | Capitanich | FONCAP | Cross-party microfinance |
+| Brown | De Mendiguren | BICE | National investment bank |
