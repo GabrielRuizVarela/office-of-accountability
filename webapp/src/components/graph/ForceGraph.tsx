@@ -172,7 +172,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     },
   }))
 
-  // Responsive sizing
+  // Responsive sizing — ignore tiny heights that occur before flex layout settles
   useEffect(() => {
     if (width && height) return
 
@@ -182,10 +182,11 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     const observer = new ResizeObserver((entries) => {
       const entry = entries[0]
       if (entry) {
-        setDimensions({
-          width: width ?? entry.contentRect.width,
-          height: height ?? entry.contentRect.height,
-        })
+        const w = width ?? entry.contentRect.width
+        const h = height ?? entry.contentRect.height
+        // Skip bogus measurements before flex layout has computed the real size
+        if (h < 100) return
+        setDimensions({ width: w, height: h })
       }
     })
 
