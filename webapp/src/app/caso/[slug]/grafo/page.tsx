@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, use } from 'react'
 
 import { ForceGraph } from '../../../../components/graph/ForceGraph'
 import type { ForceGraphHandle } from '../../../../components/graph/ForceGraph'
-import type { GraphData } from '../../../../lib/neo4j/types'
+import type { GraphData, GraphNode, GraphLink } from '../../../../lib/neo4j/types'
 import { CASO_EPSTEIN_SLUG } from '../../../../lib/caso-epstein/types'
 
 const LABEL_CONFIG: ReadonlyArray<{ label: string; color: string; name: string }> = [
@@ -131,15 +131,126 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
         </div>
       </div>
 
-      {/* Graph */}
-      <div className="flex-1">
-        <ForceGraph
-          ref={graphRef}
-          data={data}
-          selectedNodeId={selectedNodeId}
-          onNodeClick={setSelectedNodeId}
-          visibleLabels={visibleLabels}
-        />
+      {/* Graph + Detail Panel */}
+      <div className="flex flex-1 overflow-hidden">
+        <div className="flex-1">
+          <ForceGraph
+            ref={graphRef}
+            data={data}
+            selectedNodeId={selectedNodeId}
+            onNodeClick={setSelectedNodeId}
+            visibleLabels={visibleLabels}
+          />
+        </div>
+
+        {/* Inline detail panel */}
+        {selectedNodeId && (() => {
+          const node = data.nodes.find((n) => n.id === selectedNodeId)
+          if (!node) return null
+          const connectedLinks = data.links.filter(
+            (l) => l.source === selectedNodeId || l.target === selectedNodeId,
+          )
+          const neighborIds = new Set(
+            connectedLinks.map((l) =>
+              l.source === selectedNodeId ? l.target : l.source,
+            ),
+          )
+          const neighbors = data.nodes.filter((n) => neighborIds.has(n.id))
+
+          const LABEL_COLORS_MAP: Record<string, string> = {
+            Person: '#3b82f6', Organization: '#8b5cf6', Location: '#10b981',
+            Event: '#f59e0b', Document: '#ef4444', LegalCase: '#ec4899', Flight: '#f97316',
+          }
+
+          return (
+            <div className="flex h-full w-80 flex-col border-l border-zinc-800 bg-zinc-950 overflow-y-auto">
+              {/* Header */}
+              <div className="flex items-center justify-between border-b border-zinc-800 px-4 py-3">
+                <h2 className="truncate text-sm font-semibold text-zinc-100">
+                  {String(node.properties.name ?? node.properties.title ?? node.id)}
+                </h2>
+                <button
+                  onClick={() => setSelectedNodeId(null)}
+                  className="rounded p-1 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200"
+                >
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Labels */}
+              <div className="border-b border-zinc-800 px-4 py-3">
+                <div className="flex flex-wrap gap-1.5">
+                  {node.labels.map((label) => (
+                    <span
+                      key={label}
+                      className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium"
+                      style={{
+                        backgroundColor: `${LABEL_COLORS_MAP[label] ?? '#94a3b8'}20`,
+                        color: LABEL_COLORS_MAP[label] ?? '#94a3b8',
+                      }}
+                    >
+                      <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: LABEL_COLORS_MAP[label] ?? '#94a3b8' }} />
+                      {label}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Properties */}
+              <div className="border-b border-zinc-800 px-4 py-3">
+                <h3 className="mb-2 text-xs font-medium uppercase tracking-wider text-zinc-500">Properties</h3>
+                <dl className="space-y-1.5">
+                  {Object.entries(node.properties)
+                    .filter(([k]) => !['id', 'caso_slug', 'slug'].includes(k))
+                    .map(([key, value]) => (
+                      <div key={key} className="flex gap-2 text-sm">
+                        <dt className="flex-shrink-0 text-zinc-500">{key.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}</dt>
+                        <dd className="min-w-0 truncate text-zinc-300">{String(value ?? '-')}</dd>
+                      </div>
+                    ))}
+                </dl>
+              </div>
+
+              {/* Connections */}
+              <div className="px-4 py-3">
+                <h3 className="mb-2 text-xs font-medium uppercase tracking-wider text-zinc-500">
+                  Connections ({connectedLinks.length})
+                </h3>
+                <ul className="space-y-0.5">
+                  {connectedLinks.map((link, i) => {
+                    const neighborId = link.source === selectedNodeId ? link.target : link.source
+                    const neighbor = data.nodes.find((n) => n.id === neighborId)
+                    if (!neighbor) return null
+                    const direction = link.source === selectedNodeId ? '→' : '←'
+                    return (
+                      <li key={`${link.source}-${link.target}-${link.type}-${i}`}>
+                        <button
+                          onClick={() => {
+                            setSelectedNodeId(neighborId)
+                            graphRef.current?.centerOnNode(neighborId)
+                          }}
+                          className="group flex w-full items-center gap-2 rounded px-2 py-1 text-left text-sm hover:bg-zinc-800/50"
+                        >
+                          <span className="text-zinc-600">{direction}</span>
+                          <span
+                            className="h-2 w-2 flex-shrink-0 rounded-full"
+                            style={{ backgroundColor: LABEL_COLORS_MAP[neighbor.labels[0]] ?? '#94a3b8' }}
+                          />
+                          <span className="min-w-0 flex-1 truncate text-zinc-300 group-hover:text-zinc-100">
+                            {String(neighbor.properties.name ?? neighbor.properties.title ?? neighbor.id)}
+                          </span>
+                          <span className="flex-shrink-0 text-xs text-zinc-600">{link.type.replace(/_/g, ' ')}</span>
+                        </button>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            </div>
+          )
+        })()}
       </div>
 
       {/* Node count */}
