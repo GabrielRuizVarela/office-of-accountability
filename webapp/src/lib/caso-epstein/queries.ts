@@ -17,6 +17,7 @@ import {
   type EpsteinPerson,
   type EpsteinEvent,
   type EpsteinDocument,
+  type EpsteinDocumentWithCount,
   type EpsteinLegalCase,
 } from './types'
 
@@ -66,6 +67,16 @@ function toDocumentProps(node: Node): EpsteinDocument {
     doc_type: typeof p.doc_type === 'string' ? p.doc_type : 'court_filing',
     source_url: typeof p.source_url === 'string' ? p.source_url : '',
     summary: typeof p.summary === 'string' ? p.summary : '',
+    date: typeof p.date === 'string' ? p.date : '',
+    key_findings: Array.isArray(p.key_findings)
+      ? p.key_findings.filter((item: unknown): item is string => typeof item === 'string')
+      : [],
+    excerpt: typeof p.excerpt === 'string' ? p.excerpt : '',
+    page_count: typeof p.page_count === 'number'
+      ? p.page_count
+      : p.page_count && typeof p.page_count === 'object' && 'low' in p.page_count
+        ? (p.page_count as { low: number }).low
+        : null,
   } as EpsteinDocument
 }
 
@@ -315,22 +326,26 @@ export async function getActors(casoSlug: string): Promise<EpsteinPerson[]> {
 // ---------------------------------------------------------------------------
 
 /**
- * Fetch all Document nodes in the investigation.
+ * Fetch all Document nodes in the investigation, with mention counts.
  */
-export async function getDocuments(casoSlug: string): Promise<EpsteinDocument[]> {
+export async function getDocuments(casoSlug: string): Promise<EpsteinDocumentWithCount[]> {
   const session = getDriver().session()
 
   try {
     const result = await session.run(
       `MATCH (d:Document)
        WHERE d.caso_slug = $casoSlug
-       RETURN d
+       OPTIONAL MATCH (p:Person)-[:MENTIONED_IN]->(d)
+       RETURN d, count(p) AS personCount
        ORDER BY d.title ASC`,
       { casoSlug },
       TX_CONFIG,
     )
 
-    return result.records.map((record: Neo4jRecord) => toDocumentProps(record.get('d') as Node))
+    return result.records.map((record: Neo4jRecord) => ({
+      ...toDocumentProps(record.get('d') as Node),
+      mentionedPersonCount: (record.get('personCount') as { low: number }).low ?? 0,
+    }))
   } finally {
     await session.close()
   }
@@ -357,6 +372,102 @@ export async function getLegalCases(casoSlug: string): Promise<EpsteinLegalCase[
     )
 
     return result.records.map((record: Neo4jRecord) => toLegalCaseProps(record.get('lc') as Node))
+  } finally {
+    await session.close()
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 8. Location network
+// ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// Document by slug (with graph connections)
+// ---------------------------------------------------------------------------
+
+export interface DocumentDetail {
+  document: EpsteinDocument
+  mentionedPersons: EpsteinPerson[]
+  legalCases: EpsteinLegalCase[]
+  relatedEvents: EpsteinEvent[]
+  relatedDocuments: EpsteinDocument[]
+}
+
+export async function getDocumentBySlug(
+  casoSlug: string,
+  slug: string,
+): Promise<DocumentDetail | null> {
+  const session = getDriver().session()
+
+  try {
+    // 1. Get the document
+    const docResult = await session.run(
+      `MATCH (d:Document {slug: $slug, caso_slug: $casoSlug})
+       RETURN d
+       LIMIT 1`,
+      { slug, casoSlug },
+      TX_CONFIG,
+    )
+
+    if (docResult.records.length === 0) return null
+
+    const docNode = docResult.records[0].get('d') as Node
+    const document = toDocumentProps(docNode)
+
+    // 2. Get mentioned persons
+    const personsResult = await session.run(
+      `MATCH (p:Person)-[:MENTIONED_IN]->(d:Document {slug: $slug, caso_slug: $casoSlug})
+       RETURN p
+       ORDER BY p.name ASC`,
+      { slug, casoSlug },
+      TX_CONFIG,
+    )
+    const mentionedPersons = personsResult.records.map(
+      (r: Neo4jRecord) => toPersonProps(r.get('p') as Node),
+    )
+
+    // 3. Get legal cases
+    const casesResult = await session.run(
+      `MATCH (d:Document {slug: $slug, caso_slug: $casoSlug})-[:FILED_IN]->(lc:LegalCase)
+       RETURN lc
+       ORDER BY lc.date_filed ASC`,
+      { slug, casoSlug },
+      TX_CONFIG,
+    )
+    const legalCases = casesResult.records.map(
+      (r: Neo4jRecord) => toLegalCaseProps(r.get('lc') as Node),
+    )
+
+    // 4. Get related events
+    const eventsResult = await session.run(
+      `MATCH (e:Event)-[:DOCUMENTED_BY]->(d:Document {slug: $slug, caso_slug: $casoSlug})
+       RETURN e
+       ORDER BY e.date ASC`,
+      { slug, casoSlug },
+      TX_CONFIG,
+    )
+    const relatedEvents = eventsResult.records.map(
+      (r: Neo4jRecord) => toEventProps(r.get('e') as Node),
+    )
+
+    // 5. Get cross-referenced documents (share at least one person)
+    const crossRefResult = await session.run(
+      `MATCH (p:Person)-[:MENTIONED_IN]->(d:Document {slug: $slug, caso_slug: $casoSlug})
+       WITH collect(p) AS persons
+       UNWIND persons AS person
+       MATCH (person)-[:MENTIONED_IN]->(other:Document {caso_slug: $casoSlug})
+       WHERE other.slug <> $slug
+       RETURN DISTINCT other
+       ORDER BY other.title ASC
+       LIMIT 10`,
+      { slug, casoSlug },
+      TX_CONFIG,
+    )
+    const relatedDocuments = crossRefResult.records.map(
+      (r: Neo4jRecord) => toDocumentProps(r.get('other') as Node),
+    )
+
+    return { document, mentionedPersons, legalCases, relatedEvents, relatedDocuments }
   } finally {
     await session.close()
   }
