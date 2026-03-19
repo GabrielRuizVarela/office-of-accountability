@@ -39,6 +39,7 @@ const SECTIONS = [
   { id: 'money', label_es: 'Dinero', label_en: 'Money' },
   { id: 'evidence', label_es: 'Evidencia', label_en: 'Evidence' },
   { id: 'government', label_es: 'Gobierno', label_en: 'Government' },
+  { id: 'aportar', label_es: 'Aportar', label_en: 'Submit' },
 ] as const
 
 const STATUS_COLORS: Record<FactcheckStatus, string> = {
@@ -698,7 +699,22 @@ export default function InvestigacionPage() {
       </section>
 
       {/* ================================================================== */}
-      {/* 9. FOOTER DISCLAIMER                                               */}
+      {/* 9. SUBMIT EVIDENCE FORM                                            */}
+      {/* ================================================================== */}
+      <section id="aportar" ref={(el) => { if (el) registerRef('aportar')(el) }} className="scroll-mt-28 pt-10">
+        <h2 className="text-lg font-bold text-zinc-50">
+          {lang === 'es' ? 'Aportar pruebas' : 'Submit evidence'}
+        </h2>
+        <p className="mt-1 text-sm text-zinc-400">
+          {lang === 'es'
+            ? 'Tenes informacion verificable sobre el caso $LIBRA? Envia datos, documentos o conexiones. Todo se revisa antes de publicarse.'
+            : 'Do you have verifiable information about the $LIBRA case? Submit data, documents, or connections. Everything is reviewed before publishing.'}
+        </p>
+        <SubmitEvidenceForm lang={lang} />
+      </section>
+
+      {/* ================================================================== */}
+      {/* 10. FOOTER DISCLAIMER                                              */}
       {/* ================================================================== */}
       <footer className="border-t border-zinc-800 py-10">
         <div className="mx-auto max-w-2xl text-center">
@@ -805,5 +821,272 @@ function TimelineCard({
         )}
       </div>
     </div>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// Submit Evidence form sub-component
+// ---------------------------------------------------------------------------
+
+const ENTITY_TYPES = [
+  { value: 'factcheck', label_es: 'Hecho verificado', label_en: 'Verified fact' },
+  { value: 'event', label_es: 'Evento en la cronologia', label_en: 'Timeline event' },
+  { value: 'actor', label_es: 'Persona u organizacion', label_en: 'Person or organization' },
+  { value: 'money_flow', label_es: 'Flujo de dinero', label_en: 'Money flow' },
+  { value: 'evidence', label_es: 'Documento fuente', label_en: 'Source document' },
+  { value: 'government_response', label_es: 'Accion del gobierno', label_en: 'Government action' },
+] as const
+
+type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error'
+
+function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
+  const [entityType, setEntityType] = useState('factcheck')
+  const [formData, setFormData] = useState<Record<string, string>>({})
+  const [status, setStatus] = useState<SubmitStatus>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
+
+  const fields = useMemo(() => {
+    const common = [
+      { key: 'source_url', label_es: 'URL de la fuente', label_en: 'Source URL', type: 'url', required: true },
+    ]
+    switch (entityType) {
+      case 'factcheck':
+        return [
+          { key: 'claim_es', label_es: 'Afirmacion (espanol)', label_en: 'Claim (Spanish)', type: 'textarea', required: true },
+          { key: 'claim_en', label_es: 'Afirmacion (ingles)', label_en: 'Claim (English)', type: 'textarea', required: true },
+          { key: 'status', label_es: 'Estado', label_en: 'Status', type: 'select', required: true,
+            options: [
+              { value: 'confirmed', label: lang === 'es' ? 'Confirmado' : 'Confirmed' },
+              { value: 'alleged', label: lang === 'es' ? 'Presunto' : 'Alleged' },
+              { value: 'denied', label: lang === 'es' ? 'Negado' : 'Denied' },
+              { value: 'under_investigation', label: lang === 'es' ? 'En investigacion' : 'Under investigation' },
+            ] },
+          { key: 'source', label_es: 'Nombre de la fuente', label_en: 'Source name', type: 'text', required: true },
+          ...common,
+        ]
+      case 'event':
+        return [
+          { key: 'date', label_es: 'Fecha (YYYY-MM-DD)', label_en: 'Date (YYYY-MM-DD)', type: 'date', required: true },
+          { key: 'title_es', label_es: 'Titulo (espanol)', label_en: 'Title (Spanish)', type: 'text', required: true },
+          { key: 'title_en', label_es: 'Titulo (ingles)', label_en: 'Title (English)', type: 'text', required: true },
+          { key: 'description_es', label_es: 'Descripcion (espanol)', label_en: 'Description (Spanish)', type: 'textarea', required: true },
+          { key: 'description_en', label_es: 'Descripcion (ingles)', label_en: 'Description (English)', type: 'textarea', required: true },
+          { key: 'category', label_es: 'Categoria', label_en: 'Category', type: 'select', required: true,
+            options: [
+              { value: 'political', label: lang === 'es' ? 'Politico' : 'Political' },
+              { value: 'financial', label: lang === 'es' ? 'Financiero' : 'Financial' },
+              { value: 'legal', label: 'Legal' },
+              { value: 'media', label: lang === 'es' ? 'Medios' : 'Media' },
+              { value: 'coverup', label: lang === 'es' ? 'Encubrimiento' : 'Coverup' },
+            ] },
+          { key: 'source_name', label_es: 'Nombre de la fuente', label_en: 'Source name', type: 'text', required: true },
+          ...common,
+        ]
+      case 'actor':
+        return [
+          { key: 'name', label_es: 'Nombre completo', label_en: 'Full name', type: 'text', required: true },
+          { key: 'role_es', label_es: 'Rol (espanol)', label_en: 'Role (Spanish)', type: 'text', required: true },
+          { key: 'role_en', label_es: 'Rol (ingles)', label_en: 'Role (English)', type: 'text', required: true },
+          { key: 'description_es', label_es: 'Descripcion (espanol)', label_en: 'Description (Spanish)', type: 'textarea', required: true },
+          { key: 'description_en', label_es: 'Descripcion (ingles)', label_en: 'Description (English)', type: 'textarea', required: true },
+          { key: 'nationality', label_es: 'Nacionalidad', label_en: 'Nationality', type: 'text', required: true },
+          ...common,
+        ]
+      case 'money_flow':
+        return [
+          { key: 'from_label', label_es: 'Origen', label_en: 'From', type: 'text', required: true },
+          { key: 'to_label', label_es: 'Destino', label_en: 'To', type: 'text', required: true },
+          { key: 'amount_usd', label_es: 'Monto (USD)', label_en: 'Amount (USD)', type: 'number', required: true },
+          { key: 'date', label_es: 'Fecha (YYYY-MM-DD)', label_en: 'Date (YYYY-MM-DD)', type: 'date', required: true },
+          { key: 'source', label_es: 'Fuente', label_en: 'Source', type: 'text', required: true },
+        ]
+      case 'evidence':
+        return [
+          { key: 'title', label_es: 'Titulo del documento', label_en: 'Document title', type: 'text', required: true },
+          { key: 'type_es', label_es: 'Tipo (espanol)', label_en: 'Type (Spanish)', type: 'text', required: true },
+          { key: 'type_en', label_es: 'Tipo (ingles)', label_en: 'Type (English)', type: 'text', required: true },
+          { key: 'date', label_es: 'Fecha (YYYY-MM-DD)', label_en: 'Date (YYYY-MM-DD)', type: 'date', required: true },
+          { key: 'summary_es', label_es: 'Resumen (espanol)', label_en: 'Summary (Spanish)', type: 'textarea', required: true },
+          { key: 'summary_en', label_es: 'Resumen (ingles)', label_en: 'Summary (English)', type: 'textarea', required: true },
+          ...common,
+          { key: 'verification_status', label_es: 'Estado de verificacion', label_en: 'Verification status', type: 'select', required: true,
+            options: [
+              { value: 'verified', label: lang === 'es' ? 'Verificado' : 'Verified' },
+              { value: 'partially_verified', label: lang === 'es' ? 'Parcialmente verificado' : 'Partially verified' },
+              { value: 'unverified', label: lang === 'es' ? 'Sin verificar' : 'Unverified' },
+            ] },
+        ]
+      case 'government_response':
+        return [
+          { key: 'date', label_es: 'Fecha (YYYY-MM-DD)', label_en: 'Date (YYYY-MM-DD)', type: 'date', required: true },
+          { key: 'action_es', label_es: 'Accion (espanol)', label_en: 'Action (Spanish)', type: 'textarea', required: true },
+          { key: 'action_en', label_es: 'Accion (ingles)', label_en: 'Action (English)', type: 'textarea', required: true },
+          { key: 'effect_es', label_es: 'Efecto (espanol)', label_en: 'Effect (Spanish)', type: 'textarea', required: true },
+          { key: 'effect_en', label_es: 'Efecto (ingles)', label_en: 'Effect (English)', type: 'textarea', required: true },
+          { key: 'source', label_es: 'Fuente', label_en: 'Source', type: 'text', required: true },
+          ...common,
+        ]
+      default:
+        return common
+    }
+  }, [entityType, lang])
+
+  function handleChange(key: string, value: string) {
+    setFormData((prev) => ({ ...prev, [key]: value }))
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setStatus('submitting')
+    setErrorMsg('')
+
+    // Build the data payload from form fields
+    const data: Record<string, unknown> = {}
+    for (const field of fields) {
+      const val = formData[field.key]
+      if (field.required && (!val || val.trim() === '')) {
+        setStatus('error')
+        setErrorMsg(lang === 'es' ? `Campo requerido: ${field.label_es}` : `Required field: ${field.label_en}`)
+        return
+      }
+      if (val) {
+        data[field.key] = field.type === 'number' ? Number(val) : val
+      }
+    }
+
+    // For events, wrap the source into the sources array format
+    if (entityType === 'event') {
+      data.sources = [{ name: data.source_name as string || 'Source', url: data.source_url as string || '' }]
+      delete data.source_name
+      delete data.source_url
+    }
+
+    try {
+      const response = await fetch('/api/caso-libra/investigation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: entityType, data }),
+      })
+
+      if (!response.ok) {
+        const err = await response.json()
+        setStatus('error')
+        setErrorMsg(err.details?.[0]?.message || err.error || 'Submission failed')
+        return
+      }
+
+      setStatus('success')
+      setFormData({})
+    } catch {
+      setStatus('error')
+      setErrorMsg(lang === 'es' ? 'Error de conexion' : 'Connection error')
+    }
+  }
+
+  if (status === 'success') {
+    return (
+      <div className="mt-4 rounded-lg border border-green-500/30 bg-green-500/5 p-6 text-center">
+        <p className="text-sm font-medium text-green-400">
+          {lang === 'es'
+            ? 'Gracias. Tu aporte fue enviado y sera revisado antes de publicarse.'
+            : 'Thank you. Your submission was sent and will be reviewed before publishing.'}
+        </p>
+        <button
+          type="button"
+          onClick={() => { setStatus('idle'); setFormData({}) }}
+          className="mt-3 text-xs text-green-400 underline hover:text-green-300"
+        >
+          {lang === 'es' ? 'Enviar otro' : 'Submit another'}
+        </button>
+      </div>
+    )
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="mt-4 space-y-4 rounded-lg border border-zinc-800 bg-zinc-900/30 p-5">
+      {/* Entity type selector */}
+      <div>
+        <label className="mb-1.5 block text-xs font-medium text-zinc-400">
+          {lang === 'es' ? 'Tipo de aporte' : 'Submission type'}
+        </label>
+        <div className="flex flex-wrap gap-2">
+          {ENTITY_TYPES.map((et) => (
+            <button
+              key={et.value}
+              type="button"
+              onClick={() => { setEntityType(et.value); setFormData({}) }}
+              className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+                entityType === et.value
+                  ? 'bg-purple-600 text-white'
+                  : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+              }`}
+            >
+              {lang === 'es' ? et.label_es : et.label_en}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Dynamic fields */}
+      {fields.map((field) => (
+        <div key={field.key}>
+          <label htmlFor={`inv-${field.key}`} className="mb-1 block text-xs font-medium text-zinc-400">
+            {lang === 'es' ? field.label_es : field.label_en}
+            {field.required && <span className="ml-1 text-red-400">*</span>}
+          </label>
+          {'options' in field && field.options ? (
+            <select
+              id={`inv-${field.key}`}
+              value={formData[field.key] || ''}
+              onChange={(e) => handleChange(field.key, e.target.value)}
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-200 focus:border-purple-500 focus:outline-none"
+            >
+              <option value="">{lang === 'es' ? 'Seleccionar...' : 'Select...'}</option>
+              {field.options.map((opt) => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
+              ))}
+            </select>
+          ) : field.type === 'textarea' ? (
+            <textarea
+              id={`inv-${field.key}`}
+              value={formData[field.key] || ''}
+              onChange={(e) => handleChange(field.key, e.target.value)}
+              rows={3}
+              className="w-full resize-none rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-200 placeholder-zinc-600 focus:border-purple-500 focus:outline-none"
+            />
+          ) : (
+            <input
+              id={`inv-${field.key}`}
+              type={field.type === 'date' ? 'date' : field.type === 'number' ? 'number' : 'text'}
+              value={formData[field.key] || ''}
+              onChange={(e) => handleChange(field.key, e.target.value)}
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-200 placeholder-zinc-600 focus:border-purple-500 focus:outline-none"
+            />
+          )}
+        </div>
+      ))}
+
+      {/* Error */}
+      {status === 'error' && (
+        <p className="text-xs text-red-400">{errorMsg}</p>
+      )}
+
+      {/* Submit */}
+      <button
+        type="submit"
+        disabled={status === 'submitting'}
+        className="rounded-lg bg-purple-600 px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-purple-500 disabled:opacity-50"
+      >
+        {status === 'submitting'
+          ? (lang === 'es' ? 'Enviando...' : 'Submitting...')
+          : (lang === 'es' ? 'Enviar aporte' : 'Submit evidence')}
+      </button>
+
+      <p className="text-xs text-zinc-600">
+        {lang === 'es'
+          ? 'Todos los aportes son revisados por el equipo antes de publicarse. Se requiere una fuente verificable.'
+          : 'All submissions are reviewed by the team before publishing. A verifiable source is required.'}
+      </p>
+    </form>
   )
 }

@@ -23,13 +23,16 @@ export default async function CasoLandingPage({
     <div className="space-y-10">
       {/* Hero */}
       <section className="text-center">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl lg:text-5xl">
+        <p className="text-xs font-medium uppercase tracking-widest text-purple-400">
+          Investigacion de datos abiertos — Oficina de Rendicion de Cuentas
+        </p>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl lg:text-5xl">
           Caso Libra: La Memecoin del Presidente
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
           El 14 de febrero de 2025, el presidente Milei promovio el token $LIBRA a sus 19 millones
           de seguidores. En horas, el precio colapso un 94%. Aproximadamente 114,000 billeteras
-          perdieron entre $251M y $286M.
+          perdieron $251 millones. Un año despues, cero imputados.
         </p>
         <div className="mt-4">
           <ShareButton
@@ -42,22 +45,49 @@ export default async function CasoLandingPage({
       {/* Key stats */}
       <KeyStats />
 
+      {/* Primary CTA — read the full story */}
+      <section className="flex flex-col gap-3 sm:flex-row">
+        <Link
+          href={`/caso/${slug}/resumen`}
+          className="flex-1 rounded-xl border border-purple-500/30 bg-purple-500/10 p-6 text-center transition-colors hover:border-purple-500/50 hover:bg-purple-500/15"
+        >
+          <h3 className="text-lg font-bold text-purple-300">Leer la historia completa</h3>
+          <p className="mt-1 text-sm text-zinc-400">
+            8 capitulos que cuentan como el presidente promovio una estafa de $251 millones
+          </p>
+        </Link>
+        <Link
+          href={`/caso/${slug}/investigacion`}
+          className="flex-1 rounded-xl border border-zinc-700 bg-zinc-900/50 p-6 text-center transition-colors hover:border-zinc-600"
+        >
+          <h3 className="text-lg font-bold text-zinc-100">Ver las pruebas</h3>
+          <p className="mt-1 text-sm text-zinc-400">
+            26 hechos verificados, 27 eventos, 14 actores, flujos de dinero — todo con fuentes
+          </p>
+        </Link>
+      </section>
+
       {/* Entry points */}
-      <section className="grid gap-3 sm:grid-cols-3">
-        <EntryPoint
-          href={`/caso/${slug}/grafo`}
-          title="Grafo de Conocimiento"
-          description="Explora las conexiones entre actores, eventos, documentos y billeteras."
-        />
+      <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <EntryPoint
           href={`/caso/${slug}/cronologia`}
           title="Cronologia"
-          description="Todos los eventos ordenados por fecha, desde el lanzamiento hasta las investigaciones."
+          description="Todos los eventos desde el lanzamiento hasta las investigaciones judiciales."
         />
         <EntryPoint
           href={`/caso/${slug}/dinero`}
-          title="Flujo de Dinero"
-          description="Visualiza el movimiento de fondos entre billeteras en la blockchain de Solana."
+          title="El Dinero"
+          description="$107M extraidos por insiders. Visualiza el flujo de fondos."
+        />
+        <EntryPoint
+          href={`/caso/${slug}/grafo`}
+          title="Conexiones"
+          description="Red de actores: quien conoce a quien, quien pago a quien."
+        />
+        <EntryPoint
+          href={`/caso/${slug}/investigacion#aportar`}
+          title="Aportar pruebas"
+          description="Tenes informacion? Envia datos verificables para la investigacion."
         />
       </section>
 
