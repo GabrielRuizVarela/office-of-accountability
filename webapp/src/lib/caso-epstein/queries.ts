@@ -156,38 +156,47 @@ function buildGraphData(nodes: readonly Node[], rels: readonly Relationship[]): 
 /**
  * Fetch the full subgraph for the Epstein investigation.
  *
- * Matches all nodes with `caso_slug` matching the given slug,
- * then collects all relationships between them.
+ * Two-pass query: first collect matching nodes, then find relationships
+ * between them. Avoids O(n²) cartesian product that times out on large graphs.
  */
 export async function getInvestigationGraph(casoSlug: string, tiers?: ConfidenceTier[]): Promise<GraphData> {
   const session = getDriver().session()
 
   try {
-    const result = await session.run(
+    // Pass 1: collect all matching nodes
+    const nodeResult = await session.run(
       `MATCH (n)
        WHERE n.caso_slug = $casoSlug
          AND (size($tiers) = 0 OR n.confidence_tier IN $tiers)
-       WITH collect(n) AS nodes
-       UNWIND nodes AS a
-       UNWIND nodes AS b
-       WITH nodes, a, b
-       WHERE elementId(a) < elementId(b)
-       OPTIONAL MATCH (a)-[r]-(b)
-       WITH nodes, collect(DISTINCT r) AS rels
-       RETURN nodes, rels`,
+       RETURN n`,
       { casoSlug, tiers: tiers ?? [] },
-      TX_CONFIG,
+      { timeout: 30_000 },
     )
 
-    if (result.records.length === 0) {
+    if (nodeResult.records.length === 0) {
       return { nodes: [], links: [] }
     }
 
-    const record = result.records[0]
-    const nodes = record.get('nodes') as Node[]
-    const rels = (record.get('rels') as (Relationship | null)[]).filter(
-      (r): r is Relationship => r !== null,
+    const nodes = nodeResult.records.map((r) => r.get('n') as Node)
+    const nodeElementIds = new Set(nodes.map((n) => n.elementId))
+
+    // Pass 2: find relationships between matching nodes
+    const relResult = await session.run(
+      `MATCH (a)-[r]->(b)
+       WHERE a.caso_slug = $casoSlug AND b.caso_slug = $casoSlug
+         AND (size($tiers) = 0 OR a.confidence_tier IN $tiers)
+         AND (size($tiers) = 0 OR b.confidence_tier IN $tiers)
+       RETURN r`,
+      { casoSlug, tiers: tiers ?? [] },
+      { timeout: 30_000 },
     )
+
+    const rels = relResult.records
+      .map((r) => r.get('r') as Relationship)
+      .filter((r) =>
+        nodeElementIds.has(r.startNodeElementId) &&
+        nodeElementIds.has(r.endNodeElementId),
+      )
 
     return buildGraphData(nodes, rels)
   } finally {
