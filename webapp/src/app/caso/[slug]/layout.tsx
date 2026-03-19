@@ -40,8 +40,11 @@ export default async function CasoLayout({
             <Link href="/" className="text-zinc-400 hover:text-zinc-100">
               Inicio
             </Link>
-            <Link href="/explorar" className="text-zinc-400 hover:text-zinc-100">
-              Explorar
+            <Link href="/caso/caso-libra/resumen" className="text-zinc-400 hover:text-zinc-100">
+              Que paso
+            </Link>
+            <Link href="/caso/caso-libra/investigacion" className="text-zinc-400 hover:text-zinc-100">
+              Pruebas
             </Link>
           </nav>
         </div>
