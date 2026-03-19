@@ -18,6 +18,7 @@
     "ingest:wave1": "npx tsx scripts/ingest-wave-1.ts",
     "ingest:wave2": "npx tsx scripts/ingest-wave-2.ts",
     "ingest:wave3": "npx tsx scripts/ingest-wave-3.ts",
+    "ingest:wave4": "npx tsx scripts/ingest-wave-4.ts",
     "ingest:review": "npx tsx scripts/review-wave.ts",
     "ingest:promote": "npx tsx scripts/promote-nodes.ts"
   },
