@@ -5,6 +5,7 @@ import { useCallback, useMemo, useRef, useState } from 'react'
 
 import { ForceGraph } from '../../components/graph/ForceGraph'
 import type { ForceGraphHandle } from '../../components/graph/ForceGraph'
+import { NodeContextMenu } from '../../components/graph/NodeContextMenu'
 import { NodeDetailPanel } from '../../components/graph/NodeDetailPanel'
 import { SearchBar } from '../../components/graph/SearchBar'
 import { TypeFilter } from '../../components/graph/TypeFilter'
@@ -172,6 +173,54 @@ export default function ExplorarPage() {
     setSelectedNodeId(null)
   }, [])
 
+  // Context menu state
+  const [contextMenu, setContextMenu] = useState<{ nodeId: string; x: number; y: number } | null>(null)
+
+  const handleNodeRightClick = useCallback((nodeId: string, x: number, y: number) => {
+    setContextMenu({ nodeId, x, y })
+    setSelectedNodeId(nodeId)
+  }, [])
+
+  const closeContextMenu = useCallback(() => setContextMenu(null), [])
+
+  // Collapse node: remove exclusive neighbors (not pinned, no other connections)
+  const collapseNode = useCallback((nodeId: string) => {
+    undoStackRef.current = [...undoStackRef.current.slice(-9), graphDataRef.current]
+    setUndoStack(undoStackRef.current)
+
+    const currentData = graphDataRef.current
+    const nodeLinks = currentData.links.filter(l => {
+      const src = typeof l.source === 'string' ? l.source : (l.source as unknown as {id:string}).id
+      const tgt = typeof l.target === 'string' ? l.target : (l.target as unknown as {id:string}).id
+      return src === nodeId || tgt === nodeId
+    })
+    const neighborIds = new Set(nodeLinks.map(l => {
+      const src = typeof l.source === 'string' ? l.source : (l.source as unknown as {id:string}).id
+      const tgt = typeof l.target === 'string' ? l.target : (l.target as unknown as {id:string}).id
+      return src === nodeId ? tgt : src
+    }))
+
+    const exclusiveIds = new Set<string>()
+    for (const nId of neighborIds) {
+      if (pinnedNodeIds.has(nId)) continue
+      const otherLinks = currentData.links.filter(l => {
+        const src = typeof l.source === 'string' ? l.source : (l.source as unknown as {id:string}).id
+        const tgt = typeof l.target === 'string' ? l.target : (l.target as unknown as {id:string}).id
+        return (src === nId || tgt === nId) && src !== nodeId && tgt !== nodeId
+      })
+      if (otherLinks.length === 0) exclusiveIds.add(nId)
+    }
+    if (exclusiveIds.size === 0) return
+
+    const newNodes = currentData.nodes.filter(n => !exclusiveIds.has(n.id))
+    const newLinks = currentData.links.filter(l => {
+      const src = typeof l.source === 'string' ? l.source : (l.source as unknown as {id:string}).id
+      const tgt = typeof l.target === 'string' ? l.target : (l.target as unknown as {id:string}).id
+      return !exclusiveIds.has(src) && !exclusiveIds.has(tgt)
+    })
+    setGraphData({ nodes: newNodes, links: newLinks } as GraphData)
+  }, [pinnedNodeIds])
+
   // Search result selected — expand that node into the graph
   const handleSearchSelect = useCallback(
     (nodeId: string) => {
@@ -330,10 +379,31 @@ export default function ExplorarPage() {
               ref={graphRef}
               data={graphData}
               onNodeClick={handleNodeClick}
+              onNodeRightClick={handleNodeRightClick}
               selectedNodeId={selectedNodeId}
               focusedNodeId={focusedNodeId}
               visibleLabels={visibleLabels}
               pinnedNodeIds={pinnedNodeIds}
+            />
+          )}
+
+          {/* Context menu */}
+          {contextMenu && (
+            <NodeContextMenu
+              x={contextMenu.x} y={contextMenu.y} onClose={closeContextMenu}
+              actions={[
+                { label: pinnedNodeIds.has(contextMenu.nodeId) ? 'Desfijar' : 'Fijar',
+                  icon: <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M16 12V4h1a1 1 0 100-2H7a1 1 0 000 2h1v8l-2 2v2h5v6l1 1 1-1v-6h5v-2l-2-2z" /></svg>,
+                  onClick: () => togglePin(contextMenu.nodeId) },
+                { label: 'Expandir',
+                  icon: <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" /></svg>,
+                  onClick: () => expandNode(contextMenu.nodeId) },
+                { label: 'Colapsar',
+                  icon: <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M20 12H4" /></svg>,
+                  onClick: () => collapseNode(contextMenu.nodeId) },
+                { label: 'Ruta desde aqui', icon: <svg className="h-4 w-4" />, onClick: () => {}, disabled: true },
+                { label: 'Ruta hasta aqui', icon: <svg className="h-4 w-4" />, onClick: () => {}, disabled: true },
+              ]}
             />
           )}
         </div>
