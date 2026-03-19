@@ -24,8 +24,11 @@ async function main(): Promise<void> {
            n.source = 'seed'
        RETURN count(n) AS updated`,
     )
-    const count = result.records.length > 0 ? 'done' : '0'
-    console.log(`  ${label}: ${count}`)
+    // executeWrite discards records; derive the updated count from the write
+    // counters (3 properties set per matched node: ingestion_wave, confidence_tier, source).
+    const propsSet = result.summary.counters.propertiesSet ?? 0
+    const count = Math.round(propsSet / 3)
+    console.log(`  ${label}: ${count} updated`)
   }
 
   // Also backfill relationships
