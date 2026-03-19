@@ -196,9 +196,35 @@ export function NodeDetailPanel({ nodeId, onClose, onNavigate, onExpand, onToggl
 
       {/* Header */}
       <div className="flex items-center justify-between border-b border-zinc-800 px-4 py-3 md:py-3">
-        <h2 className="truncate text-sm font-semibold text-zinc-100">
+        <h2 className="min-w-0 flex-1 truncate text-sm font-semibold text-zinc-100">
           {detail ? getNodeLabel(detail.node) : 'Cargando...'}
         </h2>
+        {nodeId && onTogglePin && (
+          <button
+            onClick={() => onTogglePin(nodeId)}
+            className={`flex-shrink-0 rounded p-1 transition-colors hover:bg-zinc-800 ${
+              isPinned ? 'text-yellow-400' : 'text-zinc-400 hover:text-zinc-200'
+            }`}
+            aria-label={isPinned ? 'Desfijar nodo' : 'Fijar nodo'}
+            title={isPinned ? 'Desfijar' : 'Fijar'}
+          >
+            <svg className="h-4 w-4" fill={isPinned ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M16 12V4h1a1 1 0 100-2H7a1 1 0 000 2h1v8l-2 2v2h5v6l1 1 1-1v-6h5v-2l-2-2z" />
+            </svg>
+          </button>
+        )}
+        {nodeId && onExpand && (
+          <button
+            onClick={() => onExpand(nodeId)}
+            className="flex-shrink-0 rounded p-1 text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-200"
+            aria-label="Expandir vecindario"
+            title="Expandir"
+          >
+            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+            </svg>
+          </button>
+        )}
         <button
           onClick={onClose}
           className="flex-shrink-0 rounded p-1 text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-200"

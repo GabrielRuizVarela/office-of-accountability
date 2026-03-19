@@ -39,6 +39,7 @@ export default function ExplorarPage() {
   const [visibleLabels, setVisibleLabels] = useState<ReadonlySet<string>>(
     () => new Set(ALL_NODE_TYPES),
   )
+  const [pinnedNodeIds, setPinnedNodeIds] = useState<Set<string>>(new Set())
   const [isLoading, setIsLoading] = useState(false)
   const [undoStack, setUndoStack] = useState<GraphData[]>([])
   const undoStackRef = useRef<GraphData[]>([])
@@ -140,6 +141,27 @@ export default function ExplorarPage() {
     undoStackRef.current = stack.slice(0, -1)
     setUndoStack(undoStackRef.current)
     setGraphData(last)
+  }, [])
+
+  // Toggle pin on a node
+  const togglePin = useCallback((nodeId: string) => {
+    setPinnedNodeIds((prev) => {
+      const next = new Set(prev)
+      if (next.has(nodeId)) {
+        next.delete(nodeId)
+        graphRef.current?.unpinNode(nodeId)
+      } else {
+        next.add(nodeId)
+        graphRef.current?.pinNode(nodeId)
+      }
+      return next
+    })
+  }, [])
+
+  // Unpin all nodes
+  const unpinAll = useCallback(() => {
+    setPinnedNodeIds(new Set())
+    graphRef.current?.unpinAll()
   }, [])
 
   // Clear graph: reset to empty state
@@ -311,6 +333,7 @@ export default function ExplorarPage() {
               selectedNodeId={selectedNodeId}
               focusedNodeId={focusedNodeId}
               visibleLabels={visibleLabels}
+              pinnedNodeIds={pinnedNodeIds}
             />
           )}
         </div>
@@ -321,6 +344,9 @@ export default function ExplorarPage() {
             nodeId={selectedNodeId}
             onClose={handleClosePanel}
             onNavigate={handleNavigate}
+            onExpand={expandNode}
+            onTogglePin={togglePin}
+            isPinned={selectedNodeId ? pinnedNodeIds.has(selectedNodeId) : false}
           />
         )}
       </div>
