@@ -634,6 +634,40 @@ export const FACTCHECK_ITEMS: FactcheckItem[] = [
     source: 'Neo4j financial path analysis',
     source_url: 'https://www.courtlistener.com/docket/17318513/united-states-v-maxwell/',
   },
+  {
+    id: 'fc-727-dominant-aircraft',
+    claim_en: 'The Boeing 727 "Lolita Express" (N908JE) was the most-used aircraft with 939 documented flights, followed by the Gulfstream G-II (N909JE) at 677 and the Gulfstream G550 (N212JE) at 532',
+    claim_es: 'El Boeing 727 "Lolita Express" (N908JE) fue la aeronave más utilizada con 939 vuelos documentados, seguido por el Gulfstream G-II (N909JE) con 677 y el Gulfstream G550 (N212JE) con 532',
+    status: 'confirmed' as const,
+    source: 'Neo4j graph analysis of 2,558+ ingested flight records',
+    source_url: 'https://epsteinexposed.com/flights',
+  },
+  {
+    id: 'fc-peak-2001-264-flights',
+    claim_en: 'Peak flight activity was 2001 with 264 flights — the operation was most active PRE-investigation. Activity dropped to 11 flights in 2009 post-conviction but rebuilt to 132 flights by 2015.',
+    claim_es: 'La actividad máxima de vuelos fue en 2001 con 264 vuelos — la operación fue más activa ANTES de la investigación. La actividad cayó a 11 vuelos en 2009 post-condena pero se reconstruyó a 132 vuelos para 2015.',
+    status: 'confirmed' as const,
+    source: 'Neo4j flight timeline analysis',
+    source_url: 'https://epsteinexposed.com/flights',
+    detail_en: 'The post-conviction rebuild to 50% of peak capacity within 4 years demonstrates the NPA failed to stop the operation.',
+    detail_es: 'La reconstrucción post-condena al 50% de la capacidad máxima en 4 años demuestra que el acuerdo de no-enjuiciamiento no logró detener la operación.',
+  },
+  {
+    id: 'fc-teterboro-palm-beach-axis',
+    claim_en: 'The Teterboro NJ to Palm Beach FL corridor was the primary flight axis with 412 combined flights. The USVI (St. Thomas) routes formed the second axis with 439 flights connecting to Little St. James Island.',
+    claim_es: 'El corredor Teterboro NJ a Palm Beach FL fue el eje principal de vuelos con 412 vuelos combinados. Las rutas a USVI (St. Thomas) formaron el segundo eje con 439 vuelos conectando con la Isla Little St. James.',
+    status: 'confirmed' as const,
+    source: 'Neo4j route analysis',
+    source_url: 'https://epsteinexposed.com/flights',
+  },
+  {
+    id: 'fc-bedford-hanscom-104-flights',
+    claim_en: 'Hanscom Field in Bedford, MA was the third most-used airport with 104 flights — near Harvard, MIT, and Wexner properties in New England',
+    claim_es: 'El campo Hanscom en Bedford, MA fue el tercer aeropuerto más utilizado con 104 vuelos — cerca de Harvard, MIT y las propiedades de Wexner en Nueva Inglaterra',
+    status: 'confirmed' as const,
+    source: 'Neo4j route analysis',
+    source_url: 'https://epsteinexposed.com/flights',
+  },
 ]
 
 // ---------------------------------------------------------------------------
