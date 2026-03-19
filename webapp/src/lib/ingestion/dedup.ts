@@ -1,3 +1,4 @@
+import { getDriver } from '../neo4j/client'
 import type { DedupResult } from './types'
 
 const FUZZY_THRESHOLD = 2
@@ -73,6 +74,7 @@ export function dedup(
   let bestMatch: { id: string; name: string } | null = null
 
   for (const [existingNorm, entry] of existingEntries) {
+    if (Math.abs(normalized.length - existingNorm.length) > FUZZY_THRESHOLD) continue
     const dist = levenshtein(normalized, existingNorm)
     if (dist <= FUZZY_THRESHOLD && dist < bestDistance) {
       bestDistance = dist
@@ -85,4 +87,35 @@ export function dedup(
   }
 
   return { result: 'no_match', existingId: null, existingName: null, distance: -1 }
+}
+
+/**
+ * Build maps of existing entity names and slugs for deduplication.
+ * Queries all nodes with the given caso_slug that have a name property.
+ */
+export async function buildExistingMaps(casoSlug: string): Promise<{
+  nameMap: Map<string, { id: string; name: string }>
+  slugMap: Map<string, { id: string; name: string }>
+}> {
+  const session = getDriver().session()
+  try {
+    const result = await session.run(
+      `MATCH (n) WHERE n.caso_slug = $casoSlug AND n.name IS NOT NULL
+       RETURN n.id AS id, n.name AS name, n.slug AS slug`,
+      { casoSlug },
+    )
+    const nameMap = new Map<string, { id: string; name: string }>()
+    const slugMap = new Map<string, { id: string; name: string }>()
+    for (const record of result.records) {
+      const id = record.get('id') as string
+      const name = record.get('name') as string
+      const slug = record.get('slug') as string | null
+      const entry = { id, name }
+      nameMap.set(normalizeName(name), entry)
+      if (slug) slugMap.set(slug, entry)
+    }
+    return { nameMap, slugMap }
+  } finally {
+    await session.close()
+  }
 }
