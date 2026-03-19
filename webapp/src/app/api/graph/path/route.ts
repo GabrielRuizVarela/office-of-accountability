@@ -87,10 +87,12 @@ export async function GET(request: Request): Promise<Response> {
   // the Zod-validated integer (guaranteed 1-6).
   const pathFn = findAll ? 'allShortestPaths' : 'shortestPath'
 
+  // Two-step: find nodes by ID first (avoids cartesian product), then path query
   const cypher = [
-    'MATCH (source), (target)',
-    'WHERE (source.id = $sourceId OR source.slug = $sourceId OR source.acta_id = $sourceId)',
-    '  AND (target.id = $targetId OR target.slug = $targetId OR target.acta_id = $targetId)',
+    'MATCH (source) WHERE source.id = $sourceId OR source.slug = $sourceId OR source.acta_id = $sourceId',
+    'WITH source LIMIT 1',
+    'MATCH (target) WHERE target.id = $targetId OR target.slug = $targetId OR target.acta_id = $targetId',
+    'WITH source, target LIMIT 1',
     `MATCH path = ${pathFn}((source)-[*..${maxHops}]-(target))`,
     ...(findAll ? ['WITH path LIMIT $pathLimit'] : []),
     'RETURN path',
