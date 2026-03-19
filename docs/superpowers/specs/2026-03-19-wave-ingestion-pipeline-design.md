@@ -36,7 +36,7 @@ Existing 198 nodes backfilled with `ingestion_wave: 0, confidence_tier: 'gold', 
 2. Parse and map to existing Zod schemas
 3. Deduplicate against existing 198 nodes:
    - **Exact match** → skip (gold data wins)
-   - **Fuzzy match** → log conflict for manual review, don't overwrite
+   - **Fuzzy match** → log conflict for manual review AND create new bronze node. This intentional deviation from the original plan ensures no data is silently dropped — duplicates are visible and can be merged during review.
    - **No match** → create bronze node
 4. Write nodes with `ingestion_wave: 1, confidence_tier: 'bronze', source: 'rhowardstone', caso_slug: 'caso-epstein'`
 5. Write relationships with same metadata
@@ -101,7 +101,6 @@ webapp/src/lib/ingestion/
 ├── types.ts                    — IngestionResult, ConflictRecord, WaveConfig
 ├── dedup.ts                    — fuzzy matching (normalization, Levenshtein)
 ├── quality.ts                  — review report generation, conflict logging
-├── wave-runner.ts              — shared wave execution (run, resume, report)
 └── epstein-exposed-client.ts   — API client for Wave 2
 
 webapp/scripts/
