@@ -1,6 +1,20 @@
 'use client'
 
+import Link from 'next/link'
 import { useCallback, useEffect, useState } from 'react'
+
+/** Key persons shown at top of dropdown */
+const KEY_PERSONS = new Set([
+  'jeffrey-epstein',
+  'ghislaine-maxwell',
+  'virginia-giuffre',
+  'prince-andrew',
+  'leslie-wexner',
+  'bill-clinton',
+  'donald-trump',
+  'leon-black',
+  'alan-dershowitz',
+])
 
 // ---------------------------------------------------------------------------
 // Types
@@ -55,7 +69,7 @@ interface ProximityPanelProps {
 
 export function ProximityPanel({ casoSlug }: ProximityPanelProps) {
   const [persons, setPersons] = useState<PersonOption[]>([])
-  const [selected, setSelected] = useState<string[]>([])
+  const [selected, setSelected] = useState<string[]>(['jeffrey-epstein', 'ghislaine-maxwell'])
   const [data, setData] = useState<ProximityData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isQuerying, setIsQuerying] = useState(false)
@@ -63,14 +77,15 @@ export function ProximityPanel({ casoSlug }: ProximityPanelProps) {
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [searchFilter, setSearchFilter] = useState('')
 
-  // Load person list on mount
+  // Load person list on mount + auto-fetch for pre-selected pair
   useEffect(() => {
     async function loadPersons() {
       try {
-        const res = await fetch(`/api/caso/${casoSlug}/proximity`)
+        const res = await fetch(`/api/caso/${casoSlug}/proximity?persons=jeffrey-epstein,ghislaine-maxwell`)
         if (!res.ok) throw new Error('Failed to load persons')
         const json = await res.json()
         setPersons(json.data.persons)
+        setData(json.data)
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load persons')
       } finally {
@@ -128,9 +143,14 @@ export function ProximityPanel({ casoSlug }: ProximityPanelProps) {
     })
   }
 
-  const filteredPersons = persons.filter((p) =>
-    p.name.toLowerCase().includes(searchFilter.toLowerCase()),
-  )
+  const filteredPersons = persons
+    .filter((p) => p.name.toLowerCase().includes(searchFilter.toLowerCase()))
+    .sort((a, b) => {
+      const aKey = KEY_PERSONS.has(a.slug) ? 0 : 1
+      const bKey = KEY_PERSONS.has(b.slug) ? 0 : 1
+      if (aKey !== bKey) return aKey - bKey
+      return a.name.localeCompare(b.name)
+    })
 
   const selectedPersons = persons.filter((p) => selected.includes(p.slug))
 
@@ -165,7 +185,12 @@ export function ProximityPanel({ casoSlug }: ProximityPanelProps) {
               key={p.slug}
               className="inline-flex items-center gap-1 rounded-full bg-zinc-800 px-3 py-1 text-sm text-zinc-200"
             >
-              {p.name}
+              <Link
+                href={`/caso/${casoSlug}/actor/${p.slug}`}
+                className="hover:text-blue-400 transition-colors"
+              >
+                {p.name}
+              </Link>
               <button
                 onClick={() => removePerson(p.slug)}
                 className="ml-1 text-zinc-500 hover:text-zinc-200"
@@ -200,25 +225,35 @@ export function ProximityPanel({ casoSlug }: ProximityPanelProps) {
                 autoFocus
               />
             </div>
-            {filteredPersons.map((p) => {
+            {filteredPersons.map((p, i) => {
               const isSelected = selected.includes(p.slug)
+              const isKey = KEY_PERSONS.has(p.slug)
+              const prevIsKey = i > 0 && KEY_PERSONS.has(filteredPersons[i - 1].slug)
+              const showSeparator = !isKey && (i === 0 || prevIsKey)
               return (
-                <button
-                  key={p.slug}
-                  onClick={() => {
-                    togglePerson(p.slug)
-                  }}
-                  className={`w-full px-3 py-2 text-left text-sm transition-colors ${
-                    isSelected
-                      ? 'bg-zinc-800 text-zinc-100'
-                      : 'text-zinc-400 hover:bg-zinc-800/50 hover:text-zinc-200'
-                  }`}
-                >
-                  <span className="mr-2 inline-block w-4 text-center">
-                    {isSelected ? '\u2713' : ''}
-                  </span>
-                  {p.name}
-                </button>
+                <div key={p.slug}>
+                  {showSeparator && (
+                    <div className="border-t border-zinc-700 px-3 py-1 text-[10px] uppercase tracking-wider text-zinc-600">
+                      Other persons
+                    </div>
+                  )}
+                  <button
+                    onClick={() => {
+                      togglePerson(p.slug)
+                    }}
+                    className={`w-full px-3 py-2 text-left text-sm transition-colors ${
+                      isSelected
+                        ? 'bg-zinc-800 text-zinc-100'
+                        : 'text-zinc-400 hover:bg-zinc-800/50 hover:text-zinc-200'
+                    }`}
+                  >
+                    <span className="mr-2 inline-block w-4 text-center">
+                      {isSelected ? '\u2713' : ''}
+                    </span>
+                    {isKey && <span className="mr-1 inline-block h-1.5 w-1.5 rounded-full bg-blue-500" />}
+                    {p.name}
+                  </button>
+                </div>
               )
             })}
             {filteredPersons.length === 0 && (
@@ -306,13 +341,13 @@ export function ProximityPanel({ casoSlug }: ProximityPanelProps) {
                     )}
                     <div className="space-y-2">
                       <div className="rounded-md bg-zinc-950/50 px-3 py-2">
-                        <p className="text-xs font-medium text-emerald-400">{loc.person1}</p>
+                        <Link href={`/caso/${casoSlug}/actor/${loc.slug1}`} className="text-xs font-medium text-emerald-400 hover:text-emerald-300">{loc.person1}</Link>
                         <p className="text-sm text-zinc-300">
                           {loc.visit1Desc || 'No visit description available'}
                         </p>
                       </div>
                       <div className="rounded-md bg-zinc-950/50 px-3 py-2">
-                        <p className="text-xs font-medium text-blue-400">{loc.person2}</p>
+                        <Link href={`/caso/${casoSlug}/actor/${loc.slug2}`} className="text-xs font-medium text-blue-400 hover:text-blue-300">{loc.person2}</Link>
                         <p className="text-sm text-zinc-300">
                           {loc.visit2Desc || 'No visit description available'}
                         </p>

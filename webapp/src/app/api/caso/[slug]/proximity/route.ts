@@ -50,7 +50,8 @@ export async function GET(
        WHERE p1.slug IN $slugs AND p2.slug IN $slugs AND p1.slug < p2.slug
          AND (type(r1) = 'VISITED' OR type(r1) = 'OWNED')
          AND (type(r2) = 'VISITED' OR type(r2) = 'OWNED')
-       RETURN p1.name AS person1, p2.name AS person2, loc.name AS location,
+       RETURN p1.name AS person1, p1.slug AS slug1, p2.name AS person2, p2.slug AS slug2,
+              loc.name AS location, loc.slug AS locSlug, loc.coordinates AS coordinates,
               r1.description AS visit1, r2.description AS visit2`,
       { slugs },
     )
@@ -81,8 +82,11 @@ export async function GET(
       success: true,
       data: {
         coLocations: coLocResult.records.map((r) => ({
-          person1: str(r, 'person1'), person2: str(r, 'person2'),
-          location: str(r, 'location'), visit1: str(r, 'visit1'), visit2: str(r, 'visit2'),
+          person1: str(r, 'person1'), slug1: str(r, 'slug1'),
+          person2: str(r, 'person2'), slug2: str(r, 'slug2'),
+          location: str(r, 'location'), locSlug: str(r, 'locSlug'),
+          coordinates: str(r, 'coordinates'),
+          visit1Desc: str(r, 'visit1'), visit2Desc: str(r, 'visit2'),
         })),
         sharedEvents: eventsResult.records.map((r) => ({
           person1: str(r, 'person1'), person2: str(r, 'person2'),
