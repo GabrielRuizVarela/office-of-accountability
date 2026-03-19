@@ -61,22 +61,77 @@ function slugify(input: string): string {
     .replace(/^-+|-+$/g, '')
 }
 
-/**
- * Parse CNE date "DD/MM/YYYY" or "DD-MM-YYYY" to ISO 8601.
- */
-function parseCneDate(dateStr: string): string {
-  const match = dateStr.match(/^(\d{2})[/-](\d{2})[/-](\d{4})$/)
-  if (!match) return ''
-  const [, day, month, year] = match
-  return `${year}-${month}-${day}`
+const SPANISH_MONTHS: Record<string, string> = {
+  enero: '01',
+  febrero: '02',
+  marzo: '03',
+  abril: '04',
+  mayo: '05',
+  junio: '06',
+  julio: '07',
+  agosto: '08',
+  septiembre: '09',
+  octubre: '10',
+  noviembre: '11',
+  diciembre: '12',
 }
 
 /**
- * Parse amount string: "1.500.000,50" → 1500000.50
+ * Parse CNE date strings to ISO 8601 (YYYY-MM-DD).
+ *
+ * Handles two formats observed in the source data:
+ *   - Numeric:      "DD/MM/YYYY" or "DD-MM-YYYY"
+ *   - Spanish long: "12 de Julio de 2019"
+ */
+function parseCneDate(dateStr: string): string {
+  if (!dateStr || !dateStr.trim()) return ''
+
+  // Numeric format: DD/MM/YYYY or DD-MM-YYYY
+  const numericMatch = dateStr.match(/^(\d{2})[/-](\d{2})[/-](\d{4})$/)
+  if (numericMatch) {
+    const [, day, month, year] = numericMatch
+    return `${year}-${month}-${day}`
+  }
+
+  // Spanish long form: "12 de Julio de 2019" or "12 de julio de 2019"
+  const spanishMatch = dateStr
+    .trim()
+    .match(/^(\d{1,2})\s+de\s+([A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)\s+de\s+(\d{4})$/i)
+  if (spanishMatch) {
+    const [, day, monthName, year] = spanishMatch
+    const month = SPANISH_MONTHS[monthName.toLowerCase()]
+    if (month) {
+      return `${year}-${month}-${day.padStart(2, '0')}`
+    }
+  }
+
+  return ''
+}
+
+/**
+ * Parse amount string from CNE CSV.
+ *
+ * Handles two formats observed in the source data:
+ *   - Plain decimal:            "15000.00"   → 15000.00
+ *   - European thousands + comma: "1.500.000,50" → 1500000.50
+ *
+ * Distinguishes them by whether a comma is present (European format)
+ * or not (plain decimal). In plain decimal, the dot is the decimal
+ * separator and must be preserved.
  */
 function parseAmount(amountStr: string): number {
   if (!amountStr || amountStr.trim() === '') return 0
-  const cleaned = amountStr.replace(/\./g, '').replace(',', '.')
+  const trimmed = amountStr.trim()
+
+  let cleaned: string
+  if (trimmed.includes(',')) {
+    // European format: dots are thousands separators, comma is decimal
+    cleaned = trimmed.replace(/\./g, '').replace(',', '.')
+  } else {
+    // Plain decimal: dot is the decimal separator — preserve it
+    cleaned = trimmed
+  }
+
   const value = parseFloat(cleaned)
   return isNaN(value) ? 0 : value
 }
@@ -289,6 +344,8 @@ export function transformCneAll(input: CneTransformInput): CneTransformResult {
       donor_id: donorId,
       party_finance_id: partyFinanceId,
       donation_id: d.donation_id,
+      amount: d.amount,
+      date_iso: d.date_iso,
     })
 
     receivedDonationRels.push({
