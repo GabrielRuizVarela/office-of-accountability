@@ -196,22 +196,25 @@ export function transformExpandResult(
 }
 
 /**
- * Merge multiple GraphData objects into one, deduplicating nodes by id.
+ * Merge multiple GraphData objects into one, deduplicating nodes by id and links by source:target:type.
  */
 export function mergeGraphData(...graphs: readonly GraphData[]): GraphData {
   const nodeMap = new Map<string, GraphNode>()
-  const allLinks: GraphLink[] = []
+  const linkMap = new Map<string, GraphLink>()
 
   for (const graph of graphs) {
     for (const node of graph.nodes) {
       nodeMap.set(node.id, node)
     }
-    allLinks.push(...graph.links)
+    for (const link of graph.links) {
+      const key = `${link.source}:${link.target}:${link.type}`
+      linkMap.set(key, link)
+    }
   }
 
   return {
     nodes: [...nodeMap.values()],
-    links: allLinks,
+    links: [...linkMap.values()],
   }
 }
 
