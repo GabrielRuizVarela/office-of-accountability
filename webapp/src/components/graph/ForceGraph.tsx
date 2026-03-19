@@ -157,14 +157,6 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
   // Convert to force graph format
   const fgData = toFGData(data)
 
-  // Zoom to fit on data change
-  useEffect(() => {
-    const fg = graphRef.current
-    if (fg && data.nodes.length > 0) {
-      setTimeout(() => fg.zoomToFit(400, 40), 300)
-    }
-  }, [data.nodes.length])
-
   // Node click handler
   const handleNodeClick = useCallback(
     (node: NodeObject<FGNode>) => {
