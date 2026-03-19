@@ -33,6 +33,8 @@ export type {
   VoteHistoryResult,
 } from './politician-queries'
 
+export { bfsShortestPath, pathLinkKeys } from './algorithms'
+
 export { nodeIdSchema, politicianSlugSchema } from './validation'
 
 export {
