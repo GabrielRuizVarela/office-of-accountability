@@ -351,6 +351,7 @@ export default function ExplorarPage() {
   // Node clicked in the graph — select it (no load), clear path highlight
   const handleNodeClick = useCallback(
     (nodeId: string) => {
+      console.log('[ExplorarPage] handleNodeClick', nodeId)
       setSelectedNodeId(nodeId)
       if (!showPathFinder) setPathHighlight(null)
     },
