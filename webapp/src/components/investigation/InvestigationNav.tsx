@@ -22,6 +22,7 @@ export function InvestigationNav({ casoSlug }: InvestigationNavProps) {
     { href: `${basePath}/cronologia`, label: 'Timeline' },
     { href: `${basePath}/vuelos`, label: 'Flights' },
     { href: `${basePath}/evidencia`, label: 'Evidence' },
+    { href: `${basePath}/proximidad`, label: 'Proximity' },
     { href: `${basePath}/simulacion`, label: 'Simulation' },
   ]
 
