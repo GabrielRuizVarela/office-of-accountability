@@ -100,15 +100,50 @@ Politicians appearing in 2+ external datasets:
 - Verification via WebSearch for press coverage and ICIJ database confirmation
 - False positive rate: 0% for donor matches (50/50 confirmed), ~33% for offshore matches (1/3 likely false positive)
 
+## Deep Analysis — Multi-Source Convergence
+
+Three independent analyses (manual verification, subagent web research, Qwen 9B LLM) converge on the same priority rankings:
+
+### Camaño: Offshore + Maximum Party Switching
+
+Graciela Camaño is the **only subject appearing in both offshore AND political behavior anomaly datasets**. She has a BVI entity (Pandora Papers / Trident Trust) AND is the highest party-switcher (6 distinct parties over 30 years). Her voting record shows high AUSENTE rates on financial legislation:
+- Presupuesto: 35 absent votes
+- Impuesto a las Ganancias: 19 absent votes
+- 62.9% overall presence (below average)
+
+Pattern: absent on financial votes while holding an offshore entity raises questions about deliberate avoidance of votes that might create conflicts of interest.
+
+### Cordero: The State-to-Offshore Pipeline
+
+María Eugenia Cordero is the most structurally dangerous finding — a government contractor who is also an officer of **BETHAN INVESTMENTS LIMITED** (offshore). This creates a direct state-funds-to-offshore pipeline: public contract money → individual → offshore entity. This pattern is the foundation of embezzlement schemes and a potential violation of **Ley 25.246** (anti-money laundering).
+
+### Contractor-Donor Violations: Black-Letter Law
+
+Rodriguez (4 contracts + donor) and Gonzalez (1 contract + donor) are not gray areas. **Ley 26.215 Art. 15** explicitly prohibits campaign contributions from state contractors. These are prosecutable violations.
+
+### Revolving Door Cluster
+
+Macri, Sánchez, and Bullrich form a revolving-door cluster: legislators → government appointees → back to politics. Combined with Macri's documented offshore history (Fleg Trading, Kagemusha) and contractor-funded campaign contributions (documented by Chequeado), this represents systemic opacity.
+
+## Data Gaps (Priority for Next Cycle)
+
+1. **Donation amounts** — present in CNE source but not loaded. Critical for proportionality analysis.
+2. **Contract amounts** — Rodriguez had 4 contracts but values unknown.
+3. **GovernmentAppointment details** — position/org/decree fields null in MAYBE_SAME_AS queries (schema issue).
+4. **IGJ corporate data** — 1,479 politician-company matches pending (still loading).
+5. **AFIP sworn declarations** — would confirm/deny whether offshore entities were declared.
+6. **Temporal analysis** — when did donations happen relative to contract awards?
+
 ## Next Steps
 
-1. Ingest donation amounts from CNE source data
-2. Complete IGJ corporate registry load (1,479 politician-company officer matches pending)
-3. Re-run cross-enrichment after IGJ load completes
+1. Fix CNE ETL to ingest donation amounts
+2. Complete IGJ corporate registry load and re-run cross-enrichment
+3. Fix GovernmentAppointment MAYBE_SAME_AS to carry position/org fields
 4. Extend Boletín Oficial data beyond 2019 snapshot
 5. Add COMPR.AR procurement data for recent contracts
-6. Investigate Ibañez/PELMOND declaration status via AFIP records
+6. Check Ibañez/PELMOND against Oficina Anticorrupción sworn declarations
 7. Build investigation page (case layout like Caso Libra)
+8. Run investigation loop cycle 2 with enriched data
 
 ## Sources
 
