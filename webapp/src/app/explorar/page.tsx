@@ -41,6 +41,7 @@ export default function ExplorarPage() {
   )
   const [isLoading, setIsLoading] = useState(false)
   const [undoStack, setUndoStack] = useState<GraphData[]>([])
+  const undoStackRef = useRef<GraphData[]>([])
 
   // Ref to avoid stale closures over graphData
   const graphDataRef = useRef(graphData)
@@ -76,7 +77,8 @@ export default function ExplorarPage() {
       const newData = json.data as GraphData
 
       // Save current graph state to undo stack (max 10 entries)
-      setUndoStack((prev) => [...prev.slice(-9), graphDataRef.current])
+      undoStackRef.current = [...undoStackRef.current.slice(-9), graphDataRef.current]
+      setUndoStack(undoStackRef.current)
 
       // Get current node positions from the force graph internal state
       const positionMap = new Map<string, { x: number; y: number; vx: number; vy: number }>()
@@ -89,8 +91,8 @@ export default function ExplorarPage() {
           positionMap.set(n.id as string, {
             x: n.x,
             y: n.y,
-            vx: (n.vx as number) ?? 0,
-            vy: (n.vy as number) ?? 0,
+            vx: n.vx ?? 0,
+            vy: n.vy ?? 0,
           })
         }
       }
@@ -132,17 +134,18 @@ export default function ExplorarPage() {
 
   // Undo: pop last state from stack
   const undo = useCallback(() => {
-    setUndoStack((prev) => {
-      if (prev.length === 0) return prev
-      const last = prev[prev.length - 1]
-      setGraphData(last)
-      return prev.slice(0, -1)
-    })
+    const stack = undoStackRef.current
+    if (stack.length === 0) return
+    const last = stack[stack.length - 1]
+    undoStackRef.current = stack.slice(0, -1)
+    setUndoStack(undoStackRef.current)
+    setGraphData(last)
   }, [])
 
   // Clear graph: reset to empty state
   const clearGraph = useCallback(() => {
     setGraphData(EMPTY_GRAPH)
+    undoStackRef.current = []
     setUndoStack([])
     setSelectedNodeId(null)
   }, [])

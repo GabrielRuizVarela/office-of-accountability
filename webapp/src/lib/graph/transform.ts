@@ -207,7 +207,9 @@ export function mergeGraphData(...graphs: readonly GraphData[]): GraphData {
       nodeMap.set(node.id, node)
     }
     for (const link of graph.links) {
-      const key = `${link.source}:${link.target}:${link.type}`
+      const sourceId = typeof link.source === 'string' ? link.source : (link.source as unknown as { id: string }).id
+      const targetId = typeof link.target === 'string' ? link.target : (link.target as unknown as { id: string }).id
+      const key = `${sourceId}:${targetId}:${link.type}`
       linkMap.set(key, link)
     }
   }
