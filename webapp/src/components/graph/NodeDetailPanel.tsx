@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
 import type { GraphData, GraphLink, GraphNode } from '../../lib/neo4j/types'
+import { getNodeLabel, getLabelColor, getLabelDisplayName } from '../../lib/graph/constants'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -37,26 +38,6 @@ interface NeighborItem {
 // Constants
 // ---------------------------------------------------------------------------
 
-const LABEL_COLORS: Readonly<Record<string, string>> = {
-  Politician: '#3b82f6',
-  Party: '#8b5cf6',
-  Province: '#10b981',
-  LegislativeVote: '#f59e0b',
-  Legislation: '#ef4444',
-  Investigation: '#ec4899',
-  User: '#6b7280',
-}
-
-const LABEL_DISPLAY: Readonly<Record<string, string>> = {
-  Politician: 'Politico',
-  Party: 'Partido',
-  Province: 'Provincia',
-  LegislativeVote: 'Votacion',
-  Legislation: 'Legislacion',
-  Investigation: 'Investigacion',
-  User: 'Usuario',
-}
-
 const HIDDEN_PROPERTIES = new Set([
   'ingestion_hash',
   'source_url',
@@ -70,26 +51,6 @@ const HIDDEN_PROPERTIES = new Set([
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-
-function getNodeDisplayName(node: GraphNode): string {
-  const props = node.properties
-  if (typeof props.name === 'string') return props.name
-  if (typeof props.title === 'string') return props.title
-  if (typeof props.full_name === 'string') return props.full_name
-  return node.id
-}
-
-function getNeighborDisplayName(node: GraphNode): string {
-  return getNodeDisplayName(node)
-}
-
-function getLabelColor(label: string): string {
-  return LABEL_COLORS[label] ?? '#94a3b8'
-}
-
-function getLabelDisplayName(label: string): string {
-  return LABEL_DISPLAY[label] ?? label
-}
 
 function getVisibleProperties(node: GraphNode): readonly [string, unknown][] {
   return Object.entries(node.properties).filter(([key]) => !HIDDEN_PROPERTIES.has(key))
@@ -127,7 +88,7 @@ function groupNeighbors(
     const existing = groups.get(groupKey) ?? []
     const item: NeighborItem = {
       nodeId: neighbor.id,
-      name: getNeighborDisplayName(neighbor),
+      name: getNodeLabel(neighbor),
       label: neighbor.labels[0] ?? 'Unknown',
       relationshipProps: link.properties,
     }
@@ -233,7 +194,7 @@ export function NodeDetailPanel({ nodeId, onClose, onNavigate }: NodeDetailPanel
       {/* Header */}
       <div className="flex items-center justify-between border-b border-zinc-800 px-4 py-3 md:py-3">
         <h2 className="truncate text-sm font-semibold text-zinc-100">
-          {detail ? getNodeDisplayName(detail.node) : 'Cargando...'}
+          {detail ? getNodeLabel(detail.node) : 'Cargando...'}
         </h2>
         <button
           onClick={onClose}
