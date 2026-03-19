@@ -221,12 +221,11 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
   // Node click handler
   const handleNodeClick = useCallback(
     (node: NodeObject<FGNode>) => {
-      console.log('[ForceGraph] onNodeClick fired', node.id, typeof node.id, 'onNodeClick=', !!onNodeClick, 'onNodeRightClick=', !!onNodeRightClick)
       if (onNodeClick && typeof node.id === 'string') {
         onNodeClick(node.id)
       }
     },
-    [onNodeClick, onNodeRightClick],
+    [onNodeClick],
   )
 
   // Node visibility filter
