@@ -10,6 +10,7 @@ import { SearchBar } from '../../components/graph/SearchBar'
 import { TypeFilter } from '../../components/graph/TypeFilter'
 import { useGraphKeyboardNav } from '../../components/graph/useGraphKeyboardNav'
 import { ZoomControls } from '../../components/graph/ZoomControls'
+import { mergeGraphData } from '../../lib/graph/transform'
 import type { GraphData } from '../../lib/neo4j/types'
 
 // ---------------------------------------------------------------------------
@@ -28,28 +29,6 @@ const ALL_NODE_TYPES: readonly string[] = [
 ]
 
 // ---------------------------------------------------------------------------
-// Data fetching
-// ---------------------------------------------------------------------------
-
-async function fetchNodeNeighborhood(
-  nodeId: string,
-  signal?: AbortSignal,
-): Promise<GraphData | null> {
-  const params = new URLSearchParams({ limit: '50' })
-  const response = await fetch(
-    `/api/graph/node/${encodeURIComponent(nodeId)}?${params.toString()}`,
-    { signal },
-  )
-
-  if (!response.ok) return null
-
-  const json = await response.json()
-  if (!json.success || !json.data) return null
-
-  return json.data as GraphData
-}
-
-// ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
 
@@ -61,6 +40,11 @@ export default function ExplorarPage() {
     () => new Set(ALL_NODE_TYPES),
   )
   const [isLoading, setIsLoading] = useState(false)
+  const [undoStack, setUndoStack] = useState<GraphData[]>([])
+
+  // Ref to avoid stale closures over graphData
+  const graphDataRef = useRef(graphData)
+  graphDataRef.current = graphData
 
   // Derive available types from current graph data
   const availableTypes = useMemo(() => {
@@ -77,15 +61,67 @@ export default function ExplorarPage() {
     return Array.from(typeSet).sort()
   }, [graphData.nodes])
 
-  // Load a node's neighborhood into the graph
-  const loadNode = useCallback(async (nodeId: string) => {
+  // Expand a node: fetch its neighbors and merge into the current graph
+  const expandNode = useCallback(async (nodeId: string) => {
     setIsLoading(true)
     try {
-      const data = await fetchNodeNeighborhood(nodeId)
-      if (data) {
-        setGraphData(data)
-        setSelectedNodeId(nodeId)
+      const response = await fetch(
+        `/api/graph/expand/${encodeURIComponent(nodeId)}?depth=1&limit=50`,
+      )
+      if (!response.ok) return
+
+      const json = await response.json()
+      if (!json.success || !json.data) return
+
+      const newData = json.data as GraphData
+
+      // Save current graph state to undo stack (max 10 entries)
+      setUndoStack((prev) => [...prev.slice(-9), graphDataRef.current])
+
+      // Get current node positions from the force graph internal state
+      const positionMap = new Map<string, { x: number; y: number; vx: number; vy: number }>()
+      let expandedX = 0
+      let expandedY = 0
+
+      const internalNodes = graphRef.current?.getInternalNodes() ?? []
+      for (const n of internalNodes) {
+        if (typeof n.x === 'number' && typeof n.y === 'number') {
+          positionMap.set(n.id as string, {
+            x: n.x,
+            y: n.y,
+            vx: (n.vx as number) ?? 0,
+            vy: (n.vy as number) ?? 0,
+          })
+        }
       }
+      const expandedPos = positionMap.get(nodeId)
+      if (expandedPos) {
+        expandedX = expandedPos.x
+        expandedY = expandedPos.y
+      }
+
+      // Merge new data into existing graph
+      const merged = mergeGraphData(graphDataRef.current, newData)
+
+      // Set positions: existing nodes keep their positions, new nodes appear near the expanded node
+      const positioned = {
+        nodes: merged.nodes.map((node) => {
+          const existing = positionMap.get(node.id)
+          if (existing) {
+            return { ...node, x: existing.x, y: existing.y, vx: existing.vx, vy: existing.vy }
+          }
+          // New node: place near the expanded node with a small random offset
+          return {
+            ...node,
+            x: expandedX + (Math.random() - 0.5) * 40,
+            y: expandedY + (Math.random() - 0.5) * 40,
+          }
+        }),
+        links: merged.links,
+      }
+
+      setGraphData(positioned as GraphData)
+      setSelectedNodeId(nodeId)
     } catch (error) {
       if (error instanceof DOMException && error.name === 'AbortError') return
       // Silently handle — graph stays as-is
@@ -94,28 +130,45 @@ export default function ExplorarPage() {
     }
   }, [])
 
-  // Search result selected — load that node's neighborhood
+  // Undo: pop last state from stack
+  const undo = useCallback(() => {
+    setUndoStack((prev) => {
+      if (prev.length === 0) return prev
+      const last = prev[prev.length - 1]
+      setGraphData(last)
+      return prev.slice(0, -1)
+    })
+  }, [])
+
+  // Clear graph: reset to empty state
+  const clearGraph = useCallback(() => {
+    setGraphData(EMPTY_GRAPH)
+    setUndoStack([])
+    setSelectedNodeId(null)
+  }, [])
+
+  // Search result selected — expand that node into the graph
   const handleSearchSelect = useCallback(
     (nodeId: string) => {
-      loadNode(nodeId)
+      expandNode(nodeId)
     },
-    [loadNode],
+    [expandNode],
   )
 
-  // Node clicked in the graph — select it and load its neighborhood
+  // Node clicked in the graph — select it (no load)
   const handleNodeClick = useCallback(
     (nodeId: string) => {
-      loadNode(nodeId)
+      setSelectedNodeId(nodeId)
     },
-    [loadNode],
+    [],
   )
 
-  // Navigate from detail panel — same as clicking a node
+  // Navigate from detail panel — expand the target node
   const handleNavigate = useCallback(
     (nodeId: string) => {
-      loadNode(nodeId)
+      expandNode(nodeId)
     },
-    [loadNode],
+    [expandNode],
   )
 
   // Close detail panel
@@ -144,9 +197,10 @@ export default function ExplorarPage() {
     nodes: graphData.nodes,
     visibleLabels,
     selectedNodeId,
-    onExpand: handleNodeClick,
+    onExpand: expandNode,
     onDeselect: handleClosePanel,
     onCenterOnNode: handleCenterOnNode,
+    onUndo: undo,
   })
 
   const hasData = graphData.nodes.length > 0

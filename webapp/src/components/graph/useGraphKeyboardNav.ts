@@ -9,6 +9,7 @@ export interface GraphKeyboardNavOptions {
   readonly onExpand: (nodeId: string) => void
   readonly onDeselect: () => void
   readonly onCenterOnNode: (nodeId: string) => void
+  readonly onUndo?: () => void
 }
 
 export interface GraphKeyboardNavResult {
@@ -23,6 +24,7 @@ export function useGraphKeyboardNav({
   onExpand,
   onDeselect,
   onCenterOnNode,
+  onUndo,
 }: GraphKeyboardNavOptions): GraphKeyboardNavResult {
   const [focusedIndex, setFocusedIndex] = useState<number>(-1)
   const visibleNodesRef = useRef<readonly GraphNode[]>([])
@@ -52,6 +54,13 @@ export function useGraphKeyboardNav({
         target.tagName === 'TEXTAREA' ||
         target.isContentEditable
       ) {
+        return
+      }
+
+      // Ctrl+Z / Cmd+Z — undo
+      if (event.key === 'z' && (event.ctrlKey || event.metaKey)) {
+        event.preventDefault()
+        onUndo?.()
         return
       }
 
@@ -98,7 +107,7 @@ export function useGraphKeyboardNav({
         }
       }
     },
-    [onExpand, onDeselect, onCenterOnNode],
+    [onExpand, onDeselect, onCenterOnNode, onUndo],
   )
 
   // Attach global keydown listener
