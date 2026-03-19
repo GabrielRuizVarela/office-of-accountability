@@ -223,13 +223,21 @@ export default function ExplorarPage() {
     const inv = investigations[index]
     setIsLoading(true)
     try {
-      // Fetch each node's neighborhood to rebuild the graph
+      // Fetch nodes in parallel batches of 10
+      const nodeIds = inv.nodeIds.slice(0, 50)
       const allData: GraphData[] = []
-      for (const nodeId of inv.nodeIds.slice(0, 50)) {
-        const res = await fetch(`/api/graph/expand/${encodeURIComponent(nodeId)}?depth=0&limit=1`)
-        if (res.ok) {
-          const json = await res.json()
-          if (json.success && json.data) allData.push(json.data)
+      for (let i = 0; i < nodeIds.length; i += 10) {
+        const batch = nodeIds.slice(i, i + 10)
+        const results = await Promise.all(
+          batch.map(async (nodeId) => {
+            const res = await fetch(`/api/graph/expand/${encodeURIComponent(nodeId)}?depth=0&limit=1`)
+            if (!res.ok) return null
+            const json = await res.json()
+            return json.success && json.data ? (json.data as GraphData) : null
+          }),
+        )
+        for (const r of results) {
+          if (r) allData.push(r)
         }
       }
       if (allData.length === 0) return
