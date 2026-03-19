@@ -87,6 +87,8 @@ export interface DonatedToRelParams {
   readonly donor_id: string
   readonly party_finance_id: string
   readonly donation_id: string
+  readonly amount: number
+  readonly date_iso: string
 }
 
 export interface ReceivedDonationRelParams {
