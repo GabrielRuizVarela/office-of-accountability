@@ -49,6 +49,9 @@ export interface ForceGraphHandle {
   zoomOut: () => void
   zoomToFit: () => void
   centerOnNode: (nodeId: string) => void
+  pinNode: (nodeId: string) => void
+  unpinNode: (nodeId: string) => void
+  unpinAll: () => void
   /** Access internal force graph node state (positions, velocities) */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getInternalNodes: () => Array<{ id: any; x?: number; y?: number; vx?: number; vy?: number }>
@@ -60,6 +63,8 @@ export interface ForceGraphProps {
   readonly selectedNodeId?: string | null
   readonly focusedNodeId?: string | null
   readonly visibleLabels?: ReadonlySet<string> | null
+  readonly pinnedNodeIds?: ReadonlySet<string>
+  readonly pathHighlight?: { nodeIds: ReadonlySet<string>; linkKeys: ReadonlySet<string> } | null
   readonly width?: number
   readonly height?: number
 }
@@ -88,6 +93,8 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     selectedNodeId,
     focusedNodeId,
     visibleLabels,
+    pinnedNodeIds,
+    pathHighlight,
     width,
     height,
   },
@@ -132,6 +139,26 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       if (node && typeof node.x === 'number' && typeof node.y === 'number') {
         fg.centerAt(node.x, node.y, 300)
       }
+    },
+    pinNode(nodeId: string) {
+      const fg = graphRef.current
+      if (!fg) return
+      const internalData = (fg as unknown as { graphData(): { nodes: NodeObject<FGNode>[] } }).graphData()
+      const node = internalData.nodes.find((n) => n.id === nodeId)
+      if (node) { node.fx = node.x; node.fy = node.y }
+    },
+    unpinNode(nodeId: string) {
+      const fg = graphRef.current
+      if (!fg) return
+      const internalData = (fg as unknown as { graphData(): { nodes: NodeObject<FGNode>[] } }).graphData()
+      const node = internalData.nodes.find((n) => n.id === nodeId)
+      if (node) { node.fx = undefined; node.fy = undefined }
+    },
+    unpinAll() {
+      const fg = graphRef.current
+      if (!fg) return
+      const internalData = (fg as unknown as { graphData(): { nodes: NodeObject<FGNode>[] } }).graphData()
+      for (const node of internalData.nodes) { node.fx = undefined; node.fy = undefined }
     },
     getInternalNodes() {
       const fg = graphRef.current
@@ -254,8 +281,14 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         ctx.restore()
       }
 
-      // Label text — smart density based on degree centrality and zoom
-      const isPinned = !!(node as unknown as { fx?: number }).fx
+      // Pin indicator
+      const isPinned = pinnedNodeIds?.has(fgNode.id) ?? false
+      if (isPinned) {
+        ctx.beginPath()
+        ctx.arc(x, y - radius - 3, 2, 0, 2 * Math.PI)
+        ctx.fillStyle = '#facc15'
+        ctx.fill()
+      }
       const isImportant = degree >= importanceThreshold
 
       const shouldShowLabel =
@@ -275,7 +308,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
 
       ctx.globalAlpha = 1.0
     },
-    [selectedNodeId, focusedNodeId, degreeMap, importanceThreshold],
+    [selectedNodeId, focusedNodeId, degreeMap, importanceThreshold, pinnedNodeIds],
   )
 
   // Pointer area for custom-rendered nodes

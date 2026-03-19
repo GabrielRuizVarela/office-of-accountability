@@ -13,6 +13,9 @@ export interface NodeDetailPanelProps {
   readonly nodeId: string | null
   readonly onClose: () => void
   readonly onNavigate: (nodeId: string) => void
+  readonly onExpand?: (nodeId: string) => void
+  readonly onTogglePin?: (nodeId: string) => void
+  readonly isPinned?: boolean
 }
 
 interface NodeDetail {
@@ -118,7 +121,7 @@ function buildNodeDetail(nodeId: string, data: GraphData): NodeDetail | null {
 // Component
 // ---------------------------------------------------------------------------
 
-export function NodeDetailPanel({ nodeId, onClose, onNavigate }: NodeDetailPanelProps) {
+export function NodeDetailPanel({ nodeId, onClose, onNavigate, onExpand, onTogglePin, isPinned }: NodeDetailPanelProps) {
   const [detail, setDetail] = useState<NodeDetail | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
