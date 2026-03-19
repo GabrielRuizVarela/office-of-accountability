@@ -367,18 +367,20 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     return link.type
   }, [])
 
-  // Right-click context menu — uses ref for stable callback identity
+  // Right-click context menu — native capture listener to fire before canvas
   const onNodeRightClickRef = useRef(onNodeRightClick)
   onNodeRightClickRef.current = onNodeRightClick
 
-  const handleContextMenu = useCallback(
-    (e: React.MouseEvent) => {
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    const handler = (e: MouseEvent) => {
       if (!onNodeRightClickRef.current) return
       e.preventDefault()
+      e.stopPropagation()
       const fg = graphRef.current
       if (!fg) return
-      const container = containerRef.current
-      if (!container) return
       const canvas = container.querySelector('canvas')
       if (!canvas) return
 
@@ -398,9 +400,17 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         }
       }
       if (closest) onNodeRightClickRef.current(closest.id, e.clientX, e.clientY)
-    },
-    [],
-  )
+    }
+
+    // capture: true ensures we fire before the canvas or browser default
+    container.addEventListener('contextmenu', handler, { capture: true })
+    return () => container.removeEventListener('contextmenu', handler, { capture: true })
+  }, [])
+
+  // Keep the React handler just to prevent default on the container
+  const handleContextMenu = useCallback((e: React.MouseEvent) => {
+    if (onNodeRightClickRef.current) e.preventDefault()
+  }, [])
 
   // Long-press for mobile context menu
   const longPressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
