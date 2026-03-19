@@ -7,6 +7,10 @@
 
 import { z } from 'zod/v4'
 
+import type { ConfidenceTier } from '../ingestion/types'
+
+export type { ConfidenceTier }
+
 // ---------------------------------------------------------------------------
 // Enums
 // ---------------------------------------------------------------------------
@@ -52,6 +56,9 @@ export interface EpsteinPerson {
   readonly role: string
   readonly description: string
   readonly nationality: string
+  readonly confidence_tier?: ConfidenceTier
+  readonly source?: string
+  readonly ingestion_wave?: number
 }
 
 export interface EpsteinFlight {
@@ -61,6 +68,9 @@ export interface EpsteinFlight {
   readonly origin: string
   readonly destination: string
   readonly aircraft: string
+  readonly confidence_tier?: ConfidenceTier
+  readonly source?: string
+  readonly ingestion_wave?: number
 }
 
 export interface EpsteinLocation {
@@ -70,6 +80,9 @@ export interface EpsteinLocation {
   readonly location_type: LocationType
   readonly address: string
   readonly coordinates: string | null
+  readonly confidence_tier?: ConfidenceTier
+  readonly source?: string
+  readonly ingestion_wave?: number
 }
 
 export interface EpsteinDocument {
@@ -83,6 +96,9 @@ export interface EpsteinDocument {
   readonly key_findings: string[]
   readonly excerpt: string
   readonly page_count: number | null
+  readonly confidence_tier?: ConfidenceTier
+  readonly source?: string
+  readonly ingestion_wave?: number
 }
 
 export interface EpsteinDocumentWithCount extends EpsteinDocument {
@@ -95,6 +111,9 @@ export interface EpsteinEvent {
   readonly date: string
   readonly event_type: EventType
   readonly description: string
+  readonly confidence_tier?: ConfidenceTier
+  readonly source?: string
+  readonly ingestion_wave?: number
 }
 
 export interface EpsteinOrganization {
@@ -103,6 +122,9 @@ export interface EpsteinOrganization {
   readonly slug: string
   readonly org_type: OrgType
   readonly description: string
+  readonly confidence_tier?: ConfidenceTier
+  readonly source?: string
+  readonly ingestion_wave?: number
 }
 
 export interface EpsteinLegalCase {
@@ -113,6 +135,9 @@ export interface EpsteinLegalCase {
   readonly court: string
   readonly status: CaseStatus
   readonly date_filed: string
+  readonly confidence_tier?: ConfidenceTier
+  readonly source?: string
+  readonly ingestion_wave?: number
 }
 
 // ---------------------------------------------------------------------------
