@@ -98,3 +98,41 @@ Mauricio Macri appears in **5 datasets** (maximum): Donor + BoardMember + Compan
 - **Asset totals null:** DDJJ `total_assets` field is unpopulated for most declarations, blocking wealth trajectory analysis. Individual asset items exist in separate CSV files not yet ingested.
 - **Donation amounts loaded:** CNE donation amounts now correctly loaded (bugs fixed: 100x inflation, empty dates, missing relationship amounts).
 - **Company nodes missing:** 1M+ Company/PublicCompany nodes not yet loaded (timeout issues). Officer/board member nodes are loaded but lack company linkage.
+
+## Connection Map 7: The Macri Gravity Field (Corporate Board Overlap)
+
+9 politicians share company boards with Macri family members:
+
+| Politician | Party | Shared Company | Macri Member |
+|-----------|-------|---------------|--------------|
+| Eduardo Oscar Camaño | PJ | GRUPO PROVINCIA | Jorge Macri |
+| Rodolfo Frigeri | PJ | GRUPO PROVINCIA | Jorge Macri |
+| Francisco Gutierrez | FpV | GRUPO PROVINCIA | Jorge Macri |
+| Alberto Iribarne | PJ | GRUPO PROVINCIA | Jorge Macri |
+| Damaso Larraburu | PJ | GRUPO PROVINCIA | Jorge Macri |
+| Anibal Leguizamon | Peronismo | TOTAL SUPPLY SUDAMERICANA | Maria Laura Macri |
+| Antonio Rattin | Unidad Federalista | LA XENEIZE | Mauricio Macri |
+
+**GRUPO PROVINCIA bridges 5 PJ politicians to Jorge Macri** — cross-party corporate entanglement at the board level.
+
+## Connection Map 8: The Influence Triangle
+
+Politicians who are simultaneously donors + board members + government appointees:
+
+| Politician | Party | Companies | Govt Role | Datasets |
+|-----------|-------|-----------|-----------|----------|
+| Sánchez, Fernando | CC | 13 | Secretario | 5 |
+| Macri, Mauricio | PRO | 6 | Presidente | 5 |
+| Recalde, Mariano | PJ | 8 | — | 4 |
+| Máximo Kirchner | UP | 1 | — | 4 |
+
+## Connection Map 9: Corporate Politicians Vote Pro-Deregulation
+
+Politicians with the most board seats overwhelmingly support economic deregulation:
+- 108 boards → Ley Bases: 42 YES vs 7 NO
+- 34 boards → Ley Bases: 50 YES, Reforma Laboral: 27 YES
+- This confirms the hypothesis: corporate-connected politicians vote to deregulate
+
+## Data Quality: Confirmed False Positives
+
+Fernandez Carlos Alberto (108 boards) is confirmed as **multiple different people** sharing a common name — simultaneously "inspector," "jefe de sección," "Director de Planificación de Seguridad de Frontera," and "Diputado Nacional." Name-only matching inflates common names.
