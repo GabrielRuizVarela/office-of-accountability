@@ -1,10 +1,10 @@
 'use client'
 
-import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react'
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import type { ForceGraphMethods, NodeObject } from 'react-force-graph-2d'
 
 import type { GraphData, GraphNode } from '../../lib/neo4j/types'
-import { getNodeColor, getNodeLabel, getLinkColor } from '../../lib/graph/constants'
+import { getNodeColor, getNodeLabel, getLinkColor, getLabelDisplayName } from '../../lib/graph/constants'
 
 // ---------------------------------------------------------------------------
 // Graph data conversion — our GraphData → react-force-graph format
@@ -166,6 +166,29 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
   // Convert to force graph format
   const fgData = toFGData(data)
 
+  const { degreeMap, importanceThreshold } = useMemo(() => {
+    const dm = new Map<string, number>()
+    for (const node of data.nodes) {
+      dm.set(node.id, 0)
+    }
+    for (const link of data.links) {
+      dm.set(link.source as string, (dm.get(link.source as string) ?? 0) + 1)
+      dm.set(link.target as string, (dm.get(link.target as string) ?? 0) + 1)
+    }
+    const degrees = [...dm.values()].sort((a, b) => b - a)
+    const topIndex = Math.max(1, Math.floor(degrees.length * 0.2))
+    const threshold = degrees[topIndex - 1] ?? 1
+    return { degreeMap: dm, importanceThreshold: threshold }
+  }, [data.nodes, data.links])
+
+  const labelStateRef = useRef({ showAll: false, showImportant: false })
+
+  const updateLabelState = useCallback((zoom: number) => {
+    const state = labelStateRef.current
+    state.showAll = state.showAll ? zoom > 1.8 : zoom > 2.0
+    state.showImportant = state.showImportant ? zoom > 0.8 : zoom > 1.0
+  }, [])
+
   // Node click handler
   const handleNodeClick = useCallback(
     (node: NodeObject<FGNode>) => {
@@ -194,7 +217,9 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       const y = node.y ?? 0
       const isSelected = selectedNodeId === fgNode.id
       const isFocused = focusedNodeId === fgNode.id
-      const radius = isSelected ? 6 : 4
+      const degree = degreeMap.get(fgNode.id) ?? 0
+      const baseRadius = Math.min(4 + degree * 0.5, 12)
+      const radius = isSelected ? baseRadius + 2 : baseRadius
       const isBronze = (fgNode as unknown as { properties?: { confidence_tier?: string } }).properties?.confidence_tier === 'bronze'
 
       ctx.globalAlpha = isBronze ? 0.5 : 1.0
@@ -229,19 +254,28 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         ctx.restore()
       }
 
-      // Label text (only show when zoomed in enough, or node is selected/focused)
-      if (globalScale > 1.5 || isSelected || isFocused) {
+      // Label text — smart density based on degree centrality and zoom
+      const isPinned = !!(node as unknown as { fx?: number }).fx
+      const isImportant = degree >= importanceThreshold
+
+      const shouldShowLabel =
+        isSelected || isFocused || isPinned ||
+        labelStateRef.current.showAll ||
+        (isImportant && labelStateRef.current.showImportant)
+
+      if (shouldShowLabel) {
         const fontSize = Math.max(12 / globalScale, 2)
-        ctx.font = `${fontSize}px sans-serif`
+        const fontWeight = (isSelected || isPinned) ? 'bold' : 'normal'
+        ctx.font = `${fontWeight} ${fontSize}px sans-serif`
         ctx.textAlign = 'center'
         ctx.textBaseline = 'top'
-        ctx.fillStyle = '#e2e8f0' // slate-200
+        ctx.fillStyle = '#e2e8f0'
         ctx.fillText(fgNode._label, x, y + radius + 2)
       }
 
       ctx.globalAlpha = 1.0
     },
-    [selectedNodeId, focusedNodeId],
+    [selectedNodeId, focusedNodeId, degreeMap, importanceThreshold],
   )
 
   // Pointer area for custom-rendered nodes
@@ -250,16 +284,24 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       const x = node.x ?? 0
       const y = node.y ?? 0
       const fgNode = node as FGNode
-      const isSelected = selectedNodeId === fgNode.id
-      const radius = isSelected ? 8 : 6
+      const degree = degreeMap.get(fgNode.id) ?? 0
+      const baseRadius = Math.min(4 + degree * 0.5, 12)
+      const radius = (selectedNodeId === fgNode.id ? baseRadius + 4 : baseRadius + 2)
 
       ctx.beginPath()
       ctx.arc(x, y, radius, 0, 2 * Math.PI)
       ctx.fillStyle = color
       ctx.fill()
     },
-    [selectedNodeId],
+    [selectedNodeId, degreeMap],
   )
+
+  // Hover tooltip
+  const nodeTooltip = useCallback((node: NodeObject<FGNode>) => {
+    const fgNode = node as FGNode
+    const label = fgNode.labels[0] ?? ''
+    return `${fgNode._label} (${getLabelDisplayName(label)})`
+  }, [])
 
   // Link color based on type
   const linkColor = useCallback((link: FGLink) => getLinkColor(link.type), [])
@@ -293,7 +335,9 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         linkDirectionalArrowLength={3}
         linkDirectionalArrowRelPos={1}
         linkCurvature={0.1}
+        nodeLabel={nodeTooltip as (node: object) => string}
         onNodeClick={handleNodeClick}
+        onZoom={(transform: { k: number }) => updateLabelState(transform.k)}
         enableZoomInteraction={true}
         enablePanInteraction={true}
         enableNodeDrag={true}
