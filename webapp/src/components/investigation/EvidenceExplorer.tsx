@@ -13,8 +13,9 @@ interface EvidenceExplorerProps {
 export function EvidenceExplorer({ documents, casoSlug }: EvidenceExplorerProps) {
   const [search, setSearch] = useState('')
   const [activeTypes, setActiveTypes] = useState<Set<DocumentType>>(new Set())
+  const [tierFilter, setTierFilter] = useState<string>('all')
 
-  const isFiltering = search.length > 0 || activeTypes.size > 0
+  const isFiltering = search.length > 0 || activeTypes.size > 0 || tierFilter !== 'all'
 
   const typeCounts = useMemo(() => {
     const counts = new Map<string, number>()
@@ -41,8 +42,15 @@ export function EvidenceExplorer({ documents, casoSlug }: EvidenceExplorerProps)
       )
     }
 
+    if (tierFilter === 'verified') {
+      result = result.filter((d) => d.confidence_tier !== 'bronze')
+    }
+    if (tierFilter === 'gold') {
+      result = result.filter((d) => !d.confidence_tier || d.confidence_tier === 'gold')
+    }
+
     return result
-  }, [documents, search, activeTypes])
+  }, [documents, search, activeTypes, tierFilter])
 
   const grouped = useMemo(() => {
     const groups = new Map<string, EpsteinDocumentWithCount[]>()
@@ -73,15 +81,24 @@ export function EvidenceExplorer({ documents, casoSlug }: EvidenceExplorerProps)
 
   return (
     <div>
-      {/* Search bar */}
-      <div className="mb-4">
+      {/* Search bar + confidence filter */}
+      <div className="mb-4 flex gap-2">
         <input
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search documents..."
-          className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm text-zinc-200 placeholder-zinc-600 focus:border-zinc-600 focus:outline-none"
+          className="flex-1 rounded-lg border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm text-zinc-200 placeholder-zinc-600 focus:border-zinc-600 focus:outline-none"
         />
+        <select
+          value={tierFilter}
+          onChange={(e) => setTierFilter(e.target.value)}
+          className="bg-zinc-800 text-zinc-100 border border-zinc-700 rounded px-2 py-1.5 text-sm"
+        >
+          <option value="all">All data</option>
+          <option value="verified">Verified only</option>
+          <option value="gold">Gold only</option>
+        </select>
       </div>
 
       {/* Type filter chips */}
@@ -132,6 +149,8 @@ export function EvidenceExplorer({ documents, casoSlug }: EvidenceExplorerProps)
               date={doc.date}
               mentionedPersonCount={doc.mentionedPersonCount}
               casoSlug={casoSlug}
+              confidence_tier={doc.confidence_tier}
+              source={doc.source}
             />
           ))}
         </div>
@@ -154,6 +173,8 @@ export function EvidenceExplorer({ documents, casoSlug }: EvidenceExplorerProps)
                     date={doc.date}
                     mentionedPersonCount={doc.mentionedPersonCount}
                     casoSlug={casoSlug}
+                    confidence_tier={doc.confidence_tier}
+                    source={doc.source}
                   />
                 ))}
               </div>
