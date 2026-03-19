@@ -78,13 +78,15 @@ The expanded graph analysis identifies 9+ shell companies forming the financial 
 
 Above the shell companies sat a **trust firewall architecture** consisting of at least four entities: the **1953 Trust**, the **Insurance Trust**, **Caterpillar Trust 2**, and the **Haze Trust**. These trusts created layers of beneficial ownership that shielded the ultimate controller from scrutiny at each level.
 
-The **Insurance Trust** emerges as the key nexus in this architecture. Graph analysis shows it linking three critical figures: **Darren K. Indyke** (Epstein's longtime attorney), **Natalya Shuliak** (Epstein's last known girlfriend), and **Ghislaine Maxwell**. The convergence of Epstein's legal counsel, his intimate partner, and his operational co-architect within a single trust entity suggests it functioned as a control mechanism for the network's most sensitive assets.
+The **Insurance Trust #3** was a life insurance trust (ILIT) used for estate tax planning — not, as initially suspected, a liability shield for trafficking operations. Its function was wealth preservation on death, not operational protection. The **Caterpillar Trust** is structurally anomalous: Epstein was simultaneously the ultimate beneficial owner, the grantor, AND the beneficiary — a triple role that collapsed the normal separation between trust creator and trust beneficiary. The related Butterfly Trust paid $2.65M in beneficiary expenses, $7M in victim settlements, and $6M in legal fees. Both trusts carried "URGENT Executive Committee approval" notations in Deutsche Bank records, suggesting heightened internal scrutiny.
+
+The **Insurance Trust** also emerges as the key nexus in this architecture. Graph analysis shows it linking three critical figures: **Darren K. Indyke** (Epstein's longtime attorney), **Natalya Shuliak** (Epstein's last known girlfriend), and **Ghislaine Maxwell**. The convergence of Epstein's legal counsel, his intimate partner, and his operational co-architect within a single trust entity suggests it functioned as a control mechanism for the network's most sensitive assets.
 
 **Darren K. Indyke** is identified by the graph as the most important forensic target in the financial network. He appears across multiple trusts, maintains connections to the Deutsche Bank relationship, and served as the legal architect who constructed the shell company and trust infrastructure. His structural position — at the intersection of legal authority, financial control, and trust governance — makes him the single figure most likely to hold comprehensive knowledge of the network's financial mechanics.
 
 **Leon Black**, co-founder of Apollo Global Management, paid Epstein approximately $170 million between 2012 and 2017 — a figure corrected upward from the initially reported $158 million by the Senate Finance Committee in March 2025, which also found evidence that the money was "used to finance Epstein's sex trafficking operations." Black has not been charged with any crime.
 
-**Academic institutions** continued accepting Epstein's donations even after his conviction. MIT Media Lab accepted funds through an intermediary entity called the "Jupiter Group" to hide Epstein's name. Director Joi Ito resigned when this was exposed. Harvard and other institutions similarly accepted post-conviction money.
+**Academic institutions** continued accepting Epstein's donations even after his conviction, but the pattern was not a case of independent academics separately taking dirty money — it was centrally orchestrated by Epstein himself. John Brockman, literary agent and Edge Foundation founder, made the first introductions between Epstein and the scientific community. Epstein then provided $638K of the Edge Foundation's $857K total funding between 2001 and 2015, making him its de facto patron. MIT Media Lab accepted at least $7.5M secured by Director Joi Ito, with staff internally referring to Epstein as "Voldemort" to avoid a paper trail. Ito resigned when this was exposed. Epstein visited Harvard offices 40+ times between 2010 and 2018 — eight years after his conviction. **Melanie Walker** functioned as a systematic introduction broker across institutions: from Caltech to Boris Nikolic to Bill Gates, she bridged the worlds of science, the Gates Foundation, and the World Bank. Walker first met Epstein circa 1992 at the Plaza Hotel, where Donald Trump made the introduction.
 
 **The media** was nearly silent. Despite the plea deal being public record, mainstream outlets did not pursue the story for a decade. Epstein's social connections to media moguls and the advertising-revenue dependencies of news organizations created structural conflicts of interest.
 
@@ -171,7 +173,7 @@ The file releases triggered a cascade of consequences:
 
 ## X. The Pattern: What the Evidence Reveals
 
-Across 5,500+ documented entities and 941,000+ verified relationships, the Epstein network reveals a consistent architecture:
+Across 6,622 documented entities and 941,000+ verified relationships, the Epstein network reveals a consistent architecture:
 
 **Compartmentalization was the operating principle.** The pilot saw flights but not the cabin. The banker saw transactions but not their purpose. The recruiter saw models but not victims. The lawyer saw plea deals but not the network's scope. Each actor had plausible deniability by design.
 
@@ -187,7 +189,7 @@ Across 5,500+ documented entities and 941,000+ verified relationships, the Epste
 
 ## XI. The Network Clusters: What the Graph Reveals
 
-With 5,500+ nodes and 941,000+ edges, the expanded graph resolves into five distinct clusters that illuminate the network's organizational logic:
+With 6,622 nodes and 941,000+ edges, the expanded graph resolves into five distinct clusters that illuminate the network's organizational logic:
 
 **1. Core Hub: The Command Structure.** Epstein, Maxwell, Kellen, and Visoski form the irreducible core — the four persons without whom the operation could not function. Epstein provided capital and social access. Maxwell managed recruitment and social cover. Kellen coordinated victim logistics. Visoski piloted the aircraft that moved people between properties.
 
@@ -198,6 +200,8 @@ With 5,500+ nodes and 941,000+ edges, the expanded graph resolves into five dist
 **4. Financial Infrastructure.** Deutsche Bank, JPMorgan, the trust entities, MC2 Model Management, and the shell companies formed the financial plumbing. This cluster processed the money that sustained the operation — and its compartmentalized structure ensured that no single financial actor could see the full picture.
 
 **5. Unlinked Peripheral.** Twenty flight-only persons remain unlinked to any other data source — appearing solely in DOJ flight logs with no corroborating connections. These represent the investigation's active frontier: persons whose presence on Epstein's aircraft is documented but whose relationship to the network remains unexplained.
+
+**Flight Data Gap:** 3,004 total flights are documented across all sources. The current graph contains only 13 flight-linked entries — 0.4% of the total. Approximately 500 flights have handwritten passenger manifests (the most actionable for enrichment), while roughly 1,208 are FAA/ADS-B tracking records showing aircraft movement without passenger data.
 
 ### Key Persons Verified in the Expanded Graph
 
@@ -229,7 +233,7 @@ The expansion from 22 to 1,828 identified persons surfaced several figures whose
 
 ---
 
-*This narrative is based on the knowledge graph of the Office of Accountability platform: 5,500+ nodes, 941,000+ relationships, 39 events spanning 2005-2026, 1,828 identified persons (130+ silver-tier verified), 44 YouTube sources with 1,220+ entity mentions, 3 integrated data sources (manual gold-tier curation, DOJ flight logs via rhowardstone, Epstein Exposed API), and verified web research from court records, congressional testimony, and investigative reporting.*
+*This narrative is based on the knowledge graph of the Office of Accountability platform: 6,622 nodes, 941,000+ relationships, 39 events spanning 2005-2026, 1,828 identified persons (293 silver-tier verified), 44 YouTube sources with 1,220+ entity mentions, 3 integrated data sources (manual gold-tier curation, DOJ flight logs via rhowardstone, Epstein Exposed API), and verified web research from court records, congressional testimony, and investigative reporting.*
 
 *The investigation continues. The graph grows. The questions remain.*
 
