@@ -18,12 +18,7 @@ export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ slug: string }> },
 ) {
-  const { slug } = await params
-
-  if (slug !== CASO_EPSTEIN_SLUG) {
-    return Response.json({ success: false, error: 'Investigation not found' }, { status: 404 })
-  }
-
+  // Currently only the Epstein case is supported — accept any slug
   try {
     const graphData = await getInvestigationGraph(CASO_EPSTEIN_SLUG)
     const seed = graphToMiroFishSeed(graphData, 'Epstein network analysis')

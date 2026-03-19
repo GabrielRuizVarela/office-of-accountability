@@ -6,12 +6,7 @@ export async function GET(
   request: Request,
   { params }: { params: Promise<{ slug: string }> },
 ) {
-  const { slug } = await params
-
-  if (slug !== CASO_SLUG) {
-    return Response.json({ success: false, error: 'Not found' }, { status: 404 })
-  }
-
+  // Currently only the Epstein case is supported — accept any slug
   const url = new URL(request.url)
   const personsParam = url.searchParams.get('persons')
   const driver = getDriver()
