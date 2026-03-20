@@ -40,20 +40,14 @@ export default async function Home() {
             ORC
           </Link>
           <nav className="flex items-center gap-6 text-sm">
-            <Link href="/explorar" className="text-zinc-400 transition-colors hover:text-zinc-100">
-              Explorar
+            <Link href="/caso/caso-libra" className="text-zinc-400 transition-colors hover:text-zinc-100">
+              Caso Libra
             </Link>
-            <Link
-              href="/investigaciones"
-              className="text-zinc-400 transition-colors hover:text-zinc-100"
-            >
-              Investigaciones
+            <Link href="/caso/caso-libra/resumen" className="text-zinc-400 transition-colors hover:text-zinc-100">
+              Que paso
             </Link>
-            <Link
-              href="/auth/signin"
-              className="rounded-lg border border-zinc-700 px-3 py-1.5 text-zinc-300 transition-colors hover:border-zinc-500 hover:text-zinc-100"
-            >
-              Iniciar sesión
+            <Link href="/caso/caso-libra/investigacion" className="text-zinc-400 transition-colors hover:text-zinc-100">
+              Pruebas
             </Link>
           </nav>
         </div>
@@ -75,42 +69,73 @@ export default async function Home() {
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Link
-              href="/explorar"
+              href="/caso/caso-libra/resumen"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-purple-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-purple-500"
             >
-              <GraphIcon />
-              Explorar el grafo
+              <DocumentIcon />
+              Leer la investigacion
             </Link>
             <Link
-              href="/investigaciones"
+              href="/caso/caso-libra/investigacion"
               className="inline-flex items-center justify-center gap-2 rounded-lg border border-zinc-700 px-6 py-3 text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500 hover:bg-zinc-900 hover:text-zinc-100"
             >
-              <DocumentIcon />
-              Ver investigaciones
+              <GraphIcon />
+              Ver las pruebas
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* Featured investigation: Caso Libra */}
+      <section className="mx-auto max-w-6xl px-4 pb-12">
+        <Link
+          href="/caso/caso-libra"
+          className="group flex flex-col gap-4 rounded-xl border border-purple-600/30 bg-gradient-to-br from-zinc-900 to-purple-950/20 p-6 transition-colors hover:border-purple-500/50 sm:p-8"
+        >
+          <div className="flex items-center gap-2 text-xs text-purple-400">
+            <span className="inline-block h-2 w-2 rounded-full bg-purple-500" />
+            Investigacion destacada
+          </div>
+          <h2 className="text-2xl font-bold text-zinc-50 group-hover:text-purple-300 sm:text-3xl">
+            Caso Libra: La Memecoin del Presidente
+          </h2>
+          <p className="max-w-2xl text-sm leading-relaxed text-zinc-400">
+            El 14 de febrero de 2025, Milei promovio $LIBRA a 19M de seguidores. El precio colapso
+            94% en horas. 114,000+ billeteras perdieron $251M+. Explora la evidencia: blockchain,
+            registros parlamentarios, pericias telefonicas.
+          </p>
+          <div className="flex gap-4 text-sm">
+            <span className="font-semibold text-purple-400">$251M+</span>
+            <span className="text-zinc-600">|</span>
+            <span className="text-zinc-400">114,000+ billeteras</span>
+            <span className="text-zinc-600">|</span>
+            <span className="text-zinc-400">94% caida</span>
+          </div>
+          <span className="text-sm font-medium text-purple-400 group-hover:text-purple-300">
+            Explorar investigacion &rarr;
+          </span>
+        </Link>
       </section>
 
       {/* Section cards */}
       <section className="mx-auto max-w-6xl px-4 pb-16">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <SectionCard
-            href="/explorar"
-            title="Grafo Interactivo"
-            description="Visualizá las relaciones entre políticos, partidos, provincias y votaciones en un grafo explorable."
+            href="/caso/caso-libra/grafo"
+            title="Conexiones"
+            description="Explora la red de actores, organizaciones y transacciones en un grafo interactivo."
             icon={<GraphIcon />}
           />
           <SectionCard
-            href="/investigaciones"
-            title="Investigaciones"
-            description="Artículos que conectan datos del grafo con análisis ciudadano. Creá y publicá las tuyas."
+            href="/caso/caso-libra/cronologia"
+            title="Cronologia"
+            description="27 eventos documentados desde el lanzamiento del token hasta las investigaciones judiciales."
             icon={<DocumentIcon />}
           />
           <SectionCard
-            href="/auth/signup"
-            title="Contribuí"
-            description="Registrate para crear investigaciones, vincular nodos del grafo y aportar al conocimiento cívico."
+            href="/caso/caso-libra/investigacion#aportar"
+            title="Aportar pruebas"
+            description="Tenes informacion verificable? Envia datos para fortalecer la investigacion."
             icon={<UserPlusIcon />}
           />
         </div>
@@ -154,14 +179,14 @@ export default async function Home() {
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-8 text-xs text-zinc-500 sm:flex-row sm:justify-between">
           <p>Oficina de Rendición de Cuentas — Datos abiertos para la democracia argentina</p>
           <nav className="flex gap-4">
-            <Link href="/explorar" className="transition-colors hover:text-zinc-300">
-              Explorar
+            <Link href="/caso/caso-libra" className="transition-colors hover:text-zinc-300">
+              Caso Libra
             </Link>
-            <Link href="/investigaciones" className="transition-colors hover:text-zinc-300">
-              Investigaciones
+            <Link href="/caso/caso-libra/resumen" className="transition-colors hover:text-zinc-300">
+              Que paso
             </Link>
-            <Link href="/auth/signin" className="transition-colors hover:text-zinc-300">
-              Iniciar sesión
+            <Link href="/caso/caso-libra/investigacion" className="transition-colors hover:text-zinc-300">
+              Pruebas
             </Link>
           </nav>
         </div>

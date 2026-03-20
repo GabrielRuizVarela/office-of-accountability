@@ -17,6 +17,13 @@ const LABEL_COLORS: Readonly<Record<string, string>> = {
   Legislation: '#ef4444', // red-500
   Investigation: '#ec4899', // pink-500
   User: '#6b7280', // gray-500
+  // Caso Libra node types
+  CasoLibraPerson: '#3b82f6', // blue-500
+  CasoLibraEvent: '#f59e0b', // amber-500
+  CasoLibraDocument: '#ef4444', // red-500
+  CasoLibraWallet: '#10b981', // emerald-500
+  CasoLibraOrganization: '#8b5cf6', // violet-500
+  CasoLibraToken: '#ec4899', // pink-500
 }
 
 const DEFAULT_NODE_COLOR = '#94a3b8' // slate-400
@@ -111,15 +118,7 @@ function getForceGraph2D(): Promise<ForceGraph2DComponent> {
 }
 
 export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function ForceGraph(
-  {
-    data,
-    onNodeClick,
-    selectedNodeId,
-    focusedNodeId,
-    visibleLabels,
-    width,
-    height,
-  },
+  { data, onNodeClick, selectedNodeId, focusedNodeId, visibleLabels, width, height },
   ref,
 ) {
   const graphRef = useRef<ForceGraphMethods<FGNode, FGLink> | undefined>(undefined)
@@ -156,7 +155,9 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       const fg = graphRef.current
       if (!fg) return
       // Access internal graph data via the untyped kapsule method
-      const internalGraphData = (fg as unknown as { graphData(): { nodes: NodeObject<FGNode>[] } }).graphData()
+      const internalGraphData = (
+        fg as unknown as { graphData(): { nodes: NodeObject<FGNode>[] } }
+      ).graphData()
       const node = internalGraphData.nodes.find((n) => n.id === nodeId)
       if (node && typeof node.x === 'number' && typeof node.y === 'number') {
         fg.centerAt(node.x, node.y, 300)
@@ -310,7 +311,14 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
   }, [])
 
   if (!ForceGraph2D) {
-    return <div ref={containerRef} className="flex h-full w-full items-center justify-center text-zinc-600">Cargando grafo...</div>
+    return (
+      <div
+        ref={containerRef}
+        className="flex h-full w-full items-center justify-center text-zinc-600"
+      >
+        Cargando grafo...
+      </div>
+    )
   }
 
   return (
