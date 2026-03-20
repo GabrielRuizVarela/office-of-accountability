@@ -156,7 +156,7 @@ export function GraphToolbar({
   if (!hasData) return null
 
   return (
-    <div className="flex items-center gap-0.5 border-b border-zinc-800 bg-zinc-950/90 px-4 py-1.5 backdrop-blur-sm">
+    <div className="flex items-center gap-0.5 border-b border-zinc-800/50 px-4 py-1">
       {/* Group 1: Find Path, Clear Graph */}
       <ToolbarButton onClick={onFindPath} title="Buscar ruta">
         <IconFindPath />

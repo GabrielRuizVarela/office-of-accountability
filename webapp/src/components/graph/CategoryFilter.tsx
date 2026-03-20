@@ -6,6 +6,7 @@ import type { GraphData, GraphNode } from '../../lib/neo4j/types'
 import {
   getNodeCategory,
   SUBCATEGORY_CONFIGS,
+  LABEL_DISPLAY,
 } from '../../lib/graph/constants'
 
 // ---------------------------------------------------------------------------
@@ -18,6 +19,8 @@ export interface CategoryFilterProps {
   /** Set of hidden category keys (e.g. "Person:Victim", "Document:Court Filing") */
   readonly hiddenCategories: ReadonlySet<string>
   readonly onChange: (hiddenCategories: Set<string>) => void
+  /** Only show subcategories for these labels (null = all) */
+  readonly visibleLabels?: ReadonlySet<string> | null
 }
 
 /** A category key is "Label:Category" (e.g. "Person:Legal") */
@@ -47,11 +50,12 @@ export function isNodeHiddenByCategory(
 
 interface CategoryGroup {
   label: string
+  labelDisplay: string
   categories: Array<{ name: string; color: string; display: string; count: number }>
+  total: number
 }
 
-export function CategoryFilter({ data, hiddenCategories, onChange }: CategoryFilterProps) {
-  // Build category counts from current data
+export function CategoryFilter({ data, hiddenCategories, onChange, visibleLabels }: CategoryFilterProps) {
   const groups = useMemo<CategoryGroup[]>(() => {
     const counts = new Map<string, number>()
 
@@ -64,11 +68,16 @@ export function CategoryFilter({ data, hiddenCategories, onChange }: CategoryFil
 
     const result: CategoryGroup[] = []
     for (const [label, config] of Object.entries(SUBCATEGORY_CONFIGS)) {
+      // Skip labels that are hidden by the main label filter
+      if (visibleLabels && !visibleLabels.has(label)) continue
+
       const categories: CategoryGroup['categories'] = []
+      let total = 0
       for (const [name, color] of Object.entries(config.colors)) {
         const key = categoryKey(label, name)
         const count = counts.get(key) ?? 0
         if (count === 0) continue
+        total += count
         categories.push({
           name,
           color,
@@ -76,14 +85,18 @@ export function CategoryFilter({ data, hiddenCategories, onChange }: CategoryFil
           count,
         })
       }
-      if (categories.length > 0) {
-        // Sort by count descending
+      if (categories.length > 1) {
         categories.sort((a, b) => b.count - a.count)
-        result.push({ label, categories })
+        result.push({
+          label,
+          labelDisplay: LABEL_DISPLAY[label] ?? label,
+          categories,
+          total,
+        })
       }
     }
     return result
-  }, [data.nodes])
+  }, [data.nodes, visibleLabels])
 
   const handleToggle = useCallback(
     (key: string) => {
@@ -92,6 +105,21 @@ export function CategoryFilter({ data, hiddenCategories, onChange }: CategoryFil
         next.delete(key)
       } else {
         next.add(key)
+      }
+      onChange(next)
+    },
+    [hiddenCategories, onChange],
+  )
+
+  const handleIsolate = useCallback(
+    (label: string, categoryNames: string[], keepName: string) => {
+      const next = new Set(hiddenCategories)
+      for (const name of categoryNames) {
+        if (name === keepName) {
+          next.delete(categoryKey(label, name))
+        } else {
+          next.add(categoryKey(label, name))
+        }
       }
       onChange(next)
     },
@@ -109,37 +137,36 @@ export function CategoryFilter({ data, hiddenCategories, onChange }: CategoryFil
     [hiddenCategories, onChange],
   )
 
-  const handleHideAll = useCallback(
-    (label: string, categoryNames: string[]) => {
-      const next = new Set(hiddenCategories)
-      for (const name of categoryNames) {
-        next.add(categoryKey(label, name))
-      }
-      onChange(next)
-    },
-    [hiddenCategories, onChange],
-  )
-
   if (groups.length === 0) return null
 
+  const activeFilterCount = hiddenCategories.size
+
   return (
-    <div className="flex flex-col gap-2">
-      {groups.map(({ label, categories }) => {
+    <div className="flex items-start gap-3">
+      {groups.map(({ label, labelDisplay, categories, total }) => {
         const names = categories.map((c) => c.name)
-        const allHidden = names.every((n) => hiddenCategories.has(categoryKey(label, n)))
+        const hiddenCount = names.filter((n) => hiddenCategories.has(categoryKey(label, n))).length
+        const anyHidden = hiddenCount > 0
 
         return (
-          <div key={label} className="flex flex-wrap items-center gap-1.5">
+          <div key={label} className="flex items-center gap-1">
+            {/* Group label with reset */}
             <button
-              onClick={() =>
-                allHidden
-                  ? handleShowAll(label, names)
-                  : handleHideAll(label, names)
-              }
-              className="rounded-full border border-zinc-700 bg-transparent px-2 py-0.5 text-[10px] font-medium text-zinc-500 transition-colors hover:border-zinc-600 hover:text-zinc-400"
+              onClick={() => handleShowAll(label, names)}
+              className={`mr-0.5 rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider transition-colors ${
+                anyHidden
+                  ? 'text-zinc-300 hover:text-zinc-100'
+                  : 'text-zinc-600'
+              }`}
+              title={anyHidden ? `Mostrar todos (${labelDisplay})` : labelDisplay}
             >
-              {label}
+              {labelDisplay}
+              {anyHidden && (
+                <span className="ml-1 text-[9px] text-amber-400">{total - hiddenCount}/{total}</span>
+              )}
             </button>
+
+            {/* Category pills */}
             {categories.map(({ name, color, display, count }) => {
               const key = categoryKey(label, name)
               const isActive = !hiddenCategories.has(key)
@@ -148,30 +175,44 @@ export function CategoryFilter({ data, hiddenCategories, onChange }: CategoryFil
                 <button
                   key={key}
                   onClick={() => handleToggle(key)}
-                  className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-medium transition-colors ${
+                  onDoubleClick={() => handleIsolate(label, names, name)}
+                  className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-medium transition-all ${
                     isActive
                       ? 'border-transparent text-white'
-                      : 'border-zinc-700 bg-transparent text-zinc-600 hover:border-zinc-600 hover:text-zinc-500'
+                      : 'border-zinc-800 bg-transparent text-zinc-600 hover:border-zinc-700 hover:text-zinc-500'
                   }`}
                   style={
                     isActive
-                      ? { backgroundColor: `${color}25`, borderColor: `${color}50`, color }
+                      ? { backgroundColor: `${color}20`, borderColor: `${color}40`, color }
                       : undefined
                   }
-                  title={`${display} (${count})`}
+                  title={`${display} (${count}) — doble click para aislar`}
                 >
                   <span
-                    className="inline-block h-1.5 w-1.5 rounded-full"
-                    style={{ backgroundColor: isActive ? color : '#52525b' }}
+                    className="inline-block h-1.5 w-1.5 rounded-full transition-colors"
+                    style={{ backgroundColor: isActive ? color : '#3f3f46' }}
                   />
                   {display}
-                  <span className="text-[9px] opacity-60">{count}</span>
+                  <span className="tabular-nums text-[9px] opacity-50">{count}</span>
                 </button>
               )
             })}
+
+            {/* Vertical separator between groups */}
+            <span className="ml-1.5 h-3 w-px bg-zinc-800" />
           </div>
         )
       })}
+
+      {/* Clear all filters */}
+      {activeFilterCount > 0 && (
+        <button
+          onClick={() => onChange(new Set())}
+          className="ml-auto rounded-full border border-zinc-700 px-2 py-0.5 text-[10px] font-medium text-zinc-400 transition-colors hover:border-zinc-500 hover:text-zinc-200"
+        >
+          Limpiar filtros
+        </button>
+      )}
     </div>
   )
 }

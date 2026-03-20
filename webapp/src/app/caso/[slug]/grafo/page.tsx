@@ -403,57 +403,60 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
 
   return (
     <div className="flex h-[calc(100vh-8rem)] flex-col">
-      {/* Controls bar */}
-      <div className="flex items-center gap-2 border-b border-zinc-800 px-4 py-2">
-        {/* Search */}
-        <div className="w-64">
-          <SearchBar onSelect={handleSearchSelect} placeholder="Search nodes..." />
+      {/* Filter controls */}
+      <div className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-sm">
+        {/* Primary row: Search + Label filters + Tier */}
+        <div className="flex items-center gap-2 px-4 py-2">
+          <div className="w-64 shrink-0">
+            <SearchBar onSelect={handleSearchSelect} placeholder="Search nodes..." />
+          </div>
+
+          <div className="flex flex-1 flex-wrap items-center gap-1.5">
+            {LABEL_CONFIG.map(({ label, color, name }) => {
+              const isActive = !visibleLabels || visibleLabels.has(label)
+              return (
+                <button
+                  key={label}
+                  onClick={() => toggleLabel(label)}
+                  className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-all ${
+                    isActive
+                      ? 'bg-zinc-800 text-zinc-200'
+                      : 'bg-zinc-900/50 text-zinc-600 hover:bg-zinc-900 hover:text-zinc-500'
+                  }`}
+                >
+                  <span
+                    className="inline-block h-2 w-2 rounded-full transition-colors"
+                    style={{ backgroundColor: isActive ? color : '#3f3f46' }}
+                  />
+                  {name}
+                </button>
+              )
+            })}
+          </div>
+
+          <select
+            value={tierFilter}
+            onChange={(e) => setTierFilter(e.target.value)}
+            className="shrink-0 rounded border border-zinc-700 bg-zinc-800 px-2 py-1 text-xs text-zinc-100"
+          >
+            <option value="all">All data</option>
+            <option value="verified">Verified only</option>
+            <option value="gold">Gold only</option>
+          </select>
         </div>
 
-        {/* Label filters */}
-        <div className="flex flex-1 flex-wrap gap-1.5">
-          {LABEL_CONFIG.map(({ label, color, name }) => {
-            const isActive = !visibleLabels || visibleLabels.has(label)
-            return (
-              <button
-                key={label}
-                onClick={() => toggleLabel(label)}
-                className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-colors ${
-                  isActive ? 'bg-zinc-800 text-zinc-200' : 'bg-zinc-900 text-zinc-600'
-                }`}
-              >
-                <span
-                  className="inline-block h-2 w-2 rounded-full"
-                  style={{ backgroundColor: isActive ? color : '#3f3f46' }}
-                />
-                {name}
-              </button>
-            )
-          })}
-        </div>
-
-        {/* Confidence tier filter */}
-        <select
-          value={tierFilter}
-          onChange={(e) => setTierFilter(e.target.value)}
-          className="rounded border border-zinc-700 bg-zinc-800 px-2 py-1 text-xs text-zinc-100"
-        >
-          <option value="all">All data</option>
-          <option value="verified">Verified only</option>
-          <option value="gold">Gold only</option>
-        </select>
+        {/* Secondary row: Subcategory filters (collapses when no data) */}
+        {graphData.nodes.length > 0 && (
+          <div className="border-t border-zinc-800/50 px-4 py-1.5">
+            <CategoryFilter
+              data={graphData}
+              hiddenCategories={hiddenCategories}
+              onChange={setHiddenCategories}
+              visibleLabels={visibleLabels}
+            />
+          </div>
+        )}
       </div>
-
-      {/* Category sub-filters */}
-      {graphData.nodes.length > 0 && (
-        <div className="border-b border-zinc-800 px-4 py-1.5">
-          <CategoryFilter
-            data={graphData}
-            hiddenCategories={hiddenCategories}
-            onChange={setHiddenCategories}
-          />
-        </div>
-      )}
 
       {/* Path finder bar */}
       {showPathFinder && (
@@ -544,9 +547,10 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
       {/* Status bar */}
       <div className="border-t border-zinc-800 px-4 py-1.5 text-xs text-zinc-500">
         {filteredData.nodes.length} nodes · {filteredData.links.length} connections
-        {tierFilter !== 'all' && (
+        {(tierFilter !== 'all' || hiddenCategories.size > 0) && (
           <span className="ml-2 text-amber-400">
-            ({tierFilter === 'verified' ? 'verified' : 'gold'} filter active)
+            (filtered{tierFilter !== 'all' ? ` · ${tierFilter === 'verified' ? 'verified' : 'gold'}` : ''}
+            {hiddenCategories.size > 0 ? ` · ${hiddenCategories.size} categories hidden` : ''})
           </span>
         )}
         {pinnedNodeIds.size > 0 && (

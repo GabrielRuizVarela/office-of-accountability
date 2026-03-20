@@ -56,30 +56,12 @@ export const PERSON_CATEGORY_DISPLAY: Readonly<Record<string, string>> = {
   'Other':       'Otro',
 }
 
-/** Canonical subcategories for Document nodes */
-export const DOCUMENT_CATEGORY_COLORS: Readonly<Record<string, string>> = {
-  'Court Filing': '#ef4444', // red-500
-  'Flight Log':   '#f97316', // orange-500
-  'Media':        '#06b6d4', // cyan-500
-  'Research':     '#a855f7', // purple-500
-  'Other':        '#ef4444', // red-500 (default Document color)
-}
-
-export const DOCUMENT_CATEGORY_DISPLAY: Readonly<Record<string, string>> = {
-  'Court Filing': 'Judicial',
-  'Flight Log':   'Vuelo',
-  'Media':        'Medios',
-  'Research':     'Investigación',
-  'Other':        'Otro',
-}
-
 /** All subcategory configs keyed by node label */
 export const SUBCATEGORY_CONFIGS: Readonly<Record<string, {
   colors: Readonly<Record<string, string>>
   display: Readonly<Record<string, string>>
 }>> = {
   Person: { colors: PERSON_CATEGORY_COLORS, display: PERSON_CATEGORY_DISPLAY },
-  Document: { colors: DOCUMENT_CATEGORY_COLORS, display: DOCUMENT_CATEGORY_DISPLAY },
 }
 
 // ---------------------------------------------------------------------------
@@ -122,18 +104,6 @@ export function getNodeCategory(node: GraphNode): string | null {
         if (combined.includes(keyword)) return category
       }
     }
-    return 'Other'
-  }
-
-  if (label === 'Document') {
-    const cat = (typeof props.category === 'string' ? props.category : '').toLowerCase()
-    const title = (typeof props.title === 'string' ? props.title : '').toLowerCase()
-    const combined = `${cat} ${title}`
-
-    if (combined.includes('court') || combined.includes('legal') || combined.includes('deposition') || combined.includes('indictment')) return 'Court Filing'
-    if (combined.includes('flight') || combined.includes('log') || combined.includes('manifest')) return 'Flight Log'
-    if (combined.includes('article') || combined.includes('news') || combined.includes('media') || combined.includes('press')) return 'Media'
-    if (combined.includes('research') || combined.includes('report') || combined.includes('analysis')) return 'Research'
     return 'Other'
   }
 
