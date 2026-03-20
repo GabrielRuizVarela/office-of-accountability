@@ -58,34 +58,34 @@ interface ApiLink {
  * - Cross-referenced entities (donor↔offshore, contractor↔offshore)
  * - Key companies (SOCMA, Correo, AUSOL, Geometales)
  */
+/**
+ * Investigation-focused query. Returns ONLY high-signal connections:
+ * - Politicians with offshore entities (red thread)
+ * - Politicians who are donors (money thread)
+ * - Politicians with government appointments (revolving door)
+ * - NO generic BoardMember/CompanyOfficer matches (these are noise in the viz)
+ */
 const CYPHER = `
-// Layer 1: Politicians with 2+ datasets (broader net)
 MATCH (p:Politician)-[r:MAYBE_SAME_AS]->(t)
-WITH p, collect(DISTINCT labels(t)[0]) AS datasets
-WHERE size(datasets) >= 2
-WITH p, datasets
-ORDER BY size(datasets) DESC
-LIMIT 50
-
-// Layer 2: Their high-value connections
-MATCH (p)-[r:MAYBE_SAME_AS]->(t)
 WHERE t:OffshoreOfficer OR t:Donor OR t:GovernmentAppointment
-  OR (t:BoardMember AND r.confidence >= 0.7)
-  OR (t:CompanyOfficer AND r.confidence >= 0.7)
-WITH p, datasets,
+WITH p,
+     collect(DISTINCT labels(t)[0]) AS datasets,
      collect({
        id: toString(elementId(t)),
        type: labels(t)[0],
        name: COALESCE(t.name, t.official_name, t.donor_name, "desconocido"),
        props: {confidence: r.confidence, match_method: r.match_method}
-     })[..6] AS targets,
+     }) AS targets,
      collect({
        relId: toString(elementId(r)),
        targetId: toString(elementId(t)),
        relType: type(r),
        relProps: {confidence: r.confidence}
-     })[..6] AS rels
+     }) AS rels
+WHERE size(datasets) >= 1
 RETURN p, datasets, targets, rels
+ORDER BY size(datasets) DESC
+LIMIT 80
 `
 
 /** Offshore entities connected to politicians — show the BVI companies */
@@ -116,9 +116,41 @@ RETURN toString(elementId(a)) AS aid, COALESCE(a.name, "unknown") AS aname, labe
 /** PENSAR ARGENTINA network */
 const PENSAR_CYPHER = `
 MATCH (p:Politician)-[:AFFILIATED_WITH]->(org)
-WHERE org.name CONTAINS "PENSAR"
 RETURN p.id AS pid, p.name AS pname, org.name AS org, toString(elementId(org)) AS orgId
-LIMIT 25
+LIMIT 30
+`
+
+/** Top campaign donors by amount */
+const TOP_DONORS_CYPHER = `
+MATCH (d:Donor)-[dt:DONATED_TO]->(pf:PoliticalPartyFinance)
+WHERE dt.amount > 1000000
+WITH d, pf, dt.amount AS amount
+RETURN toString(elementId(d)) AS did, d.name AS dname,
+       toString(elementId(pf)) AS pfid, COALESCE(pf.name, pf.party_name, "partido") AS pfname,
+       amount
+ORDER BY amount DESC
+LIMIT 20
+`
+
+/** Key investigation companies — named entities from the narrative */
+const KEY_COMPANIES_CYPHER = `
+MATCH (c:Company)
+WHERE c.name IN ["SOCMA AMERICANA", "SOCMA INVERSIONES", "CORREO ARGENTINO", "AUTOPISTAS DEL SOL",
+  "MINERA GEOMETALES", "SIDECO AMERICANA", "MACRI INVESTMENT GROUP", "FRAMAC",
+  "CHERY SOCMA ARGENTINA", "PENSAR ARGENTINA", "BELLOTA", "KARIN MODELS",
+  "LCG", "LCG INVERSORA"]
+OPTIONAL MATCH (b:BoardMember)-[:BOARD_MEMBER_OF]->(c)
+OPTIONAL MATCH (p:Politician)-[:MAYBE_SAME_AS]->(b)
+WITH c, collect(DISTINCT {pid: p.id, pname: p.name})[..5] AS politicians
+RETURN toString(elementId(c)) AS cid, c.name AS cname, politicians
+`
+
+/** Legislation sectors with most conflicts */
+const LEGISLATION_CYPHER = `
+MATCH (l:Legislation)
+WHERE l.sector IN ["finance", "energy", "mining"]
+WITH l.sector AS sector, count(l) AS cnt
+RETURN sector, cnt
 `
 
 /**
@@ -380,7 +412,55 @@ export async function GET(): Promise<Response> {
       }
     } catch { /* timeout ok */ }
 
-    // Phase 6: Run all bridge queries to connect politician clusters
+    // Phase 6: Top campaign donors (big money nodes)
+    try {
+      const donors = await readQuery(TOP_DONORS_CYPHER, {}, (r: Neo4jRecord) => ({
+        did: r.get('did') as string, dname: r.get('dname') as string,
+        pfid: r.get('pfid') as string, pfname: r.get('pfname') as string,
+        amount: r.get('amount') as number,
+      }))
+      for (const d of donors.records) {
+        if (!nodeMap.has(d.did)) {
+          nodeMap.set(d.did, {
+            id: d.did, name: d.dname, type: 'Donor', color: '#22c55e',
+            datasets: 0, val: Math.min(Math.log10(d.amount || 1), 6),
+            labels: ['Donor'], properties: { amount: d.amount },
+          })
+        }
+        if (!nodeMap.has(d.pfid)) {
+          nodeMap.set(d.pfid, {
+            id: d.pfid, name: d.pfname, type: 'PoliticalParty', color: '#f59e0b',
+            datasets: 0, val: 5, labels: ['PoliticalPartyFinance'], properties: {},
+          })
+        }
+        links.push({ source: d.did, target: d.pfid, type: 'DONATED_TO', properties: { amount: d.amount } })
+      }
+    } catch { /* timeout ok */ }
+
+    // Phase 7: Key investigation companies
+    try {
+      const companies = await readQuery(KEY_COMPANIES_CYPHER, {}, (r: Neo4jRecord) => ({
+        cid: r.get('cid') as string, cname: r.get('cname') as string,
+        politicians: r.get('politicians') as Array<{ pid: string | null; pname: string | null }>,
+      }))
+      for (const c of companies.records) {
+        if (!nodeMap.has(c.cid)) {
+          nodeMap.set(c.cid, {
+            id: c.cid, name: c.cname, type: 'Company', color: '#10b981',
+            datasets: 0, val: 5, labels: ['Company'], properties: {},
+          })
+        }
+        for (const pol of c.politicians) {
+          if (!pol.pid) continue
+          const pId = politicianElementIds.get(pol.pid)
+          if (pId) {
+            links.push({ source: pId, target: c.cid, type: 'ON_BOARD', properties: {} })
+          }
+        }
+      }
+    } catch { /* timeout ok */ }
+
+    // Phase 8: Run all bridge queries to connect politician clusters
     const bridgeQueries = [COALITION_BRIDGE, ORG_BRIDGE, OFFSHORE_BRIDGE, PROVINCE_BRIDGE]
     const bridgeColors: Record<string, string> = {
       SAME_COALITION: '#f59e0b', // amber
