@@ -39,7 +39,12 @@ export function NodeContextMenu({ x, y, actions, onClose }: NodeContextMenuProps
   }, [clampedPos])
 
   useEffect(() => {
-    const handler = () => onClose()
+    const handler = (e: MouseEvent) => {
+      // Only close on clicks OUTSIDE the menu
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        onClose()
+      }
+    }
     const timer = setTimeout(() => document.addEventListener('mousedown', handler), 0)
     return () => { clearTimeout(timer); document.removeEventListener('mousedown', handler) }
   }, [onClose])
