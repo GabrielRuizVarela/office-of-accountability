@@ -858,7 +858,7 @@ export const TIMELINE_EVENTS: readonly InvestigationTimelineEvent[] = [
   },
   {
     id: 'tl-bubblemaps-report',
-    date: '2025-02-15',
+    date: '2025-02-17',
     title_es: 'Bubblemaps identifica manipulación de suministro',
     title_en: 'Bubblemaps identifies supply manipulation',
     description_es:
@@ -1205,7 +1205,7 @@ export const TIMELINE_EVENTS: readonly InvestigationTimelineEvent[] = [
   },
   {
     id: 'tl-congressional-report',
-    date: '2025-11-01',
+    date: '2025-11-18',
     title_es: 'Informe del Congreso: "colaboración esencial" de Milei',
     title_en: 'Congressional report: Milei\'s "essential collaboration"',
     description_es:
