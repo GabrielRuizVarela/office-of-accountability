@@ -287,7 +287,7 @@ Only 3 politicians have direct offshore links in the ICIJ data:
 
 ## Connection Map 17: Vote-Corporate Conflicts of Interest
 
-528 Legislation nodes and 85,205 Company nodes tagged by sector. Cross-referencing reveals systemic conflicts:
+528 Legislation nodes and 85,205 Company nodes tagged by sector. Cross-referencing reveals potential conflicts (note: Argentine legislators are NOT legally required to recuse from votes on legislation related to their business interests — this is a known gap in Ley 25.188, which applies primarily to the executive branch):
 
 | Sector | Politicians with conflicts | Total votes on sector | Companies held |
 |--------|--------------------------|----------------------|----------------|
