@@ -5,7 +5,7 @@
  *
  * An 8-chapter bilingual investigative journalism piece that walks readers
  * through the systemic connections between political power and money in
- * Argentina, compiled from 5.4M nodes and 4.4M relationships across 8
+ * Argentina, compiled from 2.16M nodes and 4.49M relationships across 8
  * public datasets.
  */
 
@@ -66,8 +66,8 @@ const LAST_UPDATED: Record<Lang, string> = {
 }
 
 const COMPILED_FROM: Record<Lang, string> = {
-  es: 'Compilado a partir de 5,4 millones de nodos y 4,4 millones de relaciones en un grafo Neo4j. Ocho fuentes publicas: Como Voto, ICIJ, CNE, Boletin Oficial, IGJ, CNV, DDJJ patrimoniales. Cada hallazgo es reproducible. Donde se indica "presunto," la conexion no ha sido verificada de forma independiente.',
-  en: 'Compiled from 5.4 million nodes and 4.4 million relationships in a Neo4j graph. Eight public sources: Como Voto, ICIJ, CNE, Boletin Oficial, IGJ, CNV, asset declarations. Every finding is reproducible. Where "alleged" is indicated, the connection has not been independently verified.',
+  es: 'Compilado a partir de 2,16 millones de nodos y 4,49 millones de relaciones en un grafo Neo4j. Nueve fuentes publicas: Como Voto, ICIJ, CNE, Boletin Oficial, IGJ, CNV, DDJJ patrimoniales. Cada hallazgo es reproducible. Donde se indica "presunto," la conexion no ha sido verificada de forma independiente.',
+  en: 'Compiled from 2.16 million nodes and 4.49 million relationships in a Neo4j graph. Nine public sources: Como Voto, ICIJ, CNE, Boletin Oficial, IGJ, CNV, asset declarations. Every finding is reproducible. Where "alleged" is indicated, the connection has not been independently verified.',
 }
 
 // ---------------------------------------------------------------------------
