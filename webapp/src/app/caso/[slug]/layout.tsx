@@ -8,13 +8,19 @@ interface LayoutProps {
   readonly params: Promise<{ slug: string }>
 }
 
+const CASE_TITLES: Readonly<Record<string, string>> = {
+  'caso-epstein': 'Epstein Investigation',
+  'caso-libra': 'Caso Libra',
+}
+
 export async function generateMetadata({ params }: LayoutProps): Promise<Metadata> {
   const { slug } = await params
+  const title = CASE_TITLES[slug] ?? 'Investigacion'
 
   return {
     title: {
-      template: '%s | Epstein Investigation',
-      default: 'Epstein Investigation',
+      template: `%s | ${title}`,
+      default: title,
     },
     openGraph: {
       type: 'website',
@@ -28,7 +34,7 @@ export default async function CasoLayout({ children, params }: LayoutProps) {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <InvestigationNav casoSlug={slug} />
+      <InvestigationNav slug={slug} />
       <main className="flex-1">{children}</main>
       <footer className="border-t border-zinc-800 px-4 py-6">
         <div className="mx-auto max-w-6xl">
