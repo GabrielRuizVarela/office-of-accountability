@@ -1,11 +1,12 @@
 /**
- * Caso Epstein — Investigacion (full evidence/investigation page).
+ * Caso Epstein — Investigacion (structured evidence/data page).
  *
- * Displays FACTCHECK_ITEMS, ACTORS, MONEY_FLOWS, EVIDENCE_DOCS,
- * IMPACT_STATS, and GOVERNMENT_RESPONSES from investigation-data.ts.
- * Uses _es fields for Spanish content throughout.
+ * Displays factcheck items, actors, money flows, evidence documents,
+ * and government responses. This is the "pruebas" page — data, not story.
+ * Distinct from resumen (narrative) and evidencia (document catalog).
  */
 
+import type { Metadata } from 'next'
 import Link from 'next/link'
 
 import {
@@ -18,6 +19,12 @@ import {
   type FactcheckStatus,
   type VerificationStatus,
 } from '@/lib/caso-epstein/investigation-data'
+
+export const metadata: Metadata = {
+  title: 'Caso Epstein: Datos y evidencia',
+  description:
+    'Datos estructurados de la investigacion Epstein: hechos verificados, actores documentados, flujos financieros, documentos de evidencia y respuestas gubernamentales.',
+}
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -74,7 +81,7 @@ function Badge({
 }
 
 function formatUSD(amount: number): string {
-  if (amount >= 1_000_000_000) return `$${(amount / 1_000_000_000).toFixed(0)}B`
+  if (amount >= 1_000_000_000) return `$${(amount / 1_000_000_000).toFixed(1)}B`
   if (amount >= 1_000_000) return `$${(amount / 1_000_000).toFixed(0)}M`
   if (amount >= 1_000) return `$${(amount / 1_000).toFixed(0)}K`
   return `$${amount}`
@@ -92,16 +99,14 @@ export default function InvestigacionPage() {
   ).length
 
   return (
-    <div className="space-y-14 pb-16">
-      {/* --------------------------------------------------------------- */}
-      {/* Header                                                          */}
-      {/* --------------------------------------------------------------- */}
+    <div className="mx-auto max-w-6xl space-y-14 px-4 py-12 pb-16">
+      {/* Header */}
       <header className="text-center">
         <p className="text-xs font-medium uppercase tracking-widest text-red-400">
-          Investigacion completa
+          Datos y evidencia
         </p>
         <h1 className="mt-3 text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
-          Caso Epstein: Datos y evidencia
+          Caso Epstein: Investigacion
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-sm text-zinc-400">
           {FACTCHECK_ITEMS.length} hechos verificados ({confirmedCount} confirmados,{' '}
@@ -109,11 +114,17 @@ export default function InvestigacionPage() {
           {ACTORS.length} actores documentados &middot; {EVIDENCE_DOCS.length} documentos de
           evidencia
         </p>
+        <div className="mt-4">
+          <Link
+            href={`/caso/caso-epstein/resumen`}
+            className="text-sm text-red-400 hover:text-red-300"
+          >
+            &larr; Leer la narrativa completa
+          </Link>
+        </div>
       </header>
 
-      {/* --------------------------------------------------------------- */}
-      {/* Impact stats                                                     */}
-      {/* --------------------------------------------------------------- */}
+      {/* Impact stats */}
       <section>
         <h2 className="text-xl font-bold text-zinc-50">Impacto</h2>
         <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
@@ -130,9 +141,7 @@ export default function InvestigacionPage() {
         </div>
       </section>
 
-      {/* --------------------------------------------------------------- */}
-      {/* Factcheck items                                                  */}
-      {/* --------------------------------------------------------------- */}
+      {/* Factcheck items */}
       <section>
         <h2 className="border-l-4 border-red-500 pl-4 text-xl font-bold text-zinc-50">
           Hechos verificados ({FACTCHECK_ITEMS.length})
@@ -170,9 +179,7 @@ export default function InvestigacionPage() {
         </div>
       </section>
 
-      {/* --------------------------------------------------------------- */}
-      {/* Actors                                                           */}
-      {/* --------------------------------------------------------------- */}
+      {/* Actors */}
       <section>
         <h2 className="border-l-4 border-red-500 pl-4 text-xl font-bold text-zinc-50">
           Actores documentados ({ACTORS.length})
@@ -201,9 +208,7 @@ export default function InvestigacionPage() {
         </div>
       </section>
 
-      {/* --------------------------------------------------------------- */}
-      {/* Money flows                                                      */}
-      {/* --------------------------------------------------------------- */}
+      {/* Money flows */}
       <section>
         <h2 className="border-l-4 border-red-500 pl-4 text-xl font-bold text-zinc-50">
           Flujos financieros
@@ -236,9 +241,7 @@ export default function InvestigacionPage() {
         </div>
       </section>
 
-      {/* --------------------------------------------------------------- */}
-      {/* Evidence documents                                               */}
-      {/* --------------------------------------------------------------- */}
+      {/* Evidence documents */}
       <section>
         <h2 className="border-l-4 border-red-500 pl-4 text-xl font-bold text-zinc-50">
           Documentos de evidencia ({EVIDENCE_DOCS.length})
@@ -272,9 +275,7 @@ export default function InvestigacionPage() {
         </div>
       </section>
 
-      {/* --------------------------------------------------------------- */}
-      {/* Government responses                                             */}
-      {/* --------------------------------------------------------------- */}
+      {/* Government responses */}
       <section>
         <h2 className="border-l-4 border-red-500 pl-4 text-xl font-bold text-zinc-50">
           Respuestas gubernamentales
@@ -311,21 +312,19 @@ export default function InvestigacionPage() {
         </div>
       </section>
 
-      {/* --------------------------------------------------------------- */}
-      {/* Navigation                                                       */}
-      {/* --------------------------------------------------------------- */}
+      {/* Navigation */}
       <nav className="flex flex-col gap-3 border-t border-zinc-800 pt-8 sm:flex-row">
         <Link
           href="/caso/caso-epstein/resumen"
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          &larr; Resumen
+          &larr; Resumen narrativo
         </Link>
         <Link
           href="/caso/caso-epstein/cronologia"
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          Cronologia &rarr;
+          Cronologia
         </Link>
         <Link
           href="/caso/caso-epstein/evidencia"
