@@ -1,28 +1,38 @@
 'use client'
 
 /**
- * Caso Libra — Comprehensive bilingual investigation page.
+ * Caso investigation — Comprehensive bilingual investigation page.
  *
- * Renders a complete, factchecked, sourced investigation of the $LIBRA
- * token scandal with timeline, actor network, money flows, evidence chain,
- * government response tracking, and impact statistics.
+ * Slug-aware: dispatches to the correct data source (caso-libra or
+ * caso-epstein) based on the URL slug parameter.
  */
 
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
+import { useParams } from 'next/navigation'
 
 import {
-  FACTCHECK_ITEMS,
-  TIMELINE_EVENTS,
-  ACTORS,
-  MONEY_FLOWS,
-  EVIDENCE_DOCS,
-  IMPACT_STATS,
-  GOVERNMENT_RESPONSES,
+  FACTCHECK_ITEMS as LIBRA_FACTCHECK_ITEMS,
+  TIMELINE_EVENTS as LIBRA_TIMELINE_EVENTS,
+  ACTORS as LIBRA_ACTORS,
+  MONEY_FLOWS as LIBRA_MONEY_FLOWS,
+  EVIDENCE_DOCS as LIBRA_EVIDENCE_DOCS,
+  IMPACT_STATS as LIBRA_IMPACT_STATS,
+  GOVERNMENT_RESPONSES as LIBRA_GOVERNMENT_RESPONSES,
   type FactcheckStatus,
   type InvestigationCategory,
   type InvestigationTimelineEvent,
   type VerificationStatus,
 } from '@/lib/caso-libra/investigation-data'
+
+import {
+  FACTCHECK_ITEMS as EPSTEIN_FACTCHECK_ITEMS,
+  TIMELINE_EVENTS as EPSTEIN_TIMELINE_EVENTS,
+  ACTORS as EPSTEIN_ACTORS,
+  MONEY_FLOWS as EPSTEIN_MONEY_FLOWS,
+  EVIDENCE_DOCS as EPSTEIN_EVIDENCE_DOCS,
+  IMPACT_STATS as EPSTEIN_IMPACT_STATS,
+  GOVERNMENT_RESPONSES as EPSTEIN_GOVERNMENT_RESPONSES,
+} from '@/lib/caso-epstein/investigation-data'
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -120,11 +130,43 @@ function formatDate(dateStr: string, lang: Lang): string {
 // ---------------------------------------------------------------------------
 
 export default function InvestigacionPage() {
+  const params = useParams<{ slug: string }>()
+  const slug = params.slug
+
+  // -- slug-aware data dispatch -----------------------------------------------
+  const isEpstein = slug === 'caso-epstein'
+  const FACTCHECK_ITEMS = isEpstein ? EPSTEIN_FACTCHECK_ITEMS : LIBRA_FACTCHECK_ITEMS
+  const TIMELINE_EVENTS = isEpstein
+    ? EPSTEIN_TIMELINE_EVENTS.map((e) => ({
+        ...e,
+        // Normalise Epstein string[] sources to Libra's {name, url}[] shape
+        sources: (e.sources as unknown as string[]).map((s) => ({ name: s, url: '' })),
+        is_new: false as const,
+      }))
+    : LIBRA_TIMELINE_EVENTS
+  const ACTORS = isEpstein
+    ? EPSTEIN_ACTORS.map((a) => ({ ...a, is_new: false as const }))
+    : LIBRA_ACTORS
+  const MONEY_FLOWS = isEpstein ? EPSTEIN_MONEY_FLOWS : LIBRA_MONEY_FLOWS
+  const EVIDENCE_DOCS = isEpstein ? EPSTEIN_EVIDENCE_DOCS : LIBRA_EVIDENCE_DOCS
+  const IMPACT_STATS = isEpstein ? EPSTEIN_IMPACT_STATS : LIBRA_IMPACT_STATS
+  const GOVERNMENT_RESPONSES = isEpstein ? EPSTEIN_GOVERNMENT_RESPONSES : LIBRA_GOVERNMENT_RESPONSES
+
   const [lang, setLang] = useState<Lang>('es')
   const [activeSection, setActiveSection] = useState('hero')
   const [factcheckFilter, setFactcheckFilter] = useState<FactcheckStatus | null>(null)
   const [expandedFactchecks, setExpandedFactchecks] = useState<Set<string>>(new Set())
   const [timelineFilter, setTimelineFilter] = useState<InvestigationCategory | null>(null)
+
+  // If slug is unknown, show a fallback
+  if (slug !== 'caso-libra' && slug !== 'caso-epstein') {
+    return (
+      <div className="py-20 text-center">
+        <h1 className="text-2xl font-bold text-zinc-50">Investigacion no encontrada</h1>
+        <p className="mt-4 text-zinc-400">No existe una investigacion con este identificador.</p>
+      </div>
+    )
+  }
 
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({})
 
@@ -690,7 +732,7 @@ export default function InvestigacionPage() {
                   rel="noopener noreferrer"
                   className="mt-2 inline-block text-xs text-red-400 hover:text-red-300"
                 >
-                  {gr.source} ↗
+                  {('source' in gr ? gr.source : lang === 'es' ? 'Fuente' : 'Source')} ↗
                 </a>
               </div>
             </div>
