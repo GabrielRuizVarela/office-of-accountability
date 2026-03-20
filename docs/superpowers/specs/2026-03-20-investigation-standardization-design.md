@@ -303,11 +303,15 @@ Pages requiring updates:
 All should change to: `fetch(\`/api/casos/${casoSlug}/...\`)`.
 
 Additionally, hardcoded `/caso/finanzas-politicas/*` static routes exist alongside the dynamic `[slug]` route:
+- `webapp/src/app/caso/finanzas-politicas/page.tsx` (landing page)
+- `webapp/src/app/caso/finanzas-politicas/layout.tsx`
 - `webapp/src/app/caso/finanzas-politicas/conexiones/page.tsx`
 - `webapp/src/app/caso/finanzas-politicas/resumen/page.tsx`
-- `webapp/src/app/caso/finanzas-politicas/layout.tsx`
+- `webapp/src/app/caso/finanzas-politicas/cronologia/page.tsx`
+- `webapp/src/app/caso/finanzas-politicas/dinero/page.tsx`
+- `webapp/src/app/caso/finanzas-politicas/investigacion/page.tsx`
 
-These override the dynamic route for finanzas-politicas. They should be kept as-is for now — they serve the platform-graph visualization which is a separate concern from the investigation data.
+These override the dynamic route for finanzas-politicas. They should be kept as-is for now — they serve the platform-graph visualization and narrative pages which are a separate concern from the investigation data.
 
 ### Execution Order
 
@@ -457,13 +461,17 @@ Pages already live under `/caso/[slug]/*` — no route structure migration neede
 
 The work is updating hardcoded `/api/caso-libra/*` fetch URLs inside these pages to use the dynamic `slug` parameter (see Phase 4.6).
 
-Additionally, hardcoded static routes exist for finanzas-politicas:
+Additionally, hardcoded static routes exist for finanzas-politicas (7 files):
 ```
+/caso/finanzas-politicas              — landing page (stays as-is)
 /caso/finanzas-politicas/conexiones   — platform-graph visualization (stays as-is)
 /caso/finanzas-politicas/resumen      — narrative summary (stays as-is)
+/caso/finanzas-politicas/cronologia   — timeline (stays as-is)
+/caso/finanzas-politicas/dinero       — money flows (stays as-is)
+/caso/finanzas-politicas/investigacion — investigation data (stays as-is)
 ```
 
-These override the `[slug]` route for finanzas-politicas and are kept because they serve the platform-graph visualization (queries `Politician`, `OffshoreOfficer`, etc.).
+These override the `[slug]` route for finanzas-politicas and are kept because they serve the platform-graph visualization and narrative pages.
 
 ### 6.6 Schema-Driven UI
 
@@ -498,7 +506,7 @@ All paths are relative to `webapp/`.
 | `src/app/caso/[slug]/dinero/page.tsx` | Update hardcoded `fetch('/api/caso-libra/wallets')` to use dynamic `slug` |
 | `src/app/caso/[slug]/investigacion/page.tsx` | Update hardcoded `fetch('/api/caso-libra/investigation', ...)` to use dynamic `slug` |
 | `src/app/caso/[slug]/actor/[actorSlug]/page.tsx` | Update hardcoded `fetch('/api/caso-libra/person/...')` to use dynamic `slug` |
-| `scripts/seed-caso-epstein.ts` | Rewrite — currently seeds ~15 hand-authored entities; replace with full import from rhowardstone JSON data (knowledge graph + persons registry) |
+| `scripts/seed-caso-epstein.ts` | Rewrite — currently seeds hand-authored static data (persons, locations, events, documents, organizations, legal cases covering the pre-2024 investigation scope); replace with full import from rhowardstone JSON data (606 knowledge graph entities + 1,614 persons registry entries) |
 
 ### 7.2 Created
 
