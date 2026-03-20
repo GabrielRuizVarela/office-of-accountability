@@ -21,6 +21,14 @@ export const LABEL_COLORS: Readonly<Record<string, string>> = {
   Event: '#f59e0b', // amber-500
   Organization: '#8b5cf6', // violet-500
   LegalCase: '#ec4899', // pink-500
+  // New generic investigation types
+  ShellCompany: '#14b8a6', // teal-500
+  Aircraft: '#f97316', // orange-500
+  Wallet: '#22c55e', // green-500
+  Token: '#eab308', // yellow-500
+  Claim: '#ef4444', // red-500
+  MoneyFlow: '#22c55e', // green-500
+  GovernmentAction: '#6366f1', // indigo-500
 }
 
 export const DEFAULT_NODE_COLOR = '#94a3b8' // slate-400
@@ -131,6 +139,14 @@ export const LABEL_DISPLAY: Readonly<Record<string, string>> = {
   Event: 'Evento',
   Organization: 'Organizacion',
   LegalCase: 'Caso Legal',
+  // New generic investigation types
+  ShellCompany: 'Empresa Fantasma',
+  Aircraft: 'Aeronave',
+  Wallet: 'Billetera',
+  Token: 'Token',
+  Claim: 'Declaración',
+  MoneyFlow: 'Flujo de Dinero',
+  GovernmentAction: 'Acción Gubernamental',
 }
 
 // ---------------------------------------------------------------------------
@@ -154,6 +170,28 @@ export const LINK_COLORS: Readonly<Record<string, string>> = {
   FILED_IN: '#ec4899', // pink-500
   DOCUMENTED_BY: '#ec4899', // pink-500
   FINANCED: '#22c55e', // green-500
+  // Caso Libra relationship types
+  CONTROLS: '#6366f1', // indigo-500
+  SENT: '#22c55e', // green-500
+  COMMUNICATED_WITH: '#06b6d4', // cyan-500
+  MET_WITH: '#f59e0b', // amber-500
+  PROMOTED: '#eab308', // yellow-500
+  CREATED_BY: '#8b5cf6', // violet-500
+  MENTIONS: '#ef4444', // red-500
+  // Caso Epstein relationship types
+  TRAVELED_WITH: '#f97316', // orange-500
+  VICTIM_OF: '#dc2626', // red-600
+  PAID_BY: '#22c55e', // green-500
+  REPRESENTED_BY: '#14b8a6', // teal-500
+  RECRUITED_BY: '#f43f5e', // rose-500
+  RELATED_TO: '#a855f7', // purple-500
+  OWNED_BY: '#8b5cf6', // violet-500
+  // Caso Finanzas relationship types
+  OFFICER_OF: '#8b5cf6', // violet-500
+  SUBJECT_OF: '#ef4444', // red-500
+  INVOLVED_IN: '#f59e0b', // amber-500
+  SOURCE_OF: '#22c55e', // green-500
+  DESTINATION_OF: '#10b981', // emerald-500
 }
 
 export const DEFAULT_LINK_COLOR = '#334155' // slate-700
