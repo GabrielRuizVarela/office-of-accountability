@@ -1,37 +1,14 @@
 /**
- * OG image API route for Epstein investigation.
+ * OG image for Caso Libra investigation.
  *
  * GET /api/og/caso/[slug] → 1200x630 PNG
- *
- * Design: Dark card with investigation title, subtitle,
- * and aggregate stats (persons, events, documents).
  */
 
 import React from 'react'
 
-import { CASO_EPSTEIN_SLUG, getActors, getTimeline, getDocuments } from '@/lib/caso-epstein'
 import { ogImageResponse } from '@/lib/og'
 
-// ---------------------------------------------------------------------------
-// Route handler
-// ---------------------------------------------------------------------------
-
-export async function GET(
-  _request: Request,
-  { params }: { params: Promise<{ slug: string }> },
-): Promise<Response> {
-  const { slug } = await params
-
-  if (slug !== CASO_EPSTEIN_SLUG) {
-    return new Response('Not found', { status: 404 })
-  }
-
-  const [persons, events, documents] = await Promise.all([
-    getActors(CASO_EPSTEIN_SLUG),
-    getTimeline(CASO_EPSTEIN_SLUG),
-    getDocuments(CASO_EPSTEIN_SLUG),
-  ])
-
+export async function GET(): Promise<Response> {
   const element = (
     <div
       style={{
@@ -57,48 +34,45 @@ export async function GET(
           }}
         />
         <span style={{ fontSize: '20px', fontWeight: 400, color: '#a1a1aa' }}>
-          Office of Accountability
+          Oficina de Rendicion de Cuentas
         </span>
       </div>
 
-      {/* Center: title and subtitle */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      {/* Center */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <div
           style={{
-            fontSize: '56px',
+            fontSize: '52px',
             fontWeight: 700,
             lineHeight: 1.1,
             color: '#fafafa',
+          }}
+        >
+          Caso Libra: La Memecoin del Presidente
+        </div>
+        <div
+          style={{
+            fontSize: '24px',
+            fontWeight: 400,
+            color: '#a1a1aa',
             maxWidth: '900px',
           }}
         >
-          Epstein Investigation
+          Investigacion comunitaria basada en datos publicos
         </div>
-
-        <div
-          style={{
-            fontSize: '26px',
-            fontWeight: 400,
-            lineHeight: 1.4,
-            color: '#a1a1aa',
-          }}
-        >
-          Network Analysis
-        </div>
-
-        {/* Tag pills */}
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <Pill text="Knowledge Graph" color="#818cf8" bgColor="#1a1a2e" />
-          <Pill text="Flight Logs" color="#34d399" bgColor="#022c22" />
-          <Pill text="Court Documents" color="#fbbf24" bgColor="#422006" />
+        <div style={{ display: 'flex', gap: '24px' }}>
+          <StatPill value="$251M+" label="perdidas" />
+          <StatPill value="114,000+" label="billeteras" />
+          <StatPill value="94%" label="caida" />
         </div>
       </div>
 
-      {/* Bottom: stats */}
-      <div style={{ display: 'flex', gap: '48px', alignItems: 'flex-end' }}>
-        <Stat label="Persons" value={String(persons.length)} />
-        <Stat label="Events" value={String(events.length)} />
-        <Stat label="Documents" value={String(documents.length)} />
+      {/* Bottom */}
+      <div style={{ display: 'flex', gap: '16px', fontSize: '18px', color: '#52525b' }}>
+        <span>Blockchain</span>
+        <span>Congreso</span>
+        <span>Pericias</span>
+        <span>Registros Publicos</span>
       </div>
     </div>
   )
@@ -106,42 +80,20 @@ export async function GET(
   return ogImageResponse({ element })
 }
 
-// ---------------------------------------------------------------------------
-// Sub-components (satori-compatible)
-// ---------------------------------------------------------------------------
-
-function Pill({
-  text,
-  color,
-  bgColor,
-}: {
-  readonly text: string
-  readonly color: string
-  readonly bgColor: string
-}) {
+function StatPill({ value, label }: { readonly value: string; readonly label: string }) {
   return (
     <div
       style={{
         display: 'flex',
         alignItems: 'center',
-        backgroundColor: bgColor,
+        gap: '8px',
+        backgroundColor: '#1a1a2e',
         borderRadius: '9999px',
         padding: '8px 20px',
-        fontSize: '20px',
-        fontWeight: 400,
-        color,
       }}
     >
-      {text}
-    </div>
-  )
-}
-
-function Stat({ label, value }: { readonly label: string; readonly value: string }) {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-      <span style={{ fontSize: '16px', color: '#71717a', fontWeight: 400 }}>{label}</span>
-      <span style={{ fontSize: '36px', fontWeight: 700, color: '#fafafa' }}>{value}</span>
+      <span style={{ fontSize: '22px', fontWeight: 700, color: '#a78bfa' }}>{value}</span>
+      <span style={{ fontSize: '18px', fontWeight: 400, color: '#71717a' }}>{label}</span>
     </div>
   )
 }

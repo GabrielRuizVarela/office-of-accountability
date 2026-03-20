@@ -154,6 +154,26 @@ export const VotingSessionsFileSchema = z.object({
   senadores: z.array(VotingSessionSchema),
 })
 
+/** Law names file — flat array of law name strings */
+export const LawNamesFileSchema = z.array(z.string())
+
+/** Individual entry in election_legislators.json */
+export const ElectionEntrySchema = z.object({
+  name: z.string(),
+  province: z.string(),
+  alliance: z.string(),
+  coalition: z.string(),
+  party_code: z.string().nullable(),
+})
+export type ElectionEntry = z.infer<typeof ElectionEntrySchema>
+
+/** Election legislators file — keyed by year, then chamber */
+export const ElectionLegislatorsFileSchema = z.record(
+  z.string(),
+  z.record(z.string(), z.array(ElectionEntrySchema)),
+)
+export type ElectionLegislatorsFile = z.infer<typeof ElectionLegislatorsFileSchema>
+
 // ---------------------------------------------------------------------------
 // Neo4j node parameter types — used by the loader to MERGE nodes
 // ---------------------------------------------------------------------------
@@ -231,4 +251,70 @@ export interface MemberOfRelParams {
 export interface RepresentsRelParams {
   readonly politician_id: string
   readonly province_id: string
+}
+
+/** Parameters for a Term node MERGE */
+export interface TermNodeParams extends ProvenanceParams {
+  readonly id: string
+  readonly chamber: Chamber
+  readonly year_from: number
+  readonly year_to: number
+  readonly bloc: string
+  readonly province: string
+  readonly coalition: string
+}
+
+/** Parameters for a Legislation node MERGE */
+export interface LegislationParams extends ProvenanceParams {
+  readonly id: string
+  readonly name: string
+  readonly group_key: string
+  readonly slug: string
+}
+
+/** Parameters for an Election node MERGE */
+export interface ElectionParams extends ProvenanceParams {
+  readonly id: string
+  readonly year: number
+  readonly slug: string
+}
+
+/** Parameters for a SERVED_TERM relationship */
+export interface ServedTermRelParams {
+  readonly politician_id: string
+  readonly term_id: string
+}
+
+/** Parameters for a TERM_PARTY relationship */
+export interface TermPartyRelParams {
+  readonly term_id: string
+  readonly party_id: string
+}
+
+/** Parameters for a TERM_PROVINCE relationship */
+export interface TermProvinceRelParams {
+  readonly term_id: string
+  readonly province_id: string
+}
+
+/** Parameters for a VOTE_ON relationship */
+export interface VoteOnRelParams {
+  readonly acta_id: string
+  readonly legislation_id: string
+}
+
+/** Parameters for a RAN_IN relationship */
+export interface RanInRelParams {
+  readonly politician_id: string
+  readonly election_id: string
+  readonly alliance: string
+  readonly province: string
+  readonly coalition: string
+  readonly party_code: string | null
+}
+
+/** Parameters for patching law_name onto LegislativeVote nodes */
+export interface LawNamePatchParams {
+  readonly acta_id: string
+  readonly law_name: string
 }

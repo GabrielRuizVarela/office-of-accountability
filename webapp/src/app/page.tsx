@@ -1,9 +1,5 @@
 /**
  * Homepage — main landing page for the ORC platform.
- *
- * Server component that fetches latest investigations and provides
- * navigation to all platform sections: graph explorer, investigations,
- * politician profiles, and user auth.
  */
 
 import Link from 'next/link'
@@ -13,7 +9,6 @@ import Link from 'next/link'
 // ---------------------------------------------------------------------------
 
 export default function Home() {
-
   return (
     <div className="min-h-screen bg-zinc-950">
       {/* Navigation */}
@@ -29,9 +24,6 @@ export default function Home() {
             <Link href="/caso/caso-epstein" className="text-zinc-400 transition-colors hover:text-zinc-100">
               Caso Epstein
             </Link>
-            <Link href="/explorar" className="text-zinc-400 transition-colors hover:text-zinc-100">
-              Explorar
-            </Link>
           </nav>
         </div>
       </header>
@@ -41,10 +33,10 @@ export default function Home() {
         <div className="flex flex-col items-center text-center">
           <div className="mb-6 flex items-center gap-2 rounded-full border border-zinc-800 px-4 py-1.5 text-xs text-zinc-400">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-purple-500" />
-            Plataforma de conocimiento cívico
+            Plataforma de conocimiento civico
           </div>
           <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-zinc-50 sm:text-5xl lg:text-6xl">
-            Oficina de Rendición de Cuentas
+            Oficina de Rendicion de Cuentas
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400 sm:text-xl">
             Investigaciones abiertas con datos verificables. Grafos de conocimiento, cronologias,
@@ -134,7 +126,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-zinc-800">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-8 text-xs text-zinc-500 sm:flex-row sm:justify-between">
-          <p>Oficina de Rendición de Cuentas — Datos abiertos</p>
+          <p>Oficina de Rendicion de Cuentas — Datos abiertos</p>
           <nav className="flex gap-4">
             <Link href="/caso/caso-libra" className="transition-colors hover:text-zinc-300">
               Caso Libra
@@ -194,4 +186,3 @@ function CaseIcon() {
     </svg>
   )
 }
-

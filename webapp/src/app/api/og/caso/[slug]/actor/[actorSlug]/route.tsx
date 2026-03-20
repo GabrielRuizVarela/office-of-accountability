@@ -1,39 +1,34 @@
 /**
- * OG image API route for Epstein investigation actor profiles.
+ * OG image for a Caso Libra actor.
  *
  * GET /api/og/caso/[slug]/actor/[actorSlug] → 1200x630 PNG
- *
- * Design: Dark card with person name, role, connection count,
- * and Epstein Investigation branding.
  */
 
 import React from 'react'
 
-import { CASO_EPSTEIN_SLUG, getPersonBySlug } from '@/lib/caso-epstein'
+import { getPersonBySlug } from '@/lib/caso-libra'
 import { ogImageResponse } from '@/lib/og'
-
-// ---------------------------------------------------------------------------
-// Route handler
-// ---------------------------------------------------------------------------
 
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ slug: string; actorSlug: string }> },
 ): Promise<Response> {
-  const { slug, actorSlug } = await params
+  const { actorSlug } = await params
 
-  if (slug !== CASO_EPSTEIN_SLUG) {
+  if (!actorSlug || actorSlug.length > 200) {
     return new Response('Not found', { status: 404 })
   }
 
   const data = await getPersonBySlug(actorSlug)
 
   if (!data) {
-    return new Response('Person not found', { status: 404 })
+    return new Response('Actor not found', { status: 404 })
   }
 
-  const { person, connections } = data
-  const connectionCount = connections.links.length
+  const person = data.person
+  const name = (person.name as string) ?? 'Actor'
+  const role = person.role as string | undefined
+  const description = person.description as string | undefined
 
   const element = (
     <div
@@ -60,62 +55,50 @@ export async function GET(
           }}
         />
         <span style={{ fontSize: '20px', fontWeight: 400, color: '#a1a1aa' }}>
-          Office of Accountability
-        </span>
-        <span style={{ fontSize: '20px', fontWeight: 400, color: '#52525b', marginLeft: '8px' }}>
-          — Epstein Investigation
+          Caso Libra — Oficina de Rendicion de Cuentas
         </span>
       </div>
 
-      {/* Center: person info */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        {/* Avatar circle with initial */}
+      {/* Center */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
         <div
           style={{
-            width: '72px',
-            height: '72px',
+            width: '100px',
+            height: '100px',
             borderRadius: '50%',
-            backgroundColor: '#27272a',
+            backgroundColor: '#1e3a5f',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '32px',
+            fontSize: '48px',
             fontWeight: 700,
-            color: '#a1a1aa',
+            color: '#60a5fa',
           }}
         >
-          {person.name.charAt(0).toUpperCase()}
+          {name.charAt(0)}
         </div>
-
-        <div
-          style={{
-            fontSize: '56px',
-            fontWeight: 700,
-            lineHeight: 1.1,
-            color: '#fafafa',
-            maxWidth: '900px',
-          }}
-        >
-          {person.name}
-        </div>
-
-        {person.role ? (
-          <div
-            style={{
-              fontSize: '26px',
-              fontWeight: 400,
-              lineHeight: 1.4,
-              color: '#a1a1aa',
-            }}
-          >
-            {person.role}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div style={{ fontSize: '48px', fontWeight: 700, lineHeight: 1.1 }}>
+            {truncate(name, 40)}
           </div>
-        ) : null}
+          {role ? (
+            <div style={{ fontSize: '22px', fontWeight: 400, color: '#a1a1aa' }}>
+              {truncate(role, 80)}
+            </div>
+          ) : null}
+        </div>
       </div>
 
-      {/* Bottom: stats */}
-      <div style={{ display: 'flex', gap: '48px', alignItems: 'flex-end' }}>
-        <Stat label="Connections" value={String(connectionCount)} />
+      {/* Bottom */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        {description ? (
+          <div style={{ fontSize: '18px', fontWeight: 400, color: '#71717a', maxWidth: '900px' }}>
+            {truncate(description, 160)}
+          </div>
+        ) : null}
+        <div style={{ fontSize: '16px', fontWeight: 400, color: '#3f3f46' }}>
+          Investigacion comunitaria basada en datos publicos
+        </div>
       </div>
     </div>
   )
@@ -123,15 +106,7 @@ export async function GET(
   return ogImageResponse({ element })
 }
 
-// ---------------------------------------------------------------------------
-// Sub-components (satori-compatible)
-// ---------------------------------------------------------------------------
-
-function Stat({ label, value }: { readonly label: string; readonly value: string }) {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-      <span style={{ fontSize: '16px', color: '#71717a', fontWeight: 400 }}>{label}</span>
-      <span style={{ fontSize: '36px', fontWeight: 700, color: '#fafafa' }}>{value}</span>
-    </div>
-  )
+function truncate(text: string, maxLength: number): string {
+  if (text.length <= maxLength) return text
+  return `${text.slice(0, maxLength - 1)}…`
 }
