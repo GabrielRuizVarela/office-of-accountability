@@ -11,9 +11,9 @@
     "investigations": "Investigaciones"
   },
   "hero": {
-    "badge": "Plataforma de conocimiento civico",
+    "badge": "Motor de investigacion sobre grafos de conocimiento",
     "title": "Oficina de Rendicion de Cuentas",
-    "subtitle": "Investigaciones abiertas construidas sobre grafos de conocimiento. Datos publicos, verificacion automatizada, revision humana.",
+    "subtitle": "Un motor que busca, valida y consolida hallazgos a partir de datos publicos. Grafo de conocimiento, verificacion automatizada, revision humana en cada paso.",
     "ctaExplore": "Explorar el grafo",
     "ctaInvestigations": "Ver investigaciones"
   },
@@ -22,30 +22,30 @@
     "explore": "Explorar"
   },
   "features": {
-    "title": "Que podes hacer",
+    "title": "Como funciona el motor",
     "graph": {
-      "title": "Grafo interactivo",
-      "description": "Explora conexiones entre politicos, votaciones, legislacion y donantes."
+      "title": "Grafo de conocimiento",
+      "description": "Base de datos en grafo (Neo4j) que conecta entidades, relaciones y evidencia de forma nativa."
     },
     "timeline": {
-      "title": "Cronologias",
-      "description": "Visualiza la secuencia de eventos en cada investigacion."
+      "title": "Ingestion automatizada",
+      "description": "Conectores que importan datos de APIs, documentos judiciales, registros publicos y scraping."
     },
     "evidence": {
-      "title": "Evidencia documental",
-      "description": "Documentos judiciales, registros oficiales y fuentes verificadas."
+      "title": "Verificacion y factcheck",
+      "description": "Cada hallazgo es verificado contra fuentes y clasificado por nivel de confianza (gold/silver/bronze)."
     },
     "community": {
-      "title": "Investigaciones comunitarias",
-      "description": "Crea y publica investigaciones respaldadas por datos del grafo."
+      "title": "IA con revision humana",
+      "description": "LLM propone, humanos aprueban. Nada se publica sin revision en cada etapa del pipeline."
     },
     "network": {
       "title": "Analisis de red",
-      "description": "Descubri patrones: quien conoce a quien, quien financia a quien."
+      "description": "Algoritmos de centralidad, deteccion de comunidades y patrones temporales sobre el grafo."
     },
     "money": {
-      "title": "Flujos de dinero",
-      "description": "Seguimiento de fondos: donantes, campanas y conexiones financieras."
+      "title": "Reproducible y auditable",
+      "description": "Cada accion queda registrada con hash chain. Las investigaciones son replicables de principio a fin."
     }
   },
   "roadmap": {
