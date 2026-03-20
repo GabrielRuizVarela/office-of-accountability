@@ -11,9 +11,9 @@
     "investigations": "Investigations"
   },
   "hero": {
-    "badge": "Civic knowledge platform",
+    "badge": "Investigation engine on knowledge graphs",
     "title": "Office of Accountability",
-    "subtitle": "Open investigations built on knowledge graphs. Public data, automated verification, human review.",
+    "subtitle": "An engine that searches, validates, and consolidates findings from public data. Knowledge graph, automated verification, human review at every step.",
     "ctaExplore": "Explore the graph",
     "ctaInvestigations": "View investigations"
   },
@@ -22,30 +22,30 @@
     "explore": "Explore"
   },
   "features": {
-    "title": "What you can do",
+    "title": "How the engine works",
     "graph": {
-      "title": "Interactive graph",
-      "description": "Explore connections between politicians, votes, legislation, and donors."
+      "title": "Knowledge graph",
+      "description": "Native graph database (Neo4j) connecting entities, relationships, and evidence."
     },
     "timeline": {
-      "title": "Timelines",
-      "description": "Visualize the sequence of events in each investigation."
+      "title": "Automated ingestion",
+      "description": "Connectors that import data from APIs, court documents, public records, and scraping."
     },
     "evidence": {
-      "title": "Documentary evidence",
-      "description": "Court documents, official records, and verified sources."
+      "title": "Verification and factcheck",
+      "description": "Every finding is verified against sources and classified by confidence level (gold/silver/bronze)."
     },
     "community": {
-      "title": "Community investigations",
-      "description": "Create and publish investigations backed by graph data."
+      "title": "AI with human review",
+      "description": "LLM proposes, humans approve. Nothing is published without review at every pipeline stage."
     },
     "network": {
       "title": "Network analysis",
-      "description": "Discover patterns: who knows whom, who funds whom."
+      "description": "Centrality algorithms, community detection, and temporal patterns on the graph."
     },
     "money": {
-      "title": "Money flows",
-      "description": "Track funds: donors, campaigns, and financial connections."
+      "title": "Reproducible and auditable",
+      "description": "Every action logged with hash chain. Investigations are replicable end to end."
     }
   },
   "roadmap": {
