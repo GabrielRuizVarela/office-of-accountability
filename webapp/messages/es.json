@@ -6,13 +6,14 @@
   },
   "footer": {
     "tagline": "Oficina de Rendicion de Cuentas — Datos abiertos",
+    "contact": "Si queres colaborar y probar el motor, escribime",
     "explore": "Explorar",
     "investigations": "Investigaciones"
   },
   "hero": {
     "badge": "Plataforma de conocimiento civico",
     "title": "Oficina de Rendicion de Cuentas",
-    "subtitle": "Investigaciones abiertas con datos verificables. Grafos de conocimiento, cronologias, evidencia documental y analisis de red.",
+    "subtitle": "Investigaciones abiertas construidas sobre grafos de conocimiento. Datos publicos, verificacion automatizada, revision humana.",
     "ctaExplore": "Explorar el grafo",
     "ctaInvestigations": "Ver investigaciones"
   },
