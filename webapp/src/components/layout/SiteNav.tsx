@@ -2,11 +2,11 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useTranslations } from 'next-intl'
+import { createTranslator } from '@/i18n/messages'
 import { useState } from 'react'
 
 export function SiteNav() {
-  const t = useTranslations('nav')
+  const t = createTranslator('nav')
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
 

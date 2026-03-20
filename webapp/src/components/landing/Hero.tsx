@@ -1,10 +1,8 @@
-'use client'
-
 import Link from 'next/link'
-import { useTranslations } from 'next-intl'
+import { createTranslator } from '@/i18n/messages'
 
 export function Hero() {
-  const t = useTranslations('hero')
+  const t = createTranslator('hero')
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-20 sm:py-28">
