@@ -1,7 +1,7 @@
 # Investigation Engine — Design Specification
 
 **Date:** 2026-03-20
-**Status:** Approved
+**Status:** Approved (v2 — database-native architecture)
 **Scope:** General-purpose, automated investigation pipeline integrated into Office of Accountability
 
 ---
@@ -10,7 +10,7 @@
 
 The Investigation Engine is a structured, automated, template-driven system for conducting reproducible investigations. It generalizes the existing Epstein investigation workflow into a reusable framework applicable to any domain — public accountability, corporate OSINT, land ownership, or fully custom research.
 
-An investigation is a **git-versioned directory** of declarative YAML files. The engine reads these files and executes an automated pipeline against Neo4j, with human gates at decision points. It integrates with the existing PRD as an accelerator for the manual investigation workflow (PRD Section 5.3), producing findings that researchers curate into Investigation documents.
+Investigation configuration (schema, sources, pipeline, state) lives in **Neo4j as first-class graph entities**, managed through the webapp UI. The engine runs within the Next.js application, executing pipeline stages as server-side operations with gates rendered as interactive webapp pages.
 
 ### Relationship to PRD
 
@@ -20,7 +20,7 @@ The PRD defines an `Investigation` as a content type — a long-form document wi
 Investigation Engine (pipeline)
   → discovers nodes, relationships, patterns
   → produces hypotheses with evidence
-  → researcher reviews at gates
+  → researcher reviews at gates (webapp UI)
   → approved findings become...
     → Bronze/Silver graph nodes (PRD open schema)
     → Claim nodes with status: pending (PRD claim pattern)
@@ -33,379 +33,242 @@ The engine is an accelerator, not a replacement. Manual investigation remains fu
 
 ## 2. Core Concepts
 
-### Investigation-as-Code
+### Database-Native Configuration
 
-An investigation is a directory — a git repo (or subdirectory) with declarative YAML files that define schema, sources, pipeline stages, and gates.
+All investigation configuration — schema definitions, source connectors, pipeline stages, audit entries, proposals, snapshots — lives as Neo4j nodes and relationships. The webapp reads and writes these directly. No filesystem YAML, no CLI tool, no git-for-config complexity.
 
-- **Reproducible:** git provides versioning, forking, and audit for free.
-- **Portable:** a directory of files is universally understood, shareable, and archivable.
-- **Templatable:** a template is an investigation directory without data. Clone it, fill in specifics, run it.
-- **Two audiences:** power users edit YAML directly; the webapp generates/edits files through a guided wizard.
+Benefits:
+- **Single source of truth** — Neo4j holds both config and data
+- **Webapp-first** — researchers interact entirely through the UI
+- **Queryable** — investigation metadata is traversable alongside investigation data
+- **No sync issues** — no filesystem ↔ database coordination
 
 ### Human-at-the-Gates
 
-Automation handles data collection and processing. The researcher makes decisions at gates: which sources to trust, which connections look real, which hypotheses to pursue. Between gates, the system suggests next moves, surfaces anomalies, and handles grunt work.
+Automation handles data collection and processing. The researcher makes decisions at gates: which sources to trust, which connections look real, which hypotheses to pursue. Between gates, the system suggests next moves, surfaces anomalies, and handles grunt work. Gates are rendered as interactive pages in the webapp.
 
 ### LLM Never Writes Directly
 
-The LLM agent produces proposals — proposed nodes, edges, hypotheses, report sections — that accumulate until the next gate. The researcher approves, modifies, or rejects them. Nothing is written to the graph without human review.
+The LLM agent produces proposals — proposed nodes, edges, hypotheses, report sections — stored as `Proposal` nodes in Neo4j. They accumulate until the next gate, where the researcher approves, modifies, or rejects them through the UI. Nothing is written to the investigation graph without human review.
 
 ### Neo4j Namespace Implementation
 
-Neo4j Community has no native namespace or multi-database support. Namespacing is implemented via a mandatory `investigation_id` property on every engine-created node and relationship. All engine-generated Cypher queries filter by `WHERE n.investigation_id = $investigationId`.
+Neo4j Community has no native namespace or multi-database support. Namespacing is implemented via the existing `caso_slug` property on every node and relationship. All engine-generated Cypher queries filter by `WHERE n.caso_slug = $casoSlug`.
 
-This follows the existing pattern in the codebase, where `caso_slug` serves the same purpose (see `dedup.ts` line 103: `WHERE n.caso_slug = $casoSlug`).
+This continues the existing pattern in the codebase (see `dedup.ts`: `WHERE n.caso_slug = $casoSlug`). The engine maps the investigation's `id` to `caso_slug` in the Cypher generation layer — no data migration needed.
 
-**Uniqueness strategy:** Node IDs are composite — `{investigation_id}:{node_id}` — avoiding collisions with the existing global UNIQUE constraints on `Person.id`, `Document.id`, etc. The engine generates IDs in this format: `caso-epstein:ee-john-doe`. Forked branches use `{investigation_id}__{branch}:{node_id}`.
+**Dynamic UNIQUE constraints:** When a researcher defines a new node type in the schema (e.g., `Parcel` for a land ownership investigation), the engine creates a UNIQUE constraint for `{NodeType}.id` using `IF NOT EXISTS`. This follows the existing idempotent pattern in `schema.ts`.
 
-**Constraint compatibility:** The engine does NOT create new Neo4j UNIQUE constraints per investigation. It relies on the composite ID format for uniqueness and the `investigation_id` property for isolation. Existing global constraints remain in place for non-engine data.
-
-**Coexistence with pre-engine data:** Existing nodes (from wave scripts, seed data) retain their plain IDs (e.g., `ee-john-doe`) and have no `investigation_id` property. The engine treats these as read-only reference data — it can query and link to them but does not modify or merge them. Engine-created nodes always use composite IDs (`caso-epstein:ee-john-doe`) and always carry `investigation_id`. Dedup between engine nodes and pre-engine nodes uses `caso_slug` matching (the existing pattern), not ID comparison. This avoids silent boundary failures while preserving backward compatibility.
+**Relationship isolation:** Relationships do NOT carry a `caso_slug` property (Neo4j Community has no relationship property indexes). Isolation is achieved through node-level filtering — if both endpoints belong to an investigation, the relationship implicitly does too.
 
 ---
 
-## 3. Investigation File Structure
+## 3. Data Model — Investigation Config in Neo4j
+
+### 3.1 Config Node Types
 
 ```
-my-investigation/
-  investigation.yaml      # identity + metadata
-  schema.yaml             # entity types, relationship types, property definitions
-  sources/                # one file per data source connector
-    *.yaml
-  pipeline.yaml           # ordered stages + gates
-  .investigation/         # engine-managed (not hand-edited)
-    state.yaml            # current stage, progress, resume points
-    audit.log             # append-only JSONL — every action logged
-    proposals/            # pending proposals from LLM/connectors
-    snapshots/            # named checkpoints for re-runnability
-    branches/             # fork metadata
+(InvestigationConfig)
+  -[:HAS_SCHEMA]-> (SchemaDefinition)
+    -[:DEFINES_NODE_TYPE]-> (NodeTypeDefinition {name, properties_json, color, icon})
+    -[:DEFINES_REL_TYPE]-> (RelTypeDefinition {name, from_types, to_types, properties_json})
+  -[:HAS_SOURCE]-> (SourceConnector {name, type, config_json, mapping_json, dedup_config_json, tier})
+  -[:HAS_PIPELINE]-> (PipelineConfig)
+    -[:HAS_STAGE]-> (PipelineStage {id, name, type, order, config_json})
+      -[:HAS_GATE]-> (Gate {type, prompt, actions, show_components})
+  -[:HAS_MODEL]-> (ModelConfig {name, provider, endpoint, model, config_json, api_key_env})
+  -[:HAS_MIROFISH]-> (MiroFishConfig {endpoint, llm_backend})
+  -[:CURRENT_STATE]-> (PipelineState {current_stage, status, progress_json})
+  -[:HAS_SNAPSHOT]-> (Snapshot {name, created, stage, graph_state_json, pipeline_state_json})
+  -[:FORKED_FROM]-> (InvestigationConfig)  # for branches
 ```
 
-### 3.1 investigation.yaml
+### 3.2 InvestigationConfig Node
 
-```yaml
-id: caso-epstein
-name: "Jeffrey Epstein Network Investigation"
-description: "Mapping financial, social, and travel connections..."
-template: public-accountability    # optional — which template seeded this
-created: 2026-03-20
-tags: [financial-crime, trafficking, public-figures]
-neo4j_namespace: caso-epstein      # investigation_id property on all nodes/edges
-
-models:
-  default:
-    provider: llamacpp
-    endpoint: http://localhost:8080
-    model: qwen-3.5-9b
-    config:
-      temperature: 0.7
-      max_tokens: 2048
-      timeout: 600
-
-  fast:
-    provider: openai
-    api_key_env: OPENAI_API_KEY
-    model: gpt-4o-mini
-    config:
-      temperature: 0.3
-      max_tokens: 1024
-
-  reasoning:
-    provider: anthropic
-    api_key_env: ANTHROPIC_API_KEY
-    model: claude-sonnet-4-20250514
-    config:
-      temperature: 0.5
-      max_tokens: 4096
-
-mirofish:
-  endpoint: http://localhost:5000    # MiroFish swarm server (separate from llama.cpp at :8080)
-  llm_backend: default               # which model config MiroFish uses internally
+```typescript
+interface InvestigationConfig {
+  id: string                    // e.g., "caso-epstein"
+  name: string                  // "Jeffrey Epstein Network Investigation"
+  description: string
+  template_id?: string          // which template seeded this
+  created: Date
+  tags: string[]
+  caso_slug: string             // maps to caso_slug on all data nodes
+  status: 'draft' | 'running' | 'paused' | 'completed'
+  branch?: string               // 'main' or branch name
+}
 ```
 
-### 3.2 schema.yaml
+### 3.3 SchemaDefinition
 
-Defines entity types and relationship types for the investigation. The engine reads this and adapts — it makes zero assumptions about what is being investigated.
+Researchers define node types and relationship types through the webapp UI. Each type becomes a `NodeTypeDefinition` or `RelTypeDefinition` node:
 
-```yaml
-node_types:
-  Person:
-    properties:
-      name: { type: string, required: true }
-      role: { type: string }
-      nationality: { type: string }
-      description: { type: string }
-    display:
-      color: "#3b82f6"
-      icon: user
+```typescript
+interface NodeTypeDefinition {
+  name: string                  // e.g., "Person", "Organization", "Parcel"
+  properties_json: string       // JSON: {name: {type:"string", required:true}, role: {type:"string"}}
+  color: string                 // hex color for graph visualization
+  icon: string                  // icon identifier
+}
 
-  Organization:
-    properties:
-      name: { type: string, required: true }
-      org_type: { type: enum, values: [company, bank, foundation, government] }
-    display:
-      color: "#8b5cf6"
-      icon: building
-
-  # Users define as many node types as needed
-
-relationship_types:
-  ASSOCIATED_WITH:
-    from: [Person, Organization]
-    to: [Person, Organization]
-    properties:
-      nature: { type: string }
-      source_url: { type: string }
-
-  FLEW_WITH:
-    from: Person
-    to: Person
-    properties:
-      flight_id: { type: string }
-      date: { type: date }
-
-  # Users define as many relationship types as needed
-
-# All nodes/relationships automatically receive provenance fields:
-#   confidence_tier, source, source_url, ingestion_wave,
-#   created_at, created_by, pipeline_stage, proposed_by
+interface RelTypeDefinition {
+  name: string                  // e.g., "ASSOCIATED_WITH", "FINANCED"
+  from_types: string[]          // which node types can be the source
+  to_types: string[]            // which node types can be the target
+  properties_json: string       // JSON: property definitions
+}
 ```
 
-### 3.3 sources/*.yaml
+All nodes created by the engine automatically receive provenance fields: `confidence_tier`, `source`, `source_url`, `ingestion_wave`, `created_at`, `created_by`, `pipeline_stage`, `proposed_by`.
 
-Each file defines one data source and how to map its data into the investigation's schema.
+### 3.4 SourceConnector
+
+Each source connector is a node with its configuration stored as JSON properties:
+
+```typescript
+interface SourceConnector {
+  id: string
+  name: string                  // "Epstein Exposed API"
+  type: 'rest-api' | 'file-upload' | 'web-scraper' | 'court-records' | 'corporate-registry' | 'custom-script'
+  config_json: string           // type-specific config (base_url, endpoints, rate_limit, etc.)
+  mapping_json: string          // field mapping: source fields → schema node/rel types
+  dedup_config_json: string     // {strategy, threshold, match_fields}
+  tier: 'bronze' | 'silver'
+  enabled: boolean
+  resume_state_json?: string    // for resumable connectors
+}
+```
 
 #### Built-in Connector Types
 
 | Type | Description |
 |------|-------------|
 | `rest-api` | Paginated REST APIs with rate limiting and resumability |
-| `file-glob` | Local files (CSV, JSON, PDF) |
-| `github-dataset` | Clone a repo, parse structured data files |
+| `file-upload` | Uploaded files (CSV, JSON, PDF) — stored in webapp's upload directory |
 | `web-scraper` | Fetch and extract from HTML pages |
 | `court-records` | CourtListener, PACER |
 | `corporate-registry` | OpenCorporates, SEC EDGAR |
-| `custom` | User script that outputs JSONL to stdout |
+| `custom-script` | Server-side script that outputs JSONL |
 
-#### Source Definition Example
+#### Dedup Two-Pass Model
 
-```yaml
-# sources/epstein-exposed-api.yaml
-name: "Epstein Exposed API"
-type: rest-api
-config:
-  base_url: "https://api.epsteinexposed.com/api"
-  endpoints:
-    - path: /persons
-      paginate: { type: offset, param: page, per_page: 50 }
-      rate_limit: { requests: 100, per: hour }
-  auth: null
-  resumable: true
+Dedup runs at two distinct points:
+- **Source-level dedup** (per SourceConnector's `dedup_config_json`): runs at connector time, deduplicates incoming records against the existing graph. Pre-filter to prevent obvious duplicates.
+- **Pipeline-level dedup** (verify stage config): cross-source global pass after all sources ingested. Catches duplicates between sources.
 
-mapping:
-  persons:
-    node_type: Person
-    id_template: "ee-{slug}"
-    fields:
-      name: "$.name"
-      role: "$.role"
-      description: "$.bio"
+Both use the existing Levenshtein algorithm from `dedup.ts`. Thresholds can differ between passes.
 
-  connections:
-    relationship_type: ASSOCIATED_WITH
-    from: "$.person_slug"
-    to: "$.connected_slug"
-    fields:
-      nature: "$.connection_type"
+### 3.5 PipelineStage & Gate
 
-dedup:
-  strategy: fuzzy
-  threshold: 2
-  match_fields: [name]
+```typescript
+interface PipelineStage {
+  id: string                    // "ingest", "verify", "enrich", "analyze", "report"
+  name: string                  // display name
+  type: 'ingest' | 'verify' | 'enrich' | 'analyze' | 'report'
+  order: number                 // execution order
+  config_json: string           // stage-specific config (agents, algorithms, LLM directives, etc.)
+}
 
-tier: bronze
+interface Gate {
+  type: 'human_review' | null   // null = no gate, fully automated
+  prompt: string                // what to show the researcher
+  actions: string[]             // e.g., ["approve", "reject", "partial", "back_to_analyze"]
+  show_components: string[]     // e.g., ["conflicts_summary", "node_edge_counts", "random_sample"]
+}
 ```
 
-#### Custom Connector Example
+#### Default Pipeline Stages
 
-```yaml
-# sources/my-custom-pdfs.yaml
-name: "Leaked Financial Documents"
-type: custom
-config:
-  script: ./connectors/parse-financial-pdfs.ts
-  args:
-    input_dir: ./data/financial-docs/
+1. **ingest** — run source connectors, collect data, dedup, write bronze nodes
+2. **verify** — dispatch parallel verification agents, propose tier promotions, cross-source dedup
+3. **enrich** — fetch document content, LLM entity extraction, reverse lookups
+4. **analyze** — graph algorithms + LLM analysis (tool-agent or swarm mode)
+5. **report** — LLM drafts investigation report
 
-# Script must output JSONL to stdout:
-# {"type":"node","node_type":"Transaction","id":"tx-001","properties":{...}}
-# {"type":"edge","relationship_type":"FINANCED","from":"person-x","to":"tx-001","properties":{...}}
-
-tier: bronze
-```
-
-#### Source Processing
-
-1. Engine reads all `sources/*.yaml` files
-2. Validates each against `schema.yaml` — mapping targets must reference defined types
-3. Connectors run in the order specified by `pipeline.yaml`
-4. Each connector handles its own pagination, rate limiting, and resumability
-5. Output goes through the dedup layer before writing to Neo4j
-6. Everything is logged to `.investigation/audit.log`
-
-**Dedup two-pass model:** Dedup runs at two distinct points with different scopes:
-- **Source-level dedup** (configured in `sources/*.yaml`): runs at connector time, deduplicates incoming records against the existing graph. This is a pre-filter — prevents writing obvious duplicates during ingestion.
-- **Pipeline-level dedup** (configured in `pipeline.yaml` verify stage): runs as a cross-source global pass after all sources have been ingested. Catches duplicates between sources that source-level dedup can't see (e.g., the same person ingested from two different APIs with slightly different names).
-
-Both use the same underlying Levenshtein algorithm from `dedup.ts`. The threshold can differ between the two passes — source-level may be stricter (lower threshold) to avoid false merges during ingestion, while pipeline-level may be more permissive to catch cross-source duplicates.
-
-### 3.4 pipeline.yaml
-
-Defines the investigation as an ordered sequence of stages (automated work) and gates (human decision points).
-
-```yaml
-stages:
-  - id: ingest
-    name: "Data Collection"
-    type: ingest
-    sources: [all]
-    config:
-      parallel: true
-      on_conflict: log
-    gate:
-      type: human_review
-      prompt: "Review ingested data — check conflicts, sample nodes, approve or reject sources"
-      actions: [approve, reject, partial]
-      show:
-        - conflicts_summary
-        - node_edge_counts
-        - random_sample
-
-  - id: verify
-    name: "Verification"
-    type: verify
-    config:
-      parallel: true
-      agents:
-        - name: verify-persons
-          scope:
-            node_type: Person
-            filter: "confidence_tier = 'bronze'"
-            order_by: "@connection_count"   # @ prefix = computed aggregation
-            limit: 50
-          action: web_verify
-          llm: fast
-          promote_to: silver
-
-        - name: verify-organizations
-          scope:
-            node_type: Organization
-            filter: "confidence_tier = 'bronze'"
-          action: web_verify
-          llm: fast
-          promote_to: silver
-
-        - name: dedup-merge
-          action: dedup
-          config:
-            strategy: fuzzy
-            threshold: 2
-            auto_merge: exact
-
-        - name: cleanup
-          action: sanitize
-          config:
-            remove:
-              - single_char_names
-              - foia_references
-              - passenger_placeholders
-    gate:
-      type: human_review
-      prompt: "Review proposed promotions and merges"
-      show:
-        - fuzzy_match_pairs
-        - confidence_scores
-        - proposed_promotions
-
-  - id: enrich
-    name: "Content Enrichment"
-    type: enrich
-    config:
-      strategies:
-        - type: document_fetch
-          sources: [courtlistener, documentcloud, doj]
-        - type: llm_extract
-          model: fast
-          extract: [key_findings, dates, dollar_amounts, named_entities]
-        - type: reverse_lookup
-          model: fast
-          max_hops: 2
-    gate:
-      type: human_review
-      prompt: "Review enrichment results — verify extracted entities, approve new connections"
-      show:
-        - new_nodes_created
-        - new_relationships
-        - llm_confidence_scores
-
-  - id: analyze
-    name: "Pattern Analysis"
-    type: analyze
-    config:
-      algorithms:
-        - centrality
-        - community_detection
-        - anomaly_detection
-        - temporal_patterns
-      llm:
-        mode: swarm
-        model: default
-        swarm:
-          agent_source: Person
-          context_from: [Organization, Location, Document]
-          scenario: "Analyze network patterns and hidden connections"
-        directives:
-          - "Identify unexplained financial flows"
-          - "Find geographic patterns"
-          - "Surface contradictions between documents and testimony"
-    gate:
-      type: human_review
-      prompt: "Review analysis findings — which hypotheses to pursue?"
-      show:
-        - hypothesis_list
-        - supporting_evidence
-        - confidence_rankings
-      actions: [approve, dismiss, investigate_further]
-
-  - id: report
-    name: "Report Generation"
-    type: report
-    config:
-      format: [markdown, html]
-      sections:
-        - executive_summary
-        - key_findings
-        - network_analysis
-        - evidence_chain
-        - methodology
-        - appendix
-      llm:
-        mode: single
-        model: reasoning
-        tone: investigative
-    gate:
-      type: human_review
-      prompt: "Review draft report — edit, approve, or send back for more analysis"
-      actions: [approve, revise, back_to_analyze]
-```
+Each stage can have a gate (blocking human review) or `gate: null` for fully automated stages.
 
 #### Pipeline Properties
 
 - **Stages are re-runnable.** Re-running `ingest` after adding a new source only processes what's new.
-- **Gates are blocking.** The pipeline stops and waits for human input. Gate decisions are recorded in the audit log.
+- **Gates are blocking.** The pipeline stops and renders the gate UI. Gate decisions are recorded as `AuditEntry` nodes.
 - **Stages can loop.** The `back_to_analyze` action on the report gate loops back.
-- **LLM scope is per-stage.** Each stage defines what the LLM can do — no free rein across the investigation.
-- **Computed sort expressions.** The `order_by` field supports `@`-prefixed computed aggregations (e.g., `@connection_count` generates `ORDER BY COUNT { (n)--(m) WHERE m.investigation_id = $investigationId } DESC`). Plain field names sort by stored properties. This keeps the YAML simple for common cases while supporting runtime aggregations. Computed aggregations are always scoped to the investigation namespace via `investigation_id` filter.
+- **LLM scope is per-stage.** Each stage defines what the LLM can do.
+
+### 3.6 Proposals
+
+All LLM/connector output that modifies the graph is captured as `Proposal` nodes:
+
+```typescript
+interface Proposal {
+  id: string
+  investigation_id: string
+  stage: string                 // which pipeline stage created this
+  type: 'node' | 'edge' | 'promotion' | 'merge' | 'hypothesis' | 'report_section'
+  payload_json: string          // the proposed change
+  confidence: number            // 0-1
+  reasoning: string             // why the LLM/agent proposed this
+  proposed_by: string           // "llm:qwen-3.5-9b" | "connector:epstein-exposed" | "algorithm:centrality"
+  status: 'pending' | 'approved' | 'rejected'
+  reviewed_by?: string          // researcher who reviewed
+  reviewed_at?: Date
+  review_rationale?: string
+}
+```
+
+Proposals accumulate during a stage and are presented at the gate for batch review.
+
+### 3.7 AuditEntry
+
+Every action — human or machine — creates an `AuditEntry` node linked to the investigation:
+
+```typescript
+interface AuditEntry {
+  id: string
+  investigation_id: string
+  ts: Date                      // ISO timestamp
+  actor: string                 // "engine" | "researcher:gabriel" | "llm:qwen-3.5-9b" | "connector:epstein-exposed"
+  action: string                // "stage_start" | "node_created" | "gate_decision" | "proposal_approved" | ...
+  details_json: string          // action-specific context
+  prev_hash: string             // SHA-256 of previous entry for tamper detection
+}
+```
+
+`(InvestigationConfig)-[:HAS_AUDIT]->(AuditEntry)-[:NEXT]->(AuditEntry)`
+
+**Hash chain:** Each entry includes `prev_hash` containing the SHA-256 hash of the previous entry's JSON representation. The first entry uses `prev_hash: "genesis"`. The engine validates the chain on startup.
+
+### 3.8 Snapshots
+
+Named checkpoints stored as `Snapshot` nodes:
+
+```typescript
+interface Snapshot {
+  id: string
+  investigation_id: string
+  name: string                  // "pre-financial-deep-dive"
+  created: Date
+  stage: string                 // which stage was active
+  graph_state_json: string      // {node_count, edge_count, tier_breakdown}
+  pipeline_state_json: string   // {completed_stages, current_stage, proposals_pending}
+}
+```
+
+- Auto-created at every gate approval
+- Manually created through the dashboard UI
+- Snapshots record state metadata; restore regenerates from audit log replay up to the snapshot point
+
+### 3.9 Forking
+
+Forking creates a new `InvestigationConfig` node linked to the parent via `FORKED_FROM`:
+
+```
+(Fork:InvestigationConfig {branch: "hypothesis-money-laundering"})
+  -[:FORKED_FROM]-> (Parent:InvestigationConfig {id: "caso-epstein"})
+```
+
+**Lazy forking (copy-on-write):** The fork initially contains no data nodes. Queries against the fork read through to the parent namespace. Only when a node is modified or created in the fork does it get its own copy (with `caso_slug` set to the fork's namespace, e.g., `caso-epstein__money-laundering`). This avoids duplicating 10K+ nodes per fork.
+
+**Merge:** The engine performs a graph diff between fork and parent. New/modified nodes are proposed as additions to the parent, presented at a merge gate for review. Approved additions carry provenance tracking back to the fork branch.
 
 ---
 
@@ -429,7 +292,7 @@ interface LLMResponse {
 }
 ```
 
-**Provider field mapping:** Each provider adapter maps vendor-specific response fields to the `LLMResponse` interface. The `llamacpp` provider must map Qwen's `reasoning_content` field to `reasoning` (Qwen 3.5 uses mandatory thinking mode — the analysis is in `reasoning_content`, not `content`). The `anthropic` provider maps `thinking` blocks similarly. This mapping is mandatory — without it, proposals from thinking-mode models will have empty reasoning in the audit trail.
+**Provider field mapping:** Each provider adapter maps vendor-specific response fields to `LLMResponse`. The `llamacpp` provider must map Qwen's `reasoning_content` field to `reasoning` (Qwen 3.5 uses mandatory thinking mode — the analysis is in `reasoning_content`, not `content`). The `anthropic` provider maps `thinking` blocks similarly. This mapping is mandatory — without it, proposals from thinking-mode models will have empty reasoning.
 
 #### Built-in Providers
 
@@ -457,377 +320,217 @@ The LLM gets investigation-scoped tools depending on the stage:
 | `analyze` | read_graph, run_algorithm, propose_hypothesis, compare_timelines |
 | `report` | read_graph, read_hypotheses, draft_section |
 
-The agent never writes directly — it produces proposals queued for gate review.
+The agent never writes directly — it produces `Proposal` nodes queued for gate review.
 
 #### `swarm` — MiroFish Multi-Agent Simulation
 
-Graph entities become autonomous agents that interact. The existing `graphToMiroFishSeed()` export is generalized:
+Graph entities become autonomous agents that interact. The existing `graphToMiroFishSeed()` export is generalized to read `agent_source` and `context_from` from the stage config rather than hardcoding `Person`, `Organization`, `Location`.
 
-```yaml
-swarm:
-  agent_source: Person           # any node type from schema.yaml
-  context_from: [Organization, Location]
-  scenario: "..."
-  endpoint: http://localhost:5000
+Swarm config (stored in PipelineStage's `config_json`):
+```json
+{
+  "llm": {
+    "mode": "swarm",
+    "model": "default",
+    "swarm": {
+      "agent_source": "Person",
+      "context_from": ["Organization", "Location", "Document"],
+      "scenario": "Analyze network patterns and hidden connections"
+    }
+  }
+}
 ```
 
-A corporate investigation could turn `Company` nodes into agents with `Officer` and `Transaction` context. The engine handles the conversion generically based on schema.yaml.
-
-**Migration note:** The existing `mirofish/client.ts` reads from `process.env.MIROFISH_API_URL` (hardcoded at import time). The engine requires a runtime-configurable endpoint per investigation. The `endpoint` parameter must be added to the exported public functions (`initializeSimulation`, `querySimulation`, `getSimulationStatus`), not only to the internal `apiRequest` helper, so callers can pass per-investigation endpoints from YAML config. Similarly, `graphToMiroFishSeed()` must be generalized to accept `agent_source` and `context_from` node types from YAML rather than hardcoding `Person`, `Organization`, `Location`.
-
-### 4.3 Proposals
-
-All LLM output is captured as proposals, never written directly:
-
-```jsonl
-{"type":"node","node_type":"Person","properties":{"name":"Jane Doe","role":"financial advisor"},"confidence":0.72,"reasoning":"Referenced in 3 documents...","proposed_by":"qwen-3.5-9b","stage":"enrich"}
-{"type":"edge","relationship_type":"FINANCED","from":"person-x","to":"org-y","properties":{"amount":"$2.3M"},"confidence":0.65,"reasoning":"Bank records show...","proposed_by":"qwen-3.5-9b","stage":"enrich"}
-{"type":"hypothesis","title":"Shell company network","evidence":["doc-1","doc-2","org-3"],"confidence":0.78,"reasoning":"...","proposed_by":"qwen-3.5-9b","stage":"analyze"}
-```
-
-Proposals are stored in `.investigation/proposals/` and presented at the next gate.
+**Migration note:** The existing `mirofish/client.ts` reads `process.env.MIROFISH_API_URL` at module load. The `endpoint` parameter must be added to the exported public functions (`initializeSimulation`, `querySimulation`, `getSimulationStatus`) so the engine can pass per-investigation endpoints from the `MiroFishConfig` node. The MiroFish endpoint (port 5000) is separate from the llama.cpp LLM server (port 8080).
 
 ---
 
-## 5. Audit Trail, Snapshots & Forking
+## 5. Execution Engine
 
-### 5.1 Audit Log
+### 5.1 Process Model
 
-Every action — human or machine — appends to `.investigation/audit.log` as JSONL:
+The engine runs **inside the Next.js application** as server-side operations:
 
-```jsonl
-{"ts":"2026-03-20T14:32:01Z","actor":"engine","action":"stage_start","stage":"ingest","source":"epstein-exposed-api"}
-{"ts":"2026-03-20T14:32:05Z","actor":"engine","action":"node_created","node_type":"Person","id":"ee-john-doe","tier":"bronze","source":"epstein-exposed-api"}
-{"ts":"2026-03-20T14:35:12Z","actor":"engine","action":"conflict_logged","type":"fuzzy_match","node_a":"ee-john-doe","node_b":"ep-w1-john-doe","distance":1}
-{"ts":"2026-03-20T14:40:00Z","actor":"engine","action":"gate_reached","stage":"ingest","proposals":142}
-{"ts":"2026-03-20T14:42:30Z","actor":"researcher:gabriel","action":"gate_decision","stage":"ingest","decision":"approve","rationale":"Conflicts reviewed, all reasonable fuzzy matches"}
-{"ts":"2026-03-20T14:43:00Z","actor":"llm:qwen-3.5-9b","action":"propose_node","node_type":"Person","name":"Jane Smith","confidence":0.72,"stage":"enrich"}
-{"ts":"2026-03-20T14:55:00Z","actor":"researcher:gabriel","action":"proposal_rejected","proposal_id":"enrich-047","reason":"Insufficient evidence"}
-```
+- **Stage execution** happens in API routes / server actions, triggered by the webapp UI
+- **Long-running stages** (ingestion, enrichment) run as background tasks with progress reported via `PipelineState` node updates
+- **Gates** are rendered as interactive webapp pages — the researcher reviews proposals inline and submits decisions
+- **State** is persisted in Neo4j (`PipelineState`, `Proposal`, `AuditEntry` nodes) — no filesystem state files
 
-Fields on every entry:
-- `ts` — ISO timestamp
-- `actor` — `engine`, `researcher:<name>`, `llm:<model>`, `connector:<source>`
-- `action` — what happened
-- Action-specific context fields
-
-The log is **append-only** — never edited, never truncated.
-
-**Hash chain for tamper detection:** Per PRD Section 6.3, each entry includes a `prev_hash` field containing the SHA-256 hash of the previous entry. The first entry uses `prev_hash: "genesis"`. This creates a tamper-evident chain — modifying any entry invalidates all subsequent hashes. The engine validates the chain on startup and warns if corruption is detected.
-
-```jsonl
-{"ts":"...","actor":"engine","action":"stage_start","prev_hash":"genesis",...}
-{"ts":"...","actor":"engine","action":"node_created","prev_hash":"a3f2b8c1...",...}
-```
-
-### 5.2 Snapshots
-
-Named checkpoints of the full investigation state:
-
-```yaml
-name: pre-financial-deep-dive
-created: 2026-03-20T15:00:00Z
-stage: analyze
-graph_state:
-  node_count: 10864
-  edge_count: 15230
-  tier_breakdown: { gold: 42, silver: 3200, bronze: 7622 }
-pipeline_state:
-  completed_stages: [ingest, verify]
-  current_stage: analyze
-  proposals_pending: 17
-neo4j_export: snapshots/pre-financial-deep-dive.cypher
-```
-
-- Auto-created at every gate approval
-- Manually created via `investigate snapshot --name "..."`
-- Restorable: reloads Neo4j subgraph from Cypher dump and resets pipeline state
-
-### 5.3 Forking
-
-```bash
-investigate fork ./caso-epstein/ --branch hypothesis-money-laundering
-```
-
-This:
-1. Creates a git branch `caso-epstein/hypothesis-money-laundering`
-2. Copies the current snapshot as the fork point
-3. Creates a namespaced copy of the graph in Neo4j (`caso-epstein__money-laundering`)
-4. Records the fork in `.investigation/branches/`
-
-```yaml
-# .investigation/branches/hypothesis-money-laundering.yaml
-forked_from: main
-fork_point: 2026-03-20-analyze-approved
-created: 2026-03-20T16:00:00Z
-neo4j_namespace: caso-epstein__money-laundering
-status: active
-```
-
-The researcher can run the pipeline on this branch with different parameters without affecting the main investigation.
-
-Branches can be **merged back**:
-```bash
-investigate merge ./caso-epstein/ --branch hypothesis-money-laundering
-```
-
-**Merge semantics:** The engine performs a graph diff between the branch state and the current main state (not an audit log replay). The diff identifies:
-- **New nodes/edges** in the branch → proposed as additions to main (queued for gate review)
-- **Modified nodes** (property changes) → presented as updates with both versions
-- **ID collisions** (same entity created independently in main and branch) → flagged as conflicts for manual resolution, using the same fuzzy dedup logic
-
-The merge itself is a gate: the researcher reviews the diff and approves/rejects each change. Approved additions carry provenance tracking back to the branch (`branch: "hypothesis-money-laundering"`).
-
----
-
-## 6. Execution Engine
-
-### 6.1 CLI
-
-```bash
-# Initialize from template
-investigate init --template public-accountability --name "caso-epstein"
-
-# Run the full pipeline (stops at each gate)
-investigate run ./caso-epstein/
-
-# Run a specific stage
-investigate run ./caso-epstein/ --stage enrich
-
-# Re-run from a checkpoint
-investigate run ./caso-epstein/ --from-snapshot pre-analysis-v2
-
-# Fork an investigation
-investigate fork ./caso-epstein/ --branch hypothesis-financial-focus
-
-# Create snapshot
-investigate snapshot ./caso-epstein/ --name "pre-deep-dive"
-
-# Restore snapshot
-investigate restore ./caso-epstein/ --snapshot pre-deep-dive
-
-# Merge branch
-investigate merge ./caso-epstein/ --branch hypothesis-financial-focus
-
-# Status
-investigate status ./caso-epstein/
-
-# Continuous loop
-investigate loop ./caso-epstein/ --interval 30m
-
-# Loop specific stages
-investigate loop ./caso-epstein/ --stages ingest,verify --interval 1h
-
-# List templates
-investigate template list
-
-# Add community template
-investigate template add https://github.com/someone/investigation-template-xyz
-```
-
-### 6.2 Execution Flow
+### 5.2 Webapp Routes
 
 ```
-investigate run ./caso-epstein/
+/investigations                          → investigation library
+/investigations/new                      → create wizard (pick template, define schema, configure sources)
+/investigations/[id]                     → dashboard (status, progress, stats, audit log)
+/investigations/[id]/schema              → schema editor (node types, rel types)
+/investigations/[id]/sources             → source connector config
+/investigations/[id]/pipeline            → pipeline stage config
+/investigations/[id]/gate/[stageId]      → gate review UI (proposals, approve/reject)
+/investigations/[id]/branches            → fork/branch management
+/investigations/[id]/snapshots           → snapshot list, restore
+/investigations/[id]/audit               → full audit log viewer
+/investigations/[id]/report              → generated report view/edit
+/caso/[slug]/grafo                       → graph explorer (existing, now investigation-aware)
+/caso/[slug]/simulacion                  → MiroFish simulation (existing, now uses investigation's model config)
+```
+
+### 5.3 Execution Flow
+
+```
+Researcher clicks "Run Pipeline" on dashboard
   │
-  ├─ Read investigation.yaml, schema.yaml, pipeline.yaml
-  ├─ Connect to Neo4j (namespace: caso-epstein)
-  ├─ Load state from .investigation/state.yaml
+  ├─ API route reads InvestigationConfig + PipelineConfig from Neo4j
+  ├─ Resolves current stage from PipelineState node
   │
   ├─ Stage: ingest
-  │   ├─ Read sources/*.yaml
-  │   ├─ Run connectors (parallel where independent)
-  │   ├─ Dedup against existing graph
+  │   ├─ Read SourceConnector nodes
+  │   ├─ Run connectors server-side (parallel where independent)
+  │   ├─ Dedup against existing graph (caso_slug filter)
   │   ├─ Write bronze nodes to Neo4j
-  │   ├─ Log to audit.log
-  │   └─ GATE: human reviews conflicts, counts, samples
+  │   ├─ Create AuditEntry nodes
+  │   ├─ Update PipelineState → status: "gate_pending"
+  │   └─ Redirect to /investigations/[id]/gate/ingest
+  │
+  ├─ Gate: ingest review
+  │   ├─ UI shows: conflicts, node/edge counts, random sample
+  │   ├─ Researcher approves/rejects
+  │   ├─ AuditEntry created with decision + rationale
+  │   ├─ Snapshot auto-created
+  │   ├─ PipelineState → next stage
+  │   └─ Redirect to dashboard or next stage
   │
   ├─ Stage: verify
-  │   ├─ Dispatch parallel agents (per pipeline.yaml config)
-  │   ├─ Each agent: query graph → web search → propose promotions
-  │   ├─ Collect proposals in .investigation/proposals/
-  │   └─ GATE: human reviews proposed promotions and merges
+  │   ├─ Dispatch parallel agents (server-side, per stage config)
+  │   ├─ Each agent: query graph → web search → create Proposal nodes
+  │   ├─ Update PipelineState → status: "gate_pending"
+  │   └─ Redirect to /investigations/[id]/gate/verify
   │
-  ├─ Stage: enrich
-  │   ├─ Fetch document content from configured sources
-  │   ├─ LLM extracts entities, key findings
-  │   ├─ Reverse lookup for additional connections
-  │   └─ GATE: human reviews enrichment results
+  ├─ ... (enrich, analyze, report — same pattern)
   │
-  ├─ Stage: analyze
-  │   ├─ Run graph algorithms (centrality, community, anomaly)
-  │   ├─ Dispatch LLM agents (tool-agent or swarm mode)
-  │   ├─ Collect hypotheses
-  │   └─ GATE: human reviews hypotheses
-  │
-  ├─ Stage: report
-  │   ├─ LLM drafts report sections
-  │   ├─ Include evidence chains from graph
-  │   └─ GATE: human reviews, edits, approves
-  │
-  └─ Commit checkpoint + snapshot
+  └─ Pipeline complete → PipelineState status: "completed"
 ```
 
-### 6.3 Parallel Agent Dispatch
+### 5.4 Parallel Agent Dispatch
 
-Stages with `parallel: true` dispatch multiple agents concurrently. Each agent:
+Stages with parallel agents dispatch multiple server-side tasks concurrently. Each agent:
 - Has a scoped query against the graph (node type, filter, limit)
 - Performs its action (web_verify, dedup, sanitize, analyze)
-- Produces proposals
-- Reports results
+- Creates `Proposal` nodes
+- Updates progress on the `PipelineState` node
 
-This maps directly to the existing investigation-loop skill's parallel agent pattern (Agents A–J), but driven by YAML configuration instead of hardcoded logic.
-
-### 6.4 Cycle Mode
-
-```bash
-investigate loop ./caso-epstein/ --interval 30m
+Agent scope queries use structured filters (not string expressions):
+```json
+{
+  "scope": {
+    "node_type": "Person",
+    "filter": {"property": "confidence_tier", "op": "eq", "value": "bronze"},
+    "order_by": {"computed": "connection_count"},
+    "limit": 50
+  }
+}
 ```
 
-Each cycle picks up where the last left off — new data from sources, new nodes to verify, updated analysis.
+Computed `order_by` values (like `connection_count`) generate Cypher aggregation subqueries: `ORDER BY COUNT { (n)--(m) WHERE m.caso_slug = $casoSlug } DESC`.
 
-**Gate behavior in loop mode:**
-- When a gate is reached, the loop **blocks** and notifies the researcher (terminal notification for CLI, push notification for webapp).
-- The loop does NOT continue past a pending gate — it waits for the researcher's decision before proceeding to the next stage.
-- If a gate has been pending for longer than the loop interval, subsequent loop ticks are no-ops (no re-notification, no skipping). The loop resumes from the pending gate once the researcher acts.
-- `--stages ingest,verify` restricts which stages run but does NOT bypass gates. If the `ingest` stage has a gate, the loop still stops there.
-- To run stages without gates (fully automated), configure `gate: null` on those stages in `pipeline.yaml`.
+### 5.5 Cycle Mode
+
+For continuous monitoring (e.g., wave 2 API data trickling in), the webapp supports scheduled re-runs:
+
+- Researcher configures a cycle interval on the dashboard (e.g., every 30 minutes)
+- A server-side cron/interval triggers stage execution
+- When a gate is reached, the cycle **blocks** — no further ticks until the researcher acts
+- Subsequent ticks while a gate is pending are no-ops
+- Stages configured with `gate: null` run fully automated
 
 ---
 
-## 7. Template System
+## 6. Template System
 
-### 7.1 Template Structure
+### 6.1 Templates as Neo4j Seed Data
 
-A template is an investigation directory without data:
+Templates are `InvestigationTemplate` nodes with pre-configured schema, sources, and pipeline stages:
 
 ```
-templates/
-  public-accountability/
-    investigation.yaml
-    schema.yaml          # Person, Organization, Location, Document, Event, LegalCase, Flight
-    sources/
-      _court-records.yaml
-      _corporate-registry.yaml
-      _flight-records.yaml
-    pipeline.yaml
-    README.md
-
-  corporate-osint/
-    schema.yaml          # Company, Officer, Filing, Transaction, Beneficial_Owner, Jurisdiction
-    sources/
-      _sec-edgar.yaml
-      _opencorporates.yaml
-    pipeline.yaml
-
-  land-ownership/
-    schema.yaml          # Parcel, Owner, Transfer, Lien, Developer, Permit
-    sources/
-      _property-records.yaml
-    pipeline.yaml
-
-  blank/
-    investigation.yaml
-    schema.yaml          # empty, just provenance fields
-    pipeline.yaml        # basic ingest → review → report
+(InvestigationTemplate {id, name, description, tags})
+  -[:TEMPLATE_SCHEMA]-> (SchemaDefinition)
+    -[:DEFINES_NODE_TYPE]-> (NodeTypeDefinition) ...
+  -[:TEMPLATE_SOURCE]-> (SourceConnector) ...
+  -[:TEMPLATE_PIPELINE]-> (PipelineConfig)
+    -[:HAS_STAGE]-> (PipelineStage) ...
 ```
 
-### 7.2 Template Inheritance
+#### Built-in Templates
 
-An investigation can extend a template and override parts:
+| Template | Node Types | Use Case |
+|----------|-----------|----------|
+| `public-accountability` | Person, Organization, Location, Document, Event, LegalCase, Flight | Political investigations, public figure networks |
+| `corporate-osint` | Company, Officer, Filing, Transaction, Beneficial_Owner, Jurisdiction | Corporate fraud, shell company networks |
+| `land-ownership` | Parcel, Owner, Transfer, Lien, Developer, Permit | Property investigation, land grabs |
+| `blank` | (none — researcher defines all) | Fully custom investigations |
 
-```yaml
-# investigation.yaml
-template: public-accountability
-overrides:
-  schema: ./schema.yaml
-  pipeline: ./pipeline.yaml
-  remove_sources: [_flight-records]   # matches by filename stem (without .yaml)
+### 6.2 Creating from Template
+
+"Create Investigation" wizard flow:
+1. Pick template (or blank)
+2. Name, describe, tag the investigation
+3. Schema editor — template types are pre-loaded, researcher adds/removes/modifies
+4. Source connector setup — template sources pre-loaded, researcher configures endpoints/credentials, adds custom sources
+5. Pipeline config — template stages pre-loaded, researcher adjusts gates, assigns LLM models
+6. Create → engine clones template nodes into new `InvestigationConfig` subgraph
+
+### 6.3 Community Templates
+
+Templates can be exported as JSON bundles and imported:
+
+```
+/investigations/templates                → template library
+/investigations/templates/import         → upload JSON bundle
+/investigations/templates/[id]/export    → download as JSON
 ```
 
-**Inheritance rules per file type:**
+Future: a community template registry where researchers publish and discover templates.
 
-| File | Mode | Behavior |
-|------|------|----------|
-| `schema.yaml` | **Additive (deep merge)** | Investigation schema is merged on top of template schema. New node/relationship types are added. If the investigation redefines a type that exists in the template, properties are merged (investigation properties override template properties with the same name, new properties are added). |
-| `pipeline.yaml` | **Replacement** | If provided, the investigation pipeline replaces the template pipeline entirely. There is no stage-level merge — if you need most of the template pipeline, copy it and modify. |
-| `sources/*.yaml` | **Additive** | Template sources are inherited. Investigation adds its own sources. `remove_sources` removes template sources by filename stem (e.g., `_flight-records` matches `_flight-records.yaml`). |
-| `investigation.yaml` | **Override** | Investigation values override template values for all fields. |
-
-### 7.3 Community Templates
-
-Templates are directories — shareable as git repos:
-
-```bash
-investigate template add https://github.com/someone/investigation-template-financial-fraud
-investigate template list
-investigate init --template financial-fraud --name "caso-xyz"
-```
-
-### 7.4 Caso Epstein as Reference Instance
+### 6.4 Caso Epstein as Reference Instance
 
 The current Epstein investigation becomes the reference implementation — a concrete instance of `public-accountability` with:
 - 7 node types, 11+ relationship types
-- 4 wave sources (rhowardstone, epstein-exposed, courtlistener, dleerdefi logbooks)
+- 4 source connectors (rhowardstone, epstein-exposed, courtlistener, dleerdefi)
 - Full pipeline with MiroFish swarm analysis
 - 10,864+ nodes as existing data
 
 ---
 
-## 8. UI Integration
+## 7. Graph Algorithms
 
-### 8.1 Power User Mode (CLI)
+Graph algorithms run **application-side in TypeScript** (not in Neo4j). At 10K nodes this is feasible and avoids dependency on Neo4j GDS (Enterprise-only).
 
-Full control: `investigate init`, `investigate run`, `investigate fork`, etc. YAML editing, custom connectors, direct Cypher access.
+| Algorithm | Purpose | Implementation |
+|-----------|---------|----------------|
+| **Degree centrality** | Identify most-connected nodes | Count relationships per node |
+| **Betweenness centrality** | Find bridge nodes | BFS-based approximation (extend existing `algorithms.ts`) |
+| **Community detection** | Find clusters | Label propagation (iterative, O(n) per pass) |
+| **Anomaly detection** | Unusual patterns | Statistical outliers on degree, temporal gaps, isolated clusters |
+| **Temporal patterns** | Timeline correlations | Event co-occurrence within time windows |
 
-### 8.2 Guided UI Mode
+Results are stored as `Proposal` nodes of type `hypothesis`, presented at the analyze gate for researcher review.
 
-The webapp gets a new top-level section: **Investigations**.
+---
 
-#### Create Investigation
+## 8. Audit Trail & Reproducibility
 
-Wizard flow: pick template (or blank) → name → define schema (drag-and-drop entity/relationship builder or edit YAML) → configure sources (browse connector library, add custom) → configure pipeline (reorder stages, set gate types, assign LLM models).
+### 8.1 Audit Log
 
-Under the hood, generates the investigation directory and commits it.
+Every action creates an `AuditEntry` node (Section 3.7). The audit log is:
+- **Append-only** — entries are never modified or deleted
+- **Hash-chained** — tamper-evident via `prev_hash` SHA-256 chain
+- **Queryable** — filterable by actor, action, stage, time range via the webapp UI
+- **Aligned with PRD** — same structured JSON format as PRD Section 6.3
 
-#### Run Investigation Dashboard
+### 8.2 Reproducibility
 
-Per-investigation dashboard showing:
-- Current stage and progress
-- Live agent activity
-- Pending gate — review UI inline
-- Audit log stream (filterable by actor, action, stage)
-- Graph stats over time
-
-#### Gate Review UI
-
-When a gate is reached, the researcher gets a notification. Gate view shows:
-- **Ingest gates:** conflict list, node/edge counts, random sample with inline approve/reject
-- **Verify gates:** proposed promotions with evidence links, bulk approve/reject
-- **Analyze gates:** hypothesis cards with supporting evidence, accept/dismiss/investigate-further
-- **Report gates:** draft report with inline editing
-
-Researcher's decision + rationale is recorded to audit log.
-
-#### Fork & Branch UI
-
-- Visual branch tree (like git graph)
-- Fork from any snapshot
-- Side-by-side comparison between branches
-- Merge with diff view
-
-#### Investigation Library
-
-- List all investigations with status, last activity, node counts
-- Filter by template, tag, status
-- Clone an investigation as starting point
-
-### 8.3 Integration with Existing Views
-
-The graph explorer (`/caso/[slug]/grafo`) and simulation panel (`/caso/[slug]/simulacion`) become views within an investigation:
-- Graph explorer shows which nodes came from which pipeline stage
-- Simulation panel uses the investigation's configured LLM models
-- Path finder and analysis tools feed back into the analyze stage
+- **Audit trail** — complete forensic record of every action (human and machine), with timestamps, actors, and rationale
+- **Re-runnable** — snapshots record pipeline state; restoring a snapshot and re-running produces equivalent results
+- **Forkable** — lazy copy-on-write forking lets researchers explore hypothesis branches without data duplication
 
 ---
 
@@ -841,7 +544,7 @@ The graph explorer (`/caso/[slug]/grafo`) and simulation panel (`/caso/[slug]/si
 | Verified promotions | Silver-tier upgrades | Per PRD tiered trust (Section 5.1) |
 | LLM hypotheses | `Claim` nodes, `status: pending` | Per PRD claim pattern (Section 4.2) |
 | Investigation reports | `Investigation` documents | Per PRD Section 5.3, with `REFERENCES` edges |
-| Audit log entries | Platform audit log | Aligned format with PRD Section 6.3 |
+| Audit entries | Platform audit log | Aligned format with PRD Section 6.3 |
 
 ### 9.2 Provenance Extension
 
@@ -865,19 +568,20 @@ Investigations can be coalition-owned. Multiple researchers can participate at g
 
 ## 10. Existing Code Migration
 
-The current Epstein-specific code maps to engine components:
-
 | Current Code | Engine Component |
 |---|---|
-| `scripts/ingest-wave-*.ts` | Built-in connector implementations driven by `sources/*.yaml` |
+| `scripts/ingest-wave-*.ts` | Built-in connector implementations, config stored in `SourceConnector` nodes |
 | `src/lib/ingestion/dedup.ts` | Engine dedup module (reused directly) |
 | `src/lib/ingestion/quality.ts` | Engine conflict resolution (reused directly) |
 | `scripts/review-wave.ts` | Gate review UI data provider |
 | `scripts/promote-nodes.ts` | Gate approval action handler |
-| `src/lib/mirofish/export.ts` | Generalized `graphToMiroFishSeed()` using schema.yaml |
-| `src/lib/mirofish/client.ts` | MiroFish provider in LLM abstraction |
-| `src/lib/caso-epstein/types.ts` | Generated from `schema.yaml` |
+| `src/lib/mirofish/export.ts` | Generalized `graphToMiroFishSeed()` reading from `NodeTypeDefinition` nodes |
+| `src/lib/mirofish/client.ts` | Refactored with per-call `endpoint` parameter |
+| `src/lib/caso-epstein/types.ts` | Generated from `NodeTypeDefinition` nodes or kept as-is during transition |
 | `src/lib/caso-epstein/queries.ts` | Engine query builder using schema-aware Cypher generation |
-| Investigation-loop skill | Engine execution loop (`investigate run/loop`) |
+| `src/lib/graph/algorithms.ts` | Extended with centrality, community detection, anomaly detection |
+| Investigation-loop skill | Engine pipeline execution via webapp routes |
 
-The migration path is incremental: existing code continues working while the engine is built alongside it. Once the engine can replicate all existing functionality, the hardcoded scripts become thin wrappers or are retired.
+**Migration path:** Incremental. Existing Epstein investigation code continues working unchanged. The engine is built alongside it. Once the engine can replicate all existing functionality, the hardcoded scripts become thin wrappers or are retired.
+
+**Property naming:** The engine uses `caso_slug` as the namespace property (matching existing code), not `investigation_id`. The YAML-era naming is retired.
