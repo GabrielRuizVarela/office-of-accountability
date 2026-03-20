@@ -1,25 +1,26 @@
 /**
- * Caso Epstein landing page — investigation overview with stats,
- * entry points, actor grid, and latest documents.
+ * Caso Epstein — Inicio (landing page).
+ *
+ * Simple, clean overview with static stats, two primary CTAs,
+ * and four entry-point cards. No Neo4j queries — all static data.
  */
 
+import type { Metadata } from 'next'
 import Link from 'next/link'
 
-import { getActors, getDocuments, CASO_EPSTEIN_SLUG } from '@/lib/caso-epstein'
-import { ActorCard } from '@/components/investigation/ActorCard'
-import { DocumentCard } from '@/components/investigation/DocumentCard'
 import { ShareButton } from '@/components/ui/ShareButton'
+
+export const metadata: Metadata = {
+  title: 'Caso Epstein — Red de trafico y poder',
+  description:
+    'Investigacion de datos abiertos sobre la red de trafico de Jeffrey Epstein. 7,287 entidades, 21,944 relaciones, 355 actores, 1,044 documentos.',
+}
 
 const SLUG = 'caso-epstein'
 
-export default async function CasoEpsteinPage() {
-  const [actors, documents] = await Promise.all([
-    getActors(CASO_EPSTEIN_SLUG),
-    getDocuments(CASO_EPSTEIN_SLUG),
-  ])
-
+export default function CasoEpsteinPage() {
   return (
-    <div className="space-y-10">
+    <div className="mx-auto max-w-5xl space-y-10 px-4 py-12">
       {/* Hero */}
       <section className="text-center">
         <p className="text-xs font-medium uppercase tracking-widest text-red-400">
@@ -29,9 +30,9 @@ export default async function CasoEpsteinPage() {
           Caso Epstein: Red de trafico y poder
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
-          7,287 entidades y 21,944 relaciones documentadas. Documentos judiciales, registros de
-          vuelo, 72 verificaciones de hechos. Una red que conecta poder politico, financiero y
-          judicial a escala global.
+          Jeffrey Epstein construyo una red global de trafico sexual protegida por poder
+          politico, financiero y judicial. Esta investigacion documenta la red con fuentes
+          judiciales, registros de vuelo y verificaciones de hechos.
         </p>
         <div className="mt-4">
           <ShareButton
@@ -67,7 +68,8 @@ export default async function CasoEpsteinPage() {
         >
           <h3 className="text-lg font-bold text-red-300">Leer la investigacion</h3>
           <p className="mt-1 text-sm text-zinc-400">
-            72 hechos verificados, documentos judiciales y registros de vuelo
+            La historia completa en 12 capitulos — desde la maquinaria hasta lo que queda por
+            investigar
           </p>
         </Link>
         <Link
@@ -101,56 +103,9 @@ export default async function CasoEpsteinPage() {
         <EntryPoint
           href={`/caso/${SLUG}/investigacion`}
           title="Investigacion"
-          description="Hechos verificados, fuentes y analisis de la red."
+          description="Datos estructurados: hechos verificados, actores, flujos de dinero y documentos."
         />
       </section>
-
-      {/* Actor grid */}
-      {actors.length > 0 && (
-        <section>
-          <h2 className="text-xl font-bold text-zinc-50">Actores Clave</h2>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {actors.slice(0, 12).map((actor) => (
-              <ActorCard
-                key={actor.id as string}
-                slug={actor.slug as string}
-                investigationSlug={SLUG}
-                name={actor.name as string}
-                role={actor.role as string | undefined}
-                nationality={actor.nationality as string | undefined}
-              />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* Latest documents */}
-      {documents.length > 0 && (
-        <section>
-          <div className="flex items-center justify-between">
-            <h2 className="text-xl font-bold text-zinc-50">Documentos y Evidencia</h2>
-            <Link
-              href={`/caso/${SLUG}/evidencia`}
-              className="text-sm text-zinc-400 hover:text-zinc-200"
-            >
-              Ver todos &rarr;
-            </Link>
-          </div>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {documents.slice(0, 6).map((doc) => (
-              <DocumentCard
-                key={doc.id as string}
-                slug={doc.slug as string}
-                investigationSlug={SLUG}
-                title={doc.title as string}
-                docType={doc.doc_type as string}
-                summary={doc.summary as string | undefined}
-                datePublished={doc.date_published as string | undefined}
-              />
-            ))}
-          </div>
-        </section>
-      )}
     </div>
   )
 }
