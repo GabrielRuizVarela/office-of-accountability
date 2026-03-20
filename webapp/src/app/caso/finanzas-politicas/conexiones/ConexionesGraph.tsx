@@ -197,7 +197,12 @@ export function ConexionesGraph() {
       const x = node.x ?? 0
       const y = node.y ?? 0
       const isSelected = selectedNode?.id === gNode.id
-      const baseRadius = Math.max(3, Math.min(gNode.val * 1.5, 12))
+      const isKeyNode = gNode.type === 'OffshoreEntity' || gNode.type === 'Company' ||
+        gNode.type === 'Organization' || gNode.type === 'PoliticalParty' ||
+        gNode.type === 'Judge' || (gNode.datasets ?? 0) >= 4
+      const baseRadius = isKeyNode
+        ? Math.max(6, Math.min(gNode.val * 2, 16))
+        : Math.max(3, Math.min(gNode.val * 1.5, 10))
       const radius = isSelected ? baseRadius + 2 : baseRadius
 
       // Node circle
@@ -220,15 +225,25 @@ export function ConexionesGraph() {
         ctx.stroke()
       }
 
-      // Label (show when zoomed in or for selected/politician nodes at medium zoom)
-      const showLabel = globalScale > 2 || isSelected || (gNode.type === 'Politician' && globalScale > 1)
+      // Label — always show for key nodes, show for politicians at medium zoom
+      const showLabel = isSelected || isKeyNode || globalScale > 1.5 ||
+        (gNode.type === 'Politician' && globalScale > 0.8)
       if (showLabel) {
-        const fontSize = Math.max(12 / globalScale, 2)
-        ctx.font = `${isSelected ? 'bold ' : ''}${fontSize}px sans-serif`
+        const fontSize = isKeyNode
+          ? Math.max(14 / globalScale, 3)
+          : Math.max(11 / globalScale, 2)
+        ctx.font = `${isSelected || isKeyNode ? 'bold ' : ''}${fontSize}px sans-serif`
         ctx.textAlign = 'center'
         ctx.textBaseline = 'top'
-        ctx.fillStyle = isSelected ? '#ffffff' : '#e2e8f0'
-        ctx.fillText(gNode.name, x, y + radius + 2)
+
+        // Text background for readability
+        const label = gNode.name.length > 25 ? gNode.name.slice(0, 24) + '…' : gNode.name
+        const textWidth = ctx.measureText(label).width
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.6)'
+        ctx.fillRect(x - textWidth / 2 - 1, y + radius + 1, textWidth + 2, fontSize + 2)
+
+        ctx.fillStyle = isSelected ? '#ffffff' : isKeyNode ? '#f1f5f9' : '#cbd5e1'
+        ctx.fillText(label, x, y + radius + 2)
       }
     },
     [selectedNode],
@@ -250,8 +265,22 @@ export function ConexionesGraph() {
     [],
   )
 
-  // Link color
-  const linkColor = useCallback(() => '#334155', [])
+  // Link color by relationship type
+  const LINK_COLORS: Record<string, string> = {
+    'MAYBE_SAME_AS': '#475569',
+    'HAS_OFFSHORE': '#ef4444',
+    'DONATED_TO': '#22c55e',
+    'APPOINTED': '#f97316',
+    'ON_BOARD': '#10b981',
+    'MEMBER_OF': '#10b981',
+    'CROSS_REFERENCED': '#f59e0b',
+    'SHARES_BOARD': '#8b5cf6',
+    'SAME_COALITION': '#f59e0b',
+    'SAME_PROVINCE': '#6366f1',
+    'BOTH_OFFSHORE': '#ef4444',
+    'SHARED_ORG': '#10b981',
+  }
+  const linkColor = useCallback((link: GraphLinkData) => LINK_COLORS[link.type] ?? '#334155', [])
 
   // Link label
   const linkLabel = useCallback((link: GraphLinkData) => link.type.replace(/_/g, ' '), [])
@@ -357,18 +386,24 @@ export function ConexionesGraph() {
               nodePointerAreaPaint={paintPointerArea}
               linkColor={linkColor as (link: object) => string}
               linkLabel={linkLabel as (link: object) => string}
-              linkWidth={0.5}
-              linkDirectionalArrowLength={0}
-              linkCurvature={0.1}
+              linkWidth={(link: object) => {
+                const l = link as GraphLinkData
+                return l.type === 'HAS_OFFSHORE' || l.type === 'DONATED_TO' ? 1.5 : 0.5
+              }}
+              linkDirectionalArrowLength={3}
+              linkDirectionalArrowRelPos={0.9}
+              linkCurvature={0.15}
               onNodeClick={handleNodeClick}
               enableZoomInteraction={true}
               enablePanInteraction={true}
               enableNodeDrag={true}
-              cooldownTicks={100}
-              d3AlphaDecay={0.02}
-              d3VelocityDecay={0.3}
-              minZoom={0.3}
-              maxZoom={20}
+              cooldownTicks={150}
+              d3AlphaDecay={0.015}
+              d3VelocityDecay={0.25}
+              d3AlphaMin={0.001}
+              minZoom={0.2}
+              maxZoom={25}
+              onEngineStop={() => graphRef.current?.zoomToFit(400, 60)}
             />
           )}
 
