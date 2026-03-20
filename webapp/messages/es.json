@@ -3,5 +3,51 @@
     "explore": "Explorar",
     "investigations": "Investigaciones",
     "signIn": "Iniciar sesion"
+  },
+  "footer": {
+    "tagline": "Oficina de Rendicion de Cuentas — Datos abiertos",
+    "explore": "Explorar",
+    "investigations": "Investigaciones"
+  },
+  "hero": {
+    "badge": "Plataforma de conocimiento civico",
+    "title": "Oficina de Rendicion de Cuentas",
+    "subtitle": "Investigaciones abiertas con datos verificables. Grafos de conocimiento, cronologias, evidencia documental y analisis de red.",
+    "ctaExplore": "Explorar el grafo",
+    "ctaInvestigations": "Ver investigaciones"
+  },
+  "investigations": {
+    "title": "Investigaciones",
+    "explore": "Explorar"
+  },
+  "features": {
+    "title": "Que podes hacer",
+    "graph": {
+      "title": "Grafo interactivo",
+      "description": "Explora conexiones entre politicos, votaciones, legislacion y donantes."
+    },
+    "timeline": {
+      "title": "Cronologias",
+      "description": "Visualiza la secuencia de eventos en cada investigacion."
+    },
+    "evidence": {
+      "title": "Evidencia documental",
+      "description": "Documentos judiciales, registros oficiales y fuentes verificadas."
+    },
+    "community": {
+      "title": "Investigaciones comunitarias",
+      "description": "Crea y publica investigaciones respaldadas por datos del grafo."
+    },
+    "network": {
+      "title": "Analisis de red",
+      "description": "Descubri patrones: quien conoce a quien, quien financia a quien."
+    },
+    "money": {
+      "title": "Flujos de dinero",
+      "description": "Seguimiento de fondos: donantes, campanas y conexiones financieras."
+    }
+  },
+  "roadmap": {
+    "title": "Hoja de ruta"
   }
 }

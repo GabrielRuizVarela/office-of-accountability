@@ -3,5 +3,51 @@
     "explore": "Explore",
     "investigations": "Investigations",
     "signIn": "Sign in"
+  },
+  "footer": {
+    "tagline": "Office of Accountability — Open data",
+    "explore": "Explore",
+    "investigations": "Investigations"
+  },
+  "hero": {
+    "badge": "Civic knowledge platform",
+    "title": "Office of Accountability",
+    "subtitle": "Open investigations with verifiable data. Knowledge graphs, timelines, documentary evidence, and network analysis.",
+    "ctaExplore": "Explore the graph",
+    "ctaInvestigations": "View investigations"
+  },
+  "investigations": {
+    "title": "Investigations",
+    "explore": "Explore"
+  },
+  "features": {
+    "title": "What you can do",
+    "graph": {
+      "title": "Interactive graph",
+      "description": "Explore connections between politicians, votes, legislation, and donors."
+    },
+    "timeline": {
+      "title": "Timelines",
+      "description": "Visualize the sequence of events in each investigation."
+    },
+    "evidence": {
+      "title": "Documentary evidence",
+      "description": "Court documents, official records, and verified sources."
+    },
+    "community": {
+      "title": "Community investigations",
+      "description": "Create and publish investigations backed by graph data."
+    },
+    "network": {
+      "title": "Network analysis",
+      "description": "Discover patterns: who knows whom, who funds whom."
+    },
+    "money": {
+      "title": "Money flows",
+      "description": "Track funds: donors, campaigns, and financial connections."
+    }
+  },
+  "roadmap": {
+    "title": "Roadmap"
   }
 }
