@@ -9,56 +9,77 @@ interface NavTab {
 }
 
 interface InvestigationNavProps {
-  readonly casoSlug: string
+  readonly slug: string
 }
 
-export function InvestigationNav({ casoSlug }: InvestigationNavProps) {
-  const pathname = usePathname()
-  const basePath = `/caso/${casoSlug}`
+// ---------------------------------------------------------------------------
+// Per-case tab configuration
+// ---------------------------------------------------------------------------
 
-  const tabs: NavTab[] = [
-    { href: basePath, label: 'Overview' },
-    { href: `${basePath}/resumen`, label: 'Summary' },
-    { href: `${basePath}/investigacion`, label: 'Investigation' },
-    { href: `${basePath}/grafo`, label: 'Network Graph' },
-    { href: `${basePath}/cronologia`, label: 'Timeline' },
-    { href: `${basePath}/vuelos`, label: 'Flights' },
-    { href: `${basePath}/evidencia`, label: 'Evidence' },
-    { href: `${basePath}/proximidad`, label: 'Proximity' },
-    { href: `${basePath}/simulacion`, label: 'Simulation' },
-  ]
+const CASE_TABS: Readonly<Record<string, readonly NavTab[]>> = {
+  'caso-epstein': [
+    { href: '', label: 'Inicio' },
+    { href: '/resumen', label: 'Resumen' },
+    { href: '/investigacion', label: 'Investigacion' },
+    { href: '/grafo', label: 'Conexiones' },
+    { href: '/cronologia', label: 'Cronologia' },
+    { href: '/vuelos', label: 'Vuelos' },
+    { href: '/evidencia', label: 'Evidencia' },
+    { href: '/proximidad', label: 'Proximidad' },
+    { href: '/simulacion', label: 'Simulacion' },
+  ],
+  'caso-libra': [
+    { href: '', label: 'Inicio' },
+    { href: '/resumen', label: 'Que paso' },
+    { href: '/investigacion', label: 'Pruebas' },
+    { href: '/cronologia', label: 'Cronologia' },
+    { href: '/dinero', label: 'El dinero' },
+    { href: '/evidencia', label: 'Evidencia' },
+    { href: '/grafo', label: 'Conexiones' },
+    { href: '/simular', label: 'Predicciones' },
+  ],
+}
+
+const DEFAULT_TABS: readonly NavTab[] = [
+  { href: '', label: 'Inicio' },
+  { href: '/resumen', label: 'Resumen' },
+  { href: '/investigacion', label: 'Investigacion' },
+  { href: '/grafo', label: 'Conexiones' },
+  { href: '/cronologia', label: 'Cronologia' },
+  { href: '/evidencia', label: 'Evidencia' },
+]
+
+export function InvestigationNav({ slug }: InvestigationNavProps) {
+  const pathname = usePathname()
+  const base = `/caso/${slug}`
+  const tabDefs = CASE_TABS[slug] ?? DEFAULT_TABS
+  const tabs = tabDefs.map((t) => ({ href: `${base}${t.href}`, label: t.label }))
 
   return (
-    <nav className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-sm">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="flex gap-1 overflow-x-auto py-1 scrollbar-hide">
+    <nav className="scrollbar-none flex gap-1 overflow-x-auto border-b border-zinc-800 px-4">
+      <Link
+        href="/"
+        className="whitespace-nowrap border-b-2 border-transparent px-3 py-2.5 text-sm font-bold text-zinc-50 transition-colors hover:text-purple-300"
+      >
+        ORC
+      </Link>
+      <span className="self-center text-zinc-700">|</span>
+      {tabs.map((tab) => {
+        const isActive = pathname === tab.href
+        return (
           <Link
-            href="/"
-            className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-bold text-zinc-50 transition-colors hover:bg-zinc-800/50"
+            key={tab.href}
+            href={tab.href}
+            className={`whitespace-nowrap border-b-2 px-3 py-2.5 text-sm font-medium transition-colors ${
+              isActive
+                ? 'border-purple-500 text-purple-400'
+                : 'border-transparent text-zinc-400 hover:border-zinc-600 hover:text-zinc-200'
+            }`}
           >
-            ORC
+            {tab.label}
           </Link>
-          <span className="self-center text-zinc-700">|</span>
-          {tabs.map((tab) => {
-            const isActive = pathname === tab.href ||
-              (tab.href !== basePath && pathname.startsWith(tab.href))
-
-            return (
-              <Link
-                key={tab.href}
-                href={tab.href}
-                className={`whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive
-                    ? 'bg-zinc-800 text-zinc-50'
-                    : 'text-zinc-400 hover:bg-zinc-800/50 hover:text-zinc-200'
-                }`}
-              >
-                {tab.label}
-              </Link>
-            )
-          })}
-        </div>
-      </div>
+        )
+      })}
     </nav>
   )
 }
