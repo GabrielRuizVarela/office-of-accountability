@@ -9,6 +9,7 @@ export interface GraphKeyboardNavOptions {
   readonly onExpand: (nodeId: string) => void
   readonly onDeselect: () => void
   readonly onCenterOnNode: (nodeId: string) => void
+  readonly onUndo?: () => void
 }
 
 export interface GraphKeyboardNavResult {
@@ -23,8 +24,11 @@ export function useGraphKeyboardNav({
   onExpand,
   onDeselect,
   onCenterOnNode,
+  onUndo,
 }: GraphKeyboardNavOptions): GraphKeyboardNavResult {
   const [focusedIndex, setFocusedIndex] = useState<number>(-1)
+  const focusedIndexRef = useRef(focusedIndex)
+  focusedIndexRef.current = focusedIndex
   const visibleNodesRef = useRef<readonly GraphNode[]>([])
 
   // Compute visible nodes (filtered by label)
@@ -55,6 +59,13 @@ export function useGraphKeyboardNav({
         return
       }
 
+      // Ctrl+Z / Cmd+Z — undo
+      if (event.key === 'z' && (event.ctrlKey || event.metaKey)) {
+        event.preventDefault()
+        onUndo?.()
+        return
+      }
+
       const currentVisible = visibleNodesRef.current
       if (currentVisible.length === 0) return
 
@@ -79,15 +90,9 @@ export function useGraphKeyboardNav({
         }
         case 'Enter': {
           event.preventDefault()
-          setFocusedIndex((prev) => {
-            const node = prev >= 0 && prev < currentVisible.length
-              ? currentVisible[prev]
-              : null
-            if (node) {
-              onExpand(node.id)
-            }
-            return prev
-          })
+          const idx = focusedIndexRef.current
+          const node = idx >= 0 && idx < currentVisible.length ? currentVisible[idx] : null
+          if (node) onExpand(node.id)
           break
         }
         case 'Escape': {
@@ -98,7 +103,7 @@ export function useGraphKeyboardNav({
         }
       }
     },
-    [onExpand, onDeselect, onCenterOnNode],
+    [onExpand, onDeselect, onCenterOnNode, onUndo],
   )
 
   // Attach global keydown listener

@@ -1,0 +1,3 @@
+[     645ms] [WARNING] <link rel=preload> must have a valid `as` value @ http://localhost:5176/node_modules/.vite/deps/react-dom_client.js?v=99002f7a:14090
+[ 7876173ms] [WARNING] <link rel=preload> must have a valid `as` value @ http://localhost:5176/node_modules/.vite/deps/react-dom_client.js?v=99002f7a:14090
+[ 7904688ms] [ERROR] WebSocket connection to 'ws://localhost:5176/?token=5rBpBULtDHDS' failed:  @ http://localhost:5176/@vite/client:840

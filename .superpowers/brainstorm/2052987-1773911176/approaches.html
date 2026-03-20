@@ -1,0 +1,84 @@
+<h2>Graph Interactivity — Two Approaches</h2>
+<p class="subtitle">Both deliver the same features, different implementation strategy</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Incremental Upgrade</h3>
+      <p>Keep <strong>react-force-graph-2d</strong>. Add features on top of the existing canvas renderer.</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>No library migration — lower risk</li>
+            <li>Existing code (search, filters, detail panel) stays intact</li>
+            <li>Canvas rendering is fast for large graphs</li>
+            <li>Custom node painting already works — extend it for icons & smart density</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>Path highlighting and pinning require manual state management</li>
+            <li>No built-in layout algorithms beyond force-directed</li>
+            <li>Hit-testing for hover/click is manual (canvas, not DOM)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Migrate to Cytoscape.js</h3>
+      <p>Replace react-force-graph-2d with <strong>Cytoscape.js</strong> — purpose-built for graph analysis.</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>Built-in shortest path, BFS, clustering algorithms</li>
+            <li>Native node pinning, compound nodes, layout switching</li>
+            <li>Rich selector engine (CSS-like) for styling by data</li>
+            <li>Export/import graph state trivially (JSON serialization)</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>Full rewrite of graph components (~5 files)</li>
+            <li>DOM-based rendering can be slower at 500+ nodes (mitigated by canvas extension)</li>
+            <li>Different API — search, filters, detail panel need adaptation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 2rem; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+  <h3>🔍 Feature Comparison</h3>
+  <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.95rem;">
+    <thead>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+        <th style="text-align: left; padding: 8px;">Feature</th>
+        <th style="text-align: center; padding: 8px;">A: Incremental</th>
+        <th style="text-align: center; padding: 8px;">B: Cytoscape</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding: 8px;">Expand-in-place (no reset)</td><td style="text-align:center">Custom merge logic</td><td style="text-align:center">Built-in add/remove</td></tr>
+      <tr style="background:rgba(255,255,255,0.03)"><td style="padding: 8px;">Shortest path</td><td style="text-align:center">New API + custom rendering</td><td style="text-align:center">cy.elements().dijkstra()</td></tr>
+      <tr><td style="padding: 8px;">Pin/unpin nodes</td><td style="text-align:center">Manual fx/fy management</td><td style="text-align:center">node.lock() / unlock()</td></tr>
+      <tr style="background:rgba(255,255,255,0.03)"><td style="padding: 8px;">Smart label density</td><td style="text-align:center">Custom canvas paint</td><td style="text-align:center">CSS-like style rules</td></tr>
+      <tr><td style="padding: 8px;">Save/restore state</td><td style="text-align:center">Custom serialization</td><td style="text-align:center">cy.json() / cy.add()</td></tr>
+      <tr style="background:rgba(255,255,255,0.03)"><td style="padding: 8px;">Cluster detection</td><td style="text-align:center">Needs external algo</td><td style="text-align:center">Built-in extensions</td></tr>
+      <tr><td style="padding: 8px;">Migration effort</td><td style="text-align:center; color: #4ade80;">Low</td><td style="text-align:center; color: #fbbf24;">Medium</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section" style="margin-top: 1.5rem; padding: 1rem; background: rgba(99, 102, 241, 0.1); border-radius: 8px;">
+  <strong>My recommendation: A (Incremental)</strong> — You already have a working canvas renderer with good performance. The features you need (expand-in-place, path finding, pinning, smart labels) are all achievable without a full rewrite. A new API endpoint for shortest-path and client-side state management gets you there with less risk. Save the Cytoscape migration for if/when you need advanced graph algorithms at scale.
+</div>

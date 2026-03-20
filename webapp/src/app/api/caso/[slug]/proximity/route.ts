@@ -1,0 +1,111 @@
+import { getDriver } from '../../../../../lib/neo4j/client'
+
+const CASO_SLUG = 'caso-epstein'
+
+export async function GET(
+  request: Request,
+  { params }: { params: Promise<{ slug: string }> },
+) {
+  // Currently only the Epstein case is supported — accept any slug
+  const url = new URL(request.url)
+  const personsParam = url.searchParams.get('persons')
+  const driver = getDriver()
+  const session = driver.session()
+
+  try {
+    const personsResult = await session.run(
+      'MATCH (p:Person {caso_slug: $slug}) RETURN p.name AS name, p.slug AS slug ORDER BY p.name',
+      { slug: CASO_SLUG },
+    )
+
+    const persons = personsResult.records.map((r) => ({
+      name: String(r.get('name') ?? ''),
+      slug: String(r.get('slug') ?? ''),
+    }))
+
+    if (!personsParam) {
+      return Response.json({
+        success: true,
+        data: { coLocations: [], sharedEvents: [], sharedDocuments: [], persons },
+      })
+    }
+
+    const slugs = personsParam.split(',').map((s) => s.trim()).filter((s) => /^[a-z0-9-]+$/.test(s)).slice(0, 3)
+
+    if (slugs.length < 2) {
+      return Response.json({ success: false, error: 'Need 2+ persons' }, { status: 400 })
+    }
+
+    await session.close()
+
+    // Use separate sessions for each query
+    const s1 = driver.session()
+    const coLocResult = await s1.run(
+      `MATCH (p1:Person)-[r1]->(loc:Location)<-[r2]-(p2:Person)
+       WHERE p1.slug IN $slugs AND p2.slug IN $slugs AND p1.slug < p2.slug
+         AND (type(r1) = 'VISITED' OR type(r1) = 'OWNED')
+         AND (type(r2) = 'VISITED' OR type(r2) = 'OWNED')
+       RETURN p1.name AS person1, p1.slug AS slug1, p2.name AS person2, p2.slug AS slug2,
+              loc.name AS location, loc.slug AS locSlug, loc.coordinates AS coordinates,
+              r1.description AS visit1, r2.description AS visit2`,
+      { slugs },
+    )
+    await s1.close()
+
+    const s2 = driver.session()
+    const eventsResult = await s2.run(
+      `MATCH (p1:Person)-[:PARTICIPATED_IN]->(evt:Event)<-[:PARTICIPATED_IN]-(p2:Person)
+       WHERE p1.slug IN $slugs AND p2.slug IN $slugs AND p1.slug < p2.slug
+       RETURN p1.name AS person1, p1.slug AS slug1, p2.name AS person2, p2.slug AS slug2,
+              evt.title AS event, evt.date AS date, evt.event_type AS type
+       ORDER BY evt.date`,
+      { slugs },
+    )
+    await s2.close()
+
+    const s3 = driver.session()
+    const docsResult = await s3.run(
+      `MATCH (p1:Person)-[:MENTIONED_IN]->(doc:Document)<-[:MENTIONED_IN]-(p2:Person)
+       WHERE p1.slug IN $slugs AND p2.slug IN $slugs AND p1.slug < p2.slug
+       RETURN p1.name AS person1, p1.slug AS slug1, p2.name AS person2, p2.slug AS slug2,
+              doc.title AS document, doc.slug AS docSlug, doc.doc_type AS type`,
+      { slugs },
+    )
+    await s3.close()
+
+    const str = (r: typeof coLocResult.records[0], key: string) => String(r.get(key) ?? '')
+
+    return Response.json({
+      success: true,
+      data: {
+        coLocations: coLocResult.records.map((r) => ({
+          person1: str(r, 'person1'), slug1: str(r, 'slug1'),
+          person2: str(r, 'person2'), slug2: str(r, 'slug2'),
+          location: str(r, 'location'), locSlug: str(r, 'locSlug'),
+          coordinates: str(r, 'coordinates'),
+          visit1Desc: str(r, 'visit1'), visit2Desc: str(r, 'visit2'),
+        })),
+        sharedEvents: eventsResult.records.map((r) => ({
+          person1: str(r, 'person1'), slug1: str(r, 'slug1'),
+          person2: str(r, 'person2'), slug2: str(r, 'slug2'),
+          event: str(r, 'event'), date: str(r, 'date'), type: str(r, 'type'),
+        })),
+        sharedDocuments: docsResult.records.map((r) => ({
+          person1: str(r, 'person1'), slug1: str(r, 'slug1'),
+          person2: str(r, 'person2'), slug2: str(r, 'slug2'),
+          document: str(r, 'document'), docSlug: str(r, 'docSlug'), type: str(r, 'type'),
+        })),
+        persons,
+      },
+    })
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error('[proximity]', msg)
+    if (msg.includes('connect') || msg.includes('ECONNREFUSED')) {
+      return Response.json({ success: false, error: 'Database unavailable' }, { status: 503 })
+    }
+    return Response.json({ success: false, error: msg }, { status: 500 })
+  } finally {
+    try { await session.close() } catch { /* already closed */ }
+  }
+}

@@ -13,7 +13,14 @@
     "typecheck": "tsc --noEmit",
     "dev:next": "next dev",
     "db:init-schema": "npx tsx scripts/init-schema.ts",
-    "etl:como-voto": "npx tsx scripts/run-etl-como-voto.ts"
+    "etl:como-voto": "npx tsx scripts/run-etl-como-voto.ts",
+    "ingest:backfill": "npx tsx scripts/backfill-tiers.ts",
+    "ingest:wave1": "npx tsx scripts/ingest-wave-1.ts",
+    "ingest:wave2": "npx tsx scripts/ingest-wave-2.ts",
+    "ingest:wave3": "npx tsx scripts/ingest-wave-3.ts",
+    "ingest:wave4": "npx tsx scripts/ingest-wave-4.ts",
+    "ingest:review": "npx tsx scripts/review-wave.ts",
+    "ingest:promote": "npx tsx scripts/promote-nodes.ts"
   },
   "dependencies": {
     "@auth/core": "^0.41.1",
@@ -28,6 +35,8 @@
     "dotenv": "^17.3.1",
     "neo4j-driver-lite": "^5.28.3",
     "next": "16.1.7",
+    "next-intl": "^4.8.3",
+    "pdf-parse": "^2.4.5",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-force-graph-2d": "^1.29.1",

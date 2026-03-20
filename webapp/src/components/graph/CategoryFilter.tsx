@@ -4,12 +4,9 @@ import { useCallback, useMemo } from 'react'
 
 import type { GraphData, GraphNode } from '../../lib/neo4j/types'
 import {
-  SUBCATEGORY_CONFIGS,
   getNodeCategory,
-  getLabelColor,
-  getLabelDisplayName,
-  LABEL_COLORS,
-  DEFAULT_NODE_COLOR,
+  SUBCATEGORY_CONFIGS,
+  LABEL_DISPLAY,
 } from '../../lib/graph/constants'
 
 // ---------------------------------------------------------------------------
@@ -17,147 +14,89 @@ import {
 // ---------------------------------------------------------------------------
 
 export interface CategoryFilterProps {
+  /** Current graph data — used to compute available categories */
   readonly data: GraphData
+  /** Set of hidden category keys (e.g. "Person:Victim", "Document:Court Filing") */
   readonly hiddenCategories: ReadonlySet<string>
-  readonly onChange: (hidden: Set<string>) => void
+  readonly onChange: (hiddenCategories: Set<string>) => void
+  /** Only show subcategories for these labels (null = all) */
   readonly visibleLabels?: ReadonlySet<string> | null
 }
 
-// ---------------------------------------------------------------------------
-// Category key helpers  (label::category for subcategories, label for plain)
-// ---------------------------------------------------------------------------
-
-export function categoryKey(label: string, category?: string): string {
-  return category ? `${label}::${category}` : label
+/** A category key is "Label:Category" (e.g. "Person:Legal") */
+function categoryKey(label: string, category: string) {
+  return `${label}:${category}`
 }
 
-export function parseCategoryKey(key: string): { label: string; category?: string } {
-  const idx = key.indexOf('::')
-  if (idx === -1) return { label: key }
-  return { label: key.slice(0, idx), category: key.slice(idx + 2) }
+export function parseCategoryKey(key: string): { label: string; category: string } {
+  const idx = key.indexOf(':')
+  return { label: key.slice(0, idx), category: key.slice(idx + 1) }
 }
 
-/** Check if a node should be hidden based on the hidden-categories set */
-export function isNodeHiddenByCategory(node: GraphNode, hidden: ReadonlySet<string>): boolean {
-  if (hidden.size === 0) return false
-  const label = node.labels[0]
-  if (!label) return false
-
-  if (label in SUBCATEGORY_CONFIGS) {
-    const cat = getNodeCategory(node)
-    return hidden.has(categoryKey(label, cat))
-  }
-  return hidden.has(categoryKey(label))
-}
-
-// ---------------------------------------------------------------------------
-// Internal: group nodes into category buckets
-// ---------------------------------------------------------------------------
-
-interface CategoryBucket {
-  key: string
-  label: string
-  category?: string
-  displayName: string
-  color: string
-  count: number
-}
-
-function buildBuckets(
-  data: GraphData,
-  visibleLabels: ReadonlySet<string> | null | undefined,
-): Map<string, CategoryBucket> {
-  const buckets = new Map<string, CategoryBucket>()
-
-  for (const node of data.nodes) {
-    const label = node.labels[0]
-    if (!label) continue
-    if (visibleLabels && !node.labels.some((l) => visibleLabels.has(l))) continue
-
-    if (label in SUBCATEGORY_CONFIGS) {
-      const cat = getNodeCategory(node)
-      const key = categoryKey(label, cat)
-      const existing = buckets.get(key)
-      if (existing) {
-        existing.count++
-      } else {
-        const cfg = SUBCATEGORY_CONFIGS[label]
-        buckets.set(key, {
-          key,
-          label,
-          category: cat,
-          displayName: cfg.display[cat] ?? cat,
-          color: cfg.colors[cat] ?? DEFAULT_NODE_COLOR,
-          count: 1,
-        })
-      }
-    } else {
-      const key = categoryKey(label)
-      const existing = buckets.get(key)
-      if (existing) {
-        existing.count++
-      } else {
-        buckets.set(key, {
-          key,
-          label,
-          displayName: getLabelDisplayName(label),
-          color: getLabelColor(label),
-          count: 1,
-        })
-      }
-    }
-  }
-
-  return buckets
-}
-
-// ---------------------------------------------------------------------------
-// Group buckets by label for rendering
-// ---------------------------------------------------------------------------
-
-interface LabelGroup {
-  label: string
-  displayName: string
-  color: string
-  buckets: CategoryBucket[]
-}
-
-function groupByLabel(buckets: Map<string, CategoryBucket>): LabelGroup[] {
-  const groups = new Map<string, LabelGroup>()
-
-  for (const bucket of buckets.values()) {
-    let group = groups.get(bucket.label)
-    if (!group) {
-      group = {
-        label: bucket.label,
-        displayName: getLabelDisplayName(bucket.label),
-        color: LABEL_COLORS[bucket.label] ?? DEFAULT_NODE_COLOR,
-        buckets: [],
-      }
-      groups.set(bucket.label, group)
-    }
-    group.buckets.push(bucket)
-  }
-
-  // Sort buckets within each group by count descending
-  for (const group of groups.values()) {
-    group.buckets.sort((a, b) => b.count - a.count)
-  }
-
-  // Sort groups by total count descending
-  return [...groups.values()].sort(
-    (a, b) =>
-      b.buckets.reduce((s, b2) => s + b2.count, 0) - a.buckets.reduce((s, b2) => s + b2.count, 0),
-  )
+/** Check whether a node is hidden by category filter */
+export function isNodeHiddenByCategory(
+  node: GraphNode,
+  hiddenCategories: ReadonlySet<string>,
+): boolean {
+  if (hiddenCategories.size === 0) return false
+  const cat = getNodeCategory(node)
+  if (!cat) return false
+  return hiddenCategories.has(categoryKey(node.labels[0], cat))
 }
 
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
 
+interface CategoryGroup {
+  label: string
+  labelDisplay: string
+  categories: Array<{ name: string; color: string; display: string; count: number }>
+  total: number
+}
+
 export function CategoryFilter({ data, hiddenCategories, onChange, visibleLabels }: CategoryFilterProps) {
-  const buckets = useMemo(() => buildBuckets(data, visibleLabels), [data, visibleLabels])
-  const groups = useMemo(() => groupByLabel(buckets), [buckets])
+  const groups = useMemo<CategoryGroup[]>(() => {
+    const counts = new Map<string, number>()
+
+    for (const node of data.nodes) {
+      const cat = getNodeCategory(node)
+      if (!cat) continue
+      const key = categoryKey(node.labels[0], cat)
+      counts.set(key, (counts.get(key) ?? 0) + 1)
+    }
+
+    const result: CategoryGroup[] = []
+    for (const [label, config] of Object.entries(SUBCATEGORY_CONFIGS)) {
+      // Skip labels that are hidden by the main label filter
+      if (visibleLabels && !visibleLabels.has(label)) continue
+
+      const categories: CategoryGroup['categories'] = []
+      let total = 0
+      for (const [name, color] of Object.entries(config.colors)) {
+        const key = categoryKey(label, name)
+        const count = counts.get(key) ?? 0
+        if (count === 0) continue
+        total += count
+        categories.push({
+          name,
+          color,
+          display: config.display[name] ?? name,
+          count,
+        })
+      }
+      if (categories.length > 1) {
+        categories.sort((a, b) => b.count - a.count)
+        result.push({
+          label,
+          labelDisplay: LABEL_DISPLAY[label] ?? label,
+          categories,
+          total,
+        })
+      }
+    }
+    return result
+  }, [data.nodes, visibleLabels])
 
   const handleToggle = useCallback(
     (key: string) => {
@@ -172,93 +111,104 @@ export function CategoryFilter({ data, hiddenCategories, onChange, visibleLabels
     [hiddenCategories, onChange],
   )
 
-  /** Double-click: isolate this category (hide everything else) */
   const handleIsolate = useCallback(
-    (key: string) => {
-      const allKeys = [...buckets.keys()]
-      const next = new Set(allKeys.filter((k) => k !== key))
-      onChange(next)
-    },
-    [buckets, onChange],
-  )
-
-  /** Reset a label group (unhide all its buckets) */
-  const handleResetGroup = useCallback(
-    (group: LabelGroup) => {
+    (label: string, categoryNames: string[], keepName: string) => {
       const next = new Set(hiddenCategories)
-      for (const b of group.buckets) {
-        next.delete(b.key)
+      for (const name of categoryNames) {
+        if (name === keepName) {
+          next.delete(categoryKey(label, name))
+        } else {
+          next.add(categoryKey(label, name))
+        }
       }
       onChange(next)
     },
     [hiddenCategories, onChange],
   )
 
-  const handleClearAll = useCallback(() => {
-    onChange(new Set())
-  }, [onChange])
+  const handleShowAll = useCallback(
+    (label: string, categoryNames: string[]) => {
+      const next = new Set(hiddenCategories)
+      for (const name of categoryNames) {
+        next.delete(categoryKey(label, name))
+      }
+      onChange(next)
+    },
+    [hiddenCategories, onChange],
+  )
 
   if (groups.length === 0) return null
 
-  return (
-    <div className="space-y-2">
-      {groups.map((group) => (
-        <div key={group.label} className="space-y-1">
-          {/* Group header — click to reset group */}
-          {group.buckets.length > 1 && (
-            <button
-              onClick={() => handleResetGroup(group)}
-              className="text-xs font-semibold text-zinc-400 hover:text-zinc-300 transition-colors"
-            >
-              {group.displayName}
-            </button>
-          )}
+  const activeFilterCount = hiddenCategories.size
 
-          <div className="flex flex-wrap items-center gap-1.5">
-            {group.buckets.map((bucket) => {
-              const isHidden = hiddenCategories.has(bucket.key)
+  return (
+    <div className="flex items-start gap-3">
+      {groups.map(({ label, labelDisplay, categories, total }) => {
+        const names = categories.map((c) => c.name)
+        const hiddenCount = names.filter((n) => hiddenCategories.has(categoryKey(label, n))).length
+        const anyHidden = hiddenCount > 0
+
+        return (
+          <div key={label} className="flex items-center gap-1">
+            {/* Group label with reset */}
+            <button
+              onClick={() => handleShowAll(label, names)}
+              className={`mr-0.5 rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider transition-colors ${
+                anyHidden
+                  ? 'text-zinc-300 hover:text-zinc-100'
+                  : 'text-zinc-600'
+              }`}
+              title={anyHidden ? `Mostrar todos (${labelDisplay})` : labelDisplay}
+            >
+              {labelDisplay}
+              {anyHidden && (
+                <span className="ml-1 text-[9px] text-amber-400">{total - hiddenCount}/{total}</span>
+              )}
+            </button>
+
+            {/* Category pills */}
+            {categories.map(({ name, color, display, count }) => {
+              const key = categoryKey(label, name)
+              const isActive = !hiddenCategories.has(key)
 
               return (
                 <button
-                  key={bucket.key}
-                  onClick={() => handleToggle(bucket.key)}
-                  onDoubleClick={() => handleIsolate(bucket.key)}
-                  className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors ${
-                    !isHidden
+                  key={key}
+                  onClick={() => handleToggle(key)}
+                  onDoubleClick={() => handleIsolate(label, names, name)}
+                  className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-medium transition-all ${
+                    isActive
                       ? 'border-transparent text-white'
-                      : 'border-zinc-700 bg-transparent text-zinc-500 hover:border-zinc-600 hover:text-zinc-400'
+                      : 'border-zinc-800 bg-transparent text-zinc-600 hover:border-zinc-700 hover:text-zinc-500'
                   }`}
                   style={
-                    !isHidden
-                      ? {
-                          backgroundColor: `${bucket.color}30`,
-                          borderColor: `${bucket.color}60`,
-                          color: bucket.color,
-                        }
+                    isActive
+                      ? { backgroundColor: `${color}20`, borderColor: `${color}40`, color }
                       : undefined
                   }
-                  aria-label={`${isHidden ? 'Mostrar' : 'Ocultar'} ${bucket.displayName}`}
-                  aria-pressed={!isHidden}
+                  title={`${display} (${count}) — doble click para aislar`}
                 >
                   <span
-                    className="h-2 w-2 rounded-full"
-                    style={{
-                      backgroundColor: !isHidden ? bucket.color : '#52525b',
-                    }}
+                    className="inline-block h-1.5 w-1.5 rounded-full transition-colors"
+                    style={{ backgroundColor: isActive ? color : '#3f3f46' }}
                   />
-                  {bucket.displayName}
-                  <span className="text-[10px] opacity-60">{bucket.count}</span>
+                  {display}
+                  <span className="tabular-nums text-[9px] opacity-50">{count}</span>
                 </button>
               )
             })}
-          </div>
-        </div>
-      ))}
 
-      {hiddenCategories.size > 0 && (
+            {/* Vertical separator between groups */}
+            <span className="ml-1.5 h-3 w-px bg-zinc-800" />
+          </div>
+        )
+      })}
+
+      {/* Clear all filters */}
+      {activeFilterCount > 0 && (
         <button
-          onClick={handleClearAll}
-          className="rounded-full border border-zinc-700 bg-transparent px-2.5 py-1 text-xs font-medium text-zinc-500 hover:border-zinc-600 hover:text-zinc-400 transition-colors"
+          onClick={() => onChange(new Set())}
+          className="ml-auto rounded-full border border-zinc-700 px-2 py-0.5 text-[10px] font-medium text-zinc-400 transition-colors hover:border-zinc-500 hover:text-zinc-200"
         >
           Limpiar filtros
         </button>

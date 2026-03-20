@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 import type { GraphNode } from '../../lib/neo4j/types'
+import { LABEL_COLORS, getNodeLabel } from '../../lib/graph/constants'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -27,32 +28,15 @@ export interface SearchBarProps {
 const DEBOUNCE_MS = 300
 const MIN_QUERY_LENGTH = 2
 
-const LABEL_COLORS: Readonly<Record<string, string>> = {
-  Politician: '#3b82f6',
-  Party: '#8b5cf6',
-  Province: '#10b981',
-  LegislativeVote: '#f59e0b',
-  Legislation: '#ef4444',
-  Investigation: '#ec4899',
-}
-
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-
-function getNodeDisplayName(node: GraphNode): string {
-  const props = node.properties
-  if (typeof props.name === 'string') return props.name
-  if (typeof props.title === 'string') return props.title
-  if (typeof props.full_name === 'string') return props.full_name
-  return node.id
-}
 
 function toSearchResult(node: GraphNode): SearchResultItem {
   return {
     id: node.id,
     label: node.labels[0] ?? 'Unknown',
-    name: getNodeDisplayName(node),
+    name: getNodeLabel(node),
     type: node.labels[0] ?? 'Unknown',
   }
 }
