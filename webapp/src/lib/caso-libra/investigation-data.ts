@@ -610,6 +610,43 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     detail_en:
       'The graph contains only 8 wallet nodes, but Nansen/Chainalysis identified 34 linked addresses. This 26-wallet deficit represents a critical investigation gap and potentially unidentified beneficiaries.',
   },
+  {
+    id: 'fc-mellino-testaferro',
+    claim_es:
+      'Orlando Mellino, jubilado de 75 años sin antecedentes cripto, recibio USD 1M+ de wallets de Hayden Davis y los transfirio en horas. Sospechado de ser testaferro.',
+    claim_en:
+      'Orlando Mellino, a 75-year-old retiree with no crypto background, received $1M+ from Hayden Davis wallets and transferred them within hours. Suspected straw man.',
+    status: 'confirmed',
+    source: 'elDiarioAR / Juzgado Federal No. 8',
+    source_url:
+      'https://www.eldiarioar.com/politica/orlando-mellino-jubilado-pasado-cripto-recibio-us-1-millon-hayden-davis_1_13002649.html',
+    detail_es:
+      'El juez Martinez De Giorgi ordeno el embargo de sus bienes. Mellino no tiene formacion ni historial en criptomonedas, lo que refuerza la hipotesis de lavado de dinero a traves de terceros.',
+    detail_en:
+      'Judge Martinez De Giorgi ordered his assets frozen. Mellino has no training or history in cryptocurrency, reinforcing the money laundering through third parties hypothesis.',
+  },
+  {
+    id: 'fc-contract-solana-verified',
+    claim_es:
+      'El contrato del token $LIBRA en Solana es Bo9jh3wsmcC2AjakLWzNmKJ3SgtZmXEcSaW7L2FAvUsU. El 82% del suministro estaba desbloqueado al lanzamiento.',
+    claim_en:
+      'The $LIBRA token contract on Solana is Bo9jh3wsmcC2AjakLWzNmKJ3SgtZmXEcSaW7L2FAvUsU. 82% of supply was unlocked at launch.',
+    status: 'confirmed',
+    source: 'Solscan / Bubblemaps',
+    source_url:
+      'https://solscan.io/token/Bo9jh3wsmcC2AjakLWzNmKJ3SgtZmXEcSaW7L2FAvUsU',
+  },
+  {
+    id: 'fc-circle-usdc-freeze',
+    claim_es:
+      'Circle congelo $57.65M USDC en dos wallets vinculadas a LIBRA ($44.59M + $13.06M) por orden judicial del SDNY el 28 de mayo de 2025.',
+    claim_en:
+      'Circle froze $57.65M USDC across two LIBRA-linked wallets ($44.59M + $13.06M) by SDNY court order on May 28, 2025.',
+    status: 'confirmed',
+    source: 'Burwick Law / SDNY TRO',
+    source_url:
+      'https://decrypt.co/322558/circle-freezes-58-million-usdc-solana-wallets-libra-scandal',
+  },
 ]
 
 // ---------------------------------------------------------------------------
@@ -2148,10 +2185,10 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     source: 'Graph analysis vs Nansen/Chainalysis',
   },
   {
-    value: '106 / 144',
+    value: '102 / 141',
     label_es: 'Nodos / aristas en el grafo de investigación',
     label_en: 'Nodes / edges in investigation graph',
-    source: 'Office of Accountability graph database',
+    source: 'Office of Accountability graph database (factchecked)',
   },
 ]
 
