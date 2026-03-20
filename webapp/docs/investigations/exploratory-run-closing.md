@@ -2,7 +2,7 @@
 
 **Date:** 2026-03-19
 **Status:** Exploratory — findings require verification before formal investigation
-**Graph:** 5,391,639 nodes — 6,217,574 relationships
+**Graph:** 2,165,322 nodes — 4,495,502 relationships
 
 ## Scope
 
@@ -113,8 +113,8 @@ No data was fabricated, modified, or scraped from private sources. All findings 
 **Total commits on branch:** 119
 
 ### Final Graph Size
-- **5,391,639 nodes** across 12 entity types
-- **6,217,574 relationships** (incl. 1.78M SAME_PERSON bridge)
+- **2,165,322 nodes** across 12 entity types
+- **4,495,502 relationships** (incl. 1.78M SAME_PERSON bridge)
 - **8 data sources** integrated (6 Argentine government + 2 international)
 
 ### Confirmed Findings by Category

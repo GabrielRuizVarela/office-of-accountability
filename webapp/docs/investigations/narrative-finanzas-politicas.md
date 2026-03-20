@@ -4,7 +4,7 @@
 **Fecha:** 2026-03-19
 **Estado:** Exploratorio — los hallazgos requieren verificacion independiente antes de cualquier accion legal o periodistica.
 
-> *Este documento cruza ocho bases de datos publicas — seis argentinas y dos internacionales — totalizando 5,4 millones de nodos y 4,4 millones de relaciones en un grafo Neo4j. Las coincidencias entre datasets se basan en normalizacion de nombres y llevan riesgo de falsos positivos, especialmente para nombres comunes. Donde se indica "presunto," la conexion no ha sido verificada de forma independiente. Donde se indica "confirmado," la verificacion incluye fuentes periodisticas, bases de datos del ICIJ, o registros judiciales publicos. Ningun dato fue fabricado, modificado ni extraido de fuentes privadas. Todo proviene de bases publicas con licencias abiertas. Cada hallazgo es reproducible.*
+> *Este documento cruza ocho bases de datos publicas — seis argentinas y dos internacionales — totalizando 2,16 millones de nodos y 4,4 millones de relaciones en un grafo Neo4j. Las coincidencias entre datasets se basan en normalizacion de nombres y llevan riesgo de falsos positivos, especialmente para nombres comunes. Donde se indica "presunto," la conexion no ha sido verificada de forma independiente. Donde se indica "confirmado," la verificacion incluye fuentes periodisticas, bases de datos del ICIJ, o registros judiciales publicos. Ningun dato fue fabricado, modificado ni extraido de fuentes privadas. Todo proviene de bases publicas con licencias abiertas. Cada hallazgo es reproducible.*
 
 ---
 

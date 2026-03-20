@@ -11,7 +11,7 @@ import {
 export const metadata: Metadata = {
   title: 'Finanzas Politicas Argentinas',
   description:
-    'Investigacion sobre conexiones entre poder politico y dinero en Argentina. 617 politicos en 2+ datasets, 8 fuentes cruzadas, 3.26M nodos.',
+    'Investigacion sobre conexiones entre poder politico y dinero en Argentina. 617 politicos en 2+ datasets, 9 fuentes cruzadas, 2.16M nodos.',
 }
 
 const BASE_PATH = '/caso/finanzas-politicas'
