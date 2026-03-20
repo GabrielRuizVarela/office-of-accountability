@@ -766,3 +766,96 @@ function extractProvenance(rel: Relationship): EdgeProvenanceData {
     created_at: typeof props.created_at === 'string' ? props.created_at : undefined,
   }
 }
+
+// ---------------------------------------------------------------------------
+// Showcase — curated relationships + hub nodes
+// ---------------------------------------------------------------------------
+
+/** A single relationship example for showcase display */
+export interface ShowcaseEdge {
+  readonly sourceName: string
+  readonly sourceLabel: string
+  readonly targetName: string
+  readonly targetLabel: string
+  readonly relType: string
+}
+
+/** Hub node for showcase display */
+export interface ShowcaseHub {
+  readonly name: string
+  readonly label: string
+  readonly degree: number
+}
+
+/** Combined showcase data */
+export interface ShowcaseData {
+  readonly edges: readonly ShowcaseEdge[]
+  readonly hubs: readonly ShowcaseHub[]
+}
+
+/** Curated relationship types to showcase (most compelling) */
+const SHOWCASE_REL_TYPES = ['FLEW_WITH', 'FINANCED', 'ASSOCIATED_WITH', 'OWNED', 'MENTIONED_IN']
+
+/**
+ * Fetch showcase data: curated compelling edges + top hub nodes.
+ *
+ * - Edges: 2 examples per curated relationship type (up to 10 total)
+ * - Hubs: top 5 nodes by degree centrality
+ *
+ * Throws on Neo4j errors (let the route handle them).
+ */
+export async function getShowcaseData(): Promise<ShowcaseData> {
+  const session = getDriver().session()
+
+  try {
+    // Query 1: Curated compelling edges — 2 per relationship type
+    const edgeResult = await session.run(
+      `UNWIND $relTypes AS relType
+       CALL {
+         WITH relType
+         MATCH (a)-[r]->(b)
+         WHERE type(r) = relType
+           AND a.name IS NOT NULL AND b.name IS NOT NULL
+         RETURN a.name AS sourceName, labels(a)[0] AS sourceLabel,
+                b.name AS targetName, labels(b)[0] AS targetLabel,
+                type(r) AS relType
+         LIMIT 2
+       }
+       RETURN sourceName, sourceLabel, targetName, targetLabel, relType`,
+      { relTypes: SHOWCASE_REL_TYPES },
+      TX_CONFIG,
+    )
+
+    const edges: ShowcaseEdge[] = edgeResult.records.map((r) => ({
+      sourceName: r.get('sourceName') as string,
+      sourceLabel: r.get('sourceLabel') as string,
+      targetName: r.get('targetName') as string,
+      targetLabel: r.get('targetLabel') as string,
+      relType: r.get('relType') as string,
+    }))
+
+    // Query 2: Top 5 hub nodes by degree centrality
+    const hubResult = await session.run(
+      `MATCH (n)
+       WHERE n.name IS NOT NULL
+       WITH n, size([(n)-[]-() | 1]) AS degree
+       ORDER BY degree DESC
+       LIMIT $limit
+       RETURN n.name AS name, labels(n)[0] AS label, degree`,
+      { limit: neo4j.int(5) },
+      TX_CONFIG,
+    )
+
+    const hubs: ShowcaseHub[] = hubResult.records.map((r) => ({
+      name: r.get('name') as string,
+      label: r.get('label') as string,
+      degree: typeof r.get('degree') === 'number'
+        ? r.get('degree') as number
+        : (r.get('degree') as { toNumber(): number }).toNumber(),
+    }))
+
+    return { edges, hubs }
+  } finally {
+    await session.close()
+  }
+}

@@ -15,8 +15,10 @@ export {
   searchNodesByLabel,
   queryNodes,
   getEdgeProvenance,
+  getShowcaseData,
 } from './queries'
 export type { SearchResult, StructuredQueryFilters, StructuredQueryResult } from './queries'
+export type { ShowcaseData, ShowcaseEdge, ShowcaseHub } from './queries'
 
 export {
   getPoliticianBySlug,
