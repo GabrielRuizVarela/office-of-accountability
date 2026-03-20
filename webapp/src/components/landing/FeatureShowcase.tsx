@@ -1,6 +1,8 @@
 import { createTranslator } from '@/i18n/messages'
 
-const FEATURE_KEYS = ['graph', 'timeline', 'evidence', 'community', 'network', 'money'] as const
+import { GraphShowcase } from '@/components/graph/GraphShowcase'
+
+const OTHER_FEATURE_KEYS = ['timeline', 'evidence', 'community', 'network', 'money'] as const
 
 const FEATURE_ICONS: Record<string, string> = {
   graph: 'M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z',
@@ -21,8 +23,30 @@ export function FeatureShowcase() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-12">
       <h2 className="mb-8 text-xl font-bold text-zinc-50 sm:text-2xl">{t('title')}</h2>
+
+      {/* Graph card — full width with live examples */}
+      <div className="mb-4 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
+        <div className="mb-4 flex items-center gap-3">
+          <svg
+            className="h-6 w-6 text-purple-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d={FEATURE_ICONS.graph} />
+          </svg>
+          <div>
+            <h3 className="text-sm font-semibold text-zinc-100">{t('graph.title')}</h3>
+            <p className="text-xs leading-relaxed text-zinc-400">{t('graph.description')}</p>
+          </div>
+        </div>
+        <GraphShowcase variant="compact" />
+      </div>
+
+      {/* Remaining feature cards */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {FEATURE_KEYS.map((key) => (
+        {OTHER_FEATURE_KEYS.map((key) => (
           <div
             key={key}
             className="flex flex-col gap-3 rounded-xl border border-zinc-800 bg-zinc-900/50 p-6"
