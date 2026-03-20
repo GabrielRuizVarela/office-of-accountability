@@ -87,17 +87,47 @@ RETURN p, datasets, targets, rels
 `
 
 /**
- * Second query: find shared companies that bridge politicians.
- * This creates links BETWEEN politician clusters.
+ * Bridge queries — connect politician clusters through shared attributes.
  */
-const BRIDGE_CYPHER = `
-MATCH (p1:Politician)-[:MAYBE_SAME_AS]->(b1:BoardMember)-[:BOARD_MEMBER_OF]->(c:Company)<-[:BOARD_MEMBER_OF]-(b2:BoardMember)<-[:MAYBE_SAME_AS]-(p2:Politician)
+
+// Politicians in same coalition who both have 3+ datasets
+const COALITION_BRIDGE = `
+MATCH (p1:Politician)-[r1:MAYBE_SAME_AS]->(t1)
+WITH p1, collect(DISTINCT labels(t1)[0]) AS ds1
+WHERE size(ds1) >= 3
+MATCH (p2:Politician)-[r2:MAYBE_SAME_AS]->(t2)
+WITH p1, ds1, p2, collect(DISTINCT labels(t2)[0]) AS ds2
+WHERE size(ds2) >= 3 AND p1.id < p2.id AND p1.coalition = p2.coalition AND p1.coalition IS NOT NULL
+RETURN p1.id AS pid1, p2.id AS pid2, p1.coalition AS bridge, "SAME_COALITION" AS bridgeType
+LIMIT 40
+`
+
+// Politicians connected through PENSAR ARGENTINA or shared organizations
+const ORG_BRIDGE = `
+MATCH (p1:Politician)-[:AFFILIATED_WITH]->(org)<-[:AFFILIATED_WITH]-(p2:Politician)
 WHERE p1.id < p2.id
-WITH p1, p2, c, collect(DISTINCT labels(c)[0])[0] AS companyType
-RETURN p1.id AS pid1, p1.name AS pname1,
-       p2.id AS pid2, p2.name AS pname2,
-       c.name AS company, toString(elementId(c)) AS companyId
-LIMIT 30
+RETURN p1.id AS pid1, p2.id AS pid2, org.name AS bridge, "SHARED_ORG" AS bridgeType
+LIMIT 20
+`
+
+// Politicians who both have offshore connections
+const OFFSHORE_BRIDGE = `
+MATCH (p1:Politician)-[:MAYBE_SAME_AS]->(o1:OffshoreOfficer)
+MATCH (p2:Politician)-[:MAYBE_SAME_AS]->(o2:OffshoreOfficer)
+WHERE p1.id < p2.id
+RETURN p1.id AS pid1, p2.id AS pid2, "Offshore Network" AS bridge, "BOTH_OFFSHORE" AS bridgeType
+`
+
+// Politicians from same province with 3+ datasets
+const PROVINCE_BRIDGE = `
+MATCH (p1:Politician)-[r1:MAYBE_SAME_AS]->(t1)
+WITH p1, collect(DISTINCT labels(t1)[0]) AS ds1
+WHERE size(ds1) >= 4
+MATCH (p2:Politician)-[r2:MAYBE_SAME_AS]->(t2)
+WITH p1, ds1, p2, collect(DISTINCT labels(t2)[0]) AS ds2
+WHERE size(ds2) >= 4 AND p1.id < p2.id AND p1.province = p2.province AND p1.province IS NOT NULL
+RETURN p1.id AS pid1, p2.id AS pid2, p1.province AS bridge, "SAME_PROVINCE" AS bridgeType
+LIMIT 20
 `
 
 interface RawRow {
@@ -205,57 +235,66 @@ export async function GET(): Promise<Response> {
       }
     }
 
-    // Phase 2: Bridges between politicians via shared companies
-    try {
-      const bridges = await readQuery(
-        BRIDGE_CYPHER,
-        {},
-        (record: Neo4jRecord) => ({
-          pid1: record.get('pid1') as string,
-          pname1: record.get('pname1') as string,
-          pid2: record.get('pid2') as string,
-          pname2: record.get('pname2') as string,
-          company: record.get('company') as string,
-          companyId: record.get('companyId') as string,
-        }),
-      )
+    // Phase 2: Run all bridge queries to connect politician clusters
+    const bridgeQueries = [COALITION_BRIDGE, ORG_BRIDGE, OFFSHORE_BRIDGE, PROVINCE_BRIDGE]
+    const bridgeColors: Record<string, string> = {
+      SAME_COALITION: '#f59e0b', // amber
+      SHARED_ORG: '#10b981', // emerald
+      BOTH_OFFSHORE: '#ef4444', // red
+      SAME_PROVINCE: '#6366f1', // indigo
+    }
 
-      for (const bridge of bridges.records) {
-        const p1Id = politicianElementIds.get(bridge.pid1)
-        const p2Id = politicianElementIds.get(bridge.pid2)
-        if (!p1Id || !p2Id) continue
+    for (const query of bridgeQueries) {
+      try {
+        const bridges = await readQuery(
+          query,
+          {},
+          (record: Neo4jRecord) => ({
+            pid1: record.get('pid1') as string,
+            pid2: record.get('pid2') as string,
+            bridge: record.get('bridge') as string,
+            bridgeType: record.get('bridgeType') as string,
+          }),
+        )
 
-        // Add company node as bridge
-        const companyNodeId = `company-${bridge.companyId}`
-        if (!nodeMap.has(companyNodeId)) {
-          nodeMap.set(companyNodeId, {
-            id: companyNodeId,
-            name: bridge.company,
-            type: 'Company',
-            color: '#10b981', // emerald
-            datasets: 0,
-            val: 3,
-            labels: ['Company'],
+        for (const bridge of bridges.records) {
+          const p1Id = politicianElementIds.get(bridge.pid1)
+          const p2Id = politicianElementIds.get(bridge.pid2)
+          if (!p1Id || !p2Id) continue
+
+          // Direct politician-to-politician link through a bridge node
+          const bridgeNodeId = `bridge-${bridge.bridgeType}-${bridge.bridge}`
+          if (!nodeMap.has(bridgeNodeId)) {
+            nodeMap.set(bridgeNodeId, {
+              id: bridgeNodeId,
+              name: bridge.bridge,
+              type: bridge.bridgeType,
+              color: bridgeColors[bridge.bridgeType] ?? '#94a3b8',
+              datasets: 0,
+              val: 4,
+              labels: [bridge.bridgeType],
+              properties: { bridgeType: bridge.bridgeType },
+            })
+          } else {
+            nodeMap.get(bridgeNodeId)!.val += 1
+          }
+
+          links.push({
+            source: p1Id,
+            target: bridgeNodeId,
+            type: bridge.bridgeType,
+            properties: {},
+          })
+          links.push({
+            source: p2Id,
+            target: bridgeNodeId,
+            type: bridge.bridgeType,
             properties: {},
           })
         }
-
-        // Link both politicians to the shared company
-        links.push({
-          source: p1Id,
-          target: companyNodeId,
-          type: 'SHARES_BOARD',
-          properties: {},
-        })
-        links.push({
-          source: p2Id,
-          target: companyNodeId,
-          type: 'SHARES_BOARD',
-          properties: {},
-        })
+      } catch {
+        // Individual bridge query may timeout — continue with others
       }
-    } catch {
-      // Bridge query may timeout on large graphs — degrade gracefully
     }
 
     const nodes = Array.from(nodeMap.values())
