@@ -119,13 +119,10 @@ RETURN j.name AS judge, toString(elementId(j)) AS jid,
        p.id AS appointedBy, p.name AS presidentName
 `
 
-/** Cross-referenced entities (donor↔offshore, contractor↔offshore) */
-const CROSS_REF_CYPHER = `
-MATCH (a)-[r:CROSS_REFERENCED]->(b)
-RETURN toString(elementId(a)) AS aid, COALESCE(a.name, "unknown") AS aname, labels(a)[0] AS atype,
-       toString(elementId(b)) AS bid, COALESCE(b.name, "unknown") AS bname, labels(b)[0] AS btype,
-       r.source AS source
-`
+// Cross-referenced entities removed from viz — they create duplicate identity nodes
+// The underlying data (donor↔offshore, contractor↔offshore) is in the DB but
+// showing "Manuel Torino" (Donor) linked to "MANUEL TORINO" (Offshore) as two
+// nodes is confusing. The connection is noted in the investigation narrative instead.
 
 /** PENSAR ARGENTINA network */
 const PENSAR_CYPHER = `
@@ -371,31 +368,7 @@ export async function GET(): Promise<Response> {
       }
     } catch { /* timeout ok */ }
 
-    // Phase 4: Add cross-referenced entities (donor↔offshore, contractor↔offshore)
-    try {
-      const crossRefs = await readQuery(CROSS_REF_CYPHER, {}, (r: Neo4jRecord) => ({
-        aid: r.get('aid') as string, aname: r.get('aname') as string, atype: r.get('atype') as string,
-        bid: r.get('bid') as string, bname: r.get('bname') as string, btype: r.get('btype') as string,
-        source: r.get('source') as string,
-      }))
-      for (const cr of crossRefs.records) {
-        if (!nodeMap.has(cr.aid)) {
-          nodeMap.set(cr.aid, {
-            id: cr.aid, name: cr.aname, type: cr.atype,
-            color: NODE_COLORS[cr.atype] ?? '#94a3b8', datasets: 0, val: 3,
-            labels: [cr.atype], properties: {},
-          })
-        }
-        if (!nodeMap.has(cr.bid)) {
-          nodeMap.set(cr.bid, {
-            id: cr.bid, name: cr.bname, type: cr.btype,
-            color: NODE_COLORS[cr.btype] ?? '#94a3b8', datasets: 0, val: 3,
-            labels: [cr.btype], properties: {},
-          })
-        }
-        links.push({ source: cr.aid, target: cr.bid, type: 'CROSS_REFERENCED', properties: { source: cr.source } })
-      }
-    } catch { /* timeout ok */ }
+    // Phase 4: Cross-referenced entities removed — they create duplicate identity nodes
 
     // Phase 5: Add PENSAR ARGENTINA network
     try {
