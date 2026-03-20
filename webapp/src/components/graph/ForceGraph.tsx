@@ -1,10 +1,10 @@
 'use client'
 
-import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react'
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import type { ForceGraphMethods, NodeObject } from 'react-force-graph-2d'
 
-import type { GraphData } from '../../lib/neo4j/types'
-import { getNodeColor, getNodeLabel, getLinkColor } from '../../lib/graph/constants'
+import type { GraphData, GraphNode } from '../../lib/neo4j/types'
+import { getNodeColor, getNodeLabel, getLinkColor, getLabelDisplayName } from '../../lib/graph/constants'
 
 // ---------------------------------------------------------------------------
 // Graph data conversion — our GraphData → react-force-graph format
@@ -49,6 +49,12 @@ export interface ForceGraphHandle {
   zoomOut: () => void
   zoomToFit: () => void
   centerOnNode: (nodeId: string) => void
+  pinNode: (nodeId: string) => void
+  unpinNode: (nodeId: string) => void
+  unpinAll: () => void
+  /** Access internal force graph node state (positions, velocities) */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getInternalNodes: () => Array<{ id: any; x?: number; y?: number; vx?: number; vy?: number }>
 }
 
 export interface ForceGraphProps {
@@ -57,6 +63,9 @@ export interface ForceGraphProps {
   readonly selectedNodeId?: string | null
   readonly focusedNodeId?: string | null
   readonly visibleLabels?: ReadonlySet<string> | null
+  readonly pinnedNodeIds?: ReadonlySet<string>
+  readonly onNodeRightClick?: (nodeId: string, screenX: number, screenY: number) => void
+  readonly pathHighlight?: { nodeIds: ReadonlySet<string>; linkKeys: ReadonlySet<string> } | null
   readonly width?: number
   readonly height?: number
 }
@@ -79,7 +88,18 @@ function getForceGraph2D(): Promise<ForceGraph2DComponent> {
 }
 
 export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function ForceGraph(
-  { data, onNodeClick, selectedNodeId, focusedNodeId, visibleLabels, width, height },
+  {
+    data,
+    onNodeClick,
+    onNodeRightClick,
+    selectedNodeId,
+    focusedNodeId,
+    visibleLabels,
+    pinnedNodeIds,
+    pathHighlight,
+    width,
+    height,
+  },
   ref,
 ) {
   const graphRef = useRef<ForceGraphMethods<FGNode, FGLink> | undefined>(undefined)
@@ -91,6 +111,28 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
   useEffect(() => {
     getForceGraph2D().then((Component) => setForceGraph2D(() => Component))
   }, [])
+
+  // Access internal force simulation nodes via d3Force
+  // graphData() is NOT exposed on the ref — use d3Force('link').links() for links
+  // and traverse the simulation's nodes array for node state (x, y, fx, fy)
+  function getInternalNodes(): NodeObject<FGNode>[] {
+    const fg = graphRef.current
+    if (!fg) return []
+    // The d3 simulation nodes are accessible through the force engine
+    try {
+      const sim = (fg as unknown as { d3Force: (name: string) => unknown }).d3Force('charge')
+      // The simulation object itself has .nodes() but we can't access it directly.
+      // Instead, use the fact that fgData.nodes are mutated in-place by the simulation
+      // with x, y, vx, vy, fx, fy properties added at runtime.
+      return fgData.nodes as unknown as NodeObject<FGNode>[]
+    } catch {
+      return []
+    }
+  }
+
+  function findInternalNode(nodeId: string): NodeObject<FGNode> | undefined {
+    return getInternalNodes().find((n) => n.id === nodeId)
+  }
 
   // Expose zoom controls to parent
   const ZOOM_STEP = 1.5
@@ -113,20 +155,26 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       fg.zoomToFit(400, 40)
     },
     centerOnNode(nodeId: string) {
-      const fg = graphRef.current
-      if (!fg) return
-      // Access internal graph data via the untyped kapsule method
-      const internalGraphData = (
-        fg as unknown as { graphData(): { nodes: NodeObject<FGNode>[] } }
-      ).graphData()
-      const node = internalGraphData.nodes.find((n) => n.id === nodeId)
+      const node = findInternalNode(nodeId)
       if (node && typeof node.x === 'number' && typeof node.y === 'number') {
-        fg.centerAt(node.x, node.y, 300)
+        graphRef.current?.centerAt(node.x, node.y, 300)
       }
     },
+    pinNode(nodeId: string) {
+      const node = findInternalNode(nodeId)
+      if (node) { node.fx = node.x; node.fy = node.y }
+    },
+    unpinNode(nodeId: string) {
+      const node = findInternalNode(nodeId)
+      if (node) { node.fx = undefined; node.fy = undefined }
+    },
+    unpinAll() {
+      for (const node of getInternalNodes()) { node.fx = undefined; node.fy = undefined }
+    },
+    getInternalNodes,
   }))
 
-  // Responsive sizing
+  // Responsive sizing — ignore tiny heights that occur before flex layout settles
   useEffect(() => {
     if (width && height) return
 
@@ -136,10 +184,11 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     const observer = new ResizeObserver((entries) => {
       const entry = entries[0]
       if (entry) {
-        setDimensions({
-          width: width ?? entry.contentRect.width,
-          height: height ?? entry.contentRect.height,
-        })
+        const w = width ?? entry.contentRect.width
+        const h = height ?? entry.contentRect.height
+        // Skip bogus measurements before flex layout has computed the real size
+        if (h < 100) return
+        setDimensions({ width: w, height: h })
       }
     })
 
@@ -147,25 +196,43 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     return () => observer.disconnect()
   }, [width, height])
 
-  // Convert to force graph format
-  const fgData = toFGData(data)
+  // Convert to force graph format — memoize to avoid restarting simulation on re-renders
+  const fgData = useMemo(() => toFGData(data), [data])
 
-  // Zoom to fit on data change
-  useEffect(() => {
-    const fg = graphRef.current
-    if (fg && data.nodes.length > 0) {
-      setTimeout(() => fg.zoomToFit(400, 40), 300)
+  const { degreeMap, importanceThreshold } = useMemo(() => {
+    const dm = new Map<string, number>()
+    for (const node of data.nodes) {
+      dm.set(node.id, 0)
     }
-  }, [data.nodes.length])
+    for (const link of data.links) {
+      dm.set(link.source as string, (dm.get(link.source as string) ?? 0) + 1)
+      dm.set(link.target as string, (dm.get(link.target as string) ?? 0) + 1)
+    }
+    const degrees = [...dm.values()].sort((a, b) => b - a)
+    const topIndex = Math.max(1, Math.floor(degrees.length * 0.2))
+    const threshold = degrees[topIndex - 1] ?? 1
+    return { degreeMap: dm, importanceThreshold: threshold }
+  }, [data.nodes, data.links])
 
-  // Node click handler
+  const labelStateRef = useRef({ showAll: false, showImportant: false })
+
+  const updateLabelState = useCallback((zoom: number) => {
+    const state = labelStateRef.current
+    state.showAll = state.showAll ? zoom > 1.8 : zoom > 2.0
+    state.showImportant = state.showImportant ? zoom > 0.8 : zoom > 1.0
+  }, [])
+
+  // Node click handler — use ref so the callback identity never changes
+  // (ForceGraph2D kapsule may not update callbacks reliably on re-renders)
+  const onNodeClickRef = useRef(onNodeClick)
+  onNodeClickRef.current = onNodeClick
   const handleNodeClick = useCallback(
     (node: NodeObject<FGNode>) => {
-      if (onNodeClick && typeof node.id === 'string') {
-        onNodeClick(node.id)
+      if (onNodeClickRef.current && typeof node.id === 'string') {
+        onNodeClickRef.current(node.id)
       }
     },
-    [onNodeClick],
+    [],
   )
 
   // Node visibility filter
@@ -186,7 +253,16 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       const y = node.y ?? 0
       const isSelected = selectedNodeId === fgNode.id
       const isFocused = focusedNodeId === fgNode.id
-      const radius = isSelected ? 6 : 4
+      const degree = degreeMap.get(fgNode.id) ?? 0
+      const baseRadius = Math.min(4 + degree * 0.5, 12)
+      const radius = isSelected ? baseRadius + 2 : baseRadius
+      const isBronze = (fgNode as unknown as { properties?: { confidence_tier?: string } }).properties?.confidence_tier === 'bronze'
+
+      ctx.globalAlpha = isBronze ? 0.5 : 1.0
+
+      if (pathHighlight && !pathHighlight.nodeIds.has(fgNode.id) && !isSelected) {
+        ctx.globalAlpha = 0.15
+      }
 
       // Node circle
       ctx.beginPath()
@@ -218,17 +294,34 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         ctx.restore()
       }
 
-      // Label text (only show when zoomed in enough, or node is selected/focused)
-      if (globalScale > 1.5 || isSelected || isFocused) {
+      // Pin indicator
+      const isPinned = pinnedNodeIds?.has(fgNode.id) ?? false
+      if (isPinned) {
+        ctx.beginPath()
+        ctx.arc(x, y - radius - 3, 2, 0, 2 * Math.PI)
+        ctx.fillStyle = '#facc15'
+        ctx.fill()
+      }
+      const isImportant = degree >= importanceThreshold
+
+      const shouldShowLabel =
+        isSelected || isFocused || isPinned ||
+        labelStateRef.current.showAll ||
+        (isImportant && labelStateRef.current.showImportant)
+
+      if (shouldShowLabel) {
         const fontSize = Math.max(12 / globalScale, 2)
-        ctx.font = `${fontSize}px sans-serif`
+        const fontWeight = (isSelected || isPinned) ? 'bold' : 'normal'
+        ctx.font = `${fontWeight} ${fontSize}px sans-serif`
         ctx.textAlign = 'center'
         ctx.textBaseline = 'top'
-        ctx.fillStyle = '#e2e8f0' // slate-200
+        ctx.fillStyle = '#e2e8f0'
         ctx.fillText(fgNode._label, x, y + radius + 2)
       }
+
+      ctx.globalAlpha = 1.0
     },
-    [selectedNodeId, focusedNodeId],
+    [selectedNodeId, focusedNodeId, degreeMap, importanceThreshold, pinnedNodeIds, pathHighlight],
   )
 
   // Pointer area for custom-rendered nodes
@@ -237,21 +330,39 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       const x = node.x ?? 0
       const y = node.y ?? 0
       const fgNode = node as FGNode
-      const isSelected = selectedNodeId === fgNode.id
-      const radius = isSelected ? 8 : 6
+      const degree = degreeMap.get(fgNode.id) ?? 0
+      const baseRadius = Math.min(4 + degree * 0.5, 12)
+      const radius = (selectedNodeId === fgNode.id ? baseRadius + 4 : baseRadius + 2)
 
       ctx.beginPath()
       ctx.arc(x, y, radius, 0, 2 * Math.PI)
       ctx.fillStyle = color
       ctx.fill()
     },
-    [selectedNodeId],
+    [selectedNodeId, degreeMap],
   )
 
-  // Link color based on type
-  const linkColor = useCallback((link: FGLink) => {
-    return getLinkColor(link.type)
+  // Hover tooltip
+  const nodeTooltip = useCallback((node: NodeObject<FGNode>) => {
+    const fgNode = node as FGNode
+    const label = fgNode.labels[0] ?? ''
+    return `${fgNode._label} (${getLabelDisplayName(label)})`
   }, [])
+
+  // Link color based on type — highlight path links when active
+  const linkColor = useCallback((link: FGLink) => {
+    if (pathHighlight) {
+      const src = typeof link.source === 'string' ? link.source : (link.source as unknown as {id:string}).id
+      const tgt = typeof link.target === 'string' ? link.target : (link.target as unknown as {id:string}).id
+      const key = `${src}:${tgt}:${link.type}`
+      const reverseKey = `${tgt}:${src}:${link.type}`
+      if (pathHighlight.linkKeys.has(key) || pathHighlight.linkKeys.has(reverseKey)) {
+        return '#60a5fa' // bright blue
+      }
+      return '#1a1a2e' // very dim
+    }
+    return getLinkColor(link.type)
+  }, [pathHighlight])
 
   // Link label
   const linkLabel = useCallback((link: FGLink) => {
@@ -260,19 +371,36 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     return link.type
   }, [])
 
+  // Right-click handler — use ref for stable callback + library's built-in onNodeRightClick
+  const onNodeRightClickRef = useRef(onNodeRightClick)
+  onNodeRightClickRef.current = onNodeRightClick
+
+  const handleNodeRightClick = useCallback(
+    (node: NodeObject<FGNode>, event: MouseEvent) => {
+      if (onNodeRightClickRef.current && typeof node.id === 'string') {
+        event.preventDefault()
+        onNodeRightClickRef.current(node.id, event.clientX, event.clientY)
+      }
+    },
+    [],
+  )
+
+  // Prevent browser context menu on the graph area when right-click handler is set
+  const handleContextMenu = useCallback((e: React.MouseEvent) => {
+    if (onNodeRightClickRef.current) e.preventDefault()
+  }, [])
+
+
   if (!ForceGraph2D) {
-    return (
-      <div
-        ref={containerRef}
-        className="flex h-full w-full items-center justify-center text-zinc-600"
-      >
-        Cargando grafo...
-      </div>
-    )
+    return <div ref={containerRef} className="flex h-full w-full items-center justify-center text-zinc-600">Cargando grafo...</div>
   }
 
   return (
-    <div ref={containerRef} className="h-full w-full">
+    <div
+      ref={containerRef}
+      className="h-full w-full"
+      onContextMenu={handleContextMenu}
+    >
       <ForceGraph2D
         ref={graphRef}
         graphData={fgData}
@@ -289,13 +417,17 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         linkDirectionalArrowLength={3}
         linkDirectionalArrowRelPos={1}
         linkCurvature={0.1}
+        nodeLabel={nodeTooltip as (node: object) => string}
         onNodeClick={handleNodeClick}
+        onNodeRightClick={handleNodeRightClick}
+        onZoom={(transform: { k: number }) => updateLabelState(transform.k)}
         enableZoomInteraction={true}
         enablePanInteraction={true}
         enableNodeDrag={true}
-        cooldownTicks={100}
-        d3AlphaDecay={0.02}
-        d3VelocityDecay={0.3}
+        warmupTicks={50}
+        cooldownTicks={0}
+        d3AlphaDecay={0.05}
+        d3VelocityDecay={0.4}
         minZoom={0.5}
         maxZoom={20}
       />

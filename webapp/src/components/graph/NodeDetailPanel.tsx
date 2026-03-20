@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
 import type { GraphData, GraphLink, GraphNode } from '../../lib/neo4j/types'
+import { getNodeLabel, getLabelColor, getLabelDisplayName } from '../../lib/graph/constants'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -12,6 +13,9 @@ export interface NodeDetailPanelProps {
   readonly nodeId: string | null
   readonly onClose: () => void
   readonly onNavigate: (nodeId: string) => void
+  readonly onExpand?: (nodeId: string) => void
+  readonly onTogglePin?: (nodeId: string) => void
+  readonly isPinned?: boolean
 }
 
 interface NodeDetail {
@@ -37,26 +41,6 @@ interface NeighborItem {
 // Constants
 // ---------------------------------------------------------------------------
 
-const LABEL_COLORS: Readonly<Record<string, string>> = {
-  Politician: '#3b82f6',
-  Party: '#8b5cf6',
-  Province: '#10b981',
-  LegislativeVote: '#f59e0b',
-  Legislation: '#ef4444',
-  Investigation: '#ec4899',
-  User: '#6b7280',
-}
-
-const LABEL_DISPLAY: Readonly<Record<string, string>> = {
-  Politician: 'Politico',
-  Party: 'Partido',
-  Province: 'Provincia',
-  LegislativeVote: 'Votacion',
-  Legislation: 'Legislacion',
-  Investigation: 'Investigacion',
-  User: 'Usuario',
-}
-
 const HIDDEN_PROPERTIES = new Set([
   'ingestion_hash',
   'source_url',
@@ -70,26 +54,6 @@ const HIDDEN_PROPERTIES = new Set([
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-
-function getNodeDisplayName(node: GraphNode): string {
-  const props = node.properties
-  if (typeof props.name === 'string') return props.name
-  if (typeof props.title === 'string') return props.title
-  if (typeof props.full_name === 'string') return props.full_name
-  return node.id
-}
-
-function getNeighborDisplayName(node: GraphNode): string {
-  return getNodeDisplayName(node)
-}
-
-function getLabelColor(label: string): string {
-  return LABEL_COLORS[label] ?? '#94a3b8'
-}
-
-function getLabelDisplayName(label: string): string {
-  return LABEL_DISPLAY[label] ?? label
-}
 
 function getVisibleProperties(node: GraphNode): readonly [string, unknown][] {
   return Object.entries(node.properties).filter(([key]) => !HIDDEN_PROPERTIES.has(key))
@@ -127,7 +91,7 @@ function groupNeighbors(
     const existing = groups.get(groupKey) ?? []
     const item: NeighborItem = {
       nodeId: neighbor.id,
-      name: getNeighborDisplayName(neighbor),
+      name: getNodeLabel(neighbor),
       label: neighbor.labels[0] ?? 'Unknown',
       relationshipProps: link.properties,
     }
@@ -157,7 +121,7 @@ function buildNodeDetail(nodeId: string, data: GraphData): NodeDetail | null {
 // Component
 // ---------------------------------------------------------------------------
 
-export function NodeDetailPanel({ nodeId, onClose, onNavigate }: NodeDetailPanelProps) {
+export function NodeDetailPanel({ nodeId, onClose, onNavigate, onExpand, onTogglePin, isPinned }: NodeDetailPanelProps) {
   const [detail, setDetail] = useState<NodeDetail | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -224,7 +188,7 @@ export function NodeDetailPanel({ nodeId, onClose, onNavigate }: NodeDetailPanel
   if (!nodeId) return null
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 flex max-h-[60vh] flex-col border-t border-zinc-800 bg-zinc-950 md:static md:inset-auto md:z-auto md:h-full md:max-h-none md:w-80 md:border-l md:border-t-0">
+    <div className="fixed inset-y-0 right-0 z-30 flex w-80 flex-col border-l border-zinc-800 bg-zinc-950 shadow-2xl max-md:inset-x-0 max-md:inset-y-auto max-md:bottom-0 max-md:w-auto max-md:max-h-[60vh] max-md:border-l-0 max-md:border-t max-md:shadow-none">
       {/* Mobile drag handle */}
       <div className="flex justify-center py-2 md:hidden">
         <div className="h-1 w-10 rounded-full bg-zinc-700" />
@@ -232,9 +196,35 @@ export function NodeDetailPanel({ nodeId, onClose, onNavigate }: NodeDetailPanel
 
       {/* Header */}
       <div className="flex items-center justify-between border-b border-zinc-800 px-4 py-3 md:py-3">
-        <h2 className="truncate text-sm font-semibold text-zinc-100">
-          {detail ? getNodeDisplayName(detail.node) : 'Cargando...'}
+        <h2 className="min-w-0 flex-1 truncate text-sm font-semibold text-zinc-100">
+          {detail ? getNodeLabel(detail.node) : 'Cargando...'}
         </h2>
+        {nodeId && onTogglePin && (
+          <button
+            onClick={() => onTogglePin(nodeId)}
+            className={`flex-shrink-0 rounded p-1 transition-colors hover:bg-zinc-800 ${
+              isPinned ? 'text-yellow-400' : 'text-zinc-400 hover:text-zinc-200'
+            }`}
+            aria-label={isPinned ? 'Desfijar nodo' : 'Fijar nodo'}
+            title={isPinned ? 'Desfijar' : 'Fijar'}
+          >
+            <svg className="h-4 w-4" fill={isPinned ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M16 12V4h1a1 1 0 100-2H7a1 1 0 000 2h1v8l-2 2v2h5v6l1 1 1-1v-6h5v-2l-2-2z" />
+            </svg>
+          </button>
+        )}
+        {nodeId && onExpand && (
+          <button
+            onClick={() => onExpand(nodeId)}
+            className="flex-shrink-0 rounded p-1 text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-200"
+            aria-label="Expandir vecindario"
+            title="Expandir"
+          >
+            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+            </svg>
+          </button>
+        )}
         <button
           onClick={onClose}
           className="flex-shrink-0 rounded p-1 text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-200"

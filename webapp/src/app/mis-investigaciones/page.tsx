@@ -225,21 +225,7 @@ function MisInvestigacionesContent() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950">
-      {/* Header */}
-      <header className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-sm">
-        <div className="mx-auto max-w-5xl px-4 py-4">
-          <nav className="flex items-center gap-2 text-sm text-zinc-500">
-            <Link href="/" className="transition-colors hover:text-zinc-300">
-              ORC
-            </Link>
-            <span>/</span>
-            <span className="text-zinc-300">Mis investigaciones</span>
-          </nav>
-        </div>
-      </header>
-
-      <main className="mx-auto max-w-5xl px-4 py-8">
+    <main className="mx-auto max-w-5xl px-4 py-8">
         {/* Title + CTA */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <h1 className="text-2xl font-bold text-zinc-50 sm:text-3xl">Mis investigaciones</h1>
@@ -325,8 +311,7 @@ function MisInvestigacionesContent() {
             </button>
           </div>
         )}
-      </main>
-    </div>
+    </main>
   )
 }
 
