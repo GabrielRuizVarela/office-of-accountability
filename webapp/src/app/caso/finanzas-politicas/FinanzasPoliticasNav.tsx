@@ -12,6 +12,7 @@ const BASE_PATH = '/caso/finanzas-politicas'
 
 const TABS: readonly NavTab[] = [
   { href: BASE_PATH, label: 'Inicio' },
+  { href: `${BASE_PATH}/resumen`, label: 'Resumen' },
   { href: `${BASE_PATH}/investigacion`, label: 'Investigacion' },
   { href: `${BASE_PATH}/cronologia`, label: 'Cronologia' },
   { href: `${BASE_PATH}/dinero`, label: 'El Dinero' },
