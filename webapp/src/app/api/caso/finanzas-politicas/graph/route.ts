@@ -50,22 +50,24 @@ interface ApiLink {
  * returns a small, focused subgraph (max ~50 politicians with their targets).
  */
 /**
- * Two-phase query:
- * 1. Get top politicians (3+ datasets) with their direct connections
- * 2. Find shared companies/entities that BRIDGE politicians together
- *
- * This creates a connected graph instead of isolated star clusters.
+ * Multi-layer query building a rich investigation network:
+ * - Investigation targets + top politicians
+ * - Their offshore entities, donors, appointments
+ * - Judges handling key cases
+ * - PENSAR ARGENTINA members
+ * - Cross-referenced entities (donor↔offshore, contractor↔offshore)
+ * - Key companies (SOCMA, Correo, AUSOL, Geometales)
  */
 const CYPHER = `
-// Phase 1: Get investigation-relevant politicians
+// Layer 1: Politicians with 2+ datasets (broader net)
 MATCH (p:Politician)-[r:MAYBE_SAME_AS]->(t)
 WITH p, collect(DISTINCT labels(t)[0]) AS datasets
-WHERE size(datasets) >= 3
+WHERE size(datasets) >= 2
 WITH p, datasets
 ORDER BY size(datasets) DESC
-LIMIT 30
+LIMIT 50
 
-// Phase 2: Get their connections (limited per politician to avoid explosion)
+// Layer 2: Their high-value connections
 MATCH (p)-[r:MAYBE_SAME_AS]->(t)
 WHERE t:OffshoreOfficer OR t:Donor OR t:GovernmentAppointment
   OR (t:BoardMember AND r.confidence >= 0.7)
@@ -76,14 +78,47 @@ WITH p, datasets,
        type: labels(t)[0],
        name: COALESCE(t.name, t.official_name, t.donor_name, "desconocido"),
        props: {confidence: r.confidence, match_method: r.match_method}
-     })[..8] AS targets,
+     })[..6] AS targets,
      collect({
        relId: toString(elementId(r)),
        targetId: toString(elementId(t)),
        relType: type(r),
        relProps: {confidence: r.confidence}
-     })[..8] AS rels
+     })[..6] AS rels
 RETURN p, datasets, targets, rels
+`
+
+/** Offshore entities connected to politicians — show the BVI companies */
+const OFFSHORE_ENTITIES_CYPHER = `
+MATCH (p:Politician)-[:MAYBE_SAME_AS]->(o:OffshoreOfficer)-[:OFFICER_OF]->(e:OffshoreEntity)
+RETURN p.id AS pid, o.name AS officer, toString(elementId(o)) AS oid,
+       e.name AS entity, e.jurisdiction_description AS jurisdiction,
+       e.status AS status, toString(elementId(e)) AS eid
+`
+
+/** Judges handling investigation cases */
+const JUDGES_CYPHER = `
+MATCH (j:Judge)-[:APPOINTED_BY]->(p:Politician)
+WHERE j.name CONTAINS "LIJO" OR j.name CONTAINS "ERCOLINI" OR j.name CONTAINS "ARROYO SALGADO"
+   OR j.name CONTAINS "CASANELLO" OR j.name CONTAINS "BONADIO"
+RETURN j.name AS judge, toString(elementId(j)) AS jid,
+       p.id AS appointedBy, p.name AS presidentName
+`
+
+/** Cross-referenced entities (donor↔offshore, contractor↔offshore) */
+const CROSS_REF_CYPHER = `
+MATCH (a)-[r:CROSS_REFERENCED]->(b)
+RETURN toString(elementId(a)) AS aid, COALESCE(a.name, "unknown") AS aname, labels(a)[0] AS atype,
+       toString(elementId(b)) AS bid, COALESCE(b.name, "unknown") AS bname, labels(b)[0] AS btype,
+       r.source AS source
+`
+
+/** PENSAR ARGENTINA network */
+const PENSAR_CYPHER = `
+MATCH (p:Politician)-[:AFFILIATED_WITH]->(org)
+WHERE org.name CONTAINS "PENSAR"
+RETURN p.id AS pid, p.name AS pname, org.name AS org, toString(elementId(org)) AS orgId
+LIMIT 25
 `
 
 /**
@@ -235,7 +270,117 @@ export async function GET(): Promise<Response> {
       }
     }
 
-    // Phase 2: Run all bridge queries to connect politician clusters
+    // Phase 2: Add offshore entities (the BVI companies)
+    try {
+      const offshore = await readQuery(OFFSHORE_ENTITIES_CYPHER, {}, (r: Neo4jRecord) => ({
+        pid: r.get('pid') as string,
+        officer: r.get('officer') as string,
+        oid: r.get('oid') as string,
+        entity: r.get('entity') as string,
+        jurisdiction: r.get('jurisdiction') as string,
+        status: r.get('status') as string,
+        eid: r.get('eid') as string,
+      }))
+      for (const o of offshore.records) {
+        const pId = politicianElementIds.get(o.pid)
+        if (!pId) continue
+        // Add offshore entity node
+        if (!nodeMap.has(o.eid)) {
+          nodeMap.set(o.eid, {
+            id: o.eid, name: o.entity + ' (' + (o.jurisdiction || 'offshore') + ')',
+            type: 'OffshoreEntity', color: '#dc2626', datasets: 0, val: 5,
+            labels: ['OffshoreEntity'], properties: { jurisdiction: o.jurisdiction, status: o.status },
+          })
+        }
+        // Link politician → offshore entity (through officer if not already linked)
+        links.push({ source: pId, target: o.eid, type: 'HAS_OFFSHORE', properties: { officer: o.officer } })
+      }
+    } catch { /* timeout ok */ }
+
+    // Phase 3: Add judges
+    try {
+      const judges = await readQuery(JUDGES_CYPHER, {}, (r: Neo4jRecord) => ({
+        judge: r.get('judge') as string, jid: r.get('jid') as string,
+        appointedBy: r.get('appointedBy') as string, president: r.get('presidentName') as string,
+      }))
+      for (const j of judges.records) {
+        if (!nodeMap.has(j.jid)) {
+          nodeMap.set(j.jid, {
+            id: j.jid, name: 'Juez ' + j.judge, type: 'Judge', color: '#f97316',
+            datasets: 0, val: 4, labels: ['Judge'], properties: { appointedBy: j.president },
+          })
+        }
+        const pId = politicianElementIds.get(j.appointedBy)
+        if (pId) links.push({ source: pId, target: j.jid, type: 'APPOINTED', properties: {} })
+      }
+    } catch { /* timeout ok */ }
+
+    // Phase 4: Add cross-referenced entities (donor↔offshore, contractor↔offshore)
+    try {
+      const crossRefs = await readQuery(CROSS_REF_CYPHER, {}, (r: Neo4jRecord) => ({
+        aid: r.get('aid') as string, aname: r.get('aname') as string, atype: r.get('atype') as string,
+        bid: r.get('bid') as string, bname: r.get('bname') as string, btype: r.get('btype') as string,
+        source: r.get('source') as string,
+      }))
+      for (const cr of crossRefs.records) {
+        if (!nodeMap.has(cr.aid)) {
+          nodeMap.set(cr.aid, {
+            id: cr.aid, name: cr.aname, type: cr.atype,
+            color: NODE_COLORS[cr.atype] ?? '#94a3b8', datasets: 0, val: 3,
+            labels: [cr.atype], properties: {},
+          })
+        }
+        if (!nodeMap.has(cr.bid)) {
+          nodeMap.set(cr.bid, {
+            id: cr.bid, name: cr.bname, type: cr.btype,
+            color: NODE_COLORS[cr.btype] ?? '#94a3b8', datasets: 0, val: 3,
+            labels: [cr.btype], properties: {},
+          })
+        }
+        links.push({ source: cr.aid, target: cr.bid, type: 'CROSS_REFERENCED', properties: { source: cr.source } })
+      }
+    } catch { /* timeout ok */ }
+
+    // Phase 5: Add PENSAR ARGENTINA network
+    try {
+      const pensar = await readQuery(PENSAR_CYPHER, {}, (r: Neo4jRecord) => ({
+        pid: r.get('pid') as string, pname: r.get('pname') as string,
+        org: r.get('org') as string, orgId: r.get('orgId') as string,
+      }))
+      for (const p of pensar.records) {
+        const pId = politicianElementIds.get(p.pid)
+        if (!pId) {
+          // Politician not in main query — add them
+          const pensarPolId = 'pensar-pol-' + p.pid
+          if (!nodeMap.has(pensarPolId)) {
+            nodeMap.set(pensarPolId, {
+              id: pensarPolId, name: p.pname, type: 'Politician',
+              color: NODE_COLORS.Politician, datasets: 1, val: 2,
+              labels: ['Politician'], properties: { id: p.pid },
+            })
+          }
+          if (!nodeMap.has(p.orgId)) {
+            nodeMap.set(p.orgId, {
+              id: p.orgId, name: p.org, type: 'Organization',
+              color: '#10b981', datasets: 0, val: 6,
+              labels: ['Organization'], properties: {},
+            })
+          }
+          links.push({ source: pensarPolId, target: p.orgId, type: 'MEMBER_OF', properties: {} })
+        } else {
+          if (!nodeMap.has(p.orgId)) {
+            nodeMap.set(p.orgId, {
+              id: p.orgId, name: p.org, type: 'Organization',
+              color: '#10b981', datasets: 0, val: 6,
+              labels: ['Organization'], properties: {},
+            })
+          }
+          links.push({ source: pId, target: p.orgId, type: 'MEMBER_OF', properties: {} })
+        }
+      }
+    } catch { /* timeout ok */ }
+
+    // Phase 6: Run all bridge queries to connect politician clusters
     const bridgeQueries = [COALITION_BRIDGE, ORG_BRIDGE, OFFSHORE_BRIDGE, PROVINCE_BRIDGE]
     const bridgeColors: Record<string, string> = {
       SAME_COALITION: '#f59e0b', // amber
