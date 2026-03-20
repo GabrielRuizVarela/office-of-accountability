@@ -60,6 +60,8 @@ This follows the existing pattern in the codebase, where `caso_slug` serves the 
 
 **Constraint compatibility:** The engine does NOT create new Neo4j UNIQUE constraints per investigation. It relies on the composite ID format for uniqueness and the `investigation_id` property for isolation. Existing global constraints remain in place for non-engine data.
 
+**Coexistence with pre-engine data:** Existing nodes (from wave scripts, seed data) retain their plain IDs (e.g., `ee-john-doe`) and have no `investigation_id` property. The engine treats these as read-only reference data — it can query and link to them but does not modify or merge them. Engine-created nodes always use composite IDs (`caso-epstein:ee-john-doe`) and always carry `investigation_id`. Dedup between engine nodes and pre-engine nodes uses `caso_slug` matching (the existing pattern), not ID comparison. This avoids silent boundary failures while preserving backward compatibility.
+
 ---
 
 ## 3. Investigation File Structure
@@ -117,8 +119,8 @@ models:
       max_tokens: 4096
 
 mirofish:
-  endpoint: http://localhost:5000
-  llm_backend: default
+  endpoint: http://localhost:5000    # MiroFish swarm server (separate from llama.cpp at :8080)
+  llm_backend: default               # which model config MiroFish uses internally
 ```
 
 ### 3.2 schema.yaml
@@ -403,7 +405,7 @@ stages:
 - **Gates are blocking.** The pipeline stops and waits for human input. Gate decisions are recorded in the audit log.
 - **Stages can loop.** The `back_to_analyze` action on the report gate loops back.
 - **LLM scope is per-stage.** Each stage defines what the LLM can do — no free rein across the investigation.
-- **Computed sort expressions.** The `order_by` field supports `@`-prefixed computed aggregations (e.g., `@connection_count` generates `ORDER BY count{ (n)--() }`). Plain field names sort by stored properties. This keeps the YAML simple for common cases while supporting runtime aggregations.
+- **Computed sort expressions.** The `order_by` field supports `@`-prefixed computed aggregations (e.g., `@connection_count` generates `ORDER BY COUNT { (n)--(m) WHERE m.investigation_id = $investigationId } DESC`). Plain field names sort by stored properties. This keeps the YAML simple for common cases while supporting runtime aggregations. Computed aggregations are always scoped to the investigation namespace via `investigation_id` filter.
 
 ---
 
@@ -471,7 +473,7 @@ swarm:
 
 A corporate investigation could turn `Company` nodes into agents with `Officer` and `Transaction` context. The engine handles the conversion generically based on schema.yaml.
 
-**Migration note:** The existing `mirofish/client.ts` reads from `process.env.MIROFISH_API_URL` (hardcoded at import time). The engine requires a runtime-configurable endpoint per investigation. The client must be refactored to accept an `endpoint` parameter on each call rather than reading from env at module load. Similarly, `graphToMiroFishSeed()` must be generalized to accept `agent_source` and `context_from` node types from YAML rather than hardcoding `Person`, `Organization`, `Location`.
+**Migration note:** The existing `mirofish/client.ts` reads from `process.env.MIROFISH_API_URL` (hardcoded at import time). The engine requires a runtime-configurable endpoint per investigation. The `endpoint` parameter must be added to the exported public functions (`initializeSimulation`, `querySimulation`, `getSimulationStatus`), not only to the internal `apiRequest` helper, so callers can pass per-investigation endpoints from YAML config. Similarly, `graphToMiroFishSeed()` must be generalized to accept `agent_source` and `context_from` node types from YAML rather than hardcoding `Person`, `Organization`, `Location`.
 
 ### 4.3 Proposals
 
