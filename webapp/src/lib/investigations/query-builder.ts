@@ -151,13 +151,18 @@ export async function getNodesByType(
   const session = getDriver().session()
   const limit = opts.limit ?? 100
   const offset = opts.offset ?? 0
-  const orderBy = opts.orderBy ?? 'name'
   const orderDir = opts.orderDir === 'DESC' ? 'DESC' : 'ASC'
 
-  // Get the node type definition for color/icon
-  const schemaDef = await getNodeTypeDefinition(session, casoSlug, nodeType)
+  // Whitelist allowed orderBy properties to prevent Cypher injection
+  const ALLOWED_ORDER_FIELDS = ['name', 'date', 'title', 'created_at', 'slug', 'id']
+  const orderBy = opts.orderBy && ALLOWED_ORDER_FIELDS.includes(opts.orderBy)
+    ? opts.orderBy
+    : 'name'
 
   try {
+    // Get the node type definition for color/icon (inside try to prevent session leak)
+    const schemaDef = await getNodeTypeDefinition(session, casoSlug, nodeType)
+
     // nodeType is validated against the schema, not interpolated from user input.
     // It comes from NodeTypeDefinition nodes stored in Neo4j.
     const result = await session.run(
