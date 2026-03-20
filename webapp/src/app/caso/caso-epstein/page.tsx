@@ -5,7 +5,7 @@
 
 import Link from 'next/link'
 
-import { getActors, getDocuments } from '@/lib/caso-epstein'
+import { getActors, getDocuments, CASO_EPSTEIN_SLUG } from '@/lib/caso-epstein'
 import { ActorCard } from '@/components/investigation/ActorCard'
 import { DocumentCard } from '@/components/investigation/DocumentCard'
 import { ShareButton } from '@/components/ui/ShareButton'
@@ -13,7 +13,10 @@ import { ShareButton } from '@/components/ui/ShareButton'
 const SLUG = 'caso-epstein'
 
 export default async function CasoEpsteinPage() {
-  const [actors, documents] = await Promise.all([getActors(), getDocuments()])
+  const [actors, documents] = await Promise.all([
+    getActors(CASO_EPSTEIN_SLUG),
+    getDocuments(CASO_EPSTEIN_SLUG),
+  ])
 
   return (
     <div className="space-y-10">
