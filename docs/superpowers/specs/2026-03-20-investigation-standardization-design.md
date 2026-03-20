@@ -507,6 +507,15 @@ All paths are relative to `webapp/`.
 | `src/app/caso/[slug]/investigacion/page.tsx` | Update hardcoded `fetch('/api/caso-libra/investigation', ...)` to use dynamic `slug` |
 | `src/app/caso/[slug]/actor/[actorSlug]/page.tsx` | Update hardcoded `fetch('/api/caso-libra/person/...')` to use dynamic `slug` |
 | `scripts/seed-caso-epstein.ts` | Rewrite — currently seeds hand-authored static data (persons, locations, events, documents, organizations, legal cases covering the pre-2024 investigation scope); replace with full import from rhowardstone JSON data (606 knowledge graph entities + 1,614 persons registry entries) |
+| `src/app/caso/[slug]/page.tsx` | Refactor to schema-driven landing using `InvestigationLanding` component + query builder |
+| `src/app/caso/[slug]/resumen/page.tsx` | Refactor from hardcoded slug dispatch to config-driven `NarrativeView` |
+| `src/app/caso/[slug]/investigacion/page.tsx` | Refactor from hardcoded data imports to query builder + `InvestigacionView` |
+| `src/app/caso/[slug]/evidencia/page.tsx` | Remove conditional slug dispatch, use query builder |
+| `src/app/caso/[slug]/cronologia/page.tsx` | Remove conditional slug dispatch, use query builder |
+| `src/app/caso/[slug]/grafo/page.tsx` | Update API fetch URL to `/api/casos/${slug}/graph` |
+| `src/app/caso/[slug]/vuelos/page.tsx` | Update API fetch URL to `/api/casos/${slug}/flights` |
+| `src/components/investigation/InvestigationNav.tsx` | Remove hardcoded `CASE_TABS`, read tabs from investigation config |
+| `src/lib/caso-libra/investigation-data.ts` | Narrative chapter data moves to `config.ts`; static editorial data for factchecks/timeline stays until fully migrated to Neo4j |
 
 ### 7.2 Created
 
@@ -530,12 +539,29 @@ All paths are relative to `webapp/`.
 | `src/app/api/casos/[casoSlug]/schema/route.ts` | Schema introspection endpoint |
 | `src/app/api/casos/[casoSlug]/submissions/route.ts` | Unified submission endpoint |
 | `src/app/api/casos/[casoSlug]/stats/route.ts` | Unified stats endpoint |
+| `src/lib/investigations/registry.ts` | Central registry: casoSlug → investigation module |
+| `src/lib/caso-libra/config.ts` | Investigation client config (tabs, features, hero, chapters) |
+| `src/lib/caso-finanzas-politicas/config.ts` | Investigation client config |
+| `src/lib/caso-finanzas-politicas/transforms.ts` | Pure transform functions |
+| `src/lib/caso-epstein/config.ts` | Investigation client config |
+| `src/lib/caso-epstein/transforms.ts` | Pure transform functions |
+| `src/components/investigation/InvestigationLanding.tsx` | Generic landing page (hero + stats + featured actors) |
+| `src/components/investigation/InvestigacionView.tsx` | Factcheck/timeline/actors/money-flows page |
+| `src/components/investigation/NarrativeView.tsx` | Chapter-based narrative with bilingual toggle |
+| `src/components/investigation/ClaimCard.tsx` | Factcheck claim display with status badge |
+| `src/components/investigation/MoneyFlowCard.tsx` | Financial flow visualization card |
 
 ### 7.3 Deleted (after migration confirmed working)
 
 | File | Reason |
 |---|---|
 | `src/lib/caso-finanzas-politicas/investigation-data.ts` | Data moves to Neo4j |
+| `src/app/caso/finanzas-politicas/page.tsx` | Replaced by generic `[slug]` landing page |
+| `src/app/caso/finanzas-politicas/layout.tsx` | Replaced by generic `[slug]` layout with InvestigationNav |
+| `src/app/caso/finanzas-politicas/resumen/page.tsx` | Replaced by generic `[slug]/resumen` page |
+| `src/app/caso/finanzas-politicas/investigacion/page.tsx` | Replaced by generic `[slug]/investigacion` page |
+| `src/app/caso/finanzas-politicas/cronologia/page.tsx` | Replaced by generic `[slug]/cronologia` page |
+| `src/app/caso/finanzas-politicas/dinero/page.tsx` | Replaced by generic `[slug]/dinero` page |
 
 ### 7.4 Untouched
 
@@ -545,9 +571,324 @@ All paths are relative to `webapp/`.
 | `src/lib/investigation/*` | TipTap-based Investigation documents — separate concern |
 | `src/lib/caso-libra/types.ts` | Domain types don't change |
 | `src/lib/caso-libra/investigation-schema.ts` | Zod submission schemas still valid |
-| `src/lib/caso-libra/investigation-data.ts` | Static editorial data for public page |
 | `src/app/api/caso/finanzas-politicas/graph/route.ts` | Queries platform labels, not investigation-specific |
 | `src/app/api/investigations/*` | User-authored investigation CRUD — separate concern |
-| `src/app/caso/finanzas-politicas/*` | Static routes for platform-graph visualization |
+| `src/app/caso/finanzas-politicas/conexiones/page.tsx` | Platform-graph visualization — separate concern (may become feature flag later) |
 | All Como Voto ETL scripts | Platform reference data |
 | `_ingestion_data/rhowardstone/*` | Source data consumed by seed script |
+
+---
+
+## 8. Backend Module Standardization
+
+### 8.1 Per-Investigation Module Layout
+
+Every investigation gets the same file structure under `webapp/src/lib/caso-{slug}/`:
+
+```
+lib/caso-libra/
+  types.ts          — Domain types (Person, Event, etc.) specific to this investigation
+  queries.ts        — Typed query wrappers that delegate to the generic query builder
+  transforms.ts     — Pure functions: Neo4j records → domain objects
+  config.ts         — Investigation metadata (tabs, hero text, feature flags, chapters)
+  index.ts          — Re-exports
+  investigation-schema.ts  — Zod submission schemas (caso-libra only, for now)
+
+lib/caso-finanzas-politicas/
+  types.ts
+  queries.ts
+  transforms.ts
+  config.ts
+  index.ts
+
+lib/caso-epstein/
+  types.ts
+  queries.ts
+  transforms.ts
+  config.ts
+  index.ts
+```
+
+### 8.2 InvestigationClientConfig Contract
+
+Each investigation exports a static config that the frontend uses to decide what to render:
+
+```typescript
+// lib/investigations/types.ts
+
+interface BilingualText {
+  es: string
+  en: string
+}
+
+interface InvestigationClientConfig {
+  casoSlug: string
+  name: BilingualText
+  description: BilingualText
+  tabs: TabId[]
+  features: {
+    wallets: boolean        // enables /dinero page
+    simulation: boolean     // enables /simular page
+    flights: boolean        // enables /vuelos page
+    submissions: boolean    // enables evidence submission form
+    platformGraph: boolean  // enables /conexiones page (platform-label queries)
+  }
+  hero: {
+    title: BilingualText
+    subtitle: BilingualText
+  }
+  chapters?: NarrativeChapter[]  // for /resumen page (editorial content)
+}
+
+type TabId = 'resumen' | 'investigacion' | 'cronologia' | 'evidencia' | 'grafo'
+           | 'dinero' | 'simular' | 'vuelos' | 'proximidad' | 'conexiones'
+```
+
+### 8.3 Investigation Registry
+
+A central registry resolves `casoSlug` → module config:
+
+```typescript
+// lib/investigations/registry.ts
+import { config as libraConfig } from '../caso-libra/config'
+import { config as finanzasConfig } from '../caso-finanzas-politicas/config'
+import { config as epsteinConfig } from '../caso-epstein/config'
+
+const REGISTRY: Record<string, InvestigationClientConfig> = {
+  'caso-libra': libraConfig,
+  'caso-finanzas-politicas': finanzasConfig,
+  'caso-epstein': epsteinConfig,
+}
+
+export function getInvestigationConfig(slug: string): InvestigationClientConfig | null {
+  return REGISTRY[slug] ?? null
+}
+
+export function getAllInvestigations(): InvestigationClientConfig[] {
+  return Object.values(REGISTRY)
+}
+```
+
+### 8.4 Query Pattern
+
+All investigation queries follow the same pattern — typed wrappers around the generic query builder:
+
+```typescript
+// lib/caso-epstein/queries.ts
+import { queryBuilder } from '../investigations/query-builder'
+import { toPerson, toEvent } from './transforms'
+
+const SLUG = 'caso-epstein'
+
+export async function getPersonBySlug(slug: string) {
+  const node = await queryBuilder.getNodeBySlug(SLUG, 'Person', slug)
+  return node ? toPerson(node) : null
+}
+
+export async function getTimeline() {
+  const events = await queryBuilder.getNodesByType(SLUG, 'Event', { orderBy: 'date' })
+  return events.map(toEvent)
+}
+```
+
+Each investigation's `queries.ts` is thin — just slug binding + type-safe transforms. The generic query builder handles Cypher generation.
+
+---
+
+## 9. Frontend Standardization
+
+### 9.1 Data Fetching Pattern
+
+All pages use a single pattern: **server component fetches via the generic query builder, parameterized by slug.**
+
+```typescript
+// app/caso/[slug]/cronologia/page.tsx (example)
+import { getInvestigationConfig } from '@/lib/investigations/registry'
+import { queryBuilder } from '@/lib/investigations/query-builder'
+
+export default async function CronologiaPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const config = getInvestigationConfig(slug)
+  if (!config) notFound()
+
+  const events = await queryBuilder.getTimeline(slug)
+  return <Timeline events={events} config={config} />
+}
+```
+
+No more conditional slug dispatch (`if (slug === 'caso-epstein') ...`). No more hardcoded data imports. The query builder handles everything via `caso_slug` filtering.
+
+Client components that need data use the unified API:
+
+```typescript
+const res = await fetch(`/api/casos/${casoSlug}/graph`)
+```
+
+### 9.2 Investigation Landing Page
+
+The landing page becomes schema-driven:
+
+```typescript
+// app/caso/[slug]/page.tsx
+export default async function CasoLandingPage({ params }) {
+  const { slug } = await params
+  const config = getInvestigationConfig(slug)
+  if (!config) notFound()
+
+  const stats = await queryBuilder.getStats(slug)
+  const schema = await queryBuilder.getSchema(slug)
+  const actors = await queryBuilder.getNodesByType(slug, 'Person', { limit: 6 })
+
+  return <InvestigationLanding config={config} stats={stats} schema={schema} actors={actors} />
+}
+```
+
+`<InvestigationLanding>` reads the config for hero text, feature flags, and available tabs. No per-investigation rendering logic in the page file.
+
+### 9.3 Investigacion Page
+
+Currently the largest page (~1000 lines) with hardcoded data imports and slug dispatch. Refactored to:
+
+```typescript
+// app/caso/[slug]/investigacion/page.tsx
+export default async function InvestigacionPage({ params }) {
+  const { slug } = await params
+  const config = getInvestigationConfig(slug)
+  if (!config) notFound()
+
+  const [claims, events, actors, moneyFlows] = await Promise.all([
+    queryBuilder.getNodesByType(slug, 'Claim'),
+    queryBuilder.getNodesByType(slug, 'Event', { orderBy: 'date' }),
+    queryBuilder.getNodesByType(slug, 'Person'),
+    queryBuilder.getNodesByType(slug, 'MoneyFlow'),
+  ])
+
+  return (
+    <InvestigacionView
+      config={config}
+      claims={claims}
+      events={events}
+      actors={actors}
+      moneyFlows={moneyFlows}
+    />
+  )
+}
+```
+
+`<InvestigacionView>` renders sections conditionally — if there are no `Claim` nodes for an investigation, the factcheck section doesn't render. If there are no `MoneyFlow` nodes, the money flow section doesn't render.
+
+### 9.4 Resumen Page (Narrative Chapters)
+
+The resumen pages have hardcoded chapter arrays that are editorial content, not graph data. These move into each investigation's `config.ts`:
+
+```typescript
+// lib/caso-libra/config.ts
+export const config: InvestigationClientConfig = {
+  // ...
+  chapters: [
+    {
+      id: 'genesis',
+      title: { es: 'El Origen', en: 'The Genesis' },
+      content: { es: '...', en: '...' },
+      sources: [{ name: '...', url: '...' }],
+    },
+    // ...
+  ],
+}
+```
+
+The resumen page becomes generic:
+
+```typescript
+// app/caso/[slug]/resumen/page.tsx
+export default function ResumenPage({ params }) {
+  const { slug } = use(params)
+  const config = getInvestigationConfig(slug)
+  if (!config) notFound()
+  if (!config.chapters?.length) notFound()
+
+  return <NarrativeView chapters={config.chapters} />
+}
+```
+
+### 9.5 Conditional Feature Pages
+
+Pages that only apply to certain investigations check the feature flag:
+
+```typescript
+// app/caso/[slug]/dinero/page.tsx
+export default async function DineroPage({ params }) {
+  const { slug } = await params
+  const config = getInvestigationConfig(slug)
+  if (!config?.features.wallets) notFound()
+
+  const flows = await queryBuilder.getGraph(slug)
+  return <WalletExplorer flows={flows} config={config} />
+}
+```
+
+Feature flags from `config.ts`:
+
+| Flag | Page | Investigations |
+|---|---|---|
+| `wallets` | `/dinero` | caso-libra |
+| `simulation` | `/simular` | caso-libra |
+| `flights` | `/vuelos` | caso-epstein |
+| `submissions` | form on `/investigacion` | caso-libra |
+| `platformGraph` | `/conexiones` | caso-finanzas-politicas |
+
+If a user navigates to `/caso/caso-epstein/dinero` and Epstein's config has `wallets: false`, they get a 404.
+
+### 9.6 InvestigationNav
+
+The `InvestigationNav` component currently has hardcoded tab configs per slug. Refactored to read from the investigation config:
+
+```typescript
+// components/investigation/InvestigationNav.tsx
+export function InvestigationNav({ slug }: { slug: string }) {
+  const config = getInvestigationConfig(slug)
+  if (!config) return null
+
+  const tabs = config.tabs.map(tab => ({
+    id: tab,
+    label: TAB_LABELS[tab],
+    href: `/caso/${slug}/${tab === 'resumen' ? '' : tab}`,
+  }))
+
+  return <nav>...</nav>
+}
+```
+
+No more per-case `CASE_TABS` config object. The tabs come from the investigation config.
+
+### 9.7 Finanzas Politicas Static Route Deletion
+
+Once the `[slug]` pages are fully data-driven and finanzas-politicas data is in Neo4j, the 6 static `/caso/finanzas-politicas/*` pages are deleted (landing, layout, resumen, investigacion, cronologia, dinero). The `[slug]` dynamic route handles `finanzas-politicas` automatically.
+
+The one exception: `/caso/finanzas-politicas/conexiones` stays as a static route because it queries platform labels (`Politician`, `OffshoreOfficer`, etc.) — this is a platform-graph visualization, not investigation data. It may later become a feature flag (`features.platformGraph: true`) on a generic conexiones page.
+
+### 9.8 Shared Component Inventory
+
+**Existing (reusable as-is):**
+
+| Component | Location | Used By |
+|---|---|---|
+| `InvestigationNav` | `components/investigation/` | All investigations (after config-driven refactor) |
+| `DocumentCard` | `components/investigation/` | evidencia page |
+| `Timeline` | `components/investigation/` | cronologia page |
+| `ActorCard` | `components/investigation/` | landing + investigacion pages |
+| `KeyStats` | `components/investigation/` | landing page |
+| `ShareButton` | `components/investigation/` | all pages |
+| `ForceGraph` | `components/graph/` | grafo + dinero pages |
+| `SearchBar` | `components/graph/` | grafo page |
+| `NodeDetailPanel` | `components/graph/` | grafo page |
+
+**New shared components:**
+
+| Component | Purpose |
+|---|---|
+| `InvestigationLanding` | Generic landing page (hero + stats + featured actors) |
+| `InvestigacionView` | Factcheck/timeline/actors/money-flows with conditional sections |
+| `NarrativeView` | Chapter-based narrative with bilingual toggle |
+| `ClaimCard` | Factcheck claim display with status badge |
+| `MoneyFlowCard` | Financial flow visualization card |
