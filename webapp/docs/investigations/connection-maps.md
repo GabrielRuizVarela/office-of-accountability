@@ -284,3 +284,23 @@ Only 3 politicians have direct offshore links in the ICIJ data:
 - López Juan Carlos (131 companies) — same issue
 - Martínez Luis Alberto / Carlos Alberto — same issue
 - García Carlos (79 companies, includes SEED HOLDINGS/SEED PARTNERS) — likely name collision with corporate Carlos García
+
+## Connection Map 17: Vote-Corporate Conflicts of Interest
+
+528 Legislation nodes and 85,205 Company nodes tagged by sector. Cross-referencing reveals systemic conflicts:
+
+| Sector | Politicians with conflicts | Total votes on sector | Companies held |
+|--------|--------------------------|----------------------|----------------|
+| Finance | 69 | 23,525 | 77 |
+| Construction | 39 | 750 | 51 |
+| Energy | 21 | 999 | 35 |
+| Telecom | 20 | 989 | 29 |
+| Agriculture | 13 | 522 | 17 |
+| Transport | 11 | 155 | 12 |
+| Mining | 7 | 44 | 7 |
+
+### Verified high-signal conflicts:
+- **Heller** — 173 votes on financial legislation as president of Banco Credicoop
+- **Costa** — 16 votes on hydrocarbons while owning Costa Hidrocarburos y Energía
+- **Macri** — voted on mining code reform while on Minera Geometales board
+- **Lousteau** — voted YES on Ley Bases while linked to LCG Inversora (finance)
