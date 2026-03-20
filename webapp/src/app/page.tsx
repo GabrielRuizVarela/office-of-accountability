@@ -50,6 +50,12 @@ export default async function Home() {
               Investigaciones
             </Link>
             <Link
+              href="/caso/caso-epstein"
+              className="text-zinc-400 transition-colors hover:text-zinc-100"
+            >
+              Caso Epstein
+            </Link>
+            <Link
               href="/auth/signin"
               className="rounded-lg border border-zinc-700 px-3 py-1.5 text-zinc-300 transition-colors hover:border-zinc-500 hover:text-zinc-100"
             >
@@ -73,6 +79,9 @@ export default async function Home() {
             Explorá las conexiones entre legisladores, votaciones y legislación argentina.
             Investigá, documentá y compartí.
           </p>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-500">
+            Caso destacado: investigación Epstein — 7,287 entidades, 21,944 relaciones, registros de vuelo y verificación de hechos.
+          </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/explorar"
@@ -94,7 +103,7 @@ export default async function Home() {
 
       {/* Section cards */}
       <section className="mx-auto max-w-6xl px-4 pb-16">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <SectionCard
             href="/explorar"
             title="Grafo Interactivo"
@@ -106,6 +115,12 @@ export default async function Home() {
             title="Investigaciones"
             description="Artículos que conectan datos del grafo con análisis ciudadano. Creá y publicá las tuyas."
             icon={<DocumentIcon />}
+          />
+          <SectionCard
+            href="/caso/caso-epstein"
+            title="Caso Epstein"
+            description="Red de tráfico y poder: 7,287 entidades, vuelos, documentos judiciales y análisis de proximidad."
+            icon={<CaseIcon />}
           />
           <SectionCard
             href="/auth/signup"
@@ -130,14 +145,14 @@ export default async function Home() {
               <span className="rounded bg-red-500/10 px-2 py-0.5 text-[10px] font-medium text-red-400">
                 Caso
               </span>
-              <span className="text-xs text-zinc-500">45 documentos · 15 actores · 19 eventos</span>
+              <span className="text-xs text-zinc-500">1,044 documentos · 355 actores · 39 eventos</span>
             </div>
             <h3 className="text-lg font-semibold text-zinc-100 transition-colors group-hover:text-red-400 sm:text-xl">
               Caso Epstein — Red de tráfico y poder
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-              Grafo de conocimiento con 198 entidades y 431 relaciones documentadas. Incluye documentos
-              judiciales, registros de vuelo, análisis de proximidad y simulación de red.
+              Grafo de conocimiento con 7,287 entidades y 21,944 relaciones documentadas. Incluye documentos
+              judiciales, registros de vuelo, 72 verificaciones de hechos y calidad 8.5/10.
             </p>
           </div>
           <span className="shrink-0 text-sm text-zinc-500 transition-colors group-hover:text-red-400">
@@ -328,6 +343,26 @@ function DocumentIcon() {
       <line x1="16" y1="13" x2="8" y2="13" />
       <line x1="16" y1="17" x2="8" y2="17" />
       <line x1="10" y1="9" x2="8" y2="9" />
+    </svg>
+  )
+}
+
+function CaseIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+      <path d="m9 15 2 2 4-4" />
     </svg>
   )
 }

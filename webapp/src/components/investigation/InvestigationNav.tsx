@@ -32,6 +32,13 @@ export function InvestigationNav({ casoSlug }: InvestigationNavProps) {
     <nav className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-sm">
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex gap-1 overflow-x-auto py-1 scrollbar-hide">
+          <Link
+            href="/"
+            className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-bold text-zinc-50 transition-colors hover:bg-zinc-800/50"
+          >
+            ORC
+          </Link>
+          <span className="self-center text-zinc-700">|</span>
           {tabs.map((tab) => {
             const isActive = pathname === tab.href ||
               (tab.href !== basePath && pathname.startsWith(tab.href))
