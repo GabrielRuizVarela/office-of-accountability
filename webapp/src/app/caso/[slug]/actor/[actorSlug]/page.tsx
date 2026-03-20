@@ -1,198 +1,147 @@
-import type { Metadata } from 'next'
+'use client'
+
+/**
+ * Actor profile page — person details, mini timeline,
+ * connections, related documents, and mini graph.
+ */
+
+import { useEffect, useState } from 'react'
+import { useParams } from 'next/navigation'
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
 
-import { ActorCard } from '../../../../../components/investigation/ActorCard'
-import { getPersonBySlug } from '../../../../../lib/caso-epstein/queries'
+import type { GraphData } from '@/lib/neo4j/types'
+import type { TimelineItem } from '@/lib/caso-libra/types'
+import { ForceGraph } from '@/components/graph/ForceGraph'
+import { EventCard } from '@/components/investigation/EventCard'
+import { ShareButton } from '@/components/ui/ShareButton'
 
-interface PageProps {
-  readonly params: Promise<{ slug: string; actorSlug: string }>
+interface ActorData {
+  readonly person: Record<string, unknown>
+  readonly graph: GraphData
+  readonly events: readonly TimelineItem[]
+  readonly documents: readonly {
+    readonly id: string
+    readonly title: string
+    readonly slug: string
+  }[]
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { actorSlug } = await params
-  const result = await getPersonBySlug(actorSlug)
-  if (!result) return { title: 'Person Not Found' }
+export default function ActorPage() {
+  const params = useParams()
+  const actorSlug = params.actorSlug as string
+  const slug = params.slug as string
 
-  return {
-    title: result.person.name,
-    description: result.person.description,
+  const [data, setData] = useState<ActorData | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const res = await fetch(`/api/caso-libra/person/${actorSlug}`)
+        if (!res.ok) throw new Error('Actor no encontrado')
+        const json = await res.json()
+        setData(json)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Error desconocido')
+      } finally {
+        setLoading(false)
+      }
+    }
+    load()
+  }, [actorSlug])
+
+  if (loading) {
+    return (
+      <div className="flex h-[40vh] items-center justify-center text-zinc-500">Cargando...</div>
+    )
   }
-}
 
-export default async function ActorPage({ params }: PageProps) {
-  const { slug, actorSlug } = await params
-  const result = await getPersonBySlug(actorSlug)
+  if (error || !data) {
+    return (
+      <div className="flex h-[40vh] items-center justify-center text-red-400">
+        {error ?? 'No encontrado'}
+      </div>
+    )
+  }
 
-  if (!result) return notFound()
-
-  const { person, connections } = result
-
-  // Group connections by label
-  const people = connections.nodes.filter((n) => n.labels.includes('Person') && n.id !== person.id)
-  const orgs = connections.nodes.filter((n) => n.labels.includes('Organization'))
-  const locations = connections.nodes.filter((n) => n.labels.includes('Location'))
-  const events = connections.nodes.filter((n) => n.labels.includes('Event'))
-  const docs = connections.nodes.filter((n) => n.labels.includes('Document'))
-  const cases = connections.nodes.filter((n) => n.labels.includes('LegalCase'))
+  const { person, graph, events, documents } = data
+  const name = String(person.name ?? '')
+  const role = person.role ? String(person.role) : null
+  const nationality = person.nationality ? String(person.nationality) : null
+  const description = person.description ? String(person.description) : null
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8">
-      {/* Breadcrumb */}
-      <div className="mb-6 flex items-center gap-2 text-sm text-zinc-500">
-        <Link href={`/caso/${slug}`} className="hover:text-zinc-300">
-          Investigation
-        </Link>
-        <span>/</span>
-        <span className="text-zinc-300">{person.name}</span>
+    <div className="space-y-8">
+      {/* Header */}
+      <div className="flex items-start gap-4">
+        <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-blue-600/20 text-2xl font-bold text-blue-400">
+          {name.charAt(0)}
+        </div>
+        <div>
+          <h1 className="text-2xl font-bold text-zinc-50">{name}</h1>
+          {role && <p className="mt-1 text-sm text-zinc-400">{role}</p>}
+          {nationality && (
+            <span className="mt-1 inline-block rounded-full bg-zinc-800 px-2 py-0.5 text-xs text-zinc-500">
+              {nationality}
+            </span>
+          )}
+        </div>
       </div>
 
-      {/* Profile header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-zinc-50">{person.name}</h1>
-        <p className="mt-1 text-sm font-medium text-blue-400">{person.role}</p>
-        <p className="mt-1 text-xs text-zinc-500">{person.nationality}</p>
-        <p className="mt-4 text-sm leading-relaxed text-zinc-400">{person.description}</p>
-      </div>
+      {description && <p className="text-sm leading-relaxed text-zinc-400">{description}</p>}
 
-      {/* Connections grid */}
-      <div className="space-y-8">
-        {people.length > 0 && (
-          <ConnectionSection
-            title="Associated People"
-            color="#3b82f6"
-            casoSlug={slug}
-          >
-            {people.map((node) => (
-              <Link
-                key={node.id}
-                href={`/caso/${slug}/actor/${node.properties.slug ?? node.id}`}
-                className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-3 transition-colors hover:border-zinc-700"
-              >
-                <div className="text-sm font-medium text-zinc-100">
-                  {String(node.properties.name ?? node.id)}
-                </div>
-                {node.properties.role && (
-                  <div className="mt-0.5 text-xs text-zinc-500">
-                    {String(node.properties.role)}
-                  </div>
-                )}
-              </Link>
+      <ShareButton text={`Caso Libra — Perfil de ${name}`} title={`${name} — Caso Libra`} />
+
+      {/* Mini graph */}
+      {graph.nodes.length > 1 && (
+        <section>
+          <h2 className="text-lg font-bold text-zinc-50">Conexiones</h2>
+          <div className="mt-3 h-[40vh] overflow-hidden rounded-lg border border-zinc-800">
+            <ForceGraph data={graph} selectedNodeId={`cl-person-${actorSlug}`} />
+          </div>
+        </section>
+      )}
+
+      {/* Timeline */}
+      {events.length > 0 && (
+        <section>
+          <h2 className="text-lg font-bold text-zinc-50">Eventos Participados</h2>
+          <div className="mt-3 space-y-2">
+            {events.map((event) => (
+              <EventCard
+                key={event.id}
+                id={event.id}
+                title={event.title}
+                description={event.description}
+                date={event.date}
+                eventType={event.event_type}
+                sourceUrl={event.source_url}
+                actors={[]}
+              />
             ))}
-          </ConnectionSection>
-        )}
+          </div>
+        </section>
+      )}
 
-        {orgs.length > 0 && (
-          <ConnectionSection title="Organizations" color="#8b5cf6" casoSlug={slug}>
-            {orgs.map((node) => (
-              <div key={node.id} className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-3">
-                <div className="text-sm font-medium text-zinc-100">
-                  {String(node.properties.name ?? node.id)}
-                </div>
-                {node.properties.org_type && (
-                  <div className="mt-0.5 text-xs text-zinc-500">
-                    {String(node.properties.org_type)}
-                  </div>
-                )}
-              </div>
+      {/* Related documents */}
+      {documents.length > 0 && (
+        <section>
+          <h2 className="text-lg font-bold text-zinc-50">Documentos Relacionados</h2>
+          <ul className="mt-3 space-y-2">
+            {documents.map((doc) => (
+              <li key={doc.id}>
+                <Link
+                  href={`/caso/${slug}/evidencia/${doc.slug}`}
+                  className="text-sm text-purple-400 hover:text-purple-300"
+                >
+                  {doc.title}
+                </Link>
+              </li>
             ))}
-          </ConnectionSection>
-        )}
-
-        {locations.length > 0 && (
-          <ConnectionSection title="Locations" color="#10b981" casoSlug={slug}>
-            {locations.map((node) => (
-              <div key={node.id} className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-3">
-                <div className="text-sm font-medium text-zinc-100">
-                  {String(node.properties.name ?? node.id)}
-                </div>
-                {node.properties.address && (
-                  <div className="mt-0.5 text-xs text-zinc-500">
-                    {String(node.properties.address)}
-                  </div>
-                )}
-              </div>
-            ))}
-          </ConnectionSection>
-        )}
-
-        {events.length > 0 && (
-          <ConnectionSection title="Related Events" color="#f59e0b" casoSlug={slug}>
-            {events.map((node) => (
-              <div key={node.id} className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-3">
-                <div className="text-sm font-medium text-zinc-100">
-                  {String(node.properties.title ?? node.id)}
-                </div>
-                {node.properties.date && (
-                  <div className="mt-0.5 text-xs text-zinc-500">
-                    {String(node.properties.date)}
-                  </div>
-                )}
-              </div>
-            ))}
-          </ConnectionSection>
-        )}
-
-        {docs.length > 0 && (
-          <ConnectionSection title="Documents" color="#ef4444" casoSlug={slug}>
-            {docs.map((node) => (
-              <Link
-                key={node.id}
-                href={`/caso/${slug}/evidencia/${node.properties.slug ?? node.id}`}
-                className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-3 transition-colors hover:border-zinc-700"
-              >
-                <div className="text-sm font-medium text-zinc-100">
-                  {String(node.properties.title ?? node.id)}
-                </div>
-                {node.properties.doc_type && (
-                  <div className="mt-0.5 text-xs text-zinc-500">
-                    {String(node.properties.doc_type)}
-                  </div>
-                )}
-              </Link>
-            ))}
-          </ConnectionSection>
-        )}
-
-        {cases.length > 0 && (
-          <ConnectionSection title="Legal Cases" color="#ec4899" casoSlug={slug}>
-            {cases.map((node) => (
-              <div key={node.id} className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-3">
-                <div className="text-sm font-medium text-zinc-100">
-                  {String(node.properties.title ?? node.id)}
-                </div>
-                {node.properties.court && (
-                  <div className="mt-0.5 text-xs text-zinc-500">
-                    {String(node.properties.court)}
-                  </div>
-                )}
-              </div>
-            ))}
-          </ConnectionSection>
-        )}
-      </div>
-    </div>
-  )
-}
-
-function ConnectionSection({
-  title,
-  color,
-  casoSlug,
-  children,
-}: {
-  title: string
-  color: string
-  casoSlug: string
-  children: React.ReactNode
-}) {
-  return (
-    <div>
-      <h2 className="mb-3 flex items-center gap-2 text-sm font-semibold text-zinc-300">
-        <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: color }} />
-        {title}
-      </h2>
-      <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">{children}</div>
+          </ul>
+        </section>
+      )}
     </div>
   )
 }

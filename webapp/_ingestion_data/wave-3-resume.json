@@ -1,0 +1,37 @@
+{
+  "processedIds": [
+    "ep-doc-flight-logs",
+    "ep-doc-black-book",
+    "ep-doc-2024-unsealed",
+    "ep-doc-727-logs",
+    "ep-doc-giuffre-depositions",
+    "ep-doc-doj-library",
+    "ep-doc-giuffre-depo-2016",
+    "ep-doc-npa",
+    "ep-doc-giuffre-v-andrew",
+    "ep-doc-giuffre-memoir",
+    "ep-doc-maxwell-transcripts",
+    "ep-doc-doj-phase2-reporting",
+    "ep-doc-sdny-indictment",
+    "ep-doc-jpmorgan-comms",
+    "ep-doc-fbi-302s",
+    "ep-doc-visoski-testimony",
+    "ep-doc-netflix-doc",
+    "ep-doc-maxwell-deposition",
+    "ep-doc-cvra-challenge",
+    "ep-doc-maxwell-superseding"
+  ],
+  "stats": {
+    "total": 20,
+    "enriched": 2,
+    "skipped": 18,
+    "failed": 0,
+    "bySource": {
+      "courtlistener": 0,
+      "documentcloud": 1,
+      "doj": 1
+    },
+    "startMs": 1773909789546
+  },
+  "lastProcessedAt": "2026-03-19T08:46:05.400Z"
+}

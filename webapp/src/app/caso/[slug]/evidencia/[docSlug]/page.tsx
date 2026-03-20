@@ -1,171 +1,131 @@
-import type { Metadata } from 'next'
+'use client'
+
+/**
+ * Document detail page — full summary, source link, connected entities.
+ */
+
+import { useEffect, useState } from 'react'
+import { useParams } from 'next/navigation'
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
 
-import { CASO_EPSTEIN_SLUG, DOCUMENT_TYPE_LABELS } from '../../../../../lib/caso-epstein/types'
-import { getDocumentBySlug } from '../../../../../lib/caso-epstein/queries'
-import { DocumentCard } from '../../../../../components/investigation/DocumentCard'
+import { ShareButton } from '@/components/ui/ShareButton'
 
-interface PageProps {
-  readonly params: Promise<{ slug: string; docSlug: string }>
+interface DocumentData {
+  readonly document: Record<string, unknown>
+  readonly mentionedEntities: readonly {
+    readonly id: string
+    readonly name: string
+    readonly type: string
+  }[]
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { docSlug } = await params
-  const result = await getDocumentBySlug(CASO_EPSTEIN_SLUG, docSlug)
-  if (!result) return { title: 'Document Not Found' }
+export default function DocumentDetailPage() {
+  const params = useParams()
+  const docSlug = params.docSlug as string
+  const slug = params.slug as string
 
-  return {
-    title: result.document.title,
-    description: result.document.summary,
+  const [data, setData] = useState<DocumentData | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const res = await fetch(`/api/caso-libra/document/${docSlug}`)
+        if (!res.ok) throw new Error('Documento no encontrado')
+        const json = await res.json()
+        setData(json)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Error desconocido')
+      } finally {
+        setLoading(false)
+      }
+    }
+    load()
+  }, [docSlug])
+
+  if (loading) {
+    return (
+      <div className="flex h-[40vh] items-center justify-center text-zinc-500">Cargando...</div>
+    )
   }
-}
 
-export default async function DocumentDetailPage({ params }: PageProps) {
-  const { slug, docSlug } = await params
-  const result = await getDocumentBySlug(CASO_EPSTEIN_SLUG, docSlug)
+  if (error || !data) {
+    return (
+      <div className="flex h-[40vh] items-center justify-center text-red-400">
+        {error ?? 'No encontrado'}
+      </div>
+    )
+  }
 
-  if (!result) return notFound()
-
-  const { document: doc, mentionedPersons, legalCases, relatedEvents, relatedDocuments } = result
+  const doc = data.document
+  const docTitle = String(doc.title ?? '')
+  const docType = doc.doc_type ? String(doc.doc_type) : null
+  const datePublished = doc.date_published ? String(doc.date_published) : null
+  const summary = doc.summary ? String(doc.summary) : null
+  const sourceUrl = doc.source_url ? String(doc.source_url) : null
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      {/* Breadcrumb */}
-      <div className="mb-6 flex items-center gap-2 text-sm text-zinc-500">
-        <Link href={`/caso/${slug}`} className="hover:text-zinc-300">Investigation</Link>
-        <span>/</span>
-        <Link href={`/caso/${slug}/evidencia`} className="hover:text-zinc-300">Evidence</Link>
-        <span>/</span>
-        <span className="text-zinc-300">{doc.title}</span>
-      </div>
-
-      {/* Header */}
-      <div className="mb-6">
-        <div className="mb-3 flex flex-wrap items-center gap-2">
-          <span className="rounded bg-red-500/10 px-2 py-0.5 text-xs font-medium text-red-400">
-            {DOCUMENT_TYPE_LABELS[doc.doc_type] ?? doc.doc_type}
+    <div className="mx-auto max-w-3xl space-y-6">
+      <div>
+        {docType && (
+          <span className="mb-2 inline-block rounded-full bg-zinc-800 px-2 py-0.5 text-xs text-zinc-400">
+            {docType}
           </span>
-          {doc.date && (
-            <span className="text-xs text-zinc-500">{doc.date}</span>
-          )}
-          {doc.page_count && (
-            <span className="text-xs text-zinc-500">{doc.page_count} pages</span>
-          )}
-        </div>
-        <h1 className="text-2xl font-bold text-zinc-50">{doc.title}</h1>
+        )}
+        <h1 className="text-2xl font-bold text-zinc-50">{docTitle}</h1>
+        {datePublished && <p className="mt-1 text-sm text-zinc-500">Publicado: {datePublished}</p>}
       </div>
 
-      {/* Summary */}
-      <p className="mb-6 text-sm leading-relaxed text-zinc-400">{doc.summary}</p>
+      {summary && <p className="text-sm leading-relaxed text-zinc-300">{summary}</p>}
 
-      {/* Key Findings */}
-      {doc.key_findings.length > 0 && (
-        <div className="mb-6 rounded-lg border border-zinc-800 bg-zinc-900/50 p-6">
-          <h2 className="mb-3 text-sm font-semibold text-zinc-300">Key Findings</h2>
-          <ul className="space-y-2">
-            {doc.key_findings.map((finding, i) => (
-              <li key={i} className="flex gap-2 text-sm text-zinc-400">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-500" />
-                {finding}
-              </li>
-            ))}
-          </ul>
-        </div>
+      {sourceUrl && (
+        <a
+          href={sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 text-sm text-purple-400 hover:text-purple-300"
+        >
+          Ver fuente original &rarr;
+        </a>
       )}
 
-      {/* Excerpt */}
-      {doc.excerpt && (
-        <blockquote className="mb-6 border-l-2 border-zinc-700 pl-4 text-sm italic text-zinc-500">
-          &ldquo;{doc.excerpt}&rdquo;
-        </blockquote>
-      )}
+      <ShareButton text={`Caso Libra — ${docTitle}`} title={docTitle} />
 
-      {/* Graph connections */}
-      <div className="mb-6 grid gap-4 sm:grid-cols-2">
-        {/* People Mentioned */}
-        {mentionedPersons.length > 0 && (
-          <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4">
-            <h2 className="mb-3 text-sm font-semibold text-zinc-300">People Mentioned</h2>
-            <div className="flex flex-wrap gap-2">
-              {mentionedPersons.map((person) => (
-                <Link
-                  key={person.id}
-                  href={`/caso/${slug}/grafo?highlight=${person.slug}`}
-                  className="rounded-full bg-blue-500/10 px-3 py-1 text-xs text-blue-400 hover:bg-blue-500/20"
-                >
-                  {person.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Filed In */}
-        {legalCases.length > 0 && (
-          <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4">
-            <h2 className="mb-3 text-sm font-semibold text-zinc-300">Filed In</h2>
-            <div className="space-y-2">
-              {legalCases.map((lc) => (
-                <div key={lc.id} className="text-sm">
-                  <div className="font-medium text-zinc-300">{lc.title}</div>
-                  <div className="text-xs text-zinc-500">{lc.court} — {lc.case_number}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Related Events */}
-      {relatedEvents.length > 0 && (
-        <div className="mb-6 rounded-lg border border-zinc-800 bg-zinc-900/50 p-4">
-          <h2 className="mb-3 text-sm font-semibold text-zinc-300">Related Events</h2>
-          <div className="space-y-2">
-            {relatedEvents.map((event) => (
-              <div key={event.id} className="flex items-start gap-3 text-sm">
-                <span className="shrink-0 text-xs text-zinc-500">{event.date}</span>
-                <span className="text-zinc-400">{event.title}</span>
-              </div>
+      {/* Connected entities */}
+      {data.mentionedEntities.length > 0 && (
+        <section>
+          <h2 className="text-lg font-bold text-zinc-50">Entidades Mencionadas</h2>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {data.mentionedEntities.map((entity) => (
+              <span
+                key={entity.id}
+                className="rounded-full bg-zinc-800 px-3 py-1 text-xs text-zinc-300"
+              >
+                {entity.name}
+                <span className="ml-1 text-zinc-600">({entityTypeLabel(entity.type)})</span>
+              </span>
             ))}
           </div>
-        </div>
+        </section>
       )}
 
-      {/* Related Documents */}
-      {relatedDocuments.length > 0 && (
-        <div className="mb-6">
-          <h2 className="mb-3 text-sm font-semibold text-zinc-300">Related Documents</h2>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {relatedDocuments.map((relDoc) => (
-              <DocumentCard
-                key={relDoc.id}
-                title={relDoc.title}
-                slug={relDoc.slug}
-                docType={relDoc.doc_type}
-                summary={relDoc.summary}
-                date={relDoc.date}
-                mentionedPersonCount={0}
-                casoSlug={slug}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Source link */}
-      {doc.source_url && (
-        <div className="mt-4 border-t border-zinc-800 pt-4">
-          <a
-            href={doc.source_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-blue-400 hover:text-blue-300"
-          >
-            View original source →
-          </a>
-        </div>
-      )}
+      <Link
+        href={`/caso/${slug}/evidencia`}
+        className="inline-block text-sm text-zinc-400 hover:text-zinc-200"
+      >
+        &larr; Volver a evidencia
+      </Link>
     </div>
   )
+}
+
+function entityTypeLabel(type: string): string {
+  const labels: Record<string, string> = {
+    CasoLibraPerson: 'Persona',
+    CasoLibraOrganization: 'Organizacion',
+    CasoLibraWallet: 'Billetera',
+    CasoLibraToken: 'Token',
+  }
+  return labels[type] ?? type
 }

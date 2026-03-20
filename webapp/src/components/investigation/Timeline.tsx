@@ -1,85 +1,84 @@
 'use client'
 
-import { useState } from 'react'
+/**
+ * Vertical timeline component for Caso Libra events.
+ * Mobile-first, with event type filtering and expandable cards.
+ */
+
+import { useState, useMemo } from 'react'
+
+import type { TimelineItem, EventType } from '@/lib/caso-libra/types'
+import { EVENT_TYPE_COLORS, EVENT_TYPE_LABELS } from '@/lib/caso-libra/types'
 
 import { EventCard } from './EventCard'
 
-interface TimelineEvent {
-  readonly id: string
-  readonly title: string
-  readonly date: string
-  readonly event_type: string
-  readonly description: string
-}
-
-const EVENT_TYPE_COLORS: Record<string, { dot: string; label: string; bg: string }> = {
-  legal: { dot: 'bg-red-500', label: 'Legal', bg: 'bg-red-500/10' },
-  social: { dot: 'bg-blue-500', label: 'Social', bg: 'bg-blue-500/10' },
-  financial: { dot: 'bg-green-500', label: 'Financial', bg: 'bg-green-500/10' },
-  arrest: { dot: 'bg-orange-500', label: 'Arrest', bg: 'bg-orange-500/10' },
-  death: { dot: 'bg-zinc-500', label: 'Death', bg: 'bg-zinc-500/10' },
-  media: { dot: 'bg-purple-500', label: 'Media', bg: 'bg-purple-500/10' },
-}
-
 interface TimelineProps {
-  readonly events: readonly TimelineEvent[]
+  readonly events: readonly TimelineItem[]
 }
+
+const EVENT_TYPES: readonly EventType[] = ['political', 'financial', 'legal', 'media']
 
 export function Timeline({ events }: TimelineProps) {
-  const [activeFilter, setActiveFilter] = useState<string | null>(null)
-  const [expandedId, setExpandedId] = useState<string | null>(null)
+  const [activeFilter, setActiveFilter] = useState<EventType | null>(null)
 
-  const eventTypes = [...new Set(events.map((e) => e.event_type))]
-  const filtered = activeFilter ? events.filter((e) => e.event_type === activeFilter) : events
+  const filteredEvents = useMemo(
+    () => (activeFilter ? events.filter((e) => e.event_type === activeFilter) : events),
+    [events, activeFilter],
+  )
 
   return (
-    <div>
-      {/* Filter pills */}
-      <div className="mb-6 flex flex-wrap gap-2">
+    <div className="space-y-4">
+      {/* Filters */}
+      <div className="flex flex-wrap gap-2">
         <button
+          type="button"
           onClick={() => setActiveFilter(null)}
           className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-            !activeFilter ? 'bg-blue-600 text-white' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+            activeFilter === null
+              ? 'bg-purple-600 text-white'
+              : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
           }`}
         >
-          All ({events.length})
+          Todos ({events.length})
         </button>
-        {eventTypes.map((type) => {
-          const config = EVENT_TYPE_COLORS[type] ?? EVENT_TYPE_COLORS.legal
+        {EVENT_TYPES.map((type) => {
           const count = events.filter((e) => e.event_type === type).length
+          if (count === 0) return null
+          const color = EVENT_TYPE_COLORS[type]
           return (
             <button
               key={type}
+              type="button"
               onClick={() => setActiveFilter(activeFilter === type ? null : type)}
-              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-                activeFilter === type
-                  ? 'bg-zinc-700 text-zinc-100'
-                  : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+              className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                activeFilter === type ? 'text-white' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
               }`}
+              style={activeFilter === type ? { backgroundColor: color } : undefined}
             >
-              <span className={`inline-block h-2 w-2 rounded-full ${config.dot}`} />
-              {config.label} ({count})
+              {EVENT_TYPE_LABELS[type]} ({count})
             </button>
           )
         })}
       </div>
 
-      {/* Vertical timeline */}
-      <div className="relative ml-4 border-l border-zinc-700 pl-6">
-        {filtered.map((event) => {
-          const config = EVENT_TYPE_COLORS[event.event_type] ?? EVENT_TYPE_COLORS.legal
-          const isExpanded = expandedId === event.id
-
-          return (
-            <EventCard
-              key={event.id}
-              event={event}
-              dotColor={config.dot}
-              isExpanded={isExpanded}
-              onToggle={() => setExpandedId(isExpanded ? null : event.id)}
-            />
-          )
-        })}
+      {/* Timeline */}
+      <div className="relative space-y-3 pl-4">
+        <div className="absolute left-[5px] top-0 bottom-0 w-px bg-zinc-800" />
+        {filteredEvents.map((event) => (
+          <EventCard
+            key={event.id}
+            id={event.id}
+            title={event.title}
+            description={event.description}
+            date={event.date}
+            eventType={event.event_type}
+            sourceUrl={event.source_url}
+            actors={event.actors}
+          />
+        ))}
+        {filteredEvents.length === 0 && (
+          <p className="py-8 text-center text-sm text-zinc-500">No hay eventos para este filtro.</p>
+        )}
       </div>
     </div>
   )
