@@ -66,7 +66,7 @@ interface ApiLink {
  * - NO generic BoardMember/CompanyOfficer matches (these are noise in the viz)
  */
 const CYPHER = `
-MATCH (p:Politician)-[r:MAYBE_SAME_AS]->(t)
+MATCH (p:Politician)-[r:CONFIRMED_MATCH|MAYBE_SAME_AS|HAS_APPOINTMENT]->(t)
 WHERE t:OffshoreOfficer OR t:Donor OR t:GovernmentAppointment
 WITH p,
      collect(DISTINCT labels(t)[0]) AS datasets,
@@ -90,7 +90,7 @@ LIMIT 80
 
 /** Offshore entities connected to politicians — show the BVI companies */
 const OFFSHORE_ENTITIES_CYPHER = `
-MATCH (p:Politician)-[:MAYBE_SAME_AS]->(o:OffshoreOfficer)-[:OFFICER_OF]->(e:OffshoreEntity)
+MATCH (p:Politician)-[:CONFIRMED_MATCH|MAYBE_SAME_AS]->(o:OffshoreOfficer)-[:OFFICER_OF]->(e:OffshoreEntity)
 RETURN p.id AS pid, o.name AS officer, toString(elementId(o)) AS oid,
        e.name AS entity, e.jurisdiction_description AS jurisdiction,
        e.status AS status, toString(elementId(e)) AS eid
