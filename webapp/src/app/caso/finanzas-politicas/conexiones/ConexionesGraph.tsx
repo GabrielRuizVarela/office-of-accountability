@@ -59,6 +59,9 @@ const NODE_TYPE_LEGEND: ReadonlyArray<{ type: string; label: string; color: stri
   { type: 'BOTH_OFFSHORE', label: 'Red Offshore', color: '#ef4444' },
   { type: 'SHARED_ORG', label: 'Org. Compartida', color: '#10b981' },
   { type: 'Contractor', label: 'Contratista', color: '#8b5cf6' },
+  { type: 'Party', label: 'Partido', color: '#8b5cf6' },
+  { type: 'Legislation', label: 'Legislacion', color: '#f43f5e' },
+  { type: 'PoliticalParty', label: 'Fondo Partidario', color: '#f59e0b' },
 ]
 
 // ---------------------------------------------------------------------------
