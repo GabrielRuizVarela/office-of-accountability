@@ -5,13 +5,9 @@ import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
-import { useSession } from '@/components/auth/SessionProvider'
-import { UserMenu } from '@/components/auth/UserMenu'
-
 export function SiteNav() {
   const t = useTranslations('nav')
   const pathname = usePathname()
-  const { status } = useSession()
   const [menuOpen, setMenuOpen] = useState(false)
 
   const links = [
@@ -22,12 +18,10 @@ export function SiteNav() {
   return (
     <header className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        {/* Logo */}
         <Link href="/" className="text-lg font-bold text-zinc-50">
           ORC
         </Link>
 
-        {/* Desktop nav */}
         <nav className="hidden items-center gap-6 text-sm sm:flex">
           {links.map((link) => (
             <Link
@@ -42,19 +36,14 @@ export function SiteNav() {
               {link.label}
             </Link>
           ))}
-          {status === 'authenticated' ? (
-            <UserMenu />
-          ) : (
-            <Link
-              href="/auth/signin"
-              className="rounded-md border border-zinc-700 px-3 py-1.5 text-zinc-300 transition-colors hover:border-zinc-500 hover:text-zinc-100"
-            >
-              {t('signIn')}
-            </Link>
-          )}
+          <Link
+            href="/auth/signin"
+            className="rounded-md border border-zinc-700 px-3 py-1.5 text-zinc-300 transition-colors hover:border-zinc-500 hover:text-zinc-100"
+          >
+            {t('signIn')}
+          </Link>
         </nav>
 
-        {/* Mobile hamburger */}
         <button
           type="button"
           className="text-zinc-400 sm:hidden"
@@ -81,7 +70,6 @@ export function SiteNav() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {menuOpen && (
         <nav className="border-t border-zinc-800 px-4 py-3 sm:hidden">
           <div className="flex flex-col gap-3 text-sm">
@@ -99,17 +87,13 @@ export function SiteNav() {
                 {link.label}
               </Link>
             ))}
-            {status === 'authenticated' ? (
-              <UserMenu />
-            ) : (
-              <Link
-                href="/auth/signin"
-                className="text-zinc-400 transition-colors hover:text-zinc-100"
-                onClick={() => setMenuOpen(false)}
-              >
-                {t('signIn')}
-              </Link>
-            )}
+            <Link
+              href="/auth/signin"
+              className="text-zinc-400 transition-colors hover:text-zinc-100"
+              onClick={() => setMenuOpen(false)}
+            >
+              {t('signIn')}
+            </Link>
           </div>
         </nav>
       )}
