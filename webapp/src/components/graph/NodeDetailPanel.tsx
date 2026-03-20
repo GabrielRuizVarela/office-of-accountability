@@ -188,7 +188,7 @@ export function NodeDetailPanel({ nodeId, onClose, onNavigate, onExpand, onToggl
   if (!nodeId) return null
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 flex max-h-[60vh] flex-col border-t border-zinc-800 bg-zinc-950 md:static md:inset-auto md:z-auto md:h-full md:max-h-none md:w-80 md:border-l md:border-t-0">
+    <div className="fixed inset-y-0 right-0 z-30 flex w-80 flex-col border-l border-zinc-800 bg-zinc-950 shadow-2xl max-md:inset-x-0 max-md:inset-y-auto max-md:bottom-0 max-md:w-auto max-md:max-h-[60vh] max-md:border-l-0 max-md:border-t max-md:shadow-none">
       {/* Mobile drag handle */}
       <div className="flex justify-center py-2 md:hidden">
         <div className="h-1 w-10 rounded-full bg-zinc-700" />
