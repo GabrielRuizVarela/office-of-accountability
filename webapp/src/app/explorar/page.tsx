@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { useCallback, useMemo, useRef, useState } from 'react'
 
 import { ForceGraph } from '../../components/graph/ForceGraph'
@@ -402,15 +401,9 @@ export default function ExplorarPage() {
   return (
     <div className="flex h-screen flex-col bg-zinc-950">
       {/* Top bar */}
-      <header className="z-20 flex items-center gap-4 border-b border-zinc-800 bg-zinc-950/90 px-4 py-3 backdrop-blur-sm">
-        <Link
-          href="/"
-          className="flex-shrink-0 text-sm font-semibold text-zinc-100 transition-colors hover:text-zinc-300"
-        >
-          ORC
-        </Link>
+      <div className="z-20 flex items-center gap-4 border-b border-zinc-800 bg-zinc-950/90 px-4 py-3 backdrop-blur-sm">
         <SearchBar onSelect={handleSearchSelect} />
-      </header>
+      </div>
 
       {/* Path finder bar */}
       {showPathFinder && (

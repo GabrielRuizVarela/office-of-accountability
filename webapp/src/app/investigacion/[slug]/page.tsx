@@ -92,24 +92,7 @@ export default async function InvestigationPage({ params }: PageProps) {
   const { investigation, author } = result
 
   return (
-    <div className="min-h-screen bg-zinc-950">
-      {/* Header */}
-      <header className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-sm">
-        <div className="mx-auto max-w-3xl px-4 py-4">
-          <nav className="flex items-center gap-2 text-sm text-zinc-500">
-            <Link href="/" className="transition-colors hover:text-zinc-300">
-              ORC
-            </Link>
-            <span>/</span>
-            <Link href="/investigaciones" className="transition-colors hover:text-zinc-300">
-              Investigaciones
-            </Link>
-            <span>/</span>
-            <span className="truncate text-zinc-300">{investigation.title}</span>
-          </nav>
-        </div>
-      </header>
-
+    <>
       <main className="mx-auto max-w-3xl px-4 py-8">
         {/* Title */}
         <h1 className="text-3xl font-bold leading-tight text-zinc-50 sm:text-4xl">
@@ -198,7 +181,7 @@ export default async function InvestigationPage({ params }: PageProps) {
           __html: JSON.stringify(buildJsonLd(investigation, author, slug)),
         }}
       />
-    </div>
+    </>
   )
 }
 

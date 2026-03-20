@@ -103,24 +103,7 @@ export default async function PoliticianPage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950">
-      {/* Header */}
-      <header className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-sm">
-        <div className="mx-auto max-w-6xl px-4 py-4">
-          <nav className="mb-4 flex items-center gap-2 text-sm text-zinc-500">
-            <Link href="/" className="transition-colors hover:text-zinc-300">
-              ORC
-            </Link>
-            <span>/</span>
-            <Link href="/explorar" className="transition-colors hover:text-zinc-300">
-              Explorar
-            </Link>
-            <span>/</span>
-            <span className="text-zinc-300">{politician.name}</span>
-          </nav>
-        </div>
-      </header>
-
+    <>
       <main className="mx-auto max-w-6xl px-4 py-8">
         {/* Profile header */}
         <div className="mb-8 flex flex-col gap-6 sm:flex-row sm:items-start">
@@ -242,7 +225,7 @@ export default async function PoliticianPage({ params }: PageProps) {
           __html: JSON.stringify(buildJsonLd(politician, slug)),
         }}
       />
-    </div>
+    </>
   )
 }
 
