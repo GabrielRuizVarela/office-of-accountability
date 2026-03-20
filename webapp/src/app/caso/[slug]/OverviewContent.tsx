@@ -35,8 +35,8 @@ const t = {
     es: 'La Red Epstein',
   },
   subtitle: {
-    en: 'How a single financial relationship built a trafficking empire shielded by wealth, power, and institutional failure. 10,636 documented entities, 8,700+ web-verified, 39 events spanning 2005–2026. Built from court records, DOJ file releases, flight logs, and investigative reporting.',
-    es: 'Como una sola relacion financiera construyo un imperio de trafico protegido por riqueza, poder y fracaso institucional. 10,636 entidades documentadas, 8,700+ verificadas en la web, 39 eventos entre 2005–2026. Basado en registros judiciales, archivos del DOJ, bitacoras de vuelo y periodismo de investigacion.',
+    en: 'How a single financial relationship built a trafficking empire shielded by wealth, power, and institutional failure. 7,287 connected nodes, 21,944 edges, 0 orphans, quality score 8.5/10. Built from court records, DOJ file releases, flight logs, and investigative reporting.',
+    es: 'Como una sola relacion financiera construyo un imperio de trafico protegido por riqueza, poder y fracaso institucional. 7,287 nodos conectados, 21,944 aristas, 0 huerfanos, puntuacion de calidad 8.5/10. Basado en registros judiciales, archivos del DOJ, bitacoras de vuelo y periodismo de investigacion.',
   },
   readStory: {
     en: 'Read the full story',
@@ -59,8 +59,8 @@ const t = {
     es: 'Investigacion verificada',
   },
   investigationDesc: {
-    en: '28 factchecked claims, 8,700+ web-verified entities, 195 verified persons, money flows, evidence chain, and government response',
-    es: '28 afirmaciones verificadas, 8,700+ entidades verificadas en la web, 195 personas verificadas, flujos de dinero, cadena de evidencia y respuesta gubernamental',
+    en: '72 factchecked claims, 7,287 connected nodes, 195 verified persons, money flows, evidence chain, and government response',
+    es: '72 afirmaciones verificadas, 7,287 nodos conectados, 195 personas verificadas, flujos de dinero, cadena de evidencia y respuesta gubernamental',
   },
   networkGraph: {
     en: 'Network Graph',

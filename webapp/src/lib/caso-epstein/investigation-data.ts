@@ -703,6 +703,55 @@ export const FACTCHECK_ITEMS: FactcheckItem[] = [
     source: 'Harvard Crimson, Boston Globe',
     source_url: 'https://www.thecrimson.com/article/2025/11/21/summers-honeymoon-epstein-island/',
   },
+  // -- Deep dive findings: kompromat chain, Dubin, Carbyne, Kellen, Acosta intelligence claim --
+  {
+    id: 'fc-nikolic-kompromat-chain',
+    claim_en: 'Boris Nikolic introduced Mila Antonova (Gates affair partner) to Epstein, who paid her $7K/month via Kahn, then demanded reimbursement from Gates — creating a kompromat operation',
+    claim_es: 'Boris Nikolic presentó a Mila Antonova (pareja de aventura de Gates) a Epstein, quien le pagaba $7K/mes vía Kahn, luego exigió reembolso a Gates — creando una operación de kompromat',
+    status: 'confirmed' as const,
+    source: 'DOJ file release, Fortune',
+    source_url: 'https://fortune.com/2026/03/14/epstein-bankrolled-bill-gates-mistress-doj-documents-playing-with-fire/',
+  },
+  {
+    id: 'fc-dubin-eva-2010-email',
+    claim_en: 'In 2010, Eva Andersson-Dubin emailed convicted sex offender Epstein: "Come visit next week. Celina will have 5 friends over" — Celina was 15 years old',
+    claim_es: 'En 2010, Eva Andersson-Dubin envió un correo al delincuente sexual convicto Epstein: "Ven a visitar la próxima semana. Celina tendrá 5 amigas" — Celina tenía 15 años',
+    status: 'confirmed' as const,
+    source: 'DOJ file release, Sportskeeda, WION',
+    source_url: 'https://www.sportskeeda.com/pop-culture/news-who-eva-dubin-epstein-s-former-girlfriend-asked-financier-visit-2010-15-year-old-daughter-5-friends',
+  },
+  {
+    id: 'fc-carbyne-surveillance',
+    claim_en: 'Epstein ($1M via Southern Trust), Nicole Junkermann ($500K), and Ehud Barak (chairman) co-invested in Carbyne, an emergency communications company whose board included a former Unit 8200 director. Sold to Axon for $625M.',
+    claim_es: 'Epstein ($1M vía Southern Trust), Nicole Junkermann ($500K) y Ehud Barak (presidente) co-invirtieron en Carbyne, empresa de comunicaciones cuya junta incluía un ex-director de la Unidad 8200. Vendida a Axon por $625M.',
+    status: 'confirmed' as const,
+    source: 'Epstein Web Tracker, Jack Poulson/Substack',
+    source_url: 'https://epsteinweb.org/carbyne911/',
+  },
+  {
+    id: 'fc-kellen-handwritten-notes',
+    claim_en: 'Handwritten notes signed by Sarah Kellen recovered from Epstein residence contained phrases "I have girls for him" and "I have 2 girls for him"',
+    claim_es: 'Notas manuscritas firmadas por Sarah Kellen recuperadas de la residencia de Epstein contenían las frases "Tengo chicas para él" y "Tengo 2 chicas para él"',
+    status: 'confirmed' as const,
+    source: 'Palm Beach PD evidence, Daily Beast, iHeart Podcast',
+    source_url: 'https://www.thedailybeast.com/epstein-prosecutors-next-target-after-ghislaine-maxwell-could-be-his-assistant-sarah-kellen/',
+  },
+  {
+    id: 'fc-acosta-intelligence-claim',
+    claim_en: 'Alexander Acosta reportedly told Trump transition team that Epstein "belonged to intelligence" and to "leave it alone" when explaining the lenient 2008 plea deal',
+    claim_es: 'Alexander Acosta supuestamente dijo al equipo de transición de Trump que Epstein "pertenecía a inteligencia" y que "lo dejaran tranquilo" al explicar el indulgente acuerdo de 2008',
+    status: 'under_investigation' as const,
+    source: 'Daily Beast, Vicky Ward reporting',
+    source_url: 'https://www.thedailybeast.com/jeffrey-epsteins-sick-story-played-out-for-years-in-plain-sight',
+  },
+  {
+    id: 'fc-dubin-15m-broker-fee',
+    claim_en: 'Epstein was paid $15 million for introducing Glenn Dubin to a JPMorgan executive who facilitated the $1.3 billion Highbridge Capital acquisition',
+    claim_es: 'Epstein recibió $15 millones por presentar a Glenn Dubin a un ejecutivo de JPMorgan que facilitó la adquisición de $1.3 mil millones de Highbridge Capital',
+    status: 'confirmed' as const,
+    source: 'Glenn Dubin sworn affidavit, Wall Street on Parade',
+    source_url: 'https://wallstreetonparade.com/2023/06/jpmorgan-is-alleged-to-have-used-its-hedge-funds-private-jet-to-engage-in-sex-trafficking-for-jeffrey-epstein/',
+  },
 ]
 
 // ---------------------------------------------------------------------------
