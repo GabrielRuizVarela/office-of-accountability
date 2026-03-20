@@ -66,6 +66,19 @@ function useNodeSearch() {
   return { results, loading, search, clear }
 }
 
+async function fetchNodeName(nodeId: string): Promise<string> {
+  try {
+    const res = await fetch(`/api/graph/expand/${encodeURIComponent(nodeId)}?depth=1&limit=1`)
+    if (!res.ok) return nodeId
+    const json = await res.json()
+    if (json.success && json.data?.nodes?.[0]) {
+      const n = json.data.nodes[0]
+      return (n.properties?.name as string) ?? (n.properties?.title as string) ?? nodeId
+    }
+  } catch { /* ignore */ }
+  return nodeId
+}
+
 export function PathFinder({ onFindPath, onClose, initialSourceId, initialTargetId }: PathFinderProps) {
   const [sourceId, setSourceId] = useState<string | null>(initialSourceId ?? null)
   const [targetId, setTargetId] = useState<string | null>(initialTargetId ?? null)
@@ -79,7 +92,27 @@ export function PathFinder({ onFindPath, onClose, initialSourceId, initialTarget
   const sourceInputRef = useRef<HTMLInputElement>(null)
   const targetInputRef = useRef<HTMLInputElement>(null)
 
-  // Auto-focus appropriate field on mount
+  // Sync source/target when props change (PathFinder may already be open)
+  useEffect(() => {
+    if (initialSourceId) {
+      setSourceId(initialSourceId)
+      // Fetch display name for the node
+      fetchNodeName(initialSourceId).then(name => setSourceText(name))
+      // Focus the other field
+      setTimeout(() => targetInputRef.current?.focus(), 50)
+    }
+  }, [initialSourceId])
+
+  useEffect(() => {
+    if (initialTargetId) {
+      setTargetId(initialTargetId)
+      fetchNodeName(initialTargetId).then(name => setTargetText(name))
+      // Focus source if empty, otherwise stay
+      if (!sourceId) setTimeout(() => sourceInputRef.current?.focus(), 50)
+    }
+  }, [initialTargetId]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Auto-focus on mount
   useEffect(() => {
     if (initialSourceId && !initialTargetId) {
       targetInputRef.current?.focus()
@@ -88,40 +121,7 @@ export function PathFinder({ onFindPath, onClose, initialSourceId, initialTarget
     } else {
       sourceInputRef.current?.focus()
     }
-  }, [initialSourceId, initialTargetId])
-
-  // Fetch display names for initial IDs
-  useEffect(() => {
-    if (initialSourceId && !sourceText) {
-      fetch(`/api/graph/search?q=${encodeURIComponent(initialSourceId)}&limit=1`)
-        .then(r => r.json())
-        .then(json => {
-          if (json.success && json.data?.nodes?.[0]) {
-            const n = json.data.nodes[0]
-            setSourceText((n.properties?.name as string) ?? n.id)
-          } else {
-            setSourceText(initialSourceId)
-          }
-        })
-        .catch(() => setSourceText(initialSourceId))
-    }
-  }, [initialSourceId]) // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
-    if (initialTargetId && !targetText) {
-      fetch(`/api/graph/search?q=${encodeURIComponent(initialTargetId)}&limit=1`)
-        .then(r => r.json())
-        .then(json => {
-          if (json.success && json.data?.nodes?.[0]) {
-            const n = json.data.nodes[0]
-            setTargetText((n.properties?.name as string) ?? n.id)
-          } else {
-            setTargetText(initialTargetId)
-          }
-        })
-        .catch(() => setTargetText(initialTargetId))
-    }
-  }, [initialTargetId]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Close on Escape
   useEffect(() => {
@@ -166,6 +166,15 @@ export function PathFinder({ onFindPath, onClose, initialSourceId, initialTarget
   }, [sourceId, targetId, onFindPath])
 
   const canSubmit = sourceId !== null && targetId !== null
+
+  // Auto-submit when both fields are filled via context menu
+  const autoSubmittedRef = useRef(false)
+  useEffect(() => {
+    if (sourceId && targetId && !autoSubmittedRef.current) {
+      autoSubmittedRef.current = true
+      onFindPath(sourceId, targetId)
+    }
+  }, [sourceId, targetId, onFindPath])
 
   return (
     <div className="z-20 flex items-center gap-2 border-b border-zinc-800 bg-zinc-900/95 px-4 py-2 backdrop-blur-sm">
