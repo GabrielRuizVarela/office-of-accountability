@@ -58,6 +58,8 @@ function isMutationMethod(method: string): boolean {
 function isCsrfExempt(pathname: string): boolean {
   // Auth.js routes handle their own CSRF tokens
   if (pathname.startsWith('/api/auth/')) return true
+  // Investigation API — uses x-api-key header auth instead of CSRF (for MCP agent access)
+  if (pathname.startsWith('/api/caso-libra/investigation')) return true
   return false
 }
 
