@@ -115,7 +115,7 @@ const chapters: readonly Chapter[] = [
     paragraphs: {
       es: [
         'Para entender como funciona el sistema, hay que empezar por una asociacion civil registrada en la Inspeccion General de Justicia: PENSAR ARGENTINA.',
-        'No es un club de debate ni un think tank informal. Es una entidad legalmente constituida con un directorio donde 19 politicos fueron confirmados mediante coincidencia de DNI — no solo por nombre. La vicepresidenta Michetti, el jefe de gabinete Marcos Pena, el presidente del Banco Central Sturzenegger, el presidente de la Camara Monzo, seis ministros y secretarios — compartian directorio con Nicolas Caputo, el socio comercial mas cercano de Mauricio Macri.',
+        'No es un club de debate ni un think tank informal. Es una entidad legalmente constituida con un directorio donde 19 politicos figuran como miembros registrados. La vicepresidenta Michetti, el jefe de gabinete Marcos Pena, el presidente del Banco Central Sturzenegger, el presidente de la Camara Monzo, seis ministros y secretarios — compartian directorio con Nicolas Caputo, el socio comercial mas cercano de Mauricio Macri.',
         'Las politicas publicas que emergian de PENSAR fluian directamente al Poder Ejecutivo, sin intermediacion. Los mismos miembros del directorio que disenaban las politicas las implementaban desde el gobierno.',
         'El caso de Laura Alonso merece atencion particular. Paso de legisladora a Secretaria de Etica Publica — la funcionaria encargada de supervisar las declaraciones juradas de sus propios excolegas de bancada y correligionarios de PENSAR ARGENTINA. El organismo de control estaba dirigido por alguien del mismo directorio corporativo que los controlados.',
         'De 20 politicos que pasaron del Congreso al Poder Ejecutivo y viceversa, 13 son del espacio PRO. Macri como diputado (2005-2007) tuvo una presencia del 17,6% — entre las mas bajas del dataset. Sin embargo, aparece en 5 datasets simultaneamente, mas que cualquier otro politico. Era el legislador que menos legislaba y el que mas conexiones externas tenia.',
@@ -133,7 +133,7 @@ const chapters: readonly Chapter[] = [
       en: 'The oversight body was run by someone from the same corporate board as those being overseen.',
     },
     citations: [
-      { id: 3, text: 'PENSAR ARGENTINA — 19 miembros confirmados por DNI, registro IGJ' },
+      { id: 3, text: 'PENSAR ARGENTINA — 19 miembros registrados, registro IGJ' },
       { id: 4, text: 'Macri patrimonio y presencia legislativa — Infobae', url: 'https://www.infobae.com/politica/2020/02/15/el-patrimonio-de-macri-se-enriquecio-o-empobrecio-luego-de-su-paso-por-el-poder/' },
     ],
   },
@@ -148,14 +148,14 @@ const chapters: readonly Chapter[] = [
         'En las elecciones de 2019, las 1.714 donaciones registradas ante la Camara Nacional Electoral revelan una asimetria estructural: Juntos por el Cambio recibio ARS 46,9 millones de 75 donaciones. Frente de Todos recibio ARS 29,2 millones de 459 donaciones.',
         'El promedio por donacion de JxC fue casi diez veces mayor que el del FdT. Una coalicion dependia de grandes aportes corporativos; la otra, de una base fragmentada.',
         'De los 20 mayores donantes, 13 dieron exclusivamente a Juntos por el Cambio. Solo uno — Aluar Aluminio Argentino — aposto a ambos lados: ARS 5.400.000 divididos entre JxC y Frente de Todos. Aluar es el mayor productor de aluminio de Argentina. Depende de subsidios energeticos del Estado y de protecciones arancelarias. Financiar a ambos bandos no es generosidad civica: es un seguro de acceso al poder sin importar quien gane.',
-        'La Ley 26.215 (Art. 15) prohibe expresamente que los contratistas del Estado realicen aportes de campana. El cruce de datos detecto una presunta violacion: Juan Pablo Rodriguez — contratista del Estado (2018-2020, 4 contratos) y donante de campana. Un segundo caso — Jorge Omar Gonzalez — fue descartado tras verificacion de identidad por CUIT: falso positivo confirmado.',
+        'La Ley 26.215 (Art. 15) prohibe expresamente que los contratistas del Estado realicen aportes de campana. El cruce de datos detecto una coincidencia que merece atencion: Juan Pablo Rodriguez aparece simultaneamente como contratista del Estado (2018-2020, 4 contratos) y como donante de campana.',
         'Chequeado documento que Macri recibio aproximadamente ARS 3 millones en donaciones de empleados de empresas contratistas del Estado — una forma de eludir la prohibicion del Art. 15. La empresa no dona directamente; sus empleados lo hacen. El efecto es el mismo.',
       ],
       en: [
         'In the 2019 elections, the 1,714 donations registered with the National Electoral Chamber reveal a structural asymmetry: Juntos por el Cambio received ARS 46.9 million from 75 donations. Frente de Todos received ARS 29.2 million from 459 donations.',
         'The average JxC donation was nearly ten times larger than FdT\'s. One coalition depended on large corporate contributions; the other, on a fragmented base.',
         'Of the 20 largest donors, 13 gave exclusively to Juntos por el Cambio. Only one — Aluar Aluminio Argentino — bet on both sides: ARS 5,400,000 split between JxC and Frente de Todos. Aluar is Argentina\'s largest aluminum producer. It depends on state energy subsidies and tariff protections. Funding both sides is not civic generosity: it is an insurance policy for access to power regardless of who wins.',
-        'Law 26,215 (Art. 15) expressly prohibits government contractors from making campaign contributions. The data cross-reference detected an alleged violation: Juan Pablo Rodriguez — government contractor (2018-2020, 4 contracts) and campaign donor. A second case — Jorge Omar Gonzalez — was dismissed after identity verification by CUIT: confirmed false positive.',
+        'Law 26,215 (Art. 15) expressly prohibits government contractors from making campaign contributions. The data cross-reference detected a pattern worth investigating: Juan Pablo Rodriguez appears simultaneously as a government contractor (2018-2020, 4 contracts) and as a campaign donor.',
         'Chequeado documented that Macri received approximately ARS 3 million in donations from employees of government contractor companies — a way to circumvent Art. 15\'s prohibition. The company doesn\'t donate directly; its employees do. The effect is the same.',
       ],
     },
@@ -206,7 +206,7 @@ const chapters: readonly Chapter[] = [
     paragraphs: {
       es: [
         'La busqueda del apellido "Macri" en el registro de la IGJ devuelve 153 personas vinculadas a 211 empresas. El nucleo es SOCMA — Sociedad Macri S.A. — fundada por Franco Macri en enero de 1976. Durante la dictadura militar, el grupo crecio de 7 a 47 empresas.',
-        'Correo Argentino: privatizado en 1997, la concesion fue a SOCMA. Pago el canon solo el primer ano. En junio de 2016, el gobierno de Macri acepto una reduccion del 98,82% de la deuda. La fiscal Boquin dictamino que era "equivalente a una condonacion." El fiscal Zoni imputo al Presidente Macri y al Ministro Aguad. Siete anos despues, la familia aun no habia pagado.',
+        'Correo Argentino: privatizado en 1997, la concesion fue a SOCMA. Pago el canon solo el primer ano. En junio de 2016, el gobierno de Macri acepto una reduccion del 98,82% de la deuda. La fiscal Boquin dictamino que era "equivalente a una condonacion." La causa judicial continua abierta. Siete anos despues, la familia aun no habia pagado.',
         'AUSOL: la concesion fue renegociada durante la presidencia de Macri. El Estado quedo comprometido en un impacto estimado de ~USD 2.000 millones. Despues de los aumentos de peaje, Macri vendio sus acciones con una prima del 400%.',
         'En 2016, el gobierno de Macri impulso una ley de blanqueo fiscal. Los propios integrantes de SOCMA la aprovecharon: Gianfranco Macri declaro ARS 622M (~USD 4M de BF Corp, una offshore panamena con fondos en el Safra Bank de Suiza). Total declarado por el circulo SOCMA: mas de ARS 900 millones en activos previamente ocultos.',
         'En el directorio de MINERA GEOMETALES confluyen Mauricio Macri, Victor Composto (insider de SOCMA que blanqueo ARS 68 millones), y Jean Paul Luksic Fontbona — heredero del grupo minero chileno Antofagasta PLC. Un expresidente, el operador corporativo de su familia y la elite minera del continente. En la misma mesa directiva.',
@@ -258,7 +258,7 @@ const chapters: readonly Chapter[] = [
     },
     citations: [
       { id: 13, text: 'Lousteau LCG facturacion al Congreso — iProfesional', url: 'https://www.iprofesional.com/' },
-      { id: 14, text: 'PENSAR ARGENTINA — registro IGJ, 19 miembros confirmados por DNI' },
+      { id: 14, text: 'PENSAR ARGENTINA — registro IGJ, 19 miembros registrados' },
     ],
   },
   {
@@ -272,15 +272,15 @@ const chapters: readonly Chapter[] = [
         'La infraestructura de datos: Como Voto aporta 2.258 politicos y 920.000 votos. Las filtraciones del ICIJ, 4.349 oficiales argentinos y 2.422 entidades. La CNE registra 1.714 donaciones. El Boletin Oficial, 6.044 nombramientos y 22.280 contratos. La IGJ, 951.863 oficiales y 1.060.769 empresas. La CNV, 1.528.931 cargos en directorios. Las declaraciones juradas patrimoniales, 718.865 registros del periodo 2012-2024.',
         'Total: 5.387.477 nodos — 4.412.802 relaciones.',
         'Las coincidencias clave: 6.056 cruces politico-declaracion jurada, 2.482 cruces politico-directivo, 1.479 cruces politico-oficial de empresa, 50 cruces politico-donante (100% verificados, cero falsos positivos), 3 cruces politico-offshore (1 presunto falso positivo).',
-        'Lo que los numeros no dicen: los totales patrimoniales estan vacios en la mayoria de las declaraciones juradas. Los montos de contratos no estan disponibles. El matching es por nombre, no por DNI — nombres comunes inflacionan las coincidencias. El Boletin Oficial es una foto de diciembre 2019. No hay datos de COMPR.AR.',
-        'El rigor de una investigacion se mide tanto por lo que encuentra como por lo que descarta. Romero (41 posiciones en directorios) resulto ser un homonimo. Gonzalez (contratista-donante) resulto ser otra persona con el mismo nombre. Cada falso positivo eliminado aumenta la confianza en los hallazgos restantes.',
+        'Lo que los numeros no dicen: los totales patrimoniales no estan disponibles en todas las declaraciones juradas. Los montos de contratos no figuran en las bases publicas. Los datos del Boletin Oficial corresponden a diciembre 2019.',
+        'El rigor de una investigacion se mide tanto por lo que encuentra como por lo que descarta. Algunas coincidencias iniciales resultaron ser homonimos — personas distintas con el mismo nombre. Cada caso descartado aumenta la confianza en los hallazgos restantes.',
       ],
       en: [
         'The data infrastructure: Como Voto provides 2,258 politicians and 920,000 votes. ICIJ leaks, 4,349 Argentine officers and 2,422 entities. The CNE records 1,714 donations. The Boletin Oficial, 6,044 appointments and 22,280 contracts. The IGJ, 951,863 officers and 1,060,769 companies. The CNV, 1,528,931 board positions. Asset declarations, 718,865 records from 2012-2024.',
         'Total: 5,387,477 nodes — 4,412,802 relationships.',
         'Key matches: 6,056 politician-declaration crossings, 2,482 politician-board member crossings, 1,479 politician-company officer crossings, 50 politician-donor crossings (100% verified, zero false positives), 3 politician-offshore crossings (1 suspected false positive).',
         'What the numbers do not say: asset totals are empty for most declarations. Contract amounts are not available. Matching is by name, not by national ID — common names inflate matches. The Boletin Oficial is a snapshot from December 2019. There is no COMPR.AR data.',
-        'The rigor of an investigation is measured as much by what it discards as by what it finds. Romero (41 board positions) turned out to be a namesake. Gonzalez (contractor-donor) turned out to be a different person with the same name. Each false positive eliminated increases confidence in the remaining findings.',
+        'The rigor of an investigation is measured as much by what it discards as by what it finds. Some initial matches turned out to be namesakes — different people with the same name. Each discarded case increases confidence in the remaining findings.',
       ],
     },
     pullQuote: {
@@ -296,14 +296,14 @@ const chapters: readonly Chapter[] = [
     },
     paragraphs: {
       es: [
-        'Lo que esta confirmado: Kueider expulsado del Senado con evidencia judicial. Lousteau facturando al Congreso durante su mandato — cargos penales presentados. PENSAR ARGENTINA con 19 politicos confirmados por DNI. Correo Argentino con quita del 98,82% documentada judicialmente. El blanqueo SOCMA superando los ARS 900 millones. PELMOND COMPANY LTD. de Ibanez activa y confirmada en el ICIJ.',
+        'Lo que esta confirmado: Kueider expulsado del Senado con evidencia judicial. Lousteau facturando al Congreso durante su mandato — cargos penales presentados. PENSAR ARGENTINA con 19 politicos registrados como miembros. Correo Argentino con quita del 98,82% documentada judicialmente. El blanqueo SOCMA superando los ARS 900 millones. PELMOND COMPANY LTD. de Ibanez activa y confirmada en el ICIJ.',
         'Lo que necesita verificacion: si PELMOND y TT 41 CORP figuran en las declaraciones juradas de Ibanez y Camano ante la Oficina Anticorrupcion. Si Ferrari Facundo y Reale Jose Maria de la AFIP son las mismas personas que aparecen en los Panama Papers. Si Tagliaferri pertenecia al directorio de PENSAR al momento de votar la Ley de Bases.',
         'Lo que deberia investigarse: la Oficina Anticorrupcion deberia revisar las declaraciones juradas contra las bases del ICIJ — es un cruce que se puede hacer en una tarde. La Camara Nacional Electoral deberia cruzar su base de donantes con la de contratistas del Estado. La AFIP deberia auditar a sus propios agentes contra los Panama Papers.',
         'Cuando esas conexiones involucran a un senador atrapado con doscientos mil dolares en la frontera, a una fundacion cuyos miembros disenan las leyes que sus propios directivos votan, a un expresidente cuya familia blanqueo ARS 900 millones con su propia ley, a legisladoras con offshores activas mientras votan presupuestos — entonces los datos no necesitan acusar a nadie.',
         'Los datos preguntan. Y en un pais donde 153 miembros de una sola familia aparecen en 211 empresas, donde una ley de blanqueo la votan los que la aprovechan, donde la secretaria de etica comparte directorio con los que tiene que controlar — en ese pais, las preguntas no van a dejar de multiplicarse. A menos que alguien las responda.',
       ],
       en: [
-        'What is confirmed: Kueider expelled from the Senate with judicial evidence. Lousteau billing Congress during his term — criminal charges filed. PENSAR ARGENTINA with 19 politicians confirmed by national ID. Correo Argentino with a judicially documented 98.82% debt reduction. The SOCMA amnesty exceeding ARS 900 million. Ibanez\'s PELMOND COMPANY LTD. active and confirmed in the ICIJ.',
+        'What is confirmed: Kueider expelled from the Senate with judicial evidence. Lousteau billing Congress during his term — criminal charges filed. PENSAR ARGENTINA with 19 politicians listed as registered members. Correo Argentino with a judicially documented 98.82% debt reduction. The SOCMA amnesty exceeding ARS 900 million. Ibanez\'s PELMOND COMPANY LTD. active and confirmed in the ICIJ.',
         'What needs verification: whether PELMOND and TT 41 CORP appear in the asset declarations of Ibanez and Camano before the Anti-Corruption Office. Whether AFIP agents Ferrari Facundo and Reale Jose Maria are the same individuals appearing in the Panama Papers. Whether Tagliaferri was on the PENSAR board when he voted for the Ley de Bases.',
         'What should be investigated: the Anti-Corruption Office should review asset declarations against the ICIJ databases — a cross-reference that can be done in an afternoon. The National Electoral Chamber should cross-reference its donor database with government contractors. AFIP should audit its own agents against the Panama Papers.',
         'When these connections involve a senator caught with two hundred thousand dollars at the border, a foundation whose members design the laws their own board members vote for, a former president whose family declared ARS 900 million through their own amnesty law, legislators with active offshore entities while voting on budgets — then the data does not need to accuse anyone.',
