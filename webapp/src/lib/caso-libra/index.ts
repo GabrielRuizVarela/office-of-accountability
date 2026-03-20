@@ -1,3 +1,5 @@
+export { config } from './config'
+
 export {
   getInvestigationGraph,
   getWalletFlows,

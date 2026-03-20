@@ -247,10 +247,10 @@ export async function getPersonBySlug(
   try {
     // Find the person node
     const personResult = await session.run(
-      `MATCH (p:Person {slug: $slug})
+      `MATCH (p:Person {slug: $slug, caso_slug: $casoSlug})
        RETURN p
        LIMIT 1`,
-      { slug },
+      { slug, casoSlug: CASO_EPSTEIN_SLUG },
       TX_CONFIG,
     )
 
@@ -263,9 +263,9 @@ export async function getPersonBySlug(
 
     // Fetch neighbors and relationships
     const neighborResult = await session.run(
-      `MATCH (p:Person {slug: $slug})-[r]-(neighbor)
+      `MATCH (p:Person {slug: $slug, caso_slug: $casoSlug})-[r]-(neighbor)
        RETURN neighbor, r`,
-      { slug },
+      { slug, casoSlug: CASO_EPSTEIN_SLUG },
       TX_CONFIG,
     )
 
