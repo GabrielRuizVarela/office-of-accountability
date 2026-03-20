@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, use } from 'react'
 
+import { CategoryFilter, isNodeHiddenByCategory } from '../../../../components/graph/CategoryFilter'
 import { ForceGraph } from '../../../../components/graph/ForceGraph'
 import type { ForceGraphHandle } from '../../../../components/graph/ForceGraph'
 import { GraphToolbar } from '../../../../components/graph/GraphToolbar'
@@ -45,6 +46,7 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null)
   const [visibleLabels, setVisibleLabels] = useState<Set<string> | null>(null)
   const [tierFilter, setTierFilter] = useState<string>('all')
+  const [hiddenCategories, setHiddenCategories] = useState<Set<string>>(new Set())
   const [pinnedNodeIds, setPinnedNodeIds] = useState<Set<string>>(new Set())
 
   // Undo stack
@@ -98,18 +100,27 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
   // ---------------------------------------------------------------------------
 
   const filteredData = useMemo<GraphData>(() => {
-    if (tierFilter === 'all') return graphData
-    let nodes: GraphNode[]
+    let nodes: GraphNode[] = [...graphData.nodes]
+
+    // Tier filter
     if (tierFilter === 'verified') {
-      nodes = graphData.nodes.filter(
+      nodes = nodes.filter(
         (n) => (n.properties as Record<string, unknown>).confidence_tier !== 'bronze',
       )
-    } else {
-      nodes = graphData.nodes.filter((n) => {
+    } else if (tierFilter === 'gold') {
+      nodes = nodes.filter((n) => {
         const tier = (n.properties as Record<string, unknown>).confidence_tier
         return !tier || tier === 'gold'
       })
     }
+
+    // Category filter
+    if (hiddenCategories.size > 0) {
+      nodes = nodes.filter((n) => !isNodeHiddenByCategory(n, hiddenCategories))
+    }
+
+    if (nodes.length === graphData.nodes.length) return graphData
+
     const nodeIds = new Set(nodes.map((n) => n.id))
     const links: GraphLink[] = graphData.links.filter(
       (l) => {
@@ -119,7 +130,7 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
       },
     )
     return { nodes, links }
-  }, [graphData, tierFilter])
+  }, [graphData, tierFilter, hiddenCategories])
 
   // ---------------------------------------------------------------------------
   // Expand-in-place
@@ -432,6 +443,17 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
           <option value="gold">Gold only</option>
         </select>
       </div>
+
+      {/* Category sub-filters */}
+      {graphData.nodes.length > 0 && (
+        <div className="border-b border-zinc-800 px-4 py-1.5">
+          <CategoryFilter
+            data={graphData}
+            hiddenCategories={hiddenCategories}
+            onChange={setHiddenCategories}
+          />
+        </div>
+      )}
 
       {/* Path finder bar */}
       {showPathFinder && (
