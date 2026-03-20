@@ -361,7 +361,29 @@ El grafo no acusa. Revela patrones.
 
 ---
 
-## VIII. Lo Que Queda
+## VIII. Puentes de Identidad — Ciclo 2
+
+La resolucion de identidades entre datasets (el puente SAME_PERSON) permite rastrear a personas fisicas a traves de sus multiples roles: legislador, directivo, offshore. Tres casos ilustran como opera el sistema cuando se cruza informacion de la IGJ, el ICIJ y Como Voto.
+
+### De Narvaez: el circuito offshore documentado
+
+Francisco De Narvaez Steuer aparece en la base del ICIJ (Panama Papers) vinculado a cuatro entidades offshore: **Willowbrook Trading Inc.**, **Power Horse Properties Inc.** y **Titan Consulting Ltd.** en las Islas Virgenes Britanicas, y **La Esperanza Associated Corp.** en Panama. Estas sociedades fueron utilizadas para canalizar operaciones vinculadas a Casa Tia, la cadena de supermercados familiar vendida al Exxel Group en 1998 por aproximadamente **USD 650 millones**. Los Pandora Papers revelaron ademas cinco fideicomisos familiares (Galeodea, Cingula, Marquise, Sunrise, Flint) creados en diciembre de 2004, con cuentas en Suiza administradas desde Nueva Zelanda. Forbes estimo la fortuna familiar en **USD 920 millones** (2020). De Narvaez adquirio el diario El Cronista Comercial en 2006 y lo vendio al Grupo America en 2021 por USD 6 millones. La entidad Willowbrook Trading Inc. esta confirmada en la base publica del ICIJ ([enlace](https://offshoreleaks.icij.org/nodes/10134320)). **Estado: CONFIRMADO** — multiples fuentes periodisticas y la base ICIJ verifican las entidades offshore. La busqueda de "Timberhill Trading" no arrojo resultados vinculados a De Narvaez; este nombre requiere verificacion adicional contra los registros de la IGJ.
+
+### Frigerio: el funcionario inmobiliario
+
+Rogelio Frigerio — Ministro del Interior de Macri (2015-2019), hoy gobernador de Entre Rios — es propietario de **Desarrollos Inmobiliarios Alto Delta S.A.**, que opera tres emprendimientos inmobiliarios en el departamento Islas de Entre Rios: Alto Delta (3.200 hectareas), Barrio Nautico Sagastume (40 hectareas) y Alto Pecan (500 hectareas). Para este ultimo formo la sociedad **Nogales de Entre Rios S.A.** Su socio en Alto Delta es el diputado provincial Martin Anguiano (PRO). La fiscalia federal investigo si Frigerio, como ministro, beneficio a la constructora Koolhaas S.A. en la adjudicacion de un inmueble fiscal en Fitz Roy 851 (Buenos Aires) en junio de 2017, y un mes despues invirtio USD 776.000 en un desarrollo inmobiliario de la misma firma sobre ese terreno. La Oficina Anticorrupcion lo denuncio por incompatibilidad, cohecho y negociaciones incompatibles. Antes de la politica, Frigerio fundo la consultora **Economia y Regiones** (2000), que fue multada por el gobierno kirchnerista por publicar indices de inflacion alternativos. **Estado: CONFIRMADO** — la existencia de las empresas inmobiliarias y la investigacion fiscal son publicas. El conflicto de intereses como gobernador-empresario inmobiliario en la misma provincia requiere seguimiento.
+
+### Camaño-Barrionuevo: la sociedad conyugal corporativa
+
+La conexion Camaño-Barrionuevo amplia el perfil offshore de Graciela Camaño (TT 41 CORP, Seccion IV). Su exmarido Luis Barrionuevo — secretario general de UTHGRA durante decadas, senador y diputado nacional por Catamarca — acumulo un patrimonio que incluye empresas, clinicas privadas, hoteles y restaurantes. Juntos controlaron **Bellota S.A.**, dedicada a la gestion de actividades deportivas (futbol, golf), donde su hija Melina Eva Barrionuevo figura como directora suplente. Segun la declaracion jurada de Camaño ante el Congreso, Bellota S.A. declaro ganancias de ARS 249.000 pero no presento balance ante la AFIP. El matrimonio Camaño-Barrionuevo tambien controlo las superintendencias de las AFJP, una porcion de PAMI y la Administracion Nacional de la Seguridad Social. Barrionuevo es ademas socio de **Sano y Bueno Catering S.A.** (con familiares), proveedora de alimentos al Estado desde 2017. La sociedad conyugal — politica, sindical y empresarial — se disolvio con el divorcio en 2020, seguido de una guerra publica por el control de UTHGRA entre Barrionuevo y Dante Camaño (hermano de Graciela). **Estado: CONFIRMADO** — la existencia de Bellota S.A., los cargos directivos y el perfil empresarial de Barrionuevo son publicos. La falta de balance de Bellota ante AFIP, combinada con la entidad offshore TT 41 CORP de Camaño, configura un patron que merece auditoria.
+
+### Gutierrez: datos insuficientes
+
+La busqueda de "Julio Cesar Gutierrez cable Totoras Santa Fe" y "South Cable Holdings Argentina" no arrojo resultados verificables. Estos nombres no pudieron ser confirmados mediante fuentes periodisticas ni registros publicos accesibles. **Estado: NO VERIFICADO** — requiere acceso directo a los registros de la IGJ o ENACOM para confirmar.
+
+---
+
+## IX. Lo Que Queda
 
 ### Lo que esta confirmado
 
@@ -439,6 +461,19 @@ A menos que alguien las responda.
 - [Kueider detenido con USD 211.000 — Infobae](https://www.infobae.com/politica/2024/12/)
 - [Kueider testaferros arrestados — LA NACION](https://www.lanacion.com.ar/politica/2025/03/)
 - [Lousteau LCG facturacion al Congreso — iProfesional](https://www.iprofesional.com/)
+- [Willowbrook Trading Inc — ICIJ](https://offshoreleaks.icij.org/nodes/10134320)
+- [Francisco De Narvaez Steuer — ICIJ](https://offshoreleaks.icij.org/nodes/12173433)
+- [Panama Papers empresarios argentinos — Mining Press](https://miningpress.com/296604/panama-papers-los-empresarios-argentinos-con-cuentas-offshore)
+- [Pandora Papers familias ricas Argentina — elDiarioAR](https://www.eldiarioar.com/politica/pandora-papers/nueve-diez-familias-ricas-argentina-figuran-pandora-papers-sociedades-fideicomisos-offshore_1_8425464.html)
+- [De Narvaez compra El Cronista — LA NACION](https://www.lanacion.com.ar/cultura/narvaez-compro-el-diario-el-cronista-nid843710/)
+- [Grupo America compra El Cronista — Perfil](https://www.perfil.com/noticias/medios/grupo-america-compro-diario-el-cronista-6-millones-dolares.phtml)
+- [Exxel Group compra Casa Tia — LA NACION](https://www.lanacion.com.ar/economia/the-exxel-group-compro-casa-tia-nid121890/)
+- [Frigerio operaciones inmobiliarias — Infobae](https://www.infobae.com/politica/2022/04/25/pidieron-citar-a-indagatoria-a-rogelio-frigerio-por-irregularidades-en-operaciones-inmobiliarias/)
+- [Frigerio negocio inmobiliario Entre Rios — Informe Digital](https://www.informedigital.com.ar/noticia/184534)
+- [Frigerio obras ilegales — El Fueguino](https://www.elfueguino.com.ar/obras-para-beneficiar-los-negocios-de-frigerio/)
+- [Clan Barrionuevo-Camaño — Realpolitik](https://realpolitik.com.ar/nota/36693/clan-barrionuevo--ndash--camano--numeros-que-no-cierran--titulos-dudosos-y-sueldos-envidiables/)
+- [Barrionuevo-Camaño sociedad conyugal — Infobae](https://www.infobae.com/politica/2021/10/26/barrionuevo-camano-una-sociedad-conyugal-que-se-sello-al-calor-del-peronismo-y-entro-en-crisis-con-la-pandemia/)
+- [Barrionuevo Forrest Gump — Revista Anfibia](https://www.revistaanfibia.com/luis-barrionuevo-el-forrest-gump-de-la-politica-argentina/)
 
 ---
 
