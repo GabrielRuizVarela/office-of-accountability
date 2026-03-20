@@ -11,6 +11,10 @@ import { createHash } from 'node:crypto'
 import type {
   CastVoteRelParams,
   CompactLegislator,
+  ElectionEntry,
+  ElectionParams,
+  LawNamePatchParams,
+  LegislationParams,
   LegislativeVoteParams,
   LegislatorDetail,
   MemberOfRelParams,
@@ -18,7 +22,13 @@ import type {
   PoliticianParams,
   ProvenanceParams,
   ProvinceParams,
+  RanInRelParams,
   RepresentsRelParams,
+  ServedTermRelParams,
+  TermNodeParams,
+  TermPartyRelParams,
+  TermProvinceRelParams,
+  VoteOnRelParams,
   VotingSession,
 } from './types'
 
@@ -43,6 +53,24 @@ export function slugify(input: string): string {
     .replace(/[\u0300-\u036f]/g, '') // strip diacritics
     .replace(/[^a-z0-9]+/g, '-') // non-alphanum → dash
     .replace(/^-+|-+$/g, '') // trim leading/trailing dashes
+}
+
+/**
+ * Normalize a name for fuzzy matching.
+ * Strips diacritics, lowercases, removes punctuation, sorts parts alphabetically.
+ * "Roberto Pedro Álvarez" → "alvarez pedro roberto"
+ * "ALVAREZ, ROBERTO PEDRO" → "alvarez pedro roberto"
+ */
+export function normalizeName(name: string): string {
+  return name
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z\s]/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean)
+    .sort()
+    .join(' ')
 }
 
 /**
@@ -230,6 +258,264 @@ export function transformRepresents(legislator: CompactLegislator): RepresentsRe
 }
 
 // ---------------------------------------------------------------------------
+// Term transformers
+// ---------------------------------------------------------------------------
+
+export interface TermTransformResult {
+  readonly terms: readonly TermNodeParams[]
+  readonly servedTermRels: readonly ServedTermRelParams[]
+  readonly termPartyRels: readonly TermPartyRelParams[]
+  readonly termProvinceRels: readonly TermProvinceRelParams[]
+  readonly additionalParties: readonly PartyParams[]
+  readonly additionalProvinces: readonly ProvinceParams[]
+}
+
+/** Transform a legislator's terms into Term nodes and relationships */
+export function transformTerms(
+  detail: LegislatorDetail,
+  existingPartySlugs: ReadonlySet<string>,
+  existingProvinceSlugs: ReadonlySet<string>,
+): TermTransformResult {
+  const politicianSlug = slugify(detail.name_key)
+  const terms: TermNodeParams[] = []
+  const servedTermRels: ServedTermRelParams[] = []
+  const termPartyRels: TermPartyRelParams[] = []
+  const termProvinceRels: TermProvinceRelParams[] = []
+  const additionalParties: PartyParams[] = []
+  const additionalProvinces: ProvinceParams[] = []
+  const seenParties = new Set<string>()
+  const seenProvinces = new Set<string>()
+
+  for (const term of detail.terms) {
+    const termId = `${politicianSlug}--${term.ch}-${term.yf}-${term.yt}`
+    const partySlug = slugify(term.b)
+    const provinceSlug = slugify(term.p)
+
+    terms.push({
+      ...buildProvenance(`term:${termId}`),
+      id: termId,
+      chamber: term.ch,
+      year_from: term.yf,
+      year_to: term.yt,
+      bloc: term.b,
+      province: term.p,
+      coalition: term.co,
+    })
+
+    servedTermRels.push({ politician_id: politicianSlug, term_id: termId })
+    termPartyRels.push({ term_id: termId, party_id: partySlug })
+    termProvinceRels.push({ term_id: termId, province_id: provinceSlug })
+
+    if (!existingPartySlugs.has(partySlug) && !seenParties.has(partySlug)) {
+      seenParties.add(partySlug)
+      additionalParties.push({
+        ...buildProvenance(`party:${term.b}`),
+        id: partySlug,
+        name: term.b,
+        slug: partySlug,
+      })
+    }
+
+    if (!existingProvinceSlugs.has(provinceSlug) && !seenProvinces.has(provinceSlug)) {
+      seenProvinces.add(provinceSlug)
+      additionalProvinces.push({
+        ...buildProvenance(`province:${term.p}`),
+        id: provinceSlug,
+        name: term.p,
+        slug: provinceSlug,
+      })
+    }
+  }
+
+  return { terms, servedTermRels, termPartyRels, termProvinceRels, additionalParties, additionalProvinces }
+}
+
+// ---------------------------------------------------------------------------
+// Legislation transformers
+// ---------------------------------------------------------------------------
+
+export interface LegislationTransformResult {
+  readonly legislation: readonly LegislationParams[]
+  readonly voteOnRels: readonly VoteOnRelParams[]
+  readonly lawNamePatches: readonly LawNamePatchParams[]
+}
+
+/**
+ * Build Legislation nodes from vote group keys, VOTE_ON rels, and law_name patches.
+ *
+ * - Legislation identity is always derived from `gk` (group key)
+ * - Display name: first non-empty `ln` per gk, then lawNames fallback, then raw gk
+ * - Votes without `gk` get no VOTE_ON rel but may still get law_name from `ln`
+ */
+export function transformLegislation(
+  details: readonly LegislatorDetail[],
+  lawNames: readonly string[],
+): LegislationTransformResult {
+  const lawNameSet = new Set(lawNames)
+
+  const idToGk = new Map<string, string>()
+  const gkToName = new Map<string, string>()
+  const voteOnRels: VoteOnRelParams[] = []
+  const lawNamePatches: LawNamePatchParams[] = []
+  const seenVoteOn = new Set<string>()
+
+  for (const detail of details) {
+    for (const vote of detail.votes) {
+      if (vote.ln && vote.ln.trim() !== '') {
+        lawNamePatches.push({ acta_id: vote.vid, law_name: vote.ln.trim() })
+      }
+
+      if (vote.gk && vote.gk.trim() !== '') {
+        const gk = vote.gk.trim()
+        const legislationId = slugify(gk)
+
+        if (!idToGk.has(legislationId)) {
+          idToGk.set(legislationId, gk)
+        }
+
+        if (!gkToName.has(gk) && vote.ln && vote.ln.trim() !== '') {
+          gkToName.set(gk, vote.ln.trim())
+        }
+
+        const relKey = `${vote.vid}::${legislationId}`
+        if (!seenVoteOn.has(relKey)) {
+          seenVoteOn.add(relKey)
+          voteOnRels.push({ acta_id: vote.vid, legislation_id: legislationId })
+        }
+      }
+    }
+  }
+
+  const legislation: LegislationParams[] = []
+  for (const [id, gk] of idToGk.entries()) {
+    let name = gkToName.get(gk)
+    if (!name && lawNameSet.has(gk)) {
+      name = gk
+    }
+
+    legislation.push({
+      ...buildProvenance(`legislation:${gk}`),
+      id,
+      name: name || gk,
+      group_key: gk,
+      slug: id,
+    })
+  }
+
+  const seenActa = new Set<string>()
+  const dedupedPatches = lawNamePatches.filter((p) => {
+    if (seenActa.has(p.acta_id)) return false
+    seenActa.add(p.acta_id)
+    return true
+  })
+
+  return { legislation, voteOnRels, lawNamePatches: dedupedPatches }
+}
+
+// ---------------------------------------------------------------------------
+// Election transformers
+// ---------------------------------------------------------------------------
+
+export interface ElectionTransformResult {
+  readonly elections: readonly ElectionParams[]
+  readonly ranInRels: readonly RanInRelParams[]
+  readonly unmatchedCount: number
+}
+
+/**
+ * Transform election data into Election nodes and RAN_IN relationships.
+ *
+ * Matches election entries to existing Politicians using:
+ * 1. Normalized name + province (most collisions resolve here)
+ * 2. Name + province + year overlap with known terms (resolves ambiguity)
+ * 3. Skip with warning if still ambiguous or unmatched
+ */
+export function transformElections(
+  electionData: Record<string, Record<string, ElectionEntry[]>>,
+  politicians: readonly PoliticianParams[],
+  terms: readonly TermNodeParams[],
+): ElectionTransformResult {
+  const lookup = new Map<string, string[]>()
+  for (const p of politicians) {
+    const key = `${normalizeName(p.full_name)}::${normalizeName(p.province)}`
+    const existing = lookup.get(key) || []
+    existing.push(p.id)
+    lookup.set(key, existing)
+  }
+
+  const termsByPolitician = new Map<string, Array<{ year_from: number; year_to: number }>>()
+  for (const t of terms) {
+    const politicianSlug = t.id.split('--')[0]
+    const existing = termsByPolitician.get(politicianSlug) || []
+    existing.push({ year_from: t.year_from, year_to: t.year_to })
+    termsByPolitician.set(politicianSlug, existing)
+  }
+
+  const elections: ElectionParams[] = []
+  const ranInRels: RanInRelParams[] = []
+  const seenElectionIds = new Set<string>()
+  let unmatchedCount = 0
+
+  for (const [year, chambers] of Object.entries(electionData)) {
+    const electionId = `election-${year}`
+    const electionYear = parseInt(year, 10)
+
+    if (!seenElectionIds.has(electionId)) {
+      seenElectionIds.add(electionId)
+      elections.push({
+        ...buildProvenance(`election:${year}`),
+        id: electionId,
+        year: electionYear,
+        slug: electionId,
+      })
+    }
+
+    for (const entries of Object.values(chambers)) {
+      for (const entry of entries) {
+        const key = `${normalizeName(entry.name)}::${normalizeName(entry.province)}`
+        const candidates = lookup.get(key)
+
+        if (!candidates || candidates.length === 0) {
+          unmatchedCount += 1
+          continue
+        }
+
+        let politicianId: string | null = null
+
+        if (candidates.length === 1) {
+          politicianId = candidates[0]
+        } else {
+          const matching = candidates.filter((slug) => {
+            const t = termsByPolitician.get(slug)
+            if (!t) return false
+            return t.some((term) => electionYear >= term.year_from && electionYear <= term.year_to)
+          })
+          if (matching.length === 1) {
+            politicianId = matching[0]
+          }
+        }
+
+        if (!politicianId) {
+          unmatchedCount += 1
+          continue
+        }
+
+        ranInRels.push({
+          politician_id: politicianId,
+          election_id: electionId,
+          alliance: entry.alliance,
+          province: entry.province,
+          coalition: entry.coalition,
+          party_code: entry.party_code,
+        })
+      }
+    }
+  }
+
+  return { elections, ranInRels, unmatchedCount }
+}
+
+// ---------------------------------------------------------------------------
 // Orchestrator
 // ---------------------------------------------------------------------------
 
@@ -241,20 +527,25 @@ export interface TransformResult {
   readonly castVotes: readonly CastVoteRelParams[]
   readonly memberOfRels: readonly MemberOfRelParams[]
   readonly representsRels: readonly RepresentsRelParams[]
+  readonly terms: readonly TermNodeParams[]
+  readonly servedTermRels: readonly ServedTermRelParams[]
+  readonly termPartyRels: readonly TermPartyRelParams[]
+  readonly termProvinceRels: readonly TermProvinceRelParams[]
+  readonly legislation: readonly LegislationParams[]
+  readonly voteOnRels: readonly VoteOnRelParams[]
+  readonly lawNamePatches: readonly LawNamePatchParams[]
+  readonly elections: readonly ElectionParams[]
+  readonly ranInRels: readonly RanInRelParams[]
 }
 
 export interface TransformInput {
   readonly legislators: readonly CompactLegislator[]
   readonly details: readonly LegislatorDetail[]
   readonly sessions: readonly VotingSession[]
+  readonly lawNames: readonly string[]
+  readonly electionData: Record<string, Record<string, ElectionEntry[]>>
 }
 
-/**
- * Transform all Como Voto data into Neo4j-ready parameters.
- *
- * Matches legislators with their detail records when available,
- * falls back to compact data only when detail is missing.
- */
 export function transformAll(input: TransformInput): TransformResult {
   const detailByKey = new Map(input.details.map((d) => [d.name_key, d]))
 
@@ -267,19 +558,77 @@ export function transformAll(input: TransformInput): TransformResult {
   const provinces = transformProvinces(input.legislators)
 
   const votingSessions = input.sessions.map(transformVotingSession)
-
   const castVotes = input.details.flatMap(transformCastVotes)
-
   const memberOfRels = input.legislators.map(transformMemberOf)
   const representsRels = input.legislators.map(transformRepresents)
 
+  // --- Terms ---
+  const existingPartySlugs = new Set(parties.map((p) => p.id))
+  const existingProvinceSlugs = new Set(provinces.map((p) => p.id))
+
+  const allTermResults = input.details.map((d) =>
+    transformTerms(d, existingPartySlugs, existingProvinceSlugs),
+  )
+
+  const terms = allTermResults.flatMap((r) => r.terms)
+  const servedTermRels = allTermResults.flatMap((r) => r.servedTermRels)
+  const termPartyRels = allTermResults.flatMap((r) => r.termPartyRels)
+  const termProvinceRels = allTermResults.flatMap((r) => r.termProvinceRels)
+
+  const additionalParties = allTermResults.flatMap((r) => r.additionalParties)
+  const additionalProvinces = allTermResults.flatMap((r) => r.additionalProvinces)
+
+  const mergedParties = [...parties]
+  const mergedPartySlugs = new Set(parties.map((p) => p.id))
+  for (const p of additionalParties) {
+    if (!mergedPartySlugs.has(p.id)) {
+      mergedPartySlugs.add(p.id)
+      mergedParties.push(p)
+    }
+  }
+
+  const mergedProvinces = [...provinces]
+  const mergedProvinceSlugs = new Set(provinces.map((p) => p.id))
+  for (const p of additionalProvinces) {
+    if (!mergedProvinceSlugs.has(p.id)) {
+      mergedProvinceSlugs.add(p.id)
+      mergedProvinces.push(p)
+    }
+  }
+
+  // --- Legislation ---
+  const { legislation, voteOnRels, lawNamePatches } = transformLegislation(
+    input.details,
+    input.lawNames,
+  )
+
+  // --- Elections ---
+  const { elections, ranInRels, unmatchedCount } = transformElections(
+    input.electionData,
+    politicians,
+    terms,
+  )
+
+  if (unmatchedCount > 0) {
+    console.warn(`  Election matching: ${unmatchedCount} entries could not be matched to politicians`)
+  }
+
   return {
     politicians,
-    parties,
-    provinces,
+    parties: mergedParties,
+    provinces: mergedProvinces,
     votingSessions,
     castVotes,
     memberOfRels,
     representsRels,
+    terms,
+    servedTermRels,
+    termPartyRels,
+    termProvinceRels,
+    legislation,
+    voteOnRels,
+    lawNamePatches,
+    elections,
+    ranInRels,
   }
 }
