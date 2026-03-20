@@ -59,8 +59,8 @@ const t = {
     es: 'Investigacion verificada',
   },
   investigationDesc: {
-    en: '72 factchecked claims, 7,287 connected nodes, 195 verified persons, money flows, evidence chain, and government response',
-    es: '72 afirmaciones verificadas, 7,287 nodos conectados, 195 personas verificadas, flujos de dinero, cadena de evidencia y respuesta gubernamental',
+    en: '72 factchecked claims, 7,287 connected nodes, 355 verified persons, money flows, evidence chain, and government response',
+    es: '72 afirmaciones verificadas, 7,287 nodos conectados, 355 personas verificadas, flujos de dinero, cadena de evidencia y respuesta gubernamental',
   },
   networkGraph: {
     en: 'Network Graph',

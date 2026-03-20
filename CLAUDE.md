@@ -16,6 +16,7 @@ pnpm run ingest:backfill        # Tag existing nodes as gold
 pnpm run ingest:wave1           # Import rhowardstone data
 pnpm run ingest:wave2           # Import from Epstein Exposed API
 pnpm run ingest:wave3           # Document content enrichment
+pnpm run ingest:wave4           # Import dleerdefi handwritten logbooks
 pnpm run ingest:review -- --wave N  # Review wave quality
 pnpm run ingest:promote -- --wave N --to silver  # Promote tier
 ```
