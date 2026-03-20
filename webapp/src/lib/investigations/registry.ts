@@ -1,29 +1,29 @@
 /**
- * Central registry resolving casoSlug → InvestigationClientConfig.
+ * Central registry resolving casoSlug -> InvestigationClientConfig.
  *
- * Per-investigation config files (e.g., caso-epstein/config.ts) call
- * registerInvestigation() to populate the registry at import time.
+ * Each investigation's config is imported directly, making the registry
+ * statically analyzable and tree-shakeable.
  */
 
 import type { InvestigationClientConfig } from './types'
+
+import { config as libraConfig } from '../caso-libra/config'
+import { config as finanzasConfig } from '../caso-finanzas-politicas/config'
+import { config as epsteinConfig } from '../caso-epstein/config'
 
 // ---------------------------------------------------------------------------
 // Registry state
 // ---------------------------------------------------------------------------
 
-const REGISTRY: Record<string, InvestigationClientConfig> = {}
+const REGISTRY: Record<string, InvestigationClientConfig> = {
+  'caso-libra': libraConfig,
+  'caso-finanzas-politicas': finanzasConfig,
+  'caso-epstein': epsteinConfig,
+}
 
 // ---------------------------------------------------------------------------
 // Public API
 // ---------------------------------------------------------------------------
-
-/**
- * Register an investigation's client config.
- * Called by per-investigation config files during module initialization.
- */
-export function registerInvestigation(config: InvestigationClientConfig): void {
-  REGISTRY[config.casoSlug] = config
-}
 
 /**
  * Look up an investigation's client config by slug.
