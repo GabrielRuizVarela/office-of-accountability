@@ -145,6 +145,7 @@ Existing platform labels (`Politician`, `Legislation`, `LegislativeVote`, `Party
 | `Event` | id, title, slug, description, date, source_url, event_type |
 | `Document` | id, title, slug, doc_type, summary, source_url, date_published |
 | `Wallet` | id, address, label, owner_id, chain |
+| `GovernmentAction` | id, date, action_es, action_en, effect_es, effect_en, source, source_url |
 
 **Relationship types:**
 
@@ -515,7 +516,10 @@ All paths are relative to `webapp/`.
 | `src/app/caso/[slug]/grafo/page.tsx` | Update API fetch URL to `/api/casos/${slug}/graph` |
 | `src/app/caso/[slug]/vuelos/page.tsx` | Update API fetch URL to `/api/casos/${slug}/flights` |
 | `src/components/investigation/InvestigationNav.tsx` | Remove hardcoded `CASE_TABS`, read tabs from investigation config |
-| `src/lib/caso-libra/investigation-data.ts` | Narrative chapter data moves to `config.ts`; static editorial data for factchecks/timeline stays until fully migrated to Neo4j |
+| `src/lib/caso-libra/investigation-data.ts` | Narrative chapter data moves to `config.ts`; static editorial data for factchecks/timeline stays until Neo4j seed verified |
+| `src/lib/caso-epstein/queries.ts` | Rewrite to delegate to generic query builder |
+| `src/lib/caso-epstein/transform.ts` | Rewrite transforms for new generic label format |
+| `src/lib/caso-epstein/index.ts` | Update re-exports for new module structure |
 
 ### 7.2 Created
 
@@ -527,8 +531,8 @@ All paths are relative to `webapp/`.
 | `src/lib/investigations/utils.ts` | `casoNodeId()` helper, slug generation |
 | `src/lib/caso-finanzas-politicas/types.ts` | Domain types for finanzas-politicas entities |
 | `src/lib/caso-finanzas-politicas/queries.ts` | Typed wrappers around query builder |
-| `src/lib/caso-epstein/types.ts` | Domain types for Epstein entities |
-| `src/lib/caso-epstein/queries.ts` | Typed wrappers around query builder |
+| `src/lib/caso-finanzas-politicas/transform.ts` | Pure transform functions |
+| `src/lib/caso-epstein/types.ts` | Domain types for Epstein entities (existing file may need updates) |
 | `scripts/seed-investigation-configs.ts` | Seeds InvestigationConfig + schema subgraphs for all 3 |
 | `scripts/migrate-caso-libra-labels.ts` | Two-phase label migration |
 | `scripts/seed-caso-finanzas-politicas.ts` | Imports narrative data into Neo4j |
@@ -542,9 +546,7 @@ All paths are relative to `webapp/`.
 | `src/lib/investigations/registry.ts` | Central registry: casoSlug → investigation module |
 | `src/lib/caso-libra/config.ts` | Investigation client config (tabs, features, hero, chapters) |
 | `src/lib/caso-finanzas-politicas/config.ts` | Investigation client config |
-| `src/lib/caso-finanzas-politicas/transforms.ts` | Pure transform functions |
 | `src/lib/caso-epstein/config.ts` | Investigation client config |
-| `src/lib/caso-epstein/transforms.ts` | Pure transform functions |
 | `src/components/investigation/InvestigationLanding.tsx` | Generic landing page (hero + stats + featured actors) |
 | `src/components/investigation/InvestigacionView.tsx` | Factcheck/timeline/actors/money-flows page |
 | `src/components/investigation/NarrativeView.tsx` | Chapter-based narrative with bilingual toggle |
@@ -562,6 +564,12 @@ All paths are relative to `webapp/`.
 | `src/app/caso/finanzas-politicas/investigacion/page.tsx` | Replaced by generic `[slug]/investigacion` page |
 | `src/app/caso/finanzas-politicas/cronologia/page.tsx` | Replaced by generic `[slug]/cronologia` page |
 | `src/app/caso/finanzas-politicas/dinero/page.tsx` | Replaced by generic `[slug]/dinero` page |
+| `src/app/caso/caso-epstein/page.tsx` | Replaced by generic `[slug]` landing page |
+| `src/app/caso/caso-epstein/layout.tsx` | Replaced by generic `[slug]` layout with InvestigationNav |
+| `src/app/caso/caso-epstein/resumen/page.tsx` | Replaced by generic `[slug]/resumen` page |
+| `src/app/caso/caso-epstein/investigacion/page.tsx` | Replaced by generic `[slug]/investigacion` page |
+| `src/app/caso/caso-epstein/cronologia/page.tsx` | Replaced by generic `[slug]/cronologia` page |
+| `src/app/caso/caso-epstein/evidencia/page.tsx` | Replaced by generic `[slug]/evidencia` page |
 
 ### 7.4 Untouched
 
@@ -589,7 +597,7 @@ Every investigation gets the same file structure under `webapp/src/lib/caso-{slu
 lib/caso-libra/
   types.ts          — Domain types (Person, Event, etc.) specific to this investigation
   queries.ts        — Typed query wrappers that delegate to the generic query builder
-  transforms.ts     — Pure functions: Neo4j records → domain objects
+  transform.ts      — Pure functions: Neo4j records → domain objects
   config.ts         — Investigation metadata (tabs, hero text, feature flags, chapters)
   index.ts          — Re-exports
   investigation-schema.ts  — Zod submission schemas (caso-libra only, for now)
@@ -597,17 +605,19 @@ lib/caso-libra/
 lib/caso-finanzas-politicas/
   types.ts
   queries.ts
-  transforms.ts
+  transform.ts
   config.ts
   index.ts
 
 lib/caso-epstein/
   types.ts
   queries.ts
-  transforms.ts
+  transform.ts
   config.ts
   index.ts
 ```
+
+**Naming convention:** `transform.ts` (singular) — matching the existing files in caso-libra and caso-epstein.
 
 ### 8.2 InvestigationClientConfig Contract
 
@@ -638,6 +648,15 @@ interface InvestigationClientConfig {
     subtitle: BilingualText
   }
   chapters?: NarrativeChapter[]  // for /resumen page (editorial content)
+  sources?: Array<{ name: string; url: string }>  // global sources section for /resumen
+}
+
+interface NarrativeChapter {
+  id: string
+  title: BilingualText
+  paragraphs: BilingualText[]     // array of paragraphs, not a single string
+  pullQuote?: BilingualText       // optional highlighted quote
+  citations?: Array<{ id: number; text: string; url?: string }>  // footnotes
 }
 
 type TabId = 'resumen' | 'investigacion' | 'cronologia' | 'evidencia' | 'grafo'
@@ -756,11 +775,13 @@ export default async function InvestigacionPage({ params }) {
   const config = getInvestigationConfig(slug)
   if (!config) notFound()
 
-  const [claims, events, actors, moneyFlows] = await Promise.all([
+  const [claims, events, actors, moneyFlows, documents, govResponses] = await Promise.all([
     queryBuilder.getNodesByType(slug, 'Claim'),
     queryBuilder.getNodesByType(slug, 'Event', { orderBy: 'date' }),
     queryBuilder.getNodesByType(slug, 'Person'),
     queryBuilder.getNodesByType(slug, 'MoneyFlow'),
+    queryBuilder.getNodesByType(slug, 'Document'),
+    queryBuilder.getNodesByType(slug, 'GovernmentAction'),
   ])
 
   return (
@@ -770,12 +791,16 @@ export default async function InvestigacionPage({ params }) {
       events={events}
       actors={actors}
       moneyFlows={moneyFlows}
+      documents={documents}
+      govResponses={govResponses}
     />
   )
 }
 ```
 
-`<InvestigacionView>` renders sections conditionally — if there are no `Claim` nodes for an investigation, the factcheck section doesn't render. If there are no `MoneyFlow` nodes, the money flow section doesn't render.
+`<InvestigacionView>` renders sections conditionally — if there are no `Claim` nodes for an investigation, the factcheck section doesn't render. If there are no `MoneyFlow` nodes, the money flow section doesn't render. `GovernmentAction` is a new node type for government responses/obstruction actions — it maps from the existing `GOVERNMENT_RESPONSES` data in caso-libra's `investigation-data.ts`.
+
+**Transitional note:** This page refactor is gated on the Phase 3/4 data seed scripts completing. Until caso-libra's factcheck/timeline/actor/evidence/government-response data is seeded into Neo4j as nodes, the existing `investigation-data.ts` imports remain as the data source. The investigacion page is refactored to query-builder-driven only after the Neo4j seed is verified.
 
 ### 9.4 Resumen Page (Narrative Chapters)
 
@@ -801,15 +826,19 @@ The resumen page becomes generic:
 
 ```typescript
 // app/caso/[slug]/resumen/page.tsx
+'use client'
+
 export default function ResumenPage({ params }) {
   const { slug } = use(params)
   const config = getInvestigationConfig(slug)
   if (!config) notFound()
   if (!config.chapters?.length) notFound()
 
-  return <NarrativeView chapters={config.chapters} />
+  return <NarrativeView chapters={config.chapters} sources={config.sources} />
 }
 ```
+
+`NarrativeView` is a client component (`'use client'`) because it contains the bilingual language toggle via `useState`. The page itself stays as a client component (same as current implementation) since `getInvestigationConfig` is a synchronous registry lookup.
 
 ### 9.5 Conditional Feature Pages
 
@@ -861,11 +890,13 @@ export function InvestigationNav({ slug }: { slug: string }) {
 
 No more per-case `CASE_TABS` config object. The tabs come from the investigation config.
 
-### 9.7 Finanzas Politicas Static Route Deletion
+### 9.7 Static Route Deletion
 
-Once the `[slug]` pages are fully data-driven and finanzas-politicas data is in Neo4j, the 6 static `/caso/finanzas-politicas/*` pages are deleted (landing, layout, resumen, investigacion, cronologia, dinero). The `[slug]` dynamic route handles `finanzas-politicas` automatically.
+Once the `[slug]` pages are fully data-driven and investigation data is in Neo4j, static override routes are deleted:
 
-The one exception: `/caso/finanzas-politicas/conexiones` stays as a static route because it queries platform labels (`Politician`, `OffshoreOfficer`, etc.) — this is a platform-graph visualization, not investigation data. It may later become a feature flag (`features.platformGraph: true`) on a generic conexiones page.
+**Finanzas Politicas** — 6 static pages deleted (landing, layout, resumen, investigacion, cronologia, dinero). The one exception: `/caso/finanzas-politicas/conexiones` stays as a static route because it queries platform labels (`Politician`, `OffshoreOfficer`, etc.) — this is a platform-graph visualization, not investigation data. It may later become a feature flag (`features.platformGraph: true`) on a generic conexiones page.
+
+**Caso Epstein** — 6 static pages deleted (landing, layout, resumen, investigacion, cronologia, evidencia). These currently shadow the `[slug]` dynamic route for caso-epstein with the same problem as finanzas-politicas.
 
 ### 9.8 Shared Component Inventory
 
