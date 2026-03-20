@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 import { KeyStats } from '../../../components/investigation/KeyStats'
+import { GraphShowcase } from '@/components/graph/GraphShowcase'
 
 type Lang = 'en' | 'es'
 
@@ -102,6 +103,14 @@ const t = {
     en: 'MiroFish swarm intelligence — simulate multi-agent analysis of the network using locally-hosted LLMs. Ask questions from the perspective of investigators, prosecutors, and analysts.',
     es: 'Inteligencia de enjambre MiroFish — simula analisis multi-agente de la red usando LLMs locales. Haz preguntas desde la perspectiva de investigadores, fiscales y analistas.',
   },
+  showcaseHeading: {
+    en: 'Live graph relationships',
+    es: 'Relaciones del grafo en vivo',
+  },
+  showcaseCta: {
+    en: 'Explore the full network',
+    es: 'Explorar la red completa',
+  },
 } as const
 
 export function OverviewContent({ slug, stats }: OverviewContentProps) {
@@ -158,6 +167,16 @@ export function OverviewContent({ slug, stats }: OverviewContentProps) {
       <div className="mb-10">
         <KeyStats stats={localizedStats} />
       </div>
+
+      {/* Graph Showcase */}
+      <section className="mb-10 rounded-xl border border-zinc-800 bg-zinc-900/30 p-6">
+        <GraphShowcase
+          variant="full"
+          heading={t.showcaseHeading[lang]}
+          ctaHref={`${basePath}/grafo`}
+          ctaLabel={t.showcaseCta[lang]}
+        />
+      </section>
 
       {/* Primary CTAs */}
       <section className="mb-10 flex flex-col gap-3 sm:flex-row">
