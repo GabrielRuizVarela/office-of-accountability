@@ -1,11 +1,8 @@
 /**
- * Evidence/documents list page.
- *
- * Slug-aware: dispatches to caso-libra or caso-epstein data source.
+ * Evidence/documents list page for Caso Libra.
  */
 
-import { getDocuments as getLibraDocuments } from '@/lib/caso-libra'
-import { getDocuments as getEpsteinDocuments } from '@/lib/caso-epstein'
+import { getDocuments } from '@/lib/caso-libra'
 import { DocumentCard } from '@/components/investigation/DocumentCard'
 
 export default async function EvidenciaPage({
@@ -14,28 +11,7 @@ export default async function EvidenciaPage({
   readonly params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-
-  if (slug !== 'caso-libra' && slug !== 'caso-epstein') {
-    return (
-      <div className="py-20 text-center">
-        <h1 className="text-2xl font-bold text-zinc-50">Investigacion no encontrada</h1>
-        <p className="mt-4 text-zinc-400">No existe una investigacion con este identificador.</p>
-      </div>
-    )
-  }
-
-  // Epstein's getDocuments requires a casoSlug parameter; Libra's does not.
-  const documents =
-    slug === 'caso-epstein'
-      ? (await getEpsteinDocuments(slug)).map((doc) => ({
-          id: doc.id,
-          slug: doc.slug,
-          title: doc.title,
-          doc_type: doc.doc_type,
-          summary: doc.summary,
-          date_published: doc.date,
-        }))
-      : await getLibraDocuments()
+  const documents = await getDocuments()
 
   return (
     <div className="space-y-6">
