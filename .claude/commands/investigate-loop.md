@@ -40,6 +40,7 @@ Check if there are pending waves to run:
 - **Wave 1** (rhowardstone): Check if `_ingestion_data/rhowardstone/` exists. If not, clone it. Run `pnpm run ingest:wave1` if Wave 1 nodes don't exist yet.
 - **Wave 2** (Epstein Exposed API): Check resume state at `_ingestion_data/wave-2-resume.json`. If incomplete, run `pnpm run ingest:wave2` in background (rate-limited, takes hours).
 - **Wave 3** (Document enrichment): Run `pnpm run ingest:wave3 -- --limit 20` for next batch of documents.
+- **Wave 4** (dleerdefi): Check if `_ingestion_data/dleerdefi/` exists. If not, clone it. Run `pnpm run ingest:wave4` for handwritten flight log data.
 
 Run ingestion in background where possible. Don't block on Wave 2.
 
