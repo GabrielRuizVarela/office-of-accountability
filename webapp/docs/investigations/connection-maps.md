@@ -168,3 +168,31 @@ Also co-founded: **SUMA PARA EL DISEÑO DE POLITICAS PUBLICAS** (Michetti + Pine
 | Heller | Lopez | CREDICOOP | Cooperative banking |
 | Amadeo | Capitanich | FONCAP | Cross-party microfinance |
 | Brown | De Mendiguren | BICE | National investment bank |
+
+## Connection Map 12: SAME_PERSON Bridge — New Corporate Connections (Cycle 3)
+
+The SAME_PERSON relationship (1.03M DNI-matched links between CompanyOfficer and BoardMember nodes) created new traversal paths revealing politicians' full corporate footprints:
+
+### Verified Corporate Politicians
+
+| Politician | Party | Companies | Key Holdings |
+|-----------|-------|-----------|-------------|
+| De Narváez, Francisco | Union Celeste y Blanco | 37 | El Cronista, TIA, La Rural, America TV, **Timberhill Trading, Willowbrook Trading** (possible offshore) |
+| Gutiérrez, Julio César | PJ, Santa Fe | 29 | South Cable Holdings, Video Cable Color Totoras (cable TV empire — unverified) |
+| Fargosi, Alejandro | LLA | 20 | Estudio O'Farrell, Ellipso Inc, telecoms privatization-era companies |
+| Torello, José María | PRO | 15 | Consultatio (Costantini), PENSAR ARGENTINA |
+| Frigerio, Rogelio | PRO, Entre Ríos | 11 | Economía & Regiones, real estate in province he governs |
+| Bergman, Sergio | PRO | 9 | PENSAR ARGENTINA + religious/community orgs |
+| Santilli, Diego | PRO | 8 | PENSAR ARGENTINA, Sanfor Investments |
+| Recalde, Mariano | PJ | 7 | Aerolíneas Argentinas group (confirmed president 2009-2015) |
+
+### Key New Lead: De Narváez offshore vehicles
+Timberhill Trading Inc. and Willowbrook Trading Inc. — associated with a politician-businessman who purchased El Cronista Comercial and owned TIA supermarkets (sold for $638M). These trading companies warrant offshore investigation.
+
+### Camaño strengthened
+Only politician at the intersection of offshore records AND company boards. Confirmed: she and husband Luis Barrionuevo direct Bellota SA.
+
+### False positives confirmed
+- Fernández Carlos Alberto (66→83 officers share name) — FALSE POSITIVE
+- Martínez Luis Alberto (50 companies) — FALSE POSITIVE
+- Romero (already flagged) — confirmed unreliable
