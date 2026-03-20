@@ -218,14 +218,14 @@ Sourced from `_ingestion_data/rhowardstone/knowledge_graph_entities.json` (606 e
 
 ### 3.4 Persons Registry Merge Strategy
 
-The persons registry (1,614 entries) and knowledge graph (578 person entities) overlap. Import order:
+The persons registry (1,614 entries) and knowledge graph (~571 person entities) overlap. Import order:
 
 1. Import KG person entities first — they have stable integer IDs and relationship references
 2. For each registry entry, attempt name match against KG entities (case-insensitive, alias-aware)
 3. If matched: enrich the existing KG-sourced node with registry fields (slug, category, search_terms, sources)
 4. If unmatched: create a new Person node from the registry entry
 
-This produces ~1,614 Person nodes (578 from KG enriched with registry data, ~1,036 registry-only).
+This produces ~1,614 Person nodes (~571 from KG enriched with registry data, ~1,043 registry-only). Exact counts may vary — the import script logs reconciliation results.
 
 ---
 
@@ -290,9 +290,24 @@ Update all Caso Libra queries:
 
 Replace 8 caso-libra API routes with 301 redirects to new unified routes.
 
-### 4.6 Phase 6: Frontend Route Migration
+### 4.6 Phase 6: Frontend Hardcoded API Calls
 
-Page routes move from `/caso-libra/*` to `/caso/[casoSlug]/*`. Generic pages read `InvestigationConfig` and `NodeTypeDefinition` from Neo4j for rendering.
+Frontend pages already live under `/caso/[slug]/*` (no migration needed). However, several pages under this generic route hardcode `/api/caso-libra/*` fetch URLs. These must be updated to use the `slug` parameter to build the correct API path:
+
+Pages requiring updates:
+- `webapp/src/app/caso/[slug]/dinero/page.tsx` — hardcoded `fetch('/api/caso-libra/wallets')`
+- `webapp/src/app/caso/[slug]/investigacion/page.tsx` — hardcoded `fetch('/api/caso-libra/investigation', ...)`
+- `webapp/src/app/caso/[slug]/actor/[actorSlug]/page.tsx` — hardcoded `fetch('/api/caso-libra/person/${actorSlug}')`
+- `webapp/src/app/caso/[slug]/evidencia/[docSlug]/page.tsx` — hardcoded `fetch('/api/caso-libra/document/${docSlug}')`
+
+All should change to: `fetch(\`/api/casos/${casoSlug}/...\`)`.
+
+Additionally, hardcoded `/caso/finanzas-politicas/*` static routes exist alongside the dynamic `[slug]` route:
+- `webapp/src/app/caso/finanzas-politicas/conexiones/page.tsx`
+- `webapp/src/app/caso/finanzas-politicas/resumen/page.tsx`
+- `webapp/src/app/caso/finanzas-politicas/layout.tsx`
+
+These override the dynamic route for finanzas-politicas. They should be kept as-is for now — they serve the platform-graph visualization which is a separate concern from the investigation data.
 
 ### Execution Order
 
@@ -423,16 +438,32 @@ These are separate concerns and are not touched by this migration.
 
 ### 6.5 Frontend Page Routes
 
+Pages already live under `/caso/[slug]/*` — no route structure migration needed. Existing routes:
+
 ```
-/caso/[casoSlug]                      — investigation landing page
-/caso/[casoSlug]/grafo                — graph explorer
-/caso/[casoSlug]/persona/[slug]       — person profile
-/caso/[casoSlug]/documento/[slug]     — document detail
-/caso/[casoSlug]/linea-de-tiempo      — timeline
-/caso/[casoSlug]/simulacion           — MiroFish simulation (if available)
+/caso/[slug]                          — investigation landing page
+/caso/[slug]/grafo                    — graph explorer
+/caso/[slug]/actor/[actorSlug]        — person profile
+/caso/[slug]/evidencia/[docSlug]      — document detail
+/caso/[slug]/cronologia               — timeline
+/caso/[slug]/dinero                   — wallet/money flows
+/caso/[slug]/investigacion            — investigation data submissions
+/caso/[slug]/simular                  — MiroFish simulation
+/caso/[slug]/simulacion               — simulation panel wrapper
+/caso/[slug]/vuelos                   — flights visualization
+/caso/[slug]/proximidad               — proximity analysis
+/caso/[slug]/resumen                  — summary page
 ```
 
-The landing page reads the `InvestigationConfig` for name, description, tags, and available sections. The graph explorer reads `NodeTypeDefinition` nodes for colors and icons. Components that don't apply (e.g., wallet explorer for Epstein) don't render.
+The work is updating hardcoded `/api/caso-libra/*` fetch URLs inside these pages to use the dynamic `slug` parameter (see Phase 4.6).
+
+Additionally, hardcoded static routes exist for finanzas-politicas:
+```
+/caso/finanzas-politicas/conexiones   — platform-graph visualization (stays as-is)
+/caso/finanzas-politicas/resumen      — narrative summary (stays as-is)
+```
+
+These override the `[slug]` route for finanzas-politicas and are kept because they serve the platform-graph visualization (queries `Politician`, `OffshoreOfficer`, etc.).
 
 ### 6.6 Schema-Driven UI
 
@@ -444,65 +475,71 @@ const schema = await queryBuilder.getSchema(casoSlug)
 // Render graph legend, filter sidebar, node type toggles from this
 ```
 
-Adding a new investigation or node type requires zero frontend code changes — just Neo4j config node updates.
+Adding a new investigation or new node type to an existing investigation requires zero frontend structural changes — just Neo4j config node updates. However, investigation-specific pages (e.g., `/dinero` for wallet flows, `/vuelos` for flights) only render when the schema includes the relevant node types.
 
 ---
 
 ## 7. File Changes
 
+All paths are relative to `webapp/`.
+
 ### 7.1 Modified
 
 | File | Change |
 |---|---|
-| `lib/neo4j/schema.ts` | Drop `CasoLibra*` constraints/indexes, add generic label constraints + `caso_slug` range indexes, add `InvestigationConfig` constraint |
-| `lib/caso-libra/queries.ts` | Rewrite Cypher: `CasoLibra*` → `{Label} {caso_slug: $casoSlug}`, delegate to query builder |
-| `lib/caso-libra/transform.ts` | Minor — node labels change but property shapes are the same |
-| `lib/graph/constants.ts` | Remove `CasoLibra*` entries from `LABEL_COLORS` and `LABEL_DISPLAY`, keep generic label entries |
+| `src/lib/neo4j/schema.ts` | Drop `CasoLibra*` constraints/indexes, add generic label constraints + `caso_slug` range indexes, add `InvestigationConfig` constraint |
+| `src/lib/caso-libra/queries.ts` | Rewrite Cypher: `CasoLibra*` → `{Label} {caso_slug: $casoSlug}`, delegate to query builder |
+| `src/lib/caso-libra/transform.ts` | Minor — node labels change but property shapes are the same |
+| `src/lib/graph/constants.ts` | Add new label entries for `ShellCompany`, `Aircraft`, `Wallet`, `Token`, `Claim`, `MoneyFlow` to `LABEL_COLORS` and `LABEL_DISPLAY` |
 | `scripts/seed-caso-libra.ts` | Update to use generic labels + `caso_slug` + prefixed IDs |
 | `scripts/init-schema.ts` | Include new constraints and indexes |
-| `app/api/caso-libra/*/route.ts` (8 routes) | Replace with 301 redirects |
-| `app/caso/[slug]/evidencia/[docSlug]/page.tsx` | Update `entityTypeLabel` function (remove `CasoLibra` prefix references) |
+| `src/app/api/caso-libra/*/route.ts` (8 routes) | Replace with 301 redirects |
+| `src/app/caso/[slug]/evidencia/[docSlug]/page.tsx` | Update hardcoded `fetch('/api/caso-libra/document/...')` to use dynamic `slug` |
+| `src/app/caso/[slug]/dinero/page.tsx` | Update hardcoded `fetch('/api/caso-libra/wallets')` to use dynamic `slug` |
+| `src/app/caso/[slug]/investigacion/page.tsx` | Update hardcoded `fetch('/api/caso-libra/investigation', ...)` to use dynamic `slug` |
+| `src/app/caso/[slug]/actor/[actorSlug]/page.tsx` | Update hardcoded `fetch('/api/caso-libra/person/...')` to use dynamic `slug` |
+| `scripts/seed-caso-epstein.ts` | Rewrite — currently seeds ~15 hand-authored entities; replace with full import from rhowardstone JSON data (knowledge graph + persons registry) |
 
 ### 7.2 Created
 
 | File | Purpose |
 |---|---|
-| `lib/investigations/query-builder.ts` | Schema-aware generic query builder |
-| `lib/investigations/types.ts` | `InvestigationNode`, `InvestigationSchema`, `InvestigationConfig` types |
-| `lib/investigations/config.ts` | Read/write `InvestigationConfig` nodes from Neo4j |
-| `lib/investigations/utils.ts` | `casoNodeId()` helper, slug generation |
-| `lib/caso-finanzas-politicas/types.ts` | Domain types for finanzas-politicas entities |
-| `lib/caso-finanzas-politicas/queries.ts` | Typed wrappers around query builder |
-| `lib/caso-epstein/types.ts` | Domain types for Epstein entities |
-| `lib/caso-epstein/queries.ts` | Typed wrappers around query builder |
+| `src/lib/investigations/query-builder.ts` | Schema-aware generic query builder |
+| `src/lib/investigations/types.ts` | `InvestigationNode`, `InvestigationSchema`, `InvestigationConfig` types |
+| `src/lib/investigations/config.ts` | Read/write `InvestigationConfig` nodes from Neo4j |
+| `src/lib/investigations/utils.ts` | `casoNodeId()` helper, slug generation |
+| `src/lib/caso-finanzas-politicas/types.ts` | Domain types for finanzas-politicas entities |
+| `src/lib/caso-finanzas-politicas/queries.ts` | Typed wrappers around query builder |
+| `src/lib/caso-epstein/types.ts` | Domain types for Epstein entities |
+| `src/lib/caso-epstein/queries.ts` | Typed wrappers around query builder |
 | `scripts/seed-investigation-configs.ts` | Seeds InvestigationConfig + schema subgraphs for all 3 |
 | `scripts/migrate-caso-libra-labels.ts` | Two-phase label migration |
 | `scripts/seed-caso-finanzas-politicas.ts` | Imports narrative data into Neo4j |
-| `scripts/seed-caso-epstein.ts` | Imports knowledge graph + persons registry |
-| `app/api/casos/[casoSlug]/graph/route.ts` | Unified graph endpoint |
-| `app/api/casos/[casoSlug]/nodes/[type]/route.ts` | Unified node list endpoint |
-| `app/api/casos/[casoSlug]/node/[slug]/route.ts` | Unified node detail endpoint |
-| `app/api/casos/[casoSlug]/timeline/route.ts` | Unified timeline endpoint |
-| `app/api/casos/[casoSlug]/schema/route.ts` | Schema introspection endpoint |
-| `app/api/casos/[casoSlug]/submissions/route.ts` | Unified submission endpoint |
-| `app/api/casos/[casoSlug]/stats/route.ts` | Unified stats endpoint |
+| `src/app/api/casos/[casoSlug]/graph/route.ts` | Unified graph endpoint |
+| `src/app/api/casos/[casoSlug]/nodes/[type]/route.ts` | Unified node list endpoint |
+| `src/app/api/casos/[casoSlug]/node/[slug]/route.ts` | Unified node detail endpoint |
+| `src/app/api/casos/[casoSlug]/timeline/route.ts` | Unified timeline endpoint |
+| `src/app/api/casos/[casoSlug]/schema/route.ts` | Schema introspection endpoint |
+| `src/app/api/casos/[casoSlug]/submissions/route.ts` | Unified submission endpoint |
+| `src/app/api/casos/[casoSlug]/stats/route.ts` | Unified stats endpoint |
 
 ### 7.3 Deleted (after migration confirmed working)
 
 | File | Reason |
 |---|---|
-| `lib/caso-finanzas-politicas/investigation-data.ts` | Data moves to Neo4j |
+| `src/lib/caso-finanzas-politicas/investigation-data.ts` | Data moves to Neo4j |
 
 ### 7.4 Untouched
 
 | File | Reason |
 |---|---|
-| `lib/neo4j/client.ts` | Infrastructure — no changes needed |
-| `lib/investigation/*` | TipTap-based Investigation documents — separate concern |
-| `lib/caso-libra/types.ts` | Domain types don't change |
-| `lib/caso-libra/investigation-schema.ts` | Zod submission schemas still valid |
-| `lib/caso-libra/investigation-data.ts` | Static editorial data for public page |
-| `app/api/caso/finanzas-politicas/graph/route.ts` | Queries platform labels, not investigation-specific |
-| `app/api/investigations/*` | User-authored investigation CRUD — separate concern |
+| `src/lib/neo4j/client.ts` | Infrastructure — no changes needed |
+| `src/lib/investigation/*` | TipTap-based Investigation documents — separate concern |
+| `src/lib/caso-libra/types.ts` | Domain types don't change |
+| `src/lib/caso-libra/investigation-schema.ts` | Zod submission schemas still valid |
+| `src/lib/caso-libra/investigation-data.ts` | Static editorial data for public page |
+| `src/app/api/caso/finanzas-politicas/graph/route.ts` | Queries platform labels, not investigation-specific |
+| `src/app/api/investigations/*` | User-authored investigation CRUD — separate concern |
+| `src/app/caso/finanzas-politicas/*` | Static routes for platform-graph visualization |
 | All Como Voto ETL scripts | Platform reference data |
 | `_ingestion_data/rhowardstone/*` | Source data consumed by seed script |
