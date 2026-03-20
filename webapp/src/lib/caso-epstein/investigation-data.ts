@@ -1012,7 +1012,7 @@ export const TIMELINE_EVENTS: InvestigationTimelineEvent[] = [
 ]
 
 // ---------------------------------------------------------------------------
-// ACTORS — all 22 documented persons
+// ACTORS — 47+ documented persons (curated principals listed below)
 // ---------------------------------------------------------------------------
 
 export const ACTORS: Actor[] = [
@@ -1633,13 +1633,13 @@ export const EVIDENCE_DOCS: EvidenceDoc[] = [
 
 export const IMPACT_STATS: ImpactStat[] = [
   {
-    value: '198',
-    label_en: 'Entities documented in the knowledge graph',
-    label_es: 'Entidades documentadas en el grafo de conocimiento',
+    value: '7,287',
+    label_en: 'Connected nodes in the knowledge graph',
+    label_es: 'Nodos conectados en el grafo de conocimiento',
     source: 'Office of Accountability knowledge graph',
   },
   {
-    value: '431',
+    value: '21,944',
     label_en: 'Verified relationships mapped',
     label_es: 'Relaciones verificadas mapeadas',
     source: 'Office of Accountability knowledge graph',
@@ -1663,10 +1663,22 @@ export const IMPACT_STATS: ImpactStat[] = [
     source: 'DOJ Epstein Files Transparency Act compliance',
   },
   {
-    value: '27',
-    label_en: 'Persons documented in the network',
-    label_es: 'Personas documentadas en la red',
+    value: '355',
+    label_en: 'Web-verified persons in the network',
+    label_es: 'Personas verificadas en la red',
     source: 'Office of Accountability knowledge graph',
+  },
+  {
+    value: '4,153',
+    label_en: 'Documented flights spanning 1991–2019',
+    label_es: 'Vuelos documentados de 1991 a 2019',
+    source: 'FAA records, flight manifests, court exhibits',
+  },
+  {
+    value: '72',
+    label_en: 'Factchecked claims verified',
+    label_es: 'Afirmaciones verificadas',
+    source: 'Office of Accountability investigation',
   },
   {
     value: '9+',
