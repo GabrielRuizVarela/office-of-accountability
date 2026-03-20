@@ -1,0 +1,552 @@
+[
+  {
+    "incomingId": "ep-w2-accuser-3",
+    "incomingName": "Accuser 3",
+    "existingId": "ep-w2-accuser-2",
+    "existingName": "Accuser 2",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-adam-perry-lang",
+    "incomingName": "Adam Perry Lang",
+    "existingId": "ep-w1-adam-perrylang",
+    "existingName": "Adam PerryLang",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-alex-reznik",
+    "incomingName": "Alex Reznik",
+    "existingId": "ep-w1-alex-resnick",
+    "existingName": "Alex Resnick",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-alexandra-dixon",
+    "incomingName": "Alexandra Dixon",
+    "existingId": "ep-w1-alexandria-dixon",
+    "existingName": "Alexandria Dixon",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-ben-shapiro",
+    "incomingName": "Ben Shapiro",
+    "existingId": "ep-w1-bob-shapiro",
+    "existingName": "Bob Shapiro",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-bono",
+    "incomingName": "Bono",
+    "existingId": "ep-w1-jojo",
+    "existingName": "JoJo ?",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-caren-casey",
+    "incomingName": "Caren Casey",
+    "existingId": "ep-w1-karen-casey",
+    "existingName": "Karen Casey",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-cher",
+    "incomingName": "Cher",
+    "existingId": "ep-w1-cheree",
+    "existingName": "Cheree ?",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-chuck-schumer",
+    "incomingName": "Chuck Schumer",
+    "existingId": "ep-w1-chuck-schumi",
+    "existingName": "Chuck Schumi",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-david-bowie",
+    "incomingName": "David Bowie",
+    "existingId": "ep-w2-david-boies",
+    "existingName": "David Boies",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-david-gergen",
+    "incomingName": "David Gergen",
+    "existingId": "ep-w2-david-geffen",
+    "existingName": "David Geffen",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-david-gross",
+    "incomingName": "David Gross",
+    "existingId": "ep-w2-david-a-ross",
+    "existingName": "David A. Ross",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-david-koch",
+    "incomingName": "David Koch",
+    "existingId": "ep-w1-david-roth",
+    "existingName": "David Roth",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-david-rodgers",
+    "incomingName": "David Rodgers",
+    "existingId": "ep-w2-dave-rodgers",
+    "existingName": "Dave Rodgers",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-diana-ross",
+    "incomingName": "Diana Ross",
+    "existingId": "ep-w2-adriana-ross",
+    "existingName": "Adriana Ross",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-forrest-sawyer",
+    "incomingName": "Forrest Sawyer",
+    "existingId": "ep-w1-forest-sawyer",
+    "existingName": "Forest Sawyer",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-gary-roxburgh",
+    "incomingName": "Gary Roxburgh",
+    "existingId": "ep-w1-gary-roxbury",
+    "existingName": "Gary Roxbury",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-iman",
+    "incomingName": "Iman",
+    "existingId": "ep-w1-ian",
+    "existingName": "IAN ?",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-ivanka-trump",
+    "incomingName": "Ivanka Trump",
+    "existingId": "ep-w2-ivana-trump",
+    "existingName": "Ivana Trump",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-j-e",
+    "incomingName": "J. E.",
+    "existingId": "ep-w1-joe",
+    "existingName": "Joe ?",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-jane",
+    "incomingName": "Jane",
+    "existingId": "ep-w1-joe",
+    "existingName": "Joe ?",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-jane-doe-2",
+    "incomingName": "Jane Doe #2",
+    "existingId": "ep-w2-jane-doe-1",
+    "existingName": "Jane Doe #1",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-jane-doe-no-4",
+    "incomingName": "Jane Doe No. 4",
+    "existingId": "ep-w2-jane-doe-no-3",
+    "existingName": "Jane Doe No. #3",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-jane-does",
+    "incomingName": "Jane Does",
+    "existingId": "ep-w2-jane-doe-1",
+    "existingName": "Jane Doe #1",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-jayz",
+    "incomingName": "Jay-Z",
+    "existingId": "ep-w2-jane",
+    "existingName": "Jane",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-jd-vance",
+    "incomingName": "JD Vance",
+    "existingId": "ep-w2-cy-vance",
+    "existingName": "Cy Vance",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-jimmy-cayne",
+    "incomingName": "Jimmy Cayne",
+    "existingId": "ep-w1-jim-cayne",
+    "existingName": "Jim Cayne",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-kate",
+    "incomingName": "Kate",
+    "existingId": "ep-w1-kahn",
+    "existingName": "Kahn",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-larry-morrisson",
+    "incomingName": "Larry Morrisson",
+    "existingId": "ep-w1-larry-morrison",
+    "existingName": "Larry Morrison",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-laurie-edelstein",
+    "incomingName": "Laurie Edelstein",
+    "existingId": "ep-w2-laura-edelstein",
+    "existingName": "Laura Edelstein",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-minor-victim1",
+    "incomingName": "Minor Victim-1",
+    "existingId": "ep-w2-minor-victim-4",
+    "existingName": "Minor Victim 4",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-minor-victim2",
+    "incomingName": "Minor Victim-2",
+    "existingId": "ep-w2-minor-victim1",
+    "existingName": "Minor Victim-1",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-minor-victim3",
+    "incomingName": "Minor Victim-3",
+    "existingId": "ep-w2-minor-victim1",
+    "existingName": "Minor Victim-1",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-minor-victim5",
+    "incomingName": "Minor Victim-5",
+    "existingId": "ep-w2-minor-victim1",
+    "existingName": "Minor Victim-1",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-minor-victim6",
+    "incomingName": "Minor Victim-6",
+    "existingId": "ep-w2-minor-victim1",
+    "existingName": "Minor Victim-1",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-minor-victim7",
+    "incomingName": "Minor Victim-7",
+    "existingId": "ep-w2-minor-victim1",
+    "existingName": "Minor Victim-1",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-mr-berry",
+    "incomingName": "Mr. Berry",
+    "existingId": "ep-w2-mr-berke",
+    "existingName": "Mr. Berke",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-mr-demarco",
+    "incomingName": "Mr. DeMARCO",
+    "existingId": "ep-w2-mark-demarco",
+    "existingName": "Mark DeMarco",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-mr-perry",
+    "incomingName": "Mr. Perry",
+    "existingId": "ep-w2-mr-berry",
+    "existingName": "Mr. Berry",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-nancy-mace",
+    "incomingName": "Nancy Mace",
+    "existingId": "ep-w2-nancy-ma",
+    "existingName": "Nancy Ma",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-natalya-malyshev",
+    "incomingName": "Natalya Malyshev",
+    "existingId": "ep-w1-natalya-malyshov",
+    "existingName": "Natalya Malyshov",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-natalya-malysheva",
+    "incomingName": "Natalya Malysheva",
+    "existingId": "ep-w2-natalya-malyshev",
+    "existingName": "Natalya Malyshev",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-nick-lambros",
+    "incomingName": "Nick Lambros",
+    "existingId": "ep-w1-vick-lambro",
+    "existingName": "Vick Lambro",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-oliver-sacks",
+    "incomingName": "Oliver Sacks",
+    "existingId": "ep-w1-oliver-sachs",
+    "existingName": "Oliver Sachs",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-paul-barrett",
+    "incomingName": "Paul Barrett",
+    "existingId": "ep-w2-paul-barratt",
+    "existingName": "Paul Barratt",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-paul-harris",
+    "incomingName": "Paul Harris",
+    "existingId": "ep-w1-paul-morris",
+    "existingName": "Paul Morris",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-peggy-siegel",
+    "incomingName": "Peggy Siegel",
+    "existingId": "ep-w1-peggy-siegal",
+    "existingName": "Peggy Siegal",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-pierre-jules",
+    "incomingName": "Pierre Jules",
+    "existingId": "ep-w2-pierre-james",
+    "existingName": "Pierre James",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-rec-officer-2",
+    "incomingName": "REC OFFICER #2",
+    "existingId": "ep-w2-rec-officer-1",
+    "existingName": "REC OFFICER #1",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-shelley-harrison",
+    "incomingName": "Shelley Harrison",
+    "existingId": "ep-w1-shelly-harrison",
+    "existingName": "Shelly Harrison",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-sophie-birdlehakim",
+    "incomingName": "Sophie Birdle-Hakim",
+    "existingId": "ep-w2-sophie-biddlehakim",
+    "existingName": "Sophie Biddle-Hakim",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-steve-hanson",
+    "incomingName": "Steve Hanson",
+    "existingId": "ep-w1-steve-bannon",
+    "existingName": "Steve Bannon",
+    "matchType": "fuzzy_match",
+    "distance": 2,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-thorbjorn-jagland",
+    "incomingName": "Thorbjorn Jagland",
+    "existingId": "ep-thorbjorn-jagland",
+    "existingName": "Thorbjørn Jagland",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-todd-meister",
+    "incomingName": "Todd Meister",
+    "existingId": "ep-w1-todd-meistor",
+    "existingName": "Todd Meistor",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  },
+  {
+    "incomingId": "ep-w2-tovah-noel",
+    "incomingName": "Tovah Noel",
+    "existingId": "ep-w1-tova-noel",
+    "existingName": "Tova Noel",
+    "matchType": "fuzzy_match",
+    "distance": 1,
+    "source": "epstein-exposed",
+    "wave": 2
+  }
+]

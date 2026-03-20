@@ -24,9 +24,6 @@ export default function Home() {
             <Link href="/caso/caso-epstein" className="text-zinc-400 transition-colors hover:text-zinc-100">
               Caso Epstein
             </Link>
-            <Link href="/caso/finanzas-politicas" className="text-zinc-400 transition-colors hover:text-zinc-100">
-              Finanzas Politicas
-            </Link>
           </nav>
         </div>
       </header>
@@ -50,12 +47,14 @@ export default function Home() {
               href="/caso/caso-libra"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-purple-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-purple-500"
             >
+              <DocumentIcon />
               Caso Libra
             </Link>
             <Link
               href="/caso/caso-epstein"
               className="inline-flex items-center justify-center gap-2 rounded-lg border border-zinc-700 px-6 py-3 text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500 hover:bg-zinc-900 hover:text-zinc-100"
             >
+              <CaseIcon />
               Caso Epstein
             </Link>
           </div>
@@ -65,7 +64,7 @@ export default function Home() {
       {/* Investigations */}
       <section className="mx-auto max-w-6xl px-4 pb-12">
         <h2 className="mb-6 text-xl font-bold text-zinc-50 sm:text-2xl">Investigaciones</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2">
           {/* Caso Libra */}
           <Link
             href="/caso/caso-libra"
@@ -82,7 +81,7 @@ export default function Home() {
               Milei promovio $LIBRA a 19M de seguidores. El precio colapso 94% en horas.
               114,000+ billeteras perdieron $251M+.
             </p>
-            <div className="flex flex-wrap gap-3 text-sm">
+            <div className="flex gap-4 text-sm">
               <span className="font-semibold text-purple-400">$251M+</span>
               <span className="text-zinc-600">|</span>
               <span className="text-zinc-400">114,000+ billeteras</span>
@@ -110,7 +109,7 @@ export default function Home() {
               7,287 entidades y 21,944 relaciones documentadas. Documentos judiciales,
               registros de vuelo, 72 verificaciones de hechos.
             </p>
-            <div className="flex flex-wrap gap-3 text-sm">
+            <div className="flex gap-4 text-sm">
               <span className="font-semibold text-red-400">7,287</span>
               <span className="text-zinc-600">|</span>
               <span className="text-zinc-400">355 actores</span>
@@ -118,34 +117,6 @@ export default function Home() {
               <span className="text-zinc-400">1,044 documentos</span>
             </div>
             <span className="text-sm font-medium text-red-400 group-hover:text-red-300">
-              Explorar &rarr;
-            </span>
-          </Link>
-
-          {/* Finanzas Politicas */}
-          <Link
-            href="/caso/finanzas-politicas"
-            className="group flex flex-col gap-4 rounded-xl border border-emerald-500/20 bg-gradient-to-br from-zinc-900 to-emerald-950/20 p-6 transition-colors hover:border-emerald-500/40"
-          >
-            <div className="flex items-center gap-2 text-xs text-emerald-400">
-              <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
-              Investigacion activa
-            </div>
-            <h3 className="text-xl font-bold text-zinc-50 group-hover:text-emerald-300">
-              Finanzas Politicas Argentinas
-            </h3>
-            <p className="text-sm leading-relaxed text-zinc-400">
-              Financiamiento de campanas, declaraciones juradas patrimoniales, sociedades
-              offshore y conexiones entre politicos y empresas.
-            </p>
-            <div className="flex flex-wrap gap-3 text-sm">
-              <span className="font-semibold text-emerald-400">329</span>
-              <span className="text-zinc-600">|</span>
-              <span className="text-zinc-400">Legisladores</span>
-              <span className="text-zinc-600">|</span>
-              <span className="text-zinc-400">7 fuentes ETL</span>
-            </div>
-            <span className="text-sm font-medium text-emerald-400 group-hover:text-emerald-300">
               Explorar &rarr;
             </span>
           </Link>
@@ -163,12 +134,55 @@ export default function Home() {
             <Link href="/caso/caso-epstein" className="transition-colors hover:text-zinc-300">
               Caso Epstein
             </Link>
-            <Link href="/caso/finanzas-politicas" className="transition-colors hover:text-zinc-300">
-              Finanzas Politicas
-            </Link>
           </nav>
         </div>
       </footer>
     </div>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// Icons (inline SVGs, 20x20)
+// ---------------------------------------------------------------------------
+
+function DocumentIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+      <polyline points="14 2 14 8 20 8" />
+      <line x1="16" y1="13" x2="8" y2="13" />
+      <line x1="16" y1="17" x2="8" y2="17" />
+      <line x1="10" y1="9" x2="8" y2="9" />
+    </svg>
+  )
+}
+
+function CaseIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+      <path d="m9 15 2 2 4-4" />
+    </svg>
   )
 }

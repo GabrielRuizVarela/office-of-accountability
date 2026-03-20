@@ -1,0 +1,2 @@
+[    2111ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5175/caso/caso-epstein:0
+[    2122ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5175/favicon.ico:0

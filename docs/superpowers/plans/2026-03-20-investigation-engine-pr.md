@@ -8,15 +8,11 @@
 
 **Tech Stack:** Markdown, existing PRD structure
 
-**Status:** ✅ ALL TASKS COMPLETE. Tasks 1-5 (PRD section edits) applied to PRD v0.4. Section 11 replaced with milestone roadmap (M0-M8). Task 6 (implementation breakdown) delivered inline. Task 7 (PR #4) merged.
-
 ---
 
-### Task 1: PRD Section 5.3.1 — Investigation Engine ✅ APPLIED
+### Task 1: PRD Section 5.3.1 — Investigation Engine
 
-~~Add a new subsection under Section 5.3 (Investigations) that introduces the Investigation Engine as an automated research accelerator.~~
-
-**Superseded by:** PRD v0.4 milestone roadmap (M3-M5) in Section 11, which integrates the Investigation Engine across 3 milestones with full dependency tracking. Section 5.3.1 content is covered by the design spec reference in M3.
+Add a new subsection under Section 5.3 (Investigations) that introduces the Investigation Engine as an automated research accelerator.
 
 **Files:**
 - Modify: `PRD.md` (after the Endorsement Model paragraph in Section 5.3, before Section 5.4)
@@ -73,11 +69,9 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ---
 
-### Task 2: PRD Section 7.2 — Update Tech Stack Table ✅ APPLIED
+### Task 2: PRD Section 7.2 — Update Tech Stack Table
 
-~~Update the AI/LLM row and add Investigation Engine row to the tech stack table.~~
-
-**Superseded by:** PRD v0.4 milestone roadmap. Tech stack updates will be done as part of M3 implementation.
+Update the AI/LLM row and add Investigation Engine row to the tech stack table.
 
 **Files:**
 - Modify: `PRD.md` (AI/LLM row in Section 7.2 tech stack table)
@@ -111,11 +105,9 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ---
 
-### Task 3: PRD Section 7.3 — Update Architecture Diagram ✅ APPLIED
+### Task 3: PRD Section 7.3 — Update Architecture Diagram
 
-~~Add the Investigation Engine module to the service architecture diagram.~~
-
-**Superseded by:** PRD v0.4 milestone roadmap. Architecture diagram updates will be done as part of M3 implementation.
+Add the Investigation Engine module to the service architecture diagram.
 
 **Files:**
 - Modify: `PRD.md` (architecture diagram in Section 7.3)
@@ -172,11 +164,9 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ---
 
-### Task 4: PRD Section 7.5 — Update AI Integration Rules ✅ APPLIED
+### Task 4: PRD Section 7.5 — Update AI Integration Rules
 
-~~The existing AI rules (Section 7.5) were written for Claude-only batch jobs. Update to reflect the Investigation Engine's broader LLM usage.~~
-
-**Superseded by:** PRD v0.4 milestone roadmap. AI rules updates will be done as part of M3 implementation.
+The existing AI rules (Section 7.5) were written for Claude-only batch jobs. Update to reflect the Investigation Engine's broader LLM usage.
 
 **Files:**
 - Modify: `PRD.md` (Section 7.5 AI Integration Rules)
@@ -212,11 +202,9 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ---
 
-### Task 5: PRD Section 11 — Add Investigation Engine Phase ✅ APPLIED
+### Task 5: PRD Section 11 — Add Investigation Engine Phase
 
-~~Add the Investigation Engine as a new phase in the phased delivery plan.~~
-
-**Superseded by:** PRD v0.4 replaced Section 11 entirely with a 9-milestone roadmap (M0-M8). The Investigation Engine is milestones M3-M5. Governance system is M8.
+Add the Investigation Engine as a new phase in the phased delivery plan.
 
 **Files:**
 - Modify: `PRD.md` (Section 11, insert between Phase 2 and Phase 3)
@@ -263,7 +251,7 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ---
 
-### Task 6: Write Implementation Task Breakdown ✅ COMPLETED
+### Task 6: Write Implementation Task Breakdown
 
 Create a task breakdown document that outlines the three implementation phases with concrete deliverables.
 
@@ -414,9 +402,9 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ---
 
-### Task 7: Create the PR ✅ COMPLETED
+### Task 7: Create the PR
 
-**Files:** All changes from Tasks 1-6. PR #4 created and merged.
+**Files:** All changes from Tasks 1-6.
 
 - [ ] **Step 1: Verify all changes are committed**
 
