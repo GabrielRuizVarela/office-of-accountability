@@ -1,5 +1,7 @@
+'use client'
+
 import Link from 'next/link'
-import { getTranslations } from 'next-intl/server'
+import { useTranslations } from 'next-intl'
 import type { InvestigationConfig } from '@/config/investigations'
 
 const COLOR_MAP: Record<
@@ -61,8 +63,8 @@ interface InvestigationCardProps {
   readonly config: InvestigationConfig
 }
 
-export async function InvestigationCard({ config }: InvestigationCardProps) {
-  const t = await getTranslations('investigations')
+export function InvestigationCard({ config }: InvestigationCardProps) {
+  const t = useTranslations('investigations')
   const colors = COLOR_MAP[config.color] ?? DEFAULT_COLORS
 
   return (
