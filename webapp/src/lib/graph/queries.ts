@@ -300,10 +300,30 @@ export async function searchNodes(
       }
     }
 
-    const [politicianResult, legislationResult, investigationResult] = await Promise.all([
+    // Fallback CONTAINS query for nodes without fulltext indexes (e.g. Epstein case)
+    const runContainsFallback = async () => {
+      const s = driver.session()
+      try {
+        return await s.run(
+          `MATCH (n)
+           WHERE (toLower(n.name) CONTAINS toLower($query) OR toLower(n.id) CONTAINS toLower($query))
+             AND NOT any(l IN labels(n) WHERE l IN ['Politician', 'Legislation', 'Investigation'])
+           RETURN n, 0.5 AS score
+           ORDER BY n.name ASC
+           LIMIT $fetchLimit`,
+          { query: trimmed, fetchLimit: neo4j.int(fetchLimit) },
+          TX_CONFIG,
+        )
+      } finally {
+        await s.close()
+      }
+    }
+
+    const [politicianResult, legislationResult, investigationResult, fallbackResult] = await Promise.all([
       runFulltextQuery('politician_name_fulltext'),
       runFulltextQuery('legislation_title_fulltext'),
       runFulltextQuery('investigation_title_fulltext'),
+      runContainsFallback(),
     ])
 
     // Merge and sort all results by score descending
@@ -311,6 +331,7 @@ export async function searchNodes(
       ...politicianResult.records,
       ...legislationResult.records,
       ...investigationResult.records,
+      ...fallbackResult.records,
     ].map((record) => ({
       record,
       score: typeof record.get('score') === 'number' ? record.get('score') as number : 0,

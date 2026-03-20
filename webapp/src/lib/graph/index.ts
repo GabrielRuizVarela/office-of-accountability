@@ -33,4 +33,22 @@ export type {
   VoteHistoryResult,
 } from './politician-queries'
 
+export { bfsShortestPath, pathLinkKeys } from './algorithms'
+
 export { nodeIdSchema, politicianSlugSchema } from './validation'
+
+export { listInvestigations, saveInvestigation, deleteInvestigation } from './investigation'
+export type { SavedInvestigation } from './investigation'
+
+export {
+  LABEL_COLORS,
+  DEFAULT_NODE_COLOR,
+  LABEL_DISPLAY,
+  LINK_COLORS,
+  DEFAULT_LINK_COLOR,
+  getNodeColor,
+  getNodeLabel,
+  getLabelColor,
+  getLabelDisplayName,
+  getLinkColor,
+} from './constants'

@@ -98,25 +98,7 @@ export default async function ProvincePage({ params }: PageProps) {
   )
 
   return (
-    <div className="min-h-screen bg-zinc-950">
-      {/* Header */}
-      <header className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-sm">
-        <div className="mx-auto max-w-6xl px-4 py-4">
-          <nav className="mb-4 flex items-center gap-2 text-sm text-zinc-500">
-            <Link href="/" className="transition-colors hover:text-zinc-300">
-              ORC
-            </Link>
-            <span>/</span>
-            <Link href="/provincias" className="transition-colors hover:text-zinc-300">
-              Provincias
-            </Link>
-            <span>/</span>
-            <span className="text-zinc-300">{province.name}</span>
-          </nav>
-        </div>
-      </header>
-
-      <main className="mx-auto max-w-6xl px-4 py-8">
+    <main className="mx-auto max-w-6xl px-4 py-8">
         <h1 className="text-3xl font-bold text-zinc-50">{province.name}</h1>
         <p className="mt-2 text-zinc-400">
           {province.politicianCount} legislador{province.politicianCount !== 1 ? 'es' : ''} registrado
@@ -159,8 +141,7 @@ export default async function ProvincePage({ params }: PageProps) {
             <PoliticianGrid politicians={other} />
           </section>
         )}
-      </main>
-    </div>
+    </main>
   )
 }
 

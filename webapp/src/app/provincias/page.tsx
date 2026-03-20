@@ -40,21 +40,7 @@ export default async function ProvinciasPage() {
   const totalPoliticians = provinces.reduce((sum, p) => sum + p.politicianCount, 0)
 
   return (
-    <div className="min-h-screen bg-zinc-950">
-      {/* Header */}
-      <header className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-sm">
-        <div className="mx-auto max-w-6xl px-4 py-4">
-          <nav className="flex items-center gap-2 text-sm text-zinc-500">
-            <Link href="/" className="transition-colors hover:text-zinc-300">
-              ORC
-            </Link>
-            <span>/</span>
-            <span className="text-zinc-300">Provincias</span>
-          </nav>
-        </div>
-      </header>
-
-      <main className="mx-auto max-w-6xl px-4 py-8">
+    <main className="mx-auto max-w-6xl px-4 py-8">
         <h1 className="text-3xl font-bold text-zinc-50">Provincias</h1>
         <p className="mt-2 text-zinc-400">
           {totalPoliticians} legisladores en {provinces.length} jurisdicciones
@@ -76,7 +62,6 @@ export default async function ProvinciasPage() {
             </Link>
           ))}
         </div>
-      </main>
-    </div>
+    </main>
   )
 }
