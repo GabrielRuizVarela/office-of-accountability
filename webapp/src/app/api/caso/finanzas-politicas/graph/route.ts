@@ -66,23 +66,37 @@ interface ApiLink {
  * - NO generic BoardMember/CompanyOfficer matches (these are noise in the viz)
  */
 const CYPHER = `
-MATCH (p:Politician)-[r:IS_DONOR|HAS_OFFSHORE_LINK|HAS_APPOINTMENT]->(t)
-WHERE t:OffshoreOfficer OR t:Donor OR t:GovernmentAppointment
+// Get politicians who are donors, have offshore, or have appointments
+MATCH (p:Politician)
+WHERE (p)-[:IS_DONOR]->() OR (p)-[:HAS_OFFSHORE_LINK]->() OR (p)-[:HAS_APPOINTMENT]->() OR (p)-[:AFFILIATED_WITH]->()
+// Get their offshore connections (the only ones we show as separate nodes)
+OPTIONAL MATCH (p)-[r:HAS_OFFSHORE_LINK]->(o:OffshoreOfficer)
 WITH p,
-     collect(DISTINCT labels(t)[0]) AS datasets,
-     collect({
-       id: toString(elementId(t)),
-       type: labels(t)[0],
-       name: COALESCE(t.name, t.official_name, t.donor_name, "desconocido"),
-       props: {confidence: r.confidence, match_method: r.match_method}
-     }) AS targets,
-     collect({
+     collect(CASE WHEN o IS NOT NULL THEN {
+       id: toString(elementId(o)),
+       type: "OffshoreOfficer",
+       name: o.name,
+       props: {source_investigation: o.source_investigation}
+     } END) AS targets,
+     collect(CASE WHEN r IS NOT NULL THEN {
        relId: toString(elementId(r)),
-       targetId: toString(elementId(t)),
-       relType: type(r),
-       relProps: {confidence: r.confidence}
-     }) AS rels
-WHERE size(datasets) >= 1
+       targetId: toString(elementId(o)),
+       relType: "HAS_OFFSHORE_LINK",
+       relProps: {verified: true}
+     } END) AS rels,
+     EXISTS { (p)-[:IS_DONOR]->() } AS isDonor,
+     EXISTS { (p)-[:HAS_APPOINTMENT]->() } AS isAppointee,
+     EXISTS { (p)-[:AFFILIATED_WITH]->() } AS isAffiliated,
+     EXISTS { (p)-[:HAS_OFFSHORE_LINK]->() } AS hasOffshore
+WITH p,
+     [t IN targets WHERE t IS NOT NULL] AS targets,
+     [r IN rels WHERE r IS NOT NULL] AS rels,
+     [x IN [
+       CASE WHEN isDonor THEN "Donor" END,
+       CASE WHEN isAppointee THEN "GovernmentAppointment" END,
+       CASE WHEN isAffiliated THEN "Organization" END,
+       CASE WHEN hasOffshore THEN "OffshoreOfficer" END
+     ] WHERE x IS NOT NULL] AS datasets
 RETURN p, datasets, targets, rels
 ORDER BY size(datasets) DESC
 LIMIT 80
@@ -120,16 +134,26 @@ RETURN p.id AS pid, p.name AS pname, org.name AS org, toString(elementId(org)) A
 LIMIT 30
 `
 
-/** Top campaign donors by amount */
+/** Politician-donors: show politician directly donating to party (merge identity) */
+const POLITICIAN_DONORS_CYPHER = `
+MATCH (p:Politician)-[:IS_DONOR]->(d:Donor)-[dt:DONATED_TO]->(pf:PoliticalPartyFinance)
+WHERE dt.amount > 0
+RETURN p.id AS pid, p.name AS pname,
+       toString(elementId(pf)) AS pfid, COALESCE(pf.name, pf.party_name, "partido") AS pfname,
+       dt.amount AS amount
+ORDER BY dt.amount DESC
+`
+
+/** Top corporate/non-politician donors by amount */
 const TOP_DONORS_CYPHER = `
 MATCH (d:Donor)-[dt:DONATED_TO]->(pf:PoliticalPartyFinance)
-WHERE dt.amount > 1000000
+WHERE dt.amount > 1000000 AND NOT (d)<-[:IS_DONOR]-(:Politician)
 WITH d, pf, dt.amount AS amount
 RETURN toString(elementId(d)) AS did, d.name AS dname,
        toString(elementId(pf)) AS pfid, COALESCE(pf.name, pf.party_name, "partido") AS pfname,
        amount
 ORDER BY amount DESC
-LIMIT 20
+LIMIT 15
 `
 
 /** Key investigation companies — named entities from the narrative */
@@ -232,7 +256,7 @@ function transformRecord(record: Neo4jRecord): RawRow {
         pNode.properties.name ??
         pNode.properties.full_name ??
         pNode.properties.official_name ??
-        'desconocido',
+        '',
       labels: Array.from(pNode.labels),
       properties: { ...pNode.properties },
       datasets,
@@ -412,7 +436,31 @@ export async function GET(): Promise<Response> {
       }
     } catch { /* timeout ok */ }
 
-    // Phase 6: Top campaign donors (big money nodes)
+    // Phase 5b: Politician-donors — show politician donating directly to party (merged identity)
+    try {
+      const polDonors = await readQuery(POLITICIAN_DONORS_CYPHER, {}, (r: Neo4jRecord) => ({
+        pid: r.get('pid') as string, pname: r.get('pname') as string,
+        pfid: r.get('pfid') as string, pfname: r.get('pfname') as string,
+        amount: r.get('amount') as number,
+      }))
+      for (const pd of polDonors.records) {
+        const pId = politicianElementIds.get(pd.pid)
+        if (!pId) continue
+        // Mark politician as donor
+        const polNode = nodeMap.get(pId)
+        if (polNode) polNode.properties.isDonor = true
+        // Add party node
+        if (!nodeMap.has(pd.pfid)) {
+          nodeMap.set(pd.pfid, {
+            id: pd.pfid, name: pd.pfname, type: 'PoliticalParty', color: '#f59e0b',
+            datasets: 0, val: 5, labels: ['PoliticalPartyFinance'], properties: {},
+          })
+        }
+        links.push({ source: pId, target: pd.pfid, type: 'DONATED_TO', properties: { amount: pd.amount } })
+      }
+    } catch { /* timeout ok */ }
+
+    // Phase 6: Top corporate/non-politician donors (big money nodes)
     try {
       const donors = await readQuery(TOP_DONORS_CYPHER, {}, (r: Neo4jRecord) => ({
         did: r.get('did') as string, dname: r.get('dname') as string,
