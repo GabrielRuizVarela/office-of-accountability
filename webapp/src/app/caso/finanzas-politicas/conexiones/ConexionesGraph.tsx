@@ -45,11 +45,20 @@ interface GraphApiResponse {
 
 const NODE_TYPE_LEGEND: ReadonlyArray<{ type: string; label: string; color: string }> = [
   { type: 'Politician', label: 'Politico', color: '#3b82f6' },
-  { type: 'OffshoreOfficer', label: 'Offshore', color: '#ef4444' },
+  { type: 'OffshoreOfficer', label: 'Offshore Officer', color: '#ef4444' },
+  { type: 'OffshoreEntity', label: 'Entidad Offshore', color: '#dc2626' },
   { type: 'Donor', label: 'Donante', color: '#22c55e' },
   { type: 'GovernmentAppointment', label: 'Nombramiento', color: '#f97316' },
+  { type: 'Judge', label: 'Juez', color: '#f97316' },
   { type: 'CompanyOfficer', label: 'Directivo', color: '#a855f7' },
-  { type: 'AssetDeclaration', label: 'Patrimonio', color: '#6b7280' },
+  { type: 'BoardMember', label: 'Directorio', color: '#a855f7' },
+  { type: 'Company', label: 'Empresa', color: '#10b981' },
+  { type: 'Organization', label: 'Organizacion', color: '#10b981' },
+  { type: 'SAME_COALITION', label: 'Coalicion', color: '#f59e0b' },
+  { type: 'SAME_PROVINCE', label: 'Provincia', color: '#6366f1' },
+  { type: 'BOTH_OFFSHORE', label: 'Red Offshore', color: '#ef4444' },
+  { type: 'SHARED_ORG', label: 'Org. Compartida', color: '#10b981' },
+  { type: 'Contractor', label: 'Contratista', color: '#8b5cf6' },
 ]
 
 // ---------------------------------------------------------------------------
@@ -80,6 +89,30 @@ export function ConexionesGraph() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [selectedNode, setSelectedNode] = useState<GraphNodeData | null>(null)
+  const [hiddenTypes, setHiddenTypes] = useState<Set<string>>(new Set())
+
+  const toggleType = useCallback((type: string) => {
+    setHiddenTypes((prev) => {
+      const next = new Set(prev)
+      if (next.has(type)) next.delete(type)
+      else next.add(type)
+      return next
+    })
+  }, [])
+
+  // Filter graph data based on hidden types
+  const filteredData = graphData
+    ? {
+        nodes: graphData.nodes.filter((n) => !hiddenTypes.has(n.type)),
+        links: graphData.links.filter((l) => {
+          const sourceId = typeof l.source === 'string' ? l.source : (l.source as any)?.id
+          const targetId = typeof l.target === 'string' ? l.target : (l.target as any)?.id
+          const sourceNode = graphData.nodes.find((n) => n.id === sourceId)
+          const targetNode = graphData.nodes.find((n) => n.id === targetId)
+          return sourceNode && targetNode && !hiddenTypes.has(sourceNode.type) && !hiddenTypes.has(targetNode.type)
+        }),
+      }
+    : null
 
   // Load ForceGraph2D dynamically
   useEffect(() => {
@@ -247,19 +280,41 @@ export function ConexionesGraph() {
       {/* Top bar with legend and stats */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-800 bg-zinc-950/80 px-4 py-3">
         <div className="flex flex-wrap gap-3">
-          {NODE_TYPE_LEGEND.map((item) => (
-            <div key={item.type} className="flex items-center gap-1.5">
-              <span
-                className="inline-block h-3 w-3 rounded-full"
-                style={{ backgroundColor: item.color }}
-              />
-              <span className="text-xs text-zinc-400">{item.label}</span>
-            </div>
-          ))}
+          {NODE_TYPE_LEGEND.map((item) => {
+            const isHidden = hiddenTypes.has(item.type)
+            const count = graphData?.nodes.filter((n) => n.type === item.type).length ?? 0
+            if (count === 0) return null
+            return (
+              <button
+                key={item.type}
+                onClick={() => toggleType(item.type)}
+                className={`flex items-center gap-1.5 rounded px-1.5 py-0.5 transition-opacity ${
+                  isHidden ? 'opacity-30' : 'opacity-100'
+                } hover:bg-zinc-800`}
+              >
+                <span
+                  className="inline-block h-3 w-3 rounded-full"
+                  style={{ backgroundColor: item.color }}
+                />
+                <span className="text-xs text-zinc-400">
+                  {item.label} ({count})
+                </span>
+              </button>
+            )
+          })}
         </div>
         {graphData && (
           <span className="text-xs text-zinc-500">
-            {graphData.nodes.length} nodos &middot; {graphData.links.length} conexiones
+            {filteredData ? filteredData.nodes.length : graphData.nodes.length} nodos &middot;{' '}
+            {filteredData ? filteredData.links.length : graphData.links.length} conexiones
+            {hiddenTypes.size > 0 && (
+              <button
+                onClick={() => setHiddenTypes(new Set())}
+                className="ml-2 text-blue-400 hover:underline"
+              >
+                mostrar todos
+              </button>
+            )}
           </span>
         )}
       </div>
@@ -293,7 +348,7 @@ export function ConexionesGraph() {
           {!loading && !error && graphData && ForceGraph2D && (
             <ForceGraph2D
               ref={graphRef}
-              graphData={graphData}
+              graphData={filteredData ?? graphData}
               width={dimensions.width}
               height={dimensions.height}
               backgroundColor="#09090b"
