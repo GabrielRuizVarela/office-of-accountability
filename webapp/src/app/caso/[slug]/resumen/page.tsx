@@ -152,10 +152,58 @@ const chapters: readonly Chapter[] = [
     },
   },
   {
+    id: 'la-familia',
+    title: {
+      es: 'Capitulo 5: La Familia Kelsier',
+      en: 'Chapter 5: The Kelsier Family',
+    },
+    paragraphs: {
+      es: [
+        'Kelsier Ventures no era una empresa — era un negocio familiar. Hayden Mark Davis (CEO), su hermano Gideon (COO) y su padre Tom (Chairman, con antecedentes penales por fraude de identidad en EE.UU.) controlaban la operacion. Tom Davis habia pasado por prision federal antes de reinventarse como CEO de una ONG infantil.',
+        'La billetera desplegadora del token (DefcyKc4...) fue identificada por Nansen como "Libra: Deployer". El contrato del token en Solana (Bo9jh3wsmc...) fue verificado contra Solscan. El 82% del suministro estaba desbloqueado desde el lanzamiento.',
+        'El rastro blockchain revelo que la billetera 0xcEA, que hizo sniping en $MELANIA por $2,4 millones, financio directamente el despliegue de $LIBRA. Bubblemaps rastro al menos 15 tokens adicionales del mismo cluster: $WOLF, $TRUST, $KACY, $VIBES, $HOOD, $ENRON.',
+        'Davis admitio en entrevista con Coffeezilla que su equipo uso bots para comprar tokens antes que los inversores minoristas ("sniping") en $LIBRA, $MELANIA y $TRUMP. Arkham Intelligence identifico mas de 1.000 direcciones de Kelsier Ventures con casi $300 millones en fondos totales.',
+      ],
+      en: [
+        'Kelsier Ventures was not a company — it was a family business. Hayden Mark Davis (CEO), his brother Gideon (COO), and his father Tom (Chairman, with a federal prison record for identity fraud in the US) controlled the operation. Tom Davis had served time before reinventing himself as CEO of a children\'s charity.',
+        'The token deployer wallet (DefcyKc4...) was identified by Nansen as "Libra: Deployer." The Solana token contract (Bo9jh3wsmc...) was verified against Solscan. 82% of supply was unlocked from launch.',
+        'The blockchain trail revealed that wallet 0xcEA, which sniped $MELANIA for $2.4 million, directly funded the $LIBRA deployment. Bubblemaps traced at least 15 additional tokens from the same cluster: $WOLF, $TRUST, $KACY, $VIBES, $HOOD, $ENRON.',
+        'Davis admitted in a Coffeezilla interview that his team used bots to front-run retail investors ("sniping") on $LIBRA, $MELANIA, and $TRUMP. Arkham Intelligence identified over 1,000 Kelsier Ventures addresses with nearly $300 million in total funds.',
+      ],
+    },
+    pullQuote: {
+      es: '"La misma billetera que hizo sniping en $MELANIA financio directamente el despliegue de $LIBRA."',
+      en: '"The same wallet that sniped $MELANIA directly funded $LIBRA\'s deployment."',
+    },
+  },
+  {
+    id: 'los-testaferros',
+    title: {
+      es: 'Capitulo 6: Los Testaferros',
+      en: 'Chapter 6: The Straw Men',
+    },
+    paragraphs: {
+      es: [
+        'El dinero no desaparecio en el vacio. La justicia identifico una red de intermediarios usados para canalizar los fondos extraidos. Orlando Mellino, un jubilado de 75 anos sin ningun antecedente en criptomonedas, recibio mas de un millon de dolares de las billeteras de Hayden Davis y los transfirio en cuestion de horas.',
+        'Favio Rodriguez Blanco, un intermediario colombiano, opero de forma similar. Ambos tienen bienes embargados por orden del juez Martinez De Giorgi.',
+        'El patron sugiere una operacion de lavado clasica: fondos cripto convertidos a fiat a traves de personas sin perfil financiero sofisticado, diseciados para evadir los controles antifraude. Solo 8 de las 34 direcciones vinculadas a Davis han sido rastreadas en detalle. Las 26 restantes, con parte de $124,6 millones en ganancias, permanecen sin identificar.',
+      ],
+      en: [
+        'The money didn\'t vanish into thin air. The justice system identified a network of intermediaries used to channel the extracted funds. Orlando Mellino, a 75-year-old retiree with zero cryptocurrency background, received over one million dollars from Hayden Davis\'s wallets and transferred them within hours.',
+        'Favio Rodriguez Blanco, a Colombian intermediary, operated similarly. Both have assets frozen by order of Judge Martinez De Giorgi.',
+        'The pattern suggests a classic money laundering operation: crypto funds converted to fiat through individuals with no sophisticated financial profile, designed to evade anti-fraud controls. Only 8 of the 34 Davis-linked addresses have been traced in detail. The remaining 26, with a portion of $124.6 million in profits, remain unidentified.',
+      ],
+    },
+    pullQuote: {
+      es: '"Un jubilado de 75 anos sin antecedentes cripto recibio mas de un millon de dolares y los transfirio en horas."',
+      en: '"A 75-year-old retiree with no crypto background received over one million dollars and transferred them within hours."',
+    },
+  },
+  {
     id: 'el-encubrimiento',
     title: {
-      es: 'Capitulo 5: El Encubrimiento',
-      en: 'Chapter 5: The Coverup',
+      es: 'Capitulo 7: El Encubrimiento',
+      en: 'Chapter 7: The Coverup',
     },
     paragraphs: {
       es: [
@@ -179,8 +227,8 @@ const chapters: readonly Chapter[] = [
   {
     id: 'la-justicia-lenta',
     title: {
-      es: 'Capitulo 6: La Justicia Lenta',
-      en: 'Chapter 6: Slow Justice',
+      es: 'Capitulo 8: La Justicia Lenta',
+      en: 'Chapter 8: Slow Justice',
     },
     paragraphs: {
       es: [
@@ -202,8 +250,8 @@ const chapters: readonly Chapter[] = [
   {
     id: 'los-numeros',
     title: {
-      es: 'Capitulo 7: Los Numeros No Mienten',
-      en: 'Chapter 7: The Numbers Don\'t Lie',
+      es: 'Capitulo 9: Los Numeros No Mienten',
+      en: 'Chapter 9: The Numbers Don\'t Lie',
     },
     paragraphs: {
       es: [
@@ -217,19 +265,19 @@ const chapters: readonly Chapter[] = [
   {
     id: 'que-sigue',
     title: {
-      es: 'Capitulo 8: Que Sigue',
-      en: 'Chapter 8: What\'s Next',
+      es: 'Capitulo 10: Que Sigue',
+      en: 'Chapter 10: What\'s Next',
     },
     paragraphs: {
       es: [
         'En marzo de 2026, la comision congressional ha sido reactivada y exige explicaciones con nueva evidencia forense extraida del telefono de Novelli. La denuncia por obstruccion contra el fiscal Taiano abre un segundo frente judicial.',
-        'Las preguntas fundamentales siguen sin respuesta: Quien autorizo la publicacion presidencial? Quienes fueron los beneficiarios finales de los $107 millones extraidos? Por que la justicia no ha citado a un solo testigo en un ano?',
-        'La evidencia esta ahi. Los numeros estan ahi. Lo que falta es la voluntad de actuar. Esta investigacion se basa en fuentes publicas verificadas y se actualiza a medida que surgen nuevos datos. Compartila para que la informacion llegue a quienes la necesitan.',
+        'Las preguntas fundamentales siguen sin respuesta: Quien autorizo la publicacion presidencial? Quienes son los beneficiarios de las 26 billeteras no rastreadas? Se concreto el pago de $5 millones documentado en el iPhone de Novelli? Cual fue el rol real de Julian Peh, cuya centralidad en la red supera a la de Milei y Davis?',
+        'Esta investigacion de la Oficina de Rendicion de Cuentas ha verificado 43 items contra fuentes judiciales, parlamentarias, blockchain y periodisticas. El grafo de conocimiento contiene 102 nodos y 141 aristas, todos verificados. La evidencia esta ahi. Los numeros estan ahi. Lo que falta es la voluntad de actuar.',
       ],
       en: [
         'In March 2026, the congressional commission has been revived and is demanding explanations with new forensic evidence extracted from Novelli\'s phone. The obstruction complaint against Prosecutor Taiano opens a second judicial front.',
-        'The fundamental questions remain unanswered: Who authorized the presidential post? Who were the ultimate beneficiaries of the $107 million extracted? Why has justice not summoned a single witness in a year?',
-        'The evidence is there. The numbers are there. What\'s missing is the will to act. This investigation is based on verified public sources and is updated as new data emerges. Share it so the information reaches those who need it.',
+        'The fundamental questions remain unanswered: Who authorized the presidential post? Who are the beneficiaries behind the 26 untraced wallets? Was the $5 million payment documented on Novelli\'s iPhone ever executed? What was the real role of Julian Peh, whose network centrality exceeds that of both Milei and Davis?',
+        'This Office of Accountability investigation has verified 43 items against judicial, parliamentary, blockchain, and journalistic sources. The knowledge graph contains 102 nodes and 141 edges, all verified. The evidence is there. The numbers are there. What\'s missing is the will to act.',
       ],
     },
     pullQuote: {
@@ -240,7 +288,7 @@ const chapters: readonly Chapter[] = [
 ]
 
 // ---------------------------------------------------------------------------
-// Stats for Chapter 7
+// Stats for Chapter 9 (Los Numeros)
 // ---------------------------------------------------------------------------
 
 const stats: readonly StatCard[] = [
@@ -253,6 +301,10 @@ const stats: readonly StatCard[] = [
   { value: '16 / 4', label: { es: 'Reuniones / declaradas', en: 'Meetings / declared' } },
   { value: '30+', label: { es: 'Contactos noche del lanzamiento', en: 'Launch night phone contacts' } },
   { value: '57.6%', label: { es: 'Desaprobacion del presidente', en: 'Presidential disapproval' } },
+  { value: '1,000+', label: { es: 'Direcciones Kelsier identificadas', en: 'Kelsier addresses identified' } },
+  { value: '$300M', label: { es: 'Fondos en cluster Kelsier', en: 'Funds in Kelsier cluster' } },
+  { value: '15+', label: { es: 'Tokens del mismo cluster', en: 'Tokens from same cluster' } },
+  { value: '43', label: { es: 'Items verificados (ORC)', en: 'Factchecked items (ORC)' } },
 ]
 
 // ---------------------------------------------------------------------------
@@ -268,6 +320,11 @@ const sources: readonly Source[] = [
   { name: 'Chainalysis — Wallet tracking', url: 'https://www.chainalysis.com' },
   { name: 'Decreto 332/2025 — Boletin Oficial', url: 'https://www.boletinoficial.gob.ar' },
   { name: 'Oficina Anticorrupcion — Dictamen', url: 'https://www.argentina.gob.ar/anticorrupcion' },
+  { name: 'Arkham Intelligence — Kelsier Ventures Addresses', url: 'https://info.arkm.com/announcements/1000-kelsier-ventures-addresses-now-on-arkham' },
+  { name: 'TRM Labs — The Libra Affair', url: 'https://www.trmlabs.com/resources/blog/the-libra-affair-tracking-the-memecoin-that-launched-a-scandal-in-argentina' },
+  { name: 'Coffeezilla — Davis Interview', url: 'https://www.youtube.com/watch?v=Ud6GuH7gSDw' },
+  { name: 'Burwick Law — Class Action Filing', url: 'https://www.burwick.law/active-cases/libra-token-lawsuit' },
+  { name: 'Solscan — LIBRA Token Contract', url: 'https://solscan.io/token/Bo9jh3wsmcC2AjakLWzNmKJ3SgtZmXEcSaW7L2FAvUsU' },
 ]
 
 // ---------------------------------------------------------------------------
