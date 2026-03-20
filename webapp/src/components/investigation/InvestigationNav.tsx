@@ -1,5 +1,9 @@
 'use client'
 
+/**
+ * Sub-navigation tabs for the investigation layout.
+ */
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -57,13 +61,6 @@ export function InvestigationNav({ slug }: InvestigationNavProps) {
 
   return (
     <nav className="scrollbar-none flex gap-1 overflow-x-auto border-b border-zinc-800 px-4">
-      <Link
-        href="/"
-        className="whitespace-nowrap border-b-2 border-transparent px-3 py-2.5 text-sm font-bold text-zinc-50 transition-colors hover:text-purple-300"
-      >
-        ORC
-      </Link>
-      <span className="self-center text-zinc-700">|</span>
       {tabs.map((tab) => {
         const isActive = pathname === tab.href
         return (

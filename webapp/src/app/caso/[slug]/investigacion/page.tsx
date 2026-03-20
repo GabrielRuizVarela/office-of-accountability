@@ -1,11 +1,11 @@
 'use client'
 
 /**
- * Caso Epstein — Comprehensive bilingual investigation page.
+ * Caso Libra — Comprehensive bilingual investigation page.
  *
- * Renders a complete, factchecked, sourced investigation of the Epstein
- * trafficking network with timeline, actor network, money flows, evidence
- * chain, government response tracking, and impact statistics.
+ * Renders a complete, factchecked, sourced investigation of the $LIBRA
+ * token scandal with timeline, actor network, money flows, evidence chain,
+ * government response tracking, and impact statistics.
  */
 
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
@@ -22,7 +22,7 @@ import {
   type InvestigationCategory,
   type InvestigationTimelineEvent,
   type VerificationStatus,
-} from '@/lib/caso-epstein/investigation-data'
+} from '@/lib/caso-libra/investigation-data'
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -39,6 +39,7 @@ const SECTIONS = [
   { id: 'money', label_es: 'Dinero', label_en: 'Money' },
   { id: 'evidence', label_es: 'Evidencia', label_en: 'Evidence' },
   { id: 'government', label_es: 'Gobierno', label_en: 'Government' },
+  { id: 'aportar', label_es: 'Aportar', label_en: 'Submit' },
 ] as const
 
 const STATUS_COLORS: Record<FactcheckStatus, string> = {
@@ -96,9 +97,6 @@ const TIMELINE_CATEGORIES: InvestigationCategory[] = [
 // ---------------------------------------------------------------------------
 
 function formatUsd(amount: number): string {
-  if (amount >= 1_000_000_000) {
-    return `$${(amount / 1_000_000_000).toFixed(1)}B`
-  }
   if (amount >= 1_000_000) {
     return `$${(amount / 1_000_000).toFixed(0)}M`
   }
@@ -109,14 +107,6 @@ function formatUsd(amount: number): string {
 }
 
 function formatDate(dateStr: string, lang: Lang): string {
-  // Handle date ranges like '1991-2001' or '2012-2017'
-  if (/^\d{4}[–-]\d{4}$/.test(dateStr)) {
-    return dateStr
-  }
-  // Handle plain years like '2023'
-  if (/^\d{4}$/.test(dateStr)) {
-    return dateStr
-  }
   const d = new Date(dateStr + 'T00:00:00')
   return d.toLocaleDateString(lang === 'es' ? 'es-AR' : 'en-US', {
     year: 'numeric',
@@ -130,7 +120,7 @@ function formatDate(dateStr: string, lang: Lang): string {
 // ---------------------------------------------------------------------------
 
 export default function InvestigacionPage() {
-  const [lang, setLang] = useState<Lang>('en')
+  const [lang, setLang] = useState<Lang>('es')
   const [activeSection, setActiveSection] = useState('hero')
   const [factcheckFilter, setFactcheckFilter] = useState<FactcheckStatus | null>(null)
   const [expandedFactchecks, setExpandedFactchecks] = useState<Set<string>>(new Set())
@@ -215,7 +205,7 @@ export default function InvestigacionPage() {
                 onClick={() => scrollTo(s.id)}
                 className={`whitespace-nowrap rounded px-2.5 py-1.5 text-xs font-medium transition-colors ${
                   activeSection === s.id
-                    ? 'bg-blue-600/20 text-blue-400'
+                    ? 'bg-purple-600/20 text-purple-400'
                     : 'text-zinc-500 hover:text-zinc-300'
                 }`}
               >
@@ -226,7 +216,7 @@ export default function InvestigacionPage() {
           <button
             type="button"
             onClick={() => setLang((l) => (l === 'es' ? 'en' : 'es'))}
-            className="ml-3 shrink-0 rounded-full border border-zinc-700 px-3 py-1 text-xs font-semibold text-zinc-300 transition-colors hover:border-blue-500 hover:text-blue-400"
+            className="ml-3 shrink-0 rounded-full border border-zinc-700 px-3 py-1 text-xs font-semibold text-zinc-300 transition-colors hover:border-purple-500 hover:text-purple-400"
           >
             {lang === 'es' ? 'EN' : 'ES'}
           </button>
@@ -238,18 +228,16 @@ export default function InvestigacionPage() {
       {/* ================================================================== */}
       <section id="hero" ref={registerRef('hero')} className="pb-12">
         <h1 className="text-2xl font-extrabold tracking-tight text-zinc-50 sm:text-3xl">
-          {lang === 'es'
-            ? 'La Red Epstein: Evidencia y Analisis'
-            : 'The Epstein Network: Evidence & Analysis'}
+          {lang === 'es' ? 'La Investigacion Completa' : 'The Complete Investigation'}
         </h1>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-400">
           {lang === 'es'
-            ? 'Una investigacion verificada y con fuentes sobre la red de trafico de Jeffrey Epstein. Cada dato esta respaldado por documentos judiciales, archivos del DOJ, informes del Congreso o reportajes periodisticos.'
-            : 'A verified, sourced investigation into Jeffrey Epstein\'s trafficking network. Every claim is backed by court documents, DOJ files, congressional reports, or journalistic reporting.'}
+            ? 'Una investigacion verificada y con fuentes sobre el escandalo del token $LIBRA promovido por el presidente Milei. Cada dato esta respaldado por evidencia on-chain, documentos publicos o reportajes periodisticos.'
+            : 'A verified, sourced investigation into the $LIBRA token scandal promoted by President Milei. Every claim is backed by on-chain evidence, public documents, or journalistic reporting.'}
         </p>
 
         {/* Impact stats */}
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {IMPACT_STATS.map((stat) => (
             <div
               key={stat.value}
@@ -277,43 +265,43 @@ export default function InvestigacionPage() {
           {lang === 'es' ? (
             <>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                Jeffrey Epstein construyo una de las redes de trafico sexual mas sofisticadas de la historia moderna, utilizando riqueza derivada de <strong className="text-zinc-100">Leslie Wexner</strong> — quien le transfiriio aproximadamente <strong className="text-zinc-100">$1.000 millones</strong> y le otorgo poder notarial completo en 1991. La red opero durante decadas a traves de multiples paises, protegida por conexiones con las elites financieras, politicas y legales.
+                El 14 de febrero de 2025, a las 19:01, el Presidente de Argentina Javier Milei publico en X, Instagram y Facebook la direccion de contrato de un token llamado <strong className="text-zinc-100">$LIBRA</strong>, creado minutos antes en la blockchain de Solana. Con <strong className="text-zinc-100">19 millones de seguidores</strong>, el precio del token se disparo de <strong className="text-zinc-100">$0.000001</strong> a <strong className="text-zinc-100">$5.20</strong> en 40 minutos, alcanzando una capitalizacion de <strong className="text-zinc-100">$4.500 millones</strong>.
               </p>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                La clave de la red fue <strong className="text-zinc-100">Ghislaine Maxwell</strong>, quien mantuvo <strong className="text-zinc-100">22 conexiones independientes</strong> en la red. El analisis de grafos muestra que al eliminar a Epstein, Maxwell mantenia conectadas 11 de las 14 personas restantes — era la coarquitecta operativa, no una simple complice.
+                En las siguientes 3 horas, <strong className="text-zinc-100">8 billeteras</strong> vinculadas a los organizadores extrajeron <strong className="text-zinc-100">$107 millones</strong> en liquidez. El precio colapso un <strong className="text-zinc-100">94%</strong>. Aproximadamente <strong className="text-zinc-100">114.410 billeteras</strong> sufrieron perdidas por un total de <strong className="text-zinc-100">$251 millones</strong>. Solo <strong className="text-zinc-100">36 individuos</strong> obtuvieron ganancias superiores a $1 millon.
               </p>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                La proteccion institucional fue sistematica: un <strong className="text-zinc-100">Acuerdo de No Procesamiento</strong> negociado en 2008 por el fiscal Alexander Acosta creo un escudo de inmunidad de 11 anos. Cuando Epstein finalmente fue arrestado en julio de 2019, fue encontrado muerto en su celda del MCC un mes despues — mientras los guardias dormian, las camaras fallaban y habia sido retirado de vigilancia antisuicidio.
+                La investigacion revelo que no fue un accidente. Un documento encontrado en el telefono de <strong className="text-zinc-100">Mauricio Novelli</strong>, fechado el 11 de febrero — tres dias antes del lanzamiento — detallaba un acuerdo de <strong className="text-zinc-100">$5 millones</strong> para Milei a cambio de la promocion. Analisis forense del telefono de Novelli registro mas de <strong className="text-zinc-100">30 contactos telefonicos</strong> entre Milei, su hermana <strong className="text-zinc-100">Karina Milei</strong>, su asesor <strong className="text-zinc-100">Santiago Caputo</strong> y Novelli en la noche del lanzamiento. De las <strong className="text-zinc-100">16 reuniones</strong> documentadas entre el presidente y los promotores, solo <strong className="text-zinc-100">4</strong> fueron declaradas oficialmente.
               </p>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                Los facilitadores financieros incluyeron a <strong className="text-zinc-100">JPMorgan Chase</strong> (acuerdo de $290M), <strong className="text-zinc-100">Deutsche Bank</strong> (acuerdo de $75M), <strong className="text-zinc-100">Leon Black</strong> ($170M en pagos), y <strong className="text-zinc-100">Jes Staley</strong> (1.100 correos, prohibido permanentemente de la banca). Las victimas recibieron aproximadamente <strong className="text-zinc-100">$500 millones</strong> en acuerdos totales.
+                Los organizadores, liderados por <strong className="text-zinc-100">Hayden Davis</strong> de <strong className="text-zinc-100">Kelsier Ventures</strong> (la misma empresa vinculada al token $MELANIA), operaron un esquema clasico de pump-and-dump con respaldo presidencial. Bubblemaps confirmo que el <strong className="text-zinc-100">82% del suministro</strong> estaba desbloqueado desde el lanzamiento, concentrado en un unico cluster de billeteras.
               </p>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                La <strong className="text-zinc-100">Ley de Transparencia de los Archivos Epstein</strong>, promulgada en noviembre de 2025, obligo al DOJ a publicar 6 millones de paginas de evidencia. Las publicaciones por fases desencadenaron una cascada de arrestos internacionales: <strong className="text-zinc-100">Principe Andrew</strong>, <strong className="text-zinc-100">Peter Mandelson</strong> y <strong className="text-zinc-100">Thorbjorn Jagland</strong>. En marzo de 2026, el Congreso cito a la Fiscal General Bondi por presunto ocultamiento de archivos.
+                Un año despues, la respuesta del gobierno ha sido sistematica: disolucion de la unidad investigadora (mayo 2025), exoneracion por la Oficina Anticorrupcion (junio 2025), y un proceso judicial que al 14 de febrero de 2026 no habia citado a un solo testigo ni sospechoso. Legisladores opositores han denunciado al fiscal por obstruccion. La comision investigadora del Congreso concluyo que Milei presto &lsquo;colaboracion esencial&rsquo; al esquema y que su conducta es &lsquo;compatible con un presunto fraude&rsquo;.
               </p>
-              <p className="text-sm leading-relaxed text-zinc-400 italic border-l-2 border-blue-500/50 pl-4">
-                Esta investigacion reune todas las pruebas verificadas de fuentes publicas: documentos judiciales, archivos del DOJ, informes del Congreso, analisis del grafo de conocimiento de la Oficina de Responsabilidad, y reportajes del <strong className="text-zinc-100">Miami Herald</strong>, <strong className="text-zinc-100">BBC</strong>, <strong className="text-zinc-100">Financial Times</strong> y otros medios internacionales.
+              <p className="text-sm leading-relaxed text-zinc-400 italic border-l-2 border-purple-500/50 pl-4">
+                Esta investigacion reune todas las pruebas verificadas de fuentes publicas: analisis blockchain de <strong className="text-zinc-100">Nansen</strong>, <strong className="text-zinc-100">Bubblemaps</strong> y <strong className="text-zinc-100">Lookonchain</strong>; documentos judiciales; informes parlamentarios; y reportajes de <strong className="text-zinc-100">Buenos Aires Herald</strong>, <strong className="text-zinc-100">Bloomberg</strong>, <strong className="text-zinc-100">Financial Times</strong> y otros medios internacionales. Cada dato esta verificado y enlazado a su fuente.
               </p>
             </>
           ) : (
             <>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                Jeffrey Epstein built one of the most sophisticated sex trafficking networks in modern history, using wealth derived from <strong className="text-zinc-100">Leslie Wexner</strong> — who transferred approximately <strong className="text-zinc-100">$1 billion</strong> and granted him full power of attorney in 1991. The network operated for decades across multiple countries, shielded by connections to financial, political, and legal elites.
+                On February 14, 2025, at 7:01 PM, Argentine President Javier Milei posted on X, Instagram, and Facebook the contract address of a token called <strong className="text-zinc-100">$LIBRA</strong>, created minutes earlier on the Solana blockchain. With <strong className="text-zinc-100">19 million followers</strong>, the token price surged from <strong className="text-zinc-100">$0.000001</strong> to <strong className="text-zinc-100">$5.20</strong> in 40 minutes, reaching a market cap of <strong className="text-zinc-100">$4.5 billion</strong>.
               </p>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                The network&apos;s linchpin was <strong className="text-zinc-100">Ghislaine Maxwell</strong>, who maintained <strong className="text-zinc-100">22 independent connections</strong> in the network. Graph analysis shows that when Epstein is removed, Maxwell held 11 of the remaining 14 persons together as a connected network — she was the operational co-architect, not a mere accomplice.
+                Within 3 hours, <strong className="text-zinc-100">8 wallets</strong> linked to the organizers extracted <strong className="text-zinc-100">$107 million</strong> in liquidity. The price crashed <strong className="text-zinc-100">94%</strong>. Approximately <strong className="text-zinc-100">114,410 wallets</strong> suffered losses totaling <strong className="text-zinc-100">$251 million</strong>. Only <strong className="text-zinc-100">36 individuals</strong> made profits exceeding $1 million.
               </p>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                Institutional protection was systematic: a <strong className="text-zinc-100">Non-Prosecution Agreement</strong> negotiated in 2008 by US Attorney Alexander Acosta created an 11-year immunity shield. When Epstein was finally arrested in July 2019, he was found dead in his MCC cell a month later — while guards slept, cameras malfunctioned, and he had been removed from suicide watch.
+                The investigation revealed this was no accident. A document found on <strong className="text-zinc-100">Mauricio Novelli&apos;s</strong> phone, dated February 11 — three days before the launch — detailed a <strong className="text-zinc-100">$5 million agreement</strong> for Milei in exchange for the promotion. Forensic analysis of Novelli&apos;s phone recorded over <strong className="text-zinc-100">30 phone contacts</strong> between Milei, his sister <strong className="text-zinc-100">Karina Milei</strong>, adviser <strong className="text-zinc-100">Santiago Caputo</strong>, and Novelli on the night of the launch. Of the <strong className="text-zinc-100">16 documented meetings</strong> between the president and promoters, only <strong className="text-zinc-100">4</strong> were officially declared.
               </p>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                Financial enablers included <strong className="text-zinc-100">JPMorgan Chase</strong> ($290M settlement), <strong className="text-zinc-100">Deutsche Bank</strong> ($75M settlement), <strong className="text-zinc-100">Leon Black</strong> ($170M in payments), and <strong className="text-zinc-100">Jes Staley</strong> (1,100 emails, permanently banned from banking). Victims received approximately <strong className="text-zinc-100">$500 million</strong> in total settlements.
+                The organizers, led by <strong className="text-zinc-100">Hayden Davis</strong> of <strong className="text-zinc-100">Kelsier Ventures</strong> (the same company linked to the $MELANIA token), operated a classic pump-and-dump scheme with presidential backing. Bubblemaps confirmed that <strong className="text-zinc-100">82% of the supply</strong> was unlocked from launch, concentrated in a single wallet cluster.
               </p>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                The <strong className="text-zinc-100">Epstein Files Transparency Act</strong>, signed into law in November 2025, compelled the DOJ to release 6 million pages of evidence. The phased releases triggered a cascade of international arrests: <strong className="text-zinc-100">Prince Andrew</strong>, <strong className="text-zinc-100">Peter Mandelson</strong>, and <strong className="text-zinc-100">Thorbjorn Jagland</strong>. By March 2026, Congress subpoenaed Attorney General Bondi over alleged file concealment.
+                One year later, the government&apos;s response has been systematic: dissolution of the investigation task unit (May 2025), exoneration by the Anti-Corruption Office (June 2025), and a judicial process that by February 14, 2026 had not summoned a single witness or suspect. Opposition lawmakers have filed a complaint against the prosecutor for obstruction. The congressional investigative commission concluded that Milei provided &lsquo;essential collaboration&rsquo; to the scheme and that his conduct is &lsquo;compatible with an alleged fraud.&rsquo;
               </p>
-              <p className="text-sm leading-relaxed text-zinc-400 italic border-l-2 border-blue-500/50 pl-4">
-                This investigation compiles all verified evidence from public sources: court documents, DOJ files, congressional reports, the Office of Accountability knowledge graph analysis, and reporting from the <strong className="text-zinc-100">Miami Herald</strong>, <strong className="text-zinc-100">BBC</strong>, <strong className="text-zinc-100">Financial Times</strong>, and other international media.
+              <p className="text-sm leading-relaxed text-zinc-400 italic border-l-2 border-purple-500/50 pl-4">
+                This investigation compiles all verified evidence from public sources: blockchain analysis from <strong className="text-zinc-100">Nansen</strong>, <strong className="text-zinc-100">Bubblemaps</strong>, and <strong className="text-zinc-100">Lookonchain</strong>; court documents; parliamentary reports; and reporting from <strong className="text-zinc-100">Buenos Aires Herald</strong>, <strong className="text-zinc-100">Bloomberg</strong>, <strong className="text-zinc-100">Financial Times</strong> and other international media. Every data point is verified and linked to its source.
               </p>
             </>
           )}
@@ -340,7 +328,7 @@ export default function InvestigacionPage() {
             onClick={() => setFactcheckFilter(null)}
             className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
               factcheckFilter === null
-                ? 'bg-blue-600 text-white'
+                ? 'bg-purple-600 text-white'
                 : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
             }`}
           >
@@ -404,7 +392,7 @@ export default function InvestigacionPage() {
                         href={item.source_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-400 hover:underline"
+                        className="text-purple-400 hover:underline"
                         onClick={(e) => e.stopPropagation()}
                       >
                         {item.source}
@@ -413,7 +401,7 @@ export default function InvestigacionPage() {
                   </div>
                   {detail && (
                     <span className="mt-1 shrink-0 text-xs text-zinc-600">
-                      {isExpanded ? '\u25B2' : '\u25BC'}
+                      {isExpanded ? '▲' : '▼'}
                     </span>
                   )}
                 </button>
@@ -455,7 +443,7 @@ export default function InvestigacionPage() {
             onClick={() => setTimelineFilter(null)}
             className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
               timelineFilter === null
-                ? 'bg-blue-600 text-white'
+                ? 'bg-purple-600 text-white'
                 : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
             }`}
           >
@@ -525,11 +513,16 @@ export default function InvestigacionPage() {
             >
               <div className="flex items-start justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-zinc-500">{actor.nationality}</span>
+                  <span className="text-lg">{actor.nationality}</span>
                   <h3 className="font-semibold text-zinc-100">{actor.name}</h3>
                 </div>
+                {actor.is_new && (
+                  <span className="shrink-0 rounded-full bg-purple-600 px-2 py-0.5 text-xs font-bold uppercase tracking-wider text-white">
+                    NEW
+                  </span>
+                )}
               </div>
-              <p className="mt-1 text-xs font-medium text-blue-400">
+              <p className="mt-1 text-xs font-medium text-purple-400">
                 {lang === 'es' ? actor.role_es : actor.role_en}
               </p>
               <p className="mt-2 text-sm leading-relaxed text-zinc-400">
@@ -557,11 +550,11 @@ export default function InvestigacionPage() {
         </h2>
         <p className="mt-1 text-sm text-zinc-400">
           {lang === 'es'
-            ? 'Rastreo de fondos basado en documentos judiciales e informes del Congreso.'
-            : 'Fund tracing based on court documents and congressional reports.'}
+            ? 'Rastreo de fondos basado en analisis on-chain.'
+            : 'Fund tracing based on on-chain analysis.'}
         </p>
 
-        {/* Total tracked highlight */}
+        {/* Total extracted highlight */}
         <div className="mt-6 rounded-lg border border-red-900/50 bg-red-950/20 p-4 text-center">
           <p className="text-xs uppercase tracking-wider text-red-400">
             {lang === 'es' ? 'Total movido rastreado' : 'Total tracked movement'}
@@ -643,7 +636,7 @@ export default function InvestigacionPage() {
                 href={doc.source_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-block text-xs text-blue-400 hover:underline"
+                className="mt-3 inline-block text-xs text-purple-400 hover:underline"
               >
                 {lang === 'es' ? 'Ver fuente' : 'View source'} ↗
               </a>
@@ -653,36 +646,36 @@ export default function InvestigacionPage() {
       </section>
 
       {/* ================================================================== */}
-      {/* 8. GOVERNMENT RESPONSE                                             */}
+      {/* 8. GOVERNMENT RESPONSE / COVERUP TIMELINE                          */}
       {/* ================================================================== */}
       <section id="government" ref={registerRef('government')} className="py-12">
         <h2 className="text-xl font-bold text-zinc-50">
           {lang === 'es'
-            ? 'Respuesta del Gobierno e Instituciones'
-            : 'Government & Institutional Response'}
+            ? 'Respuesta del Gobierno y Obstruccion'
+            : 'Government Response and Obstruction'}
         </h2>
         <p className="mt-1 text-sm text-zinc-400">
           {lang === 'es'
-            ? 'Cronologia de las acciones gubernamentales e institucionales en respuesta a la red Epstein.'
-            : 'Timeline of government and institutional actions in response to the Epstein network.'}
+            ? 'Cronologia de las acciones gubernamentales para minimizar, desviar o bloquear la investigacion.'
+            : 'Timeline of government actions to minimize, deflect, or block the investigation.'}
         </p>
 
-        {/* Government response timeline */}
+        {/* Red-tinted coverup timeline */}
         <div className="relative mt-6 space-y-4 pl-6">
-          <div className="absolute left-[7px] top-2 bottom-2 w-px bg-blue-900/50" />
+          <div className="absolute left-[7px] top-2 bottom-2 w-px bg-red-900/50" />
           {GOVERNMENT_RESPONSES.map((gr) => (
             <div key={gr.id} className="relative">
               <div
                 className="absolute -left-[17px] top-3 h-3.5 w-3.5 rounded-full border-2 border-zinc-950"
-                style={{ backgroundColor: '#3b82f6' }}
+                style={{ backgroundColor: '#dc2626' }}
               />
-              <div className="rounded-lg border border-blue-900/40 bg-blue-950/10 p-4 hover:border-blue-800/60">
+              <div className="rounded-lg border border-red-900/40 bg-red-950/20 p-4 hover:border-red-800/60">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="text-xs font-medium text-zinc-500">
                     {formatDate(gr.date, lang)}
                   </span>
-                  <span className="rounded-full bg-blue-700 px-2 py-0.5 text-xs font-semibold text-white">
-                    {lang === 'es' ? 'Accion oficial' : 'Official action'}
+                  <span className="rounded-full bg-red-700 px-2 py-0.5 text-xs font-semibold text-white">
+                    {lang === 'es' ? 'Encubrimiento' : 'Coverup'}
                   </span>
                 </div>
                 <h3 className="mt-1.5 text-sm font-semibold text-zinc-100">
@@ -691,16 +684,14 @@ export default function InvestigacionPage() {
                 <p className="mt-1 text-sm leading-relaxed text-zinc-400">
                   {lang === 'es' ? gr.effect_es : gr.effect_en}
                 </p>
-                {gr.source_url && (
-                  <a
-                    href={gr.source_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 inline-block text-xs text-blue-400 hover:text-blue-300"
-                  >
-                    {lang === 'es' ? 'Ver fuente' : 'View source'} ↗
-                  </a>
-                )}
+                <a
+                  href={gr.source_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-block text-xs text-red-400 hover:text-red-300"
+                >
+                  {gr.source} ↗
+                </a>
               </div>
             </div>
           ))}
@@ -708,34 +699,49 @@ export default function InvestigacionPage() {
       </section>
 
       {/* ================================================================== */}
-      {/* FOOTER DISCLAIMER                                                  */}
+      {/* 9. SUBMIT EVIDENCE FORM                                            */}
+      {/* ================================================================== */}
+      <section id="aportar" ref={(el) => { if (el) registerRef('aportar')(el) }} className="scroll-mt-28 pt-10">
+        <h2 className="text-lg font-bold text-zinc-50">
+          {lang === 'es' ? 'Aportar pruebas' : 'Submit evidence'}
+        </h2>
+        <p className="mt-1 text-sm text-zinc-400">
+          {lang === 'es'
+            ? 'Tenes informacion verificable sobre el caso $LIBRA? Envia datos, documentos o conexiones. Todo se revisa antes de publicarse.'
+            : 'Do you have verifiable information about the $LIBRA case? Submit data, documents, or connections. Everything is reviewed before publishing.'}
+        </p>
+        <SubmitEvidenceForm lang={lang} />
+      </section>
+
+      {/* ================================================================== */}
+      {/* 10. FOOTER DISCLAIMER                                              */}
       {/* ================================================================== */}
       <footer className="border-t border-zinc-800 py-10">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm leading-relaxed text-zinc-400">
             {lang === 'es'
-              ? 'Esta investigacion se basa en fuentes publicas verificadas. Los documentos judiciales provienen de CourtListener y el SDNY. Los archivos del gobierno provienen del DOJ y del Congreso. El reportaje periodistico fue contrastado con multiples medios.'
-              : 'This investigation is based on verified public sources. Court documents are from CourtListener and SDNY. Government files come from the DOJ and Congress. Journalistic reporting was cross-referenced with multiple outlets.'}
+              ? 'Esta investigacion se basa en fuentes publicas verificadas. Los datos on-chain provienen de Nansen, Bubblemaps y Chainalysis. Los documentos judiciales son del Centro de Informacion Judicial (CIJ). El reportaje periodistico fue contrastado con multiples medios.'
+              : 'This investigation is based on verified public sources. On-chain data comes from Nansen, Bubblemaps, and Chainalysis. Court documents are from the Centro de Informacion Judicial (CIJ). Journalistic reporting was cross-referenced with multiple outlets.'}
           </p>
           <p className="mt-4 text-xs text-zinc-600">
             {lang === 'es' ? 'Ultima actualizacion' : 'Last updated'}:{' '}
-            {formatDate('2026-03-19', lang)}
+            {formatDate('2026-03-18', lang)}
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs text-zinc-600">
             {[
-              { name: 'CourtListener', url: 'https://www.courtlistener.com/' },
-              { name: 'DOJ Epstein Files', url: 'https://www.justice.gov/epstein-files' },
-              { name: 'Senate Finance Committee', url: 'https://finance.senate.gov/' },
-              { name: 'Miami Herald', url: 'https://www.miamiherald.com/' },
-              { name: 'BBC', url: 'https://www.bbc.co.uk/' },
-              { name: 'UK FCA', url: 'https://www.fca.org.uk/' },
+              { name: 'Nansen', url: 'https://www.nansen.ai/' },
+              { name: 'Bubblemaps', url: 'https://bubblemaps.io/' },
+              { name: 'Chainalysis', url: 'https://www.chainalysis.com/' },
+              { name: 'CIJ', url: 'https://www.cij.gov.ar/' },
+              { name: 'Infobae', url: 'https://www.infobae.com/' },
+              { name: 'Coffeezilla', url: 'https://www.youtube.com/coffeezilla' },
             ].map((src) => (
               <a
                 key={src.name}
                 href={src.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-500 hover:text-blue-400 hover:underline"
+                className="text-zinc-500 hover:text-purple-400 hover:underline"
               >
                 {src.name}
               </a>
@@ -754,21 +760,28 @@ export default function InvestigacionPage() {
 function TimelineCard({
   event,
   lang,
+  tint,
 }: {
   readonly event: InvestigationTimelineEvent
   readonly lang: Lang
+  readonly tint?: 'red'
 }) {
   const catColor = CATEGORY_COLORS[event.category] ?? '#6b7280'
   const catLabel = CATEGORY_LABELS[event.category]?.[lang] ?? event.category
+  const dotColor = tint === 'red' ? '#dc2626' : catColor
+  const borderClass = tint === 'red'
+    ? 'border-red-900/40 hover:border-red-800/60'
+    : 'border-zinc-800 hover:border-zinc-700'
+  const bgClass = tint === 'red' ? 'bg-red-950/20' : 'bg-zinc-900/50'
 
   return (
     <div className="relative">
       {/* Dot */}
       <div
         className="absolute -left-[17px] top-3 h-3.5 w-3.5 rounded-full border-2 border-zinc-950"
-        style={{ backgroundColor: catColor }}
+        style={{ backgroundColor: dotColor }}
       />
-      <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 hover:border-zinc-700">
+      <div className={`rounded-lg border ${borderClass} ${bgClass} p-4`}>
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs font-medium text-zinc-500">
             {formatDate(event.date, lang)}
@@ -779,6 +792,11 @@ function TimelineCard({
           >
             {catLabel}
           </span>
+          {event.is_new && (
+            <span className="rounded-full bg-purple-600 px-2 py-0.5 text-xs font-bold uppercase tracking-wider text-white">
+              NEW
+            </span>
+          )}
         </div>
         <h3 className="mt-1.5 text-sm font-semibold text-zinc-100">
           {lang === 'es' ? event.title_es : event.title_en}
@@ -790,18 +808,285 @@ function TimelineCard({
           <div className="mt-2 flex flex-wrap gap-2">
             {event.sources.map((src) => (
               <a
-                key={src}
-                href={src}
+                key={src.url}
+                href={src.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-blue-400 hover:underline"
+                className="text-xs text-purple-400 hover:underline"
               >
-                {lang === 'es' ? 'Fuente' : 'Source'} ↗
+                {src.name} ↗
               </a>
             ))}
           </div>
         )}
       </div>
     </div>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// Submit Evidence form sub-component
+// ---------------------------------------------------------------------------
+
+const ENTITY_TYPES = [
+  { value: 'factcheck', label_es: 'Hecho verificado', label_en: 'Verified fact' },
+  { value: 'event', label_es: 'Evento en la cronologia', label_en: 'Timeline event' },
+  { value: 'actor', label_es: 'Persona u organizacion', label_en: 'Person or organization' },
+  { value: 'money_flow', label_es: 'Flujo de dinero', label_en: 'Money flow' },
+  { value: 'evidence', label_es: 'Documento fuente', label_en: 'Source document' },
+  { value: 'government_response', label_es: 'Accion del gobierno', label_en: 'Government action' },
+] as const
+
+type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error'
+
+function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
+  const [entityType, setEntityType] = useState('factcheck')
+  const [formData, setFormData] = useState<Record<string, string>>({})
+  const [status, setStatus] = useState<SubmitStatus>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
+
+  const fields = useMemo(() => {
+    const common = [
+      { key: 'source_url', label_es: 'URL de la fuente', label_en: 'Source URL', type: 'url', required: true },
+    ]
+    switch (entityType) {
+      case 'factcheck':
+        return [
+          { key: 'claim_es', label_es: 'Afirmacion (espanol)', label_en: 'Claim (Spanish)', type: 'textarea', required: true },
+          { key: 'claim_en', label_es: 'Afirmacion (ingles)', label_en: 'Claim (English)', type: 'textarea', required: true },
+          { key: 'status', label_es: 'Estado', label_en: 'Status', type: 'select', required: true,
+            options: [
+              { value: 'confirmed', label: lang === 'es' ? 'Confirmado' : 'Confirmed' },
+              { value: 'alleged', label: lang === 'es' ? 'Presunto' : 'Alleged' },
+              { value: 'denied', label: lang === 'es' ? 'Negado' : 'Denied' },
+              { value: 'under_investigation', label: lang === 'es' ? 'En investigacion' : 'Under investigation' },
+            ] },
+          { key: 'source', label_es: 'Nombre de la fuente', label_en: 'Source name', type: 'text', required: true },
+          ...common,
+        ]
+      case 'event':
+        return [
+          { key: 'date', label_es: 'Fecha (YYYY-MM-DD)', label_en: 'Date (YYYY-MM-DD)', type: 'date', required: true },
+          { key: 'title_es', label_es: 'Titulo (espanol)', label_en: 'Title (Spanish)', type: 'text', required: true },
+          { key: 'title_en', label_es: 'Titulo (ingles)', label_en: 'Title (English)', type: 'text', required: true },
+          { key: 'description_es', label_es: 'Descripcion (espanol)', label_en: 'Description (Spanish)', type: 'textarea', required: true },
+          { key: 'description_en', label_es: 'Descripcion (ingles)', label_en: 'Description (English)', type: 'textarea', required: true },
+          { key: 'category', label_es: 'Categoria', label_en: 'Category', type: 'select', required: true,
+            options: [
+              { value: 'political', label: lang === 'es' ? 'Politico' : 'Political' },
+              { value: 'financial', label: lang === 'es' ? 'Financiero' : 'Financial' },
+              { value: 'legal', label: 'Legal' },
+              { value: 'media', label: lang === 'es' ? 'Medios' : 'Media' },
+              { value: 'coverup', label: lang === 'es' ? 'Encubrimiento' : 'Coverup' },
+            ] },
+          { key: 'source_name', label_es: 'Nombre de la fuente', label_en: 'Source name', type: 'text', required: true },
+          ...common,
+        ]
+      case 'actor':
+        return [
+          { key: 'name', label_es: 'Nombre completo', label_en: 'Full name', type: 'text', required: true },
+          { key: 'role_es', label_es: 'Rol (espanol)', label_en: 'Role (Spanish)', type: 'text', required: true },
+          { key: 'role_en', label_es: 'Rol (ingles)', label_en: 'Role (English)', type: 'text', required: true },
+          { key: 'description_es', label_es: 'Descripcion (espanol)', label_en: 'Description (Spanish)', type: 'textarea', required: true },
+          { key: 'description_en', label_es: 'Descripcion (ingles)', label_en: 'Description (English)', type: 'textarea', required: true },
+          { key: 'nationality', label_es: 'Nacionalidad', label_en: 'Nationality', type: 'text', required: true },
+          ...common,
+        ]
+      case 'money_flow':
+        return [
+          { key: 'from_label', label_es: 'Origen', label_en: 'From', type: 'text', required: true },
+          { key: 'to_label', label_es: 'Destino', label_en: 'To', type: 'text', required: true },
+          { key: 'amount_usd', label_es: 'Monto (USD)', label_en: 'Amount (USD)', type: 'number', required: true },
+          { key: 'date', label_es: 'Fecha (YYYY-MM-DD)', label_en: 'Date (YYYY-MM-DD)', type: 'date', required: true },
+          { key: 'source', label_es: 'Fuente', label_en: 'Source', type: 'text', required: true },
+        ]
+      case 'evidence':
+        return [
+          { key: 'title', label_es: 'Titulo del documento', label_en: 'Document title', type: 'text', required: true },
+          { key: 'type_es', label_es: 'Tipo (espanol)', label_en: 'Type (Spanish)', type: 'text', required: true },
+          { key: 'type_en', label_es: 'Tipo (ingles)', label_en: 'Type (English)', type: 'text', required: true },
+          { key: 'date', label_es: 'Fecha (YYYY-MM-DD)', label_en: 'Date (YYYY-MM-DD)', type: 'date', required: true },
+          { key: 'summary_es', label_es: 'Resumen (espanol)', label_en: 'Summary (Spanish)', type: 'textarea', required: true },
+          { key: 'summary_en', label_es: 'Resumen (ingles)', label_en: 'Summary (English)', type: 'textarea', required: true },
+          ...common,
+          { key: 'verification_status', label_es: 'Estado de verificacion', label_en: 'Verification status', type: 'select', required: true,
+            options: [
+              { value: 'verified', label: lang === 'es' ? 'Verificado' : 'Verified' },
+              { value: 'partially_verified', label: lang === 'es' ? 'Parcialmente verificado' : 'Partially verified' },
+              { value: 'unverified', label: lang === 'es' ? 'Sin verificar' : 'Unverified' },
+            ] },
+        ]
+      case 'government_response':
+        return [
+          { key: 'date', label_es: 'Fecha (YYYY-MM-DD)', label_en: 'Date (YYYY-MM-DD)', type: 'date', required: true },
+          { key: 'action_es', label_es: 'Accion (espanol)', label_en: 'Action (Spanish)', type: 'textarea', required: true },
+          { key: 'action_en', label_es: 'Accion (ingles)', label_en: 'Action (English)', type: 'textarea', required: true },
+          { key: 'effect_es', label_es: 'Efecto (espanol)', label_en: 'Effect (Spanish)', type: 'textarea', required: true },
+          { key: 'effect_en', label_es: 'Efecto (ingles)', label_en: 'Effect (English)', type: 'textarea', required: true },
+          { key: 'source', label_es: 'Fuente', label_en: 'Source', type: 'text', required: true },
+          ...common,
+        ]
+      default:
+        return common
+    }
+  }, [entityType, lang])
+
+  function handleChange(key: string, value: string) {
+    setFormData((prev) => ({ ...prev, [key]: value }))
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setStatus('submitting')
+    setErrorMsg('')
+
+    // Build the data payload from form fields
+    const data: Record<string, unknown> = {}
+    for (const field of fields) {
+      const val = formData[field.key]
+      if (field.required && (!val || val.trim() === '')) {
+        setStatus('error')
+        setErrorMsg(lang === 'es' ? `Campo requerido: ${field.label_es}` : `Required field: ${field.label_en}`)
+        return
+      }
+      if (val) {
+        data[field.key] = field.type === 'number' ? Number(val) : val
+      }
+    }
+
+    // For events, wrap the source into the sources array format
+    if (entityType === 'event') {
+      data.sources = [{ name: data.source_name as string || 'Source', url: data.source_url as string || '' }]
+      delete data.source_name
+      delete data.source_url
+    }
+
+    try {
+      const response = await fetch('/api/caso-libra/investigation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: entityType, data }),
+      })
+
+      if (!response.ok) {
+        const err = await response.json()
+        setStatus('error')
+        setErrorMsg(err.details?.[0]?.message || err.error || 'Submission failed')
+        return
+      }
+
+      setStatus('success')
+      setFormData({})
+    } catch {
+      setStatus('error')
+      setErrorMsg(lang === 'es' ? 'Error de conexion' : 'Connection error')
+    }
+  }
+
+  if (status === 'success') {
+    return (
+      <div className="mt-4 rounded-lg border border-green-500/30 bg-green-500/5 p-6 text-center">
+        <p className="text-sm font-medium text-green-400">
+          {lang === 'es'
+            ? 'Gracias. Tu aporte fue enviado y sera revisado antes de publicarse.'
+            : 'Thank you. Your submission was sent and will be reviewed before publishing.'}
+        </p>
+        <button
+          type="button"
+          onClick={() => { setStatus('idle'); setFormData({}) }}
+          className="mt-3 text-xs text-green-400 underline hover:text-green-300"
+        >
+          {lang === 'es' ? 'Enviar otro' : 'Submit another'}
+        </button>
+      </div>
+    )
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="mt-4 space-y-4 rounded-lg border border-zinc-800 bg-zinc-900/30 p-5">
+      {/* Entity type selector */}
+      <div>
+        <label className="mb-1.5 block text-xs font-medium text-zinc-400">
+          {lang === 'es' ? 'Tipo de aporte' : 'Submission type'}
+        </label>
+        <div className="flex flex-wrap gap-2">
+          {ENTITY_TYPES.map((et) => (
+            <button
+              key={et.value}
+              type="button"
+              onClick={() => { setEntityType(et.value); setFormData({}) }}
+              className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+                entityType === et.value
+                  ? 'bg-purple-600 text-white'
+                  : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+              }`}
+            >
+              {lang === 'es' ? et.label_es : et.label_en}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Dynamic fields */}
+      {fields.map((field) => (
+        <div key={field.key}>
+          <label htmlFor={`inv-${field.key}`} className="mb-1 block text-xs font-medium text-zinc-400">
+            {lang === 'es' ? field.label_es : field.label_en}
+            {field.required && <span className="ml-1 text-red-400">*</span>}
+          </label>
+          {'options' in field && field.options ? (
+            <select
+              id={`inv-${field.key}`}
+              value={formData[field.key] || ''}
+              onChange={(e) => handleChange(field.key, e.target.value)}
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-200 focus:border-purple-500 focus:outline-none"
+            >
+              <option value="">{lang === 'es' ? 'Seleccionar...' : 'Select...'}</option>
+              {field.options.map((opt) => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
+              ))}
+            </select>
+          ) : field.type === 'textarea' ? (
+            <textarea
+              id={`inv-${field.key}`}
+              value={formData[field.key] || ''}
+              onChange={(e) => handleChange(field.key, e.target.value)}
+              rows={3}
+              className="w-full resize-none rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-200 placeholder-zinc-600 focus:border-purple-500 focus:outline-none"
+            />
+          ) : (
+            <input
+              id={`inv-${field.key}`}
+              type={field.type === 'date' ? 'date' : field.type === 'number' ? 'number' : 'text'}
+              value={formData[field.key] || ''}
+              onChange={(e) => handleChange(field.key, e.target.value)}
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-200 placeholder-zinc-600 focus:border-purple-500 focus:outline-none"
+            />
+          )}
+        </div>
+      ))}
+
+      {/* Error */}
+      {status === 'error' && (
+        <p className="text-xs text-red-400">{errorMsg}</p>
+      )}
+
+      {/* Submit */}
+      <button
+        type="submit"
+        disabled={status === 'submitting'}
+        className="rounded-lg bg-purple-600 px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-purple-500 disabled:opacity-50"
+      >
+        {status === 'submitting'
+          ? (lang === 'es' ? 'Enviando...' : 'Submitting...')
+          : (lang === 'es' ? 'Enviar aporte' : 'Submit evidence')}
+      </button>
+
+      <p className="text-xs text-zinc-600">
+        {lang === 'es'
+          ? 'Todos los aportes son revisados por el equipo antes de publicarse. Se requiere una fuente verificable.'
+          : 'All submissions are reviewed by the team before publishing. A verifiable source is required.'}
+      </p>
+    </form>
   )
 }

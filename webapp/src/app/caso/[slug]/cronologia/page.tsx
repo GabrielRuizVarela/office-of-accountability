@@ -1,28 +1,22 @@
-import type { Metadata } from 'next'
+/**
+ * Caso Libra timeline page — events ordered chronologically.
+ */
 
-import { Timeline } from '../../../../components/investigation/Timeline'
-import { CASO_EPSTEIN_SLUG } from '../../../../lib/caso-epstein/types'
-import { getTimeline } from '../../../../lib/caso-epstein/queries'
+import { getTimeline } from '@/lib/caso-libra'
+import { Timeline } from '@/components/investigation/Timeline'
 
-interface PageProps {
-  readonly params: Promise<{ slug: string }>
-}
-
-export const metadata: Metadata = {
-  title: 'Timeline',
-  description: 'Chronological timeline of the Epstein investigation from 2005 to 2024.',
-}
-
-export default async function CronologiaPage({ params }: PageProps) {
-  const { slug } = await params
-  const events = await getTimeline(CASO_EPSTEIN_SLUG)
+export default async function CronologiaPage() {
+  const events = await getTimeline()
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8">
-      <h1 className="mb-2 text-3xl font-bold text-zinc-50">Timeline</h1>
-      <p className="mb-8 text-sm text-zinc-400">
-        Key events in the Epstein investigation, from the first Palm Beach Police investigation to the 2024 document releases.
-      </p>
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-xl font-bold text-zinc-50">Cronologia</h1>
+        <p className="mt-1 text-sm text-zinc-400">
+          {events.length} eventos desde el lanzamiento del token hasta las investigaciones
+          judiciales.
+        </p>
+      </div>
       <Timeline events={events} />
     </div>
   )

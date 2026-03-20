@@ -50,40 +50,36 @@ const UNIQUE_CONSTRAINTS = [
     label: 'User',
     property: 'email',
   },
+  // Caso Libra nodes
   {
-    name: 'epstein_person_id_unique',
-    label: 'Person',
+    name: 'caso_libra_person_id_unique',
+    label: 'CasoLibraPerson',
     property: 'id',
   },
   {
-    name: 'epstein_flight_id_unique',
-    label: 'Flight',
+    name: 'caso_libra_event_id_unique',
+    label: 'CasoLibraEvent',
     property: 'id',
   },
   {
-    name: 'epstein_location_id_unique',
-    label: 'Location',
+    name: 'caso_libra_document_id_unique',
+    label: 'CasoLibraDocument',
     property: 'id',
   },
   {
-    name: 'epstein_document_id_unique',
-    label: 'Document',
+    name: 'caso_libra_organization_id_unique',
+    label: 'CasoLibraOrganization',
     property: 'id',
   },
   {
-    name: 'epstein_event_id_unique',
-    label: 'Event',
+    name: 'caso_libra_token_id_unique',
+    label: 'CasoLibraToken',
     property: 'id',
   },
   {
-    name: 'epstein_organization_id_unique',
-    label: 'Organization',
-    property: 'id',
-  },
-  {
-    name: 'epstein_legal_case_id_unique',
-    label: 'LegalCase',
-    property: 'id',
+    name: 'caso_libra_wallet_address_unique',
+    label: 'CasoLibraWallet',
+    property: 'address',
   },
 ] as const
 
@@ -104,20 +100,21 @@ const FULLTEXT_INDEXES = [
     labels: ['Investigation'],
     properties: ['title', 'summary'],
   },
+  // Caso Libra fulltext
   {
-    name: 'epstein_person_name_fulltext',
-    labels: ['Person'],
-    properties: ['name', 'role', 'description'],
+    name: 'caso_libra_person_name_fulltext',
+    labels: ['CasoLibraPerson'],
+    properties: ['name', 'role'],
   },
   {
-    name: 'epstein_document_title_fulltext',
-    labels: ['Document'],
-    properties: ['title', 'summary'],
-  },
-  {
-    name: 'epstein_event_title_fulltext',
-    labels: ['Event'],
+    name: 'caso_libra_event_title_fulltext',
+    labels: ['CasoLibraEvent'],
     properties: ['title', 'description'],
+  },
+  {
+    name: 'caso_libra_document_title_fulltext',
+    labels: ['CasoLibraDocument'],
+    properties: ['title', 'summary'],
   },
 ] as const
 
@@ -148,80 +145,31 @@ const BTREE_INDEXES = [
     label: 'User',
     property: 'verification_tier',
   },
+  // Caso Libra range indexes
   {
-    name: 'person_slug_index',
-    label: 'Person',
+    name: 'caso_libra_person_slug_index',
+    label: 'CasoLibraPerson',
     property: 'slug',
   },
   {
-    name: 'person_caso_slug_index',
-    label: 'Person',
-    property: 'caso_slug',
-  },
-  {
-    name: 'location_slug_index',
-    label: 'Location',
-    property: 'slug',
-  },
-  {
-    name: 'document_slug_index',
-    label: 'Document',
-    property: 'slug',
-  },
-  {
-    name: 'event_date_index',
-    label: 'Event',
+    name: 'caso_libra_event_date_index',
+    label: 'CasoLibraEvent',
     property: 'date',
   },
   {
-    name: 'flight_date_index',
-    label: 'Flight',
-    property: 'date',
-  },
-  {
-    name: 'organization_slug_index',
-    label: 'Organization',
+    name: 'caso_libra_event_slug_index',
+    label: 'CasoLibraEvent',
     property: 'slug',
   },
   {
-    name: 'legal_case_slug_index',
-    label: 'LegalCase',
+    name: 'caso_libra_document_slug_index',
+    label: 'CasoLibraDocument',
     property: 'slug',
   },
   {
-    name: 'node_confidence_tier_index',
-    label: 'Person',
-    property: 'confidence_tier',
-  },
-  {
-    name: 'node_ingestion_wave_index',
-    label: 'Person',
-    property: 'ingestion_wave',
-  },
-  {
-    name: 'document_confidence_tier_index',
-    label: 'Document',
-    property: 'confidence_tier',
-  },
-  {
-    name: 'organization_confidence_tier_index',
-    label: 'Organization',
-    property: 'confidence_tier',
-  },
-  {
-    name: 'event_confidence_tier_index',
-    label: 'Event',
-    property: 'confidence_tier',
-  },
-  {
-    name: 'location_confidence_tier_index',
-    label: 'Location',
-    property: 'confidence_tier',
-  },
-  {
-    name: 'legalcase_confidence_tier_index',
-    label: 'LegalCase',
-    property: 'confidence_tier',
+    name: 'caso_libra_organization_slug_index',
+    label: 'CasoLibraOrganization',
+    property: 'slug',
   },
 ] as const
 
