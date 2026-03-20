@@ -133,10 +133,10 @@ const TOKEN = {
   id: 'cl-token-libra',
   symbol: 'LIBRA',
   name: '$LIBRA',
-  contract_address: '7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr',
+  contract_address: 'Bo9jh3wsmcC2AjakLWzNmKJ3SgtZmXEcSaW7L2FAvUsU',
   chain: 'solana',
   launch_date: '2025-02-14',
-  peak_market_cap: 4_000_000_000,
+  peak_market_cap: 4_500_000_000,
 }
 
 const EVENTS = [
@@ -146,7 +146,7 @@ const EVENTS = [
     slug: 'milei-publica-libra',
     description:
       'Milei publica el contrato del token $LIBRA en su cuenta de X con 19M de seguidores, provocando un aumento masivo de precio.',
-    date: '2025-02-14T21:00:00Z',
+    date: '2025-02-14T22:01:00Z',
     event_type: 'political',
   },
   {
@@ -155,15 +155,15 @@ const EVENTS = [
     slug: 'lanzamiento-token-libra',
     description:
       'El token $LIBRA se lanza en la blockchain de Solana. La liquidez inicial fue provista por Kelsier Ventures.',
-    date: '2025-02-14T20:00:00Z',
+    date: '2025-02-14T21:58:00Z',
     event_type: 'financial',
   },
   {
     id: 'cl-event-price-peak',
-    title: 'Token alcanza capitalizacion de $4B',
+    title: 'Token alcanza capitalizacion de $4.5B',
     slug: 'precio-maximo-libra',
     description:
-      '$LIBRA alcanza una capitalizacion de mercado de aproximadamente $4 mil millones en su pico.',
+      '$LIBRA alcanza una capitalizacion de mercado de aproximadamente $4.500 millones en su pico.',
     date: '2025-02-14T22:00:00Z',
     event_type: 'financial',
   },
@@ -187,10 +187,10 @@ const EVENTS = [
   },
   {
     id: 'cl-event-58m-liquidation',
-    title: 'Extraccion de $58M de liquidez por insiders',
-    slug: 'extraccion-58m-liquidez',
+    title: 'Extraccion de $107M de liquidez por insiders',
+    slug: 'extraccion-107m-liquidez',
     description:
-      'Billeteras vinculadas a los organizadores extraen aproximadamente $58M de liquidez del pool del token.',
+      'Billeteras vinculadas a los organizadores extraen aproximadamente $107M ($57.6M USDC + SOL) de liquidez del pool del token.',
     date: '2025-02-14T23:30:00Z',
     event_type: 'financial',
   },
@@ -380,7 +380,7 @@ const DOCUMENTS = [
 
 const WALLETS = [
   {
-    address: 'TEAM_WALLET_1_PLACEHOLDER',
+    address: 'DefcyKc4yAjRsCLZjdxWuSUzVohXtLna9g22y3pBCm2z',
     label: 'Billetera del equipo #1',
     owner_id: 'cl-org-kelsier',
   },
@@ -398,7 +398,7 @@ const WALLETS = [
     label: 'Billetera de consolidacion #2',
   },
   {
-    address: 'LIQUIDITY_POOL_WALLET',
+    address: 'BzzMNvfm7T6zSGFeLXzERmRxfKaNLdo4fSzvsisxcSzz',
     label: 'Pool de liquidez $LIBRA',
   },
   {
@@ -739,21 +739,21 @@ async function seed(): Promise<void> {
     // SENT: Wallet → Wallet (key transactions)
     const transactions = [
       {
-        from: 'LIQUIDITY_POOL_WALLET',
-        to: 'TEAM_WALLET_1_PLACEHOLDER',
+        from: 'BzzMNvfm7T6zSGFeLXzERmRxfKaNLdo4fSzvsisxcSzz',
+        to: 'DefcyKc4yAjRsCLZjdxWuSUzVohXtLna9g22y3pBCm2z',
         amount_usd: 58_000_000,
         timestamp: '2025-02-14T23:30:00Z',
         hash: 'TX_58M_EXTRACTION',
       },
       {
-        from: 'TEAM_WALLET_1_PLACEHOLDER',
+        from: 'DefcyKc4yAjRsCLZjdxWuSUzVohXtLna9g22y3pBCm2z',
         to: 'CONSOLIDATION_WALLET_1',
         amount_usd: 25_000_000,
         timestamp: '2025-02-15T02:00:00Z',
         hash: 'TX_CONSOLIDATION_1',
       },
       {
-        from: 'TEAM_WALLET_1_PLACEHOLDER',
+        from: 'DefcyKc4yAjRsCLZjdxWuSUzVohXtLna9g22y3pBCm2z',
         to: 'CONSOLIDATION_WALLET_2',
         amount_usd: 18_000_000,
         timestamp: '2025-02-15T03:00:00Z',
