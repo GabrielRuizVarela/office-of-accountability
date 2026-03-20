@@ -6,13 +6,14 @@
   },
   "footer": {
     "tagline": "Office of Accountability — Open data",
+    "contact": "Want to collaborate and test the engine? Get in touch",
     "explore": "Explore",
     "investigations": "Investigations"
   },
   "hero": {
     "badge": "Civic knowledge platform",
     "title": "Office of Accountability",
-    "subtitle": "Open investigations with verifiable data. Knowledge graphs, timelines, documentary evidence, and network analysis.",
+    "subtitle": "Open investigations built on knowledge graphs. Public data, automated verification, human review.",
     "ctaExplore": "Explore the graph",
     "ctaInvestigations": "View investigations"
   },
