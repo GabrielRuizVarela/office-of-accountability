@@ -508,9 +508,18 @@ export async function GET(): Promise<Response> {
           const p2Id = politicianElementIds.get(bridge.pid2)
           if (!p1Id || !p2Id) continue
 
-          // Direct politician-to-politician link through a bridge node
-          const bridgeNodeId = `bridge-${bridge.bridgeType}-${bridge.bridge}`
-          if (!nodeMap.has(bridgeNodeId)) {
+          // Check if a node with the same name already exists (e.g., PENSAR ARGENTINA from Phase 5)
+          let bridgeNodeId: string | undefined
+          for (const [id, node] of nodeMap.entries()) {
+            if (node.name === bridge.bridge) {
+              bridgeNodeId = id
+              node.val += 1
+              break
+            }
+          }
+
+          if (!bridgeNodeId) {
+            bridgeNodeId = `bridge-${bridge.bridgeType}-${bridge.bridge}`
             nodeMap.set(bridgeNodeId, {
               id: bridgeNodeId,
               name: bridge.bridge,
@@ -521,8 +530,6 @@ export async function GET(): Promise<Response> {
               labels: [bridge.bridgeType],
               properties: { bridgeType: bridge.bridgeType },
             })
-          } else {
-            nodeMap.get(bridgeNodeId)!.val += 1
           }
 
           links.push({
