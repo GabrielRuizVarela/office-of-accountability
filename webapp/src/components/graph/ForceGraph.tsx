@@ -3,47 +3,8 @@
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import type { ForceGraphMethods, NodeObject } from 'react-force-graph-2d'
 
-import type { GraphData, GraphNode } from '../../lib/neo4j/types'
-
-// ---------------------------------------------------------------------------
-// Label → color mapping
-// ---------------------------------------------------------------------------
-
-const LABEL_COLORS: Readonly<Record<string, string>> = {
-  Politician: '#3b82f6', // blue-500
-  Party: '#8b5cf6', // violet-500
-  Province: '#10b981', // emerald-500
-  LegislativeVote: '#f59e0b', // amber-500
-  Legislation: '#ef4444', // red-500
-  Investigation: '#ec4899', // pink-500
-  User: '#6b7280', // gray-500
-  // Caso Libra node types
-  CasoLibraPerson: '#3b82f6', // blue-500
-  CasoLibraEvent: '#f59e0b', // amber-500
-  CasoLibraDocument: '#ef4444', // red-500
-  CasoLibraWallet: '#10b981', // emerald-500
-  CasoLibraOrganization: '#8b5cf6', // violet-500
-  CasoLibraToken: '#ec4899', // pink-500
-}
-
-const DEFAULT_NODE_COLOR = '#94a3b8' // slate-400
-
-function getNodeColor(node: GraphNode): string {
-  const label = node.labels[0]
-  return label ? (LABEL_COLORS[label] ?? DEFAULT_NODE_COLOR) : DEFAULT_NODE_COLOR
-}
-
-// ---------------------------------------------------------------------------
-// Label → display name
-// ---------------------------------------------------------------------------
-
-function getNodeLabel(node: GraphNode): string {
-  const props = node.properties
-  if (typeof props.name === 'string') return props.name
-  if (typeof props.title === 'string') return props.title
-  if (typeof props.full_name === 'string') return props.full_name
-  return node.id
-}
+import type { GraphData } from '../../lib/neo4j/types'
+import { getNodeColor, getNodeLabel, getLinkColor } from '../../lib/graph/constants'
 
 // ---------------------------------------------------------------------------
 // Graph data conversion — our GraphData → react-force-graph format
@@ -289,18 +250,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
 
   // Link color based on type
   const linkColor = useCallback((link: FGLink) => {
-    switch (link.type) {
-      case 'CAST_VOTE':
-        return '#475569' // slate-600
-      case 'MEMBER_OF':
-        return '#7c3aed' // violet-600
-      case 'REPRESENTS':
-        return '#059669' // emerald-600
-      case 'REFERENCES':
-        return '#dc2626' // red-600
-      default:
-        return '#334155' // slate-700
-    }
+    return getLinkColor(link.type)
   }, [])
 
   // Link label
