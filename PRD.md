@@ -1,7 +1,7 @@
 # Product Requirements Document: Office of Accountability
 
-**Version:** 0.3
-**Date:** 2026-03-13
+**Version:** 0.4
+**Date:** 2026-03-20
 **Status:** Pre-Development
 **Scope:** Argentina (federal + provincial, congress-first)
 
@@ -650,49 +650,202 @@ Any politician with a verified account has:
 
 ---
 
-## 11. Phased Delivery
+## 11. Milestone Roadmap
 
-### Phase 1 — Graph Engine + Investigations (Foundation)
+**Critical path:** M0 → M1 → M2 → M3 → M4 → M5 → M6 → M7 → M8
 
-**Goal:** Deliver the interactive graph explorer with seeded data, investigation documents, and basic coalitions.
+**North star:** A governance system where citizens use the Investigation Engine to produce evidence that feeds democratic accountability mechanisms (liquid democracy, citizen mandates, accountability scoring).
 
-| Feature | Difficulty |
-|---------|-----------|
-| Neo4j schema + constraints + indexes for all node types (Politician, Vote, Legislation, Promise, Organization, Event, Document, Location, Claim, Investigation) | Medium |
-| Como Voto ingestion pipeline (seed 257 Diputados + 72 Senadores) | Medium |
-| Graph visual explorer (react-force-graph-2d — drag, zoom, filter, expand) | Hard |
-| Node and edge CRUD (add nodes, draw edges, set properties, attach sources) | Medium |
-| Basic query builder (filter by type, date, jurisdiction; path between two nodes) | Medium-Hard |
-| Politician profile pages (graph-rendered view of all connections) | Medium |
-| Promise Tracker (side-by-side view with claim status) | Medium |
-| Investigation editor (rich text + graph node embeds) | Hard |
-| Endorsement system (endorse claims, edges, investigations) | Medium |
-| User auth + verification tiers (Tier 0 + Tier 1) | Medium |
-| Coalition creation, membership, basic roles (Admin/Editor/Viewer) | Medium |
-| Public audit trail (view history per node) | Medium-Hard |
-| Content moderation tooling (flag -> queue -> moderator action) | Medium |
-| Permission model (all roles defined and enforced) | Medium |
+```
+M0 Baseline ──→ M1 Data ──→ M2 Graph ──→ M3 Engine Core ──→ M4 Engine Analysis ──→ M5 Engine UI ──→ M6 Community ──→ M7 Advanced ──→ M8 Governance
+   (exists)      Foundation    Engine       Foundation         Connectors &           Webapp          Platform         Platform        System
+                                                               Analysis
+```
 
-### Phase 2 — Advanced Graph + Rich Investigations
+### M0: Current State (Baseline)
 
-**Goal:** Deepen the graph experience, enrich investigation tools, add AI assistance.
+What exists today. All subsequent milestones build on or migrate from this.
 
-| Feature | Difficulty |
-|---------|-----------|
-| Advanced graph queries (multi-hop, sub-graph extraction, complex filters) | Hard |
-| Rich investigation editor with inline graph embeds (interactive sub-graphs in documents) | Hard |
-| Coalition analytics (reputation tracking, activity metrics) | Medium |
-| AI-assisted investigation tools (auto-suggest related nodes, summarize documents) | Medium-Hard |
+| Component | Location | Description |
+|-----------|----------|-------------|
+| Neo4j schema | `webapp/src/lib/neo4j/schema.ts` | Constraints/indexes for Epstein investigation node types |
+| Caso Epstein data | Neo4j (10,864+ nodes) | Person, Organization, Location, Document, Event, LegalCase, Flight |
+| Ingestion scripts | `webapp/scripts/ingest-wave-*.ts` | Multi-source ingestion with wave-based processing |
+| Dedup module | `webapp/src/lib/ingestion/dedup.ts` | Levenshtein-based, `caso_slug` namespaced |
+| Quality/conflict resolution | `webapp/src/lib/ingestion/quality.ts` | Conflict detection and resolution |
+| Graph algorithms | `webapp/src/lib/graph/algorithms.ts` | Basic implementations |
+| MiroFish client | `webapp/src/lib/mirofish/client.ts` | LLM swarm simulation via llama.cpp/Qwen |
+| MiroFish seed export | `webapp/src/lib/mirofish/export.ts` | Graph-to-simulation seed conversion |
+| Webapp | `webapp/src/app/` | Caso pages, graph explorer (react-force-graph-2d), simulation panel |
+| Dev environment | `docker-compose.yml` | Neo4j + app containers |
+
+### M1: Data Foundation
+
+**Goal:** Populate the graph with all Argentine congressional data as Gold-tier seed.
+
+**Depends on:** M0 (Neo4j schema, ingestion patterns)
+**Extends from baseline:** Neo4j schema (add political node types), ingestion scripts (generalize from Epstein to Como Voto format)
+
+| Deliverable | Difficulty |
+|-------------|-----------|
+| Como Voto ingestion pipeline (seed 257 Diputados + 72 Senadores + full vote history) | Medium |
+| Schema mapping: Como Voto output → platform node types (Politician, LegislativeVote, Legislation, Jurisdiction) | Medium |
+| Provenance system on all nodes (source_url, submitted_by, tier, confidence_score, ingestion_hash) | Medium |
+| Data tier enforcement (Gold/Silver/Bronze) | Medium |
+| Automated sync pipeline from HCDN/Senado APIs | Medium |
+
+### M2: Graph Engine
+
+**Goal:** Interactive graph exploration of the seeded political data.
+
+**Depends on:** M1 (populated graph with political data)
+**Extends from baseline:** react-force-graph-2d explorer (generalize from Epstein to political data), caso page layout
+
+| Deliverable | Difficulty |
+|-------------|-----------|
+| Visual explorer — drag, zoom, filter, expand, save views, path highlighting, color coding | Hard |
+| Basic query builder — filter by type/date/jurisdiction, path between two nodes | Medium-Hard |
+| Politician profile pages (graph-rendered: votes, promises, donors, connections) | Medium |
+| Promise tracker (side-by-side view with claim status state machine) | Medium |
+| Money flow visualizer (Donor → Politician → Vote sub-graph) | Medium |
+| Node/edge CRUD (add nodes, draw edges, attach sources) | Medium |
+
+### M3: Investigation Engine — Foundation
+
+**Goal:** Core engine skeleton — config in Neo4j, LLM abstraction, pipeline that runs stages and stops at gates.
+
+**Depends on:** M0 (Neo4j, existing schema patterns, dedup module)
+**Extends from baseline:** `schema.ts` (add engine constraints/indexes), `dedup.ts` and `quality.ts` (reused directly by engine)
+
+See `docs/superpowers/specs/2026-03-20-investigation-engine-design.md` for full specification.
+See `docs/superpowers/plans/2026-03-20-investigation-engine-implementation.md` for implementation task breakdown.
+
+| Deliverable | Difficulty |
+|-------------|-----------|
+| Neo4j config schema (InvestigationConfig, SchemaDefinition, NodeTypeDefinition, RelTypeDefinition, SourceConnector, PipelineConfig, PipelineStage, Gate, PipelineState, Proposal, AuditEntry, Snapshot) | Medium |
+| CRUD operations for all config nodes | Medium |
+| Zod schemas + TypeScript interfaces for all config types | Medium |
+| LLM provider interface + llama.cpp adapter (Qwen `reasoning_content` → `reasoning` mapping) | Medium |
+| Pipeline stage runner — reads config from Neo4j, executes in order | Hard |
+| Gate mechanism — writes `gate_pending` state, reads decisions from Neo4j | Medium |
+| Proposal system — create/read/update Proposal nodes, batch review | Medium |
+| AuditEntry system — append-only, SHA-256 hash chain, chain validation on startup | Medium |
+| PipelineState persistence — current stage, progress, resume points | Medium |
+| Dynamic UNIQUE constraint creation for new node types via `IF NOT EXISTS` | Easy |
+
+### M4: Investigation Engine — Connectors & Analysis
+
+**Goal:** All pipeline stages functional — ingest through report, with graph algorithms and MiroFish swarm mode.
+
+**Depends on:** M3 (config schema, pipeline runner, LLM abstraction, proposal system)
+**Extends from baseline:** `algorithms.ts` (add centrality, community detection, anomaly, temporal), `mirofish/client.ts` (add endpoint param), `mirofish/export.ts` (generalize node type params), `dedup.ts` (reused by connectors)
+
+| Deliverable | Difficulty |
+|-------------|-----------|
+| Source connector interface + implementations: REST API, file upload, custom script | Hard |
+| Two-pass dedup (source-level + pipeline-level cross-source) | Medium |
+| Stage implementations: ingest, verify, enrich, analyze, report | Hard |
+| Parallel agent dispatch per stage config | Medium-Hard |
+| Graph algorithms: degree centrality, betweenness centrality (BFS approx), community detection (label propagation), anomaly detection, temporal patterns | Medium-Hard |
+| MiroFish client refactor — `endpoint` parameter on public functions | Easy |
+| `graphToMiroFishSeed()` generalization — reads `agent_source`/`context_from` from config | Medium |
+| OpenAI + Anthropic LLM provider adapters | Medium |
+
+### M5: Investigation Engine — Webapp UI
+
+**Goal:** Researchers interact with the engine entirely through the browser.
+
+**Depends on:** M4 (all stages functional, connectors working)
+**Extends from baseline:** caso page layout (investigation dashboard pattern), graph explorer (add provenance display), simulation panel (read model config from investigation)
+
+| Deliverable | Difficulty |
+|-------------|-----------|
+| Investigation library (`/investigaciones`) — list, filter, status badges | Medium |
+| Create wizard (`/investigaciones/new`) — template picker, schema editor, source config, pipeline config | Hard |
+| Investigation dashboard (`/investigaciones/[id]`) — status, progress, stats, audit stream | Hard |
+| Gate review UI (`/investigaciones/[id]/gate/[stageId]`) — proposal cards, approve/reject, rationale | Medium-Hard |
+| Schema editor, source config, pipeline config pages | Medium |
+| Audit log viewer — filterable, searchable | Medium |
+| Snapshot management — list, create, restore | Medium |
+| Fork/branch UI — fork, branch tree, merge | Medium-Hard |
+| Template system — 4 built-in templates (public-accountability, corporate-osint, land-ownership, blank), JSON export/import | Medium |
+| Cycle mode — scheduled re-runs with gate blocking | Medium |
+| Graph explorer becomes investigation-aware (pipeline stage provenance) | Medium |
+
+### M6: Community Platform
+
+**Goal:** Multi-user platform where citizens participate — add to the graph, write investigations, form coalitions, endorse claims.
+
+**Depends on:** M2 (graph engine, profiles, explorer), M5 (investigation engine UI — so investigations can be manual OR engine-driven)
+**Extends from baseline:** graph explorer (add user auth context, permission checks), investigation pages (add TipTap editor, collaboration)
+
+| Deliverable | Difficulty |
+|-------------|-----------|
+| Auth system (Auth.js + email/password + social login) | Medium |
+| Verification tiers: Tier 0 (Observador), Tier 1 (Participante — email+phone) | Medium |
+| Reputation system — contribution-based scoring, decay for inactivity | Medium-Hard |
+| Manual investigation workflow — rich text editor (TipTap) with graph node embeds, draft/publish/archive | Hard |
+| Endorsement system — endorse claims, edges, investigations; public with verification tier | Medium |
+| Claim pattern — users create Claims asserting vote-promise relationships, others endorse/dispute | Medium |
+| Coalition creation — focus tags, open/invite-only, Admin/Editor/Viewer roles | Medium |
+| Coalition workspaces — shared investigations, saved graph queries, coalition endorsements | Medium-Hard |
+| Node/edge CRUD for authenticated users — Bronze-tier with source URL | Medium |
+| Permission model — all platform and coalition roles enforced | Medium |
+| Public audit trail — "Ver historial" on any node | Medium-Hard |
+| Content moderation — flag → queue → moderator action | Medium |
+| Data correction flow — flag errors, moderator review, versioned corrections | Medium |
+| Politician right to response — verified account rebuttals on claims | Medium |
+| Transparency consent on signup | Easy |
+
+### M7: Advanced Platform
+
+**Goal:** Deepen graph experience, enrich AI tools, expand data coverage and identity verification.
+
+**Depends on:** M6 (community platform, verification tiers, coalitions)
+**Extends from baseline:** Como Voto pipeline (automate), graph algorithms (feed AI suggestions)
+
+| Deliverable | Difficulty |
+|-------------|-----------|
+| Advanced graph queries — multi-hop, sub-graph extraction, complex filters | Hard |
+| Rich investigation editor — inline interactive sub-graphs in documents | Hard |
+| AI-assisted investigation tools — auto-suggest related nodes, document summarization | Medium-Hard |
 | AI-assisted promise extraction from speeches | Medium |
-| DNI/CUIL identity verification (Tier 2) | Medium |
-| Automated HCDN/Senado scraping pipeline (fork Como Voto) | Medium |
+| DNI/CUIL identity verification (Tier 2 — Verificado) via AFIP/Renaper API | Medium |
+| Politician verified accounts (Tier 3 — Politico verificado) | Medium |
+| Automated HCDN/Senado scraping pipeline (fork/extend Como Voto) | Medium |
 | Map-based jurisdiction visualization (Leaflet) | Medium |
-| Public API (journalists, researchers, external tools) | Medium |
-| Coalition-endorsed investigation export (PDF reports, share cards) | Medium |
+| Coalition analytics — reputation tracking, activity metrics | Medium |
+| Coalition-endorsed investigation export — PDF reports, share cards | Medium |
+| Public API for journalists, researchers, external tools | Medium |
+| ISR cache via Cloudflare KV for politician pages | Medium |
 
-### Phase 3 — Future Vision
+### M8: Governance System
 
-See Future Vision appendix (Section 14).
+**Goal:** The north star — citizens use investigation evidence to drive structured accountability through democratic mechanisms.
+
+**Depends on:** M7 (advanced platform, verified identities, coalition analytics), M5 (investigation engine — evidence pipeline feeds governance decisions)
+
+| Deliverable | Difficulty |
+|-------------|-----------|
+| Accountability scoring — A/B/C/D per politician per issue, derived from graph data (promises kept/broken, voting record, donor conflicts) | Hard |
+| Liquid democracy — delegate endorsement weight to trusted users, public and revocable | Hard |
+| Quadratic voting — coalition resource allocation, prevents wealthy-member dominance | Medium-Hard |
+| Holographic consensus — only contested decisions go to full coalition vote | Medium-Hard |
+| Citizen mandates — community proposals that clear consensus become formal civic demands linked to politician scorecards | Hard |
+| Dual-track consensus — expert-weighted feasibility + community preference tracks | Medium-Hard |
+| Proactive problem solving (Civic R&D) — structured problem → proposal → mandate pipeline | Hard |
+| Prediction markets — stress-test claims against real-world outcomes | Hard |
+| Sybil resistance — graph-based detection, IP/device clustering, vote correlation anomaly detection | Hard |
+| Cross-coalition dispute resolution — randomly selected jury from non-involved coalitions | Medium-Hard |
+| Expertise verification — peer-vouched badges for domain-specific endorsement weighting | Medium |
+| Coalition health score — geographic diversity, endorsement accuracy, activity patterns | Medium |
+
+### Scale (beyond M8)
+
+- Province-level coverage (legislature data beyond Congress)
+- Neo4j clustering / sharding if single instance becomes insufficient
+- Transparency report + open-source scoring algorithm
+- International expansion framework
 
 ---
 
@@ -727,41 +880,7 @@ See Future Vision appendix (Section 14).
 
 ## 14. Future Vision
 
-The following features are intentionally deferred from the core platform. They represent a governance and scoring layer that can be built on top of the graph engine and investigation system once the knowledge base is mature.
-
-### Accountability Scoring
-
-- A/B/C/D accountability scores per politician per issue
-- Algorithmic scoring derived from graph data: promises kept/broken, voting record, donor conflicts
-- Only meaningful when the graph contains sufficient community-contributed data
-
-### Governance Mechanisms
-
-- **Liquid Democracy**: Delegate your endorsement weight to a trusted user; public and revocable
-- **Quadratic Voting**: For coalition resource allocation decisions; prevents wealthy-member dominance
-- **Holographic Consensus**: Only contested decisions go to full coalition vote; routine approvals auto-pass
-- **Prediction Markets**: Stress-test claims against real-world outcomes
-
-### Advanced Accountability
-
-- **Constraint Audit Workflow**: Formal process for auditing politician claims of constraints (budget, legal, physical limitations). Coalition-driven verification with structured verdicts (Valido / Exagerado / Falso)
-- **Citizen Mandates**: Community proposals that clear consensus become formal civic demands linked to politician scorecards
-- **Dual-Track Consensus**: Expert-weighted feasibility track + community preference track for evaluating proposals
-- **Proactive Problem Solving (Civic R&D)**: Structured problem -> proposal -> mandate pipeline with time-boxed sprints
-
-### Platform Integrity
-
-- **Sybil Resistance**: Graph-based sybil detection, IP/device clustering analysis, vote correlation anomaly detection
-- **Cross-Coalition Dispute Resolution**: Conflicting claims trigger a cross-coalition jury (randomly selected from non-involved coalitions)
-- **Expertise Verification**: Peer-vouched expertise badges for domain-specific endorsement weighting
-- **Coalition Health Score**: Publicly visible metric covering geographic diversity, endorsement accuracy, and activity patterns
-
-### Scale
-
-- Province-level coverage (legislature data beyond Congress)
-- Neo4j clustering / sharding if single instance becomes insufficient
-- Transparency report + open-source scoring algorithm
-- International expansion framework
+Governance, accountability scoring, and platform integrity features are now tracked as **M8: Governance System** in Section 11. Scale ambitions (province-level coverage, international expansion) are listed under **Scale (beyond M8)** in the same section.
 
 ---
 

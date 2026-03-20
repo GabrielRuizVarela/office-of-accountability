@@ -4,10 +4,37 @@ import type { Metadata } from 'next'
 import { InvestigationNav } from '@/components/investigation/InvestigationNav'
 import { LegalDisclaimer } from '@/components/investigation/LegalDisclaimer'
 
-export const metadata: Metadata = {
-  title: 'Caso Libra — Oficina de Rendicion de Cuentas',
-  description:
-    'Investigacion comunitaria sobre el token $LIBRA promovido por el presidente Milei. Datos publicos, blockchain, y documentos parlamentarios.',
+const CASE_META: Readonly<Record<string, { title: string; description: string }>> = {
+  'caso-libra': {
+    title: 'Caso Libra — Oficina de Rendicion de Cuentas',
+    description:
+      'Investigacion comunitaria sobre el token $LIBRA promovido por el presidente Milei. Datos publicos, blockchain, y documentos parlamentarios.',
+  },
+  'caso-epstein': {
+    title: 'Caso Epstein — Oficina de Rendicion de Cuentas',
+    description:
+      'Red de trafico y poder. 7,287 entidades, documentos judiciales, registros de vuelo y verificacion de hechos.',
+  },
+}
+
+const CASE_DISPLAY: Readonly<Record<string, string>> = {
+  'caso-libra': 'Caso Libra',
+  'caso-epstein': 'Caso Epstein',
+  'finanzas-politicas': 'Finanzas Politicas',
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const meta = CASE_META[slug]
+
+  return {
+    title: meta?.title ?? 'Investigacion — Oficina de Rendicion de Cuentas',
+    description: meta?.description,
+  }
 }
 
 export default async function CasoLayout({
@@ -18,6 +45,7 @@ export default async function CasoLayout({
   readonly params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
+  const displayName = CASE_DISPLAY[slug] ?? slug
 
   return (
     <div className="min-h-screen bg-zinc-950">
@@ -33,7 +61,7 @@ export default async function CasoLayout({
               href={`/caso/${slug}`}
               className="text-sm font-medium text-zinc-300 hover:text-zinc-100"
             >
-              Caso Libra
+              {displayName}
             </Link>
           </div>
         </div>
