@@ -2,7 +2,17 @@ import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 import type { InvestigationConfig } from '@/config/investigations'
 
-const COLOR_MAP: Record<string, { border: string; borderHover: string; bg: string; accent: string; titleHover: string; dot: string }> = {
+const COLOR_MAP: Record<
+  string,
+  {
+    border: string
+    borderHover: string
+    bg: string
+    accent: string
+    titleHover: string
+    dot: string
+  }
+> = {
   purple: {
     border: 'border-purple-600/30',
     borderHover: 'hover:border-purple-500/50',
@@ -64,12 +74,8 @@ export async function InvestigationCard({ config }: InvestigationCardProps) {
         <span className={`inline-block h-2 w-2 rounded-full ${colors.dot}`} />
         {config.subtitle}
       </div>
-      <h3 className={`text-xl font-bold text-zinc-50 ${colors.titleHover}`}>
-        {config.title}
-      </h3>
-      <p className="text-sm leading-relaxed text-zinc-400">
-        {config.description}
-      </p>
+      <h3 className={`text-xl font-bold text-zinc-50 ${colors.titleHover}`}>{config.title}</h3>
+      <p className="text-sm leading-relaxed text-zinc-400">{config.description}</p>
       {config.stats.length > 0 && (
         <div className="flex flex-wrap items-center gap-3 text-sm">
           {config.stats.map((stat, i) => (
@@ -83,9 +89,7 @@ export async function InvestigationCard({ config }: InvestigationCardProps) {
           ))}
         </div>
       )}
-      <span className={`text-sm font-medium ${colors.accent}`}>
-        {t('explore')} &rarr;
-      </span>
+      <span className={`text-sm font-medium ${colors.accent}`}>{t('explore')} &rarr;</span>
     </Link>
   )
 }
