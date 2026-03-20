@@ -69,45 +69,32 @@ const CYPHER = `
 // Get politicians who are donors, have offshore, or have appointments
 MATCH (p:Politician)
 WHERE (p)-[:IS_DONOR]->() OR (p)-[:HAS_OFFSHORE_LINK]->() OR (p)-[:HAS_APPOINTMENT]->() OR (p)-[:AFFILIATED_WITH]->()
-// Get their offshore connections (the only ones we show as separate nodes)
-OPTIONAL MATCH (p)-[r:HAS_OFFSHORE_LINK]->(o:OffshoreOfficer)
 WITH p,
-     collect(CASE WHEN o IS NOT NULL THEN {
-       id: toString(elementId(o)),
-       type: "OffshoreOfficer",
-       name: o.name,
-       props: {source_investigation: o.source_investigation}
-     } END) AS targets,
-     collect(CASE WHEN r IS NOT NULL THEN {
-       relId: toString(elementId(r)),
-       targetId: toString(elementId(o)),
-       relType: "HAS_OFFSHORE_LINK",
-       relProps: {verified: true}
-     } END) AS rels,
      EXISTS { (p)-[:IS_DONOR]->() } AS isDonor,
      EXISTS { (p)-[:HAS_APPOINTMENT]->() } AS isAppointee,
      EXISTS { (p)-[:AFFILIATED_WITH]->() } AS isAffiliated,
      EXISTS { (p)-[:HAS_OFFSHORE_LINK]->() } AS hasOffshore
 WITH p,
-     [t IN targets WHERE t IS NOT NULL] AS targets,
-     [r IN rels WHERE r IS NOT NULL] AS rels,
+     [] AS targets,
+     [] AS rels,
      [x IN [
        CASE WHEN isDonor THEN "Donor" END,
-       CASE WHEN isAppointee THEN "GovernmentAppointment" END,
+       CASE WHEN isAppointee THEN "Appointment" END,
        CASE WHEN isAffiliated THEN "Organization" END,
-       CASE WHEN hasOffshore THEN "OffshoreOfficer" END
+       CASE WHEN hasOffshore THEN "Offshore" END
      ] WHERE x IS NOT NULL] AS datasets
 RETURN p, datasets, targets, rels
 ORDER BY size(datasets) DESC
 LIMIT 80
 `
 
-/** Offshore entities connected to politicians — show the BVI companies */
+/** Offshore entities — skip the OffshoreOfficer node (same person as Politician), connect politician directly to entity */
 const OFFSHORE_ENTITIES_CYPHER = `
 MATCH (p:Politician)-[:HAS_OFFSHORE_LINK]->(o:OffshoreOfficer)-[:OFFICER_OF]->(e:OffshoreEntity)
-RETURN p.id AS pid, o.name AS officer, toString(elementId(o)) AS oid,
+RETURN p.id AS pid, p.name AS pname,
        e.name AS entity, e.jurisdiction_description AS jurisdiction,
-       e.status AS status, toString(elementId(e)) AS eid
+       e.status AS status, toString(elementId(e)) AS eid,
+       o.source_investigation AS leak
 `
 
 /** Judges appointed by politicians in the graph */
@@ -220,8 +207,8 @@ LIMIT 20
 
 // Politicians who both have offshore connections
 const OFFSHORE_BRIDGE = `
-MATCH (p1:Politician)-[:MAYBE_SAME_AS]->(o1:OffshoreOfficer)
-MATCH (p2:Politician)-[:MAYBE_SAME_AS]->(o2:OffshoreOfficer)
+MATCH (p1:Politician)-[:HAS_OFFSHORE_LINK]->(o1:OffshoreOfficer)
+MATCH (p2:Politician)-[:HAS_OFFSHORE_LINK]->(o2:OffshoreOfficer)
 WHERE p1.id < p2.id
 RETURN p1.id AS pid1, p2.id AS pid2, "Offshore Network" AS bridge, "BOTH_OFFSHORE" AS bridgeType
 `
@@ -343,30 +330,29 @@ export async function GET(): Promise<Response> {
       }
     }
 
-    // Phase 2: Add offshore entities (the BVI companies)
+    // Phase 2: Add offshore entities — politician directly to entity (no officer node)
     try {
       const offshore = await readQuery(OFFSHORE_ENTITIES_CYPHER, {}, (r: Neo4jRecord) => ({
-        pid: r.get('pid') as string,
-        officer: r.get('officer') as string,
-        oid: r.get('oid') as string,
-        entity: r.get('entity') as string,
-        jurisdiction: r.get('jurisdiction') as string,
-        status: r.get('status') as string,
-        eid: r.get('eid') as string,
+        pid: r.get('pid') as string, pname: r.get('pname') as string,
+        entity: r.get('entity') as string, jurisdiction: r.get('jurisdiction') as string,
+        status: r.get('status') as string, eid: r.get('eid') as string,
+        leak: r.get('leak') as string,
       }))
       for (const o of offshore.records) {
         const pId = politicianElementIds.get(o.pid)
         if (!pId) continue
+        // Mark politician as having offshore
+        const polNode = nodeMap.get(pId)
+        if (polNode) polNode.properties.hasOffshore = true
         // Add offshore entity node
         if (!nodeMap.has(o.eid)) {
           nodeMap.set(o.eid, {
             id: o.eid, name: o.entity + ' (' + (o.jurisdiction || 'offshore') + ')',
-            type: 'OffshoreEntity', color: '#dc2626', datasets: 0, val: 5,
-            labels: ['OffshoreEntity'], properties: { jurisdiction: o.jurisdiction, status: o.status },
+            type: 'OffshoreEntity', color: '#dc2626', datasets: 0, val: 6,
+            labels: ['OffshoreEntity'], properties: { jurisdiction: o.jurisdiction, status: o.status, leak: o.leak },
           })
         }
-        // Link politician → offshore entity (through officer if not already linked)
-        links.push({ source: pId, target: o.eid, type: 'HAS_OFFSHORE', properties: { officer: o.officer } })
+        links.push({ source: pId, target: o.eid, type: 'OFFSHORE_ENTITY', properties: { leak: o.leak } })
       }
     } catch { /* timeout ok */ }
 
