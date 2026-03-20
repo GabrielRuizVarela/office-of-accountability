@@ -49,26 +49,55 @@ interface ApiLink {
  * MAYBE_SAME_AS relationships. It collects the connected entities and
  * returns a small, focused subgraph (max ~50 politicians with their targets).
  */
+/**
+ * Two-phase query:
+ * 1. Get top politicians (3+ datasets) with their direct connections
+ * 2. Find shared companies/entities that BRIDGE politicians together
+ *
+ * This creates a connected graph instead of isolated star clusters.
+ */
 const CYPHER = `
+// Phase 1: Get investigation-relevant politicians
 MATCH (p:Politician)-[r:MAYBE_SAME_AS]->(t)
-WITH p,
-     collect(DISTINCT labels(t)[0]) AS datasets,
+WITH p, collect(DISTINCT labels(t)[0]) AS datasets
+WHERE size(datasets) >= 3
+WITH p, datasets
+ORDER BY size(datasets) DESC
+LIMIT 30
+
+// Phase 2: Get their connections (limited per politician to avoid explosion)
+MATCH (p)-[r:MAYBE_SAME_AS]->(t)
+WHERE t:OffshoreOfficer OR t:Donor OR t:GovernmentAppointment
+  OR (t:BoardMember AND r.confidence >= 0.7)
+  OR (t:CompanyOfficer AND r.confidence >= 0.7)
+WITH p, datasets,
      collect({
        id: toString(elementId(t)),
        type: labels(t)[0],
-       name: COALESCE(t.name, t.official_name, t.donor_name, t.entity_name, "desconocido"),
-       props: properties(t)
-     }) AS targets,
+       name: COALESCE(t.name, t.official_name, t.donor_name, "desconocido"),
+       props: {confidence: r.confidence, match_method: r.match_method}
+     })[..8] AS targets,
      collect({
        relId: toString(elementId(r)),
        targetId: toString(elementId(t)),
        relType: type(r),
-       relProps: properties(r)
-     }) AS rels
-WHERE size(datasets) >= 3
+       relProps: {confidence: r.confidence}
+     })[..8] AS rels
 RETURN p, datasets, targets, rels
-ORDER BY size(datasets) DESC, size(targets) DESC
-LIMIT 50
+`
+
+/**
+ * Second query: find shared companies that bridge politicians.
+ * This creates links BETWEEN politician clusters.
+ */
+const BRIDGE_CYPHER = `
+MATCH (p1:Politician)-[:MAYBE_SAME_AS]->(b1:BoardMember)-[:BOARD_MEMBER_OF]->(c:Company)<-[:BOARD_MEMBER_OF]-(b2:BoardMember)<-[:MAYBE_SAME_AS]-(p2:Politician)
+WHERE p1.id < p2.id
+WITH p1, p2, c, collect(DISTINCT labels(c)[0])[0] AS companyType
+RETURN p1.id AS pid1, p1.name AS pname1,
+       p2.id AS pid2, p2.name AS pname2,
+       c.name AS company, toString(elementId(c)) AS companyId
+LIMIT 30
 `
 
 interface RawRow {
@@ -120,15 +149,16 @@ export const dynamic = 'force-dynamic'
 
 export async function GET(): Promise<Response> {
   try {
+    // Phase 1: Politician star patterns
     const result = await readQuery(CYPHER, {}, transformRecord)
 
     const nodeMap = new Map<string, ApiNode>()
     const links: ApiLink[] = []
+    const politicianElementIds = new Map<string, string>() // slug → elementId
 
     for (const row of result.records) {
       const p = row.politician
 
-      // Add politician node
       if (!nodeMap.has(p.id)) {
         nodeMap.set(p.id, {
           id: p.id,
@@ -136,13 +166,16 @@ export async function GET(): Promise<Response> {
           type: 'Politician',
           color: NODE_COLORS.Politician,
           datasets: p.datasets.length,
-          val: p.datasets.length,
+          val: p.datasets.length * 2,
           labels: p.labels,
-          properties: p.properties,
+          properties: { ...p.properties, datasets: p.datasets },
         })
+        // Map slug to elementId for bridge matching
+        if (p.properties.id) {
+          politicianElementIds.set(p.properties.id as string, p.id)
+        }
       }
 
-      // Add target nodes and links
       for (let i = 0; i < row.targets.length; i++) {
         const t = row.targets[i]
         const rel = row.rels[i]
@@ -159,7 +192,6 @@ export async function GET(): Promise<Response> {
             properties: t.props,
           })
         } else {
-          // Increment val for nodes with more connections
           const existing = nodeMap.get(t.id)!
           existing.val += 1
         }
@@ -171,6 +203,59 @@ export async function GET(): Promise<Response> {
           properties: rel.relProps,
         })
       }
+    }
+
+    // Phase 2: Bridges between politicians via shared companies
+    try {
+      const bridges = await readQuery(
+        BRIDGE_CYPHER,
+        {},
+        (record: Neo4jRecord) => ({
+          pid1: record.get('pid1') as string,
+          pname1: record.get('pname1') as string,
+          pid2: record.get('pid2') as string,
+          pname2: record.get('pname2') as string,
+          company: record.get('company') as string,
+          companyId: record.get('companyId') as string,
+        }),
+      )
+
+      for (const bridge of bridges.records) {
+        const p1Id = politicianElementIds.get(bridge.pid1)
+        const p2Id = politicianElementIds.get(bridge.pid2)
+        if (!p1Id || !p2Id) continue
+
+        // Add company node as bridge
+        const companyNodeId = `company-${bridge.companyId}`
+        if (!nodeMap.has(companyNodeId)) {
+          nodeMap.set(companyNodeId, {
+            id: companyNodeId,
+            name: bridge.company,
+            type: 'Company',
+            color: '#10b981', // emerald
+            datasets: 0,
+            val: 3,
+            labels: ['Company'],
+            properties: {},
+          })
+        }
+
+        // Link both politicians to the shared company
+        links.push({
+          source: p1Id,
+          target: companyNodeId,
+          type: 'SHARES_BOARD',
+          properties: {},
+        })
+        links.push({
+          source: p2Id,
+          target: companyNodeId,
+          type: 'SHARES_BOARD',
+          properties: {},
+        })
+      }
+    } catch {
+      // Bridge query may timeout on large graphs — degrade gracefully
     }
 
     const nodes = Array.from(nodeMap.values())
