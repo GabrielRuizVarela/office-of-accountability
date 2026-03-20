@@ -8,11 +8,15 @@
 
 **Tech Stack:** Markdown, existing PRD structure
 
+**Status:** Tasks 1-5 (PRD section edits) are **superseded** by the milestone roadmap (PRD v0.4, Section 11). The Investigation Engine is now tracked as milestones M3-M5. Task 6 (implementation breakdown) was delivered. Task 7 (PR creation) was completed as PR #4.
+
 ---
 
-### Task 1: PRD Section 5.3.1 — Investigation Engine
+### Task 1: PRD Section 5.3.1 — Investigation Engine ✅ SUPERSEDED
 
-Add a new subsection under Section 5.3 (Investigations) that introduces the Investigation Engine as an automated research accelerator.
+~~Add a new subsection under Section 5.3 (Investigations) that introduces the Investigation Engine as an automated research accelerator.~~
+
+**Superseded by:** PRD v0.4 milestone roadmap (M3-M5) in Section 11, which integrates the Investigation Engine across 3 milestones with full dependency tracking. Section 5.3.1 content is covered by the design spec reference in M3.
 
 **Files:**
 - Modify: `PRD.md` (after the Endorsement Model paragraph in Section 5.3, before Section 5.4)
@@ -69,9 +73,11 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ---
 
-### Task 2: PRD Section 7.2 — Update Tech Stack Table
+### Task 2: PRD Section 7.2 — Update Tech Stack Table ✅ SUPERSEDED
 
-Update the AI/LLM row and add Investigation Engine row to the tech stack table.
+~~Update the AI/LLM row and add Investigation Engine row to the tech stack table.~~
+
+**Superseded by:** PRD v0.4 milestone roadmap. Tech stack updates will be done as part of M3 implementation.
 
 **Files:**
 - Modify: `PRD.md` (AI/LLM row in Section 7.2 tech stack table)
@@ -105,9 +111,11 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ---
 
-### Task 3: PRD Section 7.3 — Update Architecture Diagram
+### Task 3: PRD Section 7.3 — Update Architecture Diagram ✅ SUPERSEDED
 
-Add the Investigation Engine module to the service architecture diagram.
+~~Add the Investigation Engine module to the service architecture diagram.~~
+
+**Superseded by:** PRD v0.4 milestone roadmap. Architecture diagram updates will be done as part of M3 implementation.
 
 **Files:**
 - Modify: `PRD.md` (architecture diagram in Section 7.3)
@@ -164,9 +172,11 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ---
 
-### Task 4: PRD Section 7.5 — Update AI Integration Rules
+### Task 4: PRD Section 7.5 — Update AI Integration Rules ✅ SUPERSEDED
 
-The existing AI rules (Section 7.5) were written for Claude-only batch jobs. Update to reflect the Investigation Engine's broader LLM usage.
+~~The existing AI rules (Section 7.5) were written for Claude-only batch jobs. Update to reflect the Investigation Engine's broader LLM usage.~~
+
+**Superseded by:** PRD v0.4 milestone roadmap. AI rules updates will be done as part of M3 implementation.
 
 **Files:**
 - Modify: `PRD.md` (Section 7.5 AI Integration Rules)
@@ -202,9 +212,11 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ---
 
-### Task 5: PRD Section 11 — Add Investigation Engine Phase
+### Task 5: PRD Section 11 — Add Investigation Engine Phase ✅ SUPERSEDED
 
-Add the Investigation Engine as a new phase in the phased delivery plan.
+~~Add the Investigation Engine as a new phase in the phased delivery plan.~~
+
+**Superseded by:** PRD v0.4 replaced Section 11 entirely with a 9-milestone roadmap (M0-M8). The Investigation Engine is milestones M3-M5. Governance system is M8.
 
 **Files:**
 - Modify: `PRD.md` (Section 11, insert between Phase 2 and Phase 3)
@@ -251,7 +263,7 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ---
 
-### Task 6: Write Implementation Task Breakdown
+### Task 6: Write Implementation Task Breakdown ✅ COMPLETED
 
 Create a task breakdown document that outlines the three implementation phases with concrete deliverables.
 
@@ -402,9 +414,9 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ---
 
-### Task 7: Create the PR
+### Task 7: Create the PR ✅ COMPLETED
 
-**Files:** All changes from Tasks 1-6.
+**Files:** All changes from Tasks 1-6. PR #4 created and merged.
 
 - [ ] **Step 1: Verify all changes are committed**
 
