@@ -265,7 +265,9 @@ webapp/
 | `webapp/src/app/mis-investigaciones/page.tsx` | Remove inline `<header>` |
 | `webapp/src/app/perfil/page.tsx` | Remove inline `<header>` |
 | `webapp/src/app/caso/[slug]/resumen/page.tsx` | Remove inline `<header>` |
-| `webapp/src/app/caso/finanzas-politicas/resumen/page.tsx` | Remove inline `<header>` |
+| `webapp/src/app/caso/finanzas-politicas/layout.tsx` | Remove inline `<footer>` (redundant with global Footer) |
+| `webapp/src/app/caso/finanzas-politicas/FinanzasPoliticasNav.tsx` | Remove ORC logo link (redundant with global SiteNav) |
+| `webapp/src/app/caso/finanzas-politicas/resumen/page.tsx` | Keep `<header>` — it is a semantic content header (title area), not a navigation header. No change needed |
 | `webapp/package.json` | Add `next-intl` dependency (or custom i18n if spike fails) |
 
 ### Untouched
