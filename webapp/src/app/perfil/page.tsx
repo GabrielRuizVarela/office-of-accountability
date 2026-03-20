@@ -7,7 +7,6 @@
  * Uses fetchWithCsrf for PATCH mutation.
  */
 
-import Link from 'next/link'
 import { useCallback, useEffect, useReducer } from 'react'
 
 import { SessionProvider, useSession } from '@/components/auth/SessionProvider'
@@ -201,21 +200,7 @@ function PerfilContent() {
   const tier = TIER_LABELS[state.profile?.verification_tier ?? 0] ?? TIER_LABELS[0]
 
   return (
-    <div className="min-h-screen bg-zinc-950">
-      {/* Header */}
-      <header className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-sm">
-        <div className="mx-auto max-w-5xl px-4 py-4">
-          <nav className="flex items-center gap-2 text-sm text-zinc-500">
-            <Link href="/" className="transition-colors hover:text-zinc-300">
-              ORC
-            </Link>
-            <span>/</span>
-            <span className="text-zinc-300">Mi perfil</span>
-          </nav>
-        </div>
-      </header>
-
-      <main className="mx-auto max-w-2xl px-4 py-8">
+    <main className="mx-auto max-w-2xl px-4 py-8">
         <h1 className="text-2xl font-bold text-zinc-50">Mi perfil</h1>
 
         {/* Messages */}
@@ -323,8 +308,7 @@ function PerfilContent() {
             </div>
           </div>
         )}
-      </main>
-    </div>
+    </main>
   )
 }
 

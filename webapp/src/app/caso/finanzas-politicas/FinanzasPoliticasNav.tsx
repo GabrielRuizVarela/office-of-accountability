@@ -26,12 +26,6 @@ export function FinanzasPoliticasNav() {
     <nav className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-sm">
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex gap-1 overflow-x-auto py-1 scrollbar-hide">
-          <Link
-            href="/"
-            className="mr-2 whitespace-nowrap rounded-md px-3 py-2 text-sm font-bold text-zinc-50 transition-colors hover:text-blue-400"
-          >
-            ORC
-          </Link>
           {TABS.map((tab) => {
             const isActive =
               pathname === tab.href ||
