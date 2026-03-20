@@ -2,9 +2,9 @@
  * Argentine Political Finance investigation structured data.
  *
  * Bilingual (ES primary, EN secondary) factcheck items, timeline events,
- * actors, and money flows — sourced from the cross-referencing of eight
+ * actors, and money flows — sourced from the cross-referencing of nine
  * public datasets: Como Voto, ICIJ, CNE, Boletin Oficial, IGJ, CNV,
- * DDJJ, and cross-enrichment pipeline.
+ * DDJJ, cross-enrichment pipeline, and Poder Judicial.
  */
 
 // ---------------------------------------------------------------------------
@@ -84,7 +84,7 @@ export interface ImpactStat {
 
 export const IMPACT_STATS: readonly ImpactStat[] = [
   {
-    value: '10,130',
+    value: '10,150',
     label_es: 'Coincidencias cross-dataset',
     label_en: 'Cross-dataset matches',
     source: 'Entity resolution pipeline',
@@ -96,13 +96,13 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     source: 'Cross-enrichment',
   },
   {
-    value: '3.26M',
+    value: '2.16M',
     label_es: 'Nodos en el grafo',
     label_en: 'Graph nodes',
     source: 'Neo4j database',
   },
   {
-    value: '8',
+    value: '9',
     label_es: 'Fuentes de datos cruzadas',
     label_en: 'Cross-referenced sources',
     source: 'ETL pipelines',
@@ -175,9 +175,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source_url:
       'https://chequeado.com/el-explicador/claves-para-entender-la-polemica-por-la-deuda-del-correo-argentino-con-el-estado/',
     detail_es:
-      'SOCMA obtuvo la concesion postal en 1997 (gobierno de Menem). Solo pago el canon el primer ano; la deuda alcanzo ARS 296M. En junio de 2016, el gobierno de Macri acepto un acuerdo con quita del 98,82% (ARS 70.000M ajustados). El fiscal Zoni imputo al presidente Macri y al ministro Aguad en 2017. Para 2024, la familia no habia pagado nada.',
+      'SOCMA obtuvo la concesion postal en 1997 (gobierno de Menem). Solo pago el canon el primer ano; la deuda alcanzo ARS 296M. En junio de 2016, el gobierno de Macri acepto un acuerdo con quita del 98,82% (ARS 70.000M ajustados). La causa judicial continua activa. Para 2024, la familia no habia pagado nada.',
     detail_en:
-      'SOCMA won the postal concession in 1997 (Menem government). Only paid the canon the first year; debt reached ARS 296M. In June 2016, the Macri government accepted a settlement with 98.82% reduction (ARS 70B adjusted). Prosecutor Zoni charged President Macri and Minister Aguad in 2017. By 2024, the family had paid nothing.',
+      'SOCMA won the postal concession in 1997 (Menem government). Only paid the canon the first year; debt reached ARS 296M. In June 2016, the Macri government accepted a settlement with 98.82% reduction (ARS 70B adjusted). The judicial case continues. By 2024, the family had paid nothing.',
   },
   // --- Tier 2: AUSOL shares ---
   {
@@ -192,41 +192,41 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source_url:
       'https://www.pagina12.com.ar/54129-el-negocio-de-los-macri-con-autopistas-del-sol',
     detail_es:
-      'La Oficina Anticorrupcion recomendo que Macri no participara; se recuso formalmente. Sin embargo, la renegociacion de 2018 comprometio al Estado con ~USD 2.000M de impacto economico total. Fiscales imputaron a ex funcionarios por "administracion fraudulenta". Las acciones fueron vendidas a Natal Inversiones con prima del 400%.',
+      'La Oficina Anticorrupcion recomendo que Macri no participara; se recuso formalmente. Sin embargo, la renegociacion de 2018 comprometio al Estado con ~USD 2.000M de impacto economico total. La causa judicial continua respecto a ex funcionarios por "administracion fraudulenta". Las acciones fueron vendidas a Natal Inversiones con prima del 400%.',
     detail_en:
-      'The Anti-Corruption Office recommended Macri not participate; he formally recused. However, the 2018 renegotiation committed the State to ~USD 2B total economic impact. Prosecutors charged ex-officials with "fraudulent administration." Shares were sold to Natal Inversiones at a 400% premium.',
+      'The Anti-Corruption Office recommended Macri not participate; he formally recused. However, the 2018 renegotiation committed the State to ~USD 2B total economic impact. The judicial case continues regarding ex-officials for "fraudulent administration." Shares were sold to Natal Inversiones at a 400% premium.',
   },
   // --- Tier 2: Contractor-donor violations ---
   {
-    id: 'rodriguez-gonzalez-contractor-donor',
+    id: 'rodriguez-contractor-donor',
     claim_es:
-      'Juan Pablo Rodriguez (4 contratos estatales 2018-2020) y Jorge Omar Gonzalez (1 contrato estatal) realizaron donaciones de campana, violando la Ley 26.215 Art. 15 que prohibe contribuciones de contratistas del Estado.',
+      'Juan Pablo Rodriguez (4 contratos estatales 2018-2020) realizo donaciones de campana, en coincidencia con la prohibicion de la Ley 26.215 Art. 15 sobre contribuciones de contratistas del Estado.',
     claim_en:
-      'Juan Pablo Rodriguez (4 government contracts 2018-2020) and Jorge Omar Gonzalez (1 government contract) made campaign donations, violating Ley 26.215 Art. 15 which prohibits contributions from government contractors.',
+      'Juan Pablo Rodriguez (4 government contracts 2018-2020) made campaign donations, coinciding with the prohibition in Ley 26.215 Art. 15 on contributions from government contractors.',
     status: 'confirmed',
     tier: 2,
     source: 'Cross-dataset analysis (Boletin Oficial + CNE)',
     source_url: 'https://datos.gob.ar',
     detail_es:
-      'Estas no son zonas grises. La Ley 26.215 Art. 15 prohibe explicitamente las contribuciones de campana de personas o entidades con contratos estatales. El Art. 15 bis establece multas de 10 a 20 veces el monto de la contribucion ilegal y potencial procesamiento penal.',
+      'La Ley 26.215 Art. 15 prohibe explicitamente las contribuciones de campana de personas o entidades con contratos estatales. El Art. 15 bis establece multas de 10 a 20 veces el monto de la contribucion ilegal y potencial procesamiento penal.',
     detail_en:
-      'These are not gray areas. Ley 26.215 Art. 15 explicitly prohibits campaign contributions from persons or entities holding government contracts. Art. 15 bis establishes fines of 10 to 20 times the illegal contribution amount and potential criminal prosecution.',
+      'Ley 26.215 Art. 15 explicitly prohibits campaign contributions from persons or entities holding government contracts. Art. 15 bis establishes fines of 10 to 20 times the illegal contribution amount and potential criminal prosecution.',
   },
   // --- Tier 2: Cordero pipeline ---
   {
     id: 'cordero-offshore-pipeline',
     claim_es:
-      'Maria Eugenia Cordero es simultaneamente contratista del Estado y officer de BETHAN INVESTMENTS LIMITED (offshore), configurando un potencial conducto de fondos publicos hacia jurisdicciones opacas.',
+      'Maria Eugenia Cordero es simultaneamente contratista del Estado y officer de BETHAN INVESTMENTS LIMITED (offshore), configurando una posible coincidencia entre fondos publicos y jurisdicciones opacas.',
     claim_en:
-      'Maria Eugenia Cordero is simultaneously a government contractor and officer of BETHAN INVESTMENTS LIMITED (offshore), creating a potential pipeline from public funds to opaque jurisdictions.',
+      'Maria Eugenia Cordero is simultaneously a government contractor and officer of BETHAN INVESTMENTS LIMITED (offshore), creating a possible overlap between public funds and opaque jurisdictions.',
     status: 'alleged',
     tier: 2,
     source: 'Cross-dataset analysis (Boletin Oficial + ICIJ)',
     source_url: 'https://offshoreleaks.icij.org',
     detail_es:
-      'Este patron — contratista estatal con holdings offshore — es la estructura fundacional de esquemas de malversacion y constituye una potencial violacion de la Ley 25.246 (lavado de activos). Confirmado: la coincidencia de nombre en ambos datasets. No confirmado: si es la misma persona, y si fondos publicos pasaron por la entidad offshore.',
+      'Este patron — contratista estatal con holdings offshore — constituye una estructura de riesgo bajo la Ley 25.246 (lavado de activos). Confirmado: la coincidencia de nombre en ambos datasets. No confirmado: si es la misma persona, y si fondos publicos pasaron por la entidad offshore.',
     detail_en:
-      'This pattern — state contractor with offshore holdings — is the foundational structure of embezzlement schemes and constitutes a potential violation of Ley 25.246 (anti-money laundering). Confirmed: the name match across both datasets. Unconfirmed: whether the same individual, and whether public funds moved through the offshore entity.',
+      'This pattern — state contractor with offshore holdings — represents a risk structure under Ley 25.246 (anti-money laundering). Confirmed: the name match across both datasets. Unconfirmed: whether the same individual, and whether public funds moved through the offshore entity.',
   },
   // --- Tier 2: SOCMA blanqueo ---
   {
@@ -241,9 +241,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source_url:
       'https://noticias.perfil.com/noticias/politica/2018-12-18-quienes-son-los-integrantes-de-socma-que-adhirieron-al-blanqueo.phtml',
     detail_es:
-      'Gianfranco Macri: ARS 622M (~USD 4M de BF Corp). Leonardo Maffioli (CEO SOCMA): ARS 76M. Armando Amasanti: ARS 93M. Victor Composto: ARS 68M. Carlos Libedinsky (socio de Jorge Macri): ARS 61,9M. Gianfranco tambien declaro un fideicomiso de Alicia Blanco Villegas (madre de Mauricio), potencialmente violando la prohibicion del blanqueo de declarar activos de familiares.',
+      'Gianfranco Macri: ARS 622M (~USD 4M de BF Corp). Leonardo Maffioli (CEO SOCMA): ARS 76M. Armando Amasanti: ARS 93M. Victor Composto: ARS 68M. Carlos Libedinsky (socio de Jorge Macri): ARS 61,9M. Gianfranco tambien declaro un fideicomiso de Alicia Blanco Villegas (madre de Mauricio), potencialmente en tension con la prohibicion del blanqueo de declarar activos de familiares.',
     detail_en:
-      'Gianfranco Macri: ARS 622M (~USD 4M from BF Corp). Leonardo Maffioli (SOCMA CEO): ARS 76M. Armando Amasanti: ARS 93M. Victor Composto: ARS 68M. Carlos Libedinsky (Jorge Macri partner): ARS 61.9M. Gianfranco also declared a trust belonging to Alicia Blanco Villegas (Mauricio\'s mother), potentially violating the blanqueo prohibition on declaring relatives\' assets.',
+      'Gianfranco Macri: ARS 622M (~USD 4M from BF Corp). Leonardo Maffioli (SOCMA CEO): ARS 76M. Armando Amasanti: ARS 93M. Victor Composto: ARS 68M. Carlos Libedinsky (Jorge Macri partner): ARS 61.9M. Gianfranco also declared a trust belonging to Alicia Blanco Villegas (Mauricio\'s mother), potentially in tension with the blanqueo prohibition on declaring relatives\' assets.',
   },
   // --- Tier 2: BF Corporation Swiss transfers ---
   {
@@ -261,6 +261,103 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
       'BF Corporation canalizo fondos de la familia Macri a traves de Suiza. La destruccion de correspondencia por parte del banco aleman sugiere un esfuerzo deliberado de ocultar el rastro financiero. Gianfranco posteriormente declaro USD 4M de esta entidad a traves del blanqueo de 2016.',
     detail_en:
       'BF Corporation channeled Macri family funds through Switzerland. The destruction of correspondence by the German bank suggests a deliberate effort to obscure the financial trail. Gianfranco later declared USD 4M from this entity through the 2016 tax amnesty.',
+  },
+  // --- Tier 1: Kueider border detention ---
+  {
+    id: 'kueider-border-cash',
+    claim_es:
+      'El senador Edgardo Kueider fue detenido en el cruce fronterizo de Paraguay con USD 211.000 en efectivo no declarado. Fue expulsado del Senado de la Nacion. Sus asociados BETAIL y EDEKOM figuran como empresas vinculadas.',
+    claim_en:
+      'Senator Edgardo Kueider was detained at the Paraguay border crossing with USD 211,000 in undeclared cash. He was expelled from the Senate. Associates BETAIL and EDEKOM appear as linked companies.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Infobae / La Nacion',
+    source_url:
+      'https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-kueider-en-paraguay-con-211000-dolares/',
+    detail_es:
+      'Kueider fue detenido el 4 de diciembre de 2024 en el paso fronterizo de Clorinda con USD 211.000 no declarados. El Senado lo expulso por mayoria. Las empresas BETAIL SRL y EDEKOM SA aparecen en registros como vinculadas a su nombre. En marzo de 2025, siete personas de su entorno fueron detenidas.',
+    detail_en:
+      'Kueider was detained on 4 December 2024 at the Clorinda border crossing with USD 211,000 in undeclared cash. The Senate expelled him by majority vote. The companies BETAIL SRL and EDEKOM SA appear in records linked to his name. In March 2025, seven associates were detained.',
+  },
+  // --- Tier 2: Lousteau / LCG ---
+  {
+    id: 'lousteau-lcg',
+    claim_es:
+      'LCG SA, consultora vinculada al senador Martin Lousteau, habria facturado al Congreso Nacional aproximadamente ARS 1.690.000 entre 2020 y 2022 durante su mandato como senador. Se presentaron cargos penales.',
+    claim_en:
+      'LCG SA, a consultancy linked to Senator Martin Lousteau, reportedly billed the National Congress approximately ARS 1,690,000 between 2020 and 2022 during his Senate term. Criminal charges were filed.',
+    status: 'confirmed',
+    tier: 2,
+    source: 'Cross-dataset analysis (Boletin Oficial + DDJJ)',
+    source_url: 'https://datos.gob.ar',
+    detail_es:
+      'LCG SA figura en el Boletin Oficial con contratos de consultoria con el Congreso por ARS 1.690.000 durante el periodo en que Lousteau ejercia como senador. La causa judicial continua activa.',
+    detail_en:
+      'LCG SA appears in the Boletin Oficial with consulting contracts with Congress for ARS 1,690,000 during the period Lousteau served as senator. The judicial case continues.',
+  },
+  // --- Tier 1: PENSAR ARGENTINA ---
+  {
+    id: 'pensar-argentina-caputo',
+    claim_es:
+      'PENSAR ARGENTINA, fundacion vinculada al empresario Nicolas Caputo (socio historico de Macri), tiene registrados a 19 politicos como miembros del directorio segun datos de IGJ.',
+    claim_en:
+      'PENSAR ARGENTINA, a foundation linked to businessman Nicolas Caputo (longtime Macri associate), has 19 politicians registered as board members according to IGJ data.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'IGJ / Cross-dataset analysis',
+    source_url: 'https://datos.gob.ar',
+    detail_es:
+      'La coincidencia entre el directorio de PENSAR ARGENTINA y legisladores activos fue detectada en el cruce de datasets IGJ y GovernmentAppointment. Nicolas Caputo figura como miembro fundador. La foundation aparece en 2 datasets.',
+    detail_en:
+      'The overlap between PENSAR ARGENTINA\'s board and active legislators was detected in the cross-referencing of IGJ and GovernmentAppointment datasets. Nicolas Caputo appears as founding member. The foundation appears in 2 datasets.',
+  },
+  // --- Tier 1: De Narváez offshore ---
+  {
+    id: 'denarvaez-offshore',
+    claim_es:
+      'Francisco De Narvaez figura en 5 entidades offshore segun la base ICIJ, incluyendo Titan Consulting y Retrato Partners. Su fortuna es estimada en USD 920M. Aparece en 4 datasets.',
+    claim_en:
+      'Francisco De Narvaez appears in 5 offshore entities in the ICIJ database, including Titan Consulting and Retrato Partners. His fortune is estimated at USD 920M. He appears in 4 datasets.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'ICIJ Offshore Leaks',
+    source_url: 'https://offshoreleaks.icij.org',
+    detail_es:
+      'Coincidencias confirmadas en la base ICIJ. De Narvaez adquirio Walmart Argentina en noviembre de 2020. Sus entidades offshore incluyen Titan Consulting Ltd y Retrato Partners Ltd, ambas en jurisdicciones de baja tributacion.',
+    detail_en:
+      'Matches confirmed in the ICIJ database. De Narvaez acquired Walmart Argentina in November 2020. His offshore entities include Titan Consulting Ltd and Retrato Partners Ltd, both in low-tax jurisdictions.',
+  },
+  // --- Tier 2: Grindetti offshore + Brazil ---
+  {
+    id: 'grindetti-offshore',
+    claim_es:
+      'Nestor Grindetti figura como vinculado a Mercier International (Panama) y a la cuenta en Clariden Leu (banco suizo). Enfrenta 9 causas tributarias en Brasil. Aparece en 3 datasets.',
+    claim_en:
+      'Nestor Grindetti appears linked to Mercier International (Panama) and an account at Clariden Leu (Swiss bank). He faces 9 tax cases in Brazil. He appears in 3 datasets.',
+    status: 'confirmed',
+    tier: 2,
+    source: 'ICIJ / Cross-dataset analysis',
+    source_url: 'https://offshoreleaks.icij.org',
+    detail_es:
+      'Mercier International SA (Panama) aparece en la base ICIJ vinculada a Grindetti. Clariden Leu fue absorbido por Credit Suisse en 2012. Las causas tributarias en Brasil corresponden al periodo 2010-2020 segun registros del fisco federal brasileno.',
+    detail_en:
+      'Mercier International SA (Panama) appears in the ICIJ database linked to Grindetti. Clariden Leu was absorbed by Credit Suisse in 2012. The Brazilian tax cases correspond to the 2010-2020 period according to Brazilian federal tax records.',
+  },
+  // --- Tier 2: Vote-corporate conflicts ---
+  {
+    id: 'vote-corporate-conflicts',
+    claim_es:
+      '69 legisladores votaron sobre legislacion financiera mientras figuraban como vinculados a empresas del sector financiero, segun el cruce de datasets Como Voto y registros societarios.',
+    claim_en:
+      '69 legislators voted on financial legislation while appearing linked to financial sector companies, according to cross-referencing Como Voto and corporate registry datasets.',
+    status: 'alleged',
+    tier: 2,
+    source: 'Cross-dataset analysis (Como Voto + IGJ + CNV)',
+    source_url: 'https://datos.gob.ar',
+    detail_es:
+      'Hallazgo analitico derivado del grafo de coincidencias. La potencial coincidencia entre el rol legislativo y el interes corporativo en el sector financiero abarca a 69 individuos identificados. No se confirma causalidad — se documenta la coincidencia estructural.',
+    detail_en:
+      'Analytical finding derived from the match graph. The potential overlap between legislative role and corporate interest in the financial sector spans 69 identified individuals. Causality is not confirmed — the structural coincidence is documented.',
   },
 ] as const
 
@@ -365,12 +462,12 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
   {
     id: 'tl-2017-correo-charges',
     date: '2017',
-    title_es: 'Fiscal imputa a Macri por Correo Argentino',
-    title_en: 'Prosecutor charges Macri over Correo Argentino',
+    title_es: 'Causa Correo Argentino: cargos formalizados',
+    title_en: 'Correo Argentino case: charges formalized',
     description_es:
-      'El fiscal Zoni imputa al presidente Macri y al ministro Aguad en relacion al acuerdo de la deuda del Correo Argentino.',
+      'El fiscal Zoni presenta cargos contra el presidente Macri y el ministro Aguad en relacion al acuerdo de la deuda del Correo Argentino. La causa judicial continua.',
     description_en:
-      'Prosecutor Zoni charges President Macri and Minister Aguad in connection with the Correo Argentino debt settlement.',
+      'Prosecutor Zoni files charges against President Macri and Minister Aguad in connection with the Correo Argentino debt settlement. The judicial case continues.',
     category: 'legal',
     sources: ['https://es.wikipedia.org/wiki/Causa_Correo_Argentino'],
   },
@@ -380,11 +477,49 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     title_es: 'Declaraciones de aportes de campana',
     title_en: 'Campaign donation filings',
     description_es:
-      'Macri dona ARS 100.000 a Juntos por el Cambio; Maximo Kirchner dona ARS 50.000 a Frente de Todos. Se identifican 50 coincidencias politico-donante (0% falsos positivos). Se detectan violaciones de contratista-donante de Rodriguez y Gonzalez.',
+      'Macri dona ARS 100.000 a Juntos por el Cambio; Maximo Kirchner dona ARS 50.000 a Frente de Todos. Se identifican 50 coincidencias politico-donante (0% falsos positivos). Se detecta la coincidencia contratista-donante de Rodriguez. Aluar dona ARS 5.400.000 distribuidos entre ambas coaliciones.',
     description_en:
-      'Macri donates ARS 100,000 to Juntos por el Cambio; Maximo Kirchner donates ARS 50,000 to Frente de Todos. 50 politician-donor matches identified (0% false positives). Rodriguez contractor-donor pattern detected.',
+      'Macri donates ARS 100,000 to Juntos por el Cambio; Maximo Kirchner donates ARS 50,000 to Frente de Todos. 50 politician-donor matches identified (0% false positives). Rodriguez contractor-donor pattern detected. Aluar donates ARS 5,400,000 distributed across both coalitions.',
     category: 'political',
     sources: ['https://aportantes.electoral.gob.ar'],
+  },
+  {
+    id: 'tl-2020-denarvaez-walmart',
+    date: '2020-11',
+    title_es: 'De Narvaez adquiere Walmart Argentina',
+    title_en: 'De Narvaez acquires Walmart Argentina',
+    description_es:
+      'Francisco De Narvaez completa la adquisicion de Walmart Argentina, rebautizada luego como Changomas. La operacion refuerza su presencia en el retail nacional. Sus cinco entidades offshore figuran en la base ICIJ.',
+    description_en:
+      'Francisco De Narvaez completes the acquisition of Walmart Argentina, later rebranded as Changomas. The operation reinforces his presence in national retail. His five offshore entities appear in the ICIJ database.',
+    category: 'corporate',
+    sources: ['https://offshoreleaks.icij.org'],
+  },
+  {
+    id: 'tl-2024-ley-bases',
+    date: '2024-06-12',
+    title_es: 'Ley de Bases aprobada en Senado (36-36, desempate Villarruel)',
+    title_en: 'Ley de Bases approved in Senate (36-36, Villarruel tiebreak)',
+    description_es:
+      'El Senado aprueba la Ley de Bases con un empate de 36 votos a 36. La vicepresidenta Victoria Villarruel desempata a favor. Varios senadores vinculados a intereses financieros votaron sobre articulos clave de la ley.',
+    description_en:
+      'The Senate approves the Ley de Bases with a 36-36 tie. Vice President Victoria Villarruel casts the deciding vote in favor. Several senators linked to financial interests voted on key articles of the law.',
+    category: 'political',
+    sources: ['https://www.senado.gob.ar'],
+  },
+  {
+    id: 'tl-2024-kueider-detencion',
+    date: '2024-12-04',
+    title_es: 'Kueider detenido en la frontera de Paraguay con USD 211.000',
+    title_en: 'Kueider detained at Paraguay border with USD 211,000',
+    description_es:
+      'El senador Edgardo Kueider es detenido en el paso fronterizo de Clorinda (Paraguay) con USD 211.000 en efectivo no declarados. El Senado lo expulsa por mayoria. Empresas BETAIL y EDEKOM aparecen en registros vinculados a su nombre.',
+    description_en:
+      'Senator Edgardo Kueider is detained at the Clorinda border crossing (Paraguay) with USD 211,000 in undeclared cash. The Senate expels him by majority vote. Companies BETAIL and EDEKOM appear in records linked to his name.',
+    category: 'legal',
+    sources: [
+      'https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-kueider-en-paraguay-con-211000-dolares/',
+    ],
   },
   {
     id: 'tl-2024-mariano-denuncia',
@@ -398,6 +533,20 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     category: 'legal',
     sources: [
       'https://www.infobae.com/judiciales/2024/08/07/el-hermano-de-mauricio-macri-denuncio-al-grupo-empresarial-de-la-familia-por-defraudacion-y-lavado-de-activos/',
+    ],
+  },
+  {
+    id: 'tl-2025-kueider-arrestos',
+    date: '2025-03',
+    title_es: '7 asociados de Kueider detenidos',
+    title_en: '7 Kueider associates arrested',
+    description_es:
+      'Siete personas del entorno del ex senador Kueider son detenidas en el marco de la causa iniciada tras su detencion en la frontera paraguaya con efectivo no declarado.',
+    description_en:
+      'Seven associates of former senator Kueider are detained as part of the case opened following his detention at the Paraguayan border with undeclared cash.',
+    category: 'legal',
+    sources: [
+      'https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-kueider-en-paraguay-con-211000-dolares/',
     ],
   },
 ] as const
@@ -418,8 +567,8 @@ export const ACTORS: readonly Actor[] = [
       'Appears across 5 datasets: donor, board member, company officer, DDJJ, and government appointment. Documented offshore (Fleg Trading, Kagemusha), contractor-funded campaigns (documented by Chequeado), 17.6% legislative presence. Correo Argentino: 98.82% family debt forgiveness. AUSOL: share sale at 400% premium.',
     party: 'PRO',
     datasets: 5,
-    status_es: 'Sobreseido por Fleg Trading; imputado por Correo Argentino',
-    status_en: 'Cleared on Fleg Trading; charged over Correo Argentino',
+    status_es: 'Sobreseido por Fleg Trading; la causa Correo Argentino continua',
+    status_en: 'Cleared on Fleg Trading; Correo Argentino case continues',
   },
   {
     id: 'actor-ibanez',
@@ -469,9 +618,9 @@ export const ACTORS: readonly Actor[] = [
     role_es: 'Contratista estatal + Officer offshore',
     role_en: 'Government contractor + Offshore officer',
     description_es:
-      'Contratista del Estado y officer de BETHAN INVESTMENTS LIMITED (offshore). Potencial conducto de fondos publicos a jurisdicciones opacas. Caso referido para investigacion bajo Ley 25.246.',
+      'Contratista del Estado y officer de BETHAN INVESTMENTS LIMITED (offshore). Posible coincidencia entre fondos publicos y jurisdicciones opacas. Caso referido para investigacion bajo Ley 25.246.',
     description_en:
-      'Government contractor and officer of BETHAN INVESTMENTS LIMITED (offshore). Potential pipeline from public funds to opaque jurisdictions. Case referred for investigation under Ley 25.246.',
+      'Government contractor and officer of BETHAN INVESTMENTS LIMITED (offshore). Possible overlap between public funds and opaque jurisdictions. Case referred for investigation under Ley 25.246.',
     party: '-',
     datasets: 2,
     status_es: 'Presunto — Referido a UIF',
@@ -483,27 +632,13 @@ export const ACTORS: readonly Actor[] = [
     role_es: 'Contratista estatal + Donante de campana',
     role_en: 'Government contractor + Campaign donor',
     description_es:
-      '4 contratos estatales (2018-2020) y donante de campana. Violacion directa de Ley 26.215 Art. 15.',
+      '4 contratos estatales (2018-2020) y donante de campana. Coincidencia directa con la prohibicion de Ley 26.215 Art. 15.',
     description_en:
-      '4 government contracts (2018-2020) and campaign donor. Direct violation of Ley 26.215 Art. 15.',
+      '4 government contracts (2018-2020) and campaign donor. Direct coincidence with the prohibition in Ley 26.215 Art. 15.',
     party: '-',
     datasets: 2,
-    status_es: 'Confirmado — Violacion de ley',
-    status_en: 'Confirmed — Legal violation',
-  },
-  {
-    id: 'actor-gonzalez',
-    name: 'Jorge Omar Gonzalez',
-    role_es: 'Contratista estatal + Donante de campana',
-    role_en: 'Government contractor + Campaign donor',
-    description_es:
-      '1 contrato estatal y donante de campana. Violacion directa de Ley 26.215 Art. 15.',
-    description_en:
-      '1 government contract and campaign donor. Direct violation of Ley 26.215 Art. 15.',
-    party: '-',
-    datasets: 2,
-    status_es: 'Confirmado — Violacion de ley',
-    status_en: 'Confirmed — Legal violation',
+    status_es: 'Confirmado — Coincidencia con prohibicion legal',
+    status_en: 'Confirmed — Coincidence with legal prohibition',
   },
   {
     id: 'actor-sanchez',
@@ -532,6 +667,90 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Denunciado penalmente por hermano (2024)',
     status_en: 'Criminally denounced by brother (2024)',
+  },
+  {
+    id: 'actor-kueider',
+    name: 'Kueider, Edgardo',
+    role_es: 'Ex Senador Nacional — 2 datasets',
+    role_en: 'Former National Senator — 2 datasets',
+    description_es:
+      'Detenido en el cruce fronterizo de Paraguay con USD 211.000 en efectivo no declarado. Expulsado del Senado. Figura en datasets GovernmentAppointment y CompanyOfficer (BETAIL, EDEKOM).',
+    description_en:
+      'Detained at the Paraguay border crossing with USD 211,000 in undeclared cash. Expelled from the Senate. Appears in GovernmentAppointment and CompanyOfficer datasets (BETAIL, EDEKOM).',
+    party: 'Unidad Federal',
+    datasets: 2,
+    status_es: 'Expulsado del Senado; la causa judicial continua',
+    status_en: 'Expelled from Senate; judicial case continues',
+  },
+  {
+    id: 'actor-lousteau',
+    name: 'Lousteau, Martin',
+    role_es: 'Senador Nacional, UCR — 4 datasets',
+    role_en: 'National Senator, UCR — 4 datasets',
+    description_es:
+      'LCG SA, consultora vinculada a su nombre, habria facturado al Congreso ARS 1.690.000 entre 2020 y 2022 durante su mandato. La causa judicial continua activa.',
+    description_en:
+      'LCG SA, a consultancy linked to his name, reportedly billed Congress ARS 1,690,000 between 2020 and 2022 during his term. The judicial case continues.',
+    party: 'UCR',
+    datasets: 4,
+    status_es: 'La causa judicial continua',
+    status_en: 'Judicial case continues',
+  },
+  {
+    id: 'actor-denarvaez',
+    name: 'De Narvaez, Francisco',
+    role_es: 'Empresario / Ex Diputado — 4 datasets',
+    role_en: 'Businessman / Former Deputy — 4 datasets',
+    description_es:
+      'Figura en 5 entidades offshore (ICIJ): Titan Consulting, Retrato Partners y otras. Fortuna estimada en USD 920M. Adquirio Walmart Argentina en noviembre de 2020.',
+    description_en:
+      'Appears in 5 offshore entities (ICIJ): Titan Consulting, Retrato Partners and others. Fortune estimated at USD 920M. Acquired Walmart Argentina in November 2020.',
+    party: '-',
+    datasets: 4,
+    status_es: 'Coincidencias ICIJ confirmadas',
+    status_en: 'ICIJ matches confirmed',
+  },
+  {
+    id: 'actor-grindetti',
+    name: 'Grindetti, Nestor',
+    role_es: 'Ex Funcionario / Empresario — 3 datasets',
+    role_en: 'Former Official / Businessman — 3 datasets',
+    description_es:
+      'Vinculado a Mercier International (Panama) y cuenta en Clariden Leu (Suiza). 9 causas tributarias en Brasil. Aparece en 3 datasets.',
+    description_en:
+      'Linked to Mercier International (Panama) and account at Clariden Leu (Switzerland). 9 tax cases in Brazil. Appears in 3 datasets.',
+    party: 'PRO',
+    datasets: 3,
+    status_es: 'Causas tributarias en Brasil activas',
+    status_en: 'Active tax cases in Brazil',
+  },
+  {
+    id: 'actor-heller',
+    name: 'Heller, Carlos',
+    role_es: 'Diputado Nacional, Frente de Todos — 3 datasets',
+    role_en: 'National Deputy, Frente de Todos — 3 datasets',
+    description_es:
+      'Presidente de Banco Credicoop. Legislo sobre regulacion bancaria y financiera mientras ejercia como presidente de una entidad bancaria. Coincidencia confirmada entre rol legislativo e interes corporativo.',
+    description_en:
+      'President of Banco Credicoop. Legislated on banking and financial regulation while serving as president of a banking entity. Confirmed coincidence between legislative role and corporate interest.',
+    party: 'Frente de Todos',
+    datasets: 3,
+    status_es: 'Conflicto de interes confirmado — sin causa penal',
+    status_en: 'Confirmed conflict of interest — no criminal case',
+  },
+  {
+    id: 'actor-lijo',
+    name: 'Lijo, Ariel',
+    role_es: 'Juez Federal — Causa Correo Argentino',
+    role_en: 'Federal Judge — Correo Argentino case',
+    description_es:
+      'Juez federal a cargo de la causa Correo Argentino. Figura en el grafo como nodo judicial vinculado a multiples causas de interes publico relacionadas con el grupo SOCMA.',
+    description_en:
+      'Federal judge overseeing the Correo Argentino case. Appears in the graph as a judicial node linked to multiple public-interest cases related to the SOCMA group.',
+    party: 'Poder Judicial',
+    datasets: 1,
+    status_es: 'Causa activa',
+    status_en: 'Active case',
   },
 ] as const
 
@@ -608,5 +827,31 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
     source: 'Perfil',
     source_url:
       'https://www.perfil.com/noticias/politica/una-off-shore-de-los-macri-movio-fondos-a-suiza-y-destruyo-pruebas.phtml',
+  },
+  {
+    id: 'flow-lousteau-lcg',
+    from_label: 'LCG SA (consultora vinculada a Lousteau)',
+    to_label: 'Congreso Nacional',
+    amount_ars: 1_690_000,
+    description_es:
+      'LCG SA habria facturado al Congreso Nacional ARS 1.690.000 entre 2020 y 2022, periodo en que Martin Lousteau ejercia como senador. La causa judicial continua activa.',
+    description_en:
+      'LCG SA reportedly billed the National Congress ARS 1,690,000 between 2020 and 2022, during which Martin Lousteau served as senator. The judicial case continues.',
+    date: '2020-2022',
+    source: 'Boletin Oficial / Cross-dataset analysis',
+    source_url: 'https://datos.gob.ar',
+  },
+  {
+    id: 'flow-aluar-coalitions',
+    from_label: 'Aluar (empresa)',
+    to_label: 'Ambas coaliciones (JxC + FdT)',
+    amount_ars: 5_400_000,
+    description_es:
+      'Aluar SA realizo donaciones de campana por ARS 5.400.000 en 2019 distribuidas entre Juntos por el Cambio y Frente de Todos, financiando simultaneamente a ambas coaliciones principales.',
+    description_en:
+      'Aluar SA made campaign donations of ARS 5,400,000 in 2019 distributed between Juntos por el Cambio and Frente de Todos, simultaneously financing both main coalitions.',
+    date: '2019',
+    source: 'CNE',
+    source_url: 'https://aportantes.electoral.gob.ar',
   },
 ] as const
