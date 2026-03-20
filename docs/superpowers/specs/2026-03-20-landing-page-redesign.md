@@ -21,9 +21,7 @@ Redesign the ORC landing page from a hardcoded 3-case showcase into a component-
 ### Non-goals
 
 - No dynamic Neo4j queries on the homepage (static config for now)
-- No changes to existing caso pages, investigation pages, or auth pages
 - No locale-prefix routing yet (`/es/...`, `/en/...`)
-- No roadmap section (planned as future addition)
 
 ---
 
@@ -42,8 +40,8 @@ export interface InvestigationConfig {
   subtitle: string       // i18n message key
   description: string    // i18n message key
   status: 'active' | 'archived' | 'draft'
-  color: 'purple' | 'red' | 'emerald' | 'amber' | 'blue'
-  stats: { label: string; value: string }[]  // i18n message keys
+  color: string               // Tailwind color name (e.g., 'purple', 'red', 'emerald'). Must have a matching class map in InvestigationCard.
+  stats: { label: string; value: string }[]  // label: i18n message key; value: literal display string
   href: string
 }
 
@@ -93,7 +91,7 @@ Three entries: Caso Libra, Caso Epstein, Finanzas Politicas. Adding a new case =
 
 - Section title: "Que podes hacer"
 - Grid of 4-6 cards, each with:
-  - Text-based icon (no external icon library)
+  - Inline SVG icon (small, hand-written SVGs — no external icon library)
   - Title (i18n key)
   - Short description (i18n key)
 - Features:
@@ -152,14 +150,18 @@ Three entries: Caso Libra, Caso Epstein, Finanzas Politicas. Adding a new case =
 ```tsx
 <html lang={locale}>
   <body>
-    <NextIntlClientProvider>
-      <SiteNav />
-      {children}
-      <Footer />
-    </NextIntlClientProvider>
+    <SessionProvider>
+      <NextIntlClientProvider messages={messages} locale={locale}>
+        <SiteNav />
+        {children}
+        <Footer />
+      </NextIntlClientProvider>
+    </SessionProvider>
   </body>
 </html>
 ```
+
+`<SessionProvider>` is required because `<SiteNav>` renders `<UserMenu>` (existing client component that depends on session context). `<NextIntlClientProvider>` receives `messages` and `locale` from the server — this enables `useTranslations()` in client components like `<SiteNav>`. Server components (`<Hero>`, `<FeatureShowcase>`, `<Roadmap>`, `<Footer>`) use `getTranslations()` directly from `next-intl/server`.
 
 ---
 
@@ -173,8 +175,11 @@ Three entries: Caso Libra, Caso Epstein, Finanzas Politicas. Adding a new case =
 
 ### Impact on existing pages
 
-- **Caso pages:** Keep `InvestigationNav` for sub-tabs. `SiteNav` sits above it from the layout. No modifications needed to caso pages themselves.
-- **Other pages** (`/investigaciones`, `/explorar`, `/politico/*`, auth): Gain a consistent nav they didn't have or had inconsistently. No modifications needed.
+Adding `<SiteNav>` and `<Footer>` to the root layout means every page gets them. Many pages currently render their own `<header>` and footer inline. These must be refactored to remove duplication.
+
+- **`webapp/src/app/caso/[slug]/layout.tsx`** — Remove `<header>` (ORC logo + breadcrumb) and `<footer>`. Keep `<InvestigationNav>` and `<main>` wrapper. The breadcrumb (`ORC / Caso Name`) moves into `SiteNav` as a context-aware breadcrumb segment, or is rendered between `SiteNav` and `InvestigationNav`.
+- **Pages with inline headers** (`/explorar`, `/politico/[slug]`, `/provincias/*`, `/investigaciones`, `/investigacion/[slug]`, `/mis-investigaciones`, `/perfil`, `/caso/finanzas-politicas/resumen`, `/caso/[slug]/resumen`) — Remove their inline `<header>` elements. These pages currently render their own ORC logo + nav links that will now be redundant with the global `SiteNav`.
+- **`webapp/src/app/page.tsx`** — Full rewrite (already planned). Loses inline header and footer.
 
 ### Auth integration
 
@@ -185,7 +190,9 @@ Three entries: Caso Libra, Caso Epstein, Finanzas Politicas. Adding a new case =
 
 ## 6. i18n Setup
 
-### Library: next-intl
+### Library: next-intl (with compatibility spike)
+
+The project uses Vinext (Vite-based RSC framework implementing the Next.js API surface), not canonical Next.js. `next-intl` relies on Next.js internals (middleware, `next/headers`). **A spike task is required** during implementation to validate `next-intl` works under Vinext. If it does not, the fallback is a lightweight custom approach: plain JSON message imports with a `useMessages(locale, namespace)` hook for client components and a `getMessages(locale, namespace)` helper for server components. The message file structure (`messages/es.json`, `messages/en.json`) stays the same either way.
 
 ### File structure
 
@@ -246,19 +253,30 @@ webapp/
 
 | File | Change |
 |------|--------|
-| `webapp/src/app/layout.tsx` | Add `<SiteNav />`, `<Footer />`, next-intl provider |
+| `webapp/src/app/layout.tsx` | Add `<SessionProvider>`, `<SiteNav />`, `<Footer />`, i18n provider |
 | `webapp/src/app/page.tsx` | Full rewrite — compose from new components |
-| `webapp/package.json` | Add `next-intl` dependency |
+| `webapp/src/app/caso/[slug]/layout.tsx` | Remove inline `<header>` (logo + breadcrumb) and `<footer>`. Keep `<InvestigationNav>` and `<main>` wrapper |
+| `webapp/src/app/explorar/page.tsx` | Remove inline `<header>` |
+| `webapp/src/app/politico/[slug]/page.tsx` | Remove inline `<header>` |
+| `webapp/src/app/provincias/page.tsx` | Remove inline `<header>` |
+| `webapp/src/app/provincias/[province]/page.tsx` | Remove inline `<header>` |
+| `webapp/src/app/investigaciones/page.tsx` | Remove inline `<header>` |
+| `webapp/src/app/investigacion/[slug]/page.tsx` | Remove inline `<header>` |
+| `webapp/src/app/mis-investigaciones/page.tsx` | Remove inline `<header>` |
+| `webapp/src/app/perfil/page.tsx` | Remove inline `<header>` |
+| `webapp/src/app/caso/[slug]/resumen/page.tsx` | Remove inline `<header>` |
+| `webapp/src/app/caso/finanzas-politicas/resumen/page.tsx` | Remove inline `<header>` |
+| `webapp/package.json` | Add `next-intl` dependency (or custom i18n if spike fails) |
 
 ### Untouched
 
-- All caso pages, investigation pages, politician pages, auth pages
 - `InvestigationNav` — stays as-is for caso sub-tabs
-- All existing components
+- Auth pages — already minimal, no inline header conflicts
+- All existing non-layout components
 
 ### New dependency
 
-- `next-intl` — one package
+- `next-intl` — one package (pending Vinext compatibility spike; fallback: no new dependency)
 
 ---
 
@@ -267,7 +285,7 @@ webapp/
 | Decision | Rationale |
 |----------|-----------|
 | Static config over Neo4j | Homepage shouldn't depend on database availability; trivial to swap later |
-| next-intl over custom solution | Best Next.js App Router support, works with server components, lightweight |
+| next-intl over custom solution | Best Next.js App Router support, works with server components, lightweight. Requires Vinext compatibility spike — fallback is plain JSON imports with custom hooks |
 | No locale routing yet | Avoid complexity until English content actually exists |
 | SiteNav in layout, not page | Consistent nav across entire app without modifying every page |
 | Message keys in config | InvestigationConfig references i18n keys, not raw strings — translations work automatically |
