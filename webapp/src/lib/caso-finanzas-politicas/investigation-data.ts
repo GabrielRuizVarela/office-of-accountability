@@ -382,7 +382,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_es:
       'Macri dona ARS 100.000 a Juntos por el Cambio; Maximo Kirchner dona ARS 50.000 a Frente de Todos. Se identifican 50 coincidencias politico-donante (0% falsos positivos). Se detectan violaciones de contratista-donante de Rodriguez y Gonzalez.',
     description_en:
-      'Macri donates ARS 100,000 to Juntos por el Cambio; Maximo Kirchner donates ARS 50,000 to Frente de Todos. 50 politician-donor matches identified (0% false positives). Rodriguez and Gonzalez contractor-donor violations detected.',
+      'Macri donates ARS 100,000 to Juntos por el Cambio; Maximo Kirchner donates ARS 50,000 to Frente de Todos. 50 politician-donor matches identified (0% false positives). Rodriguez contractor-donor pattern detected.',
     category: 'political',
     sources: ['https://aportantes.electoral.gob.ar'],
   },
