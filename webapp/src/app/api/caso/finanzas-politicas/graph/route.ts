@@ -110,13 +110,34 @@ RETURN p.id AS pid, o.name AS officer, toString(elementId(o)) AS oid,
        e.status AS status, toString(elementId(e)) AS eid
 `
 
-/** Judges handling investigation cases */
+/** Judges appointed by politicians in the graph */
 const JUDGES_CYPHER = `
 MATCH (j:Judge)-[:APPOINTED_BY]->(p:Politician)
 WHERE j.name CONTAINS "LIJO" OR j.name CONTAINS "ERCOLINI" OR j.name CONTAINS "ARROYO SALGADO"
-   OR j.name CONTAINS "CASANELLO" OR j.name CONTAINS "BONADIO"
+   OR j.name CONTAINS "CASANELLO" OR j.name CONTAINS "BONADIO" OR j.name CONTAINS "SERVINI"
 RETURN j.name AS judge, toString(elementId(j)) AS jid,
        p.id AS appointedBy, p.name AS presidentName
+`
+
+/** Top party switchers — politicians who changed parties 3+ times */
+const SWITCHERS_CYPHER = `
+MATCH (p:Politician)-[:SERVED_TERM]->(t:Term)-[:TERM_PARTY]->(party:Party)
+WITH p, collect(DISTINCT party) AS parties
+WHERE size(parties) >= 3
+UNWIND parties AS party
+RETURN p.id AS pid, p.name AS pname, toString(elementId(party)) AS partyId, party.name AS partyName
+ORDER BY size(parties) DESC
+LIMIT 100
+`
+
+/** Key legislation — show which politicians voted on it */
+const LEGISLATION_CONFLICTS_CYPHER = `
+MATCH (p:Politician)-[:CAST_VOTE]->(v:LegislativeVote)-[:VOTE_ON]->(l:Legislation)
+WHERE l.name IN ['Ley Bases', 'Presupuesto', 'Impuesto a las Ganancias', 'Reforma Laboral', 'Ley de Medios', 'Codigo Penal']
+WITH l, p, count(v) AS votes
+ORDER BY votes DESC
+WITH l, collect({pid: p.id, pname: p.name, votes: votes})[..8] AS topVoters
+RETURN toString(elementId(l)) AS lid, l.name AS lname, COALESCE(l.sector, '') AS sector, topVoters
 `
 
 // Cross-referenced entities removed from viz — they create duplicate identity nodes
@@ -367,6 +388,69 @@ export async function GET(): Promise<Response> {
       }
     } catch { /* timeout ok */ }
 
+    // Phase 4a: Party switchers — show politicians who changed parties with their party nodes
+    try {
+      const switchers = await readQuery(SWITCHERS_CYPHER, {}, (r: Neo4jRecord) => ({
+        pid: r.get('pid') as string, pname: r.get('pname') as string,
+        partyId: r.get('partyId') as string, partyName: r.get('partyName') as string,
+      }))
+      for (const s of switchers.records) {
+        let pId = politicianElementIds.get(s.pid)
+        if (!pId) {
+          // Add the politician
+          pId = 'switcher-' + s.pid
+          if (!nodeMap.has(pId)) {
+            nodeMap.set(pId, {
+              id: pId, name: s.pname, type: 'Politician', color: NODE_COLORS.Politician,
+              datasets: 1, val: 3, labels: ['Politician'], properties: { id: s.pid },
+            })
+            politicianElementIds.set(s.pid, pId)
+          }
+        }
+        if (!nodeMap.has(s.partyId)) {
+          nodeMap.set(s.partyId, {
+            id: s.partyId, name: s.partyName, type: 'Party', color: '#8b5cf6',
+            datasets: 0, val: 3, labels: ['Party'], properties: {},
+          })
+        }
+        links.push({ source: pId, target: s.partyId, type: 'MEMBER_OF', properties: {} })
+      }
+    } catch { /* timeout ok */ }
+
+    // Phase 4b: Key legislation with top voters linked
+    try {
+      const laws = await readQuery(LEGISLATION_CONFLICTS_CYPHER, {}, (r: Neo4jRecord) => ({
+        lid: r.get('lid') as string, lname: r.get('lname') as string,
+        sector: r.get('sector') as string,
+        topVoters: r.get('topVoters') as Array<{ pid: string; pname: string; votes: number }>,
+      }))
+      // Group legislation by name (e.g., multiple "Presupuesto" per year → one node)
+      const lawByName = new Map<string, string>()
+      for (const l of laws.records) {
+        let lawNodeId = lawByName.get(l.lname)
+        if (!lawNodeId) {
+          lawNodeId = 'law-' + l.lname.toLowerCase().replace(/\s+/g, '-')
+          lawByName.set(l.lname, lawNodeId)
+          nodeMap.set(lawNodeId, {
+            id: lawNodeId, name: l.lname, type: 'Legislation',
+            color: '#f43f5e',
+            datasets: 0, val: 6,
+            labels: ['Legislation'], properties: { sector: l.sector },
+          })
+        }
+        for (const voter of l.topVoters) {
+          const pId = politicianElementIds.get(voter.pid)
+          if (pId) {
+            // Avoid duplicate links
+            const linkKey = pId + '->' + lawNodeId
+            if (!links.some(lk => (typeof lk.source === 'string' ? lk.source : '') + '->' + (typeof lk.target === 'string' ? lk.target : '') === linkKey)) {
+              links.push({ source: pId, target: lawNodeId!, type: 'VOTED_ON', properties: {} })
+            }
+          }
+        }
+      }
+    } catch { /* timeout ok */ }
+
     // Phase 4: Cross-referenced entities removed — they create duplicate identity nodes
 
     // Phase 5: Add PENSAR ARGENTINA network
@@ -599,8 +683,8 @@ export async function GET(): Promise<Response> {
           if (!visited.has(nb)) queue.push(nb)
         }
       }
-      // Keep components with 4+ nodes
-      if (component.size >= 4) {
+      // Keep components with 3+ nodes
+      if (component.size >= 3) {
         for (const id of component) keepIds.add(id)
       }
     }
