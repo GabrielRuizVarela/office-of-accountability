@@ -518,7 +518,7 @@ export function SiteNav() {
 
 - [ ] **Step 3: Verify SiteNav renders**
 
-Start dev server (`npm run dev`), temporarily add `<SiteNav />` import to `page.tsx` to test rendering. Verify:
+Start dev server (`pnpm dev`), temporarily add `<SiteNav />` import to `page.tsx` to test rendering. Verify:
 - Logo links to `/`
 - Two nav links render with correct text
 - Mobile hamburger toggles on narrow viewport
