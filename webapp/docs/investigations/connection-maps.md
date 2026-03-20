@@ -1,7 +1,7 @@
 # Investigation Connection Maps
 
 **Date:** 2026-03-19
-**Source:** Graph analysis of 3.26M nodes, 986K relationships across 8 datasets
+**Source:** Graph analysis of 3.26M nodes, 2.77M relationships (incl. 1.78M SAME_PERSON bridge) across 8 datasets
 
 ## Connection Map 1: The PRO Financial Machine
 
@@ -86,11 +86,14 @@ Mauricio Macri appears in **5 datasets** (maximum): Donor + BoardMember + Compan
 
 | Rank | Target | Signal | Status |
 |------|--------|--------|--------|
-| 1 | Camaño | Offshore + financial votes + 14x wealth + 6 parties | Highest single-target value |
-| 2 | Macri/SOCMA | Correo + AUSOL + blanqueo = systemic | Most documented |
+| 1 | Camaño | Offshore (Pandora/Trident) + Bellota SA + financial votes + 14x wealth + 6 parties | Highest single-target value |
+| 2 | Macri/SOCMA/Geometales | Correo + AUSOL + blanqueo + Minera Geometales board (Aguado, Grindetti, Luksic, Mindlin) | Most documented, new mining nexus |
 | 3 | Ibañez/PELMOND | Active offshore while deputy | Most actionable current violation |
-| 4 | PRO revolving door | 13/20 cases = institutional capture | Systemic pattern |
-| 5 | Aluar dual-coalition | ARS 5.4M to both sides | Industrial policy corruption signal |
+| 4 | Santoro sand empire | 11 sand/aggregate companies while sitting deputy, vertically integrated | New finding — undisclosed business empire |
+| 5 | Grindetti/Panama Papers | On Geometales board + Panama Papers charges + SOCMA cadre | Bridges corporate and offshore |
+| 6 | De Narváez | 37 boards, $500M fortune, Timberhill/Willowbrook trading cos | Offshore vehicle investigation needed |
+| 7 | PRO revolving door | 13/20 cases = institutional capture | Systemic pattern |
+| 8 | Aluar dual-coalition | ARS 5.4M to both sides | Industrial policy corruption signal |
 
 ## Data Quality Notes
 
@@ -171,28 +174,79 @@ Also co-founded: **SUMA PARA EL DISEÑO DE POLITICAS PUBLICAS** (Michetti + Pine
 
 ## Connection Map 12: SAME_PERSON Bridge — New Corporate Connections (Cycle 3)
 
-The SAME_PERSON relationship (1.03M DNI-matched links between CompanyOfficer and BoardMember nodes) created new traversal paths revealing politicians' full corporate footprints:
+The SAME_PERSON relationship (1.78M DNI-matched links between CompanyOfficer and BoardMember nodes) created new traversal paths revealing politicians' full corporate footprints.
 
-### Verified Corporate Politicians
+### Verified Corporate Politicians (DNI-confirmed)
 
-| Politician | Party | Companies | Key Holdings |
-|-----------|-------|-----------|-------------|
-| De Narváez, Francisco | Union Celeste y Blanco | 37 | El Cronista, TIA, La Rural, America TV, **Timberhill Trading, Willowbrook Trading** (possible offshore) |
-| Gutiérrez, Julio César | PJ, Santa Fe | 29 | South Cable Holdings, Video Cable Color Totoras (cable TV empire — unverified) |
-| Fargosi, Alejandro | LLA | 20 | Estudio O'Farrell, Ellipso Inc, telecoms privatization-era companies |
-| Torello, José María | PRO | 15 | Consultatio (Costantini), PENSAR ARGENTINA |
-| Frigerio, Rogelio | PRO, Entre Ríos | 11 | Economía & Regiones, real estate in province he governs |
-| Bergman, Sergio | PRO | 9 | PENSAR ARGENTINA + religious/community orgs |
-| Santilli, Diego | PRO | 8 | PENSAR ARGENTINA, Sanfor Investments |
-| Recalde, Mariano | PJ | 7 | Aerolíneas Argentinas group (confirmed president 2009-2015) |
+| Politician | Party | DNI | Boards | Key Holdings |
+|-----------|-------|-----|--------|-------------|
+| De Narváez, Francisco | UCyB, Buenos Aires | 18758371 | 37 | Mundo Urbano, Narciso, Dorinka, Gossip, El Cronista, TIA, La Rural, America TV |
+| Gutiérrez, Julio César | PJ, Santa Fe | 11128344 | 28 | Latin American Management, South Cable Holdings, AC Inversora, Southtel Holdings |
+| Fargosi, Alejandro | LLA, CABA | 11371750 | 20 | Estudio O'Farrell, Synthes Argentina, Ellipso Inc, Hipatia Capital |
+| Torello, José María | PRO, Buenos Aires | 14156067 | 15 | Consultatio Argentina (Costantini), PENSAR ARGENTINA, SJJF Desarrollos |
+| Romero, Juan Carlos | Cambio Federal, Salta | 13516864 | 15 | Transportes ERSA (Cargas + Santiago), Matysud, Grupo Rioplatense, Arrozales Corrientes |
+| Michel, Guillermo | UP, Entre Ríos | 25661121 | 14 | EMBRAR, Baco Inversiones, Sandebus, Rapp Collins Worldwide |
+| Pereyra, Juan Manuel | FORJA, Córdoba | 26018792 | 13 | Yacylec, Vialnoa, Raisin, Construcciones Térmicas |
+| Wechsler, Marcelo Germán | PRO, CABA | 17198527 | 12 | Corporación Puerto Madero, Internet Now, Critical Path, Rote Meer Leasing |
+| Frigerio, Rogelio | PRO, Entre Ríos | 21482393 | 11 | Desarrollos Inmobiliarios Alto Delta, Economía y Regiones, Casel, Chulun |
+| Santoro, Leandro | UP, CABA | 30743251 | 11 | Aridos Cañuelas, Arenas Building, Arenera Sarthou, Arenera Pueyrredón, CADEAR, Arenas Shipping |
+| De Mendiguren, José Ignacio | FdT, Buenos Aires | 8406697 | 9 | UIA, Observatorio PyME, BICE Factoring, Pro-Tejer, Cedeira Internacional |
+| Pérez, Alberto José | Compromiso Federal, SL | 14699750 | 9 | Rainbow Agroscienses, Sulphur Mills, NPC & Asociados |
+
+### Key New Lead: Santoro's Sand Empire
+Leandro Santoro (UP, CABA) DNI-confirmed across 11 sand extraction and aggregate companies: Aridos Cañuelas, Arenas Building, Arenera Sarthou, Arenera Pueyrredón, Silos Areneros Buenos Aires, Arenas Shipping, CADEAR (industry association), Arenas Studios, Marymar, SABA. Web search confirms he is Managing Director involved in dredging, sand extraction, transport and commercialization. This is a **vertically integrated sand/aggregate business** operated by a sitting deputy.
 
 ### Key New Lead: De Narváez offshore vehicles
-Timberhill Trading Inc. and Willowbrook Trading Inc. — associated with a politician-businessman who purchased El Cronista Comercial and owned TIA supermarkets (sold for $638M). These trading companies warrant offshore investigation.
+Timberhill Trading Inc. and Willowbrook Trading Inc. — associated with a politician-businessman who purchased El Cronista Comercial and owned TIA supermarkets (sold for $638M). Web search confirms personal fortune exceeding $500M, Walmart Argentina acquisition (2020), La Rural exhibition center, América TV. These trading companies warrant offshore investigation.
 
-### Camaño strengthened
-Only politician at the intersection of offshore records AND company boards. Confirmed: she and husband Luis Barrionuevo direct Bellota SA.
+### Camaño — Bellota SA bridge to Barrionuevo
+Only politician at the intersection of offshore records AND company boards. Confirmed: she and husband Luis Barrionuevo co-direct Bellota SA. The Camaño-Barrionuevo-Bellota link is the only InvestigationTarget→Politician bridge found via shared companies.
+
+## Connection Map 13: Minera Geometales — The SOCMA Mining Nexus
+
+Minera Geometales SA is the **single richest board-level connection** found in the graph. It links:
+
+**Politicians on board:**
+- **MACRI, Mauricio** (PRO) — board member, company originally acquired by IECSA/Macri Group from Chile's Luksic Group
+- **MACRI, Francisco** — Franco Macri, patriarch of the Macri empire
+- **AGUADO, Jorge** (UCeDé, Buenos Aires) — ex-governor of Buenos Aires province (military era), later VP of SOCMA Group
+- **GRINDETTI, Néstor Osvaldo** — PRO mayor of Lanús, former SOCMA cadre, **charged in Panama Papers** (2016, illicit enrichment)
+
+**Corporate figures on the same board:**
+- Jean Paul Luksic Fontbona / Andrónico Luksic Abaroa — Chilean Luksic mining dynasty (original owners)
+- Damián Mindlin — Emes Group (acquired the company in 2017 along with all IECSA assets)
+- Felipe Suar — TV producer, Macri associate
+- Pablo Clusellas — Macri's Legal Secretary during presidency
+- Martín Blaquier — Ledesma sugar dynasty
+
+**Timeline:** Originally Luksic Group → acquired by IECSA (Macri Group) in late 1990s → Calcaterra (Macri cousin) as president 2001-2004 → fined for illegal water use 2008 → sold to Emes Group (Mindlin) 2017.
+
+**Significance:** This single mining company board served as a meeting point for the Macri political dynasty, military-era political appointees, Chilean mining oligarchs, and the group that later acquired the privatized energy assets. Grindetti's presence on this board while simultaneously facing Panama Papers charges for offshore structures reinforces the SOCMA→offshore pipeline.
+
+## Connection Map 14: Investigation Target Network Expansion
+
+Only 3 connections found between InvestigationTargets and other politicians via shared companies:
+
+| Target | Connected Politician | Party | Shared Company |
+|--------|---------------------|-------|---------------|
+| CAMAÑO, Graciela | BARRIONUEVO, José Luis | Nacional Sindical | BELLOTA SA |
+| MACRI, Mauricio | AGUADO, Jorge Rubén | UCeDé | MINERA GEOMETALES |
+| MACRI, Mauricio | RATTIN, Antonio Ubaldo | Unidad Federalista | LA XENEIZE SOC. GERENTE FCI |
+
+**La Xeneize** is a Boca Juniors-linked investment fund management company — Macri was Boca president (1995-2007), Rattin was the legendary Boca player-turned-politician.
+
+### Offshore Politicians (MAYBE_SAME_AS to OffshoreOfficer)
+
+Only 3 politicians have direct offshore links in the ICIJ data:
+
+| Politician | Party | Leak | Offshore Entity |
+|-----------|-------|------|----------------|
+| CAMAÑO, Graciela | Consenso Federal | Pandora Papers (Trident Trust) | TT 41 CORP (BVI) |
+| IBAÑEZ, Maria Cecilia | La Libertad Avanza | Panama Papers | PELMOND COMPANY LTD (BVI) |
+| NUÑEZ, Jose | Provincias Unidas | Panama Papers | (unspecified) |
 
 ### False positives confirmed
-- Fernández Carlos Alberto (66→83 officers share name) — FALSE POSITIVE
-- Martínez Luis Alberto (50 companies) — FALSE POSITIVE
-- Romero (already flagged) — confirmed unreliable
+- Fernández Carlos Alberto (208 companies via MAYBE_SAME_AS) — common name collision, multiple different people
+- López Juan Carlos (131 companies) — same issue
+- Martínez Luis Alberto / Carlos Alberto — same issue
+- García Carlos (79 companies, includes SEED HOLDINGS/SEED PARTNERS) — likely name collision with corporate Carlos García
