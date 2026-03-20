@@ -27,7 +27,7 @@ The result is a 9-chapter investigative narrative in Spanish, backed by verifiab
 
 ### The graph
 
-3.67M nodes, 4.81M relationships spanning legislative, executive, judicial, corporate, and offshore domains.
+2.16M nodes, 4.49M relationships spanning legislative, executive, judicial, corporate, and offshore domains. Zero duplicates, 586 orphans (all intentional — investigation-relevant judges and offshore entities).
 
 ## Test plan
 
