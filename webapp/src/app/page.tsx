@@ -1,6 +1,4 @@
-'use client'
-
-import { useTranslations } from 'next-intl'
+import { createTranslator } from '@/i18n/messages'
 
 import { Hero } from '@/components/landing/Hero'
 import { InvestigationCard } from '@/components/landing/InvestigationCard'
@@ -9,7 +7,7 @@ import { Roadmap } from '@/components/landing/Roadmap'
 import { investigations } from '@/config/investigations'
 
 export default function Home() {
-  const t = useTranslations('investigations')
+  const t = createTranslator('investigations')
   const activeInvestigations = investigations.filter((i) => i.status === 'active')
 
   return (
