@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useMemo } from 'react'
+import { getLabelColor, getLabelDisplayName } from '../../lib/graph/constants'
 
 import { getLabelColor, getLabelDisplayName } from '../../lib/graph/constants'
 
