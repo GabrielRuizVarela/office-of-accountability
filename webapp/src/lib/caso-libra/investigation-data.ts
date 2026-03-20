@@ -549,6 +549,67 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     detail_en:
       'The prosecutor requested it, but official issuance by Interpol has not been confirmed.',
   },
+
+  // ---- Wave 4: Graph analysis + LLM forensic findings ----
+  {
+    id: 'fc-peh-highest-centrality',
+    claim_es:
+      'Julian Peh tiene la mayor centralidad en la red del grafo (10 conexiones), superando a Milei y Davis (7 cada uno), lo que sugiere un rol de coordinación más amplio del conocido públicamente.',
+    claim_en:
+      'Julian Peh has the highest centrality in the graph network (10 connections), surpassing Milei and Davis (7 each), suggesting a broader coordination role than publicly known.',
+    status: 'under_investigation',
+    source: 'Graph database analysis (Office of Accountability)',
+    source_url: 'https://en.wikipedia.org/wiki/$Libra_cryptocurrency_scandal',
+    detail_es:
+      'El análisis del grafo muestra a Peh como el nodo más conectado, vinculado a eventos, organizaciones y personas clave. Su rol como cofundador de KIP Protocol y sus conexiones con la infraestructura técnica del lanzamiento requieren mayor investigación.',
+    detail_en:
+      'Graph analysis shows Peh as the most connected node, linked to key events, organizations, and persons. His role as KIP Protocol co-founder and connections to the technical launch infrastructure require further investigation.',
+  },
+  {
+    id: 'fc-cross-token-wallet-chain',
+    claim_es:
+      'La billetera 0xcEA que hizo sniping en $MELANIA ($2,4M de ganancia) financió directamente el despliegue de $LIBRA, demostrando que ambos esquemas estaban operativamente vinculados desde el inicio.',
+    claim_en:
+      'Wallet 0xcEA that sniped $MELANIA ($2.4M profit) directly funded the $LIBRA deployment, proving both schemes were operationally linked from the start.',
+    status: 'confirmed',
+    source: 'Bubblemaps blockchain forensics',
+    source_url:
+      'https://blog.bubblemaps.io/how-hayden-davis-rugged-libra-for-100m-with-president-milei/',
+    detail_es:
+      'Esto establece una cadena de financiamiento cross-token: las ganancias de $MELANIA fueron recicladas para desplegar $LIBRA. El patrón se repitió con $WOLF y al menos 15 tokens adicionales del mismo cluster.',
+    detail_en:
+      'This establishes a cross-token funding chain: $MELANIA profits were recycled to deploy $LIBRA. The pattern repeated with $WOLF and at least 15 additional tokens from the same cluster.',
+  },
+  {
+    id: 'fc-velocity-pump-pattern',
+    claim_es:
+      'La velocidad del pump ($0,000001 a $5,20 en 40 minutos) es estadísticamente incompatible con compras orgánicas y requiere coordinación previa entre billeteras insiders y el momento exacto de la publicación presidencial.',
+    claim_en:
+      'The pump velocity ($0.000001 to $5.20 in 40 minutes) is statistically incompatible with organic buying and requires prior coordination between insider wallets and the exact timing of the presidential post.',
+    status: 'confirmed',
+    source: 'Blockchain data / TRM Labs / Nansen',
+    source_url:
+      'https://www.trmlabs.com/post/the-libra-affair-tracking-the-memecoin-that-launched-a-scandel-in-argentina',
+    detail_es:
+      'El análisis forense de la LLM señala que una subida de más de 5 millones por ciento en 40 minutos, con el primer comprador entrando al instante exacto de la publicación, es una firma inequívoca de coordinación previa. Los bots de sniping estaban preposicionados.',
+    detail_en:
+      'LLM forensic analysis notes that a 5-million-percent surge in 40 minutes, with the first buyer entering at the exact instant of the post, is an unequivocal signature of prior coordination. Sniping bots were pre-positioned.',
+  },
+  {
+    id: 'fc-34-vs-8-wallets-gap',
+    claim_es:
+      'Solo 8 de las 34 direcciones vinculadas a Davis han sido rastreadas en detalle. Las 26 restantes (con parte de $124,6M en ganancias) permanecen sin identificar.',
+    claim_en:
+      'Only 8 of the 34 Davis-linked addresses have been traced in detail. The remaining 26 (with a portion of $124.6M in profits) remain unidentified.',
+    status: 'under_investigation',
+    source: 'Nansen / Chainalysis / Graph analysis',
+    source_url:
+      'https://research.nansen.ai/articles/libra-the-aftermath',
+    detail_es:
+      'El grafo solo contiene 8 nodos de billetera, pero Nansen/Chainalysis identificaron 34 direcciones vinculadas. Este déficit de 26 billeteras representa una brecha crítica en la investigación y posibles beneficiarios sin identificar.',
+    detail_en:
+      'The graph contains only 8 wallet nodes, but Nansen/Chainalysis identified 34 linked addresses. This 26-wallet deficit represents a critical investigation gap and potentially unidentified beneficiaries.',
+  },
 ]
 
 // ---------------------------------------------------------------------------
@@ -1276,6 +1337,24 @@ export const TIMELINE_EVENTS: readonly InvestigationTimelineEvent[] = [
       {
         name: 'Perfil',
         url: 'https://www.perfil.com/noticias/modo-fontevecchia/natalia-volosin-taiano-oculto-4-meses-informacion-clave-para-la-causa-libra-modof.phtml',
+      },
+    ],
+    is_new: true,
+  },
+  {
+    id: 'tl-graph-analysis-wave4',
+    date: '2026-03-20',
+    title_es: 'Análisis forense del grafo revela centralidad de Peh y brecha de 26 billeteras',
+    title_en: 'Graph forensic analysis reveals Peh centrality and 26-wallet gap',
+    description_es:
+      'El análisis automatizado del grafo de investigación (106 nodos, 144 aristas) reveló que Julian Peh tiene la mayor centralidad (10 conexiones), superando a Milei y Davis. También identificó que solo 8 de 34 billeteras vinculadas han sido rastreadas, dejando 26 sin identificar. La cadena de financiamiento cross-token ($MELANIA → $LIBRA → $WOLF) fue confirmada por datos de Bubblemaps.',
+    description_en:
+      'Automated analysis of the investigation graph (106 nodes, 144 edges) revealed Julian Peh has the highest centrality (10 connections), surpassing Milei and Davis. Also identified that only 8 of 34 linked wallets have been traced, leaving 26 unidentified. The cross-token funding chain ($MELANIA → $LIBRA → $WOLF) was confirmed by Bubblemaps data.',
+    category: 'media',
+    sources: [
+      {
+        name: 'Office of Accountability graph analysis',
+        url: 'https://blog.bubblemaps.io/how-hayden-davis-rugged-libra-for-100m-with-president-milei/',
       },
     ],
     is_new: true,
@@ -2061,6 +2140,18 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     label_es: 'Tokens vinculados al mismo cluster de Davis',
     label_en: 'Tokens linked to the same Davis cluster',
     source: 'Bubblemaps / CCN',
+  },
+  {
+    value: '26',
+    label_es: 'Billeteras vinculadas sin rastrear (de 34)',
+    label_en: 'Linked wallets untraced (of 34)',
+    source: 'Graph analysis vs Nansen/Chainalysis',
+  },
+  {
+    value: '106 / 144',
+    label_es: 'Nodos / aristas en el grafo de investigación',
+    label_en: 'Nodes / edges in investigation graph',
+    source: 'Office of Accountability graph database',
   },
 ]
 
