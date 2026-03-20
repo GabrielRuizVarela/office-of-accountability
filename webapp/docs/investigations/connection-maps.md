@@ -136,6 +136,40 @@ Politicians with the most board seats overwhelmingly support economic deregulati
 - 34 boards → Ley Bases: 50 YES, Reforma Laboral: 27 YES
 - This confirms the hypothesis: corporate-connected politicians vote to deregulate
 
+## Connection Map 15: Mining Legislation Conflict of Interest
+
+Politicians who voted on mining legislation AND sit on mining company boards:
+
+| Politician | Party | Mining Legislation | Mining Company | Vote |
+|-----------|-------|-------------------|---------------|------|
+| **MACRI, Mauricio** | PRO | Código de Minería — Modificación (Sept 2024) | MINERA GEOMETALES | Absent/null |
+| **MORALES, Gerardo Rubén** | UCR | Exploración y explotación del carbón mineral | NUEVO NORTE ENERGIA Y MINERIA | (recorded) |
+| **YARADE, Rodolfo Fernando** | — | Día del proveedor minero nacional | BOLERA MINERA | (recorded) |
+
+**Macri finding:** Mauricio Macri was absent for the Mining Code modification vote on 12/09/2024, while simultaneously sitting on the board of Minera Geometales SA — a copper exploration company in Malargüe, Mendoza, originally owned by the Macri Group via IECSA. Web search confirms: Governor Cornejo returned the mining concession to the Macri Group via Decree 304/2018, and Geometales has 16 mining properties in Malargüe. The company names its deposits after Franco Macri's grandchildren (Francesca, Valentina, Joaquina, Florencia).
+
+**Morales finding:** Gerardo Morales (UCR, Governor of Jujuy) voted on a coal mining exploration law while sitting on the board of NUEVO NORTE ENERGIA Y MINERIA — a direct conflict of interest for a politician from Argentina's mining-heavy northwest.
+
+## Connection Map 16: De Narváez Offshore Network (ICIJ)
+
+Francisco De Narváez appears in **both** Panama Papers and Pandora Papers:
+
+| Officer Name | Leak | Offshore Entity | Jurisdiction | Status |
+|-------------|------|----------------|-------------|--------|
+| FRANCISCO DE NARVAEZ STEUER | Panama Papers | Titan Consulting Ltd. | BVI | Active |
+| MARIA ISABEL DE NARVAEZ STEUER | Panama Papers | Titan Consulting Ltd. | BVI | Active |
+| JUANITA DE NARVAEZ STEUER | Panama Papers | Titan Consulting Ltd. | BVI | Active |
+| FRANCISCO DE NARVAEZ FECCHINO | Pandora Papers (Alcogal) | BANDA ORIENTAL S.A | — | Inactive |
+| FRANCISCO DE NARVAEZ FECCHINO | Pandora Papers (Alcogal) | RETRATO PARTNERS LIMITED | BVI | Active |
+
+**Key distinctions:** Two different Francisco De Narváez:
+- **STEUER** = siblings (Francisco, Maria Isabel, Juanita), registered with Titan Consulting in the Panama Papers — likely the children of the politician
+- **FECCHINO** = the politician himself (maiden name variant), with two Pandora Papers entities through Alcogal law firm
+
+**RETRATO PARTNERS LIMITED** (BVI, Active) is the most significant — an active offshore entity linked to the politician who purchased Walmart Argentina for ~USD 80M in 2020 and whose personal fortune exceeds USD 500M. The name "Retrato" (portrait) may reference the art/gallery world (De Narváez is a known art collector).
+
+**BANDA ORIENTAL S.A** — the name references the historical territory of Uruguay/Río de la Plata, suggesting Uruguayan operations. Status: Inactive.
+
 ## Data Quality: Confirmed False Positives
 
 Fernandez Carlos Alberto (108 boards) is confirmed as **multiple different people** sharing a common name — simultaneously "inspector," "jefe de sección," "Director de Planificación de Seguridad de Frontera," and "Diputado Nacional." Name-only matching inflates common names.
