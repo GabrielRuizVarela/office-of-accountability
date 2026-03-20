@@ -50,6 +50,16 @@ Automation handles data collection and processing. The researcher makes decision
 
 The LLM agent produces proposals — proposed nodes, edges, hypotheses, report sections — that accumulate until the next gate. The researcher approves, modifies, or rejects them. Nothing is written to the graph without human review.
 
+### Neo4j Namespace Implementation
+
+Neo4j Community has no native namespace or multi-database support. Namespacing is implemented via a mandatory `investigation_id` property on every engine-created node and relationship. All engine-generated Cypher queries filter by `WHERE n.investigation_id = $investigationId`.
+
+This follows the existing pattern in the codebase, where `caso_slug` serves the same purpose (see `dedup.ts` line 103: `WHERE n.caso_slug = $casoSlug`).
+
+**Uniqueness strategy:** Node IDs are composite — `{investigation_id}:{node_id}` — avoiding collisions with the existing global UNIQUE constraints on `Person.id`, `Document.id`, etc. The engine generates IDs in this format: `caso-epstein:ee-john-doe`. Forked branches use `{investigation_id}__{branch}:{node_id}`.
+
+**Constraint compatibility:** The engine does NOT create new Neo4j UNIQUE constraints per investigation. It relies on the composite ID format for uniqueness and the `investigation_id` property for isolation. Existing global constraints remain in place for non-engine data.
+
 ---
 
 ## 3. Investigation File Structure
@@ -78,7 +88,7 @@ description: "Mapping financial, social, and travel connections..."
 template: public-accountability    # optional — which template seeded this
 created: 2026-03-20
 tags: [financial-crime, trafficking, public-figures]
-neo4j_namespace: caso-epstein      # prefix for all graph data
+neo4j_namespace: caso-epstein      # investigation_id property on all nodes/edges
 
 models:
   default:
@@ -241,6 +251,12 @@ tier: bronze
 5. Output goes through the dedup layer before writing to Neo4j
 6. Everything is logged to `.investigation/audit.log`
 
+**Dedup two-pass model:** Dedup runs at two distinct points with different scopes:
+- **Source-level dedup** (configured in `sources/*.yaml`): runs at connector time, deduplicates incoming records against the existing graph. This is a pre-filter — prevents writing obvious duplicates during ingestion.
+- **Pipeline-level dedup** (configured in `pipeline.yaml` verify stage): runs as a cross-source global pass after all sources have been ingested. Catches duplicates between sources that source-level dedup can't see (e.g., the same person ingested from two different APIs with slightly different names).
+
+Both use the same underlying Levenshtein algorithm from `dedup.ts`. The threshold can differ between the two passes — source-level may be stricter (lower threshold) to avoid false merges during ingestion, while pipeline-level may be more permissive to catch cross-source duplicates.
+
 ### 3.4 pipeline.yaml
 
 Defines the investigation as an ordered sequence of stages (automated work) and gates (human decision points).
@@ -273,7 +289,7 @@ stages:
           scope:
             node_type: Person
             filter: "confidence_tier = 'bronze'"
-            order_by: connection_count
+            order_by: "@connection_count"   # @ prefix = computed aggregation
             limit: 50
           action: web_verify
           llm: fast
@@ -387,6 +403,7 @@ stages:
 - **Gates are blocking.** The pipeline stops and waits for human input. Gate decisions are recorded in the audit log.
 - **Stages can loop.** The `back_to_analyze` action on the report gate loops back.
 - **LLM scope is per-stage.** Each stage defines what the LLM can do — no free rein across the investigation.
+- **Computed sort expressions.** The `order_by` field supports `@`-prefixed computed aggregations (e.g., `@connection_count` generates `ORDER BY count{ (n)--() }`). Plain field names sort by stored properties. This keeps the YAML simple for common cases while supporting runtime aggregations.
 
 ---
 
@@ -409,6 +426,8 @@ interface LLMResponse {
   usage: { prompt_tokens: number, completion_tokens: number }
 }
 ```
+
+**Provider field mapping:** Each provider adapter maps vendor-specific response fields to the `LLMResponse` interface. The `llamacpp` provider must map Qwen's `reasoning_content` field to `reasoning` (Qwen 3.5 uses mandatory thinking mode — the analysis is in `reasoning_content`, not `content`). The `anthropic` provider maps `thinking` blocks similarly. This mapping is mandatory — without it, proposals from thinking-mode models will have empty reasoning in the audit trail.
 
 #### Built-in Providers
 
@@ -452,6 +471,8 @@ swarm:
 
 A corporate investigation could turn `Company` nodes into agents with `Officer` and `Transaction` context. The engine handles the conversion generically based on schema.yaml.
 
+**Migration note:** The existing `mirofish/client.ts` reads from `process.env.MIROFISH_API_URL` (hardcoded at import time). The engine requires a runtime-configurable endpoint per investigation. The client must be refactored to accept an `endpoint` parameter on each call rather than reading from env at module load. Similarly, `graphToMiroFishSeed()` must be generalized to accept `agent_source` and `context_from` node types from YAML rather than hardcoding `Person`, `Organization`, `Location`.
+
 ### 4.3 Proposals
 
 All LLM output is captured as proposals, never written directly:
@@ -488,7 +509,14 @@ Fields on every entry:
 - `action` — what happened
 - Action-specific context fields
 
-The log is **append-only** — never edited, never truncated. It aligns with the PRD's audit log format (Section 6.3: structured JSON events, hash chain for tamper detection).
+The log is **append-only** — never edited, never truncated.
+
+**Hash chain for tamper detection:** Per PRD Section 6.3, each entry includes a `prev_hash` field containing the SHA-256 hash of the previous entry. The first entry uses `prev_hash: "genesis"`. This creates a tamper-evident chain — modifying any entry invalidates all subsequent hashes. The engine validates the chain on startup and warns if corruption is detected.
+
+```jsonl
+{"ts":"...","actor":"engine","action":"stage_start","prev_hash":"genesis",...}
+{"ts":"...","actor":"engine","action":"node_created","prev_hash":"a3f2b8c1...",...}
+```
 
 ### 5.2 Snapshots
 
@@ -541,7 +569,12 @@ Branches can be **merged back**:
 investigate merge ./caso-epstein/ --branch hypothesis-money-laundering
 ```
 
-This replays the branch's audit log onto main, applying approved proposals as new nodes/edges with full provenance tracking back to the branch.
+**Merge semantics:** The engine performs a graph diff between the branch state and the current main state (not an audit log replay). The diff identifies:
+- **New nodes/edges** in the branch → proposed as additions to main (queued for gate review)
+- **Modified nodes** (property changes) → presented as updates with both versions
+- **ID collisions** (same entity created independently in main and branch) → flagged as conflicts for manual resolution, using the same fuzzy dedup logic
+
+The merge itself is a gate: the researcher reviews the diff and approves/rejects each change. Approved additions carry provenance tracking back to the branch (`branch: "hypothesis-money-laundering"`).
 
 ---
 
@@ -649,7 +682,14 @@ This maps directly to the existing investigation-loop skill's parallel agent pat
 investigate loop ./caso-epstein/ --interval 30m
 ```
 
-Each cycle picks up where the last left off — new data from sources, new nodes to verify, updated analysis. Stops at gates for human input, then continues when the researcher approves.
+Each cycle picks up where the last left off — new data from sources, new nodes to verify, updated analysis.
+
+**Gate behavior in loop mode:**
+- When a gate is reached, the loop **blocks** and notifies the researcher (terminal notification for CLI, push notification for webapp).
+- The loop does NOT continue past a pending gate — it waits for the researcher's decision before proceeding to the next stage.
+- If a gate has been pending for longer than the loop interval, subsequent loop ticks are no-ops (no re-notification, no skipping). The loop resumes from the pending gate once the researcher acts.
+- `--stages ingest,verify` restricts which stages run but does NOT bypass gates. If the `ingest` stage has a gate, the loop still stops there.
+- To run stages without gates (fully automated), configure `gate: null` on those stages in `pipeline.yaml`.
 
 ---
 
@@ -698,10 +738,19 @@ An investigation can extend a template and override parts:
 # investigation.yaml
 template: public-accountability
 overrides:
-  schema: ./schema.yaml        # adds extra node types on top of template's
-  pipeline: ./pipeline.yaml    # replaces pipeline entirely
-  remove_sources: [_flight-records]
+  schema: ./schema.yaml
+  pipeline: ./pipeline.yaml
+  remove_sources: [_flight-records]   # matches by filename stem (without .yaml)
 ```
+
+**Inheritance rules per file type:**
+
+| File | Mode | Behavior |
+|------|------|----------|
+| `schema.yaml` | **Additive (deep merge)** | Investigation schema is merged on top of template schema. New node/relationship types are added. If the investigation redefines a type that exists in the template, properties are merged (investigation properties override template properties with the same name, new properties are added). |
+| `pipeline.yaml` | **Replacement** | If provided, the investigation pipeline replaces the template pipeline entirely. There is no stage-level merge — if you need most of the template pipeline, copy it and modify. |
+| `sources/*.yaml` | **Additive** | Template sources are inherited. Investigation adds its own sources. `remove_sources` removes template sources by filename stem (e.g., `_flight-records` matches `_flight-records.yaml`). |
+| `investigation.yaml` | **Override** | Investigation values override template values for all fields. |
 
 ### 7.3 Community Templates
 
