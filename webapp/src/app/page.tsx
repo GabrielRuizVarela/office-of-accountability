@@ -1,4 +1,6 @@
-import { getTranslations } from 'next-intl/server'
+'use client'
+
+import { useTranslations } from 'next-intl'
 
 import { Hero } from '@/components/landing/Hero'
 import { InvestigationCard } from '@/components/landing/InvestigationCard'
@@ -6,8 +8,8 @@ import { FeatureShowcase } from '@/components/landing/FeatureShowcase'
 import { Roadmap } from '@/components/landing/Roadmap'
 import { investigations } from '@/config/investigations'
 
-export default async function Home() {
-  const t = await getTranslations('investigations')
+export default function Home() {
+  const t = useTranslations('investigations')
   const activeInvestigations = investigations.filter((i) => i.status === 'active')
 
   return (
