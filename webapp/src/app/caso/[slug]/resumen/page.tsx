@@ -1,13 +1,16 @@
 'use client'
 
 /**
- * Caso Libra — Narrative summary page.
+ * Caso investigation — Narrative summary page.
  *
- * A long-form, bilingual investigative journalism piece that walks readers
- * through the complete story of the $LIBRA token scandal.
+ * Dispatches based on the slug parameter:
+ * - caso-libra: full long-form narrative
+ * - caso-epstein: placeholder (en construccion)
+ * - default: "investigacion no encontrada"
  */
 
 import { useState } from 'react'
+import { useParams } from 'next/navigation'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -331,8 +334,54 @@ const sources: readonly Source[] = [
 // Component
 // ---------------------------------------------------------------------------
 
+// ---------------------------------------------------------------------------
+// Epstein placeholder
+// ---------------------------------------------------------------------------
+
+function EpsteinPlaceholder() {
+  return (
+    <article className="mx-auto max-w-prose py-20 text-center">
+      <h1 className="text-2xl font-bold text-zinc-50">
+        Resumen de la investigacion Epstein
+      </h1>
+      <p className="mt-4 text-zinc-400">En construccion</p>
+      <p className="mt-2 text-sm text-zinc-500">
+        La narrativa completa del caso Epstein esta siendo compilada a partir
+        de documentos judiciales, registros de vuelo y testimonios verificados.
+        Pronto estara disponible en este espacio.
+      </p>
+    </article>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// Not found
+// ---------------------------------------------------------------------------
+
+function NotFoundPlaceholder() {
+  return (
+    <article className="mx-auto max-w-prose py-20 text-center">
+      <h1 className="text-2xl font-bold text-zinc-50">
+        Investigacion no encontrada
+      </h1>
+      <p className="mt-4 text-zinc-400">
+        No existe una investigacion con este identificador.
+      </p>
+    </article>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// Main component
+// ---------------------------------------------------------------------------
+
 export default function ResumenPage() {
+  const params = useParams<{ slug: string }>()
+  const slug = params.slug
   const [lang, setLang] = useState<Lang>('es')
+
+  if (slug === 'caso-epstein') return <EpsteinPlaceholder />
+  if (slug !== 'caso-libra') return <NotFoundPlaceholder />
 
   return (
     <article className="mx-auto max-w-prose pb-20">
