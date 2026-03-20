@@ -268,7 +268,10 @@ export function ConexionesGraph() {
   // Link color by relationship type
   const LINK_COLORS: Record<string, string> = {
     'MAYBE_SAME_AS': '#475569',
+    'IS_DONOR': '#22c55e',
+    'HAS_OFFSHORE_LINK': '#ef4444',
     'HAS_OFFSHORE': '#ef4444',
+    'HAS_APPOINTMENT': '#f97316',
     'DONATED_TO': '#22c55e',
     'APPOINTED': '#f97316',
     'ON_BOARD': '#10b981',
