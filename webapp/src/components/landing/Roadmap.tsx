@@ -1,4 +1,6 @@
-import { getTranslations } from 'next-intl/server'
+'use client'
+
+import { useTranslations } from 'next-intl'
 import { roadmapPhases } from '@/config/roadmap'
 
 const STATUS_STYLES: Record<string, { badge: string; line: string }> = {
@@ -10,8 +12,8 @@ const STATUS_STYLES: Record<string, { badge: string; line: string }> = {
 
 const DEFAULT_STATUS = STATUS_STYLES['future']
 
-export async function Roadmap() {
-  const t = await getTranslations('roadmap')
+export function Roadmap() {
+  const t = useTranslations('roadmap')
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-12">

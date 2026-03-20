@@ -1,8 +1,10 @@
-import Link from 'next/link'
-import { getTranslations } from 'next-intl/server'
+'use client'
 
-export async function Hero() {
-  const t = await getTranslations('hero')
+import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+
+export function Hero() {
+  const t = useTranslations('hero')
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-20 sm:py-28">
