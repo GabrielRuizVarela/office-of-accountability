@@ -23,9 +23,9 @@ export default function FinanzasPoliticasLayout({
   return (
     <div className="flex min-h-screen flex-col">
       <FinanzasPoliticasNav />
-      <main className="flex-1">{children}</main>
-      <footer className="border-t border-zinc-800 px-4 py-6">
-        <div className="mx-auto max-w-6xl">
+      <main className="flex-1">
+        {children}
+        <div className="mx-auto max-w-6xl px-4 py-6">
           <div className="rounded-lg border border-amber-900/50 bg-amber-950/20 px-4 py-3 text-xs leading-relaxed text-amber-200/70">
             <strong className="text-amber-200">Aviso Legal:</strong> Esta
             investigacion se basa en fuentes publicas verificadas: registros
@@ -35,7 +35,7 @@ export default function FinanzasPoliticasLayout({
             culpabilidad.
           </div>
         </div>
-      </footer>
+      </main>
     </div>
   )
 }
