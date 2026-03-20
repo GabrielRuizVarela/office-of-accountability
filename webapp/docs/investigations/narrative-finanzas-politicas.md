@@ -250,13 +250,27 @@ En agosto de 2024, Mariano Macri presento denuncias penales contra SOCMA nombran
 
 ### MINERA GEOMETALES: el directorio que nadie mira
 
-Hay un dato que no aparece en los titulares pero si en los registros de la IGJ. En el directorio de **MINERA GEOMETALES** confluyen tres nombres:
+Hay un dato que no aparece en los titulares pero si en los registros de la IGJ y la CNV. En el directorio de **MINERA GEOMETALES** confluyen tres nombres:
 
 - **Mauricio Macri** — expresidente
 - **Victor Composto** — insider de SOCMA que blanqueo ARS 68 millones
 - **Jean Paul Luksic Fontbona** — heredero del grupo minero chileno Antofagasta PLC, una de las fortunas mas grandes de America Latina
 
 Un expresidente, el operador corporativo de su familia que declaro decenas de millones en activos ocultos, y la elite minera del continente. En la misma mesa directiva.
+
+### Geometales: genealogia corporativa completa
+
+La consulta a la base de la CNV devuelve **mas de 70 personas** que pasaron por el directorio de Minera Geometales a lo largo de tres epocas de propiedad. El patron de superposicion es revelador:
+
+**Epoca Luksic (pre-1997):** Jean Paul Luksic Fontbona, Andronico Luksic Abaroa, Vladimir Radic Piraino, Ramon Jara Araya — los nombres del grupo minero chileno Antofagasta PLC que fundo la empresa para explorar cobre en Malargue, Mendoza.
+
+**Epoca SOCMA/IECSA (1997-2017):** Franco Macri, Mauricio Macri, **Nestor Grindetti**, Victor Composto, Martin Blaquier, Carlos Vinci, Santos Sarnari, Ricardo Demattei, Arturo Lisdero, Felipe Suar, Sergio Lobbosco, Alberto Rojo. Geometales paso del grupo Luksic a IECSA (brazo de ingenieria de SOCMA) a fines de los noventa. Grindetti — que trabajo en Sideco desde 1980 y paso por IECSA, Creaurban, Manliba y Autopistas del Sol — no era solo el "contador de SOCMA." Era directivo de Geometales, Correo Argentino, Puentes del Litoral, Tracking Group, Murph y SCD Servicios. Simultaneamente. Y entre julio de 2010 y junio de 2013, mientras era Secretario de Hacienda de la Ciudad de Buenos Aires, tenia poder para operar la cuenta suiza de **Mercier International SA**, una offshore panamena con acciones al portador revelada en los Panama Papers. El fiscal federal Patricio Evers lo imputo por enriquecimiento ilicito en 2016. Su defensa: "una inversion que finalmente no se concreto." La firma Mercier fue constituida por Mossack Fonseca; su cuenta estaba en el banco suizo Clariden Leu. Grindetti nunca la declaro en sus declaraciones juradas como funcionario publico. Hoy, ademas de sus nueve causas pendientes en la justicia brasilena por su rol como ejecutivo de IECSA, Grindetti fue candidato a gobernador de Buenos Aires por Patricia Bullrich en 2023.
+
+**Epoca Pampa Energia/Emes (2017-presente):** Damian Mindlin, Daniel Abelovich, Damian Burgio, Elena Sozzani, Maia Chmielewski, Leonardo Bujia, Marcelo Fuxman, Martin Fernandez Dussaut, Santiago Altieri, German Wetzler Malbran, Gustavo Magot, Paula Sotelo. En 2017, el grupo Macri vendio IECSA al **Grupo Emes** (Marcelo Mindlin, Gustavo Mariani, Damian Mindlin, Ricardo Torres), y con ella Minera Geometales paso a la orbita de **Pampa Energia**. Los nuevos directivos comparten cargos simultaneamente en Cincovial, Compania Americana de Transmision Electrica, ODS, Focolare, Corpus Energia — todo el ecosistema de infraestructura y energia de Pampa. Geometales hoy opera 16 propiedades mineras en Malargue; los proyectos El Burrero, Las Choicas y La Adriana obtuvieron aprobacion ambiental en diciembre de 2023. En 2008, bajo propiedad de Franco Macri, la empresa fue sancionada por la Direccion General de Irrigacion por uso clandestino de cursos de agua y contaminacion del Rio Grande, causando mortandad masiva de peces y una epidemia local.
+
+### Grindetti: de SOCMA a Panama, de Lanus a la candidatura
+
+El caso Grindetti es el eslabón que conecta el universo corporativo de Geometales con el sistema offshore. Su trayectoria — cadete de SOCMA en 1980, directivo de Sideco/IECSA/Geometales/Correo Argentino, Secretario de Hacienda de la Ciudad de Buenos Aires con Macri (2007-2015), intendente de Lanus (2015-2023), candidato a gobernador bonaerense (2023) — es la puerta giratoria entre sector privado y poder politico en su forma mas pura. Grindetti no es un politico que hace negocios ni un empresario que hace politica: es ambas cosas simultaneamente, documentado en los registros de la IGJ, la CNV, el ICIJ y la justicia federal. La entrada del ICIJ en su nombre ([Offshore Leaks Database](https://offshoreleaks.icij.org/stories/nestor-grindetti)) confirma la relacion con Mercier International SA, Panama Papers. **Estado: CONFIRMADO** — imputacion judicial, registro ICIJ, y multiples fuentes periodisticas (La Nacion, Pagina/12, Telam, Perfil, El Cronista).
 
 La familia que convirtio el poder politico en riqueza personal — o fue al reves.
 
@@ -401,7 +415,7 @@ La busqueda de "Julio Cesar Gutierrez cable Totoras Santa Fe" y "South Cable Hol
 1. **Ibañez y Camaño:** verificar si PELMOND y TT 41 CORP figuran en sus declaraciones juradas ante la Oficina Anticorrupcion. Si no figuran, hay presunta omision dolosa bajo Ley 25.188.
 2. **Ferrari Facundo y Reale Jose Maria:** confirmar identidad mediante CUIT/DNI.
 3. **Cordero como contratista + offshore:** confirmar que es la misma persona en ambos datasets.
-4. **MINERA GEOMETALES:** verificar la composicion actual del directorio.
+4. **MINERA GEOMETALES:** composicion historica del directorio verificada via CNV (70+ miembros, tres epocas de propiedad). Grindetti confirmado como directivo y como titular en Panama Papers (ICIJ). Pendiente: verificar si Geometales esta excluida de la Ley 7722 de Mendoza (prohibicion de mineria a cielo abierto con sustancias toxicas).
 5. **Tagliaferri y PENSAR ARGENTINA:** confirmar pertenencia al directorio al momento de la votacion de la Ley Bases.
 
 ### Lo que deberia investigarse
@@ -471,6 +485,18 @@ A menos que alguien las responda.
 - [Frigerio operaciones inmobiliarias — Infobae](https://www.infobae.com/politica/2022/04/25/pidieron-citar-a-indagatoria-a-rogelio-frigerio-por-irregularidades-en-operaciones-inmobiliarias/)
 - [Frigerio negocio inmobiliario Entre Rios — Informe Digital](https://www.informedigital.com.ar/noticia/184534)
 - [Frigerio obras ilegales — El Fueguino](https://www.elfueguino.com.ar/obras-para-beneficiar-los-negocios-de-frigerio/)
+- [Grindetti imputado por enriquecimiento ilicito — LA NACION](https://www.lanacion.com.ar/politica/grindetti-quedo-imputado-en-la-causa-de-los-panama-papers-por-enriquecimiento-ilicito-nid1913566/)
+- [Grindetti Panama Papers — Pagina/12](https://www.pagina12.com.ar/diario/elpais/1-302943-2016-06-29.html)
+- [Grindetti es Macri — Letra P](https://www.letrap.com.ar/nota/2016-6-30-grindetti-es-macri-por-que-la-imputacion-al-intendente-de-lanus-inquieta-al-presidente)
+- [Grindetti ICIJ Offshore Leaks](https://offshoreleaks.icij.org/stories/nestor-grindetti)
+- [Grindetti una vida junto a los Macri — El Numeral](https://elnumeral.com/2023/05/22/grindetti-una-vida-junto-a-los-macri/)
+- [Grindetti Interpol IECSA Brasil — La Politica Online](https://www.lapoliticaonline.com/nota/97270-grindetti-aparecio-en-una-busqueda-de-interpol-por-una-causa-de-evasion-de-una-empresa-de-macri-en-brasil/)
+- [Minera Geometales Mendoza — Revista Citrica](https://revistacitrica.com/megamineria-en-mendoza-nuevo-intento.html)
+- [Geometales cobre Mendoza — Once Diario](https://oncediario.com.ar/noticia-mendoza-los-duenos-del-cobre-mendocino-que-corren-con-ventaja-en-el-impulso-a-la-mineria)
+- [Geometales devolucion concesion Macri — Los Andes](https://www.losandes.com.ar/el-gobierno-de-mendoza-le-devolvio-la-concesion-de-una-mina-en-malargue-al-grupo-macri)
+- [Geometales avanza cobre — EnerNews](https://enernews.com/nota/364848/geometales-avanza-en-su-plan-para-buscar-cobre-en-mendoza)
+- [Franco Macri explora cobre Malargue — No a la Mina](https://noalamina.org/argentina/mendoza/item/1135-una-empresa-de-franco-macri-explora-cobre-en-malarguee)
+- [Cornejo devolvio explotacion minera al grupo Macri — BBL](https://bbl.com.ar/nota_4906_por-decreto-cornejo-devolvi%C3%B3-una-explotaci%C3%B3n-minera-al-grupo-macri-)
 - [Clan Barrionuevo-Camaño — Realpolitik](https://realpolitik.com.ar/nota/36693/clan-barrionuevo--ndash--camano--numeros-que-no-cierran--titulos-dudosos-y-sueldos-envidiables/)
 - [Barrionuevo-Camaño sociedad conyugal — Infobae](https://www.infobae.com/politica/2021/10/26/barrionuevo-camano-una-sociedad-conyugal-que-se-sello-al-calor-del-peronismo-y-entro-en-crisis-con-la-pandemia/)
 - [Barrionuevo Forrest Gump — Revista Anfibia](https://www.revistaanfibia.com/luis-barrionuevo-el-forrest-gump-de-la-politica-argentina/)
