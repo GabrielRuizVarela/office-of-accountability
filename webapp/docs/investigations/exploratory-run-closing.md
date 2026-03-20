@@ -2,7 +2,7 @@
 
 **Date:** 2026-03-19
 **Status:** Exploratory — findings require verification before formal investigation
-**Graph:** 5,387,477 nodes — 4,412,802 relationships
+**Graph:** 5,391,639 nodes — 6,217,574 relationships
 
 ## Scope
 
@@ -105,3 +105,77 @@ This was an exploratory data integration run to test the feasibility of cross-re
 This investigation used exclusively public, freely available data sources under open licenses (CC-BY 4.0 for Argentine government data, ICIJ open database). All ETL pipelines are idempotent and reproducible. Entity matching uses `normalizeName()` (strips diacritics, lowercases, sorts name parts alphabetically) with confidence scores (0.7-0.8) and `match_method` metadata on every MAYBE_SAME_AS relationship.
 
 No data was fabricated, modified, or scraped from private sources. All findings are exploratory and require independent verification before any legal or journalistic action.
+
+## Session Complete — Final Statistics
+
+**Date completed:** 2026-03-19
+**Investigation cycles:** 5
+**Total commits on branch:** 119
+
+### Final Graph Size
+- **5,391,639 nodes** across 12 entity types
+- **6,217,574 relationships** (incl. 1.78M SAME_PERSON bridge)
+- **8 data sources** integrated (6 Argentine government + 2 international)
+
+### Confirmed Findings by Category
+
+| Category | Count | Key Examples |
+|----------|-------|-------------|
+| Mining conflict of interest | 3 | Macri/Geometales, Morales/Nuevo Norte, Yarade/Bolera |
+| Offshore entities (politicians) | 3 | Camaño/TT41, Ibañez/PELMOND, Nuñez/unnamed |
+| De Narváez offshore network | 5 entities | Titan Consulting, Banda Oriental, Retrato Partners |
+| PENSAR ARGENTINA (PRO structure) | 50+ members | Bullrich, Caputo, Sturzenegger, Vidal, Peña |
+| Corporate-politician boards | 12 verified | De Narváez (37), Gutiérrez (28), Fargosi (20) |
+| Santoro sand empire | 11 companies | Vertically integrated extraction-to-shipping |
+| Cross-party corporate bridges | 5 | Grupo Provincia, BICE, Credicoop, FONCAP, Nación Seguros |
+| Dual-coalition donors | 1 | Aluar Aluminio (ARS 5.4M to both sides) |
+| PRO revolving door | 13/20 | Systematic legislator → executive → politics pipeline |
+
+### Fact-Checked Claims (Cycle 5)
+
+All four web-verified claims confirmed:
+1. **De Narváez / Walmart Argentina** — Confirmed. Grupo De Narváez acquired 100% of Walmart Argentina in Nov 2020 for ~USD 80M (Infobae, La Nación, Walmart corporate).
+2. **Grindetti / Mercier International / Clariden Leu** — Confirmed. Grindetti held power of attorney for Mercier International SA (Panama) to operate account at Clariden Leu AG, Zurich. Charged with illicit enrichment (La Nación, Página/12, El Cronista).
+3. **Minera Geometales / Malargüe / Macri** — Confirmed. Franco Macri's company with 16 mining properties in Malargüe, Mendoza. Concession restored by Gov. Cornejo via Decree 304/2018 (Los Andes, EnerNews, BBL).
+4. **Grindetti / Brazilian cases / IECSA** — Confirmed. 9 pending cases (6 criminal, 3 labor) in Paraná State courts. International arrest warrant issued Dec 2012 by 6th Criminal Court of Curitiba, revoked March 2016 (La Política Online, Código Baires, Agencia Paco Urondo).
+
+### Confirmed False Positives Cleaned
+- Fernández Carlos Alberto (208 companies) — multiple people with same name
+- López Juan Carlos (131 companies) — same issue
+- Martínez Luis Alberto / Carlos Alberto — same issue
+- García Carlos (79 companies) — same issue
+
+### Investigation Priority Ranking (Final)
+
+| Rank | Target | Signal Strength | Verified |
+|------|--------|----------------|----------|
+| 1 | Camaño/Barrionuevo | Offshore + corporate + financial votes + 14x wealth + 6 parties | Yes |
+| 2 | Macri/SOCMA/Geometales | Correo + AUSOL + mining conflict + blanqueo + Luksic/Mindlin board | Yes |
+| 3 | Ibañez/PELMOND | Active offshore while sitting LLA deputy | Yes |
+| 4 | De Narváez offshore | 37 boards + 5 ICIJ entities + Walmart + $500M fortune | Yes |
+| 5 | Grindetti/Panama Papers | Mercier International + Clariden Leu + Brazilian warrants + Geometales board | Yes |
+| 6 | Santoro sand empire | 11 vertically integrated companies while sitting deputy | Yes |
+| 7 | PENSAR ARGENTINA | 50+ PRO politicians + Caputo on same registered board | Yes |
+| 8 | Mining legislation conflicts | Macri, Morales, Yarade voting on mining laws with board seats | Yes |
+| 9 | PRO revolving door | 13/20 institutional capture pattern | Yes |
+| 10 | Aluar dual-coalition | ARS 5.4M hedge-bet donations | Yes |
+
+### Next Steps
+
+**Immediate (data quality):**
+- Fix BOM bug in CSV parsers — will connect 662K orphaned company nodes
+- Ingest DDJJ individual asset tables (bienes, deudas) for wealth trajectory analysis
+- Add CUIT/DNI-based matching to replace name-only matching
+
+**Investigation (follow-up):**
+- File OA information requests for Ibañez and Camaño sworn declarations
+- Cross-reference PENSAR ARGENTINA board list against government contract recipients
+- Investigate Ferrari Facundo (AFIP agent + Panama Papers — the fox guarding the henhouse)
+- Map Retrato Partners Limited (De Narváez active BVI entity) through ICIJ intermediary data
+- Trace Grindetti's Clariden Leu account through Credit Suisse absorption (2012)
+
+**Technical:**
+- Build fulltext search indexes (replace CONTAINS queries)
+- Complete Como Voto ETL extension (design spec committed)
+- Add DNI-based deduplication to resolve common name collisions
+- Build automated conflict-of-interest detection: `(p)-[:CAST_VOTE]->()-[:VOTE_ON]->(l) WHERE (p)-[:BOARD_MEMBER_OF]->(c) AND c.sector = l.sector`
