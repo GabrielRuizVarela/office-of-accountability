@@ -8,11 +8,11 @@
 
 **Tech Stack:** Markdown, existing PRD structure
 
-**Status:** Tasks 1-5 (PRD section edits) are **superseded** by the milestone roadmap (PRD v0.4, Section 11). The Investigation Engine is now tracked as milestones M3-M5. Task 6 (implementation breakdown) was delivered. Task 7 (PR creation) was completed as PR #4.
+**Status:** ✅ ALL TASKS COMPLETE. Tasks 1-5 (PRD section edits) applied to PRD v0.4. Section 11 replaced with milestone roadmap (M0-M8). Task 6 (implementation breakdown) delivered inline. Task 7 (PR #4) merged.
 
 ---
 
-### Task 1: PRD Section 5.3.1 — Investigation Engine ✅ SUPERSEDED
+### Task 1: PRD Section 5.3.1 — Investigation Engine ✅ APPLIED
 
 ~~Add a new subsection under Section 5.3 (Investigations) that introduces the Investigation Engine as an automated research accelerator.~~
 
@@ -73,7 +73,7 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ---
 
-### Task 2: PRD Section 7.2 — Update Tech Stack Table ✅ SUPERSEDED
+### Task 2: PRD Section 7.2 — Update Tech Stack Table ✅ APPLIED
 
 ~~Update the AI/LLM row and add Investigation Engine row to the tech stack table.~~
 
@@ -111,7 +111,7 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ---
 
-### Task 3: PRD Section 7.3 — Update Architecture Diagram ✅ SUPERSEDED
+### Task 3: PRD Section 7.3 — Update Architecture Diagram ✅ APPLIED
 
 ~~Add the Investigation Engine module to the service architecture diagram.~~
 
@@ -172,7 +172,7 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ---
 
-### Task 4: PRD Section 7.5 — Update AI Integration Rules ✅ SUPERSEDED
+### Task 4: PRD Section 7.5 — Update AI Integration Rules ✅ APPLIED
 
 ~~The existing AI rules (Section 7.5) were written for Claude-only batch jobs. Update to reflect the Investigation Engine's broader LLM usage.~~
 
@@ -212,7 +212,7 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ---
 
-### Task 5: PRD Section 11 — Add Investigation Engine Phase ✅ SUPERSEDED
+### Task 5: PRD Section 11 — Add Investigation Engine Phase ✅ APPLIED
 
 ~~Add the Investigation Engine as a new phase in the phased delivery plan.~~
 

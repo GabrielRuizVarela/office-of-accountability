@@ -298,6 +298,36 @@ Investigations are the primary content type that users create. They are long-for
 - Endorsement count is visible on every claim — higher endorsement signals higher community confidence
 - No formal threshold required — visibility is organic, not gated
 
+#### 5.3.1 Investigation Engine (Automated Research Pipeline)
+
+Investigations can be initiated manually (the workflow above) OR through an automated Investigation Engine that follows a structured, reproducible pipeline. The engine accelerates the research phase — it does not replace manual investigation.
+
+**How it works:**
+
+The Investigation Engine is configured entirely through the webapp UI. Researchers define:
+- **Schema** — custom node types and relationship types per investigation (fully generic)
+- **Sources** — data source connectors (REST APIs, file uploads, court records, web scrapers, custom scripts)
+- **Pipeline** — ordered stages (ingest → verify → enrich → analyze → report) with human gates at decision points
+
+The engine executes pipeline stages server-side. At each gate, the researcher reviews proposals (new nodes, tier promotions, LLM hypotheses) and approves or rejects them. Nothing is written to the graph without human review.
+
+**Key capabilities:**
+- **LLM agent** — provider-agnostic (Qwen/llama.cpp, OpenAI, Anthropic, Ollama), three modes: direct call, tool-agent with scoped capabilities, MiroFish swarm simulation
+- **Audit trail** — every action (human and machine) logged as AuditEntry nodes with SHA-256 hash chain for tamper detection
+- **Snapshots** — named checkpoints at every gate, restorable
+- **Forking** — lazy copy-on-write branches for exploring hypothesis paths without data duplication
+- **Templates** — reusable investigation scaffolds (public-accountability, corporate-osint, land-ownership, blank) stored as seed data, exportable/importable as JSON
+- **Cycle mode** — scheduled re-runs (e.g., every 30 minutes) for continuous data monitoring; blocks at gates until the researcher acts
+- **Coalition-owned investigations** — investigations can belong to a coalition; gate decisions require consensus based on coalition roles (Admin/Editor)
+
+**Engine outputs map to existing platform concepts:**
+- Proposed nodes/edges → Bronze-tier graph additions (open schema)
+- Verified promotions → Silver-tier upgrades (tiered trust)
+- LLM hypotheses → Claim nodes with `status: pending`
+- Investigation reports → Investigation documents with `REFERENCES` edges
+
+See `docs/superpowers/specs/2026-03-20-investigation-engine-design.md` for full specification.
+
 ---
 
 ### 5.4 Coalitions (Collaboration Groups)
@@ -412,7 +442,8 @@ Graph traversals are the core product — politicians, votes, donors, legislatio
 | Graph Visualization | react-force-graph-2d | Interactive graph explorer (validated by br-acc's GraphCanvas pattern) |
 | Rich Text Editor | TipTap | Investigation documents with graph node embeds |
 | Auth | Auth.js (next-auth v5) + email/password + social login | Milestone 6; MFA required for Tier 2 and above |
-| AI/LLM | Claude API | Async batch jobs only — never inline blocking calls |
+| AI/LLM | Provider-agnostic (llama.cpp/Qwen local, OpenAI, Anthropic, Ollama) | Investigation Engine LLM abstraction — three modes: single call, tool-agent, MiroFish swarm |
+| Investigation Engine | Neo4j config nodes + Next.js server actions | Database-native pipeline: schema, sources, stages, gates, proposals, audit — all in Neo4j |
 | Maps | Leaflet (open-source) | Future — jurisdiction polygon visualization |
 | Audit Log | S3 (versioned, Object Lock) | Append-only event log |
 | Containerization | Docker Compose | Neo4j + Vinext dev environment |
@@ -422,32 +453,41 @@ Graph traversals are the core product — politicians, votes, donors, legislatio
 
 ### 7.3 Service Architecture (Modular Monolith)
 
-A single deployable application with three logical modules. Extract to services when scaling evidence justifies it.
+A single deployable application with four logical modules. Extract to services when scaling evidence justifies it.
 
 ```
-+---------------------------------------------+
-|              Vinext Application                |
-|                                               |
-|  +-------------+  +----------------------+   |
-|  |    CORE      |  |     COMMUNITY        |   |
-|  |              |  |                      |   |
-|  | Graph CRUD   |  | Coalitions           |   |
-|  | Ingestion    |  | Investigations       |   |
-|  | Politician   |  | Endorsements         |   |
-|  |  profiles    |  | Reputation           |   |
-|  | Provenance   |  | Node/edge CRUD       |   |
-|  +-------------+  +----------------------+   |
-|                                               |
-|  +-----------------------------------------+  |
-|  |              ANALYSIS                   |  |
-|  |                                         |  |
-|  |  Graph explorer   Query builder         |  |
-|  |  AI batch jobs     Export / reports      |  |
-|  +-----------------------------------------+  |
-+---------------------------------------------+
++-----------------------------------------------------------+
+|                    Vinext Application                      |
+|                                                           |
+|  +-------------+  +----------------------+               |
+|  |    CORE      |  |     COMMUNITY        |               |
+|  |              |  |                      |               |
+|  | Graph CRUD   |  | Coalitions           |               |
+|  | Ingestion    |  | Investigations       |               |
+|  | Politician   |  | Endorsements         |               |
+|  |  profiles    |  | Reputation           |               |
+|  | Provenance   |  | Node/edge CRUD       |               |
+|  +-------------+  +----------------------+               |
+|                                                           |
+|  +-----------------------------------------+             |
+|  |              ANALYSIS                   |             |
+|  |                                         |             |
+|  |  Graph explorer   Query builder         |             |
+|  |  AI batch jobs     Export / reports      |             |
+|  +-----------------------------------------+             |
+|                                                           |
+|  +-----------------------------------------+             |
+|  |        INVESTIGATION ENGINE             |             |
+|  |                                         |             |
+|  |  Pipeline executor   Gate review UI     |             |
+|  |  LLM abstraction     Source connectors  |             |
+|  |  Graph algorithms    Proposal system    |             |
+|  |  Audit trail         Template system    |             |
+|  +-----------------------------------------+             |
++-----------------------------------------------------------+
               |
          Neo4j 5 Community
-         + S3 audit log
+         (graph data + investigation config + audit entries)
 ```
 
 ### 7.4 Key Data Schemas
@@ -513,14 +553,17 @@ interface GraphEdge {
 
 ### 7.5 AI Integration Rules
 
-LLMs are used for two tasks: promise extraction from speeches and document summarization for investigations. Rules that apply to both:
+LLMs are used across the platform: promise extraction, document summarization, investigation pipeline (entity extraction, hypothesis generation, report drafting, MiroFish swarm simulation). Rules:
 
-1. **Never authoritative.** All LLM outputs create a `pending` Claim, never a published fact.
+1. **Never authoritative.** All LLM outputs create `Proposal` nodes with `status: pending`, never published facts. LLM never writes directly to the investigation graph.
 2. **Always labeled.** Every AI-generated content carries a "Analisis preliminar IA — requiere revision humana" badge.
-3. **Deterministic.** Temperature = 0, structured JSON output with Zod validation, results cached by input hash.
-4. **Auditable.** Every LLM call logs: model version, input text, raw output, extracted result, and the user/event that triggered it.
-5. **Degradable.** If Claude API is unavailable, ingestion falls back to manual entry — AI is an accelerator, not a dependency.
-6. **Prompt injection defense.** PDFs are rendered to image -> OCR before passing text to the LLM. No raw PDF text extraction.
+3. **Deterministic where possible.** Structured JSON output with Zod validation, results cached by input hash. Temperature configurable per investigation but defaults to 0 for extraction tasks.
+4. **Provider-agnostic.** The Investigation Engine supports multiple LLM providers (llama.cpp/Qwen local, OpenAI, Anthropic, Ollama) via a unified interface. Per-investigation model selection.
+5. **Scoped per stage.** Each pipeline stage defines which tools the LLM can access (read_graph, propose_node, fetch_url, etc.). No free rein across the investigation.
+6. **Auditable.** Every LLM call logs: model version, input, raw output, extracted result, the stage and investigation that triggered it. Stored as `AuditEntry` nodes.
+7. **Human-at-the-gates.** LLM proposals accumulate until a gate, where the researcher reviews and approves/rejects each one through the webapp UI.
+8. **Degradable.** If no LLM is available, the pipeline continues without AI stages — they are accelerators, not dependencies.
+9. **Prompt injection defense.** PDFs are rendered to image -> OCR before passing text to the LLM. No raw PDF text extraction.
 
 ---
 
