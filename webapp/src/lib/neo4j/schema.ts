@@ -144,6 +144,18 @@ const FULLTEXT_INDEXES: readonly { name: string; labels: readonly string[]; prop
     labels: ['Company'],
     properties: ['name'],
   },
+  // Cross-reference engine — CUIT fulltext for multi-label matching
+  {
+    name: 'entity_cuit_fulltext',
+    labels: ['Contractor', 'Company', 'Donor', 'AssetDeclaration'],
+    properties: ['cuit'],
+  },
+  // Cross-reference engine — multi-label name search for fuzzy matching
+  {
+    name: 'entity_name_fulltext',
+    labels: ['Contractor', 'Company', 'CompanyOfficer', 'GovernmentAppointment'],
+    properties: ['name', 'full_name'],
+  },
 ]
 
 /** Standard B-tree indexes for common lookup patterns */
@@ -264,6 +276,16 @@ const BTREE_INDEXES = [
   {
     name: 'company_cuit_index',
     label: 'Company',
+    property: 'cuit',
+  },
+  {
+    name: 'donor_cuit_index',
+    label: 'Donor',
+    property: 'cuit',
+  },
+  {
+    name: 'asset_declaration_cuit_index',
+    label: 'AssetDeclaration',
     property: 'cuit',
   },
 ] as const

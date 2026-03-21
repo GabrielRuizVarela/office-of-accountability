@@ -137,6 +137,196 @@ function buildLabelPairConfigs(): LabelPairConfig[] {
             rel.created_at = datetime()
       `,
     },
+    // AssetDeclaration pairs
+    {
+      sourceLabel: 'Contractor',
+      targetLabel: 'AssetDeclaration',
+      sourceIdProp: 'contractor_id',
+      targetIdProp: 'ddjj_id',
+      cypher: `
+        UNWIND $batch AS r
+        MATCH (a:Contractor {contractor_id: r.source_id})
+        MATCH (b:AssetDeclaration {ddjj_id: r.target_id})
+        MERGE (a)-[rel:SAME_ENTITY]->(b)
+        SET rel.match_type = r.match_type,
+            rel.match_key = r.match_key,
+            rel.confidence = r.confidence,
+            rel.evidence = r.evidence,
+            rel.created_at = datetime()
+      `,
+    },
+    {
+      sourceLabel: 'Donor',
+      targetLabel: 'AssetDeclaration',
+      sourceIdProp: 'donor_id',
+      targetIdProp: 'ddjj_id',
+      cypher: `
+        UNWIND $batch AS r
+        MATCH (a:Donor {donor_id: r.source_id})
+        MATCH (b:AssetDeclaration {ddjj_id: r.target_id})
+        MERGE (a)-[rel:SAME_ENTITY]->(b)
+        SET rel.match_type = r.match_type,
+            rel.match_key = r.match_key,
+            rel.confidence = r.confidence,
+            rel.evidence = r.evidence,
+            rel.created_at = datetime()
+      `,
+    },
+    {
+      sourceLabel: 'AssetDeclaration',
+      targetLabel: 'CompanyOfficer',
+      sourceIdProp: 'ddjj_id',
+      targetIdProp: 'officer_id',
+      cypher: `
+        UNWIND $batch AS r
+        MATCH (a:AssetDeclaration {ddjj_id: r.source_id})
+        MATCH (b:CompanyOfficer {officer_id: r.target_id})
+        MERGE (a)-[rel:SAME_ENTITY]->(b)
+        SET rel.match_type = r.match_type,
+            rel.match_key = r.match_key,
+            rel.confidence = r.confidence,
+            rel.evidence = r.evidence,
+            rel.created_at = datetime()
+      `,
+    },
+    {
+      sourceLabel: 'AssetDeclaration',
+      targetLabel: 'GovernmentAppointment',
+      sourceIdProp: 'ddjj_id',
+      targetIdProp: 'appointment_id',
+      cypher: `
+        UNWIND $batch AS r
+        MATCH (a:AssetDeclaration {ddjj_id: r.source_id})
+        MATCH (b:GovernmentAppointment {appointment_id: r.target_id})
+        MERGE (a)-[rel:SAME_ENTITY]->(b)
+        SET rel.match_type = r.match_type,
+            rel.match_key = r.match_key,
+            rel.confidence = r.confidence,
+            rel.evidence = r.evidence,
+            rel.created_at = datetime()
+      `,
+    },
+    // Additional cross-label pairs from CUIT→DNI matching
+    {
+      sourceLabel: 'Contractor',
+      targetLabel: 'GovernmentAppointment',
+      sourceIdProp: 'contractor_id',
+      targetIdProp: 'appointment_id',
+      cypher: `
+        UNWIND $batch AS r
+        MATCH (a:Contractor {contractor_id: r.source_id})
+        MATCH (b:GovernmentAppointment {appointment_id: r.target_id})
+        MERGE (a)-[rel:SAME_ENTITY]->(b)
+        SET rel.match_type = r.match_type,
+            rel.match_key = r.match_key,
+            rel.confidence = r.confidence,
+            rel.evidence = r.evidence,
+            rel.created_at = datetime()
+      `,
+    },
+    {
+      sourceLabel: 'Company',
+      targetLabel: 'CompanyOfficer',
+      sourceIdProp: 'igj_id',
+      targetIdProp: 'officer_id',
+      cypher: `
+        UNWIND $batch AS r
+        MATCH (a:Company {igj_id: r.source_id})
+        MATCH (b:CompanyOfficer {officer_id: r.target_id})
+        MERGE (a)-[rel:SAME_ENTITY]->(b)
+        SET rel.match_type = r.match_type,
+            rel.match_key = r.match_key,
+            rel.confidence = r.confidence,
+            rel.evidence = r.evidence,
+            rel.created_at = datetime()
+      `,
+    },
+    {
+      sourceLabel: 'Company',
+      targetLabel: 'GovernmentAppointment',
+      sourceIdProp: 'igj_id',
+      targetIdProp: 'appointment_id',
+      cypher: `
+        UNWIND $batch AS r
+        MATCH (a:Company {igj_id: r.source_id})
+        MATCH (b:GovernmentAppointment {appointment_id: r.target_id})
+        MERGE (a)-[rel:SAME_ENTITY]->(b)
+        SET rel.match_type = r.match_type,
+            rel.match_key = r.match_key,
+            rel.confidence = r.confidence,
+            rel.evidence = r.evidence,
+            rel.created_at = datetime()
+      `,
+    },
+    // CUIT cross-label pairs
+    {
+      sourceLabel: 'Contractor',
+      targetLabel: 'Donor',
+      sourceIdProp: 'contractor_id',
+      targetIdProp: 'donor_id',
+      cypher: `
+        UNWIND $batch AS r
+        MATCH (a:Contractor {contractor_id: r.source_id})
+        MATCH (b:Donor {donor_id: r.target_id})
+        MERGE (a)-[rel:SAME_ENTITY]->(b)
+        SET rel.match_type = r.match_type,
+            rel.match_key = r.match_key,
+            rel.confidence = r.confidence,
+            rel.evidence = r.evidence,
+            rel.created_at = datetime()
+      `,
+    },
+    {
+      sourceLabel: 'Company',
+      targetLabel: 'Donor',
+      sourceIdProp: 'igj_id',
+      targetIdProp: 'donor_id',
+      cypher: `
+        UNWIND $batch AS r
+        MATCH (a:Company {igj_id: r.source_id})
+        MATCH (b:Donor {donor_id: r.target_id})
+        MERGE (a)-[rel:SAME_ENTITY]->(b)
+        SET rel.match_type = r.match_type,
+            rel.match_key = r.match_key,
+            rel.confidence = r.confidence,
+            rel.evidence = r.evidence,
+            rel.created_at = datetime()
+      `,
+    },
+    {
+      sourceLabel: 'Donor',
+      targetLabel: 'CompanyOfficer',
+      sourceIdProp: 'donor_id',
+      targetIdProp: 'officer_id',
+      cypher: `
+        UNWIND $batch AS r
+        MATCH (a:Donor {donor_id: r.source_id})
+        MATCH (b:CompanyOfficer {officer_id: r.target_id})
+        MERGE (a)-[rel:SAME_ENTITY]->(b)
+        SET rel.match_type = r.match_type,
+            rel.match_key = r.match_key,
+            rel.confidence = r.confidence,
+            rel.evidence = r.evidence,
+            rel.created_at = datetime()
+      `,
+    },
+    {
+      sourceLabel: 'Donor',
+      targetLabel: 'GovernmentAppointment',
+      sourceIdProp: 'donor_id',
+      targetIdProp: 'appointment_id',
+      cypher: `
+        UNWIND $batch AS r
+        MATCH (a:Donor {donor_id: r.source_id})
+        MATCH (b:GovernmentAppointment {appointment_id: r.target_id})
+        MERGE (a)-[rel:SAME_ENTITY]->(b)
+        SET rel.match_type = r.match_type,
+            rel.match_key = r.match_key,
+            rel.confidence = r.confidence,
+            rel.evidence = r.evidence,
+            rel.created_at = datetime()
+      `,
+    },
   ]
 }
 

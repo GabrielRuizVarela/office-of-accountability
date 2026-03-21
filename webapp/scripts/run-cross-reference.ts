@@ -11,7 +11,7 @@
 import 'dotenv/config'
 
 // Allow longer queries for cross-reference joins
-process.env.NEO4J_QUERY_TIMEOUT_MS = '60000'
+process.env.NEO4J_QUERY_TIMEOUT_MS = '120000'
 
 import { verifyConnectivity, closeDriver } from '../src/lib/neo4j/client'
 import { matchByCuit, matchByDni, matchByName } from '../src/etl/cross-reference/matchers'
