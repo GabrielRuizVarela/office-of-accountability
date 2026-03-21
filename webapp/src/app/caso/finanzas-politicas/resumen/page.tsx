@@ -3,7 +3,7 @@
 /**
  * Finanzas Politicas — Narrative summary page.
  *
- * A 13-chapter bilingual investigative journalism piece that walks readers
+ * A 16-chapter bilingual investigative journalism piece that walks readers
  * through the systemic connections between political power and money in
  * Argentina, compiled from 2.16M nodes and 4.49M relationships across 9
  * public datasets.
@@ -50,8 +50,8 @@ const TITLE: Record<Lang, string> = {
 }
 
 const SUBTITLE: Record<Lang, string> = {
-  es: 'Diecisiete capitulos sobre como nueve bases de datos publicas revelan las conexiones entre el cargo publico, los directorios corporativos, las sociedades offshore, el financiamiento de campanas, las armas financieras, el escandalo de los seguros, la puerta giratoria, el poder judicial, la riqueza inexplicable, el imperio Macri, el cartel de la salud y la captura del Estado por JP Morgan',
-  en: 'Seventeen chapters on how nine public datasets reveal the connections between public office, corporate boards, offshore entities, campaign financing, financial arms, the insurance scandal, the revolving door, the judiciary, unexplained wealth, the Macri empire, the health cartel, and State capture by JP Morgan',
+  es: 'Dieciseis capitulos sobre como nueve bases de datos publicas revelan las conexiones entre el cargo publico, los directorios corporativos, las sociedades offshore, el financiamiento de campanas, las armas financieras, el escandalo de los seguros, la puerta giratoria, el poder judicial, la riqueza inexplicable, el imperio Macri, el cartel de la salud y la captura del Estado por JP Morgan',
+  en: 'Sixteen chapters on how nine public datasets reveal the connections between public office, corporate boards, offshore entities, campaign financing, financial arms, the insurance scandal, the revolving door, the judiciary, unexplained wealth, the Macri empire, the health cartel, and State capture by JP Morgan',
 }
 
 const READING_TIME: Record<Lang, string> = {
@@ -454,8 +454,8 @@ const chapters: readonly Chapter[] = [
   {
     id: 'el-imperio-macri',
     title: {
-      es: 'XIV. El Imperio Macri: 398 Empresas y Un Correo',
-      en: 'XIV. The Macri Empire: 398 Companies and a Post Office',
+      es: 'XIII. El Imperio Macri: 398 Empresas y Un Correo',
+      en: 'XIII. The Macri Empire: 398 Companies and a Post Office',
     },
     paragraphs: {
       es: [
@@ -481,8 +481,8 @@ const chapters: readonly Chapter[] = [
   {
     id: 'el-cartel-de-la-salud',
     title: {
-      es: 'XV. El Cartel de la Salud',
-      en: 'XV. The Health Cartel',
+      es: 'XIV. El Cartel de la Salud',
+      en: 'XIV. The Health Cartel',
     },
     paragraphs: {
       es: [
@@ -509,8 +509,8 @@ const chapters: readonly Chapter[] = [
   {
     id: 'caputo-y-el-estado',
     title: {
-      es: 'XVI. Caputo y el Estado: De JP Morgan al Ministerio',
-      en: 'XVI. Caputo and the State: From JP Morgan to the Ministry',
+      es: 'XV. Caputo y el Estado: De JP Morgan al Ministerio',
+      en: 'XV. Caputo and the State: From JP Morgan to the Ministry',
     },
     paragraphs: {
       es: [
@@ -540,8 +540,8 @@ const chapters: readonly Chapter[] = [
   {
     id: 'lo-que-queda',
     title: {
-      es: 'XVII. Lo Que Queda',
-      en: 'XVII. What Remains',
+      es: 'XVI. Lo Que Queda',
+      en: 'XVI. What Remains',
     },
     paragraphs: {
       es: [
@@ -573,7 +573,7 @@ const chapters: readonly Chapter[] = [
 const stats: readonly StatCard[] = [
   { value: '398K', label: { es: 'Empresas rastreadas', en: 'Companies tracked' } },
   { value: '951K', label: { es: 'Oficiales corporativos', en: 'Corporate officers' } },
-  { value: '$609B', label: { es: 'Total rastreado', en: 'Total tracked' } },
+  { value: '$674B', label: { es: 'Total rastreado', en: 'Total tracked' } },
   { value: '1,428', label: { es: 'Puerta giratoria documentada', en: 'Documented revolving door' } },
 ]
 
