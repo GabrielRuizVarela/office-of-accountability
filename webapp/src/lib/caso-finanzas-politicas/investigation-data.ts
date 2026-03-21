@@ -1191,6 +1191,46 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: ['https://es.wikipedia.org/wiki/Grupo_Macri'],
   },
   {
+    id: 'tl-1976-papel-prensa',
+    date: '1976-11-02',
+    title_es: 'Clarin y La Nacion se apropian de Papel Prensa bajo dictadura',
+    title_en: 'Clarin and La Nacion appropriate Papel Prensa under dictatorship',
+    description_es: 'Magnetto amenaza a Lidia Papaleo (viuda de Graiver) para firmar la transferencia de acciones. El 19/4/1977 la dictadura detiene ilegalmente a 6 miembros del grupo Graiver y formaliza la apropiacion.',
+    description_en: 'Magnetto threatens Lidia Papaleo (Graiver widow) to sign the share transfer. On 4/19/1977 the dictatorship illegally detains 6 Graiver group members and formalizes the appropriation.',
+    category: 'corporate',
+    sources: ['https://chequeado.com/el-explicador/claves-para-entender-el-caso-papel-prensa/', 'https://latinta.com.ar/2017/03/24/papel-prensa-cuatro-decadas-de-impunidad/'],
+  },
+  {
+    id: 'tl-1992-lopez-casino-club',
+    date: '1992',
+    title_es: 'Cristobal Lopez inaugura Casino Club en Chubut',
+    title_en: 'Cristobal Lopez inaugurates Casino Club in Chubut',
+    description_es: 'Lopez abre la primera casa de juego en Chubut (Comodoro Rivadavia). Casino Club se convertiria en la mayor empresa de juego de Latinoamerica con mas de 20 salas en Misiones, La Pampa, Santa Cruz y Chubut.',
+    description_en: 'Lopez opens the first gambling house in Chubut (Comodoro Rivadavia). Casino Club would become the largest gaming company in Latin America with more than 20 halls in Misiones, La Pampa, Santa Cruz and Chubut.',
+    category: 'corporate',
+    sources: ['https://www.perfil.com/noticias/domingo/como-armo-su-imperio-cristobal-lopez-20140511-0026.phtml'],
+  },
+  {
+    id: 'tl-1992-manzano-exit-politics',
+    date: '1992-12',
+    title_es: 'Manzano deja la politica y funda Integra Capital',
+    title_en: 'Manzano leaves politics and founds Integra Capital',
+    description_es: 'Tras su renuncia como Ministro del Interior de Menem con alta imagen negativa, Manzano se autoexilia en EEUU. En 1995 funda Integra Capital en Washington, inicio de su imperio empresarial.',
+    description_en: 'After resigning as Interior Minister under Menem with high negative image, Manzano self-exiles in the US. In 1995 he founds Integra Capital in Washington, beginning of his business empire.',
+    category: 'corporate',
+    sources: ['https://econojournal.com.ar/2021/02/jose-luis-manzano-el-renacido-la-historia-del-hombre-que-se-quedo-con-edenor/'],
+  },
+  {
+    id: 'tl-1996-manzano-vila-america',
+    date: '1996',
+    title_es: 'Manzano y Vila crean Grupo America (medios)',
+    title_en: 'Manzano and Vila create Grupo America (media)',
+    description_es: 'Manzano regresa a Argentina y junto a Daniel Vila adquiere America TV, America 24, y multiples medios. Con Francisco de Narvaez construyen el segundo multimedios del pais.',
+    description_en: 'Manzano returns to Argentina and with Daniel Vila acquires America TV, America 24, and multiple media outlets. With Francisco de Narvaez they build the country second-largest media group.',
+    category: 'corporate',
+    sources: ['https://es.wikipedia.org/wiki/Jos%C3%A9_Luis_Manzano_(empresario)'],
+  },
+  {
     id: 'tl-1997-correo',
     date: '1997',
     title_es: 'Privatizacion de Correo Argentino',
@@ -1204,554 +1244,6 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
       'https://es.wikipedia.org/wiki/Causa_Correo_Argentino',
       'https://chequeado.com/el-explicador/claves-para-entender-la-polemica-por-la-deuda-del-correo-argentino-con-el-estado/',
     ],
-  },
-  {
-    id: 'tl-2014-pelmond',
-    date: '2014-10-31',
-    title_es: 'PELMOND COMPANY LTD incorporada',
-    title_en: 'PELMOND COMPANY LTD incorporated',
-    description_es:
-      'Se incorpora PELMOND COMPANY LTD en las Islas Virgenes Britanicas, con Maria Cecilia Ibanez listada como officer. La entidad permanece activa durante su mandato como diputada nacional (2024-2026).',
-    description_en:
-      'PELMOND COMPANY LTD incorporated in the British Virgin Islands, with Maria Cecilia Ibanez listed as officer. The entity remains active during her term as national deputy (2024-2026).',
-    category: 'financial',
-    sources: ['https://offshoreleaks.icij.org/nodes/10158328'],
-  },
-  {
-    id: 'tl-2015-bf-corp',
-    date: '2015',
-    title_es: 'BF Corporation mueve fondos a Suiza',
-    title_en: 'BF Corporation moves funds to Switzerland',
-    description_es:
-      'BF Corporation SA (Panama), propiedad de Gianfranco y Mariano Macri, transfiere fondos al Safra Bank de Suiza. Un banco aleman ordena destruir toda la correspondencia.',
-    description_en:
-      'BF Corporation SA (Panama), owned by Gianfranco and Mariano Macri, transfers funds to Safra Bank in Switzerland. A German bank orders destruction of all correspondence.',
-    category: 'financial',
-    sources: [
-      'https://www.perfil.com/noticias/politica/una-off-shore-de-los-macri-movio-fondos-a-suiza-y-destruyo-pruebas.phtml',
-    ],
-  },
-  {
-    id: 'tl-2016-tt41',
-    date: '2016-06-23',
-    title_es: 'TT 41 CORP incorporada (Camano)',
-    title_en: 'TT 41 CORP incorporated (Camano)',
-    description_es:
-      'Se incorpora TT 41 CORP en las Islas Virgenes Britanicas a traves de Trident Trust, vinculada a Graciela Camano durante su mandato 2014-2018 como diputada nacional.',
-    description_en:
-      'TT 41 CORP incorporated in the British Virgin Islands through Trident Trust, linked to Graciela Camano during her 2014-2018 term as national deputy.',
-    category: 'financial',
-    sources: ['https://offshoreleaks.icij.org'],
-  },
-  {
-    id: 'tl-2016-belocopitt-panama',
-    date: '2016',
-    title_es: 'Panama Papers: Belocopitt con 6 entidades offshore en BVI',
-    title_en: 'Panama Papers: Belocopitt with 6 offshore entities in BVI',
-    description_es: 'Claudio Belocopitt aparece como el argentino con más entidades en Panama Papers: KARIMA PORTFOLIO, RAGNAR PORTFOLIO, PENSFORD BUSINESS, ELYANNE BUSINESS, TIAGO GLOBAL, KARRI MANAGEMENT. Controla 76% de Swiss Medical y 40% de Grupo América.',
-    description_en: 'Claudio Belocopitt appears as the Argentine with most Panama Papers entities: KARIMA PORTFOLIO, RAGNAR PORTFOLIO, PENSFORD BUSINESS, ELYANNE BUSINESS, TIAGO GLOBAL, KARRI MANAGEMENT. Controls 76% of Swiss Medical and 40% of Grupo América.',
-    category: 'financial',
-    sources: ['https://offshoreleaks.icij.org/nodes/12170966'],
-  },
-  {
-    id: 'tl-2016-blanqueo',
-    date: '2016',
-    title_es: 'Ley de blanqueo de Macri aprobada',
-    title_en: 'Macri blanqueo law passed',
-    description_es:
-      'El gobierno de Macri aprueba una ley de amnistia fiscal. Insiders de SOCMA declaran ARS 900M+ en activos previamente ocultos, incluyendo USD 4M de Gianfranco Macri a traves de BF Corporation.',
-    description_en:
-      'The Macri government passes a tax amnesty law. SOCMA insiders declare ARS 900M+ in previously hidden assets, including USD 4M from Gianfranco Macri through BF Corporation.',
-    category: 'political',
-    sources: [
-      'https://noticias.perfil.com/noticias/politica/2018-12-18-quienes-son-los-integrantes-de-socma-que-adhirieron-al-blanqueo.phtml',
-    ],
-  },
-  {
-    id: 'tl-2016-correo-acuerdo',
-    date: '2016-06',
-    title_es: 'Acuerdo del Correo Argentino: quita del 98,82%',
-    title_en: 'Correo Argentino settlement: 98.82% debt reduction',
-    description_es:
-      'El gobierno de Macri acepta un acuerdo que reduce la deuda de Correo Argentino (empresa familiar) en un 98,82%. La fiscal Boquin lo califica de "equivalente a una condonacion".',
-    description_en:
-      'The Macri government accepts a settlement reducing the Correo Argentino (family company) debt by 98.82%. Prosecutor Boquin rules it "equivalent to a forgiveness."',
-    category: 'legal',
-    sources: [
-      'https://chequeado.com/el-explicador/claves-para-entender-la-polemica-por-la-deuda-del-correo-argentino-con-el-estado/',
-    ],
-  },
-  {
-    id: 'tl-2017-correo-charges',
-    date: '2017',
-    title_es: 'Causa Correo Argentino: cargos formalizados',
-    title_en: 'Correo Argentino case: charges formalized',
-    description_es:
-      'El fiscal Zoni presenta cargos contra el presidente Macri y el ministro Aguad en relacion al acuerdo de la deuda del Correo Argentino. La causa judicial continua.',
-    description_en:
-      'Prosecutor Zoni files charges against President Macri and Minister Aguad in connection with the Correo Argentino debt settlement. The judicial case continues.',
-    category: 'legal',
-    sources: ['https://es.wikipedia.org/wiki/Causa_Correo_Argentino'],
-  },
-  {
-    id: 'tl-2017-borinsky-olivos',
-    date: '2017-2019',
-    title_es: 'Borinsky: 15+ visitas a Olivos coincidiendo con fallos clave',
-    title_en: 'Borinsky: 15+ Olivos visits coinciding with key rulings',
-    description_es: 'El juez de Casación Mariano Borinsky visitó a Macri en Olivos más de 15 veces mientras presidía causas contra dirigentes kirchneristas (Nisman, Ruta del Dinero K, Dólar Futuro). Admitió que iba "a jugar al pádel".',
-    description_en: 'Cassation judge Mariano Borinsky visited Macri at Olivos 15+ times while presiding over Kirchnerist cases (Nisman, Ruta del Dinero K, Dólar Futuro). Claimed he went "to play paddle tennis."',
-    category: 'legal',
-    sources: ['https://www.eldestapeweb.com/politica/operacion-olivos/las-15-reuniones-de-macri-con-un-juez-clave-en-la-persecucion-a-cfk-20214118034'],
-  },
-  {
-    id: 'tl-2017-hornos-rosada',
-    date: '2017-2019',
-    title_es: 'Hornos: 6+ reuniones con Macri en Casa Rosada mientras juzgaba causas K',
-    title_en: 'Hornos: 6+ meetings with Macri at Casa Rosada while judging K cases',
-    description_es: 'El juez de Casación Gustavo Hornos se reunió con Macri en Casa Rosada al menos 6 veces mientras presidía la cámara que resolvía causas contra dirigentes kirchneristas.',
-    description_en: 'Cassation judge Gustavo Hornos met with Macri at Casa Rosada at least 6 times while presiding over the chamber that decided Kirchnerist cases.',
-    category: 'legal',
-    sources: ['https://www.eldestapeweb.com/politica/operacion-olivos/las-15-reuniones-de-macri-con-un-juez-clave-en-la-persecucion-a-cfk-20214118034'],
-  },
-  {
-    id: 'tl-2019-donations',
-    date: '2019',
-    title_es: 'Declaraciones de aportes de campana',
-    title_en: 'Campaign donation filings',
-    description_es:
-      'Macri dona ARS 100.000 a Juntos por el Cambio; Maximo Kirchner dona ARS 50.000 a Frente de Todos. Se identifican 50 coincidencias politico-donante (0% falsos positivos). Se detecta la coincidencia contratista-donante de Rodriguez. Aluar dona ARS 5.400.000 distribuidos entre ambas coaliciones.',
-    description_en:
-      'Macri donates ARS 100,000 to Juntos por el Cambio; Maximo Kirchner donates ARS 50,000 to Frente de Todos. 50 politician-donor matches identified (0% false positives). Rodriguez contractor-donor pattern detected. Aluar donates ARS 5,400,000 distributed across both coalitions.',
-    category: 'political',
-    sources: ['https://aportantes.electoral.gob.ar'],
-  },
-  {
-    id: 'tl-2020-denarvaez-walmart',
-    date: '2020-11',
-    title_es: 'De Narvaez adquiere Walmart Argentina',
-    title_en: 'De Narvaez acquires Walmart Argentina',
-    description_es:
-      'Francisco De Narvaez completa la adquisicion de Walmart Argentina, rebautizada luego como Changomas. La operacion refuerza su presencia en el retail nacional. Sus cinco entidades offshore figuran en la base ICIJ.',
-    description_en:
-      'Francisco De Narvaez completes the acquisition of Walmart Argentina, later rebranded as Changomas. The operation reinforces his presence in national retail. His five offshore entities appear in the ICIJ database.',
-    category: 'corporate',
-    sources: ['https://offshoreleaks.icij.org'],
-  },
-  {
-    id: 'tl-2024-ley-bases',
-    date: '2024-06-12',
-    title_es: 'Ley de Bases aprobada en Senado (36-36, desempate Villarruel)',
-    title_en: 'Ley de Bases approved in Senate (36-36, Villarruel tiebreak)',
-    description_es:
-      'El Senado aprueba la Ley de Bases con un empate de 36 votos a 36. La vicepresidenta Victoria Villarruel desempata a favor. Varios senadores vinculados a intereses financieros votaron sobre articulos clave de la ley.',
-    description_en:
-      'The Senate approves the Ley de Bases with a 36-36 tie. Vice President Victoria Villarruel casts the deciding vote in favor. Several senators linked to financial interests voted on key articles of the law.',
-    category: 'political',
-    sources: ['https://www.senado.gob.ar'],
-  },
-  {
-    id: 'tl-2024-kueider-detencion',
-    date: '2024-12-04',
-    title_es: 'Kueider detenido en la frontera de Paraguay con USD 211.000',
-    title_en: 'Kueider detained at Paraguay border with USD 211,000',
-    description_es:
-      'El senador Edgardo Kueider es detenido en el paso fronterizo de Clorinda (Paraguay) con USD 211.000 en efectivo no declarados. El Senado lo expulsa por mayoria. Empresas BETAIL y EDEKOM aparecen en registros vinculados a su nombre.',
-    description_en:
-      'Senator Edgardo Kueider is detained at the Clorinda border crossing (Paraguay) with USD 211,000 in undeclared cash. The Senate expels him by majority vote. Companies BETAIL and EDEKOM appear in records linked to his name.',
-    category: 'legal',
-    sources: [
-      'https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-edgardo-kueider-en-paraguay-llevaba-mas-de-usd-200-mil/',
-    ],
-  },
-  {
-    id: 'tl-2024-mariano-denuncia',
-    date: '2024-08',
-    title_es: 'Mariano Macri denuncia penalmente a SOCMA',
-    title_en: 'Mariano Macri files criminal complaint against SOCMA',
-    description_es:
-      'Mariano Macri presenta denuncias penales contra SOCMA, nombrando a Gianfranco, Florencia y al CEO Leonardo Maffioli. Cargos: administracion fraudulenta, falsificacion de documentos, evasion fiscal, balances falsos y lavado de activos.',
-    description_en:
-      'Mariano Macri files criminal complaints against SOCMA, naming Gianfranco, Florencia, and CEO Leonardo Maffioli. Charges: fraudulent administration, document falsification, tax evasion, false balance sheets, and money laundering.',
-    category: 'legal',
-    sources: [
-      'https://www.infobae.com/judiciales/2024/08/07/el-hermano-de-mauricio-macri-denuncio-al-grupo-empresarial-de-la-familia-por-defraudacion-y-lavado-de-activos/',
-    ],
-  },
-  {
-    id: 'tl-2025-kueider-arrestos',
-    date: '2025-03',
-    title_es: '7 asociados de Kueider detenidos',
-    title_en: '7 Kueider associates arrested',
-    description_es:
-      'Siete personas del entorno del ex senador Kueider son detenidas en el marco de la causa iniciada tras su detencion en la frontera paraguaya con efectivo no declarado.',
-    description_en:
-      'Seven associates of former senator Kueider are detained as part of the case opened following his detention at the Paraguayan border with undeclared cash.',
-    category: 'legal',
-    sources: [
-      'https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-edgardo-kueider-en-paraguay-llevaba-mas-de-usd-200-mil/',
-    ],
-  },
-  {
-    id: 'tl-2021-rosenkrantz-recusal',
-    date: '2021',
-    title_es: 'Rosenkrantz revierte recusación: comienza a fallar sobre ex clientes (Clarín, La Nación)',
-    title_en: 'Rosenkrantz reverses recusal: begins ruling on former clients (Clarín, La Nación)',
-    description_es: 'El presidente de la Corte Suprema Carlos Rosenkrantz, ex abogado de Clarín, La Nación, McDonald\'s, YPF y Repsol, revierte su política de recusación. Al menos 56 fallos involucrando antiguos clientes.',
-    description_en: 'Supreme Court president Carlos Rosenkrantz, former lawyer for Clarín, La Nación, McDonald\'s, YPF and Repsol, reverses his recusal policy. At least 56 rulings involving former clients.',
-    category: 'legal',
-    sources: ['https://www.pagina12.com.ar/204884-rosenkrantz-una-larga-historia-de-conflictos'],
-  },
-  {
-    id: 'tl-2021-decreto-823',
-    date: '2021-12-01',
-    title_es: 'Decreto 823/2021: monopolio de seguros estatales',
-    title_en: 'Decree 823/2021: state insurance monopoly',
-    description_es:
-      'Alberto Fernández firma el Decreto 823/2021 que obliga a todo el sector público nacional a contratar seguros exclusivamente con Nación Seguros S.A. Crea el monopolio que será explotado por brokers cercanos al presidente.',
-    description_en:
-      'Alberto Fernández signs Decree 823/2021 mandating all national public sector entities to contract insurance exclusively through Nación Seguros S.A. Creates the monopoly that would be exploited by brokers close to the president.',
-    category: 'financial',
-    sources: ['https://www.argentina.gob.ar/normativa/nacional/decreto-823-2021-357558'],
-  },
-  {
-    id: 'tl-2024-raids-seguros',
-    date: '2024-04-01',
-    title_es: '24 allanamientos en la Causa Seguros',
-    title_en: '24 raids in the Causa Seguros investigation',
-    description_es:
-      'El juez Ercolini ordena 24 allanamientos simultáneos en el marco de la investigación sobre el escándalo de los seguros. El gobierno prohíbe todos los intermediarios en pólizas estatales.',
-    description_en:
-      'Judge Ercolini orders 24 simultaneous raids in the insurance scandal investigation. The government bans all intermediaries in state insurance policies.',
-    category: 'legal',
-    sources: ['https://www.infobae.com/politica/2024/04/11/tras-el-escandalo-de-los-seguros-el-gobierno-prohibio-a-los-intermediarios-en-todas-las-polizas-con-organismos-del-estado/'],
-  },
-  {
-    id: 'tl-2024-decreto-747',
-    date: '2024-08-21',
-    title_es: 'Decreto 747/2024 revoca monopolio de seguros',
-    title_en: 'Decree 747/2024 revokes insurance monopoly',
-    description_es:
-      'El gobierno de Milei deroga el Decreto 823/2021, eliminando la obligación de contratar con Nación Seguros. El gobierno no renueva el contrato con Nación Seguros (marzo 2024).',
-    description_en:
-      'The Milei government revokes Decree 823/2021, eliminating the mandatory contracting with Nación Seguros. The government does not renew the contract with Nación Seguros (March 2024).',
-    category: 'political',
-    sources: ['https://www.lanacion.com.ar/politica/el-gobierno-derogo-el-decreto-de-alberto-fernandez-que-obligaba-a-contratar-a-nacion-seguros-nid21082024/'],
-  },
-  {
-    id: 'tl-2025-catalan-ypf',
-    date: '2025-11-17',
-    title_es: 'Catalán designado Director de YPF tras dejar Interior',
-    title_en: 'Catalán appointed YPF Director after leaving Interior',
-    description_es:
-      'Lisandro Catalán deja el Ministerio del Interior el 3 de noviembre y es designado Director Clase D de YPF dos semanas después, con un salario de ~140 millones de pesos mensuales.',
-    description_en:
-      'Lisandro Catalán leaves the Ministry of Interior on November 3 and is appointed YPF Class D Director two weeks later, at a salary of ~140 million pesos/month.',
-    category: 'corporate',
-    sources: ['https://www.iprofesional.com/negocios/442238-de-ministro-interior-a-petrolero-lisandro-catalan-se-suma-directorio-ypf'],
-  },
-  {
-    id: 'tl-2022-lago-escondido',
-    date: '2022-11',
-    title_es: 'Escándalo Lago Escondido: jueces en avión de Clarín',
-    title_en: 'Lago Escondido scandal: judges on Clarín-paid flight',
-    description_es:
-      'Se revela que el juez Ercolini y otros magistrados volaron en un avión pagado por el Grupo Clarín a la estancia Lago Escondido de Joe Lewis. Chats de Telegram filtrados muestran coordinación para fabricar coartadas.',
-    description_en:
-      'It is revealed that Judge Ercolini and other magistrates flew on a Grupo Clarín-paid flight to Joe Lewis\'s Lago Escondido estate. Leaked Telegram chats show coordination to fabricate alibis.',
-    category: 'legal',
-    sources: ['https://www.eldestapeweb.com/politica/los-jueces-de-clarin/clarin-invito-a-jueces-del-lawfare-a-lago-escondido-y-buscaron-encubrirlo-con-facturas-truchas-y-el-direccionamiento-de-una-causa-judicial-202212419450'],
-  },
-  {
-    id: 'tl-2023-pami-16x',
-    date: '2023',
-    title_es: 'PAMI paga 16 veces el precio de mercado por medicamentos oncológicos',
-    title_en: 'PAMI pays 16x market price for oncological drugs',
-    description_es: 'PAMI pagó hasta 16 veces el precio de mercado (anastrozol: $13.192 vs $924 en licitación, ~14x). Cartel denunciado: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
-    description_en: 'PAMI paid up to 16x market price (anastrozole: $13,192 vs $924 at tender, ~14x). Cartel complaint: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
-    category: 'financial',
-    sources: ['https://www.infobae.com/politica/2025/01/23/denuncian-al-pami-y-a-un-grupo-de-laboratorios-por-sobreprecios-en-la-compra-de-remedios-oncologicos/'],
-  },
-  {
-    id: 'tl-2024-seijas-ddjj',
-    date: '2024',
-    title_es: 'Juez Seijas declara ARS 1.750 millones siendo asesor ad honorem',
-    title_en: 'Judge Seijas declares ARS 1.75B while serving as unpaid advisor',
-    description_es: 'Alberto Seijas declaró ARS 1.750.832.137,66 en activos en su DDJJ 2024 mientras ejercía como asesor ad honorem (no remunerado) del Consejo de la Magistratura. Anomalía extrema de riqueza judicial.',
-    description_en: 'Alberto Seijas declared ARS 1,750,832,137.66 in assets in his 2024 DDJJ while serving as ad honorem (unpaid) advisor to the Consejo de la Magistratura. Extreme judicial wealth anomaly.',
-    category: 'legal',
-    sources: ['https://datos.gob.ar'],
-  },
-  {
-    id: 'tl-2025-side-explosion',
-    date: '2025',
-    title_es: 'Fondos reservados SIDE crecen ~2.000% bajo Milei',
-    title_en: 'SIDE secret funds grow ~2,000% under Milei',
-    description_es: 'Los fondos reservados de inteligencia crecieron de ARS 3.800M (4,1% del presupuesto en 2023) a ARS 13.400M (19,6% en 2025). Santiago Caputo controla la SIDE a través del designado Cristian Auguadra.',
-    description_en: 'Intelligence reserved funds grew from ARS 3.8B (4.1% of budget in 2023) to ARS 13.4B (19.6% in 2025). Santiago Caputo controls SIDE through appointee Cristian Auguadra.',
-    category: 'political',
-    sources: ['https://chequeado.com/el-explicador/los-fondos-reservados-de-la-secretaria-de-inteligencia-el-gobierno-de-milei-los-amplio-por-tercera-vez/'],
-  },
-  {
-    id: 'tl-2025-suizo-2678',
-    date: '2025',
-    title_es: 'Contratos Suizo Argentina crecen 2.678% con investigación por sobornos',
-    title_en: 'Suizo Argentina contracts grow 2,678% with bribery investigation',
-    description_es: 'Los contratos de Suizo Argentina crecieron de ARS 3.900M a ARS 108.300M (2.678%). Investigación por sobornos vinculada al escándalo Spagnuolo/ANDIS que implica a Karina Milei. Se encontró $240.000 en efectivo en allanamientos.',
-    description_en: 'Suizo Argentina contracts grew from ARS 3.9B to ARS 108.3B (2,678%). Bribery investigation linked to Spagnuolo/ANDIS scandal implicating Karina Milei. $240K cash found in raids.',
-    category: 'financial',
-    sources: ['https://www.infobae.com'],
-  },
-  {
-    id: 'tl-2025-lijo-decreto',
-    date: '2025-02-14',
-    title_es: 'Milei nombra a Lijo a Corte Suprema por decreto 137/2025',
-    title_en: 'Milei appoints Lijo to Supreme Court by decree 137/2025',
-    description_es:
-      'El presidente Milei nombra al juez Ariel Lijo a la Corte Suprema por decreto 137/2025, eludiendo el rechazo del Senado (43 en contra, 27 a favor, 1 abstención). Lijo maneja la causa Correo Argentino y tiene 89 causas de corrupción con solo 14 elevadas a juicio.',
-    description_en:
-      'President Milei appoints Judge Ariel Lijo to the Supreme Court by decree 137/2025, bypassing Senate rejection (43 against, 27 for, 1 abstention). Lijo handles the Correo Argentino case and has 89 corruption cases with only 14 sent to trial.',
-    category: 'political',
-    sources: ['https://www.infobae.com/politica/2025/02/25/javier-milei-designo-por-decreto-en-la-corte-suprema-a-ariel-lijo-y-manuel-garcia-mansilla/'],
-  },
-  {
-    id: 'tl-2025-acusatorio',
-    date: '2025-08',
-    title_es: 'Reforma acusatoria: poder pasa de jueces a fiscales',
-    title_en: 'Accusatory reform: power shifts from judges to prosecutors',
-    description_es:
-      'Entra en vigencia la reforma del sistema acusatorio, transfiriendo el poder de investigación de los jueces federales a los fiscales. El cambio amenaza la concentración de poder en Comodoro Py.',
-    description_en:
-      'The accusatory system reform takes effect, transferring investigative power from federal judges to prosecutors. The change threatens the concentration of power at Comodoro Py.',
-    category: 'legal',
-    sources: ['https://www.argentina.gob.ar'],
-  },
-  {
-    id: 'tl-2026-procesamiento-msosa',
-    date: '2026-02-10',
-    title_es: 'Procesamiento de empresa de Martínez Sosa',
-    title_en: 'Prosecution of Martínez Sosa company',
-    description_es:
-      'La justicia procesa a Héctor Martínez Sosa y Compañía S.A. como partícipe necesario en negociaciones incompatibles. Embargo por $2.870.729.545,61.',
-    description_en:
-      'The court prosecutes Héctor Martínez Sosa y Compañía S.A. as necessary participant in dealings incompatible with public office. Embargo for $2.87B ARS.',
-    category: 'legal',
-    sources: ['https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/'],
-  },
-  {
-    id: 'tl-2024-gold-london',
-    date: '2024-07',
-    title_es: 'BCRA envía 37 toneladas de oro a Londres secretamente',
-    title_en: 'BCRA secretly ships 37 tonnes of gold to London',
-    description_es:
-      'El Banco Central envió secretamente aproximadamente 37 toneladas de oro (valuadas en más de USD 1.000M) a Londres. Se negó a ser auditado, alegó que no existen contratos y bloqueó a la AGN.',
-    description_en:
-      'The Central Bank secretly shipped approximately 37 tonnes of gold (valued at over USD 1B) to London. Refused audits, claimed no contracts exist, and blocked the AGN.',
-    category: 'financial',
-    sources: ['https://www.infobae.com'],
-  },
-  {
-    id: 'tl-2025-libra-crash',
-    date: '2025-02-14',
-    title_es: 'Caso $LIBRA: Milei promueve cripto que colapsa 90%',
-    title_en: '$LIBRA case: Milei promotes crypto that crashes 90%',
-    description_es:
-      'El presidente Milei promovió la criptomoneda $LIBRA que alcanzó USD 4.5B de capitalización antes de colapsar 90%. Insiders cobraron USD 107M. Se abrió investigación congresional.',
-    description_en:
-      'President Milei promoted the $LIBRA cryptocurrency which hit USD 4.5B market cap before crashing 90%. Insiders cashed out USD 107M. Congressional investigation opened.',
-    category: 'financial',
-    sources: ['https://www.infobae.com'],
-  },
-  {
-    id: 'tl-2025-food-crisis',
-    date: '2025-06',
-    title_es: 'Crisis alimentaria: Capital Humano retiene 5.000 toneladas',
-    title_en: 'Food crisis: Capital Humano withholds 5,000 tonnes',
-    description_es:
-      'El Ministerio de Capital Humano, bajo Sandra Pettovello, retiene 5.000 toneladas de alimentos mientras aumenta la inseguridad alimentaria en el país.',
-    description_en:
-      'The Ministry of Capital Humano, under Sandra Pettovello, withholds 5,000 tonnes of food while food insecurity rises across the country.',
-    category: 'political',
-    sources: ['https://www.infobae.com'],
-  },
-  {
-    id: 'tl-2025-cuadernos-trial',
-    date: '2025-11',
-    title_es: 'Inicio juicio oral Causa Cuadernos (87 imputados)',
-    title_en: 'Cuadernos oral trial begins (87 defendants)',
-    description_es:
-      'Comienza el juicio oral de la Causa Cuadernos con 87 imputados, una de las mayores causas de corrupción de la historia argentina.',
-    description_en:
-      'The oral trial of the Cuadernos case begins with 87 defendants, one of the largest corruption cases in Argentine history.',
-    category: 'legal',
-    sources: ['https://www.infobae.com'],
-  },
-  {
-    id: 'tl-2025-dnu941',
-    date: '2025-12',
-    title_es: 'DNU 941/2025: SIDE obtiene poderes de vigilancia masiva',
-    title_en: 'DNU 941/2025: SIDE granted mass surveillance powers',
-    description_es:
-      'El DNU 941/2025 otorga a la SIDE poderes de detención y vigilancia masiva sin orden judicial. Los fondos reservados de inteligencia crecieron ~2.000% bajo Milei.',
-    description_en:
-      'DNU 941/2025 grants SIDE detention and mass surveillance powers without judicial order. Intelligence reserved funds grew ~2,000% under Milei.',
-    category: 'political',
-    sources: ['https://chequeado.com'],
-  },
-  {
-    id: 'tl-2025-nucleoelectrica-overpricing',
-    date: '2025-01-27',
-    title_es: 'ATE denuncia sobreprecio de 1.066% en Nucleoeléctrica',
-    title_en: 'ATE denounces 1,066% overpricing at Nucleoeléctrica',
-    description_es:
-      'Sobreprecio de 1.066,7% en sistema SAP S/4HANA: USD 7M por sistema que reemplazaba uno de ~USD 600K.',
-    description_en:
-      '1,066.7% overpricing on SAP S/4HANA system: USD 7M for system replacing one costing ~USD 600K.',
-    category: 'financial',
-    sources: ['https://ate.org.ar/260127-sobreprecio-nasa/'],
-  },
-  {
-    id: 'tl-2026-bachellier-embargo',
-    date: '2026-02-10',
-    title_es: 'Embargo de $9.669M a Bachellier SA',
-    title_en: 'Bachellier SA assets frozen at $9.669B',
-    description_es:
-      'Juez Casanello embargó $9.669M en activos de Bachellier SA. Empresa recibió $1.666M en comisiones de Nación Seguros.',
-    description_en:
-      'Judge Casanello froze $9.669B in Bachellier SA assets. Company received $1.666B in commissions from Nación Seguros.',
-    category: 'legal',
-    sources: ['https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/'],
-  },
-  {
-    id: 'tl-2024-fundacion-faro-launch',
-    date: '2024-11-13',
-    title_es: 'Lanzamiento de Fundación Faro con Milei',
-    title_en: 'Fundación Faro launch with Milei',
-    description_es:
-      'Fundación Faro (ex-Fundación Valorar) lanzada con presencia de Javier y Karina Milei. Cenas de recaudación a $25.000/plato.',
-    description_en:
-      'Fundación Faro (ex-Fundación Valorar) launched with Javier and Karina Milei present. $25,000/plate fundraising dinners.',
-    category: 'political',
-    sources: ['https://chequeado.com/investigaciones/fundacion-faro-el-think-tank-libertario-que-mas-pauta-electoral-puso-en-2025-y-que-no-declara-el-origen-de-sus-fondos/'],
-  },
-  {
-    id: 'tl-2025-afagate-investigation',
-    date: '2025-12-28',
-    title_es: 'Investigación AFAGate: USD 400M desviados',
-    title_en: 'AFAGate investigation: USD 400M diverted',
-    description_es:
-      'La Nación revela USD 400M desviados por sociedades fantasma en Florida desde cuentas de AFA.',
-    description_en:
-      'La Nación reveals USD 400M diverted through Florida shell companies from AFA accounts.',
-    category: 'financial',
-    sources: ['https://www.lanacion.com.ar/politica/investigacion-exclusiva-desde-la-cuenta-que-administra-los-fondos-de-la-afa-en-eeuu-se-desviaron-al-nid28122025/'],
-  },
-  {
-    id: 'tl-2024-cndc-cartel-charge',
-    date: '2024-12-12',
-    title_es: 'CNDC imputa cartelización de prepagas',
-    title_en: 'CNDC charges prepaid health cartel',
-    description_es:
-      'CNDC imputó a Swiss Medical, OSDE, Galeno, Medife, Omint y Belocopitt por cartelización. Aumentos coordinados de ~150% vs ~70% inflación.',
-    description_en:
-      'CNDC charged Swiss Medical, OSDE, Galeno, Medife, Omint, and Belocopitt for cartelization. Coordinated increases of ~150% vs ~70% inflation.',
-    category: 'legal',
-    sources: ['https://www.argentina.gob.ar/noticias/la-cndc-imputa-por-presunta-cartelizacion-las-principales-empresas-de-medicina-prepaga-0'],
-  },
-  {
-    id: 'tl-2025-lijo-senate-rejection',
-    date: '2025-04-03',
-    title_es: 'Senado rechaza candidatura de Lijo a Corte Suprema (43-27)',
-    title_en: 'Senate rejects Lijo Supreme Court candidacy (43-27)',
-    description_es:
-      'Primera vez desde 1983 que se rechaza un candidato judicial en el recinto. 43 negativos, 27 afirmativos, 1 abstención.',
-    description_en:
-      'First time since 1983 a judicial candidate was rejected in the chamber. 43 against, 27 for, 1 abstention.',
-    category: 'legal',
-    sources: ['https://www.infobae.com/politica/2025/04/03/con-votos-del-pro-y-el-kirchnerismo-el-senado-rechazo-las-candidaturas-de-ariel-lijo-y-garcia-mansilla-a-la-corte-suprema/'],
-  },
-  {
-    id: 'tl-2025-dnu-941-intelligence',
-    date: '2025-12-31',
-    title_es: 'DNU 941/2025: reforma sistema de inteligencia',
-    title_en: 'DNU 941/2025: intelligence system reform',
-    description_es:
-      'Milei reestructura sistema de inteligencia. Habilita FFAA en inteligencia interna y capacidad de aprehensión. CELS alerta sobre vigilancia masiva.',
-    description_en:
-      'Milei restructures intelligence system. Enables military in domestic intelligence and apprehension power. CELS alerts about mass surveillance.',
-    category: 'political',
-    sources: ['https://www.infobae.com/politica/2026/01/02/reforma-de-la-side-las-claves-de-la-reestructuracion-del-sistema-de-inteligencia-que-dispuso-milei-por-decreto/'],
-  },
-  {
-    id: 'tl-2009-noctua-founded',
-    date: '2009-01-01',
-    title_es: 'Caputo funda Noctua Partners con estructura offshore',
-    title_en: 'Caputo founds Noctua Partners with offshore structure',
-    description_es: 'Caputo crea Princess International (Caiman, 75%) → Affinis Partners II → Noctua → Alto Global Fund (US$100M+). Nunca declarado.',
-    description_en: 'Caputo creates Princess International (Cayman, 75%) → Affinis Partners II → Noctua → Alto Global Fund (US$100M+). Never declared.',
-    category: 'financial',
-    sources: ['https://www.lanacion.com.ar/politica/luis-caputo-estuvo-vinculado-a-un-entramado-de-fondos-offshore-nid2079604/'],
-  },
-  {
-    id: 'tl-2012-axis-founded',
-    date: '2012-03-08',
-    title_es: 'Caputo funda AXIS SGFCI (60% dueno)',
-    title_en: 'Caputo founds AXIS SGFCI (60% owner)',
-    description_es: 'Funda mutual fund manager con Carlos Planas. Luego aprobaria inversion de AR$500M de ANSES en su propio fondo.',
-    description_en: 'Founds mutual fund manager with Carlos Planas. Would later approve AR$500M ANSES investment into his own fund.',
-    category: 'financial',
-    sources: ['https://www.pagina12.com.ar/61421-un-fondo-de-inversion-amigo'],
-  },
-  {
-    id: 'tl-2016-axis-anses-scandal',
-    date: '2016-04-01',
-    title_es: 'Escandalo AXIS/ANSES: Caputo aprueba inversion en su propio fondo',
-    title_en: 'AXIS/ANSES scandal: Caputo approves investment in his own fund',
-    description_es: 'FGS invierte AR$500M en AXIS Ahorro Plus (fondo de Caputo). Comisiones a AXIS y Deutsche Bank. UFISES denuncia penalmente.',
-    description_en: 'FGS invests AR$500M in AXIS Ahorro Plus (Caputo fund). Commissions to AXIS and Deutsche Bank. UFISES files criminal complaint.',
-    category: 'legal',
-    sources: ['https://www.fiscales.gob.ar/fiscalias/la-ufises-denuncio-al-ministro-luis-caputo-por-presuntas-operaciones-irregulares-en-el-fondo-de-garantia-de-sustentabilidad/'],
-  },
-
-  // ── Wave 4: Media-Politics Nexus Timeline ─────────────────────────────────
-  {
-    id: 'tl-1976-papel-prensa',
-    date: '1976-11-02',
-    title_es: 'Clarin y La Nacion se apropian de Papel Prensa bajo dictadura',
-    title_en: 'Clarin and La Nacion appropriate Papel Prensa under dictatorship',
-    description_es: 'Magnetto amenaza a Lidia Papaleo (viuda de Graiver) para firmar la transferencia de acciones. El 19/4/1977 la dictadura detiene ilegalmente a 6 miembros del grupo Graiver y formaliza la apropiacion.',
-    description_en: 'Magnetto threatens Lidia Papaleo (Graiver widow) to sign the share transfer. On 4/19/1977 the dictatorship illegally detains 6 Graiver group members and formalizes the appropriation.',
-    category: 'corporate',
-    sources: ['https://chequeado.com/el-explicador/claves-para-entender-el-caso-papel-prensa/', 'https://latinta.com.ar/2017/03/24/papel-prensa-cuatro-decadas-de-impunidad/'],
-  },
-  {
-    id: 'tl-1992-manzano-exit-politics',
-    date: '1992-12',
-    title_es: 'Manzano deja la politica y funda Integra Capital',
-    title_en: 'Manzano leaves politics and founds Integra Capital',
-    description_es: 'Tras su renuncia como Ministro del Interior de Menem con alta imagen negativa, Manzano se autoexilia en EEUU. En 1995 funda Integra Capital en Washington, inicio de su imperio empresarial.',
-    description_en: 'After resigning as Interior Minister under Menem with high negative image, Manzano self-exiles in the US. In 1995 he founds Integra Capital in Washington, beginning of his business empire.',
-    category: 'corporate',
-    sources: ['https://econojournal.com.ar/2021/02/jose-luis-manzano-el-renacido-la-historia-del-hombre-que-se-quedo-con-edenor/'],
-  },
-  {
-    id: 'tl-1992-lopez-casino-club',
-    date: '1992',
-    title_es: 'Cristobal Lopez inaugura Casino Club en Chubut',
-    title_en: 'Cristobal Lopez inaugurates Casino Club in Chubut',
-    description_es: 'Lopez abre la primera casa de juego en Chubut (Comodoro Rivadavia). Casino Club se convertiria en la mayor empresa de juego de Latinoamerica con mas de 20 salas en Misiones, La Pampa, Santa Cruz y Chubut.',
-    description_en: 'Lopez opens the first gambling house in Chubut (Comodoro Rivadavia). Casino Club would become the largest gaming company in Latin America with more than 20 halls in Misiones, La Pampa, Santa Cruz and Chubut.',
-    category: 'corporate',
-    sources: ['https://www.perfil.com/noticias/domingo/como-armo-su-imperio-cristobal-lopez-20140511-0026.phtml'],
-  },
-  {
-    id: 'tl-1996-manzano-vila-america',
-    date: '1996',
-    title_es: 'Manzano y Vila crean Grupo America (medios)',
-    title_en: 'Manzano and Vila create Grupo America (media)',
-    description_es: 'Manzano regresa a Argentina y junto a Daniel Vila adquiere America TV, America 24, y multiples medios. Con Francisco de Narvaez construyen el segundo multimedios del pais.',
-    description_en: 'Manzano returns to Argentina and with Daniel Vila acquires America TV, America 24, and multiple media outlets. With Francisco de Narvaez they build the country second-largest media group.',
-    category: 'corporate',
-    sources: ['https://es.wikipedia.org/wiki/Jos%C3%A9_Luis_Manzano_(empresario)'],
   },
   {
     id: 'tl-1999-goldman-clarin',
@@ -1794,6 +1286,16 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: ['https://nacionalypopular.com/2018/02/10/los-accionistas-del-grupo-clarin/'],
   },
   {
+    id: 'tl-2009-noctua-founded',
+    date: '2009-01-01',
+    title_es: 'Caputo funda Noctua Partners con estructura offshore',
+    title_en: 'Caputo founds Noctua Partners with offshore structure',
+    description_es: 'Caputo crea Princess International (Caiman, 75%) → Affinis Partners II → Noctua → Alto Global Fund (US$100M+). Nunca declarado.',
+    description_en: 'Caputo creates Princess International (Cayman, 75%) → Affinis Partners II → Noctua → Alto Global Fund (US$100M+). Never declared.',
+    category: 'financial',
+    sources: ['https://www.lanacion.com.ar/politica/luis-caputo-estuvo-vinculado-a-un-entramado-de-fondos-offshore-nid2079604/'],
+  },
+  {
     id: 'tl-2012-lopez-buys-c5n',
     date: '2012',
     title_es: 'Cristobal Lopez compra C5N y Radio 10 a Daniel Hadad',
@@ -1802,6 +1304,144 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en: 'Lopez enters the Buenos Aires media market buying five radio stations (Radio 10, FM Vale, One, Mega, Pop) and news channel C5N. Grupo Indalo expands from casinos and oil to media.',
     category: 'corporate',
     sources: ['https://es.wikipedia.org/wiki/Grupo_Indalo'],
+  },
+  {
+    id: 'tl-2012-axis-founded',
+    date: '2012-03-08',
+    title_es: 'Caputo funda AXIS SGFCI (60% dueno)',
+    title_en: 'Caputo founds AXIS SGFCI (60% owner)',
+    description_es: 'Funda mutual fund manager con Carlos Planas. Luego aprobaria inversion de AR$500M de ANSES en su propio fondo.',
+    description_en: 'Founds mutual fund manager with Carlos Planas. Would later approve AR$500M ANSES investment into his own fund.',
+    category: 'financial',
+    sources: ['https://www.pagina12.com.ar/61421-un-fondo-de-inversion-amigo'],
+  },
+  {
+    id: 'tl-2014-pelmond',
+    date: '2014-10-31',
+    title_es: 'PELMOND COMPANY LTD incorporada',
+    title_en: 'PELMOND COMPANY LTD incorporated',
+    description_es:
+      'Se incorpora PELMOND COMPANY LTD en las Islas Virgenes Britanicas, con Maria Cecilia Ibanez listada como officer. La entidad permanece activa durante su mandato como diputada nacional (2024-2026).',
+    description_en:
+      'PELMOND COMPANY LTD incorporated in the British Virgin Islands, with Maria Cecilia Ibanez listed as officer. The entity remains active during her term as national deputy (2024-2026).',
+    category: 'financial',
+    sources: ['https://offshoreleaks.icij.org/nodes/10158328'],
+  },
+  {
+    id: 'tl-2015-bf-corp',
+    date: '2015',
+    title_es: 'BF Corporation mueve fondos a Suiza',
+    title_en: 'BF Corporation moves funds to Switzerland',
+    description_es:
+      'BF Corporation SA (Panama), propiedad de Gianfranco y Mariano Macri, transfiere fondos al Safra Bank de Suiza. Un banco aleman ordena destruir toda la correspondencia.',
+    description_en:
+      'BF Corporation SA (Panama), owned by Gianfranco and Mariano Macri, transfers funds to Safra Bank in Switzerland. A German bank orders destruction of all correspondence.',
+    category: 'financial',
+    sources: [
+      'https://www.perfil.com/noticias/politica/una-off-shore-de-los-macri-movio-fondos-a-suiza-y-destruyo-pruebas.phtml',
+    ],
+  },
+  {
+    id: 'tl-2016-belocopitt-panama',
+    date: '2016',
+    title_es: 'Panama Papers: Belocopitt con 6 entidades offshore en BVI',
+    title_en: 'Panama Papers: Belocopitt with 6 offshore entities in BVI',
+    description_es: 'Claudio Belocopitt aparece como el argentino con más entidades en Panama Papers: KARIMA PORTFOLIO, RAGNAR PORTFOLIO, PENSFORD BUSINESS, ELYANNE BUSINESS, TIAGO GLOBAL, KARRI MANAGEMENT. Controla 76% de Swiss Medical y 40% de Grupo América.',
+    description_en: 'Claudio Belocopitt appears as the Argentine with most Panama Papers entities: KARIMA PORTFOLIO, RAGNAR PORTFOLIO, PENSFORD BUSINESS, ELYANNE BUSINESS, TIAGO GLOBAL, KARRI MANAGEMENT. Controls 76% of Swiss Medical and 40% of Grupo América.',
+    category: 'financial',
+    sources: ['https://offshoreleaks.icij.org/nodes/12170966'],
+  },
+  {
+    id: 'tl-2016-blanqueo',
+    date: '2016',
+    title_es: 'Ley de blanqueo de Macri aprobada',
+    title_en: 'Macri blanqueo law passed',
+    description_es:
+      'El gobierno de Macri aprueba una ley de amnistia fiscal. Insiders de SOCMA declaran ARS 900M+ en activos previamente ocultos, incluyendo USD 4M de Gianfranco Macri a traves de BF Corporation.',
+    description_en:
+      'The Macri government passes a tax amnesty law. SOCMA insiders declare ARS 900M+ in previously hidden assets, including USD 4M from Gianfranco Macri through BF Corporation.',
+    category: 'political',
+    sources: [
+      'https://noticias.perfil.com/noticias/politica/2018-12-18-quienes-son-los-integrantes-de-socma-que-adhirieron-al-blanqueo.phtml',
+    ],
+  },
+  {
+    id: 'tl-2016-axis-anses-scandal',
+    date: '2016-04-01',
+    title_es: 'Escandalo AXIS/ANSES: Caputo aprueba inversion en su propio fondo',
+    title_en: 'AXIS/ANSES scandal: Caputo approves investment in his own fund',
+    description_es: 'FGS invierte AR$500M en AXIS Ahorro Plus (fondo de Caputo). Comisiones a AXIS y Deutsche Bank. UFISES denuncia penalmente.',
+    description_en: 'FGS invests AR$500M in AXIS Ahorro Plus (Caputo fund). Commissions to AXIS and Deutsche Bank. UFISES files criminal complaint.',
+    category: 'legal',
+    sources: ['https://www.fiscales.gob.ar/fiscalias/la-ufises-denuncio-al-ministro-luis-caputo-por-presuntas-operaciones-irregulares-en-el-fondo-de-garantia-de-sustentabilidad/'],
+  },
+  {
+    id: 'tl-2016-correo-acuerdo',
+    date: '2016-06',
+    title_es: 'Acuerdo del Correo Argentino: quita del 98,82%',
+    title_en: 'Correo Argentino settlement: 98.82% debt reduction',
+    description_es:
+      'El gobierno de Macri acepta un acuerdo que reduce la deuda de Correo Argentino (empresa familiar) en un 98,82%. La fiscal Boquin lo califica de "equivalente a una condonacion".',
+    description_en:
+      'The Macri government accepts a settlement reducing the Correo Argentino (family company) debt by 98.82%. Prosecutor Boquin rules it "equivalent to a forgiveness."',
+    category: 'legal',
+    sources: [
+      'https://chequeado.com/el-explicador/claves-para-entender-la-polemica-por-la-deuda-del-correo-argentino-con-el-estado/',
+    ],
+  },
+  {
+    id: 'tl-2016-lopez-bolsos',
+    date: '2016-06-14',
+    title_es: 'José López detenido con USD 9M en convento de Gral. Rodríguez',
+    title_en: 'José López arrested with USD 9M at General Rodríguez convent',
+    description_es: 'El ex Secretario de Obras Públicas José López es detenido intentando ocultar bolsos con USD 9 millones, joyas y un arma en un convento de General Rodríguez. El episodio se convierte en símbolo de la corrupción kirchnerista.',
+    description_en: 'Former Public Works Secretary José López arrested trying to hide bags with USD 9 million, jewels and a weapon at a General Rodríguez convent. The episode becomes a symbol of Kirchnerist corruption.',
+    category: 'legal',
+    sources: ['https://www.infobae.com/judiciales/2025/12/11/casacion-dejo-firme-la-pena-de-13-anos-de-carcel-contra-jose-lopez-por-corrupcion-y-el-caso-de-los-bolsos-del-convento/'],
+  },
+  {
+    id: 'tl-2016-tt41',
+    date: '2016-06-23',
+    title_es: 'TT 41 CORP incorporada (Camano)',
+    title_en: 'TT 41 CORP incorporated (Camano)',
+    description_es:
+      'Se incorpora TT 41 CORP en las Islas Virgenes Britanicas a traves de Trident Trust, vinculada a Graciela Camano durante su mandato 2014-2018 como diputada nacional.',
+    description_en:
+      'TT 41 CORP incorporated in the British Virgin Islands through Trident Trust, linked to Graciela Camano during her 2014-2018 term as national deputy.',
+    category: 'financial',
+    sources: ['https://offshoreleaks.icij.org'],
+  },
+  {
+    id: 'tl-2017-correo-charges',
+    date: '2017',
+    title_es: 'Causa Correo Argentino: cargos formalizados',
+    title_en: 'Correo Argentino case: charges formalized',
+    description_es:
+      'El fiscal Zoni presenta cargos contra el presidente Macri y el ministro Aguad en relacion al acuerdo de la deuda del Correo Argentino. La causa judicial continua.',
+    description_en:
+      'Prosecutor Zoni files charges against President Macri and Minister Aguad in connection with the Correo Argentino debt settlement. The judicial case continues.',
+    category: 'legal',
+    sources: ['https://es.wikipedia.org/wiki/Causa_Correo_Argentino'],
+  },
+  {
+    id: 'tl-2017-borinsky-olivos',
+    date: '2017-2019',
+    title_es: 'Borinsky: 15+ visitas a Olivos coincidiendo con fallos clave',
+    title_en: 'Borinsky: 15+ Olivos visits coinciding with key rulings',
+    description_es: 'El juez de Casación Mariano Borinsky visitó a Macri en Olivos más de 15 veces mientras presidía causas contra dirigentes kirchneristas (Nisman, Ruta del Dinero K, Dólar Futuro). Admitió que iba "a jugar al pádel".',
+    description_en: 'Cassation judge Mariano Borinsky visited Macri at Olivos 15+ times while presiding over Kirchnerist cases (Nisman, Ruta del Dinero K, Dólar Futuro). Claimed he went "to play paddle tennis."',
+    category: 'legal',
+    sources: ['https://www.eldestapeweb.com/politica/operacion-olivos/las-15-reuniones-de-macri-con-un-juez-clave-en-la-persecucion-a-cfk-20214118034'],
+  },
+  {
+    id: 'tl-2017-hornos-rosada',
+    date: '2017-2019',
+    title_es: 'Hornos: 6+ reuniones con Macri en Casa Rosada mientras juzgaba causas K',
+    title_en: 'Hornos: 6+ meetings with Macri at Casa Rosada while judging K cases',
+    description_es: 'El juez de Casación Gustavo Hornos se reunió con Macri en Casa Rosada al menos 6 veces mientras presidía la cámara que resolvía causas contra dirigentes kirchneristas.',
+    description_en: 'Cassation judge Gustavo Hornos met with Macri at Casa Rosada at least 6 times while presiding over the chamber that decided Kirchnerist cases.',
+    category: 'legal',
+    sources: ['https://www.eldestapeweb.com/politica/operacion-olivos/las-15-reuniones-de-macri-con-un-juez-clave-en-la-persecucion-a-cfk-20214118034'],
   },
   {
     id: 'tl-2017-lopez-desousa-arrest',
@@ -1824,6 +1464,40 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: ['https://www.perfil.com/noticias/politica/aprobaron-la-fusion-entre-cablevision-y-telecom.phtml'],
   },
   {
+    id: 'tl-2018-boudou-condena',
+    date: '2018-08',
+    title_es: 'Boudou condenado por Ciccone: primer vicepresidente con condena por corrupción',
+    title_en: 'Boudou convicted in Ciccone: first VP with corruption conviction',
+    description_es: 'Amado Boudou condenado a 5 años y 10 meses por cohecho pasivo y negociaciones incompatibles al adquirir encubiertamente la imprenta Ciccone Calcográfica.',
+    description_en: 'Amado Boudou sentenced to 5 years 10 months for passive bribery and incompatible negotiations for covertly acquiring Ciccone Calcográfica printing press.',
+    category: 'legal',
+    sources: ['https://chequeado.com/el-explicador/causa-ciccone-la-corte-confirmo-la-sentencia-de-boudou-y-se-convirtio-en-el-primer-vicepresidente-condenado-por-corrupcion/'],
+  },
+  {
+    id: 'tl-2019-donations',
+    date: '2019',
+    title_es: 'Declaraciones de aportes de campana',
+    title_en: 'Campaign donation filings',
+    description_es:
+      'Macri dona ARS 100.000 a Juntos por el Cambio; Maximo Kirchner dona ARS 50.000 a Frente de Todos. Se identifican 50 coincidencias politico-donante (0% falsos positivos). Se detecta la coincidencia contratista-donante de Rodriguez. Aluar dona ARS 5.400.000 distribuidos entre ambas coaliciones.',
+    description_en:
+      'Macri donates ARS 100,000 to Juntos por el Cambio; Maximo Kirchner donates ARS 50,000 to Frente de Todos. 50 politician-donor matches identified (0% false positives). Rodriguez contractor-donor pattern detected. Aluar donates ARS 5,400,000 distributed across both coalitions.',
+    category: 'political',
+    sources: ['https://aportantes.electoral.gob.ar'],
+  },
+  {
+    id: 'tl-2020-denarvaez-walmart',
+    date: '2020-11',
+    title_es: 'De Narvaez adquiere Walmart Argentina',
+    title_en: 'De Narvaez acquires Walmart Argentina',
+    description_es:
+      'Francisco De Narvaez completa la adquisicion de Walmart Argentina, rebautizada luego como Changomas. La operacion refuerza su presencia en el retail nacional. Sus cinco entidades offshore figuran en la base ICIJ.',
+    description_en:
+      'Francisco De Narvaez completes the acquisition of Walmart Argentina, later rebranded as Changomas. The operation reinforces his presence in national retail. His five offshore entities appear in the ICIJ database.',
+    category: 'corporate',
+    sources: ['https://offshoreleaks.icij.org'],
+  },
+  {
     id: 'tl-2020-edenor-vila-manzano',
     date: '2020-12-28',
     title_es: 'Vila-Manzano-Filiberti compran Edenor por USD 100M',
@@ -1832,6 +1506,16 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en: 'The media consortium buys South America largest electricity distributor from Pampa Energia (Mindlin). Initial disbursement: USD 55M. Contingency clause for change of control in first year.',
     category: 'corporate',
     sources: ['https://www.pagina12.com.ar/314110-mindlin-le-vendio-edenor-a-vila-manzano', 'https://econojournal.com.ar/2020/12/la-curiosa-clausula-que-incluyo-mindlin-para-venderle-edenor-a-manzano/'],
+  },
+  {
+    id: 'tl-2021-rosenkrantz-recusal',
+    date: '2021',
+    title_es: 'Rosenkrantz revierte recusación: comienza a fallar sobre ex clientes (Clarín, La Nación)',
+    title_en: 'Rosenkrantz reverses recusal: begins ruling on former clients (Clarín, La Nación)',
+    description_es: 'El presidente de la Corte Suprema Carlos Rosenkrantz, ex abogado de Clarín, La Nación, McDonald\'s, YPF y Repsol, revierte su política de recusación. Al menos 56 fallos involucrando antiguos clientes.',
+    description_en: 'Supreme Court president Carlos Rosenkrantz, former lawyer for Clarín, La Nación, McDonald\'s, YPF and Repsol, reverses his recusal policy. At least 56 rulings involving former clients.',
+    category: 'legal',
+    sources: ['https://www.pagina12.com.ar/204884-rosenkrantz-una-larga-historia-de-conflictos'],
   },
   {
     id: 'tl-2021-pandora-papers-media',
@@ -1844,6 +1528,30 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: ['https://www.eldiarioar.com/politica/pandora-papers/magnetto-fontevecchia-saguier-aranda-duenos-principales-medios-argentina-han-abierto-sociedades-paraisos-fiscales-uruguay_1_8403360.amp.html'],
   },
   {
+    id: 'tl-2021-decreto-823',
+    date: '2021-12-01',
+    title_es: 'Decreto 823/2021: monopolio de seguros estatales',
+    title_en: 'Decree 823/2021: state insurance monopoly',
+    description_es:
+      'Alberto Fernández firma el Decreto 823/2021 que obliga a todo el sector público nacional a contratar seguros exclusivamente con Nación Seguros S.A. Crea el monopolio que será explotado por brokers cercanos al presidente.',
+    description_en:
+      'Alberto Fernández signs Decree 823/2021 mandating all national public sector entities to contract insurance exclusively through Nación Seguros S.A. Creates the monopoly that would be exploited by brokers close to the president.',
+    category: 'financial',
+    sources: ['https://www.argentina.gob.ar/normativa/nacional/decreto-823-2021-357558'],
+  },
+  {
+    id: 'tl-2022-lago-escondido',
+    date: '2022-11',
+    title_es: 'Escándalo Lago Escondido: jueces en avión de Clarín',
+    title_en: 'Lago Escondido scandal: judges on Clarín-paid flight',
+    description_es:
+      'Se revela que el juez Ercolini y otros magistrados volaron en un avión pagado por el Grupo Clarín a la estancia Lago Escondido de Joe Lewis. Chats de Telegram filtrados muestran coordinación para fabricar coartadas.',
+    description_en:
+      'It is revealed that Judge Ercolini and other magistrates flew on a Grupo Clarín-paid flight to Joe Lewis\'s Lago Escondido estate. Leaked Telegram chats show coordination to fabricate alibis.',
+    category: 'legal',
+    sources: ['https://www.eldestapeweb.com/politica/los-jueces-de-clarin/clarin-invito-a-jueces-del-lawfare-a-lago-escondido-y-buscaron-encubrirlo-con-facturas-truchas-y-el-direccionamiento-de-una-causa-judicial-202212419450'],
+  },
+  {
     id: 'tl-2022-lago-escondido',
     date: '2022-11',
     title_es: 'Escandalo Lago Escondido: jueces de Comodoro Py con ejecutivos de Clarin',
@@ -1852,6 +1560,48 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en: 'It leaks that judges Ercolini and Mahiques traveled to Lago Escondido (Joe Lewis estate) invited by Rendo and Casey (Clarin). They tried to cover up with fake invoices.',
     category: 'legal',
     sources: ['https://www.eldestapeweb.com/politica/los-jueces-de-clarin/clarin-invito-a-jueces-del-lawfare-a-lago-escondido-y-buscaron-encubrirlo-con-facturas-truchas-y-el-direccionamiento-de-una-causa-judicial-202212419450'],
+  },
+  {
+    id: 'tl-2022-cristina-vialidad-condena',
+    date: '2022-12',
+    title_es: 'Cristina Kirchner condenada a 6 años en Causa Vialidad',
+    title_en: 'Cristina Kirchner sentenced to 6 years in Vialidad Case',
+    description_es: 'El Tribunal Oral Federal condena a Cristina Fernández de Kirchner a 6 años de prisión e inhabilitación perpetua por administración fraudulenta en la adjudicación de obra pública a Lázaro Báez en Santa Cruz.',
+    description_en: 'Federal Oral Tribunal sentences Cristina Fernández de Kirchner to 6 years prison and perpetual disqualification for fraudulent administration in awarding public works to Lázaro Báez in Santa Cruz.',
+    category: 'legal',
+    sources: ['https://chequeado.com/el-explicador/juicio-a-cristina-fernandez-de-kirchner-todas-las-respuestas-para-entender-la-causa-vialidad/'],
+  },
+  {
+    id: 'tl-2023-pami-16x',
+    date: '2023',
+    title_es: 'PAMI paga 16 veces el precio de mercado por medicamentos oncológicos',
+    title_en: 'PAMI pays 16x market price for oncological drugs',
+    description_es: 'PAMI pagó hasta 16 veces el precio de mercado (anastrozol: $13.192 vs $924 en licitación, ~14x). Cartel denunciado: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
+    description_en: 'PAMI paid up to 16x market price (anastrozole: $13,192 vs $924 at tender, ~14x). Cartel complaint: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
+    category: 'financial',
+    sources: ['https://www.infobae.com/politica/2025/01/23/denuncian-al-pami-y-a-un-grupo-de-laboratorios-por-sobreprecios-en-la-compra-de-remedios-oncologicos/'],
+  },
+  {
+    id: 'tl-2024-seijas-ddjj',
+    date: '2024',
+    title_es: 'Juez Seijas declara ARS 1.750 millones siendo asesor ad honorem',
+    title_en: 'Judge Seijas declares ARS 1.75B while serving as unpaid advisor',
+    description_es: 'Alberto Seijas declaró ARS 1.750.832.137,66 en activos en su DDJJ 2024 mientras ejercía como asesor ad honorem (no remunerado) del Consejo de la Magistratura. Anomalía extrema de riqueza judicial.',
+    description_en: 'Alberto Seijas declared ARS 1,750,832,137.66 in assets in his 2024 DDJJ while serving as ad honorem (unpaid) advisor to the Consejo de la Magistratura. Extreme judicial wealth anomaly.',
+    category: 'legal',
+    sources: ['https://datos.gob.ar'],
+  },
+  {
+    id: 'tl-2024-raids-seguros',
+    date: '2024-04-01',
+    title_es: '24 allanamientos en la Causa Seguros',
+    title_en: '24 raids in the Causa Seguros investigation',
+    description_es:
+      'El juez Ercolini ordena 24 allanamientos simultáneos en el marco de la investigación sobre el escándalo de los seguros. El gobierno prohíbe todos los intermediarios en pólizas estatales.',
+    description_en:
+      'Judge Ercolini orders 24 simultaneous raids in the insurance scandal investigation. The government bans all intermediaries in state insurance policies.',
+    category: 'legal',
+    sources: ['https://www.infobae.com/politica/2024/04/11/tras-el-escandalo-de-los-seguros-el-gobierno-prohibio-a-los-intermediarios-en-todas-las-polizas-con-organismos-del-estado/'],
   },
   {
     id: 'tl-2024-corte-oil-combustibles',
@@ -1864,6 +1614,164 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: ['https://www.eldiarioweb.com/2024/05/la-corte-anulo-la-absolucion-de-cristobal-lopez-y-fabian-de-sousa-por-evasion-fiscal/'],
   },
   {
+    id: 'tl-2024-ley-bases',
+    date: '2024-06-12',
+    title_es: 'Ley de Bases aprobada en Senado (36-36, desempate Villarruel)',
+    title_en: 'Ley de Bases approved in Senate (36-36, Villarruel tiebreak)',
+    description_es:
+      'El Senado aprueba la Ley de Bases con un empate de 36 votos a 36. La vicepresidenta Victoria Villarruel desempata a favor. Varios senadores vinculados a intereses financieros votaron sobre articulos clave de la ley.',
+    description_en:
+      'The Senate approves the Ley de Bases with a 36-36 tie. Vice President Victoria Villarruel casts the deciding vote in favor. Several senators linked to financial interests voted on key articles of the law.',
+    category: 'political',
+    sources: ['https://www.senado.gob.ar'],
+  },
+  {
+    id: 'tl-2024-gold-london',
+    date: '2024-07',
+    title_es: 'BCRA envía 37 toneladas de oro a Londres secretamente',
+    title_en: 'BCRA secretly ships 37 tonnes of gold to London',
+    description_es:
+      'El Banco Central envió secretamente aproximadamente 37 toneladas de oro (valuadas en más de USD 1.000M) a Londres. Se negó a ser auditado, alegó que no existen contratos y bloqueó a la AGN.',
+    description_en:
+      'The Central Bank secretly shipped approximately 37 tonnes of gold (valued at over USD 1B) to London. Refused audits, claimed no contracts exist, and blocked the AGN.',
+    category: 'financial',
+    sources: ['https://www.infobae.com'],
+  },
+  {
+    id: 'tl-2024-mariano-denuncia',
+    date: '2024-08',
+    title_es: 'Mariano Macri denuncia penalmente a SOCMA',
+    title_en: 'Mariano Macri files criminal complaint against SOCMA',
+    description_es:
+      'Mariano Macri presenta denuncias penales contra SOCMA, nombrando a Gianfranco, Florencia y al CEO Leonardo Maffioli. Cargos: administracion fraudulenta, falsificacion de documentos, evasion fiscal, balances falsos y lavado de activos.',
+    description_en:
+      'Mariano Macri files criminal complaints against SOCMA, naming Gianfranco, Florencia, and CEO Leonardo Maffioli. Charges: fraudulent administration, document falsification, tax evasion, false balance sheets, and money laundering.',
+    category: 'legal',
+    sources: [
+      'https://www.infobae.com/judiciales/2024/08/07/el-hermano-de-mauricio-macri-denuncio-al-grupo-empresarial-de-la-familia-por-defraudacion-y-lavado-de-activos/',
+    ],
+  },
+  {
+    id: 'tl-2024-decreto-747',
+    date: '2024-08-21',
+    title_es: 'Decreto 747/2024 revoca monopolio de seguros',
+    title_en: 'Decree 747/2024 revokes insurance monopoly',
+    description_es:
+      'El gobierno de Milei deroga el Decreto 823/2021, eliminando la obligación de contratar con Nación Seguros. El gobierno no renueva el contrato con Nación Seguros (marzo 2024).',
+    description_en:
+      'The Milei government revokes Decree 823/2021, eliminating the mandatory contracting with Nación Seguros. The government does not renew the contract with Nación Seguros (March 2024).',
+    category: 'political',
+    sources: ['https://www.lanacion.com.ar/politica/el-gobierno-derogo-el-decreto-de-alberto-fernandez-que-obligaba-a-contratar-a-nacion-seguros-nid21082024/'],
+  },
+  {
+    id: 'tl-2024-fundacion-faro-launch',
+    date: '2024-11-13',
+    title_es: 'Lanzamiento de Fundación Faro con Milei',
+    title_en: 'Fundación Faro launch with Milei',
+    description_es:
+      'Fundación Faro (ex-Fundación Valorar) lanzada con presencia de Javier y Karina Milei. Cenas de recaudación a $25.000/plato.',
+    description_en:
+      'Fundación Faro (ex-Fundación Valorar) launched with Javier and Karina Milei present. $25,000/plate fundraising dinners.',
+    category: 'political',
+    sources: ['https://chequeado.com/investigaciones/fundacion-faro-el-think-tank-libertario-que-mas-pauta-electoral-puso-en-2025-y-que-no-declara-el-origen-de-sus-fondos/'],
+  },
+  {
+    id: 'tl-2024-kueider-detencion',
+    date: '2024-12-04',
+    title_es: 'Kueider detenido en la frontera de Paraguay con USD 211.000',
+    title_en: 'Kueider detained at Paraguay border with USD 211,000',
+    description_es:
+      'El senador Edgardo Kueider es detenido en el paso fronterizo de Clorinda (Paraguay) con USD 211.000 en efectivo no declarados. El Senado lo expulsa por mayoria. Empresas BETAIL y EDEKOM aparecen en registros vinculados a su nombre.',
+    description_en:
+      'Senator Edgardo Kueider is detained at the Clorinda border crossing (Paraguay) with USD 211,000 in undeclared cash. The Senate expels him by majority vote. Companies BETAIL and EDEKOM appear in records linked to his name.',
+    category: 'legal',
+    sources: [
+      'https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-edgardo-kueider-en-paraguay-llevaba-mas-de-usd-200-mil/',
+    ],
+  },
+  {
+    id: 'tl-2024-cndc-cartel-charge',
+    date: '2024-12-12',
+    title_es: 'CNDC imputa cartelización de prepagas',
+    title_en: 'CNDC charges prepaid health cartel',
+    description_es:
+      'CNDC imputó a Swiss Medical, OSDE, Galeno, Medife, Omint y Belocopitt por cartelización. Aumentos coordinados de ~150% vs ~70% inflación.',
+    description_en:
+      'CNDC charged Swiss Medical, OSDE, Galeno, Medife, Omint, and Belocopitt for cartelization. Coordinated increases of ~150% vs ~70% inflation.',
+    category: 'legal',
+    sources: ['https://www.argentina.gob.ar/noticias/la-cndc-imputa-por-presunta-cartelizacion-las-principales-empresas-de-medicina-prepaga-0'],
+  },
+  {
+    id: 'tl-2025-side-explosion',
+    date: '2025',
+    title_es: 'Fondos reservados SIDE crecen ~2.000% bajo Milei',
+    title_en: 'SIDE secret funds grow ~2,000% under Milei',
+    description_es: 'Los fondos reservados de inteligencia crecieron de ARS 3.800M (4,1% del presupuesto en 2023) a ARS 13.400M (19,6% en 2025). Santiago Caputo controla la SIDE a través del designado Cristian Auguadra.',
+    description_en: 'Intelligence reserved funds grew from ARS 3.8B (4.1% of budget in 2023) to ARS 13.4B (19.6% in 2025). Santiago Caputo controls SIDE through appointee Cristian Auguadra.',
+    category: 'political',
+    sources: ['https://chequeado.com/el-explicador/los-fondos-reservados-de-la-secretaria-de-inteligencia-el-gobierno-de-milei-los-amplio-por-tercera-vez/'],
+  },
+  {
+    id: 'tl-2025-suizo-2678',
+    date: '2025',
+    title_es: 'Contratos Suizo Argentina crecen 2.678% con investigación por sobornos',
+    title_en: 'Suizo Argentina contracts grow 2,678% with bribery investigation',
+    description_es: 'Los contratos de Suizo Argentina crecieron de ARS 3.900M a ARS 108.300M (2.678%). Investigación por sobornos vinculada al escándalo Spagnuolo/ANDIS que implica a Karina Milei. Se encontró $240.000 en efectivo en allanamientos.',
+    description_en: 'Suizo Argentina contracts grew from ARS 3.9B to ARS 108.3B (2,678%). Bribery investigation linked to Spagnuolo/ANDIS scandal implicating Karina Milei. $240K cash found in raids.',
+    category: 'financial',
+    sources: ['https://www.infobae.com'],
+  },
+  {
+    id: 'tl-2025-nucleoelectrica-overpricing',
+    date: '2025-01-27',
+    title_es: 'ATE denuncia sobreprecio de 1.066% en Nucleoeléctrica',
+    title_en: 'ATE denounces 1,066% overpricing at Nucleoeléctrica',
+    description_es:
+      'Sobreprecio de 1.066,7% en sistema SAP S/4HANA: USD 7M por sistema que reemplazaba uno de ~USD 600K.',
+    description_en:
+      '1,066.7% overpricing on SAP S/4HANA system: USD 7M for system replacing one costing ~USD 600K.',
+    category: 'financial',
+    sources: ['https://ate.org.ar/260127-sobreprecio-nasa/'],
+  },
+  {
+    id: 'tl-2025-lijo-decreto',
+    date: '2025-02-14',
+    title_es: 'Milei nombra a Lijo a Corte Suprema por decreto 137/2025',
+    title_en: 'Milei appoints Lijo to Supreme Court by decree 137/2025',
+    description_es:
+      'El presidente Milei nombra al juez Ariel Lijo a la Corte Suprema por decreto 137/2025, eludiendo el rechazo del Senado (43 en contra, 27 a favor, 1 abstención). Lijo maneja la causa Correo Argentino y tiene 89 causas de corrupción con solo 14 elevadas a juicio.',
+    description_en:
+      'President Milei appoints Judge Ariel Lijo to the Supreme Court by decree 137/2025, bypassing Senate rejection (43 against, 27 for, 1 abstention). Lijo handles the Correo Argentino case and has 89 corruption cases with only 14 sent to trial.',
+    category: 'political',
+    sources: ['https://www.infobae.com/politica/2025/02/25/javier-milei-designo-por-decreto-en-la-corte-suprema-a-ariel-lijo-y-manuel-garcia-mansilla/'],
+  },
+  {
+    id: 'tl-2025-libra-crash',
+    date: '2025-02-14',
+    title_es: 'Caso $LIBRA: Milei promueve cripto que colapsa 90%',
+    title_en: '$LIBRA case: Milei promotes crypto that crashes 90%',
+    description_es:
+      'El presidente Milei promovió la criptomoneda $LIBRA que alcanzó USD 4.5B de capitalización antes de colapsar 90%. Insiders cobraron USD 107M. Se abrió investigación congresional.',
+    description_en:
+      'President Milei promoted the $LIBRA cryptocurrency which hit USD 4.5B market cap before crashing 90%. Insiders cashed out USD 107M. Congressional investigation opened.',
+    category: 'financial',
+    sources: ['https://www.infobae.com'],
+  },
+  {
+    id: 'tl-2025-kueider-arrestos',
+    date: '2025-03',
+    title_es: '7 asociados de Kueider detenidos',
+    title_en: '7 Kueider associates arrested',
+    description_es:
+      'Siete personas del entorno del ex senador Kueider son detenidas en el marco de la causa iniciada tras su detencion en la frontera paraguaya con efectivo no declarado.',
+    description_en:
+      'Seven associates of former senator Kueider are detained as part of the case opened following his detention at the Paraguayan border with undeclared cash.',
+    category: 'legal',
+    sources: [
+      'https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-edgardo-kueider-en-paraguay-llevaba-mas-de-usd-200-mil/',
+    ],
+  },
+  {
     id: 'tl-2025-tether-adecoagro',
     date: '2025-03-27',
     title_es: 'Tether compra Adecoagro por USD 600M: cripto entra al agro argentino',
@@ -1872,6 +1780,18 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en: 'Tether Investments (USD 14B profit 2024) acquires up to 70% of Adecoagro, founded by Soros. Plan for USD 3B in Argentine investments in AI, energy, agro and digital media.',
     category: 'financial',
     sources: ['https://www.infobae.com/economia/2025/03/27/un-gigante-cripto-invertira-usd-600-millones-en-la-argentina-para-quedarse-con-el-control-de-adecoagro/'],
+  },
+  {
+    id: 'tl-2025-lijo-senate-rejection',
+    date: '2025-04-03',
+    title_es: 'Senado rechaza candidatura de Lijo a Corte Suprema (43-27)',
+    title_en: 'Senate rejects Lijo Supreme Court candidacy (43-27)',
+    description_es:
+      'Primera vez desde 1983 que se rechaza un candidato judicial en el recinto. 43 negativos, 27 afirmativos, 1 abstención.',
+    description_en:
+      'First time since 1983 a judicial candidate was rejected in the chamber. 43 against, 27 for, 1 abstention.',
+    category: 'legal',
+    sources: ['https://www.infobae.com/politica/2025/04/03/con-votos-del-pro-y-el-kirchnerismo-el-senado-rechazo-las-candidaturas-de-ariel-lijo-y-garcia-mansilla-a-la-corte-suprema/'],
   },
   {
     id: 'tl-2025-lopez-retakes-c5n',
@@ -1883,36 +1803,17 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     category: 'corporate',
     sources: ['https://www.noticiasnqn.com.ar/noticias/2025/05/27/314143-cristobal-lopez-retomo-el-control-de-c5n-radio-10-y-mbito-financiero-tras-desplazar-a-fabian-de-sousa'],
   },
-  // --- Frente de Todos / Kirchnerismo timeline events ---
   {
-    id: 'tl-2016-lopez-bolsos',
-    date: '2016-06-14',
-    title_es: 'José López detenido con USD 9M en convento de Gral. Rodríguez',
-    title_en: 'José López arrested with USD 9M at General Rodríguez convent',
-    description_es: 'El ex Secretario de Obras Públicas José López es detenido intentando ocultar bolsos con USD 9 millones, joyas y un arma en un convento de General Rodríguez. El episodio se convierte en símbolo de la corrupción kirchnerista.',
-    description_en: 'Former Public Works Secretary José López arrested trying to hide bags with USD 9 million, jewels and a weapon at a General Rodríguez convent. The episode becomes a symbol of Kirchnerist corruption.',
-    category: 'legal',
-    sources: ['https://www.infobae.com/judiciales/2025/12/11/casacion-dejo-firme-la-pena-de-13-anos-de-carcel-contra-jose-lopez-por-corrupcion-y-el-caso-de-los-bolsos-del-convento/'],
-  },
-  {
-    id: 'tl-2018-boudou-condena',
-    date: '2018-08',
-    title_es: 'Boudou condenado por Ciccone: primer vicepresidente con condena por corrupción',
-    title_en: 'Boudou convicted in Ciccone: first VP with corruption conviction',
-    description_es: 'Amado Boudou condenado a 5 años y 10 meses por cohecho pasivo y negociaciones incompatibles al adquirir encubiertamente la imprenta Ciccone Calcográfica.',
-    description_en: 'Amado Boudou sentenced to 5 years 10 months for passive bribery and incompatible negotiations for covertly acquiring Ciccone Calcográfica printing press.',
-    category: 'legal',
-    sources: ['https://chequeado.com/el-explicador/causa-ciccone-la-corte-confirmo-la-sentencia-de-boudou-y-se-convirtio-en-el-primer-vicepresidente-condenado-por-corrupcion/'],
-  },
-  {
-    id: 'tl-2022-cristina-vialidad-condena',
-    date: '2022-12',
-    title_es: 'Cristina Kirchner condenada a 6 años en Causa Vialidad',
-    title_en: 'Cristina Kirchner sentenced to 6 years in Vialidad Case',
-    description_es: 'El Tribunal Oral Federal condena a Cristina Fernández de Kirchner a 6 años de prisión e inhabilitación perpetua por administración fraudulenta en la adjudicación de obra pública a Lázaro Báez en Santa Cruz.',
-    description_en: 'Federal Oral Tribunal sentences Cristina Fernández de Kirchner to 6 years prison and perpetual disqualification for fraudulent administration in awarding public works to Lázaro Báez in Santa Cruz.',
-    category: 'legal',
-    sources: ['https://chequeado.com/el-explicador/juicio-a-cristina-fernandez-de-kirchner-todas-las-respuestas-para-entender-la-causa-vialidad/'],
+    id: 'tl-2025-food-crisis',
+    date: '2025-06',
+    title_es: 'Crisis alimentaria: Capital Humano retiene 5.000 toneladas',
+    title_en: 'Food crisis: Capital Humano withholds 5,000 tonnes',
+    description_es:
+      'El Ministerio de Capital Humano, bajo Sandra Pettovello, retiene 5.000 toneladas de alimentos mientras aumenta la inseguridad alimentaria en el país.',
+    description_en:
+      'The Ministry of Capital Humano, under Sandra Pettovello, withholds 5,000 tonnes of food while food insecurity rises across the country.',
+    category: 'political',
+    sources: ['https://www.infobae.com'],
   },
   {
     id: 'tl-2025-06-corte-confirma-cristina',
@@ -1935,6 +1836,18 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: ['https://www.lanacion.com.ar/politica/procesaron-a-alberto-fernandez-en-el-caso-de-los-seguros-por-negociaciones-incompatibles-con-su-nid10072025/'],
   },
   {
+    id: 'tl-2025-acusatorio',
+    date: '2025-08',
+    title_es: 'Reforma acusatoria: poder pasa de jueces a fiscales',
+    title_en: 'Accusatory reform: power shifts from judges to prosecutors',
+    description_es:
+      'Entra en vigencia la reforma del sistema acusatorio, transfiriendo el poder de investigación de los jueces federales a los fiscales. El cambio amenaza la concentración de poder en Comodoro Py.',
+    description_en:
+      'The accusatory system reform takes effect, transferring investigative power from federal judges to prosecutors. The change threatens the concentration of power at Comodoro Py.',
+    category: 'legal',
+    sources: ['https://www.argentina.gob.ar'],
+  },
+  {
     id: 'tl-2025-09-devido-gnl',
     date: '2025-09-30',
     title_es: 'De Vido condenado por fraude en compra de GNL',
@@ -1943,6 +1856,18 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en: 'De Vido sentenced to 4 years for defrauding the State in LNG purchases: unnecessary payments of USD 5.5M to intermediaries with overpricing.',
     category: 'legal',
     sources: ['https://www.lanacion.com.ar/politica/fraude-millonario-condenaron-a-julio-de-vido-baratta-y-nicolas-dromi-por-la-compra-de-gas-licuado-nid30092025/'],
+  },
+  {
+    id: 'tl-2025-cuadernos-trial',
+    date: '2025-11',
+    title_es: 'Inicio juicio oral Causa Cuadernos (87 imputados)',
+    title_en: 'Cuadernos oral trial begins (87 defendants)',
+    description_es:
+      'Comienza el juicio oral de la Causa Cuadernos con 87 imputados, una de las mayores causas de corrupción de la historia argentina.',
+    description_en:
+      'The oral trial of the Cuadernos case begins with 87 defendants, one of the largest corruption cases in Argentine history.',
+    category: 'legal',
+    sources: ['https://www.infobae.com'],
   },
   {
     id: 'tl-2025-11-devido-once-firme',
@@ -1955,6 +1880,30 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: ['https://www.lanacion.com.ar/politica/la-corte-confirmo-la-condena-contra-julio-de-vido-por-la-tragedia-de-once-nid11112025/'],
   },
   {
+    id: 'tl-2025-catalan-ypf',
+    date: '2025-11-17',
+    title_es: 'Catalán designado Director de YPF tras dejar Interior',
+    title_en: 'Catalán appointed YPF Director after leaving Interior',
+    description_es:
+      'Lisandro Catalán deja el Ministerio del Interior el 3 de noviembre y es designado Director Clase D de YPF dos semanas después, con un salario de ~140 millones de pesos mensuales.',
+    description_en:
+      'Lisandro Catalán leaves the Ministry of Interior on November 3 and is appointed YPF Class D Director two weeks later, at a salary of ~140 million pesos/month.',
+    category: 'corporate',
+    sources: ['https://www.iprofesional.com/negocios/442238-de-ministro-interior-a-petrolero-lisandro-catalan-se-suma-directorio-ypf'],
+  },
+  {
+    id: 'tl-2025-dnu941',
+    date: '2025-12',
+    title_es: 'DNU 941/2025: SIDE obtiene poderes de vigilancia masiva',
+    title_en: 'DNU 941/2025: SIDE granted mass surveillance powers',
+    description_es:
+      'El DNU 941/2025 otorga a la SIDE poderes de detención y vigilancia masiva sin orden judicial. Los fondos reservados de inteligencia crecieron ~2.000% bajo Milei.',
+    description_en:
+      'DNU 941/2025 grants SIDE detention and mass surveillance powers without judicial order. Intelligence reserved funds grew ~2,000% under Milei.',
+    category: 'political',
+    sources: ['https://chequeado.com'],
+  },
+  {
     id: 'tl-2025-12-baez-15-anos',
     date: '2025-12-15',
     title_es: 'Confirman condena unificada de 15 años a Lázaro Báez',
@@ -1965,6 +1914,30 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: ['https://www.infobae.com/judiciales/2025/12/15/confirmaron-otra-condena-a-lazaro-baez-en-la-causa-el-entrevero-ya-acumula-penas-por-casi-20-anos-de-carcel/'],
   },
   {
+    id: 'tl-2025-afagate-investigation',
+    date: '2025-12-28',
+    title_es: 'Investigación AFAGate: USD 400M desviados',
+    title_en: 'AFAGate investigation: USD 400M diverted',
+    description_es:
+      'La Nación revela USD 400M desviados por sociedades fantasma en Florida desde cuentas de AFA.',
+    description_en:
+      'La Nación reveals USD 400M diverted through Florida shell companies from AFA accounts.',
+    category: 'financial',
+    sources: ['https://www.lanacion.com.ar/politica/investigacion-exclusiva-desde-la-cuenta-que-administra-los-fondos-de-la-afa-en-eeuu-se-desviaron-al-nid28122025/'],
+  },
+  {
+    id: 'tl-2025-dnu-941-intelligence',
+    date: '2025-12-31',
+    title_es: 'DNU 941/2025: reforma sistema de inteligencia',
+    title_en: 'DNU 941/2025: intelligence system reform',
+    description_es:
+      'Milei reestructura sistema de inteligencia. Habilita FFAA en inteligencia interna y capacidad de aprehensión. CELS alerta sobre vigilancia masiva.',
+    description_en:
+      'Milei restructures intelligence system. Enables military in domestic intelligence and apprehension power. CELS alerts about mass surveillance.',
+    category: 'political',
+    sources: ['https://www.infobae.com/politica/2026/01/02/reforma-de-la-side-las-claves-de-la-reestructuracion-del-sistema-de-inteligencia-que-dispuso-milei-por-decreto/'],
+  },
+  {
     id: 'tl-2026-02-devido-enriquecimiento',
     date: '2026-02-09',
     title_es: 'Procesan a De Vido por enriquecimiento ilícito',
@@ -1973,6 +1946,30 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en: 'Judge Casanello prosecutes De Vido and his wife for illicit enrichment: USD 690K in unjustified assets after 18 years unable to explain asset origins.',
     category: 'legal',
     sources: ['https://www.labrujula24.com/notas/2026/02/09/de-vido-no-pudo-justificar-su-patrimonio-y-lo-procesaron-por-enriquecimiento-ilicito-n483611/'],
+  },
+  {
+    id: 'tl-2026-procesamiento-msosa',
+    date: '2026-02-10',
+    title_es: 'Procesamiento de empresa de Martínez Sosa',
+    title_en: 'Prosecution of Martínez Sosa company',
+    description_es:
+      'La justicia procesa a Héctor Martínez Sosa y Compañía S.A. como partícipe necesario en negociaciones incompatibles. Embargo por $2.870.729.545,61.',
+    description_en:
+      'The court prosecutes Héctor Martínez Sosa y Compañía S.A. as necessary participant in dealings incompatible with public office. Embargo for $2.87B ARS.',
+    category: 'legal',
+    sources: ['https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/'],
+  },
+  {
+    id: 'tl-2026-bachellier-embargo',
+    date: '2026-02-10',
+    title_es: 'Embargo de $9.669M a Bachellier SA',
+    title_en: 'Bachellier SA assets frozen at $9.669B',
+    description_es:
+      'Juez Casanello embargó $9.669M en activos de Bachellier SA. Empresa recibió $1.666M en comisiones de Nación Seguros.',
+    description_en:
+      'Judge Casanello froze $9.669B in Bachellier SA assets. Company received $1.666B in commissions from Nación Seguros.',
+    category: 'legal',
+    sources: ['https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/'],
   },
 ] as const
 
@@ -2685,6 +2682,8 @@ export const ACTORS: readonly Actor[] = [
       'Milei ally. 1,066% overpricing on SAP system. Paid personal debts of $880M to Banco Macro in 18 days. Resigned 2/9/2026.',
     party: 'La Libertad Avanza',
     datasets: 3,
+    status_es: 'Renunció — sobreprecio 1.066% documentado',
+    status_en: 'Resigned — 1,066% overpricing documented',
     source_url: 'https://www.infobae.com/politica/2026/02/09/demian-reidel-renuncio-a-la-presidencia-de-nucleoelectrica/',
   },
   {
@@ -2698,6 +2697,8 @@ export const ACTORS: readonly Actor[] = [
       'AFAGate: ~USD 400M diverted through Florida shell companies. $19.353B in unpaid taxes. Summoned for fraud and laundering.',
     party: 'Independiente',
     datasets: 2,
+    status_es: 'Procesado — citado por fraude y lavado (AFAGate)',
+    status_en: 'Processed — summoned for fraud and laundering (AFAGate)',
     source_url: 'https://www.lanacion.com.ar/politica/investigacion-exclusiva-desde-la-cuenta-que-administra-los-fondos-de-la-afa-en-eeuu-se-desviaron-al-nid28122025/',
   },
   {
@@ -2711,6 +2712,8 @@ export const ACTORS: readonly Actor[] = [
       'Ex-Montonero. Father of Fernanda Raverta (ex-ANSES). Sole ankle bracelet provider at 4x international price.',
     party: 'Independiente',
     datasets: 2,
+    status_es: 'Denunciado — sobreprecios 4x en contrato estatal',
+    status_en: 'Denounced — 4x overpricing on state contract',
     source_url: 'https://www.lanacion.com.ar/politica/polemica-y-denuncias-por-el-contrato-de-tobilleras-electronicas-que-se-encamina-a-ganar-montoto-por-nid27042025/',
   },
   {
@@ -2724,6 +2727,8 @@ export const ACTORS: readonly Actor[] = [
       'Milei dark money operator. Foundation spent $1.079B on political ads without disclosing donors.',
     party: 'La Libertad Avanza',
     datasets: 2,
+    status_es: 'En funciones — financiamiento no declarado documentado',
+    status_en: 'In office — undisclosed financing documented',
     source_url: 'https://chequeado.com/investigaciones/fundacion-faro-el-think-tank-libertario-que-mas-pauta-electoral-puso-en-2025-y-que-no-declara-el-origen-de-sus-fondos/',
   },
   {
@@ -2737,6 +2742,8 @@ export const ACTORS: readonly Actor[] = [
       'Ex-Deutsche Bank (9 years). Received ~USD 200K from DB while Finance Secretary. Processed for incompatible negotiations.',
     party: 'La Libertad Avanza',
     datasets: 3,
+    status_es: 'Procesado — negociaciones incompatibles',
+    status_en: 'Processed — incompatible negotiations',
     source_url: 'https://www.pagina12.com.ar/780526-bausili-investigado-por-corrupcion/',
   },
   {
@@ -2750,6 +2757,8 @@ export const ACTORS: readonly Actor[] = [
       'Revolving door: Government Director + officer of Nación Reaseguros, Red Link, Prisma Medios de Pago, BICE.',
     party: 'Independiente',
     datasets: 4,
+    status_es: 'Puerta giratoria — sin causa penal',
+    status_en: 'Revolving door — no criminal case',
     source_url: 'https://www.ambito.com/economia/el-gobierno-designo-agustin-pesce-el-bice-su-paso-el-bcra-n6020992',
   },
   {
@@ -2761,6 +2770,8 @@ export const ACTORS: readonly Actor[] = [
     description_en: 'Fortune USD 1.9B. Corporacion America: 35 airports, CGC energy, Wilobank. Milei worked as his chief economist 10+ years. Posse (ex-exec) became Chief of Staff.',
     party: 'Independiente',
     datasets: 3,
+    status_es: 'Conflicto de interés — vínculo directo con presidente',
+    status_en: 'Conflict of interest — direct link to president',
     source_url: 'https://www.lanacion.com.ar/politica/milei-eurnekian-la-historia-detras-de-un-vinculo-que-define-el-nuevo-poder-nid10092023/',
   },
   {
@@ -2772,6 +2783,8 @@ export const ACTORS: readonly Actor[] = [
     description_en: 'Privatized Correo, AA2000, YPF, railways. Zulemita operated 4 offshore companies during his presidency (Pandora Papers). Martin Menem (nephew) chairs Deputies under Milei.',
     party: 'PJ',
     datasets: 3,
+    status_es: 'Fallecido (2021)',
+    status_en: 'Deceased (2021)',
     source_url: 'https://www.infobae.com/america/pandora-papers/2021/10/10/mientras-menem-era-presidente-zulemita-opero-en-paraisos-fiscales-para-cobrar-una-supuesta-deuda-familiar-y-hacer-negocios/',
   },
   {
@@ -2783,6 +2796,8 @@ export const ACTORS: readonly Actor[] = [
     description_en: 'Carlos Menem nephew. Chairs Deputies under Milei. Owns Gentech (supplements). La Rioja political dynasty.',
     party: 'La Libertad Avanza',
     datasets: 2,
+    status_es: 'En funciones — Presidente Diputados',
+    status_en: 'In office — Chamber President',
     source_url: 'https://www.izquierdadiario.es/Martin-Menem-el-hijo-dilecto-de-la-casta-politica-empresarial-que-presidira-Diputados',
   },
 
@@ -2822,6 +2837,8 @@ export const ACTORS: readonly Actor[] = [
     description_en: 'Historical partner of Manzano. Co-controls Grupo America (America TV, America 24, El Cronista, Radio La Red) and Edenor. From Mendoza media he built the second-largest national media group.',
     party: 'Independiente (empresario)',
     datasets: 3,
+    status_es: 'Concentración mediática documentada — sin causa penal',
+    status_en: 'Media concentration documented — no criminal case',
     source_url: 'https://www.iprofesional.com/negocios/343752-como-vila-y-manzano-compraron-edenor-sin-violar-la-ley-de-medios',
   },
   {
@@ -2859,6 +2876,8 @@ export const ACTORS: readonly Actor[] = [
     description_en: 'Estimated net worth USD 40M. Chaired San Lorenzo (2019-2022) and Professional Football League. AFA 4th Vice President. LaFlia production company. Decisive factor in electoral campaigns since 1995 as media gatekeeper. Explored provincial political candidacy multiple times.',
     party: 'Independiente (influencer politico)',
     datasets: 2,
+    status_es: 'Influencia mediático-política documentada — sin causa penal',
+    status_en: 'Media-political influence documented — no criminal case',
     source_url: 'https://en.wikipedia.org/wiki/Marcelo_Tinelli',
   },
   {
@@ -3175,7 +3194,7 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
     id: 'flow-bf-corp-swiss',
     from_label: 'BF Corporation SA (Panama)',
     to_label: 'Safra Bank (Suiza)',
-    amount_ars: 0,
+    amount_ars: 38_000_000, // ~USD 4M at 2015 ARS/USD rate (~9.5)
     description_es:
       'Transferencia de fondos a banco suizo. Monto exacto desconocido. Un banco aleman ordeno la destruccion de toda la correspondencia. Gianfranco declaro USD 4M de esta entidad en el blanqueo.',
     description_en:
@@ -3228,11 +3247,11 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
     id: 'flow-cuadernos-dismissals',
     from_label: '50 empresarios Cuadernos',
     to_label: 'Compra de sobreseimientos',
-    amount_ars: 0,
+    amount_ars: 21_000_000, // USD 12-21M total offered collectively (rejected by TOF7)
     description_es:
-      '50 empresarios de la causa Cuadernos ofrecieron entre USD 12M y USD 40M cada uno para comprar sobreseimientos. La tasa de condena por corrupción en Argentina es del 2% según auditoría de la propia Corte Suprema.',
+      '50+ empresarios y ex funcionarios de la causa Cuadernos ofrecieron reparaciones por un total estimado entre USD 12M y USD 21M para evitar juicio oral. El TOF7 rechazó todas las propuestas. La tasa de condena por corrupción en Argentina es del 2% según auditoría de la propia Corte Suprema.',
     description_en:
-      '50 businessmen in the Cuadernos case offered between USD 12M and USD 40M each to buy dismissals. Argentina\'s corruption conviction rate is 2% according to the Supreme Court\'s own audit.',
+      '50+ businessmen and former officials in the Cuadernos case offered reparations totaling an estimated USD 12-21M to avoid oral trial. TOF7 rejected all proposals. Argentina\'s corruption conviction rate is 2% according to the Supreme Court\'s own audit.',
     date: '2018-2025',
     source: 'Corte Suprema / Chequeado',
     source_url: 'https://chequeado.com/el-explicador/causa-cuadernos-las-5-claves-del-juicio-contra-cristina-fernandez-de-kirchner-ex-funcionarios-y-empresarios/',
@@ -3242,7 +3261,7 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
     id: 'flow-libra-insider',
     from_label: '$LIBRA insiders (Kelsier Ventures)',
     to_label: '44,000 victims',
-    amount_ars: 0,
+    amount_ars: 114_490_000_000, // USD 107M at Feb 2025 rate (~1,070 ARS/USD)
     description_es:
       'Insiders cobraron USD 107M antes del colapso del 90% de $LIBRA. El presidente Milei promovió la criptomoneda que alcanzó USD 4.5B de capitalización. 44.000 víctimas afectadas.',
     description_en:
@@ -3268,7 +3287,7 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
     id: 'flow-pami-overpricing',
     from_label: 'PAMI',
     to_label: 'Drug cartel (Elea, GP Pharm, Kemex, etc.)',
-    amount_ars: 0,
+    amount_ars: 273_000_000, // ARS 273M documented excess paid via Convenio vs licitación (2023)
     description_es:
       'PAMI pagó hasta 16 veces el precio de mercado por medicamentos oncológicos en 2023. Anastrozol: $13.192 vs $924 en licitación. Cartel denunciado: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
     description_en:
