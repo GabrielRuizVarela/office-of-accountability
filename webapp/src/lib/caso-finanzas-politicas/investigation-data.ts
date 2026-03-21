@@ -97,13 +97,13 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     source: 'Cross-reference engine',
   },
   {
-    value: '227',
+    value: '235',
     label_es: 'Nodos de investigación',
     label_en: 'Investigation nodes',
     source: 'Neo4j graph',
   },
   {
-    value: '97',
+    value: '100',
     label_es: 'Personas críticas identificadas',
     label_en: 'Critical persons identified',
     source: 'Cross-reference engine',
@@ -158,7 +158,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'alleged',
     tier: 1,
     source: 'ICIJ Pandora Papers',
-    source_url: 'https://offshoreleaks.icij.org',
+    source_url: 'https://offshoreleaks.icij.org/search?q=Camano&cat=0',
     detail_es:
       'Coincidencia exacta de nombre, consistente con patron Trident Trust/Argentina. Su patrimonio declarado crecio de ARS 2,8M (2013) a ARS 39,2M (2023). Tasa de presencia del 62,9%, con ausencias sistematicas en votaciones de legislacion financiera: 35 ausencias en Presupuesto, 19 en Impuesto a las Ganancias. 6 cambios de partido en 30 anos.',
     detail_en:
@@ -241,7 +241,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'alleged',
     tier: 2,
     source: 'Cross-dataset analysis (Boletin Oficial + ICIJ)',
-    source_url: 'https://offshoreleaks.icij.org',
+    source_url: 'https://offshoreleaks.icij.org/search?q=BETHAN+INVESTMENTS&cat=0',
     detail_es:
       'Este patron — contratista estatal con holdings offshore — constituye una estructura de riesgo bajo la Ley 25.246 (lavado de activos). Confirmado: la coincidencia de nombre en ambos datasets. No confirmado: si es la misma persona, y si fondos publicos pasaron por la entidad offshore.',
     detail_en:
@@ -522,8 +522,8 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
       'According to the Auditors Body of the Consejo de la Magistratura, Argentina\'s corruption conviction rate is 2%. 98% of cases expire, are archived, or end in acquittal.',
     status: 'confirmed',
     tier: 1,
-    source: 'Cuerpo de Auditores del Consejo de la Magistratura / Chequeado',
-    source_url: 'https://chequeado.com',
+    source: 'Cuerpo de Auditores del Consejo de la Magistratura / La Nacion',
+    source_url: 'https://www.lanacion.com.ar/politica/segun-una-auditoria-solo-el-2-de-los-acusados-de-corrupcion-son-condenados-nid2152492/',
   },
   // --- Tier 1: Milei-era scandals ---
   {
@@ -535,7 +535,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'confirmed',
     tier: 1,
     source: 'Infobae / Congressional investigation',
-    source_url: 'https://www.infobae.com',
+    source_url: 'https://www.infobae.com/politica/2025/02/16/el-asesor-de-la-criptomoneda-promocionada-inicialmente-por-javier-milei-aseguro-que-el-presidente-no-cumplio-un-compromiso-asumido/',
   },
   {
     id: 'belocopitt-health-media',
@@ -546,7 +546,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'confirmed',
     tier: 1,
     source: 'ICIJ / Forbes',
-    source_url: 'https://offshoreleaks.icij.org',
+    source_url: 'https://offshoreleaks.icij.org/nodes/12170966',
   },
   {
     id: 'bcra-gold-london',
@@ -557,7 +557,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'confirmed',
     tier: 1,
     source: 'Infobae / Congressional investigation',
-    source_url: 'https://www.infobae.com',
+    source_url: 'https://www.infobae.com/economia/2024/09/02/el-banco-central-confirmo-que-termino-de-mandar-los-lingotes-de-oro-de-las-reservas-al-exterior/',
   },
   // --- Deep Dive: Caputo Revolving Door ---
   {
