@@ -3,6 +3,10 @@
  *
  * Run with: npx tsx scripts/seed-caso-libra.ts
  *
+ * Uses generic labels (Person, Organization, Token, Event, Document, Wallet)
+ * with caso_slug: "caso-libra" for namespace isolation, and prefixed IDs
+ * (caso-libra:{local_id}) per the investigation standardization convention.
+ *
  * Idempotent — uses MERGE for all operations. Safe to run multiple times.
  * All data is manually curated from public sources:
  * - Congressional reports
@@ -15,6 +19,12 @@ import { getDriver, closeDriver } from '../src/lib/neo4j/client'
 
 const QUERY_TIMEOUT_MS = 30_000
 const TX_CONFIG = { timeout: QUERY_TIMEOUT_MS }
+const CASO_SLUG = 'caso-libra'
+
+/** Prefix a local ID with the caso slug */
+function pid(localId: string): string {
+  return `${CASO_SLUG}:${localId}`
+}
 
 // ---------------------------------------------------------------------------
 // Data
@@ -22,7 +32,7 @@ const TX_CONFIG = { timeout: QUERY_TIMEOUT_MS }
 
 const PERSONS = [
   {
-    id: 'cl-person-milei',
+    id: pid('cl-person-milei'),
     name: 'Javier Milei',
     slug: 'javier-milei',
     role: 'Presidente de la Nacion Argentina',
@@ -31,7 +41,7 @@ const PERSONS = [
     nationality: 'argentina',
   },
   {
-    id: 'cl-person-karina-milei',
+    id: pid('cl-person-karina-milei'),
     name: 'Karina Milei',
     slug: 'karina-milei',
     role: 'Secretaria General de la Presidencia',
@@ -40,7 +50,7 @@ const PERSONS = [
     nationality: 'argentina',
   },
   {
-    id: 'cl-person-hayden-davis',
+    id: pid('cl-person-hayden-davis'),
     name: 'Hayden Mark Davis',
     slug: 'hayden-davis',
     role: 'CEO de Kelsier Ventures',
@@ -49,7 +59,7 @@ const PERSONS = [
     nationality: 'estadounidense',
   },
   {
-    id: 'cl-person-julian-peh',
+    id: pid('cl-person-julian-peh'),
     name: 'Julian Peh',
     slug: 'julian-peh',
     role: 'Empresario tech',
@@ -58,7 +68,7 @@ const PERSONS = [
     nationality: 'argentina',
   },
   {
-    id: 'cl-person-santiago-caputo',
+    id: pid('cl-person-santiago-caputo'),
     name: 'Santiago Caputo',
     slug: 'santiago-caputo',
     role: 'Asesor presidencial',
@@ -67,7 +77,7 @@ const PERSONS = [
     nationality: 'argentina',
   },
   {
-    id: 'cl-person-novelli',
+    id: pid('cl-person-novelli'),
     name: 'Mauricio Novelli',
     slug: 'mauricio-novelli',
     role: 'Operador financiero',
@@ -75,7 +85,7 @@ const PERSONS = [
     nationality: 'argentina',
   },
   {
-    id: 'cl-person-terrones-godoy',
+    id: pid('cl-person-terrones-godoy'),
     name: 'Monica Terrones Godoy',
     slug: 'monica-terrones-godoy',
     role: 'Familiar de funcionario',
@@ -84,7 +94,7 @@ const PERSONS = [
     nationality: 'argentina',
   },
   {
-    id: 'cl-person-sergio-morales',
+    id: pid('cl-person-sergio-morales'),
     name: 'Sergio Morales',
     slug: 'sergio-morales',
     role: 'Operador cripto',
@@ -95,7 +105,7 @@ const PERSONS = [
 
 const ORGANIZATIONS = [
   {
-    id: 'cl-org-kelsier',
+    id: pid('cl-org-kelsier'),
     name: 'Kelsier Ventures',
     slug: 'kelsier-ventures',
     org_type: 'empresa',
@@ -104,7 +114,7 @@ const ORGANIZATIONS = [
     country: 'estados-unidos',
   },
   {
-    id: 'cl-org-casa-rosada',
+    id: pid('cl-org-casa-rosada'),
     name: 'Casa Rosada',
     slug: 'casa-rosada',
     org_type: 'gobierno',
@@ -112,7 +122,7 @@ const ORGANIZATIONS = [
     country: 'argentina',
   },
   {
-    id: 'cl-org-congreso',
+    id: pid('cl-org-congreso'),
     name: 'Congreso de la Nacion',
     slug: 'congreso-nacion',
     org_type: 'gobierno',
@@ -120,7 +130,7 @@ const ORGANIZATIONS = [
     country: 'argentina',
   },
   {
-    id: 'cl-org-trm-labs',
+    id: pid('cl-org-trm-labs'),
     name: 'TRM Labs',
     slug: 'trm-labs',
     org_type: 'empresa',
@@ -130,7 +140,7 @@ const ORGANIZATIONS = [
 ]
 
 const TOKEN = {
-  id: 'cl-token-libra',
+  id: pid('cl-token-libra'),
   symbol: 'LIBRA',
   name: '$LIBRA',
   contract_address: 'Bo9jh3wsmcC2AjakLWzNmKJ3SgtZmXEcSaW7L2FAvUsU',
@@ -141,7 +151,7 @@ const TOKEN = {
 
 const EVENTS = [
   {
-    id: 'cl-event-milei-post',
+    id: pid('cl-event-milei-post'),
     title: 'Milei publica enlace a $LIBRA en X',
     slug: 'milei-publica-libra',
     description:
@@ -150,7 +160,7 @@ const EVENTS = [
     event_type: 'political',
   },
   {
-    id: 'cl-event-token-launch',
+    id: pid('cl-event-token-launch'),
     title: 'Lanzamiento del token $LIBRA en Solana',
     slug: 'lanzamiento-token-libra',
     description:
@@ -159,7 +169,7 @@ const EVENTS = [
     event_type: 'financial',
   },
   {
-    id: 'cl-event-price-peak',
+    id: pid('cl-event-price-peak'),
     title: 'Token alcanza capitalizacion de $4.5B',
     slug: 'precio-maximo-libra',
     description:
@@ -168,7 +178,7 @@ const EVENTS = [
     event_type: 'financial',
   },
   {
-    id: 'cl-event-price-crash',
+    id: pid('cl-event-price-crash'),
     title: 'Colapso del 94% en el precio de $LIBRA',
     slug: 'colapso-precio-libra',
     description:
@@ -177,7 +187,7 @@ const EVENTS = [
     event_type: 'financial',
   },
   {
-    id: 'cl-event-milei-deletes-post',
+    id: pid('cl-event-milei-deletes-post'),
     title: 'Milei elimina la publicacion sobre $LIBRA',
     slug: 'milei-elimina-post',
     description:
@@ -186,7 +196,7 @@ const EVENTS = [
     event_type: 'political',
   },
   {
-    id: 'cl-event-58m-liquidation',
+    id: pid('cl-event-58m-liquidation'),
     title: 'Extraccion de $107M de liquidez por insiders',
     slug: 'extraccion-107m-liquidez',
     description:
@@ -195,7 +205,7 @@ const EVENTS = [
     event_type: 'financial',
   },
   {
-    id: 'cl-event-casa-rosada-visits',
+    id: pid('cl-event-casa-rosada-visits'),
     title: 'Reuniones previas en Casa Rosada',
     slug: 'reuniones-casa-rosada',
     description:
@@ -204,7 +214,7 @@ const EVENTS = [
     event_type: 'political',
   },
   {
-    id: 'cl-event-phone-forensics',
+    id: pid('cl-event-phone-forensics'),
     title: 'Filtracion de pericias telefonicas',
     slug: 'filtracion-pericias-telefonicas',
     description:
@@ -213,7 +223,7 @@ const EVENTS = [
     event_type: 'legal',
   },
   {
-    id: 'cl-event-congressional-hearing-1',
+    id: pid('cl-event-congressional-hearing-1'),
     title: 'Primera audiencia en comision del Congreso',
     slug: 'audiencia-congreso-1',
     description:
@@ -222,7 +232,7 @@ const EVENTS = [
     event_type: 'legal',
   },
   {
-    id: 'cl-event-congressional-hearing-2',
+    id: pid('cl-event-congressional-hearing-2'),
     title: 'Segunda audiencia — Hayden Davis citado',
     slug: 'audiencia-congreso-2',
     description: 'El Congreso cita a Hayden Davis a declarar. Davis no comparece.',
@@ -230,7 +240,7 @@ const EVENTS = [
     event_type: 'legal',
   },
   {
-    id: 'cl-event-congressional-report',
+    id: pid('cl-event-congressional-report'),
     title: 'Publicacion del informe parlamentario',
     slug: 'informe-parlamentario',
     description:
@@ -239,7 +249,7 @@ const EVENTS = [
     event_type: 'legal',
   },
   {
-    id: 'cl-event-trm-analysis',
+    id: pid('cl-event-trm-analysis'),
     title: 'TRM Labs publica rastreo de fondos',
     slug: 'trm-labs-analisis',
     description:
@@ -248,7 +258,7 @@ const EVENTS = [
     event_type: 'media',
   },
   {
-    id: 'cl-event-infobae-investigation',
+    id: pid('cl-event-infobae-investigation'),
     title: 'Infobae publica investigacion sobre $LIBRA',
     slug: 'infobae-investigacion',
     description:
@@ -257,7 +267,7 @@ const EVENTS = [
     event_type: 'media',
   },
   {
-    id: 'cl-event-court-filing',
+    id: pid('cl-event-court-filing'),
     title: 'Presentacion de denuncia penal',
     slug: 'denuncia-penal',
     description:
@@ -266,7 +276,7 @@ const EVENTS = [
     event_type: 'legal',
   },
   {
-    id: 'cl-event-milei-defense',
+    id: pid('cl-event-milei-defense'),
     title: 'Milei defiende su participacion',
     slug: 'milei-defensa',
     description:
@@ -275,7 +285,7 @@ const EVENTS = [
     event_type: 'political',
   },
   {
-    id: 'cl-event-caputo-calls',
+    id: pid('cl-event-caputo-calls'),
     title: 'Registros de llamadas de Santiago Caputo',
     slug: 'registros-llamadas-caputo',
     description:
@@ -284,7 +294,7 @@ const EVENTS = [
     event_type: 'legal',
   },
   {
-    id: 'cl-event-international-media',
+    id: pid('cl-event-international-media'),
     title: 'Cobertura internacional del caso',
     slug: 'cobertura-internacional',
     description:
@@ -293,7 +303,7 @@ const EVENTS = [
     event_type: 'media',
   },
   {
-    id: 'cl-event-wallet-consolidation',
+    id: pid('cl-event-wallet-consolidation'),
     title: 'Consolidacion de fondos en billeteras intermedias',
     slug: 'consolidacion-billeteras',
     description:
@@ -305,7 +315,7 @@ const EVENTS = [
 
 const DOCUMENTS = [
   {
-    id: 'cl-doc-congressional-report',
+    id: pid('cl-doc-congressional-report'),
     title: 'Informe de la Comision Investigadora del Congreso sobre $LIBRA',
     slug: 'informe-comision-libra',
     doc_type: 'informe-parlamentario',
@@ -314,7 +324,7 @@ const DOCUMENTS = [
     date_published: '2025-04-01',
   },
   {
-    id: 'cl-doc-trm-analysis',
+    id: pid('cl-doc-trm-analysis'),
     title: 'TRM Labs: Rastreo On-Chain del Token $LIBRA',
     slug: 'trm-labs-rastreo-libra',
     doc_type: 'analisis-blockchain',
@@ -323,7 +333,7 @@ const DOCUMENTS = [
     date_published: '2025-02-20',
   },
   {
-    id: 'cl-doc-infobae-investigation',
+    id: pid('cl-doc-infobae-investigation'),
     title: 'Infobae: La trama detras de $LIBRA',
     slug: 'infobae-trama-libra',
     doc_type: 'articulo-periodistico',
@@ -332,7 +342,7 @@ const DOCUMENTS = [
     date_published: '2025-02-18',
   },
   {
-    id: 'cl-doc-herald-timeline',
+    id: pid('cl-doc-herald-timeline'),
     title: 'Buenos Aires Herald: Timeline of the $LIBRA Scandal',
     slug: 'herald-timeline-libra',
     doc_type: 'articulo-periodistico',
@@ -341,7 +351,7 @@ const DOCUMENTS = [
     date_published: '2025-02-19',
   },
   {
-    id: 'cl-doc-court-filing',
+    id: pid('cl-doc-court-filing'),
     title: 'Denuncia Penal — Caso $LIBRA',
     slug: 'denuncia-penal-libra',
     doc_type: 'documento-judicial',
@@ -350,7 +360,7 @@ const DOCUMENTS = [
     date_published: '2025-02-19',
   },
   {
-    id: 'cl-doc-phone-forensics',
+    id: pid('cl-doc-phone-forensics'),
     title: 'Pericias Telefonicas — Comunicaciones Pre-Lanzamiento',
     slug: 'pericias-telefonicas-libra',
     doc_type: 'documento-judicial',
@@ -359,7 +369,7 @@ const DOCUMENTS = [
     date_published: '2025-03-15',
   },
   {
-    id: 'cl-doc-visitor-logs',
+    id: pid('cl-doc-visitor-logs'),
     title: 'Registros de Visitas a Casa Rosada — Enero/Febrero 2025',
     slug: 'registros-visitas-casa-rosada',
     doc_type: 'registro-publico',
@@ -368,7 +378,7 @@ const DOCUMENTS = [
     date_published: '2025-02-22',
   },
   {
-    id: 'cl-doc-ft-article',
+    id: pid('cl-doc-ft-article'),
     title: 'Financial Times: Argentine President Milei embroiled in crypto scandal',
     slug: 'ft-crypto-scandal',
     doc_type: 'articulo-periodistico',
@@ -380,36 +390,44 @@ const DOCUMENTS = [
 
 const WALLETS = [
   {
+    id: pid('DefcyKc4yAjRsCLZjdxWuSUzVohXtLna9g22y3pBCm2z'),
     address: 'DefcyKc4yAjRsCLZjdxWuSUzVohXtLna9g22y3pBCm2z',
     label: 'Billetera del equipo #1',
-    owner_id: 'cl-org-kelsier',
+    owner_id: pid('cl-org-kelsier'),
   },
   {
+    id: pid('TEAM_WALLET_2_PLACEHOLDER'),
     address: 'TEAM_WALLET_2_PLACEHOLDER',
     label: 'Billetera del equipo #2',
-    owner_id: 'cl-person-hayden-davis',
+    owner_id: pid('cl-person-hayden-davis'),
   },
   {
+    id: pid('CONSOLIDATION_WALLET_1'),
     address: 'CONSOLIDATION_WALLET_1',
     label: 'Billetera de consolidacion #1',
   },
   {
+    id: pid('CONSOLIDATION_WALLET_2'),
     address: 'CONSOLIDATION_WALLET_2',
     label: 'Billetera de consolidacion #2',
   },
   {
+    id: pid('BzzMNvfm7T6zSGFeLXzERmRxfKaNLdo4fSzvsisxcSzz'),
     address: 'BzzMNvfm7T6zSGFeLXzERmRxfKaNLdo4fSzvsisxcSzz',
     label: 'Pool de liquidez $LIBRA',
   },
   {
+    id: pid('INSIDER_WALLET_1'),
     address: 'INSIDER_WALLET_1',
     label: 'Billetera insider #1',
   },
   {
+    id: pid('INSIDER_WALLET_2'),
     address: 'INSIDER_WALLET_2',
     label: 'Billetera insider #2',
   },
   {
+    id: pid('EXIT_WALLET_1'),
     address: 'EXIT_WALLET_1',
     label: 'Billetera de salida #1',
   },
@@ -426,13 +444,14 @@ async function seed(): Promise<void> {
     console.log('Seeding Caso Libra persons...')
     for (const person of PERSONS) {
       await session.run(
-        `MERGE (p:CasoLibraPerson { id: $id })
+        `MERGE (p:Person { id: $id })
          SET p.name = $name,
              p.slug = $slug,
              p.role = $role,
              p.description = $description,
-             p.nationality = $nationality`,
-        person,
+             p.nationality = $nationality,
+             p.caso_slug = $casoSlug`,
+        { ...person, casoSlug: CASO_SLUG },
         TX_CONFIG,
       )
     }
@@ -441,13 +460,14 @@ async function seed(): Promise<void> {
     console.log('Seeding organizations...')
     for (const org of ORGANIZATIONS) {
       await session.run(
-        `MERGE (o:CasoLibraOrganization { id: $id })
+        `MERGE (o:Organization { id: $id })
          SET o.name = $name,
              o.slug = $slug,
              o.org_type = $org_type,
              o.description = $description,
-             o.country = $country`,
-        org,
+             o.country = $country,
+             o.caso_slug = $casoSlug`,
+        { ...org, casoSlug: CASO_SLUG },
         TX_CONFIG,
       )
     }
@@ -455,14 +475,15 @@ async function seed(): Promise<void> {
 
     console.log('Seeding token...')
     await session.run(
-      `MERGE (t:CasoLibraToken { id: $id })
+      `MERGE (t:Token { id: $id })
        SET t.symbol = $symbol,
            t.name = $name,
            t.contract_address = $contract_address,
            t.chain = $chain,
            t.launch_date = $launch_date,
-           t.peak_market_cap = $peak_market_cap`,
-      TOKEN,
+           t.peak_market_cap = $peak_market_cap,
+           t.caso_slug = $casoSlug`,
+      { ...TOKEN, casoSlug: CASO_SLUG },
       TX_CONFIG,
     )
     console.log('  1 token seeded')
@@ -470,13 +491,14 @@ async function seed(): Promise<void> {
     console.log('Seeding events...')
     for (const event of EVENTS) {
       await session.run(
-        `MERGE (e:CasoLibraEvent { id: $id })
+        `MERGE (e:Event { id: $id })
          SET e.title = $title,
              e.slug = $slug,
              e.description = $description,
              e.date = $date,
-             e.event_type = $event_type`,
-        event,
+             e.event_type = $event_type,
+             e.caso_slug = $casoSlug`,
+        { ...event, casoSlug: CASO_SLUG },
         TX_CONFIG,
       )
     }
@@ -485,13 +507,14 @@ async function seed(): Promise<void> {
     console.log('Seeding documents...')
     for (const doc of DOCUMENTS) {
       await session.run(
-        `MERGE (d:CasoLibraDocument { id: $id })
+        `MERGE (d:Document { id: $id })
          SET d.title = $title,
              d.slug = $slug,
              d.doc_type = $doc_type,
              d.summary = $summary,
-             d.date_published = $date_published`,
-        doc,
+             d.date_published = $date_published,
+             d.caso_slug = $casoSlug`,
+        { ...doc, casoSlug: CASO_SLUG },
         TX_CONFIG,
       )
     }
@@ -500,11 +523,13 @@ async function seed(): Promise<void> {
     console.log('Seeding wallets...')
     for (const wallet of WALLETS) {
       await session.run(
-        `MERGE (w:CasoLibraWallet { address: $address })
-         SET w.label = $label,
-             w.chain = 'solana'
-         ${wallet.owner_id ? 'SET w.owner_id = $owner_id' : ''}`,
-        wallet,
+        `MERGE (w:Wallet { id: $id })
+         SET w.address = $address,
+             w.label = $label,
+             w.chain = 'solana',
+             w.caso_slug = $casoSlug
+             ${wallet.owner_id ? ', w.owner_id = $owner_id' : ''}`,
+        { ...wallet, casoSlug: CASO_SLUG },
         TX_CONFIG,
       )
     }
@@ -518,35 +543,35 @@ async function seed(): Promise<void> {
 
     // PROMOTED: Milei → Token
     await session.run(
-      `MATCH (p:CasoLibraPerson { id: 'cl-person-milei' })
-       MATCH (t:CasoLibraToken { id: 'cl-token-libra' })
+      `MATCH (p:Person { id: $personId, caso_slug: $casoSlug })
+       MATCH (t:Token { id: $tokenId, caso_slug: $casoSlug })
        MERGE (p)-[:PROMOTED]->(t)`,
-      {},
+      { personId: pid('cl-person-milei'), tokenId: pid('cl-token-libra'), casoSlug: CASO_SLUG },
       TX_CONFIG,
     )
 
     // CREATED_BY: Token → Kelsier
     await session.run(
-      `MATCH (t:CasoLibraToken { id: 'cl-token-libra' })
-       MATCH (o:CasoLibraOrganization { id: 'cl-org-kelsier' })
+      `MATCH (t:Token { id: $tokenId, caso_slug: $casoSlug })
+       MATCH (o:Organization { id: $orgId, caso_slug: $casoSlug })
        MERGE (t)-[:CREATED_BY]->(o)`,
-      {},
+      { tokenId: pid('cl-token-libra'), orgId: pid('cl-org-kelsier'), casoSlug: CASO_SLUG },
       TX_CONFIG,
     )
 
     // AFFILIATED_WITH: People → Organizations
     const affiliations = [
-      ['cl-person-milei', 'cl-org-casa-rosada'],
-      ['cl-person-karina-milei', 'cl-org-casa-rosada'],
-      ['cl-person-santiago-caputo', 'cl-org-casa-rosada'],
-      ['cl-person-hayden-davis', 'cl-org-kelsier'],
+      [pid('cl-person-milei'), pid('cl-org-casa-rosada')],
+      [pid('cl-person-karina-milei'), pid('cl-org-casa-rosada')],
+      [pid('cl-person-santiago-caputo'), pid('cl-org-casa-rosada')],
+      [pid('cl-person-hayden-davis'), pid('cl-org-kelsier')],
     ]
     for (const [personId, orgId] of affiliations) {
       await session.run(
-        `MATCH (p:CasoLibraPerson { id: $personId })
-         MATCH (o:CasoLibraOrganization { id: $orgId })
+        `MATCH (p:Person { id: $personId, caso_slug: $casoSlug })
+         MATCH (o:Organization { id: $orgId, caso_slug: $casoSlug })
          MERGE (p)-[:AFFILIATED_WITH]->(o)`,
-        { personId, orgId },
+        { personId, orgId, casoSlug: CASO_SLUG },
         TX_CONFIG,
       )
     }
@@ -554,30 +579,30 @@ async function seed(): Promise<void> {
     // COMMUNICATED_WITH relationships
     const communications = [
       {
-        from: 'cl-person-santiago-caputo',
-        to: 'cl-person-julian-peh',
+        from: pid('cl-person-santiago-caputo'),
+        to: pid('cl-person-julian-peh'),
         date: '2025-02-14',
         medium: 'telefono',
       },
       {
-        from: 'cl-person-julian-peh',
-        to: 'cl-person-hayden-davis',
+        from: pid('cl-person-julian-peh'),
+        to: pid('cl-person-hayden-davis'),
         date: '2025-02-13',
         medium: 'telefono',
       },
       {
-        from: 'cl-person-santiago-caputo',
-        to: 'cl-person-julian-peh',
+        from: pid('cl-person-santiago-caputo'),
+        to: pid('cl-person-julian-peh'),
         date: '2025-02-15',
         medium: 'telefono',
       },
     ]
     for (const comm of communications) {
       await session.run(
-        `MATCH (a:CasoLibraPerson { id: $from })
-         MATCH (b:CasoLibraPerson { id: $to })
+        `MATCH (a:Person { id: $from, caso_slug: $casoSlug })
+         MATCH (b:Person { id: $to, caso_slug: $casoSlug })
          MERGE (a)-[:COMMUNICATED_WITH { date: $date, medium: $medium }]->(b)`,
-        comm,
+        { ...comm, casoSlug: CASO_SLUG },
         TX_CONFIG,
       )
     }
@@ -585,197 +610,149 @@ async function seed(): Promise<void> {
     // MET_WITH relationships
     const meetings = [
       {
-        from: 'cl-person-julian-peh',
-        to: 'cl-person-karina-milei',
+        from: pid('cl-person-julian-peh'),
+        to: pid('cl-person-karina-milei'),
         date: '2025-02-10',
         location: 'Casa Rosada',
       },
       {
-        from: 'cl-person-julian-peh',
-        to: 'cl-person-santiago-caputo',
+        from: pid('cl-person-julian-peh'),
+        to: pid('cl-person-santiago-caputo'),
         date: '2025-02-10',
         location: 'Casa Rosada',
       },
     ]
     for (const meeting of meetings) {
       await session.run(
-        `MATCH (a:CasoLibraPerson { id: $from })
-         MATCH (b:CasoLibraPerson { id: $to })
+        `MATCH (a:Person { id: $from, caso_slug: $casoSlug })
+         MATCH (b:Person { id: $to, caso_slug: $casoSlug })
          MERGE (a)-[:MET_WITH { date: $date, location: $location }]->(b)`,
-        meeting,
+        { ...meeting, casoSlug: CASO_SLUG },
         TX_CONFIG,
       )
     }
 
     // PARTICIPATED_IN: People → Events
     const participations = [
-      ['cl-person-milei', 'cl-event-milei-post'],
-      ['cl-person-milei', 'cl-event-milei-deletes-post'],
-      ['cl-person-milei', 'cl-event-milei-defense'],
-      ['cl-person-hayden-davis', 'cl-event-token-launch'],
-      ['cl-person-hayden-davis', 'cl-event-58m-liquidation'],
-      ['cl-person-julian-peh', 'cl-event-casa-rosada-visits'],
-      ['cl-person-karina-milei', 'cl-event-casa-rosada-visits'],
-      ['cl-person-santiago-caputo', 'cl-event-caputo-calls'],
-      ['cl-person-julian-peh', 'cl-event-caputo-calls'],
+      [pid('cl-person-milei'), pid('cl-event-milei-post')],
+      [pid('cl-person-milei'), pid('cl-event-milei-deletes-post')],
+      [pid('cl-person-milei'), pid('cl-event-milei-defense')],
+      [pid('cl-person-hayden-davis'), pid('cl-event-token-launch')],
+      [pid('cl-person-hayden-davis'), pid('cl-event-58m-liquidation')],
+      [pid('cl-person-julian-peh'), pid('cl-event-casa-rosada-visits')],
+      [pid('cl-person-karina-milei'), pid('cl-event-casa-rosada-visits')],
+      [pid('cl-person-santiago-caputo'), pid('cl-event-caputo-calls')],
+      [pid('cl-person-julian-peh'), pid('cl-event-caputo-calls')],
     ]
     for (const [personId, eventId] of participations) {
       await session.run(
-        `MATCH (p:CasoLibraPerson { id: $personId })
-         MATCH (e:CasoLibraEvent { id: $eventId })
+        `MATCH (p:Person { id: $personId, caso_slug: $casoSlug })
+         MATCH (e:Event { id: $eventId, caso_slug: $casoSlug })
          MERGE (p)-[:PARTICIPATED_IN]->(e)`,
-        { personId, eventId },
+        { personId, eventId, casoSlug: CASO_SLUG },
         TX_CONFIG,
       )
     }
 
     // DOCUMENTED_BY: Events → Documents
     const documentations = [
-      ['cl-event-congressional-report', 'cl-doc-congressional-report'],
-      ['cl-event-trm-analysis', 'cl-doc-trm-analysis'],
-      ['cl-event-infobae-investigation', 'cl-doc-infobae-investigation'],
-      ['cl-event-court-filing', 'cl-doc-court-filing'],
-      ['cl-event-phone-forensics', 'cl-doc-phone-forensics'],
-      ['cl-event-casa-rosada-visits', 'cl-doc-visitor-logs'],
-      ['cl-event-international-media', 'cl-doc-ft-article'],
+      [pid('cl-event-congressional-report'), pid('cl-doc-congressional-report')],
+      [pid('cl-event-trm-analysis'), pid('cl-doc-trm-analysis')],
+      [pid('cl-event-infobae-investigation'), pid('cl-doc-infobae-investigation')],
+      [pid('cl-event-court-filing'), pid('cl-doc-court-filing')],
+      [pid('cl-event-phone-forensics'), pid('cl-doc-phone-forensics')],
+      [pid('cl-event-casa-rosada-visits'), pid('cl-doc-visitor-logs')],
+      [pid('cl-event-international-media'), pid('cl-doc-ft-article')],
     ]
     for (const [eventId, docId] of documentations) {
       await session.run(
-        `MATCH (e:CasoLibraEvent { id: $eventId })
-         MATCH (d:CasoLibraDocument { id: $docId })
+        `MATCH (e:Event { id: $eventId, caso_slug: $casoSlug })
+         MATCH (d:Document { id: $docId, caso_slug: $casoSlug })
          MERGE (e)-[:DOCUMENTED_BY]->(d)`,
-        { eventId, docId },
+        { eventId, docId, casoSlug: CASO_SLUG },
         TX_CONFIG,
       )
     }
 
-    // MENTIONS: Documents → People/Orgs
-    const mentions: Array<{ docId: string; targetId: string; targetLabel: string }> = [
-      {
-        docId: 'cl-doc-congressional-report',
-        targetId: 'cl-person-milei',
-        targetLabel: 'CasoLibraPerson',
-      },
-      {
-        docId: 'cl-doc-congressional-report',
-        targetId: 'cl-person-hayden-davis',
-        targetLabel: 'CasoLibraPerson',
-      },
-      {
-        docId: 'cl-doc-congressional-report',
-        targetId: 'cl-person-karina-milei',
-        targetLabel: 'CasoLibraPerson',
-      },
-      {
-        docId: 'cl-doc-congressional-report',
-        targetId: 'cl-org-kelsier',
-        targetLabel: 'CasoLibraOrganization',
-      },
-      {
-        docId: 'cl-doc-trm-analysis',
-        targetId: 'cl-person-hayden-davis',
-        targetLabel: 'CasoLibraPerson',
-      },
-      {
-        docId: 'cl-doc-trm-analysis',
-        targetId: 'cl-org-kelsier',
-        targetLabel: 'CasoLibraOrganization',
-      },
-      {
-        docId: 'cl-doc-infobae-investigation',
-        targetId: 'cl-person-milei',
-        targetLabel: 'CasoLibraPerson',
-      },
-      {
-        docId: 'cl-doc-infobae-investigation',
-        targetId: 'cl-person-julian-peh',
-        targetLabel: 'CasoLibraPerson',
-      },
-      {
-        docId: 'cl-doc-infobae-investigation',
-        targetId: 'cl-person-karina-milei',
-        targetLabel: 'CasoLibraPerson',
-      },
-      {
-        docId: 'cl-doc-phone-forensics',
-        targetId: 'cl-person-santiago-caputo',
-        targetLabel: 'CasoLibraPerson',
-      },
-      {
-        docId: 'cl-doc-phone-forensics',
-        targetId: 'cl-person-julian-peh',
-        targetLabel: 'CasoLibraPerson',
-      },
-      {
-        docId: 'cl-doc-visitor-logs',
-        targetId: 'cl-person-julian-peh',
-        targetLabel: 'CasoLibraPerson',
-      },
-      {
-        docId: 'cl-doc-visitor-logs',
-        targetId: 'cl-org-casa-rosada',
-        targetLabel: 'CasoLibraOrganization',
-      },
+    // MENTIONS: Documents → People/Orgs (all use generic labels now)
+    const mentions: Array<{ docId: string; targetId: string; targetLabel: 'Person' | 'Organization' }> = [
+      { docId: pid('cl-doc-congressional-report'), targetId: pid('cl-person-milei'), targetLabel: 'Person' },
+      { docId: pid('cl-doc-congressional-report'), targetId: pid('cl-person-hayden-davis'), targetLabel: 'Person' },
+      { docId: pid('cl-doc-congressional-report'), targetId: pid('cl-person-karina-milei'), targetLabel: 'Person' },
+      { docId: pid('cl-doc-congressional-report'), targetId: pid('cl-org-kelsier'), targetLabel: 'Organization' },
+      { docId: pid('cl-doc-trm-analysis'), targetId: pid('cl-person-hayden-davis'), targetLabel: 'Person' },
+      { docId: pid('cl-doc-trm-analysis'), targetId: pid('cl-org-kelsier'), targetLabel: 'Organization' },
+      { docId: pid('cl-doc-infobae-investigation'), targetId: pid('cl-person-milei'), targetLabel: 'Person' },
+      { docId: pid('cl-doc-infobae-investigation'), targetId: pid('cl-person-julian-peh'), targetLabel: 'Person' },
+      { docId: pid('cl-doc-infobae-investigation'), targetId: pid('cl-person-karina-milei'), targetLabel: 'Person' },
+      { docId: pid('cl-doc-phone-forensics'), targetId: pid('cl-person-santiago-caputo'), targetLabel: 'Person' },
+      { docId: pid('cl-doc-phone-forensics'), targetId: pid('cl-person-julian-peh'), targetLabel: 'Person' },
+      { docId: pid('cl-doc-visitor-logs'), targetId: pid('cl-person-julian-peh'), targetLabel: 'Person' },
+      { docId: pid('cl-doc-visitor-logs'), targetId: pid('cl-org-casa-rosada'), targetLabel: 'Organization' },
     ]
     for (const mention of mentions) {
       await session.run(
-        `MATCH (d:CasoLibraDocument { id: $docId })
-         MATCH (t:${mention.targetLabel} { id: $targetId })
+        `MATCH (d:Document { id: $docId, caso_slug: $casoSlug })
+         MATCH (t:${mention.targetLabel} { id: $targetId, caso_slug: $casoSlug })
          MERGE (d)-[:MENTIONS]->(t)`,
-        { docId: mention.docId, targetId: mention.targetId },
+        { docId: mention.docId, targetId: mention.targetId, casoSlug: CASO_SLUG },
         TX_CONFIG,
       )
     }
 
     // CONTROLS: People → Wallets
     await session.run(
-      `MATCH (p:CasoLibraPerson { id: 'cl-person-hayden-davis' })
-       MATCH (w:CasoLibraWallet { address: 'TEAM_WALLET_2_PLACEHOLDER' })
+      `MATCH (p:Person { id: $personId, caso_slug: $casoSlug })
+       MATCH (w:Wallet { id: $walletId, caso_slug: $casoSlug })
        MERGE (p)-[:CONTROLS]->(w)`,
-      {},
+      {
+        personId: pid('cl-person-hayden-davis'),
+        walletId: pid('TEAM_WALLET_2_PLACEHOLDER'),
+        casoSlug: CASO_SLUG,
+      },
       TX_CONFIG,
     )
 
     // SENT: Wallet → Wallet (key transactions)
     const transactions = [
       {
-        from: 'BzzMNvfm7T6zSGFeLXzERmRxfKaNLdo4fSzvsisxcSzz',
-        to: 'DefcyKc4yAjRsCLZjdxWuSUzVohXtLna9g22y3pBCm2z',
+        from: pid('BzzMNvfm7T6zSGFeLXzERmRxfKaNLdo4fSzvsisxcSzz'),
+        to: pid('DefcyKc4yAjRsCLZjdxWuSUzVohXtLna9g22y3pBCm2z'),
         amount_usd: 58_000_000,
         timestamp: '2025-02-14T23:30:00Z',
         hash: 'TX_58M_EXTRACTION',
       },
       {
-        from: 'DefcyKc4yAjRsCLZjdxWuSUzVohXtLna9g22y3pBCm2z',
-        to: 'CONSOLIDATION_WALLET_1',
+        from: pid('DefcyKc4yAjRsCLZjdxWuSUzVohXtLna9g22y3pBCm2z'),
+        to: pid('CONSOLIDATION_WALLET_1'),
         amount_usd: 25_000_000,
         timestamp: '2025-02-15T02:00:00Z',
         hash: 'TX_CONSOLIDATION_1',
       },
       {
-        from: 'DefcyKc4yAjRsCLZjdxWuSUzVohXtLna9g22y3pBCm2z',
-        to: 'CONSOLIDATION_WALLET_2',
+        from: pid('DefcyKc4yAjRsCLZjdxWuSUzVohXtLna9g22y3pBCm2z'),
+        to: pid('CONSOLIDATION_WALLET_2'),
         amount_usd: 18_000_000,
         timestamp: '2025-02-15T03:00:00Z',
         hash: 'TX_CONSOLIDATION_2',
       },
       {
-        from: 'TEAM_WALLET_2_PLACEHOLDER',
-        to: 'INSIDER_WALLET_1',
+        from: pid('TEAM_WALLET_2_PLACEHOLDER'),
+        to: pid('INSIDER_WALLET_1'),
         amount_usd: 8_000_000,
         timestamp: '2025-02-15T01:00:00Z',
         hash: 'TX_INSIDER_1',
       },
       {
-        from: 'CONSOLIDATION_WALLET_1',
-        to: 'EXIT_WALLET_1',
+        from: pid('CONSOLIDATION_WALLET_1'),
+        to: pid('EXIT_WALLET_1'),
         amount_usd: 12_000_000,
         timestamp: '2025-02-16T10:00:00Z',
         hash: 'TX_EXIT_1',
       },
       {
-        from: 'INSIDER_WALLET_1',
-        to: 'INSIDER_WALLET_2',
+        from: pid('INSIDER_WALLET_1'),
+        to: pid('INSIDER_WALLET_2'),
         amount_usd: 5_000_000,
         timestamp: '2025-02-15T06:00:00Z',
         hash: 'TX_INSIDER_MOVE',
@@ -783,10 +760,10 @@ async function seed(): Promise<void> {
     ]
     for (const tx of transactions) {
       await session.run(
-        `MATCH (w1:CasoLibraWallet { address: $from })
-         MATCH (w2:CasoLibraWallet { address: $to })
+        `MATCH (w1:Wallet { id: $from, caso_slug: $casoSlug })
+         MATCH (w2:Wallet { id: $to, caso_slug: $casoSlug })
          MERGE (w1)-[:SENT { hash: $hash, amount_usd: $amount_usd, timestamp: $timestamp }]->(w2)`,
-        tx,
+        { ...tx, casoSlug: CASO_SLUG },
         TX_CONFIG,
       )
     }
