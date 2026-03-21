@@ -55,8 +55,8 @@ const SUBTITLE: Record<Lang, string> = {
 }
 
 const READING_TIME: Record<Lang, string> = {
-  es: '~40 min de lectura',
-  en: '~40 min read',
+  es: '~45 min de lectura',
+  en: '~45 min read',
 }
 
 const LAST_UPDATED: Record<Lang, string> = {
@@ -399,6 +399,42 @@ const chapters: readonly Chapter[] = [
       { id: 22, text: 'Cuneo Libarona conflicto de intereses — Pagina/12', url: 'https://www.pagina12.com.ar/' },
     ],
   },
+  {
+    id: 'el-poder-judicial-auxiliar',
+    title: {
+      es: 'XII. El Poder Judicial Auxiliar',
+      en: 'XII. The Auxiliary Judiciary',
+    },
+    paragraphs: {
+      es: [
+        'El sistema no funciona sin su pieza final: un poder judicial que garantiza la impunidad. Segun una auditoria de la propia Corte Suprema, la tasa de condena por corrupcion en Argentina es del 2%. El 98% de las causas prescriben, se archivan o terminan en absolucion. No es un defecto del sistema. Es su funcion.',
+        'El epicentro es Comodoro Py, donde 12 juzgados federales concentran todas las causas de corrupcion de alto perfil del pais. El juez Ariel Lijo — con 89 causas de corrupcion y solo 14 elevadas a juicio — fue nombrado a la Corte Suprema por decreto 137/2025, despues de que el Senado lo rechazara 43 a 27. Lijo maneja la causa Correo Argentino contra la familia Macri. Vive en un departamento valuado en USD 2 millones que no aparece en su declaracion jurada.',
+        'El juez Ercolini volo en un avion pagado por el Grupo Clarin a la estancia Lago Escondido del billonario britanico Joe Lewis, junto a otros magistrados, funcionarios macristas y agentes de inteligencia. Despues, sobreyo a Rogelio Frigerio en el caso Koolhaas. Chats filtrados de Telegram muestran como los participantes coordinaron coartadas despues de que el viaje se hiciera publico.',
+        'Carlos Rosenkrantz, presidente de la Corte Suprema, fue abogado de Clarin, La Nacion, McDonald\'s, YPF y Repsol. En 2021 revirtio su propia politica de recusacion y comenzo a fallar en causas de ex clientes: al menos 56 fallos involucrando antiguos clientes. Los jueces de Casacion Hornos y Borinsky visitaron a Macri en Olivos y Casa Rosada (6 y 15 veces respectivamente) mientras presidian causas contra dirigentes kirchneristas. Borinsky admitio que iba "a jugar al padel."',
+        'Las declaraciones juradas judiciales revelan anomalias inexplicables. El juez Seijas declaro ARS 1.750 millones en activos en 2024 siendo asesor ad honorem — no remunerado. La jueza Pistone mostro un crecimiento patrimonial del 457.000% en 11 anos. Castineira de Dios crecio 62.000%. Estos numeros no son compatibles con salarios judiciales.',
+        'La reforma acusatoria de agosto de 2025 transfiere el poder de investigacion de jueces a fiscales. Si se implementa efectivamente, rompe la concentracion de poder en Comodoro Py. Pero los mismos jueces que la reforma desplaza son los que deben implementarla.',
+      ],
+      en: [
+        'The system does not work without its final piece: a judiciary that guarantees impunity. According to the Supreme Court\'s own audit, Argentina\'s corruption conviction rate is 2%. 98% of cases expire, are archived, or end in acquittal. This is not a defect of the system. It is its function.',
+        'The epicenter is Comodoro Py, where 12 federal courts concentrate all of the country\'s high-profile corruption cases. Judge Ariel Lijo — with 89 corruption cases and only 14 sent to trial — was appointed to the Supreme Court by decree 137/2025, after the Senate rejected him 43 to 27. Lijo handles the Correo Argentino case against the Macri family. He lives in an apartment valued at USD 2 million that does not appear in his sworn asset declaration.',
+        'Judge Ercolini flew on a Grupo Clarin-paid flight to British billionaire Joe Lewis\'s Lago Escondido estate, alongside other magistrates, Macri officials and intelligence agents. Afterward, he cleared Rogelio Frigerio in the Koolhaas case. Leaked Telegram chats show how participants coordinated alibis after the trip became public.',
+        'Carlos Rosenkrantz, Supreme Court president, was lawyer for Clarin, La Nacion, McDonald\'s, YPF and Repsol. In 2021 he reversed his own recusal policy and began ruling on former clients\' cases: at least 56 rulings involving former clients. Cassation judges Hornos and Borinsky visited Macri at Olivos and Casa Rosada (6 and 15 times respectively) while presiding over cases against Kirchnerist leaders. Borinsky claimed he went "to play paddle tennis."',
+        'Judicial asset declarations reveal inexplicable anomalies. Judge Seijas declared ARS 1.75 billion in assets in 2024 as an ad honorem advisor — unpaid. Judge Pistone showed 457,000% asset growth over 11 years. Castineira de Dios grew 62,000%. These numbers are not compatible with judicial salaries.',
+        'The August 2025 accusatory reform transfers investigative power from judges to prosecutors. If effectively implemented, it breaks the concentration of power at Comodoro Py. But the same judges displaced by the reform are the ones who must implement it.',
+      ],
+    },
+    pullQuote: {
+      es: 'La tasa de condena por corrupcion es del 2%. No es un defecto del sistema. Es su funcion.',
+      en: 'The corruption conviction rate is 2%. This is not a defect of the system. It is its function.',
+    },
+    citations: [
+      { id: 23, text: 'Lijo decreto 137/2025 — Infobae', url: 'https://www.infobae.com/politica/2025/02/14/milei-nombro-a-ariel-lijo-en-la-corte-suprema-por-decreto/' },
+      { id: 24, text: 'Lago Escondido — El Destape', url: 'https://www.eldestapeweb.com/politica/lago-escondido/' },
+      { id: 25, text: 'Rosenkrantz ex clientes — Pagina/12', url: 'https://www.pagina12.com.ar/377456-rosenkrantz-el-juez-de-clarin' },
+      { id: 26, text: 'Hornos y Borinsky visitas a Olivos — El Destape', url: 'https://www.eldestapeweb.com/politica/2021/hornos-borinsky-olivos/' },
+      { id: 27, text: 'Tasa de condena 2% — Chequeado', url: 'https://chequeado.com' },
+    ],
+  },
 ]
 
 // ---------------------------------------------------------------------------
@@ -409,7 +445,8 @@ const stats: readonly StatCard[] = [
   { value: '10,150', label: { es: 'Coincidencias entre datasets', en: 'Cross-dataset matches' } },
   { value: '617', label: { es: 'Politicos en 2+ datasets', en: 'Politicians in 2+ datasets' } },
   { value: '2,16M', label: { es: 'Nodos del grafo', en: 'Graph nodes' } },
-  { value: '72', label: { es: 'Puerta giratoria financiera', en: 'Financial revolving door' } },
+  { value: '72+', label: { es: 'Puerta giratoria financiera', en: 'Financial revolving door' } },
+  { value: '6', label: { es: 'Jueces criticos documentados', en: 'Critical judges documented' } },
 ]
 
 // ---------------------------------------------------------------------------
@@ -432,6 +469,11 @@ const sources: readonly Source[] = [
   { name: 'Causa seguros — allanamientos Ercolini', url: 'https://www.infobae.com/politica/2024/04/' },
   { name: 'Plate designacion SSN — Boletin Oficial', url: 'https://www.boletinoficial.gob.ar' },
   { name: 'Catalan designacion YPF — Infobae', url: 'https://www.infobae.com/economia/2024/' },
+  { name: 'Lijo decreto 137/2025 — Infobae', url: 'https://www.infobae.com/politica/2025/02/14/milei-nombro-a-ariel-lijo-en-la-corte-suprema-por-decreto/' },
+  { name: 'Lago Escondido — El Destape', url: 'https://www.eldestapeweb.com/politica/lago-escondido/' },
+  { name: 'Rosenkrantz ex clientes — Pagina/12', url: 'https://www.pagina12.com.ar/377456-rosenkrantz-el-juez-de-clarin' },
+  { name: 'Hornos-Borinsky visitas a Olivos — El Destape', url: 'https://www.eldestapeweb.com/politica/2021/hornos-borinsky-olivos/' },
+  { name: 'Tasa de condena 2% — Chequeado', url: 'https://chequeado.com' },
 ]
 
 // ---------------------------------------------------------------------------
@@ -507,7 +549,7 @@ export default function ResumenPage() {
       </header>
 
       {/* Stat cards */}
-      <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-5">
         {stats.map((stat) => (
           <div
             key={stat.value}

@@ -102,10 +102,16 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     source: 'Compr.ar / Boletín Oficial',
   },
   {
-    value: '72',
+    value: '72+',
     label_es: 'Puerta giratoria financiera-gobierno',
     label_en: 'Financial-government revolving door',
     source: 'IGJ + GovernmentAppointment cross-match',
+  },
+  {
+    value: '6',
+    label_es: 'Jueces criticos documentados',
+    label_en: 'Critical judges documented',
+    source: 'Poder Judicial / DDJJ / ACIJ',
   },
 ] as const
 
@@ -443,6 +449,82 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     detail_en:
       'The Werthein family controls the Caja de Seguros cluster (32 shared officers). Pampa Energía operates Buenos Aires electricity infrastructure with 81 identical officers between CITELEC and EDELAP. MetLife operates 5 separate legal entities (insurance, pension, investment) with 29-40 shared officers.',
   },
+  // --- Tier 1: Judicial Branch — Lijo Supreme Court ---
+  {
+    id: 'lijo-supreme-court',
+    claim_es:
+      'El juez Ariel Lijo fue nombrado a la Corte Suprema por decreto 137/2025, eludiendo el rechazo del Senado (43-27). Maneja la causa Correo Argentino contra la familia Macri. Tiene 89 causas de corrupción con solo 14 elevadas a juicio. Vive en un departamento de USD 2M no declarado en su DDJJ.',
+    claim_en:
+      'Judge Ariel Lijo was appointed to the Supreme Court by decree 137/2025, bypassing Senate rejection (43-27). He handles the Correo Argentino case against the Macri family. Has 89 corruption cases with only 14 sent to trial. Lives in a USD 2M apartment not declared in his sworn assets.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Infobae / ACIJ',
+    source_url:
+      'https://www.infobae.com/politica/2025/02/14/milei-nombro-a-ariel-lijo-en-la-corte-suprema-por-decreto/',
+  },
+  // --- Tier 1: Judicial Branch — Ercolini Lago Escondido ---
+  {
+    id: 'ercolini-lago-escondido',
+    claim_es:
+      'El juez Ercolini voló en un avión pagado por Clarín a la estancia Lago Escondido del billonario Joe Lewis, junto a otros jueces, funcionarios macristas y agentes de inteligencia. Luego sobreyó a Frigerio en el caso Koolhaas. Chats filtrados de Telegram muestran coordinación para fabricar coartadas.',
+    claim_en:
+      'Judge Ercolini flew on a Clarín-paid flight to billionaire Joe Lewis\'s Lago Escondido estate, with other judges, Macri officials and intelligence agents. He then cleared Frigerio in the Koolhaas case. Leaked Telegram chats show coordination to fabricate alibis.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'El Destape / Judicial leaks',
+    source_url:
+      'https://www.eldestapeweb.com/politica/lago-escondido/',
+  },
+  // --- Tier 1: Judicial Branch — Rosenkrantz conflicts ---
+  {
+    id: 'rosenkrantz-clarin',
+    claim_es:
+      'Carlos Rosenkrantz, presidente de la Corte Suprema, fue abogado de Clarín, La Nación, McDonald\'s, YPF y Repsol. En 2021 revirtió su política de recusación y comenzó a fallar en casos de ex clientes: al menos 56 fallos involucrando antiguos clientes.',
+    claim_en:
+      'Carlos Rosenkrantz, Supreme Court president, was lawyer for Clarín, La Nación, McDonald\'s, YPF and Repsol. In 2021 reversed his recusal policy and began ruling on former clients\' cases: at least 56 rulings involving former clients.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Página/12',
+    source_url:
+      'https://www.pagina12.com.ar/377456-rosenkrantz-el-juez-de-clarin',
+  },
+  // --- Tier 1: Judicial Branch — Hornos/Borinsky Olivos visits ---
+  {
+    id: 'hornos-borinsky-olivos',
+    claim_es:
+      'Los jueces de Casación Hornos y Borinsky visitaron a Macri en Olivos y Casa Rosada (6+ y 15+ veces respectivamente) mientras presidían causas contra dirigentes kirchneristas. Borinsky admitió que iba \'a jugar al pádel\'.',
+    claim_en:
+      'Cassation judges Hornos and Borinsky visited Macri at Olivos and Casa Rosada (6+ and 15+ times respectively) while presiding over cases against Kirchnerist leaders. Borinsky claimed he went \'to play paddle tennis\'.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'El Destape / Judicial leaks',
+    source_url:
+      'https://www.eldestapeweb.com/politica/2021/hornos-borinsky-olivos/',
+  },
+  // --- Tier 1: Judicial Branch — Wealth anomalies ---
+  {
+    id: 'judicial-wealth-anomalies',
+    claim_es:
+      'El juez Seijas declaró ARS 1.750 millones en activos en 2024 siendo asesor ad honorem (no remunerado). La jueza Pistone mostró un crecimiento patrimonial del 457.000% en 11 años (de 24K a 108M ARS). Castiñeira de Dios creció 62.000% (528K a 326M ARS).',
+    claim_en:
+      'Judge Seijas declared ARS 1.75 billion in assets in 2024 as an ad honorem (unpaid) advisor. Judge Pistone showed 457,000% asset growth over 11 years (24K to 108M ARS). Castiñeira de Dios grew 62,000% (528K to 326M ARS).',
+    status: 'confirmed',
+    tier: 1,
+    source: 'DDJJ / Cross-dataset analysis',
+    source_url: 'https://datos.gob.ar',
+  },
+  // --- Tier 1: Judicial Branch — 2% conviction rate ---
+  {
+    id: '2pct-conviction-rate',
+    claim_es:
+      'Según auditoría de la propia Corte Suprema, la tasa de condena por corrupción en Argentina es del 2%. El 98% de las causas prescriben, se archivan o terminan en absolución.',
+    claim_en:
+      'According to the Supreme Court\'s own audit, Argentina\'s corruption conviction rate is 2%. 98% of cases expire, are archived, or end in acquittal.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Corte Suprema / Chequeado',
+    source_url: 'https://chequeado.com',
+  },
 ] as const
 
 // ---------------------------------------------------------------------------
@@ -682,6 +764,42 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: ['https://www.iprofesional.com/negocios/442238-de-ministro-interior-a-petrolero-lisandro-catalan-se-suma-directorio-ypf'],
   },
   {
+    id: 'tl-2022-lago-escondido',
+    date: '2022-11',
+    title_es: 'Escándalo Lago Escondido: jueces en avión de Clarín',
+    title_en: 'Lago Escondido scandal: judges on Clarín-paid flight',
+    description_es:
+      'Se revela que el juez Ercolini y otros magistrados volaron en un avión pagado por el Grupo Clarín a la estancia Lago Escondido de Joe Lewis. Chats de Telegram filtrados muestran coordinación para fabricar coartadas.',
+    description_en:
+      'It is revealed that Judge Ercolini and other magistrates flew on a Grupo Clarín-paid flight to Joe Lewis\'s Lago Escondido estate. Leaked Telegram chats show coordination to fabricate alibis.',
+    category: 'legal',
+    sources: ['https://www.eldestapeweb.com/politica/lago-escondido/'],
+  },
+  {
+    id: 'tl-2025-lijo-decreto',
+    date: '2025-02-14',
+    title_es: 'Milei nombra a Lijo a Corte Suprema por decreto 137/2025',
+    title_en: 'Milei appoints Lijo to Supreme Court by decree 137/2025',
+    description_es:
+      'El presidente Milei nombra al juez Ariel Lijo a la Corte Suprema por decreto 137/2025, eludiendo el rechazo del Senado (43-27). Lijo maneja la causa Correo Argentino y tiene 89 causas de corrupción con solo 14 elevadas a juicio.',
+    description_en:
+      'President Milei appoints Judge Ariel Lijo to the Supreme Court by decree 137/2025, bypassing Senate rejection (43-27). Lijo handles the Correo Argentino case and has 89 corruption cases with only 14 sent to trial.',
+    category: 'political',
+    sources: ['https://www.infobae.com/politica/2025/02/14/milei-nombro-a-ariel-lijo-en-la-corte-suprema-por-decreto/'],
+  },
+  {
+    id: 'tl-2025-acusatorio',
+    date: '2025-08',
+    title_es: 'Reforma acusatoria: poder pasa de jueces a fiscales',
+    title_en: 'Accusatory reform: power shifts from judges to prosecutors',
+    description_es:
+      'Entra en vigencia la reforma del sistema acusatorio, transfiriendo el poder de investigación de los jueces federales a los fiscales. El cambio amenaza la concentración de poder en Comodoro Py.',
+    description_en:
+      'The accusatory system reform takes effect, transferring investigative power from federal judges to prosecutors. The change threatens the concentration of power at Comodoro Py.',
+    category: 'legal',
+    sources: ['https://www.argentina.gob.ar'],
+  },
+  {
     id: 'tl-2026-procesamiento-msosa',
     date: '2026-02-10',
     title_es: 'Procesamiento de empresa de Martínez Sosa',
@@ -884,17 +1002,17 @@ export const ACTORS: readonly Actor[] = [
   },
   {
     id: 'actor-lijo',
-    name: 'Lijo, Ariel',
-    role_es: 'Juez Federal — Causa Correo Argentino',
-    role_en: 'Federal Judge — Correo Argentino case',
+    name: 'Lijo, Ariel Oscar',
+    role_es: 'Poder Judicial — Corte Suprema (decreto) — 3 datasets',
+    role_en: 'Judiciary — Supreme Court (by decree) — 3 datasets',
     description_es:
-      'Juez federal a cargo de la causa Correo Argentino. Figura en el grafo como nodo judicial vinculado a multiples causas de interes publico relacionadas con el grupo SOCMA.',
+      'Nombrado a la Corte Suprema por decreto 137/2025, eludiendo rechazo del Senado (43-27). Maneja la causa Correo Argentino contra la familia Macri. 89 causas de corrupción con solo 14 elevadas a juicio. Vive en departamento de USD 2M no declarado en DDJJ.',
     description_en:
-      'Federal judge overseeing the Correo Argentino case. Appears in the graph as a judicial node linked to multiple public-interest cases related to the SOCMA group.',
+      'Appointed to the Supreme Court by decree 137/2025, bypassing Senate rejection (43-27). Handles the Correo Argentino case against the Macri family. 89 corruption cases with only 14 sent to trial. Lives in a USD 2M apartment not declared in sworn assets.',
     party: 'Poder Judicial',
-    datasets: 1,
-    status_es: 'Causa activa',
-    status_en: 'Active case',
+    datasets: 3,
+    status_es: 'Designación por decreto — conflictos documentados',
+    status_en: 'Decree appointment — documented conflicts',
   },
   {
     id: 'actor-martinez-sosa',
@@ -965,6 +1083,62 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Conflicto de interés — "doble blindaje"',
     status_en: 'Conflict of interest — "double shielding"',
+  },
+  {
+    id: 'actor-ercolini',
+    name: 'Ercolini, Julián Daniel',
+    role_es: 'Poder Judicial — Juez Federal Comodoro Py — 3 datasets',
+    role_en: 'Judiciary — Federal Judge Comodoro Py — 3 datasets',
+    description_es:
+      'Voló en avión pagado por Clarín a Lago Escondido (estancia de Joe Lewis) junto a otros jueces, funcionarios macristas y agentes de inteligencia. Sobreyó a Frigerio en el caso Koolhaas. Chats de Telegram filtrados muestran coordinación para fabricar coartadas. Ordenó 24 allanamientos en la Causa Seguros.',
+    description_en:
+      'Flew on a Clarín-paid flight to Lago Escondido (Joe Lewis\'s estate) with other judges, Macri officials and intelligence agents. Cleared Frigerio in the Koolhaas case. Leaked Telegram chats show coordination to fabricate alibis. Ordered 24 raids in the Causa Seguros.',
+    party: 'Poder Judicial',
+    datasets: 3,
+    status_es: 'Conflictos documentados — Lago Escondido',
+    status_en: 'Documented conflicts — Lago Escondido',
+  },
+  {
+    id: 'actor-rosenkrantz',
+    name: 'Rosenkrantz, Carlos',
+    role_es: 'Corte Suprema — Presidente — 2 datasets',
+    role_en: 'Supreme Court — President — 2 datasets',
+    description_es:
+      'Presidente de la Corte Suprema. Fue abogado de Clarín, La Nación, McDonald\'s, YPF y Repsol. En 2021 revirtió su política de recusación y comenzó a fallar en casos de ex clientes: al menos 56 fallos involucrando antiguos clientes.',
+    description_en:
+      'Supreme Court president. Was lawyer for Clarín, La Nación, McDonald\'s, YPF and Repsol. In 2021 reversed his recusal policy and began ruling on former clients\' cases: at least 56 rulings involving former clients.',
+    party: 'Corte Suprema',
+    datasets: 2,
+    status_es: 'Conflicto de interés — 56 fallos con ex clientes',
+    status_en: 'Conflict of interest — 56 rulings on former clients',
+  },
+  {
+    id: 'actor-hornos-borinsky',
+    name: 'Hornos, Gustavo / Borinsky, Mariano',
+    role_es: 'Casación Penal — 2 datasets',
+    role_en: 'Criminal Cassation Court — 2 datasets',
+    description_es:
+      'Visitaron a Macri en Olivos y Casa Rosada (6+ y 15+ veces respectivamente) mientras presidían causas contra dirigentes kirchneristas. Borinsky admitió que iba "a jugar al pádel". Las visitas coinciden con momentos clave de las causas.',
+    description_en:
+      'Visited Macri at Olivos and Casa Rosada (6+ and 15+ times respectively) while presiding over cases against Kirchnerist leaders. Borinsky claimed he went "to play paddle tennis". Visits coincide with key moments in the cases.',
+    party: 'Casación',
+    datasets: 2,
+    status_es: 'Visitas a Olivos documentadas — conflicto de interés',
+    status_en: 'Olivos visits documented — conflict of interest',
+  },
+  {
+    id: 'actor-seijas',
+    name: 'Seijas, Alberto',
+    role_es: 'Poder Judicial — Asesor ad honorem — 1 dataset',
+    role_en: 'Judiciary — Ad honorem advisor — 1 dataset',
+    description_es:
+      'Declaró ARS 1.750 millones en activos en 2024 siendo asesor ad honorem (no remunerado). La anomalía patrimonial fue detectada en el cruce de datos DDJJ.',
+    description_en:
+      'Declared ARS 1.75 billion in assets in 2024 as an ad honorem (unpaid) advisor. The wealth anomaly was detected in the DDJJ cross-dataset analysis.',
+    party: 'Poder Judicial',
+    datasets: 1,
+    status_es: 'Anomalía patrimonial — ARS 1.75B declarados',
+    status_en: 'Wealth anomaly — ARS 1.75B declared',
   },
 ] as const
 
@@ -1093,5 +1267,31 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
     date: '2019',
     source: 'CNE',
     source_url: 'https://aportantes.electoral.gob.ar',
+  },
+  {
+    id: 'flow-nacion-seguros-brokers-embargo',
+    from_label: 'Bachellier S.A. (broker)',
+    to_label: 'Embargo judicial',
+    amount_ars: 9_669_000_000,
+    description_es:
+      'Bachellier S.A., principal broker del esquema Nación Seguros, fue embargada por $9.669 millones ARS. Facturó $1.665M en comisiones bajo el monopolio del Decreto 823/2021.',
+    description_en:
+      'Bachellier S.A., the top broker in the Nación Seguros scheme, was embargoed for $9.669B ARS. It invoiced $1.665B in commissions under the Decree 823/2021 monopoly.',
+    date: '2024-2026',
+    source: 'Infobae / Causa Seguros',
+    source_url: 'https://www.infobae.com/politica/2024/03/',
+  },
+  {
+    id: 'flow-cuadernos-dismissals',
+    from_label: '50 empresarios Cuadernos',
+    to_label: 'Compra de sobreseimientos',
+    amount_ars: 0,
+    description_es:
+      '50 empresarios de la causa Cuadernos ofrecieron entre USD 12M y USD 40M cada uno para comprar sobreseimientos. La tasa de condena por corrupción en Argentina es del 2% según auditoría de la propia Corte Suprema.',
+    description_en:
+      '50 businessmen in the Cuadernos case offered between USD 12M and USD 40M each to buy dismissals. Argentina\'s corruption conviction rate is 2% according to the Supreme Court\'s own audit.',
+    date: '2018-2025',
+    source: 'Corte Suprema / Chequeado',
+    source_url: 'https://chequeado.com',
   },
 ] as const
