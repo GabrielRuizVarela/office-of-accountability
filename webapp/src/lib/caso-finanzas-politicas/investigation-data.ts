@@ -57,6 +57,7 @@ export interface Actor {
   datasets: number
   status_es?: string
   status_en?: string
+  source_url?: string
 }
 
 export interface MoneyFlow {
@@ -1039,6 +1040,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 5,
     status_es: 'Sobreseido por Fleg Trading; la causa Correo Argentino continua',
     status_en: 'Cleared on Fleg Trading; Correo Argentino case continues',
+    source_url: 'https://chequeado.com/el-explicador/claves-para-entender-la-polemica-por-la-deuda-del-correo-argentino-con-el-estado/',
   },
   {
     id: 'actor-ibanez',
@@ -1053,6 +1055,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 4,
     status_es: 'No confirmado — Alta confianza',
     status_en: 'Unconfirmed — High confidence',
+    source_url: 'https://offshoreleaks.icij.org/nodes/10158328',
   },
   {
     id: 'actor-camano',
@@ -1067,6 +1070,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 4,
     status_es: 'No confirmado — Probable',
     status_en: 'Unconfirmed — Probable',
+    source_url: 'https://offshoreleaks.icij.org',
   },
   {
     id: 'actor-bullrich',
@@ -1081,6 +1085,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 4,
     status_es: 'Puerta giratoria — sin hallazgo penal',
     status_en: 'Revolving door — no criminal finding',
+    source_url: 'https://datos.gob.ar',
   },
   {
     id: 'actor-cordero',
@@ -1095,6 +1100,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Presunto — Referido a UIF',
     status_en: 'Alleged — Referred to UIF',
+    source_url: 'https://offshoreleaks.icij.org',
   },
   {
     id: 'actor-rodriguez',
@@ -1109,6 +1115,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Confirmado — Coincidencia con prohibicion legal',
     status_en: 'Confirmed — Coincidence with legal prohibition',
+    source_url: 'https://datos.gob.ar',
   },
   {
     id: 'actor-sanchez',
@@ -1123,6 +1130,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Puerta giratoria — alegaciones pendientes',
     status_en: 'Revolving door — allegations pending',
+    source_url: 'https://datos.gob.ar',
   },
   {
     id: 'actor-macri-gianfranco',
@@ -1137,6 +1145,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Denunciado penalmente por hermano (2024)',
     status_en: 'Criminally denounced by brother (2024)',
+    source_url: 'https://noticias.perfil.com/noticias/politica/2018-12-18-quienes-son-los-integrantes-de-socma-que-adhirieron-al-blanqueo.phtml',
   },
   {
     id: 'actor-kueider',
@@ -1151,6 +1160,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Expulsado del Senado; la causa judicial continua',
     status_en: 'Expelled from Senate; judicial case continues',
+    source_url: 'https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-edgardo-kueider-en-paraguay-llevaba-mas-de-usd-200-mil/',
   },
   {
     id: 'actor-lousteau',
@@ -1165,6 +1175,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 4,
     status_es: 'La causa judicial continua',
     status_en: 'Judicial case continues',
+    source_url: 'https://datos.gob.ar',
   },
   {
     id: 'actor-denarvaez',
@@ -1179,6 +1190,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 4,
     status_es: 'Coincidencias ICIJ confirmadas',
     status_en: 'ICIJ matches confirmed',
+    source_url: 'https://offshoreleaks.icij.org',
   },
   {
     id: 'actor-grindetti',
@@ -1193,6 +1205,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Causas tributarias en Brasil activas',
     status_en: 'Active tax cases in Brazil',
+    source_url: 'https://offshoreleaks.icij.org',
   },
   {
     id: 'actor-heller',
@@ -1207,6 +1220,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Conflicto de interes confirmado — sin causa penal',
     status_en: 'Confirmed conflict of interest — no criminal case',
+    source_url: 'https://datos.gob.ar',
   },
   {
     id: 'actor-lijo',
@@ -1221,6 +1235,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Designación por decreto — conflictos documentados',
     status_en: 'Decree appointment — documented conflicts',
+    source_url: 'https://www.infobae.com/politica/2025/02/14/milei-nombro-a-ariel-lijo-en-la-corte-suprema-por-decreto/',
   },
   {
     id: 'actor-martinez-sosa',
@@ -1235,6 +1250,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Procesado — Causa Seguros activa',
     status_en: 'Prosecuted — Causa Seguros active',
+    source_url: 'https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/',
   },
   {
     id: 'actor-plate',
@@ -1249,6 +1265,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 4,
     status_es: 'Puerta giratoria — conflicto de interés documentado',
     status_en: 'Revolving door — documented conflict of interest',
+    source_url: 'https://www.letrap.com.ar/politica/como-funciona-el-blindaje-oficial-las-aseguradoras-protegidas-el-gobierno-n5416266',
   },
   {
     id: 'actor-catalan',
@@ -1263,6 +1280,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 5,
     status_es: 'Puerta giratoria — sin causa penal',
     status_en: 'Revolving door — no criminal case',
+    source_url: 'https://www.iprofesional.com/negocios/442238-de-ministro-interior-a-petrolero-lisandro-catalan-se-suma-directorio-ypf',
   },
   {
     id: 'actor-frigerio',
@@ -1277,6 +1295,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 4,
     status_es: 'Sobreseído OA (2022); Causa Correo vinculada',
     status_en: 'Cleared by OA (2022); linked to Correo case',
+    source_url: 'https://www.infobae.com/politica/2022/04/25/pidieron-citar-a-indagatoria-a-rogelio-frigerio-por-irregularidades-en-operaciones-inmobiliarias/',
   },
   {
     id: 'actor-cuneo-libarona',
@@ -1291,6 +1310,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Conflicto de interés — "doble blindaje"',
     status_en: 'Conflict of interest — "double shielding"',
+    source_url: 'https://www.letrap.com.ar/politica/como-funciona-el-blindaje-oficial-las-aseguradoras-protegidas-el-gobierno-n5416266',
   },
   {
     id: 'actor-ercolini',
@@ -1305,6 +1325,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Conflictos documentados — Lago Escondido',
     status_en: 'Documented conflicts — Lago Escondido',
+    source_url: 'https://www.eldestapeweb.com/politica/lago-escondido/',
   },
   {
     id: 'actor-rosenkrantz',
@@ -1319,6 +1340,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Conflicto de interés — 56 fallos con ex clientes',
     status_en: 'Conflict of interest — 56 rulings on former clients',
+    source_url: 'https://www.pagina12.com.ar/377456-rosenkrantz-el-juez-de-clarin',
   },
   {
     id: 'actor-hornos-borinsky',
@@ -1333,6 +1355,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Visitas a Olivos documentadas — conflicto de interés',
     status_en: 'Olivos visits documented — conflict of interest',
+    source_url: 'https://www.eldestapeweb.com/politica/hornos-borinsky-olivos/',
   },
   {
     id: 'actor-seijas',
@@ -1347,6 +1370,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 1,
     status_es: 'Anomalía patrimonial — ARS 1.75B declarados',
     status_en: 'Wealth anomaly — ARS 1.75B declared',
+    source_url: 'https://datos.gob.ar',
   },
   // --- Milei-era key actors ---
   {
@@ -1362,6 +1386,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Offshore confirmado (ICIJ) — Conflicto salud-medios',
     status_en: 'Offshore confirmed (ICIJ) — Health-media conflict',
+    source_url: 'https://offshoreleaks.icij.org/nodes/12170966',
   },
   {
     id: 'actor-caputo-santiago',
@@ -1376,6 +1401,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 1,
     status_es: 'Control SIDE documentado — sin cargo público formal',
     status_en: 'SIDE control documented — no formal public role',
+    source_url: 'https://www.perfil.com/noticias/politica/quien-es-quien-en-el-clan-caputo-una-familia-siempre-vinculada-a-la-politica-y-el-poder.phtml',
   },
   {
     id: 'actor-pettovello',
@@ -1390,6 +1416,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 1,
     status_es: 'Investigación activa — retención de alimentos',
     status_en: 'Active investigation — food withholding',
+    source_url: 'https://www.infobae.com/politica/2025/capital-humano-alimentos/',
   },
   // --- Missing critical persons ---
   {
@@ -1405,6 +1432,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Procesado — Causa Seguros activa',
     status_en: 'Prosecuted — Causa Seguros active',
+    source_url: 'https://noticiasargentinas.com/politica/investigacion-sobre-seguros--alberto-fernandez-debera-explicar-el-decreto-823-2021-que-dio-millones-del-estado-a-sus-amigo-brokers_a6729edb7955e3f568c0df2a2',
   },
   {
     id: 'actor-macri-francisco',
@@ -1419,6 +1447,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 4,
     status_es: 'Red empresarial documentada — 17 empresas',
     status_en: 'Business network documented — 17 companies',
+    source_url: 'https://es.wikipedia.org/wiki/Franco_Macri',
   },
   {
     id: 'actor-macri-jorge',
@@ -1433,6 +1462,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Absolución por lavado revocada (Feb 2026)',
     status_en: 'Money laundering acquittal revoked (Feb 2026)',
+    source_url: 'https://www.infobae.com/politica/2026/02/macri-jorge-lavado-revocacion/',
   },
   {
     id: 'actor-caputo-luis',
@@ -1447,6 +1477,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 4,
     status_es: 'Conflicto de interés — 13 empresas vinculadas',
     status_en: 'Conflict of interest — 13 linked companies',
+    source_url: 'https://www.perfil.com/noticias/politica/quien-es-quien-en-el-clan-caputo-una-familia-siempre-vinculada-a-la-politica-y-el-poder.phtml',
   },
   {
     id: 'actor-caputo-nicolas',
@@ -1461,6 +1492,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 4,
     status_es: 'Contratos estatales documentados — red de 13 empresas',
     status_en: 'State contracts documented — 13-company network',
+    source_url: 'https://www.perfil.com/noticias/politica/quien-es-quien-en-el-clan-caputo-una-familia-siempre-vinculada-a-la-politica-y-el-poder.phtml',
   },
   {
     id: 'actor-mindlin',
@@ -1475,6 +1507,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Monopolio eléctrico documentado — 81 officers compartidos',
     status_en: 'Electricity monopoly documented — 81 shared officers',
+    source_url: 'https://datos.gob.ar',
   },
   {
     id: 'actor-werthein',
@@ -1489,6 +1522,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Concentración de mercado documentada — 32 officers compartidos',
     status_en: 'Market concentration documented — 32 shared officers',
+    source_url: 'https://datos.gob.ar',
   },
   {
     id: 'actor-herrera-de-noble',
@@ -1503,6 +1537,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Influencia mediática documentada sobre poder judicial',
     status_en: 'Documented media influence over judiciary',
+    source_url: 'https://es.wikipedia.org/wiki/Ernestina_Herrera_de_Noble',
   },
   {
     id: 'actor-davis',
@@ -1517,6 +1552,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Investigación penal activa — $107M cashout',
     status_en: 'Active criminal investigation — $107M cashout',
+    source_url: 'https://www.infobae.com/politica/2025/02/libra-crypto-escandalo/',
   },
   {
     id: 'actor-hornos',
@@ -1531,6 +1567,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Visitas a Casa Rosada documentadas — conflicto de interés',
     status_en: 'Casa Rosada visits documented — conflict of interest',
+    source_url: 'https://www.eldestapeweb.com/politica/hornos-borinsky-olivos/',
   },
   {
     id: 'actor-borinsky',
@@ -1545,6 +1582,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Visitas a Olivos documentadas — conflicto de interés',
     status_en: 'Olivos visits documented — conflict of interest',
+    source_url: 'https://www.eldestapeweb.com/politica/hornos-borinsky-olivos/',
   },
   // --- Missing high-severity persons ---
   {
@@ -1560,6 +1598,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Causas Los Sauces/Hotesur — vinculado',
     status_en: 'Los Sauces/Hotesur cases — linked',
+    source_url: 'https://www.lanacion.com.ar/politica/el-patrimonio-de-maximo-kirchner-crecio-un-75-por-la-revaluacion-de-sus-inmuebles-y-acciones-nid23072025/',
   },
   {
     id: 'actor-sturzenegger',
@@ -1574,6 +1613,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Crecimiento patrimonial anómalo — 45x',
     status_en: 'Anomalous wealth growth — 45x',
+    source_url: 'https://datos.gob.ar',
   },
   {
     id: 'actor-closs',
@@ -1588,6 +1628,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Anomalía patrimonial — crecimiento 367x',
     status_en: 'Wealth anomaly — 367x growth',
+    source_url: 'https://datos.gob.ar',
   },
   {
     id: 'actor-carrizo',
@@ -1602,6 +1643,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Anomalía patrimonial — crecimiento 1577x',
     status_en: 'Wealth anomaly — 1577x growth',
+    source_url: 'https://datos.gob.ar',
   },
   {
     id: 'actor-casanello',
@@ -1616,6 +1658,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'A cargo de Causa Seguros',
     status_en: 'Handling Causa Seguros',
+    source_url: 'https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/',
   },
   {
     id: 'actor-francos',
@@ -1630,6 +1673,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Puerta giratoria — gobierno a YPF',
     status_en: 'Revolving door — government to YPF',
+    source_url: 'https://www.iprofesional.com/negocios/442238-de-ministro-interior-a-petrolero-lisandro-catalan-se-suma-directorio-ypf',
   },
   {
     id: 'actor-auguadra',
@@ -1644,6 +1688,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 1,
     status_es: 'Fondos reservados +2838% — proxy documentado',
     status_en: 'Reserved funds +2838% — documented proxy',
+    source_url: 'https://chequeado.com/el-explicador/los-fondos-reservados-de-la-secretaria-de-inteligencia-el-gobierno-de-milei-los-amplio-por-tercera-vez/',
   },
   {
     id: 'actor-scatturice',
@@ -1658,6 +1703,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Vínculo Caputo-desregulación documentado',
     status_en: 'Caputo-deregulation link documented',
+    source_url: 'https://www.perfil.com/noticias/politica/caputocracia',
   },
   {
     id: 'actor-rubinstein',
@@ -1672,6 +1718,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Sobrecostos post-licitación documentados — 40%',
     status_en: 'Post-bid cost overruns documented — 40%',
+    source_url: 'https://www.tiempoar.com.ar/ta_article/denuncian-a-rubinstein-por-contrataciones-irregulares-por-1400-millones-de-pesos/amp/',
   },
 ] as const
 
