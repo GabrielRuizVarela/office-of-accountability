@@ -6,8 +6,8 @@ import { ConexionesGraph } from './ConexionesGraph'
 const t = {
   title: { en: 'Connections', es: 'Conexiones' },
   subtitle: {
-    en: 'Interactive graph with 133 nodes and 142 relationships. Filter by Revolving Door, Offshore Network, Money Trail, or Power Families.',
-    es: 'Grafo interactivo con 133 nodos y 142 relaciones. Filtre por Puerta Giratoria, Red Offshore, Rastro del Dinero o Familias del Poder.',
+    en: '34,776 cross-matched entities across 9 datasets. 2,155 revolving door cases, 146 shell companies, 29,602 linked asset declarations. Filter by Revolving Door, Offshore Network, Money Trail, or Power Families.',
+    es: '34.776 entidades cruzadas entre 9 datasets. 2.155 casos de puerta giratoria, 146 empresas fantasma, 29.602 declaraciones juradas vinculadas. Filtre por Puerta Giratoria, Red Offshore, Rastro del Dinero o Familias del Poder.',
   },
 } as const
 
