@@ -347,5 +347,456 @@
       "description": "In 2012, Hadad sold C5N + Radio 10 + 4 FMs to Cristóbal López for USD 49.5M. Hadad claims AFIP pressure under Kirchner government (20 inspectors raided his accountant). López claims Hadad pressured him. The sale transformed C5N from center-right to pro-Kirchner overnight. Hadad pivoted to digital-only Infobae.",
       "afip_role": "AFIP head Ricardo Echegaray allegedly facilitated both the pressure on Hadad and the deferred tax payments for López's Oil Combustibles"
     }
+  },
+  "streaming_landscape": {
+    "meta": {
+      "title": "Argentine Live Streaming Landscape — 2025/2026",
+      "description": "YouTube-native live streaming channels have displaced traditional TV as the axis of public conversation, especially among 18-40 demographics. Consumption grew 50%+ in 2025 vs 2024.",
+      "measurement": "Kantar Ibope Media + The Data Trip / Forbes Argentina reports",
+      "date_updated": "2026-03-21"
+    },
+    "annual_ranking_2025_youtube_live": {
+      "source": "The Data Trip / Forbes Argentina — Annual Ranking 2025",
+      "top_10": [
+        { "rank": 1, "name": "Telefe", "type": "traditional_tv", "owner": "Grupo América (ex-Paramount)" },
+        { "rank": 2, "name": "Luzu TV", "type": "native_streaming", "owner": "Nicolás Occhiato" },
+        { "rank": 3, "name": "Todo Noticias (TN)", "type": "traditional_tv", "owner": "Grupo Clarín" },
+        { "rank": 4, "name": "OLGA", "type": "native_streaming", "owner": "Migue Granados" },
+        { "rank": 5, "name": "Bondi Live", "type": "native_streaming", "owner": "Ángel de Brito" },
+        { "rank": 6, "name": "C5N", "type": "traditional_tv", "owner": "Grupo Indalo" },
+        { "rank": 7, "name": "La Nación", "type": "traditional_tv", "owner": "S.A. La Nación" },
+        { "rank": 8, "name": "A24", "type": "traditional_tv", "owner": "Grupo América" },
+        { "rank": 9, "name": "Crónica TV", "type": "traditional_tv", "owner": "Olmos family" },
+        { "rank": 10, "name": "Urbana Play", "type": "native_streaming", "owner": "Andy Kusnetzoff" }
+      ]
+    },
+    "channels": [
+      {
+        "id": "luzu-tv",
+        "name": "Luzu TV",
+        "founded": "2021",
+        "founder": "Nicolás Occhiato",
+        "political_alignment": "apolitical/entertainment-first",
+        "audience": {
+          "total_views_monthly": 28135487,
+          "avg_live_viewers": "52,000-54,000",
+          "peak_live_viewers": 131006,
+          "flagship_show_avg": 99597,
+          "notes": "Flagship 'Nadie dice nada' averaged 99,597 live viewers on YouTube (Oct 2024). Occhiato also hosts La Voz Argentina on Telefe, cross-pollinating audiences."
+        },
+        "programming_director": "Guido Corallo",
+        "key_shows": ["Nadie dice nada (Nico Occhiato)", "Antes que nadie", "Patria y familia"],
+        "political_content": "Minimal direct political content; Occhiato covered Marcha del Orgullo 2024 breaking streaming records. Occasional political interviews but not a political platform.",
+        "pauta_connection": "Attracts major commercial advertisers. Not a significant government pauta recipient.",
+        "sources": [
+          "https://www.perfil.com/noticias/protagonistas/nico-occhiato-gano-migue-granados-en-rating-octibre-luzutv-olga.phtml",
+          "https://exitoina.perfil.com/noticias/streaming/competencia-streaming-2026-luzu-tv-olga-blender-lanzaron-nueva-programacion.phtml",
+          "https://www.lanacion.com.ar/espectaculos/personajes/nico-occhiato-su-desafio-como-conductor-de-la-voz-argentina-la-guerra-del-streaming-y-por-que-no-nid06062025/"
+        ]
+      },
+      {
+        "id": "olga",
+        "name": "OLGA",
+        "founded": "2023",
+        "founder": "Migue Granados",
+        "political_alignment": "center-progressive/entertainment",
+        "audience": {
+          "total_views_monthly": 19227106,
+          "avg_live_viewers": "40,000+",
+          "peak_live_viewers": 80000,
+          "flagship_show_avg": 57056,
+          "notes": "'Soñé que volaba' averaged 57,056 (Oct 2024). Anniversary events draw massive peaks."
+        },
+        "content_director": "Isabel Yumatle",
+        "key_shows": ["Soñé que volaba (Migue Granados)", "Sería increíble"],
+        "political_content": "General interest with progressive lean. Political guests frequent. State advertising has appeared on OLGA programming.",
+        "sources": [
+          "https://www.perfil.com/noticias/protagonistas/nico-occhiato-gano-migue-granados-en-rating-octibre-luzutv-olga.phtml",
+          "https://noticias.perfil.com/noticias/showbiz/ranking-del-streaming-quien-gana-en-audiencia.phtml"
+        ]
+      },
+      {
+        "id": "blender",
+        "name": "Blender",
+        "founded": "mid-2023",
+        "founders": ["Iván Liska", "Diego Abatecola (Director General)"],
+        "political_alignment": "progressive/center-left",
+        "audience": {
+          "elections_2025_avg": 40100,
+          "elections_2025_peak": 49100,
+          "notes": "Most-watched streaming channel during 2025 Elections coverage. Broke audience records in March 2026. Rapid growth trajectory."
+        },
+        "key_shows": ["Hay algo ahí (Tomás Rebord, Sun-Thu 21-23h)", "Programs with Mauro Szeta", "José María Listorti"],
+        "political_content": "Heavy political/current affairs focus. Rebord's 'Hay algo ahí' hosted major presidential candidates in 2023. Positioned as the progressive political streaming alternative. Known for mixing politics with humor and cultural commentary.",
+        "investigation_connection": "Rebord has interviewed first-line political figures from all parties. Blender's editorial stance is critical of the Milei government.",
+        "sources": [
+          "https://www.lanacion.com.ar/espectaculos/television/blender-carajo-y-gelatina-quien-gana-la-guerra-del-streaming-politico-nid18122024/",
+          "https://insiderlatam.com/blender-el-canal-de-streaming-argentino-que-combina-politica-y-humor-para-conectar-con-la-audiencia/",
+          "https://www.mirostream.com/2025-10-27/blender-fue-el-canal-de-streaming-mas-visto-entre-quienes-cubrieron-las-elecciones-2025-1420/"
+        ]
+      },
+      {
+        "id": "carajo",
+        "name": "Carajo",
+        "founded": "2024-07-11",
+        "founders": [
+          { "name": "Augusto Marini", "role": "President of Cale Group" },
+          { "name": "Daniel Parisini (El Gordo Dan)", "role": "Partner and host" }
+        ],
+        "political_alignment": "hard-right libertarian / La Libertad Avanza aligned",
+        "audience": {
+          "community": 600000,
+          "youtube_subscribers": 212000,
+          "monthly_impressions": 270000000,
+          "notes": "Milei's visit quadrupled live numbers. Community of 600K, 270M impressions in Nov 2024."
+        },
+        "key_shows": ["La Misa (El Gordo Dan — flagship)", "Programs with Alex Caniggia"],
+        "political_content": "Explicitly libertarian propaganda platform. 'La Misa' proposes to 'evangelize' viewers with new right ideas. Milei has appeared on the channel multiple times. Anti-Kirchnerist, anti-establishment media.",
+        "investigation_connections": {
+          "gordo_dan": "Daniel Parisini — pediatric physician at Hospital Garrahan. Called for military action against Congress (July 2025). Attacked senator's disabled daughter (Sep 2025). Excluded from LLA electoral lists by Karina Milei for 2025 elections.",
+          "santiago_caputo": "Reported coordination with Santiago Caputo's digital apparatus. Carajo is part of the broader libertarian media ecosystem financed/supported by government-adjacent operations.",
+          "funding_questions": "Cale Group (Augusto Marini) finances channel. Relationship between Cale Group and government contracts not yet investigated."
+        },
+        "sources": [
+          "https://www.infobae.com/politica/2024/12/12/como-nacio-y-que-objetivos-tiene-carajo-el-streaming-libertario-que-junto-al-gordo-dan-y-javier-milei/",
+          "https://www.lanacion.com.ar/espectaculos/rating-la-visita-de-javier-milei-cuadriplico-los-numeros-de-la-misa-el-programa-libertario-del-gordo-nid11122024/",
+          "https://www.eldiarioar.com/politica/milei-volvio-descargar-furia-periodismo-streaming-libertario-carajo_1_12283914.html"
+        ]
+      },
+      {
+        "id": "neura-media",
+        "name": "Neura Media",
+        "founded": "2022-08",
+        "founders": [
+          { "name": "Alejandro Fantino", "role": "Director/host", "current_pct": 33.3 },
+          { "name": "Agustín Rodríguez", "role": "Lawyer/partner", "current_pct": 33.3 },
+          { "name": "Leonardo Torres", "role": "Producer/partner", "current_pct": 33.3 }
+        ],
+        "former_partner": {
+          "name": "Sergio 'Tronco' Figliuolo",
+          "status": "Departed after winning LLA seat as national deputy (Dec 2025). Law prohibits deputies from owning media.",
+          "political_role": "Elected national deputy for La Libertad Avanza in Buenos Aires Province (2025)"
+        },
+        "political_alignment": "libertarian-adjacent / pro-government",
+        "political_content": "One of the most closely identified digital spaces with the libertarian universe. Fantino claims not to be libertarian himself but channel's editorial line is pro-Milei. Multiple libertarian influencers and politicians appear regularly.",
+        "investigation_connections": {
+          "pablo_toviggino": "Channel reportedly created with help of Pablo Toviggino (AFA treasurer, key Chiqui Tapia ally). Toviggino connection links Neura to football governance power structure.",
+          "fantino_equity_increase": "Fantino increased his shareholding in Neura — source of funds and relationship to political advertising unclear.",
+          "figliuolo_pipeline": "Figliuolo went from Neura panelist to LLA deputy — streaming as candidate launchpad."
+        },
+        "sources": [
+          "https://www.perfil.com/noticias/politica/alejandro-fantino-aumento-su-participacion-accionaria-en-neura-el-canal-creado-con-la-ayuda-de-pablo-toviggino.phtml",
+          "https://www.infobae.com/politica/2025/08/18/sergio-tronco-figliuolo-el-periodista-libertario-que-trabaja-con-fantino-conto-como-se-gesto-su-candidatura-en-pba/",
+          "https://www.eldestapeweb.com/atr/streaming/alejandro-fantino-tomo-una-drastica-decision-con-tronco-en-neura-tras-su-asuncion-como-diputado-2025121315759"
+        ]
+      },
+      {
+        "id": "gelatina",
+        "name": "Gelatina",
+        "founded": "mid-2022",
+        "founder": "Pedro Rosemblat",
+        "political_alignment": "progressive/Kirchnerist/national-popular",
+        "audience": {
+          "monthly_views": 957000,
+          "ranking": "Top 10 streaming (7th in 2024, 4th in March 2025)",
+          "growth_pattern": "30-40% audience spike during major political events"
+        },
+        "key_shows": ["Industria Nacional (Pedro Rosemblat)", "La fábrica de jingles (viral political music segment)"],
+        "political_content": "Self-described progressive space, explicitly opposed to Milei government. Close to national-popular/Kirchnerist tradition. Electoral jingles segment went viral during 2023/2025 campaigns. Community-sustained independent medium.",
+        "investigation_connections": "Rosemblat is a prominent Kirchnerist media figure. Gelatina operates as counter-programming to Carajo/Neura. Funding model is community-based (subscriptions/donations), distinct from corporate-funded channels.",
+        "sources": [
+          "https://elplanteo.com/gelatina-humor-politico-stream-rosemblat/",
+          "https://www.lanacion.com.ar/espectaculos/television/blender-carajo-y-gelatina-quien-gana-la-guerra-del-streaming-politico-nid18122024/",
+          "https://noticias.perfil.com/noticias/informacion-general/gelatina-vs-carajo-superclasico-del-streaming.phtml"
+        ]
+      },
+      {
+        "id": "carnaval-stream",
+        "name": "Carnaval Stream",
+        "founded": "2025",
+        "political_alignment": "center-right / pro-government adjacent",
+        "key_shows": ["LMDD", "Cónclave (Mon prime time — Viviana Canosa, Jorge Rial, Fabián Doman, Alejandro Fantino)", "Revueltos (Canosa + Rial debate)"],
+        "notes": "Strong bet on political analysis and current affairs. Brings together traditional TV personalities (Canosa, Rial, Doman) in streaming format.",
+        "sources": [
+          "https://television.com.ar/noticias/editorial/streaming-2026-mas-programas-mas-figuras-y-nuevas-apuestas/"
+        ]
+      },
+      {
+        "id": "eva-tv",
+        "name": "EVA TV",
+        "political_alignment": "Peronist/feminist",
+        "key_shows": ["Unidad Básica (Gisela Marziotta)"],
+        "notes": "Digital political 'trench' — Peronist-aligned streaming. Marziotta is a Peronist politician (former VP of Buenos Aires legislature).",
+        "sources": [
+          "https://reutersinstitute.politics.ox.ac.uk/es/news-creators-influencers/2025/Argentina"
+        ]
+      }
+    ],
+    "streaming_political_alignment_spectrum": {
+      "hard_right_libertarian": ["Carajo (Gordo Dan / Augusto Marini)", "Neura Media (Fantino)"],
+      "center_right": ["Carnaval Stream (Canosa, Rial, Doman)"],
+      "apolitical_entertainment": ["Luzu TV (Occhiato)", "OLGA (Granados)"],
+      "progressive_center_left": ["Blender (Liska/Abatecola)", "Urbana Play"],
+      "kirchnerist_left": ["Gelatina (Rosemblat)", "EVA TV"],
+      "key_insight": "Streaming has become the new battlefield for political communication and state advertising. The old TV-based left-right media war (C5N vs TN) has migrated to YouTube-native platforms with younger audiences and viral reach."
+    }
+  },
+  "radio_landscape": {
+    "meta": {
+      "title": "Argentine Radio Audience Rankings and Ownership — 2025",
+      "measurement": "Kantar Ibope Media, trimester May-July 2025",
+      "date_updated": "2026-03-21"
+    },
+    "am_ranking": [
+      { "rank": 1, "station": "Radio Mitre (AM 790)", "share_pct": 30.32, "owner": "Grupo Clarín (Radio Mitre S.A.)", "notes": "Dominant #1 for years. 8 of 10 highest-rated programs belong to Clarín stations." },
+      { "rank": 2, "station": "Radio 10 (AM 710)", "share_pct": 15.81, "owner": "Grupo Indalo (Cristóbal López)", "programming": "Gustavo Sylvestre (6-10), Jorge Rial (10-13), Edith Hermida (13-15), Pablo Duggan (18-20), Paulo Kablan (22-24)", "political_lean": "Kirchnerist" },
+      { "rank": 3, "station": "La Red (AM 910)", "share_pct": 14.92, "owner": "Grupo América (Vila-Manzano-Belocopitt)", "notes": "26 satellite stations, 30+ affiliated repeaters. Formerly owned by Torneos y Competencias (TyC)." },
+      { "rank": 4, "station": "Radio Rivadavia (AM 630)", "share_pct": 12.49, "owner": "Grupo Lerner / Various investors", "notes": "Historic AM station, repositioned with new investors." },
+      { "rank": 5, "station": "El Destape Radio (AM 1070)", "share_pct": 7.23, "owner": "Roberto Navarro", "political_lean": "Kirchnerist", "notes": "Digital-first Kirchnerist outlet that expanded to AM." },
+      { "rank": 6, "station": "AM 750", "share_pct": 4.86, "owner": "Grupo Octubre (Víctor Santa María / SUTERH)", "programming": "Víctor Hugo Morales (9-13), Alejandro Dolina", "political_lean": "Kirchnerist/progressive", "slogan": "Objetivos pero no imparciales" }
+    ],
+    "fm_ranking": [
+      { "rank": 1, "station": "La 100 (FM 99.9)", "owner": "Grupo Clarín", "notes": "Dominant FM. Historic share leader at 21.1%." },
+      { "rank": 2, "station": "Aspen (FM 102.3)", "owner": "Grupo Octubre", "notes": "Adult contemporary." },
+      { "rank": 3, "station": "Radio Disney", "owner": "Disney/ABC", "notes": "Youth-oriented." }
+    ],
+    "cadena_3": {
+      "station": "Cadena 3 Argentina (Córdoba-based)",
+      "owner": "Alejandro Lerner / Patricio Seoane",
+      "political_alignment": "center-right / interior conservative",
+      "audience": "Third most listened-to radio nationally during mornings. Absolute leader in Córdoba and federal interior.",
+      "network": "Satellite distribution since 1997 to hundreds of small stations nationwide. First interior radio with Capital Federal presence (1998).",
+      "significance": "Only major radio voice from outside Buenos Aires. Represents interior/federal perspective, often aligned with agricultural sector interests.",
+      "sources": ["https://www.cadena3.com/noticia/siempre-juntos/cadena-3-lider-absoluto-e-imbatible-en-la-audiencia_392403"]
+    },
+    "radio_continental": {
+      "station": "Radio Continental (AM 590)",
+      "owner": "Gonzalo Arias (Tronito production company), with Grupo Octubre providing technical/logistical support",
+      "acquisition_date": "February 2025",
+      "notes": "Previously owned by Prisa Group. Víctor Hugo Morales was famously fired from Continental in 2016. New ownership connects Continental to Grupo Octubre ecosystem.",
+      "sources": ["https://argentina.mom-gmr.org/es/medios/detail/outlet/radio-continental/"]
+    },
+    "radio_concentration_analysis": {
+      "clarin_dominance": "Grupo Clarín controls both the #1 AM (Mitre, 30.32% share) and #1 FM (La 100). Via Cien Radios network and Frecuencia Producciones, Clarín sells content to 150+ stations nationwide. 8 of 10 highest-rated programs are on Clarín stations.",
+      "indalo_second_tier": "Radio 10 holds steady #2 in AM despite Indalo's corporate turmoil. Kirchnerist editorial line.",
+      "grupo_america_presence": "La Red (AM 910) is #3 AM — Vila-Manzano's only radio asset but strategically valuable.",
+      "kirchnerist_cluster": "Radio 10 + AM 750 + El Destape + Continental (via Octubre support) form a loose Kirchnerist radio ecosystem, collectively ~28% AM share.",
+      "key_insight": "Radio has the highest number of distinct owners among Argentine media, but Clarín's combined AM+FM dominance gives it outsized influence. The Kirchnerist cluster is fragmented across different owners but ideologically cohesive."
+    }
+  },
+  "tv_landscape": {
+    "meta": {
+      "title": "Argentine Television Ratings and Ownership — 2025",
+      "measurement": "Kantar Ibope Media",
+      "date_updated": "2026-03-21"
+    },
+    "open_tv_ranking_2025": {
+      "notes": "Open TV is in historic crisis. Bravo TV hit 0.0 rating in Jan 2025. Telefe defeated Canal 13 by nearly 5 points in 2024.",
+      "channels": [
+        { "rank": 1, "channel": "Telefe (Canal 11)", "owner": "Grupo América (acquired Oct 2025 from Paramount for ~USD 95M)", "notes": "Most-watched channel in Argentina. Includes Telefe + Channel 8 Córdoba + Channel 5 Rosario + Channel 13 Santa Fe + 3 channels in Uruguay + 10+ affiliates." },
+        { "rank": 2, "channel": "El Trece (Canal 13)", "owner": "Grupo Clarín (Artear)", "notes": "6 hours of news daily across 4 bulletins. Artear also operates TN." },
+        { "rank": 3, "channel": "América TV (Canal 2)", "owner": "Grupo América (Belocopitt 40%, Vila, Manzano, Scaglione)", "notes": "Third in ratings. Mix of news and general interest." },
+        { "rank": 4, "channel": "elnueve (Canal 9)", "owner": "Grupo Octubre (Víctor Santa María / SUTERH)", "notes": "Also hosts IP (Información Periodística) news signal." },
+        { "rank": 5, "channel": "TV Pública (Canal 7)", "owner": "Argentine State", "notes": "Under Milei: privatization threats, massive budget cuts, production outsourced to allied producers." }
+      ]
+    },
+    "cable_news_ranking_2025": {
+      "notes": "TN dominated 2025 overall. Annual average: TN 2.40 pts vs C5N 1.91 pts.",
+      "channels": [
+        { "rank": 1, "channel": "TN (Todo Noticias)", "owner": "Grupo Clarín (Artear)", "annual_avg_2025": 2.40, "youtube_avg_live": 51697, "political_lean": "center-right / pro-establishment" },
+        { "rank": 2, "channel": "C5N", "owner": "Grupo Indalo (Cristóbal López)", "annual_avg_2025": 1.91, "youtube_avg_live": 20715, "political_lean": "Kirchnerist", "notes": "Occasionally beats TN in prime time; led April 2025 with 5.0 pts. Variable performance." },
+        { "rank": 3, "channel": "A24", "owner": "Grupo América", "political_lean": "center-right / transactional", "notes": "Consolidated third place in Aug-Sep 2025 with 1.48 rating." },
+        { "rank": 4, "channel": "LN+ (La Nación +)", "owner": "S.A. La Nación", "political_lean": "conservative-liberal", "notes": "Launched 2016. Grew 454% in 2021 prime time but declined to 1.13 by late 2025. Fifth place." },
+        { "rank": 5, "channel": "Crónica TV", "owner": "Olmos family", "political_lean": "populist/sensationalist", "notes": "Surprise performer in morning ratings." }
+      ]
+    },
+    "tv_publica_under_milei": {
+      "privatization_threat": "Milei promised to privatize public media. Legislation pending.",
+      "adornigate_scandal": {
+        "description": "Marcelo Grandio, friend of Chief of Staff Manuel Adorni, founded Imhouse production company which received contracts for 3 TV Pública programs: 'Giros en línea recta' (Sep 2024), and 'La Sala' (Oct 2025). Contracts awarded days after Adorni's promotion to Secretario de Comunicación y Medios. Payment amounts not disclosed by government.",
+        "tuttle_twins": "State paid USD 8,000 for two seasons of Tuttle Twins — 12 episodes of anti-state propaganda produced in Utah.",
+        "programming_outsourced": "Authorities lotted programming to allied private producers."
+      },
+      "audience_collapse": "TV Pública audience has declined sharply under Milei. Low production output, dubious contracts, eroding public trust.",
+      "sources": [
+        "https://www.tiempoar.com.ar/ta_article/adorni-grandio-negociado-tv-publica",
+        "https://www.lanacion.com.ar/politica/los-contratos-con-la-tv-publica-de-la-productora-del-amigo-de-manuel-adorni-con-el-que-viajo-a-punta-nid12032026/",
+        "https://cnnespanol.cnn.com/2024/04/03/incertidumbre-tv-publica-argentina-recortes-privatizacion-milei-orix"
+      ]
+    },
+    "grupo_america_telefe_acquisition": {
+      "date": "October 2025",
+      "seller": "Paramount Global (formerly Viacom/CBS)",
+      "price_usd": 95000000,
+      "buyers": "Gustavo Scaglione, José Luis Manzano, Daniel Vila, Claudio Belocopitt",
+      "scope": "Telefe (Buenos Aires) + Channel 8 (Córdoba) + Channel 5 (Rosario) + Channel 13 (Santa Fe) + 3 channels in Uruguay + 10+ affiliates",
+      "significance": "Returns Argentina's most-watched TV channel to national capital after ~30 years of foreign ownership. Grupo América now controls both Telefe (#1 open TV) and América TV (#3), plus A24 (cable news). Unprecedented media concentration for Vila-Manzano group.",
+      "sources": [
+        "https://www.cronista.com/negocios/un-grupo-de-empresarios-lideres-argentinos-compra-la-totalidad-de-telefe/",
+        "https://www.a24.com/actualidad/el-grupo-america-desembarca-telefe-la-mano-los-accionistas-scaglione-vila-manzano-belocopitt-y-avila-n1490513"
+      ]
+    }
+  },
+  "cable_streaming_infrastructure": {
+    "meta": {
+      "title": "Cable TV / Streaming Infrastructure Monopoly — Argentina",
+      "date_updated": "2026-03-21"
+    },
+    "providers": [
+      {
+        "name": "Flow (ex-Cablevisión)",
+        "owner": "Telecom Argentina S.A. / Grupo Clarín (via Cablevisión Holding)",
+        "subscribers": 3377082,
+        "history": "Cablevisión merged with Telecom Argentina in 2017, becoming largest telecom company. Cablevisión brand dissolved Oct 2021, replaced by 'Flow' brand. Flow Flex launched as standalone streaming (no broadband required).",
+        "services": "Cable TV, internet (Fibertel), mobile (Personal), streaming (Flow/Flow Flex)",
+        "content": "150+ live channels, 6,500+ VOD titles",
+        "monopoly_concern": "Combined with pending Telefónica/Movistar acquisition, would give Clarín ~61% mobile market and ~69% fixed telephony."
+      },
+      {
+        "name": "DirecTV / DGO",
+        "owner": "Grupo Werthein (via Vrio Corp / Waiken ILW)",
+        "subscribers_regional": 10300000,
+        "history": "Werthein family purchased Vrio from AT&T in July 2021. Covers Argentina, Brazil, Chile, Colombia, Ecuador, Peru, Uruguay, Caribbean.",
+        "services": "Satellite TV (DirecTV), streaming (DGO, rebranded Oct 2022), partnership with Amazon Project Kuiper for satellite internet.",
+        "werthein_connections": "Werthein family — prominent Argentine business dynasty. Adrián Werthein heads Media Tech division. Family has investments across banking, agriculture, insurance.",
+        "sources": [
+          "https://www.infobae.com/economia/2021/07/21/integrantes-de-la-familia-werthein-le-compraron-a-att-la-operacion-regional-de-directv/",
+          "https://grupowerthein.com/en/entertainment/"
+        ]
+      },
+      {
+        "name": "Telecentro",
+        "owner": "Alberto Pierri",
+        "notes": "Buenos Aires cable/internet provider. Pierri is former president of Argentine Chamber of Deputies (1993-97, Menem era)."
+      },
+      {
+        "name": "Claro (cable/mobile)",
+        "owner": "América Móvil (Carlos Slim, Mexico)"
+      },
+      {
+        "name": "Movistar (cable/mobile)",
+        "owner": "Telefónica España — pending acquisition by Grupo Clarín/Telecom (suspended by Milei government)"
+      }
+    ],
+    "cord_cutting_trend": {
+      "description": "Argentine open TV is at historic lows. Streaming (YouTube-native channels + international platforms) has fragmented audiences irreversibly. In Latin America, 5 million cord-cutters and 80 million streamers projected for 2025.",
+      "winners": "YouTube-native streaming (Luzu, Olga, Blender) + international platforms (Netflix, Prime Video, Disney+)",
+      "losers": "Open TV (particularly Canal 9, TV Pública) and traditional cable packages",
+      "key_insight": "The infrastructure providers (Clarín/Flow, Werthein/DirecTV) control the pipes. But audiences are migrating to YouTube-native content that bypasses traditional distribution entirely. This threatens Clarín's dual monopoly (content + distribution) over time."
+    }
+  },
+  "political_influence_operations": {
+    "meta": {
+      "title": "Political Influence via Media and Digital Operations — Argentina",
+      "date_updated": "2026-03-21"
+    },
+    "media_concentration_influence": {
+      "clarin_audience_share": "25% of all media consumption nationally across all formats (TV, radio, digital, print)",
+      "top_news_sources": ["TodoNoticias (TN)", "Telefe", "Infobae", "El Trece", "A24"],
+      "key_finding": "Four largest media conglomerates concentrate nearly half of national audience across all formats. Media owners perceived as more credible than politicians, giving them outsized electoral influence.",
+      "sources": [
+        "https://laboratoriodeperiodismo.org/consumo-de-medios-en-argentina-el-25-de-la-audiencia-la-concentra-el-grupo-clarin/",
+        "https://rsf.org/es/los-medios-en-argentina-un-gran-negocio-en-manos-de-unos-pocos-0",
+        "https://cambiocultural.org/temas-clave/influencia-de-los-medios-en-la-politica-argentina/"
+      ]
+    },
+    "milei_digital_apparatus": {
+      "coordinator": "Santiago Caputo (Secretary of Intelligence — coordinates digital strategy from government)",
+      "structure": {
+        "description": "Network of fake accounts, paid militants, and digital operators who harass journalists, opponents, artists, citizens, and even government officials who question the government.",
+        "funding": "Investigation reveals SIDE (intelligence) funds used to finance trolls and aligned media.",
+        "components": ["Bot networks for trending topics", "Fake accounts (impersonation)", "Trolls (active harassment)", "Influencer army validated by Milei reposting"],
+        "estimated_scale": "February 2025 insult volume on social media equaled entire 2023 campaign month"
+      },
+      "key_figures": {
+        "gordo_dan": {
+          "real_name": "Daniel Parisini",
+          "occupation": "Pediatric physician, Hospital Garrahan",
+          "family": "Mother Andrea Olmedo works as public official in Santiago del Estero State Prosecutor's Office",
+          "role": "Former 'king of trolls' for Milei. Host of 'La Misa' on Carajo. Called 'brazo armado digital' (digital armed wing) of LLA.",
+          "controversies": [
+            "July 2025: Posted 'Javo put an F16 flying over Congress now' and 'The tanks in the street now. It's now.' — interpreted as incitement to military action",
+            "Sep 2025: Published brutal attack on Senator Luis Juez and his daughter with cerebral palsy",
+            "Excluded from all LLA electoral lists by Karina Milei for Sep 2025 elections"
+          ],
+          "current_status": "Marginalized from formal LLA apparatus but remains active on social media and Carajo channel"
+        },
+        "tronco_figliuolo": "Sergio 'Tronco' Figliuolo — went from Neura Media panelist to elected LLA national deputy (2025). Pipeline from streaming to political office.",
+        "funcionarios_trolls": "Multiple former troll operators placed in government positions. Hiring patterns include partners and friends in key roles."
+      },
+      "media_aligned_with_government": ["Carajo (streaming)", "Neura Media (streaming)", "LN+ (cable)", "Parts of TN/Clarín ecosystem"],
+      "sources": [
+        "https://laraizonline.com/2025/07/28/el-ejercito-digital-de-milei-trolls-pauta-y-operaciones-desde-la-rosada/",
+        "https://www.dataclave.com.ar/poder/mucho-mas-que-tuiteros--el-ejercito-de-influencers-y-trolls-que-llego-al-gobierno-y-milei-valida-resposteandolos_a658de30f75e9e87b80a0e806",
+        "https://www.pagina12.com.ar/753503-trolls-al-ataque-como-actua-la-fuerza-de-choque-libertaria",
+        "https://www.letrap.com.ar/politica/el-algoritmo-javier-milei-crisis-y-si-los-trolls-se-rebelan-n5417644"
+      ]
+    },
+    "troll_history_argentina": {
+      "oxford_study": "Argentina among 28 countries operating with anonymous users to install social media topics and generate noise.",
+      "taxonomy": ["Bots (replicate/retweet to create trends)", "Fakes (impersonate real or invented characters)", "Trolls (emit messages, actively harass)"],
+      "all_parties_use": "All major political parties have used trolls at some point. Activity increases during campaigns but persists year-round.",
+      "infrastructure": "Some parties contract external consultancies; others maintain in-house 'call centers'. Government-funded operations use intelligence funds.",
+      "sources": [
+        "https://chequeado.com/investigacion/el-mundo-secreto-de-los-bots-y-los-trolls-y-como-esos-ejercitos-influyen-en-la-politica/",
+        "https://www.lanacion.com.ar/politica/mundo-troll-el-detras-de-escena-de-las-fabricas-de-insultos-en-las-redes-sociales-nid2129427/"
+      ]
+    },
+    "youtube_political_influencers": {
+      "top_channels_news_politics": [
+        { "name": "Picado TV", "subscribers": 329500, "avg_views": 15900, "rank": 1 },
+        { "name": "Francisco Ortiz", "subscribers": 242500, "avg_views": 2400, "rank": 2 },
+        { "name": "Mate con Mote", "alignment": "libertarian", "notes": "Key libertarian commentator on YouTube/TikTok, strong among youth" }
+      ],
+      "reuters_institute_finding": "YouTube and TikTok gaining prominence among younger audiences. Libertarian commentators dominate youth-oriented political content.",
+      "sources": [
+        "https://hypeauditor.com/top-youtube-news-politics-argentina/",
+        "https://reutersinstitute.politics.ox.ac.uk/es/news-creators-influencers/2025/Argentina"
+      ]
+    }
+  },
+  "investigation_entity_connections": {
+    "meta": {
+      "title": "Media-to-Investigation Entity Cross-References",
+      "description": "How the media landscape connects to entities already tracked in the finanzas-politicas graph",
+      "date_updated": "2026-03-21"
+    },
+    "belocopitt_media_health_nexus": {
+      "person": "Claudio Belocopitt",
+      "media_role": "40% shareholder Grupo América (América TV, A24, La Red, Telefe)",
+      "health_role": "Owner of Swiss Medical Group — one of Argentina's largest private healthcare providers",
+      "political_leverage": "Controls both media narrative AND healthcare infrastructure. During COVID-19, appeared on own channels advocating healthcare policies that benefited Swiss Medical. Media-health cross-ownership creates conflicts of interest in health policy coverage."
+    },
+    "vila_manzano_empire": {
+      "persons": ["Daniel Vila", "José Luis Manzano"],
+      "media": "Grupo América (Telefe + América TV + A24 + La Red + El Cronista + regional outlets)",
+      "energy": "Edenor, EDEMSA, Edelar, Metrogas, Andes Energía, Vaca Muerta licenses",
+      "mining": "243,000 ha lithium + potash",
+      "telecom_intl": "Telefónica del Perú (99.3%)",
+      "political_history": "Manzano: Menem interior minister, 'robo para la corona'. Adapts to every government.",
+      "key_risk": "Now controls Argentina's #1 TV channel (Telefe) and energy infrastructure (Edenor serves 7M+ people). Can shape public opinion on energy policy that directly affects his business interests."
+    },
+    "santiago_caputo_media_apparatus": {
+      "person": "Santiago Caputo",
+      "formal_role": "Secretary of Intelligence (SIDE)",
+      "media_role": "Coordinator of Milei's digital strategy, troll operations, and aligned media relationships",
+      "connected_media": ["Carajo (via Gordo Dan)", "Neura Media (libertarian ecosystem)", "Pro-government YouTube influencers"],
+      "funding_mechanism": "SIDE intelligence funds reportedly used for media/troll financing",
+      "investigation_priority": "HIGH — Caputo sits at intersection of intelligence, media, and political operations"
+    },
+    "tv_publica_adorni_contracts": {
+      "person": "Manuel Adorni (Chief of Staff)",
+      "connection": "Friend Marcelo Grandio received TV Pública production contracts via Imhouse company",
+      "contracts": ["Giros en línea recta (Sep 2024)", "La Sala (Oct 2025)", "Third unnamed program"],
+      "timing": "Contracts awarded days after Adorni's promotions",
+      "transparency": "Government has not disclosed payment amounts"
+    },
+    "werthein_media_telecom": {
+      "family": "Werthein family",
+      "media_infra": "DirecTV / Vrio Corp (10.3M subscribers across Latin America)",
+      "tech": "Amazon Project Kuiper satellite internet partnership",
+      "holding": "Waiken ILW",
+      "political_connections": "Traditional Argentine business dynasty with banking, agriculture, insurance interests. Cross-sector power similar to Vila-Manzano but via infrastructure rather than content."
+    }
   }
 }
