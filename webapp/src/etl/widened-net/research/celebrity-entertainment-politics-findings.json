@@ -1,0 +1,337 @@
+{
+  "meta": {
+    "generated": "2026-03-21",
+    "purpose": "Wave 2 research: Celebrity politics, entertainment industry state contracts, sports-media-politics triangle, and pauta oficial distribution patterns for finanzas-politicas investigation",
+    "methodology": "WebSearch across Argentine media (Infobae, La Nacion, Chequeado, Perfil, Pagina12, MDZ, Ambito), Wikipedia, government records",
+    "search_count": 18,
+    "status": "raw_research — requires independent verification before publication"
+  },
+  "sections": [
+    {
+      "section": "CELEBRITY POLITICIANS — From Screen to Congress",
+      "summary_en": "Argentina has a well-documented pattern of celebrities entering politics, from historical figures (Eva Duarte, Palito Ortega, Carlos Reutemann, Daniel Scioli) to recent cases (Amalia Granata, Cinthia Fernandez). The 2025 elections saw Larry de Clay, Virginia Gallardo, and Karen Reichardt running for Congress. The phenomenon serves both parties (celebrity name recognition) and celebrities (political power/immunity).",
+      "summary_es": "Argentina tiene un patron documentado de celebridades entrando en politica, desde figuras historicas (Eva Duarte, Palito Ortega, Carlos Reutemann, Daniel Scioli) hasta casos recientes (Amalia Granata, Cinthia Fernandez). Las elecciones 2025 vieron a Larry de Clay, Virginia Gallardo y Karen Reichardt postularse al Congreso. El fenomeno sirve tanto a los partidos (reconocimiento de nombre) como a las celebridades (poder politico/inmunidad).",
+      "actors": [
+        {
+          "name": "Amalia Granata",
+          "role": "Diputada provincial Santa Fe (2019-presente, reelecta 2023)",
+          "background": "Modelo y panelista de television",
+          "political_vehicle": "Unite → bloque propio 'Somos Vida'",
+          "key_detail": "Obtuvo ~287.000 votos en 2019. Presidenta de la Comision de Promocion Comunitaria. Creo su propio bloque tras disociarse de Unite. Sin datos publicos disponibles sobre patrimonio o empresas.",
+          "investigation_relevance": "Low — no corporate/financial nexus found yet",
+          "source_urls": [
+            "https://www.lanacion.com.ar/politica/amalia-granata-se-convirtio-diputada-santa-fe-nid2258646/",
+            "https://amaliagranata.com/bio/"
+          ]
+        },
+        {
+          "name": "Cinthia Fernandez",
+          "role": "Precandidata a diputada nacional 2021 (no electa)",
+          "background": "Bailarina y panelista de television",
+          "political_vehicle": "Unite (mismo espacio que Granata)",
+          "key_detail": "Campana viral con spot en portaligas frente al Congreso. En 2023 revelo que fue tentada por Milei pero tuvo 'problemitas'. Foco declarado: ley de adopcion y comision de familia.",
+          "investigation_relevance": "Low — media spectacle candidacy, no corporate ties found",
+          "source_urls": [
+            "https://www.infobae.com/teleshow/infoshow/2021/02/08/cinthia-fernandez-se-lanza-a-la-politica-en-la-misma-agrupacion-de-amalia-granata-me-quiero-abocar-a-las-cuestiones-de-familia/",
+            "https://www.lanacion.com.ar/espectaculos/cinthia-fernandez-conto-por-que-no-pudo-ser-candidata-de-javier-milei-tuve-problemitas-nid17082023/"
+          ]
+        },
+        {
+          "name": "Moria Casan",
+          "role": "Vedette, conductora; candidata a diputada 2005 (no electa)",
+          "background": "Icono del showbusiness argentino",
+          "political_vehicle": "Movimiento Federal de Centro (partido centro-derecha que creo en 2005)",
+          "key_detail": "Conexion politica principal: pareja de Fernando 'Pato' Galmarini, dirigente peronista historico y suegro de Sergio Massa. Apoyo activamente la campana presidencial de Massa 2023 (Union por la Patria). Participo en actos de intelectuales y figuras culturales pro-Massa.",
+          "investigation_relevance": "Medium — direct family link to Massa through Galmarini creates a celebrity-endorsement-as-political-capital pipeline",
+          "source_urls": [
+            "https://www.pagina12.com.ar/589610-moria-casan-en-campana-de-las-charlas-de-politica-a-la-prese",
+            "https://www.lanacion.com.ar/politica/moria-casan-dio-detalles-de-su-relacion-con-sergio-massa-y-revelo-cual-es-la-principal-sugerencia-nid08082023/"
+          ]
+        },
+        {
+          "name": "Marcelo Tinelli",
+          "role": "Conductor de TV, empresario, dirigente deportivo",
+          "background": "Maximo conductor de la TV argentina por decadas",
+          "political_vehicle": "No candidato formal; conexiones transversales",
+          "key_detail_patrimonio": "Patrimonio estimado USD 40 millones. Productoras: Ideas del Sur, LaFlia Contenidos. En 1998 con Esfinge 20 compro 57% del Badajoz (futbol español). Departamento Le Parc Figueroa Alcorta (+USD 1.5M), casa Nordelta (USD 2.5M). Fue vicepresidente de la AFA y dirigente de San Lorenzo.",
+          "key_detail_deudas": "LaFlia Contenidos acumula +800 millones de pesos en cheques rechazados. Demanda de Gustavo Scaglione por deuda de USD 6-12 millones. Conflictos laborales con extrabajadores.",
+          "key_detail_media": "Director artistico y gerente de programacion de America TV (2023-dic 2024). Productor de Okupas, Patito Feo, Tumberos — algunos vendidos al exterior.",
+          "investigation_relevance": "High — AFA vice-presidency + media empire + financial distress + political ambitions create multiple nexus points. LaFlia's financial irregularities (800M pesos in bounced checks) warrant deeper investigation.",
+          "source_urls": [
+            "https://www.ambito.com/negocios/imperio-marcelo-tinelli-cual-es-el-patrimonio-y-que-invirtio-el-maximo-conductor-la-tv-argentina-n6079326",
+            "https://www.mdzol.com/dinero/2023/5/5/la-estrepitosa-cifra-que-deben-las-empresas-de-marcelo-tinelli-segun-el-banco-central-de-la-republica-argentina-335623.html",
+            "https://www.losandes.com.ar/espectaculo/marcelo-tinelli-no-perdio-el-tiempo-y-genero-un-imperio-economico-a-cuanto-asciende-su-fortuna"
+          ]
+        },
+        {
+          "name": "Palito Ortega (Ramon Ortega)",
+          "role": "Cantante → Gobernador de Tucuman (1991-1995) → Senador → Candidato a vicepresidente 1999",
+          "background": "Cantante y actor popular",
+          "investigation_relevance": "Historical precedent — celebrity-to-governor pipeline",
+          "source_urls": [
+            "https://www.mdzol.com/politica/2020/10/23/politicos-famosos-en-argentina-de-la-farandula-las-urnas-113644.html"
+          ]
+        },
+        {
+          "name": "Carlos Reutemann",
+          "role": "Piloto F1 → Gobernador de Santa Fe (2 periodos: 1991-1995, 1999-2003) → Senador (2003-2021)",
+          "background": "Campeon de automovilismo Formula 1",
+          "investigation_relevance": "Historical precedent — one of the most successful celebrity politicians",
+          "source_urls": [
+            "https://www.mdzol.com/politica/2020/10/23/politicos-famosos-en-argentina-de-la-farandula-las-urnas-113644.html"
+          ]
+        },
+        {
+          "name": "Luis Brandoni",
+          "role": "Actor → Diputado Nacional por Provincia de Buenos Aires",
+          "background": "Actor de teatro y cine",
+          "investigation_relevance": "Historical precedent",
+          "source_urls": [
+            "https://www.mdzol.com/politica/2020/10/23/politicos-famosos-en-argentina-de-la-farandula-las-urnas-113644.html"
+          ]
+        }
+      ]
+    },
+    {
+      "section": "FUTBOL + POLITICS — The Power Pipeline",
+      "summary_en": "Argentine football clubs function as political launching pads. Mauricio Macri (Boca → President), Matias Lammens (San Lorenzo → Minister), Daniel Scioli (sports → VP → Governor) demonstrate the pattern. Club presidencies provide visibility, patronage networks, and financial infrastructure that translate directly to political capital. The current debate over Sociedades Anonimas Deportivas (SADs) represents the latest attempt by economic power to enter clubs.",
+      "summary_es": "Los clubes de futbol argentinos funcionan como plataformas de lanzamiento politico. Mauricio Macri (Boca → Presidente), Matias Lammens (San Lorenzo → Ministro), Daniel Scioli (deporte → VP → Gobernador) demuestran el patron. Las presidencias de clubes proveen visibilidad, redes de patronazgo e infraestructura financiera que se traducen directamente en capital politico.",
+      "actors": [
+        {
+          "name": "Daniel Angelici",
+          "role": "Presidente de Boca Juniors (2011-2019), operador politico PRO",
+          "key_connections": [
+            "Elegido presidente de Boca con apoyo de Macri como Jefe de Gobierno CABA",
+            "Reelecto 2015 con 43.78% de votos",
+            "Principal operador de Jorge Macri en CABA",
+            "Armo la lista opositora (con Mauricio Macri y Mario Pergolini) contra Riquelme en elecciones Boca 2023",
+            "Poder en la administracion de CABA: litigio judicial entre gobierno CABA y Boca paralizo proyecto clave para gestion Riquelme — desde el club lo atribuyen a maniobra de Angelici"
+          ],
+          "investigation_relevance": "High — direct Macri-Boca-CABA government nexus; uses club infrastructure for political operations; judicial dispute suggests weaponization of government power against rival club faction",
+          "source_urls": [
+            "https://en.wikipedia.org/wiki/Daniel_Angelici",
+            "https://www.perfil.com/noticias/deportes/mauricio-macri-en-boca-juniors-la-matriz-original-del-metodo-que-luego-exporto-a-la-politica.phtml",
+            "https://www.pagina12.com.ar/320873-boca-river-y-la-politica-de-macri-a-d-onofrio"
+          ]
+        },
+        {
+          "name": "Julio Humberto Grondona",
+          "role": "Presidente AFA (1979-2014), Vicepresidente Senior FIFA, Presidente Comite de Finanzas FIFA",
+          "key_findings": {
+            "tenure": "35 anos al frente de la AFA (1979-2014)",
+            "fifa_gate_involvement": "Incluido como co-conspirador no identificado por el Departamento de Justicia de EE.UU. en la investigacion FIFA-gate (27 mayo 2015)",
+            "bribes_documented": "USD 30 millones en sobornos por derechos de transmision de Mundiales 2018/2022/2026/2030, de los cuales USD 25 millones fueron transferidos a cuenta en banco Julius Baer (Suiza)",
+            "annual_payments": "Premios anuales de USD 1 millon entre 2010 y 2014 sin justificacion escrita",
+            "death_timing": "Murio julio 2014 — menos de un mes despues de la final del Mundial Brasil. Primera imputacion formal del FIFA-gate: 27 mayo 2015",
+            "bank_confirmation": "Banco suizo Julius Baer reconocio haber depositado USD 30 millones en sobornos para Grondona"
+          },
+          "investigation_relevance": "Critical — largest documented corruption case in Argentine sports; USD 30M in confirmed bribes; connects to Torneos/Werthein media rights empire",
+          "source_urls": [
+            "https://www.lanacion.com.ar/deportes/fifagate-todos-caminos-del-juicio-estados-unidos-nid2351499/",
+            "https://www.infobae.com/2015/12/03/1774166-cual-fue-el-rol-julio-grondona-el-escandalo-la-fifa/",
+            "https://www.infobae.com/america/deportes/2021/05/28/fifa-gate-un-banco-suizo-reconocio-que-deposito-30-millones-de-dolares-en-sobornos-para-julio-grondona/",
+            "https://www.lanacion.com.ar/deportes/futbol/como-y-quienes-se-llevaron-80-millones-de-dolares-de-la-fifa-la-intimidad-del-mayor-escandalo-del-nid16092022/"
+          ]
+        },
+        {
+          "name": "Rodolfo D'Onofrio",
+          "role": "Presidente River Plate (2013-2021), empresario de seguros",
+          "background": "Economista; presidente de La Caja ART S.A., Asociacion Argentina de Compañias de Seguros, Vicepresidente Federacion Interamericana de Compañias de Seguros",
+          "key_connections": [
+            "Tomo River con pasivo de ARS 491 millones y capital de ARS 110 millones; saldo la deuda completa al final de su mandato",
+            "En 2023 se sumo al equipo economico de Carlos Melconian en la campana de Patricia Bullrich",
+            "Primera incursion formal en politica fuera del ambito deportivo"
+          ],
+          "investigation_relevance": "Medium — insurance industry (La Caja) connects to Werthein Group (also insurance); River presidency as stepping stone to Bullrich campaign; successful debt restructuring vs Tinelli's financial distress creates interesting contrast",
+          "note": "D'Onofrio's presidency of La Caja ART connects to Adrian Werthein who was president of La Caja de Ahorro y Seguro for 20 years — potential overlap in insurance sector power networks",
+          "source_urls": [
+            "https://es.wikipedia.org/wiki/Rodolfo_D'Onofrio",
+            "https://www.infobae.com/politica/2022/08/04/rodolfo-donofrio-quiero-comprometerme-para-cambiar-el-rumbo-de-mi-pais/",
+            "https://www.lanacion.com.ar/economia/negocios/rodolfo-donofrio-las-claves-empresarias-del-napoleon-nid2337026/"
+          ]
+        },
+        {
+          "name": "Matias Lammens",
+          "role": "Presidente San Lorenzo → Ministro de Turismo y Deporte (gobierno Frente de Todos)",
+          "investigation_relevance": "Medium — classic football-to-cabinet pipeline",
+          "source_urls": [
+            "https://anccom.sociales.uba.ar/2022/10/24/la-politica-llego-al-futbol-hace-rato/"
+          ]
+        }
+      ]
+    },
+    {
+      "section": "SPORTS MEDIA RIGHTS — The Werthein-Torneos-AFA Triangle",
+      "summary_en": "TV rights for Argentine football form a multi-billion peso triangle between the AFA, private media companies (Torneos/Werthein, Turner/TNT Sports, ESPN/Disney), and the state. The cycle: Grondona-era monopoly by Torneos → Kirchner-era nationalization via Futbol Para Todos (2009-2017) → Macri-era re-privatization to Fox-Turner alliance → current duopoly of TNT Sports (renewed to 2031) and ESPN Premium (to 2030). The Werthein Group controls Torneos + DirecTV/DSports through Vrio Corp.",
+      "summary_es": "Los derechos de TV del futbol argentino forman un triangulo multimillonario entre la AFA, empresas privadas de medios (Torneos/Werthein, Turner/TNT Sports, ESPN/Disney) y el Estado. El ciclo: monopolio era-Grondona de Torneos → estatizacion kirchnerista via Futbol Para Todos (2009-2017) → reprivatizacion macrista a alianza Fox-Turner → duopolio actual TNT Sports (renovado a 2031) y ESPN Premium (a 2030). El Grupo Werthein controla Torneos + DirecTV/DSports a traves de Vrio Corp.",
+      "timeline": [
+        {
+          "period": "1991-2009",
+          "description": "Torneos y Competencias (fundada por Carlos Avila) controla derechos televisivos del futbol argentino por 18 anos via Television Satelital Codificada (TSC)"
+        },
+        {
+          "period": "Agosto 2009",
+          "description": "Gobierno CFK rompe con TSC, ofrece ARS 600 millones por los derechos. Nace Futbol Para Todos: transmision gratuita en TV abierta. Justificacion: futbol como interes publico"
+        },
+        {
+          "period": "2009-2017",
+          "description": "Futbol Para Todos en vigencia. Estado paga a AFA por derechos y los transmite en canales abiertos sin costo para el espectador"
+        },
+        {
+          "period": "Febrero 2017",
+          "description": "Gobierno Macri rescinde contrato unilateralmente. Licitacion: participan ESPN, Mediapro, y alianza Fox-Turner"
+        },
+        {
+          "period": "Junio 2017",
+          "description": "Ultimo programa de Futbol Para Todos (27 junio 2017). Derechos vuelven a manos privadas"
+        },
+        {
+          "period": "2021",
+          "description": "Grupo Werthein toma control de Vrio Corp (DirecTV, DGo, DSports) + productora Torneos. Paquete incluye derechos de Copa America, Eurocopa, Liga española, Premier League"
+        },
+        {
+          "period": "2025-2026",
+          "description": "TNT Sports renueva derechos Primera Division hasta 2031. ESPN Premium hasta 2030. TyC Sports pierde derechos de Ascenso — AFA lanza plataforma propia LPF Play. DSports (Werthein) pugna por derechos de Ascenso"
+        }
+      ],
+      "key_finding": "The Werthein Group's acquisition of Torneos + DirecTV creates a vertically integrated sports media monopoly: they produce the content (Torneos), own the distribution platform (DirecTV/DSports), and hold international broadcasting rights. This connects directly to the Werthein findings already documented in werthein-energy-telecom-findings.json.",
+      "source_urls": [
+        "https://chequeado.com/el-explicador/afa-y-derechos-de-tv-del-futbol-que-cambia-y-que-es-lpf-play/",
+        "https://www.letrap.com.ar/nota/2021-7-26-17-48-0-el-grupo-werthein-regreso-al-mercado-y-talla-en-las-transmisiones-deportivas",
+        "https://es.wikipedia.org/wiki/Torneos_(empresa)",
+        "https://en.wikipedia.org/wiki/F%C3%BAtbol_para_todos",
+        "https://senalnews.com/es/contenidos/tnt-sports-renueva-derechos-para-transmitir-futbol-argentino-hasta-2031",
+        "https://agenciafe.com/nota/336389-El-Grupo-Werthein-adquiri-Torneos-y-Competencias-y-DirecTV-Latinoamrica"
+      ]
+    },
+    {
+      "section": "PAUTA OFICIAL — State Advertising as Political Weapon",
+      "summary_en": "Official government advertising (pauta oficial) is one of the primary mechanisms through which Argentine governments reward allied media and punish critical outlets. The pattern is consistent across administrations: Kirchner favored Grupo Veintitres, Indalo, America, Albavision; Macri shifted to Clarin (from 4.6% to 18% of total). Under Milei, an official 'zero pauta' policy masks continued spending through state companies, especially YPF (ARS 97.1 billion in 2024, +40% over 2023).",
+      "summary_es": "La publicidad oficial (pauta oficial) es uno de los mecanismos principales por los cuales los gobiernos argentinos premian a medios aliados y castigan a los criticos. El patron es consistente: Kirchner favorecio Grupo Veintitres, Indalo, America, Albavision; Macri redireccion a Clarin (de 4.6% a 18% del total). Bajo Milei, la politica de 'pauta cero' enmascara gasto continuado a traves de empresas estatales, especialmente YPF (ARS 97.100 millones en 2024, +40% sobre 2023).",
+      "data_by_administration": {
+        "kirchner_cfk": {
+          "pattern": "Friend-enemy logic. Main beneficiaries: Grupo Veintitres, Grupo Indalo, America, Albavision — editorially aligned. Clarin and La Nacion relegated.",
+          "source_url": "https://chequeado.com/el-explicador/cfk-vs-macri-en-que-cambio-y-en-que-no-el-manejo-de-la-publicidad-oficial/"
+        },
+        "macri_mauricio": {
+          "pattern": "Reduced total spending vs CFK (below USD 100M/year threshold for first time in 11 years). Massive concentration in Clarin: jumped from 4.6% under CFK to 18% under Macri — first among all beneficiaries. Grupo Indalo received 8.39%.",
+          "claim_vs_reality": "Macri claimed 'nunca antes se gasto menos plata en pauta' — Chequeado rated this as requiring context because while nominal spending decreased, concentration increased dramatically.",
+          "source_urls": [
+            "https://chequeado.com/ultimas-noticias/macri-nunca-antes-se-gasto-menos-plata-en-pauta-que-en-este-gobierno/",
+            "https://chequeado.com/el-explicador/cfk-vs-macri-en-que-cambio-y-en-que-no-el-manejo-de-la-publicidad-oficial/"
+          ]
+        },
+        "fernandez_alberto": {
+          "total_2020": "ARS 4.704 millones distributed among 2.286 beneficiaries",
+          "total_2021_partial": "ARS 7.563 millones (Dec 2020-Aug 2021) among 2.432 media outlets",
+          "concentration": "53% absorbed by 10 business groups. 25 groups received 68% of total. Clarin Group received over 10% of total.",
+          "geographic_bias": "589 media outlets in Buenos Aires City received 63% of total resources (ARS 4.779 billion)",
+          "source_urls": [
+            "https://www.lanacion.com.ar/politica/pauta-oficial-el-gobierno-gasto-7563-millones-en-un-reparto-que-tuvo-premios-y-castigos-nid07102021/",
+            "https://www.lanacion.com.ar/economia/pauta-oficial-2020-como-fue-reparto-4704-nid2587068/"
+          ]
+        },
+        "milei": {
+          "official_policy": "Suspension of official advertising announced Dec 12, 2023 by Economy Minister Luis Caputo. Extended for all of 2025.",
+          "reality": "Spending reduced to 1.2% of 2023 levels for direct government pauta. BUT: state companies exempt from ban. YPF spent ARS 97.1 billion in 2024 — a 40% real increase over 2023. 50% of remaining money allocated to digital portals and radio; 30%+ to social networks.",
+          "mechanism": "Government 'makes a double game: saying there is no money or advertising while simultaneously distributing funds to media, production companies, and journalists without revealing allocation parameters'",
+          "key_finding": "YPF as shadow pauta: with official pauta 'suspended,' YPF becomes the primary channel for government media spending — without accountability or transparency requirements that apply to direct government advertising",
+          "source_urls": [
+            "https://chequeado.com/el-explicador/el-gobierno-de-javier-milei-redujo-al-minimo-la-publicidad-oficial-a-excepcion-de-la-pauta-de-ypf-que-se-mantuvo-igual-que-en-2023/",
+            "https://www.perfil.com/noticias/politica/suspension-de-la-pauta-las-otras-cajas-que-el-gobierno-uso-en-2024-para-premiar-o-castigar-medios-y-las-dudas-sobre-esta-nueva-etapa.phtml",
+            "https://noticias.perfil.com/noticias/politica/publicidad-oficial-millones-sucios.phtml",
+            "https://www.infobae.com/politica/2024/12/30/el-gobierno-extendio-la-suspension-de-la-pauta-oficial-por-un-ano-y-avanza-con-el-ajuste-en-el-estado/"
+          ]
+        },
+        "jorge_macri_caba": {
+          "total_2024": "ARS 99.002 billion — highest-spending district in Argentina, surpassing provinces",
+          "breakdown": "Internet: ARS 11.8B, Radio: ARS 6.5B, Print: ARS 3.4B, Cinema: ARS 367M",
+          "source_url": "https://chequeado.com/investigaciones/la-publicidad-oficial-del-gobierno-de-jorge-macri-quienes-fueron-los-medios-mas-beneficiados/"
+        }
+      },
+      "investigation_relevance": "Critical — pauta oficial is the financial mechanism that links media, government, and political power. The YPF shadow-pauta under Milei is a new variant of the same system. Cross-reference with Clarin Group (top beneficiary across most administrations) and with the Werthein sports media empire."
+    },
+    {
+      "section": "INCAA — Film Subsidies Fraud",
+      "summary_en": "Two former INCAA presidents (Liliana Mazure, 2005-2008, and Jorge Alvarez, 2008-2013) were tried for massive fraud with film subsidies during the Kirchner administrations. Funds were diverted to fictitious projects — including ARS 36 million for telenovela 'Mama Corazon' starring Andrea del Boca that never aired. Payments released without verifying project progress. Officials placed family/friends in positions receiving salaries without working. After 17 years of investigation, both were acquitted by Federal Oral Court No. 2 in October 2025.",
+      "summary_es": "Dos ex presidentes del INCAA (Liliana Mazure, 2005-2008, y Jorge Alvarez, 2008-2013) fueron juzgados por fraude masivo con subsidios cinematograficos durante las gestiones kirchneristas. Fondos desviados a proyectos ficticios — incluyendo ARS 36 millones para la telenovela 'Mama Corazon' con Andrea del Boca que nunca se emitio. Pagos liberados sin verificar avance de proyectos. Funcionarios colocaron familiares/amigos en puestos con sueldos sin trabajar. Tras 17 anos de investigacion, ambos fueron absueltos por el Tribunal Oral Federal N.2 en octubre 2025.",
+      "key_details": {
+        "defendants": "Liliana Mazure (presidenta INCAA 2005-2008), Jorge Armando Alvarez (presidente INCAA 2008-2013)",
+        "charges": "Defraudacion al Estado con subsidios al cine",
+        "notable_case": "Telenovela 'Mama Corazon' (protagonista: Andrea del Boca) — ARS 36 millones del Estado, nunca se emitio",
+        "related_judicial_action": "Juez Bonadio cito a 70 indagatorias; 30 procesamientos confirmados por Camara",
+        "verdict": "Absueltos (octubre 2025) tras 17 anos de investigacion y 4 meses de juicio oral",
+        "systemic_issue": "Pagos liberados casi automaticamente, sin verificar avance real de proyectos ni validez de rendiciones de gastos"
+      },
+      "investigation_relevance": "High — demonstrates how cultural subsidies function as a patronage system. The acquittal after 17 years illustrates the 'statute of limitations' problem in Argentine white-collar crime. Andrea del Boca / Mama Corazon case is the most documented example of phantom production fraud.",
+      "source_urls": [
+        "https://www.lanacion.com.ar/politica/subsidios-al-cine-detectan-graves-irregularidades-en-la-gestion-del-incaa-entre-2008-y-2012-nid1870893/",
+        "https://www.infobae.com/judiciales/2025/06/02/arranca-un-juicio-contra-dos-ex-presidentes-del-incaa-por-una-defraudacion-con-los-subsidios-al-cine/",
+        "https://www.lanacion.com.ar/politica/absolvieron-a-exdirectivos-del-instituto-del-cine-y-artes-audiovisual-de-la-gestion-kirchnerista-nid17102025/",
+        "https://www.lanacion.com.ar/sociedad/subsidios-al-cine-denuncias-fraudes-listas-negras-y-otras-polemicas-sobre-el-incaa-nid1777026/"
+      ]
+    },
+    {
+      "section": "SADAIC — Music Rights Collection Opacity",
+      "summary_en": "SADAIC (Sociedad Argentina de Autores y Compositores de Musica) operates a collection system with structural opacity. An estimated two-thirds of total collections go into 'el vuelco' — a common pool distributed only among 'socios activos' who must meet strict requirements (10 years membership, pass exam). Major artists like Duki, Bizarrap, Trueno are excluded. Under Milei, Decree 150/2025 eliminated mandatory SADAIC payments for private parties, hotels, bars, restaurants. A government auditor now oversees SADAIC's distribution for the first time.",
+      "summary_es": "SADAIC opera un sistema de recaudacion con opacidad estructural. Se estima que dos tercios de la recaudacion total van a 'el vuelco' — un pozo comun distribuido solo entre 'socios activos' que deben cumplir requisitos estrictos (10 anos de membresia, aprobar examen). Artistas mayores como Duki, Bizarrap, Trueno quedan excluidos. Bajo Milei, el Decreto 150/2025 elimino pagos obligatorios a SADAIC por fiestas privadas, hoteles, bares, restaurantes. Un auditor gubernamental ahora supervisa la distribucion de SADAIC por primera vez.",
+      "key_findings": {
+        "el_vuelco": "~2/3 of total SADAIC collections go to an opaque common pool ('el vuelco') distributed only among 'socios activos'",
+        "exclusion_of_top_artists": "Duki, Bizarrap, Trueno — Argentina's biggest current music exports — receive nothing from el vuelco because they are not 'socios activos'",
+        "questionable_collections": "SADAIC charged salons for playing music at quinceanera parties, hotels/restaurants for having a TV, even kiosks and hardware stores",
+        "milei_reform": "Decree 150/2025: eliminated mandatory payments for private events; introduced government auditor to oversee distribution",
+        "transparency_gap": "No public data on how el vuelco funds are actually distributed among socios activos"
+      },
+      "investigation_relevance": "Medium — SADAIC's opaque distribution system represents a cultural-industry rent-extraction mechanism benefiting insiders. The 'vuelco' structure may warrant cross-referencing with political connections of SADAIC board members.",
+      "source_urls": [
+        "https://www.elobservador.com.uy/argentina/espectaculos/el-gobierno-milei-desregula-el-cobro-los-derechos-autor-las-protestas-los-artistas-n5958653",
+        "https://jbbabogados.com.ar/2025/04/08/sadaic-y-los-derechos-de-autor-que-modifico-el-decreto-150-2025/",
+        "https://www.lanacion.com.ar/economia/los-salones-de-fiesta-hoteles-bares-y-restaurantes-ya-no-deberan-pagar-a-sadaic-por-pasar-musica-nid28082024/"
+      ]
+    },
+    {
+      "section": "ENTERTAINMENT INDUSTRY — Money Laundering Red Flags",
+      "summary_en": "Argentina's entertainment sector shows documented money laundering patterns. A 2023 operation dismantled a cocaine trafficking network (Argentina-Paraguay-Bolivia-Europe) that laundered money through concerts in theaters they owned. Nightclubs in La Matanza (Grinch, Grucc, Life) were used to launder proceeds from armed robberies. Official red flags identified: events declared sold-out despite partial occupancy, newly created companies with disproportionate financial movements, elevated cash payments to artists/suppliers, participation of multiple linked companies in same production.",
+      "summary_es": "El sector de entretenimiento argentino muestra patrones documentados de lavado de dinero. Una operacion 2023 desmantel una red de trafico de cocaina (Argentina-Paraguay-Bolivia-Europa) que lavaba dinero a traves de conciertos en teatros propios. Boliches en La Matanza (Grinch, Grucc, Life) fueron usados para lavar dinero de robos armados. Banderas rojas oficiales identificadas: eventos declarados sold-out pese a ocupacion parcial, empresas recien creadas con movimientos financieros desproporcionados, pagos elevados en efectivo a artistas/proveedores, participacion de multiples empresas vinculadas en la misma produccion.",
+      "documented_cases": [
+        {
+          "case": "Red narco-entertainment 2023",
+          "detail": "Red de nacionales argentinos y colombianos que traficaba cocaina desde Paraguay y Bolivia hacia Argentina y luego a Europa. Lavaban dinero mediante conciertos realizados en teatros de su propiedad.",
+          "source_url": "https://insightcrime.org/news/colombian-criminals-use-music-industry-launder-money/"
+        },
+        {
+          "case": "Boliches La Matanza",
+          "detail": "Banda desarticulada que lavaba dinero de robos en tres boliches de La Matanza: Grinch (San Justo), Grucc y Life (Gregorio de Laferrere), agencias de motos y agencias de viajes.",
+          "source_url": "https://www.eleco.com.ar/nacionales/cayo-una-banda-que-robaba-y-lavaba-el-dinero-en-boliches"
+        }
+      ],
+      "official_red_flags": [
+        "Events repeatedly declared sold-out despite partial occupancy",
+        "Newly created companies with large/disproportionate financial movements",
+        "Disproportionate financial operations relative to spectacle size",
+        "Elevated cash payments to artists or suppliers",
+        "Participation of multiple linked companies within the same production"
+      ],
+      "investigation_relevance": "Medium — provides framework for identifying potential laundering in entertainment sector; the red flags list could be applied to analyze Tinelli's LaFlia financial distress (800M pesos bounced checks) or INCAA phantom productions",
+      "source_urls": [
+        "https://www.judiciales.net/advierten-sobre-riesgos-de-lavado-en-la-industria-de-espectaculos-publicos/",
+        "https://insightcrime.org/news/colombian-criminals-use-music-industry-launder-money/",
+        "https://www.eleco.com.ar/nacionales/cayo-una-banda-que-robaba-y-lavaba-el-dinero-en-boliches"
+      ]
+    }
+  ],
+  "cross_references": {
+    "werthein_connection": "This research confirms and extends werthein-energy-telecom-findings.json: the Werthein Group's acquisition of Torneos + DirecTV creates a vertically integrated sports-media monopoly. Adrian Werthein's insurance career (La Caja) overlaps with D'Onofrio's (La Caja ART). The Werthein sports media empire is the corporate infrastructure through which football broadcasting revenue flows.",
+    "macri_boca_pipeline": "Macri's Boca presidency (documented in main investigation as 17.6% legislative attendance while appearing in 5 datasets) is confirmed as the 'original matrix' of his political method. Angelici continued this as operator within both Boca and CABA government.",
+    "pauta_clarin": "Clarin Group appears as top beneficiary across CFK, Macri, and Alberto Fernandez administrations — with shares changing (4.6% → 18% → 10%+) but always near the top. Under Milei, YPF replaces direct pauta as primary state media spending channel.",
+    "incaa_phantom_productions": "INCAA phantom production fraud (ARS 36M for Mama Corazon) parallels the entertainment money laundering red flags: disproportionate financial operations relative to spectacle size, cash flows without corresponding real activity."
+  },
+  "investigation_leads_for_wave_3": [
+    "Tinelli's LaFlia Contenidos: 800M pesos in bounced checks — investigate who the creditors are and whether any are state-connected",
+    "SADAIC board members: cross-reference with political connections and campaign donations",
+    "YPF shadow pauta 2024-2025: FOIA-equivalent requests for complete breakdown of YPF advertising spend by media outlet",
+    "Angelici's dual role in Boca + CABA government: map specific contracts and judicial actions that benefited/harmed specific club factions",
+    "Werthein-Torneos vertical integration: antitrust analysis of content production + distribution platform ownership",
+    "Jorge Macri CABA pauta (ARS 99B in 2024): full beneficiary breakdown — highest spending district in Argentina"
+  ]
+}
