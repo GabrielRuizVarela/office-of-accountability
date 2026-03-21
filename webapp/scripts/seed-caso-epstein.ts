@@ -1,79 +1,85 @@
 /**
- * Seed script — creates the Caso Epstein investigation graph.
+ * Seed script for Caso Epstein investigation data.
+ *
  * Run with: npx tsx scripts/seed-caso-epstein.ts
  *
- * Creates Person, Location, Event, Document, Organization, and LegalCase
- * nodes along with their relationships. All nodes are scoped with
- * caso_slug: 'caso-epstein'. Uses MERGE for idempotency — safe to re-run.
+ * Uses generic labels (Person, Location, Event, Document, Organization, LegalCase)
+ * with caso_slug: "caso-epstein" for namespace isolation, and prefixed IDs
+ * (caso-epstein:{local_id}) per the investigation standardization convention.
  *
+ * Idempotent — uses MERGE for all operations. Safe to run multiple times.
  * Requires NEO4J_URI, NEO4J_USER environment variables (see .env.example).
  */
 
-import { executeWrite, verifyConnectivity, closeDriver, getDriver } from '../src/lib/neo4j/client'
+import { verifyConnectivity, closeDriver, getDriver } from '../src/lib/neo4j/client'
 
 // ---------------------------------------------------------------------------
 // Constants
 // ---------------------------------------------------------------------------
 
 const CASO_SLUG = 'caso-epstein'
+/** Prefix a local ID with the caso slug */
+function pid(localId: string): string {
+  return `${CASO_SLUG}:${localId}`
+}
 
 // ---------------------------------------------------------------------------
 // Seed data
 // ---------------------------------------------------------------------------
 
 const persons = [
-  { id: 'ep-jeffrey-epstein', name: 'Jeffrey Epstein', slug: 'jeffrey-epstein', role: 'Financier, convicted sex offender', description: 'American financier and convicted sex offender who ran an extensive trafficking network. Found dead in his cell at Metropolitan Correctional Center in August 2019.', nationality: 'American' },
-  { id: 'ep-ghislaine-maxwell', name: 'Ghislaine Maxwell', slug: 'ghislaine-maxwell', role: 'Socialite, convicted sex trafficker', description: 'British socialite convicted in December 2021 on five federal charges of sex trafficking. Sentenced to 20 years in prison.', nationality: 'British' },
-  { id: 'ep-leslie-wexner', name: 'Leslie Wexner', slug: 'leslie-wexner', role: 'CEO, L Brands', description: 'Billionaire businessman, founder of L Brands. Epstein\'s largest known client who granted him sweeping power over his finances.', nationality: 'American' },
-  { id: 'ep-alan-dershowitz', name: 'Alan Dershowitz', slug: 'alan-dershowitz', role: 'Attorney', description: 'Harvard Law professor and attorney named in depositions. Represented Epstein during the 2008 plea deal negotiations.', nationality: 'American' },
-  { id: 'ep-prince-andrew', name: 'Prince Andrew', slug: 'prince-andrew', role: 'Duke of York', description: 'Member of British royal family named in Virginia Giuffre lawsuit. Settled civil case in February 2022.', nationality: 'British' },
-  { id: 'ep-bill-clinton', name: 'Bill Clinton', slug: 'bill-clinton', role: 'Former US President', description: '42nd President of the United States. Appeared on Epstein flight logs multiple times.', nationality: 'American' },
-  { id: 'ep-jean-luc-brunel', name: 'Jean-Luc Brunel', slug: 'jean-luc-brunel', role: 'Modeling agent', description: 'French modeling agent who ran MC2 Model Management. Found dead in his Paris prison cell in February 2022 while awaiting trial.', nationality: 'French' },
-  { id: 'ep-sarah-kellen', name: 'Sarah Kellen', slug: 'sarah-kellen', role: 'Epstein assistant', description: 'Personal assistant to Jeffrey Epstein, named as a potential co-conspirator in the 2008 non-prosecution agreement.', nationality: 'American' },
-  { id: 'ep-nadia-marcinko', name: 'Nadia Marcinko', slug: 'nadia-marcinko', role: 'Alleged victim turned associate', description: 'Originally from the former Yugoslavia, identified as both a victim and later an associate of Epstein.', nationality: 'Yugoslav' },
-  { id: 'ep-virginia-giuffre', name: 'Virginia Giuffre', slug: 'virginia-giuffre', role: 'Key accuser', description: 'Primary accuser who filed multiple civil lawsuits against Epstein associates. Her depositions and testimony were central to multiple cases.', nationality: 'American' },
-  { id: 'ep-larry-visoski', name: 'Larry Visoski', slug: 'larry-visoski', role: 'Chief pilot', description: 'Epstein\'s chief pilot who flew the Boeing 727 ("Lolita Express"). Testified at the Maxwell trial.', nationality: 'American' },
-  { id: 'ep-david-copperfield', name: 'David Copperfield', slug: 'david-copperfield', role: 'Entertainer', description: 'Illusionist named in Epstein flight logs and address book.', nationality: 'American' },
-  { id: 'ep-jes-staley', name: 'Jes Staley', slug: 'jes-staley', role: 'JPMorgan executive', description: 'Former CEO of Barclays and senior JPMorgan executive who maintained a close relationship with Epstein over many years.', nationality: 'American' },
-  { id: 'ep-leon-black', name: 'Leon Black', slug: 'leon-black', role: 'Apollo Global co-founder', description: 'Co-founder of Apollo Global Management who paid Epstein approximately $158 million for financial advice and tax services.', nationality: 'American' },
-  { id: 'ep-donald-trump', name: 'Donald Trump', slug: 'donald-trump', role: 'Real estate developer, politician', description: 'Real estate developer and later 45th US President. Named in early social connections with Epstein in Palm Beach.', nationality: 'American' },
+  { id: pid('ep-jeffrey-epstein'), name: 'Jeffrey Epstein', slug: 'jeffrey-epstein', role: 'Financier, convicted sex offender', description: 'American financier and convicted sex offender who ran an extensive trafficking network. Found dead in his cell at Metropolitan Correctional Center in August 2019.', nationality: 'American' },
+  { id: pid('ep-ghislaine-maxwell'), name: 'Ghislaine Maxwell', slug: 'ghislaine-maxwell', role: 'Socialite, convicted sex trafficker', description: 'British socialite convicted in December 2021 on five federal charges of sex trafficking. Sentenced to 20 years in prison.', nationality: 'British' },
+  { id: pid('ep-leslie-wexner'), name: 'Leslie Wexner', slug: 'leslie-wexner', role: 'CEO, L Brands', description: 'Billionaire businessman, founder of L Brands. Epstein\'s largest known client who granted him sweeping power over his finances.', nationality: 'American' },
+  { id: pid('ep-alan-dershowitz'), name: 'Alan Dershowitz', slug: 'alan-dershowitz', role: 'Attorney', description: 'Harvard Law professor and attorney named in depositions. Represented Epstein during the 2008 plea deal negotiations.', nationality: 'American' },
+  { id: pid('ep-prince-andrew'), name: 'Prince Andrew', slug: 'prince-andrew', role: 'Duke of York', description: 'Member of British royal family named in Virginia Giuffre lawsuit. Settled civil case in February 2022.', nationality: 'British' },
+  { id: pid('ep-bill-clinton'), name: 'Bill Clinton', slug: 'bill-clinton', role: 'Former US President', description: '42nd President of the United States. Appeared on Epstein flight logs multiple times.', nationality: 'American' },
+  { id: pid('ep-jean-luc-brunel'), name: 'Jean-Luc Brunel', slug: 'jean-luc-brunel', role: 'Modeling agent', description: 'French modeling agent who ran MC2 Model Management. Found dead in his Paris prison cell in February 2022 while awaiting trial.', nationality: 'French' },
+  { id: pid('ep-sarah-kellen'), name: 'Sarah Kellen', slug: 'sarah-kellen', role: 'Epstein assistant', description: 'Personal assistant to Jeffrey Epstein, named as a potential co-conspirator in the 2008 non-prosecution agreement.', nationality: 'American' },
+  { id: pid('ep-nadia-marcinko'), name: 'Nadia Marcinko', slug: 'nadia-marcinko', role: 'Alleged victim turned associate', description: 'Originally from the former Yugoslavia, identified as both a victim and later an associate of Epstein.', nationality: 'Yugoslav' },
+  { id: pid('ep-virginia-giuffre'), name: 'Virginia Giuffre', slug: 'virginia-giuffre', role: 'Key accuser', description: 'Primary accuser who filed multiple civil lawsuits against Epstein associates. Her depositions and testimony were central to multiple cases.', nationality: 'American' },
+  { id: pid('ep-larry-visoski'), name: 'Larry Visoski', slug: 'larry-visoski', role: 'Chief pilot', description: 'Epstein\'s chief pilot who flew the Boeing 727 ("Lolita Express"). Testified at the Maxwell trial.', nationality: 'American' },
+  { id: pid('ep-david-copperfield'), name: 'David Copperfield', slug: 'david-copperfield', role: 'Entertainer', description: 'Illusionist named in Epstein flight logs and address book.', nationality: 'American' },
+  { id: pid('ep-jes-staley'), name: 'Jes Staley', slug: 'jes-staley', role: 'JPMorgan executive', description: 'Former CEO of Barclays and senior JPMorgan executive who maintained a close relationship with Epstein over many years.', nationality: 'American' },
+  { id: pid('ep-leon-black'), name: 'Leon Black', slug: 'leon-black', role: 'Apollo Global co-founder', description: 'Co-founder of Apollo Global Management who paid Epstein approximately $158 million for financial advice and tax services.', nationality: 'American' },
+  { id: pid('ep-donald-trump'), name: 'Donald Trump', slug: 'donald-trump', role: 'Real estate developer, politician', description: 'Real estate developer and later 45th US President. Named in early social connections with Epstein in Palm Beach.', nationality: 'American' },
 ]
 
 const locations = [
-  { id: 'ep-little-st-james', name: 'Little St. James Island', slug: 'little-st-james', location_type: 'island', address: 'Little St. James, U.S. Virgin Islands', coordinates: '18.2969,-64.8256' },
-  { id: 'ep-zorro-ranch', name: 'Zorro Ranch', slug: 'zorro-ranch', location_type: 'ranch', address: 'Stanley, New Mexico', coordinates: '35.1469,-105.9628' },
-  { id: 'ep-nyc-townhouse', name: '9 East 71st Street Townhouse', slug: 'nyc-townhouse', location_type: 'property', address: '9 East 71st Street, New York, NY', coordinates: '40.7713,-73.9654' },
-  { id: 'ep-palm-beach-mansion', name: 'Palm Beach Mansion', slug: 'palm-beach-mansion', location_type: 'property', address: '358 El Brillo Way, Palm Beach, FL', coordinates: '26.7056,-80.0364' },
-  { id: 'ep-paris-apartment', name: 'Paris Apartment', slug: 'paris-apartment', location_type: 'apartment', address: 'Avenue Foch, Paris, France', coordinates: '48.8738,2.2870' },
-  { id: 'ep-columbus-oh', name: 'Columbus, Ohio', slug: 'columbus-oh', location_type: 'office', address: 'Columbus, OH (Wexner connection)', coordinates: '39.9612,-82.9988' },
+  { id: pid('ep-little-st-james'), name: 'Little St. James Island', slug: 'little-st-james', location_type: 'island', address: 'Little St. James, U.S. Virgin Islands', coordinates: '18.2969,-64.8256' },
+  { id: pid('ep-zorro-ranch'), name: 'Zorro Ranch', slug: 'zorro-ranch', location_type: 'ranch', address: 'Stanley, New Mexico', coordinates: '35.1469,-105.9628' },
+  { id: pid('ep-nyc-townhouse'), name: '9 East 71st Street Townhouse', slug: 'nyc-townhouse', location_type: 'property', address: '9 East 71st Street, New York, NY', coordinates: '40.7713,-73.9654' },
+  { id: pid('ep-palm-beach-mansion'), name: 'Palm Beach Mansion', slug: 'palm-beach-mansion', location_type: 'property', address: '358 El Brillo Way, Palm Beach, FL', coordinates: '26.7056,-80.0364' },
+  { id: pid('ep-paris-apartment'), name: 'Paris Apartment', slug: 'paris-apartment', location_type: 'apartment', address: 'Avenue Foch, Paris, France', coordinates: '48.8738,2.2870' },
+  { id: pid('ep-columbus-oh'), name: 'Columbus, Ohio', slug: 'columbus-oh', location_type: 'office', address: 'Columbus, OH (Wexner connection)', coordinates: '39.9612,-82.9988' },
 ]
 
 const events = [
-  { id: 'ep-evt-pb-investigation', title: 'Palm Beach Police investigation begins', date: '2005-03-01', event_type: 'legal', description: 'Palm Beach Police Department begins investigation into Jeffrey Epstein following complaints from parents of teenage girls.' },
-  { id: 'ep-evt-fbi-investigation', title: 'FBI investigation launched', date: '2006-05-01', event_type: 'legal', description: 'Federal Bureau of Investigation launches investigation into Epstein\'s activities across multiple states.' },
-  { id: 'ep-evt-grand-jury', title: 'Grand jury indictment (Florida)', date: '2007-06-01', event_type: 'legal', description: 'Florida grand jury returns indictment, but federal prosecutors negotiate plea deal instead of pursuing federal charges.' },
-  { id: 'ep-evt-npa', title: 'Non-prosecution agreement signed', date: '2008-06-30', event_type: 'legal', description: 'US Attorney Alexander Acosta signs controversial non-prosecution agreement granting immunity to Epstein\'s co-conspirators.' },
-  { id: 'ep-evt-guilty-plea', title: 'Epstein pleads guilty to state charges', date: '2008-06-30', event_type: 'legal', description: 'Epstein pleads guilty to Florida state charges of soliciting prostitution from a minor. Sentenced to 18 months, served 13 months with work release.' },
-  { id: 'ep-evt-sex-offender', title: 'Epstein registers as sex offender', date: '2010-01-01', event_type: 'legal', description: 'After release, Epstein registers as a Level 3 (high risk) sex offender in New York and as a sex offender in the US Virgin Islands.' },
-  { id: 'ep-evt-giuffre-v-maxwell', title: 'Giuffre v. Maxwell filed', date: '2015-01-01', event_type: 'legal', description: 'Virginia Giuffre files defamation lawsuit against Ghislaine Maxwell in the Southern District of New York.' },
-  { id: 'ep-evt-miami-herald', title: 'Miami Herald "Perversion of Justice" published', date: '2018-11-28', event_type: 'media', description: 'Julie K. Brown publishes groundbreaking investigation in the Miami Herald, exposing the 2008 plea deal and identifying over 80 victims.' },
-  { id: 'ep-evt-arrest', title: 'Epstein arrested at Teterboro Airport', date: '2019-07-06', event_type: 'arrest', description: 'Jeffrey Epstein arrested by FBI-NYPD Crimes Against Children Task Force upon landing at Teterboro Airport, New Jersey.' },
-  { id: 'ep-evt-indictment', title: 'SDNY indictment unsealed', date: '2019-07-08', event_type: 'legal', description: 'Federal indictment unsealed in the Southern District of New York charging Epstein with sex trafficking of minors and conspiracy.' },
-  { id: 'ep-evt-death', title: 'Epstein found dead in MCC cell', date: '2019-08-10', event_type: 'death', description: 'Jeffrey Epstein found unresponsive in his cell at the Metropolitan Correctional Center in Manhattan. Pronounced dead at New York Presbyterian-Lower Manhattan Hospital.' },
-  { id: 'ep-evt-autopsy', title: 'Medical examiner rules suicide', date: '2019-08-16', event_type: 'death', description: 'New York City Chief Medical Examiner Barbara Sampson rules Epstein\'s death a suicide by hanging. Finding disputed by Epstein\'s attorneys and independent forensic pathologist Dr. Michael Baden.' },
-  { id: 'ep-evt-maxwell-arrest', title: 'Ghislaine Maxwell arrested', date: '2020-07-02', event_type: 'arrest', description: 'Ghislaine Maxwell arrested by FBI at her home in Bradford, New Hampshire, on charges of conspiracy and enticement of minors.' },
-  { id: 'ep-evt-maxwell-trial', title: 'Maxwell trial begins', date: '2021-11-29', event_type: 'legal', description: 'Federal trial of Ghislaine Maxwell begins in the Southern District of New York before Judge Alison J. Nathan.' },
-  { id: 'ep-evt-maxwell-verdict', title: 'Maxwell found guilty on 5 counts', date: '2021-12-29', event_type: 'legal', description: 'Jury finds Ghislaine Maxwell guilty on five of six counts, including sex trafficking of a minor.' },
-  { id: 'ep-evt-maxwell-sentence', title: 'Maxwell sentenced to 20 years', date: '2022-06-28', event_type: 'legal', description: 'Judge Nathan sentences Ghislaine Maxwell to 20 years in federal prison.' },
-  { id: 'ep-evt-jpmorgan-settlement', title: 'JPMorgan settles for $290M', date: '2023-06-12', event_type: 'financial', description: 'JPMorgan Chase agrees to pay $290 million to settle a class action lawsuit brought by Epstein\'s victims alleging the bank facilitated his trafficking.' },
-  { id: 'ep-evt-deutsche-settlement', title: 'Deutsche Bank settles for $75M', date: '2023-05-17', event_type: 'financial', description: 'Deutsche Bank agrees to pay $75 million to settle claims it facilitated Epstein\'s sex trafficking through its banking services.' },
-  { id: 'ep-evt-document-release', title: 'Epstein documents unsealed', date: '2024-01-03', event_type: 'legal', description: 'Court orders release of previously sealed documents from Giuffre v. Maxwell case, revealing names of numerous associates and details of Epstein\'s network.' },
+  { id: pid('ep-evt-pb-investigation'), title: 'Palm Beach Police investigation begins', date: '2005-03-01', event_type: 'legal', description: 'Palm Beach Police Department begins investigation into Jeffrey Epstein following complaints from parents of teenage girls.' },
+  { id: pid('ep-evt-fbi-investigation'), title: 'FBI investigation launched', date: '2006-05-01', event_type: 'legal', description: 'Federal Bureau of Investigation launches investigation into Epstein\'s activities across multiple states.' },
+  { id: pid('ep-evt-grand-jury'), title: 'Grand jury indictment (Florida)', date: '2007-06-01', event_type: 'legal', description: 'Florida grand jury returns indictment, but federal prosecutors negotiate plea deal instead of pursuing federal charges.' },
+  { id: pid('ep-evt-npa'), title: 'Non-prosecution agreement signed', date: '2008-06-30', event_type: 'legal', description: 'US Attorney Alexander Acosta signs controversial non-prosecution agreement granting immunity to Epstein\'s co-conspirators.' },
+  { id: pid('ep-evt-guilty-plea'), title: 'Epstein pleads guilty to state charges', date: '2008-06-30', event_type: 'legal', description: 'Epstein pleads guilty to Florida state charges of soliciting prostitution from a minor. Sentenced to 18 months, served 13 months with work release.' },
+  { id: pid('ep-evt-sex-offender'), title: 'Epstein registers as sex offender', date: '2010-01-01', event_type: 'legal', description: 'After release, Epstein registers as a Level 3 (high risk) sex offender in New York and as a sex offender in the US Virgin Islands.' },
+  { id: pid('ep-evt-giuffre-v-maxwell'), title: 'Giuffre v. Maxwell filed', date: '2015-01-01', event_type: 'legal', description: 'Virginia Giuffre files defamation lawsuit against Ghislaine Maxwell in the Southern District of New York.' },
+  { id: pid('ep-evt-miami-herald'), title: 'Miami Herald "Perversion of Justice" published', date: '2018-11-28', event_type: 'media', description: 'Julie K. Brown publishes groundbreaking investigation in the Miami Herald, exposing the 2008 plea deal and identifying over 80 victims.' },
+  { id: pid('ep-evt-arrest'), title: 'Epstein arrested at Teterboro Airport', date: '2019-07-06', event_type: 'arrest', description: 'Jeffrey Epstein arrested by FBI-NYPD Crimes Against Children Task Force upon landing at Teterboro Airport, New Jersey.' },
+  { id: pid('ep-evt-indictment'), title: 'SDNY indictment unsealed', date: '2019-07-08', event_type: 'legal', description: 'Federal indictment unsealed in the Southern District of New York charging Epstein with sex trafficking of minors and conspiracy.' },
+  { id: pid('ep-evt-death'), title: 'Epstein found dead in MCC cell', date: '2019-08-10', event_type: 'death', description: 'Jeffrey Epstein found unresponsive in his cell at the Metropolitan Correctional Center in Manhattan. Pronounced dead at New York Presbyterian-Lower Manhattan Hospital.' },
+  { id: pid('ep-evt-autopsy'), title: 'Medical examiner rules suicide', date: '2019-08-16', event_type: 'death', description: 'New York City Chief Medical Examiner Barbara Sampson rules Epstein\'s death a suicide by hanging. Finding disputed by Epstein\'s attorneys and independent forensic pathologist Dr. Michael Baden.' },
+  { id: pid('ep-evt-maxwell-arrest'), title: 'Ghislaine Maxwell arrested', date: '2020-07-02', event_type: 'arrest', description: 'Ghislaine Maxwell arrested by FBI at her home in Bradford, New Hampshire, on charges of conspiracy and enticement of minors.' },
+  { id: pid('ep-evt-maxwell-trial'), title: 'Maxwell trial begins', date: '2021-11-29', event_type: 'legal', description: 'Federal trial of Ghislaine Maxwell begins in the Southern District of New York before Judge Alison J. Nathan.' },
+  { id: pid('ep-evt-maxwell-verdict'), title: 'Maxwell found guilty on 5 counts', date: '2021-12-29', event_type: 'legal', description: 'Jury finds Ghislaine Maxwell guilty on five of six counts, including sex trafficking of a minor.' },
+  { id: pid('ep-evt-maxwell-sentence'), title: 'Maxwell sentenced to 20 years', date: '2022-06-28', event_type: 'legal', description: 'Judge Nathan sentences Ghislaine Maxwell to 20 years in federal prison.' },
+  { id: pid('ep-evt-jpmorgan-settlement'), title: 'JPMorgan settles for $290M', date: '2023-06-12', event_type: 'financial', description: 'JPMorgan Chase agrees to pay $290 million to settle a class action lawsuit brought by Epstein\'s victims alleging the bank facilitated his trafficking.' },
+  { id: pid('ep-evt-deutsche-settlement'), title: 'Deutsche Bank settles for $75M', date: '2023-05-17', event_type: 'financial', description: 'Deutsche Bank agrees to pay $75 million to settle claims it facilitated Epstein\'s sex trafficking through its banking services.' },
+  { id: pid('ep-evt-document-release'), title: 'Epstein documents unsealed', date: '2024-01-03', event_type: 'legal', description: 'Court orders release of previously sealed documents from Giuffre v. Maxwell case, revealing names of numerous associates and details of Epstein\'s network.' },
 ]
 
 const documents = [
   // ─── Original 10 documents (updated with new fields) ───────────────────
   {
-    id: 'ep-doc-maxwell-transcripts',
+    id: pid('ep-doc-maxwell-transcripts'),
     title: 'Maxwell Trial Transcripts',
     slug: 'maxwell-trial-transcripts',
     doc_type: 'court_filing',
@@ -90,7 +96,7 @@ const documents = [
     page_count: 2847,
   },
   {
-    id: 'ep-doc-flight-logs',
+    id: pid('ep-doc-flight-logs'),
     title: 'Lolita Express Flight Logs',
     slug: 'flight-logs',
     doc_type: 'flight_log',
@@ -107,7 +113,7 @@ const documents = [
     page_count: 73,
   },
   {
-    id: 'ep-doc-black-book',
+    id: pid('ep-doc-black-book'),
     title: 'Epstein Address Book',
     slug: 'black-book',
     doc_type: 'court_filing',
@@ -124,7 +130,7 @@ const documents = [
     page_count: 97,
   },
   {
-    id: 'ep-doc-npa',
+    id: pid('ep-doc-npa'),
     title: '2008 Non-Prosecution Agreement',
     slug: 'non-prosecution-agreement',
     doc_type: 'court_filing',
@@ -142,7 +148,7 @@ const documents = [
     page_count: 18,
   },
   {
-    id: 'ep-doc-giuffre-depositions',
+    id: pid('ep-doc-giuffre-depositions'),
     title: 'Giuffre v. Maxwell Depositions',
     slug: 'giuffre-depositions',
     doc_type: 'deposition',
@@ -159,7 +165,7 @@ const documents = [
     page_count: 418,
   },
   {
-    id: 'ep-doc-fbi-vault',
+    id: pid('ep-doc-fbi-vault'),
     title: 'FBI Vault Releases',
     slug: 'fbi-vault-releases',
     doc_type: 'fbi',
@@ -176,7 +182,7 @@ const documents = [
     page_count: 287,
   },
   {
-    id: 'ep-doc-jpmorgan-comms',
+    id: pid('ep-doc-jpmorgan-comms'),
     title: 'JPMorgan Internal Communications',
     slug: 'jpmorgan-communications',
     doc_type: 'financial',
@@ -194,7 +200,7 @@ const documents = [
     page_count: null,
   },
   {
-    id: 'ep-doc-miami-herald',
+    id: pid('ep-doc-miami-herald'),
     title: 'Perversion of Justice Investigation',
     slug: 'perversion-of-justice',
     doc_type: 'media_investigation',
@@ -211,7 +217,7 @@ const documents = [
     page_count: null,
   },
   {
-    id: 'ep-doc-pb-police',
+    id: pid('ep-doc-pb-police'),
     title: 'Palm Beach Police Report',
     slug: 'palm-beach-police-report',
     doc_type: 'police_report',
@@ -228,7 +234,7 @@ const documents = [
     page_count: 42,
   },
   {
-    id: 'ep-doc-autopsy',
+    id: pid('ep-doc-autopsy'),
     title: 'Medical Examiner Report',
     slug: 'medical-examiner-report',
     doc_type: 'medical',
@@ -247,7 +253,7 @@ const documents = [
 
   // ─── Court Filings (7 new) ─────────────────────────────────────────────
   {
-    id: 'ep-doc-sdny-indictment',
+    id: pid('ep-doc-sdny-indictment'),
     title: 'SDNY Federal Indictment (USA v. Epstein)',
     slug: 'sdny-indictment',
     doc_type: 'court_filing',
@@ -264,7 +270,7 @@ const documents = [
     page_count: 14,
   },
   {
-    id: 'ep-doc-maxwell-superseding',
+    id: pid('ep-doc-maxwell-superseding'),
     title: 'Maxwell Superseding Indictment',
     slug: 'maxwell-superseding-indictment',
     doc_type: 'court_filing',
@@ -281,7 +287,7 @@ const documents = [
     page_count: 22,
   },
   {
-    id: 'ep-doc-giuffre-v-andrew',
+    id: pid('ep-doc-giuffre-v-andrew'),
     title: 'Giuffre v. Prince Andrew Complaint',
     slug: 'giuffre-v-prince-andrew',
     doc_type: 'court_filing',
@@ -298,7 +304,7 @@ const documents = [
     page_count: 16,
   },
   {
-    id: 'ep-doc-cvra-challenge',
+    id: pid('ep-doc-cvra-challenge'),
     title: 'CVRA Challenge (Doe v. United States)',
     slug: 'cvra-challenge',
     doc_type: 'court_filing',
@@ -315,7 +321,7 @@ const documents = [
     page_count: 34,
   },
   {
-    id: 'ep-doc-2024-unsealed',
+    id: pid('ep-doc-2024-unsealed'),
     title: '2024 Unsealed Giuffre v. Maxwell Documents',
     slug: '2024-unsealed-documents',
     doc_type: 'court_filing',
@@ -332,7 +338,7 @@ const documents = [
     page_count: 943,
   },
   {
-    id: 'ep-doc-doe-v-jpmorgan',
+    id: pid('ep-doc-doe-v-jpmorgan'),
     title: 'Jane Doe 1 v. JPMorgan Chase Complaint',
     slug: 'doe-v-jpmorgan-complaint',
     doc_type: 'court_filing',
@@ -349,7 +355,7 @@ const documents = [
     page_count: 55,
   },
   {
-    id: 'ep-doc-doe-v-deutsche',
+    id: pid('ep-doc-doe-v-deutsche'),
     title: 'Doe v. Deutsche Bank Complaint',
     slug: 'doe-v-deutsche-bank',
     doc_type: 'court_filing',
@@ -368,7 +374,7 @@ const documents = [
 
   // ─── Depositions (5 new) ───────────────────────────────────────────────
   {
-    id: 'ep-doc-maxwell-deposition',
+    id: pid('ep-doc-maxwell-deposition'),
     title: 'Ghislaine Maxwell 2016 Deposition',
     slug: 'maxwell-2016-deposition',
     doc_type: 'deposition',
@@ -385,7 +391,7 @@ const documents = [
     page_count: 456,
   },
   {
-    id: 'ep-doc-giuffre-depo-2016',
+    id: pid('ep-doc-giuffre-depo-2016'),
     title: 'Virginia Giuffre 2016 Deposition',
     slug: 'giuffre-2016-deposition',
     doc_type: 'deposition',
@@ -402,7 +408,7 @@ const documents = [
     page_count: 334,
   },
   {
-    id: 'ep-doc-alessi-testimony',
+    id: pid('ep-doc-alessi-testimony'),
     title: 'Juan Alessi Testimony (Maxwell Trial)',
     slug: 'alessi-testimony',
     doc_type: 'deposition',
@@ -419,7 +425,7 @@ const documents = [
     page_count: null,
   },
   {
-    id: 'ep-doc-visoski-testimony',
+    id: pid('ep-doc-visoski-testimony'),
     title: 'Larry Visoski Testimony (Maxwell Trial)',
     slug: 'visoski-testimony',
     doc_type: 'deposition',
@@ -436,7 +442,7 @@ const documents = [
     page_count: null,
   },
   {
-    id: 'ep-doc-rodriguez-depo',
+    id: pid('ep-doc-rodriguez-depo'),
     title: 'Alfredo Rodriguez Sealed Deposition',
     slug: 'rodriguez-deposition',
     doc_type: 'deposition',
@@ -455,7 +461,7 @@ const documents = [
 
   // ─── FBI Records (3 new) ──────────────────────────────────────────────
   {
-    id: 'ep-doc-fbi-302s',
+    id: pid('ep-doc-fbi-302s'),
     title: 'FBI 302 Interview Reports',
     slug: 'fbi-302-reports',
     doc_type: 'fbi',
@@ -472,7 +478,7 @@ const documents = [
     page_count: 156,
   },
   {
-    id: 'ep-doc-fbi-evidence-collection',
+    id: pid('ep-doc-fbi-evidence-collection'),
     title: 'FBI Evidence Collection Report (NYC Townhouse)',
     slug: 'fbi-evidence-collection',
     doc_type: 'fbi',
@@ -489,7 +495,7 @@ const documents = [
     page_count: 28,
   },
   {
-    id: 'ep-doc-fbi-vault-part2',
+    id: pid('ep-doc-fbi-vault-part2'),
     title: 'FBI Vault Release Part 2',
     slug: 'fbi-vault-release-part2',
     doc_type: 'fbi',
@@ -508,7 +514,7 @@ const documents = [
 
   // ─── Flight Logs (3 new) ──────────────────────────────────────────────
   {
-    id: 'ep-doc-727-logs',
+    id: pid('ep-doc-727-logs'),
     title: 'Boeing 727 Flight Logs (N908JE)',
     slug: 'boeing-727-logs',
     doc_type: 'flight_log',
@@ -525,7 +531,7 @@ const documents = [
     page_count: 73,
   },
   {
-    id: 'ep-doc-gulfstream-logs',
+    id: pid('ep-doc-gulfstream-logs'),
     title: 'Gulfstream II Flight Records',
     slug: 'gulfstream-flight-records',
     doc_type: 'flight_log',
@@ -542,7 +548,7 @@ const documents = [
     page_count: 41,
   },
   {
-    id: 'ep-doc-doj-phase1-logs',
+    id: pid('ep-doc-doj-phase1-logs'),
     title: 'DOJ Phase 1 Flight Log Release',
     slug: 'doj-phase1-flight-logs',
     doc_type: 'flight_log',
@@ -561,7 +567,7 @@ const documents = [
 
   // ─── Police Reports (3 new) ───────────────────────────────────────────
   {
-    id: 'ep-doc-probable-cause',
+    id: pid('ep-doc-probable-cause'),
     title: 'Probable Cause Affidavit (Palm Beach)',
     slug: 'probable-cause-affidavit',
     doc_type: 'police_report',
@@ -578,7 +584,7 @@ const documents = [
     page_count: 19,
   },
   {
-    id: 'ep-doc-pb-supplemental',
+    id: pid('ep-doc-pb-supplemental'),
     title: 'Palm Beach PD Supplemental Report',
     slug: 'palm-beach-supplemental',
     doc_type: 'police_report',
@@ -595,7 +601,7 @@ const documents = [
     page_count: 67,
   },
   {
-    id: 'ep-doc-victim-interviews',
+    id: pid('ep-doc-victim-interviews'),
     title: 'PBPD Victim Interview Summaries',
     slug: 'victim-interview-summaries',
     doc_type: 'police_report',
@@ -614,7 +620,7 @@ const documents = [
 
   // ─── Financial Records (5 new) ────────────────────────────────────────
   {
-    id: 'ep-doc-jpmorgan-sars',
+    id: pid('ep-doc-jpmorgan-sars'),
     title: 'JPMorgan Suspicious Activity Reports',
     slug: 'jpmorgan-sars',
     doc_type: 'financial',
@@ -631,7 +637,7 @@ const documents = [
     page_count: null,
   },
   {
-    id: 'ep-doc-deutsche-compliance',
+    id: pid('ep-doc-deutsche-compliance'),
     title: 'Deutsche Bank Compliance Failures Report',
     slug: 'deutsche-bank-compliance',
     doc_type: 'financial',
@@ -648,7 +654,7 @@ const documents = [
     page_count: 24,
   },
   {
-    id: 'ep-doc-wexner-poa',
+    id: pid('ep-doc-wexner-poa'),
     title: 'Wexner Power of Attorney Documents',
     slug: 'wexner-power-of-attorney',
     doc_type: 'financial',
@@ -665,7 +671,7 @@ const documents = [
     page_count: 8,
   },
   {
-    id: 'ep-doc-leon-black-records',
+    id: pid('ep-doc-leon-black-records'),
     title: 'Leon Black Financial Records (Senate Report)',
     slug: 'leon-black-financial-records',
     doc_type: 'financial',
@@ -682,7 +688,7 @@ const documents = [
     page_count: 87,
   },
   {
-    id: 'ep-doc-fca-staley',
+    id: pid('ep-doc-fca-staley'),
     title: 'FCA Final Notice — Jes Staley',
     slug: 'fca-staley-notice',
     doc_type: 'financial',
@@ -701,7 +707,7 @@ const documents = [
 
   // ─── Investigative Journalism (6 new) ─────────────────────────────────
   {
-    id: 'ep-doc-vanity-fair-2003',
+    id: pid('ep-doc-vanity-fair-2003'),
     title: 'Vanity Fair 2003 Profile of Epstein',
     slug: 'vanity-fair-2003',
     doc_type: 'media_investigation',
@@ -718,7 +724,7 @@ const documents = [
     page_count: null,
   },
   {
-    id: 'ep-doc-nyt-2019',
+    id: pid('ep-doc-nyt-2019'),
     title: 'NY Times Epstein Investigation Coverage',
     slug: 'nyt-2019-investigation',
     doc_type: 'media_investigation',
@@ -735,7 +741,7 @@ const documents = [
     page_count: null,
   },
   {
-    id: 'ep-doc-netflix-doc',
+    id: pid('ep-doc-netflix-doc'),
     title: 'Netflix Documentary: Jeffrey Epstein: Filthy Rich',
     slug: 'netflix-filthy-rich',
     doc_type: 'media_investigation',
@@ -752,7 +758,7 @@ const documents = [
     page_count: null,
   },
   {
-    id: 'ep-doc-jkb-book',
+    id: pid('ep-doc-jkb-book'),
     title: 'Perversion of Justice (Julie K. Brown book)',
     slug: 'perversion-of-justice-book',
     doc_type: 'media_investigation',
@@ -769,7 +775,7 @@ const documents = [
     page_count: 368,
   },
   {
-    id: 'ep-doc-giuffre-memoir',
+    id: pid('ep-doc-giuffre-memoir'),
     title: 'Nobody\'s Girl: A Memoir (Virginia Giuffre)',
     slug: 'giuffre-memoir',
     doc_type: 'media_investigation',
@@ -786,7 +792,7 @@ const documents = [
     page_count: 416,
   },
   {
-    id: 'ep-doc-doj-phase2-reporting',
+    id: pid('ep-doc-doj-phase2-reporting'),
     title: 'DOJ Phase 2 File Release Reporting',
     slug: 'doj-phase2-reporting',
     doc_type: 'media_investigation',
@@ -805,7 +811,7 @@ const documents = [
 
   // ─── Medical Records (3 new) ──────────────────────────────────────────
   {
-    id: 'ep-doc-baden-review',
+    id: pid('ep-doc-baden-review'),
     title: 'Dr. Michael Baden Independent Autopsy Review',
     slug: 'baden-autopsy-review',
     doc_type: 'medical',
@@ -822,7 +828,7 @@ const documents = [
     page_count: 12,
   },
   {
-    id: 'ep-doc-mcc-medical',
+    id: pid('ep-doc-mcc-medical'),
     title: 'MCC Medical Records (Epstein)',
     slug: 'mcc-medical-records',
     doc_type: 'medical',
@@ -839,7 +845,7 @@ const documents = [
     page_count: 34,
   },
   {
-    id: 'ep-doc-suicide-attempt',
+    id: pid('ep-doc-suicide-attempt'),
     title: 'Epstein First Suicide Attempt Report',
     slug: 'first-suicide-attempt',
     doc_type: 'medical',
@@ -858,24 +864,24 @@ const documents = [
 ]
 
 const organizations = [
-  { id: 'ep-org-epstein-co', name: 'J. Epstein & Co', slug: 'j-epstein-co', org_type: 'company', description: 'Financial management firm founded by Jeffrey Epstein. Claimed to serve only billionaire clients.' },
-  { id: 'ep-org-southern-trust', name: 'Southern Trust Company', slug: 'southern-trust', org_type: 'company', description: 'Financial entity registered in the US Virgin Islands and associated with Epstein\'s business operations.' },
-  { id: 'ep-org-jpmorgan', name: 'JPMorgan Chase', slug: 'jpmorgan-chase', org_type: 'bank', description: 'Major US bank that maintained a banking relationship with Epstein from 1998 to 2013. Settled victim lawsuit for $290M in 2023.' },
-  { id: 'ep-org-deutsche', name: 'Deutsche Bank', slug: 'deutsche-bank', org_type: 'bank', description: 'German bank that provided banking services to Epstein from 2013 to 2018. Settled victim lawsuit for $75M in 2023.' },
-  { id: 'ep-org-l-brands', name: 'L Brands / The Limited', slug: 'l-brands', org_type: 'company', description: 'Retail conglomerate founded by Leslie Wexner. Epstein managed Wexner\'s finances and had power of attorney over his affairs.' },
-  { id: 'ep-org-apollo', name: 'Apollo Global Management', slug: 'apollo-global', org_type: 'company', description: 'Private equity firm co-founded by Leon Black, who paid Epstein approximately $158 million for financial and tax advice.' },
-  { id: 'ep-org-mc2', name: 'MC2 Model Management', slug: 'mc2-model-management', org_type: 'modeling_agency', description: 'Modeling agency founded by Jean-Luc Brunel with funding from Epstein. Used as a vehicle for recruiting victims.' },
-  { id: 'ep-org-vi-foundation', name: 'Jeffrey Epstein VI Foundation', slug: 'epstein-foundation', org_type: 'foundation', description: 'Charitable foundation based in the US Virgin Islands used by Epstein to cultivate relationships with scientists and academics.' },
-  { id: 'ep-org-mcc', name: 'Metropolitan Correctional Center', slug: 'mcc', org_type: 'prison', description: 'Federal detention facility in Manhattan where Epstein was held and where he was found dead on August 10, 2019.' },
+  { id: pid('ep-org-epstein-co'), name: 'J. Epstein & Co', slug: 'j-epstein-co', org_type: 'company', description: 'Financial management firm founded by Jeffrey Epstein. Claimed to serve only billionaire clients.' },
+  { id: pid('ep-org-southern-trust'), name: 'Southern Trust Company', slug: 'southern-trust', org_type: 'company', description: 'Financial entity registered in the US Virgin Islands and associated with Epstein\'s business operations.' },
+  { id: pid('ep-org-jpmorgan'), name: 'JPMorgan Chase', slug: 'jpmorgan-chase', org_type: 'bank', description: 'Major US bank that maintained a banking relationship with Epstein from 1998 to 2013. Settled victim lawsuit for $290M in 2023.' },
+  { id: pid('ep-org-deutsche'), name: 'Deutsche Bank', slug: 'deutsche-bank', org_type: 'bank', description: 'German bank that provided banking services to Epstein from 2013 to 2018. Settled victim lawsuit for $75M in 2023.' },
+  { id: pid('ep-org-l-brands'), name: 'L Brands / The Limited', slug: 'l-brands', org_type: 'company', description: 'Retail conglomerate founded by Leslie Wexner. Epstein managed Wexner\'s finances and had power of attorney over his affairs.' },
+  { id: pid('ep-org-apollo'), name: 'Apollo Global Management', slug: 'apollo-global', org_type: 'company', description: 'Private equity firm co-founded by Leon Black, who paid Epstein approximately $158 million for financial and tax advice.' },
+  { id: pid('ep-org-mc2'), name: 'MC2 Model Management', slug: 'mc2-model-management', org_type: 'modeling_agency', description: 'Modeling agency founded by Jean-Luc Brunel with funding from Epstein. Used as a vehicle for recruiting victims.' },
+  { id: pid('ep-org-vi-foundation'), name: 'Jeffrey Epstein VI Foundation', slug: 'epstein-foundation', org_type: 'foundation', description: 'Charitable foundation based in the US Virgin Islands used by Epstein to cultivate relationships with scientists and academics.' },
+  { id: pid('ep-org-mcc'), name: 'Metropolitan Correctional Center', slug: 'mcc', org_type: 'prison', description: 'Federal detention facility in Manhattan where Epstein was held and where he was found dead on August 10, 2019.' },
 ]
 
 const legalCases = [
-  { id: 'ep-case-florida', title: 'State of Florida v. Epstein', slug: 'florida-v-epstein', case_number: '2008-CF-009182', court: 'Palm Beach County Circuit Court', status: 'closed', date_filed: '2008-06-30' },
-  { id: 'ep-case-sdny', title: 'USA v. Epstein', slug: 'usa-v-epstein', case_number: '19-cr-490', court: 'Southern District of New York', status: 'closed', date_filed: '2019-07-08' },
-  { id: 'ep-case-maxwell', title: 'USA v. Maxwell', slug: 'usa-v-maxwell', case_number: '20-cr-330', court: 'Southern District of New York', status: 'closed', date_filed: '2020-07-02' },
-  { id: 'ep-case-giuffre-maxwell', title: 'Giuffre v. Maxwell', slug: 'giuffre-v-maxwell', case_number: '15-cv-7433', court: 'Southern District of New York', status: 'settled', date_filed: '2015-01-01' },
-  { id: 'ep-case-giuffre-andrew', title: 'Giuffre v. Prince Andrew', slug: 'giuffre-v-prince-andrew', case_number: '21-cv-6702', court: 'Southern District of New York', status: 'settled', date_filed: '2021-08-09' },
-  { id: 'ep-case-jpmorgan', title: 'Jane Doe 1 v. JPMorgan Chase', slug: 'doe-v-jpmorgan', case_number: '22-cv-10019', court: 'Southern District of New York', status: 'settled', date_filed: '2022-11-24' },
+  { id: pid('ep-case-florida'), title: 'State of Florida v. Epstein', slug: 'florida-v-epstein', case_number: '2008-CF-009182', court: 'Palm Beach County Circuit Court', status: 'closed', date_filed: '2008-06-30' },
+  { id: pid('ep-case-sdny'), title: 'USA v. Epstein', slug: 'usa-v-epstein', case_number: '19-cr-490', court: 'Southern District of New York', status: 'closed', date_filed: '2019-07-08' },
+  { id: pid('ep-case-maxwell'), title: 'USA v. Maxwell', slug: 'usa-v-maxwell', case_number: '20-cr-330', court: 'Southern District of New York', status: 'closed', date_filed: '2020-07-02' },
+  { id: pid('ep-case-giuffre-maxwell'), title: 'Giuffre v. Maxwell', slug: 'giuffre-v-maxwell', case_number: '15-cv-7433', court: 'Southern District of New York', status: 'settled', date_filed: '2015-01-01' },
+  { id: pid('ep-case-giuffre-andrew'), title: 'Giuffre v. Prince Andrew', slug: 'giuffre-v-prince-andrew', case_number: '21-cv-6702', court: 'Southern District of New York', status: 'settled', date_filed: '2021-08-09' },
+  { id: pid('ep-case-jpmorgan'), title: 'Jane Doe 1 v. JPMorgan Chase', slug: 'doe-v-jpmorgan', case_number: '22-cv-10019', court: 'Southern District of New York', status: 'settled', date_filed: '2022-11-24' },
 ]
 
 // ---------------------------------------------------------------------------
@@ -883,468 +889,472 @@ const legalCases = [
 // ---------------------------------------------------------------------------
 
 const associatedWith = [
-  { fromId: 'ep-jeffrey-epstein', toId: 'ep-ghislaine-maxwell', relType: 'co_conspirator', description: 'Longtime associate and convicted co-conspirator' },
-  { fromId: 'ep-jeffrey-epstein', toId: 'ep-leslie-wexner', relType: 'client', description: 'Largest known financial client' },
-  { fromId: 'ep-jeffrey-epstein', toId: 'ep-alan-dershowitz', relType: 'attorney', description: 'Legal representative during 2008 plea deal' },
-  { fromId: 'ep-jeffrey-epstein', toId: 'ep-prince-andrew', relType: 'associate', description: 'Social associate named in lawsuits' },
-  { fromId: 'ep-jeffrey-epstein', toId: 'ep-bill-clinton', relType: 'associate', description: 'Appeared on flight logs' },
-  { fromId: 'ep-jeffrey-epstein', toId: 'ep-jean-luc-brunel', relType: 'associate', description: 'Modeling agent and associate' },
-  { fromId: 'ep-jeffrey-epstein', toId: 'ep-sarah-kellen', relType: 'employee', description: 'Personal assistant named as co-conspirator' },
-  { fromId: 'ep-jeffrey-epstein', toId: 'ep-nadia-marcinko', relType: 'victim', description: 'Initially identified as victim' },
-  { fromId: 'ep-jeffrey-epstein', toId: 'ep-donald-trump', relType: 'associate', description: 'Early social connections in Palm Beach' },
-  { fromId: 'ep-virginia-giuffre', toId: 'ep-jeffrey-epstein', relType: 'accuser', description: 'Key accuser in multiple lawsuits' },
-  { fromId: 'ep-virginia-giuffre', toId: 'ep-ghislaine-maxwell', relType: 'accuser', description: 'Filed defamation lawsuit' },
-  { fromId: 'ep-virginia-giuffre', toId: 'ep-prince-andrew', relType: 'accuser', description: 'Filed civil lawsuit, settled 2022' },
-  { fromId: 'ep-ghislaine-maxwell', toId: 'ep-jean-luc-brunel', relType: 'associate', description: 'Connected through modeling industry' },
-  { fromId: 'ep-larry-visoski', toId: 'ep-jeffrey-epstein', relType: 'pilot', description: 'Chief pilot for private aircraft' },
+  { fromId: pid('ep-jeffrey-epstein'), toId: pid('ep-ghislaine-maxwell'), relType: 'co_conspirator', description: 'Longtime associate and convicted co-conspirator' },
+  { fromId: pid('ep-jeffrey-epstein'), toId: pid('ep-leslie-wexner'), relType: 'client', description: 'Largest known financial client' },
+  { fromId: pid('ep-jeffrey-epstein'), toId: pid('ep-alan-dershowitz'), relType: 'attorney', description: 'Legal representative during 2008 plea deal' },
+  { fromId: pid('ep-jeffrey-epstein'), toId: pid('ep-prince-andrew'), relType: 'associate', description: 'Social associate named in lawsuits' },
+  { fromId: pid('ep-jeffrey-epstein'), toId: pid('ep-bill-clinton'), relType: 'associate', description: 'Appeared on flight logs' },
+  { fromId: pid('ep-jeffrey-epstein'), toId: pid('ep-jean-luc-brunel'), relType: 'associate', description: 'Modeling agent and associate' },
+  { fromId: pid('ep-jeffrey-epstein'), toId: pid('ep-sarah-kellen'), relType: 'employee', description: 'Personal assistant named as co-conspirator' },
+  { fromId: pid('ep-jeffrey-epstein'), toId: pid('ep-nadia-marcinko'), relType: 'victim', description: 'Initially identified as victim' },
+  { fromId: pid('ep-jeffrey-epstein'), toId: pid('ep-donald-trump'), relType: 'associate', description: 'Early social connections in Palm Beach' },
+  { fromId: pid('ep-virginia-giuffre'), toId: pid('ep-jeffrey-epstein'), relType: 'accuser', description: 'Key accuser in multiple lawsuits' },
+  { fromId: pid('ep-virginia-giuffre'), toId: pid('ep-ghislaine-maxwell'), relType: 'accuser', description: 'Filed defamation lawsuit' },
+  { fromId: pid('ep-virginia-giuffre'), toId: pid('ep-prince-andrew'), relType: 'accuser', description: 'Filed civil lawsuit, settled 2022' },
+  { fromId: pid('ep-ghislaine-maxwell'), toId: pid('ep-jean-luc-brunel'), relType: 'associate', description: 'Connected through modeling industry' },
+  { fromId: pid('ep-larry-visoski'), toId: pid('ep-jeffrey-epstein'), relType: 'pilot', description: 'Chief pilot for private aircraft' },
 ]
 
 const employedBy = [
-  { personId: 'ep-jeffrey-epstein', orgId: 'ep-org-epstein-co' },
-  { personId: 'ep-leslie-wexner', orgId: 'ep-org-l-brands' },
-  { personId: 'ep-leon-black', orgId: 'ep-org-apollo' },
-  { personId: 'ep-jean-luc-brunel', orgId: 'ep-org-mc2' },
-  { personId: 'ep-jes-staley', orgId: 'ep-org-jpmorgan' },
+  { personId: pid('ep-jeffrey-epstein'), orgId: pid('ep-org-epstein-co') },
+  { personId: pid('ep-leslie-wexner'), orgId: pid('ep-org-l-brands') },
+  { personId: pid('ep-leon-black'), orgId: pid('ep-org-apollo') },
+  { personId: pid('ep-jean-luc-brunel'), orgId: pid('ep-org-mc2') },
+  { personId: pid('ep-jes-staley'), orgId: pid('ep-org-jpmorgan') },
 ]
 
 const affiliatedWith = [
-  { personId: 'ep-jeffrey-epstein', orgId: 'ep-org-vi-foundation' },
-  { personId: 'ep-jeffrey-epstein', orgId: 'ep-org-jpmorgan' },
-  { personId: 'ep-jeffrey-epstein', orgId: 'ep-org-deutsche' },
+  { personId: pid('ep-jeffrey-epstein'), orgId: pid('ep-org-vi-foundation') },
+  { personId: pid('ep-jeffrey-epstein'), orgId: pid('ep-org-jpmorgan') },
+  { personId: pid('ep-jeffrey-epstein'), orgId: pid('ep-org-deutsche') },
 ]
 
 const owned = [
-  { ownerId: 'ep-jeffrey-epstein', ownerLabel: 'Person', locationId: 'ep-little-st-james' },
-  { ownerId: 'ep-jeffrey-epstein', ownerLabel: 'Person', locationId: 'ep-zorro-ranch' },
-  { ownerId: 'ep-jeffrey-epstein', ownerLabel: 'Person', locationId: 'ep-nyc-townhouse' },
-  { ownerId: 'ep-jeffrey-epstein', ownerLabel: 'Person', locationId: 'ep-palm-beach-mansion' },
-  { ownerId: 'ep-jeffrey-epstein', ownerLabel: 'Person', locationId: 'ep-paris-apartment' },
-  { ownerId: 'ep-leslie-wexner', ownerLabel: 'Person', locationId: 'ep-columbus-oh' },
-  { ownerId: 'ep-leslie-wexner', ownerLabel: 'Person', locationId: 'ep-nyc-townhouse' },
+  { ownerId: pid('ep-jeffrey-epstein'), ownerLabel: 'Person', locationId: pid('ep-little-st-james') },
+  { ownerId: pid('ep-jeffrey-epstein'), ownerLabel: 'Person', locationId: pid('ep-zorro-ranch') },
+  { ownerId: pid('ep-jeffrey-epstein'), ownerLabel: 'Person', locationId: pid('ep-nyc-townhouse') },
+  { ownerId: pid('ep-jeffrey-epstein'), ownerLabel: 'Person', locationId: pid('ep-palm-beach-mansion') },
+  { ownerId: pid('ep-jeffrey-epstein'), ownerLabel: 'Person', locationId: pid('ep-paris-apartment') },
+  { ownerId: pid('ep-leslie-wexner'), ownerLabel: 'Person', locationId: pid('ep-columbus-oh') },
+  { ownerId: pid('ep-leslie-wexner'), ownerLabel: 'Person', locationId: pid('ep-nyc-townhouse') },
 ]
 
 const participatedIn = [
   // Epstein events
-  { personId: 'ep-jeffrey-epstein', eventId: 'ep-evt-pb-investigation' },
-  { personId: 'ep-jeffrey-epstein', eventId: 'ep-evt-fbi-investigation' },
-  { personId: 'ep-jeffrey-epstein', eventId: 'ep-evt-grand-jury' },
-  { personId: 'ep-jeffrey-epstein', eventId: 'ep-evt-npa' },
-  { personId: 'ep-jeffrey-epstein', eventId: 'ep-evt-guilty-plea' },
-  { personId: 'ep-jeffrey-epstein', eventId: 'ep-evt-sex-offender' },
-  { personId: 'ep-jeffrey-epstein', eventId: 'ep-evt-arrest' },
-  { personId: 'ep-jeffrey-epstein', eventId: 'ep-evt-indictment' },
-  { personId: 'ep-jeffrey-epstein', eventId: 'ep-evt-death' },
-  { personId: 'ep-jeffrey-epstein', eventId: 'ep-evt-autopsy' },
+  { personId: pid('ep-jeffrey-epstein'), eventId: pid('ep-evt-pb-investigation') },
+  { personId: pid('ep-jeffrey-epstein'), eventId: pid('ep-evt-fbi-investigation') },
+  { personId: pid('ep-jeffrey-epstein'), eventId: pid('ep-evt-grand-jury') },
+  { personId: pid('ep-jeffrey-epstein'), eventId: pid('ep-evt-npa') },
+  { personId: pid('ep-jeffrey-epstein'), eventId: pid('ep-evt-guilty-plea') },
+  { personId: pid('ep-jeffrey-epstein'), eventId: pid('ep-evt-sex-offender') },
+  { personId: pid('ep-jeffrey-epstein'), eventId: pid('ep-evt-arrest') },
+  { personId: pid('ep-jeffrey-epstein'), eventId: pid('ep-evt-indictment') },
+  { personId: pid('ep-jeffrey-epstein'), eventId: pid('ep-evt-death') },
+  { personId: pid('ep-jeffrey-epstein'), eventId: pid('ep-evt-autopsy') },
   // Maxwell events
-  { personId: 'ep-ghislaine-maxwell', eventId: 'ep-evt-maxwell-arrest' },
-  { personId: 'ep-ghislaine-maxwell', eventId: 'ep-evt-maxwell-trial' },
-  { personId: 'ep-ghislaine-maxwell', eventId: 'ep-evt-maxwell-verdict' },
-  { personId: 'ep-ghislaine-maxwell', eventId: 'ep-evt-maxwell-sentence' },
+  { personId: pid('ep-ghislaine-maxwell'), eventId: pid('ep-evt-maxwell-arrest') },
+  { personId: pid('ep-ghislaine-maxwell'), eventId: pid('ep-evt-maxwell-trial') },
+  { personId: pid('ep-ghislaine-maxwell'), eventId: pid('ep-evt-maxwell-verdict') },
+  { personId: pid('ep-ghislaine-maxwell'), eventId: pid('ep-evt-maxwell-sentence') },
   // Giuffre events
-  { personId: 'ep-virginia-giuffre', eventId: 'ep-evt-giuffre-v-maxwell' },
+  { personId: pid('ep-virginia-giuffre'), eventId: pid('ep-evt-giuffre-v-maxwell') },
 ]
 
 const filedIn = [
-  { docId: 'ep-doc-maxwell-transcripts', caseId: 'ep-case-maxwell' },
-  { docId: 'ep-doc-npa', caseId: 'ep-case-florida' },
-  { docId: 'ep-doc-giuffre-depositions', caseId: 'ep-case-giuffre-maxwell' },
-  { docId: 'ep-doc-jpmorgan-comms', caseId: 'ep-case-jpmorgan' },
-  { docId: 'ep-doc-pb-police', caseId: 'ep-case-florida' },
+  { docId: pid('ep-doc-maxwell-transcripts'), caseId: pid('ep-case-maxwell') },
+  { docId: pid('ep-doc-npa'), caseId: pid('ep-case-florida') },
+  { docId: pid('ep-doc-giuffre-depositions'), caseId: pid('ep-case-giuffre-maxwell') },
+  { docId: pid('ep-doc-jpmorgan-comms'), caseId: pid('ep-case-jpmorgan') },
+  { docId: pid('ep-doc-pb-police'), caseId: pid('ep-case-florida') },
   // New filings
-  { docId: 'ep-doc-sdny-indictment', caseId: 'ep-case-sdny' },
-  { docId: 'ep-doc-maxwell-superseding', caseId: 'ep-case-maxwell' },
-  { docId: 'ep-doc-giuffre-v-andrew', caseId: 'ep-case-giuffre-andrew' },
-  { docId: 'ep-doc-cvra-challenge', caseId: 'ep-case-florida' },
-  { docId: 'ep-doc-2024-unsealed', caseId: 'ep-case-giuffre-maxwell' },
-  { docId: 'ep-doc-doe-v-jpmorgan', caseId: 'ep-case-jpmorgan' },
-  { docId: 'ep-doc-maxwell-deposition', caseId: 'ep-case-giuffre-maxwell' },
-  { docId: 'ep-doc-giuffre-depo-2016', caseId: 'ep-case-giuffre-maxwell' },
-  { docId: 'ep-doc-alessi-testimony', caseId: 'ep-case-maxwell' },
-  { docId: 'ep-doc-visoski-testimony', caseId: 'ep-case-maxwell' },
-  { docId: 'ep-doc-rodriguez-depo', caseId: 'ep-case-florida' },
-  { docId: 'ep-doc-fbi-evidence-collection', caseId: 'ep-case-sdny' },
-  { docId: 'ep-doc-727-logs', caseId: 'ep-case-giuffre-maxwell' },
-  { docId: 'ep-doc-black-book', caseId: 'ep-case-giuffre-maxwell' },
-  { docId: 'ep-doc-probable-cause', caseId: 'ep-case-florida' },
-  { docId: 'ep-doc-pb-supplemental', caseId: 'ep-case-florida' },
-  { docId: 'ep-doc-victim-interviews', caseId: 'ep-case-florida' },
-  { docId: 'ep-doc-jpmorgan-sars', caseId: 'ep-case-jpmorgan' },
-  { docId: 'ep-doc-doe-v-deutsche', caseId: 'ep-case-jpmorgan' },
-  { docId: 'ep-doc-deutsche-compliance', caseId: 'ep-case-jpmorgan' },
-  { docId: 'ep-doc-suicide-attempt', caseId: 'ep-case-sdny' },
+  { docId: pid('ep-doc-sdny-indictment'), caseId: pid('ep-case-sdny') },
+  { docId: pid('ep-doc-maxwell-superseding'), caseId: pid('ep-case-maxwell') },
+  { docId: pid('ep-doc-giuffre-v-andrew'), caseId: pid('ep-case-giuffre-andrew') },
+  { docId: pid('ep-doc-cvra-challenge'), caseId: pid('ep-case-florida') },
+  { docId: pid('ep-doc-2024-unsealed'), caseId: pid('ep-case-giuffre-maxwell') },
+  { docId: pid('ep-doc-doe-v-jpmorgan'), caseId: pid('ep-case-jpmorgan') },
+  { docId: pid('ep-doc-maxwell-deposition'), caseId: pid('ep-case-giuffre-maxwell') },
+  { docId: pid('ep-doc-giuffre-depo-2016'), caseId: pid('ep-case-giuffre-maxwell') },
+  { docId: pid('ep-doc-alessi-testimony'), caseId: pid('ep-case-maxwell') },
+  { docId: pid('ep-doc-visoski-testimony'), caseId: pid('ep-case-maxwell') },
+  { docId: pid('ep-doc-rodriguez-depo'), caseId: pid('ep-case-florida') },
+  { docId: pid('ep-doc-fbi-evidence-collection'), caseId: pid('ep-case-sdny') },
+  { docId: pid('ep-doc-727-logs'), caseId: pid('ep-case-giuffre-maxwell') },
+  { docId: pid('ep-doc-black-book'), caseId: pid('ep-case-giuffre-maxwell') },
+  { docId: pid('ep-doc-probable-cause'), caseId: pid('ep-case-florida') },
+  { docId: pid('ep-doc-pb-supplemental'), caseId: pid('ep-case-florida') },
+  { docId: pid('ep-doc-victim-interviews'), caseId: pid('ep-case-florida') },
+  { docId: pid('ep-doc-jpmorgan-sars'), caseId: pid('ep-case-jpmorgan') },
+  { docId: pid('ep-doc-doe-v-deutsche'), caseId: pid('ep-case-jpmorgan') },
+  { docId: pid('ep-doc-deutsche-compliance'), caseId: pid('ep-case-jpmorgan') },
+  { docId: pid('ep-doc-suicide-attempt'), caseId: pid('ep-case-sdny') },
 ]
 
 const documentedBy = [
-  { eventId: 'ep-evt-miami-herald', docId: 'ep-doc-miami-herald' },
-  { eventId: 'ep-evt-death', docId: 'ep-doc-autopsy' },
-  { eventId: 'ep-evt-npa', docId: 'ep-doc-npa' },
-  { eventId: 'ep-evt-maxwell-trial', docId: 'ep-doc-maxwell-transcripts' },
+  { eventId: pid('ep-evt-miami-herald'), docId: pid('ep-doc-miami-herald') },
+  { eventId: pid('ep-evt-death'), docId: pid('ep-doc-autopsy') },
+  { eventId: pid('ep-evt-npa'), docId: pid('ep-doc-npa') },
+  { eventId: pid('ep-evt-maxwell-trial'), docId: pid('ep-doc-maxwell-transcripts') },
   // New documented-by relationships
-  { eventId: 'ep-evt-indictment', docId: 'ep-doc-sdny-indictment' },
-  { eventId: 'ep-evt-arrest', docId: 'ep-doc-fbi-evidence-collection' },
-  { eventId: 'ep-evt-maxwell-arrest', docId: 'ep-doc-maxwell-superseding' },
-  { eventId: 'ep-evt-maxwell-verdict', docId: 'ep-doc-maxwell-transcripts' },
-  { eventId: 'ep-evt-giuffre-v-maxwell', docId: 'ep-doc-giuffre-depositions' },
-  { eventId: 'ep-evt-document-release', docId: 'ep-doc-2024-unsealed' },
-  { eventId: 'ep-evt-pb-investigation', docId: 'ep-doc-probable-cause' },
-  { eventId: 'ep-evt-pb-investigation', docId: 'ep-doc-pb-supplemental' },
-  { eventId: 'ep-evt-fbi-investigation', docId: 'ep-doc-fbi-302s' },
-  { eventId: 'ep-evt-death', docId: 'ep-doc-baden-review' },
-  { eventId: 'ep-evt-death', docId: 'ep-doc-mcc-medical' },
-  { eventId: 'ep-evt-autopsy', docId: 'ep-doc-baden-review' },
-  { eventId: 'ep-evt-jpmorgan-settlement', docId: 'ep-doc-doe-v-jpmorgan' },
-  { eventId: 'ep-evt-deutsche-settlement', docId: 'ep-doc-doe-v-deutsche' },
-  { eventId: 'ep-evt-guilty-plea', docId: 'ep-doc-cvra-challenge' },
+  { eventId: pid('ep-evt-indictment'), docId: pid('ep-doc-sdny-indictment') },
+  { eventId: pid('ep-evt-arrest'), docId: pid('ep-doc-fbi-evidence-collection') },
+  { eventId: pid('ep-evt-maxwell-arrest'), docId: pid('ep-doc-maxwell-superseding') },
+  { eventId: pid('ep-evt-maxwell-verdict'), docId: pid('ep-doc-maxwell-transcripts') },
+  { eventId: pid('ep-evt-giuffre-v-maxwell'), docId: pid('ep-doc-giuffre-depositions') },
+  { eventId: pid('ep-evt-document-release'), docId: pid('ep-doc-2024-unsealed') },
+  { eventId: pid('ep-evt-pb-investigation'), docId: pid('ep-doc-probable-cause') },
+  { eventId: pid('ep-evt-pb-investigation'), docId: pid('ep-doc-pb-supplemental') },
+  { eventId: pid('ep-evt-fbi-investigation'), docId: pid('ep-doc-fbi-302s') },
+  { eventId: pid('ep-evt-death'), docId: pid('ep-doc-baden-review') },
+  { eventId: pid('ep-evt-death'), docId: pid('ep-doc-mcc-medical') },
+  { eventId: pid('ep-evt-autopsy'), docId: pid('ep-doc-baden-review') },
+  { eventId: pid('ep-evt-jpmorgan-settlement'), docId: pid('ep-doc-doe-v-jpmorgan') },
+  { eventId: pid('ep-evt-deutsche-settlement'), docId: pid('ep-doc-doe-v-deutsche') },
+  { eventId: pid('ep-evt-guilty-plea'), docId: pid('ep-doc-cvra-challenge') },
 ]
 
 const mentionedIn = [
   // Jeffrey Epstein mentioned in all documents
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-maxwell-transcripts' },
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-flight-logs' },
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-black-book' },
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-npa' },
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-giuffre-depositions' },
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-fbi-vault' },
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-jpmorgan-comms' },
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-miami-herald' },
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-pb-police' },
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-autopsy' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-maxwell-transcripts') },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-flight-logs') },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-black-book') },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-npa') },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-giuffre-depositions') },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-fbi-vault') },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-jpmorgan-comms') },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-miami-herald') },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-pb-police') },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-autopsy') },
   // Ghislaine Maxwell
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-maxwell-transcripts' },
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-flight-logs' },
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-black-book' },
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-giuffre-depositions' },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-maxwell-transcripts') },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-flight-logs') },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-black-book') },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-giuffre-depositions') },
   // Virginia Giuffre
-  { personId: 'ep-virginia-giuffre', docId: 'ep-doc-giuffre-depositions' },
-  { personId: 'ep-virginia-giuffre', docId: 'ep-doc-maxwell-transcripts' },
+  { personId: pid('ep-virginia-giuffre'), docId: pid('ep-doc-giuffre-depositions') },
+  { personId: pid('ep-virginia-giuffre'), docId: pid('ep-doc-maxwell-transcripts') },
   // Prince Andrew
-  { personId: 'ep-prince-andrew', docId: 'ep-doc-giuffre-depositions' },
+  { personId: pid('ep-prince-andrew'), docId: pid('ep-doc-giuffre-depositions') },
   // Bill Clinton
-  { personId: 'ep-bill-clinton', docId: 'ep-doc-flight-logs' },
+  { personId: pid('ep-bill-clinton'), docId: pid('ep-doc-flight-logs') },
   // Alan Dershowitz
-  { personId: 'ep-alan-dershowitz', docId: 'ep-doc-giuffre-depositions' },
+  { personId: pid('ep-alan-dershowitz'), docId: pid('ep-doc-giuffre-depositions') },
   // Leon Black
-  { personId: 'ep-leon-black', docId: 'ep-doc-jpmorgan-comms' },
-  { personId: 'ep-leon-black', docId: 'ep-doc-leon-black-records' },
+  { personId: pid('ep-leon-black'), docId: pid('ep-doc-jpmorgan-comms') },
+  { personId: pid('ep-leon-black'), docId: pid('ep-doc-leon-black-records') },
 
   // ─── New documents — MENTIONED_IN ──────────────────────────────────────
   // SDNY Indictment
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-sdny-indictment' },
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-sdny-indictment' },
-  { personId: 'ep-sarah-kellen', docId: 'ep-doc-sdny-indictment' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-sdny-indictment') },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-sdny-indictment') },
+  { personId: pid('ep-sarah-kellen'), docId: pid('ep-doc-sdny-indictment') },
   // Maxwell Superseding Indictment
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-maxwell-superseding' },
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-maxwell-superseding' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-maxwell-superseding') },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-maxwell-superseding') },
   // Giuffre v. Prince Andrew
-  { personId: 'ep-virginia-giuffre', docId: 'ep-doc-giuffre-v-andrew' },
-  { personId: 'ep-prince-andrew', docId: 'ep-doc-giuffre-v-andrew' },
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-giuffre-v-andrew' },
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-giuffre-v-andrew' },
+  { personId: pid('ep-virginia-giuffre'), docId: pid('ep-doc-giuffre-v-andrew') },
+  { personId: pid('ep-prince-andrew'), docId: pid('ep-doc-giuffre-v-andrew') },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-giuffre-v-andrew') },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-giuffre-v-andrew') },
   // CVRA Challenge
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-cvra-challenge' },
-  { personId: 'ep-alan-dershowitz', docId: 'ep-doc-cvra-challenge' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-cvra-challenge') },
+  { personId: pid('ep-alan-dershowitz'), docId: pid('ep-doc-cvra-challenge') },
   // 2024 Unsealed Documents
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-2024-unsealed' },
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-2024-unsealed' },
-  { personId: 'ep-prince-andrew', docId: 'ep-doc-2024-unsealed' },
-  { personId: 'ep-bill-clinton', docId: 'ep-doc-2024-unsealed' },
-  { personId: 'ep-alan-dershowitz', docId: 'ep-doc-2024-unsealed' },
-  { personId: 'ep-david-copperfield', docId: 'ep-doc-2024-unsealed' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-2024-unsealed') },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-2024-unsealed') },
+  { personId: pid('ep-prince-andrew'), docId: pid('ep-doc-2024-unsealed') },
+  { personId: pid('ep-bill-clinton'), docId: pid('ep-doc-2024-unsealed') },
+  { personId: pid('ep-alan-dershowitz'), docId: pid('ep-doc-2024-unsealed') },
+  { personId: pid('ep-david-copperfield'), docId: pid('ep-doc-2024-unsealed') },
   // Doe v. JPMorgan
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-doe-v-jpmorgan' },
-  { personId: 'ep-jes-staley', docId: 'ep-doc-doe-v-jpmorgan' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-doe-v-jpmorgan') },
+  { personId: pid('ep-jes-staley'), docId: pid('ep-doc-doe-v-jpmorgan') },
   // Doe v. Deutsche Bank
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-doe-v-deutsche' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-doe-v-deutsche') },
   // Maxwell 2016 Deposition
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-maxwell-deposition' },
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-maxwell-deposition' },
-  { personId: 'ep-virginia-giuffre', docId: 'ep-doc-maxwell-deposition' },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-maxwell-deposition') },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-maxwell-deposition') },
+  { personId: pid('ep-virginia-giuffre'), docId: pid('ep-doc-maxwell-deposition') },
   // Giuffre 2016 Deposition
-  { personId: 'ep-virginia-giuffre', docId: 'ep-doc-giuffre-depo-2016' },
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-giuffre-depo-2016' },
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-giuffre-depo-2016' },
-  { personId: 'ep-prince-andrew', docId: 'ep-doc-giuffre-depo-2016' },
-  { personId: 'ep-alan-dershowitz', docId: 'ep-doc-giuffre-depo-2016' },
+  { personId: pid('ep-virginia-giuffre'), docId: pid('ep-doc-giuffre-depo-2016') },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-giuffre-depo-2016') },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-giuffre-depo-2016') },
+  { personId: pid('ep-prince-andrew'), docId: pid('ep-doc-giuffre-depo-2016') },
+  { personId: pid('ep-alan-dershowitz'), docId: pid('ep-doc-giuffre-depo-2016') },
   // Alessi Testimony
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-alessi-testimony' },
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-alessi-testimony' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-alessi-testimony') },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-alessi-testimony') },
   // Visoski Testimony
-  { personId: 'ep-larry-visoski', docId: 'ep-doc-visoski-testimony' },
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-visoski-testimony' },
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-visoski-testimony' },
+  { personId: pid('ep-larry-visoski'), docId: pid('ep-doc-visoski-testimony') },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-visoski-testimony') },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-visoski-testimony') },
   // Rodriguez Deposition
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-rodriguez-depo' },
-  { personId: 'ep-sarah-kellen', docId: 'ep-doc-rodriguez-depo' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-rodriguez-depo') },
+  { personId: pid('ep-sarah-kellen'), docId: pid('ep-doc-rodriguez-depo') },
   // FBI 302 Reports
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-fbi-302s' },
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-fbi-302s' },
-  { personId: 'ep-sarah-kellen', docId: 'ep-doc-fbi-302s' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-fbi-302s') },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-fbi-302s') },
+  { personId: pid('ep-sarah-kellen'), docId: pid('ep-doc-fbi-302s') },
   // FBI Evidence Collection
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-fbi-evidence-collection' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-fbi-evidence-collection') },
   // FBI Vault Part 2
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-fbi-vault-part2' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-fbi-vault-part2') },
   // 727 Flight Logs
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-727-logs' },
-  { personId: 'ep-bill-clinton', docId: 'ep-doc-727-logs' },
-  { personId: 'ep-prince-andrew', docId: 'ep-doc-727-logs' },
-  { personId: 'ep-alan-dershowitz', docId: 'ep-doc-727-logs' },
-  { personId: 'ep-larry-visoski', docId: 'ep-doc-727-logs' },
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-727-logs' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-727-logs') },
+  { personId: pid('ep-bill-clinton'), docId: pid('ep-doc-727-logs') },
+  { personId: pid('ep-prince-andrew'), docId: pid('ep-doc-727-logs') },
+  { personId: pid('ep-alan-dershowitz'), docId: pid('ep-doc-727-logs') },
+  { personId: pid('ep-larry-visoski'), docId: pid('ep-doc-727-logs') },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-727-logs') },
   // Gulfstream Logs
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-gulfstream-logs' },
-  { personId: 'ep-larry-visoski', docId: 'ep-doc-gulfstream-logs' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-gulfstream-logs') },
+  { personId: pid('ep-larry-visoski'), docId: pid('ep-doc-gulfstream-logs') },
   // DOJ Phase 1 Logs
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-doj-phase1-logs' },
-  { personId: 'ep-donald-trump', docId: 'ep-doc-doj-phase1-logs' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-doj-phase1-logs') },
+  { personId: pid('ep-donald-trump'), docId: pid('ep-doc-doj-phase1-logs') },
   // Probable Cause Affidavit
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-probable-cause' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-probable-cause') },
   // PB Supplemental
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-pb-supplemental' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-pb-supplemental') },
   // Victim Interviews
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-victim-interviews' },
-  { personId: 'ep-sarah-kellen', docId: 'ep-doc-victim-interviews' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-victim-interviews') },
+  { personId: pid('ep-sarah-kellen'), docId: pid('ep-doc-victim-interviews') },
   // JPMorgan SARs
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-jpmorgan-sars' },
-  { personId: 'ep-jes-staley', docId: 'ep-doc-jpmorgan-sars' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-jpmorgan-sars') },
+  { personId: pid('ep-jes-staley'), docId: pid('ep-doc-jpmorgan-sars') },
   // Deutsche Compliance
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-deutsche-compliance' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-deutsche-compliance') },
   // Wexner POA
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-wexner-poa' },
-  { personId: 'ep-leslie-wexner', docId: 'ep-doc-wexner-poa' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-wexner-poa') },
+  { personId: pid('ep-leslie-wexner'), docId: pid('ep-doc-wexner-poa') },
   // Leon Black Records
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-leon-black-records' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-leon-black-records') },
   // FCA Staley
-  { personId: 'ep-jes-staley', docId: 'ep-doc-fca-staley' },
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-fca-staley' },
+  { personId: pid('ep-jes-staley'), docId: pid('ep-doc-fca-staley') },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-fca-staley') },
   // Vanity Fair 2003
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-vanity-fair-2003' },
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-vanity-fair-2003' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-vanity-fair-2003') },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-vanity-fair-2003') },
   // NYT 2019
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-nyt-2019' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-nyt-2019') },
   // Netflix doc
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-netflix-doc' },
-  { personId: 'ep-virginia-giuffre', docId: 'ep-doc-netflix-doc' },
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-netflix-doc' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-netflix-doc') },
+  { personId: pid('ep-virginia-giuffre'), docId: pid('ep-doc-netflix-doc') },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-netflix-doc') },
   // JKB Book
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-jkb-book' },
-  { personId: 'ep-virginia-giuffre', docId: 'ep-doc-jkb-book' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-jkb-book') },
+  { personId: pid('ep-virginia-giuffre'), docId: pid('ep-doc-jkb-book') },
   // Giuffre Memoir
-  { personId: 'ep-virginia-giuffre', docId: 'ep-doc-giuffre-memoir' },
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-giuffre-memoir' },
-  { personId: 'ep-ghislaine-maxwell', docId: 'ep-doc-giuffre-memoir' },
-  { personId: 'ep-prince-andrew', docId: 'ep-doc-giuffre-memoir' },
+  { personId: pid('ep-virginia-giuffre'), docId: pid('ep-doc-giuffre-memoir') },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-giuffre-memoir') },
+  { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-giuffre-memoir') },
+  { personId: pid('ep-prince-andrew'), docId: pid('ep-doc-giuffre-memoir') },
   // DOJ Phase 2 Reporting
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-doj-phase2-reporting' },
-  { personId: 'ep-donald-trump', docId: 'ep-doc-doj-phase2-reporting' },
-  { personId: 'ep-prince-andrew', docId: 'ep-doc-doj-phase2-reporting' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-doj-phase2-reporting') },
+  { personId: pid('ep-donald-trump'), docId: pid('ep-doc-doj-phase2-reporting') },
+  { personId: pid('ep-prince-andrew'), docId: pid('ep-doc-doj-phase2-reporting') },
   // Baden Review
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-baden-review' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-baden-review') },
   // MCC Medical
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-mcc-medical' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-mcc-medical') },
   // Suicide Attempt
-  { personId: 'ep-jeffrey-epstein', docId: 'ep-doc-suicide-attempt' },
+  { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-suicide-attempt') },
 ]
 
 // ---------------------------------------------------------------------------
 // Seed logic
 // ---------------------------------------------------------------------------
 
-async function seedPersons(): Promise<void> {
-  console.log(`\nSeeding ${persons.length} persons...`)
-  for (const person of persons) {
-    await executeWrite(
-      `MERGE (p:Person {id: $id})
-       SET p.name = $name,
-           p.slug = $slug,
-           p.role = $role,
-           p.description = $description,
-           p.nationality = $nationality,
-           p.caso_slug = $casoSlug`,
-      { ...person, casoSlug: CASO_SLUG },
-    )
-    console.log(`  ✓ ${person.name}`)
-  }
-}
+async function seed(): Promise<void> {
+  const session = getDriver().session()
 
-async function seedLocations(): Promise<void> {
-  console.log(`\nSeeding ${locations.length} locations...`)
-  for (const location of locations) {
-    await executeWrite(
-      `MERGE (l:Location {id: $id})
-       SET l.name = $name,
-           l.slug = $slug,
-           l.location_type = $location_type,
-           l.address = $address,
-           l.coordinates = $coordinates,
-           l.caso_slug = $casoSlug`,
-      { ...location, casoSlug: CASO_SLUG },
-    )
-    console.log(`  ✓ ${location.name}`)
-  }
-}
+  try {
+    console.log('Seeding Caso Epstein persons...')
+    for (const person of persons) {
+      await session.run(
+        `MERGE (p:Person {id: $id})
+         SET p.name = $name,
+             p.slug = $slug,
+             p.role = $role,
+             p.description = $description,
+             p.nationality = $nationality,
+             p.caso_slug = $casoSlug`,
+        { ...person, casoSlug: CASO_SLUG },
+      )
+      console.log(`  ✓ ${person.name}`)
+    }
 
-async function seedEvents(): Promise<void> {
-  console.log(`\nSeeding ${events.length} events...`)
-  for (const event of events) {
-    await executeWrite(
-      `MERGE (e:Event {id: $id})
-       SET e.title = $title,
-           e.date = $date,
-           e.event_type = $event_type,
-           e.description = $description,
-           e.caso_slug = $casoSlug`,
-      { ...event, casoSlug: CASO_SLUG },
-    )
-    console.log(`  ✓ ${event.title}`)
-  }
-}
+    console.log('\nSeeding locations...')
+    for (const location of locations) {
+      await session.run(
+        `MERGE (l:Location {id: $id})
+         SET l.name = $name,
+             l.slug = $slug,
+             l.location_type = $location_type,
+             l.address = $address,
+             l.coordinates = $coordinates,
+             l.caso_slug = $casoSlug`,
+        { ...location, casoSlug: CASO_SLUG },
+      )
+      console.log(`  ✓ ${location.name}`)
+    }
 
-async function seedDocuments(): Promise<void> {
-  console.log(`\nSeeding ${documents.length} documents...`)
-  for (const doc of documents) {
-    await executeWrite(
-      `MERGE (d:Document {id: $id})
-       SET d.title = $title,
-           d.slug = $slug,
-           d.doc_type = $doc_type,
-           d.source_url = $source_url,
-           d.summary = $summary,
-           d.date = $date,
-           d.key_findings = $key_findings,
-           d.excerpt = $excerpt,
-           d.page_count = $page_count,
-           d.caso_slug = $casoSlug`,
-      { ...doc, casoSlug: CASO_SLUG },
-    )
-    console.log(`  ✓ ${doc.title}`)
-  }
-}
+    console.log('\nSeeding events...')
+    for (const event of events) {
+      await session.run(
+        `MERGE (e:Event {id: $id})
+         SET e.title = $title,
+             e.date = $date,
+             e.event_type = $event_type,
+             e.description = $description,
+             e.caso_slug = $casoSlug`,
+        { ...event, casoSlug: CASO_SLUG },
+      )
+      console.log(`  ✓ ${event.title}`)
+    }
 
-async function seedOrganizations(): Promise<void> {
-  console.log(`\nSeeding ${organizations.length} organizations...`)
-  for (const org of organizations) {
-    await executeWrite(
-      `MERGE (o:Organization {id: $id})
-       SET o.name = $name,
-           o.slug = $slug,
-           o.org_type = $org_type,
-           o.description = $description,
-           o.caso_slug = $casoSlug`,
-      { ...org, casoSlug: CASO_SLUG },
-    )
-    console.log(`  ✓ ${org.name}`)
-  }
-}
+    console.log('\nSeeding documents...')
+    for (const doc of documents) {
+      await session.run(
+        `MERGE (d:Document {id: $id})
+         SET d.title = $title,
+             d.slug = $slug,
+             d.doc_type = $doc_type,
+             d.source_url = $source_url,
+             d.summary = $summary,
+             d.date = $date,
+             d.key_findings = $key_findings,
+             d.excerpt = $excerpt,
+             d.page_count = $page_count,
+             d.caso_slug = $casoSlug`,
+        { ...doc, casoSlug: CASO_SLUG },
+      )
+      console.log(`  ✓ ${doc.title}`)
+    }
 
-async function seedLegalCases(): Promise<void> {
-  console.log(`\nSeeding ${legalCases.length} legal cases...`)
-  for (const lc of legalCases) {
-    await executeWrite(
-      `MERGE (c:LegalCase {id: $id})
-       SET c.title = $title,
-           c.slug = $slug,
-           c.case_number = $case_number,
-           c.court = $court,
-           c.status = $status,
-           c.date_filed = $date_filed,
-           c.caso_slug = $casoSlug`,
-      { ...lc, casoSlug: CASO_SLUG },
-    )
-    console.log(`  ✓ ${lc.title}`)
-  }
-}
+    console.log('\nSeeding organizations...')
+    for (const org of organizations) {
+      await session.run(
+        `MERGE (o:Organization {id: $id})
+         SET o.name = $name,
+             o.slug = $slug,
+             o.org_type = $org_type,
+             o.description = $description,
+             o.caso_slug = $casoSlug`,
+        { ...org, casoSlug: CASO_SLUG },
+      )
+      console.log(`  ✓ ${org.name}`)
+    }
 
-async function seedRelationships(): Promise<void> {
-  console.log('\nSeeding relationships...')
+    console.log('\nSeeding legal cases...')
+    for (const lc of legalCases) {
+      await session.run(
+        `MERGE (c:LegalCase {id: $id})
+         SET c.title = $title,
+             c.slug = $slug,
+             c.case_number = $case_number,
+             c.court = $court,
+             c.status = $status,
+             c.date_filed = $date_filed,
+             c.caso_slug = $casoSlug`,
+        { ...lc, casoSlug: CASO_SLUG },
+      )
+      console.log(`  ✓ ${lc.title}`)
+    }
 
-  // ASSOCIATED_WITH (Person → Person)
-  console.log('  ASSOCIATED_WITH...')
-  for (const rel of associatedWith) {
-    await executeWrite(
-      `MATCH (a:Person {id: $fromId}), (b:Person {id: $toId})
-       MERGE (a)-[r:ASSOCIATED_WITH]->(b)
-       SET r.relationship_type = $relType, r.description = $description`,
-      rel,
-    )
-  }
-  console.log(`    ✓ ${associatedWith.length} relationships`)
+    // ── Relationships ──────────────────────────────────────────────────────
 
-  // EMPLOYED_BY (Person → Organization)
-  console.log('  EMPLOYED_BY...')
-  for (const rel of employedBy) {
-    await executeWrite(
-      `MATCH (p:Person {id: $personId}), (o:Organization {id: $orgId})
-       MERGE (p)-[r:EMPLOYED_BY]->(o)`,
-      rel,
-    )
-  }
-  console.log(`    ✓ ${employedBy.length} relationships`)
+    console.log('\nSeeding relationships...')
 
-  // AFFILIATED_WITH (Person → Organization)
-  console.log('  AFFILIATED_WITH...')
-  for (const rel of affiliatedWith) {
-    await executeWrite(
-      `MATCH (p:Person {id: $personId}), (o:Organization {id: $orgId})
-       MERGE (p)-[r:AFFILIATED_WITH]->(o)`,
-      rel,
-    )
-  }
-  console.log(`    ✓ ${affiliatedWith.length} relationships`)
+    // ASSOCIATED_WITH (Person → Person)
+    console.log('  ASSOCIATED_WITH...')
+    for (const rel of associatedWith) {
+      await session.run(
+        `MATCH (a:Person { id: $fromId, caso_slug: $casoSlug })
+         MATCH (b:Person { id: $toId, caso_slug: $casoSlug })
+         MERGE (a)-[r:ASSOCIATED_WITH]->(b)
+         SET r.relationship_type = $relType, r.description = $description`,
+        { ...rel, casoSlug: CASO_SLUG },
+      )
+    }
+    console.log(`    ✓ ${associatedWith.length} relationships`)
 
-  // OWNED (Person → Location)
-  console.log('  OWNED...')
-  for (const rel of owned) {
-    await executeWrite(
-      `MATCH (p:Person {id: $ownerId}), (l:Location {id: $locationId})
-       MERGE (p)-[r:OWNED]->(l)`,
-      { ownerId: rel.ownerId, locationId: rel.locationId },
-    )
-  }
-  console.log(`    ✓ ${owned.length} relationships`)
+    // EMPLOYED_BY (Person → Organization)
+    console.log('  EMPLOYED_BY...')
+    for (const rel of employedBy) {
+      await session.run(
+        `MATCH (p:Person { id: $personId, caso_slug: $casoSlug })
+         MATCH (o:Organization { id: $orgId, caso_slug: $casoSlug })
+         MERGE (p)-[r:EMPLOYED_BY]->(o)`,
+        { ...rel, casoSlug: CASO_SLUG },
+      )
+    }
+    console.log(`    ✓ ${employedBy.length} relationships`)
 
-  // PARTICIPATED_IN (Person → Event)
-  console.log('  PARTICIPATED_IN...')
-  for (const rel of participatedIn) {
-    await executeWrite(
-      `MATCH (p:Person {id: $personId}), (e:Event {id: $eventId})
-       MERGE (p)-[r:PARTICIPATED_IN]->(e)`,
-      rel,
-    )
-  }
-  console.log(`    ✓ ${participatedIn.length} relationships`)
+    // AFFILIATED_WITH (Person → Organization)
+    console.log('  AFFILIATED_WITH...')
+    for (const rel of affiliatedWith) {
+      await session.run(
+        `MATCH (p:Person { id: $personId, caso_slug: $casoSlug })
+         MATCH (o:Organization { id: $orgId, caso_slug: $casoSlug })
+         MERGE (p)-[r:AFFILIATED_WITH]->(o)`,
+        { ...rel, casoSlug: CASO_SLUG },
+      )
+    }
+    console.log(`    ✓ ${affiliatedWith.length} relationships`)
 
-  // FILED_IN (Document → LegalCase)
-  console.log('  FILED_IN...')
-  for (const rel of filedIn) {
-    await executeWrite(
-      `MATCH (d:Document {id: $docId}), (c:LegalCase {id: $caseId})
-       MERGE (d)-[r:FILED_IN]->(c)`,
-      rel,
-    )
-  }
-  console.log(`    ✓ ${filedIn.length} relationships`)
+    // OWNED (Person → Location)
+    console.log('  OWNED...')
+    for (const rel of owned) {
+      await session.run(
+        `MATCH (p:Person { id: $ownerId, caso_slug: $casoSlug })
+         MATCH (l:Location { id: $locationId, caso_slug: $casoSlug })
+         MERGE (p)-[r:OWNED]->(l)`,
+        { ownerId: rel.ownerId, locationId: rel.locationId, casoSlug: CASO_SLUG },
+      )
+    }
+    console.log(`    ✓ ${owned.length} relationships`)
 
-  // DOCUMENTED_BY (Event → Document)
-  console.log('  DOCUMENTED_BY...')
-  for (const rel of documentedBy) {
-    await executeWrite(
-      `MATCH (e:Event {id: $eventId}), (d:Document {id: $docId})
-       MERGE (e)-[r:DOCUMENTED_BY]->(d)`,
-      rel,
-    )
-  }
-  console.log(`    ✓ ${documentedBy.length} relationships`)
+    // PARTICIPATED_IN (Person → Event)
+    console.log('  PARTICIPATED_IN...')
+    for (const rel of participatedIn) {
+      await session.run(
+        `MATCH (p:Person { id: $personId, caso_slug: $casoSlug })
+         MATCH (e:Event { id: $eventId, caso_slug: $casoSlug })
+         MERGE (p)-[r:PARTICIPATED_IN]->(e)`,
+        { ...rel, casoSlug: CASO_SLUG },
+      )
+    }
+    console.log(`    ✓ ${participatedIn.length} relationships`)
 
-  // MENTIONED_IN (Person → Document)
-  console.log('  MENTIONED_IN...')
-  for (const rel of mentionedIn) {
-    await executeWrite(
-      `MATCH (p:Person {id: $personId}), (d:Document {id: $docId})
-       MERGE (p)-[r:MENTIONED_IN]->(d)`,
-      rel,
-    )
+    // FILED_IN (Document → LegalCase)
+    console.log('  FILED_IN...')
+    for (const rel of filedIn) {
+      await session.run(
+        `MATCH (d:Document { id: $docId, caso_slug: $casoSlug })
+         MATCH (c:LegalCase { id: $caseId, caso_slug: $casoSlug })
+         MERGE (d)-[r:FILED_IN]->(c)`,
+        { ...rel, casoSlug: CASO_SLUG },
+      )
+    }
+    console.log(`    ✓ ${filedIn.length} relationships`)
+
+    // DOCUMENTED_BY (Event → Document)
+    console.log('  DOCUMENTED_BY...')
+    for (const rel of documentedBy) {
+      await session.run(
+        `MATCH (e:Event { id: $eventId, caso_slug: $casoSlug })
+         MATCH (d:Document { id: $docId, caso_slug: $casoSlug })
+         MERGE (e)-[r:DOCUMENTED_BY]->(d)`,
+        { ...rel, casoSlug: CASO_SLUG },
+      )
+    }
+    console.log(`    ✓ ${documentedBy.length} relationships`)
+
+    // MENTIONED_IN (Person → Document)
+    console.log('  MENTIONED_IN...')
+    for (const rel of mentionedIn) {
+      await session.run(
+        `MATCH (p:Person { id: $personId, caso_slug: $casoSlug })
+         MATCH (d:Document { id: $docId, caso_slug: $casoSlug })
+         MERGE (p)-[r:MENTIONED_IN]->(d)`,
+        { ...rel, casoSlug: CASO_SLUG },
+      )
+    }
+    console.log(`    ✓ ${mentionedIn.length} relationships`)
+  } finally {
+    await session.close()
   }
-  console.log(`    ✓ ${mentionedIn.length} relationships`)
 }
 
 // ---------------------------------------------------------------------------
@@ -1362,13 +1372,7 @@ async function main(): Promise<void> {
   }
   console.log('Connected.')
 
-  await seedPersons()
-  await seedLocations()
-  await seedEvents()
-  await seedDocuments()
-  await seedOrganizations()
-  await seedLegalCases()
-  await seedRelationships()
+  await seed()
 
   const duration = Date.now() - start
   console.log(`\n${'─'.repeat(50)}`)
