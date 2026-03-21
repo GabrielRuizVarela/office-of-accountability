@@ -1,51 +1,51 @@
+'use client'
+
 /**
- * Caso Epstein — Cronologia (full timeline page).
+ * Caso Epstein — Timeline (full timeline page).
  *
  * Vertical timeline layout with category-colored badges,
  * built from TIMELINE_EVENTS in investigation-data.ts.
- * Uses _es fields for Spanish content.
  */
 
 import Link from 'next/link'
 
+import { useLanguage, type Lang } from '@/lib/language-context'
 import {
   TIMELINE_EVENTS,
   type InvestigationCategory,
 } from '@/lib/caso-epstein/investigation-data'
 
 // ---------------------------------------------------------------------------
-// Category badge config
+// Translations
 // ---------------------------------------------------------------------------
 
-const CATEGORY_CONFIG: Record<
-  InvestigationCategory,
-  { label: string; cls: string; dotCls: string }
-> = {
-  political: {
-    label: 'Politico',
-    cls: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
-    dotCls: 'border-blue-500',
+const t = {
+  headerBadge: { en: 'Full timeline', es: 'Cronologia completa' },
+  headerTitle: { en: 'Epstein Case: Timeline', es: 'Caso Epstein: Linea de tiempo' },
+  headerDesc: {
+    en: (n: number) => `${n} documented events from the earliest abuses through convictions, declassified documents, and the 2026 international arrests.`,
+    es: (n: number) => `${n} eventos documentados desde los primeros abusos hasta las condenas, los documentos desclasificados y los arrestos internacionales de 2026.`,
   },
-  financial: {
-    label: 'Financiero',
-    cls: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
-    dotCls: 'border-emerald-500',
-  },
-  legal: {
-    label: 'Legal',
-    cls: 'bg-amber-500/15 text-amber-400 border-amber-500/30',
-    dotCls: 'border-amber-500',
-  },
-  media: {
-    label: 'Medios',
-    cls: 'bg-purple-500/15 text-purple-400 border-purple-500/30',
-    dotCls: 'border-purple-500',
-  },
-  coverup: {
-    label: 'Encubrimiento',
-    cls: 'bg-red-500/15 text-red-400 border-red-500/30',
-    dotCls: 'border-red-500',
-  },
+  source: { en: 'Source', es: 'Fuente' },
+  navSummary: { en: '\u2190 Summary', es: '\u2190 Resumen' },
+  navInvestigation: { en: 'Investigation', es: 'Investigacion' },
+  navEvidence: { en: 'Evidence \u2192', es: 'Evidencia \u2192' },
+} as const
+
+const CATEGORY_LABELS: Record<InvestigationCategory, Record<Lang, string>> = {
+  political: { en: 'Political', es: 'Politico' },
+  financial: { en: 'Financial', es: 'Financiero' },
+  legal: { en: 'Legal', es: 'Legal' },
+  media: { en: 'Media', es: 'Medios' },
+  coverup: { en: 'Cover-up', es: 'Encubrimiento' },
+}
+
+const CATEGORY_CLS: Record<InvestigationCategory, { cls: string; dotCls: string }> = {
+  political: { cls: 'bg-blue-500/15 text-blue-400 border-blue-500/30', dotCls: 'border-blue-500' },
+  financial: { cls: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30', dotCls: 'border-emerald-500' },
+  legal: { cls: 'bg-amber-500/15 text-amber-400 border-amber-500/30', dotCls: 'border-amber-500' },
+  media: { cls: 'bg-purple-500/15 text-purple-400 border-purple-500/30', dotCls: 'border-purple-500' },
+  coverup: { cls: 'bg-red-500/15 text-red-400 border-red-500/30', dotCls: 'border-red-500' },
 }
 
 // ---------------------------------------------------------------------------
@@ -53,7 +53,8 @@ const CATEGORY_CONFIG: Record<
 // ---------------------------------------------------------------------------
 
 export default function CronologiaPage() {
-  // Group events by year for visual organization
+  const { lang } = useLanguage()
+
   const eventsByYear = new Map<string, typeof TIMELINE_EVENTS>()
   for (const event of TIMELINE_EVENTS) {
     const year = event.date.slice(0, 4)
@@ -66,86 +67,71 @@ export default function CronologiaPage() {
 
   return (
     <div className="space-y-12 pb-16">
-      {/* --------------------------------------------------------------- */}
-      {/* Header                                                          */}
-      {/* --------------------------------------------------------------- */}
+      {/* Header */}
       <header className="text-center">
         <p className="text-xs font-medium uppercase tracking-widest text-red-400">
-          Cronologia completa
+          {t.headerBadge[lang]}
         </p>
         <h1 className="mt-3 text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
-          Caso Epstein: Linea de tiempo
+          {t.headerTitle[lang]}
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-sm text-zinc-400">
-          {TIMELINE_EVENTS.length} eventos documentados desde los primeros abusos hasta las
-          condenas, los documentos desclasificados y los arrestos internacionales de 2026.
+          {t.headerDesc[lang](TIMELINE_EVENTS.length)}
         </p>
       </header>
 
-      {/* --------------------------------------------------------------- */}
-      {/* Category legend                                                  */}
-      {/* --------------------------------------------------------------- */}
+      {/* Category legend */}
       <div className="flex flex-wrap justify-center gap-3">
-        {Object.entries(CATEGORY_CONFIG).map(([key, config]) => (
+        {Object.entries(CATEGORY_LABELS).map(([key, labels]) => (
           <span
             key={key}
-            className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium ${config.cls}`}
+            className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium ${CATEGORY_CLS[key as InvestigationCategory].cls}`}
           >
-            {config.label}
+            {labels[lang]}
           </span>
         ))}
       </div>
 
-      {/* --------------------------------------------------------------- */}
-      {/* Timeline                                                         */}
-      {/* --------------------------------------------------------------- */}
+      {/* Timeline */}
       <div className="relative mx-auto max-w-3xl">
         {years.map((year) => {
           const events = eventsByYear.get(year)!
           return (
             <section key={year} className="mb-12 last:mb-0">
-              {/* Year marker */}
               <div className="mb-6 flex items-center gap-4">
                 <div className="h-px flex-1 bg-zinc-800" />
                 <span className="text-lg font-bold text-red-400">{year}</span>
                 <div className="h-px flex-1 bg-zinc-800" />
               </div>
 
-              {/* Events in this year */}
               <div className="relative ml-4 border-l-2 border-zinc-800 pl-6">
                 {events.map((event) => {
-                  const catConfig = CATEGORY_CONFIG[event.category]
+                  const catCls = CATEGORY_CLS[event.category]
                   return (
                     <div key={event.id} className="relative mb-8 last:mb-0">
-                      {/* Timeline dot — colored by category */}
-                      <div
-                        className={`absolute -left-[31px] top-1.5 h-3 w-3 rounded-full border-2 bg-zinc-950 ${catConfig.dotCls}`}
-                      />
+                      <div className={`absolute -left-[31px] top-1.5 h-3 w-3 rounded-full border-2 bg-zinc-950 ${catCls.dotCls}`} />
 
                       <div className="flex flex-wrap items-center gap-2">
                         <time className="text-xs font-medium text-zinc-500">
-                          {new Date(event.date).toLocaleDateString('es-ES', {
+                          {new Date(event.date).toLocaleDateString(lang === 'en' ? 'en-US' : 'es-ES', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric',
                           })}
                         </time>
-                        <span
-                          className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium ${catConfig.cls}`}
-                        >
-                          {catConfig.label}
+                        <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium ${catCls.cls}`}>
+                          {CATEGORY_LABELS[event.category][lang]}
                         </span>
                       </div>
 
                       <h3 className="mt-1.5 text-sm font-semibold text-zinc-100">
-                        {event.title_es}
+                        {lang === 'en' ? event.title_en : event.title_es}
                       </h3>
 
                       <p className="mt-1 text-xs leading-relaxed text-zinc-400">
-                        {event.description_es}
+                        {lang === 'en' ? event.description_en : event.description_es}
                       </p>
 
-                      {/* Sources */}
                       {event.sources.length > 0 && (
                         <div className="mt-2 flex flex-wrap gap-2">
                           {event.sources.map((src, i) => (
@@ -156,7 +142,7 @@ export default function CronologiaPage() {
                               rel="noopener noreferrer"
                               className="text-[10px] text-red-400/60 underline decoration-red-400/15 hover:text-red-300"
                             >
-                              Fuente {event.sources.length > 1 ? i + 1 : ''}
+                              {t.source[lang]} {event.sources.length > 1 ? i + 1 : ''}
                             </a>
                           ))}
                         </div>
@@ -170,27 +156,25 @@ export default function CronologiaPage() {
         })}
       </div>
 
-      {/* --------------------------------------------------------------- */}
-      {/* Navigation                                                       */}
-      {/* --------------------------------------------------------------- */}
+      {/* Navigation */}
       <nav className="flex flex-col gap-3 border-t border-zinc-800 pt-8 sm:flex-row">
         <Link
           href="/caso/caso-epstein/resumen"
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          &larr; Resumen
+          {t.navSummary[lang]}
         </Link>
         <Link
           href="/caso/caso-epstein/investigacion"
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          Investigacion
+          {t.navInvestigation[lang]}
         </Link>
         <Link
           href="/caso/caso-epstein/evidencia"
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          Evidencia &rarr;
+          {t.navEvidence[lang]}
         </Link>
       </nav>
     </div>

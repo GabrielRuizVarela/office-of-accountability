@@ -7,13 +7,7 @@
  * through the complete story of the $LIBRA token scandal.
  */
 
-import { useState } from 'react'
-
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
-
-type Lang = 'es' | 'en'
+import { useLanguage, type Lang } from '@/lib/language-context'
 
 interface StatCard {
   readonly value: string
@@ -332,7 +326,7 @@ const sources: readonly Source[] = [
 // ---------------------------------------------------------------------------
 
 export default function ResumenPage() {
-  const [lang, setLang] = useState<Lang>('es')
+  const { lang } = useLanguage()
 
   return (
     <article className="mx-auto max-w-prose pb-20">
@@ -340,30 +334,6 @@ export default function ResumenPage() {
       {/* Header                                                            */}
       {/* ----------------------------------------------------------------- */}
       <header className="py-12 text-center">
-        {/* Language toggle */}
-        <div className="mb-8 flex items-center justify-center gap-2">
-          <button
-            onClick={() => setLang('es')}
-            className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
-              lang === 'es'
-                ? 'bg-purple-600 text-white'
-                : 'bg-zinc-800 text-zinc-400 hover:text-zinc-200'
-            }`}
-          >
-            ES
-          </button>
-          <button
-            onClick={() => setLang('en')}
-            className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
-              lang === 'en'
-                ? 'bg-purple-600 text-white'
-                : 'bg-zinc-800 text-zinc-400 hover:text-zinc-200'
-            }`}
-          >
-            EN
-          </button>
-        </div>
-
         <h1 className="text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
           {TITLE[lang]}
         </h1>

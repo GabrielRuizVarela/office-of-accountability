@@ -10,6 +10,7 @@
 
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
 
+import { useLanguage, type Lang } from '@/lib/language-context'
 import {
   FACTCHECK_ITEMS,
   TIMELINE_EVENTS,
@@ -27,8 +28,6 @@ import {
 // ---------------------------------------------------------------------------
 // Constants
 // ---------------------------------------------------------------------------
-
-type Lang = 'es' | 'en'
 
 const SECTIONS = [
   { id: 'hero', label_es: 'Inicio', label_en: 'Top' },
@@ -120,7 +119,7 @@ function formatDate(dateStr: string, lang: Lang): string {
 // ---------------------------------------------------------------------------
 
 export default function InvestigacionPage() {
-  const [lang, setLang] = useState<Lang>('es')
+  const { lang } = useLanguage()
   const [activeSection, setActiveSection] = useState('hero')
   const [factcheckFilter, setFactcheckFilter] = useState<FactcheckStatus | null>(null)
   const [expandedFactchecks, setExpandedFactchecks] = useState<Set<string>>(new Set())
@@ -213,13 +212,6 @@ export default function InvestigacionPage() {
               </button>
             ))}
           </div>
-          <button
-            type="button"
-            onClick={() => setLang((l) => (l === 'es' ? 'en' : 'es'))}
-            className="ml-3 shrink-0 rounded-full border border-zinc-700 px-3 py-1 text-xs font-semibold text-zinc-300 transition-colors hover:border-purple-500 hover:text-purple-400"
-          >
-            {lang === 'es' ? 'EN' : 'ES'}
-          </button>
         </div>
       </nav>
 

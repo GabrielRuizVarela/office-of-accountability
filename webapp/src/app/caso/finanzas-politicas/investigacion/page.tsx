@@ -2,6 +2,8 @@
 
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
 
+import { useLanguage } from '@/lib/language-context'
+import type { Lang } from '@/lib/language-context'
 import {
   FACTCHECK_ITEMS,
   TIMELINE_EVENTS,
@@ -15,8 +17,6 @@ import {
 // ---------------------------------------------------------------------------
 // Constants
 // ---------------------------------------------------------------------------
-
-type Lang = 'es' | 'en'
 
 const SECTIONS = [
   { id: 'hero', label_es: 'Inicio', label_en: 'Top' },
@@ -102,7 +102,7 @@ function formatDate(dateStr: string, lang: Lang): string {
 // ---------------------------------------------------------------------------
 
 export default function InvestigacionPage() {
-  const [lang, setLang] = useState<Lang>('es')
+  const { lang } = useLanguage()
   const [activeSection, setActiveSection] = useState('hero')
   const [factcheckFilter, setFactcheckFilter] =
     useState<FactcheckStatus | null>(null)
@@ -184,30 +184,21 @@ export default function InvestigacionPage() {
       <div className="relative space-y-0">
         {/* Sticky section nav */}
         <nav className="sticky top-0 z-40 -mx-4 mb-8 border-b border-zinc-800 bg-zinc-950/90 px-4 backdrop-blur-sm">
-          <div className="flex items-center justify-between">
-            <div className="scrollbar-none flex gap-1 overflow-x-auto py-1">
-              {SECTIONS.map((s) => (
-                <button
-                  key={s.id}
-                  type="button"
-                  onClick={() => scrollTo(s.id)}
-                  className={`whitespace-nowrap rounded px-2.5 py-1.5 text-xs font-medium transition-colors ${
-                    activeSection === s.id
-                      ? 'bg-blue-600/20 text-blue-400'
-                      : 'text-zinc-500 hover:text-zinc-300'
-                  }`}
-                >
-                  {lang === 'es' ? s.label_es : s.label_en}
-                </button>
-              ))}
-            </div>
-            <button
-              type="button"
-              onClick={() => setLang((l) => (l === 'es' ? 'en' : 'es'))}
-              className="ml-3 shrink-0 rounded-full border border-zinc-700 px-3 py-1 text-xs font-semibold text-zinc-300 transition-colors hover:border-blue-500 hover:text-blue-400"
-            >
-              {lang === 'es' ? 'EN' : 'ES'}
-            </button>
+          <div className="scrollbar-none flex gap-1 overflow-x-auto py-1">
+            {SECTIONS.map((s) => (
+              <button
+                key={s.id}
+                type="button"
+                onClick={() => scrollTo(s.id)}
+                className={`whitespace-nowrap rounded px-2.5 py-1.5 text-xs font-medium transition-colors ${
+                  activeSection === s.id
+                    ? 'bg-blue-600/20 text-blue-400'
+                    : 'text-zinc-500 hover:text-zinc-300'
+                }`}
+              >
+                {lang === 'es' ? s.label_es : s.label_en}
+              </button>
+            ))}
           </div>
         </nav>
 

@@ -1,20 +1,40 @@
+'use client'
+
 /**
- * Caso Epstein — Resumen (narrative summary).
+ * Caso Epstein — Summary (narrative summary).
  *
  * The story from NARRATIVE-EPSTEIN.md presented as 12 readable chapters.
  * Pure prose — no data grids, stat boxes, or factcheck badges.
+ * Chapter content is in English; UI chrome is bilingual.
  */
 
-import type { Metadata } from 'next'
 import Link from 'next/link'
 
-export const metadata: Metadata = {
-  title: 'Caso Epstein: Lo que revelan 10,908 nodos',
-  description:
-    'La historia completa de la red Epstein en 12 capitulos. Fuentes judiciales, registros de vuelo, y analisis de grafos de conocimiento.',
-}
+import { useLanguage } from '@/lib/language-context'
 
 const SLUG = 'caso-epstein'
+
+// ---------------------------------------------------------------------------
+// Translations
+// ---------------------------------------------------------------------------
+
+const t = {
+  headerBadge: { en: 'Investigation summary', es: 'Resumen de la investigacion' },
+  headerTitle: { en: 'Epstein Case: What 10,908 nodes reveal', es: 'Caso Epstein: Lo que revelan 10,908 nodos' },
+  headerDesc: {
+    en: 'An evidence-based investigation compiled from 4,153 flights, 1,044 documents, 350+ verified persons, and 31 organizations across 4 data sources.',
+    es: 'Una investigacion basada en evidencia compilada a partir de 4,153 vuelos, 1,044 documentos, 350+ personas verificadas y 31 organizaciones a traves de 4 fuentes de datos.',
+  },
+  viewData: { en: 'View data & evidence', es: 'Ver datos y evidencia' },
+  timeline: { en: 'Timeline', es: 'Cronologia' },
+  sources: { en: 'Sources', es: 'Fuentes' },
+  disclaimer: {
+    en: 'This investigation is based on verified public sources, including court documents, flight records, parliamentary reports, knowledge graph analysis, and investigative journalism. It does not constitute legal advice. Inclusion of a person does not imply guilt. Where \u201calleged\u201d or \u201cunder investigation\u201d is indicated, the claim has not been independently confirmed.',
+    es: 'Esta investigacion se basa en fuentes publicas verificadas, incluyendo documentos judiciales, registros de vuelo, informes parlamentarios, analisis de grafos de conocimiento y periodismo de investigacion. No constituye asesoramiento legal. La inclusion de una persona no implica culpabilidad. Donde se indica \u201calegado\u201d o \u201cen investigacion,\u201d la afirmacion no ha sido confirmada de forma independiente.',
+  },
+  navOverview: { en: '\u2190 Overview', es: '\u2190 Inicio' },
+  navData: { en: 'Data & evidence \u2192', es: 'Datos y evidencia \u2192' },
+} as const
 
 // ---------------------------------------------------------------------------
 // Chapters — adapted from NARRATIVE-EPSTEIN.md
@@ -131,32 +151,33 @@ const CHAPTERS: {
 // ---------------------------------------------------------------------------
 
 export default function ResumenPage() {
+  const { lang } = useLanguage()
+
   return (
     <article className="mx-auto max-w-3xl px-4 py-12">
       {/* Header */}
       <header className="mb-12 border-b border-zinc-800 pb-10 text-center">
         <p className="text-xs font-medium uppercase tracking-widest text-red-400">
-          Resumen de la investigacion
+          {t.headerBadge[lang]}
         </p>
         <h1 className="mt-3 text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
-          Caso Epstein: Lo que revelan 10,908 nodos
+          {t.headerTitle[lang]}
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-400">
-          An evidence-based investigation compiled from 4,153 flights, 1,044 documents,
-          350+ verified persons, and 31 organizations across 4 data sources.
+          {t.headerDesc[lang]}
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
           <Link
             href={`/caso/${SLUG}/investigacion`}
             className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-500"
           >
-            Ver datos y evidencia
+            {t.viewData[lang]}
           </Link>
           <Link
             href={`/caso/${SLUG}/cronologia`}
             className="rounded-lg border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500 hover:text-zinc-100"
           >
-            Cronologia
+            {t.timeline[lang]}
           </Link>
         </div>
       </header>
@@ -182,7 +203,7 @@ export default function ResumenPage() {
 
       {/* Sources */}
       <section className="mt-16 rounded-lg border border-zinc-800 bg-zinc-900/40 p-6">
-        <h3 className="mb-3 text-sm font-semibold text-zinc-200">Sources</h3>
+        <h3 className="mb-3 text-sm font-semibold text-zinc-200">{t.sources[lang]}</h3>
         <p className="text-xs leading-relaxed text-zinc-500">
           Compiled from: rhowardstone/Epstein-research-data (DOJ flight logs), Epstein
           Exposed API, dleerdefi/epstein-network-data (handwritten pilot logbooks), manual
@@ -197,12 +218,7 @@ export default function ResumenPage() {
       {/* Disclaimer */}
       <section className="mt-6 rounded-lg border border-zinc-800 bg-zinc-900/40 p-6">
         <p className="text-xs leading-relaxed text-zinc-500">
-          Esta investigacion se basa en fuentes publicas verificadas, incluyendo documentos
-          judiciales, registros de vuelo, informes parlamentarios, analisis de grafos de
-          conocimiento y periodismo de investigacion. No constituye asesoramiento legal. La
-          inclusion de una persona no implica culpabilidad. Donde se indica
-          &ldquo;alegado&rdquo; o &ldquo;en investigacion,&rdquo; la afirmacion no ha sido
-          confirmada de forma independiente.
+          {t.disclaimer[lang]}
         </p>
       </section>
 
@@ -212,13 +228,13 @@ export default function ResumenPage() {
           href={`/caso/${SLUG}`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          &larr; Inicio
+          {t.navOverview[lang]}
         </Link>
         <Link
           href={`/caso/${SLUG}/investigacion`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          Datos y evidencia &rarr;
+          {t.navData[lang]}
         </Link>
       </nav>
     </article>

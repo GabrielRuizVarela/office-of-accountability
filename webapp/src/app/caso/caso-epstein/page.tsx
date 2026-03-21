@@ -1,6 +1,5 @@
 /**
- * Caso Epstein — Inicio (landing page).
- * Uses the OverviewContent component from PR #3 with bilingual support.
+ * Caso Epstein — Overview (landing page).
  */
 
 import { OverviewContent } from '@/app/caso/[slug]/OverviewContent'
