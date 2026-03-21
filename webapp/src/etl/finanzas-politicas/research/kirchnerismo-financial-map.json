@@ -1,0 +1,340 @@
+{
+  "investigation": "finanzas-politicas",
+  "wave": 5,
+  "title": "Frente de Todos / Kirchnerismo Financial Map",
+  "date": "2026-03-21",
+  "summary": "Comprehensive mapping of Kirchnerist political figures, their wealth declarations, judicial status, offshore connections, state contracts received, and family business networks. Balances the investigation which previously skewed toward Macri/Milei coverage.",
+
+  "actors": {
+    "cristina_fernandez_de_kirchner": {
+      "role": "Former President (2007-2015), Vice President (2019-2023)",
+      "party": "PJ / Kirchnerismo",
+      "patrimonio_declared": {
+        "2023_ars": 249421220,
+        "composition": "Usufruct of 2 properties (Recoleta apt ARS 35.7M, El Calafate residence ARS 24.8M), car purchased Jul 2023, Mercado Libre shares (1,667 shares, ARS 39.7M), Apple shares",
+        "note": "Transferred properties to children Maximo and Florencia in March 2016. No properties in her own name.",
+        "growth": "6,100% growth over 4-year vice-presidency"
+      },
+      "judicial_status": {
+        "causa_vialidad": {
+          "status": "CONVICTED — FINAL",
+          "sentence": "6 years prison + perpetual disqualification from public office",
+          "crime": "Fraudulent administration — irregular assignment of 51 road works in Santa Cruz to Lazaro Baez",
+          "confirmed_by": "Supreme Court, June 10, 2025",
+          "asset_forfeiture": "Up to USD 640M ordered",
+          "current_situation": "House arrest at San Jose 1111, CABA",
+          "source": "https://www.lanacion.com.ar/politica/la-corte-suprema-confirmo-la-condena-a-cristina-kirchner-a-prision-y-no-podra-ser-candidata-nid10062025/"
+        },
+        "causa_hotesur_los_sauces": {
+          "status": "ORAL TRIAL PENDING",
+          "crime": "Money laundering, criminal association — fictitious hotel/property rentals through family companies Hotesur and Los Sauces",
+          "supreme_court_decision": "December 2024 — revoked dismissal, ordered oral trial",
+          "source": "https://www.infobae.com/judiciales/2024/12/16/la-corte-suprema-ordeno-que-cristina-kirchner-vaya-a-juicio-oral-por-la-causa-los-sauces-hotesur/"
+        }
+      },
+      "offshore": "Not directly linked to Panama Papers. Daniel Munoz (Nestor Kirchner's secretary) linked to BVI offshore. Federico Elaskar alleged 40-45 offshore companies in Belize, Panama, Seychelles but direct K connection disputed.",
+      "sources": [
+        "https://www.perfil.com/noticias/politica/cristina-kirchner-declaro-un-fuerte-aumento-patrimonial-que-incluye-acciones-en-mercadolibre-y-apple.phtml",
+        "https://www.infobae.com/politica/2025/06/11/por-la-condena-cristina-kirchner-debera-devolver-85000-millones-cual-es-su-patrimonio/"
+      ]
+    },
+
+    "alberto_fernandez": {
+      "role": "Former President (2019-2023)",
+      "party": "Frente de Todos",
+      "patrimonio_declared": {
+        "exit_2023_ars": 14000000,
+        "assets_frozen": true,
+        "composition": "Toyota Corolla XEI 2019 (ARS 4.5M), household items (ARS 530K), 50% of Inmueble Callao 1960 SA (ARS 84K)"
+      },
+      "judicial_status": {
+        "causa_seguros": {
+          "status": "PROSECUTED — CASSATION REVIEW",
+          "crime": "Incompatible negotiations — Decree 823/2021 created insurance monopoly benefiting broker Martinez Sosa",
+          "detail": "Martinez Sosa (husband of AF's secretary Maria Cantero) received 59.6% of all commissions from Nacion Seguros. Confirmed by Federal Chamber Nov 2025. Cassation review Feb 2026.",
+          "source": "https://www.lanacion.com.ar/politica/procesaron-a-alberto-fernandez-en-el-caso-de-los-seguros-por-negociaciones-incompatibles-con-su-nid10072025/"
+        },
+        "causa_violencia_genero": {
+          "status": "PROSECUTED — NEAR ORAL TRIAL",
+          "charges": "Aggravated minor injuries (2 occasions), aggravated serious injuries, coercive threats — all in context of gender violence against partner Fabiola Yanez",
+          "expected_sentence": "Up to 18 years",
+          "period": "Systematic violence from 2016 onward",
+          "detail": "Judge Rafecas rejected challenge March 2026, case near oral trial",
+          "source": "https://www.infobae.com/judiciales/2026/03/19/rafecas-rechazo-un-planteo-de-alberto-fernandez-y-la-causa-por-violencia-de-genero-quedo-a-un-paso-del-juicio-oral/"
+        }
+      },
+      "sources": [
+        "https://www.infobae.com/politica/2024/04/10/que-bienes-de-alberto-fernandez-y-su-secretaria-quedaron-alcanzados-por-la-inhibicion-de-bienes-en-la-causa-de-los-seguros/"
+      ]
+    },
+
+    "sergio_massa": {
+      "role": "Former Economy Minister (2022-2023), FdT presidential candidate",
+      "party": "Frente de Todos",
+      "patrimonio_declared": {
+        "2022_ars": 19380990,
+        "combined_with_galmarini_ars": 41254595,
+        "composition": "2 properties in Tigre (480m2 house ARS 8.9M, 525m2 house ARS 5.5M), VW Tiguan 2011 (ARS 2M), savings ARS 461K, USD 0.33",
+        "note": "Properties at fiscal value, not market value. Galmarini declared more than Massa."
+      },
+      "family_network": {
+        "malena_galmarini": {
+          "role": "Wife, AySA president (2019-2023)",
+          "controversy": "Denounced for irregular $127M USD contract with Mauricio Filiberti (Transclor, 'Rey del Cloro') for chlorine supply. Price $504/ton vs possible $390-430/ton. Complaint judicially dismissed.",
+          "conflict_of_interest": "Massa authorized AySA deficit by decree — company his wife chaired"
+        },
+        "father_in_law": "Fernando 'Pato' Galmarini, ex-Menemist official"
+      },
+      "offshore": "NOT in Panama Papers (verified by Chequeado). A 'Sergio Massa' in Florida registries is a Peruvian businessman, not the Argentine minister.",
+      "economic_record": "Assumed with 102% exchange gap, reduced initially but blue dollar spiraled by end of tenure",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/los-detalles-del-patrimonio-que-sergio-massa-y-malena-galmarini-declararon-ante-la-oficina-nid31082022/",
+        "https://chequeado.com/verificacionfb/no-sergio-massa-no-figura-en-los-panama-papers/",
+        "https://www.lanacion.com.ar/politica/sergio-massa-autorizo-por-decreto-el-deficit-de-aysa-la-empresa-que-preside-su-esposa-malena-nid07112022/"
+      ]
+    },
+
+    "lazaro_baez": {
+      "role": "Businessman, owner Austral Construcciones",
+      "party": "PJ / Kirchnerismo (aligned)",
+      "judicial_status": {
+        "unified_sentence": "15 years prison",
+        "causa_ruta_dinero_k": {
+          "crime": "Money laundering of USD 54.87M",
+          "conviction": "10 years prison (confirmed by Supreme Court May 2025)",
+          "fine": "USD 329,237,200",
+          "asset_forfeiture": "USD 65M equivalent"
+        },
+        "causa_vialidad": {
+          "crime": "Fraudulent administration in 51 public works in Santa Cruz",
+          "detail": "80% of road works monopolized. Of 51 works, 26 completed, none on time. Overpricing up to 387%. Total value (updated to 2016): ~ARS 46B",
+          "conviction": "Part of unified 15-year sentence"
+        },
+        "el_entrevero": {
+          "crime": "Money laundering in Uruguay farm purchase",
+          "conviction": "Confirmed Dec 2025, cumulative ~20 years"
+        }
+      },
+      "lost_assets": "Austral Construcciones facilities seized by Santa Cruz government",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/la-corte-confirmo-la-condena-a-diez-anos-de-prision-contra-lazaro-baez-por-lavado-de-dinero-nid29052025/",
+        "https://www.infobae.com/judiciales/2025/12/15/confirmaron-otra-condena-a-lazaro-baez-en-la-causa-el-entrevero-ya-acumula-penas-por-casi-20-anos-de-carcel/"
+      ]
+    },
+
+    "julio_de_vido": {
+      "role": "Former Federal Planning Minister (2003-2015)",
+      "party": "PJ / Kirchnerismo",
+      "judicial_status": {
+        "causa_once": {
+          "status": "CONVICTED — FINAL",
+          "sentence": "4 years prison + perpetual disqualification",
+          "crime": "Fraudulent administration — tolerated misuse of funds by TBA concessionaire",
+          "confirmed_by": "Supreme Court, November 2025",
+          "context": "Once train tragedy: 52 dead, 789 injured, February 2012"
+        },
+        "causa_gnl": {
+          "status": "CONVICTED",
+          "sentence": "4 years prison",
+          "crime": "Fraud in LNG purchases — USD 5.5M paid unnecessarily to intermediaries with overpricing",
+          "restitution": "USD 5,523,345 ordered returned"
+        },
+        "causa_skanska": {
+          "status": "IN TRIAL",
+          "prosecution_request": "5 years prison",
+          "crime": "Fraudulent administration and bribery in gas pipeline contracts. Overpricing: 11.72% on loops, 125% on compressor plants, USD 34M on TGS works"
+        },
+        "causa_enriquecimiento": {
+          "status": "PROSECUTED — February 2026",
+          "unjustified_amount": "USD 690,000",
+          "detail": "18 years unable to justify asset growth"
+        },
+        "causa_tv_digital": {
+          "status": "NEAR ORAL TRIAL",
+          "crime": "Overpricing 56.2% in Digital TV infrastructure (ARS 118.9M excess)"
+        }
+      },
+      "sources": [
+        "https://www.lanacion.com.ar/politica/la-corte-confirmo-la-condena-contra-julio-de-vido-por-la-tragedia-de-once-nid11112025/",
+        "https://www.lanacion.com.ar/politica/fraude-millonario-condenaron-a-julio-de-vido-baratta-y-nicolas-dromi-por-la-compra-de-gas-licuado-nid30092025/",
+        "https://www.labrujula24.com/notas/2026/02/09/de-vido-no-pudo-justificar-su-patrimonio-y-lo-procesaron-por-enriquecimiento-ilicito-n483611/"
+      ]
+    },
+
+    "jose_lopez": {
+      "role": "Former Secretary of Public Works",
+      "party": "PJ / Kirchnerismo",
+      "judicial_status": {
+        "unified_sentence": "13 years prison (final — Cassation Dec 2025)",
+        "components": [
+          "2019: 6 years for illicit enrichment (convent bags — USD 9M)",
+          "2022: Vialidad case conviction for fraudulent administration",
+          "2017: Illegal civilian weapon possession"
+        ],
+        "seized_assets": "USD 8,982,047 + EUR 153,610 + ARS 159,114 — donated to Hospital Garrahan and Hospital Gutierrez"
+      },
+      "key_event": "June 14, 2016: caught at Monastery of Our Lady of Fatima in General Rodriguez hiding bags with nearly USD 9M, jewels and a firearm",
+      "sources": [
+        "https://www.infobae.com/judiciales/2025/12/11/casacion-dejo-firme-la-pena-de-13-anos-de-carcel-contra-jose-lopez-por-corrupcion-y-el-caso-de-los-bolsos-del-convento/",
+        "https://www.infobae.com/judiciales/2025/08/22/jose-lopez-recibio-una-pena-unificada-de-13-anos-de-prision-por-corrupcion-y-enriquecimiento-ilicito/"
+      ]
+    },
+
+    "amado_boudou": {
+      "role": "Former Vice President (2011-2015)",
+      "party": "PJ / Kirchnerismo",
+      "judicial_status": {
+        "causa_ciccone": {
+          "status": "CONVICTED — FINAL",
+          "sentence": "5 years 10 months prison",
+          "crime": "Passive bribery and incompatible negotiations — covertly acquired Ciccone Calcografica printing press (only private currency printer) through front man Alejandro Vandenbroele (The Old Fund)",
+          "confirmed_by": "Supreme Court",
+          "distinction": "First VP in Argentine history with final corruption conviction"
+        }
+      },
+      "co_convicted": ["Jose Maria Nunez Carmona", "Alejandro Vandenbroele", "Nicolas Ciccone", "Guillermo Reinwick", "Rafael Resnick Brenner", "Guido Forcieri"],
+      "sources": [
+        "https://chequeado.com/el-explicador/causa-ciccone-la-corte-confirmo-la-sentencia-de-boudou-y-se-convirtio-en-el-primer-vicepresidente-condenado-por-corrupcion/"
+      ]
+    },
+
+    "ricardo_jaime": {
+      "role": "Former Transport Secretary (2003-2009)",
+      "party": "PJ / Kirchnerismo",
+      "judicial_status": {
+        "causa_enriquecimiento": {
+          "status": "CONVICTED — 8 years prison",
+          "crime": "Illicit enrichment and bribery — could not justify asset growth",
+          "assets_found": "Airplane (USD 4M), yacht, cars, apartments, hotel",
+          "front_people": "Daughter Julieta Jaime, ex-partner Silvia Reyss, Manuel Vazquez",
+          "fine": "ARS 14,991,385 + perpetual disqualification"
+        },
+        "causa_once": {
+          "status": "CONVICTED — 6 years (confirmed by Supreme Court)",
+          "crime": "Responsibility in Once tragedy"
+        },
+        "trenes_chatarra": {
+          "status": "CONVICTED",
+          "crime": "Purchase of junk trains"
+        },
+        "current_status": "Imprisoned at Ezeiza federal prison since November 2024"
+      },
+      "sources": [
+        "https://www.fiscales.gob.ar/fiscalias/condenaron-al-ex-secretario-de-transporte-ricardo-jaime-a-8-anos-de-prision-por-enriquecimiento-ilicito-y-debera-pagar-una-multa-de-15-millones-de-pesos/"
+      ]
+    },
+
+    "roberto_baratta": {
+      "role": "Former Coordination Undersecretary, Planning Ministry",
+      "party": "PJ / Kirchnerismo",
+      "judicial_status": {
+        "causa_gnl": {
+          "status": "CONVICTED — 3 years 6 months",
+          "crime": "Fraud in LNG purchases with overpricing"
+        },
+        "causa_cuadernos": {
+          "status": "ORAL TRIAL UNDERWAY (2025-2026)",
+          "crime": "Identified as main bribe collector for Kirchnerism. Accused of collecting USD 1.5M+ in bribes from major businessmen",
+          "detail": "Secretary Nelson Lazarte accused of 68 bribe deliveries",
+          "scope": "63 businessmen on trial, multiple arrepentidos (cooperating witnesses)"
+        }
+      },
+      "sources": [
+        "https://www.infobae.com/judiciales/2025/11/01/los-cuadernos-de-las-coimas-cuan-fuerte-aprieta-roberto-baratta/",
+        "https://www.infobae.com/judiciales/2026/03/17/causa-cuadernos-en-un-fuerte-descargo-roberto-baratta-tildo-al-ex-chofer-oscar-centeno-de-mentiroso/"
+      ]
+    },
+
+    "axel_kicillof": {
+      "role": "Governor of Buenos Aires Province (since 2019)",
+      "party": "PJ / Kirchnerismo",
+      "patrimonio_declared": {
+        "2019_ars": 7710021,
+        "2020_ars": 23347873,
+        "growth": "203% in one year (tripled during economic crisis)",
+        "composition": "4 properties (25% plot Pilar, house CABA, 2 apartments CABA), VW vehicle, USD savings",
+        "income_explanation": "Governor salary ARS 2.7M + ARS 5.7M from sale of vacation home"
+      },
+      "judicial_status": "No direct corruption cases",
+      "political_note": "Dispute with national government over ARS 12.9T in debt owed to province. 1,000+ national public works paralyzed in Buenos Aires municipalities.",
+      "sources": [
+        "https://infopilar.com.ar/declaracion-jurada-durante-el-2020-kicillof-triplico-su-patrimonio/"
+      ]
+    },
+
+    "eduardo_wado_de_pedro": {
+      "role": "Former Interior Minister (2019-2023)",
+      "party": "Frente de Todos",
+      "patrimonio_declared": {
+        "total_ars": 85000000,
+        "composition": {
+          "properties": "4 properties (2 in Mercedes, 2 in CABA) — ARS 26M",
+          "dos_luceros_sa": "95% stake — ARS 637M — soy, corn, cattle. 890,000 m2 inherited field in Mercedes",
+          "ustare_sa": "25% stake — ARS 43M — rural real estate services. Shared with cousins Ustarroz"
+        }
+      },
+      "state_roles": "VP of Aerolineas Argentinas, Telecom board member (state representative)",
+      "judicial_status": "No direct corruption cases",
+      "sources": [
+        "https://www.infobae.com/politica/2021/09/21/que-patrimonio-declararon-17-ministros-de-alberto-fernandez-ante-la-oficina-anticorrupcion/",
+        "https://www.laizquierdadiario.com/La-campana-por-Wado-De-Pedro-el-empresario-agropecuario-que-busca-contentar-al-poder-economico"
+      ]
+    },
+
+    "anibal_fernandez": {
+      "role": "Former Security Minister (2021-2023), former Cabinet Chief",
+      "party": "PJ / Kirchnerismo",
+      "judicial_status": {
+        "efedrina": {
+          "status": "INVESTIGATED",
+          "allegations": "Linked to ephedrine trafficking by convicted Martin Lanatta. Ephedrine imports grew from 4,000 to 15,000 kg (2005-2006) during his tenure.",
+          "enrichment": "Federal prosecutor opened investigation for illicit enrichment based on legislator Gustavo Vera's complaint"
+        }
+      },
+      "sources": [
+        "https://www.fiscales.gob.ar/fiscalias/impulsaron-la-accion-penal-para-determinar-si-anibal-fernandez-se-enriquecio-ilegitimamente/"
+      ]
+    },
+
+    "hebe_de_bonafini": {
+      "role": "President, Madres de Plaza de Mayo",
+      "party": "PJ / Kirchnerismo (aligned)",
+      "judicial_status": {
+        "suenos_compartidos": {
+          "status": "CASE EXTINGUISHED BY DEATH (Nov 2022)",
+          "crime": "Fraud against State — Suenos Compartidos social housing program",
+          "amount_collected": "ARS 749M",
+          "amount_diverted": "ARS 206M by Schoklender brothers (properties, cars, motorcycles, yachts)",
+          "political_financing": "Sergio Schoklender alleged funds used to finance campaigns of Cristina Kirchner and Amado Boudou"
+        }
+      },
+      "sources": [
+        "https://www.lanacion.com.ar/politica/bonafini-y-los-schoklender-fueron-procesados-por-el-caso-suenos-compartidos-nid2024192/"
+      ]
+    },
+
+    "carlos_zannini": {
+      "role": "Former Legal and Technical Secretary (2003-2015), Treasury Prosecutor (2019-2023)",
+      "party": "PJ / Kirchnerismo",
+      "judicial_status": {
+        "enrichment": "Investigation opened, then closed/dismissed. Judge Canicoba Corral dismissed, noting case did not affect 'good name and honor'",
+        "allegations": "Alleged front man in Cordoba conducting millionaire business (from tire shop to vehicles, real estate, companies)"
+      },
+      "sources": [
+        "https://www.lanacion.com.ar/politica/la-justicia-cerro-causa-zannini-presunto-enriquecimiento-nid2312890/"
+      ]
+    }
+  },
+
+  "summary_stats": {
+    "total_convicted_kirchnerism": {
+      "with_final_sentences": 7,
+      "names": ["Cristina Kirchner (6 yrs)", "Lazaro Baez (15 yrs)", "Jose Lopez (13 yrs)", "Amado Boudou (5 yrs 10 mo)", "Julio De Vido (4+4 yrs)", "Ricardo Jaime (8 yrs)", "Roberto Baratta (3.5 yrs)"],
+      "note": "Additional: Ricardo Echegaray (4 yrs 8 mo) already in dataset"
+    },
+    "total_fines_usd": "329,000,000+ (Baez alone)",
+    "total_laundered_usd": "54,870,000 (Baez Ruta del Dinero K)",
+    "total_diverted_public_works_ars": "46,000,000,000 (Vialidad Santa Cruz)",
+    "key_pattern": "State contracts -> overpricing -> intermediary extraction -> offshore laundering -> domestic reinvestment through front people"
+  }
+}
