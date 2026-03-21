@@ -199,6 +199,37 @@ const BTREE_INDEXES = [
     label: 'CasoLibraOrganization',
     property: 'slug',
   },
+  // Investigation entity indexes (Person, Organization, Event)
+  {
+    name: 'person_name_index',
+    label: 'Person',
+    property: 'name',
+  },
+  {
+    name: 'person_caso_slug_index',
+    label: 'Person',
+    property: 'caso_slug',
+  },
+  {
+    name: 'organization_name_index',
+    label: 'Organization',
+    property: 'name',
+  },
+  {
+    name: 'organization_caso_slug_index',
+    label: 'Organization',
+    property: 'caso_slug',
+  },
+  {
+    name: 'event_id_index',
+    label: 'Event',
+    property: 'id',
+  },
+  {
+    name: 'event_caso_slug_index',
+    label: 'Event',
+    property: 'caso_slug',
+  },
   // Cross-reference engine — platform-level lookup indexes
   {
     name: 'appointment_dni_index',
