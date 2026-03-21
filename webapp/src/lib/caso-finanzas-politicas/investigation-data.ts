@@ -473,7 +473,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     tier: 1,
     source: 'Infobae / ACIJ',
     source_url:
-      'https://www.infobae.com/politica/2025/02/14/milei-nombro-a-ariel-lijo-en-la-corte-suprema-por-decreto/',
+      'https://www.infobae.com/politica/2025/02/25/javier-milei-designo-por-decreto-en-la-corte-suprema-a-ariel-lijo-y-manuel-garcia-mansilla/',
   },
   // --- Tier 1: Judicial Branch — Ercolini Lago Escondido ---
   {
@@ -486,7 +486,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     tier: 1,
     source: 'El Destape / Judicial leaks',
     source_url:
-      'https://www.eldestapeweb.com/politica/lago-escondido/',
+      'https://www.eldestapeweb.com/politica/los-jueces-de-clarin/clarin-invito-a-jueces-del-lawfare-a-lago-escondido-y-buscaron-encubrirlo-con-facturas-truchas-y-el-direccionamiento-de-una-causa-judicial-202212419450',
   },
   // --- Tier 1: Judicial Branch — Rosenkrantz conflicts ---
   {
@@ -499,7 +499,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     tier: 1,
     source: 'Página/12',
     source_url:
-      'https://www.pagina12.com.ar/377456-rosenkrantz-el-juez-de-clarin',
+      'https://www.pagina12.com.ar/204884-rosenkrantz-una-larga-historia-de-conflictos',
   },
   // --- Tier 1: Judicial Branch — Hornos/Borinsky Olivos visits ---
   {
@@ -512,7 +512,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     tier: 1,
     source: 'El Destape / Judicial leaks',
     source_url:
-      'https://www.eldestapeweb.com/politica/2021/hornos-borinsky-olivos/',
+      'https://www.eldestapeweb.com/politica/operacion-olivos/el-juez-hornos-tambien-estuvo-con-macri-en-olivos-20214118034',
   },
   // --- Tier 1: Judicial Branch — Wealth anomalies ---
   {
@@ -724,7 +724,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_es: 'El juez de Casación Mariano Borinsky visitó a Macri en Olivos más de 15 veces mientras presidía causas contra dirigentes kirchneristas (Nisman, Ruta del Dinero K, Dólar Futuro). Admitió que iba "a jugar al pádel".',
     description_en: 'Cassation judge Mariano Borinsky visited Macri at Olivos 15+ times while presiding over Kirchnerist cases (Nisman, Ruta del Dinero K, Dólar Futuro). Claimed he went "to play paddle tennis."',
     category: 'legal',
-    sources: ['https://www.eldestapeweb.com/politica/hornos-borinsky-olivos/'],
+    sources: ['https://www.eldestapeweb.com/politica/operacion-olivos/las-15-reuniones-de-macri-con-un-juez-clave-en-la-persecucion-a-cfk-20214118034'],
   },
   {
     id: 'tl-2017-hornos-rosada',
@@ -734,7 +734,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_es: 'El juez de Casación Gustavo Hornos se reunió con Macri en Casa Rosada al menos 6 veces mientras presidía la cámara que resolvía causas contra dirigentes kirchneristas.',
     description_en: 'Cassation judge Gustavo Hornos met with Macri at Casa Rosada at least 6 times while presiding over the chamber that decided Kirchnerist cases.',
     category: 'legal',
-    sources: ['https://www.eldestapeweb.com/politica/hornos-borinsky-olivos/'],
+    sources: ['https://www.eldestapeweb.com/politica/operacion-olivos/las-15-reuniones-de-macri-con-un-juez-clave-en-la-persecucion-a-cfk-20214118034'],
   },
   {
     id: 'tl-2019-donations',
@@ -822,7 +822,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_es: 'El presidente de la Corte Suprema Carlos Rosenkrantz, ex abogado de Clarín, La Nación, McDonald\'s, YPF y Repsol, revierte su política de recusación. Al menos 56 fallos involucrando antiguos clientes.',
     description_en: 'Supreme Court president Carlos Rosenkrantz, former lawyer for Clarín, La Nación, McDonald\'s, YPF and Repsol, reverses his recusal policy. At least 56 rulings involving former clients.',
     category: 'legal',
-    sources: ['https://www.pagina12.com.ar/377456-rosenkrantz-el-juez-de-clarin'],
+    sources: ['https://www.pagina12.com.ar/204884-rosenkrantz-una-larga-historia-de-conflictos'],
   },
   {
     id: 'tl-2021-decreto-823',
@@ -882,7 +882,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en:
       'It is revealed that Judge Ercolini and other magistrates flew on a Grupo Clarín-paid flight to Joe Lewis\'s Lago Escondido estate. Leaked Telegram chats show coordination to fabricate alibis.',
     category: 'legal',
-    sources: ['https://www.eldestapeweb.com/politica/lago-escondido/'],
+    sources: ['https://www.eldestapeweb.com/politica/los-jueces-de-clarin/clarin-invito-a-jueces-del-lawfare-a-lago-escondido-y-buscaron-encubrirlo-con-facturas-truchas-y-el-direccionamiento-de-una-causa-judicial-202212419450'],
   },
   {
     id: 'tl-2023-pami-16x',
@@ -934,7 +934,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en:
       'President Milei appoints Judge Ariel Lijo to the Supreme Court by decree 137/2025, bypassing Senate rejection (43 against, 27 for, 1 abstention). Lijo handles the Correo Argentino case and has 89 corruption cases with only 14 sent to trial.',
     category: 'political',
-    sources: ['https://www.infobae.com/politica/2025/02/14/milei-nombro-a-ariel-lijo-en-la-corte-suprema-por-decreto/'],
+    sources: ['https://www.infobae.com/politica/2025/02/25/javier-milei-designo-por-decreto-en-la-corte-suprema-a-ariel-lijo-y-manuel-garcia-mansilla/'],
   },
   {
     id: 'tl-2025-acusatorio',
@@ -1235,7 +1235,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Designación por decreto — conflictos documentados',
     status_en: 'Decree appointment — documented conflicts',
-    source_url: 'https://www.infobae.com/politica/2025/02/14/milei-nombro-a-ariel-lijo-en-la-corte-suprema-por-decreto/',
+    source_url: 'https://www.infobae.com/politica/2025/02/25/javier-milei-designo-por-decreto-en-la-corte-suprema-a-ariel-lijo-y-manuel-garcia-mansilla/',
   },
   {
     id: 'actor-martinez-sosa',
@@ -1325,7 +1325,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Conflictos documentados — Lago Escondido',
     status_en: 'Documented conflicts — Lago Escondido',
-    source_url: 'https://www.eldestapeweb.com/politica/lago-escondido/',
+    source_url: 'https://www.eldestapeweb.com/politica/los-jueces-de-clarin/clarin-invito-a-jueces-del-lawfare-a-lago-escondido-y-buscaron-encubrirlo-con-facturas-truchas-y-el-direccionamiento-de-una-causa-judicial-202212419450',
   },
   {
     id: 'actor-rosenkrantz',
@@ -1340,7 +1340,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Conflicto de interés — 56 fallos con ex clientes',
     status_en: 'Conflict of interest — 56 rulings on former clients',
-    source_url: 'https://www.pagina12.com.ar/377456-rosenkrantz-el-juez-de-clarin',
+    source_url: 'https://www.pagina12.com.ar/204884-rosenkrantz-una-larga-historia-de-conflictos',
   },
   {
     id: 'actor-hornos-borinsky',
@@ -1355,7 +1355,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Visitas a Olivos documentadas — conflicto de interés',
     status_en: 'Olivos visits documented — conflict of interest',
-    source_url: 'https://www.eldestapeweb.com/politica/hornos-borinsky-olivos/',
+    source_url: 'https://www.eldestapeweb.com/politica/operacion-olivos/las-15-reuniones-de-macri-con-un-juez-clave-en-la-persecucion-a-cfk-20214118034',
   },
   {
     id: 'actor-seijas',
@@ -1416,7 +1416,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 1,
     status_es: 'Investigación activa — retención de alimentos',
     status_en: 'Active investigation — food withholding',
-    source_url: 'https://www.infobae.com/politica/2025/capital-humano-alimentos/',
+    source_url: 'https://www.infobae.com/politica/2024/02/16/cartelizacion-y-sobreprecios-que-revelo-una-auditoria-de-capital-humano-sobre-la-compra-de-alimentos-para-los-comedores/',
   },
   // --- Missing critical persons ---
   {
@@ -1462,7 +1462,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Absolución por lavado revocada (Feb 2026)',
     status_en: 'Money laundering acquittal revoked (Feb 2026)',
-    source_url: 'https://www.infobae.com/politica/2026/02/macri-jorge-lavado-revocacion/',
+    source_url: 'https://www.infobae.com/judiciales/2026/02/26/la-corte-suprema-dejo-sin-efecto-el-sobreseimiento-de-jorge-macri-en-una-causa-por-presunto-lavado-de-dinero/',
   },
   {
     id: 'actor-caputo-luis',
@@ -1552,7 +1552,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Investigación penal activa — $107M cashout',
     status_en: 'Active criminal investigation — $107M cashout',
-    source_url: 'https://www.infobae.com/politica/2025/02/libra-crypto-escandalo/',
+    source_url: 'https://www.infobae.com/politica/2025/02/16/la-fallida-cripto-libra-provoco-un-fuerte-impacto-politico-y-el-gobierno-enfrenta-una-ofensiva-opositora/',
   },
   {
     id: 'actor-hornos',
@@ -1567,7 +1567,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Visitas a Casa Rosada documentadas — conflicto de interés',
     status_en: 'Casa Rosada visits documented — conflict of interest',
-    source_url: 'https://www.eldestapeweb.com/politica/hornos-borinsky-olivos/',
+    source_url: 'https://www.eldestapeweb.com/politica/operacion-olivos/las-15-reuniones-de-macri-con-un-juez-clave-en-la-persecucion-a-cfk-20214118034',
   },
   {
     id: 'actor-borinsky',
@@ -1582,7 +1582,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Visitas a Olivos documentadas — conflicto de interés',
     status_en: 'Olivos visits documented — conflict of interest',
-    source_url: 'https://www.eldestapeweb.com/politica/hornos-borinsky-olivos/',
+    source_url: 'https://www.eldestapeweb.com/politica/operacion-olivos/las-15-reuniones-de-macri-con-un-juez-clave-en-la-persecucion-a-cfk-20214118034',
   },
   // --- Missing high-severity persons ---
   {
@@ -1703,7 +1703,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Vínculo Caputo-desregulación documentado',
     status_en: 'Caputo-deregulation link documented',
-    source_url: 'https://www.perfil.com/noticias/politica/caputocracia',
+    source_url: 'https://noticias.perfil.com/noticias/politica/caputocracia-los-negocios-de-luis-nicky-y-santiago-en-el-poder.phtml',
   },
   {
     id: 'actor-rubinstein',
@@ -1859,7 +1859,7 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
       'Bachellier S.A., the top broker in the Nación Seguros scheme, was embargoed for $9.669B ARS. It invoiced $1.665B in commissions under the Decree 823/2021 monopoly.',
     date: '2024-2026',
     source: 'Infobae / Causa Seguros',
-    source_url: 'https://www.infobae.com/politica/2024/03/',
+    source_url: 'https://www.infobae.com/politica/2024/03/18/escandalo-de-los-seguros-las-empresas-del-broker-amigo-de-alberto-fernandez-y-sus-satelites-cobraron-mas-de-2000-millones-por-comisiones/',
   },
   {
     id: 'flow-cuadernos-dismissals',
