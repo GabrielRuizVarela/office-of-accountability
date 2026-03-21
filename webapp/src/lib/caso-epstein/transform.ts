@@ -1,12 +1,12 @@
 /**
  * Epstein investigation transform utilities.
  *
- * Converts Neo4j query result records into typed Epstein domain objects.
+ * Maps raw Neo4j property bags to typed domain objects.
+ * All functions are pure and immutable.
  */
 
-import type { Node } from 'neo4j-driver-lite'
-
 import type {
+  ConfidenceTier,
   EpsteinPerson,
   EpsteinFlight,
   EpsteinLocation,
@@ -16,123 +16,133 @@ import type {
   EpsteinLegalCase,
 } from './types'
 
-/** Safely extract a string property from a Neo4j node */
-function str(props: Record<string, unknown>, key: string, fallback = ''): string {
-  const v = props[key]
-  return typeof v === 'string' ? v : fallback
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+function asString(value: unknown): string {
+  return typeof value === 'string' ? value : ''
 }
 
-/** Safely extract a nullable string property */
-function strOrNull(props: Record<string, unknown>, key: string): string | null {
-  const v = props[key]
-  return typeof v === 'string' ? v : null
+function asOptionalString(value: unknown): string | undefined {
+  return typeof value === 'string' ? value : undefined
 }
 
-/** Safely extract a string array property from a Neo4j node */
-function strArray(props: Record<string, unknown>, key: string): string[] {
-  const v = props[key]
-  return Array.isArray(v) ? v.filter((item): item is string => typeof item === 'string') : []
+function asOptionalNumber(value: unknown): number | undefined {
+  if (typeof value === 'number') return value
+  if (value && typeof value === 'object' && 'toNumber' in value) {
+    return (value as { toNumber: () => number }).toNumber()
+  }
+  return undefined
 }
 
-/** Safely extract a nullable number property */
-function numOrNull(props: Record<string, unknown>, key: string): number | null {
-  const v = props[key]
-  if (typeof v === 'number') return v
-  // Neo4j integers come as { low, high } objects
-  if (v && typeof v === 'object' && 'low' in v) return (v as { low: number }).low
-  return null
+function asStringArray(value: unknown): string[] {
+  return Array.isArray(value)
+    ? value.filter((item): item is string => typeof item === 'string')
+    : []
 }
 
-/** Convert a Neo4j Node to an EpsteinPerson */
-export function toPerson(node: Node): EpsteinPerson {
-  const p = node.properties as Record<string, unknown>
+// ---------------------------------------------------------------------------
+// Transforms
+// ---------------------------------------------------------------------------
+
+export function toPerson(props: Record<string, unknown>): EpsteinPerson {
   return {
-    id: str(p, 'id'),
-    name: str(p, 'name'),
-    slug: str(p, 'slug'),
-    role: str(p, 'role'),
-    description: str(p, 'description'),
-    nationality: str(p, 'nationality'),
+    id: asString(props.id),
+    name: asString(props.name),
+    slug: asString(props.slug),
+    role: asString(props.role),
+    description: asString(props.description),
+    nationality: asString(props.nationality),
+    confidence_tier: asOptionalString(props.confidence_tier) as ConfidenceTier | undefined,
+    source: asOptionalString(props.source),
+    ingestion_wave: asOptionalNumber(props.ingestion_wave),
   }
 }
 
-/** Convert a Neo4j Node to an EpsteinFlight */
-export function toFlight(node: Node): EpsteinFlight {
-  const p = node.properties as Record<string, unknown>
+export function toFlight(props: Record<string, unknown>): EpsteinFlight {
   return {
-    id: str(p, 'id'),
-    flight_number: str(p, 'flight_number'),
-    date: str(p, 'date'),
-    origin: str(p, 'origin'),
-    destination: str(p, 'destination'),
-    aircraft: str(p, 'aircraft'),
+    id: asString(props.id),
+    flight_number: asString(props.flight_number),
+    date: asString(props.date),
+    origin: asString(props.origin),
+    destination: asString(props.destination),
+    aircraft: asString(props.aircraft),
+    confidence_tier: asOptionalString(props.confidence_tier) as ConfidenceTier | undefined,
+    source: asOptionalString(props.source),
+    ingestion_wave: asOptionalNumber(props.ingestion_wave),
   }
 }
 
-/** Convert a Neo4j Node to an EpsteinLocation */
-export function toLocation(node: Node): EpsteinLocation {
-  const p = node.properties as Record<string, unknown>
+export function toLocation(props: Record<string, unknown>): EpsteinLocation {
   return {
-    id: str(p, 'id'),
-    name: str(p, 'name'),
-    slug: str(p, 'slug'),
-    location_type: str(p, 'location_type') as EpsteinLocation['location_type'],
-    address: str(p, 'address'),
-    coordinates: strOrNull(p, 'coordinates'),
+    id: asString(props.id),
+    name: asString(props.name),
+    slug: asString(props.slug),
+    location_type: asString(props.location_type) as EpsteinLocation['location_type'],
+    address: asString(props.address),
+    coordinates: asOptionalString(props.coordinates) ?? null,
+    confidence_tier: asOptionalString(props.confidence_tier) as ConfidenceTier | undefined,
+    source: asOptionalString(props.source),
+    ingestion_wave: asOptionalNumber(props.ingestion_wave),
   }
 }
 
-/** Convert a Neo4j Node to an EpsteinDocument */
-export function toDocument(node: Node): EpsteinDocument {
-  const p = node.properties as Record<string, unknown>
+export function toDocument(props: Record<string, unknown>): EpsteinDocument {
   return {
-    id: str(p, 'id'),
-    title: str(p, 'title'),
-    slug: str(p, 'slug'),
-    doc_type: str(p, 'doc_type') as EpsteinDocument['doc_type'],
-    source_url: str(p, 'source_url'),
-    summary: str(p, 'summary'),
-    date: str(p, 'date'),
-    key_findings: strArray(p, 'key_findings'),
-    excerpt: str(p, 'excerpt'),
-    page_count: numOrNull(p, 'page_count'),
+    id: asString(props.id),
+    title: asString(props.title),
+    slug: asString(props.slug),
+    doc_type: asString(props.doc_type) as EpsteinDocument['doc_type'],
+    source_url: asString(props.source_url),
+    summary: asString(props.summary),
+    date: asString(props.date),
+    key_findings: asStringArray(props.key_findings),
+    excerpt: asString(props.excerpt),
+    page_count: asOptionalNumber(props.page_count) ?? null,
+    confidence_tier: asOptionalString(props.confidence_tier) as ConfidenceTier | undefined,
+    source: asOptionalString(props.source),
+    ingestion_wave: asOptionalNumber(props.ingestion_wave),
   }
 }
 
-/** Convert a Neo4j Node to an EpsteinEvent */
-export function toEvent(node: Node): EpsteinEvent {
-  const p = node.properties as Record<string, unknown>
+export function toEvent(props: Record<string, unknown>): EpsteinEvent {
   return {
-    id: str(p, 'id'),
-    title: str(p, 'title'),
-    date: str(p, 'date'),
-    event_type: str(p, 'event_type') as EpsteinEvent['event_type'],
-    description: str(p, 'description'),
+    id: asString(props.id),
+    title: asString(props.title),
+    date: asString(props.date),
+    event_type: asString(props.event_type) as EpsteinEvent['event_type'],
+    description: asString(props.description),
+    confidence_tier: asOptionalString(props.confidence_tier) as ConfidenceTier | undefined,
+    source: asOptionalString(props.source),
+    ingestion_wave: asOptionalNumber(props.ingestion_wave),
   }
 }
 
-/** Convert a Neo4j Node to an EpsteinOrganization */
-export function toOrganization(node: Node): EpsteinOrganization {
-  const p = node.properties as Record<string, unknown>
+export function toOrganization(props: Record<string, unknown>): EpsteinOrganization {
   return {
-    id: str(p, 'id'),
-    name: str(p, 'name'),
-    slug: str(p, 'slug'),
-    org_type: str(p, 'org_type') as EpsteinOrganization['org_type'],
-    description: str(p, 'description'),
+    id: asString(props.id),
+    name: asString(props.name),
+    slug: asString(props.slug),
+    org_type: asString(props.org_type) as EpsteinOrganization['org_type'],
+    description: asString(props.description),
+    confidence_tier: asOptionalString(props.confidence_tier) as ConfidenceTier | undefined,
+    source: asOptionalString(props.source),
+    ingestion_wave: asOptionalNumber(props.ingestion_wave),
   }
 }
 
-/** Convert a Neo4j Node to an EpsteinLegalCase */
-export function toLegalCase(node: Node): EpsteinLegalCase {
-  const p = node.properties as Record<string, unknown>
+export function toLegalCase(props: Record<string, unknown>): EpsteinLegalCase {
   return {
-    id: str(p, 'id'),
-    title: str(p, 'title'),
-    slug: str(p, 'slug'),
-    case_number: str(p, 'case_number'),
-    court: str(p, 'court'),
-    status: str(p, 'status') as EpsteinLegalCase['status'],
-    date_filed: str(p, 'date_filed'),
+    id: asString(props.id),
+    title: asString(props.title),
+    slug: asString(props.slug),
+    case_number: asString(props.case_number),
+    court: asString(props.court),
+    status: asString(props.status) as EpsteinLegalCase['status'],
+    date_filed: asString(props.date_filed),
+    confidence_tier: asOptionalString(props.confidence_tier) as ConfidenceTier | undefined,
+    source: asOptionalString(props.source),
+    ingestion_wave: asOptionalNumber(props.ingestion_wave),
   }
 }
