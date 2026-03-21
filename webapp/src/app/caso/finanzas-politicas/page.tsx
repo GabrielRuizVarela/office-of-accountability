@@ -28,12 +28,12 @@ const t = {
     es: 'Resumen Ejecutivo',
   },
   executiveSummaryP1: {
-    en: 'This investigation cross-referenced eight public data sources — legislative voting records (Como Voto), offshore leaks (ICIJ Panama Papers and Pandora Papers), campaign contribution declarations (CNE), Boletin Oficial appointments and contracts, the IGJ corporate registry, company directors (CNV/IGJ), sworn asset declarations (DDJJ), and a cross-enrichment process — to identify patterns of financial opacity in Argentine politics.',
-    es: 'Esta investigacion cruzo ocho fuentes de datos publicos — registros de votacion legislativa (Como Voto), filtraciones offshore (ICIJ Panama Papers y Pandora Papers), declaraciones de aportes de campana (CNE), nombramientos y contratos del Boletin Oficial, el registro societario de la IGJ, directores de empresas (CNV/IGJ), declaraciones juradas patrimoniales (DDJJ), y un proceso de enriquecimiento cruzado — para identificar patrones de opacidad financiera en la politica argentina.',
+    en: 'This investigation cross-referenced NINE public data sources — legislative voting records (Como Voto), offshore leaks (ICIJ Panama Papers and Pandora Papers), campaign contribution declarations (CNE), Boletin Oficial appointments and contracts, the IGJ corporate registry, company directors (CNV/IGJ), sworn asset declarations (DDJJ), insurance sector filings, and a cross-enrichment process — to identify the revolving door between government and the financial sector, procurement anomalies, and the oligarchic family networks controlling Argentina.',
+    es: 'Esta investigacion cruzo NUEVE fuentes de datos publicos — registros de votacion legislativa (Como Voto), filtraciones offshore (ICIJ Panama Papers y Pandora Papers), declaraciones de aportes de campana (CNE), nombramientos y contratos del Boletin Oficial, el registro societario de la IGJ, directores de empresas (CNV/IGJ), declaraciones juradas patrimoniales (DDJJ), registros del sector de seguros, y un proceso de enriquecimiento cruzado — para identificar la puerta giratoria entre gobierno y el sector financiero, anomalias en la contratacion publica, y las redes familiares oligarquicas que controlan Argentina.',
   },
   executiveSummaryP2: {
-    en: 'The most serious findings involve sitting legislators with undeclared active offshore entities, government contractors who illegally donated to electoral campaigns, and the Macri case appearing in ',
-    es: 'Los hallazgos mas graves involucran a legisladores en ejercicio con entidades offshore activas no declaradas, contratistas del Estado que donaron ilegalmente a campanas electorales, y el caso Macri que aparece en ',
+    en: 'The most serious findings involve the $28.5B Nacion Seguros insurance monopoly ($3.5B in broker commissions, active prosecution), 72 financial-government revolving door cases, and 12 oligarchic families controlling 500+ companies while members rotate through government positions.',
+    es: 'Los hallazgos mas graves involucran el monopolio de seguros de Nacion Seguros de $28.5B ($3.5B en comisiones de brokers, procesamiento activo), 72 casos de puerta giratoria entre el sector financiero y el gobierno, y 12 familias oligarquicas que controlan mas de 500 empresas mientras sus miembros rotan por cargos gubernamentales.',
   },
   fiveDatasetsSimultaneously: {
     en: 'five datasets simultaneously',
@@ -52,18 +52,18 @@ const t = {
   },
   chronologyTitle: { en: 'Chronology', es: 'Cronologia' },
   chronologyDesc: {
-    en: 'Timeline from the founding of SOCMA (1976) to the criminal complaint by Mariano Macri (2024).',
-    es: 'Linea de tiempo desde la fundacion de SOCMA (1976) hasta la denuncia penal de Mariano Macri (2024).',
+    en: 'Timeline from SOCMA (1976) to the Martinez Sosa prosecution (Feb 2026), including Decreto 823, the 24 insurance raids, and the Catalan-YPF revolving door.',
+    es: 'Linea de tiempo desde SOCMA (1976) hasta el procesamiento de Martinez Sosa (feb 2026), incluyendo el Decreto 823, los 24 allanamientos a aseguradoras, y la puerta giratoria Catalan-YPF.',
   },
   moneyTitle: { en: 'The Money', es: 'El Dinero' },
   moneyDesc: {
-    en: 'Tracking financial flows: Correo debt, SOCMA amnesty, transfers to Switzerland, campaign donations.',
-    es: 'Rastreo de flujos financieros: deuda del Correo, blanqueo SOCMA, transferencias a Suiza, donaciones de campana.',
+    en: 'Tracking $609B ARS in procurement: Nacion Seguros monopoly, $3.5B broker commissions, SOCMA debt forgiveness, campaign donations from contractors.',
+    es: 'Rastreo de $609B ARS en contrataciones: monopolio de Nacion Seguros, $3.5B en comisiones de brokers, condonacion de deuda SOCMA, donaciones de campana de contratistas.',
   },
   connectionsTitle: { en: 'Connections', es: 'Conexiones' },
   connectionsDesc: {
-    en: 'Interactive graph of relationships between politicians, companies, offshore entities and contracts (coming soon).',
-    es: 'Grafo interactivo de relaciones entre politicos, empresas, entidades offshore y contratos (proximo).',
+    en: 'Interactive graph of relationships between politicians, companies, contractors, and government appointments. 1,825 cross-referenced entities.',
+    es: 'Grafo interactivo de relaciones entre politicos, empresas, contratistas y nombramientos gubernamentales. 1.825 entidades cruzadas.',
   },
   keyActorsTitle: { en: 'Key Actors', es: 'Actores Clave' },
   keyActorsDesc: {
@@ -120,7 +120,6 @@ export default function FinanzasPoliticasPage() {
         </p>
         <p className="mb-3 text-sm leading-relaxed text-zinc-300">
           {t.executiveSummaryP2[lang]}
-          <strong className="text-zinc-100">{t.fiveDatasetsSimultaneously[lang]}</strong>.
         </p>
         <div className="mt-4 flex flex-wrap gap-2 text-xs text-zinc-500">
           <span>{FACTCHECK_ITEMS.length} {t.claimsVerified[lang]}</span>
