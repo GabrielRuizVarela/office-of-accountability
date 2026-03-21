@@ -1,22 +1,12 @@
 import type { Metadata } from 'next'
 
-import { LanguageProvider, type Lang } from '@/lib/language-context'
+import { LanguageProvider } from '@/lib/language-context'
 import { InvestigationNav } from '@/components/investigation/InvestigationNav'
 import { BilingualLegalDisclaimer } from '@/components/investigation/LegalDisclaimer'
+import { getClientConfig } from '@/lib/investigations/registry'
 
-const CASE_META: Readonly<Record<string, { title: string; description: string; defaultLang: Lang }>> = {
-  'caso-libra': {
-    title: 'Caso Libra — Oficina de Rendicion de Cuentas',
-    description:
-      'Investigacion comunitaria sobre el token $LIBRA promovido por el presidente Milei. Datos publicos, blockchain, y documentos parlamentarios.',
-    defaultLang: 'es',
-  },
-  'caso-epstein': {
-    title: 'Epstein Case — Office of Accountability',
-    description:
-      'Trafficking and power network. 7,287 entities, court documents, flight records, and factchecking.',
-    defaultLang: 'en',
-  },
+function resolveConfig(slug: string) {
+  return getClientConfig(slug) ?? getClientConfig('caso-' + slug)
 }
 
 export async function generateMetadata({
@@ -25,11 +15,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const meta = CASE_META[slug]
+  const config = resolveConfig(slug)
 
   return {
-    title: meta?.title ?? 'Investigacion — Oficina de Rendicion de Cuentas',
-    description: meta?.description,
+    title: config
+      ? `${config.name.en} — Office of Accountability`
+      : 'Investigacion — Oficina de Rendicion de Cuentas',
+    description: config?.description.en,
   }
 }
 
@@ -41,7 +33,8 @@ export default async function CasoLayout({
   readonly params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const defaultLang = CASE_META[slug]?.defaultLang ?? 'es'
+  const config = resolveConfig(slug)
+  const defaultLang = config?.casoSlug === 'caso-epstein' ? 'en' : 'es'
 
   return (
     <LanguageProvider defaultLang={defaultLang}>
