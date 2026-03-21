@@ -100,7 +100,7 @@ const NODE_TYPE_LEGEND: ReadonlyArray<{ type: string; label: Record<Lang, string
   { type: 'Company', label: { en: 'Company', es: 'Empresa' }, color: '#10b981' },
   { type: 'Organization', label: { en: 'Organization', es: 'Organizacion' }, color: '#10b981' },
   { type: 'SAME_COALITION', label: { en: 'Coalition', es: 'Coalicion' }, color: '#f59e0b' },
-  { type: 'SAME_PROVINCE', label: { en: 'Province', es: 'Provincia' }, color: '#6366f1' },
+  // Province nodes hidden by default — reference data, not investigation entities
   { type: 'BOTH_OFFSHORE', label: { en: 'Offshore Network', es: 'Red Offshore' }, color: '#ef4444' },
   { type: 'SHARED_ORG', label: { en: 'Shared Org.', es: 'Org. Compartida' }, color: '#10b981' },
   { type: 'Contractor', label: { en: 'Contractor', es: 'Contratista' }, color: '#8b5cf6' },
@@ -192,7 +192,8 @@ export function ConexionesGraph() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [selectedNode, setSelectedNode] = useState<GraphNodeData | null>(null)
-  const [hiddenTypes, setHiddenTypes] = useState<Set<string>>(new Set())
+  // Hide reference/jurisdiction nodes by default — Province, Party, etc. are not investigation entities
+  const [hiddenTypes, setHiddenTypes] = useState<Set<string>>(new Set(['Province', 'SAME_PROVINCE', 'Party', 'PoliticalParty']))
   const [hiddenEdgeTypes, setHiddenEdgeTypes] = useState<Set<string>>(new Set())
   const [searchQuery, setSearchQuery] = useState('')
   const [activePreset, setActivePreset] = useState('all')
