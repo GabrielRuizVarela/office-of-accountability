@@ -7,8 +7,8 @@
 
 import { useState, useMemo } from 'react'
 
-import type { TimelineItem, EventType } from '@/lib/caso-libra/types'
-import { EVENT_TYPE_COLORS, EVENT_TYPE_LABELS } from '@/lib/caso-libra/types'
+import type { TimelineItem } from '@/lib/caso-libra/types'
+import { EVENT_TYPE_COLORS, EVENT_TYPE_LABELS, type EventType } from '@/lib/investigations/types'
 
 import { EventCard } from './EventCard'
 

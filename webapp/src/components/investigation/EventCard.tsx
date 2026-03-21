@@ -6,8 +6,7 @@
 
 import { useState } from 'react'
 
-import { EVENT_TYPE_COLORS, EVENT_TYPE_LABELS } from '@/lib/caso-libra/types'
-import type { EventType } from '@/lib/caso-libra/types'
+import { EVENT_TYPE_COLORS, EVENT_TYPE_LABELS, type EventType } from '@/lib/investigations/types'
 
 interface EventCardProps {
   readonly id: string
