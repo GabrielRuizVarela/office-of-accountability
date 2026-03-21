@@ -12,28 +12,28 @@ import {
 
 const t = {
   badge: {
-    en: 'Open-source investigation — Office of Accountability',
-    es: 'Investigacion de datos abiertos — Oficina de Rendicion de Cuentas',
+    en: 'Data-driven investigation — Office of Accountability',
+    es: 'Investigacion basada en datos — Oficina de Rendicion de Cuentas',
   },
   title: {
     en: 'Argentine Political Finance',
     es: 'Finanzas Politicas Argentinas',
   },
   subtitle: {
-    en: 'Investigation into the connections between political power and money. Cross-referencing nine public data sources to identify politicians with undeclared offshore entities, contractors who illegally donated to campaigns, and money flows between public funds and opaque structures.',
-    es: 'Investigacion sobre conexiones entre poder politico y dinero. Cruce de nueve fuentes de datos publicos para identificar politicos con entidades offshore no declaradas, contratistas que donaron ilegalmente a campanas, y flujos de dinero entre fondos publicos y estructuras opacas.',
+    en: 'How six families acquired state assets through privatizations, fund every political campaign regardless of party, and control the media that shapes the narrative — mapped across 40 years of democracy using 14 public data sources and graph technology.',
+    es: 'Como seis familias adquirieron activos del Estado mediante privatizaciones, financian todas las campanas politicas sin importar el partido, y controlan los medios que moldean la narrativa — mapeado a lo largo de 40 anos de democracia con 14 fuentes de datos publicos y tecnologia de grafos.',
   },
   executiveSummaryTitle: {
     en: 'Executive Summary',
     es: 'Resumen Ejecutivo',
   },
   executiveSummaryP1: {
-    en: 'This investigation cross-referenced NINE public data sources — legislative voting records (Como Voto), offshore leaks (ICIJ Panama Papers and Pandora Papers), campaign contribution declarations (CNE), Boletin Oficial appointments and contracts, the IGJ corporate registry, company directors (CNV/IGJ), sworn asset declarations (DDJJ), insurance sector filings, and a cross-enrichment process — to identify the revolving door between government and the financial sector, the Nacion Seguros insurance monopoly, judicial auxiliary patterns at Comodoro Py, SIDE intelligence fund growth, and the oligarchic family networks controlling Argentina.',
-    es: 'Esta investigacion cruzo NUEVE fuentes de datos publicos — registros de votacion legislativa (Como Voto), filtraciones offshore (ICIJ Panama Papers y Pandora Papers), declaraciones de aportes de campana (CNE), nombramientos y contratos del Boletin Oficial, el registro societario de la IGJ, directores de empresas (CNV/IGJ), declaraciones juradas patrimoniales (DDJJ), registros del sector de seguros, y un proceso de enriquecimiento cruzado — para identificar la puerta giratoria entre gobierno y el sector financiero, el monopolio de seguros de Nacion Seguros, los patrones de auxiliares judiciales en Comodoro Py, el crecimiento de los fondos de inteligencia de la SIDE, y las redes familiares oligarquicas que controlan Argentina.',
+    en: 'This investigation cross-referenced 14 public data sources — legislative votes, offshore leaks, campaign donations, corporate registries, asset declarations, procurement contracts, debtor records, sanctions databases, and media ownership filings — to build a graph of 294 nodes and 2,391 edges spanning 40 years of Argentine democracy. The structural finding: the same six families that acquired state assets under Menem\'s privatizations (1989-1999) still control those concessions, fund campaigns across all parties, own the major media groups, and maintain access to every government.',
+    es: 'Esta investigacion cruzo 14 fuentes de datos publicos — votos legislativos, filtraciones offshore, donaciones de campana, registros corporativos, declaraciones juradas, contratos de compras, registros de deudores, bases de sanciones, y registros de propiedad de medios — para construir un grafo de 294 nodos y 2.391 aristas que abarca 40 anos de democracia argentina. El hallazgo estructural: las mismas seis familias que adquirieron activos del Estado bajo las privatizaciones de Menem (1989-1999) siguen controlando esas concesiones, financian campanas de todos los partidos, son duenas de los principales grupos mediaticos, y mantienen acceso a todos los gobiernos.',
   },
   executiveSummaryP2: {
-    en: 'The most serious findings: the $28.5B Nacion Seguros insurance monopoly with $3.5B in broker commissions (active prosecution), 22 critical persons identified across financial, judicial, and intelligence sectors, 12 oligarchic families controlling 500+ companies, a 2% corruption conviction rate, and the $LIBRA crypto scandal with $107M insider cashout.',
-    es: 'Los hallazgos mas graves: el monopolio de seguros de Nacion Seguros de $28.5B con $3.5B en comisiones de brokers (procesamiento activo), 22 personas criticas identificadas en los sectores financiero, judicial y de inteligencia, 12 familias oligarquicas que controlan mas de 500 empresas, una tasa de condena por corrupcion del 2%, y el escandalo cripto $LIBRA con $107M en cashout de insiders.',
+    en: 'The money trail connects campaign donors to state contractors through shared corporate officers — 247 donors linked to $63 billion in government contracts. The graph reveals that $483 billion (equal to GDP) sits offshore, the judiciary convicts only 2% of corruption defendants, and media concentration means the same families who benefit from the system own the outlets that should investigate it.',
+    es: 'La ruta del dinero conecta donantes de campana con contratistas del Estado a traves de directivos corporativos compartidos — 247 donantes vinculados a $63.000 millones en contratos estatales. El grafo revela que $483.000 millones (equivalente al PBI) estan en el exterior, la justicia condena solo al 2% de los acusados de corrupcion, y la concentracion mediatica significa que las mismas familias que se benefician del sistema son duenas de los medios que deberian investigarlo.',
   },
   fiveDatasetsSimultaneously: {
     en: 'five datasets simultaneously',
@@ -52,13 +52,13 @@ const t = {
   },
   chronologyTitle: { en: 'Chronology', es: 'Cronologia' },
   chronologyDesc: {
-    en: 'Timeline from SOCMA (1976) through $LIBRA crash (Feb 2025), BCRA gold shipment to London, Capital Humano food crisis, and Causa Cuadernos trial (Nov 2025).',
-    es: 'Linea de tiempo desde SOCMA (1976) pasando por el colapso de $LIBRA (feb 2025), el envio de oro del BCRA a Londres, la crisis alimentaria de Capital Humano, y el juicio de la Causa Cuadernos (nov 2025).',
+    en: '40 years of documented events — from Menem privatizations (1989) through Cuadernos trial (2025), AMIA cover-up, $LIBRA scandal, and BCRA gold shipment to London.',
+    es: '40 anos de eventos documentados — desde las privatizaciones de Menem (1989) pasando por el juicio Cuadernos (2025), el encubrimiento de AMIA, el escandalo $LIBRA, y el envio de oro del BCRA a Londres.',
   },
-  moneyTitle: { en: 'The Money', es: 'El Dinero' },
+  moneyTitle: { en: 'Follow the Money', es: 'Siga el Dinero' },
   moneyDesc: {
-    en: '$674B ARS in procurement tracked. Nacion Seguros monopoly, $3.5B broker commissions, PAMI 16x drug overpricing, SIDE ~2,000% secret fund growth, $LIBRA $107M insider cashout.',
-    es: '$674 mil millones ARS en contrataciones rastreadas. Monopolio de Nacion Seguros, $3.5B en comisiones de brokers, sobreprecio PAMI 16x, crecimiento de fondos reservados SIDE ~2.000%, cashout $LIBRA $107M.',
+    en: '7 money trails traced: campaign donors to contractors ($63B), offshore structures ($483B), procurement overpricing ($80B over 13 years), crypto capital flight ($91B/year).',
+    es: '7 rutas del dinero trazadas: donantes a contratistas ($63.000M), estructuras offshore ($483.000M), sobreprecios en compras ($80.000M en 13 anos), fuga cripto ($91.000M/ano).',
   },
   connectionsTitle: { en: 'Connections', es: 'Conexiones' },
   connectionsDesc: {
@@ -145,7 +145,7 @@ export default function FinanzasPoliticasPage() {
         </Link>
       </section>
 
-      <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         <EntryPoint
           href={`${BASE_PATH}/cronologia`}
           title={t.chronologyTitle[lang]}
@@ -169,6 +169,14 @@ export default function FinanzasPoliticasPage() {
           title={t.keyActorsTitle[lang]}
           description={`${ACTORS.length}${t.keyActorsDesc[lang]}`}
           color="#ef4444"
+        />
+        <EntryPoint
+          href={`${BASE_PATH}/metodologia`}
+          title={lang === 'es' ? 'Metodologia' : 'Methodology'}
+          description={lang === 'es'
+            ? 'Como se construyo esta investigacion. 14 fuentes, verificacion, marcos de cumplimiento, limitaciones.'
+            : 'How this investigation was built. 14 sources, verification, compliance frameworks, limitations.'}
+          color="#06b6d4"
         />
       </section>
     </div>
