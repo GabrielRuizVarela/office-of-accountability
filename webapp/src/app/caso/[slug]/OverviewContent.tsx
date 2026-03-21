@@ -33,8 +33,8 @@ const t = {
     es: 'La Red Epstein',
   },
   subtitle: {
-    en: 'How a single financial relationship built a trafficking empire shielded by wealth, power, and institutional failure. 7,258 connected nodes, 10,916 edges, 0 orphans. Built from court records, DOJ file releases, flight logs, and investigative reporting. 367 verified persons, 9 shell companies mapped, 15 documented victim relationships.',
-    es: 'Como una sola relacion financiera construyo un imperio de trafico protegido por riqueza, poder y fracaso institucional. 7,258 nodos conectados, 10,916 aristas, 0 huerfanos. Basado en registros judiciales, archivos del DOJ, bitacoras de vuelo y periodismo de investigacion. 367 personas verificadas, 9 empresas pantalla mapeadas, 15 relaciones de victimas documentadas.',
+    en: 'How a single financial relationship built a trafficking empire shielded by wealth, power, and institutional failure. 7,276 connected nodes, 11,040 edges, 0 orphans. Built from court records, DOJ file releases, flight logs, and investigative reporting. 374 verified persons, 39 organizations mapped, 15 documented victim relationships.',
+    es: 'Como una sola relacion financiera construyo un imperio de trafico protegido por riqueza, poder y fracaso institucional. 7,276 nodos conectados, 11,040 aristas, 0 huerfanos. Basado en registros judiciales, archivos del DOJ, bitacoras de vuelo y periodismo de investigacion. 374 personas verificadas, 39 organizaciones mapeadas, 15 relaciones de victimas documentadas.',
   },
   readStory: {
     en: 'Read the full story',
@@ -57,8 +57,8 @@ const t = {
     es: 'Investigacion verificada',
   },
   investigationDesc: {
-    en: '76 factchecked claims, 7,258 connected nodes, 367 verified persons, money flows, evidence chain, and government response',
-    es: '76 afirmaciones verificadas, 7,258 nodos conectados, 367 personas verificadas, flujos de dinero, cadena de evidencia y respuesta gubernamental',
+    en: '76 factchecked claims, 7,276 connected nodes, 374 verified persons, money flows, evidence chain, and government response',
+    es: '76 afirmaciones verificadas, 7,276 nodos conectados, 374 personas verificadas, flujos de dinero, cadena de evidencia y respuesta gubernamental',
   },
   networkGraph: {
     en: 'Network Graph',
