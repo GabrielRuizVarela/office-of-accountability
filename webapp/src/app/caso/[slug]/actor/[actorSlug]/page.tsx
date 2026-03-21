@@ -10,7 +10,7 @@ import { useParams } from 'next/navigation'
 import Link from 'next/link'
 
 import type { GraphData } from '@/lib/neo4j/types'
-import type { TimelineItem } from '@/lib/caso-libra/types'
+import type { TimelineItem } from '@/lib/investigations/types'
 import { ForceGraph } from '@/components/graph/ForceGraph'
 import { EventCard } from '@/components/investigation/EventCard'
 import { ShareButton } from '@/components/ui/ShareButton'
@@ -38,7 +38,7 @@ export default function ActorPage() {
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch(`/api/caso-libra/person/${actorSlug}`)
+        const res = await fetch(`/api/${slug}/person/${actorSlug}`)
         if (!res.ok) throw new Error('Actor no encontrado')
         const json = await res.json()
         setData(json)
@@ -49,7 +49,7 @@ export default function ActorPage() {
       }
     }
     load()
-  }, [actorSlug])
+  }, [slug, actorSlug])
 
   if (loading) {
     return (
@@ -91,7 +91,7 @@ export default function ActorPage() {
 
       {description && <p className="text-sm leading-relaxed text-zinc-400">{description}</p>}
 
-      <ShareButton text={`Caso Libra — Perfil de ${name}`} title={`${name} — Caso Libra`} />
+      <ShareButton text={`Perfil de ${name}`} title={name} />
 
       {/* Mini graph */}
       {graph.nodes.length > 1 && (
@@ -112,11 +112,11 @@ export default function ActorPage() {
               <EventCard
                 key={event.id}
                 id={event.id}
-                title={event.title}
-                description={event.description}
+                title={typeof event.title === 'string' ? event.title : event.title.es}
+                description={typeof event.description === 'string' ? event.description : event.description.es}
                 date={event.date}
-                eventType={event.event_type}
-                sourceUrl={event.source_url}
+                eventType={event.event_type ?? 'political'}
+                sourceUrl={event.source_url ?? null}
                 actors={[]}
               />
             ))}
