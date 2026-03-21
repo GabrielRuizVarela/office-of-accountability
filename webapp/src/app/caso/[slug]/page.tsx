@@ -1,9 +1,9 @@
 /**
- * Caso Libra landing page — investigation overview with stats,
- * entry points, actor grid, and latest documents.
+ * Investigation landing page — overview with actor grid and latest documents.
+ * Works for any registered investigation via the generic query builder.
  */
 
-import { getStats, getActors, getDocuments } from '@/lib/caso-libra'
+import { getQueryBuilder } from '@/lib/investigations/query-builder'
 
 import { CasoLandingContent } from './CasoLandingContent'
 
@@ -13,7 +13,17 @@ export default async function CasoLandingPage({
   readonly params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const [_stats, actors, documents] = await Promise.all([getStats(), getActors(), getDocuments()])
+  const qb = getQueryBuilder()
+  const [actors, documents] = await Promise.all([
+    qb.getNodesByType(slug, 'Person'),
+    qb.getNodesByType(slug, 'Document'),
+  ])
 
-  return <CasoLandingContent slug={slug} actors={actors} documents={documents} />
+  return (
+    <CasoLandingContent
+      slug={slug}
+      actors={actors.map((n) => n.properties)}
+      documents={documents.map((n) => n.properties)}
+    />
+  )
 }
