@@ -97,13 +97,13 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     source: 'Cross-reference engine',
   },
   {
-    value: '263',
+    value: '280',
     label_es: 'Nodos de investigación',
     label_en: 'Investigation nodes',
     source: 'Neo4j graph',
   },
   {
-    value: '117',
+    value: '121',
     label_es: 'Personas críticas identificadas',
     label_en: 'Critical persons identified',
     source: 'Cross-reference engine',
