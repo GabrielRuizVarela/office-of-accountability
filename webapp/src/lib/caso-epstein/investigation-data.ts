@@ -752,6 +752,47 @@ export const FACTCHECK_ITEMS: FactcheckItem[] = [
     source: 'Glenn Dubin sworn affidavit, Wall Street on Parade',
     source_url: 'https://web.archive.org/web/https://wallstreetonparade.com/2023/06/jpmorgan-is-alleged-to-have-used-its-hedge-funds-private-jet-to-engage-in-sex-trafficking-for-jeffrey-epstein/',
   },
+  // -- New findings: investigation loop --
+  {
+    id: 'fc-kellen-victim-perpetrator',
+    claim_en: 'Sarah Kellen was both victim and perpetrator — NPA Core 4 member who received immunity, named as both victim and scheduler of underage "massages" in depositions. 148 co-flyers documented.',
+    claim_es: 'Sarah Kellen fue tanto víctima como perpetradora — miembro del Núcleo 4 del NPA que recibió inmunidad, nombrada como víctima y como programadora de "masajes" de menores en deposiciones. 148 copasajeros documentados.',
+    status: 'confirmed',
+    source: 'NPA immunity agreement, court depositions, flight logs',
+    source_url: '',
+    detail_en: 'Kellen occupied a unique dual position within the network. Court documents identify her as a victim of Epstein, while depositions describe her scheduling underage girls for "massages." The NPA granted her immunity as one of four named co-conspirators. Flight log analysis reveals 148 documented co-flyers, making her the third most connected person in the network.',
+    detail_es: 'Kellen ocupó una posición dual única dentro de la red. Los documentos judiciales la identifican como víctima de Epstein, mientras que las deposiciones describen cómo programaba a menores para "masajes." El NPA le otorgó inmunidad como una de cuatro coconspiradoras nombradas. El análisis de registros de vuelo revela 148 copasajeros documentados, convirtiéndola en la tercera persona más conectada de la red.',
+  },
+  {
+    id: 'fc-mc2-recruitment-pipeline',
+    claim_en: 'MC2 Model Management served as a recruitment pipeline — Epstein financed Brunel\'s agency, and multiple models recruited through MC2 appear on flight manifests. Cindy Lopez flew 37 times (2000-2003).',
+    claim_es: 'MC2 Model Management sirvió como canal de reclutamiento — Epstein financió la agencia de Brunel, y múltiples modelos reclutadas a través de MC2 aparecen en manifiestos de vuelo. Cindy Lopez voló 37 veces (2000-2003).',
+    status: 'confirmed',
+    source: 'Court filings, flight logs, MC2 corporate records',
+    source_url: 'https://www.courtlistener.com/docket/17318513/united-states-v-maxwell/',
+    detail_en: 'Epstein financed Jean-Luc Brunel\'s MC2 Model Management agency, which served as a cover for recruiting vulnerable young women under the guise of modeling "auditions." Flight manifests show multiple MC2-connected models on Epstein aircraft. Cindy Lopez, one such model, logged 37 flights between 2000 and 2003, indicating sustained involvement during the network\'s peak operational period.',
+    detail_es: 'Epstein financió la agencia MC2 Model Management de Jean-Luc Brunel, que sirvió de cobertura para reclutar mujeres jóvenes vulnerables bajo la fachada de "audiciones" de modelaje. Los manifiestos de vuelo muestran múltiples modelos conectadas a MC2 en aeronaves de Epstein. Cindy Lopez, una de estas modelos, registró 37 vuelos entre 2000 y 2003, indicando una participación sostenida durante el período operativo máximo de la red.',
+  },
+  {
+    id: 'fc-hyperion-dual-entities',
+    claim_en: 'Dual Hyperion Air entities (LLC and Inc) both owned by Epstein suggest jurisdictional layering for liability shielding.',
+    claim_es: 'Las entidades duales Hyperion Air (LLC e Inc), ambas propiedad de Epstein, sugieren estratificación jurisdiccional para protección de responsabilidad.',
+    status: 'alleged',
+    source: 'Corporate registration records, Office of Accountability graph analysis',
+    source_url: '',
+    detail_en: 'Both Hyperion Air LLC and Hyperion Air Inc were owned by Epstein, creating parallel corporate structures. The dual-entity pattern is consistent with jurisdictional layering designed to compartmentalize liability and complicate regulatory oversight of the flight operations.',
+    detail_es: 'Tanto Hyperion Air LLC como Hyperion Air Inc eran propiedad de Epstein, creando estructuras corporativas paralelas. El patrón de entidades duales es consistente con la estratificación jurisdiccional diseñada para compartimentar la responsabilidad y complicar la supervisión regulatoria de las operaciones de vuelo.',
+  },
+  {
+    id: 'fc-korshunova-death',
+    claim_en: 'Ruslana Korshunova\'s death may be connected to the Epstein network — the Kazakh model died in 2008 (ruled suicide), flew with Epstein, Igor Zinoviev, and Sarah Kellen.',
+    claim_es: 'La muerte de Ruslana Korshunova podría estar conectada a la red Epstein — la modelo kazaja murió en 2008 (dictaminado suicidio), voló con Epstein, Igor Zinoviev y Sarah Kellen.',
+    status: 'under_investigation',
+    source: 'Flight logs, NYPD records, investigative reporting',
+    source_url: '',
+    detail_en: 'Kazakh model Ruslana Korshunova died in 2008 in a fall from her Manhattan apartment, ruled a suicide. Flight logs document her traveling with Epstein, Igor Zinoviev (Epstein\'s bodyguard), and Sarah Kellen. Zinoviev\'s connections to both Korshunova and David Boies place her within the broader network. The circumstances remain under investigation.',
+    detail_es: 'La modelo kazaja Ruslana Korshunova murió en 2008 al caer de su apartamento en Manhattan, dictaminado como suicidio. Los registros de vuelo documentan sus viajes con Epstein, Igor Zinoviev (guardaespaldas de Epstein) y Sarah Kellen. Las conexiones de Zinoviev tanto con Korshunova como con David Boies la sitúan dentro de la red más amplia. Las circunstancias siguen bajo investigación.',
+  },
 ]
 
 // ---------------------------------------------------------------------------
@@ -1272,10 +1313,10 @@ export const ACTORS: Actor[] = [
   {
     id: 'act-indyke',
     name: 'Darren K. Indyke',
-    role_en: 'Lawyer — estate co-executor, multi-trust presence',
-    role_es: 'Abogado — coejecutor del patrimonio, presencia en múltiples fideicomisos',
-    description_en: 'Epstein\'s longtime personal lawyer and co-executor of the estate alongside Richard Kahn. Graph analysis reveals his presence across multiple Epstein trusts, making him the most important forensic target for understanding the estate\'s financial architecture.',
-    description_es: 'Abogado personal de larga data de Epstein y coejecutor del patrimonio junto con Richard Kahn. El análisis de grafos revela su presencia en múltiples fideicomisos de Epstein, convirtiéndolo en el objetivo forense más importante para entender la arquitectura financiera del patrimonio.',
+    role_en: 'Primary lawyer — central financial node, estate co-executor',
+    role_es: 'Abogado principal — nodo financiero central, coejecutor del patrimonio',
+    description_en: 'Epstein\'s primary lawyer and central financial node connecting Deutsche Bank, Insurance Trust, and Caterpillar Trust 2. Co-executor of the estate alongside Richard Kahn. Trustee of multiple Epstein trusts. Graph analysis reveals cross-trust presence making him the most important forensic target for understanding the estate\'s financial architecture.',
+    description_es: 'Abogado principal de Epstein y nodo financiero central que conecta Deutsche Bank, el Insurance Trust y el Caterpillar Trust 2. Coejecutor del patrimonio junto con Richard Kahn. Fideicomisario de múltiples fideicomisos de Epstein. El análisis de grafos revela una presencia transversal que lo convierte en el objetivo forense más importante para entender la arquitectura financiera del patrimonio.',
     nationality: 'American',
     status_en: 'Under investigation — estate co-executor',
     status_es: 'Bajo investigación — coejecutor del patrimonio',
@@ -1283,11 +1324,11 @@ export const ACTORS: Actor[] = [
   {
     id: 'act-nikolic',
     name: 'Boris Nikolic',
-    role_en: 'Named successor executor — ex-Gates advisor',
-    role_es: 'Ejecutor sucesor nombrado — exasesor de Gates',
-    description_en: 'Former senior advisor to Bill Gates and prominent biotech investor. Named successor executor in Epstein\'s will signed August 8, 2019 — two days before Epstein\'s death. Claimed through his lawyer to have been "shocked" by the designation. Lesley Groff\'s communication records also connect him to the network.',
-    description_es: 'Exasesor principal de Bill Gates y prominente inversor en biotecnología. Nombrado ejecutor sucesor en el testamento de Epstein firmado el 8 de agosto de 2019 — dos días antes de la muerte de Epstein. Afirmó a través de su abogado estar "conmocionado" por la designación. Los registros de comunicación de Lesley Groff también lo conectan a la red.',
-    nationality: 'Croatian/American',
+    role_en: 'Named successor executor — ex-Gates advisor, key bridge node',
+    role_es: 'Ejecutor sucesor nombrado — exasesor de Gates, nodo puente clave',
+    description_en: 'Serbian-American biotech investor and former senior science advisor to Bill Gates. Named backup executor in Epstein\'s will (August 2019). Key bridge node connecting tech (Gates, Kimbal Musk), politics (Ehud Barak), trafficking operations (Jean-Luc Brunel), and financial management. Introduced Mila Antonova to Epstein in a kompromat operation targeting Gates. Lesley Groff\'s communication records also connect him to the network.',
+    description_es: 'Inversor biotecnológico serboamericano y exasesor científico principal de Bill Gates. Nombrado ejecutor suplente en el testamento de Epstein (agosto 2019). Nodo puente clave que conecta tecnología (Gates, Kimbal Musk), política (Ehud Barak), operaciones de tráfico (Jean-Luc Brunel) y gestión financiera. Presentó a Mila Antonova a Epstein en una operación de kompromat contra Gates. Los registros de comunicación de Lesley Groff también lo conectan a la red.',
+    nationality: 'Serbian/American',
     status_en: 'Not charged — declined executor role',
     status_es: 'No imputado — declinó el rol de ejecutor',
   },
@@ -1434,6 +1475,34 @@ export const ACTORS: Actor[] = [
     status_en: 'Not charged',
     status_es: 'No imputado',
   },
+  // -- New actors: investigation loop findings --
+  {
+    id: 'act-mitrovich',
+    name: 'Andrea Mitrovich',
+    role_en: 'Frequent flight companion — role unclear',
+    role_es: 'Acompañante frecuente de vuelos — rol no definido',
+    description_en: 'Frequent Epstein flight companion appearing on flights with Bill Clinton, Kevin Spacey, Chris Tucker, and Secret Service personnel. 54 documented co-flyers. Appears more frequently than many named associates, yet her specific role within the network remains unclear.',
+    description_es: 'Acompañante frecuente en vuelos de Epstein, apareciendo en vuelos con Bill Clinton, Kevin Spacey, Chris Tucker y personal del Servicio Secreto. 54 copasajeros documentados. Aparece con más frecuencia que muchos asociados nombrados, pero su rol específico dentro de la red sigue sin definirse.',
+    nationality: 'American',
+  },
+  {
+    id: 'act-zinoviev',
+    name: 'Igor Zinoviev',
+    role_en: 'Bodyguard — former MMA fighter, CIA warning to attorney',
+    role_es: 'Guardaespaldas — ex luchador de MMA, advertencia de CIA a abogado',
+    description_en: 'Former MMA fighter who served as Epstein\'s bodyguard. Connected to Ruslana Korshunova (Kazakh model who died in 2008), David Boies, and Bill Richardson. Flight pattern documented with both VIPs and young women. Whispered "C-I-A" to attorney Brad Edwards when warning him off investigating Epstein.',
+    description_es: 'Ex luchador de MMA que sirvió como guardaespaldas de Epstein. Conectado con Ruslana Korshunova (modelo kazaja que murió en 2008), David Boies y Bill Richardson. Patrón de vuelo documentado tanto con VIPs como con mujeres jóvenes. Susurró "C-I-A" al abogado Brad Edwards al advertirle que dejara de investigar a Epstein.',
+    nationality: 'Russian/American',
+  },
+  {
+    id: 'act-robson',
+    name: 'Haley Robson',
+    role_en: 'Documented recruiter — Palm Beach victim referral network',
+    role_es: 'Reclutadora documentada — red de referencia de víctimas de Palm Beach',
+    description_en: 'Documented recruiter in Epstein\'s Palm Beach operation, paid $200 per victim referral. Identified by the Palm Beach Police Department investigation that began in 2005. Her recruitment fee structure reveals the systematic, transactional nature of the victim pipeline.',
+    description_es: 'Reclutadora documentada en la operación de Palm Beach de Epstein, pagada $200 por referencia de víctima. Identificada por la investigación del Departamento de Policía de Palm Beach que comenzó en 2005. Su estructura de tarifas de reclutamiento revela la naturaleza sistemática y transaccional del canal de víctimas.',
+    nationality: 'American',
+  },
 ]
 
 // ---------------------------------------------------------------------------
@@ -1496,6 +1565,15 @@ export const MONEY_FLOWS: MoneyFlow[] = [
     amount_usd: 12_000_000,
     date: '2022',
     source: 'Giuffre v. Prince Andrew, reported settlement amount',
+  },
+  // -- New money flows: investigation loop --
+  {
+    id: 'mf-epstein-mc2',
+    from_label: 'Jeffrey Epstein',
+    to_label: 'MC2 Model Management',
+    amount_usd: 0,
+    date: '1999–2005',
+    source: 'Court filings, United States v. Maxwell',
   },
 ]
 
