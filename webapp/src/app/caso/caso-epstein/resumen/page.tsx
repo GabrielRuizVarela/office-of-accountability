@@ -20,10 +20,10 @@ const SLUG = 'caso-epstein'
 
 const t = {
   headerBadge: { en: 'Investigation summary', es: 'Resumen de la investigacion' },
-  headerTitle: { en: 'Epstein Case: What 7,258 nodes reveal', es: 'Caso Epstein: Lo que revelan 7,258 nodos' },
+  headerTitle: { en: 'Epstein Case: What 7,276 nodes reveal', es: 'Caso Epstein: Lo que revelan 7,276 nodos' },
   headerDesc: {
-    en: 'An evidence-based investigation compiled from 4,153 flights, 1,044 documents, 367 verified persons, 31 organizations, and 9 mapped shell companies across 4 data sources.',
-    es: 'Una investigacion basada en evidencia compilada a partir de 4,153 vuelos, 1,044 documentos, 367 personas verificadas, 31 organizaciones y 9 empresas pantalla mapeadas a traves de 4 fuentes de datos.',
+    en: 'An evidence-based investigation compiled from 4,153 flights, 1,044 documents, 374 verified persons, 39 organizations, and 11,040 mapped relationships across 4 data sources.',
+    es: 'Una investigacion basada en evidencia compilada a partir de 4,153 vuelos, 1,044 documentos, 374 personas verificadas, 39 organizaciones y 11,040 relaciones mapeadas a traves de 4 fuentes de datos.',
   },
   viewData: { en: 'View data & evidence', es: 'Ver datos y evidencia' },
   timeline: { en: 'Timeline', es: 'Cronologia' },
