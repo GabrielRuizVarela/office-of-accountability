@@ -50,7 +50,7 @@ const UNIQUE_CONSTRAINTS = [
     label: 'User',
     property: 'email',
   },
-  // Caso Libra nodes
+  // Caso Libra nodes (legacy — kept until label migration completes)
   {
     name: 'caso_libra_person_id_unique',
     label: 'CasoLibraPerson',
@@ -81,6 +81,73 @@ const UNIQUE_CONSTRAINTS = [
     label: 'CasoLibraWallet',
     property: 'address',
   },
+  // Generic investigation labels (shared across all casos via caso_slug)
+  {
+    name: 'person_id_unique',
+    label: 'Person',
+    property: 'id',
+  },
+  {
+    name: 'organization_id_unique',
+    label: 'Organization',
+    property: 'id',
+  },
+  {
+    name: 'event_id_unique',
+    label: 'Event',
+    property: 'id',
+  },
+  {
+    name: 'document_id_unique',
+    label: 'Document',
+    property: 'id',
+  },
+  {
+    name: 'token_id_unique',
+    label: 'Token',
+    property: 'id',
+  },
+  {
+    name: 'wallet_id_unique',
+    label: 'Wallet',
+    property: 'id',
+  },
+  {
+    name: 'location_id_unique',
+    label: 'Location',
+    property: 'id',
+  },
+  {
+    name: 'aircraft_id_unique',
+    label: 'Aircraft',
+    property: 'id',
+  },
+  {
+    name: 'shell_company_id_unique',
+    label: 'ShellCompany',
+    property: 'id',
+  },
+  {
+    name: 'claim_id_unique',
+    label: 'Claim',
+    property: 'id',
+  },
+  {
+    name: 'money_flow_id_unique',
+    label: 'MoneyFlow',
+    property: 'id',
+  },
+  {
+    name: 'government_action_id_unique',
+    label: 'GovernmentAction',
+    property: 'id',
+  },
+  // Investigation config
+  {
+    name: 'investigation_config_id_unique',
+    label: 'InvestigationConfig',
+    property: 'id',
+  },
 ] as const
 
 /** Full-text indexes for search across text fields */
@@ -100,7 +167,7 @@ const FULLTEXT_INDEXES = [
     labels: ['Investigation'],
     properties: ['title', 'summary'],
   },
-  // Caso Libra fulltext
+  // Caso Libra fulltext (legacy — kept until label migration completes)
   {
     name: 'caso_libra_person_name_fulltext',
     labels: ['CasoLibraPerson'],
@@ -115,6 +182,32 @@ const FULLTEXT_INDEXES = [
     name: 'caso_libra_document_title_fulltext',
     labels: ['CasoLibraDocument'],
     properties: ['title', 'summary'],
+  },
+  // Generic investigation label fulltext (filter by caso_slug in application layer)
+  {
+    name: 'person_name_fulltext',
+    labels: ['Person'],
+    properties: ['name', 'role'],
+  },
+  {
+    name: 'event_title_fulltext',
+    labels: ['Event'],
+    properties: ['title', 'description'],
+  },
+  {
+    name: 'document_title_fulltext',
+    labels: ['Document'],
+    properties: ['title', 'summary'],
+  },
+  {
+    name: 'organization_name_fulltext',
+    labels: ['Organization'],
+    properties: ['name'],
+  },
+  {
+    name: 'claim_title_fulltext',
+    labels: ['Claim'],
+    properties: ['title', 'description'],
   },
 ] as const
 
@@ -145,7 +238,7 @@ const BTREE_INDEXES = [
     label: 'User',
     property: 'verification_tier',
   },
-  // Caso Libra range indexes
+  // Caso Libra range indexes (legacy — kept until label migration completes)
   {
     name: 'caso_libra_person_slug_index',
     label: 'CasoLibraPerson',
@@ -169,6 +262,93 @@ const BTREE_INDEXES = [
   {
     name: 'caso_libra_organization_slug_index',
     label: 'CasoLibraOrganization',
+    property: 'slug',
+  },
+  // Generic investigation labels — caso_slug range indexes for namespace filtering
+  {
+    name: 'person_caso_slug_index',
+    label: 'Person',
+    property: 'caso_slug',
+  },
+  {
+    name: 'organization_caso_slug_index',
+    label: 'Organization',
+    property: 'caso_slug',
+  },
+  {
+    name: 'event_caso_slug_index',
+    label: 'Event',
+    property: 'caso_slug',
+  },
+  {
+    name: 'document_caso_slug_index',
+    label: 'Document',
+    property: 'caso_slug',
+  },
+  {
+    name: 'token_caso_slug_index',
+    label: 'Token',
+    property: 'caso_slug',
+  },
+  {
+    name: 'wallet_caso_slug_index',
+    label: 'Wallet',
+    property: 'caso_slug',
+  },
+  {
+    name: 'location_caso_slug_index',
+    label: 'Location',
+    property: 'caso_slug',
+  },
+  {
+    name: 'aircraft_caso_slug_index',
+    label: 'Aircraft',
+    property: 'caso_slug',
+  },
+  {
+    name: 'shell_company_caso_slug_index',
+    label: 'ShellCompany',
+    property: 'caso_slug',
+  },
+  {
+    name: 'claim_caso_slug_index',
+    label: 'Claim',
+    property: 'caso_slug',
+  },
+  {
+    name: 'money_flow_caso_slug_index',
+    label: 'MoneyFlow',
+    property: 'caso_slug',
+  },
+  {
+    name: 'government_action_caso_slug_index',
+    label: 'GovernmentAction',
+    property: 'caso_slug',
+  },
+  // Generic labels — slug indexes for lookups
+  {
+    name: 'person_slug_index',
+    label: 'Person',
+    property: 'slug',
+  },
+  {
+    name: 'event_slug_index',
+    label: 'Event',
+    property: 'slug',
+  },
+  {
+    name: 'event_date_index',
+    label: 'Event',
+    property: 'date',
+  },
+  {
+    name: 'document_slug_index',
+    label: 'Document',
+    property: 'slug',
+  },
+  {
+    name: 'organization_slug_index',
+    label: 'Organization',
     property: 'slug',
   },
 ] as const
