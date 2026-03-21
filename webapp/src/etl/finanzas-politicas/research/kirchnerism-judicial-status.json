@@ -1,0 +1,574 @@
+{
+  "investigation": "finanzas-politicas",
+  "wave": 2,
+  "title": "Judicial Status of Major Kirchnerism Corruption Cases",
+  "date": "2026-03-21",
+  "summary": "Comprehensive judicial status table for all K-era corruption cases, covering case name, defendants, charges, current status, amounts involved, and connections. Data as of March 2026.",
+
+  "cases": [
+    {
+      "case_name": "Causa Vialidad (Obra Publica)",
+      "case_number": "N.º 5048/2016",
+      "court": "TOF 2 (Tribunal Oral Federal 2)",
+      "status": "CONDENA FIRME",
+      "summary": "Systematic corruption in the awarding of 51 road construction contracts in Santa Cruz province (2003-2015), directing auctions to benefit Lazaro Baez through Austral Construcciones. Half of the 51 works remained unfinished by Dec 2015. Baez received ARS 24,500 million in public works contracts, representing 11.6% of national road budget directed to Santa Cruz.",
+      "key_dates": {
+        "first_instance_verdict": "2022-12-06",
+        "casacion_confirmation": "2024-11",
+        "corte_suprema_firme": "2025-06-10",
+        "decomiso_order": "2025-11-18"
+      },
+      "defendants": [
+        {
+          "name": "Cristina Fernandez de Kirchner",
+          "role": "Ex-presidenta",
+          "charge": "Administracion fraudulenta agravada",
+          "sentence": "6 anos de prision + inhabilitacion perpetua para cargos publicos",
+          "status": "Condena firme. Detencion domiciliaria en San Jose 1111, CABA.",
+          "decomiso": "ARS 685,000,000,000 (compartido con hijos y Baez)"
+        },
+        {
+          "name": "Lazaro Baez",
+          "role": "Empresario, dueno de Austral Construcciones",
+          "charge": "Fraude en adjudicacion de obra publica + lavado de activos (Ruta del Dinero K)",
+          "sentence": "Pena unica de 15 anos (unificacion Vialidad 6 anos + Ruta del Dinero K 10 anos)",
+          "status": "Condena firme. Preso en Carcel de Rio Gallegos. Decomiso de USD 54,872,866 confirmado.",
+          "additional": "Causa por evasion de Austral Construcciones aun abierta (Corte rechazo recurso, marzo 2026)"
+        },
+        {
+          "name": "Jose Lopez",
+          "role": "Ex-Secretario de Obra Publica",
+          "charge": "Administracion fraudulenta (Vialidad) + enriquecimiento ilicito (bolsos) + tenencia de arma",
+          "sentence": "Pena unica de 13 anos",
+          "status": "Condena firme"
+        }
+      ],
+      "amounts": {
+        "total_obra_publica_baez": "ARS 24,500,000,000 en contratos",
+        "decomiso_total": "ARS 685,000,000,000 (111 propiedades de CFK, hijos y Baez)",
+        "decomiso_baez_hijos": "USD 54,872,866"
+      },
+      "connections": "Central to Kirchnerism corruption network. Links to Ruta del Dinero K (money laundering of proceeds), Hotesur/Los Sauces (kickback channel), and Cuadernos (broader bribery scheme).",
+      "sources": [
+        {"title": "Corte Suprema dejo firme condena CFK", "url": "https://www.palabrasdelderecho.com.ar/articulo/6011/Causa-Vialidad-la-Corte-Suprema-dejo-firme-la-condena-a-Cristina-Kirchner"},
+        {"title": "CFK pidio frenar decomiso bienes hijos", "url": "https://www.infobae.com/judiciales/2026/03/06/causa-vialidad-cristina-kirchner-pidio-frenar-el-decomiso-de-los-bienes-de-sus-hijos/"},
+        {"title": "Casacion mantuvo condena unica 15 anos Baez", "url": "https://www.infobae.com/judiciales/2026/02/27/casacion-mantuvo-vigente-la-condena-unica-de-15-anos-por-la-ruta-del-dinero-k-y-vialidad-contra-lazaro-baez/"},
+        {"title": "Mapa judicial CFK 2026", "url": "https://www.mdzol.com/politica/el-mapa-judicial-cristina-kirchner-todas-las-causas-condenas-y-juicios-pendientes-2026-n1476720"},
+        {"title": "Estado obras Baez Santa Cruz", "url": "https://www.lanacion.com.ar/politica/la-condena-a-cristina-kirchner-como-estan-hoy-las-rutas-de-lazaro-baez-en-santa-cruz-nid10062025/"}
+      ]
+    },
+
+    {
+      "case_name": "Ruta del Dinero K",
+      "court": "TOF 4 (Tribunal Oral Criminal Federal 4)",
+      "status": "CONDENA FIRME",
+      "summary": "Money laundering scheme through which Lazaro Baez laundered proceeds from overpriced public works contracts. Funds moved through shell companies, real estate, and offshore structures.",
+      "key_dates": {
+        "first_instance_verdict": "2021 (10 anos Baez)",
+        "corte_suprema_firme": "2025-05-29",
+        "pena_unica_fijada": "2025-07 (15 anos unificada con Vialidad)",
+        "casacion_confirma_pena_unica": "2026-02-27"
+      },
+      "defendants": [
+        {
+          "name": "Lazaro Baez",
+          "charge": "Lavado de activos",
+          "sentence": "10 anos (unificada a 15 con Vialidad)",
+          "status": "Condena firme. Preso."
+        },
+        {
+          "name": "Martin Baez",
+          "charge": "Lavado de activos",
+          "status": "Condena firme. Decomiso de bienes confirmado."
+        }
+      ],
+      "amounts": {
+        "decomiso_confirmado": "USD 54,872,866",
+        "devolucion_ordenada_corte": "USD 60,000,000+"
+      },
+      "connections": "Direct sequel to Causa Vialidad. The laundering channel for overpriced public works profits.",
+      "sources": [
+        {"title": "Corte Suprema dejo firmes condenas Ruta del Dinero K", "url": "https://www.infobae.com/judiciales/2025/05/29/la-corte-suprema-dejo-firmes-las-condenas-contra-lazaro-baez-y-otros-implicados-en-la-causa-de-la-ruta-del-dinero-k/"},
+        {"title": "Corte ordena devolver USD 60M", "url": "https://www.cronista.com/economia-politica/la-corte-ordena-al-clan-baez-devolver-mas-de-us-60-millones-al-estado/"},
+        {"title": "Decomiso Baez e hijo confirmado", "url": "https://www.infobae.com/judiciales/2025/11/03/la-justicia-confirmo-el-decomiso-de-bienes-de-lazaro-baez-y-su-hijo-deberan-devolver-55-millones-de-dolares/"}
+      ]
+    },
+
+    {
+      "case_name": "Hotesur / Los Sauces",
+      "court": "TOF 5 (Tribunal Oral Federal 5)",
+      "status": "EN ESPERA DE JUICIO ORAL",
+      "summary": "Money laundering and bribery through Kirchner family companies Hotesur SA and Los Sauces SA. The scheme used fictitious hotel and property rental contracts to channel kickbacks from government contractors (Baez/Austral Construcciones, Cristobal Lopez, Fabian De Sousa) back to the Kirchner family.",
+      "key_dates": {
+        "corte_suprema_ordena_juicio": "2024-12-16",
+        "reactivacion_pruebas": "2025-04-30",
+        "peritaje_reanudado": "2025-07-11",
+        "juicio_postergado_a_2026": "2025-08",
+        "tribunal_completado": "2025-12-28",
+        "fiscal_pide_fecha": "2026-03-04",
+        "nuevo_juez_sorteado": "2026-02"
+      },
+      "defendants": [
+        {
+          "name": "Cristina Fernandez de Kirchner",
+          "charge": "Lavado de activos, cohecho pasivo, asociacion ilicita",
+          "status": "Esperando juicio oral"
+        },
+        {
+          "name": "Maximo Kirchner",
+          "role": "Diputado, hijo de CFK y Nestor Kirchner",
+          "charge": "Lavado de activos, asociacion ilicita",
+          "status": "Esperando juicio oral"
+        },
+        {
+          "name": "Cristobal Lopez",
+          "role": "Empresario",
+          "charge": "Participacion en esquema de alquileres ficticios",
+          "status": "Esperando juicio oral"
+        },
+        {
+          "name": "Fabian De Sousa",
+          "role": "Empresario",
+          "charge": "Participacion en esquema",
+          "status": "Esperando juicio oral"
+        }
+      ],
+      "amounts": {
+        "note": "Pending accounting expert report (peritaje contable) — key evidence not yet completed"
+      },
+      "connections": "Direct kickback channel from Causa Vialidad contractors. Hotesur managed Hotel Alto Calafate; Los Sauces managed other Kirchner properties.",
+      "sources": [
+        {"title": "Fiscal pidio fijar fecha juicio CFK y Maximo", "url": "https://elvocero.com.ar/2026/03/04/causa-hotesur-los-sauces-el-fiscal-pidio-fijar-fecha-para-el-juicio-a-cristina-y-maximo/"},
+        {"title": "Tribunal completado, aguardan peritaje", "url": "https://www.infobae.com/judiciales/2025/12/28/hotesur-los-sauces-el-juicio-que-se-viene-contra-los-kirchner-se-completo-el-tribunal-y-aguardan-un-peritaje-clave/"},
+        {"title": "Juicio sera en 2026", "url": "https://elintransigente.com/2025/08/una-buena-para-cristina-kirchner-el-juicio-por-lavado-de-dinero-en-hotesur-y-los-sauces-sera-en-2026/"},
+        {"title": "Corte Suprema ordeno juicio oral", "url": "https://www.infobae.com/judiciales/2024/12/16/la-corte-suprema-ordeno-que-cristina-kirchner-vaya-a-juicio-oral-por-la-causa-los-sauces-hotesur/"}
+      ]
+    },
+
+    {
+      "case_name": "Causa Cuadernos de las Coimas",
+      "court": "TOF 7 (Tribunal Oral Criminal Federal 7)",
+      "status": "EN JUICIO ORAL (iniciado nov 2025)",
+      "summary": "The largest corruption investigation in Argentine judicial history. Based on notebooks kept by driver Oscar Centeno documenting cash deliveries (coimas) from businessmen to government officials over 12 years. 304 of 540 documented corruption acts being tried. 87 defendants including CFK, 19 former officials, 65 businessmen, and 2 former drivers. 25 arrepentidos (cooperating witnesses).",
+      "key_dates": {
+        "juicio_oral_inicio": "2025-11-06",
+        "lectura_acusacion_finalizada": "2025-12-30",
+        "reanudacion_con_preliminares": "2026-02-03",
+        "audiencias_martes_agregadas": "2026-03",
+        "feria_invernal_habilitada": "2026-07 (tribunal trabajara durante feria)"
+      },
+      "defendants": [
+        {
+          "name": "Cristina Fernandez de Kirchner",
+          "charge": "Jefa de asociacion ilicita, cohecho pasivo",
+          "status": "En juicio oral. Se nego a responder preguntas."
+        },
+        {
+          "name": "Roberto Baratta",
+          "role": "Ex-mano derecha de De Vido en Planificacion Federal",
+          "charge": "Recaudacion ilegal",
+          "status": "En juicio oral"
+        },
+        {
+          "name": "Julio De Vido",
+          "role": "Ex-Ministro de Planificacion Federal",
+          "charge": "Asociacion ilicita, cohecho",
+          "status": "En juicio oral. Preso en Ezeiza por condena de Once."
+        },
+        {
+          "name": "Oscar Centeno",
+          "role": "Ex-chofer de Baratta, autor de los cuadernos",
+          "charge": "Testigo clave / arrepentido",
+          "status": "Arrepentido"
+        },
+        {
+          "name": "65 empresarios",
+          "charge": "Cohecho activo (pago de coimas)",
+          "status": "En juicio oral. 25 son arrepentidos. Algunos ofrecieron pagar USD 12-21M para evitar juicio.",
+          "notable_arrepentidos": "Aldo Benito Roggio ofrecio ARS 1,800M para cerrar causa. Enrique Pescarmona (84) sobreseido por Alzheimer."
+        }
+      ],
+      "amounts": {
+        "documented_corruption_acts": 304,
+        "total_acts_investigated": 540,
+        "empresarios_offers_to_settle": "USD 12,000,000 to 21,000,000",
+        "note": "12 years of documented cash collections"
+      },
+      "connections": "Overlaps significantly with Causa Vialidad (same corruption network) and Hotesur/Los Sauces (kickback recipients). The cartelization of public works through the Camara Argentina de Empresas Viales is a key element.",
+      "sources": [
+        {"title": "Juicio historico 87 imputados 304 hechos", "url": "https://www.lanacion.com.ar/politica/cuadernos-de-las-coimas-se-inicia-un-juicio-historico-que-demorara-anos-nid02112025/"},
+        {"title": "Fiscales.gob.ar — inicio del juicio", "url": "https://www.fiscales.gob.ar/fiscalias/causa-cuadernos-con-la-lectura-de-parte-de-la-acusacion-comenzo-el-juicio-contra-la-expresidenta-cristina-fernandez-y-otros-86-imputados/"},
+        {"title": "Arrepentidos relatos recaudacion ilegal", "url": "https://www.infobae.com/judiciales/2025/11/20/los-relatos-de-los-arrepentidos-en-la-causa-de-los-cuadernos-y-los-detalles-del-esquena-de-recaudacion-ilegal/"},
+        {"title": "63 empresarios del juicio", "url": "https://www.lanacion.com.ar/politica/los-63-empresarios-que-seran-juzgados-por-coimas-arrepentidos-amenazas-recibidas-y-maniobras-para-nid06112025/"},
+        {"title": "TOF 7 define si empresarios pagan para evitar juicio", "url": "https://www.infobae.com/judiciales/2025/09/22/causa-cuadernos-el-tribunal-oral-federal-7-define-si-los-empresarios-podran-pagar-para-evitar-el-juicio/"},
+        {"title": "CFK cuestiono investigacion, se nego a responder", "url": "https://www.fiscales.gob.ar/corrupcion/juicio-por-la-causa-cuadernos-cristina-fernandez-de-kirchner-cuestiono-la-investigacion-y-se-nego-a-responder-preguntas/"}
+      ]
+    },
+
+    {
+      "case_name": "Tragedia de Once",
+      "court": "TOF 2 (Once I) / TOF (Once II - De Vido)",
+      "status": "CONDENAS FIRMES",
+      "summary": "Criminal negligence in the February 22, 2012 train crash at Once station that killed 52 people and injured 789. Government officials allowed TBA (Trenes de Buenos Aires) to operate with dangerously deficient equipment while funneling subsidies that were not used for maintenance.",
+      "key_dates": {
+        "tragedia": "2012-02-22",
+        "once_i_sentencia": "2015-12",
+        "once_ii_sentencia_de_vido": "2022 (4 anos)",
+        "corte_firme_de_vido": "2024-08-01",
+        "de_vido_detenido": "2025-11-13",
+        "prescripcion_rechazada": "2025-10-20"
+      },
+      "defendants": [
+        {
+          "name": "Ricardo Jaime",
+          "role": "Ex-Secretario de Transporte",
+          "charge": "Administracion fraudulenta",
+          "sentence": "6 anos de prision (Once I). Posteriormente aumentada por Casacion.",
+          "status": "Condenado"
+        },
+        {
+          "name": "Juan Pablo Schiavi",
+          "role": "Ex-Secretario de Transporte (sucesor de Jaime)",
+          "charge": "Administracion fraudulenta, estrago culposo",
+          "sentence": "8 anos de prision",
+          "status": "Condenado"
+        },
+        {
+          "name": "Julio De Vido",
+          "role": "Ex-Ministro de Planificacion Federal",
+          "charge": "Administracion fraudulenta agravada",
+          "sentence": "4 anos de prision",
+          "status": "Condena firme. Preso en Complejo Penitenciario Federal I de Ezeiza desde 13/11/2025. Pedido de domiciliaria rechazado. Pedido de prescripcion rechazado.",
+          "other_causes": "Tambien condenado a 4 anos por 'trenes chatarra' (compra irregular a Espana/Portugal). Juicio por Cuadernos en curso. Causa Suenos Compartidos en juicio."
+        },
+        {
+          "name": "Marcos Cordoba",
+          "role": "Motorman (conductor del tren)",
+          "status": "Condenado"
+        },
+        {
+          "name": "Directivos TBA",
+          "role": "Empresa concesionaria",
+          "status": "Condenados"
+        }
+      ],
+      "amounts": {
+        "victims": "52 muertos, 789 heridos",
+        "note": "Subsidios millonarios a TBA desviados, no utilizados en mantenimiento"
+      },
+      "connections": "De Vido is the common thread — also defendant in Cuadernos, Suenos Compartidos, and convicted for 'trenes chatarra'. Demonstrates pattern of criminal negligence in transport policy for political/financial gain.",
+      "sources": [
+        {"title": "Corte confirmo condena De Vido 4 anos", "url": "https://www.perfil.com/noticias/judiciales/la-corte-suprema-confirmo-la-condena-de-cuatro-anos-de-prision-a-julio-de-vido-por-su-responsabilidad-en-la-tragedia-de-once.phtml"},
+        {"title": "De Vido se entrego, trasladado a Ezeiza", "url": "https://www.infobae.com/judiciales/2025/11/13/julio-de-vido-se-entrego-en-comodoro-py-y-quedo-detenido-por-la-tragedia-de-once/"},
+        {"title": "Rechazo prescripcion De Vido", "url": "https://www.infobae.com/judiciales/2025/10/20/rechazaron-un-pedido-de-julio-de-vido-para-declarar-prescripta-la-causa-por-la-tragedia-de-once/"},
+        {"title": "Condenas Jaime y Schiavi", "url": "https://www.fiscales.gob.ar/fiscalias/tragedia-de-once-condenas-de-seis-y-ocho-anos-para-jaime-y-schiavi/"},
+        {"title": "De Vido preso y enfermo, pide domiciliaria (Cuadernos)", "url": "https://www.infobae.com/judiciales/2026/03/17/estoy-preso-y-enfermo-pero-preferiria-morirme-en-mi-casa-pidio-julio-de-vido-a-los-jueces-de-la-causa-cuadernos/"}
+      ]
+    },
+
+    {
+      "case_name": "Causa Ciccone / Boudou",
+      "court": "TOF 4",
+      "status": "CONDENA FIRME — LIBERTAD CONDICIONAL",
+      "summary": "Former Vice President Amado Boudou orchestrated a scheme to acquire the bankrupt Ciccone Calcografica printing company through front men, then used his position to secure government contracts for printing banknotes and official documents. First vice president in Argentine history convicted of corruption.",
+      "key_dates": {
+        "primera_instancia": "2018-08 (5 anos 10 meses)",
+        "corte_suprema_firme": "2020-12-03",
+        "libertad_condicional": "2021-07"
+      },
+      "defendants": [
+        {
+          "name": "Amado Boudou",
+          "role": "Ex-Vicepresidente (2011-2015)",
+          "charge": "Cohecho pasivo (coimas), negociaciones incompatibles con la funcion publica",
+          "sentence": "5 anos y 10 meses de prision (reducida por cursos en detencion)",
+          "status": "Libertad condicional desde julio 2021. Tobillera electronica removida. Domiciliaria en Barracas, CABA. Demando al Estado ante la CIDH.",
+          "note": "Primer vicepresidente condenado por corrupcion en la historia argentina"
+        }
+      ],
+      "amounts": {
+        "note": "Valor de Ciccone Calcografica y contratos de impresion de billetes no cuantificado publicamente en detalle"
+      },
+      "connections": "Boudou was CFK's vice president. The scheme shows the reach of corruption into state monetary functions (printing of currency).",
+      "sources": [
+        {"title": "Corte confirmo condena Boudou", "url": "https://www.infobae.com/politica/2020/12/03/la-corte-suprema-confirmo-la-condena-de-amado-boudou-por-el-caso-ciccone-y-el-ex-vicepresidente-quedo-a-un-paso-de-volver-a-prision/"},
+        {"title": "Chequeado — primer vicepresidente condenado", "url": "https://chequeado.com/el-explicador/causa-ciccone-la-corte-confirmo-la-sentencia-de-boudou-y-se-convirtio-en-el-primer-vicepresidente-condenado-por-corrupcion/"},
+        {"title": "Libertad condicional Boudou", "url": "https://www.pagina12.com.ar/356645-causa-ciccone-ordenan-la-libertad-condicional-de-amado-boudo"},
+        {"title": "Reduccion condena", "url": "https://www.cronista.com/economia-politica/boudou-por-que-le-bajan-otro-mes-de-condena-y-podria-salir-en-libertad-condicional-la-semana-que-viene/"}
+      ]
+    },
+
+    {
+      "case_name": "Suenos Compartidos (Madres de Plaza de Mayo)",
+      "court": "TOF (en juicio oral desde feb 2026)",
+      "status": "EN JUICIO ORAL (iniciado feb 2026)",
+      "summary": "Diversion of ARS 206 million (23.54% of total ARS 748M transferred) from the 'Suenos Compartidos' social housing construction program, administered by the Fundacion Madres de Plaza de Mayo under Hebe de Bonafini. Funds meant for building homes for the poor were diverted between March 2008 and June 2011.",
+      "key_dates": {
+        "periodo_delictivo": "2008-03 to 2011-06",
+        "corte_rechazo_sobreseimiento_schoklender": "2023-08",
+        "juicio_oral_inicio": "2026-02-11"
+      },
+      "defendants": [
+        {
+          "name": "Sergio Schoklender",
+          "role": "Apoderado de Fundacion Madres",
+          "charge": "Administracion fraudulenta en perjuicio de la administracion publica",
+          "status": "En juicio oral"
+        },
+        {
+          "name": "Pablo Schoklender",
+          "role": "Hermano, involucrado en la administracion",
+          "charge": "Administracion fraudulenta",
+          "status": "En juicio oral"
+        },
+        {
+          "name": "Julio De Vido",
+          "role": "Ex-Ministro de Planificacion Federal",
+          "charge": "Fraude contra el Estado",
+          "status": "En juicio oral. Ya preso en Ezeiza por causa Once."
+        },
+        {
+          "name": "Jose Lopez",
+          "role": "Ex-Secretario de Obra Publica",
+          "charge": "Fraude contra el Estado",
+          "status": "En juicio oral. Ya condenado (pena unica 13 anos)."
+        },
+        {
+          "name": "Hebe de Bonafini",
+          "role": "Presidenta de Madres de Plaza de Mayo (fallecida 2022-11-20)",
+          "status": "Fallecida. Procesada en vida pero nunca juzgada.",
+          "note": "Schoklender la acuso de usar fondos para campanas de CFK y Boudou"
+        }
+      ],
+      "amounts": {
+        "fondos_transferidos": "ARS 748,000,000",
+        "fondos_desviados": "ARS 206,438,454 (23.54%)",
+        "viviendas_no_construidas": "Miles de viviendas sociales prometidas"
+      },
+      "connections": "De Vido and Lopez appear here too — same officials from Vialidad and Cuadernos. Bonafini's Madres foundation served as a conduit for political patronage. Schoklender accused Bonafini of channeling funds to CFK/Boudou campaigns.",
+      "sources": [
+        {"title": "Comenzo juicio Schoklender, Lopez, De Vido", "url": "https://www.revistalarealidad.com.ar/comenzo-el-juicio-contra-los-schoklender-lopez-y-de-vido-por-el-fraude-en-suenos-compartidos/"},
+        {"title": "Schoklender se sentaran en banquillo", "url": "https://www.infobae.com/judiciales/2026/02/02/suenos-compartidos-tras-anos-de-demora-los-schoklender-se-sentaran-en-el-banquillo/"},
+        {"title": "Schoklender acuso a Bonafini de desviar a campanas", "url": "https://lapostadiario.com/schoklender-acuso-a-hebe-de-bonafini-de-usar-fondos-de-suenos-compartidos-para-campanas-de-cristina-kirchner-y-boudou/"}
+      ]
+    },
+
+    {
+      "case_name": "Jose Lopez — Bolsos del Convento",
+      "court": "TOF 1 (enriquecimiento) / TOF 2 (Vialidad) / unificacion",
+      "status": "CONDENA FIRME",
+      "summary": "On June 14, 2016, former Secretary of Public Works Jose Lopez was arrested at Monasterio Nuestra Senora de Fatima in General Rodriguez while attempting to hide bags containing nearly USD 9 million in cash, jewelry, and a firearm. The case demonstrated the scale of illicit enrichment by K-era officials.",
+      "key_dates": {
+        "detencion_con_bolsos": "2016-06-14",
+        "condena_enriquecimiento": "2019",
+        "corte_firme_enriquecimiento": "2023-06-01",
+        "pena_unica_13_anos": "2025-08-22",
+        "casacion_firme_pena_unica": "2025-12-11"
+      },
+      "defendants": [
+        {
+          "name": "Jose Lopez",
+          "role": "Ex-Secretario de Obra Publica",
+          "charge": "Enriquecimiento ilicito + administracion fraudulenta (Vialidad) + tenencia ilegal de arma",
+          "sentence": "Pena unica de 13 anos + multa de 60% del valor del enriquecimiento injustificado + inhabilitacion perpetua especial + inhabilitacion absoluta perpetua",
+          "status": "Condena firme"
+        }
+      ],
+      "amounts": {
+        "dolares_en_bolsos": "USD 9,000,000 (aproximadamente)",
+        "joyas": "Cantidad no especificada",
+        "arma": "1 arma de fuego civil"
+      },
+      "connections": "Lopez was a key cog in Vialidad and Cuadernos. Also defendant in Suenos Compartidos. The USD 9M cash is physical evidence of the broader corruption system documented in the Cuadernos.",
+      "sources": [
+        {"title": "Casacion dejo firme pena 13 anos", "url": "https://www.infobae.com/judiciales/2025/12/11/casacion-dejo-firme-la-pena-de-13-anos-de-carcel-contra-jose-lopez-por-corrupcion-y-el-caso-de-los-bolsos-del-convento/"},
+        {"title": "Pena unica 13 anos fijada", "url": "https://www.infobae.com/judiciales/2025/08/22/jose-lopez-recibio-una-pena-unificada-de-13-anos-de-prision-por-corrupcion-y-enriquecimiento-ilicito/"},
+        {"title": "Corte confirmo condena enriquecimiento", "url": "https://www.infobae.com/judiciales/2023/06/01/la-corte-suprema-confirmo-la-condena-a-jose-lopez-por-enriquecimiento-ilicito-y-tenencia-de-un-arma/"}
+      ]
+    },
+
+    {
+      "case_name": "Memorandum con Iran / Encubrimiento AMIA",
+      "court": "TOF 8 (Tribunal Oral Federal 8)",
+      "status": "EN ESPERA DE JUICIO ORAL (fecha pendiente, posiblemente 2026)",
+      "summary": "In January 2013, the Kirchner government signed a Memorandum of Understanding with Iran to create a 'Truth Commission' regarding the 1994 AMIA bombing that killed 85 people. Prosecutor Alberto Nisman accused CFK of negotiating impunity for the Iranian suspects in exchange for favorable trade deals. Nisman was found dead on January 18, 2015, the day before he was to present his case to Congress. The memorandum was approved by the Argentine Congress but never ratified by Iran's parliament, so it never took effect.",
+      "key_dates": {
+        "firma_memorandum": "2013-01",
+        "denuncia_nisman": "2015-01-14",
+        "muerte_nisman": "2015-01-18",
+        "sobreseimiento_anulado_por_casacion": "2018",
+        "corte_confirma_reapertura": "2024-12",
+        "tof8_anunciara_fecha": "2025-07 (previsto antes del 18/7, aniversario AMIA)"
+      },
+      "defendants": [
+        {
+          "name": "Cristina Fernandez de Kirchner",
+          "charge": "Encubrimiento agravado del atentado a la AMIA",
+          "status": "Esperando juicio oral"
+        },
+        {
+          "name": "Carlos Zannini",
+          "role": "Ex-Secretario Legal y Tecnico",
+          "charge": "Encubrimiento agravado",
+          "status": "Esperando juicio oral"
+        },
+        {
+          "name": "Oscar Parrilli",
+          "role": "Ex-titular de la AFI/SI",
+          "charge": "Encubrimiento agravado",
+          "status": "Esperando juicio oral"
+        },
+        {
+          "name": "Hector Timerman",
+          "role": "Ex-Canciller (fallecido 2018-12-30)",
+          "status": "Fallecido antes del juicio"
+        },
+        {
+          "name": "Luis D'Elia",
+          "role": "Dirigente social",
+          "charge": "Encubrimiento",
+          "status": "Esperando juicio oral"
+        },
+        {
+          "name": "Fernando Esteche",
+          "role": "Ex-lider Quebracho",
+          "charge": "Encubrimiento",
+          "status": "Esperando juicio oral"
+        },
+        {
+          "name": "Andres Larroque",
+          "role": "Dirigente La Campora",
+          "charge": "Encubrimiento",
+          "status": "Esperando juicio oral"
+        }
+      ],
+      "total_defendants": 11,
+      "amounts": {
+        "victimas_amia": "85 muertos, 300+ heridos (atentado 1994)",
+        "note": "No se trata de montos economicos sino de impunidad negociada para sospechosos de terrorismo"
+      },
+      "connections": "Politically the most explosive case. Links K-era foreign policy to alleged obstruction of justice in Argentina's worst terrorist attack. Separate trial in absentia for 10 Iranian/Hezbollah suspects ordered by Judge Rafecas.",
+      "sources": [
+        {"title": "Justicia pondra fecha juicio oral memorandum", "url": "https://www.perfil.com/noticias/politica/otro-reves-para-cristina-kirchner-la-justicia-pone-fecha-para-el-inicio-del-juicio-oral-por-el-memorandum-con-iran.phtml"},
+        {"title": "TOF 8 anunciara fecha despues de feria", "url": "https://www.lanacion.com.ar/politica/avanza-el-caso-del-memorandum-con-iran-contra-cristina-kirchner-el-tribunal-oral-anunciara-la-fecha-nid28072025/"},
+        {"title": "CFK ira a juicio por encubrimiento AMIA", "url": "https://www.infobae.com/judiciales/2023/09/18/memorandum-con-iran-cristina-kirchner-tambien-ira-a-juicio-por-el-encubrimiento-del-ataque-a-la-amia/"},
+        {"title": "Rol de Iran en AMIA — batalla judicial", "url": "https://www.infobae.com/judiciales/2026/03/01/el-rol-de-iran-en-el-atentado-a-la-amia-el-plan-de-la-cupula-estatal-y-la-batalla-judicial-por-el-juicio-a-los-profugos/"}
+      ]
+    },
+
+    {
+      "case_name": "Dolar Futuro",
+      "court": "TOF 1",
+      "status": "SOBRESEIMIENTO FIRME",
+      "summary": "In 2015, PRO/UCR legislators accused CFK, Economy Minister Axel Kicillof, BCRA president Alejandro Vanoli, and CNV president Cristian Girard of fraud for selling dollar futures contracts at ARS 10.6-10.8 when the informal 'blue' dollar was at ARS 16. Expert reports later showed the operations generated gains (ARS 147B in 2015, ARS 67B in 2016) for the Central Bank, not losses.",
+      "key_dates": {
+        "denuncia": "2015",
+        "procesamiento_bonadio": "2016-05",
+        "sobreseimiento_casacion": "2021",
+        "corte_suprema_firme_sobreseimiento": "2024-12-05"
+      },
+      "defendants": [
+        {
+          "name": "Cristina Fernandez de Kirchner",
+          "charge": "Administracion fraudulenta (original)",
+          "status": "SOBRESEIDA — firme por Corte Suprema"
+        },
+        {
+          "name": "Axel Kicillof",
+          "role": "Ex-Ministro de Economia, actual Gobernador de Buenos Aires",
+          "charge": "Administracion fraudulenta (original)",
+          "status": "SOBRESEIDO — firme por Corte Suprema"
+        },
+        {
+          "name": "Alejandro Vanoli",
+          "role": "Ex-presidente del BCRA",
+          "status": "SOBRESEIDO"
+        },
+        {
+          "name": "Cristian Girard",
+          "role": "Ex-presidente CNV",
+          "status": "SOBRESEIDO"
+        }
+      ],
+      "amounts": {
+        "perjuicio_alegado": "No demostrado",
+        "pericia_resultado": "Ganancia BCRA: ARS 147,116,000,000 (2015) + ARS 67,448,000,000 (2016)"
+      },
+      "connections": "Often cited by Kirchnerism as evidence of 'lawfare' — political use of the judiciary. The case collapsed when expert evidence showed no financial damage to the state.",
+      "sources": [
+        {"title": "Corte Suprema sobreseimiento firme", "url": "https://www.infobae.com/judiciales/2024/12/05/la-corte-suprema-dejo-firme-el-sobreseimiento-de-cristina-kirchner-y-axel-kicillof-por-la-causa-dolar-futuro/"},
+        {"title": "SAIJ — Corte confirmo sobreseimiento", "url": "https://www.saij.gob.ar/corte-confirmo-sobreseimiento-cristina-fernandez-kirchner-axel-kicillof-causa-dolar-futuro-nv44839-2024-12-05/123456789-0abc-938-44ti-lpssedadevon"},
+        {"title": "Kicillof libre de cargos", "url": "https://infocielo.com/politica-y-economia/kicillof-libre-cargos-la-justicia-confirmo-que-no-hubo-perjuicio-la-causa-dolar-futuro-n797489"}
+      ]
+    }
+  ],
+
+  "summary_table": {
+    "description": "Quick-reference status grid for all K-era cases as of March 2026",
+    "cases": [
+      {"case": "Vialidad",           "primary_defendant": "CFK, Baez, Lopez",         "status": "CONDENA FIRME",         "sentence": "CFK 6a, Baez 15a (unif), Lopez 13a (unif)"},
+      {"case": "Ruta del Dinero K",   "primary_defendant": "Baez",                     "status": "CONDENA FIRME",         "sentence": "10a (unificada a 15 con Vialidad)"},
+      {"case": "Hotesur/Los Sauces",  "primary_defendant": "CFK, Maximo K",            "status": "ESPERA JUICIO ORAL",    "sentence": "Pendiente"},
+      {"case": "Cuadernos",           "primary_defendant": "CFK + 86 imputados",       "status": "EN JUICIO ORAL",        "sentence": "Pendiente (inicio nov 2025)"},
+      {"case": "Tragedia de Once",    "primary_defendant": "De Vido, Jaime, Schiavi",  "status": "CONDENA FIRME",         "sentence": "De Vido 4a, Jaime 6a, Schiavi 8a"},
+      {"case": "Ciccone/Boudou",      "primary_defendant": "Boudou",                   "status": "CONDENA FIRME",         "sentence": "5a10m (libertad condicional 2021)"},
+      {"case": "Suenos Compartidos",  "primary_defendant": "Schoklender, De Vido, Lopez", "status": "EN JUICIO ORAL",     "sentence": "Pendiente (inicio feb 2026)"},
+      {"case": "Bolsos del Convento", "primary_defendant": "Lopez",                    "status": "CONDENA FIRME",         "sentence": "13a (pena unica)"},
+      {"case": "Memorandum Iran/AMIA","primary_defendant": "CFK, Zannini, Parrilli",   "status": "ESPERA JUICIO ORAL",    "sentence": "Pendiente"},
+      {"case": "Dolar Futuro",        "primary_defendant": "CFK, Kicillof",            "status": "SOBRESEIMIENTO FIRME",  "sentence": "N/A — sin perjuicio demostrado"}
+    ]
+  },
+
+  "cross_defendant_map": {
+    "description": "Key defendants and their presence across multiple cases",
+    "defendants": [
+      {
+        "name": "Cristina Fernandez de Kirchner",
+        "cases": ["Vialidad (CONDENADA 6a, firme)", "Cuadernos (EN JUICIO)", "Hotesur/Los Sauces (ESPERA JUICIO)", "Memorandum Iran (ESPERA JUICIO)", "Dolar Futuro (SOBRESEIDA)"],
+        "current_situation": "Detencion domiciliaria por Vialidad"
+      },
+      {
+        "name": "Lazaro Baez",
+        "cases": ["Vialidad (CONDENADO)", "Ruta del Dinero K (CONDENADO)"],
+        "current_situation": "Preso en Rio Gallegos. Pena unica 15 anos. Evasion Austral abierta."
+      },
+      {
+        "name": "Julio De Vido",
+        "cases": ["Once (CONDENADO 4a, firme, preso)", "Cuadernos (EN JUICIO)", "Suenos Compartidos (EN JUICIO)", "Trenes chatarra (CONDENADO 4a)"],
+        "current_situation": "Preso en Ezeiza. Pidio domiciliaria (rechazada) y prescripcion (rechazada)."
+      },
+      {
+        "name": "Jose Lopez",
+        "cases": ["Bolsos/Enriquecimiento (CONDENADO)", "Vialidad (CONDENADO)", "Suenos Compartidos (EN JUICIO)", "Cuadernos (arrepentido)"],
+        "current_situation": "Pena unica 13 anos firme. Tambien arrepentido en Cuadernos."
+      },
+      {
+        "name": "Amado Boudou",
+        "cases": ["Ciccone (CONDENADO 5a10m, firme)"],
+        "current_situation": "Libertad condicional desde 2021. Demando al Estado ante CIDH."
+      },
+      {
+        "name": "Maximo Kirchner",
+        "cases": ["Hotesur/Los Sauces (ESPERA JUICIO)"],
+        "current_situation": "Diputado nacional. Unica causa pendiente."
+      },
+      {
+        "name": "Ricardo Jaime",
+        "cases": ["Once (CONDENADO 6a+)"],
+        "current_situation": "Condenado"
+      },
+      {
+        "name": "Carlos Zannini",
+        "cases": ["Memorandum Iran (ESPERA JUICIO)"],
+        "current_situation": "Esperando juicio oral"
+      }
+    ]
+  },
+
+  "methodology_notes": [
+    "Data gathered via web search on 2026-03-21 from Infobae, La Nacion, Chequeado, Fiscales.gob.ar, Palabras del Derecho, and other Argentine legal/news sources.",
+    "Status classifications: CONDENA FIRME (final conviction, no appeals remaining), EN JUICIO ORAL (oral trial in progress), ESPERA JUICIO ORAL (awaiting start of oral trial), SOBRESEIMIENTO FIRME (definitively acquitted).",
+    "Amounts in ARS reflect nominal values at time of sentencing/decomiso orders; inflation-adjusted equivalents would differ significantly.",
+    "Cross-defendant map shows the interlocking nature of K-era corruption: the same ~10 officials and businessmen appear across nearly all cases."
+  ]
+}
