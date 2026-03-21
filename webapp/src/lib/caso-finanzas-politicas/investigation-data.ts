@@ -2064,7 +2064,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 4,
     status_es: 'Puerta giratoria — sin hallazgo penal',
     status_en: 'Revolving door — no criminal finding',
-    source_url: 'https://datos.gob.ar/dataset/justicia-declaraciones-juradas-patrimoniales-integrales-caracter-publico',
+    source_url: 'https://chequeado.com/el-explicador/la-declaracion-jurada-de-patricia-bullrich-informo-en-2024-un-patrimonio-de-188-millones/',
   },
   {
     id: 'actor-cordero',
@@ -2486,7 +2486,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Monopolio eléctrico documentado — 81 officers compartidos',
     status_en: 'Electricity monopoly documented — 81 shared officers',
-    source_url: 'https://datos.gob.ar/dataset/justicia-entidades-constituidas-inspeccion-general-justicia',
+    source_url: 'https://www.infobae.com/economia/2019/06/16/marcelo-mindlin-como-se-transformo-con-pampa-en-uno-de-los-duenos-de-la-energia-de-argentina/',
   },
   {
     id: 'actor-werthein',
@@ -2501,7 +2501,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Concentración de mercado documentada — 32 officers compartidos',
     status_en: 'Market concentration documented — 32 shared officers',
-    source_url: 'https://datos.gob.ar/dataset/justicia-entidades-constituidas-inspeccion-general-justicia',
+    source_url: 'https://noticias.perfil.com/noticias/informacion-general/el-retorno-de-los-werthein.phtml',
   },
   {
     id: 'actor-herrera-de-noble',
@@ -2592,7 +2592,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Crecimiento patrimonial anómalo — 45x',
     status_en: 'Anomalous wealth growth — 45x',
-    source_url: 'https://datos.gob.ar/dataset/justicia-declaraciones-juradas-patrimoniales-integrales-caracter-publico',
+    source_url: 'https://www.perfil.com/noticias/politica/federico-sturzenegger-declaro-un-salto-patrimonial-de-casi-970-millones-en-2024.phtml',
   },
   {
     id: 'actor-closs',
@@ -2607,7 +2607,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Anomalía patrimonial — crecimiento 367x',
     status_en: 'Wealth anomaly — 367x growth',
-    source_url: 'https://datos.gob.ar/dataset/justicia-declaraciones-juradas-patrimoniales-integrales-caracter-publico',
+    source_url: 'https://www.perfil.com/noticias/politica/closs-y-kirchner-al-frente-de-los-mas-ricos-del-congreso.phtml',
   },
   {
     id: 'actor-carrizo',
@@ -2622,7 +2622,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Anomalía patrimonial — crecimiento 1577x',
     status_en: 'Wealth anomaly — 1577x growth',
-    source_url: 'https://datos.gob.ar/dataset/justicia-declaraciones-juradas-patrimoniales-integrales-caracter-publico',
+    source_url: 'https://chequeado.com/el-explicador/las-declaraciones-juradas-de-los-diputados-nacionales-quienes-son-los-10-legisladores-con-mas-patrimonio/',
   },
   {
     id: 'actor-casanello',
