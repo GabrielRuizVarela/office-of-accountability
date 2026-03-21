@@ -1,0 +1,492 @@
+{
+  "meta": {
+    "title": "Argentine Judiciary as Auxiliary to Financial/Political Power",
+    "research_date": "2026-03-21",
+    "methodology": "WebSearch across Argentine media outlets (Infobae, La Nacion, Chequeado, Pagina12, Perfil, Ambito, El Destape), government sources (argentina.gob.ar, boletinoficial.gob.ar), and legal databases",
+    "scope": "Federal judges, Supreme Court nominees, Consejo de la Magistratura, Comodoro Py patterns, judge-corporate crossover"
+  },
+  "findings": [
+    {
+      "id": "LIJO-001",
+      "person": "Ariel Lijo",
+      "role": "Federal Judge (Juzgado Federal 4, Comodoro Py); designated to Supreme Court by decree 137/2025",
+      "entity": "Corte Suprema de Justicia de la Nacion / Poder Ejecutivo Nacional",
+      "evidence_es": "Milei designo a Lijo en comision a la Corte Suprema mediante decreto 137/2025 del 25 de febrero de 2025, sin acuerdo del Senado que habia rechazado su pliego en abril 2025. La Justicia (Juez Ramos Padilla) declaro inconstitucional el decreto. Lijo manejaba la causa Correo Argentino, sensible para la familia Macri. La ONG Sera Justicia denuncio que uso la causa como moneda de cambio en el Consejo de la Magistratura para proteger a su hermano. Acumula 34 denuncias disciplinarias ante el Consejo de la Magistratura desde 2004, ninguna resulto en sancion.",
+      "evidence_en": "Milei appointed Lijo to the Supreme Court via decree 137/2025 on Feb 25, 2025, bypassing the Senate which had rejected his candidacy in April 2025. Judge Ramos Padilla declared the decree unconstitutional. Lijo handled the Correo Argentino case, politically sensitive for the Macri family. The NGO Sera Justicia alleged he used the case as a bargaining chip in the Magistrate Council to protect his brother. He has accumulated 34 disciplinary complaints before the Magistrate Council since 2004, none resulting in sanctions.",
+      "severity": "critical",
+      "source_urls": [
+        "https://www.lanacion.com.ar/politica/javier-milei-firmaria-hoy-el-decreto-para-designar-a-ariel-lijo-y-manuel-garcia-mansilla-como-jueces-nid25022025/",
+        "https://www.infobae.com/politica/2025/02/25/javier-milei-designo-por-decreto-en-la-corte-suprema-a-ariel-lijo-y-manuel-garcia-mansilla/",
+        "https://chequeado.com/el-explicador/las-causas-y-denuncias-contra-ariel-lijo-el-juez-designado-por-decreto-para-la-corte-suprema/",
+        "https://www.lanacion.com.ar/politica/la-causa-del-correo-argentino-ariel-lijo-no-avanzo-con-un-expediente-sensible-para-mauricio-macri-nid20062025/",
+        "https://elagora.digital/argentina/ramos-padilla-inconstitucional-dnu-milei-nombro-lijo-garcia-mansilla/"
+      ],
+      "new_entities": [
+        {
+          "name": "Decreto 137/2025",
+          "type": "legal_instrument",
+          "description": "Presidential decree appointing Lijo and Garcia-Mansilla to Supreme Court in commission"
+        },
+        {
+          "name": "Manuel Garcia-Mansilla",
+          "type": "person",
+          "role": "Co-designee to Supreme Court via same decree"
+        },
+        {
+          "name": "Alejo Ramos Padilla",
+          "type": "person",
+          "role": "Judge who declared the decree unconstitutional"
+        },
+        {
+          "name": "Mariano Cuneo Libarona",
+          "type": "person",
+          "role": "Minister of Justice who co-signed the decree"
+        }
+      ]
+    },
+    {
+      "id": "LIJO-002",
+      "person": "Ariel Lijo",
+      "role": "Federal Judge",
+      "entity": "Haras La Generacion / Alvear Avenue apartment",
+      "evidence_es": "Lijo habita un departamento de lujo en Av. Alvear, valuado en US$2.000.000, propiedad del ex embajador Carlos Bettini (amigo de Cristina Kirchner), que no aparece en su declaracion jurada. Su hermano Alfredo 'Freddy' Lijo compro tierras en Dolores para el haras 'La Generacion'. La ex esposa de Freddy, Maria Carla Lago, declaro ante el Consejo de la Magistratura que el juez estaba vinculado a una sociedad que administraba el haras. Freddy controla el 95% de Finaig Consultores SA y estuvo vinculado a Caledonia Seguros. Fue denunciado en 2018 por Elisa Carrio por garantizar impunidad a empresarios y funcionarios.",
+      "evidence_en": "Lijo inhabits a luxury apartment on Alvear Avenue valued at US$2M, owned by former ambassador Carlos Bettini (friend of Cristina Kirchner), not declared in his sworn assets statement. His brother Alfredo 'Freddy' Lijo purchased land in Dolores for the 'La Generacion' horse ranch. Freddy's ex-wife Maria Carla Lago testified before the Magistrate Council that the judge was linked to a company managing the ranch. Freddy controls 95% of Finaig Consultores SA and was linked to Caledonia Seguros. Elisa Carrio denounced the brothers in 2018 for guaranteeing impunity to businesspeople and officials.",
+      "severity": "critical",
+      "source_urls": [
+        "https://www.lanacion.com.ar/politica/el-patrimonio-de-ariel-lijo-usa-un-departamento-prestado-por-un-viejo-amigo-de-la-politica-valuado-nid09062024/",
+        "https://www.lanacion.com.ar/politica/ariel-lijo-un-hombre-fuerte-de-comodoro-py-que-enfrento-denuncias-por-su-patrimonio-y-el-manejo-de-nid20032024/",
+        "https://www.lanacion.com.ar/politica/el-hermano-del-juez-ariel-lijo-anuncia-la-liquidacion-total-de-su-haras-en-dolores-nid03032025/",
+        "https://www.lanacion.com.ar/politica/el-llamativo-enriquecimiento-del-operador-judicial-alfredo-lijo-nid2083733/"
+      ],
+      "new_entities": [
+        {
+          "name": "Alfredo 'Freddy' Lijo",
+          "type": "person",
+          "role": "Brother of Judge Lijo, judicial operator"
+        },
+        {
+          "name": "Finaig Consultores SA",
+          "type": "company",
+          "description": "95% controlled by Freddy Lijo"
+        },
+        {
+          "name": "Caledonia Seguros",
+          "type": "company",
+          "description": "Insurance company linked to Freddy Lijo"
+        },
+        {
+          "name": "Carlos Bettini",
+          "type": "person",
+          "role": "Former ambassador, owner of Lijo's undeclared apartment"
+        },
+        {
+          "name": "Maria Carla Lago",
+          "type": "person",
+          "role": "Ex-wife of Freddy Lijo, testified about haras connection"
+        },
+        {
+          "name": "Haras La Generacion",
+          "type": "property",
+          "location": "Dolores, Buenos Aires Province, km 212 Ruta 2"
+        }
+      ]
+    },
+    {
+      "id": "ERCOLINI-001",
+      "person": "Julian Ercolini",
+      "role": "Federal Judge (appointed 2004), handled Comodoro Py's most politically sensitive cases",
+      "entity": "Juzgado Federal / Grupo Clarin",
+      "evidence_es": "Ercolini instruyo las causas Hotesur, Los Sauces y Vialidad (la unica causa en que Cristina Kirchner fue condenada a 6 anos de prision). Tambien quedo a cargo de la Causa Seguros contra Alberto Fernandez, donde ordeno 24 allanamientos. Se filtraron chats y audios de un grupo de Telegram creado por Pablo Casey (sobrino de Hector Magnetto, director de Asuntos Legales del Grupo Clarin) donde Ercolini, junto a los jueces Yadarola, Cayssials y Mahiques, coordinaban como fabricar facturas falsas para encubrir un viaje de placer a Lago Escondido pagado por el Grupo Clarin. Ercolini escribio: 'No es mas facil que Lago Escondido nos facture dos noches con media pension?'",
+      "evidence_en": "Ercolini investigated the Hotesur, Los Sauces and Vialidad cases (the only case where Cristina Kirchner was convicted to 6 years in prison). He was also assigned the Insurance Case against Alberto Fernandez, ordering 24 raids. Leaked Telegram chats and audios revealed a group created by Pablo Casey (nephew of Hector Magnetto, Clarin Group's legal director) where Ercolini, alongside judges Yadarola, Cayssials, and Mahiques, coordinated fabricating false invoices to cover up a pleasure trip to Lago Escondido paid for by the Clarin Group. Ercolini wrote: 'Isn't it easier for Lago Escondido to invoice us for two nights with half board?'",
+      "severity": "critical",
+      "source_urls": [
+        "https://chequeado.com/el-explicador/julian-ercolini-quien-es-el-juez-que-investiga-a-alberto-fernandez-por-los-seguros-y-recibio-la-denuncia-de-fabiola-yanez/",
+        "https://www.perfil.com/noticias/politica/audios-y-chats-entre-jueces-funcionarios-macristas-y-empresarios-de-medios-para-ocular-un-viaje-a-bariloche.phtml",
+        "https://www.eldestapeweb.com/politica/los-jueces-de-clarin/clarin-invito-a-jueces-del-lawfare-a-lago-escondido-y-buscaron-encubrirlo-con-facturas-truchas-y-el-direccionamiento-de-una-causa-judicial-202212419450",
+        "https://www.diariojornada.com.ar/338346/politica/los_escandalosos_chats_entre_jueces_y_directivos_del_grupo_clarin",
+        "https://www.infobae.com/judiciales/2024/11/13/la-causa-vialidad-el-paso-a-paso-de-una-causa-que-termino-con-la-condena-de-cristina-kirchner/"
+      ],
+      "new_entities": [
+        {
+          "name": "Pablo Casey",
+          "type": "person",
+          "role": "Nephew of Hector Magnetto, Director of Legal Affairs at Grupo Clarin"
+        },
+        {
+          "name": "Hector Magnetto",
+          "type": "person",
+          "role": "CEO of Grupo Clarin"
+        },
+        {
+          "name": "Pablo Yadarola",
+          "type": "person",
+          "role": "Federal judge, participant in Lago Escondido chat"
+        },
+        {
+          "name": "Pablo Cayssials",
+          "type": "person",
+          "role": "Federal judge, participant in Lago Escondido chat"
+        },
+        {
+          "name": "Carlos 'Coco' Mahiques",
+          "type": "person",
+          "role": "Judge, participant in Lago Escondido chat"
+        },
+        {
+          "name": "Juan Bautista Mahiques",
+          "type": "person",
+          "role": "Fiscal General Porteno, discussed fake invoices in audio"
+        },
+        {
+          "name": "Jorge Rendo",
+          "type": "person",
+          "role": "CEO of Grupo Clarin, participant in chat"
+        }
+      ]
+    },
+    {
+      "id": "ERCOLINI-002",
+      "person": "Julian Ercolini",
+      "role": "Federal Judge",
+      "entity": "Koolhaas SA / Rogelio Frigerio",
+      "evidence_es": "Ercolini sobreseyo de forma expres al ex ministro del Interior Rogelio Frigerio en la causa por la adjudicacion irregular de un inmueble estatal en Fitz Roy 851 (Buenos Aires) a la empresa Koolhaas SA, cuyos directivos Gustavo Alberto Esses y Ariel Eduardo Naistat tenian vinculos economicos previos con Frigerio. La Oficina Anticorrupcion habia presentado la denuncia penal. El sobreseimiento fue calificado como 'expres' y ocurrio mientras Ercolini era cuestionado por el escandalo de Lago Escondido.",
+      "evidence_en": "Ercolini quickly dismissed former Interior Minister Rogelio Frigerio in a case involving irregular assignment of a state-owned property at Fitz Roy 851 (Buenos Aires) to Koolhaas SA, whose directors Gustavo Alberto Esses and Ariel Eduardo Naistat had prior economic ties with Frigerio. The Anti-Corruption Office had filed the criminal complaint. The dismissal was characterized as 'express' and occurred while Ercolini was under scrutiny for the Lago Escondido scandal.",
+      "severity": "high",
+      "source_urls": [
+        "https://www.infobae.com/politica/2022/12/05/sobreseyeron-a-rogelio-frigerio-en-una-causa-por-supuestas-irregularidades-en-operaciones-inmobiliarias/",
+        "https://www.infobae.com/politica/2022/04/25/pidieron-citar-a-indagatoria-a-rogelio-frigerio-por-irregularidades-en-operaciones-inmobiliarias/",
+        "http://www.laopinionpopular.com.ar/noticia/48082-frigerio-fue-sobreseido-en-forma-expres-por-el-juez-ercolini-el-de-los-audios-por-lago-escondido.html"
+      ],
+      "new_entities": [
+        {
+          "name": "Rogelio Frigerio",
+          "type": "person",
+          "role": "Former Interior Minister (Macri government), current Governor of Entre Rios"
+        },
+        {
+          "name": "Koolhaas SA",
+          "type": "company",
+          "description": "Received state property at Fitz Roy 851 via Administrative Decision signed by Frigerio"
+        },
+        {
+          "name": "Gustavo Alberto Esses",
+          "type": "person",
+          "role": "Director of Koolhaas SA, economic ties to Frigerio"
+        },
+        {
+          "name": "Ariel Eduardo Naistat",
+          "type": "person",
+          "role": "Director of Koolhaas SA, economic ties to Frigerio"
+        }
+      ]
+    },
+    {
+      "id": "CASANELLO-001",
+      "person": "Sebastian Casanello",
+      "role": "Federal Judge (Juzgado Federal 7, later interino at Juzgado 11)",
+      "entity": "Causa Seguros",
+      "evidence_es": "Casanello, el juez mas joven en llegar a Comodoro Py (37 anos), fue asignado por sorteo al Juzgado Federal 11 tras la partida de Ercolini. Proceso a Alberto Fernandez como autor del delito de negociaciones incompatibles con la funcion publica por el Decreto 823/2021, con embargo de $14.634 millones. Tambien proceso a la empresa del broker Hector Martinez Sosa, a siete empresas aseguradoras, al ex intendente de Olivos y al ex ministro Julio De Vido. Luego de los procesamientos, Casanello pidio no continuar en el juzgado y fue reemplazado en febrero 2026. La Camara de Casacion revisa los procesamientos.",
+      "evidence_en": "Casanello, the youngest judge to reach Comodoro Py (age 37), was assigned by lottery to Federal Court 11 after Ercolini's departure. He processed Alberto Fernandez as author of negotiations incompatible with public office for Decree 823/2021, with asset embargo of $14.634 billion pesos. He also processed the company of broker Hector Martinez Sosa, seven insurance companies, the former administrator of Olivos, and former minister Julio De Vido. After the prosecutions, Casanello requested not to continue at the court and was replaced in February 2026. The Cassation Court is reviewing the prosecutions.",
+      "severity": "high",
+      "source_urls": [
+        "https://www.ambito.com/politica/causa-seguros-el-juez-sebastian-casanello-proceso-alberto-fernandez-n6165861",
+        "https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/",
+        "https://www.infobae.com/judiciales/2026/02/10/tras-procesar-a-de-vido-casanello-deja-el-juzgado-11-y-la-causa-seguros-tendra-nuevo-juez/",
+        "https://chequeado.com/justiciapedia/profiles/sebastian-casanello/"
+      ],
+      "new_entities": [
+        {
+          "name": "Hector Martinez Sosa",
+          "type": "person",
+          "role": "Insurance broker, friend of Alberto Fernandez, processed in Causa Seguros"
+        },
+        {
+          "name": "Decreto 823/2021",
+          "type": "legal_instrument",
+          "description": "Required public sector entities to contract insurance exclusively through Nacion Seguros SA"
+        },
+        {
+          "name": "Nacion Seguros SA",
+          "type": "company",
+          "description": "State insurance company, exclusive contractor under Decree 823/2021"
+        },
+        {
+          "name": "Julio De Vido",
+          "type": "person",
+          "role": "Former Minister of Planning, processed by Casanello in Causa Seguros"
+        },
+        {
+          "name": "ATX SA",
+          "type": "company",
+          "description": "Company alleged to have participated in simulated bidding"
+        },
+        {
+          "name": "Area Tech SA",
+          "type": "company",
+          "description": "Company alleged to have participated in simulated bidding alongside ATX SA"
+        }
+      ]
+    },
+    {
+      "id": "BONADIO-001",
+      "person": "Claudio Bonadio",
+      "role": "Federal Judge (deceased Feb 2020, age 64, brain tumor)",
+      "entity": "Multiple cases against Kirchnerism",
+      "evidence_es": "Bonadio instruyo las causas mas resonantes contra el kirchnerismo: Cuadernos de la Corrupcion (203 cargos de cohecho pasivo contra CFK), Memorandum con Iran (proceso y pidio detencion de CFK, Timerman, Zannini, D'Elia), Dolar Futuro, Hotesur, Los Sauces. Pidio desaforar y detener a Cristina Kirchner en dos oportunidades. CFK lo califico de 'mafioso' junto al fiscal Stornelli, denunciando 'practicas absolutamente mafiosas' en el uso de la figura del arrepentido. El Tribunal Oral Federal 7 rechazo los planteos de falta de imparcialidad. Bonadio fallecio en febrero de 2020 con multiples causas abiertas.",
+      "evidence_en": "Bonadio investigated the most high-profile cases against Kirchnerism: Cuadernos de la Corrupcion (203 passive bribery charges against CFK), Iran Memorandum (processed and requested detention of CFK, Timerman, Zannini, D'Elia), Dollar Futures, Hotesur, Los Sauces. He requested CFK's impeachment and arrest on two occasions. CFK called him 'mafia-like' along with prosecutor Stornelli, denouncing 'absolutely mafia-like practices' in the use of plea-bargain witnesses. The Federal Oral Tribunal 7 rejected impartiality challenges. Bonadio died in February 2020 with multiple open cases.",
+      "severity": "high",
+      "source_urls": [
+        "https://www.infobae.com/politica/2020/02/04/murio-el-juez-federal-claudio-bonadio/",
+        "https://www.lanacion.com.ar/politica/murio-claudio-bonadio-juez-federal-llevo-juicio-nid2330369/",
+        "https://www.infobae.com/judiciales/2026/03/17/cristina-kirchner-en-vivo-la-ex-presidenta-declara-en-la-causa-de-los-cuadernos-de-la-corrupcion/",
+        "https://www.fiscales.gob.ar/corrupcion/juicio-por-la-causa-cuadernos-cristina-fernandez-de-kirchner-cuestiono-la-investigacion-y-se-nego-a-responder-preguntas/"
+      ],
+      "new_entities": [
+        {
+          "name": "Carlos Stornelli",
+          "type": "person",
+          "role": "Federal prosecutor in Cuadernos case"
+        },
+        {
+          "name": "Hector Timerman",
+          "type": "person",
+          "role": "Former Foreign Minister, processed in Iran Memorandum case"
+        },
+        {
+          "name": "Carlos Zannini",
+          "type": "person",
+          "role": "Former Secretary Legal and Technical, processed in Iran Memorandum"
+        },
+        {
+          "name": "Luis D'Elia",
+          "type": "person",
+          "role": "Social movement leader, processed in Iran Memorandum"
+        },
+        {
+          "name": "Fernando Esteche",
+          "type": "person",
+          "role": "Quebracho leader, processed in Iran Memorandum"
+        },
+        {
+          "name": "Jorge Khalil",
+          "type": "person",
+          "role": "Iranian lobbyist, processed in Iran Memorandum"
+        }
+      ]
+    },
+    {
+      "id": "CONSEJO-001",
+      "person": null,
+      "role": "Institutional body controlling judicial appointments",
+      "entity": "Consejo de la Magistratura de la Nacion",
+      "evidence_es": "El Consejo de la Magistratura tiene 20 miembros: 1 presidente de la Corte Suprema (Rosatti), 4 jueces, 8 legisladores (4 senadores + 4 diputados), 4 abogados, 1 representante del Ejecutivo, 2 academicos. Los 8 legisladores (40% del cuerpo) dan al poder politico influencia directa sobre seleccion y remocion de jueces. En 2006 Cristina Kirchner redujo la composicion a 13 miembros, rompiendo el equilibrio de estamentos. La Corte declaro esa reforma inconstitucional en 2021, restaurando los 20 miembros bajo presidencia de Rosatti. La Libertad Avanza busca incorporar consejeros propios. El gobierno impulsa una nueva reforma con paridad de genero y 17 miembros.",
+      "evidence_en": "The Magistrate Council has 20 members: 1 Supreme Court president (Rosatti), 4 judges, 8 legislators (4 senators + 4 deputies), 4 lawyers, 1 executive representative, 2 academics. The 8 legislators (40% of the body) give political power direct influence over judge selection and removal. In 2006 Cristina Kirchner reduced composition to 13 members, breaking inter-branch balance. The Supreme Court declared that reform unconstitutional in 2021, restoring 20 members under Rosatti's presidency. La Libertad Avanza seeks to place its own counselors. The government is pushing a new reform with gender parity and 17 members.",
+      "severity": "critical",
+      "source_urls": [
+        "https://consejomagistratura.gov.ar/index.php/integrantes_del_consejo/",
+        "https://chequeado.com/hilando-fino/como-queda-compuesto-el-consejo-de-la-magistratura-con-20-miembros/",
+        "https://es.wikipedia.org/wiki/Consejo_de_la_Magistratura_(Argentina)",
+        "https://chequeado.com/el-explicador/la-corte-declaro-inconstitucional-la-composicion-del-consejo-de-la-magistratura-y-cuestiono-la-falta-de-equilibrio-en-su-funcionamiento/",
+        "https://www.infobae.com/opinion/2025/12/07/el-2026-de-milei-hegemonia-y-reformismo/"
+      ],
+      "new_entities": [
+        {
+          "name": "Horacio Rosatti",
+          "type": "person",
+          "role": "President of the Supreme Court and of the Consejo de la Magistratura"
+        },
+        {
+          "name": "Carlos Rosenkrantz",
+          "type": "person",
+          "role": "Vice-president of the Supreme Court"
+        },
+        {
+          "name": "Ricardo Lorenzetti",
+          "type": "person",
+          "role": "Supreme Court Justice"
+        }
+      ]
+    },
+    {
+      "id": "CORPORATE-001",
+      "person": null,
+      "role": "Systemic pattern: judges serving as corporate officers",
+      "entity": "Multiple judges / Argentine companies",
+      "evidence_es": "La Ley de Etica Publica (25.188) establece que es incompatible con la funcion publica dirigir, administrar, representar, patrocinar, asesorar o prestar servicios a quien gestione o tenga una concesion, sea proveedor del Estado, o realice actividades reguladas por este. Sin embargo, nuestro grafo muestra 20 jueces que figuran como directivos de empresas en registros corporativos. La Oficina Anticorrupcion es la autoridad de aplicacion pero carece de mecanismos efectivos de enforcement. No se identificaron sanciones publicas por estas incompatibilidades.",
+      "evidence_en": "The Public Ethics Law (25.188) establishes that it is incompatible with public office to direct, administer, represent, sponsor, advise, or provide services to anyone who manages or has a concession, is a state supplier, or conducts state-regulated activities. However, our graph shows 20 judges listed as corporate officers in business registries. The Anti-Corruption Office is the enforcement authority but lacks effective enforcement mechanisms. No public sanctions for these incompatibilities were identified.",
+      "severity": "high",
+      "source_urls": [
+        "https://servicios.infoleg.gob.ar/infolegInternet/anexos/60000-64999/60847/texact.htm",
+        "https://www.argentina.gob.ar/anticorrupcion/prevencion/conflictos-intereses/cuando-hay",
+        "https://www.argentina.gob.ar/anticorrupcion/prevencion/conflictos-intereses/preguntas-frecuentes"
+      ],
+      "new_entities": [
+        {
+          "name": "Ley 25.188 (Etica en la Funcion Publica)",
+          "type": "legal_instrument",
+          "description": "Law governing conflicts of interest and incompatibilities for public officials"
+        },
+        {
+          "name": "Oficina Anticorrupcion",
+          "type": "institution",
+          "description": "Authority responsible for enforcing public ethics law"
+        }
+      ]
+    },
+    {
+      "id": "COMODORO-001",
+      "person": null,
+      "role": "Institutional pattern: concentration of political cases in 12 federal courts",
+      "entity": "Comodoro Py (Retiro federal courthouse)",
+      "evidence_es": "Los 12 juzgados federales de Comodoro Py en Buenos Aires concentran todas las causas de corrupcion de funcionarios de la administracion central. Milei implemento por decreto el sistema acusatorio a partir del 11 de agosto de 2025, que transfiere el poder de investigacion de los jueces a los fiscales. El nuevo Codigo Procesal Penal Federal quita poder investigativo a los jueces federales. Los criticos denuncian que Comodoro Py funciona como herramienta de 'lawfare' - guerra juridica contra adversarios politicos, coordinada con medios de comunicacion (caso Lago Escondido) y servicios de inteligencia. CFK denuncio 'mafia judicial' operando desde Comodoro Py.",
+      "evidence_en": "The 12 federal courts at Comodoro Py in Buenos Aires concentrate all corruption cases involving central administration officials. Milei implemented the accusatory system by decree starting August 11, 2025, transferring investigative power from judges to prosecutors. The new Federal Criminal Procedural Code removes investigative power from federal judges. Critics denounce that Comodoro Py functions as a 'lawfare' tool - legal warfare against political adversaries, coordinated with media (Lago Escondido case) and intelligence services. CFK denounced a 'judicial mafia' operating from Comodoro Py.",
+      "severity": "critical",
+      "source_urls": [
+        "https://www.lanacion.com.ar/politica/la-justicia-federal-de-comodoro-py-cambia-desde-agosto-y-los-fiscales-ganan-poder-nid19032025/",
+        "https://inecip.org/prensa/comunicados/tres-claves-para-entender-la-historica-reforma-de-comodoro-py/",
+        "https://www.resumenlatinoamericano.org/2025/03/22/argentina-comodoro-py-en-guerra-por-la-reforma-que-le-da-mas-poder-a-los-fiscales/",
+        "https://www.telesurtv.net/peronismo-denuncia-mafia-judicial-cristina/",
+        "http://tramas.escueladegobierno.gob.ar/articulo/el-poder-judicial-y-el-doble-filo-del-lawfare/"
+      ],
+      "new_entities": [
+        {
+          "name": "Codigo Procesal Penal Federal (sistema acusatorio)",
+          "type": "legal_instrument",
+          "description": "New accusatory criminal procedure code implemented at Comodoro Py from Aug 2025"
+        }
+      ]
+    },
+    {
+      "id": "MAQUEDA-001",
+      "person": "Juan Carlos Maqueda",
+      "role": "Supreme Court Justice (2002-2024), retired Dec 29, 2024 at age 75",
+      "entity": "Corte Suprema de Justicia de la Nacion",
+      "evidence_es": "Maqueda llego a la Corte por un acuerdo con Eduardo Duhalde: como senador presidio la Asamblea Legislativa que designo a Duhalde presidente en enero 2002, y fue nombrado en la Corte Suprema como devolucion de cortesia politica. Antes fue senador nacional por Cordoba y dirigente del Partido Justicialista. Se autoimpuso exclusion de ambitos publicos y academicos sabiendo que su trayectoria politica en el peronismo podia ser motivo de cuestionamientos. Tras su jubilacion la Corte quedo con solo 3 miembros (Rosatti, Rosenkrantz, Lorenzetti), abriendo la vacante que Milei intento llenar con Lijo por decreto.",
+      "evidence_en": "Maqueda reached the Supreme Court through a deal with Eduardo Duhalde: as senator he presided over the Legislative Assembly that appointed Duhalde president in January 2002, and was named to the Supreme Court as political reciprocity. He was previously a national senator for Cordoba and Justicialist Party leader. He self-imposed exclusion from public and academic spheres knowing his political career in Peronism could generate challenges. After his retirement the Court was left with only 3 members (Rosatti, Rosenkrantz, Lorenzetti), opening the vacancy Milei tried to fill with Lijo by decree.",
+      "severity": "high",
+      "source_urls": [
+        "https://www.perfil.com/noticias/cordoba/quien-es-juan-carlos-maqueda-el-intocable-de-la-corte-que-javier-milei-quiere-jubilar-a-fin-de-ano.phtml",
+        "https://www.palabrasdelderecho.com.ar/articulo/5666/Juan-Carlos-Maqueda,-el-politico-que-se-convirtio-en-juez-de-la-Corte",
+        "https://www.lanacion.com.ar/politica/juan-carlos-maqueda-su-futuro-despues-de-la-corte-su-mejor-recuerdo-de-la-vida-publica-y-el-fallo-nid01012025/"
+      ],
+      "new_entities": [
+        {
+          "name": "Eduardo Duhalde",
+          "type": "person",
+          "role": "Former President who appointed Maqueda to Supreme Court as political reciprocity"
+        }
+      ]
+    },
+    {
+      "id": "URTUBEY-001",
+      "person": "Rodolfo Julio Urtubey",
+      "role": "National Judge (Criminal Court 13, 1993-2004), then National Senator for Salta (2013-2019)",
+      "entity": "Clan Urtubey / Salta Province",
+      "evidence_es": "Rodolfo Urtubey fue juez del Tribunal Oral en lo Criminal N13 (1993-2004) y luego senador nacional por Salta (2013-2019), encarnando el cruce entre poder judicial y politico. Como presidente de la Comision de Acuerdos del Senado facilito consensos para nombramientos judiciales. Su padre Rodolfo Jose Urtubey fue presidente de la Corte de Justicia de Salta en tres periodos (1991-1995). Su hermano Juan Manuel Urtubey fue gobernador de Salta durante tres mandatos (2007-2019). El 'clan Urtubey' concentra poder judicial, legislativo y ejecutivo en una sola familia.",
+      "evidence_en": "Rodolfo Urtubey served as judge of Criminal Court No. 13 (1993-2004) then as national senator for Salta (2013-2019), embodying the crossover between judicial and political power. As president of the Senate's Agreements Commission he facilitated consensuses for judicial appointments. His father Rodolfo Jose Urtubey was president of the Salta Court of Justice for three periods (1991-1995). His brother Juan Manuel Urtubey was governor of Salta for three terms (2007-2019). The 'Urtubey clan' concentrates judicial, legislative, and executive power in a single family.",
+      "severity": "high",
+      "source_urls": [
+        "https://es.wikipedia.org/wiki/Rodolfo_Urtubey",
+        "https://www.lapoliticaonline.com/nota/14800/",
+        "https://www.eltribuno.com/nota/2016-1-29-1-30-0-rodolfo-jose-urtubey-1933-2016-politico-y-hombre-de-derecho",
+        "https://buufosalta.com/rodolfo-urtubey-habilito-el-nombramiento-como-juez-ex-director-de-escuchas/"
+      ],
+      "new_entities": [
+        {
+          "name": "Juan Manuel Urtubey",
+          "type": "person",
+          "role": "Governor of Salta (2007-2019), brother of Rodolfo Julio"
+        },
+        {
+          "name": "Rodolfo Jose Urtubey",
+          "type": "person",
+          "role": "Father, President of Salta Court of Justice (3 terms, 1991-1995), deceased 2016"
+        }
+      ]
+    },
+    {
+      "id": "MONTENEGRO-001",
+      "person": "Guillermo Montenegro",
+      "role": "Former Federal Judge, then politician (Mayor of Mar del Plata/General Pueyrredon)",
+      "entity": "PRO / La Libertad Avanza",
+      "evidence_es": "Montenegro fue juez federal y concluyo la instruccion de la causa IBM-Banco Nacion (uno de los casos de corrupcion emblematicos del gobierno de Menem). Renuncio al poder judicial en 2007 para ser Ministro de Justicia y Seguridad de CABA. Fue electo intendente de General Pueyrredon (Mar del Plata) en 2019 y reelecto en 2023. Originalmente de PRO, migro hacia La Libertad Avanza, encabezando la lista libertaria en la Quinta Seccion. Fue mencionado como posible reemplazante de Cuneo Libarona en el Ministerio de Justicia. Enfrento reveses judiciales por operativos municipales ilegales contra poblaciones vulnerables.",
+      "evidence_en": "Montenegro served as federal judge and concluded the investigation of the IBM-Banco Nacion case (one of the emblematic corruption cases of Menem's government). He resigned from the judiciary in 2007 to become Minister of Justice and Security of Buenos Aires City. Elected mayor of General Pueyrredon (Mar del Plata) in 2019, reelected 2023. Originally from PRO, he migrated toward La Libertad Avanza, heading the libertarian list in the Fifth Section. Was mentioned as a possible replacement for Cuneo Libarona at the Justice Ministry. Faced judicial setbacks over illegal municipal operations against vulnerable populations.",
+      "severity": "medium",
+      "source_urls": [
+        "https://www.lacapitalmdp.com/el-gordo-montenegro-de-ninguneado-a-intendente-reelecto-de-mar-del-plata/",
+        "https://www.lapoliticaonline.com/politica/mencionan-a-guillermo-montenegro-como-reemplazante-de-cuneo-libarona-en-justicia/",
+        "https://www.infobae.com/politica/2025/08/31/guillermo-montenegro-en-esta-eleccion-hay-que-ponerle-un-freno-al-kirchnerismo-asi-sea-lo-ultimo-que-haga/",
+        "https://marcelosapunar.com/2025/09/14/otro-reves-judicial-para-guillermo-montenegro/",
+        "https://es.wikipedia.org/wiki/Caso_IBM-Banco_Naci%C3%B3n"
+      ],
+      "new_entities": [
+        {
+          "name": "Aldo Dadone",
+          "type": "person",
+          "role": "Former Banco Nacion president, processed in IBM case by Montenegro"
+        }
+      ]
+    },
+    {
+      "id": "LAGO-ESCONDIDO-001",
+      "person": null,
+      "role": "Systemic pattern: media-judiciary coordination",
+      "entity": "Grupo Clarin / Federal Judges",
+      "evidence_es": "Chats filtrados de Telegram revelan un viaje en charter privado de jueces federales (Ercolini, Yadarola, Cayssials, Mahiques) a Lago Escondido, pagado por el Grupo Clarin. Los participantes coordinaron la fabricacion de facturas falsas para encubrir el viaje. Pablo Casey (sobrino de Magnetto, director legal de Clarin) creo el grupo. Juan Bautista Mahiques (fiscal general porteno) discutio en audio 'lo de una facturita en Lago Escondido'. El viaje expone la relacion directa entre el principal grupo mediatico argentino y los jueces que manejan causas politicamente sensibles en Comodoro Py.",
+      "evidence_en": "Leaked Telegram chats reveal a private charter trip by federal judges (Ercolini, Yadarola, Cayssials, Mahiques) to Lago Escondido, paid for by the Clarin Group. Participants coordinated fabrication of false invoices to cover up the trip. Pablo Casey (Magnetto's nephew, Clarin's legal director) created the group. Juan Bautista Mahiques (Buenos Aires city attorney general) discussed in audio 'the matter of an invoice at Lago Escondido'. The trip exposes the direct relationship between Argentina's largest media group and judges handling politically sensitive cases at Comodoro Py.",
+      "severity": "critical",
+      "source_urls": [
+        "https://www.perfil.com/noticias/politica/audios-y-chats-entre-jueces-funcionarios-macristas-y-empresarios-de-medios-para-ocular-un-viaje-a-bariloche.phtml",
+        "https://www.eldestapeweb.com/politica/los-jueces-de-clarin/clarin-invito-a-jueces-del-lawfare-a-lago-escondido-y-buscaron-encubrirlo-con-facturas-truchas-y-el-direccionamiento-de-una-causa-judicial-202212419450",
+        "https://www.diariojornada.com.ar/338346/politica/los_escandalosos_chats_entre_jueces_y_directivos_del_grupo_clarin",
+        "https://noticias.perfil.com/noticias/politica/lago-escondido-favores-poder-y-espionaje.phtml"
+      ],
+      "new_entities": [
+        {
+          "name": "Grupo Clarin",
+          "type": "company",
+          "description": "Argentina's largest media conglomerate, financed judges' Lago Escondido trip"
+        },
+        {
+          "name": "Jose Glinski",
+          "type": "person",
+          "role": "Former director of PSA (Airport Security Police), accused of leaking the chats"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_findings": 13,
+    "severity_breakdown": {
+      "critical": 5,
+      "high": 6,
+      "medium": 2
+    },
+    "key_patterns": [
+      "Executive-judicial quid pro quo: Presidents appoint Supreme Court justices as political reciprocity (Duhalde-Maqueda, Milei-Lijo)",
+      "Case weaponization: Judges delay or accelerate cases based on political alignment (Lijo-Correo, Ercolini-Frigerio, Bonadio-CFK)",
+      "Media-judiciary coordination: Clarin Group finances judges' leisure trips while they handle cases favorable to allied politicians (Lago Escondido)",
+      "Family power concentration: The Urtubey clan spans judiciary, legislature, and executive in a single province",
+      "Revolving door: Judges transition directly to political office (Montenegro, Rodolfo Urtubey), then influence judicial appointments",
+      "Consejo de la Magistratura capture: 40% of the body is composed of legislators, giving political parties direct control over judge selection and removal",
+      "Undeclared assets: Judge Lijo inhabits a US$2M apartment not in his sworn statement; his brother runs companies and a horse ranch with unexplained wealth",
+      "Impunity through institutional design: 34 complaints against Lijo in 20 years, zero sanctions; the Consejo de la Magistratura fails as a disciplinary body"
+    ],
+    "new_entities_total": 42,
+    "companies_identified": [
+      "Finaig Consultores SA",
+      "Caledonia Seguros",
+      "Koolhaas SA",
+      "Nacion Seguros SA",
+      "ATX SA",
+      "Area Tech SA",
+      "Grupo Clarin"
+    ],
+    "legal_instruments_identified": [
+      "Decreto 137/2025 (Lijo/Garcia-Mansilla Supreme Court appointment)",
+      "Decreto 823/2021 (forced state insurance through Nacion Seguros)",
+      "Ley 25.188 (Public Ethics Law)",
+      "Codigo Procesal Penal Federal (accusatory system reform)"
+    ]
+  }
+}
