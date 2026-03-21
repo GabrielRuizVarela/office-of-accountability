@@ -6,8 +6,8 @@ import { ConexionesGraph } from './ConexionesGraph'
 const t = {
   title: { en: 'Connections', es: 'Conexiones' },
   subtitle: {
-    en: 'Interactive graph of relationships between politicians, companies, offshore entities and government contracts. Showing politicians present in 3 or more data sources. Click a node to see details.',
-    es: 'Grafo interactivo de relaciones entre politicos, empresas, entidades offshore y contratos del Estado. Se muestran los politicos presentes en 3 o mas fuentes de datos. Hace clic en un nodo para ver detalles.',
+    en: 'Interactive graph with 133 nodes and 142 relationships. Filter by Revolving Door, Offshore Network, Money Trail, or Power Families.',
+    es: 'Grafo interactivo con 133 nodos y 142 relaciones. Filtre por Puerta Giratoria, Red Offshore, Rastro del Dinero o Familias del Poder.',
   },
 } as const
 

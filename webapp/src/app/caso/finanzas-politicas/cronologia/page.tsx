@@ -6,8 +6,8 @@ import { TIMELINE_EVENTS } from '@/lib/caso-finanzas-politicas/investigation-dat
 const t = {
   title: { en: 'Chronology', es: 'Cronologia' },
   subtitle: {
-    en: 'Key events in the investigation of Argentine political finance, from the founding of SOCMA (1976) to the criminal complaint by Mariano Macri (2024).',
-    es: 'Eventos clave en la investigacion de finanzas politicas argentinas, desde la fundacion de SOCMA (1976) hasta la denuncia penal de Mariano Macri (2024).',
+    en: 'Timeline from SOCMA founding (1976) to Martinez Sosa prosecution (February 2026). Includes the insurance scandal, Lago Escondido, the food crisis, gold shipment to London, and the Cuadernos trial.',
+    es: 'Linea de tiempo desde la fundacion de SOCMA (1976) hasta el procesamiento de Martinez Sosa (febrero 2026). Incluye el escandalo de los seguros, Lago Escondido, la crisis alimentaria, el envio de oro a Londres, y el juicio de los Cuadernos.',
   },
   documentedEvents: { en: 'documented events', es: 'eventos documentados' },
   source: { en: 'Source', es: 'Fuente' },
