@@ -1,9 +1,12 @@
 /**
  * Cross-reference matchers — three tiers of entity matching.
  *
- * Tier 1: CUIT (tax ID) — exact, confidence 1.0
+ * Tier 1: CUIT (tax ID) — exact match + DNI extraction, confidence 0.95-1.0
  * Tier 2: DNI/CUIL (national ID) — exact after normalization, confidence 0.9-0.95
  * Tier 3: Name — normalized or fuzzy, confidence 0.6-0.8
+ *
+ * Tier 1 & 2 use in-memory Map joins (fast, <1s).
+ * Tier 3 uses in-memory normalized name + Levenshtein fallback.
  */
 
 import { readQuery } from '../../lib/neo4j/client'
@@ -21,75 +24,196 @@ function normalizeCuit(cuit: string): string {
 }
 
 /**
- * Extract the DNI portion from a CUIL string.
- * CUIL format: XX-DDDDDDDD-X or XXDDDDDDDDX (11 digits).
- * The DNI is the middle 8 digits.
+ * Extract the DNI portion from a CUIT/CUIL string.
+ * Format: XX-DDDDDDDD-X or XXDDDDDDDDX (11 digits).
+ * The DNI is the middle 8 digits (positions 2-9).
  */
-function extractDniFromCuil(cuil: string): string {
-  const digits = cuil.replace(/-/g, '').trim()
-  if (digits.length === 11) {
-    return digits.slice(2, 10)
-  }
-  return digits
+function extractDni(cuit: string): string | null {
+  const digits = normalizeCuit(cuit)
+  if (digits.length !== 11) return null
+  const dni = digits.slice(2, 10)
+  // Trim leading zero for matching
+  return dni.startsWith('0') ? dni.slice(1) : dni
+}
+
+/** Is this a person CUIT (prefix 20/23/24/27) vs company (30/33/34)? */
+function isPersonCuit(cuit: string): boolean {
+  const prefix = normalizeCuit(cuit).slice(0, 2)
+  return ['20', '23', '24', '27'].includes(prefix)
 }
 
 // ---------------------------------------------------------------------------
-// Tier 1: CUIT matching (Contractor <-> Company)
+// Shared fetch helpers
 // ---------------------------------------------------------------------------
 
+interface CuitEntity {
+  id: string
+  cuit: string
+  name: string
+  label: string
+}
+
+interface DniEntity {
+  id: string
+  dni: string
+  name: string
+  label: string
+}
+
+async function fetchAllCuitEntities(): Promise<CuitEntity[]> {
+  const results = await Promise.all([
+    readQuery(
+      `MATCH (c:Contractor) WHERE c.cuit IS NOT NULL AND c.cuit <> ''
+       RETURN c.contractor_id AS id, c.cuit AS cuit, c.name AS name`,
+      {},
+      (r) => ({ id: r.get('id') as string, cuit: r.get('cuit') as string, name: r.get('name') as string, label: 'Contractor' }),
+    ),
+    readQuery(
+      `MATCH (co:Company) WHERE co.cuit IS NOT NULL AND co.cuit <> ''
+       RETURN co.igj_id AS id, co.cuit AS cuit, co.name AS name`,
+      {},
+      (r) => ({ id: r.get('id') as string, cuit: r.get('cuit') as string, name: r.get('name') as string, label: 'Company' }),
+    ),
+    readQuery(
+      `MATCH (d:Donor) WHERE d.cuit IS NOT NULL AND d.cuit <> ''
+       RETURN d.donor_id AS id, d.cuit AS cuit, d.name AS name`,
+      {},
+      (r) => ({ id: r.get('id') as string, cuit: r.get('cuit') as string, name: r.get('name') as string, label: 'Donor' }),
+    ),
+    readQuery(
+      `MATCH (a:AssetDeclaration) WHERE a.cuit IS NOT NULL AND a.cuit <> ''
+       RETURN a.ddjj_id AS id, a.cuit AS cuit, a.name AS name`,
+      {},
+      (r) => ({ id: r.get('id') as string, cuit: r.get('cuit') as string, name: (r.get('name') as string) || '', label: 'AssetDeclaration' }),
+    ),
+  ])
+  return results.flatMap((r) => r.records)
+}
+
+async function fetchAllDniEntities(): Promise<DniEntity[]> {
+  const results = await Promise.all([
+    readQuery(
+      `MATCH (ga:GovernmentAppointment)
+       WHERE ga.dni IS NOT NULL AND ga.dni <> ''
+       RETURN ga.appointment_id AS id, replace(ga.dni, '.', '') AS dni, ga.full_name AS name`,
+      {},
+      (r) => ({ id: r.get('id') as string, dni: r.get('dni') as string, name: r.get('name') as string, label: 'GovernmentAppointment' }),
+    ),
+    readQuery(
+      `MATCH (ga:GovernmentAppointment)
+       WHERE (ga.dni IS NULL OR ga.dni = '') AND ga.cuil IS NOT NULL AND ga.cuil <> ''
+       RETURN ga.appointment_id AS id, ga.cuil AS cuil, ga.full_name AS name`,
+      {},
+      (r) => {
+        const cuil = r.get('cuil') as string
+        const dni = extractDni(cuil)
+        return dni ? { id: r.get('id') as string, dni, name: r.get('name') as string, label: 'GovernmentAppointment' } : null
+      },
+    ),
+    readQuery(
+      `MATCH (co:CompanyOfficer)
+       WHERE co.document_type_code = '1' AND co.document_number IS NOT NULL AND co.document_number <> ''
+       RETURN co.officer_id AS id, co.document_number AS dni, co.name AS name`,
+      {},
+      (r) => ({ id: r.get('id') as string, dni: r.get('dni') as string, name: r.get('name') as string, label: 'CompanyOfficer' }),
+    ),
+  ])
+  return results.flatMap((r) => r.records).filter((e): e is DniEntity => e !== null)
+}
+
+// ---------------------------------------------------------------------------
+// Tier 1: CUIT matching — all CUIT-bearing labels, in-memory Map join
+// ---------------------------------------------------------------------------
+
+/**
+ * CUIT-based entity resolution across all label pairs.
+ *
+ * Fetches all entities with CUIT, builds a normalized CUIT map, and
+ * cross-matches:
+ * - Exact CUIT match across different labels
+ * - DNI extraction from person CUITs to match CompanyOfficer/GovernmentAppointment
+ */
 export async function matchByCuit(): Promise<CrossRefMatch[]> {
-  // Fetch Contractors with non-empty CUIT
-  const contractors = await readQuery(
-    `MATCH (c:Contractor) WHERE c.cuit IS NOT NULL AND c.cuit <> ''
-     RETURN c.contractor_id AS id, c.cuit AS cuit, c.name AS name`,
-    {},
-    (r) => ({
-      id: r.get('id') as string,
-      cuit: r.get('cuit') as string,
-      name: r.get('name') as string,
-    }),
-  )
+  const entities = await fetchAllCuitEntities()
+  console.log(`  [cuit] Fetched ${entities.length} entities with CUIT`)
 
-  // Fetch Companies with non-empty CUIT
-  const companies = await readQuery(
-    `MATCH (co:Company) WHERE co.cuit IS NOT NULL AND co.cuit <> ''
-     RETURN co.igj_id AS id, co.cuit AS cuit, co.name AS name`,
-    {},
-    (r) => ({
-      id: r.get('id') as string,
-      cuit: r.get('cuit') as string,
-      name: r.get('name') as string,
-    }),
-  )
-
-  // Build lookup: normalized CUIT -> Company[]
-  const companyByCuit = new Map<string, Array<{ id: string; cuit: string; name: string }>>()
-  for (const co of companies.records) {
-    const norm = normalizeCuit(co.cuit)
+  // Build map: normalized CUIT -> entities
+  const byCuit = new Map<string, CuitEntity[]>()
+  for (const e of entities) {
+    const norm = normalizeCuit(e.cuit)
     if (!norm) continue
-    const existing = companyByCuit.get(norm) || []
-    existing.push(co)
-    companyByCuit.set(norm, existing)
+    const list = byCuit.get(norm) || []
+    list.push(e)
+    byCuit.set(norm, list)
   }
 
-  // Inner join on normalized CUIT
   const matches: CrossRefMatch[] = []
-  for (const c of contractors.records) {
-    const norm = normalizeCuit(c.cuit)
-    if (!norm) continue
-    const matched = companyByCuit.get(norm)
-    if (!matched) continue
+  const seen = new Set<string>()
 
-    for (const co of matched) {
+  // ---- Cross-match by exact CUIT across different labels ----
+  for (const [norm, group] of byCuit) {
+    if (group.length < 2) continue
+    for (let i = 0; i < group.length; i++) {
+      for (let j = i + 1; j < group.length; j++) {
+        const a = group[i]
+        const b = group[j]
+        if (a.label === b.label) continue // skip same-label matches
+        const key = [a.id, b.id].sort().join('::')
+        if (seen.has(key)) continue
+        seen.add(key)
+        matches.push({
+          source_id: a.id,
+          target_id: b.id,
+          source_label: a.label,
+          target_label: b.label,
+          match_key: norm,
+          match_type: 'cuit',
+          confidence: 1.0,
+          evidence: `CUIT match: ${a.label} "${a.name}" (${a.cuit}) = ${b.label} "${b.name}" (${b.cuit})`,
+        })
+      }
+    }
+  }
+
+  // ---- CUIT → DNI extraction for person matching ----
+  // Person CUITs (prefix 20/23/24/27) contain DNI in positions 2-9.
+  // Match extracted DNI against CompanyOfficer and GovernmentAppointment.
+  const dniEntities = await fetchAllDniEntities()
+  const byDni = new Map<string, DniEntity[]>()
+  for (const e of dniEntities) {
+    const norm = e.dni.replace(/\D/g, '').trim()
+    if (!norm) continue
+    // Also store trimmed version (no leading zero)
+    const trimmed = norm.startsWith('0') ? norm.slice(1) : norm
+    for (const key of new Set([norm, trimmed])) {
+      const list = byDni.get(key) || []
+      list.push(e)
+      byDni.set(key, list)
+    }
+  }
+
+  for (const e of entities) {
+    if (!isPersonCuit(e.cuit)) continue
+    const dni = extractDni(e.cuit)
+    if (!dni) continue
+
+    const dniMatches = byDni.get(dni)
+    if (!dniMatches) continue
+
+    for (const target of dniMatches) {
+      if (e.label === target.label) continue
+      const key = [e.id, target.id].sort().join('::')
+      if (seen.has(key)) continue
+      seen.add(key)
       matches.push({
-        source_id: c.id,
-        target_id: co.id,
-        source_label: 'Contractor',
-        target_label: 'Company',
-        match_key: norm,
+        source_id: e.id,
+        target_id: target.id,
+        source_label: e.label,
+        target_label: target.label,
+        match_key: dni,
         match_type: 'cuit',
-        confidence: 1.0,
-        evidence: `CUIT match: Contractor "${c.name}" (${c.cuit}) = Company "${co.name}" (${co.cuit})`,
+        confidence: 0.95,
+        evidence: `CUIT→DNI match: ${e.label} "${e.name}" (CUIT ${e.cuit}, DNI=${dni}) = ${target.label} "${target.name}"`,
       })
     }
   }
@@ -99,76 +223,44 @@ export async function matchByCuit(): Promise<CrossRefMatch[]> {
 
 // ---------------------------------------------------------------------------
 // Tier 2: DNI/CUIL matching (GovernmentAppointment <-> CompanyOfficer)
+// In-memory Map join on normalized DNI.
 // ---------------------------------------------------------------------------
 
 export async function matchByDni(): Promise<CrossRefMatch[]> {
-  // GovernmentAppointments with DNI or CUIL
-  const appointments = await readQuery(
-    `MATCH (ga:GovernmentAppointment)
-     WHERE (ga.dni IS NOT NULL AND ga.dni <> '') OR (ga.cuil IS NOT NULL AND ga.cuil <> '')
-     RETURN ga.appointment_id AS id, ga.dni AS dni, ga.cuil AS cuil,
-            ga.full_name AS name`,
-    {},
-    (r) => ({
-      id: r.get('id') as string,
-      dni: (r.get('dni') as string) || '',
-      cuil: (r.get('cuil') as string) || '',
-      name: r.get('name') as string,
-    }),
-  )
-
-  // CompanyOfficers with DNI (document_type_code = '1')
-  const officers = await readQuery(
-    `MATCH (co:CompanyOfficer)
-     WHERE co.document_type_code = '1' AND co.document_number IS NOT NULL AND co.document_number <> ''
-     RETURN co.officer_id AS id, co.document_number AS dni, co.name AS name`,
-    {},
-    (r) => ({
-      id: r.get('id') as string,
-      dni: r.get('dni') as string,
-      name: r.get('name') as string,
-    }),
-  )
+  const entities = await fetchAllDniEntities()
+  console.log(`  [dni] Fetched ${entities.length} entities with DNI/CUIL`)
 
   // Build lookup: DNI -> CompanyOfficer[]
-  const officerByDni = new Map<string, Array<{ id: string; dni: string; name: string }>>()
-  for (const o of officers.records) {
-    const norm = o.dni.replace(/\D/g, '').trim()
+  const officerByDni = new Map<string, DniEntity[]>()
+  for (const e of entities) {
+    if (e.label !== 'CompanyOfficer') continue
+    const norm = e.dni.replace(/\D/g, '').trim()
     if (!norm) continue
-    const existing = officerByDni.get(norm) || []
-    existing.push(o)
-    officerByDni.set(norm, existing)
+    const list = officerByDni.get(norm) || []
+    list.push(e)
+    officerByDni.set(norm, list)
   }
 
   const matches: CrossRefMatch[] = []
 
-  for (const appt of appointments.records) {
-    // Try DNI first, then extract from CUIL
-    let dniValue = appt.dni.replace(/\D/g, '').trim()
-    let matchType: 'dni' | 'cuil' = 'dni'
-    let confidence = 0.95
+  for (const e of entities) {
+    if (e.label !== 'GovernmentAppointment') continue
+    const norm = e.dni.replace(/\D/g, '').trim()
+    if (!norm) continue
 
-    if (!dniValue && appt.cuil) {
-      dniValue = extractDniFromCuil(appt.cuil)
-      matchType = 'cuil'
-      confidence = 0.9
-    }
-
-    if (!dniValue) continue
-
-    const matched = officerByDni.get(dniValue)
+    const matched = officerByDni.get(norm)
     if (!matched) continue
 
     for (const officer of matched) {
       matches.push({
-        source_id: appt.id,
+        source_id: e.id,
         target_id: officer.id,
         source_label: 'GovernmentAppointment',
         target_label: 'CompanyOfficer',
-        match_key: dniValue,
-        match_type: matchType,
-        confidence,
-        evidence: `${matchType.toUpperCase()} match: Appointee "${appt.name}" (${matchType}=${dniValue}) = Officer "${officer.name}" (DNI=${officer.dni})`,
+        match_key: norm,
+        match_type: 'dni',
+        confidence: 0.95,
+        evidence: `DNI match: Appointee "${e.name}" (DNI=${norm}) = Officer "${officer.name}"`,
       })
     }
   }
@@ -198,33 +290,35 @@ export async function matchByName(
 ): Promise<CrossRefMatch[]> {
   console.log('  [name-match] Fetching entities for name matching...')
 
-  // Fetch all entity types that might match by name (capped per type)
+  const matches: CrossRefMatch[] = []
+  const matchedPairs = new Set<string>()
+
   const [contractorRes, companyRes, appointmentRes, officerRes] = await Promise.all([
     readQuery(
       `MATCH (c:Contractor) WHERE c.name IS NOT NULL AND c.name <> '' AND size(c.name) >= 3
        RETURN c.contractor_id AS id, c.name AS name
-       LIMIT $limit`,
+       LIMIT toInteger($limit)`,
       { limit: NAME_MATCH_LIMIT },
       (r) => ({ id: r.get('id') as string, name: r.get('name') as string }),
     ),
     readQuery(
       `MATCH (co:Company) WHERE co.name IS NOT NULL AND co.name <> '' AND size(co.name) >= 3
        RETURN co.igj_id AS id, co.name AS name
-       LIMIT $limit`,
+       LIMIT toInteger($limit)`,
       { limit: NAME_MATCH_LIMIT },
       (r) => ({ id: r.get('id') as string, name: r.get('name') as string }),
     ),
     readQuery(
       `MATCH (ga:GovernmentAppointment) WHERE ga.full_name IS NOT NULL AND ga.full_name <> '' AND size(ga.full_name) >= 3
        RETURN ga.appointment_id AS id, ga.full_name AS name
-       LIMIT $limit`,
+       LIMIT toInteger($limit)`,
       { limit: NAME_MATCH_LIMIT },
       (r) => ({ id: r.get('id') as string, name: r.get('name') as string }),
     ),
     readQuery(
       `MATCH (co:CompanyOfficer) WHERE co.name IS NOT NULL AND co.name <> '' AND size(co.name) >= 3
        RETURN co.officer_id AS id, co.name AS name
-       LIMIT $limit`,
+       LIMIT toInteger($limit)`,
       { limit: NAME_MATCH_LIMIT },
       (r) => ({ id: r.get('id') as string, name: r.get('name') as string }),
     ),
@@ -232,11 +326,11 @@ export async function matchByName(
 
   const totalEntities = contractorRes.records.length + companyRes.records.length +
     appointmentRes.records.length + officerRes.records.length
-  console.log(`  [name-match] Fetched ${totalEntities} entities (contractors=${contractorRes.records.length}, companies=${companyRes.records.length}, appointments=${appointmentRes.records.length}, officers=${officerRes.records.length})`)
+  console.log(`  [name-match] Fetched ${totalEntities} entities`)
 
   // Filter out already-matched entities, normalize names, and require minimum length
   const filterAndNormalize = (
-    records: { id: string; name: string }[],
+    records: readonly { id: string; name: string }[],
     label: string,
   ): NameEntity[] =>
     records
@@ -257,25 +351,22 @@ export async function matchByName(
   )
   if (maxPairwise > 5_000_000_000) {
     console.log(`  [name-match] WARNING: Pairwise comparison space too large (${maxPairwise.toExponential(1)}). Skipping fuzzy name matching.`)
-    console.log('  [name-match] Consider using Neo4j fulltext search for fuzzy matching at this scale.')
     return []
   }
 
   console.log(`  [name-match] After filtering: contractors=${contractors.length}, companies=${companies.length}, appointments=${appointments.length}, officers=${officers.length}`)
 
-  const matches: CrossRefMatch[] = []
-
   // Match Contractors to Companies by name
   console.log('  [name-match] Matching contractors <-> companies...')
-  matchNamePair(contractors, companies, matches)
+  matchNamePair(contractors, companies, matches, matchedPairs)
 
   // Match GovernmentAppointments to CompanyOfficers by name
   console.log('  [name-match] Matching appointments <-> officers...')
-  matchNamePair(appointments, officers, matches)
+  matchNamePair(appointments, officers, matches, matchedPairs)
 
   // Match Contractors to CompanyOfficers by name (person-based contractors)
   console.log('  [name-match] Matching contractors <-> officers...')
-  matchNamePair(contractors, officers, matches)
+  matchNamePair(contractors, officers, matches, matchedPairs)
 
   console.log(`  [name-match] Done. Found ${matches.length} name matches.`)
 
@@ -288,10 +379,14 @@ export async function matchByName(
  * Levenshtein <= 2 = 0.6 confidence.
  * Skips ambiguous matches (multiple candidates).
  */
+/** Max target set size for Levenshtein fuzzy loop (O(sources * targets)) */
+const FUZZY_TARGET_CAP = 10_000
+
 function matchNamePair(
   sources: readonly NameEntity[],
   targets: readonly NameEntity[],
   matches: CrossRefMatch[],
+  matchedPairs: Set<string>,
 ): void {
   // Build target lookup by normalized name
   const targetByNorm = new Map<string, NameEntity[]>()
@@ -302,7 +397,11 @@ function matchNamePair(
     targetByNorm.set(t.normalized, existing)
   }
 
-  const matchedPairs = new Set<string>()
+  const skipFuzzy = targetByNorm.size > FUZZY_TARGET_CAP
+  if (skipFuzzy) {
+    console.log(`    [name-match] Target set too large (${targetByNorm.size} unique names > ${FUZZY_TARGET_CAP}), skipping Levenshtein — exact only`)
+  }
+
   let processed = 0
   const totalSources = sources.length
 
@@ -313,7 +412,7 @@ function matchNamePair(
     }
     if (!source.normalized) continue
 
-    // Exact normalized match
+    // Exact normalized match (Map lookup — O(1))
     const exactMatch = targetByNorm.get(source.normalized)
     if (exactMatch && exactMatch.length === 1) {
       const pairKey = `${source.id}::${exactMatch[0].id}`
@@ -335,6 +434,9 @@ function matchNamePair(
 
     // Skip if exact match is ambiguous (multiple candidates)
     if (exactMatch && exactMatch.length > 1) continue
+
+    // Skip Levenshtein when target set is too large
+    if (skipFuzzy) continue
 
     // Fuzzy match: Levenshtein <= 2
     let bestDistance = Infinity
