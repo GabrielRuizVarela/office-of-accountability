@@ -12,4 +12,7 @@ export type {
 } from './types'
 
 export { createLlamaCppProvider } from './llamacpp'
+export { createOpenAIProvider } from './openai'
+export { createAnthropicProvider } from './anthropic'
 export { createProvider } from './factory'
+export { getToolsForStage, getAllTools } from './tools'
