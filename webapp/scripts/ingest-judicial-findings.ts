@@ -136,27 +136,41 @@ async function main(): Promise<void> {
   // ── RELATIONSHIPS ────────────────────────────────────────────────────
 
   const rels = [
-    { from: 'LIJO ARIEL OSCAR', to: 'CORREO ARGENTINO S.A.', fromLabel: 'Person', toLabel: ':Organization', type: 'HANDLES_CASE', desc: 'Juez a cargo de causa Correo Argentino, sensible para familia Macri' },
-    { from: 'ERCOLINI JULIAN DANIEL', to: 'CAUSA SEGUROS', fromLabel: 'Person', toLabel: '', type: 'HANDLES_CASE', desc: 'Ordenó 24 allanamientos en Causa Seguros (2024)' },
-    { from: 'ERCOLINI JULIAN DANIEL', to: 'FRIGERIO ROGELIO', fromLabel: 'Person', toLabel: 'Person', type: 'CLEARED', desc: 'Sobreseyó a Frigerio en 2022' },
-    { from: 'CASANELLO SEBASTIAN', to: 'CAUSA SEGUROS', fromLabel: 'Person', toLabel: '', type: 'PROSECUTES', desc: 'Instruye Causa Seguros desde juzgado federal' },
-    { from: 'FRAGA JOSE MARIA', to: 'MACRI MAURICIO', fromLabel: 'Person', toLabel: 'Person', type: 'CLEARED', desc: 'Sobreseyó a Macri en causa Fleg Trading/Panama Papers' },
-    { from: 'GIL LAVEDRA RICARDO', to: 'UCR', fromLabel: 'Person', toLabel: 'Organization', type: 'MEMBER_OF', desc: 'Diputado UCR, Ministro de Justicia bajo De la Rua' },
-    { from: 'MONTENEGRO GUILLERMO', to: 'LA LIBERTAD AVANZA', fromLabel: 'Person', toLabel: 'Organization', type: 'MEMBER_OF', desc: 'Intendente de Mar del Plata por LLA desde 2023' },
-    { from: 'LIJO ARIEL OSCAR', to: 'MILEI JAVIER', fromLabel: 'Person', toLabel: 'Person', type: 'NOMINATED_BY', desc: 'Nominado a Corte Suprema via Decreto 137/2025' },
+    { from: 'LIJO ARIEL OSCAR', to: 'CORREO ARGENTINO S.A.', toLabel: 'Organization' as const, type: 'HANDLES_CASE', desc: 'Juez a cargo de causa Correo Argentino, sensible para familia Macri' },
+    { from: 'ERCOLINI JULIAN DANIEL', to: 'CAUSA SEGUROS', toLabel: 'Event' as const, type: 'HANDLES_CASE', desc: 'Ordenó 24 allanamientos en Causa Seguros (2024)' },
+    { from: 'ERCOLINI JULIAN DANIEL', to: 'FRIGERIO ROGELIO', toLabel: 'Person' as const, type: 'CLEARED', desc: 'Sobreseyó a Frigerio en 2022' },
+    { from: 'CASANELLO SEBASTIAN', to: 'CAUSA SEGUROS', toLabel: 'Event' as const, type: 'PROSECUTES', desc: 'Instruye Causa Seguros desde juzgado federal' },
+    { from: 'FRAGA JOSE MARIA', to: 'MACRI MAURICIO', toLabel: 'Person' as const, type: 'CLEARED', desc: 'Sobreseyó a Macri en causa Fleg Trading/Panama Papers' },
+    { from: 'GIL LAVEDRA RICARDO', to: 'UCR', toLabel: 'Organization' as const, type: 'MEMBER_OF', desc: 'Diputado UCR, Ministro de Justicia bajo De la Rua' },
+    { from: 'MONTENEGRO GUILLERMO', to: 'LA LIBERTAD AVANZA', toLabel: 'Organization' as const, type: 'MEMBER_OF', desc: 'Intendente de Mar del Plata por LLA desde 2023' },
+    { from: 'LIJO ARIEL OSCAR', to: 'MILEI JAVIER', toLabel: 'Person' as const, type: 'NOMINATED_BY', desc: 'Nominado a Corte Suprema via Decreto 137/2025' },
   ]
+
+  // Build labeled Cypher queries to avoid full-graph scans on 951K+ CompanyOfficer nodes
+  const labeledQueries: Record<string, string> = {
+    Person: `MATCH (a:Person {name: $from, caso_slug: $caso_slug})
+         MATCH (b:Person {name: $to})
+         MERGE (a)-[rel:RELATED_TO]->(b)
+         SET rel.relationship_type = $type, rel.description = $desc,
+             rel.source = $source, rel.created_at = coalesce(rel.created_at, $now)`,
+    Organization: `MATCH (a:Person {name: $from, caso_slug: $caso_slug})
+         MATCH (b:Organization {name: $to})
+         MERGE (a)-[rel:RELATED_TO]->(b)
+         SET rel.relationship_type = $type, rel.description = $desc,
+             rel.source = $source, rel.created_at = coalesce(rel.created_at, $now)`,
+    Event: `MATCH (a:Person {name: $from, caso_slug: $caso_slug})
+         MATCH (b:Event {title_en: $to})
+         MERGE (a)-[rel:RELATED_TO]->(b)
+         SET rel.relationship_type = $type, rel.description = $desc,
+             rel.source = $source, rel.created_at = coalesce(rel.created_at, $now)`,
+  }
 
   console.log('\n── Relationships ──')
   for (const r of rels) {
     try {
-      // Use generic label matching — target nodes may or may not already exist
-      // We match by name on any node in the caso to be safe
+      const query = labeledQueries[r.toLabel]
       await executeWrite(
-        `MATCH (a:Person {name: $from, caso_slug: $caso_slug})
-         MATCH (b {name: $to})
-         MERGE (a)-[rel:RELATED_TO]->(b)
-         SET rel.relationship_type = $type, rel.description = $desc,
-             rel.source = $source, rel.created_at = coalesce(rel.created_at, $now)`,
+        query,
         { from: r.from, to: r.to, caso_slug: CASO_SLUG, type: r.type, desc: r.desc, source: PROV.submitted_by, now },
       )
       console.log(`  Rel: ${r.from} -[${r.type}]-> ${r.to}`)
