@@ -86,7 +86,7 @@ export interface TimelineItem {
   readonly date: string
   readonly event_type?: EventType
   readonly category?: string
-  readonly source_url?: string
+  readonly source_url?: string | null
   readonly actors?: readonly { readonly id: string; readonly name: string }[]
 }
 

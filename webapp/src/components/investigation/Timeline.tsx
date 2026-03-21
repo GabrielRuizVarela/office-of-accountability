@@ -7,8 +7,8 @@
 
 import { useState, useMemo } from 'react'
 
-import type { TimelineItem, EventType } from '@/lib/caso-libra/types'
-import { EVENT_TYPE_COLORS, EVENT_TYPE_LABELS } from '@/lib/caso-libra/types'
+import type { TimelineItem, EventType } from '@/lib/investigations/types'
+import { EVENT_TYPE_COLORS, EVENT_TYPE_LABELS } from '@/lib/investigations/types'
 
 import { EventCard } from './EventCard'
 
@@ -68,12 +68,12 @@ export function Timeline({ events }: TimelineProps) {
           <EventCard
             key={event.id}
             id={event.id}
-            title={event.title}
-            description={event.description}
+            title={typeof event.title === 'string' ? event.title : event.title.es}
+            description={typeof event.description === 'string' ? event.description : event.description.es}
             date={event.date}
-            eventType={event.event_type}
-            sourceUrl={event.source_url}
-            actors={event.actors}
+            eventType={event.event_type ?? 'political'}
+            sourceUrl={event.source_url ?? null}
+            actors={event.actors ?? []}
           />
         ))}
         {filteredEvents.length === 0 && (
