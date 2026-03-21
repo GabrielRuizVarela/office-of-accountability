@@ -2,7 +2,7 @@
 
 /**
  * Sub-navigation tabs for the investigation layout.
- * Per-case tab configuration via CASE_TABS map.
+ * Tab list driven by investigation registry config; label/href overrides here.
  * Includes a language toggle that reads/writes from LanguageContext.
  */
 
@@ -10,6 +10,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { useLanguage, type Lang } from '@/lib/language-context'
+import { getClientConfig } from '@/lib/investigations/registry'
+import type { TabId } from '@/lib/investigations/types'
 
 interface NavTab {
   readonly href: string
@@ -21,40 +23,55 @@ interface InvestigationNavProps {
 }
 
 // ---------------------------------------------------------------------------
-// Per-case tab configuration (bilingual labels)
+// Tab metadata defaults (one entry per TabId)
 // ---------------------------------------------------------------------------
 
-const CASE_TABS: Readonly<Record<string, readonly NavTab[]>> = {
-  'caso-epstein': [
-    { href: '', label: { en: 'Overview', es: 'Inicio' } },
-    { href: '/resumen', label: { en: 'Summary', es: 'Resumen' } },
-    { href: '/investigacion', label: { en: 'Investigation', es: 'Investigacion' } },
-    { href: '/grafo', label: { en: 'Connections', es: 'Conexiones' } },
-    { href: '/cronologia', label: { en: 'Timeline', es: 'Cronologia' } },
-    { href: '/vuelos', label: { en: 'Flights', es: 'Vuelos' } },
-    { href: '/evidencia', label: { en: 'Evidence', es: 'Evidencia' } },
-    { href: '/proximidad', label: { en: 'Proximity', es: 'Proximidad' } },
-    { href: '/simulacion', label: { en: 'Simulation', es: 'Simulacion' } },
-  ],
-  'caso-libra': [
-    { href: '', label: { en: 'Home', es: 'Inicio' } },
-    { href: '/resumen', label: { en: 'What happened', es: 'Que paso' } },
-    { href: '/investigacion', label: { en: 'Evidence', es: 'Pruebas' } },
-    { href: '/cronologia', label: { en: 'Timeline', es: 'Cronologia' } },
-    { href: '/dinero', label: { en: 'The Money', es: 'El dinero' } },
-    { href: '/evidencia', label: { en: 'Documents', es: 'Evidencia' } },
-    { href: '/grafo', label: { en: 'Connections', es: 'Conexiones' } },
-    { href: '/simular', label: { en: 'Predictions', es: 'Predicciones' } },
-  ],
-  'finanzas-politicas': [
-    { href: '', label: { en: 'Home', es: 'Inicio' } },
-    { href: '/resumen', label: { en: 'Summary', es: 'Resumen' } },
-    { href: '/investigacion', label: { en: 'Investigation', es: 'Investigacion' } },
-    { href: '/cronologia', label: { en: 'Timeline', es: 'Cronologia' } },
-    { href: '/dinero', label: { en: 'The Money', es: 'El Dinero' } },
-    { href: '/conexiones', label: { en: 'Connections', es: 'Conexiones' } },
-  ],
+const TAB_DEFAULTS: Record<TabId, NavTab> = {
+  resumen:       { href: '/resumen',       label: { en: 'Summary',        es: 'Resumen' } },
+  investigacion: { href: '/investigacion', label: { en: 'Investigation',  es: 'Investigacion' } },
+  cronologia:    { href: '/cronologia',    label: { en: 'Timeline',       es: 'Cronologia' } },
+  evidencia:     { href: '/evidencia',     label: { en: 'Evidence',       es: 'Evidencia' } },
+  grafo:         { href: '/grafo',         label: { en: 'Connections',    es: 'Conexiones' } },
+  dinero:        { href: '/dinero',        label: { en: 'The Money',      es: 'El Dinero' } },
+  simular:       { href: '/simular',       label: { en: 'Simulation',     es: 'Simulacion' } },
+  vuelos:        { href: '/vuelos',        label: { en: 'Flights',        es: 'Vuelos' } },
+  proximidad:    { href: '/proximidad',    label: { en: 'Proximity',      es: 'Proximidad' } },
+  conexiones:    { href: '/conexiones',    label: { en: 'Connections',    es: 'Conexiones' } },
 }
+
+// ---------------------------------------------------------------------------
+// Per-slug overrides (only where defaults don't match current labels)
+// ---------------------------------------------------------------------------
+
+const LABEL_OVERRIDES: Partial<Record<string, Partial<Record<TabId, Record<Lang, string>>>>> = {
+  'caso-libra': {
+    resumen:       { en: 'What happened', es: 'Que paso' },
+    investigacion: { en: 'Evidence',      es: 'Pruebas' },
+    evidencia:     { en: 'Documents',     es: 'Evidencia' },
+    simular:       { en: 'Predictions',   es: 'Predicciones' },
+    dinero:        { en: 'The Money',     es: 'El dinero' },
+  },
+}
+
+const HREF_OVERRIDES: Partial<Record<string, Partial<Record<TabId, string>>>> = {
+  'caso-epstein': {
+    simular: '/simulacion',
+  },
+}
+
+// ---------------------------------------------------------------------------
+// Home tab (always first)
+// ---------------------------------------------------------------------------
+
+const HOME_TAB: NavTab = { href: '', label: { en: 'Home', es: 'Inicio' } }
+
+const HOME_LABEL_OVERRIDES: Record<string, Record<Lang, string>> = {
+  'caso-epstein': { en: 'Overview', es: 'Inicio' },
+}
+
+// ---------------------------------------------------------------------------
+// Fallback for unregistered slugs
+// ---------------------------------------------------------------------------
 
 const DEFAULT_TABS: readonly NavTab[] = [
   { href: '', label: { en: 'Home', es: 'Inicio' } },
@@ -65,11 +82,37 @@ const DEFAULT_TABS: readonly NavTab[] = [
   { href: '/evidencia', label: { en: 'Evidence', es: 'Evidencia' } },
 ]
 
+// ---------------------------------------------------------------------------
+// Build tabs from registry config
+// ---------------------------------------------------------------------------
+
+function buildTabs(slug: string): readonly NavTab[] {
+  // Try direct slug, then with caso- prefix (handles finanzas-politicas → caso-finanzas-politicas)
+  const config = getClientConfig(slug) ?? getClientConfig(`caso-${slug}`)
+  if (!config) return DEFAULT_TABS
+
+  const homeLabel = HOME_LABEL_OVERRIDES[slug] ?? HOME_TAB.label
+  const homeDef: NavTab = { href: '', label: homeLabel }
+
+  return [
+    homeDef,
+    ...config.tabs.map((id) => {
+      const base = TAB_DEFAULTS[id]
+      const labelOverride = LABEL_OVERRIDES[slug]?.[id]
+      const hrefOverride = HREF_OVERRIDES[slug]?.[id]
+      return {
+        href: hrefOverride ?? base.href,
+        label: labelOverride ?? base.label,
+      }
+    }),
+  ]
+}
+
 export function InvestigationNav({ slug }: InvestigationNavProps) {
   const pathname = usePathname()
   const { lang, setLang } = useLanguage()
   const base = `/caso/${slug}`
-  const tabDefs = CASE_TABS[slug] ?? DEFAULT_TABS
+  const tabDefs = buildTabs(slug)
   const tabs = tabDefs.map((t) => ({ href: `${base}${t.href}`, label: t.label[lang] }))
 
   return (
