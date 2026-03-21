@@ -1,19 +1,25 @@
 import { NextRequest } from 'next/server'
 
-import { getInvestigationGraph } from '../../../../../lib/caso-epstein/queries'
-import { CASO_EPSTEIN_SLUG } from '../../../../../lib/caso-epstein/types'
+import { getClientConfig } from '@/lib/investigations/registry'
+import { getQueryBuilder } from '@/lib/investigations/query-builder'
 
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ slug: string }> },
 ) {
-  // Currently only the Epstein case is supported — accept any slug
+  const { slug } = await params
+
+  // Validate slug against the registry
+  const config = getClientConfig(slug)
+  if (!config) {
+    return Response.json(
+      { success: false, error: 'Unknown investigation' },
+      { status: 404 },
+    )
+  }
+
   try {
-    // Parse optional tier filter from query params; default to gold+silver for performance
-    const { searchParams } = new URL(request.url)
-    const tiersParam = searchParams.get('tiers')
-    const tiers = tiersParam ? tiersParam.split(',') as ('gold' | 'silver' | 'bronze')[] : undefined
-    const data = await getInvestigationGraph(CASO_EPSTEIN_SLUG, tiers)
+    const data = await getQueryBuilder().getGraph(slug)
     return Response.json({ success: true, data })
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
