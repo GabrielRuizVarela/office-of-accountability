@@ -1,18 +1,18 @@
 /**
  * API route: GET /api/caso-libra/wallets
- * Returns the wallet flow subgraph.
+ * 301 redirect to the unified endpoint at /api/caso/caso-libra/wallets.
  */
 
-import { NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 
-import { getWalletFlows } from '@/lib/caso-libra'
+export async function GET(request: NextRequest): Promise<Response> {
+  const { searchParams } = request.nextUrl
+  const target = new URL('/api/caso/caso-libra/wallets', request.url)
 
-export async function GET(): Promise<Response> {
-  try {
-    const data = await getWalletFlows()
-    return NextResponse.json(data)
-  } catch (error) {
-    console.error('Failed to fetch wallet flows:', error)
-    return NextResponse.json({ nodes: [], links: [] }, { status: 500 })
-  }
+  // Preserve any query parameters
+  searchParams.forEach((value, key) => {
+    target.searchParams.set(key, value)
+  })
+
+  return NextResponse.redirect(target, 301)
 }
