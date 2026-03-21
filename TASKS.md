@@ -1353,6 +1353,164 @@ Researcher clicks "Run" → Orchestrator starts
 | `src/lib/graph/algorithms.ts` | Analyze stage | Extend (add 5 algorithms) |
 | `scripts/ingest-wave-*.ts` | Connector implementations | Pattern reference (connectors replace these) |
 
+### Investigation Engine Assessment (Finanzas Politicas — 2026-03-21)
+
+**Status:** Assessment / Architectural Proposal
+
+#### Current Capabilities (Operational)
+
+| Capability | Implementation |
+|-----------|---------------|
+| 10 ETL pipelines | `src/etl/{boletin-oficial,cne-finance,cnv-securities,como-voto,ddjj-patrimoniales,icij-offshore,judiciary,opencorporates,comprar,cross-reference}/` |
+| Cross-reference engine | CUIT (1,110 matches) + DNI (715 matches), `SAME_ENTITY` relationships |
+| MiroFish/Qwen analysis | `src/lib/mirofish/analysis.ts` — 4 analysis functions, structured JSON output |
+| 4-phase investigation loop | `scripts/run-investigation-loop.ts` — ingest, cross-ref, analyze, report |
+| 14 ingestion scripts | `scripts/ingest-*.ts` — financial, judicial, family, health, scandals, consolidation |
+| Confidence tier system | gold > silver > bronze, `caso_slug` namespace isolation |
+| Bilingual data output | `investigation-data.ts` — 2,404 lines, ES/EN factchecks, timeline, actors, money flows |
+| Graph database | Neo4j 5 Community, 227 nodes / 341 edges (investigation), 398K companies platform-wide |
+
+#### Manual Bottlenecks (What M10 Must Automate)
+
+| Step | Current Method | Bottleneck |
+|------|---------------|-----------|
+| Seed parsing | Human reads user input, decides what to search | No automated entity extraction |
+| Web research | Claude Code dispatches WebSearch tool calls | Requires active Claude Code session |
+| Source verification | Agent calls WebFetch on each URL | No automated URL health checker |
+| Claim cross-checking | Agent searches for second source manually | No systematic cross-check pipeline |
+| Graph bridging | Agent writes Cypher to connect new entities to existing graph | No auto-bridge logic |
+| `investigation-data.ts` updates | Agent manually appends to 2,404-line file | No graph-to-frontend data generator |
+| Narrative generation | Agent writes markdown narratives from findings | Could be MiroFish task |
+| Human review | User reads agent output in terminal | No review UI or approval workflow |
+
+#### MiroFish/Qwen Role in M10
+
+**Current technical profile:** Qwen 3.5 9B, Q5_K_M, RTX 4060 Ti, localhost:8080, 8K context, `enable_thinking: false` (mandatory), temp 0.3, max_tokens 4096.
+
+**Proposed tasks for MiroFish within M10 pipeline:**
+
+| Task | Phase | New Prompt Template Needed |
+|------|-------|---------------------------|
+| Seed parsing (entity extraction) | Ingest | `SEED_PARSER_PROMPT` |
+| Research question generation | Ingest | `RESEARCH_QUESTIONS_PROMPT` |
+| Claim extraction from web content | Verify | `CLAIM_EXTRACTION_PROMPT` |
+| Cross-check analysis | Verify | `CROSS_CHECK_PROMPT` |
+| Confidence scoring | Analyze | `CONFIDENCE_SCORING_PROMPT` |
+| Dedup reasoning | Verify | `DEDUP_REASONING_PROMPT` |
+| Anomaly detection | Analyze | Existing prompts in `prompts.ts` |
+| Narrative generation | Report | Existing `INVESTIGATION_SUMMARY_PROMPT` |
+
+**Constraints:** 8K context (chunk subgraphs), no tool use (pre-fetch all data), single GPU (sequential only), 10-min timeout (circuit breaker needed).
+
+#### Data Sources — Priority for Automation
+
+**P1 — High value, low effort (API wrappers needed):**
+- [ ] BCRA Central de Deudores: `api.bcra.gob.ar/centraldedeudores/v1.0/Deudas/{cuit}` — free, no auth, per-CUIT debtor status
+- [ ] RNS bulk CSV: `datos.jus.gob.ar/dataset/registro-nacional-de-sociedades` — monthly download, 27 fields
+
+**P2 — High value, medium effort:**
+- [ ] AFIP CUIT lookup: `soa.afip.gob.ar/sr-padron/v2/persona/{cuit}` — requires token
+- [ ] SSN producers: `datos.gob.ar/dataset/ssn-productores-seguros` — insurance sector
+
+**P3 — High value, high effort:**
+- [ ] UIF sanctions lists (restricted access)
+- [ ] Provincial procurement (start with Buenos Aires Province)
+
+#### Cross-Reference Engine Status
+
+```
+Current:
+  CUIT matching:  1,110 SAME_ENTITY (confidence 1.0)
+  DNI matching:     715 SAME_ENTITY (confidence 0.9-0.95)
+  Name matching:  SKIPPED (O(n*m) on 2.3M entities — needs fulltext index)
+
+Pending:
+  Offshore-Judge matching:     not attempted
+  Donor-Judge matching:        not attempted
+  Politician-Donor cross-ref:  1,467 donors unlinked
+  CompanyOfficer-OffshoreOfficer: not attempted
+```
+
+#### Scheduled ETL (Proposed)
+
+```
+Daily:    BCRA debtor checks for flagged entities
+Weekly:   Boletin Oficial new appointments/awards
+Monthly:  RNS bulk CSV download + diff
+Monthly:  IGJ bulk CSV download + diff
+On-demand: Compr.ar when new year data available
+```
+
+#### Confidence Scoring Framework
+
+- **bronze** (auto-ingest, single source): web search result, unverified claim
+- **silver** (verified): 2+ independent sources, found in official dataset, URL verified
+- **gold** (curated): human reviewed, court docs or official gazette confirmation
+
+**Promotion rules:**
+- bronze → silver: automated if 2+ sources confirm AND URL verification passes
+- silver → gold: requires human review via review gateway
+- Any tier can be demoted if sources go dead or claims contradicted
+
+#### Human Review Gateway
+
+Engine never auto-publishes gold-tier. Workflow: engine produces bronze → auto-verification (URL + cross-source) → auto-promote to silver if 2+ sources → queue for human review → approve (gold) / reject (archive) / needs work (return to research). Initial implementation: CLI tool (`pnpm run review:pending`), no web UI needed.
+
+#### Implementation Phases (maps to M10a/b/c)
+
+| Phase | Description | Effort | Maps To | Dependencies |
+|-------|-------------|--------|---------|-------------|
+| 1 | Seed Parser + Research Runner (CLI: `pnpm run investigate "seed"`) | 1-2d | M10b | MiroFish running |
+| 2 | BCRA API + RNS Bulk ETL (`src/etl/bcra-deudores/`, `src/etl/rns-sociedades/`) | 2-3d | M10b | None |
+| 3 | MiroFish Analysis Pipeline (6 new prompt templates, Zod validation) | 2-3d | M10b | Phase 1 |
+| 4 | Auto-Bridge Engine (CUIT/DNI matching + shortest-path + significance scoring) | 1-2d | M10b | Phase 3 |
+| 5 | Frontend Auto-Update (`pnpm run generate:investigation-data` from Neo4j) | 2-3d | M10c | Phase 4 |
+| 6 | Full Loop + Human Review Gateway (orchestrator, cron, circuit breaker, audit log) | 3-5d | M10c | Phases 1-5 |
+
+Phases 1 and 2 are parallel. Total: 11-18 days.
+
+```mermaid
+gantt
+    title Investigation Engine Implementation
+    dateFormat YYYY-MM-DD
+    section Phase 1
+    Seed Parser + Research Runner    :p1, 2026-03-22, 2d
+    section Phase 2
+    BCRA API + RNS ETL               :p2, 2026-03-22, 3d
+    section Phase 3
+    MiroFish Analysis Pipeline        :p3, after p1, 3d
+    section Phase 4
+    Auto-Bridge Engine                :p4, after p3, 2d
+    section Phase 5
+    Frontend Auto-Update              :p5, after p4, 3d
+    section Phase 6
+    Full Loop + Review Gateway        :p6, after p5, 5d
+```
+
+#### Session Statistics (2026-03-21)
+
+| Metric | Before | After | Delta |
+|--------|:-:|:-:|:-:|
+| Nodes | 157 | 227 | +70 |
+| Edges | ~300 | 341 | +41 |
+| Connected components | 24 | 1 | -23 |
+| Factcheck items | ~40 | 70+ | +30 |
+| Actors | ~30 | 52 | +22 |
+| Research dossiers | 0 | 13 | +13 |
+| URL verification rate | — | 97.4% | — |
+
+**30+ agents dispatched across 5 loops:** financial arms (6), judicial (6), widened net (8), deep dives (6), consolidation (6).
+
+#### Files Created This Session
+
+**Ingestion scripts:** `scripts/ingest-{financial-findings,judicial-findings,family-networks,widened-net,recent-scandals,fp-health-findings,audit-critical,deep-dive-findings,consolidation}.ts`
+
+**MiroFish:** `src/lib/mirofish/{analysis,prompts}.ts`
+
+**Documentation:** `docs/investigations/{INVESTIGATION-PROCESS,narrative-finanzas-politicas,narrative-financial-arms,source-verification-report}.md`
+
+**Data:** `src/lib/caso-finanzas-politicas/investigation-data.ts` (2,404 lines)
+
 ### Verification
 - [ ] Engine config nodes (SourceConnector, PipelineConfig, PipelineStage, Gate, ModelConfig) can be CRUD'd via API
 - [ ] LLM providers (llamacpp, openai, anthropic) produce valid `LLMResponse` with `reasoning` field mapped correctly

@@ -20,6 +20,9 @@ export function createStageRunner(kind: StageKind): StageRunner {
       return new EnrichStageRunner()
     case 'analyze':
       return new AnalyzeStageRunner()
+    case 'iterate':
+      // Iterate reuses analyze runner with iteration loop — placeholder until Phase 5b
+      return new AnalyzeStageRunner()
     case 'report':
       return new ReportStageRunner()
   }

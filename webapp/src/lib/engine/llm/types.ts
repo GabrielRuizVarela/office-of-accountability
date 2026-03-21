@@ -62,8 +62,16 @@ export interface LLMResponse {
 // Provider contract
 // ---------------------------------------------------------------------------
 
+export interface LLMChunk {
+  content?: string
+  reasoning?: string
+  tool_calls?: ToolCall[]
+  done: boolean
+}
+
 export interface LLMProvider {
   readonly provider: string
   readonly model: string
   complete(options: LLMOptions): Promise<LLMResponse>
+  stream?(options: LLMOptions): AsyncIterable<LLMChunk>
 }

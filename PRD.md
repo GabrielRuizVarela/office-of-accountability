@@ -1036,7 +1036,352 @@ Governance, accountability scoring, and platform integrity features are now trac
 
 ---
 
-## 15. Glossary
+## 15. Investigation Engine Assessment — Finanzas Politicas
+
+**Date:** 2026-03-21
+**Status:** Assessment / Architectural Proposal
+**Author:** Claude Code session, reviewed by Gabriel Ruiz Varela
+
+### 15.1 Executive Summary
+
+The finanzas-politicas investigation has reached a point where a single user hint ("check Eurnekian-Milei connection", "add the Menems") triggers 30+ agent dispatches across research, verification, ingestion, and graph bridging. Today this loop is orchestrated manually by Claude Code: the user provides a seed, Claude dispatches parallel agents, each agent calls WebSearch/WebFetch/Neo4j, and findings are consolidated into `investigation-data.ts` and the Neo4j graph.
+
+This section assesses what exists, what an autonomous investigation engine would look like, how MiroFish/Qwen 3.5 fits into that architecture, and what is missing to get there. The goal is a system where a user types a seed input and the engine autonomously produces verified, graph-connected, source-backed findings — with a human review gateway before anything goes live.
+
+**Key conclusion:** ~60% of the pipeline components already exist (ETL modules, cross-reference engine, MiroFish analysis, ingestion scripts). What is missing is the orchestration glue, API wrappers for BCRA/RNS/AFIP, scheduled ETL, and the human review gateway.
+
+### 15.2 Current State Analysis
+
+#### What Works Today
+
+| Capability | Implementation | Status |
+|-----------|---------------|--------|
+| 10 ETL pipelines | `src/etl/{boletin-oficial,cne-finance,cnv-securities,como-voto,ddjj-patrimoniales,icij-offshore,judiciary,opencorporates,comprar,cross-reference}/` | Operational |
+| Cross-reference engine | CUIT (1,110 matches) + DNI (715 matches), `SAME_ENTITY` relationships | Operational |
+| MiroFish/Qwen analysis | `src/lib/mirofish/analysis.ts` — 4 analysis functions, structured JSON output | Operational |
+| 4-phase investigation loop | `scripts/run-investigation-loop.ts` — ingest, cross-ref, analyze, report | Operational |
+| 14 ingestion scripts | `scripts/ingest-*.ts` — financial, judicial, family, health, scandals, consolidation | Operational |
+| Confidence tier system | gold > silver > bronze, `caso_slug` namespace isolation | Operational |
+| Source verification protocol | WebFetch HTTP 200 checks, second-source confirmation | Manual |
+| Bilingual data output | `investigation-data.ts` — 2,404 lines, ES/EN factchecks, timeline, actors, money flows | Operational |
+| Graph database | Neo4j 5 Community, 227 nodes / 341 edges (investigation), 398K companies platform-wide | Operational |
+
+#### What Requires Manual Intervention
+
+| Step | Current Method | Bottleneck |
+|------|---------------|-----------|
+| Seed parsing | Human reads user input, decides what to search | No automated entity extraction |
+| Web research | Claude Code dispatches WebSearch tool calls | Requires active Claude Code session |
+| Source verification | Agent calls WebFetch on each URL | No automated URL health checker |
+| Claim cross-checking | Agent searches for second source manually | No systematic cross-check pipeline |
+| Graph bridging | Agent writes Cypher to connect new entities to existing graph | No auto-bridge logic |
+| `investigation-data.ts` updates | Agent manually appends to 2,404-line file | No graph-to-frontend data generator |
+| Narrative generation | Agent writes markdown narratives from findings | Could be MiroFish task |
+| Human review | User reads agent output in terminal | No review UI or approval workflow |
+
+#### MiroFish/Qwen: Current vs Potential Use
+
+| Phase | Currently Used? | Could Be Used? | Notes |
+|-------|:-:|:-:|-------|
+| Seed parsing (entity extraction) | No | Yes | Extract entities, relationships, research questions from natural language |
+| Research question generation | No | Yes | Generate targeted search queries from a seed input |
+| Source verification | No | No | Needs HTTP tools, not LLM reasoning |
+| Claim cross-checking | No | Partially | Can compare two text sources for contradiction, but cannot fetch them |
+| Anomaly detection | Yes | Yes | 6 analysis passes this session: procurement, ownership, political (x2), family, judicial |
+| Pattern recognition | Yes | Yes | Circular ownership, shell companies, revolving door detection |
+| Narrative generation | No | Yes | Bilingual summary from structured findings |
+| Confidence scoring | No | Yes | Score findings against evidence strength, source reliability |
+| Deduplication reasoning | No | Yes | Decide if two similar entities are the same person/org |
+
+### 15.3 Proposed Architecture: Pipeline Overview
+
+```mermaid
+flowchart TD
+    A["User Input\n'check Eurnekian-Milei'"] --> B["Seed Parser\nMiroFish/Qwen"]
+    B --> C["Research Phase\nParallel Web Searches"]
+    C --> D["Verification Phase\nCross-check + URL verify"]
+    D --> E["Ingestion Phase\nMERGE into Neo4j"]
+    E --> F["Connection Phase\nBridge to existing graph"]
+    F --> G["Analysis Phase\nMiroFish anomaly detection"]
+    G --> H["Output\nJSON + investigation-data.ts + narrative"]
+    H --> I{"Human Review\nGateway"}
+    I -->|Approved| J["Promote tier\nbronze -> silver"]
+    I -->|Rejected| K["Flag for re-research"]
+    I -->|Needs work| C
+```
+
+#### Phase 1: Seed Parser (MiroFish/Qwen 3.5)
+
+Takes raw user input and produces a structured research plan:
+
+```typescript
+interface SeedParseResult {
+  entities: Array<{
+    name: string
+    type: 'person' | 'organization' | 'event' | 'concept'
+    aliases: string[]
+    identifiers?: { cuit?: string; dni?: string }
+  }>
+  relationships: Array<{
+    from: string
+    to: string
+    hypothesized_type: string
+  }>
+  research_questions: string[]
+  search_queries: string[]
+  relevant_data_sources: string[]
+}
+```
+
+#### Phase 2: Research Phase (WebSearch)
+
+- Execute search queries from Phase 1 in parallel (rate-limited, max 5 concurrent)
+- For each result: extract key claims, source URLs, dates, amounts
+- Store raw research output as JSON dossiers in `docs/investigations/dossiers/`
+
+#### Phase 3: Verification Phase (WebFetch + MiroFish cross-check)
+
+1. **URL verification:** HTTP HEAD/GET on every source URL, flag 4xx/5xx
+2. **Claim cross-checking:** MiroFish compares claims across sources, flags contradictions
+
+#### Phase 4: Ingestion Phase (Neo4j)
+
+- MERGE entities with `caso_slug: "caso-finanzas-politicas"`, tier: bronze
+- Create relationships with `source`, `confidence`, `created_at` properties
+- All new entities start as bronze — promotion requires human review
+
+#### Phase 5: Connection Phase (Neo4j Cypher)
+
+Auto-bridge new entities to existing graph via shortest-path queries and platform-level entity matching (IGJ company officers, etc.).
+
+#### Phase 6: Analysis Phase (MiroFish/Qwen 3.5)
+
+Run existing analysis functions on the subgraph containing new + connected entities: procurement anomalies, ownership chains, political connections, plus new `analyzeNewFindings()` for novelty assessment.
+
+#### Phase 7: Output Phase
+
+Three outputs: structured JSON, `investigation-data.ts` updates, bilingual narrative markdown.
+
+### 15.4 MiroFish Role in the Engine
+
+| Parameter | Value |
+|-----------|-------|
+| Model | Qwen 3.5 9B (Q5_K_M quantization) |
+| Hardware | NVIDIA RTX 4060 Ti |
+| Server | llama.cpp on localhost:8080 |
+| Context window | 8K tokens |
+| `enable_thinking` | `false` (mandatory) |
+| Temperature | 0.3 for analytical tasks |
+| max_tokens | 4096 |
+
+**MiroFish tasks in the engine:**
+
+| Task | Input | Output |
+|------|-------|--------|
+| Seed parsing | Raw user text | `SeedParseResult` JSON |
+| Research question generation | Entity list + context | Search queries |
+| Claim extraction | Web search results | Structured claims |
+| Cross-check analysis | Multiple source texts | Contradiction report |
+| Anomaly detection | Neo4j subgraph JSON | Anomaly findings |
+| Narrative generation | Structured findings | Bilingual markdown |
+| Confidence scoring | Finding + evidence | Score + justification |
+| Dedup reasoning | Two entity profiles | Same/different + reasoning |
+
+**Constraints & mitigations:**
+
+| Constraint | Mitigation |
+|-----------|-----------|
+| 8K context window | Chunk large subgraphs into entity-focused windows; process sequentially |
+| `enable_thinking: false` required | Accept non-chain-of-thought output; compensate with more detailed prompts |
+| 4096 max output tokens | Request concise JSON; split large outputs across multiple calls |
+| Single GPU | Sequential processing only; no parallel MiroFish calls |
+| No tool use | All data must be pre-fetched and passed as prompt context |
+
+### 15.5 Data Pipeline Assessment
+
+#### Available Data Sources
+
+| Source | Access | In Graph? | ETL Exists? |
+|--------|--------|:---------:|:-----------:|
+| Neo4j investigation graph | localhost:7687 | Yes | N/A |
+| Neo4j platform entities | localhost:7687 | Yes | N/A |
+| RNS (Registro Nacional de Sociedades) | datos.jus.gob.ar | No | No |
+| BCRA Central de Deudores | bcra.gob.ar REST API | No | No |
+| IGJ | datos.jus.gob.ar | Partial | Yes |
+| CNV | cnv.gob.ar | No | Yes |
+| ICIJ Offshore Leaks | offshoreleaks.icij.org | Yes | Yes |
+| Compr.ar | datos.gob.ar | Yes | Yes |
+| Boletin Oficial | boletinoficial.gob.ar | Yes | Yes |
+| DDJJ | oa.gob.ar | Yes | Yes |
+| SSN | datos.gob.ar | No | No |
+| CNE (campaign finance) | cne.gob.ar | Yes | Yes |
+| Como Voto | comovoto.org.ar | Yes | Yes |
+| Judiciary | pjn.gov.ar | Yes | Yes |
+
+#### Data Source Priorities for Automation
+
+**Tier 1 — High value, low effort:**
+- BCRA Central de Deudores: free, unauthenticated REST API, per-CUIT
+- RNS bulk CSV: monthly download, 27 fields per company
+
+**Tier 2 — High value, medium effort:**
+- AFIP public CUIT lookup
+- SSN open data (insurance sector)
+- Provincial procurement (start with Buenos Aires Province)
+
+**Tier 3 — High value, high effort:**
+- UIF (Financial Intelligence Unit): restricted access, public sanctions lists available
+- Registro de la Propiedad: no public API
+- ANSES/PAMI contract data: FOIA requests needed
+
+#### Cross-Reference Engine Status
+
+```
+Current:
+  CUIT matching:  1,110 SAME_ENTITY relationships (confidence 1.0)
+  DNI matching:     715 SAME_ENTITY relationships (confidence 0.9-0.95)
+  Name matching:  SKIPPED (O(n*m) on 2.3M entities — needs fulltext index)
+
+Pending:
+  Offshore-Judge matching:     not attempted
+  Donor-Judge matching:        not attempted
+  Politician-Donor cross-ref:  1,467 donors unlinked
+  CompanyOfficer-OffshoreOfficer: not attempted
+```
+
+### 15.6 What's Missing for Automation
+
+#### API Wrappers Needed
+
+| API | Endpoint | Auth | Priority |
+|-----|----------|------|----------|
+| BCRA Central de Deudores | `api.bcra.gob.ar/centraldedeudores/v1.0/Deudas/{cuit}` | None | P1 |
+| RNS bulk download | `datos.jus.gob.ar/dataset/registro-nacional-de-sociedades` | None | P1 |
+| AFIP CUIT lookup | `soa.afip.gob.ar/sr-padron/v2/persona/{cuit}` | Token | P2 |
+| SSN producers | `datos.gob.ar/dataset/ssn-productores-seguros` | None | P2 |
+
+#### Scheduled ETL Pipeline
+
+```
+Proposed cron schedule:
+  Daily:    BCRA debtor checks for flagged entities
+  Weekly:   Boletin Oficial new appointments/awards
+  Monthly:  RNS bulk CSV download + diff
+  Monthly:  IGJ bulk CSV download + diff
+  On-demand: Compr.ar when new year data available
+```
+
+#### New MiroFish Prompt Templates Needed
+
+| Template | Purpose |
+|----------|---------|
+| `SEED_PARSER_PROMPT` | Extract entities and research plan from natural language |
+| `RESEARCH_QUESTIONS_PROMPT` | Generate targeted search queries |
+| `CLAIM_EXTRACTION_PROMPT` | Extract structured claims from web content |
+| `CROSS_CHECK_PROMPT` | Compare multiple sources for contradictions |
+| `CONFIDENCE_SCORING_PROMPT` | Score a finding's reliability |
+| `DEDUP_REASONING_PROMPT` | Decide if two entities are the same |
+
+#### Confidence Scoring Framework
+
+- **bronze** (auto-ingest, single source): web search result with one source, unverified claim
+- **silver** (verified): 2+ independent sources, found in official dataset, URL verified
+- **gold** (curated, human-reviewed): human approved, court documents or official gazette confirmation
+
+**Promotion rules:**
+- bronze → silver: automated if 2+ independent sources confirm AND URL verification passes
+- silver → gold: requires human review via review gateway
+- Any tier can be demoted if sources go dead or claims are contradicted
+
+#### Human Review Gateway
+
+```mermaid
+flowchart TD
+    A["Engine produces findings\n(tier: bronze)"] --> B["Auto-verification\n(URL check, cross-source)"]
+    B -->|Passes 2+ sources| C["Auto-promote to silver"]
+    B -->|Single source only| D["Stays bronze\n(flagged for research)"]
+    C --> E["Queue for human review"]
+    D --> E
+    E --> F{"Human reviews"}
+    F -->|Approve| G["Promote to gold\nPublish to frontend"]
+    F -->|Reject| H["Archive with reason"]
+    F -->|Needs work| I["Return to research phase"]
+```
+
+#### Other Missing Components
+
+- **Rate limiting:** WebSearch and API calls need backoff
+- **Error handling:** Circuit breaker for MiroFish
+- **Dedup at ingestion:** Check for existing entities BEFORE creating new nodes
+- **Audit trail:** Log every automated decision
+- **Rollback capability:** Revert by wave/batch
+
+### 15.7 Implementation Phases
+
+| Phase | Description | Effort | Dependencies |
+|-------|-------------|--------|-------------|
+| 1 | Seed Parser + Research Runner (CLI) | 1-2 days | MiroFish running |
+| 2 | BCRA API + RNS Bulk ETL Integration | 2-3 days | None |
+| 3 | MiroFish Analysis Pipeline (claim extraction, cross-check, confidence scoring) | 2-3 days | Phase 1 |
+| 4 | Auto-Bridge Engine | 1-2 days | Phase 3 |
+| 5 | Frontend Auto-Update (`investigation-data.ts` generation from Neo4j) | 2-3 days | Phase 4 |
+| 6 | Full Loop Automation with Human Review Gateway | 3-5 days | Phases 1-5 |
+
+Phases 1 and 2 can run in parallel. Total estimated effort: 11-18 days.
+
+```mermaid
+gantt
+    title Investigation Engine Implementation
+    dateFormat YYYY-MM-DD
+    section Phase 1
+    Seed Parser + Research Runner    :p1, 2026-03-22, 2d
+    section Phase 2
+    BCRA API + RNS ETL               :p2, 2026-03-22, 3d
+    section Phase 3
+    MiroFish Analysis Pipeline        :p3, after p1, 3d
+    section Phase 4
+    Auto-Bridge Engine                :p4, after p3, 2d
+    section Phase 5
+    Frontend Auto-Update              :p5, after p4, 3d
+    section Phase 6
+    Full Loop + Review Gateway        :p6, after p5, 5d
+```
+
+### 15.8 Session Statistics (2026-03-21)
+
+#### Investigation Graph Growth
+
+| Metric | Before | After | Delta |
+|--------|:-:|:-:|:-:|
+| Nodes | 157 | 227 | +70 |
+| Edges | ~300 | 341 | +41 |
+| Connected components | 24 | 1 | -23 |
+| Resumen chapters | 13 | 16 | +3 |
+| Factcheck items | ~40 | 70+ | +30 |
+| Actors | ~30 | 52 | +22 |
+| Timeline events | ~25 | 42 | +17 |
+| Money flows | ~10 | 19 | +9 |
+| Research dossiers | 0 | 13 | +13 |
+
+#### Quality Metrics
+
+| Metric | Value |
+|--------|-------|
+| URL verification rate | 97.4% |
+| Data quality score | 8/10 |
+| Source diversity | 9 datasets cross-referenced |
+| Bilingual coverage | 100% (ES primary, EN secondary) |
+
+#### Key Corrections Made
+
+- Caputo family tree corrected: Santiago is sobrino segundo (second nephew), not son of Toto
+- Fabricated URLs removed from Epstein investigation
+- Financial amounts verified against primary sources
+- Judicial wealth anomalies cross-checked against DDJJ data
+
+---
+
+## 16. Glossary
 
 | Term | Definition |
 |------|-----------|

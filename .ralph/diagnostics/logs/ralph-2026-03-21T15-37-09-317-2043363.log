@@ -1,0 +1,48 @@
+[2m2026-03-21T18:37:09.322033Z[0m [33m WARN[0m [2mralph::loop_runner[0m[2m:[0m Interactive mode requested but stdout is not a TTY, falling back to autonomous
+[2m2026-03-21T18:37:09.322486Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Memory injection check: enabled=true, inject=Auto, workspace_root="/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail"
+[2m2026-03-21T18:37:09.322495Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Looking for memories at: "/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail/.ralph/agent/memories.md" (exists: true)
+[2m2026-03-21T18:37:09.323156Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Successfully loaded 5 memories from store
+[2m2026-03-21T18:37:09.323167Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting 5 memories (1667 chars) into prompt
+[2m2026-03-21T18:38:13.512947Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Memory injection check: enabled=true, inject=Auto, workspace_root="/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail"
+[2m2026-03-21T18:38:13.512966Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Looking for memories at: "/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail/.ralph/agent/memories.md" (exists: true)
+[2m2026-03-21T18:38:13.513032Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Successfully loaded 5 memories from store
+[2m2026-03-21T18:38:13.513041Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting 5 memories (1667 chars) into prompt
+[2m2026-03-21T18:38:13.513061Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting scratchpad (971 chars) into prompt
+[2m2026-03-21T18:38:13.513169Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting ready tasks (1 ready, 2 open, 0 closed) into prompt
+[2m2026-03-21T18:39:32.498859Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Memory injection check: enabled=true, inject=Auto, workspace_root="/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail"
+[2m2026-03-21T18:39:32.498881Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Looking for memories at: "/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail/.ralph/agent/memories.md" (exists: true)
+[2m2026-03-21T18:39:32.498949Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Successfully loaded 5 memories from store
+[2m2026-03-21T18:39:32.498957Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting 5 memories (1667 chars) into prompt
+[2m2026-03-21T18:39:32.498984Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting scratchpad (1241 chars) into prompt
+[2m2026-03-21T18:39:32.499094Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting ready tasks (0 ready, 0 open, 2 closed) into prompt
+[2m2026-03-21T18:40:34.090282Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Memory injection check: enabled=true, inject=Auto, workspace_root="/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail"
+[2m2026-03-21T18:40:34.090309Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Looking for memories at: "/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail/.ralph/agent/memories.md" (exists: true)
+[2m2026-03-21T18:40:34.090378Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Successfully loaded 5 memories from store
+[2m2026-03-21T18:40:34.090387Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting 5 memories (1667 chars) into prompt
+[2m2026-03-21T18:40:34.090410Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting scratchpad (1735 chars) into prompt
+[2m2026-03-21T18:40:34.090534Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting ready tasks (0 ready, 0 open, 2 closed) into prompt
+[2m2026-03-21T18:41:06.137326Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Memory injection check: enabled=true, inject=Auto, workspace_root="/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail"
+[2m2026-03-21T18:41:06.137357Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Looking for memories at: "/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail/.ralph/agent/memories.md" (exists: true)
+[2m2026-03-21T18:41:06.137428Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Successfully loaded 5 memories from store
+[2m2026-03-21T18:41:06.137437Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting 5 memories (1667 chars) into prompt
+[2m2026-03-21T18:41:06.137457Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting scratchpad (2078 chars) into prompt
+[2m2026-03-21T18:41:06.137595Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting ready tasks (0 ready, 0 open, 2 closed) into prompt
+[2m2026-03-21T18:42:42.103862Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Memory injection check: enabled=true, inject=Auto, workspace_root="/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail"
+[2m2026-03-21T18:42:42.103884Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Looking for memories at: "/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail/.ralph/agent/memories.md" (exists: true)
+[2m2026-03-21T18:42:42.103953Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Successfully loaded 5 memories from store
+[2m2026-03-21T18:42:42.103963Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting 5 memories (1667 chars) into prompt
+[2m2026-03-21T18:42:42.103987Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting scratchpad (3274 chars) into prompt
+[2m2026-03-21T18:42:42.104106Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting ready tasks (1 ready, 6 open, 2 closed) into prompt
+[2m2026-03-21T18:43:41.455552Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Memory injection check: enabled=true, inject=Auto, workspace_root="/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail"
+[2m2026-03-21T18:43:41.455575Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Looking for memories at: "/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail/.ralph/agent/memories.md" (exists: true)
+[2m2026-03-21T18:43:41.455642Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Successfully loaded 5 memories from store
+[2m2026-03-21T18:43:41.455650Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting 5 memories (1667 chars) into prompt
+[2m2026-03-21T18:43:41.455688Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting scratchpad (3262 chars) into prompt
+[2m2026-03-21T18:43:41.455837Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting ready tasks (5 ready, 5 open, 3 closed) into prompt
+[2m2026-03-21T18:44:26.701530Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Memory injection check: enabled=true, inject=Auto, workspace_root="/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail"
+[2m2026-03-21T18:44:26.701570Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Looking for memories at: "/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail/.ralph/agent/memories.md" (exists: true)
+[2m2026-03-21T18:44:26.701650Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Successfully loaded 5 memories from store
+[2m2026-03-21T18:44:26.701659Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting 5 memories (1667 chars) into prompt
+[2m2026-03-21T18:44:26.701681Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting scratchpad (3656 chars) into prompt
+[2m2026-03-21T18:44:26.701805Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting ready tasks (5 ready, 5 open, 3 closed) into prompt
+[2m2026-03-21T18:44:44.039778Z[0m [33m WARN[0m [2mralph::rpc_stdin[0m[2m:[0m Failed to write to stdout, stopping emitter

@@ -106,12 +106,25 @@ export async function listByStage(
 // captureSnapshot
 // ---------------------------------------------------------------------------
 
+/**
+ * Capture a snapshot using caso_slug namespacing.
+ *
+ * Instead of serializing the graph to JSON (which hits Neo4j property size limits
+ * on large graphs), we copy all nodes in the investigation subgraph to a
+ * snapshot-specific namespace: "{caso_slug}:snapshot-{id}".
+ *
+ * This uses Neo4j's native storage. Queries against the snapshot target the
+ * snapshot namespace. Restore = copy snapshot namespace back to main namespace.
+ */
 export async function captureSnapshot(
   pipelineStateId: string,
   stageId: string | undefined,
   label: string,
   casoSlug: string,
 ): Promise<Snapshot> {
+  const snapshotId = crypto.randomUUID()
+  const snapshotSlug = `${casoSlug}:snapshot-${snapshotId}`
+
   // Count nodes for this caso
   const nodeCountResult = await readQuery<{ cnt: number }>(
     `MATCH (n) WHERE n.caso_slug = $casoSlug RETURN count(n) AS cnt`,
@@ -134,40 +147,40 @@ export async function captureSnapshot(
   )
   const relationshipCount = relCountResult.records[0]?.cnt ?? 0
 
-  // Export graph state as JSON snapshot
-  const nodesResult = await readQuery<{ labels: string[]; props: Record<string, unknown> }>(
-    `MATCH (n) WHERE n.caso_slug = $casoSlug RETURN labels(n) AS labels, properties(n) AS props`,
-    { casoSlug },
-    (r) => ({
-      labels: r.get('labels') as string[],
-      props: r.get('props') as Record<string, unknown>,
-    }),
+  // Copy nodes to snapshot namespace
+  // Each node gets its properties copied with the caso_slug changed to the snapshot slug
+  await executeWrite(
+    `MATCH (n) WHERE n.caso_slug = $casoSlug
+     WITH n, labels(n) AS lbls
+     CALL {
+       WITH n, lbls
+       CREATE (s)
+       SET s = properties(n), s.caso_slug = $snapshotSlug, s._snapshot_source_id = n.id
+     } IN TRANSACTIONS OF 500 ROWS`,
+    { casoSlug, snapshotSlug },
   )
 
-  const relsResult = await readQuery<{ type: string; fromId: string; toId: string; props: Record<string, unknown> }>(
-    `MATCH (a)-[r]->(b) WHERE a.caso_slug = $casoSlug
-     RETURN type(r) AS type, a.id AS fromId, b.id AS toId, properties(r) AS props`,
-    { casoSlug },
-    (r) => ({
-      type: r.get('type') as string,
-      fromId: r.get('fromId') as string,
-      toId: r.get('toId') as string,
-      props: r.get('props') as Record<string, unknown>,
-    }),
+  // Copy relationships between snapshot nodes
+  await executeWrite(
+    `MATCH (a)-[r]->(b) WHERE a.caso_slug = $casoSlug AND b.caso_slug = $casoSlug
+     WITH r, type(r) AS rType, a.id AS fromId, b.id AS toId, properties(r) AS rProps
+     MATCH (sa {caso_slug: $snapshotSlug, _snapshot_source_id: fromId})
+     MATCH (sb {caso_slug: $snapshotSlug, _snapshot_source_id: toId})
+     CALL {
+       WITH sa, sb, rType, rProps
+       CREATE (sa)-[sr:SNAPSHOT_REL {type: rType, props: toString(rProps)}]->(sb)
+     } IN TRANSACTIONS OF 500 ROWS`,
+    { snapshotSlug },
   )
 
-  const cypherExport = JSON.stringify({
-    nodes: nodesResult.records,
-    relationships: relsResult.records,
-  })
-
+  // Create snapshot metadata node
   return createSnapshot({
     pipeline_state_id: pipelineStateId,
     stage_id: stageId,
     label,
+    snapshot_slug: snapshotSlug,
     node_count: nodeCount,
     relationship_count: relationshipCount,
-    cypher_export: cypherExport,
   })
 }
 

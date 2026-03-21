@@ -1,11 +1,11 @@
 # Session Handoff
 
-_Generated: 2026-03-21 11:19:00 UTC_
+_Generated: 2026-03-21 18:13:23 UTC_
 
 ## Git Context
 
 - **Branch:** `worktree-crispy-cuddling-snail`
-- **HEAD:** 6aa56bf: chore: auto-commit before merge (loop primary)
+- **HEAD:** 6ebfb1c: chore: auto-commit before merge (loop primary)
 
 ## Tasks
 
@@ -104,6 +104,17 @@ _Generated: 2026-03-21 11:19:00 UTC_
 - [x] Implement stages/enrich.ts — LLM entity extraction from source URLs
 - [x] Implement stages/analyze.ts — LLM-driven gap detection and hypothesis generation
 - [x] Create src/lib/engine/logger.ts — structured engine logger with LogEntry, createEngineLogger factory, withTiming helper
+- [x] Fix TypeScript errors in EvidenceExplorer.tsx — date → datePublished prop
+- [x] Update caso-libra queries.ts to generic labels + caso_slug filter
+- [x] Create caso-finanzas-politicas backend module (types, queries, transform)
+- [x] Replace remaining caso-libra API routes with 301 redirects
+- [x] Update graph constants — add missing label colors
+- [x] Add shared EventType, EVENT_TYPE_COLORS, EVENT_TYPE_LABELS to investigations/types.ts
+- [x] Update EventCard.tsx + Timeline.tsx imports from caso-libra/types → investigations/types
+- [x] Fix [slug]/page.tsx — pass slug to getStats, getActors, getDocuments (3 TS errors)
+- [x] Fix cronologia page — pass slug to getTimeline
+- [x] Fix evidencia/page.tsx — pass slug to getDocuments
+- [x] Fix og/actor route.tsx L22 — pass slug to getPersonBySlug
 
 ### Remaining
 
@@ -113,16 +124,16 @@ _Generated: 2026-03-21 11:19:00 UTC_
 
 Recently modified:
 
-- `.claude/commands/investigate-loop.md`
-- `.claude/skills/investigate-loop.md`
-- `.gitignore`
 - `.ralph/agent/handoff.md`
 - `.ralph/agent/scratchpad.md`
 - `.ralph/agent/summary.md`
 - `.ralph/agent/tasks.jsonl`
 - `.ralph/current-events`
 - `.ralph/current-loop-id`
-- `.ralph/diagnostics/logs/ralph-2026-03-21T02-23-28-935-482963.log`
+- `.ralph/diagnostics/logs/ralph-2026-03-21T07-02-17-555-1345357.log`
+- `.ralph/diagnostics/logs/ralph-2026-03-21T07-16-06-135-1389963.log`
+- `.ralph/diagnostics/logs/ralph-2026-03-21T07-16-07-498-1390451.log`
+- `.ralph/diagnostics/logs/ralph-2026-03-21T14-10-56-874-1828131.log`
 
 ## Next Session
 

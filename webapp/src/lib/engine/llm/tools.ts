@@ -159,6 +159,7 @@ const stageToolMap: Record<StageKind, ToolDefinition[]> = {
   verify: [readGraph, fetchUrl, proposeNode, proposeEdge],
   enrich: [readGraph, proposeNode, proposeEdge, fetchUrl, extractEntities],
   analyze: [readGraph, runAlgorithm, proposeHypothesis, compareTimelines, proposeNode, proposeEdge],
+  iterate: [readGraph, runAlgorithm, proposeHypothesis, compareTimelines, fetchUrl, extractEntities, proposeNode, proposeEdge],
   report: [readGraph, draftSection, compareTimelines],
 }
 

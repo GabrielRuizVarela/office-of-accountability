@@ -16,7 +16,7 @@ import { z } from 'zod/v4'
 export const connectorKinds = ['rest_api', 'file_upload', 'custom_script'] as const
 export type ConnectorKind = (typeof connectorKinds)[number]
 
-export const stageKinds = ['ingest', 'verify', 'enrich', 'analyze', 'report'] as const
+export const stageKinds = ['ingest', 'verify', 'enrich', 'analyze', 'iterate', 'report'] as const
 export type StageKind = (typeof stageKinds)[number]
 
 export const gateActions = ['approve', 'reject', 'request_changes'] as const
@@ -177,9 +177,10 @@ export const snapshotSchema = z.object({
   pipeline_state_id: z.string().min(1),
   stage_id: z.string().min(1).optional(),
   label: z.string(),
+  /** Namespace key for the copied subgraph: "{caso_slug}:snapshot-{id}" */
+  snapshot_slug: z.string().min(1),
   node_count: z.number().int().min(0),
   relationship_count: z.number().int().min(0),
-  cypher_export: z.string(),
   created_at: z.string(),
 })
 
@@ -195,6 +196,9 @@ export const modelConfigSchema = z.object({
   provider: z.string().min(1),
   model: z.string().min(1),
   endpoint: z.string().url().optional(),
+  /** Name of the environment variable holding the API key (e.g., "OPENAI_API_KEY").
+   *  Read via process.env[api_key_env] at runtime. Never store the key itself. */
+  api_key_env: z.string().optional(),
   temperature: z.number().min(0).max(2).optional(),
   max_tokens: z.number().int().min(1).optional(),
   system_prompt: z.string().optional(),
