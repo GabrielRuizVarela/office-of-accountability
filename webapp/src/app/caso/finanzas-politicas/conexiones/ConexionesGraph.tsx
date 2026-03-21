@@ -394,10 +394,13 @@ export function ConexionesGraph() {
       const isSelected = selectedNode?.id === gNode.id
       const isSearchMatch = searchMatchIds ? searchMatchIds.has(gNode.id) : false
       const isSearchActive = searchMatchIds !== null
-      const isKeyNode = gNode.type === 'OffshoreEntity' || (gNode.datasets ?? 0) >= 4
-      const baseRadius = isKeyNode
-        ? Math.max(5, Math.min(gNode.val * 1.5, 12))
-        : Math.max(2.5, Math.min(gNode.val * 1, 8))
+      const isOrgNode = gNode.type === 'Organization' || gNode.type === 'Company'
+      const isKeyNode = gNode.type === 'OffshoreEntity' || isOrgNode || (gNode.datasets ?? 0) >= 4
+      const baseRadius = isOrgNode
+        ? Math.max(4, Math.min(gNode.val * 1.2, 10))
+        : isKeyNode
+          ? Math.max(5, Math.min(gNode.val * 1.5, 12))
+          : Math.max(2.5, Math.min(gNode.val * 1, 8))
       const radius = isSelected ? baseRadius + 2 : baseRadius
 
       // Dim non-matching nodes when search is active
@@ -438,16 +441,20 @@ export function ConexionesGraph() {
       }
 
       const isHovered = hoveredNode === gNode.id
-      // Labels: always show for key nodes but small; grow on zoom
-      const showLabel = isSelected || isSearchMatch || isHovered || isKeyNode ||
-        (gNode.type === 'Politician' && globalScale > 0.8) ||
-        (gNode.type === 'Person' && globalScale > 0.8) ||
-        ((gNode.type === 'Organization' || gNode.type === 'Company') && globalScale > 1.2) ||
+      // Labels: progressive visibility by type and zoom
+      const showLabel = isSelected || isSearchMatch || isHovered ||
+        (gNode.type === 'Politician' && globalScale > 0.6) ||
+        (gNode.type === 'Person' && globalScale > 0.6) ||
+        (isOrgNode && globalScale > 0.8) ||
+        (gNode.type === 'OffshoreEntity' && globalScale > 0.5) ||
         (gNode.type === 'Event' && globalScale > 1.5) ||
         globalScale > 2
       if (showLabel && !dimmed) {
-        // Small labels at default zoom, readable when zoomed
-        const baseFontSize = (isSelected || isHovered) ? 12 : isKeyNode ? 9 : 7
+        // Org labels slightly smaller than person labels to reduce clutter
+        const baseFontSize = (isSelected || isHovered) ? 12
+          : isOrgNode ? 7
+          : (gNode.type === 'Person' || gNode.type === 'Politician') ? 9
+          : 7
         const fontSize = Math.max(baseFontSize / globalScale, 1.5)
         ctx.font = `${isSelected || isSearchMatch || isHovered ? 'bold ' : ''}${fontSize}px sans-serif`
         ctx.textAlign = 'center'
