@@ -316,9 +316,9 @@ const chapters: readonly Chapter[] = [
     },
     citations: [
       { id: 18, text: 'Decreto 823/2021 — Boletin Oficial', url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/253783/20211201' },
-      { id: 19, text: 'Causa seguros — allanamientos Ercolini, Infobae', url: 'https://www.infobae.com/politica/2024/04/' },
+      { id: 19, text: 'Causa seguros — allanamientos Ercolini, Infobae', url: 'https://www.infobae.com/judiciales/2024/04/05/el-juez-julian-ercolini-ordeno-24-allanamientos-por-el-escandalo-de-los-seguros/' },
       { id: 20, text: 'Martinez Sosa procesamiento — Fiscalia Federal, feb 2026' },
-      { id: 21, text: 'Bachellier embargo $9.669M — Ambito Financiero', url: 'https://www.ambito.com/politica/seguros-gate/' },
+      { id: 21, text: 'Bachellier embargo $9.669M — Ambito Financiero', url: 'https://www.infobae.com/politica/2024/03/18/escandalo-de-los-seguros-las-empresas-del-broker-amigo-de-alberto-fernandez-y-sus-satelites-cobraron-mas-de-2000-millones-por-comisiones/' },
     ],
   },
   {
@@ -349,7 +349,7 @@ const chapters: readonly Chapter[] = [
     },
     citations: [
       { id: 22, text: 'Plate designacion SSN — Boletin Oficial', url: 'https://www.boletinoficial.gob.ar' },
-      { id: 23, text: 'Catalan designacion YPF — Infobae', url: 'https://www.infobae.com/economia/2024/' },
+      { id: 23, text: 'Catalan designacion YPF — Infobae', url: 'https://www.iprofesional.com/negocios/442238-de-ministro-interior-a-petrolero-lisandro-catalan-se-suma-directorio-ypf' },
       { id: 24, text: 'Cuneo Libarona conflicto de intereses — Pagina/12', url: 'https://www.pagina12.com.ar/' },
       { id: 25, text: 'Frigerio padre en YPF — registro CNV' },
     ],
@@ -417,7 +417,7 @@ const chapters: readonly Chapter[] = [
     citations: [
       { id: 31, text: 'Seijas patrimonio — declaracion jurada publica, Oficina Anticorrupcion' },
       { id: 32, text: 'Pistone crecimiento patrimonial 457.000% — DDJJ comparativas 2012-2024' },
-      { id: 33, text: 'Lijo departamento no declarado — Infobae', url: 'https://www.infobae.com/politica/2024/07/' },
+      { id: 33, text: 'Lijo departamento no declarado — Infobae', url: 'https://www.infobae.com/politica/2025/02/25/javier-milei-designo-por-decreto-en-la-corte-suprema-a-ariel-lijo-y-manuel-garcia-mansilla/' },
     ],
   },
   {
@@ -533,7 +533,7 @@ const chapters: readonly Chapter[] = [
     citations: [
       { id: 43, text: 'Caputo recompra bonos via JP Morgan — La Letra P', url: 'https://www.letrap.com.ar/economia/deuda-educacion-toto-caputo-recomprara-bonos-plata-del-banco-mundial-y-el-jp-morgan-como-agente-n5419611' },
       { id: 44, text: 'JP Morgan in Power — Buenos Aires Times', url: 'https://batimes.com.ar/news/argentina/jp-morgan-in-power-mileis-six-officials-with-a-past-there.phtml' },
-      { id: 45, text: 'BCRA letra intransferible — Infobae', url: 'https://www.infobae.com/economia/2024/01/05/el-gobierno-tomara-usd-3200-de-las-reservas-del-bcra-para-pagar-vencimientos-de-deuda/' },
+      { id: 45, text: 'BCRA letra intransferible — Infobae', url: 'https://www.iprofesional.com/negocios/442238-de-ministro-interior-a-petrolero-lisandro-catalan-se-suma-directorio-ypf01/05/el-gobierno-tomara-usd-3200-de-las-reservas-del-bcra-para-pagar-vencimientos-de-deuda/' },
       { id: 46, text: 'Sturzenegger 99% exterior — Perfil', url: 'https://www.perfil.com/noticias/politica/declaracion-jurada-federico-sturzenegger.phtml' },
     ],
   },
@@ -603,17 +603,17 @@ const sources: readonly Source[] = [
   { name: 'Fundacion Faro dark money — Chequeado', url: 'https://chequeado.com/investigaciones/fundacion-faro-el-think-tank-libertario-que-mas-pauta-electoral-puso-en-2025-y-que-no-declara-el-origen-de-sus-fondos/' },
   { name: 'AFAGate sociedades fantasma — La Nacion', url: 'https://www.lanacion.com.ar/politica/investigacion-exclusiva-desde-la-cuenta-que-administra-los-fondos-de-la-afa-en-eeuu-se-desviaron-al-nid28122025/' },
   { name: 'Decreto 823/2021 — Boletin Oficial', url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/253783/20211201' },
-  { name: 'Causa seguros — allanamientos Ercolini', url: 'https://www.infobae.com/politica/2024/04/' },
-  { name: 'Bachellier embargo — Ambito Financiero', url: 'https://www.ambito.com/politica/seguros-gate/' },
+  { name: 'Causa seguros — allanamientos Ercolini', url: 'https://www.infobae.com/judiciales/2024/04/05/el-juez-julian-ercolini-ordeno-24-allanamientos-por-el-escandalo-de-los-seguros/' },
+  { name: 'Bachellier embargo — Ambito Financiero', url: 'https://www.infobae.com/politica/2024/03/18/escandalo-de-los-seguros-las-empresas-del-broker-amigo-de-alberto-fernandez-y-sus-satelites-cobraron-mas-de-2000-millones-por-comisiones/' },
   { name: 'Plate designacion SSN — Boletin Oficial', url: 'https://www.boletinoficial.gob.ar' },
-  { name: 'Catalan designacion YPF — Infobae', url: 'https://www.infobae.com/economia/2024/' },
+  { name: 'Catalan designacion YPF — Infobae', url: 'https://www.iprofesional.com/negocios/442238-de-ministro-interior-a-petrolero-lisandro-catalan-se-suma-directorio-ypf' },
   { name: 'Cuneo Libarona conflicto de intereses — Pagina/12', url: 'https://www.pagina12.com.ar/' },
   { name: 'CEADS — Consejo Empresario', url: 'https://ceads.org.ar' },
   { name: 'Ercolini vuelo Lago Escondido — Pagina/12', url: 'https://www.pagina12.com.ar/495000-lago-escondido-un-viaje-que-compromete-al-juez-ercolini' },
   { name: 'Hornos y Borinsky visitas a Olivos — CELS', url: 'https://www.cels.org.ar/web/2021/01/las-visitas-de-los-jueces-hornos-y-borinsky-a-olivos/' },
   { name: 'Rosenkrantz ex-abogado Clarin — Ambito', url: 'https://www.ambito.com/politica/rosenkrantz-y-su-pasado-como-abogado-del-grupo-clarin-n5044573' },
   { name: 'Tasa condena corrupcion 2% — ACIJ', url: 'https://acij.org.ar/monitoreo-de-causas-de-corrupcion/' },
-  { name: 'Lijo departamento no declarado — Infobae', url: 'https://www.infobae.com/politica/2024/07/' },
+  { name: 'Lijo departamento no declarado — Infobae', url: 'https://www.infobae.com/politica/2025/02/25/javier-milei-designo-por-decreto-en-la-corte-suprema-a-ariel-lijo-y-manuel-garcia-mansilla/' },
 ]
 
 // ---------------------------------------------------------------------------
