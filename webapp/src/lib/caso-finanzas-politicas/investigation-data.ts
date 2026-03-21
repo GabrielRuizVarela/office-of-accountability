@@ -3422,4 +3422,97 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
     source: 'El Observador',
     source_url: 'https://www.elobservador.com.uy/futbol-internacional/las-bombas-que-tiro-marcelo-tinelli-su-gestion-como-presidente-san-lorenzo-puse-us-25-millones-yo-no-robe-ni-tocaria-un-peso-del-club-n6014438',
   },
+
+  // ── Wave 5: Frente de Todos / Kirchnerismo Money Flows ───────────────────
+  {
+    id: 'baez-vialidad-sobreprecios',
+    from_label: 'Estado (Vialidad Nacional)',
+    to_label: 'Austral Construcciones (Báez)',
+    amount_ars: 46000000000,
+    description_es:
+      '$46.000M (actualizado a 2016) en 51 obras viales en Santa Cruz adjudicadas a Báez. Solo 26 completadas, sobreprecios hasta 387%. 80% de obra provincial monopolizada.',
+    description_en:
+      '$46B (updated to 2016) in 51 road works in Santa Cruz awarded to Báez. Only 26 completed, overpricing up to 387%. 80% of provincial works monopolized.',
+    date: '2003-2015',
+    source: 'LA NACION / Infobae',
+    source_url: 'https://www.lanacion.com.ar/politica/la-condena-a-cristina-kirchner-como-estan-hoy-las-rutas-de-lazaro-baez-en-santa-cruz-nid10062025/',
+  },
+  {
+    id: 'baez-lavado-ruta-dinero',
+    from_label: 'Austral Construcciones (Báez)',
+    to_label: 'Circuito lavado (Ruta del Dinero K)',
+    amount_ars: 0,
+    description_es:
+      'USD 54,87M lavados a través de circuito de sociedades offshore y operaciones inmobiliarias. Multa de USD 329M. Decomiso de activos por USD 65M.',
+    description_en:
+      'USD 54.87M laundered through offshore company circuit and real estate operations. Fine of USD 329M. Asset forfeiture of USD 65M.',
+    date: '2003-2015',
+    source: 'LA NACION',
+    source_url: 'https://www.lanacion.com.ar/politica/la-corte-confirmo-la-condena-a-diez-anos-de-prision-contra-lazaro-baez-por-lavado-de-dinero-nid29052025/',
+  },
+  {
+    id: 'lopez-bolsos-convento',
+    from_label: 'José López (Sec. Obras Públicas)',
+    to_label: 'Convento Gral. Rodríguez (ocultamiento)',
+    amount_ars: 0,
+    description_es:
+      'USD 9M + EUR 153.610 + joyas encontrados en bolsos. Dinero decomisado donado a hospitales Garrahan y Gutiérrez.',
+    description_en:
+      'USD 9M + EUR 153,610 + jewels found in bags. Seized money donated to Garrahan and Gutiérrez hospitals.',
+    date: '2016-06',
+    source: 'Infobae',
+    source_url: 'https://www.infobae.com/judiciales/2025/12/11/casacion-dejo-firme-la-pena-de-13-anos-de-carcel-contra-jose-lopez-por-corrupcion-y-el-caso-de-los-bolsos-del-convento/',
+  },
+  {
+    id: 'devido-gnl-sobreprecios',
+    from_label: 'Estado (compra GNL)',
+    to_label: 'Intermediarios/Familia Dromi',
+    amount_ars: 0,
+    description_es:
+      'USD 5,5M pagados innecesariamente a intermediarios en compra de Gas Natural Licuado (2008-2015). Sobreprecios coordinados por De Vido y Baratta.',
+    description_en:
+      'USD 5.5M unnecessarily paid to intermediaries in LNG purchases (2008-2015). Overpricing coordinated by De Vido and Baratta.',
+    date: '2008-2015',
+    source: 'LA NACION',
+    source_url: 'https://www.lanacion.com.ar/politica/fraude-millonario-condenaron-a-julio-de-vido-baratta-y-nicolas-dromi-por-la-compra-de-gas-licuado-nid30092025/',
+  },
+  {
+    id: 'seguros-martinez-sosa',
+    from_label: 'Nación Seguros (comisiones)',
+    to_label: 'Héctor Martínez Sosa (broker)',
+    amount_ars: 366000000,
+    description_es:
+      '$366M en comisiones — Martínez Sosa recibió 59,6% de todas las comisiones pagadas por Nación Seguros a intermediarios. Es esposo de la secretaria de Alberto Fernández.',
+    description_en:
+      '$366M in commissions — Martínez Sosa received 59.6% of all commissions paid by Nación Seguros to intermediaries. He is the husband of Alberto Fernández\'s secretary.',
+    date: '2020-2023',
+    source: 'Infobae',
+    source_url: 'https://www.infobae.com/politica/2025/07/10/procesaron-al-ex-presidente-alberto-fernandez-en-la-causa-seguros/',
+  },
+  {
+    id: 'suenos-compartidos-desvio',
+    from_label: 'Estado (Sueños Compartidos)',
+    to_label: 'Red Schoklender (desvío)',
+    amount_ars: 206000000,
+    description_es:
+      '$206M desviados de programa de viviendas sociales Madres de Plaza de Mayo. Schoklender usó red de empresas para comprar inmuebles, autos, motos y yates.',
+    description_en:
+      '$206M diverted from Madres de Plaza de Mayo social housing program. Schoklender used company network to buy properties, cars, motorcycles and yachts.',
+    date: '2007-2011',
+    source: 'LA NACION',
+    source_url: 'https://www.lanacion.com.ar/politica/bonafini-y-los-schoklender-fueron-procesados-por-el-caso-suenos-compartidos-nid2024192/',
+  },
+  {
+    id: 'aysa-filiberti-cloro',
+    from_label: 'AySA (Galmarini)',
+    to_label: 'Transclor (Filiberti)',
+    amount_ars: 0,
+    description_es:
+      'USD 127M en contrato de provisión de cloro hasta 2028. Precio de $504/ton vs $390-430/ton posible con extensión de contrato anterior. Denuncia desestimada judicialmente.',
+    description_en:
+      'USD 127M chlorine supply contract through 2028. Price $504/ton vs $390-430/ton possible with prior contract extension. Complaint judicially dismissed.',
+    date: '2023',
+    source: 'Perfil / LA NACION',
+    source_url: 'https://www.perfil.com/noticias/politica/denunciaron-malena-galmarini-supuestas-irregularidades-contrato-millonario-aysa-rey-cloro.phtml',
+  },
 ] as const
