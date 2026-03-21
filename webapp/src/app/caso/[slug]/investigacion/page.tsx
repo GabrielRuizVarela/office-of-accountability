@@ -13,6 +13,7 @@ import { useParams } from 'next/navigation'
 
 import { useLanguage, type Lang } from '@/lib/language-context'
 import { EpsteinInvestigacionContent } from './EpsteinInvestigacionContent'
+import { FinPolInvestigacionContent } from './FinPolInvestigacionContent'
 import {
   FACTCHECK_ITEMS,
   TIMELINE_EVENTS,
@@ -126,6 +127,10 @@ export default function InvestigacionPage() {
 
   if (pageSlug === 'caso-epstein') {
     return <EpsteinInvestigacionContent slug={pageSlug} />
+  }
+
+  if (pageSlug === 'finanzas-politicas') {
+    return <FinPolInvestigacionContent />
   }
 
   return <LibraInvestigacionContent />

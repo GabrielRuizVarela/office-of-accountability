@@ -5,6 +5,7 @@
 import { getStats, getActors, getDocuments } from '@/lib/caso-libra'
 
 import { CasoLandingContent } from './CasoLandingContent'
+import { FinPolLandingContent } from './FinPolLandingContent'
 import { OverviewContent } from './OverviewContent'
 
 const EPSTEIN_STATS = [
@@ -23,6 +24,10 @@ export default async function CasoLandingPage({
 
   if (slug === 'caso-epstein') {
     return <OverviewContent slug={slug} stats={EPSTEIN_STATS} />
+  }
+
+  if (slug === 'finanzas-politicas') {
+    return <FinPolLandingContent slug={slug} />
   }
 
   const [_stats, actors, documents] = await Promise.all([getStats(), getActors(), getDocuments()])

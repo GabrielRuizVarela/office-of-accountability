@@ -1,5 +1,7 @@
 'use client'
 
+import { useParams } from 'next/navigation'
+
 import { useLanguage } from '@/lib/language-context'
 import { ConexionesGraph } from './ConexionesGraph'
 
@@ -13,6 +15,8 @@ const t = {
 
 export default function ConexionesPage() {
   const { lang } = useLanguage()
+  const params = useParams()
+  const slug = params.slug as string
 
   return (
     <div className="flex h-[calc(100vh-8rem)] flex-col">
@@ -23,7 +27,7 @@ export default function ConexionesPage() {
         </p>
       </div>
       <div className="min-h-0 flex-1">
-        <ConexionesGraph />
+        <ConexionesGraph slug={slug} />
       </div>
     </div>
   )

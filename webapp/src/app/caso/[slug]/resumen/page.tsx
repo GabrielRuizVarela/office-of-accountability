@@ -8,6 +8,7 @@ import { useParams } from 'next/navigation'
 
 import { useLanguage, type Lang } from '@/lib/language-context'
 import { EpsteinResumenContent } from './EpsteinResumenContent'
+import { FinPolResumenContent } from './FinPolResumenContent'
 
 interface StatCard {
   readonly value: string
@@ -331,6 +332,10 @@ export default function ResumenPage() {
 
   if (pageSlug === 'caso-epstein') {
     return <EpsteinResumenContent slug={pageSlug} />
+  }
+
+  if (pageSlug === 'finanzas-politicas') {
+    return <FinPolResumenContent />
   }
 
   return <LibraResumenContent />

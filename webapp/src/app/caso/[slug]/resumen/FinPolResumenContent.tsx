@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * Finanzas Politicas — Narrative summary page.
+ * Finanzas Politicas — Narrative summary content component.
  *
  * An 8-chapter bilingual investigative journalism piece that walks readers
  * through the systemic connections between political power and money in
@@ -395,7 +395,7 @@ function renderWithCitations(text: string, citations?: readonly Citation[]) {
 // Component
 // ---------------------------------------------------------------------------
 
-export default function ResumenPage() {
+export function FinPolResumenContent() {
   const { lang } = useLanguage()
 
   return (

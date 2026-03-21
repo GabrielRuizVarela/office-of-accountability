@@ -98,10 +98,10 @@ function formatDate(dateStr: string, lang: Lang): string {
 }
 
 // ---------------------------------------------------------------------------
-// Page component
+// Component
 // ---------------------------------------------------------------------------
 
-export default function InvestigacionPage() {
+export function FinPolInvestigacionContent() {
   const { lang } = useLanguage()
   const [activeSection, setActiveSection] = useState('hero')
   const [factcheckFilter, setFactcheckFilter] =

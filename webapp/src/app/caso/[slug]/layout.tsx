@@ -17,6 +17,12 @@ const CASE_META: Readonly<Record<string, { title: string; description: string; d
       'Trafficking and power network. 7,287 entities, court documents, flight records, and factchecking.',
     defaultLang: 'en',
   },
+  'finanzas-politicas': {
+    title: 'Finanzas Politicas Argentinas',
+    description:
+      'Investigacion sobre conexiones entre poder politico y dinero en Argentina. 617 politicos en 2+ datasets, 8 fuentes cruzadas.',
+    defaultLang: 'es',
+  },
 }
 
 export async function generateMetadata({

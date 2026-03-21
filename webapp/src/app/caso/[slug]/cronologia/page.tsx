@@ -6,6 +6,7 @@ import { getTimeline } from '@/lib/caso-libra'
 
 import { CronologiaContent } from './CronologiaContent'
 import { EpsteinCronologiaContent } from './EpsteinCronologiaContent'
+import { FinPolCronologiaContent } from './FinPolCronologiaContent'
 
 export default async function CronologiaPage({
   params,
@@ -16,6 +17,10 @@ export default async function CronologiaPage({
 
   if (slug === 'caso-epstein') {
     return <EpsteinCronologiaContent slug={slug} />
+  }
+
+  if (slug === 'finanzas-politicas') {
+    return <FinPolCronologiaContent />
   }
 
   const events = await getTimeline()

@@ -11,6 +11,7 @@ import { useParams } from 'next/navigation'
 import { useLanguage, type Lang } from '@/lib/language-context'
 import type { GraphData } from '@/lib/neo4j/types'
 import { ForceGraph } from '@/components/graph/ForceGraph'
+import { FinPolDineroContent } from './FinPolDineroContent'
 
 const t = {
   loading: { es: 'Cargando flujo de dinero...', en: 'Loading money flow...' },
@@ -31,9 +32,18 @@ const t = {
 } satisfies Record<string, Record<Lang, string>>
 
 export default function DineroPage() {
-  const { lang } = useLanguage()
   const params = useParams()
   const slug = params.slug as string
+
+  if (slug === 'finanzas-politicas') {
+    return <FinPolDineroContent />
+  }
+
+  return <LibraDineroContent slug={slug} />
+}
+
+function LibraDineroContent({ slug }: { readonly slug: string }) {
+  const { lang } = useLanguage()
   const [data, setData] = useState<GraphData>({ nodes: [], links: [] })
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)

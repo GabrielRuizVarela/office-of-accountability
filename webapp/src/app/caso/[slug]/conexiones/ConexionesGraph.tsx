@@ -109,7 +109,7 @@ function getForceGraph2D(): Promise<ForceGraph2DComponent> {
 // Component
 // ---------------------------------------------------------------------------
 
-export function ConexionesGraph() {
+export function ConexionesGraph({ slug }: { readonly slug: string }) {
   const { lang } = useLanguage()
   const graphRef = useRef<ForceGraphMethods | undefined>(undefined)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -155,7 +155,7 @@ export function ConexionesGraph() {
 
     async function fetchGraph() {
       try {
-        const res = await fetch('/api/caso/finanzas-politicas/graph')
+        const res = await fetch(`/api/caso/${slug}/graph`)
         const json: GraphApiResponse = await res.json()
 
         if (cancelled) return
@@ -177,7 +177,7 @@ export function ConexionesGraph() {
 
     fetchGraph()
     return () => { cancelled = true }
-  }, [])
+  }, [slug])
 
   // Responsive sizing
   useEffect(() => {

@@ -14,7 +14,6 @@ const t = {
     en: 'Includes debt, amnesty, assets and documented donations',
     es: 'Incluye deuda, blanqueo, patrimonio y donaciones documentadas',
   },
-  unknownAmount: { en: 'Unknown amount', es: 'Monto desconocido' },
 } as const
 
 function formatArs(amount: number, lang: 'en' | 'es'): string {
@@ -47,7 +46,7 @@ function formatDate(dateStr: string, lang: 'en' | 'es'): string {
   })
 }
 
-export default function DineroPage() {
+export function FinPolDineroContent() {
   const { lang } = useLanguage()
   const totalTracked = MONEY_FLOWS.reduce((sum, f) => sum + f.amount_ars, 0)
 

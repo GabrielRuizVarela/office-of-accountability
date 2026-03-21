@@ -72,10 +72,9 @@ const t = {
   },
 } as const
 
-const BASE_PATH = '/caso/finanzas-politicas'
-
-export default function FinanzasPoliticasPage() {
+export function FinPolLandingContent({ slug }: { readonly slug: string }) {
   const { lang } = useLanguage()
+  const basePath = `/caso/${slug}`
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
@@ -134,7 +133,7 @@ export default function FinanzasPoliticasPage() {
       {/* CTAs */}
       <section className="mb-6">
         <Link
-          href={`${BASE_PATH}/investigacion`}
+          href={`${basePath}/investigacion`}
           className="block rounded-xl border border-blue-500/20 bg-blue-500/5 p-6 text-center transition-colors hover:border-blue-500/40 hover:bg-blue-500/10"
         >
           <h3 className="text-lg font-bold text-blue-200">
@@ -148,25 +147,25 @@ export default function FinanzasPoliticasPage() {
 
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <EntryPoint
-          href={`${BASE_PATH}/cronologia`}
+          href={`${basePath}/cronologia`}
           title={t.chronologyTitle[lang]}
           description={t.chronologyDesc[lang]}
           color="#f59e0b"
         />
         <EntryPoint
-          href={`${BASE_PATH}/dinero`}
+          href={`${basePath}/dinero`}
           title={t.moneyTitle[lang]}
           description={t.moneyDesc[lang]}
           color="#10b981"
         />
         <EntryPoint
-          href={`${BASE_PATH}/conexiones`}
+          href={`${basePath}/conexiones`}
           title={t.connectionsTitle[lang]}
           description={t.connectionsDesc[lang]}
           color="#8b5cf6"
         />
         <EntryPoint
-          href={`${BASE_PATH}/investigacion`}
+          href={`${basePath}/investigacion`}
           title={t.keyActorsTitle[lang]}
           description={`${ACTORS.length}${t.keyActorsDesc[lang]}`}
           color="#ef4444"

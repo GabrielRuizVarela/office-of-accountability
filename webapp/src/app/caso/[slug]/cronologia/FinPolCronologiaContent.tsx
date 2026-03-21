@@ -43,7 +43,7 @@ function formatDate(dateStr: string, lang: 'en' | 'es'): string {
   })
 }
 
-export default function CronologiaPage() {
+export function FinPolCronologiaContent() {
   const { lang } = useLanguage()
 
   return (
