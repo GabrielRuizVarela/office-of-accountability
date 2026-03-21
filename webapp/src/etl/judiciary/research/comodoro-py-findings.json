@@ -1,374 +1,511 @@
 {
   "meta": {
-    "title": "Comodoro Py Federal Court Complex - Judicial Accountability Research",
-    "description": "Deep research into Argentina's federal court nerve center at Comodoro Py (Tribunales Federales de Retiro), its judges, conflicts of interest, and systemic corruption patterns.",
-    "researched_date": "2026-03-21",
-    "total_findings": 28
-  },
-  "court_structure": {
-    "name": "Tribunales Federales de Retiro (Comodoro Py)",
-    "address": "Comodoro Py 2002, Buenos Aires",
-    "description_es": "Sede de los 12 Juzgados Federales de 1era instancia, la Camara Federal de Apelaciones, los Tribunales Orales Federales, Tribunales Orales en lo Penal Economico, defenso-rias publicas, fiscalias y la Camara Federal de Casacion Penal.",
-    "description_en": "Houses 12 federal courts of first instance, the Federal Court of Appeals, Federal Oral Courts, Economic Criminal Oral Courts, public defenders' offices, prosecutors' offices, and the Federal Court of Criminal Cassation.",
-    "key_courts_2025": {
-      "juzgado_3": { "judge": "Daniel Rafecas", "status": "titular" },
-      "juzgado_6": { "judge": "Daniel Rafecas (subrogante)", "status": "vacant, subrogated" },
-      "juzgado_9": { "judge": "Maria Eugenia Capuchetti (subrogante)", "status": "vacant, subrogated" },
-      "juzgado_11": { "judge": "Julian Ercolini (subrogante)", "status": "vacant, subrogated" },
-      "juzgado_12": { "judge": "Ariel Lijo (subrogante)", "status": "vacant, subrogated" }
-    },
-    "note": "As of 2026, over 300 judicial vacancies exist nationally. The government prioritizes filling Juzgados 6, 9, 11, and 12 at Comodoro Py."
+    "title": "Comodoro Py Deep Research — Judicial Power Concentration in Argentina",
+    "research_date": "2026-03-21",
+    "methodology": "WebSearch across Argentine and international media (LA NACION, Infobae, Chequeado, Pagina12, Perfil, Ambito, Buenos Aires Herald, Buenos Aires Times, NBC News, Human Rights Watch, CELS, ACIJ, Revista Anfibia), government sources (argentina.gob.ar, boletinoficial.gob.ar, pjn.gov.ar), and academic/legal sources (UTDT, INECIP)",
+    "scope": "Deep dive into Comodoro Py structural power, Lijo corruption case details, Rafecas and AMIA/Nisman, Consejo de la Magistratura appointment mechanics, judicial-corporate revolving door, Menem-era court design",
+    "complements": "judicial-power-findings.json (same directory)"
   },
   "findings": [
     {
-      "id": "LIJO-001",
-      "person": "Ariel Lijo",
-      "role": "Juez Federal Comodoro Py, Juzgado N.12 (subrogante)",
-      "category": "unexplained_wealth",
-      "evidence_es": "Lijo habita el quinto piso de un lujoso edificio en Avenida Alvear, Buenos Aires, valuado en aprox. US$2.000.000. La propiedad no figura en su declaracion jurada de bienes. Esta 'prestada' por un viejo amigo de la politica. Solo declaro una vivienda en el country Abril de Hudson.",
-      "evidence_en": "Lijo lives on the fifth floor of a luxury building on Avenida Alvear, Buenos Aires, valued at approx. US$2,000,000. The property does not appear in his sworn asset declaration. It is 'lent' by an old political friend. He only declared a home at the Abril country club in Hudson.",
-      "source_urls": [
-        "https://www.lanacion.com.ar/politica/el-patrimonio-de-ariel-lijo-usa-un-departamento-prestado-por-un-viejo-amigo-de-la-politica-valuado-nid09062024/",
-        "https://www.lanacion.com.ar/politica/ariel-lijo-un-hombre-fuerte-de-comodoro-py-que-enfrento-denuncias-por-su-patrimonio-y-el-manejo-de-nid20032024/"
-      ],
-      "severity": "high"
-    },
-    {
-      "id": "LIJO-002",
-      "person": "Ariel Lijo",
-      "role": "Juez Federal Comodoro Py, Juzgado N.12",
-      "category": "undeclared_assets",
-      "evidence_es": "En 2017 fue denunciado por no declarar el haras 'La Generacion', tasado en US$2.000.000, puesto a nombre de su hermano Alfredo 'Freddy' Lijo. Tampoco declaro vehiculos, pero manejaba un Mercedes Benz E 350 con cedula azul de la compania de seguros de su hermano (Caledonia Seguros).",
-      "evidence_en": "In 2017 he was denounced for failing to declare the 'La Generacion' horse ranch, valued at US$2,000,000, registered under his brother Alfredo 'Freddy' Lijo's name. He also did not declare any vehicles, yet drove a Mercedes Benz E 350 with a registration card from his brother's insurance company (Caledonia Seguros).",
-      "source_urls": [
-        "https://www.lanacion.com.ar/politica/ariel-lijo-un-hombre-fuerte-de-comodoro-py-que-enfrento-denuncias-por-su-patrimonio-y-el-manejo-de-nid20032024/",
-        "https://acij.org.ar/wp-content/uploads/2024/05/Perfil-Ariel-Lijo.pdf"
-      ],
-      "severity": "high"
-    },
-    {
       "id": "LIJO-003",
-      "person": "Alfredo 'Freddy' Lijo",
-      "role": "Hermano del juez Ariel Lijo, operador judicial",
-      "category": "unexplained_wealth",
-      "evidence_es": "Alfredo Lijo tiene oficinas en Puerto Madero (Olga Cossettini 1553), controla el 95% de Finaig Consultores SA, compro propiedades por US$1 millon, renovo un departamento de 250m2 en Las Canitas por al menos US$720.000, tenia oficinas en Puerto Madero y Recoleta, y un semi-piso en Recoleta valuado en US$272.000.",
-      "evidence_en": "Alfredo Lijo has offices in Puerto Madero (Olga Cossettini 1553), controls 95% of Finaig Consultores SA, purchased properties worth US$1 million, renovated a 250sqm apartment in Las Canitas for at least US$720,000, had offices in Puerto Madero and Recoleta, and a semi-penthouse in Recoleta valued at US$272,000.",
+      "person": "Ariel Lijo",
+      "role": "Federal Judge (Juzgado Federal 4, Comodoro Py); designated to Supreme Court by Decree 137/2025",
+      "entity": "ACIJ / Consejo de la Magistratura",
+      "evidence_es": "Segun informe de ACIJ, Lijo tuvo 89 causas de corrupcion y solo elevo 14 a juicio oral. De las 89, 26 continuan en instruccion, y 13 de estas llevan mas de 10 anos abiertas. Tres causas llevan mas de 15 anos: la causa Ruckauf (17 anos), la causa de vaciamiento y expropiacion de YPF (18 anos), y la causa Siemens (26 anos abierta). Fue denunciado al Consejo de la Magistratura 32 veces en 20 anos segun ACIJ, y tiene 3 investigaciones disciplinarias pendientes. El Senado rechazo su pliego con 43 votos en contra en abril 2025.",
+      "evidence_en": "According to an ACIJ report, Lijo handled 89 corruption cases but only sent 14 to oral trial. Of the 89, 26 remain in investigation phase, and 13 of these have been open for over 10 years. Three cases exceed 15 years: the Ruckauf case (17 years), the YPF asset-stripping case (18 years), and the Siemens case (26 years open). He was reported to the Magistrate Council 32 times in 20 years per ACIJ, and has 3 pending disciplinary investigations. The Senate rejected his candidacy with 43 votes against in April 2025.",
+      "severity": "critical",
       "source_urls": [
-        "https://www.lanacion.com.ar/politica/el-llamativo-enriquecimiento-del-operador-judicial-alfredo-lijo-nid2083733/"
+        "https://acij.org.ar/ariel-lijo-tiene-la-mitad-de-sus-causas-por-corrupcion-sin-elevar-a-juicio-oral-desde-hace-10-anos-o-mas/",
+        "https://acij.org.ar/wp-content/uploads/2024/05/Perfil-Ariel-Lijo.pdf",
+        "https://chequeado.com/el-explicador/la-postulacion-de-ariel-lijo-a-la-corte-suprema-5-datos-sobre-su-trayectoria-y-su-desempeno-como-juez/",
+        "https://chequeado.com/el-explicador/las-causas-y-denuncias-contra-ariel-lijo-el-juez-designado-por-decreto-para-la-corte-suprema/"
       ],
-      "severity": "high"
+      "new_entities": [
+        {
+          "name": "ACIJ (Asociacion Civil por la Igualdad y la Justicia)",
+          "type": "institution",
+          "description": "Legal watchdog that documented Lijo's corruption case performance"
+        },
+        {
+          "name": "Causa Siemens",
+          "type": "legal_case",
+          "description": "Corruption case involving Siemens bribery, open 26 years under Lijo"
+        },
+        {
+          "name": "Causa Ruckauf",
+          "type": "legal_case",
+          "description": "Case against former governor Ruckauf, open 17 years under Lijo"
+        },
+        {
+          "name": "Causa YPF (vaciamiento)",
+          "type": "legal_case",
+          "description": "YPF asset-stripping case, open 18 years under Lijo"
+        }
+      ]
     },
     {
       "id": "LIJO-004",
-      "person": "Ariel Lijo / Alfredo Lijo",
-      "role": "Juez Federal / Operador judicial",
-      "category": "case_closed_improperly",
-      "evidence_es": "La causa por enriquecimiento ilicito contra los hermanos Lijo (denunciada por Elisa Carrio en 2018) fue cerrada en silencio por el juez Julian Ercolini, colega cercano a Lijo. El abogado defensor fue Mariano Cuneo Libarona, actual Ministro de Justicia del gobierno de Milei. Cuneo Libarona luego se excuso de intervenir en la postulacion de Lijo a la Corte Suprema por ser su ex abogado.",
-      "evidence_en": "The illicit enrichment case against the Lijo brothers (filed by Elisa Carrio in 2018) was quietly closed by Judge Julian Ercolini, a close colleague of Lijo. Their defense lawyer was Mariano Cuneo Libarona, current Justice Minister under Milei. Cuneo Libarona later recused himself from Lijo's Supreme Court nomination process due to being his former lawyer.",
+      "person": "Ariel Lijo",
+      "role": "Federal Judge, Comodoro Py — multi-court control",
+      "entity": "Juzgados Federales 4, 6, 12",
+      "evidence_es": "En septiembre de 2023, Lijo quedo a cargo simultaneamente de tres juzgados federales en Comodoro Py: su propio Juzgado Federal 4, mas los Juzgados 12 y 6 (este ultimo vacante desde la jubilacion de Canicoba Corral en 2020). Esta concentracion de poder es inedita — un solo juez controlando el 25% de los juzgados federales de primera instancia de Buenos Aires. Lijo fue descrito por La Nacion como 'el hombre fuerte de Comodoro Py'. Su caso emblematico es el procesamiento de Amado Boudou en la causa Ciccone.",
+      "evidence_en": "In September 2023, Lijo simultaneously controlled three federal courts at Comodoro Py: his own Federal Court 4, plus Courts 12 and 6 (the latter vacant since Canicoba Corral's retirement in 2020). This concentration of power is unprecedented — one judge controlling 25% of Buenos Aires's first-instance federal courts. La Nacion described Lijo as 'the strongman of Comodoro Py'. His emblematic case is the prosecution of Vice President Amado Boudou in the Ciccone case.",
+      "severity": "critical",
       "source_urls": [
-        "https://www.lanacion.com.ar/politica/la-causa-por-enriquecimiento-ilicito-contra-los-hermanos-lijo-la-cerro-en-silencio-un-juez-cercano-y-nid22032024/",
-        "https://www.lanacion.com.ar/politica/cuneo-libarona-se-excuso-de-intervenir-en-el-procedimiento-por-la-postulacion-del-juez-ariel-lijo-nid27122024/"
+        "https://www.infobae.com/judiciales/2023/09/20/ariel-lijo-quedo-a-cargo-de-tres-juzgados-federales-en-comodoro-py/",
+        "https://www.lanacion.com.ar/politica/quien-es-ariel-lijo-el-hombre-fuerte-de-comodoro-py-que-enfrento-denuncias-por-su-patrimonio-y-el-nid25022025/"
       ],
-      "severity": "critical"
+      "new_entities": [
+        {
+          "name": "Amado Boudou",
+          "type": "person",
+          "role": "Former Vice President, processed by Lijo in Ciccone case"
+        },
+        {
+          "name": "Causa Ciccone",
+          "type": "legal_case",
+          "description": "Corruption case in which Lijo sent VP Boudou to prison"
+        }
+      ]
     },
     {
       "id": "LIJO-005",
       "person": "Ariel Lijo",
-      "role": "Candidato a Corte Suprema",
-      "category": "controversial_nomination",
-      "evidence_es": "Milei lo nomino el 15/04/2024 para la Corte Suprema. Segun INECIP, Lijo seria el juez con peor desempeno de Comodoro Py. Macri dijo que la nominacion 'es un error'. Villarruel critico su actuacion en el caso Rucci. El Senado rechazo su pliego el 03/04/2025 con 27 votos a favor, 43 en contra y 1 abstencion. Milei luego lo designo por decreto, pero la Corte Suprema le rechazo la licencia para asumir.",
-      "evidence_en": "Milei nominated him on 04/15/2024 for the Supreme Court. According to INECIP, Lijo would be the worst-performing judge at Comodoro Py. Macri called the nomination 'a mistake'. Villarruel criticized his handling of the Rucci case. The Senate rejected his candidacy on 04/03/2025 with 27 for, 43 against, 1 abstention. Milei then appointed him by decree, but the Supreme Court rejected his leave to assume the position.",
+      "role": "Supreme Court nominee — international opposition",
+      "entity": "Human Rights Watch / CELS / International community",
+      "evidence_es": "Human Rights Watch publico dos comunicados pidiendo reconsiderar la nominacion de Lijo (mayo 2024) y denunciando que la designacion por decreto socava la independencia judicial (diciembre 2024, febrero 2025). CELS (Centro de Estudios Legales y Sociales) se opuso formalmente a las nominaciones de Lijo y Garcia-Mansilla. NBC News titulo que Milei 'prometio combatir la corrupcion y luego sorprendio con su eleccion para la Corte Suprema'. Buenos Aires Herald analizo por que Lijo es una eleccion controversial. Asociaciones de abogados, uniones empresariales y organizaciones de derechos humanos expresaron preocupacion. Senadores de todo el espectro politico buscarian negociar votos por Lijo a cambio de cerrar causas de corrupcion contra funcionarios cercanos.",
+      "evidence_en": "Human Rights Watch issued two statements calling to reconsider Lijo's nomination (May 2024) and denouncing the decree appointment as undermining judicial independence (Dec 2024, Feb 2025). CELS (Center for Legal and Social Studies) formally opposed the Lijo and Garcia-Mansilla nominations. NBC News headlined that Milei 'promised to quash corruption, then shocked with his Supreme Court pick'. Buenos Aires Herald analyzed why Lijo is a controversial choice. Bar associations, business unions, and human rights organizations expressed concern. Senators across the political spectrum were allegedly seeking to trade votes for Lijo in exchange for closing corruption investigations against allies.",
+      "severity": "critical",
       "source_urls": [
-        "https://chequeado.com/el-explicador/quien-es-ariel-lijo-uno-de-los-dos-candidatos-propuestos-por-javier-milei-para-integrar-la-corte-suprema/",
-        "https://www.infobae.com/politica/2025/04/03/minuto-a-minuto-el-senado-vota-los-pliegos-de-ariel-lijo-y-manuel-garcia-mansilla-para-la-corte-suprema/",
-        "https://www.infobae.com/judiciales/2025/03/06/la-corte-suprema-enfrenta-un-plenario-clave-mientras-persiste-la-incertidumbre-sobre-la-licencia-de-lijo/"
+        "https://www.hrw.org/news/2024/05/23/argentina-reconsider-supreme-court-nominations",
+        "https://www.hrw.org/news/2025/02/26/argentina-milei-undermines-judicial-independence",
+        "https://www.hrw.org/news/2024/12/09/argentina-dont-name-supreme-court-justices-decree",
+        "https://www.cels.org.ar/web/en/2024/05/supreme-court-we-oppose-the-nominations-of-lijo-and-garcia-mansilla/",
+        "https://www.nbcnews.com/news/latino/argentina-milei-judge-lijo-ethics-corruption-rcna158255",
+        "https://buenosairesherald.com/politics/judiciary/why-lijo-is-a-controversial-pick-for-argentinas-supreme-court"
       ],
-      "severity": "critical"
+      "new_entities": [
+        {
+          "name": "Human Rights Watch",
+          "type": "institution",
+          "description": "International human rights org that opposed Lijo nomination"
+        },
+        {
+          "name": "CELS (Centro de Estudios Legales y Sociales)",
+          "type": "institution",
+          "description": "Argentine legal/human rights org that opposed Lijo and Garcia-Mansilla nominations"
+        }
+      ]
     },
     {
-      "id": "ERCOLINI-001",
-      "person": "Julian Ercolini",
-      "role": "Juez Federal Comodoro Py, Juzgado N.11 (subrogante)",
-      "category": "lago_escondido_trip",
-      "evidence_es": "En octubre 2022, Ercolini viajo en un vuelo privado pagado por el Grupo Clarin a la estancia del millonario britanico Joe Lewis en Lago Escondido, Bariloche. Lo acompanaron el fiscal general de CABA Juan Bautista Mahiques, el ministro Marcelo D'Alessandro, y otros jueces y agentes de inteligencia. Chats filtrados del celular de D'Alessandro revelaron conversaciones entre jueces, funcionarios macristas y ejecutivos de Clarin para ocultar el viaje.",
-      "evidence_en": "In October 2022, Ercolini flew on a private flight paid for by Grupo Clarin to British billionaire Joe Lewis's estate at Lago Escondido, Bariloche. He was accompanied by Buenos Aires City AG Juan Bautista Mahiques, Minister Marcelo D'Alessandro, and other judges and intelligence agents. Leaked chats from D'Alessandro's phone revealed conversations between judges, Macri-era officials, and Clarin executives to conceal the trip.",
+      "id": "LIJO-006",
+      "person": "Ariel Lijo",
+      "role": "Federal Judge — Correo Argentino case delays",
+      "entity": "Correo Argentino SA / Grupo Socma / Familia Macri",
+      "evidence_es": "La causa Correo Argentino investiga irregularidades en un acuerdo alcanzado por Correo Argentino SA (empresa del Grupo Macri) con el Estado en 2016, durante el gobierno de Cambiemos. El arreglo evitaba que Grupo Socma pagara la actualizacion de deuda acumulada desde 1997, a cambio de pagos semestrales de $51,6 millones. Un fiscal comercial considero el acuerdo 'perjudicial para el Estado'. Lijo demoro mas de 4 anos en citar a indagatoria al principal imputado. Pidio un estudio contable con 3 meses de retraso. Fuentes judiciales confirmaron: 'No hay avances'. La causa cumple 20 anos y los Macri aun no pagaron.",
+      "evidence_en": "The Correo Argentino case investigates irregularities in an agreement between Correo Argentino SA (Macri Group company) and the State in 2016 during the Cambiemos government. The deal avoided Grupo Socma from paying accumulated debt since 1997, in exchange for semiannual payments of $51.6M pesos. A commercial prosecutor considered the deal 'harmful to the State'. Lijo delayed over 4 years calling the main defendant to interrogation. He ordered an accounting study 3 months late. Judicial sources confirmed: 'There are no developments'. The case has been running for 20 years and the Macris still have not paid.",
+      "severity": "critical",
       "source_urls": [
-        "https://chequeado.com/el-explicador/lago-escondido-que-se-sabe-sobre-el-viaje-de-jueces-funcionarios-y-empresarios-a-la-residencia-de-joe-lewis/",
-        "https://www.eldiarioar.com/politica/lago-escondido-jueces-joe-lewis_1_9655231.html",
-        "https://www.lacapital.com.ar/politica/escandalo-un-chat-jueces-funcionarios-macristas-y-empresarios-medios-ocultar-un-viaje-al-sur-n10034921.html"
+        "https://www.lanacion.com.ar/politica/la-causa-del-correo-argentino-ariel-lijo-no-avanzo-con-un-expediente-sensible-para-mauricio-macri-nid20062025/",
+        "https://www.pagina12.com.ar/233041-causa-correo-el-juez-lijo-pidio-un-estudio-contable-para-def",
+        "https://www.eldestapeweb.com/politica/correo-argentino/correo-la-causa-cumple-20-anos-y-los-macri-aun-no-pagaron-20219190550",
+        "https://es.wikipedia.org/wiki/Causa_Correo_Argentino"
       ],
-      "severity": "critical"
+      "new_entities": [
+        {
+          "name": "Correo Argentino SA",
+          "type": "company",
+          "description": "Postal company controlled by Macri family, subject of debt restructuring scandal"
+        },
+        {
+          "name": "Grupo Socma",
+          "type": "company",
+          "description": "Macri family holding company that controlled Correo Argentino"
+        },
+        {
+          "name": "Oscar Aguad",
+          "type": "person",
+          "role": "Former Communications Minister (Cambiemos), investigated in Correo case"
+        },
+        {
+          "name": "Juan Manuel Mocoroa",
+          "type": "person",
+          "role": "Former head of Legal Affairs, investigated in Correo case"
+        }
+      ]
     },
     {
-      "id": "ERCOLINI-002",
-      "person": "Julian Ercolini",
-      "role": "Juez Federal Comodoro Py",
-      "category": "case_irregularity",
-      "evidence_es": "Ercolini fue apartado de una causa contra Cristina Kirchner por falta de imparcialidad. La recusacion se baso en su viaje a Lago Escondido con funcionarios y empresarios vinculados al macrismo, lo que compromete su neutralidad en causas politicas. Tambien cerro en silencio la causa por enriquecimiento ilicito contra su colega Lijo.",
-      "evidence_en": "Ercolini was removed from a case against Cristina Kirchner for lack of impartiality. The recusal was based on his Lago Escondido trip with officials and businessmen linked to the Macri administration, compromising his neutrality in political cases. He also quietly closed the illicit enrichment case against his colleague Lijo.",
+      "id": "LIJO-007",
+      "person": "Ariel Lijo",
+      "role": "Federal Judge — undeclared wealth details",
+      "entity": "Declaracion Jurada / Hudson property / Magali Mazzuca",
+      "evidence_es": "En su declaracion jurada (periodo fiscal 2022), Lijo declaro bienes inmuebles por $10,3 millones (valor fiscal) consistentes en un lote en Hudson (Berazategui), adquirido en 2010, y mejoras realizadas desde 2011. Declaro ahorros de $11 millones y US$40.000. Comparte la propiedad de Hudson con su ex pareja Magali Mazzuca, quien trabaja como relatora en la Corte Suprema de Justicia. Mientras tanto, habita un departamento de lujo en Avenida Alvear (a la altura de Ayacucho), en el 5to piso de un edificio de lujo, con valor de mercado de US$2.000.000, propiedad de Carlos Bettini (ex embajador en Espana durante los tres gobiernos kirchneristas). Fue denunciado en 2018 por Elisa Carrio por asociacion ilicita, lavado de dinero, coimas y trafico de influencias, pero fue sobreseido.",
+      "evidence_en": "In his sworn statement (fiscal year 2022), Lijo declared real estate worth $10.3M pesos (fiscal value) consisting of a lot in Hudson (Berazategui) acquired in 2010 with improvements since 2011. He declared savings of $11M pesos and US$40,000. He co-owns the Hudson property with his ex-partner Magali Mazzuca, who works as a law clerk at the Supreme Court. Meanwhile, he inhabits a luxury apartment on Alvear Avenue (near Ayacucho), 5th floor, market value ~US$2M, owned by Carlos Bettini (former ambassador to Spain under three Kirchnerist governments). He was accused in 2018 by Elisa Carrio of criminal association, money laundering, bribery, and influence peddling, but was acquitted.",
+      "severity": "high",
       "source_urls": [
-        "https://canalc.com.ar/julian-ercolini-apartado-por-falta-de-imparcialidad-en-causa-contra-cfk/",
-        "https://www.lanacion.com.ar/politica/elisa-carrio-pidio-investigar-al-juez-julian-ercolini-y-al-fiscal-franco-picardi-por-haber-cerrado-nid09042024/"
+        "https://www.lanacion.com.ar/politica/el-patrimonio-de-ariel-lijo-usa-un-departamento-prestado-por-un-viejo-amigo-de-la-politica-valuado-nid09062024/",
+        "https://chequeado.com/el-explicador/la-postulacion-de-ariel-lijo-a-la-corte-suprema-5-datos-sobre-su-trayectoria-y-su-desempeno-como-juez/",
+        "https://www.infobae.com/politica/2024/08/21/quien-es-y-los-antecedentes-de-ariel-lijo-el-juez-propuesto-por-javier-milei-para-integrar-la-corte-suprema/"
       ],
-      "severity": "critical"
-    },
-    {
-      "id": "LAGO-001",
-      "person": "Multiple judges (Ercolini, Mahiques, Cayssials, Yadarola)",
-      "role": "Federal judges and prosecutors",
-      "category": "lago_escondido_coverup",
-      "evidence_es": "El juez federal Sebastian Ramos anulo la causa que investigaba el viaje a Lago Escondido y sobreseyo a todos los imputados, aplicando la doctrina del 'arbol envenenado' por supuesta obtencion ilegal de pruebas. El Consejo de la Magistratura reactivo y luego postergo la investigacion repetidamente. El gobierno de Fernandez denuncio a los jueces por incumplimiento de deberes de funcionario publico y dadivas.",
-      "evidence_en": "Federal judge Sebastian Ramos annulled the case investigating the Lago Escondido trip and dismissed all charges, applying the 'fruit of the poisonous tree' doctrine due to allegedly illegal evidence gathering. The Magistracy Council reactivated then repeatedly postponed the investigation. The Fernandez government filed charges against the judges for dereliction of duty and bribery.",
-      "source_urls": [
-        "https://www.eldiarioar.com/politica/lago-escondido-sobreseen-jueces-exfuncionarios-empresarios-viaje-estancia-joe-lewis-2022_1_10788895.html",
-        "https://www.argentina.gob.ar/noticias/el-gobierno-nacional-denuncio-los-jueces-federales-al-ceo-del-grupo-clarin-y-otros",
-        "https://agencia.farco.org.ar/noticias/magistratura-otra-vez-se-postergo-la-investigacion-por-el-viaje-de-jueces-a-lago-escondido-pagado-por-clarin/"
-      ],
-      "severity": "critical"
-    },
-    {
-      "id": "LAGO-002",
-      "person": "Pablo Cayssials",
-      "role": "Juez federal",
-      "category": "conflict_of_interest",
-      "evidence_es": "El juez Cayssials debe resolver una causa contra el Grupo Clarin por no incluir senales comunitarias en el cable. Fue recusado por el canal Barricada TV tras revelarse su participacion en el viaje a Lago Escondido financiado por Clarin.",
-      "evidence_en": "Judge Cayssials must rule in a case against Grupo Clarin for failing to include community channels in cable lineups. He was challenged by Barricada TV after his participation in the Clarin-funded Lago Escondido trip was revealed.",
-      "source_urls": [
-        "https://anccom.sociales.uba.ar/2022/12/13/las-televisoras-comunitarias-recusan-a-uno-de-los-jueces-invitados-por-clarin-a-lago-escondido/"
-      ],
-      "severity": "high"
-    },
-    {
-      "id": "HORNOS-001",
-      "person": "Gustavo Hornos",
-      "role": "Camarista de la Camara Federal de Casacion Penal",
-      "category": "secret_meetings_with_executive",
-      "evidence_es": "Hornos tuvo al menos 2 visitas registradas a la Quinta de Olivos y se reunio con Macri al menos 6 veces en la Casa Rosada, mientras presidia la Sala IV de Casacion que resolvia causas contra ex funcionarios kirchneristas. Las reuniones coincidieron con fallos en causas de alto impacto politico.",
-      "evidence_en": "Hornos had at least 2 registered visits to the Olivos presidential residence and met with Macri at least 6 times at the Casa Rosada, while presiding over Cassation Chamber IV that ruled on cases against former Kirchnerist officials. The meetings coincided with rulings in high-impact political cases.",
-      "source_urls": [
-        "https://www.eldiarioar.com/politica/revelan-jueces-borinsky-hornos-visitaban-macri-olivos_1_7372363.html",
-        "https://www.pagina12.com.ar/333308-el-escandalo-de-los-jueces-de-casacion-que-visitaban-a-mauri"
-      ],
-      "severity": "critical"
-    },
-    {
-      "id": "BORINSKY-001",
-      "person": "Mariano Borinsky",
-      "role": "Camarista de la Camara Federal de Casacion Penal",
-      "category": "secret_meetings_with_executive",
-      "evidence_es": "Borinsky visito la Quinta de Olivos al menos 15 veces segun registros oficiales. Las visitas coincidieron con sus fallos en causas de alto impacto: la reapertura de la denuncia de Nisman, la 'Ruta del dinero K', el caso Dolar Futuro, y la causa por Obra Publica de Santa Cruz. Cuando fue cuestionado, Borinsky dijo que iba a Olivos 'a jugar al paddle'.",
-      "evidence_en": "Borinsky visited the Olivos presidential residence at least 15 times according to official records. Visits coincided with his rulings in high-impact cases: the reopening of Nisman's complaint, the 'K money route', the Dollar Futures case, and the Santa Cruz Public Works case. When questioned, Borinsky claimed he went to Olivos 'to play paddle tennis'.",
-      "source_urls": [
-        "https://www.eldiarioar.com/politica/revelan-jueces-borinsky-hornos-visitaban-macri-olivos_1_7372363.html",
-        "https://www.pagina12.com.ar/333453-escandalo-por-los-jueces-habitues-de-olivos-la-lista-trucha-/",
-        "https://www.perfil.com/noticias/politica/denuncian-mariano-borinsky-visitas-mauricio-macri-avanza-investigacion-gustavo-hornos.phtml"
-      ],
-      "severity": "critical"
-    },
-    {
-      "id": "HORNOS-BORINSKY-002",
-      "person": "Hornos / Borinsky / Macri",
-      "role": "Camaristas / Ex-presidente",
-      "category": "case_dismissed",
-      "evidence_es": "El juez Marcelo Martinez De Giorgi sobreseyo a Macri, Borinsky y Hornos. Confirmo los ingresos y egresos a las sedes oficiales pero determino que no se pudo probar un proposito impropio. El fiscal ante la Camara Federal tambien dispuso cerrar la causa. Los jueces nunca fueron apartados de las causas contra funcionarios kirchneristas.",
-      "evidence_en": "Judge Marcelo Martinez De Giorgi dismissed charges against Macri, Borinsky, and Hornos. He confirmed the entries and exits from official premises but determined that an improper purpose could not be proven. The prosecutor before the Federal Court also ordered the case closed. The judges were never removed from cases against Kirchnerist officials.",
-      "source_urls": [
-        "https://www.infobae.com/politica/2022/06/01/sobreseyeron-a-mauricio-macri-y-a-los-jueces-borinsky-y-hornos-por-la-denuncia-de-las-visitas-a-olivos/",
-        "https://www.infobae.com/politica/2022/06/11/el-fiscal-ante-la-camara-federal-dispuso-cerrar-la-causa-por-las-visitas-a-olivos-contra-macri-y-los-jueces-borinsky-y-hornos/"
-      ],
-      "severity": "high"
-    },
-    {
-      "id": "ROSENKRANTZ-001",
-      "person": "Carlos Rosenkrantz",
-      "role": "Presidente de la Corte Suprema de Justicia",
-      "category": "conflict_of_interest",
-      "evidence_es": "Rosenkrantz fue abogado del Grupo Clarin, La Nacion, McDonald's (Arcos Dorados), Quilmes, Grupo De Narvaez, fondo Pegasus, AXION, YPF y Repsol antes de integrar la Corte. Inicialmente se excuso en causas de ex clientes (al menos 85 causas). En octubre 2021, informo a sus colegas que comenzaria a intervenir en causas de ex clientes. La Corte rechazo la recusacion del Estado por 'extemporanea'.",
-      "evidence_en": "Rosenkrantz was lawyer for Grupo Clarin, La Nacion, McDonald's (Arcos Dorados), Quilmes, Grupo De Narvaez, Pegasus fund, AXION, YPF and Repsol before joining the Court. Initially he recused himself in at least 85 cases involving former clients. In October 2021, he informed colleagues he would begin ruling on former clients' cases. The Court rejected the State's challenge as 'untimely'.",
-      "source_urls": [
-        "https://www.pagina12.com.ar/485768-la-corte-avalo-que-carlos-rosenkrantz-intervenga-en-una-dema",
-        "https://www.infobae.com/politica/2020/10/28/carlos-rosenkrantz-se-excuso-de-votar-en-al-menos-85-causas-desde-que-llego-a-la-corte-suprema/",
-        "https://www.eldestapeweb.com/politica/corte-suprema-de-justicia/ya-son-56-los-fallos-de-rosenkrantz-sobre-sus-ex-clientes-4-de-clarin-2022116052"
-      ],
-      "severity": "critical"
-    },
-    {
-      "id": "ROSENKRANTZ-002",
-      "person": "Carlos Rosenkrantz",
-      "role": "Presidente de la Corte Suprema",
-      "category": "rulings_favoring_former_clients",
-      "evidence_es": "Al menos 56 fallos firmados por Rosenkrantz involucraron a ex clientes, incluyendo 4 del Grupo Clarin. La Corte avalo que intervenga en la causa por tarifas de internet/cable/telefonia donde Clarin (via Telecom) es parte interesada. El Estado argumento que debia excusarse por haber representado al holding mediatico.",
-      "evidence_en": "At least 56 rulings signed by Rosenkrantz involved former clients, including 4 from Grupo Clarin. The Court upheld his participation in a case over internet/cable/phone tariffs where Clarin (via Telecom) is an interested party. The State argued he should recuse himself for having represented the media holding company.",
-      "source_urls": [
-        "https://www.eldestapeweb.com/politica/corte-suprema-de-justicia/ya-son-56-los-fallos-de-rosenkrantz-sobre-sus-ex-clientes-4-de-clarin-2022116052",
-        "https://www.eldestapeweb.com/politica/juicio-a-la-corte/mientras-avanza-el-juicio-politico-rosenkrantz-firma-mas-fallos-de-ex-clientes-20232100549"
-      ],
-      "severity": "high"
+      "new_entities": [
+        {
+          "name": "Magali Mazzuca",
+          "type": "person",
+          "role": "Ex-partner of Judge Lijo, law clerk at the Supreme Court, co-owner of Hudson property"
+        },
+        {
+          "name": "Elisa Carrio",
+          "type": "person",
+          "role": "Former congresswoman who filed criminal complaint against Lijo in 2018"
+        }
+      ]
     },
     {
       "id": "RAFECAS-001",
-      "person": "Daniel Rafecas",
-      "role": "Juez Federal Comodoro Py, Juzgado N.3 (titular) y N.6 (subrogante)",
-      "category": "key_judge_profile",
-      "evidence_es": "Rafecas es titular del Juzgado Criminal y Correccional Federal N.3 desde octubre 2004. Investiga la Megacausa del Primer Cuerpo del Ejercito (derechos humanos, dictadura 1976-1983). Llevo la causa por enriquecimiento ilicito contra Jose Lopez. Alberto Fernandez lo propuso como Procurador General de la Nacion, pero el nombramiento nunca prospero en el Senado. Actualmente subroga el Juzgado N.6, una de las vacantes clave que el gobierno busca cubrir.",
-      "evidence_en": "Rafecas has been head of Federal Criminal Court No. 3 since October 2004. He investigates the Megacause of the First Army Corps (human rights, 1976-1983 dictatorship). He handled the illicit enrichment case against Jose Lopez. Alberto Fernandez proposed him as Attorney General, but the nomination never passed the Senate. He currently fills in at Court No. 6, one of the key vacancies the government seeks to fill.",
+      "person": "Daniel Eduardo Rafecas",
+      "role": "Federal Judge (Juzgado Federal 3, Comodoro Py, since 2004)",
+      "entity": "Causa AMIA / Denuncia Nisman",
+      "evidence_es": "Rafecas fue designado juez federal en 2004 por concurso publico. En febrero 2015, desestimo la denuncia del fiscal Alberto Nisman contra la presidenta Cristina Kirchner, el canciller Hector Timerman y otros funcionarios por presunto encubrimiento de los iranies acusados del atentado a la AMIA. Resolvio la desestimacion por 'inexistencia de delito', sin tomar medidas de prueba. La Camara Federal (Sala I) confirmo la decision por 2 votos a 1. Sin embargo, el Consejo de la Magistratura le impuso una sancion disciplinaria por 'falta de decoro' en su actuacion en la investigacion. Nisman habia presentado la denuncia dias antes de aparecer muerto con un disparo en la cabeza en su departamento de Buenos Aires, bajo circunstancias que aun se investigan.",
+      "evidence_en": "Rafecas was appointed federal judge in 2004 by public competition. In February 2015, he dismissed prosecutor Alberto Nisman's complaint against President Cristina Kirchner, Foreign Minister Hector Timerman, and other officials for alleged cover-up of Iranians accused of the AMIA bombing. He resolved the dismissal for 'nonexistence of a crime' without taking evidentiary measures. The Federal Chamber (Room I) confirmed the decision 2-1. However, the Magistrate Council imposed a disciplinary sanction for 'lack of decorum' in his handling of the investigation. Nisman had filed the complaint days before being found dead with a gunshot wound to the head in his Buenos Aires apartment, under circumstances still being investigated.",
+      "severity": "critical",
       "source_urls": [
-        "https://es.wikipedia.org/wiki/Daniel_Rafecas",
-        "https://chequeado.com/justiciapedia/profiles/daniel-rafecas/",
-        "https://www.infobae.com/politica/2026/03/05/mas-de-300-vacantes-en-la-justicia-cual-es-el-plan-del-gobierno-para-nombrar-jueces-y-fiscales-y-que-casilleros-clave-mirara-primero/"
+        "https://chequeado.com/el-explicador/rafecas-el-juez-que-desestimo-la-denuncia-de-nisman-contra-cfk/",
+        "https://www.lanacion.com.ar/politica/fallo-daniel-rafecas-nid1777428/",
+        "https://www.lanacion.com.ar/politica/multaron-al-juez-rafecas-por-la-denuncia-de-nisman-nid2114692/",
+        "https://www.cij.gov.ar/nota-22621-El-juez-Rafecas-no-hizo-lugar-a-un-pedido-de-la-DAIA-para-que-se-reabra-la-investigaci-n-por-la-denuncia-presentada-por-el-fiscal-Nisman.html"
       ],
-      "severity": "medium"
+      "new_entities": [
+        {
+          "name": "Alberto Nisman",
+          "type": "person",
+          "role": "Special prosecutor for AMIA case, found dead Jan 2015 after filing complaint against CFK"
+        },
+        {
+          "name": "DAIA (Delegacion de Asociaciones Israelitas Argentinas)",
+          "type": "institution",
+          "description": "Jewish community organization that petitioned to reopen Nisman investigation"
+        },
+        {
+          "name": "AMIA (Asociacion Mutual Israelita Argentina)",
+          "type": "institution",
+          "description": "Jewish community center bombed in 1994 attack (85 dead), central case in Argentine judicial history"
+        }
+      ]
     },
     {
-      "id": "OYARBIDE-001",
-      "person": "Norberto Oyarbide",
-      "role": "Ex-juez federal (fallecido)",
-      "category": "illicit_enrichment",
-      "evidence_es": "La causa por enriquecimiento ilicito contra el ex juez Oyarbide y sus presuntos intermediarios quedo al borde de la prescripcion a cinco anos de su muerte. Los jueces Leopoldo Bruglia y Pablo Bertuzzi revocaron una resolucion de primera instancia que mantenia la investigacion abierta.",
-      "evidence_en": "The illicit enrichment case against former judge Oyarbide and his alleged intermediaries neared statute of limitations five years after his death. Judges Leopoldo Bruglia and Pablo Bertuzzi overturned a first-instance ruling that had kept the investigation open.",
+      "id": "RAFECAS-002",
+      "person": "Daniel Eduardo Rafecas",
+      "role": "Candidate for Procurador General de la Nacion",
+      "entity": "Procuracion General de la Nacion / Senado",
+      "evidence_es": "Alberto Fernandez oficializo la postulacion de Rafecas como Procurador General de la Nacion en enero 2020. Rafecas declaro que no asumira si se modifica la exigencia de dos tercios del Senado para su designacion. Su pliego permanecio en el Senado durante mas de 3 anos sin tratamiento. El puesto esta vacante de hecho desde 2017, con Eduardo Casal como procurador interino desde la renuncia de Alejandra Gils Carbo. Rafecas eventualmente se distancio de la candidatura. Esto deja a la Procuracion General — la cabeza del Ministerio Publico Fiscal, que dirige a todos los fiscales federales — en manos de un interino sin legitimidad democratica plena, debilitando la persecucion penal federal.",
+      "evidence_en": "Alberto Fernandez officially nominated Rafecas as Attorney General in January 2020. Rafecas declared he would not accept if the two-thirds Senate requirement for his appointment is modified. His nomination remained in the Senate for over 3 years without being considered. The position has been effectively vacant since 2017, with Eduardo Casal as interim attorney general since Alejandra Gils Carbo's resignation. Rafecas eventually distanced himself from the candidacy. This leaves the Attorney General's Office — head of the Public Prosecutor's Ministry directing all federal prosecutors — in the hands of an interim without full democratic legitimacy, weakening federal criminal prosecution.",
+      "severity": "high",
       "source_urls": [
-        "https://www.infobae.com/judiciales/2026/03/03/a-cinco-anos-de-la-muerte-de-oyarbide-la-causa-por-enriquecimiento-ilicito-quedo-a-un-paso-de-la-prescripcion/"
+        "https://www.infobae.com/politica/2020/01/02/el-gobierno-oficializo-la-postulacion-de-daniel-rafecas-como-procurador-general-de-la-nacion/",
+        "https://www.lanacion.com.ar/politica/daniel-rafecas-candidato-procurador-propuesto-gobierno-si-nid2486107/",
+        "https://www.pagina12.com.ar/342225-rafecas-se-distancia-de-la-candidatura-a-procurador",
+        "https://www.infobae.com/politica/2023/03/05/daniel-rafecas-recordo-que-su-pliego-para-procurador-entro-al-senado-hace-tres-anos-cubrir-esa-vacante-contribuira-a-enfrentar-el-drama-que-vive-rosario/"
       ],
-      "severity": "high"
+      "new_entities": [
+        {
+          "name": "Eduardo Casal",
+          "type": "person",
+          "role": "Interim Attorney General since 2017, lacking full democratic legitimacy"
+        },
+        {
+          "name": "Alejandra Gils Carbo",
+          "type": "person",
+          "role": "Former Attorney General who resigned, creating vacancy filled by Casal"
+        },
+        {
+          "name": "Procuracion General de la Nacion",
+          "type": "institution",
+          "description": "Head of the Public Prosecutor's Ministry, directs all federal prosecutors"
+        }
+      ]
     },
     {
-      "id": "MAGNETTO-001",
-      "person": "Hector Magnetto / Grupo Clarin",
-      "role": "CEO Grupo Clarin",
-      "category": "media_judicial_nexus",
-      "evidence_es": "El Grupo Clarin financio el vuelo privado de jueces federales a Lago Escondido. El gobierno denuncio al CEO del Grupo Clarin junto a los jueces por dadivas e incumplimiento de deberes. Chats filtrados revelaron coordinacion entre ejecutivos de Clarin, jueces y funcionarios para ocultar el viaje. Clarin tambien fue cliente historico de Rosenkrantz antes de su llegada a la Corte Suprema.",
-      "evidence_en": "Grupo Clarin financed the private flight of federal judges to Lago Escondido. The government charged the Clarin CEO along with the judges for bribery and dereliction of duty. Leaked chats revealed coordination between Clarin executives, judges, and officials to conceal the trip. Clarin was also a longtime client of Rosenkrantz before his appointment to the Supreme Court.",
+      "id": "COMODORO-002",
+      "person": null,
+      "role": "Institutional analysis: Comodoro Py as designed power structure",
+      "entity": "Comodoro Py 2002, Retiro, Buenos Aires",
+      "evidence_es": "Comodoro Py 2002 alberga los 12 Juzgados Federales de primera instancia, la Camara Federal de Apelaciones, Tribunales Orales Federales, Tribunales Orales en lo Penal Economico, defensorias, fiscalias y la Camara Federal de Casacion Penal. 60 jueces de primera instancia y camaristas trabajan alli — el 6% de los jueces federales del pais — pero concentran todas las causas de corrupcion de la administracion central. Carlos Menem reformo la justicia federal en los anos 90, aumentando los juzgados de 6 a 12 y posicionando jueces y fiscales de confianza. Menem 'diseno' Comodoro Py, la Camara de Casacion Federal y la Camara Federal a su conveniencia. El libro 'Poderosos' examino la historia de 13 jueces de Comodoro Py y su relacion de conveniencia con la politica desde los 90.",
+      "evidence_en": "Comodoro Py 2002 houses the 12 Federal Courts of first instance, the Federal Court of Appeals, Federal Oral Tribunals, Economic Criminal Oral Tribunals, public defense offices, prosecutors, and the Federal Criminal Cassation Chamber. 60 first-instance judges and appeals court judges work there — 6% of the country's federal judges — but they concentrate all corruption cases involving central administration. Carlos Menem reformed the federal justice system in the 1990s, increasing courts from 6 to 12 and positioning trusted judges and prosecutors. Menem 'designed' Comodoro Py, the Federal Cassation Chamber, and the Federal Chamber to his advantage. The book 'Poderosos' examined the history of 13 Comodoro Py judges and their convenience-based relationship with politics since the 90s.",
+      "severity": "critical",
       "source_urls": [
-        "https://www.argentina.gob.ar/noticias/el-gobierno-nacional-denuncio-los-jueces-federales-al-ceo-del-grupo-clarin-y-otros",
-        "https://www.primerafuente.com.ar/noticias/105967/escndalo-se-filtraron-chats-jueces-intentaron-tapar-viaje-al-lago-escondido"
+        "https://www.utdt.edu/ver_nota_prensa.php?id_nota_prensa=19226",
+        "https://www.infobae.com/opinion/2021/01/14/la-justicia-federal-de-comodoro-py-y-la-republica-argentina/",
+        "https://www.infobae.com/leamos/2022/03/26/poderosos-el-libro-que-indaga-sobre-las-relaciones-de-los-jueces-con-la-politica/",
+        "https://www.lanacion.com.ar/politica/comodoro-py-uno-por-uno-nid1885702/"
       ],
-      "severity": "critical"
+      "new_entities": [
+        {
+          "name": "Carlos Menem",
+          "type": "person",
+          "role": "President (1989-1999) who expanded and designed Comodoro Py system from 6 to 12 courts"
+        },
+        {
+          "name": "'Poderosos' (book)",
+          "type": "publication",
+          "description": "Book examining 13 Comodoro Py judges' relationships with political power since the 1990s"
+        }
+      ]
     },
     {
-      "id": "LEWIS-001",
-      "person": "Joe Lewis",
-      "role": "Billonario britanico, propietario de la estancia en Lago Escondido",
-      "category": "oligarch_judicial_nexus",
-      "evidence_es": "Joe Lewis es un multimillonario britanico dueno de una enorme estancia en Lago Escondido, Patagonia. Su propiedad fue el destino del viaje de jueces federales, funcionarios y empresarios de medios en octubre 2022. La relacion entre poder economico extranjero y la justicia federal argentina quedo expuesta por este escandalo.",
-      "evidence_en": "Joe Lewis is a British billionaire who owns a massive estate at Lago Escondido, Patagonia. His property was the destination of the trip by federal judges, officials, and media executives in October 2022. The relationship between foreign economic power and Argentine federal justice was exposed by this scandal.",
+      "id": "COMODORO-003",
+      "person": null,
+      "role": "Institutional reform: accusatory system transition",
+      "entity": "Comodoro Py / Ministerio de Justicia",
+      "evidence_es": "A partir del 11 de agosto de 2025, el nuevo Codigo Procesal Penal Federal (sistema acusatorio) se implementa en la justicia federal de Comodoro Py y la justicia penal economica. La reforma transfiere el poder de investigacion de los jueces federales a los fiscales. Los jueces pasan a ser jueces de garantias que controlan el proceso pero no investigan. Se unifican los fueros Criminal y Correccional Federal (Comodoro Py) con el Penal Economico en un 'megafuero' Penal Federal. INECIP califica la reforma como 'un punto de inflexion' que 'altera el ecosistema sobre el que se basa el poder de Comodoro Py'. Los jueces de Comodoro Py se oponen al cambio y estiman un costo adicional de $5.000 millones por ano.",
+      "evidence_en": "Starting August 11, 2025, the new Federal Criminal Procedure Code (accusatory system) takes effect in Comodoro Py federal justice and economic criminal justice. The reform transfers investigative power from federal judges to prosecutors. Judges become guarantee judges who oversee the process but do not investigate. Criminal and Correctional Federal courts (Comodoro Py) are unified with Economic Criminal courts into a Federal Criminal 'mega-jurisdiction'. INECIP characterizes the reform as 'an inflection point' that 'alters the ecosystem on which Comodoro Py's power is based'. Comodoro Py judges oppose the change and estimate an additional cost of $5 billion pesos per year.",
+      "severity": "high",
       "source_urls": [
-        "https://chequeado.com/el-explicador/lago-escondido-que-se-sabe-sobre-el-viaje-de-jueces-funcionarios-y-empresarios-a-la-residencia-de-joe-lewis/",
-        "https://es.wikipedia.org/wiki/Esc%C3%A1ndalo_de_Lago_Escondido"
+        "https://www.lanacion.com.ar/politica/la-justicia-federal-de-comodoro-py-cambia-desde-agosto-y-los-fiscales-ganan-poder-nid19032025/",
+        "https://inecip.org/prensa/comunicados/tres-claves-para-entender-la-historica-reforma-de-comodoro-py/",
+        "https://www.infobae.com/judiciales/2025/03/23/segun-un-informe-la-reforma-que-impulsa-el-gobierno-en-comodoro-py-implica-un-punto-de-inflexion/",
+        "https://www.resumenlatinoamericano.org/2025/03/22/argentina-comodoro-py-en-guerra-por-la-reforma-que-le-da-mas-poder-a-los-fiscales/"
       ],
-      "severity": "high"
+      "new_entities": [
+        {
+          "name": "INECIP (Instituto de Estudios Comparados en Ciencias Penales y Sociales)",
+          "type": "institution",
+          "description": "Criminal justice research institute that analyzed Comodoro Py reform implications"
+        }
+      ]
     },
     {
-      "id": "MAHIQUES-001",
-      "person": "Juan Bautista Mahiques",
-      "role": "Fiscal General de CABA",
-      "category": "lago_escondido_participant",
-      "evidence_es": "Mahiques participo en el viaje a Lago Escondido y fue apartado de una causa promovida por el Grupo Clarin por haber viajado invitado por esa empresa. Su participacion en el vuelo privado compromete su imparcialidad en cualquier causa que involucre al grupo mediatico.",
-      "evidence_en": "Mahiques participated in the Lago Escondido trip and was removed from a case filed by Grupo Clarin for having traveled as that company's guest. His participation in the private flight compromises his impartiality in any case involving the media group.",
+      "id": "COMODORO-004",
+      "person": null,
+      "role": "Current composition: key judges and vacancies at Comodoro Py",
+      "entity": "12 Juzgados Federales de Primera Instancia",
+      "evidence_es": "Composicion parcial de los juzgados federales de Comodoro Py (datos de 2022-2024): Juzgado 1: Maria Romilda Servini; Juzgado 2: Sebastian Roberto Ramos; Juzgado 3: Daniel Eduardo Rafecas; Juzgado 4: Ariel Lijo (tambien a cargo interino de Juzgados 6 y 12 en 2023); Juzgado 8: Marcelo Pedro Hernan Martinez de Giorgi; Juzgado 10: Julian Ercolini. Ercolini y el fiscal Taiano concentran las causas mas sensibles. Servini es la jueza mas antigua del fuero. Multiples juzgados con vacantes llenan con jueces subrogantes, debilitando la independencia.",
+      "evidence_en": "Partial composition of Comodoro Py federal courts (2022-2024 data): Court 1: Maria Romilda Servini; Court 2: Sebastian Roberto Ramos; Court 3: Daniel Eduardo Rafecas; Court 4: Ariel Lijo (also interim charge of Courts 6 and 12 in 2023); Court 8: Marcelo Pedro Hernan Martinez de Giorgi; Court 10: Julian Ercolini. Ercolini and prosecutor Taiano concentrate the most sensitive cases. Servini is the longest-serving judge. Multiple courts with vacancies are filled with substitute judges, weakening independence.",
+      "severity": "high",
       "source_urls": [
-        "https://www.eldestapeweb.com/politica/lawfare/reves-para-clarin-apartan-al-juez-mahiques-por-el-viaje-a-lago-escondido-20235120530"
+        "https://www.argentina.gob.ar/sites/default/files/2017/12/13camara_nacional_de_apelaciones_en_lo_criminal_y_correccional_federal_de_la_capital_federal030122.pdf",
+        "https://www.infobae.com/judiciales/2023/09/20/ariel-lijo-quedo-a-cargo-de-tres-juzgados-federales-en-comodoro-py/",
+        "https://elargentinodiario.com.ar/zona-destacada/13/03/2026/el-juez-ercolini-y-el-fiscal-taiano-el-duo-que-allano-la-uom-concentra-las-causas-mas-sensibles-de-comodoro-py/",
+        "https://www.lanacion.com.ar/politica/comodoro-py-uno-por-uno-nid1885702/"
       ],
-      "severity": "high"
+      "new_entities": [
+        {
+          "name": "Maria Romilda Servini",
+          "type": "person",
+          "role": "Federal Judge, Court 1, longest-serving at Comodoro Py"
+        },
+        {
+          "name": "Sebastian Roberto Ramos",
+          "type": "person",
+          "role": "Federal Judge, Court 2"
+        },
+        {
+          "name": "Marcelo Pedro Hernan Martinez de Giorgi",
+          "type": "person",
+          "role": "Federal Judge, Court 8"
+        },
+        {
+          "name": "Taiano",
+          "type": "person",
+          "role": "Federal prosecutor who concentrates most sensitive cases alongside Ercolini"
+        }
+      ]
     },
     {
-      "id": "DALESSANDRO-001",
-      "person": "Marcelo D'Alessandro",
-      "role": "Ex-Ministro de Seguridad de CABA",
-      "category": "lago_escondido_organizer",
-      "evidence_es": "D'Alessandro participo en el viaje a Lago Escondido. El hackeo de su telefono celular revelo chats de Telegram entre jueces federales, funcionarios de CABA, ex agentes de inteligencia y ejecutivos de Clarin discutiendo como prevenir la divulgacion del viaje.",
-      "evidence_en": "D'Alessandro participated in the Lago Escondido trip. The hacking of his cell phone revealed Telegram chats between federal judges, Buenos Aires City officials, former intelligence agents, and Clarin executives discussing how to prevent disclosure of the trip.",
+      "id": "COMODORO-005",
+      "person": null,
+      "role": "Nepotism pattern: family ties within Comodoro Py",
+      "entity": "Comodoro Py judicial family network",
+      "evidence_es": "Chequeado documento las relaciones de parentesco dentro de la Justicia Federal de Comodoro Py, revelando un patron sistemico de contratacion de familiares de jueces y funcionarios judiciales. Las familias judiciales perpetuan redes de lealtad personal que dificultan la independencia y generan un sistema cerrado donde el acceso depende de conexiones familiares mas que del merito. El Consejo de la Magistratura, que deberia controlar estas practicas, esta dominado por legisladores (40% del cuerpo) con intereses politicos propios.",
+      "evidence_en": "Chequeado documented kinship relationships within the Federal Justice system at Comodoro Py, revealing a systemic pattern of hiring relatives of judges and judicial officials. Judicial families perpetuate networks of personal loyalty that hinder independence and create a closed system where access depends on family connections rather than merit. The Magistrate Council, which should oversee these practices, is dominated by legislators (40% of the body) with their own political interests.",
+      "severity": "high",
       "source_urls": [
-        "https://noticias.perfil.com/noticias/politica/lago-escondido-favores-poder-y-espionaje.phtml",
-        "https://www.lacapital.com.ar/politica/escandalo-un-chat-jueces-funcionarios-macristas-y-empresarios-medios-ocultar-un-viaje-al-sur-n10034921.html"
+        "https://chequeado.com/el-explicador/la-familia-judicial-conoce-las-relaciones-de-parentesco-que-existen-en-la-justicia-federal-de-comodoro-py/"
       ],
-      "severity": "high"
+      "new_entities": []
     },
     {
-      "id": "CAPUCHETTI-001",
-      "person": "Maria Eugenia Capuchetti",
-      "role": "Jueza Federal subrogante Juzgado N.9",
-      "category": "key_judge_profile",
-      "evidence_es": "Capuchetti subroga el Juzgado Federal N.9, una de las vacantes criticas en Comodoro Py. El gobierno de Milei prioriza cubrir esta vacante junto con los Juzgados 6, 11 y 12.",
-      "evidence_en": "Capuchetti fills in at Federal Court No. 9, one of the critical vacancies at Comodoro Py. The Milei government prioritizes filling this vacancy along with Courts 6, 11, and 12.",
+      "id": "CONSEJO-002",
+      "person": null,
+      "role": "Institutional analysis: judge appointment process",
+      "entity": "Consejo de la Magistratura / Senado / Poder Ejecutivo",
+      "evidence_es": "El proceso de seleccion de jueces federales inferiores: (1) El Consejo de la Magistratura abre concurso publico, (2) toma examen escrito a postulantes que cumplen requisitos constitucionales, (3) evalua antecedentes personales, (4) elabora terna vinculante de 3 candidatos, (5) el Presidente de la Nacion elige de la terna, (6) el Senado otorga acuerdo en sesion publica. Para jueces de la Corte Suprema, el proceso es diferente: el Presidente propone, se requiere acuerdo de 2/3 del Senado, con audiencias publicas. En la practica, Milei intento evadir este requisito con el Decreto 137/2025, designando a Lijo y Garcia-Mansilla 'en comision' sin acuerdo del Senado, lo que fue declarado inconstitucional.",
+      "evidence_en": "The process for appointing lower federal judges: (1) Magistrate Council opens public competition, (2) administers written exam to qualified candidates, (3) evaluates personal background, (4) prepares binding shortlist of 3 candidates, (5) President selects from shortlist, (6) Senate confirms in public session. For Supreme Court justices, the process differs: President nominates, 2/3 Senate agreement required, with public hearings. In practice, Milei attempted to circumvent this via Decree 137/2025, appointing Lijo and Garcia-Mansilla 'in commission' without Senate agreement, which was declared unconstitutional.",
+      "severity": "high",
       "source_urls": [
-        "https://www.infobae.com/politica/2026/03/05/mas-de-300-vacantes-en-la-justicia-cual-es-el-plan-del-gobierno-para-nombrar-jueces-y-fiscales-y-que-casilleros-clave-mirara-primero/"
+        "https://www.infobae.com/politica/2021/11/07/como-se-elige-a-los-jueces/",
+        "https://www.argentina.gob.ar/justicia/argentina/seleccionmagistrados",
+        "https://consejomagistratura.gov.ar/index.php/proceso-de-seleccion-de-magistrados/",
+        "https://chequeado.com/ultimas-noticias/icomo-se-designa-a-un-juez/",
+        "https://www.palabrasdelderecho.com.ar/articulo/5872/Declararon-inconstitucional-la-designacion-de-Garcia-Mansilla-y-Lijo-en-la-Corte-Suprema"
       ],
-      "severity": "medium"
+      "new_entities": []
     },
     {
-      "id": "CUNEO-001",
-      "person": "Mariano Cuneo Libarona",
-      "role": "Ministro de Justicia de la Nacion",
-      "category": "revolving_door",
-      "evidence_es": "Cuneo Libarona fue abogado defensor de los hermanos Lijo en la causa por enriquecimiento ilicito. Luego fue nombrado Ministro de Justicia por Milei. El mismo gobierno que lo nombro ministro postulo a Lijo para la Corte Suprema. Cuneo Libarona debio excusarse del procedimiento de postulacion de Lijo por conflicto de intereses.",
-      "evidence_en": "Cuneo Libarona was defense attorney for the Lijo brothers in the illicit enrichment case. He was then appointed Justice Minister by Milei. The same government that appointed him minister nominated Lijo for the Supreme Court. Cuneo Libarona had to recuse himself from Lijo's nomination process due to conflict of interest.",
+      "id": "CANICOBA-001",
+      "person": "Rodolfo Canicoba Corral",
+      "role": "Federal Judge (Juzgado Federal 6, 1993-2020), retired July 2020 at age 75",
+      "entity": "Juzgado Federal 6 / Comodoro Py",
+      "evidence_es": "Canicoba Corral fue juez federal durante 27 anos, llegando al Juzgado Federal 6 en 1993 durante el gobierno de Menem. Presento renuncia y pidio jubilacion al acercarse a los 75 anos. En sus ultimos dias como juez, beneficio a kirchneristas y complico a macristas, incluyendo investigaciones contra el ex ministro de Hacienda Nicolas Dujovne en la causa Autopistas. Se jubilo en medio de acusaciones en el Consejo de la Magistratura por mal desempeno y presunta corrupcion, recibiendo una jubilacion de aproximadamente $330.000 mensuales. Habia manejado la causa AMIA. Su vacante en el Juzgado 6 permanecio sin cubrir por anos, siendo eventualmente absorbida por Lijo en 2023.",
+      "evidence_en": "Canicoba Corral was federal judge for 27 years, arriving at Federal Court 6 in 1993 during the Menem government. He resigned and requested retirement approaching age 75. In his final days as judge, he benefited Kirchnerists and complicated Macri allies, including investigations against former Finance Minister Nicolas Dujovne in the Autopistas case. He retired amid accusations before the Magistrate Council for poor performance and alleged corruption, receiving a retirement pension of approximately $330,000 pesos monthly. He had handled the AMIA case. His vacancy at Court 6 remained unfilled for years, eventually absorbed by Lijo in 2023.",
+      "severity": "medium",
       "source_urls": [
-        "https://www.lanacion.com.ar/politica/la-causa-por-enriquecimiento-ilicito-contra-los-hermanos-lijo-la-cerro-en-silencio-un-juez-cercano-y-nid22032024/",
-        "https://www.lanacion.com.ar/politica/cuneo-libarona-se-excuso-de-intervenir-en-el-procedimiento-por-la-postulacion-del-juez-ariel-lijo-nid27122024/"
+        "https://www.lanacion.com.ar/politica/el-ultimo-dia-canicoba-corral-nid2406663/",
+        "https://www.infobae.com/politica/2020/08/10/oficializaron-la-renuncia-del-juez-canicoba-corral/",
+        "https://www.perfil.com/noticias/politica/en-medio-de-su-ola-de-procesamiento-canicoba-corral-dejo-de-ser-juez.phtml",
+        "https://www.cadena3.com/noticia/politica-y-economia/renuncio-canicoba-corral-un-historico-juez-de-comodoro-py_265271"
       ],
-      "severity": "critical"
+      "new_entities": [
+        {
+          "name": "Rodolfo Canicoba Corral",
+          "type": "person",
+          "role": "Former Federal Judge, Court 6 (1993-2020), Menem appointee, handled AMIA case"
+        },
+        {
+          "name": "Nicolas Dujovne",
+          "type": "person",
+          "role": "Former Finance Minister investigated by Canicoba in Autopistas case"
+        }
+      ]
     },
     {
-      "id": "MAGISTRATURA-001",
-      "person": "Consejo de la Magistratura",
-      "role": "Organo constitucional de seleccion y disciplina judicial",
-      "category": "systemic_political_capture",
-      "evidence_es": "El Consejo de la Magistratura fue creado en la reforma constitucional de 1994 para que la seleccion de jueces fuera mas tecnica, pero fue rapidamente cooptado por la politica. Esta compuesto por representantes de jueces, legisladores, abogados, el Poder Ejecutivo y academicos. Los concursos publicos generan ternas vinculantes que el Presidente eleva al Senado, pero la composicion politica del Consejo permite influir en quien llega a las ternas. En 2026, debe cubrir 157 vacantes y el gobierno prioriza 4 juzgados clave de Comodoro Py.",
-      "evidence_en": "The Magistracy Council was created in the 1994 constitutional reform to make judge selection more technical, but was quickly co-opted by politics. It is composed of representatives of judges, legislators, lawyers, the Executive, and academics. Public competitions generate binding three-candidate shortlists that the President sends to the Senate, but the Council's political composition allows influence over who makes the shortlist. In 2026, it must fill 157 vacancies and the government prioritizes 4 key Comodoro Py courts.",
+      "id": "ERCOLINI-003",
+      "person": "Julian Ercolini",
+      "role": "Federal Judge, Court 10 — case concentration pattern",
+      "entity": "Comodoro Py political cases",
+      "evidence_es": "Ercolini y el fiscal Taiano se han convertido en el duo que concentra las causas mas sensibles de Comodoro Py. Perfil titulo: 'Ercolini contra Alberto Fernandez y Lijo contra Macri: Comodoro Py se alinea con la agenda judicial de Milei'. Ademas de las causas Vialidad, Hotesur, Los Sauces y Oil Combustibles, Ercolini recibio la denuncia de Fabiola Yanez contra Alberto Fernandez por violencia de genero. Alberto Fernandez lo recuso en la causa Seguros, aportando chats entre ambos y declarando: 'Me detesta y me quiere preso'. Fue apartado de la causa 'Operativo Puff' por la Camara Federal. Designado en 2004 por Nestor Kirchner, termino siendo uno de los jueces que mas dano hizo al kirchnerismo.",
+      "evidence_en": "Ercolini and prosecutor Taiano have become the duo that concentrates the most sensitive cases at Comodoro Py. Perfil headlined: 'Ercolini vs Alberto Fernandez and Lijo vs Macri: Comodoro Py aligns with Milei's judicial agenda'. Beyond the Vialidad, Hotesur, Los Sauces and Oil Combustibles cases, Ercolini received Fabiola Yanez's complaint against Alberto Fernandez for gender violence. Alberto Fernandez recused him in the Insurance case, providing chats between them and declaring: 'He detests me and wants me in prison'. He was removed from 'Operativo Puff' case by the Federal Chamber. Appointed in 2004 by Nestor Kirchner, he ended up being one of the judges who most damaged Kirchnerism.",
+      "severity": "high",
       "source_urls": [
-        "https://consejomagistratura.gov.ar/index.php/seleccion-de-jueces/",
-        "https://www.infobae.com/judiciales/2026/02/07/el-consejo-de-la-magistratura-se-reactiva-definira-ternas-para-157-vacantes-y-el-futuro-de-jueces-investigados/",
-        "https://www.infobae.com/politica/2021/11/07/como-se-elige-a-los-jueces/"
+        "https://elargentinodiario.com.ar/zona-destacada/13/03/2026/el-juez-ercolini-y-el-fiscal-taiano-el-duo-que-allano-la-uom-concentra-las-causas-mas-sensibles-de-comodoro-py/",
+        "https://www.perfil.com/noticias/politica/ercolini-contra-alberto-y-lijo-contra-macri-comodoro-py-se-alinea-con-la-agenda-judicial-de-javier-milei.phtml",
+        "https://www.infobae.com/politica/2025/02/03/alberto-fernandez-llego-a-comodoro-py-para-participar-de-una-audiencia-que-podria-definir-su-futuro-en-la-causa-seguros/",
+        "https://www.eldiarioar.com/politica/julian-ercolini-juez-manejo-causas-sensibles-kirchnerismo-recibio-denuncia-fabiola-yanez_1_11574744.html"
       ],
-      "severity": "high"
+      "new_entities": [
+        {
+          "name": "Fabiola Yanez",
+          "type": "person",
+          "role": "Former First Lady, filed gender violence complaint against Alberto Fernandez handled by Ercolini"
+        }
+      ]
     },
     {
-      "id": "LEGAL-001",
-      "person": "N/A (systemic)",
-      "role": "Marco legal argentino",
-      "category": "legal_framework",
-      "evidence_es": "El Art. 268(2) del Codigo Penal establece penas de 2 a 6 anos de prision, multa del 50-100% del valor del enriquecimiento, e inhabilitacion perpetua para funcionarios que no puedan justificar un enriquecimiento patrimonial apreciable ocurrido despues de asumir el cargo y hasta 2 anos despues de dejarlo. La Ley de Etica Publica regula las declaraciones juradas y el regimen de incompatibilidades. Sin embargo, la aplicacion es debil: las causas se cierran, prescriben, o se sobreseen sistematicamente.",
-      "evidence_en": "Article 268(2) of the Penal Code establishes penalties of 2-6 years imprisonment, a fine of 50-100% of the enrichment value, and perpetual disqualification for officials who cannot justify appreciable patrimonial enrichment after assuming office and up to 2 years after leaving. The Public Ethics Law regulates sworn declarations and the incompatibility regime. However, enforcement is weak: cases are systematically closed, reach statute of limitations, or are dismissed.",
+      "id": "OFARRELL-001",
+      "person": null,
+      "role": "Corporate-judicial nexus: major law firms",
+      "entity": "Estudio O'Farrell / Marval O'Farrell Mairal",
+      "evidence_es": "El Estudio O'Farrell, fundado en 1883 por Santiago Gregorio O'Farrell, es uno de los bufetes mas antiguos de Argentina con 140 anos de historia. Marval O'Farrell Mairal, con mas de 300 abogados, fue premiado como mejor estudio juridico de Argentina por Chambers and Partners en los Latin American Awards 2024 (12 veces, 7 consecutivas). La Ley de Etica Publica (25.188) establece incompatibilidades entre funcion publica y representacion de empresas reguladas por el Estado, pero nuestro grafo muestra jueces listados como directivos de empresas. La Oficina Anticorrupcion carece de mecanismos efectivos para fiscalizar estas incompatibilidades. Se requiere investigacion adicional para mapear las conexiones especificas entre estudios juridicos y jueces federales.",
+      "evidence_en": "The O'Farrell firm, founded in 1883 by Santiago Gregorio O'Farrell, is one of Argentina's oldest law firms with 140 years of history. Marval O'Farrell Mairal, with over 300 lawyers, was awarded best Argentine law firm by Chambers and Partners at the 2024 Latin American Awards (12 times, 7 consecutive). The Public Ethics Law (25.188) establishes incompatibilities between public office and representing state-regulated companies, but our graph shows judges listed as corporate officers. The Anti-Corruption Office lacks effective enforcement mechanisms. Additional investigation is needed to map specific connections between law firms and federal judges.",
+      "severity": "medium",
       "source_urls": [
-        "https://www.pensamientopenal.com.ar/system/files/cpcomentado/cpc37774.pdf",
-        "https://www.argentina.gob.ar/justicia/derechofacil/leysimple/etica-en-la-funcion-publica"
+        "https://www.marval.com/lang=en",
+        "https://www.estudio-ofarrell.com/en/",
+        "https://www.lanacion.com.ar/economia/negocios/la-historia-del-estudio-de-abogados-mas-antiguo-de-buenos-aires-que-mantiene-clientes-desde-nid08072023/",
+        "https://www.argencon.org/marval-ofarrell-mairal-el-mejor-estudio-juridico-de-argentina-en-los-latin-american-awards-2024/"
       ],
-      "severity": "high"
+      "new_entities": [
+        {
+          "name": "Estudio O'Farrell",
+          "type": "company",
+          "description": "One of Argentina's oldest law firms (est. 1883), specializing in complex legal matters"
+        },
+        {
+          "name": "Marval O'Farrell Mairal",
+          "type": "company",
+          "description": "Argentina's largest law firm (300+ lawyers), awarded best firm 12 times by Chambers and Partners"
+        }
+      ]
     },
     {
-      "id": "LEGAL-002",
-      "person": "N/A (systemic)",
-      "role": "Incompatibilidades judiciales",
-      "category": "legal_framework",
-      "evidence_es": "Las incompatibilidades para funcionarios publicos incluyen: no pueden prestar servicios a concesionarios del Estado donde tengan competencia, ni ser proveedores del organismo donde ejercen. La Ley General de Sociedades (Art. 342) establece inhabilitaciones para ciertos roles corporativos. Sin embargo, no existe una prohibicion explicita suficientemente fuerte para impedir que jueces usen testaferros, sociedades anonimas o familiares para ocultar patrimonio.",
-      "evidence_en": "Incompatibilities for public officials include: cannot provide services to State concessionaires within their jurisdiction, nor be suppliers to their agency. The General Corporations Law (Art. 342) establishes disqualifications for certain corporate roles. However, there is no explicit prohibition strong enough to prevent judges from using nominees, anonymous corporations, or family members to conceal assets.",
-      "source_urls": [
-        "https://leyes-ar.com/ley_general_de_sociedades/342.htm",
-        "https://www.argentina.gob.ar/justicia/derechofacil/leysimple/etica-en-la-funcion-publica"
-      ],
-      "severity": "medium"
-    },
-    {
-      "id": "PATTERN-001",
-      "person": "N/A (systemic)",
-      "role": "Patron sistemico",
-      "category": "systemic_impunity",
-      "evidence_es": "Patron recurrente en Comodoro Py: (1) Jueces con patrimonio inexplicable que no se investiga o se cierra, (2) Viajes financiados por grupos economicos a jueces que resuelven sus causas, (3) Reuniones secretas entre jueces y el Poder Ejecutivo durante causas sensibles, (4) Causas de enriquecimiento que prescriben o se anulan por tecnicismos, (5) El abogado defensor de un juez cuestionado se convierte en Ministro de Justicia y el mismo gobierno postula al juez a la Corte Suprema, (6) Jueces que cierran causas de colegas y luego reciben favores reciprocos.",
-      "evidence_en": "Recurring pattern at Comodoro Py: (1) Judges with unexplained wealth that goes uninvestigated or cases are closed, (2) Trips financed by economic groups for judges who rule on their cases, (3) Secret meetings between judges and the Executive during sensitive cases, (4) Enrichment cases that expire or are annulled on technicalities, (5) A judge's defense lawyer becomes Justice Minister and the same government nominates the judge to the Supreme Court, (6) Judges who close colleagues' cases then receive reciprocal favors.",
-      "source_urls": [],
-      "severity": "critical"
-    },
-    {
-      "id": "MILEI-JUDICIARY-001",
+      "id": "DECRETO-001",
       "person": "Javier Milei",
-      "role": "Presidente de la Nacion",
-      "category": "executive_judicial_interference",
-      "evidence_es": "Milei designo a Lijo por decreto para la Corte Suprema pese al rechazo del Senado (43 votos en contra). Su Ministro de Justicia (Cuneo Libarona) era el ex abogado de Lijo. El nuevo Ministro de Justicia designado en 2026 tambien tiene vinculos con el escandalo de Lago Escondido. El gobierno prioriza cubrir las 4 vacantes clave en Comodoro Py.",
-      "evidence_en": "Milei appointed Lijo by decree to the Supreme Court despite Senate rejection (43 votes against). His Justice Minister (Cuneo Libarona) was Lijo's former lawyer. The new Justice Minister appointed in 2026 also has ties to the Lago Escondido scandal. The government prioritizes filling the 4 key vacancies at Comodoro Py.",
+      "role": "President of Argentina",
+      "entity": "Decreto 137/2025 — unconstitutional Supreme Court appointments",
+      "evidence_es": "El 25 de febrero de 2025, Milei firmo el Decreto 137/2025 designando 'en comision' a Ariel Lijo y Manuel Garcia-Mansilla en la Corte Suprema. El juez Alejo Ramos Padilla declaro la inconstitucionalidad y no-convencionalidad del decreto. El juez afirmo que en los ultimos 100 anos ningun presidente electo democraticamente habia realizado nombramientos en comision a la Corte Suprema. El unico juez que asumio en comision en ese periodo fue el propio Garcia-Mansilla. El Senado habia rechazado expresamente el pliego de Lijo con 43 votos en contra. Expertos constitucionalistas criticaron la medida. El Observatorio del Derecho a la Ciudad logro la declaracion de inconstitucionalidad. El decreto viola el texto constitucional y 'afecta gravemente la forma republicana de gobierno, poniendo en riesgo la imparcialidad de los jueces y la independencia del Poder Judicial'.",
+      "evidence_en": "On February 25, 2025, Milei signed Decree 137/2025 appointing Ariel Lijo and Manuel Garcia-Mansilla to the Supreme Court 'in commission'. Judge Alejo Ramos Padilla declared the decree unconstitutional. The judge affirmed that in the last 100 years no democratically elected president had made temporary Supreme Court appointments. The only judge who assumed in commission in that period was Garcia-Mansilla himself. The Senate had expressly rejected Lijo's candidacy with 43 votes against. Constitutional experts criticized the measure. The Observatory of the Right to the City achieved the unconstitutionality declaration. The decree violates constitutional text and 'seriously affects the republican form of government, putting at risk judicial impartiality and the independence of the Judicial Branch'.",
+      "severity": "critical",
       "source_urls": [
-        "https://www.infobae.com/politica/2025/02/27/cinco-escenarios-que-se-abren-tras-la-designacion-de-ariel-lijo-y-garcia-mansilla-en-la-corte-que-pueden-hacer-el-senado-el-gobierno-y-la-justicia/",
-        "https://www.eldiarioar.com/politica/escandaloso-viaje-lago-escondido-lazos-afa-tapia-nuevo-ministro-justicia-milei_1_13040667.html"
+        "https://observatoriociudad.org/hist%C3%B3rico-logramos-que-la-justicia-federal-declare-inconstitucional-el-decreto-137-2025-que-desing%C3%B3-como-jueces-de-la-corte-suprema-a-garc%C3%ADa-mansilla-y-lijo/",
+        "https://www.palabrasdelderecho.com.ar/articulo/5872/Declararon-inconstitucional-la-designacion-de-Garcia-Mansilla-y-Lijo-en-la-Corte-Suprema",
+        "https://www.lagaceta.com.ar/nota/1079663/politica/corte-suprema-justicia-declaro-inconstitucional-decreto-nombro-jueces-comision.html",
+        "https://www.resumenlatinoamericano.org/2025/04/18/argentina-un-mensaje-de-la-justicia-a-milei-nombrar-jueces-por-decreto-es-inconstitucional",
+        "https://www.infobae.com/politica/2025/02/26/el-gobierno-defendio-el-nombramiento-por-decreto-de-ariel-lijo-y-garcia-mansilla-como-jueces-de-la-corte-suprema/"
       ],
-      "severity": "critical"
+      "new_entities": [
+        {
+          "name": "Alejo Ramos Padilla",
+          "type": "person",
+          "role": "Federal judge who declared Decree 137/2025 unconstitutional"
+        },
+        {
+          "name": "Observatorio del Derecho a la Ciudad",
+          "type": "institution",
+          "description": "Civil society org that brought the unconstitutionality action against Decree 137/2025"
+        }
+      ]
     }
-  ]
+  ],
+  "summary": {
+    "total_findings": 17,
+    "severity_breakdown": {
+      "critical": 8,
+      "high": 7,
+      "medium": 2
+    },
+    "key_patterns": [
+      "Case paralysis as political protection: Lijo kept 13 corruption cases open 10+ years without resolution, including Siemens (26 years), YPF (18 years), Ruckauf (17 years) — impunity through procedural delay",
+      "Unprecedented court concentration: Single judge (Lijo) controlled 3 of 12 federal courts simultaneously (25%), creating a de facto judicial oligopoly over federal criminal jurisdiction in Buenos Aires",
+      "Constitutional crisis via decree: Milei bypassed the constitutional 2/3 Senate requirement with Decree 137/2025, declared unconstitutional — first temporary Supreme Court appointment by a democratic president in 100 years",
+      "International condemnation: HRW, CELS, ACIJ, NBC News all documented systemic problems with Lijo nomination — Argentina's judicial independence crisis has international visibility",
+      "Menem's designed court: Comodoro Py itself was architecturally and institutionally designed by Carlos Menem in the 1990s, expanding from 6 to 12 courts and populating them with allied judges — the infrastructure of impunity is physical, not just procedural",
+      "Procuraduria vacante: The Attorney General position has been vacant since 2017, with an interim (Casal) lacking full democratic legitimacy — this weakens federal criminal prosecution at its root",
+      "Nisman-AMIA nexus: Rafecas dismissed Nisman's complaint against CFK without taking evidence, was sanctioned for 'lack of decorum', then was nominated as Attorney General by the same political faction — judicial favors creating career advancement",
+      "Judicial nepotism: Chequeado documented systemic kinship networks within Comodoro Py, perpetuating a closed system based on family connections over merit",
+      "Accusatory reform as power redistribution: The August 2025 shift from inquisitorial to accusatory system at Comodoro Py transfers investigative power from judges to prosecutors, fundamentally altering the ecosystem that enabled judges to selectively advance or delay cases"
+    ],
+    "new_entities_total": 35,
+    "persons_identified": [
+      "Alberto Nisman (AMIA prosecutor, found dead 2015)",
+      "Daniel Eduardo Rafecas (Judge, Court 3, dismissed Nisman complaint)",
+      "Eduardo Casal (Interim Attorney General since 2017)",
+      "Alejandra Gils Carbo (Former Attorney General)",
+      "Magali Mazzuca (Lijo's ex-partner, Supreme Court clerk)",
+      "Elisa Carrio (Former congresswoman, filed complaint against Lijo)",
+      "Amado Boudou (Former VP, processed by Lijo)",
+      "Maria Romilda Servini (Judge, Court 1)",
+      "Sebastian Roberto Ramos (Judge, Court 2)",
+      "Marcelo Pedro Hernan Martinez de Giorgi (Judge, Court 8)",
+      "Rodolfo Canicoba Corral (Former Judge, Court 6, 1993-2020)",
+      "Oscar Aguad (Former Communications Minister)",
+      "Fabiola Yanez (Former First Lady)",
+      "Carlos Menem (President who designed Comodoro Py system)",
+      "Alejo Ramos Padilla (Judge who declared Decree 137/2025 unconstitutional)"
+    ],
+    "institutions_identified": [
+      "ACIJ (Asociacion Civil por la Igualdad y la Justicia)",
+      "CELS (Centro de Estudios Legales y Sociales)",
+      "Human Rights Watch",
+      "DAIA (Delegacion de Asociaciones Israelitas Argentinas)",
+      "AMIA (Asociacion Mutual Israelita Argentina)",
+      "INECIP (Instituto de Estudios Comparados en Ciencias Penales y Sociales)",
+      "Procuracion General de la Nacion",
+      "Observatorio del Derecho a la Ciudad"
+    ],
+    "companies_identified": [
+      "Correo Argentino SA",
+      "Grupo Socma",
+      "Estudio O'Farrell",
+      "Marval O'Farrell Mairal"
+    ],
+    "legal_cases_identified": [
+      "Causa Siemens (26 years open)",
+      "Causa YPF vaciamiento (18 years open)",
+      "Causa Ruckauf (17 years open)",
+      "Causa Correo Argentino (20 years, Macris unpaid)",
+      "Causa Ciccone (Boudou conviction)",
+      "Denuncia Nisman (dismissed by Rafecas 2015)",
+      "Causa AMIA (1994 bombing, ongoing)"
+    ]
+  }
 }
