@@ -112,7 +112,7 @@ export function EngineDashboard({ casoSlug }: EngineDashboardProps) {
         {!loading && !error && (
           <>
             {activeTab === 'pipeline' && (
-              <PipelineStatus casoSlug={casoSlug} pipelineStateId={pipelineStateId} />
+              <PipelineStatus casoSlug={casoSlug} pipelineStateId={pipelineStateId} pipelineId={activePipelineId} />
             )}
             {activeTab === 'proposals' && (
               <ProposalReview casoSlug={casoSlug} pipelineStateId={pipelineStateId} />
