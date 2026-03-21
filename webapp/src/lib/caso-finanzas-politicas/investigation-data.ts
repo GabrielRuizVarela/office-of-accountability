@@ -96,7 +96,19 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     source: 'Cross-reference engine',
   },
   {
-    value: '$609B',
+    value: '133',
+    label_es: 'Nodos de investigación',
+    label_en: 'Investigation nodes',
+    source: 'Neo4j graph',
+  },
+  {
+    value: '22',
+    label_es: 'Personas críticas identificadas',
+    label_en: 'Critical persons identified',
+    source: 'Cross-reference engine',
+  },
+  {
+    value: '$674B',
     label_es: 'Valor total contratos rastreados (ARS)',
     label_en: 'Total tracked contract value (ARS)',
     source: 'Compr.ar / Boletín Oficial',
@@ -1033,15 +1045,15 @@ export const ACTORS: readonly Actor[] = [
     status_en: 'Revolving door — allegations pending',
   },
   {
-    id: 'actor-gianfranco',
+    id: 'actor-macri-gianfranco',
     name: 'Gianfranco Macri',
-    role_es: 'Cabeza operativa de SOCMA',
-    role_en: 'Operational head of SOCMA',
+    role_es: 'Cabeza operativa de SOCMA — 12 empresas, BF Corporation Panamá',
+    role_en: 'Operational head of SOCMA — 12 companies, BF Corporation Panama',
     description_es:
-      'Copropietario de BF Corporation (Panama). Declaro ARS 622M a traves del blanqueo 2016. Fondos transferidos a Safra Bank (Suiza). Denunciado penalmente por su hermano Mariano en 2024.',
+      'Cabeza operativa del grupo SOCMA, 12 empresas vinculadas. Copropietario de BF Corporation (Panamá). Declaró ARS 622M a través del blanqueo 2016. Fondos transferidos a Safra Bank (Suiza). Denunciado penalmente por su hermano Mariano en 2024.',
     description_en:
-      'Co-owner of BF Corporation (Panama). Declared ARS 622M through 2016 blanqueo. Funds transferred to Safra Bank (Switzerland). Criminally denounced by brother Mariano in 2024.',
-    party: '-',
+      'Operational head of SOCMA group, 12 linked companies. Co-owner of BF Corporation (Panama). Declared ARS 622M through 2016 blanqueo. Funds transferred to Safra Bank (Switzerland). Criminally denounced by brother Mariano in 2024.',
+    party: 'PRO',
     datasets: 3,
     status_es: 'Denunciado penalmente por hermano (2024)',
     status_en: 'Criminally denounced by brother (2024)',
@@ -1298,6 +1310,288 @@ export const ACTORS: readonly Actor[] = [
     datasets: 1,
     status_es: 'Investigación activa — retención de alimentos',
     status_en: 'Active investigation — food withholding',
+  },
+  // --- Missing critical persons ---
+  {
+    id: 'actor-fernandez-alberto',
+    name: 'Alberto Fernández',
+    role_es: 'Expresidente — firmó Decreto 823/2021 (monopolio seguros)',
+    role_en: 'Former President — signed Decree 823/2021 (insurance monopoly)',
+    description_es:
+      'Firmó el decreto que obligó al Estado a contratar con Nación Seguros, creando el monopolio explotado por su amigo broker Martínez Sosa ($366M en comisiones). Procesado en Causa Seguros.',
+    description_en:
+      'Signed the decree mandating state contracting with Nación Seguros, creating the monopoly exploited by his broker friend Martínez Sosa ($366M in commissions). Prosecuted in Causa Seguros.',
+    party: 'Frente de Todos',
+    datasets: 3,
+    status_es: 'Procesado — Causa Seguros activa',
+    status_en: 'Prosecuted — Causa Seguros active',
+  },
+  {
+    id: 'actor-macri-francisco',
+    name: 'Francisco Macri',
+    role_es: 'Patriarca Macri — fundador SOCMA — 17 empresas',
+    role_en: 'Macri patriarch — SOCMA founder — 17 companies',
+    description_es:
+      'Fundador de SOCMA y patriarca del clan Macri. Red de 17 empresas. Base del emporio familiar que incluye Correo Argentino, IECSA, SIDECO y múltiples offshore. Pilar del esquema empresarial que se entrelaza con el poder político.',
+    description_en:
+      'Founder of SOCMA and patriarch of the Macri clan. Network of 17 companies. Foundation of the family empire including Correo Argentino, IECSA, SIDECO and multiple offshore entities. Pillar of the business structure intertwined with political power.',
+    party: 'PRO',
+    datasets: 4,
+    status_es: 'Red empresarial documentada — 17 empresas',
+    status_en: 'Business network documented — 17 companies',
+  },
+  {
+    id: 'actor-macri-jorge',
+    name: 'Jorge Macri',
+    role_es: 'Jefe de Gobierno CABA — 4 empresas',
+    role_en: 'Head of Government CABA — 4 companies',
+    description_es:
+      'Jefe de Gobierno de la Ciudad de Buenos Aires. Vinculado a 4 empresas. Absolución por lavado de dinero revocada en febrero de 2026. Primo de Mauricio Macri.',
+    description_en:
+      'Head of Government of Buenos Aires City. Linked to 4 companies. Money laundering acquittal revoked in February 2026. Cousin of Mauricio Macri.',
+    party: 'PRO',
+    datasets: 3,
+    status_es: 'Absolución por lavado revocada (Feb 2026)',
+    status_en: 'Money laundering acquittal revoked (Feb 2026)',
+  },
+  {
+    id: 'actor-caputo-luis',
+    name: 'Luis Andrés Caputo',
+    role_es: 'Ministro de Economía — 13 empresas (Anker), primo de Nicky',
+    role_en: 'Economy Minister — 13 companies (Anker), Nicky\'s first cousin',
+    description_es:
+      'Ministro de Economía bajo Milei. Red de 13 empresas vinculadas incluyendo Anker Latinoamérica. Primo hermano de Nicolás Caputo (empresario PRO). Previamente presidente del BCRA y Ministro de Finanzas bajo Macri.',
+    description_en:
+      'Economy Minister under Milei. Network of 13 linked companies including Anker Latinoamérica. First cousin of Nicolás Caputo (PRO businessman). Previously BCRA president and Finance Minister under Macri.',
+    party: 'La Libertad Avanza',
+    datasets: 4,
+    status_es: 'Conflicto de interés — 13 empresas vinculadas',
+    status_en: 'Conflict of interest — 13 linked companies',
+  },
+  {
+    id: 'actor-caputo-nicolas',
+    name: 'Nicolás Caputo',
+    role_es: 'Empresario — íntimo de Macri, fundador PENSAR — 13 empresas',
+    role_en: 'Businessman — Macri intimate, PENSAR founder — 13 companies',
+    description_es:
+      'Amigo íntimo de Mauricio Macri y fundador de la Fundación PENSAR (think tank PRO). Red de 13 empresas. Beneficiario de contratos estatales durante la presidencia de Macri. Primo de Luis "Toto" Caputo.',
+    description_en:
+      'Intimate friend of Mauricio Macri and founder of Fundación PENSAR (PRO think tank). Network of 13 companies. Beneficiary of state contracts during Macri\'s presidency. Cousin of Luis "Toto" Caputo.',
+    party: 'PRO',
+    datasets: 4,
+    status_es: 'Contratos estatales documentados — red de 13 empresas',
+    status_en: 'State contracts documented — 13-company network',
+  },
+  {
+    id: 'actor-mindlin',
+    name: 'Marcos Mindlin',
+    role_es: 'CEO Pampa Energía — 52 empresas, monopolio eléctrico Buenos Aires',
+    role_en: 'CEO Pampa Energía — 52 companies, Buenos Aires electricity monopoly',
+    description_es:
+      'Controla Pampa Energía con red de 52 empresas. CITELEC-EDELAP con 81 officers compartidos. Monopolio eléctrico de la Provincia de Buenos Aires. Nexo entre sector energético y poder político.',
+    description_en:
+      'Controls Pampa Energía with a 52-company network. CITELEC-EDELAP with 81 shared officers. Buenos Aires Province electricity monopoly. Nexus between energy sector and political power.',
+    party: '-',
+    datasets: 3,
+    status_es: 'Monopolio eléctrico documentado — 81 officers compartidos',
+    status_en: 'Electricity monopoly documented — 81 shared officers',
+  },
+  {
+    id: 'actor-werthein',
+    name: 'Darío Werthein',
+    role_es: 'Imperio asegurador — 29 empresas, Caja de Seguros',
+    role_en: 'Insurance empire — 29 companies, Caja de Seguros',
+    description_es:
+      'Cabeza del imperio asegurador Werthein. Red de 29 empresas. Caja de Seguros con 32 officers compartidos. Concentración de mercado en seguros y finanzas.',
+    description_en:
+      'Head of the Werthein insurance empire. Network of 29 companies. Caja de Seguros with 32 shared officers. Market concentration in insurance and finance.',
+    party: '-',
+    datasets: 3,
+    status_es: 'Concentración de mercado documentada — 32 officers compartidos',
+    status_en: 'Market concentration documented — 32 shared officers',
+  },
+  {
+    id: 'actor-herrera-de-noble',
+    name: 'Ernestina Herrera de Noble',
+    role_es: 'Fundadora/controladora Grupo Clarín',
+    role_en: 'Clarín Group founder/controller',
+    description_es:
+      'Fundadora y controladora del Grupo Clarín, el mayor conglomerado mediático de Argentina. Influencia documentada sobre poder judicial (vuelos a Lago Escondido, financiamiento de viajes de jueces). Vínculo directo con casos de captura mediática del poder judicial.',
+    description_en:
+      'Founder and controller of Grupo Clarín, Argentina\'s largest media conglomerate. Documented influence over the judiciary (Lago Escondido flights, financing judges\' trips). Direct link to cases of judicial media capture.',
+    party: '-',
+    datasets: 2,
+    status_es: 'Influencia mediática documentada sobre poder judicial',
+    status_en: 'Documented media influence over judiciary',
+  },
+  {
+    id: 'actor-davis',
+    name: 'Hayden Davis',
+    role_es: 'Kelsier Ventures — $LIBRA cashout de $107M',
+    role_en: 'Kelsier Ventures — $LIBRA $107M insider cashout',
+    description_es:
+      'Fundador de Kelsier Ventures. Organizador del token $LIBRA promovido por Milei. Cashout insider de $107M USD. Investigación penal activa en Argentina.',
+    description_en:
+      'Founder of Kelsier Ventures. Organizer of $LIBRA token promoted by Milei. $107M USD insider cashout. Active criminal investigation in Argentina.',
+    party: '-',
+    datasets: 2,
+    status_es: 'Investigación penal activa — $107M cashout',
+    status_en: 'Active criminal investigation — $107M cashout',
+  },
+  {
+    id: 'actor-hornos',
+    name: 'Gustavo Hornos',
+    role_es: 'Juez de Casación Penal — 6+ reuniones en Casa Rosada con Macri',
+    role_en: 'Criminal Cassation judge — 6+ meetings at Casa Rosada with Macri',
+    description_es:
+      'Juez de la Cámara Federal de Casación Penal. Se reunió con Macri en Olivos y Casa Rosada al menos 6 veces mientras presidía causas contra dirigentes kirchneristas. Visitas coinciden con momentos clave de las causas.',
+    description_en:
+      'Judge of the Federal Criminal Cassation Court. Met with Macri at Olivos and Casa Rosada at least 6 times while presiding over cases against Kirchnerist leaders. Visits coincide with key moments in the cases.',
+    party: 'Poder Judicial',
+    datasets: 2,
+    status_es: 'Visitas a Casa Rosada documentadas — conflicto de interés',
+    status_en: 'Casa Rosada visits documented — conflict of interest',
+  },
+  {
+    id: 'actor-borinsky',
+    name: 'Mariano Borinsky',
+    role_es: 'Juez de Casación Penal — 15+ visitas a Olivos',
+    role_en: 'Criminal Cassation judge — 15+ Olivos visits',
+    description_es:
+      'Juez de la Cámara Federal de Casación Penal. Visitó a Macri en Olivos al menos 15 veces mientras presidía causas contra dirigentes kirchneristas. Admitió que iba "a jugar al pádel". Las visitas coinciden con momentos clave de las causas.',
+    description_en:
+      'Judge of the Federal Criminal Cassation Court. Visited Macri at Olivos at least 15 times while presiding over cases against Kirchnerist leaders. Claimed he went "to play paddle tennis". Visits coincide with key moments in the cases.',
+    party: 'Poder Judicial',
+    datasets: 2,
+    status_es: 'Visitas a Olivos documentadas — conflicto de interés',
+    status_en: 'Olivos visits documented — conflict of interest',
+  },
+  // --- Missing high-severity persons ---
+  {
+    id: 'actor-kirchner-maximo',
+    name: 'Máximo Kirchner',
+    role_es: 'Diputado Nacional — $8.31B declarados, Los Sauces/Hotesur',
+    role_en: 'National Deputy — $8.31B declared, Los Sauces/Hotesur',
+    description_es:
+      'Diputado Nacional y líder de La Cámpora. Patrimonio declarado de $8.310 millones ARS. Vinculado a las causas Los Sauces y Hotesur por presunto lavado de dinero a través de alquileres ficticios.',
+    description_en:
+      'National Deputy and La Cámpora leader. Declared wealth of ARS $8.31 billion. Linked to Los Sauces and Hotesur cases for alleged money laundering through fictitious rentals.',
+    party: 'Unión por la Patria',
+    datasets: 3,
+    status_es: 'Causas Los Sauces/Hotesur — vinculado',
+    status_en: 'Los Sauces/Hotesur cases — linked',
+  },
+  {
+    id: 'actor-sturzenegger',
+    name: 'Federico Sturzenegger',
+    role_es: 'Ministro de Desregulación — $2.37B, crecimiento 45x, miembro PENSAR',
+    role_en: 'Deregulation Minister — $2.37B, 45x growth, PENSAR member',
+    description_es:
+      'Ministro de Desregulación y Transformación del Estado bajo Milei. Patrimonio declarado de $2.370 millones ARS con crecimiento de 45x. Miembro de la Fundación PENSAR (think tank PRO). Ex presidente del BCRA bajo Macri.',
+    description_en:
+      'Deregulation and State Transformation Minister under Milei. Declared wealth of ARS $2.37 billion with 45x growth. PENSAR Foundation member (PRO think tank). Former BCRA president under Macri.',
+    party: 'La Libertad Avanza',
+    datasets: 3,
+    status_es: 'Crecimiento patrimonial anómalo — 45x',
+    status_en: 'Anomalous wealth growth — 45x',
+  },
+  {
+    id: 'actor-closs',
+    name: 'Maurice Closs',
+    role_es: 'Senador Nacional — $8.82B declarados, crecimiento 367x',
+    role_en: 'National Senator — $8.82B declared, 367x growth',
+    description_es:
+      'Senador Nacional por Misiones. Patrimonio declarado de $8.820 millones ARS con crecimiento de 367x. Una de las mayores anomalías patrimoniales detectadas en el cruce de DDJJ.',
+    description_en:
+      'National Senator for Misiones. Declared wealth of ARS $8.82 billion with 367x growth. One of the largest wealth anomalies detected in the DDJJ cross-reference.',
+    party: 'Frente Nacional y Popular',
+    datasets: 2,
+    status_es: 'Anomalía patrimonial — crecimiento 367x',
+    status_en: 'Wealth anomaly — 367x growth',
+  },
+  {
+    id: 'actor-carrizo',
+    name: 'Ana Carla Carrizo',
+    role_es: 'Diputada Nacional — $7.07B, crecimiento 1577x',
+    role_en: 'National Deputy — $7.07B, 1577x growth',
+    description_es:
+      'Diputada Nacional. Patrimonio declarado de $7.070 millones ARS con crecimiento de 1577x. La mayor anomalía patrimonial porcentual detectada entre legisladores.',
+    description_en:
+      'National Deputy. Declared wealth of ARS $7.07 billion with 1577x growth. The largest percentage wealth anomaly detected among legislators.',
+    party: 'Democracia para Siempre',
+    datasets: 2,
+    status_es: 'Anomalía patrimonial — crecimiento 1577x',
+    status_en: 'Wealth anomaly — 1577x growth',
+  },
+  {
+    id: 'actor-casanello',
+    name: 'Sebastián Casanello',
+    role_es: 'Juez Federal — a cargo de la Causa Seguros',
+    role_en: 'Federal Judge — prosecuting Causa Seguros',
+    description_es:
+      'Juez Federal a cargo de la Causa Seguros contra Alberto Fernández y Martínez Sosa. Ordenó procesamientos y embargos en la causa por el monopolio de seguros estatales.',
+    description_en:
+      'Federal Judge handling the Causa Seguros against Alberto Fernández and Martínez Sosa. Ordered prosecutions and asset freezes in the state insurance monopoly case.',
+    party: 'Poder Judicial',
+    datasets: 2,
+    status_es: 'A cargo de Causa Seguros',
+    status_en: 'Handling Causa Seguros',
+  },
+  {
+    id: 'actor-francos',
+    name: 'Guillermo Francos',
+    role_es: 'Ex Jefe de Gabinete — Director YPF',
+    role_en: 'Former Chief of Staff — YPF Director',
+    description_es:
+      'Ex Jefe de Gabinete bajo Milei. Designado Director de YPF tras dejar el cargo. Puerta giratoria entre gobierno y empresa estatal energética.',
+    description_en:
+      'Former Chief of Staff under Milei. Appointed YPF Director after leaving office. Revolving door between government and state energy company.',
+    party: 'La Libertad Avanza',
+    datasets: 2,
+    status_es: 'Puerta giratoria — gobierno a YPF',
+    status_en: 'Revolving door — government to YPF',
+  },
+  {
+    id: 'actor-auguadra',
+    name: 'Cristian Auguadra',
+    role_es: 'Jefe de la SIDE — proxy de Santiago Caputo',
+    role_en: 'SIDE head — Santiago Caputo proxy',
+    description_es:
+      'Designado jefe de la SIDE (inteligencia). Actúa como proxy de Santiago Caputo. Los fondos reservados de inteligencia crecieron 2.838% bajo su gestión. Sin experiencia previa en inteligencia.',
+    description_en:
+      'Appointed SIDE (intelligence) head. Acts as proxy for Santiago Caputo. Intelligence reserved funds grew 2,838% under his management. No prior intelligence experience.',
+    party: 'La Libertad Avanza',
+    datasets: 1,
+    status_es: 'Fondos reservados +2838% — proxy documentado',
+    status_en: 'Reserved funds +2838% — documented proxy',
+  },
+  {
+    id: 'actor-scatturice',
+    name: 'Leonardo Scatturice',
+    role_es: 'Asociado de Caputo — comprador de Flybondi',
+    role_en: 'Caputo associate — Flybondi buyer',
+    description_es:
+      'Asociado de los Caputo. Compró Flybondi (aerolínea low-cost) con posible beneficio de desregulación aérea impulsada por el gobierno de Milei.',
+    description_en:
+      'Caputo associate. Bought Flybondi (low-cost airline) with possible benefit from airline deregulation pushed by the Milei government.',
+    party: '-',
+    datasets: 2,
+    status_es: 'Vínculo Caputo-desregulación documentado',
+    status_en: 'Caputo-deregulation link documented',
+  },
+  {
+    id: 'actor-rubinstein',
+    name: 'Adolfo Rubinstein',
+    role_es: 'Ex Secretario de Salud — aumentos post-licitación del 40%',
+    role_en: 'Former Health Secretary — 40% post-bid increases',
+    description_es:
+      'Ex Secretario de Salud. Autorizó aumentos del 40% en contratos de salud después de las licitaciones, beneficiando a proveedores seleccionados. Patrón sistemático de sobrecostos.',
+    description_en:
+      'Former Health Secretary. Authorized 40% increases in health contracts after bidding, benefiting selected providers. Systematic pattern of cost overruns.',
+    party: '-',
+    datasets: 2,
+    status_es: 'Sobrecostos post-licitación documentados — 40%',
+    status_en: 'Post-bid cost overruns documented — 40%',
   },
 ] as const
 
