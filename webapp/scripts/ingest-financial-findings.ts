@@ -77,23 +77,32 @@ async function main(): Promise<void> {
   }
 
   // Key relationships
-  const rels: Array<{ from: string; to: string; type: string; desc: string }> = [
-    { from: 'MARTINEZ SOSA HECTOR', to: 'FERNANDEZ ALBERTO', type: 'ASSOCIATED_WITH', desc: 'Personal associate and advisor 2010-2019' },
-    { from: 'MARTINEZ SOSA HECTOR', to: 'HECTOR MARTINEZ SOSA Y CIA S.A.', type: 'OFFICER_OF', desc: 'Owner/Broker' },
-    { from: 'CUNEO LIBARONA MARIANO', to: 'LIBRA SEGUROS', type: 'FORMERLY_AT', desc: 'Former legal director' },
-    { from: 'PLATE GUILLERMO PEDRO', to: 'LIDERAR SEGUROS', type: 'PROTECTS', desc: 'Exempt from SSN inspections' },
-    { from: 'CATALAN LISANDRO', to: 'BAPRO MANDATOS Y NEGOCIOS S.A.U.', type: 'FORMERLY_AT', desc: 'President during Scioli governorship' },
-    { from: 'CLUSELLAS PABLO', to: 'SOCMA INVERSIONES S.A.', type: 'OFFICER_OF', desc: 'Corporate officer while Presidential Secretary' },
-    { from: 'ORTOLANO FRANCO', to: 'LIDERAR SEGUROS', type: 'OWNS', desc: 'Owner of Liderar Seguros' },
+  const rels: Array<{ from: string; to: string; toLabel: 'Person' | 'Organization'; type: string; desc: string }> = [
+    { from: 'MARTINEZ SOSA HECTOR', to: 'FERNANDEZ ALBERTO', toLabel: 'Person', type: 'ASSOCIATED_WITH', desc: 'Personal associate and advisor 2010-2019' },
+    { from: 'MARTINEZ SOSA HECTOR', to: 'HECTOR MARTINEZ SOSA Y CIA S.A.', toLabel: 'Organization', type: 'OFFICER_OF', desc: 'Owner/Broker' },
+    { from: 'CUNEO LIBARONA MARIANO', to: 'LIBRA SEGUROS', toLabel: 'Organization', type: 'FORMERLY_AT', desc: 'Former legal director' },
+    { from: 'PLATE GUILLERMO PEDRO', to: 'LIDERAR SEGUROS', toLabel: 'Organization', type: 'PROTECTS', desc: 'Exempt from SSN inspections' },
+    { from: 'CATALAN LISANDRO', to: 'BAPRO MANDATOS Y NEGOCIOS S.A.U.', toLabel: 'Organization', type: 'FORMERLY_AT', desc: 'President during Scioli governorship' },
+    { from: 'CLUSELLAS PABLO', to: 'SOCMA INVERSIONES S.A.', toLabel: 'Organization', type: 'OFFICER_OF', desc: 'Corporate officer while Presidential Secretary' },
+    { from: 'ORTOLANO FRANCO', to: 'LIDERAR SEGUROS', toLabel: 'Organization', type: 'OWNS', desc: 'Owner of Liderar Seguros' },
   ]
 
   for (const r of rels) {
     try {
+      // Use labeled matches to avoid full-graph scans on 951K+ CompanyOfficer nodes
+      const query = r.toLabel === 'Person'
+        ? `MATCH (a:Person {name: $from, caso_slug: 'caso-finanzas-politicas'})
+           MATCH (b:Person {name: $to})
+           MERGE (a)-[rel:RELATED_TO]->(b)
+           SET rel.relationship_type = $type, rel.description = $desc,
+               rel.source = $source, rel.created_at = coalesce(rel.created_at, $now)`
+        : `MATCH (a:Person {name: $from, caso_slug: 'caso-finanzas-politicas'})
+           MATCH (b:Organization {name: $to})
+           MERGE (a)-[rel:RELATED_TO]->(b)
+           SET rel.relationship_type = $type, rel.description = $desc,
+               rel.source = $source, rel.created_at = coalesce(rel.created_at, $now)`
       await executeWrite(
-        `MATCH (a {name: $from}) MATCH (b {name: $to})
-         MERGE (a)-[rel:RELATED_TO]->(b)
-         SET rel.relationship_type = $type, rel.description = $desc,
-             rel.source = $source, rel.created_at = coalesce(rel.created_at, $now)`,
+        query,
         { from: r.from, to: r.to, type: r.type, desc: r.desc, source: PROV.submitted_by, now },
       )
       console.log(`  Rel: ${r.from} -[${r.type}]-> ${r.to}`)
