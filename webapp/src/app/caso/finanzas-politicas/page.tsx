@@ -20,20 +20,20 @@ const t = {
     es: 'Finanzas Politicas Argentinas',
   },
   subtitle: {
-    en: 'Investigation into the connections between political power and money. Cross-referencing eight public data sources to identify politicians with undeclared offshore entities, contractors who illegally donated to campaigns, and money flows between public funds and opaque structures.',
-    es: 'Investigacion sobre conexiones entre poder politico y dinero. Cruce de ocho fuentes de datos publicos para identificar politicos con entidades offshore no declaradas, contratistas que donaron ilegalmente a campanas, y flujos de dinero entre fondos publicos y estructuras opacas.',
+    en: 'Investigation into the connections between political power and money. Cross-referencing nine public data sources to identify politicians with undeclared offshore entities, contractors who illegally donated to campaigns, and money flows between public funds and opaque structures.',
+    es: 'Investigacion sobre conexiones entre poder politico y dinero. Cruce de nueve fuentes de datos publicos para identificar politicos con entidades offshore no declaradas, contratistas que donaron ilegalmente a campanas, y flujos de dinero entre fondos publicos y estructuras opacas.',
   },
   executiveSummaryTitle: {
     en: 'Executive Summary',
     es: 'Resumen Ejecutivo',
   },
   executiveSummaryP1: {
-    en: 'This investigation cross-referenced NINE public data sources — legislative voting records (Como Voto), offshore leaks (ICIJ Panama Papers and Pandora Papers), campaign contribution declarations (CNE), Boletin Oficial appointments and contracts, the IGJ corporate registry, company directors (CNV/IGJ), sworn asset declarations (DDJJ), insurance sector filings, and a cross-enrichment process — to identify the revolving door between government and the financial sector, procurement anomalies, and the oligarchic family networks controlling Argentina.',
-    es: 'Esta investigacion cruzo NUEVE fuentes de datos publicos — registros de votacion legislativa (Como Voto), filtraciones offshore (ICIJ Panama Papers y Pandora Papers), declaraciones de aportes de campana (CNE), nombramientos y contratos del Boletin Oficial, el registro societario de la IGJ, directores de empresas (CNV/IGJ), declaraciones juradas patrimoniales (DDJJ), registros del sector de seguros, y un proceso de enriquecimiento cruzado — para identificar la puerta giratoria entre gobierno y el sector financiero, anomalias en la contratacion publica, y las redes familiares oligarquicas que controlan Argentina.',
+    en: 'This investigation cross-referenced NINE public data sources — legislative voting records (Como Voto), offshore leaks (ICIJ Panama Papers and Pandora Papers), campaign contribution declarations (CNE), Boletin Oficial appointments and contracts, the IGJ corporate registry, company directors (CNV/IGJ), sworn asset declarations (DDJJ), insurance sector filings, and a cross-enrichment process — to identify the revolving door between government and the financial sector, the Nacion Seguros insurance monopoly, judicial auxiliary patterns at Comodoro Py, SIDE intelligence fund growth, and the oligarchic family networks controlling Argentina.',
+    es: 'Esta investigacion cruzo NUEVE fuentes de datos publicos — registros de votacion legislativa (Como Voto), filtraciones offshore (ICIJ Panama Papers y Pandora Papers), declaraciones de aportes de campana (CNE), nombramientos y contratos del Boletin Oficial, el registro societario de la IGJ, directores de empresas (CNV/IGJ), declaraciones juradas patrimoniales (DDJJ), registros del sector de seguros, y un proceso de enriquecimiento cruzado — para identificar la puerta giratoria entre gobierno y el sector financiero, el monopolio de seguros de Nacion Seguros, los patrones de auxiliares judiciales en Comodoro Py, el crecimiento de los fondos de inteligencia de la SIDE, y las redes familiares oligarquicas que controlan Argentina.',
   },
   executiveSummaryP2: {
-    en: 'The most serious findings involve the $28.5B Nacion Seguros insurance monopoly ($3.5B in broker commissions, active prosecution), 72 financial-government revolving door cases, and 12 oligarchic families controlling 500+ companies while members rotate through government positions.',
-    es: 'Los hallazgos mas graves involucran el monopolio de seguros de Nacion Seguros de $28.5B ($3.5B en comisiones de brokers, procesamiento activo), 72 casos de puerta giratoria entre el sector financiero y el gobierno, y 12 familias oligarquicas que controlan mas de 500 empresas mientras sus miembros rotan por cargos gubernamentales.',
+    en: 'The most serious findings: the $28.5B Nacion Seguros insurance monopoly with $3.5B in broker commissions (active prosecution), 22 critical persons identified across financial, judicial, and intelligence sectors, 12 oligarchic families controlling 500+ companies, a 2% corruption conviction rate, and the $LIBRA crypto scandal with $107M insider cashout.',
+    es: 'Los hallazgos mas graves: el monopolio de seguros de Nacion Seguros de $28.5B con $3.5B en comisiones de brokers (procesamiento activo), 22 personas criticas identificadas en los sectores financiero, judicial y de inteligencia, 12 familias oligarquicas que controlan mas de 500 empresas, una tasa de condena por corrupcion del 2%, y el escandalo cripto $LIBRA con $107M en cashout de insiders.',
   },
   fiveDatasetsSimultaneously: {
     en: 'five datasets simultaneously',
@@ -52,23 +52,23 @@ const t = {
   },
   chronologyTitle: { en: 'Chronology', es: 'Cronologia' },
   chronologyDesc: {
-    en: 'Timeline from SOCMA (1976) to the Martinez Sosa prosecution (Feb 2026), including Decreto 823, the 24 insurance raids, and the Catalan-YPF revolving door.',
-    es: 'Linea de tiempo desde SOCMA (1976) hasta el procesamiento de Martinez Sosa (feb 2026), incluyendo el Decreto 823, los 24 allanamientos a aseguradoras, y la puerta giratoria Catalan-YPF.',
+    en: 'Timeline from SOCMA (1976) through $LIBRA crash (Feb 2025), BCRA gold shipment to London, Capital Humano food crisis, and Causa Cuadernos trial (Nov 2025).',
+    es: 'Linea de tiempo desde SOCMA (1976) pasando por el colapso de $LIBRA (feb 2025), el envio de oro del BCRA a Londres, la crisis alimentaria de Capital Humano, y el juicio de la Causa Cuadernos (nov 2025).',
   },
   moneyTitle: { en: 'The Money', es: 'El Dinero' },
   moneyDesc: {
-    en: 'Tracking $609B ARS in procurement: Nacion Seguros monopoly, $3.5B broker commissions, SOCMA debt forgiveness, campaign donations from contractors.',
-    es: 'Rastreo de $609B ARS en contrataciones: monopolio de Nacion Seguros, $3.5B en comisiones de brokers, condonacion de deuda SOCMA, donaciones de campana de contratistas.',
+    en: '$674B ARS in procurement tracked. Nacion Seguros monopoly, $3.5B broker commissions, PAMI 16x drug overpricing, SIDE 2,838% secret fund growth, $LIBRA $107M insider cashout.',
+    es: '$674 mil millones ARS en contrataciones rastreadas. Monopolio de Nacion Seguros, $3.5B en comisiones de brokers, sobreprecio PAMI 16x, crecimiento de fondos reservados SIDE 2.838%, cashout $LIBRA $107M.',
   },
   connectionsTitle: { en: 'Connections', es: 'Conexiones' },
   connectionsDesc: {
-    en: 'Interactive graph of relationships between politicians, companies, contractors, and government appointments. 1,825 cross-referenced entities.',
-    es: 'Grafo interactivo de relaciones entre politicos, empresas, contratistas y nombramientos gubernamentales. 1.825 entidades cruzadas.',
+    en: 'Interactive graph: 133 investigation nodes, 142 relationships. Filter by Revolving Door, Offshore, Money Trail, Power Families.',
+    es: 'Grafo interactivo: 133 nodos de investigacion, 142 relaciones. Filtre por Puerta Giratoria, Offshore, Rastro del Dinero, Familias del Poder.',
   },
   keyActorsTitle: { en: 'Key Actors', es: 'Actores Clave' },
   keyActorsDesc: {
-    en: ' individuals and organizations with presence across multiple datasets.',
-    es: ' personas y organizaciones con presencia en multiples datasets.',
+    en: ` individuals and organizations with presence across multiple datasets.`,
+    es: ` personas y organizaciones con presencia en multiples datasets.`,
   },
 } as const
 

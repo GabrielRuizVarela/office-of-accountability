@@ -6,8 +6,8 @@ import { MONEY_FLOWS } from '@/lib/caso-finanzas-politicas/investigation-data'
 const t = {
   title: { en: 'The Money', es: 'El Dinero' },
   subtitle: {
-    en: 'Tracking financial flows based on verified public sources: Correo Argentino debt, SOCMA amnesty, transfers to Switzerland, and campaign donations.',
-    es: 'Rastreo de flujos financieros basado en fuentes publicas verificadas: deuda del Correo Argentino, blanqueo de SOCMA, transferencias a Suiza, y donaciones de campana.',
+    en: 'Tracking $674 billion ARS in public procurement. Nacion Seguros monopoly ($28.5B), broker commissions ($3.5B), PAMI 16x overpricing, SIDE reserved funds ($13.4B), $LIBRA cashout ($107M USD), Correo debt, SOCMA amnesty.',
+    es: 'Rastreo de $674 mil millones ARS en contrataciones publicas. Monopolio de Nacion Seguros ($28.5B), comisiones de brokers ($3.5B), sobreprecio PAMI (16x), fondos reservados SIDE ($13.4B), cashout $LIBRA ($107M USD), deuda del Correo, blanqueo SOCMA.',
   },
   totalTracked: { en: 'Total tracked (ARS)', es: 'Total rastreado (ARS)' },
   totalNote: {

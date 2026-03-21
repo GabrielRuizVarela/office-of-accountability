@@ -93,6 +93,17 @@ Do not skip verification. Fabricated or dead URLs undermine the entire investiga
 - 2% corruption conviction rate nationally.
 - Judicial wealth anomalies: Seijas ARS 1.75B declared assets, Pistone 457,000% asset growth.
 
+#### Widened Net
+
+- **SIDE intelligence**: 2,838% secret fund growth, Santiago Caputo control via proxy appointee Cristian Auguadra.
+- **Belocopitt**: Swiss Medical (76%) + Grupo America (40%) + 6 offshore entities + $13M COVID aid.
+- **Health cartel**: PAMI 16x overpricing (anastrozole $13,192 vs $924), Suizo Argentina 2,678% contract growth, pharmaceutical cartel (Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo, ACE Oncologia).
+- **$LIBRA crypto**: $107M insider cashout, Milei promoted, $4B peak, 90% crash, 44,000 victims.
+- **BCRA gold**: ~37 tonnes ($1B+) secretly shipped to London, audit refused.
+- **Capital Humano**: 5K tonnes food retained, 8.3B pesos unaccounted, dining halls cut.
+- **Glencore mining**: USD 525M claimed vs USD 45M in databases.
+- **Caputo dynasty corrected**: Santiago is sobrino segundo (second nephew), not son of Toto.
+
 #### The Systemic Cycle
 
 This is the core finding — a repeating pattern across multiple administrations:
@@ -102,6 +113,12 @@ This is the core finding — a repeating pattern across multiple administrations
 3. The defense lawyer in related cases becomes Justice Minister.
 4. The government nominates a friendly judge to the Supreme Court.
 5. That judge handles cases involving the nominating president's family companies.
+
+#### Investigation Stats (Current Session)
+
+- **Investigation graph**: 133 nodes, 142 edges, 22 critical persons.
+- **Platform totals**: 398K companies, 951K officers, $674B ARS tracked.
+- **Session commits**: 21 commits this session.
 
 ---
 
@@ -141,6 +158,10 @@ This is the core finding — a repeating pattern across multiple administrations
 - Donor to Judge matching has not been attempted.
 - Full name matching across 2.3M entities requires a fulltext search index approach.
 - Provincial-level data has not been ingested.
+- Politician-Donor cross-reference not yet built (1,467 donors unlinked).
+- CompanyOfficer-OffshoreOfficer cross-reference not yet built.
+- Event nodes need participant relationships (27 events mostly orphaned).
+- Provincial procurement data not yet ingested.
 
 #### Missing Data Sources
 
