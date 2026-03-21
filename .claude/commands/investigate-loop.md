@@ -92,6 +92,36 @@ Dispatch 2-3 agents using the GPU Qwen model:
 - Send to Qwen for trafficking pattern analysis
 - Identify: recruitment chains, potential unidentified victims, dual victim-recruiters
 
+### Phase 4b: Autonomous Research Iterations (autoresearch pattern)
+
+After LLM analysis produces hypotheses, run an autonomous iteration loop that deepens the most promising leads without human intervention. Inspired by karpathy/autoresearch: fixed-budget iterations, evaluate, keep or discard, repeat.
+
+**How it works:**
+1. Rank hypothesis Proposals from Phase 4 by confidence score
+2. For top 5 hypotheses, generate targeted follow-up queries:
+   - "If [person A] is connected to [org B], search for [org B] corporate filings"
+   - "If [location X] had events in [date range], search for corroborating flight records"
+   - "If [shell company] has ≤1 officer, search OpenCorporates for related entities"
+3. Execute follow-ups using parallel agents:
+   - **WebSearch** for public records, news articles, court documents
+   - **Neo4j traversal** for adjacent graph patterns not yet explored
+   - **Cross-reference** against existing data sources (Compr.ar, ICIJ, CNE)
+4. Evaluate each iteration:
+   - `confidence_delta`: did the hypothesis get stronger or weaker?
+   - `corroboration_score`: how many independent sources now support it?
+   - `novelty_score`: did we find new entities/relationships?
+   - `coverage_delta`: new nodes/edges added to graph
+5. Keep hypotheses that improved; discard those that weakened
+6. Detect gaps: persons mentioned but not yet nodes, time periods with no events, unverified locations
+7. Feed gaps as enrichment targets into next iteration
+8. Repeat for max 3 iterations or until no hypothesis improves
+
+**Research directives** (optional): before running, check if the investigation has research_directives in its config — researcher-defined priorities like "focus on financial enablers" or "trace recruitment chains through modeling agencies". These guide which hypotheses get priority.
+
+**Output:** Updated hypothesis Proposals with iterated confidence scores, new bronze nodes from follow-ups, gap analysis report. All iterations create AuditEntry nodes.
+
+**Important:** This phase is autonomous but bounded. It does NOT promote tiers (that's still human-gated). It only creates bronze nodes and updates hypothesis confidence. The gate after Phase 4b lets the researcher review what the iterations found before anything gets promoted.
+
 ### Phase 5: Clean & Sanitize
 
 Dispatch cleanup agent:
@@ -117,7 +147,7 @@ Dispatch 2-3 agents to update investigation artifacts:
 - Expand `NARRATIVE-EPSTEIN.md` with new findings from LLM analysis
 - Add new persons, connections, and patterns discovered
 
-### Phase 7: Commit & Report
+### Phase 8 (cont.): Commit
 
 ```bash
 git add -A && git commit -m "chore: investigation loop cycle $(date +%Y-%m-%d-%H%M)
@@ -125,14 +155,69 @@ git add -A && git commit -m "chore: investigation loop cycle $(date +%Y-%m-%d-%H
 Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 ```
 
+### Phase 7b: Compliance Check (if framework attached)
+
+If the investigation has a `GOVERNED_BY` relationship to a ComplianceFramework:
+
+1. Run `evaluateCompliance(investigationId, frameworkId, currentPhase)` for each attached framework
+2. Log gate results: pass/fail per rule with violation details
+3. Log auditor warnings: non-blocking issues flagged for researcher awareness
+4. Check compliance score delta vs previous cycle — if score dropped, flag prominently
+5. If compliance violations involve missing data (e.g., source URLs, provenance), feed those as enrichment targets to the orchestrator's task queue for next cycle
+
+If no framework is attached, skip entirely (no errors).
+
+### Phase 8: Commit & Report
+
 Print summary:
 - Nodes/edges before → after
 - Persons verified this cycle
 - Duplicates merged
 - Key findings from LLM analysis
 - New factcheck items added
+- Compliance score (if framework attached): current score, delta from last cycle, outstanding violations
 
 Then ask: "Run another cycle?"
+
+## Orchestrator
+
+The orchestrator coordinates all agent work across phases. Instead of dispatching agents ad-hoc, the orchestrator manages a task queue, prevents duplicate work, and synthesizes findings across agents.
+
+### How it works
+
+1. **Before dispatching agents:** the orchestrator checks what's already been investigated (OrchestratorState in Neo4j or in-memory tracking). It won't re-search entities that were already verified or hypotheses that were already evaluated.
+
+2. **Batch planning:** group tasks by independence. Agents A-D (verify/dedup) are independent → dispatch in parallel. Agents E-G (LLM analysis) share the GPU → dispatch sequentially or with resource awareness.
+
+3. **After each batch:** run synthesis:
+   - **Corroboration**: Agent A verified person X, Agent E found the same person in a network cluster → boost confidence
+   - **Contradiction**: Agent B says org Y is legitimate, Agent F flags it as a shell company → create conflict Proposal for human review
+   - **Emergent patterns**: Agent E found A→B, Agent F found B→C → orchestrator surfaces A→B→C chain that no single agent saw
+   - **Dedup findings**: two agents investigated overlapping entities → merge their Proposals, keep the higher-confidence one
+
+4. **Priority rebalancing:** after synthesis, reprioritize the task queue:
+   - Promote: tasks connected to newly corroborated findings
+   - Demote: tasks in areas where last batch found nothing new
+   - Generate: new tasks from gaps detected in synthesis
+
+5. **Stopping conditions:**
+   - Max iterations reached (default 3 batches)
+   - Diminishing returns: novelty_score and coverage_delta both declining for 2+ batches
+   - All tasks completed or deprioritized
+   - Gate triggered (researcher review needed)
+
+### Orchestrator in practice
+
+Instead of Phase 3 dispatching agents A-D independently and Phase 4 dispatching E-G independently, the orchestrator runs this loop:
+
+```
+Batch 1: Agents A, B, C, D (verify + dedup) → synthesis → update priorities
+Batch 2: Agents E, F, G (LLM analysis, sequential on GPU) → synthesis → update priorities
+Batch 3: Phase 4b iteration agents (follow-up on top hypotheses) → synthesis → evaluate metrics
+Batch 4+: If metrics improving, continue iterations; if plateauing, stop → gate
+```
+
+The orchestrator writes a `synthesis_report` after each batch. At the gate (Phase 7), the researcher sees not just individual Proposals but the orchestrator's synthesis: what was corroborated, what conflicted, what emerged from combining findings.
 
 ## Agent Dispatch Pattern
 
@@ -150,6 +235,28 @@ curl -s http://localhost:8080/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model": "Qwen3.5-9B-Q5_K_M.gguf", "messages": [...], "temperature": 0.3, "max_tokens": 4096}'
 ```
+
+## MCP Server Mode
+
+If the Office of Accountability MCP server is configured (check for `office-of-accountability` in MCP server list), prefer MCP tools over direct Neo4j/API calls for all operations:
+
+| Operation | Direct Mode | MCP Mode |
+|---|---|---|
+| Query graph state | `npx tsx` script with Neo4j driver | `graph.stats` + `graph.query` tools |
+| Create investigation | Direct API call | `investigation.create` tool |
+| Run pipeline | Direct API call | `pipeline.run` tool |
+| Review proposals | Direct API call | `pipeline.proposals` + `pipeline.approve` tools |
+| Check compliance | Direct API call | `compliance.evaluate` tool |
+| Get context | Read files + Neo4j queries | MCP resources (`investigation://{id}/summary`) |
+
+**Benefits of MCP mode:**
+- No need for local Neo4j connection — MCP server handles it
+- Cypher queries auto-sandboxed (read-only, caso_slug scoped)
+- All actions audited via AuditEntry hash chain
+- API key scoped to specific investigations — can't accidentally modify other data
+- Works from any MCP client (Claude Desktop, Cursor, etc.), not just Claude Code
+
+**Detection:** At the start of each cycle, check if MCP tools are available. If `investigation.list` resolves, use MCP mode. Otherwise, fall back to direct mode.
 
 ## Important Notes
 
