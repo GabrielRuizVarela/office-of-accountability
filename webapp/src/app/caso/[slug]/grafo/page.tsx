@@ -286,7 +286,7 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
   // ---------------------------------------------------------------------------
 
   const handleSave = useCallback(() => {
-    const name = window.prompt('Nombre de la investigación:')
+    const name = window.prompt('Investigation name:')
     if (!name) return
     const internalNodes = graphRef.current?.getInternalNodes() ?? []
     const pinnedPositions = [...pinnedNodeIds].map(id => {
@@ -304,9 +304,9 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
 
   const handleLoad = useCallback(async () => {
     const investigations = listInvestigations()
-    if (investigations.length === 0) { window.alert('No hay investigaciones guardadas.'); return }
+    if (investigations.length === 0) { window.alert('No saved investigations.'); return }
     const names = investigations.map((inv, i) => `${i + 1}. ${inv.name} (${new Date(inv.savedAt).toLocaleDateString()})`).join('\n')
-    const choice = window.prompt(`Investigaciones guardadas:\n${names}\n\nIngresa el número:`)
+    const choice = window.prompt(`Saved investigations:\n${names}\n\nEnter number:`)
     if (!choice) return
     const index = parseInt(choice, 10) - 1
     if (isNaN(index) || index < 0 || index >= investigations.length) return

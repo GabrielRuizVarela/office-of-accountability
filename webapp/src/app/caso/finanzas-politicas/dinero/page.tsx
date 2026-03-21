@@ -1,15 +1,24 @@
-import type { Metadata } from 'next'
+'use client'
 
+import { useLanguage } from '@/lib/language-context'
 import { MONEY_FLOWS } from '@/lib/caso-finanzas-politicas/investigation-data'
 
-export const metadata: Metadata = {
-  title: 'El Dinero',
-  description:
-    'Rastreo de flujos financieros en la investigacion de finanzas politicas argentinas.',
-}
+const t = {
+  title: { en: 'The Money', es: 'El Dinero' },
+  subtitle: {
+    en: 'Tracking financial flows based on verified public sources: Correo Argentino debt, SOCMA amnesty, transfers to Switzerland, and campaign donations.',
+    es: 'Rastreo de flujos financieros basado en fuentes publicas verificadas: deuda del Correo Argentino, blanqueo de SOCMA, transferencias a Suiza, y donaciones de campana.',
+  },
+  totalTracked: { en: 'Total tracked (ARS)', es: 'Total rastreado (ARS)' },
+  totalNote: {
+    en: 'Includes debt, amnesty, assets and documented donations',
+    es: 'Incluye deuda, blanqueo, patrimonio y donaciones documentadas',
+  },
+  unknownAmount: { en: 'Unknown amount', es: 'Monto desconocido' },
+} as const
 
-function formatArs(amount: number): string {
-  if (amount === 0) return 'Monto desconocido'
+function formatArs(amount: number, lang: 'en' | 'es'): string {
+  if (amount === 0) return lang === 'en' ? 'Unknown amount' : 'Monto desconocido'
   if (amount >= 1_000_000_000) {
     return `ARS ${(amount / 1_000_000_000).toFixed(1)}B`
   }
@@ -22,15 +31,16 @@ function formatArs(amount: number): string {
   return `ARS ${amount.toLocaleString()}`
 }
 
-function formatDate(dateStr: string): string {
+function formatDate(dateStr: string, lang: 'en' | 'es'): string {
+  const locale = lang === 'es' ? 'es-AR' : 'en-US'
   if (/^\d{4}[–-]\d{4}$/.test(dateStr)) return dateStr
   if (/^\d{4}$/.test(dateStr)) return dateStr
   if (/^\d{4}-\d{2}$/.test(dateStr)) {
     const d = new Date(dateStr + '-01T00:00:00')
-    return d.toLocaleDateString('es-AR', { year: 'numeric', month: 'short' })
+    return d.toLocaleDateString(locale, { year: 'numeric', month: 'short' })
   }
   const d = new Date(dateStr + 'T00:00:00')
-  return d.toLocaleDateString('es-AR', {
+  return d.toLocaleDateString(locale, {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
@@ -38,27 +48,26 @@ function formatDate(dateStr: string): string {
 }
 
 export default function DineroPage() {
+  const { lang } = useLanguage()
   const totalTracked = MONEY_FLOWS.reduce((sum, f) => sum + f.amount_ars, 0)
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
-      <h1 className="mb-2 text-3xl font-bold text-zinc-50">El Dinero</h1>
+      <h1 className="mb-2 text-3xl font-bold text-zinc-50">{t.title[lang]}</h1>
       <p className="mb-8 text-sm text-zinc-400">
-        Rastreo de flujos financieros basado en fuentes publicas verificadas:
-        deuda del Correo Argentino, blanqueo de SOCMA, transferencias a Suiza, y
-        donaciones de campana.
+        {t.subtitle[lang]}
       </p>
 
       {/* Total tracked highlight */}
       <div className="mb-8 rounded-lg border border-emerald-900/50 bg-emerald-950/20 p-4 text-center">
         <p className="text-xs uppercase tracking-wider text-emerald-400">
-          Total rastreado (ARS)
+          {t.totalTracked[lang]}
         </p>
         <p className="mt-1 text-3xl font-bold text-emerald-300">
-          {formatArs(totalTracked)}
+          {formatArs(totalTracked, lang)}
         </p>
         <p className="mt-1 text-xs text-zinc-500">
-          Incluye deuda, blanqueo, patrimonio y donaciones documentadas
+          {t.totalNote[lang]}
         </p>
       </div>
 
@@ -93,15 +102,15 @@ export default function DineroPage() {
               </div>
               <div className="flex items-center gap-4 text-right">
                 <span className="text-sm font-bold text-emerald-400">
-                  {formatArs(flow.amount_ars)}
+                  {formatArs(flow.amount_ars, lang)}
                 </span>
                 <span className="text-xs text-zinc-500">
-                  {formatDate(flow.date)}
+                  {formatDate(flow.date, lang)}
                 </span>
               </div>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-zinc-400">
-              {flow.description_es}
+              {lang === 'en' ? flow.description_en : flow.description_es}
             </p>
             <a
               href={flow.source_url}
