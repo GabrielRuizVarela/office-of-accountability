@@ -391,7 +391,15 @@ async function runCycle(): Promise<void> {
 
   // ── Phase 1: Ingest ────────────────────────────────────────────────
   console.log('\n=== Phase 1: Data Ingestion ===')
-  const ingestionResult = await runIngestion()
+  let ingestionResult: { etlsRun: string[]; skipped: string[]; errors: string[] }
+  try {
+    const t1 = Date.now()
+    ingestionResult = await withTimeout(runIngestion(), PHASE_TIMEOUT_MS, 'Ingestion')
+    console.log(`  Completed in ${formatDuration(Date.now() - t1)}`)
+  } catch (e) {
+    console.log(`  Phase 1 failed: ${e instanceof Error ? e.message : e}`)
+    ingestionResult = { etlsRun: [], skipped: [], errors: [String(e)] }
+  }
   console.log(`  ETLs run: ${ingestionResult.etlsRun.join(', ') || 'none'}`)
   if (ingestionResult.skipped.length > 0) {
     console.log(`  Skipped: ${ingestionResult.skipped.join(', ')}`)
@@ -402,7 +410,14 @@ async function runCycle(): Promise<void> {
 
   // ── Phase 2: Cross-Reference ──────────────────────────────────────
   console.log('\n=== Phase 2: Cross-Reference ===')
-  const crossRefResult = await runCrossReferencePhase()
+  let crossRefResult: unknown = null
+  try {
+    const t2 = Date.now()
+    crossRefResult = await withTimeout(runCrossReferencePhase(), PHASE_TIMEOUT_MS, 'Cross-Reference')
+    console.log(`  Completed in ${formatDuration(Date.now() - t2)}`)
+  } catch (e) {
+    console.log(`  Phase 2 failed: ${e instanceof Error ? e.message : e}`)
+  }
   if (crossRefResult) {
     const cr = crossRefResult as unknown as { cuitMatches: unknown[]; dniMatches: unknown[]; nameMatches: unknown[]; flags: unknown[] }
     console.log(`  CUIT matches: ${cr.cuitMatches.length}`)
@@ -413,7 +428,18 @@ async function runCycle(): Promise<void> {
 
   // ── Phase 3: Analyze ──────────────────────────────────────────────
   console.log('\n=== Phase 3: MiroFish Analysis ===')
-  const analysisResults = await runAnalysisPhase()
+  let analysisResults: unknown = null
+  if (skipAnalysis) {
+    console.log('  --skip-analysis flag set. Skipping.')
+  } else {
+    try {
+      const t3 = Date.now()
+      analysisResults = await withTimeout(runAnalysisPhase(), PHASE_TIMEOUT_MS, 'Analysis')
+      console.log(`  Completed in ${formatDuration(Date.now() - t3)}`)
+    } catch (e) {
+      console.log(`  Phase 3 failed: ${e instanceof Error ? e.message : e}`)
+    }
+  }
 
   // ── Phase 4: Report ───────────────────────────────────────────────
   const statusAfter = await checkGraphStatus()
