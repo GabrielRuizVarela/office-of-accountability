@@ -1,0 +1,224 @@
+/**
+ * Engine node types — autonomous investigation pipeline (M10).
+ *
+ * 10 node types: SourceConnector, PipelineConfig, PipelineStage, Gate,
+ * PipelineState, Proposal, AuditEntry, Snapshot, ModelConfig, MiroFishConfig.
+ *
+ * Each type has a Zod schema and an inferred TypeScript type.
+ */
+
+import { z } from 'zod/v4'
+
+// ---------------------------------------------------------------------------
+// Shared enums
+// ---------------------------------------------------------------------------
+
+export const connectorKinds = ['rest_api', 'file_upload', 'custom_script'] as const
+export type ConnectorKind = (typeof connectorKinds)[number]
+
+export const stageKinds = ['ingest', 'verify', 'enrich', 'analyze', 'report'] as const
+export type StageKind = (typeof stageKinds)[number]
+
+export const gateActions = ['approve', 'reject', 'request_changes'] as const
+export type GateAction = (typeof gateActions)[number]
+
+export const pipelineStatuses = ['idle', 'running', 'paused', 'completed', 'failed'] as const
+export type PipelineStatus = (typeof pipelineStatuses)[number]
+
+export const proposalStatuses = ['pending', 'approved', 'rejected'] as const
+export type ProposalStatus = (typeof proposalStatuses)[number]
+
+export const proposalTypes = [
+  'create_node',
+  'create_relationship',
+  'update_node',
+  'delete_node',
+  'delete_relationship',
+  'hypothesis',
+  'report_section',
+] as const
+export type ProposalType = (typeof proposalTypes)[number]
+
+export const confidenceTiers = ['gold', 'silver', 'bronze'] as const
+export type ConfidenceTier = (typeof confidenceTiers)[number]
+
+// ---------------------------------------------------------------------------
+// 1. SourceConnector — external data source configuration
+// ---------------------------------------------------------------------------
+
+export const sourceConnectorSchema = z.object({
+  id: z.string().min(1),
+  caso_slug: z.string().min(1),
+  name: z.string().min(1),
+  kind: z.enum(connectorKinds),
+  config: z.record(z.string(), z.unknown()),
+  enabled: z.boolean(),
+  created_at: z.string(),
+  updated_at: z.string(),
+})
+
+export type SourceConnector = z.infer<typeof sourceConnectorSchema>
+
+// ---------------------------------------------------------------------------
+// 2. PipelineConfig — overall pipeline definition
+// ---------------------------------------------------------------------------
+
+export const pipelineConfigSchema = z.object({
+  id: z.string().min(1),
+  caso_slug: z.string().min(1),
+  name: z.string().min(1),
+  description: z.string(),
+  stage_ids: z.array(z.string().min(1)),
+  created_at: z.string(),
+  updated_at: z.string(),
+})
+
+export type PipelineConfig = z.infer<typeof pipelineConfigSchema>
+
+// ---------------------------------------------------------------------------
+// 3. PipelineStage — individual stage in the pipeline
+// ---------------------------------------------------------------------------
+
+export const pipelineStageSchema = z.object({
+  id: z.string().min(1),
+  pipeline_id: z.string().min(1),
+  kind: z.enum(stageKinds),
+  order: z.number().int().min(0),
+  model_config_id: z.string().min(1).optional(),
+  connector_ids: z.array(z.string().min(1)).optional(),
+  gate_id: z.string().min(1).optional(),
+  config: z.record(z.string(), z.unknown()).optional(),
+  created_at: z.string(),
+  updated_at: z.string(),
+})
+
+export type PipelineStage = z.infer<typeof pipelineStageSchema>
+
+// ---------------------------------------------------------------------------
+// 4. Gate — human review checkpoint between stages
+// ---------------------------------------------------------------------------
+
+export const gateSchema = z.object({
+  id: z.string().min(1),
+  stage_id: z.string().min(1),
+  required: z.boolean(),
+  auto_approve_threshold: z.number().min(0).max(1).optional(),
+  last_action: z.enum(gateActions).optional(),
+  last_action_by: z.string().optional(),
+  last_action_at: z.string().optional(),
+  created_at: z.string(),
+  updated_at: z.string(),
+})
+
+export type Gate = z.infer<typeof gateSchema>
+
+// ---------------------------------------------------------------------------
+// 5. PipelineState — runtime state of a pipeline execution
+// ---------------------------------------------------------------------------
+
+export const pipelineStateSchema = z.object({
+  id: z.string().min(1),
+  pipeline_id: z.string().min(1),
+  caso_slug: z.string().min(1),
+  status: z.enum(pipelineStatuses),
+  current_stage_id: z.string().min(1).optional(),
+  started_at: z.string().optional(),
+  completed_at: z.string().optional(),
+  error: z.string().optional(),
+  created_at: z.string(),
+  updated_at: z.string(),
+})
+
+export type PipelineState = z.infer<typeof pipelineStateSchema>
+
+// ---------------------------------------------------------------------------
+// 6. Proposal — LLM-generated change for human review
+// ---------------------------------------------------------------------------
+
+export const proposalSchema = z.object({
+  id: z.string().min(1),
+  pipeline_state_id: z.string().min(1),
+  stage_id: z.string().min(1),
+  type: z.enum(proposalTypes),
+  payload: z.record(z.string(), z.unknown()),
+  confidence: z.number().min(0).max(1),
+  reasoning: z.string(),
+  status: z.enum(proposalStatuses),
+  reviewed_by: z.string().optional(),
+  reviewed_at: z.string().optional(),
+  created_at: z.string(),
+})
+
+export type Proposal = z.infer<typeof proposalSchema>
+
+// ---------------------------------------------------------------------------
+// 7. AuditEntry — append-only log with SHA-256 hash chain
+// ---------------------------------------------------------------------------
+
+export const auditEntrySchema = z.object({
+  id: z.string().min(1),
+  pipeline_state_id: z.string().min(1),
+  stage_id: z.string().min(1).optional(),
+  action: z.string().min(1),
+  detail: z.string(),
+  prev_hash: z.string(),
+  hash: z.string(),
+  created_at: z.string(),
+})
+
+export type AuditEntry = z.infer<typeof auditEntrySchema>
+
+// ---------------------------------------------------------------------------
+// 8. Snapshot — graph state capture at a point in time
+// ---------------------------------------------------------------------------
+
+export const snapshotSchema = z.object({
+  id: z.string().min(1),
+  pipeline_state_id: z.string().min(1),
+  stage_id: z.string().min(1).optional(),
+  label: z.string(),
+  node_count: z.number().int().min(0),
+  relationship_count: z.number().int().min(0),
+  cypher_export: z.string(),
+  created_at: z.string(),
+})
+
+export type Snapshot = z.infer<typeof snapshotSchema>
+
+// ---------------------------------------------------------------------------
+// 9. ModelConfig — LLM model configuration
+// ---------------------------------------------------------------------------
+
+export const modelConfigSchema = z.object({
+  id: z.string().min(1),
+  caso_slug: z.string().min(1),
+  provider: z.string().min(1),
+  model: z.string().min(1),
+  endpoint: z.string().url().optional(),
+  temperature: z.number().min(0).max(2).optional(),
+  max_tokens: z.number().int().min(1).optional(),
+  system_prompt: z.string().optional(),
+  created_at: z.string(),
+  updated_at: z.string(),
+})
+
+export type ModelConfig = z.infer<typeof modelConfigSchema>
+
+// ---------------------------------------------------------------------------
+// 10. MiroFishConfig — MiroFish/llama.cpp specific configuration
+// ---------------------------------------------------------------------------
+
+export const miroFishConfigSchema = z.object({
+  id: z.string().min(1),
+  caso_slug: z.string().min(1),
+  model_config_id: z.string().min(1),
+  api_url: z.string().url(),
+  n_predict: z.number().int().min(1).optional(),
+  top_k: z.number().int().min(1).optional(),
+  top_p: z.number().min(0).max(1).optional(),
+  repeat_penalty: z.number().min(0).optional(),
+  created_at: z.string(),
+  updated_at: z.string(),
+})
+
+export type MiroFishConfig = z.infer<typeof miroFishConfigSchema>
