@@ -681,8 +681,35 @@ export async function GET(): Promise<Response> {
       }
     } catch { /* investigation query may timeout */ }
 
+    // Phase 10: Bridge platform Politicians to investigation Persons by name
+    // This prevents isolated platform clusters (PENSAR, parties, etc.)
+    for (const [polSlug, polElementId] of politicianElementIds) {
+      const polNode = nodeMap.get(polElementId)
+      if (!polNode) continue
+      // Extract surname from politician name (format: "SURNAME, Name")
+      const polSurname = polNode.name.split(',')[0]?.trim()
+      if (!polSurname || polSurname.length < 3) continue
+      // Find matching investigation Person node
+      for (const [invId, invNode] of nodeMap) {
+        if (invNode.labels?.includes('Person') && invNode.properties?.caso_slug === 'caso-finanzas-politicas') {
+          if (invNode.name.startsWith(polSurname + ' ') || invNode.name === polSurname) {
+            // Bridge them
+            const linkKey = polElementId + '->' + invId
+            if (!links.some(lk => {
+              const s = typeof lk.source === 'string' ? lk.source : (lk.source as any)?.id
+              const t = typeof lk.target === 'string' ? lk.target : (lk.target as any)?.id
+              return (s + '->' + t) === linkKey || (t + '->' + s) === linkKey
+            })) {
+              links.push({ source: polElementId, target: invId, type: 'SAME_PERSON', properties: {} })
+            }
+            break
+          }
+        }
+      }
+    }
+
     // Post-processing: connect key clusters manually where DB relationships are missing
-    // Macri → PENSAR ARGENTINA (he's the party leader but not in AFFILIATED_WITH)
+    // Macri -> PENSAR ARGENTINA (he's the party leader but not in AFFILIATED_WITH)
     const macriId = politicianElementIds.get('macri-mauricio')
     if (macriId) {
       for (const [id, node] of nodeMap) {
@@ -692,7 +719,7 @@ export async function GET(): Promise<Response> {
         }
       }
     }
-    // Camaño → connect to any existing component via Consenso Federal donation
+    // Camano -> connect to any existing component via Consenso Federal donation
     const camanoId = politicianElementIds.get('camano-graciela')
     if (camanoId) {
       for (const [id, node] of nodeMap) {
@@ -703,7 +730,7 @@ export async function GET(): Promise<Response> {
       }
     }
 
-    // Post-processing: remove small components (< 4 nodes) — they clutter the viz
+    // Post-processing: remove small components (< 3 nodes) — they clutter the viz
     const adj = new Map<string, Set<string>>()
     for (const link of links) {
       const s = typeof link.source === 'string' ? link.source : (link.source as any)?.id
@@ -731,8 +758,8 @@ export async function GET(): Promise<Response> {
           if (!visited.has(nb)) queue.push(nb)
         }
       }
-      // Keep components with 3+ nodes
-      if (component.size >= 3) {
+      // Keep components with 2+ nodes (show pairs, filter singletons)
+      if (component.size >= 2) {
         for (const id of component) keepIds.add(id)
       }
     }
