@@ -97,13 +97,13 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     source: 'Cross-reference engine',
   },
   {
-    value: '186',
+    value: '206',
     label_es: 'Nodos de investigación',
     label_en: 'Investigation nodes',
     source: 'Neo4j graph',
   },
   {
-    value: '84',
+    value: '89',
     label_es: 'Personas críticas identificadas',
     label_en: 'Critical persons identified',
     source: 'Cross-reference engine',
@@ -563,9 +563,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'caputo-anker-suspension',
     claim_es:
-      'La consultora de Caputo (Anker Latinoamérica, CUIT 30-71690088-2) suspendió operaciones el 1 de diciembre de 2023, el día exacto que asumió como Ministro de Economía. Misma dirección que su cargo directivo.',
+      'La consultora de Caputo (Anker Latinoamérica, CUIT 30-71690088-2) suspendió operaciones el 30 de noviembre de 2023, días antes de que asumiera como Ministro de Economía. Misma dirección que su cargo directivo.',
     claim_en:
-      'Caputo\'s consulting firm (Anker Latinoamérica, CUIT 30-71690088-2) suspended operations on December 1, 2023, the exact day he became Economy Minister. Same address as his directorship.',
+      'Caputo\'s consulting firm (Anker Latinoamérica, CUIT 30-71690088-2) suspended operations on November 30, 2023, days before he became Economy Minister. Same address as his directorship.',
     status: 'confirmed',
     tier: 1,
     source: 'Ámbito Financiero / CUITOnline',
@@ -830,7 +830,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'confirmed',
     tier: 1,
     source: 'Chaco Día por Día',
-    source_url: 'https://www.chacodiapordia.com/2021/06/21/swiss-medical-recibio-mas-de-2-400-millones-de-ayuda-estatal-durante-2020/',
+    source_url: 'https://www.laizquierdadiario.com/Claudio-Bellocopitt-cobro-el-ATP-del-Estado-radiografia-del-magnate-de-Swiss-Medical',
   },
   {
     id: 'rosenkrantz-clarin-conflict',
@@ -2399,6 +2399,6 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
       '$2.417B in ATP subsidies during pandemic to Swiss Medical (while acquiring competitors)',
     date: '2020',
     source: 'Chaco Día por Día',
-    source_url: 'https://www.chacodiapordia.com/2021/06/21/swiss-medical-recibio-mas-de-2-400-millones-de-ayuda-estatal-durante-2020/',
+    source_url: 'https://www.laizquierdadiario.com/Claudio-Bellocopitt-cobro-el-ATP-del-Estado-radiografia-del-magnate-de-Swiss-Medical',
   },
 ] as const
