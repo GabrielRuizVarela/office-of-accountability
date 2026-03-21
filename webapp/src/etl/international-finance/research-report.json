@@ -1,0 +1,522 @@
+{
+  "title": "International Dimensions of Argentine Political Finance Corruption",
+  "date": "2026-03-21",
+  "areas": [
+    {
+      "id": "glencore",
+      "name": "Glencore — Mining + Transfer Pricing",
+      "verified_facts": [
+        "Glencore operates/owns El Pachon (San Juan, $9B investment) and MARA (Catamarca, $4.5B investment) copper projects in Argentina",
+        "Glencore acquired 56.25% of MARA project from Pan American Silver for $475M plus 0.75% NSR royalty (2023)",
+        "Glencore plans to restart Bajo de la Alumbrera mine (closed 2018) by first half of 2028",
+        "Glencore seeking $13.5B in tax incentives under Argentina's RIGI regime for copper projects",
+        "Paradise Papers revealed Glencore had 107 offshore companies through law firm Appleby",
+        "Glencore bought Ar Zinc SA (ex Sulfacid) through offshore Glencore Finance Ltd registered in Bermuda; company closed 2016 leaving 400 jobless",
+        "Argentine prosecutors issued arrest warrants for money laundering related to Glencore's offshore tax schemes on minerals extracted from Argentina",
+        "Glencore pled guilty to foreign bribery (DOJ 2022), paying $100M+ in bribes across 7 countries including South America",
+        "CFTC ordered Glencore to pay $1.186 billion for manipulation and corruption (2022)",
+        "Glencore paid $525M to Argentina in government payments disclosure"
+      ],
+      "key_actors": [
+        {"name": "Glencore International AG", "role": "Swiss commodity trading multinational", "jurisdiction": "Switzerland/Bermuda/Cayman Islands"},
+        {"name": "Glencore Finance Ltd", "role": "Bermuda-registered offshore entity used for Argentine acquisitions", "jurisdiction": "Bermuda"},
+        {"name": "Appleby", "role": "Offshore law firm managing Glencore's 107 shell companies", "jurisdiction": "Bermuda"},
+        {"name": "Proyecto Pachon SA Minera", "role": "Local Argentine subsidiary for El Pachon", "jurisdiction": "Argentina"}
+      ],
+      "financial_amounts": [
+        "$13.5B in tax incentives requested under RIGI",
+        "$9B El Pachon investment",
+        "$4.5B MARA investment",
+        "$475M MARA acquisition",
+        "$1.186B CFTC fine",
+        "$525M payments to Argentine government"
+      ],
+      "sources": [
+        "https://www.icij.org/investigations/paradise-papers/room-of-secrets-reveals-mysteries-of-glencore/",
+        "https://convoca.pe/investigacion/paradise-papers-los-negocios-de-glencore-en-argentina",
+        "https://www.globalwitness.org/en/press-releases/paradise-papers-ftse100-company-glencores-secret-offshore-dealings-exposed-revelations/",
+        "https://www.justice.gov/archives/opa/pr/glencore-entered-guilty-pleas-foreign-bribery-and-market-manipulation-schemes",
+        "https://www.cftc.gov/PressRoom/PressReleases/8534-22",
+        "https://www.mining.com/web/glencore-seeks-13-billion-in-incentives-for-argentina-copper-projects/"
+      ]
+    },
+    {
+      "id": "joe-lewis",
+      "name": "Joe Lewis — Lago Escondido + Land",
+      "verified_facts": [
+        "Joe Lewis acquired 12,000 hectares surrounding Lago Escondido in Patagonia (Rio Negro) in 1996-1997",
+        "Purchase violated Law 15.385 (Frontier Security): foreigners cannot own land within 150km of national borders",
+        "Lewis circumvented the law by creating HR Properties Buenos Aires SA with Argentine shareholders, then adding his son Charles Barrington Lewis",
+        "Hidden Lake company incorporated through Bahamas offshore companies to conceal Lewis as sole beneficial owner",
+        "25 judges from all levels ordered access to Lago Escondido via Tacuifi for 12+ years; Lewis never complied",
+        "Lewis has private airport in Rio Negro with 2,000-meter runway near Atlantic coast",
+        "Lewis is personal friend of ex-President Mauricio Macri who visited the estate multiple times",
+        "Lewis pled guilty to insider trading in US (Jan 2024): 1 count conspiracy + 2 counts securities fraud",
+        "Lewis fined $5M for insider trading, later pardoned by President Trump (Nov 2025)",
+        "Argentina's Interior Ministry filed lawsuit against Lewis and Hidden Lake company",
+        "Investigation into irregular purchase expired during Macri presidency (2016)",
+        "Milei government recognized Lewis's ownership of Lago Escondido hydroelectric facility",
+        "Milei decree repealed Law on Foreignization of Lands (previously limited foreign acquisition to 1,000 hectares)"
+      ],
+      "key_actors": [
+        {"name": "Joe Lewis", "role": "British billionaire, net worth ~$5.3B, former Tottenham Hotspur owner", "jurisdiction": "UK/Bahamas/Argentina"},
+        {"name": "Hidden Lake SA", "role": "Shell company holding Lewis's Patagonian lands", "jurisdiction": "Argentina/Bahamas"},
+        {"name": "HR Properties Buenos Aires SA", "role": "Shell company with Argentine shareholders to bypass frontier law", "jurisdiction": "Argentina"},
+        {"name": "Mauricio Macri", "role": "Former Argentine president, personal friend of Lewis", "jurisdiction": "Argentina"},
+        {"name": "Magdalena Odarda", "role": "Coalicion Civica leader who obtained favorable rulings (2009, 2012, 2013)", "jurisdiction": "Argentina"}
+      ],
+      "financial_amounts": [
+        "12,000 hectares of Patagonian land",
+        "$5.3B estimated Lewis fortune",
+        "$5M insider trading fine (pardoned)"
+      ],
+      "sources": [
+        "https://buenosairesherald.com/society/government-sues-joe-lewis-over-12000-hectares-in-patagonia",
+        "https://www.opendemocracy.net/en/democraciaabierta/unreachable-lago-escondido/",
+        "https://www.espn.com/soccer/story/_/id/39377666/tottenham-owner-joe-lewis-pleads-guilty-insider-trading-charges",
+        "https://fortune.com/2025/11/14/british-billionaire-pardoned-by-trump-tottenham-hotspurs/",
+        "https://www.rionegro.com.ar/politica/reclamo-de-las-tierras-de-lago-escondido-que-dice-la-demanda-del-gobierno-contra-lewis-3182114/",
+        "https://www.lapoliticaonline.com/energia/el-gobierno-le-reconocio-a-lewis-la-propiedad-de-la-hidroelectrica-de-lago-escondido/"
+      ]
+    },
+    {
+      "id": "imf-macri",
+      "name": "IMF — Macri Loan + Caputo",
+      "verified_facts": [
+        "IMF lent Argentina $57.1B (largest loan in Fund history) under Macri government (2018)",
+        "Only $44.5B was disbursed before program was halted after Macri's electoral defeat",
+        "$36.6B (82% of disbursed amount) left Argentina through capital flight",
+        "Argentine Auditor-General found 66% was not used for hospitals/schools/stability but to pay investment funds",
+        "LEBAC carry-trade policy under BCRA chief Sturzenegger identified by IMF as 'the flash point' triggering crisis",
+        "Since 2016, $41B in external assets acquired by domestic non-financial sector + $30B current account deficit",
+        "$14B in short-term carry trade capital inflows since 2016",
+        "Sturzenegger resigned as BCRA Governor June 14, 2018; replaced by Finance Minister Luis Caputo",
+        "IMF's own December 2021 evaluation conceded loan 'did not deliver on its objectives'",
+        "Milei government secured new $20B IMF agreement (2025), initial disbursement of $12.15B (60%)",
+        "Argentina must repay second loan in 12 semiannual installments between 2026-2032",
+        "Argentina committed to pension system reform by December 2026 as IMF condition"
+      ],
+      "key_actors": [
+        {"name": "Luis Caputo", "role": "Finance Minister under Macri, then BCRA Governor; current Economy Minister under Milei", "jurisdiction": "Argentina"},
+        {"name": "Federico Sturzenegger", "role": "BCRA Governor 2015-2018, architect of LEBAC carry trade", "jurisdiction": "Argentina"},
+        {"name": "Mauricio Macri", "role": "President who secured largest IMF loan in history", "jurisdiction": "Argentina"},
+        {"name": "Martin Guzman", "role": "Economy Minister under Fernandez who called it 'absurd loan'", "jurisdiction": "Argentina"},
+        {"name": "IMF", "role": "International lender", "jurisdiction": "International"}
+      ],
+      "financial_amounts": [
+        "$57.1B total program (largest in IMF history)",
+        "$44.5B actually disbursed",
+        "$36.6B left through capital flight (82%)",
+        "$20B new Milei-era IMF agreement",
+        "$12.15B initial disbursement (2025)"
+      ],
+      "sources": [
+        "https://www.atlanticcouncil.org/blogs/new-atlanticist/imf-throws-argentina-a-57-billion-lifeline/",
+        "https://www.dandc.eu/en/article/imf-made-many-mistakes-its-57-billion-loan-programme-argentina-here-are-some-lessons",
+        "https://www.batimes.com.ar/news/economy/imf-report-concludes-2018-loan-to-argentina-did-not-deliver-on-its-objectives.phtml",
+        "https://www.batimes.com.ar/news/economy/macri-spent-most-of-imf-loan-on-paying-off-external-debt.phtml",
+        "https://www.lapoliticaonline.com/economia/el-fmi-responsabilizo-a-las-lebacs-de-sturzenegger-por-crear-las-condiciones-para-la-crisis-de-2018/",
+        "https://chequeado.com/el-explicador/las-claves-de-la-renegociacion-del-acuerdo-entre-la-argentina-y-el-fmi/"
+      ]
+    },
+    {
+      "id": "vulture-funds",
+      "name": "Vulture Funds / Holdouts",
+      "verified_facts": [
+        "Paul Singer's Elliott Management/NML Capital purchased Argentine defaulted bonds at extreme discounts after 2001 default",
+        "Judge Thomas Griesa (SDNY) ordered Argentina to pay $2.4B and issued pari passu injunction blocking payments to restructured bondholders",
+        "Argentina went into technical default again in 2014 due to Griesa injunction",
+        "Elliott Management hired DCI Group for decade-long influence campaign targeting all three branches of US government ($16M+ over four years)",
+        "Singer received $2.4B settlement (20x original investment) after Macri took office (Feb 2016)",
+        "Supreme Court ruled in Republic of Argentina v. NML Capital (2014): no sovereign immunity for foreign asset discovery",
+        "Burford Capital backed YPF expropriation lawsuit; Judge Loretta Preska awarded $16.1B (now $18B+ with interest)",
+        "Burford's share is ~$6.2B, representing 37,000% return on initial investment",
+        "Argentina shipped $150M in gold reserves (3 tonnes) to London in June 2024 as collateral",
+        "Judge Preska ordered Argentina to disclose location of offshore Central Bank gold reserves",
+        "Recognition proceedings for $16B judgment pending in UK, France, Ireland, Canada, Australia, Luxembourg, Brazil, Cyprus",
+        "Risk of gold seizure analogous to Venezuela's 30 tonnes seized at Bank of England (2019)"
+      ],
+      "key_actors": [
+        {"name": "Paul Singer", "role": "Founder/CEO of Elliott Management, vulture fund investor", "jurisdiction": "USA"},
+        {"name": "NML Capital Ltd", "role": "Elliott Management subsidiary for Argentine bond litigation", "jurisdiction": "Cayman Islands"},
+        {"name": "Burford Capital", "role": "Litigation funder backing YPF expropriation claimants", "jurisdiction": "UK/USA"},
+        {"name": "Judge Thomas Griesa", "role": "SDNY judge who issued pari passu injunction", "jurisdiction": "USA"},
+        {"name": "Judge Loretta Preska", "role": "SDNY judge who awarded $16.1B YPF judgment", "jurisdiction": "USA"},
+        {"name": "DCI Group", "role": "Lobbying firm hired by Elliott for influence campaign", "jurisdiction": "USA"},
+        {"name": "Peterson Energia Investors", "role": "YPF claimant ($14.3B)", "jurisdiction": "USA"},
+        {"name": "Eton Park Management Capital", "role": "YPF claimant ($1.7B)", "jurisdiction": "USA"}
+      ],
+      "financial_amounts": [
+        "$2.4B Singer/Elliott settlement (20x return)",
+        "$16.1B YPF judgment (now $18B+ with interest)",
+        "$6.2B Burford Capital share (37,000% return)",
+        "$150M gold shipped to London",
+        "$16M+ DCI Group lobbying fees"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Paul_Singer_(businessman)",
+        "https://www.npr.org/sections/thetwo-way/2016/02/29/468600774/argentina-reaches-settlement-with-hedge-funds-ending-15-year-dispute",
+        "https://en.mercopress.com/2016/03/04/paul-singer-will-have-made-a-2.4bn-profit-with-the-argentine-defaulted-bonds",
+        "https://en.wikipedia.org/wiki/Republic_of_Argentina_v._NML_Capital,_Ltd.",
+        "https://investors.burfordcapital.com/news/news-details/2023/BURFORD-CAPITAL-STATEMENT-ON-YPF-DAMAGES-RULING/default.aspx",
+        "https://buenosairesherald.com/economics/ypf-case-argentina-to-reveal-gold-reserve-data-to-hedge-fund",
+        "https://www.kitco.com/news/article/2025-01-16/argentina-must-disclose-location-its-overseas-gold-reserves-possible"
+      ]
+    },
+    {
+      "id": "us-florida-shells",
+      "name": "US / Florida Shell Companies (AFA Gate + others)",
+      "verified_facts": [
+        "TourProdEnter LLC incorporated in Florida August 2021, became AFA's exclusive international commercial agent in December 2021",
+        "TourProdEnter handled $260M+ in AFA revenues over four years",
+        "At least $42-50M transferred from TourProdEnter to 4+ shell companies in Florida with no real activity, no employees, virtual addresses",
+        "Many shell companies closed after receiving the funds",
+        "TourProdEnter headed by Erica Gabriela Gilette, partner of Javier Horacio Faroni (personal friend of AFA president Tapia)",
+        "Complaint filed with US Attorney SDFL and FinCEN under prosecutor Jason A. Reding Quinones",
+        "AFA president Claudio 'Chiqui' Tapia secured Executive Committee approval for TourProdEnter appointment",
+        "$350M money laundering scheme from Argentina through Miami companies run by Paul Oswald Morani (federal investigation)",
+        "Cristina Fernandez de Kirchner alleged to have used dirty money to buy 60+ Miami properties",
+        "Hector Daniel Munoz (Kirchner aide) controlled $65M property empire in South Florida and New York via shell companies",
+        "GS Unidos LLC (Delaware) held 9.08% of Grupo Clarin shares, controlled by Goldman Sachs offshore fund"
+      ],
+      "key_actors": [
+        {"name": "TourProdEnter LLC", "role": "AFA's exclusive international commercial agent", "jurisdiction": "Florida, USA"},
+        {"name": "Erica Gabriela Gilette", "role": "Head of TourProdEnter", "jurisdiction": "Argentina/USA"},
+        {"name": "Javier Horacio Faroni", "role": "Theater producer, friend of Tapia, partner of Gilette", "jurisdiction": "Argentina"},
+        {"name": "Claudio 'Chiqui' Tapia", "role": "AFA president who appointed TourProdEnter", "jurisdiction": "Argentina"},
+        {"name": "Paul Oswald Morani", "role": "Operator of Miami shell company network ($350M)", "jurisdiction": "USA"},
+        {"name": "Hector Daniel Munoz", "role": "Kirchner aide, $65M property empire", "jurisdiction": "Argentina/USA"},
+        {"name": "GS Unidos LLC", "role": "Delaware entity holding Clarin shares for Goldman Sachs", "jurisdiction": "Delaware, USA"}
+      ],
+      "financial_amounts": [
+        "$260M+ AFA revenue through TourProdEnter",
+        "$42-50M diverted to shell companies",
+        "$350M Morani laundering scheme",
+        "$65M Munoz property empire",
+        "60+ Miami properties (Kirchner)"
+      ],
+      "sources": [
+        "https://buenosairesherald.com/sports/us42-million-afa-income-moved-to-florida-shell-companies-argentine-outlet-reports",
+        "https://www.southshorejournal.org/afagate-and-the-hidden-business-of-argentine-football-the-revelations-of-nicolas-pizzi-and-its-global-impact/",
+        "https://www.miaminewtimes.com/news/feds-allege-350-million-argentinian-money-laundering-scheme-in-miami-19332180/",
+        "https://www.chicagotribune.com/news/nationworld/sns-tns-bc-argentina-scandal-20181103-story.html",
+        "https://www.lavoz901.com/noticias/clarn-cre-empresas-en-un-paraso-fiscal-de-ee-uu-para-eludir-impuestos.htm"
+      ]
+    },
+    {
+      "id": "panama-bvi-luxembourg",
+      "name": "Panama / BVI / Luxembourg Structures",
+      "verified_facts": [
+        "Argentina is 3rd globally in number of offshore companies of politicians and businesspeople (Pandora Papers)",
+        "2,500+ Argentines created facade companies in tax havens (Pandora Papers)",
+        "Gianfranco Macri (brother of ex-president) set up Lares Corporation SA SPF in Luxembourg",
+        "Lares Corporation was part of chain (Argentina-Spain-Luxembourg) used to buy/sell 6 wind farms netting ~$70M",
+        "Rainbow Finance (Luxembourg) managed the Macri family corporate structure",
+        "Mariano Macri (another brother) had two family companies declared in 2016 tax amnesty while Mauricio was president",
+        "Gianfranco Macri under investigation since 2018 for wind farm corruption scheme",
+        "Daniel Munoz (deceased Kirchner secretary) named in Pandora Papers",
+        "Ernesto Clarens (cuadernos de las coimas financier) named in Pandora Papers",
+        "Zulemita Menem (daughter of ex-president) named in Pandora Papers",
+        "Humberto Grondona (son of late AFA chief Julio Grondona) named in Pandora Papers",
+        "Jaime Duran Barba (Macri's image advisor) named in Pandora Papers",
+        "ICIJ database contains 810,000+ offshore entities across all investigations"
+      ],
+      "key_actors": [
+        {"name": "Gianfranco Macri", "role": "Brother of ex-president, Luxembourg wind farm scheme", "jurisdiction": "Argentina/Luxembourg"},
+        {"name": "Mariano Macri", "role": "Brother of ex-president, offshore companies declared in amnesty", "jurisdiction": "Argentina"},
+        {"name": "Lares Corporation SA SPF", "role": "Luxembourg entity in Macri wind farm chain", "jurisdiction": "Luxembourg"},
+        {"name": "Rainbow Finance", "role": "Luxembourg company managing Macri family structure", "jurisdiction": "Luxembourg"},
+        {"name": "Daniel Munoz", "role": "Deceased Kirchner private secretary, offshore entities", "jurisdiction": "Argentina/offshore"},
+        {"name": "Ernesto Clarens", "role": "Financier in cuadernos corruption case", "jurisdiction": "Argentina/offshore"},
+        {"name": "Jaime Duran Barba", "role": "Macri's political strategist", "jurisdiction": "Ecuador/Argentina"}
+      ],
+      "financial_amounts": [
+        "$70M from wind farm deals through Luxembourg structure",
+        "2,500+ Argentine-linked offshore companies (Pandora Papers alone)"
+      ],
+      "sources": [
+        "https://www.occrp.org/en/project/openlux/gone-with-the-wind-argentinas-former-first-family-used-luxembourg-companies-to-reap-70-million",
+        "https://www.lanacion.com.ar/politica/openlux-el-hermano-macri-controlo-luxemburgo-negocio-nid2599338/",
+        "https://www.iprofesional.com/actualidad/350330-pandora-papers-la-lista-completa-de-los-argentinos-involucrados",
+        "https://www.pagina12.com.ar/372358-pandora-papers-argentina-esta-tercero-en-la-lista-de-benefic",
+        "https://offshoreleaks.icij.org/search?c=ARG&cat=3"
+      ]
+    },
+    {
+      "id": "regulatory-pressure",
+      "name": "International Regulatory Pressure",
+      "verified_facts": [
+        "FATF adopted mutual evaluation report for Argentina (December 2024), final review in 4th round",
+        "Argentina NOT placed on FATF increased monitoring list (grey list)",
+        "FATF found Argentina must improve understanding of ML risks from corruption and informal financial services",
+        "FATF found Argentina must increase money laundering prosecutions",
+        "Argentina scored 37/100 on 2024 CPI (Transparency International), dropped to 36/100 in 2025",
+        "TI criticized Milei decree limiting public access to information",
+        "Argentina signed CRS Multilateral Agreement (October 2014) as early adopter",
+        "CRS exchanges started September 2017; 10.9M financial account records exchanged across 78 jurisdictions (2018-2024)",
+        "CRS exchanges generated $4.83B in recovered tax revenue and $820M in penalties",
+        "Argentina signed CRS 2.0 Addendum (July 2025) extending to digital assets and tokenized instruments",
+        "UNCAC/OAS anti-corruption review mechanism conducted country visit to Argentina (4th round)",
+        "Argentina enacted beneficial ownership reforms in 2024"
+      ],
+      "key_actors": [
+        {"name": "FATF/GAFILAT", "role": "Anti-money laundering standard setter", "jurisdiction": "International"},
+        {"name": "Transparency International", "role": "Corruption perception index publisher", "jurisdiction": "International"},
+        {"name": "OECD", "role": "CRS/tax transparency framework", "jurisdiction": "International"},
+        {"name": "UNCAC", "role": "UN anti-corruption convention review mechanism", "jurisdiction": "International"},
+        {"name": "CNV (Comision Nacional de Valores)", "role": "Argentine securities regulator, now oversees VASPs", "jurisdiction": "Argentina"}
+      ],
+      "financial_amounts": [
+        "$4.83B recovered tax revenue from CRS exchanges",
+        "$820M in penalties from CRS-enabled enforcement"
+      ],
+      "sources": [
+        "https://www.fatf-gafi.org/en/publications/Mutualevaluations/MER-Argentina-2024.html",
+        "https://www.transparency.org/en/cpi/2024/index/arg",
+        "https://www.oecd.org/en/topics/sub-issues/international-standards-on-tax-transparency/automatic-exchange-of-information-exchange-relationships.html",
+        "https://uncaccoalition.org/monitoring-the-oas-anti-corruption-convention-implementation-country-visit-to-argentina/"
+      ]
+    },
+    {
+      "id": "china-russia",
+      "name": "Chinese / Russian Investment Angle",
+      "verified_facts": [
+        "Chinese financing totals ~$10.6B for Argentine infrastructure (railways, dams)",
+        "Total Chinese investment in Argentina tops $23B (as of 2025)",
+        "China Development Bank + ICBC provided $2.1B syndicated credit for Belgrano Cargas Railway rehabilitation (2012)",
+        "Belgrano Cargas project stalled over disputes including Chinese insistence on importing railroad ties vs. local quebracho wood",
+        "China Gezhouba Group consortium partner implicated in Kirchner-era public works kickback scheme",
+        "Cristina Fernandez de Kirchner convicted (2022) in 'system of institutional corruption' linked to public works contracts",
+        "Chinese dam project in Patagonia paralyzed over contract disputes",
+        "Atucha III nuclear plant: Hualong One (HPR1000) reactor, 1200 MWe, contract signed Feb 2022",
+        "Atucha III financing: $6.715B ICBC loan, 20-year maturity, 8-year grace, 4.5% interest",
+        "Russia-Argentina nuclear MoU signed for VVER reactor construction",
+        "Rosatom outlined plans for Argentina including uranium mining ($250M, 500 jobs, ISR method)",
+        "Russia-Argentina agreement to jointly sell VVER reactors in South America and Africa"
+      ],
+      "key_actors": [
+        {"name": "CNNC (China National Nuclear Corporation)", "role": "Builder of Atucha III", "jurisdiction": "China"},
+        {"name": "ICBC", "role": "Primary lender for both Belgrano Cargas and Atucha III", "jurisdiction": "China"},
+        {"name": "China Development Bank", "role": "Co-lender for Belgrano Cargas", "jurisdiction": "China"},
+        {"name": "China Gezhouba Group", "role": "Construction consortium partner in public works", "jurisdiction": "China"},
+        {"name": "Rosatom", "role": "Russian state nuclear corporation", "jurisdiction": "Russia"},
+        {"name": "NASA (Nucleoelectrica Argentina SA)", "role": "Argentine nuclear power company", "jurisdiction": "Argentina"}
+      ],
+      "financial_amounts": [
+        "$23B+ total Chinese investment in Argentina",
+        "$10.6B Chinese infrastructure financing",
+        "$6.715B Atucha III loan",
+        "$2.1B Belgrano Cargas credit facility",
+        "$250M Russian uranium mining investment"
+      ],
+      "sources": [
+        "https://www.batimes.com.ar/news/economy/chinese-investment-in-argentina-tops-us23-billion-defying-mileis-alignment-with-trump.phtml",
+        "https://china.aiddata.org/projects/36517",
+        "https://www.wilsoncenter.org/blog-post/chinas-nuclear-powered-diplomacy-argentina",
+        "https://www.world-nuclear-news.org/Articles/Argentina-agrees-again-to-cooperate-with-Russia",
+        "https://world-nuclear-news.org/Articles/Argentina,-Russia-expand-nuclear-energy-cooperatio"
+      ]
+    },
+    {
+      "id": "tether-crypto",
+      "name": "Tether / Crypto International",
+      "verified_facts": [
+        "Tether acquired controlling ~70% stake in Adecoagro (Arg/Brazil/Uruguay agribusiness) for $620M at $12.41/share",
+        "Adecoagro operates sugar, ethanol, dairy, crop production across Argentina, Brazil, Uruguay",
+        "Tether's initial investment was ~$100M (Sept 2024), expanded to majority acquisition (2025)",
+        "USDT and USDC account for 70%+ of crypto transactions in Argentina",
+        "Argentina moved $93.9B in crypto volume July 2024-June 2025 (2nd largest in LATAM after Brazil)",
+        "60% of Argentine crypto volume is stablecoins",
+        "BCRA prohibits traditional banks from offering crypto services (reinforced 2022)",
+        "Law 27,739 (March 2024) created VASP framework under CNV oversight",
+        "Capital controls partially eased April 2025, enabling free crypto-fiat exchange",
+        "Tax amnesty 'blanqueo' program allows crypto declaration at 5-15% penalty, first $100K free if banked until Dec 2025",
+        "Argentina signed CRS 2.0 (July 2025) extending reporting to digital assets and crypto service providers",
+        "Legislative proposals floated for BCRA to hold crypto as reserves"
+      ],
+      "key_actors": [
+        {"name": "Tether Holdings", "role": "USDT stablecoin issuer, acquiring Adecoagro", "jurisdiction": "BVI/El Salvador"},
+        {"name": "Adecoagro SA", "role": "Latin American agribusiness (now 70% Tether-owned)", "jurisdiction": "Luxembourg/Argentina/Brazil"},
+        {"name": "Juan Sartori", "role": "New Adecoagro Executive Chairman (Tether appointee)", "jurisdiction": "Uruguay"},
+        {"name": "CNV", "role": "Argentine securities regulator overseeing VASPs", "jurisdiction": "Argentina"},
+        {"name": "BCRA", "role": "Central Bank, prohibits bank crypto services", "jurisdiction": "Argentina"}
+      ],
+      "financial_amounts": [
+        "$620M Adecoagro acquisition (70% stake)",
+        "$93.9B Argentine crypto transaction volume (2024-2025)",
+        "$140B USDT market cap"
+      ],
+      "sources": [
+        "https://crypto.news/tether-expands-ownership-in-latin-american-agricultural-firm-adecoagro-to-70/",
+        "https://www.coindesk.com/business/2025/02/18/tether-makes-unsolicited-offer-for-buying-majority-stake-in-agrodeco/",
+        "https://www.signzy.com/blogs/argentina-cryptocurrency-laws",
+        "https://kaplanabogados.com/crypto-regulation-in-argentina-2025-recent-developments-and-tax-challenges/?lang=en"
+      ]
+    },
+    {
+      "id": "clarin-media",
+      "name": "International Media / Clarin Foreign Partners",
+      "verified_facts": [
+        "Goldman Sachs acquired 18% of Grupo Clarin for $500M (end of 1999)",
+        "GS Unidos LLC (Delaware) held 9.08% of Clarin shares during 2007 IPO, controlled by Goldman Sachs offshore fund with ~20 mostly offshore entities as shareholders",
+        "Morgan Bank recommended creation of Delaware-based privileged companies for Clarin",
+        "Grupo Clarin partnered with US investment fund Fintech (2007)",
+        "Telefonica International SA and CEI Citicorp Holdings SA acquired 55% of Multicanal (1995-96), partnership dissolved 1997-98",
+        "Argentina passed Cultural Goods Act (Law 25.750, 2003) capping foreign media ownership at 30%",
+        "Key shareholders: Hector Magnetto, Jose Antonio Aranda, Lucio Rafael Pagliaro, Ernestina Herrera de Noble (deceased)"
+      ],
+      "key_actors": [
+        {"name": "Grupo Clarin SA", "role": "Largest Argentine media conglomerate", "jurisdiction": "Argentina"},
+        {"name": "GS Unidos LLC", "role": "Delaware entity holding Clarin shares for Goldman Sachs", "jurisdiction": "Delaware, USA"},
+        {"name": "Goldman Sachs", "role": "Investment bank, 18% Clarin shareholder", "jurisdiction": "USA"},
+        {"name": "Hector Magnetto", "role": "CEO/major shareholder of Grupo Clarin", "jurisdiction": "Argentina"},
+        {"name": "Fintech Advisory", "role": "US investment fund, Clarin partner", "jurisdiction": "USA"}
+      ],
+      "financial_amounts": [
+        "$500M Goldman Sachs investment (18% stake, 1999)",
+        "9.08% via GS Unidos LLC at IPO"
+      ],
+      "sources": [
+        "https://argentina.mom-gmr.org/en/owners/companies/detail/company//grupo-clarin-1/",
+        "https://en.wikipedia.org/wiki/Clar%C3%ADn_Group",
+        "https://www.lavoz901.com/noticias/clarn-cre-empresas-en-un-paraso-fiscal-de-ee-uu-para-eludir-impuestos.htm"
+      ]
+    }
+  ],
+  "cross_border_money_flows": [
+    {
+      "flow": "IMF -> Argentina -> Capital Flight",
+      "amount": "$36.6B",
+      "description": "82% of $44.5B IMF disbursement left Argentina through capital flight (2018-2019)"
+    },
+    {
+      "flow": "Argentina mines -> Glencore offshore (Bermuda/Cayman)",
+      "amount": "Undisclosed",
+      "description": "Mineral extraction profits routed through 107 offshore entities to minimize Argentine tax obligations"
+    },
+    {
+      "flow": "AFA revenue -> TourProdEnter (Florida) -> Shell companies",
+      "amount": "$42-50M",
+      "description": "Football association commercial revenue diverted through Florida shell network"
+    },
+    {
+      "flow": "Public works contracts -> Kirchner associates -> Miami real estate",
+      "amount": "$65M+ (Munoz alone)",
+      "description": "Corruption proceeds laundered through South Florida property purchases"
+    },
+    {
+      "flow": "Wind farm deals -> Luxembourg (Lares/Rainbow Finance) -> Macri family",
+      "amount": "$70M",
+      "description": "Wind energy contracts routed through Luxembourg corporate chain"
+    },
+    {
+      "flow": "Argentina (BCRA gold) -> London -> Potential seizure by Burford",
+      "amount": "$150M+ (3 tonnes shipped)",
+      "description": "Gold reserves moved abroad as collateral, exposed to $18B judgment collection"
+    },
+    {
+      "flow": "Elliott Management -> Argentine bonds -> 20x return",
+      "amount": "$2.4B (from ~$120M investment)",
+      "description": "Distressed debt purchased at discount, collected via US court enforcement"
+    },
+    {
+      "flow": "Chinese state banks -> Argentine infrastructure",
+      "amount": "$23B+ total",
+      "description": "Tied loans requiring Chinese contractors/materials, corruption in public works allocation"
+    },
+    {
+      "flow": "Argentine residents -> Crypto/Stablecoins",
+      "amount": "$93.9B volume (2024-2025)",
+      "description": "Capital flight and peso avoidance via USDT/USDC, 60% of volume"
+    }
+  ],
+  "regulatory_gaps_exploited": [
+    {
+      "gap": "Florida LLC formation requires no beneficial ownership disclosure",
+      "exploited_by": ["TourProdEnter", "Morani network", "Kirchner associates"],
+      "status": "Partially addressed by Corporate Transparency Act (2024) but enforcement pending"
+    },
+    {
+      "gap": "Delaware corporate secrecy — no ownership reporting required at state level",
+      "exploited_by": ["GS Unidos LLC / Clarin", "Various Argentine politicians"],
+      "status": "Federal CTA beneficial ownership registry being implemented"
+    },
+    {
+      "gap": "Argentina frontier security law (15.385) poorly enforced for foreign land acquisition",
+      "exploited_by": ["Joe Lewis / Hidden Lake SA"],
+      "status": "Milei government repealed foreignization limits entirely"
+    },
+    {
+      "gap": "Luxembourg SPF (societe de gestion de patrimoine familial) vehicles enable tax-free family wealth management",
+      "exploited_by": ["Gianfranco Macri / Lares Corporation"],
+      "status": "OpenLux investigation exposed but prosecution stalled"
+    },
+    {
+      "gap": "Bermuda/Cayman corporate secrecy for mining multinationals",
+      "exploited_by": ["Glencore (107 entities through Appleby)"],
+      "status": "Paradise Papers exposed; Glencore pled guilty to bribery but transfer pricing structures remain"
+    },
+    {
+      "gap": "Argentine tax amnesty ('blanqueo') allows declaration of previously hidden offshore assets at reduced penalty",
+      "exploited_by": ["Mariano Macri (declared offshore companies in 2016 amnesty while brother was president)"],
+      "status": "Current Milei blanqueo includes crypto at 5-15% penalty"
+    },
+    {
+      "gap": "FATF finding: insufficient ML prosecution relative to corruption risk profile",
+      "exploited_by": ["Systemic — corruption proceeds rarely result in money laundering convictions"],
+      "status": "FATF 2024 evaluation flagged; Argentina must increase prosecutions"
+    },
+    {
+      "gap": "Sovereign immunity limitations exposed by NML Capital Supreme Court ruling",
+      "exploited_by": ["Elliott Management / NML Capital", "Burford Capital"],
+      "status": "Precedent permanently weakens sovereign asset protection"
+    }
+  ],
+  "neo4j_ingestion_recommendations": {
+    "node_types": [
+      {"label": "InternationalActor", "properties": ["name", "type", "jurisdiction", "net_worth", "sector"]},
+      {"label": "OffshoreEntity", "properties": ["name", "jurisdiction", "formation_date", "dissolved", "parent_entity"]},
+      {"label": "FinancialFlow", "properties": ["amount", "currency", "date_range", "flow_type", "description"]},
+      {"label": "LegalCase", "properties": ["name", "court", "judge", "amount_claimed", "amount_awarded", "status"]},
+      {"label": "Investigation", "properties": ["name", "source", "year", "country_focus"]},
+      {"label": "RegulatoryBody", "properties": ["name", "jurisdiction", "type"]},
+      {"label": "RealEstateAsset", "properties": ["location", "value", "type", "acquisition_date"]}
+    ],
+    "relationship_types": [
+      "CONTROLS",
+      "BENEFICIAL_OWNER_OF",
+      "TRANSFERRED_TO",
+      "LOBBIED_BY",
+      "FRIEND_OF",
+      "INVESTIGATED_BY",
+      "FINANCED_BY",
+      "LITIGATED_AGAINST",
+      "EXTRACTED_FROM",
+      "LAUNDERED_THROUGH",
+      "EVALUATED_BY",
+      "CIRCUMVENTED"
+    ],
+    "priority_entities_for_ingestion": [
+      "Glencore International AG + 107 offshore entities",
+      "Joe Lewis + Hidden Lake SA + HR Properties Buenos Aires SA",
+      "TourProdEnter LLC + 4 shell companies",
+      "Elliott Management + NML Capital Ltd",
+      "Burford Capital + Peterson Energia + Eton Park",
+      "Lares Corporation SA SPF + Rainbow Finance",
+      "GS Unidos LLC",
+      "CNNC + ICBC (Atucha III)",
+      "Tether Holdings + Adecoagro SA",
+      "Paul Oswald Morani network"
+    ],
+    "data_sources_for_enrichment": [
+      "ICIJ Offshore Leaks Database (offshoreleaks.icij.org) — filter by ARG",
+      "Florida Sunbiz LLC registry — TourProdEnter and associated shells",
+      "Delaware Division of Corporations — GS Unidos LLC",
+      "Luxembourg RCS (Registre de Commerce et des Societes) — Lares Corporation",
+      "PACER/CourtListener — NML Capital and Burford YPF cases",
+      "DOJ press releases — Glencore guilty pleas",
+      "FATF Argentina MER 2024 PDF",
+      "AidData China database — Belgrano Cargas and Atucha III records"
+    ]
+  }
+}
