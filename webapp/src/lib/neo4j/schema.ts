@@ -148,6 +148,57 @@ const UNIQUE_CONSTRAINTS = [
     label: 'InvestigationConfig',
     property: 'id',
   },
+  // Engine node types (M10 — autonomous investigation pipeline)
+  {
+    name: 'source_connector_id_unique',
+    label: 'SourceConnector',
+    property: 'id',
+  },
+  {
+    name: 'pipeline_config_id_unique',
+    label: 'PipelineConfig',
+    property: 'id',
+  },
+  {
+    name: 'pipeline_stage_id_unique',
+    label: 'PipelineStage',
+    property: 'id',
+  },
+  {
+    name: 'gate_id_unique',
+    label: 'Gate',
+    property: 'id',
+  },
+  {
+    name: 'pipeline_state_id_unique',
+    label: 'PipelineState',
+    property: 'id',
+  },
+  {
+    name: 'proposal_id_unique',
+    label: 'Proposal',
+    property: 'id',
+  },
+  {
+    name: 'audit_entry_id_unique',
+    label: 'AuditEntry',
+    property: 'id',
+  },
+  {
+    name: 'snapshot_id_unique',
+    label: 'Snapshot',
+    property: 'id',
+  },
+  {
+    name: 'model_config_id_unique',
+    label: 'ModelConfig',
+    property: 'id',
+  },
+  {
+    name: 'mirofish_config_id_unique',
+    label: 'MiroFishConfig',
+    property: 'id',
+  },
 ] as const
 
 /** Full-text indexes for search across text fields */
