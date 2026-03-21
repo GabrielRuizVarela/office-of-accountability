@@ -1,16 +1,17 @@
-# Office of Accountability — Ralph Orchestrator Configuration
-# Optimized for: Next.js 16 + Neo4j 5 + TypeScript + pnpm
-# Pattern: code-assist (planner/builder/critic/finalizer)
+# Office of Accountability — Ralph Orchestrator
+# Single adaptive config — works for any milestone, feature, or ad-hoc task.
+# The Planner reads the prompt + scratchpad + CLAUDE.md to derive context.
+# Usage: ralph run -p "Continue M9 Phase 5" | ralph run -p "Add feature X"
 
 event_loop:
   prompt_file: "PROMPT.md"
   completion_promise: "LOOP_COMPLETE"
   required_events: ["review.passed"]
   starting_event: "build.start"
-  max_iterations: 120
+  max_iterations: 150
   max_runtime_seconds: 14400        # 4 hours
-  idle_timeout_secs: 1800           # 30 min idle timeout
-  checkpoint_interval: 5            # git checkpoint every 5 iterations
+  idle_timeout_secs: 1800           # 30 min idle
+  checkpoint_interval: 5
 
 cli:
   backend: "claude"
@@ -19,208 +20,224 @@ cli:
 core:
   specs_dir: "./specs/"
   guardrails:
-    - "Fresh context each iteration — re-read scratchpad, memories, and plan before acting."
-    - "Commit after each completed step. Never commit Ralph files (.ralph/)."
-    - "All Neo4j queries MUST use parameterized Cypher — never interpolate user input into query strings."
-    - "LIMIT clauses need neo4j.int(n) — JS numbers are floats, Neo4j rejects them."
-    - "Confidence protocol: >80 proceed; 50-80 proceed + note in scratchpad; <50 choose safe default + note."
-    - "YAGNI ruthlessly — no speculative features. KISS always."
-    - "Preserve primary sources — capture referenced code snippets with file:line attribution in scratchpad."
+    # ── Context discipline ──
+    - "Fresh context each iteration — re-read scratchpad, memories, and the prompt-derived plan before acting."
+    - "Commit after each completed sub-task. Never commit .ralph/ files."
+    # ── Neo4j safety ──
+    - "All Neo4j queries MUST use parameterized Cypher — never string-interpolate into queries."
+    - "LIMIT/SKIP values need neo4j.int(n) — JS numbers are floats."
+    # ── Tooling ──
     - "Use pnpm (not npm). Check package.json scripts before inventing commands."
+    # ── Engineering discipline ──
+    - "YAGNI ruthlessly — no speculative features. KISS always."
+    - "Confidence protocol: >80 proceed; 50-80 proceed + note in scratchpad; <50 safe default + note."
+    - "Preserve primary sources — capture file:line references in scratchpad when quoting code."
 
-# Quality gates — reject incomplete work
 backpressure:
   gates:
     - name: typecheck
       command: pnpm exec tsc --noEmit
-      on_fail: "TypeScript errors found. Fix type errors before proceeding."
-    - name: lint
-      command: pnpm exec next lint --quiet
-      on_fail: "Lint failures. Fix all lint errors before proceeding."
+      on_fail: "TypeScript errors. Fix before proceeding."
     - name: build
       command: pnpm run build
-      on_fail: "Build failed. Fix build errors before proceeding."
+      on_fail: "Build failed. Fix before proceeding."
 
-# Persistent learning across iterations
 memories:
   enabled: true
   inject: auto
-  budget: 2000
-  filter:
-    types: []          # all types
-    tags: []           # all tags
-    recent: 0          # no time limit
+  budget: 2500
 
-# Runtime work tracking
 tasks:
   enabled: true
 
-# Skills from Claude Code
 skills:
   enabled: true
   dirs:
     - .claude/skills
 
-# No Telegram bot for now
 RObot:
   enabled: false
 
-# ─── Hat System: code-assist pattern ───────────────────────────────────────────
+# ─── Hats ──────────────────────────────────────────────────────────────────────
 hats:
   planner:
     name: "Planner"
-    description: "Breaks milestone work into phased sub-tasks scoped to single files/functions"
+    description: "Derives scope from the prompt, decomposes into phased sub-tasks"
     triggers: ["build.start", "queue.advance"]
     publishes: ["tasks.ready"]
     default_publishes: "tasks.ready"
     instructions: |
-      Manage sub-task breakdown and queue progression for this Next.js + Neo4j project.
+      You own decomposition and queue progression. Do not implement. Do not review.
 
-      ## Project Structure
-      ```
-      webapp/src/           → Next.js app (pages, components, lib)
-      webapp/src/lib/neo4j/ → Neo4j client, schema, queries
-      webapp/src/lib/investigations/ → Investigation types, utils, config
-      webapp/src/lib/caso-*/         → Per-investigation modules
-      scripts/              → Seed scripts, migration scripts
-      ```
+      ## Bootstrap (build.start)
+      1. Read the **prompt** — it tells you what to build. It may reference a milestone,
+         a feature, a bug, or an ad-hoc task.
+      2. Read **CLAUDE.md** for stack, conventions, and key commands.
+      3. Read the **scratchpad** for prior progress in this loop.
+      4. Read **PROMPT.md** only if the prompt references a milestone by number (M9, M10, etc.)
+         to pull acceptance criteria. Do NOT re-read the entire spec every iteration.
+      5. Search **memories** before decomposing unfamiliar areas.
 
-      ## Read State
-      1. Read PROMPT.md for the current milestone/objective
-      2. Read scratchpad for current progress and completed phases
-      3. Check CLAUDE.md for project conventions
-      4. Search memories before decomposing unfamiliar areas
+      ## Project Layout
+      ```
+      webapp/src/app/           → Next.js pages + API routes
+      webapp/src/components/    → React components
+      webapp/src/lib/neo4j/     → Neo4j client, schema, queries
+      webapp/src/lib/investigations/ → Investigation types, utils, config, query-builder
+      webapp/src/lib/caso-*/    → Per-investigation backend modules
+      scripts/                  → Seed scripts, migration scripts, ETL
+      ```
 
       ## Step-Wave Strategy
-      Turn the request into numbered high-level steps.
-      Only materialize the CURRENT step's subtask wave.
+      Decompose the prompt into numbered **high-level steps** in the scratchpad.
+      Only materialize runtime tasks for the CURRENT step's wave.
 
-      ### On First Activation (build.start)
-      1. Identify the current milestone/phase from PROMPT.md and scratchpad
-      2. Break Step 1 into smallest possible sub-tasks (one file, one function, one migration)
-      3. Write sub-task checklist to scratchpad under "## Current Step"
+      ### Scratchpad Format
+      ```markdown
+      # Plan: {prompt summary}
+
+      ## Current Step: Step N — {name}
+      ### Sub-tasks:
+      - [ ] N.1 {description} (file: path/to/file.ts)
+      - [ ] N.2 ...
+
+      ### Notes:
+      {any context the builder needs}
+
+      ## Completed Steps:
+      - Step 1: {name} — done
+      ```
+
+      ### On build.start
+      1. Derive the plan from the prompt
+      2. Write numbered steps to scratchpad
+      3. Ensure runtime tasks for Step 1 only
       4. Emit tasks.ready with the first sub-task
 
-      ### On Subsequent Activation (queue.advance)
-      1. Re-read scratchpad for progress
-      2. If current step has incomplete sub-tasks → emit tasks.ready with next sub-task
-      3. If current step complete → move to "## Completed Steps", identify next step
-      4. If all steps complete → leave queue empty for Finalizer
+      ### On queue.advance
+      1. Re-read scratchpad
+      2. If current step has unchecked sub-tasks → emit tasks.ready with next one
+      3. If current step fully checked → move to Completed, start next step's wave
+      4. If ALL steps done → leave queue empty (Finalizer will terminate)
 
-      ## Sub-task Granularity
-      Good:
-      - "Create `src/lib/investigations/query-builder.ts` with buildNodeQuery and buildGraphQuery"
-      - "Add unified API route at `src/app/api/casos/[casoSlug]/graph/route.ts`"
-      - "Update `seed-caso-libra.ts` to use prefixed IDs with caso_slug filter"
+      ## Sub-task Quality
+      Each sub-task should be:
+      - Scoped to ONE file, ONE function, or ONE API route
+      - Verifiable independently (typecheck must pass after each)
+      - Include the target file path in the description
 
-      Bad:
-      - "Implement the entire investigation API"
-      - "Fix everything"
+      Good: "Create `src/lib/engine/pipeline.ts` with PipelineRunner class and runStage method"
+      Bad: "Implement the pipeline"
 
   builder:
     name: "Builder"
-    description: "Implements one sub-task at a time following project conventions"
+    description: "Implements exactly one sub-task per activation"
     triggers: ["tasks.ready", "review.changes_requested"]
     publishes: ["subtask.done"]
     default_publishes: "subtask.done"
     instructions: |
-      Implement the assigned sub-task only. ONE task at a time.
+      Implement the assigned sub-task. ONE task per activation. Do not work ahead.
 
-      ## Scope
-      CRITICAL: Implement ONLY the single sub-task assigned. Do not work ahead.
-      - One sub-task = one small, focused change
-      - Follow patterns in CLAUDE.md and neighboring files
-      - Use parameterized Cypher for ALL Neo4j queries
-      - Use neo4j.int() for LIMIT/SKIP values
-      - Use pnpm, not npm
+      ## Read Order
+      1. The sub-task description from the event payload
+      2. CLAUDE.md for conventions
+      3. Scratchpad for plan context and notes
+      4. Neighboring files in the target directory for patterns
 
-      ## Neo4j Conventions
-      - Generic labels (Person, Organization, Event, etc.) with caso_slug for namespace
-      - Prefixed IDs: `{caso_slug}:{local_id}`
-      - All MATCH clauses filter by caso_slug when querying within an investigation
-      - tx.run(cypher, params) takes only 2 args inside executeWrite callback
-      - readQuery/writeQuery from lib/neo4j/client.ts for simple queries
+      ## Project Conventions
+      - **Neo4j**: parameterized Cypher always. `neo4j.int()` for LIMIT/SKIP.
+        Generic labels (Person, Organization, Event, etc.) + `caso_slug` for namespace.
+        Prefixed IDs: `{caso_slug}:{local_id}`. Filter MATCH by caso_slug.
+        `tx.run(cypher, params)` — only 2 args inside executeWrite callback.
+        Use `readQuery`/`writeQuery` from `lib/neo4j/client.ts`.
+      - **TypeScript**: Zod for API validation. Strict types, no `any`.
+      - **React**: Server Components by default, `"use client"` only when needed.
+      - **Tooling**: pnpm, not npm.
 
-      ## Verification
-      Before emitting subtask.done, ALL must pass:
-      1. `pnpm exec tsc --noEmit` — typecheck
-      2. Check that new code follows existing patterns in the crate/module
+      ## Workflow
+      1. Read the target area, understand existing patterns
+      2. Implement the sub-task
+      3. Verify: `pnpm exec tsc --noEmit` must pass
+      4. Record evidence in scratchpad under current step's Notes
+      5. Mark sub-task checked: `- [x] N.1 ...`
+      6. Commit: `<type>(<scope>): <description>` (scopes: m9, m10, neo4j, api, ui, scripts, engine)
+      7. Emit subtask.done
 
-      Include actual pass/fail output in scratchpad Notes.
+      On review.changes_requested → fix the specific issues, re-verify, emit subtask.done.
 
-      ## On Completion
-      1. Mark sub-task as complete in scratchpad: `- [x] ...`
-      2. Add verification evidence to scratchpad
-      3. Commit with conventional format: `<type>(<scope>): <description>`
-         - Scopes: m9, m10, neo4j, api, ui, scripts, etc.
-      4. Emit subtask.done
-
-      On review.changes_requested → address specific feedback, re-verify, emit subtask.done
+      ## Confidence Protocol
+      >80: proceed. 50-80: proceed + document in scratchpad. <50: safe default + document.
+      Never block on human input. Choose the reversible, additive, narrow-scope option.
 
   critic:
     name: "Critic"
-    description: "Fresh-eyes adversarial review of each increment"
+    description: "Fresh-eyes adversarial review — tries to break the increment"
     triggers: ["subtask.done"]
     publishes: ["review.passed", "review.changes_requested"]
     default_publishes: "review.passed"
     instructions: |
-      You are NOT the builder. Review the latest increment with fresh eyes.
+      You are NOT the builder. Review with skepticism.
 
-      ## Review Checklist
+      ## Checklist
 
-      ### 1. Requirement Fidelity
-      - Did the Builder actually satisfy the sub-task description?
-      - Was scope silently narrowed or an edge case skipped?
+      **1. Did it actually satisfy the sub-task?**
+      Re-read the sub-task description. Check for silently narrowed scope or skipped edges.
 
-      ### 2. Code Quality
-      - Does code follow existing patterns in the codebase?
-      - Are Neo4j queries parameterized (no string interpolation)?
-      - Are LIMIT/SKIP values wrapped in neo4j.int()?
-      - Is there speculative code that fails YAGNI?
-      - Are TypeScript types properly defined (no `any`)?
+      **2. Code quality**
+      - Follows existing codebase patterns?
+      - Neo4j queries parameterized? (no template literals with `${variable}` in Cypher)
+      - LIMIT/SKIP use `neo4j.int()`?
+      - No `any` types? Zod validation on API inputs?
+      - YAGNI — no speculative code?
 
-      ### 3. Verification
-      Re-run the strongest checks:
-      - `pnpm exec tsc --noEmit` — typecheck must pass
-      - Review git diff for the commit
+      **3. Verification**
+      Re-run `pnpm exec tsc --noEmit`. Do not trust the builder's claim.
+      Review the git diff of the latest commit.
 
-      ### 4. Neo4j Specifics
-      - caso_slug filters present on investigation-scoped queries?
-      - Prefixed IDs used consistently?
-      - Relationships using correct generic labels?
+      **4. Domain-specific**
+      - Investigation queries filter by `caso_slug`?
+      - IDs prefixed with `{caso_slug}:`?
+      - Pipeline stages idempotent? (if engine work)
+      - LLM calls through abstraction layer? (if engine work)
+      - Audit trail present for graph mutations? (if engine work)
 
       ## Decision
-      Blocking: missing requirements, broken types, SQL/Cypher injection risk, missing caso_slug filters
-      Non-blocking: minor style nitpicks, comment formatting
+      **Blocking**: broken types, missing requirements, injection risk, missing caso_slug filter,
+      non-idempotent pipeline stage, direct LLM call bypassing abstraction.
+      **Non-blocking**: style nitpicks, minor naming.
 
-      If blocking → emit review.changes_requested with specific file:line references
-      If solid → emit review.passed
+      reject → emit review.changes_requested with file:line references
+      pass → emit review.passed
 
   finalizer:
     name: "Finalizer"
-    description: "Completion gate — decides continue, repair, or finish"
+    description: "Completion gate — routes to next wave or terminates the loop"
     triggers: ["review.passed"]
     publishes: ["queue.advance", "LOOP_COMPLETE"]
     default_publishes: "queue.advance"
     instructions: |
-      You are the final gate. Decide whether the whole requested outcome is complete.
+      You decide: continue or finish.
 
       ## Process
-      1. Read scratchpad for current step progress and overall milestone status
-      2. Check if current step's sub-tasks are all complete
-      3. Check if more steps remain in the milestone
+      1. Read scratchpad — what step are we on? How many remain?
+      2. Close the reviewed runtime task if complete.
 
       ## Decision Tree
-      - Current step has more sub-tasks → emit queue.advance
-      - Current step complete, more steps remain → emit queue.advance (Planner will create next wave)
-      - ALL steps in the milestone complete → run final verification:
-        1. `pnpm exec tsc --noEmit` — full typecheck
-        2. Verify all acceptance criteria from PROMPT.md are met
-        3. If all pass → emit LOOP_COMPLETE
-        4. If gaps found → emit queue.advance with notes on what's missing
+      ```
+      current step has unchecked sub-tasks?
+        → queue.advance (Builder picks up next sub-task)
+      current step done, more steps in plan?
+        → queue.advance (Planner will create next wave)
+      ALL steps in plan done?
+        → run final verification
+      ```
 
-      ## Final Verification (only when all steps done)
-      - Reconcile completed work against PROMPT.md acceptance criteria
-      - Verify no orphaned TODO comments in new code
-      - Check that all new scripts have corresponding package.json entries
-      - Confirm scratchpad documents all completed phases
+      ## Final Verification (only when plan exhausted)
+      1. `pnpm exec tsc --noEmit` — full typecheck
+      2. `pnpm run build` — production build
+      3. Reconcile against the original prompt's requirements
+      4. Check that new scripts have package.json entries
+      5. No orphaned TODOs in new code
+
+      ALL pass → LOOP_COMPLETE
+      Any gap → queue.advance with notes on what's missing
