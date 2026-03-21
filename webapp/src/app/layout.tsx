@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Oficina de Rendición de Cuentas',
+  title: 'OA — Oficina de Rendición de Cuentas / Office of Accountability',
   description:
-    'Plataforma de conocimiento cívico para la política argentina. Explorá las conexiones entre legisladores, votaciones y legislación.',
+    'Plataforma de conocimiento cívico. Civic knowledge platform for investigative research.',
 }
 
 export default function RootLayout({
