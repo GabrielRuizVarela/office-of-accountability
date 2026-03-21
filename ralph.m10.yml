@@ -1,0 +1,150 @@
+# M10 Motor de Investigacion — Ralph Config
+# Use: ralph run -c ralph.m10.yml -p "Implement M10: automated investigation pipeline"
+#
+# M10 is the most complex milestone — automated ingest/verify/enrich/analyze/report
+# pipeline with LLM abstraction, source connectors, graph algorithms, and human gates.
+# Uses higher iteration limits and adds build gate.
+
+event_loop:
+  prompt_file: "PROMPT.md"
+  completion_promise: "LOOP_COMPLETE"
+  required_events: ["review.passed"]
+  starting_event: "build.start"
+  max_iterations: 120
+  max_runtime_seconds: 14400        # 4 hours — M10 is large
+  idle_timeout_secs: 1800
+  checkpoint_interval: 5
+
+cli:
+  backend: "claude"
+  prompt_mode: "arg"
+
+core:
+  specs_dir: "./specs/"
+  guardrails:
+    - "Fresh context each iteration — re-read scratchpad and memories."
+    - "Commit after each completed step. Never commit Ralph files."
+    - "All Neo4j queries MUST use parameterized Cypher."
+    - "LIMIT clauses need neo4j.int(n)."
+    - "LLM abstraction layer must support multiple providers (llamacpp/Qwen, OpenAI, Anthropic, Ollama)."
+    - "Pipeline stages must be idempotent — re-running a stage produces the same result."
+    - "All pipeline config stored in Neo4j as nodes (SourceConnector, PipelineConfig, PipelineStage, Gate)."
+    - "Proposals require human approval before graph mutation. AuditEntry with SHA-256 hash chain."
+    - "Use pnpm, not npm."
+
+backpressure:
+  gates:
+    - name: typecheck
+      command: pnpm exec tsc --noEmit
+      on_fail: "TypeScript errors. Fix before proceeding."
+    - name: build
+      command: pnpm run build
+      on_fail: "Build failed. Fix before proceeding."
+
+memories:
+  enabled: true
+  inject: auto
+  budget: 2000
+
+tasks:
+  enabled: true
+
+skills:
+  enabled: true
+  dirs:
+    - .claude/skills
+
+RObot:
+  enabled: false
+
+hats:
+  planner:
+    name: "Planner"
+    description: "Decomposes M10 engine work into vertical slices"
+    triggers: ["build.start", "queue.advance"]
+    publishes: ["tasks.ready"]
+    default_publishes: "tasks.ready"
+    instructions: |
+      You are planning M10 Motor de Investigacion work.
+
+      ## M10 Architecture
+      The engine is a pipeline: ingest → verify → enrich → analyze → report
+      Each stage has source connectors, LLM integration, and human gates.
+
+      ## Suggested Phase Ordering
+      1. Pipeline core: PipelineConfig/PipelineStage/Gate Neo4j schema + types
+      2. LLM abstraction: provider interface + llamacpp adapter (Qwen 3.5 via MIROFISH_API_URL)
+      3. Source connectors: REST API connector, file upload connector
+      4. Ingest stage: connector execution, two-pass dedup, bronze node creation
+      5. Verify stage: LLM cross-reference, source verification, confidence scoring
+      6. Enrich stage: entity resolution, relationship inference, property enrichment
+      7. Analyze stage: graph algorithms (centrality, community detection, anomaly, temporal)
+      8. Report stage: hypothesis proposals → Claim nodes, reports → Investigation documents
+      9. Human gates: approval API, AuditEntry hash chain, Snapshot creation
+      10. API routes: POST /api/engine/[id]/run, GET /api/engine/[id]/status, POST /api/engine/[id]/approve
+
+      ## Read State
+      1. Read scratchpad for current phase
+      2. Check existing lib/neo4j/ for patterns
+      3. Check existing investigation modules for conventions
+
+      One file or one function per sub-task. Vertical slices preferred.
+
+  builder:
+    name: "Builder"
+    description: "Implements one M10 sub-task at a time"
+    triggers: ["tasks.ready", "review.changes_requested"]
+    publishes: ["subtask.done"]
+    default_publishes: "subtask.done"
+    instructions: |
+      Implement the assigned M10 sub-task only.
+
+      ## Key Conventions
+      - Pipeline config is Neo4j-native (PipelineConfig, PipelineStage, Gate, SourceConnector nodes)
+      - LLM calls go through abstraction layer, never direct provider calls
+      - Qwen 3.5 uses mandatory thinking mode — check reasoning_content field
+      - MIROFISH_API_URL=http://localhost:8080 for local llama.cpp
+      - Proposals are Bronze-tier until human-approved → Silver-tier
+      - AuditEntry nodes with SHA-256 hash chain for traceability
+      - Idempotent stages — re-run safety is mandatory
+
+      ## Verification
+      1. `pnpm exec tsc --noEmit` must pass
+      2. New queries must be parameterized
+      3. Commit as `feat(m10): <description>`
+      4. Mark complete in scratchpad
+
+  critic:
+    name: "Critic"
+    description: "Reviews M10 increments"
+    triggers: ["subtask.done"]
+    publishes: ["review.passed", "review.changes_requested"]
+    default_publishes: "review.passed"
+    instructions: |
+      Review the M10 increment:
+
+      1. Does it satisfy the sub-task?
+      2. Are Neo4j queries parameterized?
+      3. Is the pipeline stage idempotent?
+      4. Does the LLM call go through the abstraction layer?
+      5. Does `pnpm exec tsc --noEmit` pass?
+      6. Are proposals gated (not auto-applied)?
+
+      Blocking: broken types, direct LLM calls bypassing abstraction, non-idempotent stages, missing audit trail
+      Non-blocking: style nitpicks
+
+  finalizer:
+    name: "Finalizer"
+    description: "Decides if M10 phase is complete"
+    triggers: ["review.passed"]
+    publishes: ["queue.advance", "LOOP_COMPLETE"]
+    default_publishes: "queue.advance"
+    instructions: |
+      Check M10 completion against PROMPT.md acceptance criteria:
+      - POST /api/engine/[id]/run creates bronze nodes with dedup
+      - Gate-pending pipeline accepts batch approvals
+      - AuditEntry with SHA-256 hash chain created on approval
+      - Pipeline advances through stages with human gates
+
+      If current phase incomplete → queue.advance
+      If all phases done and acceptance criteria met → LOOP_COMPLETE
