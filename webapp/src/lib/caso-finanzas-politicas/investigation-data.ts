@@ -488,19 +488,6 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source_url:
       'https://www.eldestapeweb.com/politica/los-jueces-de-clarin/clarin-invito-a-jueces-del-lawfare-a-lago-escondido-y-buscaron-encubrirlo-con-facturas-truchas-y-el-direccionamiento-de-una-causa-judicial-202212419450',
   },
-  // --- Tier 1: Judicial Branch — Rosenkrantz conflicts ---
-  {
-    id: 'rosenkrantz-clarin',
-    claim_es:
-      'Carlos Rosenkrantz, presidente de la Corte Suprema, fue abogado de Clarín, La Nación, McDonald\'s, YPF y Repsol. En 2021 revirtió su política de recusación y comenzó a fallar en casos de ex clientes: al menos 56 fallos involucrando antiguos clientes.',
-    claim_en:
-      'Carlos Rosenkrantz, Supreme Court president, was lawyer for Clarín, La Nación, McDonald\'s, YPF and Repsol. In 2021 reversed his recusal policy and began ruling on former clients\' cases: at least 56 rulings involving former clients.',
-    status: 'confirmed',
-    tier: 1,
-    source: 'Página/12',
-    source_url:
-      'https://www.pagina12.com.ar/204884-rosenkrantz-una-larga-historia-de-conflictos',
-  },
   // --- Tier 1: Judicial Branch — Hornos/Borinsky Olivos visits ---
   {
     id: 'hornos-borinsky-olivos',
@@ -551,17 +538,6 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source_url: 'https://www.infobae.com',
   },
   {
-    id: 'side-2838-growth',
-    claim_es:
-      'Los fondos reservados de inteligencia (SIDE) crecieron ~2.000% bajo Milei. Santiago Caputo controla la SIDE a través del designado Cristian Auguadra sin ser funcionario público. El DNU 941/2025 otorgó poderes de detención y vigilancia masiva sin orden judicial.',
-    claim_en:
-      'Intelligence reserved funds (SIDE) grew ~2,000% under Milei. Santiago Caputo controls SIDE through appointee Cristian Auguadra without being a public official. DNU 941/2025 granted detention and mass surveillance powers without judicial order.',
-    status: 'confirmed',
-    tier: 1,
-    source: 'Chequeado / Página/12 / elDiarioAR',
-    source_url: 'https://chequeado.com',
-  },
-  {
     id: 'belocopitt-health-media',
     claim_es:
       'Claudio Belocopitt posee 76% de Swiss Medical y 40% de Grupo América (América TV, A24, La Red). Tiene 6 entidades offshore en las Islas Vírgenes Británicas (Panama Papers). Red de 53 empresas. Cobró USD 13M en ayuda COVID estatal siendo top-50 más ricos.',
@@ -571,17 +547,6 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     tier: 1,
     source: 'ICIJ / Forbes',
     source_url: 'https://offshoreleaks.icij.org',
-  },
-  {
-    id: 'pami-16x-overpricing',
-    claim_es:
-      'PAMI pagó hasta 16 veces el precio de mercado por medicamentos oncológicos en 2023 (anastrozol: $13.192 vs $924 en licitación, ~14x). Cartel denunciado: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
-    claim_en:
-      'PAMI paid up to 16x market price for oncological drugs in 2023 (anastrozole: $13,192 vs $924 at tender, ~14x). Cartel complaint: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
-    status: 'confirmed',
-    tier: 1,
-    source: 'Infobae',
-    source_url: 'https://www.infobae.com',
   },
   {
     id: 'bcra-gold-london',
@@ -1316,7 +1281,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: ['https://chequeado.com'],
   },
   {
-    id: 'nucleoelectrica-overpricing',
+    id: 'tl-2025-nucleoelectrica-overpricing',
     date: '2025-01-27',
     title_es: 'ATE denuncia sobreprecio de 1.066% en Nucleoeléctrica',
     title_en: 'ATE denounces 1,066% overpricing at Nucleoeléctrica',
@@ -1328,7 +1293,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: ['https://ate.org.ar/260127-sobreprecio-nasa/'],
   },
   {
-    id: 'bachellier-embargo',
+    id: 'tl-2026-bachellier-embargo',
     date: '2026-02-10',
     title_es: 'Embargo de $9.669M a Bachellier SA',
     title_en: 'Bachellier SA assets frozen at $9.669B',
@@ -1340,7 +1305,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: ['https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/'],
   },
   {
-    id: 'fundacion-faro-launch',
+    id: 'tl-2024-fundacion-faro-launch',
     date: '2024-11-13',
     title_es: 'Lanzamiento de Fundación Faro con Milei',
     title_en: 'Fundación Faro launch with Milei',
@@ -1352,7 +1317,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: ['https://chequeado.com/investigaciones/fundacion-faro-el-think-tank-libertario-que-mas-pauta-electoral-puso-en-2025-y-que-no-declara-el-origen-de-sus-fondos/'],
   },
   {
-    id: 'afagate-investigation',
+    id: 'tl-2025-afagate-investigation',
     date: '2025-12-28',
     title_es: 'Investigación AFAGate: USD 400M desviados',
     title_en: 'AFAGate investigation: USD 400M diverted',
@@ -1364,7 +1329,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: ['https://www.lanacion.com.ar/politica/investigacion-exclusiva-desde-la-cuenta-que-administra-los-fondos-de-la-afa-en-eeuu-se-desviaron-al-nid28122025/'],
   },
   {
-    id: 'cndc-cartel-charge',
+    id: 'tl-2024-cndc-cartel-charge',
     date: '2024-12-12',
     title_es: 'CNDC imputa cartelización de prepagas',
     title_en: 'CNDC charges prepaid health cartel',
@@ -1376,7 +1341,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: ['https://www.argentina.gob.ar/noticias/la-cndc-imputa-por-presunta-cartelizacion-las-principales-empresas-de-medicina-prepaga-0'],
   },
   {
-    id: 'lijo-senate-rejection',
+    id: 'tl-2025-lijo-senate-rejection',
     date: '2025-04-03',
     title_es: 'Senado rechaza candidatura de Lijo a Corte Suprema (43-27)',
     title_en: 'Senate rejects Lijo Supreme Court candidacy (43-27)',
@@ -1388,7 +1353,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: ['https://www.infobae.com/politica/2025/04/03/con-votos-del-pro-y-el-kirchnerismo-el-senado-rechazo-las-candidaturas-de-ariel-lijo-y-garcia-mansilla-a-la-corte-suprema/'],
   },
   {
-    id: 'dnu-941-intelligence',
+    id: 'tl-2025-dnu-941-intelligence',
     date: '2025-12-31',
     title_es: 'DNU 941/2025: reforma sistema de inteligencia',
     title_en: 'DNU 941/2025: intelligence system reform',
