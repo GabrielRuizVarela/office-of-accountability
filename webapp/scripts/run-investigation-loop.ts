@@ -19,6 +19,36 @@ import neo4j from 'neo4j-driver-lite'
 import { readQuery, closeDriver, verifyConnectivity } from '../src/lib/neo4j/client'
 
 // ---------------------------------------------------------------------------
+// CLI flags
+// ---------------------------------------------------------------------------
+
+const args = process.argv.slice(2)
+const skipNameMatching = args.includes('--skip-name-matching')
+const skipAnalysis = args.includes('--skip-analysis')
+
+/** Phase timeout in milliseconds (default 5 minutes) */
+const PHASE_TIMEOUT_MS = process.env.PHASE_TIMEOUT_MS
+  ? Number(process.env.PHASE_TIMEOUT_MS)
+  : 5 * 60 * 1000
+
+/**
+ * Wrap a promise with a timeout. Rejects with a descriptive error if the
+ * phase takes longer than `ms` milliseconds.
+ */
+function withTimeout<T>(promise: Promise<T>, ms: number, label: string): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(
+      () => reject(new Error(`Phase "${label}" timed out after ${formatDuration(ms)}`)),
+      ms,
+    )
+    promise.then(
+      (v) => { clearTimeout(timer); resolve(v) },
+      (e) => { clearTimeout(timer); reject(e) },
+    )
+  })
+}
+
+// ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
@@ -200,6 +230,15 @@ async function fetchPoliticians() {
 
 async function runCrossReferencePhase() {
   try {
+    if (skipNameMatching) {
+      console.log('  --skip-name-matching flag set. Running CUIT + DNI matching only.')
+      const { matchByCuit, matchByDni } = await import('../src/etl/cross-reference')
+      const cuitMatches = await matchByCuit()
+      console.log(`  CUIT matches: ${cuitMatches.length}`)
+      const dniMatches = await matchByDni()
+      console.log(`  DNI matches: ${dniMatches.length}`)
+      return { cuitMatches, dniMatches, nameMatches: [], flags: [] }
+    }
     const { runCrossReference } = await import('../src/etl/cross-reference')
     return await runCrossReference()
   } catch (error) {

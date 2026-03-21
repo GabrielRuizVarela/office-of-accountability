@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { ForceGraphMethods, NodeObject } from 'react-force-graph-2d'
 
 import { useLanguage } from '@/lib/language-context'
@@ -43,6 +43,48 @@ interface GraphApiResponse {
 }
 
 // ---------------------------------------------------------------------------
+// Graph presets — compelling pre-configured views
+// ---------------------------------------------------------------------------
+
+const GRAPH_PRESETS: ReadonlyArray<{
+  id: string
+  label: Record<Lang, string>
+  description: Record<Lang, string>
+  showTypes: string[]
+}> = [
+  {
+    id: 'all',
+    label: { en: 'Full Graph', es: 'Grafo Completo' },
+    description: { en: 'All entity types', es: 'Todos los tipos' },
+    showTypes: [], // empty = show all
+  },
+  {
+    id: 'revolving-door',
+    label: { en: 'Revolving Door', es: 'Puerta Giratoria' },
+    description: { en: 'Politicians \u2194 Companies \u2194 Government', es: 'Politicos \u2194 Empresas \u2194 Gobierno' },
+    showTypes: ['Politician', 'CompanyOfficer', 'GovernmentAppointment', 'Company'],
+  },
+  {
+    id: 'offshore',
+    label: { en: 'Offshore Network', es: 'Red Offshore' },
+    description: { en: 'Politicians with offshore connections', es: 'Politicos con conexiones offshore' },
+    showTypes: ['Politician', 'OffshoreOfficer', 'OffshoreEntity'],
+  },
+  {
+    id: 'money-trail',
+    label: { en: 'Money Trail', es: 'Rastro del Dinero' },
+    description: { en: 'Donors \u2192 Politicians \u2192 Contractors', es: 'Donantes \u2192 Politicos \u2192 Contratistas' },
+    showTypes: ['Politician', 'Donor', 'Contractor', 'Company'],
+  },
+  {
+    id: 'power-families',
+    label: { en: 'Power Families', es: 'Familias del Poder' },
+    description: { en: 'Corporate board interlocks', es: 'Directorios entrelazados' },
+    showTypes: ['CompanyOfficer', 'BoardMember', 'Company', 'Organization'],
+  },
+]
+
+// ---------------------------------------------------------------------------
 // Node type legend (bilingual)
 // ---------------------------------------------------------------------------
 
@@ -68,6 +110,31 @@ const NODE_TYPE_LEGEND: ReadonlyArray<{ type: string; label: Record<Lang, string
 ]
 
 // ---------------------------------------------------------------------------
+// Edge type legend (bilingual)
+// ---------------------------------------------------------------------------
+
+const EDGE_TYPE_LEGEND: ReadonlyArray<{ type: string; label: Record<Lang, string>; color: string }> = [
+  { type: 'MAYBE_SAME_AS', label: { en: 'Maybe Same As', es: 'Posible Mismo' }, color: '#475569' },
+  { type: 'SAME_ENTITY', label: { en: 'Same Entity', es: 'Misma Entidad' }, color: '#475569' },
+  { type: 'IS_DONOR', label: { en: 'Is Donor', es: 'Es Donante' }, color: '#22c55e' },
+  { type: 'DONATED_TO', label: { en: 'Donated To', es: 'Dono A' }, color: '#22c55e' },
+  { type: 'HAS_OFFSHORE_LINK', label: { en: 'Offshore Link', es: 'Vinculo Offshore' }, color: '#ef4444' },
+  { type: 'HAS_OFFSHORE', label: { en: 'Has Offshore', es: 'Tiene Offshore' }, color: '#ef4444' },
+  { type: 'HAS_APPOINTMENT', label: { en: 'Appointment', es: 'Nombramiento' }, color: '#f97316' },
+  { type: 'APPOINTED', label: { en: 'Appointed', es: 'Nombrado' }, color: '#f97316' },
+  { type: 'ON_BOARD', label: { en: 'On Board', es: 'En Directorio' }, color: '#10b981' },
+  { type: 'MEMBER_OF', label: { en: 'Member Of', es: 'Miembro De' }, color: '#10b981' },
+  { type: 'OFFICER_OF_COMPANY', label: { en: 'Officer Of', es: 'Directivo De' }, color: '#a855f7' },
+  { type: 'AWARDED_TO', label: { en: 'Awarded To', es: 'Adjudicado A' }, color: '#8b5cf6' },
+  { type: 'CROSS_REFERENCED', label: { en: 'Cross Ref.', es: 'Ref. Cruzada' }, color: '#f59e0b' },
+  { type: 'SHARES_BOARD', label: { en: 'Shares Board', es: 'Directorio Compartido' }, color: '#8b5cf6' },
+  { type: 'SAME_COALITION', label: { en: 'Same Coalition', es: 'Misma Coalicion' }, color: '#f59e0b' },
+  { type: 'SAME_PROVINCE', label: { en: 'Same Province', es: 'Misma Provincia' }, color: '#6366f1' },
+  { type: 'BOTH_OFFSHORE', label: { en: 'Both Offshore', es: 'Ambos Offshore' }, color: '#ef4444' },
+  { type: 'SHARED_ORG', label: { en: 'Shared Org', es: 'Org. Compartida' }, color: '#10b981' },
+]
+
+// ---------------------------------------------------------------------------
 // UI text (bilingual)
 // ---------------------------------------------------------------------------
 
@@ -88,6 +155,12 @@ const ui = {
   dataSources: { en: 'data sources', es: 'fuentes de datos' },
   yes: { en: 'Yes', es: 'Si' },
   no: { en: 'No', es: 'No' },
+  searchPlaceholder: { en: 'Search nodes...', es: 'Buscar nodos...' },
+  edgeTypes: { en: 'Relationship Types', es: 'Tipos de Relacion' },
+  connectedTo: { en: 'Connected to', es: 'Conectado a' },
+  connectionCount: { en: 'connections', es: 'conexiones' },
+  linkBreakdown: { en: 'Link types', es: 'Tipos de enlace' },
+  presets: { en: 'Presets', es: 'Vistas' },
 } as const
 
 // ---------------------------------------------------------------------------
@@ -120,8 +193,13 @@ export function ConexionesGraph() {
   const [error, setError] = useState<string | null>(null)
   const [selectedNode, setSelectedNode] = useState<GraphNodeData | null>(null)
   const [hiddenTypes, setHiddenTypes] = useState<Set<string>>(new Set())
+  const [hiddenEdgeTypes, setHiddenEdgeTypes] = useState<Set<string>>(new Set())
+  const [searchQuery, setSearchQuery] = useState('')
+  const [activePreset, setActivePreset] = useState('all')
+  const [edgeFilterOpen, setEdgeFilterOpen] = useState(false)
 
   const toggleType = useCallback((type: string) => {
+    setActivePreset('') // clear preset when manually toggling
     setHiddenTypes((prev) => {
       const next = new Set(prev)
       if (next.has(type)) next.delete(type)
@@ -130,11 +208,93 @@ export function ConexionesGraph() {
     })
   }, [])
 
-  // Filter graph data based on hidden types
+  const toggleEdgeType = useCallback((type: string) => {
+    setHiddenEdgeTypes((prev) => {
+      const next = new Set(prev)
+      if (next.has(type)) next.delete(type)
+      else next.add(type)
+      return next
+    })
+  }, [])
+
+  // Apply a preset filter
+  const applyPreset = useCallback((preset: typeof GRAPH_PRESETS[number]) => {
+    setActivePreset(preset.id)
+    if (preset.showTypes.length === 0) {
+      // "all" preset — clear all hidden types
+      setHiddenTypes(new Set())
+    } else {
+      // Hide all types NOT in the preset's showTypes
+      const allTypes = NODE_TYPE_LEGEND.map((t) => t.type)
+      const toHide = allTypes.filter((t) => !preset.showTypes.includes(t))
+      setHiddenTypes(new Set(toHide))
+    }
+  }, [])
+
+  // Search matching node IDs
+  const searchMatchIds = useMemo(() => {
+    if (!searchQuery.trim() || !graphData) return null
+    const q = searchQuery.toLowerCase()
+    const matching = new Set<string>()
+    for (const node of graphData.nodes) {
+      if (node.name.toLowerCase().includes(q)) {
+        matching.add(node.id)
+      }
+    }
+    return matching
+  }, [searchQuery, graphData])
+
+  // Compute edge type counts from raw data
+  const edgeTypeCounts = useMemo(() => {
+    if (!graphData) return new Map<string, number>()
+    const counts = new Map<string, number>()
+    for (const link of graphData.links) {
+      counts.set(link.type, (counts.get(link.type) ?? 0) + 1)
+    }
+    return counts
+  }, [graphData])
+
+  // Compute selected node's connection info
+  const selectedNodeConnections = useMemo(() => {
+    if (!selectedNode || !graphData) return null
+
+    const connectedNodes: GraphNodeData[] = []
+    const linkTypeCounts = new Map<string, number>()
+    const seen = new Set<string>()
+
+    for (const link of graphData.links) {
+      const sourceId = typeof link.source === 'string' ? link.source : (link.source as any)?.id
+      const targetId = typeof link.target === 'string' ? link.target : (link.target as any)?.id
+
+      let neighborId: string | null = null
+      if (sourceId === selectedNode.id) neighborId = targetId
+      else if (targetId === selectedNode.id) neighborId = sourceId
+      if (!neighborId) continue
+
+      linkTypeCounts.set(link.type, (linkTypeCounts.get(link.type) ?? 0) + 1)
+
+      if (!seen.has(neighborId)) {
+        seen.add(neighborId)
+        const neighborNode = graphData.nodes.find((n) => n.id === neighborId)
+        if (neighborNode) connectedNodes.push(neighborNode)
+      }
+    }
+
+    return {
+      totalConnections: Array.from(linkTypeCounts.values()).reduce((a, b) => a + b, 0),
+      connectedNodes,
+      linkTypeCounts,
+    }
+  }, [selectedNode, graphData])
+
+  // Filter graph data based on hidden node types and hidden edge types
   const filteredData = graphData
     ? {
         nodes: graphData.nodes.filter((n) => !hiddenTypes.has(n.type)),
         links: graphData.links.filter((l) => {
+          // Filter by edge type
+          if (hiddenEdgeTypes.has(l.type)) return false
+
           const sourceId = typeof l.source === 'string' ? l.source : (l.source as any)?.id
           const targetId = typeof l.target === 'string' ? l.target : (l.target as any)?.id
           const sourceNode = graphData.nodes.find((n) => n.id === sourceId)
@@ -227,6 +387,8 @@ export function ConexionesGraph() {
       const x = node.x ?? 0
       const y = node.y ?? 0
       const isSelected = selectedNode?.id === gNode.id
+      const isSearchMatch = searchMatchIds ? searchMatchIds.has(gNode.id) : false
+      const isSearchActive = searchMatchIds !== null
       const isKeyNode = gNode.type === 'OffshoreEntity' || gNode.type === 'Company' ||
         gNode.type === 'Organization' || gNode.type === 'PoliticalParty' ||
         gNode.type === 'Judge' || (gNode.datasets ?? 0) >= 4
@@ -235,13 +397,30 @@ export function ConexionesGraph() {
         : Math.max(3, Math.min(gNode.val * 1.5, 10))
       const radius = isSelected ? baseRadius + 2 : baseRadius
 
+      // Dim non-matching nodes when search is active
+      const dimmed = isSearchActive && !isSearchMatch && !isSelected
+
       // Node circle
       ctx.beginPath()
       ctx.arc(x, y, radius, 0, 2 * Math.PI)
       ctx.fillStyle = gNode.color
-      ctx.globalAlpha = isSelected ? 1 : 0.85
+      ctx.globalAlpha = dimmed ? 0.15 : isSelected ? 1 : 0.85
       ctx.fill()
       ctx.globalAlpha = 1
+
+      // Search match glow ring
+      if (isSearchMatch && isSearchActive) {
+        ctx.save()
+        ctx.beginPath()
+        ctx.arc(x, y, radius + 4, 0, 2 * Math.PI)
+        ctx.strokeStyle = '#facc15' // bright yellow
+        ctx.lineWidth = 2.5
+        ctx.shadowColor = '#facc15'
+        ctx.shadowBlur = 12
+        ctx.globalAlpha = 0.9
+        ctx.stroke()
+        ctx.restore()
+      }
 
       // Selected ring
       if (isSelected) {
@@ -256,13 +435,14 @@ export function ConexionesGraph() {
       }
 
       // Label — always show for key nodes, show for politicians at medium zoom
-      const showLabel = isSelected || isKeyNode || globalScale > 1.5 ||
+      // Also always show for search matches
+      const showLabel = isSelected || isSearchMatch || isKeyNode || globalScale > 1.5 ||
         (gNode.type === 'Politician' && globalScale > 0.8)
-      if (showLabel) {
+      if (showLabel && !dimmed) {
         const fontSize = isKeyNode
           ? Math.max(14 / globalScale, 3)
           : Math.max(11 / globalScale, 2)
-        ctx.font = `${isSelected || isKeyNode ? 'bold ' : ''}${fontSize}px sans-serif`
+        ctx.font = `${isSelected || isKeyNode || isSearchMatch ? 'bold ' : ''}${fontSize}px sans-serif`
         ctx.textAlign = 'center'
         ctx.textBaseline = 'top'
 
@@ -272,11 +452,11 @@ export function ConexionesGraph() {
         ctx.fillStyle = 'rgba(0, 0, 0, 0.6)'
         ctx.fillRect(x - textWidth / 2 - 1, y + radius + 1, textWidth + 2, fontSize + 2)
 
-        ctx.fillStyle = isSelected ? '#ffffff' : isKeyNode ? '#f1f5f9' : '#cbd5e1'
+        ctx.fillStyle = isSearchMatch ? '#facc15' : isSelected ? '#ffffff' : isKeyNode ? '#f1f5f9' : '#cbd5e1'
         ctx.fillText(label, x, y + radius + 2)
       }
     },
-    [selectedNode],
+    [selectedNode, searchMatchIds],
   )
 
   // Pointer area for hover detection
@@ -339,7 +519,59 @@ export function ConexionesGraph() {
 
   return (
     <div className="flex h-full flex-col">
-      {/* Top bar with legend and stats */}
+      {/* Preset filter buttons */}
+      <div className="flex flex-wrap items-center gap-2 border-b border-zinc-800 bg-zinc-950/80 px-4 py-2">
+        <span className="mr-1 text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
+          {ui.presets[lang]}
+        </span>
+        {GRAPH_PRESETS.map((preset) => (
+          <button
+            key={preset.id}
+            onClick={() => applyPreset(preset)}
+            title={preset.description[lang]}
+            className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+              activePreset === preset.id
+                ? 'border-blue-500 bg-blue-500/20 text-blue-300'
+                : 'border-zinc-700 text-zinc-400 hover:border-zinc-500 hover:text-zinc-200'
+            }`}
+          >
+            {preset.label[lang]}
+          </button>
+        ))}
+      </div>
+
+      {/* Search bar */}
+      <div className="flex items-center gap-2 border-b border-zinc-800 bg-zinc-950/80 px-4 py-2">
+        <svg className="h-4 w-4 flex-shrink-0 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder={ui.searchPlaceholder[lang]}
+          className="flex-1 bg-transparent text-sm text-zinc-200 placeholder-zinc-600 outline-none"
+        />
+        {searchQuery && (
+          <>
+            {searchMatchIds && (
+              <span className="text-xs text-zinc-500">
+                {searchMatchIds.size} {searchMatchIds.size === 1 ? 'match' : 'matches'}
+              </span>
+            )}
+            <button
+              onClick={() => setSearchQuery('')}
+              className="text-zinc-500 hover:text-zinc-300"
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </>
+        )}
+      </div>
+
+      {/* Top bar with node type legend and stats */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-800 bg-zinc-950/80 px-4 py-3">
         <div className="flex flex-wrap gap-3">
           {NODE_TYPE_LEGEND.map((item) => {
@@ -371,7 +603,7 @@ export function ConexionesGraph() {
             {filteredData ? filteredData.links.length : graphData.links.length} {ui.connections[lang]}
             {hiddenTypes.size > 0 && (
               <button
-                onClick={() => setHiddenTypes(new Set())}
+                onClick={() => { setHiddenTypes(new Set()); setActivePreset('all') }}
                 className="ml-2 text-blue-400 hover:underline"
               >
                 {ui.showAll[lang]}
@@ -380,6 +612,66 @@ export function ConexionesGraph() {
           </span>
         )}
       </div>
+
+      {/* Edge type filter (collapsible) */}
+      {graphData && (
+        <div className="border-b border-zinc-800 bg-zinc-950/80">
+          <button
+            onClick={() => setEdgeFilterOpen(!edgeFilterOpen)}
+            className="flex w-full items-center gap-2 px-4 py-2 text-left text-xs text-zinc-500 hover:text-zinc-300"
+          >
+            <svg
+              className={`h-3 w-3 transition-transform ${edgeFilterOpen ? 'rotate-90' : ''}`}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+            <span className="font-semibold uppercase tracking-wider">{ui.edgeTypes[lang]}</span>
+            {hiddenEdgeTypes.size > 0 && (
+              <span className="text-zinc-600">
+                ({hiddenEdgeTypes.size} hidden)
+              </span>
+            )}
+          </button>
+          {edgeFilterOpen && (
+            <div className="flex flex-wrap gap-2 px-4 pb-3">
+              {EDGE_TYPE_LEGEND.map((item) => {
+                const count = edgeTypeCounts.get(item.type) ?? 0
+                if (count === 0) return null
+                const isHidden = hiddenEdgeTypes.has(item.type)
+                return (
+                  <button
+                    key={item.type}
+                    onClick={() => toggleEdgeType(item.type)}
+                    className={`flex items-center gap-1.5 rounded px-1.5 py-0.5 transition-opacity ${
+                      isHidden ? 'opacity-30' : 'opacity-100'
+                    } hover:bg-zinc-800`}
+                  >
+                    <span
+                      className="inline-block h-0.5 w-4"
+                      style={{ backgroundColor: item.color }}
+                    />
+                    <span className="text-xs text-zinc-400">
+                      {item.label[lang]} ({count})
+                    </span>
+                  </button>
+                )
+              })}
+              {hiddenEdgeTypes.size > 0 && (
+                <button
+                  onClick={() => setHiddenEdgeTypes(new Set())}
+                  className="ml-1 text-xs text-blue-400 hover:underline"
+                >
+                  {ui.showAll[lang]}
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Graph area */}
       <div className="relative flex-1">
@@ -502,12 +794,61 @@ export function ConexionesGraph() {
                 </svg>
               </button>
             </div>
-            <div className="max-h-60 overflow-y-auto px-4 py-3">
+            <div className="max-h-80 overflow-y-auto px-4 py-3">
+              {/* Connection count */}
+              {selectedNodeConnections && (
+                <div className="mb-3 rounded bg-zinc-800/60 px-3 py-2">
+                  <div className="text-xs font-semibold text-zinc-200">
+                    {selectedNodeConnections.totalConnections} {ui.connectionCount[lang]}
+                  </div>
+
+                  {/* Link type breakdown */}
+                  {selectedNodeConnections.linkTypeCounts.size > 0 && (
+                    <div className="mt-1.5 space-y-0.5">
+                      {Array.from(selectedNodeConnections.linkTypeCounts.entries())
+                        .sort(([, a], [, b]) => b - a)
+                        .map(([type, count]) => (
+                          <div key={type} className="flex items-center justify-between text-[10px]">
+                            <span className="text-zinc-400">{type.replace(/_/g, ' ')}</span>
+                            <span className="font-mono text-zinc-500">{count}</span>
+                          </div>
+                        ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
               {selectedNode.type === 'Politician' && (
                 <div className="mb-2 text-xs text-zinc-400">
                   {ui.presentIn[lang]} <span className="font-semibold text-blue-400">{selectedNode.datasets}</span> {ui.dataSources[lang]}
                 </div>
               )}
+
+              {/* Connected node names */}
+              {selectedNodeConnections && selectedNodeConnections.connectedNodes.length > 0 && (
+                <div className="mb-3">
+                  <div className="mb-1 text-[10px] font-medium uppercase tracking-wider text-zinc-500">
+                    {ui.connectedTo[lang]}
+                  </div>
+                  <div className="space-y-0.5">
+                    {selectedNodeConnections.connectedNodes.slice(0, 10).map((n) => (
+                      <div key={n.id} className="flex items-center gap-1.5 text-xs">
+                        <span
+                          className="inline-block h-2 w-2 flex-shrink-0 rounded-full"
+                          style={{ backgroundColor: n.color }}
+                        />
+                        <span className="truncate text-zinc-300">{n.name}</span>
+                      </div>
+                    ))}
+                    {selectedNodeConnections.connectedNodes.length > 10 && (
+                      <div className="text-[10px] text-zinc-600">
+                        +{selectedNodeConnections.connectedNodes.length - 10} more
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
               <dl className="space-y-1.5">
                 {Object.entries(selectedNode.properties)
                   .filter(([key]) => !key.startsWith('_') && key !== 'embedding')

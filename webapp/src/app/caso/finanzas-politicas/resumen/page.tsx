@@ -3,9 +3,9 @@
 /**
  * Finanzas Politicas — Narrative summary page.
  *
- * An 8-chapter bilingual investigative journalism piece that walks readers
+ * An 11-chapter bilingual investigative journalism piece that walks readers
  * through the systemic connections between political power and money in
- * Argentina, compiled from 2.16M nodes and 4.49M relationships across 8
+ * Argentina, compiled from 2.16M nodes and 4.49M relationships across 9
  * public datasets.
  */
 
@@ -50,13 +50,13 @@ const TITLE: Record<Lang, string> = {
 }
 
 const SUBTITLE: Record<Lang, string> = {
-  es: 'Como ocho bases de datos publicas revelan las conexiones entre el cargo publico, los directorios corporativos, las sociedades offshore y el financiamiento de campanas',
-  en: 'How eight public datasets reveal the connections between public office, corporate boards, offshore entities and campaign financing',
+  es: 'Como nueve bases de datos publicas revelan las conexiones entre el cargo publico, los directorios corporativos, las sociedades offshore, el financiamiento de campanas y las armas financieras',
+  en: 'How nine public datasets reveal the connections between public office, corporate boards, offshore entities, campaign financing and financial arms',
 }
 
 const READING_TIME: Record<Lang, string> = {
-  es: '~30 min de lectura',
-  en: '~30 min read',
+  es: '~40 min de lectura',
+  en: '~40 min read',
 }
 
 const LAST_UPDATED: Record<Lang, string> = {
@@ -314,6 +314,91 @@ const chapters: readonly Chapter[] = [
       en: 'The data asks questions. The questions will not stop multiplying.',
     },
   },
+  {
+    id: 'las-armas-financieras',
+    title: {
+      es: 'IX. Las Armas Financieras',
+      en: 'IX. The Financial Arms',
+    },
+    paragraphs: {
+      es: [
+        'El analisis del registro de la IGJ revelo que 12 familias oligarquicas controlan mas de 500 empresas. Los Mindlin (52 empresas), Magnetto (35), Eurnekian (35), De Narvaez (35), Werthein (29) y Blaquier (27) dominan sectores enteros: energia, medios, seguros, agroindustria. El cruce de datos encontro 72 oficiales de empresas financieras que simultaneamente ocupan cargos en el gobierno nacional.',
+        'Estas familias no solo controlan empresas — controlan los sectores regulados por los mismos funcionarios que salen de sus directorios. El patron es sistematico: un ejecutivo del sector financiero asume un cargo regulatorio, implementa politicas favorables, y regresa al sector privado con informacion privilegiada.',
+        'La concentracion es mas profunda de lo que aparenta. Las 500+ empresas no son independientes entre si: comparten directores, domicilios legales y, frecuentemente, los mismos estudios juridicos. Es una red, no una coleccion de empresas aisladas.',
+      ],
+      en: [
+        'IGJ corporate registry analysis revealed 12 oligarchic families controlling 500+ companies. The Mindlin (52 companies), Magnetto (35), Eurnekian (35), De Narvaez (35), Werthein (29) and Blaquier (27) families dominate entire sectors: energy, media, insurance, agroindustry. Cross-referencing found 72 financial company officers simultaneously holding national government appointments.',
+        'These families do not just control companies — they control the sectors regulated by the very officials who come from their boards. The pattern is systematic: a financial sector executive takes a regulatory position, implements favorable policies, and returns to the private sector with privileged information.',
+        'The concentration runs deeper than it appears. The 500+ companies are not independent of each other: they share directors, legal addresses, and frequently the same law firms. It is a network, not a collection of isolated companies.',
+      ],
+    },
+    pullQuote: {
+      es: '12 familias oligarquicas controlan mas de 500 empresas. 72 ejecutivos financieros ocupan simultaneamente cargos gubernamentales.',
+      en: '12 oligarchic families control 500+ companies. 72 financial executives simultaneously hold government positions.',
+    },
+    citations: [
+      { id: 15, text: 'Registro societario IGJ — datos.gob.ar', url: 'https://datos.gob.ar' },
+      { id: 16, text: 'Grupo Mindlin — estructura corporativa, CNV filings' },
+    ],
+  },
+  {
+    id: 'el-escandalo-de-los-seguros',
+    title: {
+      es: 'X. El Escandalo de los Seguros',
+      en: 'X. The Insurance Scandal',
+    },
+    paragraphs: {
+      es: [
+        'El Decreto 823/2021, firmado por Alberto Fernandez, obligo a todo el sector publico nacional a contratar seguros exclusivamente con Nacion Seguros S.A. El monopolio fue explotado por brokers cercanos al presidente. Bachellier S.A. facturo $1.665 millones en comisiones y fue embargada por $9.669 millones. Hector Martinez Sosa — esposo de la secretaria de Fernandez — cobro $366 millones. En abril de 2024, el juez Ercolini ordeno 24 allanamientos simultaneos.',
+        'El circuito era simple pero efectivo: el decreto obligaba a todas las dependencias del Estado a contratar con una unica empresa. Esa empresa delegaba la intermediacion en brokers seleccionados a dedo. Los brokers cobraban comisiones desproporcionadas. El dinero fluia hacia personas del circulo intimo presidencial.',
+        'El total del monopolio asciende a $28.500 millones. De ese total, $3.500 millones fueron a comisiones de brokers — un margen que no tiene justificacion tecnica ni de mercado. La Superintendencia de Seguros, que deberia haber intervenido, estaba dirigida por un exejecutivo de la misma industria.',
+        'En febrero de 2026, el fiscal federal requirio la elevacion a juicio oral de Hector Martinez Sosa. La causa esta activa.',
+      ],
+      en: [
+        'Decree 823/2021, signed by Alberto Fernandez, mandated all national public sector entities to contract insurance exclusively through Nacion Seguros S.A. The monopoly was exploited by brokers close to the president. Bachellier S.A. invoiced $1.665B in commissions and was embargoed for $9.669B. Hector Martinez Sosa — husband of Fernandez\'s secretary — collected $366M. In April 2024, Judge Ercolini ordered 24 simultaneous raids.',
+        'The circuit was simple but effective: the decree forced all state agencies to contract with a single company. That company delegated brokerage to hand-picked intermediaries. The brokers collected disproportionate commissions. The money flowed to people in the presidential inner circle.',
+        'The total monopoly amounts to $28.5B. Of that total, $3.5B went to broker commissions — a margin with no technical or market justification. The Superintendency of Insurance, which should have intervened, was headed by a former executive from the same industry.',
+        'In February 2026, the federal prosecutor requested the case against Hector Martinez Sosa be elevated to oral trial. The case is active.',
+      ],
+    },
+    pullQuote: {
+      es: '$28.500 millones en monopolio de seguros. $3.500 millones en comisiones de brokers. 24 allanamientos simultaneos.',
+      en: '$28.5B insurance monopoly. $3.5B in broker commissions. 24 simultaneous raids.',
+    },
+    citations: [
+      { id: 17, text: 'Decreto 823/2021 — Boletin Oficial', url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/253783/20211201' },
+      { id: 18, text: 'Causa seguros — allanamientos Ercolini, Infobae', url: 'https://www.infobae.com/politica/2024/04/' },
+      { id: 19, text: 'Martinez Sosa procesamiento — Fiscalia Federal, feb 2026' },
+    ],
+  },
+  {
+    id: 'la-puerta-giratoria',
+    title: {
+      es: 'XI. La Puerta Giratoria',
+      en: 'XI. The Revolving Door',
+    },
+    paragraphs: {
+      es: [
+        'Guillermo Plate paso de Vicepresidente de Provincia ART a Superintendente de Seguros, regulando el mercado donde fue ejecutivo. Lisandro Catalan dejo el Ministerio del Interior y dos semanas despues fue designado Director de YPF con un salario de 140 millones de pesos mensuales. El Ministro de Justicia Cuneo Libarona fue director legal de Libra Seguros antes de asumir, creando un "doble blindaje" para esa aseguradora.',
+        'El patron se repite en multiples sectores. Funcionarios que regulan las industrias donde trabajaron — o a las que regresan inmediatamente despues de dejar el cargo. No hay periodo de enfriamiento. No hay incompatibilidad efectiva. La puerta gira sin friccion.',
+        'De los 72 casos documentados de puerta giratoria financiera, 48 involucran al sector de seguros, 15 al sector bancario, y 9 al mercado de capitales. El sector de seguros — con su regulacion opaca y sus enormes flujos de primas — es el terreno preferido para esta practica.',
+      ],
+      en: [
+        'Guillermo Plate went from VP of Provincia ART to Superintendent of Insurance, regulating the market where he was an executive. Lisandro Catalan left the Ministry of Interior and two weeks later was appointed YPF Director at 140 million pesos/month. Justice Minister Cuneo Libarona was legal director of Libra Seguros before taking office, creating "double shielding" for that insurer.',
+        'The pattern repeats across multiple sectors. Officials who regulate the industries where they worked — or to which they return immediately after leaving office. There is no cooling-off period. There is no effective incompatibility. The door revolves without friction.',
+        'Of the 72 documented financial revolving door cases, 48 involve the insurance sector, 15 the banking sector, and 9 the capital markets. The insurance sector — with its opaque regulation and enormous premium flows — is the preferred terrain for this practice.',
+      ],
+    },
+    pullQuote: {
+      es: 'La puerta gira sin friccion. No hay periodo de enfriamiento. No hay incompatibilidad efectiva.',
+      en: 'The door revolves without friction. No cooling-off period. No effective incompatibility.',
+    },
+    citations: [
+      { id: 20, text: 'Plate designacion SSN — Boletin Oficial', url: 'https://www.boletinoficial.gob.ar' },
+      { id: 21, text: 'Catalan designacion YPF — Infobae', url: 'https://www.infobae.com/economia/2024/' },
+      { id: 22, text: 'Cuneo Libarona conflicto de intereses — Pagina/12', url: 'https://www.pagina12.com.ar/' },
+    ],
+  },
 ]
 
 // ---------------------------------------------------------------------------
@@ -324,7 +409,7 @@ const stats: readonly StatCard[] = [
   { value: '10,150', label: { es: 'Coincidencias entre datasets', en: 'Cross-dataset matches' } },
   { value: '617', label: { es: 'Politicos en 2+ datasets', en: 'Politicians in 2+ datasets' } },
   { value: '2,16M', label: { es: 'Nodos del grafo', en: 'Graph nodes' } },
-  { value: '9', label: { es: 'Pipelines de datos', en: 'Data pipelines' } },
+  { value: '72', label: { es: 'Puerta giratoria financiera', en: 'Financial revolving door' } },
 ]
 
 // ---------------------------------------------------------------------------
@@ -343,6 +428,10 @@ const sources: readonly Source[] = [
   { name: 'BF Corporation Suiza — Perfil', url: 'https://www.perfil.com/noticias/politica/una-off-shore-de-los-macri-movio-fondos-a-suiza-y-destruyo-pruebas.phtml' },
   { name: 'SOCMA blanqueo — Perfil', url: 'https://noticias.perfil.com/noticias/politica/2018-12-18-quienes-son-los-integrantes-de-socma-que-adhirieron-al-blanqueo.phtml' },
   { name: 'Grindetti ICIJ Offshore Leaks', url: 'https://offshoreleaks.icij.org/stories/nestor-grindetti' },
+  { name: 'Decreto 823/2021 — Boletin Oficial', url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/253783/20211201' },
+  { name: 'Causa seguros — allanamientos Ercolini', url: 'https://www.infobae.com/politica/2024/04/' },
+  { name: 'Plate designacion SSN — Boletin Oficial', url: 'https://www.boletinoficial.gob.ar' },
+  { name: 'Catalan designacion YPF — Infobae', url: 'https://www.infobae.com/economia/2024/' },
 ]
 
 // ---------------------------------------------------------------------------
