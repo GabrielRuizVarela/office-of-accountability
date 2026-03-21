@@ -38,7 +38,7 @@ export default function ActorPage() {
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch(`/api/caso-libra/person/${actorSlug}`)
+        const res = await fetch(`/api/caso/${slug}/person/${actorSlug}`)
         if (!res.ok) throw new Error('Actor no encontrado')
         const json = await res.json()
         setData(json)

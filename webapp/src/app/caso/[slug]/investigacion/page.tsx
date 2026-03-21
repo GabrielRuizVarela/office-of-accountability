@@ -9,6 +9,7 @@
  */
 
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
+import { useParams } from 'next/navigation'
 
 import { useLanguage, type Lang } from '@/lib/language-context'
 import {
@@ -832,6 +833,8 @@ const ENTITY_TYPES = [
 type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error'
 
 function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
+  const params = useParams()
+  const slug = params.slug as string
   const [entityType, setEntityType] = useState('factcheck')
   const [formData, setFormData] = useState<Record<string, string>>({})
   const [status, setStatus] = useState<SubmitStatus>('idle')
@@ -954,7 +957,7 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
     }
 
     try {
-      const response = await fetch('/api/caso-libra/investigation', {
+      const response = await fetch(`/api/caso/${slug}/investigation`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ type: entityType, data }),
