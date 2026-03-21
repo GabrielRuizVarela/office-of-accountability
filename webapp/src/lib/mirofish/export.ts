@@ -1,8 +1,8 @@
 /**
  * Knowledge graph → MiroFish seed data conversion.
  *
- * Exports the Epstein investigation graph into the format
- * expected by MiroFish for initializing agent simulations.
+ * Exports an investigation graph into the format expected by
+ * MiroFish for initializing agent simulations.
  */
 
 import type { GraphData } from '../neo4j/types'
@@ -15,7 +15,11 @@ import type { MiroFishSeedData, MiroFishAgent } from './types'
  * (to other people, organizations, locations) form the agent's
  * background and connection list.
  */
-export function graphToMiroFishSeed(data: GraphData, scenario: string): MiroFishSeedData {
+export function graphToMiroFishSeed(
+  data: GraphData,
+  scenario: string,
+  investigationName?: string,
+): MiroFishSeedData {
   const personNodes = data.nodes.filter((n) => n.labels.includes('Person'))
 
   const agents: MiroFishAgent[] = personNodes.map((person) => {
@@ -54,9 +58,9 @@ export function graphToMiroFishSeed(data: GraphData, scenario: string): MiroFish
   })
 
   const context = [
-    'Jeffrey Epstein investigation network.',
+    `${investigationName ?? 'Investigation'} network.`,
     `${personNodes.length} persons, ${data.nodes.length} total entities.`,
-    'Based on public court records, flight logs, and verified reporting.',
+    'Based on verified sources and public records.',
   ].join(' ')
 
   return { agents, context, scenario }
