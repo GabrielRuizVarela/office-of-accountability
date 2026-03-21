@@ -146,11 +146,8 @@ export function EvidenceExplorer({ documents, casoSlug }: EvidenceExplorerProps)
               slug={doc.slug}
               docType={doc.doc_type}
               summary={doc.summary}
-              date={doc.date}
-              mentionedPersonCount={doc.mentionedPersonCount}
-              casoSlug={casoSlug}
-              confidence_tier={doc.confidence_tier}
-              source={doc.source}
+              datePublished={doc.date}
+              investigationSlug={casoSlug}
             />
           ))}
         </div>
@@ -170,11 +167,8 @@ export function EvidenceExplorer({ documents, casoSlug }: EvidenceExplorerProps)
                     slug={doc.slug}
                     docType={doc.doc_type}
                     summary={doc.summary}
-                    date={doc.date}
-                    mentionedPersonCount={doc.mentionedPersonCount}
-                    casoSlug={casoSlug}
-                    confidence_tier={doc.confidence_tier}
-                    source={doc.source}
+                    datePublished={doc.date}
+                    investigationSlug={casoSlug}
                   />
                 ))}
               </div>
