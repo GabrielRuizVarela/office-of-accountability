@@ -14,7 +14,7 @@ const CASE_META: Readonly<Record<string, { title: string; description: string; d
   'caso-epstein': {
     title: 'Epstein Case — Office of Accountability',
     description:
-      'Trafficking and power network. 7,287 entities, court documents, flight records, and factchecking.',
+      'Trafficking and power network. 7,276 entities, court documents, flight records, and factchecking.',
     defaultLang: 'en',
   },
 }

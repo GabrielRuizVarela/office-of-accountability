@@ -1818,13 +1818,13 @@ export const EVIDENCE_DOCS: EvidenceDoc[] = [
 
 export const IMPACT_STATS: ImpactStat[] = [
   {
-    value: '7,287',
+    value: '7,276',
     label_en: 'Connected nodes in the knowledge graph',
     label_es: 'Nodos conectados en el grafo de conocimiento',
     source: 'Office of Accountability knowledge graph',
   },
   {
-    value: '21,944',
+    value: '11,040',
     label_en: 'Verified relationships mapped',
     label_es: 'Relaciones verificadas mapeadas',
     source: 'Office of Accountability knowledge graph',
@@ -1848,7 +1848,7 @@ export const IMPACT_STATS: ImpactStat[] = [
     source: 'DOJ Epstein Files Transparency Act compliance',
   },
   {
-    value: '355',
+    value: '374',
     label_en: 'Web-verified persons in the network',
     label_es: 'Personas verificadas en la red',
     source: 'Office of Accountability knowledge graph',
@@ -1860,7 +1860,7 @@ export const IMPACT_STATS: ImpactStat[] = [
     source: 'FAA records, flight manifests, court exhibits',
   },
   {
-    value: '72',
+    value: '77',
     label_en: 'Factchecked claims verified',
     label_es: 'Afirmaciones verificadas',
     source: 'Office of Accountability investigation',
