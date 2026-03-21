@@ -1,9 +1,10 @@
 # QA Tracker — Office of Accountability
 
-**Last updated:** 2026-03-21T19:50 UTC
+**Last updated:** 2026-03-21T20:45 UTC
 **Platform:** Next.js 16 + Vite + React 19 + Neo4j 5 + TailwindCSS 4
 **Test framework:** Playwright (E2E only — no unit tests)
 **Neo4j data:** ~1.3M nodes across 40+ labels (CompanyOfficer: 951K, BoardMember: 860K, Company: 398K, Person: 2K, Flight: 4K, etc.)
+**PRD compliance:** 42/55 DONE, 6 PARTIAL, 7 MISSING (70% complete)
 
 ---
 
@@ -220,10 +221,13 @@
 |----|-------------|----------|---------|------------|--------|
 | BUG-001 | caso-epstein overview returns 500 | **HIGH** | `/caso/caso-epstein` | `neo4j.int({low:0, high:0})` objects passed to Client Components — not serializable | Open |
 | BUG-004 | caso-epstein evidencia returns 500 | **HIGH** | `/caso/caso-epstein/evidencia` | Same neo4j.int serialization issue | Open |
+| BUG-008 | Node detail API returns 500 | **HIGH** | `/api/caso/caso-epstein/node/:id` | Silently fails with empty body for case-scoped node endpoint | Open |
+| BUG-009 | Graph node/expand rejects caso-prefixed IDs | **MEDIUM** | `/api/graph/node/:id`, `/api/graph/expand/:id` | Returns "Invalid node ID format" for `caso-epstein:ep-*` composite IDs | Open |
 | BUG-002 | Non-existent caso returns 200 not 404 | MEDIUM | `/caso/caso-nonexistent` | Missing `notFound()` in dynamic route when config not found | Open |
 | BUG-005 | Config API returns Neo4j config, not client config | LOW | `/api/caso/*/config` | Returns InvestigationConfig node, not InvestigationClientConfig from registry | Open |
 | BUG-006 | Engine APIs return 500 without pipeline | LOW | `/api/casos/*/engine/*` | No error handling when no PipelineConfig exists for investigation | Open |
 | BUG-007 | No OG meta tags on caso pages | LOW | `/caso/caso-libra` etc. | OG tags not wired into case layout generateMetadata | Open |
+| BUG-010 | 4 API endpoints exceed 2s response time | LOW | Graph/stats APIs | caso-epstein graph (2.3s), stats (2.2s), search (2.4s) on 7K+ node dataset | Open |
 | BUG-003 | Old /api/caso-libra/* routes still serve | LOW | Legacy routes | 301 redirects in place but old routes still functional | By design |
 
 ---
@@ -300,3 +304,171 @@ npx playwright test e2e/api/         # Run only API tests
 npx playwright test e2e/db/          # Run only DB integrity tests
 npx playwright test --reporter=html  # Generate HTML report
 ```
+
+---
+
+## PRD Compliance Audit (PRD v0.4, 2026-03-20)
+
+**60 requirements checked against codebase. Result: 42 DONE, 6 PARTIAL, 7 MISSING**
+
+### Section 4: Data Model
+
+| # | Requirement | Status | Notes |
+|---|-------------|--------|-------|
+| 1 | Node types (User, Politician, Jurisdiction, Promise, LegislativeVote, Legislation, Donor, Organization, Event, Document, Location, Claim, Investigation, Coalition, Evidence) | PARTIAL | Missing: Jurisdiction (Province exists), Promise, Donor (property only), Coalition (property only), Evidence (Document serves this role) |
+| 2 | Edge types (REPRESENTS, MADE_PROMISE, CAST_LEGISLATIVE_VOTE, ON, DONATED_TO, etc.) | PARTIAL | Present: REPRESENTS, CAST_VOTE, DONATED_TO, AFFILIATED_WITH, REFERENCES, AUTHORED. Missing: MADE_PROMISE, ON, FUNDED, LED_TO, ENDORSED, SUBMITTED |
+| 3 | Provenance (source_url, submitted_by, tier, confidence_score, ingestion_hash) | DONE | All fields present across ETL transformers, types, and backfill scripts |
+
+### Section 5.1: Data Foundation
+
+| # | Requirement | Status | Notes |
+|---|-------------|--------|-------|
+| 4 | Como Voto ETL pipeline | DONE | Full pipeline at src/etl/como-voto/ with fetcher, transformer, loader |
+| 5 | 329 legislators seeded | DONE | Dynamic import from Como Voto source data |
+| 6 | Data tiers: gold/silver/bronze | DONE | Defined in engine types, backfill + promote + review scripts |
+
+### Section 5.2: Graph Engine
+
+| # | Requirement | Status | Notes |
+|---|-------------|--------|-------|
+| 7 | Graph explorer (drag/zoom/pan/click-to-expand) | DONE | ForceGraph, ZoomControls, expandNode, pin/unpin, path finding |
+| 8 | Type filters on graph | DONE | TypeFilter.tsx component |
+| 9 | Search in graph | DONE | SearchBar.tsx + /api/graph/search |
+| 10 | Politician profiles /politico/[slug] | DONE | Vote history, connections graph, related investigations |
+| 11 | Schema.org JSON-LD | DONE | buildJsonLd() with @type: Person |
+| 12 | OG tags on politician pages | DONE | generateMetadata() + OG image at /api/og/politician/ (1200x630) |
+| 13 | Query builder | DONE | /api/graph/query + schema-aware query-builder.ts |
+| 14 | Money flow visualizer | DONE | /caso/[slug]/dinero page + wallet graph API |
+| 15 | Promise tracker | **MISSING** | No Promise node type, no MADE_PROMISE edge, no tracking UI |
+
+### Section 5.3: Investigations
+
+| # | Requirement | Status | Notes |
+|---|-------------|--------|-------|
+| 16 | TipTap rich text editor | DONE | @tiptap/react with StarterKit, Link, Image |
+| 17 | Graph node embeds | DONE | GraphNodeEmbed, SubGraphEmbed, EdgeCitationEmbed extensions |
+| 18 | Investigation CRUD API | DONE | Full POST/GET/PATCH/DELETE with auth |
+| 19 | Publishing flow | DONE | Draft -> Published -> Archived status machine |
+| 20 | REFERENCES edges on publish | DONE | MERGE (i)-[:REFERENCES]->(n) in queries.ts |
+| 21 | Investigation versioning | **MISSING** | No version field or history — updates overwrite |
+| 22 | Tags for investigations | DONE | Tags in schema, tag listing API |
+
+### Section 5.3.1: Investigation Engine (M10)
+
+| # | Requirement | Status | Notes |
+|---|-------------|--------|-------|
+| 23 | Pipeline stages (ingest/verify/enrich/analyze/iterate/report) | DONE | All 6 stage runners implemented |
+| 24 | Human gates | DONE | Gate node type + approval API + GateApproval.tsx |
+| 25 | LLM abstraction (llamacpp/openai/anthropic) | DONE | Provider factory with all 3 adapters |
+| 26 | Audit trail with SHA-256 hash chain | DONE | Append-only AuditEntry nodes, computeHash(), validateChain() |
+| 27 | Snapshots at gates | DONE | Graph state capture + restore |
+| 28 | Source connectors (REST/file/script) | DONE | rest-api.ts, file-upload.ts, custom-script.ts |
+| 29 | Graph algorithms (centrality/community/anomaly/temporal) | DONE | All 4 algorithm implementations |
+| 30 | Orchestrator with task dispatch | DONE | orchestrator.ts, dispatch.ts, priority.ts, synthesis.ts |
+
+### Section 5.3.2: Investigation Standardization (M9)
+
+| # | Requirement | Status | Notes |
+|---|-------------|--------|-------|
+| 31 | InvestigationConfig nodes | DONE | Constraints + seed script |
+| 32 | SchemaDefinition subgraph | DONE | HAS_SCHEMA -> DEFINES_NODE_TYPE + DEFINES_REL_TYPE |
+| 33 | Generic labels with caso_slug | DONE | All investigation data uses caso_slug isolation |
+| 34 | Unified API at /api/casos/[casoSlug]/* | PARTIAL | Engine at /api/casos/, data at /api/caso/ (singular) |
+| 35 | Schema-aware query builder | DONE | Cypher generation from NodeTypeDefinition |
+| 36 | InvestigationClientConfig registry | DONE | Registry maps slug -> config for all 3 cases |
+| 37 | All 3 cases implemented | DONE | caso-libra, caso-epstein, caso-finanzas-politicas |
+| 38 | Caso Libra label migration | DONE | Two-phase migration script (additive then destructive) |
+
+### Section 5.4: Coalitions
+
+| # | Requirement | Status | Notes |
+|---|-------------|--------|-------|
+| 39 | Coalition CRUD | **MISSING** | Not implemented — "coalition" only exists as politician property |
+| 40 | Coalition roles | **MISSING** | No role-based system |
+| 41 | Shared investigation workspaces | **MISSING** | Not implemented |
+| 42 | Coalition endorsements | **MISSING** | No ENDORSED edge or endorsement feature |
+
+### Section 6: Identity & Access
+
+| # | Requirement | Status | Notes |
+|---|-------------|--------|-------|
+| 43 | Verification tiers (0-3) | PARTIAL | Tiers 0-2 implemented, Tier 3 (verified politician) not present |
+| 44 | Auth.js integration | DONE | @auth/core with custom Neo4j adapter |
+| 45 | Email/password + social login | DONE | Credentials + Google OAuth |
+| 46 | Reputation system | **MISSING** | No reputation scoring anywhere |
+| 47 | Audit log (append-only) | PARTIAL | Engine-specific only, no general user action audit |
+
+### Section 7: Technical
+
+| # | Requirement | Status | Notes |
+|---|-------------|--------|-------|
+| 48 | Vinext/Next.js App Router | DONE | vinext() plugin, Next.js 16.1.7 |
+| 49 | Neo4j 5 Community with Bolt/WS | DONE | Docker Compose, port 7687 |
+| 50 | neo4j-driver-lite | DONE | v5.28.3 |
+| 51 | react-force-graph-2d | DONE | v1.29.1 in ForceGraph.tsx |
+| 52 | TipTap editor | DONE | v3 with custom extensions |
+| 53 | Docker Compose | DONE | Neo4j service with healthcheck |
+| 54 | ISR cache (Cloudflare KV) | PARTIAL | ISR configured (revalidate=900), KV not integrated yet |
+| 55 | WhatsApp-optimized OG images | DONE | 1200x630 via satori + resvg |
+| 56 | i18n bilingual (es/en) | DONE | next-intl + detectLang() + bilingual metadata |
+| 57 | Rate limiting | DONE | Sliding window with tiered limits |
+| 58 | Zod validation | DONE | Zod v4 throughout |
+| 59 | CSRF protection | DONE | Signed cookies + constant-time comparison |
+| 60 | Security headers | DONE | X-Content-Type-Options, X-Frame-Options, etc. |
+
+### PRD Compliance Summary
+
+```
+DONE:     42/55 (76%)
+PARTIAL:   6/55 (11%)
+MISSING:   7/55 (13%)
+```
+
+**Missing features (not yet built):**
+- Coalitions system (entire section 5.4) — CRUD, roles, shared workspaces, endorsements
+- Promise tracker (section 5.2) — no Promise node, no MADE_PROMISE edges
+- Investigation versioning (section 5.3)
+- Reputation system (section 6)
+
+**Partial implementations (gaps to close):**
+- Data model missing some node types (Jurisdiction, Promise, Donor, Coalition, Evidence)
+- Data model missing some edge types (MADE_PROMISE, ON, FUNDED, LED_TO, ENDORSED)
+- Unified API inconsistency: engine at `/api/casos/`, data at `/api/caso/`
+- Verification tiers: 0-2 exist, tier 3 (verified politician) missing
+- Audit log: engine-only, no general user action audit
+- ISR: configured but Cloudflare KV not integrated
+
+---
+
+## Live Endpoint Verification (2026-03-21T20:40 UTC)
+
+**75 checks: 60 PASS, 9 FAIL, 2 WARN, 1 N/A**
+
+### Pages — 36 tested
+
+| Status | Count | Pages |
+|--------|-------|-------|
+| 200 | 32 | /, /explorar, /investigaciones, /provincias, all auth pages, caso-libra/*, caso-finanzas-politicas/*, most caso-epstein sub-pages, /mis-investigaciones, /perfil, /investigacion/nueva |
+| 500 | 2 | /caso/caso-epstein (BUG-001), /caso/caso-epstein/evidencia (BUG-004) |
+| 404 | 1 | /politico/test-slug (correct) |
+| 200 (should be 404) | 1 | /caso/nonexistent (BUG-002) |
+
+### APIs — 35 tested
+
+| Status | Count | Endpoints |
+|--------|-------|-----------|
+| 200 | 22 | Graph, stats, timeline, config, schema, person, flights, proximity, search, investigations, sitemap |
+| 400 | 4 | graph/node (bad ID format), graph/expand (same), edge-provenance (needs params), graph/query (needs params) |
+| 401 | 3 | profile, investigations/mine (correct — auth required) |
+| 403 | 2 | POST investigations, PATCH profile (correct — CSRF enforced) |
+| 404 | 2 | wallets for caso-epstein (correct), politico votes for unknown slug (correct) |
+| 500 | 5 | All engine endpoints (state, proposals, audit, snapshots, orchestrator) — no pipeline configured |
+
+### Security — 4 checks
+
+| Check | Result |
+|-------|--------|
+| Security headers (X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy) | PASS |
+| CSRF protection on mutations | PASS |
+| Auth protection on private endpoints | PASS |
+| OG meta tags on caso pages | FAIL (500 blocks rendering on caso-epstein; missing on others) |

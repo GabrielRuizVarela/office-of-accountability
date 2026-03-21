@@ -26,7 +26,7 @@ export async function GET(
   }
 
   // Parse optional depth query param (default 1, max 3)
-  const depthParam = request.nextUrl.searchParams.get('depth')
+  const depthParam = new URL(request.url).searchParams.get('depth')
   const depth = depthParam ? Math.max(1, Math.min(parseInt(depthParam, 10) || 1, 3)) : undefined
 
   try {

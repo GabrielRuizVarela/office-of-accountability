@@ -22,7 +22,7 @@ export async function GET(
 ) {
   await params
 
-  const searchParams = request.nextUrl.searchParams
+  const searchParams = new URL(request.url).searchParams
   const pipelineStateId = searchParams.get('pipeline_state_id')
   const stageId = searchParams.get('stage_id')
 
@@ -49,6 +49,7 @@ export async function GET(
       )
     }
 
+    console.error('[engine/snapshots]', error)
     return Response.json(
       { success: false, error: 'Failed to list snapshots' },
       { status: 500 },
@@ -112,6 +113,7 @@ export async function POST(
       )
     }
 
+    console.error('[engine/snapshots]', error)
     return Response.json(
       { success: false, error: 'Failed to create snapshot' },
       { status: 500 },
@@ -125,7 +127,7 @@ export async function DELETE(
 ) {
   await params
 
-  const id = request.nextUrl.searchParams.get('id')
+  const id = new URL(request.url).searchParams.get('id')
 
   if (!id) {
     return Response.json(
@@ -148,6 +150,7 @@ export async function DELETE(
       )
     }
 
+    console.error('[engine/snapshots]', error)
     return Response.json(
       { success: false, error: 'Failed to delete snapshot' },
       { status: 500 },

@@ -50,6 +50,7 @@ export async function POST(
       },
     })
   } catch (error) {
+    console.error('[engine/run]', error)
     const message = error instanceof Error ? error.message : String(error)
 
     if (

@@ -8,7 +8,7 @@ export async function GET(
 ) {
   await params
 
-  const searchParams = request.nextUrl.searchParams
+  const searchParams = new URL(request.url).searchParams
   const pipelineStateId = searchParams.get('pipeline_state_id')
 
   if (!pipelineStateId) {
@@ -33,6 +33,7 @@ export async function GET(
 
     return Response.json({ success: true, data: { entries } })
   } catch (error) {
+    console.error('[engine/audit]', error)
     const message = error instanceof Error ? error.message : String(error)
 
     if (

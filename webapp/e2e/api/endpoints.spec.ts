@@ -157,19 +157,36 @@ test.describe('API contract — auth-protected endpoints', () => {
 
 test.describe('API contract — engine endpoints', () => {
   test('GET /api/casos/caso-epstein/engine/state responds', async ({ request }) => {
-    const res = await request.get('/api/casos/caso-epstein/engine/state')
-    // Engine endpoints may 500 if engine not running — accept any non-crash response
-    expect([200, 404, 500].includes(res.status())).toBeTruthy()
+    const res = await request.get(
+      '/api/casos/caso-epstein/engine/state?pipeline_id=caso-epstein:pipeline-main',
+    )
+    expect(res.status()).toBeLessThan(500)
+    const data = await res.json()
+    expect(data.success).toBe(true)
   })
 
-  test('GET /api/casos/caso-epstein/engine/proposals responds', async ({ request }) => {
+  test('GET /api/casos/caso-epstein/engine/proposals requires pipeline_state_id', async ({
+    request,
+  }) => {
     const res = await request.get('/api/casos/caso-epstein/engine/proposals')
-    expect([200, 404, 500].includes(res.status())).toBeTruthy()
+    // 400 when missing required param
+    expect([200, 400].includes(res.status())).toBeTruthy()
   })
 
-  test('GET /api/casos/caso-epstein/engine/audit responds', async ({ request }) => {
+  test('GET /api/casos/caso-epstein/engine/audit requires pipeline_state_id', async ({
+    request,
+  }) => {
     const res = await request.get('/api/casos/caso-epstein/engine/audit')
-    expect([200, 404, 500].includes(res.status())).toBeTruthy()
+    expect([200, 400].includes(res.status())).toBeTruthy()
+  })
+
+  test('GET /api/casos/caso-epstein/engine/orchestrator responds', async ({ request }) => {
+    const res = await request.get(
+      '/api/casos/caso-epstein/engine/orchestrator?pipeline_id=caso-epstein:pipeline-main',
+    )
+    expect(res.status()).toBeLessThan(500)
+    const data = await res.json()
+    expect(data.success).toBe(true)
   })
 })
 

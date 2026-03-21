@@ -18,7 +18,7 @@ export async function GET(
     )
   }
 
-  const pipeline_state_id = request.nextUrl.searchParams.get('pipeline_state_id')
+  const pipeline_state_id = new URL(request.url).searchParams.get('pipeline_state_id')
   if (!pipeline_state_id) {
     return Response.json(
       { success: false, error: 'Missing required query param: pipeline_state_id' },
@@ -26,7 +26,7 @@ export async function GET(
     )
   }
 
-  const status = request.nextUrl.searchParams.get('status') as ProposalStatus | null
+  const status = new URL(request.url).searchParams.get('status') as ProposalStatus | null
 
   try {
     const proposals = await listByPipelineState(
@@ -43,6 +43,7 @@ export async function GET(
       },
     })
   } catch (error) {
+    console.error('[engine/proposals]', error)
     const message = error instanceof Error ? error.message : String(error)
 
     if (
@@ -105,6 +106,7 @@ export async function POST(
 
     return Response.json({ success: true, data: { reviewed } })
   } catch (error) {
+    console.error('[engine/proposals]', error)
     const message = error instanceof Error ? error.message : String(error)
 
     if (

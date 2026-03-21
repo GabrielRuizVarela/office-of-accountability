@@ -47,7 +47,7 @@ export async function GET(
 ) {
   await params
 
-  const pipelineId = request.nextUrl.searchParams.get('pipeline_id')
+  const pipelineId = new URL(request.url).searchParams.get('pipeline_id')
   if (!pipelineId) {
     return Response.json(
       { success: false, error: 'Missing required query param: pipeline_id' },
