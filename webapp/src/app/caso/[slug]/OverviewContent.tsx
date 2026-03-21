@@ -171,7 +171,7 @@ export function OverviewContent({ slug, stats }: OverviewContentProps) {
       {/* Simulation CTA */}
       <section className="mt-6">
         <Link
-          href={`${basePath}/simulacion`}
+          href={`${basePath}/simular`}
           className="block rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 transition-colors hover:border-zinc-700"
         >
           <h3 className="text-lg font-semibold text-zinc-100">{t.simulation[lang]}</h3>
