@@ -136,6 +136,21 @@ export async function processToolCall(
       })
       return true
 
+    case 'draft_section':
+      await createProposal({
+        pipeline_state_id: pipelineStateId,
+        stage_id: stageId,
+        type: 'report_section',
+        payload: {
+          title: args.title as string,
+          content: args.content as string,
+          evidence_refs: (args.evidence_refs as string[]) ?? [],
+        },
+        confidence: 0.7,
+        reasoning: `Report section: ${args.title as string}`,
+      })
+      return true
+
     default:
       return false
   }
