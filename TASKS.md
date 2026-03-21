@@ -470,7 +470,7 @@ Workers run on V8 isolates — no Node.js `net`/`tls` modules. Standard `neo4j-d
 
 ---
 
-## Milestone 9: Investigation Standardization
+## Milestone 9: Investigation Standardization — 🔄 Ralph #1 active (Phase 5 API routes)
 
 **Goal:** Standardize three investigations (Caso Libra, Caso Finanzas Politicas, Caso Epstein) under a unified Neo4j-native config and data model with generic labels, `caso_slug` namespace isolation, unified API routes, and schema-driven frontend.
 
@@ -836,58 +836,42 @@ Client components use unified API: `fetch(\`/api/casos/${casoSlug}/graph\`)`
 
 **Investigacion page:** Refactored from ~1000 lines with hardcoded imports to query-builder-driven `InvestigacionView`. Sections render conditionally — no `Claim` nodes → no factcheck section. `GovernmentAction` maps from existing `GOVERNMENT_RESPONSES` data. **Transitional:** page refactor gated on Phase 3/4 data seed completing.
 
-### Phase 1: Schema & Config Nodes
-- [ ] Create `scripts/seed-investigation-configs.ts` — idempotent MERGE of `InvestigationConfig`, `SchemaDefinition`, `NodeTypeDefinition`, `RelTypeDefinition` nodes for all 3 investigations using the schema definitions above
-- [ ] Add generic label constraints + `caso_slug` range indexes to `scripts/init-schema.ts`:
+### Phase 1: Schema & Config Nodes ✅
+- [x] Create `scripts/seed-investigation-configs.ts` — idempotent MERGE of `InvestigationConfig`, `SchemaDefinition`, `NodeTypeDefinition`, `RelTypeDefinition` nodes for all 3 investigations using the schema definitions above
+- [x] Add generic label constraints + `caso_slug` range indexes to `src/lib/neo4j/schema.ts`:
   - Uniqueness: `Person.id`, `Organization.id`, `Event.id`, `Document.id`, `Token.id`, `Wallet.id`, `Location.id`, `Aircraft.id`, `ShellCompany.id`, `Claim.id`, `MoneyFlow.id`, `GovernmentAction.id`
-  - Range indexes on `caso_slug`: `CREATE INDEX person_caso_slug IF NOT EXISTS FOR (n:Person) ON (n.caso_slug)` (and same for Event, Document, Organization, Token, Wallet, Location, Aircraft, ShellCompany, Claim, MoneyFlow, GovernmentAction)
+  - Range indexes on `caso_slug` for all generic labels
   - `InvestigationConfig.id IS UNIQUE`
   - Fulltext indexes on generic labels post-filter with `WHERE n.caso_slug = $casoSlug` in application layer
 
-### Phase 2: Caso Libra Label Migration
-- [ ] Create `scripts/migrate-caso-libra-labels.ts` — two-phase migration:
-  - Step 1 (non-destructive): for each `CasoLibra*` node create a generic-labeled node with `caso_slug: "caso-libra"` + prefixed ID (`caso-libra:{original_id}`), recreate all relationships between new generic nodes. Verify: count new nodes per type matches old.
-  - Step 2 (destructive, after verification): delete all `CasoLibra*` nodes + relationships, drop old constraints (`CasoLibraPerson.id IS UNIQUE`, etc.), create new constraints and indexes.
-  - Rollback: if step 2 fails, old nodes still exist (step 1 is additive). If both complete but broken downstream, `seed-caso-libra.ts` can re-seed old format.
-- [ ] Update `scripts/seed-caso-libra.ts` to use generic labels + `caso_slug` + prefixed IDs
+### Phase 2: Caso Libra Label Migration ✅
+- [x] Create `scripts/migrate-caso-libra-labels.ts` — two-phase migration (13KB)
+- [x] Update `scripts/seed-caso-libra.ts` to use generic labels + `caso_slug` + prefixed IDs
 
-### Phase 3: Caso Finanzas Politicas Import
-- [ ] Create `scripts/seed-caso-finanzas-politicas.ts` — reads exported arrays from `investigation-data.ts`:
-  - `FACTCHECK_ITEMS` → `Claim` nodes (id, claim_es, claim_en, status, tier, source, source_url, detail_es, detail_en)
-  - `TIMELINE_EVENTS` → `Event` nodes (id, date, title_es, title_en, description_es, description_en, category, sources)
-  - `ACTORS` → `Person` nodes (id, name, slug, role_es, role_en, description_es, description_en, party, datasets)
-  - `MONEY_FLOWS` → `MoneyFlow` nodes (id, from_label, to_label, amount_ars, description_es, description_en, date, source, source_url)
-  - `IMPACT_STATS` → properties on `InvestigationConfig` node
-  - All nodes get `caso_slug: "caso-finanzas-politicas"` and prefixed IDs
-  - Generates slugs using existing slug utility
-  - Creates relationships: `SUBJECT_OF` (Person→Claim by name matching), `OFFICER_OF`, `INVOLVED_IN`, `SOURCE_OF`, `DESTINATION_OF`
+### Phase 3: Caso Finanzas Politicas Import ✅
+- [x] Create `scripts/seed-caso-finanzas-politicas.ts` — reads exported arrays from `investigation-data.ts`, generic labels, prefixed IDs, caso_slug
 
-### Phase 4: Caso Epstein Alignment
-- [ ] Update `scripts/seed-caso-epstein.ts` to align with InvestigationConfig schema (script already exists at 80KB, uses generic labels + `caso_slug: "caso-epstein"`, imports rhowardstone data — 10,864+ nodes already in Neo4j):
-  - Ensure prefixed IDs match `{caso_slug}:{local_id}` convention
-  - Verify all node types match SchemaDefinition from Phase 1
-  - Verify persons registry merge strategy is implemented (KG first, then registry enrichment)
-  - Verify victim pseudonymization: `VICTIM_OF` relationship sources → `Jane Doe #N` / `John Doe #N`
-- [ ] Update `src/lib/caso-epstein/queries.ts` (already 18KB, uses generic labels + `caso_slug`) to delegate to generic query builder once it exists
+### Phase 4: Caso Epstein Alignment ✅
+- [x] Update `scripts/seed-caso-epstein.ts` (83KB) — prefixed IDs, generic labels, caso_slug, rhowardstone data
+- [x] Update `src/lib/caso-epstein/queries.ts` — delegates to generic query builder
 
-### Phase 5: Unified Query Layer + API
-- [ ] Create `src/lib/investigations/types.ts` — `InvestigationNode`, `InvestigationSchema`, `InvestigationConfig`, `InvestigationClientConfig`, `BilingualText`, `NarrativeChapter`, `TabId` types (see contracts above)
-- [ ] Create `src/lib/investigations/utils.ts` — `casoNodeId(casoSlug, localId)` helper, slug generation
-- [ ] Create `src/lib/investigations/config.ts` — read/write `InvestigationConfig` nodes from Neo4j
-- [ ] Create `src/lib/investigations/query-builder.ts` — schema-aware generic query builder implementing `InvestigationQueryBuilder` interface above. Reads `NodeTypeDefinition` nodes to generate dynamic Cypher. Generic transform: `toInvestigationNode(record, schema)` picks properties from schema `properties_json`.
-- [ ] Create `src/lib/investigations/registry.ts` — central registry mapping `casoSlug` → `InvestigationClientConfig` (see code above)
-- [ ] Create `src/lib/caso-finanzas-politicas/{types,queries,transform,config}.ts` — per-investigation module following backend module layout. `queries.ts` thin wrappers: `const SLUG = 'caso-finanzas-politicas'` + query builder delegation.
+### Phase 5: Unified Query Layer + API (partially complete — Ralph in progress)
+- [x] Create `src/lib/investigations/types.ts` — all core types
+- [x] Create `src/lib/investigations/utils.ts` — `casoNodeId()` helper, slug generation
+- [x] Create `src/lib/investigations/config.ts` — read/write `InvestigationConfig` nodes from Neo4j
+- [x] Create `src/lib/investigations/query-builder.ts` — schema-aware generic query builder (475 lines)
+- [x] Create `src/lib/investigations/registry.ts` — central registry mapping `casoSlug` → `InvestigationClientConfig`
+- [ ] Create `src/lib/caso-finanzas-politicas/{types,queries,transform}.ts` — only `config.ts` + `investigation-data.ts` exist; types, queries, transform still missing
 - [ ] Update `src/lib/caso-libra/queries.ts` — rewrite all Cypher from `MATCH (p:CasoLibraPerson)` → `MATCH (p:Person {caso_slug: $casoSlug})`, delegate to query builder
-- [ ] Create `src/lib/caso-libra/config.ts` — `InvestigationClientConfig` with tabs, features (`wallets: true, simulation: true`), hero, chapters (moved from `investigation-data.ts`)
-- [ ] Update `src/lib/caso-epstein/queries.ts` (already 18KB, uses generic labels + caso_slug) — delegate to generic query builder, `const SLUG = 'caso-epstein'`
+- [x] Create `src/lib/caso-libra/config.ts` — `InvestigationClientConfig` with tabs, features, hero
 - [ ] Update `src/lib/caso-epstein/transform.ts` (exists) — align with generic `toInvestigationNode()` transform
-- [ ] Create `src/lib/caso-epstein/config.ts` — `InvestigationClientConfig` with tabs, features (`flights: true`), hero
-- [ ] Create 7 unified API routes (see route table above) — each validates `casoSlug` against `InvestigationConfig` nodes, unknown → 404
+- [x] Create `src/lib/caso-epstein/config.ts` — `InvestigationClientConfig` with tabs, features (`flights: true`), hero
+- [x] Create unified API routes at `/api/caso/[slug]/*` — graph ✅, timeline ✅, stats, config, schema, node/[id] (Ralph working on remaining)
 - [ ] Replace 8 `src/app/api/caso-libra/*/route.ts` with 301 redirects to `/api/casos/caso-libra/*`
-- [ ] Replace 6 `src/app/api/caso/[slug]/*/route.ts` (graph, flights, proximity, simulation/init, simulation/query) with 301 redirects to `/api/casos/[casoSlug]/*`
+- [ ] Replace old `/api/caso/[slug]/*` Epstein-specific routes with redirects
 - [ ] Update `src/lib/graph/constants.ts` — add `ShellCompany`, `Aircraft`, `Wallet`, `Token`, `Claim`, `MoneyFlow`, `GovernmentAction` to `LABEL_COLORS` and `LABEL_DISPLAY`
 
-### Phase 6: Frontend Standardization
+### Phase 6: Frontend Standardization (not started)
 - [ ] Update hardcoded fetch URLs in `[slug]` pages to use dynamic `slug` param:
   - `src/app/caso/[slug]/dinero/page.tsx` — `fetch('/api/caso-libra/wallets')` → `fetch(\`/api/casos/${slug}/wallets\`)`
   - `src/app/caso/[slug]/investigacion/page.tsx` — `fetch('/api/caso-libra/investigation', ...)` → dynamic
@@ -900,7 +884,7 @@ Client components use unified API: `fetch(\`/api/casos/${casoSlug}/graph\`)`
   - `src/components/investigation/NarrativeView.tsx` — client component (`'use client'`), chapter-based narrative with bilingual `useState` toggle, reads `chapters` + `sources` from config
   - `src/components/investigation/ClaimCard.tsx` — factcheck claim display with status badge (verified/unverified/disputed)
   - `src/components/investigation/MoneyFlowCard.tsx` — financial flow visualization card (from, to, amount, source)
-- [ ] Refactor `src/app/caso/[slug]/page.tsx` — `getInvestigationConfig(slug)` + `queryBuilder.getStats(slug)` + `queryBuilder.getSchema(slug)` → `<InvestigationLanding>`
+- [ ] Refactor `src/app/caso/[slug]/page.tsx` — currently hardcoded to caso-libra functions; needs `getInvestigationConfig(slug)` + `queryBuilder.getStats(slug)` → `<InvestigationLanding>`
 - [ ] Refactor `src/app/caso/[slug]/resumen/page.tsx` — `getInvestigationConfig(slug)`, if no chapters → notFound(), render `<NarrativeView chapters={config.chapters} sources={config.sources} />`
 - [ ] Refactor `src/app/caso/[slug]/investigacion/page.tsx` — `Promise.all([queryBuilder.getNodesByType(slug, 'Claim'), ...'Event', ...'Person', ...'MoneyFlow', ...'Document', ...'GovernmentAction'])` → `<InvestigacionView>`. Gated on Phase 3/4 seed completion.
 - [ ] Refactor `src/app/caso/[slug]/cronologia/page.tsx` — `queryBuilder.getTimeline(slug)` → `<Timeline>`, no conditional slug dispatch
@@ -908,7 +892,8 @@ Client components use unified API: `fetch(\`/api/casos/${casoSlug}/graph\`)`
 - [ ] Refactor `src/app/caso/[slug]/grafo/page.tsx` — update fetch to `/api/casos/${slug}/graph`
 - [ ] Refactor `src/app/caso/[slug]/vuelos/page.tsx` — update fetch URL, check `config.features.flights`
 - [ ] Delete static finanzas-politicas routes (6 pages: page, layout, resumen, investigacion, cronologia, dinero — keep `/conexiones` as platform-graph visualization)
-- [ ] Delete static caso-epstein routes (6 pages: page, layout, resumen, investigacion, cronologia, evidencia)
+- [ ] Delete static caso-epstein routes (6 pages already deleted ✅)
+- [ ] Add browser language detection + bilingual page titles/metadata (i18n — "OA Office of Accountability" en / "OA Oficina de Rendición de Cuentas" es)
 
 ### Execution Order
 
@@ -932,7 +917,7 @@ Phases 1–4 are data scripts. Phases 5–6 are code changes. Scripts run before
 
 ---
 
-## Milestone 10: Motor de Investigación Autónomo
+## Milestone 10: Motor de Investigación Autónomo — 🔄 Ralph #2 active (Phase 1 engine data model)
 
 **Goal:** Pipeline automatizado: el motor busca, valida, consolida y reporta hallazgos con revisión humana en cada paso. The engine runs inside the Next.js app as server-side operations. All config lives in Neo4j as first-class graph entities. LLM never writes directly — all outputs are `Proposal` nodes reviewed at gates.
 
@@ -974,7 +959,7 @@ Builds on M9's `InvestigationConfig` + `SchemaDefinition` subgraph. New node typ
 
 **SourceConnector types:** `rest-api`, `file-upload`, `web-scraper`, `court-records`, `corporate-registry`, `custom-script`
 
-**PipelineStage types:** `ingest`, `verify`, `enrich`, `analyze`, `report`
+**PipelineStage types:** `ingest`, `verify`, `enrich`, `analyze`, `iterate`, `report`
 
 **Gate actions:** `approve`, `reject`, `partial`, `back_to_analyze`
 
@@ -1062,6 +1047,7 @@ Researcher clicks "Run Pipeline" on dashboard
   ├─ Stage: verify → parallel agents, web search, propose tier promotions
   ├─ Stage: enrich → fetch docs, LLM entity extraction, reverse lookups
   ├─ Stage: analyze → graph algorithms + LLM analysis (tool-agent or swarm)
+  ├─ Stage: iterate → autonomous hypothesis follow-up loop (N iterations, evaluate, keep/discard)
   ├─ Stage: report → LLM drafts investigation report
   │
   └─ Pipeline complete → PipelineState status: "completed"
@@ -1092,11 +1078,10 @@ Both use existing Levenshtein algorithm from `dedup.ts`. Thresholds configurable
 
 Results stored as `Proposal` nodes of type `hypothesis`, presented at analyze gate.
 
-### Phase 1: Engine Data Model
-- [ ] Add engine node type constraints to `scripts/init-schema.ts`:
-  - Uniqueness: `SourceConnector.id`, `PipelineConfig.id`, `PipelineStage.id`, `Gate.id`, `PipelineState.id`, `Proposal.id`, `AuditEntry.id`, `Snapshot.id`, `ModelConfig.id`, `MiroFishConfig.id`
-- [ ] Create `src/lib/engine/types.ts` — TypeScript interfaces + Zod schemas for all engine node types: `SourceConnector`, `PipelineConfig`, `PipelineStage`, `Gate`, `PipelineState`, `Proposal`, `AuditEntry`, `Snapshot`, `ModelConfig`, `MiroFishConfig`
-- [ ] Create `src/lib/engine/config.ts` — CRUD operations for engine config nodes (read/write to Neo4j)
+### Phase 1: Engine Data Model (Ralph in progress)
+- [x] Add engine node type constraints to `src/lib/neo4j/schema.ts` — 10 uniqueness constraints (SourceConnector, PipelineConfig, PipelineStage, Gate, PipelineState, Proposal, AuditEntry, Snapshot, ModelConfig, MiroFishConfig) — committed b39edde
+- [x] Create `src/lib/engine/types.ts` — 10 Zod schemas + inferred TS types, shared enums (ConnectorKind, StageKind, GateAction, PipelineStatus, ProposalStatus, ProposalType, ConfidenceTier) — committed efc7e18
+- [ ] Create `src/lib/engine/config.ts` — CRUD operations for engine config nodes (Ralph working on this)
 - [ ] Create `src/lib/engine/audit.ts` — append-only AuditEntry creation with SHA-256 hash chain, chain validation on startup
 
 ### Phase 2: LLM Abstraction Layer
@@ -1141,6 +1126,44 @@ Results stored as `Proposal` nodes of type `hypothesis`, presented at analyze ga
 - [ ] Create `src/lib/engine/stages/report.ts` — LLM drafts investigation report sections as proposals
 - [ ] Create `src/lib/engine/agents.ts` — parallel agent dispatch per stage config (scoped queries, concurrent execution, progress updates on PipelineState)
 
+### Phase 5b: Autonomous Research Iterations (inspired by karpathy/autoresearch)
+
+Autoresearch pattern applied to investigative research: the engine generates hypotheses, runs fixed-budget research iterations, evaluates findings against confidence metrics, keeps or discards, and repeats autonomously until a gate stops it.
+
+**Research Program (`program.md` equivalent):**
+- [ ] Add `research_directives` field to `PipelineStage` config for analyze stage — a structured prompt that tells the LLM what patterns to prioritize (e.g., "focus on shell companies with ≤1 officer receiving contracts >$1M", "trace flight connections to unverified locations")
+- [ ] Create `src/lib/engine/research-program.ts` — manages research directives per investigation: load from stage config, merge with auto-generated directives from previous iterations, present at gate for researcher review/edit
+
+**Hypothesis-Driven Iteration Loop:**
+- [ ] Create `src/lib/engine/stages/iterate.ts` — autonomous research iteration stage:
+  - After analyze stage produces hypothesis Proposals, pick top-N by confidence
+  - For each hypothesis: generate targeted follow-up queries (e.g., "if X is connected to Y through Z, check Z's corporate filings")
+  - Execute follow-up: web search, graph traversal, cross-reference lookup
+  - Evaluate results: did the follow-up strengthen or weaken the hypothesis? Update confidence score
+  - Keep hypotheses that improved (confidence increased); discard those that weakened
+  - Generate new hypotheses from what was discovered in follow-ups
+  - Repeat for N iterations (configurable, default 3) or until no hypothesis improves
+  - All iterations produce AuditEntry nodes for traceability
+- [ ] Add `max_iterations` and `min_confidence_delta` to analyze stage config — controls when the loop stops (inspired by autoresearch's fixed 5-minute budget, but measured in iteration count and confidence improvement rather than time)
+
+**Evaluation Metrics (the "val_bpb" equivalent):**
+- [ ] Create `src/lib/engine/research-metrics.ts` — quantitative evaluation of research iteration quality:
+  - `coverage_delta`: new nodes/edges discovered this iteration vs previous
+  - `confidence_delta`: average confidence change across active hypotheses
+  - `corroboration_score`: how many independent sources support a hypothesis (>1 = corroborated)
+  - `novelty_score`: did iteration find something not already in the graph?
+  - Store metrics per iteration on PipelineState `progress_json`
+  - Gate review shows metrics trend across iterations (improving = keep iterating, plateaued = stop)
+
+**Gap Detection & Targeted Enrichment:**
+- [ ] Create `src/lib/engine/gap-detector.ts` — after each iteration, identify gaps in the graph:
+  - Persons mentioned in documents but not yet nodes
+  - Organizations referenced in relationships but with no corporate registry data
+  - Time periods with no events (suspicious gaps)
+  - Geographic locations connected to persons but unverified
+  - Generate `Proposal` nodes of type `enrichment_target` — specific data to fetch next
+- [ ] Wire gap detector into iterate stage: gaps from iteration N become enrichment targets for iteration N+1
+
 ### Phase 6: Graph Algorithms
 - [ ] Extend `src/lib/graph/algorithms.ts` with:
   - Degree centrality (count relationships per node)
@@ -1170,7 +1193,8 @@ Results stored as `Proposal` nodes of type `hypothesis`, presented at analyze ga
 - LLM abstraction layer (4 providers + 3 execution modes)
 - Pipeline executor (stage runner, gates, proposals, audit trail, snapshots)
 - Source connectors (rest-api, file-upload, custom-script)
-- Stage implementations (ingest, verify, enrich, analyze, report)
+- Stage implementations (ingest, verify, enrich, analyze, iterate, report)
+- Autonomous research iterations: hypothesis-driven loop with evaluation metrics, gap detection, research directives (inspired by karpathy/autoresearch)
 - Graph algorithms (5 algorithms, application-side TypeScript)
 - MiroFish refactor (endpoint param, generalized seed export)
 - API routes for engine control

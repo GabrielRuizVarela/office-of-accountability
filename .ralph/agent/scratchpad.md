@@ -1,374 +1,351 @@
-# Plan: Continue M9 → M10 with code review + human review gates
+# Plan: Complete M9 — Investigation Standardization (Frontend)
 
-## Current State Assessment
+Backend infrastructure (types, query-builder, registry, unified API routes, seed scripts, migrations) is done.
+Four frontend tasks remain to complete M9.
 
-### M9 — Investigation Standardization
-**Infrastructure (DONE):**
-- `src/lib/investigations/types.ts` — all interfaces
-- `src/lib/investigations/utils.ts` — slug validation, helpers
-- `src/lib/investigations/config.ts` — reads InvestigationConfig from Neo4j
-- `src/lib/investigations/query-builder.ts` — schema-aware generic query builder (getGraph, getTimeline, getStats, getSchema, getConfig, getNodesByType, getNodeBySlug, getNodeConnections)
-- `src/lib/investigations/registry.ts` — casoSlug → InvestigationClientConfig registry
+## Current Step: Step 1 — Fix hardcoded fetch URLs + delete static routes
 
-**Remaining (8 open tasks — unified API routes):**
-The graph route exists at `/api/caso/[slug]/graph/route.ts` but still imports from caso-epstein hardcoded. Need to:
-1. Update graph route to use generic query builder ✓ task exists (m9:unified-graph)
-2. Create timeline endpoint ✓ task exists (m9:unified-timeline)
-3. Create stats endpoint ✓ task exists (m9:unified-stats)
-4. Create config endpoint ✓ task exists (m9:unified-config)
-5. Create schema endpoint ✓ task exists (m9:unified-schema)
-6. Create node connections endpoint ✓ task exists (m9:unified-node)
-7. Create registry endpoint ✓ task exists (m9p5:registry) — this was for the module file, already done
-8. Add 301 redirects ✓ task exists (m9:redirects)
-
-### M10 — Motor de Investigación Autónomo
-Not started. 8 phases defined in TASKS.md (Phases 1-8).
-
-## Step-Wave Strategy
-
-### Step 1 — Complete M9 unified API routes (7 tasks)
-All tasks exist and are unblocked. Ship them, then code review.
-
-### Step 2 — Code review M9 completion
-Request code review of all M9 work before M10.
-
-### Step 3 — M10 Phase 1: Engine Data Model
-- Add engine node constraints to init-schema.ts
-- Create src/lib/engine/types.ts
-- Create src/lib/engine/config.ts
-- Create src/lib/engine/audit.ts
-
-### Step 4 — M10 Phase 2: LLM Abstraction Layer
-- Create src/lib/engine/llm/types.ts
-- Create src/lib/engine/llm/llamacpp.ts
-- Create src/lib/engine/llm/openai.ts
-- Create src/lib/engine/llm/anthropic.ts
-- Create src/lib/engine/llm/factory.ts
-- Create src/lib/engine/llm/tools.ts
-
-### Step 5 — M10 Phase 3: Pipeline Executor
-- Create src/lib/engine/pipeline.ts
-- Create src/lib/engine/proposals.ts
-- Create src/lib/engine/snapshots.ts
-
-### Step 6 — M10 Phase 4: Source Connectors
-- Connector interface + implementations (rest-api, file-upload, custom-script)
-- Connector factory
-- Dedup integration
-
-### Step 7 — M10 Phase 5: Stage Implementations
-- 5 stage handlers (ingest, verify, enrich, analyze, report)
-- Agent dispatch module
-
-### Step 8 — M10 Phase 6: Graph Algorithms
-- Extend algorithms.ts with 5 algorithms
-- Hypothesis proposal generation
-
-### Step 9 — M10 Phase 7: MiroFish Integration
-- Refactor client.ts and export.ts
-
-### Step 10 — M10 Phase 8: API Routes
-- 6 engine API routes
-
-### Step 11 — Code review M10 + wait for human review
-
-## Current Step: Step 2 — Code review M9 completion
+These are independent file-level changes that unblock the config-driven frontend.
 
 ### Sub-tasks:
-- [x] 1.1 Update `/api/caso/[slug]/graph/route.ts` — use generic query builder (file: webapp/src/app/api/caso/[slug]/graph/route.ts)
-- [x] 1.2 Create `/api/caso/[slug]/timeline/route.ts` (file: webapp/src/app/api/caso/[slug]/timeline/route.ts)
-- [x] 1.3 Create `/api/caso/[slug]/stats/route.ts` (file: webapp/src/app/api/caso/[slug]/stats/route.ts)
-- [x] 1.4 Create `/api/caso/[slug]/config/route.ts` (file: webapp/src/app/api/caso/[slug]/config/route.ts)
-- [x] 1.5 Create `/api/caso/[slug]/schema/route.ts` (file: webapp/src/app/api/caso/[slug]/schema/route.ts)
-- [ ] 1.6 Create `/api/caso/[slug]/node/[id]/route.ts` (file: webapp/src/app/api/caso/[slug]/node/[id]/route.ts)
-- [ ] 1.7 Add 301 redirects from `/api/caso-libra/*` to `/api/caso/caso-libra/*` (file: webapp/src/app/api/caso-libra/)
+- [x] 1.1 Update fetch URLs in `webapp/src/app/caso/[slug]/dinero/page.tsx` — change `/api/caso-libra/wallets` to `/api/caso/${slug}/wallets` (file: webapp/src/app/caso/[slug]/dinero/page.tsx)
+- [x] 1.2 Update fetch URL in `webapp/src/app/caso/[slug]/actor/[actorSlug]/page.tsx` — change `/api/caso-libra/person/${actorSlug}` to `/api/caso/${slug}/person/${actorSlug}` (file: webapp/src/app/caso/[slug]/actor/[actorSlug]/page.tsx)
+- [x] 1.3 Update fetch URL in `webapp/src/app/caso/[slug]/evidencia/[docSlug]/page.tsx` — change `/api/caso-libra/document/${docSlug}` to `/api/caso/${slug}/document/${docSlug}` (file: webapp/src/app/caso/[slug]/evidencia/[docSlug]/page.tsx)
+- [ ] 1.4 Delete static finanzas-politicas routes except /conexiones — remove page.tsx, layout.tsx, resumen/, investigacion/, cronologia/, dinero/ (dir: webapp/src/app/caso/finanzas-politicas/)
 
 ### Notes:
-- All routes should validate slug via registry.getClientConfig(slug) or isValidCasoSlug() — 404 for unknown
-- Use getQueryBuilder() singleton from investigations/query-builder.ts
-- Follow existing error handling pattern from current graph route
-- registry.ts task (m9p5:registry) is already DONE — the file exists and works
+- The [slug] pages already receive slug from useParams() but don't use it in fetch calls
+- /conexiones must be preserved — it's a platform-graph visualization
+- The unified API routes already exist at /api/caso/[slug]/*
+
+## Step 2 — Refactor InvestigationNav to be config-driven
+### Sub-tasks:
+- [ ] 2.1 Refactor InvestigationNav.tsx — replace hardcoded CASE_TABS with tabs from getInvestigationConfig(slug) or registry (file: webapp/src/components/investigation/InvestigationNav.tsx)
+
+### Notes:
+- Current CASE_TABS hardcodes per-investigation tab arrays
+- Registry at src/lib/investigations/registry.ts has InvestigationClientConfig with tabs
+
+## Current Step: Step 3 — Browser language detection + bilingual metadata
+### Sub-tasks:
+- [ ] 3.1 Add browser language detection to LanguageProvider (file: webapp/src/lib/language-context.tsx)
+- [ ] 3.2 Replace hardcoded CASE_META in layout with registry-driven bilingual metadata (file: webapp/src/app/caso/[slug]/layout.tsx)
 
 ## Completed Steps:
+- Phase 1-5 (backend): types, query-builder, registry, config, unified API routes, seed scripts, migrations — all done
 
-### Step 1.1 — Graph route updated
-- Replaced `caso-epstein/queries` + `CASO_EPSTEIN_SLUG` imports with `getQueryBuilder().getGraph(slug)`
-- Added slug validation via `getClientConfig(slug)` → 404 for unknown
-- Awaits `params` promise (Next.js 16 pattern)
-- Dropped `tiers` query param (not supported by generic query builder — tier filtering is DB-level via confidence_tier property)
-- `tsc --noEmit` passes (only pre-existing EvidenceExplorer errors remain)
+## Iteration Notes — Step 1.1 (dinero URL fix)
+- Added `useParams` import from next/navigation
+- Extracted `slug` from params with string guard
+- Changed fetch URL from `/api/caso-libra/wallets` to `/api/caso/${slug}/wallets`
+- Typecheck: no new errors (pre-existing EvidenceExplorer.tsx date prop error unrelated)
+- Commit: e192799
 
-### Finalizer check after Step 1.1 review
-- review.passed for m9:unified-graph — clean, no issues
-- 6 open tasks remain in Step 1 (1.2–1.7)
-- Advancing queue for Builder to pick up next sub-task (m9:unified-timeline)
+## Iteration Notes — Finalizer after Step 1.1 review
+- Review passed for Step 1.1 (dinero URL fix) — verified correct
+- Step 1 still has 3 unchecked sub-tasks (1.2 actor URL, 1.3 evidencia URL, 1.4 delete static routes)
+- Steps 2 and 3 also remain
+- Advancing queue for Builder to pick up next sub-task
 
-### Planner queue.advance — dispatching m9:unified-timeline
-- Graph route review passed, advancing to sub-task 1.2
-- Builder should follow same pattern as graph route: validate slug via getClientConfig, call getQueryBuilder().getTimeline(slug), same error handling
-- getTimeline(slug) returns Promise<TimelineItem[]>
+## Iteration Notes — Planner queue.advance after Step 1.1
+- Confirmed actor page still has hardcoded `/api/caso-libra/person/${actorSlug}` at line 41
+- Confirmed evidencia page still has hardcoded `/api/caso-libra/document/${docSlug}` at line 34
+- Actor page also imports from `@/lib/caso-libra/types` (line 13) — Builder should note this is a type import, not a URL, leave it for now
+- Dispatching task 1.2 (actor URL) to Builder next
 
-### Step 1.2 — Timeline route created
-- Created `webapp/src/app/api/caso/[slug]/timeline/route.ts`
-- Follows exact same pattern as graph route: slug validation via getClientConfig, getQueryBuilder().getTimeline(slug), same error handling
-- `tsc --noEmit` passes (only pre-existing EvidenceExplorer errors)
-- Committed: df928a9
+## Iteration Notes — Step 1.2 (actor URL fix)
+- Changed fetch URL from `/api/caso-libra/person/${actorSlug}` to `/api/caso/${slug}/person/${actorSlug}` at line 41
+- `slug` was already extracted from `useParams()` on line 32 — no new imports needed
+- Added `slug` to useEffect dependency array (was only `[actorSlug]`, now `[slug, actorSlug]`)
+- Type import from `@/lib/caso-libra/types` on line 13 left as-is (not a URL)
+- Typecheck: no new errors (pre-existing EvidenceExplorer.tsx date prop error unrelated)
+- Commit: 60da379
 
-### Critic review of Step 1.2 — Timeline route
-- review.passed for m9:unified-timeline — clean, no issues
-- Identical structure to graph route (slug validation, query builder call, error handling)
-- tsc passes (only pre-existing EvidenceExplorer errors)
-- 5 open tasks remain in Step 1 (1.3–1.7)
-- Advancing queue for Builder to pick up next sub-task (m9:unified-stats)
+## Iteration Notes — Critic review of Step 1.2 (actor URL fix)
+- Diff reviewed: commit 60da379 changes exactly 2 lines in actor/[actorSlug]/page.tsx
+- URL correctly changed from `/api/caso-libra/person/${actorSlug}` to `/api/caso/${slug}/person/${actorSlug}`
+- slug was already available from useParams() — no new imports needed
+- useEffect deps updated to include slug — correct
+- Typecheck: only pre-existing EvidenceExplorer.tsx date prop errors (unrelated to this change)
+- No blocking issues found — passing review
 
-### Finalizer check after Step 1.2 review
-- review.passed for m9:unified-timeline — closed task-1774073209-60db
-- 5 open tasks remain in Step 1 (1.3–1.7): stats, config, schema, node, redirects
-- Next up: m9:unified-stats (task-1774073211-ef88)
-- Builder should follow same pattern: validate slug via getClientConfig, call getQueryBuilder().getStats(slug), same error handling
+## Iteration Notes — Finalizer after Step 1.2 review (second pass)
+- Review passed for Step 1.2 (actor URL fix) — commit 60da379 verified correct
+- Step 1 still has 2 unchecked sub-tasks: 1.3 evidencia URL, 1.4 delete static routes
+- Steps 2 (nav refactor) and 3 (i18n) also remain
+- Advancing queue for Builder to pick up next sub-task (1.3 evidencia URL)
 
-### Planner queue.advance — dispatching m9:unified-stats
-- Timeline route review passed, advancing to sub-task 1.3
-- Builder should follow same pattern as graph/timeline routes: validate slug via getClientConfig, call getQueryBuilder().getStats(slug), same error handling
-- getStats(slug) returns Promise<InvestigationStats> — node/edge counts, tier breakdown, etc.
-- Error message for catch: 'Failed to load stats'
+## Iteration Notes — Planner queue.advance after Step 1.2
+- Confirmed evidencia page at `webapp/src/app/caso/[slug]/evidencia/[docSlug]/page.tsx` still has hardcoded `/api/caso-libra/document/${docSlug}` at line 34
+- `slug` already extracted from `useParams()` on line 25 — no new imports needed
+- useEffect deps at line 45 only has `[docSlug]` — Builder must add `slug` to deps array
+- Dispatching task 1.3 (evidencia URL) to Builder next
 
-### Step 1.3 — Stats route created
-- Created `webapp/src/app/api/caso/[slug]/stats/route.ts`
-- Follows exact same pattern as graph/timeline routes: slug validation via getClientConfig, getQueryBuilder().getStats(slug), same error handling
-- `tsc --noEmit` passes (only pre-existing EvidenceExplorer errors)
-- Committed: 1635c9d
+## Iteration Notes — Step 1.3 (evidencia URL fix)
+- Changed fetch URL from `/api/caso-libra/document/${docSlug}` to `/api/caso/${slug}/document/${docSlug}` at line 34
+- `slug` was already extracted from `useParams()` on line 25 — no new imports needed
+- Added `slug` to useEffect dependency array (was only `[docSlug]`, now `[slug, docSlug]`)
+- Typecheck: no new errors (pre-existing EvidenceExplorer.tsx date prop errors unrelated)
+- Commit: 55f8d84
 
-### Critic review of Step 1.3 — Stats route
-- review.passed for m9:unified-stats — clean, no issues
-- Identical structure to graph/timeline routes (slug validation, query builder call, error handling)
-- tsc passes (only pre-existing EvidenceExplorer errors)
-- 4 open tasks remain in Step 1 (1.4–1.7): config, schema, node, redirects
-- Next up: m9:unified-config
+## Iteration Notes — Critic review of Step 1.3 (evidencia URL fix)
+- Diff reviewed: commit 55f8d84 changes exactly 2 lines in evidencia/[docSlug]/page.tsx
+- URL correctly changed from `/api/caso-libra/document/${docSlug}` to `/api/caso/${slug}/document/${docSlug}`
+- slug was already available from useParams() — no new imports needed
+- useEffect deps updated to include slug — correct
+- Typecheck: only pre-existing EvidenceExplorer.tsx date prop errors (unrelated)
+- No blocking issues found — passing review
 
-### Finalizer check after Step 1.3 review
-- review.passed for m9:unified-stats — closed task-1774073211-ef88
-- 4 open tasks remain in Step 1 (1.4–1.7): config, schema, node, redirects
-- Next up: m9:unified-config (task-1774073213-3c3a)
-- Builder should follow same pattern: validate slug via getClientConfig, call getQueryBuilder().getConfig(slug), same error handling
+## Iteration Notes — Finalizer after Step 1.3 review
+- Review passed for Step 1.3 (evidencia URL fix) — commit 55f8d84 verified correct
+- Step 1 still has 1 unchecked sub-task: 1.4 delete static finanzas-politicas routes
+- Steps 2 (nav refactor) and 3 (i18n) also remain
+- Advancing queue for Builder to pick up sub-task 1.4 (delete static routes)
 
-### Planner queue.advance — dispatching m9:unified-config
-- Stats route review passed, advancing to sub-task 1.4
-- Builder should follow same pattern as graph/timeline/stats routes: validate slug via getClientConfig, call getQueryBuilder().getConfig(slug), same error handling
-- getConfig(slug) returns Promise<InvestigationConfig> — investigation metadata, node types, relationship types, etc.
-- Error message for catch: 'Failed to load config'
+## Iteration Notes — Planner queue.advance after Step 1.3
+- Directory listing of `webapp/src/app/caso/finanzas-politicas/`:
+  - `page.tsx` (root page) — DELETE
+  - `layout.tsx` — DELETE
+  - `resumen/page.tsx` — DELETE
+  - `investigacion/page.tsx` — DELETE
+  - `cronologia/page.tsx` — DELETE
+  - `dinero/page.tsx` — DELETE
+  - `conexiones/page.tsx` — KEEP (platform-graph visualization)
+  - `conexiones/ConexionesGraph.tsx` — KEEP
+- Builder should: `rm -rf cronologia dinero investigacion resumen` then `rm page.tsx layout.tsx`
+- PRESERVE `conexiones/` entirely — it's the platform-graph visualization
+- After deletion, verify no broken imports reference deleted files
+- Dispatching task 1.4 (delete static routes) to Builder
 
-### Step 1.4 — Config route created
-- Created `webapp/src/app/api/caso/[slug]/config/route.ts`
-- Follows exact same pattern as graph/timeline/stats routes: slug validation via getClientConfig, getQueryBuilder().getConfig(slug), same error handling
-- `tsc --noEmit` passes (only pre-existing EvidenceExplorer errors)
-- Committed: 4644722
+## Iteration Notes — Step 1.4 (delete static finanzas-politicas routes)
+- Deleted: page.tsx, layout.tsx, resumen/, investigacion/, cronologia/, dinero/ from webapp/src/app/caso/finanzas-politicas/
+- Preserved: conexiones/ (page.tsx + ConexionesGraph.tsx) — platform-graph visualization
+- Grep for broken imports: none found. Remaining references are config href, ConexionesGraph fetch, and API route — all valid
+- Typecheck: only pre-existing EvidenceExplorer.tsx date prop errors (unrelated)
+- 6 files deleted, 1632 lines removed
+- Commit: 61a1337
 
-### Critic review of Step 1.4 — Config route
-- review.passed for m9:unified-config — clean, no issues
-- Identical structure to graph/timeline/stats routes (slug validation, query builder call, error handling)
-- tsc passes (only pre-existing EvidenceExplorer errors)
-- 3 open tasks remain in Step 1 (1.5–1.7): schema, node, redirects
-- Next up: m9:unified-schema
+## Iteration Notes — Critic review of Step 1.4 (delete static routes)
+- Commit 61a1337 deletes exactly 6 files (1632 lines): page.tsx, layout.tsx, cronologia/page.tsx, dinero/page.tsx, investigacion/page.tsx, resumen/page.tsx
+- conexiones/ preserved with both page.tsx and ConexionesGraph.tsx — correct
+- No remaining imports or references to deleted routes in webapp/src
+- Typecheck: only pre-existing EvidenceExplorer.tsx date prop errors (unrelated)
+- No blocking issues — passing review
+- Step 1 is now fully complete (all 4 sub-tasks done)
 
-### Finalizer check after Step 1.4 review
-- review.passed for m9:unified-config — closed task-1774073213-3c3a
-- 3 open tasks remain in Step 1 (1.5–1.7): schema, node, redirects
-- Next up: m9:unified-schema (task-1774073214-9921)
-- Builder should follow same pattern: validate slug via getClientConfig, call getQueryBuilder().getSchema(slug), same error handling
-- getSchema(slug) returns Promise<InvestigationSchema> — node types, relationship types, property definitions
+## Iteration Notes — Finalizer after Step 1.4 review
+- Review passed for Step 1.4 (delete static routes) — commit 61a1337 verified correct
+- Step 1 is fully complete: all 4 sub-tasks (1.1 dinero URL, 1.2 actor URL, 1.3 evidencia URL, 1.4 delete static routes) done
+- Step 2 (nav refactor) is next ready task: task-1774080272-d098 (P2, key: m9:nav-refactor)
+- Step 3 (i18n) also remains: task-1774074000-i18n (P3)
+- Advancing queue for Planner to decompose Step 2
 
-### Planner queue.advance — dispatching m9:unified-schema
-- Config route review passed, advancing to sub-task 1.5
-- Builder should follow same pattern as graph/timeline/stats/config routes: validate slug via getClientConfig, call getQueryBuilder().getSchema(slug), same error handling
-- getSchema(slug) returns Promise<InvestigationSchema> — node types, relationship types, property definitions
-- Error message for catch: 'Failed to load schema'
-- 3 open tasks remain (1.5–1.7): schema, node, redirects
+## Iteration Notes — Planner decomposition of Step 2 (nav refactor)
 
-### Step 1.5 — Schema route created
-- Created `webapp/src/app/api/caso/[slug]/schema/route.ts`
-- Follows exact same pattern as graph/timeline/stats/config routes: slug validation via getClientConfig, getQueryBuilder().getSchema(slug), same error handling
-- `tsc --noEmit` passes (only pre-existing EvidenceExplorer errors)
-- Committed: 0c4e4c0
+### Analysis of InvestigationNav.tsx
+- CASE_TABS (lines 27-57) hardcodes per-slug tab arrays with `{ href, label: { en, es } }`
+- DEFAULT_TABS (lines 59-66) is a fallback for unknown slugs
+- Line 72: `const tabDefs = CASE_TABS[slug] ?? DEFAULT_TABS`
+- Each tab has a "home" entry (href: '') plus sub-page entries (href: '/resumen', '/grafo', etc.)
 
-### Critic review of Step 1.5 — Schema route
-- review.passed for m9:unified-schema — clean, no issues
-- Identical structure to graph/timeline/stats/config routes (slug validation, query builder call, error handling)
-- tsc passes (only pre-existing EvidenceExplorer errors)
-- 2 open tasks remain in Step 1 (1.6–1.7): node, redirects
-- Next up: m9:unified-node
+### Registry config shape
+- `InvestigationClientConfig.tabs: readonly TabId[]` — just IDs like 'resumen', 'investigacion', 'grafo'
+- TabId enum: resumen | investigacion | cronologia | evidencia | grafo | dinero | simular | vuelos | proximidad | conexiones
+- No "home" TabId — that's implicit (always first)
+- No bilingual labels in the config — labels must be derived from a TabId→label map
 
-### Finalizer check after Step 1.5 review
-- review.passed for m9:unified-schema — closed task-1774073214-9921
-- 2 open tasks remain in Step 1 (1.6–1.7): node, redirects
-- Next up: m9:unified-node (task-1774073216-dbf3)
-- This route is different from prior routes: needs nested dynamic segment [id]
-- Builder should create `webapp/src/app/api/caso/[slug]/node/[id]/route.ts`
-- Use getQueryBuilder().getNodeBySlug(slug, id) for node details + getNodeConnections(slug, id) for connections
-- Validate slug via getClientConfig(slug), validate id param exists
-- Error message for catch: 'Failed to load node'
+### Refactor plan (single sub-task)
+1. Import `getClientConfig` from `@/lib/investigations/registry`
+2. Create a `TAB_META` constant: `Record<TabId, { href: string; label: Record<Lang, string> }>` mapping each TabId to its href suffix and bilingual label
+3. Build a `HOME_TAB` constant for the always-present root tab (href: '', label: { en: 'Home'/'Overview', es: 'Inicio' })
+   - Note: Epstein uses 'Overview'/'Inicio', Libra uses 'Home'/'Inicio'. Use config.name or just 'Inicio'/'Home' generically — KISS.
+4. Replace CASE_TABS + DEFAULT_TABS with: `const config = getClientConfig(slug)`, then map `config.tabs` through TAB_META, prepend HOME_TAB
+5. Fallback: if `getClientConfig(slug)` returns undefined, use DEFAULT_TABS (keep a hardcoded default TabId array)
+6. Delete CASE_TABS and DEFAULT_TABS constants entirely
 
-### Planner queue.advance — dispatching m9:unified-node
-- Schema route review passed, advancing to sub-task 1.6
-- This route is different from prior simple routes — nested dynamic segment `[id]`
-- Builder should create `webapp/src/app/api/caso/[slug]/node/[id]/route.ts`
-- Method signatures from query-builder.ts:
-  - `getNodeConnections(casoSlug: string, nodeId: string, depth?: number)` → returns `Promise<GraphData>` — 1-hop neighborhood of a node by its `id` property
-  - `getNodeBySlug(casoSlug: string, nodeType: string, slug: string)` → returns `Promise<InvestigationNode | null>` — lookup by type+slug
-- Route design: `GET /api/caso/[slug]/node/[id]`
-  - `[id]` is the node's `id` property (used for connections lookup)
-  - Optional query param `?depth=N` for connection depth (default 1)
-  - Return both the center node info and its connections in one response: `{ node: ..., connections: { nodes: [], links: [] } }`
-  - Use `getNodeConnections(casoSlug, id, depth)` — this already finds the center node internally
-  - Validate slug via getClientConfig(slug) → 404 for unknown
-  - Validate id param exists → 400 if missing
-  - Error message for catch: 'Failed to load node'
-- Pattern: same slug validation + error handling as other routes, but with added `[id]` param and query param parsing
+### Key details for Builder
+- file: webapp/src/components/investigation/InvestigationNav.tsx
+- Import: `import { getClientConfig } from '@/lib/investigations/registry'`
+- Import: `import type { TabId } from '@/lib/investigations/types'`
+- The href for each TabId is just `/${tabId}` except 'grafo' stays '/grafo', 'simular' stays '/simular' etc. — they match directly
+- The bilingual labels can be inferred from the existing CASE_TABS (collect the union of all labels)
+- Keep the NavTab interface, language toggle, and all rendering logic unchanged
+- Typecheck must pass after changes
 
-### Step 1.6 — Node route created
-- Created `webapp/src/app/api/caso/[slug]/node/[id]/route.ts`
-- Nested dynamic segment: params Promise yields `{ slug, id }`
-- Uses `getQueryBuilder().getNodeConnections(slug, id, depth)` — returns center node + neighborhood as GraphData
-- Optional `?depth=N` query param (clamped 1–3, matches MAX_DEPTH in query-builder)
-- Validates slug via getClientConfig → 404, validates id param → 400 if missing
-- Same error handling pattern as other routes (Neo4j connection errors → 503)
-- `tsc --noEmit` passes (only pre-existing EvidenceExplorer errors)
-- Committed: 5805801
+## Iteration Notes — Step 2.1 (InvestigationNav refactor)
+- Replaced CASE_TABS + DEFAULT_TABS with config-driven approach
+- Created TAB_META: Record<TabId, { href, label }> with generic bilingual labels
+- Created HOME_TAB constant (always prepended)
+- Created DEFAULT_TAB_IDS fallback array for unknown slugs
+- Uses `getClientConfig(slug) ?? getClientConfig('caso-' + slug)` to handle the finanzas-politicas slug mismatch (URL slug 'finanzas-politicas' vs registry key 'caso-finanzas-politicas')
+- Removed NavTab interface (no longer needed — tab shape is inline)
+- Language toggle and all rendering logic unchanged
+- Typecheck: only pre-existing EvidenceExplorer.tsx date prop errors (unrelated)
+- Net: +31 lines, -45 lines (simplified)
+- Commit: 7980792
 
-### Critic review of Step 1.6 — Node route
-- review.passed for m9:unified-node — clean, no issues
-- Correct nested dynamic segment `[slug]/node/[id]`, params Promise properly awaited
-- Uses getNodeConnections with optional depth param (clamped 1-3)
-- Slug validation via getClientConfig → 404, id validation → 400
-- Same error handling pattern as all other M9 routes
-- tsc passes (only pre-existing EvidenceExplorer errors)
-- 1 open task remains in Step 1 (1.7): redirects
-- Next up: m9:redirects
+## Iteration Notes — Critic review of Step 2.1 (InvestigationNav refactor)
+- Diff reviewed: commit 7980792, 1 file changed (31 insertions, 45 deletions)
+- TAB_META, HOME_TAB, DEFAULT_TAB_IDS correctly replace CASE_TABS/DEFAULT_TABS
+- Registry lookup with caso-prefix fallback handles finanzas-politicas slug mismatch — correct
+- Typecheck: only pre-existing EvidenceExplorer.tsx date prop errors (confirmed independently)
+- **BLOCKING ISSUE: simulacion/simular route mismatch**
+  - Old CASE_TABS: caso-epstein → `/simulacion` (real SimulationPanel at `webapp/src/app/caso/[slug]/simulacion/page.tsx`)
+  - New TAB_META: TabId `simular` → `/simular` (placeholder "coming soon" page at `webapp/src/app/caso/[slug]/simular/page.tsx`)
+  - Regression: caso-epstein's simulation tab now points to wrong page
+  - Fix options: (a) add `simulacion` to TabId union + epstein config, or (b) rename `/simulacion` route dir to `/simular` and consolidate
+  - Recommended: option (b) — rename route dir, fewer moving parts, aligns with TabId
+- Secondary note: per-case labels lost (e.g., caso-libra's "What happened"/"Que paso" for resumen becomes generic "Summary"/"Resumen") — acceptable as part of standardization, non-blocking
 
-### Finalizer check after Step 1.6 review
-- review.passed for m9:unified-node — closed task-1774073216-dbf3
-- 1 open task remains in Step 1 (1.7): redirects
-- Next up: m9:redirects (task-1774073218-0806)
-- Builder should create redirect routes under `webapp/src/app/api/caso-libra/` that 301 redirect to `/api/caso/caso-libra/`
-- This ensures backward compatibility for any existing consumers of the old endpoint pattern
-- After this, Step 1 is complete and we move to Step 2 (code review of all M9 work)
+## Iteration Notes — Fix simulacion/simular route mismatch (review.changes_requested)
+- Chose option (b): rename route dir, consolidate under TabId 'simular'
+- Replaced simular/page.tsx placeholder ("coming soon") with real SimulationPanel from simulacion/page.tsx
+- Deleted simulacion/ directory entirely
+- Updated OverviewContent.tsx link from `/simulacion` to `/simular`
+- Grep confirmed no other references to `/simulacion` route in webapp/src (only Spanish word "simulacion" in UI strings)
+- Typecheck: only pre-existing EvidenceExplorer.tsx date prop errors (unrelated)
+- Commit: 5a3e698
 
-### Planner queue.advance — dispatching m9:redirects (attempt 2)
-- Node route review passed, advancing to final sub-task 1.7
-- This is the LAST M9 unified API task — after completion, Step 1 is fully done
-- **Approach:** Use Next.js `next.config.ts` redirects rather than creating individual route files
-  - This is the idiomatic Next.js approach for 301 redirects
-  - Less code to maintain, no boilerplate route handlers
-- **Alternatively**, if next.config redirects don't work well with Vite/Vinext, use a catch-all route at `webapp/src/app/api/caso-libra/[[...path]]/route.ts`
-- **Existing caso-libra routes** that should NOT be redirected (they are investigation-specific, not unified):
-  - `/api/caso-libra/document/[docSlug]` — document lookup
-  - `/api/caso-libra/investigation` — investigation metadata
-  - `/api/caso-libra/person/[actorSlug]` — person lookup
-  - `/api/caso-libra/simulate/*` — simulation routes
-  - `/api/caso-libra/wallets` — wallet data
-- **Routes that SHOULD redirect** (old → new):
-  - `/api/caso-libra/graph` → `/api/caso/caso-libra/graph` (301) — this one already has a hardcoded route, replace it
-- **Wait** — actually, the existing caso-libra routes are the OLD endpoints. The task says redirect them. But these old routes still have real logic (not using the generic query builder). The intent is:
-  - The OLD `/api/caso-libra/graph` route should 301 to `/api/caso/caso-libra/graph` (the new unified route)
-  - Other old routes (document, person, simulate, wallets) don't have unified equivalents yet — leave them as-is
-  - Only redirect the endpoints that have unified equivalents: `graph`
-- **Decision:** Only redirect `/api/caso-libra/graph` → `/api/caso/caso-libra/graph` since that's the only old route with a unified equivalent. The others (document, person, simulate, wallets, investigation) are caso-libra-specific and don't have unified M9 routes yet.
-- **Implementation:** Replace the existing `webapp/src/app/api/caso-libra/graph/route.ts` handler with a 301 redirect to `/api/caso/caso-libra/graph` (preserving query params)
-- tsc must pass after change
+## Iteration Notes — Critic review of simulacion/simular fix (commit 5a3e698)
+- Diff reviewed: 3 files changed (14 insertions, 204 deletions)
+- simulacion/page.tsx deleted, simular/page.tsx replaced placeholder with real SimulationPanel — correct
+- OverviewContent link updated from /simulacion to /simular — correct
+- Grep: no remaining /simulacion route references in webapp/src (only Spanish UI strings in SimulationResults/ScenarioInput — not routes)
+- Typecheck: only pre-existing EvidenceExplorer.tsx date prop errors (unrelated)
+- No blocking issues — passing review
+- Step 2 (nav refactor) is now fully complete with this fix
 
-### Step 1.7 — Redirects implemented
-- Replaced `webapp/src/app/api/caso-libra/graph/route.ts` handler with a 301 redirect to `/api/caso/caso-libra/graph`
-- Uses `NextResponse.redirect(target, 301)` with query param preservation
-- Only redirects `/api/caso-libra/graph` — other caso-libra routes (document, person, simulate, wallets, investigation) left as-is since they have no unified equivalents yet
-- `tsc --noEmit` passes (only pre-existing EvidenceExplorer errors)
-- Committed: 0799ad6
-- **Step 1 is now COMPLETE** — all 7 M9 unified API sub-tasks done (1.1–1.7)
-- Next: Step 2 — Code review of all M9 work before proceeding to M10
+## Iteration Notes — Finalizer after Step 2 review (simulacion fix)
+- Review passed for simulacion/simular route consolidation — commit 5a3e698 verified correct
+- Step 2 (nav refactor) is fully complete: CASE_TABS replaced with registry-driven config, simulacion route consolidated
+- Step 3 (i18n: browser language detection + bilingual metadata) is the final remaining step
+- Advancing queue for Planner to decompose Step 3
 
-### Critic review of Step 1.7 — Redirects
-- review.passed for m9:redirects — clean, no issues
-- Correctly replaces old graph handler with 301 redirect using NextResponse.redirect(target, 301)
-- Query params preserved via searchParams.forEach → target.searchParams.set
-- URL construction correct: new URL('/api/caso/caso-libra/graph', request.url)
-- Other caso-libra routes correctly left untouched
-- tsc passes (only pre-existing EvidenceExplorer errors)
-- **Step 1 is now FULLY COMPLETE and REVIEWED** — all 7 M9 unified API sub-tasks (1.1–1.7) done and passed critic review
-- Next: Step 2 — Full M9 code review before proceeding to M10
+## Iteration Notes — Planner decomposition of Step 3 (i18n)
 
-### Finalizer — Step 1 complete, advancing to Step 2
-- Closed task-1774073218-0806 (m9:redirects) — last sub-task in Step 1
-- All 7 M9 unified API routes (1.1–1.7) are done and reviewed
-- Step 1 is fully complete
-- Advancing to Step 2: Full M9 code review before proceeding to M10
-- The i18n-titles task (task-1774074000-i18n) is still open but is separate from Step 1 API routes
+### Analysis of LanguageProvider (webapp/src/lib/language-context.tsx)
+- Currently: `useState<Lang>(defaultLang)` with `defaultLang` param, defaults to `'en'`
+- No browser language detection — always uses the prop default
+- Fix: On mount (useEffect), detect `navigator.language` — if starts with `'es'`, set lang to `'es'`; otherwise keep default
+- Only detect once on mount, don't override if user has explicitly toggled
+- Keep `defaultLang` prop as server-side hint (per-case default) — browser detection overrides it client-side
 
-### Planner — Advancing to Step 2: Full M9 Code Review
-- Step 1 fully complete: all 7 unified API routes (graph, timeline, stats, config, schema, node, redirects) implemented and individually reviewed
-- Created task task-1774074833-2a43 (key: m9:code-review) for full M9 code review
-- This is a holistic review of ALL M9 work together:
-  - Infrastructure: types.ts, utils.ts, config.ts, query-builder.ts, registry.ts
-  - API routes: graph, timeline, stats, config, schema, node/[id], redirects
-- Files to review:
-  - `webapp/src/lib/investigations/types.ts`
-  - `webapp/src/lib/investigations/utils.ts`
-  - `webapp/src/lib/investigations/config.ts`
-  - `webapp/src/lib/investigations/query-builder.ts`
-  - `webapp/src/lib/investigations/registry.ts`
-  - `webapp/src/app/api/caso/[slug]/graph/route.ts`
-  - `webapp/src/app/api/caso/[slug]/timeline/route.ts`
-  - `webapp/src/app/api/caso/[slug]/stats/route.ts`
-  - `webapp/src/app/api/caso/[slug]/config/route.ts`
-  - `webapp/src/app/api/caso/[slug]/schema/route.ts`
-  - `webapp/src/app/api/caso/[slug]/node/[id]/route.ts`
-  - `webapp/src/app/api/caso-libra/graph/route.ts` (301 redirect)
-- Review criteria: consistency, error handling, security (parameterized queries), type safety, no dead code
-- After review passes → wait for human review before proceeding to M10
+### Analysis of layout.tsx (webapp/src/app/caso/[slug]/layout.tsx)
+- CASE_META (lines 7-20) hardcodes title, description, and defaultLang per slug
+- `generateMetadata` uses CASE_META for page title/description — monolingual
+- `CasoLayout` passes `defaultLang` from CASE_META to LanguageProvider
+- Fix: Replace CASE_META with `getClientConfig(slug)` from registry
+  - Registry `InvestigationClientConfig` has `name: BilingualText` and `description: BilingualText`
+  - For generateMetadata (server-side, no access to client lang): use `config.name.en` + ` | ` + `config.name.es` or pick a default language from the config
+  - For defaultLang: infer from config — if `config.name.es` is primary (Spanish-first investigation) → 'es', else 'en'
+  - Simpler: add a `defaultLang` field to InvestigationClientConfig? YAGNI — just check if slug contains Spanish keywords or hardcode a simple heuristic
+  - Simplest: the config already has `casoSlug` — 'caso-epstein' → 'en', everything else → 'es'. This matches current CASE_META behavior.
+  - Actually simplest: just use the existing CASE_META defaultLang approach but source name/description from registry
 
-### Step 2 — Full M9 Code Review Results
+### Sub-task 3.1: LanguageProvider browser detection
+- Add useEffect that runs once on mount
+- Check `typeof window !== 'undefined'` and `navigator.language`
+- If navigator.language starts with 'es', set lang to 'es'; if starts with 'en', set lang to 'en'
+- Otherwise keep defaultLang
+- Use a ref to track if user has manually toggled — if so, don't override
 
-**Files reviewed:** 12 files (5 infrastructure + 6 API routes + 1 redirect)
+### Sub-task 3.2: Layout metadata from registry
+- Import `getClientConfig` from registry
+- Replace CASE_META with registry lookups
+- generateMetadata: use `config.name.en` as title (server-side, pick one language)
+  - Actually for bilingual: `config.name.en + ' — ' + config.name.es` if they differ, or just config.name.en
+  - Better: use `config.name.en` + site name. Keep it simple.
+- defaultLang: 'caso-epstein' → 'en', else 'es' (matches current behavior)
+- Delete CASE_META constant
 
-#### Infrastructure (types.ts, utils.ts, config.ts, query-builder.ts, registry.ts)
+### Dispatching sub-task 3.1 (LanguageProvider browser detection) to Builder
 
-**types.ts** — Clean. Well-structured interfaces with readonly properties. `InvestigationQueryBuilder` interface covers all needed operations. `satisfies` used correctly in timeline mapping.
+## Iteration Notes — Step 3.1 (LanguageProvider browser detection)
+- Renamed internal `setLang` to `setLangState`, wrapped public `setLang` and `toggle` to set `userToggled.current = true`
+- Added `useRef(false)` for `userToggled` — tracks if user has manually changed language
+- Added `useEffect([], ...)` on mount: checks `navigator.language`, sets 'es' if starts with 'es', 'en' if starts with 'en', otherwise keeps defaultLang
+- Guard: skips detection if `userToggled.current` is true or `typeof window === 'undefined'`
+- Imports added: `useEffect`, `useRef`
+- Typecheck: only pre-existing EvidenceExplorer.tsx date prop errors (unrelated)
+- Net: +21 lines, -3 lines
+- Commit: bba2ed9
 
-**utils.ts** — Clean. ID generation/parsing, slug validation, `VALID_CASO_SLUGS` as const for type narrowing. No issues.
+## Iteration Notes — Critic review of Step 3.1 (LanguageProvider browser detection)
+- Diff reviewed: commit bba2ed9, 1 file changed (21 insertions, 3 deletions)
+- userToggled ref correctly prevents overriding manual user choice
+- setLang and toggle both set userToggled.current = true before state change — correct
+- useEffect runs once on mount (empty deps), detects navigator.language prefix — correct
+- Guards: SSR check (typeof window === 'undefined') and prior user toggle — correct
+- Falls through to keep defaultLang if browser lang is neither 'es' nor 'en' — correct
+- Typecheck: only pre-existing EvidenceExplorer.tsx date prop errors (confirmed independently)
+- No blocking issues — passing review
 
-**config.ts** — Clean. All Cypher parameterized. Reads InvestigationConfig and schema subgraph from Neo4j. Null returns for invalid slugs. `isValidCasoSlug` guard before queries.
+## Iteration Notes — Finalizer after Step 3.1 review
+- Review passed for Step 3.1 (LanguageProvider browser detection) — commit bba2ed9 verified correct
+- Step 3 still has 1 unchecked sub-task: 3.2 (Replace CASE_META in layout with registry-driven bilingual metadata)
+- Task task-1774081596-bef9 (m9:layout-meta) now unblocked and ready
+- Advancing queue for Builder to pick up sub-task 3.2
 
-**query-builder.ts** — 1 minor issue:
-- **Unused import (line 13):** `transformNode` and `transformRelationship` from `'../graph/transform'` are imported but never used. The file defines its own `toInvestigationNode` and `toInvestigationRelationship` instead. Should be removed (dead code).
-- **Cypher interpolation (line 300):** `${clampedDepth}` is interpolated into variable-length path `[r*1..${clampedDepth}]`. This is acceptable — Neo4j doesn't support parameterized path bounds, and the value is clamped to integer 1–3. Not a security concern.
-- Otherwise clean: two-pass graph pattern avoids cartesian products, `sanitizeLabel()` prevents label injection, `neo4j.int()` used for LIMIT/SKIP, sessions always closed in `finally`.
+## Iteration Notes — Planner queue.advance after Step 3.1 (dispatching 3.2)
 
-**registry.ts** — Clean. Simple Map-based lookup, imports caso-specific configs. `getClientConfig` returns undefined for unknown slugs.
+### Target: webapp/src/app/caso/[slug]/layout.tsx
 
-#### API Routes (graph, timeline, stats, config, schema, node/[id])
+### Current state
+- CASE_META (lines 7-20) hardcodes title, description, defaultLang per slug
+- generateMetadata (line 22) uses CASE_META for page title/description
+- CasoLayout (line 36) passes `defaultLang` from CASE_META to LanguageProvider
 
-All 5 simple routes follow identical pattern:
-1. Await `params` Promise (Next.js 16 pattern) ✓
-2. Validate slug via `getClientConfig(slug)` → 404 ✓
-3. Call `getQueryBuilder().methodName(slug)` ✓
-4. Return `{ success: true, data }` ✓
-5. Catch with Neo4j connection check → 503, else → 500 ✓
+### Registry shape (InvestigationClientConfig)
+- `name: BilingualText` (e.g., `{ en: 'Epstein Case', es: 'Caso Epstein' }`)
+- `description: BilingualText`
+- `casoSlug: string` (e.g., 'caso-epstein')
 
-**node/[id]/route.ts** — Correctly handles nested dynamic segment, `?depth=N` query param with clamping, additional `id` validation → 400. Clean.
+### Builder instructions for sub-task 3.2
+1. Import `getClientConfig` from `@/lib/investigations/registry`
+2. In `generateMetadata`:
+   - Call `const config = getClientConfig(slug) ?? getClientConfig('caso-' + slug)` (same fallback pattern as InvestigationNav for finanzas-politicas slug mismatch)
+   - Use `config?.name.en` as title (append ` — Office of Accountability` or keep current suffix pattern)
+   - Use `config?.description.en` as description
+   - Fallback if no config: keep current default `'Investigacion — Oficina de Rendicion de Cuentas'`
+3. In `CasoLayout`:
+   - Same config lookup
+   - defaultLang: `config?.casoSlug === 'caso-epstein' ? 'en' : 'es'` (matches current CASE_META behavior)
+   - Fallback: `'es'` (matches current default)
+4. Delete CASE_META constant entirely
+5. Remove unused `type Lang` import if `Lang` is no longer referenced directly (check — it's used for CASE_META type, but LanguageProvider import already brings it)
+6. Typecheck must pass after changes
 
-#### Redirect (caso-libra/graph/route.ts)
+### Dispatching task 3.2 (layout-meta) to Builder
 
-Clean 301 redirect with query param preservation. Only redirects graph (the only old route with a unified equivalent).
+## Iteration Notes — Step 3.2 (layout CASE_META → registry)
+- Replaced CASE_META constant with `resolveConfig(slug)` helper using `getClientConfig(slug) ?? getClientConfig('caso-' + slug)`
+- generateMetadata: title uses `config.name.en + ' — Office of Accountability'`, fallback to Spanish default
+- generateMetadata: description uses `config.description.en`
+- CasoLayout: defaultLang derived from `config?.casoSlug === 'caso-epstein' ? 'en' : 'es'`
+- Removed unused `type Lang` import (no longer needed after CASE_META deletion)
+- Typecheck: only pre-existing EvidenceExplorer.tsx date prop errors (unrelated)
+- Net: +11 insertions, -18 deletions
+- Commit: cad8dfa
 
-#### Verdict
+## Iteration Notes — Critic review of Step 3.2 (layout CASE_META → registry)
+- Diff reviewed: commit cad8dfa, 1 file changed (11 insertions, 18 deletions)
+- CASE_META deleted, replaced with `resolveConfig(slug)` using getClientConfig + caso-prefix fallback — consistent with InvestigationNav pattern
+- generateMetadata: title uses `config.name.en + ' — Office of Accountability'`, fallback to Spanish default — correct
+- generateMetadata: description uses `config.description.en` — correct
+- CasoLayout: defaultLang from `config?.casoSlug === 'caso-epstein' ? 'en' : 'es'` — matches previous CASE_META behavior
+- Unused `type Lang` import removed — clean
+- Typecheck: only pre-existing EvidenceExplorer.tsx date prop errors (confirmed independently)
+- No blocking issues — passing review
+- Step 3 is now fully complete (both sub-tasks 3.1 + 3.2 done)
 
-**review.passed** — 1 minor issue (unused import in query-builder.ts, non-blocking). All Cypher parameterized. Consistent error handling. Type-safe. No security concerns. tsc passes (only pre-existing EvidenceExplorer errors).
-
-**Recommendation:** Remove unused import in query-builder.ts line 13 before merging, but this is non-blocking for the review.
-
-### Critic review of Step 2 — Full M9 Code Review
-- Independently verified: tsc passes (only pre-existing EvidenceExplorer errors, not M9-related)
-- Unused import fix confirmed committed (a860000)
-- No unsafe Cypher interpolation in investigations/ — only clampedDepth for path bounds (acceptable, integer-clamped 1-3)
-- neo4j.int() used for LIMIT/SKIP
-- All 12 files reviewed by subtask, 1 minor issue found and fixed
-- review.passed — M9 code review is complete
-- Next: Finalizer should advance to human review gate before M10
+## Final Verification — M9 Complete
+- **Typecheck**: passes (only pre-existing EvidenceExplorer.tsx date prop errors, unrelated to M9)
+- **Build**: all 5 phases succeed
+- **No orphaned TODOs** in changed files
+- **All tasks closed**: 8/8 (including parent i18n task)
+- **Commits**: 61a1337, 7980792, 5a3e698, bba2ed9, cad8dfa
+- **M9 deliverables**:
+  1. Step 1: Fixed hardcoded fetch URLs (dinero, actor, evidencia) + deleted static finanzas-politicas routes (kept conexiones/)
+  2. Step 2: Replaced CASE_TABS/DEFAULT_TABS with registry-driven config in InvestigationNav + consolidated simulacion→simular route
+  3. Step 3: Added browser language detection to LanguageProvider + replaced CASE_META with registry-driven config in layout
+- LOOP_COMPLETE

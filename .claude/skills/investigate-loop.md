@@ -91,6 +91,36 @@ Dispatch 2-3 agents using the GPU Qwen model:
 - Send to Qwen for trafficking pattern analysis
 - Identify: recruitment chains, potential unidentified victims, dual victim-recruiters
 
+### Phase 4b: Autonomous Research Iterations (autoresearch pattern)
+
+After LLM analysis produces hypotheses, run an autonomous iteration loop that deepens the most promising leads without human intervention. Inspired by karpathy/autoresearch: fixed-budget iterations, evaluate, keep or discard, repeat.
+
+**How it works:**
+1. Rank hypothesis Proposals from Phase 4 by confidence score
+2. For top 5 hypotheses, generate targeted follow-up queries:
+   - "If [person A] is connected to [org B], search for [org B] corporate filings"
+   - "If [location X] had events in [date range], search for corroborating flight records"
+   - "If [shell company] has ≤1 officer, search OpenCorporates for related entities"
+3. Execute follow-ups using parallel agents:
+   - **WebSearch** for public records, news articles, court documents
+   - **Neo4j traversal** for adjacent graph patterns not yet explored
+   - **Cross-reference** against existing data sources (Compr.ar, ICIJ, CNE)
+4. Evaluate each iteration:
+   - `confidence_delta`: did the hypothesis get stronger or weaker?
+   - `corroboration_score`: how many independent sources now support it?
+   - `novelty_score`: did we find new entities/relationships?
+   - `coverage_delta`: new nodes/edges added to graph
+5. Keep hypotheses that improved; discard those that weakened
+6. Detect gaps: persons mentioned but not yet nodes, time periods with no events, unverified locations
+7. Feed gaps as enrichment targets into next iteration
+8. Repeat for max 3 iterations or until no hypothesis improves
+
+**Research directives** (optional): before running, check if the investigation has research_directives in its config — researcher-defined priorities like "focus on financial enablers" or "trace recruitment chains through modeling agencies". These guide which hypotheses get priority.
+
+**Output:** Updated hypothesis Proposals with iterated confidence scores, new bronze nodes from follow-ups, gap analysis report. All iterations create AuditEntry nodes.
+
+**Important:** This phase is autonomous but bounded. It does NOT promote tiers (that's still human-gated). It only creates bronze nodes and updates hypothesis confidence. The gate after Phase 4b lets the researcher review what the iterations found before anything gets promoted.
+
 ### Phase 5: Clean & Sanitize
 
 Dispatch cleanup agent:
