@@ -6,6 +6,7 @@
  */
 
 import { useCallback, useEffect, useState } from 'react'
+import { useParams } from 'next/navigation'
 
 import { useLanguage, type Lang } from '@/lib/language-context'
 import type { GraphData } from '@/lib/neo4j/types'
@@ -31,6 +32,8 @@ const t = {
 
 export default function DineroPage() {
   const { lang } = useLanguage()
+  const params = useParams()
+  const slug = typeof params.slug === 'string' ? params.slug : ''
   const [data, setData] = useState<GraphData>({ nodes: [], links: [] })
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
@@ -39,7 +42,7 @@ export default function DineroPage() {
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch('/api/caso-libra/wallets')
+        const res = await fetch(`/api/caso/${slug}/wallets`)
         if (!res.ok) throw new Error(t.loadError[lang])
         const json = await res.json()
         setData(json)
