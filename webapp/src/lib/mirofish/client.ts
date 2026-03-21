@@ -7,7 +7,7 @@
 
 import type { MiroFishSeedData, MiroFishResponse, SimulationMessage } from './types'
 
-const MIROFISH_API_URL = process.env.MIROFISH_API_URL ?? 'http://localhost:5000'
+const DEFAULT_API_URL = 'http://localhost:5000'
 const REQUEST_TIMEOUT_MS = 30_000
 
 /**
@@ -15,8 +15,9 @@ const REQUEST_TIMEOUT_MS = 30_000
  */
 export async function initializeSimulation(
   seed: MiroFishSeedData,
+  endpoint?: string,
 ): Promise<MiroFishResponse<{ simulation_id: string }>> {
-  return apiRequest('/api/simulation/init', {
+  return apiRequest(endpoint, '/api/simulation/init', {
     method: 'POST',
     body: JSON.stringify(seed),
   })
@@ -28,8 +29,9 @@ export async function initializeSimulation(
 export async function querySimulation(
   simulationId: string,
   prompt: string,
+  endpoint?: string,
 ): Promise<MiroFishResponse<{ messages: SimulationMessage[] }>> {
-  return apiRequest('/api/simulation/query', {
+  return apiRequest(endpoint, '/api/simulation/query', {
     method: 'POST',
     body: JSON.stringify({ simulation_id: simulationId, prompt }),
   })
@@ -40,18 +42,24 @@ export async function querySimulation(
  */
 export async function getSimulationStatus(
   simulationId: string,
+  endpoint?: string,
 ): Promise<MiroFishResponse<{ status: string; agent_count: number }>> {
-  return apiRequest(`/api/simulation/${simulationId}/status`, {
+  return apiRequest(endpoint, `/api/simulation/${simulationId}/status`, {
     method: 'GET',
   })
 }
 
-async function apiRequest<T>(path: string, init: RequestInit): Promise<MiroFishResponse<T>> {
+async function apiRequest<T>(
+  endpoint: string | undefined,
+  path: string,
+  init: RequestInit,
+): Promise<MiroFishResponse<T>> {
   try {
+    const base = endpoint ?? process.env.MIROFISH_API_URL ?? DEFAULT_API_URL
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS)
 
-    const response = await fetch(`${MIROFISH_API_URL}${path}`, {
+    const response = await fetch(`${base}${path}`, {
       ...init,
       headers: {
         'Content-Type': 'application/json',
