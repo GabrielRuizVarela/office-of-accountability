@@ -183,18 +183,18 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'macri-ausol',
     claim_es:
-      'Macri vendio acciones de Autopistas del Sol (AUSOL) con una prima del 400% despues de que su gobierno autorizara aumentos de peaje y renegociara la concesion por ~USD 2.000M.',
+      'Macri vendio acciones de Autopistas del Sol (AUSOL) con una prima de ~394% despues de que su gobierno autorizara aumentos de peaje y renegociara la concesion por ~USD 2.000M.',
     claim_en:
-      'Macri sold Autopistas del Sol (AUSOL) shares at a 400% premium after his government authorized toll increases and renegotiated the concession for ~USD 2B.',
+      'Macri sold Autopistas del Sol (AUSOL) shares at a ~394% premium after his government authorized toll increases and renegotiated the concession for ~USD 2B.',
     status: 'confirmed',
     tier: 2,
     source: 'Pagina/12',
     source_url:
       'https://www.pagina12.com.ar/54129-el-negocio-de-los-macri-con-autopistas-del-sol',
     detail_es:
-      'La Oficina Anticorrupcion recomendo que Macri no participara; se recuso formalmente. Sin embargo, la renegociacion de 2018 comprometio al Estado con ~USD 2.000M de impacto economico total. La causa judicial continua respecto a ex funcionarios por "administracion fraudulenta". Las acciones fueron vendidas a Natal Inversiones con prima del 400%.',
+      'La Oficina Anticorrupcion recomendo que Macri no participara; se recuso formalmente. Sin embargo, la renegociacion de 2018 comprometio al Estado con ~USD 2.000M de impacto economico total. La causa judicial continua respecto a ex funcionarios por "administracion fraudulenta". Las acciones fueron vendidas a Natal Inversiones con prima de ~394%.',
     detail_en:
-      'The Anti-Corruption Office recommended Macri not participate; he formally recused. However, the 2018 renegotiation committed the State to ~USD 2B total economic impact. The judicial case continues regarding ex-officials for "fraudulent administration." Shares were sold to Natal Inversiones at a 400% premium.',
+      'The Anti-Corruption Office recommended Macri not participate; he formally recused. However, the 2018 renegotiation committed the State to ~USD 2B total economic impact. The judicial case continues regarding ex-officials for "fraudulent administration." Shares were sold to Natal Inversiones at a ~394% premium.',
   },
   // --- Tier 2: Contractor-donor violations ---
   {
@@ -273,7 +273,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     tier: 1,
     source: 'Infobae / La Nacion',
     source_url:
-      'https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-kueider-en-paraguay-con-211000-dolares/',
+      'https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-edgardo-kueider-en-paraguay-llevaba-mas-de-usd-200-mil/',
     detail_es:
       'Kueider fue detenido el 4 de diciembre de 2024 en el paso fronterizo de Clorinda con USD 211.000 no declarados. El Senado lo expulso por mayoria. Las empresas BETAIL SRL y EDEKOM SA aparecen en registros como vinculadas a su nombre. En marzo de 2025, siete personas de su entorno fueron detenidas.',
     detail_en:
@@ -602,7 +602,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
       'Senator Edgardo Kueider is detained at the Clorinda border crossing (Paraguay) with USD 211,000 in undeclared cash. The Senate expels him by majority vote. Companies BETAIL and EDEKOM appear in records linked to his name.',
     category: 'legal',
     sources: [
-      'https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-kueider-en-paraguay-con-211000-dolares/',
+      'https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-edgardo-kueider-en-paraguay-llevaba-mas-de-usd-200-mil/',
     ],
   },
   {
@@ -630,7 +630,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
       'Seven associates of former senator Kueider are detained as part of the case opened following his detention at the Paraguayan border with undeclared cash.',
     category: 'legal',
     sources: [
-      'https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-kueider-en-paraguay-con-211000-dolares/',
+      'https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-edgardo-kueider-en-paraguay-llevaba-mas-de-usd-200-mil/',
     ],
   },
   {
@@ -706,9 +706,9 @@ export const ACTORS: readonly Actor[] = [
     role_es: 'Expresidente, PRO — 5 datasets',
     role_en: 'Former President, PRO — 5 datasets',
     description_es:
-      'Aparece en 5 datasets: donante, director de empresa, officer societario, DDJJ y nombramiento de gobierno. Offshore documentada (Fleg Trading, Kagemusha), campanas financiadas por contratistas (documentado por Chequeado), presencia legislativa del 17,6%. Correo Argentino: quita del 98,82% de deuda familiar. AUSOL: venta de acciones con prima del 400%.',
+      'Aparece en 5 datasets: donante, director de empresa, officer societario, DDJJ y nombramiento de gobierno. Offshore documentada (Fleg Trading, Kagemusha), campanas financiadas por contratistas (documentado por Chequeado), presencia legislativa del 17,6%. Correo Argentino: quita del 98,82% de deuda familiar. AUSOL: venta de acciones con prima de ~394%.',
     description_en:
-      'Appears across 5 datasets: donor, board member, company officer, DDJJ, and government appointment. Documented offshore (Fleg Trading, Kagemusha), contractor-funded campaigns (documented by Chequeado), 17.6% legislative presence. Correo Argentino: 98.82% family debt forgiveness. AUSOL: share sale at 400% premium.',
+      'Appears across 5 datasets: donor, board member, company officer, DDJJ, and government appointment. Documented offshore (Fleg Trading, Kagemusha), contractor-funded campaigns (documented by Chequeado), 17.6% legislative presence. Correo Argentino: 98.82% family debt forgiveness. AUSOL: share sale at ~394% premium.',
     party: 'PRO',
     datasets: 5,
     status_es: 'Sobreseido por Fleg Trading; la causa Correo Argentino continua',
