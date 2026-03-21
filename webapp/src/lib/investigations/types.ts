@@ -84,9 +84,32 @@ export interface TimelineItem {
   readonly title: string | BilingualText
   readonly description: string | BilingualText
   readonly date: string
+  readonly event_type?: EventType
   readonly category?: string
   readonly source_url?: string
   readonly actors?: readonly { readonly id: string; readonly name: string }[]
+}
+
+// ---------------------------------------------------------------------------
+// Shared event type config (superset of all investigations)
+// ---------------------------------------------------------------------------
+
+export type EventType = 'political' | 'financial' | 'legal' | 'media' | 'corporate'
+
+export const EVENT_TYPE_COLORS: Readonly<Record<EventType, string>> = {
+  political: '#3b82f6',
+  financial: '#10b981',
+  legal: '#ef4444',
+  media: '#a855f7',
+  corporate: '#f59e0b',
+}
+
+export const EVENT_TYPE_LABELS: Readonly<Record<EventType, string>> = {
+  political: 'Politico',
+  financial: 'Financiero',
+  legal: 'Legal',
+  media: 'Medios',
+  corporate: 'Corporativo',
 }
 
 // ---------------------------------------------------------------------------
