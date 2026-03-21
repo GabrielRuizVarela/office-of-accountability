@@ -20,10 +20,10 @@ const SLUG = 'caso-epstein'
 
 const t = {
   headerBadge: { en: 'Investigation summary', es: 'Resumen de la investigacion' },
-  headerTitle: { en: 'Epstein Case: What 10,908 nodes reveal', es: 'Caso Epstein: Lo que revelan 10,908 nodos' },
+  headerTitle: { en: 'Epstein Case: What 7,258 nodes reveal', es: 'Caso Epstein: Lo que revelan 7,258 nodos' },
   headerDesc: {
-    en: 'An evidence-based investigation compiled from 4,153 flights, 1,044 documents, 350+ verified persons, and 31 organizations across 4 data sources.',
-    es: 'Una investigacion basada en evidencia compilada a partir de 4,153 vuelos, 1,044 documentos, 350+ personas verificadas y 31 organizaciones a traves de 4 fuentes de datos.',
+    en: 'An evidence-based investigation compiled from 4,153 flights, 1,044 documents, 367 verified persons, 31 organizations, and 9 mapped shell companies across 4 data sources.',
+    es: 'Una investigacion basada en evidencia compilada a partir de 4,153 vuelos, 1,044 documentos, 367 personas verificadas, 31 organizaciones y 9 empresas pantalla mapeadas a traves de 4 fuentes de datos.',
   },
   viewData: { en: 'View data & evidence', es: 'Ver datos y evidencia' },
   timeline: { en: 'Timeline', es: 'Cronologia' },
@@ -66,8 +66,8 @@ const CHAPTERS: {
     num: 'III',
     title: 'The Recruitment',
     paragraphs: [
-      'Victims entered the network through three pipelines. The modeling pipeline: Epstein funded Jean-Luc Brunel\'s MC2 Model Management with $1 million, sponsoring P-1 visas that made models\' legal status dependent on the agency. The direct recruitment pipeline: Maxwell recruited Virginia Giuffre from the Mar-a-Lago spa at age 16. The Eastern European pipeline traced names like Kovylina, Malyshov, and Marcinko across a geographic pattern.',
-      'Sarah Kellen was the gatekeeper. Handwritten notes signed by Kellen, recovered from the Palm Beach residence, contained phrases: "I have girls for him" and "I have 2 girls for him." Graph betweenness analysis shows she bridged 10,367 otherwise-unconnected pairs in the network — 3x more than anyone below Epstein and Maxwell. She connects 3 victims to 4 financiers AND 4 academics to 7 politicians. She was never charged.',
+      'Victims entered the network through three pipelines. The modeling pipeline: Epstein funded Jean-Luc Brunel\'s MC2 Model Management with $1 million, sponsoring P-1 visas that made models\' legal status dependent on the agency. Cindy Lopez flew 37 times between 2000-2003, a pattern characteristic of the MC2 pipeline. The direct recruitment pipeline: Maxwell recruited Virginia Giuffre from the Mar-a-Lago spa at age 16. Haley Robson recruited victims in Palm Beach for $200 per referral, identified by Palm Beach PD. The Eastern European pipeline traced names like Kovylina, Malyshov, and Marcinko across a geographic pattern consistent with model agency sourcing from former Soviet states.',
+      'Sarah Kellen was the gatekeeper — and a victim herself. The NPA "Core 4" (Kellen, Nadia Marcinko, Adriana Ross, Lesley Groff) all received immunity in the 2008 agreement. Network analysis reveals all four were both victims and operational facilitators: Kellen had 148 co-flyers for someone described as a "personal assistant"; Marcinko, originally from former Yugoslavia, was documented as a trafficking victim before becoming an associate; Ross invoked the 5th Amendment over 100 times in her deposition; Groff\'s name appears 150,000+ times in DOJ files. Handwritten notes signed by Kellen contained phrases: "I have girls for him." She bridged 10,367 otherwise-unconnected pairs in the network — connecting victims to financiers, academics to politicians. None of the Core 4 were ever charged.',
     ],
   },
   {
@@ -138,10 +138,18 @@ const CHAPTERS: {
   },
   {
     num: 'XII',
+    title: 'The Shell Architecture',
+    paragraphs: [
+      'Forensic analysis of the graph reveals a three-stage money laundering structure. Placement: funds entered through J. Epstein & Co and Southern Trust Company into banking relationships at JPMorgan Chase and Deutsche Bank. Layering: capital moved through 9 mapped shell entities — The 1953 Trust, Financial Trust Inc, Hyperion Air LLC/Inc (dual entities suggesting jurisdictional layering for liability vs. asset ownership), JSC Interiors LLC, Plan D LLC, Great St. Jim LLC, Financial Strategy Group Ltd (the "Ltd" suffix indicating offshore BVI/UK jurisdiction). Integration: clean capital deployed into real estate across 4 jurisdictions, 4 aircraft, and legitimate-appearing ventures including MIT Media Lab donations and MC2 Model Management funding.',
+      'Jes Staley is the human bridge between Epstein\'s two banking relationships — employed at both JPMorgan Chase AND Deutsche Bank, the only person in the graph spanning both institutions. Leon Black is the only person outside the core trafficking group who appears in both financial AND abuse relationship types: he paid Epstein $158M+ in advisory fees while an anonymous victim named him in court filings. The bidirectional nature of the Black-Epstein financial relationship — Epstein also financed Black — suggests a mutual dependency structure rather than simple client-advisor arrangement.',
+    ],
+  },
+  {
+    num: 'XIII',
     title: 'What Remains',
     paragraphs: [
-      '7,287 connected nodes. 21,944 edges. 4,153 flights. 350+ verified persons. 1,044 documents. But: 99.6% of flights lack passenger names. The Insurance Trust and Caterpillar Trust have never been forensically audited. The CIA\'s Glomar response is unresolved. 20+ high-profile persons need relationship enrichment. Darren K. Indyke\'s financial records are the single key that would unravel the architecture.',
-      'Boris Nikolic remains the most significant uncharged architect: named executor, kompromat chain intermediary, Gates bridge, and biotech investor across post-Epstein ventures. He has never been deposed or charged. The investigation continues.',
+      '7,258 connected nodes. 10,916 edges. 4,153 flights. 367 verified persons. 1,044 documents. 9 shell companies mapped. 15 documented victim relationships. But: 99.6% of flights lack passenger names. The Insurance Trust and Caterpillar Trust have never been forensically audited. The "Caterpillar Trust 2" implies a predecessor trust that has never been located. The CIA\'s Glomar response is unresolved. Darren K. Indyke\'s financial records — connecting Deutsche Bank, Insurance Trust, and Caterpillar Trust 2 — remain the single key that would unravel the architecture.',
+      'Network analysis identified Boris Nikolic as the most structurally significant bridge node: he connects four otherwise-separate clusters — tech (Gates, Kimbal Musk), politics (Ehud Barak), trafficking operations (Jean-Luc Brunel), and financial management (Richard Kahn, Lesley Groff). Named backup executor in Epstein\'s will two days before his death. Never deposed or charged. The Korshunova-Zinoviev-Kellen triangle — linking a model who died in 2008 (ruled suicide) to an MMA fighter who flew with both VIPs and young women — remains uninvestigated. Andrea Mitrovich, with 54 co-flyers including Clinton, Spacey, and Secret Service, appears more frequently than most named associates yet is rarely mentioned in reporting. The investigation continues.',
     ],
   },
 ]
