@@ -187,64 +187,97 @@ interface NameEntity {
   normalized: string
 }
 
+/** Maximum entities to fetch per type for name matching to prevent OOM / hangs */
+const NAME_MATCH_LIMIT = 50_000
+
+/** Minimum normalized name length to consider for matching */
+const MIN_NAME_LENGTH = 3
+
 export async function matchByName(
   alreadyMatchedIds: ReadonlySet<string>,
 ): Promise<CrossRefMatch[]> {
-  // Fetch all entity types that might match by name
+  console.log('  [name-match] Fetching entities for name matching...')
+
+  // Fetch all entity types that might match by name (capped per type)
   const [contractorRes, companyRes, appointmentRes, officerRes] = await Promise.all([
     readQuery(
-      `MATCH (c:Contractor) WHERE c.name IS NOT NULL AND c.name <> ''
-       RETURN c.contractor_id AS id, c.name AS name`,
-      {},
+      `MATCH (c:Contractor) WHERE c.name IS NOT NULL AND c.name <> '' AND size(c.name) >= 3
+       RETURN c.contractor_id AS id, c.name AS name
+       LIMIT $limit`,
+      { limit: NAME_MATCH_LIMIT },
       (r) => ({ id: r.get('id') as string, name: r.get('name') as string }),
     ),
     readQuery(
-      `MATCH (co:Company) WHERE co.name IS NOT NULL AND co.name <> ''
-       RETURN co.igj_id AS id, co.name AS name`,
-      {},
+      `MATCH (co:Company) WHERE co.name IS NOT NULL AND co.name <> '' AND size(co.name) >= 3
+       RETURN co.igj_id AS id, co.name AS name
+       LIMIT $limit`,
+      { limit: NAME_MATCH_LIMIT },
       (r) => ({ id: r.get('id') as string, name: r.get('name') as string }),
     ),
     readQuery(
-      `MATCH (ga:GovernmentAppointment) WHERE ga.full_name IS NOT NULL AND ga.full_name <> ''
-       RETURN ga.appointment_id AS id, ga.full_name AS name`,
-      {},
+      `MATCH (ga:GovernmentAppointment) WHERE ga.full_name IS NOT NULL AND ga.full_name <> '' AND size(ga.full_name) >= 3
+       RETURN ga.appointment_id AS id, ga.full_name AS name
+       LIMIT $limit`,
+      { limit: NAME_MATCH_LIMIT },
       (r) => ({ id: r.get('id') as string, name: r.get('name') as string }),
     ),
     readQuery(
-      `MATCH (co:CompanyOfficer) WHERE co.name IS NOT NULL AND co.name <> ''
-       RETURN co.officer_id AS id, co.name AS name`,
-      {},
+      `MATCH (co:CompanyOfficer) WHERE co.name IS NOT NULL AND co.name <> '' AND size(co.name) >= 3
+       RETURN co.officer_id AS id, co.name AS name
+       LIMIT $limit`,
+      { limit: NAME_MATCH_LIMIT },
       (r) => ({ id: r.get('id') as string, name: r.get('name') as string }),
     ),
   ])
 
-  // Filter out already-matched entities and normalize names
-  const contractors: NameEntity[] = contractorRes.records
-    .filter((c) => !alreadyMatchedIds.has(c.id))
-    .map((c) => ({ ...c, label: 'Contractor', normalized: normalizeName(c.name) }))
+  const totalEntities = contractorRes.records.length + companyRes.records.length +
+    appointmentRes.records.length + officerRes.records.length
+  console.log(`  [name-match] Fetched ${totalEntities} entities (contractors=${contractorRes.records.length}, companies=${companyRes.records.length}, appointments=${appointmentRes.records.length}, officers=${officerRes.records.length})`)
 
-  const companies: NameEntity[] = companyRes.records
-    .filter((c) => !alreadyMatchedIds.has(c.id))
-    .map((c) => ({ ...c, label: 'Company', normalized: normalizeName(c.name) }))
+  // Filter out already-matched entities, normalize names, and require minimum length
+  const filterAndNormalize = (
+    records: { id: string; name: string }[],
+    label: string,
+  ): NameEntity[] =>
+    records
+      .filter((r) => !alreadyMatchedIds.has(r.id))
+      .map((r) => ({ ...r, label, normalized: normalizeName(r.name) }))
+      .filter((r) => r.normalized.length >= MIN_NAME_LENGTH)
 
-  const appointments: NameEntity[] = appointmentRes.records
-    .filter((a) => !alreadyMatchedIds.has(a.id))
-    .map((a) => ({ ...a, label: 'GovernmentAppointment', normalized: normalizeName(a.name) }))
+  const contractors = filterAndNormalize(contractorRes.records, 'Contractor')
+  const companies = filterAndNormalize(companyRes.records, 'Company')
+  const appointments = filterAndNormalize(appointmentRes.records, 'GovernmentAppointment')
+  const officers = filterAndNormalize(officerRes.records, 'CompanyOfficer')
 
-  const officers: NameEntity[] = officerRes.records
-    .filter((o) => !alreadyMatchedIds.has(o.id))
-    .map((o) => ({ ...o, label: 'CompanyOfficer', normalized: normalizeName(o.name) }))
+  // Early exit if entity set is too large for in-memory matching
+  const maxPairwise = Math.max(
+    contractors.length * companies.length,
+    appointments.length * officers.length,
+    contractors.length * officers.length,
+  )
+  if (maxPairwise > 5_000_000_000) {
+    console.log(`  [name-match] WARNING: Pairwise comparison space too large (${maxPairwise.toExponential(1)}). Skipping fuzzy name matching.`)
+    console.log('  [name-match] Consider using Neo4j fulltext search for fuzzy matching at this scale.')
+    return []
+  }
+
+  console.log(`  [name-match] After filtering: contractors=${contractors.length}, companies=${companies.length}, appointments=${appointments.length}, officers=${officers.length}`)
 
   const matches: CrossRefMatch[] = []
 
   // Match Contractors to Companies by name
+  console.log('  [name-match] Matching contractors <-> companies...')
   matchNamePair(contractors, companies, matches)
 
   // Match GovernmentAppointments to CompanyOfficers by name
+  console.log('  [name-match] Matching appointments <-> officers...')
   matchNamePair(appointments, officers, matches)
 
   // Match Contractors to CompanyOfficers by name (person-based contractors)
+  console.log('  [name-match] Matching contractors <-> officers...')
   matchNamePair(contractors, officers, matches)
+
+  console.log(`  [name-match] Done. Found ${matches.length} name matches.`)
 
   return matches
 }
@@ -270,8 +303,14 @@ function matchNamePair(
   }
 
   const matchedPairs = new Set<string>()
+  let processed = 0
+  const totalSources = sources.length
 
   for (const source of sources) {
+    processed++
+    if (processed % 10_000 === 0) {
+      console.log(`    [name-match] Progress: ${processed}/${totalSources} sources processed, ${matchedPairs.size} matches so far`)
+    }
     if (!source.normalized) continue
 
     // Exact normalized match
