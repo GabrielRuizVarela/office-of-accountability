@@ -458,7 +458,7 @@ const chapters: readonly Chapter[] = [
       { id: 32, text: 'Sturzenegger salto patrimonial $970M — DDJJ comparativas 2016-2024' },
       { id: 33, text: 'Rodriguez Saa inconsistencia AFIP — declaraciones juradas comparativas' },
       { id: 34, text: 'Romero patrimonio $4.361M y publicidad oficial Salta — Cuarto Poder Salta', url: 'https://cuartopodersalta.com.ar/una-buena-pero-para-la-casta-romero-es-el-senador-mas-rico-del-pais/' },
-      { id: 35, text: 'Falsos positivos descartados (Martinez, Lopez) — MiroFish audit log' },
+      { id: 35, text: 'Falsos positivos descartados (Martinez, Lopez) — auditoria de calidad de datos' },
     ],
   },
   {
@@ -473,14 +473,14 @@ const chapters: readonly Chapter[] = [
         'La infraestructura de datos subyacente: Como Voto aporta 2.258 politicos y 920.000 votos. Las filtraciones del ICIJ, 4.349 oficiales argentinos y 2.422 entidades. La CNE registra 1.714 donaciones. El Boletin Oficial, 6.044 nombramientos y 22.280 contratos. La IGJ, 951.863 oficiales y 398.000 empresas. La CNV, 1.528.931 cargos en directorios. Las declaraciones juradas patrimoniales, 718.865 registros del periodo 2012-2024. En total, 1.839 vinculos legislativos cruzados.',
         'El capital rastreado offshore: $483.000 millones. Seis mecanismos de enriquecimiento documentados — sobreprecios en compras estatales, puerta giratoria regulatoria, triangulacion offshore, publicidad oficial dirigida, licitaciones dirigidas, y blanqueo fiscal selectivo — que en conjunto representan $80.000 millones perdidos en 13 anios.[36]',
         'Lo que los numeros no dicen: los totales patrimoniales no estan disponibles en todas las declaraciones juradas. Los vinculos offshore-juez aun no estan resueltos. La cadena donante-juez falta en los datos. La informacion del Boletin Oficial corresponde a diciembre 2019.',
-        'El motor de analisis MiroFish — basado en Qwen 3.5 corriendo localmente — proceso cada patron, confirmo las coincidencias y descarto los falsos positivos. Coincidencias de entidad: 1.840 SAME_ENTITY confirmadas + 10.393 MAYBE_SAME_AS pendientes de resolucion. Cada hallazgo fue verificado contra las fuentes primarias. El grafo no acusa. Revela patrones.',
+        'El motor de analisis — ejecutado localmente, sin transmision de datos externos — proceso cada patron, confirmo las coincidencias y descarto los falsos positivos. Coincidencias de entidad: 1.840 SAME_ENTITY confirmadas + 10.393 MAYBE_SAME_AS pendientes de resolucion. Cada hallazgo fue verificado contra las fuentes primarias. El grafo no acusa. Revela patrones.',
       ],
       en: [
         'The direct investigation graph contains 294 nodes and 2,391 edges. Of those nodes: 126 persons, 107 organizations, 56 events. The engine processed 41 research files, generated 87 factchecks, identified 76 actors, traced 71 timeline events, and documented 32 money flows. Every number has a source. Every source was verified.',
         'The underlying data infrastructure: Como Voto provides 2,258 politicians and 920,000 votes. ICIJ leaks, 4,349 Argentine officers and 2,422 entities. The CNE records 1,714 donations. The Boletin Oficial, 6,044 appointments and 22,280 contracts. The IGJ, 951,863 officers and 398,000 companies. The CNV, 1,528,931 board positions. Asset declarations, 718,865 records from 2012-2024. In total, 1,839 cross-referenced legislative links.',
         'Offshore capital tracked: $483 billion. Six documented enrichment mechanisms — state procurement markups, regulatory revolving door, offshore triangulation, directed official advertising, rigged bidding, and selective tax laundering — which together represent $80 billion lost over 13 years.[36]',
         'What the numbers do not say: asset totals are empty for most declarations. Offshore-judge links are not yet resolved. The donor-judge chain is missing from the data. The Boletin Oficial is a snapshot from December 2019.',
-        'The MiroFish analysis engine — based on Qwen 3.5 running locally — processed every pattern, confirmed matches and discarded false positives. Entity matches: 1,840 confirmed SAME_ENTITY + 10,393 MAYBE_SAME_AS pending resolution. Every finding was verified against primary sources. The graph does not accuse. It reveals patterns.',
+        'The analysis engine — running locally, no external data transmission — processed every pattern, confirmed matches and discarded false positives. Entity matches: 1,840 confirmed SAME_ENTITY + 10,393 MAYBE_SAME_AS pending resolution. Every finding was verified against primary sources. The graph does not accuse. It reveals patterns.',
       ],
     },
     pullQuote: {
@@ -489,7 +489,7 @@ const chapters: readonly Chapter[] = [
     },
     citations: [
       { id: 36, text: 'Infraestructura Neo4j y estadisticas del grafo — Office of Accountability' },
-      { id: 37, text: 'MiroFish/Qwen 3.5 — motor de analisis local' },
+      { id: 37, text: 'Motor de analisis de patrones — procesamiento local' },
     ],
   },
   {
@@ -872,8 +872,8 @@ export default function ResumenPage() {
             </h3>
             <div className="mt-3 space-y-3 text-sm text-zinc-300">
               <p>{lang === 'es'
-                ? 'Esta investigacion fue construida mediante inteligencia artificial asistida con verificacion humana. Mas de 100 agentes autonomos de investigacion fueron desplegados en paralelo para buscar informacion en la web, cruzar datos entre bases publicas, consultar la base de datos de grafo Neo4j, y analizar patrones con el modelo de lenguaje Qwen 3.5 (ejecutado localmente en GPU, sin envio de datos a servicios externos).'
-                : 'This investigation was built through AI-assisted intelligence with human verification. Over 100 autonomous investigation agents were deployed in parallel to search the web, cross-reference public databases, query the Neo4j graph database, and analyze patterns with the Qwen 3.5 language model (running locally on GPU, no data sent to external services).'}</p>
+                ? 'Esta investigacion fue construida mediante inteligencia artificial asistida con verificacion humana. Mas de 100 agentes autonomos de investigacion fueron desplegados en paralelo para buscar informacion en la web, cruzar datos entre bases publicas, consultar la base de datos de grafo, y detectar patrones estructurales. Todo el procesamiento se realiza localmente, sin envio de datos a servicios externos.'
+                : 'This investigation was built through AI-assisted intelligence with human verification. Over 100 autonomous investigation agents were deployed in parallel to search the web, cross-reference public databases, query the graph database, and detect structural patterns. All processing runs locally, no data sent to external services.'}</p>
               <p>{lang === 'es'
                 ? 'El proceso: 14 pipelines ETL (Extract-Transform-Load) ingestan datos publicos — votos legislativos, filtraciones offshore, donaciones electorales, nombramientos del Boletin Oficial, registros corporativos de la IGJ (951.000 directivos), declaraciones juradas, contratos publicos de Compr.ar, datos del BCRA — y los cargan en una base de datos de grafo Neo4j. Un motor de cruce automatico conecta entidades por CUIT (confianza 1.0), DNI/CUIL (0.95) y coincidencia de nombre (0.6-0.8). El grafo resultante — 294 nodos, 2.391 aristas — se consulta con Cypher para descubrir caminos, puentes, triangulos y anomalias que ningun dataset individual puede revelar.'
                 : 'The process: 14 ETL (Extract-Transform-Load) pipelines ingest public data — legislative votes, offshore leaks, electoral donations, Boletin Oficial appointments, IGJ corporate registries (951,000 officers), asset declarations, Compr.ar procurement contracts, BCRA data — and load them into a Neo4j graph database. An automated cross-reference engine connects entities by CUIT (confidence 1.0), DNI/CUIL (0.95), and name matching (0.6-0.8). The resulting graph — 294 nodes, 2,391 edges — is queried with Cypher to discover paths, bridges, triangles, and anomalies that no single dataset can reveal.'}</p>
@@ -881,8 +881,8 @@ export default function ResumenPage() {
                 ? 'Ejemplo de consulta: "Encontrar todos los caminos entre el Donante X y el Contrato Y en 5 saltos." Esa consulta cruza 3-4 fuentes de datos y revela conexiones literalmente invisibles sin el grafo. La resolucion de entidades conecto 247 donantes de campana con directivos de empresas contratistas del Estado, vinculando $207 millones en donaciones con $63.000 millones en contratos.'
                 : 'Example query: "Find all paths between Donor X and Contract Y within 5 hops." That query crosses 3-4 data sources and reveals connections literally invisible without the graph. Entity resolution connected 247 campaign donors to state contractor company officers, linking $207 million in donations to $63 billion in contracts.'}</p>
               <p>{lang === 'es'
-                ? 'Cada hallazgo del modelo de IA (MiroFish/Qwen 3.5) fue verificado independientemente contra fuentes publicas antes de ser incluido. El modelo obtuvo 7.5/10 en precision — util para detectar patrones, pero cada afirmacion requirio verificacion humana. Se identificaron y eliminaron 2 errores del modelo y 2 falsos positivos de cruce de datos. La IA no acusa: revela patrones. Las conclusiones son del lector.'
-                : 'Every finding from the AI model (MiroFish/Qwen 3.5) was independently verified against public sources before inclusion. The model scored 7.5/10 in accuracy — useful for pattern detection, but every claim required human verification. 2 model errors and 2 data cross-reference false positives were identified and removed. The AI does not accuse: it reveals patterns. The conclusions are the reader\'s.'}</p>
+                ? 'Cada hallazgo fue verificado independientemente contra fuentes publicas antes de ser incluido. La tecnologia detecta patrones; la verificacion humana confirma o descarta. La IA no acusa: revela patrones. Las conclusiones son del lector.'
+                : 'Every finding was independently verified against public sources before inclusion. The technology detects patterns; human verification confirms or discards. The AI does not accuse: it reveals patterns. The conclusions are the reader\'s.'}</p>
             </div>
           </div>
 
