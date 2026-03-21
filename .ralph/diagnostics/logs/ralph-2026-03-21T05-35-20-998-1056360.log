@@ -1,0 +1,7 @@
+[2m2026-03-21T08:35:21.000677Z[0m [32m INFO[0m [2mralph[0m[2m:[0m Loop lock held by PID 684063 (Continue to M10), spawning parallel loop in worktree
+[2m2026-03-21T08:35:21.053516Z[0m [32m INFO[0m [2mralph[0m[2m:[0m Created worktree at /home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail/.worktrees/tidy-hawk on branch ralph/tidy-hawk
+[2m2026-03-21T08:35:21.055309Z[0m [33m WARN[0m [2mralph::loop_runner[0m[2m:[0m Interactive mode requested but stdout is not a TTY, falling back to autonomous
+[2m2026-03-21T08:35:21.055737Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Memory injection check: enabled=true, inject=Auto, workspace_root="/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail/.worktrees/tidy-hawk"
+[2m2026-03-21T08:35:21.055749Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Looking for memories at: "/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail/.worktrees/tidy-hawk/.ralph/agent/memories.md" (exists: true)
+[2m2026-03-21T08:35:21.056388Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Successfully loaded 5 memories from store
+[2m2026-03-21T08:35:21.056399Z[0m [32m INFO[0m [2mralph_core::event_loop[0m[2m:[0m Injecting 5 memories (1667 chars) into prompt
