@@ -13,13 +13,13 @@ export async function GET(
   _request: Request,
   { params }: { params: Promise<{ slug: string; actorSlug: string }> },
 ): Promise<Response> {
-  const { actorSlug } = await params
+  const { slug, actorSlug } = await params
 
   if (!actorSlug || actorSlug.length > 200) {
     return new Response('Not found', { status: 404 })
   }
 
-  const data = await getPersonBySlug(actorSlug)
+  const data = await getPersonBySlug(slug, actorSlug)
 
   if (!data) {
     return new Response('Actor not found', { status: 404 })
