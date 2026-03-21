@@ -115,7 +115,8 @@ async function main(): Promise<void> {
 
   // ── RELATIONSHIPS ────────────────────────────────────────────────────
 
-  const rels: Array<{ from: string; to: string; type: string; desc: string }> = [
+  // Person-to-Person relationships
+  const ppRels: Array<{ from: string; to: string; type: string; desc: string }> = [
     // Macri family ties
     { from: 'MACRI FRANCISCO', to: 'MACRI GIANFRANCO', type: 'FAMILY_OF', desc: 'Father and son' },
     { from: 'MACRI FRANCISCO', to: 'MACRI MARIANO', type: 'FAMILY_OF', desc: 'Father and son' },
@@ -126,46 +127,53 @@ async function main(): Promise<void> {
     { from: 'MACRI MAURICIO', to: 'MACRI MARIANO', type: 'FAMILY_OF', desc: 'Brothers' },
     { from: 'MACRI MAURICIO', to: 'MACRI JORGE', type: 'FAMILY_OF', desc: 'Cousins' },
 
-    // Macri → SOCMA controls
-    { from: 'MACRI FRANCISCO', to: 'SOCMA S.A.', type: 'CONTROLS', desc: 'Founder and patriarch of SOCMA' },
-    { from: 'MACRI GIANFRANCO', to: 'SOCMA S.A.', type: 'OFFICER_OF', desc: 'Operational head' },
-    { from: 'MACRI GIANFRANCO', to: 'BF CORPORATION S.A.', type: 'CONTROLS', desc: 'Panama offshore vehicle' },
-
-    // Magnetto-Clarín ties
-    { from: 'HERRERA DE NOBLE ERNESTINA', to: 'GRUPO CLARIN S.A.', type: 'CONTROLS', desc: 'Founder Grupo Clarín' },
-    { from: 'MAGNETTO HECTOR', to: 'GRUPO CLARIN S.A.', type: 'OFFICER_OF', desc: 'CEO Grupo Clarín, 35 companies' },
-    { from: 'NOBLE HERRERA MARCELA', to: 'GRUPO CLARIN S.A.', type: 'OFFICER_OF', desc: '24.85% shareholder' },
-    { from: 'NOBLE HERRERA FELIPE', to: 'GRUPO CLARIN S.A.', type: 'OFFICER_OF', desc: '24.85% shareholder' },
+    // Magnetto-Clarín family
     { from: 'HERRERA DE NOBLE ERNESTINA', to: 'NOBLE HERRERA MARCELA', type: 'FAMILY_OF', desc: 'Mother and adopted daughter' },
     { from: 'HERRERA DE NOBLE ERNESTINA', to: 'NOBLE HERRERA FELIPE', type: 'FAMILY_OF', desc: 'Mother and adopted son' },
     { from: 'NOBLE HERRERA MARCELA', to: 'NOBLE HERRERA FELIPE', type: 'FAMILY_OF', desc: 'Siblings (adopted)' },
 
-    // Magnetto ↔ De Narváez link
-    { from: 'MAGNETTO HECTOR', to: 'FUNDACION CAROLINA', type: 'OFFICER_OF', desc: 'Shared board with De Narváez' },
-    { from: 'MAGNETTO HECTOR', to: 'EL CRONISTA COMERCIAL S.A.', type: 'ASSOCIATED_WITH', desc: 'Media cross-ownership link to De Narváez' },
-
-    // Mindlin-Pampa chain
-    { from: 'MINDLIN MARCOS', to: 'PAMPA ENERGIA S.A.', type: 'CONTROLS', desc: 'Controls Pampa Energía, 52 companies' },
-    { from: 'MINDLIN NICOLAS', to: 'PAMPA ENERGIA S.A.', type: 'OFFICER_OF', desc: 'Family member in group, 17 companies' },
+    // Mindlin family
     { from: 'MINDLIN MARCOS', to: 'MINDLIN NICOLAS', type: 'FAMILY_OF', desc: 'Father and son' },
-    { from: 'PAMPA ENERGIA S.A.', to: 'CITELEC S.A.', type: 'CONTROLS', desc: 'Electricity distribution subsidiary' },
-    { from: 'PAMPA ENERGIA S.A.', to: 'EDELAP S.A.', type: 'CONTROLS', desc: 'Electricity distribution La Plata subsidiary' },
 
     // Werthein family
     { from: 'WERTHEIN DARIO', to: 'WERTHEIN ADRIAN', type: 'FAMILY_OF', desc: 'Brothers' },
     { from: 'WERTHEIN DARIO', to: 'WERTHEIN DANIEL', type: 'FAMILY_OF', desc: 'Brothers' },
     { from: 'WERTHEIN DARIO', to: 'WERTHEIN LEO', type: 'FAMILY_OF', desc: 'Brothers/cousins' },
     { from: 'WERTHEIN ADRIAN', to: 'WERTHEIN DANIEL', type: 'FAMILY_OF', desc: 'Brothers' },
+
+    // Caputo ↔ Macri
+    { from: 'CAPUTO NICOLAS', to: 'MACRI MAURICIO', type: 'ASSOCIATED_WITH', desc: 'Lifelong business partners, intimate friends' },
+    { from: 'CAPUTO LUIS ANDRES', to: 'MACRI MAURICIO', type: 'ASSOCIATED_WITH', desc: 'Business partner, Economy Minister link' },
+  ]
+
+  // Person-to-Organization relationships
+  const poRels: Array<{ from: string; to: string; type: string; desc: string }> = [
+    // Macri → SOCMA/BF
+    { from: 'MACRI FRANCISCO', to: 'SOCMA S.A.', type: 'CONTROLS', desc: 'Founder and patriarch of SOCMA' },
+    { from: 'MACRI GIANFRANCO', to: 'SOCMA S.A.', type: 'OFFICER_OF', desc: 'Operational head' },
+    { from: 'MACRI GIANFRANCO', to: 'BF CORPORATION S.A.', type: 'CONTROLS', desc: 'Panama offshore vehicle' },
+
+    // Magnetto-Clarín → orgs
+    { from: 'HERRERA DE NOBLE ERNESTINA', to: 'GRUPO CLARIN S.A.', type: 'CONTROLS', desc: 'Founder Grupo Clarín' },
+    { from: 'MAGNETTO HECTOR', to: 'GRUPO CLARIN S.A.', type: 'OFFICER_OF', desc: 'CEO Grupo Clarín, 35 companies' },
+    { from: 'NOBLE HERRERA MARCELA', to: 'GRUPO CLARIN S.A.', type: 'OFFICER_OF', desc: '24.85% shareholder' },
+    { from: 'NOBLE HERRERA FELIPE', to: 'GRUPO CLARIN S.A.', type: 'OFFICER_OF', desc: '24.85% shareholder' },
+    { from: 'MAGNETTO HECTOR', to: 'FUNDACION CAROLINA', type: 'OFFICER_OF', desc: 'Shared board with De Narváez' },
+    { from: 'MAGNETTO HECTOR', to: 'EL CRONISTA COMERCIAL S.A.', type: 'ASSOCIATED_WITH', desc: 'Media cross-ownership link to De Narváez' },
+
+    // Mindlin → Pampa
+    { from: 'MINDLIN MARCOS', to: 'PAMPA ENERGIA S.A.', type: 'CONTROLS', desc: 'Controls Pampa Energía, 52 companies' },
+    { from: 'MINDLIN NICOLAS', to: 'PAMPA ENERGIA S.A.', type: 'OFFICER_OF', desc: 'Family member in group, 17 companies' },
+
+    // Werthein → orgs
     { from: 'WERTHEIN DARIO', to: 'CAJA DE SEGUROS S.A.', type: 'CONTROLS', desc: 'Insurance empire control' },
     { from: 'WERTHEIN ADRIAN', to: 'CAJA DE SEGUROS S.A.', type: 'OFFICER_OF', desc: 'Insurance empire, 29 companies' },
     { from: 'WERTHEIN DANIEL', to: 'CAJA DE SEGUROS S.A.', type: 'OFFICER_OF', desc: 'Insurance empire, 27 companies' },
     { from: 'WERTHEIN LEO', to: 'SOFORA TELECOMUNICACIONES S.A.', type: 'OFFICER_OF', desc: 'Telecom controlling shareholder, 10 companies' },
 
-    // Caputo ties
+    // Caputo → orgs
     { from: 'CAPUTO NICOLAS', to: 'FUNDACION PENSAR', type: 'CONTROLS', desc: 'Founder PRO think tank' },
     { from: 'CAPUTO LUIS ANDRES', to: 'ANKER LATINOAMERICA S.A.', type: 'CONTROLS', desc: 'Financial vehicle pre-ministry' },
-    { from: 'CAPUTO NICOLAS', to: 'MACRI MAURICIO', type: 'ASSOCIATED_WITH', desc: 'Lifelong business partners, intimate friends' },
-    { from: 'CAPUTO LUIS ANDRES', to: 'MACRI MAURICIO', type: 'ASSOCIATED_WITH', desc: 'Business partner, Economy Minister link' },
 
     // Cross-family: CONSEJO EMPRESARIO ARGENTINO
     { from: 'MACRI FRANCISCO', to: 'CONSEJO EMPRESARIO ARGENTINO', type: 'MEMBER_OF', desc: 'Business lobby member' },
@@ -175,11 +183,49 @@ async function main(): Promise<void> {
     { from: 'CAPUTO NICOLAS', to: 'CONSEJO EMPRESARIO ARGENTINO', type: 'MEMBER_OF', desc: 'Business lobby member' },
   ]
 
-  console.log('\n── Creating relationships ──')
-  for (const r of rels) {
+  // Organization-to-Organization relationships
+  const ooRels: Array<{ from: string; to: string; type: string; desc: string }> = [
+    { from: 'PAMPA ENERGIA S.A.', to: 'CITELEC S.A.', type: 'CONTROLS', desc: 'Electricity distribution subsidiary' },
+    { from: 'PAMPA ENERGIA S.A.', to: 'EDELAP S.A.', type: 'CONTROLS', desc: 'Electricity distribution La Plata subsidiary' },
+  ]
+
+  console.log('\n── Creating Person↔Person relationships ──')
+  for (const r of ppRels) {
     try {
       await executeWrite(
-        `MATCH (a {name: $from}) MATCH (b {name: $to})
+        `MATCH (a:Person {name: $from}) MATCH (b:Person {name: $to})
+         MERGE (a)-[rel:RELATED_TO]->(b)
+         SET rel.relationship_type = $type, rel.description = $desc,
+             rel.source = $source, rel.created_at = coalesce(rel.created_at, $now)`,
+        { from: r.from, to: r.to, type: r.type, desc: r.desc, source: PROV.submitted_by, now },
+      )
+      console.log(`  Rel: ${r.from} -[${r.type}]-> ${r.to}`)
+    } catch (e) {
+      console.log(`  x Rel failed: ${r.from} -> ${r.to}: ${e instanceof Error ? e.message : e}`)
+    }
+  }
+
+  console.log('\n── Creating Person→Organization relationships ──')
+  for (const r of poRels) {
+    try {
+      await executeWrite(
+        `MATCH (a:Person {name: $from}) MATCH (b:Organization {name: $to})
+         MERGE (a)-[rel:RELATED_TO]->(b)
+         SET rel.relationship_type = $type, rel.description = $desc,
+             rel.source = $source, rel.created_at = coalesce(rel.created_at, $now)`,
+        { from: r.from, to: r.to, type: r.type, desc: r.desc, source: PROV.submitted_by, now },
+      )
+      console.log(`  Rel: ${r.from} -[${r.type}]-> ${r.to}`)
+    } catch (e) {
+      console.log(`  x Rel failed: ${r.from} -> ${r.to}: ${e instanceof Error ? e.message : e}`)
+    }
+  }
+
+  console.log('\n── Creating Organization→Organization relationships ──')
+  for (const r of ooRels) {
+    try {
+      await executeWrite(
+        `MATCH (a:Organization {name: $from}) MATCH (b:Organization {name: $to})
          MERGE (a)-[rel:RELATED_TO]->(b)
          SET rel.relationship_type = $type, rel.description = $desc,
              rel.source = $source, rel.created_at = coalesce(rel.created_at, $now)`,
