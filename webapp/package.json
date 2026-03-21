@@ -21,7 +21,8 @@
     "ingest:wave4": "npx tsx scripts/ingest-wave-4.ts",
     "ingest:review": "npx tsx scripts/review-wave.ts",
     "ingest:promote": "npx tsx scripts/promote-nodes.ts",
-    "migrate:caso-libra": "npx tsx scripts/migrate-caso-libra-labels.ts"
+    "migrate:caso-libra": "npx tsx scripts/migrate-caso-libra-labels.ts",
+    "seed:caso-finpol": "npx tsx scripts/seed-caso-finanzas-politicas.ts"
   },
   "dependencies": {
     "@auth/core": "^0.41.1",
