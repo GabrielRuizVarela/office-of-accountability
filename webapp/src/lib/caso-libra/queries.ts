@@ -1,14 +1,16 @@
 /**
  * Caso Libra Cypher queries — graph, timeline, actor, and document queries.
  *
- * All queries use parameterized Cypher via readQuery from lib/neo4j/client.
+ * Generic queries delegate to the shared query builder.
+ * Domain-specific queries use parameterized Cypher with caso_slug namespace.
  * Never interpolate user input into the cypher string.
  */
 
 import { type Record as Neo4jRecord, type Node, type Relationship } from 'neo4j-driver-lite'
 
 import { getDriver } from '../neo4j/client'
-import type { GraphData } from '../neo4j/types'
+import { getQueryBuilder } from '../investigations/query-builder'
+import type { GraphData } from '../investigations/types'
 import { transformNode, transformRelationship } from '../graph/transform'
 
 import type { TimelineItem, CasoLibraStats, EventType } from './types'
@@ -17,6 +19,7 @@ import type { TimelineItem, CasoLibraStats, EventType } from './types'
 // Constants
 // ---------------------------------------------------------------------------
 
+const CASO_SLUG = 'caso-libra'
 const QUERY_TIMEOUT_MS = 15_000
 const TX_CONFIG = { timeout: QUERY_TIMEOUT_MS }
 
@@ -37,72 +40,15 @@ function asNumber(value: unknown): number {
 }
 
 // ---------------------------------------------------------------------------
-// Full investigation graph
+// Full investigation graph (delegated to query builder)
 // ---------------------------------------------------------------------------
 
 /**
  * Fetch the full knowledge graph for the Caso Libra investigation.
- * Returns all nodes (Person, Event, Document, WalletAddress, Organization, Token)
- * and all relationships between them.
+ * Returns all nodes and relationships namespaced by caso_slug.
  */
 export async function getInvestigationGraph(): Promise<GraphData> {
-  const session = getDriver().session()
-
-  try {
-    const result = await session.run(
-      `MATCH (n)
-       WHERE n:CasoLibraPerson OR n:CasoLibraEvent OR n:CasoLibraDocument
-          OR n:CasoLibraWallet OR n:CasoLibraOrganization OR n:CasoLibraToken
-       WITH collect(n) AS nodes
-       UNWIND nodes AS a
-       OPTIONAL MATCH (a)-[r]-(b)
-       WHERE b IN nodes
-       RETURN collect(DISTINCT a) AS allNodes,
-              collect(DISTINCT r) AS allRels`,
-      {},
-      TX_CONFIG,
-    )
-
-    if (result.records.length === 0) {
-      return { nodes: [], links: [] }
-    }
-
-    const record = result.records[0]
-    const rawNodes = record.get('allNodes') as Node[]
-    const rawRels = (record.get('allRels') as (Relationship | null)[]).filter(
-      (r): r is Relationship => r !== null,
-    )
-
-    const nodeMap = new Map<string, ReturnType<typeof transformNode>>()
-    const elementIdToAppId = new Map<string, string>()
-
-    for (const node of rawNodes) {
-      const graphNode = transformNode(node)
-      nodeMap.set(graphNode.id, graphNode)
-      elementIdToAppId.set(node.elementId, graphNode.id)
-    }
-
-    const seenRelIds = new Set<string>()
-    const links = rawRels
-      .filter((rel) => {
-        if (seenRelIds.has(rel.elementId)) return false
-        seenRelIds.add(rel.elementId)
-        return true
-      })
-      .map((rel) => {
-        const sourceId = elementIdToAppId.get(rel.startNodeElementId) ?? ''
-        const targetId = elementIdToAppId.get(rel.endNodeElementId) ?? ''
-        return transformRelationship(rel, sourceId, targetId)
-      })
-      .filter((link) => link.source && link.target)
-
-    return {
-      nodes: [...nodeMap.values()],
-      links,
-    }
-  } finally {
-    await session.close()
-  }
+  return getQueryBuilder().getGraph(CASO_SLUG)
 }
 
 // ---------------------------------------------------------------------------
@@ -112,15 +58,19 @@ export async function getInvestigationGraph(): Promise<GraphData> {
 /**
  * Fetch wallet-only subgraph: wallets and SENT relationships with tx data.
  */
-export async function getWalletFlows(): Promise<GraphData> {
+export async function getWalletFlows(): Promise<{
+  readonly nodes: readonly ReturnType<typeof transformNode>[]
+  readonly links: readonly ReturnType<typeof transformRelationship>[]
+}> {
   const session = getDriver().session()
 
   try {
     const result = await session.run(
-      `MATCH (w1:CasoLibraWallet)-[r:SENT]->(w2:CasoLibraWallet)
+      `MATCH (w1:Wallet)-[r:SENT]->(w2:Wallet)
+       WHERE w1.caso_slug = $casoSlug AND w2.caso_slug = $casoSlug
        RETURN collect(DISTINCT w1) + collect(DISTINCT w2) AS wallets,
               collect(r) AS txs`,
-      {},
+      { casoSlug: CASO_SLUG },
       TX_CONFIG,
     )
 
@@ -159,7 +109,7 @@ export async function getWalletFlows(): Promise<GraphData> {
 }
 
 // ---------------------------------------------------------------------------
-// Timeline
+// Timeline (raw Cypher — CasoLibra TimelineItem has event_type, not category)
 // ---------------------------------------------------------------------------
 
 /**
@@ -170,12 +120,14 @@ export async function getTimeline(): Promise<readonly TimelineItem[]> {
 
   try {
     const result = await session.run(
-      `MATCH (e:CasoLibraEvent)
-       OPTIONAL MATCH (p:CasoLibraPerson)-[:PARTICIPATED_IN]->(e)
+      `MATCH (e:Event)
+       WHERE e.caso_slug = $casoSlug
+       OPTIONAL MATCH (p:Person)-[:PARTICIPATED_IN]->(e)
+       WHERE p.caso_slug = $casoSlug
        WITH e, collect({ id: p.id, name: p.name }) AS actors
        RETURN e, actors
        ORDER BY e.date ASC`,
-      {},
+      { casoSlug: CASO_SLUG },
       TX_CONFIG,
     )
 
@@ -210,7 +162,10 @@ export async function getTimeline(): Promise<readonly TimelineItem[]> {
  */
 export async function getPersonBySlug(slug: string): Promise<{
   readonly person: Record<string, unknown>
-  readonly graph: GraphData
+  readonly graph: {
+    readonly nodes: readonly ReturnType<typeof transformNode>[]
+    readonly links: readonly ReturnType<typeof transformRelationship>[]
+  }
   readonly events: readonly TimelineItem[]
   readonly documents: readonly {
     readonly id: string
@@ -223,9 +178,9 @@ export async function getPersonBySlug(slug: string): Promise<{
   try {
     // Fetch the person node
     const personResult = await session.run(
-      `MATCH (p:CasoLibraPerson { slug: $slug })
+      `MATCH (p:Person { slug: $slug, caso_slug: $casoSlug })
        RETURN p`,
-      { slug },
+      { slug, casoSlug: CASO_SLUG },
       TX_CONFIG,
     )
 
@@ -236,10 +191,11 @@ export async function getPersonBySlug(slug: string): Promise<{
 
     // Fetch connections
     const connectionsResult = await session.run(
-      `MATCH (p:CasoLibraPerson { slug: $slug })-[r]-(neighbor)
+      `MATCH (p:Person { slug: $slug, caso_slug: $casoSlug })-[r]-(neighbor)
+       WHERE neighbor.caso_slug = $casoSlug
        RETURN neighbor, r
        LIMIT 100`,
-      { slug },
+      { slug, casoSlug: CASO_SLUG },
       TX_CONFIG,
     )
 
@@ -264,10 +220,11 @@ export async function getPersonBySlug(slug: string): Promise<{
 
     // Fetch events
     const eventsResult = await session.run(
-      `MATCH (p:CasoLibraPerson { slug: $slug })-[:PARTICIPATED_IN]->(e:CasoLibraEvent)
+      `MATCH (p:Person { slug: $slug, caso_slug: $casoSlug })-[:PARTICIPATED_IN]->(e:Event)
+       WHERE e.caso_slug = $casoSlug
        RETURN e
        ORDER BY e.date ASC`,
-      { slug },
+      { slug, casoSlug: CASO_SLUG },
       TX_CONFIG,
     )
 
@@ -287,9 +244,10 @@ export async function getPersonBySlug(slug: string): Promise<{
 
     // Fetch related documents
     const docsResult = await session.run(
-      `MATCH (d:CasoLibraDocument)-[:MENTIONS]->(p:CasoLibraPerson { slug: $slug })
+      `MATCH (d:Document)-[:MENTIONS]->(p:Person { slug: $slug, caso_slug: $casoSlug })
+       WHERE d.caso_slug = $casoSlug
        RETURN d.id AS id, d.title AS title, d.slug AS slug`,
-      { slug },
+      { slug, casoSlug: CASO_SLUG },
       TX_CONFIG,
     )
 
@@ -318,10 +276,11 @@ export async function getActors(): Promise<readonly Record<string, unknown>[]> {
 
   try {
     const result = await session.run(
-      `MATCH (p:CasoLibraPerson)
+      `MATCH (p:Person)
+       WHERE p.caso_slug = $casoSlug
        RETURN p
        ORDER BY p.name ASC`,
-      {},
+      { casoSlug: CASO_SLUG },
       TX_CONFIG,
     )
 
@@ -350,10 +309,11 @@ export async function getDocuments(): Promise<readonly Record<string, unknown>[]
 
   try {
     const result = await session.run(
-      `MATCH (d:CasoLibraDocument)
+      `MATCH (d:Document)
+       WHERE d.caso_slug = $casoSlug
        RETURN d
        ORDER BY d.date_published DESC`,
-      {},
+      { casoSlug: CASO_SLUG },
       TX_CONFIG,
     )
 
@@ -385,10 +345,11 @@ export async function getDocumentBySlug(slug: string): Promise<{
 
   try {
     const result = await session.run(
-      `MATCH (d:CasoLibraDocument { slug: $slug })
+      `MATCH (d:Document { slug: $slug, caso_slug: $casoSlug })
        OPTIONAL MATCH (d)-[:MENTIONS]->(entity)
+       WHERE entity.caso_slug = $casoSlug
        RETURN d, collect({ id: entity.id, name: COALESCE(entity.name, entity.symbol, entity.address), type: labels(entity)[0] }) AS entities`,
-      { slug },
+      { slug, casoSlug: CASO_SLUG },
       TX_CONFIG,
     )
 
@@ -418,7 +379,7 @@ export async function getDocumentBySlug(slug: string): Promise<{
 }
 
 // ---------------------------------------------------------------------------
-// Stats
+// Stats (raw Cypher — CasoLibraStats shape incompatible with InvestigationStats)
 // ---------------------------------------------------------------------------
 
 /**
@@ -429,11 +390,17 @@ export async function getStats(): Promise<CasoLibraStats> {
 
   try {
     const result = await session.run(
-      `MATCH (p:CasoLibraPerson) WITH count(p) AS actorCount
-       MATCH (e:CasoLibraEvent) WITH actorCount, count(e) AS eventCount
-       MATCH (d:CasoLibraDocument) WITH actorCount, eventCount, count(d) AS documentCount
+      `MATCH (p:Person)
+       WHERE p.caso_slug = $casoSlug
+       WITH count(p) AS actorCount
+       MATCH (e:Event)
+       WHERE e.caso_slug = $casoSlug
+       WITH actorCount, count(e) AS eventCount
+       MATCH (d:Document)
+       WHERE d.caso_slug = $casoSlug
+       WITH actorCount, eventCount, count(d) AS documentCount
        RETURN actorCount, eventCount, documentCount`,
-      {},
+      { casoSlug: CASO_SLUG },
       TX_CONFIG,
     )
 
