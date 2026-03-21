@@ -62,8 +62,8 @@ const t = {
   },
   connectionsTitle: { en: 'Connections', es: 'Conexiones' },
   connectionsDesc: {
-    en: 'Interactive graph: 133 investigation nodes, 142 relationships. Filter by Revolving Door, Offshore, Money Trail, Power Families.',
-    es: 'Grafo interactivo: 133 nodos de investigacion, 142 relaciones. Filtre por Puerta Giratoria, Offshore, Rastro del Dinero, Familias del Poder.',
+    en: 'Interactive graph: 218 investigation nodes, 296 relationships. Filter by Revolving Door, Offshore, Money Trail, Power Families.',
+    es: 'Grafo interactivo: 218 nodos de investigacion, 296 relaciones. Filtre por Puerta Giratoria, Offshore, Rastro del Dinero, Familias del Poder.',
   },
   keyActorsTitle: { en: 'Key Actors', es: 'Actores Clave' },
   keyActorsDesc: {

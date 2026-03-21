@@ -619,6 +619,68 @@ export async function GET(): Promise<Response> {
       }
     }
 
+    // Phase 9: Add investigation-specific nodes (Person, Organization, Event with caso_slug)
+    try {
+      const INVESTIGATION_NODES_CYPHER = `
+        MATCH (n)-[r]-(m)
+        WHERE n.caso_slug = "caso-finanzas-politicas" AND m.caso_slug = "caso-finanzas-politicas"
+        RETURN n, r, m
+        LIMIT 500
+      `
+      const investigationColors: Record<string, string> = {
+        Person: '#f97316',      // orange
+        Organization: '#10b981', // emerald
+        Event: '#8b5cf6',       // purple
+      }
+      const invResult = await readQuery(INVESTIGATION_NODES_CYPHER, {}, (record: Neo4jRecord) => {
+        const n = record.get('n')
+        const r = record.get('r')
+        const m = record.get('m')
+        return { n, r, m }
+      })
+      for (const row of invResult.records) {
+        const nNode = row.n
+        const mNode = row.m
+        const rel = row.r
+
+        const nId = nNode.elementId ?? String(nNode.identity)
+        const mId = mNode.elementId ?? String(mNode.identity)
+        const nType = nNode.labels[0] ?? 'Unknown'
+        const mType = mNode.labels[0] ?? 'Unknown'
+
+        if (!nodeMap.has(nId)) {
+          nodeMap.set(nId, {
+            id: nId,
+            name: nNode.properties.name ?? nNode.properties.title ?? nNode.properties.id ?? '',
+            type: nType,
+            color: investigationColors[nType] ?? '#94a3b8',
+            datasets: 1,
+            val: 3,
+            labels: Array.from(nNode.labels),
+            properties: { ...nNode.properties },
+          })
+        }
+        if (!nodeMap.has(mId)) {
+          nodeMap.set(mId, {
+            id: mId,
+            name: mNode.properties.name ?? mNode.properties.title ?? mNode.properties.id ?? '',
+            type: mType,
+            color: investigationColors[mType] ?? '#94a3b8',
+            datasets: 1,
+            val: 3,
+            labels: Array.from(mNode.labels),
+            properties: { ...mNode.properties },
+          })
+        }
+        links.push({
+          source: nId,
+          target: mId,
+          type: rel.type,
+          properties: { ...rel.properties },
+        })
+      }
+    } catch { /* investigation query may timeout */ }
+
     // Post-processing: connect key clusters manually where DB relationships are missing
     // Macri → PENSAR ARGENTINA (he's the party leader but not in AFFILIATED_WITH)
     const macriId = politicianElementIds.get('macri-mauricio')
