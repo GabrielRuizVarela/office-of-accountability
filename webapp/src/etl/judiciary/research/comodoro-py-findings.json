@@ -1,0 +1,374 @@
+{
+  "meta": {
+    "title": "Comodoro Py Federal Court Complex - Judicial Accountability Research",
+    "description": "Deep research into Argentina's federal court nerve center at Comodoro Py (Tribunales Federales de Retiro), its judges, conflicts of interest, and systemic corruption patterns.",
+    "researched_date": "2026-03-21",
+    "total_findings": 28
+  },
+  "court_structure": {
+    "name": "Tribunales Federales de Retiro (Comodoro Py)",
+    "address": "Comodoro Py 2002, Buenos Aires",
+    "description_es": "Sede de los 12 Juzgados Federales de 1era instancia, la Camara Federal de Apelaciones, los Tribunales Orales Federales, Tribunales Orales en lo Penal Economico, defenso-rias publicas, fiscalias y la Camara Federal de Casacion Penal.",
+    "description_en": "Houses 12 federal courts of first instance, the Federal Court of Appeals, Federal Oral Courts, Economic Criminal Oral Courts, public defenders' offices, prosecutors' offices, and the Federal Court of Criminal Cassation.",
+    "key_courts_2025": {
+      "juzgado_3": { "judge": "Daniel Rafecas", "status": "titular" },
+      "juzgado_6": { "judge": "Daniel Rafecas (subrogante)", "status": "vacant, subrogated" },
+      "juzgado_9": { "judge": "Maria Eugenia Capuchetti (subrogante)", "status": "vacant, subrogated" },
+      "juzgado_11": { "judge": "Julian Ercolini (subrogante)", "status": "vacant, subrogated" },
+      "juzgado_12": { "judge": "Ariel Lijo (subrogante)", "status": "vacant, subrogated" }
+    },
+    "note": "As of 2026, over 300 judicial vacancies exist nationally. The government prioritizes filling Juzgados 6, 9, 11, and 12 at Comodoro Py."
+  },
+  "findings": [
+    {
+      "id": "LIJO-001",
+      "person": "Ariel Lijo",
+      "role": "Juez Federal Comodoro Py, Juzgado N.12 (subrogante)",
+      "category": "unexplained_wealth",
+      "evidence_es": "Lijo habita el quinto piso de un lujoso edificio en Avenida Alvear, Buenos Aires, valuado en aprox. US$2.000.000. La propiedad no figura en su declaracion jurada de bienes. Esta 'prestada' por un viejo amigo de la politica. Solo declaro una vivienda en el country Abril de Hudson.",
+      "evidence_en": "Lijo lives on the fifth floor of a luxury building on Avenida Alvear, Buenos Aires, valued at approx. US$2,000,000. The property does not appear in his sworn asset declaration. It is 'lent' by an old political friend. He only declared a home at the Abril country club in Hudson.",
+      "source_urls": [
+        "https://www.lanacion.com.ar/politica/el-patrimonio-de-ariel-lijo-usa-un-departamento-prestado-por-un-viejo-amigo-de-la-politica-valuado-nid09062024/",
+        "https://www.lanacion.com.ar/politica/ariel-lijo-un-hombre-fuerte-de-comodoro-py-que-enfrento-denuncias-por-su-patrimonio-y-el-manejo-de-nid20032024/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "LIJO-002",
+      "person": "Ariel Lijo",
+      "role": "Juez Federal Comodoro Py, Juzgado N.12",
+      "category": "undeclared_assets",
+      "evidence_es": "En 2017 fue denunciado por no declarar el haras 'La Generacion', tasado en US$2.000.000, puesto a nombre de su hermano Alfredo 'Freddy' Lijo. Tampoco declaro vehiculos, pero manejaba un Mercedes Benz E 350 con cedula azul de la compania de seguros de su hermano (Caledonia Seguros).",
+      "evidence_en": "In 2017 he was denounced for failing to declare the 'La Generacion' horse ranch, valued at US$2,000,000, registered under his brother Alfredo 'Freddy' Lijo's name. He also did not declare any vehicles, yet drove a Mercedes Benz E 350 with a registration card from his brother's insurance company (Caledonia Seguros).",
+      "source_urls": [
+        "https://www.lanacion.com.ar/politica/ariel-lijo-un-hombre-fuerte-de-comodoro-py-que-enfrento-denuncias-por-su-patrimonio-y-el-manejo-de-nid20032024/",
+        "https://acij.org.ar/wp-content/uploads/2024/05/Perfil-Ariel-Lijo.pdf"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "LIJO-003",
+      "person": "Alfredo 'Freddy' Lijo",
+      "role": "Hermano del juez Ariel Lijo, operador judicial",
+      "category": "unexplained_wealth",
+      "evidence_es": "Alfredo Lijo tiene oficinas en Puerto Madero (Olga Cossettini 1553), controla el 95% de Finaig Consultores SA, compro propiedades por US$1 millon, renovo un departamento de 250m2 en Las Canitas por al menos US$720.000, tenia oficinas en Puerto Madero y Recoleta, y un semi-piso en Recoleta valuado en US$272.000.",
+      "evidence_en": "Alfredo Lijo has offices in Puerto Madero (Olga Cossettini 1553), controls 95% of Finaig Consultores SA, purchased properties worth US$1 million, renovated a 250sqm apartment in Las Canitas for at least US$720,000, had offices in Puerto Madero and Recoleta, and a semi-penthouse in Recoleta valued at US$272,000.",
+      "source_urls": [
+        "https://www.lanacion.com.ar/politica/el-llamativo-enriquecimiento-del-operador-judicial-alfredo-lijo-nid2083733/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "LIJO-004",
+      "person": "Ariel Lijo / Alfredo Lijo",
+      "role": "Juez Federal / Operador judicial",
+      "category": "case_closed_improperly",
+      "evidence_es": "La causa por enriquecimiento ilicito contra los hermanos Lijo (denunciada por Elisa Carrio en 2018) fue cerrada en silencio por el juez Julian Ercolini, colega cercano a Lijo. El abogado defensor fue Mariano Cuneo Libarona, actual Ministro de Justicia del gobierno de Milei. Cuneo Libarona luego se excuso de intervenir en la postulacion de Lijo a la Corte Suprema por ser su ex abogado.",
+      "evidence_en": "The illicit enrichment case against the Lijo brothers (filed by Elisa Carrio in 2018) was quietly closed by Judge Julian Ercolini, a close colleague of Lijo. Their defense lawyer was Mariano Cuneo Libarona, current Justice Minister under Milei. Cuneo Libarona later recused himself from Lijo's Supreme Court nomination process due to being his former lawyer.",
+      "source_urls": [
+        "https://www.lanacion.com.ar/politica/la-causa-por-enriquecimiento-ilicito-contra-los-hermanos-lijo-la-cerro-en-silencio-un-juez-cercano-y-nid22032024/",
+        "https://www.lanacion.com.ar/politica/cuneo-libarona-se-excuso-de-intervenir-en-el-procedimiento-por-la-postulacion-del-juez-ariel-lijo-nid27122024/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "LIJO-005",
+      "person": "Ariel Lijo",
+      "role": "Candidato a Corte Suprema",
+      "category": "controversial_nomination",
+      "evidence_es": "Milei lo nomino el 15/04/2024 para la Corte Suprema. Segun INECIP, Lijo seria el juez con peor desempeno de Comodoro Py. Macri dijo que la nominacion 'es un error'. Villarruel critico su actuacion en el caso Rucci. El Senado rechazo su pliego el 03/04/2025 con 27 votos a favor, 43 en contra y 1 abstencion. Milei luego lo designo por decreto, pero la Corte Suprema le rechazo la licencia para asumir.",
+      "evidence_en": "Milei nominated him on 04/15/2024 for the Supreme Court. According to INECIP, Lijo would be the worst-performing judge at Comodoro Py. Macri called the nomination 'a mistake'. Villarruel criticized his handling of the Rucci case. The Senate rejected his candidacy on 04/03/2025 with 27 for, 43 against, 1 abstention. Milei then appointed him by decree, but the Supreme Court rejected his leave to assume the position.",
+      "source_urls": [
+        "https://chequeado.com/el-explicador/quien-es-ariel-lijo-uno-de-los-dos-candidatos-propuestos-por-javier-milei-para-integrar-la-corte-suprema/",
+        "https://www.infobae.com/politica/2025/04/03/minuto-a-minuto-el-senado-vota-los-pliegos-de-ariel-lijo-y-manuel-garcia-mansilla-para-la-corte-suprema/",
+        "https://www.infobae.com/judiciales/2025/03/06/la-corte-suprema-enfrenta-un-plenario-clave-mientras-persiste-la-incertidumbre-sobre-la-licencia-de-lijo/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "ERCOLINI-001",
+      "person": "Julian Ercolini",
+      "role": "Juez Federal Comodoro Py, Juzgado N.11 (subrogante)",
+      "category": "lago_escondido_trip",
+      "evidence_es": "En octubre 2022, Ercolini viajo en un vuelo privado pagado por el Grupo Clarin a la estancia del millonario britanico Joe Lewis en Lago Escondido, Bariloche. Lo acompanaron el fiscal general de CABA Juan Bautista Mahiques, el ministro Marcelo D'Alessandro, y otros jueces y agentes de inteligencia. Chats filtrados del celular de D'Alessandro revelaron conversaciones entre jueces, funcionarios macristas y ejecutivos de Clarin para ocultar el viaje.",
+      "evidence_en": "In October 2022, Ercolini flew on a private flight paid for by Grupo Clarin to British billionaire Joe Lewis's estate at Lago Escondido, Bariloche. He was accompanied by Buenos Aires City AG Juan Bautista Mahiques, Minister Marcelo D'Alessandro, and other judges and intelligence agents. Leaked chats from D'Alessandro's phone revealed conversations between judges, Macri-era officials, and Clarin executives to conceal the trip.",
+      "source_urls": [
+        "https://chequeado.com/el-explicador/lago-escondido-que-se-sabe-sobre-el-viaje-de-jueces-funcionarios-y-empresarios-a-la-residencia-de-joe-lewis/",
+        "https://www.eldiarioar.com/politica/lago-escondido-jueces-joe-lewis_1_9655231.html",
+        "https://www.lacapital.com.ar/politica/escandalo-un-chat-jueces-funcionarios-macristas-y-empresarios-medios-ocultar-un-viaje-al-sur-n10034921.html"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "ERCOLINI-002",
+      "person": "Julian Ercolini",
+      "role": "Juez Federal Comodoro Py",
+      "category": "case_irregularity",
+      "evidence_es": "Ercolini fue apartado de una causa contra Cristina Kirchner por falta de imparcialidad. La recusacion se baso en su viaje a Lago Escondido con funcionarios y empresarios vinculados al macrismo, lo que compromete su neutralidad en causas politicas. Tambien cerro en silencio la causa por enriquecimiento ilicito contra su colega Lijo.",
+      "evidence_en": "Ercolini was removed from a case against Cristina Kirchner for lack of impartiality. The recusal was based on his Lago Escondido trip with officials and businessmen linked to the Macri administration, compromising his neutrality in political cases. He also quietly closed the illicit enrichment case against his colleague Lijo.",
+      "source_urls": [
+        "https://canalc.com.ar/julian-ercolini-apartado-por-falta-de-imparcialidad-en-causa-contra-cfk/",
+        "https://www.lanacion.com.ar/politica/elisa-carrio-pidio-investigar-al-juez-julian-ercolini-y-al-fiscal-franco-picardi-por-haber-cerrado-nid09042024/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "LAGO-001",
+      "person": "Multiple judges (Ercolini, Mahiques, Cayssials, Yadarola)",
+      "role": "Federal judges and prosecutors",
+      "category": "lago_escondido_coverup",
+      "evidence_es": "El juez federal Sebastian Ramos anulo la causa que investigaba el viaje a Lago Escondido y sobreseyo a todos los imputados, aplicando la doctrina del 'arbol envenenado' por supuesta obtencion ilegal de pruebas. El Consejo de la Magistratura reactivo y luego postergo la investigacion repetidamente. El gobierno de Fernandez denuncio a los jueces por incumplimiento de deberes de funcionario publico y dadivas.",
+      "evidence_en": "Federal judge Sebastian Ramos annulled the case investigating the Lago Escondido trip and dismissed all charges, applying the 'fruit of the poisonous tree' doctrine due to allegedly illegal evidence gathering. The Magistracy Council reactivated then repeatedly postponed the investigation. The Fernandez government filed charges against the judges for dereliction of duty and bribery.",
+      "source_urls": [
+        "https://www.eldiarioar.com/politica/lago-escondido-sobreseen-jueces-exfuncionarios-empresarios-viaje-estancia-joe-lewis-2022_1_10788895.html",
+        "https://www.argentina.gob.ar/noticias/el-gobierno-nacional-denuncio-los-jueces-federales-al-ceo-del-grupo-clarin-y-otros",
+        "https://agencia.farco.org.ar/noticias/magistratura-otra-vez-se-postergo-la-investigacion-por-el-viaje-de-jueces-a-lago-escondido-pagado-por-clarin/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "LAGO-002",
+      "person": "Pablo Cayssials",
+      "role": "Juez federal",
+      "category": "conflict_of_interest",
+      "evidence_es": "El juez Cayssials debe resolver una causa contra el Grupo Clarin por no incluir senales comunitarias en el cable. Fue recusado por el canal Barricada TV tras revelarse su participacion en el viaje a Lago Escondido financiado por Clarin.",
+      "evidence_en": "Judge Cayssials must rule in a case against Grupo Clarin for failing to include community channels in cable lineups. He was challenged by Barricada TV after his participation in the Clarin-funded Lago Escondido trip was revealed.",
+      "source_urls": [
+        "https://anccom.sociales.uba.ar/2022/12/13/las-televisoras-comunitarias-recusan-a-uno-de-los-jueces-invitados-por-clarin-a-lago-escondido/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "HORNOS-001",
+      "person": "Gustavo Hornos",
+      "role": "Camarista de la Camara Federal de Casacion Penal",
+      "category": "secret_meetings_with_executive",
+      "evidence_es": "Hornos tuvo al menos 2 visitas registradas a la Quinta de Olivos y se reunio con Macri al menos 6 veces en la Casa Rosada, mientras presidia la Sala IV de Casacion que resolvia causas contra ex funcionarios kirchneristas. Las reuniones coincidieron con fallos en causas de alto impacto politico.",
+      "evidence_en": "Hornos had at least 2 registered visits to the Olivos presidential residence and met with Macri at least 6 times at the Casa Rosada, while presiding over Cassation Chamber IV that ruled on cases against former Kirchnerist officials. The meetings coincided with rulings in high-impact political cases.",
+      "source_urls": [
+        "https://www.eldiarioar.com/politica/revelan-jueces-borinsky-hornos-visitaban-macri-olivos_1_7372363.html",
+        "https://www.pagina12.com.ar/333308-el-escandalo-de-los-jueces-de-casacion-que-visitaban-a-mauri"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "BORINSKY-001",
+      "person": "Mariano Borinsky",
+      "role": "Camarista de la Camara Federal de Casacion Penal",
+      "category": "secret_meetings_with_executive",
+      "evidence_es": "Borinsky visito la Quinta de Olivos al menos 15 veces segun registros oficiales. Las visitas coincidieron con sus fallos en causas de alto impacto: la reapertura de la denuncia de Nisman, la 'Ruta del dinero K', el caso Dolar Futuro, y la causa por Obra Publica de Santa Cruz. Cuando fue cuestionado, Borinsky dijo que iba a Olivos 'a jugar al paddle'.",
+      "evidence_en": "Borinsky visited the Olivos presidential residence at least 15 times according to official records. Visits coincided with his rulings in high-impact cases: the reopening of Nisman's complaint, the 'K money route', the Dollar Futures case, and the Santa Cruz Public Works case. When questioned, Borinsky claimed he went to Olivos 'to play paddle tennis'.",
+      "source_urls": [
+        "https://www.eldiarioar.com/politica/revelan-jueces-borinsky-hornos-visitaban-macri-olivos_1_7372363.html",
+        "https://www.pagina12.com.ar/333453-escandalo-por-los-jueces-habitues-de-olivos-la-lista-trucha-/",
+        "https://www.perfil.com/noticias/politica/denuncian-mariano-borinsky-visitas-mauricio-macri-avanza-investigacion-gustavo-hornos.phtml"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "HORNOS-BORINSKY-002",
+      "person": "Hornos / Borinsky / Macri",
+      "role": "Camaristas / Ex-presidente",
+      "category": "case_dismissed",
+      "evidence_es": "El juez Marcelo Martinez De Giorgi sobreseyo a Macri, Borinsky y Hornos. Confirmo los ingresos y egresos a las sedes oficiales pero determino que no se pudo probar un proposito impropio. El fiscal ante la Camara Federal tambien dispuso cerrar la causa. Los jueces nunca fueron apartados de las causas contra funcionarios kirchneristas.",
+      "evidence_en": "Judge Marcelo Martinez De Giorgi dismissed charges against Macri, Borinsky, and Hornos. He confirmed the entries and exits from official premises but determined that an improper purpose could not be proven. The prosecutor before the Federal Court also ordered the case closed. The judges were never removed from cases against Kirchnerist officials.",
+      "source_urls": [
+        "https://www.infobae.com/politica/2022/06/01/sobreseyeron-a-mauricio-macri-y-a-los-jueces-borinsky-y-hornos-por-la-denuncia-de-las-visitas-a-olivos/",
+        "https://www.infobae.com/politica/2022/06/11/el-fiscal-ante-la-camara-federal-dispuso-cerrar-la-causa-por-las-visitas-a-olivos-contra-macri-y-los-jueces-borinsky-y-hornos/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "ROSENKRANTZ-001",
+      "person": "Carlos Rosenkrantz",
+      "role": "Presidente de la Corte Suprema de Justicia",
+      "category": "conflict_of_interest",
+      "evidence_es": "Rosenkrantz fue abogado del Grupo Clarin, La Nacion, McDonald's (Arcos Dorados), Quilmes, Grupo De Narvaez, fondo Pegasus, AXION, YPF y Repsol antes de integrar la Corte. Inicialmente se excuso en causas de ex clientes (al menos 85 causas). En octubre 2021, informo a sus colegas que comenzaria a intervenir en causas de ex clientes. La Corte rechazo la recusacion del Estado por 'extemporanea'.",
+      "evidence_en": "Rosenkrantz was lawyer for Grupo Clarin, La Nacion, McDonald's (Arcos Dorados), Quilmes, Grupo De Narvaez, Pegasus fund, AXION, YPF and Repsol before joining the Court. Initially he recused himself in at least 85 cases involving former clients. In October 2021, he informed colleagues he would begin ruling on former clients' cases. The Court rejected the State's challenge as 'untimely'.",
+      "source_urls": [
+        "https://www.pagina12.com.ar/485768-la-corte-avalo-que-carlos-rosenkrantz-intervenga-en-una-dema",
+        "https://www.infobae.com/politica/2020/10/28/carlos-rosenkrantz-se-excuso-de-votar-en-al-menos-85-causas-desde-que-llego-a-la-corte-suprema/",
+        "https://www.eldestapeweb.com/politica/corte-suprema-de-justicia/ya-son-56-los-fallos-de-rosenkrantz-sobre-sus-ex-clientes-4-de-clarin-2022116052"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "ROSENKRANTZ-002",
+      "person": "Carlos Rosenkrantz",
+      "role": "Presidente de la Corte Suprema",
+      "category": "rulings_favoring_former_clients",
+      "evidence_es": "Al menos 56 fallos firmados por Rosenkrantz involucraron a ex clientes, incluyendo 4 del Grupo Clarin. La Corte avalo que intervenga en la causa por tarifas de internet/cable/telefonia donde Clarin (via Telecom) es parte interesada. El Estado argumento que debia excusarse por haber representado al holding mediatico.",
+      "evidence_en": "At least 56 rulings signed by Rosenkrantz involved former clients, including 4 from Grupo Clarin. The Court upheld his participation in a case over internet/cable/phone tariffs where Clarin (via Telecom) is an interested party. The State argued he should recuse himself for having represented the media holding company.",
+      "source_urls": [
+        "https://www.eldestapeweb.com/politica/corte-suprema-de-justicia/ya-son-56-los-fallos-de-rosenkrantz-sobre-sus-ex-clientes-4-de-clarin-2022116052",
+        "https://www.eldestapeweb.com/politica/juicio-a-la-corte/mientras-avanza-el-juicio-politico-rosenkrantz-firma-mas-fallos-de-ex-clientes-20232100549"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "RAFECAS-001",
+      "person": "Daniel Rafecas",
+      "role": "Juez Federal Comodoro Py, Juzgado N.3 (titular) y N.6 (subrogante)",
+      "category": "key_judge_profile",
+      "evidence_es": "Rafecas es titular del Juzgado Criminal y Correccional Federal N.3 desde octubre 2004. Investiga la Megacausa del Primer Cuerpo del Ejercito (derechos humanos, dictadura 1976-1983). Llevo la causa por enriquecimiento ilicito contra Jose Lopez. Alberto Fernandez lo propuso como Procurador General de la Nacion, pero el nombramiento nunca prospero en el Senado. Actualmente subroga el Juzgado N.6, una de las vacantes clave que el gobierno busca cubrir.",
+      "evidence_en": "Rafecas has been head of Federal Criminal Court No. 3 since October 2004. He investigates the Megacause of the First Army Corps (human rights, 1976-1983 dictatorship). He handled the illicit enrichment case against Jose Lopez. Alberto Fernandez proposed him as Attorney General, but the nomination never passed the Senate. He currently fills in at Court No. 6, one of the key vacancies the government seeks to fill.",
+      "source_urls": [
+        "https://es.wikipedia.org/wiki/Daniel_Rafecas",
+        "https://chequeado.com/justiciapedia/profiles/daniel-rafecas/",
+        "https://www.infobae.com/politica/2026/03/05/mas-de-300-vacantes-en-la-justicia-cual-es-el-plan-del-gobierno-para-nombrar-jueces-y-fiscales-y-que-casilleros-clave-mirara-primero/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "OYARBIDE-001",
+      "person": "Norberto Oyarbide",
+      "role": "Ex-juez federal (fallecido)",
+      "category": "illicit_enrichment",
+      "evidence_es": "La causa por enriquecimiento ilicito contra el ex juez Oyarbide y sus presuntos intermediarios quedo al borde de la prescripcion a cinco anos de su muerte. Los jueces Leopoldo Bruglia y Pablo Bertuzzi revocaron una resolucion de primera instancia que mantenia la investigacion abierta.",
+      "evidence_en": "The illicit enrichment case against former judge Oyarbide and his alleged intermediaries neared statute of limitations five years after his death. Judges Leopoldo Bruglia and Pablo Bertuzzi overturned a first-instance ruling that had kept the investigation open.",
+      "source_urls": [
+        "https://www.infobae.com/judiciales/2026/03/03/a-cinco-anos-de-la-muerte-de-oyarbide-la-causa-por-enriquecimiento-ilicito-quedo-a-un-paso-de-la-prescripcion/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "MAGNETTO-001",
+      "person": "Hector Magnetto / Grupo Clarin",
+      "role": "CEO Grupo Clarin",
+      "category": "media_judicial_nexus",
+      "evidence_es": "El Grupo Clarin financio el vuelo privado de jueces federales a Lago Escondido. El gobierno denuncio al CEO del Grupo Clarin junto a los jueces por dadivas e incumplimiento de deberes. Chats filtrados revelaron coordinacion entre ejecutivos de Clarin, jueces y funcionarios para ocultar el viaje. Clarin tambien fue cliente historico de Rosenkrantz antes de su llegada a la Corte Suprema.",
+      "evidence_en": "Grupo Clarin financed the private flight of federal judges to Lago Escondido. The government charged the Clarin CEO along with the judges for bribery and dereliction of duty. Leaked chats revealed coordination between Clarin executives, judges, and officials to conceal the trip. Clarin was also a longtime client of Rosenkrantz before his appointment to the Supreme Court.",
+      "source_urls": [
+        "https://www.argentina.gob.ar/noticias/el-gobierno-nacional-denuncio-los-jueces-federales-al-ceo-del-grupo-clarin-y-otros",
+        "https://www.primerafuente.com.ar/noticias/105967/escndalo-se-filtraron-chats-jueces-intentaron-tapar-viaje-al-lago-escondido"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "LEWIS-001",
+      "person": "Joe Lewis",
+      "role": "Billonario britanico, propietario de la estancia en Lago Escondido",
+      "category": "oligarch_judicial_nexus",
+      "evidence_es": "Joe Lewis es un multimillonario britanico dueno de una enorme estancia en Lago Escondido, Patagonia. Su propiedad fue el destino del viaje de jueces federales, funcionarios y empresarios de medios en octubre 2022. La relacion entre poder economico extranjero y la justicia federal argentina quedo expuesta por este escandalo.",
+      "evidence_en": "Joe Lewis is a British billionaire who owns a massive estate at Lago Escondido, Patagonia. His property was the destination of the trip by federal judges, officials, and media executives in October 2022. The relationship between foreign economic power and Argentine federal justice was exposed by this scandal.",
+      "source_urls": [
+        "https://chequeado.com/el-explicador/lago-escondido-que-se-sabe-sobre-el-viaje-de-jueces-funcionarios-y-empresarios-a-la-residencia-de-joe-lewis/",
+        "https://es.wikipedia.org/wiki/Esc%C3%A1ndalo_de_Lago_Escondido"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "MAHIQUES-001",
+      "person": "Juan Bautista Mahiques",
+      "role": "Fiscal General de CABA",
+      "category": "lago_escondido_participant",
+      "evidence_es": "Mahiques participo en el viaje a Lago Escondido y fue apartado de una causa promovida por el Grupo Clarin por haber viajado invitado por esa empresa. Su participacion en el vuelo privado compromete su imparcialidad en cualquier causa que involucre al grupo mediatico.",
+      "evidence_en": "Mahiques participated in the Lago Escondido trip and was removed from a case filed by Grupo Clarin for having traveled as that company's guest. His participation in the private flight compromises his impartiality in any case involving the media group.",
+      "source_urls": [
+        "https://www.eldestapeweb.com/politica/lawfare/reves-para-clarin-apartan-al-juez-mahiques-por-el-viaje-a-lago-escondido-20235120530"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "DALESSANDRO-001",
+      "person": "Marcelo D'Alessandro",
+      "role": "Ex-Ministro de Seguridad de CABA",
+      "category": "lago_escondido_organizer",
+      "evidence_es": "D'Alessandro participo en el viaje a Lago Escondido. El hackeo de su telefono celular revelo chats de Telegram entre jueces federales, funcionarios de CABA, ex agentes de inteligencia y ejecutivos de Clarin discutiendo como prevenir la divulgacion del viaje.",
+      "evidence_en": "D'Alessandro participated in the Lago Escondido trip. The hacking of his cell phone revealed Telegram chats between federal judges, Buenos Aires City officials, former intelligence agents, and Clarin executives discussing how to prevent disclosure of the trip.",
+      "source_urls": [
+        "https://noticias.perfil.com/noticias/politica/lago-escondido-favores-poder-y-espionaje.phtml",
+        "https://www.lacapital.com.ar/politica/escandalo-un-chat-jueces-funcionarios-macristas-y-empresarios-medios-ocultar-un-viaje-al-sur-n10034921.html"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "CAPUCHETTI-001",
+      "person": "Maria Eugenia Capuchetti",
+      "role": "Jueza Federal subrogante Juzgado N.9",
+      "category": "key_judge_profile",
+      "evidence_es": "Capuchetti subroga el Juzgado Federal N.9, una de las vacantes criticas en Comodoro Py. El gobierno de Milei prioriza cubrir esta vacante junto con los Juzgados 6, 11 y 12.",
+      "evidence_en": "Capuchetti fills in at Federal Court No. 9, one of the critical vacancies at Comodoro Py. The Milei government prioritizes filling this vacancy along with Courts 6, 11, and 12.",
+      "source_urls": [
+        "https://www.infobae.com/politica/2026/03/05/mas-de-300-vacantes-en-la-justicia-cual-es-el-plan-del-gobierno-para-nombrar-jueces-y-fiscales-y-que-casilleros-clave-mirara-primero/"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "CUNEO-001",
+      "person": "Mariano Cuneo Libarona",
+      "role": "Ministro de Justicia de la Nacion",
+      "category": "revolving_door",
+      "evidence_es": "Cuneo Libarona fue abogado defensor de los hermanos Lijo en la causa por enriquecimiento ilicito. Luego fue nombrado Ministro de Justicia por Milei. El mismo gobierno que lo nombro ministro postulo a Lijo para la Corte Suprema. Cuneo Libarona debio excusarse del procedimiento de postulacion de Lijo por conflicto de intereses.",
+      "evidence_en": "Cuneo Libarona was defense attorney for the Lijo brothers in the illicit enrichment case. He was then appointed Justice Minister by Milei. The same government that appointed him minister nominated Lijo for the Supreme Court. Cuneo Libarona had to recuse himself from Lijo's nomination process due to conflict of interest.",
+      "source_urls": [
+        "https://www.lanacion.com.ar/politica/la-causa-por-enriquecimiento-ilicito-contra-los-hermanos-lijo-la-cerro-en-silencio-un-juez-cercano-y-nid22032024/",
+        "https://www.lanacion.com.ar/politica/cuneo-libarona-se-excuso-de-intervenir-en-el-procedimiento-por-la-postulacion-del-juez-ariel-lijo-nid27122024/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "MAGISTRATURA-001",
+      "person": "Consejo de la Magistratura",
+      "role": "Organo constitucional de seleccion y disciplina judicial",
+      "category": "systemic_political_capture",
+      "evidence_es": "El Consejo de la Magistratura fue creado en la reforma constitucional de 1994 para que la seleccion de jueces fuera mas tecnica, pero fue rapidamente cooptado por la politica. Esta compuesto por representantes de jueces, legisladores, abogados, el Poder Ejecutivo y academicos. Los concursos publicos generan ternas vinculantes que el Presidente eleva al Senado, pero la composicion politica del Consejo permite influir en quien llega a las ternas. En 2026, debe cubrir 157 vacantes y el gobierno prioriza 4 juzgados clave de Comodoro Py.",
+      "evidence_en": "The Magistracy Council was created in the 1994 constitutional reform to make judge selection more technical, but was quickly co-opted by politics. It is composed of representatives of judges, legislators, lawyers, the Executive, and academics. Public competitions generate binding three-candidate shortlists that the President sends to the Senate, but the Council's political composition allows influence over who makes the shortlist. In 2026, it must fill 157 vacancies and the government prioritizes 4 key Comodoro Py courts.",
+      "source_urls": [
+        "https://consejomagistratura.gov.ar/index.php/seleccion-de-jueces/",
+        "https://www.infobae.com/judiciales/2026/02/07/el-consejo-de-la-magistratura-se-reactiva-definira-ternas-para-157-vacantes-y-el-futuro-de-jueces-investigados/",
+        "https://www.infobae.com/politica/2021/11/07/como-se-elige-a-los-jueces/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "LEGAL-001",
+      "person": "N/A (systemic)",
+      "role": "Marco legal argentino",
+      "category": "legal_framework",
+      "evidence_es": "El Art. 268(2) del Codigo Penal establece penas de 2 a 6 anos de prision, multa del 50-100% del valor del enriquecimiento, e inhabilitacion perpetua para funcionarios que no puedan justificar un enriquecimiento patrimonial apreciable ocurrido despues de asumir el cargo y hasta 2 anos despues de dejarlo. La Ley de Etica Publica regula las declaraciones juradas y el regimen de incompatibilidades. Sin embargo, la aplicacion es debil: las causas se cierran, prescriben, o se sobreseen sistematicamente.",
+      "evidence_en": "Article 268(2) of the Penal Code establishes penalties of 2-6 years imprisonment, a fine of 50-100% of the enrichment value, and perpetual disqualification for officials who cannot justify appreciable patrimonial enrichment after assuming office and up to 2 years after leaving. The Public Ethics Law regulates sworn declarations and the incompatibility regime. However, enforcement is weak: cases are systematically closed, reach statute of limitations, or are dismissed.",
+      "source_urls": [
+        "https://www.pensamientopenal.com.ar/system/files/cpcomentado/cpc37774.pdf",
+        "https://www.argentina.gob.ar/justicia/derechofacil/leysimple/etica-en-la-funcion-publica"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "LEGAL-002",
+      "person": "N/A (systemic)",
+      "role": "Incompatibilidades judiciales",
+      "category": "legal_framework",
+      "evidence_es": "Las incompatibilidades para funcionarios publicos incluyen: no pueden prestar servicios a concesionarios del Estado donde tengan competencia, ni ser proveedores del organismo donde ejercen. La Ley General de Sociedades (Art. 342) establece inhabilitaciones para ciertos roles corporativos. Sin embargo, no existe una prohibicion explicita suficientemente fuerte para impedir que jueces usen testaferros, sociedades anonimas o familiares para ocultar patrimonio.",
+      "evidence_en": "Incompatibilities for public officials include: cannot provide services to State concessionaires within their jurisdiction, nor be suppliers to their agency. The General Corporations Law (Art. 342) establishes disqualifications for certain corporate roles. However, there is no explicit prohibition strong enough to prevent judges from using nominees, anonymous corporations, or family members to conceal assets.",
+      "source_urls": [
+        "https://leyes-ar.com/ley_general_de_sociedades/342.htm",
+        "https://www.argentina.gob.ar/justicia/derechofacil/leysimple/etica-en-la-funcion-publica"
+      ],
+      "severity": "medium"
+    },
+    {
+      "id": "PATTERN-001",
+      "person": "N/A (systemic)",
+      "role": "Patron sistemico",
+      "category": "systemic_impunity",
+      "evidence_es": "Patron recurrente en Comodoro Py: (1) Jueces con patrimonio inexplicable que no se investiga o se cierra, (2) Viajes financiados por grupos economicos a jueces que resuelven sus causas, (3) Reuniones secretas entre jueces y el Poder Ejecutivo durante causas sensibles, (4) Causas de enriquecimiento que prescriben o se anulan por tecnicismos, (5) El abogado defensor de un juez cuestionado se convierte en Ministro de Justicia y el mismo gobierno postula al juez a la Corte Suprema, (6) Jueces que cierran causas de colegas y luego reciben favores reciprocos.",
+      "evidence_en": "Recurring pattern at Comodoro Py: (1) Judges with unexplained wealth that goes uninvestigated or cases are closed, (2) Trips financed by economic groups for judges who rule on their cases, (3) Secret meetings between judges and the Executive during sensitive cases, (4) Enrichment cases that expire or are annulled on technicalities, (5) A judge's defense lawyer becomes Justice Minister and the same government nominates the judge to the Supreme Court, (6) Judges who close colleagues' cases then receive reciprocal favors.",
+      "source_urls": [],
+      "severity": "critical"
+    },
+    {
+      "id": "MILEI-JUDICIARY-001",
+      "person": "Javier Milei",
+      "role": "Presidente de la Nacion",
+      "category": "executive_judicial_interference",
+      "evidence_es": "Milei designo a Lijo por decreto para la Corte Suprema pese al rechazo del Senado (43 votos en contra). Su Ministro de Justicia (Cuneo Libarona) era el ex abogado de Lijo. El nuevo Ministro de Justicia designado en 2026 tambien tiene vinculos con el escandalo de Lago Escondido. El gobierno prioriza cubrir las 4 vacantes clave en Comodoro Py.",
+      "evidence_en": "Milei appointed Lijo by decree to the Supreme Court despite Senate rejection (43 votes against). His Justice Minister (Cuneo Libarona) was Lijo's former lawyer. The new Justice Minister appointed in 2026 also has ties to the Lago Escondido scandal. The government prioritizes filling the 4 key vacancies at Comodoro Py.",
+      "source_urls": [
+        "https://www.infobae.com/politica/2025/02/27/cinco-escenarios-que-se-abren-tras-la-designacion-de-ariel-lijo-y-garcia-mansilla-en-la-corte-que-pueden-hacer-el-senado-el-gobierno-y-la-justicia/",
+        "https://www.eldiarioar.com/politica/escandaloso-viaje-lago-escondido-lazos-afa-tapia-nuevo-ministro-justicia-milei_1_13040667.html"
+      ],
+      "severity": "critical"
+    }
+  ]
+}
