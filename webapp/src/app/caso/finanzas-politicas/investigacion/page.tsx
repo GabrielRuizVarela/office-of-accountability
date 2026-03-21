@@ -211,8 +211,8 @@ export default function InvestigacionPage() {
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-400">
             {lang === 'es'
-              ? 'Investigacion verificada sobre las conexiones entre poder politico, financiero y judicial en Argentina. 22 personas criticas identificadas. Cruce de nueve fuentes de datos publicos. Cada afirmacion tiene fuente verificada.'
-              : 'Verified investigation into the connections between political, financial, and judicial power in Argentina. 22 critical persons identified. Cross-referencing nine public data sources. Every claim has a verified source.'}
+              ? 'Investigacion verificada sobre las conexiones entre poder politico, financiero, mediatico y judicial en Argentina. 63 actores criticos identificados. Cruce de nueve fuentes de datos publicos. Cada afirmacion tiene fuente verificada.'
+              : 'Verified investigation into the connections between political, financial, media and judicial power in Argentina. 63 critical actors identified. Cross-referencing nine public data sources. Every claim has a verified source.'}
           </p>
         </section>
 
@@ -545,7 +545,7 @@ export default function InvestigacionPage() {
             </p>
             <p className="mt-4 text-xs text-zinc-600">
               {lang === 'es' ? 'Ultima actualizacion' : 'Last updated'}:{' '}
-              {formatDate('2026-03-19', lang)}
+              {formatDate('2026-03-21', lang)}
             </p>
             <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs text-zinc-600">
               {[
