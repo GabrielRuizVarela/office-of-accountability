@@ -22,6 +22,13 @@ import {
   type EpsteinLegalCase,
 } from './types'
 
+import {
+  toPerson,
+  toEvent,
+  toDocument,
+  toLegalCase,
+} from './transform'
+
 // ---------------------------------------------------------------------------
 // Constants
 // ---------------------------------------------------------------------------
@@ -31,84 +38,6 @@ const QUERY_TIMEOUT_MS = 15_000
 
 /** Transaction config applied to all queries */
 const TX_CONFIG = { timeout: QUERY_TIMEOUT_MS }
-
-// ---------------------------------------------------------------------------
-// Neo4j record → typed object helpers
-// ---------------------------------------------------------------------------
-
-function toPersonProps(node: Node): EpsteinPerson {
-  const p = node.properties as Record<string, unknown>
-  // `as EpsteinPerson` is required because TS infers `confidence_tier` as
-  // `ConfidenceTier | undefined` from the conditional expression, which does not
-  // narrow to the optional property type without a cast. Removing it causes a
-  // "Type '... | undefined' is not assignable to type 'ConfidenceTier'" error.
-  return {
-    id: typeof p.id === 'string' ? p.id : '',
-    name: typeof p.name === 'string' ? p.name : '',
-    slug: typeof p.slug === 'string' ? p.slug : '',
-    role: typeof p.role === 'string' ? p.role : '',
-    description: typeof p.description === 'string' ? p.description : '',
-    nationality: typeof p.nationality === 'string' ? p.nationality : '',
-    confidence_tier: typeof p.confidence_tier === 'string' ? p.confidence_tier as ConfidenceTier : undefined,
-    source: typeof p.source === 'string' ? p.source : undefined,
-    ingestion_wave: typeof p.ingestion_wave === 'number' ? p.ingestion_wave : undefined,
-  } as EpsteinPerson
-}
-
-function toEventProps(node: Node): EpsteinEvent {
-  const p = node.properties as Record<string, unknown>
-  return {
-    id: typeof p.id === 'string' ? p.id : '',
-    title: typeof p.title === 'string' ? p.title : '',
-    date: typeof p.date === 'string' ? p.date : '',
-    event_type: typeof p.event_type === 'string' ? p.event_type : 'legal',
-    description: typeof p.description === 'string' ? p.description : '',
-    confidence_tier: typeof p.confidence_tier === 'string' ? p.confidence_tier as ConfidenceTier : undefined,
-    source: typeof p.source === 'string' ? p.source : undefined,
-    ingestion_wave: typeof p.ingestion_wave === 'number' ? p.ingestion_wave : undefined,
-  } as EpsteinEvent
-}
-
-function toDocumentProps(node: Node): EpsteinDocument {
-  const p = node.properties as Record<string, unknown>
-  return {
-    id: typeof p.id === 'string' ? p.id : '',
-    title: typeof p.title === 'string' ? p.title : '',
-    slug: typeof p.slug === 'string' ? p.slug : '',
-    doc_type: typeof p.doc_type === 'string' ? p.doc_type : 'court_filing',
-    source_url: typeof p.source_url === 'string' ? p.source_url : '',
-    summary: typeof p.summary === 'string' ? p.summary : '',
-    date: typeof p.date === 'string' ? p.date : '',
-    key_findings: Array.isArray(p.key_findings)
-      ? p.key_findings.filter((item: unknown): item is string => typeof item === 'string')
-      : [],
-    excerpt: typeof p.excerpt === 'string' ? p.excerpt : '',
-    page_count: typeof p.page_count === 'number'
-      ? p.page_count
-      : p.page_count && typeof p.page_count === 'object' && 'low' in p.page_count
-        ? (p.page_count as { low: number }).low
-        : null,
-    confidence_tier: typeof p.confidence_tier === 'string' ? p.confidence_tier as ConfidenceTier : undefined,
-    source: typeof p.source === 'string' ? p.source : undefined,
-    ingestion_wave: typeof p.ingestion_wave === 'number' ? p.ingestion_wave : undefined,
-  } as EpsteinDocument
-}
-
-function toLegalCaseProps(node: Node): EpsteinLegalCase {
-  const p = node.properties as Record<string, unknown>
-  return {
-    id: typeof p.id === 'string' ? p.id : '',
-    title: typeof p.title === 'string' ? p.title : '',
-    slug: typeof p.slug === 'string' ? p.slug : '',
-    case_number: typeof p.case_number === 'string' ? p.case_number : '',
-    court: typeof p.court === 'string' ? p.court : '',
-    status: typeof p.status === 'string' ? p.status : 'filed',
-    date_filed: typeof p.date_filed === 'string' ? p.date_filed : '',
-    confidence_tier: typeof p.confidence_tier === 'string' ? p.confidence_tier as ConfidenceTier : undefined,
-    source: typeof p.source === 'string' ? p.source : undefined,
-    ingestion_wave: typeof p.ingestion_wave === 'number' ? p.ingestion_wave : undefined,
-  } as EpsteinLegalCase
-}
 
 // ---------------------------------------------------------------------------
 // GraphData assembly helpers
@@ -225,7 +154,7 @@ export async function getTimeline(casoSlug: string, tiers?: ConfidenceTier[]): P
       TX_CONFIG,
     )
 
-    return result.records.map((record: Neo4jRecord) => toEventProps(record.get('e') as Node))
+    return result.records.map((record: Neo4jRecord) => toEvent(record.get('e') as Node))
   } finally {
     await session.close()
   }
@@ -259,7 +188,7 @@ export async function getPersonBySlug(
     }
 
     const personNode = personResult.records[0].get('p') as Node
-    const person = toPersonProps(personNode)
+    const person = toPerson(personNode)
 
     // Fetch neighbors and relationships
     const neighborResult = await session.run(
@@ -344,7 +273,7 @@ export async function getActors(casoSlug: string, tiers?: ConfidenceTier[]): Pro
       TX_CONFIG,
     )
 
-    return result.records.map((record: Neo4jRecord) => toPersonProps(record.get('p') as Node))
+    return result.records.map((record: Neo4jRecord) => toPerson(record.get('p') as Node))
   } finally {
     await session.close()
   }
@@ -373,7 +302,7 @@ export async function getDocuments(casoSlug: string, tiers?: ConfidenceTier[]): 
     )
 
     return result.records.map((record: Neo4jRecord) => ({
-      ...toDocumentProps(record.get('d') as Node),
+      ...toDocument(record.get('d') as Node),
       mentionedPersonCount: (record.get('personCount') as { low: number }).low ?? 0,
     }))
   } finally {
@@ -401,7 +330,7 @@ export async function getLegalCases(casoSlug: string): Promise<EpsteinLegalCase[
       TX_CONFIG,
     )
 
-    return result.records.map((record: Neo4jRecord) => toLegalCaseProps(record.get('lc') as Node))
+    return result.records.map((record: Neo4jRecord) => toLegalCase(record.get('lc') as Node))
   } finally {
     await session.close()
   }
@@ -442,7 +371,7 @@ export async function getDocumentBySlug(
     if (docResult.records.length === 0) return null
 
     const docNode = docResult.records[0].get('d') as Node
-    const document = toDocumentProps(docNode)
+    const document = toDocument(docNode)
 
     // 2. Get mentioned persons
     const personsResult = await session.run(
@@ -453,7 +382,7 @@ export async function getDocumentBySlug(
       TX_CONFIG,
     )
     const mentionedPersons = personsResult.records.map(
-      (r: Neo4jRecord) => toPersonProps(r.get('p') as Node),
+      (r: Neo4jRecord) => toPerson(r.get('p') as Node),
     )
 
     // 3. Get legal cases
@@ -465,7 +394,7 @@ export async function getDocumentBySlug(
       TX_CONFIG,
     )
     const legalCases = casesResult.records.map(
-      (r: Neo4jRecord) => toLegalCaseProps(r.get('lc') as Node),
+      (r: Neo4jRecord) => toLegalCase(r.get('lc') as Node),
     )
 
     // 4. Get related events
@@ -477,7 +406,7 @@ export async function getDocumentBySlug(
       TX_CONFIG,
     )
     const relatedEvents = eventsResult.records.map(
-      (r: Neo4jRecord) => toEventProps(r.get('e') as Node),
+      (r: Neo4jRecord) => toEvent(r.get('e') as Node),
     )
 
     // 5. Get cross-referenced documents (share at least one person)
@@ -494,7 +423,7 @@ export async function getDocumentBySlug(
       TX_CONFIG,
     )
     const relatedDocuments = crossRefResult.records.map(
-      (r: Neo4jRecord) => toDocumentProps(r.get('other') as Node),
+      (r: Neo4jRecord) => toDocument(r.get('other') as Node),
     )
 
     return { document, mentionedPersons, legalCases, relatedEvents, relatedDocuments }

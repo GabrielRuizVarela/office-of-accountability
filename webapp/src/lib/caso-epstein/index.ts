@@ -29,6 +29,7 @@ export {
 } from './types'
 
 export {
+  toInvestigationNode,
   toPerson,
   toFlight,
   toLocation,
