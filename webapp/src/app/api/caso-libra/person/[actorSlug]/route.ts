@@ -1,32 +1,21 @@
 /**
  * API route: GET /api/caso-libra/person/[actorSlug]
- * Returns person data with graph, events, and documents.
+ * 301 redirect to the unified endpoint at /api/caso/caso-libra/person/[actorSlug].
  */
 
-import { NextResponse } from 'next/server'
-
-import { getPersonBySlug } from '@/lib/caso-libra'
+import { type NextRequest, NextResponse } from 'next/server'
 
 export async function GET(
-  _request: Request,
+  request: NextRequest,
   { params }: { params: Promise<{ actorSlug: string }> },
 ): Promise<Response> {
   const { actorSlug } = await params
+  const target = new URL(`/api/caso/caso-libra/person/${encodeURIComponent(actorSlug)}`, request.url)
 
-  if (!actorSlug || actorSlug.length > 200) {
-    return NextResponse.json({ error: 'Invalid slug' }, { status: 400 })
-  }
+  const { searchParams } = request.nextUrl
+  searchParams.forEach((value, key) => {
+    target.searchParams.set(key, value)
+  })
 
-  try {
-    const data = await getPersonBySlug(actorSlug)
-
-    if (!data) {
-      return NextResponse.json({ error: 'Person not found' }, { status: 404 })
-    }
-
-    return NextResponse.json(data)
-  } catch (error) {
-    console.error('Failed to fetch person:', error)
-    return NextResponse.json({ error: 'Internal error' }, { status: 500 })
-  }
+  return NextResponse.redirect(target, 301)
 }

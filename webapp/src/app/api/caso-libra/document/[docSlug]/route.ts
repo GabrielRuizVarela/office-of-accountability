@@ -1,32 +1,21 @@
 /**
  * API route: GET /api/caso-libra/document/[docSlug]
- * Returns document data with connected entities.
+ * 301 redirect to the unified endpoint at /api/caso/caso-libra/document/[docSlug].
  */
 
-import { NextResponse } from 'next/server'
-
-import { getDocumentBySlug } from '@/lib/caso-libra'
+import { type NextRequest, NextResponse } from 'next/server'
 
 export async function GET(
-  _request: Request,
+  request: NextRequest,
   { params }: { params: Promise<{ docSlug: string }> },
 ): Promise<Response> {
   const { docSlug } = await params
+  const target = new URL(`/api/caso/caso-libra/document/${encodeURIComponent(docSlug)}`, request.url)
 
-  if (!docSlug || docSlug.length > 200) {
-    return NextResponse.json({ error: 'Invalid slug' }, { status: 400 })
-  }
+  const { searchParams } = request.nextUrl
+  searchParams.forEach((value, key) => {
+    target.searchParams.set(key, value)
+  })
 
-  try {
-    const data = await getDocumentBySlug(docSlug)
-
-    if (!data) {
-      return NextResponse.json({ error: 'Document not found' }, { status: 404 })
-    }
-
-    return NextResponse.json(data)
-  } catch (error) {
-    console.error('Failed to fetch document:', error)
-    return NextResponse.json({ error: 'Internal error' }, { status: 500 })
-  }
+  return NextResponse.redirect(target, 301)
 }
