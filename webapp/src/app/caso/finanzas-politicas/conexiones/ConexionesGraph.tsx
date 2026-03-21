@@ -438,27 +438,24 @@ export function ConexionesGraph() {
       }
 
       const isHovered = hoveredNode === gNode.id
-      // Label visibility: progressive by zoom level
-      // - Always: selected, search match, hovered
-      // - Zoom 1.0+: key nodes (offshore, 4+ datasets)
-      // - Zoom 1.5+: politicians, persons
-      // - Zoom 2.5+: organizations, events
-      // - Zoom 3.5+: everything
-      const showLabel = isSelected || isSearchMatch || isHovered ||
-        (isKeyNode && globalScale > 1.0) ||
-        (gNode.type === 'Politician' && globalScale > 1.5) ||
-        (gNode.type === 'Person' && globalScale > 1.5) ||
-        ((gNode.type === 'Organization' || gNode.type === 'Company') && globalScale > 2.5) ||
-        (gNode.type === 'Event' && globalScale > 2.5) ||
-        globalScale > 3.5
+      // Labels: always show for key nodes but small; grow on zoom
+      const showLabel = isSelected || isSearchMatch || isHovered || isKeyNode ||
+        (gNode.type === 'Politician' && globalScale > 0.8) ||
+        (gNode.type === 'Person' && globalScale > 0.8) ||
+        ((gNode.type === 'Organization' || gNode.type === 'Company') && globalScale > 1.2) ||
+        (gNode.type === 'Event' && globalScale > 1.5) ||
+        globalScale > 2
       if (showLabel && !dimmed) {
-        const fontSize = Math.max(10 / globalScale, 2)
-        ctx.font = `${isSelected || isSearchMatch ? 'bold ' : ''}${fontSize}px sans-serif`
+        // Small labels at default zoom, readable when zoomed
+        const baseFontSize = (isSelected || isHovered) ? 12 : isKeyNode ? 9 : 7
+        const fontSize = Math.max(baseFontSize / globalScale, 1.5)
+        ctx.font = `${isSelected || isSearchMatch || isHovered ? 'bold ' : ''}${fontSize}px sans-serif`
         ctx.textAlign = 'center'
         ctx.textBaseline = 'top'
 
-        // Text background for readability — truncate long names
-        const label = gNode.name.length > 20 ? gNode.name.slice(0, 19) + '\u2026' : gNode.name
+        // Text background for readability
+        const maxLen = globalScale > 1.5 ? 25 : 18
+        const label = gNode.name.length > maxLen ? gNode.name.slice(0, maxLen - 1) + '\u2026' : gNode.name
         const textWidth = ctx.measureText(label).width
         ctx.fillStyle = 'rgba(0, 0, 0, 0.6)'
         ctx.fillRect(x - textWidth / 2 - 1, y + radius + 1, textWidth + 2, fontSize + 2)
