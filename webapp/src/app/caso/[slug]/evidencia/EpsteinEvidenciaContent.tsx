@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * Caso Epstein — Evidence (documents/evidence page).
+ * Caso Epstein — Evidence content.
  *
  * Grid of document cards built from EVIDENCE_DOCS in investigation-data.ts.
  */
@@ -55,11 +55,12 @@ const VERIFICATION_CLS: Record<VerificationStatus, string> = {
 }
 
 // ---------------------------------------------------------------------------
-// Page
+// Component
 // ---------------------------------------------------------------------------
 
-export default function EvidenciaPage() {
+export function EpsteinEvidenciaContent({ slug }: { readonly slug: string }) {
   const { lang } = useLanguage()
+  const basePath = `/caso/${slug}`
 
   const sortedDocs = [...EVIDENCE_DOCS].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
@@ -157,7 +158,7 @@ export default function EvidenciaPage() {
         <p className="mt-2 text-xs leading-relaxed text-zinc-500">
           {t.additionalDesc[lang]}{' '}
           <Link
-            href="/caso/caso-epstein/grafo"
+            href={`${basePath}/grafo`}
             className="text-red-400 underline decoration-red-400/30 hover:text-red-300"
           >
             {t.graphExplorer[lang]}
@@ -169,19 +170,19 @@ export default function EvidenciaPage() {
       {/* Navigation */}
       <nav className="flex flex-col gap-3 border-t border-zinc-800 pt-8 sm:flex-row">
         <Link
-          href="/caso/caso-epstein/resumen"
+          href={`${basePath}/resumen`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
           {t.navSummary[lang]}
         </Link>
         <Link
-          href="/caso/caso-epstein/cronologia"
+          href={`${basePath}/cronologia`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
           {t.navTimeline[lang]}
         </Link>
         <Link
-          href="/caso/caso-epstein/investigacion"
+          href={`${basePath}/investigacion`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
           {t.navInvestigation[lang]}

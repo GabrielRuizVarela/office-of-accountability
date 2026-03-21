@@ -12,6 +12,7 @@ import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
 import { useParams } from 'next/navigation'
 
 import { useLanguage, type Lang } from '@/lib/language-context'
+import { EpsteinInvestigacionContent } from './EpsteinInvestigacionContent'
 import {
   FACTCHECK_ITEMS,
   TIMELINE_EVENTS,
@@ -120,6 +121,17 @@ function formatDate(dateStr: string, lang: Lang): string {
 // ---------------------------------------------------------------------------
 
 export default function InvestigacionPage() {
+  const params = useParams()
+  const pageSlug = params.slug as string
+
+  if (pageSlug === 'caso-epstein') {
+    return <EpsteinInvestigacionContent slug={pageSlug} />
+  }
+
+  return <LibraInvestigacionContent />
+}
+
+function LibraInvestigacionContent() {
   const { lang } = useLanguage()
   const [activeSection, setActiveSection] = useState('hero')
   const [factcheckFilter, setFactcheckFilter] = useState<FactcheckStatus | null>(null)

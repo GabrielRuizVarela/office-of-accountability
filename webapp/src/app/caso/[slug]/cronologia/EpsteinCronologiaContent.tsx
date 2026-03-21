@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * Caso Epstein — Timeline (full timeline page).
+ * Caso Epstein — Timeline content.
  *
  * Vertical timeline layout with category-colored badges,
  * built from TIMELINE_EVENTS in investigation-data.ts.
@@ -49,11 +49,12 @@ const CATEGORY_CLS: Record<InvestigationCategory, { cls: string; dotCls: string 
 }
 
 // ---------------------------------------------------------------------------
-// Page
+// Component
 // ---------------------------------------------------------------------------
 
-export default function CronologiaPage() {
+export function EpsteinCronologiaContent({ slug }: { readonly slug: string }) {
   const { lang } = useLanguage()
+  const basePath = `/caso/${slug}`
 
   const eventsByYear = new Map<string, typeof TIMELINE_EVENTS>()
   for (const event of TIMELINE_EVENTS) {
@@ -159,19 +160,19 @@ export default function CronologiaPage() {
       {/* Navigation */}
       <nav className="flex flex-col gap-3 border-t border-zinc-800 pt-8 sm:flex-row">
         <Link
-          href="/caso/caso-epstein/resumen"
+          href={`${basePath}/resumen`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
           {t.navSummary[lang]}
         </Link>
         <Link
-          href="/caso/caso-epstein/investigacion"
+          href={`${basePath}/investigacion`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
           {t.navInvestigation[lang]}
         </Link>
         <Link
-          href="/caso/caso-epstein/evidencia"
+          href={`${basePath}/evidencia`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
           {t.navEvidence[lang]}

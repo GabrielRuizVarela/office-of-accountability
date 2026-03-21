@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * Caso Epstein — Summary (narrative summary).
+ * Caso Epstein — Summary content (narrative summary).
  *
  * The story from NARRATIVE-EPSTEIN.md presented as 12 readable chapters.
  * Pure prose — no data grids, stat boxes, or factcheck badges.
@@ -11,8 +11,6 @@
 import Link from 'next/link'
 
 import { useLanguage } from '@/lib/language-context'
-
-const SLUG = 'caso-epstein'
 
 // ---------------------------------------------------------------------------
 // Translations
@@ -147,11 +145,12 @@ const CHAPTERS: {
 ]
 
 // ---------------------------------------------------------------------------
-// Page
+// Component
 // ---------------------------------------------------------------------------
 
-export default function ResumenPage() {
+export function EpsteinResumenContent({ slug }: { readonly slug: string }) {
   const { lang } = useLanguage()
+  const basePath = `/caso/${slug}`
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-12">
@@ -168,13 +167,13 @@ export default function ResumenPage() {
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
           <Link
-            href={`/caso/${SLUG}/investigacion`}
+            href={`${basePath}/investigacion`}
             className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-500"
           >
             {t.viewData[lang]}
           </Link>
           <Link
-            href={`/caso/${SLUG}/cronologia`}
+            href={`${basePath}/cronologia`}
             className="rounded-lg border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500 hover:text-zinc-100"
           >
             {t.timeline[lang]}
@@ -225,13 +224,13 @@ export default function ResumenPage() {
       {/* Navigation */}
       <nav className="mt-10 flex flex-col gap-3 border-t border-zinc-800 pt-8 sm:flex-row">
         <Link
-          href={`/caso/${SLUG}`}
+          href={basePath}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
           {t.navOverview[lang]}
         </Link>
         <Link
-          href={`/caso/${SLUG}/investigacion`}
+          href={`${basePath}/investigacion`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
           {t.navData[lang]}

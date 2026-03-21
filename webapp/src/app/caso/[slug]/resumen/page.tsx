@@ -1,13 +1,13 @@
 'use client'
 
 /**
- * Caso Libra — Narrative summary page.
- *
- * A long-form, bilingual investigative journalism piece that walks readers
- * through the complete story of the $LIBRA token scandal.
+ * Narrative summary page — routes to case-specific content based on slug.
  */
 
+import { useParams } from 'next/navigation'
+
 import { useLanguage, type Lang } from '@/lib/language-context'
+import { EpsteinResumenContent } from './EpsteinResumenContent'
 
 interface StatCard {
   readonly value: string
@@ -326,6 +326,17 @@ const sources: readonly Source[] = [
 // ---------------------------------------------------------------------------
 
 export default function ResumenPage() {
+  const params = useParams()
+  const pageSlug = params.slug as string
+
+  if (pageSlug === 'caso-epstein') {
+    return <EpsteinResumenContent slug={pageSlug} />
+  }
+
+  return <LibraResumenContent />
+}
+
+function LibraResumenContent() {
   const { lang } = useLanguage()
 
   return (

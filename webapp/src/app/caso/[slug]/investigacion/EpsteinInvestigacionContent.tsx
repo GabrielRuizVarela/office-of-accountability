@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * Caso Epstein — Investigation (structured evidence/data page).
+ * Caso Epstein — Investigation content (structured evidence/data).
  *
  * Displays factcheck items, actors, money flows, evidence documents,
  * and government responses. Data-focused — distinct from resumen (narrative)
@@ -99,19 +99,18 @@ function formatUSD(amount: number): string {
 }
 
 // ---------------------------------------------------------------------------
-// Page
+// Component
 // ---------------------------------------------------------------------------
 
-export default function InvestigacionPage() {
+export function EpsteinInvestigacionContent({ slug }: { readonly slug: string }) {
   const { lang } = useLanguage()
+  const basePath = `/caso/${slug}`
 
   const confirmedCount = FACTCHECK_ITEMS.filter((i) => i.status === 'confirmed').length
   const allegedCount = FACTCHECK_ITEMS.filter((i) => i.status === 'alleged').length
   const underInvestigationCount = FACTCHECK_ITEMS.filter(
     (i) => i.status === 'under_investigation',
   ).length
-
-  const l = (key: 'en' | 'es') => key === lang
 
   return (
     <div className="mx-auto max-w-6xl space-y-14 px-4 py-12 pb-16">
@@ -129,7 +128,7 @@ export default function InvestigacionPage() {
           {ACTORS.length} {t.documentedActors[lang]} &middot; {EVIDENCE_DOCS.length} {t.evidenceDocs[lang]}
         </p>
         <div className="mt-4">
-          <Link href="/caso/caso-epstein/resumen" className="text-sm text-red-400 hover:text-red-300">
+          <Link href={`${basePath}/resumen`} className="text-sm text-red-400 hover:text-red-300">
             {t.readNarrative[lang]}
           </Link>
         </div>
@@ -314,19 +313,19 @@ export default function InvestigacionPage() {
       {/* Navigation */}
       <nav className="flex flex-col gap-3 border-t border-zinc-800 pt-8 sm:flex-row">
         <Link
-          href="/caso/caso-epstein/resumen"
+          href={`${basePath}/resumen`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
           {t.navSummary[lang]}
         </Link>
         <Link
-          href="/caso/caso-epstein/cronologia"
+          href={`${basePath}/cronologia`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
           {t.navTimeline[lang]}
         </Link>
         <Link
-          href="/caso/caso-epstein/evidencia"
+          href={`${basePath}/evidencia`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
           {t.navEvidence[lang]}
