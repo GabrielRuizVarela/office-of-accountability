@@ -199,6 +199,16 @@ const UNIQUE_CONSTRAINTS = [
     label: 'MiroFishConfig',
     property: 'id',
   },
+  {
+    name: 'orchestrator_task_id_unique',
+    label: 'OrchestratorTask',
+    property: 'id',
+  },
+  {
+    name: 'orchestrator_state_id_unique',
+    label: 'OrchestratorState',
+    property: 'id',
+  },
 ] as const
 
 /** Full-text indexes for search across text fields */
@@ -401,6 +411,22 @@ const BTREE_INDEXES = [
     name: 'organization_slug_index',
     label: 'Organization',
     property: 'slug',
+  },
+  // Orchestrator indexes (M10 — investigation orchestrator)
+  {
+    name: 'orchestrator_task_investigation_id_index',
+    label: 'OrchestratorTask',
+    property: 'investigation_id',
+  },
+  {
+    name: 'orchestrator_task_status_index',
+    label: 'OrchestratorTask',
+    property: 'status',
+  },
+  {
+    name: 'orchestrator_state_investigation_id_index',
+    label: 'OrchestratorState',
+    property: 'investigation_id',
   },
 ] as const
 

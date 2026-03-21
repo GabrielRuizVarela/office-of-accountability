@@ -222,3 +222,50 @@ export const miroFishConfigSchema = z.object({
 })
 
 export type MiroFishConfig = z.infer<typeof miroFishConfigSchema>
+
+// ---------------------------------------------------------------------------
+// 11. OrchestratorTask — work item in the investigation orchestrator queue
+// ---------------------------------------------------------------------------
+
+export const orchestratorTaskStatuses = [
+  'pending',
+  'assigned',
+  'running',
+  'completed',
+  'failed',
+] as const
+export type OrchestratorTaskStatus = (typeof orchestratorTaskStatuses)[number]
+
+export const orchestratorTaskSchema = z.object({
+  id: z.string().min(1),
+  investigation_id: z.string().min(1),
+  type: z.string().min(1),
+  target: z.string().min(1),
+  priority: z.number().int().min(1).max(10),
+  status: z.enum(orchestratorTaskStatuses),
+  assigned_to: z.string().min(1).optional(),
+  dependencies: z.array(z.string().min(1)),
+  result_summary: z.string().optional(),
+  created_at: z.string(),
+  completed_at: z.string().optional(),
+})
+
+export type OrchestratorTask = z.infer<typeof orchestratorTaskSchema>
+
+// ---------------------------------------------------------------------------
+// 12. OrchestratorState — runtime state of the investigation orchestrator
+// ---------------------------------------------------------------------------
+
+export const orchestratorStateSchema = z.object({
+  id: z.string().min(1),
+  investigation_id: z.string().min(1),
+  active_tasks: z.number().int().min(0),
+  completed_tasks: z.number().int().min(0),
+  agent_count: z.number().int().min(0),
+  current_focus: z.string().optional(),
+  last_synthesis_at: z.string().optional(),
+  created_at: z.string(),
+  updated_at: z.string(),
+})
+
+export type OrchestratorState = z.infer<typeof orchestratorStateSchema>
