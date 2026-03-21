@@ -1,0 +1,351 @@
+{
+  "meta": {
+    "title": "Argentine Media Ownership Map — Wave 1",
+    "date": "2026-03-21",
+    "description": "Cross-ownership of media, energy, telecom, and finance sectors; political connections; offshore entities; pauta oficial flows."
+  },
+  "groups": [
+    {
+      "id": "grupo-clarin",
+      "name": "Grupo Clarín S.A.",
+      "ticker": "GCLA.BA",
+      "shareholders": [
+        { "name": "Héctor Magnetto", "pct": 29.8, "role": "CEO", "notes": "Controls via trust in New York" },
+        { "name": "Noble Herrera family", "pct": 24.85, "notes": "Adopted children of Ernestina Herrera de Noble; trust in New York" },
+        { "name": "José Antonio Aranda", "pct": 10.3 },
+        { "name": "Lucio Pagliaro", "pct": 10.2 }
+      ],
+      "holding_structure": "Two trusts in New York (Noble family, Magnetto) + GS Unidos LLC (Delaware) for Herrera de Noble family. Bicephalous: Grupo Clarín S.A. (media/content) and Cablevisión Holding (telecom/networks via Telecom Argentina).",
+      "media_assets": {
+        "newspapers": ["Clarín", "Olé", "La Razón", "Muy"],
+        "magazines": ["Ñ", "ARQ", "Genios", "Elle", "Jardín"],
+        "tv_channels": ["TN (Todo Noticias)", "Volver", "Canal M", "TyC Sports", "Canal Rural", "Carburando"],
+        "radio": ["Radio Mitre (AM 790)", "La 100 (FM 99.9)", "Cien Radios network"],
+        "digital": ["clarin.com", "ole.com.ar", "tn.com.ar"],
+        "printing": ["AGR (Artes Gráficas Rioplatense)", "AGL", "Impripost"],
+        "news_agencies": ["DyN (Diarios y Noticias)"],
+        "paper": ["Papel Prensa S.A. (shared with La Nación and state)"]
+      },
+      "non_media_assets": {
+        "telecom": [
+          "Telecom Argentina (majority via Cablevisión Holding)",
+          "Personal (mobile)",
+          "Fibertel (ISP)",
+          "Cablevisión (cable TV/internet)"
+        ],
+        "pending_acquisition": {
+          "target": "Telefónica Argentina (Movistar)",
+          "price_usd": 1245000000,
+          "status": "Suspended by Milei government; ENACOM/CNDC review pending as of March 2026",
+          "monopoly_risk": "Would give ~61% mobile market, ~69% fixed telephony"
+        }
+      },
+      "political_connections": [
+        "Magnetto negotiated judicial appointments with Macri government (Lake Escondido scandal)",
+        "War with Kirchner governments over Ley de Medios (2009-2015)",
+        "Telefónica acquisition suspended by Milei government (2025) — rare friction with libertarian administration",
+        "Controlled newspaper paper supply (Papel Prensa) giving leverage over competitors",
+        "Network of links with judges and prosecutors documented"
+      ],
+      "offshore": [
+        { "entity": "Trust in New York", "holder": "Héctor Magnetto", "source": "Pandora Papers / elDiarioAR" },
+        { "entity": "Trust in New York", "holder": "Noble family" },
+        { "entity": "GS Unidos LLC", "jurisdiction": "Delaware", "holder": "Herrera de Noble family" },
+        { "entity": "Pandora Papers listing", "holder": "José Antonio Aranda", "source": "ICIJ / elDiarioAR" }
+      ],
+      "pauta_oficial": {
+        "2023": "Over USD 11 million in official advertising (largest recipient)",
+        "2024_national": "10.7% of total national pauta (largest conglomerate share), but national spending cut to 1.2% of 2023 levels under Milei",
+        "2024_caba": "10.7% of Buenos Aires City advertising budget (Jorge Macri spent ~$100 billion ARS total)",
+        "top_outlets": ["Radio Mitre", "Artear portals", "Clarín.com", "FM La 100"],
+        "notes": "YPF 'paraestatal' advertising (~$100B ARS in 2024) became main channel after Milei cut direct pauta"
+      },
+      "sources": [
+        "https://argentina.mom-gmr.org/es/propietarios/grupos-mediaticos/detail/company/company/show/grupo-clarin/",
+        "https://es.wikipedia.org/wiki/Anexo:Empresas_del_Grupo_Clar%C3%ADn",
+        "https://www.marketscreerer.com/quote/stock/GRUPO-CLAR-N-S-A-9059919/company/",
+        "https://www.eldiarioar.com/politica/pandora-papers/magnetto-fontevecchia-saguier-aranda-duenos-principales-medios-argentina-han-abierto-sociedades-paraisos-fiscales-uruguay_1_8403360.html",
+        "https://www.laizquierdadiario.com/Un-estudio-revelo-que-el-Grupo-Clarin-recibio-mas-de-11-millones-de-dolares-en-publicidad-oficial",
+        "https://chequeado.com/el-explicador/el-gobierno-de-javier-milei-redujo-al-minimo-la-publicidad-oficial-a-excepcion-de-la-pauta-de-ypf-que-se-mantuvo-igual-que-en-2023/",
+        "https://puntoapunto.com.ar/grupo-clarin-compro-telefonica-movistar-pero-el-gobierno-se-opone-por-monopolio/",
+        "https://www.infocielo.com/politica-y-economia/por-que-magnetto-odia-tanto-a-cristina-kirchner-los-hitos-que-marcaron-esa-trama"
+      ]
+    },
+    {
+      "id": "grupo-america",
+      "name": "Grupo América",
+      "formerly": "Grupo Uno / Grupo Vila-Manzano",
+      "shareholders": [
+        { "name": "Claudio Belocopitt", "pct": 40, "notes": "Owner of Swiss Medical (private health)" },
+        { "name": "Daniel Vila", "role": "President", "notes": "Mendoza real-estate dynasty (Dalvian)" },
+        { "name": "José Luis Manzano", "notes": "Ex-Minister of Interior under Menem (1991-92); Integra Capital founder" },
+        { "name": "Gustavo Scaglione", "notes": "Entered Nov 2024, acquired Gabriel Hochbaum's stake" }
+      ],
+      "media_assets": {
+        "tv_channels": ["América TV", "A24", "Telefe (acquired Oct 2025 from Paramount/Viacom)"],
+        "radio": ["Radio La Red", "FM Blue"],
+        "newspapers": ["El Cronista Comercial", "Diario UNO (Mendoza, Santa Fe, Entre Ríos)"],
+        "notes": "40 companies in 17 provinces; second-largest media group"
+      },
+      "non_media_assets": {
+        "energy": [
+          "Edenor (largest electricity distributor in South America, acquired 2021 for ~USD 200M)",
+          "EDEMSA (Mendoza electricity)",
+          "Edelar (La Rioja electricity)",
+          "Metrogas (natural gas distribution)",
+          "Andes Energía / Phoenix Global Resources (oil, 24 licenses, 13 with YPF, 6 in Vaca Muerta)",
+          "Andina PLC",
+          "Pamar S.A. (gasduct construction)"
+        ],
+        "mining": [
+          "243,000 hectares of lithium salt flats in Catamarca and Jujuy",
+          "Potash project in Mendoza (reactivated)",
+          "Volcan Cia Minera SAA (Peru, acquired from Glencore)"
+        ],
+        "telecom_international": [
+          "Telefónica del Perú (99.3% acquired April 2025, with Mauricio Filiberti)"
+        ],
+        "healthcare": [
+          "Swiss Medical Group (Belocopitt — one of Argentina's largest private health providers)"
+        ],
+        "media_international": [
+          "El Universo (Ecuador, acquired Feb 2026 by Manzano)"
+        ]
+      },
+      "political_connections": [
+        "Manzano: Minister of Interior under Menem (1991-92), known for phrase 'robo para la corona'",
+        "Close relationship with Sergio Massa (invited to private events)",
+        "Edenor purchase approved by Fernández government (ENRE Resolution 207/2021)",
+        "Vila-Manzano attempted to acquire Grupo Indalo media during Macri persecution of López/De Sousa",
+        "Bloomberg Línea named both Vila and Manzano among most influential people in Latin America",
+        "Manzano described as 'adapting to every government' — menemista, then Kirchnerista relationships, now Milei-era expansion"
+      ],
+      "offshore": [],
+      "sources": [
+        "https://argentina.mom-gmr.org/es/propietarios/grupos-mediaticos/detail/company//grupo-america-1/",
+        "https://es.wikipedia.org/wiki/Grupo_Vila-Manzano",
+        "https://integracapital.com/jose-luis-manzano/",
+        "https://econojournal.com.ar/2021/02/jose-luis-manzano-el-renacido-la-historia-del-hombre-que-se-quedo-con-edenor/",
+        "https://www.eldiarioar.com/politica/jose-luis-manzano-senor-litio-acumula-243-000-hectareas-salares-explotar-negocio-minero_1_10104893.html",
+        "https://www.a24.com/actualidad/el-grupo-america-desembarca-telefe-la-mano-los-accionistas-scaglione-vila-manzano-belocopitt-y-avila-n1490513",
+        "https://www.larepublica.ec/blog/2026/02/12/quien-es-jose-luis-manzano-el-millonario-empresario-dueno-de-diario-el-universo/"
+      ]
+    },
+    {
+      "id": "grupo-indalo",
+      "name": "Grupo Indalo",
+      "shareholders": [
+        { "name": "Cristóbal López", "notes": "Patagonian businessman; acquitted in Oil Combustibles case (Oct 2023)" },
+        { "name": "Fabián De Sousa", "notes": "Former partner; López took control of Indalo Medios, De Sousa separated" }
+      ],
+      "media_assets": {
+        "tv_channels": ["C5N (news)", "Canal 9 Comodoro Rivadavia"],
+        "radio": ["Radio 10", "FM Pop", "FM Mega", "FM Vale", "FM Del Mar"],
+        "newspapers": ["Ámbito Financiero (60%)", "El Patagónico"],
+        "production": ["Ideas del Sur (Marcelo Tinelli's production company, acquired 2013)"],
+        "notes": "All purchased from Daniel Hadad in 2012 for USD 49.5M (C5N + Radio 10 + 4 FMs). Currently managed by official receivers."
+      },
+      "non_media_assets": {
+        "fuel": ["Oil Combustibles (340 gas stations; went bankrupt, bankruptcy finalized Aug 2021 after 98% creditor approval)"],
+        "gaming": ["Casino operations across Patagonia"],
+        "construction": ["Construction companies"],
+        "hotels": ["Hotel properties"],
+        "notes": "At peak, 170 companies across fuel, construction, media, food, casinos, hotels, banking"
+      },
+      "political_connections": [
+        "Considered 'empresario K' — closely aligned with Kirchner governments",
+        "Oil Combustibles benefited from deferred tax payments on fuel transfer tax (ITC) during Kirchner era",
+        "AFIP head Ricardo Echegaray allowed repeated refinancing of tax debt",
+        "Macri government prosecuted López and De Sousa, both imprisoned (later acquitted Oct 2023)",
+        "Vila-Manzano attempted hostile takeover of Indalo media during Macri-era persecution",
+        "Magnetto/Macri alliance allegedly sought to acquire C5N"
+      ],
+      "tax_debt": {
+        "total": "Over $8.2 billion ARS",
+        "oil_combustibles": "$6.7 billion ARS (fuel transfer tax ITC withheld but not remitted)",
+        "media_outlets": "$1.4 billion ARS (C5N, Radio 10, others)",
+        "outcome": "Acquitted — court ruled no crime committed by Oil Combustibles or shareholders"
+      },
+      "current_status": "López and De Sousa split partnership. Grupo Indalo preparing relaunch. Companies still partially under official receivers.",
+      "sources": [
+        "https://argentina.mom-gmr.org/en/owners/individual-owners/detail/owner//cristobal-lopez-1/",
+        "https://es.wikipedia.org/wiki/Crist%C3%B3bal_L%C3%B3pez_(empresario)",
+        "https://www.lanacion.com.ar/politica/cuales-son-las-empresas-de-cristobal-lopez-nid2133711/",
+        "https://www.iprofesional.com/notas/258704-afip-deuda-cristina-kirchner-cristobal-lopez-crisis-venta-hadad-quiebra-kirchnerismo-mega-compra-c5n-radio-10-grupo-indalo-pop-fernando-bravo-Por-que-Cristobal-Lopez-compro-C5N-y-radio-10-la-confesion-del-empresario-K-a-un-periodista",
+        "https://www.lanacion.com.ar/politica/confirman-la-asbolucion-de-cristobal-lopez-y-su-socio-en-el-caso-de-oil-combustibles-nid23102023/",
+        "https://www.iprofesional.com/negocios/359183-los-duenos-de-indalo-preparan-el-relanzamiento-del-grupo"
+      ]
+    },
+    {
+      "id": "grupo-la-nacion",
+      "name": "S.A. La Nación",
+      "shareholders": [
+        { "name": "Saguier family", "pct": 62.95, "notes": "Via MNMS Holding S.A. (Matilde Noble Mitre de Saguier Holding)" },
+        { "name": "Julio Saguier", "role": "President of board" },
+        { "name": "Alejandro Saguier", "role": "Vice-president of board" },
+        { "name": "Fernán Saguier", "role": "Director (since 2021), previously sub-director for 15 years" },
+        { "name": "Luis María Julio Saguier", "role": "Board member" }
+      ],
+      "holding_structure": "MNMS Holding S.A. controls 62.95% of shares. Saguiers purchased majority from Mitre family in the 1990s. Matilde Noble Mitre de Saguier (Julio/Alejandro's mother) is niece of Roberto Noble, founder of Clarín — cross-family link.",
+      "media_assets": {
+        "newspapers": ["La Nación (founded 1870)"],
+        "digital": ["lanacion.com.ar"],
+        "paper": ["Papel Prensa S.A. (shared with Clarín and state)"],
+        "notes": "La Nación journalists (Hugo Alconada Mon) were part of ICIJ Pandora Papers team but delayed reporting on Saguier offshore"
+      },
+      "offshore": [
+        { "entity": "Danias Holdings Ltd", "jurisdiction": "British Virgin Islands", "holder": "Alejandro Saguier", "registered": "2012-08-09", "shares": "50,000 in joint tenancy with wife", "source": "Pandora Papers / ICIJ" },
+        { "entity": "Matilde de Saguier Corp", "jurisdiction": "British Virgin Islands", "registered": "1998", "holder": "Saguier family", "purpose": "Controls family share within MNMS Holding" }
+      ],
+      "political_connections": [
+        "Historically conservative/liberal editorial line, aligned with agricultural/business elite",
+        "Saguier family connection to Noble family (Clarín founder)",
+        "Alejandro Saguier declared offshore via Macri's 2016 tax amnesty (blanqueo)",
+        "Saguier and Escribano (La Nación directors) received partial state salaries"
+      ],
+      "sources": [
+        "https://argentina.mom-gmr.org/es/propietarios/propietarios-individuales/detail/owner/owner/show/saguier-family/",
+        "https://www.eldiarioar.com/politica/pandora-papers/magnetto-fontevecchia-saguier-aranda-duenos-principales-medios-argentina-han-abierto-sociedades-paraisos-fiscales-uruguay_1_8403360.html",
+        "https://www.eldestapeweb.com/politica/pandora-papers/pandora-papers-magnetto-saguier-aranda-y-fontevecchia-tambien-tienen-cuentas-en-guaridas-fiscales-2021101812420",
+        "https://lavaca.org/notas/ojo-con-los-medios-grupo-la-nacion/",
+        "https://www.lanacion.com.ar/sociedad/fernan-saguier-es-nuevo-director-la-nacion-nid2513760/"
+      ]
+    },
+    {
+      "id": "grupo-octubre",
+      "name": "Grupo Octubre S.A.",
+      "shareholders": [
+        { "name": "Víctor Santa María", "role": "Coordinator General", "notes": "Secretary General of SUTERH (building workers union)" },
+        { "name": "SUTERH", "notes": "Sindicato Único de Trabajadores de Edificios de Renta y Horizontal — union owns group via Fundación Octubre de Trabajadores" }
+      ],
+      "media_assets": {
+        "tv_channels": ["elnueve (Canal 9)", "IP (Información Periodística)"],
+        "radio": ["AM 750", "Radio Blackie FM 89.1", "Mucha Radio FM 94.7", "Like FM 97.1", "Aspen FM 102.3", "FM Malena", "FM Palermo I", "FM Palermo II"],
+        "newspapers": ["Página/12"],
+        "magazines": ["Caras y Caretas", "Revista PIN", "El Planeta Urbano", "Diario Z"],
+        "other": ["Editorial Octubre", "FilmarFondeart (film production)"],
+        "advertising": ["Two advertising companies acquired 2022"]
+      },
+      "non_media_assets": {
+        "education": ["UMET (Universidad Metropolitana para la Educación y el Trabajo)", "ISO (Instituto Superior Octubre)"],
+        "cultural": ["Centro Cultural Caras y Caretas"],
+        "union": ["SUTERH (building workers' union, Buenos Aires)"]
+      },
+      "political_connections": [
+        "Santa María is a Peronist union leader — SUTERH represents building doormen/maintenance workers",
+        "Close alignment with Kirchnerism and Peronist governments",
+        "Página/12 editorial line strongly pro-Kirchner",
+        "Union funds used to build media empire — raises conflict of interest questions",
+        "Grupo Octubre among top pauta oficial recipients under Alberto Fernández government"
+      ],
+      "financial_investigations": {
+        "personal_wealth_abroad": "Over USD 12 million (Santa María family); USD 6 million (Santa María personally) per UIF investigation",
+        "suspicious_operations": "Investigated for millions in transfers to union supplier Andrés Stangalini",
+        "labor_issues_2025": "Non-payment of wages at Página/12 for months; 50-60 layoffs at IP; salary arrears at Canal 9"
+      },
+      "sources": [
+        "https://es.wikipedia.org/wiki/V%C3%ADctor_Santa_Mar%C3%ADa",
+        "https://www.lanacion.com.ar/espectaculos/el-sindicalista-victor-santa-maria-suma-dos-empresas-de-publicidad-al-grupo-octubre-nid31052022/",
+        "https://www.letrap.com.ar/nota/2021-1-23-10-45-0-encargado-de-un-imperio",
+        "https://www.cronista.com/economiapolitica/Investigan-operaciones-millonarias-del-sindicalista-Victor-Santa-Maria-20180107-0002.html",
+        "https://en.wikipedia.org/wiki/Grupo_Octubre"
+      ]
+    },
+    {
+      "id": "grupo-perfil",
+      "name": "Editorial Perfil",
+      "shareholders": [
+        { "name": "Jorge Fontevecchia", "role": "Founder / owner" }
+      ],
+      "media_assets": {
+        "newspapers": ["Diario Perfil"],
+        "magazines": ["Noticias", "Caras", "Fortuna", "Paparazzi", "Weekend"],
+        "digital": ["perfil.com"],
+        "international": ["Caras Portugal", "Caras Angola", "Caras Brasil", "4 magazines in Shanghai"]
+      },
+      "offshore": [
+        { "entity": "Akriluy Corporation SA", "jurisdiction": "Montevideo, Uruguay", "registered": "2008", "holder": "Fontevecchia (president and shareholder)", "purpose": "Transitional holding for international operations", "source": "Pandora Papers" },
+        { "entity": "Perfil Exterior", "jurisdiction": "British Virgin Islands", "purpose": "Controls Caras Portugal and Angola" },
+        { "entity": "Grupo Perfil Inversor", "jurisdiction": "Uruguay", "purpose": "Controls Caras Brasil" },
+        { "entity": "Perfil Asia", "jurisdiction": "Hong Kong", "purpose": "Controls 4 magazines in Shanghai" }
+      ],
+      "political_connections": [
+        "Fontevecchia positions Perfil as 'independent' / centrist",
+        "Has published investigative pieces critical of both Kirchnerism and Macrismo",
+        "Declared offshore entities after Pandora Papers revelation"
+      ],
+      "sources": [
+        "https://www.eldiarioar.com/politica/pandora-papers/magnetto-fontevecchia-saguier-aranda-duenos-principales-medios-argentina-han-abierto-sociedades-paraisos-fiscales-uruguay_1_8403360.html",
+        "https://www.eldestapeweb.com/politica/pandora-papers/pandora-papers-magnetto-saguier-aranda-y-fontevecchia-tambien-tienen-cuentas-en-guaridas-fiscales-2021101812420"
+      ]
+    },
+    {
+      "id": "grupo-infobae",
+      "name": "Grupo Infobae",
+      "shareholders": [
+        { "name": "Daniel Hadad", "role": "Principal shareholder / founder" },
+        { "name": "Viviana Zocco", "notes": "Wife; partner in Grupo Vi-Da (TKM, BajaLibros)" },
+        { "name": "Eleonora Zocco", "notes": "Sister-in-law" }
+      ],
+      "media_assets": {
+        "digital": ["Infobae.com (largest Spanish-language digital news site)", "Infobae América (regional)", "Infobae TV"],
+        "other": ["Grupo Vi-Da (Mundo TKM, BajaLibros)"],
+        "former_assets": "Sold C5N + Radio 10 + 4 FM stations to Cristóbal López in 2012 for USD 49.5M"
+      },
+      "offshore": {
+        "count": 8,
+        "notes": "Linked to 8 companies in tax havens per investigative reports",
+        "source": "https://stripteasedelpoder.com/2018/02/7917offshore-daniel-hadad-ruta-dinero-cristobal-lopez/"
+      },
+      "political_connections": [
+        "Hadad claims Kirchner government pressured him to sell C5N/Radio 10 via AFIP raids (20 inspectors sent to his accountant's office)",
+        "Post-sale pivot to digital-only model with Infobae — now dominant digital platform",
+        "Editorial line generally center-right, critical of Kirchnerism",
+        "López disputes Hadad's pressure narrative, claims Hadad pressured him to buy"
+      ],
+      "sources": [
+        "https://argentina.mom-gmr.org/en/owners/individual-owners/detail/owner//daniel-hadad/",
+        "https://www.iprofesional.com/notas/258704-afip-deuda-cristina-kirchner-cristobal-lopez-crisis-venta-hadad-quiebra-kirchnerismo-mega-compra-c5n-radio-10-grupo-indalo-pop-fernando-bravo-Por-que-Cristobal-Lopez-compro-C5N-y-radio-10-la-confesion-del-empresario-K-a-un-periodista",
+        "https://www.lanacion.com.ar/politica/daniel-hadad-vendio-c5n-y-todas-sus-radios-a-cristobal-lopez-nid1468347/",
+        "https://stripteasedelpoder.com/2018/02/7917offshore-daniel-hadad-ruta-dinero-cristobal-lopez/"
+      ]
+    }
+  ],
+  "cross_cutting_analysis": {
+    "pandora_papers_media_owners": [
+      "Héctor Magnetto (Clarín) — trust in New York",
+      "José Antonio Aranda (Clarín) — offshore entities",
+      "Alejandro Saguier (La Nación) — Danias Holdings Ltd, BVI (2012); declared via 2016 blanqueo",
+      "Saguier family — Matilde de Saguier Corp, BVI (1998)",
+      "Jorge Fontevecchia (Perfil) — Akriluy Corporation SA, Uruguay (2008); Perfil Exterior, BVI; Perfil Asia, Hong Kong",
+      "Daniel Hadad (Infobae) — 8 offshore entities"
+    ],
+    "media_energy_nexus": {
+      "description": "Vila-Manzano is the most dramatic example: media (Grupo América/Telefe) + energy (Edenor, Metrogas, Andes Energía, Vaca Muerta) + mining (lithium, potash) + international telecom (Telefónica del Perú). Clarín's telecom dominance (Telecom Argentina/Personal/Fibertel + pending Movistar acquisition) represents the media-telecom nexus.",
+      "key_players": [
+        { "name": "Vila-Manzano", "sectors": ["media", "energy", "mining", "telecom", "construction"] },
+        { "name": "Clarín/Magnetto", "sectors": ["media", "telecom", "paper"] },
+        { "name": "Belocopitt", "sectors": ["media", "healthcare"] },
+        { "name": "Santa María", "sectors": ["media", "union/labor", "education"] },
+        { "name": "Cristóbal López", "sectors": ["media", "fuel", "gaming", "construction", "hotels"] }
+      ]
+    },
+    "pauta_oficial_summary": {
+      "kirchner_era": "Heavy state advertising to aligned media (Indalo, Octubre leading recipients alongside Clarín)",
+      "macri_era": "Continued high pauta; Clarín favored",
+      "milei_era": "Official 'pauta cero' policy — but YPF spent ~$100B ARS in 2024 as 'paraestatal' channel. Clarín still received 10.7% of remaining national pauta. Jorge Macri (CABA) spent ~$100B ARS in city advertising.",
+      "key_insight": "Pauta oficial never truly disappears — it migrates to state enterprises (YPF) or subnational governments when national government cuts it"
+    },
+    "political_alignment_spectrum": {
+      "pro_kirchner": ["Grupo Indalo (C5N, Radio 10)", "Grupo Octubre (Página/12, AM 750, elnueve)"],
+      "pro_establishment_right": ["Grupo Clarín (TN, Clarín, Mitre)", "La Nación"],
+      "centrist_independent": ["Editorial Perfil"],
+      "center_right_digital": ["Infobae"],
+      "transactional_all_governments": ["Grupo América (Vila-Manzano) — adapts to whoever is in power"]
+    },
+    "hadad_lopez_connection": {
+      "description": "In 2012, Hadad sold C5N + Radio 10 + 4 FMs to Cristóbal López for USD 49.5M. Hadad claims AFIP pressure under Kirchner government (20 inspectors raided his accountant). López claims Hadad pressured him. The sale transformed C5N from center-right to pro-Kirchner overnight. Hadad pivoted to digital-only Infobae.",
+      "afip_role": "AFIP head Ricardo Echegaray allegedly facilitated both the pressure on Hadad and the deferred tax payments for López's Oil Combustibles"
+    }
+  }
+}
