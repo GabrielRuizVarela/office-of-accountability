@@ -8,50 +8,62 @@
 import type { GraphData } from '../neo4j/types'
 import type { MiroFishSeedData, MiroFishAgent } from './types'
 
+/** Config for which graph labels map to MiroFish agents and context. */
+export interface MiroFishExportConfig {
+  /** Label used to select agent nodes (default: 'Person'). */
+  agent_source?: string
+  /** Labels used for context/background nodes (default: ['Organization', 'Location']). */
+  context_from?: string[]
+}
+
+const DEFAULT_AGENT_SOURCE = 'Person'
+const DEFAULT_CONTEXT_FROM = ['Organization', 'Location']
+
 /**
  * Convert the investigation GraphData into MiroFish seed format.
  *
- * Each Person node becomes a MiroFish agent. Their connections
- * (to other people, organizations, locations) form the agent's
- * background and connection list.
+ * Agent nodes (matching `agent_source` label) become MiroFish agents.
+ * Their connections to other agent nodes and context nodes
+ * (matching `context_from` labels) form background and connection lists.
  */
 export function graphToMiroFishSeed(
   data: GraphData,
   scenario: string,
   investigationName?: string,
+  config?: MiroFishExportConfig,
 ): MiroFishSeedData {
-  const personNodes = data.nodes.filter((n) => n.labels.includes('Person'))
+  const agentLabel = config?.agent_source ?? DEFAULT_AGENT_SOURCE
+  const contextLabels = config?.context_from ?? DEFAULT_CONTEXT_FROM
 
-  const agents: MiroFishAgent[] = personNodes.map((person) => {
-    // Find all connections for this person
+  const agentNodes = data.nodes.filter((n) => n.labels.includes(agentLabel))
+
+  const agents: MiroFishAgent[] = agentNodes.map((agent) => {
+    // Find all connections for this agent
     const connectedNodeIds = new Set<string>()
     for (const link of data.links) {
-      if (link.source === person.id) connectedNodeIds.add(link.target)
-      if (link.target === person.id) connectedNodeIds.add(link.source)
+      if (link.source === agent.id) connectedNodeIds.add(link.target)
+      if (link.target === agent.id) connectedNodeIds.add(link.source)
     }
 
-    // Get connected person names
+    // Get connected agent-type node names
     const connections = data.nodes
-      .filter((n) => connectedNodeIds.has(n.id) && n.labels.includes('Person'))
+      .filter((n) => connectedNodeIds.has(n.id) && n.labels.includes(agentLabel))
       .map((n) => String(n.properties.name ?? n.id))
 
-    // Build background from properties and connections
-    const orgs = data.nodes
-      .filter((n) => connectedNodeIds.has(n.id) && n.labels.includes('Organization'))
-      .map((n) => String(n.properties.name ?? n.id))
-
-    const locations = data.nodes
-      .filter((n) => connectedNodeIds.has(n.id) && n.labels.includes('Location'))
-      .map((n) => String(n.properties.name ?? n.id))
-
+    // Build background from properties and context connections
     const parts: string[] = []
-    if (person.properties.description) parts.push(String(person.properties.description))
-    if (orgs.length > 0) parts.push(`Organizations: ${orgs.join(', ')}`)
-    if (locations.length > 0) parts.push(`Locations: ${locations.join(', ')}`)
+    if (agent.properties.description) parts.push(String(agent.properties.description))
+
+    for (const ctxLabel of contextLabels) {
+      const ctxNodes = data.nodes
+        .filter((n) => connectedNodeIds.has(n.id) && n.labels.includes(ctxLabel))
+        .map((n) => String(n.properties.name ?? n.id))
+      if (ctxNodes.length > 0) parts.push(`${ctxLabel}: ${ctxNodes.join(', ')}`)
+    }
 
     return {
-      name: String(person.properties.name ?? person.id),
-      role: String(person.properties.role ?? ''),
+      name: String(agent.properties.name ?? agent.id),
+      role: String(agent.properties.role ?? ''),
       background: parts.join('. '),
       connections,
     }
@@ -59,7 +71,7 @@ export function graphToMiroFishSeed(
 
   const context = [
     `${investigationName ?? 'Investigation'} network.`,
-    `${personNodes.length} persons, ${data.nodes.length} total entities.`,
+    `${agentNodes.length} ${agentLabel.toLowerCase()} nodes, ${data.nodes.length} total entities.`,
     'Based on verified sources and public records.',
   ].join(' ')
 
