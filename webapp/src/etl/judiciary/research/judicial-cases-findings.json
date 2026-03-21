@@ -1,0 +1,426 @@
+{
+  "meta": {
+    "title": "Argentine Judiciary: Case Outcomes Demonstrating Service to Power",
+    "description": "Documented judicial cases showing pattern of selective prosecution, clearances for the powerful, and structural impunity",
+    "research_date": "2026-03-21",
+    "methodology": "Web research on case outcomes, judge assignments, and patterns of selective justice"
+  },
+
+  "clearances_powerful_defendants": [
+    {
+      "id": "macri-mesa-judicial",
+      "person": "Mauricio Macri",
+      "case": "Mesa Judicial - presiones a jueces y fiscales",
+      "judge": "Maria Eugenia Capuchetti (primera instancia), Camara Federal (confirmacion)",
+      "outcome": "SOBRESEIDO",
+      "year_cleared": 2024,
+      "evidence_es": "Macri fue sobreseido en enero 2024 por la jueza Capuchetti en la causa que investigaba la existencia de una 'mesa judicial' que presionaba jueces y fiscales durante su presidencia. La Camara Federal confirmo el sobreseimiento en mayo 2024.",
+      "evidence_en": "Macri was cleared in January 2024 by Judge Capuchetti in the case investigating the existence of a 'judicial table' that pressured judges and prosecutors during his presidency. The Federal Chamber confirmed the dismissal in May 2024.",
+      "source_urls": [
+        "https://www.infobae.com/judiciales/2024/01/08/sobreseyeron-a-macri-pepin-y-a-otros-ex-funcionarios-por-la-causa-conocida-como-mesa-judicial/",
+        "https://www.infobae.com/judiciales/2024/05/18/la-camara-federal-confirmo-el-sobreseimiento-de-macri-y-otros-ex-funcionarios-en-la-causa-mesa-judicial/",
+        "https://chequeado.com/el-explicador/que-paso-con-las-causas-judiciales-contra-el-ex-presidente-mauricio-macri/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "macri-ara-san-juan-espionaje",
+      "person": "Mauricio Macri",
+      "case": "Espionaje ilegal a familiares del ARA San Juan",
+      "judge": "Martin Bava (proceso), Camara Federal (revoco), Corte Suprema (confirmo sobreseimiento)",
+      "outcome": "SOBRESEIDO",
+      "year_cleared": 2025,
+      "evidence_es": "Macri fue procesado por el juez Bava como 'criminalmente responsable del delito de realizar acciones de inteligencia prohibidas' sobre los familiares de los 44 tripulantes muertos del submarino ARA San Juan. La Camara revoco el procesamiento y la Corte Suprema confirmo el sobreseimiento, entendiendo que las escuchas eran 'avances presidenciales' para proteger la seguridad del presidente.",
+      "evidence_en": "Macri was charged by Judge Bava as 'criminally responsible for performing prohibited intelligence actions' against families of the 44 dead crew members of submarine ARA San Juan. The Appeals Chamber revoked the charges and the Supreme Court confirmed the dismissal, ruling the wiretaps were 'presidential advances' to protect presidential security.",
+      "source_urls": [
+        "https://www.cronista.com/economia-politica/espionaje-a-familiares-del-ara-san-juan-mauricio-macri-fue-sobreseido-por-inexistencia-de-delito/",
+        "https://www.pagina12.com.ar/689959-espionaje-ilegal-confirman-el-sobreseimiento-de-mauricio-mac/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "macri-escuchas-ilegales-gcba",
+      "person": "Mauricio Macri",
+      "case": "Escuchas ilegales como Jefe de Gobierno de Buenos Aires",
+      "judge": "Sebastian Casanello (instruyo), juez de juicio",
+      "outcome": "SOBRESEIDO",
+      "year_cleared": 2015,
+      "evidence_es": "Macri fue procesado en 2010 por violacion de secretos, abuso de autoridad, falsificacion de documentos y asociacion ilicita por escuchas ilegales como jefe de gobierno porteno. Casanello elevo a juicio en 2014 sin incluir a Macri. Fue sobreseido en diciembre 2015, semanas despues de asumir la presidencia.",
+      "evidence_en": "Macri was charged in 2010 for violation of secrets, abuse of authority, document forgery and criminal conspiracy for illegal wiretapping as Buenos Aires city mayor. Casanello elevated to trial in 2014 without including Macri. He was cleared in December 2015, weeks after assuming the presidency.",
+      "source_urls": [
+        "https://chequeado.com/el-explicador/que-paso-con-las-causas-judiciales-contra-el-ex-presidente-mauricio-macri/",
+        "https://www.lanoticiaweb.com.ar/el-historial-judicial-de-mauricio-macri-causas-cerradas-sobreseimientos-y-expedientes-en-curso/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "macri-contrabando-sevel",
+      "person": "Mauricio Macri",
+      "case": "Contrabando vinculado a Sevel Argentina",
+      "judge": "Carlos Liporace (proceso), Corte Suprema (sobreseimiento)",
+      "outcome": "SOBRESEIDO",
+      "year_cleared": 2002,
+      "evidence_es": "Macri fue procesado en 2001 por presunto contrabando como directivo de la automotriz Sevel Argentina. La Corte Suprema cerro la investigacion en agosto 2002 y confirmo el sobreseimiento.",
+      "evidence_en": "Macri was charged in 2001 for alleged smuggling as a director of automaker Sevel Argentina. The Supreme Court closed the investigation in August 2002 and confirmed the dismissal.",
+      "source_urls": [
+        "https://chequeado.com/el-explicador/que-paso-con-las-causas-judiciales-contra-el-ex-presidente-mauricio-macri/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "macri-boca-juniors-fraude",
+      "person": "Mauricio Macri",
+      "case": "Administracion fraudulenta como presidente de Boca Juniors",
+      "judge": "Juan Jose Madhjoubian (proceso), Camara de Apelaciones (revoco)",
+      "outcome": "SOBRESEIDO",
+      "year_cleared": 2002,
+      "evidence_es": "Procesado en octubre 2002 por administracion fraudulenta en la compra de equipos de seguridad para estadios. La Camara de Apelaciones revoco el procesamiento un mes y medio despues.",
+      "evidence_en": "Charged in October 2002 for fraudulent administration in purchasing stadium security equipment. The Appeals Chamber revoked the charges just six weeks later.",
+      "source_urls": [
+        "https://chequeado.com/el-explicador/que-paso-con-las-causas-judiciales-contra-el-ex-presidente-mauricio-macri/"
+      ],
+      "severity": "moderate"
+    },
+    {
+      "id": "frigerio-koolhaas-ercolini",
+      "person": "Rogelio Frigerio",
+      "case": "Irregularidades en operaciones inmobiliarias - adjudicacion a Koolhaas SA",
+      "judge": "Julian Ercolini",
+      "outcome": "SOBRESEIDO",
+      "year_cleared": 2022,
+      "evidence_es": "El juez Ercolini sobreseyo de forma 'express' a Frigerio en la causa por la adjudicacion irregular de un inmueble estatal en Fitz Roy 851 a la empresa Koolhaas SA en 2017. Los directores de Koolhaas tenian conexiones economicas con Frigerio antes y despues de la adjudicacion. Ercolini es el mismo juez que investigo agresivamente a Alberto Fernandez y que fue filmado en la reunion secreta de Lago Escondido.",
+      "evidence_en": "Judge Ercolini gave an 'express' dismissal to Frigerio in the case involving irregular state property allocation at Fitz Roy 851 to company Koolhaas SA in 2017. Koolhaas directors had economic connections to Frigerio before and after the allocation. Ercolini is the same judge who aggressively investigated Alberto Fernandez and was filmed at the secret Lago Escondido meeting.",
+      "source_urls": [
+        "https://www.infobae.com/politica/2022/12/05/sobreseyeron-a-rogelio-frigerio-en-una-causa-por-supuestas-irregularidades-en-operaciones-inmobiliarias/",
+        "http://www.laopinionpopular.com.ar/noticia/48082-frigerio-fue-sobreseido-en-forma-expres-por-el-juez-ercolini-el-de-los-audios-por-lago-escondido.html",
+        "https://www.radionacional.com.ar/irregularidades-en-venta-de-tierras-frigerio-fue-sobreseido-por-ercolini-2/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "rocca-techint-cuadernos",
+      "person": "Paolo Rocca (CEO Techint)",
+      "case": "Causa Cuadernos - pago de sobornos a funcionarios kirchneristas",
+      "judge": "Julian Ercolini",
+      "outcome": "SOBRESEIDO",
+      "year_cleared": 2021,
+      "evidence_es": "Ercolini sobreseyo a Paolo Rocca, Luis Betnaza y Hector Zabaleta (Techint) argumentando que los pagos ilegales de USD 1 millon al exfuncionario Baratta fueron hechos en 'estado de necesidad' por la expropiacion de Sidor en Venezuela. El fiscal Stornelli y la UIF no apelaron, haciendo firme el sobreseimiento. El INECIP califico el fallo como 'sin verguenza'.",
+      "evidence_en": "Ercolini cleared Paolo Rocca, Luis Betnaza and Hector Zabaleta (Techint) arguing that USD 1 million in illegal payments to former official Baratta were made under 'state of necessity' due to the Sidor expropriation in Venezuela. Prosecutor Stornelli and the UIF did not appeal, making the dismissal final. INECIP called the ruling 'shameless'.",
+      "source_urls": [
+        "https://www.lanacion.com.ar/politica/sobreseen-a-paolo-rocca-y-a-luis-betnaza-y-procesan-a-roberto-baratta-por-recibir-dadivas-nid10082021/",
+        "https://inecip.org/noticias/el-sobreseimiento-de-los-empresarios-de-techint-en-la-causa-de-los-cuadernos-analisis-de-un-fallo-sin-verguenza/",
+        "https://www.eldiarioar.com/politica/rocca-directivos-techint-sobreseimiento-firme-falta-apelacion-stornelli-uif_1_8237117.html"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "lago-escondido-sobreseimiento",
+      "person": "Julian Ercolini, Carlos Mahiques, Juan Bautista Mahiques, Marcelo D'Alessandro, Pablo Yadarola",
+      "case": "Lago Escondido - reunion secreta de jueces, funcionarios macristas y empresarios de medios",
+      "judge": "Sebastian Ramos",
+      "outcome": "SOBRESEIDOS TODOS",
+      "year_cleared": 2024,
+      "evidence_es": "El juez Ramos sobreseyo a todos los implicados en la reunion secreta en la estancia de Joe Lewis en Lago Escondido (2022), donde jueces federales, funcionarios macristas y empresarios de medios se reunieron. Audios filtrados mostraron que discutieron fabricar coartadas y adulterar pruebas (comprar recibos antedatados). Ramos declaro la 'nulidad de todo lo actuado'.",
+      "evidence_en": "Judge Ramos cleared all those implicated in the secret meeting at Joe Lewis's estate in Lago Escondido (2022), where federal judges, Macri-era officials and media executives met. Leaked audio showed they discussed fabricating alibis and adulterating evidence (buying backdated receipts). Ramos declared 'nullity of all proceedings'.",
+      "source_urls": [
+        "https://www.eldiarioar.com/politica/lago-escondido-sobreseen-jueces-exfuncionarios-empresarios-viaje-estancia-joe-lewis-2022_1_10788895.html",
+        "https://chequeado.com/el-explicador/lago-escondido-que-se-sabe-sobre-el-viaje-de-jueces-funcionarios-y-empresarios-a-la-residencia-de-joe-lewis/",
+        "https://www.perfil.com/noticias/politica/audios-y-chats-entre-jueces-funcionarios-macristas-y-empresarios-de-medios-para-ocular-un-viaje-a-bariloche.phtml"
+      ],
+      "severity": "critical"
+    }
+  ],
+
+  "contrast_treatment_opposition": [
+    {
+      "id": "cfk-vialidad-condena",
+      "person": "Cristina Fernandez de Kirchner",
+      "case": "Causa Vialidad - administracion fraudulenta en obra publica",
+      "judge": "Tribunal Oral Federal 2 (condena), Casacion (confirmo), Corte Suprema (confirmo junio 2025)",
+      "outcome": "CONDENADA - 6 anos prision, inhabilitacion perpetua cargos publicos",
+      "year_sentenced": 2025,
+      "evidence_es": "La Corte Suprema confirmo en junio 2025 la condena a 6 anos de prision e inhabilitacion perpetua para ejercer cargos publicos. Absuelta del cargo de asociacion ilicita. La fiscalia habia pedido 12 anos por asociacion ilicita, pero ese cargo fue desestimado. La condena quedo firme dejandola sin posibilidad de ser candidata.",
+      "evidence_en": "The Supreme Court confirmed in June 2025 the sentence of 6 years in prison and permanent disqualification from public office. Acquitted of criminal conspiracy charges. The prosecution had requested 12 years for criminal conspiracy but that charge was dismissed. The sentence became final, barring her from candidacy.",
+      "source_urls": [
+        "https://www.lanacion.com.ar/politica/la-corte-suprema-confirmo-la-condena-a-cristina-kirchner-a-prision-y-no-podra-ser-candidata-nid10062025/",
+        "https://www.infobae.com/judiciales/2025/06/10/que-dice-el-fallo-de-casacion-que-confirmo-la-condena-a-cristina-kirchner-en-la-causa-vialidad/",
+        "https://www.infobae.com/judiciales/2025/06/10/el-historial-judicial-de-cristina-kirchner-causas-abiertas-juicios-pendientes-y-una-condena-firme/"
+      ],
+      "severity": "critical",
+      "pattern_note": "Compare: Macri cleared in 6+ cases involving wiretapping, espionage, smuggling, fraud. CFK convicted in the one case that reached full trial."
+    },
+    {
+      "id": "cfk-multiple-causes",
+      "person": "Cristina Fernandez de Kirchner",
+      "case": "Multiple causes: Cuadernos, Pacto con Iran, lavado de activos, dolar futuro",
+      "judge": "Multiple judges, predominantly Comodoro Py",
+      "outcome": "CAUSAS ABIERTAS - juicios pendientes",
+      "evidence_es": "CFK fue procesada en mas de doce causas, casi todas con intervencion de los mismos fiscales y jueces, con vinculos probados con Mauricio Macri. Tiene pendientes las causas Cuadernos, Pacto con Iran y otras que se encaminan a juicio oral.",
+      "evidence_en": "CFK was prosecuted in more than twelve cases, almost all involving the same prosecutors and judges, with proven links to Mauricio Macri. She has pending cases including Cuadernos, Iran Pact and others heading to oral trial.",
+      "source_urls": [
+        "https://www.mdzol.com/politica/el-mapa-judicial-cristina-kirchner-todas-las-causas-condenas-y-juicios-pendientes-2026-n1476720",
+        "https://www.infobae.com/judiciales/2025/06/10/el-historial-judicial-de-cristina-kirchner-causas-abiertas-juicios-pendientes-y-una-condena-firme/"
+      ],
+      "severity": "high"
+    }
+  ],
+
+  "causa_seguros_timeline": [
+    {
+      "id": "causa-seguros-ercolini-phase",
+      "case": "Causa Seguros - fase Ercolini",
+      "judge": "Julian Ercolini",
+      "period": "2024",
+      "evidence_es": "Ercolini ordeno la inhibicion de bienes de los acusados en abril 2024 y tomo declaracion indagatoria a Alberto Fernandez el 27 de noviembre 2024. El expediente tramitaba en el Juzgado Federal 11, vacante desde la muerte de Claudio Bonadio en 2020.",
+      "evidence_en": "Ercolini ordered asset freezes on defendants in April 2024 and took Alberto Fernandez's preliminary statement on November 27, 2024. The case was in Federal Court 11, vacant since Claudio Bonadio's death in 2020.",
+      "source_urls": [
+        "https://www.infobae.com/politica/2025/02/07/la-causa-de-los-seguros-cambia-de-juez-por-sorteo-fue-elegido-sebastian-casanello/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "causa-seguros-casanello-phase",
+      "case": "Causa Seguros - fase Casanello",
+      "judge": "Sebastian Casanello",
+      "period": "2025-2026",
+      "evidence_es": "Casanello fue sorteado el 7 de febrero de 2025 para reemplazar a Ercolini. En julio 2025, proceso a Alberto Fernandez con embargo de $14.634.220.283 pesos por el Decreto 823/21 que obligaba a todas las dependencias estatales a contratar con Nacion Seguros SA.",
+      "evidence_en": "Casanello was drawn by lottery on February 7, 2025 to replace Ercolini. In July 2025, he charged Alberto Fernandez with an asset freeze of $14.634 billion pesos for Decree 823/21 that forced all state agencies to contract with Nacion Seguros SA.",
+      "source_urls": [
+        "https://www.lanacion.com.ar/politica/giro-en-la-causa-seguros-casanello-fue-sorteado-para-reemplazar-a-ercolini-en-el-juzgado-donde-nid07022025/",
+        "https://www.pagina12.com.ar/802318-el-juez-casanello-quedara-al-frente-de-la-causa-seguros"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "causa-seguros-martinez-sosa",
+      "person": "Hector Martinez Sosa (broker)",
+      "case": "Causa Seguros - empresa del broker",
+      "judge": "Sebastian Casanello",
+      "outcome": "PROCESADO - febrero 2026",
+      "evidence_es": "En febrero 2026, Casanello proceso a Hector Martinez Sosa y Compania SA como participe necesario de negociaciones incompatibles con la funcion publica. Embargo de $2.870.729.545,61 pesos. La firma habia recibido $416.546.348,81 en comisiones. Tambien procesaron al exadministrador de Olivos Hugo Rodriguez y seis empresas intermediarias mas.",
+      "evidence_en": "In February 2026, Casanello charged Hector Martinez Sosa y Compania SA as necessary participant in negotiations incompatible with public office. Asset freeze of $2.87 billion pesos. The firm had received $416.5 million in commissions. Former Olivos administrator Hugo Rodriguez and six more intermediary companies were also charged.",
+      "source_urls": [
+        "https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/",
+        "https://www.perfil.com/noticias/judiciales/causa-seguros-el-juez-sebastian-casanello-proceso-a-la-empresa-de-martinez-sosa-y-al-ex-encargado-de-la-quinta-de-olivos.phtml"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "causa-seguros-bachellier",
+      "person": "Bachellier SA",
+      "case": "Causa Seguros - empresa de seguros vinculada",
+      "judge": "Sebastian Casanello",
+      "outcome": "PROCESADA - embargo $9.669.697.257,25",
+      "evidence_es": "Bachellier SA fue procesada como participe necesario de negociaciones incompatibles con la funcion publica. Embargo de $9.669.697.257,25 pesos. Lideraba el ranking de comisiones con $1.665 millones, particularmente por el contrato de Gendarmeria Nacional.",
+      "evidence_en": "Bachellier SA was charged as necessary participant in negotiations incompatible with public office. Asset freeze of $9.67 billion pesos. Led the commissions ranking with $1.665 billion, particularly through the National Gendarmerie contract.",
+      "source_urls": [
+        "https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/",
+        "https://www.infobae.com/politica/2024/03/18/escandalo-de-los-seguros-las-empresas-del-broker-amigo-de-alberto-fernandez-y-sus-satelites-cobraron-mas-de-2000-millones-por-comisiones/"
+      ],
+      "severity": "high"
+    }
+  ],
+
+  "empresarios_impunity_pattern": [
+    {
+      "id": "cuadernos-reparacion-integral",
+      "person": "~50 empresarios (constructoras, obra publica)",
+      "case": "Causa Cuadernos - intento de reparacion integral para evitar juicio",
+      "judge": "Tribunal Oral Federal 7 (Mendez Signori, Canero, Castelli)",
+      "outcome": "REPARACION RECHAZADA - deben ir a juicio oral",
+      "evidence_es": "Alrededor de 50 empresarios ofrecieron pagar entre USD 12-40 millones como 'reparacion integral del dano' para ser sobreseidos sin admitir los hechos, evitando el juicio oral. El TOF7 rechazo las ofertas en octubre 2025, citando que 'la corrupcion se juzga, no se negocia'. Juicio oral fijado para noviembre 2025.",
+      "evidence_en": "Around 50 businessmen offered to pay USD 12-40 million as 'integral damage reparation' to be cleared without admitting the facts, avoiding oral trial. TOF7 rejected the offers in October 2025, stating 'corruption is judged, not negotiated'. Oral trial set for November 2025.",
+      "source_urls": [
+        "https://www.infobae.com/judiciales/2025/10/06/causa-cuadernos-la-justicia-rechazo-las-reparaciones-de-dinero-ofrecidas-por-empresarios-para-ser-absueltos/",
+        "https://www.fiscales.gob.ar/fiscalias/causa-cuadernos-el-tribunal-rechazo-la-reparacion-integral-ofrecida-por-las-defensas-de-50-imputados/"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "causas-empresarios-pausadas",
+      "person": "Grandes empresarios argentinos (multiple)",
+      "case": "Causas de corrupcion contra empresarios en pausa",
+      "judge": "Multiple jueces federales",
+      "outcome": "EN PAUSA - juicios demorados, cierres inminentes",
+      "evidence_es": "Investigacion de elDiarioAR (2022) revelo que las causas judiciales de corrupcion contra grandes empresarios estan sistematicamente en pausa, con juicios demorados o cierres inminentes. Los mecanismos incluyen prescripcion, cambios legislativos beneficiosos y falta de impulso procesal.",
+      "evidence_en": "Investigation by elDiarioAR (2022) revealed that corruption cases against major businessmen are systematically paused, with delayed trials or imminent closures. Mechanisms include statute of limitations, beneficial legislative changes, and lack of procedural momentum.",
+      "source_urls": [
+        "https://www.eldiarioar.com/politica/causas-judiciales-corrupcion-grandes-empresarios-pausa-juicios-demorados-cierres-inminentes_1_8884937.html",
+        "https://www.analisisdigital.com.ar/judiciales/2022/04/04/causas-judiciales-de-corrupcion-contra-grandes-empresarios-estan-en-pausa"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "evasion-ley-benigna",
+      "person": "Contribuyentes/empresarios imputados por evasion",
+      "case": "Causas penales tributarias - ley penal mas benigna",
+      "judge": "Multiple",
+      "outcome": "BENEFICIADOS por Instruccion General 1/2026 de ARCA",
+      "evidence_es": "La Instruccion General 1/2026 de ARCA aplica el criterio de 'ley penal mas benigna' en causas penales tributarias, elevando los montos minimos para denuncias penales. Empresarios que pagaron deudas obtienen sobreseimiento automatico bajo Ley 27.653.",
+      "evidence_en": "ARCA's General Instruction 1/2026 applies the 'more benign criminal law' criterion in tax criminal cases, raising minimum thresholds for criminal charges. Businessmen who paid debts get automatic dismissal under Law 27,653.",
+      "source_urls": [
+        "https://www.analisisdigital.com.ar/judiciales/2023/05/23/tras-pagar-una-deuda-sobreseyeron-empresarios-acusados-de-maniobras-de-evasion"
+      ],
+      "severity": "moderate"
+    }
+  ],
+
+  "macri_open_cases_stalled": [
+    {
+      "id": "macri-correo-argentino",
+      "person": "Mauricio Macri",
+      "case": "Correo Argentino - defraudacion por administracion fraudulenta y cohecho",
+      "judge": "Ariel Lijo",
+      "outcome": "CAUSA ABIERTA - sin avance significativo",
+      "evidence_es": "La causa investiga la condonacion del 98,82% de la deuda del Correo Argentino (empresa de SOCMA/familia Macri) con el Estado. El juez Ariel Lijo no avanzo con el expediente sensible para Macri durante anos. La Corte Suprema en junio 2025 obligo a Macri a enfrentar la causa.",
+      "evidence_en": "The case investigates the forgiveness of 98.82% of the debt owed by Correo Argentino (SOCMA/Macri family company) to the State. Judge Ariel Lijo did not advance the sensitive case for Macri for years. The Supreme Court in June 2025 forced Macri to face the case.",
+      "source_urls": [
+        "https://www.lanacion.com.ar/politica/la-causa-del-correo-argentino-ariel-lijo-no-avanzo-con-un-expediente-sensible-para-mauricio-macri-nid20062025/",
+        "https://es.wikipedia.org/wiki/Causa_Correo_Argentino"
+      ],
+      "severity": "critical",
+      "pattern_note": "Judge Lijo — now elevated to Supreme Court by Milei — sat on this case for years without advancing it."
+    },
+    {
+      "id": "macri-peajes-autopistas",
+      "person": "Mauricio Macri",
+      "case": "Autopistas del Sol - peajes y concesiones",
+      "judge": "Multiple",
+      "outcome": "CAUSA ABIERTA - avance lento",
+      "evidence_es": "Investiga el pago de ~500 millones de pesos a la concesionaria GCO, de la cual Macri era accionista, y la renegociacion de extension de concesion por 12 anos. Como presidente, Macri reconocio una deuda de USD 499 millones a los concesionarios por supuestas inversiones estatales no realizadas.",
+      "evidence_en": "Investigates the payment of ~500 million pesos to concessionaire GCO, of which Macri was a shareholder, and the renegotiation of a 12-year concession extension. As president, Macri recognized a USD 499 million debt to concessionaires for supposed unrealized state investments.",
+      "source_urls": [
+        "https://canalabierto.com.ar/2022/09/15/la-trama-detras-de-las-concesiones-de-peajes-que-favorecieron-a-macri/",
+        "https://elcanciller.com/correo-espionaje-ilegal-y-autopistas-las-causas-que-acechan-a-macri-y-hasta-donde-pueden-llegar/"
+      ],
+      "severity": "high"
+    }
+  ],
+
+  "judicial_wealth_anomalies": [
+    {
+      "id": "lijo-patrimonio",
+      "person": "Ariel Lijo (juez federal, ahora Corte Suprema)",
+      "case": "Patrimonio no declarado - departamento y haras",
+      "judge": "Consejo de la Magistratura (investigacion)",
+      "outcome": "INVESTIGADO - sin consecuencias, elevado a Corte Suprema",
+      "evidence_es": "Lijo declaro una sola vivienda en Hudson pero habita el 5to piso de un edificio de lujo en Avenida Alvear, Buenos Aires, valuado en ~USD 2 millones, prestado por el exembajador Carlos Bettini. El departamento no figura en su declaracion jurada. Tambien fue investigado por el Consejo de la Magistratura por un haras 'La Generacion' en Dolores, a nombre de su hermano Alfredo Lijo (operador judicial). Pese a todo, Milei lo designo por decreto en la Corte Suprema en febrero 2025.",
+      "evidence_en": "Lijo declared a single residence in Hudson but inhabits the 5th floor of a luxury building on Avenida Alvear, Buenos Aires, valued at ~USD 2 million, lent by former ambassador Carlos Bettini. The apartment does not appear in his sworn declaration. He was also investigated by the Magistrates Council for a horse ranch 'La Generacion' in Dolores, under his brother Alfredo Lijo's name (judicial operator). Despite all this, Milei appointed him by decree to the Supreme Court in February 2025.",
+      "source_urls": [
+        "https://www.lanacion.com.ar/politica/el-patrimonio-de-ariel-lijo-usa-un-departamento-prestado-por-un-viejo-amigo-de-la-politica-valuado-nid09062024/",
+        "https://www.lanacion.com.ar/politica/el-juez-ariel-lijo-sera-investigado-por-el-haras-la-generacion-nid2087121/",
+        "https://www.lanacion.com.ar/politica/ariel-lijo-un-hombre-fuerte-de-comodoro-py-que-enfrento-denuncias-por-su-patrimonio-y-el-manejo-de-nid20032024/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "jueces-patrimonio-general",
+      "person": "Jueces de Comodoro Py (general)",
+      "case": "Declaraciones juradas patrimoniales",
+      "judge": "Consejo de la Magistratura (supervision)",
+      "outcome": "OPACIDAD SISTEMATICA",
+      "evidence_es": "Chequeado accedio a las DDJJ de los 12 jueces de Comodoro Py: declaran inmuebles a valores fiscales (no de mercado), vehiculos por debajo del precio real, yates. Solo el 14% de jueces de Cortes provinciales permitio acceso a sus DDJJ. Los de mayor patrimonio declarado: Martinez de Giorgi, Rafecas, Rodriguez y Ramos. El juez Ballestero declaro el mayor patrimonio entre jueces federales.",
+      "evidence_en": "Chequeado accessed the sworn declarations of the 12 Comodoro Py judges: they declare real estate at fiscal values (not market), vehicles below real price, yachts. Only 14% of provincial court judges allowed access to their declarations. Highest declared wealth: Martinez de Giorgi, Rafecas, Rodriguez and Ramos. Judge Ballestero declared the highest wealth among federal judges.",
+      "source_urls": [
+        "https://chequeado.com/el-explicador/quienes-son-los-jueces-federales-con-mas-patrimonio/",
+        "https://chequeado.com/el-explicador/declaraciones-juradas-de-jueces-federales-que-bienes-informaron-en-2021-los-magistrados-de-comodoro-py/"
+      ],
+      "severity": "high"
+    }
+  ],
+
+  "consejo_magistratura_control": [
+    {
+      "id": "consejo-composicion-2025",
+      "case": "Composicion del Consejo de la Magistratura",
+      "outcome": "CONTROLADO por poderes politicos",
+      "evidence_es": "El Consejo se compone de 20 miembros: el presidente de la Corte Suprema (Rosatti), 4 jueces, 8 legisladores (4 senadores + 4 diputados), 4 abogados de la matricula federal, 1 representante del Ejecutivo (Santiago Viola, designado por Milei) y 2 academicos. Los 8 legisladores + 1 del Ejecutivo dan mayoria politica (9/20) sobre las designaciones judiciales.",
+      "evidence_en": "The Council comprises 20 members: the Supreme Court president (Rosatti), 4 judges, 8 legislators (4 senators + 4 deputies), 4 federal bar attorneys, 1 executive representative (Santiago Viola, appointed by Milei) and 2 academics. The 8 legislators + 1 from the Executive give political majority (9/20) over judicial appointments.",
+      "source_urls": [
+        "https://consejomagistratura.gov.ar/index.php/integrantes_del_consejo/",
+        "https://www.justicia.ar/novedades/117/2025/04/magistratura-juraron-nuevos-consejeros"
+      ],
+      "severity": "high"
+    },
+    {
+      "id": "milei-corte-decreto",
+      "case": "Designacion de Lijo y Garcia Mansilla por decreto",
+      "judge": "Ariel Lijo, Manuel Garcia Mansilla",
+      "outcome": "DESIGNADOS POR DECRETO sin acuerdo del Senado",
+      "year": 2025,
+      "evidence_es": "Milei designo por decreto a Ariel Lijo y Manuel Garcia Mansilla como jueces de la Corte Suprema en febrero 2025, sin que el Senado aprobara sus pliegos. Los pliegos fueron enviados en marzo 2024, audiencias celebradas en agosto 2024, pero el Senado nunca voto. Milei los designo 'en comision' por decreto.",
+      "evidence_en": "Milei appointed Ariel Lijo and Manuel Garcia Mansilla to the Supreme Court by decree in February 2025, without Senate approval of their nominations. Nominations were sent in March 2024, hearings held in August 2024, but the Senate never voted. Milei appointed them 'in commission' by decree.",
+      "source_urls": [
+        "https://www.infobae.com/politica/2025/02/25/javier-milei-designo-por-decreto-en-la-corte-suprema-a-ariel-lijo-y-manuel-garcia-mansilla/",
+        "https://www.lanacion.com.ar/politica/javier-milei-firmaria-hoy-el-decreto-para-designar-a-ariel-lijo-y-manuel-garcia-mansilla-como-jueces-nid25022025/"
+      ],
+      "severity": "critical"
+    }
+  ],
+
+  "lawfare_structural_patterns": [
+    {
+      "id": "prescripcion-como-herramienta",
+      "case": "Prescripcion como herramienta de impunidad",
+      "outcome": "2% de condenas en causas de corrupcion",
+      "evidence_es": "Segun una auditoria de la Corte Suprema, solo el 2% de los acusados por corrupcion son condenados. Las tasas de condena son bajas, los sobreseimientos altos, y muchos sobreseimientos ocurren por prescripcion. Casacion Federal resolvio que la prescripcion no procede cuando estan implicados funcionarios publicos, pero esta doctrina no se aplica uniformemente.",
+      "evidence_en": "According to a Supreme Court audit, only 2% of those accused of corruption are convicted. Conviction rates are low, dismissals high, and many dismissals occur due to statute of limitations. Federal Cassation ruled that the statute of limitations does not apply when public officials are implicated, but this doctrine is not uniformly applied.",
+      "source_urls": [
+        "https://www.fiscales.gob.ar/fiscalias/casacion-federal-resolvio-que-la-prescripcion-no-procede-cuando-estan-implicados-funcionarios/",
+        "https://chequeado.com/el-explicador/cuando-prescribe-un-delito-de-corrupcion/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "doble-estandar-judicial",
+      "case": "Doble estandar en persecucion judicial",
+      "outcome": "PATRON DOCUMENTADO",
+      "evidence_es": "Patron documentado de 'doble estandar del derecho': mientras ciertas causas de corrupcion son seguidas de cerca, otras son invisibilizadas o desestimadas. La designacion de jueces en causas clave se realiza irregularmente para asegurar sentencias alineadas con intereses politicos de elite. CFK procesada en 12+ causas con mismos jueces y fiscales vinculados a Macri; Macri sobreseido sistematicamente.",
+      "evidence_en": "Documented pattern of 'double standard of law': while certain corruption cases are closely followed, others are made invisible or dismissed. Judge assignment in key cases is irregularly carried out to ensure sentences aligned with elite political interests. CFK prosecuted in 12+ cases with same judges and prosecutors linked to Macri; Macri systematically cleared.",
+      "source_urls": [
+        "https://www.celag.org/lawfare-o-la-guerra-judicial-en-argentina-y-brasil/",
+        "https://www.oblawfare.org/post/argentina-democracia-condicionada-por-el-lawfare",
+        "https://radioclanfm.com/politica/2026/03/18/argentina-justicia-en-crisis-y-la-sombra-del-lawfare/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "comodoro-py-reforma-acusatorio",
+      "case": "Reforma del sistema acusatorio - Comodoro Py",
+      "outcome": "REFORMA EN MARCHA - agosto 2025",
+      "evidence_es": "El gobierno de Milei implemento el sistema acusatorio en tribunales federales desde agosto 2025, quitando poder de investigacion a los jueces y dandolo a los fiscales. Criticos senalan que la reforma se implemento como represalia al avance del criptoescandalo, licuando el poder de jueces que investigaban al gobierno.",
+      "evidence_en": "Milei's government implemented the accusatorial system in federal courts from August 2025, removing investigative power from judges and giving it to prosecutors. Critics note the reform was implemented as retaliation for the crypto scandal investigations, diluting the power of judges investigating the government.",
+      "source_urls": [
+        "https://www.lanacion.com.ar/politica/la-justicia-federal-de-comodoro-py-cambia-desde-agosto-y-los-fiscales-ganan-poder-nid19032025/",
+        "https://www.resumenlatinoamericano.org/2025/03/22/argentina-comodoro-py-en-guerra-por-la-reforma-que-le-da-mas-poder-a-los-fiscales/"
+      ],
+      "severity": "high"
+    }
+  ],
+
+  "ercolini_pattern_summary": {
+    "judge": "Julian Ercolini",
+    "pattern": "Clears the powerful, pursues the opposition",
+    "cleared": [
+      "Rogelio Frigerio (Koolhaas SA - express dismissal)",
+      "Paolo Rocca / Techint (Cuadernos - 'state of necessity' defense for bribes)",
+      "Himself + co-travelers (Lago Escondido - all cleared by Judge Ramos)"
+    ],
+    "pursued": [
+      "Alberto Fernandez (Causa Seguros - initiated aggressive investigation before being replaced)",
+      "Cristina Fernandez de Kirchner (multiple cases)"
+    ],
+    "compromised_by": "Lago Escondido meeting with Macri-era officials and media executives; leaked audio showed discussion of fabricating alibis and adulterating evidence",
+    "severity": "critical"
+  },
+
+  "summary_statistics": {
+    "macri_cases_cleared": 6,
+    "macri_cases_open_stalled": 3,
+    "macri_cases_convicted": 0,
+    "cfk_cases_convicted": 1,
+    "cfk_cases_open": "4+",
+    "corruption_conviction_rate": "2%",
+    "pattern": "Systematic clearance of aligned-power defendants by the same judges who aggressively pursue opposition figures. Judge Ercolini exemplifies this: express dismissals for Frigerio and Rocca, aggressive pursuit of Fernandez, while personally compromised by the Lago Escondido scandal."
+  }
+}
