@@ -13,7 +13,7 @@ export default async function CasoLandingPage({
   readonly params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const [_stats, actors, documents] = await Promise.all([getStats(), getActors(), getDocuments()])
+  const [_stats, actors, documents] = await Promise.all([getStats(slug), getActors(slug), getDocuments(slug)])
 
   return <CasoLandingContent slug={slug} actors={actors} documents={documents} />
 }
