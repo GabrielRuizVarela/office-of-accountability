@@ -17,6 +17,7 @@ export const casoFinanzasPoliticasConfig: InvestigationClientConfig = {
     es: 'Investigacion sobre conexiones entre poder politico y dinero. Cruce de ocho fuentes de datos publicos para identificar politicos con entidades offshore no declaradas, contratistas que donaron ilegalmente a campanas, y flujos de dinero entre fondos publicos y estructuras opacas.',
     en: 'Investigation into the connections between political power and money. Cross-referencing eight public data sources to identify politicians with undeclared offshore entities, contractors who illegally donated to campaigns, and money flows between public funds and opaque structures.',
   },
+  defaultLang: 'es',
   tabs: [
     'resumen',
     'investigacion',
