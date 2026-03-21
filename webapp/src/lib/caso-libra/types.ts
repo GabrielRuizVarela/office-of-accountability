@@ -6,6 +6,7 @@
  */
 
 import { z } from 'zod/v4'
+import type { EventType } from '@/lib/investigations/types'
 
 // ---------------------------------------------------------------------------
 // Node schemas
@@ -44,7 +45,9 @@ export const cryptoTransactionSchema = z.object({
 export type CryptoTransaction = z.infer<typeof cryptoTransactionSchema>
 
 export const eventTypeSchema = z.enum(['political', 'financial', 'legal', 'media'])
-export type EventType = z.infer<typeof eventTypeSchema>
+
+// Re-exported from investigations/types.ts (canonical location)
+export type { EventType } from '@/lib/investigations/types'
 
 export const eventSchema = z.object({
   id: z.string().min(1),
@@ -110,22 +113,10 @@ export type RelationshipType =
   | 'AFFILIATED_WITH'
 
 // ---------------------------------------------------------------------------
-// Event type display config
+// Event type display config (re-exported from investigations/types.ts)
 // ---------------------------------------------------------------------------
 
-export const EVENT_TYPE_COLORS: Readonly<Record<EventType, string>> = {
-  political: '#3b82f6',
-  financial: '#10b981',
-  legal: '#ef4444',
-  media: '#a855f7',
-}
-
-export const EVENT_TYPE_LABELS: Readonly<Record<EventType, string>> = {
-  political: 'Politico',
-  financial: 'Financiero',
-  legal: 'Legal',
-  media: 'Medios',
-}
+export { EVENT_TYPE_COLORS, EVENT_TYPE_LABELS } from '@/lib/investigations/types'
 
 // ---------------------------------------------------------------------------
 // Timeline item (flattened for display)

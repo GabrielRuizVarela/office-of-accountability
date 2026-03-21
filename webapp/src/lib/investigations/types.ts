@@ -76,6 +76,26 @@ export interface GraphData {
 }
 
 // ---------------------------------------------------------------------------
+// Event type display config (shared across investigations)
+// ---------------------------------------------------------------------------
+
+export type EventType = 'political' | 'financial' | 'legal' | 'media'
+
+export const EVENT_TYPE_COLORS: Readonly<Record<EventType, string>> = {
+  political: '#3b82f6',
+  financial: '#10b981',
+  legal: '#ef4444',
+  media: '#a855f7',
+}
+
+export const EVENT_TYPE_LABELS: Readonly<Record<EventType, string>> = {
+  political: 'Politico',
+  financial: 'Financiero',
+  legal: 'Legal',
+  media: 'Medios',
+}
+
+// ---------------------------------------------------------------------------
 // Timeline
 // ---------------------------------------------------------------------------
 
