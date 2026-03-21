@@ -397,14 +397,14 @@ const chapters: readonly Chapter[] = [
     paragraphs: {
       es: [
         'Las declaraciones juradas patrimoniales de los funcionarios publicos, cruzadas con sus salarios oficiales, revelan anomalias que la matematica no puede explicar.',
-        'Maria Laura Seijas declaro un patrimonio de ARS 1.750 millones mientras servia como asesora ad honorem — un cargo sin remuneracion. El puesto no paga un centavo. El patrimonio declarado es de mil setecientos cincuenta millones de pesos.',
+        'Alberto Seijas declaro un patrimonio de ARS 1.750 millones mientras servia como asesor ad honorem — un cargo sin remuneracion. El puesto no paga un centavo. El patrimonio declarado es de mil setecientos cincuenta millones de pesos.',
         'Pistone registro un crecimiento patrimonial del 457.000% durante su carrera en el sector publico. Castineira de Dios alcanzo un crecimiento del 62.000%. Estos no son retornos de inversiones bursatiles extraordinarias. Son numeros que desafian cualquier explicacion basada en ingresos legitimos de funcionarios publicos.',
         'El juez Lijo — el mismo nominado a la Corte Suprema — posee un departamento valuado en USD 2 millones que no aparece en sus declaraciones juradas. La Oficina Anticorrupcion, que deberia auditar estas declaraciones, ha sido sistematicamente debilitada o cooptada.',
         'El patron se repite: funcionarios que llegan al cargo con patrimonios modestos y egresan con fortunas. El sistema no tiene mecanismo efectivo para preguntar de donde viene el dinero.',
       ],
       en: [
         'Asset declarations of public officials, cross-referenced with their official salaries, reveal anomalies that mathematics cannot explain.',
-        'Maria Laura Seijas declared assets worth ARS 1.75 billion while serving as an unpaid advisor — an ad honorem position. The post pays nothing. The declared wealth is one billion seven hundred fifty million pesos.',
+        'Alberto Seijas declared assets worth ARS 1.75 billion while serving as an unpaid advisor — an ad honorem position. The post pays nothing. The declared wealth is one billion seven hundred fifty million pesos.',
         'Pistone registered a 457,000% asset growth during his public sector career. Castineira de Dios reached 62,000% growth. These are not returns from extraordinary stock market investments. They are numbers that defy any explanation based on legitimate public official income.',
         'Judge Lijo — the same one nominated to the Supreme Court — owns an apartment valued at USD 2 million that does not appear in his asset declarations. The Anti-Corruption Office, which should audit these declarations, has been systematically weakened or co-opted.',
         'The pattern repeats: officials who enter office with modest assets and leave with fortunes. The system has no effective mechanism to ask where the money comes from.',
