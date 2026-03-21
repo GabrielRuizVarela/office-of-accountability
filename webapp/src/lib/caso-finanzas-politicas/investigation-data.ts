@@ -525,6 +525,62 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source: 'Cuerpo de Auditores del Consejo de la Magistratura / Chequeado',
     source_url: 'https://chequeado.com',
   },
+  // --- Tier 1: Milei-era scandals ---
+  {
+    id: 'libra-crypto-scandal',
+    claim_es:
+      'El presidente Milei promovió la criptomoneda $LIBRA que alcanzó una capitalización de USD 4B antes de caer 90%. Insiders cobraron USD 107M. En el teléfono del lobbyista Mauricio Novelli se encontró un acuerdo de pago de USD 5M a Milei. Hayden Davis (Kelsier Ventures) tiene activos congelados.',
+    claim_en:
+      'President Milei promoted the $LIBRA cryptocurrency which hit USD 4B market cap before crashing 90%. Insiders cashed out USD 107M. A USD 5M payment agreement to Milei was found on lobbyist Mauricio Novelli\'s phone. Hayden Davis (Kelsier Ventures) has frozen assets.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Infobae / Congressional investigation',
+    source_url: 'https://www.infobae.com',
+  },
+  {
+    id: 'side-2838-growth',
+    claim_es:
+      'Los fondos reservados de inteligencia (SIDE) crecieron 2.838% bajo Milei. Santiago Caputo controla la SIDE a través del designado Cristian Auguadra sin ser funcionario público. El DNU 941/2025 otorgó poderes de detención y vigilancia masiva sin orden judicial.',
+    claim_en:
+      'Intelligence reserved funds (SIDE) grew 2,838% under Milei. Santiago Caputo controls SIDE through appointee Cristian Auguadra without being a public official. DNU 941/2025 granted detention and mass surveillance powers without judicial order.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Chequeado / Página/12 / elDiarioAR',
+    source_url: 'https://chequeado.com',
+  },
+  {
+    id: 'belocopitt-health-media',
+    claim_es:
+      'Claudio Belocopitt posee 76% de Swiss Medical y 40% de Grupo América (América TV, A24, La Red). Tiene 6 entidades offshore en las Islas Vírgenes Británicas (Panama Papers). Red de 53 empresas. Cobró USD 13M en ayuda COVID estatal siendo top-50 más ricos.',
+    claim_en:
+      'Claudio Belocopitt owns 76% of Swiss Medical and 40% of Grupo America (America TV, A24, La Red). Has 6 BVI offshore entities (Panama Papers). 53-company network. Collected USD 13M COVID state aid while being top-50 richest.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'ICIJ / Forbes',
+    source_url: 'https://offshoreleaks.icij.org',
+  },
+  {
+    id: 'pami-16x-overpricing',
+    claim_es:
+      'PAMI pagó hasta 16 veces el precio de mercado por medicamentos oncológicos en 2023 (anastrozol: $13.192 vs $924 en licitación). Cartel denunciado: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
+    claim_en:
+      'PAMI paid up to 16x market price for oncological drugs in 2023 (anastrozole: $13,192 vs $924 at tender). Cartel complaint: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Infobae',
+    source_url: 'https://www.infobae.com',
+  },
+  {
+    id: 'bcra-gold-london',
+    claim_es:
+      'El BCRA envió secretamente ~37 toneladas de oro ($1B+) a Londres en 2024. Rechaza auditorías, dice que no existen contratos, bloquea a la AGN.',
+    claim_en:
+      'BCRA secretly shipped ~37 tonnes of gold ($1B+) to London in 2024. Refuses audits, claims no contracts exist, blocks AGN.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Infobae / Congressional investigation',
+    source_url: 'https://www.infobae.com',
+  },
 ] as const
 
 // ---------------------------------------------------------------------------
@@ -810,6 +866,66 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
       'The court prosecutes Héctor Martínez Sosa y Compañía S.A. as necessary participant in dealings incompatible with public office. Embargo for $2.87B ARS.',
     category: 'legal',
     sources: ['https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/'],
+  },
+  {
+    id: 'tl-2024-gold-london',
+    date: '2024-07',
+    title_es: 'BCRA envía 37 toneladas de oro a Londres secretamente',
+    title_en: 'BCRA secretly ships 37 tonnes of gold to London',
+    description_es:
+      'El Banco Central envió secretamente aproximadamente 37 toneladas de oro (valuadas en más de USD 1.000M) a Londres. Se negó a ser auditado, alegó que no existen contratos y bloqueó a la AGN.',
+    description_en:
+      'The Central Bank secretly shipped approximately 37 tonnes of gold (valued at over USD 1B) to London. Refused audits, claimed no contracts exist, and blocked the AGN.',
+    category: 'financial',
+    sources: ['https://www.infobae.com'],
+  },
+  {
+    id: 'tl-2025-libra-crash',
+    date: '2025-02-14',
+    title_es: 'Caso $LIBRA: Milei promueve cripto que colapsa 90%',
+    title_en: '$LIBRA case: Milei promotes crypto that crashes 90%',
+    description_es:
+      'El presidente Milei promovió la criptomoneda $LIBRA que alcanzó USD 4B de capitalización antes de colapsar 90%. Insiders cobraron USD 107M. Se abrió investigación congresional.',
+    description_en:
+      'President Milei promoted the $LIBRA cryptocurrency which hit USD 4B market cap before crashing 90%. Insiders cashed out USD 107M. Congressional investigation opened.',
+    category: 'financial',
+    sources: ['https://www.infobae.com'],
+  },
+  {
+    id: 'tl-2025-food-crisis',
+    date: '2025-06',
+    title_es: 'Crisis alimentaria: Capital Humano retiene 5.000 toneladas',
+    title_en: 'Food crisis: Capital Humano withholds 5,000 tonnes',
+    description_es:
+      'El Ministerio de Capital Humano, bajo Sandra Pettovello, retiene 5.000 toneladas de alimentos mientras aumenta la inseguridad alimentaria en el país.',
+    description_en:
+      'The Ministry of Capital Humano, under Sandra Pettovello, withholds 5,000 tonnes of food while food insecurity rises across the country.',
+    category: 'political',
+    sources: ['https://www.infobae.com'],
+  },
+  {
+    id: 'tl-2025-cuadernos-trial',
+    date: '2025-11',
+    title_es: 'Inicio juicio oral Causa Cuadernos (87 imputados)',
+    title_en: 'Cuadernos oral trial begins (87 defendants)',
+    description_es:
+      'Comienza el juicio oral de la Causa Cuadernos con 87 imputados, una de las mayores causas de corrupción de la historia argentina.',
+    description_en:
+      'The oral trial of the Cuadernos case begins with 87 defendants, one of the largest corruption cases in Argentine history.',
+    category: 'legal',
+    sources: ['https://www.infobae.com'],
+  },
+  {
+    id: 'tl-2025-dnu941',
+    date: '2025-12',
+    title_es: 'DNU 941/2025: SIDE obtiene poderes de vigilancia masiva',
+    title_en: 'DNU 941/2025: SIDE granted mass surveillance powers',
+    description_es:
+      'El DNU 941/2025 otorga a la SIDE poderes de detención y vigilancia masiva sin orden judicial. Los fondos reservados de inteligencia crecieron 2.838% bajo Milei.',
+    description_en:
+      'DNU 941/2025 grants SIDE detention and mass surveillance powers without judicial order. Intelligence reserved funds grew 2,838% under Milei.',
+    category: 'political',
+    sources: ['https://chequeado.com'],
   },
 ] as const
 
@@ -1140,6 +1256,49 @@ export const ACTORS: readonly Actor[] = [
     status_es: 'Anomalía patrimonial — ARS 1.75B declarados',
     status_en: 'Wealth anomaly — ARS 1.75B declared',
   },
+  // --- Milei-era key actors ---
+  {
+    id: 'actor-belocopitt',
+    name: 'Belocopitt, Claudio',
+    role_es: 'Empresario — Swiss Medical + Grupo América — 6 offshore',
+    role_en: 'Businessman — Swiss Medical + Grupo America — 6 offshore',
+    description_es:
+      'Posee 76% de Swiss Medical y 40% de Grupo América (América TV, A24, La Red). Tiene 6 entidades offshore en BVI (Panama Papers). Red de 53 empresas. Cobró USD 13M en ayuda COVID estatal siendo top-50 más ricos.',
+    description_en:
+      'Owns 76% of Swiss Medical and 40% of Grupo America (America TV, A24, La Red). Has 6 BVI offshore entities (Panama Papers). 53-company network. Collected USD 13M COVID state aid while being top-50 richest.',
+    party: 'Independiente',
+    datasets: 3,
+    status_es: 'Offshore confirmado (ICIJ) — Conflicto salud-medios',
+    status_en: 'Offshore confirmed (ICIJ) — Health-media conflict',
+  },
+  {
+    id: 'actor-caputo-santiago',
+    name: 'Caputo, Santiago',
+    role_es: 'Asesor presidencial — Controlador SIDE — sin cargo formal',
+    role_en: 'Presidential advisor — SIDE controller — no formal role',
+    description_es:
+      'Sobrino segundo de Luis "Toto" Caputo (Ministro de Economía). Controla la SIDE a través del designado Cristian Auguadra sin ser funcionario público. Los fondos reservados de inteligencia crecieron 2.838% bajo su gestión.',
+    description_en:
+      'Second cousin of Luis "Toto" Caputo (Economy Minister). Controls SIDE through appointee Cristian Auguadra without being a public official. Intelligence reserved funds grew 2,838% under his management.',
+    party: 'La Libertad Avanza',
+    datasets: 1,
+    status_es: 'Control SIDE documentado — sin cargo público formal',
+    status_en: 'SIDE control documented — no formal public role',
+  },
+  {
+    id: 'actor-pettovello',
+    name: 'Pettovello, Sandra',
+    role_es: 'Ministra de Capital Humano — ARS 8.3B sin rendir',
+    role_en: 'Minister of Capital Humano — ARS 8.3B unaccounted',
+    description_es:
+      'Ministra de Capital Humano bajo Milei. Retuvo 5.000 toneladas de alimentos durante crisis alimentaria. ARS 8.300 millones en gastos sin rendición de cuentas.',
+    description_en:
+      'Minister of Capital Humano under Milei. Withheld 5,000 tonnes of food during food crisis. ARS 8.3 billion in unaccounted spending.',
+    party: 'La Libertad Avanza',
+    datasets: 1,
+    status_es: 'Investigación activa — retención de alimentos',
+    status_en: 'Active investigation — food withholding',
+  },
 ] as const
 
 // ---------------------------------------------------------------------------
@@ -1293,5 +1452,45 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
     date: '2018-2025',
     source: 'Corte Suprema / Chequeado',
     source_url: 'https://chequeado.com',
+  },
+  // --- Milei-era money flows ---
+  {
+    id: 'flow-libra-insider',
+    from_label: '$LIBRA insiders (Kelsier Ventures)',
+    to_label: '44,000 victims',
+    amount_ars: 0,
+    description_es:
+      'Insiders cobraron USD 107M antes del colapso del 90% de $LIBRA. El presidente Milei promovió la criptomoneda que alcanzó USD 4B de capitalización. 44.000 víctimas afectadas.',
+    description_en:
+      'Insiders cashed out USD 107M before the 90% crash of $LIBRA. President Milei promoted the cryptocurrency which hit USD 4B market cap. 44,000 victims affected.',
+    date: '2025-02',
+    source: 'Infobae / Congressional investigation',
+    source_url: 'https://www.infobae.com',
+  },
+  {
+    id: 'flow-side-secret',
+    from_label: 'Presupuesto Nacional',
+    to_label: 'SIDE fondos reservados',
+    amount_ars: 13_400_000_000,
+    description_es:
+      'Los fondos reservados de inteligencia crecieron 2.838% bajo Milei. Santiago Caputo controla la SIDE a través del designado Cristian Auguadra sin cargo público formal.',
+    description_en:
+      'Intelligence reserved funds grew 2,838% under Milei. Santiago Caputo controls SIDE through appointee Cristian Auguadra without a formal public role.',
+    date: '2024-2025',
+    source: 'Chequeado / Página/12 / elDiarioAR',
+    source_url: 'https://chequeado.com',
+  },
+  {
+    id: 'flow-pami-overpricing',
+    from_label: 'PAMI',
+    to_label: 'Drug cartel (Elea, GP Pharm, Kemex, etc.)',
+    amount_ars: 0,
+    description_es:
+      'PAMI pagó hasta 16 veces el precio de mercado por medicamentos oncológicos en 2023. Anastrozol: $13.192 vs $924 en licitación. Cartel denunciado: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
+    description_en:
+      'PAMI paid up to 16x market price for oncological drugs in 2023. Anastrozole: $13,192 vs $924 at tender. Cartel complaint: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncologia.',
+    date: '2023',
+    source: 'Infobae',
+    source_url: 'https://www.infobae.com',
   },
 ] as const
