@@ -334,9 +334,9 @@ Three investigations exist in the platform, each built independently. The standa
 
 | Investigation | Current State | After Standardization |
 |---|---|---|
-| **Caso Libra** | Full Neo4j integration with `CasoLibra*`-prefixed labels, 8 API routes, Zod schemas, typed queries | Generic labels with `caso_slug: "caso-libra"`, unified API |
-| **Caso Finanzas Politicas** | Static TypeScript data file + 720-line Neo4j API route querying platform labels (`Politician`, `OffshoreOfficer`, etc.) | Narrative data (factchecks, timeline, actors, money flows) imported into Neo4j as investigation nodes |
-| **Caso Epstein** | Raw JSON files in `_ingestion_data/rhowardstone/` — 606 KG entities, 2,302 relationships, 1,614 persons registry | Full import into Neo4j with victim pseudonymization, ~1,614 Person nodes |
+| **Caso Libra** | Full Neo4j integration with `CasoLibra*`-prefixed labels (6 constraints), 8 API routes at `/api/caso-libra/*`, Zod submission schemas, typed queries, 103KB static editorial data | Generic labels with `caso_slug: "caso-libra"`, prefixed IDs, unified API at `/api/casos/caso-libra/*` |
+| **Caso Finanzas Politicas** | Single `investigation-data.ts` (48KB) with static arrays (FACTCHECK_ITEMS, TIMELINE_EVENTS, ACTORS, MONEY_FLOWS, IMPACT_STATS). No queries.ts, no transforms. 1 API route querying platform labels. | Narrative data imported into Neo4j as investigation nodes (Claim, Event, Person, MoneyFlow). Per-investigation backend module. |
+| **Caso Epstein** | Already uses generic labels + `caso_slug: "caso-epstein"` pattern. Full backend: queries.ts (18KB), transform.ts, types.ts. 80KB seed script. 130KB static editorial data. 6 API routes at `/api/caso/[slug]/*`. 10,864+ nodes in Neo4j. | Aligned with unified InvestigationConfig schema subgraph, unified API at `/api/casos/caso-epstein/*`, query builder delegation |
 
 **Config Subgraph:**
 
@@ -774,9 +774,9 @@ What exists today. All subsequent milestones build on or migrate from this.
 | MiroFish client | `webapp/src/lib/mirofish/client.ts` | LLM swarm simulation via llama.cpp/Qwen |
 | MiroFish seed export | `webapp/src/lib/mirofish/export.ts` | Graph-to-simulation seed conversion |
 | Webapp | `webapp/src/app/` | Caso pages, graph explorer (react-force-graph-2d), simulation panel |
-| Caso Libra data | Neo4j (`CasoLibra*` labels) | Full Neo4j integration with prefixed labels, 8 API routes, Zod schemas, typed queries |
-| Caso Finanzas Politicas | `webapp/src/lib/caso-finanzas-politicas/` | Static TypeScript data file + 720-line Neo4j API route querying platform labels |
-| Caso Epstein raw data | `_ingestion_data/rhowardstone/` | 606 KG entities, 2,302 relationships, 1,614 persons registry (JSON files pending full import) |
+| Caso Libra data | Neo4j (`CasoLibra*` labels) + `webapp/src/lib/caso-libra/` (6 files) | Full Neo4j integration with `CasoLibra*`-prefixed labels, 8 API routes, Zod schemas, typed queries, 103KB editorial data |
+| Caso Finanzas Politicas | `webapp/src/lib/caso-finanzas-politicas/investigation-data.ts` (48KB) | Static TS arrays only (factchecks, timeline, actors, money flows). No Neo4j queries. 1 platform-graph API route |
+| Caso Epstein data | Neo4j (10,864+ nodes, generic labels + `caso_slug`) + `webapp/src/lib/caso-epstein/` (5 files) | Full backend with queries (18KB), transforms, types using generic labels. 80KB seed script. 130KB editorial data. 6 API routes |
 | Dev environment | `docker-compose.yml` | Neo4j + app containers |
 
 ### M1: Data Foundation
