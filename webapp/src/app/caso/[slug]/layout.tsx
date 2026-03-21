@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { LanguageProvider, type Lang } from '@/lib/language-context'
 import { InvestigationNav } from '@/components/investigation/InvestigationNav'
 import { BilingualLegalDisclaimer } from '@/components/investigation/LegalDisclaimer'
+import { getClientConfig } from '@/lib/investigations/registry'
 
 const CASE_META: Readonly<Record<string, { title: string; description: string; defaultLang: Lang }>> = {
   'caso-libra': {
@@ -41,11 +42,12 @@ export default async function CasoLayout({
   readonly params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
+  const config = getClientConfig(slug)
   const defaultLang = CASE_META[slug]?.defaultLang ?? 'es'
 
   return (
     <LanguageProvider defaultLang={defaultLang}>
-      <InvestigationNav slug={slug} />
+      <InvestigationNav slug={slug} tabs={config?.tabs} />
       <main className="mx-auto max-w-6xl px-4 py-6 sm:py-8">
         {children}
         <div className="mt-8 border-t border-zinc-800 pt-6">

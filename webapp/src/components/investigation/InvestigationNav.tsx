@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { useLanguage, type Lang } from '@/lib/language-context'
+import type { TabId } from '@/lib/investigations/types'
 
 interface NavTab {
   readonly href: string
@@ -18,58 +19,44 @@ interface NavTab {
 
 interface InvestigationNavProps {
   readonly slug: string
+  readonly tabs?: readonly TabId[]
 }
 
 // ---------------------------------------------------------------------------
-// Per-case tab configuration (bilingual labels)
+// Standard tab labels — maps each TabId to its href suffix and bilingual label
 // ---------------------------------------------------------------------------
 
-const CASE_TABS: Readonly<Record<string, readonly NavTab[]>> = {
-  'caso-epstein': [
-    { href: '', label: { en: 'Overview', es: 'Inicio' } },
-    { href: '/resumen', label: { en: 'Summary', es: 'Resumen' } },
-    { href: '/investigacion', label: { en: 'Investigation', es: 'Investigacion' } },
-    { href: '/grafo', label: { en: 'Connections', es: 'Conexiones' } },
-    { href: '/cronologia', label: { en: 'Timeline', es: 'Cronologia' } },
-    { href: '/vuelos', label: { en: 'Flights', es: 'Vuelos' } },
-    { href: '/evidencia', label: { en: 'Evidence', es: 'Evidencia' } },
-    { href: '/proximidad', label: { en: 'Proximity', es: 'Proximidad' } },
-    { href: '/simulacion', label: { en: 'Simulation', es: 'Simulacion' } },
-  ],
-  'caso-libra': [
-    { href: '', label: { en: 'Home', es: 'Inicio' } },
-    { href: '/resumen', label: { en: 'What happened', es: 'Que paso' } },
-    { href: '/investigacion', label: { en: 'Evidence', es: 'Pruebas' } },
-    { href: '/cronologia', label: { en: 'Timeline', es: 'Cronologia' } },
-    { href: '/dinero', label: { en: 'The Money', es: 'El dinero' } },
-    { href: '/evidencia', label: { en: 'Documents', es: 'Evidencia' } },
-    { href: '/grafo', label: { en: 'Connections', es: 'Conexiones' } },
-    { href: '/simular', label: { en: 'Predictions', es: 'Predicciones' } },
-  ],
-  'finanzas-politicas': [
-    { href: '', label: { en: 'Home', es: 'Inicio' } },
-    { href: '/resumen', label: { en: 'Summary', es: 'Resumen' } },
-    { href: '/investigacion', label: { en: 'Investigation', es: 'Investigacion' } },
-    { href: '/cronologia', label: { en: 'Timeline', es: 'Cronologia' } },
-    { href: '/dinero', label: { en: 'The Money', es: 'El Dinero' } },
-    { href: '/conexiones', label: { en: 'Connections', es: 'Conexiones' } },
-  ],
+const HOME_TAB: NavTab = { href: '', label: { en: 'Home', es: 'Inicio' } }
+
+const TAB_LABELS: Readonly<Record<TabId, NavTab>> = {
+  resumen:       { href: '/resumen',       label: { en: 'Summary',       es: 'Resumen' } },
+  investigacion: { href: '/investigacion', label: { en: 'Investigation', es: 'Investigacion' } },
+  cronologia:    { href: '/cronologia',    label: { en: 'Timeline',      es: 'Cronologia' } },
+  evidencia:     { href: '/evidencia',     label: { en: 'Evidence',      es: 'Evidencia' } },
+  grafo:         { href: '/grafo',         label: { en: 'Connections',   es: 'Conexiones' } },
+  dinero:        { href: '/dinero',        label: { en: 'The Money',     es: 'El Dinero' } },
+  simular:       { href: '/simular',       label: { en: 'Simulation',    es: 'Simulacion' } },
+  vuelos:        { href: '/vuelos',        label: { en: 'Flights',       es: 'Vuelos' } },
+  proximidad:    { href: '/proximidad',    label: { en: 'Proximity',     es: 'Proximidad' } },
+  conexiones:    { href: '/conexiones',    label: { en: 'Connections',   es: 'Conexiones' } },
 }
 
 const DEFAULT_TABS: readonly NavTab[] = [
-  { href: '', label: { en: 'Home', es: 'Inicio' } },
-  { href: '/resumen', label: { en: 'Summary', es: 'Resumen' } },
-  { href: '/investigacion', label: { en: 'Investigation', es: 'Investigacion' } },
-  { href: '/grafo', label: { en: 'Connections', es: 'Conexiones' } },
-  { href: '/cronologia', label: { en: 'Timeline', es: 'Cronologia' } },
-  { href: '/evidencia', label: { en: 'Evidence', es: 'Evidencia' } },
+  HOME_TAB,
+  TAB_LABELS.resumen,
+  TAB_LABELS.investigacion,
+  TAB_LABELS.grafo,
+  TAB_LABELS.cronologia,
+  TAB_LABELS.evidencia,
 ]
 
-export function InvestigationNav({ slug }: InvestigationNavProps) {
+export function InvestigationNav({ slug, tabs: tabIds }: InvestigationNavProps) {
   const pathname = usePathname()
   const { lang, setLang } = useLanguage()
   const base = `/caso/${slug}`
-  const tabDefs = CASE_TABS[slug] ?? DEFAULT_TABS
+  const tabDefs = tabIds
+    ? [HOME_TAB, ...tabIds.map((id) => TAB_LABELS[id])]
+    : DEFAULT_TABS
   const tabs = tabDefs.map((t) => ({ href: `${base}${t.href}`, label: t.label[lang] }))
 
   return (
