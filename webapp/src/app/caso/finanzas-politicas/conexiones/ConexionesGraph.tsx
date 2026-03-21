@@ -189,6 +189,7 @@ export function ConexionesGraph() {
   const { lang } = useLanguage()
   const graphRef = useRef<ForceGraphMethods | undefined>(undefined)
   const containerRef = useRef<HTMLDivElement>(null)
+  const frozenRef = useRef(false)
   const [ForceGraph2D, setForceGraph2D] = useState<ForceGraph2DComponent | null>(null)
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 })
   const [graphData, setGraphData] = useState<{ nodes: GraphNodeData[]; links: GraphLinkData[] } | null>(null)
@@ -292,22 +293,31 @@ export function ConexionesGraph() {
     }
   }, [selectedNode, graphData])
 
-  // Filter graph data based on hidden node types and hidden edge types
-  const filteredData = graphData
-    ? {
-        nodes: graphData.nodes.filter((n) => !hiddenTypes.has(n.type)),
-        links: graphData.links.filter((l) => {
-          // Filter by edge type
-          if (hiddenEdgeTypes.has(l.type)) return false
-
-          const sourceId = typeof l.source === 'string' ? l.source : (l.source as any)?.id
-          const targetId = typeof l.target === 'string' ? l.target : (l.target as any)?.id
-          const sourceNode = graphData.nodes.find((n) => n.id === sourceId)
-          const targetNode = graphData.nodes.find((n) => n.id === targetId)
-          return sourceNode && targetNode && !hiddenTypes.has(sourceNode.type) && !hiddenTypes.has(targetNode.type)
-        }),
-      }
-    : null
+  // Filter graph data based on hidden node types and hidden edge types, then strip isolated nodes
+  const filteredData = useMemo(() => {
+    if (!graphData) return null
+    const visibleNodes = graphData.nodes.filter((n) => !hiddenTypes.has(n.type))
+    const visibleLinks = graphData.links.filter((l) => {
+      if (hiddenEdgeTypes.has(l.type)) return false
+      const sourceId = typeof l.source === 'string' ? l.source : (l.source as any)?.id
+      const targetId = typeof l.target === 'string' ? l.target : (l.target as any)?.id
+      const sourceNode = graphData.nodes.find((n) => n.id === sourceId)
+      const targetNode = graphData.nodes.find((n) => n.id === targetId)
+      return sourceNode && targetNode && !hiddenTypes.has(sourceNode.type) && !hiddenTypes.has(targetNode.type)
+    })
+    // Remove isolated nodes (degree-0 after filtering)
+    const connectedIds = new Set<string>()
+    for (const l of visibleLinks) {
+      const sid = typeof l.source === 'string' ? l.source : (l.source as any)?.id
+      const tid = typeof l.target === 'string' ? l.target : (l.target as any)?.id
+      if (sid) connectedIds.add(sid)
+      if (tid) connectedIds.add(tid)
+    }
+    return {
+      nodes: visibleNodes.filter((n) => connectedIds.has(n.id)),
+      links: visibleLinks,
+    }
+  }, [graphData, hiddenTypes, hiddenEdgeTypes])
 
   // Load ForceGraph2D dynamically
   useEffect(() => {
@@ -363,13 +373,25 @@ export function ConexionesGraph() {
     return () => observer.disconnect()
   }, [])
 
-  // Zoom to fit on data load
+  // Reset frozen state when filtered data changes so new layouts can converge
   useEffect(() => {
+    frozenRef.current = false
+  }, [filteredData])
+
+  // Freeze all nodes after layout converges — fx/fy pins make d3-force skip force calcs
+  const handleEngineStop = useCallback(() => {
+    if (frozenRef.current) return
     const fg = graphRef.current
-    if (fg && graphData && graphData.nodes.length > 0) {
-      setTimeout(() => fg.zoomToFit(400, 40), 500)
+    if (!fg) return
+    const nodes = (filteredData ?? graphData)?.nodes as unknown as NodeObject<GraphNodeData>[] | undefined
+    if (!nodes) return
+    for (const node of nodes) {
+      if (typeof node.x === 'number') node.fx = node.x
+      if (typeof node.y === 'number') node.fy = node.y
     }
-  }, [graphData])
+    frozenRef.current = true
+    fg.zoomToFit(0, 40) // instant, no animation
+  }, [filteredData, graphData])
 
   // Node click handler
   const handleNodeClick = useCallback(
@@ -737,14 +759,15 @@ export function ConexionesGraph() {
               onNodeClick={handleNodeClick}
               enableZoomInteraction={true}
               enablePanInteraction={true}
-              enableNodeDrag={true}
-              cooldownTicks={150}
-              d3AlphaDecay={0.015}
-              d3VelocityDecay={0.25}
-              d3AlphaMin={0.001}
+              enableNodeDrag={false}
+              warmupTicks={300}
+              cooldownTicks={0}
+              cooldownTime={0}
+              d3AlphaDecay={0.0228}
+              d3VelocityDecay={0.4}
               minZoom={0.2}
               maxZoom={25}
-              onEngineStop={() => graphRef.current?.zoomToFit(400, 60)}
+              onEngineStop={handleEngineStop}
             />
           )}
 

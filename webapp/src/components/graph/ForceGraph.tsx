@@ -104,6 +104,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
 ) {
   const graphRef = useRef<ForceGraphMethods<FGNode, FGLink> | undefined>(undefined)
   const containerRef = useRef<HTMLDivElement>(null)
+  const frozenRef = useRef(false)
   const [dimensions, setDimensions] = useState({ width: width ?? 800, height: height ?? 600 })
   const [ForceGraph2D, setForceGraph2D] = useState<ForceGraph2DComponent | null>(null)
 
@@ -199,6 +200,45 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
   // Convert to force graph format — memoize to avoid restarting simulation on re-renders
   const fgData = useMemo(() => toFGData(data), [data])
 
+  // Reset frozen state when data changes so new layouts can converge
+  useEffect(() => {
+    frozenRef.current = false
+  }, [data])
+
+  // Freeze all nodes after layout converges — fx/fy pins make d3-force skip force calcs
+  const handleEngineStop = useCallback(() => {
+    if (frozenRef.current) return
+    const fg = graphRef.current
+    if (!fg) return
+    const nodes = fgData.nodes as unknown as NodeObject<FGNode>[]
+    for (const node of nodes) {
+      if (typeof node.x === 'number') node.fx = node.x
+      if (typeof node.y === 'number') node.fy = node.y
+    }
+    frozenRef.current = true
+    fg.zoomToFit(0, 40) // instant, no animation
+  }, [fgData.nodes])
+
+  // Configure d3 forces (runs once on mount / data change)
+  useEffect(() => {
+    const fg = graphRef.current
+    if (!fg) return
+    const fgAny = fg as unknown as {
+      d3Force: (name: string, force?: unknown) => unknown
+    }
+    try {
+      const n = data.nodes.length
+      const charge = fgAny.d3Force('charge')
+      if (charge && typeof (charge as { strength: (v: number) => void }).strength === 'function') {
+        (charge as { strength: (v: number) => void }).strength(-Math.max(80, n * 2.5))
+      }
+      const link = fgAny.d3Force('link')
+      if (link && typeof (link as { distance: (v: number) => void }).distance === 'function') {
+        (link as { distance: (v: number) => void }).distance(Math.max(50, n * 1.5))
+      }
+    } catch { /* */ }
+  }, [data.nodes.length])
+
   const { degreeMap, importanceThreshold } = useMemo(() => {
     const dm = new Map<string, number>()
     for (const node of data.nodes) {
@@ -214,12 +254,13 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     return { degreeMap: dm, importanceThreshold: threshold }
   }, [data.nodes, data.links])
 
-  const labelStateRef = useRef({ showAll: false, showImportant: false })
+  const labelStateRef = useRef({ showAll: true, showImportant: true })
+  const hoveredNodeRef = useRef<string | null>(null)
 
   const updateLabelState = useCallback((zoom: number) => {
     const state = labelStateRef.current
-    state.showAll = state.showAll ? zoom > 1.8 : zoom > 2.0
-    state.showImportant = state.showImportant ? zoom > 0.8 : zoom > 1.0
+    state.showAll = zoom > 0.8
+    state.showImportant = zoom > 0.4
   }, [])
 
   // Node click handler — use ref so the callback identity never changes
@@ -235,14 +276,15 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     [],
   )
 
-  // Node visibility filter
+  // Node visibility filter — hide isolated (degree-0) nodes
   const nodeVisibility = useCallback(
     (node: NodeObject<FGNode>) => {
-      if (!visibleLabels) return true
       const fgNode = node as FGNode
+      if ((degreeMap.get(fgNode.id) ?? 0) === 0) return false
+      if (!visibleLabels) return true
       return fgNode.labels.some((label) => visibleLabels.has(label))
     },
-    [visibleLabels],
+    [visibleLabels, degreeMap],
   )
 
   // Custom node canvas render — colored circle + label text
@@ -303,20 +345,43 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         ctx.fill()
       }
       const isImportant = degree >= importanceThreshold
+      const isHovered = hoveredNodeRef.current === fgNode.id
+
+      // Hover glow
+      if (isHovered) {
+        ctx.beginPath()
+        ctx.arc(x, y, radius + 4, 0, 2 * Math.PI)
+        ctx.strokeStyle = fgNode._color
+        ctx.lineWidth = 1.5
+        ctx.globalAlpha = 0.5
+        ctx.stroke()
+        ctx.globalAlpha = isBronze ? 0.5 : 1.0
+      }
 
       const shouldShowLabel =
-        isSelected || isFocused || isPinned ||
-        labelStateRef.current.showAll ||
-        (isImportant && labelStateRef.current.showImportant)
+        isSelected || isFocused || isPinned || isHovered ||
+        isImportant ||
+        labelStateRef.current.showAll
 
       if (shouldShowLabel) {
         const fontSize = Math.max(12 / globalScale, 2)
-        const fontWeight = (isSelected || isPinned) ? 'bold' : 'normal'
+        const fontWeight = (isSelected || isPinned || isHovered) ? 'bold' : 'normal'
         ctx.font = `${fontWeight} ${fontSize}px sans-serif`
         ctx.textAlign = 'center'
         ctx.textBaseline = 'top'
-        ctx.fillStyle = '#e2e8f0'
+        ctx.fillStyle = isHovered ? '#ffffff' : '#e2e8f0'
         ctx.fillText(fgNode._label, x, y + radius + 2)
+
+        // Node type tag below name
+        if ((isHovered || isSelected || globalScale > 1.2) && fgNode.labels[0]) {
+          const tagText = getLabelDisplayName(fgNode.labels[0])
+          const tagFontSize = Math.max(9 / globalScale, 1.5)
+          ctx.font = `${tagFontSize}px sans-serif`
+          ctx.fillStyle = fgNode._color
+          ctx.globalAlpha = 0.7
+          ctx.fillText(tagText, x, y + radius + 2 + fontSize + 1)
+          ctx.globalAlpha = 1.0
+        }
       }
 
       ctx.globalAlpha = 1.0
@@ -417,18 +482,30 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         linkDirectionalArrowLength={3}
         linkDirectionalArrowRelPos={1}
         linkCurvature={0.1}
-        nodeLabel={nodeTooltip as (node: object) => string}
-        onNodeClick={handleNodeClick}
+        nodeLabel=""
+        onNodeClick={(node: NodeObject<FGNode>) => {
+          handleNodeClick(node)
+          if (node.x != null && node.y != null) {
+            graphRef.current?.centerAt(node.x, node.y, 300)
+          }
+        }}
         onNodeRightClick={handleNodeRightClick}
+        onNodeHover={(node: NodeObject<FGNode> | null) => {
+          hoveredNodeRef.current = node ? (node as FGNode).id : null
+          const canvas = containerRef.current?.querySelector('canvas')
+          if (canvas) canvas.style.cursor = node ? 'pointer' : 'default'
+        }}
         onZoom={(transform: { k: number }) => updateLabelState(transform.k)}
         enableZoomInteraction={true}
         enablePanInteraction={true}
-        enableNodeDrag={true}
-        warmupTicks={50}
+        enableNodeDrag={false}
+        warmupTicks={300}
         cooldownTicks={0}
-        d3AlphaDecay={0.05}
+        cooldownTime={0}
+        d3AlphaDecay={0.0228}
         d3VelocityDecay={0.4}
-        minZoom={0.5}
+        onEngineStop={handleEngineStop}
+        minZoom={0.3}
         maxZoom={20}
       />
     </div>
