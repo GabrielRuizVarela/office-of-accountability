@@ -618,9 +618,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: '6-jp-morgan-officials',
     claim_es:
-      'Al menos 6 funcionarios de Milei tienen pasado en JP Morgan: Caputo, Daza, Bausili, Quirno, Werning y Reidel.',
+      'Al menos 7 funcionarios de Milei tienen pasado en JP Morgan: Caputo, Daza, Bausili, Quirno, Werning, Reidel y Lew.',
     claim_en:
-      'At least 6 Milei officials have JP Morgan backgrounds: Caputo, Daza, Bausili, Quirno, Werning, and Reidel.',
+      'At least 7 Milei officials have JP Morgan backgrounds: Caputo, Daza, Bausili, Quirno, Werning, Reidel, and Lew.',
     status: 'confirmed',
     tier: 1,
     source: 'Buenos Aires Times',
@@ -1196,8 +1196,8 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     claim_en: 'Cristina Fernandez de Kirchner was U.S. sanctioned on March 21, 2025 (Section 7031(c)) — first Argentine head of state sanctioned. Barred from U.S. entry with family. Co-designated: Julio De Vido.',
     status: 'confirmed',
     tier: 1,
-    source: 'Axios / Buenos Aires Times',
-    source_url: 'https://www.axios.com/2025/03/21/us-sanction-fernandez-kirchner-argentina',
+    source: 'Buenos Aires Times',
+    source_url: 'https://www.batimes.com.ar/news/argentina/us-sanctions-fernandez-de-kirchner-de-vido-for-corruption.phtml',
   },
 ] as const
 

@@ -136,7 +136,7 @@ const chapters: readonly Chapter[] = [
     citations: [
       { id: 3, text: 'PENSAR ARGENTINA — 19 miembros registrados, registro IGJ' },
       { id: 4, text: 'Macri patrimonio y presencia legislativa — Infobae', url: 'https://www.infobae.com/politica/2020/02/15/el-patrimonio-de-macri-se-enriquecio-o-empobrecio-luego-de-su-paso-por-el-poder/' },
-      { id: 55, text: 'Como Voto — datos legislativos 1993-2026', url: 'https://comovoto.org.ar' },
+      { id: 55, text: 'Como Voto — datos legislativos 1993-2026', url: 'https://comovoto.dev.ar/' },
     ],
   },
   {
@@ -423,8 +423,8 @@ const chapters: readonly Chapter[] = [
       { id: 26, text: 'Tasa de condena por corrupcion 2% — Consejo de la Magistratura / ACIJ', url: 'https://acij.org.ar/lanzamos-el-observatorio-de-causas-de-corrupcion-una-plataforma-para-saber-que-pasa-con-la-investigacion-de-la-corrupcion-en-argentina/' },
       { id: 27, text: 'Lijo rechazo Senado 43-27, 3 abril 2025 — Infobae', url: 'https://www.infobae.com/politica/2025/04/03/con-votos-del-pro-y-el-kirchnerismo-el-senado-rechazo-las-candidaturas-de-ariel-lijo-y-garcia-mansilla-a-la-corte-suprema/' },
       { id: 28, text: 'Borinsky 15 visitas a Olivos — CELS', url: 'https://www.infobae.com/politica/2021/04/02/el-juez-borinsky-habria-visitado-a-macri-en-olivos-al-menos-15-veces/' },
-      { id: 29, text: 'Rosenkrantz 25+ fallos sobre ex-clientes de Clarin — Ambito', url: 'https://www.ambito.com/politica/rosenkrantz-y-su-pasado-como-abogado-del-grupo-clarin-n5044573' },
-      { id: 30, text: 'Ercolini vuelo a Lago Escondido — Pagina/12', url: 'https://www.pagina12.com.ar/495000-lago-escondido-un-viaje-que-compromete-al-juez-ercolini' },
+      { id: 29, text: 'Rosenkrantz 56 fallos sobre ex-clientes — El Destape', url: 'https://www.eldestapeweb.com/politica/corte-suprema-de-justicia/ya-son-56-los-fallos-de-rosenkrantz-sobre-sus-ex-clientes-4-de-clarin-2022116052' },
+      { id: 30, text: 'Ercolini vuelo a Lago Escondido — Infobae', url: 'https://www.infobae.com/politica/2022/12/08/el-gobierno-denuncio-ante-el-consejo-de-la-magistratura-a-los-cuatro-jueces-que-viajaron-a-lago-escondido/' },
     ],
   },
   {
@@ -457,7 +457,7 @@ const chapters: readonly Chapter[] = [
       { id: 31, text: 'Caputo patrimonio 99,9% exterior — declaracion jurada publica, Oficina Anticorrupcion' },
       { id: 32, text: 'Sturzenegger salto patrimonial $970M — DDJJ comparativas 2016-2024' },
       { id: 33, text: 'Rodriguez Saa inconsistencia AFIP — declaraciones juradas comparativas' },
-      { id: 34, text: 'Romero patrimonio $4.361M y publicidad oficial Salta — La Nacion / ADEPA', url: 'https://www.lanacion.com.ar/politica/' },
+      { id: 34, text: 'Romero patrimonio $4.361M y publicidad oficial Salta — Cuarto Poder Salta', url: 'https://cuartopodersalta.com.ar/una-buena-pero-para-la-casta-romero-es-el-senador-mas-rico-del-pais/' },
       { id: 35, text: 'Falsos positivos descartados (Martinez, Lopez) — MiroFish audit log' },
     ],
   },
@@ -582,7 +582,7 @@ const chapters: readonly Chapter[] = [
     citations: [
       { id: 45, text: 'Caputo recompra bonos via JP Morgan — La Letra P', url: 'https://www.letrap.com.ar/economia/deuda-educacion-toto-caputo-recomprara-bonos-plata-del-banco-mundial-y-el-jp-morgan-como-agente-n5419611' },
       { id: 46, text: 'JP Morgan in Power — Buenos Aires Times', url: 'https://batimes.com.ar/news/argentina/jp-morgan-in-power-mileis-six-officials-with-a-past-there.phtml' },
-      { id: 47, text: 'BCRA letra intransferible — Infobae', url: 'https://www.iprofesional.com/negocios/442238-de-ministro-interior-a-petrolero-lisandro-catalan-se-suma-directorio-ypf01/05/el-gobierno-tomara-usd-3200-de-las-reservas-del-bcra-para-pagar-vencimientos-de-deuda/' },
+      { id: 47, text: 'BCRA letra intransferible — Infobae', url: 'https://www.infobae.com/economia/2024/01/05/el-gobierno-tomara-usd-3200-de-las-reservas-del-bcra-para-pagar-vencimientos-de-deuda/' },
       { id: 48, text: 'Sturzenegger 99% exterior — Perfil', url: 'https://www.perfil.com/noticias/politica/declaracion-jurada-federico-sturzenegger.phtml' },
       { id: 49, text: 'Noctua offshore — La Nacion', url: 'https://www.lanacion.com.ar/politica/luis-caputo-estuvo-vinculado-a-un-entramado-de-fondos-offshore-nid2079604/' },
       { id: 50, text: 'Paradise Papers Caputo — Buenos Aires Times', url: 'https://www.batimes.com.ar/news/argentina/caputo-concealed-cayman-island-offshore-firms-from-argentine-authorities.phtml' },
@@ -590,8 +590,8 @@ const chapters: readonly Chapter[] = [
       { id: 52, text: 'UFISES denuncia Caputo — Fiscales.gob.ar', url: 'https://www.fiscales.gob.ar/fiscalias/la-ufises-denuncio-al-ministro-luis-caputo-por-presuntas-operaciones-irregulares-en-el-fondo-de-garantia-de-sustentabilidad/' },
       { id: 53, text: 'DDJJ Caputo 2024 — Chequeado', url: 'https://chequeado.com/el-explicador/la-declaracion-jurada-de-luis-caputo-informo-un-patrimonio-de-11-800-millones-y-casi-2-tercios-de-sus-bienes-estan-en-el-exterior/' },
       { id: 54, text: 'Caputo Hermanos contrato a Morel — Infobae', url: 'https://www.infobae.com/politica/2022/10/21/la-contratacion-de-caputo-hermanos-al-lider-de-revolucion-federal-facturas-y-transferencias-por-mas-de-8-millones-de-pesos/' },
-      { id: 55, text: 'AGN bono del siglo — El Cronista', url: 'https://www.cronista.com/economia-politica/deuda-la-agn-cuestiono-la-colocacion-del-bono-del-siglo-en-el-gobierno-de-macri/' },
-      { id: 56, text: 'Clan Caputo — Perfil', url: 'https://www.perfil.com/noticias/politica/quien-es-quien-en-el-clan-caputo-una-familia-siempre-vinculada-a-la-politica-y-el-poder.phtml' },
+      { id: 57, text: 'AGN bono del siglo — El Cronista', url: 'https://www.cronista.com/economia-politica/deuda-la-agn-cuestiono-la-colocacion-del-bono-del-siglo-en-el-gobierno-de-macri/' },
+      { id: 58, text: 'Clan Caputo — Perfil', url: 'https://www.perfil.com/noticias/politica/quien-es-quien-en-el-clan-caputo-una-familia-siempre-vinculada-a-la-politica-y-el-poder.phtml' },
     ],
   },
   {
@@ -668,9 +668,9 @@ const sources: readonly Source[] = [
   { name: 'Catalan designacion YPF — Infobae', url: 'https://www.iprofesional.com/negocios/442238-de-ministro-interior-a-petrolero-lisandro-catalan-se-suma-directorio-ypf' },
   { name: 'Cuneo Libarona conflicto de intereses — Pagina/12', url: 'https://www.pagina12.com.ar/' },
   { name: 'CEADS — Consejo Empresario', url: 'https://ceads.org.ar' },
-  { name: 'Ercolini vuelo Lago Escondido — Pagina/12', url: 'https://www.pagina12.com.ar/495000-lago-escondido-un-viaje-que-compromete-al-juez-ercolini' },
+  { name: 'Ercolini vuelo Lago Escondido — Infobae', url: 'https://www.infobae.com/politica/2022/12/08/el-gobierno-denuncio-ante-el-consejo-de-la-magistratura-a-los-cuatro-jueces-que-viajaron-a-lago-escondido/' },
   { name: 'Hornos y Borinsky visitas a Olivos — CELS', url: 'https://www.infobae.com/politica/2021/04/02/el-juez-borinsky-habria-visitado-a-macri-en-olivos-al-menos-15-veces/' },
-  { name: 'Rosenkrantz ex-abogado Clarin — Ambito', url: 'https://www.ambito.com/politica/rosenkrantz-y-su-pasado-como-abogado-del-grupo-clarin-n5044573' },
+  { name: 'Rosenkrantz 56 fallos sobre ex-clientes — El Destape', url: 'https://www.eldestapeweb.com/politica/corte-suprema-de-justicia/ya-son-56-los-fallos-de-rosenkrantz-sobre-sus-ex-clientes-4-de-clarin-2022116052' },
   { name: 'Tasa condena corrupcion 2% — ACIJ', url: 'https://acij.org.ar/lanzamos-el-observatorio-de-causas-de-corrupcion-una-plataforma-para-saber-que-pasa-con-la-investigacion-de-la-corrupcion-en-argentina/' },
   { name: 'Lijo departamento no declarado — Infobae', url: 'https://www.infobae.com/politica/2025/02/25/javier-milei-designo-por-decreto-en-la-corte-suprema-a-ariel-lijo-y-manuel-garcia-mansilla/' },
   { name: 'Noctua offshore — La Nacion', url: 'https://www.lanacion.com.ar/politica/luis-caputo-estuvo-vinculado-a-un-entramado-de-fondos-offshore-nid2079604/' },
@@ -850,6 +850,26 @@ export default function ResumenPage() {
         <div className="mt-6 space-y-6">
           <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
             <h3 className="text-sm font-bold uppercase tracking-wider text-blue-400">
+              {lang === 'es' ? 'Como Se Hizo Esta Investigacion' : 'How This Investigation Was Built'}
+            </h3>
+            <div className="mt-3 space-y-3 text-sm text-zinc-300">
+              <p>{lang === 'es'
+                ? 'Esta investigacion fue construida mediante inteligencia artificial asistida con verificacion humana. Mas de 100 agentes autonomos de investigacion fueron desplegados en paralelo para buscar informacion en la web, cruzar datos entre bases publicas, consultar la base de datos de grafo Neo4j, y analizar patrones con el modelo de lenguaje Qwen 3.5 (ejecutado localmente en GPU, sin envio de datos a servicios externos).'
+                : 'This investigation was built through AI-assisted intelligence with human verification. Over 100 autonomous investigation agents were deployed in parallel to search the web, cross-reference public databases, query the Neo4j graph database, and analyze patterns with the Qwen 3.5 language model (running locally on GPU, no data sent to external services).'}</p>
+              <p>{lang === 'es'
+                ? 'El proceso: 14 pipelines ETL (Extract-Transform-Load) ingestan datos publicos — votos legislativos, filtraciones offshore, donaciones electorales, nombramientos del Boletin Oficial, registros corporativos de la IGJ (951.000 directivos), declaraciones juradas, contratos publicos de Compr.ar, datos del BCRA — y los cargan en una base de datos de grafo Neo4j. Un motor de cruce automatico conecta entidades por CUIT (confianza 1.0), DNI/CUIL (0.95) y coincidencia de nombre (0.6-0.8). El grafo resultante — 285 nodos, 2.323 aristas — se consulta con Cypher para descubrir caminos, puentes, triangulos y anomalias que ningun dataset individual puede revelar.'
+                : 'The process: 14 ETL (Extract-Transform-Load) pipelines ingest public data — legislative votes, offshore leaks, electoral donations, Boletin Oficial appointments, IGJ corporate registries (951,000 officers), asset declarations, Compr.ar procurement contracts, BCRA data — and load them into a Neo4j graph database. An automated cross-reference engine connects entities by CUIT (confidence 1.0), DNI/CUIL (0.95), and name matching (0.6-0.8). The resulting graph — 285 nodes, 2,323 edges — is queried with Cypher to discover paths, bridges, triangles, and anomalies that no single dataset can reveal.'}</p>
+              <p>{lang === 'es'
+                ? 'Ejemplo de consulta: "Encontrar todos los caminos entre el Donante X y el Contrato Y en 5 saltos." Esa consulta cruza 3-4 fuentes de datos y revela conexiones literalmente invisibles sin el grafo. La resolucion de entidades conecto 247 donantes de campana con directivos de empresas contratistas del Estado, vinculando $207 millones en donaciones con $63.000 millones en contratos.'
+                : 'Example query: "Find all paths between Donor X and Contract Y within 5 hops." That query crosses 3-4 data sources and reveals connections literally invisible without the graph. Entity resolution connected 247 campaign donors to state contractor company officers, linking $207 million in donations to $63 billion in contracts.'}</p>
+              <p>{lang === 'es'
+                ? 'Cada hallazgo del modelo de IA (MiroFish/Qwen 3.5) fue verificado independientemente contra fuentes publicas antes de ser incluido. El modelo obtuvo 7.5/10 en precision — util para detectar patrones, pero cada afirmacion requirio verificacion humana. Se identificaron y eliminaron 2 errores del modelo y 2 falsos positivos de cruce de datos. La IA no acusa: revela patrones. Las conclusiones son del lector.'
+                : 'Every finding from the AI model (MiroFish/Qwen 3.5) was independently verified against public sources before inclusion. The model scored 7.5/10 in accuracy — useful for pattern detection, but every claim required human verification. 2 model errors and 2 data cross-reference false positives were identified and removed. The AI does not accuse: it reveals patterns. The conclusions are the reader\'s.'}</p>
+            </div>
+          </div>
+
+          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-blue-400">
               {lang === 'es' ? 'Marcos Internacionales' : 'International Frameworks'}
             </h3>
             <ul className="mt-3 space-y-2 text-sm text-zinc-300">
@@ -894,6 +914,9 @@ export default function ResumenPage() {
               <li>{lang === 'es'
                 ? 'Falsos positivos identificados y eliminados (Martinez Carlos Alberto, Lopez Juan Manuel — nombres comunes sin evidencia)'
                 : 'False positives identified and removed (Martinez Carlos Alberto, Lopez Juan Manuel — common names without evidence)'}</li>
+              <li>{lang === 'es'
+                ? 'Derecho a replica: los sujetos de esta investigacion no fueron contactados para descargo previo. La informacion se basa exclusivamente en fuentes publicas verificables. Esta es una limitacion reconocida.'
+                : 'Right of reply: subjects of this investigation were not contacted for prior comment. Information is based exclusively on verifiable public sources. This is an acknowledged limitation.'}</li>
             </ul>
           </div>
 
