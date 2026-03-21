@@ -85,16 +85,16 @@ export interface ImpactStat {
 
 export const IMPACT_STATS: readonly ImpactStat[] = [
   {
-    value: '12,233',
+    value: '34,776',
     label_es: 'Coincidencias cross-dataset',
     label_en: 'Cross-dataset matches',
-    source: 'SAME_ENTITY + MAYBE_SAME_AS',
+    source: 'SAME_ENTITY relationships in Neo4j',
   },
   {
-    value: '1,825',
+    value: '34,220',
     label_es: 'Entidades cruzadas por CUIT/DNI',
     label_en: 'CUIT/DNI cross-referenced entities',
-    source: 'Cross-reference engine',
+    source: 'Cross-reference engine (32,337 CUIT + 1,883 DNI)',
   },
   {
     value: '294',
@@ -103,10 +103,10 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     source: 'Neo4j graph',
   },
   {
-    value: '126',
+    value: '2,155',
     label_es: 'Personas críticas identificadas',
     label_en: 'Critical persons identified',
-    source: 'Cross-reference engine',
+    source: 'Revolving door officer_appointment flags',
   },
   {
     value: '$674B',
@@ -115,16 +115,34 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     source: 'Compr.ar / Boletín Oficial',
   },
   {
-    value: '1,428+',
+    value: '2,155',
     label_es: 'Puerta giratoria financiera-gobierno',
     label_en: 'Financial-government revolving door',
-    source: 'IGJ + GovernmentAppointment cross-match',
+    source: 'officer_appointment flags from cross-ref engine',
   },
   {
     value: '9',
     label_es: 'Jueces criticos documentados',
     label_en: 'Critical judges documented',
     source: 'Poder Judicial / DDJJ / ACIJ',
+  },
+  {
+    value: '146',
+    label_es: 'Empresas fantasma detectadas',
+    label_en: 'Shell companies flagged',
+    source: 'Companies with 0 IGJ officers receiving government contracts',
+  },
+  {
+    value: '68',
+    label_es: 'Contratistas recurrentes',
+    label_en: 'Repeat contract winners',
+    source: 'Contractors with 50+ public contracts',
+  },
+  {
+    value: '29,602',
+    label_es: 'Declaraciones juradas vinculadas',
+    label_en: 'Asset declarations linked',
+    source: 'AssetDeclaration via CUIT→DNI to CompanyOfficer + GovernmentAppointment',
   },
 ] as const
 
@@ -1199,6 +1217,111 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source: 'Buenos Aires Times',
     source_url: 'https://www.batimes.com.ar/news/argentina/us-sanctions-fernandez-de-kirchner-de-vido-for-corruption.phtml',
   },
+  // --- Cross-Reference Engine: CUIT/DNI findings (2026-03-21) ---
+  {
+    id: 'crossref-negri-115-companies',
+    claim_es:
+      'Juan Javier Negri, Vocal PEN en Educacion, figura como directivo en 115 empresas registradas en IGJ — incluyendo LLCs en Delaware (Regency-Wyndclyff, Cristal Delaware). El funcionario con mas empresas en todo el cruce de datasets.',
+    claim_en:
+      'Juan Javier Negri, PEN Board Member in Education, appears as officer of 115 companies registered in IGJ — including Delaware LLCs (Regency-Wyndclyff, Cristal Delaware). The official with the most companies across all dataset cross-references.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'IGJ + GovernmentAppointment cross-ref (CUIT→DNI)',
+    source_url: 'https://www.argentina.gob.ar/justicia/igj',
+    detail_es:
+      'Cruce por DNI entre nombramiento gubernamental y registro de directivos IGJ. 115 empresas incluyen LLCs offshore (Delaware), inmobiliarias, y holdings. Patron consistente con nominee director profesional o conflicto de interes masivo.',
+    detail_en:
+      'Cross-reference via DNI between government appointment and IGJ corporate registry. 115 companies include offshore LLCs (Delaware), real estate firms, and holdings. Pattern consistent with professional nominee director or massive conflict of interest.',
+  },
+  {
+    id: 'crossref-clusellas-51-companies',
+    claim_es:
+      'Pablo Clusellas, Secretario de Presidencia de la Nacion, figura como directivo en 51 empresas IGJ — incluyendo SACDE (megaconstructora ligada a Calcaterra/Macri). Puerta giratoria directa entre Casa Rosada y sector privado.',
+    claim_en:
+      'Pablo Clusellas, Secretary to the Presidency, appears as officer of 51 IGJ companies — including SACDE (mega-constructor linked to Calcaterra/Macri). Direct revolving door between Casa Rosada and private sector.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'IGJ + GovernmentAppointment cross-ref (CUIT→DNI)',
+    source_url: 'https://www.argentina.gob.ar/justicia/igj',
+  },
+  {
+    id: 'crossref-reyser-26-companies-donor',
+    claim_es:
+      'Horacio Reyser, Secretario de Cancilleria, dirige 26 empresas (Estrella Servicios Petroleros, Estrella Holding, TAI PAN Malting) Y figura como donante de campana. Triple rol: funcionario + empresario + donante.',
+    claim_en:
+      'Horacio Reyser, Secretary of Foreign Affairs, directs 26 companies (Estrella Servicios Petroleros, Estrella Holding, TAI PAN Malting) AND appears as campaign donor. Triple role: official + businessman + donor.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'IGJ + GovernmentAppointment + CNE cross-ref (CUIT→DNI)',
+    source_url: 'https://www.argentina.gob.ar/justicia/igj',
+  },
+  {
+    id: 'crossref-shell-amov-65-contracts',
+    claim_es:
+      'AMOV IV (Sociedad Anonima de Capital Variable) tiene 0 directivos registrados en IGJ pero recibio 65 contratos publicos como "AMX Argentina S.A.". Estructura tipica de empresa fantasma: sin governance visible pero factura millones al Estado.',
+    claim_en:
+      'AMOV IV (Variable Capital Corp) has 0 registered officers in IGJ but received 65 public contracts as "AMX Argentina S.A.". Typical shell company structure: no visible governance but invoices millions to the State.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'IGJ + Compr.ar cross-ref (CUIT)',
+    source_url: 'https://comprar.gob.ar',
+  },
+  {
+    id: 'crossref-trigemios-246-contracts',
+    claim_es:
+      'Trigemios S.R.L. (CUIT 30-71154458-1) gano 246 contratos publicos — el mayor ganador repetido. Seguido por personas fisicas como Diego Alberto Moral (206) y Federico Pablo Campolongo (189). Patron de concentracion anormal de contratacion.',
+    claim_en:
+      'Trigemios S.R.L. (CUIT 30-71154458-1) won 246 public contracts — the top repeat winner. Followed by individuals like Diego Alberto Moral (206) and Federico Pablo Campolongo (189). Abnormal procurement concentration pattern.',
+    status: 'confirmed',
+    tier: 2,
+    source: 'Compr.ar / Boletin Oficial',
+    source_url: 'https://comprar.gob.ar',
+  },
+  {
+    id: 'crossref-gonzalez-fischer-33-companies-donor',
+    claim_es:
+      'Francisco Guillermo Jose Gonzalez Fischer dirige 33 empresas (Clay, Origenes Seguros, Origenes Seguros de Retiro) y es donante politico. Red de companias de seguros y consultoras conectada con financiamiento partidario.',
+    claim_en:
+      'Francisco Guillermo Jose Gonzalez Fischer directs 33 companies (Clay, Origenes Seguros, Origenes Seguros de Retiro) and is a political donor. Network of insurance companies and consultancies connected to party financing.',
+    status: 'confirmed',
+    tier: 2,
+    source: 'IGJ + CNE cross-ref (CUIT→DNI)',
+    source_url: 'https://www.argentina.gob.ar/justicia/igj',
+  },
+  {
+    id: 'crossref-29602-asset-declarations',
+    claim_es:
+      'El cruce CUIT→DNI conecto 29.602 declaraciones juradas patrimoniales (DDJJ) con directivos de empresas y funcionarios gubernamentales. Esto permite verificar si el patrimonio declarado es consistente con los cargos corporativos y la remuneracion publica.',
+    claim_en:
+      'CUIT→DNI cross-matching connected 29,602 sworn asset declarations (DDJJ) to company officers and government appointees. This enables verifying whether declared wealth is consistent with corporate positions and public compensation.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'DDJJ + IGJ + GovernmentAppointment cross-ref (CUIT→DNI)',
+    source_url: 'https://datos.gob.ar',
+  },
+  {
+    id: 'crossref-2155-revolving-door',
+    claim_es:
+      'Se identificaron 2.155 casos de puerta giratoria: personas que simultaneamente ocupan cargos gubernamentales y dirigen empresas privadas. Los 30 casos mas graves involucran funcionarios con 9 a 115 empresas bajo su direccion.',
+    claim_en:
+      '2,155 revolving door cases identified: persons simultaneously holding government positions and directing private companies. The 30 most severe cases involve officials with 9 to 115 companies under their direction.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Cross-reference engine (CUIT + DNI + Name matching)',
+    source_url: 'https://datos.gob.ar',
+  },
+  // NOTE: Tinelli/Pinelli was a false positive (fuzzy match, different DNIs) — removed
+  {
+    id: 'crossref-frigerio-minister-9-companies',
+    claim_es:
+      'Rogelio Frigerio, Ministro del Interior, figura como directivo de 9 empresas incluyendo desarrollos inmobiliarios (Alto Delta, Nogales de Entre Rios). Conflicto directo: el ministro que controla obra publica dirige inmobiliarias.',
+    claim_en:
+      'Rogelio Frigerio, Interior Minister, appears as officer of 9 companies including real estate developments (Alto Delta, Nogales de Entre Rios). Direct conflict: the minister controlling public works directs real estate firms.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'IGJ + GovernmentAppointment cross-ref',
+    source_url: 'https://www.argentina.gob.ar/justicia/igj',
+  },
 ] as const
 
 // ---------------------------------------------------------------------------
@@ -1998,6 +2121,18 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
       'Judge Casanello froze $9.669B in Bachellier SA assets. Company received $1.666B in commissions from Nación Seguros.',
     category: 'legal',
     sources: ['https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/'],
+  },
+  {
+    id: 'tl-2026-03-crossref-34k',
+    date: '2026-03-21',
+    title_es: 'Motor de resolucion de entidades cruza 34.776 coincidencias CUIT/DNI',
+    title_en: 'Entity resolution engine crosses 34,776 CUIT/DNI matches',
+    description_es:
+      'El motor de cross-reference cruza 9 datasets publicos (IGJ, Compr.ar, CNE, DDJJ, GovernmentAppointments) usando CUIT→DNI extraction. Resultado: 32.337 coincidencias CUIT, 1.883 DNI, 20 nombre. 2.155 casos de puerta giratoria, 146 empresas fantasma, 68 ganadores repetidos. 29.602 declaraciones juradas vinculadas a directivos y funcionarios.',
+    description_en:
+      'Cross-reference engine matches 9 public datasets (IGJ, Compr.ar, CNE, DDJJ, GovernmentAppointments) using CUIT→DNI extraction. Result: 32,337 CUIT matches, 1,883 DNI, 20 name. 2,155 revolving door cases, 146 shell companies, 68 repeat winners. 29,602 asset declarations linked to officers and appointees.',
+    category: 'corporate',
+    sources: ['https://datos.gob.ar'],
   },
 ] as const
 
