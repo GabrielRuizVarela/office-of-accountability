@@ -1,10 +1,11 @@
 'use client'
 
 /**
- * Caso Libra — Narrative summary page.
+ * Investigation narrative summary page.
  *
  * A long-form, bilingual investigative journalism piece that walks readers
- * through the complete story of the $LIBRA token scandal.
+ * through the complete story of an investigation. Content is case-specific
+ * and defined inline.
  */
 
 import { useLanguage, type Lang } from '@/lib/language-context'
