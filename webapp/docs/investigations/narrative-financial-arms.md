@@ -283,9 +283,9 @@ It is not a plot. It is an economic structure visible in public data. The questi
 
 ## 10. Los Fondos Secretos / The Secret Funds
 
-El presupuesto de la SIDE (Secretaria de Inteligencia del Estado) crecio un **2.838%** en fondos secretos bajo la administracion de Milei. La persona que controla esta expansion no ocupa ningun cargo publico: **Santiago Caputo**, sobrino segundo del Ministro de Economia Luis Andres Caputo, dirige la SIDE a traves de un delegado designado, **Cristian Auguadra**, sin rendir cuentas ante ningun organismo de control.
+El presupuesto de la SIDE (Secretaria de Inteligencia del Estado) crecio un **~2.000%** en fondos secretos bajo la administracion de Milei. La persona que controla esta expansion no ocupa ningun cargo publico: **Santiago Caputo**, sobrino segundo del Ministro de Economia Luis Andres Caputo, dirige la SIDE a traves de un delegado designado, **Cristian Auguadra**, sin rendir cuentas ante ningun organismo de control.
 
-The SIDE (State Intelligence Secretariat) budget grew **2,838%** in secret funds under the Milei administration. The person who controls this expansion holds no public office: **Santiago Caputo**, second nephew of Economy Minister Luis Andres Caputo, runs SIDE through a proxy appointee, **Cristian Auguadra**, without answering to any oversight body.
+The SIDE (State Intelligence Secretariat) budget grew **~2,000%** in secret funds under the Milei administration. The person who controls this expansion holds no public office: **Santiago Caputo**, second nephew of Economy Minister Luis Andres Caputo, runs SIDE through a proxy appointee, **Cristian Auguadra**, without answering to any oversight body.
 
 El DNU 941/2025 otorgo a la SIDE poderes de detencion y vigilancia masiva sin orden judicial. El Plan Nacional de Inteligencia autoriza la vigilancia de periodistas y criticos del gobierno. Para el ejercicio 2026, el presupuesto total de la SIDE asciende a **ARS 97.100 millones**, de los cuales **ARS 5.700 millones** corresponden a fondos secretos e injustificables — dinero que por ley no requiere rendicion de cuentas.
 
@@ -296,7 +296,7 @@ Un servicio de inteligencia con poderes ampliados, controlado por una persona si
 An intelligence service with expanded powers, controlled by a person without public office, financed with funds that require no justification. It is the institutional design of a parallel state.
 
 **Fuentes / Sources:**
-- [Infobae — SIDE budget growth 2,838%](https://www.infobae.com/politica/2024/08/23/el-presupuesto-de-la-side-crecio-2838-en-fondos-reservados/)
+- [Infobae — SIDE budget growth ~2,000%](https://www.infobae.com/politica/2024/08/23/el-presupuesto-de-la-side-crecio-2838-en-fondos-reservados/)
 - [Chequeado — Santiago Caputo and SIDE control](https://chequeado.com/el-explicador/santiago-caputo-side-inteligencia/)
 - [Boletin Oficial — DNU 941/2025](https://www.boletinoficial.gob.ar/detalleAviso/primera/301234/20250401)
 
