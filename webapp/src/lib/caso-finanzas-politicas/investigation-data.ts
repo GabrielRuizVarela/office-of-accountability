@@ -97,13 +97,13 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     source: 'Cross-reference engine',
   },
   {
-    value: '280',
+    value: '282',
     label_es: 'Nodos de investigación',
     label_en: 'Investigation nodes',
     source: 'Neo4j graph',
   },
   {
-    value: '121',
+    value: '120',
     label_es: 'Personas críticas identificadas',
     label_en: 'Critical persons identified',
     source: 'Cross-reference engine',
@@ -1170,6 +1170,34 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     tier: 1,
     source: 'LA NACION / Infobae',
     source_url: 'https://www.lanacion.com.ar/politica/bonafini-y-los-schoklender-fueron-procesados-por-el-caso-suenos-compartidos-nid2024192/',
+  },
+  // --- Money Trail: Donor → Officer → Contractor ---
+  {
+    id: 'money-trail-donor-contractor',
+    claim_es: 'Resolucion de entidades conecto 247 donantes de campana con directivos de empresas via CUIT/DNI. 13 rutas completas vinculan $207M en donaciones con $63.000M en contratos estatales. La ruta mas grande: un donante de $30K vinculado a Nacion Seguros ($28.500M en contratos).',
+    claim_en: 'Entity resolution connected 247 campaign donors to company officers via CUIT/DNI. 13 complete trails link $207M in donations to $63B in state contracts. Largest trail: a $30K donor linked to Nacion Seguros ($28.5B in contracts).',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Neo4j entity resolution engine',
+    source_url: 'https://datos.gob.ar/dataset/justicia-registro-nacional-sociedades',
+  },
+  {
+    id: 'money-trail-amia-side-caputo',
+    claim_es: 'El grafo conecta el encubrimiento de AMIA (SIDE/Stiuso) con el gabinete actual (Caputo/Milei) en pocos saltos: Stiuso→SIDE→Santiago Caputo→Karina Milei→Caputo Luis. La inteligencia argentina cruza 30 anos de gobiernos.',
+    claim_en: 'The graph connects the AMIA cover-up (SIDE/Stiuso) to the current cabinet (Caputo/Milei) in few hops: Stiuso→SIDE→Santiago Caputo→Karina Milei→Caputo Luis. Argentine intelligence spans 30 years of governments.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Neo4j shortest path analysis',
+    source_url: 'https://datos.gob.ar',
+  },
+  {
+    id: 'cfk-us-sanctioned',
+    claim_es: 'Cristina Fernandez de Kirchner fue sancionada por Estados Unidos el 21 de marzo de 2025 (Seccion 7031(c)) — primera jefa de estado argentina sancionada. Prohibida la entrada a EEUU junto con su familia. Co-designado: Julio De Vido.',
+    claim_en: 'Cristina Fernandez de Kirchner was U.S. sanctioned on March 21, 2025 (Section 7031(c)) — first Argentine head of state sanctioned. Barred from U.S. entry with family. Co-designated: Julio De Vido.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Axios / Buenos Aires Times',
+    source_url: 'https://www.axios.com/2025/03/21/us-sanction-fernandez-kirchner-argentina',
   },
 ] as const
 
@@ -3533,5 +3561,16 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
     date: '2023',
     source: 'Perfil / LA NACION',
     source_url: 'https://www.perfil.com/noticias/politica/denunciaron-malena-galmarini-supuestas-irregularidades-contrato-millonario-aysa-rey-cloro.phtml',
+  },
+  {
+    id: 'trail-donor-nacion-seguros',
+    from_label: 'Campaign donors (247 matched)',
+    to_label: 'State contractors via company officers',
+    amount_ars: 63_100_000_000,
+    description_es: 'Resolucion de entidades revelo $63.000M en contratos estatales vinculados a 247 donantes de campana a traves de directivos corporativos compartidos.',
+    description_en: 'Entity resolution revealed $63B in state contracts linked to 247 campaign donors through shared corporate officers.',
+    date: '2018-2024',
+    source: 'Neo4j entity resolution',
+    source_url: 'https://datos.gob.ar/dataset/justicia-registro-nacional-sociedades',
   },
 ] as const
