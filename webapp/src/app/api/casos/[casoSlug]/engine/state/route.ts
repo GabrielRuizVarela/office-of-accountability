@@ -1,12 +1,21 @@
 import { NextRequest } from 'next/server'
 
 import { listByPipeline } from '@/lib/engine/pipeline'
+import { checkRateLimit, ENGINE_RATE_LIMITS } from '@/lib/engine/rate-limit'
 
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ casoSlug: string }> },
 ) {
-  await params
+  const { casoSlug } = await params
+
+  const rl = checkRateLimit(`engine:state:${casoSlug}`, ENGINE_RATE_LIMITS.state)
+  if (!rl.allowed) {
+    return Response.json(
+      { error: 'Rate limit exceeded', retry_after_ms: rl.reset_at - Date.now() },
+      { status: 429 },
+    )
+  }
 
   const pipelineId = request.nextUrl.searchParams.get('pipeline_id')
   if (!pipelineId) {
@@ -19,7 +28,14 @@ export async function GET(
   try {
     const states = await listByPipeline(pipelineId)
 
-    return Response.json({ success: true, data: states })
+    return new Response(JSON.stringify({ success: true, data: states }), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'X-RateLimit-Remaining': String(rl.remaining),
+        'X-RateLimit-Reset': String(rl.reset_at),
+      },
+    })
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
 

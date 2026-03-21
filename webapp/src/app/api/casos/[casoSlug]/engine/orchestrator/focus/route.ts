@@ -4,6 +4,7 @@ import type { Record as Neo4jRecord } from 'neo4j-driver-lite'
 
 import { readQuery, writeQuery } from '@/lib/neo4j/client'
 import type { OrchestratorState } from '@/lib/engine/types'
+import { checkRateLimit, ENGINE_RATE_LIMITS } from '@/lib/engine/rate-limit'
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -90,7 +91,15 @@ export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ casoSlug: string }> },
 ) {
-  await params
+  const { casoSlug } = await params
+
+  const rl = checkRateLimit(`engine:focus:${casoSlug}`, ENGINE_RATE_LIMITS.focus)
+  if (!rl.allowed) {
+    return Response.json(
+      { error: 'Rate limit exceeded', retry_after_ms: rl.reset_at - Date.now() },
+      { status: 429 },
+    )
+  }
 
   let body: Record<string, unknown>
   try {
@@ -131,13 +140,23 @@ export async function PUT(
     )
 
     const state = result.records[0] as unknown as OrchestratorState
-    return Response.json({
-      success: true,
-      data: {
-        current_focus: state.current_focus ?? null,
-        updated_at: state.updated_at,
+    return new Response(
+      JSON.stringify({
+        success: true,
+        data: {
+          current_focus: state.current_focus ?? null,
+          updated_at: state.updated_at,
+        },
+      }),
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'X-RateLimit-Remaining': String(rl.remaining),
+          'X-RateLimit-Reset': String(rl.reset_at),
+        },
       },
-    })
+    )
   } catch (error) {
     return dbError(error instanceof Error ? error.message : String(error))
   }
