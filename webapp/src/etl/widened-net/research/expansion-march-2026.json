@@ -1,0 +1,580 @@
+{
+  "meta": {
+    "generated": "2026-03-21",
+    "purpose": "Expansion of investigation into NEW angles not yet covered in existing research files",
+    "excludes": "SIDE intelligence funds, Belocopitt network, health sector cartel, Glencore mining (already in side-belocopitt-health-findings.json)",
+    "methodology": "WebSearch across Argentine media, judicial sources, FARA databases, transparency organizations"
+  },
+  "findings": [
+    {
+      "section": "Caso $LIBRA — Presidential Crypto Fraud Investigation",
+      "new_to_investigation": true,
+      "summary_en": "Active federal investigation into President Milei's promotion of $LIBRA cryptocurrency on Feb 14, 2025, which collapsed within hours. Phone forensics reveal a sustained financial relationship between Milei and intermediary Mauricio Novelli dating to 2021, and a draft contract for US$5M in exchange for presidential endorsement.",
+      "summary_es": "Investigación federal activa por la promoción de Milei de la criptomoneda $LIBRA el 14/02/2025, que colapsó en horas. Peritajes telefónicos revelan relación financiera sostenida entre Milei y el intermediario Mauricio Novelli desde 2021, y un borrador de contrato por US$5M a cambio del respaldo presidencial.",
+      "entries": [
+        {
+          "person": "Javier Milei",
+          "role": "Presidente de la Nación Argentina",
+          "entity": "$LIBRA / Kelsier Group",
+          "key_facts": [
+            "Promoted $LIBRA on X on Feb 14, 2025; token collapsed within 3 hours",
+            "Draft confidential agreement found on Novelli's phone dated Jan 29, 2025",
+            "US$5M payment structure: US$1.5M upfront, US$1.5M on social media announcement, US$2M on signing in-person contract",
+            "Phone forensics reveal calls and payments from Novelli to Milei dating back to 2021 when Milei was a deputy",
+            "Prosecutor Eduardo Taiano delayed incorporating phone evidence for 4 months (seized March, analyzed October, incorporated post-elections)",
+            "Government denied existence of contract but did not deny contact"
+          ],
+          "potential_charges": "Abuse of authority, fraud, influence trafficking, bribery",
+          "court": "Federal Court No. 8, Judge Marcelo Martínez de Giorgi, Prosecutor Eduardo Taiano",
+          "source_urls": [
+            "https://www.infobae.com/judiciales/2026/03/18/caso-libra-quien-es-mauricio-novelli-el-trader-y-lobbista-vinculado-a-javier-milei/",
+            "https://www.emol.com/noticias/Internacional/2026/03/16/1194428/caso-libra-milei-us5-millones.html",
+            "https://www.lanacion.com.ar/politica/caso-libra-en-vivo-los-diputados-hablaran-sobre-las-revelaciones-de-la-investigacion-nid16032026/",
+            "https://www.vocescriticas.com/noticias/2026/03/18/194662-la-causa-libra-suma-nuevos-datos-revelan-transferencias-y-pagos-vinculados-a-milei-desde-2021"
+          ],
+          "severity": "critical"
+        },
+        {
+          "person": "Mauricio Novelli",
+          "role": "Trader, lobbista, intermediario entre Milei y Davis",
+          "entity": "Intermediario $LIBRA",
+          "key_facts": [
+            "Charged Hayden Davis to connect him with President Milei",
+            "Phone seized in March 2025, contained draft contract and extensive communications",
+            "Financial relationship with Milei documented since 2021 (payments for courses and market activities)",
+            "Acted within commercial scheme that resulted in alleged million-dollar crypto scams"
+          ],
+          "source_urls": [
+            "https://www.infobae.com/judiciales/2026/03/18/caso-libra-quien-es-mauricio-novelli-el-trader-y-lobbista-vinculado-a-javier-milei/",
+            "https://www.0264noticias.com.ar/noticias/2026/03/20/89079-caso-libra-salen-a-la-luz-transferencias-del-asesor-novelli-para-contactar-a-hayden-davis-con-milei"
+          ],
+          "severity": "critical"
+        },
+        {
+          "person": "Hayden Mark Davis",
+          "role": "CEO of Kelsier Group, $LIBRA creator",
+          "entity": "Kelsier Group",
+          "key_facts": [
+            "Ideologist of the $LIBRA token",
+            "Signed 'irrevocable offer' with Novelli and CNV advisor Sergio Morales on Nov 21, 2024",
+            "Morales (CNV advisor) was to receive US$1.55M + 35% of Kelsier Group billing from clients he brought"
+          ],
+          "source_urls": [
+            "https://www.lanacion.com.ar/politica/libra-aparecen-mas-contratos-entre-novelli-davis-y-otros-emprendedores-que-buscaban-aprovechar-el-nid16032026/"
+          ],
+          "severity": "critical"
+        },
+        {
+          "person": "Sergio Morales",
+          "role": "Asesor de la Comisión Nacional de Valores (CNV)",
+          "entity": "CNV / Kelsier Group",
+          "key_facts": [
+            "Signed agreement with Davis and Novelli on Nov 21, 2024",
+            "Was to receive US$1.55M + 35% of Kelsier Group billing",
+            "Securities regulator advisor receiving payments from crypto venture he should oversee"
+          ],
+          "source_urls": [
+            "https://www.lanacion.com.ar/politica/libra-aparecen-mas-contratos-entre-novelli-davis-y-otros-emprendedores-que-buscaban-aprovechar-el-nid16032026/"
+          ],
+          "severity": "critical"
+        }
+      ]
+    },
+    {
+      "section": "Nucleoeléctrica Argentina — 1,066% Software Overpricing Scandal",
+      "new_to_investigation": true,
+      "summary_en": "Demian Reidel resigned as president of Nucleoeléctrica Argentina (NASA) in Feb 2026 after multiple overpricing scandals. A software contract ballooned from US$600K to US$7M (1,066% overpricing). Maintenance contracts showed 130%+ overpricing. Connected to government's nuclear/energy ambitions.",
+      "summary_es": "Demian Reidel renunció como presidente de Nucleoeléctrica Argentina en feb 2026 tras múltiples escándalos de sobreprecios. Un contrato de software pasó de US$600K a US$7M (1.066% de sobreprecio). Contratos de mantenimiento con más del 130% de sobreprecio.",
+      "entries": [
+        {
+          "person": "Demián Reidel",
+          "role": "Ex-presidente de Nucleoeléctrica Argentina S.A. (designado abril 2025, renunció feb 2026)",
+          "entity": "Nucleoeléctrica Argentina S.A. (NASA)",
+          "key_facts": [
+            "Software contract: US$600K → US$7M (1,066.7% overpricing)",
+            "Nuclear plant maintenance contracts with 130%+ overpricing",
+            "Two managers suspended for their role in overpriced tenders",
+            "Reidel voted AGAINST suspending the managers, raising questions about his role",
+            "Replaced by Juan Martín Campos",
+            "Also investigated for cancellation of personal debts with large sums"
+          ],
+          "amounts": {
+            "software_overpricing": "US$6.4M excess (US$600K → US$7M)",
+            "maintenance_overpricing": "130%+ above market value"
+          },
+          "source_urls": [
+            "https://www.ambito.com/politica/demian-reidel-renuncio-nucleoelectrica-el-escandalo-los-sobreprecios-n6243959",
+            "https://www.lanacion.com.ar/politica/demian-reidel-se-fue-del-directorio-de-nucleoelectrica-tras-la-polemica-por-los-sobreprecios-nid09022026/",
+            "https://econojournal.com.ar/2026/01/polemica-en-nucleoelectrica-suspenden-a-dos-gerentes-por-presuntos-sobreprecios-pese-al-voto-en-contra-de-demian-reidel/",
+            "https://www.cronista.com/economia-politica/nueva-denuncia-por-sobreprecios-en-nucleoelectrica-suma-otro-frente-al-escandalo-por-contratos-inflados/"
+          ],
+          "severity": "critical"
+        }
+      ]
+    },
+    {
+      "section": "Fundación Faro — Dark Money Electoral Advertising",
+      "new_to_investigation": true,
+      "summary_en": "Fundación Faro, led by Agustín Laje (close Milei ally), spent ARS$1.079B (US$821K) on electoral advertising on Meta platforms in 2025-2026 without declaring fund origins. Never filed financial statements with IGJ. Second-largest political advertiser on Facebook/Instagram after the Cabinet Office. Built on shell of renamed predecessor foundation.",
+      "summary_es": "Fundación Faro, dirigida por Agustín Laje (aliado cercano de Milei), gastó $1.079M (US$821K) en publicidad electoral en plataformas Meta en 2025-2026 sin declarar origen de fondos. Nunca presentó balances ante la IGJ. Segunda mayor anunciante político en Facebook/Instagram después de Jefatura de Gabinete.",
+      "entries": [
+        {
+          "person": "Agustín Laje",
+          "role": "Director Ejecutivo de Fundación Faro Argentina",
+          "entity": "Fundación Faro Argentina / Ratio Oficial (media arm)",
+          "key_facts": [
+            "ARS$1.079B (US$821K) spent on 15,000+ posts classified as political/electoral advertising by Meta",
+            "Second-largest political advertiser on Facebook/Instagram in Argentina",
+            "Never filed financial statements with Inspección General de Justicia (IGJ)",
+            "Built on renamed predecessor foundation — all previous board members resigned simultaneously",
+            "Refused to disclose funding sources, whether foreign donations exist, or total income for 2024-2025",
+            "Described as 'caja negra de la batalla cultural' (black box of the culture war)"
+          ],
+          "amounts": {
+            "electoral_advertising": "ARS$1,079,000,000 (~US$821,000)",
+            "posts": "15,000+ political/electoral posts on Meta platforms"
+          },
+          "source_urls": [
+            "https://chequeado.com/investigaciones/fundacion-faro-el-think-tank-libertario-que-mas-pauta-electoral-puso-en-2025-y-que-no-declara-el-origen-de-sus-fondos/",
+            "https://noticias.perfil.com/noticias/politica/fundacion-faro-la-ong-mileista-que-pone-pauta-electoral-y-no-declara-el-origen-de-sus-fondos.phtml",
+            "https://www.lanacion.com.ar/politica/campana-libertaria-la-fundacion-faro-lidero-el-gasto-de-dinero-en-redes-sociales-por-encima-de-nid22052025/",
+            "https://primerapagina.info/nota/20959/caja-negra-de-la-batalla-cultural-fundacion-faro-de-agustin-laje-mayor-inversora-de-pauta-libertaria-sin-declarar-fondos/"
+          ],
+          "severity": "critical"
+        }
+      ]
+    },
+    {
+      "section": "YPF 'Stealth Advertising' — Santiago Caputo's Media Control Machine",
+      "new_to_investigation": true,
+      "summary_en": "While declaring 'zero official advertising,' the Milei government channeled ~US$100M through YPF, Aerolíneas Argentinas, and Banco Nación, controlled by Santiago Caputo. YPF ad spending was the highest since its 2012 nationalization. Caputo placed his consulting firm partner Guillermo Garat as YPF VP to control distribution. YPF refuses to reveal which media receive funds, defying judicial orders.",
+      "summary_es": "Mientras declaraba 'pauta cero,' el gobierno Milei canalizó ~US$100M a través de YPF, Aerolíneas Argentinas y Banco Nación, controlados por Santiago Caputo. El gasto publicitario de YPF fue el más alto desde su nacionalización en 2012. Caputo colocó a su socio Guillermo Garat como VP de YPF para controlar la distribución.",
+      "entries": [
+        {
+          "person": "Santiago Caputo",
+          "role": "Asesor presidencial / controlador de facto de pauta estatal",
+          "entity": "YPF / Aerolíneas Argentinas / Banco Nación",
+          "key_facts": [
+            "Controls advertising flow through three state companies: YPF, Aerolíneas Argentinas, Banco Nación",
+            "YPF 2024 ad spend: ARS$97.1B (~US$100M), up from ARS$31.7B in 2023 (40% real increase)",
+            "Highest YPF advertising spend since 2012 nationalization",
+            "Placed consulting firm partner Guillermo Garat as YPF VP to control media distribution",
+            "Advertising channeled through intermediaries: Alejandra Rafuls consulting firm and the Noguer brothers",
+            "YPF refuses to disclose recipient media, defying Public Information Access Agency rulings",
+            "Constitutes de facto discretionary official advertising while claiming 'zero advertising' policy"
+          ],
+          "amounts": {
+            "ypf_2024_advertising": "ARS$97,100,000,000 (~US$100M)",
+            "ypf_2023_advertising": "ARS$31,749,000,000 (baseline)",
+            "increase": "40% in real terms"
+          },
+          "connection_to_existing": "Santiago Caputo already in investigation for SIDE fund control. This reveals parallel media control through state company advertising budgets.",
+          "source_urls": [
+            "https://www.lapoliticaonline.com/politica/santiago-caputo-esconde-los-gastos-publicitarios-de-ypf-y-sigue-sin-cumplir-los-fallos-judiciales/",
+            "https://www.lapoliticaonline.com/energia/el-gasto-de-publicidad-de-ypf-es-el-mas-alto-desde-que-se-expropio-en-2012/",
+            "https://www.tiempoar.com.ar/ta_article/pauta-camuflada-ypf-97-mil-millones/",
+            "https://noticias.perfil.com/noticias/politica/publicidad-oficial-millones-sucios.phtml",
+            "https://www.infocielo.com/politica-y-economia/milei-y-su-tramposo-fin-la-pauta-el-discrecional-manejo-santiago-caputo-n793827"
+          ],
+          "severity": "critical"
+        },
+        {
+          "person": "Guillermo Garat",
+          "role": "Vicepresidente de YPF / Socio de consultora de Caputo",
+          "entity": "YPF S.A.",
+          "key_facts": [
+            "Business partner of Santiago Caputo's consulting firm",
+            "Placed as YPF VP to execute Caputo's advertising distribution decisions",
+            "Decides which media and projects receive YPF sponsorship money"
+          ],
+          "source_urls": [
+            "https://www.lapoliticaonline.com/politica/santiago-caputo-gasto-100-mil-millones-en-publicidad-de-ypf-y-se-termina-el-relato-libertario-de-cero-pauta-oficial/"
+          ],
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "section": "AFA Gate — Football Money Laundering Network",
+      "new_to_investigation": true,
+      "summary_en": "Massive investigation into AFA president Claudio 'Chiqui' Tapia and financier Ariel Vallejo through Sur Finanzas. 60+ raids conducted. ARS$19.5B in retained employee/player contributions not remitted to tax authorities. US$19M routed to the US through contracts bypassing Argentina. Tapia and treasurer Toviggino prohibited from leaving the country.",
+      "summary_es": "Investigación masiva contra el presidente de la AFA Claudio 'Chiqui' Tapia y el financista Ariel Vallejo a través de Sur Finanzas. 60+ allanamientos realizados. $19.500M en aportes retenidos no remitidos al fisco. US$19M enviados a EE.UU. mediante contratos eludiendo Argentina.",
+      "entries": [
+        {
+          "person": "Claudio 'Chiqui' Tapia",
+          "role": "Presidente de la AFA (Asociación del Fútbol Argentino)",
+          "entity": "AFA / Sur Finanzas",
+          "key_facts": [
+            "Cited for testimony on charges of retaining pension contributions and tax evasion",
+            "Prohibited from leaving Argentina",
+            "AFA acted as 'retention agent' for player/employee money and failed to remit ARS$19.5B to tax authorities",
+            "US$19M that should have been deposited in Argentina were sent to the US through contracts",
+            "Government filed complaint in the US for hidden money circuit and millionaire diversions",
+            "Connected to Sur Finanzas through financier Ariel Vallejo"
+          ],
+          "amounts": {
+            "retained_contributions": "ARS$19,500,000,000+",
+            "diverted_to_us": "US$19,000,000",
+            "raids_conducted": "60+"
+          },
+          "source_urls": [
+            "https://www.infobae.com/politica/2026/02/25/la-justicia-llevo-a-cabo-30-allanamientos-en-sur-finanzas-la-empresa-ligada-a-la-afa-y-al-chiqui-tapia/",
+            "https://www.lanacion.com.ar/politica/citan-a-indagatoria-a-tapia-y-toviggino-por-evasion-y-les-prohiben-salir-del-pais-nid19022026/",
+            "https://www.infobae.com/judiciales/2026/01/04/lavado-evasion-y-disputas-entre-jueces-como-avanzan-las-causas-que-investigan-a-los-dirigentes-de-la-afa/",
+            "https://www.lanacion.com.ar/politica/el-gobierno-denuncio-al-financista-ligado-al-chiqui-tapia-por-lavado-de-dinero-y-evasion-nid25112025/"
+          ],
+          "severity": "critical"
+        },
+        {
+          "person": "Ariel Vallejo",
+          "role": "Financista vinculado a Tapia / Sur Finanzas",
+          "entity": "Sur Finanzas",
+          "key_facts": [
+            "Principal suspect in money laundering investigation",
+            "Strong involvement in football business",
+            "30 raids on Sur Finanzas offices in Feb 2026",
+            "4 new defendants charged, released but remain under investigation"
+          ],
+          "source_urls": [
+            "https://www.infobae.com/politica/2026/02/25/la-justicia-llevo-a-cabo-30-allanamientos-en-sur-finanzas-la-empresa-ligada-a-la-afa-y-al-chiqui-tapia/",
+            "https://www.infobae.com/politica/2026/02/16/los-cuatro-nuevos-imputados-en-la-causa-sur-finanzas-quedaron-en-libertad-pero-siguen-bajo-investigacion/"
+          ],
+          "severity": "high"
+        },
+        {
+          "person": "Pablo Toviggino",
+          "role": "Tesorero de la AFA",
+          "entity": "AFA",
+          "key_facts": [
+            "Cited for testimony alongside Tapia",
+            "Prohibited from leaving Argentina",
+            "Linked to match-fixing scandal involving referee Luis Lobo Medina and Juan Pablo Beacon"
+          ],
+          "source_urls": [
+            "https://www.lanacion.com.ar/politica/citan-a-indagatoria-a-tapia-y-toviggino-por-evasion-y-les-prohiben-salir-del-pais-nid19022026/"
+          ],
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "section": "Adorni Private Flight Scandal — Possible Bribery",
+      "new_to_investigation": true,
+      "summary_en": "Cabinet Chief Manuel Adorni flew with his family on a private jet (Honda Jet LVHWA83, operated by Alphacentauri S.A.) to Punta del Este during Carnival 2026, paid for by journalist-businessman Marcelo Grandio's company Imhouse SA. Under investigation by Judge Ariel Lijo and Prosecutor Gerardo Pollicita for possible passive bribery. Adorni's wife also flew on the presidential plane to New York.",
+      "summary_es": "El Jefe de Gabinete Manuel Adorni voló con su familia en jet privado a Punta del Este durante Carnaval 2026, pagado por la empresa Imhouse SA del periodista-empresario Marcelo Grandio. Investigado por el juez Ariel Lijo y el fiscal Gerardo Pollicita por posible cohecho pasivo.",
+      "entries": [
+        {
+          "person": "Manuel Adorni",
+          "role": "Jefe de Gabinete de Ministros",
+          "entity": "Gobierno Nacional / Alphacentauri S.A.",
+          "key_facts": [
+            "Private flight on Honda Jet LVHWA83 from San Fernando airport, Feb 12, 2026",
+            "Flight operated by Alphacentauri S.A., cost $4,830",
+            "Paid by Imhouse SA (Marcelo Grandio's production company)",
+            "Grandio gave contradictory statements about payment",
+            "Justice ordered review of cameras, flight invoices, and tax secrecy lifted for production company and pilot",
+            "Adorni's wife Bettina Angeletti also traveled on presidential plane to NY despite Adorni previously announcing end of family member flights on official aircraft",
+            "Government launched internal investigation to find who leaked the information"
+          ],
+          "potential_charges": "Passive bribery, acceptance of gifts (prohibited for officials from persons/companies with state ties)",
+          "court": "Judge Ariel Lijo, Prosecutor Gerardo Pollicita",
+          "source_urls": [
+            "https://reporte24.com.ar/2026/03/20/adorni-y-la-trama-oscura-que-rodea-a-los-viajes-de-funcionarios-en-aviones-privados/",
+            "https://www.bigbangnews.com/politica/viajes-facturas-posibles-dadivas-conflictos-interes-trama-detras-vuelo-privado-manuel-adorni-n100332",
+            "https://www.lanacion.com.ar/politica/revelan-los-detalles-del-vuelo-privado-que-tomo-manuel-adorni-con-su-familia-en-el-feriado-de-nid11032026/",
+            "https://www.lanacion.com.ar/politica/la-justicia-pidio-informes-al-gobierno-sobre-el-viaje-de-adorni-a-punta-del-este-y-ordeno-levantar-nid20032026/"
+          ],
+          "severity": "high"
+        },
+        {
+          "person": "Marcelo Grandio",
+          "role": "Periodista-empresario / propietario de Imhouse SA",
+          "entity": "Imhouse SA",
+          "key_facts": [
+            "Paid for the private flight through his company Imhouse SA",
+            "Gave contradictory statements about who ultimately paid",
+            "Tax secrecy lifted by judicial order"
+          ],
+          "source_urls": [
+            "https://www.lanacion.com.ar/politica/las-insolitas-justificaciones-y-furcios-del-amigo-de-adorni-envuelto-en-el-escandalo-del-vuelo-nid12032026/"
+          ],
+          "severity": "medium"
+        }
+      ]
+    },
+    {
+      "section": "Autopista Rosario-Sunchales — 90x Cost Overrun (SIGEN Report)",
+      "new_to_investigation": true,
+      "summary_en": "SIGEN audit (Sept 2025) found the Rosario-Sunchales highway project on Ruta Nacional 34 went from ARS$447M budget to ARS$40.6B actual cost — a 9,000% increase (90x original amount). Project took 10+ years. Contract object was fundamentally altered mid-execution. No periodic audits conducted during entire construction period.",
+      "summary_es": "Auditoría de SIGEN (sept 2025) encontró que la autopista Rosario-Sunchales en Ruta Nacional 34 pasó de un presupuesto de $447M a un costo real de $40.600M — un aumento de 9.000% (90 veces el monto original). Proyecto demoró 10+ años.",
+      "entries": [
+        {
+          "person": null,
+          "role": "Dirección Nacional de Vialidad / Contratistas",
+          "entity": "Autopista Rosario-Sunchales (RN 34)",
+          "key_facts": [
+            "Original budget (2010): ARS$447,024,359",
+            "Final cost (2025): ARS$40,571,665,066 (90x increase, 9,000%)",
+            "Construction began 2014, only enabled 2025 (10+ years)",
+            "Project changed mid-execution from highway to expressway with 130km/h design speed",
+            "No periodic technical or financial audits conducted by Vialidad Nacional",
+            "External inspections were 'partial and untimely'",
+            "SIGEN concluded: 'substantial contractual alterations' and 'distorted original economic equation'"
+          ],
+          "amounts": {
+            "original_budget": "ARS$447,024,359",
+            "final_cost": "ARS$40,571,665,066",
+            "overrun_factor": "90x",
+            "overrun_percentage": "9,000%"
+          },
+          "source_urls": [
+            "https://www.infobae.com/politica/2025/11/04/la-sigen-detecto-irregularidades-en-la-obra-de-la-autopista-rosariosunchales-el-estado-pago-90-veces-mas-y-demoro-10-anos/",
+            "https://meridianodigital.com.ar/obra-millonaria-y-sin-control-la-sigen-detecto-graves-irregularidades-en-la-autopista-rosario-sunchales/"
+          ],
+          "severity": "critical"
+        }
+      ]
+    },
+    {
+      "section": "FGS Pension Fund — Proposed Asset Liquidation",
+      "new_to_investigation": true,
+      "summary_en": "The FGS (Sustainability Guarantee Fund) holds ARS$84.2T (US$62.2B) in retiree pension assets. Milei's 'Bases' law attempted to transfer FGS assets to Treasury and eliminate restrictions on stock operations. Business leaders lobbied for selling FGS stock portfolio (valued at US$3-13B depending on methodology) for infrastructure. 79.8% invested in government debt. Potential conflict: pension fund used to finance government while retirees receive diminished benefits.",
+      "summary_es": "El FGS tiene $84,2 billones (US$62.200M) en activos jubilatorios. La ley 'Bases' de Milei intentó transferir activos del FGS al Tesoro y eliminar restricciones sobre operaciones con acciones. Empresarios presionaron para vender cartera de acciones del FGS (valuada entre US$3.000-13.000M según metodología) para infraestructura.",
+      "entries": [
+        {
+          "person": null,
+          "role": "ANSES / FGS",
+          "entity": "Fondo de Garantía de Sustentabilidad",
+          "key_facts": [
+            "Total assets: ARS$84.2T (US$62.2B) as of August 2025",
+            "79.8% invested in national/provincial government debt",
+            "80% of assets denominated in pesos, only 20% in dollars",
+            "Stock portfolio valuation discrepancy: US$8.3B (previous government) vs US$3B (current government) — needs independent audit",
+            "Bases law attempted to flexibilize conditions for using FGS investments",
+            "Business leaders repeatedly discussed selling FGS shares for infrastructure funding with Milei officials",
+            "IMF agreement requires pension system reform by December 2026"
+          ],
+          "amounts": {
+            "total_assets": "ARS$84,200,000,000,000 (US$62,200,000,000)",
+            "stock_portfolio_high": "US$8,300,000,000",
+            "stock_portfolio_low": "US$3,000,000,000",
+            "government_debt_share": "79.8%"
+          },
+          "source_urls": [
+            "https://huelladelsur.ar/2025/12/02/usos-actuales-del-fondo-de-garantias-de-sustentabilidad-fgs-y-alternativas/",
+            "https://www.infobae.com/economia/2024/01/07/cuales-son-las-acciones-de-empresas-en-manos-de-la-anses-que-el-gobierno-busca-transferir-al-tesoro/",
+            "https://www.perfil.com/noticias/economia/el-circulo-rojo-apura-al-gobierno-con-la-venta-de-las-acciones-del-fgs-para-el-fondeo-de-infraestructura.phtml",
+            "https://www.cronista.com/finanzasmercados/fgs-quien-es-el-nuevo-responsable-de-las-inversiones-de-anses-y-el-vinculo-con-caputo/"
+          ],
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "section": "RIGI Mining Regime — Fiscal Sovereignty Concerns",
+      "new_to_investigation": true,
+      "summary_en": "The RIGI (Large Investment Incentive Regime) grants mining companies 30-year fiscal stability, reduces income tax from 35% to 25%, exempts capital goods imports from tariffs. US$24.8B in projects approved, US$33.9B total presented. Critics note: no environmental protections, risks of deindustrialization, prioritizes corporate water access over communities. Lithium royalties only 3% on boca de mina value, export retention 4.5%. Less than 15% of lithium revenue stays in Argentina.",
+      "summary_es": "El RIGI otorga a mineras estabilidad fiscal por 30 años, reduce impuesto a las ganancias de 35% a 25%, exime importaciones de bienes de capital. US$24.800M en proyectos aprobados. Críticas: sin protección ambiental, riesgos de desindustrialización. Regalías del litio solo 3%, retenciones 4,5%. Menos del 15% de ingresos del litio quedan en Argentina.",
+      "entries": [
+        {
+          "person": null,
+          "role": "Régimen de Incentivo para Grandes Inversiones (RIGI)",
+          "entity": "Multiple mining companies under RIGI",
+          "key_facts": [
+            "30-year fiscal and exchange rate stability guarantee",
+            "Income tax reduced from 35% to 25%",
+            "Capital goods import tariff exemption",
+            "9 projects approved totaling US$24.8B; 10 more pending",
+            "Mining exports hit record US$6B in 2025",
+            "Lithium royalties: 3% of boca de mina value only",
+            "Lithium export retention: 4.5% vs soy 30-35%",
+            "Less than 15% of lithium revenue (US$1.1B in 2023) stays in Argentina",
+            "Transfer pricing concerns: lithium transactions are private, prices not easily verifiable",
+            "No environmental protections in RIGI articles",
+            "Prioritizes corporate water access over community needs",
+            "Government debating modification of Glaciers Law to unlock US$30B in mining investments"
+          ],
+          "amounts": {
+            "approved_projects": "US$24,800,000,000",
+            "pending_projects": "US$33,900,000,000 total presented",
+            "mining_exports_2025": "US$6,000,000,000 (record)",
+            "lithium_revenue_2023": "US$1,100,000,000",
+            "argentina_share": "<15%"
+          },
+          "connection_to_existing": "Glencore already in investigation for offshore structures and El Pachón/MARA RIGI applications (US$14B combined). RIGI framework enables the tax optimization already documented.",
+          "source_urls": [
+            "https://eleconomista.com.ar/energia/mineria-2026-record-us-6000-millones-llave-maestra-triplicar-riqueza-argentina-n92288",
+            "https://economiasustentable.com/noticias/el-debate-que-divide-a-la-argentina-glaciares-mineria-y-el-futuro-de-dolares-30-000-millones-en-inversiones-2026",
+            "https://www.elextremosur.com/nota/42927-los-duenos-del-litio-en-argentina-son-extranjeros-y-pagan-una-miseria-en-regalias-provinciales-y-retenciones/",
+            "https://www.pressenza.com/es/2025/07/argentina-y-el-litio-el-tesoro-entre-las-garras/"
+          ],
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "section": "SIDE Intelligence Plan — March 2026 Update",
+      "new_to_investigation": true,
+      "summary_en": "NEW: In March 2026, the government quietly rewrote the National Intelligence Plan (PIN) to remove the most controversial passages enabling domestic espionage against journalists and opponents. The original 170-page secret document targeted anyone who 'erodes confidence' in officials. Journalist Hugo Alconada Mon reported hacking attempts after publishing PIN details. New version sent to Congress — but core surveillance infrastructure (DNU 941/2025) remains intact.",
+      "summary_es": "NUEVO: En marzo 2026, el gobierno reescribió silenciosamente el Plan de Inteligencia Nacional para eliminar pasajes más controversiales. El documento secreto original de 170 páginas apuntaba a quien 'erosione la confianza' en funcionarios. Periodista Hugo Alconada Mon reportó intentos de hackeo tras publicar detalles.",
+      "entries": [
+        {
+          "person": "Hugo Alconada Mon",
+          "role": "Periodista (La Nación), blanco de represalias",
+          "entity": "SIDE / Plan de Inteligencia Nacional",
+          "key_facts": [
+            "Published details of the secret 170-page National Intelligence Plan",
+            "Reported hacking attempts on social media accounts after publication",
+            "Government subsequently rewrote the PIN removing most controversial passages",
+            "New version sent to Congress in March 2026",
+            "Core surveillance infrastructure from DNU 941/2025 remains intact despite revisions"
+          ],
+          "connection_to_existing": "Updates existing SIDE investigation. Shows reactive pattern — government modifies only after exposure, underlying power structure unchanged.",
+          "source_urls": [
+            "https://www.lanacion.com.ar/politica/el-gobierno-dio-marcha-atras-con-los-puntos-mas-espinosos-de-su-plan-de-inteligencia-nacional-nid15032026/",
+            "https://www.apfdigital.com.ar/noticias/2026/03/15/450461-el-gobierno-reescribio-su-plan-de-inteligencia-y-elimino-los-pasajes-mas-controvertidos",
+            "https://elagora.digital/argentina/side-espia-dirigentes-opositores-periodistas-sindicatos-jubilados/"
+          ],
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "section": "IMF Agreement — US$57.1B Debt and Governance Conditions",
+      "new_to_investigation": true,
+      "summary_en": "Argentina signed a new 48-month Extended Fund Facility with the IMF in April 2025 for US$20B, with an unprecedented US$12B immediate disbursement (60%). Total debt to IMF: US$57.1B as of Dec 2025. Massive upcoming obligations: ~US$18B in 2026, averaging US$28B/year for 2026-2028. Conditions include pension reform by Dec 2026 and fiscal surplus targets rising to 2.5% GDP. The scale creates structural dependency that constrains policy choices.",
+      "summary_es": "Argentina firmó nuevo acuerdo EFF de 48 meses con el FMI en abril 2025 por US$20.000M, con desembolso inmediato sin precedentes de US$12.000M (60%). Deuda total con FMI: US$57.100M a dic 2025. Obligaciones: ~US$18.000M en 2026, promedio US$28.000M/año 2026-2028.",
+      "entries": [
+        {
+          "person": null,
+          "role": "Gobierno Nacional / FMI",
+          "entity": "Extended Fund Facility (EFF) 2025",
+          "key_facts": [
+            "New EFF: US$20B over 48 months (April 2025)",
+            "Immediate disbursement: US$12B (60%) — unprecedented in EFF history",
+            "Total IMF debt: US$57.1B (Dec 2025)",
+            "2026 repayment obligations: ~US$18B",
+            "2026-2028 average annual repayments: US$28B",
+            "Conditions: pension reform by Dec 2026, fiscal surplus 1.3% GDP (2025) → 2.5% GDP",
+            "Social coverage requirement: AUH and Tarjeta Alimentar at 95% of basic food basket",
+            "Creates structural dependency constraining domestic policy"
+          ],
+          "amounts": {
+            "new_eff": "US$20,000,000,000",
+            "immediate_disbursement": "US$12,000,000,000",
+            "total_imf_debt": "US$57,100,000,000",
+            "2026_obligations": "~US$18,000,000,000",
+            "annual_average_2026_2028": "US$28,000,000,000"
+          },
+          "source_urls": [
+            "https://chequeado.com/el-explicador/acuerdo-con-el-fmi-que-implica-el-nuevo-endeudamiento-que-negocia-el-gobierno-de-javier-milei/",
+            "https://www.infobae.com/economia/2026/01/09/cuanto-debera-pagarle-la-argentina-al-fmi-en-los-proximos-cinco-anos-por-los-intereses-de-su-deuda/",
+            "https://ipypp.org.ar/2025/04/18/acuerdo-fmi-2025-ajuste-deuda-y-subordinacion/",
+            "https://www.realinstitutoelcano.org/analisis/claves-del-acuerdo-de-argentina-con-el-fmi-lo-clasico-como-novedad/"
+          ],
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "section": "Corruption Perception — Transparency International",
+      "new_to_investigation": true,
+      "summary_en": "Argentina's Corruption Perception Index score dropped to 36/100 in 2025 (from 37 in 2024), ranking 104th globally. Transparency International noted more corruption cases in 2025 than in the previous five years combined. Nearly 1,800 open corruption cases in Argentina's courts.",
+      "summary_es": "El Índice de Percepción de Corrupción de Argentina bajó a 36/100 en 2025 (desde 37 en 2024), puesto 104 global. Transparencia Internacional señaló más casos de corrupción en 2025 que en los cinco años anteriores combinados. Casi 1.800 causas abiertas por corrupción.",
+      "entries": [
+        {
+          "person": null,
+          "role": "Transparencia Internacional / ACIJ",
+          "entity": "Índice de Percepción de Corrupción",
+          "key_facts": [
+            "CPI score: 36/100 (2025), down from 37/100 (2024)",
+            "Global rank: 104th",
+            "More corruption cases in 2025 than previous 5 years",
+            "1,800 open corruption cases in Argentine courts (ACIJ data)",
+            "Axel Kicillof (Buenos Aires governor) has 17 corruption complaints"
+          ],
+          "source_urls": [
+            "https://www.pagina12.com.ar/2026/02/16/aumento-la-corrupcion-en-la-argentina-en-el-segundo-ano-de-mandato-de-milei-segun-un-relevamiento-mundial/",
+            "https://www.perfil.com/noticias/politica/en-2025-argentina-sufrio-mas-corrupcion-que-en-los-cinco-anos-anteriores-segun-la-ong-transparencia-internacional.phtml",
+            "https://acij.org.ar/hay-casi-1-800-causas-abiertas-por-corrupcion-quienes-son-los-politicos-mas-denunciados-ante-la-justicia/"
+          ],
+          "severity": "medium"
+        }
+      ]
+    }
+  ],
+  "cross_references": [
+    {
+      "connection": "$LIBRA ↔ CNV regulatory capture",
+      "description_en": "CNV advisor Sergio Morales was contracted by $LIBRA creator Hayden Davis for US$1.55M + 35% of revenue. This shows crypto promoters buying access to the very securities regulator tasked with protecting investors — regulatory capture at its most direct.",
+      "description_es": "El asesor de la CNV Sergio Morales fue contratado por el creador de $LIBRA Hayden Davis por US$1.55M + 35% de ingresos. Los promotores de cripto compraron acceso directo al regulador de valores encargado de proteger inversores."
+    },
+    {
+      "connection": "Santiago Caputo: SIDE + YPF + media = triple control nexus",
+      "description_en": "Santiago Caputo controls three levers simultaneously: (1) SIDE intelligence funds (ARS$97B+), (2) YPF advertising distribution (~US$100M), (3) de facto media ecosystem through discretionary funding. Combined with DNU 941 surveillance powers, this creates unprecedented control over information flow — spy on critics, fund allies, silence opponents.",
+      "description_es": "Santiago Caputo controla tres palancas simultáneamente: (1) fondos SIDE ($97.000M+), (2) distribución publicitaria YPF (~US$100M), (3) ecosistema mediático de facto mediante financiamiento discrecional. Combinado con poderes de vigilancia del DNU 941, control sin precedentes del flujo de información."
+    },
+    {
+      "connection": "Fundación Faro ↔ YPF pauta ↔ electoral financing",
+      "description_en": "While Milei claims 'zero official advertising,' his ecosystem operates through: (1) Fundación Faro spending ARS$1.079B on undisclosed-origin electoral ads, (2) YPF channeling ARS$97.1B through Caputo-controlled intermediaries. Together this creates a parallel electoral financing system that circumvents campaign finance law.",
+      "description_es": "Mientras Milei proclama 'pauta cero,' su ecosistema opera mediante: (1) Fundación Faro gastando $1.079M en publicidad electoral de origen no declarado, (2) YPF canalizando $97.100M a través de intermediarios de Caputo. Juntos crean un sistema paralelo de financiamiento electoral."
+    },
+    {
+      "connection": "RIGI + Glencore offshore = institutional enablement of tax avoidance",
+      "description_en": "The RIGI regime (25% income tax, 30-year stability, import exemptions) institutionalizes the tax optimization that Glencore's offshore structures (Bermuda/Cayman) already enabled informally. Combined with 3% royalties on artificially low boca de mina values and transfer pricing through private transactions, the result is that less than 15% of Argentina's lithium/mining revenue stays in the country.",
+      "description_es": "El régimen RIGI (25% ganancias, estabilidad 30 años, exención importaciones) institucionaliza la optimización fiscal que las estructuras offshore de Glencore ya habilitaban informalmente. Con regalías de 3% sobre valores artificialmente bajos y precios de transferencia, menos del 15% de ingresos mineros quedan en Argentina."
+    },
+    {
+      "connection": "Nucleoeléctrica ↔ defense procurement patterns",
+      "description_en": "The 1,066% software overpricing at Nucleoeléctrica mirrors the pattern already documented in defense procurement (VEMERKIPER SRL shell company with 13 contracts). State enterprises with strategic/security mandates serve as vehicles for overpricing schemes precisely because their 'strategic' status reduces external scrutiny.",
+      "description_es": "El sobreprecio de 1.066% en software de Nucleoeléctrica replica el patrón documentado en contrataciones de defensa (VEMERKIPER SRL, empresa fantasma con 13 contratos). Empresas estatales con mandatos estratégicos/de seguridad sirven como vehículos de sobreprecio porque su carácter 'estratégico' reduce el escrutinio externo."
+    },
+    {
+      "connection": "IMF conditionality → pension fund vulnerability",
+      "description_en": "The IMF requires pension reform by Dec 2026 while the FGS holds US$62.2B in assets that the government has attempted to transfer to Treasury control. The combination of IMF structural adjustment demands and Milei's desire to liquidate FGS shareholdings for infrastructure creates a direct threat to pension fund integrity — retirees' assets could be sold to meet fiscal targets.",
+      "description_es": "El FMI exige reforma previsional para dic 2026 mientras el FGS tiene US$62.200M en activos que el gobierno intentó transferir al Tesoro. La combinación de ajuste estructural del FMI y el deseo de Milei de liquidar participaciones del FGS para infraestructura amenaza la integridad del fondo jubilatorio."
+    }
+  ],
+  "investigation_priority_ranking": [
+    {
+      "rank": 1,
+      "topic": "Caso $LIBRA",
+      "reason": "Active federal investigation with direct presidential involvement, documented financial trail, potential US$5M bribery, CNV regulatory capture. Most explosive potential."
+    },
+    {
+      "rank": 2,
+      "topic": "Santiago Caputo triple nexus (SIDE + YPF + media)",
+      "reason": "Single individual controlling intelligence, advertising, and media — unprecedented concentration. ARS$194B+ in combined funds under one non-official's control."
+    },
+    {
+      "rank": 3,
+      "topic": "Fundación Faro dark money",
+      "reason": "US$821K in electoral advertising with zero financial transparency. Potential illegal campaign financing. IGJ non-compliance. Easy to investigate via Meta Ad Library."
+    },
+    {
+      "rank": 4,
+      "topic": "AFA Gate / Sur Finanzas",
+      "reason": "US$19M diverted to US, ARS$19.5B in retained contributions. Active raids. Cross-border money laundering angle provides international jurisdiction."
+    },
+    {
+      "rank": 5,
+      "topic": "RIGI + extractive industry tax avoidance",
+      "reason": "US$24.8B in approved projects with 30-year locked-in tax breaks. Less than 15% of mining revenue stays in Argentina. Connects to existing Glencore offshore investigation."
+    },
+    {
+      "rank": 6,
+      "topic": "Nucleoeléctrica overpricing",
+      "reason": "1,066% software overpricing is documented and provoked resignation. Pattern connects to defense procurement anomalies already in investigation."
+    },
+    {
+      "rank": 7,
+      "topic": "FGS pension fund liquidation threat",
+      "reason": "US$62.2B in retiree assets at risk. IMF conditionality creates pressure to restructure. US$5.3B valuation discrepancy needs audit."
+    },
+    {
+      "rank": 8,
+      "topic": "Autopista Rosario-Sunchales",
+      "reason": "90x cost overrun documented by SIGEN. Pattern of infrastructure corruption spanning multiple administrations."
+    }
+  ]
+}
