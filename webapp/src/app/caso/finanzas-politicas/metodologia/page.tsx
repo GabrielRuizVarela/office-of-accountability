@@ -21,13 +21,13 @@ const sections: readonly {
     },
     content: {
       es: [
-        'Esta investigacion fue construida mediante inteligencia artificial asistida con verificacion humana. Mas de 100 agentes autonomos de investigacion fueron desplegados en paralelo para buscar informacion en la web, cruzar datos entre bases publicas, consultar la base de datos de grafo Neo4j, y analizar patrones con el modelo de lenguaje Qwen 3.5.',
-        'El modelo de IA se ejecuta localmente en GPU (RTX 4060 Ti) — ningun dato de la investigacion fue enviado a servicios externos. Cada hallazgo del modelo fue verificado independientemente contra fuentes publicas primarias antes de ser incluido en la investigacion.',
+        'Esta investigacion fue construida mediante inteligencia artificial asistida con verificacion humana. Mas de 100 agentes autonomos de investigacion fueron desplegados en paralelo para buscar informacion en la web, cruzar datos entre bases publicas, consultar la base de datos de grafo Neo4j, y detectar patrones estructurales.',
+        'Todo el procesamiento de datos se realiza localmente — ningun dato de la investigacion fue enviado a servicios externos. Cada hallazgo fue verificado independientemente contra fuentes publicas primarias antes de ser incluido.',
         'La IA no acusa: revela patrones. Las conclusiones son del lector.',
       ],
       en: [
-        'This investigation was built through AI-assisted intelligence with human verification. Over 100 autonomous investigation agents were deployed in parallel to search the web, cross-reference public databases, query the Neo4j graph database, and analyze patterns with the Qwen 3.5 language model.',
-        'The AI model runs locally on GPU (RTX 4060 Ti) — no investigation data was sent to external services. Every model finding was independently verified against primary public sources before inclusion in the investigation.',
+        'This investigation was built through AI-assisted intelligence with human verification. Over 100 autonomous investigation agents were deployed in parallel to search the web, cross-reference public databases, query the Neo4j graph database, and detect structural patterns.',
+        'All data processing runs locally — no investigation data was sent to external services. Every finding was independently verified against primary public sources before inclusion.',
         'The AI does not accuse: it reveals patterns. The conclusions are the reader\'s.',
       ],
     },
@@ -154,7 +154,7 @@ const sections: readonly {
         '12 causas de corrupcion por documentar: AMIA/Nisman, Skanska, Rio Turbio, vacunatorio VIP, entre otras.',
         'Periodo 1983-2007 con cobertura delgada. Sectores no incluidos: mineria/litio, sindicatos, transporte.',
         'Resolucion de entidades limitada a nombre exacto; el cruce por CUIT requiere fulltext indexes no implementados.',
-        'El modelo de IA (Qwen 3.5, ejecutado localmente) se utiliza exclusivamente para deteccion de patrones estructurales. Cada hallazgo requiere verificacion humana independiente antes de ser incluido.',
+        'El motor de analisis de IA (ejecutado localmente, sin transmision de datos) se utiliza exclusivamente para deteccion de patrones estructurales. Cada hallazgo requiere verificacion humana independiente antes de ser incluido.',
       ],
       en: [
         'Offshore-judge links unresolved: we do not know if Comodoro Py judges hold offshore companies.',
@@ -163,7 +163,7 @@ const sections: readonly {
         '12 corruption cases yet to document: AMIA/Nisman, Skanska, Rio Turbio, VIP vaccination, among others.',
         '1983-2007 period has thin coverage. Sectors not included: mining/lithium, unions, transport.',
         'Entity resolution limited to exact name matching; CUIT-based cross-referencing requires fulltext indexes not yet implemented.',
-        'The AI model (Qwen 3.5, running locally) is used exclusively for structural pattern detection. Every finding requires independent human verification before inclusion.',
+        'The AI analysis engine (running locally, no data transmission) is used exclusively for structural pattern detection. Every finding requires independent human verification before inclusion.',
       ],
     },
   },
