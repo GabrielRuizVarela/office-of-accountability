@@ -21,10 +21,10 @@ export function Footer() {
         <p className="text-center text-xs text-zinc-600">
           {t('contact')}{' '}
           <a
-            href="mailto:gabrielruizvarela@gmail.com"
+            href="mailto:contact@officeofaccountability.org"
             className="text-zinc-400 transition-colors hover:text-zinc-200"
           >
-            gabrielruizvarela@gmail.com
+            contact@officeofaccountability.org
           </a>
         </p>
       </div>
