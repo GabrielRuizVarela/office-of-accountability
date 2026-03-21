@@ -1,0 +1,248 @@
+{
+  "meta": {
+    "title": "Jorge Lanata Dossier — Clarín Alignment, Patrimony & Selective Journalism",
+    "date": "2026-03-21",
+    "description": "Investigation into Jorge Lanata's financial relationship with Grupo Clarín, patrimony, selective journalism patterns, intelligence connections, and editorial alignment. Covers 2012-2024 Clarín period."
+  },
+  "subject": {
+    "name": "Jorge Lanata",
+    "born": "1960-09-12",
+    "died": "2024-12-30",
+    "occupation": "Journalist, author, TV/radio host",
+    "notable_works": ["Página/12 (founder, 1987)", "Día D (América TV)", "Periodismo Para Todos (Canal 13, 2012-2023)", "Radio Mitre morning show (2012-2024)", "Clarín newspaper columnist"],
+    "production_company": {
+      "name": "Chavaquiá",
+      "role": "Commercial production entity for PNT (non-traditional advertising)",
+      "director": "Bárbara Lanata (daughter)",
+      "notes": "Principal income source — exceeded Radio Mitre salary. After Lanata's hospitalization, courts returned administration to Bárbara Lanata over widow Elba Marcovecchio's claims."
+    }
+  },
+  "clarin_relationship": {
+    "period": "2012-2024 (12 years)",
+    "entry_context": "Lanata had previously been a vocal critic of Grupo Clarín's monopolistic practices. His 2012 move to Canal 13 (Clarín-owned) was widely seen as a Faustian pact — access to prime-time audience in exchange for editorial alignment with Héctor Magnetto's apparatus.",
+    "own_admission": "In 2012 Lanata stated: '¿A dónde voy a ir si no es al Grupo Clarín?' — acknowledging the monopolistic market structure he had previously denounced.",
+    "contracts": {
+      "tv": "Periodismo Para Todos (PPT), Canal 13, Sunday prime time (2012-2023)",
+      "radio": "Morning show, Radio Mitre AM 790 (2012-2024)",
+      "print": "Weekly column, Clarín newspaper",
+      "other": "Appearances on TN (Todo Noticias) and Telenoche"
+    },
+    "compensation": {
+      "final_salary_2024": {
+        "amount_ars": 40000000,
+        "amount_usd_approx": 40000,
+        "period": "monthly",
+        "source": "Ángel de Brito reporting post-death",
+        "source_url": "https://www.lacapital.com.ar/informacion-general/revelaron-cuanto-cobraba-jorge-lanata-el-grupo-clarin-n10172428.html"
+      },
+      "total_billing_last_period": {
+        "amount_ars": 100000000,
+        "notes": "Salary plus other payments combined",
+        "source_url": "https://www.lacapital.com.ar/informacion-general/revelaron-cuanto-cobraba-jorge-lanata-el-grupo-clarin-n10172428.html"
+      },
+      "2013_salary_breakdown": {
+        "ppt_monthly_ars": 400000,
+        "radio_mitre_monthly_ars": 120000,
+        "total_monthly_ars": 520000,
+        "total_annual_ars": 6240000,
+        "source_url": "https://www.mdzol.com/sociedad/2013/1/21/cuanto-cobra-lanata-en-clarin-848027.html"
+      },
+      "primary_income_note": "Lanata's main income was NOT the Mitre salary but revenue through Chavaquiá (PNT advertising production company). The Clarín platform gave him the audience that made Chavaquiá lucrative.",
+      "salary_disputes": [
+        {
+          "year": 2020,
+          "complaint": "Lanata publicly accused Clarín of paying him 'half of what last year,' saying 'me valoran poco' (they undervalue me)",
+          "source_url": "https://www.perfil.com/noticias/actualidad/jorge-lanata-acuso-a-grupo-clarin-de-recortarle-el-sueldo-dijo-me-valoran-poco.phtml"
+        }
+      ],
+      "post_death_dispute": "After Lanata's death, Clarín's main internal discussion was how long to keep paying his salary — whether until November 30 or December. His death resolved the question for them. Víctor Hugo Morales described this as 'zero gratitude.'",
+      "potential_estate_claim": {
+        "amount_ars": 600000000,
+        "notes": "Estimated amount heirs could claim from Grupo Clarín based on 12 years of work",
+        "source_url": "https://www.mdzol.com/mdz-show/2025/1/16/la-exorbitante-cifra-que-las-herederas-de-jorge-lanata-le-podrian-reclamar-al-grupo-clarin-1181424.html"
+      }
+    },
+    "value_to_clarin": {
+      "radio_mitre": "Lanata revived and repositioned Radio Mitre from a struggling station to audience leader over 12 years",
+      "telecom_connection": "Víctor Hugo Morales accused: 'Magnetto and company made billions of dollars with Telecom thanks to Lanata's efforts' — referring to Lanata's role in electing Macri, whose government approved the Cablevisión-Telecom merger",
+      "political_utility": "Lanata's anti-Kirchnerist investigations were instrumental in the political climate that elected Macri in 2015",
+      "source_url": "https://www.mdzol.com/mdz-show/2025/1/2/al-despedir-jorge-lanata-victor-hugo-morales-hizo-una-gravisima-denuncia-contra-el-grupo-clarin-1178607.html"
+    }
+  },
+  "patrimony": {
+    "real_estate": [
+      {
+        "property": "Apartment in Estrugamou Building",
+        "location": "Retiro, Buenos Aires",
+        "notes": "Historic luxury building"
+      },
+      {
+        "property": "House in northern Greater Buenos Aires",
+        "location": "Zona Norte, Buenos Aires Province"
+      },
+      {
+        "property": "Apartment in Manhattan",
+        "location": "New York, USA",
+        "notes": "May have been sold prior to death"
+      },
+      {
+        "property": "Apartment in Miami",
+        "location": "Miami, Florida, USA",
+        "notes": "Acquired with mortgage that stopped being paid"
+      },
+      {
+        "property": "Beach mansion 'Arenas'",
+        "location": "José Ignacio, Punta del Este, Uruguay",
+        "specs": "333 sqm on 1500 sqm lot, 6 rooms, 3 bedrooms, master suite, 4 bathrooms",
+        "listing_price_usd": 2900000,
+        "status": "Listed for sale post-death on Covello platform",
+        "ownership": "Pre-marital asset — split 33% each between two daughters and widow",
+        "source_url": "https://www.lanacion.com.ar/propiedades/punta-del-este-ya-esta-en-venta-la-casa-de-jorge-lanata-en-jose-ignacio-nid15012025/"
+      }
+    ],
+    "other_assets": [
+      "Significant art collection",
+      "Intellectual property rights to books and TV programs",
+      "Financial assets in Argentina and abroad"
+    ],
+    "estate_status": {
+      "prenuptial": false,
+      "testament": false,
+      "division_agreement": "Marcovecchio requested asset division when she purchased her own apartment",
+      "dispute": "Fierce inheritance battle ongoing as of March 2026 between widow Elba Marcovecchio and daughters Bárbara and Lola Lanata. External audit requested to determine true estate value.",
+      "source_url": "https://www.a24.com/primiciasya/la-feroz-batalla-la-herencia-jorge-lanata-un-ano-su-muerte-millonarias-deudas-peleas-y-denuncias-n1512669"
+    }
+  },
+  "selective_journalism_pattern": {
+    "summary": "Systematic pattern of aggressive investigation targeting Kirchnerist corruption while avoiding equivalent scrutiny of Macri government and Clarín business interests during 2012-2023 period on PPT.",
+    "anti_kirchner_investigations": [
+      {
+        "name": "La Ruta del Dinero K",
+        "year": 2013,
+        "target": "Lázaro Báez, Néstor/Cristina Kirchner",
+        "description": "Exposed money laundering scheme sending EUR 55 million to Switzerland via Helvetic Services Group. Key witnesses: Leonardo Fariña and Federico Elaskar.",
+        "legal_outcome": "Báez sentenced to 12 years for money laundering (2021). Cristina Kirchner later acquitted in related case (2023).",
+        "controversy": "Defendant Daniel Pérez Gadín alleged investigation was financed by Paul Singer's vulture funds. Lanata denied: 'I never saw Paul Singer in my life.'",
+        "source_urls": [
+          "https://www.infobae.com/politica/2021/02/04/ruta-del-dinero-k-el-descargo-de-lanata-luego-de-que-un-acusado-dijera-que-la-investigacion-fue-financiad-por-fondos-buitres/",
+          "https://en.wikipedia.org/wiki/K_money_trail"
+        ]
+      },
+      {
+        "name": "La Rosadita (money counting)",
+        "target": "Kirchner associates",
+        "description": "Video footage of associates counting cash in government-linked offices"
+      },
+      {
+        "name": "Various corruption investigations",
+        "target": "Kirchner government officials",
+        "description": "Weekly PPT investigations systematically targeting Kirchnerist officials, public works contracts, and enrichment"
+      }
+    ],
+    "pro_macri_omissions": [
+      {
+        "incident": "Quintana Report Censored",
+        "year": 2018,
+        "description": "Extensive investigation by journalist Cecilia Boufflet into Mario Quintana (Vice Chief of Cabinet under Macri) and his hidden control of 53% of Farmacity while serving in government. Report archived by order from top Clarín leadership.",
+        "censorship_mechanism": "According to multiple sources inside Clarín: 'El informe de Quintana se postergó por pedido personal de Héctor Magnetto.' President Macri himself interceded to lower the tone.",
+        "partial_workaround": "Lanata included the strongest parts in his opening monologue, but the full investigative segment was pulled.",
+        "source_urls": [
+          "https://noticias.perfil.com/noticias/informacion-general/2018-06-18-jorge-lanata-vs-grupo-clarin-la-primera-crisis-de-pareja.phtml",
+          "https://www.eldestapeweb.com/escandalo-jorge-asis-revelo-el-conflicto-macri-y-lanata-el-informe-contra-quintana-n43888"
+        ]
+      },
+      {
+        "incident": "General editorial restraint on Macri investigations",
+        "description": "Sources close to Lanata stated: 'Él quiere investigar al Gobierno, pero mucho no lo dejan' (He wants to investigate the Government, but they don't let him much).",
+        "source_url": "https://noticias.perfil.com/noticias/informacion-general/2018-06-18-jorge-lanata-vs-grupo-clarin-la-primera-crisis-de-pareja.phtml"
+      },
+      {
+        "incident": "Tone restrictions from Canal 13",
+        "description": "Clarín representatives 'le cuestionan su tono crítico' (questioned his critical tone) toward the Macri government.",
+        "source_url": "https://www.perfil.com/noticias/protagonistas/lanata-esta-en-tension-con-el-trece-le-cuestionan-su-tono-critico.phtml"
+      }
+    ],
+    "lanata_defense": "Lanata argued: 'If we had found Macri or Larreta counting money in La Rosadita, we would have reported it.' He also later criticized Macri's economic policies as 'pathetic' and accused him of 'trying to buy people's votes.'",
+    "structural_analysis": "The asymmetry was not necessarily Lanata's personal choice but a structural constraint imposed by Clarín's editorial hierarchy under Héctor Magnetto. The Quintana incident proves editorial veto power existed and was exercised at Magnetto's personal discretion, driven by Clarín's business and political interests."
+  },
+  "intelligence_connections": {
+    "summary": "Evidence of Lanata operating within a media-intelligence-judicial nexus, receiving and amplifying information from intelligence sources, though direct SIDE employment/payment is not documented.",
+    "evidence": [
+      {
+        "type": "media_intelligence_nexus",
+        "description": "Lanata identified as part of a network of journalists who functioned as conduits for intelligence service operations ('carpetazos'). Wiretaps on Cristina Kirchner and Oscar Parrilli were leaked through Clarín, La Nación, and Infobae outlets, distributed by figures including Lanata.",
+        "source_url": "https://www.eldestapeweb.com/nota/grana-destrozo-a-lanata-con-un-informe-sobre-operaciones-mediaticas-2018-4-14-18-3-0"
+      },
+      {
+        "type": "intelligence_surveillance_of_lanata",
+        "description": "Intelligence groups had data on Lanata's location, meetings, and circumstances during his Panama stay related to the Fariña case, indicating he was both a participant in and subject of intelligence operations.",
+        "source_url": "https://www.lanacion.com.ar/politica/una-causa-judicial-revela-sobornos-carpetazos-y-duras-internas-entre-espias-nid1786514/"
+      },
+      {
+        "type": "vulture_fund_financing_allegation",
+        "description": "Defendant Pérez Gadín alleged that Paul Singer's vulture funds financed the Ruta del Dinero K investigation. Lanata denied any connection. Vulture funds were also linked to campaigns around the AMIA Memorandum case.",
+        "source_url": "https://www.infobae.com/politica/2021/02/04/ruta-del-dinero-k-el-descargo-de-lanata-luego-de-que-un-acusado-dijera-que-la-investigacion-fue-financiad-por-fondos-buitres/"
+      },
+      {
+        "type": "media_judicial_coordination",
+        "description": "Pattern identified of coordination between intelligence services, journalists, and judges working together to apply pressure through threats of incarceration — a structure described as 'lawfare' by critics.",
+        "source_url": "https://huelladelsur.ar/2021/03/28/los-servicios-de-inteligencia-durante-el-gobierno-de-macri-1-de-2/"
+      }
+    ]
+  },
+  "editorial_evolution": {
+    "phases": [
+      {
+        "period": "1987-2003",
+        "label": "Progressive Founder",
+        "description": "Founded Página/12 at age 26, creating Argentina's most important progressive newspaper. Anti-Menem, anti-establishment, critical of Clarín monopoly. Authentic independent investigative journalism."
+      },
+      {
+        "period": "2003-2011",
+        "label": "Transitional Anti-Kirchnerist",
+        "description": "Growing opposition to Kirchner governments. Founded and closed newspapers (Crítica de la Argentina). Increasingly aligned with anti-K media ecosystem."
+      },
+      {
+        "period": "2012-2015",
+        "label": "Clarín Attack Weapon",
+        "description": "Joined Grupo Clarín precisely during the Ley de Medios war between Kirchner government and Clarín. PPT became the primary vehicle for anti-Kirchnerist investigations. Ruta del Dinero K (2013) was the centerpiece. Contributed to political climate that elected Macri in 2015."
+      },
+      {
+        "period": "2015-2019",
+        "label": "Constrained Under Macri",
+        "description": "Attempted some investigations into Macri government (Quintana/Farmacity) but was editorially restricted by Magnetto. Sources described him as wanting to investigate but being blocked. Occasional public criticism of Macri but no sustained investigative campaigns."
+      },
+      {
+        "period": "2019-2023",
+        "label": "Return to Anti-K",
+        "description": "With Alberto Fernández/Cristina Kirchner return to power, resumed aggressive anti-government investigations. Final seasons of PPT."
+      }
+    ],
+    "critical_assessments": [
+      {
+        "source": "elDiarioAR",
+        "assessment": "From 'standard-bearer of anti-Menemist progressivism' to 'commander of the Clarín Group in the war against Kirchnerism' — his Faustian pact with Magnetto.",
+        "source_url": "https://www.eldiarioar.com/politica/revolucion-pagina-12-grupo-clarin-complejo-legado-periodistico-jorge-lanata_1_11739519.html"
+      },
+      {
+        "source": "Tiempo Argentino",
+        "assessment": "Described Lanata's trajectory as going from 'estandarte del progresismo a gran operador del Grupo Clarín' (standard-bearer of progressivism to grand operator of the Clarín Group).",
+        "source_url": "https://www.tiempoar.com.ar/ta_article/las-edades-de-lanata-estandarte-progresismo-gran-operador-del-grupo-clarin/"
+      },
+      {
+        "source": "Víctor Hugo Morales",
+        "assessment": "Accused Clarín of obtaining Telecom (billions of dollars in perpetual revenue) thanks to putting Macri as president, and 'no one fought as hard as Lanata for that candidate.' Zero gratitude from Clarín upon Lanata's death.",
+        "source_url": "https://www.mdzol.com/mdz-show/2025/1/2/al-despedir-jorge-lanata-victor-hugo-morales-hizo-una-gravisima-denuncia-contra-el-grupo-clarin-1178607.html"
+      }
+    ]
+  },
+  "key_findings": [
+    "Lanata earned ~USD 40,000/month from Clarín by 2024, but his primary income came through Chavaquiá production company (PNT advertising), making his total compensation significantly higher.",
+    "The Quintana/Farmacity report was personally censored by Héctor Magnetto at Macri's request — proving editorial veto power over Lanata's investigations when they threatened Clarín's political allies.",
+    "Lanata's estate includes properties in Buenos Aires, Manhattan, Miami, and a USD 2.9M beach house in José Ignacio, Uruguay — significant wealth accumulation during the Clarín years.",
+    "The Ruta del Dinero K (2013), Lanata's signature investigation, led to Báez's conviction but faced allegations of vulture fund financing. Cristina Kirchner was separately acquitted.",
+    "Intelligence service 'carpetazos' were channeled through Lanata and other Clarín-aligned journalists as part of a media-judicial-intelligence coordination pattern.",
+    "Lanata himself acknowledged the structural monopoly problem when he said '¿A dónde voy a ir si no es al Grupo Clarín?' — admitting the lack of alternatives in Argentina's concentrated media market.",
+    "Post-death, Víctor Hugo Morales drew the direct line: Lanata's journalism helped elect Macri, Macri approved the Cablevisión-Telecom merger, Clarín/Magnetto made billions. Lanata was the instrument."
+  ]
+}
