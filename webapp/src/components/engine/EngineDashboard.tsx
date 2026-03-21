@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 
 import { AuditLog } from './AuditLog'
+import { OrchestratorPanel } from './OrchestratorPanel'
 import { PipelineStatus } from './PipelineStatus'
 import { ProposalReview } from './ProposalReview'
 import { SnapshotManager } from './SnapshotManager'
@@ -16,6 +17,7 @@ const TABS = [
   { id: 'proposals', label: 'Proposals' },
   { id: 'audit', label: 'Audit' },
   { id: 'snapshots', label: 'Snapshots' },
+  { id: 'orchestrator', label: 'Orchestrator' },
 ] as const
 
 type TabId = (typeof TABS)[number]['id']
@@ -122,6 +124,9 @@ export function EngineDashboard({ casoSlug }: EngineDashboardProps) {
             )}
             {activeTab === 'snapshots' && (
               <SnapshotManager casoSlug={casoSlug} pipelineStateId={pipelineStateId} />
+            )}
+            {activeTab === 'orchestrator' && (
+              <OrchestratorPanel casoSlug={casoSlug} pipelineId={activePipelineId} />
             )}
           </>
         )}
