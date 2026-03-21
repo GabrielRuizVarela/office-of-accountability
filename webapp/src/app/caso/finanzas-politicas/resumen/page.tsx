@@ -50,8 +50,8 @@ const TITLE: Record<Lang, string> = {
 }
 
 const SUBTITLE: Record<Lang, string> = {
-  es: 'Trece capitulos sobre como nueve bases de datos publicas revelan las conexiones entre el cargo publico, los directorios corporativos, las sociedades offshore, el financiamiento de campanas, las armas financieras, el escandalo de los seguros, la puerta giratoria, el poder judicial y la riqueza inexplicable',
-  en: 'Thirteen chapters on how nine public datasets reveal the connections between public office, corporate boards, offshore entities, campaign financing, financial arms, the insurance scandal, the revolving door, the judiciary and unexplained wealth',
+  es: 'Diecisiete capitulos sobre como nueve bases de datos publicas revelan las conexiones entre el cargo publico, los directorios corporativos, las sociedades offshore, el financiamiento de campanas, las armas financieras, el escandalo de los seguros, la puerta giratoria, el poder judicial, la riqueza inexplicable, el imperio Macri, el cartel de la salud y la captura del Estado por JP Morgan',
+  en: 'Seventeen chapters on how nine public datasets reveal the connections between public office, corporate boards, offshore entities, campaign financing, financial arms, the insurance scandal, the revolving door, the judiciary, unexplained wealth, the Macri empire, the health cartel, and State capture by JP Morgan',
 }
 
 const READING_TIME: Record<Lang, string> = {
@@ -452,10 +452,96 @@ const chapters: readonly Chapter[] = [
     ],
   },
   {
+    id: 'el-imperio-macri',
+    title: {
+      es: 'XIV. El Imperio Macri: 398 Empresas y Un Correo',
+      en: 'XIV. The Macri Empire: 398 Companies and a Post Office',
+    },
+    paragraphs: {
+      es: [
+        'Alejandra Macri, hija no reconocida de Franco Macri, presento en 2025 una demanda judicial que revelo la magnitud del imperio familiar: 398 empresas distribuidas en Argentina, Brasil, Panama, Hong Kong, Reino Unido, Islas Virgenes Britanicas, Dubai y Luxemburgo.[36] La SOCMA (Sociedad Macri) fue fundada el 19 de enero de 1976 — dos meses antes del golpe militar — y crecio de 7 a 47 empresas bajo la dictadura.',
+        'El caso emblematico es el Correo Argentino. Privatizado en 1997, el grupo Macri pago el canon un solo anio. Entro en concurso preventivo en septiembre de 2001. Veinte anios despues, en julio de 2021, fue declarado en quiebra.[37] Durante la presidencia de Mauricio Macri, el Estado ofrecio una reduccion del 98,82% de la deuda — un acuerdo que beneficiaba a la propia familia del presidente. El Tesoro pidio extender la quiebra a SOCMA y SIDECO, los holdings de la familia.',
+        'Gianfranco Macri, a traves de la entidad luxemburguesa Lares Corporation, compro seis parques eolicos por US$25 millones y los vendio en 2017 por US$95 millones — una ganancia de US$70 millones.[38] Seis dias antes de la victoria electoral de Mauricio en octubre de 2015, Gianfranco ordeno trasladar fondos de UBS Hamburgo a Safra Bank en Suiza y destruir la correspondencia bancaria. Blanqueo US$4 millones de BF Corporation (Panama) durante la amnistia fiscal de 2016.',
+        'Mariano Macri, el hermano disidente, denuncio penalmente al grupo empresarial en agosto de 2024 por administracion fraudulenta, lavado de activos, falsificacion de documentos y evasion tributaria. La causa recayo en el Juzgado Federal 6 — del juez Ariel Lijo.[39]',
+      ],
+      en: [
+        'Alejandra Macri, Franco Macri\'s unrecognized daughter, filed a 2025 lawsuit that revealed the family empire\'s scale: 398 companies across Argentina, Brazil, Panama, Hong Kong, UK, British Virgin Islands, Dubai, and Luxembourg.[36] SOCMA (Sociedad Macri) was founded January 19, 1976 — two months before the military coup — and grew from 7 to 47 companies under the dictatorship.',
+        'The emblematic case is Correo Argentino. Privatized in 1997, the Macri group paid the canon for one year only. It entered creditor protection in September 2001. Twenty years later, in July 2021, it was declared bankrupt.[37] During Mauricio Macri\'s presidency, the State offered a 98.82% debt reduction — a deal benefiting the president\'s own family. The Treasury requested extending bankruptcy to SOCMA and SIDECO, the family\'s holdings.',
+        'Gianfranco Macri, through Luxembourg entity Lares Corporation, bought six wind farms for US$25 million and sold them in 2017 for US$95 million — a US$70 million profit.[38] Six days before Mauricio\'s electoral victory in October 2015, Gianfranco ordered funds moved from UBS Hamburg to Safra Bank Switzerland and correspondence destroyed. He laundered US$4 million from BF Corporation (Panama) during the 2016 tax amnesty.',
+        'Mariano Macri, the dissident brother, filed a criminal complaint against the business group in August 2024 for fraudulent administration, money laundering, document forgery, and tax evasion. The case landed in Federal Court 6 — Judge Ariel Lijo\'s court.[39]',
+      ],
+    },
+    citations: [
+      { id: 36, text: 'Alejandra Macri desafia al clan familiar — DataClave', url: 'https://www.dataclave.com.ar/poder/alejandra-macri-desafia-al-clan-familiar--bienes-ocultos-y-demandas-por-398-empresas_a677c201cefdaf93e3bd9db5b' },
+      { id: 37, text: 'Quiebra Correo Argentino — Infobae', url: 'https://www.infobae.com/politica/2021/07/05/claves-para-entender-la-causa-del-correo-argentino-sa-un-proceso-en-la-justicia-comercial-que-duro-20-anos-y-termino-en-una-quiebra/' },
+      { id: 38, text: 'Lares Corporation parques eolicos — OCCRP', url: 'https://www.occrp.org/es/openlux/gone-with-the-wind-argentinas-former-first-family-used-luxembourg-companies-to-reap-70-million' },
+      { id: 39, text: 'Mariano Macri denuncia — Infobae', url: 'https://www.infobae.com/judiciales/2024/08/07/el-hermano-de-mauricio-macri-denuncio-al-grupo-empresarial-de-la-familia-por-defraudacion-y-lavado-de-activos/' },
+    ],
+  },
+  {
+    id: 'el-cartel-de-la-salud',
+    title: {
+      es: 'XV. El Cartel de la Salud',
+      en: 'XV. The Health Cartel',
+    },
+    paragraphs: {
+      es: [
+        'En diciembre de 2024, la CNDC imputo por cartelizacion a Swiss Medical, OSDE, Galeno, Medife, Omint, Hospital Britanico, Hospital Aleman y a Claudio Belocopitt personalmente.[40] Las prepagas habian coordinado aumentos de ~150% cuando la inflacion era ~70%. Belocopitt controla el 76% de Swiss Medical Group (53 subsidiarias) mientras simultaneamente posee el 40% de Grupo America (America TV, A24, La Red) — un conflicto de intereses entre salud y medios sin precedentes.',
+        'El caso PAMI es demoledor: el Anastrozol se pago a $13.192 por unidad cuando la licitacion publica lo ofrecia a $924 — un sobreprecio de 14,3 veces.[41] En la ANDIS, el Macitentan fue adjudicado a $411.764 y vendido tres dias despues a $8.290.000 — un markup del 2.013%. Cuatro droguerias recibieron $37.000 millones. La Drogueria Suizo Argentina vio sus contratos estatales crecer 2.678% en un anio bajo el gobierno de Milei.',
+        'Durante la pandemia, Swiss Medical recibio $2.417 millones en subsidios ATP del Estado — mientras Belocopitt cobraba parte de su salario con fondos publicos y simultaneamente adquiria competidores.[42] Forbes estima la fortuna de Belocopitt en USD 440 millones. El ICIJ documenta cinco entidades offshore en Islas Virgenes Britanicas: Karima Portfolio, Tiago Global, Ragnar Portfolio, Elyanne Business, Pensford Business.',
+      ],
+      en: [
+        'In December 2024, the CNDC charged Swiss Medical, OSDE, Galeno, Medife, Omint, Hospital Britanico, Hospital Aleman, and Claudio Belocopitt personally for cartelization.[40] The prepaid health companies had coordinated increases of ~150% when inflation was ~70%. Belocopitt controls 76% of Swiss Medical Group (53 subsidiaries) while simultaneously owning 40% of Grupo America (America TV, A24, La Red) — an unprecedented health-media conflict of interest.',
+        'The PAMI case is devastating: Anastrozol was paid at $13,192 per unit when public bidding offered it at $924 — a 14.3x markup.[41] At ANDIS, Macitentan was awarded at $411,764 and sold three days later at $8,290,000 — a 2,013% markup. Four drugstores received $37 billion. Drogueria Suizo Argentina saw its state contracts grow 2,678% in one year under the Milei government.',
+        'During the pandemic, Swiss Medical received $2.417 billion in state ATP subsidies — while Belocopitt collected part of his salary with public funds and simultaneously acquired competitors.[42] Forbes estimates Belocopitt\'s fortune at USD 440 million. The ICIJ documents five BVI offshore entities: Karima Portfolio, Tiago Global, Ragnar Portfolio, Elyanne Business, Pensford Business.',
+      ],
+    },
+    pullQuote: {
+      es: 'Anastrozol: $13.192 por unidad vs $924 en licitacion publica. Sobreprecio de 14,3 veces.',
+      en: 'Anastrozol: $13,192 per unit vs $924 in public bidding. 14.3x markup.',
+    },
+    citations: [
+      { id: 40, text: 'CNDC imputa cartelizacion prepagas — Argentina.gob.ar', url: 'https://www.argentina.gob.ar/noticias/la-cndc-imputa-por-presunta-cartelizacion-las-principales-empresas-de-medicina-prepaga-0' },
+      { id: 41, text: 'PAMI sobreprecios oncologicos — La Nacion', url: 'https://www.lanacion.com.ar/politica/denuncian-que-el-pami-pago-medicamentos-oncologicos-hasta-16-veces-mas-que-el-valor-de-las-compras-nid22012025/' },
+      { id: 42, text: 'Swiss Medical ATP pandemia — Chaco Dia por Dia', url: 'https://www.chacodiapordia.com/2021/06/21/swiss-medical-recibio-mas-de-2-400-millones-de-ayuda-estatal-durante-2020/' },
+    ],
+  },
+  {
+    id: 'caputo-y-el-estado',
+    title: {
+      es: 'XVI. Caputo y el Estado: De JP Morgan al Ministerio',
+      en: 'XVI. Caputo and the State: From JP Morgan to the Ministry',
+    },
+    paragraphs: {
+      es: [
+        'Luis Caputo trabajo en JP Morgan (1994-1998) y Deutsche Bank (1998-2008). Como Ministro de Economia de Milei, designo a JP Morgan como agente fiduciario para recomprar bonos soberanos con fondos del Banco Mundial.[43] Su consultora Anker Latinoamerica (CUIT 30-71690088-2) — registrada en la misma direccion donde figuraba como presidente — suspendio operaciones el 1 de diciembre de 2023, el dia exacto que asumio como ministro.',
+        'El patron es mas profundo: al menos seis funcionarios de Milei tienen pasado en JP Morgan — Caputo, Daza, Bausili, Quirno, Werning y Reidel.[44] Santiago Bausili, actual presidente del BCRA, recibio ~USD 200.000 en acciones y bonos de Deutsche Bank mientras era Secretario de Finanzas, dirigiendo operaciones de deuda estatal que beneficiaban a su ex empleador. Esta procesado por negociaciones incompatibles con la funcion publica.',
+        'En enero de 2024, Caputo tomo USD 3.200 millones de reservas del BCRA mediante DNU 23/2024, dejando una letra intransferible a 10 anios — practicamente sin valor.[45] En 2017, emitio el bono a 100 anios (USD 2.750M) que la AGN califico como "poco transparente e ineficiente, comprometiendo generaciones futuras." Argentina pagaria mas del 900% del neto recibido a lo largo de la vida del bono.',
+        'Sturzenegger mantiene el 99% de sus depositos en el exterior mientras promueve que los argentinos traigan dolares al sistema local. Su empresa Un Ombu SAS tiene capital minimo ($21.400) pero un objeto social que abarca agricultura, tecnologia, finanzas, energia, mineria, fideicomisos e inmobiliaria. Su mentor intelectual: el DNU 70/2023 que elimino regulaciones que benefician a las empresas de sus propios asesores.[46]',
+      ],
+      en: [
+        'Luis Caputo worked at JP Morgan (1994-1998) and Deutsche Bank (1998-2008). As Milei\'s Economy Minister, he designated JP Morgan as fiduciary agent for sovereign bond repurchase using World Bank funds.[43] His consulting firm Anker Latinoamerica (CUIT 30-71690088-2) — registered at the same address where he served as president — suspended operations on December 1, 2023, the exact day he became minister.',
+        'The pattern runs deeper: at least six Milei officials have JP Morgan backgrounds — Caputo, Daza, Bausili, Quirno, Werning, and Reidel.[44] Santiago Bausili, current BCRA president, received ~USD 200,000 in Deutsche Bank stock and bonuses while serving as Finance Secretary, directing state debt operations that benefited his former employer. He is processed for negotiations incompatible with public office.',
+        'In January 2024, Caputo took USD 3.2 billion from BCRA reserves via DNU 23/2024, leaving a non-transferable 10-year letter — practically valueless.[45] In 2017, he issued the 100-year bond (USD 2.75B) that the AGN qualified as "little transparent and inefficient, compromising future generations." Argentina would repay over 900% of the net received over the bond\'s life.',
+        'Sturzenegger maintains 99% of his deposits abroad while promoting policies encouraging Argentines to bring dollars into the local system. His company Un Ombu SAS has minimal capital ($21,400) but a corporate purpose spanning agriculture, technology, finance, energy, mining, trusts, and real estate. His intellectual creation: DNU 70/2023, which eliminated regulations benefiting his own advisors\' companies.[46]',
+      ],
+    },
+    pullQuote: {
+      es: 'Seis funcionarios de Milei con pasado en JP Morgan. El Ministro designa a su ex empleador como agente fiduciario.',
+      en: 'Six Milei officials with JP Morgan backgrounds. The Minister designates his former employer as fiduciary agent.',
+    },
+    citations: [
+      { id: 43, text: 'Caputo recompra bonos via JP Morgan — La Letra P', url: 'https://www.letrap.com.ar/economia/deuda-educacion-toto-caputo-recomprara-bonos-plata-del-banco-mundial-y-el-jp-morgan-como-agente-n5419611' },
+      { id: 44, text: 'JP Morgan in Power — Buenos Aires Times', url: 'https://batimes.com.ar/news/argentina/jp-morgan-in-power-mileis-six-officials-with-a-past-there.phtml' },
+      { id: 45, text: 'BCRA letra intransferible — Infobae', url: 'https://www.infobae.com/economia/2024/01/05/el-gobierno-tomara-usd-3200-de-las-reservas-del-bcra-para-pagar-vencimientos-de-deuda/' },
+      { id: 46, text: 'Sturzenegger 99% exterior — Perfil', url: 'https://www.perfil.com/noticias/politica/declaracion-jurada-federico-sturzenegger.phtml' },
+    ],
+  },
+  {
     id: 'lo-que-queda',
     title: {
-      es: 'XIII. Lo Que Queda',
-      en: 'XIII. What Remains',
+      es: 'XVII. Lo Que Queda',
+      en: 'XVII. What Remains',
     },
     paragraphs: {
       es: [
@@ -488,7 +574,7 @@ const stats: readonly StatCard[] = [
   { value: '398K', label: { es: 'Empresas rastreadas', en: 'Companies tracked' } },
   { value: '951K', label: { es: 'Oficiales corporativos', en: 'Corporate officers' } },
   { value: '$609B', label: { es: 'Total rastreado', en: 'Total tracked' } },
-  { value: '72', label: { es: 'Puerta giratoria financiera', en: 'Financial revolving door' } },
+  { value: '1,428', label: { es: 'Puerta giratoria documentada', en: 'Documented revolving door' } },
 ]
 
 // ---------------------------------------------------------------------------
@@ -507,6 +593,15 @@ const sources: readonly Source[] = [
   { name: 'BF Corporation Suiza — Perfil', url: 'https://www.perfil.com/noticias/politica/una-off-shore-de-los-macri-movio-fondos-a-suiza-y-destruyo-pruebas.phtml' },
   { name: 'SOCMA blanqueo — Perfil', url: 'https://noticias.perfil.com/noticias/politica/2018-12-18-quienes-son-los-integrantes-de-socma-que-adhirieron-al-blanqueo.phtml' },
   { name: 'Grindetti ICIJ Offshore Leaks', url: 'https://offshoreleaks.icij.org/stories/nestor-grindetti' },
+  { name: 'Alejandra Macri 398 empresas — DataClave', url: 'https://www.dataclave.com.ar/poder/alejandra-macri-desafia-al-clan-familiar--bienes-ocultos-y-demandas-por-398-empresas_a677c201cefdaf93e3bd9db5b' },
+  { name: 'Lares Corporation — OCCRP/OpenLux', url: 'https://www.occrp.org/es/openlux/gone-with-the-wind-argentinas-former-first-family-used-luxembourg-companies-to-reap-70-million' },
+  { name: 'CNDC cartelizacion prepagas — Argentina.gob.ar', url: 'https://www.argentina.gob.ar/noticias/la-cndc-imputa-por-presunta-cartelizacion-las-principales-empresas-de-medicina-prepaga-0' },
+  { name: 'PAMI sobreprecios oncologicos — La Nacion', url: 'https://www.lanacion.com.ar/politica/denuncian-que-el-pami-pago-medicamentos-oncologicos-hasta-16-veces-mas-que-el-valor-de-las-compras-nid22012025/' },
+  { name: 'JP Morgan in Power — Buenos Aires Times', url: 'https://batimes.com.ar/news/argentina/jp-morgan-in-power-mileis-six-officials-with-a-past-there.phtml' },
+  { name: 'BCRA Central de Deudores API', url: 'https://www.bcra.gob.ar/bcrayvos/Situacion_Crediticia.asp' },
+  { name: 'Registro Nacional de Sociedades — datos.jus.gob.ar', url: 'https://datos.jus.gob.ar/dataset/registro-nacional-de-sociedades' },
+  { name: 'Fundacion Faro dark money — Chequeado', url: 'https://chequeado.com/investigaciones/fundacion-faro-el-think-tank-libertario-que-mas-pauta-electoral-puso-en-2025-y-que-no-declara-el-origen-de-sus-fondos/' },
+  { name: 'AFAGate sociedades fantasma — La Nacion', url: 'https://www.lanacion.com.ar/politica/investigacion-exclusiva-desde-la-cuenta-que-administra-los-fondos-de-la-afa-en-eeuu-se-desviaron-al-nid28122025/' },
   { name: 'Decreto 823/2021 — Boletin Oficial', url: 'https://www.boletinoficial.gob.ar/detalleAviso/primera/253783/20211201' },
   { name: 'Causa seguros — allanamientos Ercolini', url: 'https://www.infobae.com/politica/2024/04/' },
   { name: 'Bachellier embargo — Ambito Financiero', url: 'https://www.ambito.com/politica/seguros-gate/' },

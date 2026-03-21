@@ -1,7 +1,7 @@
 # Caso Libra: Anatomia de una estafa presidencial
 
 **Oficina de Rendicion de Cuentas — Resumen editorial**
-**Estado: Investigacion activa | Ultima actualizacion: 20 de marzo de 2026**
+**Estado: Investigacion activa | Ultima actualizacion: 21 de marzo de 2026**
 
 ---
 
@@ -63,6 +63,26 @@ La Comision Investigadora del Congreso, presidida por Maximiliano Ferraro y crea
 
 El costo politico: la aprobacion de Milei cayo por debajo del 40%, la bolsa argentina se desplomo un 6%.
 
+**Cuarto tiempo — El peritaje** (enero-marzo 2026): El informe pericial final fue entregado a la fiscalia el 13 de enero de 2026, incorporado al sistema de gestion judicial el 24 de febrero de 2026. Revelo una secuencia de mas de 35 llamadas entre Novelli, Milei, Karina Milei y Santiago Caputo la noche del lanzamiento. Audios recuperados del telefono de Novelli muestran que negociaba en nombre de Javier y Karina Milei desde el primer mes de gobierno. Del celular de Novelli surgen borradores de acuerdos adicionales e indicios de que filtraba contactos con Milei a otros emprendedores que buscaban "aprovechar el vinculo."
+
+Los imputados formales en la causa son: Hayden Mark Davis, Julian Peh, Mauricio Gaspar Novelli, Manuel Terrones Godoy, Bartosz Lipinski y Sergio Daniel Morales. Un juez argentino ordeno el congelamiento de activos financieros de Davis. Davis presto declaracion en Nueva York. La comision investigadora del Congreso anuncio el 16 de marzo de 2026 que Milei debera dar explicaciones ante el Congreso. Los diputados presentaron denuncia penal contra el fiscal del caso por supuesto "entorpecimiento" de la investigacion. El gobierno aseguro el 20 de marzo que no hay registro de un contrato entre Milei y Davis.
+
+---
+
+## Falla regulatoria
+
+Kelsier Ventures nunca se inscribio en el Registro de Proveedores de Servicios de Activos Virtuales (PSAV) de la CNV — obligatorio para toda persona fisica o juridica que opere criptomonedas en Argentina, incluyendo operadores extranjeros cuyos servicios se dirijan a residentes argentinos. Al momento del lanzamiento de $LIBRA, 127 personas juridicas y 9 personas fisicas estaban registradas en el PSAV. La CNV abrio una investigacion el 17 de febrero de 2025 ("$LIBRA S/ INVESTIGACION") contra Kelsier Ventures y Hayden Mark Davis.
+
+La regulacion integral de PSAVs fue establecida por la CNV mediante Resolucion General N 1058, basada en la Ley 27.739, con entrada en vigencia plena al 31 de diciembre de 2025. Sin embargo, el registro PSAV ya existia y era obligatorio al momento del lanzamiento.
+
+## Antecedentes de Hayden Davis
+
+Davis, de 28 anos, es CEO de Kelsier Ventures, empresa familiar fundada durante la pandemia junto a su hermano Gideon (COO) y su padre Tom (Chairman) — este ultimo un delincuente convicto con antecedentes de fraude. La familia tiene un historial que incluye falsificacion y asociacion con cultos (Buenos Aires Times).
+
+Antes de $LIBRA, Davis fue vinculado al lanzamiento del token $MELANIA (donde billeteras conectadas extrajeron $2,4M) y a los tokens $WOLF, $FRIES y otros rug pulls. Un analisis on-chain vinculo billeteras "sniper" de LIBRA con el token $YZY (Kanye West), extrayendo $23M combinados entre ambos proyectos. Davis admitio su participacion en el lanzamiento de MELANIA. En total, Kelsier Ventures habria lucrado mas de $200M a traves de multiples esquemas de pump-and-dump.
+
+KIP Protocol, cuyo CEO Julian Peh fue imputado, nego haber tenido relacion comercial previa con Davis. KIP afirmo que fue invitada post-lanzamiento para gestionar la seleccion de proyectos tecnologicos financiados por el token.
+
 ---
 
 ## Preguntas abiertas
@@ -90,7 +110,8 @@ El costo politico: la aprobacion de Milei cayo por debajo del 40%, la bolsa arge
 | Caida del precio | 94% | Blockchain data |
 | Direcciones Kelsier | 1.000+ | Arkham Intelligence |
 | Reuniones no declaradas | 12 de 16 | Congreso argentino |
-| Imputaciones (1 ano) | 0 | Poder Judicial |
+| Imputados formales | 6 | Fiscalia Federal No. 8 |
+| Llamadas Novelli-Milei documentadas | 35+ | Peritaje telefono Novelli |
 | Nodos en grafo ORC | 102 | Office of Accountability |
 | Aristas en grafo ORC | 141 | Office of Accountability |
 | Items factchecked | 43 | Office of Accountability |
