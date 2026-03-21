@@ -97,13 +97,13 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     source: 'Cross-reference engine',
   },
   {
-    value: '133',
+    value: '186',
     label_es: 'Nodos de investigación',
     label_en: 'Investigation nodes',
     source: 'Neo4j graph',
   },
   {
-    value: '22',
+    value: '84',
     label_es: 'Personas críticas identificadas',
     label_en: 'Critical persons identified',
     source: 'Cross-reference engine',
@@ -115,13 +115,13 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     source: 'Compr.ar / Boletín Oficial',
   },
   {
-    value: '72+',
+    value: '1,428+',
     label_es: 'Puerta giratoria financiera-gobierno',
     label_en: 'Financial-government revolving door',
     source: 'IGJ + GovernmentAppointment cross-match',
   },
   {
-    value: '6',
+    value: '9',
     label_es: 'Jueces criticos documentados',
     label_en: 'Critical judges documented',
     source: 'Poder Judicial / DDJJ / ACIJ',
@@ -594,6 +594,301 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source: 'Infobae / Congressional investigation',
     source_url: 'https://www.infobae.com',
   },
+  // --- Deep Dive: Caputo Revolving Door ---
+  {
+    id: 'caputo-anker-suspension',
+    claim_es:
+      'La consultora de Caputo (Anker Latinoamérica, CUIT 30-71690088-2) suspendió operaciones el 1 de diciembre de 2023, el día exacto que asumió como Ministro de Economía. Misma dirección que su cargo directivo.',
+    claim_en:
+      'Caputo\'s consulting firm (Anker Latinoamérica, CUIT 30-71690088-2) suspended operations on December 1, 2023, the exact day he became Economy Minister. Same address as his directorship.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Ámbito Financiero / CUITOnline',
+    source_url: 'https://www.ambito.com/economia/luis-caputo-cierra-su-consultora-y-suma-los-socios-su-equipo-n5889363',
+  },
+  {
+    id: 'caputo-bcra-bond-2038',
+    claim_es:
+      'Caputo tomó USD 3.200M de reservas del BCRA (DNU 23/2024) y dejó una letra intransferible a 10 años, prácticamente sin valor.',
+    claim_en:
+      'Caputo took USD 3.2B from BCRA reserves (DNU 23/2024) and left a non-transferable 10-year letter, practically valueless.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Infobae / La Nación',
+    source_url: 'https://www.infobae.com/economia/2024/01/05/el-gobierno-tomara-usd-3200-de-las-reservas-del-bcra-para-pagar-vencimientos-de-deuda/',
+  },
+  {
+    id: 'caputo-jp-morgan-agent',
+    claim_es:
+      'Caputo designó a JP Morgan (su ex empleador 1994-1998) como agente fiduciario para recompra de bonos soberanos con fondos del Banco Mundial.',
+    claim_en:
+      'Caputo designated JP Morgan (his former employer 1994-1998) as fiduciary agent for sovereign bond repurchase using World Bank funds.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'La Letra P',
+    source_url: 'https://www.letrap.com.ar/economia/deuda-educacion-toto-caputo-recomprara-bonos-plata-del-banco-mundial-y-el-jp-morgan-como-agente-n5419611',
+  },
+  {
+    id: 'caputo-100yr-bond',
+    claim_es:
+      'La AGN calificó el bono a 100 años de Caputo (USD 2.750M, 2017) como "poco transparente e ineficiente, comprometiendo generaciones futuras". Argentina pagaría 900%+ del neto recibido.',
+    claim_en:
+      'AGN qualified Caputo\'s 100-year bond (USD 2.75B, 2017) as "little transparent and inefficient, compromising future generations." Argentina would repay 900%+ of net received.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'El Destape / AGN',
+    source_url: 'https://www.eldestapeweb.com/economia/finanzas/caputo-y-el-bono-a-100-anos-la-uditoria-que-lo-califico-de-gravoso-para-el-pais-202311240548',
+  },
+  {
+    id: 'bausili-deutsche-bank-conflict',
+    claim_es:
+      'Santiago Bausili recibió ~USD 200K en acciones/bonos de Deutsche Bank mientras era Secretario de Finanzas, dirigiendo operaciones de deuda estatal que beneficiaban a DB. Procesado por negociaciones incompatibles.',
+    claim_en:
+      'Santiago Bausili received ~USD 200K in DB stock/bonuses while serving as Finance Secretary, directing state debt operations benefiting DB. Processed for incompatible negotiations.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Página/12',
+    source_url: 'https://www.pagina12.com.ar/780526-bausili-investigado-por-corrupcion/',
+  },
+  {
+    id: '6-jp-morgan-officials',
+    claim_es:
+      'Al menos 6 funcionarios de Milei tienen pasado en JP Morgan: Caputo, Daza, Bausili, Quirno, Werning y Reidel.',
+    claim_en:
+      'At least 6 Milei officials have JP Morgan backgrounds: Caputo, Daza, Bausili, Quirno, Werning, and Reidel.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Buenos Aires Times',
+    source_url: 'https://batimes.com.ar/news/argentina/jp-morgan-in-power-mileis-six-officials-with-a-past-there.phtml',
+  },
+  // --- Deep Dive: Finaig/Lijo Connection ---
+  {
+    id: 'finaig-lijo-brother',
+    claim_es:
+      'Finaig Consultores SA fue co-fundada por Alfredo Damián Lijo (CUIT 20-21885141-0), hermano del juez Ariel Lijo nominado a la Corte Suprema. Finaig vinculada a operaciones de seguros.',
+    claim_en:
+      'Finaig Consultores SA was co-founded by Alfredo Damián Lijo (CUIT 20-21885141-0), brother of Judge Ariel Lijo nominated to the Supreme Court. Finaig linked to insurance operations.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Dateas / Boletín Oficial',
+    source_url: 'https://www.dateas.com/es/bora/2014/12/24/finaig-consultores-sa-839473',
+  },
+  // --- Deep Dive: Macri Empire ---
+  {
+    id: 'macri-398-companies',
+    claim_es:
+      'Alejandra Macri (hija no reconocida de Franco) listó 398 empresas como patrimonio familiar en demanda de herencia (2025), abarcando Argentina, Brasil, Panamá, Hong Kong, UK, BVI, Dubái y Luxemburgo.',
+    claim_en:
+      'Alejandra Macri (Franco\'s unrecognized daughter) listed 398 companies as family patrimony in inheritance claim (2025), spanning Argentina, Brazil, Panama, Hong Kong, UK, BVI, Dubai, and Luxembourg.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'DataClave',
+    source_url: 'https://www.dataclave.com.ar/poder/alejandra-macri-desafia-al-clan-familiar--bienes-ocultos-y-demandas-por-398-empresas_a677c201cefdaf93e3bd9db5b',
+  },
+  {
+    id: 'gianfranco-wind-profit',
+    claim_es:
+      'Gianfranco Macri compró 6 parques eólicos por US$25M vía entidad luxemburguesa (Lares Corporation), vendió en 2017 por US$95M = US$70M de ganancia.',
+    claim_en:
+      'Gianfranco Macri bought 6 wind farms for US$25M via Luxembourg entity (Lares Corporation), sold in 2017 for US$95M = US$70M profit.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'OCCRP / OpenLux',
+    source_url: 'https://www.occrp.org/es/openlux/gone-with-the-wind-argentinas-former-first-family-used-luxembourg-companies-to-reap-70-million',
+  },
+  {
+    id: 'correo-bankruptcy-extension',
+    claim_es:
+      'Estado pidió extensión de quiebra de Correo Argentino a SOCMA y SIDECO (holdings Macri). 20 años de concurso, deuda de $4.500M. Correogate: reducción del 98,82% propuesta durante presidencia de Macri.',
+    claim_en:
+      'State requested bankruptcy extension from Correo Argentino to SOCMA and SIDECO (Macri holdings). 20-year concurso, $4.5B debt. Correogate: 98.82% reduction proposed during Macri presidency.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Página/12 / Infobae',
+    source_url: 'https://www.infobae.com/politica/2021/07/05/claves-para-entender-la-causa-del-correo-argentino-sa-un-proceso-en-la-justicia-comercial-que-duro-20-anos-y-termino-en-una-quiebra/',
+  },
+  {
+    id: 'gianfranco-destroy-correspondence',
+    claim_es:
+      'Gianfranco Macri ordenó destruir correspondencia bancaria y trasladó fondos de UBS Hamburgo a Safra Bank Suiza, 6 días antes de la victoria electoral de Mauricio (octubre 2015).',
+    claim_en:
+      'Gianfranco Macri ordered bank correspondence destroyed and moved funds from UBS Hamburg to Safra Bank Switzerland, 6 days before Mauricio\'s electoral victory (October 2015).',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Perfil',
+    source_url: 'https://www.perfil.com/noticias/politica/gianfranco-macri-blanqueo-us-4-millones-de-una-offshore-oculta-tras-ser-denunciado.phtml',
+  },
+  // --- Deep Dive: Health Cartel ---
+  {
+    id: 'cndc-prepaid-cartel',
+    claim_es:
+      'La CNDC imputó por cartelización a Swiss Medical, OSDE, Galeno, Medife, Omint, Hospital Británico, Hospital Alemán y a Belocopitt personalmente. Aumentos coordinados de ~150% vs inflación de ~70%.',
+    claim_en:
+      'CNDC charged Swiss Medical, OSDE, Galeno, Medife, Omint, Hospital Británico, Hospital Alemán, and Belocopitt personally for cartelization. Coordinated increases of ~150% vs ~70% inflation.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Argentina.gob.ar',
+    source_url: 'https://www.argentina.gob.ar/noticias/la-cndc-imputa-por-presunta-cartelizacion-las-principales-empresas-de-medicina-prepaga-0',
+  },
+  {
+    id: 'pami-anastrozol-14x',
+    claim_es:
+      'PAMI pagó Anastrozol a $13.192 (convenio marco) vs $924 (licitación pública) = sobreprecio de 14,3x (1.327%). Gasto excedente documentado: $273M en 8 drogas oncológicas.',
+    claim_en:
+      'PAMI paid Anastrozol at $13,192 (framework agreement) vs $924 (public bidding) = 14.3x markup (1,327%). Documented excess spending: $273M across 8 oncological drugs.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'La Nación / Infobae',
+    source_url: 'https://www.lanacion.com.ar/politica/denuncian-que-el-pami-pago-medicamentos-oncologicos-hasta-16-veces-mas-que-el-valor-de-las-compras-nid22012025/',
+  },
+  {
+    id: 'andis-2013pct-markup',
+    claim_es:
+      'ANDIS: Macitentan adjudicado a $411.764, vendido 3 días después a $8.290.000 = sobreprecio de 2.013%. Cuatro droguerías recibieron $37.000M.',
+    claim_en:
+      'ANDIS: Macitentan awarded at $411,764, sold 3 days later at $8,290,000 = 2,013% markup. Four drugstores received $37B.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Infobae',
+    source_url: 'https://www.infobae.com/judiciales/2025/11/17/andis-cuatro-droguerias-recibieron-37000-millones-y-vendieron-algunos-medicamentos-al-2000-de-su-valor/',
+  },
+  {
+    id: 'suizo-argentina-2678pct',
+    claim_es:
+      'Droguería Suizo Argentina: contratos con el Estado crecieron 2.678% en un año bajo gobierno Milei (de $3.898M a $108.299M). Implicada en audios de coimas ANDIS.',
+    claim_en:
+      'Droguería Suizo Argentina: state contracts grew 2,678% in one year under Milei government ($3,898M to $108,299M). Implicated in ANDIS bribery audio recordings.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'La Nación',
+    source_url: 'https://www.lanacion.com.ar/politica/aumento-exponencial-suizo-argentina-paso-de-3900-millones-a-108000-millones-en-contratos-con-el-nid24082025/',
+  },
+  // --- Deep Dive: Nucleoeléctrica ---
+  {
+    id: 'nucleoelectrica-1066pct',
+    claim_es:
+      'Nucleoeléctrica: sobreprecio de 1.066,7% en sistema SAP (USD 7M vs USD 600K previo). Presidente Reidel pagó deudas personales de $880M a Banco Macro en 18 días, renunció 9/2/2026.',
+    claim_en:
+      'Nucleoeléctrica: 1,066.7% overpricing on SAP system (USD 7M vs USD 600K prior). President Reidel paid personal debts of $880M to Banco Macro in 18 days, resigned 2/9/2026.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'ATE / Infobae',
+    source_url: 'https://ate.org.ar/260127-sobreprecio-nasa/',
+  },
+  // --- Deep Dive: Fundación Faro ---
+  {
+    id: 'fundacion-faro-dark-money',
+    claim_es:
+      'Fundación Faro (ex-Fundación Valorar): directorio reemplazado abr 2024, renombrada oct 2024, lanzada nov 2024 con Milei. Gastó $1.079B en publicidad política sin declarar donantes. Cenas a $25.000/plato.',
+    claim_en:
+      'Fundación Faro (ex-Fundación Valorar): board replaced Apr 2024, renamed Oct 2024, launched Nov 2024 with Milei. Spent $1.079B on political ads without disclosing donors. $25,000/plate dinners.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Chequeado',
+    source_url: 'https://chequeado.com/investigaciones/fundacion-faro-el-think-tank-libertario-que-mas-pauta-electoral-puso-en-2025-y-que-no-declara-el-origen-de-sus-fondos/',
+  },
+  // --- Deep Dive: AFA Gate ---
+  {
+    id: 'afa-gate-400m',
+    claim_es:
+      'AFAGate: ~USD 400M canalizados por sociedades fantasma en Florida. TourProdEnter LLC acumuló USD 260M+. 9 LLCs en oficinas virtuales de Miami. Tapia y Toviggino citados por fraude y lavado.',
+    claim_en:
+      'AFAGate: ~USD 400M channeled through Florida shell companies. TourProdEnter LLC accumulated USD 260M+. 9 LLCs at Miami virtual offices. Tapia and Toviggino summoned for fraud and laundering.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'La Nación',
+    source_url: 'https://www.lanacion.com.ar/politica/investigacion-exclusiva-desde-la-cuenta-que-administra-los-fondos-de-la-afa-en-eeuu-se-desviaron-al-nid28122025/',
+  },
+  // --- Deep Dive: SIDE ---
+  {
+    id: 'side-1967pct-growth',
+    claim_es:
+      'Gastos reservados SIDE crecieron 1.967% bajo Milei ($650M a $13.436M). DNU 941/2025 habilita FFAA en inteligencia interna y capacidad de aprehensión. Orden secreta de vigilar opositores documentada por CELS.',
+    claim_en:
+      'SIDE secret funds grew 1,967% under Milei ($650M to $13.436B). DNU 941/2025 enables military in domestic intelligence and apprehension power. Secret order to surveil opponents documented by CELS.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Perfil / CELS',
+    source_url: 'https://www.perfil.com/noticias/economia/side-los-gastos-reservados-crecieron-1967-con-milei.phtml',
+  },
+  // --- Deep Dive: Judiciary ---
+  {
+    id: 'borinsky-15-olivos-visits',
+    claim_es:
+      'Juez de Casación Borinsky: 15 visitas a Quinta de Olivos coincidentes con fallos favorables en causas K (Nisman, Ruta del Dinero K, Dólar Futuro, Vialidad). Justificación: "iba a jugar al paddle".',
+    claim_en:
+      'Casación Judge Borinsky: 15 visits to Olivos coinciding with favorable rulings in K cases (Nisman, Ruta del Dinero K, Dólar Futuro, Vialidad). Justification: "went to play paddle tennis".',
+    status: 'confirmed',
+    tier: 1,
+    source: 'El Destape',
+    source_url: 'https://www.eldestapeweb.com/politica/operacion-olivos/las-15-reuniones-de-macri-con-un-juez-clave-en-la-persecucion-a-cfk-20214118034',
+  },
+  {
+    id: 'surely-sa-4x-price',
+    claim_es:
+      'SURELY SA (dueño: Mario Montoto, ex-Montonero, padre de Fernanda Raverta ex-ANSES): proveedor único de tobilleras electrónicas a USD 20,25/día vs USD 5/día internacional (4x benchmark).',
+    claim_en:
+      'SURELY SA (owner: Mario Montoto, ex-Montonero, father of Fernanda Raverta ex-ANSES): sole ankle bracelet provider at USD 20.25/day vs USD 5/day international (4x benchmark).',
+    status: 'confirmed',
+    tier: 1,
+    source: 'La Nación',
+    source_url: 'https://www.lanacion.com.ar/politica/polemica-y-denuncias-por-el-contrato-de-tobilleras-electronicas-que-se-encamina-a-ganar-montoto-por-nid27042025/',
+  },
+  {
+    id: 'sturzenegger-99pct-abroad',
+    claim_es:
+      'Sturzenegger: 99% de depósitos en el exterior, salto patrimonial de $970M en 2024, mientras promueve que argentinos traigan dólares al sistema local. Un Ombú SAS: capital mínimo, objeto social ultra-amplio.',
+    claim_en:
+      'Sturzenegger: 99% of deposits abroad, $970M patrimony jump in 2024, while promoting policies encouraging Argentines to bring dollars into local system. Un Ombú SAS: minimal capital, ultra-broad corporate purpose.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Perfil',
+    source_url: 'https://www.perfil.com/noticias/politica/federico-sturzenegger-declaro-un-salto-patrimonial-de-casi-970-millones-en-2024.phtml',
+  },
+  {
+    id: 'consejo-empresario-bridge',
+    claim_es:
+      'Consejo Empresario Argentino actúa como puente oligárquico: conecta a Caputo Nicolás, Mindlin Marcos, Macri Francisco y Werthein Darío en una sola organización.',
+    claim_en:
+      'Consejo Empresario Argentino acts as oligarchic bridge: connects Caputo Nicolás, Mindlin Marcos, Macri Francisco, and Werthein Darío in a single organization.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Neo4j cross-reference',
+    source_url: 'https://www.ceads.org.ar/',
+  },
+  {
+    id: 'belocopitt-pandemic-aid',
+    claim_es:
+      'Swiss Medical recibió $2.417M en subsidios ATP del Estado durante la pandemia, mientras adquiría competidores. Belocopitt cobró parte de su salario via ATP.',
+    claim_en:
+      'Swiss Medical received $2.417B in state ATP subsidies during pandemic, while acquiring competitors. Belocopitt collected part of his salary through ATP.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Chaco Día por Día',
+    source_url: 'https://www.chacodiapordia.com/2021/06/21/swiss-medical-recibio-mas-de-2-400-millones-de-ayuda-estatal-durante-2020/',
+  },
+  {
+    id: 'rosenkrantz-clarin-conflict',
+    claim_es:
+      'Juez Rosenkrantz representó a Grupo Clarín, YPF, Cablevisión como abogado antes de llegar a la Corte. Firmó 25+ fallos involucrando a ex-clientes estando en la Corte. Se excusó en 85 causas, pero no en las de Clarín.',
+    claim_en:
+      'Justice Rosenkrantz represented Grupo Clarín, YPF, Cablevisión as lawyer before joining the Court. Signed 25+ rulings involving former clients while on the Court. Recused from 85 cases, but not Clarín ones.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Infobae',
+    source_url: 'https://www.infobae.com/politica/2020/10/28/carlos-rosenkrantz-se-excuso-de-votar-en-al-menos-85-causas-desde-que-llego-a-la-corte-suprema/',
+  },
+  {
+    id: 'lijo-senate-rejection',
+    claim_es:
+      'Senado rechazó candidatura de Lijo a Corte Suprema: 43 negativos, 27 afirmativos, 1 abstención (3 abril 2025). Primera vez desde 1983 que se rechaza un candidato judicial en el recinto.',
+    claim_en:
+      'Senate rejected Lijo\'s Supreme Court candidacy: 43 against, 27 for, 1 abstention (April 3, 2025). First time since 1983 a judicial candidate was rejected in the chamber.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Infobae',
+    source_url: 'https://www.infobae.com/politica/2025/04/03/con-votos-del-pro-y-el-kirchnerismo-el-senado-rechazo-las-candidaturas-de-ariel-lijo-y-garcia-mansilla-a-la-corte-suprema/',
+  },
 ] as const
 
 // ---------------------------------------------------------------------------
@@ -1019,6 +1314,90 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
       'DNU 941/2025 grants SIDE detention and mass surveillance powers without judicial order. Intelligence reserved funds grew ~2,000% under Milei.',
     category: 'political',
     sources: ['https://chequeado.com'],
+  },
+  {
+    id: 'nucleoelectrica-overpricing',
+    date: '2025-01-27',
+    title_es: 'ATE denuncia sobreprecio de 1.066% en Nucleoeléctrica',
+    title_en: 'ATE denounces 1,066% overpricing at Nucleoeléctrica',
+    description_es:
+      'Sobreprecio de 1.066,7% en sistema SAP S/4HANA: USD 7M por sistema que reemplazaba uno de ~USD 600K.',
+    description_en:
+      '1,066.7% overpricing on SAP S/4HANA system: USD 7M for system replacing one costing ~USD 600K.',
+    category: 'financial',
+    sources: ['https://ate.org.ar/260127-sobreprecio-nasa/'],
+  },
+  {
+    id: 'bachellier-embargo',
+    date: '2026-02-10',
+    title_es: 'Embargo de $9.669M a Bachellier SA',
+    title_en: 'Bachellier SA assets frozen at $9.669B',
+    description_es:
+      'Juez Casanello embargó $9.669M en activos de Bachellier SA. Empresa recibió $1.666M en comisiones de Nación Seguros.',
+    description_en:
+      'Judge Casanello froze $9.669B in Bachellier SA assets. Company received $1.666B in commissions from Nación Seguros.',
+    category: 'legal',
+    sources: ['https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/'],
+  },
+  {
+    id: 'fundacion-faro-launch',
+    date: '2024-11-13',
+    title_es: 'Lanzamiento de Fundación Faro con Milei',
+    title_en: 'Fundación Faro launch with Milei',
+    description_es:
+      'Fundación Faro (ex-Fundación Valorar) lanzada con presencia de Javier y Karina Milei. Cenas de recaudación a $25.000/plato.',
+    description_en:
+      'Fundación Faro (ex-Fundación Valorar) launched with Javier and Karina Milei present. $25,000/plate fundraising dinners.',
+    category: 'political',
+    sources: ['https://chequeado.com/investigaciones/fundacion-faro-el-think-tank-libertario-que-mas-pauta-electoral-puso-en-2025-y-que-no-declara-el-origen-de-sus-fondos/'],
+  },
+  {
+    id: 'afagate-investigation',
+    date: '2025-12-28',
+    title_es: 'Investigación AFAGate: USD 400M desviados',
+    title_en: 'AFAGate investigation: USD 400M diverted',
+    description_es:
+      'La Nación revela USD 400M desviados por sociedades fantasma en Florida desde cuentas de AFA.',
+    description_en:
+      'La Nación reveals USD 400M diverted through Florida shell companies from AFA accounts.',
+    category: 'financial',
+    sources: ['https://www.lanacion.com.ar/politica/investigacion-exclusiva-desde-la-cuenta-que-administra-los-fondos-de-la-afa-en-eeuu-se-desviaron-al-nid28122025/'],
+  },
+  {
+    id: 'cndc-cartel-charge',
+    date: '2024-12-12',
+    title_es: 'CNDC imputa cartelización de prepagas',
+    title_en: 'CNDC charges prepaid health cartel',
+    description_es:
+      'CNDC imputó a Swiss Medical, OSDE, Galeno, Medife, Omint y Belocopitt por cartelización. Aumentos coordinados de ~150% vs ~70% inflación.',
+    description_en:
+      'CNDC charged Swiss Medical, OSDE, Galeno, Medife, Omint, and Belocopitt for cartelization. Coordinated increases of ~150% vs ~70% inflation.',
+    category: 'legal',
+    sources: ['https://www.argentina.gob.ar/noticias/la-cndc-imputa-por-presunta-cartelizacion-las-principales-empresas-de-medicina-prepaga-0'],
+  },
+  {
+    id: 'lijo-senate-rejection',
+    date: '2025-04-03',
+    title_es: 'Senado rechaza candidatura de Lijo a Corte Suprema (43-27)',
+    title_en: 'Senate rejects Lijo Supreme Court candidacy (43-27)',
+    description_es:
+      'Primera vez desde 1983 que se rechaza un candidato judicial en el recinto. 43 negativos, 27 afirmativos, 1 abstención.',
+    description_en:
+      'First time since 1983 a judicial candidate was rejected in the chamber. 43 against, 27 for, 1 abstention.',
+    category: 'legal',
+    sources: ['https://www.infobae.com/politica/2025/04/03/con-votos-del-pro-y-el-kirchnerismo-el-senado-rechazo-las-candidaturas-de-ariel-lijo-y-garcia-mansilla-a-la-corte-suprema/'],
+  },
+  {
+    id: 'dnu-941-intelligence',
+    date: '2025-12-31',
+    title_es: 'DNU 941/2025: reforma sistema de inteligencia',
+    title_en: 'DNU 941/2025: intelligence system reform',
+    description_es:
+      'Milei reestructura sistema de inteligencia. Habilita FFAA en inteligencia interna y capacidad de aprehensión. CELS alerta sobre vigilancia masiva.',
+    description_en:
+      'Milei restructures intelligence system. Enables military in domestic intelligence and apprehension power. CELS alerts about mass surveillance.',
+    category: 'political',
+    sources: ['https://www.infobae.com/politica/2026/01/02/reforma-de-la-side-las-claves-de-la-reestructuracion-del-sistema-de-inteligencia-que-dispuso-milei-por-decreto/'],
   },
 ] as const
 
@@ -1720,6 +2099,84 @@ export const ACTORS: readonly Actor[] = [
     status_en: 'Post-bid cost overruns documented — 40%',
     source_url: 'https://www.tiempoar.com.ar/ta_article/denuncian-a-rubinstein-por-contrataciones-irregulares-por-1400-millones-de-pesos/amp/',
   },
+  {
+    id: 'reidel-demian',
+    name: 'Demian Reidel',
+    role_es: 'Ex-presidente Nucleoeléctrica',
+    role_en: 'Former president Nucleoeléctrica',
+    description_es:
+      'Aliado de Milei. Sobreprecio de 1.066% en sistema SAP. Pagó deudas personales de $880M a Banco Macro en 18 días. Renunció 9/2/2026.',
+    description_en:
+      'Milei ally. 1,066% overpricing on SAP system. Paid personal debts of $880M to Banco Macro in 18 days. Resigned 2/9/2026.',
+    party: 'La Libertad Avanza',
+    datasets: 3,
+    source_url: 'https://www.infobae.com/politica/2026/02/09/demian-reidel-renuncio-a-la-presidencia-de-nucleoelectrica/',
+  },
+  {
+    id: 'tapia-claudio',
+    name: 'Claudio Tapia',
+    role_es: 'Presidente AFA',
+    role_en: 'AFA President',
+    description_es:
+      'AFAGate: ~USD 400M desviados por sociedades fantasma en Florida. $19.353B en impuestos impagos. Citado por fraude y lavado.',
+    description_en:
+      'AFAGate: ~USD 400M diverted through Florida shell companies. $19.353B in unpaid taxes. Summoned for fraud and laundering.',
+    party: 'Independiente',
+    datasets: 2,
+    source_url: 'https://www.lanacion.com.ar/politica/investigacion-exclusiva-desde-la-cuenta-que-administra-los-fondos-de-la-afa-en-eeuu-se-desviaron-al-nid28122025/',
+  },
+  {
+    id: 'montoto-mario',
+    name: 'Mario Montoto',
+    role_es: 'Dueño SURELY SA',
+    role_en: 'Owner SURELY SA',
+    description_es:
+      'Ex-Montonero. Padre de Fernanda Raverta (ex-ANSES). Proveedor único de tobilleras electrónicas a 4x precio internacional.',
+    description_en:
+      'Ex-Montonero. Father of Fernanda Raverta (ex-ANSES). Sole ankle bracelet provider at 4x international price.',
+    party: 'Independiente',
+    datasets: 2,
+    source_url: 'https://www.lanacion.com.ar/politica/polemica-y-denuncias-por-el-contrato-de-tobilleras-electronicas-que-se-encamina-a-ganar-montoto-por-nid27042025/',
+  },
+  {
+    id: 'laje-agustin',
+    name: 'Agustín Laje',
+    role_es: 'Director Ejecutivo Fundación Faro',
+    role_en: 'Executive Director Fundación Faro',
+    description_es:
+      'Operador de dark money de Milei. Fundación gastó $1.079B en publicidad política sin declarar donantes.',
+    description_en:
+      'Milei dark money operator. Foundation spent $1.079B on political ads without disclosing donors.',
+    party: 'La Libertad Avanza',
+    datasets: 2,
+    source_url: 'https://chequeado.com/investigaciones/fundacion-faro-el-think-tank-libertario-que-mas-pauta-electoral-puso-en-2025-y-que-no-declara-el-origen-de-sus-fondos/',
+  },
+  {
+    id: 'bausili-santiago',
+    name: 'Santiago Bausili',
+    role_es: 'Presidente BCRA',
+    role_en: 'BCRA President',
+    description_es:
+      'Ex-Deutsche Bank (9 años). Recibió ~USD 200K de DB mientras era Secretario de Finanzas. Procesado por negociaciones incompatibles.',
+    description_en:
+      'Ex-Deutsche Bank (9 years). Received ~USD 200K from DB while Finance Secretary. Processed for incompatible negotiations.',
+    party: 'La Libertad Avanza',
+    datasets: 3,
+    source_url: 'https://www.pagina12.com.ar/780526-bausili-investigado-por-corrupcion/',
+  },
+  {
+    id: 'pesce-agustin',
+    name: 'Agustín Pesce',
+    role_es: 'Director estatal + directivo privado',
+    role_en: 'State Director + private board member',
+    description_es:
+      'Puerta giratoria: Director gubernamental + directivo de Nación Reaseguros, Red Link, Prisma Medios de Pago, BICE.',
+    description_en:
+      'Revolving door: Government Director + officer of Nación Reaseguros, Red Link, Prisma Medios de Pago, BICE.',
+    party: 'Independiente',
+    datasets: 4,
+    source_url: 'https://www.bcra.gob.ar/',
+  },
 ] as const
 
 // ---------------------------------------------------------------------------
@@ -1913,5 +2370,70 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
     date: '2023',
     source: 'Infobae',
     source_url: 'https://www.infobae.com',
+  },
+  {
+    id: 'afa-tourprodenter',
+    from_label: 'AFA',
+    to_label: 'TourProdEnter LLC (Florida)',
+    amount_ars: 260000000000,
+    description_es:
+      'USD 260M+ desviados de cuentas AFA a LLC en Florida administrada por Erica Gillette',
+    description_en:
+      'USD 260M+ diverted from AFA accounts to Florida LLC administered by Erica Gillette',
+    date: '2020-2025',
+    source: 'La Nación',
+    source_url: 'https://www.lanacion.com.ar/politica/investigacion-exclusiva-desde-la-cuenta-que-administra-los-fondos-de-la-afa-en-eeuu-se-desviaron-al-nid28122025/',
+  },
+  {
+    id: 'bcra-intransferable-bond',
+    from_label: 'BCRA Reservas',
+    to_label: 'Tesoro Nacional (DNU 23/2024)',
+    amount_ars: 3200000000,
+    description_es:
+      'USD 3.200M de reservas BCRA convertidas a letra intransferible a 2038 por decreto de Caputo',
+    description_en:
+      'USD 3.2B BCRA reserves converted to non-transferable letter maturing 2038 by Caputo decree',
+    date: '2024-01-05',
+    source: 'Infobae',
+    source_url: 'https://www.infobae.com/economia/2024/01/05/el-gobierno-tomara-usd-3200-de-las-reservas-del-bcra-para-pagar-vencimientos-de-deuda/',
+  },
+  {
+    id: 'fundacion-faro-ads',
+    from_label: 'Fundación Faro (donantes ocultos)',
+    to_label: 'Meta Platforms (publicidad política)',
+    amount_ars: 1079000000,
+    description_es:
+      '$1.079B en publicidad política en Meta sin declarar origen de fondos',
+    description_en:
+      '$1.079B in political advertising on Meta without disclosing funding source',
+    date: '2025-03',
+    source: 'Chequeado',
+    source_url: 'https://chequeado.com/investigaciones/fundacion-faro-el-think-tank-libertario-que-mas-pauta-electoral-puso-en-2025-y-que-no-declara-el-origen-de-sus-fondos/',
+  },
+  {
+    id: 'andis-drugstores',
+    from_label: 'ANDIS',
+    to_label: 'Droguerías Profarma + Genesis',
+    amount_ars: 37000000000,
+    description_es:
+      '$37.000M a 4 droguerías con sobreprecios de hasta 2.013%',
+    description_en:
+      '$37B to 4 drugstores with markups up to 2,013%',
+    date: '2025-11',
+    source: 'Infobae',
+    source_url: 'https://www.infobae.com/judiciales/2025/11/17/andis-cuatro-droguerias-recibieron-37000-millones-y-vendieron-algunos-medicamentos-al-2000-de-su-valor/',
+  },
+  {
+    id: 'swiss-medical-atp',
+    from_label: 'Estado (ATP/REPRO)',
+    to_label: 'Swiss Medical Group',
+    amount_ars: 2417000000,
+    description_es:
+      '$2.417M en subsidios ATP durante pandemia a Swiss Medical (mientras adquiría competidores)',
+    description_en:
+      '$2.417B in ATP subsidies during pandemic to Swiss Medical (while acquiring competitors)',
+    date: '2020',
+    source: 'Chaco Día por Día',
+    source_url: 'https://www.chacodiapordia.com/2021/06/21/swiss-medical-recibio-mas-de-2-400-millones-de-ayuda-estatal-durante-2020/',
   },
 ] as const
