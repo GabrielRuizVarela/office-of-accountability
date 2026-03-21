@@ -95,7 +95,7 @@ Do not skip verification. Fabricated or dead URLs undermine the entire investiga
 
 #### Widened Net
 
-- **SIDE intelligence**: 2,838% secret fund growth, Santiago Caputo control via proxy appointee Cristian Auguadra.
+- **SIDE intelligence**: ~2,000% secret fund growth, Santiago Caputo control via proxy appointee Cristian Auguadra.
 - **Belocopitt**: Swiss Medical (76%) + Grupo America (40%) + 6 offshore entities + $13M COVID aid.
 - **Health cartel**: PAMI 16x overpricing (anastrozole $13,192 vs $924), Suizo Argentina 2,678% contract growth, pharmaceutical cartel (Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo, ACE Oncologia).
 - **$LIBRA crypto**: $107M insider cashout, Milei promoted, $4B peak, 90% crash, 44,000 victims.

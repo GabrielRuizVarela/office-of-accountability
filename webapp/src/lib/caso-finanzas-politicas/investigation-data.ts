@@ -542,9 +542,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'libra-crypto-scandal',
     claim_es:
-      'El presidente Milei promovió la criptomoneda $LIBRA que alcanzó una capitalización de USD 4B antes de caer 90%. Insiders cobraron USD 107M. En el teléfono del lobbyista Mauricio Novelli se encontró un acuerdo de pago de USD 5M a Milei. Hayden Davis (Kelsier Ventures) tiene activos congelados.',
+      'El presidente Milei promovió la criptomoneda $LIBRA que alcanzó una capitalización de USD 4.5B antes de caer 90%. Insiders cobraron USD 107M. En el teléfono del lobbyista Mauricio Novelli se encontró un acuerdo de pago de USD 5M a Milei. Hayden Davis (Kelsier Ventures) tiene activos congelados.',
     claim_en:
-      'President Milei promoted the $LIBRA cryptocurrency which hit USD 4B market cap before crashing 90%. Insiders cashed out USD 107M. A USD 5M payment agreement to Milei was found on lobbyist Mauricio Novelli\'s phone. Hayden Davis (Kelsier Ventures) has frozen assets.',
+      'President Milei promoted the $LIBRA cryptocurrency which hit USD 4.5B market cap before crashing 90%. Insiders cashed out USD 107M. A USD 5M payment agreement to Milei was found on lobbyist Mauricio Novelli\'s phone. Hayden Davis (Kelsier Ventures) has frozen assets.',
     status: 'confirmed',
     tier: 1,
     source: 'Infobae / Congressional investigation',
@@ -553,9 +553,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'side-2838-growth',
     claim_es:
-      'Los fondos reservados de inteligencia (SIDE) crecieron 2.838% bajo Milei. Santiago Caputo controla la SIDE a través del designado Cristian Auguadra sin ser funcionario público. El DNU 941/2025 otorgó poderes de detención y vigilancia masiva sin orden judicial.',
+      'Los fondos reservados de inteligencia (SIDE) crecieron ~2.000% bajo Milei. Santiago Caputo controla la SIDE a través del designado Cristian Auguadra sin ser funcionario público. El DNU 941/2025 otorgó poderes de detención y vigilancia masiva sin orden judicial.',
     claim_en:
-      'Intelligence reserved funds (SIDE) grew 2,838% under Milei. Santiago Caputo controls SIDE through appointee Cristian Auguadra without being a public official. DNU 941/2025 granted detention and mass surveillance powers without judicial order.',
+      'Intelligence reserved funds (SIDE) grew ~2,000% under Milei. Santiago Caputo controls SIDE through appointee Cristian Auguadra without being a public official. DNU 941/2025 granted detention and mass surveillance powers without judicial order.',
     status: 'confirmed',
     tier: 1,
     source: 'Chequeado / Página/12 / elDiarioAR',
@@ -575,9 +575,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'pami-16x-overpricing',
     claim_es:
-      'PAMI pagó hasta 16 veces el precio de mercado por medicamentos oncológicos en 2023 (anastrozol: $13.192 vs $924 en licitación). Cartel denunciado: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
+      'PAMI pagó hasta 16 veces el precio de mercado por medicamentos oncológicos en 2023 (anastrozol: $13.192 vs $924 en licitación, ~14x). Cartel denunciado: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
     claim_en:
-      'PAMI paid up to 16x market price for oncological drugs in 2023 (anastrozole: $13,192 vs $924 at tender). Cartel complaint: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
+      'PAMI paid up to 16x market price for oncological drugs in 2023 (anastrozole: $13,192 vs $924 at tender, ~14x). Cartel complaint: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
     status: 'confirmed',
     tier: 1,
     source: 'Infobae',
@@ -889,8 +889,8 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     date: '2023',
     title_es: 'PAMI paga 16 veces el precio de mercado por medicamentos oncológicos',
     title_en: 'PAMI pays 16x market price for oncological drugs',
-    description_es: 'PAMI pagó hasta 16 veces el precio de mercado (anastrozol: $13.192 vs $924 en licitación). Cartel denunciado: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
-    description_en: 'PAMI paid up to 16x market price (anastrozole: $13,192 vs $924 at tender). Cartel complaint: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
+    description_es: 'PAMI pagó hasta 16 veces el precio de mercado (anastrozol: $13.192 vs $924 en licitación, ~14x). Cartel denunciado: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
+    description_en: 'PAMI paid up to 16x market price (anastrozole: $13,192 vs $924 at tender, ~14x). Cartel complaint: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncología.',
     category: 'financial',
     sources: ['https://www.infobae.com/politica/2025/01/23/denuncian-al-pami-y-a-un-grupo-de-laboratorios-por-sobreprecios-en-la-compra-de-remedios-oncologicos/'],
   },
@@ -907,8 +907,8 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
   {
     id: 'tl-2025-side-explosion',
     date: '2025',
-    title_es: 'Fondos reservados SIDE crecen 2.838% bajo Milei',
-    title_en: 'SIDE secret funds grow 2,838% under Milei',
+    title_es: 'Fondos reservados SIDE crecen ~2.000% bajo Milei',
+    title_en: 'SIDE secret funds grow ~2,000% under Milei',
     description_es: 'Los fondos reservados de inteligencia crecieron de ARS 3.800M (4,1% del presupuesto en 2023) a ARS 13.400M (19,6% en 2025). Santiago Caputo controla la SIDE a través del designado Cristian Auguadra.',
     description_en: 'Intelligence reserved funds grew from ARS 3.8B (4.1% of budget in 2023) to ARS 13.4B (19.6% in 2025). Santiago Caputo controls SIDE through appointee Cristian Auguadra.',
     category: 'political',
@@ -978,9 +978,9 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     title_es: 'Caso $LIBRA: Milei promueve cripto que colapsa 90%',
     title_en: '$LIBRA case: Milei promotes crypto that crashes 90%',
     description_es:
-      'El presidente Milei promovió la criptomoneda $LIBRA que alcanzó USD 4B de capitalización antes de colapsar 90%. Insiders cobraron USD 107M. Se abrió investigación congresional.',
+      'El presidente Milei promovió la criptomoneda $LIBRA que alcanzó USD 4.5B de capitalización antes de colapsar 90%. Insiders cobraron USD 107M. Se abrió investigación congresional.',
     description_en:
-      'President Milei promoted the $LIBRA cryptocurrency which hit USD 4B market cap before crashing 90%. Insiders cashed out USD 107M. Congressional investigation opened.',
+      'President Milei promoted the $LIBRA cryptocurrency which hit USD 4.5B market cap before crashing 90%. Insiders cashed out USD 107M. Congressional investigation opened.',
     category: 'financial',
     sources: ['https://www.infobae.com'],
   },
@@ -1014,9 +1014,9 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     title_es: 'DNU 941/2025: SIDE obtiene poderes de vigilancia masiva',
     title_en: 'DNU 941/2025: SIDE granted mass surveillance powers',
     description_es:
-      'El DNU 941/2025 otorga a la SIDE poderes de detención y vigilancia masiva sin orden judicial. Los fondos reservados de inteligencia crecieron 2.838% bajo Milei.',
+      'El DNU 941/2025 otorga a la SIDE poderes de detención y vigilancia masiva sin orden judicial. Los fondos reservados de inteligencia crecieron ~2.000% bajo Milei.',
     description_en:
-      'DNU 941/2025 grants SIDE detention and mass surveillance powers without judicial order. Intelligence reserved funds grew 2,838% under Milei.',
+      'DNU 941/2025 grants SIDE detention and mass surveillance powers without judicial order. Intelligence reserved funds grew ~2,000% under Milei.',
     category: 'political',
     sources: ['https://chequeado.com'],
   },
@@ -1394,9 +1394,9 @@ export const ACTORS: readonly Actor[] = [
     role_es: 'Asesor presidencial — Controlador SIDE — sin cargo formal',
     role_en: 'Presidential advisor — SIDE controller — no formal role',
     description_es:
-      'Sobrino segundo de Luis "Toto" Caputo (Ministro de Economía). Controla la SIDE a través del designado Cristian Auguadra sin ser funcionario público. Los fondos reservados de inteligencia crecieron 2.838% bajo su gestión.',
+      'Sobrino segundo de Luis "Toto" Caputo (Ministro de Economía). Controla la SIDE a través del designado Cristian Auguadra sin ser funcionario público. Los fondos reservados de inteligencia crecieron ~2.000% bajo su gestión.',
     description_en:
-      'Second cousin of Luis "Toto" Caputo (Economy Minister). Controls SIDE through appointee Cristian Auguadra without being a public official. Intelligence reserved funds grew 2,838% under his management.',
+      'Second cousin of Luis "Toto" Caputo (Economy Minister). Controls SIDE through appointee Cristian Auguadra without being a public official. Intelligence reserved funds grew ~2,000% under his management.',
     party: 'La Libertad Avanza',
     datasets: 1,
     status_es: 'Control SIDE documentado — sin cargo público formal',
@@ -1681,9 +1681,9 @@ export const ACTORS: readonly Actor[] = [
     role_es: 'Jefe de la SIDE — proxy de Santiago Caputo',
     role_en: 'SIDE head — Santiago Caputo proxy',
     description_es:
-      'Designado jefe de la SIDE (inteligencia). Actúa como proxy de Santiago Caputo. Los fondos reservados de inteligencia crecieron 2.838% bajo su gestión. Sin experiencia previa en inteligencia.',
+      'Designado jefe de la SIDE (inteligencia). Actúa como proxy de Santiago Caputo. Los fondos reservados de inteligencia crecieron ~2.000% bajo su gestión. Sin experiencia previa en inteligencia.',
     description_en:
-      'Appointed SIDE (intelligence) head. Acts as proxy for Santiago Caputo. Intelligence reserved funds grew 2,838% under his management. No prior intelligence experience.',
+      'Appointed SIDE (intelligence) head. Acts as proxy for Santiago Caputo. Intelligence reserved funds grew ~2,000% under his management. No prior intelligence experience.',
     party: 'La Libertad Avanza',
     datasets: 1,
     status_es: 'Fondos reservados +2838% — proxy documentado',
@@ -1733,9 +1733,9 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
     to_label: 'Nación Seguros S.A.',
     amount_ars: 28_500_000_000,
     description_es:
-      'Total de contratos directos (sin licitación) entre el Estado y Nación Seguros bajo el Decreto 823/2021. TODOS los 20 contratos principales son Contratación Directa. Cada ministerio tiene contrato directo.',
+      'Total estimado de contratos directos (sin licitación) entre el Estado y Nación Seguros bajo el Decreto 823/2021. TODOS los 20 contratos principales son Contratación Directa. Cada ministerio tiene contrato directo. Monto exacto no verificable en fuente primaria única; estimación basada en datos de contrataciones + comisiones de brokers.',
     description_en:
-      'Total direct contracts (no tender) between the State and Nación Seguros under Decree 823/2021. ALL top 20 contracts are Direct Contracting. Every ministry has a direct contract.',
+      'Estimated total of direct contracts (no tender) between the State and Nación Seguros under Decree 823/2021. ALL top 20 contracts are Direct Contracting. Every ministry has a direct contract. Exact amount not verifiable from a single primary source; estimate based on procurement data + broker commissions.',
     date: '2020-2024',
     source: 'Datos.gob.ar / Infobae',
     source_url: 'https://datos.gob.ar/dataset/jgm-sistema-contrataciones-electronicas',
@@ -1881,9 +1881,9 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
     to_label: '44,000 victims',
     amount_ars: 0,
     description_es:
-      'Insiders cobraron USD 107M antes del colapso del 90% de $LIBRA. El presidente Milei promovió la criptomoneda que alcanzó USD 4B de capitalización. 44.000 víctimas afectadas.',
+      'Insiders cobraron USD 107M antes del colapso del 90% de $LIBRA. El presidente Milei promovió la criptomoneda que alcanzó USD 4.5B de capitalización. 44.000 víctimas afectadas.',
     description_en:
-      'Insiders cashed out USD 107M before the 90% crash of $LIBRA. President Milei promoted the cryptocurrency which hit USD 4B market cap. 44,000 victims affected.',
+      'Insiders cashed out USD 107M before the 90% crash of $LIBRA. President Milei promoted the cryptocurrency which hit USD 4.5B market cap. 44,000 victims affected.',
     date: '2025-02',
     source: 'Infobae / Congressional investigation',
     source_url: 'https://www.infobae.com',
@@ -1894,9 +1894,9 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
     to_label: 'SIDE fondos reservados',
     amount_ars: 13_400_000_000,
     description_es:
-      'Los fondos reservados de inteligencia crecieron 2.838% bajo Milei. Santiago Caputo controla la SIDE a través del designado Cristian Auguadra sin cargo público formal.',
+      'Los fondos reservados de inteligencia crecieron ~2.000% bajo Milei. Santiago Caputo controla la SIDE a través del designado Cristian Auguadra sin cargo público formal.',
     description_en:
-      'Intelligence reserved funds grew 2,838% under Milei. Santiago Caputo controls SIDE through appointee Cristian Auguadra without a formal public role.',
+      'Intelligence reserved funds grew ~2,000% under Milei. Santiago Caputo controls SIDE through appointee Cristian Auguadra without a formal public role.',
     date: '2024-2025',
     source: 'Chequeado / Página/12 / elDiarioAR',
     source_url: 'https://chequeado.com',
