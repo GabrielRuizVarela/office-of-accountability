@@ -1,22 +1,30 @@
 /**
- * Caso Libra Cypher queries — graph, timeline, actor, and document queries.
+ * Caso Libra queries — delegates to generic InvestigationQueryBuilder.
  *
- * All queries use parameterized Cypher via readQuery from lib/neo4j/client.
- * Never interpolate user input into the cypher string.
+ * Standard queries (graph, timeline, stats, actors, documents) delegate
+ * directly to the query builder. Case-specific queries (wallet flows,
+ * person detail, document detail) use parameterized Cypher with generic
+ * labels + caso_slug filtering.
  */
 
 import { type Record as Neo4jRecord, type Node, type Relationship } from 'neo4j-driver-lite'
 
 import { getDriver } from '../neo4j/client'
-import type { GraphData } from '../neo4j/types'
 import { transformNode, transformRelationship } from '../graph/transform'
+import type { GraphData } from '../neo4j/types'
+import { getQueryBuilder } from '../investigations/query-builder'
+import type {
+  GraphData as InvestigationGraphData,
+  InvestigationStats,
+} from '../investigations/types'
 
-import type { TimelineItem, CasoLibraStats, EventType } from './types'
+import type { TimelineItem, EventType } from './types'
 
 // ---------------------------------------------------------------------------
 // Constants
 // ---------------------------------------------------------------------------
 
+const CASO_LIBRA_SLUG = 'caso-libra' as const
 const QUERY_TIMEOUT_MS = 15_000
 const TX_CONFIG = { timeout: QUERY_TIMEOUT_MS }
 
@@ -28,85 +36,22 @@ function asString(value: unknown): string {
   return typeof value === 'string' ? value : ''
 }
 
-function asNumber(value: unknown): number {
-  if (typeof value === 'number') return value
-  if (value && typeof value === 'object' && 'toNumber' in value) {
-    return (value as { toNumber: () => number }).toNumber()
-  }
-  return 0
+// ---------------------------------------------------------------------------
+// Query builder shorthand
+// ---------------------------------------------------------------------------
+
+const qb = () => getQueryBuilder()
+
+// ---------------------------------------------------------------------------
+// Full investigation graph (delegates to query builder)
+// ---------------------------------------------------------------------------
+
+export async function getInvestigationGraph(): Promise<InvestigationGraphData> {
+  return qb().getGraph(CASO_LIBRA_SLUG)
 }
 
 // ---------------------------------------------------------------------------
-// Full investigation graph
-// ---------------------------------------------------------------------------
-
-/**
- * Fetch the full knowledge graph for the Caso Libra investigation.
- * Returns all nodes (Person, Event, Document, WalletAddress, Organization, Token)
- * and all relationships between them.
- */
-export async function getInvestigationGraph(): Promise<GraphData> {
-  const session = getDriver().session()
-
-  try {
-    const result = await session.run(
-      `MATCH (n)
-       WHERE n:CasoLibraPerson OR n:CasoLibraEvent OR n:CasoLibraDocument
-          OR n:CasoLibraWallet OR n:CasoLibraOrganization OR n:CasoLibraToken
-       WITH collect(n) AS nodes
-       UNWIND nodes AS a
-       OPTIONAL MATCH (a)-[r]-(b)
-       WHERE b IN nodes
-       RETURN collect(DISTINCT a) AS allNodes,
-              collect(DISTINCT r) AS allRels`,
-      {},
-      TX_CONFIG,
-    )
-
-    if (result.records.length === 0) {
-      return { nodes: [], links: [] }
-    }
-
-    const record = result.records[0]
-    const rawNodes = record.get('allNodes') as Node[]
-    const rawRels = (record.get('allRels') as (Relationship | null)[]).filter(
-      (r): r is Relationship => r !== null,
-    )
-
-    const nodeMap = new Map<string, ReturnType<typeof transformNode>>()
-    const elementIdToAppId = new Map<string, string>()
-
-    for (const node of rawNodes) {
-      const graphNode = transformNode(node)
-      nodeMap.set(graphNode.id, graphNode)
-      elementIdToAppId.set(node.elementId, graphNode.id)
-    }
-
-    const seenRelIds = new Set<string>()
-    const links = rawRels
-      .filter((rel) => {
-        if (seenRelIds.has(rel.elementId)) return false
-        seenRelIds.add(rel.elementId)
-        return true
-      })
-      .map((rel) => {
-        const sourceId = elementIdToAppId.get(rel.startNodeElementId) ?? ''
-        const targetId = elementIdToAppId.get(rel.endNodeElementId) ?? ''
-        return transformRelationship(rel, sourceId, targetId)
-      })
-      .filter((link) => link.source && link.target)
-
-    return {
-      nodes: [...nodeMap.values()],
-      links,
-    }
-  } finally {
-    await session.close()
-  }
-}
-
-// ---------------------------------------------------------------------------
-// Wallet flow subgraph
+// Wallet flow subgraph (case-specific — uses generic Wallet label + caso_slug)
 // ---------------------------------------------------------------------------
 
 /**
@@ -117,10 +62,10 @@ export async function getWalletFlows(): Promise<GraphData> {
 
   try {
     const result = await session.run(
-      `MATCH (w1:CasoLibraWallet)-[r:SENT]->(w2:CasoLibraWallet)
+      `MATCH (w1:Wallet {caso_slug: $casoSlug})-[r:SENT]->(w2:Wallet {caso_slug: $casoSlug})
        RETURN collect(DISTINCT w1) + collect(DISTINCT w2) AS wallets,
               collect(r) AS txs`,
-      {},
+      { casoSlug: CASO_LIBRA_SLUG },
       TX_CONFIG,
     )
 
@@ -159,54 +104,29 @@ export async function getWalletFlows(): Promise<GraphData> {
 }
 
 // ---------------------------------------------------------------------------
-// Timeline
+// Timeline (delegates to query builder, maps to caso-libra TimelineItem shape)
 // ---------------------------------------------------------------------------
 
-/**
- * Fetch events ordered by date, with linked actors.
- */
 export async function getTimeline(): Promise<readonly TimelineItem[]> {
-  const session = getDriver().session()
-
-  try {
-    const result = await session.run(
-      `MATCH (e:CasoLibraEvent)
-       OPTIONAL MATCH (p:CasoLibraPerson)-[:PARTICIPATED_IN]->(e)
-       WITH e, collect({ id: p.id, name: p.name }) AS actors
-       RETURN e, actors
-       ORDER BY e.date ASC`,
-      {},
-      TX_CONFIG,
-    )
-
-    return result.records.map((record: Neo4jRecord) => {
-      const node = record.get('e') as Node
-      const props = node.properties
-      const actors = (record.get('actors') as readonly { id: unknown; name: unknown }[])
-        .filter((a) => typeof a.id === 'string')
-        .map((a) => ({ id: asString(a.id), name: asString(a.name) }))
-
-      return {
-        id: asString(props.id),
-        title: asString(props.title),
-        description: asString(props.description),
-        date: asString(props.date),
-        event_type: asString(props.event_type) as EventType,
-        source_url: props.source_url ? asString(props.source_url) : null,
-        actors,
-      }
-    })
-  } finally {
-    await session.close()
-  }
+  const items = await qb().getTimeline(CASO_LIBRA_SLUG)
+  return items.map((item) => ({
+    id: item.id,
+    title: typeof item.title === 'string' ? item.title : item.title.es ?? item.title.en ?? '',
+    description: typeof item.description === 'string' ? item.description : item.description.es ?? item.description.en ?? '',
+    date: item.date,
+    event_type: (item.category ?? '') as EventType,
+    source_url: item.source_url ?? null,
+    actors: item.actors ?? [],
+  }))
 }
 
 // ---------------------------------------------------------------------------
-// Person queries
+// Person detail (case-specific — keeps backward-compat return shape)
 // ---------------------------------------------------------------------------
 
 /**
  * Fetch a person by slug with their connections subgraph.
+ * Uses generic labels with caso_slug filtering.
  */
 export async function getPersonBySlug(slug: string): Promise<{
   readonly person: Record<string, unknown>
@@ -223,9 +143,9 @@ export async function getPersonBySlug(slug: string): Promise<{
   try {
     // Fetch the person node
     const personResult = await session.run(
-      `MATCH (p:CasoLibraPerson { slug: $slug })
+      `MATCH (p:Person { slug: $slug, caso_slug: $casoSlug })
        RETURN p`,
-      { slug },
+      { slug, casoSlug: CASO_LIBRA_SLUG },
       TX_CONFIG,
     )
 
@@ -236,10 +156,11 @@ export async function getPersonBySlug(slug: string): Promise<{
 
     // Fetch connections
     const connectionsResult = await session.run(
-      `MATCH (p:CasoLibraPerson { slug: $slug })-[r]-(neighbor)
+      `MATCH (p:Person { slug: $slug, caso_slug: $casoSlug })-[r]-(neighbor)
+       WHERE neighbor.caso_slug = $casoSlug
        RETURN neighbor, r
        LIMIT 100`,
-      { slug },
+      { slug, casoSlug: CASO_LIBRA_SLUG },
       TX_CONFIG,
     )
 
@@ -264,10 +185,10 @@ export async function getPersonBySlug(slug: string): Promise<{
 
     // Fetch events
     const eventsResult = await session.run(
-      `MATCH (p:CasoLibraPerson { slug: $slug })-[:PARTICIPATED_IN]->(e:CasoLibraEvent)
+      `MATCH (p:Person { slug: $slug, caso_slug: $casoSlug })-[:PARTICIPATED_IN]->(e:Event {caso_slug: $casoSlug})
        RETURN e
        ORDER BY e.date ASC`,
-      { slug },
+      { slug, casoSlug: CASO_LIBRA_SLUG },
       TX_CONFIG,
     )
 
@@ -287,9 +208,9 @@ export async function getPersonBySlug(slug: string): Promise<{
 
     // Fetch related documents
     const docsResult = await session.run(
-      `MATCH (d:CasoLibraDocument)-[:MENTIONS]->(p:CasoLibraPerson { slug: $slug })
+      `MATCH (d:Document {caso_slug: $casoSlug})-[:MENTIONS]->(p:Person { slug: $slug, caso_slug: $casoSlug })
        RETURN d.id AS id, d.title AS title, d.slug AS slug`,
-      { slug },
+      { slug, casoSlug: CASO_LIBRA_SLUG },
       TX_CONFIG,
     )
 
@@ -310,68 +231,31 @@ export async function getPersonBySlug(slug: string): Promise<{
   }
 }
 
-/**
- * Fetch all actors in the investigation.
- */
+// ---------------------------------------------------------------------------
+// Actors (delegates to query builder, maps to Record shape for backward compat)
+// ---------------------------------------------------------------------------
+
 export async function getActors(): Promise<readonly Record<string, unknown>[]> {
-  const session = getDriver().session()
-
-  try {
-    const result = await session.run(
-      `MATCH (p:CasoLibraPerson)
-       RETURN p
-       ORDER BY p.name ASC`,
-      {},
-      TX_CONFIG,
-    )
-
-    return result.records.map((record: Neo4jRecord) => {
-      const node = record.get('p') as Node
-      const props: Record<string, unknown> = {}
-      for (const [key, value] of Object.entries(node.properties)) {
-        props[key] = value
-      }
-      return props
-    })
-  } finally {
-    await session.close()
-  }
+  const nodes = await qb().getNodesByType(CASO_LIBRA_SLUG, 'Person')
+  return nodes.map((n) => n.properties)
 }
 
 // ---------------------------------------------------------------------------
-// Document queries
+// Documents (delegates to query builder, maps to Record shape for backward compat)
 // ---------------------------------------------------------------------------
 
-/**
- * Fetch all documents in the investigation.
- */
 export async function getDocuments(): Promise<readonly Record<string, unknown>[]> {
-  const session = getDriver().session()
-
-  try {
-    const result = await session.run(
-      `MATCH (d:CasoLibraDocument)
-       RETURN d
-       ORDER BY d.date_published DESC`,
-      {},
-      TX_CONFIG,
-    )
-
-    return result.records.map((record: Neo4jRecord) => {
-      const node = record.get('d') as Node
-      const props: Record<string, unknown> = {}
-      for (const [key, value] of Object.entries(node.properties)) {
-        props[key] = value
-      }
-      return props
-    })
-  } finally {
-    await session.close()
-  }
+  const nodes = await qb().getNodesByType(CASO_LIBRA_SLUG, 'Document')
+  return nodes.map((n) => n.properties)
 }
+
+// ---------------------------------------------------------------------------
+// Document detail (case-specific — keeps backward-compat return shape)
+// ---------------------------------------------------------------------------
 
 /**
  * Fetch a document by slug with connected entities.
+ * Uses generic labels with caso_slug filtering.
  */
 export async function getDocumentBySlug(slug: string): Promise<{
   readonly document: Record<string, unknown>
@@ -385,10 +269,10 @@ export async function getDocumentBySlug(slug: string): Promise<{
 
   try {
     const result = await session.run(
-      `MATCH (d:CasoLibraDocument { slug: $slug })
-       OPTIONAL MATCH (d)-[:MENTIONS]->(entity)
+      `MATCH (d:Document { slug: $slug, caso_slug: $casoSlug })
+       OPTIONAL MATCH (d)-[:MENTIONS]->(entity {caso_slug: $casoSlug})
        RETURN d, collect({ id: entity.id, name: COALESCE(entity.name, entity.symbol, entity.address), type: labels(entity)[0] }) AS entities`,
-      { slug },
+      { slug, casoSlug: CASO_LIBRA_SLUG },
       TX_CONFIG,
     )
 
@@ -418,46 +302,9 @@ export async function getDocumentBySlug(slug: string): Promise<{
 }
 
 // ---------------------------------------------------------------------------
-// Stats
+// Stats (delegates to query builder)
 // ---------------------------------------------------------------------------
 
-/**
- * Fetch aggregate stats for the investigation landing page.
- */
-export async function getStats(): Promise<CasoLibraStats> {
-  const session = getDriver().session()
-
-  try {
-    const result = await session.run(
-      `MATCH (p:CasoLibraPerson) WITH count(p) AS actorCount
-       MATCH (e:CasoLibraEvent) WITH actorCount, count(e) AS eventCount
-       MATCH (d:CasoLibraDocument) WITH actorCount, eventCount, count(d) AS documentCount
-       RETURN actorCount, eventCount, documentCount`,
-      {},
-      TX_CONFIG,
-    )
-
-    if (result.records.length === 0) {
-      return {
-        totalLossUsd: '$251M+',
-        affectedWallets: '114,000+',
-        priceDrop: '94%',
-        actorCount: 0,
-        eventCount: 0,
-        documentCount: 0,
-      }
-    }
-
-    const record = result.records[0]
-    return {
-      totalLossUsd: '$251M+',
-      affectedWallets: '114,000+',
-      priceDrop: '94%',
-      actorCount: asNumber(record.get('actorCount')),
-      eventCount: asNumber(record.get('eventCount')),
-      documentCount: asNumber(record.get('documentCount')),
-    }
-  } finally {
-    await session.close()
-  }
+export async function getStats(): Promise<InvestigationStats> {
+  return qb().getStats(CASO_LIBRA_SLUG)
 }
