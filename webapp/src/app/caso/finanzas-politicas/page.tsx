@@ -57,8 +57,8 @@ const t = {
   },
   moneyTitle: { en: 'The Money', es: 'El Dinero' },
   moneyDesc: {
-    en: '$674B ARS in procurement tracked. Nacion Seguros monopoly, $3.5B broker commissions, PAMI 16x drug overpricing, SIDE 2,838% secret fund growth, $LIBRA $107M insider cashout.',
-    es: '$674 mil millones ARS en contrataciones rastreadas. Monopolio de Nacion Seguros, $3.5B en comisiones de brokers, sobreprecio PAMI 16x, crecimiento de fondos reservados SIDE 2.838%, cashout $LIBRA $107M.',
+    en: '$674B ARS in procurement tracked. Nacion Seguros monopoly, $3.5B broker commissions, PAMI 16x drug overpricing, SIDE ~2,000% secret fund growth, $LIBRA $107M insider cashout.',
+    es: '$674 mil millones ARS en contrataciones rastreadas. Monopolio de Nacion Seguros, $3.5B en comisiones de brokers, sobreprecio PAMI 16x, crecimiento de fondos reservados SIDE ~2.000%, cashout $LIBRA $107M.',
   },
   connectionsTitle: { en: 'Connections', es: 'Conexiones' },
   connectionsDesc: {
