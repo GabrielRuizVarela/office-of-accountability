@@ -453,9 +453,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'lijo-supreme-court',
     claim_es:
-      'El juez Ariel Lijo fue nombrado a la Corte Suprema por decreto 137/2025, eludiendo el rechazo del Senado (43-27). Maneja la causa Correo Argentino contra la familia Macri. Tiene 89 causas de corrupción con solo 14 elevadas a juicio. Vive en un departamento de USD 2M no declarado en su DDJJ.',
+      'El juez Ariel Lijo fue nombrado a la Corte Suprema por decreto 137/2025, eludiendo el rechazo del Senado (43 en contra, 27 a favor, 1 abstención). Maneja la causa Correo Argentino contra la familia Macri. Tiene 89 causas de corrupción con solo 14 elevadas a juicio. Vive en un departamento de USD 2M no declarado en su DDJJ.',
     claim_en:
-      'Judge Ariel Lijo was appointed to the Supreme Court by decree 137/2025, bypassing Senate rejection (43-27). He handles the Correo Argentino case against the Macri family. Has 89 corruption cases with only 14 sent to trial. Lives in a USD 2M apartment not declared in his sworn assets.',
+      'Judge Ariel Lijo was appointed to the Supreme Court by decree 137/2025, bypassing Senate rejection (43 against, 27 for, 1 abstention). He handles the Correo Argentino case against the Macri family. Has 89 corruption cases with only 14 sent to trial. Lives in a USD 2M apartment not declared in his sworn assets.',
     status: 'confirmed',
     tier: 1,
     source: 'Infobae / ACIJ',
@@ -517,12 +517,12 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: '2pct-conviction-rate',
     claim_es:
-      'Según auditoría de la propia Corte Suprema, la tasa de condena por corrupción en Argentina es del 2%. El 98% de las causas prescriben, se archivan o terminan en absolución.',
+      'Según el Cuerpo de Auditores del Consejo de la Magistratura de la Nación, la tasa de condena por corrupción en Argentina es del 2%. El 98% de las causas prescriben, se archivan o terminan en absolución.',
     claim_en:
-      'According to the Supreme Court\'s own audit, Argentina\'s corruption conviction rate is 2%. 98% of cases expire, are archived, or end in acquittal.',
+      'According to the Auditors Body of the Consejo de la Magistratura, Argentina\'s corruption conviction rate is 2%. 98% of cases expire, are archived, or end in acquittal.',
     status: 'confirmed',
     tier: 1,
-    source: 'Corte Suprema / Chequeado',
+    source: 'Cuerpo de Auditores del Consejo de la Magistratura / Chequeado',
     source_url: 'https://chequeado.com',
   },
 ] as const
@@ -781,9 +781,9 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     title_es: 'Milei nombra a Lijo a Corte Suprema por decreto 137/2025',
     title_en: 'Milei appoints Lijo to Supreme Court by decree 137/2025',
     description_es:
-      'El presidente Milei nombra al juez Ariel Lijo a la Corte Suprema por decreto 137/2025, eludiendo el rechazo del Senado (43-27). Lijo maneja la causa Correo Argentino y tiene 89 causas de corrupción con solo 14 elevadas a juicio.',
+      'El presidente Milei nombra al juez Ariel Lijo a la Corte Suprema por decreto 137/2025, eludiendo el rechazo del Senado (43 en contra, 27 a favor, 1 abstención). Lijo maneja la causa Correo Argentino y tiene 89 causas de corrupción con solo 14 elevadas a juicio.',
     description_en:
-      'President Milei appoints Judge Ariel Lijo to the Supreme Court by decree 137/2025, bypassing Senate rejection (43-27). Lijo handles the Correo Argentino case and has 89 corruption cases with only 14 sent to trial.',
+      'President Milei appoints Judge Ariel Lijo to the Supreme Court by decree 137/2025, bypassing Senate rejection (43 against, 27 for, 1 abstention). Lijo handles the Correo Argentino case and has 89 corruption cases with only 14 sent to trial.',
     category: 'political',
     sources: ['https://www.infobae.com/politica/2025/02/14/milei-nombro-a-ariel-lijo-en-la-corte-suprema-por-decreto/'],
   },
@@ -1006,9 +1006,9 @@ export const ACTORS: readonly Actor[] = [
     role_es: 'Poder Judicial — Corte Suprema (decreto) — 3 datasets',
     role_en: 'Judiciary — Supreme Court (by decree) — 3 datasets',
     description_es:
-      'Nombrado a la Corte Suprema por decreto 137/2025, eludiendo rechazo del Senado (43-27). Maneja la causa Correo Argentino contra la familia Macri. 89 causas de corrupción con solo 14 elevadas a juicio. Vive en departamento de USD 2M no declarado en DDJJ.',
+      'Nombrado a la Corte Suprema por decreto 137/2025, eludiendo rechazo del Senado (43 en contra, 27 a favor, 1 abstención). Maneja la causa Correo Argentino contra la familia Macri. 89 causas de corrupción con solo 14 elevadas a juicio. Vive en departamento de USD 2M no declarado en DDJJ.',
     description_en:
-      'Appointed to the Supreme Court by decree 137/2025, bypassing Senate rejection (43-27). Handles the Correo Argentino case against the Macri family. 89 corruption cases with only 14 sent to trial. Lives in a USD 2M apartment not declared in sworn assets.',
+      'Appointed to the Supreme Court by decree 137/2025, bypassing Senate rejection (43 against, 27 for, 1 abstention). Handles the Correo Argentino case against the Macri family. 89 corruption cases with only 14 sent to trial. Lives in a USD 2M apartment not declared in sworn assets.',
     party: 'Poder Judicial',
     datasets: 3,
     status_es: 'Designación por decreto — conflictos documentados',
