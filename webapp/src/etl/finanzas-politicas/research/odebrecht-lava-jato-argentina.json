@@ -1,0 +1,546 @@
+{
+  "investigation": "finanzas-politicas",
+  "wave": 2,
+  "title": "Odebrecht / Lava Jato — Argentina Corruption Map",
+  "date": "2026-03-21",
+  "summary": "Between 2007 and 2014, Brazilian construction giant Odebrecht paid at least USD 35 million in bribes to Argentine government officials and intermediaries, obtaining approximately USD 278 million in benefits across at least three major infrastructure projects. The corruption scheme was exposed through Brazil's Lava Jato investigation and Odebrecht's December 2016 guilty plea in New York. Argentine judicial proceedings remain largely stalled, with only the AySA branch reaching oral trial stage as of 2025.",
+
+  "total_bribes_confessed": {
+    "amount_usd": 35000000,
+    "period": "2007-2014",
+    "benefits_obtained_usd": 278000000,
+    "confession_date": "2016-12-21",
+    "confession_venue": "US District Court, Eastern District of New York",
+    "legal_basis": "Odebrecht and Braskem guilty plea — violation of Foreign Corrupt Practices Act",
+    "sources": [
+      {
+        "title": "Odebrecht reconoció el pago de sobornos en Argentina por USD 35 millones",
+        "url": "https://www.infobae.com/economia/2016/12/21/odebrecht-reconocio-el-pago-de-sobornos-en-argentina-por-usd-35-millones/"
+      },
+      {
+        "title": "Odebrecht admitió que pagó u$s 35 millones en coimas en la Argentina",
+        "url": "https://www.cronista.com/economia-politica/Odebrecht-admitio-que-pago-us-35-millones-en-coimas-en-la-Argentina-20161221-0114.html"
+      },
+      {
+        "title": "Odebrecht, la constructora más grande de Brasil, reconoció el pago de sobornos en la Argentina",
+        "url": "https://www.lanacion.com.ar/economia/odebrecht-la-constructora-mas-grande-de-brasil-reconocio-el-pago-de-sobornos-en-la-argentina-nid1969309/"
+      }
+    ]
+  },
+
+  "projects": [
+    {
+      "id": "soterramiento-sarmiento",
+      "name": "Soterramiento del Ferrocarril Sarmiento",
+      "description": "Underground burial of the Sarmiento commuter rail line in Buenos Aires. Awarded January 2008 to Consorcio Nuevo Sarmiento. Total investment ~USD 1,500 million. Work paralyzed, never completed.",
+      "consortium": {
+        "name": "Consorcio Nuevo Sarmiento",
+        "members": [
+          { "company": "Odebrecht (Norberto Odebrecht S.A.)", "share_pct": 30, "nationality": "Brazil" },
+          { "company": "IECSA S.A.", "share_pct": 30, "nationality": "Argentina", "controller": "Ángelo Calcaterra (until 2013)" },
+          { "company": "Ghella S.p.A.", "share_pct": 30, "nationality": "Italy" },
+          { "company": "Comsa S.A.", "share_pct": 10, "nationality": "Spain" }
+        ]
+      },
+      "bribes_estimated_usd": 20000000,
+      "bribe_mechanism": "Fictitious contract for 'technical assistance services' with a Spanish company. USD 10.3 million invoiced, of which USD 4.5 million were transferred to Andorra and used for bribery payments.",
+      "fiscal_note": "Government of Macri paid USD 759 million for this project between reactivation in 2016 and paralysis in 2018.",
+      "judicial_status": "Investigation stage — 50 businessmen, executives, former officials and advisors questioned. Supreme Court upheld use of Lava Jato evidence (Sept 2025). No convictions.",
+      "sources": [
+        {
+          "title": "Soterramiento del Sarmiento: cómo fue la maniobra de Iecsa y Odebrecht para desviar fondos y pagar coimas",
+          "url": "https://www.pagina12.com.ar/247420-soterramiento-del-sarmiento-como-fue-la-maniobra-de-iecsa-y-/"
+        },
+        {
+          "title": "Soterramiento del Sarmiento: fiscal ratificó coima de u$s4 millones",
+          "url": "https://www.ambito.com/politica/odebrecht/soterramiento-del-sarmiento-fiscal-ratifico-que-existio-una-coima-us4-millones-y-trazo-la-ruta-del-dinero-que-apunta-calcaterra-n5082656"
+        },
+        {
+          "title": "La Corte Suprema dejó firme el uso de pruebas del Lava Jato en la causa por el soterramiento del tren Sarmiento",
+          "url": "https://www.infobae.com/judiciales/2025/09/30/la-corte-suprema-dejo-firme-el-uso-de-pruebas-del-lava-jato-en-la-causa-por-el-soterramiento-del-tren-sarmiento/"
+        },
+        {
+          "title": "Odebrecht en Argentina: demandas cruzadas y el caso del soterramiento del Sarmiento en un limbo",
+          "url": "https://www.eldiarioar.com/politica/odebrecht-argentina-demandas-cruzadas-caso-soterramiento-sarmiento-limbo_1_9666322.html"
+        }
+      ]
+    },
+    {
+      "id": "aysa-plantas",
+      "name": "Plantas Potabilizadoras AySA (Paraná de las Palmas + Berazategui)",
+      "description": "Two water treatment plants for Agua y Saneamientos Argentinos (AySA): the Paraná de las Palmas potabilization plant in Tigre and the Berazategui purification plant. Bidding process in 2007, suspected of manipulation.",
+      "consortium_parana": {
+        "members": [
+          { "company": "Odebrecht S.A. (Argentine Branch)", "nationality": "Brazil" },
+          { "company": "Benito Roggio e Hijos S.A.", "nationality": "Argentina" },
+          { "company": "Supercemento SAIC", "nationality": "Argentina" },
+          { "company": "José Cartellone Construcciones Civiles S.A.", "nationality": "Argentina" }
+        ]
+      },
+      "consortium_berazategui": {
+        "members": [
+          { "company": "Camargo Correa (Argentine Branch)", "nationality": "Brazil" },
+          { "company": "Esuco S.A.", "nationality": "Argentina" }
+        ]
+      },
+      "bribes_estimated_usd": 14000000,
+      "bribe_mechanism": "AySA authorities manipulated bidding processes to benefit participating companies through illicit payments that resulted in disadvantageous contractual conditions for the state.",
+      "embargo_ars": 511000000,
+      "judicial_status": "Elevated to oral trial (2019). Oral debate scheduled to begin April 7, 2025. 290 witnesses, ~30 defendants. Judges: Enrique Méndez Signori, Fernando Canero, Germán Castelli. Prosecutor: Fabiana León.",
+      "sources": [
+        {
+          "title": "Juez procesó a De Vido, López y Baratta por cohecho pasivo — Procuraduría de Investigaciones Administrativas",
+          "url": "https://www.mpf.gob.ar/pia/en-una-de-las-derivaciones-del-caso-odebrecht-en-la-argentina-en-la-que-la-procuraduria-de-investigaciones-administrativas-brindo-colaboracion-al-fiscal-del-caso-el-juez-federal-sebastian-casanello-p/"
+        },
+        {
+          "title": "Confirmaron los procesamientos por las coimas en Odebrecht-Aysa",
+          "url": "https://www.infobae.com/politica/2019/08/30/confirmaron-los-procesamientos-por-las-coimas-en-odebrecht-aysa/"
+        },
+        {
+          "title": "Odebrecht pagó coimas por US$ 14 millones para ganar un contrato de AySA",
+          "url": "http://www.lanacion.com.ar/2048882-odebrecht-pago-coimas-por-us-14-millones-para-ganar-un-contrato-de-aysa"
+        },
+        {
+          "title": "Causa Odebrecht: la Corte Suprema dejó firme la actualización del embargo",
+          "url": "https://www.infobae.com/judiciales/2025/04/30/causa-odebrecht-la-corte-suprema-dejo-firme-la-actualizacion-del-embargo-sobre-la-firma-constructora/"
+        }
+      ]
+    },
+    {
+      "id": "gasoductos",
+      "name": "Ampliación de Gasoductos Troncales (TGN + TGS / GNEA)",
+      "description": "Expansion of trunk gas pipeline networks (north and south). The GNEA (Gasoducto del Nordeste Argentino) was designed to import Bolivian gas. Awarded with 77% overpricing. State spent USD 2,300 million (double original budget). Project abandoned in 2018 after a decade unfinished.",
+      "bribes_confessed_usd": 25000000,
+      "overpricing_usd": 300000000,
+      "overpricing_detail": "Adjudication price USD 58/meter-inch vs. World Bank reference USD 35/meter-inch. Segment EPC8 in Chaco awarded 27% above official budget without justification.",
+      "bribe_mechanism": "Odebrecht contacted local intermediary Carlos Wagner who explained money was needed to pay bribes to officials. Private bidding called through Cammesa directed from the beginning to award to Odebrecht. Memorandum of understanding between company and Energy Secretariat before bidding.",
+      "bribe_records": {
+        "codename": "Dutos Argentina",
+        "payments_found": 18,
+        "total_in_spreadsheets_usd": 900000,
+        "individual_payment_range_usd": "45,000 - 60,000",
+        "note": "These are only recorded payments from internal spreadsheets; total confessed bribes for this project were USD 25 million"
+      },
+      "judicial_status": "Investigation stage — split in two branches. Supreme Court rejected statute of limitations request (Sept 2025). Casación dismissed prescription in March 2026. Investigation remains open.",
+      "sources": [
+        {
+          "title": "Odebrecht confesó coimas de US$25 millones por los gasoductos",
+          "url": "https://www.lanacion.com.ar/2131630-odebrecht-confeso-coimas-de-us25-millones-por-los-gasoductos"
+        },
+        {
+          "title": "El Gasoducto del NEA se adjudicó con un sobreprecio del 77%",
+          "url": "https://www.periodicolea.com.ar/2017/07/24/el-gasoducto-del-nea-se-adjudico-con-un-sobreprecio-del-77/"
+        },
+        {
+          "title": "Lava Jato en la Argentina: constructoras con sobreprecios de US$ 300 millones",
+          "url": "https://www.connectas.org/lava-jato-en-la-argentina-las-constructoras-sospechadas-ganaron-contratos-con-sobreprecios-de-us-300-millones/"
+        },
+        {
+          "title": "Caso Odebrecht: la investigación por coimas en gasoductos seguirá abierta",
+          "url": "https://www.infobae.com/judiciales/2025/09/24/caso-odebrecht-la-investigacion-por-coimas-en-gasoductos-seguira-abierta-pese-a-un-nuevo-pedido-de-cierre/"
+        },
+        {
+          "title": "Procesaron a De Vido y Cameron por favorecer a Odebrecht en obras de dos gasoductos",
+          "url": "https://www.lanacion.com.ar/politica/procesaron-a-julio-de-vido-y-daniel-cameron-en-una-causa-contra-odebrecht-nid2122166/"
+        }
+      ]
+    }
+  ],
+
+  "persons_implicated": [
+    {
+      "name": "Julio De Vido",
+      "role": "Ministro de Planificación Federal (2003-2015)",
+      "government": "Kirchner / Fernández de Kirchner",
+      "charges": "Cohecho pasivo (passive bribery), fraudulent administration",
+      "projects_linked": ["aysa-plantas", "gasoductos"],
+      "judicial_status": "Processed. Elevated to oral trial (AySA branch). Supreme Court rejected his appeals (Dec 2024).",
+      "notes": "Central figure — his ministry controlled all public works contracting during the Kirchner era.",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/procesaron-a-julio-de-vido-y-daniel-cameron-en-una-causa-contra-odebrecht-nid2122166/",
+        "https://www.infobae.com/judiciales/2024/12/12/odebrecht-la-corte-suprema-desestimo-un-planteo-de-julio-de-vido-en-la-causa-vinculada-a-la-ampliacion-de-gasoductos/"
+      ]
+    },
+    {
+      "name": "José Francisco López",
+      "role": "Secretario de Obras Públicas",
+      "government": "Kirchner / Fernández de Kirchner",
+      "charges": "Cohecho pasivo, enriquecimiento ilícito",
+      "projects_linked": ["aysa-plantas", "soterramiento-sarmiento"],
+      "judicial_status": "Processed. Convicted separately in 'bolsos del convento' case (USD 9 million found at convent, June 2016). Released on conditional freedom.",
+      "bolsos_connection": "Arrested June 14, 2016 at Monasterio Nuestra Señora de Fátima (General Rodríguez) with bags containing USD 9 million and a submachine gun. Prosecutors linked the origin of money to Odebrecht, though this was never formally proven in the Odebrecht case.",
+      "sources": [
+        "https://www.infobae.com/politica/2021/11/06/video-el-dia-que-jose-lopez-llevo-bolsos-con-mas-de-9-millones-de-dolares-y-una-ametralladora-a-un-convento/",
+        "https://www.lanacion.com.ar/politica/fiscal-francisco-delgado-odebrecht-jose-lopez-bolsos-convento-nid2028145/"
+      ]
+    },
+    {
+      "name": "Roberto Baratta",
+      "role": "Subsecretario de Coordinación, Ministerio de Planificación",
+      "government": "Fernández de Kirchner",
+      "charges": "Cohecho pasivo",
+      "projects_linked": ["aysa-plantas", "gasoductos"],
+      "judicial_status": "Processed. Elevated to oral trial (AySA branch). Arrested by Judge Bonadio in 2018.",
+      "notes": "De Vido's right-hand man. Accused by his own co-defendant López of being key bribe collector.",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/baratta-apunto-lopez-coimas-obras-aysa-nid2166576/",
+        "https://www.mdzol.com/politica/2020/7/24/de-vido-corcho-rodriguez-baratta-el-empresario-roggio-juicio-por-odebrecht-94128.html"
+      ]
+    },
+    {
+      "name": "Daniel Cameron",
+      "role": "Secretario de Energía",
+      "government": "Kirchner / Fernández de Kirchner",
+      "charges": "Favoring Odebrecht in bidding processes for gas pipeline expansion",
+      "projects_linked": ["gasoductos"],
+      "judicial_status": "Processed. Negotiated private bidding through Cammesa directed to Odebrecht. Investigation ongoing.",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/procesaron-a-julio-de-vido-y-daniel-cameron-en-una-causa-contra-odebrecht-nid2122166/",
+        "https://www.infobae.com/judiciales/2026/02/09/odebrecht-la-justicia-rechazo-la-inimputabilidad-de-un-ex-directivo-de-cammesa-y-ordeno-que-declare-manana/"
+      ]
+    },
+    {
+      "name": "Ricardo Jaime",
+      "role": "Secretario de Transporte",
+      "government": "Kirchner",
+      "charges": "Called to indagatoria in Odebrecht case",
+      "projects_linked": ["soterramiento-sarmiento"],
+      "judicial_status": "Called to indagatoria (2018). Already serving sentences for other corruption cases.",
+      "sources": [
+        "https://www.perfil.com/noticias/politica/la-lista-completa-de-los-citados-a-indagatoria-por-el-escandalo-de-odebrecht.phtml"
+      ]
+    },
+    {
+      "name": "Juan Pablo Schiavi",
+      "role": "Secretario de Transporte",
+      "government": "Fernández de Kirchner",
+      "charges": "Called to indagatoria in Odebrecht case",
+      "projects_linked": ["soterramiento-sarmiento"],
+      "judicial_status": "Called to indagatoria (2018).",
+      "sources": [
+        "https://www.perfil.com/noticias/politica/la-lista-completa-de-los-citados-a-indagatoria-por-el-escandalo-de-odebrecht.phtml"
+      ]
+    },
+    {
+      "name": "Gustavo Arribas",
+      "role": "Director de la AFI (Agencia Federal de Inteligencia)",
+      "government": "Macri",
+      "charges": "Receipt of bribes from Odebrecht via Swiss bank account",
+      "amount_received_usd": 594518,
+      "payment_detail": "Five transfers in September 2013 to Credit Suisse account in Zurich from Hong Kong shell company RFY Import & Export Ltd, operated by Odebrecht financial operator Leonardo Meirelles. Transfers occurred one day after Sarmiento contract reactivation.",
+      "projects_linked": ["soterramiento-sarmiento"],
+      "judicial_status": "Charges dismissed by Judge Bonadio (2018). Prosecutors appealed but superior declined to sustain. Effectively unpursued.",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/un-operador-de-odebrecht-le-giro-us-600000-al-jefe-de-inteligencia-argentino-nid1974791/",
+        "https://www.infobae.com/2018/04/26/el-juez-claudio-bonadio-desvinculo-a-gustavo-arribas-del-caso-odebrecht-y-pidio-investigar-a-los-fiscales-federico-delgado-y-sergio-rodriguez/",
+        "https://chequeado.com/el-explicador/como-surgio-y-cual-es-el-impacto-del-caso-odebrecht-en-la-argentina/"
+      ]
+    },
+    {
+      "name": "Ángelo Calcaterra",
+      "role": "Accionista y directivo de IECSA S.A. Primo de Mauricio Macri.",
+      "government": "Private sector (connected to Macri)",
+      "charges": "Aggravated tax evasion, participation in bribery scheme via fictitious contracts",
+      "projects_linked": ["soterramiento-sarmiento"],
+      "judicial_status": "Falta de mérito dictada (2019) — effectively cleared at investigation stage, though case continues against consortium.",
+      "notes": "Sold IECSA in 2013 before the scandal broke. Denied involvement. Prosecution requested his processing.",
+      "sources": [
+        "https://www.tiempoar.com.ar/ta_article/soterramiento-del-sarmiento-calcaterra-intento-despegarse-de-las-coimas-que-reconocio-odebrecht/",
+        "https://cnnespanol.cnn.com/2019/04/16/odebrecht-en-argentina-dictaron-falta-de-merito-al-primo-del-presidente-macri"
+      ]
+    },
+    {
+      "name": "Jorge 'Corcho' Rodríguez",
+      "role": "Empresario constructor",
+      "government": "Private sector",
+      "charges": "Bribery, fraudulent administration",
+      "projects_linked": ["aysa-plantas"],
+      "judicial_status": "Processed. Elevated to oral trial.",
+      "sources": [
+        "https://www.mdzol.com/politica/2020/7/24/de-vido-corcho-rodriguez-baratta-el-empresario-roggio-juicio-por-odebrecht-94128.html"
+      ]
+    },
+    {
+      "name": "Aldo Benito Roggio",
+      "role": "Empresario — Benito Roggio e Hijos S.A.",
+      "government": "Private sector",
+      "charges": "Participation in bribery scheme for AySA contracts",
+      "projects_linked": ["aysa-plantas"],
+      "judicial_status": "Processed. Elevated to oral trial.",
+      "sources": [
+        "https://www.ambito.com/politica/aldo-roggio/odebrecht-procesan-wagner-corcho-rodriguez-y-exfuncionarios-pago-coimas-aysa-n5018355"
+      ]
+    },
+    {
+      "name": "Carlos Wagner",
+      "role": "Empresario — Esuco S.A. Ex presidente Cámara Argentina de la Construcción",
+      "government": "Private sector",
+      "charges": "Intermediary in bribery payments. Processed for AySA/Berazategui plant.",
+      "projects_linked": ["aysa-plantas", "gasoductos"],
+      "judicial_status": "Processed.",
+      "notes": "According to Odebrecht executives, Wagner told them money was needed to pay officials to win public contracts.",
+      "sources": [
+        "https://www.ambito.com/politica/aldo-roggio/odebrecht-procesan-wagner-corcho-rodriguez-y-exfuncionarios-pago-coimas-aysa-n5018355",
+        "https://www.lanacion.com.ar/2131630-odebrecht-confeso-coimas-de-us25-millones-por-los-gasoductos"
+      ]
+    },
+    {
+      "name": "Carlos Ben",
+      "role": "Director de AySA",
+      "government": "Fernández de Kirchner",
+      "charges": "Manipulation of bidding process",
+      "projects_linked": ["aysa-plantas"],
+      "judicial_status": "Processed.",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/odebrecht-citan-a-indagatoria-a-funcionarios-de-aysa-y-empresarios-por-las-plantas-potabilizadoras-nid2058800/"
+      ]
+    },
+    {
+      "name": "Raúl Biancuzzo",
+      "role": "Gerente de AySA",
+      "government": "Fernández de Kirchner",
+      "charges": "Manipulation of bidding process",
+      "projects_linked": ["aysa-plantas"],
+      "judicial_status": "Processed.",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/odebrecht-citan-a-indagatoria-a-funcionarios-de-aysa-y-empresarios-por-las-plantas-potabilizadoras-nid2058800/"
+      ]
+    },
+    {
+      "name": "Tito Biagini",
+      "role": "Empresario constructor",
+      "government": "Private sector",
+      "charges": "Bribery, participation in Odebrecht scheme",
+      "projects_linked": ["aysa-plantas"],
+      "judicial_status": "Processed. Elevated to oral trial.",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/odebrecht-enfrentaran-juicio-oral-sobornos-julio-de-nid2403926/"
+      ]
+    }
+  ],
+
+  "odebrecht_codenames": {
+    "description": "Odebrecht's 'Department of Bribes' (Departamento de Operaciones Estructuradas) used codenames for Argentine bribe recipients. The real identities have NOT been judicially established.",
+    "ex_director_argentina": "Flavio Bento de Faria",
+    "aliases": [
+      {
+        "codename": "Duvidoso",
+        "payments": 12,
+        "total_usd": 600000,
+        "per_payment_usd": 50000,
+        "period": "2012-06-25 to 2014-10-20",
+        "note": "Highest-paid of the five — suggests high-ranking official"
+      },
+      {
+        "codename": "Festança",
+        "payments": 13,
+        "total_usd": 200000,
+        "period_start": "2010-06-29",
+        "note": "Oldest recorded payments"
+      },
+      {
+        "codename": "Síndico",
+        "payments": 4,
+        "total_usd": 100000,
+        "linked_project": "Gasoducto San Martín"
+      },
+      {
+        "codename": "Bonito",
+        "payments_known": 1,
+        "amount_known_usd": 50000,
+        "linked_project": "Dutos Argentina (gas pipelines)"
+      },
+      {
+        "codename": "Pato",
+        "payments_known": 1,
+        "amount_known_usd": 10000,
+        "linked_project": "YPF refinery, La Plata"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Documentos de la 'Caja 2' de Odebrecht revelan nuevos pagos ocultos y 'codinomes'",
+        "url": "https://convoca.pe/agenda-propia/argentina-documentos-de-la-caja-2-de-odebrecht-revelan-nuevos-pagos-ocultos-y"
+      },
+      {
+        "title": "Quiénes son los cinco 'guardianes' de las coimas que Odebrecht pagó en la Argentina",
+        "url": "https://www.lanacion.com.ar/politica/quienes-son-cinco-guardianes-coimas-odebrecht-pago-nid2263051/"
+      },
+      {
+        "title": "Qué dicen las planillas del 'Departamento de coimas' de Odebrecht",
+        "url": "https://www.perfil.com/noticias/politica/que-dicen-las-planillas-del-departamento-de-coimas-de-odebrecht.phtml"
+      }
+    ]
+  },
+
+  "campaign_finance": {
+    "macri_2015": {
+      "donor": "Braskem Argentina S.A. (Odebrecht subsidiary)",
+      "amount_ars": 500000,
+      "event": "Fundraising dinner at Sociedad Rural, March 18, 2015 (ARS 50,000/plate)",
+      "note": "Legal campaign donation, declared. Braskem later pled guilty in the US alongside Odebrecht.",
+      "other_candidates_mentioned": "Odebrecht executives informally claimed to have also funded Scioli, Massa, and Stolbizer campaigns in 2015 — all three denied it and no records were found."
+    },
+    "sources": [
+      {
+        "title": "Odebrecht aportó fondos para la campaña de Pro y otros partidos están bajo la lupa",
+        "url": "https://www.lanacion.com.ar/politica/odebrecht-aporto-fondos-para-la-campana-de-pro-y-otros-partidos-estan-bajo-la-lupa-nid2019169/"
+      },
+      {
+        "title": "Nuevo escándalo: Odebrecht donó $500.000 a campaña de Macri",
+        "url": "https://www.hispantv.com/noticias/argentina/340195/macri-soborno-dinero-odebrecht-campana-electoral"
+      }
+    ]
+  },
+
+  "lava_jato_scale_in_argentina": {
+    "total_brazilian_lava_jato_contracts_usd": 9600000000,
+    "overpricing_estimated_usd": 300000000,
+    "mechanism": "Brazilian construction company partners with Argentine firms, wins bid with lowest price and BNDES financing, then inflates via 'price redeterminations' and contract amendments.",
+    "bndes_role": "Brazilian Development Bank (BNDES) provided financing that gave Brazilian companies competitive advantage in Argentine bidding, securing the most important public works contracts.",
+    "oas_loan_example": "In 2015, Cristina Fernández de Kirchner granted OAS (another Lava Jato company) a USD 964 million loan for Los Blancos hydroelectric project in Mendoza.",
+    "sources": [
+      {
+        "title": "Lava Jato en la Argentina: constructoras con sobreprecios de US$ 300 millones",
+        "url": "https://www.connectas.org/lava-jato-en-la-argentina-las-constructoras-sospechadas-ganaron-contratos-con-sobreprecios-de-us-300-millones/"
+      },
+      {
+        "title": "Así se inflaron los precios de las obras de Odebrecht: de US$ 889 millones a US$ 3.000 millones",
+        "url": "https://www.perfil.com/noticias/politica/investiga-lava-jato-de-us-889-millones-a-us-3000-millones-asi-se-inflaron-los-precios-de-las-obras-de-odebrecht.phtml"
+      }
+    ]
+  },
+
+  "judicial_summary": {
+    "total_cases": 3,
+    "cases": [
+      {
+        "name": "Odebrecht-AySA (Plantas potabilizadoras)",
+        "court": "Tribunal Oral Federal",
+        "judge_original": "Sebastián Casanello",
+        "status": "Oral trial — debate scheduled April 2025",
+        "defendants_count": 30,
+        "witnesses": 290,
+        "key_defendants": ["Julio De Vido", "Roberto Baratta", "José López", "Jorge 'Corcho' Rodríguez", "Aldo Roggio", "Tito Biagini", "Carlos Wagner", "Carlos Ben", "Raúl Biancuzzo"]
+      },
+      {
+        "name": "Soterramiento del Sarmiento",
+        "court": "Juzgado Federal (Comodoro Py)",
+        "judge": "Marcelo Martínez de Giorgi",
+        "status": "Investigation stage — limbo. 49 called to indagatoria in 2018, procedural situations undefined.",
+        "key_defendants": ["Ángelo Calcaterra", "Flavio Bento de Faria", "Mauricio Couri Ribeiro", "Ricardo Jaime", "Juan Pablo Schiavi"]
+      },
+      {
+        "name": "Gasoductos (ampliación troncales / GNEA)",
+        "court": "Juzgado Federal",
+        "judge_original": "Daniel Rafecas",
+        "status": "Investigation stage — split in two branches. Casación rejected prescription March 2026. Still open.",
+        "key_defendants": ["Julio De Vido", "Daniel Cameron", "Roberto Baratta"]
+      }
+    ],
+    "systemic_obstacles": [
+      "Lack of international judicial cooperation (Argentina never received complete Odebrecht plea bargain testimony)",
+      "Multiple appeals and procedural challenges by defendants to exclude Brazilian evidence",
+      "Fragmentation of cases across different courts",
+      "Odebrecht filed counter-suits against Argentina for breach of contract",
+      "No convictions to date in any Odebrecht-related case in Argentina (as of March 2026)"
+    ],
+    "sources": [
+      {
+        "title": "Odebrecht en Argentina: un escándalo de corrupción estancado en la Justicia",
+        "url": "https://www.cadena3.com/noticia/politica-y-economia/odebrecht-en-argentina-un-escandalo-de-corrupcion-estancado-en-la-justicia_415495"
+      },
+      {
+        "title": "Casación descartó la prescripción de la causa Odebrecht",
+        "url": "https://www.infobae.com/judiciales/2026/03/12/casacion-descarto-la-prescripcion-de-la-causa-odebrecht-donde-se-investigan-sobornos-durante-el-kirchnerismo/"
+      }
+    ]
+  },
+
+  "connections_to_existing_entities": {
+    "note": "Cross-references to entities that may already exist in the finanzas-politicas investigation graph",
+    "political_figures": [
+      "Cristina Fernández de Kirchner — President during the bribery period (2007-2015). Not directly charged in Odebrecht case but her government officials are the primary defendants.",
+      "Mauricio Macri — His cousin Ángelo Calcaterra controlled IECSA (30% of Sarmiento consortium). His intelligence chief Arribas received USD 600K from Odebrecht. His campaign received Braskem donation. His government paid USD 759M for the stalled Sarmiento project.",
+      "Néstor Kirchner — President 2003-2007. Odebrecht executives testified 'todo fluía hasta que murió Kirchner' (everything flowed until Kirchner died), suggesting direct involvement."
+    ],
+    "companies": [
+      "Odebrecht S.A. (now Novonor) — Brazilian multinational",
+      "Braskem S.A. — Odebrecht petrochemical subsidiary",
+      "IECSA S.A. — Argentine construction (Calcaterra)",
+      "Benito Roggio e Hijos S.A. — Argentine construction conglomerate",
+      "Electroingeniería S.A. — Argentine energy/construction",
+      "Esuco S.A. — Argentine construction (Carlos Wagner)",
+      "Camargo Correa — Brazilian multinational (Berazategui plant)",
+      "José Cartellone Construcciones Civiles S.A.",
+      "Supercemento SAIC",
+      "Ghella S.p.A. — Italian construction",
+      "OAS S.A. — Brazilian construction (Lava Jato, Los Blancos hydroelectric)"
+    ],
+    "state_entities": [
+      "Ministerio de Planificación Federal",
+      "Secretaría de Obras Públicas",
+      "Secretaría de Energía",
+      "Secretaría de Transporte",
+      "AySA (Agua y Saneamientos Argentinos)",
+      "Cammesa (Compañía Administradora del Mercado Mayorista Eléctrico)",
+      "AFI (Agencia Federal de Inteligencia)",
+      "BNDES (Brazilian Development Bank — financed contracts)"
+    ],
+    "financial_channels": [
+      "Credit Suisse Zurich (Arribas account)",
+      "RFY Import & Export Ltd (Hong Kong shell — Meirelles/Odebrecht)",
+      "Andorra transfers (USD 4.5M from Sarmiento project)",
+      "Banco Finansur (linked to López dollar origin investigation)"
+    ]
+  },
+
+  "key_odebrecht_executives_argentina": [
+    {
+      "name": "Flavio Bento de Faria",
+      "role": "Director Superintendente de Odebrecht en Argentina",
+      "status": "Cooperating witness (delación premiada in Brazil). Ordered payments to the five codename recipients."
+    },
+    {
+      "name": "Mauricio Couri Ribeiro",
+      "role": "Ex director de Odebrecht en Argentina",
+      "status": "Supreme Court rejected his appeals (Sept 2025). Facing charges in Sarmiento case."
+    },
+    {
+      "name": "Leonardo Meirelles",
+      "role": "Financial operator for Odebrecht",
+      "status": "Cooperating witness. Provided documentation of thousands of transfers. Made the Arribas transfers from Hong Kong."
+    }
+  ],
+
+  "timeline": [
+    { "date": "2003-2007", "event": "Néstor Kirchner presidency — Odebrecht establishes Argentine operations and relationships" },
+    { "date": "2006-2008", "event": "Gas pipeline expansion contracts awarded to Odebrecht through Energy Secretariat (Cameron)" },
+    { "date": "2007", "event": "AySA bidding for Paraná de las Palmas and Berazategui plants" },
+    { "date": "2008-01", "event": "Sarmiento underground project awarded to Consorcio Nuevo Sarmiento (Odebrecht-IECSA-Ghella-Comsa)" },
+    { "date": "2007-2014", "event": "Period of confessed bribery payments (USD 35 million total)" },
+    { "date": "2010-06-29", "event": "Earliest recorded codename payment (Festança)" },
+    { "date": "2011-2014", "event": "USD 2.9 million paid to intermediary for Argentine officials" },
+    { "date": "2013-09", "event": "Five transfers totaling USD 594,518 from Meirelles to Arribas via Hong Kong shell" },
+    { "date": "2013", "event": "Calcaterra sells IECSA" },
+    { "date": "2014-03", "event": "Brazil's Lava Jato investigation begins" },
+    { "date": "2015-03-18", "event": "Braskem donates ARS 500,000 to Macri campaign at Sociedad Rural dinner" },
+    { "date": "2016-03-16", "event": "Argentine Sarmiento investigation opens based on Lava Jato revelations" },
+    { "date": "2016-06-14", "event": "José López arrested at convent with USD 9 million in bags" },
+    { "date": "2016-12-21", "event": "Odebrecht and Braskem plead guilty in New York — USD 35M Argentina bribes confessed" },
+    { "date": "2017-01-04", "event": "Gustavo Arribas (AFI) charged with receiving Odebrecht bribes" },
+    { "date": "2017", "event": "Odebrecht executives begin cooperating — codenames revealed" },
+    { "date": "2018-04", "event": "Judge Martínez de Giorgi calls 49 to indagatoria including De Vido and Calcaterra" },
+    { "date": "2018", "event": "Bonadio dismisses Arribas charges; arrests Baratta and Electroingeniería owner" },
+    { "date": "2018", "event": "GNEA gas pipeline project abandoned after decade of construction and USD 2.3 billion spent" },
+    { "date": "2019-04", "event": "Calcaterra granted falta de mérito (effectively cleared)" },
+    { "date": "2019", "event": "AySA case elevated to oral trial" },
+    { "date": "2023-09", "event": "US sends additional information about Odebrecht bribes during Kirchnerism" },
+    { "date": "2025-02", "event": "Casación validates UIF financial intelligence reports as evidence for trial" },
+    { "date": "2025-04-07", "event": "Oral trial scheduled to begin (AySA branch)" },
+    { "date": "2025-04-30", "event": "Supreme Court upholds updated embargo on Odebrecht Argentina" },
+    { "date": "2025-09-24", "event": "Gas pipeline investigation confirmed to remain open" },
+    { "date": "2025-09-30", "event": "Supreme Court validates Lava Jato evidence for Sarmiento case" },
+    { "date": "2026-03-12", "event": "Casación rejects statute of limitations — Odebrecht case remains open" }
+  ]
+}
