@@ -104,6 +104,7 @@ export interface TimelineItem {
   readonly title: string | BilingualText
   readonly description: string | BilingualText
   readonly date: string
+  readonly event_type?: EventType
   readonly category?: string
   readonly source_url?: string
   readonly actors?: readonly { readonly id: string; readonly name: string }[]

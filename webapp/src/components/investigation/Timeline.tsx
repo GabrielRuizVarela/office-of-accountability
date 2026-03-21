@@ -1,14 +1,19 @@
 'use client'
 
 /**
- * Vertical timeline component for Caso Libra events.
+ * Vertical timeline component for investigation events.
  * Mobile-first, with event type filtering and expandable cards.
  */
 
 import { useState, useMemo } from 'react'
 
-import type { TimelineItem } from '@/lib/caso-libra/types'
-import { EVENT_TYPE_COLORS, EVENT_TYPE_LABELS, type EventType } from '@/lib/investigations/types'
+import {
+  EVENT_TYPE_COLORS,
+  EVENT_TYPE_LABELS,
+  type BilingualText,
+  type EventType,
+  type TimelineItem,
+} from '@/lib/investigations/types'
 
 import { EventCard } from './EventCard'
 
@@ -17,6 +22,10 @@ interface TimelineProps {
 }
 
 const EVENT_TYPES: readonly EventType[] = ['political', 'financial', 'legal', 'media']
+
+function textToString(v: string | BilingualText): string {
+  return typeof v === 'string' ? v : v.es
+}
 
 export function Timeline({ events }: TimelineProps) {
   const [activeFilter, setActiveFilter] = useState<EventType | null>(null)
@@ -68,12 +77,12 @@ export function Timeline({ events }: TimelineProps) {
           <EventCard
             key={event.id}
             id={event.id}
-            title={event.title}
-            description={event.description}
+            title={textToString(event.title)}
+            description={textToString(event.description)}
             date={event.date}
-            eventType={event.event_type}
-            sourceUrl={event.source_url}
-            actors={event.actors}
+            eventType={event.event_type ?? 'political'}
+            sourceUrl={event.source_url ?? null}
+            actors={event.actors ?? []}
           />
         ))}
         {filteredEvents.length === 0 && (

@@ -12,6 +12,7 @@ import neo4j, { type Node, type Relationship } from 'neo4j-driver-lite'
 import { getDriver } from '../neo4j/client'
 
 import type {
+  EventType,
   GraphData,
   InvestigationConfig,
   InvestigationNode,
@@ -355,6 +356,7 @@ export function createQueryBuilder(): InvestigationQueryBuilder {
             title: typeof props.title === 'string' ? props.title : (props.title as string),
             description: typeof props.description === 'string' ? props.description : '',
             date: typeof props.date === 'string' ? props.date : '',
+            event_type: typeof props.event_type === 'string' ? (props.event_type as EventType) : undefined,
             category: typeof props.event_type === 'string' ? props.event_type : undefined,
             source_url: typeof props.source_url === 'string' ? props.source_url : undefined,
             actors: actors.length > 0 ? actors : undefined,

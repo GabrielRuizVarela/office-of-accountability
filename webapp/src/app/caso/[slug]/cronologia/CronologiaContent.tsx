@@ -2,7 +2,7 @@
 
 import { useLanguage, type Lang } from '@/lib/language-context'
 import { Timeline } from '@/components/investigation/Timeline'
-import type { TimelineItem } from '@/lib/caso-libra/types'
+import type { TimelineItem } from '@/lib/investigations/types'
 
 const t = {
   title: { es: 'Cronologia', en: 'Timeline' },
