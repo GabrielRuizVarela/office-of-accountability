@@ -84,28 +84,28 @@ export interface ImpactStat {
 
 export const IMPACT_STATS: readonly ImpactStat[] = [
   {
-    value: '10,150',
+    value: '12,233',
     label_es: 'Coincidencias cross-dataset',
     label_en: 'Cross-dataset matches',
-    source: 'Entity resolution pipeline',
+    source: 'SAME_ENTITY + MAYBE_SAME_AS',
   },
   {
-    value: '617',
-    label_es: 'Politicos en 2+ datasets',
-    label_en: 'Politicians in 2+ datasets',
-    source: 'Cross-enrichment',
+    value: '1,825',
+    label_es: 'Entidades cruzadas por CUIT/DNI',
+    label_en: 'CUIT/DNI cross-referenced entities',
+    source: 'Cross-reference engine',
   },
   {
-    value: '2.16M',
-    label_es: 'Nodos en el grafo',
-    label_en: 'Graph nodes',
-    source: 'Neo4j database',
+    value: '$609B',
+    label_es: 'Valor total contratos rastreados (ARS)',
+    label_en: 'Total tracked contract value (ARS)',
+    source: 'Compr.ar / Boletín Oficial',
   },
   {
-    value: '9',
-    label_es: 'Fuentes de datos cruzadas',
-    label_en: 'Cross-referenced sources',
-    source: 'ETL pipelines',
+    value: '72',
+    label_es: 'Puerta giratoria financiera-gobierno',
+    label_en: 'Financial-government revolving door',
+    source: 'IGJ + GovernmentAppointment cross-match',
   },
 ] as const
 
@@ -359,6 +359,90 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     detail_en:
       'Analytical finding derived from the match graph. The potential overlap between legislative role and corporate interest in the financial sector spans 69 identified individuals. Causality is not confirmed — the structural coincidence is documented.',
   },
+  // --- Tier 1: Nación Seguros scandal ---
+  {
+    id: 'nacion-seguros-monopoly',
+    claim_es:
+      'El Decreto 823/2021 firmado por Alberto Fernández obligó a todo el sector público a contratar seguros exclusivamente con Nación Seguros S.A., creando un monopolio que fue explotado por brokers amigos del presidente.',
+    claim_en:
+      'Decree 823/2021 signed by Alberto Fernández mandated all public sector entities to contract insurance exclusively through Nación Seguros S.A., creating a monopoly exploited by brokers close to the president.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'Infobae / Noticias Argentinas',
+    source_url:
+      'https://noticiasargentinas.com/politica/investigacion-sobre-seguros--alberto-fernandez-debera-explicar-el-decreto-823-2021-que-dio-millones-del-estado-a-sus-amigo-brokers_a6729edb7955e3f568c0df2a2',
+    detail_es:
+      'El Decreto 823/2021 obligó a todas las entidades bajo Ley 24.156 Art. 8 a contratar con Nación Seguros. Los 25 brokers más importantes cobraron $3.500M en comisiones. Bachellier S.A. facturó $1.665M y fue embargada por $9.669M. Héctor Martínez Sosa (amigo y ex-asesor de Fernández) cobró $366M en comisiones. 24 allanamientos, procesamiento en curso (Juez Casanello, feb. 2026). Decreto revocado por Milei (747/2024).',
+    detail_en:
+      'Decree 823/2021 mandated all entities under Ley 24.156 Art. 8 to contract with Nación Seguros. The top 25 brokers collected $3.5B ARS in commissions. Bachellier S.A. invoiced $1.665B and was embargoed for $9.669B. Héctor Martínez Sosa (friend and former advisor of Fernández) collected $366M in commissions. 24 raids, prosecution ongoing (Judge Casanello, Feb 2026). Decree revoked by Milei (747/2024).',
+  },
+  // --- Tier 1: Insurance revolving door ---
+  {
+    id: 'plate-revolving-door',
+    claim_es:
+      'Guillermo Pedro Plate pasó de ser Vicepresidente de Provincia ART a Superintendente de Seguros, regulando el mismo mercado donde fue ejecutivo. Protege selectivamente a Liderar Seguros (de Franco Ortolano) mientras sanciona a competidores.',
+    claim_en:
+      'Guillermo Pedro Plate went from VP of Provincia ART to Superintendent of Insurance, regulating the same market where he was an executive. He selectively shields Liderar Seguros (Franco Ortolano) while sanctioning competitors.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'La Letra P',
+    source_url:
+      'https://www.letrap.com.ar/politica/como-funciona-el-blindaje-oficial-las-aseguradoras-protegidas-el-gobierno-n5416266',
+    detail_es:
+      'Plate fue VP de Provincia ART (mayor ART estatal) y asesor del Banco Provincia, luego nombrado Superintendente de Seguros. Medios documentan "blindaje oficial": protege a Liderar Seguros (exenta de inspecciones) y a Libra Seguros (cuyo ex-director legal, Mariano Cúneo Libarona, es ahora Ministro de Justicia, creando "doble blindaje"). Sanciona duramente a Boston Seguros, TPC y Orbis.',
+    detail_en:
+      'Plate was VP of Provincia ART (largest state workers comp insurer) and Banco Provincia board advisor, then appointed Insurance Superintendent. Media documents "official shielding": shields Liderar Seguros (exempt from inspections) and Libra Seguros (whose ex-legal director, Mariano Cúneo Libarona, is now Justice Minister, creating "double shielding"). Harshly sanctions Boston Seguros, TPC and Orbis.',
+  },
+  // --- Tier 1: Catalán revolving door ---
+  {
+    id: 'catalan-ypf-revolving-door',
+    claim_es:
+      'Lisandro Catalán dejó el Ministerio del Interior el 3 de noviembre de 2025 y dos semanas después fue designado Director de YPF con un salario de ~140 millones de pesos mensuales.',
+    claim_en:
+      'Lisandro Catalán left the Ministry of Interior on November 3, 2025 and two weeks later was appointed YPF Director at ~140 million pesos/month salary.',
+    status: 'confirmed',
+    tier: 1,
+    source: 'iProfesional / Infocielo',
+    source_url:
+      'https://www.iprofesional.com/negocios/442238-de-ministro-interior-a-petrolero-lisandro-catalan-se-suma-directorio-ypf',
+    detail_es:
+      'Catalán fue previamente presidente de Bapro Mandatos y Negocios S.A. (gobernación Scioli, 2006-2007), donde surgió el escándalo de fideicomisos de vivienda "Estrella del Sur". Trabajó simultáneamente en Provincia Bursátil, Provincia Seguros y otras empresas del Grupo Bapro (2007-2015). Su designación en YPF lo reúne con Guillermo Francos en el directorio.',
+    detail_en:
+      'Catalán was previously president of Bapro Mandatos y Negocios S.A. (Scioli governorship, 2006-2007), where the "Estrella del Sur" housing trust scandal emerged. He simultaneously held positions at Provincia Bursátil, Provincia Seguros and other Grupo Bapro companies (2007-2015). His YPF appointment reunites him with Guillermo Francos on the board.',
+  },
+  // --- Tier 1: Frigerio family conflicts ---
+  {
+    id: 'frigerio-koolhaas',
+    claim_es:
+      'La Oficina Anticorrupción denunció a Rogelio Frigerio por "negociaciones incompatibles" al invertir USD 776.000 en un proyecto inmobiliario sobre tierras fiscales que él mismo transfirió como titular de la AABE.',
+    claim_en:
+      'The Anti-Corruption Office denounced Rogelio Frigerio for "dealings incompatible with public office" for investing USD 776,000 in a real estate project on fiscal lands he himself transferred as head of AABE.',
+    status: 'confirmed_cleared',
+    tier: 1,
+    source: 'Infobae',
+    source_url:
+      'https://www.infobae.com/politica/2022/04/25/pidieron-citar-a-indagatoria-a-rogelio-frigerio-por-irregularidades-en-operaciones-inmobiliarias/',
+    detail_es:
+      'Frigerio firmó transferencias de tierras fiscales de AABE a Koolhaas S.A. y en el plazo de un mes invirtió USD 776.000 en el emprendimiento inmobiliario sobre esas mismas tierras. Sobreseído por el juez Ercolini en diciembre 2022. Su padre Octavio fue director de YPF (2016-2018) mientras Rogelio era Ministro del Interior. Su esposa Victoria Costoya fue designada Directora General en Desarrollo Social.',
+    detail_en:
+      'Frigerio signed AABE fiscal land transfers to Koolhaas S.A. and within one month invested USD 776,000 in the real estate project on those same lands. Cleared by Judge Ercolini in December 2022. His father Octavio was YPF director (2016-2018) while Rogelio was Interior Minister. His wife Victoria Costoya was appointed Director General at Social Development.',
+  },
+  // --- Tier 2: Financial interlocking directorates ---
+  {
+    id: 'interlocking-directorates',
+    claim_es:
+      'El análisis de grafos reveló clusters masivos de directores compartidos: CITELEC-EDELAP (81 officers compartidos, grupo Pampa Energía/Mindlin), Grupo Galicia seguros (60 officers), cluster MetLife (40 officers en 5 entidades).',
+    claim_en:
+      'Graph analysis revealed massive interlocking directorate clusters: CITELEC-EDELAP (81 shared officers, Pampa Energía/Mindlin group), Grupo Galicia insurance (60 officers), MetLife cluster (40 officers across 5 entities).',
+    status: 'confirmed',
+    tier: 2,
+    source: 'Cross-dataset analysis (IGJ)',
+    source_url: 'https://datos.gob.ar',
+    detail_es:
+      'El grupo Werthein controla el cluster Caja de Seguros (32 officers compartidos). Pampa Energía opera la infraestructura eléctrica de Buenos Aires con 81 officers idénticos entre CITELEC y EDELAP. MetLife opera 5 entidades legales separadas (seguro, pensión, inversión) con 29-40 officers compartidos.',
+    detail_en:
+      'The Werthein family controls the Caja de Seguros cluster (32 shared officers). Pampa Energía operates Buenos Aires electricity infrastructure with 81 identical officers between CITELEC and EDELAP. MetLife operates 5 separate legal entities (insurance, pension, investment) with 29-40 shared officers.',
+  },
 ] as const
 
 // ---------------------------------------------------------------------------
@@ -548,6 +632,66 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     sources: [
       'https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-kueider-en-paraguay-con-211000-dolares/',
     ],
+  },
+  {
+    id: 'tl-2021-decreto-823',
+    date: '2021-12-01',
+    title_es: 'Decreto 823/2021: monopolio de seguros estatales',
+    title_en: 'Decree 823/2021: state insurance monopoly',
+    description_es:
+      'Alberto Fernández firma el Decreto 823/2021 que obliga a todo el sector público nacional a contratar seguros exclusivamente con Nación Seguros S.A. Crea el monopolio que será explotado por brokers cercanos al presidente.',
+    description_en:
+      'Alberto Fernández signs Decree 823/2021 mandating all national public sector entities to contract insurance exclusively through Nación Seguros S.A. Creates the monopoly that would be exploited by brokers close to the president.',
+    category: 'financial',
+    sources: ['https://www.argentina.gob.ar/normativa/nacional/decreto-823-2021-357558'],
+  },
+  {
+    id: 'tl-2024-raids-seguros',
+    date: '2024-04-01',
+    title_es: '24 allanamientos en la Causa Seguros',
+    title_en: '24 raids in the Causa Seguros investigation',
+    description_es:
+      'El juez Ercolini ordena 24 allanamientos simultáneos en el marco de la investigación sobre el escándalo de los seguros. El gobierno prohíbe todos los intermediarios en pólizas estatales.',
+    description_en:
+      'Judge Ercolini orders 24 simultaneous raids in the insurance scandal investigation. The government bans all intermediaries in state insurance policies.',
+    category: 'legal',
+    sources: ['https://www.infobae.com/politica/2024/04/11/tras-el-escandalo-de-los-seguros-el-gobierno-prohibio-a-los-intermediarios-en-todas-las-polizas-con-organismos-del-estado/'],
+  },
+  {
+    id: 'tl-2024-decreto-747',
+    date: '2024-08-21',
+    title_es: 'Decreto 747/2024 revoca monopolio de seguros',
+    title_en: 'Decree 747/2024 revokes insurance monopoly',
+    description_es:
+      'El gobierno de Milei deroga el Decreto 823/2021, eliminando la obligación de contratar con Nación Seguros. El gobierno no renueva el contrato con Nación Seguros (marzo 2024).',
+    description_en:
+      'The Milei government revokes Decree 823/2021, eliminating the mandatory contracting with Nación Seguros. The government does not renew the contract with Nación Seguros (March 2024).',
+    category: 'political',
+    sources: ['https://www.lanacion.com.ar/politica/el-gobierno-derogo-el-decreto-de-alberto-fernandez-que-obligaba-a-contratar-a-nacion-seguros-nid21082024/'],
+  },
+  {
+    id: 'tl-2025-catalan-ypf',
+    date: '2025-11-17',
+    title_es: 'Catalán designado Director de YPF tras dejar Interior',
+    title_en: 'Catalán appointed YPF Director after leaving Interior',
+    description_es:
+      'Lisandro Catalán deja el Ministerio del Interior el 3 de noviembre y es designado Director Clase D de YPF dos semanas después, con un salario de ~140 millones de pesos mensuales.',
+    description_en:
+      'Lisandro Catalán leaves the Ministry of Interior on November 3 and is appointed YPF Class D Director two weeks later, at a salary of ~140 million pesos/month.',
+    category: 'corporate',
+    sources: ['https://www.iprofesional.com/negocios/442238-de-ministro-interior-a-petrolero-lisandro-catalan-se-suma-directorio-ypf'],
+  },
+  {
+    id: 'tl-2026-procesamiento-msosa',
+    date: '2026-02-10',
+    title_es: 'Procesamiento de empresa de Martínez Sosa',
+    title_en: 'Prosecution of Martínez Sosa company',
+    description_es:
+      'La justicia procesa a Héctor Martínez Sosa y Compañía S.A. como partícipe necesario en negociaciones incompatibles. Embargo por $2.870.729.545,61.',
+    description_en:
+      'The court prosecutes Héctor Martínez Sosa y Compañía S.A. as necessary participant in dealings incompatible with public office. Embargo for $2.87B ARS.',
+    category: 'legal',
+    sources: ['https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/'],
   },
 ] as const
 
@@ -752,6 +896,76 @@ export const ACTORS: readonly Actor[] = [
     status_es: 'Causa activa',
     status_en: 'Active case',
   },
+  {
+    id: 'actor-martinez-sosa',
+    name: 'Héctor Martínez Sosa',
+    role_es: 'Broker de seguros, asociado de Alberto Fernández',
+    role_en: 'Insurance broker, Alberto Fernández associate',
+    description_es:
+      'Segundo broker por comisiones de Nación Seguros ($366M ARS). Esposo de María Cantero (secretaria de Fernández). Asesor de Fernández entre 2010-2019. Se reunía en Olivos sin registro. Empresa procesada y embargada por $2.870M ARS.',
+    description_en:
+      'Second broker by Nación Seguros commissions ($366M ARS). Husband of María Cantero (Fernández secretary). Fernández advisor 2010-2019. Met at Olivos without records. Company prosecuted and embargoed for $2.87B ARS.',
+    party: 'Peronismo / FdT',
+    datasets: 3,
+    status_es: 'Procesado — Causa Seguros activa',
+    status_en: 'Prosecuted — Causa Seguros active',
+  },
+  {
+    id: 'actor-plate',
+    name: 'Guillermo Pedro Plate',
+    role_es: 'Superintendente de Seguros — ex VP Provincia ART',
+    role_en: 'Insurance Superintendent — former VP Provincia ART',
+    description_es:
+      'Pasó de VP de Provincia ART y asesor del Banco Provincia a Superintendente de Seguros, regulando el mercado donde fue ejecutivo. Protege selectivamente a Liderar Seguros y Libra Seguros. Su ex-jefe Juan Pazo (ARCA) rompió relación por el "pacto con Liderar".',
+    description_en:
+      'Went from VP of Provincia ART and Banco Provincia board advisor to Insurance Superintendent, regulating the market where he was executive. Selectively shields Liderar and Libra Seguros. Former boss Juan Pazo (ARCA) broke relationship over "Liderar pact".',
+    party: 'PRO / LLA',
+    datasets: 4,
+    status_es: 'Puerta giratoria — conflicto de interés documentado',
+    status_en: 'Revolving door — documented conflict of interest',
+  },
+  {
+    id: 'actor-catalan',
+    name: 'Lisandro Catalán',
+    role_es: 'Ex Ministro Interior → Director YPF',
+    role_en: 'Former Interior Minister → YPF Director',
+    description_es:
+      'Dejó el Ministerio del Interior el 3/11/2025 y fue designado Director de YPF dos semanas después (~$140M/mes). Previamente presidente de Bapro Mandatos (escándalo fideicomisos "Estrella del Sur"), officer en Provincia Bursátil, Provincia Seguros y Grupo Bapro (2007-2015).',
+    description_en:
+      'Left Interior Ministry on 3/11/2025 and was appointed YPF Director two weeks later (~$140M/month). Previously president of Bapro Mandatos (housing trust scandal "Estrella del Sur"), officer at Provincia Bursátil, Provincia Seguros and Grupo Bapro (2007-2015).',
+    party: 'PRO / LLA',
+    datasets: 5,
+    status_es: 'Puerta giratoria — sin causa penal',
+    status_en: 'Revolving door — no criminal case',
+  },
+  {
+    id: 'actor-frigerio',
+    name: 'Rogelio Frigerio',
+    role_es: 'Gobernador Entre Ríos — ex Ministro Interior',
+    role_en: 'Governor of Entre Ríos — former Interior Minister',
+    description_es:
+      'Dinastia político-empresarial. Denunciado por la OA por invertir USD 776.000 en tierras fiscales que transfirió como titular de AABE (sobreseído 2022). Padre Octavio fue director de YPF mientras Rogelio era Ministro. Esposa designada en Desarrollo Social. Banco Ciudad: préstamo irregular a Lethe ($35M, 1500% de patrimonio).',
+    description_en:
+      'Political-business dynasty. Denounced by Anti-Corruption Office for investing USD 776K in fiscal lands he transferred as AABE head (cleared 2022). Father Octavio was YPF director while Rogelio was Minister. Wife appointed at Social Development. Banco Ciudad: irregular loan to Lethe ($35M, 1500% of equity).',
+    party: 'PRO',
+    datasets: 4,
+    status_es: 'Sobreseído OA (2022); Causa Correo vinculada',
+    status_en: 'Cleared by OA (2022); linked to Correo case',
+  },
+  {
+    id: 'actor-cuneo-libarona',
+    name: 'Mariano Cúneo Libarona',
+    role_es: 'Ministro de Justicia — ex director legal Libra Seguros',
+    role_en: 'Justice Minister — former legal director Libra Seguros',
+    description_es:
+      'Ministro de Justicia del gobierno de Milei. Fue director legal de Libra Seguros antes de asumir. Medios reportan "doble blindaje" para Libra: el Superintendente Plate la protege y el Ministro de Justicia que debería investigarla es su ex-abogado.',
+    description_en:
+      'Justice Minister in the Milei government. Was legal director of Libra Seguros before taking office. Media reports "double shielding" for Libra: Superintendent Plate protects it and the Justice Minister who should investigate is its former lawyer.',
+    party: 'La Libertad Avanza',
+    datasets: 3,
+    status_es: 'Conflicto de interés — "doble blindaje"',
+    status_en: 'Conflict of interest — "double shielding"',
+  },
 ] as const
 
 // ---------------------------------------------------------------------------
@@ -759,6 +973,32 @@ export const ACTORS: readonly Actor[] = [
 // ---------------------------------------------------------------------------
 
 export const MONEY_FLOWS: readonly MoneyFlow[] = [
+  {
+    id: 'flow-nacion-seguros-total',
+    from_label: 'Estado Nacional (20+ organismos)',
+    to_label: 'Nación Seguros S.A.',
+    amount_ars: 28_500_000_000,
+    description_es:
+      'Total de contratos directos (sin licitación) entre el Estado y Nación Seguros bajo el Decreto 823/2021. TODOS los 20 contratos principales son Contratación Directa. Cada ministerio tiene contrato directo.',
+    description_en:
+      'Total direct contracts (no tender) between the State and Nación Seguros under Decree 823/2021. ALL top 20 contracts are Direct Contracting. Every ministry has a direct contract.',
+    date: '2020-2024',
+    source: 'Datos.gob.ar / Infobae',
+    source_url: 'https://datos.gob.ar/dataset/jgm-sistema-contrataciones-electronicas',
+  },
+  {
+    id: 'flow-brokers-commissions',
+    from_label: 'Nación Seguros S.A.',
+    to_label: 'Top 25 brokers (Bachellier, Martínez Sosa, etc.)',
+    amount_ars: 3_500_000_000,
+    description_es:
+      'Comisiones pagadas a los 25 brokers principales. Bachellier S.A. facturó $1.665M (embargada por $9.669M). Martínez Sosa cobró $366M. Los brokers se insertaron como intermediarios entre el Estado y Nación Seguros gracias al Decreto 823.',
+    description_en:
+      'Commissions paid to top 25 brokers. Bachellier S.A. invoiced $1.665B (embargoed for $9.669B). Martínez Sosa collected $366M. Brokers inserted themselves as intermediaries between the State and Nación Seguros thanks to Decree 823.',
+    date: '2021-2024',
+    source: 'Infobae',
+    source_url: 'https://www.infobae.com/politica/2024/03/18/escandalo-de-los-seguros-las-empresas-del-broker-amigo-de-alberto-fernandez-y-sus-satelites-cobraron-mas-de-2000-millones-por-comisiones/',
+  },
   {
     id: 'flow-correo-debt',
     from_label: 'Correo Argentino (SOCMA)',
