@@ -1,16 +1,13 @@
 # Loop Summary
 
 **Status:** Completed successfully
-**Iterations:** 16
-**Duration:** 13m 17s
+**Iterations:** 32
+**Duration:** 45m 44s
 
 ## Tasks
 
-- [x] 1.1 Update `webapp/src/lib/language-context.tsx` — initialize with browser-detected lang from `navigator.language` when no `defaultLang` prop given (file: webapp/src/lib/language-context.tsx)
-- [x] 1.2 Update `webapp/src/app/layout.tsx` — use `detectLang()` + `SITE_META` for dynamic metadata via `generateMetadata`, wrap body in `LanguageProvider` (file: webapp/src/app/layout.tsx)
-- [x] 1.3 Update `webapp/src/app/caso/[slug]/layout.tsx` — add bilingual `CASE_META` entries with both es/en versions, use `detectLang()` to pick appropriate metadata (file: webapp/src/app/caso/[slug]/layout.tsx)
-- [ ] 1.4 Update static metadata in other pages (proximidad, simulacion, provincias) to use bilingual strings (various files)
-- [ ] 1.5 Verify typecheck passes after all changes
+- [ ] 2.1 Create `webapp/src/components/engine/GateApproval.tsx` — standalone gate approval component with approve/reject form (file: webapp/src/components/engine/GateApproval.tsx)
+- [ ] 2.2 Wire GateApproval into PipelineStatus gate pending banner (file: webapp/src/components/engine/PipelineStatus.tsx)
 
 ## Events
 
@@ -18,4 +15,4 @@ _No events recorded._
 
 ## Final Commit
 
-fece79c: feat(i18n): make proximidad, simulacion, provincias metadata bilingual
+76d3397: feat(engine): implement Orchestrator UI with task queue and research focus

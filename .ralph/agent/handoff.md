@@ -1,11 +1,11 @@
 # Session Handoff
 
-_Generated: 2026-03-21 18:13:23 UTC_
+_Generated: 2026-03-21 19:27:43 UTC_
 
 ## Git Context
 
 - **Branch:** `worktree-crispy-cuddling-snail`
-- **HEAD:** 6ebfb1c: chore: auto-commit before merge (loop primary)
+- **HEAD:** 1955201: chore: auto-commit before merge (loop primary)
 
 ## Tasks
 
@@ -71,6 +71,7 @@ _Generated: 2026-03-21 18:13:23 UTC_
 - [x] Create /api/caso/[slug]/schema/route.ts — unified schema endpoint
 - [x] Create /api/caso/[slug]/node/[id]/route.ts — node connections endpoint
 - [x] Add 301 redirects from /api/caso-libra/* to /api/caso/caso-libra/*
+- [x] Add browser language detection and bilingual page titles/metadata
 - [x] Full M9 code review — review all unified API routes (graph, timeline, stats, config, schema, node, redirects) + infrastructure (types, utils, config, query-builder, registry)
 - [x] Add engine node type uniqueness constraints to scripts/init-schema.ts (SourceConnector.id, PipelineConfig.id, PipelineStage.id, Gate.id, PipelineState.id, Proposal.id, AuditEntry.id, Snapshot.id, ModelConfig.id, MiroFishConfig.id)
 - [x] Create src/lib/engine/types.ts — TypeScript interfaces + Zod schemas for all engine node types (SourceConnector, PipelineConfig, PipelineStage, Gate, PipelineState, Proposal, AuditEntry, Snapshot, ModelConfig, MiroFishConfig)
@@ -115,10 +116,18 @@ _Generated: 2026-03-21 18:13:23 UTC_
 - [x] Fix cronologia page — pass slug to getTimeline
 - [x] Fix evidencia/page.tsx — pass slug to getDocuments
 - [x] Fix og/actor route.tsx L22 — pass slug to getPersonBySlug
+- [x] Delete static case route folders caso/caso-epstein/ and caso/finanzas-politicas/ (dirs: webapp/src/app/caso/caso-epstein/, webapp/src/app/caso/finanzas-politicas/)
+- [x] Verify typecheck passes after static case folder deletion
+- [x] Create webapp/src/lib/i18n.ts — detectLang(acceptLanguageHeader) utility returning 'en'|'es' from Accept-Language header, plus SITE_META bilingual strings map for root metadata (title, description in both languages)
+- [x] Update webapp/src/lib/language-context.tsx — auto-detect from navigator.language on client mount when no explicit override
+- [x] 1.2 Root layout: generateMetadata with detectLang + SITE_META + LanguageProvider
 
 ### Remaining
 
-- [ ] Add browser language detection and bilingual page titles/metadata
+- [ ] Update webapp/src/app/layout.tsx — dynamic lang attribute + bilingual generateMetadata using detectLang from headers() _(blocked by: task-1774118546-ea0a)_
+- [ ] Update webapp/src/app/caso/[slug]/layout.tsx — bilingual CASE_META with es+en titles/descriptions, pick based on detectLang _(blocked by: task-1774118546-ea0a)_
+- [ ] Update static metadata in proximidad, simulacion, provincias pages to bilingual generateMetadata _(blocked by: task-1774118546-ea0a)_
+- [ ] Verify typecheck passes after all i18n changes _(blocked by: task-1774118546-ea0a)_
 
 ## Key Files
 
@@ -130,18 +139,25 @@ Recently modified:
 - `.ralph/agent/tasks.jsonl`
 - `.ralph/current-events`
 - `.ralph/current-loop-id`
-- `.ralph/diagnostics/logs/ralph-2026-03-21T07-02-17-555-1345357.log`
+- `.ralph/diagnostics/logs/ralph-2026-03-21T07-16-06-134-1389963.log`
 - `.ralph/diagnostics/logs/ralph-2026-03-21T07-16-06-135-1389963.log`
-- `.ralph/diagnostics/logs/ralph-2026-03-21T07-16-07-498-1390451.log`
 - `.ralph/diagnostics/logs/ralph-2026-03-21T14-10-56-874-1828131.log`
+- `.ralph/diagnostics/logs/ralph-2026-03-21T15-37-09-317-2043363.log`
 
 ## Next Session
 
 The following prompt can be used to continue where this session left off:
 
 ```
-Continue the previous work. Remaining tasks (1):
-- Add browser language detection and bilingual page titles/metadata
+Continue the previous work. Remaining tasks (4):
+- Update webapp/src/app/layout.tsx — dynamic lang attribute + bilingual generateMetadata using detectLang from headers()
+- Update webapp/src/app/caso/[slug]/layout.tsx — bilingual CASE_META with es+en titles/descriptions, pick based on detectLang
+- Update static metadata in proximidad, simulacion, provincias pages to bilingual generateMetadata
+- Verify typecheck passes after all i18n changes
 
-Original objective: Continue from M10 onward
+Original objective: # Office of Accountability — Implementation Prompt
+
+## Objective
+
+Build a civic knowledge platform for Argentine politics as an interactive graph explorer. The platform links politicians, votes, leg...
 ```

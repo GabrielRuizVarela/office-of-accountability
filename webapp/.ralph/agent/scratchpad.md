@@ -29,3 +29,14 @@
 - YAGNI: PASS — no speculative code
 - Matches sub-task spec: PASS — gold/silver+Hypothesis nodes → LLM synthesis → report sections via draft_section
 - **VERDICT: PASS** — no blocking issues
+
+### Step 1.6 — Review passed
+- Critic confirmed: typecheck clean, all requirements met (snapshots fetch with pipelineStateId guard, grid display with label/slug/node_count/relationship_count/stage_id/created_at, create with optional label via POST, two-click delete confirmation via DELETE ?id=X, refetch after mutations, encoded URL params, dark theme, empty/loading/error states).
+- No blocking issues. No `any` types. Follows established patterns.
+- **Step 1 is now fully complete.** All 6 sub-tasks (page+layout, EngineDashboard, PipelineStatus, ProposalReview, AuditLog, SnapshotManager) are done and reviewed.
+- Ready to advance to Step 2 (Gate Approval UI).
+
+### Step 2.1 — Review passed
+- Critic confirmed: typecheck clean, all requirements met (gate stage ID display, approve/reject POST with correct body, 2-step reject confirmation, loading/disabled states, error banner, success feedback, onAction callback, URL-encoded stageId).
+- No blocking issues. No `any` types. Dark theme consistent with other engine components.
+- Advancing to step 2.2: Wire GateApproval into PipelineStatus.
