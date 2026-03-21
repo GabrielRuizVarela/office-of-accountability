@@ -65,8 +65,8 @@ const LAST_UPDATED: Record<Lang, string> = {
 }
 
 const COMPILED_FROM: Record<Lang, string> = {
-  es: 'Compilado a partir de 2,31 millones de nodos y 4,50 millones de relaciones en un grafo Neo4j. Nueve fuentes publicas: Como Voto, ICIJ, CNE, Boletin Oficial, IGJ, CNV, DDJJ patrimoniales. Cada hallazgo es reproducible. Donde se indica "presunto," la conexion no ha sido verificada de forma independiente.',
-  en: 'Compiled from 2.31 million nodes and 4.50 million relationships in a Neo4j graph. Nine public sources: Como Voto, ICIJ, CNE, Boletin Oficial, IGJ, CNV, asset declarations. Every finding is reproducible. Where "alleged" is indicated, the connection has not been independently verified.',
+  es: 'Investigacion asistida por inteligencia artificial con verificacion humana. 14 fuentes de datos publicos procesadas por mas de 100 agentes autonomos en un grafo Neo4j de 294 nodos y 2.391 aristas. Cada hallazgo fue verificado contra fuentes primarias. La IA no acusa: revela patrones. Las conclusiones son del lector.',
+  en: 'AI-assisted investigation with human verification. 14 public data sources processed by over 100 autonomous agents into a Neo4j graph of 294 nodes and 2,391 edges. Every finding was verified against primary sources. The AI does not accuse: it reveals patterns. The conclusions are the reader\'s.',
 }
 
 // ---------------------------------------------------------------------------
@@ -766,6 +766,24 @@ export default function ResumenPage() {
             <p className="mt-1 text-xs text-zinc-400">{stat.label[lang]}</p>
           </div>
         ))}
+      </div>
+
+      {/* Methodology summary — links to full methodology tab */}
+      <div className="mb-8 rounded-lg border border-blue-900/40 bg-blue-950/20 p-5">
+        <h3 className="text-sm font-bold uppercase tracking-wider text-blue-400">
+          {lang === 'es' ? 'Metodologia' : 'Methodology'}
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-zinc-300">
+          {lang === 'es'
+            ? 'Investigacion construida mediante inteligencia artificial asistida con verificacion humana. 14 pipelines ETL ingestan datos publicos en una base de datos de grafo Neo4j. Un motor de cruce automatico conecta entidades por CUIT, DNI y nombre. El modelo de IA (ejecutado localmente, sin envio de datos externos) detecta patrones estructurales — cada hallazgo fue verificado independientemente contra fuentes primarias. Los sujetos no fueron contactados para descargo previo; la informacion se basa exclusivamente en fuentes publicas verificables.'
+            : 'Investigation built through AI-assisted intelligence with human verification. 14 ETL pipelines ingest public data into a Neo4j graph database. An automated cross-reference engine connects entities by CUIT, DNI, and name. The AI model (running locally, no external data transmission) detects structural patterns — every finding was independently verified against primary sources. Subjects were not contacted for prior comment; information is based exclusively on verifiable public sources.'}
+        </p>
+        <a
+          href="/caso/finanzas-politicas/metodologia"
+          className="mt-3 inline-block text-xs font-semibold text-blue-400 underline decoration-blue-400/30 hover:text-blue-300"
+        >
+          {lang === 'es' ? 'Ver metodologia completa, fuentes y marcos de cumplimiento →' : 'View full methodology, sources, and compliance frameworks →'}
+        </a>
       </div>
 
       <hr className="border-zinc-800" />
