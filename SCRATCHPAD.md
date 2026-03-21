@@ -49,10 +49,39 @@
 - All spec content translated into docs — no external spec references remain
 - Current state audit completed, docs reflect actual codebase state
 
-### Next steps
+### 2026-03-21 — M10 added (Motor de Investigación Autónomo)
+- Added Milestone 10 to TASKS.md — automated pipeline with 8 phases:
+  1. Engine data model (config nodes, proposals, audit trail)
+  2. LLM abstraction layer (4 providers, 3 execution modes)
+  3. Pipeline executor (stage runner, gates, proposals, snapshots)
+  4. Source connectors (rest-api, file-upload, custom-script)
+  5. Stage implementations (ingest, verify, enrich, analyze, report)
+  6. Graph algorithms (5 algorithms extending `algorithms.ts`)
+  7. MiroFish integration (endpoint param, generalized seed)
+  8. API routes (6 engine endpoints)
+- Updated PRD.md with M10 milestone + critical path
+- Updated PROMPT.md with requirement 11 + M10 acceptance criteria
+- Engine spec content (`docs/superpowers/specs/2026-03-20-investigation-engine-design.md`) fully translated into TASKS.md
+- Reuses: `dedup.ts`, `quality.ts` (directly), `algorithms.ts` (extend), `mirofish/client.ts` (refactor)
+
+### Wave execution order
+1. **Ralph wave: M9** — Investigation Standardization (generic labels, unified API, config-driven frontend)
+2. **Ralph wave: M10** — Motor de Investigación Autónomo (pipeline, LLM, connectors, algorithms)
+
+### M9 next steps
 - Phase 1: Create `scripts/seed-investigation-configs.ts` + update `init-schema.ts`
 - Phase 2: Create `scripts/migrate-caso-libra-labels.ts`
 - Phase 3: Create `scripts/seed-caso-finanzas-politicas.ts`
 - Phase 4: Align existing `seed-caso-epstein.ts` with InvestigationConfig schema
 - Phase 5: Create `lib/investigations/` module + unified API routes
 - Phase 6: Frontend standardization + static route deletion
+
+### M10 next steps (after M9 complete)
+- Phase 1: Engine data model in Neo4j + `lib/engine/types.ts`
+- Phase 2: LLM providers (llamacpp first — Qwen already running locally)
+- Phase 3: Pipeline executor + proposal system
+- Phase 4: Source connectors (rest-api first for Epstein Exposed API)
+- Phase 5: Stage implementations
+- Phase 6: Graph algorithms
+- Phase 7: MiroFish refactor
+- Phase 8: API routes

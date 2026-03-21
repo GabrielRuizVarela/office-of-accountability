@@ -932,6 +932,288 @@ Phases 1–4 are data scripts. Phases 5–6 are code changes. Scripts run before
 
 ---
 
+## Milestone 10: Motor de Investigación Autónomo
+
+**Goal:** Pipeline automatizado: el motor busca, valida, consolida y reporta hallazgos con revisión humana en cada paso. The engine runs inside the Next.js app as server-side operations. All config lives in Neo4j as first-class graph entities. LLM never writes directly — all outputs are `Proposal` nodes reviewed at gates.
+
+### Current State (as of 2026-03-21)
+
+| Component | Exists | Location | Notes |
+|---|---|---|---|
+| Ingestion scripts | Yes | `scripts/ingest-wave-*.ts` (4 waves) | Hardcoded per-wave, not config-driven |
+| Dedup module | Yes | `src/lib/ingestion/dedup.ts` | Levenshtein-based, `caso_slug` namespaced — reused directly |
+| Quality/conflict resolution | Yes | `src/lib/ingestion/quality.ts` | Conflict detection — reused directly |
+| Wave review script | Yes | `scripts/review-wave.ts` | CLI-based, becomes gate UI data provider |
+| Promote nodes script | Yes | `scripts/promote-nodes.ts` | CLI-based, becomes gate approval handler |
+| MiroFish client | Yes | `src/lib/mirofish/client.ts` | Reads `MIROFISH_API_URL` at module load — needs `endpoint` param |
+| MiroFish seed export | Yes | `src/lib/mirofish/export.ts` | Hardcodes Person/Organization/Location — needs generalization |
+| Graph algorithms | Yes | `src/lib/graph/algorithms.ts` | Basic implementations — needs centrality, community detection, anomaly |
+| InvestigationConfig nodes | No | — | Created by M9 Phase 1 (prerequisite) |
+| LLM abstraction | No | — | Only raw MiroFish/llama.cpp client exists |
+| Pipeline executor | No | — | No stage runner, gate mechanism, or proposal system |
+| Source connectors | No | — | Ingestion is hardcoded scripts, not config-driven connectors |
+| Audit trail | No | — | No AuditEntry nodes or hash chain |
+
+### Data Model
+
+Builds on M9's `InvestigationConfig` + `SchemaDefinition` subgraph. New node types added:
+
+```
+(InvestigationConfig)
+  -[:HAS_SOURCE]-> (SourceConnector {id, name, type, config_json, mapping_json, dedup_config_json, tier, enabled})
+  -[:HAS_PIPELINE]-> (PipelineConfig)
+    -[:HAS_STAGE]-> (PipelineStage {id, name, type, order, config_json})
+      -[:HAS_GATE]-> (Gate {type, prompt, actions, show_components})
+  -[:HAS_MODEL]-> (ModelConfig {name, provider, endpoint, model, config_json, api_key_env})
+  -[:HAS_MIROFISH]-> (MiroFishConfig {endpoint, llm_backend})
+  -[:CURRENT_STATE]-> (PipelineState {current_stage, status, progress_json})
+  -[:HAS_AUDIT]->(AuditEntry)-[:NEXT]->(AuditEntry)
+  -[:HAS_SNAPSHOT]-> (Snapshot {name, created, stage, graph_state_json, pipeline_state_json})
+  -[:FORKED_FROM]-> (InvestigationConfig)  # for branches
+```
+
+**SourceConnector types:** `rest-api`, `file-upload`, `web-scraper`, `court-records`, `corporate-registry`, `custom-script`
+
+**PipelineStage types:** `ingest`, `verify`, `enrich`, `analyze`, `report`
+
+**Gate actions:** `approve`, `reject`, `partial`, `back_to_analyze`
+
+**Proposal node:**
+```typescript
+interface Proposal {
+  id: string
+  investigation_id: string
+  stage: string
+  type: 'node' | 'edge' | 'promotion' | 'merge' | 'hypothesis' | 'report_section'
+  payload_json: string
+  confidence: number            // 0-1
+  reasoning: string
+  proposed_by: string           // "llm:qwen-3.5-9b" | "connector:epstein-exposed" | "algorithm:centrality"
+  status: 'pending' | 'approved' | 'rejected'
+  reviewed_by?: string
+  reviewed_at?: string
+  review_rationale?: string
+}
+```
+
+**AuditEntry node (hash-chained):**
+```typescript
+interface AuditEntry {
+  id: string
+  investigation_id: string
+  ts: string                    // ISO timestamp
+  actor: string                 // "engine" | "researcher:gabriel" | "llm:qwen-3.5-9b"
+  action: string                // "stage_start" | "node_created" | "gate_decision" | "proposal_approved"
+  details_json: string
+  prev_hash: string             // SHA-256 of previous entry — "genesis" for first
+}
+```
+
+Chain: `(InvestigationConfig)-[:HAS_AUDIT]->(AuditEntry)-[:NEXT]->(AuditEntry)`. Validated on engine startup.
+
+### LLM Abstraction
+
+```typescript
+interface LLMProvider {
+  chat(messages: Message[], options?: LLMOptions): Promise<LLMResponse>
+  stream(messages: Message[], options?: LLMOptions): AsyncIterable<LLMChunk>
+}
+
+interface LLMResponse {
+  content: string
+  reasoning?: string       // Qwen's reasoning_content, Claude's thinking blocks
+  tool_calls?: ToolCall[]
+  usage: { prompt_tokens: number; completion_tokens: number }
+}
+```
+
+**Built-in providers:** `llamacpp` (OpenAI-compatible, maps Qwen `reasoning_content` → `reasoning`), `openai`, `anthropic`, `ollama`, `custom`
+
+**Three execution modes:**
+- `single` — direct LLM call (summarization, extraction, report drafting)
+- `tool-agent` — LLM with scoped tools per stage:
+  - enrich: `read_graph`, `propose_node`, `propose_edge`, `fetch_url`, `extract_entities`
+  - analyze: `read_graph`, `run_algorithm`, `propose_hypothesis`, `compare_timelines`
+  - report: `read_graph`, `read_hypotheses`, `draft_section`
+- `swarm` — MiroFish multi-agent simulation (graph entities become autonomous agents)
+
+### Pipeline Execution Flow
+
+```
+Researcher clicks "Run Pipeline" on dashboard
+  │
+  ├─ Read InvestigationConfig + PipelineConfig from Neo4j
+  ├─ Resolve current stage from PipelineState node
+  │
+  ├─ Stage: ingest
+  │   ├─ Read SourceConnector nodes
+  │   ├─ Run connectors server-side (parallel where independent)
+  │   ├─ Source-level dedup against existing graph (caso_slug filter)
+  │   ├─ Write bronze nodes to Neo4j
+  │   ├─ Create AuditEntry nodes
+  │   ├─ PipelineState → status: "gate_pending"
+  │   └─ Redirect to gate review UI
+  │
+  ├─ Gate: researcher reviews proposals → approve/reject
+  │   ├─ AuditEntry with decision + rationale
+  │   ├─ Snapshot auto-created
+  │   └─ PipelineState → next stage
+  │
+  ├─ Stage: verify → parallel agents, web search, propose tier promotions
+  ├─ Stage: enrich → fetch docs, LLM entity extraction, reverse lookups
+  ├─ Stage: analyze → graph algorithms + LLM analysis (tool-agent or swarm)
+  ├─ Stage: report → LLM drafts investigation report
+  │
+  └─ Pipeline complete → PipelineState status: "completed"
+```
+
+**Key properties:**
+- Stages are re-runnable (re-running ingest after adding a source only processes what's new)
+- Gates are blocking (pipeline stops until researcher acts)
+- Stages can loop (`back_to_analyze` action on report gate)
+- LLM scope is per-stage (defined in stage config)
+
+### Dedup Two-Pass Model
+
+1. **Source-level dedup** (per SourceConnector's `dedup_config_json`): at connector time, dedup incoming records against existing graph
+2. **Pipeline-level dedup** (verify stage): cross-source global pass after all sources ingested
+
+Both use existing Levenshtein algorithm from `dedup.ts`. Thresholds configurable per pass.
+
+### Graph Algorithms (application-side TypeScript, not Neo4j GDS)
+
+| Algorithm | Purpose | Implementation |
+|---|---|---|
+| Degree centrality | Identify most-connected nodes | Count relationships per node |
+| Betweenness centrality | Find bridge nodes | BFS-based approximation (extend `algorithms.ts`) |
+| Community detection | Find clusters | Label propagation (iterative, O(n) per pass) |
+| Anomaly detection | Unusual patterns | Statistical outliers on degree, temporal gaps, isolated clusters |
+| Temporal patterns | Timeline correlations | Event co-occurrence within time windows |
+
+Results stored as `Proposal` nodes of type `hypothesis`, presented at analyze gate.
+
+### Phase 1: Engine Data Model
+- [ ] Add engine node type constraints to `scripts/init-schema.ts`:
+  - Uniqueness: `SourceConnector.id`, `PipelineConfig.id`, `PipelineStage.id`, `Gate.id`, `PipelineState.id`, `Proposal.id`, `AuditEntry.id`, `Snapshot.id`, `ModelConfig.id`, `MiroFishConfig.id`
+- [ ] Create `src/lib/engine/types.ts` — TypeScript interfaces + Zod schemas for all engine node types: `SourceConnector`, `PipelineConfig`, `PipelineStage`, `Gate`, `PipelineState`, `Proposal`, `AuditEntry`, `Snapshot`, `ModelConfig`, `MiroFishConfig`
+- [ ] Create `src/lib/engine/config.ts` — CRUD operations for engine config nodes (read/write to Neo4j)
+- [ ] Create `src/lib/engine/audit.ts` — append-only AuditEntry creation with SHA-256 hash chain, chain validation on startup
+
+### Phase 2: LLM Abstraction Layer
+- [ ] Create `src/lib/engine/llm/types.ts` — `LLMProvider`, `LLMResponse`, `LLMOptions`, `Message`, `ToolCall` interfaces
+- [ ] Create `src/lib/engine/llm/llamacpp.ts` — OpenAI-compatible provider, maps Qwen `reasoning_content` → `reasoning` (mandatory — without it, proposals from thinking-mode models have empty reasoning)
+- [ ] Create `src/lib/engine/llm/openai.ts` — OpenAI provider adapter
+- [ ] Create `src/lib/engine/llm/anthropic.ts` — Anthropic provider adapter, maps `thinking` blocks → `reasoning`
+- [ ] Create `src/lib/engine/llm/factory.ts` — provider factory from `ModelConfig` node
+- [ ] Create `src/lib/engine/llm/tools.ts` — scoped tool definitions per stage (read_graph, propose_node, propose_edge, fetch_url, extract_entities, run_algorithm, propose_hypothesis, compare_timelines, draft_section)
+
+### Phase 3: Pipeline Executor
+- [ ] Create `src/lib/engine/pipeline.ts` — pipeline stage runner:
+  - Reads `PipelineConfig` + stages from Neo4j
+  - Resolves current stage from `PipelineState` node
+  - Executes stage handler (dispatch to stage-specific module)
+  - Updates `PipelineState` (progress, status)
+  - Creates `AuditEntry` nodes per action
+  - On gate: sets `status: "gate_pending"`, returns gate info
+- [ ] Create `src/lib/engine/proposals.ts` — Proposal CRUD:
+  - Create proposals (from connectors, LLM, algorithms)
+  - List pending proposals per stage
+  - Batch approve/reject with rationale
+  - Apply approved proposals to graph (create nodes/edges, promote tiers)
+- [ ] Create `src/lib/engine/snapshots.ts` — snapshot management:
+  - Auto-create at gate approval
+  - Manual create from dashboard
+  - List/restore snapshots (restore = regenerate from audit log replay)
+
+### Phase 4: Source Connectors
+- [ ] Create `src/lib/engine/connectors/types.ts` — connector interface
+- [ ] Create `src/lib/engine/connectors/rest-api.ts` — paginated REST API connector with rate limiting and resumability
+- [ ] Create `src/lib/engine/connectors/file-upload.ts` — CSV/JSON/PDF file connector (files stored in webapp upload directory)
+- [ ] Create `src/lib/engine/connectors/custom-script.ts` — server-side script that outputs JSONL
+- [ ] Create `src/lib/engine/connectors/factory.ts` — connector factory from `SourceConnector` node config
+- [ ] Integrate existing dedup module (`src/lib/ingestion/dedup.ts`) for source-level dedup per connector's `dedup_config_json`
+
+### Phase 5: Stage Implementations
+- [ ] Create `src/lib/engine/stages/ingest.ts` — run source connectors, source-level dedup, write bronze nodes, create audit entries
+- [ ] Create `src/lib/engine/stages/verify.ts` — dispatch parallel verification agents, propose tier promotions, cross-source dedup (pipeline-level)
+- [ ] Create `src/lib/engine/stages/enrich.ts` — fetch document content, LLM entity extraction (tool-agent mode), reverse lookups
+- [ ] Create `src/lib/engine/stages/analyze.ts` — graph algorithms + LLM analysis (tool-agent or swarm mode), produce hypothesis proposals
+- [ ] Create `src/lib/engine/stages/report.ts` — LLM drafts investigation report sections as proposals
+- [ ] Create `src/lib/engine/agents.ts` — parallel agent dispatch per stage config (scoped queries, concurrent execution, progress updates on PipelineState)
+
+### Phase 6: Graph Algorithms
+- [ ] Extend `src/lib/graph/algorithms.ts` with:
+  - Degree centrality (count relationships per node)
+  - Betweenness centrality (BFS-based approximation)
+  - Community detection (label propagation, iterative)
+  - Anomaly detection (statistical outliers on degree, temporal gaps, isolated clusters)
+  - Temporal patterns (event co-occurrence within time windows)
+- [ ] Results produce `Proposal` nodes of type `hypothesis` with confidence scores and reasoning
+
+### Phase 7: MiroFish Integration
+- [ ] Refactor `src/lib/mirofish/client.ts` — add `endpoint` parameter to `initializeSimulation`, `querySimulation`, `getSimulationStatus` (currently reads `MIROFISH_API_URL` at module load)
+- [ ] Refactor `src/lib/mirofish/export.ts` — generalize `graphToMiroFishSeed()` to read `agent_source` and `context_from` from stage config (currently hardcodes Person, Organization, Location)
+
+### Phase 8: API Routes
+- [ ] Create engine API routes:
+  - `src/app/api/engine/[investigationId]/run/route.ts` — trigger pipeline execution
+  - `src/app/api/engine/[investigationId]/state/route.ts` — get pipeline state
+  - `src/app/api/engine/[investigationId]/proposals/route.ts` — list/batch-review proposals
+  - `src/app/api/engine/[investigationId]/gate/[stageId]/route.ts` — gate review actions
+  - `src/app/api/engine/[investigationId]/audit/route.ts` — audit log
+  - `src/app/api/engine/[investigationId]/snapshots/route.ts` — snapshot CRUD
+
+### Scope Boundaries
+
+**In scope:**
+- Engine data model (all config nodes in Neo4j)
+- LLM abstraction layer (4 providers + 3 execution modes)
+- Pipeline executor (stage runner, gates, proposals, audit trail, snapshots)
+- Source connectors (rest-api, file-upload, custom-script)
+- Stage implementations (ingest, verify, enrich, analyze, report)
+- Graph algorithms (5 algorithms, application-side TypeScript)
+- MiroFish refactor (endpoint param, generalized seed export)
+- API routes for engine control
+
+**Out of scope (future milestones):**
+- Webapp UI (dashboard, gate review pages, schema editor, create wizard)
+- Template system (InvestigationTemplate nodes, built-in templates, community templates)
+- Forking/branching (lazy copy-on-write, merge gates)
+- Cycle mode (scheduled re-runs)
+- Coalition-owned investigations (consensus gates)
+- `web-scraper`, `court-records`, `corporate-registry` connector types
+
+### Existing Code Reuse
+
+| Current Code | Engine Component | Action |
+|---|---|---|
+| `src/lib/ingestion/dedup.ts` | Engine dedup module | Reuse directly |
+| `src/lib/ingestion/quality.ts` | Conflict resolution | Reuse directly |
+| `scripts/review-wave.ts` | Gate review data provider | Pattern reference |
+| `scripts/promote-nodes.ts` | Gate approval handler | Pattern reference |
+| `src/lib/mirofish/client.ts` | Swarm execution mode | Refactor (add endpoint param) |
+| `src/lib/mirofish/export.ts` | Swarm seed generation | Refactor (generalize node types) |
+| `src/lib/graph/algorithms.ts` | Analyze stage | Extend (add 5 algorithms) |
+| `scripts/ingest-wave-*.ts` | Connector implementations | Pattern reference (connectors replace these) |
+
+### Verification
+- [ ] Engine config nodes (SourceConnector, PipelineConfig, PipelineStage, Gate, ModelConfig) can be CRUD'd via API
+- [ ] LLM providers (llamacpp, openai, anthropic) produce valid `LLMResponse` with `reasoning` field mapped correctly
+- [ ] Pipeline runs ingest stage → creates bronze nodes → PipelineState → "gate_pending"
+- [ ] Gate approval → creates AuditEntry with hash chain → creates Snapshot → advances to next stage
+- [ ] Proposals accumulate during stage, presented at gate, batch approve/reject works
+- [ ] AuditEntry hash chain validates on startup (tamper detection)
+- [ ] Source-level dedup prevents duplicate nodes within connector run
+- [ ] Pipeline-level dedup (verify stage) catches cross-source duplicates
+- [ ] Graph algorithms produce hypothesis Proposals with confidence scores
+- [ ] MiroFish swarm mode reads endpoint from MiroFishConfig node, seed generation uses schema-defined node types
+- [ ] Full pipeline run (ingest → verify → enrich → analyze → report) completes with gates at each step
+- [ ] `pnpm run dev` starts without errors
+
+**Dependencies:** Milestone 9 (InvestigationConfig + SchemaDefinition nodes must exist)
+
+---
+
 ## Rate Limiting Summary
 
 | Endpoint | Limit | Key |
@@ -952,7 +1234,7 @@ Phases 1–4 are data scripts. Phases 5–6 are code changes. Scripts run before
 
 ```
 M0 ──→ M1 ──→ M2 ──┬──→ M3 ──┐
-                     │         ├──→ M6 ──→ M7 ──→ M8 ──→ M9
+                     │         ├──→ M6 ──→ M7 ──→ M8 ──→ M9 ──→ M10
                      └──→ M4 ──┘
 M0 ──→ M5 ─────────────────────┘
 ```
@@ -960,4 +1242,5 @@ M0 ──→ M5 ─────────────────────�
 - M3 (Graph Explorer) and M4 (Politician Profiles) are parallel after M2
 - M5 (Auth) is parallel with M1-M4 — only depends on M0
 - M9 (Investigation Standardization) follows M8 — standardizes all 3 existing investigations
+- M10 (Motor de Investigación Autónomo) follows M9 — automated pipeline with human gates
 - M6 (Investigations) is the merge point: needs M2, M3, M4, M5

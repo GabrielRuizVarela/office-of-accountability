@@ -749,13 +749,13 @@ Any politician with a verified account has:
 
 ## 11. Milestone Roadmap
 
-**Critical path:** M0 → M1 → M2 → M3 → M4 → M5 → M6 → M7 → M8 → M9
+**Critical path:** M0 → M1 → M2 → M3 → M4 → M5 → M6 → M7 → M8 → M9 → M10
 
 **North star:** A governance system where citizens use the Investigation Engine to produce evidence that feeds democratic accountability mechanisms (liquid democracy, citizen mandates, accountability scoring).
 
 ```
-M0 Baseline ──→ M1 Data ──→ M2 Graph ──→ M3 Engine Core ──→ M4 Engine Analysis ──→ M5 Engine UI ──→ M6 Community ──→ M7 Advanced ──→ M8 Governance ──→ M9 Investigation
-   (exists)      Foundation    Engine       Foundation         Connectors &           Webapp          Platform         Platform        System          Standardization
+M0 Baseline ──→ M1 Data ──→ M2 Graph ──→ M3 Engine Core ──→ M4 Engine Analysis ──→ M5 Engine UI ──→ M6 Community ──→ M7 Advanced ──→ M8 Governance ──→ M9 Investigation ──→ M10 Motor
+   (exists)      Foundation    Engine       Foundation         Connectors &           Webapp          Platform         Platform        System          Standardization     Autónomo
                                                                Analysis
 ```
 
@@ -970,7 +970,29 @@ Phases 1–4 are data scripts; 5–6 are code changes. Each independently verifi
 
 **Extends from baseline:** Caso Libra queries/types/transforms (generalize from prefixed to generic labels), Caso Epstein seed script (extend from hand-authored to full JSON import), existing `[slug]` page routes (refactor from conditional dispatch to config-driven)
 
-### Scale (beyond M9)
+### M10: Motor de Investigación Autónomo
+
+**Goal:** Automated investigation pipeline — the engine searches, validates, consolidates, and reports findings with human review at each step.
+
+**Depends on:** M9 (InvestigationConfig + SchemaDefinition nodes, unified query layer)
+**Extends from baseline:** `dedup.ts` and `quality.ts` (reused directly), `algorithms.ts` (extended), `mirofish/client.ts` (refactored), `ingest-wave-*.ts` (pattern reference for connectors)
+
+| Deliverable | Difficulty |
+|-------------|-----------|
+| Engine data model: SourceConnector, PipelineConfig, PipelineStage, Gate, PipelineState, Proposal, AuditEntry, Snapshot, ModelConfig, MiroFishConfig nodes in Neo4j | Medium |
+| LLM abstraction layer: provider interface + llamacpp/openai/anthropic adapters, Qwen `reasoning_content` mapping, three execution modes (single, tool-agent, swarm) | Medium |
+| Pipeline executor: stage runner, gate mechanism (blocking), proposal system (create/batch-review/apply), PipelineState persistence | Hard |
+| Source connectors: rest-api (paginated, rate-limited, resumable), file-upload (CSV/JSON/PDF), custom-script (JSONL output) | Medium-Hard |
+| Stage implementations: ingest (connectors + source-level dedup + bronze nodes), verify (parallel agents + tier promotions + cross-source dedup), enrich (doc fetch + LLM entity extraction), analyze (graph algorithms + LLM analysis), report (LLM draft sections) | Hard |
+| Graph algorithms: degree centrality, betweenness centrality (BFS approx), community detection (label propagation), anomaly detection, temporal patterns | Medium-Hard |
+| AuditEntry system: append-only, SHA-256 hash chain, chain validation on startup | Medium |
+| Snapshot system: auto-create at gates, manual create, list/restore | Medium |
+| MiroFish refactor: endpoint parameter on public functions, generalized seed export from schema | Easy |
+| Engine API routes (6 endpoints: run, state, proposals, gate, audit, snapshots) | Medium |
+
+**Out of scope:** Webapp UI (dashboard, gate review pages, create wizard), template system, forking/branching, cycle mode, coalition-owned investigations, web-scraper/court-records/corporate-registry connectors.
+
+### Scale (beyond M10)
 
 - Province-level coverage (legislature data beyond Congress)
 - Neo4j clustering / sharding if single instance becomes insufficient
