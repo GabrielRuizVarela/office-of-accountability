@@ -5,29 +5,51 @@
  */
 
 import type { Metadata } from 'next'
+import { headers } from 'next/headers'
 import Link from 'next/link'
 
+import { detectLang } from '@/lib/i18n'
+import type { Lang } from '@/lib/language-context'
 import { getAllProvinces } from '@/lib/graph'
 
 // ---------------------------------------------------------------------------
 // Metadata
 // ---------------------------------------------------------------------------
 
-export const metadata: Metadata = {
-  title: 'Provincias — Legisladores por provincia | ORC',
-  description:
-    'Explorar legisladores argentinos por provincia. Ver diputados y senadores de cada jurisdicción.',
-  openGraph: {
+const PAGE_META: Record<Lang, { title: string; description: string; siteName: string }> = {
+  es: {
     title: 'Provincias — Legisladores por provincia | ORC',
     description:
       'Explorar legisladores argentinos por provincia. Ver diputados y senadores de cada jurisdicción.',
-    type: 'website',
-    url: '/provincias',
     siteName: 'Oficina de Rendición de Cuentas',
   },
-  alternates: {
-    canonical: '/provincias',
+  en: {
+    title: 'Provinces — Legislators by Province | ORC',
+    description:
+      'Explore Argentine legislators by province. View representatives and senators from each jurisdiction.',
+    siteName: 'Office of Accountability',
   },
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const h = await headers()
+  const lang = detectLang(h.get('accept-language'))
+  const meta = PAGE_META[lang]
+
+  return {
+    title: meta.title,
+    description: meta.description,
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      type: 'website',
+      url: '/provincias',
+      siteName: meta.siteName,
+    },
+    alternates: {
+      canonical: '/provincias',
+    },
+  }
 }
 
 // ---------------------------------------------------------------------------
