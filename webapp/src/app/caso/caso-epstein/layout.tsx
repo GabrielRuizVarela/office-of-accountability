@@ -7,7 +7,7 @@ import { BilingualLegalDisclaimer } from '@/components/investigation/LegalDiscla
 export const metadata: Metadata = {
   title: 'Epstein Case — Office of Accountability',
   description:
-    'Trafficking and power network. 7,287 entities, court documents, flight records, and factchecking.',
+    'Trafficking and power network. 7,276 entities, court documents, flight records, and factchecking.',
 }
 
 export default function CasoEpsteinLayout({
