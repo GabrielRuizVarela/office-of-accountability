@@ -12,7 +12,7 @@ export default async function EvidenciaPage({
   readonly params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const documents = await getDocuments()
+  const documents = await getDocuments(slug)
 
   return <EvidenciaContent slug={slug} documents={documents} />
 }
