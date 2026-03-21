@@ -1,0 +1,322 @@
+{
+  "investigation": "finanzas-politicas",
+  "wave": 2,
+  "title": "AMIA Bombing & Nisman Death: Complete Dossier",
+  "date": "2026-03-21",
+  "summary": "The 1994 AMIA bombing (85 dead, 300+ wounded) and the 2015 death of prosecutor Alberto Nisman constitute Argentina's most consequential unsolved cases. Three decades of judicial proceedings have established Iran's state responsibility and Hezbollah's operational role, while exposing systematic cover-ups involving intelligence services, judges, prosecutors, and successive governments. The case interlinks terrorism, intelligence corruption, geopolitical maneuvering, and political obstruction across every Argentine administration since 1994.",
+
+  "timeline": [
+    {"date": "1992-03-17", "event": "Bombing of Israeli Embassy in Buenos Aires. 29 killed, 242 injured. Attributed to Hezbollah/Iran. Never judicially resolved."},
+    {"date": "1994-07-18", "event": "AMIA bombing. Suicide car bomb destroys AMIA/DAIA headquarters in Buenos Aires. 85 killed, 300+ wounded. Deadliest terrorist attack in Argentine history."},
+    {"date": "1994-07", "event": "Judge Juan Jose Galeano takes charge of investigation. SIDE (Secretaria de Inteligencia) begins involvement."},
+    {"date": "1994-1996", "event": "Initial investigation follows 'Syrian Path' (pista siria) based on a call to Telleldin from A.K.E., a Syrian national. This lead is deliberately abandoned."},
+    {"date": "1996", "event": "Carlos Telleldin arrested as alleged provider of the Renault Trafic van used in the bombing."},
+    {"date": "1996-1997", "event": "SIDE pays USD 400,000 to Telleldin (two payments of USD 200,000 from Sala Patria reserve funds) to falsely implicate Buenos Aires Provincial Police officers (Comisario Juan Jose Ribelli and three others)."},
+    {"date": "1997", "event": "Buenos Aires Provincial Police officers arrested based on Telleldin's fabricated testimony. They will remain imprisoned for 115 months before acquittal."},
+    {"date": "2001", "event": "First oral trial begins before Tribunal Oral Federal 3."},
+    {"date": "2003", "event": "Video broadcast on Argentine TV shows Judge Galeano offering Telleldin USD 400,000 for testimony. Galeano removed from case."},
+    {"date": "2004-09", "event": "TOF 3 acquits all 22 defendants, declaring proceedings null due to judicial irregularities. First trial collapses."},
+    {"date": "2005-04", "event": "Alberto Nisman appointed as special prosecutor for the AMIA case, heading the UFI-AMIA (Unidad Fiscal de Investigaciones de la causa AMIA)."},
+    {"date": "2005-08", "event": "Judge Galeano impeached and removed from the judiciary."},
+    {"date": "2006-10-25", "event": "Prosecutors Nisman and Martinez Burgos formally accuse Iranian government of directing the bombing and Hezbollah of carrying it out. Request arrest of 8 Iranian and Lebanese nationals including ex-President Rafsanjani."},
+    {"date": "2007-11", "event": "Interpol issues Red Notices for 5 Iranian suspects."},
+    {"date": "2009", "event": "Supreme Court confirms nullity of first trial except regarding the van delivery; orders new investigation of Telleldin."},
+    {"date": "2013-01-27", "event": "Memorandum of Understanding signed between Argentina and Iran in Addis Ababa, Ethiopia. Signed by FM Hector Timerman (Argentina) and FM Ali Akbar Salehi (Iran). Creates 'Truth Commission' of international jurists."},
+    {"date": "2013-02-21", "event": "Argentine Senate ratifies the memorandum."},
+    {"date": "2013-02-27", "event": "Argentine Chamber of Deputies ratifies the memorandum. Jewish community appeals to judiciary."},
+    {"date": "2013-06", "event": "Federal judge declares memorandum unconstitutional. Iran never ratifies it."},
+    {"date": "2014-12", "event": "Antonio 'Jaime' Stiuso forced out of SIDE/AFI after 42 years. Rupture with Casa Rosada over memorandum."},
+    {"date": "2015-01-14", "event": "Nisman files criminal complaint against President Cristina Fernandez de Kirchner, FM Hector Timerman, and others for aggravated cover-up (encubrimiento agravado) related to the memorandum with Iran."},
+    {"date": "2015-01-18", "event": "Alberto Nisman found dead in his Puerto Madero apartment bathroom with a gunshot wound to the head, hours before he was to present evidence to Congress."},
+    {"date": "2015-01-19", "event": "Initial forensic report by Federal Police Medico-Legal Unit concludes suicide."},
+    {"date": "2018", "event": "Federal Chamber of Buenos Aires endorses homicide hypothesis based on National Gendarmerie forensic analysis. Rules out suicide."},
+    {"date": "2019-02", "event": "Cover-up trial (juicio por encubrimiento) concludes. TOF 2 sentences 8 defendants including Judge Galeano, SIDE director Hugo Anzorreguy, prosecutors Mullen and Barbaccia. Carlos Menem and 4 others acquitted."},
+    {"date": "2020-12-23", "event": "Second trial of Carlos Telleldin concludes. Acquitted again."},
+    {"date": "2021-10", "event": "TOF 8 dismisses all accused in memorandum case (Cristina Kirchner et al.) based on 'non-existence of crime'."},
+    {"date": "2023-09", "event": "Federal Chamber of Cassation revokes dismissal, orders Cristina Kirchner to trial for memorandum cover-up."},
+    {"date": "2024-01-26", "event": "Inter-American Court of Human Rights declares Argentina internationally responsible for violations of victims' rights due to failure to investigate with due diligence."},
+    {"date": "2024-04-11", "event": "Criminal Cassation Chamber (Casacion) rules Iran is a 'terrorist state', holds Iran responsible for planning and Hezbollah for executing both the AMIA and Israeli Embassy bombings."},
+    {"date": "2024", "event": "Congress approves Law 27.784 enabling trials in absentia for crimes against humanity."},
+    {"date": "2024-12-05", "event": "Supreme Court rejects all defense appeals in memorandum case, clearing path for oral trial of Cristina Kirchner."},
+    {"date": "2025-01-10", "event": "Fiscalia report ratifies Nisman was murdered for investigating AMIA cover-up. Confirms third-party involvement: assailants entered apartment, restrained Nisman, forced him to knees in bathroom, shot him to simulate suicide."},
+    {"date": "2025-06-26", "event": "Judge Daniel Rafecas orders trial in absentia for 10 Iranian and Lebanese suspects."},
+    {"date": "2025-07", "event": "Memorandum trial against Cristina Kirchner: TOF announces date to be set after judicial recess."},
+    {"date": "2025-09-05", "event": "Procurador Eduardo Casal asks Supreme Court to revoke Telleldin's 2020 acquittal."},
+    {"date": "2025-09-23", "event": "Federal Chamber confirms trial in absentia order. Unprecedented in Argentine judicial history."},
+    {"date": "2026-01-18", "event": "11th anniversary of Nisman's death. Justice advances on illegal intelligence and political cover-up angles."},
+    {"date": "2026-03-01", "event": "Iran designates Ahmad Vahidi -- one of the 10 AMIA fugitives -- as new head of the Islamic Revolutionary Guard Corps (IRGC)."},
+    {"date": "2026-03-04", "event": "Fiscal Sebastian Basso requests formal prosecution of all 10 accused, plus international capture of another Iranian hierarch. Receives documents from 4 Iranian deserters in France that validate Nisman's original intelligence-based findings."},
+    {"date": "2026-03-09", "event": "President Milei at Yeshiva University: 'Iran is our enemy... they have sent us two bombs.' Declares strategic alliance with US and Israel."},
+    {"date": "2026-03-17", "event": "Iran threatens Argentina, says Milei 'crossed an unforgivable red line.' Tehran Times editorial promises 'proportionate response.'"}
+  ],
+
+  "key_actors": {
+    "prosecutors": [
+      {
+        "name": "Alberto Nisman",
+        "role": "Fiscal especial causa AMIA (UFI-AMIA) 2005-2015",
+        "status": "Muerto 2015-01-18. Justicia considera homicidio vinculado a su investigacion.",
+        "significance": "Acuso formalmente a Iran/Hezbollah (2006). Denuncio a CFK por encubrimiento via memorandum (2015). Asesinado horas antes de presentar pruebas al Congreso."
+      },
+      {
+        "name": "Marcelo Martinez Burgos",
+        "role": "Co-fiscal con Nisman en acusacion a Iran (2006)",
+        "status": "Activo",
+        "significance": "Co-autor de la acusacion formal contra Iran y Hezbollah."
+      },
+      {
+        "name": "Sebastian Basso",
+        "role": "Fiscal actual UFI-AMIA",
+        "status": "Activo. Pidio procesamiento de 10 acusados (marzo 2026).",
+        "significance": "Recibio documentos de desertores iranies que validan la denuncia de Nisman. Impulsa juicio en ausencia."
+      },
+      {
+        "name": "Eamon Mullen",
+        "role": "Fiscal federal original causa AMIA",
+        "status": "Condenado en juicio por encubrimiento (2019)",
+        "significance": "Participo en el encubrimiento junto con juez Galeano y SIDE."
+      },
+      {
+        "name": "Jose Barbaccia",
+        "role": "Fiscal federal original causa AMIA",
+        "status": "Condenado en juicio por encubrimiento (2019)",
+        "significance": "Co-participe del encubrimiento."
+      }
+    ],
+    "judges": [
+      {
+        "name": "Juan Jose Galeano",
+        "role": "Juez federal causa AMIA (1994-2003)",
+        "status": "Destituido 2005. Condenado por encubrimiento 2019.",
+        "significance": "Orquesto pago de USD 400,000 a Telleldin. Abandono deliberadamente la pista siria. Destruyo pruebas."
+      },
+      {
+        "name": "Daniel Rafecas",
+        "role": "Juez federal actual causa AMIA",
+        "status": "Activo. Ordeno juicio en ausencia (junio 2025).",
+        "significance": "Impulsa el juicio in absentia historico."
+      }
+    ],
+    "intelligence": [
+      {
+        "name": "Antonio 'Jaime' Stiuso",
+        "role": "Jefe de Contrainteligencia SIDE (1972-2014). 42 anos en servicio.",
+        "status": "Retirado/jubilado. Bajo gobierno Milei, SIDE retoma su legado.",
+        "significance": "Operador en las sombras de la investigacion AMIA junto a Nisman. Contactos con CIA y Mossad. Acusado por ex-colegas de boicotear la investigacion (pista siria). Relacion ambigua: aliado de Nisman pero tambien sospechado de manipular la causa.",
+        "controversies": "Patricio Finnen (ex-Sala Patria) acuso a Stiuso de sabotear la investigacion. Stiuso afirma que CFK queria matarlo."
+      },
+      {
+        "name": "Hugo Anzorreguy",
+        "role": "Secretario de Inteligencia (SIDE) durante gobierno Menem",
+        "status": "Condenado por encubrimiento (2019)",
+        "significance": "Reconocio el pago de USD 400,000 a Telleldin. Fondos de Sala Patria de la SIDE."
+      },
+      {
+        "name": "Patricio Finnen",
+        "role": "Ex-jefe Sala Patria (SIDE)",
+        "status": "Declaro como testigo",
+        "significance": "Acuso a Stiuso de sabotear la investigacion cuando tomo control de ella."
+      }
+    ],
+    "politicians_argentina": [
+      {
+        "name": "Carlos Menem",
+        "role": "Presidente de Argentina (1989-1999). Presidente durante el atentado.",
+        "status": "Fallecido 2021-02-14. Fue absuelto en juicio por encubrimiento (2019).",
+        "significance": "Bajo su gobierno ocurrio el atentado y se orquesto el encubrimiento inicial. Nisman afirmo que el atentado fue 'direccionado contra Menem' por sus politicas de venta de armas y reactores nucleares."
+      },
+      {
+        "name": "Cristina Fernandez de Kirchner",
+        "role": "Presidenta (2007-2015). Firmo memorandum con Iran.",
+        "status": "Condena firme por Vialidad. Juicio oral pendiente por memorandum (2026).",
+        "significance": "Acusada por Nisman de encubrimiento agravado por firmar memorandum que buscaba impunidad para acusados iranies. Corte Suprema confirmo que debe ir a juicio oral."
+      },
+      {
+        "name": "Hector Timerman",
+        "role": "Canciller de Argentina (2010-2015). Firmo el memorandum.",
+        "status": "Fallecido durante el proceso judicial.",
+        "significance": "Signatario argentino del memorandum. Co-acusado con CFK."
+      },
+      {
+        "name": "Javier Milei",
+        "role": "Presidente de Argentina (2023-presente)",
+        "status": "En ejercicio",
+        "significance": "Declaro a Iran 'nuestro enemigo'. Alineamiento con EEUU e Israel. SIDE bajo su gobierno retoma legado Stiuso. Argentina unico pais de LATAM en respaldar ataques contra Iran (marzo 2026)."
+      }
+    ],
+    "iranian_suspects": [
+      {"name": "Ali Fallahijan", "role": "Ex-Ministro de Inteligencia de Iran", "status": "Profugo. Circular roja Interpol. Procesamiento solicitado 2026."},
+      {"name": "Ali Akbar Velayati", "role": "Ex-Canciller de Iran", "status": "Profugo. Circular roja Interpol."},
+      {"name": "Mohsen Rezai", "role": "Ex-Comandante IRGC (Guardia Revolucionaria)", "status": "Profugo. Circular roja Interpol."},
+      {"name": "Ahmad Vahidi", "role": "Ex-Comandante Fuerza Quds IRGC. Designado jefe IRGC marzo 2026.", "status": "Profugo. Circular roja Interpol. Ahora lidera la Guardia Revolucionaria."},
+      {"name": "Hadi Soleimanpour", "role": "Ex-embajador de Iran en Argentina", "status": "Profugo."},
+      {"name": "Mohsen Rabbani", "role": "Ex-agregado cultural embajada Iran en Buenos Aires", "status": "Profugo. Circular roja Interpol. Considerado operador local clave."},
+      {"name": "Ahmad Reza Asghari", "role": "Ex-secretario diplomatico embajada Iran", "status": "Profugo."},
+      {"name": "Salman Raouf Salman", "role": "Operativo Hezbollah", "status": "Profugo. Circular roja Interpol."},
+      {"name": "Abdallah Salman", "role": "Operativo Hezbollah", "status": "Profugo."},
+      {"name": "Hussein Mounir Mouzannar", "role": "Operativo Hezbollah", "status": "Profugo."}
+    ],
+    "local_connection": [
+      {
+        "name": "Carlos Telleldin",
+        "role": "Presunto proveedor de la camioneta Renault Trafic usada en el atentado.",
+        "status": "Absuelto dos veces (2004, 2020). Procurador Casal pidio revocar absolucion ante Corte Suprema (septiembre 2025).",
+        "significance": "Recibio USD 400,000 de la SIDE para implicar falsamente a policias bonaerenses. Pieza central del encubrimiento."
+      },
+      {
+        "name": "Juan Jose Ribelli",
+        "role": "Comisario Policia Bonaerense",
+        "status": "Absuelto tras 115 meses de prision injusta.",
+        "significance": "Falsamente implicado por Telleldin con dinero de la SIDE."
+      }
+    ],
+    "organizations": [
+      {"name": "AMIA (Asociacion Mutual Israelita Argentina)", "type": "Victima/Querellante", "significance": "Objetivo del atentado. Comunidad judia argentina."},
+      {"name": "DAIA (Delegacion de Asociaciones Israelitas Argentinas)", "type": "Querellante", "significance": "Representacion politica comunidad judia. Co-querellante."},
+      {"name": "SIDE/SI/AFI", "type": "Agencia de inteligencia estatal", "significance": "Involucrada en encubrimiento (pago a Telleldin). Stiuso opero desde alli. Milei la reorganizo."},
+      {"name": "Hezbollah", "type": "Organizacion militante libanesa", "significance": "Ejecutora material del atentado segun justicia argentina."},
+      {"name": "IRGC (Guardia Revolucionaria Iraní)", "type": "Fuerza militar iran", "significance": "Planificador del atentado. Vahidi (acusado) ahora es su jefe."},
+      {"name": "UFI-AMIA", "type": "Unidad Fiscal de Investigaciones", "significance": "Fiscalia especial creada para la causa. Nisman la dirigio 2005-2015, ahora Basso."},
+      {"name": "Apemia", "type": "Asociacion de familiares de victimas", "significance": "Denuncia encubrimiento de todos los gobiernos. Exige apertura de archivos secretos."}
+    ]
+  },
+
+  "judicial_status": {
+    "causa_principal_atentado": {
+      "status": "Juicio en ausencia en tramite",
+      "detail": "10 acusados iranies y libaneses. Juez Rafecas ordeno juicio en ausencia (junio 2025). Camara Federal confirmo (septiembre 2025). Fiscal Basso pidio procesamiento (marzo 2026). Defensa publica impugno constitucionalidad de Ley 27.784 ante Casacion.",
+      "next_steps": "Sala II de Casacion debe resolver impugnacion constitucional. Luego juicio oral."
+    },
+    "causa_encubrimiento": {
+      "status": "Sentencias dictadas (2019)",
+      "detail": "8 condenados: Galeano, Anzorreguy, Mullen, Barbaccia, entre otros. Penas de hasta 6 anos. Menem absuelto. Casacion confirmo condenas (abril 2024).",
+      "condemned": ["Juan Jose Galeano", "Hugo Anzorreguy", "Eamon Mullen", "Jose Barbaccia"]
+    },
+    "causa_telleldin": {
+      "status": "Absuelto dos veces (2004, 2020). Recurso ante Corte Suprema pendiente.",
+      "detail": "Primer juicio anulado por irregularidades (2004). Segundo juicio: absuelto diciembre 2020. Procurador Casal pidio a Corte revocar absolucion (septiembre 2025)."
+    },
+    "causa_memorandum": {
+      "status": "Juicio oral pendiente (2026)",
+      "detail": "CFK y otros acusados de encubrimiento agravado. Sobreseidos en primera instancia (TOF 8, octubre 2021). Casacion revoco sobreseimiento (septiembre 2023). Corte Suprema rechazo recursos de defensa (diciembre 2024). TOF anunciara fecha de juicio oral.",
+      "defendants": ["Cristina Fernandez de Kirchner", "Hector Timerman (fallecido)", "otros ex-funcionarios"]
+    },
+    "causa_muerte_nisman": {
+      "status": "Investigacion abierta. Autores materiales e intelectuales sin identificar.",
+      "detail": "Camara Federal confirmo hipotesis de homicidio (2018). Fiscalia ratifico homicidio (enero 2025). Se investiga presencia de agentes de inteligencia militar cerca del departamento el fin de semana del 18/01/2015. 11 anos sin culpables.",
+      "key_evidence": "Gendarmeria Nacional determino participacion de terceros que ingresaron al departamento, lo redujeron, lo trasladaron al bano y le dispararon simulando suicidio."
+    },
+    "corte_interamericana_ddhh": {
+      "status": "Condena al Estado argentino (enero 2024)",
+      "detail": "Declaro a Argentina internacionalmente responsable por violacion de derechos de victimas. Falta de debida diligencia y plazo razonable en investigacion del atentado y su encubrimiento."
+    }
+  },
+
+  "intelligence_connections": {
+    "side_role_in_coverup": "La SIDE orquesto la 'conexion local' falsa: pago USD 400,000 a Telleldin desde fondos reservados de Sala Patria para que implicara falsamente a policias bonaerenses. Destruccion de 66 cassettes de escuchas. Abandono de la 'pista siria'. Juez Galeano actuaba en coordinacion.",
+    "stiuso_nisman_axis": "Stiuso fue el operador de inteligencia detras de la investigacion de Nisman durante una decada. Mantenia contactos con CIA y Mossad. Su salida forzada de la SIDE en diciembre 2014 precedio por un mes la muerte de Nisman.",
+    "stiuso_controversy": "Ex-colegas acusan a Stiuso de haber saboteado la investigacion original (pista siria abandonada cuando el tomo control). Simultaneamente, servicios extranjeros lo consideraban un agente excelente. Bajo Milei, la SIDE 'retoma su legado'.",
+    "military_intelligence_nisman": "Agentes de inteligencia militar fueron detectados en las inmediaciones del departamento de Nisman el fin de semana de su muerte. Identidad y cadena de mando no esclarecidas.",
+    "iranian_deserters_2026": "4 desertores del regimen de Teheran, refugiados en Francia, aportaron documentos ineditos al fiscal Basso que validan documentalmente lo que Nisman sostenia con informes de inteligencia."
+  },
+
+  "political_dimensions": {
+    "menem_1994_1999": "El atentado ocurrio bajo su gobierno. Su administracion orquesto el encubrimiento inicial via SIDE. Nisman afirmo que el atentado fue 'direccionado contra Menem' por su politica de venta de armas y reactores nucleares a paises arabes. Menem absuelto en juicio de encubrimiento.",
+    "kirchner_nestor_2003_2007": "Designo a Nisman como fiscal especial (2005). Periodo de avance en la causa con acusacion formal a Iran.",
+    "kirchner_cristina_2007_2015": "Firmo memorandum con Iran (2013). Acusada por Nisman de encubrimiento agravado. Nisman muerto un dia antes de presentar pruebas al Congreso. Stiuso forzado a salir de la SIDE diciembre 2014.",
+    "macri_2015_2019": "Relativa continuidad procesal. No se produjeron avances sustanciales en la causa principal ni en la muerte de Nisman.",
+    "milei_2023_presente": "Declaro a Iran 'nuestro enemigo'. Alineamiento con EEUU/Israel. SIDE retoma legado Stiuso. Impulso ley de juicio en ausencia. Argentina unico pais LATAM que respaldo ataques contra Iran (marzo 2026). Iran amenazo con 'respuesta proporcionada'.",
+    "cross_cutting": "Organizaciones de victimas (Apemia) denuncian que TODOS los gobiernos encubrieron: el menemismo con la pista falsa, el kirchnerismo con el memorandum, el macrismo con inaccion, y el mileismo con instrumentalizacion geopolitica. La Corte Interamericana de DDHH condeno al Estado argentino como un todo."
+  },
+
+  "graph_entities": {
+    "persons": [
+      {"name": "Alberto Nisman", "labels": ["Person", "Prosecutor", "Victim"], "props": {"born": "1963-12-05", "died": "2015-01-18", "nationality": "Argentine", "role": "Fiscal especial AMIA"}},
+      {"name": "Carlos Telleldin", "labels": ["Person", "Suspect"], "props": {"nationality": "Argentine", "role": "Proveedor de vehiculo bomba"}},
+      {"name": "Juan Jose Galeano", "labels": ["Person", "Judge"], "props": {"nationality": "Argentine", "role": "Juez federal causa AMIA", "status": "Condenado"}},
+      {"name": "Hugo Anzorreguy", "labels": ["Person", "Intelligence"], "props": {"nationality": "Argentine", "role": "Secretario de Inteligencia (SIDE)", "status": "Condenado"}},
+      {"name": "Antonio Stiuso", "labels": ["Person", "Intelligence"], "props": {"nationality": "Argentine", "role": "Jefe Contrainteligencia SIDE", "aliases": ["Jaime"]}},
+      {"name": "Ali Fallahijan", "labels": ["Person", "Suspect"], "props": {"nationality": "Iranian", "role": "Ex-Ministro Inteligencia Iran"}},
+      {"name": "Mohsen Rezai", "labels": ["Person", "Suspect"], "props": {"nationality": "Iranian", "role": "Ex-Comandante IRGC"}},
+      {"name": "Ahmad Vahidi", "labels": ["Person", "Suspect"], "props": {"nationality": "Iranian", "role": "Ex-Comandante Fuerza Quds, Jefe IRGC desde 2026"}},
+      {"name": "Mohsen Rabbani", "labels": ["Person", "Suspect"], "props": {"nationality": "Iranian", "role": "Ex-agregado cultural embajada Iran Buenos Aires"}},
+      {"name": "Salman Raouf Salman", "labels": ["Person", "Suspect"], "props": {"nationality": "Lebanese", "role": "Operativo Hezbollah"}},
+      {"name": "Hector Timerman", "labels": ["Person", "Politician"], "props": {"nationality": "Argentine", "role": "Canciller 2010-2015", "status": "Fallecido"}},
+      {"name": "Sebastian Basso", "labels": ["Person", "Prosecutor"], "props": {"nationality": "Argentine", "role": "Fiscal actual UFI-AMIA"}},
+      {"name": "Daniel Rafecas", "labels": ["Person", "Judge"], "props": {"nationality": "Argentine", "role": "Juez federal causa AMIA actual"}},
+      {"name": "Patricio Finnen", "labels": ["Person", "Intelligence"], "props": {"nationality": "Argentine", "role": "Ex-jefe Sala Patria SIDE"}},
+      {"name": "Eamon Mullen", "labels": ["Person", "Prosecutor"], "props": {"nationality": "Argentine", "role": "Fiscal original causa AMIA", "status": "Condenado"}},
+      {"name": "Jose Barbaccia", "labels": ["Person", "Prosecutor"], "props": {"nationality": "Argentine", "role": "Fiscal original causa AMIA", "status": "Condenado"}}
+    ],
+    "organizations": [
+      {"name": "AMIA", "labels": ["Organization", "Victim"], "props": {"type": "Mutual judia", "founded": 1894, "location": "Buenos Aires"}},
+      {"name": "DAIA", "labels": ["Organization"], "props": {"type": "Representacion politica judia argentina"}},
+      {"name": "SIDE", "labels": ["Organization", "Intelligence"], "props": {"type": "Agencia inteligencia estatal argentina", "aliases": ["SI", "AFI", "Secretaria de Inteligencia"]}},
+      {"name": "Hezbollah", "labels": ["Organization", "Militant"], "props": {"type": "Organizacion militante libanesa", "base": "Lebanon"}},
+      {"name": "IRGC", "labels": ["Organization", "Military"], "props": {"type": "Guardia Revolucionaria Islamica", "country": "Iran", "aliases": ["Pasdaran"]}},
+      {"name": "UFI-AMIA", "labels": ["Organization", "Judicial"], "props": {"type": "Unidad Fiscal de Investigaciones"}},
+      {"name": "Sala Patria", "labels": ["Organization", "Intelligence"], "props": {"type": "Sector operativo dentro de SIDE"}}
+    ],
+    "events": [
+      {"name": "Atentado Embajada Israel 1992", "labels": ["Event", "Attack"], "props": {"date": "1992-03-17", "location": "Buenos Aires", "dead": 29, "wounded": 242}},
+      {"name": "Atentado AMIA 1994", "labels": ["Event", "Attack"], "props": {"date": "1994-07-18", "location": "Buenos Aires", "dead": 85, "wounded": 300, "method": "Coche bomba suicida"}},
+      {"name": "Muerte Alberto Nisman", "labels": ["Event", "Death"], "props": {"date": "2015-01-18", "location": "Puerto Madero, Buenos Aires", "cause": "Disparo en la cabeza", "classification": "Homicidio (segun justicia)"}},
+      {"name": "Firma Memorandum Argentina-Iran", "labels": ["Event", "Agreement"], "props": {"date": "2013-01-27", "location": "Addis Ababa, Ethiopia"}},
+      {"name": "Fallo CIDH vs Argentina", "labels": ["Event", "Judicial"], "props": {"date": "2024-01-26", "outcome": "Argentina declarada internacionalmente responsable"}}
+    ],
+    "relationships": [
+      {"from": "Iran (Estado)", "to": "Atentado AMIA 1994", "type": "PLANNED", "props": {"confirmed_by": "Casacion Penal abril 2024"}},
+      {"from": "Hezbollah", "to": "Atentado AMIA 1994", "type": "EXECUTED", "props": {"confirmed_by": "Casacion Penal abril 2024"}},
+      {"from": "IRGC", "to": "Atentado AMIA 1994", "type": "COORDINATED"},
+      {"from": "Mohsen Rabbani", "to": "Atentado AMIA 1994", "type": "FACILITATED", "props": {"role": "Operador local en Buenos Aires"}},
+      {"from": "Ahmad Vahidi", "to": "Atentado AMIA 1994", "type": "DIRECTED", "props": {"role": "Comandante Fuerza Quds"}},
+      {"from": "Carlos Telleldin", "to": "Atentado AMIA 1994", "type": "PROVIDED_VEHICLE"},
+      {"from": "SIDE", "to": "Carlos Telleldin", "type": "BRIBED", "props": {"amount": "USD 400,000", "purpose": "Falsa imputacion policia bonaerense"}},
+      {"from": "Juan Jose Galeano", "to": "SIDE", "type": "COORDINATED_WITH", "props": {"purpose": "Encubrimiento"}},
+      {"from": "Hugo Anzorreguy", "to": "SIDE", "type": "DIRECTED"},
+      {"from": "Alberto Nisman", "to": "Antonio Stiuso", "type": "COLLABORATED_WITH", "props": {"duration": "2005-2014"}},
+      {"from": "Alberto Nisman", "to": "Cristina Fernandez de Kirchner", "type": "ACCUSED", "props": {"date": "2015-01-14", "charge": "Encubrimiento agravado"}},
+      {"from": "Cristina Fernandez de Kirchner", "to": "Firma Memorandum Argentina-Iran", "type": "ORDERED"},
+      {"from": "Hector Timerman", "to": "Firma Memorandum Argentina-Iran", "type": "SIGNED"},
+      {"from": "Firma Memorandum Argentina-Iran", "to": "Atentado AMIA 1994", "type": "ALLEGEDLY_COVERED_UP"},
+      {"from": "Sebastian Basso", "to": "UFI-AMIA", "type": "LEADS"},
+      {"from": "Patricio Finnen", "to": "Antonio Stiuso", "type": "ACCUSED_OF_SABOTAGE"}
+    ]
+  },
+
+  "sources": [
+    {"title": "AMIA bombing - Wikipedia", "url": "https://en.wikipedia.org/wiki/AMIA_bombing"},
+    {"title": "Atentado a la AMIA - Wikipedia ES", "url": "https://es.wikipedia.org/wiki/Atentado_a_la_AMIA"},
+    {"title": "ADL - AMIA/DAIA Bombing backgrounder", "url": "https://www.adl.org/resources/backgrounder/amiadaia-bombing-terror-argentina"},
+    {"title": "AMIA.org.ar - Bombing history", "url": "https://www.amia.org.ar/press/about-amia/amia-bombing-july-18th-1994/"},
+    {"title": "Argentina Court Calls Iran Terrorist State (Iran Intl)", "url": "https://www.iranintl.com/en/202404121627"},
+    {"title": "JTA - AMIA suspect now leads IRGC", "url": "https://www.jta.org/2026/03/06/global/a-suspect-in-the-1994-bombing-of-buenos-aires-amia-jewish-center-now-leads-irans-revolutionary-guard"},
+    {"title": "Fiscales.gob.ar - UFI AMIA", "url": "https://www.fiscales.gob.ar/amia/"},
+    {"title": "CSJN - Condenas juicio encubrimiento", "url": "https://www.csjn.gov.ar/archivo-cij/nota-33511-Condenaron-a-ocho-acusados-en-el-juicio-oral-por-encubrimiento-en-la-investigaci-n-del-atentado-a-la-AMIA.html"},
+    {"title": "Encubrimiento AMIA - Wikipedia", "url": "https://es.wikipedia.org/wiki/Encubrimiento_del_atentado_a_la_AMIA"},
+    {"title": "Fiscales.gob.ar - Absolucion Telleldin", "url": "https://www.fiscales.gob.ar/amia/absolvieron-a-carlos-telleldin-por-el-atentado-a-la-amia/"},
+    {"title": "Infobae - Casal pide revocar absolucion Telleldin", "url": "https://www.infobae.com/judiciales/2025/09/05/caso-amia-el-procurador-eduardo-casal-pidio-a-la-corte-revocar-la-absolucion-de-carlos-telleldin/"},
+    {"title": "Perfil - Denuncia Nisman contra CFK", "url": "https://www.perfil.com/noticias/politica/que-decia-la-denuncia-de-alberto-nisman-contra-cristina-kirchner.phtml"},
+    {"title": "Infobae - Fiscalia ratifico homicidio Nisman (enero 2025)", "url": "https://www.infobae.com/politica/2025/01/10/caso-nisman-un-informe-de-la-fiscalia-ratifico-que-fue-asesinado-por-investigar-el-encubrimiento-del-atentado-a-la-amia/"},
+    {"title": "Chequeado - 10 anos muerte Nisman", "url": "https://chequeado.com/el-explicador/a-10-anos-de-la-muerte-de-alberto-nisman-en-que-estado-se-encuentra-la-causa-por-su-fallecimiento-y-que-paso-con-su-denuncia-contra-cfk/"},
+    {"title": "Infobae - 11 anos Nisman justicia avanza (enero 2026)", "url": "https://www.infobae.com/judiciales/2026/01/18/a-11-anos-de-la-muerte-de-alberto-nisman-la-justicia-avanza-sobre-inteligencia-ilegal-y-encubrimiento-politico/"},
+    {"title": "Fiscales.gob.ar - Informe investigacion homicidio Nisman 2025", "url": "https://www.fiscales.gob.ar/wp-content/uploads/2025/01/Fiscalia_informe_enero_ok.pdf"},
+    {"title": "Memorandum Argentina-Iran - Wikipedia ES", "url": "https://es.wikipedia.org/wiki/Memor%C3%A1ndum_de_entendimiento_Argentina-Ir%C3%A1n"},
+    {"title": "Buenos Aires Herald - CFK to stand trial memorandum", "url": "https://buenosairesherald.com/politics/judiciary/cristina-kirchner-to-stand-trial-over-memorandum-with-iran"},
+    {"title": "La Nacion - TOF anuncia fecha juicio memorandum", "url": "https://www.lanacion.com.ar/politica/avanza-el-caso-del-memorandum-con-iran-contra-cristina-kirchner-el-tribunal-oral-anunciara-la-fecha-nid28072025/"},
+    {"title": "AlbertoNisman.org - Resumen denuncia", "url": "https://albertonisman.org/wp-content/uploads/2015/02/2015-Nisman-Complaint-Summary-Spanish_.pdf"},
+    {"title": "Jaime Stiuso - Wikipedia", "url": "https://es.wikipedia.org/wiki/Jaime_Stiuso"},
+    {"title": "elDiarioAR - SIDE Milei retoma legado Stiuso", "url": "https://www.eldiarioar.com/politica/diez-anos-despues-nisman-side-milei-retoma-legado-stiuso_1_11973050.html"},
+    {"title": "Infobae - Soborno, 66 cassettes y primer juicio oral", "url": "https://www.infobae.com/sociedad/2020/02/09/un-soborno-la-eliminacion-de-66-cassettes-y-el-destino-de-los-restos-del-atentado-las-revelaciones-de-la-causa-amia-durante-el-primer-juicio-oral/"},
+    {"title": "Infobae - Rol Iran AMIA plan cupula estatal (marzo 2026)", "url": "https://www.infobae.com/judiciales/2026/03/01/el-rol-de-iran-en-el-atentado-a-la-amia-el-plan-de-la-cupula-estatal-y-la-batalla-judicial-por-el-juicio-a-los-profugos/"},
+    {"title": "Infobae - Fiscal Basso procesamiento 10 acusados (marzo 2026)", "url": "https://www.infobae.com/judiciales/2026/03/04/causa-amia-el-fiscal-pidio-el-procesamiento-de-10-acusados-y-la-captura-internacional-de-otro-jerarca-irani/"},
+    {"title": "Aire de Santa Fe - Desertores iranies validan denuncia Nisman", "url": "https://www.airedesantafe.com.ar/actualidad/causa-amia-2026-documentos-desertores-iranies-validarian-la-denuncia-nisman-11-anos-despues-n648616"},
+    {"title": "Infobae - Milei alineamiento EEUU Israel guerra Iran", "url": "https://www.infobae.com/politica/2026/03/17/milei-ratifico-su-alineamiento-con-eeuu-e-israel-en-la-guerra-contra-iran-dejamos-en-claro-en-donde-nos-paramos/"},
+    {"title": "Infobae - Iran amenaza Milei linea roja", "url": "https://www.infobae.com/politica/2026/03/17/tension-diplomatica-el-regimen-irani-afirmo-que-javier-milei-cruzo-una-linea-roja-imperdonable/"},
+    {"title": "CNN Espanol - Argentina unico LATAM respaldo ataques Iran", "url": "https://cnnespanol.cnn.com/2026/03/03/argentina/argentina-unico-pais-latam-respaldo-ataques-iran-eeuu-orix"},
+    {"title": "CELS - AMIA", "url": "https://www.cels.org.ar/amia/"},
+    {"title": "Hoy Dia - Confirman juicio en ausencia iranies (septiembre 2025)", "url": "https://hoydia.com.ar/hoypais/juicio-en-ausencia-amia/"},
+    {"title": "FDD - Break in Argentina murder case tied to Iran", "url": "https://www.fdd.org/analysis/op_eds/2025/01/19/a-break-in-the-argentina-murder-case-tied-to-iran/"},
+    {"title": "InfoLEG - Texto ley memorandum", "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/205000-209999/208948/norma.htm"}
+  ]
+}
