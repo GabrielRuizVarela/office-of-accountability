@@ -21,6 +21,14 @@ export const LABEL_COLORS: Readonly<Record<string, string>> = {
   Event: '#f59e0b', // amber-500
   Organization: '#8b5cf6', // violet-500
   LegalCase: '#ec4899', // pink-500
+  // Cross-investigation node types
+  ShellCompany: '#a855f7', // purple-500
+  Aircraft: '#f97316', // orange-500
+  Wallet: '#22c55e', // green-500
+  Token: '#84cc16', // lime-500
+  Claim: '#f43f5e', // rose-500
+  MoneyFlow: '#14b8a6', // teal-500
+  GovernmentAction: '#6366f1', // indigo-500
 }
 
 export const DEFAULT_NODE_COLOR = '#94a3b8' // slate-400
@@ -131,6 +139,14 @@ export const LABEL_DISPLAY: Readonly<Record<string, string>> = {
   Event: 'Evento',
   Organization: 'Organizacion',
   LegalCase: 'Caso Legal',
+  // Cross-investigation node types
+  ShellCompany: 'Empresa Fantasma',
+  Aircraft: 'Aeronave',
+  Wallet: 'Billetera',
+  Token: 'Token',
+  Claim: 'Reclamo',
+  MoneyFlow: 'Flujo de Dinero',
+  GovernmentAction: 'Accion Gubernamental',
 }
 
 // ---------------------------------------------------------------------------
@@ -154,6 +170,13 @@ export const LINK_COLORS: Readonly<Record<string, string>> = {
   FILED_IN: '#ec4899', // pink-500
   DOCUMENTED_BY: '#ec4899', // pink-500
   FINANCED: '#22c55e', // green-500
+  // Finanzas-politicas relationship types
+  DONATED_TO: '#22c55e', // green-500
+  CONTROLS: '#dc2626', // red-600
+  RECEIVED_FROM: '#14b8a6', // teal-500
+  CONTRACTED_BY: '#f59e0b', // amber-500
+  DIRECTED: '#8b5cf6', // violet-500
+  APPOINTED: '#3b82f6', // blue-500
 }
 
 export const DEFAULT_LINK_COLOR = '#334155' // slate-700
