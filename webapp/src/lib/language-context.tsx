@@ -4,6 +4,14 @@ import { createContext, useContext, useState, useCallback, type ReactNode } from
 
 export type Lang = 'en' | 'es'
 
+/** Detect language from browser's navigator.language, defaulting to 'es'. */
+function detectBrowserLang(): Lang {
+  if (typeof navigator === 'undefined') return 'es'
+  const locale = navigator.language.toLowerCase()
+  if (locale.startsWith('en')) return 'en'
+  return 'es'
+}
+
 interface LanguageContextValue {
   readonly lang: Lang
   readonly setLang: (lang: Lang) => void
@@ -18,12 +26,12 @@ const LanguageContext = createContext<LanguageContextValue>({
 
 export function LanguageProvider({
   children,
-  defaultLang = 'en',
+  defaultLang,
 }: {
   readonly children: ReactNode
   readonly defaultLang?: Lang
 }) {
-  const [lang, setLang] = useState<Lang>(defaultLang)
+  const [lang, setLang] = useState<Lang>(() => defaultLang ?? detectBrowserLang())
   const toggle = useCallback(() => setLang((l) => (l === 'en' ? 'es' : 'en')), [])
 
   return (
