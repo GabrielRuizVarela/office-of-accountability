@@ -211,8 +211,8 @@ export default function InvestigacionPage() {
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-400">
             {lang === 'es'
-              ? 'Una investigacion verificada cruzando ocho fuentes de datos publicos. Cada dato esta respaldado por registros legislativos, filtraciones offshore (ICIJ), declaraciones de campana (CNE), nombramientos del Boletin Oficial, y registros societarios.'
-              : 'A verified investigation cross-referencing eight public data sources. Every claim is backed by legislative records, offshore leaks (ICIJ), campaign declarations (CNE), Boletin Oficial appointments, and corporate registries.'}
+              ? 'Investigacion verificada sobre las conexiones entre poder politico, financiero y judicial en Argentina. 22 personas criticas identificadas. Cruce de nueve fuentes de datos publicos. Cada afirmacion tiene fuente verificada.'
+              : 'Verified investigation into the connections between political, financial, and judicial power in Argentina. 22 critical persons identified. Cross-referencing nine public data sources. Every claim has a verified source.'}
           </p>
         </section>
 

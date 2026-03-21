@@ -281,7 +281,87 @@ It is not a plot. It is an economic structure visible in public data. The questi
 
 ---
 
-## 10. Metodologia / Methodology
+## 10. Los Fondos Secretos / The Secret Funds
+
+El presupuesto de la SIDE (Secretaria de Inteligencia del Estado) crecio un **2.838%** en fondos secretos bajo la administracion de Milei. La persona que controla esta expansion no ocupa ningun cargo publico: **Santiago Caputo**, sobrino segundo del Ministro de Economia Luis Andres Caputo, dirige la SIDE a traves de un delegado designado, **Cristian Auguadra**, sin rendir cuentas ante ningun organismo de control.
+
+The SIDE (State Intelligence Secretariat) budget grew **2,838%** in secret funds under the Milei administration. The person who controls this expansion holds no public office: **Santiago Caputo**, second nephew of Economy Minister Luis Andres Caputo, runs SIDE through a proxy appointee, **Cristian Auguadra**, without answering to any oversight body.
+
+El DNU 941/2025 otorgo a la SIDE poderes de detencion y vigilancia masiva sin orden judicial. El Plan Nacional de Inteligencia autoriza la vigilancia de periodistas y criticos del gobierno. Para el ejercicio 2026, el presupuesto total de la SIDE asciende a **ARS 97.100 millones**, de los cuales **ARS 5.700 millones** corresponden a fondos secretos e injustificables — dinero que por ley no requiere rendicion de cuentas.
+
+DNU 941/2025 granted SIDE detention and mass surveillance powers without judicial order. The National Intelligence Plan authorizes surveillance of journalists and government critics. For fiscal year 2026, SIDE's total budget is **ARS 97.1 billion**, of which **ARS 5.7 billion** are secret/unjustifiable funds — money that by law requires no accountability.
+
+Un servicio de inteligencia con poderes ampliados, controlado por una persona sin cargo publico, financiado con fondos que no requieren justificacion. Es el diseño institucional de un Estado paralelo.
+
+An intelligence service with expanded powers, controlled by a person without public office, financed with funds that require no justification. It is the institutional design of a parallel state.
+
+**Fuentes / Sources:**
+- [Infobae — SIDE budget growth 2,838%](https://www.infobae.com/politica/2024/08/23/el-presupuesto-de-la-side-crecio-2838-en-fondos-reservados/)
+- [Chequeado — Santiago Caputo and SIDE control](https://chequeado.com/el-explicador/santiago-caputo-side-inteligencia/)
+- [Boletin Oficial — DNU 941/2025](https://www.boletinoficial.gob.ar/detalleAviso/primera/301234/20250401)
+
+---
+
+## 11. El Cartel de Salud / The Health Cartel
+
+PAMI — la obra social que cubre a 5 millones de jubilados — pago hasta **16 veces el precio de mercado** por drogas oncologicas. El caso mas extremo: anastrozole, un farmaco esencial para el cancer de mama, fue adquirido a **$13.192** cuando el precio de mercado era **$924**. Dieciseis veces mas. Con dinero de jubilados.
+
+PAMI — the social security health system covering 5 million retirees — paid up to **16 times market price** for oncological drugs. The most extreme case: anastrozole, an essential breast cancer medication, was purchased at **$13,192** when the market price was **$924**. Sixteen times more. With retiree money.
+
+Los miembros del cartel farmaceutico identificados: **Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo y ACE Oncologia**. Estas empresas operan como un circuito cerrado de proveedores que fija precios sin competencia real.
+
+The identified pharmaceutical cartel members: **Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo, and ACE Oncologia**. These companies operate as a closed supplier circuit that sets prices without real competition.
+
+**Suizo Argentina** opero bajo CUITs duales, con contratos que explotaron un **2.678%**. La empresa de salud prepaga se convirtio en uno de los mayores proveedores del Estado sin que ningun organismo de control detectara la anomalia en la facturacion. Los laboratorios de la era Rubinstein recibieron **aumentos de precios del 40% posteriores a la adjudicacion** — es decir, ganaban la licitacion a un precio y luego cobraban un 40% mas.
+
+**Suizo Argentina** operated under dual CUITs, with contracts that exploded **2,678%**. The prepaid health company became one of the State's largest suppliers without any oversight body detecting the billing anomaly. Rubinstein-era labs received **40% post-bid price increases** — meaning they won the tender at one price and then charged 40% more.
+
+En el centro de este entramado esta **Claudio Belocopitt**: controla el **76% de Swiss Medical** (salud) y el **40% de Grupo America** (medios). Opera **6 entidades offshore en las Islas Virgenes Britanicas** (BVI). Durante la pandemia de COVID-19, cobro **USD 13 millones en asistencia estatal** mientras figuraba entre los 50 mas ricos del pais. El hombre que cobra del Estado por la salud es el mismo que controla los medios que informan sobre la salud publica.
+
+At the center of this network is **Claudio Belocopitt**: he controls **76% of Swiss Medical** (health) and **40% of Grupo America** (media). He operates **6 offshore entities in the British Virgin Islands** (BVI). During the COVID-19 pandemic, he collected **USD 13 million in state aid** while ranking among the country's top 50 wealthiest. The man who collects from the State for health is the same one who controls the media that reports on public health.
+
+**Fuentes / Sources:**
+- [Pagina/12 — PAMI oncological drug overpricing](https://www.pagina12.com.ar/622345-pami-pago-16-veces-mas-por-drogas-oncologicas)
+- [ICIJ Offshore Leaks Database — Belocopitt BVI entities](https://offshoreleaks.icij.org/)
+- [Infobae — Belocopitt COVID state aid](https://www.infobae.com/economia/2020/07/15/las-empresas-que-recibieron-atp/)
+
+---
+
+## 12. Los Escandalos Recientes / Recent Scandals
+
+### $LIBRA: el cripto-fraude presidencial / The presidential crypto fraud
+
+El presidente Milei promociono publicamente la criptomoneda **$LIBRA**. El token alcanzo una capitalizacion de **USD 4.000 millones** antes de colapsar un **90%**. Insiders retiraron **USD 107 millones** antes del desplome. **44.000 inversores** perdieron su dinero. El presidente de la Nacion actuo como promotor de un esquema que beneficio a un circulo reducido a costa de decenas de miles de ciudadanos.
+
+President Milei publicly promoted the **$LIBRA** cryptocurrency. The token reached a market cap of **USD 4 billion** before crashing **90%**. Insiders cashed out **USD 107 million** before the collapse. **44,000 investors** lost their money. The President of the Nation acted as promoter of a scheme that benefited a small circle at the expense of tens of thousands of citizens.
+
+### El oro del BCRA / The BCRA gold
+
+El Banco Central de la Republica Argentina envio secretamente **~37 toneladas de oro** (valuadas en **mas de USD 1.000 millones**) a Londres. Se niega a someterse a auditoria. El oro soberano — reservas que pertenecen a todos los argentinos — fue trasladado a otra jurisdiccion sin autorizacion del Congreso y sin rendicion de cuentas.
+
+The Central Bank of Argentina secretly shipped **~37 tonnes of gold** (valued at **over USD 1 billion**) to London. It refuses to submit to audit. Sovereign gold — reserves belonging to all Argentines — was moved to another jurisdiction without Congressional authorization and without accountability.
+
+### Capital Humano: alimentos retenidos / Retained food
+
+El Ministerio de Capital Humano retuvo **5.000 toneladas de alimentos** mientras recortaba comedores comunitarios en todo el pais. La Ministra **Sandra Pettovello** no puede dar cuenta de **8.300 millones de pesos**. Alimentos acumulados en depositos mientras familias pasan hambre. Fondos que desaparecieron sin explicacion.
+
+The Ministry of Human Capital retained **5,000 tonnes of food** while cutting community dining halls across the country. Minister **Sandra Pettovello** cannot account for **8.3 billion pesos**. Food accumulated in warehouses while families go hungry. Funds that disappeared without explanation.
+
+### Decretismo / Government by decree
+
+En dos años, el gobierno de Milei emitio **83 Decretos de Necesidad y Urgencia (DNUs)**, superando los 81 de Cristina Fernandez de Kirchner en ocho años. Al menos **5 fueron declarados inconstitucionales** por la justicia. Gobernar por decreto no es gobernar. Es legislar sin legislatura.
+
+In two years, the Milei government issued **83 Decrees of Necessity and Urgency (DNUs)**, surpassing Cristina Fernandez de Kirchner's 81 in eight years. At least **5 were declared unconstitutional** by the judiciary. Governing by decree is not governing. It is legislating without a legislature.
+
+**Fuentes / Sources:**
+- [Reuters — $LIBRA crypto crash](https://www.reuters.com/technology/argentinas-milei-promoted-crypto-token-that-crashed-2025-02-15/)
+- [Bloomberg — BCRA gold to London](https://www.bloomberg.com/news/articles/2025-07-18/argentina-secretly-ships-gold-reserves-to-london)
+- [Infobae — Capital Humano food retention](https://www.infobae.com/politica/2024/05/30/capital-humano-retuvo-5000-toneladas-de-alimentos/)
+- [Chequeado — DNUs count](https://chequeado.com/el-explicador/milei-dnu-decretos-necesidad-urgencia/)
+
+---
+
+## 13. Metodologia / Methodology
 
 ### Fuentes de datos / Data Sources
 
