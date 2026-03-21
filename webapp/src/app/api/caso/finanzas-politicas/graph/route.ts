@@ -624,8 +624,9 @@ export async function GET(): Promise<Response> {
       const INVESTIGATION_NODES_CYPHER = `
         MATCH (n)-[r]-(m)
         WHERE n.caso_slug = "caso-finanzas-politicas" AND m.caso_slug = "caso-finanzas-politicas"
+          AND type(r) <> "VOTED_ON"
         RETURN n, r, m
-        LIMIT 500
+        LIMIT 2000
       `
       const investigationColors: Record<string, string> = {
         Person: '#f97316',      // orange
@@ -681,6 +682,40 @@ export async function GET(): Promise<Response> {
       }
     } catch { /* investigation query may timeout */ }
 
+    // Phase 11: Money trail — Donor -> Officer -> Company -> Contractor
+    try {
+      const MONEY_TRAIL_CYPHER = `
+        MATCH (d:Donor)-[ms:MAYBE_SAME_AS]->(co:CompanyOfficer)-[:OFFICER_OF_COMPANY]->(c:Company)-[:SAME_ENTITY]-(ct:Contractor)-[:AWARDED_TO]-(pc:PublicContract)
+        WHERE ms.source = "donor-officer-resolution" AND pc.monto IS NOT NULL
+        WITH d, co, c, ct, sum(pc.monto) AS total, count(pc) AS contracts
+        ORDER BY total DESC LIMIT 15
+        RETURN d.name AS donor, co.name AS officer, c.name AS company, ct.name AS contractor, total, contracts
+      `
+      const trailResult = await readQuery(MONEY_TRAIL_CYPHER, {}, (r: Neo4jRecord) => ({
+        donor: r.get('donor') as string, officer: r.get('officer') as string,
+        company: r.get('company') as string, contractor: r.get('contractor') as string,
+        total: r.get('total') as number, contracts: r.get('contracts') as number,
+      }))
+      for (const trail of trailResult.records) {
+        const donorId = 'trail-donor-' + trail.donor.replace(/[^a-zA-Z0-9]/g, '')
+        const contractorId = 'trail-contractor-' + trail.contractor.replace(/[^a-zA-Z0-9]/g, '')
+        if (!nodeMap.has(donorId)) {
+          nodeMap.set(donorId, {
+            id: donorId, name: trail.donor, type: 'Donor', color: '#22c55e',
+            datasets: 1, val: 4, labels: ['Donor'], properties: { total_contracts: trail.total },
+          })
+        }
+        if (!nodeMap.has(contractorId)) {
+          nodeMap.set(contractorId, {
+            id: contractorId, name: trail.contractor, type: 'Contractor', color: '#8b5cf6',
+            datasets: 1, val: Math.min(Math.log10(trail.total || 1), 8), labels: ['Contractor'],
+            properties: { total_contracts: trail.total, contract_count: trail.contracts },
+          })
+        }
+        links.push({ source: donorId, target: contractorId, type: 'MONEY_TRAIL', properties: { via: trail.company } })
+      }
+    } catch { /* money trail may timeout */ }
+
     // Phase 10: Bridge platform Politicians to investigation Persons by name
     // This prevents isolated platform clusters (PENSAR, parties, etc.)
     for (const [polSlug, polElementId] of politicianElementIds) {
@@ -707,6 +742,42 @@ export async function GET(): Promise<Response> {
         }
       }
     }
+
+    // Phase 12: Deduplicate — merge investigation Person nodes into matching Politician nodes
+    // When same person exists as both Politician (platform) and Person (investigation),
+    // transfer all investigation links to the Politician node and remove the Person duplicate
+    const mergedIds = new Map<string, string>() // invId -> polId
+    for (const link of links) {
+      if (link.type === 'SAME_PERSON') {
+        const polId = typeof link.source === 'string' ? link.source : (link.source as any)?.id
+        const invId = typeof link.target === 'string' ? link.target : (link.target as any)?.id
+        if (polId && invId) {
+          mergedIds.set(invId, polId)
+          // Transfer investigation node properties to politician node
+          const polNode = nodeMap.get(polId)
+          const invNode = nodeMap.get(invId)
+          if (polNode && invNode) {
+            polNode.properties = { ...polNode.properties, ...invNode.properties }
+            polNode.val = Math.max(polNode.val, invNode.val + 1)
+          }
+        }
+      }
+    }
+    // Rewrite all links pointing to merged investigation nodes
+    if (mergedIds.size > 0) {
+      for (const link of links) {
+        const s = typeof link.source === 'string' ? link.source : (link.source as any)?.id
+        const t = typeof link.target === 'string' ? link.target : (link.target as any)?.id
+        if (s && mergedIds.has(s)) link.source = mergedIds.get(s)!
+        if (t && mergedIds.has(t)) link.target = mergedIds.get(t)!
+      }
+      // Remove merged Person nodes and SAME_PERSON links
+      for (const invId of mergedIds.keys()) nodeMap.delete(invId)
+    }
+    // Remove SAME_PERSON links (they were just for merging)
+    const finalLinks = links.filter(l => l.type !== 'SAME_PERSON')
+    links.length = 0
+    links.push(...finalLinks)
 
     // Post-processing: connect key clusters manually where DB relationships are missing
     // Macri -> PENSAR ARGENTINA (he's the party leader but not in AFFILIATED_WITH)
