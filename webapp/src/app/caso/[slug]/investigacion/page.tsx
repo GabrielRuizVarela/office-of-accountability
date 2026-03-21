@@ -1,16 +1,22 @@
 'use client'
 
 /**
- * Caso Libra — Comprehensive bilingual investigation page.
+ * Investigation page — comprehensive bilingual investigation content.
  *
- * Renders a complete, factchecked, sourced investigation of the $LIBRA
- * token scandal with timeline, actor network, money flows, evidence chain,
- * government response tracking, and impact statistics.
+ * Renders a complete, factchecked, sourced investigation with timeline,
+ * actor network, money flows, evidence chain, government response tracking,
+ * and impact statistics.
  */
 
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
 
 import { useLanguage, type Lang } from '@/lib/language-context'
+import type {
+  FactcheckStatus,
+  InvestigationCategory,
+  InvestigationTimelineEvent,
+  VerificationStatus,
+} from '@/lib/investigations/investigation-page-types'
 import {
   FACTCHECK_ITEMS,
   TIMELINE_EVENTS,
@@ -19,10 +25,6 @@ import {
   EVIDENCE_DOCS,
   IMPACT_STATS,
   GOVERNMENT_RESPONSES,
-  type FactcheckStatus,
-  type InvestigationCategory,
-  type InvestigationTimelineEvent,
-  type VerificationStatus,
 } from '@/lib/caso-libra/investigation-data'
 
 // ---------------------------------------------------------------------------
