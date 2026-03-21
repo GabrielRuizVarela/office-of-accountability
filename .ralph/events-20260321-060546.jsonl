@@ -1,0 +1,4 @@
+{"ts":"2026-03-21T06:05:46.209249591+00:00","iteration":0,"hat":"loop","topic":"build.start","triggered":"planner","payload":"Continue M9 Phase 5: query-builder,registry, unified API"}
+{"payload":"M9 Phase 5 plan: 8 tasks created. P1: registry.ts. P2: 6 unified API routes (graph, timeline, stats, config, schema, node-connections). P3: 301 redirects from old caso-libra routes.","topic":"tasks.ready","ts":"2026-03-21T06:07:03.553666364+00:00"}
+{"payload":"registry.ts complete: getClientConfig(slug) + listClientConfigs(), imports all 3 caso configs, tsc passes, committed cb8d345","topic":"subtask.done","ts":"2026-03-21T06:09:35.050191075+00:00"}
+{"payload":"registry.ts: clean code, proper types, all 3 configs imported, no queries to review, tsc passes (pre-existing EvidenceExplorer errors only)","topic":"review.passed","ts":"2026-03-21T06:10:18.671698799+00:00"}

@@ -1,0 +1,3 @@
+2026-03-21T06:05:46.205121Z  INFO ralph: Spawning subprocess for TUI mode child_args=["-c", "ralph.m9.yml", "run", "--rpc", "-p", "Continue M9 Phase 5: query-builder,registry, unified API"]
+2026-03-21T06:05:46.205210Z  INFO ralph: TUI subprocess stderr redirected to log file log_file=/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail/.ralph/diagnostics/logs/ralph-2026-03-21T03-05-46-205-588747.log
+2026-03-21T06:05:46.205368Z  INFO ralph: TUI running in subprocess RPC mode

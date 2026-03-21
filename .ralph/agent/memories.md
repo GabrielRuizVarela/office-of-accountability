@@ -14,6 +14,10 @@
 
 ## Fixes
 
+### mem-1774071202-2f05
+> tx.run inside session.executeWrite callback only accepts 2 args (cypher, params). TransactionConfig goes as 2nd arg to session.executeWrite itself, not on individual tx.run calls.
+<!-- tags: neo4j, typescript, driver | created: 2026-03-21 -->
+
 ### mem-1773734686-67dd
 > npm lockfile was broken by pnpm-installed node_modules (workspace: protocol). Fix: rm -rf node_modules && npm install. Lockfile regenerated clean with 439 packages.
 <!-- tags: npm, lockfile, pnpm | created: 2026-03-17 -->
