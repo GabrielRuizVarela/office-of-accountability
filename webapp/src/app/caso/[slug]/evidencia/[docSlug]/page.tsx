@@ -31,7 +31,7 @@ export default function DocumentDetailPage() {
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch(`/api/caso-libra/document/${docSlug}`)
+        const res = await fetch(`/api/caso/${slug}/document/${docSlug}`)
         if (!res.ok) throw new Error('Documento no encontrado')
         const json = await res.json()
         setData(json)
