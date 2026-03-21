@@ -1,0 +1,134 @@
+[
+  {
+    "person": "Guillermo Pedro Plate",
+    "govt_role": "Superintendente de Seguros de la Nación (since Jan 2024, rank of Undersecretary)",
+    "company_role": "Former Vice President of Provincia ART; former advisor to Board of Directors of Banco de la Provincia de Buenos Aires; former Vice Superintendente de Seguros (2017-2019)",
+    "evidence_es": "Plate pasó de ser Vicepresidente de Provincia ART (la mayor ART estatal) y asesor del directorio del Banco Provincia a Superintendente de Seguros, regulando el mismo mercado donde fue ejecutivo. Medios reportan que aplica regulación selectiva: protege a Liderar Seguros (de Franco Ortolano) mientras sanciona duramente a Boston Seguros, TPC y Orbis. Su relación con Juan Pazo (ex-jefe político, titular de ARCA) se rompió por el pacto con Liderar. El ex-abogado de Libra Seguros, Mariano Cúneo Libarona, es ahora Ministro de Justicia, generando doble blindaje para esa aseguradora.",
+    "evidence_en": "Plate went from being VP of Provincia ART (largest state workers' comp insurer) and advisor to Banco Provincia's board to Superintendent of Insurance, regulating the same market where he was an executive. Media reports selective enforcement: he shields Liderar Seguros (owned by Franco Ortolano) while harshly sanctioning Boston Seguros, TPC, and Orbis. His relationship with Juan Pazo (former political boss, ARCA head) collapsed over the Liderar pact. Libra Seguros' former legal director Mariano Cúneo Libarona is now Justice Minister, creating double shielding for that insurer.",
+    "source_urls": [
+      "https://www.letrap.com.ar/politica/como-funciona-el-blindaje-oficial-las-aseguradoras-protegidas-el-gobierno-n5416266",
+      "https://www.letrap.com.ar/politica/seguros-el-pacto-liderar-dinamito-la-relacion-juan-pazo-y-su-exdelfin-guillermo-plate-n5417566",
+      "https://www.letrap.com.ar/politica/el-control-del-mercado-las-aseguradoras-tensa-la-relacion-juan-pazo-y-guillermo-plate-n5416192",
+      "https://www.argentina.gob.ar/guillermo-plate",
+      "https://www.ambito.com/seguros/guillermo-plate-un-regulador-foco-la-desregulacion-del-seguro-y-la-competencia-n6019893"
+    ],
+    "severity": "critical",
+    "new_entities": [
+      {"name": "Franco Ortolano", "role": "Owner of Liderar Seguros, ally of Plate"},
+      {"name": "Gabriel Bussola", "role": "Head of Libra Seguros, has permanent dialogue with Plate"},
+      {"name": "Gustavo Balabanian", "role": "Head of Paraná Seguros, received ART market entry under Plate"},
+      {"name": "Juan Pazo", "role": "Head of ARCA, former Superintendent of Insurance (2017-2019), former political boss of Plate"},
+      {"name": "Mariano Cúneo Libarona", "role": "Minister of Justice, former legal director of Libra Seguros"},
+      {"name": "Pablo Sallaberry", "role": "Businessman gaining power within SSN"},
+      {"name": "Liderar Seguros", "type": "company", "note": "Exempt from SSN inspections, migrating operations to Euroamérica without notifying clients"},
+      {"name": "Libra Seguros", "type": "company", "note": "Double-shielded via Plate + Justice Minister connection"},
+      {"name": "Paraná Seguros", "type": "company", "note": "Received favorable ART market entry, lighter sanctions than peers"}
+    ]
+  },
+  {
+    "person": "Lisandro Catalán",
+    "govt_role": "Minister of Interior (Sep-Nov 2025); previously Secretary of Interior; previously Director at Registro Nacional de Reincidencia (Min. de Justicia, Macri + Fernández govts)",
+    "company_role": "Director of YPF S.A. (from Nov 2025); formerly President of Bapro Mandatos y Negocios S.A.; officer at Provincia Bursátil, Provincia Seguros, and other Grupo Bapro companies (2006-2015)",
+    "evidence_es": "Catalán dejó el Ministerio del Interior el 3 de noviembre de 2025 y apenas dos semanas después fue designado Director Titular Clase D de YPF, reemplazando a Carlos Manuel Bastos. Cobra aproximadamente 140 millones de pesos mensuales. Su incorporación lo reúne con Guillermo Francos en el directorio de YPF. Anteriormente fue presidente de Bapro Mandatos y Negocios S.A. durante la gobernación de Scioli (2006-2007), donde Francos era presidente del Banco Provincia. Un escándalo de fideicomisos de vivienda ('Estrella del Sur') vinculó a su gestión en Bapro Mandatos. Trabajó simultáneamente en Provincia Bursátil, Provincia Seguros y otras empresas del Grupo Bapro entre 2007 y 2015.",
+    "evidence_en": "Catalán left the Ministry of Interior on Nov 3, 2025 and just two weeks later was appointed Class D Director of YPF, replacing Carlos Manuel Bastos. He earns approximately 140 million pesos/month. His appointment reunites him with Guillermo Francos on YPF's board. Previously he was president of Bapro Mandatos y Negocios S.A. during Scioli's governorship (2006-2007), where Francos was president of Banco Provincia. A housing trust scandal ('Estrella del Sur') was linked to his tenure at Bapro Mandatos. He simultaneously held positions at Provincia Bursátil, Provincia Seguros and other Grupo Bapro companies from 2007-2015.",
+    "source_urls": [
+      "https://www.iprofesional.com/negocios/442238-de-ministro-interior-a-petrolero-lisandro-catalan-se-suma-directorio-ypf",
+      "https://www.infocielo.com/politica-y-economia/de-ministro-del-interior-al-directorio-de-ypf-el-desembarco-de-lisandro-catalan-en-la-petrolera",
+      "https://elagora.digital/argentina/lisandro-catalan-sueldo-ypf-ministerio-interior/",
+      "https://www.perfil.com/noticias/politica/del-banco-provincia-a-la-casa-rosada-el-recorrido-de-lisandro-catalan-nuevo-ministro-del-interior-de-milei.phtml",
+      "https://www.lapoliticaonline.com/nota/83254-una-estafa-con-fideicomisos-en-la-gestion-de-francos-preocupa-a-scioli/"
+    ],
+    "severity": "critical",
+    "new_entities": [
+      {"name": "Guillermo Francos", "role": "YPF Director, former Chief of Staff, former President of Banco Provincia"},
+      {"name": "Carlos Manuel Bastos", "role": "Former YPF Director replaced by Catalán"},
+      {"name": "Juan Martín Repetto", "role": "Current president of Bapro Mandatos y Negocios"},
+      {"name": "Bapro Mandatos y Negocios S.A.U.", "type": "company", "note": "99% owned by Grupo Bapro S.A., 1% by Provincia Bursátil"},
+      {"name": "Fideicomiso Estrella del Sur", "type": "trust", "note": "Housing trust scandal linked to Catalán's Bapro tenure"}
+    ]
+  },
+  {
+    "person": "Katz Alejandro Gustavo",
+    "govt_role": "Director at Ministerio de Hacienda (per database records)",
+    "company_role": "Officer of multiple Provincia insurance entities (per database records)",
+    "evidence_es": "CUIT confirmado: 20-14900749-1, domicilio en 3 de Febrero 1242, C.A.B.A. No se encontró cobertura mediática específica sobre conflicto de intereses. El directorio actual de Provincia Seguros incluye directores con perfiles políticos: un ex-senador bonaerense, un ex-Director Nacional de Comunicación Digital, funcionarios del Ministerio de Desarrollo Territorial. Esto sugiere que las posiciones en Provincia Seguros son designaciones políticas del Grupo Bapro, lo cual encuadra el patrón de Katz como funcionario de Hacienda con cargos en empresas del grupo.",
+    "evidence_en": "CUIT confirmed: 20-14900749-1, address at 3 de Febrero 1242, CABA. No specific media coverage of conflict of interest found. Current Provincia Seguros board includes politically-connected directors: a former Buenos Aires province senator, a former National Director of Digital Communication, officials from Min. Territorial Development. This suggests Provincia Seguros positions are political appointments within Grupo Bapro, fitting the pattern of Katz as a Hacienda official holding positions in group companies.",
+    "source_urls": [
+      "https://www.cuitonline.com/detalle/20149007491/katz-alejandro-gustavo.html",
+      "https://www.provinciaseguros.com.ar/directoras-es/"
+    ],
+    "severity": "moderate",
+    "new_entities": [
+      {"name": "Grupo Bapro S.A.", "type": "company", "note": "Holding company of Banco Provincia group entities, political appointments common"}
+    ]
+  },
+  {
+    "person": "Delia Marisa Bircher",
+    "govt_role": "Secretary of Foreign Trade (Secretaria de Comercio Exterior); previously Undersecretary of Internal Trade; previously Secretary of Agro-Industrial Markets at Min. de Agroindustria",
+    "company_role": "Officer of investment promotion company (per database); formerly General Director at Ministry of Economic Development, CABA",
+    "evidence_es": "Bircher tuvo una carrera extensa en la interfaz público-privada: trabajó en Cancillería, Fundación Exportar, SGS Group (multinacional suiza de inspección), y el Gobierno de la Ciudad de Buenos Aires antes de escalar al Ministerio de Producción y Trabajo. Su registro de audiencias públicas está disponible en el portal del Ministerio del Interior. Su función incluía la 'inserción comercial inteligente de Argentina en cadenas de valor globales' y la 'promoción de inversiones', lo cual genera tensión inherente si simultáneamente tenía vínculos con empresas de inversión.",
+    "evidence_en": "Bircher had an extensive career at the public-private interface: she worked at Foreign Ministry, Fundación Exportar, SGS Group (Swiss inspection multinational), and CABA government before rising through the Ministry of Production. Her public audience records are available on the Interior Ministry portal. Her role included 'intelligent commercial insertion of Argentina in global value chains' and 'investment promotion', creating inherent tension if she simultaneously had ties to investment companies.",
+    "source_urls": [
+      "https://www.argentina.gob.ar/noticias/marisa-bircher-sera-la-nueva-secretaria-de-comercio-exterior-e-ignacio-werner-asumira-como",
+      "https://audiencias.mininterior.gob.ar/buscar?q=Bircher,+Delia+Marisa",
+      "https://agroindustria.gob.ar/sitio/areas/ministerio/cv_funcionarios/Marisa_BIRCHER.php"
+    ],
+    "severity": "moderate",
+    "new_entities": [
+      {"name": "SGS Group", "type": "company", "note": "Swiss multinational where Bircher worked before government"},
+      {"name": "Fundación Exportar", "type": "org", "note": "Public-private entity where Bircher worked"}
+    ]
+  },
+  {
+    "person": "Camponuevo de Capital Federal SRL",
+    "govt_role": "Government contractor (contracts exclusively with Army General Staff / Estado Mayor General del Ejército)",
+    "company_role": "SRL with only 2 officers: WHITE GUILLERMO PABLO (CUIT 20-30664494-8, Lanús, Buenos Aires) and WHITE PATRICIO",
+    "evidence_es": "No se encontró cobertura mediática sobre esta empresa. La búsqueda reveló una empresa diferente: 'Agrupación Camponuevo S.A.' (CUIT 30-70867926-3, Carhué, Buenos Aires), dedicada a ganadería, granos y transporte agrícola desde 2003. También existe 'Camponuevo SRL' como empresa de productos veterinarios con sitio web camponuevosrl.com. La entidad 'Camponuevo de Capital Federal SRL' con solo dos socios de apellido White contratando exclusivamente con el Ejército no aparece en fuentes públicas, lo cual refuerza su perfil de posible empresa pantalla. Se recomienda buscar en COMPR.AR (portal de compras públicas) bajo el Servicio Administrativo Financiero 374.",
+    "evidence_en": "No media coverage found for this entity. Search revealed a different company: 'Agrupación Camponuevo S.A.' (CUIT 30-70867926-3, Carhué, Buenos Aires), engaged in cattle, grain, and agricultural transport since 2003. Also exists 'Camponuevo SRL' as a veterinary products company at camponuevosrl.com. The entity 'Camponuevo de Capital Federal SRL' with only two officers surnamed White contracting exclusively with the Army does not appear in public sources, which reinforces its potential shell company profile. Recommend searching COMPR.AR (public procurement portal) under Financial Administrative Service 374.",
+    "source_urls": [
+      "https://www.cuitonline.com/detalle/30708679263/agrupacion-camponuevo-sociedad-anonima.html",
+      "https://www.cuitonline.com/detalle/20306644948/white-pablo-guillermo.html",
+      "https://www.argentina.gob.ar/ejercito/transparencia-activa-ejercito-argentino/compras-y-contrataciones-0"
+    ],
+    "severity": "high",
+    "new_entities": [
+      {"name": "White Pablo Guillermo", "cuit": "20-30664494-8", "location": "Lanús, Buenos Aires"},
+      {"name": "Agrupación Camponuevo S.A.", "cuit": "30-70867926-3", "location": "Carhué, Buenos Aires", "note": "Different entity, cattle/grain/transport since 2003 — may or may not be related"}
+    ]
+  },
+  {
+    "person": "CONTEXTUAL: Escándalo de los Seguros (Insurance Scandal)",
+    "govt_role": "Alberto Fernández (ex-President); officials who implemented Decreto 823/2021",
+    "company_role": "Héctor Martínez Sosa (broker, husband of Fernández's secretary María Cantero); Nación Seguros S.A.; Alberto Pagliano (ex-head of Nación Seguros)",
+    "evidence_es": "El Decreto 823/2021 obligaba a todos los organismos del Estado a contratar seguros exclusivamente con Nación Seguros S.A. El esquema benefició a productores de seguros cercanos al poder, especialmente a Héctor Martínez Sosa. Muchos intermediarios cobraron millones en comisiones sin prestar servicios reales. En febrero 2026, fueron procesados la empresa de Martínez Sosa y el ex-administrador de Olivos. Milei derogó el decreto en agosto 2024. Este escándalo es el contexto macro del conflicto regulador-regulado en el sector seguros.",
+    "evidence_en": "Decree 823/2021 forced all state agencies to contract insurance exclusively with Nación Seguros S.A. The scheme benefited insurance brokers close to power, especially Héctor Martínez Sosa. Many intermediaries collected millions in commissions without providing real services. In February 2026, Martínez Sosa's company and the former Olivos administrator were prosecuted. Milei repealed the decree in August 2024. This scandal provides the macro context for regulator-regulated conflicts in the insurance sector.",
+    "source_urls": [
+      "https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/",
+      "https://www.lanacion.com.ar/politica/el-gobierno-derogo-el-decreto-de-alberto-fernandez-que-obligaba-a-contratar-a-nacion-seguros-nid21082024/",
+      "https://www.lanacion.com.ar/politica/como-fue-la-maniobra-de-los-seguros-por-la-que-citaron-a-alberto-fernandez-contratos-direccionados-y-nid01112024/"
+    ],
+    "severity": "critical",
+    "new_entities": [
+      {"name": "Héctor Martínez Sosa", "role": "Insurance broker, husband of María Cantero (Fernández's secretary)"},
+      {"name": "María Cantero", "role": "Alberto Fernández's historic secretary, wife of Martínez Sosa"},
+      {"name": "Alberto Pagliano", "role": "Former head of Nación Seguros S.A., prosecuted"},
+      {"name": "Nación Seguros S.A.", "type": "company", "note": "State insurer used as vehicle for directed contracts via Decreto 823/2021"},
+      {"name": "Decreto 823/2021", "type": "regulation", "note": "Forced all state bodies to contract with Nación Seguros, repealed Aug 2024"}
+    ]
+  },
+  {
+    "person": "CONTEXTUAL: Revolving Door Statistics (Puerta Giratoria)",
+    "govt_role": "National Cabinet officials across administrations",
+    "company_role": "Various private sector directorships",
+    "evidence_es": "Estudio CONICET/UNSAM documentó que en el gabinete de Macri, 24% de los funcionarios (86/364) provenían directamente de cargos directivos privados. En Energía, la mitad de los altos funcionarios venían de Shell, Repsol-YPF, Pan American Energy, Axion Energy, Exxon Mobil, Bridas, ESSO, EDESUR, CAMMESA. En el gobierno de Milei, más de un tercio proviene exclusivamente del sector privado, y más del 15% tiene recorrido mixto. La Oficina Anticorrupción advirtió formalmente a funcionarios salientes sobre el período de 'enfriamiento' post-gobierno.",
+    "evidence_en": "CONICET/UNSAM study documented that in Macri's cabinet, 24% of officials (86/364) came directly from private sector executive positions. In Energy, half of top officials came from Shell, Repsol-YPF, Pan American Energy, Axion Energy, Exxon Mobil, Bridas, ESSO, EDESUR, CAMMESA. In Milei's government, over one-third come exclusively from private sector, and 15%+ have mixed careers. The Anti-Corruption Office formally warned outgoing officials about post-government cooling-off periods.",
+    "source_urls": [
+      "https://ri.conicet.gov.ar/bitstream/handle/11336/89518/CONICET_Digital_Nro.f82fff98-99e7-430e-8800-1883d4c45b1c_A.pdf",
+      "https://noticias.unsam.edu.ar/wp-content/uploads/2016/12/Puerta-Giratoria-en-Argentina-Analisis-del-gabinete-nacional-actual-y-la-experiencia-internacional-comparada.pdf",
+      "https://www.resumenlatinoamericano.org/2025/11/04/argentina-puerta-giratoria-recurrente-donde-van-los-renunciados-de-milei",
+      "https://www.lanacion.com.ar/politica/la-oa-advirtio-a-los-funcionarios-que-se-fueron-que-deben-evitar-la-puerta-giratoria-nid2153593/"
+    ],
+    "severity": "contextual",
+    "new_entities": []
+  }
+]
