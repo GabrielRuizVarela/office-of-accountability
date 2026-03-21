@@ -5,7 +5,7 @@
  *
  * A 16-chapter bilingual investigative journalism piece that walks readers
  * through the systemic connections between political power and money in
- * Argentina, compiled from 2.16M nodes and 4.49M relationships across 9
+ * Argentina, compiled from 2.31M nodes and 4.50M relationships across 9
  * public datasets.
  */
 
@@ -65,8 +65,8 @@ const LAST_UPDATED: Record<Lang, string> = {
 }
 
 const COMPILED_FROM: Record<Lang, string> = {
-  es: 'Compilado a partir de 2,16 millones de nodos y 4,49 millones de relaciones en un grafo Neo4j. Nueve fuentes publicas: Como Voto, ICIJ, CNE, Boletin Oficial, IGJ, CNV, DDJJ patrimoniales. Cada hallazgo es reproducible. Donde se indica "presunto," la conexion no ha sido verificada de forma independiente.',
-  en: 'Compiled from 2.16 million nodes and 4.49 million relationships in a Neo4j graph. Nine public sources: Como Voto, ICIJ, CNE, Boletin Oficial, IGJ, CNV, asset declarations. Every finding is reproducible. Where "alleged" is indicated, the connection has not been independently verified.',
+  es: 'Compilado a partir de 2,31 millones de nodos y 4,50 millones de relaciones en un grafo Neo4j. Nueve fuentes publicas: Como Voto, ICIJ, CNE, Boletin Oficial, IGJ, CNV, DDJJ patrimoniales. Cada hallazgo es reproducible. Donde se indica "presunto," la conexion no ha sido verificada de forma independiente.',
+  en: 'Compiled from 2.31 million nodes and 4.50 million relationships in a Neo4j graph. Nine public sources: Como Voto, ICIJ, CNE, Boletin Oficial, IGJ, CNV, asset declarations. Every finding is reproducible. Where "alleged" is indicated, the connection has not been independently verified.',
 }
 
 // ---------------------------------------------------------------------------
@@ -86,14 +86,14 @@ const chapters: readonly Chapter[] = [
         'Meses antes, Kueider habia emitido uno de los 36 votos afirmativos que aprobaron la Ley de Bases — la legislacion de desregulacion economica mas importante del gobierno de Milei. El desempate lo resolvio la vicepresidenta Villarruel. Sin ese voto, la ley no existiria.',
         'Lo que la justicia encontro despues dibujo el circuito completo: dos empresas fantasma — BETAIL SA y EDEKOM SA — registradas en la IGJ con domicilios legales falsos. Departamentos de lujo en Parana adquiridos a traves de esas pantallas. En marzo de 2025, siete testaferros arrestados. En los allanamientos, videos de Kueider manipulando fajos de billetes en efectivo. Fue expulsado del Senado.',
         'Kueider no es una anomalia. Es un sintoma.',
-        'Esta investigacion cruzo nueve fuentes de datos — votos legislativos, filtraciones offshore, donaciones de campana, nombramientos del Boletin Oficial, el registro empresarial de la IGJ, directivos de la CNV, declaraciones juradas patrimoniales, datos de CAMMESA y contratos publicos — y construyo un grafo de 263 nodos y 2.225 aristas que mapea 117 personas a lo largo de 40 anos de democracia. Sesenta y cinco agentes de investigacion autonomos procesaron los cruces. Legisladores que son directivos de empresas. Donantes de campana que son contratistas del Estado. Funcionarios que operan sociedades offshore mientras votan presupuestos. 617 politicos aparecen en dos o mas datasets simultaneamente. La red no es una hipotesis. Es un grafo.',
+        'Esta investigacion cruzo nueve fuentes de datos — votos legislativos, filtraciones offshore, donaciones de campana, nombramientos del Boletin Oficial, el registro empresarial de la IGJ, directivos de la CNV, declaraciones juradas patrimoniales, datos de CAMMESA y contratos publicos — y construyo un grafo de 280 nodos y 2.286 aristas que mapea 121 personas a lo largo de 40 anos de democracia. Sesenta y cinco agentes de investigacion autonomos procesaron los cruces. Legisladores que son directivos de empresas. Donantes de campana que son contratistas del Estado. Funcionarios que operan sociedades offshore mientras votan presupuestos. 617 politicos aparecen en dos o mas datasets simultaneamente. La red no es una hipotesis. Es un grafo.',
       ],
       en: [
         'In December 2024, Senator Edgardo Kueider from Entre Rios was detained while trying to cross into Paraguay carrying USD 211,000 in undeclared cash.',
         'Months earlier, Kueider had cast one of 36 affirmative votes that approved the Ley de Bases — the Milei government\'s most significant economic deregulation legislation. Vice President Villarruel broke the tie. Without that vote, the law would not exist.',
         'What prosecutors found afterward drew the complete circuit: two shell companies — BETAIL SA and EDEKOM SA — registered at the IGJ with fake legal addresses. Luxury apartments in Parana acquired through those fronts. In March 2025, seven front men arrested. During raids, videos of Kueider handling stacks of cash. He was expelled from the Senate.',
         'Kueider is not an anomaly. He is a symptom.',
-        'This investigation cross-referenced nine data sources — legislative votes, offshore leaks, campaign donations, Boletin Oficial appointments, IGJ corporate registry, CNV board members, asset declarations, CAMMESA records, and public contracts — and built a graph of 263 nodes and 2,225 edges tracking 117 persons across 40 years of democracy. Sixty-five autonomous investigation agents processed the cross-references. Legislators who are corporate board members. Campaign donors who are government contractors. Officials who operate offshore entities while voting on budgets. 617 politicians appear in two or more datasets simultaneously. The network is not a hypothesis. It is a graph.',
+        'This investigation cross-referenced nine data sources — legislative votes, offshore leaks, campaign donations, Boletin Oficial appointments, IGJ corporate registry, CNV board members, asset declarations, CAMMESA records, and public contracts — and built a graph of 280 nodes and 2,286 edges tracking 121 persons across 40 years of democracy. Sixty-five autonomous investigation agents processed the cross-references. Legislators who are corporate board members. Campaign donors who are government contractors. Officials who operate offshore entities while voting on budgets. 617 politicians appear in two or more datasets simultaneously. The network is not a hypothesis. It is a graph.',
       ],
     },
     pullQuote: {
@@ -469,14 +469,14 @@ const chapters: readonly Chapter[] = [
     },
     paragraphs: {
       es: [
-        'El grafo de investigacion directa contiene 263 nodos y 2.225 aristas. De esos nodos: 117 personas, 98 organizaciones, 47 eventos. El motor proceso 41 archivos de investigacion, genero 87 factchecks, identifico 76 actores, trazo 71 eventos en la linea temporal, y documento 32 flujos de dinero. Cada numero tiene una fuente. Cada fuente fue verificada.',
+        'El grafo de investigacion directa contiene 280 nodos y 2.286 aristas. De esos nodos: 121 personas, 104 organizaciones, 54 eventos. El motor proceso 41 archivos de investigacion, genero 87 factchecks, identifico 76 actores, trazo 71 eventos en la linea temporal, y documento 32 flujos de dinero. Cada numero tiene una fuente. Cada fuente fue verificada.',
         'La infraestructura de datos subyacente: Como Voto aporta 2.258 politicos y 920.000 votos. Las filtraciones del ICIJ, 4.349 oficiales argentinos y 2.422 entidades. La CNE registra 1.714 donaciones. El Boletin Oficial, 6.044 nombramientos y 22.280 contratos. La IGJ, 951.863 oficiales y 398.000 empresas. La CNV, 1.528.931 cargos en directorios. Las declaraciones juradas patrimoniales, 718.865 registros del periodo 2012-2024. En total, 1.839 vinculos legislativos cruzados.',
         'El capital rastreado offshore: $483.000 millones. Seis mecanismos de enriquecimiento documentados — sobreprecios en compras estatales, puerta giratoria regulatoria, triangulacion offshore, publicidad oficial dirigida, licitaciones dirigidas, y blanqueo fiscal selectivo — que en conjunto representan $80.000 millones perdidos en 13 anios.[36]',
         'Lo que los numeros no dicen: los totales patrimoniales no estan disponibles en todas las declaraciones juradas. Los vinculos offshore-juez aun no estan resueltos. La cadena donante-juez falta en los datos. La informacion del Boletin Oficial corresponde a diciembre 2019.',
         'El motor de analisis MiroFish — basado en Qwen 3.5 corriendo localmente — proceso cada patron, confirmo las coincidencias y descarto los falsos positivos. Coincidencias de entidad: 1.840 SAME_ENTITY confirmadas + 10.393 MAYBE_SAME_AS pendientes de resolucion. Cada hallazgo fue verificado contra las fuentes primarias. El grafo no acusa. Revela patrones.',
       ],
       en: [
-        'The direct investigation graph contains 263 nodes and 2,225 edges. Of those nodes: 117 persons, 98 organizations, 47 events. The engine processed 41 research files, generated 87 factchecks, identified 76 actors, traced 71 timeline events, and documented 32 money flows. Every number has a source. Every source was verified.',
+        'The direct investigation graph contains 280 nodes and 2,286 edges. Of those nodes: 121 persons, 104 organizations, 54 events. The engine processed 41 research files, generated 87 factchecks, identified 76 actors, traced 71 timeline events, and documented 32 money flows. Every number has a source. Every source was verified.',
         'The underlying data infrastructure: Como Voto provides 2,258 politicians and 920,000 votes. ICIJ leaks, 4,349 Argentine officers and 2,422 entities. The CNE records 1,714 donations. The Boletin Oficial, 6,044 appointments and 22,280 contracts. The IGJ, 951,863 officers and 398,000 companies. The CNV, 1,528,931 board positions. Asset declarations, 718,865 records from 2012-2024. In total, 1,839 cross-referenced legislative links.',
         'Offshore capital tracked: $483 billion. Six documented enrichment mechanisms — state procurement markups, regulatory revolving door, offshore triangulation, directed official advertising, rigged bidding, and selective tax laundering — which together represent $80 billion lost over 13 years.[36]',
         'What the numbers do not say: asset totals are empty for most declarations. Offshore-judge links are not yet resolved. The donor-judge chain is missing from the data. The Boletin Oficial is a snapshot from December 2019.',
@@ -484,8 +484,8 @@ const chapters: readonly Chapter[] = [
       ],
     },
     pullQuote: {
-      es: '263 nodos. 2.225 aristas. 87 factchecks. $483.000M offshore. El grafo no acusa. Revela patrones.',
-      en: '263 nodes. 2,225 edges. 87 factchecks. $483B offshore. The graph does not accuse. It reveals patterns.',
+      es: '280 nodos. 2.286 aristas. 87 factchecks. $483.000M offshore. El grafo no acusa. Revela patrones.',
+      en: '280 nodes. 2,286 edges. 87 factchecks. $483B offshore. The graph does not accuse. It reveals patterns.',
     },
     citations: [
       { id: 36, text: 'Infraestructura Neo4j y estadisticas del grafo — Office of Accountability' },
