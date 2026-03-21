@@ -30,12 +30,12 @@ export const investigations: InvestigationConfig[] = [
     title: 'Caso Epstein: Red de trafico y poder',
     subtitle: 'Investigacion activa',
     description:
-      '7,287 entidades y 21,944 relaciones documentadas. Documentos judiciales, registros de vuelo, 72 verificaciones de hechos.',
+      '7,276 entidades y 11,040 relaciones documentadas. Documentos judiciales, registros de vuelo, 77 verificaciones de hechos.',
     status: 'active',
     color: 'red',
     stats: [
-      { label: 'Entidades', value: '7,287' },
-      { label: 'Actores', value: '355' },
+      { label: 'Entidades', value: '7,276' },
+      { label: 'Actores', value: '374' },
       { label: 'Documentos', value: '1,044' },
     ],
     href: '/caso/caso-epstein',

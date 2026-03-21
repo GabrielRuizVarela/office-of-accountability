@@ -1,0 +1,496 @@
+{
+  "investigation": "finanzas-politicas",
+  "wave": 3,
+  "title": "Koch → Atlas Network → Argentine Think Tanks → Milei: The International Libertarian Funding Pipeline",
+  "date": "2026-03-21",
+  "summary": "The Koch brothers and allied US donors fund Atlas Network, which channels money to ~12 Argentine think tanks that shaped Milei's ideology, trained his cadre, and provided policy blueprints for his government. Between 2010 and 2021, Atlas distributed approximately $12 million USD to Latin American think tanks (IRS 990 filings analyzed by DeSmog). Argentina's Ley 26.215 prohibits foreign contributions to political parties, but the pipeline bypasses this by funding NGOs/think tanks that do 'economic education' rather than direct party financing.",
+
+  "pipeline_overview": {
+    "stage_1_donors": {
+      "description": "US billionaires, foundations, and dark money vehicles that fund Atlas Network",
+      "entities": [
+        {
+          "name": "Charles Koch Foundation",
+          "type": "foundation",
+          "role": "Major funder of Atlas Network",
+          "note": "Koch brothers were key to installing Alejandro Chafuen as Atlas CEO in 1991",
+          "sources": [
+            "https://www.desmog.com/atlas-economic-research-foundation/",
+            "https://en.wikipedia.org/wiki/Atlas_Network"
+          ]
+        },
+        {
+          "name": "Charles Koch Institute",
+          "type": "foundation",
+          "role": "Additional Koch vehicle funding Atlas",
+          "sources": ["https://en.wikipedia.org/wiki/Atlas_Network"]
+        },
+        {
+          "name": "Donors Trust / Donors Capital Fund",
+          "type": "donor_advised_fund",
+          "role": "Dark money ATM — anonymizes donor identities before passing funds to Atlas and affiliates",
+          "total_distributed_through_2015": "$740,000,000",
+          "grants_to_atlas_2016": "$1,300,000",
+          "record_annual_grants": "$351,000,000",
+          "note": "Founded 1999 by Whitney Ball, an 'ardent libertarian' who raised funds for Koch-founded Cato Institute. Alejandro Chafuen was a founding member.",
+          "sources": [
+            "https://www.prwatch.org/news/2018/03/13329/donors-trust-right-wing-secret-money-machine-doled-out-667-million-2016",
+            "https://www.washingtonexaminer.com/news/investigations/3234126/conservative-dark-money-atm-donorstrust-record-351-million/",
+            "https://en.wikipedia.org/wiki/Donors_Trust"
+          ]
+        },
+        {
+          "name": "Lynde and Harry Bradley Foundation",
+          "type": "foundation",
+          "role": "Regular Atlas Network funder",
+          "sources": ["https://en.wikipedia.org/wiki/Atlas_Network"]
+        },
+        {
+          "name": "John Templeton Foundation",
+          "type": "foundation",
+          "role": "Regular Atlas Network funder",
+          "sources": ["https://en.wikipedia.org/wiki/Atlas_Network"]
+        },
+        {
+          "name": "Lilly Endowment",
+          "type": "foundation",
+          "role": "Atlas Network funder",
+          "sources": ["https://en.wikipedia.org/wiki/Atlas_Network"]
+        },
+        {
+          "name": "ExxonMobil",
+          "type": "corporation",
+          "role": "Corporate funder — checks of $15,000-$50,000 at a time sent to Atlas",
+          "note": "In 1999, ExxonMobil-funded programs included ~24 free-market think tanks including Argentina's Fundacion Libertad",
+          "sources": [
+            "https://www.desmog.com/atlas-economic-research-foundation/",
+            "https://www.desmog.com/2024/12/09/a-valuable-and-generous-ally-how-exxon-and-atlas-network-worked-to-block-global-climate-action/"
+          ]
+        }
+      ]
+    },
+
+    "stage_2_atlas_network": {
+      "description": "US-based nonprofit that channels funds to 500+ think tanks worldwide",
+      "name": "Atlas Network (formerly Atlas Economic Research Foundation)",
+      "ein": "94-2763845",
+      "founded": 1981,
+      "founder": "Sir Antony Fisher",
+      "hq": "Arlington, Virginia, USA",
+      "annual_disbursement": "$5,000,000+ (2016 figure; $10M+ annually via grants and prizes)",
+      "latin_america_partners": 36,
+      "latin_america_countries": 16,
+      "total_to_latin_america_2010_2021": "$12,000,000",
+      "grant_types": {
+        "standard_project_grants": "$2,000-$5,000",
+        "smart_bets_program": "$25,000 + $10,000 matching grant",
+        "liberty_award": "share of $270,000 prize pool",
+        "leveraging_indices_grants": "variable"
+      },
+      "key_figure": {
+        "name": "Alejandro Chafuen",
+        "nationality": "Argentine (born Buenos Aires)",
+        "role": "President and CEO 1991-2018",
+        "significance": "First Atlas Networker in Latin America (1991). Founding member of Donors Trust. Later moved to Acton Institute. Regular visitor to Casa Rosada.",
+        "sources": [
+          "https://theintercept.com/2017/08/09/atlas-network-alejandro-chafuen-libertarian-think-tank-latin-america-brazil/",
+          "https://www.dataclave.com.ar/poder/quienes-estan-detras-de-la-fundacion-que-mas-influye-sobre-las-principales-usinas-de-la-derecha-argentina_a653dba21947a68be06836555"
+        ]
+      },
+      "umbrella_networks": {
+        "RELIAL": "Red Liberal para America Latina — connects dozens of organizations in Brazil, Chile, Colombia, Mexico with direct links to right-wing parties",
+        "HACER": "Hispanic American Center for Economic Research — linked to RELIAL and Liberal International"
+      },
+      "irs_filings_url": "https://projects.propublica.org/nonprofits/organizations/942763845",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Atlas_Network",
+        "https://www.sourcewatch.org/index.php/Atlas_Network",
+        "https://www.desmog.com/atlas-economic-research-foundation/"
+      ]
+    },
+
+    "stage_3_argentine_think_tanks": {
+      "description": "~12 Argentine organizations affiliated with Atlas Network that receive funding, training, and networking",
+      "total_count_estimated": 12,
+      "total_funding_received": "$12,000,000 (share of Latin America total 2010-2021)",
+      "organizations": [
+        {
+          "name": "Fundacion Libertad",
+          "city": "Rosario, Santa Fe",
+          "founded": 1988,
+          "director": "Gerardo Bongiovanni",
+          "role": "Most influential Atlas node in Argentina. Seedbed of neoliberal ideas and training space for right-wing politicians and economists.",
+          "atlas_relationship": "Direct partner, receives economic support plus corporate sponsorship (Vicentin, Paladini, Nova)",
+          "early_seed_funding": "$1,000,000 from NED/CIPE between 1985-1987",
+          "exxon_connection": "Included in 1999 ExxonMobil-funded program of ~24 think tanks",
+          "political_impact": "Key role promoting Macri and Milei candidacies",
+          "sources": [
+            "https://www.dataclave.com.ar/poder/atlas-network-y-fundacion-libertad--la-telarana-del-fundamentalismo-libertario-y-su-influencia-en-argentina_a6813ab0e38c74e248df3b135",
+            "https://theintercept.com/2017/08/09/atlas-network-alejandro-chafuen-libertarian-think-tank-latin-america-brazil/"
+          ]
+        },
+        {
+          "name": "Fundacion Atlas 1853",
+          "city": "Buenos Aires (Puerto Madero)",
+          "role": "Major think tank. Diana Mondino (Milei's Foreign Minister) was on its Academic Council.",
+          "atlas_relationship": "Direct partner, one of two flagship Atlas organizations in Argentina",
+          "sources": [
+            "https://revistazoom.com.ar/fundacion-atlas-de-bernard-shaw-a-javier-milei/",
+            "https://www.desmog.com/2023/08/22/javier-milei-argentina-atlas-network/"
+          ]
+        },
+        {
+          "name": "Libertad y Progreso",
+          "city": "Buenos Aires",
+          "founded": 2011,
+          "director_general": "Agustin Etchebarne",
+          "executive_director": "Aldo Abram",
+          "public_policy_director": "Manuel Solanet",
+          "role": "Economic policy think tank. Contributed to Milei's deregulation and spending-cut program.",
+          "atlas_funding_since_2012": "~$650,000",
+          "atlas_relationship": "Direct partner, received January 2024 funding post-Milei inauguration to promote reform agenda with Cato Institute",
+          "mont_pelerin_connection": "Members Eduardo Filgueira Lima and Diana Mondino linked to Mont Pelerin Society",
+          "sources": [
+            "https://www.meer.com/es/63761-los-libertarians-y-la-red-atlas-arremeten-en-argentina",
+            "https://www.atlasnetwork.org/articles/libertad-y-progreso-case-study-rightsizing-and-outsized-argentinian-government"
+          ]
+        },
+        {
+          "name": "Fundacion Pensar",
+          "city": "Buenos Aires",
+          "role": "Think tank of PRO party. Merged with Macri's political party. All Macri administration officials were on its board; Macri was honorary president.",
+          "atlas_relationship": "Former Atlas partner (no longer listed on Atlas website as of recent checks)",
+          "political_significance": "Direct conduit between Atlas ideology and Argentine state power during Macri presidency (2015-2019)",
+          "sources": [
+            "https://elforjista.com/atlasnetwork.html",
+            "https://www.enorsai.com.ar/politica/30774-que-es-atlas-network-y-cual-es-su-relacion-con-las-marchas-anticuarentena.html"
+          ]
+        },
+        {
+          "name": "Asociacion Argentina de Contribuyentes (AAC)",
+          "city": "Buenos Aires",
+          "executive_director": "Jonas Torrico",
+          "role": "Tax reform advocacy. Won Atlas Network 2024 Latin America Liberty Award ($270,000 prize pool).",
+          "atlas_relationship": "Direct partner, received grants and skills-based training",
+          "achievement": "Eliminated monthly credit card tax — $300 million annual savings for 3 million people. Milei endorsed their work.",
+          "sources": [
+            "https://www.atlasnetwork.org/articles/aac-wins-2024",
+            "https://www.atlasnetwork.org/articles/sharpening-mileis-chainsaw-atlas-network-partners-spur-reform"
+          ]
+        },
+        {
+          "name": "Fundacion Federalismo y Libertad",
+          "city": "Tucuman",
+          "founded": 2012,
+          "role": "Provincial think tank. Member of Atlas Network, RELIAL, and Friedrich Naumann Foundation.",
+          "atlas_relationship": "Direct partner",
+          "recognition": "Cataloged among top 100 Think Tanks worldwide in 'Global Go To Think Tank Index' since 2015",
+          "sources": [
+            "https://www.federalismoylibertad.org/nosotros/mision-y-vision/",
+            "https://www.dataclave.com.ar/poder/atlas-network-y-fundacion-libertad--la-telarana-del-fundamentalismo-libertario-y-su-influencia-en-argentina_a6813ab0e38c74e248df3b135"
+          ]
+        },
+        {
+          "name": "Fundacion Bases",
+          "city": "Buenos Aires",
+          "role": "Libertarian think tank associated with Atlas Network",
+          "atlas_relationship": "Partner",
+          "sources": [
+            "https://www.laizquierdadiario.com/Libertarios-quien-financia-a-Milei-y-Laje"
+          ]
+        },
+        {
+          "name": "CADAL (Centro para la Apertura y el Desarrollo de America Latina)",
+          "city": "Buenos Aires",
+          "founded": 2003,
+          "role": "Human rights and democratic solidarity. Also receives US State Department funding (Bureau of Democracy, Human Rights and Labor).",
+          "atlas_relationship": "Associated partner",
+          "dual_funding": "US State Department DRL + Atlas Network",
+          "sources": [
+            "https://www.cadal.org/institucional/quienes-somos/",
+            "https://theintercept.com/2017/08/09/atlas-network-alejandro-chafuen-libertarian-think-tank-latin-america-brazil/"
+          ]
+        },
+        {
+          "name": "Instituto Acton Argentina",
+          "city": "Buenos Aires",
+          "role": "Promotes free market economics in harmony with Catholic Faith. Cooperates with US-based Acton Institute (Michigan).",
+          "atlas_relationship": "Partner. Chafuen moved from Atlas to Acton Institute after stepping down as Atlas CEO.",
+          "programs": "Poverty University — connecting economic opportunity with human dignity",
+          "sources": [
+            "https://www.atlasnetwork.org/articles/instituto-actons-poverty-university-shows-connection-between-economic-opportunity-and-human-dignity",
+            "https://www.institutoacton.com.ar/oldsite/"
+          ]
+        },
+        {
+          "name": "Fundacion Libre",
+          "city": "Buenos Aires",
+          "role": "Atlas Network affiliate",
+          "sources": ["https://es.wikipedia.org/wiki/Red_Atlas"]
+        },
+        {
+          "name": "Club para la Libertad",
+          "role": "Atlas Network affiliate",
+          "sources": ["https://es.wikipedia.org/wiki/Red_Atlas"]
+        },
+        {
+          "name": "Ayn Rand Center Argentina",
+          "role": "Atlas Network affiliate focused on Objectivist philosophy",
+          "sources": [
+            "https://www.dataclave.com.ar/poder/atlas-network-y-fundacion-libertad--la-telarana-del-fundamentalismo-libertario-y-su-influencia-en-argentina_a6813ab0e38c74e248df3b135"
+          ]
+        }
+      ]
+    },
+
+    "stage_4_political_capture": {
+      "description": "How Atlas-funded think tanks connect to Milei's government and Argentine politics",
+      "milei_connections": [
+        {
+          "person": "Alberto Benegas Lynch Jr.",
+          "role": "Milei advisor and intellectual mentor",
+          "atlas_connection": "Director of Atlas Network-sponsored think tank. Cato Institute adjunct scholar.",
+          "sources": [
+            "https://www.desmog.com/2023/08/22/javier-milei-argentina-atlas-network/",
+            "https://www.cato.org/free-society/fall-2024/argentina-rediscovers-its-classical-liberal-roots"
+          ]
+        },
+        {
+          "person": "Diana Mondino",
+          "role": "Milei's Foreign Minister (appointed 2023)",
+          "atlas_connection": "Member of Academic Council of Fundacion Atlas 1853. Mont Pelerin Society connection.",
+          "sources": ["https://revistazoom.com.ar/fundacion-atlas-de-bernard-shaw-a-javier-milei/"]
+        },
+        {
+          "person": "Alejandro Chafuen",
+          "role": "Constant visitor to Casa Rosada",
+          "atlas_connection": "Former Atlas CEO (1991-2018), founding Donors Trust member, now at Acton Institute",
+          "sources": [
+            "https://www.dataclave.com.ar/poder/quienes-estan-detras-de-la-fundacion-que-mas-influye-sobre-las-principales-usinas-de-la-derecha-argentina_a653dba21947a68be06836555"
+          ]
+        }
+      ],
+      "milei_atlas_activity": "Milei moved between Atlas institutes using them as hubs for disseminating his ideas, attending conferences and events at Fundacion Libertad y Progreso, Federalismo y Libertad, and Fundacion Atlas",
+      "atlas_own_assessment": "Atlas Network published 'Sharpening Milei's Chainsaw: Atlas Network Partners Spur Reform' — openly claiming credit for Milei's reform agenda",
+      "macri_precedent": "Fundacion Pensar (Atlas partner) merged directly with Macri's PRO party. All Macri officials sat on its board.",
+      "sources": [
+        "https://www.atlasnetwork.org/articles/sharpening-mileis-chainsaw-atlas-network-partners-spur-reform",
+        "https://atlasnetwork.org/articles/javier-mileis-rise-in-argentina"
+      ]
+    }
+  },
+
+  "legal_bypass_mechanism": {
+    "prohibition": "Argentina's Ley 26.215 (Ley de Financiamiento de los Partidos Politicos) explicitly prohibits political parties from receiving contributions from foreign governments or public entities. All contributions must be traceable via bank transfer, deposit, or electronic means.",
+    "sanctions": "Violations punishable by fines equal to 1x-10x the contribution amount",
+    "bypass_method": {
+      "description": "The pipeline does not technically violate Ley 26.215 because funds flow to NGOs/think tanks registered as civil associations (fundaciones/asociaciones civiles), NOT directly to political parties. These organizations conduct 'economic education,' 'policy research,' and 'training' — activities legally distinct from campaign contributions.",
+      "steps": [
+        "1. Koch foundations and dark money vehicles (Donors Trust) donate to Atlas Network in the US — legal under US tax law as 501(c)(3) charitable giving",
+        "2. Atlas Network grants funds to Argentine think tanks for 'economic education' projects — legal as international philanthropic grants to NGOs",
+        "3. Argentine think tanks train cadres, produce policy papers, host events, build media presence, and create the ideological ecosystem that produces political candidates",
+        "4. Think tank personnel move directly into government (Diana Mondino from Fundacion Atlas to Foreign Ministry; Fundacion Pensar board became Macri's cabinet)",
+        "5. No Argentine campaign finance law is technically violated because no direct party contribution occurs"
+      ],
+      "additional_channels": [
+        "NED/CIPE (US government money) — $1M to Fundacion Libertad 1985-1987 as seed funding",
+        "Corporate sponsorship from Argentine companies (Vicentin, Paladini, Nova) — domestic, legal",
+        "US State Department Bureau of Democracy funds to CADAL — legal government-to-NGO grants",
+        "Friedrich Naumann Foundation (German liberal party foundation) to Federalismo y Libertad"
+      ],
+      "key_loophole": "Argentine law has no restrictions on NGO control by foreign entities or grantors, and no restrictions on lobbying activities by NGOs. A charity can be controlled, even indirectly, by a for-profit entity or by a foreign grantor.",
+      "sources": [
+        "https://servicios.infoleg.gob.ar/infolegInternet/anexos/120000-124999/124231/texact.htm",
+        "https://cof.org/content/nonprofit-law-argentina"
+      ]
+    }
+  },
+
+  "koch_network_scale": {
+    "description": "Total Koch political spending for context on the scale of the operation",
+    "2020_election_cycle": "$1,100,000,000",
+    "2024_election_cycle": "$548,000,000",
+    "2017_biennial_pledge": "$300,000,000-$400,000,000",
+    "donors_trust_cumulative_through_2015": "$740,000,000",
+    "donors_trust_to_atlas_2016": "$1,300,000",
+    "atlas_to_latin_america_2010_2021": "$12,000,000",
+    "atlas_annual_global_grants": "$10,000,000+",
+    "note": "The $12M to Latin America is a tiny fraction of Koch network spending but goes very far in Argentine political economics. For context, the AAC tax reform that Milei endorsed cost $300M/year in foregone tax revenue, achieved with Atlas grants in the low six figures.",
+    "sources": [
+      "https://www.exposedbycmd.org/2022/08/08/koch-controlled-organizations-spent-more-than-1-1-billion-during-the-2020-election-cycle/",
+      "https://dnyuz.com/2025/12/20/koch-political-operation-spent-nearly-550-million-during-2024-cycle/"
+    ]
+  },
+
+  "milei_international_network": {
+    "description": "Milei's connections to the broader US right-wing ecosystem beyond Atlas",
+    "connections": [
+      {
+        "entity": "CPAC (Conservative Political Action Conference)",
+        "relationship": "Milei spoke at CPAC 2024, met Trump backstage. Hosted CPAC Argentina in Buenos Aires (Dec 4, 2024). Invited to speak at 2025 CPAC Circle Retreat.",
+        "lobbyist": "Damian Merlo (Latin America Advisory Group) — connected Milei to Heritage Foundation. Same lobbyist for Nayib Bukele.",
+        "sources": [
+          "https://newlinesmag.com/reportage/cpac-argentina-signals-the-rise-of-a-new-kind-of-diplomacy/",
+          "https://www.opendemocracy.net/en/trump-project-2025-argentina-milei-far-right/"
+        ]
+      },
+      {
+        "entity": "Heritage Foundation",
+        "relationship": "Heritage VP Derrick Morgan gave Milei a copy of 'Mandate for Leadership' (Project 2025 blueprint) at CPAC. Heritage has published multiple articles praising 'Milei Miracle.'",
+        "sources": [
+          "https://www.opendemocracy.net/en/trump-project-2025-argentina-milei-far-right/",
+          "https://www.heritage.org/americas/commentary/what-argentinas-president-elect-javier-milei-means-us"
+        ]
+      },
+      {
+        "entity": "Peter Thiel",
+        "relationship": "Visited Milei at Casa Rosada 3 times in 2024. Met with Marcos Galperin (Argentina's richest man). Thiel said Milei's Argentina 'could be the future of Europe and the United States.' Palantir connection raises data sovereignty concerns.",
+        "ideological_alignment": "Both believe 'freedom and democracy are not compatible'",
+        "sources": [
+          "https://www.nodal.am/2025/08/argentina-en-la-red-de-peter-thiel-plataformas-datos-y-soberania-en-juego/",
+          "https://www.infobae.com/economia/2024/11/14/milei-estrecha-vinculos-con-los-millonarios-tech-apoyo-de-los-unicornios-y-la-conexion-con-la-cofradia-que-reina-en-silicon-valley/"
+        ]
+      },
+      {
+        "entity": "Elon Musk / DOGE",
+        "relationship": "Milei's 30% spending cuts became model for Musk's DOGE. Musk attended free-market event via Zoom to toast Milei. Milei gifted Musk a 'bureaucracy chainsaw.' Musk praised Milei for 'deleting entire departments.'",
+        "sources": [
+          "https://www.axios.com/2025/01/06/musk-milei-trump-spending-doge",
+          "https://www.washingtonpost.com/world/2025/03/28/argentina-milei-musk-government-spending/"
+        ]
+      },
+      {
+        "entity": "Donald Trump",
+        "relationship": "14 Milei trips to US. First South American leader with formal Oval Office bilateral. $20B IMF/Treasury lifeline. Trade framework agreement. Milei member of Trump's Board of Peace.",
+        "sources": [
+          "https://buenosairesherald.com/world/chronicle-of-a-bromance-inside-the-relationship-between-milei-and-donald-trump",
+          "https://www.pbs.org/newshour/politics/watch-live-trump-meets-with-argentinas-milei-as-u-s-prepares-20-billion-bailout"
+        ]
+      },
+      {
+        "entity": "Mont Pelerin Society",
+        "relationship": "Argentine economists Diana Mondino and Eduardo Filgueira Lima connected to Mont Pelerin via Libertad y Progreso. Milei's ideology traces directly to Hayek and the MPS tradition.",
+        "sources": [
+          "https://www.ips-journal.eu/topics/democracy-and-society/argentinas-self-styled-libertarian-7263/"
+        ]
+      },
+      {
+        "entity": "Cato Institute",
+        "relationship": "Alberto Benegas Lynch Jr. (Milei's intellectual mentor) is Cato adjunct scholar. Libertad y Progreso received Atlas funding in Jan 2024 to promote reforms jointly with Cato.",
+        "sources": [
+          "https://www.cato.org/free-society/fall-2024/argentina-rediscovers-its-classical-liberal-roots"
+        ]
+      }
+    ]
+  },
+
+  "us_government_funding_channels": {
+    "description": "In addition to private Koch/Atlas money, US government funds also reach Argentine think tanks",
+    "channels": [
+      {
+        "source": "National Endowment for Democracy (NED)",
+        "mechanism": "Grants through CIPE (Center for International Private Enterprise, affiliated with US Chamber of Commerce)",
+        "documented_amount": "$1,000,000 to Fundacion Libertad (1985-1987)",
+        "note": "Atlas managed to turn US taxpayer money from NED/CIPE into an important funding source for its growing network",
+        "source_url": "https://theintercept.com/2017/08/09/atlas-network-alejandro-chafuen-libertarian-think-tank-latin-america-brazil/"
+      },
+      {
+        "source": "US State Department — Bureau of Democracy, Human Rights and Labor (DRL)",
+        "mechanism": "Direct grants to CADAL",
+        "source_url": "https://www.cadal.org/institucional/quienes-somos/"
+      },
+      {
+        "source": "Friedrich Naumann Foundation (Germany)",
+        "mechanism": "German liberal party foundation — official partner of Federalismo y Libertad",
+        "note": "Extends the pipeline beyond US funding to European liberal party networks",
+        "source_url": "https://www.federalismoylibertad.org/nosotros/mision-y-vision/"
+      }
+    ]
+  },
+
+  "key_findings": [
+    "The Koch→Atlas→Argentine think tank pipeline has operated since at least 1985 (NED/CIPE seed funding to Fundacion Libertad)",
+    "Alejandro Chafuen (Argentine-born) led Atlas for 27 years (1991-2018) and was simultaneously a founding member of Donors Trust, the 'dark money ATM of the right'",
+    "At least 12 Argentine organizations are Atlas affiliates, receiving funding, training, networking, and competitive grants",
+    "Atlas Network itself openly claims credit for shaping Milei's reform agenda ('Sharpening Milei's Chainsaw')",
+    "The pipeline legally bypasses Argentina's ban on foreign political donations by routing money through NGOs doing 'economic education' — Argentine law places no restrictions on foreign control of NGOs or on NGO lobbying",
+    "Think tank personnel move directly into government: Fundacion Pensar board became Macri's cabinet; Diana Mondino went from Fundacion Atlas Academic Council to Milei's Foreign Ministry",
+    "The $12M flowing to Latin America 2010-2021 is a tiny fraction of Koch network spending ($1.1B in 2020 cycle alone) but achieves outsized political impact in Argentina's economy",
+    "Milei's network extends beyond Atlas to CPAC, Heritage Foundation, Peter Thiel (3 visits to Casa Rosada), Elon Musk (DOGE model), and Trump ($20B lifeline)",
+    "The same lobbyist (Damian Merlo) who connected Milei to Heritage Foundation also represents Bukele — suggesting coordinated US right-wing engagement with Latin American allies",
+    "Atlas Network does not publicly disclose its member organizations as of October 2024, making full transparency impossible"
+  ],
+
+  "graph_entities_proposed": {
+    "organizations": [
+      "Atlas Network",
+      "Charles Koch Foundation",
+      "Charles Koch Institute",
+      "Donors Trust",
+      "Donors Capital Fund",
+      "Bradley Foundation",
+      "John Templeton Foundation",
+      "Fundacion Libertad (Rosario)",
+      "Fundacion Atlas 1853",
+      "Libertad y Progreso",
+      "Fundacion Pensar",
+      "Asociacion Argentina de Contribuyentes",
+      "Fundacion Federalismo y Libertad",
+      "Fundacion Bases",
+      "CADAL",
+      "Instituto Acton Argentina",
+      "Acton Institute (US)",
+      "Fundacion Libre",
+      "Club para la Libertad",
+      "Ayn Rand Center Argentina",
+      "RELIAL",
+      "Heritage Foundation",
+      "CPAC",
+      "Cato Institute",
+      "NED",
+      "CIPE",
+      "Friedrich Naumann Foundation",
+      "ExxonMobil",
+      "Palantir",
+      "Latin America Advisory Group"
+    ],
+    "persons": [
+      "Charles Koch",
+      "David Koch",
+      "Alejandro Chafuen",
+      "Gerardo Bongiovanni",
+      "Agustin Etchebarne",
+      "Alberto Benegas Lynch Jr.",
+      "Diana Mondino",
+      "Jonas Torrico",
+      "Damian Merlo",
+      "Peter Thiel",
+      "Elon Musk",
+      "Marcos Galperin",
+      "Javier Milei",
+      "Mauricio Macri",
+      "Whitney Ball",
+      "Derrick Morgan"
+    ],
+    "relationships": [
+      "FUNDS: Koch foundations → Atlas Network",
+      "FUNDS: Donors Trust → Atlas Network",
+      "FUNDS: Atlas Network → each Argentine think tank",
+      "FUNDS: NED/CIPE → Fundacion Libertad",
+      "FUNDS: ExxonMobil → Atlas Network → Fundacion Libertad",
+      "FUNDS: US State Dept DRL → CADAL",
+      "FUNDS: Friedrich Naumann → Federalismo y Libertad",
+      "LED: Chafuen → Atlas Network (1991-2018)",
+      "FOUNDED: Whitney Ball → Donors Trust",
+      "MEMBER_OF: Chafuen → Donors Trust (founding member)",
+      "ADVISED: Benegas Lynch → Milei",
+      "APPOINTED: Milei → Diana Mondino (Foreign Minister)",
+      "MEMBER_OF: Mondino → Fundacion Atlas Academic Council",
+      "MERGED_WITH: Fundacion Pensar → PRO party",
+      "LOBBIED_FOR: Damian Merlo → Milei (Heritage connection)",
+      "LOBBIED_FOR: Damian Merlo → Bukele",
+      "VISITED: Peter Thiel → Casa Rosada (3x in 2024)",
+      "MODELED: Milei spending cuts → Musk DOGE"
+    ]
+  }
+}

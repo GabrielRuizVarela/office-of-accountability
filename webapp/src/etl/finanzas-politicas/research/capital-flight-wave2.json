@@ -1,0 +1,359 @@
+{
+  "investigation": "finanzas-politicas",
+  "wave": 2,
+  "title": "Capital Flight Map: Where the Money Goes",
+  "date": "2026-03-21",
+  "summary": "Comprehensive mapping of Argentine capital flight channels, destinations, and volumes. Argentina's residents hold an estimated USD 483 billion in external assets (INDEC Q3 2025), making the country a net international creditor despite chronic fiscal deficits. This paradox is the structural fingerprint of decades of capital flight.",
+
+  "total_stock": {
+    "indec_external_assets_q3_2025": {
+      "total_usd": "483,278,000,000",
+      "breakdown": {
+        "currency_and_deposits": "260,443,000,000",
+        "portfolio_equity_and_funds": "69,968,000,000",
+        "direct_investment_abroad": "54,314,000,000",
+        "debt_securities_portfolio": "42,448,000,000",
+        "reserve_assets": "40,374,000,000"
+      },
+      "source": "INDEC — Posicion de Inversion Internacional, Q3 2025",
+      "url": "https://www.indec.gob.ar/uploads/informesdeprensa/bal_12_25A30CCDCD2C.pdf"
+    },
+    "net_creditor_position_usd": "50,464,000,000",
+    "informal_dollar_holdings_estimate": {
+      "range_low": "170,000,000,000",
+      "range_high": "276,175,000,000",
+      "milei_estimate": "200,000,000,000 to 400,000,000,000",
+      "indec_otra_inversion_q3_2025": "253,919,000,000",
+      "note": "Includes cash outside the financial system ('colchon'), unregistered foreign deposits, safety deposit boxes",
+      "sources": [
+        "https://www.infobae.com/economia/2025/12/23/dolares-en-el-colchon-cuantas-divisas-tienen-los-argentinos-fuera-del-sistema-segun-el-gobierno/",
+        "https://www.cronista.com/finanzas-mercados/cuantos-dolares-tienen-los-argentinos-fuera-del-sistema-y-en-el-exterior/"
+      ]
+    },
+    "historical_cumulative_1976_2017": {
+      "usd": "350,000,000,000",
+      "source": "CEFID-AR",
+      "url": "https://www.redalyc.org/jatsRepo/909/90958481002/html/index.html"
+    },
+    "historical_cumulative_1976_2015": {
+      "usd": "277,800,000,000",
+      "source": "Basualdo/FLACSO",
+      "url": "http://www.scielo.org.co/scielo.php?script=sci_arttext&pid=S0121-68052018000200007"
+    }
+  },
+
+  "channels": {
+    "banking_fae": {
+      "label": "Formacion de Activos Externos (BCRA balance cambiario)",
+      "description": "Official BCRA measure of resident purchases of foreign assets through the formal exchange market. The primary legal channel for capital outflows.",
+      "data": {
+        "2024_full_year": {
+          "usd": "2,300,000,000",
+          "note": "Positive record during cepo cambiario restrictions",
+          "source": "https://www.argentina.gob.ar/sites/default/files/balance_cambiario_2025_0.pdf"
+        },
+        "2025_jan_jul_post_unification": {
+          "usd": "14,730,000,000",
+          "note": "Highest since MULC creation in 2002. Accelerated after April 2025 exchange rate unification.",
+          "monthly_breakdown": {
+            "april": "2,010,000,000",
+            "may": "3,226,000,000",
+            "june": "4,051,000,000",
+            "july": "5,432,000,000"
+          },
+          "source": "https://centrocepa.com.ar/images/2025/08/2025.08.31%20-%20Informe%20de%20Balance%20Cambiario%20BCRA-%20Agosto%202025.pdf"
+        },
+        "vs_imf_disbursement": {
+          "imf_total_usd": "12,000,000,000",
+          "fae_as_pct_of_imf": "118.8%",
+          "note": "In 4 months post-unification, FAE exceeded total IMF disbursements",
+          "source": "https://economis.com.ar/bcra-fuga-capitales-tres-meses-supero-dolares-fmi/"
+        },
+        "persons_cash_purchases_jul_2025": {
+          "usd": "3,041,000,000",
+          "note": "Individual dollar purchases alone in one month"
+        }
+      }
+    },
+
+    "real_estate_miami": {
+      "label": "Argentine Real Estate Investment in Miami/South Florida",
+      "description": "Argentines are the #1 or #2 foreign buyer group in South Florida, purchasing primarily with cash (68%), indicating wealth already held offshore.",
+      "data": {
+        "share_of_foreign_transactions_2023_2024": "18%",
+        "annual_investment_volume_2024": {
+          "usd": "600,000,000",
+          "note": "Total Argentine investment in Florida in 2024",
+          "source": "https://fortuna.perfil.com/noticias/real-estate/inversiones-inmobiliarias-en-eeuu-argentina-lidera-las-compras-en-miami.phtml"
+        },
+        "average_purchase_price": "470,500",
+        "cash_payment_rate": "68%",
+        "growth_2025": "200% increase in platform activity H1 2025 vs H2 2024",
+        "sources": [
+          "https://fortuna.perfil.com/noticias/real-estate/inversiones-inmobiliarias-en-eeuu-argentina-lidera-las-compras-en-miami.phtml",
+          "https://bahiacesar.com/2025/07/07/inversion-inmobiliaria-latina-en-ee-uu-miami-a-la-vanguardia-y-el-auge-de-los-compradores-argentinos/"
+        ]
+      }
+    },
+
+    "uruguay_deposits": {
+      "label": "Argentine Deposits and Real Estate in Uruguay",
+      "description": "Uruguay is the nearest offshore haven. Deposits fluctuate with Argentine political cycles. Punta del Este real estate is a major store of offshore wealth.",
+      "data": {
+        "non_resident_deposits_peak": {
+          "usd": "21,381,000,000",
+          "note": "Total non-resident deposits (majority Argentine) — peak before 2023 drawdown"
+        },
+        "argentines_direct_deposits": {
+          "usd_approx": "3,500,000,000",
+          "note": "Argentine nationals specifically, plus USD 58M in Patagonia Uruguay (IFE Punta del Este)",
+          "source": "https://eleconomista.com.ar/internacional/depositos-uruguay-argentinos-otros-residentes-tocan-maximo-cinco-anos-n52933"
+        },
+        "trend": "Deposits fell H1 2023 as Argentines moved funds further from AFIP reach (US, Switzerland). Rebounding post-blanqueo.",
+        "sources": [
+          "https://www.cronista.com/finanzas-mercados/cuentas-de-argentinos-en-uruguay-ahora-mudan-depositos-mas-lejos-de-la-afip/",
+          "https://www.cronista.com/finanzas-mercados/Record-de-depositos-de-argentinos-en-bancos-de-Uruguay-20200624-0049.html"
+        ]
+      }
+    },
+
+    "swiss_banking": {
+      "label": "Swiss Banking (Credit Suisse / UBS)",
+      "description": "Switzerland remains a key destination. The Suisse Secrets leak revealed dozens of Argentine account holders. UBS settled USD 511M with DOJ in 2025 over Credit Suisse's offshore tax evasion assistance.",
+      "data": {
+        "suisse_secrets_argentines": "Several dozen Argentine beneficiaries among 18,000+ accounts linked to the leak",
+        "ubs_doj_settlement_2025": {
+          "usd": "511,000,000",
+          "note": "UBS guilty plea for Credit Suisse helping wealthy clients hide $4B+ offshore",
+          "source": "UBS DOJ settlement May 2025"
+        },
+        "blanqueo_2024_swiss_origin": "Switzerland among top 4 countries of origin for declared blanqueo assets",
+        "sources": [
+          "https://www.infobae.com/politica/2022/02/20/el-lado-oscuro-del-cofre-suizo/",
+          "https://www.infobae.com/politica/2022/02/22/que-paso-cuando-un-periodista-quiso-abrir-una-cuenta-en-el-credit-suisse/"
+        ]
+      }
+    },
+
+    "delaware_shell_companies": {
+      "label": "Delaware LLCs as Opacity Vehicle",
+      "description": "Delaware requires no beneficial ownership disclosure at state level. LLCs can be formed for $50 with a registered agent hiding the true owner. Used extensively by Latin American wealth holders.",
+      "data": {
+        "formation_cost": "$50 with registered agent",
+        "beneficial_ownership_disclosure": "None at state level. Federal CTA requirements in flux after litigation.",
+        "use_case": "Real estate purchases, brokerage accounts, holding structures to anonymize Argentine-origin wealth in US markets",
+        "sources": [
+          "https://www.offshore-protection.com/delaware-offshore-company",
+          "https://www.biia.com/discreet-delaware-why-corporate-secrecy-and-money-laundering-have-thrived-in-the-us/"
+        ]
+      }
+    },
+
+    "crypto_stablecoins": {
+      "label": "Cryptocurrency and Stablecoins as Capital Flight Channel",
+      "description": "Argentina ranks #1 in Latin America for crypto volume and #20 globally. Stablecoins (USDT, USDC) account for 61.8% of all crypto activity, functioning as a parallel dollar market and capital flight vehicle.",
+      "data": {
+        "total_crypto_volume_2024": {
+          "usd": "91,100,000,000",
+          "note": "Total crypto received by Argentine users Jul 2023-Jun 2024, per Chainalysis",
+          "source": "https://www.chainalysis.com/blog/2024-latin-america-crypto-adoption/"
+        },
+        "stablecoin_share": "61.8% of all crypto activity",
+        "stablecoin_breakdown": {
+          "USDT_share_of_purchases": "50%",
+          "USDC_share_of_purchases": "22%"
+        },
+        "p2p_dominance": "P2P exchanges (Binance P2P, local platforms) are primary on/off ramp, allowing peso-to-USDT conversion outside formal banking",
+        "lemon_cash_volume_2024": {
+          "usd": "5,000,000,000",
+          "note": "Single exchange, primarily stablecoin trading"
+        },
+        "local_exchange_user_base": "20,000,000 users across LemonCash, Bitso, Ripio",
+        "capital_flight_mechanism": "Buy USDT on P2P with pesos -> transfer to self-custodial wallet or foreign exchange -> convert to USD/other. No BCRA reporting. No FAE registration.",
+        "sources": [
+          "https://www.chainalysis.com/blog/latin-america-crypto-adoption-2025/",
+          "https://bitwage.com/en-us/blog/state-of-stablecoins-in-argentina-september-2025/",
+          "https://www.criptonoticias.com/comunidad/adopcion/argentina-criptomonedas-america-latina-chainalysis/"
+        ]
+      }
+    },
+
+    "mining_transfer_pricing": {
+      "label": "Mining Sector Transfer Pricing and Subfacturing",
+      "description": "Argentina's mining royalty cap of 3% on 'boca de mina' value, combined with allowable cost deductions, creates a structural incentive for transfer pricing abuse. Lithium subfacturing has been documented with export prices at 1/3 of market value.",
+      "data": {
+        "royalty_cap": "3% on boca de mina value (Law 24.196, 1993)",
+        "deduction_loophole": "Law 25.161 (1999) allows deduction of direct/operational costs from royalty base, substantially reducing effective royalty rate",
+        "lithium_subfacturing_case": {
+          "declared_price_per_ton": "8,889",
+          "market_price_per_ton": "15,157",
+          "estimated_loss_2024": "403,000,000",
+          "operations_flagged_2018_2019": 403,
+          "value_discrepancy": "168,000,000",
+          "penalty_imposed_ars": "6,300,000,000",
+          "sources": [
+            "https://www.ambito.com/politica/litio/millonaria-denuncia-subfacturacion-la-exportacion-n5483196",
+            "https://economiasustentable.com/noticias/denuncian-subfacturacion-en-exportaciones-de-litio-advierten-perdidas-por-mas-de-400-millones-dolares"
+          ]
+        },
+        "soy_complex_transfer_pricing": {
+          "note": "Research on 2004-2020 period found largest deviations during rising international prices — exporters delayed price adjustments to extend subfacturing windows",
+          "source": "https://dialnet.unirioja.es/servlet/articulo?codigo=8270387"
+        },
+        "glencore_rigi_applications": {
+          "capex_usd": "13,000,000,000",
+          "projects": ["El Pachon (San Juan)", "Agua Rica (Catamarca)"],
+          "note": "Glencore seeking RIGI tax incentives for $13B in projects — further reducing fiscal capture",
+          "source": "https://www.mining.com/web/glencore-seeks-13-billion-in-incentives-for-argentina-copper-projects/"
+        }
+      }
+    },
+
+    "tourism_deficit": {
+      "label": "Tourism as Dollar Drain",
+      "data": {
+        "travelers_abroad_2025": "12,000,000",
+        "tourism_deficit_2025": {
+          "usd": "4,000,000,000+",
+          "source": "https://www.infobae.com/economia/2026/01/26/turismo-internacional-casi-12-millones-de-argentinos-viajaron-al-exterior-en-2025-y-el-deficit-supero-los-usd-4000-millones/"
+        }
+      }
+    }
+  },
+
+  "tax_evasion_scale": {
+    "total_cost_of_informality_pct_gdp": "21%",
+    "iva_evasion_rate_2024": "37%",
+    "iva_evasion_trend": "Fell from 47%+ to below 40% for first time, driven by digitalization",
+    "informal_employment_jan_2025": "42% of workers",
+    "ley_inocencia_fiscal": {
+      "cases_dropped": 4199,
+      "new_simple_evasion_threshold_ars": "100,000,000",
+      "new_aggravated_evasion_threshold_ars": "1,000,000,000",
+      "old_simple_threshold_ars": "1,500,000",
+      "old_aggravated_threshold_ars": "15,000,000",
+      "note": "Thresholds raised 66x for simple evasion and 66x for aggravated. 4,199 pending cases dropped.",
+      "source": "https://www.infobae.com/economia/2026/03/16/por-la-ley-de-inocencia-fiscal-arca-dejo-sin-efecto-mas-de-4000-juicios-penales-por-evasion-de-impuestos/"
+    },
+    "sources": [
+      "https://www.bloomberglinea.com/latinoamerica/argentina/argentina-reduce-la-evasion-pero-calculan-que-la-informalidad-aun-le-cuesta-un-quinto-del-pbi/",
+      "https://www.cadenanueve.com/2025/11/25/la-evasion-fiscal-cae-pero-la-informalidad-continua-costando-al-estado-el-21-del-pbi/"
+    ]
+  },
+
+  "blanqueo_as_indicator": {
+    "description": "Tax amnesty programs reveal the scale of hidden wealth. The 2024 Milei blanqueo collected USD 32B in declarations — but this is a fraction of the estimated USD 250-480B held offshore or outside the system.",
+    "blanqueo_milei_2024": {
+      "total_declared_usd": "32,151,000,000",
+      "cash_in_cera_accounts": "22,165,000,000",
+      "other_assets": "9,986,000,000",
+      "properties_declared_argentina": {
+        "count": 40530,
+        "value_usd": "2,004,000,000"
+      },
+      "properties_declared_abroad": {
+        "count": 2015,
+        "value_usd": "241,000,000"
+      },
+      "origin_countries": ["United States", "Uruguay", "Spain", "Switzerland"],
+      "tax_free_threshold": "100,000",
+      "first_stage_rate": "5%",
+      "funds_liberated_jan_2026": "20,000,000,000+",
+      "sources": [
+        "https://www.infobae.com/economia/2024/12/26/el-blanqueo-termino-el-ano-con-usd-32151-millones-declarados-entre-dinero-en-efectivo-inmuebles-y-vehiculos/",
+        "https://www.lanacion.com.ar/economia/blanqueo-desde-el-1-de-enero-quedaran-liberados-mas-de-us20000-millones-que-podrian-ir-a-inversiones-nid14122025/"
+      ]
+    },
+    "blanqueo_macri_2016": {
+      "total_declared_usd": "116,800,000,000",
+      "deposit_increase_usd": "20,000,000,000",
+      "reserve_impact_usd": "7,000,000,000",
+      "tax_free_threshold": "20,000",
+      "first_stage_rate": "10%",
+      "source": "https://www.infobae.com/economia/2024/10/05/anatomia-de-dos-blanqueos-un-estudio-comparo-los-resultados-del-que-realizo-macri-en-2016-con-la-marcha-del-actual/"
+    },
+    "comparison_note": "Macri 2016 declared 3.6x more but at higher tax rates. Milei 2024 had faster cash inflow velocity. Combined, both blanqueos declared USD 149B — still less than half the estimated offshore stock."
+  },
+
+  "balance_of_payments_shift": {
+    "description": "The current account swung from USD 6.3B surplus in 2024 to deep deficit in 2025, driven by capital outflows post-unification and tourism spending.",
+    "data": {
+      "2024_current_account_surplus": "6,285,000,000",
+      "2023_current_account_deficit": "20,956,000,000",
+      "2025_q1_deficit": "5,191,000,000",
+      "2025_q2_deficit": "3,016,000,000",
+      "2025_q3_deficit": "1,581,000,000"
+    },
+    "sources": [
+      "https://www.indec.gob.ar/uploads/informesdeprensa/bal_12_25A30CCDCD2C.pdf",
+      "https://www.indec.gob.ar/uploads/informesdeprensa/bal_06_2534224023D5.pdf"
+    ]
+  },
+
+  "channel_summary_table": {
+    "description": "Estimated annual flows by channel (order of magnitude)",
+    "channels": [
+      {
+        "channel": "FAE (formal banking)",
+        "annual_flow_usd": "14,700,000,000",
+        "period": "Apr-Jul 2025 (4 months)",
+        "annualized_estimate": "~44,000,000,000",
+        "visibility": "Fully tracked by BCRA"
+      },
+      {
+        "channel": "Crypto/Stablecoins",
+        "annual_flow_usd": "91,100,000,000",
+        "period": "Jul 2023-Jun 2024",
+        "note": "Total volume, not all is capital flight. Stablecoin portion (~61%) partially represents peso-to-dollar conversion outside banking",
+        "visibility": "Partially tracked. P2P largely invisible."
+      },
+      {
+        "channel": "Miami Real Estate",
+        "annual_flow_usd": "600,000,000",
+        "period": "2024",
+        "visibility": "Visible via NAR/Florida Realtors data"
+      },
+      {
+        "channel": "Uruguay Deposits",
+        "stock_usd": "3,500,000,000",
+        "note": "Stock, not flow. Fluctuates with political cycles.",
+        "visibility": "Tracked by BCU"
+      },
+      {
+        "channel": "Mining Transfer Pricing",
+        "annual_loss_usd": "403,000,000",
+        "period": "2024 (lithium alone)",
+        "note": "Total mining sector losses likely multiples higher including copper, gold, soy",
+        "visibility": "Partially detectable via customs price analysis"
+      },
+      {
+        "channel": "Tourism Deficit",
+        "annual_flow_usd": "4,000,000,000",
+        "period": "2025",
+        "visibility": "Tracked by BCRA/INDEC"
+      },
+      {
+        "channel": "Swiss/European Banking",
+        "stock_usd": "unknown",
+        "note": "Blanqueo origin data suggests billions. Suisse Secrets revealed dozens of accounts.",
+        "visibility": "Low. CRS/AEOI improving slowly."
+      },
+      {
+        "channel": "Delaware/Shell Structures",
+        "stock_usd": "unknown",
+        "note": "Opacity vehicle. No state-level disclosure. Enables anonymous US real estate and brokerage.",
+        "visibility": "Minimal"
+      }
+    ]
+  },
+
+  "key_findings": [
+    "Argentina's residents hold USD 483B in external assets (INDEC Q3 2025) — roughly equal to the country's GDP. The country is a net international creditor by USD 50B despite having USD 44B in sovereign external debt.",
+    "In just 4 months after exchange rate unification (Apr-Jul 2025), FAE outflows of USD 14.7B exceeded total IMF disbursements of USD 12B — the IMF loan effectively financed capital flight.",
+    "The crypto channel moved USD 91B through Argentine users in one year, with 61.8% in stablecoins. P2P trading makes much of this invisible to BCRA and ARCA.",
+    "Two blanqueos (2016 + 2024) declared a combined USD 149B — but this is less than half the estimated USD 250-480B held outside the system, indicating the declared amount is a floor, not a ceiling.",
+    "The Ley de Inocencia Fiscal raised evasion prosecution thresholds by 66x and dropped 4,199 pending cases — effectively decriminalizing most tax evasion during a period of record capital outflows.",
+    "Lithium export subfacturing alone cost USD 403M in 2024. With mining royalties capped at 3% and RIGI incentives reducing it further, the fiscal capture on a USD 13B Glencore investment pipeline is structurally minimal.",
+    "The blanqueo origin countries (US, Uruguay, Spain, Switzerland) map precisely to the offshore destination network: Miami real estate, Montevideo/Punta del Este deposits, and Swiss banking."
+  ]
+}

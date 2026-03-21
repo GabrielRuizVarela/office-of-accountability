@@ -1,0 +1,249 @@
+{
+  "entity": {
+    "name": "NACION SEGUROS S.A.",
+    "cuit": "30-67856116-5",
+    "type": "state_owned_insurance_company",
+    "parent": "Grupo Banco Nación Argentina",
+    "address": "San Martín 913, C1004AAS, Ciudad Autónoma de Buenos Aires",
+    "established": "1994-05-13",
+    "total_contract_value_ars": 28500000000,
+    "total_contracts": 164,
+    "ranking": "#1 government contractor by total contract value"
+  },
+
+  "legal_mechanism": {
+    "decree": "Decreto 823/2021",
+    "issued_by": "Alberto Fernández (President)",
+    "date": "2021-12-01",
+    "effect": "Mandated all national public sector entities (under Ley 24.156 Art. 8) to contract insurance exclusively through Nación Seguros S.A. in all branches where it operates",
+    "justification_claimed": "State should contract with its own provider entities; retain premiums domestically rather than paying international reinsurers",
+    "actual_effect": "Created a captive monopoly that was exploited by politically-connected brokers who inserted themselves as intermediaries to collect billions in commissions",
+    "predecessor_law": "Ley 16.793 — historically required state insurance through Caja Nacional de Ahorro y Seguro",
+    "revoked_by": "Decreto 747/2024 (published 2024-08-21, Milei government)",
+    "source_url": "https://www.argentina.gob.ar/normativa/nacional/decreto-823-2021-357558"
+  },
+
+  "scandal": {
+    "name": "Escándalo de los Seguros / Causa Seguros",
+    "period": "2019-12 to 2024-03",
+    "summary_es": "Funcionarios infieles aprovecharon la contratación obligatoria con Nación Seguros para insertar brokers amigos del presidente Alberto Fernández, desviando miles de millones en comisiones de fondos públicos",
+    "summary_en": "Corrupt officials exploited the mandatory contracting decree to insert politically-connected brokers as intermediaries in state insurance policies, diverting billions of pesos in commissions from public funds",
+    "total_commissions_top25_brokers_ars": 3500000000,
+    "agencies_affected": "20+ public organisms including ANSES, Gendarmería, National Highways, the Mint, Road Operators SA, Fund for the Arts, Supreme Court, and four ministries",
+    "judicial_case": {
+      "judges": ["Julián Ercolini (initial investigation)", "Sebastián Casanello (prosecutions)"],
+      "status": "Active — prosecutions ongoing as of February 2026",
+      "raids": "24 raids ordered by Judge Ercolini in April 2024"
+    },
+    "government_response": {
+      "decree_revoked": "Decreto 747/2024 revoked Decreto 823/2021",
+      "intermediaries_banned": "Government prohibited all intermediaries/brokers in state insurance policies (April 2024)",
+      "contract_non_renewal": "Government officially did not renew contract with Nación Seguros (March 2024)"
+    }
+  },
+
+  "findings": [
+    {
+      "person": "Héctor Martínez Sosa",
+      "role": "Insurance broker, husband of María Cantero (Alberto Fernández's personal secretary)",
+      "entity": "Héctor Martínez Sosa y Compañía S.A.",
+      "political_affiliation": "Peronism / Frente de Todos (intimate circle of Alberto Fernández)",
+      "evidence_es": "Segundo broker más importante por comisiones pagadas por Nación Seguros entre 2020-2024, cobrando $366.635.744. Fernández fue su asesor entre 2010-2019 antes de ser presidente. Se reunía con Fernández en la Quinta de Olivos sin dejar registro. Su empresa fue procesada como partícipe necesario en negociaciones incompatibles con la función pública y embargada por $2.870.729.545,61",
+      "evidence_en": "Second most important broker by commissions paid by Nación Seguros between 2020-2024, collecting $366.6M ARS. Fernández was his advisor from 2010-2019 before becoming president. Met with Fernández at the Olivos presidential residence without records. His company was prosecuted as necessary participant in dealings incompatible with public office, embargoed for $2.87B ARS",
+      "source_urls": [
+        "https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/",
+        "https://www.lanacion.com.ar/economia/el-escandalo-de-los-seguros-el-esposo-de-la-exsecretaria-de-alberto-fernandez-facturo-mas-de-360-nid05082024/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "person": "Alberto Fernández",
+      "role": "President of Argentina (2019-2023)",
+      "entity": "Presidencia de la Nación",
+      "political_affiliation": "Frente de Todos / Peronism",
+      "evidence_es": "Firmó el Decreto 823/2021 que obligó al Estado a contratar exclusivamente con Nación Seguros, creando el monopolio que fue explotado por sus amigos brokers. Intervino como presidente para favorecer los negocios de Martínez Sosa. La Justicia pidió sus registros migratorios para investigar viajes con el broker",
+      "evidence_en": "Signed Decree 823/2021 mandating exclusive state contracting with Nación Seguros, creating the monopoly exploited by his broker friends. Intervened as president to favor Martínez Sosa's business. Justice requested his migration records to investigate trips with the broker",
+      "source_urls": [
+        "https://noticiasargentinas.com/politica/investigacion-sobre-seguros--alberto-fernandez-debera-explicar-el-decreto-823-2021-que-dio-millones-del-estado-a-sus-amigo-brokers_a6729edb7955e3f568c0df2a2",
+        "https://www.infobae.com/judiciales/2024/03/01/la-justicia-pidio-los-registros-migratorios-de-alberto-fernandez-por-el-escandalo-de-los-seguros/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "person": "Bachellier S.A. (company / principals unknown)",
+      "role": "Top-ranking insurance broker by commission volume",
+      "entity": "Bachellier S.A.",
+      "political_affiliation": "Linked to Martínez Sosa network",
+      "evidence_es": "Broker #1 por comisiones: facturó $1.665,7 millones entre 2021 y primer trimestre 2024. Solo en el contrato de Gendarmería cobró $1.363 mil millones en comisiones. Embargada por $9.669 mil millones de pesos",
+      "evidence_en": "Top broker by commissions: invoiced $1.665B ARS between 2021 and Q1 2024. On the Gendarmería contract alone, charged $1.363B ARS in commissions. Embargoed for $9.669B ARS",
+      "source_urls": [
+        "https://www.infobae.com/politica/2024/03/18/escandalo-de-los-seguros-las-empresas-del-broker-amigo-de-alberto-fernandez-y-sus-satelites-cobraron-mas-de-2000-millones-por-comisiones/",
+        "https://www.infobae.com/politica/2024/11/03/el-broker-amigo-de-alberto-fernandez-se-quedo-con-el-60-de-las-comisiones-pagadas-a-las-aseguradoras/"
+      ],
+      "severity": "critical"
+    },
+    {
+      "person": "Hugo Rodríguez",
+      "role": "Former General Administrator of the Quinta de Olivos presidential residence",
+      "entity": "Presidencia de la Nación — Quinta de Olivos",
+      "political_affiliation": "Frente de Todos",
+      "evidence_es": "Procesado por facilitar reuniones repetidas entre el broker Martínez Sosa y el presidente Fernández en la Quinta de Olivos sin dejar registro, a sabiendas del plan criminal",
+      "evidence_en": "Prosecuted for facilitating repeated unrecorded meetings between broker Martínez Sosa and President Fernández at the Olivos presidential residence, with knowledge of the criminal plan",
+      "source_urls": [
+        "https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/",
+        "https://www.lanacion.com.ar/politica/caso-seguros-procesaron-al-exintendente-de-la-quinta-de-olivos-y-a-un-grupo-empresas-nid10022026/"
+      ],
+      "severity": "high"
+    },
+    {
+      "person": "María Cantero",
+      "role": "Personal secretary of President Alberto Fernández",
+      "entity": "Presidencia de la Nación",
+      "political_affiliation": "Frente de Todos",
+      "evidence_es": "Esposa de Héctor Martínez Sosa. Chats explosivos entre ella y su marido revelaron coordinación del esquema de comisiones desde la Secretaría Presidencial. Su marido manejó comisiones por más de $2.060 millones en cuatro años",
+      "evidence_en": "Wife of Héctor Martínez Sosa. Explosive chat messages between her and her husband revealed coordination of the commission scheme from the Presidential Secretary's office. Her husband managed commissions exceeding $2.06B ARS over four years",
+      "source_urls": [
+        "https://www.infobae.com/politica/2024/08/02/los-explosivos-chats-entre-la-secretaria-de-alberto-fernandez-y-su-marido-broker-por-el-escandalo-de-los-seguros/",
+        "https://www.lanacion.com.ar/economia/el-escandalo-de-los-seguros-el-esposo-de-la-exsecretaria-de-alberto-fernandez-facturo-mas-de-360-nid05082024/"
+      ],
+      "severity": "high"
+    },
+    {
+      "person": "Mauro Tanos",
+      "role": "Former General Manager of Nación Seguros (promoted under Milei, originally placed under Fernández)",
+      "entity": "Nación Seguros S.A.",
+      "political_affiliation": "La Cámpora / Peronism (started political career at 19 under José Ottavis in Juventud Peronista)",
+      "evidence_es": "Comenzó como gerente comercial del sector público en Nación Seguros bajo Alberto Fernández, luego fue ascendido a gerente general por el gobierno de Milei. La Justicia lo allanó en su casa y oficina, acusado de actuar como contacto con la firma San Ignacio beneficiada por contratos. Despedido tras el escándalo",
+      "evidence_en": "Started as commercial manager of the public sector at Nación Seguros under Alberto Fernández, then promoted to general manager by the Milei government. Justice raided his home and office, accused of acting as a contact with the firm San Ignacio which benefited from contracts. Fired after the scandal broke",
+      "source_urls": [
+        "https://www.infobae.com/politica/2024/04/06/el-gobierno-echo-al-gerente-general-de-nacion-seguros-tras-el-allanamiento-en-su-casa/",
+        "https://www.lanacion.com.ar/politica/quien-es-mauro-tanos-el-excamporista-que-promovio-milei-en-nacion-seguros-y-que-estaria-involucrado-nid05042024/"
+      ],
+      "severity": "high"
+    },
+    {
+      "person": "Alfonso José Torres",
+      "role": "Current President of Nación Seguros (since February 2024)",
+      "entity": "Nación Seguros S.A.",
+      "political_affiliation": "La Libertad Avanza / linked to Martín Menem (Chamber of Deputies President)",
+      "evidence_es": "Designado presidente de Nación Seguros en febrero 2024 gracias a sus vínculos con Martín Menem. Abogado egresado de Universidad de Belgrano (misma universidad que Menem). Antes de su designación, su presencia en registros públicos era casi inexistente — sin fotos ni apariciones en medios. Enigmático nombramiento político",
+      "evidence_en": "Designated president of Nación Seguros in February 2024 through his links to Martín Menem (Chamber of Deputies President). Lawyer from Universidad de Belgrano (same university as Menem). Before his appointment, his public record presence was nearly nonexistent — no photos or media appearances. Enigmatic political appointment",
+      "source_urls": [
+        "https://www.eldestapeweb.com/informacion-general/martin-menem/alfonso-jose-torres-el-enigmatico-presidente-de-nacion-seguros-y-su-vinculo-con-menem-2025102122030"
+      ],
+      "severity": "medium"
+    },
+    {
+      "person": "José De los Ríos",
+      "role": "Vice President of Nación Seguros (current)",
+      "entity": "Nación Seguros S.A.",
+      "political_affiliation": "La Libertad Avanza (Milei government appointee)",
+      "evidence_es": "Vicepresidente actual de Nación Seguros designado por el gobierno de Milei",
+      "evidence_en": "Current vice president of Nación Seguros appointed by the Milei government",
+      "source_urls": [
+        "https://www.nacion-seguros.com.ar/institucional/"
+      ],
+      "severity": "low"
+    },
+    {
+      "person": "Fernando Barbiero",
+      "role": "Director of Nación Seguros (current)",
+      "entity": "Nación Seguros S.A.",
+      "political_affiliation": "La Libertad Avanza (Milei government appointee)",
+      "evidence_es": "Director actual de Nación Seguros designado por el gobierno de Milei",
+      "evidence_en": "Current director of Nación Seguros appointed by the Milei government",
+      "source_urls": [
+        "https://www.nacion-seguros.com.ar/institucional/"
+      ],
+      "severity": "low"
+    },
+    {
+      "person": "Juan Horacio Sarquis",
+      "role": "Former President of Nación Seguros board (Macri era, 2016-2019)",
+      "entity": "Nación Seguros S.A. / Nación Retiro",
+      "political_affiliation": "Cambiemos / PRO (Macri government)",
+      "evidence_es": "Presidente del directorio de Nación Seguros durante el gobierno de Macri, designado en 2016. También fue presidente de Seguros y Retiro dentro del grupo Nación desde diciembre 2015",
+      "evidence_en": "Board president of Nación Seguros during the Macri government, designated in 2016. Also served as president of Seguros y Retiro within the Nación group since December 2015",
+      "source_urls": [
+        "https://www.nacion-seguros.com.ar/wp-content/uploads/2021/08/TA-SEGUROS-2018.pdf",
+        "https://100seguro.com.ar/cambios-en-el-directorio-de-nacion-retiro/"
+      ],
+      "severity": "low"
+    },
+    {
+      "person": "Rita Mónica Almada",
+      "role": "Former Vice President of Nación Seguros board (Macri era); later appointed to AGN",
+      "entity": "Nación Seguros S.A. / Auditoría General de la Nación",
+      "political_affiliation": "Cambiemos / PRO",
+      "evidence_es": "Vicepresidenta del directorio de Nación Seguros durante el gobierno de Macri (2016-2019). Posteriormente designada como autoridad de la AGN (Auditoría General de la Nación) — el mismo organismo que debería controlar externamente a Nación Seguros. Puerta giratoria entre la empresa auditada y el auditor",
+      "evidence_en": "Vice president of Nación Seguros board during the Macri government (2016-2019). Subsequently appointed as an authority at AGN (National Audit Office) — the same body responsible for external oversight of Nación Seguros. Revolving door between the audited entity and the auditor",
+      "source_urls": [
+        "https://www.nacion-seguros.com.ar/wp-content/uploads/2021/08/TA-SEGUROS-2018.pdf",
+        "https://www.baenegocios.com/politica/agn-7312/"
+      ],
+      "severity": "medium"
+    }
+  ],
+
+  "direct_contracting_mechanism": {
+    "description_es": "El Estado argentino tiene un patrón histórico de contratación directa con aseguradoras estatales, evitando licitaciones abiertas. La Ley 16.793 estableció originalmente la obligación. El Decreto 823/2021 de Fernández la modernizó, obligando a todos los organismos del sector público nacional a contratar exclusivamente con Nación Seguros. Esto se combinó con la inserción de brokers intermediarios políticamente conectados que cobraban comisiones millonarias sin agregar valor. Los municipios y provincias replican el patrón con Provincia Seguros y Provincia ART bajo la Ley Orgánica Municipal que permite contratación directa con entes donde el Estado tiene participación mayoritaria",
+    "description_en": "The Argentine State has a historical pattern of direct contracting with state-owned insurers, bypassing open tenders. Law 16,793 originally established the obligation. Fernández's Decree 823/2021 modernized it, mandating all national public sector bodies to contract exclusively with Nación Seguros. This was combined with the insertion of politically-connected broker intermediaries who charged massive commissions without adding value. Municipalities and provinces replicate the pattern with Provincia Seguros and Provincia ART under the Municipal Organic Law that permits direct contracting with entities where the State holds majority participation",
+    "legal_basis": [
+      "Ley 16.793 (historical mandate for state insurance)",
+      "Decreto 823/2021 (Fernández mandate — revoked 2024)",
+      "Ley 24.156 Art. 8 (entities covered)",
+      "Ley 27.444 Art. 114 (collective life insurance exclusion)",
+      "Decreto-Ley 9507/80 (obligatory collective life insurance)",
+      "Ley Orgánica Municipal (permits direct contracting with state-majority entities)"
+    ]
+  },
+
+  "state_insurance_network": {
+    "national_level": {
+      "Nación Seguros S.A.": {
+        "parent": "Grupo Banco Nación Argentina",
+        "role": "General insurance for all national public sector entities",
+        "contract_value_ars": 28500000000
+      },
+      "Nación Reaseguros": {
+        "parent": "Grupo Banco Nación Argentina",
+        "role": "Reinsurance arm",
+        "authorities_url": "https://www.nacionreaseguros.com.ar/autoridades/"
+      }
+    },
+    "provincial_level": {
+      "Provincia Seguros S.A.": {
+        "parent": "Grupo Provincia (Banco de la Provincia de Buenos Aires)",
+        "role": "General insurance for Buenos Aires province and municipal governments",
+        "mechanism": "Direct contracting permitted under Municipal Organic Law for state-majority entities"
+      },
+      "Provincia ART S.A.": {
+        "parent": "Grupo Provincia (Banco de la Provincia de Buenos Aires)",
+        "role": "Workers' compensation (ART) insurance for Buenos Aires province entities",
+        "note": "Province of Buenos Aires terminated affiliation in 2007 and became self-insured, but municipalities continue to contract directly",
+        "example_contract": "Collective life insurance $3.13M ARS + ART $55.51M ARS for 3,130 employees (2024)"
+      }
+    },
+    "pattern_description": "State-owned insurance companies at both national and provincial levels receive billions in contracts through direct contracting mechanisms that bypass competitive bidding. Each level of government (national, provincial, municipal) has its own state insurer that captures mandatory coverage. The pattern creates captive markets vulnerable to political manipulation through broker intermediaries."
+  },
+
+  "audit_oversight": {
+    "SIGEN": {
+      "role": "Internal control body (reports to President)",
+      "finding": "Held audit committee meetings with Nación Seguros — analyzed regulatory background, internal audit unit composition, verified execution of annual plans",
+      "concern": "As internal control dependent on the President, independence is compromised when the President himself is implicated in the scheme"
+    },
+    "AGN": {
+      "role": "External control body (subsequent audit of legality, transparency, efficiency)",
+      "finding": "Rita Almada, former Nación Seguros VP, was later appointed as AGN authority — revolving door concern",
+      "concern": "Revolving door between audited entity and auditor undermines external oversight"
+    }
+  },
+
+  "metadata": {
+    "research_date": "2026-03-21",
+    "researcher": "Office of Accountability automated investigation",
+    "confidence": "high — based on judicial proceedings, official decrees, and investigative journalism from Infobae, La Nación, and Clarín",
+    "status": "active_judicial_case"
+  }
+}

@@ -1,11 +1,11 @@
 # Session Handoff
 
-_Generated: 2026-03-21 19:27:43 UTC_
+_Generated: 2026-03-21 20:17:09 UTC_
 
 ## Git Context
 
 - **Branch:** `worktree-crispy-cuddling-snail`
-- **HEAD:** 1955201: chore: auto-commit before merge (loop primary)
+- **HEAD:** a79f1aa: chore: auto-commit before merge (loop primary)
 
 ## Tasks
 
@@ -120,14 +120,23 @@ _Generated: 2026-03-21 19:27:43 UTC_
 - [x] Verify typecheck passes after static case folder deletion
 - [x] Create webapp/src/lib/i18n.ts — detectLang(acceptLanguageHeader) utility returning 'en'|'es' from Accept-Language header, plus SITE_META bilingual strings map for root metadata (title, description in both languages)
 - [x] Update webapp/src/lib/language-context.tsx — auto-detect from navigator.language on client mount when no explicit override
+- [x] Update webapp/src/app/layout.tsx — dynamic lang attribute + bilingual generateMetadata using detectLang from headers()
+- [x] Update webapp/src/app/caso/[slug]/layout.tsx — bilingual CASE_META with es+en titles/descriptions, pick based on detectLang
+- [x] Update static metadata in proximidad, simulacion, provincias pages to bilingual generateMetadata
+- [x] Verify typecheck passes after all i18n changes
 - [x] 1.2 Root layout: generateMetadata with detectLang + SITE_META + LanguageProvider
+- [x] Create src/app/caso/[slug]/motor/page.tsx — engine dashboard page with tabs for Pipeline, Proposals, Audit, Snapshots
+- [x] Create src/components/engine/EngineDashboard.tsx — client component fetching engine state, rendering tab panels
+- [x] Create src/components/engine/PipelineStatus.tsx — pipeline state display with stage progress and run/stop controls
+- [x] Create src/components/engine/ProposalReview.tsx — pending proposals list with batch approve/reject
+- [x] Create src/components/engine/AuditLog.tsx — audit trail display with hash chain validation status
+- [x] Create src/components/engine/SnapshotManager.tsx — list/create/delete snapshots UI
+- [x] Create GateApproval.tsx component with approve/reject form for pending gates
+- [x] Wire GateApproval into PipelineStatus gate pending banner
+- [x] Create OrchestratorPanel.tsx component
+- [x] Create TaskQueue.tsx component
+- [x] Add orchestrator tab to EngineDashboard
 
-### Remaining
-
-- [ ] Update webapp/src/app/layout.tsx — dynamic lang attribute + bilingual generateMetadata using detectLang from headers() _(blocked by: task-1774118546-ea0a)_
-- [ ] Update webapp/src/app/caso/[slug]/layout.tsx — bilingual CASE_META with es+en titles/descriptions, pick based on detectLang _(blocked by: task-1774118546-ea0a)_
-- [ ] Update static metadata in proximidad, simulacion, provincias pages to bilingual generateMetadata _(blocked by: task-1774118546-ea0a)_
-- [ ] Verify typecheck passes after all i18n changes _(blocked by: task-1774118546-ea0a)_
 
 ## Key Files
 
@@ -139,25 +148,26 @@ Recently modified:
 - `.ralph/agent/tasks.jsonl`
 - `.ralph/current-events`
 - `.ralph/current-loop-id`
-- `.ralph/diagnostics/logs/ralph-2026-03-21T07-16-06-134-1389963.log`
-- `.ralph/diagnostics/logs/ralph-2026-03-21T07-16-06-135-1389963.log`
-- `.ralph/diagnostics/logs/ralph-2026-03-21T14-10-56-874-1828131.log`
-- `.ralph/diagnostics/logs/ralph-2026-03-21T15-37-09-317-2043363.log`
+- `.ralph/diagnostics/logs/ralph-2026-03-21T07-16-07-498-1390451.log`
+- `.ralph/diagnostics/logs/ralph-2026-03-21T16-14-23-749-2147551.log`
+- `.ralph/diagnostics/logs/ralph-2026-03-21T16-31-22-640-2195314.log`
+- `.ralph/events-20260321-193122.jsonl`
 
 ## Next Session
 
-The following prompt can be used to continue where this session left off:
+Session completed successfully. No pending work.
+
+**Original objective:**
 
 ```
-Continue the previous work. Remaining tasks (4):
-- Update webapp/src/app/layout.tsx — dynamic lang attribute + bilingual generateMetadata using detectLang from headers()
-- Update webapp/src/app/caso/[slug]/layout.tsx — bilingual CASE_META with es+en titles/descriptions, pick based on detectLang
-- Update static metadata in proximidad, simulacion, provincias pages to bilingual generateMetadata
-- Verify typecheck passes after all i18n changes
-
-Original objective: # Office of Accountability — Implementation Prompt
+# Office of Accountability — Implementation Prompt
 
 ## Objective
 
-Build a civic knowledge platform for Argentine politics as an interactive graph explorer. The platform links politicians, votes, leg...
+Build a civic knowledge platform for Argentine politics as an interactive graph explorer. The platform links politicians, votes, legislation, donors, promises, and user-contributed research into a single explorable, queryable system powered by Neo4j and deployed on Cloudflare Workers via Vinext.
+
+## Stack
+
+- **Frontend + API + SSR:** Vinext (App Router, Server Components, Route Handlers) → Cloudflare Workers
+- **Database:** Ne...
 ```

@@ -1,0 +1,146 @@
+[
+  {
+    "person": "Rogelio Frigerio (nieto)",
+    "role": "Ministro del Interior, Obras Públicas y Vivienda (2015-2019)",
+    "entity": "Gobierno Nacional — Presidencia Macri",
+    "evidence_es": "Ministro del Interior durante la presidencia de Mauricio Macri. Responsable de la distribución de fondos ATN, relaciones con provincias y municipios, y supervisión de la AABE (Agencia de Administración de Bienes del Estado).",
+    "evidence_en": "Interior Minister during Macri's presidency. Responsible for ATN fund distribution, provincial/municipal relations, and oversight of the State Property Management Agency (AABE).",
+    "source_url": "https://es.wikipedia.org/wiki/Rogelio_Frigerio_(nieto)",
+    "severity": "medium"
+  },
+  {
+    "person": "Rogelio Frigerio (nieto)",
+    "role": "Gobernador de Entre Ríos (2023-presente)",
+    "entity": "Provincia de Entre Ríos",
+    "evidence_es": "Gobernador en ejercicio de Entre Ríos desde diciembre 2023. Firmó acuerdos de crédito con BICE por $4.000 millones para productores entrerrianos con tasas bonificadas.",
+    "evidence_en": "Current Governor of Entre Ríos since December 2023. Signed credit agreements with BICE for $4 billion ARS for local producers at subsidized rates.",
+    "source_url": "https://www.bice.com.ar/creditos-valor-producto-bice-los-productores-de-entre-rios-acceden-tasa-bonificada-por-un-cupo-de-4000-millones/",
+    "severity": "low"
+  },
+  {
+    "person": "Rogelio Frigerio (nieto)",
+    "role": "Presidente del Banco Ciudad de Buenos Aires (2013-2015)",
+    "entity": "Banco Ciudad de Buenos Aires",
+    "evidence_es": "Presidió el Banco Ciudad entre 2013 y 2015. Durante su gestión se detectaron préstamos irregulares, incluido un crédito de $35 millones a la empresa Lethe que representaba el 1500% de su Responsabilidad Patrimonial Computable. La empresa no tenía experiencia en construcción (se dedicaba a aceites animales para uso industrial).",
+    "evidence_en": "Presided over Banco Ciudad from 2013-2015. During his tenure, irregular loans were detected, including a $35 million ARS credit to company Lethe representing 1500% of its Computable Equity Responsibility. The company had no construction experience (it specialized in animal oils for industrial use).",
+    "source_url": "https://www.pagina12.com.ar/diario/elpais/1-263254-2015-01-05.html",
+    "severity": "high"
+  },
+  {
+    "person": "Rogelio Frigerio (nieto)",
+    "role": "Presidente del Banco Ciudad — Caso Niembro",
+    "entity": "Banco Ciudad / Empresa de Fernando Niembro",
+    "evidence_es": "Como presidente del Banco Ciudad, se contrató a la empresa de Fernando Niembro por más de un millón de pesos para pauta publicitaria en Fox Sports, mediante procedimientos considerados irregulares. Niembro era candidato a diputado por Cambiemos/PRO.",
+    "evidence_en": "As Banco Ciudad president, Niembro's company was contracted for over one million pesos in advertising on Fox Sports through procedures deemed irregular. Niembro was a Cambiemos/PRO deputy candidate.",
+    "source_url": "https://www.ambito.com/politica/la-empresa-niembro-tambien-fue-contratada-el-banco-ciudad-n3906311",
+    "severity": "high"
+  },
+  {
+    "person": "Rogelio Frigerio (nieto)",
+    "role": "Fundador y Presidente — Economía y Regiones S.A.",
+    "entity": "E&R Economía y Regiones S.A.",
+    "evidence_es": "Fundó la consultora Economía & Regiones en 2000. Al asumir como ministro, vendió su participación por USD 4,1 millones (según su declaración jurada) pero mantuvo un crédito de $1 millón con la empresa. La consultora fue multada por el Secretario de Comercio Guillermo Moreno por publicar índices de inflación no oficiales.",
+    "evidence_en": "Founded consulting firm Economía & Regiones in 2000. Upon becoming minister, sold his stake for USD 4.1 million (per his sworn declaration) but retained a $1 million credit with the company. The firm was fined by Commerce Secretary Moreno for publishing unofficial inflation indices.",
+    "source_url": "https://www.iprofesional.com/notas/113190-Multan-a-otra-consultora-ahora-es-el-turno-de-la-de-Rogelio-Frigerio-hijo",
+    "severity": "medium"
+  },
+  {
+    "person": "Rogelio Frigerio (nieto)",
+    "role": "Inversor inmobiliario / Ministro del Interior",
+    "entity": "Koolhaas S.A. / AABE (Agencia de Administración de Bienes del Estado)",
+    "evidence_es": "La Oficina Anticorrupción (OA) lo denunció por 'negociaciones incompatibles con la función pública'. Compró un departamento de pozo a Koolhaas S.A. (directores: Ariel Naistat y Gustavo Esses). A menos de un mes de firmar la cesión de terrenos fiscales de la AABE a la misma empresa en el barrio de Belgrano, Frigerio y otros funcionarios invirtieron USD 776.000 en el emprendimiento inmobiliario que se construiría en esos terrenos. Fue sobreseydo en diciembre 2022 por el juez Ercolini.",
+    "evidence_en": "The Anti-Corruption Office (OA) denounced him for 'negotiations incompatible with public function'. He bought an off-plan apartment from Koolhaas S.A. (directors: Ariel Naistat and Gustavo Esses). Less than a month after signing the transfer of AABE fiscal lands to the same company in Belgrano, Frigerio and other officials invested USD 776,000 in the real estate project to be built on those lands. Dismissed by Judge Ercolini in December 2022.",
+    "source_url": "https://www.infobae.com/politica/2022/04/25/pidieron-citar-a-indagatoria-a-rogelio-frigerio-por-irregularidades-en-operaciones-inmobiliarias/",
+    "severity": "high"
+  },
+  {
+    "person": "Rogelio Frigerio (nieto)",
+    "role": "Ministro del Interior — Distribución discrecional de ATN",
+    "entity": "Ministerio del Interior / Aportes del Tesoro Nacional",
+    "evidence_es": "Distribución discrecional de fondos ATN beneficiando a municipios oficialistas. Rosario (casi un millón de habitantes, gobierno socialista) recibió solo 3% ($12 millones), mientras Santa Fe capital (400.000 habitantes, gobierno Cambiemos) recibió $152 millones. Entre 2015-2019, Macri y Frigerio administraron el 95% de los $3.428 millones en ATN de Entre Ríos según estrategia político-electoral.",
+    "evidence_en": "Discretionary ATN fund distribution favoring pro-government municipalities. Rosario (nearly 1 million inhabitants, socialist government) received only 3% ($12M), while Santa Fe capital (400,000 inhabitants, Cambiemos government) received $152M. Between 2015-2019, Macri and Frigerio managed 95% of the $3.428 billion ARS in ATN for Entre Ríos along political-electoral strategy lines.",
+    "source_url": "https://www.lanacion.com.ar/politica/la-distribucion-de-los-atn-beneficia-al-oficialismo-nid2115967/",
+    "severity": "high"
+  },
+  {
+    "person": "Rogelio Frigerio (nieto)",
+    "role": "Presidente de E&R Economía y Regiones — vínculo con empresario paraguayo",
+    "entity": "Relevamientos Catastrales S.A. / Diego Armando Cardona Herreros",
+    "evidence_es": "Como presidente de la consultora E&R, Frigerio tuvo vínculos comerciales con el empresario paraguayo Diego Cardona Herreros, dueño de Relevamientos Catastrales S.A. Se encontró un email de 2009 con el asunto 'honorarios frigerio'. Cardona Herreros es el principal acusado en la 'Causa Coimas' de Entre Ríos junto al ex gobernador Urribarri, por sobreprecios y retornos en contratos estatales.",
+    "evidence_en": "As president of consulting firm E&R, Frigerio had business links with Paraguayan businessman Diego Cardona Herreros, owner of Relevamientos Catastrales S.A. A 2009 email was found with the subject 'Frigerio's fees'. Cardona Herreros is the main defendant in Entre Ríos' 'Causa Coimas' alongside ex-governor Urribarri, for overpricing and kickbacks in state contracts.",
+    "source_url": "https://lacalle.com.ar/rogelio-frigerio-vinculado-con-un-empresario-paraguayo-investigado-en-entre-rios/",
+    "severity": "high"
+  },
+  {
+    "person": "Rogelio Frigerio (nieto)",
+    "role": "Ministro del Interior — Crecimiento patrimonial",
+    "entity": "Declaraciones Juradas Patrimoniales",
+    "evidence_es": "Al ingresar al cargo en 2015 declaró $11 millones. En 2016 declaró $17 millones (aumento del 50%). Al salir en 2019 declaró $24,5 millones. Sumó tres departamentos y tres lotes adicionales durante su gestión. Sus ahorros en dólares pasaron de USD 600.000 a USD 4,1 millones, atribuido a la venta de su consultora.",
+    "evidence_en": "Entered office in 2015 declaring $11M ARS. In 2016 declared $17M (50% increase). Exited in 2019 declaring $24.5M. Added three apartments and three additional land plots during his tenure. Dollar savings went from USD 600,000 to USD 4.1 million, attributed to selling his consulting firm.",
+    "source_url": "https://www.infobae.com/politica/2020/02/16/informe-especial-el-patrimonio-de-los-ministros-de-mauricio-macri-cuando-dejaron-el-poder/",
+    "severity": "medium"
+  },
+  {
+    "person": "Victoria Costoya",
+    "role": "Esposa de Rogelio Frigerio — Directora General en Ministerio de Desarrollo Social",
+    "entity": "Ministerio de Desarrollo Social / Nepotismo gobierno Macri",
+    "evidence_es": "Fue designada Coordinadora de Articulación de Asuntos Internacionales y luego Directora General de Cooperación y Financiamiento Internacional del Ministerio de Desarrollo Social, liderado por Carolina Stanley. Debió renunciar tras el decreto antinepotismo de Macri en 2018. Luego en 2021 fue designada en la Asesoría Tutelar del Ministerio Público de CABA.",
+    "evidence_en": "Appointed Coordinator of International Affairs Articulation and later General Director of Cooperation and International Financing at the Ministry of Social Development under Carolina Stanley. Forced to resign after Macri's anti-nepotism decree in 2018. Later in 2021, appointed to the Public Guardianship Advisory of Buenos Aires City.",
+    "source_url": "https://www.nexofin.com/notas/418878-designan-a-victoria-costoya-esposa-del-ministro-frigerio-en-desarrollo-social-n-/",
+    "severity": "medium"
+  },
+  {
+    "person": "Octavio Frigerio",
+    "role": "Padre de Rogelio — Director de YPF / Ex interventor de YPF",
+    "entity": "YPF S.A.",
+    "evidence_es": "Interventor de YPF en julio 1989. Director de YPF entre 2016-2018 (durante la presidencia de su hijo como Ministro del Interior). Renunció en enero 2018. Fue diputado nacional por el PJ (1991-1993) y Secretario de la Comisión de Energía. Militante del MID (Movimiento de Integración y Desarrollo).",
+    "evidence_en": "YPF interventor in July 1989. YPF board director 2016-2018 (while his son was Interior Minister). Resigned January 2018. Was a PJ national deputy (1991-1993) and Energy Commission Secretary. MID (Movement for Integration and Development) activist.",
+    "source_url": "https://www.cronista.com/economia-politica/El-padre-de-Rogelio-Frigerio-renuncio-al-directorio-de-YPF-20180130-0094.html",
+    "severity": "medium"
+  },
+  {
+    "person": "Mario Frigerio",
+    "role": "Tío de Rogelio — Gerente Técnico del ENACOM",
+    "entity": "Ente Nacional de Comunicaciones (ENACOM)",
+    "evidence_es": "Fue designado Gerente Técnico del Ente Nacional de Comunicaciones durante el gobierno de Macri, mientras su sobrino era Ministro del Interior. Parte del patrón de nepotismo documentado en la administración Cambiemos.",
+    "evidence_en": "Appointed Technical Manager of the National Communications Entity during the Macri government, while his nephew was Interior Minister. Part of the documented nepotism pattern in the Cambiemos administration.",
+    "source_url": "https://www.mendozapost.com/nota/49083/",
+    "severity": "medium"
+  },
+  {
+    "person": "Rogelio Julio Frigerio (abuelo, 1914-2006)",
+    "role": "Fundador del imperio empresarial Frigerio — Ideólogo del desarrollismo",
+    "entity": "Empresas familiares diversificadas (comercio, agro, industria, inmobiliario, minería)",
+    "evidence_es": "Político y economista. Administró los negocios familiares durante 20 años: almacenes, distribuidora mayorista diversificada en maderas, textiles, cueros y minerales. Organizó empresas comerciales, agrícolas, industriales, inmobiliarias y mineras. Ideólogo del desarrollismo argentino y mentor del presidente Arturo Frondizi.",
+    "evidence_en": "Politician and economist. Managed family businesses for 20 years: stores, diversified wholesale distribution in lumber, textiles, leather and minerals. Organized commercial, agricultural, industrial, real estate and mining enterprises. Ideologue of Argentine 'desarrollismo' and mentor to President Arturo Frondizi.",
+    "source_url": "https://www.ecured.cu/Rogelio_Julio_Frigerio",
+    "severity": "low"
+  },
+  {
+    "person": "Rogelio Frigerio (nieto)",
+    "role": "Gobernador de Entre Ríos — Intervención IOSPER",
+    "entity": "IOSPER (Instituto de Obra Social de la Provincia de Entre Ríos) / OSER",
+    "evidence_es": "Como gobernador, intervino el IOSPER denunciando irregularidades heredadas: más de mil prótesis pagadas pero no entregadas, cirugías de urgencia demoradas hasta un año, sobreprecios en servicios, pagos injustificados de bonificaciones, sueldos de $16 millones, y deuda de $42.000 millones (el doble de lo declarado). Propuso crear OSER como reemplazo.",
+    "evidence_en": "As governor, intervened IOSPER denouncing inherited irregularities: over 1,000 prostheses paid but not delivered, emergency surgeries delayed up to a year, service overbilling, unjustified bonus payments, $16M salaries, and $42 billion debt (double what was declared). Proposed creating OSER as replacement.",
+    "source_url": "https://www.lapoliticaonline.com/entre-rios/la-obra-social-de-entre-rios-pagaba-sueldos-de-16-millones-y-la-deuda-asciende-a-42-000-millones/",
+    "severity": "low"
+  },
+  {
+    "person": "Rogelio Frigerio (nieto)",
+    "role": "Gobernador de Entre Ríos — Acuerdo con BICE",
+    "entity": "BICE (Banco de Inversión y Comercio Exterior)",
+    "evidence_es": "Firmó acuerdo con el presidente de BICE para créditos productivos de $4.000 millones con tasa bonificada para productores entrerrianos (ganadería, porcinos, lechería, soja). También se sumó al programa de créditos en litros de leche de BICE, bonificando 100% de la tasa a tambos locales.",
+    "evidence_en": "Signed agreement with BICE president for $4 billion ARS in productive credits at subsidized rates for Entre Ríos producers (livestock, pork, dairy, soy). Also joined BICE's milk-credit program, subsidizing 100% of the rate for local dairy farms.",
+    "source_url": "https://www.bice.com.ar/entre-rios-se-suma-a-los-creditos-en-litros-de-leche-de-bice-y-bonifica-el-100-de-la-tasa-a-los-tambos-locales-2/",
+    "severity": "low"
+  },
+  {
+    "person": "Rogelio Frigerio (nieto)",
+    "role": "Diputado Nacional / Ex Ministro del Interior",
+    "entity": "Propiedad rural — Villa Paranacito, Entre Ríos",
+    "evidence_es": "Posee una estancia en Villa Paranacito dedicada a la producción de nueces pecan, con terrenos que suman casi 100 hectáreas valuados en $2,2 millones según su declaración jurada de 2015. Sumó tres lotes adicionales para 2019. También invirtió $3,2 millones en un desarrollo inmobiliario.",
+    "evidence_en": "Owns an estate in Villa Paranacito dedicated to pecan nut production, with plots totaling almost 100 hectares valued at $2.2M per his 2015 sworn declaration. Added three additional plots by 2019. Also invested $3.2 million in a real estate development.",
+    "source_url": "https://www.cronista.com/economia-politica/quien-es-rogelio-frigerio-el-gobernador-electo-de-entre-rios/",
+    "severity": "low"
+  }
+]

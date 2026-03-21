@@ -1,0 +1,744 @@
+{
+  "metadata": {
+    "title": "Argentina Corruption Scandals 2024-2026",
+    "description": "Research compilation of major political-financial-judicial corruption scandals in Argentina under the Milei administration and related legacy cases",
+    "compiled": "2026-03-21",
+    "source_methodology": "Web research aggregation from major Argentine and international media outlets",
+    "disclaimer": "All allegations are as reported by cited sources. Judicial outcomes noted where available."
+  },
+  "scandals": [
+    {
+      "id": "caso-libra",
+      "name": "Caso $LIBRA / Crypto Memecoin Scandal",
+      "date_range": "2025-02-14 to present",
+      "severity": "critical",
+      "summary": "President Milei promoted the $LIBRA memecoin on X (formerly Twitter) on Feb 14, 2025. The token surged to $4B market cap then collapsed 90%+, with insiders cashing out $107M. ~44,000 investors lost money, with total losses estimated at $100M+. A $5M payment agreement between Milei and the token creators was found on a lobbyist's phone.",
+      "key_persons": [
+        {
+          "name": "Javier Milei",
+          "role": "President of Argentina",
+          "involvement": "Published promotional post for $LIBRA on X; alleged $5M payment agreement found; exchanged calls with promoters minutes before launch"
+        },
+        {
+          "name": "Hayden Mark Davis",
+          "role": "CEO of Kelsier Ventures (Delaware-registered)",
+          "involvement": "Created the $LIBRA token; met Milei at Casa Rosada in 2024; assets frozen by Argentine judge",
+          "status": "Assets frozen; filed declaration in New York denying scam"
+        },
+        {
+          "name": "Mauricio Novelli",
+          "role": "Crypto trader, lobbyist, operator of N&W Professional Traders",
+          "involvement": "Intermediary between $LIBRA promoters and Milei's inner circle; $5M payment note found on his phone; had multi-year financial relationship with Milei dating to 2021; exchanged 5+ calls with Milei minutes before the promotional post"
+        },
+        {
+          "name": "Karina Milei",
+          "role": "Secretary General of the Presidency, sister of President",
+          "involvement": "Phone records show she was in communication loop during token launch and collapse"
+        },
+        {
+          "name": "Santiago Caputo",
+          "role": "Presidential adviser",
+          "involvement": "Phone records show frantic communication with Novelli during the token launch"
+        },
+        {
+          "name": "Gideon Davis",
+          "role": "Brother of Hayden Davis, Kelsier Ventures",
+          "involvement": "Part of Kelsier Ventures family operation"
+        },
+        {
+          "name": "Tom Davis",
+          "role": "Father of Hayden Davis, Kelsier Ventures",
+          "involvement": "Background includes counterfeiting allegations; family has 'chequered past' per Buenos Aires Times"
+        }
+      ],
+      "entities": [
+        {
+          "name": "Kelsier Ventures",
+          "type": "company",
+          "jurisdiction": "Delaware, USA",
+          "role": "Created and launched the $LIBRA token"
+        },
+        {
+          "name": "N&W Professional Traders",
+          "type": "company",
+          "role": "Novelli's trading firm; paid Milei for crypto education classes since 2021"
+        }
+      ],
+      "financial_impact": {
+        "market_cap_peak": "$4 billion (briefly)",
+        "insider_cashout": "$107 million (8 wallets)",
+        "investor_losses": "$100 million+ estimated",
+        "affected_investors": "~44,000",
+        "alleged_payment_to_milei": "$5 million (three-tier structure: $1.5M advance, $1.5M for public endorsement, $2M for consulting contract)"
+      },
+      "judicial_status": {
+        "federal_criminal_investigation": "Active, Argentine federal courts",
+        "congressional_commission": "Reactivated March 2026; Milei expected to give explanations before Congress",
+        "us_class_action": "Ongoing",
+        "asset_freezes": "Hayden Davis assets frozen by Argentine judge",
+        "government_position": "Claims no record of contract between Milei and Hayden Davis"
+      },
+      "evidence_links": [
+        "https://en.wikipedia.org/wiki/$Libra_cryptocurrency_scandal",
+        "https://www.lanacion.com.ar/politica/que-es-el-caso-libra-las-claves-de-la-investigacion-sobre-la-estafa-con-criptomonedas-que-involucra-nid16032026/",
+        "https://www.infobae.com/judiciales/2026/03/20/caso-libra-el-gobierno-aseguro-que-que-no-hay-registro-de-un-contrato-entre-milei-y-hayden-davis/",
+        "https://www.infobae.com/judiciales/2026/03/18/caso-libra-quien-es-mauricio-novelli-el-trader-y-lobbista-vinculado-a-javier-milei/",
+        "https://www.theblock.co/post/393639/probe-reveals-document-detailing-alleged-5-million-deal-linking-milei-to-libra-promotion-report",
+        "https://www.dlnews.com/articles/regulation/forensic-analysis-link-milei-messages-libra-scandal-promoters/",
+        "https://www.dlnews.com/articles/regulation/argentina-forensics-payments-libra-lobbyist-to-javier-milei/",
+        "https://www.batimes.com.ar/news/argentina/entrepenuers-phone-records-cast-doubt-on-mileis-libra-defence.phtml",
+        "https://finance.yahoo.com/news/argentina-freezes-hayden-davis-assets-223000417.html",
+        "https://www.batimes.com.ar/news/economy/counterfeiting-and-cult-murder-family-behind-milei-memecoin-has-chequered-past.phtml"
+      ],
+      "cross_references": ["santiago-caputo-side"]
+    },
+    {
+      "id": "gold-reserves-bcra",
+      "name": "BCRA Gold Reserves Sent Abroad / Lack of Transparency",
+      "date_range": "2024-09 to present",
+      "severity": "high",
+      "summary": "In mid-2024, the BCRA secretly transferred approximately 37 tonnes of gold (60% of total metal reserves, ~$1B) to London via four flights from Ezeiza airport. The BCRA refuses to disclose details citing 'security', claims no contracts exist for the placement, and has blocked AGN audits. Courts have ordered disclosure but the BCRA continues to resist.",
+      "key_persons": [
+        {
+          "name": "Santiago Bausili",
+          "role": "President of the BCRA (Central Bank)",
+          "involvement": "Oversaw the gold transfer; blocked AGN audit access"
+        },
+        {
+          "name": "Luis Caputo",
+          "role": "Minister of Economy",
+          "involvement": "Confirmed gold was sent to London; stated it would not be the only such operation"
+        },
+        {
+          "name": "Juan Manuel Olmos",
+          "role": "President of the AGN (National Audit Office)",
+          "involvement": "Summoned BCRA to report on gold destination; BCRA refused cooperation"
+        }
+      ],
+      "entities": [
+        {
+          "name": "Banco Central de la Republica Argentina (BCRA)",
+          "type": "government_institution",
+          "role": "Transferred gold reserves abroad without transparency"
+        },
+        {
+          "name": "Auditoria General de la Nacion (AGN)",
+          "type": "government_institution",
+          "role": "Attempted audit blocked by BCRA"
+        },
+        {
+          "name": "Bank for International Settlements (BIS)",
+          "type": "international_institution",
+          "role": "Possible destination; BCRA claims no contracts exist with BIS or other foreign depositaries"
+        }
+      ],
+      "financial_impact": {
+        "gold_transferred": "~37 tonnes (estimated 250 lingots x 4 shipments)",
+        "value": "~$1 billion at time of transfer (now higher due to gold rally)",
+        "percentage_of_reserves": "60% of total metal reserves",
+        "gold_valuation_gain": "$4.5 billion gain in BCRA gold holdings due to price rally under Milei",
+        "total_gold_holdings": ">$9 billion (20% of total international reserves)"
+      },
+      "judicial_status": {
+        "agn_audit": "Blocked by BCRA; AGN filling vacancies to advance investigation",
+        "court_orders": "Camara Contencioso Administrativo Federal ordered BCRA to disclose information, reversing lower court's backing of total secrecy",
+        "bcra_position": "Claims contracts 'do not exist'; cites security for withholding details",
+        "status": "Ongoing - BCRA continues blocking audit as of March 2026"
+      },
+      "evidence_links": [
+        "https://www.ambito.com/politica/segun-el-bcra-el-envio-del-oro-al-exterior-no-quedo-registrado-ningun-contrato-n6227113",
+        "https://www.noticiasnqn.com.ar/noticias/2025/10/13/321750-el-banco-central-se-niega-a-informar-donde-esta-el-oro-argentino-enviado-al-exterior",
+        "https://www.noticiasdelacalle.com.ar/noticias/2026/03/16/161430-oro-en-las-sombras-el-bcra-sigue-bloqueando-la-auditoria-por-los-envios-al-exterior",
+        "https://www.eldiarioar.com/economia/justicia-le-ordeno-bcra-responda-pedidos-informacion-envio-lingotes-oro-exterior_1_12867239.html",
+        "https://www.letrap.com.ar/politica/javier-milei-no-responde-el-oro-del-banco-central-y-la-agn-podria-iniciar-acciones-judiciales-n5419082",
+        "https://www.thegoldobserver.com/p/argentinian-gold-reserves-arrive"
+      ],
+      "cross_references": []
+    },
+    {
+      "id": "aerolineas-privatization",
+      "name": "Aerolineas Argentinas Privatization Push",
+      "date_range": "2024 to present",
+      "severity": "medium",
+      "summary": "The Milei government declared Aerolineas Argentinas 'subject to privatization' by decree, seeking to sell 51% of shares to international groups (Latam, Avianca/Abra, Air France-KLM). The process was paused before legislative changeover in late 2025 and is expected to be re-introduced in Congress in early 2026. The airline achieved its first positive operating result in 2024 after years of ~$400M annual losses.",
+      "key_persons": [
+        {
+          "name": "Javier Milei",
+          "role": "President",
+          "involvement": "Signed decree declaring airline subject to privatization; previously threatened closure as alternative"
+        }
+      ],
+      "entities": [
+        {
+          "name": "Aerolineas Argentinas",
+          "type": "state_company",
+          "role": "Target of privatization"
+        },
+        {
+          "name": "Latam Airlines",
+          "type": "company",
+          "role": "Potential buyer being sounded out"
+        },
+        {
+          "name": "Avianca / Abra Group",
+          "type": "company",
+          "role": "Potential buyer being sounded out"
+        },
+        {
+          "name": "Air France-KLM",
+          "type": "company",
+          "role": "Potential buyer being sounded out"
+        }
+      ],
+      "financial_impact": {
+        "historical_annual_losses": "~$400M average (2008-2023)",
+        "first_positive_result": "2024 operating result",
+        "treasury_contributions_2025": "$0 (first time since re-nationalization)"
+      },
+      "judicial_status": {
+        "status": "Legislative process; decree issued but congressional approval pending for H1 2026"
+      },
+      "evidence_links": [
+        "https://www.perfil.com/noticias/actualidad/por-decreto-gobierno-javier-milei-aerolineas-argentinas-sujeta-a-privatizacion.phtml",
+        "https://www.infobae.com/america/agencias/2026/01/15/milei-sondea-entre-grupos-internacionales-la-privatizacion-de-aerolineas-argentinas/",
+        "https://www.lanacion.com.ar/politica/el-oficialismo-insiste-con-privatizar-aerolineas-argentinas-pero-asume-que-no-es-una-urgencia-para-nid07012026/"
+      ],
+      "cross_references": []
+    },
+    {
+      "id": "santiago-caputo-side",
+      "name": "SIDE Scandal / Santiago Caputo Shadow Power Network",
+      "date_range": "2024 to present",
+      "severity": "critical",
+      "summary": "Presidential adviser Santiago Caputo controls a vast parallel power network through the SIDE (intelligence agency), which received 100 billion pesos in reserved (unaudited) funds. A SIDE contract was awarded to Tactic COC LLC, owned by Leonardo Scatturice (a Caputo associate with intelligence background), who then acquired airline Flybondi with unclear funding. Caputo also controls appointments across Health, ENARSA, UIF, Justice Ministry, and YPF. A DNU (941/2025) expanded SIDE powers to include detention without judicial order. The 'Iron Triangle' (Milei-Karina Milei-Caputo) is fracturing as Karina seeks to take over Caputo's domains.",
+      "key_persons": [
+        {
+          "name": "Santiago Caputo",
+          "role": "Presidential adviser ('monje negro'); nephew of Economy Minister Luis Caputo",
+          "involvement": "Controls SIDE appointments, ENARSA, Health, UIF, Justice Ministry designations; linked to Scatturice contracts; former Move Group consultant; has final say before presidential decisions per Milei himself"
+        },
+        {
+          "name": "Sergio Neiffert",
+          "role": "Head of SIDE (intelligence agency)",
+          "involvement": "Appointed by Caputo; denied Caputo controls SIDE; son Lautaro linked to shady security business deals"
+        },
+        {
+          "name": "Lautaro Neiffert",
+          "role": "Son of SIDE chief",
+          "involvement": "Allegedly involved in business dealings with security companies using SIDE resources"
+        },
+        {
+          "name": "Leonardo Scatturice",
+          "role": "Businessman, former intelligence operative, Miami-based",
+          "involvement": "Received SIDE contract via Tactic COC LLC; subsequently acquired Flybondi airline; registered as SIDE lobbyist with US DOJ; dubbed 'Lazaro Baez libertario'"
+        },
+        {
+          "name": "Lourdes Arrieta",
+          "role": "Former Libertad Avanza deputy (expelled)",
+          "involvement": "Filed complaint to Bicameral Intelligence Commission exposing the network"
+        },
+        {
+          "name": "Karina Milei",
+          "role": "Secretary General of the Presidency",
+          "involvement": "Moving to take over Caputo's areas of influence including SIDE and ARCA in 2026; expanding power over 4 of 9 ministries"
+        },
+        {
+          "name": "Guillermo Garat",
+          "role": "Former Caputo associate from Move Group consultancy",
+          "involvement": "Appointed to YPF Institutional Relations"
+        },
+        {
+          "name": "Andres Vazquez",
+          "role": "ARCA executive director",
+          "involvement": "Identified as close to Caputo; potential target of Karina's power moves"
+        }
+      ],
+      "entities": [
+        {
+          "name": "SIDE (Secretaria de Inteligencia del Estado)",
+          "type": "government_institution",
+          "role": "Intelligence agency receiving 100B pesos in reserved funds; contracts awarded to Caputo associates"
+        },
+        {
+          "name": "Tactic COC LLC",
+          "type": "company",
+          "jurisdiction": "USA",
+          "role": "Scatturice's company; received SIDE contract; registered with US DOJ"
+        },
+        {
+          "name": "COC Global Enterprise",
+          "type": "company",
+          "role": "Scatturice's investment fund that acquired Flybondi"
+        },
+        {
+          "name": "Flybondi",
+          "type": "company",
+          "role": "Argentine airline acquired by Scatturice; funding origin questioned"
+        },
+        {
+          "name": "Move Group",
+          "type": "consultancy",
+          "role": "Caputo's former political consultancy operating across Latin America"
+        },
+        {
+          "name": "ENARSA (Energia Argentina SA)",
+          "type": "state_company",
+          "role": "Appointments controlled by Caputo"
+        }
+      ],
+      "financial_impact": {
+        "reserved_funds_allocated": "100 billion pesos (unaudited)",
+        "scatturice_contracts": "Millionaire contracts with SIDE and ANSES (amounts not fully disclosed)"
+      },
+      "judicial_status": {
+        "bicameral_commission": "Investigating; cited SIDE chief Neiffert",
+        "dnu_941_2025": "Multiple amparo suits filed challenging constitutionality of intelligence reform DNU",
+        "arrieta_complaint": "Filed June 2025 for influence trafficking, incompatible negotiations, misuse of reserved funds",
+        "status": "Active investigations in Congress and judiciary"
+      },
+      "evidence_links": [
+        "https://www.bigbangnews.com/politica/investigan-red-corrupcion-santiago-caputo-side-secretos-negocios-espurios-eeuu-n96245",
+        "https://www.vocescriticas.com/noticias/2025/06/25/180038-escandalo-en-la-side-el-congreso-investiga-contratos-millonarios-de-santiago-caputo-con-un-empresario",
+        "https://www.lapoliticaonline.com/politica/milei-le-da-a-santiago-caputo-100-mil-millones-de-fondos-reservados-para-la-side/",
+        "https://www.lapoliticaonline.com/politica/el-congreso-pide-investigar-el-contrato-de-la-side-con-scatturice/",
+        "https://www.lapoliticaonline.com/politica/revelan-contratos-millonarios-de-scatturice-con-la-side-y-anses-y-ya-hablan-del-lazaro-baez-libertario/",
+        "https://www.eldiarioar.com/politica/compra-mira-santiago-caputo-leonardo-scatturice-exespia-quedo-flybondi_1_12400000.html",
+        "https://www.perfil.com/noticias/politica/el-nuevo-dueno-de-fly-bondi-tiene-una-empresa-que-hace-lobby-para-la-side-en-estados-unidos.phtml",
+        "https://www.infobae.com/politica/2026/03/07/del-triangulo-de-hierro-a-dos-socios-y-un-gerente-el-nuevo-mapa-de-poder-del-gobierno/",
+        "https://www.mdzol.com/politica/2025/1/18/una-por-una-todas-las-areas-claves-que-maneja-santiago-caputo-en-el-gobierno-1181932.html",
+        "https://cenital.com/sombra-terrible-de-santiago-espias-dinero-oscuro-y-videos/"
+      ],
+      "cross_references": ["caso-libra", "dnu-abuse"]
+    },
+    {
+      "id": "ypf-vaca-muerta",
+      "name": "YPF Privatization & Vaca Muerta Deals / Board Patronage",
+      "date_range": "2024 to present",
+      "severity": "medium",
+      "summary": "While full YPF privatization is blocked (requires 2/3 congressional supermajority), the government has packed the YPF board with political allies. Former Cabinet Chief Francos and former Interior Minister Catalan were given board seats (Catalan's paying 140M pesos/year). Manuel Adorni was made board president in Jan 2026. Santiago Caputo's former Move Group associate Guillermo Garat was placed in YPF Institutional Relations. The Rocca family (Techint) shares control of YPF with the government. Major LNG export project (~$40B total investment) underway with ENI.",
+      "key_persons": [
+        {
+          "name": "Horacio Marin",
+          "role": "CEO of YPF",
+          "involvement": "Leading company operations and Vaca Muerta expansion"
+        },
+        {
+          "name": "Guillermo Francos",
+          "role": "Former Chief of Cabinet, YPF Board member",
+          "involvement": "Moved from board president to alternate seat when replaced by Adorni"
+        },
+        {
+          "name": "Lisandro Catalan",
+          "role": "Former Interior Minister, YPF Board Titular Director Class D",
+          "involvement": "Appointed Nov 2025; salary ~140M pesos; criticized as 'Casta Libertaria'"
+        },
+        {
+          "name": "Manuel Adorni",
+          "role": "Chief of Cabinet (current), YPF Board President",
+          "involvement": "Designated Jan 2026 as State representative with Golden Share"
+        },
+        {
+          "name": "Guillermo Garat",
+          "role": "Former Santiago Caputo / Move Group associate",
+          "involvement": "Placed at YPF Institutional Relations"
+        },
+        {
+          "name": "Paolo Rocca",
+          "role": "Head of Techint Group",
+          "involvement": "Shares control of YPF with Milei government"
+        }
+      ],
+      "entities": [
+        {
+          "name": "YPF SA",
+          "type": "state_company",
+          "role": "Argentina's largest energy company; 51% state-owned"
+        },
+        {
+          "name": "Techint / Rocca family",
+          "type": "conglomerate",
+          "role": "Major private shareholder influencing YPF direction"
+        },
+        {
+          "name": "ENI (Italy)",
+          "type": "company",
+          "role": "Partner in $25B+ LNG export project with YPF"
+        }
+      ],
+      "financial_impact": {
+        "lng_infrastructure_investment": "~$25 billion",
+        "upstream_investment": "~$15 billion",
+        "catalan_board_salary": "140 million pesos/year",
+        "ypf_value_trajectory": "Tripled in value during 2024"
+      },
+      "judicial_status": {
+        "privatization_legal_status": "Blocked; removed from Ley Bases; requires 2/3 Congress + provincial approval",
+        "status": "No active judicial proceedings on board appointments"
+      },
+      "evidence_links": [
+        "https://canalabierto.com.ar/2025/12/04/como-rocca-y-milei-se-reparten-el-control-de-ypf/",
+        "https://www.infobae.com/politica/2026/01/30/el-gobierno-designo-a-manuel-adorni-al-frente-del-directorio-de-ypf-en-reemplazo-de-guillermo-francos/",
+        "https://www.agenciahoy.com/noticia/milei-nombro-a-catalan-en-ypf-con-un-sueldo-de-140-millones",
+        "https://www.infobae.com/economia/2025/01/19/como-en-un-ano-ypf-paso-del-cartel-de-se-vende-a-triplicar-su-valor-y-encabezar-el-boom-de-vaca-muerta/"
+      ],
+      "cross_references": ["santiago-caputo-side"]
+    },
+    {
+      "id": "causa-cuadernos",
+      "name": "Causa Cuadernos (Bribery Notebooks Trial)",
+      "date_range": "2018 to present (trial began Nov 2025)",
+      "severity": "critical",
+      "summary": "Argentina's largest corruption case: trial of 87 defendants (including ex-President Cristina Fernandez de Kirchner, 19 ex-officials, 65 businessmen, 2 drivers) began Nov 6, 2025. Based on notebooks of ex-driver Oscar Centeno documenting systematic bribery for public works contracts. 36 accused businessmen attempted to pay for dismissal under 'reparacion integral'. Defense motions to invalidate the notebooks and the cooperating witness law were rejected by the tribunal in March 2026.",
+      "key_persons": [
+        {
+          "name": "Cristina Fernandez de Kirchner",
+          "role": "Former President (2007-2015)",
+          "involvement": "Principal accused; indagatoria (formal questioning) scheduled"
+        },
+        {
+          "name": "Oscar Centeno",
+          "role": "Former driver for Ministry of Federal Planning",
+          "involvement": "Author of the notebooks documenting cash bribes"
+        },
+        {
+          "name": "Jose Lopez",
+          "role": "Former Secretary of Public Works",
+          "involvement": "Key accused; tribunal analyzing motion to remove him from trial"
+        }
+      ],
+      "entities": [
+        {
+          "name": "Camara Argentina de Empresas Viales",
+          "type": "industry_association",
+          "role": "Accused of cartelization of civil public works"
+        },
+        {
+          "name": "Tribunal Oral Federal 7",
+          "type": "judicial",
+          "role": "Presiding over the trial"
+        },
+        {
+          "name": "UIF (Unidad de Informacion Financiera)",
+          "type": "government_institution",
+          "role": "Intervening party; legitimacy challenged by defense"
+        }
+      ],
+      "financial_impact": {
+        "scope": "Systematic bribery across public works during Kirchner administrations",
+        "defendants_seeking_buyout": "36 accused offered 'reparacion integral' payments to avoid trial"
+      },
+      "judicial_status": {
+        "trial_start": "2025-11-06",
+        "format": "Virtual hearings, Tuesdays and Thursdays",
+        "total_defendants": 87,
+        "defense_motions": "Rejected by tribunal March 2026 - trial continues",
+        "key_legal_issues": "Validity of notebooks, constitutionality of cooperating witness law (Ley 27.304), UIF standing",
+        "status": "Trial ongoing; defense motions rejected"
+      },
+      "evidence_links": [
+        "https://www.infobae.com/judiciales/2025/11/06/hoy-comienza-el-juicio-a-los-cuadernos-de-las-coimas-las-claves-para-entender-el-mayor-caso-de-corrupcion-de-la-historia-argentina/",
+        "https://www.fiscales.gob.ar/corrupcion/causa-cuadernos-el-tribunal-rechazo-los-planteos-de-las-defensas-y-el-juicio-continuara-con-la-indagatoria-a-la-expresidenta-cristina-fernandez/",
+        "https://www.infobae.com/judiciales/2025/09/22/causa-cuadernos-el-tribunal-oral-federal-7-define-si-los-empresarios-podran-pagar-para-evitar-el-juicio/",
+        "https://www.infobae.com/judiciales/2026/03/09/cuadernos-manana-se-define-el-futuro-del-juicio-y-el-tribunal-analiza-un-planteo-para-que-jose-lopez-quede-fuera-del-debate/",
+        "https://www.mdzol.com/politica/el-mapa-judicial-cristina-kirchner-todas-las-causas-condenas-y-juicios-pendientes-2026-n1476720"
+      ],
+      "cross_references": []
+    },
+    {
+      "id": "capital-humano-food",
+      "name": "Ministerio de Capital Humano / Retained Food & Irregular Contracts",
+      "date_range": "2024-05 to present",
+      "severity": "high",
+      "summary": "In May 2024, it was revealed that the Ministry of Capital Humano retained ~5,000 tonnes of food in warehouses while cutting deliveries to community dining halls amid rising poverty. Minister Pettovello fired Secretary Pablo de la Torre and accused him of running an illegal political fundraising scheme through OEI contracts. However, Pettovello herself cannot account for 8.3 billion pesos (more than half of 14 billion authorized for food purchases). The ministry was raided by judicial order.",
+      "key_persons": [
+        {
+          "name": "Sandra Pettovello",
+          "role": "Minister of Capital Humano",
+          "involvement": "Oversaw retention of food; cannot account for 8.3B pesos; fired De la Torre; blocked public information access on contracts"
+        },
+        {
+          "name": "Pablo de la Torre",
+          "role": "Former Secretary of Childhood, Adolescence and Family (SENAF)",
+          "involvement": "Fired by Pettovello; accused of running illegal political fundraising through OEI contracts"
+        },
+        {
+          "name": "Juan Grabois",
+          "role": "Social activist, ex-presidential candidate",
+          "involvement": "Filed complaint against Pettovello for abuse of authority"
+        },
+        {
+          "name": "Sebastian Casanello",
+          "role": "Federal Judge",
+          "involvement": "Ordered inspection of Capital Humano offices"
+        },
+        {
+          "name": "Julian Ercolini",
+          "role": "Federal Judge",
+          "involvement": "Handling the case"
+        },
+        {
+          "name": "Franco Picardi",
+          "role": "Federal Prosecutor",
+          "involvement": "Found Pettovello cannot account for 8.3B pesos"
+        }
+      ],
+      "entities": [
+        {
+          "name": "Ministerio de Capital Humano",
+          "type": "government_institution",
+          "role": "Retained food, irregular contracting"
+        },
+        {
+          "name": "OEI (Organizacion de Estados Iberoamericanos)",
+          "type": "international_organization",
+          "role": "Channel for irregular contracts; ~100 ghost employees; 1B pesos diverted"
+        },
+        {
+          "name": "UNDP (United Nations Development Program)",
+          "type": "international_organization",
+          "role": "Channel for food purchase funds"
+        }
+      ],
+      "financial_impact": {
+        "unaccounted_funds": "8.3 billion pesos (of 14 billion authorized)",
+        "oei_contract_diversion": "1 billion pesos (645M disbursed + 395M transferred)",
+        "ghost_employees": "~100 people",
+        "food_retained": "~5,000 tonnes"
+      },
+      "judicial_status": {
+        "raids": "Ministry offices raided by judicial order",
+        "prosecutor_finding": "Pettovello has not accounted for 8.3B pesos",
+        "oia_investigation": "Opened by Procuracion de Investigaciones Administrativas",
+        "anticorruption_office": "Requested contract documentation from Capital Humano",
+        "status": "Multiple active investigations"
+      },
+      "evidence_links": [
+        "https://www.infobae.com/politica/2024/06/02/escandalo-de-los-alimentos-la-investigacion-tambien-apunta-a-la-ong-que-compro-toneladas-de-comida-y-pago-a-empleados-y-funcionarios/",
+        "https://actualidad.rt.com/actualidad/521135-allanan-ministerio-capital-humano-argentina",
+        "https://www.agencianova.com/nota.asp?n=2025_8_6&id=156136&id_tiponota=4",
+        "https://www.ambito.com/politica/denunciaron-sandra-pettovello-la-justicia-sobresueldos-contratos-irregulares-n6009379",
+        "https://www.c5n.com/politica/contrataciones-irregulares-capital-humano-la-justicia-le-solicito-documentacion-la-oei-n162126"
+      ],
+      "cross_references": []
+    },
+    {
+      "id": "dnu-abuse",
+      "name": "Systematic DNU (Emergency Decree) Abuse",
+      "date_range": "2023-12 to present",
+      "severity": "high",
+      "summary": "In under two years, Milei signed 83 DNUs, surpassing Cristina Kirchner's 81 in eight years. In 2025 alone, 35 DNUs were issued vs. only 13 laws enacted by Congress. During the Dec 2025-Feb 2026 legislative recess, 11 DNUs were issued (equaling all laws from 2025). Multiple DNUs declared unconstitutional by courts, including on gender identity, anti-strike measures, Supreme Court appointments, and seizure of corruption-related assets. DNU 941/2025 gave SIDE power to detain without judicial order.",
+      "key_persons": [
+        {
+          "name": "Javier Milei",
+          "role": "President",
+          "involvement": "Signed all 83+ DNUs"
+        }
+      ],
+      "dnus_declared_unconstitutional": [
+        {
+          "dnu": "DNU 70/2023",
+          "subject": "Mega-deregulation decree ('Bases para la Reconstruccion')",
+          "status": "Challenged by CELS and others"
+        },
+        {
+          "dnu": "DNU 62/2025",
+          "subject": "Modified Gender Identity Law",
+          "court": "Juzgado Federal de Parana N2",
+          "status": "Declared unconstitutional nationally"
+        },
+        {
+          "dnu": "DNU 340/2025",
+          "subject": "Anti-strike / labor law modification",
+          "court": "Judge Moira Fullana",
+          "status": "Declared unconstitutional"
+        },
+        {
+          "dnu": "DNU appointing Lijo and Garcia-Mansilla to Supreme Court",
+          "subject": "In-recess Supreme Court appointments",
+          "court": "Judge Alejo Ramos Padilla",
+          "status": "Declared unconstitutional"
+        },
+        {
+          "dnu": "DNU on seizure of corruption assets",
+          "subject": "Executive control of decomissioned assets from corruption cases",
+          "court": "Camara Federal en lo Penal Economico",
+          "status": "Declared null, absolute nullity"
+        },
+        {
+          "dnu": "DNU 941/2025",
+          "subject": "Intelligence reform giving SIDE detention powers without judicial order",
+          "status": "Multiple amparos filed; one rejected at first instance"
+        }
+      ],
+      "financial_impact": {
+        "note": "DNUs bypass congressional oversight on budgetary and regulatory matters"
+      },
+      "judicial_status": {
+        "total_dnus": "83+ in <2 years",
+        "unconstitutionality_rulings": "5+ individual DNUs struck down",
+        "status": "Pattern of executive overreach; courts pushing back case by case"
+      },
+      "evidence_links": [
+        "https://www.vocescriticas.com/noticias/2025/09/30/185424-javier-milei-supera-a-cristina-kirchner-en-uso-de-decretos-de-necesidad-y-urgencia-en-menos-de-dos-anos",
+        "https://www.lanacion.com.ar/politica/durante-el-receso-legislativo-milei-dicto-casi-tantos-dnu-como-todas-las-leyes-promulgadas-a-lo-nid11022026/",
+        "https://www.lanacion.com.ar/politica/declaran-inconstitucional-el-dnu-de-javier-milei-que-decidio-que-el-poder-ejecutivo-administre-los-nid23122025/",
+        "https://www.cronista.com/economia-politica/presentan-un-amparo-contra-el-dnu-de-milei-en-que-punto-queda-la-reforma-de-inteligencia/",
+        "https://www.pagina12.com.ar/838357-declararon-inconstitucional-el-dnu-antihuelga-de-milei"
+      ],
+      "cross_references": ["santiago-caputo-side"]
+    },
+    {
+      "id": "causa-chocolate",
+      "name": "Causa Chocolate / Buenos Aires Legislature Ghost Employees",
+      "date_range": "2023-09 to present",
+      "severity": "medium",
+      "summary": "Political operative 'Chocolate' Rigau was caught in Sept 2023 withdrawing cash from 48 debit cards belonging to phantom employees of the Buenos Aires provincial legislature. Claudio Albini (subdirector of Personnel) ran an illicit association that registered ghost workers whose salaries funded PJ political operations. Damage exceeded 800M pesos. All major parties implicated. Case elevated to oral trial in May 2025; Albini family under house arrest.",
+      "key_persons": [
+        {
+          "name": "\"Chocolate\" Rigau",
+          "role": "PJ political operative (puntero)",
+          "involvement": "Caught with 48 debit cards from ghost employees; triggered the investigation"
+        },
+        {
+          "name": "Claudio Albini",
+          "role": "Subdirector of Personnel, Buenos Aires Legislature",
+          "involvement": "Head of the illicit association; detained"
+        },
+        {
+          "name": "Facundo Albini",
+          "role": "Son of Claudio; former Director of Control and Management at Legislature; later city councilman",
+          "involvement": "Part of the scheme; detained, later house arrest"
+        },
+        {
+          "name": "Julio Alak",
+          "role": "Former mayor of La Plata, PJ politician",
+          "involvement": "Facundo Albini ran on his political list"
+        }
+      ],
+      "entities": [
+        {
+          "name": "Buenos Aires Provincial Legislature (Chamber of Deputies)",
+          "type": "government_institution",
+          "role": "Where the ghost employee scheme operated"
+        }
+      ],
+      "financial_impact": {
+        "damages": ">800 million pesos",
+        "scheme": "Ghost employees registered across legislature; salaries withdrawn and diverted to political operations"
+      },
+      "judicial_status": {
+        "elevated_to_trial": "May 2025",
+        "camara_ruling": "July 2025 - confirmed illicit association charges",
+        "albini_family": "Under house arrest (since June 2025)",
+        "cross_party_involvement": "All major parties implicated",
+        "status": "Approaching oral trial"
+      },
+      "evidence_links": [
+        "https://www.infobae.com/judiciales/2025/05/27/elevaron-a-juicio-la-causa-contra-chocolate-rigau-por-corrupcion-con-los-sueldos-de-la-legislatura-bonaerense/",
+        "https://www.infobae.com/politica/2025/07/10/chocolate-rigau-la-camara-de-la-plata-ratifico-que-los-principales-acusados-eran-parte-de-una-asociacion-ilicita/",
+        "https://www.infobae.com/politica/2025/04/20/el-caso-chocolate-sigue-sumando-sorpresas-la-empleada-de-la-legislatura-que-vivia-en-espana-y-las-visitas-a-la-cancha-de-estudiantes/",
+        "https://eleconomista.com.ar/politica/todo-sobre-chocolategate-escandalo-sacude-politica-provincia-buenos-aires-n66578"
+      ],
+      "cross_references": []
+    },
+    {
+      "id": "macri-family-judicial",
+      "name": "Macri Family Judicial Developments",
+      "date_range": "Ongoing legacy cases, 2025-2026 updates",
+      "severity": "medium",
+      "summary": "Multiple judicial fronts for the Macri family: (1) Correo Argentino - Supreme Court reactivated the case in June 2025 after defense appeals were rejected; the case alleges an agreement during Macri's presidency that would have forgiven 98.87% of Correo Argentino's debt to the state. (2) Jorge Macri money laundering - Supreme Court revoked his acquittal in Feb 2026, reopening investigation of alleged money laundering in Miami. (3) 'Mesa Judicial' - Macri was acquitted of charges of pressuring judges (confirmed May 2024). (4) Mauricio Macri called to testify in 'Suenos Compartidos' case (March 2026).",
+      "key_persons": [
+        {
+          "name": "Mauricio Macri",
+          "role": "Former President (2015-2019), current PRO party president",
+          "involvement": "Acquitted in Mesa Judicial case; Correo Argentino case reactivated; testifying in Suenos Compartidos"
+        },
+        {
+          "name": "Jorge Macri",
+          "role": "Head of Government of CABA (Buenos Aires City)",
+          "involvement": "Money laundering acquittal revoked by Supreme Court Feb 2026"
+        },
+        {
+          "name": "Florencia Nardi",
+          "role": "Ex-wife of Jorge Macri",
+          "involvement": "Co-defendant in money laundering case"
+        },
+        {
+          "name": "Oscar Aguad",
+          "role": "Former Communications Minister (Macri government)",
+          "involvement": "Co-defendant in Correo Argentino case"
+        },
+        {
+          "name": "Ariel Lijo",
+          "role": "Federal Judge (nominated for Supreme Court by Milei)",
+          "involvement": "Did not advance Correo Argentino case while it was in his court"
+        },
+        {
+          "name": "Gabriela Boquin",
+          "role": "Federal Prosecutor",
+          "involvement": "Detected and reported the Correo Argentino agreement as 'ruinous and abusive'"
+        }
+      ],
+      "entities": [
+        {
+          "name": "Correo Argentino SA",
+          "type": "company",
+          "role": "Macri family company; owed debt to state that government tried to forgive 98.87%"
+        },
+        {
+          "name": "Grupo Macri",
+          "type": "conglomerate",
+          "role": "Family business group linked to multiple judicial cases"
+        }
+      ],
+      "financial_impact": {
+        "correo_argentino_debt_forgiveness_attempted": "98.87% of company debt to state",
+        "jorge_macri_laundering_case": "Money laundering via Miami real estate (amounts under investigation)"
+      },
+      "judicial_status": {
+        "correo_argentino": "Reactivated by Supreme Court June 2025; investigation phase ongoing; Judge Lijo criticized for inaction",
+        "jorge_macri_laundering": "Acquittal revoked by Supreme Court Feb 2026; case reopened",
+        "mesa_judicial": "Acquittal confirmed May 2024 (final)",
+        "suenos_compartidos": "Macri to testify March 2026",
+        "other_open_cases": "Toll concessions, wind farm auctions"
+      },
+      "evidence_links": [
+        "https://www.infobae.com/judiciales/2026/02/26/la-corte-suprema-dejo-sin-efecto-el-sobreseimiento-de-jorge-macri-en-una-causa-por-presunto-lavado-de-dinero/",
+        "https://www.lanueva.com/nota/2025-6-20-8-55-0-ahora-la-corte-reactivo-la-causa-correo-argentino-de-mauricio-macri",
+        "https://www.ambito.com/politica/la-corte-suprema-da-una-senal-y-mantiene-vida-la-causa-correo-argentino-contra-los-macri-n6158727",
+        "https://www.infobae.com/judiciales/2026/03/16/causa-suenos-compartidos-mauricio-macri-declarara-como-testigo-el-proximo-miercoles/",
+        "https://chequeado.com/el-explicador/que-paso-con-las-causas-judiciales-contra-el-ex-presidente-mauricio-macri/",
+        "https://www.lanacion.com.ar/politica/la-causa-del-correo-argentino-ariel-lijo-no-avanzo-con-un-expediente-sensible-para-mauricio-macri-nid20062025/"
+      ],
+      "cross_references": ["causa-cuadernos"]
+    }
+  ],
+  "power_structure_analysis": {
+    "iron_triangle": {
+      "description": "The 'Triangulo de Hierro' (Iron Triangle) is the informal power structure at the core of the Milei government",
+      "members": [
+        "Javier Milei (President - final decision maker)",
+        "Karina Milei (Secretary General - expanding power, controls Defense, Security, Justice, Interior)",
+        "Santiago Caputo (Adviser - controls SIDE, Health, ENARSA, UIF, ARCA; influence waning in 2026)"
+      ],
+      "current_dynamics": "As of March 2026, the triangle is fracturing. Karina is moving to take over Caputo's domains (SIDE, ARCA). Insiders describe an 'inverted triangle' with Karina dominant. The $LIBRA scandal has further weakened Caputo's position.",
+      "financial_nexus": "Luis 'Toto' Caputo (Economy Minister) is Santiago Caputo's uncle, creating a family link between political influence operations and economic policy"
+    },
+    "recurring_patterns": [
+      "Opacity and resistance to audit/transparency (BCRA gold, SIDE funds, Capital Humano contracts)",
+      "Use of DNUs to bypass congressional oversight (83+ in <2 years, multiple struck down)",
+      "Political patronage in state companies (YPF board packed with ex-ministers)",
+      "International intermediaries in opaque deals (Hayden Davis/Kelsier, Scatturice/Tactic COC)",
+      "Intelligence apparatus used for political/financial operations (SIDE reserved funds to Caputo associates)"
+    ]
+  },
+  "connections_to_existing_investigations": {
+    "note": "The following connections to the Epstein investigation framework are structural rather than direct",
+    "patterns": [
+      "Offshore financial structures (Kelsier Ventures in Delaware; Scatturice's Miami operations; Jorge Macri Miami laundering)",
+      "Intelligence agency misuse for political protection (SIDE parallels to intelligence community role in Epstein case)",
+      "Judicial capture and selective prosecution (Mesa Judicial acquittal; Lijo's inaction on Correo Argentino; Lijo then nominated to Supreme Court by Milei)",
+      "Financial elite impunity mechanisms (36 Cuadernos defendants attempting to buy their way out of trial)"
+    ]
+  }
+}

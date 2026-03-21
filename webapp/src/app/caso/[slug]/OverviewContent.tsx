@@ -33,16 +33,16 @@ const t = {
     es: 'La Red Epstein',
   },
   subtitle: {
-    en: 'How a single financial relationship built a trafficking empire shielded by wealth, power, and institutional failure. 7,287 connected nodes, 21,944 edges, 0 orphans, quality score 8.5/10. Built from court records, DOJ file releases, flight logs, and investigative reporting.',
-    es: 'Como una sola relacion financiera construyo un imperio de trafico protegido por riqueza, poder y fracaso institucional. 7,287 nodos conectados, 21,944 aristas, 0 huerfanos, puntuacion de calidad 8.5/10. Basado en registros judiciales, archivos del DOJ, bitacoras de vuelo y periodismo de investigacion.',
+    en: 'How a single financial relationship built a trafficking empire shielded by wealth, power, and institutional failure. 7,276 connected nodes, 11,040 edges, 0 orphans. Built from court records, DOJ file releases, flight logs, and investigative reporting. 374 verified persons, 39 organizations mapped, 15 documented victim relationships.',
+    es: 'Como una sola relacion financiera construyo un imperio de trafico protegido por riqueza, poder y fracaso institucional. 7,276 nodos conectados, 11,040 aristas, 0 huerfanos. Basado en registros judiciales, archivos del DOJ, bitacoras de vuelo y periodismo de investigacion. 374 personas verificadas, 39 organizaciones mapeadas, 15 relaciones de victimas documentadas.',
   },
   readStory: {
     en: 'Read the full story',
     es: 'Leer la historia completa',
   },
   readStoryDesc: {
-    en: '11 chapters tracing the network from origin to 2026 arrests — with 27 citations',
-    es: '11 capitulos trazando la red desde su origen hasta los arrestos de 2026 — con 27 citas',
+    en: '13 chapters tracing the network from origin to 2026 arrests — with 35 citations',
+    es: '13 capitulos trazando la red desde su origen hasta los arrestos de 2026 — con 35 citas',
   },
   browseEvidence: {
     en: 'Browse the evidence',
@@ -57,8 +57,8 @@ const t = {
     es: 'Investigacion verificada',
   },
   investigationDesc: {
-    en: '72 factchecked claims, 7,287 connected nodes, 355 verified persons, money flows, evidence chain, and government response',
-    es: '72 afirmaciones verificadas, 7,287 nodos conectados, 355 personas verificadas, flujos de dinero, cadena de evidencia y respuesta gubernamental',
+    en: '76 factchecked claims, 7,276 connected nodes, 374 verified persons, money flows, evidence chain, and government response',
+    es: '76 afirmaciones verificadas, 7,276 nodos conectados, 374 personas verificadas, flujos de dinero, cadena de evidencia y respuesta gubernamental',
   },
   networkGraph: {
     en: 'Network Graph',

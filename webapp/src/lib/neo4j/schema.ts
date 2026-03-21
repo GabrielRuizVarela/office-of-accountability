@@ -142,6 +142,17 @@ const UNIQUE_CONSTRAINTS = [
     label: 'GovernmentAction',
     property: 'id',
   },
+  // Cross-reference engine — platform-level entity deduplication
+  {
+    name: 'contractor_cuit_unique',
+    label: 'Contractor',
+    property: 'cuit',
+  },
+  {
+    name: 'company_cuit_unique',
+    label: 'Company',
+    property: 'cuit',
+  },
   // Investigation config
   {
     name: 'investigation_config_id_unique',
@@ -212,7 +223,7 @@ const UNIQUE_CONSTRAINTS = [
 ] as const
 
 /** Full-text indexes for search across text fields */
-const FULLTEXT_INDEXES = [
+const FULLTEXT_INDEXES: readonly { name: string; labels: readonly string[]; properties: readonly string[] }[] = [
   {
     name: 'politician_name_fulltext',
     labels: ['Politician'],
@@ -270,6 +281,29 @@ const FULLTEXT_INDEXES = [
     labels: ['Claim'],
     properties: ['title', 'description'],
   },
+  // Cross-reference engine — platform-level entity search
+  {
+    name: 'contractor_name_fulltext',
+    labels: ['Contractor'],
+    properties: ['name'],
+  },
+  {
+    name: 'company_name_fulltext',
+    labels: ['Company'],
+    properties: ['name'],
+  },
+  // Cross-reference engine — CUIT fulltext for multi-label matching
+  {
+    name: 'entity_cuit_fulltext',
+    labels: ['Contractor', 'Company', 'Donor', 'AssetDeclaration'],
+    properties: ['cuit'],
+  },
+  // Cross-reference engine — multi-label name search for fuzzy matching
+  {
+    name: 'entity_name_fulltext',
+    labels: ['Contractor', 'Company', 'CompanyOfficer', 'GovernmentAppointment'],
+    properties: ['name', 'full_name'],
+  },
 ] as const
 
 /** Standard B-tree indexes for common lookup patterns */
@@ -326,15 +360,31 @@ const BTREE_INDEXES = [
     property: 'slug',
   },
   // Generic investigation labels — caso_slug range indexes for namespace filtering
+  // Investigation entity indexes (Person, Organization, Event)
+  {
+    name: 'person_name_index',
+    label: 'Person',
+    property: 'name',
+  },
   {
     name: 'person_caso_slug_index',
     label: 'Person',
     property: 'caso_slug',
   },
   {
+    name: 'organization_name_index',
+    label: 'Organization',
+    property: 'name',
+  },
+  {
     name: 'organization_caso_slug_index',
     label: 'Organization',
     property: 'caso_slug',
+  },
+  {
+    name: 'event_id_index',
+    label: 'Event',
+    property: 'id',
   },
   {
     name: 'event_caso_slug_index',
@@ -427,6 +477,52 @@ const BTREE_INDEXES = [
     name: 'orchestrator_state_investigation_id_index',
     label: 'OrchestratorState',
     property: 'investigation_id',
+  },
+  // Cross-reference engine — platform-level lookup indexes
+  {
+    name: 'appointment_dni_index',
+    label: 'GovernmentAppointment',
+    property: 'dni',
+  },
+  {
+    name: 'appointment_cuil_index',
+    label: 'GovernmentAppointment',
+    property: 'cuil',
+  },
+  {
+    name: 'officer_document_number_index',
+    label: 'CompanyOfficer',
+    property: 'document_number',
+  },
+  {
+    name: 'contractor_name_index',
+    label: 'Contractor',
+    property: 'name',
+  },
+  {
+    name: 'company_name_index',
+    label: 'Company',
+    property: 'name',
+  },
+  {
+    name: 'contractor_cuit_index',
+    label: 'Contractor',
+    property: 'cuit',
+  },
+  {
+    name: 'company_cuit_index',
+    label: 'Company',
+    property: 'cuit',
+  },
+  {
+    name: 'donor_cuit_index',
+    label: 'Donor',
+    property: 'cuit',
+  },
+  {
+    name: 'asset_declaration_cuit_index',
+    label: 'AssetDeclaration',
+    property: 'cuit',
   },
 ] as const
 
