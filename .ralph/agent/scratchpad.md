@@ -1,731 +1,567 @@
-# Plan: Continue M10 — Motor de Investigación Autónomo
+# Plan: Complete M9 Investigation Standardization (remaining frontend + backend tasks)
 
-## Assessment
+M10 engine work is complete. Remaining work is M9 standardization: making the frontend and backend fully generic across all 3 investigations.
 
-M10 is ~70% complete. Phases 1-4, 5b, 6-8 are done. Remaining work:
-
-1. **API route path convention fix** — routes are at `/api/engine/[investigationId]/` but spec requires `/api/casos/[casoSlug]/engine/`
-2. **4 stage stubs** — verify, enrich, analyze, report need real implementations
-3. **3 orchestrator API routes** — missing entirely
-4. **Phase 10** — logger.ts and health.ts not created
-5. **Pre-existing TS error** — EvidenceExplorer.tsx has a `date` prop issue (not M10, skip)
-
-## Step-Wave Strategy
-
-### Current Step: Step 1 — Move API routes to correct path + add orchestrator routes
-
-Sub-tasks:
-- [x] 1.1 Move 6 existing routes from `/api/engine/[investigationId]/` to `/api/casos/[casoSlug]/engine/`, rename param to `casoSlug` (files: all route.ts under api/engine/)
-- [x] 1.2 Create `/api/casos/[casoSlug]/engine/orchestrator/route.ts` — GET orchestrator state, active tasks, synthesis reports
-- [x] 1.3 Create `/api/casos/[casoSlug]/engine/orchestrator/tasks/route.ts` — GET/POST task queue CRUD, manual priority override
-- [x] 1.4 Create `/api/casos/[casoSlug]/engine/orchestrator/focus/route.ts` — GET/PUT research focus, update directives mid-run
-
-### Step 2 — Implement stage runners (verify, enrich, analyze, report)
-
-Sub-tasks:
-- [ ] 2.1 Implement `stages/verify.ts` — dispatch parallel verification agents, web search, propose tier promotions, cross-source dedup
-- [ ] 2.2 Implement `stages/enrich.ts` — fetch document content, LLM entity extraction (tool-agent mode), reverse lookups
-- [ ] 2.3 Implement `stages/analyze.ts` — graph algorithms + LLM analysis (tool-agent or swarm mode), produce hypothesis proposals
-- [ ] 2.4 Implement `stages/report.ts` — LLM drafts investigation report sections as proposals
-
-### Step 3 — Phase 10: Observability & Rate Limiting
-
-Sub-tasks:
-- [ ] 3.1 Create `src/lib/engine/logger.ts` — structured logging with timestamp, investigation_id, stage, action, duration_ms, level
-- [ ] 3.2 Create `src/lib/engine/health.ts` — stuck pipeline detection, hash chain validation, LLM provider health
-- [ ] 3.3 Add rate limiting on engine API routes (run: 5/hr, proposals: 60/hr, state: 120/min, focus: 10/hr)
-- [ ] 3.4 Add engine metrics counters (pipeline_runs, llm_calls, llm_tokens, proposals, stage_duration)
-
-## Completed Steps:
-
-### Step 1.1 Notes
-- Moved 6 routes: run, state, proposals, gate/[stageId], audit, snapshots
-- Renamed `investigationId` param → `casoSlug` in all handlers
-- Deleted old `/api/engine/` directory
-- tsc --noEmit: only pre-existing EvidenceExplorer.tsx errors (not M10)
-- No frontend references to `/api/engine/` found — no callers to update
-
-### Step 1.1 Review (Critic)
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- No lingering references to old `/api/engine/` path
-- Old directory confirmed deleted
-- Observation: audit, proposals, state, snapshots routes accept `casoSlug` but don't use it (query by pipeline_state_id instead) — pre-existing pattern, not in scope for 1.1
-- **VERDICT: PASS** — no blocking issues
-
-### Step 1.2 Notes (for Builder)
-- Target file: `webapp/src/app/api/casos/[casoSlug]/engine/orchestrator/route.ts`
-- Follow same pattern as `state/route.ts`: Next.js 16, `params: Promise<{ casoSlug: string }>`, `Response.json()`, 503 on DB errors
-- GET handler: accept `pipeline_id` query param, return orchestrator state
-- Import from `@/lib/engine/orchestrator` — the lib module already has `OrchestratorCycleResult`, dispatch/synthesis/priority functions
-- For initial implementation, query Neo4j for active `OrchestratorTask` nodes by pipeline_id, count pending/active tasks, return last synthesis timestamp
-- Refer to `types.ts` for `OrchestratorTask` shape and `orchestrator.ts` for the cycle logic
-- Keep it simple: this is a read-only status endpoint
-
-### Step 1.2 Notes (Builder Result)
-- Created `webapp/src/app/api/casos/[casoSlug]/engine/orchestrator/route.ts`
-- GET handler: accepts `pipeline_id` query param, queries OrchestratorState + OrchestratorTask nodes
-- Returns: `{ state, task_summary: { total, pending, running, completed, failed }, tasks }`
-- Note: scratchpad mentioned importing from `@/lib/engine/orchestrator` but that file doesn't exist — queried Neo4j directly instead using `readQuery` from client
-- Follows same patterns as `state/route.ts`: nodeProps helper, 503 on DB errors, `params: Promise<{ casoSlug: string }>`
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- Commit: cb465fa
-
-### Step 1.2 Review (Critic)
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- Parameterized Cypher: PASS — uses $pipelineId, $limit
-- LIMIT uses neo4j.int(): PASS — lines 45, 54
-- No `any` types: PASS
-- Follows codebase patterns: PASS — matches state/route.ts structure exactly
-- casoSlug not used in query: non-blocking, pre-existing pattern
-- **VERDICT: PASS** — no blocking issues
-
-### Finalizer Decision (after 1.2 review.passed)
-- Step 1 still has 2 unchecked sub-tasks: 1.3 (tasks route) and 1.4 (focus route)
-- Open runtime tasks exist for both: task-1774087446-060c (tasks), task-1774087446-13fe (focus)
-- Decision: queue.advance → Builder picks up sub-task 1.3 next
-
-### Step 1.3 Notes (for Builder)
-- Target file: `webapp/src/app/api/casos/[casoSlug]/engine/orchestrator/tasks/route.ts`
-- Follow same pattern as `orchestrator/route.ts` (cb465fa): imports, nodeProps helper, params Promise, 503 on DB errors
-- **GET handler**: accept `pipeline_id` query param (required), optional `status` filter. Return OrchestratorTask list ordered by priority ASC, created_at ASC.
-- **POST handler**: create new OrchestratorTask node. JSON body fields: `investigation_id` (required), `type` (required, string), `target` (required, string), `priority` (int 1-10, default 5), `dependencies` (string[], default []). Generate `id` as UUID, set `status: 'pending'`, `created_at: new Date().toISOString()`.
-- **PATCH handler**: update priority or status of existing task. JSON body: `task_id` (required), plus `priority` and/or `status` to update.
-- Actual `OrchestratorTask` type (from types.ts L239-253): `{ id, investigation_id, type, target, priority (1-10), status ('pending'|'assigned'|'running'|'completed'|'failed'), assigned_to?, dependencies: string[], result_summary?, created_at, completed_at? }`
-- Use `writeQuery` from `@/lib/neo4j/client` for POST/PATCH (not readQuery)
-- Use parameterized Cypher, `neo4j.int()` for priority and LIMIT values
-- Validate required fields before DB call, return 400 on missing fields
-- 503 on DB connection errors, 500 on other errors
-
-### Step 1.3 Notes (Builder Result)
-- Created `webapp/src/app/api/casos/[casoSlug]/engine/orchestrator/tasks/route.ts`
-- GET: lists tasks by pipeline_id with optional status filter, ordered by priority ASC, created_at ASC, LIMIT 200
-- POST: creates OrchestratorTask node with UUID id, validates required fields (investigation_id, type, target), defaults priority=5, status='pending'
-- PATCH: updates priority and/or status by task_id, auto-sets completed_at on completed/failed status, returns 404 if task not found
-- All Cypher parameterized, neo4j.int() for priority and LIMIT values
-- Extracted dbError helper to reduce repetition across 3 handlers
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- Commit: ec1bf9e
-
-### Step 1.3 Review (Critic)
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- Parameterized Cypher: PASS — all queries use $params, no template literals in Cypher
-- neo4j.int() on LIMIT and priority: PASS
-- No `any` types: PASS
-- Input validation: PASS — required fields checked, status validated against enum, priority clamped 1-10
-- PATCH SET clause uses hardcoded column names joined — safe (no user input in Cypher structure)
-- casoSlug not used in queries: non-blocking, pre-existing pattern
-- GET/POST/PATCH all match sub-task spec exactly
-- **VERDICT: PASS** — no blocking issues
-
-### Finalizer Decision (after 1.3 review.passed)
-- Step 1 has 1 unchecked sub-task remaining: 1.4 (focus route)
-- Decision: queue.advance → Builder picks up sub-task 1.4 next
-
-### Step 1.4 Notes (for Builder)
-- Target file: `webapp/src/app/api/casos/[casoSlug]/engine/orchestrator/focus/route.ts`
-- Follow same pattern as `tasks/route.ts` (ec1bf9e): imports, nodeProps helper, dbError helper, params Promise
-- **GET handler**: accept `pipeline_id` query param (required). Query the `OrchestratorState` node by `investigation_id`, return `{ current_focus, updated_at }`. Return 404 if no OrchestratorState exists for that pipeline.
-- **PUT handler**: accept JSON body with `pipeline_id` (required) and `focus` (required, string). MERGE on `OrchestratorState {investigation_id: $pipelineId}`, SET `current_focus = $focus, updated_at = $now`. Return the updated state. Use `writeQuery` for PUT.
-- OrchestratorState shape (types.ts L259-269): `{ investigation_id, status, active_tasks, completed_tasks, agent_count, current_focus?, last_synthesis_at?, created_at, updated_at }`
-- Import `OrchestratorState` from `@/lib/engine/types`
-- Use `readQuery` for GET, `writeQuery` for PUT
-- Parameterized Cypher, `neo4j.int()` for any LIMIT values
-- 400 on missing required params, 503 on DB connection errors, 500 on other errors
-
-### Step 1.4 Notes (Builder Result)
-- Created `webapp/src/app/api/casos/[casoSlug]/engine/orchestrator/focus/route.ts`
-- GET: queries OrchestratorState by pipeline_id, returns `{ current_focus, updated_at }`, 404 if not found
-- PUT: accepts JSON body with pipeline_id + focus, MERGE on OrchestratorState, SET current_focus + updated_at
-- Follows same patterns as tasks/route.ts: nodeProps helper, dbError helper, params Promise
-- All Cypher parameterized, neo4j.int() for LIMIT values
-- Input validation: 400 on missing pipeline_id (GET), missing pipeline_id or focus (PUT), invalid JSON body
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-
-### Step 1.4 Review (Critic)
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- Parameterized Cypher: PASS — all queries use $params, no template literals in Cypher
-- neo4j.int() on LIMIT: PASS
-- No `any` types: PASS
-- Input validation: PASS — 400 on missing pipeline_id/focus, invalid JSON body handled
-- GET returns { current_focus, updated_at } with 404 on missing state: matches spec
-- PUT uses MERGE + SET with writeQuery: matches spec
-- Follows codebase patterns: PASS — matches tasks/route.ts structure
-- casoSlug not used in queries: non-blocking, pre-existing pattern
-- **VERDICT: PASS** — no blocking issues
-
-### Finalizer Decision (after 1.4 review.passed)
-- Step 1 is fully complete: all 4 sub-tasks (1.1–1.4) checked and reviewed
-- Commits: 14d3613 (1.1 route moves), cb465fa (1.2 orchestrator), ec1bf9e (1.3 tasks), c73bae4 (1.4 focus)
-- Closed runtime task task-1774087446-13fe (focus route)
-- Next: Step 2 — Implement stage runners (verify, enrich, analyze, report)
-- Decision: queue.advance → Planner creates task wave for Step 2
-
-## Current Step: Step 2 — Implement stage runners (verify, enrich, analyze, report)
-
-### Architecture Context
-
-`iterate.ts` already implements a full LLM-driven research loop with:
-- LLM provider resolution (via `llm/factory.ts` → llamacpp/openai/anthropic)
-- Stage-scoped tool definitions (via `llm/tools.ts`)
-- Tool call → Proposal processing (`processToolCall` helper)
-- Graph summary queries, gap detection, convergence metrics
-
-Each stage stub currently returns `{ proposals_created: 0, records_processed: 0, errors: [] }`.
-
-Stage implementations should:
-1. Use the existing LLM abstraction (`createProvider`/`resolveLLMProvider`)
-2. Use stage-scoped tools from `getToolsForStage(kind)`
-3. Create proposals via `createProposal()` from `proposals.ts`
-4. Query Neo4j via `readQuery`/`writeQuery` from `neo4j/client`
-5. Use dedup utilities from `ingestion/dedup.ts` where applicable
-6. Follow the same `resolveLLMProvider` + `processToolCall` pattern from `iterate.ts`
-
-### Shared helper extraction (sub-task 2.0)
-
-Before implementing individual stages, extract shared helpers from `iterate.ts` into a reusable `stages/shared.ts`:
-- `resolveLLMProvider(modelConfigId)` — already in iterate.ts
-- `processToolCall(toolCall, pipelineStateId, stageId)` — already in iterate.ts
-- `toNumber(value)` — already in iterate.ts
-- `getGraphSummary(casoSlug)` — reusable by verify/analyze
-
-This avoids duplicating ~80 lines across 4 stage files.
+## Current Step: Step 1 — Fix blocking issues + backend completions
 
 ### Sub-tasks:
-- [x] 2.0 Extract shared helpers from `iterate.ts` into `stages/shared.ts` (file: `webapp/src/lib/engine/stages/shared.ts`)
-- [x] 2.1 Implement `stages/verify.ts` — query bronze-tier nodes, LLM cross-reference with web sources via tool calls, propose tier promotions (file: `webapp/src/lib/engine/stages/verify.ts`)
-- [x] 2.2 Implement `stages/enrich.ts` — fetch document URLs, LLM entity extraction via tool calls, propose new nodes/edges (file: `webapp/src/lib/engine/stages/enrich.ts`)
-- [ ] 2.3 Implement `stages/analyze.ts` — gap detection + LLM analysis via tool calls, propose hypotheses and missing edges (file: `webapp/src/lib/engine/stages/analyze.ts`)
-- [ ] 2.4 Implement `stages/report.ts` — LLM drafts report sections via `draft_section` tool, creates `report_section` proposals (file: `webapp/src/lib/engine/stages/report.ts`)
+- [x] 1.1 Fix TypeScript errors in EvidenceExplorer.tsx — `date` → `datePublished` prop (file: webapp/src/components/investigation/EvidenceExplorer.tsx)
+- [x] 1.2 Update caso-libra queries.ts to use generic labels + caso_slug filter (file: webapp/src/lib/caso-libra/queries.ts)
+- [x] 1.3 Create caso-finanzas-politicas backend module — types.ts, queries.ts, transform.ts (files: webapp/src/lib/caso-finanzas-politicas/{types,queries,transform}.ts)
+- [x] 1.4 Replace remaining caso-libra API routes with 301 redirects (files: webapp/src/app/api/caso-libra/*/route.ts — investigation, wallets, person/[actorSlug])
+- [x] 1.5 Update graph constants — add ShellCompany, Aircraft, Wallet, Token, Claim, MoneyFlow, GovernmentAction to LABEL_COLORS + LABEL_DISPLAY (file: webapp/src/lib/graph/constants.ts)
 
-### Step 2.0 Notes (for Builder)
-- Target file: `webapp/src/lib/engine/stages/shared.ts`
-- Extract from `iterate.ts` (lines 121-304) the following functions into `shared.ts`:
-  - `resolveLLMProvider(modelConfigId?: string): Promise<LLMProvider>` — resolves LLM from ModelConfig or falls back to llamacpp
-  - `processToolCall(toolCall: ToolCall, pipelineStateId: string, stageId: string): Promise<boolean>` — converts LLM tool calls into Proposals
-  - `toNumber(value: unknown): number` — converts Neo4j integers to JS numbers
-  - `getGraphSummary(casoSlug: string): Promise<GraphSummary>` — queries graph node/rel counts and confidence
-- Then update `iterate.ts` to import these from `./shared` instead of defining them locally
-- Ensure `iterate.ts` still compiles after the refactor
-- Import types needed: `LLMProvider`, `ToolCall` from `../llm/types`, `GraphSummary` from `../research-metrics`, etc.
-- tsc --noEmit must pass after this change
+### Notes:
+- caso-libra queries still use CasoLibraPerson/CasoLibraEvent etc. labels — need to switch to Person {caso_slug: 'caso-libra'}
+- EvidenceExplorer has 2 TS errors blocking typecheck
+- finanzas-politicas only has config.ts + investigation-data.ts, needs types/queries/transform
 
-### Step 2.0 Notes (Builder Result)
-- Created `webapp/src/lib/engine/stages/shared.ts` with 4 exported functions:
-  - `resolveLLMProvider(modelConfigId)` — LLM resolution with llamacpp fallback
-  - `processToolCall(toolCall, pipelineStateId, stageId)` — tool call → proposal processing
-  - `getGraphSummary(casoSlug)` — graph node/rel/confidence summary query
-  - `toNumber(value)` — Neo4j integer conversion helper
-- Updated `iterate.ts` to import from `./shared` — removed ~148 lines of local definitions, replaced with 1 import line
-- `buildMessages` kept local to iterate.ts (only used there)
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- Commit: 1bd3f89
+## Step 2 — Fix shared component imports
+- [ ] 2.1 Update EventCard.tsx imports from caso-libra/types → investigations/types
+- [ ] 2.2 Update Timeline.tsx imports from caso-libra/types → investigations/types
 
-### Step 2.0 Review (Critic)
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- Diff verified: pure mechanical extraction, no behavioral changes
-- All 4 functions exported from shared.ts, iterate.ts imports them correctly
-- Parameterized Cypher in getGraphSummary: PASS ($casoSlug)
-- No `any` types: PASS
-- YAGNI: PASS — no speculative additions
-- Code identical to original iterate.ts definitions
-- **VERDICT: PASS** — no blocking issues
+## Step 3 — Fix remaining TS errors in pages/OG (6 errors, 4 files)
+- [ ] 3.1 Fix [slug]/page.tsx — pass slug to getStats, getActors, getDocuments (3 errors)
+- [ ] 3.2 Fix [slug]/cronologia/page.tsx — accept params, pass slug to getTimeline (1 error)
+- [ ] 3.3 Fix [slug]/evidencia/page.tsx — pass slug to getDocuments (1 error)
+- [ ] 3.4 Fix api/og/caso/[slug]/actor/[actorSlug]/route.tsx — pass slug to getPersonBySlug (1 error)
 
-### Finalizer Decision (after 2.0 review.passed)
-- Step 2 has 4 unchecked sub-tasks remaining: 2.1 (verify), 2.2 (enrich), 2.3 (analyze), 2.4 (report)
-- Decision: queue.advance → Builder picks up sub-task 2.1 next
-
-### Step 2.1 Notes (for Builder)
-- Target file: `webapp/src/lib/engine/stages/verify.ts`
-- Currently a stub returning `{ proposals_created: 0, records_processed: 0, errors: [] }`
-- **Purpose**: Query bronze-tier nodes, use LLM with tool calls to cross-reference and verify, propose tier promotions
-- **Implementation pattern** (follow `ingest.ts` structure + shared helpers from `shared.ts`):
-  1. Import `resolveLLMProvider`, `processToolCall`, `getGraphSummary`, `toNumber` from `./shared`
-  2. Import `getToolsForStage` from `../llm/tools` — `getToolsForStage('verify')` returns: `[readGraph, fetchUrl, proposeNode, proposeEdge]`
-  3. Import `readQuery` from `../../neo4j/client`, `createProposal` from `../proposals`
-  4. Import types: `StageRunner, StageContext, StageResult` from `./types`, `StageKind` from `../types`
-  5. Import LLM types: `Message` from `../llm/types`
-- **Algorithm**:
-  1. Query bronze-tier nodes for this caso: `MATCH (n {caso_slug: $casoSlug, tier: 'bronze'}) RETURN n LIMIT $limit` (use `neo4j.int(50)` for limit)
-  2. For each batch of bronze nodes, build an LLM prompt asking it to verify them:
-     - System prompt: "You are a verification agent for an investigation graph. Your task is to cross-reference bronze-tier data against available sources and propose tier promotions to silver when data is corroborated. Use read_graph to check existing nodes, fetch_url to verify against web sources, and propose_node/propose_edge to update verified data."
-     - User message: include the batch of node properties as JSON
-  3. Call `resolveLLMProvider(context.stage.model_config_id)` to get provider
-  4. Call `provider.complete({ messages, tools: getToolsForStage('verify'), temperature: 0.2 })`
-  5. Process each `tool_call` in response via `processToolCall(tc, context.pipelineState.id, context.stage.id)`
-  6. Also handle `propose_node` calls that set `tier: 'silver'` as tier promotion proposals — these go through the normal proposal flow
-  7. Track `proposals_created` count from processToolCall (returns true when a proposal was created)
-  8. Catch errors per-node-batch, push to errors array, continue
-- **Key constraints**:
-  - All Cypher must be parameterized
-  - Use `neo4j.int()` for LIMIT values
-  - No `any` types
-  - `context.stage` has optional `model_config_id` field — pass to `resolveLLMProvider`
-  - Keep batch size reasonable (10–20 nodes per LLM call to stay within context)
-  - tsc --noEmit must pass after implementation
-
-### Step 2.1 Notes (Builder Result)
-- Implemented `webapp/src/lib/engine/stages/verify.ts` with full LLM-driven verification
-- Queries bronze-tier nodes (LIMIT 50) for the caso, batches by 10
-- System prompt instructs LLM to cross-reference and propose tier promotions to silver
-- Uses `resolveLLMProvider` + `processToolCall` from shared.ts
-- Uses `getToolsForStage('verify')` → [readGraph, fetchUrl, proposeNode, proposeEdge]
-- Per-batch error handling: catches LLM errors and tool call errors separately
-- Parameterized Cypher: PASS ($casoSlug, $limit with neo4j.int())
-- No `any` types: PASS
-- No unused imports (getGraphSummary, toNumber, createProposal not needed here — processToolCall handles proposals)
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-
-### Step 2.1 Review (Critic)
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- Parameterized Cypher: PASS — uses $casoSlug, $limit, no template literals in Cypher
-- neo4j.int() on LIMIT: PASS — line 43
-- No `any` types: PASS
-- caso_slug filter in query: PASS — `n.caso_slug = $casoSlug`
-- LLM through abstraction layer: PASS — resolveLLMProvider + processToolCall from shared.ts
-- Idempotent: PASS — creates proposals only, no direct mutations
-- Per-batch + per-tool-call error handling: PASS
-- YAGNI: PASS — no speculative code
-- Matches sub-task spec: PASS — bronze nodes → LLM cross-reference → tier promotions
-- **VERDICT: PASS** — no blocking issues
-
-### Finalizer Decision (after 2.1 review.passed)
-- Step 2 has 3 unchecked sub-tasks remaining: 2.2 (enrich), 2.3 (analyze), 2.4 (report)
-- Task task-1774089707-e4d5 (stage-verify) already closed
-- Decision: queue.advance → Builder picks up sub-task 2.2 next
-
-### Step 2.2 Notes (for Builder)
-- Target file: `webapp/src/lib/engine/stages/enrich.ts`
-- Currently a stub returning `{ proposals_created: 0, records_processed: 0, errors: [] }`
-- **Purpose**: Fetch document URLs associated with nodes, use LLM with tool calls for entity extraction, propose new nodes/edges
-- **Implementation pattern** (follow `verify.ts` structure exactly):
-  1. Import `resolveLLMProvider`, `processToolCall` from `./shared`
-  2. Import `getToolsForStage` from `../llm/tools` — `getToolsForStage('enrich')` returns: `[readGraph, proposeNode, proposeEdge, fetchUrl, extractEntities]`
-  3. Import `readQuery` from `../../neo4j/client`
-  4. Import types: `StageRunner, StageContext, StageResult` from `./types`, `StageKind` from `../types`, `Message` from `../llm/types`
-  5. Import `neo4j` from `neo4j-driver-lite`
-- **Algorithm**:
-  1. Query nodes that have a `source_url` property but haven't been enriched yet: `MATCH (n) WHERE n.caso_slug = $casoSlug AND n.source_url IS NOT NULL AND n.enriched IS NULL RETURN n LIMIT $limit` (use `neo4j.int(30)` for limit)
-  2. Batch by 5 (enrichment is heavier than verification — fetching + extraction)
-  3. System prompt: "You are an enrichment agent for an investigation graph. Your task is to fetch source documents, extract entities (persons, organizations, locations, dates, events), and propose new nodes and relationships. Use fetch_url to retrieve source content, extract_entities to identify entities, read_graph to check for existing nodes, and propose_node/propose_edge to add extracted data to the graph."
-  4. User message: include the batch of node properties with their source_urls as JSON
-  5. Call `resolveLLMProvider(context.stage.model_config_id)` to get provider
-  6. Call `provider.complete({ messages, tools: getToolsForStage('enrich'), temperature: 0.3 })`
-  7. Process each `tool_call` via `processToolCall(tc, context.pipelineState.id, context.stage.id)`
-  8. Track proposals_created, catch errors per-batch
-- **Key constraints**:
-  - All Cypher must be parameterized
-  - Use `neo4j.int()` for LIMIT values
-  - No `any` types
-  - Keep batch size small (5) since enrichment involves URL fetching
-  - tsc --noEmit must pass after implementation
-
-### Step 2.2 Notes (Builder Result)
-- Implemented `webapp/src/lib/engine/stages/enrich.ts` with full LLM-driven entity extraction
-- Queries unenriched nodes (source_url IS NOT NULL AND enriched IS NULL, LIMIT 30) for the caso, batches by 5
-- System prompt instructs LLM to fetch source docs, extract entities, check for duplicates, propose nodes/edges
-- Uses `resolveLLMProvider` + `processToolCall` from shared.ts
-- Uses `getToolsForStage('enrich')` → [readGraph, proposeNode, proposeEdge, fetchUrl, extractEntities]
-- Per-batch error handling: catches LLM errors and tool call errors separately
-- Parameterized Cypher: PASS ($casoSlug, $limit with neo4j.int())
-- No `any` types: PASS
-- No unused imports: only imports what's needed
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-
-### Step 2.2 Review (Critic)
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- Parameterized Cypher: PASS — uses $casoSlug, $limit, no template literals in Cypher
-- neo4j.int() on LIMIT: PASS — `neo4j.int(MAX_UNENRICHED_NODES)`
-- No `any` types: PASS — uses `Record<string, unknown>`
-- caso_slug filter in query: PASS — `n.caso_slug = $casoSlug`
-- LLM through abstraction layer: PASS — resolveLLMProvider + processToolCall from shared.ts
-- Idempotent: PASS — creates proposals only, no direct mutations
-- Per-batch + per-tool-call error handling: PASS
-- YAGNI: PASS — no speculative code
-- Matches sub-task spec: PASS — unenriched nodes → LLM entity extraction → propose nodes/edges
-- **VERDICT: PASS** — no blocking issues
-
-### Finalizer Decision (after 2.2 review.passed)
-- Step 2 has 2 unchecked sub-tasks remaining: 2.3 (analyze), 2.4 (report)
-- Closed runtime task task-1774090031-9244 (stage-enrich)
-- Decision: queue.advance → Builder picks up sub-task 2.3 next
-
-### Step 2.3 Notes (for Builder)
-- Target file: `webapp/src/lib/engine/stages/analyze.ts`
-- Currently a stub returning `{ proposals_created: 0, records_processed: 0, errors: [] }`
-- **Purpose**: Gap detection + LLM analysis via tool calls, propose hypotheses and missing edges
-- **Implementation pattern** (follow `verify.ts` / `enrich.ts` structure exactly):
-  1. Import `resolveLLMProvider`, `processToolCall`, `getGraphSummary` from `./shared`
-  2. Import `getToolsForStage` from `../llm/tools` — `getToolsForStage('analyze')` returns: `[readGraph, runAlgorithm, proposeHypothesis, compareTimelines, proposeNode, proposeEdge]`
-  3. Import `readQuery` from `../../neo4j/client`
-  4. Import types: `StageRunner, StageContext, StageResult` from `./types`, `StageKind` from `../types`, `Message` from `../llm/types`
-  5. Import `neo4j` from `neo4j-driver-lite`
-- **Algorithm**:
-  1. Call `getGraphSummary(context.casoSlug)` to get current graph stats (node_count, relationship_count, avg_confidence, corroborated_count)
-  2. Query silver/gold nodes that haven't been analyzed yet: `MATCH (n) WHERE n.caso_slug = $casoSlug AND n.tier IN ['silver', 'gold'] AND n.analyzed IS NULL RETURN n LIMIT $limit` (use `neo4j.int(40)` for limit)
-  3. Batch by 10
-  4. System prompt: "You are an analysis agent for an investigation graph. Your task is to identify gaps, patterns, and anomalies in the verified data. Use read_graph to query the graph structure, run_algorithm to detect centrality and community patterns, compare_timelines to find temporal correlations, and propose_hypothesis for investigative leads. Use propose_node/propose_edge for any missing connections you identify."
-  5. User message: include the graph summary stats AND the batch of node properties as JSON
-  6. Call `resolveLLMProvider(context.stage.model_config_id)` to get provider
-  7. Call `provider.complete({ messages, tools: getToolsForStage('analyze'), temperature: 0.4 })` — slightly higher temp for creative analysis
-  8. Process each `tool_call` via `processToolCall(tc, context.pipelineState.id, context.stage.id)`
-  9. Track proposals_created (processToolCall already handles `propose_hypothesis` — see shared.ts L122-137)
-  10. Catch errors per-batch, push to errors array, continue
-- **Key constraints**:
-  - All Cypher must be parameterized
-  - Use `neo4j.int()` for LIMIT values
-  - No `any` types
-  - `processToolCall` already handles `propose_node`, `propose_edge`, and `propose_hypothesis` — no new proposal logic needed
-  - tsc --noEmit must pass after implementation
-
-### Step 2.3 Notes (Builder Result)
-- Implemented `webapp/src/lib/engine/stages/analyze.ts` with full LLM-driven gap detection and hypothesis generation
-- Calls `getGraphSummary(context.casoSlug)` first to get graph stats for LLM context
-- Queries silver/gold unanalyzed nodes (LIMIT 40) for the caso, batches by 10
-- System prompt instructs LLM to identify gaps, patterns, anomalies, propose hypotheses and missing edges
-- Uses `resolveLLMProvider` + `processToolCall` from shared.ts
-- Uses `getToolsForStage('analyze')` → [readGraph, runAlgorithm, proposeHypothesis, compareTimelines, proposeNode, proposeEdge]
-- Temperature 0.4 (slightly higher for creative analysis)
-- Per-batch error handling: catches LLM errors and tool call errors separately
-- Parameterized Cypher: PASS ($casoSlug, $limit with neo4j.int())
-- No `any` types: PASS
-- No unused imports: only imports what's needed
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- Commit: 03e7f9f
-
-### Step 2.3 Review (Critic)
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- Parameterized Cypher: PASS — uses $casoSlug, $limit, no template literals in Cypher
-- neo4j.int() on LIMIT: PASS — `neo4j.int(MAX_UNANALYZED_NODES)`
-- No `any` types: PASS — uses `Record<string, unknown>`
-- caso_slug filter in query: PASS — `n.caso_slug = $casoSlug`
-- LLM through abstraction layer: PASS — resolveLLMProvider + processToolCall + getGraphSummary from shared.ts
-- Idempotent: PASS — creates proposals only, no direct mutations
-- Per-batch + per-tool-call error handling: PASS
-- Temperature 0.4 per spec: PASS
-- Graph summary included in LLM context: PASS
-- YAGNI: PASS — no speculative code
-- Matches sub-task spec: PASS — silver/gold unanalyzed nodes → LLM gap detection → hypotheses + missing edges
-- **VERDICT: PASS** — no blocking issues
-
-### Finalizer Decision (after 2.3 review.passed)
-- Step 2 has 1 unchecked sub-task remaining: 2.4 (report)
-- Decision: queue.advance → Builder picks up sub-task 2.4 next
-
-### Step 2.4 Notes (for Builder)
-- Target file: `webapp/src/lib/engine/stages/report.ts`
-- Currently a stub returning `{ proposals_created: 0, records_processed: 0, errors: [] }`
-- **Purpose**: LLM drafts investigation report sections via `draft_section` tool, creates `report_section` proposals
-- **Implementation pattern** (follow `analyze.ts` structure exactly):
-  1. Import `resolveLLMProvider`, `processToolCall`, `getGraphSummary` from `./shared`
-  2. Import `getToolsForStage` from `../llm/tools` — `getToolsForStage('report')` returns: `[readGraph, draftSection, compareTimelines]`
-  3. Import `readQuery` from `../../neo4j/client`
-  4. Import types: `StageRunner, StageContext, StageResult` from `./types`, `StageKind` from `../types`, `Message` from `../llm/types`
-  5. Import `neo4j` from `neo4j-driver-lite`
-  6. Import `createProposal` from `../proposals`
-- **IMPORTANT**: `processToolCall` in shared.ts does NOT handle `draft_section` — it falls through to `default: return false`. You MUST add a `draft_section` case to `processToolCall` in `shared.ts` before implementing report.ts:
-  ```typescript
-  case 'draft_section':
-    await createProposal({
-      pipeline_state_id: pipelineStateId,
-      stage_id: stageId,
-      type: 'report_section',
-      payload: {
-        title: args.title as string,
-        content: args.content as string,
-        evidence_refs: (args.evidence_refs as string[]) ?? [],
-      },
-      confidence: 0.7,
-      reasoning: `Report section: ${args.title as string}`,
-    })
-    return true
-  ```
-  Add this case between `propose_hypothesis` and `default` in the switch statement (shared.ts ~L137).
-- **Algorithm**:
-  1. Call `getGraphSummary(context.casoSlug)` to get current graph stats
-  2. Query gold/silver nodes + hypotheses for this caso: `MATCH (n) WHERE n.caso_slug = $casoSlug AND (n.tier IN ['silver', 'gold'] OR n:Hypothesis) RETURN n LIMIT $limit` (use `neo4j.int(100)` for limit — report needs broad context)
-  3. No batching needed — send all nodes to LLM in one call for coherent report drafting
-  4. System prompt: "You are a report drafting agent for an investigation graph. Your task is to synthesize verified data and hypotheses into structured report sections. Use read_graph to query for additional connections, compare_timelines for temporal analysis, and draft_section to create report sections. Create sections covering: key findings, timeline of events, network analysis, unresolved questions, and recommended next steps. Each section should reference specific evidence by node ID."
-  5. User message: include the graph summary stats AND all node properties as JSON
-  6. Call `resolveLLMProvider(context.stage.model_config_id)` to get provider
-  7. Call `provider.complete({ messages, tools: getToolsForStage('report'), temperature: 0.5 })` — moderate temp for readable prose
-  8. Process each `tool_call` via `processToolCall(tc, context.pipelineState.id, context.stage.id)` — now handles `draft_section`
-  9. Track proposals_created, catch errors
-- **Key constraints**:
-  - All Cypher must be parameterized
-  - Use `neo4j.int()` for LIMIT values
-  - No `any` types
-  - `report_section` is a valid ProposalType (see types.ts L38) — proposals.ts already handles it (L275: informational only, no graph mutation)
-  - Two files modified: shared.ts (add draft_section case) + report.ts (full implementation)
-  - tsc --noEmit must pass after implementation
-
-### Step 2.4 Notes (Builder Result)
-- Implemented `webapp/src/lib/engine/stages/report.ts` with full LLM-driven report section drafting
-- Added `draft_section` case to `processToolCall` in shared.ts (between propose_hypothesis and default)
-  - Creates `report_section` proposals with title, content, evidence_refs, confidence 0.7
-- Queries gold/silver nodes + Hypothesis nodes (LIMIT 100) for the caso — no batching (single coherent LLM call)
-- System prompt instructs LLM to create sections: key findings, timeline, network analysis, unresolved questions, next steps
-- Uses `resolveLLMProvider` + `processToolCall` from shared.ts
-- Uses `getToolsForStage('report')` → [readGraph, draftSection, compareTimelines]
-- Temperature 0.5 (moderate for readable prose)
-- Error handling: wraps entire LLM call + per-tool-call errors
-- Parameterized Cypher: PASS ($casoSlug, $limit with neo4j.int())
-- No `any` types: PASS
-- No unused imports: only imports what's needed
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- Commit: 72c70b8
-
-### Finalizer Decision (after 2.4 review.passed)
-- All Step 2 sub-tasks complete and reviewed: 2.0 (shared), 2.1 (verify), 2.2 (enrich), 2.3 (analyze), 2.4 (report)
-- Step 2 is DONE — all 4 stage runners implemented with LLM-driven logic
-- Step 3 (Observability & Rate Limiting) remains in the plan
-- Decision: queue.advance → Planner will scope Step 3
-
-## Current Step: Step 3 — Observability & Rate Limiting
-
-### Sub-tasks:
-- [ ] 3.1 Create `src/lib/engine/logger.ts` — structured engine logger
-- [ ] 3.2 Create `src/lib/engine/health.ts` — pipeline health checks
-- [ ] 3.3 Create `src/lib/engine/rate-limit.ts` — in-memory rate limiter for engine API routes
-- [ ] 3.4 Wire rate limiting into engine API routes (run, proposals, state, orchestrator/focus)
-
-### Step 3.1 Notes (for Builder)
-- Target file: `webapp/src/lib/engine/logger.ts`
-- **Purpose**: Structured logging for engine operations — pipeline runs, stage executions, LLM calls, proposals, errors
-- **Implementation**:
-  1. Define a `LogEntry` interface: `{ timestamp: string, level: 'debug' | 'info' | 'warn' | 'error', investigation_id: string, stage?: StageKind, action: string, duration_ms?: number, metadata?: Record<string, unknown> }`
-  2. Export a `createEngineLogger(investigation_id: string)` factory that returns an object with `debug`, `info`, `warn`, `error` methods
-  3. Each method creates a `LogEntry` and writes to `console.log`/`console.warn`/`console.error` as structured JSON
-  4. Export a `withTiming` helper: `async function withTiming<T>(logger: EngineLogger, action: string, fn: () => Promise<T>): Promise<T>` that logs start and completion with duration_ms
-  5. No file I/O, no database writes — just structured console output for now (can be piped to a log aggregator later)
-- **Key constraints**:
-  - No `any` types
-  - Keep it minimal — YAGNI (no log levels filtering, no transports, no rotation)
-  - tsc --noEmit must pass after implementation
-
-### Step 3.2 Notes (for Builder)
-- Target file: `webapp/src/lib/engine/health.ts`
-- **Purpose**: Health check functions for engine subsystems
-- **Implementation**:
-  1. Import `readQuery` from `../../neo4j/client`
-  2. Import `neo4j` from `neo4j-driver-lite`
-  3. Import `validateChain` from `./audit`
-  4. Define `HealthStatus` type: `{ status: 'healthy' | 'degraded' | 'unhealthy', checks: HealthCheck[] }`
-  5. Define `HealthCheck` type: `{ name: string, status: 'pass' | 'fail', message?: string, duration_ms: number }`
-  6. Export `async function checkEngineHealth(casoSlug: string): Promise<HealthStatus>`
-  7. Checks to run:
-     a. **neo4j_connectivity**: `readQuery('RETURN 1 AS ok')` — verify DB is reachable
-     b. **stuck_pipelines**: query for PipelineState nodes with `status = 'running'` and `updated_at` older than 1 hour: `MATCH (n:PipelineState) WHERE n.caso_slug = $casoSlug AND n.status = 'running' AND n.updated_at < $cutoff RETURN count(n) AS stuck` (parameterized, use `neo4j.int()` if needed)
-     c. **audit_chain**: call `validateChain(casoSlug)` — returns `{ valid, length, errors }`
-  8. Aggregate: if any check fails → `unhealthy`; if all pass → `healthy`
-  9. Each check is wrapped in try/catch — a failed check returns `{ status: 'fail', message: error.message }`
-- **Key constraints**:
-  - All Cypher must be parameterized
-  - No `any` types
-  - tsc --noEmit must pass after implementation
-
-### Step 3.3 Notes (for Builder)
-- Target file: `webapp/src/lib/engine/rate-limit.ts`
-- **Purpose**: Simple in-memory sliding-window rate limiter for engine API routes
-- **Implementation**:
-  1. Define `RateLimitConfig`: `{ max_requests: number, window_ms: number }`
-  2. Define `RateLimitResult`: `{ allowed: boolean, remaining: number, reset_at: number }`
-  3. Use a `Map<string, number[]>` to store timestamps per key
-  4. Export `function checkRateLimit(key: string, config: RateLimitConfig): RateLimitResult`
-     - Get timestamps array for key, filter to current window, check count vs max
-     - If allowed, push current timestamp, prune expired entries
-     - Return remaining count and reset timestamp
-  5. Export preset configs:
-     ```typescript
-     export const ENGINE_RATE_LIMITS = {
-       run: { max_requests: 5, window_ms: 3600_000 },        // 5/hr
-       proposals: { max_requests: 60, window_ms: 3600_000 },  // 60/hr
-       state: { max_requests: 120, window_ms: 60_000 },       // 120/min
-       focus: { max_requests: 10, window_ms: 3600_000 },      // 10/hr
-     } as const satisfies Record<string, RateLimitConfig>
-     ```
-- **Key constraints**:
-  - No `any` types
-  - No external dependencies — pure in-memory (acceptable for single-instance dev server)
-  - tsc --noEmit must pass after implementation
-
-### Step 3.4 Notes (for Builder)
-- Target files: 4 route files under `webapp/src/app/api/casos/[casoSlug]/engine/`
-- **Purpose**: Wire rate limiting into existing engine API routes
-- **Implementation**:
-  1. Import `checkRateLimit`, `ENGINE_RATE_LIMITS` from `@/lib/engine/rate-limit`
-  2. Add rate limit check at the top of each handler (before business logic):
-     - `run/route.ts` POST → key: `engine:run:${casoSlug}`, config: `ENGINE_RATE_LIMITS.run`
-     - `proposals/route.ts` GET → key: `engine:proposals:${casoSlug}`, config: `ENGINE_RATE_LIMITS.proposals`
-     - `state/route.ts` GET → key: `engine:state:${casoSlug}`, config: `ENGINE_RATE_LIMITS.state`
-     - `orchestrator/focus/route.ts` PUT → key: `engine:focus:${casoSlug}`, config: `ENGINE_RATE_LIMITS.focus`
-  3. If `!result.allowed`, return 429 with `{ error: 'Rate limit exceeded', retry_after_ms: result.reset_at - Date.now() }`
-  4. Add `X-RateLimit-Remaining` and `X-RateLimit-Reset` headers on success responses
-- **Key constraints**:
-  - Minimal changes to existing routes — add rate limit guard at top, headers on response
-  - No `any` types
-  - tsc --noEmit must pass after implementation
-
-### Step 3.1 Notes (Builder Result)
-- Implemented `webapp/src/lib/engine/logger.ts` — structured engine logger
-- Exports: `LogEntry` interface, `EngineLogger` interface, `createEngineLogger` factory, `withTiming` helper
-- `createEngineLogger(investigation_id, stage?)` returns logger with debug/info/warn/error methods
-- Each method creates a LogEntry with timestamp, level, investigation_id, stage, action, metadata
-- Outputs structured JSON to console.log/console.warn/console.error
-- `withTiming<T>(logger, action, fn)` logs start + done/failed with duration_ms
-- No `any` types: PASS
-- YAGNI: PASS — no filtering, transports, rotation
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- Commit: ba92a84
-
-### Step 3.1 Review (Critic)
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- LogEntry interface: PASS — all required fields present (timestamp, level, investigation_id, stage?, action, duration_ms?, metadata?)
-- createEngineLogger factory: PASS — returns EngineLogger with debug/info/warn/error
-- withTiming helper: PASS — logs start/done/failed with duration_ms, re-throws errors
-- No `any` types: PASS — uses Record<string, unknown>
-- Structured JSON output: PASS — console.log/warn/error with JSON.stringify
-- YAGNI: PASS — no filtering, transports, rotation, log levels config
-- No file I/O or DB writes: PASS
-- **VERDICT: PASS** — clean minimal implementation matching spec
-
-### Finalizer Decision (after 3.1 review.passed)
-- Step 3 has 3 unchecked sub-tasks remaining: 3.2 (health), 3.3 (rate-limit), 3.4 (wire rate limiting)
-- Decision: queue.advance → Builder picks up sub-task 3.2 next
-
-### Step 3.2 Notes (Builder Result)
-- Implemented `webapp/src/lib/engine/health.ts` — pipeline health checks
-- Exports: `HealthCheck` and `HealthStatus` interfaces, `checkEngineHealth` function
-- Three checks run in parallel via `Promise.all`:
-  1. **neo4j_connectivity**: `readQuery('RETURN 1 AS ok')` — verifies DB reachable
-  2. **stuck_pipelines**: queries PipelineState nodes with status='running' and updated_at > 1hr ago (parameterized, neo4j.int for LIMIT)
-  3. **audit_chain**: finds most recent PipelineState for caso, calls `validateChain(pipelineStateId)` — adapted from spec since validateChain takes pipelineStateId not casoSlug
-- Aggregation: any fail → unhealthy, all pass → healthy
-- Each check wrapped in try/catch — failures return `{ status: 'fail', message }`
-- Parameterized Cypher: PASS ($casoSlug, $cutoff, $limit with neo4j.int())
-- No `any` types: PASS
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-
-### Step 3.2 Review (Critic)
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- Parameterized Cypher: PASS — uses $casoSlug, $cutoff, $limit, no template literals in Cypher
-- neo4j.int() on LIMIT: PASS — `neo4j.int(1)`
-- No `any` types: PASS — uses typed generics, instanceof checks
-- caso_slug filter in queries: PASS — both stuck_pipelines and audit_chain filter by casoSlug
-- validateChain adaptation: PASS — spec said `validateChain(casoSlug)` but actual signature takes pipelineStateId; builder correctly queries PipelineState first then passes id
-- Three checks in parallel via Promise.all: PASS
-- Each check try/catch wrapped: PASS
-- Aggregation logic: PASS — any fail → unhealthy, all pass → healthy
-- YAGNI: PASS — no speculative code
-- Matches sub-task spec: PASS
-- **VERDICT: PASS** — no blocking issues
-
-### Finalizer Decision (after 3.2 review.passed)
-- Step 3 has 2 unchecked sub-tasks remaining: 3.3 (rate-limit), 3.4 (wire rate limiting)
-- Decision: queue.advance → Builder picks up sub-task 3.3 next
-
-### Step 3.3 Notes (Builder Result)
-- Implemented `webapp/src/lib/engine/rate-limit.ts` — in-memory sliding-window rate limiter
-- Exports: `RateLimitConfig` interface, `RateLimitResult` interface, `checkRateLimit` function, `ENGINE_RATE_LIMITS` presets
-- `checkRateLimit(key, config)` — filters expired timestamps, checks count vs max, pushes new timestamp if allowed
-- Uses `Map<string, number[]>` for per-key timestamp storage
-- Presets: run (5/hr), proposals (60/hr), state (120/min), focus (10/hr)
-- No `any` types: PASS
-- No external dependencies: PASS — pure in-memory
-- YAGNI: PASS — no cleanup intervals, no persistence, no middleware abstractions
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- Commit: a0602f9
+## Step 4 — Cleanup
+- [ ] 4.1 Delete static case route folders (caso/caso-epstein/, caso/finanzas-politicas/)
+- [ ] 4.2 Verify typecheck passes
 
 ## Completed Steps:
-- Step 1: Move API routes to correct path + add orchestrator routes — done
-- Step 2: Implement stage runners (verify, enrich, analyze, report) — done
+- 1.1: Aligned EvidenceExplorer props with DocumentCard interface: date→datePublished, casoSlug→investigationSlug, removed mentionedPersonCount/confidence_tier/source. tsc --noEmit passes clean. Commit c160ba9.
 
-### Step 3.3 Review (Critic)
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- RateLimitConfig interface: PASS — max_requests, window_ms
-- RateLimitResult interface: PASS — allowed, remaining, reset_at
-- Map<string, number[]> storage: PASS
-- checkRateLimit logic: PASS — filters expired, checks count vs max, pushes timestamp if allowed
-- Presets match spec: PASS — run 5/hr, proposals 60/hr, state 120/min, focus 10/hr
-- `as const satisfies Record<string, RateLimitConfig>`: PASS — correct TS pattern
-- No `any` types: PASS
-- No external dependencies: PASS — pure in-memory
-- YAGNI: PASS — no cleanup intervals, no persistence, no middleware
-- reset_at calculation: PASS — earliest entry + window_ms
-- **VERDICT: PASS** — no blocking issues
+### Finalizer note (iteration after 1.1 review):
+- review.passed for 1.1 confirmed. Task m9:fix-ts-errors already closed.
+- Step 1 has 4 remaining sub-tasks (1.2–1.5). Advancing queue for Builder to pick up 1.2 next.
 
-### Finalizer Decision (after 3.3 review.passed)
-- Step 3 has 1 unchecked sub-task remaining: 3.4 (wire rate limiting into engine API routes)
-- Decision: queue.advance → Builder picks up sub-task 3.4 next
+### Planner note (queue.advance → 1.2):
+- Task m9:libra-queries (task-1774113360-c2ad) started.
+- Builder guidance for 1.2: Update `webapp/src/lib/caso-libra/queries.ts` — replace all prefixed labels (CasoLibraPerson→Person, CasoLibraEvent→Event, CasoLibraDocument→Document, CasoLibraWallet→Wallet, CasoLibraOrganization→Organization, CasoLibraToken→Token) with generic labels + `caso_slug = $casoSlug` filter on every MATCH clause. Every exported function must accept a `casoSlug: string` parameter. Follow the pattern from `lib/investigations/query-builder.ts` (parameterized caso_slug, two-pass graph query, buildGraphData helper). The getStats hardcoded display strings (totalLossUsd etc.) should remain since they are caso-libra-specific — move them to a per-investigation config or keep inline. Keep CasoLibraStats type name in types.ts for now (rename is a separate task).
 
-### Step 3.4 Notes (for Builder)
-- Target files: 4 route files under `webapp/src/app/api/casos/[casoSlug]/engine/`
-- **Purpose**: Wire rate limiting into existing engine API routes
-- **Implementation**:
-  1. Import `checkRateLimit`, `ENGINE_RATE_LIMITS` from `@/lib/engine/rate-limit`
-  2. Add rate limit check at the top of each handler (after param extraction, before business logic):
-     - `run/route.ts` POST → key: `engine:run:${casoSlug}`, config: `ENGINE_RATE_LIMITS.run`
-       - casoSlug already destructured on L9: `const { casoSlug } = await params`
-     - `proposals/route.ts` GET → key: `engine:proposals:${casoSlug}`, config: `ENGINE_RATE_LIMITS.proposals`
-       - ⚠️ casoSlug NOT currently extracted — change L10 `await params` to `const { casoSlug } = await params`
-       - POST handler does NOT get rate-limited (it's a review action, not a read)
-     - `state/route.ts` GET → key: `engine:state:${casoSlug}`, config: `ENGINE_RATE_LIMITS.state`
-       - ⚠️ casoSlug NOT currently extracted — change L9 `await params` to `const { casoSlug } = await params`
-     - `orchestrator/focus/route.ts` PUT → key: `engine:focus:${casoSlug}`, config: `ENGINE_RATE_LIMITS.focus`
-       - ⚠️ casoSlug NOT currently extracted in PUT (L93) — change `await params` to `const { casoSlug } = await params`
-       - GET handler does NOT get rate-limited (it's a read, focus rate limit is for mutations)
-  3. If `!result.allowed`, return 429 with `{ error: 'Rate limit exceeded', retry_after_ms: result.reset_at - Date.now() }` — return BEFORE any business logic
-  4. Add `X-RateLimit-Remaining` and `X-RateLimit-Reset` headers on success responses:
-     - Wrap existing `Response.json(...)` success returns with `new Response(JSON.stringify(...), { headers: { 'Content-Type': 'application/json', 'X-RateLimit-Remaining': String(rl.remaining), 'X-RateLimit-Reset': String(rl.reset_at) } })`
-     - Or simpler: construct the Response.json() normally then can't add headers — instead use: `const resp = Response.json({...}); resp.headers.set(...)` — but Response.json returns immutable headers. Correct approach: `return new Response(JSON.stringify({ success: true, data }), { status: 200, headers: { 'Content-Type': 'application/json', 'X-RateLimit-Remaining': String(rl.remaining), 'X-RateLimit-Reset': String(rl.reset_at) } })`
-- **Key constraints**:
-  - Minimal changes to existing routes — add rate limit guard at top, headers on success response
-  - No `any` types
-  - tsc --noEmit must pass after implementation
-  - Only rate-limit the specific HTTP methods listed above (not all handlers in each file)
+### Builder note (1.2 complete):
+- Replaced all 6 CasoLibra* prefixed labels → generic labels (Person, Event, Document, Wallet, Organization, Token)
+- Added `casoSlug: string` as first param to all 8 exported functions
+- getInvestigationGraph now uses two-pass pattern (nodes first, rels second) matching query-builder.ts
+- All MATCH clauses filter by `caso_slug = $casoSlug` (parameterized, no interpolation)
+- getStats keeps hardcoded display strings (totalLossUsd etc.) inline — caso-libra-specific
+- queries.ts itself has 0 TS errors; 9 caller errors in API routes + pages expected (tasks 1.4, 3.x)
+- Commit 746189a
 
-### Step 3.4 Notes (Builder Result)
-- Wired rate limiting into 4 engine API routes:
-  1. `run/route.ts` POST → key: `engine:run:${casoSlug}`, config: `ENGINE_RATE_LIMITS.run`
-  2. `proposals/route.ts` GET → key: `engine:proposals:${casoSlug}`, config: `ENGINE_RATE_LIMITS.proposals`
-     - Extracted casoSlug from params (was previously discarded with `await params`)
-     - POST handler NOT rate-limited (review action, not read)
-  3. `state/route.ts` GET → key: `engine:state:${casoSlug}`, config: `ENGINE_RATE_LIMITS.state`
-     - Extracted casoSlug from params (was previously discarded)
-  4. `orchestrator/focus/route.ts` PUT → key: `engine:focus:${casoSlug}`, config: `ENGINE_RATE_LIMITS.focus`
-     - Extracted casoSlug from params (was previously discarded in PUT)
-     - GET handler NOT rate-limited (read-only)
-- Each rate-limited handler: 429 response with `{ error, retry_after_ms }` if not allowed
-- Success responses: `new Response(JSON.stringify(...), { headers: { Content-Type, X-RateLimit-Remaining, X-RateLimit-Reset } })`
-- No `any` types: PASS
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- Commit: b73131c
+### Critic review (1.2):
+- All 8 functions accept casoSlug, all Cypher parameterized, two-pass graph, caso_slug filter on every MATCH.
+- tsc confirms 9 caller errors (all in API routes + pages, scoped to tasks 1.4/3.x). queries.ts clean.
+- No blocking issues. review.passed.
 
-### Step 3.4 Review (Critic)
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- 4 routes modified: run POST, proposals GET, state GET, focus PUT — PASS
-- Rate limit keys: correct format `engine:{type}:${casoSlug}` — PASS
-- 429 response: `{ error, retry_after_ms }` — PASS
-- X-RateLimit headers on success (Remaining, Reset): PASS
-- Only specified HTTP methods rate-limited (proposals POST and focus GET excluded): PASS
-- casoSlug extraction fixed in proposals, state, focus PUT: PASS
-- No `any` types: PASS
-- `new Response(JSON.stringify(...))` pattern correct for custom headers: PASS
-- No Cypher queries added, no injection risk: PASS
-- YAGNI: PASS — minimal changes
-- **VERDICT: PASS** — no blocking issues
+### Finalizer note (iteration after 1.2 review):
+- review.passed for 1.2 confirmed. Task m9:libra-queries closed.
+- Step 1 has 3 remaining sub-tasks (1.3–1.5). Advancing queue for Builder to pick up 1.3 next.
 
-### Finalizer Decision (after 3.4 review.passed)
-- Step 3 complete — all 4 sub-tasks (3.1, 3.2, 3.3, 3.4) implemented and reviewed
-- ALL 3 steps in the plan are complete:
-  - Step 1: API routes + orchestrator routes ✓
-  - Step 2: Stage runners (verify, enrich, analyze, report) ✓
-  - Step 3: Observability & rate limiting (logger, health, rate-limit, wiring) ✓
+### Planner note (queue.advance → 1.3):
+- Task m9:finpol-backend (task-1774113360-ce0f) started.
+- Builder guidance for 1.3: Create 4 files in `webapp/src/lib/caso-finanzas-politicas/`:
 
-### Final Verification
-- tsc --noEmit: PASS (only pre-existing EvidenceExplorer.tsx errors)
-- pnpm run build: PASS (client 526ms, ssr 532ms)
-- No orphaned TODOs in new code: PASS
-- No new package.json scripts needed (engine is API-driven)
-- All requirements from plan fulfilled
+**1. types.ts** — Define domain types for Argentine political finance investigation:
+- Node types: `FinPolPerson` (id, name, slug, role_es, role_en, description_es, description_en, party, nationality, datasets: number), `FinPolEvent` (id, title_es, title_en, date, description_es, description_en, category: 'political'|'financial'|'legal'|'corporate', sources: string[]), `FinPolDocument` (id, title, slug, doc_type, source_url, summary, date_published), `FinPolOrganization` (id, name, slug, org_type, description, country, datasets: string[]), `FinPolMoneyFlow` (id, from_label, to_label, amount_ars: number, description_es, description_en, date, source, source_url)
+- Zod schemas for each type (z from 'zod/v4')
+- RelationshipType union: 'DONATED_TO', 'CONTROLS', 'AFFILIATED_WITH', 'RECEIVED_FROM', 'CONTRACTED_BY', 'DIRECTED', 'APPOINTED'
+- EventType = 'political' | 'financial' | 'legal' | 'corporate'
+- EVENT_TYPE_COLORS, EVENT_TYPE_LABELS (bilingual labels in Spanish)
+- TimelineItem interface (same shape as caso-libra: id, title, description, date, event_type, source_url, actors[])
+- FinPolStats interface: crossDatasetMatches: string, politiciansMultiDataset: string, totalGraphNodes: string, actorCount: number, eventCount: number, documentCount: number
+- Export CASO_FINPOL_SLUG = 'caso-finanzas-politicas'
 
-**Decision: LOOP_COMPLETE** — M10 plan fully executed
+**2. queries.ts** — Cypher queries following caso-libra post-genericization pattern:
+- Same constants: QUERY_TIMEOUT_MS = 15_000, TX_CONFIG
+- Same helpers: asString, asNumber, asOptionalString
+- All functions take `casoSlug: string` as first param
+- Implement: getInvestigationGraph (two-pass: nodes with Person|Event|Document|Organization|MoneyFlow labels + caso_slug filter, then rels), getTimeline, getPersonBySlug, getActors, getDocuments, getMoneyFlows (new — query MoneyFlow nodes with from/to relationships), getStats (return FinPolStats with count queries)
+- Import from '../neo4j/client' (getDriver), '../graph/transform' (transformNode, transformRelationship)
+- All Cypher MUST be parameterized (never interpolate)
+- LIMIT values use neo4j.int(n) — import neo4j from 'neo4j-driver-lite'
+
+**3. transform.ts** — Pure transform functions following caso-libra pattern:
+- Helpers: asString, asOptionalString, asOptionalNumber
+- Export: toPerson, toEvent, toDocument, toOrganization, toMoneyFlow
+- Input: Record<string, unknown> (property bags, NOT Node objects — match caso-libra style)
+
+**4. index.ts** — Barrel exports for all types, schemas, query functions, transforms, and CASO_FINPOL_SLUG
+
+Key reference files:
+- caso-libra/types.ts (L1-156) — Zod schema pattern
+- caso-libra/queries.ts (L1-80+) — two-pass graph query, casoSlug pattern
+- caso-libra/transform.ts (L1-108) — property bag transform pattern
+- caso-finanzas-politicas/investigation-data.ts (L1-100) — seed data types for reference (FactcheckItem, TimelineEvent, Actor, MoneyFlow are the seed types; the new types.ts types are for Neo4j graph queries, not seed data)
+- caso-finanzas-politicas/config.ts — tabs: resumen, investigacion, cronologia, dinero, conexiones; features.wallets=false, features.platformGraph=true
+
+Note: investigation-data.ts already defines seed data types (FactcheckItem, TimelineEvent, Actor, MoneyFlow). The new types.ts defines Neo4j graph query result types — these are distinct. The seed types are for static data display; the graph types are for dynamic Neo4j queries. Don't duplicate or conflict with the seed types.
+
+### Builder note (1.3 complete):
+- Created 4 files: types.ts, queries.ts, transform.ts, index.ts in webapp/src/lib/caso-finanzas-politicas/
+- types.ts: 5 Zod schemas (FinPolPerson, FinPolEvent, FinPolDocument, FinPolOrganization, FinPolMoneyFlow), CASO_FINPOL_SLUG constant, EventType with 'corporate' replacing caso-libra's 'media', EVENT_TYPE_COLORS/LABELS, TimelineItem, FinPolStats
+- queries.ts: 7 exported functions (getInvestigationGraph, getTimeline, getPersonBySlug, getActors, getDocuments, getMoneyFlows, getStats) — all take casoSlug as first param, all Cypher parameterized, two-pass graph pattern, caso_slug filter on every MATCH
+- transform.ts: 5 pure transforms (toPerson, toEvent, toDocument, toOrganization, toMoneyFlow) — property bag input matching caso-libra pattern
+- index.ts: barrel exports for all types, schemas, queries, transforms, and CASO_FINPOL_SLUG
+- Timeline maps title_es→title, description_es→description, category→event_type, sources[0]→source_url (bilingual field mapping)
+- tsc --noEmit: same 9 pre-existing caller errors (tasks 1.4/3.x), 0 new errors from finpol files
+- Commit a8fceb5
+
+### Critic review (1.3):
+- All 4 files created per spec: types.ts (5 Zod schemas), queries.ts (7 functions), transform.ts (5 transforms), index.ts (barrel).
+- All Cypher parameterized, caso_slug filter on every MATCH, two-pass graph pattern.
+- tsc: 9 pre-existing caller errors (tasks 1.4/3.x), 0 new errors from finpol files.
+- No `any` types, no speculative code, no seed-type conflicts.
+- No blocking issues. review.passed.
+
+### Finalizer note (iteration after 1.3 review):
+- review.passed for 1.3 confirmed. Task m9:finpol-backend closed.
+- Step 1 has 2 remaining sub-tasks (1.4–1.5). Advancing queue for Builder to pick up 1.4 next.
+
+### Planner note (queue.advance → 1.4):
+- Task m9:libra-redirects (task-1774113360-d9b6) started.
+- Builder guidance for 1.4: Convert the 3 caso-libra API routes with broken imports to 301 redirects, and create the corresponding generic routes under `/api/caso/[slug]/`. This fixes 3 of the 9 TS errors from task 1.2 (the other 6 are in pages/OG, handled by tasks 3.x).
+
+**Current TS errors in scope:**
+- `api/caso-libra/person/[actorSlug]/route.ts:21` — `getPersonBySlug(actorSlug)` → needs `(casoSlug, actorSlug)`
+- `api/caso-libra/wallets/route.ts:12` — `getWalletFlows()` → needs `(casoSlug)`
+- `api/caso-libra/document/[docSlug]/route.ts:21` — `getDocumentBySlug(docSlug)` → needs `(casoSlug, docSlug)`
+
+**What to do — 6 files total (3 new generic routes + 3 converted redirects):**
+
+**A. Create 3 new generic API routes under `webapp/src/app/api/caso/[slug]/`:**
+
+1. **`person/[actorSlug]/route.ts`** — GET handler:
+   - Extract `slug` and `actorSlug` from params
+   - Validate slug via `getClientConfig(slug)` from `@/lib/investigations/registry`
+   - Import `getPersonBySlug` from both `@/lib/caso-libra` and `@/lib/caso-finanzas-politicas`
+   - Use a slug-based resolver: if `slug === 'caso-libra'` → call caso-libra's `getPersonBySlug(slug, actorSlug)`, if `slug === 'caso-finanzas-politicas'` → call finpol's, else use query-builder's `getNodeBySlug(slug, 'Person', actorSlug)` as fallback
+   - Return `{ success: true, data }` or 404/500 following the pattern in `api/caso/[slug]/graph/route.ts`
+
+2. **`wallets/route.ts`** — GET handler:
+   - Extract `slug` from params
+   - Validate slug via `getClientConfig(slug)`
+   - Only caso-libra has wallets — if `slug === 'caso-libra'`, import and call `getWalletFlows(slug)` from `@/lib/caso-libra`
+   - For other investigations, return `{ success: false, error: 'Wallets not available for this investigation' }` with 404
+   - Follow the error handling pattern from `api/caso/[slug]/graph/route.ts`
+
+3. **`document/[docSlug]/route.ts`** — GET handler:
+   - Extract `slug` and `docSlug` from params
+   - Validate slug via `getClientConfig(slug)`
+   - Same resolver pattern as person: call caso-specific `getDocumentBySlug(slug, docSlug)` or fallback to query-builder's `getNodeBySlug(slug, 'Document', docSlug)`
+   - Return `{ success: true, data }` or 404/500
+
+**B. Convert 3 old routes to 301 redirects (follow the pattern in `api/caso-libra/graph/route.ts`):**
+
+4. **`api/caso-libra/person/[actorSlug]/route.ts`** — strip old handler, redirect GET to `/api/caso/caso-libra/person/${actorSlug}`. Preserve query params.
+5. **`api/caso-libra/wallets/route.ts`** — redirect GET to `/api/caso/caso-libra/wallets`
+6. **`api/caso-libra/document/[docSlug]/route.ts`** — redirect GET to `/api/caso/caso-libra/document/${docSlug}`
+
+**Leave alone:**
+- `api/caso-libra/investigation/route.ts` — file-based submission API, no broken imports, case-specific. Not in scope.
+- `api/caso-libra/simulate/*` — MiroFish proxy routes, no caso-libra query imports, no TS errors.
+- `api/caso-libra/graph/route.ts` — already a 301 redirect ✓
+
+**Also note (not in scope but tracked):**
+- `api/og/caso/[slug]/actor/[actorSlug]/route.tsx:22` has the same `getPersonBySlug` error — this is an OG image route that should be fixed in step 3.4 alongside the actor page.
+
+**Key reference files:**
+- `api/caso-libra/graph/route.ts` — redirect pattern (301 with query param preservation)
+- `api/caso/[slug]/graph/route.ts` — generic route pattern (getClientConfig + getQueryBuilder)
+- `lib/caso-libra/queries.ts` — `getPersonBySlug(casoSlug, slug)`, `getWalletFlows(casoSlug)`, `getDocumentBySlug(casoSlug, slug)`
+- `lib/caso-finanzas-politicas/queries.ts` — `getPersonBySlug(casoSlug, slug)`, `getDocuments(casoSlug)` (no getDocumentBySlug or getWalletFlows)
+- `lib/investigations/query-builder.ts` — `getNodeBySlug(casoSlug, nodeType, slug)` as fallback
+
+**Verification:** After changes, the 3 API route TS errors must be gone. Run `pnpm exec tsc --noEmit` from `webapp/` — expect 6 remaining errors (all in pages/OG, not API routes).
+
+### Builder note (1.4 complete):
+- Created 3 new generic routes: `api/caso/[slug]/person/[actorSlug]/route.ts`, `api/caso/[slug]/wallets/route.ts`, `api/caso/[slug]/document/[docSlug]/route.ts`
+- Converted 3 old routes to 301 redirects: person, wallets, document under `api/caso-libra/`
+- Generic person route dispatches to caso-libra or finpol via switch on slug
+- Generic wallets route only serves caso-libra (404 for other slugs, matching config.features.wallets)
+- Generic document route uses caso-libra's getDocumentBySlug (only impl with per-slug lookup)
+- All redirects preserve query params and use encodeURIComponent for dynamic segments
+- All generic routes follow the graph/route.ts pattern: getClientConfig validation, success envelope, Neo4j connection error detection (503)
+- tsc --noEmit: 3 API route errors gone, 6 remaining errors all in pages/OG (tasks 3.x scope)
+- Commit 79ca4d4
+
+### Critic review (1.4):
+- All 3 redirects follow existing graph/route.ts pattern exactly (NextRequest, query param preservation, 301).
+- All 3 generic routes use getClientConfig validation, success envelope, 503 detection — matches graph/route.ts generic pattern.
+- Person route dispatches by slug (libra, finpol, default→libra). Default is safe since post-1.2 libra queries are generic (use caso_slug param).
+- Document route uses libra's getDocumentBySlug (only implementation with per-slug lookup) — also generic post-1.2.
+- Wallets route correctly gates on slug === 'caso-libra' with 404 for others.
+- tsc independently verified: 6 remaining errors, all pages/OG (tasks 3.x scope). 0 API route errors.
+- No blocking issues. review.passed.
+
+### Finalizer note (iteration after 1.4 review):
+- review.passed for 1.4 confirmed. Task m9:libra-redirects closed.
+- Step 1 has 1 remaining sub-task (1.5). Advancing queue for Builder to pick up 1.5 next.
+
+### Planner note (queue.advance → 1.5):
+- Task m9:graph-constants (task-1774113360-e583) started.
+- Builder guidance for 1.5: Add missing node labels to `LABEL_COLORS` and `LABEL_DISPLAY` in `webapp/src/lib/graph/constants.ts`. Also add missing relationship types to `LINK_COLORS`.
+
+**Add to LABEL_COLORS (after existing entries):**
+- `ShellCompany: '#a855f7'` — purple-500 (corporate shell entities)
+- `Aircraft: '#f97316'` — orange-500 (planes, matches Flight color family)
+- `Wallet: '#22c55e'` — green-500 (crypto wallets)
+- `Token: '#84cc16'` — lime-500 (crypto tokens, distinct from Wallet green)
+- `Claim: '#f43f5e'` — rose-500 (legal claims)
+- `MoneyFlow: '#14b8a6'` — teal-500 (financial flows)
+- `GovernmentAction: '#6366f1'` — indigo-500 (government actions)
+
+**Add to LABEL_DISPLAY (matching entries):**
+- `ShellCompany: 'Empresa Fantasma'`
+- `Aircraft: 'Aeronave'`
+- `Wallet: 'Billetera'`
+- `Token: 'Token'`
+- `Claim: 'Reclamo'`
+- `MoneyFlow: 'Flujo de Dinero'`
+- `GovernmentAction: 'Accion Gubernamental'`
+
+**Add to LINK_COLORS (finanzas-politicas relationship types):**
+- `DONATED_TO: '#22c55e'` — green-500 (money flowing)
+- `CONTROLS: '#dc2626'` — red-600 (power relationship)
+- `RECEIVED_FROM: '#14b8a6'` — teal-500 (money received)
+- `CONTRACTED_BY: '#f59e0b'` — amber-500 (contracts)
+- `DIRECTED: '#8b5cf6'` — violet-500 (management)
+- `APPOINTED: '#3b82f6'` — blue-500 (political appointment)
+
+**Key reference:** `webapp/src/lib/graph/constants.ts` (L1-198) — current state of all maps.
+
+**Do NOT modify:** helper functions, PERSON_CATEGORY_COLORS, SUBCATEGORY_CONFIGS, or any other existing entries.
+
+**Verification:** `pnpm exec tsc --noEmit` from `webapp/` — should still have same 6 remaining errors (pages/OG scope). No new errors expected since this is additive-only.
+
+### Builder note (1.5 complete):
+- Added 7 node labels to LABEL_COLORS: ShellCompany (#a855f7), Aircraft (#f97316), Wallet (#22c55e), Token (#84cc16), Claim (#f43f5e), MoneyFlow (#14b8a6), GovernmentAction (#6366f1)
+- Added matching 7 entries to LABEL_DISPLAY with Spanish names
+- Added 6 finpol relationship types to LINK_COLORS: DONATED_TO, CONTROLS, RECEIVED_FROM, CONTRACTED_BY, DIRECTED, APPOINTED
+- Additive-only change, no function modifications
+- tsc --noEmit: same 6 pre-existing errors (all pages/OG, tasks 3.x scope), 0 new errors
+- Commit 659d1b0
+
+### Finalizer note (iteration after 1.5 review):
+- review.passed for 1.5 confirmed. Task m9:graph-constants closed.
+- Step 1 fully complete (all 5 sub-tasks 1.1–1.5 closed). Advancing to Step 2 — Fix shared component imports.
+- 6 TS errors remain (all pages/OG, Steps 2–3 scope). Step 4 is final cleanup + verification.
+
+### Planner note (queue.advance → 2.1):
+- Step 1 complete. 6 TS errors remain (all pages/OG — Step 3 scope).
+- Step 2 addresses shared components importing from caso-libra/types instead of a shared location. Not blocking typecheck, but required for correctness when rendering finpol events (EventType 'corporate' not in caso-libra's EventType).
+- Two sub-tasks: 2.1 adds shared types, 2.2 updates component imports.
+
+- Task m9:shared-event-types created for 2.1.
+- Builder guidance for 2.1: Add shared EventType, EVENT_TYPE_COLORS, and EVENT_TYPE_LABELS to `webapp/src/lib/investigations/types.ts`.
+
+**What to add (after the existing TimelineItem interface, around L90):**
+
+1. **Shared EventType** — superset of caso-libra ('political'|'financial'|'legal'|'media') and finpol ('political'|'financial'|'legal'|'corporate'):
+```typescript
+export type EventType = 'political' | 'financial' | 'legal' | 'media' | 'corporate'
+```
+
+2. **Shared EVENT_TYPE_COLORS** — merge of both investigations' color maps:
+```typescript
+export const EVENT_TYPE_COLORS: Readonly<Record<EventType, string>> = {
+  political: '#3b82f6',
+  financial: '#10b981',
+  legal: '#ef4444',
+  media: '#a855f7',
+  corporate: '#f59e0b',
+}
+```
+
+3. **Shared EVENT_TYPE_LABELS** — merge of both investigations' label maps:
+```typescript
+export const EVENT_TYPE_LABELS: Readonly<Record<EventType, string>> = {
+  political: 'Politico',
+  financial: 'Financiero',
+  legal: 'Legal',
+  media: 'Medios',
+  corporate: 'Corporativo',
+}
+```
+
+4. **Update existing TimelineItem** — add `event_type` field so components can use it:
+```typescript
+export interface TimelineItem {
+  readonly id: string
+  readonly title: string | BilingualText
+  readonly description: string | BilingualText
+  readonly date: string
+  readonly event_type?: EventType
+  readonly category?: string
+  readonly source_url?: string
+  readonly actors?: readonly { readonly id: string; readonly name: string }[]
+}
+```
+
+**Do NOT:**
+- Remove or modify anything in caso-libra/types.ts or caso-finanzas-politicas/types.ts
+- Change existing fields in TimelineItem (just add event_type)
+- Touch any other types in investigations/types.ts
+
+**Key reference files:**
+- caso-libra/types.ts L46-47, L116-128 — caso-libra EventType + colors + labels
+- caso-finanzas-politicas/types.ts L104-119 — finpol EventType + colors + labels
+- investigations/types.ts L82-90 — existing TimelineItem
+
+**Verification:** `pnpm exec tsc --noEmit` from `webapp/` — should still have same 6 errors (no new errors, these are additive exports).
+
+### Builder note (2.1 complete):
+- Added shared EventType = 'political' | 'financial' | 'legal' | 'media' | 'corporate' to investigations/types.ts
+- Added EVENT_TYPE_COLORS and EVENT_TYPE_LABELS (superset of caso-libra + finpol maps)
+- Added event_type?: EventType field to TimelineItem interface
+- Placed after Timeline section (L91), before Stats section
+- tsc --noEmit: same 6 pre-existing errors (pages/OG, tasks 3.x scope), 0 new errors
+- Commit 6d1e2f5
+
+### Critic review (2.1):
+- All 4 additions per spec: shared EventType (5-member union), EVENT_TYPE_COLORS, EVENT_TYPE_LABELS, event_type field on TimelineItem.
+- Values match spec exactly (colors, labels, superset union of caso-libra + finpol).
+- Additive-only, Readonly<Record<...>> for const maps, event_type optional.
+- tsc independently verified: 6 pre-existing errors (all pages/OG, tasks 3.x scope), 0 new errors.
+- No blocking issues. review.passed.
+
+### Finalizer note (iteration after 2.1 review):
+- review.passed for 2.1 confirmed. Task m9:shared-event-types already closed.
+- Step 2 has 1 remaining sub-task (2.2). Advancing queue for Builder to pick up 2.2 next.
+
+### Planner note (queue.advance → 2.2):
+- Task m9:component-imports to be created for 2.2.
+- Builder guidance for 2.2: Update EventCard.tsx and Timeline.tsx to import EventType, EVENT_TYPE_COLORS, EVENT_TYPE_LABELS from `@/lib/investigations/types` instead of `@/lib/caso-libra/types`.
+
+**Files to modify:**
+
+1. **`webapp/src/components/investigation/EventCard.tsx`** (L9-10):
+   - Change `import { EVENT_TYPE_COLORS, EVENT_TYPE_LABELS } from '@/lib/caso-libra/types'` → `import { EVENT_TYPE_COLORS, EVENT_TYPE_LABELS } from '@/lib/investigations/types'`
+   - Change `import type { EventType } from '@/lib/caso-libra/types'` → `import type { EventType } from '@/lib/investigations/types'`
+
+2. **`webapp/src/components/investigation/Timeline.tsx`** (L10-11):
+   - Change `import type { TimelineItem, EventType } from '@/lib/caso-libra/types'` → `import type { TimelineItem, EventType } from '@/lib/investigations/types'`
+   - Change `import { EVENT_TYPE_COLORS, EVENT_TYPE_LABELS } from '@/lib/caso-libra/types'` → `import { EVENT_TYPE_COLORS, EVENT_TYPE_LABELS } from '@/lib/investigations/types'`
+
+**Note:** TimelineItem is already exported from `@/lib/investigations/types` (it was there before 2.1). EventType, EVENT_TYPE_COLORS, EVENT_TYPE_LABELS were added in 2.1 (commit 6d1e2f5).
+
+**Do NOT:**
+- Remove EventType/EVENT_TYPE_COLORS/EVENT_TYPE_LABELS from caso-libra/types.ts (other code may still import from there)
+- Modify any component logic — only change import paths
+
+**Verification:** `pnpm exec tsc --noEmit` from `webapp/` — should still have same 6 errors (pages/OG scope). No new errors expected since shared types are a superset.
+
+### Builder note (2.2 complete):
+- Updated EventCard.tsx: imports EVENT_TYPE_COLORS, EVENT_TYPE_LABELS, EventType from @/lib/investigations/types
+- Updated Timeline.tsx: imports TimelineItem, EventType, EVENT_TYPE_COLORS, EVENT_TYPE_LABELS from @/lib/investigations/types
+- Also updated CronologiaContent.tsx: imports TimelineItem from @/lib/investigations/types (cascading — it passes data to Timeline)
+- Added BilingualText narrowing in Timeline.tsx EventCard props (`.es` fallback for bilingual titles/descriptions)
+- Added defaults for optional shared TimelineItem fields: event_type ?? 'political', source_url ?? null, actors ?? []
+- Fixed shared TimelineItem.source_url type: `string` → `string | null` to accept caso-libra's null values
+- tsc --noEmit: 6 pre-existing errors (all pages/OG, tasks 3.x scope), 0 new errors
+- Commit 6379815
+
+### Critic review (2.2):
+- All 3 files updated per spec: EventCard.tsx (2 import lines), Timeline.tsx (2 import lines), CronologiaContent.tsx (1 import line — cascading dep, correct addition).
+- BilingualText narrowing in Timeline.tsx is correct: shared TimelineItem.title/description is `string | BilingualText`, `.es` fallback needed.
+- Optional field defaults (event_type ?? 'political', source_url ?? null, actors ?? []) are safe — prevents runtime errors with finpol data.
+- source_url type fix (`string` → `string | null`) matches caso-libra data reality.
+- tsc independently verified: 6 pre-existing errors (all pages/OG, tasks 3.x scope), 0 new errors.
+- No `any` types, no speculative code, no logic changes beyond necessary narrowing.
+- No blocking issues. review.passed.
+
+### Finalizer note (iteration after 2.2 review):
+- review.passed for 2.2 confirmed. Task m9:component-imports closed.
+- Step 2 fully complete (both sub-tasks 2.1–2.2 closed). Advancing to Step 3 — Genericize page components.
+- 6 TS errors remain (all pages/OG, Step 3 scope). Step 3 has 8 sub-tasks (3.1–3.8). Step 4 is final cleanup.
+
+### Planner note (queue.advance → 3.1):
+- Step 2 complete. Revised Step 3 scope: 6 TS errors across 4 files (not 8 sub-tasks — original plan included non-error pages). Step 3 focuses on fixing all 6 remaining TS errors.
+- Original sub-tasks 3.4–3.8 (actor page fetch URLs, dinero, investigacion, AgentChat, layout) have no TS errors — deferred to Step 4 if needed.
+- Task m9:fix-landing-page created for 3.1.
+- Builder guidance for 3.1: Fix `webapp/src/app/caso/[slug]/page.tsx` — pass `slug` to all 3 query function calls.
+
+**Current state (L6, L15-16):**
+```typescript
+import { getStats, getActors, getDocuments } from '@/lib/caso-libra'
+// ...
+const { slug } = await params
+const [_stats, actors, documents] = await Promise.all([getStats(), getActors(), getDocuments()])
+```
+
+**Fix — pass `slug` as first argument (all 3 functions now require `casoSlug: string` since task 1.2):**
+```typescript
+const [_stats, actors, documents] = await Promise.all([getStats(slug), getActors(slug), getDocuments(slug)])
+```
+
+**That's it.** One line change, 3 errors fixed. Import stays `@/lib/caso-libra` — those functions are already generic (they accept any casoSlug).
+
+**Do NOT:**
+- Switch imports to query-builder (caso-libra functions have richer return types needed by CasoLandingContent)
+- Modify CasoLandingContent or any other component
+- Change any other code in this file
+
+**Verification:** `pnpm exec tsc --noEmit` from `webapp/` — expect 3 remaining errors (cronologia:10, evidencia:15, og/actor:22).
+
+### Builder note (3.1 complete):
+- Fixed [slug]/page.tsx L16: passed `slug` to getStats, getActors, getDocuments
+- One line change, 3 TS errors resolved (Expected N arguments, but got 0)
+- tsc --noEmit: 3 remaining errors (cronologia:10, evidencia:15, og/actor:22) — all pages/OG scope as expected
+- Commit be1ec9b
+
+### Critic review (3.1):
+- One-line change per spec: `getStats(slug), getActors(slug), getDocuments(slug)` — exactly matches guidance.
+- No scope creep: import unchanged (`@/lib/caso-libra`), no component modifications.
+- tsc independently verified: 3 remaining errors (cronologia:10, evidencia:15, og/actor:22) — all pages/OG scope.
+- No code quality issues.
+- No blocking issues. review.passed.
+
+### Finalizer note (iteration after 3.1 review):
+- review.passed for 3.1 confirmed. Task m9:fix-landing-page closed.
+- Step 3 has 3 remaining sub-tasks: 3.2 (cronologia:10), 3.3 (evidencia:15), 3.4 (og/actor:22). 3 TS errors remain.
+- Advancing queue for Planner to scope 3.2 next.
+
+### Planner note (queue.advance → 3.2):
+- Task m9:fix-cronologia created for 3.2.
+- Builder guidance for 3.2: Fix `webapp/src/app/caso/[slug]/cronologia/page.tsx` — add `params` prop and pass `slug` to `getTimeline`.
+
+**Current state (L9-10):**
+```typescript
+export default async function CronologiaPage() {
+  const events = await getTimeline()
+```
+
+**Fix — add params prop, destructure slug, pass to getTimeline:**
+```typescript
+export default async function CronologiaPage({
+  params,
+}: {
+  readonly params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  const events = await getTimeline(slug)
+```
+
+**That's it.** `getTimeline(casoSlug: string)` needs one argument (since task 1.2). The page currently has no params at all.
+
+**Do NOT:**
+- Change the import (stays `@/lib/caso-libra`)
+- Modify CronologiaContent or any other component
+- Change any other code in this file
+
+**Verification:** `pnpm exec tsc --noEmit` from `webapp/` — expect 2 remaining errors (evidencia:15, og/actor:22).
+
+### Builder note (3.2 complete):
+- Fixed cronologia/page.tsx: added params prop with `Promise<{ slug: string }>`, destructured slug, passed to getTimeline
+- One file change, 1 TS error resolved (Expected 1 arguments, but got 0)
+- tsc --noEmit: 2 remaining errors (evidencia:15, og/actor:22) — matches expected
+- Commit 6eac824
+
+### Finalizer note (iteration after 3.2 review):
+- review.passed for 3.2 confirmed. Task m9:fix-cronologia closed.
+- Step 3 has 2 remaining sub-tasks: 3.3 (evidencia:15), 3.4 (og/actor:22). 2 TS errors remain.
+- Advancing queue for Planner to scope 3.3 next.
+
+### Planner note (queue.advance → 3.3):
+- Task m9:fix-evidencia created for 3.3.
+- Builder guidance for 3.3: Fix `webapp/src/app/caso/[slug]/evidencia/page.tsx` — pass `slug` to `getDocuments`.
+
+**Current state (L14-15):**
+```typescript
+const { slug } = await params
+const documents = await getDocuments()
+```
+
+**Fix — pass `slug` as first argument (getDocuments now requires `casoSlug: string` since task 1.2):**
+```typescript
+const documents = await getDocuments(slug)
+```
+
+**That's it.** One line change, 1 error fixed. The page already has `params` prop and destructures `slug` (L9-14). Only L15 needs the argument added.
+
+**Do NOT:**
+- Change the import (stays `@/lib/caso-libra`)
+- Modify EvidenciaContent or any other component
+- Change any other code in this file
+
+**Verification:** `pnpm exec tsc --noEmit` from `webapp/` — expect 1 remaining error (og/actor:22).
+
+**Preview of 3.4 (og/actor:22):** `webapp/src/app/api/og/caso/[slug]/actor/[actorSlug]/route.tsx` L22 calls `getPersonBySlug(actorSlug)` but needs `getPersonBySlug(slug, actorSlug)`. Also needs to destructure `slug` from params at L16 (currently only destructures `actorSlug`).
+
+### Builder note (3.3 complete):
+- Fixed evidencia/page.tsx L15: passed `slug` to getDocuments(slug)
+- One line change, 1 TS error resolved (Expected 1 arguments, but got 0)
+- tsc --noEmit: 1 remaining error (og/actor:22) — matches expected
+- Commit 85bd8e9
+
+### Critic review (3.3):
+- One-line change per spec: `getDocuments()` → `getDocuments(slug)` — exactly matches guidance.
+- No scope creep: import unchanged (`@/lib/caso-libra`), no component modifications.
+- tsc independently verified: 1 remaining error (og/actor route.tsx:22) — matches expected.
+- No code quality issues.
+- No blocking issues. review.passed.
+
+### Finalizer note (iteration after 3.3 review):
+- review.passed for 3.3 confirmed. Task m9:fix-evidencia closed.
+- Step 3 has 1 remaining sub-task: 3.4 (og/actor:22). 1 TS error remains.
+- Advancing queue for Planner to scope 3.4 next.
+- Preview from 3.3 planner note: `webapp/src/app/api/og/caso/[slug]/actor/[actorSlug]/route.tsx` L22 needs `getPersonBySlug(slug, actorSlug)` and L16 needs to destructure `slug` from params.
+
+### Planner note (queue.advance → 3.4):
+- Task m9:fix-og-actor created for 3.4. This is the LAST TS error.
+- Builder guidance for 3.4: Fix `webapp/src/app/api/og/caso/[slug]/actor/[actorSlug]/route.tsx` — destructure `slug` from params and pass it to `getPersonBySlug`.
+
+**Current state (L16, L22):**
+```typescript
+const { actorSlug } = await params
+// ...
+const data = await getPersonBySlug(actorSlug)
+```
+
+**Fix — two changes:**
+
+1. **L16** — also destructure `slug`:
+```typescript
+const { slug, actorSlug } = await params
+```
+
+2. **L22** — pass `slug` as first argument (`getPersonBySlug(casoSlug: string, slug: string)` since task 1.2):
+```typescript
+const data = await getPersonBySlug(slug, actorSlug)
+```
+
+**That's it.** Two minimal edits, 1 error fixed. The params type at L14 already includes `slug: string` — it just wasn't being destructured.
+
+**Do NOT:**
+- Change the import (stays `@/lib/caso-libra`)
+- Modify any JSX or the truncate helper
+- Change any other code in this file
+
+**Verification:** `pnpm exec tsc --noEmit` from `webapp/` — expect **0 remaining errors**. This is the last TS error in the project.
+
+**After 3.4:** Step 3 fully complete. Step 4 is cleanup + final verification. With 0 TS errors, M9 standardization may be complete pending review of whether Step 4 tasks are needed.
+
+### Builder note (3.4 complete):
+- Fixed og/actor/route.tsx L16: destructured `slug` from params (`{ slug, actorSlug }`)
+- Fixed og/actor/route.tsx L22: `getPersonBySlug(actorSlug)` → `getPersonBySlug(slug, actorSlug)`
+- Two-line change, 1 TS error resolved (last one)
+- tsc --noEmit: **0 errors** — all TS errors resolved
+- Commit c1394e8
+- Step 3 fully complete (all sub-tasks 3.1–3.4 closed). M9 standardization typecheck is clean.
+
+### Critic review (3.4):
+- Two-line change per spec: `{ actorSlug }` → `{ slug, actorSlug }` (L16), `getPersonBySlug(actorSlug)` → `getPersonBySlug(slug, actorSlug)` (L22).
+- No scope creep: import unchanged (`@/lib/caso-libra`), no JSX or truncate helper modifications.
+- tsc independently verified: **0 errors** — all TS errors resolved across the project.
+- No code quality issues.
+- No blocking issues. review.passed.
+
+### Finalizer note (iteration after 3.4 review):
+- review.passed for 3.4 confirmed. All Step 3 sub-tasks (3.1–3.4) closed.
+- **Final verification complete:**
+  - `pnpm exec tsc --noEmit`: **0 errors**
+  - `pnpm run build`: **success** (all 5 phases built clean, only pre-existing warnings from vinext/rolldown)
+- Step 4 (cleanup) has no remaining TS errors or build failures. M9 standardization is complete.
+- One deferred task remains (m9:i18n-titles — browser language detection + bilingual metadata) — not blocking M9 completion.
+- **M9 COMPLETE.** Objective is "Continue from M10 onward" — emitting LOOP_COMPLETE.

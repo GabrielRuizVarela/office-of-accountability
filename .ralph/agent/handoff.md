@@ -1,11 +1,11 @@
 # Session Handoff
 
-_Generated: 2026-03-21 06:37:33 UTC_
+_Generated: 2026-03-21 11:19:00 UTC_
 
 ## Git Context
 
 - **Branch:** `worktree-crispy-cuddling-snail`
-- **HEAD:** 4e23ef0: chore: auto-commit before merge (loop primary)
+- **HEAD:** 6aa56bf: chore: auto-commit before merge (loop primary)
 
 ## Tasks
 
@@ -72,6 +72,38 @@ _Generated: 2026-03-21 06:37:33 UTC_
 - [x] Create /api/caso/[slug]/node/[id]/route.ts — node connections endpoint
 - [x] Add 301 redirects from /api/caso-libra/* to /api/caso/caso-libra/*
 - [x] Full M9 code review — review all unified API routes (graph, timeline, stats, config, schema, node, redirects) + infrastructure (types, utils, config, query-builder, registry)
+- [x] Add engine node type uniqueness constraints to scripts/init-schema.ts (SourceConnector.id, PipelineConfig.id, PipelineStage.id, Gate.id, PipelineState.id, Proposal.id, AuditEntry.id, Snapshot.id, ModelConfig.id, MiroFishConfig.id)
+- [x] Create src/lib/engine/types.ts — TypeScript interfaces + Zod schemas for all engine node types (SourceConnector, PipelineConfig, PipelineStage, Gate, PipelineState, Proposal, AuditEntry, Snapshot, ModelConfig, MiroFishConfig)
+- [x] Create src/lib/engine/config.ts — CRUD operations for engine config nodes (read/write SourceConnector, PipelineConfig, PipelineStage, Gate, ModelConfig, MiroFishConfig to Neo4j)
+- [x] Create src/lib/engine/audit.ts — append-only AuditEntry creation with SHA-256 hash chain, chain validation on startup
+- [x] Create webapp/src/lib/engine/llm/types.ts — LLM abstraction interfaces (Message, ToolDefinition, ToolCall, LLMOptions, LLMResponse, LLMProvider)
+- [x] Create llamacpp LLM provider (webapp/src/lib/engine/llm/llamacpp.ts)
+- [x] Create llm/factory.ts — provider factory from ModelConfig
+- [x] Step 4.1: Create webapp/src/lib/engine/connectors/types.ts — shared Connector interface, ConnectorResult, per-kind config Zod schemas
+- [x] Step 7.1: Refactor client.ts to accept endpoint parameter
+- [x] Step 7.2: Generalize export.ts for any investigation
+- [x] Step 8.1 — Create run route POST /api/engine/[investigationId]/run
+- [x] Create OpenAI LLM provider adapter (webapp/src/lib/engine/llm/openai.ts)
+- [x] Create Anthropic LLM provider adapter (webapp/src/lib/engine/llm/anthropic.ts)
+- [x] Create scoped tool definitions per stage (webapp/src/lib/engine/llm/tools.ts)
+- [x] Update LLM barrel exports (webapp/src/lib/engine/llm/index.ts)
+- [x] Create webapp/src/lib/engine/stages/iterate.ts — autonomous research iteration stage implementing StageRunner, loops LLM calls with gap detection until convergence or max iterations
+- [x] Create webapp/src/lib/engine/research-program.ts — ResearchDirective type + ResearchProgram manager (add/remove/prioritize directives, track status per directive)
+- [x] Create webapp/src/lib/engine/research-metrics.ts — evaluateIteration() returning IterationMetrics (coverage_delta, confidence_delta, corroboration_score, novelty_score) + shouldContinue() convergence check
+- [x] Create webapp/src/lib/engine/gap-detector.ts — detectGaps(casoSlug) queries graph for missing relationships, isolated nodes, low-confidence clusters, returns GapReport with prioritized research suggestions
+- [x] Add OrchestratorTask + OrchestratorState constraints to schema.ts and types to types.ts
+- [x] Step 3.3: Create orchestrator/dispatch.ts — planBatch, dispatchBatch, collectResults, reassign
+- [x] Refactor MiroFish export.ts — accept agent_source and context_from config instead of hardcoded Person/Organization/Location labels (file: webapp/src/lib/mirofish/export.ts)
+- [x] Create src/lib/engine/agents.ts — parallel agent dispatch per stage config with scoped queries, concurrent execution, progress updates on PipelineState
+- [x] Create /api/casos/[casoSlug]/engine/orchestrator/route.ts — GET orchestrator state, active tasks, synthesis reports
+- [x] Create /api/casos/[casoSlug]/engine/orchestrator/tasks/route.ts — GET+POST task queue CRUD, manual priority override
+- [x] Create /api/casos/[casoSlug]/engine/orchestrator/focus/route.ts — GET+PUT research focus, update directives mid-run
+- [x] Move 6 engine API routes from /api/engine/[investigationId]/ to /api/casos/[casoSlug]/engine/, rename param to casoSlug in all handlers
+- [x] Extract shared helpers from iterate.ts into stages/shared.ts
+- [x] Implement stages/verify.ts — LLM-driven bronze verification
+- [x] Implement stages/enrich.ts — LLM entity extraction from source URLs
+- [x] Implement stages/analyze.ts — LLM-driven gap detection and hypothesis generation
+- [x] Create src/lib/engine/logger.ts — structured engine logger with LogEntry, createEngineLogger factory, withTiming helper
 
 ### Remaining
 
@@ -81,16 +113,16 @@ _Generated: 2026-03-21 06:37:33 UTC_
 
 Recently modified:
 
-- `.ralph/agent/memories.md`
+- `.claude/commands/investigate-loop.md`
+- `.claude/skills/investigate-loop.md`
+- `.gitignore`
+- `.ralph/agent/handoff.md`
 - `.ralph/agent/scratchpad.md`
 - `.ralph/agent/summary.md`
 - `.ralph/agent/tasks.jsonl`
 - `.ralph/current-events`
 - `.ralph/current-loop-id`
-- `.ralph/diagnostics/logs/ralph-2026-03-17T02-39-48.log`
-- `.ralph/diagnostics/logs/ralph-2026-03-17T04-33-09.log`
 - `.ralph/diagnostics/logs/ralph-2026-03-21T02-23-28-935-482963.log`
-- `.ralph/diagnostics/logs/ralph-2026-03-21T03-05-46-204-588747.log`
 
 ## Next Session
 
@@ -100,5 +132,5 @@ The following prompt can be used to continue where this session left off:
 Continue the previous work. Remaining tasks (1):
 - Add browser language detection and bilingual page titles/metadata
 
-Original objective: Continue M9 Phase then m10 pashes integrate code review and wait for human review
+Original objective: Continue from M10 onward
 ```

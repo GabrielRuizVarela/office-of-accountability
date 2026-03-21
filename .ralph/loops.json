@@ -1,12 +1,3 @@
 {
-  "loops": [
-    {
-      "id": "bold-wolf",
-      "pid": 1390476,
-      "started": "2026-03-21T10:16:07.557353805Z",
-      "prompt": "Check whats need to be completed before m9 and do it",
-      "worktree_path": "/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail/.worktrees/bold-wolf",
-      "workspace": "/home/vg/dev/office-of-accountability/.claude/worktrees/crispy-cuddling-snail/.worktrees/bold-wolf"
-    }
-  ]
+  "loops": []
 }
