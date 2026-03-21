@@ -1,0 +1,120 @@
+{
+  "metadata": {
+    "date": "2026-03-21",
+    "source": "Corporate due diligence deep dive",
+    "agents": ["RNS + Corporate Registry", "CNV + BCRA + Bankruptcy", "Neo4j Cross-Reference"]
+  },
+  "data_sources_discovered": {
+    "bcra_central_deudores_api": {
+      "url": "https://api.bcra.gob.ar/centraldedeudores/v1.0/Deudas/{CUIT}",
+      "documentation": "https://www.bcra.gob.ar/Catalogo/Content/files/pdf/central-deudores-v1.pdf",
+      "auth_required": false,
+      "endpoints": ["Deudas", "ChequesRechazados", "Historico"],
+      "status": "available_for_bulk_query"
+    },
+    "rns_bulk_csv": {
+      "url": "https://datos.jus.gob.ar/dataset/registro-nacional-de-sociedades",
+      "github": "https://github.com/datos-justicia-argentina/Registro-Nacional-de-Sociedades",
+      "format": "CSV (comma-delimited, UTF-8, ZIP)",
+      "fields": ["CUIT", "razon_social", "tipo_societario", "fecha_contrato_social", "numero_inscripcion", "domicilio_fiscal", "domicilio_legal"],
+      "update_frequency": "monthly (15th)",
+      "last_updated": "2026-01-27",
+      "status": "available_for_download"
+    },
+    "cnv_company_search": {
+      "url": "https://www.cnv.gov.ar/sitioweb/empresas?seccion=buscador",
+      "status": "web_query_only"
+    },
+    "ssn_open_data": {
+      "url": "https://datosabiertos.ssn.gob.ar/",
+      "format": "CSV",
+      "status": "available_for_download"
+    },
+    "concursos_quiebras": {
+      "url": "https://www.argentina.gob.ar/justicia/registro-nacional-concursos-quiebras",
+      "status": "web_query_only"
+    }
+  },
+  "new_cuits_discovered": [
+    { "cuit": "33-67778148-9", "entity": "Swiss Medical Group S.A. (holding)", "type": "company" },
+    { "cuit": "30-50003196-0", "entity": "SMG Cia Argentina de Seguros S.A.U.", "type": "company" },
+    { "cuit": "30-68584340-0", "entity": "SMG LIFE Seguros de Vida S.A.U.", "type": "company" },
+    { "cuit": "30-70096480-5", "entity": "SMG LIFE Retiro S.A.U.", "type": "company" },
+    { "cuit": "33-68626286-9", "entity": "Swiss Medical ART S.A.U.", "type": "company" },
+    { "cuit": "30-71690088-2", "entity": "Anker Latinoamerica S.A.", "type": "company" },
+    { "cuit": "30-70836479-3", "entity": "Bachellier S.A.", "type": "company" },
+    { "cuit": "30-71552747-9", "entity": "Koolhaas S.A.", "type": "company" },
+    { "cuit": "30-57288356-2", "entity": "Hector Martinez Sosa y Cia S.A.", "type": "company" },
+    { "cuit": "30-63945373-8", "entity": "Telecom Argentina S.A.", "type": "company" },
+    { "cuit": "20-43446124-4", "entity": "Santiago Caputo (person)", "type": "person" },
+    { "cuit": "20-25869310-9", "entity": "Maximo Kirchner (person)", "type": "person" },
+    { "cuit": "27-23032576-1", "entity": "Silvana Stochetti (Finaig president)", "type": "person" },
+    { "cuit": "20-21885141-0", "entity": "Alfredo Damian Lijo (Finaig co-founder)", "type": "person" },
+    { "cuit": "30-62937607-7", "entity": "SOCMA Americana S.A.", "type": "company" },
+    { "cuit": "30-67970230-7", "entity": "SURELY SA", "type": "company" },
+    { "cuit": "30-70920493-5", "entity": "Grupo Valber SRL", "type": "company" },
+    { "cuit": "33-71555011-9", "entity": "Construcciones Mafalda SRL", "type": "company" }
+  ],
+  "red_flags": [
+    {
+      "flag": "caputo_anker_address_match",
+      "severity": "high",
+      "description": "Anker Latinoamerica SA (CUIT 30-71690088-2) at Juncal 4440 Piso 15 — same address where Caputo served as President/Director. Company suspended operations Dec 1, 2023 — exact day Caputo became Economy Minister.",
+      "source": "https://www.ambito.com/economia/luis-caputo-cierra-su-consultora-y-suma-los-socios-su-equipo-n5889363"
+    },
+    {
+      "flag": "finaig_lijo_brother",
+      "severity": "high",
+      "description": "Finaig Consultores SA co-founded by Alfredo Damian Lijo (CUIT 20-21885141-0), brother of Judge Ariel Lijo nominated to Supreme Court. Finaig linked to insurance operations.",
+      "source": "https://www.dateas.com/es/bora/2014/12/24/finaig-consultores-sa-839473"
+    },
+    {
+      "flag": "martinez_sosa_60pct_monopoly",
+      "severity": "critical",
+      "description": "Martinez Sosa captured 60% of ALL state insurance commissions (2019-2023), $416M+. 17+ phone calls with President Alberto Fernandez.",
+      "source": "https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/"
+    },
+    {
+      "flag": "socma_cuit_gap",
+      "severity": "medium",
+      "description": "Primary SOCMA SA CUIT (30-50331125-6) returns no results in any registry. Only SOCMA Americana (30-62937607-7) found. Original may be dissolved or records purged.",
+      "source": "RNS/CUITOnline search"
+    },
+    {
+      "flag": "correo_argentino_bankruptcy_extension",
+      "severity": "high",
+      "description": "State requested bankruptcy extension from Correo Argentino to SOCMA + SIDECO (Macri family holdings). 20-year concurso, $4.5B debt.",
+      "source": "https://www.pagina12.com.ar/377050-el-gobierno-pidio-la-extension-de-la-quiebra-del-correo-arge"
+    },
+    {
+      "flag": "caputo_untransferable_bond",
+      "severity": "critical",
+      "description": "Caputo took $3.2B USD from BCRA reserves, leaving an untransferable, non-liquidable bond until 2038.",
+      "source": "https://www.ambito.com/economia/luis-caputo-se-quedo-us3200-millones-del-bcra-pagar-deuda-y-dejo-una-letra-intransferible-n5996869"
+    },
+    {
+      "flag": "sturzenegger_99pct_abroad",
+      "severity": "high",
+      "description": "Sturzenegger holds 99% of deposits abroad in foreign currency. $970M patrimony jump in 2024. Un Ombu SAS: minimal capital, broad purpose.",
+      "source": "https://www.perfil.com/noticias/politica/federico-sturzenegger-declaro-un-salto-patrimonial-de-casi-970-millones-en-2024.phtml"
+    },
+    {
+      "flag": "kelsier_not_registered_cnv",
+      "severity": "high",
+      "description": "Kelsier Ventures never registered with CNV's PSAV registry for virtual asset service providers before launching $LIBRA.",
+      "source": "https://www.elonce.com/sociedad/escandalo-cripto-la-empresa-que-creo-libra-no-esta-inscripta-para-operar-en-el-pais.htm"
+    },
+    {
+      "flag": "magnetto_pandora_papers",
+      "severity": "medium",
+      "description": "Magnetto + other major media owners (Fontevecchia, Saguier, Aranda) opened societies in tax havens and Uruguay per Pandora Papers.",
+      "source": "https://www.eldiarioar.com/politica/pandora-papers/magnetto-fontevecchia-saguier-aranda-duenos-principales-medios-argentina-han-abierto-sociedades-paraisos-fiscales-uruguay_1_8403360.html"
+    },
+    {
+      "flag": "self_dealing_pesce",
+      "severity": "high",
+      "description": "Agustin Pesce (DNI 26387281): Government Director + officer of Nación Reaseguros, Red Link, Prisma Medios de Pago, BICE, MGO Group, Contemporanea.",
+      "source": "Neo4j cross-reference query"
+    }
+  ]
+}
