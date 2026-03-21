@@ -107,6 +107,9 @@ const NODE_TYPE_LEGEND: ReadonlyArray<{ type: string; label: Record<Lang, string
   { type: 'Party', label: { en: 'Party', es: 'Partido' }, color: '#8b5cf6' },
   { type: 'Legislation', label: { en: 'Legislation', es: 'Legislacion' }, color: '#f43f5e' },
   { type: 'PoliticalParty', label: { en: 'Party Fund', es: 'Fondo Partidario' }, color: '#f59e0b' },
+  // Investigation-specific node types (caso_slug entities)
+  { type: 'Person', label: { en: 'Person (Investigation)', es: 'Persona (Investigacion)' }, color: '#f97316' },
+  { type: 'Event', label: { en: 'Event', es: 'Evento' }, color: '#8b5cf6' },
 ]
 
 // ---------------------------------------------------------------------------
@@ -198,6 +201,7 @@ export function ConexionesGraph() {
   const [searchQuery, setSearchQuery] = useState('')
   const [activePreset, setActivePreset] = useState('all')
   const [edgeFilterOpen, setEdgeFilterOpen] = useState(false)
+  const [hoveredNode, setHoveredNode] = useState<string | null>(null)
 
   const toggleType = useCallback((type: string) => {
     setActivePreset('') // clear preset when manually toggling
@@ -390,12 +394,10 @@ export function ConexionesGraph() {
       const isSelected = selectedNode?.id === gNode.id
       const isSearchMatch = searchMatchIds ? searchMatchIds.has(gNode.id) : false
       const isSearchActive = searchMatchIds !== null
-      const isKeyNode = gNode.type === 'OffshoreEntity' || gNode.type === 'Company' ||
-        gNode.type === 'Organization' || gNode.type === 'PoliticalParty' ||
-        gNode.type === 'Judge' || (gNode.datasets ?? 0) >= 4
+      const isKeyNode = gNode.type === 'OffshoreEntity' || (gNode.datasets ?? 0) >= 4
       const baseRadius = isKeyNode
-        ? Math.max(6, Math.min(gNode.val * 2, 16))
-        : Math.max(3, Math.min(gNode.val * 1.5, 10))
+        ? Math.max(5, Math.min(gNode.val * 1.5, 12))
+        : Math.max(2.5, Math.min(gNode.val * 1, 8))
       const radius = isSelected ? baseRadius + 2 : baseRadius
 
       // Dim non-matching nodes when search is active
@@ -435,20 +437,28 @@ export function ConexionesGraph() {
         ctx.stroke()
       }
 
-      // Label — always show for key nodes, show for politicians at medium zoom
-      // Also always show for search matches
-      const showLabel = isSelected || isSearchMatch || isKeyNode || globalScale > 1.5 ||
-        (gNode.type === 'Politician' && globalScale > 0.8)
+      const isHovered = hoveredNode === gNode.id
+      // Label visibility: progressive by zoom level
+      // - Always: selected, search match, hovered
+      // - Zoom 1.0+: key nodes (offshore, 4+ datasets)
+      // - Zoom 1.5+: politicians, persons
+      // - Zoom 2.5+: organizations, events
+      // - Zoom 3.5+: everything
+      const showLabel = isSelected || isSearchMatch || isHovered ||
+        (isKeyNode && globalScale > 1.0) ||
+        (gNode.type === 'Politician' && globalScale > 1.5) ||
+        (gNode.type === 'Person' && globalScale > 1.5) ||
+        ((gNode.type === 'Organization' || gNode.type === 'Company') && globalScale > 2.5) ||
+        (gNode.type === 'Event' && globalScale > 2.5) ||
+        globalScale > 3.5
       if (showLabel && !dimmed) {
-        const fontSize = isKeyNode
-          ? Math.max(14 / globalScale, 3)
-          : Math.max(11 / globalScale, 2)
-        ctx.font = `${isSelected || isKeyNode || isSearchMatch ? 'bold ' : ''}${fontSize}px sans-serif`
+        const fontSize = Math.max(10 / globalScale, 2)
+        ctx.font = `${isSelected || isSearchMatch ? 'bold ' : ''}${fontSize}px sans-serif`
         ctx.textAlign = 'center'
         ctx.textBaseline = 'top'
 
-        // Text background for readability
-        const label = gNode.name.length > 25 ? gNode.name.slice(0, 24) + '\u2026' : gNode.name
+        // Text background for readability — truncate long names
+        const label = gNode.name.length > 20 ? gNode.name.slice(0, 19) + '\u2026' : gNode.name
         const textWidth = ctx.measureText(label).width
         ctx.fillStyle = 'rgba(0, 0, 0, 0.6)'
         ctx.fillRect(x - textWidth / 2 - 1, y + radius + 1, textWidth + 2, fontSize + 2)
@@ -457,7 +467,7 @@ export function ConexionesGraph() {
         ctx.fillText(label, x, y + radius + 2)
       }
     },
-    [selectedNode, searchMatchIds],
+    [selectedNode, searchMatchIds, hoveredNode],
   )
 
   // Pointer area for hover detection
@@ -710,6 +720,7 @@ export function ConexionesGraph() {
               nodeCanvasObject={paintNode}
               nodeCanvasObjectMode={() => 'replace'}
               nodePointerAreaPaint={paintPointerArea}
+              onNodeHover={(node: NodeObject<GraphNodeData> | null) => setHoveredNode(node ? (node as GraphNodeData).id : null)}
               linkColor={linkColor as (link: object) => string}
               linkLabel={linkLabel as (link: object) => string}
               linkWidth={(link: object) => {
