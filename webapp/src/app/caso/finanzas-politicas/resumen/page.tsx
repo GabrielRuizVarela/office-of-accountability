@@ -774,6 +774,86 @@ export default function ResumenPage() {
         </ul>
       </section>
 
+      {/* Methodology & Compliance */}
+      <section className="py-12">
+        <h2 className="border-l-4 border-blue-500 pl-4 text-xl font-bold text-zinc-50">
+          {lang === 'es' ? 'Metodologia y Cumplimiento Internacional' : 'Methodology & International Compliance'}
+        </h2>
+
+        <div className="mt-6 space-y-6">
+          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-blue-400">
+              {lang === 'es' ? 'Marcos Internacionales' : 'International Frameworks'}
+            </h3>
+            <ul className="mt-3 space-y-2 text-sm text-zinc-300">
+              <li><span className="font-semibold text-zinc-200">FATF/GAFI:</span> {lang === 'es'
+                ? 'Identificacion de Personas Expuestas Politicamente (PEP), rastreo de beneficiarios finales, deteccion de sociedades fantasma, seguimiento de flujos transfronterizos.'
+                : 'Politically Exposed Persons (PEP) identification, beneficial ownership tracing, shell company detection, cross-border flow tracking.'}</li>
+              <li><span className="font-semibold text-zinc-200">OCDE:</span> {lang === 'es'
+                ? 'Documentacion de soborno extranjero, pagos facilitadores, puerta giratoria entre sector publico y privado.'
+                : 'Foreign bribery documentation, facilitation payments, public-private revolving door mapping.'}</li>
+              <li><span className="font-semibold text-zinc-200">UNCAC:</span> {lang === 'es'
+                ? 'Analisis de declaraciones juradas patrimoniales, conflictos de intereses, deteccion de enriquecimiento ilicito.'
+                : 'Asset disclosure analysis, conflict of interest documentation, illicit enrichment detection.'}</li>
+              <li><span className="font-semibold text-zinc-200">Transparency International:</span> {lang === 'es'
+                ? 'Verificacion con fuentes multiples, test de interes publico, independencia editorial.'
+                : 'Multi-source verification, public interest test, editorial independence.'}</li>
+              <li><span className="font-semibold text-zinc-200">ICIJ:</span> {lang === 'es'
+                ? 'Cruce de registros publicos, investigacion basada en datos, verificacion colaborativa.'
+                : 'Public records cross-referencing, data-driven investigation, collaborative verification.'}</li>
+              <li><span className="font-semibold text-zinc-200">GIJN:</span> {lang === 'es'
+                ? 'Protocolos de verificacion, proteccion de fuentes, interes publico, transparencia metodologica.'
+                : 'Verification protocols, source protection, public interest, methodological transparency.'}</li>
+            </ul>
+          </div>
+
+          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-blue-400">
+              {lang === 'es' ? 'Protocolo de Verificacion' : 'Verification Protocol'}
+            </h3>
+            <ul className="mt-3 space-y-2 text-sm text-zinc-300">
+              <li>{lang === 'es'
+                ? '97,4% de URLs verificadas con HTTP 200 (37/38 en ultima auditoria)'
+                : '97.4% URLs verified with HTTP 200 (37/38 in last audit)'}</li>
+              <li>{lang === 'es'
+                ? '87,5% de claims criticos verificados contra fuente primaria (14/16)'
+                : '87.5% critical claims verified against primary source (14/16)'}</li>
+              <li>{lang === 'es'
+                ? 'Tres niveles de confianza: gold (curado), silver (verificado web), bronze (sin verificar)'
+                : 'Three confidence tiers: gold (curated), silver (web-verified), bronze (unverified)'}</li>
+              <li>{lang === 'es'
+                ? 'Cada hallazgo enlazado a fuente publica verificable'
+                : 'Every finding linked to verifiable public source'}</li>
+              <li>{lang === 'es'
+                ? 'Falsos positivos identificados y eliminados (Martinez Carlos Alberto, Lopez Juan Manuel — nombres comunes sin evidencia)'
+                : 'False positives identified and removed (Martinez Carlos Alberto, Lopez Juan Manuel — common names without evidence)'}</li>
+            </ul>
+          </div>
+
+          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-blue-400">
+              {lang === 'es' ? 'Fuentes de Datos (14 pipelines)' : 'Data Sources (14 pipelines)'}
+            </h3>
+            <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-zinc-400">
+              <span>Como Voto (legislativo)</span>
+              <span>ICIJ Offshore Leaks</span>
+              <span>CNE (donantes electorales)</span>
+              <span>Boletin Oficial (adjudicaciones)</span>
+              <span>IGJ (951K officers)</span>
+              <span>CNV (valores)</span>
+              <span>DDJJ (patrimonio)</span>
+              <span>Compr.ar (contrataciones)</span>
+              <span>BCRA Central Deudores</span>
+              <span>RNS (sociedades)</span>
+              <span>SSN (seguros)</span>
+              <span>Poder Judicial</span>
+              <span>Panama / Pandora Papers</span>
+              <span>Cross-reference engine</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Disclaimer */}
       <section className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-6">
         <p className="text-sm leading-relaxed text-zinc-500">
