@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
 import type { PipelineState } from '@/lib/engine/types'
+import { GateApproval } from '@/components/engine/GateApproval'
 
 // ─── Props ────────────────────────────────────────────────────────────────────
 
@@ -185,21 +186,14 @@ export function PipelineStatus({ casoSlug, pipelineStateId, pipelineId }: Pipeli
         </div>
       )}
 
-      {/* Gate indicator */}
+      {/* Gate approval */}
       {state?.status === 'paused' && state.current_stage_id && (
-        <div className="rounded-lg border border-yellow-800/50 bg-yellow-900/20 px-4 py-3">
-          <div className="flex items-center gap-2">
-            <span className="inline-block h-2 w-2 rounded-full bg-yellow-400" />
-            <span className="text-sm font-medium text-yellow-300">Gate Pending</span>
-          </div>
-          <p className="mt-1 text-sm text-yellow-400/80">
-            Pipeline is paused at stage{' '}
-            <code className="rounded bg-yellow-900/40 px-1 py-0.5 text-xs text-yellow-300">
-              {state.current_stage_id}
-            </code>
-            . Approve or reject the gate to continue.
-          </p>
-        </div>
+        <GateApproval
+          casoSlug={casoSlug}
+          stageId={state.current_stage_id}
+          pipelineStateId={state.id}
+          onAction={fetchState}
+        />
       )}
 
       {/* Error detail */}
