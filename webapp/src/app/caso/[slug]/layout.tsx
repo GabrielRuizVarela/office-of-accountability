@@ -1,24 +1,14 @@
 import type { Metadata } from 'next'
 
-import { LanguageProvider, type Lang } from '@/lib/language-context'
+import { LanguageProvider } from '@/lib/language-context'
 import { InvestigationNav } from '@/components/investigation/InvestigationNav'
 import { BilingualLegalDisclaimer } from '@/components/investigation/LegalDisclaimer'
 import { getClientConfig } from '@/lib/investigations/registry'
 
-const CASE_META: Readonly<Record<string, { title: string; description: string; defaultLang: Lang }>> = {
-  'caso-libra': {
-    title: 'Caso Libra — Oficina de Rendicion de Cuentas',
-    description:
-      'Investigacion comunitaria sobre el token $LIBRA promovido por el presidente Milei. Datos publicos, blockchain, y documentos parlamentarios.',
-    defaultLang: 'es',
-  },
-  'caso-epstein': {
-    title: 'Epstein Case — Office of Accountability',
-    description:
-      'Trafficking and power network. 7,287 entities, court documents, flight records, and factchecking.',
-    defaultLang: 'en',
-  },
-}
+const SITE_NAME = {
+  en: 'Office of Accountability',
+  es: 'Oficina de Rendicion de Cuentas',
+} as const
 
 export async function generateMetadata({
   params,
@@ -26,11 +16,16 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const meta = CASE_META[slug]
+  const config = getClientConfig(slug)
 
+  if (!config) {
+    return { title: `Investigacion — ${SITE_NAME.es}` }
+  }
+
+  const lang = config.defaultLang
   return {
-    title: meta?.title ?? 'Investigacion — Oficina de Rendicion de Cuentas',
-    description: meta?.description,
+    title: `${config.name[lang]} — ${SITE_NAME[lang]}`,
+    description: config.description[lang],
   }
 }
 
@@ -43,7 +38,7 @@ export default async function CasoLayout({
 }) {
   const { slug } = await params
   const config = getClientConfig(slug)
-  const defaultLang = CASE_META[slug]?.defaultLang ?? 'es'
+  const defaultLang = config?.defaultLang ?? 'es'
 
   return (
     <LanguageProvider defaultLang={defaultLang}>

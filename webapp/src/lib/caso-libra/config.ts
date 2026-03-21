@@ -17,6 +17,7 @@ export const casoLibraConfig: InvestigationClientConfig = {
     es: 'El 14 de febrero de 2025, el presidente Milei promovio el token $LIBRA a sus 19 millones de seguidores. En horas, el precio colapso un 94%. Aproximadamente 114,000 billeteras perdieron $251 millones. Un año despues, cero imputados.',
     en: 'On February 14, 2025, President Milei promoted the $LIBRA token to his 19 million followers. Within hours, the price collapsed 94%. Approximately 114,000 wallets lost $251 million. One year later, zero indictments.',
   },
+  defaultLang: 'es',
   tabs: [
     'resumen',
     'investigacion',

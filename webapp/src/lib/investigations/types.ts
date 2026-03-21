@@ -147,6 +147,7 @@ export interface InvestigationClientConfig {
   readonly casoSlug: string
   readonly name: BilingualText
   readonly description: BilingualText
+  readonly defaultLang: 'en' | 'es'
   readonly tabs: readonly TabId[]
   readonly features: {
     readonly wallets: boolean

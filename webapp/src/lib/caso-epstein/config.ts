@@ -17,6 +17,7 @@ export const casoEpsteinConfig: InvestigationClientConfig = {
     es: 'Como una sola relacion financiera construyo un imperio de trafico protegido por riqueza, poder y fracaso institucional. 7,287 nodos conectados, 21,944 aristas, 0 huerfanos.',
     en: 'How a single financial relationship built a trafficking empire shielded by wealth, power, and institutional failure. 7,287 connected nodes, 21,944 edges, 0 orphans.',
   },
+  defaultLang: 'en',
   tabs: [
     'resumen',
     'investigacion',
