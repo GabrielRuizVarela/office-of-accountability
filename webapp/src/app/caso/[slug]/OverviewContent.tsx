@@ -1,11 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
 
+import { useLanguage, type Lang } from '@/lib/language-context'
 import { KeyStats } from '../../../components/investigation/KeyStats'
-
-type Lang = 'en' | 'es'
 
 interface Stat {
   readonly label: string
@@ -105,7 +103,7 @@ const t = {
 } as const
 
 export function OverviewContent({ slug, stats }: OverviewContentProps) {
-  const [lang, setLang] = useState<Lang>('en')
+  const { lang } = useLanguage()
   const basePath = `/caso/${slug}`
 
   const localizedStats = stats.map((s) => ({
@@ -115,32 +113,6 @@ export function OverviewContent({ slug, stats }: OverviewContentProps) {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
-      {/* Language toggle */}
-      <div className="mb-8 flex justify-end">
-        <div className="flex items-center gap-1 rounded-lg border border-zinc-800 p-0.5">
-          <button
-            onClick={() => setLang('en')}
-            className={`rounded-md px-3 py-1 text-sm font-medium transition-colors ${
-              lang === 'en'
-                ? 'bg-blue-600 text-white'
-                : 'text-zinc-400 hover:text-zinc-200'
-            }`}
-          >
-            EN
-          </button>
-          <button
-            onClick={() => setLang('es')}
-            className={`rounded-md px-3 py-1 text-sm font-medium transition-colors ${
-              lang === 'es'
-                ? 'bg-blue-600 text-white'
-                : 'text-zinc-400 hover:text-zinc-200'
-            }`}
-          >
-            ES
-          </button>
-        </div>
-      </div>
-
       {/* Hero */}
       <section className="mb-12 text-center">
         <p className="text-xs font-medium uppercase tracking-widest text-blue-400">

@@ -3,6 +3,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { ForceGraphMethods, NodeObject } from 'react-force-graph-2d'
 
+import { useLanguage } from '@/lib/language-context'
+import type { Lang } from '@/lib/language-context'
+
 // ---------------------------------------------------------------------------
 // Types for our API response
 // ---------------------------------------------------------------------------
@@ -40,29 +43,52 @@ interface GraphApiResponse {
 }
 
 // ---------------------------------------------------------------------------
-// Node type legend
+// Node type legend (bilingual)
 // ---------------------------------------------------------------------------
 
-const NODE_TYPE_LEGEND: ReadonlyArray<{ type: string; label: string; color: string }> = [
-  { type: 'Politician', label: 'Politico', color: '#3b82f6' },
-  { type: 'OffshoreOfficer', label: 'Offshore Officer', color: '#ef4444' },
-  { type: 'OffshoreEntity', label: 'Entidad Offshore', color: '#dc2626' },
-  { type: 'Donor', label: 'Donante', color: '#22c55e' },
-  { type: 'GovernmentAppointment', label: 'Nombramiento', color: '#f97316' },
-  { type: 'Judge', label: 'Juez', color: '#f97316' },
-  { type: 'CompanyOfficer', label: 'Directivo', color: '#a855f7' },
-  { type: 'BoardMember', label: 'Directorio', color: '#a855f7' },
-  { type: 'Company', label: 'Empresa', color: '#10b981' },
-  { type: 'Organization', label: 'Organizacion', color: '#10b981' },
-  { type: 'SAME_COALITION', label: 'Coalicion', color: '#f59e0b' },
-  { type: 'SAME_PROVINCE', label: 'Provincia', color: '#6366f1' },
-  { type: 'BOTH_OFFSHORE', label: 'Red Offshore', color: '#ef4444' },
-  { type: 'SHARED_ORG', label: 'Org. Compartida', color: '#10b981' },
-  { type: 'Contractor', label: 'Contratista', color: '#8b5cf6' },
-  { type: 'Party', label: 'Partido', color: '#8b5cf6' },
-  { type: 'Legislation', label: 'Legislacion', color: '#f43f5e' },
-  { type: 'PoliticalParty', label: 'Fondo Partidario', color: '#f59e0b' },
+const NODE_TYPE_LEGEND: ReadonlyArray<{ type: string; label: Record<Lang, string>; color: string }> = [
+  { type: 'Politician', label: { en: 'Politician', es: 'Politico' }, color: '#3b82f6' },
+  { type: 'OffshoreOfficer', label: { en: 'Offshore Officer', es: 'Offshore Officer' }, color: '#ef4444' },
+  { type: 'OffshoreEntity', label: { en: 'Offshore Entity', es: 'Entidad Offshore' }, color: '#dc2626' },
+  { type: 'Donor', label: { en: 'Donor', es: 'Donante' }, color: '#22c55e' },
+  { type: 'GovernmentAppointment', label: { en: 'Appointment', es: 'Nombramiento' }, color: '#f97316' },
+  { type: 'Judge', label: { en: 'Judge', es: 'Juez' }, color: '#f97316' },
+  { type: 'CompanyOfficer', label: { en: 'Officer', es: 'Directivo' }, color: '#a855f7' },
+  { type: 'BoardMember', label: { en: 'Board Member', es: 'Directorio' }, color: '#a855f7' },
+  { type: 'Company', label: { en: 'Company', es: 'Empresa' }, color: '#10b981' },
+  { type: 'Organization', label: { en: 'Organization', es: 'Organizacion' }, color: '#10b981' },
+  { type: 'SAME_COALITION', label: { en: 'Coalition', es: 'Coalicion' }, color: '#f59e0b' },
+  { type: 'SAME_PROVINCE', label: { en: 'Province', es: 'Provincia' }, color: '#6366f1' },
+  { type: 'BOTH_OFFSHORE', label: { en: 'Offshore Network', es: 'Red Offshore' }, color: '#ef4444' },
+  { type: 'SHARED_ORG', label: { en: 'Shared Org.', es: 'Org. Compartida' }, color: '#10b981' },
+  { type: 'Contractor', label: { en: 'Contractor', es: 'Contratista' }, color: '#8b5cf6' },
+  { type: 'Party', label: { en: 'Party', es: 'Partido' }, color: '#8b5cf6' },
+  { type: 'Legislation', label: { en: 'Legislation', es: 'Legislacion' }, color: '#f43f5e' },
+  { type: 'PoliticalParty', label: { en: 'Party Fund', es: 'Fondo Partidario' }, color: '#f59e0b' },
 ]
+
+// ---------------------------------------------------------------------------
+// UI text (bilingual)
+// ---------------------------------------------------------------------------
+
+const ui = {
+  nodes: { en: 'nodes', es: 'nodos' },
+  connections: { en: 'connections', es: 'conexiones' },
+  showAll: { en: 'show all', es: 'mostrar todos' },
+  loadingGraph: { en: 'Loading graph from Neo4j...', es: 'Cargando grafo desde Neo4j...' },
+  loadingVisualization: { en: 'Loading visualization...', es: 'Cargando visualizacion...' },
+  errorLoading: { en: 'Failed to load graph', es: 'Error al cargar el grafo' },
+  connectionError: { en: 'Could not connect to server', es: 'No se pudo conectar con el servidor' },
+  retry: { en: 'Retry', es: 'Reintentar' },
+  zoomIn: { en: 'Zoom in', es: 'Acercar' },
+  zoomOut: { en: 'Zoom out', es: 'Alejar' },
+  viewAll: { en: 'View all', es: 'Ver todo' },
+  closeDetail: { en: 'Close detail', es: 'Cerrar detalle' },
+  presentIn: { en: 'Present in', es: 'Presente en' },
+  dataSources: { en: 'data sources', es: 'fuentes de datos' },
+  yes: { en: 'Yes', es: 'Si' },
+  no: { en: 'No', es: 'No' },
+} as const
 
 // ---------------------------------------------------------------------------
 // Lazy load ForceGraph2D (accesses window at import time)
@@ -84,6 +110,7 @@ function getForceGraph2D(): Promise<ForceGraph2DComponent> {
 // ---------------------------------------------------------------------------
 
 export function ConexionesGraph() {
+  const { lang } = useLanguage()
   const graphRef = useRef<ForceGraphMethods | undefined>(undefined)
   const containerRef = useRef<HTMLDivElement>(null)
   const [ForceGraph2D, setForceGraph2D] = useState<ForceGraph2DComponent | null>(null)
@@ -134,14 +161,14 @@ export function ConexionesGraph() {
         if (cancelled) return
 
         if (!json.success) {
-          setError(json.error ?? 'Error al cargar el grafo')
+          setError(json.error ?? ui.errorLoading[lang])
           return
         }
 
         setGraphData(json.data)
       } catch {
         if (!cancelled) {
-          setError('No se pudo conectar con el servidor')
+          setError(ui.connectionError[lang])
         }
       } finally {
         if (!cancelled) setLoading(false)
@@ -240,7 +267,7 @@ export function ConexionesGraph() {
         ctx.textBaseline = 'top'
 
         // Text background for readability
-        const label = gNode.name.length > 25 ? gNode.name.slice(0, 24) + '…' : gNode.name
+        const label = gNode.name.length > 25 ? gNode.name.slice(0, 24) + '\u2026' : gNode.name
         const textWidth = ctx.measureText(label).width
         ctx.fillStyle = 'rgba(0, 0, 0, 0.6)'
         ctx.fillRect(x - textWidth / 2 - 1, y + radius + 1, textWidth + 2, fontSize + 2)
@@ -332,7 +359,7 @@ export function ConexionesGraph() {
                   style={{ backgroundColor: item.color }}
                 />
                 <span className="text-xs text-zinc-400">
-                  {item.label} ({count})
+                  {item.label[lang]} ({count})
                 </span>
               </button>
             )
@@ -340,14 +367,14 @@ export function ConexionesGraph() {
         </div>
         {graphData && (
           <span className="text-xs text-zinc-500">
-            {filteredData ? filteredData.nodes.length : graphData.nodes.length} nodos &middot;{' '}
-            {filteredData ? filteredData.links.length : graphData.links.length} conexiones
+            {filteredData ? filteredData.nodes.length : graphData.nodes.length} {ui.nodes[lang]} &middot;{' '}
+            {filteredData ? filteredData.links.length : graphData.links.length} {ui.connections[lang]}
             {hiddenTypes.size > 0 && (
               <button
                 onClick={() => setHiddenTypes(new Set())}
                 className="ml-2 text-blue-400 hover:underline"
               >
-                mostrar todos
+                {ui.showAll[lang]}
               </button>
             )}
           </span>
@@ -361,7 +388,7 @@ export function ConexionesGraph() {
             <div className="flex h-full items-center justify-center">
               <div className="text-center">
                 <div className="mb-3 inline-block h-8 w-8 animate-spin rounded-full border-2 border-zinc-600 border-t-blue-500" />
-                <p className="text-sm text-zinc-500">Cargando grafo desde Neo4j...</p>
+                <p className="text-sm text-zinc-500">{ui.loadingGraph[lang]}</p>
               </div>
             </div>
           )}
@@ -374,7 +401,7 @@ export function ConexionesGraph() {
                   onClick={() => window.location.reload()}
                   className="mt-3 rounded border border-zinc-700 px-3 py-1.5 text-xs text-zinc-300 hover:border-zinc-500"
                 >
-                  Reintentar
+                  {ui.retry[lang]}
                 </button>
               </div>
             </div>
@@ -415,7 +442,7 @@ export function ConexionesGraph() {
 
           {!loading && !error && graphData && !ForceGraph2D && (
             <div className="flex h-full items-center justify-center text-zinc-600">
-              Cargando visualizacion...
+              {ui.loadingVisualization[lang]}
             </div>
           )}
         </div>
@@ -426,21 +453,21 @@ export function ConexionesGraph() {
             <button
               onClick={zoomIn}
               className="rounded border border-zinc-700 bg-zinc-900/90 px-2.5 py-1.5 text-sm text-zinc-300 hover:border-zinc-500 hover:text-white"
-              aria-label="Acercar"
+              aria-label={ui.zoomIn[lang]}
             >
               +
             </button>
             <button
               onClick={zoomOut}
               className="rounded border border-zinc-700 bg-zinc-900/90 px-2.5 py-1.5 text-sm text-zinc-300 hover:border-zinc-500 hover:text-white"
-              aria-label="Alejar"
+              aria-label={ui.zoomOut[lang]}
             >
               −
             </button>
             <button
               onClick={zoomToFit}
               className="rounded border border-zinc-700 bg-zinc-900/90 px-2.5 py-1.5 text-xs text-zinc-300 hover:border-zinc-500 hover:text-white"
-              aria-label="Ver todo"
+              aria-label={ui.viewAll[lang]}
             >
               ⊞
             </button>
@@ -458,7 +485,7 @@ export function ConexionesGraph() {
                     style={{ backgroundColor: selectedNode.color }}
                   />
                   <span className="text-xs font-medium text-zinc-400">
-                    {getTypeLabel(selectedNode.type)}
+                    {getTypeLabel(selectedNode.type, lang)}
                   </span>
                 </div>
                 <h3 className="mt-1 truncate text-sm font-semibold text-zinc-100">
@@ -468,7 +495,7 @@ export function ConexionesGraph() {
               <button
                 onClick={closeDetail}
                 className="ml-2 flex-shrink-0 text-zinc-500 hover:text-zinc-300"
-                aria-label="Cerrar detalle"
+                aria-label={ui.closeDetail[lang]}
               >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -478,7 +505,7 @@ export function ConexionesGraph() {
             <div className="max-h-60 overflow-y-auto px-4 py-3">
               {selectedNode.type === 'Politician' && (
                 <div className="mb-2 text-xs text-zinc-400">
-                  Presente en <span className="font-semibold text-blue-400">{selectedNode.datasets}</span> fuentes de datos
+                  {ui.presentIn[lang]} <span className="font-semibold text-blue-400">{selectedNode.datasets}</span> {ui.dataSources[lang]}
                 </div>
               )}
               <dl className="space-y-1.5">
@@ -491,7 +518,7 @@ export function ConexionesGraph() {
                         {key.replace(/_/g, ' ')}
                       </dt>
                       <dd className="text-xs text-zinc-300">
-                        {formatValue(value)}
+                        {formatValue(value, lang)}
                       </dd>
                     </div>
                   ))}
@@ -508,24 +535,24 @@ export function ConexionesGraph() {
 // Helpers
 // ---------------------------------------------------------------------------
 
-function getTypeLabel(type: string): string {
-  const labels: Record<string, string> = {
-    Politician: 'Politico',
-    OffshoreOfficer: 'Oficial Offshore',
-    OffshoreEntity: 'Entidad Offshore',
-    Donor: 'Donante',
-    GovernmentAppointment: 'Nombramiento',
-    CompanyOfficer: 'Directivo',
-    BoardMember: 'Miembro del Directorio',
-    AssetDeclaration: 'Declaracion Jurada',
+function getTypeLabel(type: string, lang: Lang): string {
+  const labels: Record<string, Record<Lang, string>> = {
+    Politician: { en: 'Politician', es: 'Politico' },
+    OffshoreOfficer: { en: 'Offshore Officer', es: 'Oficial Offshore' },
+    OffshoreEntity: { en: 'Offshore Entity', es: 'Entidad Offshore' },
+    Donor: { en: 'Donor', es: 'Donante' },
+    GovernmentAppointment: { en: 'Appointment', es: 'Nombramiento' },
+    CompanyOfficer: { en: 'Company Officer', es: 'Directivo' },
+    BoardMember: { en: 'Board Member', es: 'Miembro del Directorio' },
+    AssetDeclaration: { en: 'Asset Declaration', es: 'Declaracion Jurada' },
   }
-  return labels[type] ?? type
+  return labels[type]?.[lang] ?? type
 }
 
-function formatValue(value: unknown): string {
+function formatValue(value: unknown, lang: Lang): string {
   if (value === null || value === undefined) return '-'
-  if (typeof value === 'boolean') return value ? 'Si' : 'No'
-  if (typeof value === 'number') return value.toLocaleString('es-AR')
+  if (typeof value === 'boolean') return value ? (lang === 'en' ? 'Yes' : 'Si') : 'No'
+  if (typeof value === 'number') return value.toLocaleString(lang === 'es' ? 'es-AR' : 'en-US')
   if (Array.isArray(value)) return value.join(', ')
   return String(value)
 }

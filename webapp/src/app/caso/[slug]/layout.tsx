@@ -1,18 +1,21 @@
 import type { Metadata } from 'next'
 
+import { LanguageProvider, type Lang } from '@/lib/language-context'
 import { InvestigationNav } from '@/components/investigation/InvestigationNav'
-import { LegalDisclaimer } from '@/components/investigation/LegalDisclaimer'
+import { BilingualLegalDisclaimer } from '@/components/investigation/LegalDisclaimer'
 
-const CASE_META: Readonly<Record<string, { title: string; description: string }>> = {
+const CASE_META: Readonly<Record<string, { title: string; description: string; defaultLang: Lang }>> = {
   'caso-libra': {
     title: 'Caso Libra — Oficina de Rendicion de Cuentas',
     description:
       'Investigacion comunitaria sobre el token $LIBRA promovido por el presidente Milei. Datos publicos, blockchain, y documentos parlamentarios.',
+    defaultLang: 'es',
   },
   'caso-epstein': {
-    title: 'Caso Epstein — Oficina de Rendicion de Cuentas',
+    title: 'Epstein Case — Office of Accountability',
     description:
-      'Red de trafico y poder. 7,287 entidades, documentos judiciales, registros de vuelo y verificacion de hechos.',
+      'Trafficking and power network. 7,287 entities, court documents, flight records, and factchecking.',
+    defaultLang: 'en',
   },
 }
 
@@ -38,16 +41,17 @@ export default async function CasoLayout({
   readonly params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
+  const defaultLang = CASE_META[slug]?.defaultLang ?? 'es'
 
   return (
-    <>
+    <LanguageProvider defaultLang={defaultLang}>
       <InvestigationNav slug={slug} />
       <main className="mx-auto max-w-6xl px-4 py-6 sm:py-8">
         {children}
         <div className="mt-8 border-t border-zinc-800 pt-6">
-          <LegalDisclaimer />
+          <BilingualLegalDisclaimer />
         </div>
       </main>
-    </>
+    </LanguageProvider>
   )
 }
