@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
+import { headers } from 'next/headers'
 import { Geist, Geist_Mono } from 'next/font/google'
 
+import { detectLang, SITE_META } from '@/lib/i18n'
+import { LanguageProvider } from '@/lib/language-context'
 import { SiteNav } from '@/components/layout/SiteNav'
 import { Footer } from '@/components/layout/Footer'
 import './globals.css'
@@ -15,25 +18,35 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
-export const metadata: Metadata = {
-  title: 'Oficina de Rendición de Cuentas',
-  description:
-    'Plataforma de conocimiento cívico para la política argentina. Explorá las conexiones entre legisladores, votaciones y legislación.',
+export async function generateMetadata(): Promise<Metadata> {
+  const h = await headers()
+  const lang = detectLang(h.get('accept-language'))
+  const meta = SITE_META[lang]
+
+  return {
+    title: meta.title,
+    description: meta.description,
+  }
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const h = await headers()
+  const lang = detectLang(h.get('accept-language'))
+
   return (
-    <html lang="es">
+    <html lang={lang}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className="flex min-h-screen flex-col bg-zinc-950">
-          <SiteNav />
-          <div className="flex-1">{children}</div>
-          <Footer />
-        </div>
+        <LanguageProvider defaultLang={lang}>
+          <div className="flex min-h-screen flex-col bg-zinc-950">
+            <SiteNav />
+            <div className="flex-1">{children}</div>
+            <Footer />
+          </div>
+        </LanguageProvider>
       </body>
     </html>
   )
