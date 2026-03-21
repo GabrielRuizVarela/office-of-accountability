@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useState, useCallback, type ReactNode } from 'react'
+import { createContext, useContext, useState, useCallback, useEffect, useRef, type ReactNode } from 'react'
 
 export type Lang = 'en' | 'es'
 
@@ -23,8 +23,26 @@ export function LanguageProvider({
   readonly children: ReactNode
   readonly defaultLang?: Lang
 }) {
-  const [lang, setLang] = useState<Lang>(defaultLang)
-  const toggle = useCallback(() => setLang((l) => (l === 'en' ? 'es' : 'en')), [])
+  const [lang, setLangState] = useState<Lang>(defaultLang)
+  const userToggled = useRef(false)
+
+  const setLang = useCallback((l: Lang) => {
+    userToggled.current = true
+    setLangState(l)
+  }, [])
+
+  const toggle = useCallback(() => {
+    userToggled.current = true
+    setLangState((l) => (l === 'en' ? 'es' : 'en'))
+  }, [])
+
+  useEffect(() => {
+    if (userToggled.current) return
+    if (typeof window === 'undefined') return
+    const browserLang = navigator.language
+    if (browserLang.startsWith('es')) setLangState('es')
+    else if (browserLang.startsWith('en')) setLangState('en')
+  }, [])
 
   return (
     <LanguageContext.Provider value={{ lang, setLang, toggle }}>
