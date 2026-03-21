@@ -81,10 +81,27 @@ const UNIQUE_CONSTRAINTS = [
     label: 'CasoLibraWallet',
     property: 'address',
   },
+  // Cross-reference engine — platform-level entity deduplication
+  {
+    name: 'contractor_cuit_unique',
+    label: 'Contractor',
+    property: 'cuit',
+  },
+  {
+    name: 'company_cuit_unique',
+    label: 'Company',
+    property: 'cuit',
+  },
+  // Investigation config
+  {
+    name: 'investigation_config_id_unique',
+    label: 'InvestigationConfig',
+    property: 'id',
+  },
 ] as const
 
 /** Full-text indexes for search across text fields */
-const FULLTEXT_INDEXES = [
+const FULLTEXT_INDEXES: readonly { name: string; labels: readonly string[]; properties: readonly string[] }[] = [
   {
     name: 'politician_name_fulltext',
     labels: ['Politician'],
@@ -116,7 +133,18 @@ const FULLTEXT_INDEXES = [
     labels: ['CasoLibraDocument'],
     properties: ['title', 'summary'],
   },
-] as const
+  // Cross-reference engine — platform-level entity search
+  {
+    name: 'contractor_name_fulltext',
+    labels: ['Contractor'],
+    properties: ['name'],
+  },
+  {
+    name: 'company_name_fulltext',
+    labels: ['Company'],
+    properties: ['name'],
+  },
+]
 
 /** Standard B-tree indexes for common lookup patterns */
 const BTREE_INDEXES = [
@@ -170,6 +198,42 @@ const BTREE_INDEXES = [
     name: 'caso_libra_organization_slug_index',
     label: 'CasoLibraOrganization',
     property: 'slug',
+  },
+  // Cross-reference engine — platform-level lookup indexes
+  {
+    name: 'appointment_dni_index',
+    label: 'GovernmentAppointment',
+    property: 'dni',
+  },
+  {
+    name: 'appointment_cuil_index',
+    label: 'GovernmentAppointment',
+    property: 'cuil',
+  },
+  {
+    name: 'officer_document_number_index',
+    label: 'CompanyOfficer',
+    property: 'document_number',
+  },
+  {
+    name: 'contractor_name_index',
+    label: 'Contractor',
+    property: 'name',
+  },
+  {
+    name: 'company_name_index',
+    label: 'Company',
+    property: 'name',
+  },
+  {
+    name: 'contractor_cuit_index',
+    label: 'Contractor',
+    property: 'cuit',
+  },
+  {
+    name: 'company_cuit_index',
+    label: 'Company',
+    property: 'cuit',
   },
 ] as const
 
