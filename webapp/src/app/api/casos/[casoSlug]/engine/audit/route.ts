@@ -4,7 +4,7 @@ import { getChain } from '@/lib/engine/audit'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ investigationId: string }> },
+  { params }: { params: Promise<{ casoSlug: string }> },
 ) {
   await params
 

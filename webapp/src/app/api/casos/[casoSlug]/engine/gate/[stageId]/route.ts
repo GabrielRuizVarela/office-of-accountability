@@ -10,12 +10,12 @@ import { appendEntry } from '@/lib/engine/audit'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ investigationId: string; stageId: string }> },
+  { params }: { params: Promise<{ casoSlug: string; stageId: string }> },
 ) {
-  const { investigationId, stageId } = await params
+  const { casoSlug, stageId } = await params
 
   try {
-    const states = await listByPipeline(investigationId)
+    const states = await listByPipeline(casoSlug)
     const gatePending = states.find(
       (s) => s.current_stage_id === stageId && s.status === 'paused',
     )
@@ -53,7 +53,7 @@ export async function GET(
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: Promise<{ investigationId: string; stageId: string }> },
+  { params }: { params: Promise<{ casoSlug: string; stageId: string }> },
 ) {
   const { stageId } = await params
 

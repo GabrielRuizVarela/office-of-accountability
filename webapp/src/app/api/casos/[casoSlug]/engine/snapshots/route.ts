@@ -18,7 +18,7 @@ function dbError(message: string): boolean {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ investigationId: string }> },
+  { params }: { params: Promise<{ casoSlug: string }> },
 ) {
   await params
 
@@ -58,7 +58,7 @@ export async function GET(
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: Promise<{ investigationId: string }> },
+  { params }: { params: Promise<{ casoSlug: string }> },
 ) {
   await params
 
@@ -121,7 +121,7 @@ export async function POST(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: Promise<{ investigationId: string }> },
+  { params }: { params: Promise<{ casoSlug: string }> },
 ) {
   await params
 

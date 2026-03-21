@@ -4,9 +4,9 @@ import { createPipelineState, startPipeline } from '@/lib/engine/pipeline'
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: Promise<{ investigationId: string }> },
+  { params }: { params: Promise<{ casoSlug: string }> },
 ) {
-  const { investigationId } = await params
+  const { casoSlug } = await params
 
   let body: { pipeline_id?: string }
   try {
@@ -28,7 +28,7 @@ export async function POST(
   try {
     const state = await createPipelineState({
       pipeline_id: body.pipeline_id,
-      caso_slug: investigationId,
+      caso_slug: casoSlug,
     })
     await startPipeline(state.id)
 

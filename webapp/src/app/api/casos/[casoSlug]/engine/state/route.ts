@@ -4,7 +4,7 @@ import { listByPipeline } from '@/lib/engine/pipeline'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ investigationId: string }> },
+  { params }: { params: Promise<{ casoSlug: string }> },
 ) {
   await params
 
