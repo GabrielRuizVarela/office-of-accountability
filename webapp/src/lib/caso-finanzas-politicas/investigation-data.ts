@@ -225,7 +225,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'confirmed',
     tier: 2,
     source: 'Cross-dataset analysis (Boletin Oficial + CNE)',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://aportantes.electoral.gob.ar/aportes/',
     detail_es:
       'La Ley 26.215 Art. 15 prohibe explicitamente las contribuciones de campana de personas o entidades con contratos estatales. El Art. 15 bis establece multas de 10 a 20 veces el monto de la contribucion ilegal y potencial procesamiento penal.',
     detail_en:
@@ -308,7 +308,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'confirmed',
     tier: 2,
     source: 'Cross-dataset analysis (Boletin Oficial + DDJJ)',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-declaraciones-juradas-patrimoniales-integrales-caracter-publico',
     detail_es:
       'LCG SA figura en el Boletin Oficial con contratos de consultoria con el Congreso por ARS 1.690.000 durante el periodo en que Lousteau ejercia como senador. La causa judicial continua activa.',
     detail_en:
@@ -324,7 +324,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'confirmed',
     tier: 1,
     source: 'IGJ / Cross-dataset analysis',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-entidades-constituidas-inspeccion-general-justicia',
     detail_es:
       'La coincidencia entre el directorio de PENSAR ARGENTINA y legisladores activos fue detectada en el cruce de datasets IGJ y GovernmentAppointment. Nicolas Caputo figura como miembro fundador. La foundation aparece en 2 datasets.',
     detail_en:
@@ -340,7 +340,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'confirmed',
     tier: 1,
     source: 'ICIJ Offshore Leaks',
-    source_url: 'https://offshoreleaks.icij.org',
+    source_url: 'https://offshoreleaks.icij.org/nodes/240040844',
     detail_es:
       'Coincidencias confirmadas en la base ICIJ. De Narvaez adquirio Walmart Argentina en noviembre de 2020. Sus entidades offshore incluyen Titan Consulting Ltd y Retrato Partners Ltd, ambas en jurisdicciones de baja tributacion.',
     detail_en:
@@ -356,7 +356,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'confirmed',
     tier: 2,
     source: 'ICIJ / Cross-dataset analysis',
-    source_url: 'https://offshoreleaks.icij.org',
+    source_url: 'https://offshoreleaks.icij.org/stories/nestor-grindetti',
     detail_es:
       'Mercier International SA (Panama) aparece en la base ICIJ vinculada a Grindetti. Clariden Leu fue absorbido por Credit Suisse en 2012. Las causas tributarias en Brasil corresponden al periodo 2010-2020 segun registros del fisco federal brasileno.',
     detail_en:
@@ -372,7 +372,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'alleged',
     tier: 2,
     source: 'Cross-dataset analysis (Como Voto + IGJ + CNV)',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-entidades-constituidas-inspeccion-general-justicia',
     detail_es:
       'Hallazgo analitico derivado del grafo de coincidencias. La potencial coincidencia entre el rol legislativo y el interes corporativo en el sector financiero abarca a 69 individuos identificados. No se confirma causalidad — se documenta la coincidencia estructural.',
     detail_en:
@@ -456,7 +456,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'confirmed',
     tier: 2,
     source: 'Cross-dataset analysis (IGJ)',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-entidades-constituidas-inspeccion-general-justicia',
     detail_es:
       'El grupo Werthein controla el cluster Caja de Seguros (32 officers compartidos). Pampa Energía opera la infraestructura eléctrica de Buenos Aires con 81 officers idénticos entre CITELEC y EDELAP. MetLife opera 5 entidades legales separadas (seguro, pensión, inversión) con 29-40 officers compartidos.',
     detail_en:
@@ -511,7 +511,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'confirmed',
     tier: 1,
     source: 'DDJJ / Cross-dataset analysis',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-declaraciones-juradas-patrimoniales-integrales-caracter-publico',
   },
   // --- Tier 1: Judicial Branch — 2% conviction rate ---
   {
@@ -819,7 +819,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'confirmed',
     tier: 1,
     source: 'Neo4j cross-reference',
-    source_url: 'https://www.ceads.org.ar/',
+    source_url: 'https://ceads.org.ar/sobre-ceads/autoridades/',
   },
   {
     id: 'belocopitt-pandemic-aid',
@@ -871,7 +871,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'confirmed',
     tier: 1,
     source: 'Neo4j graph analysis',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-entidades-constituidas-inspeccion-general-justicia',
   },
   {
     id: 'menem-privatization-chain',
@@ -898,7 +898,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     status: 'confirmed',
     tier: 1,
     source: 'Neo4j shortest path analysis',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-entidades-constituidas-inspeccion-general-justicia',
   },
 ] as const
 
@@ -1460,7 +1460,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 4,
     status_es: 'No confirmado — Probable',
     status_en: 'Unconfirmed — Probable',
-    source_url: 'https://offshoreleaks.icij.org',
+    source_url: 'https://offshoreleaks.icij.org/search?q=Camano&cat=0',
   },
   {
     id: 'actor-bullrich',
@@ -1475,7 +1475,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 4,
     status_es: 'Puerta giratoria — sin hallazgo penal',
     status_en: 'Revolving door — no criminal finding',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-declaraciones-juradas-patrimoniales-integrales-caracter-publico',
   },
   {
     id: 'actor-cordero',
@@ -1490,7 +1490,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Presunto — Referido a UIF',
     status_en: 'Alleged — Referred to UIF',
-    source_url: 'https://offshoreleaks.icij.org',
+    source_url: 'https://offshoreleaks.icij.org/search?q=BETHAN+INVESTMENTS&cat=0',
   },
   {
     id: 'actor-rodriguez',
@@ -1505,7 +1505,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Confirmado — Coincidencia con prohibicion legal',
     status_en: 'Confirmed — Coincidence with legal prohibition',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://aportantes.electoral.gob.ar/aportes/',
   },
   {
     id: 'actor-sanchez',
@@ -1520,7 +1520,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Puerta giratoria — alegaciones pendientes',
     status_en: 'Revolving door — allegations pending',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-declaraciones-juradas-patrimoniales-integrales-caracter-publico',
   },
   {
     id: 'actor-macri-gianfranco',
@@ -1565,7 +1565,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 4,
     status_es: 'La causa judicial continua',
     status_en: 'Judicial case continues',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://www.iprofesional.com/politica/380149-lousteau-le-facturaria-un-extra-al-congreso-desde-su-consultora',
   },
   {
     id: 'actor-denarvaez',
@@ -1580,7 +1580,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 4,
     status_es: 'Coincidencias ICIJ confirmadas',
     status_en: 'ICIJ matches confirmed',
-    source_url: 'https://offshoreleaks.icij.org',
+    source_url: 'https://offshoreleaks.icij.org/nodes/240040844',
   },
   {
     id: 'actor-grindetti',
@@ -1595,7 +1595,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Causas tributarias en Brasil activas',
     status_en: 'Active tax cases in Brazil',
-    source_url: 'https://offshoreleaks.icij.org',
+    source_url: 'https://offshoreleaks.icij.org/stories/nestor-grindetti',
   },
   {
     id: 'actor-heller',
@@ -1610,7 +1610,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Conflicto de interes confirmado — sin causa penal',
     status_en: 'Confirmed conflict of interest — no criminal case',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-entidades-constituidas-inspeccion-general-justicia',
   },
   {
     id: 'actor-lijo',
@@ -1760,7 +1760,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 1,
     status_es: 'Anomalía patrimonial — ARS 1.75B declarados',
     status_en: 'Wealth anomaly — ARS 1.75B declared',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-declaraciones-juradas-patrimoniales-integrales-caracter-publico',
   },
   // --- Milei-era key actors ---
   {
@@ -1897,7 +1897,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Monopolio eléctrico documentado — 81 officers compartidos',
     status_en: 'Electricity monopoly documented — 81 shared officers',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-entidades-constituidas-inspeccion-general-justicia',
   },
   {
     id: 'actor-werthein',
@@ -1912,7 +1912,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Concentración de mercado documentada — 32 officers compartidos',
     status_en: 'Market concentration documented — 32 shared officers',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-entidades-constituidas-inspeccion-general-justicia',
   },
   {
     id: 'actor-herrera-de-noble',
@@ -2003,7 +2003,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 3,
     status_es: 'Crecimiento patrimonial anómalo — 45x',
     status_en: 'Anomalous wealth growth — 45x',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-declaraciones-juradas-patrimoniales-integrales-caracter-publico',
   },
   {
     id: 'actor-closs',
@@ -2018,7 +2018,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Anomalía patrimonial — crecimiento 367x',
     status_en: 'Wealth anomaly — 367x growth',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-declaraciones-juradas-patrimoniales-integrales-caracter-publico',
   },
   {
     id: 'actor-carrizo',
@@ -2033,7 +2033,7 @@ export const ACTORS: readonly Actor[] = [
     datasets: 2,
     status_es: 'Anomalía patrimonial — crecimiento 1577x',
     status_en: 'Wealth anomaly — 1577x growth',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-declaraciones-juradas-patrimoniales-integrales-caracter-publico',
   },
   {
     id: 'actor-casanello',
@@ -2186,7 +2186,7 @@ export const ACTORS: readonly Actor[] = [
       'Revolving door: Government Director + officer of Nación Reaseguros, Red Link, Prisma Medios de Pago, BICE.',
     party: 'Independiente',
     datasets: 4,
-    source_url: 'https://www.bcra.gob.ar/',
+    source_url: 'https://www.ambito.com/economia/el-gobierno-designo-agustin-pesce-el-bice-su-paso-el-bcra-n6020992',
   },
   {
     id: 'eurnekian-eduardo',
@@ -2279,7 +2279,7 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
       'Graciela Camano declared wealth growth over 10 years. From ARS 2.8M to ARS 39.2M, while maintaining an offshore entity in BVI.',
     date: '2013–2023',
     source: 'DDJJ Asset Declarations',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://datos.gob.ar/dataset/justicia-declaraciones-juradas-patrimoniales-integrales-caracter-publico',
   },
   {
     id: 'flow-socma-blanqueo',
@@ -2334,7 +2334,7 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
       'LCG SA reportedly billed the National Congress ARS 1,690,000 between 2020 and 2022, during which Martin Lousteau served as senator. The judicial case continues.',
     date: '2020-2022',
     source: 'Boletin Oficial / Cross-dataset analysis',
-    source_url: 'https://datos.gob.ar',
+    source_url: 'https://www.iprofesional.com/politica/380149-lousteau-le-facturaria-un-extra-al-congreso-desde-su-consultora',
   },
   {
     id: 'flow-aluar-coalitions',
@@ -2347,7 +2347,7 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
       'Aluar SA made campaign donations of ARS 5,400,000 in 2019 distributed between Juntos por el Cambio and Frente de Todos, simultaneously financing both main coalitions.',
     date: '2019',
     source: 'CNE',
-    source_url: 'https://aportantes.electoral.gob.ar',
+    source_url: 'https://aportantes.electoral.gob.ar/aportes/',
   },
   {
     id: 'flow-nacion-seguros-brokers-embargo',
@@ -2373,7 +2373,7 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
       '50 businessmen in the Cuadernos case offered between USD 12M and USD 40M each to buy dismissals. Argentina\'s corruption conviction rate is 2% according to the Supreme Court\'s own audit.',
     date: '2018-2025',
     source: 'Corte Suprema / Chequeado',
-    source_url: 'https://chequeado.com',
+    source_url: 'https://chequeado.com/el-explicador/causa-cuadernos-las-5-claves-del-juicio-contra-cristina-fernandez-de-kirchner-ex-funcionarios-y-empresarios/',
   },
   // --- Milei-era money flows ---
   {
@@ -2387,7 +2387,7 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
       'Insiders cashed out USD 107M before the 90% crash of $LIBRA. President Milei promoted the cryptocurrency which hit USD 4.5B market cap. 44,000 victims affected.',
     date: '2025-02',
     source: 'Infobae / Congressional investigation',
-    source_url: 'https://www.infobae.com',
+    source_url: 'https://www.infobae.com/politica/2025/02/16/el-asesor-de-la-criptomoneda-promocionada-inicialmente-por-javier-milei-aseguro-que-el-presidente-no-cumplio-un-compromiso-asumido/',
   },
   {
     id: 'flow-side-secret',
@@ -2400,7 +2400,7 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
       'Intelligence reserved funds grew ~2,000% under Milei. Santiago Caputo controls SIDE through appointee Cristian Auguadra without a formal public role.',
     date: '2024-2025',
     source: 'Chequeado / Página/12 / elDiarioAR',
-    source_url: 'https://chequeado.com',
+    source_url: 'https://chequeado.com/el-explicador/los-fondos-reservados-de-la-secretaria-de-inteligencia-el-gobierno-de-milei-los-amplio-por-tercera-vez/',
   },
   {
     id: 'flow-pami-overpricing',
@@ -2413,7 +2413,7 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
       'PAMI paid up to 16x market price for oncological drugs in 2023. Anastrozole: $13,192 vs $924 at tender. Cartel complaint: Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo + ACE Oncologia.',
     date: '2023',
     source: 'Infobae',
-    source_url: 'https://www.infobae.com',
+    source_url: 'https://www.infobae.com/politica/2025/01/23/denuncian-al-pami-y-a-un-grupo-de-laboratorios-por-sobreprecios-en-la-compra-de-remedios-oncologicos/',
   },
   {
     id: 'afa-tourprodenter',
