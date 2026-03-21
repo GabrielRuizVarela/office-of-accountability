@@ -27,6 +27,7 @@ Build a civic knowledge platform for Argentine politics as an interactive graph 
 8. **Auth + verification tiers** — Tier 0 (read-only), Tier 1 (email-verified, can contribute), future Tier 2 (DNI-verified).
 9. **Security hardened** — rate limiting on all endpoints, input validation with Zod, Cypher injection prevention, XSS sanitization, CSRF protection, no secrets in code.
 10. **WhatsApp-first sharing** — auto-generated OG images (1200x630) for politicians, investigations, and votes.
+11. **Investigation standardization** — three investigations (Caso Libra, Caso Finanzas Politicas, Caso Epstein) unified under `InvestigationConfig` schema subgraph in Neo4j. Generic labels (`Person`, `Organization`, `Event`, etc.) with `caso_slug` property for namespace isolation, prefixed IDs (`{caso_slug}:{local_id}`). Unified API at `/api/casos/[casoSlug]/*` (7 endpoints: graph, nodes/[type], node/[slug], timeline, schema, submissions, stats). Schema-aware query builder generates Cypher dynamically from `NodeTypeDefinition` nodes. Config-driven frontend with `InvestigationClientConfig` registry (tabs, feature flags, hero text, chapters). Per-investigation backend modules (`lib/caso-{slug}/`) with types, queries, transform, config. Caso Libra migrates from `CasoLibra*` prefixed labels. Finanzas Politicas imports narrative data from static TypeScript. Epstein imports full rhowardstone dataset (606 KG entities + 1,614 persons registry) with victim pseudonymization.
 
 ## Milestones (sequential with noted parallelism)
 
@@ -41,6 +42,7 @@ Build a civic knowledge platform for Argentine politics as an interactive graph 
 | 6 | Investigations | TipTap editor + graph embeds + publish flow | M2, M3, M4, M5 |
 | 7 | Share & Distribution | OG images, WhatsApp cards, PDF export | M4, M6 |
 | 8 | Seed Content + Launch | 3-5 seed investigations, security audit, launch | All |
+| 9 | Investigation Standardization | Unified config, generic labels, unified API, schema-driven frontend for all 3 investigations | M0-M8 |
 
 ## Acceptance Criteria
 
@@ -67,6 +69,22 @@ Build a civic knowledge platform for Argentine politics as an interactive graph 
 **Given** a published investigation URL shared on WhatsApp,
 **When** the recipient opens it,
 **Then** a preview card renders with title, summary, and auto-generated image.
+
+**Given** the investigation standardization scripts have run,
+**When** querying `MATCH (c:InvestigationConfig) RETURN c.id`,
+**Then** three configs exist: `caso-libra`, `caso-finanzas-politicas`, `caso-epstein`, each with `SchemaDefinition` → `NodeTypeDefinition` + `RelTypeDefinition` subgraphs.
+
+**Given** a standardized investigation,
+**When** `GET /api/casos/caso-libra/graph` is called,
+**Then** it returns `{ nodes, links }` with all generic-labeled nodes filtered by `caso_slug: "caso-libra"`.
+
+**Given** any investigation slug,
+**When** visiting `/caso/[slug]`,
+**Then** the landing page renders using the investigation's `InvestigationClientConfig` (hero, stats, tabs) with no hardcoded per-investigation logic.
+
+**Given** an unknown investigation slug,
+**When** `GET /api/casos/nonexistent/graph` is called,
+**Then** it returns 404.
 
 ## References
 

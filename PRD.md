@@ -328,6 +328,60 @@ The engine executes pipeline stages server-side. At each gate, the researcher re
 
 See `docs/superpowers/specs/2026-03-20-investigation-engine-design.md` for full specification.
 
+#### 5.3.2 Investigation Standardization
+
+Three investigations exist in the platform, each built independently. The standardization system unifies them under a single Neo4j-native config and data model:
+
+| Investigation | Current State | After Standardization |
+|---|---|---|
+| **Caso Libra** | Full Neo4j integration with `CasoLibra*`-prefixed labels, 8 API routes, Zod schemas, typed queries | Generic labels with `caso_slug: "caso-libra"`, unified API |
+| **Caso Finanzas Politicas** | Static TypeScript data file + 720-line Neo4j API route querying platform labels (`Politician`, `OffshoreOfficer`, etc.) | Narrative data (factchecks, timeline, actors, money flows) imported into Neo4j as investigation nodes |
+| **Caso Epstein** | Raw JSON files in `_ingestion_data/rhowardstone/` — 606 KG entities, 2,302 relationships, 1,614 persons registry | Full import into Neo4j with victim pseudonymization, ~1,614 Person nodes |
+
+**Config Subgraph:**
+
+Each investigation gets an `InvestigationConfig` node in Neo4j plus its schema definition:
+
+```
+(InvestigationConfig {id, name, caso_slug, status, description, tags})
+  -[:HAS_SCHEMA]-> (SchemaDefinition {id})
+    -[:DEFINES_NODE_TYPE]-> (NodeTypeDefinition {name, properties_json, color, icon})
+    -[:DEFINES_REL_TYPE]-> (RelTypeDefinition {name, from_types, to_types})
+```
+
+**Generic Labels with caso_slug:**
+
+All investigation data nodes use generic labels (`Person`, `Organization`, `Event`, `Document`, etc.) with a `caso_slug` property for namespace isolation. All queries filter by `WHERE n.caso_slug = $casoSlug`. Node IDs are prefixed: `{caso_slug}:{local_id}` (Neo4j Community has no composite uniqueness constraints).
+
+Platform-wide reference data (`Politician`, `Legislation`, `LegislativeVote`, `Party`, `Province`, `Investigation`, `User`) has no `caso_slug` and is untouched.
+
+**Schema-Aware Query Builder:**
+
+A generic query builder reads `NodeTypeDefinition` nodes from Neo4j and generates Cypher dynamically. This enables:
+- Unified API routes (`/api/casos/[casoSlug]/*`) that work for any investigation
+- Per-investigation typed wrappers that delegate to the builder for type safety
+- Schema introspection endpoints for frontend self-configuration
+
+**Config-Driven Frontend:**
+
+Each investigation exports an `InvestigationClientConfig` with tabs, feature flags, hero text, and optional narrative chapters. A central registry resolves `casoSlug` → config. Pages render conditionally based on feature flags:
+
+| Flag | Page | Investigations |
+|---|---|---|
+| `wallets` | `/dinero` | caso-libra |
+| `simulation` | `/simular` | caso-libra |
+| `flights` | `/vuelos` | caso-epstein |
+| `submissions` | form on `/investigacion` | caso-libra |
+| `platformGraph` | `/conexiones` | caso-finanzas-politicas |
+
+**Per-Investigation Schemas:**
+
+- **Caso Libra:** Person, Organization, Token, Event, Document, Wallet, GovernmentAction nodes. Relationships: CONTROLS, SENT, COMMUNICATED_WITH, MET_WITH, PARTICIPATED_IN, DOCUMENTED_BY, MENTIONS, PROMOTED, CREATED_BY, AFFILIATED_WITH.
+- **Caso Finanzas Politicas:** Person, Organization, Event, MoneyFlow, Claim nodes (narrative data only; platform-graph visualization stays separate). Relationships: OFFICER_OF, SUBJECT_OF, INVOLVED_IN, SOURCE_OF, DESTINATION_OF.
+- **Caso Epstein:** Person (~1,614), Organization (9), ShellCompany (12), Location (3), Aircraft (4) nodes. 10 relationship types: ASSOCIATED_WITH, COMMUNICATED_WITH, TRAVELED_WITH, EMPLOYED_BY, VICTIM_OF, PAID_BY, REPRESENTED_BY, RECRUITED_BY, RELATED_TO, OWNED_BY. Victim pseudonymization enforced.
+
+**Migration Strategy:** Six phases — (1) schema & config nodes, (2) Caso Libra label migration (two-phase: additive then destructive), (3) Finanzas Politicas import, (4) Epstein full import, (5) unified query layer + API, (6) frontend standardization. Phases 1–4 are data scripts; 5–6 are code changes. Each independently verifiable.
+
 ---
 
 ### 5.4 Coalitions (Collaboration Groups)
@@ -695,13 +749,13 @@ Any politician with a verified account has:
 
 ## 11. Milestone Roadmap
 
-**Critical path:** M0 → M1 → M2 → M3 → M4 → M5 → M6 → M7 → M8
+**Critical path:** M0 → M1 → M2 → M3 → M4 → M5 → M6 → M7 → M8 → M9
 
 **North star:** A governance system where citizens use the Investigation Engine to produce evidence that feeds democratic accountability mechanisms (liquid democracy, citizen mandates, accountability scoring).
 
 ```
-M0 Baseline ──→ M1 Data ──→ M2 Graph ──→ M3 Engine Core ──→ M4 Engine Analysis ──→ M5 Engine UI ──→ M6 Community ──→ M7 Advanced ──→ M8 Governance
-   (exists)      Foundation    Engine       Foundation         Connectors &           Webapp          Platform         Platform        System
+M0 Baseline ──→ M1 Data ──→ M2 Graph ──→ M3 Engine Core ──→ M4 Engine Analysis ──→ M5 Engine UI ──→ M6 Community ──→ M7 Advanced ──→ M8 Governance ──→ M9 Investigation
+   (exists)      Foundation    Engine       Foundation         Connectors &           Webapp          Platform         Platform        System          Standardization
                                                                Analysis
 ```
 
@@ -720,6 +774,9 @@ What exists today. All subsequent milestones build on or migrate from this.
 | MiroFish client | `webapp/src/lib/mirofish/client.ts` | LLM swarm simulation via llama.cpp/Qwen |
 | MiroFish seed export | `webapp/src/lib/mirofish/export.ts` | Graph-to-simulation seed conversion |
 | Webapp | `webapp/src/app/` | Caso pages, graph explorer (react-force-graph-2d), simulation panel |
+| Caso Libra data | Neo4j (`CasoLibra*` labels) | Full Neo4j integration with prefixed labels, 8 API routes, Zod schemas, typed queries |
+| Caso Finanzas Politicas | `webapp/src/lib/caso-finanzas-politicas/` | Static TypeScript data file + 720-line Neo4j API route querying platform labels |
+| Caso Epstein raw data | `_ingestion_data/rhowardstone/` | 606 KG entities, 2,302 relationships, 1,614 persons registry (JSON files pending full import) |
 | Dev environment | `docker-compose.yml` | Neo4j + app containers |
 
 ### M1: Data Foundation
@@ -883,7 +940,37 @@ See `docs/superpowers/plans/2026-03-20-investigation-engine-implementation.md` f
 | Expertise verification — peer-vouched badges for domain-specific endorsement weighting | Medium |
 | Coalition health score — geographic diversity, endorsement accuracy, activity patterns | Medium |
 
-### Scale (beyond M8)
+### M9: Investigation Standardization
+
+**Goal:** Standardize three investigations (Caso Libra, Caso Finanzas Politicas, Caso Epstein) under a unified Neo4j-native config and data model.
+
+**Depends on:** M0-M8 (existing investigations must be functional)
+
+| Deliverable | Difficulty |
+|-------------|-----------|
+| InvestigationConfig + SchemaDefinition + NodeTypeDefinition + RelTypeDefinition nodes for all 3 investigations | Medium |
+| Caso Libra label migration: `CasoLibra*` → generic labels with `caso_slug` | Medium |
+| Caso Finanzas Politicas narrative data import (factchecks, timeline, actors, money flows) into Neo4j | Medium |
+| Caso Epstein full import: 606 KG entities + 1,614 persons registry with victim pseudonymization | Medium-Hard |
+| Schema-aware generic query builder with dynamic Cypher generation | Hard |
+| Unified API routes at `/api/casos/[casoSlug]/*` (7 endpoints) | Medium |
+| Per-investigation backend modules (types, queries, transform, config) | Medium |
+| Config-driven frontend: investigation registry, conditional feature pages, shared components | Medium-Hard |
+| Static route deletion: 12 route files (6 finanzas-politicas + 6 caso-epstein) + `investigation-data.ts` data file | Easy |
+
+**Six-phase migration:**
+1. Schema & config nodes (idempotent MERGE of InvestigationConfig + schema subgraphs)
+2. Caso Libra label migration (two-phase: additive copy then destructive cleanup)
+3. Caso Finanzas Politicas import (static TS → Neo4j nodes: Claim, Event, Person, MoneyFlow)
+4. Caso Epstein full import (rhowardstone JSON → Neo4j with victim pseudonymization)
+5. Unified query layer + API (query builder, 7 API routes, per-investigation modules, 301 redirects)
+6. Frontend standardization (config-driven pages, shared components, static route deletion)
+
+Phases 1–4 are data scripts; 5–6 are code changes. Each independently verifiable. Scripts run before deploying code.
+
+**Extends from baseline:** Caso Libra queries/types/transforms (generalize from prefixed to generic labels), Caso Epstein seed script (extend from hand-authored to full JSON import), existing `[slug]` page routes (refactor from conditional dispatch to config-driven)
+
+### Scale (beyond M9)
 
 - Province-level coverage (legislature data beyond Congress)
 - Neo4j clustering / sharding if single instance becomes insufficient
