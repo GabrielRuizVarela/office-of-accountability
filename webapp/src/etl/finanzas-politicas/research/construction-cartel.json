@@ -1,0 +1,295 @@
+{
+  "title": "Club de la Obra Publica — Argentine Construction Cartel",
+  "date": "2026-03-21",
+  "summary": "Map of Argentine construction companies that systematically divided public works contracts, paid kickbacks to officials, and rotated across administrations from the military dictatorship (1976-83) through Milei (2024-present). The 'Cuadernos de las Coimas' case (2018-present, trial ongoing 2025-26) exposed the mechanism in detail.",
+
+  "cartel_mechanism": {
+    "name": "Club de la Obra Publica / La Camarita",
+    "how_it_works": [
+      "Companies met at the Argentine Chamber of Road Companies (Camara de Empresas Viales) headquarters, known as 'La Camarita'",
+      "Before each bidding process, companies were told who would win and what kickbacks to pay",
+      "Losing bidders submitted inflated bids to make the winner's price look competitive",
+      "The surplus from inflated prices covered: (a) kickbacks to officials (10-20% of contract value), (b) compensatory shares to companies that 'lost' the bid",
+      "The Registry of Constructors (Registro de Constructores) under Law 13.064 legally limited who could bid, creating a closed club for 70+ years",
+      "The 'capacidad constructiva' (constructive capacity) metric ensured work was distributed among existing members and blocked new entrants"
+    ],
+    "key_confession": "Carlos Enrique Wagner, ex-president of the Argentine Chamber of Construction, confessed how companies divided contracts and paid bribes of 10-20% of each project's value",
+    "financial_operator": "Ernesto Clarens, financier, received cash from companies, converted to USD, delivered to officials (e.g. Jose Lopez), charged commission on exchange spread",
+    "reform_2025": "Milei/Sturzenegger eliminated the Registro de Constructores and the capacidad constructiva system in May 2025, replaced with SICO (Sistema de Informacion de Cocontratantes). Vialidad Nacional dissolved July 2025 (decree 461/2025).",
+    "sources": [
+      "https://www.lanacion.com.ar/editoriales/punto-final-para-el-club-de-la-obra-publica-nid02062025/",
+      "https://www.lanacion.com.ar/politica/reactivan-investigacion-el-club-obra-publica-nid2336443/",
+      "https://www.infobae.com/politica/2025/05/27/el-gobierno-modifico-el-regimen-de-contratacion-de-empresas-para-obras-publicas-centeno-nunca-mas/",
+      "https://www.argentina.gob.ar/noticias/otro-golpe-al-club-de-la-obra-publica-se-dispuso-la-creacion-de-un-sistema-de-inscripcion",
+      "https://noticias.perfil.com/noticias/economia/2018-08-23-quienes-son-los-socios-del-club-de-la-obra-publica-que-hacen-negocios-con-macri.phtml"
+    ]
+  },
+
+  "companies": {
+    "techint_group": {
+      "controller": "Rocca family (Paolo Rocca, CEO)",
+      "paolo_rocca_net_worth": "USD 7.3 billion (Forbes 2026 #528 global, richest Argentine)",
+      "revenue": "USD 22 billion/year, 52,000 employees globally",
+      "founding": "1945 by Agostino Rocca (Italian, ex-advisor to Mussolini on steel). First major contract: 33,000 tons of seamless pipes for Gas del Estado (1947). 1,600 km gas pipeline Comodoro Rivadavia-Buenos Aires under Peron (1949).",
+      "key_subsidiaries": {
+        "tenaris": "Seamless tubes. Listed Luxembourg. Uruguayan shell companies explain 15-22% of gross profits via transfer pricing.",
+        "ternium": "Flat steel. Listed Luxembourg.",
+        "tecpetrol": "Oil & gas. Filed USD 96M lawsuit vs ENARSA (2026) + prior USD 640M lawsuit (2019) over Plan Gas subsidies.",
+        "siat": "Pipe manufacturing. Won Gasoducto NK pipe supply as sole bidder.",
+        "techint_ingenieria": "Construction/engineering arm."
+      },
+      "offshore_structure": {
+        "holding_jurisdiction": "Luxembourg",
+        "shell_companies": "Multiple entities in Uruguay with no productive activity but intense financial/commercial exchange with Argentine operating companies",
+        "uruguayan_shell_equity": "USD 5.661 billion",
+        "profit_shifting": "Transfer price manipulation routes profits to Uruguayan shells. Intangible assets (brands, patents developed by Argentine researchers) transferred to offshore structures.",
+        "source": "https://argentina.fes.de/fileadmin/user_upload/images/ACTIVIDADES/2022/Informe_Techint__vf.pdf"
+      },
+      "state_benefits_history": [
+        "Public works contracts (gas pipelines, roads) since 1947",
+        "Industrial promotion regime subsidies with tax exemptions",
+        "Export incentives",
+        "Foreign debt insurance (seguros de cambio) that socialized private debt",
+        "Compre Nacional law — State paid premium prices for domestic suppliers",
+        "22% of first road concessions (1988, Alfonsin era)"
+      ],
+      "gasoducto_nestor_kirchner": {
+        "pipe_supply": "USD 500M contract (SIAT sole bidder: 582km of 36-inch + 74km of 30-inch pipe). Actual bid: USD 436M.",
+        "construction": "Techint + Sacde consortium won major construction lots.",
+        "source": "https://www.ambito.com/energia/gasoducto-nestor-kirchner/firmaron-contrato-techint-la-provision-canerias-us500-millones-n5464779"
+      },
+      "cuadernos_status": "Techint executives implicated. Cartel member since at least 1981 (4 instances in 1982 complaint).",
+      "milei_era": "Sturzenegger accused Techint of offering pipes 40% more expensive than Indian competitor. Techint suing state for USD 96M + USD 640M. Relationship strained.",
+      "sources": [
+        "https://www.pagina12.com.ar/256342-techint-deberia-ser-de-todos-con-los-recursos-que-recibio-de",
+        "https://www.perfil.com/noticias/actualidad/techint-acuerdo-juan-domingo-peron-origen-fortuna-familia-rocca.phtml",
+        "https://www.eldiarioar.com/economia/empresas-cascara-estructura-offshore-grupo-techint-uruguay_129_9315216.amp.html",
+        "https://www.elcohetealaluna.com/las-guaridas-de-techint/",
+        "https://www.infobae.com/economia/2026/03/10/ranking-forbes-2026-paolo-rocca-supero-a-marcos-galperin-y-es-el-nuevo-empresario-mas-rico-de-la-argentina/",
+        "https://stripteasedelpoder.com/2018/10/el-mafioso-cartel-de-constructoras-fue-denunciado-en-1981-y-estaban-los-macri-rocca-perez-companc-y-otros/",
+        "https://www.bloomberglinea.com/latinoamerica/argentina/sturzenegger-defiende-contrato-de-gasoducto-con-empresa-india-techint-ofrecio-canos-40-mas-caros/"
+      ]
+    },
+
+    "grupo_roggio": {
+      "controller": "Roggio family (Aldo Roggio)",
+      "base": "Cordoba",
+      "founding": "Grew under military dictatorship (1976-83). Built ATC, Chateau Carreras stadium, thermal power plants and airports in Tucuman and Cordoba.",
+      "key_holdings": {
+        "benito_roggio_construcciones": "Construction arm",
+        "clisa": "Compania Latinoamericana de Infraestructura y Servicios. Entered default 2024 due to public works freeze under Milei.",
+        "metrovias_emova": "Buenos Aires subway concession since 1994 (Menem). Renewed 2020 for 12 years as 'Emova Movilidad'. Currently runs all 6 subway lines + Premetro.",
+        "ferrovias": "Urquiza railroad branch",
+        "aguas_cordobesas": "Water service concession for Cordoba city since 1997"
+      },
+      "state_contracts_volume": "Approx ARS 8 billion in state contracts 2003-2012. Clarens list: ARS 2.3 billion in works as of April 2010. 22% of first road concessions (1988).",
+      "cuadernos_case": {
+        "status": "Aldo Roggio declared as arrepentido (cooperating witness) in August 2018",
+        "confession": "Admitted paying 5% of transport subsidies (Metrovias, Ferrovias Urquiza) to Kirchner Transport Secretary Ricardo Jaime",
+        "charges": "11 spurious payments June 2009 - September 2010 totaling ARS 5.9 million. Received 22 works from Vialidad Nacional worth over ARS 3.3 billion.",
+        "restitution_offered": "USD 1,267,108",
+        "offshore": "Used 3 foreign companies to open accounts in Switzerland and USA (revealed in Pandora Papers)"
+      },
+      "sources": [
+        "https://www.lanacion.com.ar/politica/los-cuadernos-de-las-coimas-aldo-roggio-arrepentido-reconocio-que-devolvia-el-5-de-los-subsidios-al-transporte-nid2162810/",
+        "https://stripteasedelpoder.com/2021/11/biografia-no-autorizada-de-aldo-roggio-ii-de-colonizar-la-obra-publica-al-holding-de-la-corrupcion/",
+        "https://www.infobae.com/america/pandora-papers/2021/10/07/aldo-roggio-arrepentido-en-la-causa-de-los-cuadernos-uso-tres-sociedades-en-el-exterior-para-abrir-cuentas-en-suiza-y-eeuu/",
+        "https://www.perfil.com/noticias/politica/ratifican-procesamiento-aldo-roggio-carlos-wagner-otros-empresarios-por-contratos-obra-publica.phtml",
+        "https://es.wikipedia.org/wiki/Grupo_Roggio"
+      ]
+    },
+
+    "iecsa_sacde": {
+      "current_name": "SACDE (Sociedad Argentina de Construccion y Desarrollo Estrategico)",
+      "current_controller": "Marcelo Mindlin / Damian Mindlin (via Pampa Energia partners)",
+      "ownership_chain": [
+        {"period": "1977-2007", "owner": "Franco Macri family (founded as IECSA)", "notes": "Part of SOCMA holding. 17% of first road concessions (1988)."},
+        {"period": "2007-2017", "owner": "Angelo Calcaterra (Macri's cousin)", "notes": "Bought to avoid conflict of interest when Mauricio Macri became Buenos Aires Mayor. Ranked 3rd largest state contractor under Kirchner (behind Techint and Electroingenieria)."},
+        {"period": "2017-present", "owner": "Marcelo Mindlin + partners", "notes": "Purchased via MBD-Lazard auction. Renamed to SACDE. Payment dispute: Calcaterra sued Mindlin over unpaid installments (6 annual payments 2019-2024)."}
+      ],
+      "key_project": "Sarmiento train burial (soterramiento) — won during Kirchner era in consortium with Odebrecht, Ghella, Comsa",
+      "cuadernos_case": {
+        "calcaterra_status": "Declared as arrepentido before Judge Bonadio. Admitted payments to Roberto Baratta for 2013/2015 Kirchnerist campaigns.",
+        "contradictions": "Before Judge Martinez de Giorgi (Odebrecht case): denied paying bribes. Before Judge Bonadio (Cuadernos): admitted payments.",
+        "casacion_ruling_2024": "Casacion removed Calcaterra from Cuadernos trial (June 2024), then ruling was challenged. Payments to be judged as possible sobornos (Nov 2024).",
+        "odebrecht_link": "Iecsa consortium partner Odebrecht admitted bribes for Sarmiento burial project"
+      },
+      "milei_era": {
+        "contracts": "Sacde + Techint consortium won North Gas Pipeline reversal. Sacde contracted for Pampa Energia VI wind park. Competing for highway concessions.",
+        "mindlin_relationship": "Publicly supportive of Milei. Inaugurated USD 260M wind park with government presence (Sept 2024).",
+        "source": "https://www.lanacion.com.ar/economia/el-gobierno-adjudico-parte-de-una-obra-de-energia-clave-a-techint-y-a-sacde-la-empresa-de-marcelo-nid26012024/"
+      },
+      "sources": [
+        "https://www.lanacion.com.ar/economia/mindlin-compro-la-empresa-constructora-iecsa-de-angelo-calcaterra-nid1994696/",
+        "https://fortuna.perfil.com/noticias/editor/2017-03-17-188091-a-lo-perez-companc-mindlin-compro-iecsa-y-pasara-a-llamarse-sacde.phtml",
+        "https://www.lanacion.com.ar/politica/la-camara-de-casacion-saco-a-angelo-calcaterra-del-caso-cuadernos-dijo-que-sus-pagos-a-funcionarios-nid19062024/",
+        "https://www.perfil.com/noticias/politica/el-empresario-angelo-calcaterra-se-presento-en-tribunales-para-colaborar-en-la-causa-de-los-cuadernosk.phtml",
+        "https://es.wikipedia.org/wiki/Sacde"
+      ]
+    },
+
+    "electroingenieria": {
+      "controller": "Gerardo Ferreyra (co-founder, ex-VP) + Jorge Neyra",
+      "base": "Cordoba",
+      "sector": "Energy infrastructure, power plants, dams, nuclear",
+      "status_kirchner_era": "Favorite firm of Kirchner period. Ranked among top 3 state contractors (behind Techint, alongside IECSA).",
+      "key_contracts": {
+        "pilar_power_plant": {
+          "client": "EPEC (Provincial Electricity Company of Cordoba)",
+          "original_cost": "USD 300 million",
+          "final_cost": "USD 565 million (after 13 months)",
+          "maintenance": "USD 372.8 million",
+          "irregularity": "No public bidding — only bid (2007) was for repowering old plant, abandoned, then awarded to Electroingenieria-Sener UTE in 2008 without new call"
+        }
+      },
+      "cuadernos_case": {
+        "ferreyra_status": "Did NOT become arrepentido. Was imprisoned, later granted house arrest. One of few businessmen who refused to cooperate.",
+        "ferreyra_position": "Claims case was 'fabricated to destroy national businessmen.' Says arrepentidos gave false testimony to remove him from dam project won legitimately.",
+        "neyra_status": "Jorge Neyra became informant/collaborator",
+        "swiss_documents": "Documents from Switzerland complicated Electroingenieria in bribery case (2021)",
+        "supreme_court_2024": "Corte Suprema ruled against Ferreyra in Cuadernos case (Nov 2024)"
+      },
+      "nuclear_views": "Ferreyra advocates state control of energy including nuclear. Notes Argentina's nuclear experience since 1947 (Atucha I, Embalse, Atucha II). Kirchner government resumed nuclear plan.",
+      "sources": [
+        "https://www.lanacion.com.ar/economia/nueva-denuncia-electroingenieria-esta-vez-central-cordoba-nid2178796/",
+        "https://www.lanacion.com.ar/politica/documentos-de-suiza-complican-a-electroingenieria-en-una-causa-por-coimas-nid19042021/",
+        "https://www.lanacion.com.ar/politica/la-corte-suprema-fallo-contra-gerardo-ferreyra-de-electroingenieria-en-la-causa-de-los-cuadernos-nid27112024/",
+        "https://www.perfil.com/noticias/politica/gerardo-ferreyra-el-ex-militante-revolucionario-que-volvio-a-prision-por-un-cuaderno.phtml"
+      ]
+    },
+
+    "other_cartel_members": [
+      {
+        "name": "Cartellone",
+        "note": "Executives implicated in Cuadernos. Built Vega creek entubement with Roggio and Supercemento (USD 177M, 2016-2020)."
+      },
+      {
+        "name": "Supercemento",
+        "note": "Executives implicated in Cuadernos. Partner on major Buenos Aires infrastructure."
+      },
+      {
+        "name": "Criba",
+        "note": "Owned by Tarasido family. Cambiemos campaign contributor 2015. Buenos Aires contracts exceeding USD 180M."
+      },
+      {
+        "name": "Decavial / Losi / Panedile / Coarco / Equimac",
+        "note": "Owners/directors declared as arrepentidos or indicted in Cuadernos. Confessed to paying bribes."
+      },
+      {
+        "name": "Vial Agro / Perales Aguiar / Biancalani / Fontana Nicastro / Marcalba / Chediak / Vialco",
+        "note": "All named in La Camarita cartel distribution lists."
+      },
+      {
+        "name": "SADE (now Skanska)",
+        "note": "6 instances in 1982 cartel complaint. International construction firm."
+      },
+      {
+        "name": "Impresit Sideco (SOCMA/Macri)",
+        "note": "3 instances in 1982 cartel complaint. Part of Franco Macri's group."
+      },
+      {
+        "name": "Green SA / Dycasa / Conorvial / Rottio / Sudamericana",
+        "note": "Major Buenos Aires public works contractors under Larreta administration."
+      }
+    ]
+  },
+
+  "cuadernos_case": {
+    "full_name": "Cuadernos de las Coimas / Causa Cuadernos",
+    "origin": "Notebooks kept by Oscar Centeno, driver/remisero of Roberto Baratta (Secretary of Energy, Ministry of Planning under Kirchner governments 2003-2015)",
+    "scope": "71 companies investigated. Covers public works contracts 2003-2015.",
+    "trial_status": "Oral trial began late 2025. Ongoing as of March 2026. Centeno returned to court March 19, 2026 but refused to testify.",
+    "key_figures": {
+      "political": [
+        "Cristina Fernandez de Kirchner — principal imputada (main defendant)",
+        "Roberto Baratta — Secretary of Energy, recipient of bribes",
+        "Jose Lopez — Planning Ministry official, received cash deliveries",
+        "Ricardo Jaime — Transport Secretary, received 5% kickbacks on subsidies",
+        "Julio De Vido — Planning Minister, oversaw contract distribution"
+      ],
+      "financial_operators": [
+        "Ernesto Clarens — financier, converted cash to USD, delivered to officials",
+        "Oscar Centeno — driver who kept the notebooks documenting deliveries"
+      ],
+      "empresarios_arrepentidos": [
+        "Carlos Enrique Wagner (Chamber of Construction president) — confessed cartel mechanism",
+        "Aldo Roggio — admitted 5% kickbacks on transport subsidies",
+        "Angelo Calcaterra — admitted payments to Baratta for campaigns",
+        "Multiple executives from Decavial, Supercemento, Losi, Panedile, Coarco, Equimac"
+      ],
+      "empresarios_who_refused_cooperation": [
+        "Gerardo Ferreyra (Electroingenieria) — imprisoned, maintains innocence",
+        "Paolo Rocca (Techint) — implicated but did not become arrepentido"
+      ]
+    },
+    "kickback_rate": "10-20% of contract value (per Wagner confession)",
+    "total_contracts_investigated": "Over ARS 3.3 billion in road works alone (Roggio). 71 companies total.",
+    "restitution_offers": "48 imputados offered restitution payments to avoid oral trial (Sept 2025). Roggio offered USD 1,267,108.",
+    "sources": [
+      "https://www.lanacion.com.ar/politica/las-constructoras-mas-grandes-complicadas-nid2161436/",
+      "https://www.infobae.com/judiciales/2025/12/16/el-juicio-por-los-cuadernos-de-la-corrupcion-continua-la-acusacion-que-desnuda-el-vinculo-entre-empresarios-y-politicos/",
+      "https://www.a24.com/politica/causa-cuadernos-que-declararon-los-empresarios-arrepentidos-y-como-describieron-el-sistema-coimas-n1506901",
+      "https://www.lanacion.com.ar/economia/cuadernos-quienes-son-y-cuanto-ofrecieron-47-imputados-para-evitar-el-juicio-oral-nid16092025/",
+      "https://www.infobae.com/judiciales/2026/03/19/juicio-cuadernos-oscar-centeno-el-remisero-arrepentido-volvio-a-tribunales-pero-se-negaria-a-declarar/"
+    ]
+  },
+
+  "territory_division": {
+    "description": "How major groups historically divided Argentine public works territory",
+    "road_concessions_1988": {
+      "roggio": "22% of kilometers",
+      "socma_macri": "17% of kilometers",
+      "techint": "11% of kilometers",
+      "remaining": "Distributed among smaller cartel members",
+      "source": "Vialidad Nacional concession data"
+    },
+    "kirchner_era_ranking": {
+      "1st": "Techint (Paolo Rocca)",
+      "2nd": "Electroingenieria (Gerardo Ferreyra)",
+      "3rd": "IECSA (Angelo Calcaterra)",
+      "note": "Per ranking released by Planning Minister Julio De Vido"
+    },
+    "buenos_aires_city": {
+      "top_7_absorb": "Nearly 40% of total porteño infrastructure investment",
+      "key_firms": ["Green SA", "Benito Roggio", "Fontana Nicastro", "IECSA/Sacde", "Dycasa", "Techint", "Conorvial"],
+      "source": "https://www.cronista.com/economia-politica/siete-constructoras-absorben-casi-el-40-de-la-inversion-portena-en-infraestructura/"
+    },
+    "milei_era_winners": {
+      "techint_sacde": "Joint consortium for gas infrastructure (North Gas Pipeline reversal, Gasoducto NK)",
+      "mindlin": "First Milei-era public work financed with private funds. Wind parks. Highway concessions.",
+      "new_entrants": "Indian pipe companies (accused by Techint of undercutting). 15 companies competing for route privatizations."
+    }
+  },
+
+  "money_loop": {
+    "description": "Construction-Politics feedback loop",
+    "mechanism": [
+      "1. Companies receive state contracts (public works, concessions, subsidies)",
+      "2. Contracts include 10-20% overpricing margin",
+      "3. Cash from margin is collected by financial operators (e.g. Clarens)",
+      "4. Cash converted to USD, delivered to officials (documented in Centeno's notebooks)",
+      "5. Some funds go to electoral campaign financing (admitted by Calcaterra for 2013/2015 campaigns)",
+      "6. Companies prohibited from donating to campaigns do so via 'black money' (off-books)",
+      "7. Officials who receive funds ensure continued contract flow to same companies",
+      "8. Registry of Constructors (until 2025) legally blocked new competitors from entering"
+    ],
+    "transport_subsidy_variant": "Roggio admitted returning 5% of transport subsidies (Metrovias/Ferrovias) directly to Transport Secretary Ricardo Jaime",
+    "campaign_finance_law": "2019 reform enabled corporate donations but companies with public works contracts remain prohibited from donating. Per Poder Ciudadano: most campaign money remains 'black' (undeclared).",
+    "sources": [
+      "https://chequeado.com/el-explicador/financiamiento-de-la-politica-que-dice-la-ley-y-que-pasa-en-la-practica/",
+      "https://www.lanacion.com.ar/politica/los-cuadernos-de-las-coimas-aldo-roggio-arrepentido-reconocio-que-devolvia-el-5-de-los-subsidios-al-transporte-nid2162810/"
+    ]
+  },
+
+  "historical_cartel_complaint_1981": {
+    "description": "First documented complaint about the construction cartel, filed 1981-82",
+    "top_offenders": [
+      {"company": "SADE (Skanska)", "instances": 6},
+      {"company": "Techint", "instances": 4},
+      {"company": "Impresit Sideco (Macri)", "instances": 3},
+      {"company": "IECSA (Macri)", "instances": 3},
+      {"company": "Perez Companc", "instances": "multiple"}
+    ],
+    "source": "https://stripteasedelpoder.com/2018/10/el-mafioso-cartel-de-constructoras-fue-denunciado-en-1981-y-estaban-los-macri-rocca-perez-companc-y-otros/"
+  }
+}
