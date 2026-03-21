@@ -455,6 +455,16 @@ export default function InvestigacionPage() {
                     {lang === 'es' ? actor.status_es : actor.status_en}
                   </p>
                 )}
+                {actor.source_url && (
+                  <a
+                    href={actor.source_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-1 text-xs text-blue-400 hover:text-blue-300 transition-colors"
+                  >
+                    {lang === 'es' ? 'Fuente' : 'Source'} ↗
+                  </a>
+                )}
               </div>
             ))}
           </div>
