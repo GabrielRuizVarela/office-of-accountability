@@ -1,14 +1,21 @@
 import type { Metadata } from 'next'
 
+import { detectLang } from '@/lib/i18n'
 import { ProximityPanel } from '../../../../components/investigation/ProximityPanel'
 
 interface PageProps {
   readonly params: Promise<{ slug: string }>
 }
 
-export const metadata: Metadata = {
-  title: 'Proximity Analysis',
-  description: 'Analyze where and when persons of interest overlap in locations, events, and documents.',
+export async function generateMetadata(): Promise<Metadata> {
+  const lang = await detectLang()
+  return {
+    title: lang === 'es' ? 'Analisis de Proximidad' : 'Proximity Analysis',
+    description:
+      lang === 'es'
+        ? 'Analiza donde y cuando personas de interes coinciden en ubicaciones, eventos y documentos.'
+        : 'Analyze where and when persons of interest overlap in locations, events, and documents.',
+  }
 }
 
 export default async function ProximidadPage({ params }: PageProps) {

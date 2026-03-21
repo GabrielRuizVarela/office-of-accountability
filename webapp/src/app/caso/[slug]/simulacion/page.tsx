@@ -1,14 +1,21 @@
 import type { Metadata } from 'next'
 
+import { detectLang } from '@/lib/i18n'
 import { SimulationPanel } from '../../../../components/investigation/SimulationPanel'
 
 interface PageProps {
   readonly params: Promise<{ slug: string }>
 }
 
-export const metadata: Metadata = {
-  title: 'Simulation',
-  description: 'AI-powered network analysis using MiroFish swarm intelligence.',
+export async function generateMetadata(): Promise<Metadata> {
+  const lang = await detectLang()
+  return {
+    title: lang === 'es' ? 'Simulacion' : 'Simulation',
+    description:
+      lang === 'es'
+        ? 'Analisis de redes con inteligencia de enjambre MiroFish.'
+        : 'AI-powered network analysis using MiroFish swarm intelligence.',
+  }
 }
 
 export default async function SimulacionPage({ params }: PageProps) {
