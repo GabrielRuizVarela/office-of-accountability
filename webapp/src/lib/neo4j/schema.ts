@@ -220,6 +220,32 @@ const UNIQUE_CONSTRAINTS = [
     label: 'OrchestratorState',
     property: 'id',
   },
+  // Compliance framework engine (M11)
+  {
+    name: 'compliance_framework_id_unique',
+    label: 'ComplianceFramework',
+    property: 'id',
+  },
+  {
+    name: 'compliance_rule_id_unique',
+    label: 'ComplianceRule',
+    property: 'id',
+  },
+  {
+    name: 'checklist_item_id_unique',
+    label: 'ChecklistItem',
+    property: 'id',
+  },
+  {
+    name: 'compliance_attestation_id_unique',
+    label: 'ComplianceAttestation',
+    property: 'id',
+  },
+  {
+    name: 'compliance_evaluation_id_unique',
+    label: 'ComplianceEvaluation',
+    property: 'id',
+  },
 ] as const
 
 /** Full-text indexes for search across text fields */
@@ -523,6 +549,27 @@ const BTREE_INDEXES = [
     name: 'asset_declaration_cuit_index',
     label: 'AssetDeclaration',
     property: 'cuit',
+  },
+  // Compliance framework engine (M11)
+  {
+    name: 'compliance_rule_framework_id_index',
+    label: 'ComplianceRule',
+    property: 'framework_id',
+  },
+  {
+    name: 'checklist_item_framework_id_index',
+    label: 'ChecklistItem',
+    property: 'framework_id',
+  },
+  {
+    name: 'compliance_attestation_investigation_id_index',
+    label: 'ComplianceAttestation',
+    property: 'investigation_id',
+  },
+  {
+    name: 'compliance_evaluation_investigation_id_index',
+    label: 'ComplianceEvaluation',
+    property: 'investigation_id',
   },
 ] as const
 
