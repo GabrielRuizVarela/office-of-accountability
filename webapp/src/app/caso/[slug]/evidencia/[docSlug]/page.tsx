@@ -31,10 +31,10 @@ export default function DocumentDetailPage() {
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch(`/api/caso-libra/document/${docSlug}`)
+        const res = await fetch(`/api/caso/${slug}/document/${docSlug}`)
         if (!res.ok) throw new Error('Documento no encontrado')
         const json = await res.json()
-        setData(json)
+        setData(json.data ?? json)
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Error desconocido')
       } finally {
@@ -42,7 +42,7 @@ export default function DocumentDetailPage() {
       }
     }
     load()
-  }, [docSlug])
+  }, [slug, docSlug])
 
   if (loading) {
     return (
@@ -122,10 +122,15 @@ export default function DocumentDetailPage() {
 
 function entityTypeLabel(type: string): string {
   const labels: Record<string, string> = {
-    CasoLibraPerson: 'Persona',
-    CasoLibraOrganization: 'Organizacion',
-    CasoLibraWallet: 'Billetera',
-    CasoLibraToken: 'Token',
+    Person: 'Persona',
+    Organization: 'Organizacion',
+    Location: 'Ubicacion',
+    Event: 'Evento',
+    Document: 'Documento',
+    LegalCase: 'Caso Legal',
+    Flight: 'Vuelo',
+    Wallet: 'Billetera',
+    Token: 'Token',
   }
   return labels[type] ?? type
 }

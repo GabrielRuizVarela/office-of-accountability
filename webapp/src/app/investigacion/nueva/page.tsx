@@ -9,7 +9,7 @@
 
 import { useCallback, useEffect } from 'react'
 
-import { SessionProvider, useSession } from '@/components/auth/SessionProvider'
+import { useSession } from '@/components/auth/SessionProvider'
 import {
   InvestigationForm,
   type InvestigationFormData,
@@ -70,9 +70,5 @@ function CreateInvestigationContent() {
 }
 
 export default function CreateInvestigationPage() {
-  return (
-    <SessionProvider>
-      <CreateInvestigationContent />
-    </SessionProvider>
-  )
+  return <CreateInvestigationContent />
 }

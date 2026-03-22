@@ -9,7 +9,7 @@
 
 import { useCallback, useEffect, useReducer } from 'react'
 
-import { SessionProvider, useSession } from '@/components/auth/SessionProvider'
+import { useSession } from '@/components/auth/SessionProvider'
 import { fetchWithCsrf } from '@/lib/fetch-with-csrf'
 
 // ---------------------------------------------------------------------------
@@ -87,11 +87,7 @@ const TIER_LABELS: Record<number, { readonly label: string; readonly className: 
 // ---------------------------------------------------------------------------
 
 export default function PerfilPage() {
-  return (
-    <SessionProvider>
-      <PerfilContent />
-    </SessionProvider>
-  )
+  return <PerfilContent />
 }
 
 // ---------------------------------------------------------------------------

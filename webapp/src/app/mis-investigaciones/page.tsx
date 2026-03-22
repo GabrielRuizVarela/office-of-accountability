@@ -10,7 +10,7 @@
 import Link from 'next/link'
 import { useCallback, useEffect, useReducer } from 'react'
 
-import { SessionProvider, useSession } from '@/components/auth/SessionProvider'
+import { useSession } from '@/components/auth/SessionProvider'
 import type { InvestigationListItem } from '@/lib/investigation/types'
 
 // ---------------------------------------------------------------------------
@@ -125,11 +125,7 @@ const FILTER_OPTIONS: readonly StatusFilter[] = ['all', 'draft', 'published', 'a
 // ---------------------------------------------------------------------------
 
 export default function MisInvestigacionesPage() {
-  return (
-    <SessionProvider>
-      <MisInvestigacionesContent />
-    </SessionProvider>
-  )
+  return <MisInvestigacionesContent />
 }
 
 // ---------------------------------------------------------------------------

@@ -7,7 +7,7 @@
  * to all child components via React context.
  */
 
-import { createContext, useCallback, useContext, useMemo, useReducer } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useReducer } from 'react'
 
 interface SessionUser {
   readonly id: string
@@ -84,18 +84,11 @@ export function SessionProvider({ children, initialSession = null }: SessionProv
   }, [])
 
   // Fetch session on mount if no initial session provided.
-  // Using a lazy initializer pattern via a ref-less promise to avoid
-  // the react-hooks/set-state-in-effect lint rule.
-  const sessionPromise = useMemo(() => {
+  useEffect(() => {
     if (!initialSession) {
-      return fetchSession()
+      void fetchSession()
     }
-    return Promise.resolve()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  // Ensure the promise is consumed to prevent unhandled rejection warnings
-  void sessionPromise
+  }, [initialSession, fetchSession])
 
   const value: SessionContextValue = useMemo(
     () => ({ session: state.session, status: state.status, update: fetchSession }),

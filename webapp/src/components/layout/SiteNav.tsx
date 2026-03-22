@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { createTranslator } from '@/i18n/messages'
 import { useState } from 'react'
+import { UserMenu } from '@/components/auth/UserMenu'
 
 export function SiteNav() {
   const t = createTranslator('nav')
@@ -36,12 +37,7 @@ export function SiteNav() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/auth/signin"
-            className="rounded-md border border-zinc-700 px-3 py-1.5 text-zinc-300 transition-colors hover:border-zinc-500 hover:text-zinc-100"
-          >
-            {t('signIn')}
-          </Link>
+          <UserMenu />
         </nav>
 
         <button
@@ -87,13 +83,7 @@ export function SiteNav() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/auth/signin"
-              className="text-zinc-400 transition-colors hover:text-zinc-100"
-              onClick={() => setMenuOpen(false)}
-            >
-              {t('signIn')}
-            </Link>
+            <UserMenu />
           </div>
         </nav>
       )}

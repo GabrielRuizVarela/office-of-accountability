@@ -11,7 +11,7 @@
 import { useCallback, useEffect, useReducer } from 'react'
 import { useParams } from 'next/navigation'
 
-import { SessionProvider, useSession } from '@/components/auth/SessionProvider'
+import { useSession } from '@/components/auth/SessionProvider'
 import {
   InvestigationForm,
   type InvestigationFormData,
@@ -233,9 +233,5 @@ function EditInvestigationContent() {
 }
 
 export default function EditInvestigationPage() {
-  return (
-    <SessionProvider>
-      <EditInvestigationContent />
-    </SessionProvider>
-  )
+  return <EditInvestigationContent />
 }

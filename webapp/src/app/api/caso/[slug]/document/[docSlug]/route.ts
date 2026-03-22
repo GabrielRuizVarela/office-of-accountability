@@ -4,7 +4,7 @@
  */
 
 import { getClientConfig } from '@/lib/investigations/registry'
-import { getDocumentBySlug as getLibraDocumentBySlug } from '@/lib/caso-libra'
+import { getQueryBuilder } from '@/lib/investigations/query-builder'
 
 export async function GET(
   _request: Request,
@@ -28,17 +28,28 @@ export async function GET(
   }
 
   try {
-    // Currently only caso-libra has getDocumentBySlug
-    const data = await getLibraDocumentBySlug(slug, docSlug)
+    const node = await getQueryBuilder().getNodeBySlug(slug, 'Document', docSlug)
 
-    if (!data) {
+    if (!node) {
       return Response.json(
         { success: false, error: 'Document not found' },
         { status: 404 },
       )
     }
 
-    return Response.json({ success: true, data })
+    // Get connections for mentioned entities
+    const connections = await getQueryBuilder().getNodeConnections(slug, node.id, 1)
+    const mentionedEntities = connections.nodes
+      .filter((n) => n.id !== node.id)
+      .map((n) => ({ id: n.id, name: n.name ?? n.id, type: n.label }))
+
+    return Response.json({
+      success: true,
+      data: {
+        document: { id: node.id, slug: node.slug, ...node.properties },
+        mentionedEntities,
+      },
+    })
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
 

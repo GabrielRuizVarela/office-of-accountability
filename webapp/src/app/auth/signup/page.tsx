@@ -109,12 +109,16 @@ export default function SignUpPage() {
         }
 
         // Auto-sign in after successful registration
+        const csrfRes = await fetch('/api/auth/csrf')
+        const { csrfToken } = await csrfRes.json()
+
         const signInRes = await fetch('/api/auth/callback/credentials', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams({
             email: state.email,
             password: state.password,
+            csrfToken,
             redirect: 'false',
           }),
           redirect: 'manual',
