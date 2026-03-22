@@ -28,6 +28,7 @@
     "etl:boletin": "npx tsx scripts/run-etl-boletin.ts",
     "etl:igj": "npx tsx scripts/run-etl-opencorporates.ts",
     "seed:clarin": "npx tsx scripts/seed-clarin-group.ts",
+    "compliance:seed": "npx tsx scripts/seed-compliance.ts",
     "seed:top-contractors": "npx tsx scripts/seed-top-contractors.ts",
     "investigation:loop": "npx tsx scripts/run-investigation-loop.ts",
     "test:e2e": "npx playwright test",
