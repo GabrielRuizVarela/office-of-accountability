@@ -1,0 +1,133 @@
+# UNCAC Anti-Corruption Compliance Framework
+#
+# Based on United Nations Convention Against Corruption.
+# Rules verify that corruption investigation data meets UNCAC standards:
+# public official identification, asset declarations, conflict of interest,
+# and whistleblower protection documentation.
+
+id: uncac-corruption
+name: UNCAC Anti-Corruption
+standard: United Nations Convention Against Corruption (2003)
+version: "1.0"
+description: >
+  Ensures investigative data meets UNCAC anti-corruption standards.
+  Checks public official records, asset disclosures, government action
+  documentation, and evidence chain integrity.
+
+rules:
+  - code: UNCAC-A7-PUBLIC
+    title: Public official identification
+    description: >
+      Persons with government roles must have identity documentation
+      and role classification.
+    mode: gate
+    severity: blocking
+    phase: verify
+    check:
+      type: cypher
+      query: >
+        MATCH (p:Person)
+        WHERE p.caso_slug = $caso_slug
+        AND (p.role CONTAINS 'government' OR p.role CONTAINS 'official'
+             OR p.role CONTAINS 'minister' OR p.role CONTAINS 'senator'
+             OR p.role CONTAINS 'deputy' OR p.role CONTAINS 'president')
+        AND (p.name IS NULL OR p.role IS NULL)
+        RETURN count(p) AS violations
+
+  - code: UNCAC-A8-CONDUCT
+    title: Code of conduct violations documented
+    description: >
+      Claims of misconduct must reference at least one Document as evidence.
+    mode: gate
+    severity: blocking
+    phase: enrich
+    check:
+      type: cypher
+      query: >
+        MATCH (c:Claim)
+        WHERE c.caso_slug = $caso_slug
+        AND NOT EXISTS { (c)<-[:EVIDENCE_FOR]-(:Document) }
+        RETURN count(c) AS violations
+
+  - code: UNCAC-A9-PROCUREMENT
+    title: Public procurement transparency
+    description: >
+      GovernmentAction nodes must have associated monetary values or contracts.
+    mode: gate
+    severity: blocking
+    phase: verify
+    check:
+      type: property_exists
+      label: GovernmentAction
+      property: description
+      scope: caso_slug
+
+  - code: UNCAC-A12-PRIVATE
+    title: Private sector accountability
+    description: >
+      Organizations must have at least one relationship to a Person or Event.
+    mode: auditor
+    severity: warning
+    phase: enrich
+    check:
+      type: min_count
+      label: Organization
+      relationship: ASSOCIATED_WITH
+      min: 1
+      scope: caso_slug
+
+  - code: UNCAC-A52-ASSET
+    title: Asset recovery documentation
+    description: >
+      Entities linked to asset recovery must have supporting evidence chains.
+    mode: auditor
+    severity: warning
+    phase: analyze
+    check:
+      type: llm
+      prompt: >
+        Review the following entities for asset recovery compliance.
+        Check whether each entity has sufficient documentation linking
+        assets to their origins, and whether recovery pathways are documented.
+        Flag entities missing provenance or recovery documentation.
+      node_label: ShellCompany
+      scope: caso_slug
+      max_nodes: 50
+
+  - code: UNCAC-TIER-BRONZE
+    title: Minimum data confidence tier
+    description: >
+      All Document nodes must be at least bronze tier (raw ingested with source).
+    mode: auditor
+    severity: info
+    phase: ingest
+    check:
+      type: tier_minimum
+      label: Document
+      min_tier: bronze
+      scope: caso_slug
+
+checklist:
+  - code: UNCAC-CL-01
+    title: Public officials identified
+    description: Confirm all public officials in the investigation have been identified and documented.
+    phase: verify
+    required: true
+
+  - code: UNCAC-CL-02
+    title: Evidence chain integrity
+    description: Verify all claims have supporting documentary evidence with source attribution.
+    phase: enrich
+    required: true
+
+  - code: UNCAC-CL-03
+    title: Conflict of interest review
+    description: Check for undisclosed conflicts of interest among investigated persons.
+    phase: analyze
+    required: true
+
+  - code: UNCAC-CL-04
+    title: Whistleblower source protection
+    description: Confirm that source identities are protected where applicable.
+    phase: report
+    required: false

@@ -1,0 +1,128 @@
+# FATF Anti-Money Laundering Compliance Framework
+#
+# Based on FATF Recommendations for investigative research pipelines.
+# Rules verify that financial investigation data meets AML standards:
+# beneficial ownership, transaction tracing, source documentation.
+
+id: fatf-aml
+name: FATF Anti-Money Laundering
+standard: FATF Recommendations (2012, updated 2024)
+version: "1.0"
+description: >
+  Ensures investigative data adheres to FATF anti-money laundering standards.
+  Checks beneficial ownership records, transaction tracing, suspicious activity
+  documentation, and cross-border financial flow analysis.
+
+rules:
+  - code: FATF-R10-CDD
+    title: Customer Due Diligence records
+    description: >
+      Every Person node linked to financial activity must have identity
+      fields (name, role) and at least one corroborating relationship.
+    mode: gate
+    severity: blocking
+    phase: verify
+    check:
+      type: cypher
+      query: >
+        MATCH (p:Person)-[:INVOLVED_IN|TRANSFERRED_TO|RECEIVED_FROM]->()
+        WHERE p.caso_slug = $caso_slug
+        WITH p, COUNT{ (p)--() } AS rels
+        WHERE p.name IS NULL OR rels < 2
+        RETURN count(p) AS violations
+
+  - code: FATF-R11-RECORD
+    title: Transaction record keeping
+    description: >
+      MoneyFlow nodes must have amount, date, and at least one linked entity.
+    mode: gate
+    severity: blocking
+    phase: verify
+    check:
+      type: property_exists
+      label: MoneyFlow
+      property: amount
+      scope: caso_slug
+
+  - code: FATF-R24-BO
+    title: Beneficial ownership transparency
+    description: >
+      Organizations and ShellCompanies must have at least one linked Person
+      indicating ownership or control.
+    mode: gate
+    severity: blocking
+    phase: enrich
+    check:
+      type: cypher
+      query: >
+        MATCH (o) WHERE (o:Organization OR o:ShellCompany) AND o.caso_slug = $caso_slug
+        WHERE NOT EXISTS { (o)<-[:CONTROLS|OWNS|DIRECTS|ASSOCIATED_WITH]-(:Person) }
+        RETURN count(o) AS violations
+
+  - code: FATF-R20-STR
+    title: Suspicious transaction reporting
+    description: >
+      MoneyFlow nodes exceeding threshold must be flagged or linked to a Claim.
+    mode: auditor
+    severity: warning
+    phase: analyze
+    check:
+      type: cypher
+      query: >
+        MATCH (mf:MoneyFlow)
+        WHERE mf.caso_slug = $caso_slug AND mf.amount > 10000
+        AND NOT EXISTS { (mf)-[:EVIDENCE_FOR]->(:Claim) }
+        RETURN count(mf) AS violations
+
+  - code: FATF-R40-INTL
+    title: International cooperation data
+    description: >
+      Cross-border flows must reference at least two distinct Location nodes.
+    mode: auditor
+    severity: warning
+    phase: analyze
+    check:
+      type: cypher
+      query: >
+        MATCH (mf:MoneyFlow)-[:FROM_LOCATION|TO_LOCATION]->(l:Location)
+        WHERE mf.caso_slug = $caso_slug
+        WITH mf, collect(DISTINCT l.country) AS countries
+        WHERE size(countries) >= 2
+        WITH count(mf) AS cross_border
+        MATCH (mf2:MoneyFlow)-[:FROM_LOCATION|TO_LOCATION]->(l2:Location)
+        WHERE mf2.caso_slug = $caso_slug
+        WITH cross_border, count(DISTINCT mf2) AS total
+        WHERE total > 0 AND cross_border = 0
+        RETURN 1 AS violations
+
+  - code: FATF-TIER-SILVER
+    title: Minimum data confidence tier
+    description: >
+      All Person nodes in financial investigations must be at least silver tier.
+    mode: auditor
+    severity: info
+    phase: verify
+    check:
+      type: tier_minimum
+      label: Person
+      min_tier: silver
+      scope: caso_slug
+
+checklist:
+  - code: FATF-CL-01
+    title: Source documentation reviewed
+    description: Confirm all financial data sources have been documented and attributed.
+    phase: ingest
+    required: true
+
+  - code: FATF-CL-02
+    title: Beneficial ownership chain complete
+    description: Verify ownership chains trace to natural persons for all entities.
+    phase: enrich
+    required: true
+
+  - code: FATF-CL-03
+    title: Cross-border flows mapped
+    description: Confirm international money flows have origin and destination jurisdictions.
+    phase: analyze
+    required: false

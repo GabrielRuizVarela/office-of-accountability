@@ -1,0 +1,142 @@
+# Data Quality Compliance Framework
+#
+# Inspired by SOC 2 Trust Services Criteria, adapted for investigative
+# research data pipelines. Ensures data integrity, completeness,
+# provenance tracking, and auditability of the investigation graph.
+
+id: data-quality
+name: Data Quality & Integrity
+standard: SOC 2 Trust Services Criteria (adapted)
+version: "1.0"
+description: >
+  Ensures investigative graph data meets quality, integrity, and auditability
+  standards. Checks node completeness, relationship density, tier coverage,
+  source attribution, and temporal consistency.
+
+rules:
+  - code: DQ-INT-01
+    title: Person node completeness
+    description: >
+      Person nodes must have name and at least one descriptive property
+      (role, description, or alias).
+    mode: gate
+    severity: blocking
+    phase: verify
+    check:
+      type: cypher
+      query: >
+        MATCH (p:Person)
+        WHERE p.caso_slug = $caso_slug
+        AND (p.name IS NULL
+             OR (p.role IS NULL AND p.description IS NULL AND p.aliases IS NULL))
+        RETURN count(p) AS violations
+
+  - code: DQ-INT-02
+    title: Event temporal data
+    description: >
+      Event nodes must have a date property for timeline reconstruction.
+    mode: gate
+    severity: blocking
+    phase: verify
+    check:
+      type: property_exists
+      label: Event
+      property: date
+      scope: caso_slug
+
+  - code: DQ-INT-03
+    title: Document source attribution
+    description: >
+      Document nodes must have source or url property for provenance.
+    mode: gate
+    severity: blocking
+    phase: ingest
+    check:
+      type: cypher
+      query: >
+        MATCH (d:Document)
+        WHERE d.caso_slug = $caso_slug
+        AND d.source IS NULL AND d.url IS NULL
+        RETURN count(d) AS violations
+
+  - code: DQ-REL-01
+    title: Minimum relationship density
+    description: >
+      Person nodes should have at least 2 relationships to be useful
+      in the investigation graph.
+    mode: auditor
+    severity: warning
+    phase: enrich
+    check:
+      type: min_count
+      label: Person
+      relationship: ASSOCIATED_WITH
+      min: 2
+      scope: caso_slug
+
+  - code: DQ-TIER-01
+    title: Gold tier coverage
+    description: >
+      Person nodes should aim for silver tier or above after verification.
+    mode: auditor
+    severity: info
+    phase: verify
+    check:
+      type: tier_minimum
+      label: Person
+      min_tier: silver
+      scope: caso_slug
+
+  - code: DQ-LLM-01
+    title: Narrative consistency check
+    description: >
+      Use LLM to verify that Person descriptions and roles are consistent
+      with their relationships and event participation.
+    mode: auditor
+    severity: warning
+    phase: analyze
+    check:
+      type: llm
+      prompt: >
+        Review each person's description and role against their relationships
+        in the graph. Flag inconsistencies where a person's stated role
+        contradicts their connections (e.g., listed as "journalist" but only
+        connected to financial transactions with no media entities).
+      node_label: Person
+      scope: caso_slug
+      max_nodes: 30
+
+  - code: DQ-ORPHAN-01
+    title: No orphan nodes
+    description: >
+      Nodes without any relationships are likely data quality issues.
+    mode: auditor
+    severity: warning
+    phase: enrich
+    check:
+      type: cypher
+      query: >
+        MATCH (n)
+        WHERE n.caso_slug = $caso_slug
+        AND (n:Person OR n:Organization OR n:Event OR n:Document)
+        AND NOT EXISTS { (n)--() }
+        RETURN count(n) AS violations
+
+checklist:
+  - code: DQ-CL-01
+    title: Source inventory complete
+    description: All data sources used in the investigation have been catalogued.
+    phase: ingest
+    required: true
+
+  - code: DQ-CL-02
+    title: Deduplication pass complete
+    description: Entity resolution has been run to merge duplicate nodes.
+    phase: enrich
+    required: true
+
+  - code: DQ-CL-03
+    title: Timeline sanity check
+    description: Events are in chronological order and no impossible temporal sequences exist.
+    phase: analyze
+    required: false
