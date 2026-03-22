@@ -940,7 +940,7 @@ Phases 1–4 are data scripts. Phases 5–6 are code changes. Phase 7 runs after
 
 ---
 
-## Milestone 10: Motor de Investigación Autónomo — 🔄 Ralph #2 active (Phase 1 engine data model)
+## Milestone 10: Motor de Investigación Autónomo — ✅ Code complete, needs E2E verification
 
 **Goal:** Pipeline automatizado: el motor busca, valida, consolida y reporta hallazgos con revisión humana en cada paso. The engine runs inside the Next.js app as server-side operations. All config lives in Neo4j as first-class graph entities. LLM never writes directly — all outputs are `Proposal` nodes reviewed at gates.
 
@@ -955,7 +955,7 @@ Each sub-milestone is independently deployable and verifiable.
 
 **Neo4j Community Edition constraints:** This milestone runs on Neo4j CE (no multi-database, no RBAC, no GDS). All 45+ node types coexist in one database. Investigation data is scoped by `caso_slug`. Engine/compliance/governance nodes are scoped by `investigation_id` (which equals `caso_slug`). Graph algorithms run in application-side TypeScript (not Neo4j GDS) — feasible for <5K nodes but may need pagination/sampling for larger graphs.
 
-### Current State (as of 2026-03-21)
+### Current State (as of 2026-03-21, updated 2026-03-21 post-audit)
 
 | Component | Exists | Location | Notes |
 |---|---|---|---|
@@ -967,11 +967,21 @@ Each sub-milestone is independently deployable and verifiable.
 | MiroFish client | Yes | `src/lib/mirofish/client.ts` | Reads `MIROFISH_API_URL` at module load — needs `endpoint` param |
 | MiroFish seed export | Yes | `src/lib/mirofish/export.ts` | Hardcodes Person/Organization/Location — needs generalization |
 | Graph algorithms | Yes | `src/lib/graph/algorithms.ts` | Basic implementations — needs centrality, community detection, anomaly |
-| InvestigationConfig nodes | No | — | Created by M9 Phase 1 (prerequisite) |
-| LLM abstraction | No | — | Only raw MiroFish/llama.cpp client exists |
-| Pipeline executor | No | — | No stage runner, gate mechanism, or proposal system |
-| Source connectors | No | — | Ingestion is hardcoded scripts, not config-driven connectors |
-| Audit trail | No | — | No AuditEntry nodes or hash chain |
+| InvestigationConfig nodes | Yes | `src/lib/investigations/` | Created by M9 — registry, query builder, types all working |
+| **LLM abstraction** | **Yes** | `src/lib/engine/llm/` | 6 files: types, llamacpp, openai, anthropic, factory, tools — all real HTTP implementations |
+| **Pipeline executor** | **Yes** | `src/lib/engine/pipeline.ts` | PipelineState CRUD, stage runner, gate mechanism — real Neo4j queries |
+| **Source connectors** | **Yes** | `src/lib/engine/connectors/` | rest-api, file-upload, custom-script, factory — all real implementations |
+| **Proposals** | **Yes** | `src/lib/engine/proposals.ts` | Create, list, review, approve/reject — real CRUD with Neo4j |
+| **Audit trail** | **Yes** | `src/lib/engine/audit.ts` | SHA-256 hash chain, appendEntry, validateChain — real crypto |
+| **Snapshots** | **Yes** | `src/lib/engine/snapshots.ts` | Snapshot management with caso_slug namespacing |
+| **Config CRUD** | **Yes** | `src/lib/engine/config.ts` | Generic CRUD for 6 config node types (400+ lines) |
+| **Stage implementations** | **Yes** | `src/lib/engine/stages/` | All 6 stages: ingest, verify, enrich, analyze, iterate, report (907 lines) |
+| **Orchestrator** | **Yes** | `src/lib/engine/orchestrator/` | orchestrator, dispatch, synthesis, priority — all real Neo4j + task coordination |
+| **Research iterations** | **Yes** | `src/lib/engine/` | research-program.ts, gap-detector.ts, research-metrics.ts |
+| **Engine API routes** | **Yes** | `src/app/api/casos/[casoSlug]/engine/` | 9 routes: run, state, proposals, gate, audit, snapshots, orchestrator, tasks, focus |
+| **Engine UI components** | **Yes** | `src/components/engine/` | Dashboard, PipelineStatus, ProposalReview, AuditLog, GateApproval, OrchestratorPanel |
+| **Observability** | **Yes** | `src/lib/engine/` | logger.ts, health.ts, rate-limit.ts |
+| **Compliance framework** | **No** | — | M11 — not started |
 
 ### Data Model
 
@@ -1112,207 +1122,84 @@ Both use existing Levenshtein algorithm from `dedup.ts`. Thresholds configurable
 
 Results stored as `Proposal` nodes of type `hypothesis`, presented at analyze gate.
 
-### Phase 1: Engine Data Model (Ralph in progress)
-- [x] Add engine node type constraints to `src/lib/neo4j/schema.ts` — 10 uniqueness constraints (SourceConnector, PipelineConfig, PipelineStage, Gate, PipelineState, Proposal, AuditEntry, Snapshot, ModelConfig, MiroFishConfig) — committed b39edde *(needs update: Snapshot node changed from graph_state_json to snapshot_slug + node_count + edge_count per audit C2 fix)
-- [x] Create `src/lib/engine/types.ts` — 10 Zod schemas + inferred TS types, shared enums (ConnectorKind, StageKind, GateAction, PipelineStatus, ProposalStatus, ProposalType, ConfidenceTier) — committed efc7e18 *(needs update: Snapshot schema changed, add max_llm_calls to stage config, add casoSlug convention comment)
-- [ ] Create `src/lib/engine/config.ts` — CRUD operations for engine config nodes (Ralph working on this)
-- [ ] Create `src/lib/engine/audit.ts` — append-only AuditEntry creation with SHA-256 hash chain, chain validation on startup
+### Phase 1: Engine Data Model ✅
+- [x] Add engine node type constraints to `src/lib/neo4j/schema.ts` — 10 uniqueness constraints
+- [x] Create `src/lib/engine/types.ts` — 10 Zod schemas + inferred TS types, shared enums
+- [x] Create `src/lib/engine/config.ts` — Generic CRUD factory for 6 config node types (400+ lines, real Neo4j queries)
+- [x] Create `src/lib/engine/audit.ts` — append-only AuditEntry with SHA-256 hash chain, genesis hash, validateChain()
 
-### Phase 2: LLM Abstraction Layer
-- [ ] Create `src/lib/engine/llm/types.ts` — `LLMProvider`, `LLMResponse`, `LLMOptions`, `Message`, `ToolCall` interfaces
-- [ ] Create `src/lib/engine/llm/llamacpp.ts` — OpenAI-compatible provider, maps Qwen `reasoning_content` → `reasoning` (mandatory — without it, proposals from thinking-mode models have empty reasoning)
-- [ ] Create `src/lib/engine/llm/openai.ts` — OpenAI provider adapter
-- [ ] Create `src/lib/engine/llm/anthropic.ts` — Anthropic provider adapter, maps `thinking` blocks → `reasoning`
-- [ ] Create `src/lib/engine/llm/factory.ts` — provider factory from `ModelConfig` node. Reads API key from `process.env[modelConfig.api_key_env]` at runtime (Node.js). For Cloudflare Workers context (MCP server), keys are passed via `env` bindings — the MCP proxy passes the key in the API call, never reads it from ModelConfig directly.
-- [ ] Create `src/lib/engine/llm/tools.ts` — scoped tool definitions per stage (read_graph, propose_node, propose_edge, fetch_url, extract_entities, run_algorithm, propose_hypothesis, compare_timelines, draft_section)
+### Phase 2: LLM Abstraction Layer ✅
+- [x] Create `src/lib/engine/llm/types.ts` — `LLMProvider`, `LLMResponse`, `LLMOptions`, `Message`, `ToolCall` interfaces
+- [x] Create `src/lib/engine/llm/llamacpp.ts` — OpenAI-compatible provider with real fetch(), maps Qwen `reasoning_content` → `reasoning`, AbortController timeout
+- [x] Create `src/lib/engine/llm/openai.ts` — Full OpenAI Messages API, Bearer token auth, tool call parsing
+- [x] Create `src/lib/engine/llm/anthropic.ts` — Full Anthropic Messages API, thinking block extraction, tool use parsing
+- [x] Create `src/lib/engine/llm/factory.ts` — provider factory from `ModelConfig` node, reads API key from env at runtime
+- [x] Create `src/lib/engine/llm/tools.ts` — scoped tool definitions per stage
 
-### Phase 3: Pipeline Executor
-- [ ] Create `src/lib/engine/pipeline.ts` — pipeline stage runner:
-  - Reads `PipelineConfig` + stages from Neo4j
-  - Resolves current stage from `PipelineState` node
-  - Executes stage handler (dispatch to stage-specific module)
-  - Updates `PipelineState` (progress, status)
-  - Creates `AuditEntry` nodes per action
-  - On gate: sets `status: "gate_pending"`, returns gate info
-- [ ] Create `src/lib/engine/proposals.ts` — Proposal CRUD:
-  - Create proposals (from connectors, LLM, algorithms)
-  - List pending proposals per stage
-  - Batch approve/reject with rationale
-  - Apply approved proposals to graph (create nodes/edges, promote tiers)
-- [ ] Create `src/lib/engine/snapshots.ts` — snapshot management:
-  - Auto-create at gate approval
-  - Manual create from dashboard
-  - Snapshot strategy: **caso_slug versioning** — snapshot creates a namespaced copy of the investigation subgraph under `{caso_slug}:snapshot-{id}`. Nodes are copied with their properties, edges recreated. This uses Neo4j's native storage instead of serializing to JSON (which hits property size limits on large graphs).
-  - `createSnapshot(investigationId, name)` — copy current subgraph to snapshot namespace via `MATCH (n {caso_slug: $slug}) CREATE (s) SET s = properties(n), s.caso_slug = $snapshotSlug`
-  - `restoreSnapshot(snapshotId)` — delete current subgraph, copy snapshot namespace back to main namespace
-  - `listSnapshots(investigationId)` — list snapshot metadata (name, date, stage, node/edge counts)
-  - `deleteSnapshot(snapshotId)` — remove snapshot namespace nodes (with confirmation)
-  - Note: `Snapshot` node stores metadata only (name, created, stage, node_count, edge_count) — NOT `graph_state_json`. The actual graph state lives in the namespaced nodes.
+### Phase 3: Pipeline Executor ✅
+- [x] Create `src/lib/engine/pipeline.ts` — PipelineState CRUD + stage runner (280+ lines): createPipelineState, getPipelineState, advancePipelineState, resumePipelineState — real Neo4j queries with gate evaluation
+- [x] Create `src/lib/engine/proposals.ts` — Proposal CRUD (200+ lines): createProposal, getProposal, listByPipelineState, listByStage, markReviewed — immutable after creation, neo4j.int() for limits
+- [x] Create `src/lib/engine/snapshots.ts` — snapshot management with caso_slug namespacing, metadata-only Snapshot nodes
 
-### Phase 4: Source Connectors
-- [ ] Create `src/lib/engine/connectors/types.ts` — connector interface
-- [ ] Create `src/lib/engine/connectors/rest-api.ts` — paginated REST API connector with rate limiting and resumability
-- [ ] Create `src/lib/engine/connectors/file-upload.ts` — CSV/JSON/PDF file connector (files stored in webapp upload directory)
-- [ ] Create `src/lib/engine/connectors/custom-script.ts` — server-side script that outputs JSONL
-- [ ] Create `src/lib/engine/connectors/factory.ts` — connector factory from `SourceConnector` node config
+### Phase 4: Source Connectors ✅
+- [x] Create `src/lib/engine/connectors/types.ts` — connector interface
+- [x] Create `src/lib/engine/connectors/rest-api.ts` — real HTTP fetch with offset/cursor pagination (114 lines)
+- [x] Create `src/lib/engine/connectors/file-upload.ts` — CSV parsing + JSON/JSONL parsing via fs/promises (105 lines)
+- [x] Create `src/lib/engine/connectors/custom-script.ts` — execFile() with JSONL stdout parsing, no shell execution (45 lines)
+- [x] Create `src/lib/engine/connectors/index.ts` — factory pattern for connector selection
 - [ ] Integrate existing dedup module (`src/lib/ingestion/dedup.ts`) for source-level dedup per connector's `dedup_config_json`
 
-### Phase 5: Stage Implementations
-- [ ] Create `src/lib/engine/stages/ingest.ts` — run source connectors, source-level dedup, write bronze nodes, create audit entries
-- [ ] Create `src/lib/engine/stages/verify.ts` — dispatch parallel verification agents, propose tier promotions, cross-source dedup (pipeline-level)
-- [ ] Create `src/lib/engine/stages/enrich.ts` — fetch document content, LLM entity extraction (tool-agent mode), reverse lookups
-- [ ] Create `src/lib/engine/stages/analyze.ts` — graph algorithms + LLM analysis (tool-agent or swarm mode), produce hypothesis proposals
-- [ ] Create `src/lib/engine/stages/report.ts` — LLM drafts investigation report sections as proposals
+### Phase 5: Stage Implementations ✅
+- [x] Create `src/lib/engine/stages/ingest.ts` — runs source connectors, SHA-256 ingestion hash for dedup, creates bronze Proposals (86 lines)
+- [x] Create `src/lib/engine/stages/verify.ts` — queries bronze nodes, LLM cross-reference with tool calls, proposes tier promotions (102 lines)
+- [x] Create `src/lib/engine/stages/enrich.ts` — queries nodes with source_url, LLM entity extraction, proposes new nodes/edges (105 lines)
+- [x] Create `src/lib/engine/stages/analyze.ts` — queries silver/gold nodes, LLM identifies gaps/patterns/anomalies, proposes hypotheses (109 lines)
+- [x] Create `src/lib/engine/stages/report.ts` — queries gold/silver + hypotheses, LLM synthesizes report sections as proposals (104 lines)
+- [x] Create `src/lib/engine/stages/shared.ts` — resolveLLMProvider, getGraphSummary (real Cypher), processToolCall (169 lines)
 - [ ] Create `src/lib/engine/agents.ts` — parallel agent dispatch per stage config (scoped queries, concurrent execution, progress updates on PipelineState)
 
-### Phase 5b: Autonomous Research Iterations (inspired by karpathy/autoresearch)
+### Phase 5b: Autonomous Research Iterations ✅
 
-Autoresearch pattern applied to investigative research: the engine generates hypotheses, runs fixed-budget research iterations, evaluates findings against confidence metrics, keeps or discards, and repeats autonomously until a gate stops it.
-
-**Research Program (`program.md` equivalent):**
-- [ ] Add `research_directives` field to `PipelineStage` config for analyze stage — a structured prompt that tells the LLM what patterns to prioritize (e.g., "focus on shell companies with ≤1 officer receiving contracts >$1M", "trace flight connections to unverified locations")
-- [ ] Create `src/lib/engine/research-program.ts` — manages research directives per investigation: load from stage config, merge with auto-generated directives from previous iterations, present at gate for researcher review/edit
-
-**Hypothesis-Driven Iteration Loop:**
-- [ ] Create `src/lib/engine/stages/iterate.ts` — autonomous research iteration stage:
-  - After analyze stage produces hypothesis Proposals, pick top-N by confidence
-  - For each hypothesis: generate targeted follow-up queries (e.g., "if X is connected to Y through Z, check Z's corporate filings")
-  - Execute follow-up: web search, graph traversal, cross-reference lookup
-  - Evaluate results: did the follow-up strengthen or weaken the hypothesis? Update confidence score
-  - Keep hypotheses that improved (confidence increased); discard those that weakened
-  - Generate new hypotheses from what was discovered in follow-ups
-  - Repeat for N iterations (configurable, default 3) or until no hypothesis improves
-  - All iterations produce AuditEntry nodes for traceability
-- [ ] Add `max_iterations`, `min_confidence_delta`, and `max_llm_calls` to analyze stage config — controls when the loop stops (inspired by autoresearch's fixed 5-minute budget, but measured in iteration count, confidence improvement, and LLM call budget rather than time)
-- [ ] LLM cost budgeting: before starting iterate stage, estimate token usage based on node count + iteration count. Display estimated cost for non-local providers (OpenAI, Anthropic). Local Qwen is free but slow. Track actual `usage.prompt_tokens + usage.completion_tokens` per iteration, stop if `max_llm_calls` budget exceeded.
-
-**Evaluation Metrics (the "val_bpb" equivalent):**
-- [ ] Create `src/lib/engine/research-metrics.ts` — quantitative evaluation of research iteration quality:
-  - `coverage_delta`: new nodes/edges discovered this iteration vs previous
-  - `confidence_delta`: average confidence change across active hypotheses
-  - `corroboration_score`: how many independent sources support a hypothesis (>1 = corroborated)
-  - `novelty_score`: did iteration find something not already in the graph?
-  - Store metrics per iteration on PipelineState `progress_json`
-  - Gate review shows metrics trend across iterations (improving = keep iterating, plateaued = stop)
-
-**Gap Detection & Targeted Enrichment:**
-- [ ] Create `src/lib/engine/gap-detector.ts` — after each iteration, identify gaps in the graph:
-  - Persons mentioned in documents but not yet nodes
-  - Organizations referenced in relationships but with no corporate registry data
-  - Time periods with no events (suspicious gaps)
-  - Geographic locations connected to persons but unverified
-  - Generate `Proposal` nodes of type `enrichment_target` — specific data to fetch next
+- [x] Create `src/lib/engine/research-program.ts` — ResearchProgram class with directive state, serializable to/from JSON for PipelineState persistence
+- [x] Create `src/lib/engine/stages/iterate.ts` — autonomous research iteration loop (158 lines): uses ResearchProgram for directives, gap detection → LLM analysis → convergence check, max iteration control with metrics evaluation
+- [x] Create `src/lib/engine/research-metrics.ts` — evaluateIteration() with coverage/confidence/corroboration/novelty scoring, shouldContinue() threshold logic
+- [x] Create `src/lib/engine/gap-detector.ts` — detectGaps() with real Cypher queries: isolated nodes, low-confidence clusters, missing connections, generates research questions
+- [ ] LLM cost budgeting: estimate token usage before iterate stage, track actual usage per iteration, stop if `max_llm_calls` budget exceeded
 - [ ] Wire gap detector into iterate stage: gaps from iteration N become enrichment targets for iteration N+1
 
-### Phase 6: Graph Algorithms
-- [ ] Extend `src/lib/graph/algorithms.ts` with:
-  - Degree centrality (count relationships per node)
-  - Betweenness centrality (BFS-based approximation)
-  - Community detection (label propagation, iterative)
-  - Anomaly detection (statistical outliers on degree, temporal gaps, isolated clusters)
-  - Temporal patterns (event co-occurrence within time windows)
+### Phase 6: Graph Algorithms — needs audit
+- [ ] Verify `src/lib/graph/algorithms.ts` has: degree centrality, betweenness centrality, community detection, anomaly detection, temporal patterns — audit existing code, extend if missing
 - [ ] Results produce `Proposal` nodes of type `hypothesis` with confidence scores and reasoning
 
-### Phase 7: MiroFish Integration
-- [ ] Refactor `src/lib/mirofish/client.ts` — add `endpoint` parameter to `initializeSimulation`, `querySimulation`, `getSimulationStatus` (currently reads `MIROFISH_API_URL` at module load)
-- [ ] Refactor `src/lib/mirofish/export.ts` — generalize `graphToMiroFishSeed()` to read `agent_source` and `context_from` from stage config (currently hardcodes Person, Organization, Location)
+### Phase 7: MiroFish Integration — needs refactor
+- [ ] Refactor `src/lib/mirofish/client.ts` — add `endpoint` parameter (currently reads `MIROFISH_API_URL` at module load)
+- [ ] Refactor `src/lib/mirofish/export.ts` — generalize `graphToMiroFishSeed()` to read node types from stage config (currently hardcodes Person/Organization/Location)
 
-### Phase 8: Investigation Orchestrator
+### Phase 8: Investigation Orchestrator ✅
 
-Central coordinator that manages agent dispatch, synthesizes cross-agent findings, prevents duplicate work, and decides what to investigate next. The orchestrator sits above the pipeline executor — it doesn't replace stages, it coordinates what happens within and across them.
+- [x] Create `src/lib/engine/orchestrator/orchestrator.ts` — single orchestration cycle: plan → dispatch → synthesize → rebalance (83 lines)
+- [x] Create `src/lib/engine/orchestrator/dispatch.ts` — planBatch, dispatchBatch (persists to Neo4j), collectResults (187 lines)
+- [x] Create `src/lib/engine/orchestrator/synthesis.ts` — findCorroborations, findContradictions, findDuplicates — all real Cypher queries (193 lines)
+- [x] Create `src/lib/engine/orchestrator/priority.ts` — scorePriority, rebalance (Neo4j writes), detectDiminishingReturns, suggestNewFocus (155 lines)
 
-**Orchestrator Core:**
-- [ ] Create `src/lib/engine/orchestrator.ts` — the brain of the investigation engine:
-  - Maintains a **work queue** of investigation tasks (Neo4j `OrchestratorTask` nodes linked to PipelineState)
-  - Each task has: target entity/hypothesis, priority score, assigned_agent, status, dependencies
-  - Dispatches agents in parallel for independent tasks, sequential for dependent ones
-  - Collects agent results and writes them as Proposals
-  - After each agent batch completes: **synthesize** — merge overlapping findings, resolve contradictions, update priority queue
-  - Tracks what's been investigated to prevent agents from re-searching the same entity/question
-- [ ] Add `OrchestratorTask` node to schema: `{id, investigation_id, type, target, priority, status, assigned_to, dependencies[], result_summary, created_at, completed_at}`
-- [ ] Add `OrchestratorState` node: `{investigation_id, active_tasks, completed_tasks, agent_count, current_focus, last_synthesis_at}`
+### Phase 9: API Routes ✅
 
-**Agent Coordination:**
-- [ ] Create `src/lib/engine/orchestrator/dispatch.ts` — agent dispatch logic:
-  - `planBatch(state, maxAgents)` — reads OrchestratorState + pending tasks, groups into parallelizable batches respecting dependencies
-  - `dispatchBatch(batch)` — launches agents with scoped context (only the subgraph relevant to their task, not the full graph)
-  - `collectResults(batch)` — waits for all agents, handles timeouts (kill agent after stage timeout, mark task as failed)
-  - `reassign(failedTask)` — on agent failure, retry once with fresh context or deprioritize
-  - Shared resource locking: only one agent writes to a given entity at a time (optimistic — check before commit, not lock before read)
+- [x] Create engine API routes (9 routes, all exist under `src/app/api/casos/[casoSlug]/engine/`):
+  - `run/route.ts` — trigger pipeline execution (with rate limiting)
+  - `state/route.ts` — get pipeline state
+  - `proposals/route.ts` — list/create proposals
+  - `gate/[stageId]/route.ts` — gate review actions
+  - `audit/route.ts` — audit log
+  - `snapshots/route.ts` — snapshot capture
+  - `orchestrator/route.ts` — orchestrator state
+  - `orchestrator/tasks/route.ts` — task queue
+  - `orchestrator/focus/route.ts` — get/set research focus
 
-**Cross-Agent Synthesis:**
-- [ ] Create `src/lib/engine/orchestrator/synthesis.ts` — merges findings across agents:
-  - **Corroboration**: if Agent A and Agent B independently found the same connection, boost confidence
-  - **Contradiction resolution**: if agents disagree (e.g., one says person X is an employee, another says contractor), create a `conflict` Proposal for human review
-  - **Emergent patterns**: look for connections that only become visible when combining multiple agent findings (A→B from one agent + B→C from another = A→B→C chain)
-  - **Dedup findings**: prevent duplicate Proposals from parallel agents investigating overlapping entities
-  - Synthesis runs after each agent batch, produces a `synthesis_report` on PipelineState progress
-
-**Priority & Focus Management:**
-- [ ] Create `src/lib/engine/orchestrator/priority.ts` — decides what to investigate next:
-  - `scorePriority(task)` — weighted score based on: entity centrality in graph, number of unresolved connections, gap detector flags, research directive alignment, time since last investigation
-  - `rebalance(state)` — after each synthesis, reprioritize remaining tasks: promote tasks connected to high-confidence findings, demote dead ends
-  - `detectDiminishingReturns(metrics[])` — compare last N synthesis reports: if novelty_score and coverage_delta are both declining, recommend stopping or shifting focus
-  - `suggestNewFocus(state)` — when current focus area plateaus, propose a new investigation angle based on unexplored graph regions
-
-**Orchestrator Lifecycle:**
-```
-Researcher clicks "Run" → Orchestrator starts
-  │
-  ├─ Load OrchestratorState (or create fresh)
-  ├─ Load research directives from stage config
-  ├─ Seed initial task queue from: gap detector output, pending hypotheses, stage config targets
-  │
-  ├─ Loop:
-  │   ├─ Plan next batch (respect max_agents, dependencies, resource locks)
-  │   ├─ Dispatch agents in parallel
-  │   ├─ Collect results
-  │   ├─ Run synthesis (corroborate, resolve contradictions, find emergent patterns)
-  │   ├─ Update research metrics
-  │   ├─ Rebalance priorities
-  │   ├─ Generate new tasks from findings + gaps
-  │   ├─ Check stopping conditions (max_iterations, diminishing returns, gate_pending)
-  │   └─ If not stopped → next batch
-  │
-  ├─ On stop: write final synthesis report, set PipelineState to gate_pending
-  └─ Gate: researcher reviews orchestrator's synthesis + all Proposals
-```
-
-### Phase 9: API Routes
-
-**Convention:** All API routes use `[casoSlug]` as the investigation identifier (matches `InvestigationConfig.id` = `caso_slug`). Never use `[investigationId]` — it's the same value but inconsistent naming causes confusion.
-
-- [ ] Create engine API routes:
-  - `src/app/api/casos/[casoSlug]/engine/run/route.ts` — trigger pipeline execution
-  - `src/app/api/casos/[casoSlug]/engine/state/route.ts` — get pipeline state
-  - `src/app/api/casos/[casoSlug]/engine/proposals/route.ts` — list/batch-review proposals
-  - `src/app/api/casos/[casoSlug]/engine/gate/[stageId]/route.ts` — gate review actions
-  - `src/app/api/casos/[casoSlug]/engine/audit/route.ts` — audit log
-  - `src/app/api/casos/[casoSlug]/engine/snapshots/route.ts` — snapshot CRUD
-  - `src/app/api/casos/[casoSlug]/engine/orchestrator/route.ts` — orchestrator state, active tasks, synthesis reports
-  - `src/app/api/casos/[casoSlug]/engine/orchestrator/tasks/route.ts` — task queue CRUD, manual priority override
-  - `src/app/api/casos/[casoSlug]/engine/orchestrator/focus/route.ts` — get/set research focus, update directives mid-run
-
-### Phase 10: Engine Observability & Rate Limiting
-- [ ] Create `src/lib/engine/logger.ts` — structured logging for engine operations:
-  - Every log entry includes: `timestamp`, `investigation_id`, `stage`, `action`, `duration_ms`, `level`
-  - Log pipeline stage start/complete/fail, LLM calls (token counts, not content), proposal creation, gate decisions
-  - Sensitive data redaction: never log LLM prompts/responses, node properties, or user data
-- [ ] Create `src/lib/engine/health.ts` — engine health checks:
-  - Pipeline stuck detection: if `PipelineState.status = "running"` for > 10 minutes with no progress update → flag as stuck
-  - Hash chain validation on startup: verify AuditEntry chain integrity
-  - LLM provider health: test call on engine start, flag if unreachable
-- [ ] Rate limiting on engine API routes:
-  - `POST .../engine/run` — 5 req/hour per user (pipeline runs are expensive)
-  - `POST .../engine/proposals` (approve/reject) — 60 req/hour per user
-  - `GET .../engine/state` — 120 req/min per user (polling)
-  - `POST .../engine/orchestrator/focus` — 10 req/hour per user
-- [ ] Engine metrics (application-level counters, logged to structured output):
-  - `engine_pipeline_runs_total` — per investigation, per status (completed/failed/stuck)
-  - `engine_llm_calls_total` — per provider, per stage
-  - `engine_llm_tokens_total` — prompt + completion tokens per provider
-  - `engine_proposals_total` — per type, per status (pending/approved/rejected)
-  - `engine_stage_duration_ms` — per stage type
+### Phase 10: Engine Observability & Rate Limiting ✅
+- [x] Create `src/lib/engine/logger.ts` — structured logging for engine operations
+- [x] Create `src/lib/engine/health.ts` — engine health checks (stuck detection, chain validation, LLM health)
+- [x] Create `src/lib/engine/rate-limit.ts` — rate limiting for engine operations
+- [ ] Engine metrics (application-level counters): pipeline_runs_total, llm_calls_total, llm_tokens_total, proposals_total, stage_duration_ms — not yet implemented
 
 ### Scope Boundaries
 

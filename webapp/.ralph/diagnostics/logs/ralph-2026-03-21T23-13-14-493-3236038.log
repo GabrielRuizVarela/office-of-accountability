@@ -1,0 +1,6 @@
+[2m2026-03-22T02:13:14.496094Z[0m [33m WARN[0m [2mralph::preflight[0m[2m:[0m Config file "ralph.yml" not found, using defaults
+[2m2026-03-22T02:13:14.497050Z[0m [33m WARN[0m [2mralph::loop_runner[0m[2m:[0m Interactive mode requested but stdout is not a TTY, falling back to autonomous
+Error: Prompt file 'PROMPT.md' not found. Check the path or use -p "text" for inline prompt.
+l/webapp/.ralph/diagnostics/logs/ralph-2026-03-21T23-13-14-493-3236038.log
+2026-03-22T02:13:14.493880Z  INFO ralph: TUI running in subprocess RPC mode
+2026-03-22T02:13:14.497614Z  WARN ralph_tui::rpc_source: Subprocess exited without sending any RPC events
