@@ -4,6 +4,7 @@ import { useCallback, useMemo } from 'react'
 
 import type { GraphData, GraphNode } from '../../lib/neo4j/types'
 import {
+  getFirstLabel,
   getNodeCategory,
   SUBCATEGORY_CONFIGS,
   LABEL_DISPLAY,
@@ -41,7 +42,7 @@ export function isNodeHiddenByCategory(
   if (hiddenCategories.size === 0) return false
   const cat = getNodeCategory(node)
   if (!cat) return false
-  return hiddenCategories.has(categoryKey(node.labels[0], cat))
+  return hiddenCategories.has(categoryKey(getFirstLabel(node) ?? '', cat))
 }
 
 // ---------------------------------------------------------------------------
@@ -62,7 +63,7 @@ export function CategoryFilter({ data, hiddenCategories, onChange, visibleLabels
     for (const node of data.nodes) {
       const cat = getNodeCategory(node)
       if (!cat) continue
-      const key = categoryKey(node.labels[0], cat)
+      const key = categoryKey(getFirstLabel(node) ?? '', cat)
       counts.set(key, (counts.get(key) ?? 0) + 1)
     }
 

@@ -32,6 +32,21 @@ function asString(value: unknown): string {
   return typeof value === 'string' ? value : ''
 }
 
+/** Convert Neo4j special types (Integer, DateTime) to plain JS values */
+function serializeValue(value: unknown): unknown {
+  if (value === null || value === undefined) return value
+  if (typeof value !== 'object') return value
+  const obj = value as Record<string, unknown>
+  if ('year' in obj && 'month' in obj && 'day' in obj) {
+    const num = (v: unknown) => (v && typeof v === 'object' && 'toNumber' in v) ? (v as { toNumber(): number }).toNumber() : Number(v)
+    return `${num(obj.year)}-${String(num(obj.month)).padStart(2, '0')}-${String(num(obj.day)).padStart(2, '0')}`
+  }
+  if ('toNumber' in obj && typeof obj.toNumber === 'function') {
+    return (obj as { toNumber(): number }).toNumber()
+  }
+  return value
+}
+
 function asNumber(value: unknown): number {
   if (typeof value === 'number') return value
   if (value && typeof value === 'object' && 'toNumber' in value) {
@@ -297,7 +312,7 @@ export async function getActors(casoSlug: string): Promise<readonly Record<strin
       const node = record.get('p') as Node
       const props: Record<string, unknown> = {}
       for (const [key, value] of Object.entries(node.properties)) {
-        props[key] = value
+        props[key] = serializeValue(value)
       }
       return props
     })
@@ -329,7 +344,7 @@ export async function getDocuments(casoSlug: string): Promise<readonly Record<st
       const node = record.get('d') as Node
       const props: Record<string, unknown> = {}
       for (const [key, value] of Object.entries(node.properties)) {
-        props[key] = value
+        props[key] = serializeValue(value)
       }
       return props
     })
@@ -361,7 +376,7 @@ export async function getMoneyFlows(casoSlug: string): Promise<readonly Record<s
       const node = record.get('mf') as Node
       const props: Record<string, unknown> = {}
       for (const [key, value] of Object.entries(node.properties)) {
-        props[key] = value
+        props[key] = serializeValue(value)
       }
       return props
     })

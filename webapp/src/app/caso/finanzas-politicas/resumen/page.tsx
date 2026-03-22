@@ -799,9 +799,9 @@ export default function ResumenPage() {
 
       {/* Stat cards */}
       <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {stats.map((stat) => (
+        {stats.map((stat, i) => (
           <div
-            key={stat.value}
+            key={`${stat.value}-${i}`}
             className="rounded-lg border border-zinc-800 bg-zinc-900/60 p-4 text-center"
           >
             <p className="text-xl font-bold text-blue-400">{stat.value}</p>

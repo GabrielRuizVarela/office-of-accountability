@@ -33,6 +33,7 @@ interface FGGraphData {
 function toFGData(data: GraphData): FGGraphData {
   const nodes = data.nodes.map((n) => ({
     ...n,
+    labels: n.labels ?? [(n as unknown as { label?: string }).label ?? 'Unknown'],
     _color: getNodeColor(n),
     _label: getNodeLabel(n),
   }))
@@ -216,7 +217,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       if (typeof node.y === 'number') node.fy = node.y
     }
     frozenRef.current = true
-    fg.zoomToFit(0, 40) // instant, no animation
+    setTimeout(() => fg.zoomToFit(400, 40), 100)
   }, [fgData.nodes])
 
   // Configure d3 forces (runs once on mount / data change)
@@ -230,11 +231,11 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       const n = data.nodes.length
       const charge = fgAny.d3Force('charge')
       if (charge && typeof (charge as { strength: (v: number) => void }).strength === 'function') {
-        (charge as { strength: (v: number) => void }).strength(-Math.max(80, n * 2.5))
+        (charge as { strength: (v: number) => void }).strength(n > 200 ? -500 : -Math.max(120, n * 4))
       }
       const link = fgAny.d3Force('link')
       if (link && typeof (link as { distance: (v: number) => void }).distance === 'function') {
-        (link as { distance: (v: number) => void }).distance(Math.max(50, n * 1.5))
+        (link as { distance: (v: number) => void }).distance(n > 200 ? 150 : Math.max(60, n * 2))
       }
     } catch { /* */ }
   }, [data.nodes.length])
@@ -276,15 +277,38 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     [],
   )
 
-  // Node visibility filter — hide isolated (degree-0) nodes
-  const nodeVisibility = useCallback(
-    (node: NodeObject<FGNode>) => {
-      const fgNode = node as FGNode
+  // Node visibility — returns whether a node should be drawn
+  const isNodeVisible = useCallback(
+    (fgNode: FGNode) => {
       if ((degreeMap.get(fgNode.id) ?? 0) === 0) return false
       if (!visibleLabels) return true
       return fgNode.labels.some((label) => visibleLabels.has(label))
     },
     [visibleLabels, degreeMap],
+  )
+
+  // Build a set of visible node IDs for link filtering
+  const visibleNodeIds = useMemo(() => {
+    const ids = new Set<string>()
+    for (const node of fgData.nodes) {
+      if (isNodeVisible(node)) ids.add(node.id)
+    }
+    return ids
+  }, [fgData.nodes, isNodeVisible])
+
+  const nodeVisibility = useCallback(
+    (node: NodeObject<FGNode>) => isNodeVisible(node as FGNode),
+    [isNodeVisible],
+  )
+
+  // Hide links when either endpoint is hidden
+  const linkVisibility = useCallback(
+    (link: FGLink) => {
+      const src = typeof link.source === 'string' ? link.source : (link.source as unknown as { id: string }).id
+      const tgt = typeof link.target === 'string' ? link.target : (link.target as unknown as { id: string }).id
+      return visibleNodeIds.has(src) && visibleNodeIds.has(tgt)
+    },
+    [visibleNodeIds],
   )
 
   // Custom node canvas render — colored circle + label text
@@ -476,6 +500,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         nodeCanvasObjectMode={() => 'replace'}
         nodePointerAreaPaint={paintPointerArea}
         nodeVisibility={nodeVisibility}
+        linkVisibility={linkVisibility as (link: object) => boolean}
         linkColor={linkColor as (link: object) => string}
         linkLabel={linkLabel as (link: object) => string}
         linkWidth={1}
@@ -499,10 +524,10 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         enableZoomInteraction={true}
         enablePanInteraction={true}
         enableNodeDrag={false}
-        warmupTicks={300}
-        cooldownTicks={0}
-        cooldownTime={0}
-        d3AlphaDecay={0.0228}
+        warmupTicks={fgData.nodes.length > 500 ? 0 : 300}
+        cooldownTicks={fgData.nodes.length > 500 ? 200 : 0}
+        cooldownTime={fgData.nodes.length > 500 ? 5000 : 0}
+        d3AlphaDecay={fgData.nodes.length > 500 ? 0.05 : 0.0228}
         d3VelocityDecay={0.4}
         onEngineStop={handleEngineStop}
         minZoom={0.3}

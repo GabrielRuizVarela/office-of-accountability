@@ -54,6 +54,7 @@ export interface InvestigationSchema {
 export interface InvestigationNode {
   readonly id: string
   readonly label: string // Neo4j label (Person, Event, Document, etc.)
+  readonly labels: readonly string[] // Array form for GraphNode compatibility
   readonly caso_slug: string
   readonly properties: Record<string, unknown>
   // Common fields extracted from properties for convenience

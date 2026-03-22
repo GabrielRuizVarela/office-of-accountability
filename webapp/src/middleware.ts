@@ -35,6 +35,11 @@ function getClientIp(request: NextRequest): string {
 /** Determine which rate limit tier applies to a request */
 function getRateLimitTier(pathname: string, method: string) {
   if (pathname.startsWith('/api/auth/')) {
+    // CSRF token + session reads are lightweight GETs — use general API tier
+    // so they don't eat into the stricter auth budget meant for sign-in/sign-up
+    if (method === 'GET') {
+      return { config: RATE_LIMITS.api, prefix: 'api' }
+    }
     return { config: RATE_LIMITS.auth, prefix: 'auth' }
   }
 

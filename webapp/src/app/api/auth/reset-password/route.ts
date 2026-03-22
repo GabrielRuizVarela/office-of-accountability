@@ -14,7 +14,7 @@
 
 import { z } from 'zod/v4'
 import { hashPassword } from '@/lib/auth/password'
-import { checkBreachedPassword, validatePasswordStrength } from '@/lib/auth/password-strength'
+import { validatePasswordStrength } from '@/lib/auth/password-strength'
 import { consumeVerificationToken, updateUserPassword } from '@/lib/auth/verification'
 
 const resetSchema = z.object({
@@ -46,18 +46,6 @@ export async function POST(request: Request): Promise<Response> {
   if (strengthError) {
     return Response.json(
       { success: false, error: strengthError },
-      { status: 400 },
-    )
-  }
-
-  // Check against breached passwords
-  const breachCount = await checkBreachedPassword(password)
-  if (breachCount > 0) {
-    return Response.json(
-      {
-        success: false,
-        error: 'Esta contraseña fue encontrada en filtraciones de datos. Elegí una contraseña diferente.',
-      },
       { status: 400 },
     )
   }

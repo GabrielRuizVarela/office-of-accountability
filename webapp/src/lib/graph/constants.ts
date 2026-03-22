@@ -1,5 +1,10 @@
 import type { GraphNode } from '../neo4j/types'
 
+/** Get first label from a node, handling both GraphNode (labels[]) and InvestigationNode (label) */
+export function getFirstLabel(node: GraphNode): string | undefined {
+  return node.labels?.[0] ?? (node as unknown as { label?: string }).label
+}
+
 // ---------------------------------------------------------------------------
 // Node label → color mapping (superset across all graph components)
 // ---------------------------------------------------------------------------
@@ -90,7 +95,7 @@ const PERSON_CATEGORY_KEYWORDS: ReadonlyArray<[string, readonly string[]]> = [
 
 /** Derive canonical subcategory for a graph node */
 export function getNodeCategory(node: GraphNode): string | null {
-  const label = node.labels[0]
+  const label = getFirstLabel(node)
   if (!label || !SUBCATEGORY_CONFIGS[label]) return null
 
   const props = node.properties as Record<string, unknown>
@@ -186,7 +191,7 @@ export const DEFAULT_LINK_COLOR = '#334155' // slate-700
 // ---------------------------------------------------------------------------
 
 export function getNodeColor(node: GraphNode): string {
-  const label = node.labels[0]
+  const label = getFirstLabel(node)
   if (!label) return DEFAULT_NODE_COLOR
 
   // Use subcategory color when available

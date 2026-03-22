@@ -14,7 +14,7 @@
 
 import { signUpSchema } from '@/lib/auth/types'
 import { hashPassword } from '@/lib/auth/password'
-import { checkBreachedPassword, validatePasswordStrength } from '@/lib/auth/password-strength'
+import { validatePasswordStrength } from '@/lib/auth/password-strength'
 import { createVerificationToken } from '@/lib/auth/verification'
 import { sendEmail } from '@/lib/email/send'
 import { verificationEmail } from '@/lib/email/templates'
@@ -53,20 +53,6 @@ export async function POST(request: Request): Promise<Response> {
         success: false,
         error: strengthError,
         details: [{ field: 'password', message: strengthError }],
-      },
-      { status: 400 },
-    )
-  }
-
-  // Check against breached password database (HaveIBeenPwned k-anonymity)
-  const breachCount = await checkBreachedPassword(password)
-  if (breachCount > 0) {
-    const message = 'Esta contraseña fue encontrada en filtraciones de datos. Elegí una contraseña diferente.'
-    return Response.json(
-      {
-        success: false,
-        error: message,
-        details: [{ field: 'password', message }],
       },
       { status: 400 },
     )

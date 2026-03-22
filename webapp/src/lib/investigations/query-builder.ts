@@ -50,12 +50,13 @@ const MAX_DEPTH = 3
 function toInvestigationNode(node: Node): InvestigationNode {
   const props: Record<string, unknown> = {}
   for (const [key, value] of Object.entries(node.properties)) {
-    props[key] = isNeo4jInteger(value) ? toNumber(value) : value
+    props[key] = isNeo4jInteger(value) ? toNumber(value) : isNeo4jTemporal(value) ? temporalToString(value) : value
   }
 
   return {
     id: typeof props.id === 'string' ? props.id : node.elementId,
     label: node.labels[0] ?? 'Unknown',
+    labels: [...node.labels],
     caso_slug: typeof props.caso_slug === 'string' ? props.caso_slug : '',
     properties: props,
     name: typeof props.name === 'string' ? props.name : undefined,
@@ -66,6 +67,18 @@ function toInvestigationNode(node: Node): InvestigationNode {
 
 function isNeo4jInteger(value: unknown): boolean {
   return value !== null && typeof value === 'object' && 'toNumber' in (value as object)
+}
+
+function isNeo4jTemporal(value: unknown): boolean {
+  return value !== null && typeof value === 'object' && 'year' in (value as object) && 'month' in (value as object) && 'day' in (value as object)
+}
+
+function temporalToString(value: unknown): string {
+  const t = value as { year: { toNumber?: () => number }; month: { toNumber?: () => number }; day: { toNumber?: () => number } }
+  const y = typeof t.year === 'object' && t.year?.toNumber ? t.year.toNumber() : t.year
+  const m = typeof t.month === 'object' && t.month?.toNumber ? t.month.toNumber() : t.month
+  const d = typeof t.day === 'object' && t.day?.toNumber ? t.day.toNumber() : t.day
+  return `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`
 }
 
 function toNumber(value: unknown): number {
@@ -170,12 +183,36 @@ export function createQueryBuilder(): InvestigationQueryBuilder {
 
       const session = getDriver().session()
       try {
-        // Pass 1: all nodes in this investigation
-        const nodeResult = await session.run(
-          `MATCH (n)
-           WHERE n.caso_slug = $casoSlug
-           RETURN n`,
+        // Count nodes first to decide strategy
+        const countResult = await session.run(
+          `MATCH (n) WHERE n.caso_slug = $casoSlug RETURN count(n) AS cnt`,
           { casoSlug },
+          { timeout: 10_000 },
+        )
+        const totalNodes = countResult.records[0]?.get('cnt')
+        const count = totalNodes && typeof totalNodes === 'object' && 'toNumber' in totalNodes
+          ? (totalNodes as { toNumber(): number }).toNumber()
+          : Number(totalNodes ?? 0)
+
+        // For large graphs (>500 nodes), return only most-connected nodes
+        const isLarge = count > 500
+        const nodeQuery = isLarge
+          ? `MATCH (n)
+             WHERE n.caso_slug = $casoSlug
+             WITH n
+             OPTIONAL MATCH (n)-[r]-()
+             WITH n, count(r) AS degree
+             ORDER BY degree DESC
+             LIMIT $graphLimit
+             RETURN n`
+          : `MATCH (n)
+             WHERE n.caso_slug = $casoSlug
+             RETURN n`
+
+        // Pass 1: nodes
+        const nodeResult = await session.run(
+          nodeQuery,
+          isLarge ? { casoSlug, graphLimit: neo4j.int(500) } : { casoSlug },
           { timeout: 30_000 },
         )
 
@@ -190,8 +227,9 @@ export function createQueryBuilder(): InvestigationQueryBuilder {
         const relResult = await session.run(
           `MATCH (a)-[r]->(b)
            WHERE a.caso_slug = $casoSlug AND b.caso_slug = $casoSlug
+             AND elementId(a) IN $elementIds AND elementId(b) IN $elementIds
            RETURN r`,
-          { casoSlug },
+          { casoSlug, elementIds: [...nodeElementIds] },
           { timeout: 30_000 },
         )
 

@@ -42,7 +42,7 @@ export function transformNode(node: Node): GraphNode {
   const properties: Record<string, unknown> = {}
 
   for (const [key, value] of Object.entries(node.properties)) {
-    properties[key] = isInteger(value) ? toNumber(value) : value
+    properties[key] = isInteger(value) ? toNumber(value) : isTemporal(value) ? temporalToIso(value) : value
   }
 
   return {
@@ -54,7 +54,17 @@ export function transformNode(node: Node): GraphNode {
 
 /** Check if a value looks like a Neo4j Integer */
 function isInteger(value: unknown): boolean {
-  return value !== null && typeof value === 'object' && 'toNumber' in (value as object)
+  return value !== null && typeof value === 'object' && 'toNumber' in (value as object) && !('year' in (value as object))
+}
+
+function isTemporal(value: unknown): boolean {
+  return value !== null && typeof value === 'object' && 'year' in (value as object) && 'month' in (value as object) && 'day' in (value as object)
+}
+
+function temporalToIso(value: unknown): string {
+  const t = value as { year: unknown; month: unknown; day: unknown }
+  const num = (v: unknown) => (v && typeof v === 'object' && 'toNumber' in v) ? (v as { toNumber(): number }).toNumber() : Number(v)
+  return `${num(t.year)}-${String(num(t.month)).padStart(2, '0')}-${String(num(t.day)).padStart(2, '0')}`
 }
 
 // ---------------------------------------------------------------------------

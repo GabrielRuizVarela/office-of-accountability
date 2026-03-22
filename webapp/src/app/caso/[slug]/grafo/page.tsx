@@ -77,7 +77,16 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
         const res = await fetch(`/api/caso/${slug}/graph`)
         if (!res.ok) throw new Error('Failed to load graph data')
         const json = await res.json()
-        setGraphData(json.data)
+        // Normalize nodes: API may return `label` (string) instead of `labels` (array)
+        const rawData = json.data as GraphData
+        const normalized: GraphData = {
+          nodes: rawData.nodes.map((n) => ({
+            ...n,
+            labels: n.labels ?? [(n as unknown as { label?: string }).label ?? 'Unknown'],
+          })),
+          links: rawData.links,
+        }
+        setGraphData(normalized)
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load graph')
       } finally {

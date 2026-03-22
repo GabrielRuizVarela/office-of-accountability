@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 
 import { detectLang, SITE_META } from '@/lib/i18n'
 import { LanguageProvider } from '@/lib/language-context'
+import { SessionProvider } from '@/components/auth/SessionProvider'
 import { SiteNav } from '@/components/layout/SiteNav'
 import { Footer } from '@/components/layout/Footer'
 import './globals.css'
@@ -38,15 +39,17 @@ export default async function RootLayout({
   const lang = detectLang(h.get('accept-language'))
 
   return (
-    <html lang={lang}>
+    <html lang={lang} suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <LanguageProvider defaultLang={lang}>
-          <div className="flex min-h-screen flex-col bg-zinc-950">
-            <SiteNav />
-            <div className="flex-1">{children}</div>
-            <Footer />
-          </div>
-        </LanguageProvider>
+        <SessionProvider>
+          <LanguageProvider defaultLang={lang}>
+            <div className="flex min-h-screen flex-col bg-zinc-950">
+              <SiteNav />
+              <div className="flex-1">{children}</div>
+              <Footer />
+            </div>
+          </LanguageProvider>
+        </SessionProvider>
       </body>
     </html>
   )

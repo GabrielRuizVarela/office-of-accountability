@@ -53,12 +53,17 @@ export default function SignInPage() {
       dispatch({ type: 'SET_SUBMITTING', isSubmitting: true })
 
       try {
+        // Auth.js requires a CSRF token for POST requests
+        const csrfRes = await fetch('/api/auth/csrf')
+        const { csrfToken } = await csrfRes.json()
+
         const res = await fetch('/api/auth/callback/credentials', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams({
             email: state.email,
             password: state.password,
+            csrfToken,
             redirect: 'false',
           }),
           redirect: 'manual',

@@ -230,9 +230,9 @@ export default function InvestigacionPage() {
 
         {/* Impact stats */}
         <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {IMPACT_STATS.map((stat) => (
+          {IMPACT_STATS.map((stat, i) => (
             <div
-              key={stat.value}
+              key={`${stat.value}-${i}`}
               className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 text-center"
             >
               <p className="text-2xl font-bold text-zinc-50 sm:text-3xl">{stat.value}</p>

@@ -374,9 +374,9 @@ export default function ResumenPage() {
           {/* Stats grid — only for Chapter 7 */}
           {chapter.id === 'los-numeros' && (
             <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {stats.map((stat) => (
+              {stats.map((stat, i) => (
                 <div
-                  key={stat.value}
+                  key={`${stat.value}-${i}`}
                   className="rounded-lg border border-zinc-800 bg-zinc-900/60 p-5 text-center"
                 >
                   <p className="text-2xl font-bold text-purple-400">{stat.value}</p>
