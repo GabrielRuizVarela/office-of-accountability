@@ -18,6 +18,8 @@ import {
 import { getPipelineConfigById, getPipelineStageById, getGateById } from './config'
 import { appendEntry } from './audit'
 import { captureSnapshot } from './snapshots'
+import { runComplianceGate } from '../compliance/pipeline'
+import type { CompliancePhase } from '../compliance/types'
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -199,6 +201,43 @@ export async function advanceStage(pipelineStateId: string): Promise<PipelineSta
 
       return updated!
     }
+  }
+
+  // Compliance gate — evaluate framework rules for the current stage phase
+  const stagePhase = (currentStage?.kind ?? 'any') as CompliancePhase
+  const complianceResult = await runComplianceGate(state.caso_slug, stagePhase)
+
+  if (!complianceResult.passed) {
+    // Compliance gate blocked — pause pipeline
+    await captureSnapshot(
+      pipelineStateId,
+      currentStage?.id ?? state.current_stage_id!,
+      `Compliance gate: ${stagePhase}`,
+      state.caso_slug,
+    )
+
+    const updated = await updatePipelineState(pipelineStateId, {
+      status: 'paused',
+    })
+
+    await appendEntry({
+      pipeline_state_id: pipelineStateId,
+      stage_id: currentStage?.id ?? state.current_stage_id,
+      action: 'compliance.gate_blocked',
+      detail: complianceResult.summary,
+    })
+
+    return updated!
+  }
+
+  // Log compliance pass if evaluations were run
+  if (complianceResult.reports.length > 0) {
+    await appendEntry({
+      pipeline_state_id: pipelineStateId,
+      stage_id: currentStage?.id ?? state.current_stage_id,
+      action: 'compliance.gate_passed',
+      detail: complianceResult.summary,
+    })
   }
 
   // No gate or gate not required — advance to next stage or complete
