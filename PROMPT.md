@@ -29,40 +29,74 @@ Build a civic knowledge platform for investigative research as an interactive gr
 | 7 | Share & Distribution | ✅ OG images + WhatsApp |
 | 8 | Seed Content | ✅ 3 casos seeded |
 | 9 | Investigation Standardization | ✅ Generic labels, query builder, unified API |
-| 10 | Motor de Investigación Autónomo | ✅ Code complete — see details below |
+| 10 | Motor de Investigación Autónomo | ⚠️ Code exists but integration is broken — see M10 Fix List below |
 
 ### M10 Engine — What Exists
 
-The autonomous investigation engine is **fully implemented** (~2,400 lines, 45 files):
+The autonomous investigation engine has ~2,400 lines across 45 files. Individual modules are real implementations (not stubs), but the **integration layer is broken** — pieces don't wire together correctly, the UI can't bootstrap, and key code paths are dead.
 
-- **LLM Abstraction** (`src/lib/engine/llm/`): llamacpp, openai, anthropic providers — real HTTP adapters, reasoning extraction, tool call parsing
-- **Pipeline** (`src/lib/engine/pipeline.ts`): PipelineState CRUD, stage runner, gate mechanism
-- **Stages** (`src/lib/engine/stages/`): ingest, verify, enrich, analyze, iterate, report — all query Neo4j + call LLM
-- **Connectors** (`src/lib/engine/connectors/`): rest-api, file-upload, custom-script
-- **Proposals** (`src/lib/engine/proposals.ts`): create, list, review, approve/reject
-- **Audit** (`src/lib/engine/audit.ts`): SHA-256 hash chain, append-only, validateChain
-- **Snapshots** (`src/lib/engine/snapshots.ts`): caso_slug namespaced graph copies
-- **Config** (`src/lib/engine/config.ts`): CRUD for 6 config node types
-- **Orchestrator** (`src/lib/engine/orchestrator/`): dispatch, synthesis, priority, diminishing returns
-- **Research** (`src/lib/engine/`): research-program, gap-detector, research-metrics
-- **API Routes** (`src/app/api/casos/[casoSlug]/engine/`): 9 routes
-- **UI Components** (`src/components/engine/`): Dashboard, PipelineStatus, ProposalReview, AuditLog, GateApproval, OrchestratorPanel
+- **LLM Abstraction** (`src/lib/engine/llm/`): llamacpp, openai, anthropic providers — real HTTP adapters, reasoning extraction, tool call parsing ✅
+- **Pipeline** (`src/lib/engine/pipeline.ts`): PipelineState CRUD, stage runner, gate mechanism ✅
+- **Stages** (`src/lib/engine/stages/`): ingest, verify, enrich, analyze, iterate, report — all have real implementations ⚠️ (iterate is dead code, tool execution is broken)
+- **Connectors** (`src/lib/engine/connectors/`): rest-api, file-upload, custom-script ✅
+- **Proposals** (`src/lib/engine/proposals.ts`): create, list, review, approve/reject ✅
+- **Audit** (`src/lib/engine/audit.ts`): SHA-256 hash chain, append-only, validateChain ✅
+- **Snapshots** (`src/lib/engine/snapshots.ts`): caso_slug namespaced graph copies ✅
+- **Config** (`src/lib/engine/config.ts`): CRUD for 6 config node types ✅
+- **Orchestrator** (`src/lib/engine/orchestrator/`): dispatch, synthesis, priority, diminishing returns ⚠️ (synthesis queries broken)
+- **Research** (`src/lib/engine/`): research-program, gap-detector, research-metrics ✅ (but iterate stage that uses them is dead code)
+- **API Routes** (`src/app/api/casos/[casoSlug]/engine/`): 9 routes ✅
+- **UI Components** (`src/components/engine/`): Dashboard, PipelineStatus, ProposalReview, AuditLog, GateApproval, OrchestratorPanel ⚠️ (dashboard can't bootstrap, audit log parse broken, no navigation)
 
-### M10 Remaining Gaps (do NOT re-implement what exists)
+### M10 Fix List — MUST complete before M11
 
-- [ ] Dedup integration: wire `src/lib/ingestion/dedup.ts` into connector source-level dedup
-- [ ] Parallel agent dispatch: `src/lib/engine/agents.ts` for per-stage concurrent execution
-- [ ] LLM cost budgeting: token estimation + tracking per iteration in iterate stage
-- [ ] Gap detector → iterate wiring: gaps from iteration N become enrichment targets for N+1
-- [ ] Graph algorithms: audit `src/lib/graph/algorithms.ts` — extend with centrality, community detection, anomaly if missing
-- [ ] MiroFish refactor: add `endpoint` param to client, generalize seed export node types
-- [ ] Engine metrics: pipeline_runs_total, llm_calls_total, proposals_total counters
+Fix these in order. Each fix is small and targeted. Do NOT re-implement modules — the underlying code is real, these are wiring/integration bugs.
 
-## Current Objective — Milestone 11: Compliance Framework Engine
+#### Critical Backend Bugs
+
+- [ ] **Fix iterate stage factory**: `src/lib/engine/stages/index.ts` — the `'iterate'` case returns `new AnalyzeStageRunner()`. Import `IterateStageRunner` from `./iterate` and return it instead. Also fix `iterate.ts` line 27 where `STAGE_KIND` is set to `'analyze'` — change to `'iterate'`.
+
+- [ ] **Implement missing LLM tool handlers**: `src/lib/engine/stages/shared.ts` `processToolCall` — the LLM is told it can use `read_graph`, `fetch_url`, `extract_entities`, `run_algorithm`, `compare_timelines` but calling them is a silent no-op. Implement real handlers: `read_graph` should run a parameterized Cypher query against Neo4j, `fetch_url` should fetch and extract text, `extract_entities` should parse entities from text, `run_algorithm` should call `src/lib/graph/algorithms.ts`, `compare_timelines` should query and compare date-ordered events.
+
+- [ ] **Fix synthesis relationship pattern**: `src/lib/engine/orchestrator/synthesis.ts` — queries use `(ps:PipelineState)-[:HAS_PROPOSAL]->(p:Proposal)` but this relationship is never written. Either: (a) update `proposals.ts` `createProposal` to also CREATE the `HAS_PROPOSAL` relationship from PipelineState to Proposal, or (b) rewrite synthesis queries to join via `p.pipeline_state_id = ps.id` property match.
+
+- [ ] **Wire full dedup into ingest**: `src/lib/engine/stages/ingest.ts` only uses `normalizeName`. Wire `buildExistingMaps()` and fuzzy `dedup()` from `src/lib/ingestion/dedup.ts` to check proposals against existing Neo4j nodes before creating them.
+
+- [ ] **Sanitize dynamic labels in proposals**: `src/lib/engine/proposals.ts` `applyProposal` uses template literals for Neo4j labels from LLM output. Add a whitelist check — only allow labels defined in the investigation's `SchemaDefinition` node types.
+
+#### Critical UI Bugs
+
+- [ ] **Fix dashboard bootstrap**: `src/components/engine/EngineDashboard.tsx` line 44 — initial fetch to `/engine/state` has no `pipeline_id` param, API returns 400. Either: (a) add a discovery step that first fetches available pipelines for the casoSlug, or (b) update the `/engine/state` route to support listing by `caso_slug` without requiring `pipeline_id`.
+
+- [ ] **Fix AuditLog response parse**: `src/components/engine/AuditLog.tsx` line 93 — change `setEntries(json.data)` to `setEntries(json.data.entries)` to match the actual API response shape `{ data: { entries: [...] } }`.
+
+- [ ] **Add motor page navigation**: `src/components/investigation/InvestigationNav.tsx` — add `{ href: '/motor', label: { en: 'Engine', es: 'Motor' } }` to the tab lists for all cases.
+
+- [ ] **Fix motor page for static case routes**: Cases `caso-epstein` and `finanzas-politicas` use static route trees (`src/app/caso/caso-epstein/`, `src/app/caso/finanzas-politicas/`) that don't go through the dynamic `caso/[slug]/` layout. Either add `motor/page.tsx` within each static case directory, or migrate those cases to use the dynamic `[slug]` layout.
+
+#### Remaining Feature Gaps
+
+- [ ] **LLM cost budgeting**: `LLMResponse.usage` field is populated by all 3 adapters but never accumulated. Add a running token total per pipeline run in `iterate.ts`, with a configurable budget ceiling that stops iteration when exceeded.
+
+- [ ] **Graph algorithms**: `src/lib/graph/algorithms.ts` only has BFS shortest path. Add degree centrality, betweenness centrality, community detection (label propagation), and anomaly detection (outlier scoring by property distribution).
+
+- [ ] **Engine metrics**: Add `pipeline_runs_total`, `llm_calls_total`, `proposals_total` counters. Can be simple Neo4j counter nodes or in-memory counters exposed via a `/engine/metrics` endpoint.
+
+- [ ] **Wire logger**: `src/lib/engine/logger.ts` exists but is never imported anywhere. Replace raw `console.error` calls in pipeline.ts, stages, and orchestrator with `createEngineLogger`.
+
+- [ ] **Fix TypeScript errors**: 9 errors in `scripts/` files — 5 `.ts` extension imports (remove extensions) and 4 implicit `any` from indexing `QueryResult<never>` in `scripts/ingest-consolidation.ts`.
+
+## Implementation Queue — Milestones 11–17
+
+**Execute milestones in order. When a milestone is complete, move to the next one. Do NOT stop after finishing a single milestone — continue through the full queue. Mark each milestone ✅ in the Completed Milestones table as you finish it.**
+
+**Full specs for all milestones:** See `TASKS.md`
+
+---
+
+### M11: Compliance Framework Engine ← START HERE
 
 **Goal:** Per-investigation compliance framework engine. Researchers declare which international standards (FATF, UNCAC, SOC 2) govern their investigation. Machine-readable rules as mild pipeline gates, parallel auditor for warnings, manual attestations, Qwen LLM for qualitative analysis. Frameworks are swappable — adding a standard = adding a YAML file.
-
-**Full spec:** See `TASKS.md` → Milestone 11 (6 phases + pipeline integration)
 
 **Key decisions:**
 - Gate rules are **mild** — they log + flag, don't crash the pipeline
@@ -72,11 +106,51 @@ The autonomous investigation engine is **fully implemented** (~2,400 lines, 45 f
 
 **Dependencies available:** M9 InvestigationConfig ✅, M10 pipeline executor + LLM abstraction ✅
 
-## Next Objective — Milestone 17: Investigation Governance
+---
+
+### M12: Full-App E2E Test Suite (Playwright MCP)
+
+**Goal:** Comprehensive end-to-end test suite covering every user-facing interaction. Tests run against live dev server + Neo4j. Playwright MCP tools for interactive verification; CI runs headless.
+
+**Dependencies:** All previous milestones (M0–M11). Build incrementally — add specs per milestone as features land.
+
+---
+
+### M13: Investigation MCP Server (Cloudflare Workers)
+
+**Goal:** Hosted MCP server on Cloudflare Workers exposing the investigation engine as tools. Any MCP-capable client (Claude Code, Claude Desktop, Cursor, custom agents) can create investigations, run pipelines, review proposals, query the graph, manage compliance, and orchestrate research via standard MCP protocol over SSE transport.
+
+**Dependencies:** M9 (unified API routes), M10 (engine + pipeline), M11 (compliance). Thin layer over existing API routes.
+
+---
+
+### M14: MCP Client — External Data Source Connectors
+
+**Goal:** The engine becomes an MCP *client* connecting to external MCP servers for data enrichment. Adding a new source = pointing at an MCP server URL. Engine discovers available tools, maps them to source connector operations, ingests through MCP protocol.
+
+**Dependencies:** M10 (source connectors + pipeline), M13 (MCP protocol implementation to reuse)
+
+---
+
+### M15: MCP Prompts — Guided Investigation Workflows
+
+**Goal:** MCP server (M13) exposes predefined investigation workflows as MCP prompts. Multi-step investigation recipes that orchestrate tool calls in sequence, with decision points for researcher input. Encodes domain expertise into reusable workflows.
+
+**Dependencies:** M13 (MCP server with tools)
+
+---
+
+### M16: Federation — Multi-Instance Investigation Collaboration
+
+**Goal:** Multiple instances connect via MCP for cross-instance graph queries, shared findings, and collaborative investigations without centralizing data. Each instance retains data sovereignty.
+
+**Dependencies:** M13 (MCP server), M14 (MCP client). Each instance acts as both MCP server and MCP client.
+
+---
+
+### M17: Investigation Governance — Forks, Branches, Merge Requests & Coalitions
 
 **Goal:** Git-like governance for investigations. Fork, branch, merge requests, coalitions with democratic governance. The investigation graph becomes a versioned, auditable, collaborative artifact.
-
-**Full spec:** See `TASKS.md` → Milestone 17
 
 **Key decisions:**
 - Branches are lightweight refs to snapshots + delta (not full graph copies)
@@ -132,37 +206,9 @@ MIROFISH_API_URL=http://localhost:8080
 APP_URL=http://localhost:5174
 ```
 
-## Acceptance Criteria (M11)
+## Acceptance Criteria
 
-**Given** a YAML compliance framework,
-**When** `pnpm run compliance:seed` is run,
-**Then** ComplianceFramework + ComplianceRule + ChecklistItem nodes exist in Neo4j with correct relationships.
-
-**Given** an investigation with FATF framework attached,
-**When** the pipeline runs through ingest stage,
-**Then** FATF gate rules for ingest phase are evaluated, violations logged as `compliance_violation` Proposals, auditor warnings in PipelineState.progress_json.
-
-**Given** a `llm` check type rule,
-**When** evaluated against investigation nodes,
-**Then** it uses M10's LLMProvider factory (not direct MiroFish), parses structured JSON response, falls back to "inconclusive" on LLM failure.
-
-**Given** no framework attached to an investigation,
-**When** the pipeline runs,
-**Then** compliance checks are skipped entirely with zero overhead.
-
-## Acceptance Criteria (M17)
-
-**Given** a researcher viewing an investigation,
-**When** they click "Fork",
-**Then** a new InvestigationConfig is created with `FORKED_FROM` relationship, a snapshot of the source graph is copied to the fork's namespace.
-
-**Given** a branch with approved proposals,
-**When** a merge request is submitted,
-**Then** proposals are presented at a gate for review by the main investigation's owner or coalition.
-
-**Given** a coalition-governed investigation,
-**When** a merge request is submitted,
-**Then** it requires quorum approval (configurable: majority, unanimous, or weighted) before proposals are applied.
+See `TASKS.md` for detailed acceptance criteria per milestone. Each milestone has verification steps at the end of its section.
 
 ## References
 
