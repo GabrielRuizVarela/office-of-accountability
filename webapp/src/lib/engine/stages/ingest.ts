@@ -11,7 +11,7 @@ import type { StageKind } from '../types'
 import { getSourceConnectorById } from '../config'
 import { createConnector } from '../connectors'
 import { createProposal } from '../proposals'
-import { normalizeName } from '../../ingestion/dedup'
+import { normalizeName, toSlug, dedup, buildExistingMaps } from '../../ingestion/dedup'
 import type { StageRunner, StageContext, StageResult } from './types'
 
 export class IngestStageRunner implements StageRunner {
@@ -22,6 +22,10 @@ export class IngestStageRunner implements StageRunner {
     const errors: string[] = []
     let proposalsCreated = 0
     let recordsProcessed = 0
+    let duplicatesSkipped = 0
+
+    // Build dedup maps from existing graph nodes for this case
+    const { nameMap, slugMap } = await buildExistingMaps(context.casoSlug)
 
     for (const connectorId of connectorIds) {
       let records: Record<string, unknown>[]
@@ -45,6 +49,15 @@ export class IngestStageRunner implements StageRunner {
           .update(JSON.stringify(record))
           .digest('hex')
 
+        // Dedup: check incoming name against existing graph nodes
+        const recordName = typeof record.name === 'string' ? record.name : null
+        const dedupMatch = recordName ? dedup(recordName, nameMap, slugMap) : null
+
+        if (dedupMatch?.result === 'exact_match') {
+          duplicatesSkipped++
+          continue
+        }
+
         const properties: Record<string, unknown> = {
           ...record,
           caso_slug: context.casoSlug,
@@ -53,8 +66,19 @@ export class IngestStageRunner implements StageRunner {
           source_connector_id: connectorId,
         }
 
-        if (typeof record.name === 'string') {
-          properties.normalized_name = normalizeName(record.name)
+        let confidence = 0.5
+        let reasoning = `Ingested from connector ${connectorId}`
+
+        if (recordName) {
+          properties.normalized_name = normalizeName(recordName)
+          properties.slug = toSlug(recordName)
+
+          if (dedupMatch?.result === 'fuzzy_match') {
+            confidence = 0.3
+            reasoning += ` (fuzzy match: "${dedupMatch.existingName}", distance=${dedupMatch.distance})`
+            properties.fuzzy_match_id = dedupMatch.existingId
+            properties.fuzzy_match_name = dedupMatch.existingName
+          }
         }
 
         try {
@@ -66,10 +90,19 @@ export class IngestStageRunner implements StageRunner {
               label: 'Entity',
               properties,
             },
-            confidence: 0.5,
-            reasoning: `Ingested from connector ${connectorId}`,
+            confidence,
+            reasoning,
           })
           proposalsCreated++
+
+          // Update dedup maps so subsequent records in this batch can dedup
+          if (recordName) {
+            const normalized = normalizeName(recordName)
+            const slug = toSlug(recordName)
+            const entry = { id: ingestionHash, name: recordName }
+            nameMap.set(normalized, entry)
+            slugMap.set(slug, entry)
+          }
         } catch (err) {
           const message = err instanceof Error ? err.message : String(err)
           errors.push(`Proposal for record (hash ${ingestionHash}): ${message}`)
@@ -80,6 +113,7 @@ export class IngestStageRunner implements StageRunner {
     return {
       proposals_created: proposalsCreated,
       records_processed: recordsProcessed,
+      duplicates_skipped: duplicatesSkipped,
       errors,
     }
   }

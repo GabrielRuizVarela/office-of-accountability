@@ -24,6 +24,7 @@ export interface StageContext {
 export interface StageResult {
   proposals_created: number
   records_processed: number
+  duplicates_skipped?: number
   errors: string[]
 }
 
