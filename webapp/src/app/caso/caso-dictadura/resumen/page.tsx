@@ -244,7 +244,7 @@ export default function ResumenPage() {
             {lang === 'es' ? ch.title_es : ch.title_en}
           </h2>
           {(lang === 'es' ? ch.paragraphs_es : ch.paragraphs_en).map((p, i) => (
-            <p key={i} className="mx-auto max-w-3xl text-center leading-relaxed text-zinc-400">
+            <p key={i} className="mx-auto max-w-3xl text-left leading-relaxed text-zinc-400">
               {p}
             </p>
           ))}
