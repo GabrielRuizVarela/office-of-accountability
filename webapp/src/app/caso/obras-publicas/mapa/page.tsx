@@ -122,11 +122,20 @@ export default function MapaPage() {
   const [dragging, setDragging] = useState(false)
   const dragStart = useRef({ x: 0, y: 0 })
   const panStart = useRef({ x: 0, y: 0 })
+  const containerRef = useRef<HTMLDivElement>(null)
 
-  const handleWheel = useCallback((e: React.WheelEvent) => {
-    e.preventDefault()
-    const delta = e.deltaY > 0 ? 0.9 : 1.1
-    setZoom((z) => Math.max(0.5, Math.min(5, z * delta)))
+  // Attach wheel with { passive: false } to prevent page scroll
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault()
+      e.stopPropagation()
+      const delta = e.deltaY > 0 ? 0.9 : 1.1
+      setZoom((z) => Math.max(0.5, Math.min(5, z * delta)))
+    }
+    el.addEventListener('wheel', onWheel, { passive: false })
+    return () => el.removeEventListener('wheel', onWheel)
   }, [])
 
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
@@ -241,23 +250,32 @@ export default function MapaPage() {
           <section>
             <h2 className="mb-4 text-lg font-bold text-zinc-50">{t.pointsTitle[lang]}</h2>
             <div
-              className="relative rounded-xl border border-zinc-700 bg-zinc-950"
-              style={{ overflow: 'hidden' }}
-              onWheel={handleWheel}
+              ref={containerRef}
+              className="relative rounded-xl border border-zinc-700"
+              style={{ overflow: 'hidden', background: '#09090b', height: '70vh', maxHeight: '700px' }}
               onPointerDown={handlePointerDown}
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}
+              onPointerLeave={handlePointerUp}
             >
-              <svg
-                viewBox={`${-pan.x / zoom * 2 - (SVG_W * (zoom - 1)) / (2 * zoom)} ${-pan.y / zoom * 2 - (SVG_H * (zoom - 1)) / (2 * zoom)} ${SVG_W / zoom} ${SVG_H / zoom}`}
-                preserveAspectRatio="xMidYMid meet"
-                className="mx-auto block w-full max-w-lg touch-none select-none"
+              <div
                 style={{
-                  height: 'auto',
-                  maxHeight: '70vh',
+                  position: 'absolute',
+                  inset: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
+                  transformOrigin: 'center center',
                   cursor: dragging ? 'grabbing' : 'grab',
-                  background: '#09090b',
+                  touchAction: 'none',
                 }}
+              >
+              <svg
+                viewBox={`0 0 ${SVG_W} ${SVG_H}`}
+                preserveAspectRatio="xMidYMid meet"
+                className="touch-none select-none"
+                style={{ width: '100%', maxWidth: '500px', height: 'auto' }}
               >
                 <g>
                 {/* Argentina outline from GeoJSON */}
@@ -297,6 +315,7 @@ export default function MapaPage() {
                 })}
                 </g>
               </svg>
+              </div>
 
               {/* Zoom controls */}
               <div className="absolute top-3 right-3 z-10 flex flex-col gap-1">
