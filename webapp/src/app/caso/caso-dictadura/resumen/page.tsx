@@ -204,19 +204,19 @@ export default function ResumenPage() {
   const { lang } = useLanguage()
 
   return (
-    <article className="space-y-10">
+    <article className="mx-auto max-w-4xl space-y-10">
       {/* Header */}
-      <header className="space-y-4">
+      <header className="space-y-4 text-center">
         <span className="inline-block rounded-full bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-400">
           {t.headerBadge[lang]}
         </span>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
           {t.headerTitle[lang]}
         </h1>
-        <p className="max-w-3xl text-base leading-relaxed text-zinc-400">
+        <p className="mx-auto max-w-2xl text-base leading-relaxed text-zinc-400">
           {t.headerDesc[lang]}
         </p>
-        <div className="flex flex-wrap gap-3 pt-2">
+        <div className="flex flex-wrap justify-center gap-3 pt-2">
           <Link
             href={`/caso/${SLUG}/investigacion`}
             className="rounded bg-amber-600 px-4 py-2 text-sm font-medium text-white hover:bg-amber-500"
@@ -239,12 +239,12 @@ export default function ResumenPage() {
           id={`chapter-${ch.num.toLowerCase()}`}
           className="scroll-mt-24 space-y-4 border-t border-zinc-800 pt-8"
         >
-          <h2 className="text-xl font-semibold text-zinc-100">
+          <h2 className="text-center text-xl font-semibold text-zinc-100">
             <span className="mr-2 text-amber-500">{ch.num}.</span>
             {lang === 'es' ? ch.title_es : ch.title_en}
           </h2>
           {(lang === 'es' ? ch.paragraphs_es : ch.paragraphs_en).map((p, i) => (
-            <p key={i} className="max-w-3xl leading-relaxed text-zinc-400">
+            <p key={i} className="mx-auto max-w-3xl text-center leading-relaxed text-zinc-400">
               {p}
             </p>
           ))}
@@ -252,9 +252,9 @@ export default function ResumenPage() {
       ))}
 
       {/* Sources */}
-      <section className="space-y-3 border-t border-zinc-800 pt-8">
+      <section className="space-y-3 border-t border-zinc-800 pt-8 text-center">
         <h2 className="text-lg font-semibold text-zinc-100">{t.sources[lang]}</h2>
-        <ul className="list-disc space-y-1 pl-5 text-sm text-zinc-500">
+        <ul className="mx-auto inline-block list-disc space-y-1 pl-5 text-left text-sm text-zinc-500">
           <li>RUVTE — Registro Unificado de Victimas del Terrorismo de Estado (datos.jus.gob.ar)</li>
           <li>presentes — R package, DiegoKoz/presentes (762 CCDs, coordinates)</li>
           <li>SNEEP — Sistema Nacional de Estadisticas sobre Ejecucion de la Pena (datos.jus.gob.ar)</li>
