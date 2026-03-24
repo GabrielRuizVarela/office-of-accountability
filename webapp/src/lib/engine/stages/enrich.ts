@@ -12,6 +12,7 @@ import type { Message } from '../llm/types'
 import { getToolsForStage } from '../llm/tools'
 import { readQuery } from '../../neo4j/client'
 import { resolveLLMProvider, processToolCall } from './shared'
+import { createEngineLogger } from '../logger'
 import type { StageRunner, StageContext, StageResult } from './types'
 
 const BATCH_SIZE = 5
@@ -32,9 +33,12 @@ export class EnrichStageRunner implements StageRunner {
   kind: StageKind = 'enrich'
 
   async run(context: StageContext): Promise<StageResult> {
+    const log = createEngineLogger(context.pipelineState.id, 'enrich')
     const errors: string[] = []
     let proposalsCreated = 0
     let recordsProcessed = 0
+
+    log.info('stage.start')
 
     // Query nodes with source_url that haven't been enriched yet
     const unenrichedResult = await readQuery(
@@ -96,6 +100,8 @@ export class EnrichStageRunner implements StageRunner {
         errors.push(`Batch ${i / BATCH_SIZE + 1}: ${message}`)
       }
     }
+
+    log.info('stage.done', { proposals: proposalsCreated, records: recordsProcessed, errors: errors.length })
 
     return {
       proposals_created: proposalsCreated,

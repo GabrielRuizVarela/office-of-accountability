@@ -12,6 +12,7 @@ import type { Message } from '../llm/types'
 import { getToolsForStage } from '../llm/tools'
 import { readQuery } from '../../neo4j/client'
 import { resolveLLMProvider, processToolCall } from './shared'
+import { createEngineLogger } from '../logger'
 import type { StageRunner, StageContext, StageResult } from './types'
 
 const BATCH_SIZE = 10
@@ -31,9 +32,12 @@ export class VerifyStageRunner implements StageRunner {
   kind: StageKind = 'verify'
 
   async run(context: StageContext): Promise<StageResult> {
+    const log = createEngineLogger(context.pipelineState.id, 'verify')
     const errors: string[] = []
     let proposalsCreated = 0
     let recordsProcessed = 0
+
+    log.info('stage.start')
 
     // Query bronze-tier nodes for this caso
     const bronzeResult = await readQuery(
@@ -93,6 +97,8 @@ export class VerifyStageRunner implements StageRunner {
         errors.push(`Batch ${i / BATCH_SIZE + 1}: ${message}`)
       }
     }
+
+    log.info('stage.done', { proposals: proposalsCreated, records: recordsProcessed, errors: errors.length })
 
     return {
       proposals_created: proposalsCreated,

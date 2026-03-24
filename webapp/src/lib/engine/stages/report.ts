@@ -12,6 +12,7 @@ import type { Message } from '../llm/types'
 import { getToolsForStage } from '../llm/tools'
 import { readQuery } from '../../neo4j/client'
 import { resolveLLMProvider, processToolCall, getGraphSummary } from './shared'
+import { createEngineLogger } from '../logger'
 import type { StageRunner, StageContext, StageResult } from './types'
 
 const MAX_REPORT_NODES = 100
@@ -36,8 +37,11 @@ export class ReportStageRunner implements StageRunner {
   kind: StageKind = 'report'
 
   async run(context: StageContext): Promise<StageResult> {
+    const log = createEngineLogger(context.pipelineState.id, 'report')
     const errors: string[] = []
     let proposalsCreated = 0
+
+    log.info('stage.start')
 
     // Get current graph summary for context
     const graphSummary = await getGraphSummary(context.casoSlug)
@@ -95,6 +99,8 @@ export class ReportStageRunner implements StageRunner {
       const message = err instanceof Error ? err.message : String(err)
       errors.push(`Report generation: ${message}`)
     }
+
+    log.info('stage.done', { proposals: proposalsCreated, records: nodes.length, errors: errors.length })
 
     return {
       proposals_created: proposalsCreated,

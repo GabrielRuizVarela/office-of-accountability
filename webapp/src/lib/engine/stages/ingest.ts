@@ -12,17 +12,21 @@ import { getSourceConnectorById } from '../config'
 import { createConnector } from '../connectors'
 import { createProposal } from '../proposals'
 import { normalizeName, toSlug, dedup, buildExistingMaps } from '../../ingestion/dedup'
+import { createEngineLogger } from '../logger'
 import type { StageRunner, StageContext, StageResult } from './types'
 
 export class IngestStageRunner implements StageRunner {
   kind: StageKind = 'ingest'
 
   async run(context: StageContext): Promise<StageResult> {
+    const log = createEngineLogger(context.pipelineState.id, 'ingest')
     const connectorIds = context.stage.connector_ids ?? []
     const errors: string[] = []
     let proposalsCreated = 0
     let recordsProcessed = 0
     let duplicatesSkipped = 0
+
+    log.info('stage.start', { connectors: connectorIds.length })
 
     // Build dedup maps from existing graph nodes for this case
     const { nameMap, slugMap } = await buildExistingMaps(context.casoSlug)
@@ -109,6 +113,8 @@ export class IngestStageRunner implements StageRunner {
         }
       }
     }
+
+    log.info('stage.done', { proposals: proposalsCreated, records: recordsProcessed, duplicates: duplicatesSkipped, errors: errors.length })
 
     return {
       proposals_created: proposalsCreated,

@@ -17,6 +17,7 @@ import {
 } from './types'
 import { getPipelineConfigById, getPipelineStageById, getGateById } from './config'
 import { incrementCounter } from './metrics'
+import { createEngineLogger } from './logger'
 import { appendEntry } from './audit'
 import { captureSnapshot } from './snapshots'
 import { runComplianceGate } from '../compliance/pipeline'
@@ -149,6 +150,8 @@ export async function startPipeline(pipelineStateId: string): Promise<PipelineSt
     throw new Error(`Cannot start pipeline in status '${state.status}' (expected 'idle')`)
   }
 
+  const log = createEngineLogger(pipelineStateId)
+
   const config = await getPipelineConfigById(state.pipeline_id)
   if (!config) throw new Error(`PipelineConfig not found: ${state.pipeline_id}`)
   if (config.stage_ids.length === 0) {
@@ -165,6 +168,7 @@ export async function startPipeline(pipelineStateId: string): Promise<PipelineSt
   })
 
   incrementCounter('pipeline_runs_total')
+  log.info('pipeline.started', { pipeline_id: state.pipeline_id, first_stage: firstStageId })
 
   await appendEntry({
     pipeline_state_id: pipelineStateId,
@@ -186,6 +190,8 @@ export async function advanceStage(pipelineStateId: string): Promise<PipelineSta
   if (state.status !== 'running') {
     throw new Error(`Cannot advance pipeline in status '${state.status}' (expected 'running')`)
   }
+
+  const log = createEngineLogger(pipelineStateId)
 
   const config = await getPipelineConfigById(state.pipeline_id)
   if (!config) throw new Error(`PipelineConfig not found: ${state.pipeline_id}`)
@@ -211,6 +217,8 @@ export async function advanceStage(pipelineStateId: string): Promise<PipelineSta
       const updated = await updatePipelineState(pipelineStateId, {
         status: 'paused',
       })
+
+      log.info('gate.reached', { stage: currentStage.kind, gate_id: currentStage.gate_id })
 
       await appendEntry({
         pipeline_state_id: pipelineStateId,
@@ -239,6 +247,8 @@ export async function advanceStage(pipelineStateId: string): Promise<PipelineSta
     const updated = await updatePipelineState(pipelineStateId, {
       status: 'paused',
     })
+
+    log.warn('compliance.gate_blocked', { stage: stagePhase, summary: complianceResult.summary })
 
     await appendEntry({
       pipeline_state_id: pipelineStateId,
@@ -270,6 +280,7 @@ export async function advanceStage(pipelineStateId: string): Promise<PipelineSta
     })
 
     incrementCounter('pipeline_runs_completed')
+    log.info('pipeline.completed', { stages_total: config.stage_ids.length })
 
     await appendEntry({
       pipeline_state_id: pipelineStateId,
@@ -288,6 +299,11 @@ export async function advanceStage(pipelineStateId: string): Promise<PipelineSta
 
   const updated = await updatePipelineState(pipelineStateId, {
     current_stage_id: nextStageId,
+  })
+
+  log.info('stage.advanced', {
+    from: currentStage?.kind ?? state.current_stage_id,
+    to: nextStage?.kind ?? nextStageId,
   })
 
   await appendEntry({
@@ -310,6 +326,8 @@ export async function resumeAfterGate(pipelineStateId: string): Promise<Pipeline
   if (state.status !== 'paused') {
     throw new Error(`Cannot resume pipeline in status '${state.status}' (expected 'paused')`)
   }
+
+  const log = createEngineLogger(pipelineStateId)
 
   const config = await getPipelineConfigById(state.pipeline_id)
   if (!config) throw new Error(`PipelineConfig not found: ${state.pipeline_id}`)
@@ -351,6 +369,11 @@ export async function resumeAfterGate(pipelineStateId: string): Promise<Pipeline
     current_stage_id: nextStageId,
   })
 
+  log.info('gate.approved', {
+    from: currentStage?.kind ?? state.current_stage_id,
+    to: nextStage?.kind ?? nextStageId,
+  })
+
   await appendEntry({
     pipeline_state_id: pipelineStateId,
     stage_id: nextStageId,
@@ -375,6 +398,8 @@ export async function failPipeline(
     throw new Error(`Cannot fail pipeline in status '${state.status}' (expected 'running' or 'paused')`)
   }
 
+  const log = createEngineLogger(pipelineStateId)
+
   const updated = await updatePipelineState(pipelineStateId, {
     status: 'failed',
     error,
@@ -382,6 +407,7 @@ export async function failPipeline(
   })
 
   incrementCounter('pipeline_runs_failed')
+  log.error('pipeline.failed', { error, stage: state.current_stage_id })
 
   await appendEntry({
     pipeline_state_id: pipelineStateId,

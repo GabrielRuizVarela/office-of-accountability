@@ -19,6 +19,7 @@ import { getToolsForStage } from '../llm/tools'
 import type { Message } from '../llm/types'
 import { resolveLLMProvider, processToolCall, getGraphSummary } from './shared'
 import { incrementCounter } from '../metrics'
+import { createEngineLogger } from '../logger'
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -37,6 +38,7 @@ export class IterateStageRunner implements StageRunner {
 
   async run(context: StageContext): Promise<StageResult> {
     const { casoSlug, stage, pipelineState } = context
+    const log = createEngineLogger(pipelineState.id, 'iterate')
     const maxIterations =
       (stage.config?.max_iterations as number | undefined) ?? DEFAULT_MAX_ITERATIONS
     const tokenBudget =
@@ -45,6 +47,8 @@ export class IterateStageRunner implements StageRunner {
     let totalProposals = 0
     let totalRecords = 0
     const tokensUsed: TokenUsage = { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 }
+
+    log.info('stage.start', { max_iterations: maxIterations, token_budget: tokenBudget })
 
     // Fresh research program per run — directives seeded from gap detection
     const program = new ResearchProgram()
@@ -57,6 +61,7 @@ export class IterateStageRunner implements StageRunner {
     for (let iteration = 0; iteration < maxIterations; iteration++) {
       // Check token budget before starting a new iteration
       if (tokensUsed.total_tokens >= tokenBudget) {
+        log.warn('token_budget.exhausted', { used: tokensUsed.total_tokens, budget: tokenBudget, iteration })
         errors.push(
           `Token budget exhausted (${tokensUsed.total_tokens}/${tokenBudget}) — stopping at iteration ${iteration}`,
         )
@@ -124,6 +129,8 @@ export class IterateStageRunner implements StageRunner {
         break
       }
     }
+
+    log.info('stage.done', { proposals: totalProposals, records: totalRecords, tokens: tokensUsed.total_tokens, errors: errors.length })
 
     return {
       proposals_created: totalProposals,

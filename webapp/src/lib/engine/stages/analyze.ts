@@ -12,6 +12,7 @@ import type { Message } from '../llm/types'
 import { getToolsForStage } from '../llm/tools'
 import { readQuery } from '../../neo4j/client'
 import { resolveLLMProvider, processToolCall, getGraphSummary } from './shared'
+import { createEngineLogger } from '../logger'
 import type { StageRunner, StageContext, StageResult } from './types'
 
 const BATCH_SIZE = 10
@@ -33,9 +34,12 @@ export class AnalyzeStageRunner implements StageRunner {
   kind: StageKind = 'analyze'
 
   async run(context: StageContext): Promise<StageResult> {
+    const log = createEngineLogger(context.pipelineState.id, 'analyze')
     const errors: string[] = []
     let proposalsCreated = 0
     let recordsProcessed = 0
+
+    log.info('stage.start')
 
     // Get current graph summary for context
     const graphSummary = await getGraphSummary(context.casoSlug)
@@ -100,6 +104,8 @@ export class AnalyzeStageRunner implements StageRunner {
         errors.push(`Batch ${i / BATCH_SIZE + 1}: ${message}`)
       }
     }
+
+    log.info('stage.done', { proposals: proposalsCreated, records: recordsProcessed, errors: errors.length })
 
     return {
       proposals_created: proposalsCreated,
