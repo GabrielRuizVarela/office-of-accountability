@@ -1,0 +1,632 @@
+{
+  "metadata": {
+    "research_date": "2026-03-24",
+    "purpose": "Identify reliable data sources for Argentine public works / road construction contracts to fill the CompraR procurement gap in Neo4j graph",
+    "critical_gap": "CompraR (COMPR.AR) only covers services/supplies, NOT public works construction. Companies like Techint, IECSA/SACDE, Electroingeniería, Cartellone have ZERO contracts in graph despite being major construction firms.",
+    "finding_summary": "Found 5 high-value programmatic data sources with CSV/JSON/OCDS downloads covering ~9,000+ construction contracts with contractor names, CUITs, and amounts. The CONTRATAR platform is the single most important missing source."
+  },
+
+  "data_sources": [
+    {
+      "id": "CONTRATAR_CURRENT",
+      "name": "CONTRATAR — Procesos de Contratación de la Obra Pública",
+      "priority": "CRITICAL — highest priority for ETL",
+      "description": "Official electronic portal for public works contracting across all national agencies. This is the PUBLIC WORKS equivalent of CompraR. Managed by Oficina Nacional de Contrataciones under Jefatura de Gabinete.",
+      "legal_basis": "Decreto N° 1169/2018",
+      "portal_url": "https://contratar.gob.ar/",
+      "datos_gob_ar_url": "https://datos.gob.ar/dataset/jgm-procesos-contratacion-obra-publica-gestionados-plataforma-contratar",
+      "data_format": "CSV (multiple files, relational)",
+      "programmatic_access": true,
+      "api_available": false,
+      "direct_download": true,
+      "resources": [
+        {
+          "name": "Procedimientos",
+          "url": "https://infra.datos.gob.ar/catalog/jgm/dataset/30/distribution/30.1/download/onc-contratar-procedimientos.csv",
+          "format": "CSV",
+          "description": "All contracting procedures — tender details, official budget, dates, procurement type",
+          "key_fields": ["procedimiento_numero", "procedimiento_nombre", "organismo_nombre", "procedimiento_estado", "sistema_contratacion", "presupuesto_oficial_monto", "publicacion_contratar_fecha"]
+        },
+        {
+          "name": "Contratos (HIGHEST VALUE)",
+          "url": "https://infra.datos.gob.ar/catalog/jgm/dataset/30/distribution/30.4/download/onc-contratar-contratos.csv",
+          "format": "CSV",
+          "description": "Awarded contracts with contractor CUIT, company name, amounts",
+          "key_fields": ["contrato_numero", "procedimiento_numero", "organismo_nombre", "nombre_obra", "contratista_cuit", "contratista_razon_social", "contratista_ute_si_no", "contrato_monto", "contrato_moneda"],
+          "record_count": 392,
+          "unique_companies": 152
+        },
+        {
+          "name": "Ofertas (Bids)",
+          "url": "https://infra.datos.gob.ar/catalog/jgm/dataset/30/distribution/30.3/download/onc-contratar-ofertas.csv",
+          "format": "CSV",
+          "description": "All bids submitted — shows competitive landscape, who bid on what",
+          "key_fields": ["procedimiento_numero", "oferente_cuit", "oferente_razon_social", "oferta_monto", "presupuesto_oficial_renglon_monto", "evaluada_si_no", "desestimada_si_no", "orden_merito"]
+        },
+        {
+          "name": "Obras (Work Sites)",
+          "url": "https://infra.datos.gob.ar/catalog/jgm/dataset/30/distribution/30.5/download/onc-contratar-obras.csv",
+          "format": "CSV",
+          "description": "Work site details linked to procedures"
+        },
+        {
+          "name": "Ubicación geográfica",
+          "url": "https://infra.datos.gob.ar/catalog/jgm/dataset/30/distribution/30.6/download/onc-contratar-ubicacion-geografica.csv",
+          "format": "CSV",
+          "description": "Geographic coordinates of awarded works"
+        },
+        {
+          "name": "Circulares",
+          "url": "https://infra.datos.gob.ar/catalog/jgm/dataset/30/distribution/30.2/download/onc-contratar-circulares.csv",
+          "format": "CSV",
+          "description": "Circular amendments issued during procurement"
+        },
+        {
+          "name": "Actas de apertura",
+          "url": "https://infra.datos.gob.ar/catalog/jgm/dataset/30/distribution/30.8/download/onc-contratar-actas-apertura.csv",
+          "format": "CSV",
+          "description": "Bid opening records"
+        },
+        {
+          "name": "Metodología",
+          "url": "https://infra.datos.gob.ar/catalog/jgm/dataset/30/distribution/30.0/download/metodologia-contratar.pdf",
+          "format": "PDF",
+          "description": "Data dictionary and methodology documentation"
+        }
+      ],
+      "coverage": {
+        "years": "2017-present",
+        "agencies": "All national public works — DNV (160 contracts), Min. Educación (52), Min. Obras Públicas (50), Min. Transporte (33), Parques Nacionales (19), Min. Interior (18), CNEA (16), Sec. Energía (15)"
+      },
+      "key_companies_found": [
+        "SACDE S.A. (continuadora de IECSA S.A.) — CUIT 30-56845745-1 — 3+ contracts",
+        "CPC S.A. — CUIT 30-59865201-1 — 6+ contracts",
+        "DYCASA S.A. — CUIT 33-51629418-9 — 2+ contracts",
+        "Rovella Carranza S.A. — CUIT 30-61522482-7 — 2+ contracts",
+        "BENITO ROGGIO E HIJOS S.A. (in UTEs) — CUIT 30716288214",
+        "LEMIRO PABLO PIETROBONI S.A. — CUIT 30-53300416-0 — 2+ contracts",
+        "Luis Losi S.A. — CUIT 30-69050479-7 — 3+ contracts",
+        "CN SAPAG S.A. — 6 contracts",
+        "DECAVIAL SAICAC — 6 contracts",
+        "MARCALBA S.A. — 7 contracts"
+      ],
+      "data_quality": {
+        "rating": "HIGH",
+        "has_cuit": true,
+        "has_amounts": true,
+        "has_ute_flag": true,
+        "encoding_issues": "Some character encoding problems (ñ → ½, é → ?)",
+        "notes": "Contract amounts sometimes empty but present in procedimientos. Relational structure allows joining across tables via procedimiento_numero."
+      },
+      "etl_recommendation": "IMMEDIATE. Download all 7 CSV files. Join contratos + procedimientos on procedimiento_numero. Extract contratista_cuit, contratista_razon_social, contrato_monto. Create CONTRACT nodes linked to COMPANY and GOVERNMENT_AGENCY nodes. Handle UTE (joint ventures) by splitting into member companies."
+    },
+
+    {
+      "id": "CONTRATAR_HISTORICO",
+      "name": "CONTRAT.AR Histórico — Pre-2021 Public Works",
+      "priority": "HIGH — fills historical gap",
+      "description": "Historical public works contracting data from before the current CONTRATAR platform. Single flat CSV with 858 rows spanning 2009-2020.",
+      "datos_gob_ar_url": "https://datos.gob.ar/dataset/jgm-contratar-historico",
+      "resources": [
+        {
+          "name": "Obras Públicas Decreto 1169/2018 (CSV)",
+          "url": "http://infra.datos.gob.ar/catalog/modernizacion/dataset/12/distribution/12.2/download/onc_obras_decreto_1169_18.csv",
+          "format": "CSV"
+        },
+        {
+          "name": "Obras Públicas Decreto 1169/2018 (XLSX)",
+          "url": "http://infra.datos.gob.ar/catalog/modernizacion/dataset/12/distribution/12.1/download/onc_obras_decreto_1169_18.xlsx",
+          "format": "XLSX"
+        }
+      ],
+      "data_format": "CSV (flat file)",
+      "programmatic_access": true,
+      "direct_download": true,
+      "record_count": 858,
+      "unique_companies": 445,
+      "key_fields": [
+        "organismo_nombre", "obra_nombre", "proceso_de_seleccion_numero",
+        "contratista_razon_social", "contratista_cuit_1", "contratista_cuit_2",
+        "presupuesto_oficial_monto", "sistema_contratacion", "apertura_fecha",
+        "plazo_ejecucion", "financiamiento_fuente", "funcionario_contratante_nombre"
+      ],
+      "coverage": {
+        "years": "2009-2020",
+        "agencies": "DNV (400), Min. Educación (165), Sec. Planificación Territorial (135), Sec. Infraestructura Hídrica (83), ENOHSA (41)"
+      },
+      "data_quality": {
+        "rating": "MEDIUM-HIGH",
+        "has_cuit": true,
+        "has_amounts": "partially (presupuesto_oficial_monto present)",
+        "encoding_issues": "BOM present, some encoding issues",
+        "notes": "Flat file is easier to ingest than relational CONTRATAR. Has funcionario_contratante (signing official) which is valuable for revolving-door analysis."
+      },
+      "etl_recommendation": "IMMEDIATE. Single CSV download. Parse contratista_razon_social + contratista_cuit_1. Note: contratista_cuit_2 may indicate UTE partners. Creates ~858 CONTRACT nodes."
+    },
+
+    {
+      "id": "DNV_OCDS",
+      "name": "DNV Datos Abiertos — OCDS (Open Contracting Data Standard)",
+      "priority": "HIGH — rich structured data, overlaps with CONTRATAR but has more detail",
+      "description": "The DNV (Dirección Nacional de Vialidad) published an OCDS-compliant dataset covering road construction contracts. Includes parties, tenders, awards, contracts with full CUIT identifiers and monetary values.",
+      "portal_url": "https://datosabiertos.vialidad.gob.ar/",
+      "explorer_url": "https://datosabiertos.vialidad.gob.ar/ui/index.html#!/datos_abiertos",
+      "ocp_registry_url": "https://data.open-contracting.org/en/publication/18",
+      "ocid_prefix": "ocds-4jg6r3",
+      "data_format": "OCDS JSON Lines (also Excel, CSV)",
+      "programmatic_access": true,
+      "direct_download": true,
+      "resources": [
+        {
+          "name": "Full dataset (JSON Lines, gzipped)",
+          "url": "https://data.open-contracting.org/en/publication/18/download?name=full.jsonl.gz",
+          "format": "JSONL.GZ",
+          "size": "515.2 KB"
+        },
+        {
+          "name": "Full dataset (Excel)",
+          "url": "https://data.open-contracting.org/en/publication/18/download?name=full.xlsx",
+          "format": "XLSX",
+          "size": "1.2 MB"
+        },
+        {
+          "name": "Full dataset (CSV, compressed)",
+          "url": "https://data.open-contracting.org/en/publication/18/download?name=full.csv.tar.gz",
+          "format": "CSV.TAR.GZ",
+          "size": "475.5 KB"
+        }
+      ],
+      "record_counts": {
+        "contracting_processes": 277,
+        "parties": 1246,
+        "tenders": 277,
+        "awards": 235,
+        "contracts": 234,
+        "milestones": 1321,
+        "amendments": 2091,
+        "unique_suppliers": 58
+      },
+      "data_structure": {
+        "top_level_keys": ["id", "tag", "date", "ocid", "buyer", "awards", "tender", "parties", "language", "planning", "contracts", "workDetails", "initiationType"],
+        "party_fields": {
+          "id": "CUIT number",
+          "name": "Company legal name",
+          "roles": ["buyer", "supplier", "procuringEntity", "payee", "payer"],
+          "identifier": {"id": "CUIT", "scheme": "AR-CUIT", "legalName": "string"},
+          "address": {"region": "province", "locality": "city", "streetAddress": "string"}
+        },
+        "award_fields": {
+          "id": "award number",
+          "date": "ISO 8601",
+          "title": "work description",
+          "value": {"amount": "number", "currency": "ARS"},
+          "status": "active/pending",
+          "suppliers": [{"id": "CUIT", "name": "company name"}],
+          "currentValue": "inflation-adjusted value (OCDS extension)"
+        },
+        "contract_fields": {
+          "id": "contract number",
+          "value": {"amount": "number", "currency": "ARS"},
+          "period": {"startDate": "ISO", "endDate": "ISO"},
+          "implementation": {"milestones": "array"}
+        }
+      },
+      "key_companies_found": [
+        "JOSE CARTELLONE CONST. CIVILES S.A.",
+        "ROVELLA CARRANZA S.A (in UTEs)",
+        "CPC S.A.",
+        "DYCASA S.A.",
+        "EQUIMAC S.A.",
+        "DECAVIAL SAICAC",
+        "JCR S.A.",
+        "LEMIRO PABLO PIETROBONI SOCIEDAD ANONIMA",
+        "CORSAN CORVIAM CONSTRUCCION S.A.",
+        "C.N. SAPAG S.A."
+      ],
+      "coverage": {
+        "years": "Data snapshot as of December 2023",
+        "agencies": "DNV only (road construction)",
+        "status": "NO LONGER UPDATED by publisher (as of 2024)"
+      },
+      "data_quality": {
+        "rating": "MEDIUM",
+        "has_cuit": true,
+        "has_amounts": true,
+        "has_inflation_adjusted": true,
+        "known_issues": [
+          "Release tags not used correctly (most use only 'planning' tag)",
+          "Release dates incorrect (correspond to data consultation date, not event date)",
+          "Empty structures retained in data",
+          "No longer maintained by publisher"
+        ],
+        "notes": "Despite quality issues, the structured OCDS format with full party identifiers (CUIT) and monetary values makes this very valuable. The workDetails extension provides road-specific metadata."
+      },
+      "etl_recommendation": "HIGH PRIORITY. Download JSONL.GZ (515KB). Parse each line as OCDS release. Extract parties with role=supplier, awards with value.amount, contracts with value. Deduplicate against CONTRATAR data using CUIT + procedimiento number. Provides richer metadata than CONTRATAR flat CSVs."
+    },
+
+    {
+      "id": "MAPA_INVERSIONES",
+      "name": "MapaInversiones Argentina — Ministerio de Obras Públicas",
+      "priority": "HIGH — broadest coverage across all public works sectors",
+      "description": "Investment map consolidating all public works from Ministerio de Obras Públicas / Secretaría de Obras Públicas. Covers road, water, architecture, housing, health, education infrastructure. Joint initiative with Inter-American Development Bank (IDB).",
+      "portal_url": "https://mapainversiones.obraspublicas.gob.ar/",
+      "datos_gob_ar_url": "https://datos.gob.ar/dataset/obras-mapa-inversiones-argentina",
+      "data_format": "CSV",
+      "programmatic_access": true,
+      "direct_download": true,
+      "resources": [
+        {
+          "name": "Dataset principal (Obras)",
+          "url": "https://mapainversiones.obraspublicas.gob.ar/opendata/dataset_mop.csv",
+          "format": "CSV",
+          "size": "~7.9 MB"
+        },
+        {
+          "name": "Diccionario de datos",
+          "url": "https://mapainversiones.obraspublicas.gob.ar/opendata/Dictionary/dataset_diccionario.csv",
+          "format": "CSV"
+        }
+      ],
+      "record_count": 7285,
+      "fields": [
+        "idproyecto", "numeroobra", "codigobapin",
+        "fechainicioanio", "fechafinanio",
+        "nombreobra", "descripicionfisica",
+        "montototal", "sectornombre",
+        "avancefinanciero", "avancefisico",
+        "entidadejecutoranombre", "duracionobrasdias",
+        "tipoproyecto", "nombredepto", "nombreprovincia",
+        "etapaobra", "tipomoneda",
+        "programa_infraestructura",
+        "organismo_financiador_1", "organismo_financiador_2",
+        "contraparte_key", "contraparte_val", "contraparte_cuit", "contraparte_modalidad"
+      ],
+      "sector_breakdown": {
+        "AGUA Y CLOACA": 2645,
+        "OBRAS VIALES": 1465,
+        "ARQUITECTURA": 1233,
+        "EQUIPAMIENTO URBANO": 943,
+        "OTROS": 398,
+        "SALUD": 213,
+        "RECURSOS HIDRICOS": 176,
+        "EDUCACIÓN": 163,
+        "VIVIENDA / HÁBITAT": 49
+      },
+      "contractor_data_quality": {
+        "total_rows": 7285,
+        "rows_with_contractor_name": 5613,
+        "rows_with_cuit": 696,
+        "cuit_coverage_pct": 9.6,
+        "name_coverage_pct": 77.0,
+        "obras_viales_total": 1465,
+        "obras_viales_with_cuit": 353,
+        "obras_viales_with_name": 1449
+      },
+      "key_companies_found": {
+        "road_construction": [
+          {"name": "DYCASA S.A.", "cuit": "33516294189", "obras": 8},
+          {"name": "SACDE S.A. (ex-IECSA)", "cuit": "30568457451", "obras": 8},
+          {"name": "ROVELLA CARRANZA S.A.", "cuit": "30615224827", "obras": 6},
+          {"name": "CPC S.A.", "cuit": "30598652011", "obras": 5},
+          {"name": "LUIS LOSI S.A.", "cuit": "30690504797", "obras": 5},
+          {"name": "JOSE CARTELLONE CONST. CIVILES S.A.", "cuit": "30501579471", "obras": 5},
+          {"name": "LEMIRO PABLO PIETROBONI S.A.", "cuit": "30533004160", "obras": 3},
+          {"name": "BENITO ROGGIO E HIJOS S.A.", "cuit": "30501086246", "obras": 2},
+          {"name": "ELECTROINGENIERÍA S.A. (in UTE)", "cuit": "30711323178", "obras": 1}
+        ]
+      },
+      "executing_entities_viales": {
+        "DIRECCIÓN NACIONAL DE GESTIÓN DE OBRAS": 1039,
+        "DIRECCIÓN NACIONAL DE VIALIDAD": 280,
+        "DIRECCIÓN NACIONAL DE GESTIÓN DE INFRAESTRUCTURAS DEL TRANSPORTE": 68,
+        "CORREDORES VIALES S.A.": 55,
+        "OFICINA DE NACIONES UNIDAS": 23
+      },
+      "coverage": {
+        "years": "2013-2023",
+        "update_frequency": "Monthly (per metadata), but last updated September 2021 per datos.gob.ar",
+        "agencies": "All Ministerio de Obras Públicas entities",
+        "license": "Creative Commons Attribution 4.0"
+      },
+      "data_quality": {
+        "rating": "MEDIUM",
+        "strengths": [
+          "Broadest coverage: 7,285 works across all sectors",
+          "1,465 road construction works specifically",
+          "77% have contractor names",
+          "Geographic data (province, department)",
+          "Physical and financial progress tracking",
+          "BAPIN codes for linking to investment database"
+        ],
+        "weaknesses": [
+          "Only 9.6% have CUIT (most are dash-filled)",
+          "montototal often empty or zero",
+          "Last updated Sept 2021 — stale",
+          "contraparte_cuit populated for only ~350 road works",
+          "No individual contract amounts — montototal is project total"
+        ]
+      },
+      "etl_recommendation": "HIGH PRIORITY for breadth. Download CSV. Filter sectornombre='OBRAS VIALES'. Extract contraparte_val (company name) and contraparte_cuit where available. Use fuzzy matching to link company names to existing COMPANY nodes. The codigobapin field can link to BAPIN investment database. Creates ~1,465 ROAD_WORK nodes."
+    },
+
+    {
+      "id": "COMPRAR_SYSTEM",
+      "name": "Sistema de Contrataciones Electrónicas (COMPR.AR)",
+      "priority": "LOW for construction — already in graph, covers services/supplies NOT public works",
+      "description": "The existing procurement system already ingested. Covers goods and services but explicitly EXCLUDES public works construction (which goes through CONTRATAR instead). Listed here for completeness.",
+      "datos_gob_ar_url": "https://datos.gob.ar/dataset/jgm-sistema-contrataciones-electronicas",
+      "resources_summary": "20 CSV files: Convocatorias + Adjudicaciones for 2015-2020, plus SIPRO provider registry and SIByS catalog",
+      "key_resource": {
+        "name": "Sistema de Información de Proveedores (SIPRO)",
+        "url": "https://infra.datos.gob.ar/catalog/modernizacion/dataset/2/distribution/2.11/download/proveedores.csv",
+        "format": "CSV",
+        "description": "USEFUL: Full provider registry with CUITs — can be cross-referenced against CONTRATAR contractors"
+      },
+      "data_quality": {
+        "rating": "HIGH for services, N/A for construction",
+        "notes": "This is the gap we are filling. CompraR does NOT include construction contracts."
+      },
+      "etl_recommendation": "ALREADY INGESTED for services. But download SIPRO (proveedores.csv) to enrich company data with provider registry details."
+    },
+
+    {
+      "id": "BA_OBRAS",
+      "name": "BA Obras — Ciudad Autónoma de Buenos Aires",
+      "priority": "MEDIUM — city-level only but high quality",
+      "description": "Buenos Aires City public works platform. Contains construction companies, CUIT, dates, amounts, descriptions, locations. Over 1,100 works since 2016.",
+      "portal_url": "https://data.buenosaires.gob.ar/dataset/ba-obras",
+      "data_format": "CSV",
+      "programmatic_access": true,
+      "direct_download": true,
+      "coverage": {
+        "years": "2016-2024",
+        "geographic": "CABA (Buenos Aires City) only",
+        "sectors": "Public space (270), Schools (221), Architecture (132), Health (91), Hydraulic/Infrastructure (59), Housing (46), Transport (19)"
+      },
+      "fields_available": ["construction company", "CUIT", "start/end dates", "amounts", "descriptions", "locations", "responsible ministry"],
+      "data_quality": {
+        "rating": "HIGH",
+        "has_cuit": true,
+        "has_amounts": true,
+        "update_frequency": "Quarterly",
+        "last_updated": "April 2024",
+        "license": "CC-BY-2.5-AR",
+        "notes": "Very clean data. Connected to Buenos Aires Compras procurement system. Limited to city works only."
+      },
+      "access_issues": "Portal returned access denied during testing — may require browser-based access or different API endpoint",
+      "etl_recommendation": "MEDIUM priority. City-level data complements national sources. Try CKAN API: data.buenosaires.gob.ar/api/3/action/package_show?id=ba-obras. Good for Techint/Cartellone CABA projects."
+    },
+
+    {
+      "id": "PRESUPUESTO_ABIERTO",
+      "name": "Presupuesto Abierto — National Budget API",
+      "priority": "MEDIUM — budget execution data, not individual contracts",
+      "description": "Argentina's open budget platform with API. Has physical and financial execution of public works by program. Does NOT have individual contractor data but provides budget allocation context.",
+      "portal_url": "https://www.presupuestoabierto.gob.ar/sici/datos-abiertos",
+      "api_base_url": "https://www.presupuestoabierto.gob.ar/api/v1/",
+      "api_endpoints": [
+        {"path": "/api/v1/credito", "description": "Budget credits by inciso (expenditure type)", "method": "POST"},
+        {"path": "/api/v1/recurso", "description": "Revenue sources", "method": "POST"},
+        {"path": "/api/v1/pef", "description": "Physical Programming and Execution — public works progress", "method": "POST"},
+        {"path": "/api/v1/transversal_financiero", "description": "Cross-cutting financial analysis", "method": "POST"}
+      ],
+      "data_format": "JSON API (POST requests, requires token)",
+      "programmatic_access": true,
+      "coverage": {
+        "years": "All national budget years",
+        "scope": "All national government programs including public works"
+      },
+      "data_quality": {
+        "rating": "HIGH for budget data, LOW for contractor identification",
+        "has_cuit": false,
+        "has_contractor_names": false,
+        "has_amounts": true,
+        "notes": "Provides program-level budget execution (how much was spent on road construction) but NOT which company received the contract. Useful for cross-validation of total amounts."
+      },
+      "etl_recommendation": "LOW PRIORITY for graph construction. Useful for validation: compare total CONTRATAR contract values against budget execution amounts. The PEF endpoint (physical execution) tracks obra pública progress at program level."
+    },
+
+    {
+      "id": "BAPIN",
+      "name": "BAPIN — Banco de Proyectos de Inversión Pública",
+      "priority": "LOW — restricted access, project-level not contract-level",
+      "description": "National public investment project registry. All public investment projects must be registered here. Contains project formulation and evaluation data across lifecycle.",
+      "portal_url": "https://www.argentina.gob.ar/dnip/bapin",
+      "info_url": "https://www.argentina.gob.ar/jefatura/presupuestaria/inversion-publica/informacion-del-bapin",
+      "data_format": "XLSX (download), restricted access system",
+      "programmatic_access": false,
+      "access_restricted": true,
+      "access_method": "Authorized officers only. Registration via GDE through TOPIP. Contact: bapin@jefatura.gob.ar",
+      "relevance": "BAPIN codes (codigobapin) appear in MapaInversiones data — can be used to link projects across systems",
+      "data_quality": {
+        "rating": "N/A — cannot assess without access",
+        "notes": "Project-level data, not contract-level. Does not contain contractor names/CUITs. Useful for understanding project pipeline and investment priorities."
+      },
+      "etl_recommendation": "SKIP for now. Use codigobapin from MapaInversiones as foreign key reference only."
+    },
+
+    {
+      "id": "SUGOP_PPO",
+      "name": "SUGOP / PPO — Sistema Único de Gestión de Obra Pública",
+      "priority": "LOW — internal management system, limited public data",
+      "description": "Internal public works management platform mandated by Secretaría de Obras Públicas. Covers planning, agreements, project management, work certificates, price redeterminations.",
+      "portal_url": "https://ppo.obraspublicas.gob.ar/",
+      "data_format": "Web interface (JavaScript-rendered, no visible API)",
+      "programmatic_access": false,
+      "access_restricted": "Unclear — web interface loads but appears to require authentication",
+      "data_quality": {
+        "rating": "N/A — cannot assess",
+        "notes": "Internal system. Data likely feeds into MapaInversiones and CONTRATAR."
+      },
+      "etl_recommendation": "SKIP. Data from this system appears in CONTRATAR and MapaInversiones downloads."
+    },
+
+    {
+      "id": "AGN_AUDITS",
+      "name": "AGN — Auditoría General de la Nación (Audit Reports)",
+      "priority": "LOW — PDFs not structured data, but useful for investigation leads",
+      "description": "National audit body reports on public works irregularities. Covers DNV, road construction, discretionary awarding. Reports from 2016-2023 available.",
+      "portal_url": "https://www.agn.gob.ar/",
+      "vialidad_audits_url": "https://www.argentina.gob.ar/obras-publicas/vialidad-nacional/transparencia/auditorias",
+      "data_format": "PDF reports",
+      "programmatic_access": false,
+      "data_quality": {
+        "rating": "HIGH for investigative leads, LOW for structured data",
+        "notes": "Reports document irregularities — discretionary awarding, cost overruns, contract modifications. Not machine-readable but excellent for qualitative investigation."
+      },
+      "etl_recommendation": "SKIP for automated ETL. Review manually for investigation context. Could feed into narrative research files."
+    },
+
+    {
+      "id": "DNV_GEO",
+      "name": "DNV Road Network Geospatial Data",
+      "priority": "LOW — geographic data, not contract data",
+      "description": "Geospatial data of national road network from DNV via Secretaría de Transporte. Available in SHP, GeoJSON, KML formats.",
+      "datos_gob_ar_url": "https://datos.gob.ar/dataset/transporte-rutas-nacionales",
+      "resources": [
+        {"name": "Rutas Nacionales (GeoJSON)", "url": "https://ide.transporte.gob.ar/geoserver/idera/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=idera:Rutas_Nacionales&maxFeatures=300&outputFormat=application%2Fjson", "format": "GeoJSON"},
+        {"name": "Rutas Nacionales (SHP)", "url": "https://wms.ign.gob.ar/geoserver/transporte/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=transporte%3Avial_nacional&maxFeatures=50&outputFormat=shape-zip", "format": "SHP/ZIP"},
+        {"name": "Rutas Nacionales (KML)", "url": "https://wms.ign.gob.ar/geoserver/transporte/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=transporte%3Avial_nacional&maxFeatures=50&outputFormat=kml", "format": "KML"}
+      ],
+      "data_format": "GeoJSON / SHP / KML",
+      "programmatic_access": true,
+      "etl_recommendation": "SKIP for contract graph. Potentially useful later for geographic visualization of where contracts are concentrated."
+    },
+
+    {
+      "id": "BUENOS_AIRES_PROVINCE",
+      "name": "Buenos Aires Province — Infrastructure Tenders",
+      "priority": "MEDIUM — large province, separate system",
+      "description": "Province of Buenos Aires has its own public works tender system separate from national. Major construction projects for the most populous province.",
+      "portal_url": "https://www.gba.gob.ar/Infraestructura/licitaciones",
+      "data_format": "Web interface (not confirmed as open data CSV/API)",
+      "programmatic_access": "unknown — needs further investigation",
+      "coverage": {
+        "geographic": "Buenos Aires Province only",
+        "sectors": "Infrastructure, urban, energy, water and sanitation, public services"
+      },
+      "data_quality": {
+        "rating": "UNKNOWN — could not confirm structured data availability",
+        "notes": "Provincial level requires separate investigation. May have CKAN or open data portal."
+      },
+      "etl_recommendation": "DEFERRED. Investigate further whether PBA has structured open data downloads. Check datos.gba.gob.ar."
+    }
+  ],
+
+  "datos_gob_ar_api": {
+    "base_url": "https://datos.gob.ar/api/3/",
+    "type": "CKAN 3.x",
+    "confirmed_working": true,
+    "useful_endpoints": [
+      {"endpoint": "/api/3/action/package_search?q=QUERY&rows=N", "description": "Search datasets"},
+      {"endpoint": "/api/3/action/package_show?id=ID", "description": "Get dataset details"},
+      {"endpoint": "/api/3/action/organization_list", "description": "List all publishing organizations"}
+    ],
+    "notes": "The datos.gob.ar CKAN API is the master index for all Argentine open government data. Use it to discover new datasets as they are published."
+  },
+
+  "etl_implementation_plan": {
+    "phase_1_immediate": {
+      "description": "Close the construction gap — download and ingest CONTRATAR + CONTRATAR Histórico",
+      "sources": ["CONTRATAR_CURRENT", "CONTRATAR_HISTORICO"],
+      "estimated_new_nodes": {
+        "contracts": "~1,250 (392 current + 858 historical)",
+        "companies": "~500 unique",
+        "government_agencies": "~15"
+      },
+      "key_actions": [
+        "Download all 7 CONTRATAR CSV files + 1 historical CSV",
+        "Parse contratista_cuit and contratista_razon_social",
+        "Handle UTE (joint ventures): split UTE name, create individual company nodes + UTE relationship",
+        "Normalize CUIT format (remove dashes for matching)",
+        "Join contratos + procedimientos on procedimiento_numero for full context",
+        "Create CONTRACT nodes with properties: amount, date, obra_nombre, organismo",
+        "Link to existing COMPANY nodes via CUIT matching",
+        "Create new COMPANY nodes for unmatched CUITs",
+        "Create AWARDED_TO relationships (COMPANY -> CONTRACT)",
+        "Create CONTRACTED_BY relationships (CONTRACT -> GOVERNMENT_AGENCY)"
+      ]
+    },
+    "phase_2_enrichment": {
+      "description": "Add breadth with MapaInversiones + DNV OCDS",
+      "sources": ["MAPA_INVERSIONES", "DNV_OCDS"],
+      "estimated_new_nodes": {
+        "works": "~7,285 from MapaInversiones (1,465 road works)",
+        "ocds_processes": "277 from DNV OCDS (deduplicate against phase 1)"
+      },
+      "key_actions": [
+        "Download MapaInversiones CSV — filter OBRAS VIALES",
+        "Download DNV OCDS JSONL — parse parties/awards/contracts",
+        "Deduplicate: match CONTRATAR contracts against MapaInversiones via obra name + organismo",
+        "Enrich existing nodes with geographic data (province, department)",
+        "Add physical/financial progress data where available",
+        "Cross-reference BAPIN codes across datasets"
+      ]
+    },
+    "phase_3_expansion": {
+      "description": "Provincial and city-level data",
+      "sources": ["BA_OBRAS", "BUENOS_AIRES_PROVINCE"],
+      "key_actions": [
+        "Investigate BA Obras CSV download access",
+        "Research Buenos Aires Province open data portal",
+        "Investigate other major provinces: Córdoba, Santa Fe, Mendoza"
+      ]
+    }
+  },
+
+  "companies_coverage_assessment": {
+    "note": "Assessment of whether the identified data sources will fill the gap for key construction firms",
+    "companies": [
+      {
+        "name": "IECSA / SACDE",
+        "cuit": "30-56845745-1",
+        "found_in": ["CONTRATAR_CURRENT (3 contracts)", "MAPA_INVERSIONES (8 obras)"],
+        "gap_filled": true,
+        "notes": "SACDE is the continuadora (successor) of IECSA S.A. — Macri family construction firm"
+      },
+      {
+        "name": "José Cartellone Construcciones Civiles",
+        "cuit": "30-50157947-1",
+        "found_in": ["DNV_OCDS", "MAPA_INVERSIONES (5 obras)", "CONTRATAR_HISTORICO"],
+        "gap_filled": true
+      },
+      {
+        "name": "Benito Roggio e Hijos",
+        "cuit": "30-50108624-6",
+        "found_in": ["CONTRATAR_CURRENT (in UTEs)", "MAPA_INVERSIONES (2+ obras)", "DNV_OCDS"],
+        "gap_filled": true
+      },
+      {
+        "name": "Electroingeniería S.A.",
+        "cuit": "30711323178 (UTE CUIT)",
+        "found_in": ["MAPA_INVERSIONES (1 obra in UTE)"],
+        "gap_filled": "PARTIAL — only found in UTE, need more data",
+        "notes": "Major Kirchnerism-era contractor. May need Boletín Oficial or AGN reports for fuller picture."
+      },
+      {
+        "name": "Techint / Techint Ingeniería y Construcción",
+        "found_in": [],
+        "gap_filled": false,
+        "notes": "NOT FOUND in any of the tested datasets. Techint may operate primarily through subsidiaries (Tenaris, Ternium) or international contracts. Also may appear under Techint Compañía Técnica Internacional S.A.C.I. Need separate investigation."
+      },
+      {
+        "name": "CPC S.A.",
+        "cuit": "30-59865201-1",
+        "found_in": ["CONTRATAR_CURRENT (6 contracts)", "MAPA_INVERSIONES (5+ obras)", "DNV_OCDS"],
+        "gap_filled": true
+      },
+      {
+        "name": "DYCASA S.A.",
+        "cuit": "33-51629418-9",
+        "found_in": ["CONTRATAR_CURRENT (2 contracts)", "MAPA_INVERSIONES (8 obras)", "DNV_OCDS"],
+        "gap_filled": true
+      },
+      {
+        "name": "Rovella Carranza S.A.",
+        "cuit": "30-61522482-7",
+        "found_in": ["CONTRATAR_CURRENT (2 contracts)", "MAPA_INVERSIONES (6 obras)", "DNV_OCDS"],
+        "gap_filled": true
+      }
+    ]
+  }
+}
