@@ -38,7 +38,42 @@ All nodes carry standard provenance fields: `tier`, `confidence_score`, `source_
 | `SYNTHESIZES` | RiskBriefing | NuclearSignal | Briefing summarizes signals |
 | `REFERENCES` | Investigation | NuclearSignal | Ties into existing investigation framework |
 
+## Signal Types
+
+```typescript
+type SignalType =
+  | 'nuclear_test'           // Confirmed or suspected nuclear detonation
+  | 'missile_launch'         // Ballistic/cruise missile test or deployment
+  | 'force_posture_change'   // Troop movements, DEFCON changes, alert status
+  | 'treaty_action'          // Withdrawal, suspension, violation, renegotiation
+  | 'official_statement'     // Government/military rhetoric or policy declaration
+  | 'inspection_event'       // IAEA inspection, refusal, or finding
+  | 'proliferation_activity' // Enrichment, weaponization, technology transfer
+  | 'facility_event'         // Accident, construction, activation, decommission
+  | 'military_exercise'      // Scheduled or unscheduled nuclear-capable exercises
+  | 'diplomatic_action'      // Summit, negotiation, sanctions, UN vote
+  | 'osint_observation'      // Satellite imagery, flight tracking, seismic anomaly
+  | 'policy_analysis'        // Think tank or expert assessment
+```
+
 ## Data Sources (31 total)
+
+### Implementation Waves
+
+Sources are prioritized into implementation waves based on API accessibility and value:
+
+**Wave 0 (Seed + 6 RSS-based gold/silver):** `iaea`, `nato`, `us-dod`, `state-dept`, `aca`, `bulletin` — all have stable RSS feeds, no auth required.
+
+**Wave 1 (Remaining gold + easy silver):** `unsc`, `us-nrc`, `opcw`, `sipri`, `fas`, `uk-mod`, `france-mod`, `eu-eeas`, `wire-services`, `usgs-seismic` — mix of RSS and simple API, some require free API keys.
+
+**Wave 2 (Complex silver + bronze):** `russian-mfa`, `chinese-mfa`, `india-official`, `pakistan-official`, `kcna`, `iaea-bog`, `ctbto`, `ctbto-official`, `crs`, `npt`, `mtcr`, `nsg`, `aspi`, `adsb`, `osint-social` — require scraping, authenticated access, paid APIs, or proxy services. Some may be deferred indefinitely if access is unreliable.
+
+**Access notes:**
+- `ctbto` seismic data requires authenticated access via national data centres — may need to use USGS as a proxy initially
+- `kcna` requires KCNA Watch proxy service (reliability varies)
+- `russian-mfa` (mid.ru) subject to geo-blocking — may need proxy
+- `adsb` shifted to paid API — free tier has limited coverage
+- `osint-social` (X/Twitter API) has prohibitive pricing — may use RSS bridges or curated manual feeds instead
 
 ### Gold Tier (11 sources)
 
@@ -88,21 +123,28 @@ All nodes carry standard provenance fields: `tier`, `confidence_score`, `source_
 
 ### ETL Module Structure
 
-Each source follows:
+Each source follows (under `webapp/src/etl/nuclear-risk/`):
 
 ```
-src/etl/nuclear-risk/[source]/
-├── fetcher.ts       # API/RSS/scrape → raw data
-├── types.ts         # Zod schemas for raw + transformed
-├── transformer.ts   # Raw → NuclearSignal parameters
-└── loader.ts        # MERGE into Neo4j with provenance
+webapp/src/etl/nuclear-risk/
+├── shared/
+│   ├── rss-parser.ts       # Common RSS fetch + parse (most sources use RSS)
+│   ├── keyword-filter.ts   # Nuclear-relevant keyword matching to filter noise
+│   └── geo-resolver.ts     # Location → lat/lng via local gazetteer of ~200 known nuclear sites
+├── iaea/
+│   ├── index.ts            # Barrel re-export of fetch, transform, load
+│   ├── fetcher.ts          # API/RSS/scrape → raw data
+│   ├── types.ts            # Zod schemas for raw + transformed
+│   ├── transformer.ts      # Raw → NuclearSignal parameters
+│   └── loader.ts           # MERGE into Neo4j with provenance
+├── nato/
+│   └── ...                 # Same structure per source
+└── ...
 ```
 
-Shared utilities in `src/etl/nuclear-risk/shared/`:
+Every module includes an `index.ts` barrel file re-exporting `fetch`, `transform`, and `load` functions, matching the existing ETL convention (e.g., `webapp/src/etl/boletin-oficial/index.ts`).
 
-- `rss-parser.ts` — common RSS fetch + parse
-- `keyword-filter.ts` — nuclear-relevant keyword matching to filter noise
-- `geo-resolver.ts` — map location mentions to lat/lng for facility/theater tagging
+`geo-resolver.ts` uses a local gazetteer (JSON file of ~200 known nuclear sites with lat/lng) for seed facilities. For dynamically discovered locations in signal text, falls back to LLM extraction of place names matched against the gazetteer — no external geocoding API needed.
 
 ## Daily Pipeline (4-Phase Loop)
 
@@ -122,31 +164,102 @@ Script: `scripts/run-nuclear-risk-loop.ts`
 - Keyword filter discards irrelevant results before loading
 
 ### Phase 2: Cross-Reference & Dedup
-- Entity resolution across sources — same event reported by multiple outlets links to one `NuclearSignal` with multiple source edges
-- Match `NuclearActor` nodes by name normalization (existing `normalizeName()`)
-- Link signals to known `WeaponSystem`, `Treaty`, `NuclearFacility` nodes via keyword + LLM extraction
-- Create `ESCALATES` chains when a signal references or follows a prior signal
+
+**Signal deduplication:** When multiple sources report the same event, we consolidate into a single `NuclearSignal` node with multiple `SOURCED_FROM` relationships to `SignalSource` nodes (see below). Matching criteria:
+- Same theater + date within ±1 day + entity overlap ≥ 1 shared `NuclearActor`
+- Fuzzy title similarity (normalized Levenshtein ≥ 0.6 on `title_en`)
+- If ambiguous, LLM adjudicates with a yes/no "same event?" prompt
+- The highest-tier source becomes the canonical signal; others become `SOURCED_FROM` edges
+
+**New node for multi-source provenance:**
+- `SignalSource` — `id`, `source_module`, `source_url`, `tier`, `fetched_at`, `raw_title`
+- Relationship: `NuclearSignal -[:SOURCED_FROM]-> SignalSource`
+
+**Actor matching:** Uses existing `normalizeName()` from `webapp/src/lib/utils/normalize.ts` — handles diacritics, casing, and word order. For non-Latin scripts (Russian, Chinese, Korean), match on the English transliteration stored in `NuclearActor.name` (all actor names stored in English).
+
+**Entity linking:** Link signals to known `WeaponSystem`, `Treaty`, `NuclearFacility` nodes via:
+1. Exact keyword match against known entity names
+2. LLM extraction for ambiguous references (e.g., "the treaty" → which treaty based on context)
+
+**Escalation chains:** Create `ESCALATES` relationships when:
+- Signal explicitly references a prior signal's event (LLM detects reference)
+- Same theater + same actor + within 7 days + escalation_level increased
+- Manual override via user submission
 
 ### Phase 3: LLM Analysis (Qwen 3.5 via MiroFish)
 
-Three sequential tasks:
+Three sequential tasks. All use Qwen 3.5 via MiroFish (`MIROFISH_API_URL`). Must check `reasoning_content` field (mandatory thinking mode), then parse `content` for structured output.
 
-**1. Signal Classification** — for each new `NuclearSignal`, extract:
-- `severity` score (0-100)
-- `escalation_level` (routine/notable/elevated/serious/critical)
-- `theater` (US-Russia, Indo-Pacific, Korean Peninsula, Middle East, Europe, South Asia, Global)
-- Entity mentions → link to `NuclearActor`, `WeaponSystem`, `Treaty`
+**1. Signal Classification** — for each new `NuclearSignal`, batch up to 10 signals per prompt:
 
-**2. Pattern Detection** — analyze last 7/30 days of signals per theater:
-- Flag convergence (multiple independent signals pointing to same escalation)
-- Flag anomalies (sudden spike in rhetoric, unusual military activity)
-- Compare current score to rolling average
+```
+System: You are a nuclear risk analyst. Classify each signal.
+User: [JSON array of {id, title, summary, source_tier, source_module}]
+```
 
-**3. Briefing Generation** — synthesize into a `RiskBriefing` node:
-- Overall risk score + per-theater breakdown
-- Top signals of the day with context
-- Trend arrows (rising/stable/declining per theater)
-- Bilingual (EN/ES)
+Expected output (JSON array):
+```json
+[{
+  "id": "signal-id",
+  "severity": 45,
+  "escalation_level": "elevated",
+  "signal_type": "missile_launch",
+  "theater": "Korean Peninsula",
+  "actors": ["north-korea", "us"],
+  "weapon_systems": ["hwasong-17"],
+  "treaties": ["npt"],
+  "facilities": []
+}]
+```
+
+Estimated tokens: ~500 input + ~200 output per signal. At 50 signals/day: ~35K tokens total.
+
+**2. Pattern Detection** — one prompt per theater with active signals:
+
+```
+System: You are a nuclear escalation pattern analyst.
+User: Theater: {theater}. Signals last 30 days: [JSON array sorted by date].
+      Current 7-day rolling average severity: {score}.
+      Identify convergence patterns, anomalies, and trend direction.
+```
+
+Expected output (JSON):
+```json
+{
+  "theater": "US-Russia",
+  "convergence_flags": ["Multiple signals indicate..."],
+  "anomaly_flags": ["Unusual spike in..."],
+  "trend": "rising",
+  "score_override": null,
+  "override_reasoning": null
+}
+```
+
+Estimated tokens: ~2K input + ~500 output per theater. At 7 theaters: ~17.5K tokens total.
+
+**3. Briefing Generation** — single prompt with all theater summaries:
+
+```
+System: You are a nuclear risk briefing writer. Write in both English and Spanish.
+User: Date: {date}. Theater summaries: [JSON from step 2].
+      Top 10 signals today: [JSON from step 1, sorted by severity].
+      Generate a concise daily risk briefing.
+```
+
+Expected output (JSON):
+```json
+{
+  "overall_score": 38,
+  "summary_en": "...",
+  "summary_es": "...",
+  "theaters": [{"theater": "...", "score": 42, "trend": "rising", "summary_en": "...", "summary_es": "..."}],
+  "top_signals": ["signal-id-1", "signal-id-2", "..."]
+}
+```
+
+Estimated tokens: ~3K input + ~2K output. Single call.
+
+**Total Phase 3 estimate:** ~55K tokens, ~2-3 minutes on local Qwen 3.5 9B. Well within 5-minute timeout.
 
 ### Phase 4: Report
 - Write `RiskBriefing` node to Neo4j
@@ -180,7 +293,7 @@ Three sequential tasks:
 ### Theater Aggregation
 - Weighted average of all signals in the last 7 days per theater
 - Decaying weight: today = 100%, 7 days ago = 30%
-- LLM can override numerical score ±15 points (must log reasoning)
+- LLM can override numerical score ±15 points — stored as `score_override` and `override_reasoning` properties on the `RiskBriefing` node's theater entry
 
 ### Overall Risk Score
 - Highest theater score drives the headline number (weakest-link model)
@@ -217,16 +330,42 @@ Loaded before any daily runs, all gold tier, manually curated:
 - **~30 weapon systems** (Minuteman III, Trident II, Topol-M, DF-41, Agni-V, Shaheen-III, etc.)
 - **~50 key facilities** (Natanz, Yongbyon, Dimona, Sellafield, La Hague, Pantex, Sarov, etc.)
 
+## API Routes
+
+New endpoints under `webapp/src/app/api/caso/riesgo-nuclear/`:
+
+| Route | Method | Purpose |
+|-------|--------|---------|
+| `/api/caso/riesgo-nuclear/graph` | GET | Full investigation graph (reuses existing pattern) |
+| `/api/caso/riesgo-nuclear/risk-score` | GET | Current overall + per-theater scores, trends |
+| `/api/caso/riesgo-nuclear/signals` | GET | Filtered signals query — params: `theater`, `escalation_level`, `signal_type`, `from_date`, `to_date`, `limit` |
+| `/api/caso/riesgo-nuclear/briefing` | GET | Latest `RiskBriefing` or by date param |
+| `/api/caso/riesgo-nuclear/actor/[actorSlug]` | GET | Actor detail — arsenal, treaties, recent signals, risk trend |
+| `/api/caso/riesgo-nuclear/timeline` | GET | Signals ordered by date for cronologia page |
+
+## Package.json Scripts
+
+```json
+{
+  "nuclear:seed": "tsx scripts/seed-nuclear-risk.ts",
+  "nuclear:loop": "tsx scripts/run-nuclear-risk-loop.ts",
+  "nuclear:ingest:wave0": "tsx scripts/ingest-nuclear-risk-wave0.ts",
+  "nuclear:ingest:wave1": "tsx scripts/ingest-nuclear-risk-wave1.ts",
+  "nuclear:ingest:wave2": "tsx scripts/ingest-nuclear-risk-wave2.ts"
+}
+```
+
 ## Investigation Registration
 
 ### Registry Entry (`src/config/investigations.ts`)
 - Slug: `riesgo-nuclear`
 - Title: bilingual
 - Status: `active`
-- Color: yellow
+- Color: `yellow` (Tailwind color token)
+- Add entry to `CASE_META` in dynamic layout at `webapp/src/app/caso/[slug]/layout.tsx`
 
 ### Case Library (`src/lib/caso-nuclear-risk/`)
-- `types.ts` — domain types, escalation enums
+- `types.ts` — domain types, escalation enums, Zod schemas for all 6 node types + `SignalSource`
 - `investigation-data.ts` — seed data for actors, treaties, weapons, facilities
 - `investigation-schema.ts` — Zod schemas for user-submitted signals (Caso Libra pattern)
 - `queries.ts` — Neo4j Cypher queries
