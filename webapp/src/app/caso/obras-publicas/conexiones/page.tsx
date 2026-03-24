@@ -36,7 +36,7 @@ const t = {
   actorsTitle: { en: 'Key Entities', es: 'Entidades Clave' },
   navInvestigation: { en: '\u2190 Investigation', es: '\u2190 Investigacion' },
   navMap: { en: 'Map \u2192', es: 'Mapa \u2192' },
-  tierFilter: { en: 'Showing gold + silver tier entities only (verified data)', es: 'Mostrando solo entidades de nivel oro + plata (datos verificados)' },
+  tierFilter: { en: 'Showing key investigative entities (bribery cases, politicians, top contractors)', es: 'Mostrando entidades investigativas clave (casos de soborno, politicos, principales contratistas)' },
 } as const
 
 // Node type -> color mapping
@@ -76,8 +76,9 @@ export default function ConexionesPage() {
   useEffect(() => {
     async function fetchGraph() {
       try {
-        // Only fetch silver+gold to keep graph renderable
-        const res = await fetch(`/api/caso/${SLUG}/graph?tiers=silver,gold`)
+        // Dedicated endpoint returns focused investigative subgraph (~100-200 nodes)
+        // not the full 125K contractor dump which would crash the browser
+        const res = await fetch(`/api/caso/${SLUG}/graph`)
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         const json = await res.json()
         if (!json.success) throw new Error(json.error || 'Unknown error')

@@ -37,7 +37,8 @@
     "etl:investigative-seed": "npx tsx scripts/run-etl-investigative-seed.ts",
     "obras:cross-ref": "npx tsx scripts/run-obras-cross-reference.ts",
     "etl:comprar-adjudicaciones": "npx tsx scripts/run-etl-comprar-adjudicaciones.ts",
-    "ingest:debarment": "npx tsx scripts/ingest-debarment-lists.ts"
+    "ingest:debarment": "npx tsx scripts/ingest-debarment-lists.ts",
+    "etl:contratar-historico": "npx tsx scripts/run-etl-contratar-historico.ts"
   },
   "dependencies": {
     "@auth/core": "^0.41.1",
