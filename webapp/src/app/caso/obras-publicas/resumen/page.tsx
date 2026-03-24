@@ -127,19 +127,76 @@ const CHAPTERS: {
   {
     num: 'V',
     title: {
-      en: 'What the Data Shows',
-      es: 'Lo Que Muestran los Datos',
+      en: 'The International Cases',
+      es: 'Los Casos Internacionales',
     },
     paragraphs: {
       en: [
-        '56,122 entities. 48,415 relationships. 13,277 cross-references linking public works to political finance. 30 investigation waves. 5 deep-dive verifications that eliminated 3 false positives from our own findings. This is what systematic accountability looks like — not accusations, but traceable connections.',
-        'The verified findings form a clear picture: contractors who donate to both major political coalitions ($648,000 to Frente de Todos, $272,000 to Juntos por el Cambio in the 2019 election alone). A federal insurance regulator who previously ran the company he now regulates. A president\'s childhood friend on the board of the family construction company receiving billion-peso highway contracts. An offshore shell network in the British Virgin Islands connected to government insurance contractors through 5-6 layers of family relationships.',
-        'What this investigation cannot do is prove intent. What it can do — and what the data does — is make the connections visible, traceable, and verifiable. Every CUIT match, every officer overlap, every offshore hop is documented in a graph database that anyone can query. The evidence is the structure itself.',
+        'Three international bribery cases intersect with the Argentine public works graph. The Odebrecht case (DOJ plea agreement, December 2016) documented $35 million in bribes paid between 2007 and 2014 for projects including the Soterramiento del Ferrocarril Sarmiento, the AYSA Parana de las Palmas water plant, and gas pipeline expansions. Five politicians are linked: Julio De Vido, Roberto Baratta, Ricardo Jaime, Jose Francisco Lopez, and Daniel Cameron. SACDE (ex-IECSA), the Macri family company, was a key Odebrecht partner — Angelo Calcaterra, Macri\'s cousin, confessed.',
+        'The Siemens FCPA case revealed over $100 million in bribes paid through 17+ offshore shell companies to secure the $1 billion DNI manufacturing contract. Three intermediaries — Carlos Sergi, Miguel Czysch, and Herbert Steffen — operated the layering structure. Siemens paid $1.6 billion in global penalties.',
+        'These are the strongest evidentiary pillars in our investigation: DOJ plea agreements and SEC enforcement actions are independently verifiable, unlike the compromised Cuadernos notebooks. The Odebrecht case is particularly valuable because it provides US federal court documentation of specific bribe amounts tied to specific Argentine projects.',
       ],
       es: [
-        '56.122 entidades. 48.415 relaciones. 13.277 referencias cruzadas vinculando obras publicas con finanzas politicas. 30 olas de investigacion. 5 verificaciones profundas que eliminaron 3 falsos positivos de nuestros propios hallazgos. Esto es lo que parece la rendicion de cuentas sistematica — no acusaciones, sino conexiones rastreables.',
-        'Los hallazgos verificados forman un cuadro claro: contratistas que donan a ambas coaliciones politicas principales ($648.000 al Frente de Todos, $272.000 a Juntos por el Cambio solo en la eleccion de 2019). Un regulador federal de seguros que antes dirigia la empresa que ahora regula. El amigo de la infancia de un presidente en el directorio de la constructora familiar que recibe contratos de autopistas por miles de millones. Una red de sociedades pantalla offshore en las Islas Virgenes Britanicas conectada a contratistas de seguros del gobierno a traves de 5-6 capas de relaciones familiares.',
-        'Lo que esta investigacion no puede hacer es probar intencion. Lo que si puede hacer — y lo que hacen los datos — es hacer las conexiones visibles, rastreables y verificables. Cada coincidencia de CUIT, cada superposicion de directivos, cada salto offshore esta documentado en una base de datos de grafos que cualquiera puede consultar. La evidencia es la estructura misma.',
+        'Tres casos internacionales de soborno se intersectan con el grafo de obras publicas argentinas. El caso Odebrecht (acuerdo de culpabilidad DOJ, diciembre 2016) documento $35 millones en sobornos pagados entre 2007 y 2014 para proyectos incluyendo el Soterramiento del Ferrocarril Sarmiento, la planta potabilizadora AYSA Parana de las Palmas, y expansiones de gasoductos. Cinco politicos estan vinculados: Julio De Vido, Roberto Baratta, Ricardo Jaime, Jose Francisco Lopez, y Daniel Cameron. SACDE (ex IECSA), la empresa de la familia Macri, fue socio clave de Odebrecht — Angelo Calcaterra, primo de Macri, confeso.',
+        'El caso FCPA de Siemens revelo mas de $100 millones en sobornos pagados a traves de 17+ sociedades pantalla offshore para asegurar el contrato de fabricacion del DNI por $1.000 millones. Tres intermediarios — Carlos Sergi, Miguel Czysch y Herbert Steffen — operaban la estructura de capas. Siemens pago $1.600 millones en multas globales.',
+        'Estos son los pilares probatorios mas solidos de nuestra investigacion: los acuerdos de culpabilidad del DOJ y las acciones de aplicacion de la SEC son verificables independientemente, a diferencia de los comprometidos cuadernos. El caso Odebrecht es particularmente valioso porque provee documentacion de tribunales federales estadounidenses de montos especificos de sobornos vinculados a proyectos argentinos especificos.',
+      ],
+    },
+  },
+  {
+    num: 'VI',
+    title: {
+      en: 'The Road Cartel',
+      es: 'El Cartel Vial',
+    },
+    paragraphs: {
+      en: [
+        'The Direccion Nacional de Vialidad (DNV) OCDS dataset — 277 road construction processes with 234 contracts — provided the independent corroboration the investigation needed. Seven companies named in the Cuadernos case appear in the DNV data: Dycasa (5 contracts), Jose Cartellone (5), CN Sapag (3), CPC (3), Decavial (3), Esuco in UTE (1), and Rovella Carranza + Cartellone UTE (1). Their presence in DNV procurement records is independent of any notebook testimony.',
+        'In CABA municipal procurement (13,835 bids analyzed), we detected 5 co-bidding clusters involving 28 firms. The most dense: Quimica Cordoba connects to 25 co-awardees across 23 procedures — a classic hub-and-spoke cartel topology. 78.2% of CABA procedures had a single awardee. In the national CONTRAT.AR system, 28% of procedures (52 of 185) received only one bid.',
+        'The signing officials on the CONTRATAR Historico dataset (858 contracts, 2009-2020) revealed three revolving door matches: Rogelio Frigerio (Interior Minister) signed public works contracts, Patricia Mabel Gutierrez (Administrador at Ministerio de Transporte) signed 4, and Fernando de Andreis (Secretario at Presidencia) signed 2. These officials appear in both the contract records and the government appointment database — the same person, verified by name match.',
+      ],
+      es: [
+        'El dataset OCDS de la Direccion Nacional de Vialidad (DNV) — 277 procesos de construccion vial con 234 contratos — proporciono la corroboracion independiente que la investigacion necesitaba. Siete empresas nombradas en el caso Cuadernos aparecen en los datos de la DNV: Dycasa (5 contratos), Jose Cartellone (5), CN Sapag (3), CPC (3), Decavial (3), Esuco en UTE (1), y Rovella Carranza + Cartellone UTE (1). Su presencia en registros de contrataciones de la DNV es independiente de cualquier testimonio de los cuadernos.',
+        'En las contrataciones municipales de CABA (13.835 ofertas analizadas), detectamos 5 clusters de co-licitacion involucrando 28 firmas. El mas denso: Quimica Cordoba se conecta con 25 co-adjudicatarios en 23 procedimientos — una topologia clasica de cartel hub-and-spoke. El 78,2% de los procedimientos de CABA tuvieron un unico adjudicatario. En el sistema nacional CONTRAT.AR, el 28% de los procedimientos (52 de 185) recibieron solo una oferta.',
+        'Los funcionarios firmantes del dataset CONTRATAR Historico (858 contratos, 2009-2020) revelaron tres coincidencias de puerta giratoria: Rogelio Frigerio (Ministro del Interior) firmo contratos de obra publica, Patricia Mabel Gutierrez (Administradora del Ministerio de Transporte) firmo 4, y Fernando de Andreis (Secretario de Presidencia) firmo 2. Estos funcionarios aparecen tanto en los registros de contratos como en la base de datos de designaciones gubernamentales — la misma persona, verificada por coincidencia de nombre.',
+      ],
+    },
+  },
+  {
+    num: 'VII',
+    title: {
+      en: 'Both Sides Pay',
+      es: 'Ambos Lados Pagan',
+    },
+    paragraphs: {
+      en: [
+        'Campaign donation records cross-referenced with the contractor database reveal that public works companies donated to both major coalitions in the 2019 election: $648,000 to Frente de Todos and $272,000 to Juntos por el Cambio. PROVIDERS SA alone contributed $525,000 to Frente de Todos. TOMAS HNOS Y CIA S.A. gave $250,000 to Juntos por el Cambio. These are not allegations — they are public campaign finance records matched to contractor CUITs.',
+        'The Marcelo Daniel Romero case adds an international dimension: debarred by the Inter-American Development Bank for fraud and collusion (until November 2029), Romero still appears in the Argentine government contractor database under CUIT 23270457169. He is the only confirmed match between the World Bank/IDB debarment lists and our 28,695 registered contractors — but one is enough to demonstrate that debarment enforcement has gaps.',
+        'The investigation also found that 3,257 company officers sit on the boards of 2 or more government contractor companies simultaneously — the board interlock network. After filtering out professional sindicas (compliance officers serving 500+ companies as a legal formality), the genuine interlocks reveal shared corporate control across contractor networks. 42 of these shared officers also appear as political donors.',
+      ],
+      es: [
+        'Los registros de donaciones de campana cruzados con la base de datos de contratistas revelan que empresas de obra publica donaron a ambas coaliciones principales en la eleccion de 2019: $648.000 al Frente de Todos y $272.000 a Juntos por el Cambio. PROVIDERS SA sola contribuyo $525.000 al Frente de Todos. TOMAS HNOS Y CIA S.A. dio $250.000 a Juntos por el Cambio. Estos no son alegatos — son registros publicos de financiamiento de campana cruzados con CUITs de contratistas.',
+        'El caso de Marcelo Daniel Romero agrega una dimension internacional: inhabilitado por el Banco Interamericano de Desarrollo por fraude y colusion (hasta noviembre 2029), Romero todavia aparece en la base de datos de contratistas del gobierno argentino bajo CUIT 23270457169. Es la unica coincidencia confirmada entre las listas de inhabilitacion del Banco Mundial/BID y nuestros 28.695 contratistas registrados — pero una es suficiente para demostrar que la aplicacion de inhabilitaciones tiene brechas.',
+        'La investigacion tambien encontro que 3.257 directivos de empresas integran los directorios de 2 o mas empresas contratistas del gobierno simultaneamente — la red de interlocking de directorios. Despues de filtrar sindicas profesionales (asesoras de cumplimiento que sirven en 500+ empresas como formalidad legal), los entrelazamientos genuinos revelan control corporativo compartido a traves de redes de contratistas. 42 de estos directivos compartidos tambien aparecen como donantes politicos.',
+      ],
+    },
+  },
+  {
+    num: 'VIII',
+    title: {
+      en: 'What We Got Wrong (And Why That Matters)',
+      es: 'Lo Que Nos Equivocamos (Y Por Que Eso Importa)',
+    },
+    paragraphs: {
+      en: [
+        'This investigation eliminated 3 of its own top 5 findings through deep-dive verification. Correo Oficial de la Republica Argentina ($10.47 billion, 5 officers in government) was a false positive — it is a 100% state-owned postal service where government-appointed board members are the governance mechanism, not corruption. Maria Elena Duhau de Sanguinetti, who appeared to sit on 36 contractor-linked company boards, turned out to be a professional sindica serving 570 companies as a legal compliance formality under Argentine corporate law.',
+        'Luis Alberto Trajtenberg\'s apparent 6,521% asset growth ($26,598 to $1.038 billion) was a data artifact: his 2015 filing was an "Inicial" registration (not actual net worth), and Argentina experienced 10,800% cumulative inflation between 2016 and 2024. In real terms his wealth grew approximately 17x over 8 years — significant but not scandalous for a senior economist in a hyperinflationary economy. The BIOARS $360 million "favoritism" was largely explained by COVID-19 emergency procurement — the company is a legitimate 25-year-old diagnostics firm that sells exactly the products the pandemic response needed. Our earlier shell company flag (831 companies) had an 80-90% false positive rate.',
+        'These corrections are not failures — they are the methodology working. Every automated heuristic produces false positives. The difference between an accountability investigation and a political hit piece is whether you check your own work. The SOE filter, sindica filter, and inflation adjustment are now implemented in the cross-reference engine code — not just documented, but enforced. Future runs will not repeat these errors.',
+      ],
+      es: [
+        'Esta investigacion elimino 3 de sus propios 5 principales hallazgos a traves de verificacion profunda. Correo Oficial de la Republica Argentina ($10.470 millones, 5 directivos en gobierno) fue un falso positivo — es un servicio postal 100% estatal donde los miembros del directorio designados por el gobierno son el mecanismo de gobernanza, no corrupcion. Maria Elena Duhau de Sanguinetti, quien parecia integrar 36 directorios de empresas contratistas, resulto ser una sindica profesional sirviendo a 570 empresas como formalidad de cumplimiento legal bajo la ley societaria argentina.',
+        'El aparente crecimiento patrimonial de Luis Alberto Trajtenberg del 6.521% ($26.598 a $1.038 millones) fue un artefacto de datos: su declaracion de 2015 era una registracion "Inicial" (no patrimonio real), y Argentina experimento una inflacion acumulada del 10.800% entre 2016 y 2024. En terminos reales su patrimonio crecio aproximadamente 17 veces en 8 anos — significativo pero no escandaloso para un economista senior en una economia hiperinflacionaria. El "favoritismo" de BIOARS por $360 millones se explico mayormente por contrataciones de emergencia COVID-19 — la empresa es un distribuidor de diagnosticos legitimo de 25 anos que vende exactamente los productos que la respuesta pandemica necesitaba. Nuestra bandera anterior de empresas fantasma (831 empresas) tenia una tasa de falsos positivos del 80-90%.',
+        'Estas correcciones no son fracasos — son la metodologia funcionando. Todo heuristico automatizado produce falsos positivos. La diferencia entre una investigacion de rendicion de cuentas y un golpe politico es si verificas tu propio trabajo. El filtro de empresas estatales, el filtro de sindicas, y el ajuste por inflacion estan ahora implementados en el codigo del motor de cruce — no solo documentados, sino aplicados. Las futuras ejecuciones no repetiran estos errores.',
       ],
     },
   },
