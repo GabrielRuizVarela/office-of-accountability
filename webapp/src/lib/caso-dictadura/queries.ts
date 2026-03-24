@@ -143,16 +143,22 @@ function buildGraphData(nodes: readonly Node[], rels: readonly Relationship[]): 
 // 1. Full investigation graph
 // ---------------------------------------------------------------------------
 
-export async function getInvestigationGraph(casoSlug: string, tiers?: ConfidenceTier[]): Promise<GraphData> {
+export async function getInvestigationGraph(casoSlug: string, tiers?: ConfidenceTier[], labels?: string[]): Promise<GraphData> {
   const session = getDriver().session()
 
   try {
+    // Build label filter clause if labels are specified
+    const labelClause = labels && labels.length > 0
+      ? `AND any(lbl IN labels(n) WHERE lbl IN $labels)`
+      : ''
+
     const nodeResult = await session.run(
       `MATCH (n)
        WHERE n.caso_slug = $casoSlug
          AND (size($tiers) = 0 OR n.confidence_tier IN $tiers)
+         ${labelClause}
        RETURN n`,
-      { casoSlug, tiers: tiers ?? [] },
+      { casoSlug, tiers: tiers ?? [], labels: labels ?? [] },
       { timeout: 30_000 },
     )
 
