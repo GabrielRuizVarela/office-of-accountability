@@ -8,7 +8,7 @@
  */
 
 import type { StageKind } from '../types'
-import type { StageRunner, StageContext, StageResult } from './types'
+import type { StageRunner, StageContext, StageResult, TokenUsage } from './types'
 import { ResearchProgram } from '../research-program'
 import {
   evaluateIteration,
@@ -24,6 +24,7 @@ import { resolveLLMProvider, processToolCall, getGraphSummary } from './shared'
 // ---------------------------------------------------------------------------
 
 const DEFAULT_MAX_ITERATIONS = 5
+const DEFAULT_TOKEN_BUDGET = 100_000
 const STAGE_KIND: StageKind = 'iterate'
 
 // ---------------------------------------------------------------------------
@@ -37,9 +38,12 @@ export class IterateStageRunner implements StageRunner {
     const { casoSlug, stage, pipelineState } = context
     const maxIterations =
       (stage.config?.max_iterations as number | undefined) ?? DEFAULT_MAX_ITERATIONS
+    const tokenBudget =
+      (stage.config?.token_budget as number | undefined) ?? DEFAULT_TOKEN_BUDGET
     const errors: string[] = []
     let totalProposals = 0
     let totalRecords = 0
+    const tokensUsed: TokenUsage = { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 }
 
     // Fresh research program per run — directives seeded from gap detection
     const program = new ResearchProgram()
@@ -50,6 +54,14 @@ export class IterateStageRunner implements StageRunner {
 
     // Main iteration loop
     for (let iteration = 0; iteration < maxIterations; iteration++) {
+      // Check token budget before starting a new iteration
+      if (tokensUsed.total_tokens >= tokenBudget) {
+        errors.push(
+          `Token budget exhausted (${tokensUsed.total_tokens}/${tokenBudget}) — stopping at iteration ${iteration}`,
+        )
+        break
+      }
+
       const before = await getGraphSummary(casoSlug)
       const gapReport = await detectGaps(casoSlug)
 
@@ -72,6 +84,14 @@ export class IterateStageRunner implements StageRunner {
           temperature: 0.3,
           max_tokens: 4096,
         })
+
+        // Accumulate token usage
+        if (response.usage) {
+          tokensUsed.prompt_tokens += response.usage.prompt_tokens
+          tokensUsed.completion_tokens += response.usage.completion_tokens
+          tokensUsed.total_tokens +=
+            response.usage.prompt_tokens + response.usage.completion_tokens
+        }
 
         // Process tool calls into proposals
         if (response.tool_calls) {
@@ -106,6 +126,7 @@ export class IterateStageRunner implements StageRunner {
     return {
       proposals_created: totalProposals,
       records_processed: totalRecords,
+      tokens_used: tokensUsed.total_tokens > 0 ? tokensUsed : undefined,
       errors,
     }
   }

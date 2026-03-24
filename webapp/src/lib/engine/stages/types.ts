@@ -21,10 +21,17 @@ export interface StageContext {
 // StageResult — what every stage runner returns
 // ---------------------------------------------------------------------------
 
+export interface TokenUsage {
+  prompt_tokens: number
+  completion_tokens: number
+  total_tokens: number
+}
+
 export interface StageResult {
   proposals_created: number
   records_processed: number
   duplicates_skipped?: number
+  tokens_used?: TokenUsage
   errors: string[]
 }
 

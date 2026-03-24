@@ -29,7 +29,7 @@ export function createStageRunner(kind: StageKind): StageRunner {
 }
 
 // Re-export types and runner classes for consumers
-export type { StageRunner, StageContext, StageResult } from './types'
+export type { StageRunner, StageContext, StageResult, TokenUsage } from './types'
 export { IngestStageRunner } from './ingest'
 export { VerifyStageRunner } from './verify'
 export { EnrichStageRunner } from './enrich'
