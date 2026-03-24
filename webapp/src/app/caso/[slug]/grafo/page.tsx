@@ -116,8 +116,16 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
         const res = await fetch(`/api/caso/${slug}/graph${qs}`)
         if (!res.ok) throw new Error('Failed to load graph data')
         const json = await res.json()
-        setGraphData(json.data)
+        const data = json.data ?? json
+        console.log('[grafo] fetched', data?.nodes?.length, 'nodes', data?.links?.length, 'links')
+        if (!data?.nodes?.length) {
+          console.warn('[grafo] No graph data returned', json)
+          setError('No graph data found')
+          return
+        }
+        setGraphData(data)
       } catch (err) {
+        console.error('[grafo] fetch error', err)
         setError(err instanceof Error ? err.message : 'Failed to load graph')
       } finally {
         setIsInitialLoading(false)

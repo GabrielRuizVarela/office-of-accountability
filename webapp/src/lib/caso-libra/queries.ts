@@ -234,7 +234,7 @@ export async function getPersonBySlug(slug: string): Promise<{
     const personNode = personResult.records[0].get('p') as Node
     const personGraphNode = transformNode(personNode)
 
-    // Fetch connections
+    // Fetch 1-hop connections
     const connectionsResult = await session.run(
       `MATCH (p:CasoLibraPerson { slug: $slug })-[r]-(neighbor)
        RETURN neighbor, r
@@ -261,6 +261,32 @@ export async function getPersonBySlug(slug: string): Promise<{
         return transformRelationship(rel, sourceId, targetId)
       })
       .filter((link) => link.source && link.target)
+
+    // Fetch cross-links between neighbors (makes the graph richer than a star)
+    if (nodeMap.size > 1) {
+      const neighborIds = [...nodeMap.keys()].filter((id) => id !== personGraphNode.id)
+      const crossResult = await session.run(
+        `MATCH (a)-[r]-(b)
+         WHERE a.id IN $ids AND b.id IN $ids AND a.id < b.id
+         RETURN a, b, r
+         LIMIT 200`,
+        { ids: neighborIds },
+        TX_CONFIG,
+      )
+      for (const record of crossResult.records) {
+        const a = record.get('a') as Node
+        const b = record.get('b') as Node
+        const rel = record.get('r') as Relationship
+        const aNode = transformNode(a)
+        const bNode = transformNode(b)
+        elementIdToAppId.set(a.elementId, aNode.id)
+        elementIdToAppId.set(b.elementId, bNode.id)
+        const sourceId = elementIdToAppId.get(rel.startNodeElementId) ?? ''
+        const targetId = elementIdToAppId.get(rel.endNodeElementId) ?? ''
+        const link = transformRelationship(rel, sourceId, targetId)
+        if (link.source && link.target) links.push(link)
+      }
+    }
 
     // Fetch events
     const eventsResult = await session.run(
