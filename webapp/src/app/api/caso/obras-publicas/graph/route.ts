@@ -31,21 +31,34 @@ export async function GET() {
   const session = getDriver().session()
 
   try {
-    // Get core investigative nodes + top contractors
+    // Get investigative core + their immediate neighbors for a connected graph
     const nodeResult = await session.run(
-      `MATCH (n)
+      `// Core: bribery cases, politicians, intermediaries
+       MATCH (n)
        WHERE n.caso_slug = 'obras-publicas'
-         AND (n:BriberyCase OR n:Politician OR n:Intermediary OR n:Document
-              OR (n:Contractor AND (n.verification_status IS NOT NULL OR n.finding_status IS NOT NULL OR n.risk_score > 0)))
-       RETURN n
-       UNION
-       MATCH (bc:BriberyCase)-[:CASE_INVOLVES]->(c:Contractor)
-       RETURN c AS n
-       UNION
-       MATCH (c:Contractor)<-[:AWARDED_TO]-(pc:PublicContract)
+         AND (n:BriberyCase OR n:Politician OR n:Intermediary)
+       WITH collect(n) AS core
+
+       // Flagged/verified contractors
+       MATCH (c:Contractor)
        WHERE c.caso_slug = 'obras-publicas'
-       WITH c, count(pc) AS contracts ORDER BY contracts DESC LIMIT 40
-       RETURN c AS n`,
+         AND (c.verification_status IS NOT NULL OR c.finding_status IS NOT NULL)
+       WITH core, collect(c) AS flagged
+
+       // Top contractors by contract count
+       MATCH (top:Contractor)<-[:AWARDED_TO]-(pc:PublicContract)
+       WHERE top.caso_slug = 'obras-publicas'
+       WITH core, flagged, top, count(pc) AS cnt ORDER BY cnt DESC LIMIT 30
+       WITH core, flagged, collect(top) AS topC
+
+       // PublicWorks linked to bribery cases
+       MATCH (bc:BriberyCase)-[:CASE_INVOLVES]->(pw:PublicWork)
+       WITH core, flagged, topC, collect(pw) AS works
+
+       // Merge all
+       WITH core + flagged + topC + works AS all_nodes
+       UNWIND all_nodes AS n
+       RETURN DISTINCT n`,
       {},
       { timeout: 30_000 },
     )
@@ -69,14 +82,14 @@ export async function GET() {
       }
     }
 
-    // Get relationships between these nodes
+    // Get ALL relationships between our collected nodes (any direction)
+    const nodeElementIds = [...elementToApp.keys()]
     const relResult = await session.run(
-      `MATCH (a)-[r]->(b)
-       WHERE a.caso_slug = 'obras-publicas'
-         AND (a:BriberyCase OR a:Politician OR a:Intermediary OR a:Contractor)
-         AND (b:BriberyCase OR b:Politician OR b:Intermediary OR b:Contractor OR b:PublicWork)
-       RETURN r`,
-      {},
+      `MATCH (a)-[r]-(b)
+       WHERE elementId(a) IN $ids AND elementId(b) IN $ids
+         AND elementId(a) <> elementId(b)
+       RETURN r, elementId(startNode(r)) AS startEid, elementId(endNode(r)) AS endEid`,
+      { ids: nodeElementIds },
       { timeout: 30_000 },
     )
 
@@ -85,8 +98,10 @@ export async function GET() {
 
     for (const r of relResult.records) {
       const rel = r.get('r') as Relationship
-      const sourceId = elementToApp.get(rel.startNodeElementId)
-      const targetId = elementToApp.get(rel.endNodeElementId)
+      const startEid = r.get('startEid') as string
+      const endEid = r.get('endEid') as string
+      const sourceId = elementToApp.get(startEid)
+      const targetId = elementToApp.get(endEid)
       if (!sourceId || !targetId) continue
       const key = `${sourceId}:${targetId}:${rel.type}`
       if (seenLinks.has(key)) continue
