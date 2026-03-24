@@ -41,6 +41,21 @@ export const investigations: InvestigationConfig[] = [
     href: '/caso/caso-epstein',
   },
   {
+    slug: 'caso-dictadura',
+    title: 'Caso Dictadura: 1976-1983',
+    subtitle: 'Investigacion activa',
+    description:
+      'Dictadura militar argentina. 9.415 victimas documentadas, 774 centros clandestinos, 987 paginas SIDE desclasificadas, 54 brechas de rendicion de cuentas senaladas.',
+    status: 'active',
+    color: 'amber',
+    stats: [
+      { label: 'Victimas', value: '9.415' },
+      { label: 'CCDs', value: '774' },
+      { label: 'Nodos', value: '14.512' },
+    ],
+    href: '/caso/caso-dictadura',
+  },
+  {
     slug: 'finanzas-politicas',
     title: 'Finanzas Politicas Argentinas',
     subtitle: 'Investigacion activa',
