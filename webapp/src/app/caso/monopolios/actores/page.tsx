@@ -18,6 +18,54 @@ const SECTOR_COLORS: Record<string, string> = {
   regulatory_capture: '#dc2626',
 }
 
+const SECTOR_LABELS: Record<string, Record<'es' | 'en', string>> = {
+  telecom: { es: 'Telecomunicaciones', en: 'Telecom' },
+  energy: { es: 'Energia', en: 'Energy' },
+  food: { es: 'Alimentos', en: 'Food' },
+  media: { es: 'Medios', en: 'Media' },
+  banking: { es: 'Banca', en: 'Banking' },
+  mining: { es: 'Mineria', en: 'Mining' },
+  agroexport: { es: 'Agroexportacion', en: 'Agro-export' },
+  construction: { es: 'Construccion', en: 'Construction' },
+  pharma: { es: 'Farmaceutica', en: 'Pharma' },
+  transport: { es: 'Transporte', en: 'Transport' },
+  cross_sector: { es: 'Multi-sector', en: 'Cross-sector' },
+  regulatory_capture: { es: 'Regulatoria', en: 'Regulatory' },
+}
+
+/** Inline mini SVG showing actor → sector connections */
+function MiniGraph({ sectors, offshoreCount }: { sectors: string[]; offshoreCount: number }) {
+  const w = 280
+  const h = 60
+  const cx = 40
+  const cy = h / 2
+  const nodes = [...sectors]
+  if (offshoreCount > 0) nodes.push('offshore')
+  const step = (w - 80) / Math.max(nodes.length - 1, 1)
+
+  return (
+    <svg width={w} height={h} className="mt-3">
+      {/* Actor node */}
+      <circle cx={cx} cy={cy} r={8} fill="#f59e0b" opacity={0.9} />
+      {/* Sector + offshore nodes with lines */}
+      {nodes.map((s, i) => {
+        const nx = 80 + i * step
+        const ny = cy
+        const color = s === 'offshore' ? '#ef4444' : (SECTOR_COLORS[s] ?? '#71717a')
+        return (
+          <g key={s}>
+            <line x1={cx + 8} y1={cy} x2={nx - 6} y2={ny} stroke={color} strokeWidth={1} opacity={0.4} />
+            <circle cx={nx} cy={ny} r={6} fill={color} opacity={0.8} />
+            <text x={nx} y={ny + 16} textAnchor="middle" fontSize={7} fill="#a1a1aa">
+              {s === 'offshore' ? `${offshoreCount} offshore` : s}
+            </text>
+          </g>
+        )
+      })}
+    </svg>
+  )
+}
+
 export default function ActoresPage() {
   const { lang } = useLanguage()
 
@@ -35,7 +83,19 @@ export default function ActoresPage() {
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
         {ACTORS.map((actor) => (
           <div key={actor.id} className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
-            <h3 className="text-base font-bold text-zinc-100">{actor.name}</h3>
+            {/* Name as link if source_url exists */}
+            {actor.source_url ? (
+              <a
+                href={actor.source_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-base font-bold text-zinc-100 underline decoration-zinc-700 hover:text-amber-400 hover:decoration-amber-400/50"
+              >
+                {actor.name} ↗
+              </a>
+            ) : (
+              <h3 className="text-base font-bold text-zinc-100">{actor.name}</h3>
+            )}
             <p className="mt-1 text-xs font-medium text-zinc-400">
               {lang === 'es' ? actor.role_es : actor.role_en}
             </p>
@@ -43,8 +103,11 @@ export default function ActoresPage() {
               {lang === 'es' ? actor.description_es : actor.description_en}
             </p>
 
+            {/* Inline mini connection graph */}
+            <MiniGraph sectors={actor.sectors} offshoreCount={actor.offshore_count} />
+
             {/* Stats row */}
-            <div className="mt-4 flex flex-wrap gap-3">
+            <div className="mt-3 flex flex-wrap gap-3">
               <div className="rounded bg-zinc-800/60 px-2 py-1">
                 <span className="text-sm font-bold text-zinc-200">{actor.companies_count}</span>
                 <span className="ml-1 text-[10px] text-zinc-500">
@@ -59,19 +122,20 @@ export default function ActoresPage() {
               )}
             </div>
 
-            {/* Sector tags */}
+            {/* Sector tags as links to conexiones */}
             <div className="mt-3 flex flex-wrap gap-1">
               {actor.sectors.map((s) => (
-                <span
+                <a
                   key={s}
-                  className="rounded px-1.5 py-0.5 text-[9px] font-medium"
+                  href="/caso/monopolios/conexiones"
+                  className="rounded px-1.5 py-0.5 text-[9px] font-medium transition-opacity hover:opacity-80"
                   style={{
                     backgroundColor: (SECTOR_COLORS[s] ?? '#71717a') + '22',
                     color: SECTOR_COLORS[s] ?? '#71717a',
                   }}
                 >
-                  {s}
-                </span>
+                  {SECTOR_LABELS[s]?.[lang] ?? s}
+                </a>
               ))}
             </div>
           </div>

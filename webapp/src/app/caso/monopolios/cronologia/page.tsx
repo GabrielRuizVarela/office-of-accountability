@@ -76,6 +76,20 @@ export default function CronologiaPage() {
               <p className="mt-1 text-xs leading-relaxed text-zinc-400">
                 {lang === 'es' ? event.description_es : event.description_en}
               </p>
+              {/* Source link */}
+              <div className="mt-2 flex items-center gap-2">
+                <span className="text-[10px] text-zinc-600">{event.sources.join(', ')}</span>
+                {event.source_url && (
+                  <a
+                    href={event.source_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[10px] text-amber-500/70 underline decoration-amber-500/30 hover:text-amber-400"
+                  >
+                    {lang === 'es' ? 'fuente' : 'source'} ↗
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         ))}
