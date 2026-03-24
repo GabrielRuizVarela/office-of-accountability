@@ -384,14 +384,14 @@ export default function ResumenPage() {
   const { lang } = useLanguage()
 
   return (
-    <article className="mx-auto max-w-prose pb-20">
+    <article className="mx-auto max-w-prose pb-20 text-justify">
       {/* Header */}
-      <header className="py-12 text-center">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
+      <header className="py-12">
+        <h1 className="text-3xl font-bold tracking-tight text-zinc-50 text-left sm:text-4xl">
           {TITLE[lang]}
         </h1>
         <p className="mt-4 text-lg text-zinc-400">{SUBTITLE[lang]}</p>
-        <div className="mt-6 flex items-center justify-center gap-4 text-sm text-zinc-500">
+        <div className="mt-6 flex items-center gap-4 text-sm text-zinc-500">
           <span>{READING_TIME[lang]}</span>
           <span className="text-zinc-700">|</span>
           <span>{LAST_UPDATED[lang]}</span>
