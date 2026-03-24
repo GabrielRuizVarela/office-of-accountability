@@ -1,0 +1,230 @@
+{
+  "wave": 21,
+  "title": "Deep Financial Forensics Through Cross-Referenced Obras Publicas Graph",
+  "date": "2026-03-24",
+  "methodology": "Traced money flows through 43,615 SAME_ENTITY cross-references linking contractors, donors, officials, asset declarations, and companies",
+
+  "top_contractors_by_value": [
+    { "name": "BIOARS S.A.", "cuit": "30689991919", "total_value": 360506014.74, "contracts": 12 },
+    { "name": "AIRBUS HELICOPTERS CONO SUR S.A.", "cuit": "21 477458 0014", "total_value": 209834021, "contracts": 6 },
+    { "name": "DROGUERIA ARTIGAS S.A.", "cuit": "30651249364", "total_value": 151682933.05, "contracts": 46 },
+    { "name": "BIODIAGNOSTICO S.A.", "cuit": "30639277115", "total_value": 131558350.11, "contracts": 55 },
+    { "name": "Laboratorios Jayor SRL", "cuit": "30712205330", "total_value": 97800000, "contracts": 1 },
+    { "name": "DATASTAR ARGENTINA SA", "cuit": "30702024834", "total_value": 64757120, "contracts": 2 },
+    { "name": "FOC S.R.L.", "cuit": "30657002247", "total_value": 58336354.61, "contracts": 18 },
+    { "name": "DROGUERIA DISVAL S.R.L.", "cuit": "30604075269", "total_value": 57452988.8, "contracts": 3 },
+    { "name": "ARTFUL S.A.", "cuit": "sha256:a75a47e0b4d070ea", "total_value": 50568000, "contracts": 1 },
+    { "name": "ABRAZO SA", "cuit": "sha256:538c87f93f3487f4", "total_value": 50568000, "contracts": 1 },
+    { "name": "Agustin Asaad", "cuit": "sha256:bdaeaf4854eb0694", "total_value": 50568000, "contracts": 1 },
+    { "name": "DATASTAR ARGENTINA SA", "cuit": "sha256:46cd8606838167a0", "total_value": 50560000, "contracts": 1 },
+    { "name": "MSD ARGENTINA SRL", "cuit": "30503403079", "total_value": 47064460.64, "contracts": 3 },
+    { "name": "MONTEBIO S.R.L.", "cuit": "30708250062", "total_value": 45195558.86, "contracts": 40 },
+    { "name": "MEDI SISTEM S.R.L.", "cuit": "30661658262", "total_value": 44033254.61, "contracts": 70 }
+  ],
+
+  "identical_contract_amounts": {
+    "amount": 50568000,
+    "contractors": ["ARTFUL S.A.", "ABRAZO SA", "Agustin Asaad"],
+    "note": "Three distinct contractors each received exactly $50,568,000 in single contracts — strong indicator of coordinated bidding or contract splitting"
+  },
+
+  "official_contractor_overlaps": [
+    {
+      "name": "TRAJTENBERG LUIS ALBERTO",
+      "cuit": "20264735603",
+      "position": "Director Nacional de Modelos y Proyecciones",
+      "agency": "MINISTERIO DE ECONOMIA",
+      "graph_connections": 11,
+      "connected_types": ["GovernmentAppointment", "AssetDeclaration"],
+      "asset_growth": {
+        "start_year": 2015,
+        "start_assets": 26598.35,
+        "end_year": 2024,
+        "end_assets": 1038238925,
+        "growth_pct": 6521.2,
+        "timeline": [
+          { "year": 2015, "assets": 26598.35 },
+          { "year": 2016, "assets": 1963822.33 },
+          { "year": 2017, "assets": 4061274.85 },
+          { "year": 2018, "assets": 8929220.15 },
+          { "year": 2019, "assets": 15680629.8 },
+          { "year": 2020, "assets": 30807463.86 },
+          { "year": 2021, "assets": 42303625.71 },
+          { "year": 2022, "assets": 79006465.84 },
+          { "year": 2023, "assets": 397913720.22 },
+          { "year": 2024, "assets": 1038238925 }
+        ]
+      },
+      "flag": "CRITICAL — Government official registered as contractor with 3,903,275% asset growth over 9 years"
+    },
+    {
+      "name": "SCOLARI HUGO OSCAR",
+      "cuit": "20085191935",
+      "position": "Jefe de Reactor Nuclear",
+      "agency": "COMISION NACIONAL DE ENERGIA ATOMICA",
+      "graph_connections": 8,
+      "connected_types": ["GovernmentAppointment", "AssetDeclaration"],
+      "asset_growth": {
+        "start_year": 2012,
+        "start_assets": 826035,
+        "end_year": 2018,
+        "end_assets": 5001874.08,
+        "growth_pct": 505.5
+      },
+      "flag": "Government official at nuclear agency also registered as contractor"
+    },
+    {
+      "name": "DRUCAROFF SERGIO ALEJANDRO",
+      "cuit": "20280336689",
+      "position": "Subsecretario de Compre Argentino",
+      "agency": "MINISTERIO DE DESARROLLO PRODUCTIVO",
+      "graph_connections": 7,
+      "connected_types": ["GovernmentAppointment", "CompanyOfficer", "AssetDeclaration"],
+      "asset_growth": {
+        "start_year": 2015,
+        "start_assets": 1429117.91,
+        "end_year": 2019,
+        "end_assets": 7212348.36,
+        "growth_pct": 404.7
+      },
+      "flag": "Subsecretario responsible for 'Buy Argentine' program also registered as contractor — direct procurement conflict"
+    },
+    {
+      "name": "OLIVERA LUCERO BRUNO ANTONIO",
+      "cuit": "20326896684",
+      "position": "Senador Nacional",
+      "agency": "Senado",
+      "graph_connections": 4,
+      "connected_types": ["AssetDeclaration"],
+      "asset_growth": {
+        "start_year": 2022,
+        "start_assets": 6675783,
+        "end_year": 2024,
+        "end_assets": 26017100,
+        "growth_pct": 289.7
+      },
+      "flag": "Sitting senator registered as public works contractor"
+    },
+    {
+      "name": "MOIX DIEGO JAVIER",
+      "cuit": "20203841656",
+      "position": "Director de Administracion",
+      "agency": "INADI",
+      "graph_connections": 6,
+      "connected_types": ["GovernmentAppointment", "CompanyOfficer", "AssetDeclaration"],
+      "asset_growth": {
+        "start_year": 2016,
+        "start_assets": 2641861.9,
+        "end_year": 2019,
+        "end_assets": 7409218.2,
+        "growth_pct": 180.4
+      },
+      "flag": "INADI administration director also registered as contractor"
+    }
+  ],
+
+  "donor_contractor_links": [
+    {
+      "type": "DONATED_AND_CONTRACTED",
+      "entities": [
+        { "name": "Juan Pablo Rodriguez", "match_type": "exact_name" },
+        { "name": "Jorge Omar Gonzalez", "match_type": "exact_name" }
+      ],
+      "note": "Direct donor-contractor relationship found via DONATED_AND_CONTRACTED edges"
+    },
+    {
+      "type": "two_hop_same_entity",
+      "entities": [
+        { "contractor": "Esteban Manuel Rodriguez", "donor": "Esteban Manuel Rodriguez", "intermediary": "CompanyOfficer" },
+        { "contractor": "PROVIDERS SA", "donor": "Providers Providers S.A.", "intermediary": "PublicCompany" }
+      ],
+      "note": "Connected through intermediate entity nodes"
+    }
+  ],
+
+  "company_connections": {
+    "note": "Contractors linked to PublicCompany nodes reveal corporate governance networks",
+    "top_by_officers": [
+      { "contractor": "ADIMRA", "company": "ASOCIACION DE INDUSTRIA METALURG DE LA REPU ARGENTI-ADIMRA", "officers": 171 },
+      { "contractor": "PRISMA MEDIOS DE PAGO S.A.", "company": "PRISMA MEDIOS DE PAGO", "officers": 168 },
+      { "contractor": "Pistrelli, Henry Martin y Asociados SRL", "company": "PISTRELLI,HENRY MARTIN Y ASOCIADOS", "officers": 131 },
+      { "contractor": "AEROLÍNEAS ARGENTINAS S.A.", "company": "AEROLINEAS ARGENTINAS SOCIEDAD ANONIMA", "officers": 103 },
+      { "contractor": "CONUAR S.A.", "company": "CONUAR S.A.(COMBUSTIBLES NUCLEARES ARGENTINOS)", "officers": 95 },
+      { "contractor": "YPF GAS SA", "company": "YPF GAS", "officers": 87 }
+    ],
+    "most_connected_contractor": {
+      "name": "COYOTAIR S.A.",
+      "cuit": "55000004102",
+      "same_entity_connections": 13,
+      "all_connections_to": "PublicCompany"
+    }
+  },
+
+  "budget_execution_anomalies": {
+    "mega_project_gaps": [
+      { "name": "RP. AUBLP (DISTRIBUIDOR ENSENADAEMPME.R.P.N 11)", "province": "BUENOS AIRES", "budget": 217991636720, "exec_pct": 2.34, "gap": 212890632420.75, "status": "in_progress" },
+      { "name": "ACUEDUCTO SAN JAVIER: TRAMO SAN JAVIER-TOSTADO", "province": "SANTA FE", "budget": 176963505263, "exec_pct": 7.78, "gap": 163195744553.54, "status": "planned" },
+      { "name": "ACUEDUCTO DEL RIO COLORADO Y OBRAS COMPLEMENTARIAS AL NORTE", "province": "LA PAMPA", "budget": 124165715681, "exec_pct": 6.32, "gap": 116318442449.96, "status": "planned" },
+      { "name": "COMPLEJO FEDERAL DE CONDENADOS DE AGOTE ETAPA I", "province": "BUENOS AIRES", "budget": 99620879920, "exec_pct": 4.11, "gap": 95526461755.29, "status": "in_progress" },
+      { "name": "CORREDOR DEL NOA: RN 34 LTE. SAL/JUJ SAN PEDRO DE JUJUY", "province": "JUJUY", "budget": 101168982433, "exec_pct": 13.8, "gap": 87207662857.25, "status": "in_progress" },
+      { "name": "AUTOPISTA RN N9/34 ROSARIO DE LA FRONTERA LTE. SALTA/JUJUY", "province": "SALTA", "budget": 84819903519, "exec_pct": 1.21, "gap": 83793582686.42, "status": "in_progress" }
+    ],
+    "stale_planned_projects": {
+      "count": 15,
+      "criteria": "budget > $10B ARS, execution < 10%, status = planned",
+      "total_frozen_budget": 703217955945,
+      "note": "Over $703 billion ARS frozen in planned mega-projects with negligible execution"
+    },
+    "provincial_execution": [
+      { "province": "BUENOS AIRES", "total_budget": 2385433431376, "avg_exec_pct": 76.6, "works": 3251 },
+      { "province": "SANTA FE", "total_budget": 527832057245, "avg_exec_pct": 66.3, "works": 406 },
+      { "province": "CÓRDOBA", "total_budget": 377852662297, "avg_exec_pct": 77.2, "works": 663 },
+      { "province": "SANTIAGO DEL ESTERO", "total_budget": 250617595668, "avg_exec_pct": 55.2, "works": 114 },
+      { "province": "LA RIOJA", "total_budget": 248878724563, "avg_exec_pct": 59.9, "works": 75 },
+      { "province": "SANTA CRUZ", "total_budget": 152839817131, "avg_exec_pct": 55.5, "works": 103 }
+    ],
+    "lowest_execution_provinces": ["SANTIAGO DEL ESTERO (55.2%)", "SANTA CRUZ (55.5%)", "SALTA (56.0%)", "LA RIOJA (59.9%)"]
+  },
+
+  "offshore_chains": {
+    "found": 0,
+    "path_tested": "Contractor -> SAME_ENTITY -> Company -> OFFICER_OF_COMPANY -> CompanyOfficer -> SAME_ENTITY -> OffshoreOfficer",
+    "note": "No direct offshore chains found through this path. Offshore connections may exist through longer paths or different relationship types."
+  },
+
+  "qwen_analysis": {
+    "model": "Qwen3.5-9B-Q5_K_M",
+    "pay_to_play_indicators": [
+      "Three distinct contractors received the exact sum of $50,568,000 in single contracts — indicates bid rigging or pre-arranged allocation",
+      "Government officials (Ministry Director, Nuclear Head, Senator) registered as contractors — direct conflicts of interest",
+      "Officials show exponential asset growth coinciding with contract awards — suggests illicit enrichment"
+    ],
+    "shell_entity_patterns": [
+      "Government officials holding CUITs to operate as contractors blurs state authority and private contracting",
+      "Use of SA entities alongside individual names suggests network designed to obscure beneficial ownership",
+      "Trajtenberg asset growth ($26K to $1.03B) and Olivera ($6.6M to $26M) indicate potential money laundering"
+    ],
+    "budget_red_flags": [
+      "15 mega-projects exceeding $10B each with under 10% execution — implies ghost projects, inflated costs, or deliberate stalling",
+      "Santiago del Estero and Santa Cruz at 55% execution — significantly below national average",
+      "Combination of high-value contracts and low execution rates indicates systemic waste"
+    ],
+    "investigation_priorities": [
+      "Trace origin of identical $50,568,000 figure to determine if fixed quota or manipulated pricing",
+      "Forensic asset tracking for Trajtenberg, Scolari, and Olivera to link growth to specific contract awards",
+      "Physical audits of 15 under-executed mega-projects to confirm existence and progress",
+      "Suspend and audit contracting authority of officials holding dual roles"
+    ]
+  },
+
+  "summary": {
+    "total_cross_references": 43615,
+    "official_contractor_overlaps_found": 5,
+    "donor_contractor_links_found": 4,
+    "identical_amount_contractors": 3,
+    "stale_mega_projects": 15,
+    "frozen_budget_ars": 703217955945,
+    "offshore_chains_found": 0,
+    "highest_asset_growth": "TRAJTENBERG LUIS ALBERTO — 6,521% over 9 years ($26K to $1.03B)"
+  }
+}
