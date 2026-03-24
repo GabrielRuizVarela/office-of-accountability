@@ -35,6 +35,7 @@ const CASE_TABS: Readonly<Record<string, readonly NavTab[]>> = {
     { href: '/evidencia', label: { en: 'Evidence', es: 'Evidencia' } },
     { href: '/proximidad', label: { en: 'Proximity', es: 'Proximidad' } },
     { href: '/simulacion', label: { en: 'Simulation', es: 'Simulacion' } },
+    { href: '/motor', label: { en: 'Engine', es: 'Motor' } },
   ],
   'caso-libra': [
     { href: '', label: { en: 'Home', es: 'Inicio' } },
@@ -45,6 +46,7 @@ const CASE_TABS: Readonly<Record<string, readonly NavTab[]>> = {
     { href: '/evidencia', label: { en: 'Documents', es: 'Evidencia' } },
     { href: '/grafo', label: { en: 'Connections', es: 'Conexiones' } },
     { href: '/simular', label: { en: 'Predictions', es: 'Predicciones' } },
+    { href: '/motor', label: { en: 'Engine', es: 'Motor' } },
   ],
   'finanzas-politicas': [
     { href: '', label: { en: 'Home', es: 'Inicio' } },
@@ -53,6 +55,7 @@ const CASE_TABS: Readonly<Record<string, readonly NavTab[]>> = {
     { href: '/cronologia', label: { en: 'Timeline', es: 'Cronologia' } },
     { href: '/dinero', label: { en: 'The Money', es: 'El Dinero' } },
     { href: '/conexiones', label: { en: 'Connections', es: 'Conexiones' } },
+    { href: '/motor', label: { en: 'Engine', es: 'Motor' } },
   ],
 }
 
@@ -63,6 +66,7 @@ const DEFAULT_TABS: readonly NavTab[] = [
   { href: '/grafo', label: { en: 'Connections', es: 'Conexiones' } },
   { href: '/cronologia', label: { en: 'Timeline', es: 'Cronologia' } },
   { href: '/evidencia', label: { en: 'Evidence', es: 'Evidencia' } },
+  { href: '/motor', label: { en: 'Engine', es: 'Motor' } },
 ]
 
 export function InvestigationNav({ slug }: InvestigationNavProps) {
