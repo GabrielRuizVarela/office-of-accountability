@@ -249,7 +249,7 @@ export default function MapaPage() {
               onPointerUp={handlePointerUp}
             >
               <svg
-                viewBox={`0 0 ${SVG_W} ${SVG_H}`}
+                viewBox={`${-pan.x / zoom * 2 - (SVG_W * (zoom - 1)) / (2 * zoom)} ${-pan.y / zoom * 2 - (SVG_H * (zoom - 1)) / (2 * zoom)} ${SVG_W / zoom} ${SVG_H / zoom}`}
                 preserveAspectRatio="xMidYMid meet"
                 className="mx-auto block w-full max-w-lg touch-none select-none"
                 style={{
@@ -259,9 +259,7 @@ export default function MapaPage() {
                   background: '#09090b',
                 }}
               >
-                {/* Full-bleed background rect so zoom doesn't show black bars */}
-                <rect x="-5000" y="-5000" width="10000" height="10000" fill="#09090b" />
-                <g transform={`translate(${SVG_W / 2}, ${SVG_H / 2}) translate(${pan.x * 2 / zoom}, ${pan.y * 2 / zoom}) scale(${zoom}) translate(${-SVG_W / 2}, ${-SVG_H / 2})`}>
+                <g>
                 {/* Argentina outline from GeoJSON */}
                 {geoPath && (
                   <path
