@@ -194,7 +194,7 @@ export async function classifySignals(signals: SignalForClassification[]): Promi
       response = await chatCompletion([
         {
           role: 'system',
-          content: 'Classify nuclear signal. Return JSON: {"severity":N,"escalation_level":"routine/notable/elevated/serious/critical","signal_type":"policy_analysis","theater":"Global","actors":[],"weapon_systems":[],"treaties":[]}',
+          content: 'Classify this nuclear signal. Pick the MOST SPECIFIC theater. Return JSON: {"severity":0to100,"escalation_level":"routine/notable/elevated/serious/critical","signal_type":"nuclear_test/missile_launch/force_posture_change/treaty_action/official_statement/inspection_event/proliferation_activity/facility_event/military_exercise/diplomatic_action/osint_observation/policy_analysis","theater":"US-Russia/Indo-Pacific/Korean Peninsula/Middle East/Europe/South Asia/Global","actors":["us","russia","china","uk","france","india","pakistan","israel","north-korea","iran","saudi-arabia","south-korea","japan","turkey"],"weapon_systems":[],"treaties":[]}',
         },
         {
           role: 'user',
