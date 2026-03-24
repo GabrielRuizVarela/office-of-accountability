@@ -49,11 +49,10 @@ const personas = [
   { id: 'dict-luciano-benjamin-menendez', name: 'Luciano Benjamín Menéndez', slug: 'luciano-benjamin-menendez', category: 'represor', description: 'Comandante del III Cuerpo de Ejército. Zona 3 (Córdoba). Múltiples condenas a prisión perpetua.' },
   { id: 'dict-antonio-domingo-bussi', name: 'Antonio Domingo Bussi', slug: 'antonio-domingo-bussi', category: 'represor', description: 'Operativo Independencia. Tucumán. Comandante de la zona de operaciones contrainsurgencia.' },
   { id: 'dict-ramon-juan-alberto-camps', name: 'Ramón Juan Alberto Camps', slug: 'ramon-juan-alberto-camps', category: 'represor', description: 'Jefe de la Policía de la Provincia de Buenos Aires. Responsable de múltiples CCD.' },
-  { id: 'dict-guillermo-suarez-mason', name: 'Guillermo Suárez Mason', slug: 'guillermo-suarez-mason', category: 'represor', description: 'Comandante del I Cuerpo de Ejército. Zona 1 (Buenos Aires). Condenado a prisión perpetua.' },
+  { id: 'dict-guillermo-suarez-mason', name: 'Carlos Guillermo Suárez Mason', slug: 'carlos-guillermo-suarez-mason', category: 'represor', description: 'Comandante del I Cuerpo de Ejército. Zona 1 (Buenos Aires). Fugado a EE.UU., extraditado. Condenado a prisión perpetua.' },
   { id: 'dict-jorge-eduardo-acosta', name: 'Jorge Eduardo Acosta', slug: 'jorge-eduardo-acosta', category: 'represor', description: '"El Tigre". ESMA, Grupo de Tareas 3.3.2. Condenado a prisión perpetua.' },
   { id: 'dict-hector-antonio-febres', name: 'Héctor Antonio Febres', slug: 'hector-antonio-febres', category: 'represor', description: 'Prefecto. ESMA. Murió en prisión antes de la sentencia en 2007.' },
   { id: 'dict-alberto-pedro-bignone', name: 'Alberto Pedro Bignone', slug: 'alberto-pedro-bignone', category: 'represor', description: 'Último presidente de facto (1982-1983). Campo de Mayo. Condenado a prisión perpetua.' },
-  { id: 'dict-carlos-guillermo-suarez-mason', name: 'Carlos Guillermo Suárez Mason', slug: 'carlos-guillermo-suarez-mason', category: 'represor', description: 'Comandante del I Cuerpo de Ejército. Prófugo en EE.UU. hasta 1988.' },
   { id: 'dict-mario-eduardo-firmenich', name: 'Mario Eduardo Firmenich', slug: 'mario-eduardo-firmenich', category: 'complice_civil', description: 'Líder de Montoneros. Figura controversial. Acusado de colaboración con la dictadura.' },
   { id: 'dict-jose-alfredo-martinez-de-hoz', name: 'José Alfredo Martínez de Hoz', slug: 'jose-alfredo-martinez-de-hoz', category: 'complice_civil', description: 'Ministro de Economía durante la dictadura (1976-1981). Artífice del plan económico neoliberal.' },
 
@@ -274,7 +273,6 @@ const perteneceAUnidad = [
   { personId: 'dict-antonio-domingo-bussi', unidadId: 'dict-unidad-v-cuerpo' },
   // I Cuerpo
   { personId: 'dict-guillermo-suarez-mason', unidadId: 'dict-unidad-i-cuerpo' },
-  { personId: 'dict-carlos-guillermo-suarez-mason', unidadId: 'dict-unidad-i-cuerpo' },
   // Bignone - Campo de Mayo
   { personId: 'dict-alberto-pedro-bignone', unidadId: 'dict-unidad-i-cuerpo' },
 ]
@@ -282,7 +280,6 @@ const perteneceAUnidad = [
 // Junta members → COMANDO → their units
 const comando = [
   { personId: 'dict-guillermo-suarez-mason', unidadId: 'dict-unidad-i-cuerpo' },
-  { personId: 'dict-carlos-guillermo-suarez-mason', unidadId: 'dict-unidad-i-cuerpo' },
   { personId: 'dict-luciano-benjamin-menendez', unidadId: 'dict-unidad-iii-cuerpo' },
   { personId: 'dict-ramon-juan-alberto-camps', unidadId: 'dict-unidad-policia-bonaerense' },
   { personId: 'dict-jorge-eduardo-acosta', unidadId: 'dict-unidad-gt-332' },
@@ -381,7 +378,6 @@ const acusadoEn = [
   { personId: 'dict-alberto-pedro-bignone', causaId: 'dict-causa-campo-de-mayo' },
   // Causa Suárez Mason
   { personId: 'dict-guillermo-suarez-mason', causaId: 'dict-causa-suarez-mason' },
-  { personId: 'dict-carlos-guillermo-suarez-mason', causaId: 'dict-causa-suarez-mason' },
 ]
 
 // DDHH leaders → MIEMBRO_DE → DDHH organizations
