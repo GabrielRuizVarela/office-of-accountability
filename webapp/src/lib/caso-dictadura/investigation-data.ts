@@ -146,6 +146,56 @@ export const FACTCHECK_ITEMS: FactcheckItem[] = [
     detail_en: 'Through DNA databases and investigations, Abuelas have identified approximately 140 of an estimated 500 children born in captivity or stolen from their families. The search continues.',
     detail_es: 'A través de bases de datos de ADN e investigaciones, Abuelas han identificado aproximadamente 140 de un estimado de 500 niños nacidos en cautiverio o robados de sus familias. La búsqueda continúa.',
   },
+  {
+    id: 'fc-qwen-network-1',
+    claim_en: 'Causa Plan Cóndor is the most connected node with 9354 relationships',
+    claim_es: 'Causa Plan Cóndor is the most connected node with 9354 relationships',
+    status: 'under_investigation' as const,
+    source: 'OA graph network analysis — Qwen Wave 23',
+    source_url: '',
+    detail_en: 'As a DictaduraCausa (n/a), this node connects to multiple parts of the investigation graph, serving as a central hub in the network structure.',
+    detail_es: 'As a DictaduraCausa (n/a), this node connects to multiple parts of the investigation graph, serving as a central hub in the network structure.',
+  },
+  {
+    id: 'fc-qwen-network-2',
+    claim_en: 'Jorge Rafael Videla bridges 5 different entity types',
+    claim_es: 'Jorge Rafael Videla bridges 5 different entity types',
+    status: 'under_investigation' as const,
+    source: 'OA graph network analysis — Qwen Wave 23',
+    source_url: '',
+    detail_en: 'This DictaduraPersona node connects diverse parts of the graph including victims, detention centers, court cases, and documents, making it a critical connector in the investigation.',
+    detail_es: 'This DictaduraPersona node connects diverse parts of the graph including victims, detention centers, court cases, and documents, making it a critical connector in the investigation.',
+  },
+  {
+    id: 'fc-qwen-network-3',
+    claim_en: 'Comisaría 26ª de Capital Federal emerges as the largest detention cluster',
+    claim_es: 'Comisaría 26ª de Capital Federal emerges as the largest detention cluster',
+    status: 'under_investigation' as const,
+    source: 'OA graph network analysis — Qwen Wave 23',
+    source_url: '',
+    detail_en: 'With 1884 documented victims and 0 connected represors, this CCD represents one of the most thoroughly documented centers of repression in the graph.',
+    detail_es: 'With 1884 documented victims and 0 connected represors, this CCD represents one of the most thoroughly documented centers of repression in the graph.',
+  },
+  {
+    id: 'fc-qwen-network-4',
+    claim_en: '1 CCDs show documented represor-victim connections',
+    claim_es: '1 CCDs show documented represor-victim connections',
+    status: 'under_investigation' as const,
+    source: 'OA graph network analysis — Qwen Wave 23',
+    source_url: '',
+    detail_en: 'These detention centers have both victims and identified represors linked, creating chains of accountability that can support judicial proceedings.',
+    detail_es: 'These detention centers have both victims and identified represors linked, creating chains of accountability that can support judicial proceedings.',
+  },
+  {
+    id: 'fc-qwen-network-5',
+    claim_en: '58 highly-connected nodes remain at bronze tier',
+    claim_es: '58 highly-connected nodes remain at bronze tier',
+    status: 'under_investigation' as const,
+    source: 'OA graph network analysis — Qwen Wave 23',
+    source_url: '',
+    detail_en: 'These nodes have significant graph connectivity (10+ relationships) but remain unverified at bronze tier, suggesting they should be prioritized for verification.',
+    detail_es: 'These nodes have significant graph connectivity (10+ relationships) but remain unverified at bronze tier, suggesting they should be prioritized for verification.',
+  },
 ]
 
 // ---------------------------------------------------------------------------
@@ -439,6 +489,31 @@ export const IMPACT_STATS: ImpactStat[] = [
     label_en: 'Persons convicted for crimes against humanity',
     label_es: 'Personas condenadas por delitos de lesa humanidad',
     source: 'PCCH Annual Report',
+  },
+
+  {
+    value: '9,743',
+    label_en: 'Persons in graph (documented victims, represors, witnesses)',
+    label_es: 'Personas en el grafo (victimas documentadas, represores, testigos)',
+    source: 'OA caso-dictadura graph — Wave 17 demographics analysis',
+  },
+  {
+    value: '26',
+    label_en: 'Median age at time of disappearance',
+    label_es: 'Edad mediana al momento de la desaparicion',
+    source: 'OA caso-dictadura graph — Wave 17 demographics analysis',
+  },
+  {
+    value: '334',
+    label_en: 'Pregnant women detained/disappeared (documented)',
+    label_es: 'Mujeres embarazadas detenidas/desaparecidas (documentadas)',
+    source: 'OA caso-dictadura graph — Wave 17 demographics analysis',
+  },
+  {
+    value: '193',
+    label_en: 'Minors (under 18) detained/disappeared',
+    label_es: 'Menores de 18 anos detenidos/desaparecidos',
+    source: 'OA caso-dictadura graph — Wave 17 demographics analysis',
   },
 ]
 
