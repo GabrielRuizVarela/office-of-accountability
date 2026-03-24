@@ -1,8 +1,12 @@
 /**
  * LLM client for nuclear risk signal analysis via Qwen 3.5 (llama.cpp).
  *
- * Qwen 3.5 uses mandatory thinking mode — analysis is in `reasoning_content`,
- * structured output is in `content`. Always parse both fields.
+ * For structured JSON output tasks, we disable thinking mode via
+ * chat_template_kwargs.enable_thinking=false so Qwen produces JSON
+ * directly without spending thousands of tokens on reasoning first.
+ *
+ * For analytical tasks (pattern detection, briefing), thinking mode
+ * can be enabled for deeper analysis.
  */
 
 const MIROFISH_URL = process.env.MIROFISH_API_URL || 'http://localhost:8080'
@@ -20,13 +24,16 @@ interface LlmResponse {
 
 /**
  * Send a chat completion request to Qwen 3.5 via llama.cpp.
- * Returns both reasoning_content (thinking) and content (answer).
+ *
+ * @param enableThinking - If false (default), disables Qwen's thinking mode
+ *   for faster, token-efficient structured output. Set to true for
+ *   analytical tasks where reasoning quality matters.
  */
 export async function chatCompletion(
   messages: ChatMessage[],
-  options: { temperature?: number; maxTokens?: number; timeoutMs?: number } = {},
+  options: { temperature?: number; maxTokens?: number; timeoutMs?: number; enableThinking?: boolean } = {},
 ): Promise<LlmResponse> {
-  const { temperature = 0.3, maxTokens = 6144, timeoutMs = 300_000 } = options
+  const { temperature = 0.3, maxTokens = 1024, timeoutMs = 120_000, enableThinking = false } = options
 
   const controller = new AbortController()
   const timeout = setTimeout(() => controller.abort(), timeoutMs)
@@ -41,6 +48,7 @@ export async function chatCompletion(
         messages,
         temperature,
         max_tokens: maxTokens,
+        chat_template_kwargs: { enable_thinking: enableThinking },
       }),
     })
 
