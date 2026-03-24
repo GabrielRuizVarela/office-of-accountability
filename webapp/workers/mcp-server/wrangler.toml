@@ -1,0 +1,33 @@
+name = "ooa-mcp-server"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+NEXTJS_API_URL = "http://localhost:5174"
+
+[[kv_namespaces]]
+binding = "API_KEYS"
+id = "placeholder-dev-id"
+
+# Production overrides
+[env.production]
+route = { pattern = "mcp.officeofaccountability.com/*", zone_name = "officeofaccountability.com" }
+
+[env.production.vars]
+NEXTJS_API_URL = "https://officeofaccountability.com"
+
+[[env.production.kv_namespaces]]
+binding = "API_KEYS"
+id = "placeholder-prod-id"
+
+# Staging
+[env.staging]
+route = { pattern = "mcp-staging.officeofaccountability.com/*", zone_name = "officeofaccountability.com" }
+
+[env.staging.vars]
+NEXTJS_API_URL = "https://staging.officeofaccountability.com"
+
+[[env.staging.kv_namespaces]]
+binding = "API_KEYS"
+id = "placeholder-staging-id"

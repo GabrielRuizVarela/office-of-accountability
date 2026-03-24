@@ -246,6 +246,12 @@ const UNIQUE_CONSTRAINTS = [
     label: 'ComplianceEvaluation',
     property: 'id',
   },
+  // MCP API keys (M13 — investigation MCP server)
+  {
+    name: 'mcp_api_key_id_unique',
+    label: 'MCPApiKey',
+    property: 'id',
+  },
 ] as const
 
 /** Full-text indexes for search across text fields */
@@ -570,6 +576,17 @@ const BTREE_INDEXES = [
     name: 'compliance_evaluation_investigation_id_index',
     label: 'ComplianceEvaluation',
     property: 'investigation_id',
+  },
+  // MCP API keys (M13 — investigation MCP server)
+  {
+    name: 'mcp_api_key_hash_index',
+    label: 'MCPApiKey',
+    property: 'key_hash',
+  },
+  {
+    name: 'mcp_api_key_user_id_index',
+    label: 'MCPApiKey',
+    property: 'user_id',
   },
 ] as const
 
