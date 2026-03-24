@@ -667,34 +667,46 @@ The dataset shows contract award concentrations that correlate with electoral cy
 ## Appendix A: Graph Statistics Summary
 
 ```
-Total nodes:           37,351
-  Contractors:         28,419
-  Public Works:         7,481
-  Bids:                   579
-  Procedures:             482
-  Contracts:              390
+Total nodes:           56,122
+  Contractors:         28,695  (silver: 28,691  bronze: 4)
+  Bids:                13,835  (silver: 13,835)
+  Public Works:         7,486  (silver: 7,481   bronze: 5)
+  Public Contracts:     3,129  (silver: 3,129)
+  Procedures:           2,950  (silver: 2,950)
+  Intermediaries:          11  (silver: 2       bronze: 9)
+  Politicians:             11  (silver: 4       bronze: 7)
+  Bribery Cases:            3  (bronze: 3)
+  Companies:                1  (bronze: 1)
+  Documents:                1  (silver: 1)
 
-Total relationships:   19,560
+Total relationships:   48,415
+  BID_ON:              13,835
+  BIDDER:              13,835
   SAME_ENTITY:          9,385
+  LOCATED_IN_PROVINCE:  7,457
+  AWARDED_TO:           3,171
+  CONTRACTED_FOR:         696
+  BRIBED_BY:               15
+  INTERMEDIATED:           10
+  CASE_INVOLVES:            5
+  RELATED_TO:               3
+  ASSOCIATED_WITH:          3
 
 Bribery cases:              3
-  Odebrecht Argentina
-  Cuadernos de las Coimas
-  Siemens DNI
+  Odebrecht Argentina      (conf: 0.6, entities: 3, politicians: 5, intermediaries: 1)
+  Cuadernos de las Coimas  (conf: 0.4, entities: 1, politicians: 8, intermediaries: 6)
+  Siemens DNI              (conf: 0.6, entities: 1, politicians: 2, intermediaries: 3)
 
-Intermediaries:             8
-
-Investigation flags:
-  cross_investigation:  9,244
-  repeat_winner:           68
-  budget_underrun:        128
-  shell_company:          831
+Contractor verification:
+  independently_verified:      2
+  partially_corroborated:      3
+  cuadernos_dependent:         4
 
 Cross-investigation:
-  Total matches:       43,615
-  CUIT matches:         8,234
-  Officer matches:      2,433
-  Dual-role persons:    2,155
+  SAME_ENTITY links:       9,385
+  Dual-role persons:       2,155
+  Shell companies:           831
+  Budget underruns:          128
 ```
 
 ## Appendix B: Methodological Limitations
