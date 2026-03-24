@@ -1,0 +1,278 @@
+{
+  "meta": {
+    "title": "Wave 31 — Person & Connection Verification (Monopoly-Political Nexus)",
+    "date": "2026-03-24",
+    "methodology": "Web search verification of claimed connections between monopoly actors and Argentine political system",
+    "categories": ["interlocking_directorates", "revolving_door", "political", "judicial"]
+  },
+  "verifications": [
+    {
+      "id": 1,
+      "category": "interlocking_directorates",
+      "claim": "Jorge Perez Alati sits on boards of BOTH Louis Dreyfus AND Banco Santander",
+      "verified": "partial",
+      "status": "active_professional",
+      "findings": "Jorge Luis Perez Alati is founding partner of PAGBAM (Perez Alati, Grondona, Benites & Arntsen), a top-tier Argentine law firm. He was designated Sindico Titular (statutory auditor) of Banco Santander Rio S.A. per Boletin Oficial (May 2019). Louis Dreyfus Company is a client of PAGBAM — the firm advised LDC on acquisitions in Entre Rios. However, Perez Alati's role is as external legal counsel/sindico, NOT as a board director in the corporate governance sense. The connection exists but is professional-advisory, not an interlocking directorate in the classic antitrust meaning.",
+      "sources": [
+        "https://www.boletinoficial.gob.ar/detalleAviso/segunda/A837039/20190513",
+        "https://pagbam.com/integrantes/partners/perez-alati-jorge-l-2/",
+        "https://pagbam.com/news/louis-dreyfus-company-acquires-a-grain-storage-and-conditioning-plant-in-the-province-of-entre-rios-argentina/"
+      ],
+      "notes": "Sindico Titular is a statutory auditor role under Argentine corporate law, distinct from a board seat (director). The claim conflates legal advisory/audit roles with board membership. Still represents a professional bridge between Santander and LDC through PAGBAM."
+    },
+    {
+      "id": 2,
+      "category": "interlocking_directorates",
+      "claim": "Maria Lucila Winschel sits on boards of BOTH Barrick Gold AND HSBC",
+      "verified": "partial",
+      "status": "active_professional",
+      "findings": "Maria Lucila Winschel is a partner at Bruchou & Funes de Rioja, leading the Corporate Law & Corporate Governance practice. The firm advised HSBC on the sale of its Argentine business to Grupo Financiero Galicia. No evidence found of her sitting on Barrick Gold's board. Her connection appears to be as external legal counsel to both entities, not as a board director.",
+      "sources": [
+        "https://bruchoufunes.com/en/profesionales/winschel-maria-lucila-en/",
+        "https://bruchoufunes.com/en/we-advised-hsbc-on-the-closing-of-the-transaction-by-which-it-sold-its-business-in-argentina-to-grupo-financiero-galicia/"
+      ],
+      "notes": "Similar to Perez Alati — the claim likely conflates external legal advisory roles (sindico or counsel) with board directorships. HSBC Argentina was sold to Grupo Financiero Galicia, so the HSBC connection is now historic. Barrick Gold board connection unverified."
+    },
+    {
+      "id": 3,
+      "category": "interlocking_directorates",
+      "claim": "Guillermo Hang bridges Techint with AMX/Claro",
+      "verified": "no",
+      "status": "unconfirmed",
+      "findings": "Guillermo Hang is confirmed as Executive Director at Techint Group (per RocketReach, ZoomInfo, LinkedIn). AMX Argentina S.A. (Claro) board listed as: Presidente Julio Carlos Porras Zadik, Vicepresidente Alejandro Cantu Jimenez, Director Daniel de Marco, Suplentes Sebastian Kaplan and Eugenio Chacon. No evidence found linking Hang to AMX/Claro board or management.",
+      "sources": [
+        "https://rocketreach.co/guillermo-hang-email_60033587",
+        "https://www.zoominfo.com/p/Guillermo-Hang/1305774955",
+        "https://www.guiasenior.com/directorio/empresas/276641/amx-argentina-sa-claro.htm"
+      ],
+      "notes": "The claim of bridging Techint with AMX/Claro could not be verified. Hang is confirmed at Techint only. The AMX Argentina board is composed of America Movil (Mexico) appointees."
+    },
+    {
+      "id": 4,
+      "category": "interlocking_directorates",
+      "claim": "Claudio Cesario bridges Santander with Techint",
+      "verified": "partial",
+      "status": "active",
+      "findings": "Claudio Cesario is confirmed as director at Santander Argentina and partner at law firm Allende & Brea. He is President of ABA (Asociacion de Bancos de la Argentina), reelected September 2025. A Boletin Oficial entry (July 2019) references Techint Inversiones S.A.I.F. in connection with his name. The Santander link is confirmed; a Techint connection exists in official records but the nature (board vs. legal advisory) could not be fully confirmed from public sources.",
+      "sources": [
+        "https://www.cronista.com/finanzas-mercados/claudio-cesario-fue-reelecto-al-frente-de-aba/",
+        "https://www.boletinoficial.gob.ar/detalleAviso/segunda/A854712/20190715",
+        "https://www.linkedin.com/in/claudio-cesario-4ab77275/"
+      ],
+      "notes": "Cesario's role as ABA president makes him a meta-bridge between ALL foreign banks in Argentina and their corporate clients. The Techint Inversiones Boletin Oficial reference warrants deeper investigation via IGJ records."
+    },
+    {
+      "id": 5,
+      "category": "interlocking_directorates",
+      "claim": "Ricardo Martelli sits on 8 Cargill entities",
+      "verified": "no",
+      "status": "unconfirmed",
+      "findings": "Cargill Argentina (Cargill S.A.C.I.) board listed as: President Fernando Anibal Garcia Cozzi, VP Raquel Paula Velez, Director Ariel Omar Carruthers, with alternates Cynthia Zarranz, Florencia Misrahi, Sebastian Lopez Yanes (as of 2019 assembly). No mention of Ricardo Martelli found in any Cargill Argentina board or entity records from public sources.",
+      "sources": [
+        "https://www.boletinoficial.gob.ar/pdf/linkQR/R2YyY1lUa3Znc3greFpJZ1U0d1UwZz09",
+        "https://www.guiasenior.com/directorio/empresas/12444/cargill-saci.htm"
+      ],
+      "notes": "Could not verify. Cargill operates multiple Argentine subsidiaries (Cargill S.A.C.I., Cargill Beef, etc.) — a person sitting on multiple subsidiary boards is plausible but would require IGJ registry access to confirm."
+    },
+    {
+      "id": 6,
+      "category": "revolving_door",
+      "claim": "Vila-Manzano: same shareholders control America TV + Telefe + Edenor",
+      "verified": "yes",
+      "status": "confirmed_2025",
+      "findings": "Daniel Vila, Jose Luis Manzano, Claudio Belocopitt, and Gustavo Scaglione purchased Telefe from Paramount for USD 95 million. The same group (Vila, Manzano, Mauricio Filiberti) controls Edenor through DESA. Grupo America (Vila-Manzano controlled) owns America TV, Radio La Red, FM Blue, and El Cronista. After Telefe purchase, this group now controls Argentina's two largest free-to-air TV networks AND the country's largest electricity distributor (Edenor, 2.8M customers).",
+      "sources": [
+        "https://www.cronista.com/negocios/un-grupo-de-empresarios-lideres-argentinos-compra-la-totalidad-de-telefe/",
+        "https://www.a24.com/actualidad/el-grupo-america-desembarca-telefe-la-mano-los-accionistas-scaglione-vila-manzano-belocopitt-y-avila-n1490513",
+        "https://eleconomista.com.ar/negocios/avanza-grupo-america-tras-edenor-ahora-compro-diario-economico-us-6-m-n44806"
+      ],
+      "notes": "This is one of the most significant media-energy cross-ownership concentrations in Argentine history. Telefe includes Canal 11 Buenos Aires, Canal 8 Cordoba, Canal 5 Rosario, Canal 13 Santa Fe. Manzano is also Argentina's leading lithium investor (Integra Resources)."
+    },
+    {
+      "id": 7,
+      "category": "revolving_door",
+      "claim": "Mindlin controls BOTH generation AND distribution (Edenor)",
+      "verified": "no",
+      "status": "historic_not_current",
+      "findings": "Marcelo Mindlin's Pampa Energia DID control both generation (3,648 MW installed capacity) and distribution (Edenor, 2.8M customers) simultaneously, plus transmission (Transener shareholder). However, Pampa sold Edenor to Vila-Manzano-Filiberti group in December 2020 for ~USD 100 million. As of 2025-2026, Mindlin/Pampa focuses on generation and gas production. The antitrust concern was valid historically but the vertical integration was unwound.",
+      "sources": [
+        "https://www.lanacion.com.ar/economia/pampa-energia-empresa-mindlin-se-enfocara-gas-nid2554025/",
+        "https://www.infobae.com/economia/2019/06/16/marcelo-mindlin-como-se-transformo-con-pampa-en-uno-de-los-duenos-de-la-energia-de-argentina/",
+        "https://www.cronista.com/apertura/empresas/Pampa-le-vendio-Edenor-a-un-grupo-inversor-integrado-por-Daniel-Vila-y-Jose-Luis-Manzano-20201228-0005.html"
+      ],
+      "notes": "The claim is historically accurate (2007-2020) but outdated. The antitrust issue shifted: Edenor is now controlled by media magnates Vila-Manzano, creating a different kind of cross-sector concentration (media + energy distribution)."
+    },
+    {
+      "id": 8,
+      "category": "revolving_door",
+      "claim": "Mindlin positioned to acquire Loma Negra (45.6% cement market)",
+      "verified": "yes",
+      "status": "acquisition_completed_2025",
+      "findings": "Mindlin, through subsidiary Generacion Argentina S.A. and vehicle Latcem (with Redwood Capital Management and Moneda-Patria Investments), acquired control of InterCement — parent of Loma Negra — via debt-to-equity conversion. He acquired 60% of InterCement's debt to Itau bank for ~USD 45 million. Creditors approved the plan (99.99% approval) in October 2025. Sao Paulo bankruptcy court approved the restructuring in December 2025. Loma Negra leads Argentine cement with ~45% market share. InterCement holds 15% of Brazilian market.",
+      "sources": [
+        "https://www.cronista.com/negocios/marcelo-mindlin-a-fondo-los-20-anos-de-pampa-por-que-compro-loma-negra-y-el-desafio-de-milei-para-2026/",
+        "https://www.infobae.com/economia/2025/12/11/otra-empresa-pasara-a-manos-nacionales-loma-negra-va-a-ser-controlada-por-un-consorcio-que-lidera-marcelo-mindlin/",
+        "https://www.lanacion.com.ar/economia/negocios/los-acreedores-de-loma-negra-aprobaron-el-plan-que-permitira-el-ingreso-de-marcelo-mindlin-nid06102025/",
+        "https://www.lanacion.com.ar/economia/negocios/vuelve-a-manos-argentinas-luz-verde-para-que-mindlin-se-quede-con-loma-negra-nid11122025/"
+      ],
+      "notes": "Confirmed and completed. Mindlin now controls both energy generation (Pampa Energia, largest private generator) AND cement (Loma Negra, ~45% market share). This is a significant infrastructure concentration — energy + cement = dominance over construction inputs."
+    },
+    {
+      "id": 9,
+      "category": "revolving_door",
+      "claim": "Sturzenegger declared ARS 970M patrimony jump in 2024",
+      "verified": "yes",
+      "status": "confirmed_DDJJ",
+      "findings": "Federico Sturzenegger, Minister of Deregulation, declared patrimony of ARS 1,402,292,739 at start of 2024 and ARS 2,371,733,030 at end — a difference of ARS 969,440,291 in 12 months. Breakdown: ARS 816M from asset revaluation, ARS 144M work income, ARS 56M non-taxable income, ARS 116M personal expenses. Also declared USD 1.4 million in foreign deposits, an apartment in Buenos Aires (50% ownership, ARS 116M), and a 2024 Toyota Corolla Cross hybrid. DDJJ filed July 31, 2025 with Oficina Anticorrupcion.",
+      "sources": [
+        "https://www.perfil.com/noticias/politica/federico-sturzenegger-declaro-un-salto-patrimonial-de-casi-970-millones-en-2024.phtml",
+        "https://noticiasargentinas.com/politica/sturzenegger-declaro-un-salto-patrimonial-de-casi--970-millones-en-2024-y-mantuvo-unos-us-1-4-millones-en-depositos-en-el-exterior_a69af2e96c331fb25183c9679",
+        "https://www.baenegocios.com/politica/sturzenegger-declaro-un-salto-patrimonial-de-970-millones-y-cuentas-en-el-exterior/"
+      ],
+      "notes": "Verified exactly. Most of the increase (ARS 816M) attributed to 'revaluation of same assets' — i.e., inflation/market appreciation. The USD 1.4M in foreign deposits is notable for a sitting minister. As Minister of Deregulation, Sturzenegger's policy decisions directly affect asset values across sectors."
+    },
+    {
+      "id": 10,
+      "category": "revolving_door",
+      "claim": "Santiago Bausili co-founded consulting firm with Economy Minister Caputo",
+      "verified": "yes",
+      "status": "confirmed",
+      "findings": "Luis 'Toto' Caputo and Santiago Bausili co-founded the consulting firm Anker Latinoamerica in 2020 after both left public office following the end of Macri's presidency. Anker closed on November 30, 2023 when both joined the Milei government — Caputo as Economy Minister, Bausili as Central Bank President. Multiple Anker partners were placed in government positions. Both had prior shared experience at international banks and in the Macri Finance Ministry.",
+      "sources": [
+        "https://www.eldiarioar.com/politica/luis-caputo-santiago-bausili-ex-funcionarios-macri-detras-negocio-multimillonario-ciudad_1_10426751.html",
+        "https://www.letrap.com.ar/politica/quien-es-santiago-bausili-el-ex-socio-toto-caputo-que-comandara-el-bcra-n5404973",
+        "https://www.perfil.com/noticias/politica/caputo-llevo-a-sus-socios-de-su-consultora-al-gobierno-quienes-son-y-que-funciones-tendran.phtml",
+        "https://www.ambito.com/economia/luis-caputo-cierra-su-consultora-y-suma-los-socios-su-equipo-n5889363"
+      ],
+      "notes": "Classic revolving door: international banking -> Macri government (Finance Ministry) -> private consulting (Anker) -> Milei government (Economy Ministry + Central Bank). Caputo brought his consulting firm partners directly into government roles."
+    },
+    {
+      "id": 11,
+      "category": "political",
+      "claim": "Francisco De Narvaez has 35 companies including America TV",
+      "verified": "partial",
+      "status": "outdated_claim",
+      "findings": "Grupo de Narvaez (GDN) is a multinational holding with operations in Argentina, Uruguay, and Ecuador. Key holdings: Walmart Argentina (92 stores, renamed Changomas), San Roque, BAS, Multi Ahorro Hogar, Motociclo, Rapsodia, Baby Cottons, Ta-Ta and Multiahorro (Uruguay supermarkets), and 50% of La Rural. The group employs 22,000+ people and bills USD 1.5 billion. However, De Narvaez SOLD his 40% stake in Grupo America (America TV) to Claudio Belocopitt in 2017, and sold El Cronista to Grupo America for USD 6 million. Estimated 25-30 companies, not 35.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Francisco_de_Narv%C3%A1ez",
+        "https://www.ambito.com/negocios/walmart/cuales-son-los-de-narvaez-el-pais-y-la-region-n5146207",
+        "https://es.wikipedia.org/wiki/Grupo_de_Narv%C3%A1ez",
+        "https://www.lanacion.com.ar/economia/negocios/quien-es-francisco-narvaez-el-empresario-le-nid2501936/"
+      ],
+      "notes": "The '35 companies' figure is plausible but unverified — sources say 25-30. The America TV claim is outdated: De Narvaez exited Grupo America in 2017. His empire is now retail-focused (supermarkets, fashion). He remains politically connected as ex-diputado."
+    },
+    {
+      "id": 12,
+      "category": "political",
+      "claim": "Urquia served as senator while running AGD",
+      "verified": "yes",
+      "status": "confirmed_historic",
+      "findings": "Roberto Daniel Urquia served as National Senator for Cordoba (2003-2009) representing Union por Cordoba / Frente para la Victoria while simultaneously serving as chairman of Aceitera General Deheza (AGD), one of Argentina's largest agroindustrial conglomerates. Previously he was mayor of General Deheza for three consecutive terms (1987-1999). In the Senate, he chaired the committee on Regional Economies and sat on Agriculture, Livestock and Fisheries committee — directly overseeing policy affecting his own company. Now identified as a donor to La Libertad Avanza.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Roberto_Urqu%C3%ADa",
+        "https://www.agrositio.com.ar/canal-agrositio/la-red-rural/231316-roberto-urquia-ceo-de-aceitera-general-deheza-ex-senador-nacional-por-cordoba.html",
+        "https://www.perfil.com/noticias/politica/el-exkirchnerista-roberto-urquia-dueno-de-una-de-las-empresas-que-gano-con-las-retenciones-0-es-aportante-de-la-libertad-avanza.phtml"
+      ],
+      "notes": "Textbook conflict of interest: chairing Senate agriculture committees while owning one of Argentina's largest oilseed processing companies. AGD benefited from export retention (retenciones) policy. Urquia has since donated to La Libertad Avanza, which eliminated retenciones — another direct policy benefit."
+    },
+    {
+      "id": 13,
+      "category": "political",
+      "claim": "Aluar donated ARS 5.4M to political parties",
+      "verified": "no",
+      "status": "unconfirmed",
+      "findings": "No public records or news articles found confirming specific Aluar (Aluminio Argentino) donations of ARS 5.4M to political parties. Argentine law prohibits donations from companies that are government contractors or concession holders. Aluar operates under special industrial promotion regimes in Chubut province. The claim could not be verified through web search — would require direct access to Camara Nacional Electoral financial disclosure databases.",
+      "sources": [
+        "https://www.argentina.gob.ar/dine/financiamiento-partidario"
+      ],
+      "notes": "Unverifiable via public web search. Argentine electoral finance disclosures are available through the Camara Nacional Electoral but not easily searchable online. If Aluar holds government concessions or contracts, corporate donations would be legally prohibited under Law 26215/27504."
+    },
+    {
+      "id": 14,
+      "category": "political",
+      "claim": "Tomas Braun donated ARS 400K",
+      "verified": "partial",
+      "status": "wrong_person_likely",
+      "findings": "Search results identify SEBASTIAN Braun (not Tomas) as the major Braun family political donor. Sebastian Braun, hotel entrepreneur and heir to the Braun-Menendez fortune (La Anonima supermarkets), donated ARS 30 million to La Libertad Avanza across multiple contributions in 2023: ARS 1M, 15M, 4M in August, ARS 10M in September. Total from PASO onward: ARS 20M. No specific record found for 'Tomas Braun' donating ARS 400K.",
+      "sources": [
+        "https://www.laizquierdadiario.com/Braun-el-principal-aportante-de-Milei-simboliza-la-sangrienta-historia-de-la-derecha-oligarquica",
+        "https://www.lanacion.com.ar/politica/curiosidades-y-disparidades-en-los-aportes-a-la-campana-declarados-ante-la-justicia-electoral-nid30072023/"
+      ],
+      "notes": "The Braun family (La Anonima, Patagonian oligarchy) is confirmed as a major LLA donor but through Sebastian Braun, not Tomas. The ARS 400K figure seems low compared to Sebastian's ARS 30M. May refer to a different election cycle or a different family member."
+    },
+    {
+      "id": 15,
+      "category": "judicial",
+      "claim": "Roggio family confessed as arrepentido in Cuadernos",
+      "verified": "yes",
+      "status": "trial_ongoing_2025",
+      "findings": "Aldo Roggio, president of Benito Roggio e Hijos, became an arrepentido (cooperating witness) in August 2018 in the Cuadernos de las Coimas case. He confessed to paying bribes to Transport Secretary Ricardo Jaime — specifically returning 5% of transport subsidies received. Prosecution accused him of 11 bribe payments between June 2009 and September 2010 totaling ARS 5.9 million. After confession, Roggio withdrew from the family holding and transferred shares to his three children (2020). Used three offshore companies in Switzerland and USA (per Pandora Papers). Oral trial began November 6, 2025 with 87 defendants.",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/los-cuadernos-de-las-coimas-aldo-roggio-arrepentido-reconocio-que-devolvia-el-5-de-los-subsidios-al-transporte-nid2162810/",
+        "https://www.infobae.com/america/pandora-papers/2021/10/07/aldo-roggio-arrepentido-en-la-causa-de-los-cuadernos-uso-tres-sociedades-en-el-exterior-para-abrir-cuentas-en-suiza-y-eeuu/",
+        "https://www.infobae.com/judiciales/2025/12/16/el-juicio-por-los-cuadernos-de-la-corrupcion-continua-la-acusacion-que-desnuda-el-vinculo-entre-empresarios-y-politicos/"
+      ],
+      "notes": "Aldo Roggio specifically. The 5% kickback on transport subsidies is the confirmed confession. Offshore structures revealed in Pandora Papers add another layer. The oral trial (2025-ongoing) is described as the largest corruption trial in Argentine history."
+    },
+    {
+      "id": 16,
+      "category": "judicial",
+      "claim": "Calcaterra confessed as arrepentido in Cuadernos",
+      "verified": "yes",
+      "status": "trial_ongoing_2025",
+      "findings": "Angelo Calcaterra, ex-owner of IECSA and cousin of President Mauricio Macri, became an arrepentido on August 6, 2018. He confessed to ordering bribe payments to the Kirchnerist government, including contributions for FPV campaigns in 2013 and 2015. His confession was a watershed moment as it came from someone related to the sitting president. His defense offered ARS 2,942.6 million (ARS 2.9 billion) for dismissal but it was not accepted. He is now being tried in the oral proceeding that began November 2025.",
+      "sources": [
+        "https://www.infobae.com/judiciales/2025/09/14/los-empresarios-de-los-cuadernos-la-confesion-de-angelo-calcaterra-el-primo-de-macri-que-ofrecio-2400-millones-para-salvarse/",
+        "https://www.infobae.com/politica/2018/08/06/la-confesion-de-angelo-calcaterra-yo-le-daba-la-plata-a-sanchez-caballero-el-pagaba-por-orden-mia/",
+        "https://www.infobae.com/sociedad/policiales/2025/10/26/los-cuadernos-de-las-coimas-cuando-angelo-calcaterra-se-quebro-ante-la-justicia/"
+      ],
+      "notes": "Key quote from confession: 'Yo le daba la plata a Sanchez Caballero, el pagaba por orden mia.' His ARS 2.9 billion offer for dismissal (rejected) indicates the scale of wealth involved. The Macri family connection made this politically explosive."
+    },
+    {
+      "id": 17,
+      "category": "judicial",
+      "claim": "Rocca dismissed from Cuadernos, appealed by prosecution",
+      "verified": "yes",
+      "status": "sobreseimiento_firme",
+      "findings": "Paolo Rocca (Techint CEO) and directors Luis Betnaza and Hector Zabaleta were sobresidos (dismissed) by Judge Julian Ercolini citing 'humanitarian reasons' (estado de necesidad). The sobreseimiento became firme (final) in August 2021 after prosecutor Carlos Stornelli AND the UIF failed to appeal in time. The UIF later attempted to revoke the firme sobreseimiento via an 'apelacion adhesiva' to the Camara Federal, which rejected it. UIF then escalated to the Camara Federal de Casacion. Separately, Tenaris (Techint subsidiary) paid USD 9.5 million in New York to settle a related bribery case.",
+      "sources": [
+        "https://www.ambito.com/politica/cuadernos/apelan-el-sobreseimiento-paolo-rocca-y-ejecutivos-techint-la-causa-n5261660",
+        "https://www.infobae.com/politica/2021/09/21/cuadernos-directivos-de-techint-fueron-sobreseidos-por-un-olvido-del-gobierno-que-ahora-busca-culpables-internos/",
+        "https://www.eldiarioar.com/politica/rocca-directivos-techint-sobreseimiento-firme-falta-apelacion-stornelli-uif_1_8237117.html",
+        "https://www.infobae.com/politica/2023/03/16/exclusivo-los-documentos-en-los-que-tenaris-y-paolo-rocca-acordaron-pagar-usd-95-millones-en-nueva-york-para-cerrar-una-causa-por-coimas/"
+      ],
+      "notes": "Highly controversial outcome. The sobreseimiento became firme due to what media described as an 'olvido' (oversight/omission) by the government — Stornelli and UIF missed the appeal deadline. The USD 9.5M Tenaris settlement in New York for a parallel bribery case suggests the underlying conduct was real. INECIP described the ruling as 'un fallo sin verguenza' (a shameless ruling)."
+    },
+    {
+      "id": 18,
+      "category": "judicial",
+      "claim": "Ferreyra (Electroingenieria) imprisoned",
+      "verified": "partial",
+      "status": "on_trial_not_imprisoned",
+      "findings": "Gerardo Ferreyra, vice-president of Electroingenieria S.A., was arrested in 2018 during the Cuadernos investigation. He was excarcelated (released from prison) by the Camara Federal with ARS 50 million bail. The Corte Suprema ruled against him in November 2024. He is currently being tried in the Cuadernos oral trial (began November 2025) as an alleged member of an illicit association, but is NOT currently imprisoned — he is facing trial while free on bail. Company president Osvaldo Acosta was also detained.",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/la-corte-suprema-fallo-contra-gerardo-ferreyra-de-electroingenieria-en-la-causa-de-los-cuadernos-nid27112024/",
+        "https://www.pagina12.com.ar/223087-la-camara-ordeno-excarcelar-a-gerardo-ferreyra",
+        "https://www.perfil.com/noticias/judiciales/causa-cuadernos-en-vivo-oscar-centeno-podria-declarar.phtml"
+      ],
+      "notes": "The claim 'imprisoned' is outdated. Ferreyra was imprisoned in 2018 but released on bail. He is on trial as of 2025-2026 in the Cuadernos oral proceeding. His own statement: 'fui preso por no arrepentirme' — he refused to become a cooperating witness unlike Roggio and Calcaterra."
+    }
+  ],
+  "summary": {
+    "total_claims": 18,
+    "verified_yes": 7,
+    "verified_partial": 5,
+    "verified_no": 4,
+    "outdated_or_wrong": 2,
+    "key_findings": [
+      "Vila-Manzano media-energy concentration is the strongest verified connection: same shareholders now control America TV + Telefe + Edenor",
+      "Mindlin Loma Negra acquisition confirmed (Dec 2025) — energy + cement infrastructure concentration",
+      "Caputo-Bausili Anker consulting firm revolving door fully verified",
+      "Sturzenegger ARS 970M patrimony jump verified exactly as claimed",
+      "Interlocking directorate claims (items 1-5) are mostly overstated — they conflate legal advisory/sindico roles with board directorships",
+      "Cuadernos oral trial ongoing since Nov 2025 with 87 defendants — largest corruption trial in Argentine history",
+      "Rocca/Techint sobreseimiento firme due to missed appeal deadline described as institutional failure",
+      "Urquia senator-AGD chairman dual role is a textbook conflict of interest, now donating to LLA which eliminated retenciones benefiting AGD"
+    ]
+  }
+}
