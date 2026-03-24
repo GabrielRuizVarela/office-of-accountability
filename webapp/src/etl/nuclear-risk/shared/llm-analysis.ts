@@ -200,7 +200,7 @@ export async function classifySignals(signals: SignalForClassification[]): Promi
           role: 'user',
           content: `${title}. ${summary}`,
         },
-      ], { maxTokens: 3072, temperature: 0.1 })
+      ], { maxTokens: 512, temperature: 0.1, enableThinking: false })
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err)
       console.warn(`      LLM error: ${msg.slice(0, 100)} — using defaults`)
@@ -381,7 +381,7 @@ export async function detectPatterns(): Promise<TheaterPattern[]> {
             role: 'user',
             content: `Theater: ${theater}. Avg severity: ${avgSeverity}. Signals: ${JSON.stringify(signalSummaries)}`,
           },
-        ], { maxTokens: 3072, temperature: 0.1 })
+        ], { maxTokens: 512, temperature: 0.1, enableThinking: false })
       } catch (err) {
         const msg = err instanceof Error ? err.message : String(err)
         console.warn(`      LLM error: ${msg.slice(0, 100)}`)
@@ -439,7 +439,7 @@ export async function generateBriefing(
       role: 'user',
       content: `Date: ${today}. Patterns: ${JSON.stringify(patterns.map(p => ({ theater: p.theater, trend: p.trend })))}. Top signals: ${JSON.stringify(topSignals.slice(0, 5).map(s => ({ id: s.id, severity: s.severity, theater: s.theater })))}`,
     },
-  ], { maxTokens: 3072, temperature: 0.1 })
+  ], { maxTokens: 512, temperature: 0.1, enableThinking: false })
 
     return parseJsonResponse<BriefingResult>(response.content)
   } catch {
