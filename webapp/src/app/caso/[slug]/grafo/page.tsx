@@ -97,7 +97,9 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
   useEffect(() => {
     async function fetchGraph() {
       try {
-        const res = await fetch(`/api/caso/${slug}/graph`)
+        // Default to verified (gold+silver) for large graphs to prevent browser overload
+        const defaultTiers = slug === 'caso-dictadura' ? '?tiers=gold,silver' : ''
+        const res = await fetch(`/api/caso/${slug}/graph${defaultTiers}`)
         if (!res.ok) throw new Error('Failed to load graph data')
         const json = await res.json()
         setGraphData(json.data)
@@ -410,7 +412,7 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
 
   if (isInitialLoading) {
     return (
-      <div className="flex h-[calc(100vh-8rem)] items-center justify-center text-zinc-500">
+      <div className="flex h-[calc(100vh-4rem)] items-center justify-center text-zinc-500">
         Loading network graph...
       </div>
     )
@@ -418,14 +420,14 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
 
   if (error) {
     return (
-      <div className="flex h-[calc(100vh-8rem)] items-center justify-center text-red-400">
+      <div className="flex h-[calc(100vh-4rem)] items-center justify-center text-red-400">
         {error}
       </div>
     )
   }
 
   return (
-    <div className="flex h-[calc(100vh-8rem)] flex-col">
+    <div className="flex h-[calc(100vh-4rem)] flex-col">
       {/* Filter controls */}
       <div className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-sm">
         {/* Primary row: Search + Label filters + Tier */}
