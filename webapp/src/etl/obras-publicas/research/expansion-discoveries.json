@@ -1,0 +1,3649 @@
+{
+  "wave": 9,
+  "name": "2-hop neighborhood expansion from bridge nodes",
+  "date": "2026-03-24",
+  "summary": {
+    "bridge_nodes_analyzed": 30,
+    "indirect_political_connections": 246,
+    "unique_politicians_linked": 92,
+    "unique_contractors_with_political_links": 112,
+    "direct_revolving_door": 14,
+    "offshore_links": 57,
+    "unique_offshore_entities": 4,
+    "donor_contractor_links": 8
+  },
+  "key_findings": [
+    {
+      "finding": "Werthein family offshore network",
+      "severity": "high",
+      "detail": "CAJA DE SEGUROS S.A. and Experta Aseguradora (state contractors) linked to Werthein family members (Dario, Daniel, Adrian) who appear as OffshoreOfficers. Dario Werthein confirmed in Pandora Papers as board member of Ducal Investments Limited (BVI). Mother Norma Gold de Werthein is beneficiary of Hinslet Overseas Ltd (BVI, 1997).",
+      "contractors": [
+        "CAJA DE SEGUROS S.A.",
+        "Experta Aseguradora de Riesgos del Trabajo S.A.",
+        "Experta Aseguradora de Riesgos del Trabajo"
+      ],
+      "offshore_entities": [
+        "DARIO WERTHEIN",
+        "NORMA GOLD DE WERTHEIN"
+      ],
+      "source": "Pandora Papers / ICIJ"
+    },
+    {
+      "finding": "Sergio Drucaroff dual role: Subsecretario + Contractor",
+      "severity": "high",
+      "detail": "Sergio Alejandro Drucaroff appears as both a Contractor (CUIT 20280336689) and linked to GovernmentAppointment as Subsecretario, plus CompanyOfficer roles. Was Subsecretario de Gestion Productiva (2016-2018) and Subsecretario de Compre Argentino (2018-2019) at Ministry of Production.",
+      "contractors": [
+        "SERGIO ALEJANDRO DRUCAROFF"
+      ],
+      "source": "argentina.gob.ar / CIPPEC"
+    },
+    {
+      "finding": "Diego Moix incompatibility: Director INADI + state contractor",
+      "severity": "high",
+      "detail": "Diego Javier Moix appears as Contractor and GovernmentAppointment (Director). Was Director at INADI while simultaneously receiving audit contracts from Ministry of Science. The Anti-Corruption Office did not flag this.",
+      "contractors": [
+        "Diego Javier Moix"
+      ],
+      "source": "iProfesional"
+    },
+    {
+      "finding": "SACDE S.A. linked to Pablo Clusellas (Secretario Legal y Tecnico)",
+      "severity": "high",
+      "detail": "SACDE S.A. (contractor CUIT 30568457451) has CompanyOfficer Pablo Clusellas who simultaneously held government appointment as Secretario. Clusellas was Secretary of Legal and Technical Affairs under Macri (2015-2019), childhood friend of the president.",
+      "contractors": [
+        "SACDE S.A."
+      ],
+      "source": "La Nacion / Wikipedia"
+    },
+    {
+      "finding": "Mariano Recalde: Aerolineas + Optar as state contractors",
+      "severity": "medium",
+      "detail": "Aerolineas Argentinas and Optar (its travel agency subsidiary) both appear as state contractors with Mariano Recalde as CompanyOfficer/BoardMember linked to Politician node. Under Recalde, all government travel was mandated to go through Optar from 2013. No financial statements were ever published.",
+      "contractors": [
+        "AEROLÍNEAS ARGENTINAS S.A.",
+        "Optar Operador Mayorista de Servicios Turisticos S. A."
+      ],
+      "source": "La Nacion"
+    },
+    {
+      "finding": "BICE bank: 5 politicians on board while state contractor",
+      "severity": "medium",
+      "detail": "Banco de Inversion y Comercio Exterior (BICE) is a state contractor with board members/officers linked to 5 politicians: Frigerio, Domina, Bossio, De Mendiguren, Fabrissin.",
+      "contractors": [
+        "BANCO DE INVERSION Y COMERCIO EXTERIOR (BICE)"
+      ]
+    },
+    {
+      "finding": "Donor-contractors funding both major parties",
+      "severity": "medium",
+      "detail": "8 contractors also donated to political parties. PROVIDERS SA, Esteban Manuel Rodriguez, ILEANA LETICIA AGUIRRE, Alberto Rios donated to Frente de Todos 2019. TOMAS HNOS Y CIA S.A., ADRIANA ELIZABETH TISIOTTO donated to Juntos por el Cambio 2019. Cross-party contractor-donor pattern.",
+      "contractors": [
+        "PROVIDERS SA",
+        "Esteban Manuel Rodriguez",
+        "TOMAS HNOS Y CIA S.A."
+      ]
+    },
+    {
+      "finding": "Frente de Todos donor linked to offshore officer",
+      "severity": "medium",
+      "detail": "Jose Luis Perez, a Frente de Todos 2019 donor, is CROSS_REFERENCED to JOSE LUIS PEREZ (OffshoreOfficer). Co-donors in the same party (PROVIDERS SA, Esteban Manuel Rodriguez, ILEANA LETICIA AGUIRRE) are all state contractors.",
+      "contractors": [
+        "PROVIDERS SA",
+        "Esteban Manuel Rodriguez",
+        "ILEANA LETICIA AGUIRRE",
+        "Alberto Rios"
+      ],
+      "offshore_entities": [
+        "JOSE LUIS PEREZ"
+      ]
+    },
+    {
+      "finding": "AR-SAT massive revolving door: 20+ government officials as company officers",
+      "severity": "medium",
+      "detail": "EMPRESA ARGENTINA DE SOLUCIONES SATELITALES S.A. (AR-SAT) has the highest concentration of CompanyOfficers who also hold GovernmentAppointments, including Presidente, Subsecretario, Director Nacional, Director Titular, Sindico positions.",
+      "contractors": [
+        "EMPRESA ARGENTINA DE SOLUCIONES SATELITALES S.A. AR-SAT"
+      ]
+    },
+    {
+      "finding": "CONUAR (nuclear fuel contractor) extensive government personnel overlap",
+      "severity": "medium",
+      "detail": "CONUAR S.A. (Combustibles Nucleares Argentinos) shows 15+ officers with simultaneous government appointments spanning Gerente, Subgerente, Jefe de Departamento, Vicepresidente roles.",
+      "contractors": [
+        "CONUAR S.A. (Combustibles Nucleares Argentinos)"
+      ]
+    },
+    {
+      "finding": "Federico Pinedo linked to Tesam Argentina S.A.",
+      "severity": "medium",
+      "detail": "Tesam Argentina S.A. has Federico Pinedo (former President of the Senate, provisional President of Argentina) as CompanyOfficer and BoardMember, linked via MAYBE_SAME_AS to Politician node.",
+      "contractors": [
+        "Tesam Argentina S.A"
+      ]
+    },
+    {
+      "finding": "Rodriguez Giavarini at Peugeot Citroen Argentina",
+      "severity": "low",
+      "detail": "Adalberto Rodriguez Giavarini (former Foreign Affairs Minister) appears as CompanyOfficer/BoardMember of Peugeot Citroen Argentina S.A., a state contractor.",
+      "contractors": [
+        "Peugeot Citroen Argentina S.A."
+      ]
+    },
+    {
+      "finding": "MARKETING Y COMUNICACION POLITICA S.A. linked to Diego Santilli",
+      "severity": "medium",
+      "detail": "State contractor linked to Diego Cesar Santilli (PRO politician, former Buenos Aires Vice Governor) as both BoardMember and CompanyOfficer.",
+      "contractors": [
+        "MARKETING Y COMUNICACION POLITICA S.A."
+      ]
+    }
+  ],
+  "data": {
+    "bridge_nodes": [
+      {
+        "cuit": "55000004102",
+        "name": "COYOTAIR; S.A.",
+        "cross_links": 13,
+        "linked_types": [
+          "Company:PublicCompany"
+        ]
+      },
+      {
+        "cuit": "20264735603",
+        "name": "Luis Alberto Trajtenberg",
+        "cross_links": 11,
+        "linked_types": [
+          "GovernmentAppointment",
+          "AssetDeclaration"
+        ]
+      },
+      {
+        "cuit": "20085191935",
+        "name": "HUGO OSCAR SCOLARI",
+        "cross_links": 8,
+        "linked_types": [
+          "GovernmentAppointment",
+          "AssetDeclaration"
+        ]
+      },
+      {
+        "cuit": "20-08519193-5",
+        "name": "HUGO OSCAR SCOLARI",
+        "cross_links": 8,
+        "linked_types": [
+          "GovernmentAppointment",
+          "AssetDeclaration"
+        ]
+      },
+      {
+        "cuit": "20280336689",
+        "name": "SERGIO ALEJANDRO DRUCAROFF",
+        "cross_links": 7,
+        "linked_types": [
+          "GovernmentAppointment",
+          "CompanyOfficer",
+          "AssetDeclaration"
+        ]
+      },
+      {
+        "cuit": "20203841656",
+        "name": "Diego Javier Moix",
+        "cross_links": 6,
+        "linked_types": [
+          "GovernmentAppointment",
+          "CompanyOfficer",
+          "AssetDeclaration"
+        ]
+      },
+      {
+        "cuit": "20076057754",
+        "name": "Osvaldo Casalánguida",
+        "cross_links": 5,
+        "linked_types": [
+          "CompanyOfficer"
+        ]
+      },
+      {
+        "cuit": "20043967755",
+        "name": "Roman Guillermo Jauregui",
+        "cross_links": 4,
+        "linked_types": [
+          "CompanyOfficer"
+        ]
+      },
+      {
+        "cuit": "20264565414",
+        "name": "Esteban Manuel Rodriguez",
+        "cross_links": 4,
+        "linked_types": [
+          "CompanyOfficer",
+          "Donor"
+        ]
+      },
+      {
+        "cuit": "20326896684",
+        "name": "BRUNO ANTONIO OLIVERA LUCERO",
+        "cross_links": 4,
+        "linked_types": [
+          "AssetDeclaration"
+        ]
+      },
+      {
+        "cuit": "30700464160",
+        "name": "Macmillan Publishers S.A.",
+        "cross_links": 3,
+        "linked_types": [
+          "Company:PublicCompany"
+        ]
+      },
+      {
+        "cuit": "20138905641",
+        "name": "EDUARDO URSINO",
+        "cross_links": 3,
+        "linked_types": [
+          "CompanyOfficer"
+        ]
+      },
+      {
+        "cuit": "30704957137",
+        "name": "GEFCO ARGENTINA SA",
+        "cross_links": 3,
+        "linked_types": [
+          "Company:PublicCompany"
+        ]
+      },
+      {
+        "cuit": "30558468315",
+        "name": "ARROW ARGENTINA SA",
+        "cross_links": 3,
+        "linked_types": [
+          "Company:PublicCompany"
+        ]
+      },
+      {
+        "cuit": "20316623558",
+        "name": "Fernando Peri",
+        "cross_links": 3,
+        "linked_types": [
+          "CompanyOfficer"
+        ]
+      },
+      {
+        "cuit": "30656428216",
+        "name": "One Minetta Media S.A",
+        "cross_links": 3,
+        "linked_types": [
+          "Company:PublicCompany"
+        ]
+      },
+      {
+        "cuit": "20044341299",
+        "name": "Luis Alberto Nicastro",
+        "cross_links": 3,
+        "linked_types": [
+          "CompanyOfficer"
+        ]
+      },
+      {
+        "cuit": "23063727814",
+        "name": "Estela Rosa Herrera",
+        "cross_links": 3,
+        "linked_types": [
+          "CompanyOfficer"
+        ]
+      },
+      {
+        "cuit": "23231235639",
+        "name": "Ramón Santiago Vázquez Blinder",
+        "cross_links": 3,
+        "linked_types": [
+          "CompanyOfficer"
+        ]
+      },
+      {
+        "cuit": "30516375058",
+        "name": "CASTRO Y REGINI S.A.",
+        "cross_links": 3,
+        "linked_types": [
+          "Company:PublicCompany"
+        ]
+      },
+      {
+        "cuit": "20076420565",
+        "name": "Miguel Pio Uriburu",
+        "cross_links": 3,
+        "linked_types": [
+          "CompanyOfficer"
+        ]
+      },
+      {
+        "cuit": "20298663008",
+        "name": "Marcos Brito",
+        "cross_links": 3,
+        "linked_types": [
+          "CompanyOfficer"
+        ]
+      },
+      {
+        "cuit": "20204255114",
+        "name": "horacio damian diaz sieiro",
+        "cross_links": 3,
+        "linked_types": [
+          "CompanyOfficer"
+        ]
+      },
+      {
+        "cuit": "30678775319",
+        "name": "Nextel Communications Argentina SRL.",
+        "cross_links": 3,
+        "linked_types": [
+          "Company:PublicCompany"
+        ]
+      },
+      {
+        "cuit": "20226120883",
+        "name": "JULIO CESAR BALDERRAMA",
+        "cross_links": 3,
+        "linked_types": [
+          "GovernmentAppointment",
+          "CompanyOfficer"
+        ]
+      },
+      {
+        "cuit": "23204104239",
+        "name": "Manuel Artagaveytia",
+        "cross_links": 3,
+        "linked_types": [
+          "CompanyOfficer"
+        ]
+      },
+      {
+        "cuit": "30618705672",
+        "name": "adeco agropecuaria s.a.",
+        "cross_links": 3,
+        "linked_types": [
+          "Company:PublicCompany"
+        ]
+      },
+      {
+        "cuit": "20045286666",
+        "name": "RUBEN DARIO BEATO",
+        "cross_links": 3,
+        "linked_types": [
+          "CompanyOfficer"
+        ]
+      },
+      {
+        "cuit": "27204847547",
+        "name": "CLAUDIA GEORGINA GUALDI",
+        "cross_links": 3,
+        "linked_types": [
+          "CompanyOfficer"
+        ]
+      },
+      {
+        "cuit": "20-07642056-5",
+        "name": "Miguel Pio Uriburu",
+        "cross_links": 3,
+        "linked_types": [
+          "CompanyOfficer"
+        ]
+      }
+    ],
+    "indirect_political_connections": [
+      {
+        "contractor": "ABAMPERE S.A.",
+        "cuit": "30710531885",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "LOPEZ JUAN MANUEL",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LOPEZ, Juan Manuel"
+      },
+      {
+        "contractor": "ABAMPERE S.A.",
+        "cuit": "30710531885",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "JUAN MANUEL, LOPEZ",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LOPEZ, Juan Manuel"
+      },
+      {
+        "contractor": "ADECCO RECURSOS HUMANOS ARGENTINA S.A.",
+        "cuit": "33661814999",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "RODRIGUEZ JOSE",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RODRIGUEZ, José"
+      },
+      {
+        "contractor": "AEROLÍNEAS ARGENTINAS S.A.",
+        "cuit": "30-64140555-4",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Maria Azucena, Ehcosor",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "EHCOSOR, María Azucena"
+      },
+      {
+        "contractor": "AEROLÍNEAS ARGENTINAS S.A.",
+        "cuit": "30-64140555-4",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "MARIANO RECALDE",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RECALDE, Mariano"
+      },
+      {
+        "contractor": "AEROLÍNEAS ARGENTINAS S.A.",
+        "cuit": "30-64140555-4",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Recalde, Mariano",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RECALDE, Mariano"
+      },
+      {
+        "contractor": "AEROLÍNEAS ARGENTINAS S.A.",
+        "cuit": "30-64140555-4",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Recalde, Mariano",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RECALDE, Mariano"
+      },
+      {
+        "contractor": "AEROLÍNEAS ARGENTINAS S.A.",
+        "cuit": "30-64140555-4",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "MARIANO RECALDE",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RECALDE, Mariano"
+      },
+      {
+        "contractor": "AEROLÍNEAS ARGENTINAS S.A.",
+        "cuit": "30-64140555-4",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Maria Azucena, Ehcosor",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "EHCOSOR, María Azucena"
+      },
+      {
+        "contractor": "AEROLÍNEAS ARGENTINAS S.A.",
+        "cuit": "30641405554",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Maria Azucena, Ehcosor",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "EHCOSOR, María Azucena"
+      },
+      {
+        "contractor": "AEROLÍNEAS ARGENTINAS S.A.",
+        "cuit": "30641405554",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "MARIANO RECALDE",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RECALDE, Mariano"
+      },
+      {
+        "contractor": "AEROLÍNEAS ARGENTINAS S.A.",
+        "cuit": "30641405554",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Recalde, Mariano",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RECALDE, Mariano"
+      },
+      {
+        "contractor": "AEROLÍNEAS ARGENTINAS S.A.",
+        "cuit": "30641405554",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Recalde, Mariano",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RECALDE, Mariano"
+      },
+      {
+        "contractor": "AEROLÍNEAS ARGENTINAS S.A.",
+        "cuit": "30641405554",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "MARIANO RECALDE",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RECALDE, Mariano"
+      },
+      {
+        "contractor": "AEROLÍNEAS ARGENTINAS S.A.",
+        "cuit": "30641405554",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Maria Azucena, Ehcosor",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "EHCOSOR, María Azucena"
+      },
+      {
+        "contractor": "ASOCIACION ARGENTINA DE POLO",
+        "cuit": "30527270819",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "LAUMANN, ANDRES ARIEL",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LAUMANN, Andres Ariel"
+      },
+      {
+        "contractor": "ASOCIACION ARGENTINA DE POLO",
+        "cuit": "30527270819",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "LAUMANN, ANDRES ARIEL",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LAUMANN, Andres Ariel"
+      },
+      {
+        "contractor": "AUTOBIZ",
+        "cuit": "30-71193475-4",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Lopez, Juan Manuel",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LOPEZ, Juan Manuel"
+      },
+      {
+        "contractor": "AUTOBIZ",
+        "cuit": "30-71193475-4",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "LOPEZ, JUAN MANUEL",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LOPEZ, Juan Manuel"
+      },
+      {
+        "contractor": "Assekuransa Compañía de Seguros SA",
+        "cuit": "30709541036",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "LYNCH, JUAN CARLOS (HIJO)",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LYNCH, Juan Carlos"
+      },
+      {
+        "contractor": "BANCO DE INVERSION Y COMERCIO EXTERIOR (BICE)",
+        "cuit": "30651129083",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Rogelio, FRIGERIO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FRIGERIO, Rogelio"
+      },
+      {
+        "contractor": "BANCO DE INVERSION Y COMERCIO EXTERIOR (BICE)",
+        "cuit": "30651129083",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "ESTEBAN ALBERTO DOMINA",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DOMINA, Esteban Alberto"
+      },
+      {
+        "contractor": "BANCO DE INVERSION Y COMERCIO EXTERIOR (BICE)",
+        "cuit": "30651129083",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "BOSSIO, DIEGO LUIS",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "BOSSIO, Diego Luis"
+      },
+      {
+        "contractor": "BANCO DE INVERSION Y COMERCIO EXTERIOR (BICE)",
+        "cuit": "30651129083",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "DE MENDIGUREN JOSE IGNACIO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DE MENDIGUREN, José Ignacio"
+      },
+      {
+        "contractor": "BANCO DE INVERSION Y COMERCIO EXTERIOR (BICE)",
+        "cuit": "30651129083",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "FABRISSIN CARLOS ALBERTO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FABRISSIN, Carlos Alberto"
+      },
+      {
+        "contractor": "BANCO DE INVERSION Y COMERCIO EXTERIOR (BICE)",
+        "cuit": "30651129083",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "FABRISSIN CARLOS ALBERTO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FABRISSIN, Carlos Alberto"
+      },
+      {
+        "contractor": "BANCO DE INVERSION Y COMERCIO EXTERIOR (BICE)",
+        "cuit": "30651129083",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "José Ignacio, De Mendiguren",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DE MENDIGUREN, José Ignacio"
+      },
+      {
+        "contractor": "BANCO DE INVERSION Y COMERCIO EXTERIOR (BICE)",
+        "cuit": "30651129083",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Rogelio, FRIGERIO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FRIGERIO, Rogelio"
+      },
+      {
+        "contractor": "BANCO DE INVERSION Y COMERCIO EXTERIOR (BICE)",
+        "cuit": "30651129083",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "ESTEBAN ALBERTO DOMINA",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DOMINA, Esteban Alberto"
+      },
+      {
+        "contractor": "BANCO DE INVERSION Y COMERCIO EXTERIOR (BICE)",
+        "cuit": "30651129083",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "BOSSIO, DIEGO LUIS",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "BOSSIO, Diego Luis"
+      },
+      {
+        "contractor": "BANCO DE LA NACIÓN ARGENTINA",
+        "cuit": "30-500010912-2",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "CASERIO, Carlos Alberto",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "CASERIO, Carlos Alberto"
+      },
+      {
+        "contractor": "BANCO DE LA NACIÓN ARGENTINA",
+        "cuit": "30-500010912-2",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Carlos Mario, Balter",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "BALTER, Carlos Mario"
+      },
+      {
+        "contractor": "BANCO DE LA NACIÓN ARGENTINA",
+        "cuit": "30-500010912-2",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "GALLEGO SILVIA ESTER",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GALLEGO, Silvia Ester"
+      },
+      {
+        "contractor": "BANCO DE LA NACIÓN ARGENTINA",
+        "cuit": "30-500010912-2",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "CASERIO, Carlos Alberto",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "CASERIO, Carlos Alberto"
+      },
+      {
+        "contractor": "BANCO DE LA NACIÓN ARGENTINA",
+        "cuit": "30-500010912-2",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "GALLEGO SILVIA ESTER",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GALLEGO, Silvia Ester"
+      },
+      {
+        "contractor": "BANCO DE LA NACIÓN ARGENTINA",
+        "cuit": "30-500010912-2",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "BALTER, CARLOS MARIO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "BALTER, Carlos Mario"
+      },
+      {
+        "contractor": "BANCO DE LA NACIÓN ARGENTINA",
+        "cuit": "30-50001091-2",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "CASERIO, Carlos Alberto",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "CASERIO, Carlos Alberto"
+      },
+      {
+        "contractor": "BANCO DE LA NACIÓN ARGENTINA",
+        "cuit": "30-50001091-2",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Carlos Mario, Balter",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "BALTER, Carlos Mario"
+      },
+      {
+        "contractor": "BANCO DE LA NACIÓN ARGENTINA",
+        "cuit": "30-50001091-2",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "GALLEGO SILVIA ESTER",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GALLEGO, Silvia Ester"
+      },
+      {
+        "contractor": "BANCO DE LA NACIÓN ARGENTINA",
+        "cuit": "30-50001091-2",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "CASERIO, Carlos Alberto",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "CASERIO, Carlos Alberto"
+      },
+      {
+        "contractor": "BANCO DE LA NACIÓN ARGENTINA",
+        "cuit": "30-50001091-2",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "GALLEGO SILVIA ESTER",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GALLEGO, Silvia Ester"
+      },
+      {
+        "contractor": "BANCO DE LA NACIÓN ARGENTINA",
+        "cuit": "30-50001091-2",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "BALTER, CARLOS MARIO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "BALTER, Carlos Mario"
+      },
+      {
+        "contractor": "BUENA BEAT SRL",
+        "cuit": "30707051953",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "FERREIRA, GASTON LEONARDO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LOUSTEAU, Martin"
+      },
+      {
+        "contractor": "Banco Itaú Argentina S.A.",
+        "cuit": "30580189411",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "JOSE RODRIGUEZ",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RODRIGUEZ, José"
+      },
+      {
+        "contractor": "Banco de la Ciudad de Buenos Aires",
+        "cuit": "30999032083",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "STURZENEGGER FEDERICO ADOLFO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "STURZENEGGER, Federico Adolfo"
+      },
+      {
+        "contractor": "Banco de la Ciudad de Buenos Aires",
+        "cuit": "30999032083",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "STURZENEGGER FEDERICO ADOLFO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "STURZENEGGER, Federico Adolfo"
+      },
+      {
+        "contractor": "Banco de la Ciudad de Buenos Aires",
+        "cuit": "30999032083",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "MAURETTE FERNANDO W",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MAURETTE, Fernando Wenceslao"
+      },
+      {
+        "contractor": "Bipress Srl",
+        "cuit": "30708547634",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Jose Oscar, FIGUEROA",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FIGUEROA, José Oscar"
+      },
+      {
+        "contractor": "Bipress Srl",
+        "cuit": "30708547634",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Jose Oscar, FIGUEROA",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FIGUEROA, José Oscar"
+      },
+      {
+        "contractor": "CAVEGO SA",
+        "cuit": "33-70729225-9",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "D'ALESSANDRO, CARLOS ANTONIO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "D'ALESSANDRO, Carlos"
+      },
+      {
+        "contractor": "CAVEGO SA",
+        "cuit": "33707292259",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "D'ALESSANDRO, CARLOS ANTONIO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "D'ALESSANDRO, Carlos"
+      },
+      {
+        "contractor": "CLEOS SA",
+        "cuit": "30710641214",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "DANIEL OSCAR, GALLO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GALLO, Daniel Oscar"
+      },
+      {
+        "contractor": "CLEOS SA",
+        "cuit": "30710641214",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "GALLO DANIEL OSCAR",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GALLO, Daniel Oscar"
+      },
+      {
+        "contractor": "CLEOS SA",
+        "cuit": "30710641214",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "GALLO DANIEL OSCAR",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GALLO, Daniel Oscar"
+      },
+      {
+        "contractor": "CLUB ATLÉTICO BOCA JUNIORS ASOCIACIÓN CIVIL",
+        "cuit": "30525418835",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "CHRISTIAN ALEJANDRO, GRIBAUDO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GRIBAUDO, Christian Alejandro"
+      },
+      {
+        "contractor": "CLUB ATLÉTICO BOCA JUNIORS ASOCIACIÓN CIVIL",
+        "cuit": "30525418835",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "CHRISTIAN ALEJANDRO, GRIBAUDO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GRIBAUDO, Christian Alejandro"
+      },
+      {
+        "contractor": "CONSTRUCCIONES NOFERCO SRL",
+        "cuit": "30691279312",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "FERNANDEZ CARLOS ALBERTO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FERNANDEZ, Carlos Alberto"
+      },
+      {
+        "contractor": "CONSTRUCCIONES NOFERCO SRL",
+        "cuit": "30691279312",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "FERNANDEZ, CARLOS ALBERTO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FERNANDEZ, Carlos Alberto"
+      },
+      {
+        "contractor": "CONSULTORA DE SEGURIDAD INTEGRAL SA (CONSISA)",
+        "cuit": "30707281711",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "POLO LUIS NICOLAS",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "POLO, Luis Nicolas"
+      },
+      {
+        "contractor": "CONSULTORA DE SEGURIDAD INTEGRAL SA (CONSISA)",
+        "cuit": "30707281711",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "POLO LUIS NICOLAS",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "POLO, Luis Nicolas"
+      },
+      {
+        "contractor": "CORREO OFICIAL DE LA REPÚBLICA ARGENTINA S.A..",
+        "cuit": "30-70857483-6",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "ROSSI CARLOS ALBERTO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "ROSSI, Carlos Alberto"
+      },
+      {
+        "contractor": "CORREO OFICIAL DE LA REPÚBLICA ARGENTINA S.A..",
+        "cuit": "30-70857483-6",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "DI COLA EDUARDO ROMAN",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DI COLA, Eduardo Román"
+      },
+      {
+        "contractor": "CORREO OFICIAL DE LA REPÚBLICA ARGENTINA S.A..",
+        "cuit": "30-70857483-6",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "DI COLA EDUARDO ROMAN",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DI COLA, Eduardo Román"
+      },
+      {
+        "contractor": "CORREO OFICIAL DE LA REPÚBLICA ARGENTINA S.A..",
+        "cuit": "30708574836",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "ROSSI CARLOS ALBERTO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "ROSSI, Carlos Alberto"
+      },
+      {
+        "contractor": "CORREO OFICIAL DE LA REPÚBLICA ARGENTINA S.A..",
+        "cuit": "30708574836",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "DI COLA EDUARDO ROMAN",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DI COLA, Eduardo Román"
+      },
+      {
+        "contractor": "CORREO OFICIAL DE LA REPÚBLICA ARGENTINA S.A..",
+        "cuit": "30708574836",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "DI COLA EDUARDO ROMAN",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DI COLA, Eduardo Román"
+      },
+      {
+        "contractor": "Carlos E. Costa S.A.",
+        "cuit": "30519717170",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Eduardo Raul, COSTA",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "COSTA, Eduardo Raúl"
+      },
+      {
+        "contractor": "Carlos E. Costa S.A.",
+        "cuit": "30519717170",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Eduardo Raul, COSTA",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "COSTA, Eduardo Raúl"
+      },
+      {
+        "contractor": "Cnp Assurances Cia de Seguros S.A",
+        "cuit": "30682408622",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Marco del Pont, Mercedes",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MARCO DEL PONT, Mercedes"
+      },
+      {
+        "contractor": "DAEVA S.A.",
+        "cuit": "30708217812",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "BRIZUELA, ADRIAN HUMBERTO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "BRIZUELA, Adrian"
+      },
+      {
+        "contractor": "EDICIONES IARA SA",
+        "cuit": "30-70807411-6",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "GONZALEZ MARIA LUISA",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GONZALEZ, María Luisa"
+      },
+      {
+        "contractor": "EDICIONES IARA SA",
+        "cuit": "30-70807411-6",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "GONZALEZ MARIA LUISA",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GONZALEZ, María Luisa"
+      },
+      {
+        "contractor": "EDICIONES IARA SA",
+        "cuit": "30708074116",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "GONZALEZ MARIA LUISA",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GONZALEZ, María Luisa"
+      },
+      {
+        "contractor": "EDICIONES IARA SA",
+        "cuit": "30708074116",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "GONZALEZ MARIA LUISA",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GONZALEZ, María Luisa"
+      },
+      {
+        "contractor": "EDITORIAL AMFIN SA",
+        "cuit": "30577801114",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Ramos, Alejandro Ariel",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RAMOS, Alejandro Ariel"
+      },
+      {
+        "contractor": "EDITORIAL AMFIN SA",
+        "cuit": "30577801114",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Ramos, Alejandro Ariel",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RAMOS, Alejandro Ariel"
+      },
+      {
+        "contractor": "EDITORIAL ATLANTIDA S.A.",
+        "cuit": "30707456716",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "GARCIA CARLOS",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GARCIA, Carlos"
+      },
+      {
+        "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+        "cuit": "30707219536",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "CAVALLO FELIPE DOMINGO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "CAVALLO, Domingo Felipe"
+      },
+      {
+        "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+        "cuit": "30707219536",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Esteban  José, Bullrich",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "BULLRICH, Esteban José"
+      },
+      {
+        "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+        "cuit": "30707219536",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Nicolas alfredo, TROTTA",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "TROTTA, Nicolas Alfredo"
+      },
+      {
+        "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+        "cuit": "30707219536",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "GRACIELA MARIA GIANNESTASSIO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GIANNETTASIO, Graciela María"
+      },
+      {
+        "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+        "cuit": "30707219536",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "CAVALLO FELIPE DOMINGO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "CAVALLO, Domingo Felipe"
+      },
+      {
+        "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+        "cuit": "30707219536",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Gilabert, Edgardo",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "PUIGGROS, Adriana Victoria"
+      },
+      {
+        "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+        "cuit": "30707219536",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Bullrich, Esteban José",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "BULLRICH, Esteban José"
+      },
+      {
+        "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+        "cuit": "30707219536",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Hernán  Santiago, Lombardi",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LOMBARDI, Hernan"
+      },
+      {
+        "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+        "cuit": "30707219536",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "ANDRES, DELICH",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DELICH, Andrés Guillermo"
+      },
+      {
+        "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+        "cuit": "30707219536",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Nicolas alfredo, TROTTA",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "TROTTA, Nicolas Alfredo"
+      },
+      {
+        "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELITALES S.A. AR-SAT",
+        "cuit": "30-70967041-3",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Oscar Ariel, MARTINEZ",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MARTINEZ, Oscar Ariel"
+      },
+      {
+        "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELITALES S.A. AR-SAT",
+        "cuit": "30-70967041-3",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "GABRIELLI, Rodolfo Federico",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GABRIELLI, Rodolfo Federíco"
+      },
+      {
+        "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELITALES S.A. AR-SAT",
+        "cuit": "30-70967041-3",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "GABRIELLI, Rodolfo Federico",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GABRIELLI, Rodolfo Federíco"
+      },
+      {
+        "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELITALES S.A. AR-SAT",
+        "cuit": "30-70967041-3",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Oscar Ariel, MARTINEZ",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MARTINEZ, Oscar Ariel"
+      },
+      {
+        "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELITALES S.A. AR-SAT",
+        "cuit": "30709670413",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Oscar Ariel, MARTINEZ",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MARTINEZ, Oscar Ariel"
+      },
+      {
+        "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELITALES S.A. AR-SAT",
+        "cuit": "30709670413",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "GABRIELLI, Rodolfo Federico",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GABRIELLI, Rodolfo Federíco"
+      },
+      {
+        "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELITALES S.A. AR-SAT",
+        "cuit": "30709670413",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "GABRIELLI, Rodolfo Federico",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GABRIELLI, Rodolfo Federíco"
+      },
+      {
+        "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELITALES S.A. AR-SAT",
+        "cuit": "30709670413",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Oscar Ariel, MARTINEZ",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MARTINEZ, Oscar Ariel"
+      },
+      {
+        "contractor": "ERNESTO A. ROSSI Y CÍA S.A.",
+        "cuit": "30537520643",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "MARTINEZ LUIS ALBERTO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MARTINEZ, Luis Alberto"
+      },
+      {
+        "contractor": "Ediba Libros S.A",
+        "cuit": "30709338907",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "ANDRES, DELICH",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DELICH, Andrés Guillermo"
+      },
+      {
+        "contractor": "FILOBIOSIS SA",
+        "cuit": "30-64039837-6",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "CARLOS ALBERTO MARTINEZ",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MARTINEZ, Carlos Alberto"
+      },
+      {
+        "contractor": "FILOBIOSIS SA",
+        "cuit": "30-64039837-6",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "CARLOS ALBERTO, MARTINEZ",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MARTINEZ, Carlos Alberto"
+      },
+      {
+        "contractor": "FILOBIOSIS SA",
+        "cuit": "30640398376",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "CARLOS ALBERTO MARTINEZ",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MARTINEZ, Carlos Alberto"
+      },
+      {
+        "contractor": "FILOBIOSIS SA",
+        "cuit": "30640398376",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "CARLOS ALBERTO, MARTINEZ",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MARTINEZ, Carlos Alberto"
+      },
+      {
+        "contractor": "FUNDACION DE INVESTIGACIONES ECONOMICAS LATINOAMERICANAS - FIEL",
+        "cuit": "30540103301",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "ALCHOURON GUILLERMO E",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "ALCHOURON, Guillermo Eduardo"
+      },
+      {
+        "contractor": "FUNDACION OBSERVATORIO PYME",
+        "cuit": "30709855529",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "de MENDIGUREN, JOSE IGNACIO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DE MENDIGUREN, José Ignacio"
+      },
+      {
+        "contractor": "FUNDACION OBSERVATORIO PYME",
+        "cuit": "30709855529",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "DE MENDIGUREN JOSE IGNACIO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DE MENDIGUREN, José Ignacio"
+      },
+      {
+        "contractor": "FUNDACIONCENTRO DE SETUDIOS EN POLITICAS PUBLICAS",
+        "cuit": "30709001376",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "ANDRES, DELICH",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DELICH, Andrés Guillermo"
+      },
+      {
+        "contractor": "FUNDACIÓN CENTRO DE IMPLEMENTACIÒN DE POLÍTICAS PÚBLICAS PARA LA EQUIDAD Y EL CRECIMIENTO (CIPPEC)",
+        "cuit": "33707241379",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Jesus, RODRIGUEZ",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RODRIGUEZ, Jesus"
+      },
+      {
+        "contractor": "FUNDACIÓN CENTRO DE IMPLEMENTACIÒN DE POLÍTICAS PÚBLICAS PARA LA EQUIDAD Y EL CRECIMIENTO (CIPPEC)",
+        "cuit": "33707241379",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Gerardo Alberto, Martinez",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MARTINEZ, Gerardo Alberto"
+      },
+      {
+        "contractor": "FUNDACIÓN CENTRO DE IMPLEMENTACIÒN DE POLÍTICAS PÚBLICAS PARA LA EQUIDAD Y EL CRECIMIENTO (CIPPEC)",
+        "cuit": "33707241379",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Jesus, RODRIGUEZ",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RODRIGUEZ, Jesus"
+      },
+      {
+        "contractor": "FUNDACIÓN CENTRO DE IMPLEMENTACIÒN DE POLÍTICAS PÚBLICAS PARA LA EQUIDAD Y EL CRECIMIENTO (CIPPEC)",
+        "cuit": "33707241379",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Gerardo Alberto, Martinez",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MARTINEZ, Gerardo Alberto"
+      },
+      {
+        "contractor": "FUNDACIÓN ISALUD",
+        "cuit": "30655030073",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "GRACIELA MARIA GIANNESTASSIO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GIANNETTASIO, Graciela María"
+      },
+      {
+        "contractor": "Foro de Ciencia y Tecnología para la Producción",
+        "cuit": "30-67906835-7",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Juan Carlos, Diaz Roig",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DIAZ ROIG, Juan Carlos"
+      },
+      {
+        "contractor": "Foro de Ciencia y Tecnología para la Producción",
+        "cuit": "30-67906835-7",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Juan Carlos, Diaz Roig",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DIAZ ROIG, Juan Carlos"
+      },
+      {
+        "contractor": "Foro de Ciencia y Tecnología para la Producción",
+        "cuit": "30679068357",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Juan Carlos, Diaz Roig",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DIAZ ROIG, Juan Carlos"
+      },
+      {
+        "contractor": "Foro de Ciencia y Tecnología para la Producción",
+        "cuit": "30679068357",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Juan Carlos, Diaz Roig",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DIAZ ROIG, Juan Carlos"
+      },
+      {
+        "contractor": "Fundacion Nuevas Generaciones Politicas",
+        "cuit": "30711541868",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "JULIAN MARTIN OBIGLIO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "OBIGLIO, Julián Martín"
+      },
+      {
+        "contractor": "Fundación Evolución",
+        "cuit": "30677314954",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Mario Néstor, Oporto",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "OPORTO, Mario Néstor"
+      },
+      {
+        "contractor": "Fundación Evolución",
+        "cuit": "30677314954",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Mario Néstor, Oporto",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "OPORTO, Mario Néstor"
+      },
+      {
+        "contractor": "GAPRIC SRL",
+        "cuit": "30715185985",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "DANIEL OSCAR, GALLO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GALLO, Daniel Oscar"
+      },
+      {
+        "contractor": "GAPRIC SRL",
+        "cuit": "30715185985",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "DANIEL OSCAR, GALLO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GALLO, Daniel Oscar"
+      },
+      {
+        "contractor": "GE HEALTHCARE ARGENTINA S.A.",
+        "cuit": "33653235939",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "FERNANDEZ EDUARDO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FERNANDEZ, Eduardo"
+      },
+      {
+        "contractor": "GLENSOL S.A.",
+        "cuit": "30-69215801-2",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "FERNANDEZ CARLOS ALBERTO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FERNANDEZ, Carlos Alberto"
+      },
+      {
+        "contractor": "Geosistemas SRL",
+        "cuit": "30-61712720-9",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Fernando Javier, SANCHEZ EIJO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SÁNCHEZ, Fernando"
+      },
+      {
+        "contractor": "Geosistemas SRL",
+        "cuit": "30-61712720-9",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "SANCHEZ FERNANDO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SÁNCHEZ, Fernando"
+      },
+      {
+        "contractor": "Geosistemas SRL",
+        "cuit": "30617127209",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Fernando Javier, SANCHEZ EIJO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SÁNCHEZ, Fernando"
+      },
+      {
+        "contractor": "Geosistemas SRL",
+        "cuit": "30617127209",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "SANCHEZ FERNANDO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SÁNCHEZ, Fernando"
+      },
+      {
+        "contractor": "Helport S.A.",
+        "cuit": "30535629486",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Alejandro, Garcia",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GARCIA, Alejandro"
+      },
+      {
+        "contractor": "I.A.T.A.S.A. Ingeniería y Asistencia Técnica Argentina Sociedad Anónima de Servicios Profesionales",
+        "cuit": "30543791500",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "PABLO GABRIEL TONELLI",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "TONELLI, Pablo Gabriel"
+      },
+      {
+        "contractor": "I.A.T.A.S.A. Ingeniería y Asistencia Técnica Argentina Sociedad Anónima de Servicios Profesionales",
+        "cuit": "30543791500",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "PABLO GABRIEL TONELLI",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "TONELLI, Pablo Gabriel"
+      },
+      {
+        "contractor": "IICES INSTITUTO DE INTERCAMBIO CULTURAL ENSAMBLE AL SUR",
+        "cuit": "30708862335",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "MARIA BEATRIZ LENZ",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LENZ, María Beatriz"
+      },
+      {
+        "contractor": "IICES INSTITUTO DE INTERCAMBIO CULTURAL ENSAMBLE AL SUR",
+        "cuit": "30708862335",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "MARIA BEATRIZ LENZ",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LENZ, María Beatriz"
+      },
+      {
+        "contractor": "INSTITUTO TECNOLOGICO DE BS AS",
+        "cuit": "30541689474",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "MARTINEZ ALVARO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MARTINEZ, Alvaro"
+      },
+      {
+        "contractor": "INSTITUTO TECNOLOGICO DE BS AS",
+        "cuit": "30541689474",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "MARTINEZ ALVARO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MARTINEZ, Alvaro"
+      },
+      {
+        "contractor": "INTERNATIONAL HEALTH SERVICES ARGENTINA S.A",
+        "cuit": "30-61029860-1",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "GARCIA CARLOS",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GARCIA, Carlos"
+      },
+      {
+        "contractor": "INTERNATIONAL HEALTH SERVICES ARGENTINA S.A",
+        "cuit": "30610298601",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "GARCIA CARLOS",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GARCIA, Carlos"
+      },
+      {
+        "contractor": "INVERSIONES PARA EL AGRO SA",
+        "cuit": "30709912158",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "GIORGETTI JORGE RAUL",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GIORGETTI, Jorge Raúl"
+      },
+      {
+        "contractor": "INVERSIONES PARA EL AGRO SA",
+        "cuit": "30709912158",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "GIORGETTI JORGE RAUL",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GIORGETTI, Jorge Raúl"
+      },
+      {
+        "contractor": "Indra SI S.A.",
+        "cuit": "30-69313376-5",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "OLIVERA ENRIQUE JOSE",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "OLIVERA, Enrique José"
+      },
+      {
+        "contractor": "Indra SI S.A.",
+        "cuit": "30-69313376-5",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "OLIVERA ENRIQUE JOSE",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "OLIVERA, Enrique José"
+      },
+      {
+        "contractor": "Indra SI S.A.",
+        "cuit": "30693133765",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "OLIVERA ENRIQUE JOSE",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "OLIVERA, Enrique José"
+      },
+      {
+        "contractor": "Indra SI S.A.",
+        "cuit": "30693133765",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "OLIVERA ENRIQUE JOSE",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "OLIVERA, Enrique José"
+      },
+      {
+        "contractor": "Instituto Biologico Argentino S.A.I.C.",
+        "cuit": "30501145315",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "LOPEZ, JUAN CARLOS",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LOPEZ, Juan Carlos"
+      },
+      {
+        "contractor": "LATINCONSULT S.A.",
+        "cuit": "30714639265",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "LAVAGNA MARCO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LAVAGNA, Marco"
+      },
+      {
+        "contractor": "LATINCONSULT S.A.",
+        "cuit": "30714639265",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "LAVAGNA MARCO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LAVAGNA, Marco"
+      },
+      {
+        "contractor": "La Rural SA",
+        "cuit": "30697583048",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Francisco, De Narvaez",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DE NARVAEZ, Francisco"
+      },
+      {
+        "contractor": "La Rural SA",
+        "cuit": "30697583048",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "NARVAEZ STEUER FRANCISCO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "DE NARVAEZ, Francisco"
+      },
+      {
+        "contractor": "Laboratorios Bago S.A",
+        "cuit": "30-51602484-0",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "SEBASTIAN BAGO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GUTIERREZ, Carlos"
+      },
+      {
+        "contractor": "Laboratorios Bago S.A",
+        "cuit": "30516024840",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "SEBASTIAN BAGO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GUTIERREZ, Carlos"
+      },
+      {
+        "contractor": "Lakaut S.A",
+        "cuit": "30710964277",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "CANTINI GUILLERMO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "CANTINI, Guillermo Marcelo"
+      },
+      {
+        "contractor": "Licenciasonline SA",
+        "cuit": "30710362218",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "LOSADA, CAROLINA BEATRIZ",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LOSADA, Carolina"
+      },
+      {
+        "contractor": "MACROVISION CONSULTING SA",
+        "cuit": "30707936319",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "LUCIANO ANDRES LASPINA",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LASPINA, Luciano Andres"
+      },
+      {
+        "contractor": "MACROVISION CONSULTING SA",
+        "cuit": "30707936319",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "LUCIANO ANDRES LASPINA",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LASPINA, Luciano Andres"
+      },
+      {
+        "contractor": "MARKETING Y COMUNICACION POLITICA S.A.",
+        "cuit": "30707010793",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "DIEGO CESAR SANTILLI",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SANTILLI, Diego Cesar"
+      },
+      {
+        "contractor": "MARKETING Y COMUNICACION POLITICA S.A.",
+        "cuit": "30707010793",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "DIEGO CESAR SANTILLI",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SANTILLI, Diego Cesar"
+      },
+      {
+        "contractor": "META4 AUSTRAL S.A.",
+        "cuit": "30-67970070-3",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "SANTIN EDUARDO AUGUSTO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SANTIN, Eduardo"
+      },
+      {
+        "contractor": "META4 AUSTRAL S.A.",
+        "cuit": "30679700703",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "SANTIN EDUARDO AUGUSTO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SANTIN, Eduardo"
+      },
+      {
+        "contractor": "Macor Insumos Hospitalarios S.R.L.",
+        "cuit": "33-66036317-9",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "FERNANDEZ JORGE",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FERNANDEZ, Jorge"
+      },
+      {
+        "contractor": "Macor Insumos Hospitalarios S.R.L.",
+        "cuit": "33660363179",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "FERNANDEZ JORGE",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FERNANDEZ, Jorge"
+      },
+      {
+        "contractor": "NACION SEGUROS S.A.",
+        "cuit": "30-67856116-5",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Alejandra Alcira, CABALLERO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "CABALLERO, Alejandra Alcira"
+      },
+      {
+        "contractor": "NACION SEGUROS S.A.",
+        "cuit": "30-67856116-5",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "GONZALEZ RAFAEL ALFREDO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GONZALEZ, Rafael Alfredo"
+      },
+      {
+        "contractor": "NACION SEGUROS S.A.",
+        "cuit": "30-67856116-5",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "RAFAEL ALFREDO, GONZALEZ",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GONZALEZ, Rafael Alfredo"
+      },
+      {
+        "contractor": "NACION SEGUROS S.A.",
+        "cuit": "30-67856116-5",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Alejandra Alcira, CABALLERO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "CABALLERO, Alejandra Alcira"
+      },
+      {
+        "contractor": "NACION SEGUROS S.A.",
+        "cuit": "30678561165",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Alejandra Alcira, CABALLERO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "CABALLERO, Alejandra Alcira"
+      },
+      {
+        "contractor": "NACION SEGUROS S.A.",
+        "cuit": "30678561165",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "GONZALEZ RAFAEL ALFREDO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GONZALEZ, Rafael Alfredo"
+      },
+      {
+        "contractor": "NACION SEGUROS S.A.",
+        "cuit": "30678561165",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "RAFAEL ALFREDO, GONZALEZ",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GONZALEZ, Rafael Alfredo"
+      },
+      {
+        "contractor": "NACION SEGUROS S.A.",
+        "cuit": "30678561165",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Alejandra Alcira, CABALLERO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "CABALLERO, Alejandra Alcira"
+      },
+      {
+        "contractor": "Nación Leasing S.A.",
+        "cuit": "30708016299",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "GALLEGO SILVIA ESTER",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GALLEGO, Silvia Ester"
+      },
+      {
+        "contractor": "Nación Leasing S.A.",
+        "cuit": "30708016299",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "FERNANDO, SANCHEZ",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SÁNCHEZ, Fernando"
+      },
+      {
+        "contractor": "Nación Leasing S.A.",
+        "cuit": "30708016299",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "MARIA CRISTINA, REGAZZOLI",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "REGAZZOLI, María Cristina"
+      },
+      {
+        "contractor": "Nación Leasing S.A.",
+        "cuit": "30708016299",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "FERNANDO, SANCHEZ",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SÁNCHEZ, Fernando"
+      },
+      {
+        "contractor": "Nación Leasing S.A.",
+        "cuit": "30708016299",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "GALLEGO SILVIA ESTER",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GALLEGO, Silvia Ester"
+      },
+      {
+        "contractor": "Nación Leasing S.A.",
+        "cuit": "30708016299",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "MARIA CRISTINA, REGAZZOLI",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "REGAZZOLI, María Cristina"
+      },
+      {
+        "contractor": "Nalco Argentina SRL",
+        "cuit": "30587375296",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "MARTINEZ, CARLOS ALBERTO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MARTINEZ, Carlos Alberto"
+      },
+      {
+        "contractor": "Optar Operador Mayorista de Servicios Turisticos S. A.",
+        "cuit": "30-66210960-2",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Recalde, Mariano",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RECALDE, Mariano"
+      },
+      {
+        "contractor": "Optar Operador Mayorista de Servicios Turisticos S. A.",
+        "cuit": "30-66210960-2",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "MARIANO RECALDE",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RECALDE, Mariano"
+      },
+      {
+        "contractor": "Optar Operador Mayorista de Servicios Turisticos S. A.",
+        "cuit": "30-66210960-2",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Recalde, Mariano",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RECALDE, Mariano"
+      },
+      {
+        "contractor": "Optar Operador Mayorista de Servicios Turisticos S. A.",
+        "cuit": "30-66210960-2",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "MARIANO RECALDE",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RECALDE, Mariano"
+      },
+      {
+        "contractor": "Optar Operador Mayorista de Servicios Turisticos S. A.",
+        "cuit": "30662109602",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Recalde, Mariano",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RECALDE, Mariano"
+      },
+      {
+        "contractor": "Optar Operador Mayorista de Servicios Turisticos S. A.",
+        "cuit": "30662109602",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "MARIANO RECALDE",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RECALDE, Mariano"
+      },
+      {
+        "contractor": "Optar Operador Mayorista de Servicios Turisticos S. A.",
+        "cuit": "30662109602",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Recalde, Mariano",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RECALDE, Mariano"
+      },
+      {
+        "contractor": "Optar Operador Mayorista de Servicios Turisticos S. A.",
+        "cuit": "30662109602",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "MARIANO RECALDE",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RECALDE, Mariano"
+      },
+      {
+        "contractor": "PARADIGM GEOPHYSICAL S.A.",
+        "cuit": "30700437457",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Carlos Alberto, Fernandez",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FERNANDEZ, Carlos Alberto"
+      },
+      {
+        "contractor": "PARANA SA DE SEGUROS",
+        "cuit": "30500057102",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "MAJDALANI, SILVIA CRISTINA",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MAJDALANI, Silvia Cristina"
+      },
+      {
+        "contractor": "PARANA SA DE SEGUROS",
+        "cuit": "30500057102",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "MAJDALANI, SILVIA CRISTINA",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MAJDALANI, Silvia Cristina"
+      },
+      {
+        "contractor": "PRISMA MEDIOS DE PAGO S.A.",
+        "cuit": "30598910045",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "FRANCOS GUILLERMO ALBERTO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FRANCOS, Guillermo Alberto"
+      },
+      {
+        "contractor": "PRISMA MEDIOS DE PAGO S.A.",
+        "cuit": "30598910045",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "FRANCOS GUILLERMO ALBERTO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FRANCOS, Guillermo Alberto"
+      },
+      {
+        "contractor": "PRISMA MEDIOS DE PAGO S.A.",
+        "cuit": "30598910045",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "FRIGERI RODOLFO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FRIGERI, Rodolfo Anibal"
+      },
+      {
+        "contractor": "PROVINCIA LEASING S.A.",
+        "cuit": "30688310330",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "RUSSO, Laura",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RUSSO, Laura"
+      },
+      {
+        "contractor": "PROVINCIA LEASING S.A.",
+        "cuit": "30688310330",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "RUSSO, Laura",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RUSSO, Laura"
+      },
+      {
+        "contractor": "PROVINCIA SEGUROS DE VIDA S.A.",
+        "cuit": "30678832576",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "LARRABURU DAMASO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LARRABURU, Damaso"
+      },
+      {
+        "contractor": "PROVINCIA SEGUROS DE VIDA S.A.",
+        "cuit": "30678832576",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "LARRABURU DAMASO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LARRABURU, Damaso"
+      },
+      {
+        "contractor": "Peugeot Citroen Argentina S.A.",
+        "cuit": "30-50474453-8",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "RODRIGUEZ GIAVARINI, ADALBERTO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RODRIGUEZ GIAVARINI, Adalberto"
+      },
+      {
+        "contractor": "Peugeot Citroen Argentina S.A.",
+        "cuit": "30-50474453-8",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "RODRIGUEZ GIAVARINI, ADALBERTO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RODRIGUEZ GIAVARINI, Adalberto"
+      },
+      {
+        "contractor": "Peugeot Citroen Argentina S.A.",
+        "cuit": "30-50474453-8",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Adalberto, Rodriguez Giavarini",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RODRIGUEZ GIAVARINI, Adalberto"
+      },
+      {
+        "contractor": "Peugeot Citroen Argentina S.A.",
+        "cuit": "30504744538",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "RODRIGUEZ GIAVARINI, ADALBERTO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RODRIGUEZ GIAVARINI, Adalberto"
+      },
+      {
+        "contractor": "Peugeot Citroen Argentina S.A.",
+        "cuit": "30504744538",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "RODRIGUEZ GIAVARINI, ADALBERTO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RODRIGUEZ GIAVARINI, Adalberto"
+      },
+      {
+        "contractor": "Peugeot Citroen Argentina S.A.",
+        "cuit": "30504744538",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Adalberto, Rodriguez Giavarini",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RODRIGUEZ GIAVARINI, Adalberto"
+      },
+      {
+        "contractor": "Provincia ART S.A.",
+        "cuit": "30-68825409-0",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "BROWN, CARLOS",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "BROWN, Carlos Ramón"
+      },
+      {
+        "contractor": "Provincia ART S.A.",
+        "cuit": "30-68825409-0",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "RIVARA, RAUL",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RIVARA, Raúl Alberto"
+      },
+      {
+        "contractor": "Provincia ART S.A.",
+        "cuit": "30688254090",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "BROWN, CARLOS",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "BROWN, Carlos Ramón"
+      },
+      {
+        "contractor": "Provincia ART S.A.",
+        "cuit": "30688254090",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "RIVARA, RAUL",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "RIVARA, Raúl Alberto"
+      },
+      {
+        "contractor": "Provincia Seguros",
+        "cuit": "30-52750816-5",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Ruben Dario, Sciutto",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SCIUTTO, Rubén Darío"
+      },
+      {
+        "contractor": "Provincia Seguros",
+        "cuit": "30-52750816-5",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "FRIGERI RODOLFO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FRIGERI, Rodolfo Anibal"
+      },
+      {
+        "contractor": "Provincia Seguros",
+        "cuit": "30527508165",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Ruben Dario, Sciutto",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SCIUTTO, Rubén Darío"
+      },
+      {
+        "contractor": "Provincia Seguros",
+        "cuit": "30527508165",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "FRIGERI RODOLFO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FRIGERI, Rodolfo Anibal"
+      },
+      {
+        "contractor": "RH PRINTER SRL",
+        "cuit": "30711796092",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "MARTINEZ JULIO CESAR",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "MARTÍNEZ, Julio César"
+      },
+      {
+        "contractor": "RICAVIAL S.A.",
+        "cuit": "30680314337",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "LOPEZ MARIA FLORENCIA",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LÓPEZ, María Florencia"
+      },
+      {
+        "contractor": "RICAVIAL S.A.",
+        "cuit": "30680314337",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "LOPEZ MARIA FLORENCIA",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LÓPEZ, María Florencia"
+      },
+      {
+        "contractor": "SILOS ARENEROS BUENOS AIRES S.A.C.",
+        "cuit": "30506875877",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "Santoro, Leandro Cesar",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SANTORO, Leandro"
+      },
+      {
+        "contractor": "SOCIEDAD Y TERRITORIO S.R.L",
+        "cuit": "30714963860",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "FABIO JOSE, QUETGLAS",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "QUETGLAS, Fabio Jose"
+      },
+      {
+        "contractor": "SOCIEDAD Y TERRITORIO S.R.L",
+        "cuit": "30714963860",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "FABIO JOSE, QUETGLAS",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "QUETGLAS, Fabio Jose"
+      },
+      {
+        "contractor": "SOLENER S.A.",
+        "cuit": "30707041389",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "LILIANA BEATRIZ PARADA",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "PARADA, Liliana Beatriz"
+      },
+      {
+        "contractor": "SOLENER S.A.",
+        "cuit": "30707041389",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "LILIANA BEATRIZ PARADA",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "PARADA, Liliana Beatriz"
+      },
+      {
+        "contractor": "SPORTS LIGHT SRL",
+        "cuit": "30714367125",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "FERNANDEZ JORGE",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FERNANDEZ, Jorge"
+      },
+      {
+        "contractor": "STEEL CORE S.A",
+        "cuit": "33709759839",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "ROMERO, Juan Carlos",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "ROMERO, Juan Carlos"
+      },
+      {
+        "contractor": "Sociedad del Estado Casa de Moneda",
+        "cuit": "30-54667697-4",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "GABRIELLI, Rodolfo Federico",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GABRIELLI, Rodolfo Federíco"
+      },
+      {
+        "contractor": "Sociedad del Estado Casa de Moneda",
+        "cuit": "30-54667697-4",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "GABRIELLI, Rodolfo Federico",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GABRIELLI, Rodolfo Federíco"
+      },
+      {
+        "contractor": "Sociedad del Estado Casa de Moneda",
+        "cuit": "30546676974",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "GABRIELLI, Rodolfo Federico",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GABRIELLI, Rodolfo Federíco"
+      },
+      {
+        "contractor": "Sociedad del Estado Casa de Moneda",
+        "cuit": "30546676974",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "GABRIELLI, Rodolfo Federico",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "GABRIELLI, Rodolfo Federíco"
+      },
+      {
+        "contractor": "Supermercados Mayoristas Yaguar S.A.",
+        "cuit": "30629642672",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "Jose Alberto, Perez",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "PEREZ, Alberto José"
+      },
+      {
+        "contractor": "Supermercados Mayoristas Yaguar S.A.",
+        "cuit": "30629642672",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "JOSE ALBERTO, PEREZ",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "PEREZ, Alberto José"
+      },
+      {
+        "contractor": "TALLERES NAVALES DARSENA NORTE S A C I Y N TANDANOR SACI Y N",
+        "cuit": "30506885597",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "FERNANDO, SANCHEZ",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SÁNCHEZ, Fernando"
+      },
+      {
+        "contractor": "TALLERES NAVALES DARSENA NORTE S A C I Y N TANDANOR SACI Y N",
+        "cuit": "30506885597",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "FADEL MARIO NALLIB",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FADEL, Mario Nallib"
+      },
+      {
+        "contractor": "TALLERES NAVALES DARSENA NORTE S A C I Y N TANDANOR SACI Y N",
+        "cuit": "30506885597",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "FADEL MARIO NALLIB",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FADEL, Mario Nallib"
+      },
+      {
+        "contractor": "TALLERES NAVALES DARSENA NORTE S A C I Y N TANDANOR SACI Y N",
+        "cuit": "30506885597",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "FERNANDO, SANCHEZ",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SÁNCHEZ, Fernando"
+      },
+      {
+        "contractor": "TELAM SOCIEDAD DEL ESTADO",
+        "cuit": "30-70823302-8",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "ARAGON SANTIAGO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "ARAGON, Santiago"
+      },
+      {
+        "contractor": "TELAM SOCIEDAD DEL ESTADO",
+        "cuit": "30-70823302-8",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "ARAGON SANTIAGO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "ARAGON, Santiago"
+      },
+      {
+        "contractor": "TELAM SOCIEDAD DEL ESTADO",
+        "cuit": "30708233028",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "ARAGON SANTIAGO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "ARAGON, Santiago"
+      },
+      {
+        "contractor": "TELAM SOCIEDAD DEL ESTADO",
+        "cuit": "30708233028",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "ARAGON SANTIAGO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "ARAGON, Santiago"
+      },
+      {
+        "contractor": "TOUR OPERADORA TURISMO SRL",
+        "cuit": "30710902824",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "TINNIRELLO CARLOS ALBERTO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "TINNIRELLO, Carlos Alberto"
+      },
+      {
+        "contractor": "TOUR OPERADORA TURISMO SRL",
+        "cuit": "30710902824",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "TINNIRELLO CARLOS ALBERTO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "TINNIRELLO, Carlos Alberto"
+      },
+      {
+        "contractor": "Talleres Navales Darsena Norte SA",
+        "cuit": "30-50688559-7",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "FERNANDO, SANCHEZ",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SÁNCHEZ, Fernando"
+      },
+      {
+        "contractor": "Talleres Navales Darsena Norte SA",
+        "cuit": "30-50688559-7",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "FADEL MARIO NALLIB",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FADEL, Mario Nallib"
+      },
+      {
+        "contractor": "Talleres Navales Darsena Norte SA",
+        "cuit": "30-50688559-7",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "FADEL MARIO NALLIB",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FADEL, Mario Nallib"
+      },
+      {
+        "contractor": "Talleres Navales Darsena Norte SA",
+        "cuit": "30-50688559-7",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "FERNANDO, SANCHEZ",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "SÁNCHEZ, Fernando"
+      },
+      {
+        "contractor": "Tesam Argentina S.A",
+        "cuit": "30-68732541-5",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "PINEDO FEDERICO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "PINEDO, Federico"
+      },
+      {
+        "contractor": "Tesam Argentina S.A",
+        "cuit": "30-68732541-5",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "FEDERICO, PINEDO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "PINEDO, Federico"
+      },
+      {
+        "contractor": "Tesam Argentina S.A",
+        "cuit": "30687325415",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "PINEDO FEDERICO",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "PINEDO, Federico"
+      },
+      {
+        "contractor": "Tesam Argentina S.A",
+        "cuit": "30687325415",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "FEDERICO, PINEDO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "PINEDO, Federico"
+      },
+      {
+        "contractor": "UNIVERSIDAD NACIONAL DE LA MATANZA",
+        "cuit": "30-64622868-5",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "PIERRI, ALBERTO R.",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "PIERRI, Alberto Reinaldo"
+      },
+      {
+        "contractor": "UNIVERSIDAD NACIONAL DE LA MATANZA",
+        "cuit": "30-64622868-5",
+        "linked_type": "Company",
+        "rel1": "BOARD_MEMBER_OF",
+        "intermediary": "PIERRI, ALBERTO REINALDO",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "PIERRI, Alberto Reinaldo"
+      },
+      {
+        "contractor": "URBANO EXPRESS ARGENTINA S.A.",
+        "cuit": "30708286431",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "ROBERTO VAZQUEZ",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "VAZQUEZ, Roberto"
+      },
+      {
+        "contractor": "VANVOR Y OTTONE S.R.L.",
+        "cuit": "30-50261367-3",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "LOPEZ, JUAN CARLOS",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LOPEZ, Juan Carlos"
+      },
+      {
+        "contractor": "VANVOR Y OTTONE S.R.L.",
+        "cuit": "30502613673",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "LOPEZ, JUAN CARLOS",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "LOPEZ, Juan Carlos"
+      },
+      {
+        "contractor": "VENG S.A.",
+        "cuit": "30696417322",
+        "linked_type": "Company",
+        "rel1": "OFFICER_OF_COMPANY",
+        "intermediary": "JORGE FERNANDEZ",
+        "mid_type": "CompanyOfficer",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "FERNANDEZ, Jorge"
+      },
+      {
+        "contractor": "luis adalberto brandoni",
+        "cuit": "20043172787",
+        "linked_type": "CompanyOfficer",
+        "rel1": "SAME_PERSON",
+        "intermediary": "Adalberto Luis, Brandoni",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "BRANDONI, Adalberto Luis"
+      },
+      {
+        "contractor": "luis adalberto brandoni",
+        "cuit": "20043172787",
+        "linked_type": "CompanyOfficer",
+        "rel1": "SAME_PERSON",
+        "intermediary": "BRANDONI ADALBERTO LUIS",
+        "mid_type": "BoardMember",
+        "rel2": "MAYBE_SAME_AS",
+        "politician": "BRANDONI, Adalberto Luis"
+      }
+    ],
+    "revolving_door": [
+      {
+        "contractor": "Diego Javier Moix",
+        "cuit": "20203841656",
+        "cargo": "Director",
+        "organismo": null,
+        "start_date": null,
+        "end_date": null
+      },
+      {
+        "contractor": "HUGO OSCAR SCOLARI",
+        "cuit": "20085191935",
+        "cargo": "Jefe de DivisiÃ³n",
+        "organismo": null,
+        "start_date": null,
+        "end_date": null
+      },
+      {
+        "contractor": "HUGO OSCAR SCOLARI",
+        "cuit": "20-08519193-5",
+        "cargo": "Jefe de DivisiÃ³n",
+        "organismo": null,
+        "start_date": null,
+        "end_date": null
+      },
+      {
+        "contractor": "JULIO CESAR BALDERRAMA",
+        "cuit": "20226120883",
+        "cargo": "Auditor Adjunto",
+        "organismo": null,
+        "start_date": null,
+        "end_date": null
+      },
+      {
+        "contractor": "Luis Alberto Trajtenberg",
+        "cuit": "20264735603",
+        "cargo": "Director Nacional",
+        "organismo": null,
+        "start_date": null,
+        "end_date": null
+      },
+      {
+        "contractor": "MAURICIO GASTON LOPEZ",
+        "cuit": "20222259828",
+        "cargo": "Jefe de DivisiÃ³n",
+        "organismo": null,
+        "start_date": null,
+        "end_date": null
+      },
+      {
+        "contractor": "Maria Paula RIVERA",
+        "cuit": "27283667591",
+        "cargo": "Vicepresidente del Directorio",
+        "organismo": null,
+        "start_date": null,
+        "end_date": null
+      },
+      {
+        "contractor": "María Antonella Borgna",
+        "cuit": "27365776925",
+        "cargo": "Director",
+        "organismo": null,
+        "start_date": null,
+        "end_date": null
+      },
+      {
+        "contractor": "María Negroni",
+        "cuit": "27066995793",
+        "cargo": "Vocal PEN",
+        "organismo": null,
+        "start_date": null,
+        "end_date": null
+      },
+      {
+        "contractor": "Miguel Francisco Bóo",
+        "cuit": "20248297590",
+        "cargo": "Subprocurador",
+        "organismo": null,
+        "start_date": null,
+        "end_date": null
+      },
+      {
+        "contractor": "Proveedor Prueba SIPRO",
+        "cuit": "20333449588",
+        "cargo": "Director Nacional",
+        "organismo": null,
+        "start_date": null,
+        "end_date": null
+      },
+      {
+        "contractor": "RUBEN DANIEL MARCOLIN",
+        "cuit": "20131278218",
+        "cargo": "Jefe de Ãrea",
+        "organismo": null,
+        "start_date": null,
+        "end_date": null
+      },
+      {
+        "contractor": "SERGIO ALEJANDRO DRUCAROFF",
+        "cuit": "20280336689",
+        "cargo": "Subsecretario",
+        "organismo": null,
+        "start_date": null,
+        "end_date": null
+      },
+      {
+        "contractor": "Sebastián Gabriel Ludueña",
+        "cuit": "20221100272",
+        "cargo": "Director",
+        "organismo": null,
+        "start_date": null,
+        "end_date": null
+      }
+    ],
+    "offshore_links": [
+      {
+        "contractor": "Alberto Rios",
+        "cuit": "20286810684",
+        "hop1": "(136) FRENTE DE TODOS 2019",
+        "hop1_type": "PoliticalPartyFinance",
+        "hop2": "Jose Luis Perez",
+        "hop2_type": "Donor",
+        "offshore_name": "JOSE LUIS PEREZ",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN ADRIAN",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN ADRIAN",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN ADRIAN",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN ADRIAN",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN DANIEL",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN DANIEL",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN DANIEL",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN DANIEL",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "CAJA DE SEGUROS S.A.",
+        "hop1_type": "Contractor",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "CAJA DE SEGUROS S.A.",
+        "hop1_type": "Contractor",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN DANIEL",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN DANIEL",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN DANIEL",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN DANIEL",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN ADRIAN",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN ADRIAN",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN ADRIAN",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN ADRIAN",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN LEO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN LEO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN LEO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN LEO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "CAJA DE SEGUROS S.A.",
+        "hop1_type": "Contractor",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "CAJA DE SEGUROS S.A.",
+        "hop1_type": "Contractor",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN DANIEL",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN DANIEL",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN DANIEL",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN DANIEL",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN ADRIAN",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN ADRIAN",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN ADRIAN",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN ADRIAN",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN ADRIAN",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN ADRIAN",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN ADRIAN",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN ADRIAN",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN DANIEL",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN DANIEL",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN DANIEL",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN DANIEL",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN LEO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN LEO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30-66320562-1",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN LEO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "hop1": "WERTHEIN DARIO",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN LEO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "Esteban Manuel Rodriguez",
+        "cuit": "20264565414",
+        "hop1": "(136) FRENTE DE TODOS 2019",
+        "hop1_type": "PoliticalPartyFinance",
+        "hop2": "Jose Luis Perez",
+        "hop2_type": "Donor",
+        "offshore_name": "JOSE LUIS PEREZ",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "Experta Aseguradora de Riesgos del Trabajo",
+        "cuit": "30686267055",
+        "hop1": "WERTHEIN DANIEL",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "Experta Aseguradora de Riesgos del Trabajo",
+        "cuit": "30686267055",
+        "hop1": "WERTHEIN DANIEL",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "Experta Aseguradora de Riesgos del Trabajo",
+        "cuit": "30686267055",
+        "hop1": "WERTHEIN DANIEL",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "Experta Aseguradora de Riesgos del Trabajo",
+        "cuit": "30686267055",
+        "hop1": "WERTHEIN DANIEL",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "Experta Aseguradora de Riesgos del Trabajo S.A.",
+        "cuit": "30687156168",
+        "hop1": "WERTHEIN DANIEL",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "Experta Aseguradora de Riesgos del Trabajo S.A.",
+        "cuit": "30687156168",
+        "hop1": "WERTHEIN DANIEL",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "DARIO WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "Experta Aseguradora de Riesgos del Trabajo S.A.",
+        "cuit": "30687156168",
+        "hop1": "WERTHEIN DANIEL",
+        "hop1_type": "BoardMember",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "Experta Aseguradora de Riesgos del Trabajo S.A.",
+        "cuit": "30687156168",
+        "hop1": "WERTHEIN DANIEL",
+        "hop1_type": "CompanyOfficer",
+        "hop2": "WERTHEIN DARIO",
+        "hop2_type": "Person",
+        "offshore_name": "NORMA GOLD DE WERTHEIN",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "ILEANA LETICIA AGUIRRE",
+        "cuit": "27242970182",
+        "hop1": "(136) FRENTE DE TODOS 2019",
+        "hop1_type": "PoliticalPartyFinance",
+        "hop2": "Jose Luis Perez",
+        "hop2_type": "Donor",
+        "offshore_name": "JOSE LUIS PEREZ",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "PROVIDERS SA",
+        "cuit": "30714140252",
+        "hop1": "(136) FRENTE DE TODOS 2019",
+        "hop1_type": "PoliticalPartyFinance",
+        "hop2": "Jose Luis Perez",
+        "hop2_type": "Donor",
+        "offshore_name": "JOSE LUIS PEREZ",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      },
+      {
+        "contractor": "TOMAS HNOS Y CIA S.A.",
+        "cuit": "30537721274",
+        "hop1": "(502) JUNTOS POR EL CAMBIO 2019",
+        "hop1_type": "PoliticalPartyFinance",
+        "hop2": "Magdalena Vigil",
+        "hop2_type": "Donor",
+        "offshore_name": "MAGDALENA VIGIL",
+        "offshore_type": "OffshoreOfficer",
+        "jurisdiction": null
+      }
+    ],
+    "donor_contractor_links": [
+      {
+        "contractor": "ADRIANA ELIZABETH TISIOTTO",
+        "cuit": "27221904252",
+        "donor_name": "Adriana Elizabeth Tisiotto",
+        "party": "(502) JUNTOS POR EL CAMBIO 2019"
+      },
+      {
+        "contractor": "Alberto Rios",
+        "cuit": "20286810684",
+        "donor_name": "Diego Alberto Rios",
+        "party": "(136) FRENTE DE TODOS 2019"
+      },
+      {
+        "contractor": "DANIEL OSVALDO SARTORIO",
+        "cuit": "20122226167",
+        "donor_name": "Daniel Osvaldo Sartorio",
+        "party": "(50) PARTIDO SOCIALISTA"
+      },
+      {
+        "contractor": "Esteban Manuel Rodriguez",
+        "cuit": "20264565414",
+        "donor_name": "Esteban Manuel Rodriguez",
+        "party": "(136) FRENTE DE TODOS 2019"
+      },
+      {
+        "contractor": "ILEANA LETICIA AGUIRRE",
+        "cuit": "27242970182",
+        "donor_name": "Ileana Leticia Aguirre",
+        "party": "(136) FRENTE DE TODOS 2019"
+      },
+      {
+        "contractor": "Matías Emiliano Brito",
+        "cuit": "20348147790",
+        "donor_name": "Matias Emiliano Brito",
+        "party": "(13) MOVIMIENTO AL SOCIALISMO"
+      },
+      {
+        "contractor": "PROVIDERS SA",
+        "cuit": "30714140252",
+        "donor_name": "Providers Providers S.A.",
+        "party": "(136) FRENTE DE TODOS 2019"
+      },
+      {
+        "contractor": "TOMAS HNOS Y CIA S.A.",
+        "cuit": "30537721274",
+        "donor_name": "Tomas Hnos. y Cia S.A. Tomas Hnos. y Cia S.A",
+        "party": "(502) JUNTOS POR EL CAMBIO 2019"
+      }
+    ]
+  }
+}
