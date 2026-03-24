@@ -1,0 +1,15 @@
+{"ts":"2026-03-24T05:06:26.936039527+00:00","iteration":0,"hat":"loop","topic":"task.start","triggered":"planner","payload":"complete all tasks"}
+{"payload":"task-m10fix-001 closed: iterate stage factory fix committed (bb45612)","topic":"task.done","ts":"2026-03-24T05:08:32.567497968+00:00"}
+{"payload":"task-m10fix-002 closed: 5 LLM tool handlers implemented in shared.ts (e3b7a77)","topic":"task.done","ts":"2026-03-24T05:14:15.001321699+00:00"}
+{"payload":"task-m10fix-003 closed: HAS_PROPOSAL relationship created in createProposal (5fe3738)","topic":"task.done","ts":"2026-03-24T05:16:10.264841687+00:00"}
+{"payload":"task-m10fix-004 closed: full dedup wired into ingest stage (04f3fe0)","topic":"task.done","ts":"2026-03-24T05:20:03.753411472+00:00"}
+{"payload":"task-m10fix-005 closed: sanitize dynamic labels in applyProposal with whitelist (9640f20)","topic":"task.done","ts":"2026-03-24T05:22:53.622835560+00:00"}
+{"payload":"task-m10fix-006 closed: support bootstrap pipeline discovery by caso_slug (e07b454)","topic":"task.done","ts":"2026-03-24T05:25:37.642959292+00:00"}
+{"payload":"task-m10fix-007 closed: fix AuditLog.tsx response parse (0d9f7bc)","topic":"task.done","ts":"2026-03-24T05:27:22.690053261+00:00"}
+{"payload":"task-m10fix-008 closed: add motor/engine tab to InvestigationNav (41e9783)","topic":"task.done","ts":"2026-03-24T05:29:03.287911652+00:00"}
+{"payload":"task-m10fix-009 closed: add motor/page.tsx for static case routes (92e39f0)","topic":"task.done","ts":"2026-03-24T05:30:45.638031869+00:00"}
+{"payload":"task-m10fix-014 closed: fix TypeScript errors in scripts/ (1eaa9e7)","topic":"task.done","ts":"2026-03-24T05:33:25.860122675+00:00"}
+{"payload":"task-m10fix-010 closed: LLM cost budgeting with token accumulation and budget ceiling (7eb443c)","topic":"task.done","ts":"2026-03-24T05:37:00.295258627+00:00"}
+{"payload":"task-m10fix-011 closed: graph algorithms already implemented. task-m10fix-012 closed: engine metrics with in-memory counters and /engine/metrics endpoint (d4df3cf)","topic":"task.done","ts":"2026-03-24T05:42:27.866982058+00:00"}
+{"payload":"task-m10fix-013 closed: engine logger wired into pipeline.ts and all 6 stage runners (47672a1). All M10 fix tasks (001-014) complete.","topic":"task.done","ts":"2026-03-24T05:47:10.647139933+00:00"}
+{"ts":"2026-03-24T05:47:13.992514264+00:00","iteration":13,"hat":"loop","topic":"loop.terminate","payload":"## Reason\ncompleted\n\n## Status\nAll tasks completed successfully.\n\n## Summary\n- Iterations: 13\n- Duration: 40m 47s\n- Exit code: 0"}

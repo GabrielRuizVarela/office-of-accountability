@@ -514,3 +514,17 @@ Typecheck already confirmed clean during Step 3 build. All 4 plan steps complete
 ### Next: Phase 7 — E2E Testing
 - End-to-end test of the compliance pipeline: seed → evaluate → attest → re-evaluate
 - Requires Neo4j running, uses real API routes
+
+## 2026-03-24 Iteration 7: task-m10fix-007 (AuditLog response parse)
+
+**Fixed:** `AuditLog.tsx` line 93 typed the API response as `{ data: AuditEntry[] }` but the actual audit API returns `{ data: { entries: AuditEntry[] } }`. The component received an object instead of an array, so `setEntries` got the wrong shape and the audit log always rendered empty.
+
+**Fix:** Changed type cast to `{ data: { entries: AuditEntry[] } }` and access to `json.data.entries`.
+
+**Committed:** `0d9f7bc`
+
+**Remaining:** 7 tasks (008-014) still open.
+
+**Next priorities (P1):**
+- task-m10fix-008: Add motor tab to InvestigationNav
+- task-m10fix-009: Fix motor page for static case routes
