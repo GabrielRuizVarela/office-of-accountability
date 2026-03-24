@@ -1,0 +1,276 @@
+{
+  "wave": 22,
+  "title": "Deep Dive: Offshore Connections from Obras Publicas Contractors",
+  "date": "2026-03-24",
+  "methodology": "Graph traversal from obras-publicas Contractor nodes through SAME_ENTITY, OFFICER_OF_COMPANY, MAYBE_SAME_AS, FAMILY_OF, and OFFICER_OF relationships to OffshoreEntity nodes. Web research cross-referenced with ICIJ Pandora Papers database and Argentine press coverage.",
+  "summary": {
+    "total_offshore_entities_reachable": 6,
+    "confirmed_contractor_linked": 3,
+    "unique_jurisdictions": ["BVI", "NEV", "unknown"],
+    "primary_network": "Werthein family (Grupo Werthein)",
+    "secondary_network": "Frente de Todos 2019 donor co-occurrence (Jose Luis Perez)",
+    "data_source": "Pandora Papers via Alcogal (Aleman, Cordero, Galindo & Lee)"
+  },
+  "offshore_entities": [
+    {
+      "name": "CANROLD OVERSEAS LIMITED",
+      "jurisdiction": "BVI (inferred from Pandora Papers)",
+      "jurisdiction_code": "",
+      "status": "Inactive",
+      "incorporation_date": "April 1998",
+      "icij_id": "240080468",
+      "source_investigation": "Pandora Papers - Alemán, Cordero, Galindo & Lee (Alcogal)",
+      "officers": [
+        {
+          "name": "DARIO WERTHEIN",
+          "role": "Beneficial owner / Intermediary",
+          "icij_id": "240101089",
+          "countries": ["Argentina", "Uruguay"],
+          "registered_address": "C/O MERRILL LYNCH URUGUAY ZONA FRANCA MONTEVIDEO RUTA 8KM 17.500 MONTEVIDEO URUGUAY"
+        }
+      ],
+      "additional_officers_from_press": [
+        "Leo Werthein",
+        "Cynthia Werthein",
+        "Alberto Martin Iribarne",
+        "Norma Gold de Werthein"
+      ],
+      "shareholder": "Whitepine SA",
+      "stated_purpose": "Financial investments",
+      "family_statement": "Created for business opportunities abroad that ultimately did not materialize. Neither had any movement.",
+      "contractor_chain": {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "path": "Contractor:CAJA DE SEGUROS S.A. -> Company:CAJA DE SEGUROS -> CompanyOfficer:WERTHEIN DARIO -> Person:WERTHEIN LEO -> OffshoreOfficer:DARIO WERTHEIN -> OffshoreEntity:CANROLD OVERSEAS LIMITED",
+        "hop_count": 5,
+        "bridge_persons": ["WERTHEIN DARIO", "WERTHEIN ADRIAN", "WERTHEIN DANIEL"]
+      }
+    },
+    {
+      "name": "HINSLET OVERSEAS LTD.",
+      "jurisdiction": "British Virgin Islands",
+      "jurisdiction_code": "BVI",
+      "status": "Active",
+      "incorporation_date": "11-NOV-1997",
+      "company_type": "Business Corporation",
+      "icij_id": "240024342",
+      "source_investigation": "Pandora Papers - Alemán, Cordero, Galindo & Lee (Alcogal)",
+      "officers": [
+        {
+          "name": "NORMA GOLD DE WERTHEIN",
+          "role": "Beneficial owner",
+          "icij_id": "240044916",
+          "countries": ["Argentina"],
+          "relationship_to_family": "Mother of Dario, Cynthia, and Judith Werthein"
+        }
+      ],
+      "agents_power_of_attorney": ["Dario Werthein", "Judith Werthein", "Cynthia Werthein"],
+      "funds_origin": "Family inheritance",
+      "stated_purpose": "Financial investments",
+      "contractor_chain": {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "path": "Contractor:CAJA DE SEGUROS S.A. -> Company:CAJA DE SEGUROS -> CompanyOfficer:WERTHEIN DARIO -> Person:WERTHEIN LEO -> OffshoreOfficer:NORMA GOLD DE WERTHEIN -> OffshoreEntity:HINSLET OVERSEAS LTD.",
+        "hop_count": 5,
+        "bridge_persons": ["WERTHEIN DARIO", "WERTHEIN ADRIAN", "WERTHEIN DANIEL"]
+      }
+    },
+    {
+      "name": "CONSINE DEVELOPMENT LLC",
+      "jurisdiction": "Nevada, USA",
+      "jurisdiction_code": "NEV",
+      "status": "Dissolved",
+      "incorporation_date": "08-APR-2009",
+      "icij_id": null,
+      "source_investigation": null,
+      "officers": [
+        {
+          "name": "DANIEL DARIO BERENGUER",
+          "role": "Officer",
+          "relationship_to_werthein": "Board member and officer of GREGORIO NUMO Y NOEL WERTHEIN S.A.A.G.C.E I., CACHAY, LOS W, and other Werthein family companies"
+        }
+      ],
+      "contractor_chain": {
+        "contractor": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "path": "Contractor:CAJA DE SEGUROS S.A. -> Company:CAJA DE SEGUROS -> BoardMember:WERTHEIN GERARDO -> Company:GREGORIO NUMO Y NOEL WERTHEIN S.A.A.G.C.E I. -> BoardMember:DANIEL DARIO BERENGUER -> OffshoreOfficer:DANIEL DARIO BERENGUER -> OffshoreEntity:CONSINE DEVELOPMENT LLC",
+        "hop_count": 6,
+        "bridge_persons": ["WERTHEIN GERARDO", "DANIEL DARIO BERENGUER"]
+      },
+      "note": "Berenguer is a close associate of the Werthein family, serving on boards of 11+ Werthein-linked companies. CONSINE DEVELOPMENT was a Nevada LLC, dissolved."
+    },
+    {
+      "name": "BURCOVE FINANCE S.A",
+      "jurisdiction": "unknown",
+      "jurisdiction_code": "",
+      "status": "Inactive",
+      "incorporation_date": "",
+      "icij_id": null,
+      "source_investigation": null,
+      "officers": [
+        {
+          "name": "JOSE LUIS PEREZ",
+          "role": "Officer",
+          "cuit": "20258210507"
+        }
+      ],
+      "contractor_chain": {
+        "contractor": "Alberto Rios (CUIT: 20286810684) / Esteban Manuel Rodriguez (CUIT: 20264565414)",
+        "path": "Contractor -> Donor -> PoliticalPartyFinance:(136) FRENTE DE TODOS 2019 -> Donor:Jose Luis Perez -> OffshoreOfficer:JOSE LUIS PEREZ -> OffshoreEntity:BURCOVE FINANCE S.A",
+        "hop_count": 5,
+        "bridge_persons": ["Jose Luis Perez"],
+        "connection_type": "co-donor to Frente de Todos 2019"
+      },
+      "note": "Weak link - connection runs through shared political party donation (Frente de Todos 2019), not through corporate overlap. Jose Luis Perez is a common name; may be coincidental ICIJ match."
+    }
+  ],
+  "known_but_not_in_graph": [
+    {
+      "name": "DUCAL INVESTMENTS LIMITED",
+      "jurisdiction": "BVI",
+      "incorporation_date": "12-MAY-1998",
+      "managed_by": "Alcogal (Panama)",
+      "officers": ["Dario Werthein", "Jacqueline Parisier de Werthein", "Marcelo Wegbrait"],
+      "beneficial_owner": "Dario Werthein (as of Dec 2010)",
+      "funds_origin": "Inheritance of father Leo Werthein",
+      "stated_purpose": "Financial investments",
+      "source": "Pandora Papers press coverage (elDiarioAR)"
+    },
+    {
+      "name": "CHAI 18 LIMITED",
+      "jurisdiction": "BVI",
+      "beneficial_owner": "Isaias Werthein (deceased father)",
+      "stated_purpose": "Real estate investments",
+      "asset": "Property in Fisher Island, Florida (described as richest neighborhood in the US)",
+      "current_status": "Family claims not to know what became of it",
+      "source": "Pandora Papers press coverage (elDiarioAR)"
+    }
+  ],
+  "werthein_family_network": {
+    "family_fortune_rank": "7th richest family in Argentina (US$1.9 billion)",
+    "key_companies_as_contractors": [
+      {
+        "name": "CAJA DE SEGUROS S.A.",
+        "cuit": "30663205621",
+        "sector": "Insurance"
+      },
+      {
+        "name": "Experta Aseguradora de Riesgos del Trabajo",
+        "cuit": "30686267055",
+        "sector": "Workers compensation insurance"
+      },
+      {
+        "name": "Experta Aseguradora de Riesgos del Trabajo S.A.",
+        "cuit": "30687156168",
+        "sector": "Workers compensation insurance"
+      }
+    ],
+    "bridge_officers_to_offshore": [
+      {
+        "name": "WERTHEIN DARIO",
+        "role": "CompanyOfficer of CAJA DE SEGUROS",
+        "offshore_link": "DARIO WERTHEIN -> CANROLD OVERSEAS LIMITED (beneficial owner + intermediary)"
+      },
+      {
+        "name": "WERTHEIN DANIEL",
+        "role": "CompanyOfficer of CAJA DE SEGUROS and EXPERTA ASEGURADORA DE RIESGOS DEL TRABAJO",
+        "offshore_link": "Via family relationship to DARIO WERTHEIN and NORMA GOLD DE WERTHEIN"
+      },
+      {
+        "name": "WERTHEIN ADRIAN",
+        "role": "CompanyOfficer of CAJA DE SEGUROS",
+        "offshore_link": "Via family relationship to DARIO WERTHEIN and NORMA GOLD DE WERTHEIN"
+      }
+    ],
+    "family_members_in_graph": [
+      "Adrian Werthein", "Ana Lia Werthein", "Anabella Werthein", "Andrea Werthein",
+      "Andres Werthein", "Barbara Ariana Werthein", "Carolina Werthein", "Cynthia Werthein",
+      "Daniel Werthein", "Dario Werthein", "Gabriel Werthein", "Gerardo Werthein",
+      "Gregorio Werthein", "Isaias Werthein", "Johanna Sol Werthein", "Julio Werthein",
+      "Leo Werthein", "Lucas Werthein", "Noel Werthein", "Numo Ivan Werthein",
+      "Sara Werthein", "Abel Werthein", "Norma Gold de Werthein"
+    ],
+    "total_companies_controlled": "100+ Argentine companies across insurance, agriculture, telecommunications, real estate, and finance",
+    "notable_companies": [
+      "CAJA DE SEGUROS / CAJA DE AHORRO Y SEGURO",
+      "EXPERTA ASEGURADORA DE RIESGOS DEL TRABAJO",
+      "LA ESTRELLA S.A. COMPANIA DE SEGUROS DE RETIRO",
+      "SOFORA TELECOMUNICACIONES",
+      "TELECOM PERSONAL",
+      "GREGORIO NUMO Y NOEL WERTHEIN S.A.A.G.C.E I.",
+      "WERTHEIN INVESTMENT MANAGEMENT GROUP",
+      "BOLSA DE COMERCIO DE BUENOS AIRES"
+    ]
+  },
+  "analysis": {
+    "strength_of_connection": {
+      "canrold_overseas": "STRONG - Direct officer overlap (WERTHEIN DARIO is both CompanyOfficer of Caja de Seguros contractor and beneficial owner/intermediary of Canrold Overseas). Pandora Papers confirmed. 5 hops.",
+      "hinslet_overseas": "STRONG - Via family matriarch (NORMA GOLD DE WERTHEIN) through father LEO WERTHEIN. BVI entity still Active. Pandora Papers confirmed. 5 hops.",
+      "consine_development": "MODERATE - Via Werthein associate DANIEL DARIO BERENGUER who sits on boards of 11+ Werthein companies. Nevada LLC, now dissolved. 6 hops.",
+      "burcove_finance": "WEAK - Connection only through shared Frente de Todos 2019 political donation. Common-name risk. Not directly corporate."
+    },
+    "pandora_papers_context": "The Werthein family was among 9 of the 10 richest Argentine families found in the Pandora Papers. Four BVI entities were identified, all managed through Alcogal (Panama). The family stated the entities were for inheritance management and financial investments that 'never materialized.' AFIP (Argentine tax authority) reportedly notified 1,500 Argentines mentioned in the Pandora Papers.",
+    "obras_publicas_relevance": "Caja de Seguros S.A. and Experta ART are insurance companies that appear as obras-publicas contractors (likely providing insurance/bonding for public works projects). The Werthein family officers who control these companies simultaneously controlled offshore BVI entities via the same family patriarch (Leo Werthein). The offshore vehicles predate many of the public works contracts (1997-1998 incorporation dates).",
+    "key_risk_indicators": [
+      "Same family officers controlling both public works contractor AND offshore BVI entities",
+      "Merrill Lynch Uruguay free-trade zone address suggests offshore banking infrastructure",
+      "Whitepine SA as nominee shareholder for Canrold suggests layered ownership",
+      "Hinslet Overseas still Active despite 1997 incorporation",
+      "Berenguer (Werthein associate) had own Nevada LLC (Consine Development) - pattern of associates using offshore structures"
+    ]
+  },
+  "graph_statistics": {
+    "total_offshore_entities_in_graph": 2337,
+    "jurisdictions_breakdown": {
+      "BVI": 1556,
+      "unknown": 316,
+      "PMA": 109,
+      "BM": 73,
+      "MLT": 72,
+      "SEY": 32,
+      "BAH": 24,
+      "KY": 21,
+      "ANG": 20,
+      "BLZ": 20,
+      "PAN": 12,
+      "USA": 12,
+      "NEV": 11,
+      "other": 59
+    }
+  },
+  "sources": [
+    {
+      "type": "database",
+      "name": "ICIJ Offshore Leaks Database",
+      "url": "https://offshoreleaks.icij.org/nodes/240101089",
+      "accessed": "2026-03-24"
+    },
+    {
+      "type": "press",
+      "name": "elDiarioAR - Pandora Papers: 9 of 10 richest Argentine families",
+      "url": "https://www.eldiarioar.com/politica/pandora-papers/nueve-diez-familias-ricas-argentina-figuran-pandora-papers-sociedades-fideicomisos-offshore_1_8425464.html",
+      "date": "2021-10-24"
+    },
+    {
+      "type": "press",
+      "name": "Bloomberg Linea - Pandora Papers Argentina",
+      "url": "https://www.bloomberglinea.com/2021/10/25/galperin-bulgheroni-rocca-perez-companc-roemmers-y-eurnekian-involucrados-en-los-pandora-papers/",
+      "date": "2021-10-25"
+    },
+    {
+      "type": "press",
+      "name": "elDiarioAR - AFIP notified 1,500 Argentines from Pandora Papers",
+      "url": "https://www.eldiarioar.com/politica/pandora-papers/afip-intimo-1-500-argentinos-mencionados-offshores-pandora-papers_1_9147524.html"
+    },
+    {
+      "type": "press",
+      "name": "La Nacion - Caja de Seguros acquisition history",
+      "url": "https://www.lanacion.com.ar/economia/la-caja-paso-a-manos-de-un-gigante-italiano-nid122004/"
+    },
+    {
+      "type": "database",
+      "name": "Neo4j graph database (local)",
+      "accessed": "2026-03-24"
+    }
+  ]
+}
