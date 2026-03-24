@@ -61,14 +61,22 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
   const LABEL_CONFIG = LABEL_CONFIGS[slug] ?? LABEL_CONFIGS.default
   const graphRef = useRef<ForceGraphHandle>(null)
 
+  // For dictadura: start with only structural labels ON, high-volume labels OFF
+  const DICTADURA_DEFAULT_ON = new Set([
+    'DictaduraCCD', 'DictaduraUnidadMilitar', 'DictaduraOrganizacion',
+    'DictaduraCausa', 'DictaduraEvento', 'DictaduraOperacion',
+  ])
+
   // Graph data & UI state
   const [graphData, setGraphData] = useState<GraphData>({ nodes: [], links: [] })
   const [isInitialLoading, setIsInitialLoading] = useState(true)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null)
-  const [visibleLabels, setVisibleLabels] = useState<Set<string> | null>(null)
-  const [tierFilter, setTierFilter] = useState<string>('all')
+  const [visibleLabels, setVisibleLabels] = useState<Set<string> | null>(
+    slug === 'caso-dictadura' ? DICTADURA_DEFAULT_ON : null,
+  )
+  const [tierFilter, setTierFilter] = useState<string>(slug === 'caso-dictadura' ? 'verified' : 'all')
   const [hiddenCategories, setHiddenCategories] = useState<Set<string>>(new Set())
   const [pinnedNodeIds, setPinnedNodeIds] = useState<Set<string>>(new Set())
 
@@ -97,9 +105,14 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
   useEffect(() => {
     async function fetchGraph() {
       try {
-        // Default to verified (gold+silver) for large graphs to prevent browser overload
-        const defaultTiers = slug === 'caso-dictadura' ? '?tiers=gold,silver' : ''
-        const res = await fetch(`/api/caso/${slug}/graph${defaultTiers}`)
+        // For dictadura: load only structural labels + gold/silver to keep graph manageable
+        const params = new URLSearchParams()
+        if (slug === 'caso-dictadura') {
+          params.set('tiers', 'gold,silver')
+          params.set('labels', 'DictaduraCCD,DictaduraUnidadMilitar,DictaduraOrganizacion,DictaduraCausa,DictaduraEvento,DictaduraOperacion')
+        }
+        const qs = params.toString() ? `?${params.toString()}` : ''
+        const res = await fetch(`/api/caso/${slug}/graph${qs}`)
         if (!res.ok) throw new Error('Failed to load graph data')
         const json = await res.json()
         setGraphData(json.data)
@@ -389,19 +402,43 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
 
   const closeContextMenu = useCallback(() => setContextMenu(null), [])
 
-  const toggleLabel = (label: string) => {
+  const toggleLabel = async (label: string) => {
+    let newVisible: Set<string> | null = null
+
     setVisibleLabels((prev) => {
       if (!prev) {
         const allLabels = new Set(LABEL_CONFIG.map((l) => l.label))
         allLabels.delete(label)
+        newVisible = allLabels
         return allLabels
       }
       const next = new Set(prev)
       if (next.has(label)) next.delete(label)
       else next.add(label)
-      if (next.size === LABEL_CONFIG.length) return null
+      if (next.size === LABEL_CONFIG.length) { newVisible = null; return null }
+      newVisible = next
       return next
     })
+
+    // For dictadura: when activating a label, fetch its nodes from server and merge
+    if (slug === 'caso-dictadura' && newVisible?.has(label)) {
+      const labelsInGraph = new Set(graphData.nodes.map((n) => n.label))
+      if (!labelsInGraph.has(label)) {
+        setIsLoading(true)
+        try {
+          const params = new URLSearchParams({ tiers: 'gold,silver', labels: label })
+          const res = await fetch(`/api/caso/${slug}/graph?${params.toString()}`)
+          if (res.ok) {
+            const json = await res.json()
+            if (json.data) {
+              setGraphData((prev) => mergeGraphData(prev, json.data))
+            }
+          }
+        } finally {
+          setIsLoading(false)
+        }
+      }
+    }
   }
 
   const hasData = filteredData.nodes.length > 0
