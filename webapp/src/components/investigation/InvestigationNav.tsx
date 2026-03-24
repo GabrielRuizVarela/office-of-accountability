@@ -60,6 +60,7 @@ const CASE_TABS: Readonly<Record<string, readonly NavTab[]>> = {
     { href: '/investigacion', label: { en: 'Investigation', es: 'Investigacion' } },
     { href: '/cronologia', label: { en: 'Timeline', es: 'Cronologia' } },
     { href: '/actores', label: { en: 'Actors', es: 'Actores' } },
+    { href: '/conexiones', label: { en: 'Connections', es: 'Conexiones' } },
   ],
 }
 
