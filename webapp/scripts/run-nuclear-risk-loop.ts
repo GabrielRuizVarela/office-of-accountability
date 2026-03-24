@@ -15,6 +15,16 @@
 import 'dotenv/config'
 
 import { getDriver } from '../src/lib/neo4j/client'
+import neo4j from 'neo4j-driver-lite'
+import {
+  classifySignals,
+  applyClassifications,
+  detectPatterns,
+  generateBriefing,
+  saveBriefing,
+  type SignalForClassification,
+} from '../src/etl/nuclear-risk/shared/llm-analysis'
+import { isLlmAvailable as checkLlm } from '../src/etl/nuclear-risk/shared/llm-client'
 
 // ---------------------------------------------------------------------------
 // Phase runner with timeout
@@ -196,19 +206,6 @@ async function runIngestion(): Promise<SourceResult[]> {
 }
 
 // ---------------------------------------------------------------------------
-// Phase 3: LLM health check
-// ---------------------------------------------------------------------------
-
-async function checkLlmAvailability(): Promise<boolean> {
-  try {
-    const res = await fetch('http://localhost:8080/health', { signal: AbortSignal.timeout(5000) })
-    return res.ok
-  } catch {
-    return false
-  }
-}
-
-// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -271,16 +268,62 @@ async function main(): Promise<void> {
   })
 
   // ── Phase 3: LLM Analysis ─────────────────────────────────────────
-  await runPhase('3 — LLM Analysis', async () => {
-    const available = await checkLlmAvailability()
+  await runPhase('3 — LLM Analysis (Qwen 3.5)', async () => {
+    const available = await checkLlm()
     if (!available) {
       console.log('  LLM analysis — skipped (llama.cpp not running)')
-      console.log('  Start with: /home/vg/dev/llama.cpp/build/bin/llama-server \\')
-      console.log('    -m /home/vg/models/Qwen3.5-9B-Q5_K_M.gguf --port 8080 --n-gpu-layers 99 --ctx-size 8192')
-    } else {
-      console.log('  LLM analysis — not yet implemented')
+      return
     }
-  })
+
+    // Step 1: Get unclassified signals from Neo4j
+    const session = driver.session({ defaultAccessMode: 'READ' })
+    let unclassified: SignalForClassification[] = []
+    try {
+      const result = await session.run(
+        `MATCH (s:NuclearSignal)
+         WHERE s.severity IS NULL OR s.escalation_level IS NULL
+         RETURN s.id AS id, s.title_en AS title_en, s.summary_en AS summary_en,
+                s.source_module AS source_module, s.tier AS tier
+         ORDER BY s.date DESC
+         LIMIT $limit`,
+        { limit: neo4j.int(50) },
+      )
+      unclassified = result.records.map(r => ({
+        id: r.get('id') as string,
+        title_en: r.get('title_en') as string,
+        summary_en: r.get('summary_en') as string,
+        source_module: r.get('source_module') as string ?? 'unknown',
+        tier: r.get('tier') as string ?? 'bronze',
+      }))
+    } finally {
+      await session.close()
+    }
+
+    if (unclassified.length === 0) {
+      console.log('  No unclassified signals — skipping classification')
+    } else {
+      // Task 1: Classify signals
+      console.log(`  Task 1: Classifying ${unclassified.length} signals...`)
+      const classifications = await classifySignals(unclassified)
+      const updated = await applyClassifications(classifications)
+      console.log(`  Classified ${updated} signals`)
+
+      // Task 2: Pattern detection
+      console.log('  Task 2: Detecting escalation patterns...')
+      const patterns = await detectPatterns()
+      for (const p of patterns) {
+        const flags = [...p.convergence_flags, ...p.anomaly_flags]
+        console.log(`    ${p.theater}: trend=${p.trend}${flags.length > 0 ? `, flags: ${flags.length}` : ''}`)
+      }
+
+      // Task 3: Generate briefing
+      console.log('  Task 3: Generating risk briefing...')
+      const briefing = await generateBriefing(patterns, classifications)
+      const briefingId = await saveBriefing(briefing)
+      console.log(`  Briefing saved: ${briefingId} (overall score: ${briefing.overall_score})`)
+      console.log(`  Summary: ${briefing.summary_en.slice(0, 200)}...`)
+    }
+  }, 600_000) // 10 minute timeout for LLM phase
 
   // ── Phase 4: Report ────────────────────────────────────────────────
   await runPhase('4 — Report', async () => {
