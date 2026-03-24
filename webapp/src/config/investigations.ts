@@ -45,7 +45,7 @@ export const investigations: InvestigationConfig[] = [
     title: 'Finanzas Politicas Argentinas',
     subtitle: 'Investigacion activa',
     description:
-      'Financiamiento de campanas, declaraciones juradas patrimoniales, sociedades offshore y conexiones entre politicos y empresas.',
+      'Financiamiento de campañas, declaraciones juradas patrimoniales, sociedades offshore y conexiones entre politicos y empresas.',
     status: 'active',
     color: 'emerald',
     stats: [
