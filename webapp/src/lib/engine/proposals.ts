@@ -54,18 +54,29 @@ export async function createProposal(input: CreateProposalInput): Promise<Propos
     payload: JSON.stringify(input.payload),
   }
 
-  const result = await writeQuery<Proposal>(
-    `CREATE (n:Proposal $props) RETURN n`,
-    { props },
-    (r) => {
-      const raw = nodeProps(r)
-      if (typeof raw.payload === 'string') {
-        raw.payload = JSON.parse(raw.payload)
-      }
-      return parseProposal(raw)
-    },
-  )
-  return result.records[0]
+  const proposal = await withWriteTransaction(async (tx) => {
+    const result = await tx.run(
+      `CREATE (n:Proposal $props) RETURN n`,
+      { props },
+    )
+    const record = result.records[0]
+    const raw = nodeProps(record)
+    if (typeof raw.payload === 'string') {
+      raw.payload = JSON.parse(raw.payload as string)
+    }
+    const parsed = parseProposal(raw)
+
+    // Create HAS_PROPOSAL relationship from PipelineState to Proposal
+    await tx.run(
+      `MATCH (ps:PipelineState {id: $pipelineStateId}), (p:Proposal {id: $proposalId})
+       CREATE (ps)-[:HAS_PROPOSAL]->(p)`,
+      { pipelineStateId: props.pipeline_state_id, proposalId: props.id },
+    )
+
+    return parsed
+  })
+
+  return proposal
 }
 
 // ---------------------------------------------------------------------------
