@@ -1,0 +1,642 @@
+{
+  "investigation": "Captura Regulatoria en Argentina — Regulatory Capture Across Key Sectors",
+  "date": "2026-03-24T12:00:00.000Z",
+  "methodology": "Web research across government sources, investigative journalism, OECD reports, and academic papers. Each claim tagged with source URLs.",
+  "summary": "Argentina's regulatory bodies suffer from chronic institutional weakness: insufficient autonomy, political appointments from regulated industries, underfunding, and legal frameworks that subordinate regulators to executive ministries. The revolving door between the private sector and regulatory positions is pervasive across administrations. Compared with Chile and Brazil, Argentina's regulators lack budgetary independence, fixed-term protections for appointees, and meaningful enforcement capacity.",
+  "regulators": {
+    "CNDC": {
+      "full_name": "Comision Nacional de Defensa de la Competencia",
+      "sector": "competition_antitrust",
+      "parent_ministry": "Secretaria de Comercio, Ministerio de Economia",
+      "institutional_profile": {
+        "created": 1980,
+        "legal_basis": "Ley 22.262 (1980), replaced by Ley 27.442 (2018)",
+        "structure": "President + 4 board members (vocales)",
+        "staff_count": 95,
+        "staff_breakdown": {
+          "lawyers": 35,
+          "economists": 27,
+          "other": 33
+        },
+        "annual_budget_ars": 481000000,
+        "budget_year": 2023,
+        "autonomous_budget": false,
+        "independence_level": "low — decentralized body under SIC, not insulated from political influence",
+        "sources": [
+          "https://globalcompetitionreview.com/insight/enforcer-hub/2023/organization-profile/argentina-national-commission-competition-defence",
+          "https://en.wikipedia.org/wiki/National_Commission_for_Competition_Defense"
+        ]
+      },
+      "institutional_weaknesses": [
+        {
+          "issue": "No autonomous budget — depends on Secretaria de Comercio allocations",
+          "source": "https://www.oecd.org/en/publications/oecd-economic-surveys-argentina-2025_27dd6e27-en/full-report/towards-a-better-business-environment_6920ae15.html"
+        },
+        {
+          "issue": "Not independent: subordinate to SIC (Secretaria de Industria y Comercio), subject to political direction",
+          "source": "https://globalcompetitionreview.com/insight/enforcer-hub/2023/organization-profile/argentina-national-commission-competition-defence"
+        },
+        {
+          "issue": "Only 95 staff for an economy of 46 million people — by comparison Brazil's CADE has ~350 staff",
+          "source": "https://repositorio.cepal.org/server/api/core/bitstreams/a62a3136-b210-494e-a77b-6da7e0c9aa60/content"
+        },
+        {
+          "issue": "Enforcement historically weak: anti-monopoly policies inconsistently enforced and occasionally abused for political gain",
+          "source": "https://bti-project.org/en/reports/country-report/ARG"
+        },
+        {
+          "issue": "Complete board turnover in Dec 2023 — all members resigned simultaneously, first mass resignation in decades",
+          "source": "https://centrocompetencia.com/defensa-competencia-argentina-2023/"
+        }
+      ],
+      "caseload": {
+        "total_active_cases": 608,
+        "concentration_cases": 334,
+        "conduct_investigations": 221,
+        "market_studies": 53,
+        "source": "https://www.argentina.gob.ar/defensadelacompetencia"
+      },
+      "major_cases": [
+        {
+          "case": "Cement Cartel I (1999-2005)",
+          "companies": ["Loma Negra", "Juan Minetti (now Holcim)", "Cementos Avellaneda", "Cemento San Martin", "Petroquimica Comodoro Rivadavia"],
+          "conduct": "Cartel — concerted market quotas and percentages at national level",
+          "investigation_started": 1999,
+          "sanction_year": 2005,
+          "total_fine_ars": 308000000,
+          "fine_breakdown": {
+            "Loma Negra": 138700000,
+            "Juan Minetti": 100100000,
+            "Cementos Avellaneda": 34600000,
+            "Cemento San Martin": 28500000,
+            "Petroquimica Comodoro Rivadavia": 6000000
+          },
+          "judicial_outcome": "Supreme Court rejected extraordinary appeals, upheld fine",
+          "sources": [
+            "https://www.cronista.com/negocios/fallo-de-la-corte-condena-a-un-grupo-de-cementeras-a-pagar-una-multa-de-300-millones/?outputType=amp-type",
+            "https://grupooctubre-pagina12-prod.web.arc-cdn.net/diario/economia/2-219588-2013-05-09.html"
+          ]
+        },
+        {
+          "case": "Cement Cartel II (2013-2018)",
+          "companies": ["Loma Negra", "Holcim", "Petroquimica Comodoro Rivadavia (PCR)", "Cementera Avellaneda"],
+          "conduct": "Repeat cartelization despite prior sanction — price overcharging",
+          "cost_overcharge_usd_annual": 178000000,
+          "overcharge_percentage": "14% of total billing",
+          "measurement_period": "July 2017 - June 2018",
+          "status": "Investigation concluded with findings",
+          "sources": [
+            "https://www.pagina12.com.ar/428609-las-cementeras-lo-hicieron-de-nuevo-cartelizacion-precios-ma/",
+            "https://www.diariodecuyo.com.ar/economia/Loma-Negra-en-la-mira-por-generar-sobrecostos-para-el-sector-publico-y-privado-del-pais-20220428-0113.html"
+          ]
+        },
+        {
+          "case": "Medical Oxygen Cartel (1997-2002)",
+          "companies": ["Air Liquide (France)", "Praxair (USA)", "AGA (Germany)", "Indura (Chile)"],
+          "conduct": "Customer allocation, bid suppression, complementary offer coordination in public and private tenders",
+          "total_fine_ars": 70300000,
+          "fine_breakdown": {
+            "Air Liquide": 24900000,
+            "Praxair": 26100000,
+            "AGA": 14200000,
+            "Indura": 5100000
+          },
+          "significance": "Largest penalty for cartelization/anticompetitive practices at the time — medical oxygen has no substitutes, exposing hospitals to cartel pricing",
+          "sources": [
+            "https://abogados.com.ar/feliz-aniversario-100-anos-de-derecho-de-defensa-de-la-competencia-en-argentina-breve-analisis-de-la-persecucion-de-carteles-a-lo-largo-del-tiempo/33398",
+            "https://www.argentina.gob.ar/sites/default/files/oxigeno.pdf"
+          ]
+        },
+        {
+          "case": "Telecom Argentina / Arte Radiotelevisivo — Abuse of Dominance (2023)",
+          "companies": ["Telecom Argentina S.A.", "Arte Radiotelevisivo Argentino S.A. (Grupo Clarin)"],
+          "conduct": "Discriminatory sales conditions for Canal 13 and TN signals in pay TV market against AMX/Claro",
+          "fine_ars": 150000000,
+          "sanction_year": 2023,
+          "sources": [
+            "https://centrocompetencia.com/defensa-competencia-argentina-2023/"
+          ]
+        },
+        {
+          "case": "Cerveceria Quilmes — Abuse of Dominance (2021-2023)",
+          "companies": ["Cerveceria y Malteria Quilmes S.A.I.C.A.y G. (AB InBev subsidiary)"],
+          "conduct": "Non-compliance with corrective measures for exclusionary abuse of dominant position",
+          "fine_ars": 389000000,
+          "fine_usd_approx": 1800000,
+          "sanction_year": 2023,
+          "significance": "Unprecedented enforcement action for non-compliance with prior corrective measures",
+          "sources": [
+            "https://centrocompetencia.com/defensa-competencia-argentina-2023/"
+          ]
+        },
+        {
+          "case": "Visa — Abuse of Dominance (2023)",
+          "companies": ["Visa"],
+          "conduct": "Alleged abuse of dominant position in cross-border payment facilitation",
+          "action": "Precautionary measure ordered Nov 2023",
+          "status": "Under investigation",
+          "sources": [
+            "https://centrocompetencia.com/defensa-competencia-argentina-2023/"
+          ]
+        }
+      ],
+      "key_appointees": [
+        {
+          "name": "Alexis Pirchio",
+          "role": "President CNDC",
+          "appointed": "2024-01-30",
+          "appointed_by": "Milei administration (Decreto 100/2024)",
+          "source": "https://allende.com/defensa-de-la-competencia/cambios-en-la-autoridad-de-defensa-de-la-competencia-designacion-de-nuevos-miembros-de-la-cndc-01-31-2024/"
+        },
+        {
+          "name": "Eduardo Montamat",
+          "role": "Vocal then President CNDC",
+          "prior_role": "Chief of Lawyers CNDC (1999-2003)",
+          "appointed": "2024-01-30",
+          "later_promoted_to_president": true,
+          "source": "https://www.argentina.gob.ar/noticias/eduardo-montamat-fue-designado-como-presidente-de-la-comision-nacional-de-defensa-de-la"
+        },
+        {
+          "name": "Florencia Bogo",
+          "role": "Vocal CNDC",
+          "appointed": "2024-01-30",
+          "source": "https://allende.com/defensa-de-la-competencia/cambios-en-la-autoridad-de-defensa-de-la-competencia-designacion-de-nuevos-miembros-de-la-cndc-01-31-2024/"
+        },
+        {
+          "name": "Lucas Trevisani Vespa",
+          "role": "Vocal CNDC",
+          "appointed": "2024-01-30",
+          "source": "https://allende.com/defensa-de-la-competencia/cambios-en-la-autoridad-de-defensa-de-la-competencia-designacion-de-nuevos-miembros-de-la-cndc-01-31-2024/"
+        }
+      ],
+      "comparison_with_brazil_CADE": {
+        "CADE_staff": "~350",
+        "CNDC_staff": 95,
+        "CADE_independence": "Autonomous federal autarchy since 2012 (Ley 12.529), not subordinate to any ministry",
+        "CNDC_independence": "Decentralized body under SIC — structurally dependent on political hierarchy",
+        "CADE_enforcement": "Active cartel prosecution, leniency program since 2000, criminal enforcement",
+        "CNDC_enforcement": "Primarily administrative sanctions, weak criminal enforcement, no effective leniency program until 2018 law",
+        "note": "Chile's FNE and Peru's INDECOPI also have stronger legal and operational independence than CNDC",
+        "sources": [
+          "https://repositorio.cepal.org/server/api/core/bitstreams/a62a3136-b210-494e-a77b-6da7e0c9aa60/content",
+          "https://cdn.cade.gov.br/portal-ingles/topics/leniency%20program/Publications%20/oecd-peer-reviews-of-competition-law-and-policy-brazil-ENG-web.pdf"
+        ]
+      }
+    },
+    "ENACOM": {
+      "full_name": "Ente Nacional de Comunicaciones",
+      "sector": "telecommunications_media",
+      "parent_ministry": "Presidencia de la Nacion (originally), then Jefatura de Gabinete",
+      "institutional_profile": {
+        "created": "2016-01-04",
+        "created_by": "DNU 267/2015 (Macri)",
+        "replaces": ["AFSCA (Federal Authority for Audiovisual Communication Services)", "AFTIC (Federal Authority for ICT)"],
+        "structure": "7 directors: 4 by Executive + 3 by Congress bicameral commission",
+        "staff_count_approx": 400,
+        "note": "Significant layoffs under Milei intervention",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Ente_Nacional_de_Comunicaciones",
+          "https://www.cronista.com/economia-politica/ajuste-enacom-nuevo-recorte-masivo-en-un-organismo-estatal-hay-dos-fondos-fiduciarios-bajo-la-lupa/"
+        ]
+      },
+      "regulatory_capture_events": [
+        {
+          "event": "DNU 267/2015 — Dissolution of AFSCA and deregulation of media ownership limits",
+          "date": "2015-12-29",
+          "details": "Macri eliminated most antimonopoly clauses from Audiovisual Communication Services Law. Increased license limits from 10 to 15 for TV/radio nationally, 3 to 4 per area. Cable companies received single national license, exempt from antimonopoly clause. Telephone companies allowed to operate cable from Jan 2018.",
+          "beneficiary": "Grupo Clarin and other large media conglomerates",
+          "sources": [
+            "https://www.lanacion.com.ar/politica/el-gobierno-publico-el-dnu-que-modifica-la-ley-de-medios-y-elimina-la-afsca-nid1859236/",
+            "https://chequeado.com/el-explicador/cinco-claves-de-la-modificacion-a-la-ley-de-medios-audiovisuales/",
+            "https://papel.revistafibra.info/el-legado-de-macri-en-regulacion-de-medios-2015-2019/"
+          ]
+        },
+        {
+          "event": "ENACOM archived all media adequacy plans",
+          "date": "2016",
+          "details": "All pending plans for companies to divest media holdings under the Ley de Medios were archived by ENACOM, removing any remaining constraint on media concentration",
+          "source": "https://www.lanacion.com.ar/politica/el-enacom-archivo-casi-todos-los-planes-de-adecuacion-a-la-ley-de-medios-nid1867583/"
+        },
+        {
+          "event": "Nextel/Clarin 4G spectrum allocation without public bid",
+          "date": "2016",
+          "details": "ENACOM authorized Nextel Argentina (Grupo Clarin subsidiary) to provide 4G services without public bidding or spectrum payment, prompting Senate questions and legal action from Telefonica for discriminatory treatment",
+          "beneficiary": "Grupo Clarin / Nextel Argentina",
+          "source": "https://en.wikipedia.org/wiki/Ente_Nacional_de_Comunicaciones"
+        },
+        {
+          "event": "Cablevision-Telecom merger approval in record time",
+          "date": "2018-06-29",
+          "details": "ENACOM approved unanimously the merger creating Argentina's largest telecom company. Conditions imposed: return 80 MHz of excess spectrum, infrastructure sharing, price unbundling for quadruple play. Company required to return spectrum exceeding 140 MHz cap (had 220 MHz). Critics noted conditions were weakly enforced.",
+          "beneficiary": "Grupo Clarin — created dominant quadruple-play operator",
+          "market_result": "Telecom-Cablevision became dominant in fixed/mobile/internet/TV with near-monopoly in many localities",
+          "sources": [
+            "https://www.enacom.gob.ar/institucional/enacom-aprobo-la-fusion-de-telecom-de-argentina-s-a--y-cablevision-s-a-_n1838",
+            "https://www.infobae.com/economia/finanzas-y-negocios/2018/06/29/el-gobierno-aprobo-la-fusion-de-telecom-con-cablevision-nace-la-empresa-mas-grande-del-pais/"
+          ]
+        },
+        {
+          "event": "Telecom-Telefonica acquisition (2025) — regulatory limbo",
+          "date": "2025-02-24",
+          "details": "Telecom Argentina (Clarin) announced acquisition of Telefonica's local subsidiary for USD 1.245 billion. Would concentrate ~70% of telecom services in one group. ENACOM has not issued definitive decision. Government opposition emerged. Initial deadline expired Jan 2025, extended by Decreto 448/2025.",
+          "amount_usd": 1245000000,
+          "potential_market_concentration": "~70% of telecom services",
+          "status": "Under review — regulatory and judicial limbo",
+          "sources": [
+            "https://www.infobae.com/economia/2026/03/01/la-fusion-entre-telecom-y-telefonica-sigue-en-un-limbo-regulatorio-y-se-frenan-inversiones-criticas/",
+            "https://www.cronista.com/economia-politica/telefonica-el-gobierno-escala-su-pelea-con-clarin-y-pidio-al-enacom-que-intervenga-en-la-compra/"
+          ]
+        }
+      ],
+      "key_appointees": [
+        {
+          "name": "ENACOM intervened under Milei (Jan 2024)",
+          "details": "Government formalized intervention of ENACOM, replacing collegial directorate with single interventor",
+          "source": "https://www.infobae.com/politica/2024/01/29/el-gobierno-oficializo-la-intervencion-del-enacom-quien-estara-a-cargo-del-ente-nacional-de-comuniaciones/"
+        }
+      ]
+    },
+    "ENRE": {
+      "full_name": "Ente Nacional Regulador de la Electricidad",
+      "sector": "electricity",
+      "parent_ministry": "Ministerio de Economia — Secretaria de Energia",
+      "institutional_profile": {
+        "created": 1992,
+        "legal_basis": "Ley 24.065",
+        "staff_count_approx": 350,
+        "regulates": ["Edenor", "Edesur", "Transener", "transport and distribution concessions in AMBA"],
+        "status_2025": "Merged with ENARGAS into ENRGE (Ente Nacional Regulador del Gas y la Electricidad) by decree, July 2025",
+        "sources": [
+          "https://es.wikipedia.org/wiki/Ente_Nacional_Regulador_de_la_Electricidad",
+          "https://www.infobae.com/economia/2025/07/07/el-gobierno-fusiono-el-enargas-y-el-enre-en-un-solo-organismo/"
+        ]
+      },
+      "regulatory_capture_events": [
+        {
+          "event": "Osvaldo Rolando — from Edesur executive to ENRE interventor",
+          "person": "Osvaldo Rolando",
+          "prior_private_sector": ["Technical Director of Edesur (until 2013)", "General Manager of SACME", "President of ADEERA (2011-2015)"],
+          "government_role": "Subsecretario de Energia Termica, Transporte y Distribucion Electrica under Macri (2015-2017), then ENRE interventor (Dec 2024 - Aug 2025)",
+          "capture_concern": "Former Edesur executive appointed to regulate Edesur. Oversaw Five-Year Tariff Review 2025-2030 for both Edenor and Edesur — tariff increase approved with investment commitments",
+          "resigned": "2025-07-23",
+          "sources": [
+            "https://econojournal.com.ar/2024/10/daniel-gonzalez-cambia-al-interventor-del-enre-para-revisar-la-politica-tarifaria/",
+            "https://www.infobae.com/economia/2025/07/23/renuncio-el-interventor-del-enre-tras-el-anuncio-de-que-habra-un-unico-ente-regulador-para-la-electricidad-y-el-gas/"
+          ]
+        },
+        {
+          "event": "ENRE/ENARGAS merger under energy sector pressure",
+          "date": "2025-07",
+          "details": "Government merged both energy regulators into single entity. New board of 5 members selected by Secretaria de Energia — further reducing independence from political and industry influence. Personnel and budgets transferred.",
+          "sources": [
+            "https://econojournal.com.ar/2025/07/publican-decreto-unificacion-entes-reguladores-secretaria-energia-cinco-candidatos-nuevo-directorio/",
+            "https://www.infobae.com/economia/2025/07/04/tras-la-crisis-energetica-el-gobierno-fusionara-los-entes-reguladores-de-gas-y-electricidad/"
+          ]
+        }
+      ]
+    },
+    "ENARGAS": {
+      "full_name": "Ente Nacional Regulador del Gas",
+      "sector": "natural_gas",
+      "parent_ministry": "Ministerio de Economia — Secretaria de Energia",
+      "institutional_profile": {
+        "created": 1992,
+        "legal_basis": "Ley 24.076",
+        "staff_count_approx": 517,
+        "status_2025": "Merged with ENRE into ENRGE by decree, July 2025",
+        "sources": [
+          "https://es.wikipedia.org/wiki/Ente_Nacional_Regulador_del_Gas",
+          "https://econojournal.com.ar/2021/04/durante-el-primer-ano-de-la-intervencion-el-enargas-incremento-su-personal-casi-un-35/"
+        ]
+      },
+      "regulatory_capture_events": [
+        {
+          "event": "Carlos Casares — from Tecpetrol/Techint to ENARGAS interventor",
+          "person": "Carlos Casares",
+          "prior_private_sector": ["Manager of Natural Gas Commercialization at Tecpetrol (2001-2013)", "Manager of Natural Gas E&P at Tecpetrol (2014-2017)"],
+          "prior_government": ["Member of ENARGAS (2017-2020)", "Undersecretary of Hydrocarbons under Macri/Dujovne (2019)"],
+          "current_role": "Interventor of ENARGAS (appointed Dec 2023 by Milei via Resolucion 5/2023)",
+          "capture_concern": "24 years at Tecpetrol (Techint group) then appointed to regulate gas sector. Techint (Paolo Rocca) is major gas producer via Tecpetrol.",
+          "sources": [
+            "https://www.infobae.com/economia/2023/12/29/el-gobierno-designo-al-nuevo-interventor-del-enargas-pieza-clave-para-los-aumentos-del-gas-y-la-quita-de-subsidios/",
+            "https://www.mendozapost.com/politica/ex-gerente-de-techint-fue-designado-interventor-del-enargas/",
+            "https://www.ambito.com/energia/quien-es-el-interventor-que-eligio-javier-milei-el-enargas-n5910109"
+          ]
+        },
+        {
+          "event": "Techint and Pampa Energia lawsuits against the state",
+          "details": "Tecpetrol (Techint/Paolo Rocca) and Pampa Energia (Marcelo Mindlin) maintain billion-dollar lawsuits against the Argentine state for Plan Gas contract non-compliance, while former employees regulate the sector",
+          "sources": [
+            "https://www.infobae.com/economia/2026/03/16/techint-y-pampa-energia-mantienen-juicios-millonarios-contra-el-estado-por-incumplimientos-en-el-plan-gas/",
+            "https://www.letrap.com.ar/economia/portazo-el-enargas-la-promesa-incumplida-y-la-sombra-paolo-rocca-detonaron-la-salida-del-interventor-n5421493"
+          ]
+        }
+      ]
+    },
+    "BCRA": {
+      "full_name": "Banco Central de la Republica Argentina",
+      "sector": "banking_financial",
+      "institutional_profile": {
+        "created": 1935,
+        "legal_basis": "Carta Organica (Ley 24.144 as amended)",
+        "structure": "President + Vice President + 8 directors, appointed by Executive with Senate approval, 6-year terms",
+        "independence_issue": "In 83 years, only ONE president completed their mandate — extreme political instability, 61+ presidents",
+        "sources": [
+          "https://www.bcra.gob.ar/Institucional/Carta_Organica.asp",
+          "https://www.cronista.com/economia-politica/en-83-anos-de-historia-solo-un-presidente-del-bcra-completo-su-mandato/"
+        ]
+      },
+      "regulatory_capture_events": [
+        {
+          "event": "Federico Sturzenegger — academia/YPF to BCRA president",
+          "person": "Federico Sturzenegger",
+          "prior_roles": ["Chief Economist of YPF", "Dean of UTDT Business School", "President of Banco Ciudad de Buenos Aires", "National Deputy"],
+          "bcra_tenure": "2015-12-10 to 2018-06-14",
+          "later_role": "Minister of Deregulation and State Transformation under Milei (2024-present)",
+          "capture_concern": "Later acknowledged BCRA was 'not independent' during his tenure — monetary policy subordinated to executive political priorities",
+          "sources": [
+            "https://www.bcra.gob.ar/Pdfs/Prensa_comunicacion/Nota_Prensa_14_12_15.pdf",
+            "https://www.infobae.com/economia/2019/09/08/federico-sturzenegger-aseguro-que-el-banco-central-no-fue-independiente-durante-su-gestion/",
+            "https://en.wikipedia.org/wiki/Federico_Sturzenegger"
+          ]
+        },
+        {
+          "event": "Board members with private banking backgrounds",
+          "details": "Juan Curutchet served as President of Banco Provincia, Director of Prisma SA, VP of Banco Ciudad before joining BCRA board. Pattern of banking industry executives moving to regulatory positions is persistent.",
+          "source": "https://www.ambito.com/economia/quien-es-quien-la-lista-los-nuevos-integrantes-directorio-del-bcra-n5897564"
+        }
+      ]
+    },
+    "CNV": {
+      "full_name": "Comision Nacional de Valores",
+      "sector": "securities_capital_markets",
+      "parent_ministry": "Ministerio de Economia",
+      "institutional_profile": {
+        "legal_basis": "Ley de Mercado de Capitales 26.831 (2012)",
+        "role": "Regulation, supervision, promotion of capital markets",
+        "sources": [
+          "https://www.argentina.gob.ar/cnv"
+        ]
+      },
+      "regulatory_capture_events": [
+        {
+          "event": "Regulatory flexibilization under Milei — lowering market entry and compliance standards",
+          "details": "CNV engaged in process of regulatory 'flexibilization and market normalization' in coordination with Ministry of Economy and BCRA. Simplified procedures and reduced requirements for issuers, potentially weakening investor protections in favor of market players.",
+          "source": "https://www.argentina.gob.ar/cnv"
+        }
+      ]
+    },
+    "Secretaria_de_Mineria": {
+      "full_name": "Secretaria de Coordinacion de Energia y Mineria",
+      "sector": "mining",
+      "institutional_profile": {
+        "role": "Mining policy, concession oversight, RIGI evaluation commission member",
+        "provincial_jurisdiction": "Mining regulated primarily at provincial level — federal oversight limited",
+        "source": "https://www.argentina.gob.ar/noticias/rigi-desde-hoy-las-empresas-podran-aplicar-al-regimen"
+      },
+      "RIGI_regime": {
+        "full_name": "Regimen de Incentivo para Grandes Inversiones",
+        "created": 2024,
+        "extended": "2026-02 — extended for one additional year, expanded to oil and gas",
+        "key_benefits": [
+          "Income tax reduced from 35% to 25%",
+          "Export duty exemption (after 3 years, 2 years for strategic exports)",
+          "Import duty exemption for capital goods and spare parts",
+          "VAT credit certificates in pre-operative stage",
+          "Accelerated depreciation (2 installments for movables, 60% useful life for infrastructure)",
+          "Tax loss carryforward without time limit, transferable to third parties after 5 years",
+          "Dividend tax: 7% (3.5% after 7 years)",
+          "Full Bank Credits/Debits tax credit against income tax",
+          "30-year normative stability in tax, customs, and currency matters",
+          "Access to international arbitration"
+        ],
+        "scale": {
+          "projects_submitted": 22,
+          "total_investment_usd": 35500000000,
+          "as_of": "Oct 2025"
+        },
+        "capture_concern": "30-year regulatory freeze immunizes mining companies from future environmental or tax legislation. Provincial mining codes already permissive. RIGI further reduces federal oversight capacity.",
+        "sources": [
+          "https://www.infobae.com/economia/2025/10/22/a-un-ano-del-rigi-ingresaron-22-proyectos-por-mas-de-usd-35500-millones/",
+          "https://www.pwc.com.ar/es/prensa/london-metal-exchange-pwc.html",
+          "https://bomchil.com/wp-content/uploads/2024/09/rigi_y_mineria_articulo_el_dial_ado_septiembre_2024.pdf"
+        ]
+      },
+      "environmental_failures": [
+        {
+          "event": "Barrick Gold Veladero cyanide spill",
+          "date": "2015-09-12",
+          "details": "Spill of 1,072,000 liters of cyanide solution into river. Barrick Gold attempted to conceal incident with provincial government complicity. Company violated Mining Code safety rules, contingency plans, monitoring, and reporting obligations. UNOPS-created Cyanide Management Code did not prevent the disaster — mining industry reportedly imposed its will in code design.",
+          "location": "Veladero mine, San Juan province",
+          "company": "Barrick Gold",
+          "fine_ars": 145000000,
+          "provincial_enforcement": "Provincial government initially complicit in concealment. Supreme Court split jurisdiction between federal and provincial courts.",
+          "subsequent_spills": "Additional cyanide spill confirmed Sept 2016. Elevated metal levels in Jachal water supply detected subsequently.",
+          "sources": [
+            "https://www.infobae.com/politica/2016/09/13/como-fue-el-plan-de-barrick-gold-para-ocultar-la-contaminacion-por-el-derrame-de-cianuro-en-san-juan/",
+            "https://agenciatierraviva.com.ar/barrick-gold-lo-hizo-diez-anos-del-mayor-derrame-minero-de-la-historia-argentina/",
+            "https://farn.org.ar/a-un-ano-del-derrame-en-san-juan-las-organizaciones-ambientalistas-continuan-exigiendo-el-cierre-de-la-mina-veladero/"
+          ]
+        }
+      ]
+    },
+    "ANMAT": {
+      "full_name": "Administracion Nacional de Medicamentos, Alimentos y Tecnologia Medica",
+      "sector": "pharmaceuticals_food_medical_devices",
+      "parent_ministry": "Ministerio de Salud",
+      "institutional_profile": {
+        "created": 1992,
+        "role": "Authorization, registration, surveillance, and enforcement for medicines, food, and medical devices",
+        "source": "https://www.argentina.gob.ar/anmat"
+      },
+      "regulatory_capture_events": [
+        {
+          "event": "Fentanyl contamination crisis — systemic regulatory failure",
+          "date": "2025",
+          "details": "Contaminated fentanyl produced by labs HLB Pharma Group and Ramallo distributed to 118+ health centers. At least 173 deaths under investigation. ANMAT inspected Laboratorios Ramallo Nov 28 - Dec 12, 2024; contaminated fentanyl produced Dec 18. ANMAT only notified lab to stop production on Feb 10, 2025 — nearly 2-month delay.",
+          "contamination": "Klebsiella pneumoniae and Ralstonia pickettii bacteria in injectable fentanyl ampoules",
+          "deaths_under_investigation": 173,
+          "labs_involved": ["HLB Pharma Group", "Laboratorios Ramallo"],
+          "regulatory_failures": [
+            "2-month delay between inspection and production halt",
+            "Director of INAME (Gabriela Mantecon Fumado) removed for ignoring compliance warning report",
+            "Judicial investigation opened against ANMAT for possible 'negligence, connivance or complicity'",
+            "Pattern of political rather than technical appointments at senior levels"
+          ],
+          "sources": [
+            "https://www.lanacion.com.ar/politica/fentanilo-contaminado-la-justicia-ahora-investiga-el-rol-de-la-anmat-nid20082025/",
+            "https://www.infobae.com/politica/2025/06/21/fentanilo-contaminado-revelan-falencias-en-el-control-de-laboratorios-por-parte-de-la-anmat/",
+            "https://cnnespanol.cnn.com/2025/08/30/argentina/fentanilo-contaminado-argentina-orix",
+            "https://www.infobae.com/politica/2025/08/21/fentanilo-contaminado-el-gobierno-aparto-a-la-directora-del-instituto-que-ignoro-un-informe-que-advertia-incumplimientos/"
+          ]
+        },
+        {
+          "event": "Generic drug policy and patent disputes",
+          "details": "Ongoing tension between domestic generic labs (CILFA) and international pharma companies over patent protection. ANMAT's formula accessibility policy allows competitors to replicate drug formulations, but enforcement is shaped by industry lobbying on both sides. FIEL estimated generic/biosimilar savings at US$2.2 billion annually.",
+          "generic_savings_usd_annual": 2214000000,
+          "sources": [
+            "https://www.lanacion.com.ar/economia/el-fin-del-cerrojo-farmaceutico-la-historia-detras-de-la-resolucion-de-patentes-que-dividio-a-los-nid18032026/",
+            "https://www.caeme.org.ar/archivo-weber/regulacion-del-mercado-de-medicamentos/"
+          ]
+        }
+      ]
+    }
+  },
+  "cross_cutting_patterns": {
+    "revolving_door": {
+      "summary": "24% of Macri cabinet (86/364 officials) came directly from private sector positions. 70% of Jefatura de Gabinete senior positions held by private sector executives. Energy and Communications ministries had 50% private sector executives. Under Milei, 34% of departed officials came from private sector, with 18 documented 'recurring revolving door' cases.",
+      "named_cases": [
+        {
+          "person": "Juan Jose Aranguren",
+          "private": "President of Shell Argentina (2003-2015), retained $16.3M in Shell shares",
+          "government": "Minister of Energy (2015-2018)",
+          "conflict": "Tariff increases benefited Shell as gas producer. Investigated for negotiations incompatible with public office. Shares sold only after Anticorruption Office intervention.",
+          "sources": [
+            "https://noticiaslatam.lat/20160608/argentina-juanjosearanguren-energia-shell-1060563261.html",
+            "https://www.pagina12.com.ar/231937-aranguren-imputado-por-su-paso-como-ministro-de-energia"
+          ]
+        },
+        {
+          "person": "Osvaldo Rolando",
+          "private": "Technical Director of Edesur (until 2013), GM of SACME, President of ADEERA (2011-2015)",
+          "government": "Subsecretario de Energia (2015-2017, Macri), ENRE Interventor (2024-2025, Milei)",
+          "conflict": "Former Edesur executive oversaw tariff review for Edesur and Edenor",
+          "sources": [
+            "https://econojournal.com.ar/2024/10/daniel-gonzalez-cambia-al-interventor-del-enre-para-revisar-la-politica-tarifaria/",
+            "https://editorialrn.com.ar/el-control-de-las-tarifas-queda-para-un-ex-funcionario-de-macri/"
+          ]
+        },
+        {
+          "person": "Carlos Casares",
+          "private": "Manager at Tecpetrol/Techint (1993-2017, 24 years)",
+          "government": "ENARGAS member (2017-2020), Undersecretary of Hydrocarbons (2019, Macri), ENARGAS Interventor (2023-present, Milei)",
+          "conflict": "Former Techint executive regulates gas sector where Tecpetrol is major producer. Techint maintains billion-dollar lawsuits against the state.",
+          "sources": [
+            "https://www.mendozapost.com/politica/ex-gerente-de-techint-fue-designado-interventor-del-enargas/",
+            "https://www.ambito.com/energia/quien-es-el-interventor-que-eligio-javier-milei-el-enargas-n5910109"
+          ]
+        },
+        {
+          "person": "Federico Sturzenegger",
+          "private": "Chief Economist of YPF, Dean of UTDT Business School",
+          "government": "BCRA President (2015-2018), Minister of Deregulation (2024-present)",
+          "conflict": "Admitted BCRA was not independent during his tenure. Now leads deregulation affecting all sectors as Minister.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Federico_Sturzenegger",
+            "https://www.infobae.com/economia/2019/09/08/federico-sturzenegger-aseguro-que-el-banco-central-no-fue-independiente-durante-su-gestion/"
+          ]
+        },
+        {
+          "person": "Javier Iguacel",
+          "private": "Appeared in Paradise Papers, participated in three Argentine firms",
+          "government": "Director of Vialidad Nacional, then Minister of Energy (2018, replacing Aranguren)",
+          "conflict": "Investigated alongside Macri and Aranguren for fraudulent administration in thermoelectric plant privatization",
+          "sources": [
+            "https://econojournal.com.ar/2018/06/quien-es-javier-iguacel-el-sucesor-de-aranguren/",
+            "https://www.pagina12.com.ar/174468-una-privatizacion-a-precio-vil"
+          ]
+        }
+      ],
+      "systemic_data": {
+        "macri_cabinet_private_sector_pct": 24,
+        "macri_energy_ministry_private_sector_pct": 50,
+        "macri_communications_ministry_private_sector_pct": 50,
+        "macri_jefatura_gabinete_private_sector_pct": 70,
+        "macri_total_officials_with_corporate_positions": 269,
+        "macri_total_corporate_positions_held": 890,
+        "milei_recurring_revolving_door_cases": 18,
+        "milei_departed_officials_from_private_sector_pct": 34,
+        "companies_most_represented": ["Shell", "Techint/Tecpetrol", "Socma", "LAN", "JP Morgan", "HSBC", "Axion", "Pan American Energy", "Deutsche Bank", "Farmacity", "ICBC", "Consultatio", "Edesur", "CAMMESA", "Repsol-YPF", "Exxon Mobil", "Bridas", "ESSO"],
+        "sources": [
+          "https://www.nodal.am/2018/08/argentina-la-puerta-giratoria-entre-el-gobierno-de-macri-y-sector-privado-por-claudio-della-croce/",
+          "https://www.resumenlatinoamericano.org/2025/11/04/argentina-puerta-giratoria-recurrente-donde-van-los-renunciados-de-milei",
+          "https://cdsa.aacademica.org/000-023/436.pdf"
+        ]
+      },
+      "legal_framework": {
+        "regulation": "Public Ethics Law (Ley de Etica Publica) + obligation to declare employment destinations upon leaving office",
+        "enforcement": "Widely non-compliant. No mandatory cooling-off period. No effective prohibition on regulated-to-regulator movement.",
+        "comparison": "International best practices (OECD) recommend 1-3 year cooling-off periods, which Argentina lacks",
+        "source": "https://ri.conicet.gov.ar/bitstream/handle/11336/89518/CONICET_Digital_Nro.f82fff98-99e7-430e-8800-1883d4c45b1c_A.pdf"
+      }
+    },
+    "budget_and_staffing": {
+      "CNDC": {"staff": 95, "budget_ars_2023": 481000000, "budget_adequate": false},
+      "ENACOM": {"staff_approx": 400, "note": "Significant layoffs under Milei intervention"},
+      "ENRE": {"staff_approx": 350, "merged_2025": true},
+      "ENARGAS": {"staff_approx": 517, "merged_2025": true},
+      "pattern": "Regulatory bodies chronically understaffed relative to the complexity of markets they oversee. CNDC has 95 staff vs Brazil CADE's ~350 for comparable economies. Energy regulators merged to reduce headcount. ENACOM subject to mass layoffs. No regulator has genuine budgetary autonomy — all dependent on executive allocations.",
+      "sources": [
+        "https://globalcompetitionreview.com/insight/enforcer-hub/2023/organization-profile/argentina-national-commission-competition-defence",
+        "https://www.cronista.com/economia-politica/ajuste-enacom-nuevo-recorte-masivo-en-un-organismo-estatal-hay-dos-fondos-fiduciarios-bajo-la-lupa/",
+        "https://econojournal.com.ar/2021/04/durante-el-primer-ano-de-la-intervencion-el-enargas-incremento-su-personal-casi-un-35/"
+      ]
+    },
+    "international_comparison": {
+      "argentina_vs_chile": {
+        "chile_oecd_member_since": 2010,
+        "chile_regulators": "Independent budgets, fixed-term directors, transparent appointment processes, autonomous enforcement",
+        "argentina_regulators": "Dependent budgets, politically appointed, no cooling-off periods, weak enforcement",
+        "key_difference": "Chile requires budgetary independence and autonomous director mandates; Argentina's regulators are structurally subordinate to executive ministries"
+      },
+      "argentina_vs_brazil": {
+        "brazil_CADE": "Autonomous federal autarchy since 2012, active leniency program, criminal cartel enforcement, ~350 staff",
+        "argentina_CNDC": "Decentralized body under SIC, no effective leniency until 2018, primarily administrative sanctions, 95 staff",
+        "key_difference": "Brazil's competition authority has legal independence and stronger enforcement tools; Argentina's CNDC depends on political hierarchy and has fraction of the resources"
+      },
+      "overall_assessment": "Argentina's regulatory framework ranks lowest among major Latin American economies (Chile, Brazil, Peru) on independence metrics. OECD 2025 survey identifies regulatory quality improvement as essential for accession.",
+      "sources": [
+        "https://repositorio.cepal.org/server/api/core/bitstreams/a62a3136-b210-494e-a77b-6da7e0c9aa60/content",
+        "https://www.oecd.org/en/publications/oecd-economic-surveys-argentina-2025_27dd6e27-en/full-report/towards-a-better-business-environment_6920ae15.html"
+      ]
+    },
+    "intervention_pattern": {
+      "description": "Argentine regulators are frequently placed under 'intervention' — a legal mechanism where the executive replaces the collegial directorate with a single interventor. This eliminates internal checks and concentrates decision-making in a politically-appointed individual.",
+      "current_interventions_2024_2025": [
+        {"body": "ENACOM", "status": "Intervened Jan 2024"},
+        {"body": "ENRE", "status": "Intervened, then merged July 2025"},
+        {"body": "ENARGAS", "status": "Intervened Dec 2023, then merged July 2025"}
+      ],
+      "effect": "Intervention removes any structural separation between the regulator and the executive. Combined with revolving door appointments, this creates conditions for systematic regulatory capture."
+    }
+  },
+  "key_findings": [
+    "Argentina's competition authority (CNDC) has only 95 staff and no autonomous budget — a fraction of Brazil's CADE resources",
+    "The cement cartel was sanctioned in 2005, then repeated identical cartelization during 2013-2018, overcharging $178M annually — demonstrating ineffective deterrence",
+    "Medical oxygen producers ran a cartel for 5 years (1997-2002) exploiting hospitals with no-substitute products",
+    "DNU 267/2015 eliminated media concentration limits, enabling Clarin's telecom-media mega-merger",
+    "Cablevision-Telecom merger (2018) created dominant quadruple-play operator; Telecom now seeks to acquire Telefonica for $1.25B, potentially controlling 70% of telecom",
+    "ENRE interventor Osvaldo Rolando was a former Edesur executive who then oversaw Edesur's tariff review",
+    "ENARGAS interventor Carlos Casares spent 24 years at Tecpetrol/Techint before being appointed to regulate the gas sector",
+    "Energy Minister Aranguren held $16.3M in Shell shares while setting tariffs that benefited Shell",
+    "24% of Macri cabinet came directly from private sector; 269 officials held 890 corporate positions",
+    "BCRA has had 61+ presidents in 83 years — only ONE completed their full mandate, reflecting chronic political capture",
+    "Three major regulators (ENACOM, ENRE, ENARGAS) were simultaneously under executive intervention in 2024-2025",
+    "ANMAT's inspection-to-enforcement delay in the fentanyl crisis (2 months) resulted in 173+ deaths",
+    "RIGI grants 30-year regulatory stability to mining companies, immunizing them from future environmental legislation",
+    "Barrick Gold's 1M-liter cyanide spill at Veladero was concealed with provincial government complicity",
+    "Argentina lacks mandatory cooling-off periods for revolving-door appointments — Public Ethics Law is widely non-compliant"
+  ],
+  "sources_index": [
+    {"id": "S001", "url": "https://centrocompetencia.com/defensa-competencia-argentina-2023/", "title": "CeCo: La defensa de la competencia en Argentina en 2023"},
+    {"id": "S002", "url": "https://globalcompetitionreview.com/insight/enforcer-hub/2023/organization-profile/argentina-national-commission-competition-defence", "title": "GCR Enforcer Hub: Argentina CNDC"},
+    {"id": "S003", "url": "https://repositorio.cepal.org/server/api/core/bitstreams/a62a3136-b210-494e-a77b-6da7e0c9aa60/content", "title": "CEPAL: Best practices in defence of competition Argentina and Brazil"},
+    {"id": "S004", "url": "https://www.oecd.org/en/publications/oecd-economic-surveys-argentina-2025_27dd6e27-en/full-report/towards-a-better-business-environment_6920ae15.html", "title": "OECD Economic Surveys: Argentina 2025"},
+    {"id": "S005", "url": "https://www.pagina12.com.ar/428609-las-cementeras-lo-hicieron-de-nuevo-cartelizacion-precios-ma/", "title": "Pagina 12: Las cementeras lo hicieron de nuevo"},
+    {"id": "S006", "url": "https://www.cronista.com/negocios/fallo-de-la-corte-condena-a-un-grupo-de-cementeras-a-pagar-una-multa-de-300-millones/", "title": "El Cronista: Corte condena cementeras multa $300M"},
+    {"id": "S007", "url": "https://abogados.com.ar/feliz-aniversario-100-anos-de-derecho-de-defensa-de-la-competencia-en-argentina-breve-analisis-de-la-persecucion-de-carteles-a-lo-largo-del-tiempo/33398", "title": "100 anos de defensa de la competencia en Argentina"},
+    {"id": "S008", "url": "https://www.nodal.am/2018/08/argentina-la-puerta-giratoria-entre-el-gobierno-de-macri-y-sector-privado-por-claudio-della-croce/", "title": "NODAL: Puerta giratoria Macri y sector privado"},
+    {"id": "S009", "url": "https://www.resumenlatinoamericano.org/2025/11/04/argentina-puerta-giratoria-recurrente-donde-van-los-renunciados-de-milei", "title": "Resumen Latinoamericano: Puerta giratoria Milei"},
+    {"id": "S010", "url": "https://ri.conicet.gov.ar/bitstream/handle/11336/89518/CONICET_Digital_Nro.f82fff98-99e7-430e-8800-1883d4c45b1c_A.pdf", "title": "CONICET: La puerta giratoria en el Gabinete Nacional"},
+    {"id": "S011", "url": "https://www.infobae.com/economia/2025/07/07/el-gobierno-fusiono-el-enargas-y-el-enre-en-un-solo-organismo/", "title": "Infobae: Gobierno fusiono ENARGAS y ENRE"},
+    {"id": "S012", "url": "https://www.mendozapost.com/politica/ex-gerente-de-techint-fue-designado-interventor-del-enargas/", "title": "Mendoza Post: Ex gerente Techint interventor ENARGAS"},
+    {"id": "S013", "url": "https://www.infobae.com/politica/2016/09/13/como-fue-el-plan-de-barrick-gold-para-ocultar-la-contaminacion-por-el-derrame-de-cianuro-en-san-juan/", "title": "Infobae: Barrick Gold plan to conceal cyanide spill"},
+    {"id": "S014", "url": "https://cnnespanol.cnn.com/2025/08/30/argentina/fentanilo-contaminado-argentina-orix", "title": "CNN: Fentanilo contaminado Argentina"},
+    {"id": "S015", "url": "https://www.enacom.gob.ar/institucional/enacom-aprobo-la-fusion-de-telecom-de-argentina-s-a--y-cablevision-s-a-_n1838", "title": "ENACOM: Aprobacion fusion Telecom-Cablevision"},
+    {"id": "S016", "url": "https://papel.revistafibra.info/el-legado-de-macri-en-regulacion-de-medios-2015-2019/", "title": "Revista Fibra: Legado Macri en regulacion de medios"},
+    {"id": "S017", "url": "https://www.pagina12.com.ar/231937-aranguren-imputado-por-su-paso-como-ministro-de-energia", "title": "Pagina 12: Aranguren imputado"},
+    {"id": "S018", "url": "https://www.cronista.com/economia-politica/en-83-anos-de-historia-solo-un-presidente-del-bcra-completo-su-mandato/", "title": "El Cronista: Solo un presidente del BCRA completo mandato"},
+    {"id": "S019", "url": "https://www.argentina.gob.ar/defensadelacompetencia/estadisticas", "title": "CNDC Estadisticas oficiales"},
+    {"id": "S020", "url": "https://cdsa.aacademica.org/000-023/436.pdf", "title": "La puerta giratoria del estado — academic paper"}
+  ]
+}
