@@ -17,6 +17,12 @@ const CASE_META: Readonly<Record<string, { title: string; description: string; d
       'Trafficking and power network. 7,276 entities, court documents, flight records, and factchecking.',
     defaultLang: 'en',
   },
+  'riesgo-nuclear': {
+    title: 'Global Nuclear Risk — Office of Accountability',
+    description:
+      'Daily monitoring of nuclear escalation signals across all theaters. 31 sources, LLM-powered analysis, risk scoring.',
+    defaultLang: 'en',
+  },
 }
 
 export async function generateMetadata({
