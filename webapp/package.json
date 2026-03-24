@@ -29,7 +29,12 @@
     "seed:top-contractors": "npx tsx scripts/seed-top-contractors.ts",
     "investigation:loop": "npx tsx scripts/run-investigation-loop.ts",
     "nuclear:seed": "npx tsx scripts/seed-nuclear-risk.ts",
-    "nuclear:loop": "npx tsx scripts/run-nuclear-risk-loop.ts"
+    "nuclear:loop": "npx tsx scripts/run-nuclear-risk-loop.ts",
+    "etl:contratar": "npx tsx scripts/run-etl-contratar.ts",
+    "etl:sipro": "npx tsx scripts/run-etl-contratar.ts",
+    "etl:mapa-inversiones": "npx tsx scripts/run-etl-mapa-inversiones.ts",
+    "etl:investigative-seed": "npx tsx scripts/run-etl-investigative-seed.ts",
+    "obras:cross-ref": "npx tsx scripts/run-obras-cross-reference.ts"
   },
   "dependencies": {
     "@auth/core": "^0.41.1",

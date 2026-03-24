@@ -1,6 +1,20 @@
 export type ConfidenceTier = 'gold' | 'silver' | 'bronze'
 
-export type IngestionSource = 'seed' | 'rhowardstone' | 'epstein-exposed' | 'courtlistener' | 'documentcloud' | 'doj' | 'community' | 'dleerdefi' | 'iaea' | 'nato' | 'us-dod' | 'state-dept' | 'aca' | 'bulletin'
+export type IngestionSource =
+  | 'seed' | 'rhowardstone' | 'epstein-exposed' | 'courtlistener'
+  | 'documentcloud' | 'doj' | 'community' | 'dleerdefi'
+  // nuclear/international sources
+  | 'iaea' | 'nato' | 'us-dod' | 'state-dept' | 'aca' | 'bulletin'
+  // obras-publicas sources
+  | 'contratar'           // Wave 1: CONTRAT.AR
+  | 'sipro'               // Wave 1: COMPR.AR supplier registry
+  | 'mapa-inversiones'    // Wave 2: MapaInversiones
+  | 'presupuesto-abierto' // Wave 2: Presupuesto Abierto API
+  | 'vialidad'            // Wave 3: Vialidad Nacional
+  | 'enohsa'              // Wave 3: ENOHSA water/sanitation
+  | 'ocds-provincial'     // Wave 4: CABA + Mendoza OCDS
+  | 'multilateral'        // Wave 5: World Bank + IDB
+  | 'investigative-seed'  // Wave 6: Odebrecht/Cuadernos
 
 export interface IngestionMeta {
   readonly ingestion_wave: number
