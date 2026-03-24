@@ -8,7 +8,7 @@
  */
 
 import Link from 'next/link'
-import { useEffect, useState, useMemo } from 'react'
+import { useCallback, useEffect, useRef, useState, useMemo } from 'react'
 
 import { useLanguage } from '@/lib/language-context'
 
@@ -117,6 +117,35 @@ export default function MapaPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [hoveredPoint, setHoveredPoint] = useState<PointData | null>(null)
+  const [zoom, setZoom] = useState(1)
+  const [pan, setPan] = useState({ x: 0, y: 0 })
+  const [dragging, setDragging] = useState(false)
+  const dragStart = useRef({ x: 0, y: 0 })
+  const panStart = useRef({ x: 0, y: 0 })
+
+  const handleWheel = useCallback((e: React.WheelEvent) => {
+    e.preventDefault()
+    const delta = e.deltaY > 0 ? 0.9 : 1.1
+    setZoom((z) => Math.max(0.5, Math.min(5, z * delta)))
+  }, [])
+
+  const handlePointerDown = useCallback((e: React.PointerEvent) => {
+    setDragging(true)
+    dragStart.current = { x: e.clientX, y: e.clientY }
+    panStart.current = { ...pan }
+    ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
+  }, [pan])
+
+  const handlePointerMove = useCallback((e: React.PointerEvent) => {
+    if (!dragging) return
+    const dx = e.clientX - dragStart.current.x
+    const dy = e.clientY - dragStart.current.y
+    setPan({ x: panStart.current.x + dx / zoom, y: panStart.current.y + dy / zoom })
+  }, [dragging, zoom])
+
+  const handlePointerUp = useCallback(() => {
+    setDragging(false)
+  }, [])
 
   // Load GeoJSON outline
   useEffect(() => {
@@ -153,12 +182,18 @@ export default function MapaPage() {
         if (!json.success) throw new Error(json.error)
         setProvinces(json.data.provinces)
         setPoints(
-          json.data.points.filter(
-            (p: PointData) =>
-              p.lat && p.lon &&
-              p.lat > -56 && p.lat < -20 &&
-              p.lon > -75 && p.lon < -52,
-          ),
+          json.data.points.filter((p: PointData) => {
+            if (!p.lat || !p.lon) return false
+            // Filter out placeholder coords (0.123456), lat=lon dupes, positive lats
+            if (Math.abs(p.lat) < 1 || Math.abs(p.lon) < 1) return false
+            if (Math.abs(p.lat - p.lon) < 0.01) return false
+            // Argentina: lat must be negative (-55 to -21), lon must be negative (-74 to -53)
+            const lat = p.lat < 0 ? p.lat : -p.lat // fix missing minus sign
+            const lon = p.lon < 0 ? p.lon : -p.lon
+            p.lat = lat
+            p.lon = lon
+            return lat > -56 && lat < -20 && lon > -75 && lon < -52
+          }),
         )
       } catch (e) {
         setError(e instanceof Error ? e.message : String(e))
@@ -204,9 +239,14 @@ export default function MapaPage() {
             <div className="relative overflow-hidden rounded-xl border border-zinc-700 bg-zinc-950 p-2">
               <svg
                 viewBox={`0 0 ${SVG_W} ${SVG_H}`}
-                className="mx-auto w-full max-w-lg"
-                style={{ height: 'auto', maxHeight: '70vh' }}
+                className="mx-auto w-full max-w-lg touch-none select-none"
+                style={{ height: 'auto', maxHeight: '70vh', cursor: dragging ? 'grabbing' : 'grab' }}
+                onWheel={handleWheel}
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
               >
+                <g transform={`translate(${SVG_W / 2 + pan.x}, ${SVG_H / 2 + pan.y}) scale(${zoom}) translate(${-SVG_W / 2}, ${-SVG_H / 2})`}>
                 {/* Argentina outline from GeoJSON */}
                 {geoPath && (
                   <path
@@ -238,10 +278,24 @@ export default function MapaPage() {
                       className="cursor-pointer transition-all duration-150"
                       onMouseEnter={() => setHoveredPoint(p)}
                       onMouseLeave={() => setHoveredPoint(null)}
+                      onClick={(e) => { e.stopPropagation(); setHoveredPoint(hoveredPoint === p ? null : p) }}
                     />
                   )
                 })}
+                </g>
               </svg>
+
+              {/* Zoom controls */}
+              <div className="absolute top-3 right-3 z-10 flex flex-col gap-1">
+                <button onClick={() => setZoom((z) => Math.min(5, z * 1.3))} className="rounded bg-zinc-800/80 px-2 py-1 text-xs text-zinc-300 backdrop-blur hover:bg-zinc-700">+</button>
+                <button onClick={() => setZoom((z) => Math.max(0.5, z * 0.7))} className="rounded bg-zinc-800/80 px-2 py-1 text-xs text-zinc-300 backdrop-blur hover:bg-zinc-700">-</button>
+                <button onClick={() => { setZoom(1); setPan({ x: 0, y: 0 }) }} className="rounded bg-zinc-800/80 px-2 py-1 text-[10px] text-zinc-400 backdrop-blur hover:bg-zinc-700">Reset</button>
+              </div>
+
+              {/* Point count */}
+              <div className="absolute top-3 left-3 z-10 rounded bg-zinc-900/80 px-2 py-1 text-xs text-zinc-400 backdrop-blur">
+                {projectedPoints.length} {lang === 'en' ? 'projects' : 'proyectos'}
+              </div>
 
               {/* Tooltip */}
               {hoveredPoint && (
