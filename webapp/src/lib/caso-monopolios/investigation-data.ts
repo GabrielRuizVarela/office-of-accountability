@@ -274,47 +274,47 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   },
   // --- Tier 2: Interlocking Directorates ---
   {
-    id: 'interlock-dreyfus-santander',
+    id: 'elite-law-firms-bridge',
     claim_es:
-      'Jorge Perez Alati sienta en directorios de Louis Dreyfus (agroexportación) Y Banco Santander (banca) simultáneamente, creando un puente de gobernanza corporativa entre el sector agrario y el financiero.',
+      'Estudios jurídicos de elite (PAGBAM, Bruchou & Funes de Rioja, Allende & Brea) sirven como puentes de información entre grupos económicos monopolísticos a través de roles de síndico y asesoría legal. Perez Alati (PAGBAM) es síndico de Santander y counsel de Dreyfus simultáneamente.',
     claim_en:
-      'Jorge Perez Alati sits on boards of Louis Dreyfus (agro-export) AND Banco Santander (banking) simultaneously, creating a corporate governance bridge between the agrarian and financial sectors.',
+      'Elite law firms (PAGBAM, Bruchou & Funes de Rioja, Allende & Brea) serve as information bridges between monopolistic economic groups through síndico and legal counsel roles. Perez Alati (PAGBAM) is síndico of Santander and counsel to Dreyfus simultaneously.',
     status: 'confirmed',
     tier: 2,
     sector: 'cross_sector',
-    source: 'IGJ Registry / Neo4j CompanyOfficer',
-    source_url: 'https://www.igj.gob.ar/',
+    source: 'Boletín Oficial / PAGBAM firm profile',
+    source_url: 'https://pagbam.com/',
     detail_es:
-      'Perez Alati figura en 11 directorios de empresas monopólicas. La conexión Dreyfus-Santander implica que decisiones de financiamiento agropecuario y comercio exterior pasan por el mismo individuo.',
+      'CORRECCIÓN: No son directorios cruzados en sentido antimonopolio (Art. 3(l) Ley 27.442 solo prohíbe entre empresas competidoras para directores). Son roles de síndico/asesor legal. Sin embargo, crean redes de información privilegiada entre sectores.',
     detail_en:
-      'Perez Alati appears on 11 monopoly company boards. The Dreyfus-Santander connection means agricultural financing and foreign trade decisions pass through the same individual.',
+      'CORRECTION: These are NOT antitrust-relevant interlocking directorates (Art. 3(l) Ley 27.442 only prohibits between competing companies for directors). They are síndico/legal counsel roles. However, they create privileged information networks across sectors.',
   },
   {
-    id: 'interlock-barrick-hsbc',
+    id: 'aluar-dual-donor-concession',
     claim_es:
-      'María Lucila Winschel sienta en directorios de Barrick Gold (minería) Y HSBC (banca) simultáneamente — nexo minería-banca que conecta extracción de recursos con flujos financieros internacionales.',
+      'Aluar Aluminio Argentino SAIC donó ARS 11.15M a campañas políticas (2017-2019), siendo la ÚNICA empresa que donó a AMBAS coaliciones en 2019 (JxC ARS 4.5M + FdT ARS 3.65M). Viola potencialmente Art. 15 Ley 26.215 que prohíbe donaciones de concesionarios estatales — Aluar posee 60.2% de Futaleufú (concesión estatal).',
     claim_en:
-      'María Lucila Winschel sits on boards of Barrick Gold (mining) AND HSBC (banking) simultaneously — mining-banking nexus connecting resource extraction with international financial flows.',
+      'Aluar Aluminio Argentino SAIC donated ARS 11.15M to campaigns (2017-2019), being the ONLY company to donate to BOTH coalitions in 2019 (JxC ARS 4.5M + FdT ARS 3.65M). Potentially violates Art. 15 Ley 26.215 prohibiting donations from state concessionaires — Aluar owns 60.2% of Futaleufú (state concession).',
     status: 'confirmed',
     tier: 2,
     sector: 'cross_sector',
-    source: 'IGJ Registry / Neo4j CompanyOfficer',
-    source_url: 'https://www.igj.gob.ar/',
+    source: 'CNE campaign finance records / Ley 26.215',
+    source_url: 'https://www.electoral.gob.ar/',
     detail_es:
-      'Winschel aparece en 9 directorios de empresas monopólicas (7 Barrick + 2 HSBC). Barrick Gold opera Veladero, una de las minas de oro más grandes de Argentina. HSBC fue multado por facilitación de evasión fiscal.',
+      'FdT inicialmente RECHAZÓ la donación de ARS 900K alegando que Aluar es concesionario estatal. Luego la aceptó cuando Aluar argumentó que la concesión es de la subsidiaria Futaleufú SA, no de Aluar directamente. Donación hedging clásica de monopolista dependiente de concesiones.',
     detail_en:
-      'Winschel appears on 9 monopoly company boards (7 Barrick + 2 HSBC). Barrick Gold operates Veladero, one of Argentina\'s largest gold mines. HSBC was fined for tax evasion facilitation.',
+      'FdT initially REJECTED the ARS 900K donation arguing Aluar is a state concessionaire. Later accepted when Aluar argued the concession is held by subsidiary Futaleufú SA, not Aluar directly. Classic hedging donation by a monopolist dependent on concessions.',
   },
   {
-    id: 'interlock-techint-amx-santander',
+    id: 'igj-cumulative-records-caveat',
     claim_es:
-      'Guillermo Hang conecta Techint (acero/construcción) con AMX/Claro (telecomunicaciones). Claudio Cesario conecta Santander (banca) con Techint. La banca financia al constructor que usa su propio acero.',
+      'NOTA METODOLÓGICA: Los registros IGJ en Neo4j son ACUMULATIVOS — incluyen TODAS las posiciones históricas en directorios, no solo las actuales. Los conteos de empresas por persona (Magnetto 35, Vila 70+, Mindlin 52) incluyen roles pasados y subsidiarias. De Narváez vendió América TV (2017) y El Cronista (2021) pero aún figuran en IGJ.',
     claim_en:
-      'Guillermo Hang bridges Techint (steel/construction) with AMX/Claro (telecom). Claudio Cesario bridges Santander (banking) with Techint. Banking finances the builder who uses their own steel.',
+      'METHODOLOGICAL NOTE: IGJ records in Neo4j are CUMULATIVE — they include ALL historical board positions, not just current ones. Company counts per person (Magnetto 35, Vila 70+, Mindlin 52) include past roles and subsidiaries. De Narváez sold América TV (2017) and El Cronista (2021) but they still appear in IGJ.',
     status: 'confirmed',
-    tier: 2,
+    tier: 3,
     sector: 'cross_sector',
-    source: 'IGJ Registry / Neo4j CompanyOfficer',
+    source: 'IGJ Registry methodology / factcheck resolution',
     source_url: 'https://www.igj.gob.ar/',
   },
   // --- Tier 2: Regulatory Capture ---
@@ -419,9 +419,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'de-narvaez-35-companies',
     claim_es:
-      'Francisco De Narváez, diputado nacional por Buenos Aires, aparece como officer en 35 empresas según IGJ/Neo4j, incluyendo América TV y El Cronista Comercial (Grupo Vila-Manzano).',
+      'Francisco De Narváez, diputado nacional por Buenos Aires, aparece como officer en ~25-30 empresas activas (IGJ acumulativo muestra 35 incluyendo históricas). Vendió su participación en América TV (2017) y El Cronista (2021). Tiene 3 entidades offshore activas en BVI (Retrato Partners, Titan Consulting).',
     claim_en:
-      'Francisco De Narváez, national deputy for Buenos Aires, appears as officer in 35 companies per IGJ/Neo4j, including América TV and El Cronista Comercial (Vila-Manzano Group).',
+      'Francisco De Narváez, national deputy for Buenos Aires, appears as officer in ~25-30 active companies (IGJ cumulative shows 35 including historical). Sold his stake in América TV (2017) and El Cronista (2021). Has 3 active BVI offshore entities (Retrato Partners, Titan Consulting).',
     status: 'confirmed',
     tier: 3,
     sector: 'cross_sector',
