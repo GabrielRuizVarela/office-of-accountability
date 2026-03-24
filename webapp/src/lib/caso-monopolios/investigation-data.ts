@@ -95,16 +95,16 @@ export interface ImpactStat {
 
 export const IMPACT_STATS: readonly ImpactStat[] = [
   {
-    value: '24',
+    value: '32+',
     label_es: 'Ondas de investigación completadas',
     label_en: 'Investigation waves completed',
-    source: 'Sector deep-dives, Neo4j cross-reference, LLM analysis, privatization history, consumer impact, regulatory capture, finanzas-politicas + obras-públicas graph cross-ref',
+    source: '32 waves + factcheck + resolution + obras-públicas cross-ref. 44 research JSON files, 1.5MB.',
   },
   {
-    value: '240',
+    value: '829+',
     label_es: 'Cruces Neo4j con actores monopólicos',
     label_en: 'Neo4j cross-references with monopoly actors',
-    source: 'Cross-reference of monopoly companies/figures against Contractor, OffshoreOfficer, Politician, Donor, CompanyOfficer nodes',
+    source: '240 initial + 141 finanzas + 85 obras + 77 offshore + 124 donations + 162 consolidated = 829+ unique cross-references',
   },
   {
     value: '90',
@@ -131,10 +131,10 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     source: 'Board members sitting on companies across monopolized sectors (IGJ registry)',
   },
   {
-    value: '24',
+    value: '44',
     label_es: 'Archivos de investigación JSON',
     label_en: 'Investigation JSON research files',
-    source: '24 research JSON files from 24-wave investigation cycle (~900KB total)',
+    source: '44 research JSON files — sectors, cross-refs, factchecks, resolutions, obras-públicas (1.5MB total)',
   },
 ] as const
 
