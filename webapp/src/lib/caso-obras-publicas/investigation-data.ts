@@ -119,7 +119,7 @@ export const IMPACT_STATS: ImpactStat[] = [
     source: 'Office of Accountability knowledge graph',
   },
   {
-    value: '9,385',
+    value: '13,277',
     label_en: 'Cross-entity matches (SAME_ENTITY links)',
     label_es: 'Coincidencias entre entidades (enlaces SAME_ENTITY)',
     source: 'Office of Accountability cross-reference engine',
