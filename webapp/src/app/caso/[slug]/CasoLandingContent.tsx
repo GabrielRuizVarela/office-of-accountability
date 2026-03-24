@@ -67,11 +67,11 @@ const t = {
 } satisfies Record<string, Record<Lang, string>>
 
 const DICTADURA_STATS = [
-  { value: 41, label: 'Personas', color: '#facc15' },
-  { value: 19, label: 'Centros clandestinos', color: '#facc15' },
-  { value: 15, label: 'Eventos clave', color: '#facc15' },
+  { value: 9743, label: 'Personas', color: '#facc15' },
+  { value: 774, label: 'Centros clandestinos', color: '#facc15' },
+  { value: 51, label: 'Eventos clave', color: '#facc15' },
   { value: 10, label: 'Causas judiciales', color: '#facc15' },
-  { value: 150, label: 'Relaciones mapeadas' },
+  { value: 30482, label: 'Relaciones mapeadas' },
 ] as const
 
 interface Props {
