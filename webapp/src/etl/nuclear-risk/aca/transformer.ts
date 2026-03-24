@@ -9,6 +9,10 @@ function generateHash(input: string): string {
   return createHash('sha256').update(input).digest('hex').slice(0, 16)
 }
 
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, ' ').replace(/\s+/g, ' ').trim()
+}
+
 function slugify(text: string): string {
   return text
     .toLowerCase()
@@ -44,9 +48,9 @@ export function transformAcaItems(items: readonly RssItem[]): TransformAcaResult
     signals.push({
       id,
       date,
-      title_en: item.title,
-      title_es: '', // to be filled by LLM in Phase 3
-      summary_en: item.description || item.title,
+      title_en: stripHtml(item.title),
+      title_es: '',
+      summary_en: stripHtml(item.description || item.title),
       summary_es: '',
       source_url: item.link,
       source_module: 'aca',
