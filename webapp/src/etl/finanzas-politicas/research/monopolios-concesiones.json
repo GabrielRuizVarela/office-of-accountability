@@ -1,0 +1,578 @@
+{
+  "title": "Monopolios de Concesiones de Infraestructura en Argentina — Aeropuertos, Autopistas, Hidrovia, Ferrocarriles y Puertos",
+  "date": "2026-03-24",
+  "summary": "Comprehensive investigation into Argentina's infrastructure concession monopolies, documenting how a small number of business groups — Eurnekian (Corporacion America/AA2000), Abertis (Ausol/GCO), Roggio (Metrovias), Romero/Emepa (Ferrovias/Hidrovia) — have captured perpetual or repeatedly-extended concessions over airports, toll roads, waterways, railways, and ports. The pattern reveals systematic lack of competitive bidding, above-inflation tariff increases, massive subsidy dependence, offshore corporate structures, and confessed bribery in the Cuadernos case.",
+
+  "airports": {
+    "concessionaire": "Aeropuertos Argentina 2000 (AA2000)",
+    "parent_company": "Corporacion America Airports S.A. (NYSE: CAAP)",
+    "controlling_figure": "Eduardo Eurnekian",
+    "airports_count": 35,
+    "traffic_share_percent": 90,
+    "traffic_share_detail": "Concentrates approximately 90% of Argentina's commercial air traffic across 35 airports",
+    "concession_history": {
+      "original_award": {
+        "year": 1998,
+        "duration_years": 30,
+        "expiry": 2028,
+        "awarded_by": "Menem administration privatization",
+        "original_canon_annual_pesos": 171121000,
+        "detail": "AA2000 won by offering 171.1 million pesos annual canon. Took possession of Ezeiza April 27, 1998; Aeroparque April 3, 1998; Cordoba June 15, 1998."
+      },
+      "canon_default": {
+        "date": "1998-12-03",
+        "detail": "Only seven months after taking Ezeiza, AA2000 filed administrative complaint invoking 'exceptio non adempleti contratus' to avoid paying full canon. By 2000 was no longer paying the committed amount."
+      },
+      "renegotiation_2007": {
+        "decree": "1799/2007",
+        "detail": "Renegotiation Agreement approved — the fixed annual canon was eliminated entirely and replaced with an alternative mechanism, effectively reducing AA2000's obligations to the state."
+      },
+      "extension_2017": {
+        "detail": "Eurnekian secured concession through 2028 under Macri administration",
+        "sources": ["https://www.cronista.com/negocios/Eurnekian-se-aseguro-la-concesion-de-los-aeropuertos-en-el-pais-hasta-2028-20171128-0037.html"]
+      },
+      "extension_2020": {
+        "decree": "Alberto Fernandez administration, November 2020",
+        "new_expiry": 2038,
+        "detail": "Eight years before the 2028 expiry, the concession was extended 10 more years to 2038. AA2000 committed to USD 2.5 billion in investments, of which USD 1.4 billion in the first seven years.",
+        "sources": [
+          "https://www.infobae.com/economia/2020/11/30/el-estado-extendio-la-concesion-de-aeropuertos-argentina-2000-hasta-2038-y-la-compania-invertira-usd-2500-millones/",
+          "https://www.aviacionline.com/extenderan-hasta-2038-la-concesion-a-aeropuertos-argentina-2000"
+        ]
+      }
+    },
+    "financial_data": {
+      "aa2000_revenue_2023_usd_million": 828,
+      "aa2000_ebitda_2023_usd_million": 361,
+      "aa2000_passengers_2017_million": 35.9,
+      "note": "AA2000 is one of the most expensive airport operators in the region for airlines and passengers, leveraging its near-natural monopoly."
+    },
+    "monopoly_critique": "The concession covers all 35 commercially viable airports in Argentina. No competitive rebidding has occurred since 1998. The original canon was negotiated away. Extensions were granted years before expiry without open tender.",
+    "international_expansion": {
+      "entity": "Corporacion America Airports (CAAP)",
+      "airports_global": 53,
+      "countries": ["Argentina", "Brazil", "Uruguay", "Ecuador", "Armenia", "Italy"],
+      "detail": "Leveraging the Argentine monopoly as its base, Corporacion America expanded to become one of the largest private airport operators globally, operating 53 airports in 6 countries.",
+      "sources": [
+        "https://caap.aero/",
+        "https://investors.corporacionamericaairports.com/investors/corporate-profile/default.aspx"
+      ]
+    },
+    "regulatory_body": "ORSNA (Organismo Regulador del Sistema Nacional de Aeropuertos)",
+    "sources": [
+      "https://infonegocios.info/nota-principal/eurnekian-siempre-gana-logra-extender-por-10-anos-mas-la-concesion-de-aa2000-que-vencia-en-2028-habia-algun-apuro",
+      "https://aeromarket.com.ar/noticias/el-caso-aa2000/",
+      "https://aeromarket.com.ar/noticias/aviacion-comercial/el-caso-aa2000-en-numeros/",
+      "http://restaurarg.blogspot.com/2018/05/el-monopolio-de-aeropuertos-argentina.html",
+      "https://www.argentinaenred.com/2023/08/27/aeropuertos-y-privatizaciones/"
+    ]
+  },
+
+  "toll_roads": {
+    "buenos_aires_access": {
+      "acceso_norte_ausol": {
+        "full_name": "Autopistas del Sol S.A. (Ausol)",
+        "highway": "Panamericana and General Paz (Acceso Norte)",
+        "length_km": 120,
+        "daily_vehicles_approx": 1000000,
+        "shareholders": {
+          "abertis_percent": 31.59,
+          "webuild_percent": 19.82,
+          "natal_inversiones_percent": 14.12,
+          "public_float": "remainder"
+        },
+        "profit_explosion": {
+          "q1_2024_pesos_million": 1083,
+          "q2_2024_pesos_million": 26644,
+          "multiplier": "26x",
+          "detail": "Ausol multiplied profits by 26 times in just one quarter after the Milei government authorized above-inflation toll increases via the CVT (Coeficiente de Variacion Tarifario) mechanism.",
+          "sources": ["https://www.resumenlatinoamericano.org/2025/08/08/argentina-el-gobierno-le-habilito-aumentos-de-peajes-por-encima-de-la-inflacion-y-ausol-multiplico-por-26-sus-ganancias/"]
+        }
+      },
+      "acceso_oeste_gco": {
+        "full_name": "Grupo Concesionario del Oeste (GCO)",
+        "highway": "Buenos Aires-Lujan (Acceso Oeste)",
+        "length_km": 56,
+        "daily_vehicles_approx": 350000,
+        "shareholders": {
+          "abertis_acesa_percent": 42.87,
+          "ijm_malaysia_percent": 20.10,
+          "supervene_trust_percent": 5.73,
+          "public_float": "remainder"
+        }
+      },
+      "abertis_dispute": {
+        "ciadi_claim_usd_million": 299.5,
+        "detail": "Abertis filed claims for USD 299.5 million with ICSID international arbitration after the Argentine government moved to annul/revert the highway concessions. Argentine courts also suspended a parallel ICC arbitration.",
+        "sources": [
+          "https://www.eleconomista.es/infraestructuras-servicios/noticias/12828294/05/24/abertis-reclama-a-argentina-276-millones-en-la-batalla-por-sus-autopistas-al-no-llegar-a-un-acuerdo-con-milei.html",
+          "https://www.cronista.com/negocios/la-duena-de-ausol-y-autopistas-del-oeste-demando-a-la-argentina-en-el-ciadi/",
+          "https://ciarglobal.com/juzgados-argentinos-suspenden-arbitraje-cci-por-autopistas-de-abertis/"
+        ]
+      },
+      "toll_increases_2024": {
+        "acceso_norte_oeste_may_2024": "100% increase in one adjustment",
+        "portenas_april_2024": "150% increase on Buenos Aires city highways",
+        "mechanism": "CVT (Coeficiente de Variacion Tarifario) — adjusts based on inflation, wages, and operational costs, structured to guarantee above-inflation returns to concessionaires",
+        "sources": [
+          "https://www.infobae.com/america/agencias/2024/05/16/tarifas-de-peajes-de-dos-autopistas-argentinas-participadas-por-abertis-aumentaran-100/",
+          "https://www.infobae.com/sociedad/2024/04/05/fuerte-aumento-en-los-peajes-de-las-autopistas-portenas-subiran-desde-manana-150/"
+        ]
+      }
+    },
+    "ausa_city_highways": {
+      "full_name": "Autopistas Urbanas S.A. (AUSA)",
+      "nature": "State-owned company governed by private law",
+      "shareholders": {
+        "city_government_percent": 95,
+        "subterraneos_ba_percent": 5
+      },
+      "governing_law": "Ley 3060 (2009)",
+      "revenue_distribution": {
+        "highway_maintenance_percent": 40,
+        "subway_expansion_fund_percent": 5,
+        "city_public_works_percent": 55
+      },
+      "jorge_macri_policy": "Monthly tariff updates based on IPC inflation index from two months prior plus a 2% surcharge. AUSA funds are channeled to city public works ordered by the city government, making toll revenue a de facto general budget supplement.",
+      "sources": [
+        "https://buenosaires.gob.ar/movilidad/institucional-autopistas-urbanas-sa",
+        "https://www.letrap.com.ar/ciudad/ausa-la-empresa-que-maneja-una-parte-central-las-obras-publicas-portenas-n5419306",
+        "https://www.letrap.com.ar/ciudad/jorge-macri-se-cubre-un-repunte-inflacionario-y-recalcula-los-aumentos-autopistas-y-subtes-n5421723"
+      ]
+    },
+    "concentration_analysis": "The three main access routes to Buenos Aires — Norte (Panamericana), Oeste (Lujan), and the city internal highway network — are each controlled by a single concessionaire with no competing route. This creates unavoidable toll capture for millions of daily commuters."
+  },
+
+  "hidrovia": {
+    "full_name": "Hidrovia Paraguay-Parana",
+    "length_km": 1400,
+    "strategic_importance": "Carries 80% of Argentina's grain, oil and byproduct exports. In 2024, USD 30 billion in exports transited the waterway. Approximately 79.5 million tonnes of agricultural products shipped from Parana River ports in 2021.",
+    "concession_history": {
+      "original_1995": {
+        "awarded_by": "Menem administration (1995)",
+        "concessionaire": "Hidrovia S.A.",
+        "consortium": {
+          "jan_de_nul_percent": 50,
+          "jan_de_nul_country": "Belgium",
+          "emepa_percent": 50,
+          "emepa_owner": "Gabriel Romero"
+        },
+        "original_duration": "10 years (1995-2005)",
+        "scope": "Dredging, signaling/beaconing, and maintenance of the navigable waterway"
+      },
+      "extension_1997": {
+        "detail": "Extended by decree until 2013 under Menem government, just two years after original award"
+      },
+      "extension_2010": {
+        "decree": "113/2010",
+        "new_expiry": 2021,
+        "detail": "Renewed until 2021. Gabriel Romero confessed to paying USD 600,000 in bribes for this extension — two payments of USD 300,000 — to obtain a favorable presidential decree from Cristina Kirchner."
+      },
+      "annual_billing_usd_million": 300,
+      "state_control_2021": {
+        "date": "2021-07-01",
+        "decree": "427/2021",
+        "detail": "Concession expired April 30, 2021. After temporary extension, waterway placed under state control via AGP (Administracion General de Puertos)."
+      },
+      "failed_retender_2022": {
+        "detail": "AGP annulled the tender after disqualifying three companies and receiving only one offer (from DEME, Belgium). Lack of competition raised suspicions of irregularities.",
+        "sources": ["https://www.infobae.com/economia/2022/03/18/hidrovia-tras-descalificar-a-tres-empresas-la-agp-anulo-la-licitacion-para-dragar-la-via-navegable-y-hara-una-nueva-compulsa/"]
+      },
+      "milei_retender": {
+        "concession_duration_years": 25,
+        "model": "Risk-based, no state subsidy",
+        "minimum_bidder_revenue_usd_million": 450,
+        "minimum_dredging_revenue_annual_usd_million": 300,
+        "initial_toll_per_trn_usd": 4.39,
+        "projected_toll_25yr_per_trn_usd": 11,
+        "toll_increase_2024": "Milei applied a 40% increase in dollar-denominated waterway tolls",
+        "emepa_continued_involvement": "Despite the main concession ending, Emepa was reportedly near winning a 'short tender' for waterway beacon/signaling services, maintaining the Romero group's presence.",
+        "sources": [
+          "https://www.infobae.com/movant/2025/02/13/hidrovia-idas-y-vueltas-en-la-licitacion-de-una-via-clave-para-la-competitividad-argentina/",
+          "https://www.letrap.com.ar/economia/tarifazo-la-hidrovia-javier-milei-aplico-un-aumento-los-peajes-del-40-dolares-n5411404",
+          "https://www.dataclave.com.ar/poder/largo-y-sinuoso-camino--emepa--cerca-de-ganar--licitacion-corta--para-balizar-la-hidrovia_a61cccf337b95f10a80c74504"
+        ]
+      }
+    },
+    "cost_of_delay": {
+      "annual_cost_to_state_usd_billion": 10,
+      "detail": "The delay in calling a new tender generates an estimated cost to the state of USD 10 billion annually.",
+      "sources": ["https://www.ambito.com/economia/hidrovia/la-demora-el-llamado-licitacion-la-le-genera-un-costo-al-estado-us10000-millones-anuales-n5371607"]
+    },
+    "monopoly_critique": "For 26 years (1995-2021), a single consortium controlled 80% of Argentina's export logistics bottleneck without competitive rebidding. The concession was extended twice by decree, and the second extension was obtained through confessed bribery.",
+    "sources": [
+      "https://chequeado.com/el-explicador/hidrovia-paraguay-parana-por-que-resulta-esencial-para-la-economia-argentina-y-que-paso-con-la-licitacion/",
+      "https://www.eldiarioar.com/politica/privatizacion-hidrovia-parana-negocio-detras-concesion-30-anos-lanzo-gobierno-milei_1_11841802.html",
+      "https://www.anred.org/un-rio-parana-para-todos-o-una-hidrovia-para-pocos/"
+    ]
+  },
+
+  "railways": {
+    "overview": "Argentina's metropolitan passenger railways were privatized under Menem in the 1990s. Most lines were eventually re-nationalized or brought under state operation, but two lines — Urquiza and Belgrano Norte — remain in private hands, controlled by groups whose owners confessed to paying bribes in the Cuadernos case.",
+    "metrovias_roggio": {
+      "entity": "Metrovias S.A. / Emova (since 2020)",
+      "controlling_group": "Benito Roggio Transportes (Grupo Roggio)",
+      "controlling_figure": "Aldo Roggio",
+      "operations": {
+        "subway": {
+          "system": "Buenos Aires Subte (6 lines + Premetro)",
+          "concession_since": 1994,
+          "current_contract": "New 12-year concession through Emova consortium (Metrovias + Roggio), operational from December 1, 2020, running until approximately 2033 with possible 3-year extension"
+        },
+        "rail": {
+          "line": "Linea Urquiza",
+          "concession_extended_to": "June 2027 (third extension under Milei)"
+        }
+      },
+      "cuadernos_case": {
+        "detail": "Aldo Roggio confessed as 'arrepentido' (cooperating witness) in the Cuadernos case in 2018. He admitted to returning 5% of transport subsidies as kickbacks, making payments to former Transport Secretary Ricardo Jaime. He stated they 'could not refuse' demands because they were 'threatened' with losing the concession.",
+        "divested_shares": "Aldo Roggio divested his shares from the family group two weeks before the new subway contract was awarded.",
+        "sources": [
+          "https://www.laizquierdadiario.com/La-izquierda-reclama-el-fin-de-la-concesion-del-Subte-a-Aldo-Roggio",
+          "https://www.eldiarioar.com/economia/nuevo-consorcio-metrovias-roggio-seguira-frente-subte-buenos-aires-12-anos_1_8313339.html"
+        ]
+      },
+      "subsidy_dependence": {
+        "urquiza_monthly_revenue_pesos_million": 289,
+        "urquiza_monthly_costs_pesos_million": 3427,
+        "urquiza_monthly_deficit_pesos_million": 3137,
+        "detail": "The Urquiza line earns 289 million pesos monthly but costs 3,427 million to operate. The state covers the 3,137 million peso monthly deficit — subsidies represent 91.6% of operating costs."
+      }
+    },
+    "ferrovias_romero": {
+      "entity": "Ferrovias S.A.C.",
+      "controlling_group": "EMEPA (Empresa Metalurgica Patricias Argentinas)",
+      "controlling_figure": "Gabriel Romero",
+      "line": "Belgrano Norte",
+      "concession_extended_to": "June 2027 (third extension under Milei, Resolutions 90 and 91 of Secretaria de Transporte)",
+      "subsidy_dependence": {
+        "belgrano_norte_monthly_revenue_pesos_million": 603,
+        "belgrano_norte_monthly_costs_pesos_million": 7127,
+        "belgrano_norte_monthly_deficit_pesos_million": 6523,
+        "detail": "Belgrano Norte earns 603 million pesos monthly but costs 7,127 million. State subsidies cover 6,523 million — 91.5% of operating costs."
+      },
+      "cuadernos_case": {
+        "detail": "Gabriel Romero confessed to paying an annual 'retorno' of USD 500,000 to maintain the Ferrovias concession, plus 15% of subsidies returned as kickbacks to former Transport Secretary Ricardo Jaime.",
+        "sources": [
+          "https://www.infojudicial.com.ar/noticias/las-coimas-y-los-retornos-del-kirchnerismo-el-impactante-caso-de-gabriel-romero/",
+          "https://sintinta.com.ar/2025/09/14/quien-es-gabriel-romero-el-empresario-de-la-hidrovia-que-confeso-pagar-coimas-por-un-decreto-favorable/"
+        ]
+      }
+    },
+    "belgrano_cargas_privatization": {
+      "decree": "60/2025",
+      "detail": "Milei initiated 'total privatization' of Belgrano Cargas y Logistica S.A. through vertical disintegration. State subsidy for Belgrano Cargas was approximately USD 112 million in 2023.",
+      "sources": [
+        "https://www.infobae.com/politica/2025/02/10/el-gobierno-inicio-el-proceso-de-privatizacion-total-de-la-empresa-belgrano-cargas/",
+        "https://www.ambito.com/politica/trenes-el-gobierno-javier-milei-anuncio-la-privatizacion-la-linea-belgrano-cargas-n6073736"
+      ]
+    },
+    "pattern": "Despite confessions of bribery, both Roggio and Romero groups retain their railway concessions. The Milei government — which campaigns on anti-corruption and market liberalization — extended both concessions for the third time rather than opening competitive tenders.",
+    "sources": [
+      "https://www.letrap.com.ar/economia/javier-milei-vuelve-prorrogar-las-concesiones-ferroviarias-roggio-y-romero-mediados-2027-n5421093",
+      "https://www.iprofesional.com/negocios/438814-roggio-y-romero-seguiran-al-frente-de-los-trenes-urquiza-y-belgrano-norte",
+      "https://www.pagina12.com.ar/377134-cada-vez-mas-subsidios-para-metrovias-y-cada-vez-menos-fondo"
+    ]
+  },
+
+  "ports": {
+    "gran_rosario_complex": {
+      "description": "The world's largest oilseed industrial and port complex, spanning 70 km of Parana River coastline from Timbues to Arroyo Seco",
+      "terminals_total": 31,
+      "grain_terminals": 21,
+      "export_share_percent": 78,
+      "export_share_detail": "Approximately 78-80% of Argentina's grain, flour, and oil exports are dispatched from Gran Rosario annually",
+      "processing_capacity_tonnes_daily": 209000,
+      "gran_rosario_share_of_processing_percent": 80,
+      "gran_rosario_processing_tonnes_daily": 165700,
+      "key_operators": [
+        {"name": "Louis Dreyfus Company", "terminals": ["Timbues", "General Lagos"]},
+        {"name": "COFCO (China)", "terminals": ["Timbues", "Puerto General San Martin"]},
+        {"name": "Cargill", "terminals": ["Quebracho", "Villa Gobernador Galvez", "Punta Alvear"]},
+        {"name": "Bunge", "terminals": ["Pampa (Puerto General San Martin)"]},
+        {"name": "Terminal 6 (AGD-Bunge JV)", "terminals": ["Puerto General San Martin"]},
+        {"name": "ACA (Asociacion de Cooperativas Argentinas)", "terminals": ["San Lorenzo"]},
+        {"name": "Vincentin", "terminals": ["San Lorenzo"]},
+        {"name": "Molinos Agro (Perez Companc)", "terminals": ["San Lorenzo"]},
+        {"name": "Renova (Vicentin-Glencore JV)", "terminals": ["Timbues"]}
+      ],
+      "concentration_concern": "A handful of multinational grain traders and local agribusiness groups control virtually all export capacity. The private terminal model, combined with Hidrovia toll dependence, creates a vertically integrated export bottleneck."
+    },
+    "agp_role": {
+      "entity": "Administracion General de Puertos (AGP)",
+      "detail": "State entity that manages public ports and, since 2021, temporarily administers Hidrovia waterway operations. Historically marginalized as private terminals dominate export logistics.",
+      "sources": ["https://www.argentina.gob.ar/economia/agencia-nacional-de-puertos-y-navegacion/puertos/agenda-de-puertos-privados"]
+    },
+    "sources": [
+      "https://www.bcr.com.ar/es/mercados/investigacion-y-desarrollo/informativo-semanal/noticias-informativo-semanal/las-terminales",
+      "https://www.bcr.com.ar/es/mercados/mercado-de-granos/noticias/mapa-terminales-portuarias-del-gran-rosario",
+      "https://www.cronista.com/transport-cargo/gran-rosario-segundo-nodo-portuario-agroexportador-del-mundo/"
+    ]
+  },
+
+  "perpetual_concession_pattern": {
+    "summary": "Argentine infrastructure concessions exhibit a recurring pattern: original awards through privatization in the 1990s (Menem era) are repeatedly extended by successive governments of different political orientations — Kirchnerismo, Macrismo, and Milei — without open competitive rebidding. Each extension creates new path dependency, making future competition even less likely.",
+    "documented_extensions": [
+      {
+        "sector": "Airports",
+        "concessionaire": "AA2000 (Eurnekian)",
+        "original_term": "1998-2028",
+        "extensions": ["2007 renegotiation eliminated canon", "2017 secured to 2028", "2020 extended to 2038"],
+        "total_years_without_rebid": 40,
+        "governments_extending": ["Kirchner (2007)", "Macri (2017)", "Fernandez (2020)"]
+      },
+      {
+        "sector": "Hidrovia",
+        "concessionaire": "Jan De Nul + Emepa (Romero)",
+        "original_term": "1995-2005",
+        "extensions": ["1997 extended to 2013", "2010 extended to 2021"],
+        "total_years_without_rebid": 26,
+        "governments_extending": ["Menem (1997)", "Kirchner (2010)"],
+        "bribery_confessed": true
+      },
+      {
+        "sector": "Subte/Subway",
+        "concessionaire": "Metrovias/Roggio",
+        "original_term": "1994-2007",
+        "extensions": ["Multiple extensions through 2020", "New 12-year contract 2020-2033 without open international tender"],
+        "total_years_without_rebid": 39,
+        "bribery_confessed": true
+      },
+      {
+        "sector": "Railways (Urquiza + Belgrano Norte)",
+        "concessionaire": "Metrovias/Roggio + Ferrovias/Romero",
+        "original_term": "1994-era",
+        "extensions": ["Extended under Massa", "Extended under Milei (2024)", "Extended again under Milei to June 2027"],
+        "total_years_without_rebid": 33,
+        "governments_extending": ["Massa (2023)", "Milei (2024)", "Milei (2025)"],
+        "bribery_confessed": true
+      },
+      {
+        "sector": "Toll roads (Ausol/GCO)",
+        "concessionaire": "Abertis (Spain) + local partners",
+        "original_term": "1990s-era privatization",
+        "status": "Partially annulled by government; Abertis filed ICSID claim for USD 299.5M",
+        "note": "Only sector where concession was actually challenged, resulting in international arbitration"
+      }
+    ],
+    "enabling_mechanisms": [
+      "Emergency decrees (DNU) bypassing Congress",
+      "Renegotiation clauses triggered by concessionaire claims of 'economic-financial disequilibrium'",
+      "Political donations and documented bribery (Cuadernos case)",
+      "Regulatory capture — ORSNA, CNRT, AGP staffed with industry-friendly officials",
+      "Ley Bases (27.742) reforms that expand executive discretion over concession terms"
+    ],
+    "sources": [
+      "https://www.letrap.com.ar/economia/javier-milei-vuelve-prorrogar-las-concesiones-ferroviarias-roggio-y-romero-mediados-2027-n5421093",
+      "https://infonegocios.info/nota-principal/eurnekian-siempre-gana-logra-extender-por-10-anos-mas-la-concesion-de-aa2000-que-vencia-en-2028-habia-algun-apuro"
+    ]
+  },
+
+  "key_figures": {
+    "eurnekian_eduardo": {
+      "group": "Corporacion America / AA2000",
+      "estimated_companies": 61,
+      "sectors": ["Airports", "Energy/Hydrocarbons", "Banking (Wilobank)", "Agroindustry/Wine", "Retail (Shop Gallery)", "Real Estate", "Mining"],
+      "offshore_structure": {
+        "liechtenstein_foundation": "Southern Cone Foundation",
+        "bvi_holding": "Liska Investment Corporation",
+        "panama_entity": "Mayville Capital Corporation (created May 2005)",
+        "bvi_entity_2": "Viskert Enterprises",
+        "us_entities": ["Advanced Global Investments LTD", "Advanced Global Investments LLC"],
+        "luxembourg_holding": "Corporacion America Airports S.A.",
+        "spain_holding": "Latin Exploration SLU",
+        "detail": "Multi-layered offshore structure: Liechtenstein foundation controls BVI holding which controls Luxembourg and Spain sub-holdings, which in turn control operating companies across 7+ countries."
+      },
+      "pandora_papers": true,
+      "sources": [
+        "https://losricosdeargentina.com.ar/eurnekian2.html",
+        "https://www.eldiarioar.com/politica/pandora-papers/nueve-diez-familias-ricas-argentina-figuran-pandora-papers-sociedades-fideicomisos-offshore_1_8425464.html",
+        "https://www.bloomberglinea.com/2021/10/25/galperin-bulgheroni-rocca-perez-companc-roemmers-y-eurnekian-involucrados-en-los-pandora-papers/",
+        "https://www.analisisdigital.com.ar/judiciales/2025/12/25/la-historia-de-poder-de-eurnekian-el-padre-de-susana-medina-de-rizzo"
+      ]
+    },
+    "roggio_aldo": {
+      "group": "Grupo Roggio / Benito Roggio e Hijos",
+      "group_history_years": 117,
+      "employees": 10000,
+      "countries_of_operation": ["Argentina", "Uruguay", "Paraguay", "Brazil", "Chile", "Bolivia", "Peru", "Mexico", "Ecuador", "Colombia", "Venezuela", "USA (Texas)"],
+      "sectors": ["Construction", "Transportation (Subte, Urquiza)", "Environmental services (Cliba)", "Water/Sanitation", "Technology", "Entertainment"],
+      "offshore_structure": {
+        "bvi_entities": [
+          {"name": "Gotland International Limited", "registered": "2016-07-05"},
+          {"name": "Graymark International Limited", "registered": "2016 (BVI)"},
+          {"name": "Linhill International Limited", "registered": "2016-10 (BVI)"}
+        ],
+        "bvi_trust": "Fideicomiso offshore registered 2004 via Trident Trust Company",
+        "bank_accounts": "Accounts opened March 2017 in Zurich, New York, and Miami",
+        "beneficiaries": ["Aldo Roggio", "Lucia Ines Roggio Picot", "Martin Benito Roggio Picot", "Rodolfo Roggio Picot"],
+        "detail": "Three BVI companies created in mid-2016 to open Swiss and US bank accounts. Additional BVI trust dating to 2004."
+      },
+      "cuadernos_case": {
+        "status": "Confessed as 'arrepentido' (cooperating witness) in 2018",
+        "admitted": "Returning 5% of transport subsidies as kickbacks, payments to Ricardo Jaime",
+        "coercion_claimed": "Stated they 'could not refuse' because threatened with losing concession"
+      },
+      "pandora_papers": true,
+      "sources": [
+        "https://www.infobae.com/america/pandora-papers/2021/10/07/aldo-roggio-arrepentido-en-la-causa-de-los-cuadernos-uso-tres-sociedades-en-el-exterior-para-abrir-cuentas-en-suiza-y-eeuu/",
+        "https://www.lanacion.com.ar/politica/pandora-papers-figuran-sociedades-y-cuentas-en-suiza-y-estados-unidos-de-aldo-roggio-nid07102021/",
+        "https://revistazoom.com.ar/roggio-sa-un-monopolio-dueno-de-los-subtes-y-unas-cuantas-empresas-mas/"
+      ]
+    },
+    "romero_gabriel": {
+      "group": "EMEPA (Empresa Metalurgica Patricias Argentinas)",
+      "concessions": ["Ferrovias (Belgrano Norte rail)", "Hidrovia S.A. (50%, waterway dredging)", "PC Via Publica (advertising)"],
+      "cuadernos_case": {
+        "status": "Confessed as 'arrepentido' (cooperating witness)",
+        "admitted_hidrovia_bribe": "Paid USD 600,000 (two payments of USD 300,000) to obtain presidential decree extending Hidrovia concession",
+        "admitted_ferrovias_kickback": "Returned 15% of transport subsidies to Ricardo Jaime",
+        "admitted_annual_payment": "USD 500,000 annual 'retorno' to maintain Ferrovias concession",
+        "attempted_reparation": "Offered ARS 510 million in reparation to avoid trial (2025)"
+      },
+      "continued_government_relations": "Despite confessed bribery, Romero's Emepa continues to operate Ferrovias (extended to 2027 by Milei) and was reportedly near winning new Hidrovia signaling contracts.",
+      "sources": [
+        "https://www.lanacion.com.ar/economia/quien-es-gabriel-romero-empresario-pago-us600000-nid2163349/",
+        "https://www.infobae.com/politica/2018/08/16/el-empresario-gabriel-romero-admitio-haber-pagado-por-un-decreto-presidencial/",
+        "https://alritmodemiami.com/argentina/politica-argentina/gabriel-romero-empresario-clave-en-coimas-de-la-hidrovia-busca-evitar-juicio-con-millonaria-reparacion/",
+        "https://www.lapoliticaonline.com/transporte/romero-el-polemico-empresario-que-sobrevuela-la-privatizacion-de-los-ferrocarriles/"
+      ]
+    }
+  },
+
+  "subsidy_dependence": {
+    "transport_subsidies_overview": {
+      "amba_h1_2024_pesos_billion": 469.5,
+      "amba_h1_2023_pesos_billion": 617.0,
+      "reduction_percent": 24,
+      "detail": "In H1 2024, transfers to AMBA transport operators totaled ARS 469.5 billion (inflation-adjusted), down 24% from ARS 617 billion in H1 2023."
+    },
+    "subsidy_composition_shift": {
+      "before_milei": {"demand_subsidy_percent": 8, "supply_subsidy_percent": 92},
+      "after_milei": {"demand_subsidy_percent": 30, "supply_subsidy_percent": 70},
+      "fare_increase_since_dec_2023_percent": 752,
+      "tarifa_social_beneficiaries_million": 5.3,
+      "tarifa_social_discount_percent": 55
+    },
+    "railway_subsidy_breakdown": {
+      "belgrano_norte_ferrovias": {
+        "monthly_revenue_pesos_million": 603,
+        "monthly_costs_pesos_million": 7127,
+        "monthly_subsidy_pesos_million": 6523,
+        "subsidy_as_percent_of_costs": 91.5
+      },
+      "urquiza_metrovias": {
+        "monthly_revenue_pesos_million": 289,
+        "monthly_costs_pesos_million": 3427,
+        "monthly_subsidy_pesos_million": 3137,
+        "subsidy_as_percent_of_costs": 91.6
+      },
+      "belgrano_cargas": {
+        "annual_subsidy_2023_usd_million": 112
+      },
+      "critique": "Private concessionaires collect over 90% of their operating revenue from state subsidies while retaining operational control and profit rights. The state bears virtually all financial risk while the private operator captures the concession value."
+    },
+    "subway_subsidies": {
+      "detail": "Pagina 12 investigation found increasing subsidies flowing to Metrovias with decreasing allocation to actual subway infrastructure expansion. The Roggio group benefits from growing subsidies while the subway network stagnates.",
+      "sources": ["https://www.pagina12.com.ar/377134-cada-vez-mas-subsidios-para-metrovias-y-cada-vez-menos-fondo"]
+    },
+    "interior_provinces": {
+      "fondo_compensador_2023_pesos_billion": 102,
+      "share_of_gdp_percent": 0.05,
+      "current_status": "Interior transport subsidies transferred to provincial responsibility under Milei, effectively cutting federal support.",
+      "sources": ["https://www.lanacion.com.ar/economia/el-gobierno-recortara-mas-subsidios-al-transporte-publico-nid08022024/"]
+    },
+    "sources": [
+      "https://chequeado.com/el-explicador/subsidios-al-transporte-como-se-calculan-cuantos-fondos-pone-el-estado-nacional-y-como-se-reparten/",
+      "https://www.infobae.com/politica/2024/09/01/la-pelea-por-los-subsidios-a-colectivos-del-amba-el-gobierno-redujo-24-los-giros-de-fondos-en-el-primer-semestre-de-2024/",
+      "https://servicios.transporte.gob.ar/compensaciones/"
+    ]
+  },
+
+  "international_comparison": {
+    "chile": {
+      "model": "Competitive concession bidding as state policy since 1993",
+      "track_record": "30 years of continuity across administrations of different political orientations",
+      "total_investment_usd_billion": 18,
+      "pipeline_usd_billion": 17,
+      "key_features": [
+        "Competitive bidding on lowest toll or highest canon",
+        "Variable concession terms — duration until investment recovery",
+        "Sustained as policy of state across left and right governments",
+        "Transparent regulatory framework"
+      ],
+      "argentina_adoption_attempt": "The Milei government announced plans to replicate the Chilean model for new route concessions. First contract signed January 2026 with 7 competing bids.",
+      "sources": [
+        "https://dfsud.com/ripe/gobierno-de-argentina-busca-replicar-modelo-chileno-en-concesiones-bajo",
+        "https://periodicotribuna.com.ar/vialidad-en-contrastes-chile-como-modelo-y-argentina-entre-parches-y-retornos/",
+        "https://krestonba.com/chile-un-modelo-exitoso-de-concesiones-privadas/"
+      ]
+    },
+    "brazil": {
+      "model": "Competitive auction system via ANTT (Agencia Nacional de Transportes Terrestres)",
+      "2025_performance": {
+        "auctions_held": 13,
+        "km_conceded": 6200,
+        "investment_brl_billion": 135,
+        "unique_winners": 14,
+        "detail": "14 different companies won 18 auctions, demonstrating genuine competition. Tolls were 52% lower than previously practiced rates."
+      },
+      "3_year_cumulative": {
+        "auctions": 21,
+        "km_conceded": 10000,
+        "investment_brl_billion": 232
+      },
+      "key_features": [
+        "Multiple bidding formats (lowest toll vs highest canon)",
+        "Large number of competing bidders ensures market discipline",
+        "Regular re-tendering on schedule",
+        "52% toll reductions through competition"
+      ],
+      "sources": [
+        "https://agenciainfra.com/blog/governo-faz-13-leiloes-de-rodovias-em-2025-com-investimento-de-r-135-bi/",
+        "https://agenciabrasil.ebc.com.br/economia/noticia/2025-10/governo-atinge-marca-de-r-200-bilhoes-em-concessoes-rodoviarias",
+        "https://agenciadenoticias.bndes.gov.br/blogdodesenvolvimento/detalhe/Concessao-de-rodovias-no-Brasil-os-diferentes-modelos-de-leilao/"
+      ]
+    },
+    "argentina_contrast": {
+      "summary": "While Chile and Brazil demonstrate that competitive bidding reduces costs and improves service, Argentina's infrastructure concessions have been characterized by single-bidder awards, perpetual extensions, confessed bribery, and above-inflation tariff guarantees. The result: higher costs for users, massive subsidy dependence, and entrenched monopolists who survive across all political administrations.",
+      "specific_contrasts": [
+        "Brazil: 14 different winners in 18 auctions vs Argentina: same companies for 30+ years",
+        "Brazil: tolls 52% lower through competition vs Argentina: Ausol 26x profit increase through above-inflation mechanisms",
+        "Chile: consistent rebidding every contract cycle vs Argentina: extensions granted years before expiry",
+        "Chile/Brazil: transparent regulatory frameworks vs Argentina: Cuadernos bribery confessions for concession extensions"
+      ]
+    }
+  },
+
+  "cross_references": {
+    "cuadernos_case_overlap": {
+      "detail": "The Cuadernos de las Coimas case directly intersects with infrastructure concessions. Both Roggio (Metrovias/Urquiza) and Romero (Ferrovias/Hidrovia) confessed to systematic bribery to maintain and extend their concessions. Despite these confessions, both groups retain their concessions under the current government.",
+      "romero_reparation_attempt": "Gabriel Romero offered ARS 510 million in 2025 to avoid trial.",
+      "roggio_share_divestiture": "Aldo Roggio divested shares before new subway contract award."
+    },
+    "pandora_papers_overlap": {
+      "detail": "Both Eurnekian and Roggio appeared in the Pandora Papers with offshore structures in BVI, Liechtenstein, and Panama. These structures may facilitate movement of concession profits to low-tax jurisdictions.",
+      "eurnekian_jurisdictions": ["Liechtenstein", "BVI", "Panama", "Luxembourg", "Spain", "USA"],
+      "roggio_jurisdictions": ["BVI", "Switzerland", "USA"]
+    },
+    "related_research_files": [
+      "monopolios-captura-regulatoria.json",
+      "monopolios-construccion.json",
+      "monopolios-energia.json",
+      "monopolios-revolving-door.json"
+    ]
+  },
+
+  "methodology": {
+    "research_date": "2026-03-24",
+    "approach": "Web search aggregation from Argentine news sources (Infobae, La Nacion, El Cronista, Pagina 12, Chequeado, elDiarioAR), government databases (Argentina.gob.ar, ORSNA, Datos.gob.ar), international media (El Economista Spain, Bloomberg Linea), and investigative databases (ICIJ Pandora Papers, Bolsa de Comercio de Rosario).",
+    "confidence_tier": "bronze",
+    "limitations": [
+      "Financial figures are from multiple years and may not be directly comparable",
+      "Some company counts (e.g., Eurnekian's ~61 companies, Roggio's group) are approximate based on available public records",
+      "Offshore structure details come primarily from leaked documents (Pandora Papers) and may be incomplete",
+      "Subsidy figures are nominal and subject to Argentina's high inflation environment"
+    ]
+  }
+}
