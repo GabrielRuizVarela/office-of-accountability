@@ -1,0 +1,1371 @@
+{
+  "investigation": "Monopolios × Finanzas Argentinas — Consolidated Neo4j Cross-Reference",
+  "date": "2026-03-24T21:41:53.083Z",
+  "methodology": "CUIT-based matching + surname matching across ALL graph node types",
+  "total_findings": 162,
+  "graph_stats": {
+    "total_nodes": 2447572,
+    "total_relationships": 4685421,
+    "same_entity": 48212,
+    "maybe_same_as": 10745
+  },
+  "findings": {
+    "cuit_matches": [
+      {
+        "label": "Company",
+        "name": "AEROLINEAS ARGENTINAS SOCIEDAD ANONIMA",
+        "cuit": "30641405554",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "ALUAR ALUMINIO ARGENTINO SOC ANON,INDUSTRIAL Y COMERCIAL",
+        "cuit": "30522780606",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "AMOV IV, SOCIEDAD ANONIMA DE CAPITAL VARIABLE",
+        "cuit": "30663288497",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "AMX ARGENTINA",
+        "cuit": "30663288497",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "BANCO DE GALICIA Y BUENOS AIRES S.A.U.",
+        "cuit": "30500003509",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "BANCO GGAL",
+        "cuit": "33537186009",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "BANCO SANTANDER ARGENTINA",
+        "cuit": "30500008454",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "BIOGENESIS BAGO",
+        "cuit": "30653399819",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "BUNGE ARGENTINA",
+        "cuit": "30700869918",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "BUNGE BRASIL HOLDINGS B.V.",
+        "cuit": "30700869918",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "CABLEVISION S.A.",
+        "cuit": "30546741298",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "GRUPO CLARIN S.A.",
+        "cuit": "30707001735",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "LABORATORIO ELEA PHOENIX",
+        "cuit": "30544640212",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "MASTELLONE HERMANOS",
+        "cuit": "30547242331",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "NUTRICIA-BAGO",
+        "cuit": "30707013431",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "ROEMMERS S.A.I.C.Y F.",
+        "cuit": "30500938125",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "SACDE SOCIEDAD ARGENTINA DE CONSTRUC Y DESARRO ESTRATEGICO",
+        "cuit": "30568457451",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "TELECOM ARGENTINA",
+        "cuit": "30639453738",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "TELECOM PERSONAL",
+        "cuit": "30678186445",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "TELEFONICA DE ARGENTINA",
+        "cuit": "30639453975",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "TELEFONICA MOVILES ARGENTINA",
+        "cuit": "30678814357",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "YPF",
+        "cuit": "30546689979",
+        "tier": null
+      },
+      {
+        "label": "Company",
+        "name": "YPF GAS",
+        "cuit": "30515488479",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "AEROLÍNEAS ARGENTINAS S.A.",
+        "cuit": "30-64140555-4",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "AEROLÍNEAS ARGENTINAS S.A.",
+        "cuit": "30641405554",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "AMX ARGENTINA S.A",
+        "cuit": "30-66328849-7",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "AMX ARGENTINA S.A ",
+        "cuit": "30663288497",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "ARCOR SAIC",
+        "cuit": "30502793175",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "BANCO DE GALICIA Y BUENOS AIRES S.A.U.",
+        "cuit": "30500003509",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "BANCO MACRO SA",
+        "cuit": "30500010084",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "BANCO SANTANDER RIO SA",
+        "cuit": "30500008454",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "BIOGENESIS BAGO S.A.",
+        "cuit": "30653399819",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "BUNGE ARGENTINA S.A.",
+        "cuit": "30700869918",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "Benito Roggio e Hijos S.A.",
+        "cuit": "30501086246",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "Biogenesis Bago S.A.",
+        "cuit": "30-65339981-9",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "CABLEVISION S.A.",
+        "cuit": "30546741298",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "FEDERACION PATRONAL SEGUROS S.A.",
+        "cuit": "33-70736658-9",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "Federacion Patronal Seguros S.A.",
+        "cuit": "33707366589",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "GRUPO CLARIN S.A.",
+        "cuit": "30707001735",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "HSBC BANK ARGENTINA S.A.",
+        "cuit": "33537186009",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "José Cartellone Construcciones Civiles S.A.",
+        "cuit": "30501579471",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "LABORATORIO ELEA PHOENIX S.A.",
+        "cuit": "30-54464021-2",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "LABORATORIO ELEA PHOENIX S.A.",
+        "cuit": "30544640212",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "LEDESMA S.A.A.I.",
+        "cuit": "30501250305",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "Ledesma Sociedad Anonima Agricola Industrial",
+        "cuit": "30-50125030-5",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "Mastellone Hnos. SA",
+        "cuit": "30547242331",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "NUTRICIA-BAGO S.A.",
+        "cuit": "30-70701343-1",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "NUTRICIA-BAGO S.A.",
+        "cuit": "30707013431",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "ROEMMERS S.A.I.C.F.",
+        "cuit": "30500938125",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "SACDE S.A.",
+        "cuit": "30568457451",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "TELECOM ARGENTINA S.A.",
+        "cuit": "30-63945373-8",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "TELECOM ARGENTINA STET FRANCE TELECOM S.A.",
+        "cuit": "30639453738",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "TELECOM PERSONAL S.A.",
+        "cuit": "30678186445",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "TELEFONICA DE ARGENTINA S.A.",
+        "cuit": "30-63945397-5",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "TELEFONICA DE ARGENTINA S.A.",
+        "cuit": "30639453975",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "TELEFONICA MOVILES ARGENTINA S.A.",
+        "cuit": "30-67881435-7",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "TELEFONICA MOVILES ARGENTINA S.A.",
+        "cuit": "30678814357",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "YPF GAS SA",
+        "cuit": "30-51548847-9",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "YPF GAS SOCIEDAD ANONIMA",
+        "cuit": "30515488479",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "YPF S.A.",
+        "cuit": "30546689979",
+        "tier": null
+      },
+      {
+        "label": "Contractor",
+        "name": "YPF SA",
+        "cuit": "30-54668997-9",
+        "tier": null
+      },
+      {
+        "label": "Donor",
+        "name": "Aluar Aluminio Argentino SAIC",
+        "cuit": "30522780606",
+        "tier": null
+      }
+    ],
+    "monopoly_politicians_full": [
+      {
+        "politician": "ACEVEDO, Sergio Edgardo",
+        "chamber": "diputados",
+        "province": "Santa Cruz",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          },
+          {
+            "name": "ACEVEDO SERGIO EDGARDO",
+            "label": "BoardMember"
+          },
+          {
+            "name": "ACEVEDO SERGIO EDGARDO",
+            "label": "CompanyOfficer"
+          }
+        ]
+      },
+      {
+        "politician": "AVILA, Beatriz Luisa",
+        "chamber": "senadores",
+        "province": "Tucumán",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          }
+        ]
+      },
+      {
+        "politician": "AVILA, Eduardo Carlos",
+        "chamber": "diputados",
+        "province": "Santiago del Estero",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": "AVILA CARLOS EDUARDO",
+            "label": "CompanyOfficer"
+          },
+          {
+            "name": "AVILA CARLOS EDUARDO",
+            "label": "BoardMember"
+          }
+        ]
+      },
+      {
+        "politician": "AVILA, Fernanda",
+        "chamber": "diputados",
+        "province": "Catamarca",
+        "party": null,
+        "cross_refs": []
+      },
+      {
+        "politician": "AVILA, Jorge Antonio",
+        "chamber": "diputados",
+        "province": "Chubut",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          },
+          {
+            "name": "Jorge Antonio, AVILA",
+            "label": "BoardMember"
+          },
+          {
+            "name": "JORGE ANTONIO AVILA",
+            "label": "BoardMember"
+          },
+          {
+            "name": "Jorge Antonio, AVILA",
+            "label": "CompanyOfficer"
+          }
+        ]
+      },
+      {
+        "politician": "BEVILACQUA, Gustavo",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "party": null,
+        "cross_refs": []
+      },
+      {
+        "politician": "BRITOS, Oraldo Norvel",
+        "chamber": "diputados",
+        "province": "San Luis",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": "NORVEL BRITOS ORALDO",
+            "label": "CompanyOfficer"
+          },
+          {
+            "name": "BRITOS ORALDO",
+            "label": "BoardMember"
+          },
+          {
+            "name": "NORVEL BRITOS ORALDO",
+            "label": "BoardMember"
+          },
+          {
+            "name": "BRITOS ORALDO NORVEL",
+            "label": "CompanyOfficer"
+          }
+        ]
+      },
+      {
+        "politician": "CAPUTO, Dante Mario",
+        "chamber": "diputados",
+        "province": "CABA",
+        "party": null,
+        "cross_refs": []
+      },
+      {
+        "politician": "COLOMBO DE ACEVEDO, María Teresita del Valle",
+        "chamber": "senadores",
+        "province": "Catamarca",
+        "party": null,
+        "cross_refs": []
+      },
+      {
+        "politician": "COTO, Agustín Pedro",
+        "chamber": "senadores",
+        "province": "Tierra del Fuego",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          }
+        ]
+      },
+      {
+        "politician": "COTO, Alberto Agustín",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          },
+          {
+            "name": "ALBERTO AGUSTIN COTO",
+            "label": "BoardMember"
+          },
+          {
+            "name": "ALBERTO AGUSTIN COTO",
+            "label": "CompanyOfficer"
+          }
+        ]
+      },
+      {
+        "politician": "DE NARVAEZ, Francisco",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          },
+          {
+            "name": "De Narváez, Francisco",
+            "label": "CompanyOfficer"
+          },
+          {
+            "name": "NARVAEZ STEUER FRANCISCO",
+            "label": "BoardMember"
+          },
+          {
+            "name": "FRANCISCO DE NARVAEZ FECCHINO",
+            "label": "BoardMember"
+          },
+          {
+            "name": "Francisco, De Narvaez",
+            "label": "BoardMember"
+          },
+          {
+            "name": "Francisco, De Narvaez",
+            "label": "CompanyOfficer"
+          }
+        ]
+      },
+      {
+        "politician": "FERREYRA, Alida",
+        "chamber": "diputados",
+        "province": "CABA",
+        "party": null,
+        "cross_refs": []
+      },
+      {
+        "politician": "FERREYRA, Araceli Susana del Rosario",
+        "chamber": "diputados",
+        "province": "Corrientes",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          }
+        ]
+      },
+      {
+        "politician": "FERREYRA, Daniel Julio",
+        "chamber": "diputados",
+        "province": "Jujuy",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          }
+        ]
+      },
+      {
+        "politician": "FERREYRA, Eduardo Mario",
+        "chamber": "diputados",
+        "province": "Entre Ríos",
+        "party": null,
+        "cross_refs": []
+      },
+      {
+        "politician": "FERREYRA, Mario Felix",
+        "chamber": "diputados",
+        "province": "Tierra del Fuego",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          }
+        ]
+      },
+      {
+        "politician": "FONTDEVILA, Pablo Antonio",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": "FONTDEVILA PABLO",
+            "label": "BoardMember"
+          },
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          }
+        ]
+      },
+      {
+        "politician": "HERRERA ARIAS, Manuel H.",
+        "chamber": "diputados",
+        "province": "Santiago del Estero",
+        "party": null,
+        "cross_refs": []
+      },
+      {
+        "politician": "HERRERA PAEZ, Enzo Thelismar",
+        "chamber": "diputados",
+        "province": "La Rioja",
+        "party": null,
+        "cross_refs": []
+      },
+      {
+        "politician": "HERRERA, Alberto",
+        "chamber": "diputados",
+        "province": "Tucumán",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          }
+        ]
+      },
+      {
+        "politician": "HERRERA, Bernardo Eligio",
+        "chamber": "diputados",
+        "province": "La Rioja",
+        "party": null,
+        "cross_refs": []
+      },
+      {
+        "politician": "HERRERA, Bernardo Jose",
+        "chamber": "diputados",
+        "province": "Santiago del Estero",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          }
+        ]
+      },
+      {
+        "politician": "HERRERA, Griselda Noemí",
+        "chamber": "diputados",
+        "province": "La Rioja",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          }
+        ]
+      },
+      {
+        "politician": "HERRERA, José Alberto",
+        "chamber": "diputados",
+        "province": "Santiago del Estero",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          },
+          {
+            "name": "jose alberto, herrera",
+            "label": "BoardMember"
+          },
+          {
+            "name": "HERRERA JOSE ALBERTO",
+            "label": "BoardMember"
+          },
+          {
+            "name": "jose alberto, herrera",
+            "label": "CompanyOfficer"
+          },
+          {
+            "name": "HERRERA JOSE ALBERTO",
+            "label": "CompanyOfficer"
+          }
+        ]
+      },
+      {
+        "politician": "HERRERA, Luis Beder",
+        "chamber": "diputados",
+        "province": "La Rioja",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          }
+        ]
+      },
+      {
+        "politician": "HERRERA, Luis Fernando",
+        "chamber": "diputados",
+        "province": "CABA",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": "Luis Fernando, Herrera",
+            "label": "CompanyOfficer"
+          },
+          {
+            "name": "LUIS F HERRERA",
+            "label": "BoardMember"
+          },
+          {
+            "name": "Luis Fernando, Herrera",
+            "label": "BoardMember"
+          },
+          {
+            "name": "LUIS FERNANDO HERRERA",
+            "label": "BoardMember"
+          },
+          {
+            "name": "LUIS FERNANDO HERRERA",
+            "label": "CompanyOfficer"
+          }
+        ]
+      },
+      {
+        "politician": "HERRERA, Marcela",
+        "chamber": "diputados",
+        "province": "Tucumán",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          }
+        ]
+      },
+      {
+        "politician": "HERRERA, Oscar",
+        "chamber": "diputados",
+        "province": "Misiones",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": "OSCAR, HERRERA",
+            "label": "CompanyOfficer"
+          },
+          {
+            "name": "OSCAR, HERRERA",
+            "label": "BoardMember"
+          }
+        ]
+      },
+      {
+        "politician": "HERRERA, Ricardo",
+        "chamber": "diputados",
+        "province": "La Rioja",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": "RICARDO HERRERA",
+            "label": "CompanyOfficer"
+          },
+          {
+            "name": "RICARDO HERRERA",
+            "label": "BoardMember"
+          }
+        ]
+      },
+      {
+        "politician": "LORENZO BOROCOTO, Eduardo",
+        "chamber": "diputados",
+        "province": "CABA",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": "LORENZO, EDUARDO",
+            "label": "BoardMember"
+          }
+        ]
+      },
+      {
+        "politician": "MACRI, Mauricio",
+        "chamber": "diputados",
+        "province": "CABA",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": "MACRI MAURICIO",
+            "label": "BoardMember"
+          },
+          {
+            "name": null,
+            "label": "GovernmentAppointment"
+          },
+          {
+            "name": "MACRI MAURICIO",
+            "label": "CompanyOfficer"
+          },
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          }
+        ]
+      },
+      {
+        "politician": "MENDEZ DE FERREYRA, Araceli Estela",
+        "chamber": "diputados",
+        "province": "Corrientes",
+        "party": null,
+        "cross_refs": []
+      },
+      {
+        "politician": "NOBLEGA, Sebastian",
+        "chamber": "diputados",
+        "province": "Catamarca",
+        "party": null,
+        "cross_refs": []
+      },
+      {
+        "politician": "PIÑON AVILA, Celia Isabel",
+        "chamber": "diputados",
+        "province": "Entre Ríos",
+        "party": null,
+        "cross_refs": []
+      },
+      {
+        "politician": "VILAR, Daniela Marina",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "party": null,
+        "cross_refs": [
+          {
+            "name": null,
+            "label": "AssetDeclaration"
+          }
+        ]
+      },
+      {
+        "politician": "VILARIÑO, José Antonio",
+        "chamber": "diputados",
+        "province": "Salta",
+        "party": null,
+        "cross_refs": []
+      }
+    ],
+    "monopoly_gov_appointments": [],
+    "monopoly_asset_declarations_detail": [],
+    "monopoly_donations_full": [
+      {
+        "donor": "Aluar Aluminio Argentino SAIC",
+        "cuit": "30522780606",
+        "party": null,
+        "year": null,
+        "district": "Orden Nacional",
+        "amount": 4500000
+      },
+      {
+        "donor": "Aluar Aluminio Argentino SAIC",
+        "cuit": "30522780606",
+        "party": null,
+        "year": null,
+        "district": "Orden Nacional",
+        "amount": 900000
+      },
+      {
+        "donor": "Tomas Braun",
+        "cuit": "20277784964",
+        "party": null,
+        "year": null,
+        "district": "Buenos Aires",
+        "amount": 400000
+      },
+      {
+        "donor": "Fernando Pablo Vilardo",
+        "cuit": "20277786894",
+        "party": null,
+        "year": null,
+        "district": "Ciudad de Buenos Aires",
+        "amount": 200000
+      },
+      {
+        "donor": "Mauricio Macri",
+        "cuit": "20131204699",
+        "party": null,
+        "year": null,
+        "district": "Orden Nacional",
+        "amount": 100000
+      },
+      {
+        "donor": "Fernando Pablo Vilardo",
+        "cuit": "20277786894",
+        "party": null,
+        "year": null,
+        "district": "Ciudad de Buenos Aires",
+        "amount": 100000
+      },
+      {
+        "donor": "Rodrigo Herrera Bravo",
+        "cuit": "20202136606",
+        "party": null,
+        "year": null,
+        "district": "Ciudad de Buenos Aires",
+        "amount": 66000
+      },
+      {
+        "donor": "Fernando Pablo Vilardo",
+        "cuit": "20277786894",
+        "party": null,
+        "year": null,
+        "district": "Ciudad de Buenos Aires",
+        "amount": 65000
+      },
+      {
+        "donor": "Jose Felipe Herrera",
+        "cuit": "20257830528",
+        "party": null,
+        "year": null,
+        "district": "Neuquen",
+        "amount": 59200
+      },
+      {
+        "donor": "Pablo Antonio Fontdevila",
+        "cuit": "20077972936",
+        "party": null,
+        "year": null,
+        "district": "Orden Nacional",
+        "amount": 14500
+      },
+      {
+        "donor": "Marianela Acevedo",
+        "cuit": "27310797796",
+        "party": null,
+        "year": null,
+        "district": "Orden Nacional",
+        "amount": 14000
+      },
+      {
+        "donor": "Camila Daiana Avila",
+        "cuit": "23420011784",
+        "party": null,
+        "year": null,
+        "district": "Orden Nacional",
+        "amount": 10000
+      },
+      {
+        "donor": "Daniela Marina Vilar",
+        "cuit": "27306671214",
+        "party": null,
+        "year": null,
+        "district": "Orden Nacional",
+        "amount": 10000
+      },
+      {
+        "donor": "Micaela Soledad Avila",
+        "cuit": "27386362446",
+        "party": null,
+        "year": null,
+        "district": "Orden Nacional",
+        "amount": 10000
+      },
+      {
+        "donor": "Pablo Vilas",
+        "cuit": "2318797523",
+        "party": null,
+        "year": null,
+        "district": "Orden Nacional",
+        "amount": 10000
+      },
+      {
+        "donor": "Matias Emiliano Brito",
+        "cuit": "20348147790",
+        "party": null,
+        "year": null,
+        "district": "San Luis",
+        "amount": 10000
+      },
+      {
+        "donor": "Matias Emiliano Brito",
+        "cuit": "20348147790",
+        "party": null,
+        "year": null,
+        "district": "La Rioja",
+        "amount": 10000
+      },
+      {
+        "donor": "Victor Hugo da Vila",
+        "cuit": "20283443710",
+        "party": null,
+        "year": null,
+        "district": "Mendoza",
+        "amount": 7500
+      },
+      {
+        "donor": "Sergio Omar Ferreyra",
+        "cuit": "20267740535",
+        "party": null,
+        "year": null,
+        "district": "Orden Nacional",
+        "amount": 6000
+      },
+      {
+        "donor": "Griselda Elsa Braun",
+        "cuit": "23205612904",
+        "party": null,
+        "year": null,
+        "district": "La Pampa",
+        "amount": 3000
+      },
+      {
+        "donor": "Liliana Beatriz Ferreyra",
+        "cuit": "27205449146",
+        "party": null,
+        "year": null,
+        "district": "Santa Fe",
+        "amount": 2083
+      },
+      {
+        "donor": "Nahuel Agustin Acevedo",
+        "cuit": "20333534356",
+        "party": null,
+        "year": null,
+        "district": "Chaco",
+        "amount": 500
+      }
+    ],
+    "monopoly_legislation_votes": [
+      {
+        "legislation": "MENSAJE Nª 968/05 Y PROYECTO DE LEY MODIFICANDO LA LEY DE DEFENSA DE LA COMPETENCIA Nª 25156 .\n.PE-426/05-PL,",
+        "votes": 8,
+        "voters": [
+          "BUSSI, Ricardo Argentino",
+          "ZAVALLO, Gustavo Marcelo",
+          "ZAVALÍA, José Luis",
+          "ZANCADA, Pablo Ventura",
+          "YOMA, Jorge Raul"
+        ]
+      },
+      {
+        "legislation": "Privatizaciones",
+        "votes": 8,
+        "voters": [
+          "CAILLET, Carmen del Rosario",
+          "ZUCCARDI DE FLAMARIQUE, María",
+          "ZAVALÍA, José Luis",
+          "VITAR, Jose Alberto",
+          "VIQUEIRA, Horacio"
+        ]
+      },
+      {
+        "legislation": "Régimen para combatir la evasión Tributaria y Previsional - Insistencia en la sanción original del Artículo 49º",
+        "votes": 3,
+        "voters": [
+          "CHIACCHIO, Nora Alicia",
+          "ZUCCARDI, Cristina",
+          "ZUÑIGA, Ovidio Octavio",
+          "ZAPATA MERCADER, Jorge",
+          "ZACARIAS, Juan Domingo"
+        ]
+      },
+      {
+        "legislation": "Exp. 273-S-01 Aceptación Sanción Original Honorable Senado",
+        "votes": 2,
+        "voters": [
+          "CASTELLANI, Carlos Alberto",
+          "ZUCCARDI, Cristina",
+          "ZUÑIGA, Ovidio Octavio",
+          "ZOTTOS, Miguel Andrés Costas",
+          "ZAMORA, Luis Fernando"
+        ]
+      },
+      {
+        "legislation": "MENSAJE N° 52/18 Y PROYECTO DE LEY DE FOMENTO DE DESPLIEGUE DE INFRAESTRUCTURA Y LA COMPETENCIA DE TECNOLOGIAS DE LA INF",
+        "votes": 2,
+        "voters": [
+          "BURYAILE, Ricardo",
+          "ZIEBART, Cristina Isabel",
+          "ZIEGLER, Alex Roberto",
+          "ZAMARREÑO, María Eugenia",
+          "ZABALZA, Juan Carlos"
+        ]
+      },
+      {
+        "legislation": "Defensa y fomento de la competencia. Creación. Derogación de la ley 25.156. Dictamen de Mayoría. Expediente 2479-D-2016",
+        "votes": 2,
+        "voters": [
+          "CIAMPINI, José Alberto",
+          "ZIEGLER, Alex Roberto",
+          "ZILIOTTO, Sergio Raúl",
+          "WISKY, Sergio Javier",
+          "WOLFF, Waldo Ezequiel"
+        ]
+      },
+      {
+        "legislation": "Insistencia de la HCDN en la sanción original, rechazando las modificaciones introducidas por la Cámara revisora en el R",
+        "votes": 2,
+        "voters": [
+          "CAILLET, Carmen del Rosario",
+          "ZUCCARDI DE FLAMARIQUE, María",
+          "ZAVALÍA, José Luis",
+          "VIQUEIRA, Horacio",
+          "VITAR, Jose Alberto"
+        ]
+      },
+      {
+        "legislation": "Expediente 1494-D-2019 y otros. O.D. 1085 - Fomento de la competencia en la cadena de valor alimenticia. Relaciones entr",
+        "votes": 2,
+        "voters": [
+          "CASTAGNETO, Carlos Daniel",
+          "ZOTTOS, Miguel Andrés Costas",
+          "ZILIOTTO, Sergio Raúl",
+          "ZAMORA, Claudia",
+          "ZAMARBIDE, Federico Raúl"
+        ]
+      },
+      {
+        "legislation": "Expediente 56-PE-03.Insistencia de la H.C.D.N. en su sanción original del proyecto de ley por el cual se establece un im",
+        "votes": 1,
+        "voters": [
+          "CASTRO, Alicia Amalia",
+          "ZOTTOS, Miguel Andrés Costas",
+          "ZIMMERMANN, Victor",
+          "ZAMORA, Luis Fernando",
+          "WILDER, Ricardo"
+        ]
+      },
+      {
+        "legislation": "Expediente 155-PE-02  **  Orden del día 3146. Insistencia de la H. Cámara de Diputados en su sanción original. Decreto 2",
+        "votes": 1,
+        "voters": [
+          "CASSESE, Marina",
+          "ZUÑIGA, Ovidio Octavio",
+          "ZUCCARDI, Cristina",
+          "ZOTTOS, Miguel Andrés Costas",
+          "ZAMORA, Luis Fernando"
+        ]
+      }
+    ],
+    "contractor_company_offshore_chain": [
+      {
+        "contractor": "AEROLÍNEAS ARGENTINAS S.A.",
+        "cuit": "30641405554",
+        "company": "AEROLINEAS ARGENTINAS SOCIEDAD ANONIMA",
+        "offshores": []
+      },
+      {
+        "contractor": "AEROLÍNEAS ARGENTINAS S.A.",
+        "cuit": "30-64140555-4",
+        "company": "AEROLINEAS ARGENTINAS SOCIEDAD ANONIMA",
+        "offshores": []
+      },
+      {
+        "contractor": "AMX ARGENTINA S.A",
+        "cuit": "30-66328849-7",
+        "company": "AMOV IV, SOCIEDAD ANONIMA DE CAPITAL VARIABLE",
+        "offshores": []
+      },
+      {
+        "contractor": "AMX ARGENTINA S.A",
+        "cuit": "30-66328849-7",
+        "company": "AMX ARGENTINA",
+        "offshores": []
+      },
+      {
+        "contractor": "AMX ARGENTINA S.A ",
+        "cuit": "30663288497",
+        "company": "AMOV IV, SOCIEDAD ANONIMA DE CAPITAL VARIABLE",
+        "offshores": []
+      },
+      {
+        "contractor": "AMX ARGENTINA S.A ",
+        "cuit": "30663288497",
+        "company": "AMX ARGENTINA",
+        "offshores": []
+      },
+      {
+        "contractor": "BANCO DE GALICIA Y BUENOS AIRES S.A.U.",
+        "cuit": "30500003509",
+        "company": "BANCO DE GALICIA Y BUENOS AIRES S.A.U.",
+        "offshores": []
+      },
+      {
+        "contractor": "BANCO SANTANDER RIO SA",
+        "cuit": "30500008454",
+        "company": "BANCO SANTANDER ARGENTINA",
+        "offshores": []
+      },
+      {
+        "contractor": "BIOGENESIS BAGO S.A.",
+        "cuit": "30653399819",
+        "company": "BIOGENESIS BAGO",
+        "offshores": []
+      },
+      {
+        "contractor": "BUNGE ARGENTINA S.A.",
+        "cuit": "30700869918",
+        "company": "BUNGE ARGENTINA",
+        "offshores": []
+      },
+      {
+        "contractor": "BUNGE ARGENTINA S.A.",
+        "cuit": "30700869918",
+        "company": "BUNGE BRASIL HOLDINGS B.V.",
+        "offshores": []
+      },
+      {
+        "contractor": "Biogenesis Bago S.A.",
+        "cuit": "30-65339981-9",
+        "company": "BIOGENESIS BAGO",
+        "offshores": []
+      },
+      {
+        "contractor": "CABLEVISION S.A.",
+        "cuit": "30546741298",
+        "company": "CABLEVISION S.A.",
+        "offshores": []
+      },
+      {
+        "contractor": "GRUPO CLARIN S.A.",
+        "cuit": "30707001735",
+        "company": "GRUPO CLARIN S.A.",
+        "offshores": []
+      },
+      {
+        "contractor": "HSBC BANK ARGENTINA S.A.",
+        "cuit": "33537186009",
+        "company": "BANCO GGAL",
+        "offshores": []
+      },
+      {
+        "contractor": "LABORATORIO ELEA PHOENIX S.A.",
+        "cuit": "30544640212",
+        "company": "LABORATORIO ELEA PHOENIX",
+        "offshores": []
+      },
+      {
+        "contractor": "LABORATORIO ELEA PHOENIX S.A.",
+        "cuit": "30-54464021-2",
+        "company": "LABORATORIO ELEA PHOENIX",
+        "offshores": []
+      },
+      {
+        "contractor": "Ledesma Sociedad Anonima Agricola Industrial",
+        "cuit": "30-50125030-5",
+        "company": "LEDESMA SOCIEDAD ANONIMA AGRICOLA INDUSTRIAL",
+        "offshores": []
+      },
+      {
+        "contractor": "Mastellone Hnos. SA",
+        "cuit": "30547242331",
+        "company": "MASTELLONE HERMANOS",
+        "offshores": []
+      },
+      {
+        "contractor": "NUTRICIA-BAGO S.A.",
+        "cuit": "30707013431",
+        "company": "NUTRICIA-BAGO",
+        "offshores": []
+      },
+      {
+        "contractor": "NUTRICIA-BAGO S.A.",
+        "cuit": "30-70701343-1",
+        "company": "NUTRICIA-BAGO",
+        "offshores": []
+      },
+      {
+        "contractor": "ROEMMERS S.A.I.C.F.",
+        "cuit": "30500938125",
+        "company": "ROEMMERS S.A.I.C.Y F.",
+        "offshores": []
+      },
+      {
+        "contractor": "SACDE S.A.",
+        "cuit": "30568457451",
+        "company": "SACDE SOCIEDAD ARGENTINA DE CONSTRUC Y DESARRO ESTRATEGICO",
+        "offshores": []
+      },
+      {
+        "contractor": "TELECOM ARGENTINA S.A.",
+        "cuit": "30-63945373-8",
+        "company": "TELECOM ARGENTINA",
+        "offshores": []
+      },
+      {
+        "contractor": "TELECOM ARGENTINA STET FRANCE TELECOM S.A.",
+        "cuit": "30639453738",
+        "company": "TELECOM ARGENTINA",
+        "offshores": []
+      },
+      {
+        "contractor": "TELECOM PERSONAL S.A.",
+        "cuit": "30678186445",
+        "company": "TELECOM PERSONAL",
+        "offshores": []
+      },
+      {
+        "contractor": "TELEFONICA DE ARGENTINA S.A.",
+        "cuit": "30639453975",
+        "company": "TELEFONICA DE ARGENTINA",
+        "offshores": []
+      },
+      {
+        "contractor": "TELEFONICA DE ARGENTINA S.A.",
+        "cuit": "30-63945397-5",
+        "company": "TELEFONICA DE ARGENTINA",
+        "offshores": []
+      },
+      {
+        "contractor": "TELEFONICA MOVILES ARGENTINA S.A.",
+        "cuit": "30678814357",
+        "company": "TELEFONICA MOVILES ARGENTINA",
+        "offshores": []
+      },
+      {
+        "contractor": "TELEFONICA MOVILES ARGENTINA S.A.",
+        "cuit": "30-67881435-7",
+        "company": "TELEFONICA MOVILES ARGENTINA",
+        "offshores": []
+      }
+    ],
+    "graph_stats": [
+      {
+        "total_nodes": 2447572,
+        "total_relationships": 4685421,
+        "same_entity": 48212,
+        "maybe_same_as": 10745
+      }
+    ]
+  }
+}
