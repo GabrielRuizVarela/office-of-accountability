@@ -90,9 +90,9 @@ export function AuditLog({ casoSlug, pipelineStateId }: AuditLogProps) {
         setError(`Failed to fetch audit log (${res.status})`)
         return
       }
-      const json = (await res.json()) as { success: boolean; data: AuditEntry[] }
+      const json = (await res.json()) as { success: boolean; data: { entries: AuditEntry[] } }
       if (json.success) {
-        setEntries(json.data)
+        setEntries(json.data.entries)
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error')
