@@ -56,6 +56,10 @@ const CASE_TABS: Readonly<Record<string, readonly NavTab[]>> = {
   ],
   'monopolios': [
     { href: '', label: { en: 'Home', es: 'Inicio' } },
+    { href: '/resumen', label: { en: 'Summary', es: 'Resumen' } },
+    { href: '/investigacion', label: { en: 'Investigation', es: 'Investigacion' } },
+    { href: '/cronologia', label: { en: 'Timeline', es: 'Cronologia' } },
+    { href: '/actores', label: { en: 'Actors', es: 'Actores' } },
   ],
 }
 
