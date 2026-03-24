@@ -54,6 +54,7 @@ export interface TimelineEvent {
   description_en: string
   category: InvestigationCategory
   sources: string[]
+  source_url?: string
 }
 
 export interface Actor {
@@ -622,6 +623,7 @@ export const ACTORS: readonly Actor[] = [
     sectors: ['telecom', 'media'],
     companies_count: 35,
     offshore_count: 0,
+    source_url: 'https://www.grupoclarin.com.ar/',
   },
   {
     id: 'rocca',
@@ -633,6 +635,7 @@ export const ACTORS: readonly Actor[] = [
     sectors: ['construction', 'energy'],
     companies_count: 20,
     offshore_count: 0,
+    source_url: 'https://www.techint.com/',
   },
   {
     id: 'mindlin',
@@ -644,6 +647,7 @@ export const ACTORS: readonly Actor[] = [
     sectors: ['energy'],
     companies_count: 52,
     offshore_count: 0,
+    source_url: 'https://www.pampaenergia.com/',
   },
   {
     id: 'vila-manzano',
@@ -655,6 +659,7 @@ export const ACTORS: readonly Actor[] = [
     sectors: ['media', 'energy'],
     companies_count: 70,
     offshore_count: 0,
+    source_url: 'https://www.americatv.com.ar/',
   },
   {
     id: 'roggio',
@@ -666,6 +671,7 @@ export const ACTORS: readonly Actor[] = [
     sectors: ['construction', 'transport'],
     companies_count: 33,
     offshore_count: 3,
+    source_url: 'https://offshoreleaks.icij.org/search?q=roggio',
   },
   {
     id: 'blaquier',
@@ -677,6 +683,7 @@ export const ACTORS: readonly Actor[] = [
     sectors: ['food', 'agroexport'],
     companies_count: 28,
     offshore_count: 7,
+    source_url: 'https://offshoreleaks.icij.org/search?q=blaquier',
   },
   {
     id: 'coto',
@@ -688,6 +695,7 @@ export const ACTORS: readonly Actor[] = [
     sectors: ['food'],
     companies_count: 26,
     offshore_count: 1,
+    source_url: 'https://offshoreleaks.icij.org/search?q=coto+alfredo',
   },
   {
     id: 'werthein',
@@ -699,6 +707,7 @@ export const ACTORS: readonly Actor[] = [
     sectors: ['banking'],
     companies_count: 30,
     offshore_count: 1,
+    source_url: 'https://offshoreleaks.icij.org/search?q=werthein',
   },
   {
     id: 'eurnekian',
@@ -710,6 +719,7 @@ export const ACTORS: readonly Actor[] = [
     sectors: ['transport', 'energy', 'media'],
     companies_count: 35,
     offshore_count: 1,
+    source_url: 'https://www.corporacionamerica.com/',
   },
   {
     id: 'perez-companc',
@@ -721,6 +731,7 @@ export const ACTORS: readonly Actor[] = [
     sectors: ['food'],
     companies_count: 23,
     offshore_count: 0,
+    source_url: 'https://www.molinos.com.ar/',
   },
   {
     id: 'madanes-quintanilla',
@@ -732,6 +743,7 @@ export const ACTORS: readonly Actor[] = [
     sectors: ['cross_sector'],
     companies_count: 10,
     offshore_count: 1,
+    source_url: 'https://www.aluar.com.ar/',
   },
   {
     id: 'mastellone',
@@ -743,6 +755,7 @@ export const ACTORS: readonly Actor[] = [
     sectors: ['food'],
     companies_count: 8,
     offshore_count: 0,
+    source_url: 'https://www.mastellone.com.ar/',
   },
   {
     id: 'galperin',
@@ -754,6 +767,7 @@ export const ACTORS: readonly Actor[] = [
     sectors: ['banking'],
     companies_count: 5,
     offshore_count: 0,
+    source_url: 'https://www.mercadolibre.com.ar/',
   },
 ] as const
 
@@ -771,6 +785,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en: 'Congress approves Audiovisual Communication Services Law, limiting media concentration. Clarín litigates for years.',
     category: 'media',
     sources: ['Boletín Oficial'],
+    source_url: 'https://es.wikipedia.org/wiki/Ley_de_Servicios_de_Comunicaci%C3%B3n_Audiovisual',
   },
   {
     id: 'dnu-267-2015',
@@ -781,6 +796,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en: 'Macri government repeals Media Law by decree, creates ENACOM, removes cross-ownership restrictions.',
     category: 'regulatory_capture',
     sources: ['Boletín Oficial DNU 267/2015'],
+    source_url: 'https://www.boletinoficial.gob.ar/',
   },
   {
     id: 'fusion-telecom-cablevision-2018',
@@ -791,6 +807,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en: 'CNDC approves merger creating Argentina\'s largest telecom conglomerate under Clarín Group control.',
     category: 'telecom',
     sources: ['CNDC Resolution'],
+    source_url: 'https://www.argentina.gob.ar/cndc',
   },
   {
     id: 'cuadernos-2018',
@@ -801,6 +818,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en: 'Driver Oscar Centeno\'s notebooks are revealed documenting bribery payments from construction companies to officials during 2005-2015.',
     category: 'construction',
     sources: ['Poder Judicial / Causa CFP 9608/2018'],
+    source_url: 'https://www.cij.gov.ar/',
   },
   {
     id: 'vicentin-default-2020',
@@ -811,6 +829,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en: 'Agro-exporter Vicentin defaults on USD 1.5B, exposing credit fraud and political connections.',
     category: 'agroexport',
     sources: ['Poder Judicial / Causa Vicentin'],
+    source_url: 'https://www.infobae.com/economia/2020/06/09/vicentin/',
   },
   {
     id: 'rigi-2024',
@@ -821,6 +840,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en: 'Large Investment Incentive Regime approved: 30-year tax stability, 3% royalties, free repatriation. Primarily benefits foreign mining companies.',
     category: 'mining',
     sources: ['Ley Bases / Boletín Oficial'],
+    source_url: 'https://www.argentina.gob.ar/economia/rigi',
   },
   {
     id: 'privatizaciones-menem-1989',
@@ -831,6 +851,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en: 'Congress approves law enabling mass privatization of state companies: ENTel, Aerolíneas, SEGBA, Gas del Estado, YPF, water, railways. Origin of current private monopolies.',
     category: 'cross_sector',
     sources: ['Ley 23.696 / Boletín Oficial'],
+    source_url: 'https://es.wikipedia.org/wiki/Privatizaciones_menemistas',
   },
   {
     id: 'dnu-70-2023',
@@ -841,6 +862,7 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en: 'Repeals media concentration restrictions, shelf-space law, price controls, and sector regulations. Benefits established monopoly groups.',
     category: 'regulatory_capture',
     sources: ['Boletín Oficial DNU 70/2023'],
+    source_url: 'https://www.boletinoficial.gob.ar/',
   },
   {
     id: 'telefe-sale-2025',
@@ -851,5 +873,6 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en: 'Grupo América (Vila-Manzano) acquires Telefe from Paramount, now controlling Argentina\'s 2 most-watched channels (Telefe + América TV). Made possible by media deregulation.',
     category: 'media',
     sources: ['Infobae / ENACOM'],
+    source_url: 'https://www.infobae.com/',
   },
 ] as const
