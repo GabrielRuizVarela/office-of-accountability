@@ -27,7 +27,9 @@
     "etl:igj": "npx tsx scripts/run-etl-opencorporates.ts",
     "seed:clarin": "npx tsx scripts/seed-clarin-group.ts",
     "seed:top-contractors": "npx tsx scripts/seed-top-contractors.ts",
-    "investigation:loop": "npx tsx scripts/run-investigation-loop.ts"
+    "investigation:loop": "npx tsx scripts/run-investigation-loop.ts",
+    "nuclear:seed": "npx tsx scripts/seed-nuclear-risk.ts",
+    "nuclear:loop": "npx tsx scripts/run-nuclear-risk-loop.ts"
   },
   "dependencies": {
     "@auth/core": "^0.41.1",

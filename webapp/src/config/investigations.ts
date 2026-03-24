@@ -54,4 +54,19 @@ export const investigations: InvestigationConfig[] = [
     ],
     href: '/caso/finanzas-politicas',
   },
+  {
+    slug: 'riesgo-nuclear',
+    title: 'Riesgo Nuclear Global',
+    subtitle: 'Monitoreo diario de senales de escalada nuclear',
+    description:
+      'Seguimiento de senales que podrian indicar escalada del riesgo nuclear: desarrollos militares, declaraciones oficiales, tratados, pruebas de misiles y datos OSINT de 31 fuentes.',
+    status: 'active',
+    color: 'yellow',
+    stats: [
+      { label: 'Fuentes', value: '31' },
+      { label: 'Teatros', value: '7' },
+      { label: 'Estados nucleares', value: '9' },
+    ],
+    href: '/caso/riesgo-nuclear',
+  },
 ]
