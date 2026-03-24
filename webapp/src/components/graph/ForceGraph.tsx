@@ -205,6 +205,9 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     frozenRef.current = false
   }, [data])
 
+  // Track whether we've done the initial zoomToFit
+  const hasAutoZoomed = useRef(false)
+
   // Freeze all nodes after layout converges — fx/fy pins make d3-force skip force calcs
   const handleEngineStop = useCallback(() => {
     if (frozenRef.current) return
@@ -216,7 +219,11 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       if (typeof node.y === 'number') node.fy = node.y
     }
     frozenRef.current = true
-    fg.zoomToFit(0, 40) // instant, no animation
+    // Only auto-zoomToFit on the very first convergence, not on subsequent data merges
+    if (!hasAutoZoomed.current) {
+      hasAutoZoomed.current = true
+      fg.zoomToFit(0, 40)
+    }
   }, [fgData.nodes])
 
   // Configure d3 forces (runs once on mount / data change)
