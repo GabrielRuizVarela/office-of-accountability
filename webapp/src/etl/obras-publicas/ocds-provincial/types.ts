@@ -39,9 +39,9 @@ export type OcdsIdentifier = z.infer<typeof OcdsIdentifierSchema>
 // ---------------------------------------------------------------------------
 
 export const OcdsPeriodSchema = z.object({
-  startDate: z.string().optional(),
-  endDate: z.string().optional(),
-  durationInDays: z.number().optional(),
+  startDate: z.string().optional().nullable(),
+  endDate: z.string().optional().nullable(),
+  durationInDays: z.number().optional().nullable(),
 })
 export type OcdsPeriod = z.infer<typeof OcdsPeriodSchema>
 
@@ -102,7 +102,7 @@ export type OcdsSupplierRef = z.infer<typeof OcdsSupplierRefSchema>
 export const OcdsAwardSchema = z.object({
   id: z.string().default(''),
   status: z.string().default(''),
-  date: z.string().optional(),
+  date: z.string().optional().nullable(),
   value: OcdsValueSchema.optional(),
   suppliers: z.array(OcdsSupplierRefSchema).default([]),
   items: z.array(z.record(z.string(), z.unknown())).default([]),
@@ -130,7 +130,7 @@ export const OcdsContractSchema = z.object({
   status: z.string().default(''),
   value: OcdsValueSchema.optional(),
   period: OcdsPeriodSchema.optional(),
-  dateSigned: z.string().optional(),
+  dateSigned: z.string().optional().nullable(),
   items: z.array(z.record(z.string(), z.unknown())).default([]),
   documents: z.array(z.record(z.string(), z.unknown())).default([]),
   signatories: z.array(OcdsSignatorySchema).default([]),
