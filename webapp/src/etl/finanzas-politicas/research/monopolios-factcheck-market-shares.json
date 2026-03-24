@@ -1,0 +1,430 @@
+{
+  "meta": {
+    "title": "Fact-Check: Market Share & Financial Claims — Argentine Monopoly Investigation",
+    "date": "2026-03-24",
+    "methodology": "Each claim verified against most recent available data (2024-2026) via web search of regulatory filings, BCRA reports, OECD publications, CNDC objection reports, industry rankings, financial press (Infobae, Cronista, Ambito, Bloomberg Linea, iProfesional), and existing research files. Verdicts: VERIFIED (data confirms claim), CORRECTED (claim directionally correct but number differs), UNVERIFIABLE (insufficient public data to confirm or deny specific figure), DEBUNKED (claim contradicted by evidence).",
+    "confidence_tiers": "HIGH = multiple independent sources confirm; MEDIUM = single authoritative source or slight ambiguity; LOW = extrapolated or dated data"
+  },
+
+  "claims": [
+    {
+      "id": 1,
+      "sector": "TELECOM",
+      "claim": "Telecom controls ~45% broadband",
+      "verdict": "VERIFIED",
+      "finding": "Telecom Argentina (Fibertel/Arnet) holds approximately 46% of fixed broadband nationally with ~4.0-4.5 million accesses out of ~10 million total. Freedom House (2024) cites 46%. Post-Telefonica acquisition (adding ~2M subscribers), combined share would reach 58-60% nationally, and 70%+ in AMBA.",
+      "correct_figure": "46% (pre-acquisition); 58-60% (post-acquisition if approved)",
+      "confidence": "HIGH",
+      "sources": [
+        "https://freedomhouse.org/country/argentina/freedom-net/2024",
+        "https://www.argentina.gob.ar/sites/default/files/2025/06/reso-_dictamen_y_anexo_-_telecom_argentina-1_2.pdf",
+        "https://www.telesemana.com/blog/2025/02/24/telecom-compro-telefonica-de-argentina-alcanza-posicion-dominante-y-disputara-con-claro-el-liderazgo-de-las-telecomunicaciones/"
+      ]
+    },
+    {
+      "id": 2,
+      "sector": "TELECOM",
+      "claim": "Telecom controls ~35% mobile",
+      "verdict": "CORRECTED",
+      "finding": "Personal (Telecom Argentina) held approximately 33% of mobile subscribers as of Q3 2023. Claro leads with 39.5%, Movistar holds 28%. The claim of 35% is slightly high; 33% is the most cited figure. However, pre-acquisition combined Telecom+Movistar would be ~61%, not 35%.",
+      "correct_figure": "33% (Personal alone, Q3 2023); 61-65.2% if Movistar acquisition completes",
+      "confidence": "HIGH",
+      "sources": [
+        "https://www.statista.com/statistics/488707/mobile-market-share-argentina-by-provider/",
+        "https://www.spglobal.com/market-intelligence/en/news-insights/research/argentina-mobile-market-overview",
+        "https://www.argentina.gob.ar/noticias/informe-de-objecion-operacion-telecom-telefonica"
+      ]
+    },
+    {
+      "id": 3,
+      "sector": "TELECOM",
+      "claim": "Telecom/Cablevisión controls ~60% pay-TV",
+      "verdict": "CORRECTED",
+      "finding": "Cablevision/Flow (Telecom Argentina) holds approximately 36.6-40% of pay-TV subscribers (~3.18 million), NOT 60%. It is the market leader but far from 60%. DirecTV follows with ~20-24%. Even adding Movistar TV (5.5%), the combined post-acquisition share would be ~42-46%, still below 60%.",
+      "correct_figure": "36.6-40% (Cablevision alone); ~42-46% (post-Telefonica acquisition)",
+      "confidence": "HIGH",
+      "sources": [
+        "https://digitaltv.prensariozone.com/cono-sur-la-ott-crece-y-la-tv-paga-se-mantiene/",
+        "https://www.statista.com/statistics/1154602/pay-tv-provider-share-argentina/",
+        "https://www.businesswire.com/news/home/20251021686432/en/Argentina-Telecom-Operators-Intelligence-Report-2025"
+      ]
+    },
+    {
+      "id": 4,
+      "sector": "TELECOM",
+      "claim": "Post-Telefonica acquisition would be 65.2% mobile",
+      "verdict": "VERIFIED",
+      "finding": "The CNDC objection report (June 2025) specifically cites 65.2% of active mobile lines, 66.7% of voice traffic, and 68.9% of mobile data for the combined Telecom-Telefonica entity. This is an official government figure from the antitrust authority.",
+      "correct_figure": "65.2% active lines (CNDC official figure)",
+      "confidence": "HIGH",
+      "sources": [
+        "https://www.argentina.gob.ar/noticias/informe-de-objecion-operacion-telecom-telefonica",
+        "https://www.cronista.com/negocios/defensa-de-la-competencia-objeto-la-fusion-entre-telecom-y-telefonica/",
+        "https://www.telesemana.com/blog/2025/06/19/argentina-objeta-la-fusion-entre-telefonica-y-telecom-por-riesgos-de-concentracion-extrema-con-efectos-irreversibles/"
+      ]
+    },
+    {
+      "id": 5,
+      "sector": "ENERGY",
+      "claim": "Edenor + Edesur duopoly serves Buenos Aires",
+      "verdict": "VERIFIED",
+      "finding": "Edenor (3.2 million customers, northern AMBA) and Edesur (2.6 million customers, southern AMBA) are the only two electricity distributors for the Buenos Aires metropolitan area, serving ~5.8 million customers combined. This is a regulated natural-monopoly duopoly established during the 1992 privatizations.",
+      "correct_figure": "Two companies, ~5.8M customers combined, exclusive concessions",
+      "confidence": "HIGH",
+      "sources": [
+        "https://www.cronista.com/apertura/empresas/pampa-le-vendio-edenor-a-un-grupo-inversor-integrado-por-daniel-vila-y-jose-luis-manzano/",
+        "https://www.lanacion.com.ar/economia/negocios/cortes-de-luz-quienes-son-los-duenos-de-edesur-nid11022024/",
+        "https://en.wikipedia.org/wiki/Edesur"
+      ]
+    },
+    {
+      "id": 6,
+      "sector": "ENERGY",
+      "claim": "Pampa Energía controls 52 companies",
+      "verdict": "UNVERIFIABLE",
+      "finding": "Pampa Energia operates through multiple subsidiaries across generation, gas transport (TGS), high-voltage transmission (Transener), and upstream oil/gas, and has absorbed numerous entities over time (including Petrolera Pampa, EASA, EG3, Guemes, Loma de la Lata, Nihuiles, Diamante, Piedra Buena, Pampa Participaciones). The specific figure of '52 companies' could not be independently confirmed from public sources, though the group structure is undeniably sprawling. The MaPEA economic mapping database lists extensive subsidiaries.",
+      "correct_figure": "Multiple subsidiaries confirmed, exact count of 52 unverifiable without IGJ filings",
+      "confidence": "LOW",
+      "sources": [
+        "http://mapaeconomico.wikidot.com/pampa-energia-sa",
+        "https://ri.pampa.com/en/corporate-governance/main-officers/",
+        "https://www.infobae.com/economia/2019/06/16/marcelo-mindlin-como-se-transformo-con-pampa-en-uno-de-los-duenos-de-la-energia-de-argentina/"
+      ]
+    },
+    {
+      "id": 7,
+      "sector": "ENERGY",
+      "claim": "Ternium/Siderar ~80% domestic steel",
+      "verdict": "UNVERIFIABLE",
+      "finding": "Ternium Argentina (ex-Siderar, Techint Group) is confirmed as the largest integrated flat steel producer in Argentina with 3.2 million tons annual crude steel capacity. It dominates flat-rolled products. However, the specific '80%' market share figure could not be confirmed from public sources. In flat products specifically, their dominance is likely in the 70-80%+ range given no comparable domestic competitor exists. Acindar (ArcelorMittal) dominates long products. The combined Techint (Ternium flat + Tenaris tubes) presence is dominant but the '80% domestic steel' figure conflates segments.",
+      "correct_figure": "Dominant in flat steel (likely 70-80%+); total steel market share depends on segment definition",
+      "confidence": "MEDIUM",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ternium",
+        "https://www.techintgroup.com/en/ternium",
+        "https://www.ambito.com/negocios/siderurgia-ternium-revirtio-perdidas-operativas-2025-pero-sigue-alerta-el-avance-la-competencia-china-n6246970"
+      ]
+    },
+    {
+      "id": 8,
+      "sector": "FOOD",
+      "claim": "Coto ~22% retail, Carrefour ~21%, La Anónima ~12.5%",
+      "verdict": "VERIFIED",
+      "finding": "Multiple sources confirm: Coto 22.3%, Carrefour Argentina 21.0%, Cencosud 17-17.5%, La Anonima 12.5%, DIA 9%, Changomas 8.7%. The top 6 chains control ~80-85% of formal supermarket sales. Note: Carrefour is in active divestiture process (2025-2026); if Cencosud acquires it, combined share would be ~38-42%.",
+      "correct_figure": "Coto 22.3%, Carrefour 21.0%, La Anonima 12.5% — all confirmed",
+      "confidence": "HIGH",
+      "sources": [
+        "https://www.iprofesional.com/economia/351434-seis-supermercados-y-20-empresas-concentran-el-consumo-del-sector",
+        "https://comercioyjusticia.info/negocios/nace-un-nuevo-monopolio-del-retail-el-grupo-cencosud-a-punto-de-quedarse-con-carrefour/",
+        "https://chequeado.com/ultimas-noticias/hector-recalde-seis-o-siete-hipermercados-concentran-el-85-por-ciento-de-las-ventas-del-pais/"
+      ]
+    },
+    {
+      "id": 9,
+      "sector": "FOOD",
+      "claim": "Molinos Pérez Companc: 79% pasta, 59% flour",
+      "verdict": "CORRECTED",
+      "finding": "Molinos Rio de la Plata (Perez Companc group) is the largest food company in Argentina and leader in pasta (Matarazzo, Lucchetti) and flour (Blancaflor). The 79% pasta figure appears to originate from older data and broader press citations. Current data shows Molinos is the leader but faces competition from Barilla, Don Francisco, Bettini, and Bonalma. The exact 79% and 59% figures could not be independently confirmed for 2025; volumes declined 6.5% in 2025. The figures may reflect specific sub-segments (e.g., dry pasta in supermarket channel) rather than the total market.",
+      "correct_figure": "Market leader in pasta and flour; exact 79%/59% figures are plausible for specific channels but unverifiable for the total market in 2025",
+      "confidence": "MEDIUM",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Molinos_R%C3%ADo_de_la_Plata",
+        "https://www.molinos.com.ar/nuestra-compania/",
+        "https://www.ambito.com/negocios/molinos-rio-la-plata-sintio-el-freno-del-consumo-y-apuesta-mejorar-productividad-n6254799",
+        "https://www.informesdeexpertos.com/informes/mercado-de-pasta-en-argentina"
+      ]
+    },
+    {
+      "id": 10,
+      "sector": "FOOD",
+      "claim": "Arcor: world's #1 hard candy, 70% jams",
+      "verdict": "CORRECTED",
+      "finding": "Arcor is confirmed as the world's top producer of hard candies (3.5 million pounds/day production capacity) and the 10th-largest confectionery manufacturer globally, exporting to 120+ countries. This is verified. However, the '70% jams' figure could not be independently confirmed. Arcor is a major jam producer (La Campagnola brand) but the specific 70% market share is not documented in recent public sources.",
+      "correct_figure": "World's #1 hard candy producer: VERIFIED. 70% jams: UNVERIFIABLE (plausible but no public source confirms)",
+      "confidence": "HIGH for candy, LOW for jams",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Grupo_Arcor",
+        "https://www.arcor.com/en/our-business-confectionery",
+        "https://www.arcor.com/en/who-we-are",
+        "https://cocoanusa.com/articles/arcor-group/"
+      ]
+    },
+    {
+      "id": 11,
+      "sector": "FOOD",
+      "claim": "Mastellone ~58% nationally, ~90% Buenos Aires fluid milk",
+      "verdict": "CORRECTED",
+      "finding": "The ~58% figure refers to Mastellone's share of ALL dairy products nationally (Nielsen Dec 2020). For FLUID MILK specifically, Mastellone holds 75-80% nationally and approximately 90% in Greater Buenos Aires (AMBA). The claim conflates two different metrics. The ~90% AMBA fluid milk figure is well-documented. USDA, OCLA, and multiple Argentine sources confirm the dominant position.",
+      "correct_figure": "~58% all dairy (Nielsen 2020); 75-80% fluid milk nationally; ~90% fluid milk in AMBA",
+      "confidence": "HIGH",
+      "sources": [
+        "https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=Dairy+and+Products+Annual_Buenos+Aires_Argentina_AR2025-0017.pdf",
+        "https://bichosdecampo.com/quien-es-mastellone-hnos-la-lider-en-el-mercado-lacteo-argentino-que-procesa-1-400-millones-de-litros-de-leche-al-ano/",
+        "https://realpolitik.com.ar/nota/36839/en-posicion-monopolica--la-serenisima-aumenta-su-voracidad-por-mayores-ganancias/",
+        "https://www.bioeconomia.info/2025/07/30/mastellone-lider-lacteas-argentina-2025/"
+      ]
+    },
+    {
+      "id": 12,
+      "sector": "FOOD",
+      "claim": "ABCD cartel controls 80%+ grain exports",
+      "verdict": "CORRECTED",
+      "finding": "The traditional 'ABCD' traders (ADM, Bunge, Cargill, Louis Dreyfus) plus COFCO now collectively control approximately 60% of Argentina's grain exports (not 80%+). In 2025, the top 5 companies exported ~64.85 Mt out of ~105 Mt total. The top 10 companies control over 90%. If we include AGD and Molinos Agro (Argentine firms), the top 7 reach ~70%. The Bunge-Viterra merger (July 2025) further concentrates the sector. The '80%+' figure may apply to oilseed processing or specific sub-segments, but not total grain exports.",
+      "correct_figure": "Top 5 multinationals: ~60% of grain exports; top 10: ~90%; ABCD specifically: ~52-55%",
+      "confidence": "HIGH",
+      "sources": [
+        "https://argenports.com/nota/diez-empresas-lideraron-las-exportaciones-de-granos-en-2025/",
+        "https://www.bcr.com.ar/es/mercados/investigacion-y-desarrollo/informativo-semanal/noticias-informativo-semanal/quienes-1",
+        "https://www.puntal.com.ar/cargill/como-quedo-el-ranking-exportador-la-fusion-bunge-y-viterra-n193398"
+      ]
+    },
+    {
+      "id": 13,
+      "sector": "FOOD",
+      "claim": "Ledesma ~75% white sugar",
+      "verdict": "DEBUNKED",
+      "finding": "Ledesma is Argentina's largest individual sugar producer but holds approximately 17-20% of total sugar production, NOT 75%. The top 3 sugar groups (Grupo Los Balcanes/Rocchia Ferro, Ledesma/Blaquier, Grupo Luque) together control roughly half (~50%) of Argentine sugar production. There are 20 active sugar mills. Eight companies control 90% of refining. The 75% figure is grossly overstated.",
+      "correct_figure": "17-20% of total sugar (largest individual producer); top 3 groups: ~50%; 8 companies: ~90%",
+      "confidence": "HIGH",
+      "sources": [
+        "https://cenital.com/industria-azucarera-concentracion-productiva-y-heterogeneidad-en-los-modelos/",
+        "https://www.laizquierdadiario.com/Los-duenos-del-azucar-conoce-las-ocho-empresas-que-concentran-el-negocio-del-azucar-en-Argentina",
+        "https://bichosdecampo.com/una-visita-al-ingenio-ledesma-como-trabaja-la-principal-productora-de-azucar-de-argentina/",
+        "https://es.wikipedia.org/wiki/Grupo_Ledesma"
+      ]
+    },
+    {
+      "id": 14,
+      "sector": "FOOD",
+      "claim": "CAME farm-to-shelf markup 3.1-3.6x",
+      "verdict": "CORRECTED",
+      "finding": "The CAME IPOD data for 2025 shows the farm-to-shelf markup is actually HIGHER than the claimed range. In December 2024: 3.9x. January 2025: 3.8x. October 2025: 3.5x. November 2025: 3.6x. The 2025 annual average is approximately 3.7x. For fruit/vegetables specifically, the multiplier reached 5.1-6.3x. Extreme cases: zanahoria 10.2x, naranja 9.6x. The claimed range of 3.1-3.6x understates the actual average.",
+      "correct_figure": "2025 average: ~3.7x (range: 3.1-3.9x monthly); fruit/vegetables: 5.1-6.3x",
+      "confidence": "HIGH",
+      "sources": [
+        "https://www.redcame.org.ar/novedades/14089/del-productor-al-consumidor-los-precios-de-los-agroalimentos-se-multiplicaron-por-39-veces-en-diciembre",
+        "https://www.redcame.org.ar/novedades/14002/del-campo-a-la-gondola-los-precios-de-los-agroalimentos-se-multiplicaron-por-35-veces-en-octubre",
+        "https://diariotextual.com/inicio/index.php/2025/02/16/del-campo-a-la-gondola-los-precios-de-los-agroalimentos-se-multiplicaron-por-38-veces-en-enero/"
+      ]
+    },
+    {
+      "id": 15,
+      "sector": "BANKING",
+      "claim": "Top 10 banks hold 75%+ deposits",
+      "verdict": "CORRECTED",
+      "finding": "The top 5 banks concentrate ~51% of deposits and ~43% of total system assets (BCRA data). The top 10 banks control approximately 70-75% of system assets and deposits. The '75%+' figure is at the upper end of the range. More precisely, the concentration is '70-75%' for the top 10, with the top 5 holding 51% of deposits specifically. The claim is directionally correct but may slightly overstate.",
+      "correct_figure": "Top 5: ~51% deposits; Top 10: ~70-75% deposits (at the boundary of the claim)",
+      "confidence": "HIGH",
+      "sources": [
+        "https://www.bcra.gob.ar/Noticias/Informe-sobre-bancos-0525.asp",
+        "https://www.bcra.gob.ar/en/publicaciones/banking-report-october-2025/",
+        "https://mercado.com.ar/finanzas/publican-ranking-bancario-argentino/"
+      ]
+    },
+    {
+      "id": 16,
+      "sector": "BANKING",
+      "claim": "Prisma 80% credit card processing",
+      "verdict": "CORRECTED",
+      "finding": "The '80%' figure refers to the fact that the 14 banks that were Prisma's shareholders collectively held 80% of ISSUED credit cards and 72% of debit cards. Prisma itself processes ~58% of credit card transactions (not 80% of all processing). Prisma was the exclusive Visa acquirer in Argentina and held dominant position in acquiring and POS terminals (brand 'LAPOS'). Visa acquired Prisma in February 2026 for an undisclosed sum. The claim conflates shareholder bank issuance share with Prisma's own processing share.",
+      "correct_figure": "Prisma shareholder banks: 80% of credit card issuance; Prisma direct processing: ~58% of transactions",
+      "confidence": "HIGH",
+      "sources": [
+        "https://www.argentina.gob.ar/sites/default/files/competitive_conditions_analysis_on_the_credit_cards.pdf",
+        "https://investor.visa.com/news/news-details/2026/Visa-to-Acquire-Prisma-Medios-de-Pago-and-Newpay-in-Argentina/default.aspx",
+        "https://www.infobae.com/economia/2026/02/19/visa-compra-prisma-y-expande-su-negocio-de-pagos-digitales-en-la-argentina/"
+      ]
+    },
+    {
+      "id": 17,
+      "sector": "BANKING",
+      "claim": "Mercado Pago 74% wallet share",
+      "verdict": "CORRECTED",
+      "finding": "Mercado Pago dominates the digital wallet space but the specific '74%' figure is not confirmed by recent data. The most cited metric is that Mercado Pago holds ~80% of wallet float (saldos) and 58% of Argentines report using Mercado Pago frequently for payments. The digital wallet market is valued at USD 8.5B (2024). Mercado Pago's dominance is clear but varies by metric: float share (~80%), usage frequency (58%), installed base (dominant but not quantified precisely at 74%). The '74%' figure may come from an older or specific measurement.",
+      "correct_figure": "~80% wallet float share; ~58% frequent usage share; dominant but exact 74% unverifiable",
+      "confidence": "MEDIUM",
+      "sources": [
+        "https://www.statista.com/statistics/1080009/argentina-market-share-mobile-payment-apps-installed/",
+        "https://paymentscmi.com/insights/metodos-de-pago-en-america-latina-brasil-mexico-colombia-argentina-chile-peru/",
+        "https://www.popularfintech.com/p/how-mercado-libre-built-a-fintech-empire-3f7ac04a0eca3947"
+      ]
+    },
+    {
+      "id": 18,
+      "sector": "MINING",
+      "claim": "100% foreign lithium extraction",
+      "verdict": "CORRECTED",
+      "finding": "While overwhelmingly foreign-dominated, it is not literally 100%. Argentine companies participate in 4 lithium projects but in NONE do they have majority control. 23 of 38 projects are operated by Canadian (12) and Australian (11) companies, with 5 by US firms and 4 by Dutch firms. The provincial company JEMSE (Jujuy) has a minority stake in the Cauchari-Olaroz project (8.5% via Exar JV). Pluspetrol (Argentine) has exploration-stage projects. So the claim is directionally correct: effectively no Argentine-controlled production, but there is marginal Argentine participation.",
+      "correct_figure": "Near-100% foreign controlled; Argentine companies participate in 4 projects but control none",
+      "confidence": "HIGH",
+      "sources": [
+        "https://dialogue.earth/es/negocios/392580-quienes-son-los-duenos-del-litio-argentina/",
+        "https://elruido.org/que-paises-controlan-la-produccion-de-litio-en-argentina-y-cual-es-el-rol-de-china/",
+        "https://www.bloomberglinea.com/english/these-are-the-41-companies-betting-on-argentinas-lithium-key-export-and-price-forecasts/"
+      ]
+    },
+    {
+      "id": 19,
+      "sector": "MINING",
+      "claim": "RIGI 30-year tax stability, 3% royalties",
+      "verdict": "CORRECTED",
+      "finding": "The RIGI (Law 27.742 of 2024) does provide 30-year regulatory stability in tax, customs, and foreign exchange matters — this is VERIFIED. The income tax rate drops from 35% to 25%. However, the '3% royalties' claim requires clarification: the 3% royalty cap is from the existing Mining Code (Ley 24.196, 1993), not the RIGI specifically. The RIGI adds tax benefits ON TOP of existing mining incentives. The RIGI minimum investment threshold is USD 200 million.",
+      "correct_figure": "30-year stability: VERIFIED. 3% royalty: exists but is from Mining Code (1993), not RIGI. RIGI adds income tax cut to 25%, accelerated depreciation, unlimited loss carryforward.",
+      "confidence": "HIGH",
+      "sources": [
+        "https://cnyor.cancilleria.gob.ar/es/6-r%C3%A9gimen-de-incentivo-para-grandes-inversiones-rigi-gu%C3%ADa-para-inversores",
+        "https://www.argentina.gob.ar/noticias/rigi-desde-hoy-las-empresas-podran-aplicar-al-regimen",
+        "https://servicios.infoleg.gob.ar/infolegInternet/anexos/400000-404999/403230/norma.htm",
+        "https://chequeado.com/el-explicador/el-gobierno-reglamento-el-rigi-5-preguntas-y-respuestas-para-entender-el-nuevo-regimen-de-grandes-inversiones/"
+      ]
+    },
+    {
+      "id": 20,
+      "sector": "PHARMA",
+      "claim": "Roemmers #1, 8.44% market share",
+      "verdict": "VERIFIED",
+      "finding": "Roemmers holds first place in the Argentine pharmaceutical market with 8.44% share for 2024 (expressed in USD). The lab commercializes more than 117 million units annually, has 2,000+ employees and 71+ brands. Five of the top 10 best-selling drugs in Argentina are Roemmers products (Lotrial, Optamox, Amoxidal, Sertal Compuesto). Top 10 labs hold 51% of the market.",
+      "correct_figure": "8.44% — confirmed by multiple sources (COFA, iProfesional, CronicaDelNOA)",
+      "confidence": "HIGH",
+      "sources": [
+        "https://cronicadelnoa.com.ar/2025/02/07/los-duenos-del-negocio-de-los-medicamentos-10-laboratorios-mas-importantes-de-argentina/",
+        "https://www.iprofesional.com/salud/422212-cuales-son-los-10-laboratorios-mas-poderosos-de-argentina-y-que-manejan-el-negocio",
+        "https://observatorio.cofa.org.ar/index.php/2023/01/12/participacion-de-los-15-primeros-laboratorios-en-el-mercado-total-de-los-medicamentos-2/"
+      ]
+    },
+    {
+      "id": 21,
+      "sector": "PHARMA",
+      "claim": "Drug prices 26% above LatAm average",
+      "verdict": "VERIFIED",
+      "finding": "The CELAG (Centro Estrategico Latinoamericano de Geopolitica) study confirms that Argentina's hypothetical drug basket is 26% more expensive than the Latin American average. Argentina, Panama, and Uruguay all have prices 25%+ above the regional average. Furthermore, Argentine drugs are reported to be 5x more expensive than in Spain, with price variations exceeding 1,000% for specific medications. Argentines need to work 4 additional hours vs the LatAm average to purchase the same basket.",
+      "correct_figure": "26% above LatAm average — confirmed by CELAG study",
+      "confidence": "HIGH",
+      "sources": [
+        "https://www.celag.org/informe-sobre-los-precios-de-medicamentos-en-america-latina/",
+        "https://www.infobae.com/sociedad/2024/09/29/los-medicamentos-en-argentina-son-mas-caros-que-en-espana-y-estados-unidos-los-precios-varian-hasta-mas-del-1000/",
+        "https://www.farmaceuticos.com/noticias/argentina-vende-los-medicamentos-mas-caros-que-en-espana-estados-unidos-y-paises-de-la-region/"
+      ]
+    },
+    {
+      "id": 22,
+      "sector": "PHARMA",
+      "claim": "PAMI markups up to 1,327% anastrozol",
+      "verdict": "VERIFIED",
+      "finding": "Confirmed. A January 2025 criminal complaint filed by Elisa Carrio and Hernan Reyes (Coalicion Civica) documented that PAMI purchased Anastrozol from GP Pharm at ARS 13,192/unit via Convenio Marco, while the same drug cost ARS 924/unit via competitive bidding — a difference of exactly 1,327%. More broadly, PAMI paid up to 16x the competitive price for oncological drugs, with documented overcharges of ARS 273 million in 2023 across just 8 sampled medications from 5 labs. The case is in Federal Criminal Court No. 9 (Comodoro Py).",
+      "correct_figure": "1,327% markup on anastrozol — confirmed by judicial complaint and press reports",
+      "confidence": "HIGH",
+      "sources": [
+        "https://www.infobae.com/politica/2025/01/23/denuncian-al-pami-y-a-un-grupo-de-laboratorios-por-sobreprecios-en-la-compra-de-remedios-oncologicos/",
+        "https://www.lanacion.com.ar/politica/denuncian-que-el-pami-pago-medicamentos-oncologicos-hasta-16-veces-mas-que-el-valor-de-las-compras-nid22012025/",
+        "https://www.iprofesional.com/politica/421244-denuncian-al-pami-por-compras-con-sobreprecio-en-medicamentos-oncologicos"
+      ]
+    },
+    {
+      "id": 23,
+      "sector": "ALUMINIUM",
+      "claim": "Aluar 100% domestic aluminium, HHI 10,000",
+      "verdict": "VERIFIED",
+      "finding": "Aluar Aluminio Argentino S.A.I.C. is the SOLE producer of primary aluminium in Argentina. 100% domestic production = HHI of 10,000 (100^2). Production capacity: 460,000 tons/year at Puerto Madryn. 70% exported. Madanes Quintanilla family controls 68% of shares. Foil sub-market share rose from 64% (2019) to 91% (2024) after antidumping protection. The government removed the 28% antidumping tariff on Chinese aluminium in early 2026.",
+      "correct_figure": "100% domestic monopoly, HHI 10,000 — confirmed",
+      "confidence": "HIGH",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Aluar",
+        "https://cuartopodersalta.com.ar/duenos-y-algo-mas-aluar-y-el-monopolio-del-aluminio/",
+        "https://www.argentina.gob.ar/sites/default/files/aluminio_2024-1.pdf",
+        "https://www.infobae.com/economia/2026/02/23/el-gobierno-quito-una-proteccion-clave-que-favorecia-a-aluar-otra-empresa-del-dueno-de-fate/"
+      ]
+    },
+    {
+      "id": 24,
+      "sector": "ALUMINIUM",
+      "claim": "Aluar pays USD 16-26/MWh vs market $70-80",
+      "verdict": "VERIFIED",
+      "finding": "Multiple sources confirm that Aluar pays a subsidized electricity rate from the Futaleufu hydroelectric dam, where 95% of annual output is contractually destined to Aluar. Engineer Marcos Rebasa stated Aluar pays between USD 16-20/MWh when the market rate was USD 70-80/MWh. A 2017 government-negotiated contract set the price at USD 17/MWh. The contract's point 8 establishes a price of USD 21/MWh. Historical data shows Aluar's electricity was 43% below the average consumer rate as far back as 1983.",
+      "correct_figure": "USD 16-21/MWh (depending on source/period) vs market USD 70-80/MWh — confirmed",
+      "confidence": "HIGH",
+      "sources": [
+        "https://www.red43.com.ar/nota/2022-5-15-7-40-59-hidroelectrica-futaleufu-vende-energia-subsidiada-a-aluar-cuando-se-debate-la-quita-para-el-consumo-residencial",
+        "https://www.red43.com.ar/nota/2022-5-8-8-30-10-hidroelectrica-futaleufu-como-se-transformo-un-plan-de-desarrollo-industrial-en-un-negocio-privado",
+        "https://www.argentina.gob.ar/noticias/el-gobierno-nacional-garantiza-el-precio-de-la-energia-aluar"
+      ]
+    },
+    {
+      "id": 25,
+      "sector": "INSURANCE",
+      "claim": "Top 5 ART control 70.9%",
+      "verdict": "CORRECTED",
+      "finding": "The ART market is concentrated but the '70.9%' figure requires adjustment. Based on 2025 data: Prevencion ART (Sancor) 22.4%, Provincia ART 18.3%, Galeno ART ~9-10.4%, Experta ART ~10.83%, and La Segunda ART round out the top 5. The top 3 alone control approximately 50%. The top 5 likely control approximately 65-70% — close to but slightly below the claimed 70.9%. The precise figure depends on the measurement period (March vs September 2025 rankings show different positions).",
+      "correct_figure": "Top 5 ART: approximately 65-70% (close to but not precisely 70.9%)",
+      "confidence": "MEDIUM",
+      "sources": [
+        "https://elseguroenaccion.com.ar/radiografia-del-mercado-asegurador-argentino-por-ramo-a-marzo-2025/",
+        "https://www.segurosdeart.com/blog/top-5-aseguradoras-de-art-en-argentina-ranking-y-comparativa",
+        "https://rankingslatam.com/blogs/industry-news/argentina-insurance-market-size-competitors-and-market-share-leaders-march-2025-rankings"
+      ]
+    },
+    {
+      "id": 26,
+      "sector": "INSURANCE",
+      "claim": "Federación Patronal 9.7%, Sancor 6.9%",
+      "verdict": "VERIFIED",
+      "finding": "Confirmed for the December 2024 / March 2025 measurement period. Federacion Patronal leads the general insurance market with 9.7% share (premiums ARS 783.3B in 2024, growing to ARS 1.9T in 2025). Sancor Seguros holds 6.9% (premiums ARS 582.9B). However, by September 2025, the positions shifted: Sancor group led with 12.4% and Federacion Patronal was second with 9.3%, reflecting seasonal dynamics and different measurement methodologies (group vs individual entity). Top 10 groups hold 49.6% of total premiums.",
+      "correct_figure": "Fed. Patronal 9.7%, Sancor 6.9% (Dec 2024 data) — confirmed; positions shifted by Sep 2025",
+      "confidence": "HIGH",
+      "sources": [
+        "https://rankingslatam.com/blogs/industry-news/argentina-insurance-market-size-competitors-and-market-share-leaders-march-2025-rankings",
+        "https://elseguroenaccion.com.ar/ranking-de-primas-por-grupo-asegurador-a-diciembre-2024/",
+        "https://elseguroenaccion.com.ar/primas-emitidas-por-grupo-asegurador-a-septiembre-2025/"
+      ]
+    },
+    {
+      "id": 27,
+      "sector": "CONSUMER IMPACT",
+      "claim": "Total consumer cost USD 22.5B/year (3.3% GDP)",
+      "verdict": "CORRECTED",
+      "finding": "The USD 22.5B figure comes from our own research compilation (monopolios-impacto-consumidor.json), which aggregates sector-by-sector overcharge estimates. The figure is an ESTIMATE based on documented price gaps and market sizes, not an independently published statistic. The same research file actually calculates the GDP percentage as 4.2% (not 3.3%), using Argentina's 2025 GDP of USD 683.4B. The total including efficiency losses is USD 28.5B. The 3.3% figure (22.5/683.4 = 3.29%) is mathematically correct for the direct overcharge component only, but the research file reports 4.2% which includes efficiency losses.",
+      "correct_figure": "USD 22.5B direct overcharges (3.3% GDP) or USD 28.5B including efficiency losses (4.2% GDP) — both are ESTIMATES, not independently verified totals",
+      "confidence": "LOW",
+      "note": "This is a compiled estimate from multiple sector analyses, not an externally published figure. No independent study has aggregated the total cost of monopolization in Argentina to produce a single number.",
+      "sources": [
+        "Internal research: monopolios-impacto-consumidor.json",
+        "https://www.enorsai.com.ar/politica/13676-como-los-monopolios-de-la-economia-argentina-generan-inflacion.html",
+        "https://www.letrap.com.ar/nota/2022-5-2-9-36-0-en-argentina-20-empresas-deciden-que-comen-y-a-que-precio-45-millones-de-personas"
+      ]
+    },
+    {
+      "id": 28,
+      "sector": "CONSUMER IMPACT",
+      "claim": "OECD: competition reforms could boost GDP 9.5%",
+      "verdict": "CORRECTED",
+      "finding": "The OECD Economic Survey of Argentina (July 2025) uses the OECD Long-Term Model to estimate two scenarios: (1) Reforms already completed (2018->2025 PMR improvement): +2.7% potential output and +0.8% employment by 2050. (2) Further reforms to match OECD first-quartile PMR by 2035: an additional +6.8% output and +2.2% employment. The '9.5%' appears to be the SUM of both scenarios (2.7% + 6.8% = 9.5%), which is a valid interpretation of cumulative reform potential, but the OECD does not present '9.5%' as a single headline figure. It is a composite of two separate reform horizons, measured against the counterfactual of 2018 regulation levels.",
+      "correct_figure": "2.7% (reforms done) + 6.8% (further reforms) = 9.5% cumulative potential output boost by 2050 vs 2018 baseline — derived from OECD data, but not cited as a single OECD figure",
+      "confidence": "MEDIUM",
+      "sources": [
+        "https://www.oecd.org/en/publications/oecd-economic-surveys-argentina-2025_27dd6e27-en/full-report/towards-a-better-business-environment_6920ae15.html",
+        "https://oecdecoscope.blog/2025/07/16/strengthening-pro-growth-reforms-in-argentina/",
+        "https://www.oecd.org/en/about/news/press-releases/2025/07/argentina-should-maintain-reform-momentum-to-boost-investment-and-productivity.html"
+      ]
+    }
+  ],
+
+  "summary": {
+    "total_claims": 28,
+    "verified": 11,
+    "corrected": 14,
+    "unverifiable": 2,
+    "debunked": 1,
+    "verified_claims": [1, 4, 5, 8, 20, 21, 22, 23, 24, 26],
+    "corrected_claims": [2, 3, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 25, 27, 28],
+    "unverifiable_claims": [6, 7],
+    "debunked_claims": [13],
+    "critical_corrections": [
+      "Claim 3 (pay-TV): 60% -> 36-40%. Significant overstatement.",
+      "Claim 12 (ABCD grain): 80%+ -> ~60%. Overstated by 20+ percentage points.",
+      "Claim 13 (Ledesma sugar): 75% -> 17-20%. DEBUNKED — off by nearly 4x.",
+      "Claim 14 (CAME markup): 3.1-3.6x -> 3.7x average. Actually UNDERSTATED.",
+      "Claim 16 (Prisma): 80% processing -> 58% processing (80% = shareholder bank issuance).",
+      "Claim 28 (OECD GDP): 9.5% is derived sum of two scenarios, not a single OECD headline."
+    ]
+  }
+}
