@@ -141,6 +141,42 @@ export default function MapaPage() {
             <h2 className="mb-4 text-lg font-bold text-zinc-50">{t.pointsTitle[lang]}</h2>
             <div className="relative overflow-hidden rounded-xl border border-zinc-700 bg-zinc-950 p-4">
               <svg viewBox="0 0 500 650" className="mx-auto h-[500px] w-full max-w-md">
+                {/* Argentina outline — simplified polygon at 0.15 opacity */}
+                <path
+                  d="M295,18 L310,22 L330,30 L345,25 L360,32 L370,28 L380,35 L390,45
+                     L395,60 L385,70 L375,65 L365,72 L370,85 L380,95 L385,110 L378,120
+                     L370,115 L358,120 L350,130 L355,145 L360,160 L365,175 L358,185
+                     L350,195 L345,210 L340,225 L335,240 L330,255 L322,265 L318,280
+                     L310,295 L305,310 L300,325 L295,340 L288,355 L280,370 L275,385
+                     L268,400 L260,415 L252,430 L245,445 L238,460 L230,472 L222,485
+                     L215,498 L210,510 L205,525 L200,540 L198,555 L202,568 L210,575
+                     L218,585 L210,595 L198,600 L188,608 L180,615 L175,625 L182,635
+                     L195,640 L188,648 L175,645 L162,640 L168,628 L160,618 L155,608
+                     L150,598 L158,588 L165,578 L160,565 L155,552 L158,538 L162,525
+                     L160,510 L155,498 L148,488 L140,480 L135,470 L138,458 L145,448
+                     L150,435 L148,422 L142,410 L138,398 L135,385 L140,372 L148,362
+                     L155,350 L158,338 L162,325 L158,312 L152,300 L148,288 L145,275
+                     L150,262 L158,252 L165,240 L168,228 L172,215 L170,202 L165,190
+                     L160,178 L158,165 L162,152 L168,140 L175,130 L180,118 L185,108
+                     L190,98 L198,88 L205,78 L215,68 L225,58 L235,50 L248,42 L260,35
+                     L272,28 L285,22 Z"
+                  fill="#27272a"
+                  fillOpacity={0.15}
+                  stroke="#3f3f46"
+                  strokeOpacity={0.25}
+                  strokeWidth={1}
+                />
+                {/* Tierra del Fuego approximation */}
+                <path
+                  d="M188,608 L210,605 L225,610 L235,618 L245,625 L238,635 L225,640
+                     L210,638 L198,632 L188,625 L182,615 Z"
+                  fill="#27272a"
+                  fillOpacity={0.12}
+                  stroke="#3f3f46"
+                  strokeOpacity={0.2}
+                  strokeWidth={0.8}
+                />
+
                 {/* Points */}
                 {points.map((p, i) => {
                   const { x, y } = projectPoint(p.lat, p.lon)
