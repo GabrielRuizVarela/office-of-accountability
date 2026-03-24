@@ -98,6 +98,42 @@ const UNIQUE_CONSTRAINTS = [
     label: 'InvestigationConfig',
     property: 'id',
   },
+  // Nuclear Risk Tracking investigation
+  {
+    name: 'nuclear_signal_id_unique',
+    label: 'NuclearSignal',
+    property: 'id',
+  },
+  {
+    name: 'nuclear_actor_id_unique',
+    label: 'NuclearActor',
+    property: 'id',
+  },
+  {
+    name: 'weapon_system_id_unique',
+    label: 'WeaponSystem',
+    property: 'id',
+  },
+  {
+    name: 'treaty_id_unique',
+    label: 'Treaty',
+    property: 'id',
+  },
+  {
+    name: 'nuclear_facility_id_unique',
+    label: 'NuclearFacility',
+    property: 'id',
+  },
+  {
+    name: 'risk_briefing_id_unique',
+    label: 'RiskBriefing',
+    property: 'id',
+  },
+  {
+    name: 'signal_source_id_unique',
+    label: 'SignalSource',
+    property: 'id',
+  },
 ] as const
 
 /** Full-text indexes for search across text fields */
@@ -142,6 +178,17 @@ const FULLTEXT_INDEXES: readonly { name: string; labels: readonly string[]; prop
   {
     name: 'company_name_fulltext',
     labels: ['Company'],
+    properties: ['name'],
+  },
+  // Nuclear Risk Tracking fulltext
+  {
+    name: 'nuclear_signal_fulltext',
+    labels: ['NuclearSignal'],
+    properties: ['title_en', 'title_es', 'summary_en', 'summary_es'],
+  },
+  {
+    name: 'nuclear_actor_name_fulltext',
+    labels: ['NuclearActor'],
     properties: ['name'],
   },
   // Cross-reference engine — CUIT fulltext for multi-label matching
@@ -287,6 +334,52 @@ const BTREE_INDEXES = [
     name: 'asset_declaration_cuit_index',
     label: 'AssetDeclaration',
     property: 'cuit',
+  },
+  // Nuclear Risk Tracking range indexes
+  {
+    name: 'nuclear_signal_date_index',
+    label: 'NuclearSignal',
+    property: 'date',
+  },
+  {
+    name: 'nuclear_signal_theater_index',
+    label: 'NuclearSignal',
+    property: 'theater',
+  },
+  {
+    name: 'nuclear_signal_escalation_level_index',
+    label: 'NuclearSignal',
+    property: 'escalation_level',
+  },
+  {
+    name: 'nuclear_signal_severity_index',
+    label: 'NuclearSignal',
+    property: 'severity',
+  },
+  {
+    name: 'nuclear_actor_type_index',
+    label: 'NuclearActor',
+    property: 'actor_type',
+  },
+  {
+    name: 'nuclear_actor_status_index',
+    label: 'NuclearActor',
+    property: 'nuclear_status',
+  },
+  {
+    name: 'nuclear_facility_type_index',
+    label: 'NuclearFacility',
+    property: 'facility_type',
+  },
+  {
+    name: 'treaty_status_index',
+    label: 'Treaty',
+    property: 'status',
+  },
+  {
+    name: 'risk_briefing_date_index',
+    label: 'RiskBriefing',
+    property: 'date',
   },
 ] as const
 
