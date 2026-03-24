@@ -24,7 +24,7 @@ import { resolveLLMProvider, processToolCall, getGraphSummary } from './shared'
 // ---------------------------------------------------------------------------
 
 const DEFAULT_MAX_ITERATIONS = 5
-const STAGE_KIND: StageKind = 'analyze'
+const STAGE_KIND: StageKind = 'iterate'
 
 // ---------------------------------------------------------------------------
 // IterateStageRunner

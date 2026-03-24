@@ -8,6 +8,7 @@ import { IngestStageRunner } from './ingest'
 import { VerifyStageRunner } from './verify'
 import { EnrichStageRunner } from './enrich'
 import { AnalyzeStageRunner } from './analyze'
+import { IterateStageRunner } from './iterate'
 import { ReportStageRunner } from './report'
 
 export function createStageRunner(kind: StageKind): StageRunner {
@@ -21,8 +22,7 @@ export function createStageRunner(kind: StageKind): StageRunner {
     case 'analyze':
       return new AnalyzeStageRunner()
     case 'iterate':
-      // Iterate reuses analyze runner with iteration loop — placeholder until Phase 5b
-      return new AnalyzeStageRunner()
+      return new IterateStageRunner()
     case 'report':
       return new ReportStageRunner()
   }
@@ -34,4 +34,5 @@ export { IngestStageRunner } from './ingest'
 export { VerifyStageRunner } from './verify'
 export { EnrichStageRunner } from './enrich'
 export { AnalyzeStageRunner } from './analyze'
+export { IterateStageRunner } from './iterate'
 export { ReportStageRunner } from './report'
