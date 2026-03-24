@@ -184,14 +184,18 @@ export default function MapaPage() {
         setPoints(
           json.data.points.filter((p: PointData) => {
             if (!p.lat || !p.lon) return false
-            // Filter out placeholder coords (0.123456), lat=lon dupes, positive lats
+            // Filter out placeholder coords
             if (Math.abs(p.lat) < 1 || Math.abs(p.lon) < 1) return false
-            if (Math.abs(p.lat - p.lon) < 0.01) return false
-            // Argentina: lat must be negative (-55 to -21), lon must be negative (-74 to -53)
-            const lat = p.lat < 0 ? p.lat : -p.lat // fix missing minus sign
+            // Filter lat=lon dupes and coords where both are too close (data error)
+            if (Math.abs(p.lat - p.lon) < 1) return false
+            // Argentina: lat negative (-55 to -21), lon negative (-74 to -53)
+            const lat = p.lat < 0 ? p.lat : -p.lat
             const lon = p.lon < 0 ? p.lon : -p.lon
             p.lat = lat
             p.lon = lon
+            // Lon must be further west than lat is south (Argentina is narrow)
+            // This catches the -54,-54 type errors
+            if (lon > -53) return false
             return lat > -56 && lat < -20 && lon > -75 && lon < -52
           }),
         )
@@ -236,17 +240,24 @@ export default function MapaPage() {
           {/* Map */}
           <section>
             <h2 className="mb-4 text-lg font-bold text-zinc-50">{t.pointsTitle[lang]}</h2>
-            <div className="relative overflow-hidden rounded-xl border border-zinc-700 bg-zinc-950 p-2">
+            <div
+              className="relative rounded-xl border border-zinc-700 bg-zinc-950 p-2"
+              style={{ overflow: 'hidden' }}
+              onWheel={handleWheel}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+            >
               <svg
                 viewBox={`0 0 ${SVG_W} ${SVG_H}`}
                 className="mx-auto w-full max-w-lg touch-none select-none"
-                style={{ height: 'auto', maxHeight: '70vh', cursor: dragging ? 'grabbing' : 'grab' }}
-                onWheel={handleWheel}
-                onPointerDown={handlePointerDown}
-                onPointerMove={handlePointerMove}
-                onPointerUp={handlePointerUp}
+                style={{
+                  height: 'auto',
+                  maxHeight: '70vh',
+                  cursor: dragging ? 'grabbing' : 'grab',
+                }}
               >
-                <g transform={`translate(${SVG_W / 2 + pan.x}, ${SVG_H / 2 + pan.y}) scale(${zoom}) translate(${-SVG_W / 2}, ${-SVG_H / 2})`}>
+                <g transform={`translate(${SVG_W / 2}, ${SVG_H / 2}) translate(${pan.x / zoom * 2}, ${pan.y / zoom * 2}) scale(${zoom}) translate(${-SVG_W / 2}, ${-SVG_H / 2})`}>
                 {/* Argentina outline from GeoJSON */}
                 {geoPath && (
                   <path
