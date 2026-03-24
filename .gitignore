@@ -3,3 +3,4 @@
 node_modules/
 webapp/data/
 .next/
+webapp/_ingestion_data/ocds-provincial/BAC_OCDS/

@@ -1,0 +1,185 @@
+{
+  "wave": 20,
+  "name": "Cartel detection via co-bidding pattern analysis (CABA OCDS)",
+  "date": "2026-03-24",
+  "dataset": {
+    "total_bids": 13835,
+    "unique_bidders": 531,
+    "unique_procedures": 1757,
+    "single_awardee_procedures": 1374,
+    "multi_awardee_procedures": 383,
+    "note": "Dataset contains only awarded bids (status=adjudicada). Win-rate analysis not possible — all bids are winners. Analysis focuses on co-award patterns and market concentration."
+  },
+  "methodology": [
+    "Co-award pair analysis: contractors repeatedly awarded lots within the same procedures",
+    "Triad cluster detection: groups of 3+ firms co-awarded across multiple procedures",
+    "Hub-spoke analysis: firms that serve as central nodes connecting many co-awardees",
+    "Market concentration by procurement unit: bidder/procedure ratio",
+    "Single-bidder procedure detection for high-value contracts"
+  ],
+  "clusters": [
+    {
+      "id": "surgical-supplies-triad",
+      "label": "Surgical Supplies Triad",
+      "severity": "high",
+      "members": [
+        { "name": "JOHNSON & JOHNSON MEDICAL S.A", "cuit": "30598498500", "procedures": 26 },
+        { "name": "COVIDIEN ARGENTINA SA", "cuit": "30712523669", "procedures": 14 },
+        { "name": "CIRUGIA ARGENTINA S.A.", "cuit": "33708681879", "procedures": 16 }
+      ],
+      "shared_procedures_triad": 7,
+      "shared_procedures_pairs": {
+        "jj_covidien": 9,
+        "jj_cirugia": 12,
+        "covidien_cirugia": 8
+      },
+      "combined_co_award_value": 54371646.9,
+      "pattern": "These three surgical supply firms appear together in 7 procedures and in pairwise combinations across 15+ hospital procurement processes. J&J and Cirugia Argentina co-appear most frequently (12 procedures). All three are multinational or large domestic surgical supply firms splitting lot awards within the same tenders.",
+      "cartel_indicators": [
+        "Repeated co-appearance across multiple procurement units (410, 434, 418, 426, 425, 435)",
+        "Complementary product lines suggest coordinated lot-splitting rather than genuine competition",
+        "Covidien is a Medtronic subsidiary — potential coordinated bidding with J&J on surgical consumables"
+      ]
+    },
+    {
+      "id": "lab-reagents-hub",
+      "label": "Laboratory Reagents Hub (Quimica Cordoba Network)",
+      "severity": "high",
+      "members": [
+        { "name": "QUIMICA CORDOBA S.A.", "cuit": "33576113329", "role": "hub", "co_awardees": 25, "procedures": 23 },
+        { "name": "ERNESTO VAN ROSSUM Y COMPAÑIA S.R.L.", "cuit": "30526934853", "shared_with_hub": 13 },
+        { "name": "GBO ARGENTINA S.A.", "cuit": "30708003391", "shared_with_hub": 11 },
+        { "name": "CIENTIFICA PARQUE CENTENARIO S.R.L.", "cuit": "30610582423", "shared_with_hub": 10 },
+        { "name": "MEDI SISTEM S.R.L.", "cuit": "30661658262", "shared_with_hub": 9 },
+        { "name": "TECNOLAB S.A.", "cuit": "30638975994", "shared_with_hub": 7 },
+        { "name": "MONTEBIO S.R.L.", "cuit": "30708250062", "shared_with_hub": 7 },
+        { "name": "LABORATORIOS GAUDIUM S.R.L.", "cuit": "33709433089", "shared_with_hub": 7 }
+      ],
+      "pattern": "Quimica Cordoba operates as a hub node connecting 25 distinct co-awardees across 23 procedures. The top 7 partners each share 7-13 procedures. This is the densest co-award network in the dataset.",
+      "cartel_indicators": [
+        "Hub-spoke topology: one central firm coordinates with a rotating set of partners",
+        "13 shared procedures between QC and Van Rossum is extremely high for this market",
+        "Network spans multiple procurement units — not explained by product specialization alone",
+        "Triad QC + Van Rossum + Medi Sistem appears in 6 procedures together"
+      ]
+    },
+    {
+      "id": "pharma-distribution-cluster",
+      "label": "Pharmaceutical Distribution Cluster",
+      "severity": "medium",
+      "members": [
+        { "name": "LABORATORIOS RICHET S.A.", "cuit": "30504294222", "procedures": 31 },
+        { "name": "ALPHA MEDICAL GROUP S.R.L.", "cuit": "30711878323", "procedures": 22 },
+        { "name": "MEDPHARMA S.A", "cuit": "30712242236", "shared_pairs": 10 },
+        { "name": "DROGUERIA GARZON S A", "cuit": "30605796016", "shared_pairs": 9 },
+        { "name": "FRESENIUS KABI S.A.", "cuit": "30692971953", "shared_pairs": 9 },
+        { "name": "BIOFARMA S.R.L.", "cuit": "30604596196", "shared_pairs": 7 }
+      ],
+      "shared_procedures_pairs": {
+        "richet_alpha": 14,
+        "richet_medpharma": 5,
+        "fresenius_alpha": 9,
+        "richet_garzon": 5,
+        "richet_biofarma": 4
+      },
+      "pattern": "Richet and Alpha Medical co-appear in 14 procedures — the highest pair frequency in the dataset. Alpha Medical also co-appears with Fresenius Kabi (9), Drogueria Garzon (9), and several others. Cluster of 6 pharmaceutical firms with dense interconnections.",
+      "cartel_indicators": [
+        "14 shared procedures between Richet and Alpha Medical is the single highest co-bidding pair",
+        "Alpha Medical appears as a secondary hub connecting Richet, Fresenius, Garzon, Biofarma",
+        "Multiple triads detected within this cluster (Richet+Biofarma+Alpha: 4 shared, Richet+Garzon+Alpha: 4 shared)"
+      ]
+    },
+    {
+      "id": "drogueria-network",
+      "label": "Drogueria Distribution Network",
+      "severity": "medium",
+      "members": [
+        { "name": "DROGUERIA MARTORANI S.A.", "cuit": "30702966066", "procedures": 30 },
+        { "name": "DROGUERIA FARMATEC S.A.", "cuit": "30707142851", "shared_with_martorani": 11 },
+        { "name": "DROGUERIA ARTIGAS S.A.", "cuit": "30651249364", "shared_with_martorani": 7 },
+        { "name": "AMERICAN FIURE S.A.", "cuit": "30707539786", "shared_with_martorani": 6 },
+        { "name": "FOC S.R.L.", "cuit": "30657002247", "shared_with_martorani": 6 }
+      ],
+      "combined_co_award_value_martorani_farmatec": 78923258.8,
+      "pattern": "Drogueria Martorani is a hub connecting 4 other pharmaceutical distributors. Martorani and Farmatec co-appear in 11 procedures ($79M combined). The drogueria cluster also intersects with the surgical triad — Martorani co-appears with J&J in 8 procedures.",
+      "cartel_indicators": [
+        "11 co-appearances between two droguerias in the same tender processes",
+        "Cross-cluster connection: Martorani bridges the drogueria network to the surgical supplies triad",
+        "Martorani appears in procedures with the most co-awardees (14-awardee procedure 420-0320-LPU22)"
+      ]
+    },
+    {
+      "id": "chemical-reagents-cluster",
+      "label": "Chemical Reagents Cluster",
+      "severity": "medium",
+      "members": [
+        { "name": "QUIMICA EROVNE S.A.", "cuit": "30525356481", "procedures": 34 },
+        { "name": "MEDICA TEC S.R.L.", "cuit": "30624950468", "shared_with_erovne": 7 },
+        { "name": "BIOARTIS S.R.L.", "cuit": "30696703058", "shared_with_erovne": 7 },
+        { "name": "BIOQUIMICA SRL", "cuit": "30642169226", "shared_with_erovne": 6 }
+      ],
+      "pattern": "Quimica Erovne is the second-highest hub after Quimica Cordoba, co-appearing with Medica Tec and Bioartis in 5 procedures as a triad, and with Bioquimica in 6. This cluster also overlaps with the Quimica Cordoba network.",
+      "cartel_indicators": [
+        "Triad Erovne + Medica Tec + Bioartis co-appears in 5 procedures",
+        "Overlaps with QC hub network — potential super-cluster of lab chemical suppliers",
+        "Erovne has $168M in awards across 34 procedures, making it a major market player"
+      ]
+    }
+  ],
+  "high_value_single_bidder_contracts": [
+    { "procedure": "7162-1736-LPU21", "sole_bidder": "Agustin Asaad", "amount": 3131518500, "note": "$3.1B with zero competition" },
+    { "procedure": "8056-0124-LPU22", "sole_bidder": "TRANS INDUSTRIAS ELECTRONICAS S.A", "amount": 803520000 },
+    { "procedure": "8056-0009-LPU22", "sole_bidder": "DATCO S.A.", "amount": 401934000 },
+    { "procedure": "2900-1810-LPU21", "sole_bidder": "FNET SYSTEM S.R.L.", "amount": 345284208 },
+    { "procedure": "8056-0136-LPU22", "sole_bidder": "AP Supplier Group SA", "amount": 340001744 },
+    { "procedure": "2900-1542-LPU21", "sole_bidder": "ESCALUM INVESTMENT SA", "amount": 243648000 },
+    { "procedure": "2051-0023-LPU22", "sole_bidder": "Keko S.A.", "amount": 217959172 },
+    { "procedure": "101-1835-LPU21", "sole_bidder": "PAPELERA PERGAMINO S.A.I.C.A.", "amount": 217299600 },
+    { "procedure": "401-0121-CDI22", "sole_bidder": "BIODIAGNOSTICO S.A.", "amount": 215262432 },
+    { "procedure": "500-0213-CME22", "sole_bidder": "VIAJES APOLO S.R.L", "amount": 160500000 }
+  ],
+  "market_concentration": {
+    "most_concentrated_units": [
+      { "unit": "9525", "bidders": 8, "procedures": 16, "ratio_pct": 50, "note": "Only 8 bidders for 16 procedures — highest concentration" },
+      { "unit": "424", "bidders": 9, "procedures": 14, "ratio_pct": 64 },
+      { "unit": "2900", "bidders": 4, "procedures": 6, "ratio_pct": 67 },
+      { "unit": "8056", "bidders": 18, "procedures": 27, "ratio_pct": 67, "note": "Tech procurement — contains 3 of top 10 single-bidder high-value contracts" }
+    ],
+    "single_bidder_rate": "78.2% of procedures (1374/1757) have only one awardee"
+  },
+  "anomalies": [
+    {
+      "type": "missing_cuit",
+      "entity": "PAPELERA PERGAMINO S.A.I.C.A.",
+      "detail": "Top recipient with $5.3B in total awards has NO CUIT on record. All awards from a single procedure (101-1835-LPU21) with duplicate bid entries — possible data quality issue or obfuscation.",
+      "severity": "high"
+    },
+    {
+      "type": "individual_high_volume",
+      "entities": [
+        { "name": "RAUL JORGE LEON POGGI", "cuit": "20083367599", "procedures": 15 },
+        { "name": "RAUL ANGEL LALANNE", "cuit": "20086439213", "procedures": 9 },
+        { "name": "JUAN ERNESTO IBARRA", "cuit": "20044240522", "procedures": 15 }
+      ],
+      "detail": "Individual persons (not companies) winning government procurement contracts across multiple procedures. Poggi and Lalanne also appear in the Quimica Cordoba network as co-awardees.",
+      "severity": "medium"
+    },
+    {
+      "type": "mega_single_bid",
+      "entity": "Agustin Asaad",
+      "procedure": "7162-1736-LPU21",
+      "amount": 3131518500,
+      "detail": "A single individual awarded $3.1 billion ARS with no competing bids. This is the largest single-bidder contract in the dataset by a factor of 4x.",
+      "severity": "high"
+    }
+  ],
+  "summary": {
+    "clusters_detected": 5,
+    "total_firms_in_clusters": 28,
+    "highest_co_bidding_pair": "LABORATORIOS RICHET + ALPHA MEDICAL GROUP (14 shared procedures)",
+    "densest_network": "QUIMICA CORDOBA hub (25 co-awardees across 23 procedures)",
+    "largest_triad": "J&J + COVIDIEN + CIRUGIA ARGENTINA (7 shared procedures, $54M combined)",
+    "single_bidder_high_value_total": 6076427056,
+    "key_insight": "The CABA procurement market shows two distinct patterns: (1) Dense co-award networks in medical/laboratory supplies suggesting coordinated lot-splitting among regular participants, and (2) High-value single-bidder contracts in technology and construction suggesting barriers to entry or specification tailoring. 78% of procedures have only one awardee."
+  }
+}

@@ -107,33 +107,39 @@ export interface GovernmentResponse {
 
 export const IMPACT_STATS: ImpactStat[] = [
   {
-    value: '37,351',
+    value: '56,122',
     label_en: 'Entities traced in the obras-publicas graph',
     label_es: 'Entidades rastreadas en el grafo de obras publicas',
     source: 'Office of Accountability knowledge graph',
   },
   {
-    value: '43,615',
-    label_en: 'Cross-references linking to finanzas-politicas',
-    label_es: 'Referencias cruzadas vinculadas a finanzas-politicas',
+    value: '48,415',
+    label_en: 'Relationships mapped across the investigation graph',
+    label_es: 'Relaciones mapeadas en el grafo de investigacion',
+    source: 'Office of Accountability knowledge graph',
+  },
+  {
+    value: '9,385',
+    label_en: 'Cross-entity matches (SAME_ENTITY links)',
+    label_es: 'Coincidencias entre entidades (enlaces SAME_ENTITY)',
     source: 'Office of Accountability cross-reference engine',
   },
   {
-    value: '12,431',
-    label_en: 'Investigation flags detected',
-    label_es: 'Alertas de investigacion detectadas',
-    source: 'Office of Accountability cross-reference engine',
-  },
-  {
-    value: '7,481',
+    value: '7,486',
     label_en: 'Public works analyzed',
     label_es: 'Obras publicas analizadas',
     source: 'CONTRAT.AR / datos.gob.ar',
   },
   {
-    value: '28,419',
+    value: '28,695',
     label_en: 'Contractors registered in the graph',
     label_es: 'Contratistas registrados en el grafo',
+    source: 'CONTRAT.AR / datos.gob.ar',
+  },
+  {
+    value: '13,835',
+    label_en: 'Public procurement bids tracked',
+    label_es: 'Ofertas de contratacion publica rastreadas',
     source: 'CONTRAT.AR / datos.gob.ar',
   },
   {
@@ -288,6 +294,36 @@ export const FACTCHECK_ITEMS: FactcheckItem[] = [
     source_url: 'https://www.justice.gov/archives/opa/pr/odebrecht-and-braskem-plead-guilty-and-agree-pay-least-35-billion-global-penalties-resolve',
     detail_en: 'SACDE is independently verified via Odebrecht DOJ plea agreement, Andorra money trail (AFIP traced $4.5M USD), and Sarmiento soterramiento financial flows. CPC is independently verified via AFIP $8B peso fraud investigation and Echegaray conviction. Supercemento/Roggio, Vialmani, and CN Sapag have partial corroboration from contract records and independent reporting. Decavial (Aznar retracted testimony), Construmex, Cleanosol, and Concret Nor have no significant independent corroboration — their corruption links depend solely on the Cuadernos notebooks and arrepentido testimony.',
     detail_es: 'SACDE esta verificado independientemente via el acuerdo DOJ de Odebrecht, el rastro de dinero en Andorra (AFIP rastreo $4,5M USD) y flujos financieros del soterramiento Sarmiento. CPC esta verificado independientemente via la investigacion de fraude de AFIP por $8B pesos y la condena de Echegaray. Supercemento/Roggio, Vialmani y CN Sapag tienen corroboracion parcial de registros de contratos y reportes independientes. Decavial (Aznar retracto testimonio), Construmex, Cleanosol y Concret Nor no tienen corroboracion independiente significativa.',
+  },
+  {
+    id: 'fc-werthein-offshore',
+    claim_en: 'State contractors CAJA DE SEGUROS S.A. and Experta Aseguradora are linked to the Werthein family offshore network (Pandora Papers).',
+    claim_es: 'Los contratistas del estado CAJA DE SEGUROS S.A. y Experta Aseguradora estan vinculados a la red offshore de la familia Werthein (Pandora Papers).',
+    status: 'confirmed',
+    source: 'Pandora Papers / ICIJ, Office of Accountability graph expansion',
+    source_url: '',
+    detail_en: 'Graph expansion analysis revealed that CAJA DE SEGUROS S.A. and Experta Aseguradora (state contractors) are linked to Werthein family members (Dario, Daniel, Adrian) who appear as offshore officers in the ICIJ database. Dario Werthein is confirmed in the Pandora Papers as board member of Ducal Investments Limited (BVI). Mother Norma Gold de Werthein is beneficiary of Hinslet Overseas Ltd (BVI, 1997).',
+    detail_es: 'El analisis de expansion del grafo revelo que CAJA DE SEGUROS S.A. y Experta Aseguradora (contratistas del estado) estan vinculados a miembros de la familia Werthein (Dario, Daniel, Adrian) que aparecen como directivos offshore en la base de datos del ICIJ. Dario Werthein esta confirmado en los Pandora Papers como director de Ducal Investments Limited (BVI). La madre Norma Gold de Werthein es beneficiaria de Hinslet Overseas Ltd (BVI, 1997).',
+  },
+  {
+    id: 'fc-revolving-door-drucaroff',
+    claim_en: 'Sergio Drucaroff simultaneously held roles as Subsecretario de Compre Argentino and as a registered state contractor (CUIT 20280336689).',
+    claim_es: 'Sergio Drucaroff ocupo simultaneamente cargos como Subsecretario de Compre Argentino y como contratista registrado del estado (CUIT 20280336689).',
+    status: 'confirmed',
+    source: 'argentina.gob.ar, CIPPEC, Office of Accountability graph expansion',
+    source_url: '',
+    detail_en: 'Entity resolution identified Sergio Alejandro Drucaroff as both a registered Contractor (CUIT 20280336689) and holder of government appointments: Subsecretario de Gestion Productiva (2016-2018) and Subsecretario de Compre Argentino (2018-2019) at the Ministry of Production. The Compre Argentino program directly regulates state procurement, creating a direct conflict of interest.',
+    detail_es: 'La resolucion de entidades identifico a Sergio Alejandro Drucaroff como contratista registrado (CUIT 20280336689) y titular de cargos gubernamentales: Subsecretario de Gestion Productiva (2016-2018) y Subsecretario de Compre Argentino (2018-2019) en el Ministerio de Produccion. El programa Compre Argentino regula directamente las compras del estado, creando un conflicto de intereses directo.',
+  },
+  {
+    id: 'fc-donor-contractors-bipartisan',
+    claim_en: '8 state contractors simultaneously donated to opposing political parties (Frente de Todos and Juntos por el Cambio) in the 2019 elections.',
+    claim_es: '8 contratistas del estado donaron simultaneamente a partidos politicos opuestos (Frente de Todos y Juntos por el Cambio) en las elecciones 2019.',
+    status: 'confirmed',
+    source: 'Political finance disclosures, CONTRAT.AR, Office of Accountability graph expansion',
+    source_url: '',
+    detail_en: 'Cross-referencing political donation records with CONTRAT.AR contractor registrations revealed 8 entities that are both state contractors and political donors, contributing to both major coalitions (Frente de Todos and Juntos por el Cambio) in the 2019 electoral cycle. This bipartisan donor-contractor pattern suggests strategic relationship management rather than ideological alignment.',
+    detail_es: 'El cruce de registros de donaciones politicas con registros de contratistas de CONTRAT.AR revelo 8 entidades que son tanto contratistas del estado como donantes politicos, contribuyendo a ambas coaliciones principales (Frente de Todos y Juntos por el Cambio) en el ciclo electoral 2019. Este patron bipartidario de donante-contratista sugiere gestion estrategica de relaciones mas que alineamiento ideologico.',
   },
 ]
 

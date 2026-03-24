@@ -1,5 +1,5 @@
 /**
- * Transforms CABA BAC_OCDS releases into Neo4j node/relationship parameters.
+ * Transforms OCDS releases into Neo4j node/relationship parameters.
  *
  * Maps OCDS standard fields to our existing obras-publicas graph schema:
  *   - tender  -> ObrasProcedure
@@ -7,6 +7,7 @@
  *   - party (supplier role) -> Contractor
  *   - contract -> PublicContract
  *
+ * Supports multiple jurisdictions (CABA, Mendoza, etc.) via OcdsTransformOptions.
  * Pure functions -- no side effects, no mutations.
  */
 
@@ -25,14 +26,29 @@ import type {
 } from '../contratar/types'
 
 // ---------------------------------------------------------------------------
-// Constants
+// Constants & defaults
 // ---------------------------------------------------------------------------
 
-const SOURCE_URL =
+const DEFAULT_SOURCE_URL =
   'https://data.buenosaires.gob.ar/dataset/buenos-aires-compras'
-const SUBMITTED_BY = 'etl:ocds-provincial'
-const CONFIDENCE_SCORE = 0.9
-const TIER = 'silver' as const
+const DEFAULT_SUBMITTED_BY = 'etl:ocds-provincial'
+const DEFAULT_CONFIDENCE_SCORE = 0.9
+const DEFAULT_TIER = 'silver' as const
+
+// ---------------------------------------------------------------------------
+// Transform options (per-jurisdiction overrides)
+// ---------------------------------------------------------------------------
+
+export interface OcdsTransformOptions {
+  /** URL stored on provenance nodes (default: CABA portal) */
+  sourceUrl?: string
+  /** submitted_by tag (default: etl:ocds-provincial) */
+  submittedBy?: string
+  /** confidence score (default: 0.9) */
+  confidenceScore?: number
+  /** confidence tier (default: silver) */
+  tier?: 'gold' | 'silver' | 'bronze'
+}
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -42,13 +58,13 @@ function computeHash(data: string): string {
   return createHash('sha256').update(data).digest('hex').slice(0, 16)
 }
 
-function buildProvenance(sourceKey: string): ObrasProvenanceParams {
+function buildProvenance(sourceKey: string, opts: OcdsTransformOptions): ObrasProvenanceParams {
   const now = new Date().toISOString()
   return {
-    source_url: SOURCE_URL,
-    submitted_by: SUBMITTED_BY,
-    tier: TIER,
-    confidence_score: CONFIDENCE_SCORE,
+    source_url: opts.sourceUrl ?? DEFAULT_SOURCE_URL,
+    submitted_by: opts.submittedBy ?? DEFAULT_SUBMITTED_BY,
+    tier: opts.tier ?? DEFAULT_TIER,
+    confidence_score: opts.confidenceScore ?? DEFAULT_CONFIDENCE_SCORE,
     ingestion_hash: computeHash(sourceKey),
     created_at: now,
     updated_at: now,
@@ -57,14 +73,23 @@ function buildProvenance(sourceKey: string): ObrasProvenanceParams {
 
 /**
  * Extract CUIT from OCDS party/supplier id.
- * Formats seen: "AR-CUIT-30-57894432-6-supplier", "30-57894432-6"
+ *
+ * Formats seen across jurisdictions:
+ *   CABA:    "AR-CUIT-30-57894432-6-supplier", "30-57894432-6"
+ *   Mendoza: "AR-CUIT-MZ-30708375345", "30708375345"
+ *
  * Returns cleaned CUIT (digits only, no dashes) or empty string.
  */
 function extractCuit(rawId: string): string {
-  // Try to extract from AR-CUIT-XX-XXXXXXXX-X pattern
-  const match = rawId.match(/(\d{2}-\d{7,8}-\d)/)
-  if (match) {
-    return match[1].replace(/-/g, '')
+  // CABA format: XX-XXXXXXXX-X (with dashes)
+  const dashMatch = rawId.match(/(\d{2}-\d{7,8}-\d)/)
+  if (dashMatch) {
+    return dashMatch[1].replace(/-/g, '')
+  }
+  // Mendoza format: 11-digit CUIT without dashes (e.g. AR-CUIT-MZ-30708375345 or plain 30708375345)
+  const plainMatch = rawId.match(/(\d{11})/)
+  if (plainMatch) {
+    return plainMatch[1]
   }
   return ''
 }
@@ -92,7 +117,7 @@ export interface OcdsTransformResult {
   readonly awardedToRels: readonly ObrasAwardedToRelParams[]
 }
 
-function transformRelease(release: OcdsRelease): {
+function transformRelease(release: OcdsRelease, opts: OcdsTransformOptions = {}): {
   procedure: ObrasProcedureParams | null
   bids: ObrasBidParams[]
   contractors: ObrasContractorParams[]
@@ -123,7 +148,7 @@ function transformRelease(release: OcdsRelease): {
     const tenderCurrency = tender.value?.currency ?? 'ARS'
 
     procedure = {
-      ...buildProvenance(`ocds-proc:${tenderId}`),
+      ...buildProvenance(`ocds-proc:${tenderId}`, opts),
       procedure_id: procedureId,
       caso_slug: 'obras-publicas',
       numero_procedimiento: tenderId,
@@ -156,7 +181,7 @@ function transformRelease(release: OcdsRelease): {
 
       // Bid node
       bids.push({
-        ...buildProvenance(`ocds-bid:${ocid}:${award.id}:${cId}`),
+        ...buildProvenance(`ocds-bid:${ocid}:${award.id}:${cId}`, opts),
         bid_id: bidId,
         caso_slug: 'obras-publicas',
         procedure_number: tender?.id || ocid,
@@ -171,7 +196,7 @@ function transformRelease(release: OcdsRelease): {
 
       // Contractor node — use cId as cuit fallback to avoid unique constraint violation
       contractors.push({
-        ...buildProvenance(`contractor:${cId}`),
+        ...buildProvenance(`contractor:${cId}`, opts),
         contractor_id: cId,
         caso_slug: 'obras-publicas',
         cuit: rawCuit || cId,
@@ -202,7 +227,7 @@ function transformRelease(release: OcdsRelease): {
     const contractId = computeHash(`ocds-contract:${contract.id}`)
 
     contracts.push({
-      ...buildProvenance(`ocds-contract:${contract.id}`),
+      ...buildProvenance(`ocds-contract:${contract.id}`, opts),
       contract_id: contractId,
       caso_slug: 'obras-publicas',
       contrato_numero: contract.id || '',
@@ -223,7 +248,7 @@ function transformRelease(release: OcdsRelease): {
       // Ensure contractor exists (may already be from award)
       if (!contractors.some((c) => c.contractor_id === cId)) {
         contractors.push({
-          ...buildProvenance(`contractor:${cId}`),
+          ...buildProvenance(`contractor:${cId}`, opts),
           contractor_id: cId,
           caso_slug: 'obras-publicas',
           cuit: rawCuit || cId,
@@ -267,7 +292,7 @@ function transformRelease(release: OcdsRelease): {
 
     if (!contractors.some((c) => c.contractor_id === cId)) {
       contractors.push({
-        ...buildProvenance(`contractor:${cId}`),
+        ...buildProvenance(`contractor:${cId}`, opts),
         contractor_id: cId,
         caso_slug: 'obras-publicas',
         cuit: rawCuit || cId,
@@ -294,6 +319,7 @@ function transformRelease(release: OcdsRelease): {
 
 export function transformOcdsProvincialAll(
   releases: readonly OcdsRelease[],
+  opts: OcdsTransformOptions = {},
 ): OcdsTransformResult {
   const procedureMap = new Map<string, ObrasProcedureParams>()
   const bidMap = new Map<string, ObrasBidParams>()
@@ -304,7 +330,7 @@ export function transformOcdsProvincialAll(
   const awardedToRels: ObrasAwardedToRelParams[] = []
 
   for (const release of releases) {
-    const result = transformRelease(release)
+    const result = transformRelease(release, opts)
 
     if (result.procedure && !procedureMap.has(result.procedure.procedure_id)) {
       procedureMap.set(result.procedure.procedure_id, result.procedure)
