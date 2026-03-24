@@ -1,4 +1,4 @@
-import { getDriver, closeDriver } from '../src/lib/neo4j/client.ts'
+import { getDriver, closeDriver } from '../src/lib/neo4j/client'
 const S = 'caso-finanzas-politicas'
 async function main() {
   const driver = getDriver()

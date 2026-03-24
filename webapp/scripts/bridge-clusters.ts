@@ -2,7 +2,7 @@
  * Bridge isolated clusters in the finanzas-politicas investigation graph.
  * Creates relationships between disconnected components to form a unified network.
  */
-import { getDriver, closeDriver } from '../src/lib/neo4j/client.ts'
+import { getDriver, closeDriver } from '../src/lib/neo4j/client'
 
 const CASO = 'caso-finanzas-politicas'
 

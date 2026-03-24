@@ -12,7 +12,7 @@ import 'dotenv/config'
 
 process.env.NEO4J_QUERY_TIMEOUT_MS = process.env.NEO4J_QUERY_TIMEOUT_MS || '60000'
 
-import { executeWrite, closeDriver, verifyConnectivity } from '../src/lib/neo4j/client.ts'
+import { executeWrite, closeDriver, verifyConnectivity } from '../src/lib/neo4j/client'
 
 const CASO_SLUG = 'caso-finanzas-politicas'
 const TIER = 'silver'
@@ -385,7 +385,7 @@ async function fixNullNameEvents() {
      RETURN count(e) AS fixed`,
     { caso: CASO_SLUG }
   )
-  console.log(`  ✓ Fixed ${result[0]?.get('fixed')} events`)
+  console.log(`  ✓ Fixed ${(result as any).records[0]?.get('fixed')} events`)
 }
 
 async function fixNodesWithoutIds() {
@@ -397,7 +397,7 @@ async function fixNodesWithoutIds() {
      RETURN count(n) AS fixed`,
     { caso: CASO_SLUG }
   )
-  console.log(`  ✓ Assigned IDs to ${result[0]?.get('fixed')} nodes`)
+  console.log(`  ✓ Assigned IDs to ${(result as any).records[0]?.get('fixed')} nodes`)
 }
 
 async function deduplicateEdges() {
@@ -412,7 +412,7 @@ async function deduplicateEdges() {
      RETURN count(dup) AS removed`,
     { caso: CASO_SLUG }
   )
-  console.log(`  ✓ Removed ${result[0]?.get('removed')} duplicate edges`)
+  console.log(`  ✓ Removed ${(result as any).records[0]?.get('removed')} duplicate edges`)
 }
 
 async function connectOrphans() {
@@ -477,7 +477,7 @@ async function fixMissingDescriptions() {
      RETURN count(n) AS fixed`,
     { caso: CASO_SLUG }
   )
-  console.log(`  ✓ Copied description_en to description for ${result[0]?.get('fixed')} nodes`)
+  console.log(`  ✓ Copied description_en to description for ${(result as any).records[0]?.get('fixed')} nodes`)
 }
 
 // ---------------------------------------------------------------------------

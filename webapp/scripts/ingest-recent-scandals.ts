@@ -12,7 +12,7 @@ import 'dotenv/config'
 
 process.env.NEO4J_QUERY_TIMEOUT_MS = process.env.NEO4J_QUERY_TIMEOUT_MS || '60000'
 
-import { executeWrite, closeDriver, verifyConnectivity } from '../src/lib/neo4j/client.ts'
+import { executeWrite, closeDriver, verifyConnectivity } from '../src/lib/neo4j/client'
 
 // ---------------------------------------------------------------------------
 // Constants
