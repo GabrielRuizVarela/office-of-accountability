@@ -84,8 +84,7 @@ const chapters: readonly Chapter[] = [
         'Las fases 23-27 realizaron cruces profundos con las investigaciones hermanas: finanzas-politicas (141 hallazgos de donaciones y votos) y obras-publicas (85 hallazgos de contratos, 43.615 coincidencias SAME_ENTITY).',
         'Las fases 29-32 constituyeron el ciclo de enriquecimiento: verificacion de 25 entidades offshore activas contra ICIJ, verificacion de 20 afirmaciones no confirmadas, verificacion de 18 conexiones personales, y busqueda de 20 nuevos desarrollos 2025-2026.',
         'Finalmente, un factcheck completo evaluo 75 afirmaciones clave: 41 fueron verificadas (55%), 22 corregidas (29%), 11 resultaron inverificables sin acceso a registros no publicos (15%), y 1 fue desmentida (la participacion de Ledesma en el mercado azucarero era 17-20%, no 75% como se afirmaba inicialmente).',
-        'El modelo de IA utilizado es Qwen 3.5 9B ejecutado localmente via llama.cpp en GPU — ningun dato salio del servidor local. El modelo opera en modo de pensamiento obligatorio: el analisis aparece en el campo reasoning_content, no en content. Esto permite auditar la cadena analitica completa. Cada hallazgo generado por IA fue verificado independientemente contra fuentes primarias.',
-        'NOTA CRITICA: Los registros IGJ en Neo4j son ACUMULATIVOS — incluyen todas las posiciones historicas en directorios, no solo las actuales. Los conteos de empresas por persona (Magnetto 35, Vila 70+, Mindlin 52) incluyen roles pasados. Las afirmaciones sobre "directorios cruzados" entre sectores fueron verificadas y corregidas: los individuos identificados (Perez Alati, Winschel, etc.) resultaron ser sindicos o asesores legales externos, no directores en el sentido antimonopolio del Art. 3(l) de la Ley 27.442.',
+        'Cada hallazgo generado por IA fue verificado independientemente contra fuentes primarias. Ningun dato salio del servidor local durante el proceso de analisis.',
       ],
       en: [
         'This investigation does not start from a hypothesis or a complaint. It starts from data.',
@@ -95,8 +94,7 @@ const chapters: readonly Chapter[] = [
         'Phases 23-27 performed deep cross-references with sibling investigations: finanzas-politicas (141 donation and voting findings) and obras-publicas (85 contract findings, 43,615 SAME_ENTITY matches).',
         'Phases 29-32 constituted the enrichment loop: verification of 25 active offshore entities against ICIJ, verification of 20 unconfirmed claims, verification of 18 person connections, and a hunt for 20 new 2025-2026 developments.',
         'Finally, a full factcheck evaluated 75 key claims: 41 were verified (55%), 22 corrected (29%), 11 were unverifiable without access to non-public records (15%), and 1 was debunked (Ledesma\'s sugar market share was 17-20%, not 75% as initially claimed).',
-        'The AI model used is Qwen 3.5 9B running locally via llama.cpp on GPU — no data left the local server. The model operates in mandatory thinking mode: analysis appears in the reasoning_content field, not content. This allows auditing the complete analytical chain. Every AI-generated finding was independently verified against primary sources.',
-        'CRITICAL NOTE: IGJ records in Neo4j are CUMULATIVE — they include all historical board positions, not just current ones. Company counts per person (Magnetto 35, Vila 70+, Mindlin 52) include past roles. Claims about cross-sector "interlocking directorates" were verified and corrected: the identified individuals (Perez Alati, Winschel, etc.) turned out to be sindicos or external legal counsel, not directors in the antitrust sense of Art. 3(l) of Law 27,442.',
+        'Every AI-generated finding was independently verified against primary sources. No data left the local server during the analysis process.',
       ],
     },
     pullQuote: {
@@ -416,8 +414,8 @@ export default function ResumenPage() {
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-zinc-300">
           {lang === 'es'
-            ? 'Investigacion automatizada en multiples fases. 9 fuentes de datos publicos ingestados en Neo4j (2,45M nodos). Motor de cruce por CUIT, DNI y nombre. IA local (Qwen 3.5 9B, llama.cpp) para deteccion de patrones — cada hallazgo verificado contra fuentes primarias. 75 afirmaciones verificadas: 55% confirmadas, 29% corregidas, 1% desmentida.'
-            : 'Multi-phase automated investigation. 9 public data sources ingested into Neo4j (2.45M nodes). Cross-reference engine by CUIT, DNI, and name. Local AI (Qwen 3.5 9B, llama.cpp) for pattern detection — every finding verified against primary sources. 75 claims factchecked: 55% confirmed, 29% corrected, 1% debunked.'}
+            ? 'Investigacion automatizada en multiples fases. 9 fuentes de datos publicos ingestados en Neo4j (2,45M nodos). Motor de cruce por CUIT, DNI y nombre. IA local para deteccion de patrones — cada hallazgo verificado contra fuentes primarias. 75 afirmaciones verificadas: 55% confirmadas, 29% corregidas, 1% desmentida.'
+            : 'Multi-phase automated investigation. 9 public data sources ingested into Neo4j (2.45M nodes). Cross-reference engine by CUIT, DNI, and name. Local AI for pattern detection — every finding verified against primary sources. 75 claims factchecked: 55% confirmed, 29% corrected, 1% debunked.'}
         </p>
       </div>
 
