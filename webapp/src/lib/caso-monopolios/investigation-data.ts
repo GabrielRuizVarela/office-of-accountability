@@ -2,10 +2,10 @@
  * Monopolized Markets in Argentina — Investigation structured data.
  *
  * Bilingual (ES primary, EN secondary) factcheck items, timeline events,
- * actors, money flows, and impact stats — sourced from 14-wave investigation
+ * actors, money flows, and impact stats — sourced from 24-wave investigation
  * cycle cross-referencing Neo4j graph (2.5M+ nodes), web research, ICIJ
- * offshore leaks, IGJ corporate registry, CompraR procurement, and CNE
- * campaign finance data.
+ * offshore leaks, IGJ corporate registry, CompraR procurement, CNE campaign
+ * finance data, privatization records, and regulatory body analysis.
  */
 
 // ---------------------------------------------------------------------------
@@ -95,10 +95,10 @@ export interface ImpactStat {
 
 export const IMPACT_STATS: readonly ImpactStat[] = [
   {
-    value: '14',
-    label_es: 'Sectores monopolizados analizados',
-    label_en: 'Monopolized sectors analyzed',
-    source: 'Telecom, energía, alimentos, medios, banca, minería, agro-export, construcción, pharma, transporte, cemento, acero, seguros, internet',
+    value: '24',
+    label_es: 'Ondas de investigación completadas',
+    label_en: 'Investigation waves completed',
+    source: 'Sector deep-dives, Neo4j cross-reference, LLM analysis, privatization history, consumer impact, regulatory capture, finanzas-politicas + obras-públicas graph cross-ref',
   },
   {
     value: '240',
@@ -131,10 +131,10 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     source: 'Board members sitting on companies across monopolized sectors (IGJ registry)',
   },
   {
-    value: '572 KB',
-    label_es: 'Datos de investigación recopilados',
-    label_en: 'Investigation data collected',
-    source: '14 research JSON files from 14-wave investigation cycle',
+    value: '24',
+    label_es: 'Archivos de investigación JSON',
+    label_en: 'Investigation JSON research files',
+    source: '24 research JSON files from 24-wave investigation cycle (~900KB total)',
   },
 ] as const
 
@@ -480,6 +480,131 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     detail_en:
       'Papel Prensa appears in Neo4j as Contractor (linked CUIT). The Blaquier-pulp → Papel Prensa → Clarín-newspaper connection illustrates how monopolies reinforce each other along the production chain.',
   },
+  // --- Waves 15-22: Extended Sector Analysis ---
+  {
+    id: 'aluar-pure-monopoly',
+    claim_es:
+      'Aluar (familia Madanes Quintanilla) es el ÚNICO productor de aluminio en Argentina (HHI 10,000 — monopolio puro). Opera desde Puerto Madryn con energía subsidiada de la represa Futaleufú. La familia aparece en los Panama Papers.',
+    claim_en:
+      'Aluar (Madanes Quintanilla family) is the ONLY aluminium producer in Argentina (HHI 10,000 — pure monopoly). Operates from Puerto Madryn with subsidized energy from Futaleufú dam. Family appears in Panama Papers.',
+    status: 'confirmed',
+    tier: 1,
+    sector: 'cross_sector',
+    source: 'ICIJ Panama Papers / Production records',
+    source_url: 'https://offshoreleaks.icij.org/',
+    detail_es:
+      'Aluar también controla FATE (neumáticos). Protección arancelaria impide importaciones competitivas. El monopolio ha sobrevivido a todos los gobiernos desde 1970.',
+    detail_en:
+      'Aluar also controls FATE (tires). Tariff protection prevents competitive imports. The monopoly has survived every government since 1970.',
+  },
+  {
+    id: 'mastellone-dairy-monopoly',
+    claim_es:
+      'Mastellone/La Serenísima controla ~90% del mercado de leche fluida en Buenos Aires y ~65% a nivel nacional (HHI ~8,200). El colapso de SanCor eliminó al principal competidor cooperativo.',
+    claim_en:
+      'Mastellone/La Serenísima controls ~90% of fluid milk market in Buenos Aires and ~65% nationally (HHI ~8,200). SanCor\'s collapse eliminated the main cooperative competitor.',
+    status: 'confirmed',
+    tier: 1,
+    sector: 'food',
+    source: 'CNDC / Industry data',
+    source_url: 'https://www.argentina.gob.ar/cndc',
+    detail_es:
+      'Mastellone Hnos. aparece como Contractor en Neo4j con CUIT 30547242331 (5 contratos gubernamentales). La sociedad con Danone reforzó la dominancia en lugar de crear competencia.',
+    detail_en:
+      'Mastellone Hnos. appears as Contractor in Neo4j with CUIT 30547242331 (5 government contracts). The Danone partnership reinforced dominance rather than creating competition.',
+  },
+  {
+    id: 'nacion-seguros-procurement-monopoly',
+    claim_es:
+      'Nación Seguros S.A. tiene 598 contratos gubernamentales en CompraR — el MAYOR número de contratos de CUALQUIER contratista en el sistema (13,585 contratistas, 86,648 contratos totales). Monopolio de facto en seguros estatales.',
+    claim_en:
+      'Nación Seguros S.A. has 598 government contracts in CompraR — the HIGHEST number of any contractor in the system (13,585 contractors, 86,648 total contracts). De facto monopoly in state insurance.',
+    status: 'confirmed',
+    tier: 2,
+    sector: 'banking',
+    source: 'CompraR / Neo4j Contractor data',
+    source_url: 'https://comprar.gob.ar/',
+  },
+  {
+    id: 'privatization-monopoly-origin',
+    claim_es:
+      'Las privatizaciones menemistas (1989-1999) crearon los monopolios actuales: ENTel → Telecom/Telefónica duopolio (ahora fusionándose), SEGBA → Edenor/Edesur duopolio, GdE → TGS/TGN, Aerolíneas → concesión ruinosa. Los compradores conectados pagaron precios subvaluados.',
+    claim_en:
+      'Menem-era privatizations (1989-1999) created current monopolies: ENTel → Telecom/Telefónica duopoly (now merging), SEGBA → Edenor/Edesur duopoly, GdE → TGS/TGN, Aerolíneas → ruinous concession. Connected buyers paid undervalued prices.',
+    status: 'confirmed',
+    tier: 2,
+    sector: 'cross_sector',
+    source: 'Congressional privatization records / Boletín Oficial',
+    source_url: 'https://www.boletinoficial.gob.ar/',
+    detail_es:
+      'Roberto Dromi: "nada de lo que deba ser estatal permanecerá en manos del Estado". María Julia Alsogaray procesada por enriquecimiento ilícito durante privatizaciones.',
+    detail_en:
+      'Roberto Dromi: "nothing that should be state-owned will remain in the hands of the State." María Julia Alsogaray prosecuted for illicit enrichment during privatizations.',
+  },
+  {
+    id: 'milei-dnu-media-deregulation',
+    claim_es:
+      'DNU 70/2023 (Milei) eliminó todos los topes nacionales de licencias de medios y derogó la ley de supervisión de papel prensa. Habilitó la venta de Telefe a Vila-Manzano, dándole control de los 2 canales más vistos.',
+    claim_en:
+      'DNU 70/2023 (Milei) eliminated all national media license caps and repealed the newsprint oversight law. Enabled Telefe sale to Vila-Manzano, giving them control of the 2 most-watched channels.',
+    status: 'confirmed',
+    tier: 2,
+    sector: 'regulatory_capture',
+    source: 'Boletín Oficial DNU 70/2023',
+    source_url: 'https://www.boletinoficial.gob.ar/',
+  },
+  {
+    id: 'eurnekian-airport-monopoly',
+    claim_es:
+      'Eduardo Eurnekian (Corporación América/AA2000) controla 35 aeropuertos argentinos en concesión. 35 empresas en IGJ + entidad BVI (Viskert Enterprises). La concesión ha sido renegociada y extendida bajo múltiples gobiernos.',
+    claim_en:
+      'Eduardo Eurnekian (Corporación América/AA2000) controls 35 Argentine airports under concession. 35 companies in IGJ + BVI entity (Viskert Enterprises). Concession renegotiated and extended under multiple governments.',
+    status: 'confirmed',
+    tier: 2,
+    sector: 'transport',
+    source: 'IGJ Registry / ICIJ / ORSNA',
+    source_url: 'https://www.igj.gob.ar/',
+  },
+  {
+    id: 'mercadolibre-digital-monopoly',
+    claim_es:
+      'MercadoLibre (Marcos Galperín, USD 10B) domina e-commerce (~60%+ market share) y pagos digitales (Mercado Pago, 74% wallet share, 35M cuentas). Los top 3 neobancos tienen 88% del mercado de banca digital. Galperín se mudó a Uruguay por planificación fiscal.',
+    claim_en:
+      'MercadoLibre (Marcos Galperín, USD 10B) dominates e-commerce (~60%+ market share) and digital payments (Mercado Pago, 74% wallet share, 35M accounts). Top 3 neobanks hold 88% of digital banking. Galperín relocated to Uruguay for tax planning.',
+    status: 'confirmed',
+    tier: 2,
+    sector: 'banking',
+    source: 'SEC filings / Industry reports',
+    source_url: 'https://mercadolibre.com/',
+    detail_es:
+      'MercadoLibre SRL aparece en Neo4j como Company. No hay regulación de plataformas en Argentina vs. Digital Markets Act de la UE. Los monopolios digitales están reemplazando a los tradicionales.',
+    detail_en:
+      'MercadoLibre SRL appears in Neo4j as Company. No platform regulation in Argentina vs. EU Digital Markets Act. Digital monopolies are replacing traditional ones.',
+  },
+  {
+    id: 'telecom-procurement-dominance',
+    claim_es:
+      'El sector telecom monopólico tiene 1,334 contratos gubernamentales combinados: Telecom Argentina 411, Telefónica 335, AMX/Claro 288, Cablevisión 13. El 1.5% del total de contratos pero concentrados en telecomunicaciones estatales.',
+    claim_en:
+      'The monopolized telecom sector holds 1,334 combined government contracts: Telecom Argentina 411, Telefónica 335, AMX/Claro 288, Cablevisión 13. 1.5% of total contracts but concentrated in state telecom.',
+    status: 'confirmed',
+    tier: 2,
+    sector: 'telecom',
+    source: 'CompraR / Neo4j Contractor data',
+    source_url: 'https://comprar.gob.ar/',
+  },
+  {
+    id: 'consumer-cost-pharma',
+    claim_es:
+      'Los precios de medicamentos en Argentina son 26% superiores al promedio latinoamericano. Los trabajadores necesitan 4 horas extra de trabajo respecto al promedio regional para comprar la misma canasta de medicamentos. PAMI documentó sobreprecios de hasta 1,327% en oncológicos.',
+    claim_en:
+      'Drug prices in Argentina are 26% above the Latin American average. Workers need 4 extra working hours vs. regional average to buy the same medicine basket. PAMI documented markups up to 1,327% on oncology drugs.',
+    status: 'confirmed',
+    tier: 2,
+    sector: 'pharma',
+    source: 'PAMI / Industry reports',
+    source_url: 'https://www.pami.org.ar/',
+  },
 ] as const
 
 // ---------------------------------------------------------------------------
@@ -597,6 +722,39 @@ export const ACTORS: readonly Actor[] = [
     companies_count: 23,
     offshore_count: 0,
   },
+  {
+    id: 'madanes-quintanilla',
+    name: 'Familia Madanes Quintanilla',
+    role_es: 'Aluar Aluminio + FATE Neumáticos',
+    role_en: 'Aluar Aluminium + FATE Tires',
+    description_es: 'Monopolio puro en aluminio (HHI 10,000). Panama Papers. Protección arancelaria + energía subsidiada desde 1970.',
+    description_en: 'Pure aluminium monopoly (HHI 10,000). Panama Papers. Tariff protection + subsidized energy since 1970.',
+    sectors: ['cross_sector'],
+    companies_count: 10,
+    offshore_count: 1,
+  },
+  {
+    id: 'mastellone',
+    name: 'Familia Mastellone',
+    role_es: 'La Serenísima — lácteos',
+    role_en: 'La Serenísima — dairy',
+    description_es: '~90% leche fluida Buenos Aires. Sociedad con Danone. Competidor cooperativo SanCor colapsó.',
+    description_en: '~90% fluid milk Buenos Aires. Danone partnership. Cooperative competitor SanCor collapsed.',
+    sectors: ['food'],
+    companies_count: 8,
+    offshore_count: 0,
+  },
+  {
+    id: 'galperin',
+    name: 'Marcos Galperín',
+    role_es: 'MercadoLibre / Mercado Pago',
+    role_en: 'MercadoLibre / Mercado Pago',
+    description_es: 'USD 10B. E-commerce 60%+ market share. Mercado Pago 74% wallet. Mudado a Uruguay.',
+    description_en: 'USD 10B. E-commerce 60%+ market share. Mercado Pago 74% wallet. Relocated to Uruguay.',
+    sectors: ['banking'],
+    companies_count: 5,
+    offshore_count: 0,
+  },
 ] as const
 
 // ---------------------------------------------------------------------------
@@ -663,5 +821,35 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     description_en: 'Large Investment Incentive Regime approved: 30-year tax stability, 3% royalties, free repatriation. Primarily benefits foreign mining companies.',
     category: 'mining',
     sources: ['Ley Bases / Boletín Oficial'],
+  },
+  {
+    id: 'privatizaciones-menem-1989',
+    date: '1989-08-17',
+    title_es: 'Ley de Reforma del Estado 23.696',
+    title_en: 'State Reform Law 23.696',
+    description_es: 'Congreso aprueba ley que habilita privatización masiva de empresas estatales: ENTel, Aerolíneas, SEGBA, Gas del Estado, YPF, agua, trenes. Origen de los monopolios privados actuales.',
+    description_en: 'Congress approves law enabling mass privatization of state companies: ENTel, Aerolíneas, SEGBA, Gas del Estado, YPF, water, railways. Origin of current private monopolies.',
+    category: 'cross_sector',
+    sources: ['Ley 23.696 / Boletín Oficial'],
+  },
+  {
+    id: 'dnu-70-2023',
+    date: '2023-12-20',
+    title_es: 'DNU 70/2023 — Megadecreto desregulador Milei',
+    title_en: 'DNU 70/2023 — Milei mega-deregulation decree',
+    description_es: 'Deroga restricciones a concentración de medios, ley de góndolas, controles de precios, y regulaciones sectoriales. Beneficia a grupos monopólicos establecidos.',
+    description_en: 'Repeals media concentration restrictions, shelf-space law, price controls, and sector regulations. Benefits established monopoly groups.',
+    category: 'regulatory_capture',
+    sources: ['Boletín Oficial DNU 70/2023'],
+  },
+  {
+    id: 'telefe-sale-2025',
+    date: '2025-01-15',
+    title_es: 'Vila-Manzano compra Telefe por USD 95M',
+    title_en: 'Vila-Manzano buys Telefe for USD 95M',
+    description_es: 'Grupo América (Vila-Manzano) adquiere Telefe de Paramount, controlando ahora los 2 canales más vistos de Argentina (Telefe + América TV). Posible por desregulación de medios.',
+    description_en: 'Grupo América (Vila-Manzano) acquires Telefe from Paramount, now controlling Argentina\'s 2 most-watched channels (Telefe + América TV). Made possible by media deregulation.',
+    category: 'media',
+    sources: ['Infobae / ENACOM'],
   },
 ] as const
