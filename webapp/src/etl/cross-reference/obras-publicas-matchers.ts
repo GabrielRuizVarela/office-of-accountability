@@ -3,10 +3,46 @@
  *
  * Extends the existing cross-reference engine with flags specific to
  * public works contract investigation.
+ *
+ * METHODOLOGY NOTES (from deep-dive verification cycle):
+ * - SOE board overlaps are structural, not revolving doors (Correo Oficial finding)
+ * - Professional sindica/sindico on 500+ companies are noise (Duhau finding)
+ * - Nominal ARS comparisons are meaningless without inflation adjustment
+ *   (10,800% cumulative 2016-2024) — Trajtenberg finding
+ * - Shell company heuristic has 80-90% false positive rate (Wave 23)
+ * - Cuadernos evidence is compromised (1,500+ alterations) — require independent
+ *   corroboration before treating as confirmed
  */
 
 import { readQuery } from '../../lib/neo4j/client'
 import type { InvestigationFlag, FlagType } from './types'
+
+// Argentine CPI multiplier relative to 2015 base (approximate)
+// Source: INDEC + Trading Economics
+const ARS_INFLATION_MULTIPLIER: Record<string, number> = {
+  '2015': 1,
+  '2016': 1.4,
+  '2017': 1.75,
+  '2018': 2.59,
+  '2019': 3.97,
+  '2020': 5.42,
+  '2021': 8.16,
+  '2022': 15.97,
+  '2023': 50.1,
+  '2024': 108.3,
+  '2025': 150,  // estimated
+  '2026': 170,  // estimated
+}
+
+/**
+ * Deflate a nominal ARS amount to 2015 constant pesos.
+ * Returns null if year is unknown.
+ */
+function deflateToConstant2015(nominalArs: number, year: string): number | null {
+  const multiplier = ARS_INFLATION_MULTIPLIER[year]
+  if (!multiplier) return null
+  return nominalArs / multiplier
+}
 
 // ---------------------------------------------------------------------------
 // Flag: debarred_active — debarred entity still winning contracts
@@ -129,29 +165,45 @@ export async function detectOdebrechtLinkedFlags(): Promise<InvestigationFlag[]>
 // ---------------------------------------------------------------------------
 
 export async function detectCuadernosLinkedFlags(): Promise<InvestigationFlag[]> {
+  // FIX: Cuadernos evidence is compromised (1,500+ alterations, Bacigalupo falsified
+  // names, chain of custody broken). Confidence downgraded. Only flag entities that
+  // have INDEPENDENT corroboration (verification_status != 'cuadernos_dependent').
   const result = await readQuery(
     `MATCH (bc:BriberyCase)-[:CASE_INVOLVES]->(c:Contractor)
-     WHERE bc.name = 'cuadernos'
+     WHERE bc.name = 'cuadernos_de_las_coimas'
      OPTIONAL MATCH (c)-[:CONTRACTED_FOR]->(pw:PublicWork)
      RETURN DISTINCT c.contractor_id AS entity_id, c.name AS entity_name,
+            c.verification_status AS verification_status,
             count(pw) AS work_count`,
     {},
     (r) => ({
       entity_id: r.get('entity_id') as string,
       entity_name: r.get('entity_name') as string,
+      verification_status: r.get('verification_status') as string | null,
       work_count: typeof r.get('work_count') === 'object'
         ? (r.get('work_count') as { toNumber(): number }).toNumber()
         : (r.get('work_count') as number),
     }),
   )
 
-  return result.records.map((r) => ({
-    entity_id: r.entity_id,
-    entity_name: r.entity_name,
-    flag_type: 'cuadernos_linked' as FlagType,
-    evidence: `Contractor "${r.entity_name}" appears in Cuadernos bribery case and has ${r.work_count} public work contracts`,
-    confidence: 0.9,
-  }))
+  return result.records.map((r) => {
+    const isIndependent = r.verification_status === 'independently_verified'
+    const isPartial = r.verification_status === 'partially_corroborated'
+    const confidence = isIndependent ? 0.85 : isPartial ? 0.6 : 0.35
+    const caveat = isIndependent
+      ? '(independently verified via DOJ/AFIP)'
+      : isPartial
+        ? '(partially corroborated — contract records only)'
+        : '(WARNING: Cuadernos-dependent — notebooks have 1,500+ alterations, names falsified by Bacigalupo. Requires independent corroboration.)'
+
+    return {
+      entity_id: r.entity_id,
+      entity_name: r.entity_name,
+      flag_type: 'cuadernos_linked' as FlagType,
+      evidence: `Contractor "${r.entity_name}" appears in Cuadernos case ${caveat} — ${r.work_count} public work contracts`,
+      confidence,
+    }
+  })
 }
 
 // ---------------------------------------------------------------------------
