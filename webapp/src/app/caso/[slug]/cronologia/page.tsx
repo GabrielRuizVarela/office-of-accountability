@@ -3,7 +3,7 @@
  */
 
 import { getTimeline } from '@/lib/caso-libra'
-import { getNuclearTimeline } from '@/lib/caso-nuclear-risk/timeline-api'
+import { getNuclearTimeline } from '@/lib/caso-nuclear-risk'
 
 import { CronologiaContent } from './CronologiaContent'
 
