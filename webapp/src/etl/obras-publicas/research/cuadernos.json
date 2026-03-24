@@ -6,7 +6,8 @@
   "total_bribes_ars": 171224710,
   "period": { "start": "2005", "end": "2015" },
   "status": "trial_in_progress",
-  "notes": "All entities listed as alleged unless noted. Trial began Nov 2025 before Tribunal Oral Federal No. 7. 87 defendants: 22 ex-officials, 65 businessmen. 175 documented bribe payments. Notebooks written by Oscar Centeno, driver of Roberto Baratta. Case described as the largest corruption investigation in Argentine judicial history.",
+  "notes": "All entities listed as alleged unless noted. Trial began Nov 2025 before Tribunal Oral Federal No. 7. 87 defendants: 22 ex-officials, 65 businessmen. 175 documented bribe payments. Notebooks written by Oscar Centeno, driver of Roberto Baratta.",
+  "provenance_warning": "EVIDENCE ANOMALY (audited 2026-03-24): (1) Chain of custody BROKEN — originals lost 18+ months, Notebook #5 permanently missing, originals resurfaced from unidentified source 4 days before 2019 elections. (2) Gendarmería pericia (Aug 2025, 312 pages) confirmed 1,500+ alterations by 2-4 non-Centeno hands. (3) Jorge Bacigalupo charged (Nov 2025) with falsifying names — specifically crossing out real names to implicate other individuals. (4) Centeno refused to testify at trial (March 19, 2026). (5) 25 arrepentido confessions obtained under detention-release mechanism challenged as coercive. (6) CNDC cartelization investigation archived Sept 2023 finding no conclusive evidence. Independent corroboration varies by entity — see verification_status on individual nodes.",
   "companies": [
     {
       "name": "Electroingeniería S.A.",
