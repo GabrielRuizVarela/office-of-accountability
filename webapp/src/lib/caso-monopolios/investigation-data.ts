@@ -95,10 +95,10 @@ export interface ImpactStat {
 
 export const IMPACT_STATS: readonly ImpactStat[] = [
   {
-    value: '32+',
-    label_es: 'Ondas de investigación completadas',
-    label_en: 'Investigation waves completed',
-    source: '32 waves + factcheck + resolution + obras-públicas cross-ref. 44 research JSON files, 1.5MB.',
+    value: '44',
+    label_es: 'Archivos de investigacion',
+    label_en: 'Research files',
+    source: '44 archivos JSON: sectores, cruces, factchecks, resoluciones, obras-publicas (1.5MB total)',
   },
   {
     value: '829+',
