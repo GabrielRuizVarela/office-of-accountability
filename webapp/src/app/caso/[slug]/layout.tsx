@@ -4,13 +4,12 @@ import { LanguageProvider, type Lang } from '@/lib/language-context'
 import { InvestigationNav } from '@/components/investigation/InvestigationNav'
 import { BilingualLegalDisclaimer } from '@/components/investigation/LegalDisclaimer'
 
+/**
+ * Generic [slug] layout — only used for cases WITHOUT dedicated folders.
+ * caso-epstein, finanzas-politicas, and caso-libra each have their own
+ * layout.tsx in their dedicated folders, so they bypass this file.
+ */
 const CASE_META: Readonly<Record<string, { title: string; description: string; defaultLang: Lang }>> = {
-  'caso-libra': {
-    title: 'Caso Libra — Oficina de Rendicion de Cuentas',
-    description:
-      'Investigacion comunitaria sobre el token $LIBRA promovido por el presidente Milei. Datos publicos, blockchain, y documentos parlamentarios.',
-    defaultLang: 'es',
-  },
   'caso-epstein': {
     title: 'Epstein Case — Office of Accountability',
     description:

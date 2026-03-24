@@ -1,19 +1,25 @@
 /**
- * Caso Libra landing page — investigation overview with stats,
- * entry points, actor grid, and latest documents.
+ * Generic case landing page — catches slugs that don't have dedicated folders.
+ * Specific cases (caso-epstein, finanzas-politicas, caso-libra) have their own
+ * folders with custom layouts and pages.
  */
 
-import { getStats, getActors, getDocuments } from '@/lib/caso-libra'
+import { notFound } from 'next/navigation'
 
-import { CasoLandingContent } from './CasoLandingContent'
-
-export default async function CasoLandingPage({
+export default async function GenericCasoPage({
   params,
 }: {
   readonly params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const [_stats, actors, documents] = await Promise.all([getStats(), getActors(), getDocuments()])
 
-  return <CasoLandingContent slug={slug} actors={actors} documents={documents} />
+  // Known cases with dedicated routes — this page should not handle them
+  const DEDICATED_CASES = ['caso-epstein', 'finanzas-politicas', 'caso-libra']
+  if (DEDICATED_CASES.includes(slug)) {
+    // Should be handled by their own folder, but just in case
+    notFound()
+  }
+
+  // For unknown slugs, return 404
+  notFound()
 }
