@@ -61,10 +61,11 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
   const LABEL_CONFIG = LABEL_CONFIGS[slug] ?? LABEL_CONFIGS.default
   const graphRef = useRef<ForceGraphHandle>(null)
 
-  // For dictadura: start with only structural labels ON, high-volume labels OFF
+  // For dictadura: structural + personas ON by default, high-volume detail OFF
   const DICTADURA_DEFAULT_ON = new Set([
-    'DictaduraCCD', 'DictaduraUnidadMilitar', 'DictaduraOrganizacion',
-    'DictaduraCausa', 'DictaduraEvento', 'DictaduraOperacion',
+    'DictaduraPersona', 'DictaduraCCD', 'DictaduraUnidadMilitar',
+    'DictaduraOrganizacion', 'DictaduraCausa', 'DictaduraEvento',
+    'DictaduraOperacion',
   ])
 
   // Graph data & UI state
@@ -109,7 +110,7 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
         const params = new URLSearchParams()
         if (slug === 'caso-dictadura') {
           params.set('tiers', 'gold,silver')
-          params.set('labels', 'DictaduraCCD,DictaduraUnidadMilitar,DictaduraOrganizacion,DictaduraCausa,DictaduraEvento,DictaduraOperacion')
+          params.set('labels', 'DictaduraPersona,DictaduraCCD,DictaduraUnidadMilitar,DictaduraOrganizacion,DictaduraCausa,DictaduraEvento,DictaduraOperacion')
         }
         const qs = params.toString() ? `?${params.toString()}` : ''
         const res = await fetch(`/api/caso/${slug}/graph${qs}`)

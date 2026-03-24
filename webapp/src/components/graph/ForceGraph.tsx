@@ -235,13 +235,17 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     }
     try {
       const n = data.nodes.length
+      // Cap charge strength to avoid numerical overflow on large graphs
+      const chargeStrength = n > 2000 ? -300 : -Math.max(80, n * 2.5)
+      const linkDistance = n > 2000 ? 30 : Math.max(50, n * 1.5)
+
       const charge = fgAny.d3Force('charge')
       if (charge && typeof (charge as { strength: (v: number) => void }).strength === 'function') {
-        (charge as { strength: (v: number) => void }).strength(-Math.max(120, n * 4))
+        (charge as { strength: (v: number) => void }).strength(chargeStrength)
       }
       const link = fgAny.d3Force('link')
       if (link && typeof (link as { distance: (v: number) => void }).distance === 'function') {
-        (link as { distance: (v: number) => void }).distance(Math.max(80, n * 2.5))
+        (link as { distance: (v: number) => void }).distance(linkDistance)
       }
     } catch { /* */ }
   }, [data.nodes.length])
@@ -492,9 +496,6 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         nodeLabel=""
         onNodeClick={(node: NodeObject<FGNode>) => {
           handleNodeClick(node)
-          if (node.x != null && node.y != null) {
-            graphRef.current?.centerAt(node.x, node.y, 300)
-          }
         }}
         onNodeRightClick={handleNodeRightClick}
         onNodeHover={(node: NodeObject<FGNode> | null) => {
@@ -512,7 +513,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         d3AlphaDecay={0.0228}
         d3VelocityDecay={0.4}
         onEngineStop={handleEngineStop}
-        minZoom={0.3}
+        minZoom={0.01}
         maxZoom={20}
       />
     </div>
