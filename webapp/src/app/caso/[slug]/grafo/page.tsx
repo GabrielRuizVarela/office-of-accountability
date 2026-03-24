@@ -568,6 +568,35 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
             />
           )}
 
+          {/* Zoom controls */}
+          {hasData && (
+            <div className="absolute bottom-4 right-4 z-10 flex flex-col gap-1">
+              <button
+                onClick={() => graphRef.current?.zoomIn()}
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-700 bg-zinc-900/90 text-lg text-zinc-300 shadow-lg backdrop-blur-sm transition-colors hover:border-zinc-500 hover:text-white"
+                title="Zoom in"
+              >
+                +
+              </button>
+              <button
+                onClick={() => graphRef.current?.zoomOut()}
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-700 bg-zinc-900/90 text-lg text-zinc-300 shadow-lg backdrop-blur-sm transition-colors hover:border-zinc-500 hover:text-white"
+                title="Zoom out"
+              >
+                &minus;
+              </button>
+              <button
+                onClick={() => graphRef.current?.zoomToFit()}
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-700 bg-zinc-900/90 text-zinc-300 shadow-lg backdrop-blur-sm transition-colors hover:border-zinc-500 hover:text-white"
+                title="Fit to screen"
+              >
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                </svg>
+              </button>
+            </div>
+          )}
+
           {/* Context menu */}
           {contextMenu && (
             <NodeContextMenu
