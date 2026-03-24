@@ -1,0 +1,13 @@
+{"ts":"2026-03-22T02:20:29.668616937+00:00","iteration":0,"hat":"loop","topic":"task.start","triggered":"planner","payload":"Continue with m10 and all milestones"}
+{"payload":"M11 Phase 1 complete: compliance types.ts (5 Zod schemas, discriminated union CheckConfig, runtime interfaces) + schema.ts (5 constraints, 4 indexes). Build passes. Commit d6e1cde.","topic":"task.done","ts":"2026-03-22T02:24:26.476583481+00:00"}
+{"payload":"M11 Phase 2a: 3 YAML compliance framework definitions (FATF, UNCAC, data-quality) + yaml dep. All validated against Zod. Commit ea84efe. Next: loader.ts","topic":"task.done","ts":"2026-03-22T02:28:08.909097815+00:00"}
+{"payload":"M11 Phase 2b: compliance loader (YAML→Zod→Neo4j MERGE). 182 lines, parseFrameworkFile + mergeFramework + loadAllFrameworks. Commit d0b3338. Next: seed CLI script.","topic":"task.done","ts":"2026-03-22T02:32:01.051762591+00:00"}
+{"payload":"M11 Phase 2c: seed CLI script (scripts/seed-compliance.ts). 42 lines, pnpm run compliance:seed. Commit a71a381. Phase 2 complete. Next: Phase 3 check handlers.","topic":"task.done","ts":"2026-03-22T02:34:10.622632946+00:00"}
+{"payload":"M11 Phase 3: check handlers + dispatcher (5 handlers, 398 lines). Commit f719dc0. Next: Phase 4 engine + attestation.","topic":"task.done","ts":"2026-03-22T02:37:35.040809436+00:00"}
+{"payload":"M11 Phase 4: compliance engine + attestation (236 lines). Commit 8b232a5. Next: Phase 5 pipeline integration.","topic":"task.done","ts":"2026-03-22T02:39:47.341336085+00:00"}
+{"payload":"M11 Phase 5: pipeline integration (223 lines). Commit 1ac86f9. Next: Phase 6 API routes.","topic":"task.done","ts":"2026-03-22T02:42:40.972483149+00:00"}
+{"payload":"M11 Phase 6: compliance API routes (417 lines). Commit a624f73. Next: Phase 7 E2E testing.","topic":"task.done","ts":"2026-03-22T02:45:16.074148730+00:00"}
+{"payload":"M11 Phase 7: compliance test suite (54 tests, 649 lines). Commit 5a686de. M11 all 7 phases complete.","topic":"task.done","ts":"2026-03-22T02:49:32.200045711+00:00"}
+{"payload":"M12 compliance E2E tests: 4 specs, 24 tests (framework-status, rule-evaluation, checklist-attestation, compliance-report). Commit 79b0bde.","topic":"task.done","ts":"2026-03-22T02:54:33.522014999+00:00"}
+{"payload":"M12 fixtures: 5 files (seed-helpers, mock-llm-server, cleanup, test-base, index). 499 lines. Mock LLM verified. Commit 39411b2.","topic":"task.done","ts":"2026-03-22T03:00:53.567897599+00:00"}
+{"ts":"2026-03-22T03:01:14.373817345+00:00","iteration":16,"hat":"loop","topic":"loop.terminate","payload":"## Reason\nconsecutive_failures\n\n## Status\nToo many consecutive failures.\n\n## Summary\n- Iterations: 16\n- Duration: 40m 44s\n- Exit code: 1"}

@@ -498,3 +498,19 @@ Typecheck already confirmed clean during Step 3 build. All 4 plan steps complete
 - All plan steps verified complete (Step 1: 6 sub-tasks, Step 2: 2 sub-tasks, Step 3: 3 sub-tasks, Step 4: typecheck)
 
 **M10 Frontend is COMPLETE.** Emitting LOOP_COMPLETE.
+
+## 2026-03-22: Phase 6 — Compliance API Routes (Complete)
+
+- Created 4 API route files under `src/app/api/casos/[casoSlug]/compliance/` (417 lines total):
+  - `frameworks/route.ts` — GET: lists compliance frameworks (summary view: id, name, standard, version, rule/checklist counts)
+  - `evaluate/[frameworkId]/route.ts` — GET: evaluates a framework against casoSlug, persists ComplianceEvaluation, returns full report. Rate-limited (engine:run preset). Optional `?phase=` filter with validation.
+  - `evaluations/route.ts` — GET: lists past ComplianceEvaluation nodes for casoSlug. Optional `?framework_id=` filter, `?limit=` (default 50, max 200). Rate-limited (engine:state preset).
+  - `attestations/route.ts` — GET: lists attestations for casoSlug. POST: creates/updates checklist attestation (MERGE for idempotency). Validates framework + checklist item exist before writing.
+- All routes follow existing patterns: parameterized Cypher, DB-unavailable detection (503), success/error envelope
+- POST attestation uses MERGE on (framework_id, investigation_id, checklist_item_id) — idempotent, re-attestation updates the existing node
+- Build passes, no type errors
+- Commit: a624f73
+
+### Next: Phase 7 — E2E Testing
+- End-to-end test of the compliance pipeline: seed → evaluate → attest → re-evaluate
+- Requires Neo4j running, uses real API routes
