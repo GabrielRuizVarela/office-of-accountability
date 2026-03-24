@@ -25,8 +25,8 @@ const t = {
     es: 'Obras Publicas Argentinas: Trazabilidad de Contratos',
   },
   headerDesc: {
-    en: 'An evidence-based investigation compiled from 14 public procurement data sources, 3 international bribery cases, and cross-reference with the finanzas-politicas graph. Reproducible methodology with open data.',
-    es: 'Una investigacion basada en evidencia compilada a partir de 14 fuentes de datos de contrataciones publicas, 3 casos internacionales de soborno, y cruce con el grafo de finanzas-politicas. Metodologia reproducible con datos abiertos.',
+    en: '56,122 entities traced across 7 data sources. 13,277 cross-references to political finance. 30 investigation waves. 5 deep-dive verifications that eliminated 3 of our own false positives. Only verified findings survive.',
+    es: '56.122 entidades rastreadas a traves de 7 fuentes de datos. 13.277 referencias cruzadas con finanzas politicas. 30 olas de investigacion. 5 verificaciones profundas que eliminaron 3 de nuestros propios falsos positivos. Solo sobreviven los hallazgos verificados.',
   },
   viewData: { en: 'View data & evidence', es: 'Ver datos y evidencia' },
   timeline: { en: 'Timeline', es: 'Cronologia' },
@@ -56,97 +56,90 @@ const CHAPTERS: {
     },
     paragraphs: {
       en: [
-        'Argentine public works procurement operates through a centralized digital system — CONTRAT.AR — that records procedures, bids, contracts, and work progress. In theory, this system ensures transparency. In practice, the data reveals structural patterns: the same contractors win repeatedly, single-bidder procedures are common, and budget overruns are systematic.',
-        'The investigation maps 7,481 public works across national, provincial, and multilateral jurisdictions. Entity resolution through CUIT (tax identification) numbers connects contractors to the broader political finance ecosystem analyzed in the finanzas-politicas investigation.',
+        'Between 2019 and 2021, Argentine public works jumped from 149 to 2,740 projects — an 18-fold increase ahead of the 2023 elections. Under Milei, they collapsed to 18 — a 99% drop. Public works in Argentina is not infrastructure policy. It is a political machine.',
+        'This investigation traced 56,122 entities across 7 government data sources, 3 international bribery cases, and 2 provincial procurement systems. Through CUIT tax identification matching, we connected 13,277 contractors to the broader finanzas-politicas graph — linking procurement to campaign donations, corporate officers, offshore entities, and government appointments.',
+        'What the data reveals is not individual corruption but structural capture: the same companies win contracts regardless of which party governs, the same families control both the contractors and the offshore vehicles, and the regulatory bodies are staffed by the people they are supposed to regulate.',
       ],
       es: [
-        'Las contrataciones de obra publica argentina operan a traves de un sistema digital centralizado — CONTRAT.AR — que registra procedimientos, ofertas, contratos y avance de obras. En teoria, este sistema asegura transparencia. En la practica, los datos revelan patrones estructurales: los mismos contratistas ganan repetidamente, los procedimientos con oferente unico son comunes, y los sobrecostos son sistematicos.',
-        'La investigacion mapea 7.481 obras publicas a traves de jurisdicciones nacionales, provinciales y multilaterales. La resolucion de entidades a traves de numeros CUIT conecta contratistas con el ecosistema mas amplio de financiamiento politico analizado en la investigacion de finanzas-politicas.',
+        'Entre 2019 y 2021, las obras publicas argentinas saltaron de 149 a 2.740 proyectos — un aumento de 18 veces antes de las elecciones de 2023. Bajo Milei, colapsaron a 18 — una caida del 99%. La obra publica en Argentina no es politica de infraestructura. Es una maquina politica.',
+        'Esta investigacion rastreo 56.122 entidades a traves de 7 fuentes de datos gubernamentales, 3 casos internacionales de soborno, y 2 sistemas de contrataciones provinciales. Mediante el cruce por CUIT, conectamos 13.277 contratistas con el grafo de finanzas-politicas — vinculando contrataciones con donaciones de campana, directivos de empresas, entidades offshore, y designaciones gubernamentales.',
+        'Lo que revelan los datos no es corrupcion individual sino captura estructural: las mismas empresas ganan contratos sin importar que partido gobierna, las mismas familias controlan tanto los contratistas como los vehiculos offshore, y los organismos reguladores estan integrados por las personas que deberian regular.',
       ],
     },
   },
   {
     num: 'II',
     title: {
-      en: 'Odebrecht: The $35 Million Trail',
-      es: 'Odebrecht: El Rastro de $35 Millones',
+      en: 'The Revolving Door',
+      es: 'La Puerta Giratoria',
     },
     paragraphs: {
       en: [
-        'In December 2016, Brazilian construction giant Odebrecht pleaded guilty before the US Department of Justice, revealing a global bribery scheme spanning 12 countries. In Argentina alone, $35 million in bribes were paid between 2007 and 2014, linked to public works contracts including gas pipelines, the Sarmiento railway burial project, and the Atucha II nuclear plant.',
-        'Odebrecht operated in Argentina through partnerships with local firms — Electroingenieria, CPC, and others — creating a network of joint ventures that channeled both legitimate construction work and illicit payments. The DOJ plea agreement provides the documentary foundation for tracing these connections through the procurement graph.',
+        'Guillermo Pedro Plate was Vice President of Provincia ART — Argentina\'s largest workers\' compensation insurer, which received $1.43 billion in 23 government contracts. In January 2017, he became Vice Superintendente de Seguros de la Nacion — the #2 at the federal agency that regulates insurance companies, including the one he had just led. In December 2023, he was promoted to Superintendente — the top position. The regulator became the regulated\'s former boss.',
+        'This is not a state-enterprise board appointment (we verified: Provincia ART belongs to Buenos Aires province via Banco Provincia, while the Superintendencia is a federal body under the Ministerio de Hacienda — different principals, different jurisdictions). Graph data shows that during Plate\'s tenure, Parana Seguros received favorable market entry and Liderar Seguros was allegedly shielded from inspections.',
+        'Meanwhile, Pablo Clusellas — Mauricio Macri\'s childhood friend from Colegio Cardenal Newman — served as Secretario Legal y Tecnico of the Presidencia while simultaneously appearing as an officer of SACDE (formerly IECSA), the Macri family\'s construction company. SACDE was awarded the $86.7 billion Autopista RN3 contract. Angelo Calcaterra, Macri\'s cousin and SACDE\'s former president, confessed as a cooperating witness in the Odebrecht bribery case.',
       ],
       es: [
-        'En diciembre de 2016, el gigante brasileno de la construccion Odebrecht se declaro culpable ante el Departamento de Justicia de EE.UU., revelando un esquema global de soborno que abarcaba 12 paises. Solo en Argentina, se pagaron $35 millones en sobornos entre 2007 y 2014, vinculados a contratos de obra publica que incluian gasoductos, el soterramiento del ferrocarril Sarmiento y la central nuclear Atucha II.',
-        'Odebrecht opero en Argentina a traves de asociaciones con empresas locales — Electroingenieria, CPC, y otras — creando una red de uniones transitorias que canalizaban tanto obra de construccion legitima como pagos ilicitos. El acuerdo de culpabilidad del DOJ provee la base documental para rastrear estas conexiones a traves del grafo de contrataciones.',
+        'Guillermo Pedro Plate fue Vicepresidente de Provincia ART — la mayor aseguradora de riesgos del trabajo de Argentina, que recibio $1.430 millones en 23 contratos gubernamentales. En enero de 2017, se convirtio en Vice Superintendente de Seguros de la Nacion — el #2 de la agencia federal que regula las companias de seguros, incluyendo la que acababa de dirigir. En diciembre de 2023, fue promovido a Superintendente. El regulador se convirtio en el ex-jefe del regulado.',
+        'Esto no es una designacion de directorio de empresa estatal (verificamos: Provincia ART pertenece a la provincia de Buenos Aires via Banco Provincia, mientras la Superintendencia es un organismo federal bajo el Ministerio de Hacienda — diferentes mandantes, diferentes jurisdicciones). Los datos del grafo muestran que durante la gestion de Plate, Parana Seguros recibio entrada favorable al mercado y Liderar Seguros fue presuntamente protegida de inspecciones.',
+        'Mientras tanto, Pablo Clusellas — amigo de la infancia de Mauricio Macri del Colegio Cardenal Newman — fue Secretario Legal y Tecnico de la Presidencia mientras simultaneamente figuraba como directivo de SACDE (ex IECSA), la constructora de la familia Macri. SACDE fue adjudicataria del contrato de la Autopista RN3 por $86.700 millones. Angelo Calcaterra, primo de Macri y ex presidente de SACDE, confeso como arrepentido en el caso Odebrecht.',
       ],
     },
   },
   {
     num: 'III',
     title: {
-      en: 'The Notebooks: Cash Deliveries 2005-2015',
-      es: 'Los Cuadernos: Entregas de Efectivo 2005-2015',
+      en: 'The Money Trail',
+      es: 'El Rastro del Dinero',
     },
     paragraphs: {
       en: [
-        'In August 2018, journalist Diego Cabot published in La Nacion the photocopies of handwritten notebooks kept by Oscar Centeno, a driver for the Planning Ministry. The notebooks documented cash deliveries to public officials over a decade, triggering the largest corruption case in Argentine history.',
-        'The companies named in the notebooks — Electroingenieria, Austral Construcciones, Esuco, CPC, and others — overlap significantly with the major public works contractors in the CONTRAT.AR database. This cross-reference is the investigative core: tracing the same entities across procurement records, court filings, and bribery documentation.',
+        'The Werthein family — the 7th richest in Argentina with a fortune estimated at $1.9 billion — controls Caja de Seguros S.A. and Experta ART, both registered as government contractors providing insurance for public works projects. Eight Werthein family members appear as officers across these companies in the graph.',
+        'Through the Pandora Papers (confirmed by ICIJ), family member Dario Werthein is the beneficial owner of Canrold Overseas Limited, a BVI shell company registered through Merrill Lynch Uruguay\'s free-trade zone office. The family matriarch, Norma Gold de Werthein, is beneficiary of Hinslet Overseas Ltd — another BVI entity, incorporated in 1997 and still active after 29 years. The offshore structures are deliberately separated from the contracting entities by 5-6 hops through family relationships.',
+        'Meanwhile, $703 billion ARS sits frozen in 15 mega-projects with less than 10% budget execution. The Autopista RN3 Canuelas-Azul received $86.7 billion but only 19.2% was spent. The Pavimentacion RP17 in Chubut: $12.8 billion budget, 1.4% spent, 3.29% physically built. The contractor on the RN3: SACDE — the same company linked to Clusellas and Odebrecht.',
       ],
       es: [
-        'En agosto de 2018, el periodista Diego Cabot publico en La Nacion las fotocopias de cuadernos manuscritos del chofer Oscar Centeno, del Ministerio de Planificacion. Los cuadernos documentaban entregas de dinero en efectivo a funcionarios publicos durante una decada, desencadenando la mayor causa de corrupcion en la historia argentina.',
-        'Las empresas nombradas en los cuadernos — Electroingenieria, Austral Construcciones, Esuco, CPC, y otras — se superponen significativamente con los principales contratistas de obra publica en la base de datos de CONTRAT.AR. Este cruce es el nucleo investigativo: rastrear las mismas entidades a traves de registros de contratacion, expedientes judiciales, y documentacion de sobornos.',
+        'La familia Werthein — la 7ma mas rica de Argentina con una fortuna estimada en USD 1.900 millones — controla Caja de Seguros S.A. y Experta ART, ambas registradas como contratistas del Estado proveyendo seguros para proyectos de obras publicas. Ocho miembros de la familia Werthein aparecen como directivos de estas empresas en el grafo.',
+        'A traves de los Pandora Papers (confirmado por ICIJ), el miembro de la familia Dario Werthein es beneficiario final de Canrold Overseas Limited, una sociedad pantalla en BVI registrada a traves de la oficina de zona franca de Merrill Lynch Uruguay. La matriarca, Norma Gold de Werthein, es beneficiaria de Hinslet Overseas Ltd — otra entidad BVI, constituida en 1997 y aun activa tras 29 anos. Las estructuras offshore estan deliberadamente separadas de las entidades contratantes por 5-6 saltos a traves de relaciones familiares.',
+        'Mientras tanto, $703.000 millones ARS permanecen congelados en 15 megaproyectos con menos de 10% de ejecucion presupuestaria. La Autopista RN3 Canuelas-Azul recibio $86.700 millones pero solo se gasto el 19,2%. La Pavimentacion RP17 en Chubut: presupuesto de $12.800 millones, 1,4% gastado, 3,29% construido fisicamente. El contratista de la RN3: SACDE — la misma empresa vinculada a Clusellas y Odebrecht.',
       ],
     },
   },
   {
     num: 'IV',
     title: {
-      en: 'Siemens and the DNI: $100 Million in Bribes',
-      es: 'Siemens y el DNI: $100 Millones en Sobornos',
+      en: 'The Evidence Problem',
+      es: 'El Problema de la Evidencia',
     },
     paragraphs: {
       en: [
-        'The Siemens FCPA case documented one of the largest single-contract bribery schemes in corporate history. Over $100 million in bribes were paid through intermediaries and shell companies to secure the Argentine national identity document (DNI) manufacturing contract, valued at approximately $1 billion.',
-        'The SEC settlement revealed a sophisticated layering structure: payments routed through offshore entities, intermediaries with no apparent connection to the technology sector, and a web of consultancy agreements that served as bribery channels. The pattern mirrors the shell company structures identified in the finanzas-politicas investigation.',
+        'The Cuadernos de las Coimas — Argentina\'s biggest corruption case, currently on trial with 87 defendants — is built on compromised evidence. A Gendarmeria forensic report (August 2025, 312 pages) confirmed that while Oscar Centeno wrote the base text of the notebooks, 1,500+ alterations were made by 2-4 other hands. Former police officer Jorge Bacigalupo was charged in November 2025 with specifically crossing out real names and writing different ones to implicate other individuals.',
+        'One notebook (#5, covering April 2009 to May 2010) is permanently lost. The originals were unaccounted for over 18 months before reappearing from an unidentified source four days before the 2019 presidential elections. Centeno himself lied about burning the originals, has a psychiatric history (1989 grenade incident), and refused to testify at trial on March 19, 2026. His 1980 military connection to the Stornelli family — prosecutor Carlos Stornelli\'s father organized his training course — predates the investigation by 38 years.',
+        'Of the 9 top contractors named as Cuadernos defendants, only 2 (SACDE and CPC) have robust independent evidence through DOJ filings and AFIP investigations. Four contractors depend entirely on the compromised notebook testimony. Our investigation downgraded Cuadernos-dependent claims to bronze tier (confidence 0.35) and now requires independent corroboration before treating any notebook-specific claim as verified.',
       ],
       es: [
-        'El caso FCPA de Siemens documento uno de los mayores esquemas de soborno por contrato unico en la historia corporativa. Mas de $100 millones en sobornos se pagaron a traves de intermediarios y empresas pantalla para asegurar el contrato de fabricacion del Documento Nacional de Identidad (DNI) argentino, valuado en aproximadamente $1.000 millones.',
-        'El acuerdo con la SEC revelo una estructura sofisticada de capas: pagos canalizados a traves de entidades offshore, intermediarios sin conexion aparente con el sector tecnologico, y una red de acuerdos de consultoria que servian como canales de soborno. El patron refleja las estructuras de empresas fantasma identificadas en la investigacion de finanzas-politicas.',
+        'Los Cuadernos de las Coimas — la mayor causa de corrupcion de Argentina, actualmente en juicio oral con 87 imputados — esta construida sobre evidencia comprometida. Un informe pericial de Gendarmeria (agosto 2025, 312 paginas) confirmo que mientras Oscar Centeno escribio el texto base de los cuadernos, 1.500+ alteraciones fueron realizadas por 2 a 4 manos diferentes. El ex policia Jorge Bacigalupo fue procesado en noviembre de 2025 por tachar nombres reales y escribir otros para implicar a diferentes personas.',
+        'Un cuaderno (#5, que cubria abril 2009 a mayo 2010) esta permanentemente perdido. Los originales estuvieron sin custodia por mas de 18 meses antes de reaparecer de una fuente no identificada cuatro dias antes de las elecciones presidenciales de 2019. El propio Centeno mintio sobre haber quemado los originales, tiene antecedentes psiquiatricos (incidente con granada de 1989), y se nego a declarar en el juicio el 19 de marzo de 2026. Su conexion militar de 1980 con la familia Stornelli — el padre del fiscal Carlos Stornelli organizo su curso de instruccion — precede a la investigacion por 38 anos.',
+        'De los 9 principales contratistas nombrados como imputados de Cuadernos, solo 2 (SACDE y CPC) tienen evidencia independiente robusta a traves de expedientes del DOJ e investigaciones de AFIP. Cuatro contratistas dependen enteramente del testimonio comprometido de los cuadernos. Nuestra investigacion degradoa las afirmaciones dependientes de Cuadernos a nivel bronce (confianza 0,35) y ahora requiere corroboracion independiente antes de tratar cualquier afirmacion especifica de los cuadernos como verificada.',
       ],
     },
   },
   {
     num: 'V',
     title: {
-      en: 'The Cross-Reference: Where Investigations Meet',
-      es: 'El Cruce: Donde se Encuentran las Investigaciones',
+      en: 'What the Data Shows',
+      es: 'Lo Que Muestran los Datos',
     },
     paragraphs: {
       en: [
-        'The CUIT identifier is the primary bridge between the obras-publicas and finanzas-politicas investigations. Entity resolution connects contractors who win public works contracts with campaign donors, offshore entity holders, and politically appointed officials in the broader political finance graph.',
-        'The cross-reference engine operates in three tiers: CUIT matching (confidence 0.95-1.0), DNI/CUIL matching (0.9-0.95), and fuzzy name matching (0.6-0.8). Investigation flags detect patterns: contractor-donors, debarred entities still winning contracts, Odebrecht-linked firms, Cuadernos-linked firms, and entities appearing in both investigations simultaneously.',
+        '56,122 entities. 48,415 relationships. 13,277 cross-references linking public works to political finance. 30 investigation waves. 5 deep-dive verifications that eliminated 3 false positives from our own findings. This is what systematic accountability looks like — not accusations, but traceable connections.',
+        'The verified findings form a clear picture: contractors who donate to both major political coalitions ($648,000 to Frente de Todos, $272,000 to Juntos por el Cambio in the 2019 election alone). A federal insurance regulator who previously ran the company he now regulates. A president\'s childhood friend on the board of the family construction company receiving billion-peso highway contracts. An offshore shell network in the British Virgin Islands connected to government insurance contractors through 5-6 layers of family relationships.',
+        'What this investigation cannot do is prove intent. What it can do — and what the data does — is make the connections visible, traceable, and verifiable. Every CUIT match, every officer overlap, every offshore hop is documented in a graph database that anyone can query. The evidence is the structure itself.',
       ],
       es: [
-        'El identificador CUIT es el puente principal entre las investigaciones de obras-publicas y finanzas-politicas. La resolucion de entidades conecta contratistas que ganan contratos de obra publica con donantes de campana, titulares de entidades offshore, y funcionarios designados politicamente en el grafo mas amplio de finanzas politicas.',
-        'El motor de cruce opera en tres niveles: coincidencia por CUIT (confianza 0.95-1.0), coincidencia DNI/CUIL (0.9-0.95), y coincidencia difusa por nombre (0.6-0.8). Las alertas de investigacion detectan patrones: contratistas-donantes, entidades inhabilitadas que siguen ganando contratos, firmas vinculadas a Odebrecht, firmas vinculadas a Cuadernos, y entidades que aparecen en ambas investigaciones simultaneamente.',
-      ],
-    },
-  },
-  {
-    num: 'VI',
-    title: {
-      en: 'What Remains',
-      es: 'Lo Que Queda',
-    },
-    paragraphs: {
-      en: [
-        '37,351 entities traced. 43,615 cross-references. 12,431 investigation flags detected. 7,481 public works analyzed. 28,419 contractors registered. 3 international bribery cases mapped. But the data pipeline is still running — waves of ingestion continue to add provincial data, multilateral contracts, and debarment records.',
-        'The most significant structural finding is the overlap: companies that appear in Odebrecht AND Cuadernos AND as active contractors AND as campaign donors form a small but densely connected cluster at the intersection of public procurement and political finance. These bridge entities — connecting procurement to politics to international bribery — are the primary targets for continued investigation.',
-      ],
-      es: [
-        '37.351 entidades rastreadas. 43.615 referencias cruzadas. 12.431 alertas de investigacion detectadas. 7.481 obras publicas analizadas. 28.419 contratistas registrados. 3 casos internacionales de soborno mapeados. Pero el pipeline de datos sigue corriendo — olas de ingestion continuan agregando datos provinciales, contratos multilaterales, y registros de inhabilitacion.',
-        'El hallazgo estructural mas significativo es la superposicion: empresas que aparecen en Odebrecht Y Cuadernos Y como contratistas activos Y como donantes de campana forman un cluster pequeno pero densamente conectado en la interseccion de las contrataciones publicas y el financiamiento politico. Estas entidades puente — conectando contrataciones con politica y soborno internacional — son los objetivos principales para la continuacion de la investigacion.',
+        '56.122 entidades. 48.415 relaciones. 13.277 referencias cruzadas vinculando obras publicas con finanzas politicas. 30 olas de investigacion. 5 verificaciones profundas que eliminaron 3 falsos positivos de nuestros propios hallazgos. Esto es lo que parece la rendicion de cuentas sistematica — no acusaciones, sino conexiones rastreables.',
+        'Los hallazgos verificados forman un cuadro claro: contratistas que donan a ambas coaliciones politicas principales ($648.000 al Frente de Todos, $272.000 a Juntos por el Cambio solo en la eleccion de 2019). Un regulador federal de seguros que antes dirigia la empresa que ahora regula. El amigo de la infancia de un presidente en el directorio de la constructora familiar que recibe contratos de autopistas por miles de millones. Una red de sociedades pantalla offshore en las Islas Virgenes Britanicas conectada a contratistas de seguros del gobierno a traves de 5-6 capas de relaciones familiares.',
+        'Lo que esta investigacion no puede hacer es probar intencion. Lo que si puede hacer — y lo que hacen los datos — es hacer las conexiones visibles, rastreables y verificables. Cada coincidencia de CUIT, cada superposicion de directivos, cada salto offshore esta documentado en una base de datos de grafos que cualquiera puede consultar. La evidencia es la estructura misma.',
       ],
     },
   },
