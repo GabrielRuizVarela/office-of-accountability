@@ -48,6 +48,7 @@ const CASE_TABS: Readonly<Record<string, readonly NavTab[]>> = {
   ],
   'riesgo-nuclear': [
     { href: '', label: { en: 'Dashboard', es: 'Panel' } },
+    { href: '/resumen', label: { en: 'Report', es: 'Informe' } },
     { href: '/grafo', label: { en: 'Graph', es: 'Grafo' } },
     { href: '/cronologia', label: { en: 'Timeline', es: 'Cronologia' } },
     { href: '/evidencia', label: { en: 'Sources', es: 'Fuentes' } },
