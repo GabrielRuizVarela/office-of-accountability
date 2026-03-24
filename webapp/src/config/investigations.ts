@@ -11,19 +11,19 @@ export interface InvestigationConfig {
 
 export const investigations: InvestigationConfig[] = [
   {
-    slug: 'caso-libra',
-    title: 'Caso Libra: La Memecoin del Presidente',
-    subtitle: 'Investigacion activa',
+    slug: 'finanzas-politicas',
+    title: 'Finanzas Politicas Argentinas',
+    subtitle: 'Investigacion activa — 2.4M nodos',
     description:
-      'Milei promovio $LIBRA a 19M de seguidores. El precio colapso 94% en horas. 114,000+ billeteras perdieron $251M+.',
+      'Monopolios, financiamiento de campanas, declaraciones juradas patrimoniales, sociedades offshore, obra publica y conexiones entre politicos y empresas. 9 fuentes de datos cruzadas.',
     status: 'active',
-    color: 'purple',
+    color: 'emerald',
     stats: [
-      { label: 'Perdidas', value: '$251M+' },
-      { label: 'Billeteras afectadas', value: '114,000+' },
-      { label: 'Caida', value: '94%' },
+      { label: 'Nodos', value: '2.4M+' },
+      { label: 'Cruces CUIT', value: '48,212' },
+      { label: 'Fuentes ETL', value: '9' },
     ],
-    href: '/caso/caso-libra',
+    href: '/caso/finanzas-politicas',
   },
   {
     slug: 'caso-epstein',
@@ -41,17 +41,18 @@ export const investigations: InvestigationConfig[] = [
     href: '/caso/caso-epstein',
   },
   {
-    slug: 'finanzas-politicas',
-    title: 'Finanzas Politicas Argentinas',
+    slug: 'caso-libra',
+    title: 'Caso Libra: La Memecoin del Presidente',
     subtitle: 'Investigacion activa',
     description:
-      'Financiamiento de campanas, declaraciones juradas patrimoniales, sociedades offshore y conexiones entre politicos y empresas.',
+      'Milei promovio $LIBRA a 19M de seguidores. El precio colapso 94% en horas. 114,000+ billeteras perdieron $251M+.',
     status: 'active',
-    color: 'emerald',
+    color: 'purple',
     stats: [
-      { label: 'Legisladores', value: '329' },
-      { label: 'Fuentes ETL', value: '7' },
+      { label: 'Perdidas', value: '$251M+' },
+      { label: 'Billeteras afectadas', value: '114,000+' },
+      { label: 'Caida', value: '94%' },
     ],
-    href: '/caso/finanzas-politicas',
+    href: '/caso/caso-libra',
   },
 ]
