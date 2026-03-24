@@ -1,11 +1,11 @@
 # Session Handoff
 
-_Generated: 2026-03-22 02:15:32 UTC_
+_Generated: 2026-03-24 02:17:29 UTC_
 
 ## Git Context
 
 - **Branch:** `worktree-crispy-cuddling-snail`
-- **HEAD:** 99a209b: chore: auto-commit before merge (loop primary)
+- **HEAD:** 72123e4: chore: auto-commit before merge (loop primary)
 
 ## Tasks
 
@@ -27,22 +27,40 @@ _Generated: 2026-03-22 02:15:32 UTC_
 - [x] Investigation reading page
 - [x] Investigations index + my investigations
 - [x] Verify and commit query-abstraction + auth improvements
+- [x] M11 Phase 1: Create compliance types.ts with Zod schemas + TS interfaces
+- [x] M11 Phase 1: Add compliance constraints + indexes to schema.ts
+- [x] YAML framework definitions
+- [x] Compliance loader: YAML parser + Zod validation + Neo4j MERGE
+- [x] Seed compliance CLI script
+- [x] Phase 3: cypher check handler
+- [x] Phase 3: property_exists check handler
+- [x] Phase 3: min_count check handler
+- [x] Phase 3: tier_minimum check handler
+- [x] Phase 3: llm check handler
+- [x] Phase 3: check handler index + dispatcher
+- [x] M11 Phase 4: compliance engine + attestation
+- [x] Phase 5: Pipeline integration — compliance gate + evaluation persistence
+- [x] M11 Phase 6: Compliance API routes
+- [x] M11 Phase 7: E2E tests for compliance engine
+- [x] M12: Compliance E2E tests (framework-status, rule-evaluation, checklist-attestation, compliance-report)
+- [x] M12: Engine E2E tests (pipeline-run, gate-review, proposals, orchestrator, snapshots)
+- [x] M12: Fixtures (seed helpers, mock LLM server, cleanup)
 
 
 ## Key Files
 
 Recently modified:
 
-- `.ralph/agent/handoff.md`
-- `.ralph/diagnostics/logs/ralph-2026-03-21T16-31-22-640-2195314.log`
-- `DOSSIER-IMF-ARGENTINA.md`
-- `PROMPT.md`
-- `TASKS.md`
-- `docs/QA-TRACKER.md`
+- `.ralph/agent/scratchpad.md`
+- `webapp/.ralph/agent/handoff.md`
 - `webapp/.ralph/agent/scratchpad.md`
 - `webapp/.ralph/agent/summary.md`
 - `webapp/.ralph/agent/tasks.jsonl`
 - `webapp/.ralph/current-events`
+- `webapp/.ralph/current-loop-id`
+- `webapp/.ralph/diagnostics/logs/ralph-2026-03-21T23-13-14-493-3236038.log`
+- `webapp/.ralph/diagnostics/logs/ralph-2026-03-21T23-20-29-664-3254307.log`
+- `webapp/.ralph/diagnostics/logs/ralph-2026-03-23T22-51-52-319-44581.log`
 
 ## Next Session
 
