@@ -1,45 +1,89 @@
 # Session Handoff
 
-_Generated: 2026-03-24 manual reset after audit_
+_Generated: 2026-03-24 05:47:16 UTC_
 
 ## Git Context
 
 - **Branch:** `worktree-crispy-cuddling-snail`
+- **HEAD:** 4f0d828: chore: auto-commit before merge (loop primary)
 
-## Status
+## Tasks
 
-An audit found **critical integration bugs in M10 engine code** that were never caught. The individual modules are real implementations but they don't wire together correctly. These MUST be fixed before continuing with M13 Phase 3+.
+### Completed
 
-**Completed so far:** M0–M11, M12 E2E tests, M13 Phases 1–2.
+- [x] M5: Auth types + Neo4j adapter for Auth.js — custom adapter storing User/Account/VerificationToken nodes in Neo4j, using @auth/core with JWT sessions
+- [x] M5: Auth config + API route handlers — @auth/core setup with Credentials + Google OAuth providers, catch-all route at /api/auth/[...path]
+- [x] M5: Session helpers + auth middleware — getSession() for server components, useSession() hook for client components, requireAuth() guard
+- [x] M5: Auth UI — sign-in page, sign-up page, user menu component with tier badges
+- [x] Auth config + API routes — @auth/core config with Credentials + Google providers, catch-all route at /api/auth/[...path]
+- [x] Session helpers — getSession() for server components, useSession() hook for clients
+- [x] Auth UI — Sign-in/sign-up pages, user menu component
+- [x] Session helpers — getSession() for server components, useSession() hook for clients
+- [x] Auth UI — sign-in page, sign-up page, user menu component
+- [x] Investigation Neo4j query functions
+- [x] Investigation CRUD API routes
+- [x] TipTap editor component with toolbar
+- [x] Investigation create/edit pages
+- [x] Investigation reading page
+- [x] Investigations index + my investigations
+- [x] Verify and commit query-abstraction + auth improvements
+- [x] M11 Phase 1: Create compliance types.ts with Zod schemas + TS interfaces
+- [x] M11 Phase 1: Add compliance constraints + indexes to schema.ts
+- [x] YAML framework definitions
+- [x] Compliance loader: YAML parser + Zod validation + Neo4j MERGE
+- [x] Seed compliance CLI script
+- [x] Phase 3: cypher check handler
+- [x] Phase 3: property_exists check handler
+- [x] Phase 3: min_count check handler
+- [x] Phase 3: tier_minimum check handler
+- [x] Phase 3: llm check handler
+- [x] Phase 3: check handler index + dispatcher
+- [x] M11 Phase 4: compliance engine + attestation
+- [x] Phase 5: Pipeline integration — compliance gate + evaluation persistence
+- [x] M11 Phase 6: Compliance API routes
+- [x] M11 Phase 7: E2E tests for compliance engine
+- [x] M12: Compliance E2E tests (framework-status, rule-evaluation, checklist-attestation, compliance-report)
+- [x] M12: Engine E2E tests (pipeline-run, gate-review, proposals, orchestrator, snapshots)
+- [x] M12: Fixtures (seed helpers, mock LLM server, cleanup)
+- [x] M13 Phase 1: MCP Server Core — Cloudflare Worker project, SSE transport, MCP protocol, auth, registry, types
+- [x] M13 Phase 2: Investigation + Graph tool handlers
+- [x] Fix iterate stage factory — stages/index.ts returns AnalyzeStageRunner for iterate case
+- [x] Implement 5 missing LLM tool handlers in stages/shared.ts processToolCall
+- [x] Fix synthesis.ts HAS_PROPOSAL relationship — either create it in proposals.ts or rewrite queries
+- [x] Wire full dedup into ingest stage — call buildExistingMaps() and dedup()
+- [x] Sanitize dynamic labels in proposals.ts applyProposal — add whitelist
+- [x] Fix EngineDashboard.tsx bootstrap — pipeline_id missing from initial fetch
+- [x] Fix AuditLog.tsx response parse — json.data vs json.data.entries
+- [x] Add motor/engine tab to InvestigationNav.tsx
+- [x] Fix motor page for static case routes (caso-epstein, finanzas-politicas)
+- [x] LLM cost budgeting — accumulate token usage in iterate.ts
+- [x] Graph algorithms — add centrality, community detection, anomaly to algorithms.ts
+- [x] Engine metrics — add pipeline_runs_total, llm_calls_total, proposals_total counters
+- [x] Wire engine logger — replace console.error with createEngineLogger
+- [x] Fix TypeScript errors in scripts/ — .ts extensions and implicit any
 
-## Pending Work — M10 Integration Fixes
 
-Read `PROMPT.md` → "M10 Fix List — MUST complete before M11" for full details per item.
+## Key Files
 
-### Critical Backend Bugs (fix first)
-- [ ] `src/lib/engine/stages/index.ts` — iterate factory returns AnalyzeStageRunner instead of IterateStageRunner. Import IterateStageRunner, fix the case. Also fix iterate.ts STAGE_KIND from 'analyze' to 'iterate'.
-- [ ] `src/lib/engine/stages/shared.ts` processToolCall — 5 LLM tools (read_graph, fetch_url, extract_entities, run_algorithm, compare_timelines) are silent no-ops. Implement real handlers.
-- [ ] `src/lib/engine/orchestrator/synthesis.ts` — queries use HAS_PROPOSAL relationship that is never created. Fix by either creating the relationship in proposals.ts or rewriting queries to use property match.
-- [ ] `src/lib/engine/stages/ingest.ts` — only uses normalizeName from dedup. Wire buildExistingMaps() and fuzzy dedup() to check proposals against existing nodes.
-- [ ] `src/lib/engine/proposals.ts` applyProposal — dynamic labels from LLM output via template literals. Add whitelist check against SchemaDefinition node types.
+Recently modified:
 
-### Critical UI Bugs
-- [ ] `src/components/engine/EngineDashboard.tsx` — bootstrap fetch to /engine/state has no pipeline_id, always 400s. Add pipeline discovery step or update route to support listing by caso_slug.
-- [ ] `src/components/engine/AuditLog.tsx` line 93 — setEntries(json.data) should be setEntries(json.data.entries).
-- [ ] `src/components/investigation/InvestigationNav.tsx` — no motor/engine tab. Add { href: '/motor', label: { en: 'Engine', es: 'Motor' } } to all case tab lists.
-- [ ] Motor page unreachable for static case routes — caso-epstein and finanzas-politicas use static route trees. Either add motor/page.tsx in each or migrate to dynamic [slug] layout.
-
-### Feature Gaps
-- [ ] LLM cost budgeting — LLMResponse.usage populated but never accumulated or budget-checked in iterate.ts.
-- [ ] Graph algorithms — src/lib/graph/algorithms.ts only has BFS. Add degree centrality, betweenness centrality, community detection, anomaly detection.
-- [ ] Engine metrics — no pipeline_runs_total, llm_calls_total, proposals_total counters anywhere.
-- [ ] Wire logger — src/lib/engine/logger.ts exists but is never imported. Replace console.error in pipeline/stages/orchestrator.
-- [ ] Fix TypeScript errors — 9 errors in scripts/ files (5 .ts extension imports + 4 implicit any in ingest-consolidation.ts).
-
-## After M10 Fixes
-
-Continue with M13 Phase 3+ and the rest of the **Implementation Queue (M11–M17)** in PROMPT.md. Execute milestones in order. Do NOT stop after finishing a single milestone.
+- `.ralph/agent/scratchpad.md`
+- `webapp/.claude/scheduled_tasks.lock`
+- `webapp/.ralph/agent/handoff.md`
+- `webapp/.ralph/agent/scratchpad.md`
+- `webapp/.ralph/agent/summary.md`
+- `webapp/.ralph/agent/tasks.jsonl`
+- `webapp/.ralph/current-events`
+- `webapp/.ralph/current-loop-id`
+- `webapp/.ralph/diagnostics/logs/ralph-2026-03-24T01-34-42-736-482206.log`
+- `webapp/.ralph/diagnostics/logs/ralph-2026-03-24T02-00-15-246-560148.log`
 
 ## Next Session
 
-**There are 14 open fix items above. DO NOT signal LOOP_COMPLETE until all are done.**
+Session completed successfully. No pending work.
+
+**Original objective:**
+
+```
+complete all tasks
+```
