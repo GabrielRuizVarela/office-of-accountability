@@ -1,8 +1,8 @@
 import { NextRequest } from 'next/server'
 
-import { getInvestigationGraph } from '../../../../../lib/caso-epstein/queries'
-import { CASO_EPSTEIN_SLUG } from '../../../../../lib/caso-epstein/types'
-import { getNuclearRiskGraph } from '../../../../../lib/caso-nuclear-risk/graph-api'
+import { getInvestigationGraph } from '@/lib/caso-epstein/queries'
+import { CASO_EPSTEIN_SLUG } from '@/lib/caso-epstein/types'
+import { getNuclearRiskGraph } from '@/lib/caso-nuclear-risk/graph-api'
 
 export async function GET(
   request: NextRequest,
