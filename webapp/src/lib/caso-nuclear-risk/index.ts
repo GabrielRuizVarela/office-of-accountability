@@ -54,3 +54,7 @@ export {
   computeTheaterScore,
   computeOverallRisk,
 } from './scoring'
+
+export { getNuclearRiskGraph } from './graph-api'
+export { getNuclearTimeline } from './timeline-api'
+export { getNuclearSources } from './sources-api'
