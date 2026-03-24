@@ -1,0 +1,640 @@
+{
+  "meta": {
+    "title": "Argentine Telecom Market Monopolization — Deep Dive",
+    "date": "2026-03-24",
+    "description": "Investigation of market concentration in Argentine telecommunications: the Grupo Clarín / Telecom Argentina dominance, the 2018 Cablevisión merger, the pending 2025 Telefónica acquisition, regulatory capture, spectrum allocation, pricing, and political connections.",
+    "methodology": "Web research across regulatory filings, SEC documents, press reporting, CNDC rulings, ENACOM resolutions, and industry statistics. All claims sourced.",
+    "confidence_tier": "bronze"
+  },
+
+  "market_structure": {
+    "mobile": {
+      "total_lines_estimate": "~62 million (2024)",
+      "prepaid_share_pct": 61,
+      "subscribers_by_carrier": [
+        {
+          "carrier": "Claro (América Móvil / AMX Argentina)",
+          "share_pct": 39.5,
+          "notes": "Marginally the market leader as of Q4 2023",
+          "source": "https://www.statista.com/statistics/488707/mobile-market-share-argentina-by-provider/"
+        },
+        {
+          "carrier": "Personal (Telecom Argentina)",
+          "share_pct": 33,
+          "notes": "Grew significantly post-2018 Cablevisión merger; brand unified to Personal in Dec 2025",
+          "source": "https://www.perfil.com/noticias/economia/desde-la-fusion-telecom-cablevision-personal-crece-como-nunca-en-el-mercado-de-celulares.phtml"
+        },
+        {
+          "carrier": "Movistar (Telefónica Argentina)",
+          "share_pct": 28,
+          "notes": "Sold to Telecom Argentina Feb 2025 for USD 1.245B; deal under regulatory review",
+          "source": "https://www.statista.com/statistics/488707/mobile-market-share-argentina-by-provider/"
+        }
+      ],
+      "post_acquisition_scenario": {
+        "if_telecom_absorbs_movistar": {
+          "telecom_combined_pct": 65.2,
+          "claro_pct": 34.8,
+          "source": "https://www.argentina.gob.ar/noticias/informe-de-objecion-operacion-telecom-telefonica"
+        },
+        "cndc_objection_figures": {
+          "active_lines_pct": 65.2,
+          "voice_traffic_pct": 66.7,
+          "mobile_data_pct": 68.9,
+          "source": "https://www.argentina.gob.ar/noticias/informe-de-objecion-operacion-telecom-telefonica"
+        }
+      },
+      "sources": [
+        "https://www.mordorintelligence.com/industry-reports/argentina-telecom-market",
+        "https://www.spglobal.com/market-intelligence/en/news-insights/research/argentina-mobile-market-overview"
+      ]
+    },
+
+    "fixed_broadband": {
+      "total_accesses_estimate": "~10 million (2024)",
+      "market_shares": [
+        {
+          "provider": "Telecom Argentina (Fibertel/Arnet)",
+          "share_pct": 46,
+          "subscribers_approx": "4.0 million",
+          "notes": "Dominant nationally; 56% post-2018 merger in some estimates. In CABA, 64.2% pre-Telefónica acquisition",
+          "source": "https://freedomhouse.org/country/argentina/freedom-net/2024"
+        },
+        {
+          "provider": "Telefónica Argentina (Speedy)",
+          "share_pct": 15,
+          "notes": "Being acquired by Telecom; would push combined to ~58%+",
+          "source": "https://freedomhouse.org/country/argentina/freedom-net/2024"
+        },
+        {
+          "provider": "Telecentro",
+          "share_pct": 12,
+          "subscribers_approx": "1.5 million",
+          "notes": "Full fiber conversion underway; 10,000 km fiber network; mainly CABA/GBA",
+          "source": "https://ts2.tech/en/state-of-internet-access-in-argentina-fiber-5g-and-satellite-in-2025/"
+        },
+        {
+          "provider": "Claro (América Móvil)",
+          "share_pct": 7,
+          "notes": "Limited fixed broadband presence relative to mobile",
+          "source": "https://www.mordorintelligence.com/industry-reports/argentina-telecom-market"
+        },
+        {
+          "provider": "Supercanal / others",
+          "share_pct": 7,
+          "source": "https://freedomhouse.org/country/argentina/freedom-net/2024"
+        },
+        {
+          "provider": "Cooperatives and small ISPs",
+          "share_pct": 13,
+          "notes": "Hundreds of small providers, many rural; collectively significant",
+          "source": "https://ts2.tech/en/state-of-internet-access-in-argentina-fiber-5g-and-satellite-in-2025/"
+        }
+      ],
+      "post_acquisition_scenario": {
+        "telecom_combined_broadband_pct": 58,
+        "caba_concentration_pct": 71.6,
+        "monopolistic_localities": "114 municipalities where Telecom would exceed 40% share",
+        "source": "https://www.argentina.gob.ar/noticias/informe-de-objecion-operacion-telecom-telefonica"
+      },
+      "fiber_infrastructure": {
+        "telecom_fiber_km": 11120,
+        "telefonica_fiber_km": 15000,
+        "combined_km": 26120,
+        "notes": "Historical duopoly: Telecom (north) and Telefónica (south) split the country. ADSL monopolized by these two. Fiber rollout accelerating but concentrated in urban areas.",
+        "source": "https://en.wikipedia.org/wiki/Communications_in_Argentina"
+      }
+    },
+
+    "pay_tv": {
+      "market_shares": [
+        {
+          "provider": "Cablevisión/Flow (Telecom Argentina)",
+          "subscribers": "3.18 million",
+          "share_pct": 36.6,
+          "source": "https://digitaltv.prensariozone.com/cono-sur-la-ott-crece-y-la-tv-paga-se-mantiene/"
+        },
+        {
+          "provider": "DirecTV Argentina",
+          "subscribers": "1.73 million",
+          "share_pct": 20,
+          "notes": "Rises to 23.8% including DirecTV Go (350K additional subscribers)",
+          "source": "https://digitaltv.prensariozone.com/cono-sur-la-ott-crece-y-la-tv-paga-se-mantiene/"
+        },
+        {
+          "provider": "Telecentro",
+          "subscribers": "522,730",
+          "share_pct": 6,
+          "source": "https://digitaltv.prensariozone.com/cono-sur-la-ott-crece-y-la-tv-paga-se-mantiene/"
+        },
+        {
+          "provider": "Movistar TV",
+          "subscribers": "475,360",
+          "share_pct": 5.5,
+          "source": "https://digitaltv.prensariozone.com/cono-sur-la-ott-crece-y-la-tv-paga-se-mantiene/"
+        },
+        {
+          "provider": "Red Intercable",
+          "subscribers": "447,480",
+          "share_pct": 5.2,
+          "source": "https://digitaltv.prensariozone.com/cono-sur-la-ott-crece-y-la-tv-paga-se-mantiene/"
+        },
+        {
+          "provider": "Colsecor",
+          "subscribers": "382,000",
+          "share_pct": 4.4,
+          "source": "https://digitaltv.prensariozone.com/cono-sur-la-ott-crece-y-la-tv-paga-se-mantiene/"
+        }
+      ],
+      "post_acquisition_scenario": {
+        "telecom_combined_pay_tv_pct": "60%+",
+        "source": "https://www.argentina.gob.ar/noticias/informe-de-objecion-operacion-telecom-telefonica"
+      }
+    }
+  },
+
+  "key_merger_2018": {
+    "title": "Telecom Argentina — Cablevisión Merger (2018)",
+    "announcement_date": "2017-06-30",
+    "approval_date": "2018-06-29",
+    "approving_body": "CNDC (Comisión Nacional de Defensa de la Competencia)",
+    "structure": "Reverse merger — Cablevisión absorbed into Telecom Argentina S.A.",
+    "resulting_entity": {
+      "name": "Telecom Argentina S.A.",
+      "rank": "Third-largest company in Argentina by revenue",
+      "convergent_market_share_pct": 36,
+      "broadband_share_pct": 56,
+      "description": "Largest mass media and telecommunications enterprise in Argentina"
+    },
+    "ownership_post_merger": {
+      "fintech_telecom_llc_pct": 41.27,
+      "cablevision_holding_pct": 33,
+      "anses_fgs_pct": 25,
+      "float_pct": "remainder",
+      "source": "https://en.wikipedia.org/wiki/Telecom_Argentina"
+    },
+    "conditions_imposed": [
+      {
+        "condition": "Spectrum return",
+        "detail": "Return 80 MHz of mobile spectrum exceeding the 140 MHz regulatory cap. Completed March 2022 across 900 MHz and 2600 MHz bands in 298 localities.",
+        "source": "https://www.commsupdate.com/articles/2022/03/16/telecom-argentina-concludes-spectrum-return-process-started-in-2017/"
+      },
+      {
+        "condition": "Broadband client divestiture",
+        "detail": "Divest broadband clients in 28 localities where competition would be affected. New entrant allowed to use Arnet branding and infrastructure.",
+        "source": "https://www.reasonwhy.es/actualidad/empresa/lfusion-telecom-cablevision-aprobada-restricciones-2018-07-03"
+      },
+      {
+        "condition": "Delay on convergent services",
+        "detail": "6-12 month moratorium before offering quadruple-play bundles.",
+        "source": "https://www.reasonwhy.es/actualidad/empresa/lfusion-telecom-cablevision-aprobada-restricciones-2018-07-03"
+      },
+      {
+        "condition": "Wholesale broadband obligation",
+        "detail": "Must provide wholesale residential internet reference offer for third-party operators to use Telecom's network.",
+        "source": "https://www.iprofesional.com/notas/270793-internet-frecuencias-cable-banda-ancha-tv-telecomunicaciones-ejecutivo-estrategia-consumidor-competencia-espectro-dictamen-Lo-que-abre-la-aprobacion-de-la-fusion-Telecom-Cablevision-exigencias-la-expansion-de-un-jugador-desconocido-y-fuertes-multas-por-incumplimiento"
+      }
+    ],
+    "criticism": [
+      "Created the highest media concentration in Latin American history (Freedom House)",
+      "Macri administration approved the merger in a context of political alignment with Grupo Clarín",
+      "28-locality divestiture was seen as insufficient given national scope of dominance",
+      "Wholesale obligation poorly enforced"
+    ],
+    "sources": [
+      "https://www.infobae.com/economia/finanzas-y-negocios/2018/06/29/el-gobierno-aprobo-la-fusion-de-telecom-con-cablevision-nace-la-empresa-mas-grande-del-pais/",
+      "https://www.batimes.com.ar/news/argentina/telecom-cablevision-merger-approved.phtml",
+      "https://www.perfil.com/noticias/economia/aprobaron-la-fusion-de-telecom-cablevision-y-le-imponen-condiciones.phtml"
+    ]
+  },
+
+  "pending_acquisition_2025": {
+    "title": "Telecom Argentina acquisition of Telefónica Argentina (Movistar)",
+    "announcement_date": "2025-02-24",
+    "price_usd": 1245000000,
+    "acquirer": "Telecom Argentina S.A.",
+    "target": "Telefónica Móviles Argentina S.A.",
+    "seller": "Telefónica S.A. (Spain)",
+    "cndc_objection": {
+      "date": "2025-06-19",
+      "document_pages": 127,
+      "key_findings": [
+        "Eliminates one of three principal mobile operators, leaving duopoly (Telecom 58% / Claro 42%)",
+        "Mobile active lines: 65.2% concentration",
+        "Voice traffic: 66.7% concentration",
+        "Mobile data consumption: 68.9% concentration",
+        "Fixed broadband: 58%+ national, 71.6% in CABA",
+        "Pay TV: 60%+ national",
+        "Fixed telephony: monopolistic in 143 municipalities",
+        "Residential internet: monopolistic in 114 municipalities",
+        "Spectrum accumulation exceeds 140 MHz cap by up to 130 MHz in some localities"
+      ],
+      "source": "https://www.argentina.gob.ar/noticias/informe-de-objecion-operacion-telecom-telefonica"
+    },
+    "regulatory_status": {
+      "as_of": "2026-03-24",
+      "status": "Pending — objected but not definitively resolved",
+      "preventive_measures": "Prohibition on integrating teams, unifying operations, or sharing competitively sensitive information",
+      "decree_extension": "Decreto 448/2025 extended review deadline",
+      "enacom_intervention_extended_to": "2027-01-04",
+      "sources": [
+        "https://www.telesemana.com/blog/2026/01/06/argentina-prorroga-un-ano-mas-la-intervencion-del-enacom-que-aun-tiene-abierta-la-definicion-sobre-la-fusion-telecom-telefonica/",
+        "https://www.iprofesional.com/tecnologia/448882-que-paso-al-final-con-la-historica-fusion-entre-telecom-y-telefonica"
+      ]
+    },
+    "financing": {
+      "telecom_secured_usd": 200000000,
+      "notes": "Telecom obtained USD 200M loan to advance the contested purchase",
+      "source": "https://www.cronista.com/negocios/telecom-consiguio-us-200-millones-para-avanzar-en-la-cuestionada-compra-de-telefonica/"
+    },
+    "claro_opposition": {
+      "formal_objection": true,
+      "argument": "Operation would create irreversible extreme concentration; duopoly with single dominant player",
+      "source": "https://www.telesemana.com/blog/2025/06/19/argentina-objeta-la-fusion-entre-telefonica-y-telecom-por-riesgos-de-concentracion-extrema-con-efectos-irreversibles/"
+    }
+  },
+
+  "corporate_structure": {
+    "ownership_chain": [
+      "Héctor Magnetto (29.8%) + Noble Herrera family (24.85%) + José Antonio Aranda (10.3%) + Lucio Pagliaro (10.2%) → via trusts in New York and GS Unidos LLC (Delaware)",
+      "→ GC Dominio S.A. (Argentine holding) — 26% capital of CVH but 64% of votes",
+      "→ Cablevisión Holding S.A. (CVH) — 39% of Telecom Argentina",
+      "David Martínez Guzmán (Fintech Advisory / Fintech Telecom LLC) — 34% of Telecom Argentina",
+      "ANSES/FGS (Argentine state pension fund) — 25% of Telecom Argentina",
+      "Public float — remainder"
+    ],
+    "key_entities": [
+      {
+        "name": "Grupo Clarín S.A.",
+        "ticker": "GCLA.BA",
+        "role": "Media and content arm",
+        "controlling_shareholders": "Magnetto, Noble Herrera, Aranda, Pagliaro (44% combined)"
+      },
+      {
+        "name": "Cablevisión Holding S.A.",
+        "ticker": "CVH.BA",
+        "role": "Telecom/network arm; controlling shareholder of Telecom Argentina",
+        "incorporated": 2016,
+        "hq": "Buenos Aires",
+        "control": "GC Dominio S.A. holds 26% capital but 64% voting rights",
+        "source": "https://www.cablevisionholding.com/Quienes-Somos/Accionistas"
+      },
+      {
+        "name": "Telecom Argentina S.A.",
+        "ticker": "TEO (NYSE ADR)",
+        "role": "Operating company for all telecom/broadband/pay-TV services",
+        "brands": ["Personal", "Fibertel", "Cablevisión", "Flow", "Arnet"],
+        "brand_unification": "December 2025 — all consumer brands unified under 'Personal'",
+        "source": "https://en.wikipedia.org/wiki/Telecom_Argentina"
+      },
+      {
+        "name": "GC Dominio S.A.",
+        "role": "Argentine holding company for Clarín's controlling families",
+        "source": "https://www.cablevisionholding.com/Quienes-Somos/Accionistas"
+      },
+      {
+        "name": "GS Unidos LLC",
+        "jurisdiction": "Delaware, USA",
+        "role": "Holds 6.52% of CVH capital for Herrera de Noble family",
+        "source": "https://losricosdeargentina.com.ar/clarin.html"
+      },
+      {
+        "name": "Fintech Telecom LLC / Fintech Advisory Inc.",
+        "controller": "David Martínez Guzmán",
+        "hq": "New York / London",
+        "role": "Second-largest shareholder of Telecom Argentina (34%)",
+        "notes": "Martínez known as 'the ghost of Wall Street' for extreme secrecy. Also shareholder in Televisa (Mexico). Acquired full control of Sofora (Telecom's former parent) in 2016-2017.",
+        "source": "https://en.wikipedia.org/wiki/David_Mart%C3%ADnez_(businessman)"
+      },
+      {
+        "name": "VLG Argentina LLC",
+        "role": "Party to Telecom shareholders agreement alongside CVH, GC Dominio, Fintech entities",
+        "source": "https://www.sec.gov/Archives/edgar/data/932470/000110465925019133/teo-20241231x20f.htm"
+      }
+    ],
+    "convergence_model": "Grupo Clarín controls both content generation (newspapers, TV channels, radio) and distribution networks (broadband, mobile, cable TV) through the CVH/Telecom structure. This vertical integration gives unmatched leverage over competing content providers and ISPs.",
+    "sources": [
+      "https://losricosdeargentina.com.ar/clarin.html",
+      "https://argentina.mom-gmr.org/es/propietarios/grupos-mediaticos/detail/company/company/show/grupo-clarin/",
+      "https://lascronologias.wordpress.com/2020/09/08/grupo-clarin-mapa-cablevision-telecom/"
+    ]
+  },
+
+  "board_and_officers": {
+    "telecom_argentina": {
+      "chairman": {
+        "name": "Carlos Moltini",
+        "role": "President of the Board of Directors",
+        "since": "2020-05",
+        "notes": "Close Clarín ally; previously VP at Cablevisión",
+        "source": "https://www.infobae.com/economia/networking/2020/05/21/carlos-moltini-es-el-nuevo-presidente-del-directorio-de-telecom-argentina/"
+      },
+      "ceo": {
+        "name": "Roberto Daniel Nóbile",
+        "role": "Chief Executive Officer (Director General)",
+        "since": "2020-01-01",
+        "notes": "Also on GSMA Board (2025-2026); previously sub-director general of Telecom since merger",
+        "source": "https://www.produ.com/tecnologia/noticias/telecom-argentina-renueva-el-mandato-de-roberto-nobile-en-la-junta-directiva-de-gsma/"
+      },
+      "other_executives": [
+        { "name": "Gabriel Blasi", "role": "Executive", "source": "https://simplywall.st/stocks/us/telecom/nyse-teo/telecom-argentina/management" },
+        { "name": "Gonzalo Hita", "role": "Executive", "source": "https://simplywall.st/stocks/us/telecom/nyse-teo/telecom-argentina/management" }
+      ],
+      "board_avg_tenure_years": 8,
+      "sec_trustees": [
+        { "name": "Héctor Horacio Magnetto", "role": "Trustee", "source": "SEC Form 20-F 2024" },
+        { "name": "David Manuel Martínez Guzmán", "role": "Trustee", "source": "SEC Form 20-F 2024" }
+      ],
+      "sec_filing": "https://www.sec.gov/Archives/edgar/data/932470/000110465925019133/teo-20241231x20f.htm"
+    },
+    "cablevision_holding": {
+      "board_url": "https://cablevisionholding.com/Inversores/Directorio",
+      "controlling_families": ["Noble Herrera", "Magnetto", "Aranda", "Pagliaro"],
+      "source": "https://www.cablevisionholding.com/Quienes-Somos/Accionistas"
+    },
+    "grupo_clarin_key_figures": [
+      {
+        "name": "Héctor Horacio Magnetto",
+        "role": "CEO of Grupo Clarín since 1982",
+        "born": "1944-07-09",
+        "share_pct": 29.8,
+        "notes": "Decision-maker of the group since 1982. Known for extracting concessions from every government since the return of democracy. Uses trusts in New York for corporate control.",
+        "source": "https://en.wikipedia.org/wiki/H%C3%A9ctor_Magnetto"
+      },
+      {
+        "name": "José Antonio Aranda",
+        "share_pct": 10.3,
+        "notes": "Pandora Papers listing (offshore entity)",
+        "source": "https://argentina.mom-gmr.org/es/propietarios/propietarios-individuales/detail/owner/owner/show/hector-magnetto/"
+      },
+      {
+        "name": "Lucio Rafael Pagliaro",
+        "share_pct": 10.2,
+        "source": "https://argentina.mom-gmr.org/es/propietarios/propietarios-individuales/detail/owner/owner/show/hector-magnetto/"
+      },
+      {
+        "name": "Noble Herrera family",
+        "share_pct": 24.85,
+        "notes": "Adoptive children of Ernestina Herrera de Noble (deceased 2017); Marcela and Felipe Noble Herrera",
+        "source": "https://losricosdeargentina.com.ar/clarin.html"
+      },
+      {
+        "name": "Jorge Rendo",
+        "role": "Institutional relations / lobbying chief (20+ years)",
+        "source": "https://en.wikipedia.org/wiki/Clar%C3%ADn_Group"
+      },
+      {
+        "name": "Martín Etchevers",
+        "role": "Institutional relations / government affairs",
+        "source": "https://en.wikipedia.org/wiki/Clar%C3%ADn_Group"
+      }
+    ],
+    "cuit_note": "CUITs not publicly available for these individuals through web sources. Would require AFIP/BCRA database cross-reference or judicial filings."
+  },
+
+  "regulatory_capture": {
+    "enacom": {
+      "structure": "7 directors: 4 named by executive branch (including president), 3 from Congress via bicameral commission",
+      "current_status": "Intervened since January 2024 under Milei government; intervention extended to January 4, 2027",
+      "interventor": {
+        "name": "Juan Martín Ozores",
+        "background": "Former Movicom BellSouth employee (1996-2005); consultant for Telecom (2013-2016). Accountant/MBA with 25+ years in telecom.",
+        "revolving_door_flag": true,
+        "notes": "Previous career at two of the three major operators raises conflict-of-interest concerns",
+        "source": "https://noticiaslainsuperable.com.ar/2024/01/29/quien-es-juan-martin-ozores-el-hombre-que-milei-designo-interventor-del-enacom/"
+      },
+      "sub_interventors": [
+        {
+          "name": "Alejandro Pereyra",
+          "background": "Telecom lawyer; former ENACOM director 2016-2019 (under Macri)",
+          "revolving_door_flag": true,
+          "source": "https://noticiaslainsuperable.com.ar/2024/01/29/quien-es-juan-martin-ozores-el-hombre-que-milei-designo-interventor-del-enacom/"
+        }
+      ],
+      "appointed_directors_2024": [
+        "Sofía Fariña (National Director of Licenses)",
+        "Pablo Salas (Control and Oversight)",
+        "Diego Pioli (Sanctions and User Attention)",
+        "Luis Otatti (Spectrum Engineering and ICT)",
+        "Maximiliano Domínguez Soler (Planning and Development)",
+        "María Agustina Grapsas (Regulatory Affairs)"
+      ],
+      "scandal": {
+        "detail": "Ozores appointed Alberto Raúl Baduán (former Kirchnerist official convicted and permanently barred from public office) as General Director of Human Resources at ENACOM",
+        "source": "https://realpolitik.com.ar/nota/68027/juan-marti-n-ozores-nombro-a-exfuncionario-de-alberto-fernandez-inhabilitado-para-ejercer-cargos-publicos/"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ente_Nacional_de_Comunicaciones",
+        "https://www.enacom.gob.ar/autoridades_p1964"
+      ]
+    },
+    "spectrum_allocation": {
+      "5g_auction": {
+        "date": "2023",
+        "total_spectrum_mhz": 250,
+        "bands": "3300-3600 MHz",
+        "revenue_usd": 875000000,
+        "allocations": [
+          { "operator": "Claro (AMX)", "mhz": 100, "band": "3300-3400 MHz", "price_usd": 350052000 },
+          { "operator": "Telecom Argentina", "mhz": 100, "band": "3400-3500 MHz", "price_usd": 350026000 },
+          { "operator": "Telefónica Argentina", "mhz": 50, "band": "3550-3600 MHz", "price_usd": 175013000 }
+        ],
+        "arsat_allocation": "3600-3700 MHz for 20 years (state-owned broadband)",
+        "source": "https://www.enacom.gob.ar/institucional/el-estado-argentino-licito-la-banda-5g-por-mas-de-875-millones-de-dolares_n4578"
+      },
+      "spectrum_cap": {
+        "limit_mhz": 140,
+        "notes": "If Telecom absorbs Telefónica, combined spectrum would exceed 140 MHz cap by up to 130 MHz in some localities",
+        "source": "https://www.argentina.gob.ar/noticias/informe-de-objecion-operacion-telecom-telefonica"
+      },
+      "private_5g_networks": {
+        "program": "SPIBA (Sistema Privado Inalámbrico de Banda Ancha)",
+        "band": "2300-2400 MHz (ten 10 MHz channels)",
+        "date": "August 2025",
+        "beneficiaries": "Mining, petroleum, agroindustry, construction, port and airport companies",
+        "source": "https://mobiletime.la/noticias/22/08/2025/argentina-espectro-privado-5g/"
+      },
+      "favoritism_concerns": "2018 merger conditions required 80 MHz spectrum return, but Telecom retained dominant spectrum position. 5G auction gave Telecom equal allocation to Claro despite already having larger overall holdings through legacy 4G bands.",
+      "deregulation_2024": "ICT services lost 'public service' designation in 2024 under Milei, restoring pricing freedom to operators and removing key consumer protections",
+      "source": "https://www.mordorintelligence.ar/industry-reports/argentina-telecom-market"
+    }
+  },
+
+  "pricing_analysis": {
+    "domestic_prices": {
+      "broadband_300mbps_buenos_aires_ars": 31919,
+      "notes": "Approximate monthly cost for 300 Mbps in Buenos Aires as of 2024-2025",
+      "source": "https://www.expatistan.com/price/internet-connection/buenos-aires"
+    },
+    "speeds": {
+      "median_fixed_download_mbps": 86.34,
+      "median_fixed_upload_mbps": 37.32,
+      "date": "July 2024",
+      "source": "https://www.statista.com/statistics/1175894/argentina-mobile-fixed-broadband-internet-download-upload-speed/"
+    },
+    "regional_comparison": {
+      "assessment": "Argentina's internet costs are among the highest in Latin America, partly attributed to dominant provider control of last-mile delivery. Brazil offers lower monthly prices (~USD 20.81/month) though with generally slower speeds.",
+      "key_factor": "Single incumbent (Telecom Argentina) controls last-mile access for majority of internet users, contributing to above-regional pricing",
+      "deregulation_impact": "Loss of 'public service' status in 2024 removed price regulation, enabling operators to set prices freely",
+      "sources": [
+        "https://www.broadbandsearch.net/blog/internet-costs-compared-worldwide",
+        "https://www.numbeo.com/cost-of-living/country_price_rankings?itemId=33",
+        "https://worldpopulationreview.com/country-rankings/internet-cost-by-country"
+      ]
+    },
+    "revenue_breakdown": {
+      "data_and_internet_pct_of_revenue": 62.08,
+      "date": "2025",
+      "source": "https://www.mordorintelligence.ar/industry-reports/argentina-telecom-market"
+    }
+  },
+
+  "political_connections": {
+    "historical_pattern": {
+      "description": "Grupo Clarín has extracted concessions from virtually every Argentine government since the return of democracy in 1983. Magnetto's modus operandi involves leveraging media power (Argentina's largest newspaper, most-watched news channel TN, dominant radio stations) to build political alliances and extract regulatory favors.",
+      "source": "https://en.wikipedia.org/wiki/H%C3%A9ctor_Magnetto"
+    },
+    "key_episodes": [
+      {
+        "period": "Menem era (1989-1999)",
+        "detail": "Obtained key modifications to the dictatorship-era broadcasting law, enabling acquisition of radio signals and Channel 13",
+        "source": "https://en.wikipedia.org/wiki/H%C3%A9ctor_Magnetto"
+      },
+      {
+        "period": "Néstor Kirchner (2003-2007)",
+        "detail": "Cooperative relationship; Clarín lobbied for 2003 law limiting foreign shareholder control of communications companies",
+        "source": "https://en.wikipedia.org/wiki/Clar%C3%ADn_Group"
+      },
+      {
+        "period": "Cristina Kirchner (2007-2015)",
+        "detail": "Open war after 2008 agricultural export tax conflict. CFK introduced Ley de Medios (2009) to break up Clarín's media concentration. Clarín fought it in courts for years.",
+        "source": "https://www.hbs.edu/faculty/Pages/item.aspx?num=52851"
+      },
+      {
+        "period": "Macri (2015-2019)",
+        "detail": "Strong alignment. DNU 267/2015 gutted Ley de Medios. 2018 Telecom-Cablevisión merger approved. Government advertising: ~388M pesos (USD 8.7M) to Clarín in 2018 alone; ~20% of total government ad spend went to Clarín outlets.",
+        "sources": [
+          "https://freedomhouse.org/country/argentina/freedom-net/2019",
+          "https://en.wikipedia.org/wiki/Clar%C3%ADn_Group"
+        ]
+      },
+      {
+        "period": "Milei (2023-present)",
+        "detail": "Initial alignment, then friction over Telefónica acquisition. Government intervened ENACOM, deregulated pricing, but CNDC objected to the Telecom-Telefónica merger. Some analysts describe emergence of a 'Magnetto-Milei war'.",
+        "source": "https://www.diagonales.com/nacion/-nace-la-guerra-magnetto-milei--clarin-compro-telefonica-y-el-gobierno-anuncio-que-intervendra-la-operacion_a67bcfb4d7d9ae0caf04af8f9"
+      }
+    ],
+    "lobbying_infrastructure": {
+      "key_lobbyists": ["Jorge Rendo (institutional relations, 20+ years)", "Martín Etchevers (government affairs)"],
+      "strategy": "Managing relationships with Argentina's political, business and social elite across administrations of all political colors",
+      "source": "https://en.wikipedia.org/wiki/Clar%C3%ADn_Group"
+    },
+    "revolving_door": [
+      {
+        "name": "Juan Martín Ozores",
+        "from": "Movicom BellSouth / Telecom consultant",
+        "to": "ENACOM interventor (Milei government)",
+        "source": "https://noticiaslainsuperable.com.ar/2024/01/29/quien-es-juan-martin-ozores-el-hombre-que-milei-designo-interventor-del-enacom/"
+      },
+      {
+        "name": "Alejandro Pereyra",
+        "from": "Telecom lawyer → ENACOM director (Macri 2016-2019)",
+        "to": "ENACOM sub-interventor (Milei 2024)",
+        "source": "https://noticiaslainsuperable.com.ar/2024/01/29/quien-es-juan-martin-ozores-el-hombre-que-milei-designo-interventor-del-enacom/"
+      }
+    ],
+    "academic_research": {
+      "title": "Inside the Revolving Door: Campaign Finance, Lobbying Meetings, and Public Contracts — An Investigation for Argentina",
+      "publisher": "CAF (Development Bank of Latin America)",
+      "url": "https://scioteca.caf.com/bitstream/handle/123456789/1392/inside-the-revolving-door-campaign-finance-lobbying-meetings-and-public-contracts-an-investigation-for-argentina.pdf"
+    }
+  },
+
+  "antitrust_history": {
+    "cases": [
+      {
+        "title": "2018 Telecom-Cablevisión merger — conditional approval",
+        "date": "2018-06-29",
+        "body": "CNDC",
+        "outcome": "Approved with conditions (spectrum return, divestiture in 28 localities, wholesale obligation, convergent services delay)",
+        "criticism": "Conditions seen as insufficient; created Latin America's highest media concentration",
+        "source": "https://www.infobae.com/economia/finanzas-y-negocios/2018/06/29/el-gobierno-aprobo-la-fusion-de-telecom-con-cablevision-nace-la-empresa-mas-grande-del-pais/"
+      },
+      {
+        "title": "2023 Telecom/Artear abuse of dominant position — pay TV market",
+        "date": "2023-01-11",
+        "body": "Secretaría de Comercio (Resolución 8/2023)",
+        "complainant": "AMX Argentina (Claro)",
+        "detail": "Telecom and Artear (both Grupo Clarín) imposed conditions on Claro for access to Canal 13 and TN signals that prevented Claro from entering pay TV in AMBA, Córdoba, and Rosario — blocking quadruple-play competition.",
+        "fine_ars": 150000000,
+        "outcome_appeal": "Sala II of Cámara Civil y Comercial Federal annulled the fine in December 2024",
+        "sources": [
+          "https://www.argentina.gob.ar/noticias/sancion-telecom-y-artear-por-abusar-de-su-posicion-de-dominio-en-el-mercado-de-television",
+          "https://www.cronista.com/negocios/la-justicia-anula-una-millonaria-multa-contra-artear-y-telecom-por-una-denuncia-de-claro/"
+        ]
+      },
+      {
+        "title": "2025 Telecom-Telefónica acquisition — CNDC objection",
+        "date": "2025-06-19",
+        "body": "CNDC",
+        "outcome": "Objected under Article 14 of Law 27.442; operation suspended pending resolution",
+        "detail": "127-page report finding extreme concentration across mobile, broadband, pay TV, and fixed telephony. Preventive measures prohibit integration pending resolution.",
+        "possible_remedies": "Forced divestiture of assets at favorable prices to competitors, especially in mobile telephony",
+        "source": "https://www.argentina.gob.ar/noticias/informe-de-objecion-operacion-telecom-telefonica"
+      },
+      {
+        "title": "Telefónica failure to notify control of Telecom (historical)",
+        "body": "CNDC",
+        "detail": "Telefónica SA fined ARS 104,692,500 for failing to notify its control over Telecom within the legally required timeframe",
+        "source": "https://www.fiscales.gob.ar/procuracion-general/piden-confirmar-una-multa-a-telefonica-por-no-informar-su-control-sobre-telecom/"
+      },
+      {
+        "title": "Supreme Court 'Operación Telco' ruling on 'substantial influence'",
+        "body": "Corte Suprema de Justicia",
+        "detail": "Supreme Court clarified when 'substantial influence' constitutes 'control' triggering mandatory concentration notification under competition law",
+        "source": "https://abogados.com.ar/con-motivo-de-la-operacion-telco-la-corte-suprema-precisa-cuando-se-configura-un-caso-de-influencia-sustancial-que-implica-la-toma-de-control-que-da-lugar-a-una-concentracion-economica/16573"
+      }
+    ]
+  },
+
+  "infrastructure_monopoly": {
+    "historical_duopoly": {
+      "description": "In the 1990s, the Argentine telephone system was privatized and split into two geographic monopolies: Telecom Argentina (northern zone) and Telefónica Argentina (southern zone). This state-sanctioned duopoly for fixed telephony lasted until October 8, 1999, but its infrastructure legacy persists.",
+      "source": "https://en.wikipedia.org/wiki/Communications_in_Argentina"
+    },
+    "last_mile_control": {
+      "description": "ADSL was historically monopolized by the two phone companies: Telecom (Arnet, north) and Telefónica (Speedy, south). Telecom Argentina controls last-mile delivery for the majority of internet users nationally. If the Telefónica acquisition is approved, Telecom would control virtually all legacy copper last-mile infrastructure plus the dominant fiber and HFC (cable) networks.",
+      "source": "https://freedomhouse.org/country/argentina/freedom-net/2024"
+    },
+    "cable_plant": {
+      "cablevision_network": "Largest cable TV network in Argentina (3.18M subscribers); also carries Fibertel broadband",
+      "hfc_dominance": "Hybrid fiber-coax (HFC) network gives Telecom a massive advantage in delivering broadband, as fiber-to-the-node combined with coax last-mile covers dense urban areas cheaply",
+      "source": "https://digitaltv.prensariozone.com/cono-sur-la-ott-crece-y-la-tv-paga-se-mantiene/"
+    },
+    "fiber_deployment": {
+      "telecom_fiber_km": 11120,
+      "telefonica_fiber_km": 15000,
+      "combined_if_merger_km": 26120,
+      "claro_investment_2024": "Claro allocated USD 200M for AI-enhanced fiber rollouts",
+      "telecentro_strategy": "Full fiber conversion in CABA/GBA; 10,000 km network",
+      "notes": "Competition exists in major urban centers (Telecentro in CABA, Claro expanding fiber), but interior provinces remain dominated by Telecom/legacy Telefónica networks with limited alternatives.",
+      "source": "https://ts2.tech/en/state-of-internet-access-in-argentina-fiber-5g-and-satellite-in-2025/"
+    },
+    "wholesale_access": {
+      "obligation": "2018 merger conditions required Telecom to offer wholesale broadband reference offer",
+      "compliance": "Poorly enforced according to critics; effective wholesale access remains limited",
+      "source": "https://www.iprofesional.com/notas/270793-internet-frecuencias-cable-banda-ancha-tv-telecomunicaciones-ejecutivo-estrategia-consumidor-competencia-espectro-dictamen-Lo-que-abre-la-aprobacion-de-la-fusion-Telecom-Cablevision-exigencias-la-expansion-de-un-jugador-desconocido-y-fuertes-multas-por-incumplimiento"
+    }
+  },
+
+  "key_findings_summary": [
+    "Grupo Clarín/Telecom Argentina already dominates broadband (46%), pay TV (36.6%), and is #2 in mobile (33%). The pending Telefónica acquisition would create a near-monopoly: 65% mobile, 58%+ broadband, 60%+ pay TV, 71.6% broadband in Buenos Aires.",
+    "The 2018 Cablevisión merger was approved by the Macri government under conditions widely seen as insufficient, creating what Freedom House called the highest media concentration in Latin American history.",
+    "ENACOM has been under executive intervention since January 2024, with the interventor (Ozores) and sub-interventor (Pereyra) both having prior careers at the operators they now regulate — a textbook revolving door.",
+    "Héctor Magnetto has controlled Grupo Clarín since 1982 and has extracted regulatory concessions from every Argentine government since the return of democracy, using media leverage as political currency.",
+    "The CNDC's 127-page objection to the Telecom-Telefónica merger (June 2025) found the combined entity would exceed the 140 MHz spectrum cap by up to 130 MHz in some areas, achieve monopolistic market shares in 114+ municipalities for broadband, and eliminate one of only three mobile operators.",
+    "David Martínez Guzmán ('the ghost of Wall Street') controls 34% of Telecom Argentina through Fintech entities while maintaining extreme secrecy about his operations and political connections.",
+    "The only antitrust fine imposed on Telecom/Artear for abuse of dominant position (ARS 150M in 2023, for blocking Claro's pay TV entry) was annulled by courts in December 2024, signaling weak enforcement.",
+    "Argentina's telecom pricing is among the highest in Latin America, with a single dominant provider controlling last-mile access for the majority of users. Deregulation in 2024 (loss of 'public service' status) removed remaining consumer price protections."
+  ]
+}
