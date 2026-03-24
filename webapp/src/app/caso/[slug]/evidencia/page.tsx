@@ -3,7 +3,7 @@
  */
 
 import { getDocuments } from '@/lib/caso-libra'
-import { getNuclearSources } from '@/lib/caso-nuclear-risk/sources-api'
+import { getNuclearSources } from '@/lib/caso-nuclear-risk'
 
 import { EvidenciaContent } from './EvidenciaContent'
 
