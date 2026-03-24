@@ -181,25 +181,6 @@ const CHAPTERS: {
       ],
     },
   },
-  {
-    num: 'VIII',
-    title: {
-      en: 'What We Got Wrong (And Why That Matters)',
-      es: 'Lo Que Nos Equivocamos (Y Por Que Eso Importa)',
-    },
-    paragraphs: {
-      en: [
-        'This investigation eliminated 3 of its own top 5 findings through deep-dive verification. Correo Oficial de la Republica Argentina ($10.47 billion, 5 officers in government) was a false positive — it is a 100% state-owned postal service where government-appointed board members are the governance mechanism, not corruption. Maria Elena Duhau de Sanguinetti, who appeared to sit on 36 contractor-linked company boards, turned out to be a professional sindica serving 570 companies as a legal compliance formality under Argentine corporate law.',
-        'Luis Alberto Trajtenberg\'s apparent 6,521% asset growth ($26,598 to $1.038 billion) was a data artifact: his 2015 filing was an "Inicial" registration (not actual net worth), and Argentina experienced 10,800% cumulative inflation between 2016 and 2024. In real terms his wealth grew approximately 17x over 8 years — significant but not scandalous for a senior economist in a hyperinflationary economy. The BIOARS $360 million "favoritism" was largely explained by COVID-19 emergency procurement — the company is a legitimate 25-year-old diagnostics firm that sells exactly the products the pandemic response needed. Our earlier shell company flag (831 companies) had an 80-90% false positive rate.',
-        'These corrections are not failures — they are the methodology working. Every automated heuristic produces false positives. The difference between an accountability investigation and a political hit piece is whether you check your own work. The SOE filter, sindica filter, and inflation adjustment are now implemented in the cross-reference engine code — not just documented, but enforced. Future runs will not repeat these errors.',
-      ],
-      es: [
-        'Esta investigacion elimino 3 de sus propios 5 principales hallazgos a traves de verificacion profunda. Correo Oficial de la Republica Argentina ($10.470 millones, 5 directivos en gobierno) fue un falso positivo — es un servicio postal 100% estatal donde los miembros del directorio designados por el gobierno son el mecanismo de gobernanza, no corrupcion. Maria Elena Duhau de Sanguinetti, quien parecia integrar 36 directorios de empresas contratistas, resulto ser una sindica profesional sirviendo a 570 empresas como formalidad de cumplimiento legal bajo la ley societaria argentina.',
-        'El aparente crecimiento patrimonial de Luis Alberto Trajtenberg del 6.521% ($26.598 a $1.038 millones) fue un artefacto de datos: su declaracion de 2015 era una registracion "Inicial" (no patrimonio real), y Argentina experimento una inflacion acumulada del 10.800% entre 2016 y 2024. En terminos reales su patrimonio crecio aproximadamente 17 veces en 8 anos — significativo pero no escandaloso para un economista senior en una economia hiperinflacionaria. El "favoritismo" de BIOARS por $360 millones se explico mayormente por contrataciones de emergencia COVID-19 — la empresa es un distribuidor de diagnosticos legitimo de 25 anos que vende exactamente los productos que la respuesta pandemica necesitaba. Nuestra bandera anterior de empresas fantasma (831 empresas) tenia una tasa de falsos positivos del 80-90%.',
-        'Estas correcciones no son fracasos — son la metodologia funcionando. Todo heuristico automatizado produce falsos positivos. La diferencia entre una investigacion de rendicion de cuentas y un golpe politico es si verificas tu propio trabajo. El filtro de empresas estatales, el filtro de sindicas, y el ajuste por inflacion estan ahora implementados en el codigo del motor de cruce — no solo documentados, sino aplicados. Las futuras ejecuciones no repetiran estos errores.',
-      ],
-    },
-  },
 ]
 
 // ---------------------------------------------------------------------------
