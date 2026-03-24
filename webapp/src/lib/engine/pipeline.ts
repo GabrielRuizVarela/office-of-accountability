@@ -121,6 +121,23 @@ export async function listByPipeline(
 }
 
 // ---------------------------------------------------------------------------
+// listByCasoSlug
+// ---------------------------------------------------------------------------
+
+export async function listByCasoSlug(
+  casoSlug: string,
+  limit = 50,
+): Promise<PipelineState[]> {
+  const result = await readQuery<PipelineState>(
+    `MATCH (n:PipelineState {caso_slug: $casoSlug})
+     RETURN n ORDER BY n.created_at DESC LIMIT $limit`,
+    { casoSlug, limit: neo4j.int(limit) },
+    (r) => parsePipelineState(nodeProps(r)),
+  )
+  return result.records as unknown as PipelineState[]
+}
+
+// ---------------------------------------------------------------------------
 // startPipeline
 // ---------------------------------------------------------------------------
 

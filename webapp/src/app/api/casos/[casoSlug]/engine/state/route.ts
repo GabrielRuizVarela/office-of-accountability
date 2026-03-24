@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 
-import { listByPipeline } from '@/lib/engine/pipeline'
+import { listByPipeline, listByCasoSlug } from '@/lib/engine/pipeline'
 import { checkRateLimit, ENGINE_RATE_LIMITS } from '@/lib/engine/rate-limit'
 
 export async function GET(
@@ -18,15 +18,11 @@ export async function GET(
   }
 
   const pipelineId = new URL(request.url).searchParams.get('pipeline_id')
-  if (!pipelineId) {
-    return Response.json(
-      { success: false, error: 'Missing required query param: pipeline_id' },
-      { status: 400 },
-    )
-  }
 
   try {
-    const states = await listByPipeline(pipelineId)
+    const states = pipelineId
+      ? await listByPipeline(pipelineId)
+      : await listByCasoSlug(casoSlug)
 
     return new Response(JSON.stringify({ success: true, data: states }), {
       status: 200,
