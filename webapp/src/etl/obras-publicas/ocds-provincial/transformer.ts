@@ -63,7 +63,7 @@ function buildProvenance(sourceKey: string, opts: OcdsTransformOptions): ObrasPr
   return {
     source_url: opts.sourceUrl ?? DEFAULT_SOURCE_URL,
     submitted_by: opts.submittedBy ?? DEFAULT_SUBMITTED_BY,
-    tier: opts.tier ?? DEFAULT_TIER,
+    tier: (opts.tier ?? DEFAULT_TIER) as 'silver',
     confidence_score: opts.confidenceScore ?? DEFAULT_CONFIDENCE_SCORE,
     ingestion_hash: computeHash(sourceKey),
     created_at: now,
