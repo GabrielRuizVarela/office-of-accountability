@@ -11,8 +11,8 @@
  */
 
 // Phase 2 (M13 Phase 2):
-// import './investigation'
-// import './graph'
+import './investigation'
+import './graph'
 
 // Phase 3 (M13 Phase 3):
 // import './pipeline'
