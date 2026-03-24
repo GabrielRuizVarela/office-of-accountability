@@ -241,7 +241,7 @@ export default function MapaPage() {
           <section>
             <h2 className="mb-4 text-lg font-bold text-zinc-50">{t.pointsTitle[lang]}</h2>
             <div
-              className="relative rounded-xl border border-zinc-700 bg-zinc-950 p-2"
+              className="relative rounded-xl border border-zinc-700 bg-zinc-950"
               style={{ overflow: 'hidden' }}
               onWheel={handleWheel}
               onPointerDown={handlePointerDown}
@@ -250,14 +250,18 @@ export default function MapaPage() {
             >
               <svg
                 viewBox={`0 0 ${SVG_W} ${SVG_H}`}
-                className="mx-auto w-full max-w-lg touch-none select-none"
+                preserveAspectRatio="xMidYMid meet"
+                className="mx-auto block w-full max-w-lg touch-none select-none"
                 style={{
                   height: 'auto',
                   maxHeight: '70vh',
                   cursor: dragging ? 'grabbing' : 'grab',
+                  background: '#09090b',
                 }}
               >
-                <g transform={`translate(${SVG_W / 2}, ${SVG_H / 2}) translate(${pan.x / zoom * 2}, ${pan.y / zoom * 2}) scale(${zoom}) translate(${-SVG_W / 2}, ${-SVG_H / 2})`}>
+                {/* Full-bleed background rect so zoom doesn't show black bars */}
+                <rect x="-5000" y="-5000" width="10000" height="10000" fill="#09090b" />
+                <g transform={`translate(${SVG_W / 2}, ${SVG_H / 2}) translate(${pan.x * 2 / zoom}, ${pan.y * 2 / zoom}) scale(${zoom}) translate(${-SVG_W / 2}, ${-SVG_H / 2})`}>
                 {/* Argentina outline from GeoJSON */}
                 {geoPath && (
                   <path
