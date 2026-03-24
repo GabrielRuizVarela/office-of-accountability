@@ -11,19 +11,19 @@ export interface InvestigationConfig {
 
 export const investigations: InvestigationConfig[] = [
   {
-    slug: 'finanzas-politicas',
-    title: 'Finanzas Politicas Argentinas',
-    subtitle: 'Investigacion activa — 2.4M nodos',
+    slug: 'caso-libra',
+    title: 'Caso Libra: La Memecoin del Presidente',
+    subtitle: 'Investigacion activa',
     description:
-      'Monopolios, financiamiento de campanas, declaraciones juradas patrimoniales, sociedades offshore, obra publica y conexiones entre politicos y empresas. 9 fuentes de datos cruzadas.',
+      'Milei promovio $LIBRA a 19M de seguidores. El precio colapso 94% en horas. 114,000+ billeteras perdieron $251M+.',
     status: 'active',
-    color: 'emerald',
+    color: 'purple',
     stats: [
-      { label: 'Nodos', value: '2.4M+' },
-      { label: 'Cruces CUIT', value: '48,212' },
-      { label: 'Fuentes ETL', value: '9' },
+      { label: 'Perdidas', value: '$251M+' },
+      { label: 'Billeteras afectadas', value: '114,000+' },
+      { label: 'Caida', value: '94%' },
     ],
-    href: '/caso/finanzas-politicas',
+    href: '/caso/caso-libra',
   },
   {
     slug: 'caso-epstein',
@@ -41,18 +41,32 @@ export const investigations: InvestigationConfig[] = [
     href: '/caso/caso-epstein',
   },
   {
-    slug: 'caso-libra',
-    title: 'Caso Libra: La Memecoin del Presidente',
+    slug: 'finanzas-politicas',
+    title: 'Finanzas Politicas Argentinas',
     subtitle: 'Investigacion activa',
     description:
-      'Milei promovio $LIBRA a 19M de seguidores. El precio colapso 94% en horas. 114,000+ billeteras perdieron $251M+.',
+      'Financiamiento de campanas, declaraciones juradas patrimoniales, sociedades offshore y conexiones entre politicos y empresas.',
     status: 'active',
-    color: 'purple',
+    color: 'emerald',
     stats: [
-      { label: 'Perdidas', value: '$251M+' },
-      { label: 'Billeteras afectadas', value: '114,000+' },
-      { label: 'Caida', value: '94%' },
+      { label: 'Legisladores', value: '329' },
+      { label: 'Fuentes ETL', value: '7' },
     ],
-    href: '/caso/caso-libra',
+    href: '/caso/finanzas-politicas',
+  },
+  {
+    slug: 'monopolios',
+    title: 'Monopolios en Argentina',
+    subtitle: 'Investigacion activa — 18 sectores',
+    description:
+      'Mercados monopolizados: telecomunicaciones, energia, alimentos, medios, banca, mineria, agroexportacion, construccion, farmaceutica. 829+ cruces Neo4j, 75 afirmaciones verificadas.',
+    status: 'active',
+    color: 'amber',
+    stats: [
+      { label: 'Sectores', value: '18' },
+      { label: 'Cruces Neo4j', value: '829+' },
+      { label: 'Costo anual', value: 'USD 22.5B' },
+    ],
+    href: '/caso/monopolios',
   },
 ]
