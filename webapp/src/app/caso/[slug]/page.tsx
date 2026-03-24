@@ -5,7 +5,7 @@
 
 import { redirect } from 'next/navigation'
 
-const KNOWN_SLUGS = new Set(['caso-epstein', 'caso-libra', 'finanzas-politicas'])
+const KNOWN_SLUGS = new Set(['caso-epstein', 'caso-libra', 'finanzas-politicas', 'monopolios'])
 
 export default async function CasoFallbackPage({
   params,
