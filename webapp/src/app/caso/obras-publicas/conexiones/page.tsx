@@ -1,14 +1,15 @@
 'use client'
 
 /**
- * Obras Publicas — Connections page.
+ * Obras Publicas — Connections page with interactive graph.
  *
- * Placeholder for interactive graph visualization of contractors,
- * politicians, intermediaries, and bribery cases.
- * Will be populated with graph data from the Neo4j query API.
+ * Uses the generic [slug]/graph API with tier filtering to keep
+ * the graph renderable in-browser (silver+gold only, ~200 nodes).
  */
 
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 import { useLanguage } from '@/lib/language-context'
 import {
@@ -18,24 +19,96 @@ import {
 
 const SLUG = 'obras-publicas'
 
+// Lazy-load ForceGraph to avoid SSR issues with canvas
+const ForceGraph2D = dynamic(() => import('react-force-graph-2d'), { ssr: false })
+
 const t = {
   title: { en: 'Connections', es: 'Conexiones' },
   subtitle: {
-    en: 'Interactive graph of contractors, politicians, intermediaries, and bribery cases. Entity resolution via CUIT connects the obras-publicas graph with the finanzas-politicas investigation. Filter by Contractor-Donor, Offshore, Debarred, Odebrecht-linked, Cuadernos-linked.',
-    es: 'Grafo interactivo de contratistas, politicos, intermediarios y casos de soborno. La resolucion de entidades via CUIT conecta el grafo de obras-publicas con la investigacion de finanzas-politicas. Filtre por Contratista-Donante, Offshore, Inhabilitado, Vinculado a Odebrecht, Vinculado a Cuadernos.',
+    en: 'Interactive graph of contractors, politicians, intermediaries, and bribery cases linked to Argentine public works.',
+    es: 'Grafo interactivo de contratistas, politicos, intermediarios y casos de soborno vinculados a obras publicas argentinas.',
   },
-  comingSoon: {
-    en: 'Graph visualization will be available after Wave 8 (deep graph queries) completes.',
-    es: 'La visualizacion del grafo estara disponible cuando se complete la Ola 8 (consultas profundas del grafo).',
-  },
-  statsTitle: { en: 'Graph Statistics', es: 'Estadisticas del Grafo' },
+  loading: { en: 'Loading graph...', es: 'Cargando grafo...' },
+  error: { en: 'Could not load graph. Is Neo4j running?', es: 'No se pudo cargar el grafo. Esta corriendo Neo4j?' },
+  nodeCount: { en: 'nodes', es: 'nodos' },
+  linkCount: { en: 'connections', es: 'conexiones' },
+  statsTitle: { en: 'Investigation Stats', es: 'Estadisticas de la Investigacion' },
   actorsTitle: { en: 'Key Entities', es: 'Entidades Clave' },
   navInvestigation: { en: '\u2190 Investigation', es: '\u2190 Investigacion' },
   navMap: { en: 'Map \u2192', es: 'Mapa \u2192' },
+  tierFilter: { en: 'Showing gold + silver tier entities only (verified data)', es: 'Mostrando solo entidades de nivel oro + plata (datos verificados)' },
 } as const
+
+// Node type -> color mapping
+const TYPE_COLORS: Record<string, string> = {
+  Contractor: '#f59e0b',      // amber
+  PublicWork: '#3b82f6',      // blue
+  ObrasProcedure: '#6366f1',  // indigo
+  PublicContract: '#10b981',  // emerald
+  Bid: '#8b5cf6',             // violet
+  BriberyCase: '#ef4444',     // red
+  Intermediary: '#f97316',    // orange
+  Politician: '#ec4899',      // pink
+  Document: '#6b7280',        // gray
+  Company: '#14b8a6',         // teal
+}
+
+interface GraphNode {
+  id: string
+  name: string
+  type: string
+  color: string
+  val: number
+}
+
+interface GraphLink {
+  source: string
+  target: string
+  type: string
+}
 
 export default function ConexionesPage() {
   const { lang } = useLanguage()
+  const [graphData, setGraphData] = useState<{ nodes: GraphNode[]; links: GraphLink[] } | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    async function fetchGraph() {
+      try {
+        // Only fetch silver+gold to keep graph renderable
+        const res = await fetch(`/api/caso/${SLUG}/graph?tiers=silver,gold`)
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        const json = await res.json()
+        if (!json.success) throw new Error(json.error || 'Unknown error')
+
+        // Transform API response
+        const nodes = (json.data.nodes || []).map((n: any) => ({
+          id: n.id,
+          name: n.name || n.id,
+          type: n.type || n.labels?.[0] || 'Unknown',
+          color: TYPE_COLORS[n.type || n.labels?.[0]] || '#6b7280',
+          val: Math.max(1, (n.datasets || n.val || 1)),
+        }))
+
+        const nodeIds = new Set(nodes.map((n: GraphNode) => n.id))
+        const links = (json.data.links || [])
+          .filter((l: any) => nodeIds.has(l.source) && nodeIds.has(l.target))
+          .map((l: any) => ({
+            source: l.source,
+            target: l.target,
+            type: l.type || '',
+          }))
+
+        setGraphData({ nodes, links })
+      } catch (e) {
+        setError(e instanceof Error ? e.message : String(e))
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchGraph()
+  }, [])
 
   return (
     <div className="space-y-12 pb-16">
@@ -49,16 +122,51 @@ export default function ConexionesPage() {
         </p>
       </header>
 
-      {/* Graph placeholder */}
-      <div className="flex min-h-[400px] items-center justify-center rounded-xl border border-dashed border-zinc-700 bg-zinc-900/30">
-        <div className="text-center">
-          <div className="mx-auto mb-4 h-16 w-16 rounded-full border-2 border-amber-500/30 bg-amber-500/10 p-4">
-            <svg className="h-full w-full text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
-            </svg>
+      {/* Graph */}
+      <div className="relative min-h-[500px] overflow-hidden rounded-xl border border-zinc-700 bg-zinc-950">
+        {loading && (
+          <div className="flex h-[500px] items-center justify-center">
+            <p className="text-sm text-zinc-400 animate-pulse">{t.loading[lang]}</p>
           </div>
-          <p className="text-sm text-zinc-400">{t.comingSoon[lang]}</p>
-        </div>
+        )}
+        {error && (
+          <div className="flex h-[500px] items-center justify-center">
+            <p className="text-sm text-red-400">{t.error[lang]}: {error}</p>
+          </div>
+        )}
+        {graphData && (
+          <>
+            <div className="absolute top-3 left-3 z-10 rounded bg-zinc-900/80 px-3 py-1.5 text-xs text-zinc-400 backdrop-blur">
+              {graphData.nodes.length} {t.nodeCount[lang]} &middot; {graphData.links.length} {t.linkCount[lang]}
+            </div>
+            <div className="absolute top-3 right-3 z-10 rounded bg-zinc-900/80 px-3 py-1.5 text-xs text-zinc-500 backdrop-blur">
+              {t.tierFilter[lang]}
+            </div>
+            {/* Legend */}
+            <div className="absolute bottom-3 left-3 z-10 flex flex-wrap gap-2 rounded bg-zinc-900/80 px-3 py-1.5 backdrop-blur">
+              {Object.entries(TYPE_COLORS).map(([type, color]) => (
+                <span key={type} className="flex items-center gap-1 text-[10px] text-zinc-400">
+                  <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: color }} />
+                  {type}
+                </span>
+              ))}
+            </div>
+            <ForceGraph2D
+              graphData={graphData}
+              width={typeof window !== 'undefined' ? window.innerWidth - 64 : 900}
+              height={500}
+              backgroundColor="#09090b"
+              nodeLabel={(node: any) => `${node.name} (${node.type})`}
+              nodeColor={(node: any) => node.color}
+              nodeRelSize={4}
+              linkColor={() => 'rgba(113, 113, 122, 0.2)'}
+              linkWidth={0.5}
+              cooldownTicks={100}
+              enableNodeDrag
+              enableZoomInteraction
+            />
+          </>
+        )}
       </div>
 
       {/* Stats */}
@@ -79,7 +187,7 @@ export default function ConexionesPage() {
         </div>
       </section>
 
-      {/* Key entities preview */}
+      {/* Key entities */}
       <section>
         <h2 className="mb-4 text-lg font-bold text-zinc-50">{t.actorsTitle[lang]}</h2>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
