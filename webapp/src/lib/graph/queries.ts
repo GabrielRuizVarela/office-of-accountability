@@ -202,34 +202,85 @@ export async function expandNodeNeighborhood(
 
     const centerNode = centerResult.records[0].get('n') as Node
 
-    // Step 2: Expand to depth using variable-length path.
-    // Collect all nodes and relationships along paths, deduplicating via UNWIND.
-    // Bounded BFS: cap neighbors per hop to prevent combinatorial explosion
-    // from high-degree CAST_VOTE edges. Each hop limited to perHopLimit nodes.
-    const perHopLimit = neo4j.int(Math.min(clampedLimit, 50))
-    const expandResult = await session.run(
+    // Step 2: Expand neighborhood.
+    // Priority: non-vote connections first (people, orgs, parties, documents),
+    // then a sample of vote-related connections.
+    const nonVoteLimit = neo4j.int(Math.min(clampedLimit, 80))
+
+    // 2a. Non-vote connections (meaningful relationships)
+    const mainResult = await session.run(
       `MATCH (n)
        WHERE n.id = $nodeId OR n.slug = $nodeId OR n.acta_id = $nodeId
        MATCH (n)-[r]-(neighbor)
+       WHERE type(r) <> 'CAST_VOTE'
        WITH n, neighbor, r
-       LIMIT $perHopLimit
+       LIMIT $lim
        WITH n,
             collect(DISTINCT neighbor) AS targets,
             collect(DISTINCT r) AS rels
        RETURN targets, rels`,
-      { nodeId, perHopLimit },
+      { nodeId, lim: nonVoteLimit },
       TX_CONFIG,
     )
 
-    if (expandResult.records.length === 0) {
-      // Center exists but has no connections
+    const targetNodes: Node[] = []
+    const relationships: Relationship[] = []
+
+    if (mainResult.records.length > 0) {
+      const rec = mainResult.records[0]
+      targetNodes.push(...(rec.get('targets') as Node[]))
+      relationships.push(...(rec.get('rels') as Relationship[]))
+    }
+
+    // 2b. If no non-vote connections found, fall back to all connections
+    if (targetNodes.length === 0) {
+      const fallbackResult = await session.run(
+        `MATCH (n)
+         WHERE n.id = $nodeId OR n.slug = $nodeId OR n.acta_id = $nodeId
+         MATCH (n)-[r]-(neighbor)
+         WITH n, neighbor, r
+         LIMIT $lim
+         WITH n,
+              collect(DISTINCT neighbor) AS targets,
+              collect(DISTINCT r) AS rels
+         RETURN targets, rels`,
+        { nodeId, lim: nonVoteLimit },
+        TX_CONFIG,
+      )
+      if (fallbackResult.records.length > 0) {
+        const rec = fallbackResult.records[0]
+        targetNodes.push(...(rec.get('targets') as Node[]))
+        relationships.push(...(rec.get('rels') as Relationship[]))
+      }
+    }
+
+    if (targetNodes.length === 0) {
       const center = transformNode(centerNode)
       return { nodes: [center], links: [] }
     }
 
-    const record = expandResult.records[0]
-    const targetNodes = record.get('targets') as Node[]
-    const relationships = record.get('rels') as Relationship[]
+    // Fetch cross-links between neighbors
+    const neighborElementIds = targetNodes.map((n) => n.elementId)
+    if (neighborElementIds.length > 1 && neighborElementIds.length <= 80) {
+      const crossResult = await session.run(
+        `UNWIND $eids AS eid
+         MATCH (a)-[r]-(b)
+         WHERE elementId(a) = eid AND elementId(b) IN $eids
+           AND elementId(a) < elementId(b)
+           AND type(r) <> 'CAST_VOTE'
+         RETURN DISTINCT r, a, b
+         LIMIT 150`,
+        { eids: neighborElementIds },
+        TX_CONFIG,
+      )
+      for (const cr of crossResult.records) {
+        const a = cr.get('a') as Node
+        const b = cr.get('b') as Node
+        if (!targetNodes.some((t) => t.elementId === a.elementId)) targetNodes.push(a)
+        if (!targetNodes.some((t) => t.elementId === b.elementId)) targetNodes.push(b)
+        relationships.push(cr.get('r') as Relationship)
+      }
+    }
 
     return transformExpandResult(centerNode, targetNodes, relationships)
   } finally {

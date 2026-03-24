@@ -277,6 +277,27 @@ export async function getPersonBySlug(
       allRels.push(record.get('r') as Relationship)
     }
 
+    // Fetch cross-links between neighbors for richer graph
+    const neighborElementIds = allNodes.slice(1).map((n) => n.elementId)
+
+    if (neighborElementIds.length > 1) {
+      const crossResult = await session.run(
+        `UNWIND $eids AS eid
+         MATCH (a)-[r]-(b)
+         WHERE elementId(a) = eid AND elementId(b) IN $eids
+           AND elementId(a) < elementId(b)
+         RETURN DISTINCT a, b, r
+         LIMIT 200`,
+        { eids: neighborElementIds },
+        TX_CONFIG,
+      )
+      for (const record of crossResult.records) {
+        allNodes.push(record.get('a') as Node)
+        allNodes.push(record.get('b') as Node)
+        allRels.push(record.get('r') as Relationship)
+      }
+    }
+
     const connections = buildGraphData(allNodes, allRels)
 
     return { person, connections }

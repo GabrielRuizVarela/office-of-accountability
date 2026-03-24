@@ -36,19 +36,62 @@ export default function ActorPage() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
+    const controller = new AbortController()
+    const signal = controller.signal
+
     async function load() {
       try {
-        const res = await fetch(`/api/caso-libra/person/${actorSlug}`)
-        if (!res.ok) throw new Error('Actor no encontrado')
-        const json = await res.json()
-        setData(json)
+        // 1. Try caso-libra person API (works for Libra actors)
+        const personRes = await fetch(`/api/caso-libra/person/${actorSlug}`, { signal })
+        if (personRes.ok) {
+          const json = await personRes.json()
+          if (!signal.aborted) setData(json)
+          return
+        }
+
+        // 2. Fallback: graph search + expand (Epstein, Finanzas actors)
+        // Derive a search name from the slug: "mauricio-macri" -> "mauricio macri"
+        const searchName = decodeURIComponent(actorSlug).replace(/-/g, ' ')
+        const searchRes = await fetch(
+          `/api/graph/search?q=${encodeURIComponent(searchName)}&limit=1`,
+          { signal },
+        )
+        if (!searchRes.ok) throw new Error('Actor no encontrado')
+        const searchJson = await searchRes.json()
+        const node = searchJson.data?.nodes?.[0]
+        if (!node) throw new Error('Actor no encontrado')
+
+        if (signal.aborted) return
+
+        // Expand the node's neighborhood (depth=2 for richer network)
+        const expandRes = await fetch(
+          `/api/graph/expand/${encodeURIComponent(node.id)}?depth=2&limit=150`,
+          { signal },
+        )
+        if (!expandRes.ok) throw new Error('Actor no encontrado')
+        const expandJson = await expandRes.json()
+
+        if (signal.aborted) return
+
+        const graph = expandJson.data as GraphData
+        const person = node.properties as Record<string, unknown>
+
+        setData({
+          person,
+          graph,
+          events: [],
+          documents: [],
+        })
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Error desconocido')
+        if (!signal.aborted) {
+          setError(err instanceof Error ? err.message : 'Error desconocido')
+        }
       } finally {
-        setLoading(false)
+        if (!signal.aborted) setLoading(false)
       }
     }
     load()
+    return () => controller.abort()
   }, [actorSlug])
 
   if (loading) {

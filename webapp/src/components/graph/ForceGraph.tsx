@@ -235,10 +235,9 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     }
     try {
       const n = data.nodes.length
-      // Cap charge strength to avoid numerical overflow on large graphs
-      const chargeStrength = n > 2000 ? -300 : -Math.max(80, n * 2.5)
-      const linkDistance = n > 2000 ? 30 : Math.max(50, n * 1.5)
-
+      // Log-scaled forces with hard cap for very large graphs
+      const chargeStrength = n > 2000 ? -300 : -Math.max(80, Math.min(n * 2.5, 200 + 80 * Math.log10(n)))
+      const linkDistance = n > 2000 ? 30 : Math.max(50, Math.min(n * 1.5, 30 + 40 * Math.log10(n)))
       const charge = fgAny.d3Force('charge')
       if (charge && typeof (charge as { strength: (v: number) => void }).strength === 'function') {
         (charge as { strength: (v: number) => void }).strength(chargeStrength)
@@ -507,10 +506,10 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         enableZoomInteraction={true}
         enablePanInteraction={true}
         enableNodeDrag={false}
-        warmupTicks={0}
-        cooldownTicks={200}
-        cooldownTime={8000}
-        d3AlphaDecay={0.05}
+        warmupTicks={data.nodes.length > 1000 ? 0 : 300}
+        cooldownTicks={data.nodes.length > 1000 ? 200 : 0}
+        cooldownTime={data.nodes.length > 1000 ? 8000 : 0}
+        d3AlphaDecay={data.nodes.length > 1000 ? 0.05 : 0.0228}
         d3VelocityDecay={0.4}
         onEngineStop={handleEngineStop}
         minZoom={0.01}
