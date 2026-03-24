@@ -10,6 +10,7 @@ import neo4j from 'neo4j-driver-lite'
 import type { Record as Neo4jRecord } from 'neo4j-driver-lite'
 
 import { readQuery, writeQuery, executeWrite, withWriteTransaction } from '../neo4j/client'
+import { incrementCounter } from './metrics'
 import {
   proposalSchema,
   type Proposal,
@@ -147,6 +148,7 @@ export async function createProposal(input: CreateProposalInput): Promise<Propos
     return parsed
   })
 
+  incrementCounter('proposals_total')
   return proposal
 }
 

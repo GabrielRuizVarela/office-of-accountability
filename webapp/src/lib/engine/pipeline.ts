@@ -16,6 +16,7 @@ import {
   type PipelineStatus,
 } from './types'
 import { getPipelineConfigById, getPipelineStageById, getGateById } from './config'
+import { incrementCounter } from './metrics'
 import { appendEntry } from './audit'
 import { captureSnapshot } from './snapshots'
 import { runComplianceGate } from '../compliance/pipeline'
@@ -163,6 +164,8 @@ export async function startPipeline(pipelineStateId: string): Promise<PipelineSt
     started_at: now,
   })
 
+  incrementCounter('pipeline_runs_total')
+
   await appendEntry({
     pipeline_state_id: pipelineStateId,
     stage_id: firstStageId,
@@ -266,6 +269,8 @@ export async function advanceStage(pipelineStateId: string): Promise<PipelineSta
       completed_at: nowISO(),
     })
 
+    incrementCounter('pipeline_runs_completed')
+
     await appendEntry({
       pipeline_state_id: pipelineStateId,
       action: 'pipeline.completed',
@@ -274,6 +279,8 @@ export async function advanceStage(pipelineStateId: string): Promise<PipelineSta
 
     return updated!
   }
+
+  incrementCounter('stages_executed_total')
 
   // Advance to next stage
   const nextStageId = config.stage_ids[nextIndex]
@@ -322,6 +329,8 @@ export async function resumeAfterGate(pipelineStateId: string): Promise<Pipeline
       completed_at: nowISO(),
     })
 
+    incrementCounter('pipeline_runs_completed')
+
     await appendEntry({
       pipeline_state_id: pipelineStateId,
       action: 'pipeline.completed',
@@ -330,6 +339,8 @@ export async function resumeAfterGate(pipelineStateId: string): Promise<Pipeline
 
     return updated!
   }
+
+  incrementCounter('stages_executed_total')
 
   // Advance to next stage
   const nextStageId = config.stage_ids[nextIndex]
@@ -369,6 +380,8 @@ export async function failPipeline(
     error,
     completed_at: nowISO(),
   })
+
+  incrementCounter('pipeline_runs_failed')
 
   await appendEntry({
     pipeline_state_id: pipelineStateId,

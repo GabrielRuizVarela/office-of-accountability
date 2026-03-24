@@ -18,6 +18,7 @@ import { detectGaps } from '../gap-detector'
 import { getToolsForStage } from '../llm/tools'
 import type { Message } from '../llm/types'
 import { resolveLLMProvider, processToolCall, getGraphSummary } from './shared'
+import { incrementCounter } from '../metrics'
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -84,6 +85,7 @@ export class IterateStageRunner implements StageRunner {
           temperature: 0.3,
           max_tokens: 4096,
         })
+        incrementCounter('llm_calls_total')
 
         // Accumulate token usage
         if (response.usage) {
