@@ -147,9 +147,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'clarin-telecom-convergence',
     claim_es:
-      'Grupo Clarín (Héctor Magnetto) controla simultáneamente el principal diario, canales de TV (TN, Canal 13), radio (Mitre), cable (Cablevisión/Flow), e infraestructura de telecomunicaciones (Telecom Argentina) tras la fusión de 2018. Controla ~45% banda ancha, ~35% móvil, ~60% TV paga.',
+      'Grupo Clarín (Héctor Magnetto) controla simultáneamente el principal diario, canales de TV (TN, Canal 13), radio (Mitre), cable (Cablevisión/Flow), e infraestructura de telecomunicaciones (Telecom Argentina) tras la fusión de 2018. Controla ~46% banda ancha, ~33% móvil, ~36-40% TV paga.',
     claim_en:
-      'Grupo Clarín (Héctor Magnetto) simultaneously controls the leading newspaper, TV channels (TN, Canal 13), radio (Mitre), cable (Cablevisión/Flow), and telecom infrastructure (Telecom Argentina) after the 2018 merger. Controls ~45% broadband, ~35% mobile, ~60% pay-TV.',
+      'Grupo Clarín (Héctor Magnetto) simultaneously controls the leading newspaper, TV channels (TN, Canal 13), radio (Mitre), cable (Cablevisión/Flow), and telecom infrastructure (Telecom Argentina) after the 2018 merger. Controls ~46% broadband, ~33% mobile, ~36-40% pay-TV.',
     status: 'confirmed',
     tier: 1,
     sector: 'telecom',
@@ -195,9 +195,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'vila-manzano-media-energy',
     claim_es:
-      'Daniel Vila y José Luis Manzano controlan 62 y 53 empresas respectivamente, abarcando medios (América TV, A24, El Cronista), energía, vinos, e inmobiliarias. Manzano es ex-Ministro del Interior de Menem.',
+      'Daniel Vila y José Luis Manzano controlan 70+ y 53+ empresas respectivamente, abarcando medios (América TV, Telefe, A24, El Cronista), energía (Edenor/DESA), vinos, e inmobiliarias. Manzano es ex-Ministro del Interior de Menem.',
     claim_en:
-      'Daniel Vila and José Luis Manzano control 62 and 53 companies respectively, spanning media (América TV, A24, El Cronista), energy, wine, and real estate. Manzano is former Interior Minister under Menem.',
+      'Daniel Vila and José Luis Manzano control 70+ and 53+ companies respectively, spanning media (América TV, Telefe, A24, El Cronista), energy (Edenor/DESA), wine, and real estate. Manzano is former Interior Minister under Menem.',
     status: 'confirmed',
     tier: 1,
     sector: 'media',
@@ -220,9 +220,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source: 'ICIJ Offshore Leaks / Neo4j OffshoreOfficer',
     source_url: 'https://offshoreleaks.icij.org/',
     detail_es:
-      'Ledesma SAAI tiene 125 contratos gubernamentales en Neo4j. La combinación de monopolio azucarero en el NOA + 7 entidades offshore + contratos estatales constituye el mayor riesgo de erosión de base impositiva entre los grupos monopólicos.',
+      'Ledesma SAAI tiene 125 contratos gubernamentales en Neo4j. Ledesma posee 17-20% de la producción azucarera nacional (los top 3 grupos suman ~50%). 7 entidades offshore + contratos estatales constituyen el mayor riesgo de erosión de base impositiva entre los grupos monopólicos.',
     detail_en:
-      'Ledesma SAAI has 125 government contracts in Neo4j. The combination of sugar monopoly in NOA + 7 offshore entities + state contracts constitutes the largest tax base erosion risk among monopoly groups.',
+      'Ledesma SAAI has 125 government contracts in Neo4j. Ledesma holds 17-20% of national sugar production (top 3 groups account for ~50%). 7 offshore entities + state contracts constitute the largest tax base erosion risk among monopoly groups.',
   },
   {
     id: 'roggio-public-services-offshore',
@@ -259,9 +259,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'abcd-grain-cartel',
     claim_es:
-      'El cartel ABCD (Cargill, Bunge, Louis Dreyfus, ADM) + AGD + COFCO controla más del 80% de las exportaciones de granos argentinos. Ricardo Martelli figura en 8 entidades de Cargill. Concentración portuaria en el complejo oleaginoso de Rosario.',
+      'El cartel ABCD (Cargill, Bunge, Louis Dreyfus, ADM) + AGD + COFCO controla ~60% de las exportaciones de granos y más del 80% del crushing de oleaginosas. Ricardo Martelli figura en 8 entidades de Cargill. Concentración portuaria en el complejo oleaginoso de Rosario.',
     claim_en:
-      'The ABCD cartel (Cargill, Bunge, Louis Dreyfus, ADM) + AGD + COFCO controls over 80% of Argentine grain exports. Ricardo Martelli sits on 8 Cargill entities. Port concentration in the Rosario oilseed complex.',
+      'The ABCD cartel (Cargill, Bunge, Louis Dreyfus, ADM) + AGD + COFCO controls ~60% of grain exports and over 80% of oilseed crushing. Ricardo Martelli sits on 8 Cargill entities. Port concentration in the Rosario oilseed complex.',
     status: 'confirmed',
     tier: 1,
     sector: 'agroexport',
@@ -321,9 +321,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'enacom-clarin-deregulation',
     claim_es:
-      'En 2015, el gobierno Macri derogó la Ley de Medios (26.522) mediante DNU 267/2015, creando ENACOM y eliminando restricciones a la concentración cruzada medios-telecom. Esto permitió la fusión Telecom-Cablevisión de 2018.',
+      'En 2015, el gobierno Macri derogó parcialmente la Ley de Medios (26.522) mediante DNU 267/2015, creando ENACOM y eliminando restricciones clave a la concentración cruzada medios-telecom. Esto permitió la fusión Telecom-Cablevisión de 2018.',
     claim_en:
-      'In 2015, the Macri government repealed the Media Law (26.522) via DNU 267/2015, creating ENACOM and removing cross-ownership restrictions for media-telecom. This enabled the 2018 Telecom-Cablevisión merger.',
+      'In 2015, the Macri government partially repealed the Media Law (26.522) via DNU 267/2015, creating ENACOM and removing key cross-ownership restrictions for media-telecom. This enabled the 2018 Telecom-Cablevisión merger.',
     status: 'confirmed',
     tier: 2,
     sector: 'regulatory_capture',
@@ -500,9 +500,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'mastellone-dairy-monopoly',
     claim_es:
-      'Mastellone/La Serenísima controla ~90% del mercado de leche fluida en Buenos Aires y ~65% a nivel nacional (HHI ~8,200). El colapso de SanCor eliminó al principal competidor cooperativo.',
+      'Mastellone/La Serenísima controla ~90% del mercado de leche fluida en AMBA y 75-80% a nivel nacional. En lácteos totales, ~58% del mercado. El colapso de SanCor eliminó al principal competidor cooperativo.',
     claim_en:
-      'Mastellone/La Serenísima controls ~90% of fluid milk market in Buenos Aires and ~65% nationally (HHI ~8,200). SanCor\'s collapse eliminated the main cooperative competitor.',
+      'Mastellone/La Serenísima controls ~90% of fluid milk market in AMBA and 75-80% nationally. In total dairy, ~58% of the market. SanCor\'s collapse eliminated the main cooperative competitor.',
     status: 'confirmed',
     tier: 1,
     sector: 'food',
@@ -650,10 +650,10 @@ export const ACTORS: readonly Actor[] = [
     name: 'Daniel Vila / José Luis Manzano',
     role_es: 'Grupo América (medios + energía)',
     role_en: 'Grupo América (media + energy)',
-    description_es: 'Segundo conglomerado mediático. Manzano ex-ministro del Interior. 62/53 empresas.',
-    description_en: 'Second media conglomerate. Manzano former Interior Minister. 62/53 companies.',
+    description_es: 'Mayor conglomerado mediático (América TV + Telefe). Manzano ex-ministro del Interior. 70+/53+ empresas. También controlan Edenor vía DESA.',
+    description_en: 'Largest media conglomerate (América TV + Telefe). Manzano former Interior Minister. 70+/53+ companies. Also control Edenor via DESA.',
     sectors: ['media', 'energy'],
-    companies_count: 62,
+    companies_count: 70,
     offshore_count: 0,
   },
   {
