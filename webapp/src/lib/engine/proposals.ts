@@ -18,6 +18,77 @@ import {
 } from './types'
 
 // ---------------------------------------------------------------------------
+// Label & relationship type whitelist (prevents Cypher injection via dynamic labels)
+// ---------------------------------------------------------------------------
+
+/** Safe identifier pattern — only alphanumeric + underscore, must start with letter */
+const SAFE_IDENTIFIER_RE = /^[A-Za-z][A-Za-z0-9_]*$/
+
+/** Known node labels from schema.ts constraints + investigation node types */
+const ALLOWED_NODE_LABELS = new Set([
+  // Core platform
+  'Politician', 'Legislation', 'LegislativeVote', 'Party', 'Province',
+  'Investigation', 'User',
+  // Caso Libra legacy
+  'CasoLibraPerson', 'CasoLibraEvent', 'CasoLibraDocument',
+  'CasoLibraOrganization', 'CasoLibraToken', 'CasoLibraWallet',
+  // Generic investigation
+  'Person', 'Organization', 'Event', 'Document', 'Token', 'Wallet',
+  'Location', 'Aircraft', 'ShellCompany', 'Claim', 'MoneyFlow',
+  'GovernmentAction', 'LegalCase',
+  // Cross-reference engine
+  'Contractor', 'Company', 'CompanyOfficer', 'GovernmentAppointment',
+  'Donor', 'AssetDeclaration',
+  // Engine (M10)
+  'SourceConnector', 'PipelineConfig', 'PipelineStage', 'Gate',
+  'PipelineState', 'Proposal', 'AuditEntry', 'Snapshot',
+  'ModelConfig', 'MiroFishConfig', 'OrchestratorTask', 'OrchestratorState',
+  // Investigation config
+  'InvestigationConfig', 'SchemaDefinition', 'NodeTypeDefinition', 'RelTypeDefinition',
+  // Compliance (M11)
+  'ComplianceFramework', 'ComplianceRule', 'ChecklistItem',
+  'ComplianceAttestation', 'ComplianceEvaluation',
+  // MCP (M13)
+  'MCPApiKey',
+])
+
+/** Known relationship types used across the codebase */
+const ALLOWED_REL_TYPES = new Set([
+  // Investigation
+  'PARTICIPATED_IN', 'MENTIONS', 'MENTIONED_IN', 'REFERENCES',
+  'AFFILIATED_WITH', 'DOCUMENTED_BY', 'FILED_IN', 'AUTHORED',
+  'EVIDENCE_FOR',
+  // Political
+  'MEMBER_OF', 'REPRESENTS', 'CAST_VOTE', 'BELONGS_TO',
+  // Engine
+  'HAS_PROPOSAL', 'HAS_SCHEMA', 'DEFINES_NODE_TYPE', 'DEFINES_REL_TYPE',
+  // Compliance
+  'HAS_RULE', 'HAS_CHECKLIST_ITEM',
+  // Generic relationships LLM might create
+  'KNOWS', 'CONNECTED_TO', 'RELATED_TO', 'CONTROLS', 'OWNS',
+  'FUNDED_BY', 'SENT', 'RECEIVED', 'EMPLOYED_BY', 'TRAVELED_TO',
+  'FLEW_ON', 'VISITED', 'MET_WITH', 'ASSOCIATED_WITH',
+])
+
+function assertSafeLabel(label: string): void {
+  if (!SAFE_IDENTIFIER_RE.test(label)) {
+    throw new Error(`Invalid label: "${label}" — must match ${SAFE_IDENTIFIER_RE}`)
+  }
+  if (!ALLOWED_NODE_LABELS.has(label)) {
+    throw new Error(`Unknown node label: "${label}" — not in schema whitelist`)
+  }
+}
+
+function assertSafeRelType(relType: string): void {
+  if (!SAFE_IDENTIFIER_RE.test(relType)) {
+    throw new Error(`Invalid relationship type: "${relType}" — must match ${SAFE_IDENTIFIER_RE}`)
+  }
+  if (!ALLOWED_REL_TYPES.has(relType)) {
+    throw new Error(`Unknown relationship type: "${relType}" — not in schema whitelist`)
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
@@ -231,6 +302,7 @@ export async function applyProposal(id: string): Promise<void> {
   switch (type) {
     case 'create_node': {
       const label = payload.label as string
+      assertSafeLabel(label)
       const properties = payload.properties as Record<string, unknown>
       await executeWrite(
         `CREATE (n:\`${label}\` $props)`,
@@ -243,6 +315,7 @@ export async function applyProposal(id: string): Promise<void> {
       const fromId = payload.from_id as string
       const toId = payload.to_id as string
       const relType = payload.type as string
+      assertSafeRelType(relType)
       const relProps = (payload.properties as Record<string, unknown>) ?? {}
       await executeWrite(
         `MATCH (a {id: $fromId}), (b {id: $toId})
@@ -275,6 +348,7 @@ export async function applyProposal(id: string): Promise<void> {
       const fromId = payload.from_id as string
       const toId = payload.to_id as string
       const relType = payload.type as string
+      assertSafeRelType(relType)
       await executeWrite(
         `MATCH (a {id: $fromId})-[r:\`${relType}\`]->(b {id: $toId}) DELETE r`,
         { fromId, toId },
