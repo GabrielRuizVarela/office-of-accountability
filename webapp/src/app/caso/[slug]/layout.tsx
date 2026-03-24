@@ -23,6 +23,12 @@ const CASE_META: Readonly<Record<string, { title: string; description: string; d
       'Analisis de redes de relaciones institucionales entre entidades gubernamentales, corporativas, judiciales, financieras y mediaticas en Argentina.',
     defaultLang: 'es',
   },
+  'monopolios': {
+    title: 'Monopolios en Argentina — Oficina de Rendicion de Cuentas',
+    description:
+      'Investigacion sobre mercados monopolizados: 18 sectores, 44 archivos, 829+ cruces Neo4j. Costo al consumidor: USD 22.500M/año.',
+    defaultLang: 'es',
+  },
 }
 
 export async function generateMetadata({
