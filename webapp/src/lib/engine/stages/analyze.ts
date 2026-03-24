@@ -86,6 +86,7 @@ export class AnalyzeStageRunner implements StageRunner {
                 toolCall,
                 context.pipelineState.id,
                 context.stage.id,
+                context.casoSlug,
               )
               if (created) proposalsCreated++
             } catch (err) {

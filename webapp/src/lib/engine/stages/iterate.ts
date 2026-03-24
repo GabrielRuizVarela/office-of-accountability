@@ -80,6 +80,7 @@ export class IterateStageRunner implements StageRunner {
               toolCall,
               pipelineState.id,
               stage.id,
+              casoSlug,
             )
             if (created) proposalsThisIteration++
           }
