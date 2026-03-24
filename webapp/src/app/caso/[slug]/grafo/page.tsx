@@ -20,24 +20,37 @@ import type { GraphData, GraphNode, GraphLink } from '../../../../lib/neo4j/type
 // Label config for the case graph
 // ---------------------------------------------------------------------------
 
-const EPSTEIN_LABELS: ReadonlyArray<{ label: string; color: string; name: string }> = [
-  { label: 'Person', color: '#3b82f6', name: 'People' },
-  { label: 'Organization', color: '#8b5cf6', name: 'Organizations' },
-  { label: 'Location', color: '#10b981', name: 'Locations' },
-  { label: 'Event', color: '#f59e0b', name: 'Events' },
-  { label: 'Document', color: '#ef4444', name: 'Documents' },
-  { label: 'LegalCase', color: '#ec4899', name: 'Legal Cases' },
-  { label: 'Flight', color: '#f97316', name: 'Flights' },
-]
-
-const NUCLEAR_LABELS: ReadonlyArray<{ label: string; color: string; name: string }> = [
-  { label: 'NuclearSignal', color: '#eab308', name: 'Signals' },
-  { label: 'NuclearActor', color: '#ef4444', name: 'Actors' },
-  { label: 'WeaponSystem', color: '#f97316', name: 'Weapons' },
-  { label: 'Treaty', color: '#3b82f6', name: 'Treaties' },
-  { label: 'NuclearFacility', color: '#10b981', name: 'Facilities' },
-  { label: 'RiskBriefing', color: '#a855f7', name: 'Briefings' },
-]
+const LABEL_CONFIGS: Record<string, ReadonlyArray<{ label: string; color: string; name: string }>> = {
+  default: [
+    { label: 'Person', color: '#3b82f6', name: 'People' },
+    { label: 'Organization', color: '#8b5cf6', name: 'Organizations' },
+    { label: 'Location', color: '#10b981', name: 'Locations' },
+    { label: 'Event', color: '#f59e0b', name: 'Events' },
+    { label: 'Document', color: '#ef4444', name: 'Documents' },
+    { label: 'LegalCase', color: '#ec4899', name: 'Legal Cases' },
+    { label: 'Flight', color: '#f97316', name: 'Flights' },
+  ],
+  'caso-dictadura': [
+    { label: 'DictaduraCCD', color: '#ef4444', name: 'CCDs' },
+    { label: 'DictaduraUnidadMilitar', color: '#f97316', name: 'Unidades' },
+    { label: 'DictaduraOrganizacion', color: '#8b5cf6', name: 'Organizaciones' },
+    { label: 'DictaduraCausa', color: '#06b6d4', name: 'Causas' },
+    { label: 'DictaduraEvento', color: '#f59e0b', name: 'Eventos' },
+    { label: 'DictaduraOperacion', color: '#a855f7', name: 'Operaciones' },
+    { label: 'DictaduraPersona', color: '#3b82f6', name: 'Personas' },
+    { label: 'DictaduraLugar', color: '#10b981', name: 'Lugares' },
+    { label: 'DictaduraDocumento', color: '#ec4899', name: 'Documentos' },
+    { label: 'DictaduraActa', color: '#64748b', name: 'Actas' },
+  ],
+  'riesgo-nuclear': [
+    { label: 'NuclearSignal', color: '#eab308', name: 'Signals' },
+    { label: 'NuclearActor', color: '#ef4444', name: 'Actors' },
+    { label: 'WeaponSystem', color: '#f97316', name: 'Weapons' },
+    { label: 'Treaty', color: '#3b82f6', name: 'Treaties' },
+    { label: 'NuclearFacility', color: '#10b981', name: 'Facilities' },
+    { label: 'RiskBriefing', color: '#a855f7', name: 'Briefings' },
+  ],
+}
 
 // ---------------------------------------------------------------------------
 // Component
@@ -45,7 +58,7 @@ const NUCLEAR_LABELS: ReadonlyArray<{ label: string; color: string; name: string
 
 export default function GrafoPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params)
-  const LABEL_CONFIG = slug === 'riesgo-nuclear' ? NUCLEAR_LABELS : EPSTEIN_LABELS
+  const LABEL_CONFIG = LABEL_CONFIGS[slug] ?? LABEL_CONFIGS.default
   const graphRef = useRef<ForceGraphHandle>(null)
 
   // Graph data & UI state
