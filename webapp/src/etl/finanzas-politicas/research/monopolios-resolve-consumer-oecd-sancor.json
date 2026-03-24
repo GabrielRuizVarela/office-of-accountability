@@ -1,0 +1,156 @@
+{
+  "meta": {
+    "title": "Resolution of Three Loose Ends: Consumer Cost, OECD 9.5%, SanCor Cooperative Decline",
+    "date": "2026-03-24",
+    "purpose": "Trace the USD 22.5B/year consumer cost claim, the OECD 9.5% GDP impact claim, and the SanCor 33%→3% cooperative share claim to their authoritative sources and assess quality."
+  },
+
+  "claim_1_consumer_cost_22_5B": {
+    "claim": "Monopolization costs Argentine consumers USD 22.5 billion per year (3.3% of GDP)",
+    "verdict": "NO SINGLE PUBLISHED SOURCE EXISTS",
+    "explanation": "The USD 22.5B figure is an internally compiled estimate from our own research (monopolios-impacto-consumidor.json). It was built by aggregating sector-by-sector overcharge estimates. No external study — from the OECD, World Bank, CNDC, FIEL, CEDES, CIPPEC, FLACSO, or any academic journal — has published a single aggregate number for the total cost of monopolization to Argentine consumers.",
+    "component_estimates": {
+      "food_retail_usd_billion": 13.0,
+      "food_methodology": "CAME IPOD field-to-shelf multiplier of 3.7x vs assumed competitive markup of 2.5x, applied to USD 65B annual food market. The 20% overcharge estimate is plausible but not independently verified.",
+      "pharma_usd_billion": 2.8,
+      "banking_usd_billion": 3.0,
+      "fuel_usd_billion": 2.5,
+      "energy_inefficiency_usd_billion": 2.0,
+      "energy_subsidy_misallocation_usd_billion": 3.0,
+      "steel_usd_billion": 0.75,
+      "dairy_usd_billion": 0.675,
+      "cement_usd_billion": 0.2,
+      "telecom_usd_billion": 0.6,
+      "total_direct_overcharge_usd_billion": 22.5,
+      "total_including_efficiency_losses_usd_billion": 28.5
+    },
+    "quality_assessment": {
+      "strongest_components": [
+        "Food (CAME IPOD data is published monthly with real price tracking, methodology is transparent)",
+        "Cement (CNDC cement cartel conviction provides documented overcharge of USD 178M/year for 2017-2018)"
+      ],
+      "weakest_components": [
+        "Banking (3.0B is a large estimate without documented price comparison methodology)",
+        "Energy subsidy misallocation (3.0B is an efficiency judgment, not a measured overcharge)",
+        "Fuel (2.5B lacks specific markup documentation vs competitive benchmark)"
+      ],
+      "overall_confidence": "LOW-MEDIUM. The components are individually sourced from real data (CAME, CNDC, OECD comparisons), but the aggregation into a single USD 22.5B figure is our own construction. The methodology of comparing observed prices to assumed competitive benchmarks involves significant judgment calls on what the 'competitive' price would be."
+    },
+    "closest_published_estimates": {
+      "harberger_triangle_classic": {
+        "finding": "Harberger (1954) estimated US monopoly welfare loss at only 0.1% of GDP. This is widely considered a lower bound because it measures only the static deadweight loss triangle, excluding rent-seeking costs, X-inefficiency, and dynamic innovation losses.",
+        "relevance": "Argentina's market concentration is far more extreme than the 1950s US. Applying Harberger's methodology to Argentina's HHI levels would yield much higher estimates."
+      },
+      "oecd_food_premium": {
+        "finding": "The OECD Economic Survey Argentina 2025 states Argentine consumers pay approximately 49% more for everyday groceries compared to similar OECD conditions. This is the closest official number to a consumer harm estimate but covers only food.",
+        "source": "OECD Economic Surveys: Argentina 2025"
+      },
+      "world_bank_competition": {
+        "finding": "World Bank (2018) estimated that increasing competition in manufacturing would add 7% to annual labor productivity growth, and services deregulation could add 0.1-0.6% annual GDP growth. These are forward-looking projections, not backward-looking cost estimates.",
+        "source": "World Bank, Why Trade, Investment, and Competition Reforms Matter for Argentina (2018)"
+      },
+      "flacso_oligopolies": {
+        "finding": "FLACSO AEyT (Dec 2022) published 'Regimen de alta inflacion, oligopolios y grupos economicos' documenting how concentrated industries pass costs asymmetrically (e.g., sunflower oil wholesale prices rose 3.4% while retail surged 48.6% in Q3 2022). But FLACSO did not estimate an aggregate GDP cost.",
+        "source": "FLACSO DT28, December 2022"
+      },
+      "cndc_cement_cartel": {
+        "finding": "The CNDC estimated a specific overcharge of USD 178 million/year from the cement cartel (2017-2018). This is the only CNDC-quantified consumer harm for a specific sector.",
+        "source": "CNDC cement cartel ruling, upheld by Supreme Court"
+      }
+    },
+    "recommendation": "The USD 22.5B figure should be presented as 'our compiled estimate based on sector-by-sector analysis,' NOT as an externally published statistic. It should be caveated with the methodology and the fact that no independent body has produced an aggregate number. The strongest way to present this is: 'We estimate the total cost at approximately USD 22.5B/year based on documented price gaps across 10 sectors, with the largest component (USD 13B) derived from CAME's field-to-shelf price multiplier data.'"
+  },
+
+  "claim_2_oecd_9_5_percent_gdp": {
+    "claim": "The OECD estimates that pro-competition reforms could boost Argentine GDP by 9.5%",
+    "verdict": "DERIVED SUM OF TWO OECD SCENARIOS — NOT A SINGLE HEADLINE FIGURE",
+    "source": {
+      "publication": "OECD Economic Surveys: Argentina 2025",
+      "publication_date": "July 2025",
+      "volume": "2025/20",
+      "chapter": "Chapter 4: Towards a Better Business Environment",
+      "methodology": "OECD Long-Term Model using Product Market Regulation (PMR) indicator",
+      "url_chapter": "https://www.oecd.org/en/publications/oecd-economic-surveys-argentina-2025_27dd6e27-en/full-report/towards-a-better-business-environment_6920ae15.html",
+      "url_pdf": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/07/oecd-economic-surveys-argentina-2025_4a5ddf67/27dd6e27-en.pdf",
+      "url_blog": "https://oecdecoscope.blog/2025/07/16/strengthening-pro-growth-reforms-in-argentina/",
+      "url_press": "https://www.oecd.org/en/about/news/press-releases/2025/07/argentina-should-maintain-reform-momentum-to-boost-investment-and-productivity.html"
+    },
+    "two_scenarios": {
+      "scenario_1_reforms_already_done": {
+        "description": "Effects of regulatory reforms already completed (2018→2025), which reduced Argentina's PMR score to its current 2025 value. No further reform assumed.",
+        "output_boost_by_2050_pct": 2.7,
+        "employment_boost_by_2050_pct": 0.8,
+        "baseline": "Compared to a counterfactual where regulation remained at 2018 levels"
+      },
+      "scenario_2_further_reform_to_oecd_best_practice": {
+        "description": "Additional reforms over the next decade so that by 2035 Argentina's PMR matches the first quartile of OECD countries' 2025 PMR scores.",
+        "additional_output_boost_pct": 6.8,
+        "additional_employment_boost_pct": 2.2,
+        "note": "This is incremental to Scenario 1"
+      },
+      "combined_total": {
+        "total_output_boost_pct": 9.5,
+        "total_employment_boost_pct": 3.0,
+        "derivation": "2.7% + 6.8% = 9.5%. This is a valid arithmetic sum of both scenarios but is NOT presented by the OECD as a single headline number."
+      }
+    },
+    "context": {
+      "argentina_pmr_progress": "Argentina is the country that has improved the most in PMR scores between 2018 and 2025. This progress was achieved largely through the 'Bases Law' (Ley de Bases) approved June 2024, which declared economic emergency and delegated regulatory reform powers to the executive.",
+      "pmr_methodology": "The Product Market Regulation indicator measures regulatory barriers to competition in product markets. The OECD Long-Term Model simulates the impact of PMR changes on potential output and employment over decades.",
+      "time_horizon": "Both estimates are cumulative effects measured by 2050 relative to 2018 regulation levels. These are NOT annual figures."
+    },
+    "recommendation": "Present as: 'According to the OECD Economic Survey of Argentina (July 2025), reforms already implemented could boost potential output by 2.7% by 2050, and further alignment with OECD best practice could add another 6.8%, for a combined potential gain of 9.5%.' Attribution: OECD Economic Surveys: Argentina 2025, Chapter 4, using the OECD Long-Term Model with PMR indicators."
+  },
+
+  "claim_3_cooperative_dairy_33_to_3": {
+    "claim": "Cooperative dairy processing fell from 33% to 3% of national milk intake over 30 years",
+    "verdict": "VERIFIED",
+    "source": {
+      "primary": "OCLA (Observatorio de la Cadena Lactea Argentina), annual dairy industry ranking 2024/2025",
+      "underlying_data": "OCLA based the 1994 comparison on a study published April 2023 by the Junta Intercooperativa de Productores de Leche, examining the volume of milk received in 1994 by the 16 principal dairy industries of that time.",
+      "publisher": "FunPEL (Fundacion para la Promocion y Desarrollo de la Cadena Lactea Argentina)",
+      "reporting_outlets": [
+        "https://ansol.com.ar/cooperativas-lacteas-ocla/generales/economia/",
+        "https://bichosdecampo.com/un-nuevo-ranking-de-las-industrias-lacteas-confirma-el-dominio-de-la-canadiense-saputo-y-la-caida-del-cooperativismo-nacional/",
+        "https://www.suenaacampo.com/2025/07/23/el-ranking-de-las-industrias-lacteas-atomizacion-derrumbe-cooperativo-y-crecimiento-multinacional/",
+        "https://comercioyjusticia.info/valormas/cooperativas-lacteas-solo-procesan-el-3-de-la-leche-pero-concentran-un-tercio-de-la-produccion-primaria/",
+        "https://hoydia.com.ar/economia/industria-lactea-fuerte-caida-de-las-cooperativas-y-avance-de-las-multinacionales/"
+      ]
+    },
+    "exact_figures": {
+      "year_1994": {
+        "cooperative_share_of_milk_processing_pct": 33,
+        "note": "In some years of the 1990s the share exceeded 33%, reaching 35%",
+        "measurement": "Volume of milk received and processed by cooperative enterprises"
+      },
+      "year_2024_2025": {
+        "cooperative_share_of_milk_processing_pct": 3,
+        "some_sources_say": "less than 5%",
+        "measurement": "Same metric — volume of milk industrially processed by cooperative enterprises"
+      }
+    },
+    "important_nuance": {
+      "processing_vs_primary_production": "While cooperatives process only 3% of milk industrially, they still concentrate approximately one-third (33%) of PRIMARY PRODUCTION — meaning cooperative farms still produce a large share of raw milk, but that milk is then sold to and processed by non-cooperative (increasingly multinational) enterprises. This is the critical distinction.",
+      "global_comparison": "In major dairy-producing countries, cooperatives typically handle approximately 50% of industrial processing. Argentina's 3% is an extreme outlier."
+    },
+    "sancor_specific_data": {
+      "peak_production_daily_liters": 4000000,
+      "peak_year": "2016 (4 million liters/day, 4000 employees — per Roald Bascolo, Santa Fe Labor Minister)",
+      "historical_peak_capacity": "Some sources cite 7 million liters/day plant capacity at absolute maximum",
+      "end_2023_daily_liters": 600000,
+      "january_2025_daily_liters": 180000,
+      "mid_2025_daily_liters": 250000,
+      "decline_from_peak": "95-98% decline in daily processing volume",
+      "current_status": "Concurso preventivo (bankruptcy protection), debt of approximately USD 250 million",
+      "source_pagina12": "https://www.pagina12.com.ar/802544-apogeo-y-declive-de-una-lactea-historica"
+    },
+    "ocla_summary_quote": "Se ha atomizado la estructura industrial lechera en Argentina, han reducido categoricamente su participacion las empresas cooperativas y crecio la incidencia de las empresas multinacionales.",
+    "recommendation": "The 33%→3% claim is VERIFIED with high confidence. Source: OCLA annual ranking 2024/2025, based on data from FunPEL and the Junta Intercooperativa de Productores de Leche (April 2023 study for the 1994 baseline). The key nuance to include is that cooperatives still produce ~33% of raw milk at the farm level but have been squeezed out of industrial processing."
+  },
+
+  "summary": {
+    "claim_1_status": "NO EXTERNAL SOURCE — internally compiled estimate. Recommend presenting with full methodology caveat.",
+    "claim_2_status": "VERIFIED as derived sum. Source: OECD Economic Surveys: Argentina 2025, Chapter 4. The 9.5% = 2.7% (reforms done) + 6.8% (further reforms), both by 2050 vs 2018 baseline, using OECD Long-Term Model with PMR indicators.",
+    "claim_3_status": "VERIFIED. Source: OCLA ranking 2024/2025 (FunPEL), with 1994 baseline from Junta Intercooperativa study (April 2023). The 33%→3% refers specifically to industrial processing share, not primary production."
+  }
+}

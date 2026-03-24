@@ -1,0 +1,215 @@
+{
+  "meta": {
+    "title": "Company Count Resolution — Magnetto & De Narváez",
+    "date": "2026-03-24",
+    "purpose": "Independent web verification of the '35 companies each' figure from Neo4j/IGJ data for Héctor Magnetto and Francisco De Narváez",
+    "methodology": "Cross-referenced SEC filings, Wikipedia, MarketScreener, Dateas.com, losricosdeargentina.com.ar, Argentine press (Infobae, La Nación, Ámbito, El Cronista, elDiarioAR), Media Ownership Monitor (MOM-RSF), Grupo Clarín corporate disclosures, GDN Argentina official site, and prior fact-check waves in this investigation"
+  },
+
+  "hector_magnetto": {
+    "neo4j_claim": "Officer in 35 companies per IGJ registry",
+    "verdict": "LIKELY UNDERSTATED — but '35' is plausible as personal directorships",
+    "confidence": 0.55,
+    "analysis": {
+      "grupo_clarin_total_entities": {
+        "count": 81,
+        "source": "losricosdeargentina.com.ar — 'La estructura organizativa del Grupo Clarín presenta 81 sociedades identificadas'",
+        "source_url": "https://losricosdeargentina.com.ar/clarin.html",
+        "notes": "This includes the full corporate tree: trusts, US-based LLCs (GS Unidos LLC in Delaware), offshore entities (BVI), and subsidiaries across Argentina, Uruguay, Paraguay, USA"
+      },
+      "distinct_operating_companies_mapped": {
+        "count": "~50",
+        "source": "lascronologias.wordpress.com detailed media map (2020, updated)",
+        "source_url": "https://lascronologias.wordpress.com/2020/09/08/grupo-clarin-mapa-cablevision-telecom/",
+        "breakdown": {
+          "holding_vehicles": ["GC Dominio S.A.", "Grupo Clarín S.A.", "Cablevisión Holding S.A.", "GC Minor"],
+          "print_publishing_AGEA": ["AGEA S.A.", "Papel Prensa S.A. (49%)", "CIMECO S.A.", "Artes Gráficas del Litoral", "Cúspide", "Exponenciar", "Unir S.A.", "Tinta Fresca", "Xpand Ventures", "Impripost", "Oportunidades S.A.", "CMI"],
+          "broadcasting_ARTEAR": ["Artear S.A.", "Telecor S.A. (Canal 12 Córdoba)", "Teledifusora Bahiense S.A.", "Bariloche TV S.A.", "Pol-Ka Producciones S.A. (55%)", "Patagonik Film Group S.A. (33%)"],
+          "radio": ["Radio Mitre S.A."],
+          "sports_entertainment": ["IESA (Inversora de Eventos S.A.)", "TRISA (Tele Red Imagen S.A. — 50%)", "TSC (Televisión Satelital Codificada — 50%)", "Tele Net Image Corp.", "Canal Rural Satelital (25%)"],
+          "telecom": ["Telecom Argentina S.A.", "Personal (brand)", "Cablevisión", "Fibertel"]
+        }
+      },
+      "magnetto_personal_positions": {
+        "confirmed_current": [
+          { "company": "GC Dominio S.A.", "role": "President (Chairman)", "source": "Dateas.com, Boletín Oficial", "cuit_company": "30-70712757-7" },
+          { "company": "Grupo Clarín S.A.", "role": "Former Chairman & GM (1999-2014 per MarketScreener); still principal shareholder (29.8%)", "source": "MarketScreener, Wikipedia" },
+          { "company": "C.I.S.C.A. Comercial Inversora S.R.L.", "role": "Manager (designated Dec 2023)", "source": "Dateas.com Boletín Oficial entries", "cuit_company": "30614106480" },
+          { "company": "Asociación Empresaria Argentina", "role": "Corporate Officer (since 2010)", "source": "MarketScreener" },
+          { "company": "Sociedad Interamericana de Prensa", "role": "Corporate Officer (since 2011)", "source": "MarketScreener" },
+          { "company": "International Press Institute", "role": "Corporate Officer (since 2011)", "source": "MarketScreener" }
+        ],
+        "confirmed_former": [
+          { "company": "Grupo Clarín S.A.", "role": "Chairman (ended Feb 2014)", "source": "MarketScreener" },
+          { "company": "AGEA S.A.", "role": "Corporate Officer/Principal", "source": "MarketScreener" },
+          { "company": "World Association of Newspapers", "role": "Corporate Officer (ended Sep 2013)", "source": "MarketScreener" }
+        ],
+        "probable_but_unconfirmed": "IGJ registry data is not publicly searchable online. The Neo4j figure of 35 likely comes from IGJ bulk data or Boletín Oficial scraping. MarketScreener only shows 7 positions (3 current, 4 former). Magnetto controls the group via GC Dominio without necessarily sitting on every subsidiary board — Argentine corporate law allows a holding's president to delegate subsidiary directorships to trusted associates.",
+        "key_distinction": "Magnetto controls 81 entities indirectly through GC Dominio, but his personal IGJ-registered directorships are a smaller subset. The '35' figure is PLAUSIBLE as his personal officer/director appearances in IGJ records, but CANNOT BE CONFIRMED via public web sources."
+      },
+      "offshore_entities": {
+        "panama_papers": "One BVI company identified (with Aranda and Herrera de Noble, directors since early 1990s)",
+        "pandora_papers": "Magnetto and other Clarín shareholders opened societies in tax havens and Uruguay",
+        "trust_structures": "Two trusts in New York (Noble family + Magnetto), plus GS Unidos LLC (Delaware) for Herrera de Noble family",
+        "sources": [
+          "https://www.eldiarioar.com/politica/pandora-papers/magnetto-fontevecchia-saguier-aranda-duenos-principales-medios-argentina-han-abierto-sociedades-paraisos-fiscales-uruguay_1_8403360.html",
+          "https://www.agenciapacourondo.com.ar/destacado/panama-papers-aparecio-la-empresa-de-hector-magnetto"
+        ]
+      },
+      "telecom_argentina_sec_filing": {
+        "filing": "20-F for fiscal year 2024 (filed Feb 28, 2025)",
+        "sec_cik": "0000932470",
+        "subsidiaries_listed": "Full list in filing but 403 access error; known subsidiaries include Telecom Personal S.A., Núcleo S.A. (Paraguay), Micro Sistemas, Telecom Argentina USA Inc.",
+        "notes": "Telecom Argentina is 40% owned by Cablevisión Holding (Clarín arm). Magnetto does NOT appear as direct officer of Telecom Argentina — the telecom arm has its own management.",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/932470/000110465925019133/teo-20241231x20f.htm"
+      }
+    },
+    "conclusion": {
+      "web_confirmable_positions": 7,
+      "neo4j_igj_claim": 35,
+      "grupo_clarin_total_entities": 81,
+      "assessment": "The 35 figure is PLAUSIBLE but UNVERIFIABLE via public web sources. IGJ registry data is the authoritative source and is not freely searchable online. The Grupo Clarín structure has 81 entities total, but Magnetto likely sits on boards of only a subset. The 35 figure probably reflects his cumulative IGJ entries (current + historical directorships across Clarín subsidiaries and personal investment vehicles). MarketScreener's 7 positions likely undercount because it only tracks publicly-listed or internationally-registered entities. RECOMMENDATION: Keep the 35 figure but label it 'IGJ registry — not independently verified via public web sources' with confidence 0.55."
+    },
+    "sources": [
+      "https://losricosdeargentina.com.ar/clarin.html",
+      "https://losricosdeargentina.com.ar/clarin2.html",
+      "https://lascronologias.wordpress.com/2020/09/08/grupo-clarin-mapa-cablevision-telecom/",
+      "https://ca.marketscreener.com/insider/HECTOR-HORACIO-MAGNETTO-A07LRQ/",
+      "https://www.dateas.com/en-us/persona/hector-horacio-magnetto-20049708751",
+      "https://www.dateas.com/es/empresa/gc-dominio-sa-30707127577",
+      "https://argentina.mom-gmr.org/es/propietarios/propietarios-individuales/detail/owner/owner/show/hector-magnetto/",
+      "https://en.wikipedia.org/wiki/H%C3%A9ctor_Magnetto",
+      "https://www.eldiarioar.com/politica/pandora-papers/magnetto-fontevecchia-saguier-aranda-duenos-principales-medios-argentina-han-abierto-sociedades-paraisos-fiscales-uruguay_1_8403360.html",
+      "https://www.sec.gov/Archives/edgar/data/932470/000110465925019133/teo-20241231x20f.htm"
+    ]
+  },
+
+  "francisco_de_narvaez": {
+    "neo4j_claim": "Officer in 35 companies per IGJ registry, including América TV",
+    "verdict": "LIKELY OVERSTATED — estimated 20-30 companies; América TV claim is OUTDATED",
+    "confidence": 0.70,
+    "analysis": {
+      "current_grupo_de_narvaez_structure": {
+        "holding": "Grupo de Narváez (GDN)",
+        "headquarters": "Buenos Aires, Argentina",
+        "annual_revenue": "USD 1,500 million",
+        "employees": "22,000+",
+        "countries": ["Argentina", "Uruguay", "Ecuador"],
+        "total_stores": "656+ across 9 countries (per 2020 acquisition announcement)"
+      },
+      "confirmed_companies_and_brands": {
+        "argentina_retail": [
+          { "name": "GDN Argentina S.A.", "format": "Holding company for Argentine retail operations", "source": "https://www.gdnargentina.com/" },
+          { "name": "Hiper ChangoMás", "format": "Hypermarket (formerly Walmart Argentina)", "stores": "~92", "employees": "~8,500" },
+          { "name": "ChangoMás", "format": "Supermarket" },
+          { "name": "Super ChangoMás", "format": "Smaller supermarket format" },
+          { "name": "Punto Mayorista", "format": "Wholesale" },
+          { "name": "Más Online", "format": "E-commerce platform" },
+          { "name": "Más Farma", "format": "Pharmacy chain (launched 2022)" },
+          { "name": "Más Autocenter", "format": "Automotive services (launched 2022)" }
+        ],
+        "uruguay_retail": [
+          { "name": "Ta-Ta", "stores": 90, "notes": "Supermarket chain across 19 departments" },
+          { "name": "Multiahorro Hogar", "stores": 36, "notes": "Appliances/home goods" },
+          { "name": "BAS", "stores": 25, "notes": "Clothing retail" },
+          { "name": "Farmacias San Roque", "stores": 37, "notes": "Pharmacies and perfumeries" },
+          { "name": "iDigital", "stores": 3, "notes": "Digital commerce" },
+          { "name": "Frontoy", "notes": "Wholesale distributor" },
+          { "name": "321+", "notes": "Online supermarket portal" },
+          { "name": "WoOW!", "notes": "E-commerce platform" }
+        ],
+        "ecuador_retail": [
+          { "name": "Almacenes Tía", "stores": "210+ locations", "employees": "8,000+" },
+          { "name": "Tía Express", "notes": "Express format" },
+          { "name": "Tienda TATA", "notes": "Small format" },
+          { "name": "Supermercados Magda", "notes": "Supermarket format" }
+        ],
+        "fashion_apparel": [
+          { "name": "Rapsodia", "notes": "Fashion brand (JV with L Catterton/LVMH)" },
+          { "name": "Baby Cottons", "notes": "Children's clothing (JV with L Catterton)" },
+          { "name": "Caro Cuore", "notes": "Fashion brand (JV with L Catterton)" },
+          { "name": "Motociclo", "notes": "Footwear/fashion retail" }
+        ],
+        "media_former": [
+          { "name": "América TV", "status": "SOLD — De Narváez sold his 40% stake to Claudio Belocopitt in 2017", "notes": "NO LONGER OWNED" },
+          { "name": "El Cronista Comercial", "status": "SOLD — sold to Grupo América (Vila-Manzano) in 2021 for USD 6 million", "notes": "NO LONGER OWNED" },
+          { "name": "La Red (radio)", "status": "SOLD", "notes": "NO LONGER OWNED" },
+          { "name": "Ámbito Financiero", "status": "SOLD", "notes": "NO LONGER OWNED" }
+        ],
+        "other_historic": [
+          { "name": "Casa Tía", "status": "Sold to Exxel Group in 1998 for ~USD 650M", "notes": "Historic — the family's original retail empire" },
+          { "name": "La Rural S.A.", "status": "50% ownership reported historically", "notes": "Exhibition/events venue in Buenos Aires" }
+        ]
+      },
+      "offshore_entities": {
+        "pandora_papers": "Five trusts created December 2004: Galeodea, Cingula, Marquise, Sunrise, Flint. AFIP investigated for alleged tax evasion 2004-2006.",
+        "wealth_estimate": "USD 920 million (2020, Forbes Argentina #10)",
+        "afip_investigation": "Could not justify 900% patrimony increase 2004-2008 per AFIP",
+        "source": "https://www.eldiarioar.com/politica/pandora-papers/nueve-diez-familias-ricas-argentina-figuran-pandora-papers-sociedades-fideicomisos-offshore_1_8425464.html"
+      },
+      "count_analysis": {
+        "currently_operating_brands": 24,
+        "legal_entities_estimate": "20-30 (brands map to legal entities, some brands share entities, some entities have no consumer brand)",
+        "previous_wave_estimate": "25-30 companies (monopolios-wave31-person-verification.json)",
+        "igj_35_assessment": "The 35 may include: (a) historical entities no longer active, (b) offshore trusts (5 known), (c) entities for companies since sold (América TV, El Cronista, La Red). If IGJ data includes all historical directorships (not just current), 35 is plausible as a cumulative figure. As a CURRENT count, 35 is too high — estimated 20-25 active legal entities."
+      }
+    },
+    "critical_corrections": [
+      {
+        "claim": "De Narváez owns América TV",
+        "status": "FALSE — sold 40% stake to Claudio Belocopitt in 2017",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Francisco_de_Narv%C3%A1ez",
+          "https://www.ambito.com/negocios/walmart/cuales-son-los-de-narvaez-el-pais-y-la-region-n5146207"
+        ]
+      },
+      {
+        "claim": "De Narváez owns El Cronista",
+        "status": "FALSE — sold to Grupo América in 2021 for USD 6M",
+        "sources": [
+          "https://www.infobae.com/economia/2021/07/14/el-grupo-america-compro-el-100-del-paquete-accionario-del-diario-el-cronista/",
+          "https://www.perfil.com/noticias/medios/grupo-america-compro-diario-el-cronista-6-millones-dolares.phtml"
+        ]
+      }
+    ],
+    "conclusion": {
+      "confirmed_active_brands": 24,
+      "estimated_legal_entities": "20-30",
+      "neo4j_igj_claim": 35,
+      "assessment": "The 35 figure is LIKELY OVERSTATED for current active companies. Best estimate: 20-25 active legal entities + 5 offshore trusts = ~25-30 total. The 35 may reflect cumulative IGJ entries including historical directorships in now-sold companies (América TV, El Cronista, La Red, Ámbito Financiero, Casa Tía-era entities). CRITICAL: The América TV and El Cronista claims in the investigation data are OUTDATED and must be corrected. RECOMMENDATION: Reduce to '25-30 companies (IGJ cumulative; ~20-25 currently active)' with confidence 0.70. Remove América TV and El Cronista from current holdings."
+    },
+    "sources": [
+      "https://www.gdnargentina.com/",
+      "https://www.ambito.com/negocios/walmart/cuales-son-los-de-narvaez-el-pais-y-la-region-n5146207",
+      "https://www.lanacion.com.ar/economia/negocios/quien-es-francisco-narvaez-el-empresario-le-nid2501936/",
+      "https://www.eldiarioar.com/economia/francisco-narvaez-estrategia-reconversion-liderar-negocio-supermercados-uruguay_1_9070480.html",
+      "https://en.wikipedia.org/wiki/Francisco_de_Narv%C3%A1ez",
+      "https://es.wikipedia.org/wiki/Grupo_de_Narv%C3%A1ez",
+      "https://www.infobae.com/economia/2020/11/06/el-grupo-de-narvaez-se-quedo-con-el-negocio-de-walmart-en-la-argentina/",
+      "https://www.eldiarioar.com/politica/pandora-papers/nueve-diez-familias-ricas-argentina-figuran-pandora-papers-sociedades-fideicomisos-offshore_1_8425464.html",
+      "https://www.perfil.com/noticias/politica/asi-explicaba-de-narvaez-su-patrimonio-el-ano-pasado-20100824-0021.phtml"
+    ]
+  },
+
+  "summary": {
+    "magnetto_35": {
+      "verdict": "PLAUSIBLE but UNVERIFIABLE",
+      "confidence": 0.55,
+      "actual_range": "7 confirmed (web) to 81 (full Grupo Clarín tree). 35 personal IGJ directorships is plausible as a subset.",
+      "action": "KEEP with caveat: 'IGJ registry — not independently verified via public web sources'",
+      "data_quality_note": "The IGJ data in Neo4j is the primary source. Web sources cannot confirm or deny the specific count because IGJ registry data is not publicly searchable. The number 35 sits reasonably between the 7 positions visible on MarketScreener and the 81 total Clarín entities."
+    },
+    "de_narvaez_35": {
+      "verdict": "LIKELY OVERSTATED",
+      "confidence": 0.70,
+      "actual_range": "20-30 active entities (24 confirmed brands, some sharing legal entities; 5 offshore trusts)",
+      "action": "CORRECT to '25-30 companies (IGJ cumulative)' and remove América TV + El Cronista from current holdings",
+      "critical_errors_to_fix": [
+        "Remove 'América TV' from De Narváez current companies — sold 2017",
+        "Remove 'El Cronista Comercial' from De Narváez current companies — sold 2021",
+        "Update description to reflect retail-focused empire (not media)"
+      ]
+    },
+    "igj_data_reliability_note": "The IGJ (Inspección General de Justicia) data underlying our Neo4j graph is the most authoritative source for Argentine corporate registrations. It includes ALL historical directorships, not just currently active ones. When we say 'X companies per IGJ', this is a cumulative count that may include dissolved entities, entities where the person resigned, or entities that were sold. For investigative purposes this is still valuable (it shows the full web of connections), but should not be presented as 'currently controls X companies' without the caveat."
+  }
+}
