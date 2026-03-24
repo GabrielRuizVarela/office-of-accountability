@@ -1,0 +1,1210 @@
+{
+  "investigation": "Monopolios Argentina — Revolving Door & Regulatory Capture Analysis",
+  "date": "2026-03-24T05:12:58.704Z",
+  "total_findings": 90,
+  "findings": {
+    "politician_officers": [
+      {
+        "politician": "FERNANDEZ, Carlos Alberto",
+        "chamber": "diputados",
+        "province": "Misiones",
+        "companies": [
+          "FERRIC CONSTRUCTORA",
+          "TECFEEL",
+          "MONTAJES CARFER",
+          "SURE ARGENTINA LABORATORIES",
+          "AREXCOM",
+          "SANJUVAIS",
+          "C&J PURA SANGRE",
+          "W3 IT SOLUTIONS",
+          "CASA ESTILO",
+          "T.E.R. AMBIENTAL"
+        ],
+        "company_count": 97
+      },
+      {
+        "politician": "LOPEZ, Juan Carlos",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "companies": [
+          "SERVICENTRO GENERAL DEHEZA",
+          "MAPRICONF",
+          "FINANCIAL BUSINESS",
+          "ARGENTINA DE INDUSTRIA SERVICIOS Y DESARROLLOS FERROVIARIOS",
+          "LA HIGIENE COMPAÑIA",
+          "DEEP SOUND",
+          "CHIENS",
+          "IMPREMARC",
+          "MAN PRESS",
+          "SACAS"
+        ],
+        "company_count": 64
+      },
+      {
+        "politician": "MARTINEZ, Carlos Alberto",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "companies": [
+          "INSUNOF",
+          "ESCAPE OINC",
+          "EXPRESO MALVINAS",
+          "MAKONSHOUSE",
+          "ESTUDIOA CINE",
+          "FORTALECER LA INNOVACION Y EL DESARROLLO RURAL (FORINDER)",
+          "GL CONSULTING",
+          "CAMARA ARGENTINA DE AUDITORES",
+          "CENTRAL DE DESARROLLO EMPRESARIO PYME (ACCDEP)",
+          "JUANTEO"
+        ],
+        "company_count": 60
+      },
+      {
+        "politician": "MARTINEZ, Luis Alberto",
+        "chamber": "diputados",
+        "province": "San Juan",
+        "companies": [
+          "REPUBLICA DE LUGANO",
+          "TSE LUZURIAGA",
+          "GRUPO CASEMA",
+          "BLICO",
+          "RIMCO",
+          "ROSALES 130",
+          "TRANSPORTES ESPECIALES",
+          "PUBLICACIONES ESPECIALES",
+          "CONSTRUCTORA LA SELECTA",
+          "PRESTIGIO TEXTIL"
+        ],
+        "company_count": 55
+      },
+      {
+        "politician": "LOPEZ, Juan Manuel",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "companies": [
+          "CIUDADANOS",
+          "A LO DE GERO",
+          "LINEA 102-SARGENTO CABRAL",
+          "JUANO BAR",
+          "ABAMPERE",
+          "FINSOL",
+          "LOGON",
+          "COMPAÑIA DE INMUEBLES",
+          "OPTIMUS PRINT",
+          "AUTO INVERSORA"
+        ],
+        "company_count": 47
+      },
+      {
+        "politician": "GARCIA, Carlos",
+        "chamber": "diputados",
+        "province": "Chaco",
+        "companies": [
+          "ASOCIACION ARGENTINA DE CANARICULTURA ROLLER",
+          "CASOALGA",
+          "DE DIST DE PROD VETERI PARA PEQUE ANIMALES (PET) CADISVET",
+          "BODEGA EL ESTECO",
+          "PUBLISPOT",
+          "GRUPO LOS GROBO",
+          "MBP II PLAN INVESTORS, L.P.",
+          "NUEVE ARTES",
+          "PAPEL MISIONERO SA INDUSTRIAL FORESTAL Y COMERCIAL",
+          "BODEGAS DEL SUR"
+        ],
+        "company_count": 44
+      },
+      {
+        "politician": "DE NARVAEZ, Francisco",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "companies": [
+          "DEMIBELL",
+          "FRANSA",
+          "AMERICA TV",
+          "EL CRONISTA COMERCIAL",
+          "PARA LA LUCHA CONTR LAS ENFER NEURO DE LA INFA (F.L.E.N.I.)",
+          "FUNDACION D&S",
+          "PUNTO CRUZ",
+          "ARGENTINA DE JUGADORES DE POLO",
+          "30 DE SEPTIEMBRE",
+          "22 DE SETIEMBRE"
+        ],
+        "company_count": 35
+      },
+      {
+        "politician": "ROMERO, Juan Carlos",
+        "chamber": "senadores",
+        "province": "Salta",
+        "companies": [
+          "J.C. ROMERO",
+          "STEEL CORE",
+          "C & D R",
+          "BLUMITA",
+          "VENTALBA",
+          "RODDINO",
+          "RECICLADORA ARGENTINA",
+          "ARCHIVOS DE ARTISTAS JUAN CARLOS ROMERO",
+          "RED CONCEPTUALISMOS DEL SUR.ARCHIVO E INVESTIGACION EN ARTE",
+          "CAROCRUZ 24"
+        ],
+        "company_count": 32
+      },
+      {
+        "politician": "GUTIERREZ, Julio César",
+        "chamber": "diputados",
+        "province": "Santa Fe",
+        "companies": [
+          "LATIN AMERICAN MANAGEMENT",
+          "JMV GROUP",
+          "SOUTH CABLE HOLDINGS",
+          "AC INVERSORA",
+          "SOUTHTEL HOLDINGS",
+          "GUTCAS",
+          "GIGANTO URBANA S.A. EMPRESA DE VIA PUBLICA",
+          "GUTIERRAS",
+          "BGS GROUP",
+          "CENTRO OESTE CABLE VISION"
+        ],
+        "company_count": 31
+      },
+      {
+        "politician": "ALVAREZ, Carlos Alberto",
+        "chamber": "diputados",
+        "province": "CABA",
+        "companies": [
+          "DV.V.",
+          "PROPAFILM",
+          "NEXT - ADMINISTRADORA DE NUEVOS NEGOCIOS",
+          "OVERPRINT AGENCIA INTERACTIVA",
+          "ESTABLECIMIENTO LA YAYA",
+          "REGELANAD",
+          "GCH CONSTRUCCIONES",
+          "CLC COMUNICACIONES",
+          "ARGENTINA DE BASQUETBOL C.A.B",
+          "IGLESIA LA VOZ DE DIOS ASOCIACION CIVIL"
+        ],
+        "company_count": 30
+      },
+      {
+        "politician": "FERNANDEZ, Jorge",
+        "chamber": "diputados",
+        "province": "San Luis",
+        "companies": [
+          "DOÑA ERCILIA",
+          "ILUMINACION FLORESTA",
+          "DE FERROALEACIONES Y ALEACIONES ESPECIALES-CAFAE-",
+          "CABAÑA DON ROLO",
+          "GALIB INTERNATIONAL",
+          "DELTACAR",
+          "ARGENTINA DE LA INDUSTRIA FRIGORIFICA (C.A.D.I.F.)",
+          "CONUS SOCIEDAD ANONIMA",
+          "GENERAL PUEYRREDON SA DE TRANSPORTES COMERCIAL E INDUSTRIAL",
+          "PERNAMBUCO"
+        ],
+        "company_count": 29
+      },
+      {
+        "politician": "RODRIGUEZ, José",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "companies": [
+          "EL ENTREGO",
+          "DE LA UNION DE FIAMBRERIAS ALM AUTOSERV MINORISTAS Y AFINES",
+          "CHACABUCO 386",
+          "CENTRO NORTE",
+          "BORRERAS",
+          "LA TORRE DE HERCULES",
+          "BMA VALORES",
+          "ANK PLATFORM",
+          "BANCO BMA",
+          "BANELCO"
+        ],
+        "company_count": 28
+      },
+      {
+        "politician": "ROMERO, Carlos Alberto",
+        "chamber": "diputados",
+        "province": "La Rioja",
+        "companies": [
+          "TERMICA CIUDADELA",
+          "CITILOGISTICA",
+          "ROMERO & ROMERITO",
+          "CLUB ALFIL NEGRO",
+          "INDIGO",
+          "DIAPASON DE BUENOS AIRES",
+          "HERMANOS ROMERO AGRICOLA",
+          "AGROPECUARIA LA PERLA",
+          "DON JUAN ALFREDO",
+          "LOGISERV"
+        ],
+        "company_count": 28
+      },
+      {
+        "politician": "FERNANDEZ, Hector",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "companies": [
+          "RIVESPA",
+          "SECA SAL",
+          "HIERROS Y CONSTRUCCIONES",
+          "PORTOBELLO S.A.",
+          "APEX EQUIPAMIENTOS",
+          "LL HOLDINGS",
+          "MILKCO",
+          "MATRICERIA SAN JUAN DE ARGENTINA",
+          "CENTRO DE UROLOGIA Y NEFROLOGIA",
+          "ARGEN DE SALV ACUA ASOC CIVI SIN FINE DE LUCR (F.A.S.A.A.C.)"
+        ],
+        "company_count": 21
+      },
+      {
+        "politician": "PEREZ, Alberto José",
+        "chamber": "diputados",
+        "province": "San Luis",
+        "companies": [
+          "HAILIR AGRIBUSINES",
+          "NPC & ASOCIADOS",
+          "IPSO FACTO",
+          "SULPHUR MILLS",
+          "WECAN AGRO",
+          "RAINBOW AGROSCIENSES",
+          "PLATO DE ARGENTINA",
+          "GERMAN BIOTECH TRADE",
+          "SOLBAYRES",
+          "CENTRAL EOLICA NUEVA KOLUEL KAYKE"
+        ],
+        "company_count": 20
+      },
+      {
+        "politician": "GARCIA, Alejandro",
+        "chamber": "diputados",
+        "province": "CABA",
+        "companies": [
+          "NEXUS CONSULTING",
+          "SARALI",
+          "GLOBEX",
+          "VECINOS AUTOCONVOCADOS DEL SUR",
+          "PINCAR",
+          "PRODUCTOS CENTURION",
+          "8 DE OCTUBRE",
+          "CONSULTORIA AMERICANA DE PLANEAMIENTO Y ESTRATEGIA",
+          "LA ALFAJORERA ARGENTINA",
+          "VALLE DE UCO"
+        ],
+        "company_count": 19
+      },
+      {
+        "politician": "VAZQUEZ, Roberto",
+        "chamber": "diputados",
+        "province": "CABA",
+        "companies": [
+          "MALAND S.A. - NAKON SUR S.A. - UNION TRANSITORIA",
+          "SEGURIDAD GURIEL",
+          "SANTA FAZ",
+          "GRUPO PRODISEÑO",
+          "VIAN",
+          "UNION INDUSTRIAL FUEGUINA",
+          "MIÑO S.R.L.",
+          "ROWING",
+          "WINKOW",
+          "LATINLISTS ARGENTINA"
+        ],
+        "company_count": 19
+      },
+      {
+        "politician": "FERNANDEZ, Eduardo",
+        "chamber": "diputados",
+        "province": "Córdoba",
+        "companies": [
+          "FERTILIDAD BUENOS AIRES",
+          "DEUTSCHE SECURITIES",
+          "DEUTSCHE MANDATOS",
+          "MC CRED",
+          "NEOMOTICA INTERNATIONAL TRADE",
+          "ARGENTINA DE VENTA DIRECTA CAVEDI",
+          "MC.CENTER TUCUMAN",
+          "GE HEALTHCARE ARGENTINA",
+          "DE GERENTES DE CLUBES DE CAMPO Y AFINES",
+          "BJA"
+        ],
+        "company_count": 19
+      },
+      {
+        "politician": "SUAREZ, Juan Carlos",
+        "chamber": "diputados",
+        "province": "La Pampa",
+        "companies": [
+          "CORPORACION DIARIOSPUERTA",
+          "INSPECTION & SERVICES",
+          "ATLANTIC PACIFIC TRAIDING",
+          "PARTNER SALUD",
+          "LOGISTICA POSITIVA",
+          "TRANSPORTES J.C.",
+          "PERIPLOS TOUR",
+          "I.M. Y ASOC.",
+          "LOS CHEFF",
+          "DECOFIN"
+        ],
+        "company_count": 17
+      },
+      {
+        "politician": "ROSSI, Carlos Alberto",
+        "chamber": "senadores",
+        "province": "Córdoba",
+        "companies": [
+          "DESARROLLOS ROSSI",
+          "INVERSIONES PATAGONIA",
+          "CUER-BOS",
+          "MIL 26",
+          "TAPES",
+          "ESTUDIO INTEGRAL DE COMERCIO EXTERIOR",
+          "CENTRO DE ESTUDIOS Y PROMOCION AGRARIA CEPA",
+          "CORREO OFICIAL DE LA REPUBLICA ARGENTINA",
+          "RUCA KUYEN",
+          "EMPRENDIMIENTO PATAGONICO"
+        ],
+        "company_count": 16
+      },
+      {
+        "politician": "SOSA, Carlos Alberto",
+        "chamber": "diputados",
+        "province": "Salta",
+        "companies": [
+          "LONGTAR BUS",
+          "JOSCAR BUS",
+          "UPNZ ARGENTINA",
+          "COMASO",
+          "PROMS",
+          "LIMINAL",
+          "CARCAR GANADERA",
+          "CUNDIR",
+          "ALTEMAQ",
+          "RITOSA"
+        ],
+        "company_count": 16
+      },
+      {
+        "politician": "MICHEL, Guillermo",
+        "chamber": "diputados",
+        "province": "Entre Ríos",
+        "companies": [
+          "COMERCIALIZADORA DE COMBUSTIBLES DEL LITORAL",
+          "LA LINEA CHANNEL MANAGEMENT",
+          "SANDEBUS INVERSIONES",
+          "EMBRAR",
+          "BACO INVERSIONES",
+          "N.P. FOTOGRAFIA",
+          "INSPIRE GROUP",
+          "LA BARRACA DE GCHU",
+          "PANZA VERDE",
+          "CAF JAUSER"
+        ],
+        "company_count": 16
+      },
+      {
+        "politician": "PEREYRA, Juan Manuel",
+        "chamber": "diputados",
+        "province": "Córdoba",
+        "companies": [
+          "ENCUENTRO DE MEDIADORES (E.M.A.C) ASOCIACION CIVIL",
+          "BAZ SERVICIOS EMPRESARIALES",
+          "TRANSPORTES,ESTIBAJES Y AGENCIA MARITIMA",
+          "ALMA CUYANA",
+          "VIALNOA",
+          "CONSTRUCCIONES TERMICAS",
+          "TERMOELECTRICA MANUEL BELGRANO",
+          "INTEGRACION ELECTRICA SUR ARGENTINA",
+          "RAISIN",
+          "DEISAR"
+        ],
+        "company_count": 15
+      },
+      {
+        "politician": "AYALA, Juan Carlos",
+        "chamber": "diputados",
+        "province": "Chaco",
+        "companies": [
+          "ELMEC",
+          "AVIAYA",
+          "LENAYA",
+          "AYAVI",
+          "LA ESQUINA DE MARTINEZ",
+          "AVAY",
+          "JUANFIOR",
+          "FELAYA",
+          "CABAYA",
+          "SANYBOE"
+        ],
+        "company_count": 14
+      },
+      {
+        "politician": "RODRIGUEZ, Alejandro",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "companies": [
+          "AYREON",
+          "TFI AMERICAN TRADING",
+          "KEY-CODE",
+          "PLASAMA",
+          "SUVENTA",
+          "CORRICH",
+          "GUATEFIT",
+          "SOC ARGENTINA DE ELECTROCENFALOGRAFIA Y NEUROFISIOLOGIA CLIN",
+          "ACRAT ASOCIACION DE CRIADORES DE RANAS TOROS",
+          "ENCUENTRO PARA LA ESPERANZA ASOCIACION CIVIL"
+        ],
+        "company_count": 14
+      },
+      {
+        "politician": "FRANCOS, Guillermo Alberto",
+        "chamber": "diputados",
+        "province": "CABA",
+        "companies": [
+          "UALA BANK",
+          "UNITEC SOLUCIONES",
+          "GP ALIMENTOS",
+          "PROVINCIA MICROEMPRESAS",
+          "ENARSA AEROPUERTOS",
+          "AERONAUTICA Y AEROPORTUARIA",
+          "FEXIS",
+          "LAPA ESTUDIANTIL",
+          "AERO VIP",
+          "ARGENTINO UCRANIA DE COMERCIO E INDUSTRIA"
+        ],
+        "company_count": 14
+      },
+      {
+        "politician": "GOMEZ, Jose",
+        "chamber": "diputados",
+        "province": "Santiago del Estero",
+        "companies": [
+          "GOMCOM",
+          "LIGOM",
+          "MIS VACAS ROXAS",
+          "LAUDA TEXTIL",
+          "AYRALE",
+          "IMEGA",
+          "ALOJAMIENTO CRAMER",
+          "CIGARRERIAS LIBRERIAS BAZARES Y JUGUET MINORIS(DE BAJA)",
+          "LA NUEVA OPERA",
+          "ARGENTINA PARA EL INTERCAMBIO CULTURAL Y EDUCACIONAL"
+        ],
+        "company_count": 13
+      },
+      {
+        "politician": "SÁNCHEZ, Fernando",
+        "chamber": "diputados",
+        "province": "CABA",
+        "companies": [
+          "ALBOMAR",
+          "NACION SERVICIOS",
+          "BICE LEASING",
+          "TALLE. NAVA. DARSE. NORTE SACI Y NAVIERA TANDA. S.A.C.I. Y N",
+          "FAM CONSTRUCCIONES",
+          "SUPER SERVICIOS OLIVOS",
+          "CLUB ARCHIPIELAGO CANARIO DE BUENOS AIRES",
+          "GEOSISTEMAS",
+          "EXPERTICE",
+          "SANTECO CONSTRUCTORA INMOBILIARIA Y DEPORTIVA"
+        ],
+        "company_count": 12
+      },
+      {
+        "politician": "DE MENDIGUREN, José Ignacio",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "companies": [
+          "FEDERA ARGENT DE LA INDUST DE LA INDUME Y AFINES (FAIIA)",
+          "UNION INDUSTRIAL ARGENTINA",
+          "INDUSTRIAL ARGENTINA DE LA INDUMENTARIA",
+          "CEDEIRA INTERNACIONAL",
+          "DE LA INDUSTRIA NACIONAL EQUINA (CAMINE)",
+          "CRIADORES ARGENTINOS DE CABALLOS CUARTO DE MILLA",
+          "SERPE",
+          "OBSERVATORIO PYME",
+          "BICE FACTORING",
+          "CENTRO 202"
+        ],
+        "company_count": 11
+      },
+      {
+        "politician": "SANCHEZ, Francisco",
+        "chamber": "diputados",
+        "province": "Neuquén",
+        "companies": [
+          "UNILINE PATAGONIA",
+          "FALLA VALENCIANA EL TURIA",
+          "INMOTTA",
+          "FRABE",
+          "FRAGANOR",
+          "ASO DE PROF DE LA SAL DEL ARE TEC SAN DE LA DI GE DE ATE MED",
+          "SAN VICENTE TOURS",
+          "CLUB SOCIAL Y DEPORTIVO SAN MARTIN",
+          "D R CATERING",
+          "SKV"
+        ],
+        "company_count": 11
+      }
+    ],
+    "appointee_officers": [
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "REGENCY-WYNDCLYFF,LLC",
+          "LIATIFAR DEL OESTE S.R.L.",
+          "GREY STONE DEL OESTE S.R.L.",
+          "CRISTAL DELAWARE LLC",
+          "REGUS LIMITED",
+          "PACKAGING INVESTMENTS HOLDINGS (PIH),B.V.",
+          "CEMENTO POLPAICO S.A.",
+          "CAF DIVERSIFIED BUSINESS DEVELOPMENT, SA.",
+          "WYNDHAM EXCHANGE AND RENTALS INC.",
+          "GRAND CIRCLE CORPORATION"
+        ],
+        "company_count": 115
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "INGARD",
+          "LATIN BIO",
+          "DIEBOLD DPB",
+          "ECOL",
+          "SACDE SOCIEDAD ARGENTINA DE CONSTRUC Y DESARRO ESTRATEGICO",
+          "LODIMET",
+          "SAFRAMA",
+          "TRANSMETRO",
+          "ASEO",
+          "LPW"
+        ],
+        "company_count": 52
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "CAMPO SAN ENRIQUE",
+          "INVERSIONES LAPACHO",
+          "OLIDEN I",
+          "FRANCESCA",
+          "MELICUE",
+          "ADMINISTRADORA PARQUE CENTRAL NORTE",
+          "INVERSIONES MERIDIANO",
+          "AYRES DE SAN ISIDRO S.A. FIDUCIARIA",
+          "ADMINISTRADORA SANTA CATALINA",
+          "AYRES ADMINISTRADORA"
+        ],
+        "company_count": 28
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "ESPECIALIZACIONES RANDSTAD",
+          "REST DIVISION SERVICIOS",
+          "BARRIO CERRADO LA CESARINA",
+          "PRESTACION DE SERVICIOS EMPRESARIALES",
+          "NDM AGRITECH SYSTEMS",
+          "MIRAMAR LINK ASOCIACION CIVIL",
+          "ZOFINGEN SECURITIES",
+          "NIEVES DE MENDOZA",
+          "SOLUCIONES RANDSTAD",
+          "SANTA ROSA DEL MONTE"
+        ],
+        "company_count": 26
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "ESTRELLA SERVICIOS PETROLEROS",
+          "ESTRELLA HOLDING",
+          "TAI PAN MALTING",
+          "ESTRELLA MINERALES",
+          "EXPLORE ACQUISITION CORP.",
+          "DREAMCO",
+          "TVBC",
+          "SAN JUAN II",
+          "FEDERAL MINORITY HOLDING DE ARGENTINA",
+          "FEDERAL MINORITY HOLDINGS II LLC"
+        ],
+        "company_count": 26
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "FINCA ARTINA",
+          "VIVENCIALOVERDE",
+          "PASSARO",
+          "GAUCHO DEVELOPMENT",
+          "MATHIS VENTURES LLC",
+          "ALGODON GLOBAL PROPERTIES,LLC",
+          "FORGITAL SOUTH AMERICA",
+          "ALGODON PROPERTIES II",
+          "AGROPECUARIA SIERRAS DE ALTO BELLO",
+          "IPG-GLOBAL PROPERTIES,LLC"
+        ],
+        "company_count": 21
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "3000 DESARROLLOS",
+          "ARENALES DESARROLLOS",
+          "ZABALA DESARROLLOS",
+          "LM DESARROLLOS",
+          "PLANO SATELITAL",
+          "QUQI GASTRONOMIA",
+          "CANTINA 0912",
+          "BORGES ESQUINA",
+          "RENE CANTINA",
+          "TURNO 3424"
+        ],
+        "company_count": 20
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "GLOBAL REWARD SOLUTIONS LPI",
+          "INQUIRO VITAE",
+          "SOCIETE EUROPEENNE DES SATELLITES TELECOMUNICACIONES DE ARGE",
+          "SPOTIFY ARGENTINA",
+          "EBANX GOLD",
+          "ZILVER",
+          "VERACIER",
+          "EBANX",
+          "AUTHO ARGENTINA",
+          "NORTONLIFELOCK ARGENTINA"
+        ],
+        "company_count": 20
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "EURO CEC",
+          "COSTAO ARGENTINA",
+          "CIMBRA INVERSIONES",
+          "PROMOTORES INMOBILIARIOS NOBIS",
+          "ABENUR SOCIEDAD ANONIMA",
+          "CHAYA",
+          "ESCAMPS",
+          "CLUB DE CAMPO PRADO DEL OESTE I",
+          "ADMINISTRADORA BARRIO PRIVADO LA LOMADA",
+          "CENTRO EMPRENDIMIENTOS"
+        ],
+        "company_count": 16
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "TRANQUERA DEL NORTE",
+          "LINEAS MESOPOTAMICAS",
+          "LINEAS DE TRANSMISION DE BUENOS AIRES",
+          "SCD SERVICIOS",
+          "CREAFE FIDUCIARIA",
+          "LINEAS DE TRANSMISION DEL LITORAL",
+          "YACYLEC",
+          "SERVICIOS EPSILON",
+          "SUBTERRANEOS DE BUENOS AIRES SOCIEDAD DEL ESTADO",
+          "ASEO"
+        ],
+        "company_count": 16
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "EVOLVRA",
+          "TRANANPOWER",
+          "FERROCARRILES ARGENTINOS",
+          "GLOVENT",
+          "PRADAN",
+          "ADMINISTRACION DE INFRAESTRUCTURAS FERROVIARIAS",
+          "TERMOELECTRICA JOSE DE SAN MARTIN",
+          "TERMOELECTRICA MANUEL BELGRANO",
+          "ORAZUL INTERNATIONAL ESPAÑA HOLDINGS S.L.",
+          "DE COMERCIALIZADORES DE ENERGIA ELECTRICA DE LA REP ARG"
+        ],
+        "company_count": 15
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "TRANSELEC",
+          "APERTURA REPUBLICANA",
+          "TRANSAMERICAN TELECOMUNICATION",
+          "PAOLETTI AMERICA",
+          "ENERGEN",
+          "VERIZON ARGENTINA",
+          "BT ARGENTINA",
+          "ENEL TRADING ARGENTINA",
+          "LACTEOS CONOSUR",
+          "ENEL GENERACION EL CHOCON"
+        ],
+        "company_count": 15
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "CONTENIDOS ARTISTICOS E INFORMATIVOS",
+          "FERROCARRILES ARGENTINOS",
+          "NACION SERVICIOS",
+          "EMPRESA ARGENTINA DE SOLUCIONES SATELITALES S.A - ARSAT -",
+          "AGUA Y SANEAMIENTOS ARGENTINOS",
+          "BICE LEASING",
+          "NUEVO BANCO DE ENTRE RIOS SOCIEDAD ANONIMA",
+          "NUEVO BANCO SUQUIA SOCIEDAD ANONIMA",
+          "BICE FACTORING",
+          "GARANTIZAR S.G.R."
+        ],
+        "company_count": 14
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "BELGRANO CARGAS Y LOGISTICA",
+          "NACION SERVICIOS",
+          "EMPRESA ARGENTINA DE SOLUCIONES SATELITALES S.A - ARSAT -",
+          "AGUA Y SANEAMIENTOS ARGENTINOS",
+          "BICE LEASING",
+          "NUEVO BANCO DE ENTRE RIOS SOCIEDAD ANONIMA",
+          "BICE FACTORING",
+          "BACS BANCO DE CREDITO Y SECURITIZACION",
+          "BHN VIDA",
+          "BHN SEGUROS GENERALES"
+        ],
+        "company_count": 14
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "INVERSIONES AIR ONE SPA",
+          "I-ED GLOBAL SERVICES SPA",
+          "PROMETEON TYRE GROUP S.R.L.",
+          "ZIP PAK COLOMBIA S.A.S.",
+          "COMERCIAL ZIP-PAK CHILE LTDA",
+          "GRUPPO MERCURIO S.P.A.",
+          "ADP SOUTH AMERICA,LLC",
+          "PROPERATI LLC",
+          "SOVITEC INTERNATIONAL BV",
+          "ADP RPO, LLC"
+        ],
+        "company_count": 14
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "TECHINT INVERSIONES SOCIEDAD ANONIMA INVERSORA Y FINANCIERA",
+          "ENERGIA ARGENTINA",
+          "SERMETEC",
+          "JET PAQ",
+          "OPTAR OPERADOR MAYORISTA DE SERVICIOS TURISTICOS",
+          "SIDERNET",
+          "AEROLINEAS ARGENTINAS SOCIEDAD ANONIMA",
+          "TECNOMATTER INSTALACIONES Y CONSTRUCCIONES",
+          "TECHINT COMPAÑIA TECNICA INTERNACIONAL SOC ANON COM E INDUS",
+          "\"NATE\" NAVEGACION Y TECNOLOGIA MARITIMA"
+        ],
+        "company_count": 12
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "SECAR SECURITY GROUP",
+          "SECAR SECURITY COUNTRIES",
+          "CONSULTORA VIDECO",
+          "SECAR SECURITY SERVICIOS",
+          "FUEGO RED",
+          "SECAR SECURITY BUENOS AIRES 1",
+          "C.E.M.C.I.-COMIS EMPRESAR DE MEDIOS DE COMUNI INDEP-ASO CIV",
+          "SECAR SECURITY ARGENTINA",
+          "SECAR SECURITY BUENOS AIRES",
+          "SECAR SECURITY SUR"
+        ],
+        "company_count": 12
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "RENO ARGENTINA",
+          "LOS SEIS CARDALES",
+          "ELECTRONICA DE PRECISION",
+          "IRIBARNE-IRIBARNE",
+          "DELRICA",
+          "INTERNACIONAL PERFORACIONES",
+          "ANEX",
+          "COMPAÑIA GENERAL MINERA ARGENTINA",
+          "EPSA DE ARGENTINA",
+          "RENT A BULL"
+        ],
+        "company_count": 12
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "TELEFONICA MOVILES ARGENTINA HOLDING",
+          "AEROHANDLING",
+          "JET PAQ",
+          "TELEFONICA MOVILES ARGENTINA",
+          "ARGENTINA WIRELESS TELECOMMUNICATIONS",
+          "RADIO SERVICIOS",
+          "RADIO MOVIL DIGITAL ARGENTINA",
+          "OPTAR OPERADOR MAYORISTA DE SERVICIOS TURISTICOS",
+          "MINIPHONE",
+          "TELEFONICA DE ARGENTINA"
+        ],
+        "company_count": 12
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "LAFLIA CONTENIDOS",
+          "PRO IDS",
+          "IDEAS SPORTS",
+          "RADIODIFUSORA DEL PLATA",
+          "RADIO IDEAS",
+          "ALVEAR 55",
+          "MATCH RECORDS",
+          "ESFINGE 21",
+          "IDEAS DEL SUR",
+          "KASTIER"
+        ],
+        "company_count": 11
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "JTBA",
+          "AMERICA TAXI",
+          "NJV",
+          "TIO JOP",
+          "MATHUKA",
+          "SBTD",
+          "SBTC",
+          "SBTA",
+          "M.W.C.",
+          "EMPRESARIA DEL AUTO TAXI"
+        ],
+        "company_count": 11
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "ENERGIA ARGENTINA",
+          "ALICO COMPAÑIA DE SEGUROS DE RETIRO",
+          "METLIFE SERVICIOS",
+          "EMPR DE TRAN DE ENER ELEC POR DIST TRON DE LA PROV DE BS AS",
+          "BEST MARKET",
+          "AMERICAN LIFE INSURANCE COMPANY COMPAÑIA DE SEGUROS DE VIDA",
+          "COMPAÑIA INVERSORA EN TRANSMISION ELECTRICA CITELEC",
+          "CLAFIL",
+          "COMPAÑIA INVERSORA METLIFE",
+          "GENES II SEGUROS DE RETIRO"
+        ],
+        "company_count": 11
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "NEURO RESOURCE GROUP ARGENTINA",
+          "CORREO OFICIAL DE LA REPUBLICA ARGENTINA",
+          "LAGUNA CONDOR",
+          "MARIA ALICIA",
+          "GORRA BLANCA",
+          "LOMA DEL DIABLO",
+          "BAHIA CHICA",
+          "CESVI ARGENTINA",
+          "ATLANTIS SOCIEDAD INVERSORA",
+          "EL COMERCIO COMPAÑIA DE SEGUROS A PRIMA FIJA"
+        ],
+        "company_count": 11
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "QUINTA ESSENTIA",
+          "GRUPO SEIMA",
+          "LETSWORK",
+          "G33",
+          "NEWFOUND",
+          "PUNTOGAMA",
+          "PINAR NORTE",
+          "M2 FIDUCIARIA",
+          "PAVON 3748",
+          "I.SEIMA SOCIEDAD ANONIMA"
+        ],
+        "company_count": 10
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "KEVLIN CORP. S.A.",
+          "AURION TECNOLOGIA, SOCIEDAD ANONIMA DE CAPITAL VARIABLE",
+          "CENTRAL RESOURCES INC.",
+          "CENTRAL PATAGONIA CORPORATION",
+          "CPC HOLDING,INC",
+          "BENQ MOBILE HOLDING B.V.",
+          "BENQ MOBILE GMBH & CO.OHG",
+          "ACER COMPUTEC MEXICO S.A DE CAPITAL VARIABLE",
+          "BENQ AMERICA CORPORATION",
+          "CRI HOLDING,INC."
+        ],
+        "company_count": 10
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "HIDRO DISTRIBUCION",
+          "CENTRAL VUELTA DE OBLIGADO",
+          "OPERATING",
+          "TERMOELECTRICA JOSE DE SAN MARTIN",
+          "TERMOELECTRICA MANUEL BELGRANO",
+          "LA PLATA COGENERACION",
+          "PROENER",
+          "CENTRALES TERMICAS MENDOZA",
+          "HIDRONEUQUEN",
+          "COMPAÑIA ADMINISTR DEL MERCADO MAYORIS ELECTR S.A.(CAMMESA)"
+        ],
+        "company_count": 10
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "CIUDADANA",
+          "GESTION Y PERSONAS",
+          "RECIDUCA",
+          "MANAGERS S.A.- UNION TRANSITORIA DE EMPRESAS",
+          "MERCADOMRO ARGENTINA",
+          "INVERSORA LOS CEDROS",
+          "MANAGERS",
+          "ALTO LUJAN",
+          "TOLDOS CHICOS"
+        ],
+        "company_count": 9
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "SJJF DESARROLLOS",
+          "LA CORCUELA",
+          "PENSAR ARGENTINA (PENSAR)",
+          "CREDITO Y CAUCION S.A. COMPAÑIA DE SEGUROS",
+          "NUEVA GESTION",
+          "STERHAM",
+          "EMPRENDIMIENTOS INMOBILIARIOS FATIMA",
+          "PRIVADO",
+          "GALLION"
+        ],
+        "company_count": 9
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "AGROPECUARIA DEL SOLAR DORREGO",
+          "ESTANCIAS LAUQUEN DE INCHAUSPE",
+          "ARGENTRIGO ASOCIACION ARGENTINA DE TRIGO",
+          "ESTANCIAS EL CORRENTINO",
+          "FAMILES",
+          "MAIZAR ASOCIACION MAIZ Y SORGO ARGENTINO",
+          "SASTRE INCHAUSPE",
+          "LA TOLDERIA",
+          "EL ALERTA"
+        ],
+        "company_count": 9
+      },
+      {
+        "appointee": null,
+        "position": null,
+        "organization": null,
+        "companies": [
+          "SYMFONIA",
+          "NOGALES DE ENTRE RIOS",
+          "DESARROLLOS INMOBILIARIOS ALTO DELTA",
+          "SISTEMAS Y GESTIONES INTEGRALES",
+          "CHULUN",
+          "ECONOMIA Y REGIONES",
+          "BANCO DE INVERSION Y COMERCIO EXTERIOR",
+          "EL GUASUNCHO SOCIEDAD ANONIMA AGRICOLA GANADERA Y FORESTAL",
+          "CASEL"
+        ],
+        "company_count": 9
+      }
+    ],
+    "contractor_donors": [],
+    "companies_gov_connections": [
+      {
+        "company": "EMPRESA ARGENTINA DE SOLUCIONES SATELITALES S.A - ARSAT -",
+        "gov_connected_officers": 22
+      },
+      {
+        "company": "DIOXITEK",
+        "gov_connected_officers": 19
+      },
+      {
+        "company": "CONUAR S.A.(COMBUSTIBLES NUCLEARES ARGENTINOS)",
+        "gov_connected_officers": 17
+      },
+      {
+        "company": "FAE S.A.(FABRICACION DE ALEACIONES ESPECIALES)",
+        "gov_connected_officers": 13
+      },
+      {
+        "company": "SOCIEDAD ARGENTINA DE RADIOPROTECCION ASOCIACION CIVIL",
+        "gov_connected_officers": 9
+      },
+      {
+        "company": "INNOVACIONES TECNOLOGICAS AGROPECUARIAS SOC ANON(INTEA SA)",
+        "gov_connected_officers": 8
+      },
+      {
+        "company": "EDUC.AR",
+        "gov_connected_officers": 8
+      },
+      {
+        "company": "COMPAÑIA ADMINISTR DEL MERCADO MAYORIS ELECTR S.A.(CAMMESA)",
+        "gov_connected_officers": 8
+      },
+      {
+        "company": "PENSAR ARGENTINA (PENSAR)",
+        "gov_connected_officers": 7
+      },
+      {
+        "company": "CENTRO DIAGNOSTICO NUCLEAR",
+        "gov_connected_officers": 7
+      },
+      {
+        "company": "FERROCARRILES ARGENTINOS",
+        "gov_connected_officers": 7
+      },
+      {
+        "company": "VENG",
+        "gov_connected_officers": 7
+      },
+      {
+        "company": "ASOCIACION ARGENTINA DE PRODUCCION ANIMAL (A.A.P.A.)",
+        "gov_connected_officers": 7
+      },
+      {
+        "company": "NACION SERVICIOS",
+        "gov_connected_officers": 7
+      },
+      {
+        "company": "ORGANISMO ARGENTINO DE ACREDITACION",
+        "gov_connected_officers": 7
+      },
+      {
+        "company": "TALLE. NAVA. DARSE. NORTE SACI Y NAVIERA TANDA. S.A.C.I. Y N",
+        "gov_connected_officers": 7
+      },
+      {
+        "company": "INTERCAMBIO Y CONVERGENCIA PARA UNA NUEVA ARGE-AS CI (ICONA)",
+        "gov_connected_officers": 7
+      },
+      {
+        "company": "CONTENIDOS ARTISTICOS E INFORMATIVOS",
+        "gov_connected_officers": 7
+      },
+      {
+        "company": "ARGENTINA DE NANOTECNOLOGIA (F.A.N.)",
+        "gov_connected_officers": 6
+      },
+      {
+        "company": "IRAM, INSTITUTO ARGENTINO DE NORMALIZACION Y CERTIFICACION",
+        "gov_connected_officers": 6
+      },
+      {
+        "company": "ARGENTINA DE TECNOLOGIA NUCLEAR",
+        "gov_connected_officers": 6
+      },
+      {
+        "company": "ASO ARGENTI DE PRESUPUE Y ADMINISTRACI FINANCIERA PUB (ASAP)",
+        "gov_connected_officers": 6
+      },
+      {
+        "company": "CORREO OFICIAL DE LA REPUBLICA ARGENTINA",
+        "gov_connected_officers": 5
+      },
+      {
+        "company": "ADMINISTRACION DE INFRAESTRUCTURAS FERROVIARIAS",
+        "gov_connected_officers": 5
+      },
+      {
+        "company": "CONSEJO ARGEN PARA EL DESARR Y LOS DERECH HUMA CADDH ASO CIV",
+        "gov_connected_officers": 5
+      },
+      {
+        "company": "NUCLEOELECTRICA ARGENTINA",
+        "gov_connected_officers": 5
+      },
+      {
+        "company": "SUBTERRANEOS DE BUENOS AIRES SOCIEDAD DEL ESTADO",
+        "gov_connected_officers": 5
+      },
+      {
+        "company": "PROVINCIA SEGUROS",
+        "gov_connected_officers": 5
+      },
+      {
+        "company": "BICE FACTORING",
+        "gov_connected_officers": 5
+      },
+      {
+        "company": "EMPRESA ARGENTINA DE NAVEGACION AEREA",
+        "gov_connected_officers": 5
+      }
+    ]
+  }
+}

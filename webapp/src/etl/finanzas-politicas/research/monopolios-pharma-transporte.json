@@ -1,0 +1,588 @@
+{
+  "meta": {
+    "title": "Argentine Pharma & Transport Sector Monopolization — Deep Dive",
+    "date": "2026-03-24",
+    "description": "Investigation of market concentration in Argentine pharmaceutical manufacturing, wholesale drug distribution, state health insurance procurement (PAMI), and transport infrastructure: airlines, toll roads, railways, ports, and urban transit. Structural monopolies, key families, and regulatory capture documented.",
+    "methodology": "Web research across COFA observatory data, ANMAT filings, CNDC records, PAMI procurement documents, CILFA reports, transport regulatory filings, press reporting (Infobae, La Nación, iProfesional, Página/12, El Cronista), auditor general reports, and industry statistics. All claims sourced.",
+    "confidence_tier": "bronze",
+    "sectors": ["pharmaceutical", "transport"]
+  },
+
+  "pharma": {
+    "market_overview": {
+      "total_labs_registered": "~230 active labs",
+      "top_10_share_pct": 51,
+      "top_20_share_pct": 70,
+      "national_capital_dominance": "More than 50% of the market is supplied by nationally-owned firms — unique in Latin America",
+      "top_5_national_labs_combined_share_pct": 30.3,
+      "imported_product_share_q1_2025_pct": 37.5,
+      "units_sold_decline_2024": "Sales fell by over 9 million units while lab revenues rose 332.9%",
+      "sources": [
+        "https://observatorio.cofa.org.ar/index.php/2023/01/12/participacion-de-los-15-primeros-laboratorios-en-el-mercado-total-de-los-medicamentos-2/",
+        "https://cronicadelnoa.com.ar/2025/02/07/los-duenos-del-negocio-de-los-medicamentos-10-laboratorios-mas-importantes-de-argentina/",
+        "https://www.cronista.com/negocios/por-que-argentina-tiene-los-medicamentos-mas-caros-de-la-region-pese-al-gran-desarrollo-de-la-industria-farmaceutica/"
+      ]
+    },
+
+    "lab_concentration": {
+      "top_10_by_market_share_2024": [
+        {
+          "rank": 1,
+          "name": "Laboratorios Roemmers",
+          "share_pct": 8.44,
+          "units_annual": "117 million+",
+          "brands": "71+",
+          "employees": "2,000+",
+          "flagship_drugs": ["Lotrial", "Optamox", "Amoxidal", "Sertal Compuesto"],
+          "notes": "5 of the 10 best-selling drugs in Argentina are Roemmers products",
+          "source": "https://cronicadelnoa.com.ar/2025/02/07/los-duenos-del-negocio-de-los-medicamentos-10-laboratorios-mas-importantes-de-argentina/"
+        },
+        {
+          "rank": 2,
+          "name": "Elea Phoenix",
+          "share_pct": 7.55,
+          "notes": "Owned by the Sielecki family in partnership with Hugo Sigman and Luis Alberto Gold",
+          "source": "https://cronicadelnoa.com.ar/2025/02/07/los-duenos-del-negocio-de-los-medicamentos-10-laboratorios-mas-importantes-de-argentina/"
+        },
+        {
+          "rank": 3,
+          "name": "Laboratorios Casasco",
+          "share_pct": 6.23,
+          "founded": 1876,
+          "notes": "One of the oldest pharmaceutical companies in Argentina, over a century of operations",
+          "source": "https://www.iprofesional.com/salud/422212-cuales-son-los-10-laboratorios-mas-poderosos-de-argentina-y-que-manejan-el-negocio"
+        },
+        {
+          "rank": 4,
+          "name": "Gador",
+          "share_pct": 5.51,
+          "source": "https://cronicadelnoa.com.ar/2025/02/07/los-duenos-del-negocio-de-los-medicamentos-10-laboratorios-mas-importantes-de-argentina/"
+        },
+        {
+          "rank": 5,
+          "name": "Bayer",
+          "share_pct": 4.89,
+          "notes": "One of only two multinationals in the top 10 (with Sanofi)",
+          "source": "https://cronicadelnoa.com.ar/2025/02/07/los-duenos-del-negocio-de-los-medicamentos-10-laboratorios-mas-importantes-de-argentina/"
+        },
+        {
+          "rank": 6,
+          "name": "Laboratorio Montpellier",
+          "share_pct": 4.67,
+          "source": "https://www.iprofesional.com/salud/422212-cuales-son-los-10-laboratorios-mas-poderosos-de-argentina-y-que-manejan-el-negocio"
+        },
+        {
+          "rank": 7,
+          "name": "Laboratorios Raffo",
+          "share_pct": 4.43,
+          "source": "https://www.iprofesional.com/salud/422212-cuales-son-los-10-laboratorios-mas-poderosos-de-argentina-y-que-manejan-el-negocio"
+        },
+        {
+          "rank": 8,
+          "name": "Laboratorios Bagó",
+          "share_pct": 4.11,
+          "founded": 1934,
+          "presence_countries": 22,
+          "products_in_countries": 47,
+          "notes": "First lab to manufacture penicillin-based products in Argentina (1945). By late 1960s held #1 market position",
+          "source": "https://cronicadelnoa.com.ar/2025/02/07/los-duenos-del-negocio-de-los-medicamentos-10-laboratorios-mas-importantes-de-argentina/"
+        },
+        {
+          "rank": 9,
+          "name": "Sanofi",
+          "share_pct": 3.8,
+          "notes": "Second multinational in the top 10",
+          "source": "https://cronicadelnoa.com.ar/2025/02/07/los-duenos-del-negocio-de-los-medicamentos-10-laboratorios-mas-importantes-de-argentina/"
+        },
+        {
+          "rank": 10,
+          "name": "Investi / Sidus",
+          "share_pct": 3.2,
+          "source": "https://cronicadelnoa.com.ar/2025/02/07/los-duenos-del-negocio-de-los-medicamentos-10-laboratorios-mas-importantes-de-argentina/"
+        }
+      ]
+    },
+
+    "distribution_monopoly": {
+      "summary": "The pharmaceutical distribution chain is cartelized at both the wholesale (droguería) and distributor levels. A handful of firms control nearly all product flow from labs to pharmacies.",
+      "droguerías_wholesale": {
+        "total_registered": 445,
+        "top_4_share_pct": 70,
+        "major_players": [
+          {
+            "name": "Droguería del Sud",
+            "points_of_sale": 8000,
+            "distribution_centers": "Buenos Aires, Córdoba, Mendoza + others",
+            "history": "70+ years in operation",
+            "source": "https://institucional.delsud.com.ar/portal/quienes-somos"
+          },
+          {
+            "name": "Droguería Monroe Americana (Grupo Gomer)",
+            "pharmacies_served_daily": 5500,
+            "distribution_centers": 15,
+            "commercial_offices": 9,
+            "shareholders": "Rofina S.A. (linked to Roemmers), Prodifa S.A. (40.2%), Propharm Inversiones S.A. (19.6%)",
+            "source": "https://www.monroeamericana.com.ar/"
+          },
+          {
+            "name": "Droguería Suizo Argentina",
+            "shareholders": "Kovalivker and Viner families",
+            "source": "https://www.saludyfarmacos.org/lang/es/boletin-farmacos/boletines/ago201602/054_argentina_negocio/"
+          },
+          {
+            "name": "Droguería Barracas",
+            "source": "https://www.saludyfarmacos.org/lang/es/boletin-farmacos/boletines/ago201602/054_argentina_negocio/"
+          }
+        ]
+      },
+      "distributors_lab_owned": {
+        "summary": "Four lab-owned distributors control 99% of billing, vertically integrating manufacturing with distribution",
+        "firms": [
+          {
+            "name": "Rofina",
+            "linked_to": "Laboratorios Roemmers",
+            "source": "https://www.saludyfarmacos.org/lang/es/boletin-farmacos/boletines/ago201602/054_argentina_negocio/"
+          },
+          {
+            "name": "Disprofarma",
+            "linked_to": "Laboratorios Bagó",
+            "source": "https://www.saludyfarmacos.org/lang/es/boletin-farmacos/boletines/ago201602/054_argentina_negocio/"
+          },
+          {
+            "name": "Farmanet",
+            "linked_to": "Partnership of Gador, Casasco, Bayer, Novartis, Boehringer Ingelheim",
+            "source": "https://www.saludyfarmacos.org/lang/es/boletin-farmacos/boletines/ago201602/054_argentina_negocio/"
+          },
+          {
+            "name": "Global Farm",
+            "linked_to": "US-origin laboratories",
+            "source": "https://www.saludyfarmacos.org/lang/es/boletin-farmacos/boletines/ago201602/054_argentina_negocio/"
+          }
+        ],
+        "concern": "These vertical associations configure a market structure that facilitates price collusion and undermines public health",
+        "source": "https://www.pagina12.com.ar/diario/suplementos/cash/17-9467-2016-07-10.html"
+      }
+    },
+
+    "pami_procurement": {
+      "summary": "PAMI (national seniors' health insurance, ~5 million affiliates) is the single largest drug purchaser in Argentina. Historically, a single framework agreement with all labs gave labs enormous pricing power. Reforms since 2016 introduced individual lab agreements and competitive tenders.",
+      "reform_timeline": [
+        {
+          "year": 2016,
+          "event": "First competitive tenders for oncology and hemophilia drugs; savings of up to 80%",
+          "source": "https://www.ambito.com/politica/el-pami-preve-ahorrar-1450-millones-la-licitacion-medicamentos-oncologicos-n4028195"
+        },
+        {
+          "year": 2023,
+          "event": "PAMI overpaid ARS $273 million on oncology drugs. Example: anastrozol sold at $13,192/unit under framework vs $924/unit in open tender — a 1,327% markup",
+          "source": "https://www.infobae.com/politica/2025/01/23/denuncian-al-pami-y-a-un-grupo-de-laboratorios-por-sobreprecios-en-la-compra-de-remedios-oncologicos/"
+        },
+        {
+          "year": 2024,
+          "event": "New individual agreements with almost all labs replace single industry-wide convention. PAMI can now set max prices, run tenders, and choose coverage list",
+          "source": "https://www.casarosada.gob.ar/informacion/que-estamos-diciendo/44072-acuerdo-de-pami-con-los-laboratorios"
+        },
+        {
+          "year": "2025-2026",
+          "event": "Government plans to improve tender prices for drugs, hemodynamic supplies, and adult diapers. Priority on leveraging economic stabilization for better pricing",
+          "source": "https://www.infobae.com/politica/2025/11/08/los-planes-del-gobierno-en-el-pami-para-el-2026-la-espera-a-nuevas-reformas-los-precios-de-las-licitaciones-y-mas-centralizacion/"
+        }
+      ],
+      "oncology_tender_savings": {
+        "estimated_annual_savings_ars": 1450000000,
+        "savings_pct": "68-69%",
+        "source": "https://www.ambito.com/politica/el-pami-preve-ahorrar-1450-millones-la-licitacion-medicamentos-oncologicos-n4028195"
+      }
+    },
+
+    "pricing_vs_region": {
+      "summary": "Argentine pharma prices are among the highest in Latin America and, in some categories, exceed Spain and the US. The combination of high prices and low wages makes access particularly difficult.",
+      "findings": [
+        {
+          "claim": "Argentina's hypothetical drug basket is 26% more expensive than the Latin American average",
+          "source": "https://www.cepal.org/en/publications/45974-comparative-analysis-medicine-prices-latin-america"
+        },
+        {
+          "claim": "Price variations vs Spain and US exceed 1,000% for certain drugs",
+          "source": "https://www.infobae.com/sociedad/2024/09/29/los-medicamentos-en-argentina-son-mas-caros-que-en-espana-y-estados-unidos-los-precios-varian-hasta-mas-del-1000/"
+        },
+        {
+          "claim": "Argentine workers need to work 4 hours more than the regional average of 8 hours to acquire the same drug basket",
+          "source": "https://www.cepal.org/en/publications/45974-comparative-analysis-medicine-prices-latin-america"
+        },
+        {
+          "claim": "Drug unit sales fell by 9 million while lab revenues rose 332.9% — indicating price-driven revenue growth, not volume",
+          "source": "https://www.cronista.com/negocios/por-que-argentina-tiene-los-medicamentos-mas-caros-de-la-region-pese-al-gran-desarrollo-de-la-industria-farmaceutica/"
+        },
+        {
+          "claim": "Price differences between labs for the same active ingredient can reach 500%",
+          "source": "https://www.unidiversidad.com.ar/ley-de-medicamentos-genericos-solo-el-30-de-las-recetas-medicas-cumple-con-la-norma"
+        }
+      ]
+    },
+
+    "generics_market": {
+      "law": {
+        "name": "Ley 25.649 (Ley de Prescripción por Nombre Genérico)",
+        "year": 2002,
+        "mandate": "All prescriptions must include the generic name (INN/DCI). Pharmacists may substitute with bioequivalent generic",
+        "source": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=77881"
+      },
+      "compliance": {
+        "generic_name_on_prescriptions_pct": "30-40%",
+        "notes": "After two decades, only 30-40% of prescriptions include the generic name instead of the brand",
+        "source": "https://www.unidiversidad.com.ar/ley-de-medicamentos-genericos-solo-el-30-de-las-recetas-medicas-cumple-con-la-norma"
+      },
+      "barriers_to_entry": [
+        "Lack of bioequivalence testing infrastructure — used by multinational labs to oppose the 2002 law",
+        "Strong brand loyalty driven by lab marketing directly to physicians",
+        "Lab-owned distribution networks (Rofina, Disprofarma, Farmanet) can disadvantage independent generic producers",
+        "ANMAT registration process requires significant investment in documentation and clinical data"
+      ],
+      "recent_reforms": {
+        "decree": "Decreto 63/2024",
+        "content": "Reaffirms obligation for generic-name prescribing and establishes reference pricing for 85 active ingredients at 70% coverage",
+        "savings_from_generics_annual_usd": 2214000000,
+        "source": "https://www.argentina.gob.ar/noticias/avanza-la-implementacion-de-precios-de-referencia-de-medicamentos-y-el-impulso-la"
+      }
+    },
+
+    "key_figures": {
+      "roemmers_family": {
+        "founder": "Alberto J. Roemmers (German immigrant, founded lab 1921)",
+        "patriarch": "Alberto Roemmers (died August 2022)",
+        "fortune_usd": 2400000000,
+        "forbes_global_rank": 1292,
+        "argentina_rank": 4,
+        "above_them": ["Marcos Galperín (Mercado Libre)", "Paolo Rocca (Techint)", "Pérez Companc family"],
+        "recent_acquisitions": [
+          "30% of Tuteur (high-cost medications specialist) — 2024",
+          "IMVI laboratory retail brands — ~$6 million — 2024"
+        ],
+        "heirs": "Three sons; Alejandro Roemmers is also a poet/writer (The Return of the Young Prince, 3M copies sold, 30 languages)",
+        "sources": [
+          "https://www.infobae.com/economia/2022/08/15/la-muerte-de-roemmers-a-cuanto-asciende-la-fortuna-del-empresario-y-quienes-son-sus-herederos/",
+          "https://www.perfil.com/noticias/economia/alberto-roemmers-uno-de-los-argentinos-mas-ricos-deja-una-fortuna-de-us-2400-millones.phtml"
+        ]
+      },
+      "bago_family": {
+        "founder": "Sebastián Bagó (Spanish immigrant from Catalonia, arrived Argentina 1930 as rep for Laboratorio Cusí, founded Bagó 1934)",
+        "current_leadership": "Sebastián Bagó (grandson, current president of Grupo Bagó) and Juan Carlos Bagó",
+        "ownership_note": "Elea and Bagó brands are properties of the Sielecki family in partnership with Hugo Sigman and Luis Alberto Gold",
+        "milestones": [
+          "1945: First lab to produce penicillin-based products in Argentina",
+          "Late 1960s: Conquered #1 market position nationally",
+          "Present: Operations in 22 countries, products in 47 countries"
+        ],
+        "sources": [
+          "https://argentinaciencia.com/en_US/sebastian-bago-el-empresario-que-consolido-un-imperio-farmaceutico-familiar/",
+          "https://es.wikipedia.org/wiki/Laboratorios_Bag%C3%B3"
+        ]
+      },
+      "sigman_hugo": {
+        "role": "Majority partner in Elea Phoenix and Bagó through the Sielecki family partnership; also controls Grupo Insud (bioscience conglomerate)",
+        "source": "https://www.grupoinsud.com/quienes-son-los-duenos-del-negocio-de-los-medicamentos-en-la-argentina/"
+      }
+    },
+
+    "regulatory_environment": {
+      "anmat": {
+        "role": "Sole gatekeeper for drug market entry. Handles registration, authorization, inspection, and vigilance of drug quality, safety, and efficacy",
+        "process": ["Facility authorization (premises, equipment, services)", "Product registration via DERM (Dirección de Evaluación y Registro de Medicamentos)", "Pharmacotechnical, pre-clinical, and clinical evaluation"],
+        "import_regime": "Decreto 150/92: drugs from 'Group 1' countries (US, Japan, Switzerland, EU) can enter with only ANMAT registration. Others require full evaluation",
+        "recent_actions": {
+          "event": "ANMAT revoked licenses of 60+ drugstores and labs in Feb 2026 for non-compliance",
+          "source": "https://www.infobae.com/sociedad/2026/02/20/la-anmat-dio-de-baja-las-habilitaciones-de-mas-de-60-droguerias-y-laboratorios/"
+        },
+        "patent_reform_2026": {
+          "event": "Government flexibilized pharmaceutical patent granting under US pressure, potentially extending patent exclusivity and delaying generic entry",
+          "source": "https://reporte24.com.ar/2026/03/18/mas-favores-a-estados-unidos-el-gobierno-flexibilizo-el-otorgamiento-de-patentes-farmaceuticas/"
+        }
+      }
+    }
+  },
+
+  "transport": {
+    "airlines": {
+      "market_overview": {
+        "cabotage_contraction_2024_pct": -8.3,
+        "deregulation_decree": "Decreto 599/2024 ('Cielos Abiertos') — published July 10, 2024",
+        "deregulation_effects": "Streamlined authorizations, opened airport services to competition, broke Aerolíneas Argentinas' quasi-monopoly through Intercargo",
+        "source": "https://www.infobae.com/economia/2025/01/29/en-2024-se-contrajo-el-mercado-aerocomercial-de-cabotaje-y-aerolineas-argentinas-perdio-participacion-de-mercado/"
+      },
+      "domestic_market_shares": {
+        "period": "January 2025",
+        "carriers": [
+          {
+            "name": "Aerolíneas Argentinas",
+            "share_pct": 59,
+            "prior_year_share_pct": 69,
+            "notes": "Lost 10pp in one year. State-owned flag carrier; historically monopolized cabotage routes. Subsidized ~USD 700M/year",
+            "source": "https://www.infobae.com/economia/2025/01/29/en-2024-se-contrajo-el-mercado-aerocomercial-de-cabotaje-y-aerolineas-argentinas-perdio-participacion-de-mercado/"
+          },
+          {
+            "name": "Flybondi",
+            "share_pct": 23,
+            "growth_yoy_pp": 3,
+            "fleet_current": "Airbus A320 family",
+            "investment_plan": "US$1.7 billion for 35 aircraft (2027-2030)",
+            "operational_issues": "45.71% flight cancellation rate during 2025",
+            "source": "https://comercioyjusticia.info/negocios/aerolineas-argentinas-pierde-terreno-frente-al-avance-de-las-low-cost/"
+          },
+          {
+            "name": "JetSmart",
+            "share_pct": 17,
+            "growth_yoy_pp": 5,
+            "growth_since_2020": "4% to 22% by late 2025",
+            "fleet_2025": "17 aircraft (adding 2 Airbus A321neo)",
+            "cancellation_rate_2025_pct": 18.77,
+            "source": "https://comercioyjusticia.info/negocios/aerolineas-argentinas-pierde-terreno-frente-al-avance-de-las-low-cost/"
+          }
+        ],
+        "low_cost_combined_pct": 40,
+        "historical_barriers": [
+          "Aerolíneas Argentinas held quasi-monopoly on many routes with no alternative",
+          "Intercargo (state ground-handling firm) monopolized airport services",
+          "Slot allocation at Aeroparque (prime Buenos Aires airport) historically favored the flag carrier",
+          "Subsidies to Aerolíneas create uneven playing field on pricing"
+        ]
+      }
+    },
+
+    "toll_roads": {
+      "summary": "Argentina's major toll road concessions are held by a small number of operators with long-term contracts, periodic controversy over above-inflation tariff increases, and documented corruption investigations.",
+      "major_concessions": [
+        {
+          "name": "Autopistas del Sol (Ausol)",
+          "roads": ["Acceso Norte (Panamericana)", "General Paz ring road (toll-free)"],
+          "km": "95 km autopista + 24 km Gral Paz",
+          "lanes": "4 to 18 lanes",
+          "owner": "Abertis (Spanish holding controlled by ACS/Florentino Pérez + Benetton family via Atlantia)",
+          "concession_start": "July 19, 1994",
+          "original_expiry": "December 31, 2020",
+          "extended_to": "December 31, 2030",
+          "financials_2024": {
+            "q1_profit_ars": 1083000000,
+            "q2_profit_ars": 26644000000,
+            "profit_multiplier": "26x increase in one quarter",
+            "tariff_increases_2024": "45% to 90% depending on toll station",
+            "above_inflation": "Cumulative 29.2% increase vs 15% inflation in same period"
+          },
+          "judicial_investigation": "Causa Peajes — evidence requiring review of Ausol and GCO concession terms",
+          "sources": [
+            "https://www.resumenlatinoamericano.org/2025/08/08/argentina-el-gobierno-le-habilito-aumentos-de-peajes-por-encima-de-la-inflacion-y-ausol-multiplico-por-26-sus-ganancias/",
+            "https://www.ambito.com/politica/macri/causa-peajes-las-pruebas-que-obligan-revisar-las-concesiones-autopistas-del-sol-y-del-oeste-n5139369"
+          ]
+        },
+        {
+          "name": "Grupo Concesionario del Oeste (GCO)",
+          "roads": ["Acceso Oeste"],
+          "owner": "Abertis (same holding as Ausol)",
+          "notes": "Same owner controls both major radial highways into Buenos Aires from north and west",
+          "source": "https://www.cronista.com/economia-politica/peajes-que-empresa-esta-detras-de-las-concesiones-de-autopistas-que-quiere-anular-el-gobierno/"
+        },
+        {
+          "name": "AUSA (Autopistas Urbanas S.A.)",
+          "roads": ["25 de Mayo", "Perito Moreno", "Illia", "other urban autopistas"],
+          "ownership": "95% City of Buenos Aires, 5% Subterráneos de Buenos Aires S.E.",
+          "legal_basis": "Ley 3060 (2009)",
+          "revenue_allocation": "40% maintenance, 5% subway expansion fund, remainder for city public works",
+          "tariff_increases_2024": "50% increase under Jorge Macri; monthly formula = INDEC CPI + 2%",
+          "notes": "State-owned but operates as private-law entity; used for city government infrastructure spending",
+          "sources": [
+            "https://buenosaires.gob.ar/infraestructura/autopistas-urbanas-sa",
+            "https://www.letrap.com.ar/ciudad/ausa-la-empresa-que-maneja-una-parte-central-las-obras-publicas-portenas-n5419306"
+          ]
+        }
+      ]
+    },
+
+    "railways": {
+      "summary": "Argentina's railway network was privatized in the 1990s. Passenger services were re-nationalized 2012-2015 but remain operated by private concessionaires under state oversight. Freight concessions were repeatedly extended and are now slated for full privatization.",
+      "passenger_concessions": [
+        {
+          "line": "Urquiza (metropolitan)",
+          "operator": "Metrovías",
+          "controlling_group": "Grupo Roggio (Aldo Benito Roggio — 91% stake)",
+          "concession_since": "January 1, 1994",
+          "extended_to": "Mid-2027",
+          "also_operates": "Buenos Aires subway (Subte) network",
+          "source": "https://www.letrap.com.ar/economia/javier-milei-vuelve-prorrogar-las-concesiones-ferroviarias-roggio-y-romero-mediados-2027-n5421093"
+        },
+        {
+          "line": "Belgrano Norte (metropolitan)",
+          "operator": "Ferrovías SAC",
+          "controlling_group": "Emepa (Gabriel Benjamín Romero)",
+          "extended_to": "Mid-2027",
+          "source": "https://www.letrap.com.ar/economia/javier-milei-vuelve-prorrogar-las-concesiones-ferroviarias-roggio-y-romero-mediados-2027-n5421093"
+        }
+      ],
+      "freight_concessions": [
+        {
+          "name": "Ferroexpreso Pampeano S.A.",
+          "concession_expiry": "April 2026",
+          "source": "https://www.argentina.gob.ar/noticias/se-extenderan-las-concesiones-de-tres-empresas-de-transporte-ferroviario-de-cargas-para"
+        },
+        {
+          "name": "Nuevo Central Argentino S.A.",
+          "concession_expiry": "July 2025",
+          "source": "https://www.argentina.gob.ar/noticias/se-extenderan-las-concesiones-de-tres-empresas-de-transporte-ferroviario-de-cargas-para"
+        },
+        {
+          "name": "Ferrosur Roca S.A.",
+          "concession_expiry": "September 2026 (extended)",
+          "source": "https://www.argentina.gob.ar/noticias/se-extenderan-las-concesiones-de-tres-empresas-de-transporte-ferroviario-de-cargas-para"
+        },
+        {
+          "name": "Belgrano Cargas y Logística S.A.",
+          "status": "Slated for privatization via Decreto 67/2025. Model: vertical disintegration — rolling stock auctioned, tracks/property conceded, workshops tendered as public works",
+          "source": "https://www.infobae.com/economia/2025/06/30/los-planes-del-gobierno-para-la-privatizacion-ferroviaria-concesiones-venta-de-activos-y-recorte-de-personal/"
+        }
+      ],
+      "corporate_transformation": {
+        "event": "Ferrocarriles Argentinos converted from Sociedad del Estado to S.A.U. (sociedad anónima unipersonal) in Dec 2025. State retains 100% shares but can now transfer partial/total control to private capital",
+        "source": "https://www.infobae.com/politica/2025/12/27/con-los-trenes-el-gobierno-concluyo-la-conversion-de-las-empresas-estatales-en-sociedades-anonimas/"
+      },
+      "corruption_nexus": {
+        "cuadernos_case": "Both Aldo Roggio (Metrovías) and Gabriel Romero (Ferrovías/Emepa) are among the accused in the 'Cuadernos de las Coimas' bribery investigation. Despite this, their concessions have been repeatedly extended",
+        "source": "https://www.lanacion.com.ar/economia/el-gobierno-extendio-la-concesion-de-dos-empresas-ferroviarias-involucradas-en-la-causa-cuadernos-nid08042023/"
+      }
+    },
+
+    "ports_and_waterway": {
+      "hidrovia_parana_paraguay": {
+        "description": "1,400+ km navigable waterway from km 1238 of Río Paraná to deep-water zone. Carries 80% of Argentina's grain/derivatives exports",
+        "previous_concessionaire": "Hidrovía S.A. (consortium of Jan De Nul [Belgium] + Emepa [Argentina, Gabriel Romero])",
+        "previous_concession_period": "1994-2021",
+        "annual_revenue_estimate_usd": 300000000,
+        "licitacion_2024": {
+          "status": "Annulled (Resolución 7, Feb 20, 2025)",
+          "reason": "Multiple international competitors (DEME, DTA Engenharia) denounced pliego irregularities favoring Jan De Nul",
+          "source": "https://www.eldiarioar.com/economia/hidrovia-derrotero-concesion-ahora-disputan-gigantes-dragado_1_13049777.html"
+        },
+        "licitacion_2025_2026": {
+          "status": "Second attempt launched by ANPYN (Agencia Nacional de Puertos y Navegación, successor to AGP dissolved Jan 2025)",
+          "bidders": ["Jan De Nul NV (Belgium)", "DEME (Belgium)", "DTA Engenharia (Brazil)"],
+          "monopoly_concern": "Critics argue a single concessionaire for 1,400+ km constitutes an 'inefficient monopoly'",
+          "source": "https://noticiaslatam.lat/20260314/milei-busca-privatizar-una-estrategica-hidrovia-tras-un-fallido-intento-de-licitacion-1172471749.html"
+        }
+      },
+      "port_administration": {
+        "agp_dissolved": "January 6, 2025 — Administración General de Puertos dissolved, replaced by ANPYN",
+        "puerto_buenos_aires": {
+          "concession_status": "Extended multiple times; current framework under Ley de Bases N° 27.742 promotes private operation",
+          "source": "https://www.ambito.com/economia/puerto/prorrogan-2024-la-concesion-del-buenos-aires-n5297519"
+        },
+        "private_terminals": {
+          "policy": "Ley de Bases 27.742 mandates that private economic agents assume port activities, requiring self-sustaining economic models",
+          "source": "https://www.boletinoficial.gob.ar/detalleAviso/primera/317224/20241121"
+        }
+      }
+    },
+
+    "urban_transit": {
+      "bus_operator_concentration": {
+        "amba_overview": {
+          "total_lines": 390,
+          "total_companies": 150,
+          "jurisdictions": ["National", "Provincial (Buenos Aires)", "Municipal"],
+          "source": "https://elauditor.info/informes-de-auditoria/que-empresas-manejan-los-colectivos-en-el-area-metropolitana-de-buenos-aires_a59c2f1c30041ac58e313d08a"
+        },
+        "grupo_dota": {
+          "full_name": "Doscientos Ocho Transporte Automotor S.A.",
+          "buses": "3,000+ (of 18,000 total in AMBA)",
+          "share_of_group_operated_lines_pct": 67.42,
+          "agn_audit_year": 2019,
+          "growth": "6% of fleet in 2000 → 19% by 2019, continuing to expand",
+          "recent_expansion": "Acquired 4 additional bus lines; won Trambús (BRT) concession; took control of a historic bus-body manufacturer",
+          "sources": [
+            "https://www.iprofesional.com/negocios/300840-monopolio-y-transporte-empresa-dota-controla-la-mitad-de-los-colectivos-en-amba",
+            "https://www.lanacion.com.ar/economia/negocios/concentracion-sobre-ruedas-la-empresa-que-pico-a-dos-competidores-y-cambia-el-mapa-de-colectivos-en-nid24062025/"
+          ]
+        },
+        "other_major_groups": [
+          {"name": "Metropol", "origin": "Misiones"},
+          {"name": "Zbikoski", "origin": "Misiones"},
+          {"name": "ERSA", "origin": "Corrientes"},
+          {"name": "Autobuses", "origin": "Santa Fe"},
+          {"name": "TISJ", "notes": "Financially struggling"},
+          {"name": "MO 45", "notes": "Mid-size AMBA consortium"},
+          {"name": "MOQSA", "notes": "Mid-size AMBA consortium"}
+        ],
+        "historical_collapse": {
+          "group": "Grupo Plaza-Ecotrans",
+          "event": "Major bus operator collapsed, leaving routes unserviced — illustrates fragility of concentrated ownership model",
+          "source": "https://www.letrap.com.ar/nota/2022-7-24-10-35-0-mas-que-boletos-quienes-manejan-el-negocio-de-los-colectivos-en-el-amba"
+        },
+        "trend": "The era of independent bus companies in the AMBA is effectively over. Consolidation continues under a handful of groups",
+        "source": "https://www.letrap.com.ar/transporte-movimiento/faija-prieto-n5402185"
+      },
+      "sube_system": {
+        "description": "Unified electronic fare collection system for all public transit in AMBA (buses, subway, trains)",
+        "reform_2024": "Decreto 698/2024 opened SUBE to alternative payment methods (debit cards), breaking its closed-loop model",
+        "new_lines_onboarded": "21 additional bus lines joined the open SUBE system",
+        "source": "https://www.argentina.gob.ar/noticias/nuevas-lineas-de-colectivo-del-amba-se-incorporan-la-apertura-de-sube"
+      },
+      "subsidy_concentration": {
+        "amba_share_of_national_bus_subsidies_pct": 94,
+        "interior_share_pct": 6,
+        "period": "Q1 2024",
+        "total_amba_subsidies_h1_2024_ars": 398772000000,
+        "reduction_2024": "Government cut AMBA bus subsidy transfers by 24% in H1 2024",
+        "policy_change": "From September 2024, government stopped paying SUBE-network subsidies for purely provincial/CABA routes",
+        "sources": [
+          "https://www.infobae.com/politica/2024/06/02/el-amba-recibio-el-94-de-los-subsidios-a-los-colectivos-mientras-que-las-provincias-del-interior-se-repartieron-el-6-restante/",
+          "https://www.infobae.com/politica/2024/09/01/la-pelea-por-los-subsidios-a-colectivos-del-amba-el-gobierno-redujo-24-los-giros-de-fondos-en-el-primer-semestre-de-2024/"
+        ]
+      }
+    }
+  },
+
+  "cross_sector_patterns": {
+    "recurring_families_and_groups": [
+      {
+        "entity": "Gabriel Romero / Emepa",
+        "sectors": ["railways (Ferrovías)", "waterway (Hidrovía S.A. with Jan De Nul)", "buses"],
+        "judicial_status": "Accused in Cuadernos de las Coimas",
+        "source": "https://www.lapoliticaonline.com/transporte/romero-el-polemico-empresario-que-sobrevuela-la-privatizacion-de-los-ferrocarriles/"
+      },
+      {
+        "entity": "Aldo Roggio / Grupo Roggio",
+        "sectors": ["railways (Metrovías/Urquiza)", "subway (Subte)", "construction"],
+        "judicial_status": "Accused in Cuadernos de las Coimas",
+        "source": "https://www.lanacion.com.ar/economia/el-gobierno-extendio-la-concesion-de-dos-empresas-ferroviarias-involucradas-en-la-causa-cuadernos-nid08042023/"
+      },
+      {
+        "entity": "Abertis / ACS / Benetton",
+        "sectors": ["toll roads (Ausol + GCO — Panamericana + Acceso Oeste)"],
+        "notes": "Single foreign holding controls both major radial highways into Buenos Aires",
+        "source": "https://www.cronista.com/economia-politica/peajes-que-empresa-esta-detras-de-las-concesiones-de-autopistas-que-quiere-anular-el-gobierno/"
+      },
+      {
+        "entity": "Roemmers family",
+        "sectors": ["pharmaceutical manufacturing (#1 market share)", "distribution (Rofina → Monroe Americana)"],
+        "vertical_integration": "Lab → Distributor → Wholesale droguería",
+        "source": "https://www.saludyfarmacos.org/lang/es/boletin-farmacos/boletines/ago201602/054_argentina_negocio/"
+      },
+      {
+        "entity": "Hugo Sigman / Sielecki family",
+        "sectors": ["pharmaceutical (Elea Phoenix #2 + Bagó #8)", "biotech (Grupo Insud)"],
+        "combined_share_pct_approx": 11.66,
+        "source": "https://www.grupoinsud.com/quienes-son-los-duenos-del-negocio-de-los-medicamentos-en-la-argentina/"
+      },
+      {
+        "entity": "Grupo DOTA",
+        "sectors": ["urban buses (67% of group-operated AMBA lines)", "bus manufacturing"],
+        "source": "https://enelsubte.com/noticias/el-imparable-crecimiento-del-grupo-dota-y-el-futuro-del-transporte-del-amba/"
+      }
+    ],
+    "common_mechanisms": [
+      "Long-term concessions (20-30+ years) with repeated extensions to incumbent operators",
+      "Vertical integration (labs own distributors; transport groups span rail, road, and waterway)",
+      "Regulatory capture: ANMAT as single gatekeeper in pharma; historical slot allocation favoring flag carrier in aviation",
+      "Subsidy asymmetry: AMBA receives 94% of bus subsidies; Aerolíneas receives ~USD 700M/year",
+      "Judicial impunity: concessionaires accused of bribery (Cuadernos) continue operating and receiving extensions",
+      "Above-inflation tariff increases under captured regulators (Ausol: 29% increase vs 15% inflation)"
+    ]
+  }
+}

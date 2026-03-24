@@ -1,0 +1,1953 @@
+{
+  "investigation": "Monopolios Argentina — Cross-Reference with Neo4j Graph",
+  "date": "2026-03-24T05:11:32.226Z",
+  "total_findings": 240,
+  "findings": {
+    "monopoly_contractors": [
+      {
+        "contractor": "TELECOM ARGENTINA STET FRANCE TELECOM S.A.",
+        "cuit": "30639453738",
+        "contracts": 243,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "AMX ARGENTINA S.A.",
+        "cuit": "30663288497",
+        "contracts": 222,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "TELEFONICA MOVILES ARGENTINA S.A.",
+        "cuit": "30678814357",
+        "contracts": 217,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "YPF S.A.",
+        "cuit": "30546689979",
+        "contracts": 179,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "LEDESMA S.A.A.I.",
+        "cuit": "30501250305",
+        "contracts": 117,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "TELECOM ARGENTINA S.A.",
+        "cuit": "30-63945373-8",
+        "contracts": 71,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "YPF SA",
+        "cuit": "30-54668997-9",
+        "contracts": 66,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "AMX ARGENTINA S.A",
+        "cuit": "30-66328849-7",
+        "contracts": 65,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "TELEFONICA MOVILES ARGENTINA S.A.",
+        "cuit": "30-67881435-7",
+        "contracts": 64,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "YPF GAS SOCIEDAD ANONIMA",
+        "cuit": "30515488479",
+        "contracts": 47,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "TELEFONICA DE ARGENTINA S.A.",
+        "cuit": "30639453975",
+        "contracts": 37,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "NUTRICIA-BAGO S.A.",
+        "cuit": "30707013431",
+        "contracts": 36,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "YPF GAS SA",
+        "cuit": "30-51548847-9",
+        "contracts": 27,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "TELEFONICA DE ARGENTINA S.A.",
+        "cuit": "30-63945397-5",
+        "contracts": 17,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "CABLEVISION SA",
+        "cuit": "30573652084",
+        "contracts": 13,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "YPF SA",
+        "cuit": "30-546689979-9",
+        "contracts": 12,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "Ledesma Sociedad Anonima Agricola Industrial",
+        "cuit": "30-50125030-5",
+        "contracts": 8,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "Mastellone Hnos. SA",
+        "cuit": "30547242331",
+        "contracts": 5,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "BIOGENESIS BAGO S.A.",
+        "cuit": "30653399819",
+        "contracts": 5,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "TELECOM ARGENTINA S.A.",
+        "cuit": "30-639453738-8",
+        "contracts": 4,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "Ledesma Sociedad Anonima Agricola Industrial",
+        "cuit": "30-501250305-5",
+        "contracts": 4,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "YPF GAS SA",
+        "cuit": "30-515488479-9",
+        "contracts": 3,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "Laboratorios Bago S.A",
+        "cuit": "30516024840",
+        "contracts": 3,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "MACROCONSULTING",
+        "cuit": "30683041641",
+        "contracts": 3,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "Macronet S.R.L.",
+        "cuit": "30625091078",
+        "contracts": 3,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "TELEFONICA DE ARGENTINA S.A.",
+        "cuit": "30-639453975-5",
+        "contracts": 2,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "TELEFONICA MOVILES ARGENTINA S.A.",
+        "cuit": "30-678814357-7",
+        "contracts": 1,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "Benito Roggio e Hijos S.A.",
+        "cuit": "30501086246",
+        "contracts": 1,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "JOSE CARTELLONE CONST.CIVILES S.A.",
+        "cuit": "30501579471",
+        "contracts": 1,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "Laboratorios Bago S.A",
+        "cuit": "30-51602484-0",
+        "contracts": 1,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "MACROCONSULTING",
+        "cuit": "30-68304164-1",
+        "contracts": 1,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "NUTRICIA-BAGO S.A.",
+        "cuit": "30-70701343-1",
+        "contracts": 1,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "Macronet S.R.L.",
+        "cuit": "30-62509107-8",
+        "contracts": 1,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "Biogenesis Bago S.A.",
+        "cuit": "30-65339981-9",
+        "contracts": 1,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "Matias Exequiel Vicentin",
+        "cuit": "20290490015",
+        "contracts": 1,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "ROEMMERS S.A.I.C.F.",
+        "cuit": "30500938125",
+        "contracts": 1,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "Industrias Macro S.A.",
+        "cuit": "30708462205",
+        "contracts": 1,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "EMILIANO RUBEN LEDESMA",
+        "cuit": "20289111329",
+        "contracts": 1,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      },
+      {
+        "contractor": "TELEFONICA ON THE SPOT SERVICES S.A.U.",
+        "cuit": "30709836516",
+        "contracts": 1,
+        "total_amount": {
+          "low": 0,
+          "high": 0
+        }
+      }
+    ],
+    "monopoly_offshore": [
+      {
+        "officer": "MARIA ROSA CARTELLONE",
+        "offshores": [
+          {
+            "jurisdiction": "Panama",
+            "entity": "STARLINK COMPANY S.A."
+          },
+          {
+            "jurisdiction": "Panama",
+            "entity": "UNIMAS COMPANY S.A."
+          }
+        ]
+      },
+      {
+        "officer": "Mr. Carlos Herminio BLAQUIER",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "DUNMOORE TRADING LTD."
+          }
+        ]
+      },
+      {
+        "officer": "JOSÉ VILA RECOLONS",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "LSAR Holding Ltd."
+          }
+        ]
+      },
+      {
+        "officer": "MR. JOSE VILA RECOLONS",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "LSAR Holding Ltd."
+          }
+        ]
+      },
+      {
+        "officer": "JOSÉ VILA RECOLONS",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "LSAR Holding Ltd."
+          }
+        ]
+      },
+      {
+        "officer": "MR. JOSE VILA RECOLONS",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "LSAR Holding Ltd."
+          }
+        ]
+      },
+      {
+        "officer": "ARTURO GONZALES ESCOTO",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "ARLON ASSET HOLDINGS LTD."
+          }
+        ]
+      },
+      {
+        "officer": "ALFREDO COTO",
+        "offshores": [
+          {
+            "jurisdiction": "Panama",
+            "entity": "LEOPOLD COMPANY S.A."
+          }
+        ]
+      },
+      {
+        "officer": "José Daniel Antonio Vilariño, Liliana Mabel Covatto and Demian Vilariño (joint holders with right of survivorship)",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "GDV INTERNATIONAL CORP."
+          }
+        ]
+      },
+      {
+        "officer": "José Daniel Antonio Vilariño, Liliana Mabel Covatto and Guido Vilariño (joint holders with right of survivorship)",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "GDV INTERNATIONAL CORP."
+          }
+        ]
+      },
+      {
+        "officer": "ALEJANDRO BLAQUIER",
+        "offshores": [
+          {
+            "jurisdiction": "Panama",
+            "entity": "CABONOR INTERNATIONAL CORPORATION"
+          }
+        ]
+      },
+      {
+        "officer": "MARIA ROSA CARTELLONE",
+        "offshores": [
+          {
+            "jurisdiction": "Panama",
+            "entity": "UNIMAS COMPANY S.A."
+          }
+        ]
+      },
+      {
+        "officer": "ARTURO GONZALES ESCOTO",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "LANCET INDUSTRIAL S.A."
+          }
+        ]
+      },
+      {
+        "officer": "DARIO WERTHEIN",
+        "offshores": [
+          {
+            "jurisdiction": "",
+            "entity": "CANROLD OVERSEAS LIMITED"
+          }
+        ]
+      },
+      {
+        "officer": "SANTIAGO BLAQUIER",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "Silver Stream Ventures Ltd."
+          }
+        ]
+      },
+      {
+        "officer": "SANTIAGO BLAQUIER",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "SUNBIRD INTERNATIONAL HOLDINGS INC."
+          }
+        ]
+      },
+      {
+        "officer": "ALDO BENITO ROGGIO",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "GOTLAND INTERNATIONAL LIMITED"
+          }
+        ]
+      },
+      {
+        "officer": "RODOLFO ROGGIO PICOT",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "GOTLAND INTERNATIONAL LIMITED"
+          }
+        ]
+      },
+      {
+        "officer": "MARTIN BENITO ROGGIO",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "GOTLAND INTERNATIONAL LIMITED"
+          }
+        ]
+      },
+      {
+        "officer": "LUCIA INES ROGGIO",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "GOTLAND INTERNATIONAL LIMITED"
+          }
+        ]
+      },
+      {
+        "officer": "MARTIN BENITO ROGGIO",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "LINHILL INTERNATIONAL LIMITED"
+          }
+        ]
+      },
+      {
+        "officer": "LUCIA INES ROGGIO",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "LINHILL INTERNATIONAL LIMITED"
+          }
+        ]
+      },
+      {
+        "officer": "RODOLFO ROGGIO PICOT",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "LINHILL INTERNATIONAL LIMITED"
+          }
+        ]
+      },
+      {
+        "officer": "ALDO BENITO ROGGIO",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "LINHILL INTERNATIONAL LIMITED"
+          }
+        ]
+      },
+      {
+        "officer": "ISABEL FERREYRA AYCINENA",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "ZALVER INVESTMENTS LIMITED"
+          }
+        ]
+      },
+      {
+        "officer": "ISABEL FERREYRA AYCINENA",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "ROSESTONE INVESTMENTS LIMITED"
+          }
+        ]
+      },
+      {
+        "officer": "MARCELA SILVINA VILAR",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "BRATSELL INVESTMENTS LTD."
+          }
+        ]
+      },
+      {
+        "officer": "ALDO BENITO ROGGIO",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "GRAYMARK INTERNATIONAL LIMITED"
+          }
+        ]
+      },
+      {
+        "officer": "AXEL VILAS GUOZDEN",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "MERCLIFF INTERNATIONAL LIMITED"
+          }
+        ]
+      },
+      {
+        "officer": "ERIC VILAS GUOZDEN",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "MERCLIFF INTERNATIONAL LIMITED"
+          }
+        ]
+      },
+      {
+        "officer": "NORMA GOLD DE WERTHEIN",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "HINSLET OVERSEAS LTD."
+          }
+        ]
+      },
+      {
+        "officer": "CARLOS HERMINIO BLAQUIER",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "YAMARY BUSINESS LTD."
+          }
+        ]
+      },
+      {
+        "officer": "SANTIAGO BLAQUIER",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "BRAHMBARI HOLDINGS INC."
+          }
+        ]
+      },
+      {
+        "officer": "SANTIAGO BLAQUIER",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "Caribbean Lodges Limited"
+          }
+        ]
+      },
+      {
+        "officer": "SANTIAGO BLAQUIER",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "Fly Fishing Sales and Marketing Limited"
+          }
+        ]
+      },
+      {
+        "officer": "SANTIAGO BLAQUIER",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "Global Fishing Investment Ltd."
+          }
+        ]
+      },
+      {
+        "officer": "MARTIN FRANCISCO EURNEKIAN BONNARENS",
+        "offshores": [
+          {
+            "jurisdiction": "British Virgin Islands",
+            "entity": "VISKERT ENTERPRISES LTD."
+          }
+        ]
+      },
+      {
+        "officer": "MIGUEL MATIAS GALUCCIO",
+        "offshores": [
+          {
+            "jurisdiction": "Malta",
+            "entity": "VERA LIMITED"
+          }
+        ]
+      }
+    ],
+    "monopoly_politicians": [
+      {
+        "politician": "MACRI, Mauricio",
+        "chamber": "diputados",
+        "province": "CABA",
+        "cross_datasets": [
+          "BoardMember",
+          "GovernmentAppointment",
+          "CompanyOfficer",
+          "AssetDeclaration"
+        ]
+      },
+      {
+        "politician": "AVILA, Jorge Antonio",
+        "chamber": "diputados",
+        "province": "Chubut",
+        "cross_datasets": [
+          "AssetDeclaration",
+          "BoardMember",
+          "CompanyOfficer"
+        ]
+      },
+      {
+        "politician": "COTO, Alberto Agustín",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "cross_datasets": [
+          "AssetDeclaration",
+          "BoardMember",
+          "CompanyOfficer"
+        ]
+      },
+      {
+        "politician": "AVILA, Eduardo Carlos",
+        "chamber": "diputados",
+        "province": "Santiago del Estero",
+        "cross_datasets": [
+          "CompanyOfficer",
+          "BoardMember"
+        ]
+      },
+      {
+        "politician": "BRITOS, Oraldo Norvel",
+        "chamber": "diputados",
+        "province": "San Luis",
+        "cross_datasets": [
+          "CompanyOfficer",
+          "BoardMember"
+        ]
+      },
+      {
+        "politician": "FONTDEVILA, Pablo Antonio",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "cross_datasets": [
+          "BoardMember",
+          "AssetDeclaration"
+        ]
+      },
+      {
+        "politician": "AVILA, Beatriz Luisa",
+        "chamber": "senadores",
+        "province": "Tucumán",
+        "cross_datasets": [
+          "AssetDeclaration"
+        ]
+      },
+      {
+        "politician": "COTO, Agustín Pedro",
+        "chamber": "senadores",
+        "province": "Tierra del Fuego",
+        "cross_datasets": [
+          "AssetDeclaration"
+        ]
+      },
+      {
+        "politician": "FERREYRA, Araceli Susana del Rosario",
+        "chamber": "diputados",
+        "province": "Corrientes",
+        "cross_datasets": [
+          "AssetDeclaration"
+        ]
+      },
+      {
+        "politician": "FERREYRA, Daniel Julio",
+        "chamber": "diputados",
+        "province": "Jujuy",
+        "cross_datasets": [
+          "AssetDeclaration"
+        ]
+      },
+      {
+        "politician": "FERREYRA, Mario Felix",
+        "chamber": "diputados",
+        "province": "Tierra del Fuego",
+        "cross_datasets": [
+          "AssetDeclaration"
+        ]
+      },
+      {
+        "politician": "LORENZO BOROCOTO, Eduardo",
+        "chamber": "diputados",
+        "province": "CABA",
+        "cross_datasets": [
+          "BoardMember"
+        ]
+      },
+      {
+        "politician": "VILAR, Daniela Marina",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "cross_datasets": [
+          "AssetDeclaration"
+        ]
+      },
+      {
+        "politician": "AVILA, Fernanda",
+        "chamber": "diputados",
+        "province": "Catamarca",
+        "cross_datasets": []
+      },
+      {
+        "politician": "BEVILACQUA, Gustavo",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "cross_datasets": []
+      },
+      {
+        "politician": "FERREYRA, Alida",
+        "chamber": "diputados",
+        "province": "CABA",
+        "cross_datasets": []
+      },
+      {
+        "politician": "FERREYRA, Eduardo Mario",
+        "chamber": "diputados",
+        "province": "Entre Ríos",
+        "cross_datasets": []
+      },
+      {
+        "politician": "MENDEZ DE FERREYRA, Araceli Estela",
+        "chamber": "diputados",
+        "province": "Corrientes",
+        "cross_datasets": []
+      },
+      {
+        "politician": "PIÑON AVILA, Celia Isabel",
+        "chamber": "diputados",
+        "province": "Entre Ríos",
+        "cross_datasets": []
+      },
+      {
+        "politician": "VILARIÑO, José Antonio",
+        "chamber": "diputados",
+        "province": "Salta",
+        "cross_datasets": []
+      }
+    ],
+    "monopoly_appointments": [],
+    "interlocking_directorates": [
+      {
+        "officer": "PABLO LUIS LLAURO",
+        "companies": [
+          "TELEFONICA INTERNACIONAL",
+          "TELEFONICA INTERNATIONAL HOLDING B V",
+          "TELEFONICA INGENIERIA DE SEGURIDAD S.A.",
+          "TELEFONICA DATACORP, S.A.",
+          "TELEFONICA, S.A.",
+          "TELEFONICA CORRE DE SEGU Y REASEGUR COMP DE MEDIACION, S.A.",
+          "TELEFONICA GESTION DE SERVICIOS COMPARTIDOS ESPAÑA,S.A.",
+          "TELEFONICA ENGENHARIA DE SEGURANCA DO BRASIL LTDA",
+          "TELEFONICA INTERNATIONAL WHOLESALE SERVICES,S.L.",
+          "TELEFONICA OPEN INNOVATION S.L.",
+          "TELEFONICA SERVICIOS GLOBALES S.L.",
+          "TELEFONICA GLOBAL SOLUTIONS SL"
+        ],
+        "board_count": 12
+      },
+      {
+        "officer": "JORGE PEREZ ALATI",
+        "companies": [
+          "LOUIS DREYFUS SAS",
+          "BANCO SANTANDER S.A.",
+          "ADMINISTRACION DE BANCOS LATINOAMERICANOS SANTANDER S L",
+          "SANTANDER MANAGEMENT LATINOAMERICA BV",
+          "LOUIS DREYFUS TRADING & PROCESSING LIMITED",
+          "LOUIS DREYFUS COMMODITIES PARTICIPATIONS B.V.",
+          "LOUIS DREYFUS COMMODITIES B.V.",
+          "SANTANDER ASSET MANAGEMENT UK HOLDINGS LIMITED",
+          "SANTANDER ASSET MANAGEMENT S.A. SGIIC",
+          "LDC MACROSEEDS HOLDINGS B.V.",
+          "LDC MACROSEEDS B.V."
+        ],
+        "board_count": 11
+      },
+      {
+        "officer": "Mario César, LAPALMA",
+        "companies": [
+          "TERNIUM INTERNACIONAL S.A.",
+          "TENARIS GLOBAL SERVICES SOCIEDAD ANONIMA",
+          "TECPETROL INTERNACIONAL, S.L.",
+          "TECPETROL INVESTMENTS S.L. (UNIPERSONAL)",
+          "TERNIUM INTERNACIONAL ESPAÑA S.L.",
+          "TERNIUM TREASURY SERVICES S.A.",
+          "TECHINT INGENIERIA Y CONSTRUCCIONES S.L",
+          "TENARIS INGENIERIA",
+          "TENARIS GLOBAL SERVICES AND INVESTMENTS S.A. R.L.",
+          "TERNIUM INVESTMENTS S.A.R.L.",
+          "TENARIS CONNECTIONS B.V."
+        ],
+        "board_count": 11
+      },
+      {
+        "officer": "PINEDO ALEJANDRO",
+        "companies": [
+          "TELEFONICA INTERNATIONAL HOLDING B V",
+          "TELEFONICA INGENIERIA DE SEGURIDAD S.A.",
+          "TELEFONICA, S.A.",
+          "TELEFONICA CORRE DE SEGU Y REASEGUR COMP DE MEDIACION, S.A.",
+          "TELEFONICA INTERNATIONAL WHOLESALE SERVICES,S.L.",
+          "TELEFONICA ON THE SPOT SERVICES S.A.U.",
+          "TELEFONICA GLOBAL TECHNOLOGY, S.A.",
+          "TELEFONICA OPEN INNOVATION S.L.",
+          "TELEFONICA GLOBAL SOLUTIONS SL",
+          "TELEFONICA LATINOAMERICA HOLDING, S.L."
+        ],
+        "board_count": 10
+      },
+      {
+        "officer": "QUIÑOA GUILLERMO EDUARDO",
+        "companies": [
+          "SANTANDER TECNOLOGIA ARGENTINA",
+          "SANTANDER MERCHANT",
+          "SANTANDER VALORES",
+          "SANTANDER CONSUMER",
+          "SANTANDER ASSET MANAGEMENT GERENTE DE FONDOS COMUNES DE INVE",
+          "ADMINISTRACION DE BANCOS LATINOAMERICANOS SANTANDER S L",
+          "SANTANDER TRUST",
+          "LOUIS DREYFUS COMMODITIES PARTICIPATIONS B.V.",
+          "LOUIS DREYFUS COMMODITIES B.V."
+        ],
+        "board_count": 9
+      },
+      {
+        "officer": "María Lucila, Winschel",
+        "companies": [
+          "BARRICK GOLD (VELADERO) 3 LIMITED",
+          "BARRICK GOLD (SOUTH AMERICA) 2 LIMITED",
+          "HSBC LATIN AMERICA B V",
+          "BARRICK GOLD (SOUTH AMERICA INVESTMENTS) LIMITED",
+          "HSBC LATIN AMERICA HOLDINGS (UK) LIMITED",
+          "BARRICK GOLD (ARGENTINA) 1 LIMITED",
+          "BARRICK GOLD (PASCUA LAMA) 2 LIMITED",
+          "BARRICK GOLD (SOUTH AMERICA) LIMITED",
+          "BARRICK GOLD (PUEBLO VIEJO) LIMITED"
+        ],
+        "board_count": 9
+      },
+      {
+        "officer": "Henry Elso, Perret",
+        "companies": [
+          "BENITO ROGGIO E HIJOS SA- ESUCO SA OBRAS ELECTRICAS YCRT-",
+          "BENITO ROGGIO E HIJOS SA-JOSE CARTEL CONSTR CIVILES SA",
+          "BENITO ROGGIO E HIJOS S.A.-JOSE J. CHEDIACK S.A.I.C.A",
+          "BENITO ROGGIO E HIJOS - ELEPRINT S.A.- ECODYMA S.A.- UNI TRA",
+          "BENITO ROGGIO E HIJOS SA-SEHOS SA-BOSCH-UT",
+          "BENITO ROGGIO E HIJOS SA-SEHOS SA-LARRAZABAL-UT",
+          "BENITO ROGGIO E HIJOS SA - SEHOS SA - GARCIA LORCA - UT",
+          "BENITO ROGGIO E HIJOS SA-SEHOS SA-PASO BAJO NIVEL IRIGOY-UT",
+          "BENITO ROGGIO E HIJOS SA - INDUVIA SA - UNION TRANSITORIA"
+        ],
+        "board_count": 9
+      },
+      {
+        "officer": "DIEGO MARIA SERRANO REDONNET",
+        "companies": [
+          "LOUIS DREYFUS SAS",
+          "BANCO SANTANDER S.A.",
+          "ADMINISTRACION DE BANCOS LATINOAMERICANOS SANTANDER S L",
+          "LOUIS DREYFUS TRADING & PROCESSING LIMITED",
+          "LOUIS DREYFUS COMMODITIES B.V.",
+          "SANTANDER ASSET MANAGEMENT UK HOLDINGS LIMITED",
+          "SANTANDER ASSET MANAGEMENT S.A. SGIIC",
+          "LDC MACROSEEDS HOLDINGS B.V."
+        ],
+        "board_count": 8
+      },
+      {
+        "officer": "Sergio Fabian, PIZZATTI MERAYO",
+        "companies": [
+          "TENARIS GLOBAL SERVICES SOCIEDAD ANONIMA",
+          "TECPETROL INTERNACIONAL, S.L.",
+          "TECPETROL INVESTMENTS S.L. (UNIPERSONAL)",
+          "TERNIUM INTERNACIONAL ESPAÑA S.L.",
+          "TECHINT INGENIERIA Y CONSTRUCCIONES S.L",
+          "TENARIS GLOBAL SERVICES AND INVESTMENTS S.A. R.L.",
+          "TERNIUM INVESTMENTS S.A.R.L.",
+          "TENARIS CONNECTIONS B.V."
+        ],
+        "board_count": 8
+      },
+      {
+        "officer": "Mariano, Vitullo",
+        "companies": [
+          "TENARIS GLOBAL SERVICES SOCIEDAD ANONIMA",
+          "TECPETROL INTERNACIONAL, S.L.",
+          "TECPETROL INVESTMENTS S.L. (UNIPERSONAL)",
+          "TERNIUM INTERNACIONAL ESPAÑA S.L.",
+          "TECHINT INGENIERIA Y CONSTRUCCIONES S.L",
+          "TENARIS GLOBAL SERVICES AND INVESTMENTS S.A. R.L.",
+          "TERNIUM INVESTMENTS S.A.R.L.",
+          "TENARIS CONNECTIONS B.V."
+        ],
+        "board_count": 8
+      },
+      {
+        "officer": "GENTILE JOSE LUIS",
+        "companies": [
+          "GALICIA RETIRO COMPAÑIA DE SEGUROS",
+          "GALICIA WARRANTS",
+          "ASEGURADORA DE PERSONAS GALICIA",
+          "GALICIA INMOBILIARIA",
+          "GALICIA SEGUROS",
+          "GALICIA BROKER ASESORES DE SEGUROS",
+          "GALICIA PATRIMONIALES COMPAÑIA DE SEGUROS",
+          "GALICIA SECURITIES"
+        ],
+        "board_count": 8
+      },
+      {
+        "officer": "MARTELLI RICARDO",
+        "companies": [
+          "CARGILL SOCIEDAD ANONIMA COMERCIAL E INDUSTRIAL",
+          "CARGILL FINANCIAL SERVICES INTERNATIONAL INC",
+          "CARGILL FINANCIAL SERVICES CORPORATION",
+          "CARGILL INVESTMENTS",
+          "CARGILL GLOBAL TRADING",
+          "CARGILL LIMITED",
+          "CARGILL S.L.",
+          "CARGILL OIL PACKERS, S.L."
+        ],
+        "board_count": 8
+      },
+      {
+        "officer": "ESTEBAN SIMON RABSIUN",
+        "companies": [
+          "BENITO ROGGIO E HIJOS SA.-ESUCO SA.-JCR SA.-JOSE J CHEDIACK",
+          "BENITO ROGGIO E HIJOS S.A. - VIALMANI S.A. - UTE",
+          "BENITO ROGGIO E HIJOS - SEHOS S.A. - UNION TRANSITORIA DE EM",
+          "BENITO ROGGIO E HIJOS SA- ESUCO SA- UNION TRANSITORIA DE EM",
+          "BENITO ROGGIO E HIJOS S.A. - ESUCO S.A. - UTE",
+          "BENITO ROGGIO E HIJOS S.A.-GREEN S.A.- CASELLA S.A.- U.T.E.",
+          "BENITO ROGGIO E HIJOS S.A. - BOETTO Y BUTTIGLIENGO SA- UTE",
+          "BENITO ROGGIO E HIJOS SA- ESUCO SA OBRAS ELECTRICAS YCRT-"
+        ],
+        "board_count": 8
+      },
+      {
+        "officer": "MANTILLA FERNANDO RICARDO",
+        "companies": [
+          "TECHINT INTERNATIONAL CONSTRUCTION CORP.(TENCO)",
+          "TECPETROL",
+          "TECHINT ENGINEERING COMPANY INC.",
+          "SERVICIOS Y PRESTACIONES TECHINT FUNCHAL-SERV.COM.E.GES.DE.P",
+          "TENARIS GLOBAL SERVICES SOCIEDAD ANONIMA",
+          "TECPETROL INTERNACIONAL, S.L.",
+          "TERNIUM INGENIERIA Y SERVICIOS DE ARGENTINA",
+          "TECHINT INGENIERIA Y CONSTRUCCIONES S.L"
+        ],
+        "board_count": 8
+      },
+      {
+        "officer": "LIBIEDZIEVICH DANIEL SANTIAGO",
+        "companies": [
+          "BENITO ROGGIO E HIJOS S.A. - VIALMANI S.A. - UTE",
+          "BENITO ROGGIO E HIJOS - SEHOS S.A. - UNION TRANSITORIA DE EM",
+          "BENITO ROGGIO E HIJOS SA- ESUCO SA- UNION TRANSITORIA DE EM",
+          "BENITO ROGGIO E HIJOS S.A. - ESUCO S.A. - UTE",
+          "BENITO ROGGIO E HIJOS S.A.-GREEN S.A.- CASELLA S.A.- U.T.E.",
+          "BENITO ROGGIO E HIJOS S.A. - BOETTO Y BUTTIGLIENGO SA- UTE",
+          "BENITO ROGGIO E HIJOS SA- ESUCO SA OBRAS ELECTRICAS YCRT-",
+          "BENITO ROGGIO E HIJOS S.A.-JOSE J. CHEDIACK S.A.I.C.A"
+        ],
+        "board_count": 8
+      },
+      {
+        "officer": "LLAMBIAS DANIEL ANTONIO",
+        "companies": [
+          "BANCO DE GALICIA Y BUENOS AIRES",
+          "GALICIA RETIRO COMPAÑIA DE SEGUROS",
+          "GALICIA CAPITAL MARKETS",
+          "GALICIA FACTORING Y LEASING",
+          "GALICIA SEGUROS",
+          "AGRO GALICIA",
+          "GALICIA EQUITY ANALYSIS"
+        ],
+        "board_count": 7
+      },
+      {
+        "officer": "Norberto Daniel, Corizzo",
+        "companies": [
+          "CLUB DEL PERSONAL DEL BANCO DE GALICIA Y BUENOS AIRES",
+          "GALICIA RETIRO COMPAÑIA DE SEGUROS",
+          "GALICIA CAPITAL MARKETS",
+          "GALICIA WARRANTS",
+          "GALICIA SEGUROS",
+          "GALICIA BROKER ASESORES DE SEGUROS",
+          "GALICIA PATRIMONIALES COMPAÑIA DE SEGUROS"
+        ],
+        "board_count": 7
+      },
+      {
+        "officer": "GIL ROBERTO",
+        "companies": [
+          "CARGILL SOCIEDAD ANONIMA COMERCIAL E INDUSTRIAL",
+          "CARGILL FINANCIAL SERVICES INTERNATIONAL INC",
+          "CARGILL FINANCIAL SERVICES CORPORATION",
+          "CARGILL GLOBAL TRADING",
+          "CARGILL LIMITED",
+          "CARGILL S.L.",
+          "CARGILL OIL PACKERS, S.L."
+        ],
+        "board_count": 7
+      },
+      {
+        "officer": "MARIANO GUTIERREZ O FARRELL",
+        "companies": [
+          "TELEFONICA MOVILES ARGENTINA",
+          "TELEFONICA DATA ARGENTINA",
+          "TELEFONICA DATA E-COMMERCE ARGENTINA",
+          "TELEFONICA MOVILES ARGENTINA HOLDING",
+          "TELEFONICA DATOS DE ARGENTINA",
+          "TELEFONICA PUBLICIDAD E INFORMACION ARGENTINA",
+          "TELEFONICA MOBILE SOLUTIONS ARGENTINA"
+        ],
+        "board_count": 7
+      },
+      {
+        "officer": "VEDOYA SEBASTIAN",
+        "companies": [
+          "BARRICK GOLD (VELADERO) 3 LIMITED",
+          "BARRICK GOLD (SOUTH AMERICA) 2 LIMITED",
+          "BARRICK GOLD (SOUTH AMERICA INVESTMENTS) LIMITED",
+          "BARRICK GOLD (ARGENTINA) 1 LIMITED",
+          "BARRICK GOLD (PASCUA LAMA) 2 LIMITED",
+          "BARRICK GOLD (SOUTH AMERICA) LIMITED",
+          "BARRICK GOLD (PUEBLO VIEJO) LIMITED"
+        ],
+        "board_count": 7
+      },
+      {
+        "officer": "CESARIO, CLAUDIO ALBERTO",
+        "companies": [
+          "SANTANDER TECNOLOGIA ARGENTINA",
+          "SANTANDER MERCHANT",
+          "SANTANDER VALORES",
+          "SANTANDER CONSUMER",
+          "TECHINT BROWN AND CALDWELL",
+          "SANTANDER TRUST",
+          "ZURICH SANTANDER SEGUROS ARGENTINA"
+        ],
+        "board_count": 7
+      },
+      {
+        "officer": "SPORLEDER ARTURO",
+        "companies": [
+          "TERNIUM INTERNACIONAL S.A.",
+          "TECPETROL INTERNACIONAL, S.L.",
+          "TECPETROL INVESTMENTS S.L. (UNIPERSONAL)",
+          "TERNIUM INTERNACIONAL ESPAÑA S.L.",
+          "TERNIUM TREASURY SERVICES S.A.",
+          "TECHINT INGENIERIA Y CONSTRUCCIONES S.L",
+          "TERNIUM INVESTMENTS S.A.R.L."
+        ],
+        "board_count": 7
+      },
+      {
+        "officer": "ZABALETA HECTOR ALBERTO",
+        "companies": [
+          "TECHINT INTERNATIONAL CONSTRUCTION CORP.(TENCO)",
+          "ASOCIACION DEL PERSONAL SUPERIOR DE LA ORGANIZACION TECHINT",
+          "TECHINT ENGINEERING COMPANY INC.",
+          "SERVICIOS Y PRESTACIONES TECHINT FUNCHAL-SERV.COM.E.GES.DE.P",
+          "TECPETROL INTERNACIONAL, S.L.",
+          "TERNIUM INTERNACIONAL ESPAÑA S.L.",
+          "TECHINT INGENIERIA Y CONSTRUCCIONES S.L"
+        ],
+        "board_count": 7
+      },
+      {
+        "officer": "MIGUEL ANGEL ESTEVEZ",
+        "companies": [
+          "HSBC VALORES S.A.",
+          "HSBC PRIVATE BANK (SUISSE) SA",
+          "HSBC LATIN AMERICA B V",
+          "HSBC SERVICIOS FINANCIEROS (ARGENTINA)",
+          "HSBC CHACABUCO INVERSIONES (ARGENTINA)",
+          "HSBC LATIN AMERICA HOLDINGS (UK) LIMITED",
+          "HSBC BANK USA, NATIONAL ASSOCIATION (EN LIQUIDACION)"
+        ],
+        "board_count": 7
+      },
+      {
+        "officer": "Alejandro Maria, Colombres",
+        "companies": [
+          "TELEFONICA HOLDING DE ARGENTINA",
+          "TELEFONICA DE ARGENTINA",
+          "TELEFONICA MOVILES ARGENTINA",
+          "TELEFONICA MOVILES ARGENTINA HOLDING",
+          "TELEFONICA INGENIERIA DE SEGURIDAD DE ARGENTINA",
+          "TELEFONICA GLOBAL SOLUTIONS ARGENTINA",
+          "TELEFONICA CYBERSECURITY TECH ARGENTINA"
+        ],
+        "board_count": 7
+      },
+      {
+        "officer": "Carlos Domingo, ERNESTO",
+        "companies": [
+          "LABORATORIOS BAGO",
+          "BIOPROFARMA BAGO",
+          "BIOGENESIS BAGO",
+          "NUTRICIA-BAGO",
+          "BAGO GROUP",
+          "MS SYNTHON BAGO"
+        ],
+        "board_count": 6
+      },
+      {
+        "officer": "ALAN ARNTTSEN",
+        "companies": [
+          "LOUIS DREYFUS SAS",
+          "LOUIS DREYFUS TRADING & PROCESSING LIMITED",
+          "LOUIS DREYFUS COMMODITIES PARTICIPATIONS B.V.",
+          "LOUIS DREYFUS COMMODITIES B.V.",
+          "SANTANDER ASSET MANAGEMENT UK HOLDINGS LIMITED",
+          "SANTANDER ASSET MANAGEMENT S.A. SGIIC"
+        ],
+        "board_count": 6
+      },
+      {
+        "officer": "Guillermo Horacio, HANG",
+        "companies": [
+          "TECHINT COMPAÑIA TECNICA INTERNACIONAL SOC ANON COM E INDUS",
+          "ASOCIACION DEL PERSONAL SUPERIOR DE LA ORGANIZACION TECHINT",
+          "TECPETROL",
+          "SERVICIOS SOCIALES TECHINT",
+          "AMX ARGENTINA",
+          "TECHINT INVERSIONES SOCIEDAD ANONIMA INVERSORA Y FINANCIERA"
+        ],
+        "board_count": 6
+      },
+      {
+        "officer": "FERNANDO, NOETINGER",
+        "companies": [
+          "GALICIA RETIRO COMPAÑIA DE SEGUROS",
+          "GALICIA CAPITAL MARKETS",
+          "GALICIA WARRANTS",
+          "GALICIA SEGUROS",
+          "GRUPO FINANCIERO GALICIA",
+          "GALICIA SECURITIES"
+        ],
+        "board_count": 6
+      },
+      {
+        "officer": "Guillermo Juan, Pando",
+        "companies": [
+          "BANCO DE GALICIA Y BUENOS AIRES",
+          "GALICIA CAPITAL MARKETS",
+          "GALICIA FACTORING Y LEASING",
+          "GALICIA WARRANTS",
+          "AGRO GALICIA",
+          "GALICIA EQUITY ANALYSIS"
+        ],
+        "board_count": 6
+      }
+    ],
+    "same_entity_crossrefs": [
+      {
+        "entity_a": "Contractor:GRUPO CLARIN S.A.",
+        "entity_b": "Company:GRUPO CLARIN S.A.",
+        "match_type": "cuit",
+        "match_key": "30707001735"
+      },
+      {
+        "entity_a": "Contractor:PAPEL PRENSA S.A.I.C.F. Y DE M.",
+        "entity_b": "Company:PAPEL PRENSA S.A.I.C.F. Y DE M.",
+        "match_type": "cuit",
+        "match_key": "30500aborr279"
+      },
+      {
+        "entity_a": "Contractor:CABLEVISION S.A.",
+        "entity_b": "Company:CABLEVISION S.A.",
+        "match_type": "cuit",
+        "match_key": "30546741298"
+      },
+      {
+        "entity_a": "Contractor:YPF SA",
+        "entity_b": "Company:YPF",
+        "match_type": "cuit",
+        "match_key": "30546689979"
+      },
+      {
+        "entity_a": "Contractor:TELECOM ARGENTINA S.A.",
+        "entity_b": "Company:TELECOM ARGENTINA",
+        "match_type": "cuit",
+        "match_key": "30639453738"
+      },
+      {
+        "entity_a": "Contractor:TELEFONICA MOVILES ARGENTINA S.A.",
+        "entity_b": "Company:TELEFONICA MOVILES ARGENTINA",
+        "match_type": "cuit",
+        "match_key": "30678814357"
+      },
+      {
+        "entity_a": "Contractor:AMX ARGENTINA S.A",
+        "entity_b": "Company:AMX ARGENTINA",
+        "match_type": "cuit",
+        "match_key": "30663288497"
+      },
+      {
+        "entity_a": "Contractor:AMX ARGENTINA S.A",
+        "entity_b": "Company:AMOV IV, SOCIEDAD ANONIMA DE CAPITAL VARIABLE",
+        "match_type": "cuit",
+        "match_key": "30663288497"
+      },
+      {
+        "entity_a": "Contractor:Laboratorios Bago S.A",
+        "entity_b": "Company:LABORATORIOS BAGO",
+        "match_type": "cuit",
+        "match_key": "30516024840"
+      },
+      {
+        "entity_a": "Contractor:TELEFONICA DE ARGENTINA S.A.",
+        "entity_b": "Company:TELEFONICA DE ARGENTINA",
+        "match_type": "cuit",
+        "match_key": "30639453975"
+      },
+      {
+        "entity_a": "Contractor:AEROLÍNEAS ARGENTINAS S.A.",
+        "entity_b": "Company:AEROLINEAS ARGENTINAS SOCIEDAD ANONIMA",
+        "match_type": "cuit",
+        "match_key": "30641405554"
+      },
+      {
+        "entity_a": "Contractor:YPF GAS SA",
+        "entity_b": "Company:YPF GAS",
+        "match_type": "cuit",
+        "match_key": "30515488479"
+      },
+      {
+        "entity_a": "Contractor:MACROCONSULTING",
+        "entity_b": "Company:MACROCONSULTING",
+        "match_type": "cuit",
+        "match_key": "30683041641"
+      },
+      {
+        "entity_a": "Contractor:Bioprofarma Bagó S.A.",
+        "entity_b": "Company:BIOPROFARMA BAGO",
+        "match_type": "cuit",
+        "match_key": "30649364040"
+      },
+      {
+        "entity_a": "Contractor:NUTRICIA-BAGO S.A.",
+        "entity_b": "Company:NUTRICIA-BAGO",
+        "match_type": "cuit",
+        "match_key": "30707013431"
+      },
+      {
+        "entity_a": "Contractor:Macritex S.A.",
+        "entity_b": "Company:MACRITEX",
+        "match_type": "cuit",
+        "match_key": "30708228911"
+      },
+      {
+        "entity_a": "Contractor:Macronet S.R.L.",
+        "entity_b": "Company:MACRONET",
+        "match_type": "cuit",
+        "match_key": "30625091078"
+      },
+      {
+        "entity_a": "Contractor:Biogenesis Bago S.A.",
+        "entity_b": "Company:BIOGENESIS BAGO",
+        "match_type": "cuit",
+        "match_key": "30653399819"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:MACRI MAURICIO",
+        "match_type": "dni",
+        "match_key": "13120469"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:CHRISTIAN JAVIER, VILA",
+        "match_type": "dni",
+        "match_key": "32359207"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:MAURICIO RODRIGO, BUNGE",
+        "match_type": "dni",
+        "match_key": "12385782"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:VILA NORBERTO",
+        "match_type": "dni",
+        "match_key": "11613609"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:VILA MORET CARLOS ALBERTO (H)",
+        "match_type": "dni",
+        "match_key": "13211131"
+      },
+      {
+        "entity_a": "Contractor:BANCO DE GALICIA Y BUENOS AIRES S.A.U.",
+        "entity_b": "Company:BANCO DE GALICIA Y BUENOS AIRES S.A.U.",
+        "match_type": "cuit",
+        "match_key": null
+      },
+      {
+        "entity_a": "Contractor:Banco de Galicia y Buenos Aires S.A.",
+        "entity_b": "Company:BANCO MACRO S.A.",
+        "match_type": "cuit",
+        "match_key": null
+      },
+      {
+        "entity_a": "Contractor:Ledesma Sociedad Anonima Agricola Industrial",
+        "entity_b": "Company:LEDESMA SOCIEDAD ANONIMA AGRICOLA INDUSTRIAL",
+        "match_type": "normalized_name",
+        "match_key": "agricola anonima industrial ledesma sociedad"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:GUSTAVO CARLOS, VILA",
+        "match_type": "fuzzy_name",
+        "match_key": "carlos gustavo silva"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:VILA, Hugo Alberto",
+        "match_type": "fuzzy_name",
+        "match_key": "alberto hugo vega"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:Rodrigo Manuel, VILA",
+        "match_type": "fuzzy_name",
+        "match_key": "manuel rodrigo vidal"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:CARLOS ALFREDO, FERREYRA",
+        "match_type": "normalized_name",
+        "match_key": "alfredo carlos ferreyra"
+      },
+      {
+        "entity_a": "Contractor:MARCELO ALEJANDRO VILAR",
+        "entity_b": "CompanyOfficer:Marcelo Alejandro, VILAR",
+        "match_type": "normalized_name",
+        "match_key": "alejandro marcelo vilar"
+      },
+      {
+        "entity_a": "Contractor:Jose Raul Vila",
+        "entity_b": "CompanyOfficer:VILLAR, RAUL JOSE",
+        "match_type": "fuzzy_name",
+        "match_key": "jose raul vila"
+      },
+      {
+        "entity_a": "Donor:Mauricio Macri",
+        "entity_b": "CompanyOfficer:MACRI MAURICIO",
+        "match_type": "cuit",
+        "match_key": "13120469"
+      },
+      {
+        "entity_a": "Donor:Tomas Braun",
+        "entity_b": "CompanyOfficer:Braun, Tomas",
+        "match_type": "cuit",
+        "match_key": "27778496"
+      },
+      {
+        "entity_a": "Donor:Tomas Braun",
+        "entity_b": "CompanyOfficer:TOMÁS, BRAUN",
+        "match_type": "cuit",
+        "match_key": "27778496"
+      },
+      {
+        "entity_a": "Donor:Tomas Braun",
+        "entity_b": "CompanyOfficer:Tomas, Braun",
+        "match_type": "cuit",
+        "match_key": "27778496"
+      },
+      {
+        "entity_a": "Donor:Mauricio Macri",
+        "entity_b": "GovernmentAppointment:null",
+        "match_type": "cuit",
+        "match_key": "13120469"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:VILA, JOSE",
+        "match_type": "dni",
+        "match_key": "11044836"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:VILA JOSE",
+        "match_type": "dni",
+        "match_key": "11044836"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:VILA,JOSE",
+        "match_type": "dni",
+        "match_key": "11044836"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:WERTHEIN, GERARDO",
+        "match_type": "dni",
+        "match_key": "11802966"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:VILA MORET CARLOS ALBERTO",
+        "match_type": "dni",
+        "match_key": "13211131"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:Diego Jorge, Davila",
+        "match_type": "dni",
+        "match_key": "14026667"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:DAVILA DIEGO",
+        "match_type": "dni",
+        "match_key": "14026667"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:ROGGIO SANDRA MARIA",
+        "match_type": "dni",
+        "match_key": "20027488"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:MARIA MONSERRAT, SANTANDER",
+        "match_type": "dni",
+        "match_key": "29875566"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:VILA CHRISTIAN JAVIER",
+        "match_type": "dni",
+        "match_key": "32359207"
+      },
+      {
+        "entity_a": "GovernmentAppointment:null",
+        "entity_b": "CompanyOfficer:VILA CHRISTIAN JAVIER",
+        "match_type": "dni",
+        "match_key": "32359207"
+      },
+      {
+        "entity_a": "Donor:Pablo Antonio Fontdevila",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "20077972936"
+      },
+      {
+        "entity_a": "Donor:Pablo Antonio Fontdevila",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "20077972936"
+      },
+      {
+        "entity_a": "Donor:Pablo Antonio Fontdevila",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "20077972936"
+      },
+      {
+        "entity_a": "Donor:Pablo Antonio Fontdevila",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "20077972936"
+      },
+      {
+        "entity_a": "Donor:Pablo Antonio Fontdevila",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "20077972936"
+      },
+      {
+        "entity_a": "Donor:Pablo Antonio Fontdevila",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "20077972936"
+      },
+      {
+        "entity_a": "Donor:Pablo Antonio Fontdevila",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "20077972936"
+      },
+      {
+        "entity_a": "Donor:Pablo Antonio Fontdevila",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "20077972936"
+      },
+      {
+        "entity_a": "Donor:Pablo Antonio Fontdevila",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "20077972936"
+      },
+      {
+        "entity_a": "Donor:Mauricio Macri",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "20131204699"
+      },
+      {
+        "entity_a": "Donor:Mauricio Macri",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "20131204699"
+      },
+      {
+        "entity_a": "Donor:Mauricio Macri",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "20131204699"
+      },
+      {
+        "entity_a": "Donor:Mauricio Macri",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "20131204699"
+      },
+      {
+        "entity_a": "Donor:Mauricio Macri",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "20131204699"
+      },
+      {
+        "entity_a": "Donor:Mauricio Macri",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "20131204699"
+      },
+      {
+        "entity_a": "Donor:Daniela Marina Vilar",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "27306671214"
+      },
+      {
+        "entity_a": "Donor:Daniela Marina Vilar",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "27306671214"
+      },
+      {
+        "entity_a": "Donor:Daniela Marina Vilar",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "27306671214"
+      },
+      {
+        "entity_a": "Donor:Daniela Marina Vilar",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "27306671214"
+      },
+      {
+        "entity_a": "Donor:Daniela Marina Vilar",
+        "entity_b": "AssetDeclaration:null",
+        "match_type": "cuit",
+        "match_key": "27306671214"
+      },
+      {
+        "entity_a": "Company:PAMPA ENERGIA BOLIVIA S.A.",
+        "entity_b": "CompanyOfficer:CASAL HECTOR DANIEL",
+        "match_type": "cuit",
+        "match_key": "11875775"
+      },
+      {
+        "entity_a": "Company:PAMPA ENERGIA BOLIVIA S.A.",
+        "entity_b": "CompanyOfficer:CASAL HECTOR DANIEL",
+        "match_type": "cuit",
+        "match_key": "11875775"
+      },
+      {
+        "entity_a": "Company:MATTHEIS BORG ADMINIST PARTICIP COMERCIO E INDUSTRIA LIMIT",
+        "entity_b": "CompanyOfficer:FERREYRA DIEGO AGUSTIN",
+        "match_type": "cuit",
+        "match_key": "18379279"
+      },
+      {
+        "entity_a": "Company:MATTHEIS BORG ADMINIST PARTICIP COMERCIO E INDUSTRIA LIMIT",
+        "entity_b": "CompanyOfficer:FERREYRA DIEGO AGUSTIN",
+        "match_type": "cuit",
+        "match_key": "18379279"
+      },
+      {
+        "entity_a": "Company:MATTHEIS BORG ADMINIST PARTICIP COMERCIO E INDUSTRIA LIMIT",
+        "entity_b": "CompanyOfficer:FERREYRA, DIEGO AGUSTIN",
+        "match_type": "cuit",
+        "match_key": "18379279"
+      },
+      {
+        "entity_a": "Company:TYT TRADING",
+        "entity_b": "CompanyOfficer:Pedro Maria, LEDESMA AROCENA",
+        "match_type": "cuit",
+        "match_key": "31723087"
+      },
+      {
+        "entity_a": "Company:TYT TRADING",
+        "entity_b": "CompanyOfficer:Pedro Maria, LEDESMA AROCENA",
+        "match_type": "cuit",
+        "match_key": "31723087"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:ALBERTO AGUSTIN COTO",
+        "match_type": "cuit",
+        "match_key": "7618329"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:ALBERTO AGUSTIN COTO",
+        "match_type": "cuit",
+        "match_key": "7618329"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:ALBERTO AGUSTIN COTO",
+        "match_type": "cuit",
+        "match_key": "7618329"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:ALBERTO AGUSTIN COTO",
+        "match_type": "cuit",
+        "match_key": "7618329"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:VILA NORBERTO",
+        "match_type": "cuit",
+        "match_key": "11613609"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:VILA NORBERTO",
+        "match_type": "cuit",
+        "match_key": "11613609"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:VILA NORBERTO",
+        "match_type": "cuit",
+        "match_key": "11613609"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:VILA NORBERTO",
+        "match_type": "cuit",
+        "match_key": "11613609"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:VILA NORBERTO",
+        "match_type": "cuit",
+        "match_key": "11613609"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:VILA NORBERTO",
+        "match_type": "cuit",
+        "match_key": "11613609"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:VILA NORBERTO",
+        "match_type": "cuit",
+        "match_key": "11613609"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:VILA NORBERTO",
+        "match_type": "cuit",
+        "match_key": "11613609"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:VILA NORBERTO",
+        "match_type": "cuit",
+        "match_key": "11613609"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:VILA NORBERTO",
+        "match_type": "cuit",
+        "match_key": "11613609"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:VILA NORBERTO",
+        "match_type": "cuit",
+        "match_key": "11613609"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:VILA NORBERTO",
+        "match_type": "cuit",
+        "match_key": "11613609"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:VILA NORBERTO",
+        "match_type": "cuit",
+        "match_key": "11613609"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:WERTHEIN, GERARDO",
+        "match_type": "cuit",
+        "match_key": "11802966"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:WERTHEIN, GERARDO",
+        "match_type": "cuit",
+        "match_key": "11802966"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:MAURICIO RODRIGO, BUNGE",
+        "match_type": "cuit",
+        "match_key": "12385782"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:MAURICIO RODRIGO, BUNGE",
+        "match_type": "cuit",
+        "match_key": "12385782"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:MAURICIO RODRIGO, BUNGE",
+        "match_type": "cuit",
+        "match_key": "12385782"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:MAURICIO RODRIGO, BUNGE",
+        "match_type": "cuit",
+        "match_key": "12385782"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:MACRI MAURICIO",
+        "match_type": "cuit",
+        "match_key": "13120469"
+      },
+      {
+        "entity_a": "AssetDeclaration:null",
+        "entity_b": "CompanyOfficer:MACRI MAURICIO",
+        "match_type": "cuit",
+        "match_key": "13120469"
+      }
+    ],
+    "monopoly_donors": [
+      {
+        "donor": "Fernando Pablo Vilardo",
+        "parties": [],
+        "donations": 3
+      },
+      {
+        "donor": "Matias Emiliano Brito",
+        "parties": [],
+        "donations": 2
+      },
+      {
+        "donor": "Sergio Omar Ferreyra",
+        "parties": [],
+        "donations": 1
+      },
+      {
+        "donor": "Mauricio Macri",
+        "parties": [],
+        "donations": 1
+      },
+      {
+        "donor": "Camila Daiana Avila",
+        "parties": [],
+        "donations": 1
+      },
+      {
+        "donor": "Daniela Marina Vilar",
+        "parties": [],
+        "donations": 1
+      },
+      {
+        "donor": "Micaela Soledad Avila",
+        "parties": [],
+        "donations": 1
+      },
+      {
+        "donor": "Pablo Vilas",
+        "parties": [],
+        "donations": 1
+      },
+      {
+        "donor": "Pablo Antonio Fontdevila",
+        "parties": [],
+        "donations": 1
+      },
+      {
+        "donor": "Tomas Braun",
+        "parties": [],
+        "donations": 1
+      },
+      {
+        "donor": "Liliana Beatriz Ferreyra",
+        "parties": [],
+        "donations": 1
+      },
+      {
+        "donor": "Victor Hugo da Vila",
+        "parties": [],
+        "donations": 1
+      },
+      {
+        "donor": "Griselda Elsa Braun",
+        "parties": [],
+        "donations": 1
+      }
+    ]
+  }
+}
