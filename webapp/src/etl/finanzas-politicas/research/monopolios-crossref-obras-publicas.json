@@ -1,0 +1,505 @@
+{
+  "investigation": "Monopolios Argentina — Cross-Reference with Obras Públicas Graph (Wave 24)",
+  "date": "2026-03-24T14:51:18.136Z",
+  "methodology": "Deep Neo4j graph queries crossing monopoly actors against PublicContract, Contractor, and related datasets",
+  "total_findings": 85,
+  "findings": {
+    "top_monopoly_contractors": [
+      {
+        "contractor": "TELECOM ARGENTINA STET FRANCE TELECOM S.A.",
+        "cuit": "30639453738",
+        "contracts": 243
+      },
+      {
+        "contractor": "AMX ARGENTINA S.A ",
+        "cuit": "30663288497",
+        "contracts": 223
+      },
+      {
+        "contractor": "TELEFONICA MOVILES ARGENTINA S.A.",
+        "cuit": "30678814357",
+        "contracts": 217
+      },
+      {
+        "contractor": "YPF S.A.",
+        "cuit": "30546689979",
+        "contracts": 179
+      },
+      {
+        "contractor": "LEDESMA S.A.A.I.",
+        "cuit": "30501250305",
+        "contracts": 117
+      },
+      {
+        "contractor": "TELECOM PERSONAL S.A.",
+        "cuit": "30678186445",
+        "contracts": 93
+      },
+      {
+        "contractor": "TELECOM ARGENTINA S.A.",
+        "cuit": "30-63945373-8",
+        "contracts": 71
+      },
+      {
+        "contractor": "YPF SA",
+        "cuit": "30-54668997-9",
+        "contracts": 66
+      },
+      {
+        "contractor": "AMX ARGENTINA S.A",
+        "cuit": "30-66328849-7",
+        "contracts": 65
+      },
+      {
+        "contractor": "TELEFONICA MOVILES ARGENTINA S.A.",
+        "cuit": "30-67881435-7",
+        "contracts": 64
+      },
+      {
+        "contractor": "YPF GAS SOCIEDAD ANONIMA",
+        "cuit": "30515488479",
+        "contracts": 47
+      },
+      {
+        "contractor": "TELEFONICA DE ARGENTINA S.A.",
+        "cuit": "30639453975",
+        "contracts": 37
+      },
+      {
+        "contractor": "NUTRICIA-BAGO S.A.",
+        "cuit": "30707013431",
+        "contracts": 36
+      },
+      {
+        "contractor": "YPF GAS SA",
+        "cuit": "30-51548847-9",
+        "contracts": 27
+      },
+      {
+        "contractor": "Federacion Patronal Seguros S.A.",
+        "cuit": "33707366589",
+        "contracts": 23
+      },
+      {
+        "contractor": "Bethel Telecomunicaciones s.a.s",
+        "cuit": "30716389614",
+        "contracts": 22
+      },
+      {
+        "contractor": "TELEFONICA DE ARGENTINA S.A.",
+        "cuit": "30-63945397-5",
+        "contracts": 17
+      },
+      {
+        "contractor": "MACROPHARMA S.A",
+        "cuit": "30708650885",
+        "contracts": 16
+      },
+      {
+        "contractor": "MOLINOS TRES ARROYOS S.A.",
+        "cuit": "30644505339",
+        "contracts": 15
+      },
+      {
+        "contractor": "CABLEVISION SA",
+        "cuit": "30573652084",
+        "contracts": 13
+      },
+      {
+        "contractor": "LABORATORIO ELEA PHOENIX S.A.",
+        "cuit": "30544640212",
+        "contracts": 13
+      },
+      {
+        "contractor": "YPF SA",
+        "cuit": "30-546689979-9",
+        "contracts": 12
+      },
+      {
+        "contractor": "Tecnologia y Telecomunicaciones IP SRL",
+        "cuit": "30716021471",
+        "contracts": 10
+      },
+      {
+        "contractor": "LOS MOLINOS S.R.L",
+        "cuit": "33708068999",
+        "contracts": 10
+      },
+      {
+        "contractor": "Servicios Coton s.r.l.",
+        "cuit": "30712154752",
+        "contracts": 9
+      },
+      {
+        "contractor": "FEDERACION PATRONAL SEGUROS S.A.",
+        "cuit": "33-70736658-9",
+        "contracts": 9
+      },
+      {
+        "contractor": "LABORATORIO ELEA S.A.C.I.F. y A.",
+        "cuit": "30500571485",
+        "contracts": 9
+      },
+      {
+        "contractor": "Ledesma Sociedad Anonima Agricola Industrial",
+        "cuit": "30-50125030-5",
+        "contracts": 8
+      },
+      {
+        "contractor": "MOLINOS Y ESTABLECIMIENTOS HARINEROS BRUNING SA",
+        "cuit": "30519550071",
+        "contracts": 8
+      },
+      {
+        "contractor": "MOLINOS TRES ARROYOS S.A.",
+        "cuit": "30-64450533-9",
+        "contracts": 7
+      },
+      {
+        "contractor": "JULIA MAGDALENA MORA",
+        "cuit": "27049768988",
+        "contracts": 7
+      },
+      {
+        "contractor": "Tecnologia y Telecomunicaciones IP SRL",
+        "cuit": "30-71602147-1",
+        "contracts": 5
+      },
+      {
+        "contractor": "BIOGENESIS BAGO S.A.",
+        "cuit": "30653399819",
+        "contracts": 5
+      },
+      {
+        "contractor": "Mastellone Hnos. SA",
+        "cuit": "30547242331",
+        "contracts": 5
+      },
+      {
+        "contractor": "TELECOM ARGENTINA S.A.",
+        "cuit": "30-639453738-8",
+        "contracts": 4
+      },
+      {
+        "contractor": "LABORATORIO ELEA PHOENIX S.A.",
+        "cuit": "30-54464021-2",
+        "contracts": 4
+      },
+      {
+        "contractor": "Ledesma Sociedad Anonima Agricola Industrial",
+        "cuit": "30-501250305-5",
+        "contracts": 4
+      },
+      {
+        "contractor": "MACROCONSULTING",
+        "cuit": "30683041641",
+        "contracts": 3
+      },
+      {
+        "contractor": "Macronet S.R.L.",
+        "cuit": "30625091078",
+        "contracts": 3
+      },
+      {
+        "contractor": "Laboratorios Bago S.A",
+        "cuit": "30516024840",
+        "contracts": 3
+      }
+    ],
+    "pay_to_play": [],
+    "contractor_offshore": [],
+    "agencies_feeding_monopolies": [],
+    "repeat_winners": [
+      {
+        "contractor": "NACION SEGUROS S.A.",
+        "cuit": "30678561165",
+        "contracts": 598,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "CAMPOLONGO FEDERICO PABLO",
+        "cuit": "20180531778",
+        "contracts": 526,
+        "is_donor": false,
+        "is_officer": true
+      },
+      {
+        "contractor": "CAMPOLONGO FEDERICO PABLO",
+        "cuit": "20180531778",
+        "contracts": 526,
+        "is_donor": false,
+        "is_officer": true
+      },
+      {
+        "contractor": "TRIGEMIOS S.R.L.",
+        "cuit": "30711544581",
+        "contracts": 515,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "A Y M D ESPOSITO S.R.L.",
+        "cuit": "30612677499",
+        "contracts": 475,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "LAURENCE JAVIER DRUSCOVICH",
+        "cuit": "20148515833",
+        "contracts": 436,
+        "is_donor": false,
+        "is_officer": true
+      },
+      {
+        "contractor": "PINTURERÍA ROSMAR S.A.",
+        "cuit": "30570861278",
+        "contracts": 392,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "Diego Alberto Moral",
+        "cuit": "20317387335",
+        "contracts": 313,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "VISAPEL S.A.",
+        "cuit": "30618428989",
+        "contracts": 306,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "REGGIO MARCELO FERNANDO",
+        "cuit": "20222002126",
+        "contracts": 292,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "MAXXILIMP SRL",
+        "cuit": "30712463623",
+        "contracts": 269,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "MOGHAMES JUAN MANUEL",
+        "cuit": "20261691265",
+        "contracts": 264,
+        "is_donor": false,
+        "is_officer": true
+      },
+      {
+        "contractor": "ABC Latinoamericana de Comercialización SRL",
+        "cuit": "30715066056",
+        "contracts": 264,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "MBG COMERCIAL S.R.L.",
+        "cuit": "30707480714",
+        "contracts": 259,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "Trigemios S.R.L",
+        "cuit": "30-71154458-1",
+        "contracts": 246,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "JUAN CARLOS CARDINALE SRL",
+        "cuit": "30709301256",
+        "contracts": 244,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "TELECOM ARGENTINA STET FRANCE TELECOM S.A.",
+        "cuit": "30639453738",
+        "contracts": 243,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "EL CACIQUE LIMPIEZA SRL",
+        "cuit": "30710819552",
+        "contracts": 233,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "LISERRE JUAN CARLOS",
+        "cuit": "20105174099",
+        "contracts": 229,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "VACRI ARGENTINA SA",
+        "cuit": "30711701202",
+        "contracts": 229,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "AMX ARGENTINA S.A ",
+        "cuit": "30663288497",
+        "contracts": 223,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "BENEDETTI S.A.I.C.",
+        "cuit": "30544339199",
+        "contracts": 218,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "TELEFONICA MOVILES ARGENTINA S.A.",
+        "cuit": "30678814357",
+        "contracts": 217,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "RICARDO JORGE KUIYAN",
+        "cuit": "23114556629",
+        "contracts": 216,
+        "is_donor": false,
+        "is_officer": true
+      },
+      {
+        "contractor": "RICARDO JORGE KUIYAN",
+        "cuit": "23114556629",
+        "contracts": 216,
+        "is_donor": false,
+        "is_officer": true
+      },
+      {
+        "contractor": "SILVA MAURO ALBERTO",
+        "cuit": "20300211616",
+        "contracts": 215,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "QUIMICA CORDOBA S.A.",
+        "cuit": "33576113329",
+        "contracts": 214,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "Diego Alberto Moral",
+        "cuit": "20-31738733-5",
+        "contracts": 206,
+        "is_donor": false,
+        "is_officer": true
+      },
+      {
+        "contractor": "SINERGIA COLOR SA",
+        "cuit": "30715875264",
+        "contracts": 205,
+        "is_donor": false,
+        "is_officer": false
+      },
+      {
+        "contractor": "PINTURERIA ROSMAR S.A..",
+        "cuit": "30-57086127-8",
+        "contracts": 203,
+        "is_donor": false,
+        "is_officer": false
+      }
+    ],
+    "monopoly_utes": [
+      {
+        "ute_name": "RUTEGA SAS",
+        "cuit": "30716992841",
+        "contracts": 24
+      },
+      {
+        "ute_name": "NUTENTAR SRL",
+        "cuit": "30711317690",
+        "contracts": 12
+      },
+      {
+        "ute_name": "REUTERS LIMITED",
+        "cuit": "30525366657",
+        "contracts": 12
+      },
+      {
+        "ute_name": "VERTEX COMPUTERS S.A.",
+        "cuit": "30680574401",
+        "contracts": 6
+      },
+      {
+        "ute_name": "SAS INSTITUTE ARGENTINA S.A.",
+        "cuit": "30692302598",
+        "contracts": 3
+      },
+      {
+        "ute_name": "SUTEL S.R.L.",
+        "cuit": "30707835563",
+        "contracts": 3
+      },
+      {
+        "ute_name": "RUTEGA SAS",
+        "cuit": "sha256:c159991f8f83285d",
+        "contracts": 2
+      },
+      {
+        "ute_name": "ALEJANDRA EUGENIA SUTER",
+        "cuit": "27206773435",
+        "contracts": 1
+      },
+      {
+        "ute_name": "IMPACT COMPUTERS ARG S.A.",
+        "cuit": "33709939489",
+        "contracts": 1
+      },
+      {
+        "ute_name": "INSTRUTEC SA",
+        "cuit": "30646613198",
+        "contracts": 1
+      },
+      {
+        "ute_name": "JORGE ERNESTO WALDHUTER",
+        "cuit": "20165287852",
+        "contracts": 1
+      },
+      {
+        "ute_name": "LUNA ALEJANDRO Y PUTERO NORBERTO CARLOS S.H.",
+        "cuit": "30696717423",
+        "contracts": 1
+      },
+      {
+        "ute_name": "NUTENTAR SRL",
+        "cuit": "30-71131769-0",
+        "contracts": 1
+      },
+      {
+        "ute_name": "RUTEC EQUIPAMIENTOS MEDICOS SA",
+        "cuit": "30710964773",
+        "contracts": 1
+      }
+    ],
+    "procurement_stats": [
+      {
+        "total_contractors": 13585,
+        "total_contracts": 86648,
+        "monopoly_contractor_contracts": 1729,
+        "monopoly_share_pct": "2.0"
+      }
+    ]
+  }
+}

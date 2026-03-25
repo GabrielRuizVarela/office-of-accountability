@@ -1,0 +1,1058 @@
+{
+  "investigation": "Monopolios Argentina — Cross-Reference with Finanzas-Políticas Graph (Wave 23)",
+  "date": "2026-03-24T14:50:15.027Z",
+  "methodology": "Deep Neo4j graph queries crossing monopoly actors against Politician, Donor, GovernmentAppointment, OffshoreOfficer, and Contractor datasets",
+  "total_findings": 141,
+  "findings": {
+    "monopoly_donors": [
+      {
+        "donor": "Fernando Pablo Vilardo",
+        "cuit": "20277786894",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 3
+      },
+      {
+        "donor": "Aluar Aluminio Argentino SAIC",
+        "cuit": "30522780606",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 2
+      },
+      {
+        "donor": "Matias Emiliano Brito",
+        "cuit": "20348147790",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 2
+      },
+      {
+        "donor": "Luis Alejandro Clarotti",
+        "cuit": "20307510376",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 1
+      },
+      {
+        "donor": "Sergio Omar Ferreyra",
+        "cuit": "20267740535",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 1
+      },
+      {
+        "donor": "Mauricio Macri",
+        "cuit": "20131204699",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 1
+      },
+      {
+        "donor": "Camila Daiana Avila",
+        "cuit": "23420011784",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 1
+      },
+      {
+        "donor": "Daniela Marina Vilar",
+        "cuit": "27306671214",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 1
+      },
+      {
+        "donor": "Micaela Soledad Avila",
+        "cuit": "27386362446",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 1
+      },
+      {
+        "donor": "Pablo Vilas",
+        "cuit": "2318797523",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 1
+      },
+      {
+        "donor": "Pablo Antonio Fontdevila",
+        "cuit": "20077972936",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 1
+      },
+      {
+        "donor": "Magdalena Vigil",
+        "cuit": "27183669996",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 1
+      },
+      {
+        "donor": "Maria Magdalena Stroman",
+        "cuit": "27241541520",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 1
+      },
+      {
+        "donor": "Alejandra Andrea Magdalena de  Ganay",
+        "cuit": "27118210765",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 1
+      },
+      {
+        "donor": "Tomas Braun",
+        "cuit": "20277784964",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 1
+      },
+      {
+        "donor": "Liliana Beatriz Ferreyra",
+        "cuit": "27205449146",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 1
+      },
+      {
+        "donor": "Victor Hugo da Vila",
+        "cuit": "20283443710",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 1
+      },
+      {
+        "donor": "Griselda Elsa Braun",
+        "cuit": "23205612904",
+        "donations": [
+          {
+            "year": null,
+            "party": null
+          }
+        ],
+        "total": 1
+      }
+    ],
+    "contractor_donor_violations": [],
+    "politicians_monopoly_ties": [
+      {
+        "politician": "GARCIA, Carlos",
+        "chamber": "diputados",
+        "province": "Chaco",
+        "party": null,
+        "companies": [
+          "CERAMICA ZANON SOCIEDAD ANONIMA COMERCIAL INDUSTRIAL Y MINER",
+          "OLIVETTI ARGENTINA SOCIEDAD ANONIMA COMERCIAL E INDUSTRIAL"
+        ],
+        "count": 2
+      },
+      {
+        "politician": "ALARCON, María del Carmen",
+        "chamber": "diputados",
+        "province": "Santa Fe",
+        "party": null,
+        "companies": [
+          "PAMPA SUR EL CAMPO EN ACCION"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "ALVAREZ, Juan José",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "party": null,
+        "companies": [
+          "BBVA ASSET MANAGEMENT ARGEN SAU SOC GER DE FOND COMU DE INV"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "EHCOSOR, María Azucena",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "party": null,
+        "companies": [
+          "AEROLINEAS ARGENTINAS SOCIEDAD ANONIMA"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "FERNANDEZ, Carlos Alberto",
+        "chamber": "diputados",
+        "province": "Misiones",
+        "party": null,
+        "companies": [
+          "TRES BALUARTES"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "FERNANDEZ, Eduardo",
+        "chamber": "diputados",
+        "province": "Córdoba",
+        "party": null,
+        "companies": [
+          "CENTRO LALIN,AGOLADA Y SILLEDA DE GALICIA EN BS.AS.SOC.CUL.R"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "FERNANDEZ, Hector",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "party": null,
+        "companies": [
+          "PAMPA GROUP"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "FERNANDEZ, Jorge",
+        "chamber": "diputados",
+        "province": "San Luis",
+        "party": null,
+        "companies": [
+          "CONUS SOCIEDAD ANONIMA"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "FERNANDEZ, Marcelo Omar",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "party": null,
+        "companies": [
+          "LYN SOCIEDAD ANONIMA COMERCIAL E INDUSTRIAL"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "FRIGERIO, Rogelio",
+        "chamber": "diputados",
+        "province": "Entre Ríos",
+        "party": null,
+        "companies": [
+          "EL GUASUNCHO SOCIEDAD ANONIMA AGRICOLA GANADERA Y FORESTAL"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "GARCIA HAMILTON, José Ignacio",
+        "chamber": "diputados",
+        "province": "Tucumán",
+        "party": null,
+        "companies": [
+          "CARREFOUR NEDERLAND B V"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "LASPINA, Luciano Andres",
+        "chamber": "diputados",
+        "province": "Santa Fe",
+        "party": null,
+        "companies": [
+          "MACROVISION CONSULTING"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "LEDESMA, Tomas",
+        "chamber": "diputados",
+        "province": "Entre Ríos",
+        "party": null,
+        "companies": [
+          "MECANICA LEDESMA"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "MARTINEZ, Carlos Alberto",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "party": null,
+        "companies": [
+          "LAS PAMPAS"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "MORAN, Juan Carlos",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "party": null,
+        "companies": [
+          "GANTLEY SOCIEDAD ANONIMA"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "OBIGLIO, Julián Martín",
+        "chamber": "diputados",
+        "province": "CABA",
+        "party": null,
+        "companies": [
+          "JAZZ TELECOM,S.A."
+        ],
+        "count": 1
+      },
+      {
+        "politician": "PEREZ, Alberto José",
+        "chamber": "diputados",
+        "province": "San Luis",
+        "party": null,
+        "companies": [
+          "EOLICA NUEVA PAMPA DE MALASPINA"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "PEREZ, Jorge Telmo",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "party": null,
+        "companies": [
+          "TROPA PAMPA"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "RAMÓN, José Luis",
+        "chamber": "diputados",
+        "province": "Mendoza",
+        "party": null,
+        "companies": [
+          "DILAREL TRADE SOCIEDAD ANONIMA"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "RECALDE, Mariano",
+        "chamber": "senadores",
+        "province": "CABA",
+        "party": null,
+        "companies": [
+          "AEROLINEAS ARGENTINAS SOCIEDAD ANONIMA"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "RODRIGUEZ, José",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "party": null,
+        "companies": [
+          "TAPANEGA SOCIEDAD ANONIMA"
+        ],
+        "count": 1
+      }
+    ],
+    "donations_by_party": [
+      {
+        "party": null,
+        "donations": 22,
+        "donors": [
+          "Luis Alejandro Clarotti",
+          "Sergio Omar Ferreyra",
+          "Mauricio Macri",
+          "Camila Daiana Avila",
+          "Daniela Marina Vilar",
+          "Micaela Soledad Avila",
+          "Pablo Vilas",
+          "Pablo Antonio Fontdevila",
+          "Aluar Aluminio Argentino SAIC",
+          "Magdalena Vigil"
+        ]
+      }
+    ],
+    "appointees_monopoly_revolving_door": [
+      {
+        "appointee": null,
+        "position": null,
+        "gov_org": null,
+        "companies": [
+          "DE LAS PAMPAS",
+          "TRANSAMERICAN TELECOMUNICATION",
+          "ASOCIACION ARGENTINA DEL DERECHO DE LAS TELECOMUNICACIONES",
+          "NUEVO BANCO DE ENTRE RIOS SOCIEDAD ANONIMA",
+          "NUEVO BANCO SUQUIA SOCIEDAD ANONIMA"
+        ],
+        "count": 47
+      }
+    ],
+    "politician_company_offshore_path": [],
+    "contractor_cross_dataset": [
+      {
+        "contractor": "AGEA S.A. (CLARIN DIARIO)",
+        "cuit": "33709649839",
+        "other_dataset": "Company",
+        "other_name": "AGEA S.A. (CLARIN DIARIO)"
+      },
+      {
+        "contractor": "AMARILLA GAS SOCIEDAD ANONIMA",
+        "cuit": "30515637210",
+        "other_dataset": "Contractor",
+        "other_name": "Amarilla Gas S.A."
+      },
+      {
+        "contractor": "AMARILLA GAS SOCIEDAD ANONIMA",
+        "cuit": "30515637210",
+        "other_dataset": "CompanyOfficer",
+        "other_name": "AMARILLA GAS S.A."
+      },
+      {
+        "contractor": "AMX ARGENTINA S.A",
+        "cuit": "30-66328849-7",
+        "other_dataset": "Company",
+        "other_name": "AMOV IV, SOCIEDAD ANONIMA DE CAPITAL VARIABLE"
+      },
+      {
+        "contractor": "AMX ARGENTINA S.A",
+        "cuit": "30-66328849-7",
+        "other_dataset": "Company",
+        "other_name": "AMX ARGENTINA"
+      },
+      {
+        "contractor": "AMX ARGENTINA S.A ",
+        "cuit": "30663288497",
+        "other_dataset": "Company",
+        "other_name": "AMOV IV, SOCIEDAD ANONIMA DE CAPITAL VARIABLE"
+      },
+      {
+        "contractor": "AMX ARGENTINA S.A ",
+        "cuit": "30663288497",
+        "other_dataset": "Contractor",
+        "other_name": "AMX ARGENTINA S.A"
+      },
+      {
+        "contractor": "AMX ARGENTINA S.A ",
+        "cuit": "30663288497",
+        "other_dataset": "Company",
+        "other_name": "AMX ARGENTINA"
+      },
+      {
+        "contractor": "ARCANGEL MAGGIO SOCIEDAD ANONIMA",
+        "cuit": "30500802568",
+        "other_dataset": "Contractor",
+        "other_name": "Arcángel Maggio S.A."
+      },
+      {
+        "contractor": "ARCANGEL MAGGIO SOCIEDAD ANONIMA",
+        "cuit": "30500802568",
+        "other_dataset": "Company",
+        "other_name": "ARCANGEL MAGGIO"
+      },
+      {
+        "contractor": "AREA DATA SOCIEDAD ANONIMA",
+        "cuit": "30663303585",
+        "other_dataset": "Company",
+        "other_name": "AREA DATA"
+      },
+      {
+        "contractor": "AUTOMATION SYSTEMS SOCIEDAD ANONIMA",
+        "cuit": "30710340222",
+        "other_dataset": "Contractor",
+        "other_name": "Automation Systems S.A."
+      },
+      {
+        "contractor": "AUTOMATION SYSTEMS SOCIEDAD ANONIMA",
+        "cuit": "30710340222",
+        "other_dataset": "Company",
+        "other_name": "AUTOMATION SYSTEMS"
+      },
+      {
+        "contractor": "Abel Enrique Ledesma",
+        "cuit": "20235296714",
+        "other_dataset": "CompanyOfficer",
+        "other_name": "Abel Enrique, LEDESMA"
+      },
+      {
+        "contractor": "Analisis de Coyuntura Macroeconomica Consultora S.A",
+        "cuit": "30709869791",
+        "other_dataset": "Company",
+        "other_name": "ANALISIS DE COYUNTURA MACROECONOMICA,CONSULTORA Y DE MANDATO"
+      },
+      {
+        "contractor": "B P SOCIEDAD ANONIMA",
+        "cuit": "30-57865418-2",
+        "other_dataset": "Company",
+        "other_name": "H.P.B.SOCIEDAD ANONIMA"
+      },
+      {
+        "contractor": "B P SOCIEDAD ANONIMA",
+        "cuit": "30578654182",
+        "other_dataset": "Contractor",
+        "other_name": "B P SOCIEDAD ANONIMA"
+      },
+      {
+        "contractor": "BAGLIETTO SOCIEDAD ANONIMA",
+        "cuit": "30715719637",
+        "other_dataset": "Contractor",
+        "other_name": "BAGLIETTO SOCIEDAD ANONIMA"
+      },
+      {
+        "contractor": "BANCO DE GALICIA Y BUENOS AIRES S.A.U.",
+        "cuit": "30500003509",
+        "other_dataset": "Company",
+        "other_name": "BANCO DE GALICIA Y BUENOS AIRES S.A.U."
+      },
+      {
+        "contractor": "BANCO HIPOTECARIO SOCIEDAD ANONIMA",
+        "cuit": "30500011072",
+        "other_dataset": "Company",
+        "other_name": "BANCO HIPOTECARIO"
+      },
+      {
+        "contractor": "BANCO SANTANDER RIO SA",
+        "cuit": "30500008454",
+        "other_dataset": "Company",
+        "other_name": "BANCO SANTANDER ARGENTINA"
+      },
+      {
+        "contractor": "BBVA Banco Frances S.A.",
+        "cuit": "30500003193",
+        "other_dataset": "Company",
+        "other_name": "BANCO BBVA ARGENTINA"
+      },
+      {
+        "contractor": "BBVA CONSOLIDAR SEGUROS SA",
+        "cuit": "30500064230",
+        "other_dataset": "Company",
+        "other_name": "BBVA SEGUROS ARGENTINA"
+      },
+      {
+        "contractor": "BIOGENESIS BAGO S.A.",
+        "cuit": "30653399819",
+        "other_dataset": "Contractor",
+        "other_name": "Biogenesis Bago S.A."
+      },
+      {
+        "contractor": "BIOGENESIS BAGO S.A.",
+        "cuit": "30653399819",
+        "other_dataset": "Company",
+        "other_name": "BIOGENESIS BAGO"
+      },
+      {
+        "contractor": "BUNGE ARGENTINA S.A.",
+        "cuit": "30700869918",
+        "other_dataset": "Company",
+        "other_name": "BUNGE ARGENTINA"
+      },
+      {
+        "contractor": "BUNGE ARGENTINA S.A.",
+        "cuit": "30700869918",
+        "other_dataset": "Company",
+        "other_name": "BUNGE BRASIL HOLDINGS B.V."
+      },
+      {
+        "contractor": "Banco de Galicia y Buenos Aires S.A.",
+        "cuit": "30500001735",
+        "other_dataset": "Company",
+        "other_name": "BANCO MACRO S.A."
+      },
+      {
+        "contractor": "Benito Roggio Ferroindustrial S.A.",
+        "cuit": "30711105898",
+        "other_dataset": "Company",
+        "other_name": "BENITO ROGGIO FERROINDUSTRIAL"
+      },
+      {
+        "contractor": "Biogenesis Bago S.A.",
+        "cuit": "30-65339981-9",
+        "other_dataset": "Company",
+        "other_name": "BIOGENESIS BAGO"
+      },
+      {
+        "contractor": "CABLEVISION S.A.",
+        "cuit": "30546741298",
+        "other_dataset": "Company",
+        "other_name": "CABLEVISION S.A."
+      },
+      {
+        "contractor": "CABLEVISION SA",
+        "cuit": "30573652084",
+        "other_dataset": "Company",
+        "other_name": "CABLEVISION"
+      },
+      {
+        "contractor": "CARDINAL SERVICIOS INTEGRALES SOCIEDAD ANONIMA",
+        "cuit": "30707159320",
+        "other_dataset": "Company",
+        "other_name": "CARDINAL SERVICIOS INTEGRALES"
+      },
+      {
+        "contractor": "CENTENAR SOCIEDAD ANONIMA",
+        "cuit": "30711452989",
+        "other_dataset": "Company",
+        "other_name": "CENTENAR"
+      },
+      {
+        "contractor": "CIRCUIT CITY SOCIEDAD ANONIMA",
+        "cuit": "30716612402",
+        "other_dataset": "Contractor",
+        "other_name": "CIRCUIT CITY SOCIEDAD ANONIMA"
+      },
+      {
+        "contractor": "COLEGIO MEDICO DE LA PAMPA",
+        "cuit": "30521943609",
+        "other_dataset": "Contractor",
+        "other_name": "COLEGIO MEDICO DE LA PAMPA"
+      },
+      {
+        "contractor": "COPACABANA SOCIEDAD ANONIMA",
+        "cuit": "30-56104855-6",
+        "other_dataset": "Company",
+        "other_name": "COPACABANA"
+      },
+      {
+        "contractor": "COPACABANA SOCIEDAD ANONIMA",
+        "cuit": "30561048556",
+        "other_dataset": "Contractor",
+        "other_name": "COPACABANA SOCIEDAD ANONIMA"
+      },
+      {
+        "contractor": "COPACABANA SOCIEDAD ANONIMA",
+        "cuit": "30561048556",
+        "other_dataset": "Company",
+        "other_name": "COPACABANA"
+      },
+      {
+        "contractor": "COTO PINTURERIAS",
+        "cuit": "20128361880",
+        "other_dataset": "CompanyOfficer",
+        "other_name": "COTO VICTOR OMAR"
+      },
+      {
+        "contractor": "DASSAULT SOCIEDAD ANONIMA",
+        "cuit": "30708069341",
+        "other_dataset": "Company",
+        "other_name": "DASSAULT"
+      },
+      {
+        "contractor": "DIS LUB SOCIEDAD ANONIMA",
+        "cuit": "30716049562",
+        "other_dataset": "Company",
+        "other_name": "DIS LUB"
+      },
+      {
+        "contractor": "DISTRIBUIDORA TOBAGO SRL",
+        "cuit": "30709279269",
+        "other_dataset": "Company",
+        "other_name": "DISTRIBUIDORA TOBAGO"
+      },
+      {
+        "contractor": "EDENRED ARGENTINA SOCIEDAD ANONIMA",
+        "cuit": "30623608677",
+        "other_dataset": "Contractor",
+        "other_name": "EDENRED ARGENTINA SA"
+      },
+      {
+        "contractor": "EDENRED ARGENTINA SOCIEDAD ANONIMA",
+        "cuit": "30623608677",
+        "other_dataset": "Company",
+        "other_name": "EDENRED ARGENTINA"
+      },
+      {
+        "contractor": "EDENRED ARGENTINA SOCIEDAD ANONIMA",
+        "cuit": "30623608677",
+        "other_dataset": "Company",
+        "other_name": "EDENRED S.A."
+      },
+      {
+        "contractor": "El  Surco Compañía de Seguros Sociedad Anonima",
+        "cuit": "30500039430",
+        "other_dataset": "Company",
+        "other_name": "EL SURCO COMPAÑIA DE SEGUROS"
+      },
+      {
+        "contractor": "Electroluka Telecomunicaciones SRL",
+        "cuit": "30714073555",
+        "other_dataset": "Contractor",
+        "other_name": "Electroluka Telecomunicaciones SRL"
+      },
+      {
+        "contractor": "Estudio Tecnico Administrativo Sociedad Anonima",
+        "cuit": "30678819618",
+        "other_dataset": "Company",
+        "other_name": "ESTUDIO TECNICO ADMINISTRATIVO"
+      },
+      {
+        "contractor": "FARMATHEA SOCIEDAD ANONIMA",
+        "cuit": "33709844089",
+        "other_dataset": "Company",
+        "other_name": "FARMATHEA"
+      },
+      {
+        "contractor": "FINNING ARGENTINA SOCIEDAD ANONIMA",
+        "cuit": "30-64722711-9",
+        "other_dataset": "Company",
+        "other_name": "FINNING ARGENTINA"
+      },
+      {
+        "contractor": "Federacion Patronal Seguros S.A.",
+        "cuit": "33707366589",
+        "other_dataset": "Contractor",
+        "other_name": "FEDERACION PATRONAL SEGUROS S.A."
+      },
+      {
+        "contractor": "G.E. LOMBARDOZZI SOCIEDAD ANONIMA IMPORTADORA,COMERCIAL, INDUSTRIAL, FINANCIERA E INMOBILIARIA",
+        "cuit": "30546832151",
+        "other_dataset": "Company",
+        "other_name": "G. E. LOMBARDOZZI S.A.I.C.I.F.I."
+      },
+      {
+        "contractor": "GCS Telecomunicaciones y Servicios SRL",
+        "cuit": "30711675201",
+        "other_dataset": "Company",
+        "other_name": "GCS TELECOMUNICACIONES Y SERVICIOS"
+      },
+      {
+        "contractor": "GEPAL Sociedad Anonima",
+        "cuit": "30591288497",
+        "other_dataset": "Company",
+        "other_name": "GEPAL"
+      },
+      {
+        "contractor": "GRAFICA VELTON SOCIEDAD ANONIMA",
+        "cuit": "30520439834",
+        "other_dataset": "Company",
+        "other_name": "GRAFICA VELTON"
+      },
+      {
+        "contractor": "GRAN BUENOS AIRES RAYOS X SOCIEDAD ANONIMA",
+        "cuit": "30554704189",
+        "other_dataset": "Contractor",
+        "other_name": "GRAN BUENOS AIRES RAYOS X S.A."
+      },
+      {
+        "contractor": "GRAN BUENOS AIRES RAYOS X SOCIEDAD ANONIMA",
+        "cuit": "30554704189",
+        "other_dataset": "Company",
+        "other_name": "GRAN BUENOS AIRES RAYOS X"
+      },
+      {
+        "contractor": "GRUPO CLARIN S.A.",
+        "cuit": "30707001735",
+        "other_dataset": "Company",
+        "other_name": "GRUPO CLARIN S.A."
+      },
+      {
+        "contractor": "Globalsat Argentina Telecomunicaciones SRL",
+        "cuit": "30715523988",
+        "other_dataset": "Company",
+        "other_name": "GLOBALSAT ARGENTINA TELECOMUNICACIONES"
+      },
+      {
+        "contractor": "Globalsat Argentina Telecomunicaciones SRL",
+        "cuit": "30715523988",
+        "other_dataset": "Company",
+        "other_name": "GLOBALSAT ARGENTINA"
+      },
+      {
+        "contractor": "Golau Sociedad Anonima",
+        "cuit": "30713392800",
+        "other_dataset": "Company",
+        "other_name": "GOLAU"
+      },
+      {
+        "contractor": "HSBC BANK ARGENTINA S.A.",
+        "cuit": "33537186009",
+        "other_dataset": "Company",
+        "other_name": "BANCO GGAL"
+      },
+      {
+        "contractor": "Hesurmet sociedad anonima",
+        "cuit": "33708713029",
+        "other_dataset": "Company",
+        "other_name": "HESURMET"
+      },
+      {
+        "contractor": "INDUSTOCK SOCIEDAD ANONIMA",
+        "cuit": "30616866857",
+        "other_dataset": "Company",
+        "other_name": "INDUSTOK S.A.I.Y C."
+      },
+      {
+        "contractor": "INTERCAMBIO COMERCIAL SOCIEDAD ANONIMA IN.CO.S.A",
+        "cuit": "30569710029",
+        "other_dataset": "Company",
+        "other_name": "INTERCAMBIO COMERCIAL S.A.I.C. (INCOSA)"
+      },
+      {
+        "contractor": "INTERCARGO SOCIEDAD ANONIMA COMERCIAL",
+        "cuit": "30538274832",
+        "other_dataset": "Company",
+        "other_name": "INTERCARGO"
+      },
+      {
+        "contractor": "IVAX ARGENTINA SOCIEDAD ANONIMA",
+        "cuit": "33-50170702-9",
+        "other_dataset": "Company",
+        "other_name": "IVAX ARGENTINA"
+      },
+      {
+        "contractor": "IVAX ARGENTINA SOCIEDAD ANONIMA",
+        "cuit": "33501707029",
+        "other_dataset": "Contractor",
+        "other_name": "IVAX ARGENTINA SOCIEDAD ANONIMA"
+      },
+      {
+        "contractor": "IVAX ARGENTINA SOCIEDAD ANONIMA",
+        "cuit": "33501707029",
+        "other_dataset": "Company",
+        "other_name": "IVAX ARGENTINA"
+      },
+      {
+        "contractor": "JEFATURA DE POLICIA DE LA PROVINCIA DE LA PAMPA",
+        "cuit": "30671683745",
+        "other_dataset": "Contractor",
+        "other_name": "JEFATURA DE POLICIA DE LA PROVINCIA DE LA PAMPA"
+      },
+      {
+        "contractor": "JOSE CARTELLONE CONSTRUCCIONES CIVILES SA - DECAVIAL SAICAC - ESUCO SA- UTE",
+        "cuit": "33715477799",
+        "other_dataset": "Company",
+        "other_name": "JOSE CARTE CONST CIV S.A.-DECAV S.A.I.C.A.C.- ESUCO S.A.- UT"
+      },
+      {
+        "contractor": "JULIA MAGDALENA MORA",
+        "cuit": "27049768988",
+        "other_dataset": "Contractor",
+        "other_name": "JULIA MAGDALENA MORA"
+      },
+      {
+        "contractor": "LA LEY SOCIEDAD ANONIMA  EDITORA E IMPRESORA",
+        "cuit": "30-50010631-6",
+        "other_dataset": "Company",
+        "other_name": "LA LEY SOCIEDAD ANONIMA UNIPERSONAL EDITORA E IMPRESORA"
+      },
+      {
+        "contractor": "LABORATORIO DE TELECOMUNICACIONES S.A",
+        "cuit": "30703080444",
+        "other_dataset": "Company",
+        "other_name": "LABORATORIO DE TELECOMUNICACIONES"
+      },
+      {
+        "contractor": "LABORATORIO ELEA PHOENIX S.A.",
+        "cuit": "30-54464021-2",
+        "other_dataset": "Company",
+        "other_name": "LABORATORIO ELEA PHOENIX"
+      },
+      {
+        "contractor": "LABORATORIO ELEA PHOENIX S.A.",
+        "cuit": "30544640212",
+        "other_dataset": "Contractor",
+        "other_name": "LABORATORIO ELEA PHOENIX S.A."
+      },
+      {
+        "contractor": "LABORATORIO ELEA PHOENIX S.A.",
+        "cuit": "30544640212",
+        "other_dataset": "Company",
+        "other_name": "LABORATORIO ELEA PHOENIX"
+      },
+      {
+        "contractor": "LABORATORIO ELEA S.A.C.I.F. y A.",
+        "cuit": "30500571485",
+        "other_dataset": "Company",
+        "other_name": "LABORATORIO ELEA SA COMERCIAL INDUSTRIAL FINANCIERA Y AGROP"
+      },
+      {
+        "contractor": "LEDESMA S.A.A.I.",
+        "cuit": "30501250305",
+        "other_dataset": "Contractor",
+        "other_name": "Ledesma Sociedad Anonima Agricola Industrial"
+      },
+      {
+        "contractor": "LEVEL 3 ARGENTINA SOCIEDAD ANONIMA",
+        "cuit": "30626747171",
+        "other_dataset": "Contractor",
+        "other_name": "CENTURYLINK ARGENTINA S.A."
+      },
+      {
+        "contractor": "LEVEL 3 ARGENTINA SOCIEDAD ANONIMA",
+        "cuit": "30626747171",
+        "other_dataset": "Company",
+        "other_name": "CIRION TECHNOLOGIES ARGENTINA"
+      },
+      {
+        "contractor": "LICIMAX SOCIEDAD ANONIMA",
+        "cuit": "30714536253",
+        "other_dataset": "Company",
+        "other_name": "LICIMAX"
+      },
+      {
+        "contractor": "Laboratorios Bago S.A",
+        "cuit": "30-51602484-0",
+        "other_dataset": "Company",
+        "other_name": "LABORATORIOS BAGO"
+      },
+      {
+        "contractor": "Laboratorios Bago S.A",
+        "cuit": "30516024840",
+        "other_dataset": "Contractor",
+        "other_name": "Laboratorios Bago S.A"
+      },
+      {
+        "contractor": "Laboratorios Bago S.A",
+        "cuit": "30516024840",
+        "other_dataset": "Company",
+        "other_name": "LABORATORIOS BAGO"
+      },
+      {
+        "contractor": "Ledesma Sociedad Anonima Agricola Industrial",
+        "cuit": "30-50125030-5",
+        "other_dataset": "Company",
+        "other_name": "LEDESMA SOCIEDAD ANONIMA AGRICOLA INDUSTRIAL"
+      },
+      {
+        "contractor": "MACRO SERVICE",
+        "cuit": "30661750878",
+        "other_dataset": "Company",
+        "other_name": "MACRO SERVICE"
+      },
+      {
+        "contractor": "MACROCONSULTING",
+        "cuit": "30-68304164-1",
+        "other_dataset": "Company",
+        "other_name": "MACROCONSULTING"
+      },
+      {
+        "contractor": "MACROCONSULTING",
+        "cuit": "30683041641",
+        "other_dataset": "Contractor",
+        "other_name": "MACROCONSULTING"
+      },
+      {
+        "contractor": "MACROCONSULTING",
+        "cuit": "30683041641",
+        "other_dataset": "Company",
+        "other_name": "MACROCONSULTING"
+      },
+      {
+        "contractor": "MACROVISION CONSULTING SA",
+        "cuit": "30707936319",
+        "other_dataset": "Company",
+        "other_name": "MACROVISION CONSULTING"
+      },
+      {
+        "contractor": "MARIA MAGDALENA ROSA",
+        "cuit": "27283982780",
+        "other_dataset": "Contractor",
+        "other_name": "MARIA MAGDALENA ROSA"
+      },
+      {
+        "contractor": "MERCADOLIBRE SRL",
+        "cuit": "30703088534",
+        "other_dataset": "Company",
+        "other_name": "MERCADOLIBRE"
+      },
+      {
+        "contractor": "MOLINOS RÍO DE LA PLATA S.A.",
+        "cuit": "30500858628",
+        "other_dataset": "Company",
+        "other_name": "MOLINOS RIO DE LA PLATA"
+      },
+      {
+        "contractor": "MOLINOS TRES ARROYOS S.A.",
+        "cuit": "30644505339",
+        "other_dataset": "Contractor",
+        "other_name": "MOLINOS TRES ARROYOS S.A."
+      },
+      {
+        "contractor": "MOLINOS Y ESTABLECIMIENTOS HARINEROS BRUNING SA",
+        "cuit": "30519550071",
+        "other_dataset": "Company",
+        "other_name": "MOLINOS Y ESTABLECIMIENTOS HARINEROS BRUNING"
+      },
+      {
+        "contractor": "MONTI Y COMPAÑIA SOCIEDAD ANONIMA",
+        "cuit": "30545555707",
+        "other_dataset": "Contractor",
+        "other_name": "MONTI Y COMPAÑIA SOCIEDAD ANONIMA"
+      },
+      {
+        "contractor": "MR PHARMA SOCIEDAD ANONIMA",
+        "cuit": "30-70719945-4",
+        "other_dataset": "Company",
+        "other_name": "M.R. PHARMA"
+      },
+      {
+        "contractor": "MR PHARMA SOCIEDAD ANONIMA",
+        "cuit": "30707199454",
+        "other_dataset": "Contractor",
+        "other_name": "MR PHARMA SOCIEDAD ANONIMA"
+      }
+    ]
+  }
+}

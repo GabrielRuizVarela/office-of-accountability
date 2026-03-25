@@ -1,0 +1,547 @@
+{
+  "title": "Monopolio del Aluminio en Argentina — Aluar, la Familia Madanes Quintanilla y la Captura del Estado",
+  "date": "2026-03-24",
+  "summary": "Aluar Aluminio Argentino S.A.I.C. is the sole producer of primary aluminium in Argentina, constituting a textbook pure monopoly (HHI = 10,000). Founded in 1970 under the military dictatorship of General Lanusse through a direct-award contract (Decreto 206/1971) to entrepreneurs Manuel Madanes and Jose Ber Gelbard, the company has maintained its monopoly position across every government since — Peronist, military, Radical, Kirchnerist, Macrista, and Milei. The Madanes Quintanilla family controls the group through a complex cross-shareholding structure involving at least 13 companies, owns the Futaleufu hydroelectric dam that supplies 95% of its output to Aluar at below-market rates, and has been identified in both the Panama Papers and Pandora Papers with offshore entities in the British Virgin Islands, Cook Islands, Bahamas, and New Zealand. The same family controlled FATE neumaticos (closed February 2026 after 80 years) and has contributed campaign funds to opposing political parties across electoral cycles.",
+
+  "monopoly_structure": {
+    "market_definition": "Primary aluminium production in Argentina",
+    "hhi_index": 10000,
+    "hhi_explanation": "Aluar holds 100% of domestic primary aluminium production. A single-firm market yields the maximum possible HHI score of 10,000 (100^2). By any antitrust standard, this is a pure monopoly.",
+    "sole_producer": true,
+    "company": {
+      "legal_name": "Aluar Aluminio Argentino Sociedad Anonima Industrial y Comercial",
+      "cuit": "30-52278060-6",
+      "registered_address": "Marcelo T. de Alvear 590, Piso 3, Ciudad Autonoma de Buenos Aires",
+      "contract_date": "1970-04-15",
+      "principal_activity": "Elaboracion de Aluminio Primario y Semielaborados de Aluminio",
+      "ticker": "ALUA (BYMA / Buenos Aires Stock Exchange)"
+    },
+    "production": {
+      "capacity_tons_per_year": 460000,
+      "plant_location": "Puerto Madryn, Chubut",
+      "plant_details": "8 halls, 712 electrolytic cells",
+      "export_share_percent": 70,
+      "export_revenue_usd_annual": 550000000,
+      "main_export_destinations": ["Japan", "United States"],
+      "countries_exported_to": "20+",
+      "global_ranking": "First quintile worldwide by capacity"
+    },
+    "foil_market_dominance": {
+      "description": "In the aluminium foil (laminated sheet) sub-market, Aluar leveraged antidumping tariff protection to increase its market share from 64% in 2019 to 91% in 2024, while simultaneously raising prices 5-7% above international benchmarks that had fallen 16%.",
+      "market_share_2019_percent": 64,
+      "market_share_2024_percent": 91,
+      "sources": [
+        "https://www.infobae.com/economia/2026/02/23/el-gobierno-quito-una-proteccion-clave-que-favorecia-a-aluar-otra-empresa-del-dueno-de-fate/",
+        "https://www.ambito.com/economia/el-gobierno-elimina-el-arancel-antidumping-del-28-al-aluminio-chino-n6248643"
+      ]
+    },
+    "aluar_defense": "Aluar argues it does not hold a dominant position because, with no tariff barriers in Mercosur, the relevant market includes Brazil, where Aluar holds only 15.6% of combined production. This framing is contested by critics who note 100% domestic concentration and the barriers protecting the local market.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Aluar",
+      "https://cuartopodersalta.com.ar/duenos-y-algo-mas-aluar-y-el-monopolio-del-aluminio/",
+      "https://www.lanacion.com.ar/arquitectura/aluar-unica-industria-del-pais-productora-de-aluminio-nid206979/",
+      "https://www.cuitonline.com/detalle/30522780606/aluar-aluminio-argentino-sociedad-anonima-industrial-y-comercial.html",
+      "https://www.argentina.gob.ar/sites/default/files/aluminio_2024-1.pdf"
+    ]
+  },
+
+  "madanes_quintanilla_family": {
+    "current_patriarch": {
+      "name": "Javier Santiago Madanes Quintanilla",
+      "role": "President of Aluar and head of the Fate-Aluar group",
+      "estimated_fortune_usd": 1500000000,
+      "forbes_ranking": "18th richest in Argentina (earlier estimate: USD 590M; later Forbes: USD 1.5B)",
+      "consolidated_control": "Late 1990s — purchased majority shareholding from cousins (sons of Manuel Madanes)"
+    },
+    "family_ownership_aluar_percent": 68,
+    "founders": {
+      "manuel_madanes": {
+        "role": "Co-founder of FATE and Aluar, held majority voting shares, Vice-President of Aluar, President of Fundacion Aluar",
+        "konex_award": true,
+        "source": "https://www.fundacionkonex.org/b750-manuel-madanes"
+      },
+      "jose_ber_gelbard": {
+        "role": "Co-founder, Peron's representative in the business world, later Minister of Economy under Campora/Peron (1973-1974)",
+        "political_significance": "Gelbard served as intermediary between Peron in exile and the Lanusse military government. The Aluar contract was part of a political quid pro quo to support the Gran Acuerdo Nacional (GAN).",
+        "sources": [
+          "https://mundoempresarial.ar/gelbard-fate-y-aluar/",
+          "https://izquierdaweb.com/jose-ber-gelbard-peron-y-el-pacto-social/"
+        ]
+      }
+    },
+    "icij_offshore_records": [
+      {
+        "name": "Leiser Madanes",
+        "database": "Offshore Leaks",
+        "role_in_db": "Officer",
+        "url": "https://offshoreleaks.icij.org/nodes/42534"
+      },
+      {
+        "name": "Susana Deutsch Madanes",
+        "database": "Offshore Leaks",
+        "role_in_db": "Officer",
+        "url": "https://offshoreleaks.icij.org/nodes/47982"
+      },
+      {
+        "name": "Tomas Madanes",
+        "database": "Offshore Leaks",
+        "role_in_db": "Officer",
+        "url": "https://offshoreleaks.icij.org/nodes/42578"
+      },
+      {
+        "name": "MIGUEL MADANES",
+        "database": "Offshore Leaks",
+        "role_in_db": "Officer",
+        "url": "https://offshoreleaks.icij.org/nodes/12072534"
+      },
+      {
+        "name": "Micaela Madanes",
+        "database": "Offshore Leaks",
+        "role_in_db": "Officer",
+        "url": "https://offshoreleaks.icij.org/nodes/116241"
+      },
+      {
+        "name": "OHAD MADANES",
+        "database": "Offshore Leaks",
+        "role_in_db": "Officer",
+        "url": "https://offshoreleaks.icij.org/nodes/12158460"
+      }
+    ],
+    "offshore_jurisdictions": ["Cook Islands", "Bahamas", "British Virgin Islands", "Panama", "New Zealand"],
+    "offshore_accounts": ["Swiss bank accounts (unspecified institutions)"],
+    "offshore_assets": "Money, artworks, shares and other assets administered through offshore operations",
+    "sources": [
+      "https://losricosdeargentina.com.ar/madanes.html",
+      "https://losricosdeargentina.com.ar/madanes2.html",
+      "https://www.lanacion.com.ar/economia/la-familia-madanes-millonarios-con-un-imperio-offshore-nid1575876/",
+      "https://www.infobae.com/economia/2026/02/18/el-empresario-industrial-detras-de-fate-y-aluar-quien-es-javier-madanes-quintanilla/"
+    ]
+  },
+
+  "panama_papers_pandora_papers": {
+    "summary": "Javier Madanes Quintanilla appears in both the Panama Papers (via Mossack Fonseca) and the Pandora Papers (via Alcogal). Multiple family members appear in the ICIJ Offshore Leaks Database. The family used offshore structures to invest in US real estate and organize inheritance planning through trusts.",
+    "pandora_papers": {
+      "law_firm": "Aleman, Cordero, Galindo & Lee (Alcogal) — Panama",
+      "entity": "DQ Assets Limited",
+      "jurisdiction": "British Virgin Islands",
+      "role": "Director and Ultimate Beneficial Owner",
+      "period": "June 2014 to at least 2018",
+      "purpose": "Investment in US properties and inheritance organization",
+      "additional_structures": {
+        "bvi_companies": 2,
+        "nz_trusts": 1,
+        "trust_beneficiaries": "His children"
+      }
+    },
+    "earlier_offshore_activity": {
+      "description": "La Nacion reported in 2013 that the Madanes family administered money, artworks, shares, and other assets through offshore operations in the Cook Islands, Bahamas, Virgin Islands, and Panama, connected to Swiss bank accounts.",
+      "source": "https://www.lanacion.com.ar/economia/la-familia-madanes-millonarios-con-un-imperio-offshore-nid1575876/"
+    },
+    "sources": [
+      "https://www.eldiarioar.com/politica/pandora-papers/dueno-aluar-fate-recurrio-estructuras-offshore-invertir-propiedades-estados-unidos-organizar-herencia_1_8640261.html",
+      "https://offshoreleaks.icij.org/nodes/42534",
+      "https://offshoreleaks.icij.org/nodes/47982",
+      "https://offshoreleaks.icij.org/nodes/42578",
+      "https://lapapa.com.ar/nota/18386/javier-madanes-quintanilla-el-dueno-de-fate-que-concentra-el-monopolio-del-aluminio-y-fue-mencionado-en-los-panama-papers"
+    ]
+  },
+
+  "energy_subsidy_futaleufu": {
+    "summary": "Aluar owns 60.2% of the Futaleufu hydroelectric dam — the very dam that was built with USD 474.5M in public funds to supply its smelter. 95% of the dam's annual output goes exclusively to Aluar at a subsidized rate that has persisted for over 28 years. Aluar pays USD 16-26/MWh while the wholesale electricity market price is USD 70-80/MWh — a discount of 63-80%.",
+    "dam": {
+      "name": "Central Hidroelectrica Futaleufu",
+      "location": "Trevelin, Chubut Province",
+      "construction_period": "1971-1976 (inaugurated 1978)",
+      "original_funding": "Entirely state-financed under the military government",
+      "state_investment_usd": 474500000,
+      "note": "The dam was built specifically to power the Aluar smelter"
+    },
+    "ownership_structure": {
+      "aluar_percent": 60.20,
+      "chubut_province_percent": 33.51,
+      "minority_shareholders_percent": 6.29,
+      "partner": "Genneia (Brito family — principal renewable energy company in Argentina)"
+    },
+    "energy_pricing": {
+      "aluar_pays_usd_per_mwh_low": 16,
+      "aluar_pays_usd_per_mwh_high": 26,
+      "wholesale_market_price_usd_per_mwh_low": 70,
+      "wholesale_market_price_usd_per_mwh_high": 80,
+      "discount_percent_range": "63-80%",
+      "subsidy_duration_years": "28+ (since mid-1990s contract)",
+      "output_to_aluar_percent": 95
+    },
+    "concession_status": {
+      "expiry": "June 2026",
+      "note": "The Futaleufu concession is due to expire in mid-2026, raising questions about renewal terms"
+    },
+    "political_context": "The state built a hydroelectric dam with public money, then Aluar acquired majority ownership of that dam and buys 95% of its output at a fraction of market price. This is a textbook case of privatized gains from public infrastructure investment.",
+    "sources": [
+      "https://www.red43.com.ar/nota/2022-5-15-7-40-59-hidroelectrica-futaleufu-vende-energia-subsidiada-a-aluar-cuando-se-debate-la-quita-para-el-consumo-residencial",
+      "https://www.diariojornada.com.ar/334083/politica/editorial_____el_dueno_de_la_energia_de_chubut_no_es_chubut",
+      "https://periodismodeizquierda.com/hidroelectrica-futaleufu-profundizacion-de-la-entrega/",
+      "https://www.lateclapatagonia.com.ar/70309-represa-futaleufu-quien-maneja-los-recursos",
+      "https://es.wikipedia.org/wiki/Complejo_hidroel%C3%A9ctrico_Futaleuf%C3%BA",
+      "https://cdsa.aacademica.org/000-108/498.pdf"
+    ]
+  },
+
+  "fate_neumaticos": {
+    "summary": "FATE (Fabrica Argentina de Tejidos Engomados) was the tire manufacturing arm of the same Madanes Quintanilla group. Founded in 1940, it operated for over 80 years before permanently closing on February 18, 2026, eliminating 920 jobs. Before closure, FATE held approximately 25% of the domestic passenger tire market alongside Bridgestone and Pirelli.",
+    "company": {
+      "legal_name": "FATE S.A.I.C.I.",
+      "cuit": "30-50084258-6",
+      "plant_address": "Av. Blanco Encalada 3003, Victoria, San Fernando, Buenos Aires",
+      "plant_size_hectares": 40,
+      "covered_area_sqm": 157513,
+      "production_capacity_tires_per_year": 5000000,
+      "dot_code": "F5",
+      "founded": 1940,
+      "closed": "2026-02-18"
+    },
+    "market_position_pre_closure": {
+      "domestic_market_share_percent": 25,
+      "market_structure": "Three domestic producers: FATE, Bridgestone (Llavallol), Pirelli (Merlo) — each approximately 25% of passenger/light truck segment",
+      "imports_share_of_total_market_percent": 75,
+      "chinese_share_of_imports_percent": 60
+    },
+    "closure_details": {
+      "employees_affected": 920,
+      "reason_cited": "Profound changes in market conditions due to commercial opening and massive imports from Asia at highly competitive prices",
+      "context": "In 2025, 7.8 million tires were imported against a total market of slightly over 10 million tires annually. Tire production was the segment with the largest decline in the auto parts industry in 2025."
+    },
+    "political_significance": "The FATE closure under the Milei government represents a rare instance where the Madanes group lost rather than gained from government policy. The simultaneous elimination of antidumping tariffs on aluminium foil suggests a broader political rupture.",
+    "sources": [
+      "https://es.wikipedia.org/wiki/Fate",
+      "https://www.iprofesional.com/negocios/448476-por-que-fate-tuvo-que-cerrar-su-fabrica-de-neumaticos",
+      "https://www.cronista.com/negocios/cierre-de-fate-la-produccion-de-neumaticos-fue-lo-que-mas-cayo-en-la-baja-de-la-industria-autopartista-en-2025/",
+      "https://dfsud.com/ripe/cerro-fate-la-historica-fabrica-de-neumaticos-en-argentina-que-pasara",
+      "https://www.cuitonline.com/detalle/30500842586/fate-saici.html"
+    ]
+  },
+
+  "import_protection": {
+    "summary": "Aluar has historically been protected by antidumping duties and tariff barriers. A 28% antidumping tariff on Chinese aluminium foil was imposed in 2020 under Alberto Fernandez and was due to expire in March 2026. In February 2026, the Milei government eliminated this tariff early, citing that no dumping margin existed. During the protection period, Aluar increased its foil market share from 64% to 91% while raising domestic prices above declining international benchmarks.",
+    "antidumping_tariff": {
+      "rate_percent": 28,
+      "target": "Aluminium foil (laminated sheet, 0.006-0.2mm thickness, max 1300mm width) from China",
+      "imposed_by": "Alberto Fernandez government",
+      "imposed_year": 2020,
+      "original_duration_years": 5,
+      "scheduled_expiry": "2026-03-05",
+      "early_removal_date": "2026-02-23",
+      "removed_by": "Milei government (Ministry of Economy / Luis Caputo)",
+      "justification_for_removal": "Technical analysis concluded no dumping margin existed for Chinese aluminium exports to Argentina"
+    },
+    "abuse_during_protection": {
+      "description": "While protected by the 28% tariff, Aluar raised domestic aluminium foil prices 5-7% even as the international aluminium price fell 16%. Simultaneously, Aluar's foil market share grew from 64% to 91% — a textbook case of tariff protection enabling monopoly rent extraction.",
+      "international_price_change_percent": -16,
+      "domestic_price_change_percent": "+5 to +7",
+      "market_share_change": "64% to 91%"
+    },
+    "broader_tariff_context": "Argentina has historically maintained protective tariffs on primary aluminium imports. Aluar's argument for protection was always framed as defending domestic industry and employment, but critics noted the company simultaneously exported 70% of its output at world prices while charging premium domestic prices.",
+    "sources": [
+      "https://www.infobae.com/economia/2026/02/23/el-gobierno-quito-una-proteccion-clave-que-favorecia-a-aluar-otra-empresa-del-dueno-de-fate/",
+      "https://www.ambito.com/economia/el-gobierno-elimina-el-arancel-antidumping-del-28-al-aluminio-chino-n6248643",
+      "https://www.lanacion.com.ar/economia/el-gobierno-levanto-una-medida-antidumping-para-el-acero-pese-al-pedido-de-aluar-nid23022026/",
+      "https://eleconomista.com.ar/economia/aluminio-chino-caputo-elimina-arancel-vuelve-golpear-dueno-fate-n92793",
+      "https://gestion.pe/mundo/internacional/argentina-elimina-aranceles-para-la-importacion-de-hojas-de-aluminio-noticia/"
+    ]
+  },
+
+  "political_connections_by_era": {
+    "summary": "The Madanes-Aluar group has maintained political relationships and received state benefits under every Argentine government since 1970. The group has donated to opposing political parties in the same electoral cycles, ensuring access regardless of who wins.",
+    "eras": [
+      {
+        "period": "1970-1973",
+        "government": "Military dictatorship (Gen. Alejandro Lanusse)",
+        "relationship": "Direct-award contract via Decreto 206/1971. State invested USD 474.5M in infrastructure (Futaleufu dam, Puerto Madryn deep-water port, transmission lines) to benefit Aluar. The contract was a quid pro quo: Madanes and Gelbard were expected to support Lanusse's Gran Acuerdo Nacional (GAN).",
+        "key_figure": "Jose Ber Gelbard — intermediary between Lanusse and Peron",
+        "sources": [
+          "https://mundoempresarial.ar/gelbard-fate-y-aluar/",
+          "https://cdsa.aacademica.org/000-108/498.pdf"
+        ]
+      },
+      {
+        "period": "1973-1976",
+        "government": "Peronist (Campora / Peron / Isabel Peron)",
+        "relationship": "Gelbard became Minister of Economy under Campora and then Peron. Aluar's first smelter opened in Puerto Madryn in 1974. The company effectively had its co-founder running economic policy.",
+        "key_figure": "Jose Ber Gelbard — Minister of Economy",
+        "sources": [
+          "https://izquierdaweb.com/jose-ber-gelbard-peron-y-el-pacto-social/"
+        ]
+      },
+      {
+        "period": "1976-1983",
+        "government": "Military dictatorship (Proceso de Reorganizacion Nacional)",
+        "relationship": "The military regime assumed and nationalized Aluar's debts. As one source states: 'the dictatorship decided that the people should pay his millionaire debts.'",
+        "sources": [
+          "https://www.laizquierdadiario.com/Conflicto-del-neumatico-quien-es-Javier-Madanes-Quintanilla-el-empresario-que-ataca-a-los"
+        ]
+      },
+      {
+        "period": "1989-1999",
+        "government": "Menemist (Carlos Menem)",
+        "relationship": "Privatization era. The Futaleufu hydroelectric dam concession was structured to benefit Aluar, which acquired 60.2% ownership.",
+        "sources": [
+          "https://periodismodeizquierda.com/hidroelectrica-futaleufu-profundizacion-de-la-entrega/"
+        ]
+      },
+      {
+        "period": "2003-2015",
+        "government": "Kirchnerist (Nestor and Cristina Kirchner)",
+        "relationship": "Subsidized energy tariffs maintained. Aluar continued receiving below-market electricity from Futaleufu. The energy subsidy regime benefited large industrial consumers disproportionately.",
+        "sources": [
+          "https://www.red43.com.ar/nota/2022-5-15-7-40-59-hidroelectrica-futaleufu-vende-energia-subsidiada-a-aluar-cuando-se-debate-la-quita-para-el-consumo-residencial"
+        ]
+      },
+      {
+        "period": "2015-2019",
+        "government": "Macrista (Mauricio Macri)",
+        "relationship": "Aluar donated the maximum allowed ARS 3,000,000 to the Cambiemos campaign in 2017. Also donated to Macri's 2019 PASO campaign.",
+        "campaign_donation": "ARS 3,000,000 (maximum allowed) to Cambiemos, 2017",
+        "sources": [
+          "https://www.izquierdadiario.es/Panqueques-Aluar-aporto-a-la-campana-de-Macri-en-2017-y-ahora-a-los-Fernandez"
+        ]
+      },
+      {
+        "period": "2019-2023",
+        "government": "Fernandezist (Alberto Fernandez)",
+        "relationship": "Aluar donated ARS 900,000 to the Frente de Todos presidential campaign in 2019 — after having donated to Macri in the same PASO cycle. The Fernandez government imposed the 28% antidumping tariff on Chinese aluminium foil that allowed Aluar to raise its foil market share to 91%.",
+        "campaign_donation": "ARS 900,000 bank transfer to Frente de Todos, 2019",
+        "sources": [
+          "https://www.izquierdadiario.es/Panqueques-Aluar-aporto-a-la-campana-de-Macri-en-2017-y-ahora-a-los-Fernandez",
+          "https://www.diagonales.com/nacion/madanes-quintanilla--jeque-de-neumaticos-y-aluminio--empresario-off-shore-y-aportante-de-la-politica_a63347f530eac23b35c527532"
+        ]
+      },
+      {
+        "period": "2023-present",
+        "government": "Milei (Javier Milei / Luis Caputo)",
+        "relationship": "First government to actively dismantle protections. Eliminated 28% antidumping tariff on Chinese aluminium foil (Feb 2026). FATE closed under trade liberalization pressure (Feb 2026). However, government simultaneously awarded Aluar a contract to install large-scale batteries at the former FATE site, and the Futaleufu concession renewal remains pending.",
+        "battery_contract": "Government adjudicated a contract to Aluar to install large-scale batteries at the former FATE industrial site in San Fernando",
+        "sources": [
+          "https://www.infobae.com/economia/2026/02/22/el-gobierno-ya-le-habia-adjudicado-a-aluar-un-contrato-para-instalar-grandes-baterias-en-el-predio-de-fate/",
+          "https://www.infobae.com/economia/2026/02/23/el-gobierno-quito-una-proteccion-clave-que-favorecia-a-aluar-otra-empresa-del-dueno-de-fate/"
+        ]
+      }
+    ],
+    "pattern": "The Madanes group has donated to opposing parties in the same election cycle (Macri AND Fernandez in 2019), ensuring access to power regardless of electoral outcome. The monopoly has survived every ideological shift in Argentine politics for over 50 years.",
+    "sources": [
+      "https://www.letrap.com.ar/economia/javier-madanes-fate-aluar-y-la-energia-el-capitan-la-industria-que-crecio-al-calor-del-estado-n5421960"
+    ]
+  },
+
+  "environmental_impact": {
+    "summary": "Aluar's Puerto Madryn smelter has faced repeated allegations of fluoride emissions exceeding permitted levels, with community reports of irrespirable air and contested monitoring data. A University of Cuyo study concluded existing data was insufficient to establish the historical magnitude of contamination, while the provincial Environment Ministry opened investigations.",
+    "fluoride_emissions": {
+      "description": "Environmental assemblies reported 10 consecutive days of uncontrolled fluoride emissions from the Aluar plant. 10 of 12 atmospheric monitoring stations in Puerto Madryn registered fluoride levels above permitted limits. Residents in at least three densely populated neighborhoods described constant white-grayish smoke from the plant.",
+      "health_effects": "Fluoride exposure from aluminium smelting is associated with skeletal fluorosis (bone disease) and respiratory conditions.",
+      "sources": [
+        "https://www.laizquierdadiario.com/El-aire-de-Madryn-esta-irrespirable-Aluar-es-responsable",
+        "https://cholilaonline.ar/2025/10/puerto-madryn-denuncian-a-aluar-por-emisiones-toxicas-que-vuelven-irrespirable-el-aire.html"
+      ]
+    },
+    "monitoring_deficiencies": {
+      "description": "The National University of Cuyo conducted an audit and concluded that emissions measurements from chimneys and electrolysis rooms were not performed using internationally standardized methods. The study found it was not possible to rely on existing data to establish the magnitude of past contamination.",
+      "source": "https://cholilaonline.ar/2025/10/informe-de-la-universidad-nacional-de-cuyo-revela-deficiencias-en-controles-de-contaminacion-de-aluar.html"
+    },
+    "government_investigation": {
+      "description": "The Chubut provincial Ministry of Environment investigated Aluar for alleged excess contaminant emissions of fluorides into the air of Puerto Madryn. An earlier investigation by the University of Buenos Aires (Exactas) also monitored air quality.",
+      "sources": [
+        "https://www.diariojornada.com.ar/61752/politica/Aluar_el_Gobierno_la_investiga_por_presuntos_daos_al_aire_de_Madryn",
+        "https://nexciencia.exactas.uba.ar/monitoreo-ambiental-puerto-madryn-contaminacion-aluar-enrique-san-roman-horacio-bogo-ines-camilioni"
+      ]
+    },
+    "security_landfill": {
+      "description": "Aluar operates a security landfill (relleno de seguridad) at its Puerto Madryn site for hazardous waste disposal, as documented in an Environmental Impact Assessment filed with the Chubut environment authority.",
+      "source": "http://www.ambiente.chubut.gov.ar/wp-content/uploads/2020/08/EsIA-Relleno-Seguridad-Aluar_compressed.pdf"
+    },
+    "wind_energy_transition": {
+      "description": "Aluar has invested in on-site wind energy (Parque Eolico Aluar, expanding through Stages V and VI) to supplement hydroelectric supply and reduce grid dependence.",
+      "source": "https://www.aluar.com.ar/assets/admin/archivos/menu_principal/pdf/72/ampliacion_peal_etapa_v_iv.pdf"
+    }
+  },
+
+  "corporate_structure": {
+    "summary": "The Madanes Quintanilla group comprises at least 13 identified companies organized in a complex cross-shareholding structure designed to obscure effective ownership. Three holding companies sit at the apex: Pecerre SCA (92.87% controlled by Madanes in partnership with the Friedenthal family), Estancia San Javier de Catamarca SA (100% Madanes), and CIPAL (approximately 90% Madanes).",
+    "holding_companies": [
+      {
+        "name": "Pecerre SCA",
+        "madanes_stake_percent": 92.87,
+        "partner": "Friedenthal family",
+        "role": "Top-level holding, controls downstream entities"
+      },
+      {
+        "name": "Estancia San Javier de Catamarca SA",
+        "madanes_stake_percent": 100,
+        "role": "Top-level holding"
+      },
+      {
+        "name": "CIPAL — Compania Inversora Para Argentina y Latinoamerica SA",
+        "madanes_stake_percent": 90,
+        "madanes_direct_percent": 0.02,
+        "madanes_indirect_percent": 89.98,
+        "role": "Financial activities, investment vehicle"
+      }
+    ],
+    "operating_companies": [
+      {
+        "name": "Aluar Aluminio Argentino S.A.I.C.",
+        "cuit": "30-52278060-6",
+        "sector": "Primary aluminium production and semi-finished products",
+        "family_ownership_percent": 68,
+        "status": "Active — sole national producer"
+      },
+      {
+        "name": "FATE S.A.I.C.I.",
+        "cuit": "30-50084258-6",
+        "sector": "Tire manufacturing",
+        "status": "Closed permanently 2026-02-18"
+      },
+      {
+        "name": "Central Hidroelectrica Futaleufu S.A.",
+        "sector": "Hydroelectric power generation",
+        "aluar_stake_percent": 60.20,
+        "status": "Active — concession expires June 2026"
+      },
+      {
+        "name": "INFA S.A.",
+        "sector": "Engineering, manufacturing, construction, assembly and industrial services",
+        "acquired": 2002,
+        "status": "Active"
+      },
+      {
+        "name": "Genpat (GPC)",
+        "sector": "Energy transport",
+        "relationship": "Controlled through Aluar",
+        "status": "Active"
+      },
+      {
+        "name": "Juan Cincotta",
+        "sector": "Part of the cross-shareholding structure",
+        "note": "Used in the triangulation strategy"
+      },
+      {
+        "name": "Tales SCA",
+        "sector": "Services",
+        "note": "Belongs to Madanes Quintanilla's extended family"
+      },
+      {
+        "name": "Heidam SA",
+        "sector": "Services",
+        "note": "Belongs to Madanes Quintanilla's extended family"
+      },
+      {
+        "name": "Kicsa SA",
+        "sector": "Semi-finished aluminium products",
+        "acquired": 1983,
+        "note": "Acquired by Aluar"
+      }
+    ],
+    "offshore_entities": [
+      {
+        "name": "DQ Assets Limited",
+        "jurisdiction": "British Virgin Islands",
+        "registered_agent": "Alcogal (Panama)",
+        "ubo": "Javier Madanes Quintanilla",
+        "period": "2014-2018+",
+        "source": "Pandora Papers / ICIJ"
+      },
+      {
+        "name": "Second BVI company (unnamed in public reporting)",
+        "jurisdiction": "British Virgin Islands",
+        "ubo": "Javier Madanes Quintanilla",
+        "period": "2014-2018",
+        "source": "Pandora Papers / ICIJ"
+      },
+      {
+        "name": "New Zealand trust (unnamed)",
+        "jurisdiction": "New Zealand",
+        "settlor": "Javier Madanes Quintanilla",
+        "beneficiaries": "His children",
+        "source": "Pandora Papers / ICIJ"
+      }
+    ],
+    "cross_shareholding_note": "The corporate structure features triangular cross-shareholdings between companies that make it difficult to calculate effective control percentages. This design is consistent with a deliberate strategy to conceal ultimate beneficial ownership.",
+    "board_members_known": [
+      {"name": "Javier Madanes Quintanilla", "role": "President"},
+      {"name": "Ricardo Alonso", "role": "Executive"},
+      {"name": "Mauro Cruz", "role": "Executive"},
+      {"name": "Miroslavo Puches", "role": "Commercial Director"},
+      {"name": "Norberto Romero", "role": "CFO"},
+      {"name": "Nadia Suhr", "role": "Warehouse Chief"}
+    ],
+    "sources": [
+      "https://losricosdeargentina.com.ar/madanes.html",
+      "https://losricosdeargentina.com.ar/madanes2.html",
+      "https://www.eldiarioar.com/politica/pandora-papers/dueno-aluar-fate-recurrio-estructuras-offshore-invertir-propiedades-estados-unidos-organizar-herencia_1_8640261.html",
+      "https://izquierdaweb.com/quien-es-javier-madanes-quintanilla/",
+      "https://www.diariojornada.com.ar/68275/politica/La_historia_detras_de_Aluar_los_Madanes_y_el_uso_de_paraisos_fiscales"
+    ]
+  },
+
+  "key_financial_figures": {
+    "state_investment_in_aluar_infrastructure_usd": 474500000,
+    "aluar_annual_export_revenue_usd": 550000000,
+    "madanes_fortune_usd_forbes": 1500000000,
+    "futaleufu_energy_subsidy_discount_percent": "63-80%",
+    "aluar_production_capacity_tons": 460000,
+    "fate_annual_tire_capacity": 5000000,
+    "employees_aluar_estimated": 2500,
+    "employees_fate_at_closure": 920,
+    "campaign_donation_cambiemos_2017_ars": 3000000,
+    "campaign_donation_fdt_2019_ars": 900000
+  },
+
+  "timeline": [
+    {"year": 1940, "event": "FATE (Fabrica Argentina de Tejidos Engomados) founded in Saavedra, Buenos Aires"},
+    {"year": 1970, "event": "Aluar Aluminio Argentino S.A.I.C. established (contract date: April 15, 1970) under the military-era aluminium development program (COPEDESMEL, Argentine Air Force)"},
+    {"year": 1971, "event": "Decreto 206/1971: Lanusse government awards direct contract to Aluar. Decreto 4384/1971: promotional benefits for FATE Electronics Division. State begins construction of Futaleufu dam, Puerto Madryn port, and transmission infrastructure (total: USD 474.5M)"},
+    {"year": 1973, "event": "Gelbard (Aluar co-founder) becomes Minister of Economy under Campora/Peron"},
+    {"year": 1974, "event": "Aluar opens its first smelter in Puerto Madryn"},
+    {"year": 1978, "event": "Futaleufu hydroelectric dam inaugurated"},
+    {"year": 1983, "event": "Aluar acquires Kicsa SA (semi-finished aluminium)"},
+    {"year": "late 1990s", "event": "Javier Madanes Quintanilla purchases majority shares from cousins (sons of Manuel Madanes), consolidating family control"},
+    {"year": 2002, "event": "Group acquires INFA SA (engineering and industrial services)"},
+    {"year": 2013, "event": "La Nacion publishes investigation into Madanes family offshore empire (Cook Islands, Bahamas, BVI, Panama, Swiss bank accounts)"},
+    {"year": 2014, "event": "Javier Madanes Quintanilla establishes DQ Assets Limited in BVI via Alcogal (later revealed in Pandora Papers)"},
+    {"year": 2017, "event": "Aluar donates maximum ARS 3M to Cambiemos (Macri) campaign"},
+    {"year": 2019, "event": "Aluar donates to both Macri PASO campaign AND Alberto Fernandez (Frente de Todos) general election campaign"},
+    {"year": 2020, "event": "Alberto Fernandez government imposes 28% antidumping tariff on Chinese aluminium foil at Aluar's request"},
+    {"year": 2024, "event": "Aluar's aluminium foil market share reaches 91% (up from 64% in 2019) under tariff protection"},
+    {"year": 2025, "event": "University of Cuyo audit reveals deficient environmental monitoring at Puerto Madryn plant. Fluoride emission incidents reported."},
+    {"year": "2026-02-18", "event": "FATE permanently closes its San Fernando tire factory, eliminating 920 jobs. Madanes Quintanilla cites trade liberalization and Asian imports."},
+    {"year": "2026-02-23", "event": "Milei government eliminates 28% antidumping tariff on Chinese aluminium foil, removing key protection for Aluar"},
+    {"year": "2026 (pending)", "event": "Futaleufu hydroelectric concession due to expire in June 2026. Renewal terms unknown."}
+  ],
+
+  "investigation_notes": {
+    "key_questions": [
+      "What terms will the Milei government set for the Futaleufu concession renewal in June 2026? Will the energy subsidy continue?",
+      "How was Aluar simultaneously awarded a battery installation contract at the former FATE site while its tariff protections were being dismantled?",
+      "What is the full extent of the Madanes family offshore asset structure beyond what has been revealed in the Pandora Papers?",
+      "Why has no government in 50+ years broken or regulated the primary aluminium production monopoly?",
+      "What are the actual fluoride emission levels at the Puerto Madryn plant, given the University of Cuyo finding that monitoring methods were substandard?",
+      "What is the total cumulative value of the energy subsidy (difference between what Aluar pays and wholesale market rate) over 28+ years?"
+    ],
+    "data_gaps": [
+      "Complete list of Aluar board members and their other corporate affiliations",
+      "Detailed cross-shareholding percentages between the 13+ companies in the group",
+      "Full list of offshore entities connected to the Madanes family (only partial disclosure via ICIJ leaks)",
+      "Actual environmental monitoring data from Puerto Madryn (found to be unreliable by University of Cuyo)",
+      "Total government subsidies received across all categories (energy, tax incentives, promotional regimes, debt nationalization)"
+    ]
+  },
+
+  "metadata": {
+    "research_type": "monopoly_investigation",
+    "sector": "aluminium",
+    "country": "AR",
+    "primary_entity": "Aluar Aluminio Argentino S.A.I.C.",
+    "cuit": "30-52278060-6",
+    "controlling_family": "Madanes Quintanilla",
+    "icij_investigations": ["Panama Papers", "Pandora Papers", "Offshore Leaks"],
+    "confidence_tier": "silver",
+    "last_updated": "2026-03-24"
+  }
+}

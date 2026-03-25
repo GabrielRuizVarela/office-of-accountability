@@ -1,0 +1,334 @@
+{
+  "meta": {
+    "title": "Fact-Check: Argentine Monopoly Investigation — Political, Judicial & Regulatory Claims",
+    "date": "2026-03-24",
+    "methodology": "Each claim verified via web search against multiple Argentine news sources, official records, and Wikipedia",
+    "total_claims": 25,
+    "summary": {
+      "verified": 14,
+      "corrected": 8,
+      "unverifiable": 3,
+      "debunked": 0
+    }
+  },
+  "revolving_door": [
+    {
+      "id": 1,
+      "claim": "Héctor Magnetto is officer in 35 companies per IGJ",
+      "verdict": "UNVERIFIABLE",
+      "confidence": 0.4,
+      "notes": "Magnetto is confirmed as CEO/director of Grupo Clarín and holds 29.8% of shares via GC Dominio. He chairs the board of GC Dominio which controls both Grupo Clarín and Cablevisión Holding. Pandora Papers revealed offshore entities in tax havens. However, the specific figure of 35 companies registered with IGJ could not be independently confirmed via public web sources — IGJ registry data is not openly searchable online.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/H%C3%A9ctor_Magnetto",
+        "https://argentina.mom-gmr.org/es/propietarios/propietarios-individuales/detail/owner/owner/show/hector-magnetto/",
+        "https://www.eldiarioar.com/politica/pandora-papers/magnetto-fontevecchia-saguier-aranda-duenos-principales-medios-argentina-han-abierto-sociedades-paraisos-fiscales-uruguay_1_8403360.html"
+      ]
+    },
+    {
+      "id": 2,
+      "claim": "Daniel Vila controls 62 companies",
+      "verdict": "CORRECTED",
+      "confidence": 0.75,
+      "notes": "Bloomberg Línea states Vila has 'founded, acquired and led more than 70 companies in Argentina and abroad' throughout his career. Grupo América (formerly Grupo Uno / Grupo Vila-Manzano) is Argentina's second-largest media group. The number 62 is plausible but understates the total — sources say 70+. The exact current active count is unclear.",
+      "corrected_value": "70+ companies (per Bloomberg Línea career total)",
+      "sources": [
+        "https://www.bloomberglinea.com/especiales/personajes-bloomberg-linea/daniel-vila-2/",
+        "https://es.wikipedia.org/wiki/Grupo_Vila-Manzano",
+        "https://www.cronista.com/negocios/daniel-vila-y-jose-luis-manzano-entre-los-empresarios-mas-influyentes-de-america-latina/"
+      ]
+    },
+    {
+      "id": 3,
+      "claim": "José Luis Manzano controls 53 companies, ex-Minister of Interior under Menem",
+      "verdict": "CORRECTED",
+      "confidence": 0.8,
+      "notes": "VERIFIED that Manzano was Minister of Interior under Menem (1989-1992). His business empire includes Integra Capital, Grupo América (49 media outlets alone), energy companies (Edenor, Edemsa, Phoenix Global Resources), mining (243,000 hectares of lithium salars), and agricultural operations. 46 media M&A operations alone were completed. The figure of 53 companies is plausible but cannot be precisely confirmed — his total corporate footprint likely exceeds this number given the breadth of holdings across media, energy, mining, and agriculture.",
+      "corrected_value": "Minister of Interior 1989-1992 confirmed. 53 companies plausible but unverifiable exact count; corporate structure spans dozens of entities across multiple sectors",
+      "sources": [
+        "https://es.wikipedia.org/wiki/Jos%C3%A9_Luis_Manzano_(empresario)",
+        "https://www.memo.com.ar/poder/que-tiene-y-que-administra-jose-luis-manzano/",
+        "https://www.eldiarioar.com/politica/jose-luis-manzano-senor-litio-acumula-243-000-hectareas-salares-explotar-negocio-minero_1_10104893.html",
+        "https://argentina.mom-gmr.org/es/propietarios/propietarios-individuales/detail/owner//jose-luis-manzano-1/"
+      ]
+    },
+    {
+      "id": 4,
+      "claim": "Mindlin family (Marcos, Damián) in 52-61 companies",
+      "verdict": "CORRECTED",
+      "confidence": 0.7,
+      "notes": "The Mindlin brothers are confirmed. However, the first name is Marcelo (not Marcos) — his full name is Marcos Marcelo Mindlin, but he is universally known as Marcelo Mindlin. Damián Miguel Mindlin is confirmed as board member of Pampa Energía and president of Sacde (construction). Pampa Energía is Argentina's largest private energy company. Mindlin also controls Grupo Emes and recently acquired control of Loma Negra via InterCement restructuring. The 52-61 company count is plausible given the breadth of the energy, construction, and cement conglomerate, but the exact number could not be independently verified.",
+      "corrected_value": "Name is Marcelo Mindlin (not Marcos, though birth name includes Marcos). 52-61 companies plausible but unverifiable exact count.",
+      "sources": [
+        "https://es.wikipedia.org/wiki/Marcelo_Mindlin",
+        "https://ri.pampa.com/en/corporate-governance/board-of-directors/",
+        "https://marcelomindlin.com/",
+        "https://www.infobae.com/economia/2025/12/18/marcelo-mindlin-sus-origenes-como-decidio-dejar-irsa-para-hacer-pampa-energia-y-las-dos-claves-para-hacer-negocios-en-argentina/"
+      ]
+    },
+    {
+      "id": 5,
+      "claim": "Eurnekian controls 35 companies + BVI entity",
+      "verdict": "CORRECTED",
+      "confidence": 0.65,
+      "notes": "Corporación América Airports alone operates 53 airports in 6 countries (35 terminals in Argentina). The holding Corporación América has diversified investments beyond airports into energy, infrastructure, financial services, and agribusiness. The '35 companies' figure may be conflating '35 airport terminals in Argentina' with the total corporate structure. The BVI entity claim could not be confirmed via public web sources, though Pandora Papers revealed offshore structures for many Argentine media/business figures.",
+      "corrected_value": "35 airport terminals in Argentina confirmed; total corporate entities likely much higher. BVI entity unverifiable via public sources.",
+      "sources": [
+        "https://corporacionamerica.com/web/sobre-nosotros/",
+        "https://www.infobae.com/economia/2024/04/16/aeropuertos-argentina-es-la-nueva-marca-de-la-compania-de-corporacion-america-que-opera-35-terminales-aereas-en-el-pais/",
+        "https://es.wikipedia.org/wiki/Corporaci%C3%B3n_Am%C3%A9rica"
+      ]
+    },
+    {
+      "id": 6,
+      "claim": "Francisco De Narváez: 35 companies including América TV, diputado",
+      "verdict": "CORRECTED",
+      "confidence": 0.75,
+      "notes": "VERIFIED that De Narváez was a national deputy (diputado) three times: 2005, 2009, and 2013. VERIFIED he was a shareholder of América TV (controversially, as article 45 of the broadcasting law prohibits legislators from owning media). Also owned La Rural SA, Ámbito Financiero, La Red radio, and the Grupo de Narváez retail empire (Chango Más/ex-Walmart, Rapsodia, Baby Cottons, etc.). The figure of 35 companies could not be precisely confirmed — Grupo de Narváez is a multinational holding in Argentina, Uruguay and Ecuador with multiple business units, but exact entity count not publicly available.",
+      "corrected_value": "Deputy confirmed (3 terms). América TV shareholder confirmed. 35 companies plausible but exact count unverifiable.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Francisco_de_Narv%C3%A1ez",
+        "https://www.ambito.com/economia/walmart/de-narvaez-un-empresario-que-probo-la-politica-y-volvio-al-supermercadismo-n5146196",
+        "https://es.wikipedia.org/wiki/Grupo_de_Narv%C3%A1ez"
+      ]
+    },
+    {
+      "id": 7,
+      "claim": "Santiago Bausili: 20 years JP Morgan/Deutsche Bank, prosecuted for conflict of interest",
+      "verdict": "CORRECTED",
+      "confidence": 0.9,
+      "notes": "Bausili's banking career: JP Morgan 1996-2007 (11 years) + Deutsche Bank 2007-2015 (8 years) = 19 years total, not 20. VERIFIED that he is being prosecuted for conflict of interest: the 'Megacanje II' case investigates him for benefiting Deutsche Bank while serving as Secretary of Finance under Macri. He received ~USD 200,000 in shares/bonuses from Deutsche Bank while in public office. Casación rejected his nullity appeal. Article 265 of the Penal Code applies (up to 6 years prison).",
+      "corrected_value": "19 years in banking (not 20). Prosecution for conflict of interest confirmed — 'Megacanje II' case active.",
+      "sources": [
+        "https://www.politicargentina.com/notas/201602/11454-el-gobierno-oficializo-a-santiago-bausili-ex-jp-morgan-y-deutsche-bank-al-frente-de-la-subsecretaria-de-financiamiento.html",
+        "https://www.ambito.com/politica/nuevo-reves-judicial-santiago-bausili-ratificaron-que-existio-conflicto-intereses-el-bcra-n6089014",
+        "https://www.pagina12.com.ar/787572-megacanje-ii-la-causa-judicial-que-hace-transpirar-a-santiag",
+        "https://www.lapoliticaonline.com/judiciales/reabren-una-causa-contra-bausili-por-beneficiar-al-deutsche-bank-con-las-operaciones-de-deuda/"
+      ]
+    },
+    {
+      "id": 8,
+      "claim": "Bausili co-founded Anker Latinoamerica with Caputo",
+      "verdict": "CORRECTED",
+      "confidence": 0.85,
+      "notes": "Anker Latinoamérica S.A. was founded in 2020 by Luis 'Toto' Caputo. Bausili was Caputo's partner (socio) in the firm, not technically a co-founder. The firm closed in November 2023 when its principals were called to government positions under Milei (Caputo as Economy Minister, Bausili as BCRA president). The relationship is confirmed — they are described as long-time collaborators who also worked together during the Macri administration.",
+      "corrected_value": "Bausili was partner (socio) in Anker Latinoamérica, founded by Caputo in 2020. Firm closed Nov 2023.",
+      "sources": [
+        "https://www.perfil.com/noticias/politica/caputo-llevo-a-sus-socios-de-su-consultora-al-gobierno-quienes-son-y-que-funciones-tendran.phtml",
+        "https://www.ambito.com/economia/luis-caputo-cierra-su-consultora-y-suma-los-socios-su-equipo-n5889363",
+        "https://www.cronista.com/finanzas-mercados/quien-es-santiago-bausili-el-elegido-por-milei-y-caputo-para-presidir-el-banco-central/"
+      ]
+    }
+  ],
+  "judicial": [
+    {
+      "id": 9,
+      "claim": "Cuadernos: 87 defendants, trial started Nov 2025 at TOF 7",
+      "verdict": "VERIFIED",
+      "confidence": 0.95,
+      "notes": "CONFIRMED. The trial began November 6, 2025 at Tribunal Oral Federal N°7 (TOF 7), presided by judges Fernando Canero, Enrique Méndez Signori, and Germán Castelli. Initially 87 accused; by early 2026 the number was reduced to 85-86 due to deaths and procedural issues. 25 cooperating witnesses (arrepentidos) accepted. Defendants include CFK, 19 ex-officials, and 65 businesspeople. Hearings every Thursday, 9:30-13:30, via Zoom.",
+      "sources": [
+        "https://www.opinandosannicolas.ar/2025/11/arranca-el-juicio-oral-por-la-causa-cuadernos-87-acusados-y-25-arrepentidos-declararan-ante-el-tof-7/",
+        "https://www.fiscales.gob.ar/fiscalias/causa-cuadernos-con-la-lectura-de-parte-de-la-acusacion-comenzo-el-juicio-contra-la-expresidenta-cristina-fernandez-y-otros-86-imputados/",
+        "https://chequeado.com/el-explicador/causa-cuadernos-las-5-claves-del-juicio-contra-cristina-fernandez-de-kirchner-ex-funcionarios-y-empresarios/"
+      ]
+    },
+    {
+      "id": 10,
+      "claim": "Roggio arrepentido — confessed 5% kickbacks",
+      "verdict": "VERIFIED",
+      "confidence": 0.95,
+      "notes": "CONFIRMED. Aldo Roggio, ex-president of Benito Roggio e Hijos, was accepted as arrepentido in August 2018. He confessed to returning 5% of transportation subsidies received as bribes to Secretary of Transport Ricardo Jaime. He admitted to 11 payments between June 2009 and September 2010 totaling ARS 5.9 million. He stepped down from the family holding and transferred shares to his three children in 2020.",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/los-cuadernos-de-las-coimas-aldo-roggio-arrepentido-reconocio-que-devolvia-el-5-de-los-subsidios-al-transporte-nid2162810/",
+        "https://www.infobae.com/america/pandora-papers/2021/10/07/aldo-roggio-arrepentido-en-la-causa-de-los-cuadernos-uso-tres-sociedades-en-el-exterior-para-abrir-cuentas-en-suiza-y-eeuu/",
+        "https://www.infobae.com/judiciales/2025/09/18/el-caso-del-empresario-arrepentido-de-los-cuadernos-que-eligio-no-comprar-su-impunidad/"
+      ]
+    },
+    {
+      "id": 11,
+      "claim": "Calcaterra arrepentido — offered ARS 2.9B for dismissal",
+      "verdict": "CORRECTED",
+      "confidence": 0.9,
+      "notes": "Calcaterra was indeed an arrepentido who confessed to paying bribes. However, the reparation offer amount was ARS 2,942.6 million (i.e., ~ARS 2.94B, not exactly 2.9B — close but slightly higher). An alternative source cites ARS 2,400 million. In USD terms, the offer was approximately USD 1.5-1.7 million. The TOF 7 rejected the reparation offer along with those of 50+ other defendants. Fiscal Fabiana León opposed, stating 'you cannot pay to get away.'",
+      "corrected_value": "ARS 2,942.6 million offered (ARS ~2.94B, not 2.9B). Some sources cite ARS 2,400M. Offer rejected by court.",
+      "sources": [
+        "https://www.infobae.com/judiciales/2025/09/14/los-empresarios-de-los-cuadernos-la-confesion-de-angelo-calcaterra-el-primo-de-macri-que-ofrecio-2400-millones-para-salvarse/",
+        "https://www.infobae.com/judiciales/2025/09/17/cuadernos-de-la-corrupcion-cuanto-ofrecieron-pagar-los-empresarios-y-funcionarios-acusados-para-comprar-su-impunidad/",
+        "https://www.infobae.com/judiciales/2025/10/06/causa-cuadernos-la-justicia-rechazo-las-reparaciones-de-dinero-ofrecidas-por-empresarios-para-ser-absueltos/"
+      ]
+    },
+    {
+      "id": 12,
+      "claim": "Rocca sobreseimiento firme (prosecution missed deadline)",
+      "verdict": "VERIFIED",
+      "confidence": 0.95,
+      "notes": "CONFIRMED. Judge Julián Ercolini issued sobreseimiento (dismissal) on Aug 10, 2021 for Paolo Rocca, Luis Betnaza, and Héctor Zabaleta. Prosecutor Carlos Stornelli and the UIF (Financial Information Unit) both failed to appeal within the legal deadline. The sobreseimiento became firme (final). The UIF later initiated disciplinary proceedings against its own lawyers who missed the deadline. NGOs (CIPCE and others) attempted to invoke 'cosa juzgada írrita' (tainted res judicata) to reopen the case. Not technically a prescription/statute issue — it was a failure to appeal within the 3-day deadline.",
+      "corrected_detail": "The mechanism was missed appeal deadline (not prescription). Stornelli simply did not appeal; UIF appealed after deadline expired.",
+      "sources": [
+        "https://www.eldiarioar.com/politica/rocca-directivos-techint-sobreseimiento-firme-falta-apelacion-stornelli-uif_1_8237117.html",
+        "https://www.infobae.com/politica/2021/09/21/cuadernos-directivos-de-techint-fueron-sobreseidos-por-un-olvido-del-gobierno-que-ahora-busca-culpables-internos/",
+        "https://www.pagina12.com.ar/368937-causa-de-los-cuadernos-piden-que-se-revea-el-sobreseimiento-"
+      ]
+    },
+    {
+      "id": 13,
+      "claim": "Ferreyra (Electroingeniería) — on trial",
+      "verdict": "VERIFIED",
+      "confidence": 0.95,
+      "notes": "CONFIRMED. Gerardo Luis Ferreyra, ex-VP of Electroingeniería S.A., is an active defendant in the Cuadernos trial. He refused to become an arrepentido and spent the most time detained of any defendant. The Supreme Court ruled against him in November 2024. He testified at trial in early 2026. He is under house arrest and charged with being part of the illicit association and paying bribes.",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/la-corte-suprema-fallo-contra-gerardo-ferreyra-de-electroingenieria-en-la-causa-de-los-cuadernos-nid27112024/",
+        "https://www.perfil.com/noticias/judiciales/causa-cuadernos-en-vivo-oscar-centeno-podria-declarar.phtml",
+        "https://www.fiscales.gob.ar/fiscalias/causa-cuadernos-culminaron-la-lectura-del-tercer-requerimiento-en-el-juicio-a-la-expresidenta-cristina-fernandez-y-otros-85-imputados/"
+      ]
+    },
+    {
+      "id": 14,
+      "claim": "Odebrecht: USD 35M bribes in Argentina, zero convictions",
+      "verdict": "VERIFIED",
+      "confidence": 0.9,
+      "notes": "CONFIRMED. Odebrecht admitted paying at least USD 35 million in bribes in Argentina (some sources estimate actual amount at ~USD 59M). As of reporting, Argentina has zero convictions related to Odebrecht/Lava Jato — placing it among the worst-performing countries (alongside Venezuela and Mexico). Two investigations are advanced (AySA water treatment plant and gas pipeline extension) but no fines were applied to Odebrecht (now Novonor), only suspension from the state contractor registry.",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/sin-condenas-ni-multas-la-argentina-esta-entre-los-paises-que-peor-actuo-frente-a-los-sobornos-nid18072022/",
+        "https://www.eluniverso.com/noticias/politica/la-argentina-sin-condenas-por-el-lava-jato-aunque-odebrecht-admitio-sobornos-por-al-menos-35-millones-nota/",
+        "https://www.cadena3.com/noticia/politica-y-economia/odebrecht-en-argentina-un-escandalo-de-corrupcion-estancado-en-la-justicia_415495"
+      ]
+    },
+    {
+      "id": 15,
+      "claim": "Veladero cyanide spills 2015-2017, no trial 10+ years",
+      "verdict": "VERIFIED",
+      "confidence": 0.9,
+      "notes": "CONFIRMED. Three major cyanide spills occurred at Barrick Gold's Veladero mine: September 2015 (over 1M liters of cyanide solution; internal report documented 4.68M liters), September 2016, and March 2017. Barrick was fined USD 9.3M (2015) and USD 5.6M (2016-2017 combined). Federal cases were initiated but the oral trial has been repeatedly delayed. Judge Casanello ordered the case to trial in 2018 against ex-officials, but Judge Servini de Cubría postponed hearing dates. As of 2025, more than 10 years after the first spill, no trial has been completed and no convictions exist.",
+      "sources": [
+        "https://agenciatierraviva.com.ar/barrick-gold-lo-hizo-diez-anos-del-mayor-derrame-minero-de-la-historia-argentina/",
+        "https://agenciatierraviva.com.ar/el-modelo-minero-de-san-juan-barrick-gold-el-mayor-derrame-de-la-historia-y-la-impunidad/",
+        "https://miningwatch.ca/timeline/cronologia-de-los-derrames-Veladero"
+      ]
+    },
+    {
+      "id": 16,
+      "claim": "CNDC cement cartel sanction — $178M/yr overcharge",
+      "verdict": "CORRECTED",
+      "confidence": 0.85,
+      "notes": "Two distinct CNDC enforcement actions are being conflated. (1) The original cartel sanction: ARS 310M fine upheld by Supreme Court for cartelization during 1981-1999 (price-fixing and market division by Loma Negra, Juan Minetti, Cementos Avellaneda, Cemento San Martín, Petroquímica Rivadavia). (2) A 2022 market investigation by CNDC found USD ~178-180M/yr in overcharges due to price discrimination based on proximity to competing plants, representing 14% of total cement billing (period: July 2017 - June 2018). The $178M figure refers to the overcharge found in the 2022 investigation, not the original fine amount.",
+      "corrected_value": "USD 178-180M/yr overcharge identified in 2022 CNDC market investigation (not the fine amount). Separate from the earlier ARS 310M cartel fine.",
+      "sources": [
+        "https://sintinta.com.ar/2022/04/28/otra-vez-las-cementeras-descubren-sobrecostos-por-us180-millones-para-construccion-y-obra-publica/",
+        "https://www.ambito.com/economia/construccion/otra-vez-las-cementeras-descubren-sobrecostos-us180-millones-y-obra-publica-n5427395",
+        "https://www.cronista.com/negocios/fallo-de-la-corte-condena-a-un-grupo-de-cementeras-a-pagar-una-multa-de-300-millones/"
+      ]
+    },
+    {
+      "id": 17,
+      "claim": "Vicentin: USD 1.5B default, 28 irregular Banco Nación loans",
+      "verdict": "VERIFIED",
+      "confidence": 0.9,
+      "notes": "CONFIRMED. Vicentin defaulted in December 2019 with total debt of USD 1.573 billion (per Oct 2021 filing). In November 2019 alone, Banco Nación granted Vicentin 28 loans totaling over USD 105.5 million (between Nov 8-26, 2019). One USD 6M credit was approved in under one hour. Total alleged damage to Banco Nación: USD 304M. Federal Judge Ercolini ordered embargos of 500B+ pesos against ex-BNA officials González Fraga and Lucas Llach, plus Vicentin directors. Case active as of March 2026.",
+      "sources": [
+        "https://www.pagina12.com.ar/319823-vicentin-el-escandalo-de-los-creditos-del-banco-nacion",
+        "https://www.infobae.com/economia/campo/2021/10/02/la-deuda-de-vicentin-asciende-a-usd-1573-millones-y-propone-pagarla-con-una-quita-del-70/",
+        "https://www.lanacion.com.ar/politica/la-justicia-ordeno-un-millonario-embargo-contra-exautoridades-del-banco-nacion-y-directivos-de-nid08012026/"
+      ]
+    }
+  ],
+  "regulatory": [
+    {
+      "id": 18,
+      "claim": "DNU 267/2015 repealed Ley de Medios 26.522",
+      "verdict": "CORRECTED",
+      "confidence": 0.9,
+      "notes": "DNU 267/2015 did NOT fully repeal Ley 26.522 — it partially derogated it and substantially modified key provisions. It dissolved AFSCA and AFTIC, created ENACOM, made licenses transferable, increased license limits (national: 10→15, local: 3→4), and exempted cable companies from antitrust clauses. The Chamber of Deputies validated the DNU but the Senate never did, so it retains legal force but never achieved full law status. The correct characterization is 'partial derogation and deep modification,' not outright repeal.",
+      "corrected_value": "DNU 267/2015 partially derogated and substantially modified Ley de Medios 26.522 — not a full repeal.",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/el-gobierno-publico-el-dnu-que-modifica-la-ley-de-medios-y-elimina-la-afsca-nid1859236/",
+        "https://chequeado.com/el-explicador/cinco-claves-de-la-modificacion-a-la-ley-de-medios-audiovisuales/",
+        "https://defensadelpublico.gob.ar/en-que-cambian-a-la-ley-de-servicios-de-comunicacion-audiovisual-los-decretos-del-poder-ejecutivo-nacional/"
+      ]
+    },
+    {
+      "id": 19,
+      "claim": "DNU 70/2023 eliminated media license caps + Ley de Góndolas",
+      "verdict": "VERIFIED",
+      "confidence": 0.9,
+      "notes": "CONFIRMED. DNU 70/2023 (effective Dec 29, 2023) derogated the Ley de Góndolas and the Ley de Abastecimiento, among 41 laws/decrees fully repealed. It also modified media regulations. The Senate rejected the DNU but Diputados did not, so under Argentine law it remains in force. The DNU covers labor law, prepaid healthcare, rentals, tourism, airlines, pharmaceuticals, commerce, and media.",
+      "sources": [
+        "https://www.cronista.com/economia-politica/el-dnu-de-javier-milei-ya-se-encuentra-vigente-que-cambios-se-aplican-desde-hoy/",
+        "https://en.wikipedia.org/wiki/Decree_70/2023",
+        "https://www.senado.gob.ar/prensa/21509/noticias"
+      ]
+    },
+    {
+      "id": 20,
+      "claim": "CNDC replaced by NCA/ANC in Nov 2025",
+      "verdict": "VERIFIED",
+      "confidence": 0.95,
+      "notes": "CONFIRMED. The Autoridad Nacional de la Competencia (ANC) was constituted on November 17, 2025, replacing the CNDC after 45 years of existence. Decree 810/2025 designated the five members: Eduardo Montamat (president), Lucas Trevisani Vespa and Marcelo D'Amore (vocales), Germán Zamorano (Secretario de Concentraciones Económicas), Ana Parente (Secretaria Instructora de Conductas Anticompetitivas). The ANC has greater autonomous authority than the CNDC — it resolves directly without needing Secretaría de Industria y Comercio intervention.",
+      "sources": [
+        "https://www.lanacion.com.ar/economia/nueva-autoridad-nacional-de-la-competencia-designan-a-los-miembros-y-le-dan-mas-poder-nid17112025/",
+        "https://www.argentina.gob.ar/noticias/el-gobierno-nacional-designo-los-miembros-de-la-autoridad-nacional-de-la-competencia",
+        "https://centrocompetencia.com/argentina-nombra-a-su-autoridad-de-competencia-tras-un-largo-y-sinuoso-camino/"
+      ]
+    },
+    {
+      "id": 21,
+      "claim": "ANC ex-ante merger control doesn't activate until Nov 2026",
+      "verdict": "VERIFIED",
+      "confidence": 0.95,
+      "notes": "CONFIRMED. The Ley de Defensa de la Competencia contains a transitional clause providing that the ex-ante (pre-closing) merger control regime activates one year after the ANC becomes operational. Since the ANC began functioning on November 17, 2025, the pre-closing merger control system will enter force on November 17, 2026. Argentina will formally become a pre-closing jurisdiction at that date. Law firm Marval confirmed: 'Argentina becomes a pre-closing jurisdiction by Nov. 2026.'",
+      "sources": [
+        "https://www.marval.com/publicacion/argentina-sistema-pre-closing-a-partir-de-nov2026-17383?lang=en",
+        "https://bruchoufunes.com/en/pre-closing-merger-control-system-in-argentina-1-year-to-be-in-force/",
+        "https://www.infobae.com/opinion/2025/11/20/la-nueva-autoridad-de-defensa-de-la-competencia-ya-esta-en-funciones-se-viene-la-era-del-control-previo-obligatorio/"
+      ]
+    },
+    {
+      "id": 22,
+      "claim": "Aluar donated ARS 5.4M to political parties",
+      "verdict": "UNVERIFIABLE",
+      "confidence": 0.3,
+      "notes": "Aluar (controlled by Javier Madanes Quintanilla) is confirmed as a political donor — it appears on lists of contributors to Alberto Fernández's 2019 Frente de Todos campaign, and also donated to Macri's 2019 primary campaign. However, the specific figure of ARS 5.4M could not be independently verified via available public web sources. Argentine political finance law prohibits donations from concessionaires of public services/works, which could complicate Aluar's eligibility given its use of state-subsidized energy. The exact amount requires access to CNE (Cámara Nacional Electoral) financing reports.",
+      "sources": [
+        "https://www.perfil.com/noticias/equipo-de-investigacion/los-viejos-empresarios-amigos-que-donaron-para-la-campana-de-alberto-no-publicar.phtml",
+        "https://www.argentina.gob.ar/interior/dine/agrupaciones-politicas/financiamiento"
+      ]
+    },
+    {
+      "id": 23,
+      "claim": "ENRE/ENARGAS merged into ENRGE July 2025",
+      "verdict": "VERIFIED",
+      "confidence": 0.95,
+      "notes": "CONFIRMED. Decree 452/2025 created the Ente Nacional Regulador del Gas y la Electricidad (ENRGE), merging ENRE and ENARGAS under the Secretaría de Energía. Published July 7, 2025. The ENRGE must be fully operational within 180 days. Board will consist of a president, vice-president, and three vocales. The goal is to unify tariff frameworks and technical criteria for gas and electricity regulation.",
+      "sources": [
+        "https://www.infobae.com/economia/2025/07/07/el-gobierno-fusiono-el-enargas-y-el-enre-en-un-solo-organismo/",
+        "https://www.lanacion.com.ar/economia/el-gobierno-creo-un-nuevo-ente-para-unificar-el-control-de-gas-y-electricidad-nid07072025/",
+        "https://www.a24.com/politica/el-gobierno-fusiono-el-enargas-y-el-enre-un-solo-organismo-como-funcionara-el-enrge-n1453749"
+      ]
+    },
+    {
+      "id": 24,
+      "claim": "Vila-Manzano bought Telefe for USD 95-100M from Paramount",
+      "verdict": "VERIFIED",
+      "confidence": 0.9,
+      "notes": "CONFIRMED. Telefe was sold by Paramount to a group including Daniel Vila, José Luis Manzano, Gustavo Scaglione, and Víctor Santa María (also involves Claudio Belocopitt). Transaction closed October 2025. Price reported as USD 95M (Perfil) to USD 104M (other sources), within the claimed USD 95-100M range (some reports exceed it). The purchase includes Canal 11 (Buenos Aires), Canal 8 (Córdoba), Canal 5 (Rosario), and Canal 13 (Santa Fe). This is dramatically below the USD 345M Viacom paid in 2016.",
+      "sources": [
+        "https://www.perfil.com/noticias/economia/por-usd-95-millones-confirman-que-gustavo-scaglione-es-el-nuevo-dueno-de-telefe-y-suma-socios-estrategicos.phtml",
+        "https://www.lanacion.com.ar/economia/negocios/nuevos-duenos-el-empresario-rosarino-gustavo-scaglione-cerro-la-compra-de-telefe-asociado-con-jose-nid23102025/",
+        "https://www.cronista.com/negocios/un-grupo-de-empresarios-lideres-argentinos-compra-la-totalidad-de-telefe/"
+      ]
+    },
+    {
+      "id": 25,
+      "claim": "Mindlin acquired Loma Negra via InterCement (Dec 2025, USD 45M)",
+      "verdict": "CORRECTED",
+      "confidence": 0.85,
+      "notes": "Mindlin DID acquire control of Loma Negra through InterCement's restructuring, but the details need correction. The USD 45M figure refers specifically to the purchase of 60% of Banco Itaú's credit claims against InterCement — it was not the total acquisition price of Loma Negra itself. Loma Negra's market cap is ~USD 1.4B (InterCement's 52% stake worth ~USD 700M). Mindlin's vehicle LATCEM (with Redwood Capital Management and Moneda-Patria) became principal shareholder of InterCement through the restructuring plan approved by the São Paulo bankruptcy court. The timeline is approximately correct — the restructuring process culminated in late 2025, with full operational transfer by December 2025.",
+      "corrected_value": "USD 45M was the price for 60% of Itaú's InterCement debt claims, not the total Loma Negra acquisition price. Mindlin controls Loma Negra via LATCEM's majority position in restructured InterCement.",
+      "sources": [
+        "https://www.bloomberglinea.com/latinoamerica/argentina/mindlin-se-convierte-en-principal-accionista-de-loma-negra-tras-acuerdo-con-brasilena-intercement/",
+        "https://www.cronista.com/negocios/loma-negra-ya-tiene-nuevos-duenos-mindlin-toma-el-control-de-la-historica-cementera/",
+        "https://www.infobae.com/economia/2025/12/11/otra-empresa-pasara-a-manos-nacionales-loma-negra-va-a-ser-controlada-por-un-consorcio-que-lidera-marcelo-mindlin/"
+      ]
+    }
+  ]
+}

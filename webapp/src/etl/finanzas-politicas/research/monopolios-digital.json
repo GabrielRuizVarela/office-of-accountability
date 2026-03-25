@@ -1,0 +1,549 @@
+{
+  "meta": {
+    "title": "Monopolios Digitales en Argentina",
+    "subtitle": "Concentracion de plataformas digitales, fintech y comercio electronico",
+    "date": "2026-03-24",
+    "methodology": "Web research con fuentes publicas, reportes financieros, datos regulatorios y prensa especializada",
+    "confidence_tier": "silver",
+    "version": "1.0"
+  },
+
+  "sectors": {
+    "ecommerce": {
+      "title": "E-Commerce: El dominio de MercadoLibre",
+      "market_size": {
+        "value_usd_2026": 25720000000,
+        "value_usd_2031_forecast": 46310000000,
+        "cagr_2026_2031": 12.48,
+        "source": "https://www.mordorintelligence.com/industry-reports/argentina-ecommerce-market"
+      },
+      "dominant_player": {
+        "name": "MercadoLibre",
+        "ticker": "NASDAQ:MELI",
+        "marketplace_gmv_share_argentina_pct": 62,
+        "retail_ecommerce_share_pct": 80,
+        "q4_2025_argentina_gmv_growth_yoy_pct": 42,
+        "q4_2025_items_sold_growth_yoy_pct": 36,
+        "q1_2025_argentina_gmv_growth_yoy_pct": 126,
+        "revenue_q4_2025_growth_yoy_pct": 45,
+        "argentina_investment_2026_usd": 3400000000,
+        "new_jobs_2026": 2000,
+        "sources": [
+          "https://www.statista.com/statistics/1196086/mercado-libre-e-commerce-share/",
+          "https://www.businesswire.com/news/home/20260224265595/en/Mercado-Libre-Caps-Stellar-2025-Performance-with-45-YoY-Revenue-Growth-in-Q4-as-Strategic-Investments-Accelerate-Market-Share-Gains",
+          "https://simplywall.st/stocks/us/retail/nasdaq-meli/mercadolibre/news/how-investors-may-respond-to-mercadolibre-meli-boosting-2026"
+        ]
+      },
+      "competitors": [
+        { "name": "Amazon Argentina", "status": "distant_second" },
+        { "name": "Fravega", "status": "niche_electronics" },
+        { "name": "Carrefour Online", "status": "niche_groceries" }
+      ],
+      "platform_power_concerns": [
+        "Sellers entirely dependent on MercadoLibre for visibility and sales",
+        "MercadoLibre controls marketplace, payments (Mercado Pago), logistics (Mercado Envios), advertising (Mercado Ads), and credit — full vertical integration",
+        "80% of Argentine retail e-commerce flows through one platform",
+        "Seller fees and algorithm changes can destroy small businesses overnight",
+        "Blocks competing payment wallets from operating on its marketplace"
+      ]
+    },
+
+    "digital_payments": {
+      "title": "Pagos Digitales: Mercado Pago como nuevo monopolio financiero",
+      "market_size": {
+        "wallet_market_2025_usd": 8514000000,
+        "wallet_market_2030_forecast_usd": 15916000000,
+        "cagr_pct": 18.58,
+        "source": "https://www.knowledge-sourcing.com/report/argentina-digital-wallet-market"
+      },
+      "dominant_player": {
+        "name": "Mercado Pago",
+        "parent": "MercadoLibre",
+        "wallet_float_share_pct": 80,
+        "argentina_customers_millions": 7,
+        "latam_users_millions": 49,
+        "debt_raise_sept_2024_usd": 250000000,
+        "services": [
+          "Digital wallet",
+          "QR code payments",
+          "Prepaid cards",
+          "Consumer and merchant loans",
+          "Investment products",
+          "Insurance",
+          "Crypto trading"
+        ],
+        "sources": [
+          "https://www.statista.com/statistics/1080009/argentina-market-share-mobile-payment-apps-installed/",
+          "https://www.popularfintech.com/p/how-mercado-libre-built-a-fintech-empire-3f7ac04a0eca3947"
+        ]
+      },
+      "anticompetitive_complaints": {
+        "modo_vs_mercadolibre": {
+          "filed_with": "CNDC (Comision Nacional de Defensa de la Competencia)",
+          "allegations": [
+            "Abuse of dominant position under Ley 27.442",
+            "Blocks competing digital wallets from operating on MercadoLibre marketplace",
+            "Refuses payment initiator access to rival wallets",
+            "Obstructs BCRA-mandated QR payment interoperability",
+            "Uses commercial requirements to circumvent central bank regulations"
+          ],
+          "sources": [
+            "https://www.infobae.com/economia/2024/05/06/los-bancos-denunciaron-a-mercado-libre-ante-el-gobierno-por-practicas-anticompetitivas/",
+            "https://www.lanacion.com.ar/economia/negocios/los-bancos-denuncian-a-mercado-libre-por-abuso-de-posicion-dominante-nid06052024/"
+          ]
+        },
+        "mercadolibre_vs_banks": {
+          "counter_complaint": "MercadoLibre filed CNDC complaint against major banks for prohibited concentration, cartelization, and coordinated practices through MODO wallet",
+          "bank_response_quote": "Mercado Libre no se carteliza, es directamente un monopolio",
+          "sources": [
+            "https://www.lanacion.com.ar/economia/negocios/mercado-libre-denuncia-a-modo-por-cartelizacion-y-practicas-anticompetitivas-nid26082024/",
+            "https://www.infobae.com/economia/2024/08/26/dura-respuesta-de-los-bancos-luego-de-la-denuncia-de-marcos-galperin-mercado-libre-no-se-carteliza-es-directamente-un-monopolio/"
+          ]
+        }
+      },
+      "competitors": [
+        {
+          "name": "Naranja X",
+          "note": "Offers 76% annual yields to attract users; transitioning CVU to CBU under BCRA license in 2026"
+        },
+        {
+          "name": "MODO",
+          "note": "Bank-backed wallet consortium; filed antitrust complaint against MercadoLibre"
+        }
+      ]
+    },
+
+    "galperin_profile": {
+      "title": "Marcos Galperin: Poder economico y alineamiento politico",
+      "person": {
+        "name": "Marcos Eduardo Galperin",
+        "role": "Founder, Executive Chairman (from Jan 2026)",
+        "former_role": "CEO MercadoLibre (1999-2025)",
+        "successor_as_ceo": "Ariel Szarfsztejn (desde enero 2026)",
+        "net_worth_estimates": {
+          "bloomberg_dec_2025_usd": 10000000000,
+          "forbes_2025_usd": 10200000000,
+          "forbes_rank_global": 280,
+          "wealth_source": "7% stake in MercadoLibre (Nov 2024 filing)",
+          "fortune_growth_2025_pct": 23
+        },
+        "residence": {
+          "current": "Punta del Este, Uruguay",
+          "moved": 2019,
+          "previous_uruguay_period": "2002-2015",
+          "returned_argentina": "2015-2019 (during Macri administration)",
+          "quote": "Uruguay es un paraiso para mi. Aca puedo vivir libremente",
+          "tax_implications": "Uruguay has no wealth tax on foreign assets and lower income tax than Argentina"
+        },
+        "political_alignment": {
+          "supports": "Javier Milei",
+          "activities": [
+            "Publicly celebrated Milei's inauguration",
+            "Hosted Milei at MercadoLibre Buenos Aires office",
+            "Actively retweets and promotes Milei's economic agenda on X",
+            "Endorsed DNU (Decree of Necessity and Urgency) flexibilizing labor law",
+            "Member of WhatsApp group of entrepreneurs supporting Macri (2019)",
+            "Defends crypto, criticizes 'wokism' and critical journalism",
+            "Has not ruled out running for political office"
+          ],
+          "mutual_benefit": "Milei's deregulation agenda directly benefits MercadoLibre: removal of capital controls, fintech-friendly regulation, labor flexibilization, elimination of Impuesto PAIS (30% reduction in digital ad costs)"
+        },
+        "sources": [
+          "https://cnnespanol.cnn.com/2024/09/05/quien-es-marcos-galperin-mas-rico-argentina-javier-milei-orix",
+          "https://www.infobae.com/economia/2025/12/09/marcos-galperin-el-verdadero-poder-es-elegir-cuando-dar-un-paso-al-costado/",
+          "https://www.bloomberg.com/news/features/2025-12-09/argentina-s-richest-man-marcos-galperin-on-stepping-down-as-mercadolibre-ceo",
+          "https://www.infobae.com/economia/2020/02/17/la-verdadera-historia-detras-de-la-mudanza-de-marcos-galperin-a-uruguay-se-harto-de-la-argentina/"
+        ]
+      }
+    },
+
+    "delivery_platforms": {
+      "title": "Plataformas de Delivery: Duopolio y explotacion laboral",
+      "market_structure": "Duopoly",
+      "players": [
+        {
+          "name": "PedidosYa",
+          "parent": "Delivery Hero (Germany)",
+          "entered_argentina": 2010,
+          "role": "Pioneer and market leader"
+        },
+        {
+          "name": "Rappi",
+          "origin": "Colombia",
+          "entered_argentina": 2018,
+          "role": "Strongest competitor"
+        }
+      ],
+      "commission_rates": {
+        "official_cap_marketplace_only_pct": 10,
+        "official_cap_with_delivery_pct": 18,
+        "actual_rappi_commission_range_pct": "25-35",
+        "note": "Government-set caps from 2020 are widely exceeded in practice",
+        "sources": [
+          "https://www.iproup.com/economia-digital/15160-pedidosya-rappi-y-glovocuanto-cobran-de-comision-reclamos",
+          "https://www.argentina.gob.ar/noticias/se-acordaron-topes-maximos-las-comisiones-que-cobran-las-empresas-de-delivery"
+        ]
+      },
+      "labor_conditions": {
+        "legal_status": "Independent contractors (not employees)",
+        "milei_labor_reform": {
+          "description": "Senate half-sanctioned law in 2025 establishing that the Labor Contract Law does not apply to platform workers",
+          "effect": "Workers classified as independent service providers, no labor protections",
+          "beneficiaries": "Rappi, PedidosYa, Uber, Cabify"
+        },
+        "buenos_aires_province_bill": {
+          "year": 2025,
+          "proposal": "Mandatory registry of delivery workers and drivers",
+          "status": "In progress"
+        },
+        "concerns": [
+          "No health insurance or accident coverage for riders",
+          "No minimum wage guarantee",
+          "Algorithmic management with no transparency",
+          "Workers bear all costs: vehicle, fuel, maintenance, phone"
+        ],
+        "sources": [
+          "https://www.iproup.com/economia-digital/64799-reforma-laboral-cambios-repartidores-rappi-pedidosya",
+          "https://nortebonaerense.com.ar/2023/02/11/cuanto-gana-un-repartidor-de-rappi-o-pedidosya-denuncian-explotacion-laboral-y-desproteccion-total/"
+        ]
+      }
+    },
+
+    "online_travel": {
+      "title": "Turismo Online: Despegar y la concentracion del viaje digital",
+      "dominant_player": {
+        "name": "Despegar.com",
+        "ticker": "NYSE:DESP",
+        "status": "Leading online travel agency in Latin America",
+        "argentina_2025_performance": {
+          "sales_growth_yoy_pct": 55,
+          "international_travel_growth_pct": 60,
+          "domestic_tourism_growth_pct": 30,
+          "vs_2023_growth_pct": 30
+        },
+        "acquisition": {
+          "acquirer": "Prosus NV (Netherlands)",
+          "date": "December 2024",
+          "value_usd": 1700000000,
+          "implication": "Argentine travel data and market now controlled by Dutch tech conglomerate (Naspers subsidiary)"
+        },
+        "sources": [
+          "https://www.bloomberglinea.com/latinoamerica/argentina/despegar-vendio-55-mas-a-argentinos-en-2025-repunta-el-turismo-interno-y-destinos-preferidos/",
+          "https://www.prosus.com/news-insights/group-updates/2024/prosus-to-acquire-latin-americas-leading-online-travel-agency-despegar"
+        ]
+      },
+      "competitors": [
+        { "name": "Booking Holdings", "type": "Global" },
+        { "name": "Airbnb", "type": "Accommodation" },
+        { "name": "Almundo", "note": "Acquired by Despegar, reduced competition" }
+      ]
+    },
+
+    "fintech_concentration": {
+      "title": "Neobancos: Tres jugadores controlan el 88% del mercado",
+      "headline_stat": "Top 3 digital banks capture nearly 90% market share",
+      "total_licensed_digital_banks": 7,
+      "top_3": [
+        {
+          "name": "Uala",
+          "customers_millions": 6,
+          "growth_yoy_pct": 13,
+          "total_users_all_markets_millions": 8,
+          "pct_of_argentina_adult_population": 17,
+          "valuation_usd": 3200000000,
+          "latest_funding_usd": 195000000,
+          "latest_funding_date": "2026-03",
+          "founder": "Pierpaolo Barbieri",
+          "key_investors": [
+            "Soros Fund Management",
+            "SoftBank Latin America Fund",
+            "Tencent Holdings",
+            "Goldman Sachs",
+            "Allianz X",
+            "Pershing Square Foundation (Bill Ackman)",
+            "Point72 Ventures (Steve Cohen)",
+            "D1 Capital Partners",
+            "Stone Ridge Holdings",
+            "Alan Howard (UK billionaire)"
+          ],
+          "strategic_concerns": [
+            "Largest private investment in Argentine company history",
+            "Foreign capital (Soros, SoftBank, Tencent) controls dominant neobank",
+            "Acquired Wilobank (rebranded to Uilo Bank) to expand banking license",
+            "Data on 17% of Argentine adults held by foreign-funded entity"
+          ],
+          "sources": [
+            "https://www.caproasia.com/2026/03/05/argentina-fintech-uala-raised-195-million-in-new-funding-at-3-2-billion-valuation-founded-in-2017-by-pierpaolo-barbieri-investors-include-goldman-sachs-allianz-x-softbank-tencent-pershing-squa/",
+            "https://techcrunch.com/2021/08/13/argentine-fintech-uala-lands-350m-at-a-2-45b-valuation/"
+          ]
+        },
+        {
+          "name": "Brubank",
+          "note": "Second largest digital bank in Argentina",
+          "focus": "Full banking license, savings and investment products"
+        },
+        {
+          "name": "Naranja X",
+          "parent": "Grupo Financiero Galicia",
+          "note": "Offers 76% annual yields; transitioning from CVU to CBU (full bank accounts) in 2026",
+          "strategy": "Leveraging existing Naranja credit card user base"
+        }
+      ],
+      "combined_customers_millions": 16.44,
+      "market_share_pct": 88,
+      "other_licensed_banks": ["Banco Del Sol", "IUDU", "Openbank", "Uilo Bank"],
+      "context": "9 of 10 Argentines have a bank or digital account; 7 of 10 are clients of both banks and fintechs (PwC Argentina Banking & Fintech Survey 2025)",
+      "sources": [
+        "https://fintechnews.ch/latin-america-fintech/argentinas-top-3-digital-banks-capture-nearly-90-market-share/72501/",
+        "https://fintechnews.am/fintech-argentina/52228/argentinas-top-3-digital-banks-capture-nearly-90-market-share/"
+      ]
+    },
+
+    "digital_advertising": {
+      "title": "Publicidad Digital: Duopolio global captura gasto argentino",
+      "global_context": {
+        "top_3_platforms_global_ad_share_pct": 89,
+        "platforms": ["Google", "Meta", "Amazon"],
+        "google_search_ad_market_share_pct": 94,
+        "source": "https://almcorp.com/blog/state-of-ppc-2026-global-report/"
+      },
+      "argentina_specifics": {
+        "impuesto_pais_eliminated": "2025-01-01",
+        "ad_cost_reduction_pct": 30,
+        "effect": "Cheaper digital ads benefit Google/Meta, further concentrating spend away from local media",
+        "tax_treatment": "Meta and Google services subject to IVA and Ganancias withholding but headquartered abroad — revenue leaves Argentina",
+        "sources": [
+          "https://flux.one/adios-al-impuesto-pais-la-publicidad-digital-sera-un-30-mas-barata-en-argentina/",
+          "https://contablix.ar/blog/iva-meta-ganancias-2025-retencion-argentina/"
+        ]
+      },
+      "impact_on_local_media": [
+        "Argentine newspapers and TV stations losing ad revenue to Google/Meta",
+        "Local media cannot compete on targeting and measurement capabilities",
+        "Digital ad duopoly undermines economic sustainability of independent journalism",
+        "No Argentine platform competes for digital advertising budgets"
+      ]
+    },
+
+    "tech_outsourcing": {
+      "title": "Globant: Concentracion en tecnologia y conexiones politicas",
+      "company": {
+        "name": "Globant S.A.",
+        "ticker": "NYSE:GLOB",
+        "founded": 2003,
+        "founded_in": "Buenos Aires, Argentina",
+        "founders": [
+          "Martin Migoya (CEO)",
+          "Guibert Englebienne",
+          "Martin Umaran",
+          "Nestor Nocetti"
+        ],
+        "revenue_trailing_12m_usd": 2450000000,
+        "total_employees": 30084,
+        "argentina_share_of_resources_pct": 15,
+        "argentina_share_of_revenue_pct": 5,
+        "latam_share_of_revenue_pct": 20
+      },
+      "political_connections": {
+        "milei_alignment": [
+          "CEO Martin Migoya publicly congratulated Milei on election victory (replied to Elon Musk's tweet)",
+          "Founders were part of WhatsApp group supporting Macri in 2019",
+          "Included in Milei's Wall Street investment drive with provincial governors",
+          "Benefits from Milei's deregulation: capital control removal, labor flexibilization"
+        ],
+        "government_benefit": "Argentina's deregulation under Milei offers significant upside for Globant's operations and recruitment",
+        "sources": [
+          "https://www.batimes.com.ar/news/economy/argentine-deregulation-offers-upside-for-globant-in-a-tough-year.phtml",
+          "https://www.bloomberglinea.com/2024/11/04/migoya-answers-everything-globants-share-price-and-why-hes-bullish-on-milei/",
+          "https://nearshoreamericas.com/breakdown-why-is-argentinas-tech-elite-embracing-javier-milei/"
+        ]
+      },
+      "concentration_concerns": [
+        "Largest Argentine-origin tech company but only 5% revenue from Argentina — extracts talent, exports value",
+        "Nearshoring model leverages low Argentine wages for high-margin international contracts",
+        "Office closures and layoffs in Argentina reported despite record global revenue",
+        "Founders have outsized political influence relative to domestic economic contribution"
+      ]
+    }
+  },
+
+  "structural_analysis": {
+    "new_monopoly_risks": {
+      "title": "Como las plataformas digitales reemplazan viejos monopolios con nuevos",
+      "thesis": "Argentina is replacing 20th-century monopolies (state enterprises, family conglomerates) with 21st-century platform monopolies that are harder to regulate because they are transnational, data-driven, and integrated across multiple markets",
+      "patterns": [
+        {
+          "pattern": "Vertical integration",
+          "example": "MercadoLibre controls marketplace + payments + logistics + credit + advertising — same playbook as Amazon but with higher market share in its home market",
+          "risk": "Single point of failure for Argentine digital commerce"
+        },
+        {
+          "pattern": "Network effects creating winner-take-all",
+          "example": "Mercado Pago's 80% wallet share makes it the default payment option, which drives more merchants to accept it, which drives more consumers to use it",
+          "risk": "Mathematically impossible for competitors to catch up without regulatory intervention"
+        },
+        {
+          "pattern": "Data monopoly",
+          "example": "MercadoLibre knows what 35M+ Argentines buy, what they earn, where they live, their credit history — no entity including the government has this data profile",
+          "risk": "Information asymmetry enables market manipulation and political influence"
+        },
+        {
+          "pattern": "Regulatory capture through alignment",
+          "example": "Galperin's public support for Milei while Milei's deregulation agenda directly benefits MercadoLibre",
+          "risk": "Regulatory environment shaped by and for dominant platforms"
+        },
+        {
+          "pattern": "Foreign capital control of fintech",
+          "example": "Uala ($3.2B valuation) backed by Soros, SoftBank, Tencent — Argentine financial infrastructure controlled by foreign investment funds",
+          "risk": "Exit of foreign capital could collapse neobank ecosystem"
+        },
+        {
+          "pattern": "Labor arbitrage platforms",
+          "example": "Rappi/PedidosYa classify workers as independent contractors; Milei's labor reform codifies this. Globant exports Argentine talent at local wages for international margins",
+          "risk": "Platform economy creates precarious employment while extracting value"
+        },
+        {
+          "pattern": "Ad revenue extraction",
+          "example": "Google + Meta capture 89%+ of digital ad spend globally, including Argentina. Revenue leaves the country entirely",
+          "risk": "Defunding of local media and journalism that performs accountability function"
+        }
+      ]
+    },
+
+    "regulatory_gap": {
+      "title": "Vacio regulatorio: Argentina sin marco para plataformas digitales",
+      "eu_comparison": {
+        "eu_instrument": "Digital Markets Act (DMA)",
+        "enacted": "2022, enforced 2023",
+        "approach": "Ex-ante regulation: identifies 'Gatekeepers' by quantitative criteria and imposes obligations before harm occurs",
+        "sanctions": "Per se sanctionable — no need to prove economic harm",
+        "key_provisions": [
+          "Interoperability requirements",
+          "Ban on self-preferencing",
+          "Data portability rights",
+          "Fair access for business users",
+          "Prohibition on tying services"
+        ]
+      },
+      "argentina_status": {
+        "existing_law": "Ley 27.442 de Defensa de la Competencia",
+        "approach": "Ex-post only — can only act after damage is proven",
+        "enforcement_body": "CNDC (Comision Nacional de Defensa de la Competencia)",
+        "proposed_bill": "Regulacion de Servicios de Intermediacion Digital para la Defensa de la Competencia y la Proteccion del Consumidor",
+        "bill_status": "Presented but not advanced under current administration",
+        "regulatory_measures_partial": [
+          "BCRA regulations for payment service providers",
+          "Delivery platform commission caps (widely ignored)",
+          "Transport service regulations (Uber, Cabify)",
+          "ICT services declared public services"
+        ],
+        "sources": [
+          "https://www.argentina.gob.ar/sites/default/files/2017/02/regulacion_ex_ante_y_competencia_en_mercados_digitales.pdf",
+          "https://abogados.com.ar/regulacion-de-plataformas-digitales-digital-services-act-y-digital-markets-act-europa-regula-a-las-grandes-plataformas-digitales/33790"
+        ]
+      },
+      "gap_analysis": [
+        "No gatekeeper designation mechanism exists in Argentine law",
+        "No interoperability mandates for dominant platforms (BCRA tried; MercadoLibre resists)",
+        "No data portability requirements — users locked into platforms",
+        "No ban on self-preferencing — MercadoLibre promotes Mercado Pago, Mercado Envios over competitors",
+        "CNDC can only act ex-post, making it structurally unable to prevent monopoly formation",
+        "Current Milei administration ideologically opposed to platform regulation",
+        "Bill for digital platform regulation exists but has no political support",
+        "Delivery commission caps set in 2020 are routinely exceeded with no enforcement"
+      ]
+    }
+  },
+
+  "key_entities": [
+    {
+      "name": "MercadoLibre Inc.",
+      "type": "Corporation",
+      "jurisdiction": "Delaware, USA (listed); operations in Argentina",
+      "role": "Dominant e-commerce, payments, logistics, and advertising platform",
+      "market_cap_approx_usd": 100000000000,
+      "investigation_relevance": "high"
+    },
+    {
+      "name": "Mercado Pago",
+      "type": "Fintech subsidiary",
+      "parent": "MercadoLibre",
+      "role": "80% wallet float share, anticompetitive complaints filed",
+      "investigation_relevance": "high"
+    },
+    {
+      "name": "Marcos Eduardo Galperin",
+      "type": "Person",
+      "role": "Founder/Executive Chairman MercadoLibre, Argentina's richest person",
+      "net_worth_usd": 10200000000,
+      "residence": "Uruguay",
+      "political_alignment": "Milei supporter",
+      "investigation_relevance": "high"
+    },
+    {
+      "name": "Uala",
+      "type": "Fintech",
+      "valuation_usd": 3200000000,
+      "founder": "Pierpaolo Barbieri",
+      "key_investors": ["Soros Fund Management", "SoftBank", "Tencent", "Goldman Sachs"],
+      "investigation_relevance": "medium"
+    },
+    {
+      "name": "Globant S.A.",
+      "type": "Corporation",
+      "ticker": "NYSE:GLOB",
+      "founders": ["Martin Migoya", "Guibert Englebienne", "Martin Umaran", "Nestor Nocetti"],
+      "revenue_usd": 2450000000,
+      "investigation_relevance": "medium"
+    },
+    {
+      "name": "Despegar.com",
+      "type": "Corporation",
+      "ticker": "NYSE:DESP",
+      "acquirer": "Prosus NV",
+      "acquisition_value_usd": 1700000000,
+      "investigation_relevance": "medium"
+    },
+    {
+      "name": "PedidosYa",
+      "type": "Platform",
+      "parent": "Delivery Hero (Germany)",
+      "role": "Delivery duopoly member",
+      "investigation_relevance": "medium"
+    },
+    {
+      "name": "Rappi",
+      "type": "Platform",
+      "origin": "Colombia",
+      "role": "Delivery duopoly member",
+      "investigation_relevance": "medium"
+    },
+    {
+      "name": "CNDC",
+      "type": "Regulatory body",
+      "full_name": "Comision Nacional de Defensa de la Competencia",
+      "role": "Argentine competition authority; limited to ex-post enforcement",
+      "investigation_relevance": "medium"
+    },
+    {
+      "name": "MODO",
+      "type": "Fintech consortium",
+      "backers": "Argentine banks (Galicia, Santander, BBVA, Macro, etc.)",
+      "role": "Filed antitrust complaint against MercadoLibre",
+      "investigation_relevance": "medium"
+    }
+  ],
+
+  "key_findings_summary": [
+    "MercadoLibre controls 62% of marketplace GMV and 80% of retail e-commerce in Argentina, with Mercado Pago holding 80% of wallet float — the most vertically integrated digital monopoly in Latin America",
+    "Marcos Galperin (net worth USD 10.2B) relocated to Uruguay in 2019 and publicly supports Milei, whose deregulation agenda directly benefits MercadoLibre",
+    "The CNDC has active antitrust complaints from both sides: banks accuse MercadoLibre of monopoly; MercadoLibre accuses banks of cartelization through MODO",
+    "Argentina's top 3 neobanks (Uala, Brubank, Naranja X) hold 88% of digital banking market; Uala alone is valued at USD 3.2B backed by Soros, SoftBank, and Tencent",
+    "Delivery duopoly (PedidosYa/Rappi) charges restaurants 25-35% commissions despite 18% government caps; Milei's labor reform classifies riders as non-employees",
+    "Google + Meta capture 89% of global digital ad spend including Argentina; elimination of Impuesto PAIS made ads 30% cheaper, accelerating revenue extraction",
+    "Despegar.com acquired by Dutch Prosus for USD 1.7B — Argentine travel platform now foreign-owned",
+    "Globant ($2.45B revenue) extracts Argentine talent at local wages for international margins; founders align politically with Milei",
+    "Argentina has no Digital Markets Act equivalent; proposed digital platform regulation bill has no political support under current administration",
+    "Argentina is replacing 20th-century state and family monopolies with 21st-century platform monopolies that are transnational, data-driven, and structurally harder to regulate"
+  ]
+}

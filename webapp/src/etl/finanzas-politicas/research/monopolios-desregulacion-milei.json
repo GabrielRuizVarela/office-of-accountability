@@ -1,0 +1,790 @@
+{
+  "meta": {
+    "title": "Desregulacion Milei (2023-2026): Riesgos de Monopolio y Concentracion Economica",
+    "description": "Investigacion sobre como las politicas de desregulacion del gobierno de Javier Milei crean nuevos riesgos de concentracion monopolica en Argentina",
+    "date_compiled": "2026-03-24",
+    "period_covered": "2023-12 a 2026-03",
+    "methodology": "Web research de fuentes periodisticas, documentos oficiales y analisis de centros de investigacion",
+    "confidence_tier": "bronze",
+    "tags": ["desregulacion", "milei", "monopolios", "concentracion-economica", "RIGI", "DNU-70-2023", "ley-bases"]
+  },
+
+  "sections": {
+
+    "dnu_70_2023": {
+      "title": "DNU 70/2023 — Bases para la Reconstruccion de la Economia Argentina",
+      "date_published": "2023-12-21",
+      "summary": "Mega-decreto de 366 articulos que modifica o deroga mas de 73 leyes. Declara emergencia publica en materia economica, financiera, fiscal, administrativa, previsional, tarifaria, sanitaria y social hasta el 31/12/2025.",
+      "sectors_deregulated": {
+        "medios": {
+          "changes": [
+            "Eliminacion de limites a la multiplicidad de licencias de medios nacionales",
+            "Un solo licenciatario puede poseer multiples senales sin maximo predeterminado",
+            "Derogacion de Ley 26.736 de papel prensa (beneficia a Clarin y La Nacion en Papel Prensa)",
+            "Derogacion de obligacion de operadores de cable de incluir ciertos canales de noticias"
+          ],
+          "monopoly_risk": "Altisimo — eliminacion total de limites de concentracion mediatica",
+          "beneficiaries": ["Grupo Clarin", "Grupo America (Vila-Manzano)", "Telecentro"],
+          "losers": ["Canales independientes sin respaldo de grupo telecom (C5N, Cronica TV, IP, La Nacion+)"]
+        },
+        "farmacia_y_salud": {
+          "changes": [
+            "Modificacion de Ley 17.565 — permite propiedad de farmacias por sociedades anonimas",
+            "Permite a droguerias dispensar medicamentos directamente",
+            "Liberalizacion de venta de medicamentos de venta libre fuera de farmacias",
+            "Inicialmente prohibio a medicos recetar marcas especificas (luego revertido parcialmente)"
+          ],
+          "monopoly_risk": "Alto — favorece cadenas como Farmacity sobre farmacias independientes",
+          "judicial_status": "Camara Contencioso Administrativo Federal suspendio varios articulos, ratificando modelo sanitario de farmacia",
+          "beneficiaries": ["Farmacity (Mario Quintana)", "Grandes droguerias", "Laboratorios multinacionales"],
+          "losers": ["Farmacias independientes", "Farmacias en zonas rurales/alejadas"]
+        },
+        "agricultura_yerba_mate": {
+          "changes": [
+            "INYM perdio facultades de fijar precios minimos",
+            "Eliminacion de limites a plantaciones para evitar sobreoferta"
+          ],
+          "monopoly_risk": "Alto — concentracion en industria yerbatera, productores chicos sin piso de precio",
+          "beneficiaries": ["Grandes acopiadoras: Molinos, Las Marias, Establecimiento Las Marias"],
+          "losers": ["Pequenos productores yerbateros de Misiones y Corrientes"]
+        },
+        "comercio_y_precios": {
+          "changes": [
+            "Derogacion de Ley de Abastecimiento",
+            "Derogacion de Ley de Gondolas (Ley 27.545 de 2020)",
+            "Eliminacion de Precios Cuidados y Precios Justos",
+            "Derogacion de 71 normas comerciales adicionales (Resolucion 357/2025)"
+          ],
+          "monopoly_risk": "Alto — el 74% de la gondola manejado por solo 20 empresas oligopolicas",
+          "key_data": {
+            "top_gondola_share": {
+              "Unilever": "9%",
+              "Mastellone_Hnos": "8%",
+              "Marca_distribuidor": "8%",
+              "CocaCola": "5%",
+              "Sancor": "5%",
+              "Danone": "5%"
+            }
+          },
+          "beneficiaries": ["Grandes alimenticias oligopolicas", "Cadenas de supermercados"],
+          "losers": ["PyMEs alimentarias", "Cooperativas", "Consumidores en zonas con poca competencia"]
+        },
+        "aerocomercial": {
+          "changes": [
+            "Derogacion de Ley 19.030 de 1971 de transporte aereo",
+            "Eliminacion de exclusividad de Aerolineas Argentinas en rutas",
+            "Eliminacion de prohibicion de dos empresas en misma ruta",
+            "Desregulacion de servicios de rampa en aeropuertos",
+            "Liberalizacion de tarifas aereas"
+          ],
+          "monopoly_risk": "Medio — apertura puede generar competencia pero tambien dominio de LATAM",
+          "beneficiaries": ["Corporacion America Airports (Eurnekian)", "LATAM Airlines"],
+          "losers": ["Aerolineas Argentinas (pierde exclusividad)", "Trabajadores aerocomerciales"]
+        },
+        "laboral": {
+          "changes": [
+            "Flexibilizacion de contratos laborales",
+            "Reduccion de indemnizaciones",
+            "Limitacion del derecho de huelga"
+          ],
+          "monopoly_risk": "Indirecto — reduce costos laborales para grandes corporaciones con poder de mercado",
+          "beneficiaries": ["Grandes empleadores", "Sector servicios tercerizados"],
+          "losers": ["Trabajadores sindicalizados", "Sector publico"]
+        }
+      },
+      "constitutional_challenges": [
+        "CELS presento recurso de inconstitucionalidad",
+        "Viola separacion de poderes al derogar/modificar 73+ leyes por decreto",
+        "Multiples cautelares judiciales suspendiendo articulos especificos"
+      ],
+      "sources": [
+        {"title": "Centro CEPA — El Mega DNU del gobierno de Milei", "url": "https://centrocepa.com.ar/informes/459-el-mega-dnu-del-gobierno-de-milei-desregulaciones-desguace-extranjerizacion-y-fuerte-retroceso-en-derechos-laborales"},
+        {"title": "Decree 70/2023 — Wikipedia", "url": "https://en.wikipedia.org/wiki/Decree_70/2023"},
+        {"title": "CeCo — La desregulacion economica por decreto", "url": "https://centrocompetencia.com/desregulacion-economica-por-decreto-primer-hito-era-milei/"},
+        {"title": "CELS — DNU 70/2023 inconstitucional", "url": "https://www.cels.org.ar/web/en/2023/12/we-submit-that-the-judiciary-declare-president-mileis-dnu-70-2023-unconstitutional/"},
+        {"title": "Infobae — Milei elimino limites de licencias de medios", "url": "https://www.infobae.com/economia/2023/12/21/milei-elimino-los-limites-de-licencias-nacionales-para-los-medios-de-comunicacion/"},
+        {"title": "SiPreBA — Defensa de medios publicos", "url": "https://www.sipreba.org/sindicato/razones-para-el-rechazo-del-dnu-70-23-defensa-de-los-medios-publicos-la-pluralidad-de-voces-y-la-comunicacion-democratica/"},
+        {"title": "COFA — DNU atenta contra salud publica", "url": "https://portal.cofa.org.ar/2023/12/21/el-dnu-7023-atenta-gravemente-contra-la-salud-de-la-poblacion-la-profesion-farmaceutica-el-modelo-de-farmacia-profesional/"},
+        {"title": "Chequeado — derogacion leyes Abastecimiento y Gondolas", "url": "https://chequeado.com/el-explicador/el-dnu-de-javier-milei-que-implica-la-derogacion-de-las-leyes-de-abastecimiento-y-gondolas/"}
+      ]
+    },
+
+    "ley_bases_y_rigi": {
+      "title": "Ley de Bases (27.742) y Regimen RIGI",
+      "date_approved": "2024-07-08",
+      "summary": "La Ley de Bases y Puntos de Partida para la Libertad de los Argentinos incluye el RIGI (Regimen de Incentivo para Grandes Inversiones) — un regimen de beneficios fiscales con estabilidad normativa de 30 anos para inversiones de USD 200M+.",
+      "rigi": {
+        "minimum_investment": "USD 200,000,000",
+        "tax_stability_years": 30,
+        "tax_benefits": {
+          "impuesto_ganancias": "25% (vs 35% estandar)",
+          "dividendos_primeros_7_anos": "7%",
+          "dividendos_post_7_anos": "3.5%",
+          "amortizacion": "Acelerada",
+          "importaciones": "Exencion de derechos para bienes de capital",
+          "exportaciones": "Libre disponibilidad de divisas"
+        },
+        "eligible_sectors": [
+          "Petroleo y gas",
+          "Mineria",
+          "Energias renovables",
+          "Foresto industria",
+          "Siderurgia",
+          "Tecnologia",
+          "Infraestructura",
+          "Turismo"
+        ],
+        "vehicle_requirement": "Vehiculo de Proyecto Unico (VPU) con objeto exclusivo del proyecto",
+        "projects_approved": {
+          "total_as_of_2025_12": 10,
+          "total_investment_approved_usd": 25479000000,
+          "total_projects_submitted": 22,
+          "total_submitted_investment_usd": 35500000000,
+          "detail": [
+            {
+              "project": "Vaca Muerta Sur (oleoducto)",
+              "companies": ["YPF", "Pan American Energy (PAE)", "Vista Energy", "Pampa Energia", "Pluspetrol", "Chevron", "Shell"],
+              "investment_usd": 2486000000,
+              "sector": "Petroleo y gas",
+              "location": "Neuquen / Rio Negro"
+            },
+            {
+              "project": "Southern Energy (GNL)",
+              "companies": ["Pan American Energy (PAE)", "Golar LNG"],
+              "investment_usd": 2900000000,
+              "sector": "Gas natural licuado",
+              "location": "Golfo San Matias, Rio Negro"
+            },
+            {
+              "project": "Rincon de Litio",
+              "companies": ["Rio Tinto"],
+              "investment_usd": 2724000000,
+              "sector": "Mineria — Litio",
+              "location": "Salta",
+              "target_production": "60,000 toneladas/ano litio para baterias"
+            },
+            {
+              "project": "Hombre Muerto Oeste",
+              "companies": ["Galan Lithium"],
+              "investment_usd": 217000000,
+              "sector": "Mineria — Litio",
+              "location": "Catamarca",
+              "projected_exports_by_2029_usd": 180000000
+            },
+            {
+              "project": "Los Azules (cobre)",
+              "companies": ["McEwen Copper"],
+              "investment_usd": 2672000000,
+              "sector": "Mineria — Cobre",
+              "location": "San Juan"
+            },
+            {
+              "project": "Gualcamayo",
+              "companies": ["No especificada"],
+              "investment_usd": 665000000,
+              "sector": "Mineria",
+              "location": "San Juan",
+              "jobs_direct": 1700
+            }
+          ]
+        },
+        "monopoly_risk_analysis": {
+          "risk_level": "Alto",
+          "concerns": [
+            "Umbral de USD 200M excluye totalmente a PyMEs y medianas empresas argentinas",
+            "Beneficios fiscales de 30 anos crean ventaja estructural permanente para incumbentes",
+            "Libre disponibilidad de divisas permite repatriar utilidades sin reinversion local",
+            "Sectores elegibles favorecen extractivismo exportador sobre industria de valor agregado",
+            "Sin contrapartida de empleo minimo, transferencia tecnologica o valor agregado local",
+            "Gobierno ya trabaja en RIMI (Regimen de Incentivo para Medianas Inversiones) como reconocimiento implicito de la brecha"
+          ],
+          "primary_beneficiaries": [
+            "Multinacionales mineras (Rio Tinto, McEwen, Galan Lithium)",
+            "Petroleras internacionales (Chevron, Shell)",
+            "Grandes grupos energeticos argentinos (PAE/Bulgheroni, YPF, Pampa Energia/Mindlin)"
+          ]
+        }
+      },
+      "competition_law_changes": {
+        "description": "El Titulo 7 de Ley Bases modifica defensa de competencia. La definicion de posicion dominante es mas laxa que la ley 27.442 de 2018 — no menciona caso de unico oferente.",
+        "ideological_basis": "Milei adhiere a la escuela austriaca: considera que los monopolios no son inherentemente daninos y pueden ser mas eficientes"
+      },
+      "sources": [
+        {"title": "Argentina.gob.ar — RIGI aplicacion", "url": "https://www.argentina.gob.ar/noticias/rigi-desde-hoy-las-empresas-podran-aplicar-al-regimen"},
+        {"title": "Allende & Brea — RIGI aprobado", "url": "https://allende.com/financiamiento-de-proyectos-e-infraestructura/se-aprobo-el-regimen-de-incentivos-para-grandes-inversiones-de-la-ley-de-bases-y-puntos-de-partida-para-la-libertad-de-los-argentinos-07-05-2024/"},
+        {"title": "Infobae — 10 proyectos RIGI USD 25.000M", "url": "https://www.infobae.com/economia/2025/12/24/uno-por-uno-los-10-proyectos-que-ingresaron-al-rigi-y-que-preven-inversiones-por-usd-25000-millones/"},
+        {"title": "Chequeado — proyectos RIGI aprobados", "url": "https://chequeado.com/el-explicador/mineria-energia-y-siderurgia-cuales-son-los-proyectos-del-rigi-aprobados-y-cuales-estan-pendientes-de-autorizacion/"},
+        {"title": "Infobae — RIMI para PyMEs", "url": "https://www.infobae.com/economia/2025/12/07/regimen-de-incentivo-para-medianas-inversiones-rimi-como-es-la-iniciativa-para-pymes-que-aparece-en-el-borrador-de-la-reforma-laboral/"},
+        {"title": "Cadena Nueve — Monopolio y trampa libertaria", "url": "https://www.cadenanueve.com/2024/05/26/monopolio-empobrecimiento-y-la-trampa-libertaria/"}
+      ]
+    },
+
+    "media_deregulation": {
+      "title": "Desregulacion de Medios — Concentracion sin Limites",
+      "summary": "Eliminacion total de limites de concentracion mediatica. Habilitacion de fusiones y adquisiciones sin restricciones de multiplicidad de licencias.",
+      "key_events": [
+        {
+          "date": "2023-12-21",
+          "event": "DNU 70/2023 elimina limites de licencias nacionales de medios",
+          "impact": "Un solo grupo puede poseer cantidad ilimitada de senales y medios"
+        },
+        {
+          "date": "2023-12-21",
+          "event": "Derogacion Ley 26.736 de papel prensa",
+          "impact": "Beneficia directamente a Clarin y La Nacion (accionistas de Papel Prensa)"
+        },
+        {
+          "date": "2025-02-24",
+          "event": "Telecom (Grupo Clarin) compra Telefonica Argentina por USD 1.245M",
+          "impact": "Concentracion: 58-60% telefonia movil, 69% telefonia fija, hasta 80% internet residencial en algunas regiones"
+        },
+        {
+          "date": "2025-06-19",
+          "event": "Secretaria de Comercio objeta fusion Telecom-Telefonica (Resolucion 242/2025)",
+          "impact": "Operacion en limbo regulatorio, pero Milei ataca publicamente a Magnetto"
+        },
+        {
+          "date": "2025-10-23",
+          "event": "Venta de Telefe por Paramount a Grupo America (Vila-Manzano-Scaglione-Belocopitt) por ~USD 95M",
+          "impact": "Grupo America consolida: Telefe + Canal 11 Buenos Aires + Canal 8 Cordoba + Canal 5 Rosario + Canal 13 Santa Fe + 3 canales Uruguay + 10+ afiliadas"
+        }
+      ],
+      "concentration_map": {
+        "grupo_clarin": {
+          "owner": "Hector Magnetto / Grupo Clarin",
+          "assets": ["Clarin (diario)", "TN (Todo Noticias)", "Cablevisión (ahora Personal Flow)", "Telecom Argentina", "Artear", "Ole", "Radio Mitre"],
+          "telecom_market_share_post_telefonica": {
+            "mobile": "58-60%",
+            "fixed_line": "69%",
+            "broadband_some_regions": "hasta 80%"
+          },
+          "status_with_milei": "Conflictivo — Milei acuso a Magnetto de ser 'la gran estafa argentina' y freno fusion Telecom-Telefonica"
+        },
+        "grupo_america": {
+          "owners": ["Daniel Vila", "Jose Luis Manzano", "Claudio Belocopitt", "Gustavo Scaglione"],
+          "assets": ["America TV", "A24", "Telefe (adquirido 2025)", "Canal 8 Cordoba", "Canal 5 Rosario", "Canal 13 Santa Fe", "Canales en Uruguay", "Radio La Red"],
+          "telefe_purchase_price_usd": 95000000,
+          "status": "Consolidacion en marcha — ahora mayor grupo de TV abierta de Argentina"
+        },
+        "telecentro": {
+          "owner": "Alberto Pierri",
+          "assets": ["Telecentro (cable/internet)", "Canal 26"],
+          "status": "Beneficiado por eliminacion de restricciones"
+        }
+      },
+      "milei_magnetto_conflict": {
+        "summary": "Milei ataco publicamente a Hector Magnetto, acusandolo de beneficiarse de la devaluacion Duhalde (2002) para licuar USD 3.000M de deuda de Clarin. Freno fusion Telecom-Telefonica por concentracion excesiva.",
+        "key_quotes": [
+          "La gran estafa argentina (Milei sobre Grupo Clarin)",
+          "Magnetto favorecio la devaluacion de Duhalde para licuar las deudas de Clarin"
+        ],
+        "analysis": "Paradoja: Milei desregulo completamente el sector de medios pero luego frena la mayor fusion telecom por presion de competidores y conflicto personal con Magnetto"
+      },
+      "sources": [
+        {"title": "Infobae — elimino limites licencias medios", "url": "https://www.infobae.com/economia/2023/12/21/milei-elimino-los-limites-de-licencias-nacionales-para-los-medios-de-comunicacion/"},
+        {"title": "La Nacion — Telecom-Telefonica fusion objetada", "url": "https://www.lanacion.com.ar/economia/nueva-autoridad-nacional-de-la-competencia-designan-a-los-miembros-y-le-dan-mas-poder-nid17112025/"},
+        {"title": "La Nacion — Scaglione compra Telefe", "url": "https://www.lanacion.com.ar/economia/negocios/nuevos-duenos-el-empresario-rosarino-gustavo-scaglione-cerro-la-compra-de-telefe-asociado-con-jose-nid23102025/"},
+        {"title": "elDiarioAR — Milei frena fusion Telecom-Telefonica", "url": "https://www.eldiarioar.com/politica/milei-frena-fusion-telecom-telefonica-lanza-advertencia-grupo-clarin_1_12154860.html"},
+        {"title": "Perfil — Milei guerra contra Clarin", "url": "https://noticias.perfil.com/noticias/politica/milei-y-la-declaracion-de-guerra-al-grupo-clarin.phtml"},
+        {"title": "Martin Becerra — Mapa de medios era Milei", "url": "https://martinbecerra.wordpress.com/2024/10/13/mapa-de-medios-en-la-era-milei/"},
+        {"title": "TeleSemana — Telecom compro Telefonica", "url": "https://www.telesemana.com/blog/2025/02/24/telecom-compro-telefonica-de-argentina-alcanza-posicion-dominante-y-disputara-con-claro-el-liderazgo-de-las-telecomunicaciones/"}
+      ]
+    },
+
+    "cndc_to_anc_transition": {
+      "title": "CNDC a Autoridad Nacional de la Competencia (ANC)",
+      "summary": "Transicion de 7 anos de demora. La ANC fue finalmente constituida en noviembre 2025. Analisis mixto: mas autonomia formal pero contexto ideologico pro-monopolio.",
+      "timeline": [
+        {
+          "date": "2018-05",
+          "event": "Ley 27.442 ordena creacion de ANC autonoma y descentralizada"
+        },
+        {
+          "date": "2018-2025",
+          "event": "7 anos de demora — CNDC sigue operando como organismo dependiente del Ejecutivo"
+        },
+        {
+          "date": "2025-11-17",
+          "event": "Decreto 810/2025 — Milei designa primeros 5 de 7 miembros de la ANC (requieren aprobacion del Senado)"
+        }
+      ],
+      "institutional_analysis": {
+        "strengths": [
+          "Primera vez desde 1999 que Argentina tendra autoridad de competencia descentralizada y autonoma",
+          "ANC resolvera sin intervencion de Secretaria de Industria y Comercio (a diferencia de CNDC que solo recomendaba)",
+          "Control ex ante de fusiones (desde 17/11/2025)",
+          "Mayor independencia formal del Poder Ejecutivo"
+        ],
+        "weaknesses_and_risks": [
+          "Miembros designados por un gobierno ideologicamente pro-monopolio (escuela austriaca)",
+          "Contexto de desregulacion masiva reduce el universo de conductas sancionables",
+          "Ley Bases suavizo definicion de posicion dominante vs Ley 27.442",
+          "Riesgo de captura regulatoria por sectores concentrados",
+          "Senado aun debe confirmar designaciones"
+        ]
+      },
+      "first_major_test": "Fusion Telecom-Telefonica (Resolucion 242/2025 de objecion) — pero decision final depende de la ANC recientemente constituida",
+      "sources": [
+        {"title": "La Nacion — reforma competencia divide expertos", "url": "https://www.lanacion.com.ar/politica/nueva-ley-de-bases-el-proyecto-de-reforma-de-defensa-de-competencia-divide-a-los-expertos-nid14042024/"},
+        {"title": "CeCo — Constitucion nueva autoridad argentina", "url": "https://centrocompetencia.com/la-constitucion-de-la-autoridad-nacional-de-la-competencia-en-argentina-implicancias-institucionales-y-sus-efectos-sobre-el-control-de-concentraciones-economicas/"},
+        {"title": "RoadShow — Milei completa autoridad antimonopolio", "url": "https://www.roadshow.com.ar/milei-completa-la-nueva-autoridad-antimonopolio-tras-siete-anos-de-espera/"},
+        {"title": "La Nacion — ANC designacion miembros", "url": "https://www.lanacion.com.ar/economia/nueva-autoridad-nacional-de-la-competencia-designan-a-los-miembros-y-le-dan-mas-poder-nid17112025/"},
+        {"title": "CeCo — Argentina nombra autoridad de competencia", "url": "https://centrocompetencia.com/argentina-nombra-a-su-autoridad-de-competencia-tras-un-largo-y-sinuoso-camino/"}
+      ]
+    },
+
+    "price_deregulation": {
+      "title": "Desregulacion de Precios — Eliminacion de Controles",
+      "summary": "Eliminacion sistematica de todos los programas de control y monitoreo de precios, incluyendo Precios Cuidados, Precios Justos, Ley de Gondolas, Ley de Abastecimiento y 71 normas comerciales adicionales.",
+      "chronology": [
+        {
+          "date": "2023-12-21",
+          "action": "DNU 70/2023 deroga Ley de Abastecimiento y Ley de Gondolas"
+        },
+        {
+          "date": "2024-01",
+          "action": "Fin de programa Precios Cuidados (no se renueva)"
+        },
+        {
+          "date": "2024-11",
+          "action": "Resolucion 1212/2024 — Ministerio de Economia cancela vigencia de programas de regulacion de precios (43 normas)"
+        },
+        {
+          "date": "2025-09-24",
+          "action": "Resolucion 357/2025 — Derogacion de 71 normas comerciales adicionales incluyendo Precios Justos, El Mercado en tu Barrio, Programa Estimulo Pequeno Productor de Granos, SIPRE, COPREC"
+        }
+      ],
+      "impact_on_monopoly_pricing": {
+        "ley_gondolas_impact": {
+          "before": "Ningun grupo economico podia ocupar mas del 30% de gondola. Minimo 5 proveedores por categoria. 25% para PyMEs, 5% para cooperativas/indigenas.",
+          "after": "Sin restricciones. El 74% de gondola controlado por 20 empresas oligopolicas.",
+          "beneficiaries_top_6": {
+            "Unilever": "9% de gondola",
+            "Mastellone": "8%",
+            "Marcas_distribuidor": "8%",
+            "Coca_Cola": "5%",
+            "Sancor": "5%",
+            "Danone": "5%"
+          }
+        },
+        "ley_abastecimiento_impact": "El Estado pierde herramienta para intervenir en situaciones de desabastecimiento o precios abusivos de bienes esenciales",
+        "overall_assessment": "Eliminacion de toda herramienta estatal de monitoreo o intervencion en formacion de precios. En mercados oligopolicos como el alimentario argentino, esto otorga poder de fijacion de precios a empresas dominantes sin contrapeso."
+      },
+      "sources": [
+        {"title": "Infobae — Gobierno elimino 71 normas comerciales", "url": "https://www.infobae.com/economia/2025/09/24/el-gobierno-elimino-71-normas-comerciales-incluyendo-precios-justos-y-la-ley-de-gondolas/"},
+        {"title": "Argentina.gob.ar — eliminacion normas", "url": "https://www.argentina.gob.ar/noticias/el-gobierno-nacional-eliminara-mas-de-70-normas-para-disminuir-la-burocracia-y-simplificar"},
+        {"title": "Ambito — impacto derogacion Ley Gondolas", "url": "https://www.ambito.com/economia/como-impactara-precios-la-desregulacion-y-derogacion-leyes-gondolas-y-abastecimiento-n5904232"},
+        {"title": "Chequeado — Ley Gondolas derogacion", "url": "https://chequeado.com/el-explicador/el-dnu-de-javier-milei-que-implica-la-derogacion-de-las-leyes-de-abastecimiento-y-gondolas/"}
+      ]
+    },
+
+    "privatization_plans": {
+      "title": "Agenda de Privatizaciones 2024-2026",
+      "summary": "El gobierno Milei impulsa la privatizacion de al menos 33 empresas publicas. La Ley Bases autorizo la privatizacion de varias, con cronograma concentrado en primer tramo de 2026.",
+      "companies": {
+        "aerolineas_argentinas": {
+          "status": "Pendiente — dictamen logrado pero sin votos en recinto. Gobierno declaro que no es urgencia para principios 2026.",
+          "estimated_interest": ["Grupos internacionales no confirmados", "Eduardo Eurnekian mencionado como potencial interesado"],
+          "monopoly_risk": "Medio — depende de estructura post-privatizacion y regulacion de rutas"
+        },
+        "arsat": {
+          "status": "En agenda para 2026. Incluida en borradores oficiales.",
+          "strategic_importance": "Unica empresa estatal de telecomunicaciones satelitales. Posee ARSAT-1, ARSAT-2, red federal de fibra optica.",
+          "monopoly_risk": "Alto — infraestructura de telecomunicaciones satelitales sin competidor domestico",
+          "potential_buyers_concern": "Venta a grupo telecom (Clarin/Telecom o Claro/America Movil) consolidaria concentracion"
+        },
+        "belgrano_cargas": {
+          "status": "Licitacion prevista fines noviembre/diciembre 2025",
+          "strategic_importance": "Transporte de granos desde NOA/NEA hacia puertos",
+          "monopoly_risk": "Alto — infraestructura ferroviaria es monopolio natural"
+        },
+        "correo_argentino": {
+          "status": "En lista de privatizacion prioritaria",
+          "historical_context": "Fue privatizado en los 90s (Macri/SOCMA), renacionalizado post-crisis 2001",
+          "monopoly_risk": "Medio — existe competencia privada en paqueteria"
+        },
+        "aysa": {
+          "status": "En agenda de privatizacion. Agua y saneamiento del AMBA.",
+          "monopoly_risk": "Altisimo — monopolio natural de agua potable para 15 millones de personas"
+        },
+        "enarsa": {
+          "status": "En lista proxima de privatizacion",
+          "sector": "Energia"
+        },
+        "transener": {
+          "status": "En lista de privatizacion",
+          "sector": "Transmision electrica",
+          "monopoly_risk": "Alto — monopolio natural de red de alta tension"
+        },
+        "represas_hidroelectricas": {
+          "status": "Noviembre 2025 — licitacion de 4 represas",
+          "monopoly_risk": "Alto — infraestructura critica de generacion electrica"
+        },
+        "hidrovia": {
+          "status": "Pliegos previstos para fines diciembre 2025",
+          "strategic_importance": "Via navegable por donde sale 80% de exportaciones argentinas",
+          "monopoly_risk": "Altisimo — quien controle la Hidrovia controla el comercio exterior"
+        }
+      },
+      "sources": [
+        {"title": "El Diario.es — Milei privatizaciones pese a coste social", "url": "https://www.eldiario.es/internacional/javier-milei-argentina-privatizaciones_1_11812997.html"},
+        {"title": "El Diario.es — Milei prepara privatizacion 33 empresas", "url": "https://www.eldiario.es/internacional/television-publica-aerolineas-milei-prepara-privatizacion-33-empresas-publicas-argentinas_1_10787364.html"},
+        {"title": "InfoGremiales — 12 empresas a privatizar", "url": "https://www.infogremiales.com.ar/nueva-ley-omnibus-aerolineas-argentinas-correo-argentino-aysa-y-los-trenes-entre-las-12-empresas-que-milei-quiere-privatizar/"},
+        {"title": "ANRed — 8 empresas publicas estrategicas", "url": "https://www.anred.org/el-gobierno-avanza-sobre-ocho-empresas-publicas-estrategicas-trenes-energia-y-agua-pasaran-a-manos-privadas/"},
+        {"title": "La Nacion — oficialismo insiste privatizar Aerolineas", "url": "https://www.lanacion.com.ar/politica/el-oficialismo-insiste-con-privatizar-aerolineas-argentinas-pero-asume-que-no-es-una-urgencia-para-nid07012026/"},
+        {"title": "El Bonaerense — privatizar rutas y represas", "url": "https://www.elbonaerense.news/2025/11/01/milei-busca-privatizar-rutas-y-cuatro-represas-hidroelectricas"}
+      ]
+    },
+
+    "energy_deregulation": {
+      "title": "Desregulacion Energetica — Tarifazos y Beneficio Corporativo",
+      "summary": "Aumento masivo de tarifas electricas y de gas, retiro de subsidios, y beneficio extraordinario para distribuidoras privadas Edenor y Edesur.",
+      "tariff_impacts": {
+        "edenor_edesur_combined_profit_9_months_2024_ars": 274401000000,
+        "edesur_profit_increase_real": "44% por encima de inflacion",
+        "metrogas_net_profit_2024_ars": 156628000000,
+        "metrogas_revenue_increase_real": "31% por encima de inflacion"
+      },
+      "subsidy_reform": {
+        "rase_users_electricity_dec_2024": 9500000,
+        "rase_users_gas_dec_2024": 5300000,
+        "decree_943_2025": "Unificacion de subsidios nacionales en Sistema de Energia Federal (SEF)",
+        "fmi_connection": "Quita de subsidios realizada a pedido del FMI como condicion para pago de deuda"
+      },
+      "monopoly_analysis": {
+        "edenor": {
+          "owner": "Grupo DESA (Daniel Vila / Jose Luis Manzano — mismos duenos de Grupo America/Telefe)",
+          "territory": "Zona norte del AMBA",
+          "monopoly_type": "Monopolio natural regulado de distribucion electrica"
+        },
+        "edesur": {
+          "owner": "Enel (Italia) / SACDE",
+          "territory": "Zona sur del AMBA",
+          "monopoly_type": "Monopolio natural regulado de distribucion electrica"
+        },
+        "key_concern": "Los tarifazos no generaron mejora de servicio ni inversion proporcional, sino aumento de ganancias empresariales"
+      },
+      "sources": [
+        {"title": "Izquierda Diario — Cuanto ganaron energeticas 2024", "url": "https://www.izquierdadiario.es/Dia-de-aumento-Cuanto-ganaron-las-energeticas-en-2024"},
+        {"title": "Izquierda Diario — Edenor Edesur $300.000M ganancias", "url": "https://www.izquierdadiario.es/Tarifazos-entre-Edenor-y-Edesur-ganaron-casi-300-000-millones-en-los-primeros-9-meses-del-ano"},
+        {"title": "Infobae — nuevos cuadros tarifarios Edenor Edesur", "url": "https://www.infobae.com/economia/2026/01/29/cambios-en-los-valores-de-edenor-y-edesur-actualizaron-los-cuadros-tarifarios-por-el-nuevo-sistema-de-subsidios/"},
+        {"title": "EconoJournal — aumentos luz mayores a informado", "url": "https://econojournal.com.ar/2024/02/los-aumentos-de-luz-para-la-mayoria-de-los-usuarios-de-edenor-y-edesur-son-muy-superiores-a-lo-informado-por-el-gobierno/"}
+      ]
+    },
+
+    "sturzenegger_reforms": {
+      "title": "Ministerio de Desregulacion y Transformacion del Estado — Federico Sturzenegger",
+      "date_created": "2024-07",
+      "summary": "Ministerio creado especificamente para ejecutar agenda desregulatoria. Sturzenegger maneja 200+ proyectos de desregulacion y recibio 4.500+ sugerencias de desregulacion ciudadana.",
+      "key_reforms": [
+        {
+          "area": "Codigo Aeronautico",
+          "action": "DNU 338/2025 — reforma integral del codigo aeronautico",
+          "beneficiary": "Aerolineas extranjeras, Corporacion America Airports"
+        },
+        {
+          "area": "Comercio",
+          "action": "Eliminacion de 71+ normas comerciales",
+          "beneficiary": "Grandes empresas alimentarias y cadenas de supermercados"
+        },
+        {
+          "area": "Instrumentos financieros",
+          "action": "Creacion del pagare valor producto",
+          "beneficiary": "Sector agropecuario exportador"
+        },
+        {
+          "area": "Empleo publico",
+          "action": "Reforma laboral para habilitar despido de planta permanente del Estado",
+          "beneficiary": "Reduccion del Estado"
+        },
+        {
+          "area": "Simplificacion administrativa",
+          "action": "Eliminacion de tramites y registros obligatorios",
+          "beneficiary": "Empresas en general"
+        }
+      ],
+      "sturzenegger_personal": {
+        "patrimony_jump_2024_ars": 970000000,
+        "note": "Declaro un salto patrimonial de casi $970 millones en 2024"
+      },
+      "institutional_concern": "Facultades delegadas tienen fecha de vencimiento — Sturzenegger apuro unificacion de organismos y reduccion de gastos antes de perderlas (mayo 2025)",
+      "sources": [
+        {"title": "El Cronista — Sturzenegger 4500 desregulaciones", "url": "https://www.cronista.com/economia-politica/sturzenegger-completa-su-equipo-para-acelerar-con-4500-desregulaciones/"},
+        {"title": "El Intransigente — Sturzenegger planes 2025", "url": "https://elintransigente.com/2024/12/el-ministro-federico-sturzenegger-profundiza-la-motosierra-desregulatoria-para-el-2025-estoy-trabajando-en-200-proyectos/"},
+        {"title": "Perfil — Sturzenegger salto patrimonial", "url": "https://www.perfil.com/noticias/politica/federico-sturzenegger-declaro-un-salto-patrimonial-de-casi-970-millones-en-2024.phtml"},
+        {"title": "Infobae — Sturzenegger antes de perder facultades", "url": "https://www.infobae.com/politica/2025/05/28/unificacion-de-organismos-y-reduccion-de-gastos-el-plan-de-sturzenegger-antes-de-perder-las-facultades-delegadas/"}
+      ]
+    },
+
+    "cielos_abiertos": {
+      "title": "Cielos Abiertos — Desregulacion Aerocomercial",
+      "summary": "Argentina firmo acuerdos de cielos abiertos con 54 paises (11 en 2024, 43 en 2025). Agrego 57 nuevas rutas en 2025. LATAM puede operar cabotaje argentino.",
+      "statistics": {
+        "open_skies_agreements_2024": 11,
+        "open_skies_agreements_2025": 43,
+        "total_countries": 54,
+        "new_routes_2024": 12,
+        "new_routes_2025": 57,
+        "new_routes_2025_international": 50,
+        "new_routes_2025_domestic": 7
+      },
+      "key_countries": ["Brasil", "Chile", "Peru", "Ecuador", "Canada", "Panama", "Uruguay", "Paraguay", "Mexico", "Colombia", "Espana", "EAU", "Alemania", "Italia", "Singapur", "El Salvador"],
+      "competition_analysis": {
+        "pro_competition": [
+          "Mas rutas y opciones para pasajeros",
+          "Nuevas aerolineas como Humming Airways",
+          "Potencial reduccion de precios en rutas con competencia"
+        ],
+        "pro_monopoly_risks": [
+          "LATAM Chile puede operar cabotaje como aerolinea domestica — riesgo de desplazar carriers locales",
+          "Corporacion America (Eurnekian) controla aeropuertos y se beneficia de mas trafico",
+          "Aerolineas Argentinas pierde proteccion sin reestructuracion previa",
+          "Asimetria: Argentina abre sin exigir reciprocidad real en todos los casos"
+        ]
+      },
+      "eurnekian_benefit": {
+        "company": "Corporacion America Airports (CAAP)",
+        "argentina_revenue_share": "45% de facturacion total",
+        "concession_extension": "Gobierno prorrogo concesion de aeropuertos hasta 2038",
+        "investment_commitment_usd": 2500000000,
+        "passengers_2025": 86700000,
+        "passenger_growth_yoy": "9.8%",
+        "relationship_with_milei": "Eurnekian fue empleador de Milei por mas de una decada como economista jefe del holding"
+      },
+      "sources": [
+        {"title": "Infobae — cielos abiertos nuevo pais", "url": "https://www.infobae.com/economia/2025/08/29/cielos-abiertos-argentina-sumo-un-nuevo-pais-a-su-estrategia-de-apertura-aerocomercial/"},
+        {"title": "Derecha Diario — 57 air routes added", "url": "https://derechadiario.com.ar/us/argentina/argentina-added-57-air-routes-in-2025-thanks-to-mileis-deregulation"},
+        {"title": "El Destape — LATAM sin pedir nada a cambio", "url": "https://www.eldestapeweb.com/economia/aeronautica/cielos-abiertos-milei-habilito-la-entrega-total-del-negocio-a-latam-sin-pedir-nada-a-cambio-20251226165230"},
+        {"title": "La Nacion — Aeropuertos Argentina jugador global", "url": "https://www.lanacion.com.ar/economia/negocios/cielos-abiertos-el-plan-de-aeropuertos-argentina-para-convertirse-en-un-jugador-global-nid20072024/"},
+        {"title": "El Cronista — concesion aeropuertos hasta 2038", "url": "https://www.cronista.com/apertura/empresas/el-gobierno-prorroga-la-concesion-de-los-aeropuertos-hasta-2038-y-aa2000-invertira-us-2500-m/"},
+        {"title": "ANRed — triangulo Patanian Milei Eurnekian", "url": "https://www.anred.org/patanian-milei-y-eurnekian-el-triangulo-de-poder-empresarial-que-domina-la-politica-argentina/"},
+        {"title": "Prensa Obrera — Eurnekian vive del Estado", "url": "https://prensaobrera.com/politicas/eurnekian-el-empresario-de-milei-que-vive-del-estado"}
+      ]
+    },
+
+    "winners_and_losers": {
+      "title": "Ganadores y Perdedores de la Desregulacion Milei",
+      "summary": "Las mayores empresas cotizantes quintuplicaron ganancias. La concentracion economica se profundiza en medios, telecomunicaciones, energia, alimentos y extractivismo.",
+
+      "winners": [
+        {
+          "entity": "Grupo America / Vila-Manzano-Belocopitt-Scaglione",
+          "benefits": [
+            "Compra de Telefe por USD 95M (valor 2016: USD 345M) — consolidacion TV abierta",
+            "Edenor controlada por mismos accionistas — beneficio de tarifazos",
+            "Multiples medios sin restriccion de licencias"
+          ],
+          "sectors": ["Medios", "Energia"],
+          "monopoly_risk": "Altisimo — convergencia de medios + energia en mismo grupo"
+        },
+        {
+          "entity": "Corporacion America / Eduardo Eurnekian",
+          "benefits": [
+            "Prorroga de concesion aeroportuaria hasta 2038",
+            "Aumento de trafico aereo por cielos abiertos (+9.8% pasajeros)",
+            "45% de facturacion CAAP viene de Argentina",
+            "Relacion personal con Milei (ex-empleado)"
+          ],
+          "sectors": ["Aeropuertos", "Infraestructura"],
+          "monopoly_risk": "Alto — monopolio concesionado de aeropuertos + beneficio de apertura aerea"
+        },
+        {
+          "entity": "Grupo Clarin / Telecom",
+          "benefits": [
+            "Compra de Telefonica Argentina por USD 1.245M",
+            "2.080% aumento de ganancias de Telecom en 2024",
+            "Eliminacion de limites de licencias de medios"
+          ],
+          "complications": "Milei freno la fusion Telecom-Telefonica y ataca publicamente a Magnetto",
+          "sectors": ["Telecomunicaciones", "Medios"],
+          "monopoly_risk": "Altisimo — si se aprueba fusion: 58-60% movil, 69% fijo, hasta 80% internet"
+        },
+        {
+          "entity": "Petroleras y mineras internacionales (RIGI)",
+          "benefits": [
+            "30 anos de estabilidad fiscal",
+            "25% impuesto a ganancias (vs 35%)",
+            "Libre disponibilidad de divisas",
+            "USD 25.500M en proyectos aprobados"
+          ],
+          "key_companies": ["Rio Tinto", "McEwen Copper", "Chevron", "Shell", "Golan LNG", "Galan Lithium"],
+          "sectors": ["Mineria", "Petroleo", "Gas"],
+          "monopoly_risk": "Alto — extraccion de recursos con beneficios excepcionales y sin contrapartida local"
+        },
+        {
+          "entity": "Grandes grupos energeticos argentinos",
+          "benefits": [
+            "Tarifazos con ganancias record",
+            "Participacion en proyectos RIGI",
+            "Retiro de subsidios descarga costo en usuarios"
+          ],
+          "key_companies": ["PAE/Bulgheroni", "Pampa Energia/Mindlin", "Vista Energy/Galuccio", "YPF"],
+          "sectors": ["Energia", "Petroleo"],
+          "monopoly_risk": "Alto"
+        },
+        {
+          "entity": "Consorcio ABC (carne exportadora)",
+          "benefits": [
+            "Controla 80% de exportaciones de carne",
+            "Dialogo directo con Ministerio de Economia",
+            "Eliminacion de controles de precios y abastecimiento"
+          ],
+          "key_companies": ["JBS (Brasil)", "Marfrig (Brasil)", "Minerva (Brasil)"],
+          "sectors": ["Agroexportacion"],
+          "monopoly_risk": "Altisimo — oligopolio extranjero con 80% del mercado exportador"
+        },
+        {
+          "entity": "Grandes alimenticias oligopolicas",
+          "benefits": [
+            "Eliminacion de Ley de Gondolas (antes max 30% gondola)",
+            "Eliminacion de Precios Cuidados/Justos",
+            "Aumentos de ganancias: Mastellone y Arcor 600-2000%"
+          ],
+          "key_companies": ["Unilever", "Mastellone", "Arcor", "Coca-Cola", "Danone"],
+          "sectors": ["Alimentos"],
+          "monopoly_risk": "Alto — 20 empresas controlan 74% de gondola sin regulacion"
+        },
+        {
+          "entity": "Farmacity / Cadenas de farmacia",
+          "benefits": [
+            "DNU habilita propiedad de farmacias por SA",
+            "Posibilidad de expansion en cadena sin limites"
+          ],
+          "key_companies": ["Farmacity (Mario Quintana)"],
+          "sectors": ["Salud"],
+          "monopoly_risk": "Alto — amenaza a farmacias independientes y cobertura rural",
+          "judicial_freno": "Justicia suspendio parcialmente estas disposiciones"
+        }
+      ],
+
+      "losers": [
+        {
+          "entity": "PyMEs y productores pequenos",
+          "impacts": [
+            "Excluidos del RIGI (umbral USD 200M)",
+            "Pierden espacio en gondola (fin Ley Gondolas)",
+            "Productores yerbateros sin precio minimo",
+            "Sin acceso a beneficios fiscales de grandes inversores"
+          ]
+        },
+        {
+          "entity": "Consumidores",
+          "impacts": [
+            "Tarifazos de electricidad y gas",
+            "Eliminacion de Precios Cuidados",
+            "Concentracion reduce opciones y sube precios",
+            "Retiro de subsidios energeticos"
+          ]
+        },
+        {
+          "entity": "Trabajadores",
+          "impacts": [
+            "Flexibilizacion laboral",
+            "Reduccion de indemnizaciones",
+            "Despidos en sector publico",
+            "Perdida de poder adquisitivo vs ganancias empresariales record"
+          ]
+        },
+        {
+          "entity": "Medios independientes",
+          "impacts": [
+            "Pueden desaparecer de grillas de cable sin obligacion de must-carry",
+            "Sin limites a concentracion, grupos grandes absorben mercado publicitario",
+            "Derogacion de protecciones a pluralidad de voces"
+          ]
+        },
+        {
+          "entity": "Farmacias independientes",
+          "impacts": [
+            "Habilitacion de cadenas SA amenaza modelo de farmacia profesional",
+            "Riesgo de desaparicion en zonas alejadas"
+          ]
+        },
+        {
+          "entity": "Techint / Paolo Rocca (caso paradojico)",
+          "impacts": [
+            "Milei lo ataco como empresario prebendario",
+            "Perdio licitacion de gasoducto Vaca Muerta contra Welspun (oferta 40% menor)",
+            "Conflicto publico y personal con Milei"
+          ],
+          "note": "Caso paradojico: gran grupo industrial perjudicado por apertura indiscriminada, favorece a competidores extranjeros"
+        }
+      ],
+
+      "corporate_profit_explosion_2024": {
+        "description": "Las mayores empresas cotizantes en Buenos Aires quintuplicaron ganancias en el primer ano de Milei",
+        "examples": [
+          {"company": "Telecom (Clarin)", "profit_increase": "2.080%"},
+          {"company": "Mastellone", "profit_increase": "600-2.000%"},
+          {"company": "Arcor", "profit_increase": "600-2.000%"},
+          {"company": "Edenor + Edesur", "combined_profit_9m_ars": 274401000000, "real_increase": "44% sobre inflacion"},
+          {"company": "Metrogas", "net_profit_ars": 156628000000, "real_increase": "31% sobre inflacion"}
+        ],
+        "source": "https://www.letrap.com.ar/economia/la-era-javier-milei-que-empresas-integran-la-elite-que-quintuplico-ganancias-este-ano-n5412095"
+      },
+
+      "sources": [
+        {"title": "Pagina 12 — Ganadores y artifices del decretazo", "url": "https://www.pagina12.com.ar/698206-ganadores-y-artifices-del-modelo-de-los-poderosos/"},
+        {"title": "Letra P — Empresas quintuplicaron ganancias", "url": "https://www.letrap.com.ar/economia/la-era-javier-milei-que-empresas-integran-la-elite-que-quintuplico-ganancias-este-ano-n5412095"},
+        {"title": "Resumen Latinoamericano — Doble mutacion imperio Magnetto", "url": "https://www.resumenlatinoamericano.org/2025/11/26/argentina-la-doble-mutacion-del-imperio-magnetto4"},
+        {"title": "Conclusion — Monopolizaran la carne", "url": "https://www.conclusion.com.ar/politica/economia/monopolizaran-la-carne-en-argentina/06/2024/"},
+        {"title": "Izquierda Diario — Gondolas ganancias prioridad", "url": "https://www.izquierdadiario.es/La-derogacion-de-las-leyes-de-Abastecimiento-y-de-Gondolas-las-ganancias-como-prioridad-absoluta"}
+      ]
+    }
+  },
+
+  "cross_cutting_analysis": {
+    "vila_manzano_nexus": {
+      "description": "Daniel Vila y Jose Luis Manzano emergen como los mayores ganadores transversales de la desregulacion Milei: controlan simultaneamente Grupo America (TV), Telefe (adquirido 2025), y son accionistas de DESA/Edenor (distribucion electrica AMBA norte). La desregulacion de medios y los tarifazos energeticos benefician al mismo grupo de accionistas.",
+      "entities": ["Grupo America", "Telefe", "Edenor/DESA", "A24", "America TV"],
+      "concern": "Convergencia de poder mediatico + energetico en mismo grupo sin contrapeso regulatorio"
+    },
+    "eurnekian_milei_nexus": {
+      "description": "Eduardo Eurnekian fue empleador de Milei por mas de una decada. Su Corporacion America Airports recibio prorroga de concesion hasta 2038 y se beneficia directamente de la politica de cielos abiertos que Milei impulsa.",
+      "entities": ["Corporacion America Airports", "AA2000", "Eduardo Eurnekian"],
+      "concern": "Potencial conflicto de interes entre ex-empleador y presidente"
+    },
+    "extractivism_without_counterpart": {
+      "description": "El RIGI otorga 30 anos de estabilidad fiscal y beneficios tributarios excepcionales a inversiones de USD 200M+ en mineria y petroleo, sin contrapartida obligatoria de empleo, transferencia tecnologica o valor agregado local. Las divisas pueden repatriarse libremente.",
+      "concern": "Modelo extractivista que concentra beneficios en multinacionales sin distribucion local"
+    },
+    "deregulation_paradox": {
+      "description": "La desregulacion masiva genera una paradoja: al eliminar regulaciones de competencia, precios y concentracion, el gobierno 'pro-mercado' fortalece a monopolios y oligopolios existentes. El mercado libre en contextos de alta concentracion previa no genera competencia sino mayor concentracion.",
+      "examples": [
+        "Gondolas: sin Ley de Gondolas, 20 empresas mantienen 74% de espacio",
+        "Telecomunicaciones: sin limites de licencias, Telecom busca 58-60% del movil",
+        "Energia: tarifazos sin mejora de servicio generan ganancias record para distribuidoras"
+      ]
+    }
+  },
+
+  "neo4j_integration_notes": {
+    "suggested_entities": [
+      {"type": "Policy", "name": "DNU 70/2023", "properties": {"date": "2023-12-21", "articles": 366}},
+      {"type": "Policy", "name": "Ley de Bases 27.742", "properties": {"date": "2024-07-08"}},
+      {"type": "Policy", "name": "RIGI", "properties": {"min_investment_usd": 200000000, "stability_years": 30}},
+      {"type": "Person", "name": "Federico Sturzenegger", "role": "Ministro de Desregulacion"},
+      {"type": "Person", "name": "Eduardo Eurnekian", "role": "CEO Corporacion America"},
+      {"type": "Person", "name": "Daniel Vila", "role": "Accionista Grupo America / Edenor"},
+      {"type": "Person", "name": "Jose Luis Manzano", "role": "Accionista Grupo America / Edenor"},
+      {"type": "Person", "name": "Hector Magnetto", "role": "CEO Grupo Clarin"},
+      {"type": "Person", "name": "Claudio Belocopitt", "role": "Accionista Grupo America / Swiss Medical"},
+      {"type": "Organization", "name": "Autoridad Nacional de la Competencia (ANC)", "properties": {"created": "2025-11-17"}}
+    ],
+    "suggested_relationships": [
+      "DNU_70_2023 -[:DEREGULATES]-> Media",
+      "DNU_70_2023 -[:DEREGULATES]-> Pharmacy",
+      "DNU_70_2023 -[:DEREGULATES]-> Aviation",
+      "DNU_70_2023 -[:BENEFITS]-> Grupo_Clarin",
+      "DNU_70_2023 -[:BENEFITS]-> Grupo_America",
+      "RIGI -[:BENEFITS]-> Rio_Tinto",
+      "RIGI -[:BENEFITS]-> Chevron",
+      "Eurnekian -[:EMPLOYED]-> Milei (historical)",
+      "Eurnekian -[:RECEIVED]-> Concesion_Aeropuertos_2038",
+      "Vila -[:OWNS]-> Grupo_America",
+      "Vila -[:OWNS]-> Edenor_DESA",
+      "Manzano -[:OWNS]-> Grupo_America",
+      "Manzano -[:OWNS]-> Edenor_DESA"
+    ]
+  }
+}

@@ -1,0 +1,539 @@
+{
+  "investigation": "Wave 25: Monopoly Families × Finanzas-Políticas Offshore Cross-Reference",
+  "date": "2026-03-24T15:15:14.939Z",
+  "total_findings": 77,
+  "findings": {
+    "monopoly_offshore_complete": [
+      {
+        "officer": "ALDO BENITO ROGGIO",
+        "entity": "GOTLAND INTERNATIONAL LIMITED",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "05-JUL-2016",
+        "status": "Active"
+      },
+      {
+        "officer": "ALDO BENITO ROGGIO",
+        "entity": "LINHILL INTERNATIONAL LIMITED",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "25-OCT-2016",
+        "status": "In Penalty"
+      },
+      {
+        "officer": "ALDO BENITO ROGGIO",
+        "entity": "GRAYMARK INTERNATIONAL LIMITED",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "13-JUL-2016",
+        "status": "Active"
+      },
+      {
+        "officer": "ALEJANDRO BLAQUIER",
+        "entity": "CABONOR INTERNATIONAL CORPORATION",
+        "jurisdiction": "Panama",
+        "incorporation_date": "16-OCT-2006",
+        "status": "Active"
+      },
+      {
+        "officer": "ALFREDO COTO",
+        "entity": "LEOPOLD COMPANY S.A.",
+        "jurisdiction": "Panama",
+        "incorporation_date": "06-JUL-2012",
+        "status": "Active"
+      },
+      {
+        "officer": "ARTURO GONZALES ESCOTO",
+        "entity": "ARLON ASSET HOLDINGS LTD.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "20-FEB-2003",
+        "status": "Defaulted"
+      },
+      {
+        "officer": "ARTURO GONZALES ESCOTO",
+        "entity": "LANCET INDUSTRIAL S.A.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "20-FEB-2003",
+        "status": "Defaulted"
+      },
+      {
+        "officer": "AXEL VILAS GUOZDEN",
+        "entity": "MERCLIFF INTERNATIONAL LIMITED",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "01-JUL-2014",
+        "status": "Active"
+      },
+      {
+        "officer": "CARLOS HERMINIO BLAQUIER",
+        "entity": "YAMARY BUSINESS LTD.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "01-FEB-2014",
+        "status": "Active"
+      },
+      {
+        "officer": "Carmen Madanes                          ",
+        "entity": "The Hastings Trust",
+        "jurisdiction": "Cook Islands",
+        "incorporation_date": "25-AUG-2000",
+        "status": "Struck / Defunct / Deregistered"
+      },
+      {
+        "officer": "DARIO WERTHEIN",
+        "entity": "CANROLD OVERSEAS LIMITED",
+        "jurisdiction": "",
+        "incorporation_date": "",
+        "status": "Inactive"
+      },
+      {
+        "officer": "ERIC VILAS GUOZDEN",
+        "entity": "MERCLIFF INTERNATIONAL LIMITED",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "01-JUL-2014",
+        "status": "Active"
+      },
+      {
+        "officer": "FRANCISCO DE NARVAEZ FECCHINO",
+        "entity": "BANDA ORIENTAL S.A",
+        "jurisdiction": "",
+        "incorporation_date": "",
+        "status": "Inactive"
+      },
+      {
+        "officer": "FRANCISCO DE NARVAEZ FECCHINO",
+        "entity": "RETRATO PARTNERS LIMITED",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "30-MAR-2015",
+        "status": "Active"
+      },
+      {
+        "officer": "FRANCISCO DE NARVAEZ STEUER",
+        "entity": "Titan Consulting Ltd.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "30-NOV-1998",
+        "status": "Active"
+      },
+      {
+        "officer": "GUSTAVO LUIS NARDELLI",
+        "entity": "RIDEBURG INVESTMENTS LIMITED",
+        "jurisdiction": "",
+        "incorporation_date": "",
+        "status": "Inactive"
+      },
+      {
+        "officer": "HORACIO RAUL HERRERA",
+        "entity": "DECKMONT INTERNATIONAL LIMITED",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "15-MAY-2015",
+        "status": "Dissolved"
+      },
+      {
+        "officer": "ISABEL FERREYRA AYCINENA",
+        "entity": "ZALVER INVESTMENTS LIMITED",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "18-MAR-2005",
+        "status": "Active"
+      },
+      {
+        "officer": "ISABEL FERREYRA AYCINENA",
+        "entity": "ROSESTONE INVESTMENTS LIMITED",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "23-JUL-2013",
+        "status": "Active"
+      },
+      {
+        "officer": "JAVIER SANTIAGO MADANES QUINTANILLA",
+        "entity": "DQ Assets Limited",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "16-JUN-2014",
+        "status": "Active"
+      },
+      {
+        "officer": "JOSÉ VILA RECOLONS",
+        "entity": "LSAR Holding Ltd.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "29-MAR-2000",
+        "status": "Defaulted"
+      },
+      {
+        "officer": "JOSÉ VILA RECOLONS",
+        "entity": "LSAR Holding Ltd.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "29-MAR-2000",
+        "status": "Defaulted"
+      },
+      {
+        "officer": "JUANITA DE NARVAEZ STEUER",
+        "entity": "Titan Consulting Ltd.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "30-NOV-1998",
+        "status": "Active"
+      },
+      {
+        "officer": "José Daniel Antonio Vilariño, Liliana Mabel Covatto and Demian Vilariño (joint holders with right of survivorship)",
+        "entity": "GDV INTERNATIONAL CORP.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "02-MAY-2011",
+        "status": "Defaulted"
+      },
+      {
+        "officer": "José Daniel Antonio Vilariño, Liliana Mabel Covatto and Guido Vilariño (joint holders with right of survivorship)",
+        "entity": "GDV INTERNATIONAL CORP.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "02-MAY-2011",
+        "status": "Defaulted"
+      },
+      {
+        "officer": "Judith Madanes                          ",
+        "entity": "The Hastings Trust",
+        "jurisdiction": "Cook Islands",
+        "incorporation_date": "25-AUG-2000",
+        "status": "Struck / Defunct / Deregistered"
+      },
+      {
+        "officer": "LUCIA INES ROGGIO",
+        "entity": "GOTLAND INTERNATIONAL LIMITED",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "05-JUL-2016",
+        "status": "Active"
+      },
+      {
+        "officer": "LUCIA INES ROGGIO",
+        "entity": "LINHILL INTERNATIONAL LIMITED",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "25-OCT-2016",
+        "status": "In Penalty"
+      },
+      {
+        "officer": "Leiser Madanes                          ",
+        "entity": "The Hastings Trust",
+        "jurisdiction": "Cook Islands",
+        "incorporation_date": "25-AUG-2000",
+        "status": "Struck / Defunct / Deregistered"
+      },
+      {
+        "officer": "MANUEL JUAN LUCIANO HERRERA GRAZIOLI",
+        "entity": "ALPEN MANAGEMENT ASSET CORP.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "30-MAY-2003",
+        "status": "Changed agent"
+      },
+      {
+        "officer": "MARCELA SILVINA VILAR",
+        "entity": "BRATSELL INVESTMENTS LTD.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "17-APR-2014",
+        "status": "Active"
+      },
+      {
+        "officer": "MARIA ISABEL DE NARVAEZ STEUER",
+        "entity": "Titan Consulting Ltd.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "30-NOV-1998",
+        "status": "Active"
+      },
+      {
+        "officer": "MARIA ROSA CARTELLONE",
+        "entity": "STARLINK COMPANY S.A.",
+        "jurisdiction": "Panama",
+        "incorporation_date": "28-JUL-2014",
+        "status": "Resigned as agent"
+      },
+      {
+        "officer": "MARIA ROSA CARTELLONE",
+        "entity": "UNIMAS COMPANY S.A.",
+        "jurisdiction": "Panama",
+        "incorporation_date": "07-MAR-2014",
+        "status": "Resigned as agent"
+      },
+      {
+        "officer": "MARIA ROSA CARTELLONE",
+        "entity": "UNIMAS COMPANY S.A.",
+        "jurisdiction": "Panama",
+        "incorporation_date": "07-MAR-2014",
+        "status": "Resigned as agent"
+      },
+      {
+        "officer": "MARTIN BENITO ROGGIO",
+        "entity": "GOTLAND INTERNATIONAL LIMITED",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "05-JUL-2016",
+        "status": "Active"
+      },
+      {
+        "officer": "MARTIN BENITO ROGGIO",
+        "entity": "LINHILL INTERNATIONAL LIMITED",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "25-OCT-2016",
+        "status": "In Penalty"
+      },
+      {
+        "officer": "MARTIN FRANCISCO EURNEKIAN BONNARENS",
+        "entity": "VISKERT ENTERPRISES LTD.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "20-JUL-2012",
+        "status": "In Penalty"
+      },
+      {
+        "officer": "MAXIMILIANO NARDELLI",
+        "entity": "KERDALE INVESTMENTS CORP.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "03-JUL-2012",
+        "status": "Active"
+      },
+      {
+        "officer": "MIGUEL ALBERTO ACEVEDO",
+        "entity": "Tomma Investments Ltd",
+        "jurisdiction": "",
+        "incorporation_date": "",
+        "status": "Active"
+      },
+      {
+        "officer": "MIGUEL MATIAS GALUCCIO",
+        "entity": "VERA LIMITED",
+        "jurisdiction": "Malta",
+        "incorporation_date": "10-NOV-2016",
+        "status": ""
+      },
+      {
+        "officer": "MR. JOSE VILA RECOLONS",
+        "entity": "LSAR Holding Ltd.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "29-MAR-2000",
+        "status": "Defaulted"
+      },
+      {
+        "officer": "MR. JOSE VILA RECOLONS",
+        "entity": "LSAR Holding Ltd.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "29-MAR-2000",
+        "status": "Defaulted"
+      },
+      {
+        "officer": "Madanes Miguel                          ",
+        "entity": "The Hastings Trust",
+        "jurisdiction": "Cook Islands",
+        "incorporation_date": "25-AUG-2000",
+        "status": "Struck / Defunct / Deregistered"
+      },
+      {
+        "officer": "Martin Madanes                          ",
+        "entity": "The Hastings Trust",
+        "jurisdiction": "Cook Islands",
+        "incorporation_date": "25-AUG-2000",
+        "status": "Struck / Defunct / Deregistered"
+      },
+      {
+        "officer": "Micaela Madanes                         ",
+        "entity": "The Hastings Trust",
+        "jurisdiction": "Cook Islands",
+        "incorporation_date": "25-AUG-2000",
+        "status": "Struck / Defunct / Deregistered"
+      },
+      {
+        "officer": "Mr. Carlos Herminio BLAQUIER",
+        "entity": "DUNMOORE TRADING LTD.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "17-MAR-2010",
+        "status": "Active"
+      },
+      {
+        "officer": "NORMA GOLD DE WERTHEIN",
+        "entity": "HINSLET OVERSEAS LTD.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "11-NOV-1997",
+        "status": "Active"
+      },
+      {
+        "officer": "RICARDO WALTER HERRERA",
+        "entity": "MERHILL INTERNATIONAL LIMITED",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "21-NOV-2014",
+        "status": "Dissolved"
+      },
+      {
+        "officer": "RODOLFO ROGGIO PICOT",
+        "entity": "GOTLAND INTERNATIONAL LIMITED",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "05-JUL-2016",
+        "status": "Active"
+      },
+      {
+        "officer": "RODOLFO ROGGIO PICOT",
+        "entity": "LINHILL INTERNATIONAL LIMITED",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "25-OCT-2016",
+        "status": "In Penalty"
+      },
+      {
+        "officer": "SANTIAGO BLAQUIER",
+        "entity": "Silver Stream Ventures Ltd.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "17-DEC-2002",
+        "status": "Active"
+      },
+      {
+        "officer": "SANTIAGO BLAQUIER",
+        "entity": "SUNBIRD INTERNATIONAL HOLDINGS INC.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "08-MAR-2002",
+        "status": "Struck Off"
+      },
+      {
+        "officer": "SANTIAGO BLAQUIER",
+        "entity": "BRAHMBARI HOLDINGS INC.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "17-APR-2002",
+        "status": "Struck Off"
+      },
+      {
+        "officer": "SANTIAGO BLAQUIER",
+        "entity": "Caribbean Lodges Limited",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "09-DEC-2002",
+        "status": "In Penalty"
+      },
+      {
+        "officer": "SANTIAGO BLAQUIER",
+        "entity": "Fly Fishing Sales and Marketing Limited",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "08-MAR-2002",
+        "status": "Struck Off"
+      },
+      {
+        "officer": "SANTIAGO BLAQUIER",
+        "entity": "Global Fishing Investment Ltd.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "13-AUG-2002",
+        "status": "Active"
+      },
+      {
+        "officer": "Susana Deutsch Madanes                  ",
+        "entity": "The Hastings Trust",
+        "jurisdiction": "Cook Islands",
+        "incorporation_date": "25-AUG-2000",
+        "status": "Struck / Defunct / Deregistered"
+      },
+      {
+        "officer": "Tomas Madanes                           ",
+        "entity": "The Hastings Trust",
+        "jurisdiction": "Cook Islands",
+        "incorporation_date": "25-AUG-2000",
+        "status": "Struck / Defunct / Deregistered"
+      },
+      {
+        "officer": "VICTORIA ACEVEDO",
+        "entity": "CROFT SERVICES CORP.",
+        "jurisdiction": "British Virgin Islands",
+        "incorporation_date": "04-MAR-2011",
+        "status": "Struck Off"
+      }
+    ],
+    "politicians_with_offshore": [],
+    "preferred_jurisdictions": [
+      {
+        "jurisdiction": "British Virgin Islands",
+        "entities": 29,
+        "officers": [
+          "Mr. Carlos Herminio BLAQUIER",
+          "JOSÉ VILA RECOLONS",
+          "MR. JOSE VILA RECOLONS",
+          "ARTURO GONZALES ESCOTO",
+          "MANUEL JUAN LUCIANO HERRERA GRAZIOLI",
+          "FRANCISCO DE NARVAEZ STEUER",
+          "MARIA ISABEL DE NARVAEZ STEUER",
+          "JUANITA DE NARVAEZ STEUER",
+          "José Daniel Antonio Vilariño, Liliana Mabel Covatto and Demian Vilariño (joint holders with right of survivorship)",
+          "José Daniel Antonio Vilariño, Liliana Mabel Covatto and Guido Vilariño (joint holders with right of survivorship)"
+        ]
+      },
+      {
+        "jurisdiction": "Panama",
+        "entities": 4,
+        "officers": [
+          "ALFREDO COTO",
+          "ALEJANDRO BLAQUIER",
+          "MARIA ROSA CARTELLONE"
+        ]
+      },
+      {
+        "jurisdiction": "",
+        "entities": 4,
+        "officers": [
+          "FRANCISCO DE NARVAEZ FECCHINO",
+          "MIGUEL ALBERTO ACEVEDO",
+          "GUSTAVO LUIS NARDELLI",
+          "DARIO WERTHEIN"
+        ]
+      },
+      {
+        "jurisdiction": "Cook Islands",
+        "entities": 1,
+        "officers": [
+          "Micaela Madanes                         ",
+          "Judith Madanes                          ",
+          "Martin Madanes                          ",
+          "Tomas Madanes                           ",
+          "Susana Deutsch Madanes                  ",
+          "Leiser Madanes                          ",
+          "Madanes Miguel                          ",
+          "Carmen Madanes                          "
+        ]
+      },
+      {
+        "jurisdiction": "Malta",
+        "entities": 1,
+        "officers": [
+          "MIGUEL MATIAS GALUCCIO"
+        ]
+      }
+    ],
+    "flagged_monopoly_actors": [],
+    "monopoly_asset_declarations": [
+      {
+        "officer": "VILA CHRISTIAN JAVIER",
+        "declarations": 18
+      },
+      {
+        "officer": "VILA NORBERTO",
+        "declarations": 13
+      },
+      {
+        "officer": "BRAVO HERRERA, JAVIER DANTE",
+        "declarations": 9
+      },
+      {
+        "officer": "CHRISTIAN JAVIER, VILA",
+        "declarations": 9
+      },
+      {
+        "officer": "MACRI MAURICIO",
+        "declarations": 6
+      },
+      {
+        "officer": "ALBERTO AGUSTIN COTO",
+        "declarations": 4
+      },
+      {
+        "officer": "Francisco, De Narvaez",
+        "declarations": 4
+      },
+      {
+        "officer": "DE NARVAEZ STEUER, FRANCISCO",
+        "declarations": 4
+      },
+      {
+        "officer": "FRANCISCO, DE NARVAEZ STEUER",
+        "declarations": 4
+      },
+      {
+        "officer": "VILA MORET CARLOS ALBERTO (H)",
+        "declarations": 3
+      },
+      {
+        "officer": "VILA MORET CARLOS ALBERTO",
+        "declarations": 3
+      },
+      {
+        "officer": "WERTHEIN, GERARDO",
+        "declarations": 2
+      }
+    ]
+  }
+}

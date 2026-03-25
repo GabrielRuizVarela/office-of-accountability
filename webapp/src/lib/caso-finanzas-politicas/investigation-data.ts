@@ -85,10 +85,10 @@ export interface ImpactStat {
 
 export const IMPACT_STATS: readonly ImpactStat[] = [
   {
-    value: '34,776',
+    value: '48,212',
     label_es: 'Coincidencias cross-dataset',
     label_en: 'Cross-dataset matches',
-    source: 'SAME_ENTITY relationships in Neo4j',
+    source: 'SAME_ENTITY relationships in Neo4j (updated March 2026)',
   },
   {
     value: '34,220',
@@ -127,16 +127,16 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     source: 'Poder Judicial / DDJJ / ACIJ',
   },
   {
-    value: '146',
+    value: '5,006',
     label_es: 'Empresas fantasma detectadas',
     label_en: 'Shell companies flagged',
-    source: 'Companies with 0 IGJ officers receiving government contracts',
+    source: 'Contractors with 3+ contracts but no linked company officers in IGJ',
   },
   {
-    value: '68',
+    value: '268',
     label_es: 'Contratistas recurrentes',
     label_en: 'Repeat contract winners',
-    source: 'Contractors with 50+ public contracts',
+    source: 'Contractors with 50+ public contracts (updated with obras-publicas data)',
   },
   {
     value: '29,602',
@@ -2147,7 +2147,7 @@ export const ACTORS: readonly Actor[] = [
     role_es: 'Expresidente, PRO — 5 datasets',
     role_en: 'Former President, PRO — 5 datasets',
     description_es:
-      'Aparece en 5 datasets: donante, director de empresa, officer societario, DDJJ y nombramiento de gobierno. Offshore documentada (Fleg Trading, Kagemusha), campanas financiadas por contratistas (documentado por Chequeado), presencia legislativa del 17,6%. Correo Argentino: quita del 98,82% de deuda familiar. AUSOL: venta de acciones con prima de ~394%.',
+      'Aparece en 5 datasets: donante, director de empresa, officer societario, DDJJ y nombramiento de gobierno. Offshore documentada (Fleg Trading, Kagemusha), campañas financiadas por contratistas (documentado por Chequeado), presencia legislativa del 17,6%. Correo Argentino: quita del 98,82% de deuda familiar. AUSOL: venta de acciones con prima de ~394%.',
     description_en:
       'Appears across 5 datasets: donor, board member, company officer, DDJJ, and government appointment. Documented offshore (Fleg Trading, Kagemusha), contractor-funded campaigns (documented by Chequeado), 17.6% legislative presence. Correo Argentino: 98.82% family debt forgiveness. AUSOL: share sale at ~394% premium.',
     party: 'PRO',
@@ -3035,7 +3035,7 @@ export const ACTORS: readonly Actor[] = [
     name: 'Marcelo Tinelli',
     role_es: 'Conductor TV / Presidente San Lorenzo / Empresario',
     role_en: 'TV Host / San Lorenzo President / Businessman',
-    description_es: 'Patrimonio estimado en USD 40M. Presidio San Lorenzo (2019-2022) y Liga Profesional de Futbol. Vicepresidente 4to de AFA. Productora LaFlia. Factor decisivo en campanas electorales desde 1995 como gatekeeper mediatico. Exploro candidatura politica provincial multiples veces.',
+    description_es: 'Patrimonio estimado en USD 40M. Presidio San Lorenzo (2019-2022) y Liga Profesional de Futbol. Vicepresidente 4to de AFA. Productora LaFlia. Factor decisivo en campañas electorales desde 1995 como gatekeeper mediatico. Exploro candidatura politica provincial multiples veces.',
     description_en: 'Estimated net worth USD 40M. Chaired San Lorenzo (2019-2022) and Professional Football League. AFA 4th Vice President. LaFlia production company. Decisive factor in electoral campaigns since 1995 as media gatekeeper. Explored provincial political candidacy multiple times.',
     party: 'Independiente (influencer politico)',
     datasets: 2,
