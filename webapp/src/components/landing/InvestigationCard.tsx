@@ -53,6 +53,22 @@ const COLOR_MAP: Record<
     titleHover: 'group-hover:text-blue-300',
     dot: 'bg-blue-500',
   },
+  sky: {
+    border: 'border-sky-500/20',
+    borderHover: 'hover:border-sky-500/40',
+    bg: 'from-zinc-900 to-sky-950/20',
+    accent: 'text-sky-400',
+    titleHover: 'group-hover:text-sky-300',
+    dot: 'bg-sky-500',
+  },
+  yellow: {
+    border: 'border-yellow-500/20',
+    borderHover: 'hover:border-yellow-500/40',
+    bg: 'from-zinc-900 to-yellow-950/20',
+    accent: 'text-yellow-400',
+    titleHover: 'group-hover:text-yellow-300',
+    dot: 'bg-yellow-500',
+  },
 }
 
 const DEFAULT_COLORS = COLOR_MAP.purple

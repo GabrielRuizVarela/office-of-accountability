@@ -35,7 +35,6 @@ const CASE_TABS: Readonly<Record<string, readonly NavTab[]>> = {
     { href: '/vuelos', label: { en: 'Flights', es: 'Vuelos' } },
     { href: '/evidencia', label: { en: 'Evidence', es: 'Evidencia' } },
     { href: '/proximidad', label: { en: 'Proximity', es: 'Proximidad' } },
-    { href: '/simulacion', label: { en: 'Simulation', es: 'Simulacion' } },
   ],
   'caso-libra': [
     { href: '', label: { en: 'Home', es: 'Inicio' } },
@@ -46,7 +45,6 @@ const CASE_TABS: Readonly<Record<string, readonly NavTab[]>> = {
     { href: '/dinero', label: { en: 'The Money', es: 'El dinero' } },
     { href: '/evidencia', label: { en: 'Documents', es: 'Evidencia' } },
     { href: '/grafo', label: { en: 'Connections', es: 'Conexiones' } },
-    { href: '/simular', label: { en: 'Predictions', es: 'Predicciones' } },
   ],
   'riesgo-nuclear': [
     { href: '', label: { en: 'Dashboard', es: 'Panel' } },

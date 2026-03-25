@@ -218,8 +218,7 @@ export default function ResumenPage() {
           curation, and web-verified research. Sources include DOJ file releases
           (2025-2026), Fortune, Daily Beast, Wall Street on Parade, Vicky Ward reporting,
           Palm Beach PD evidence, Jack Poulson/Substack (Carbyne), Epstein Web Tracker,
-          Senate Finance Committee, FCA. Graph database: Neo4j. Analysis: Claude + Qwen
-          3.5 9B (local GPU).
+          Senate Finance Committee, FCA. Graph database: Neo4j. Analysis: Claude + local LLM (GPU).
         </p>
       </section>
 

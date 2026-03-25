@@ -4,7 +4,7 @@
  * Orchestrates a four-phase cycle:
  *   Phase 1: Ingest (Compr.ar, Boletín Oficial, IGJ)
  *   Phase 2: Cross-reference (CUIT → DNI/CUIL → name matching)
- *   Phase 3: Analyze (MiroFish/Qwen 3.5 anomaly detection)
+ *   Phase 3: Analyze (MiroFish anomaly detection)
  *   Phase 4: Report (bilingual ES/EN findings)
  *
  * Run with: npx tsx scripts/run-investigation-loop.ts
@@ -252,7 +252,7 @@ async function runCrossReferencePhase() {
 }
 
 // ---------------------------------------------------------------------------
-// Phase 3: Analyze with MiroFish/Qwen
+// Phase 3: Analyze with MiroFish
 // ---------------------------------------------------------------------------
 
 async function runAnalysisPhase() {
@@ -310,7 +310,7 @@ async function runAnalysisPhase() {
     if (msg.includes('ECONNREFUSED') || msg.includes('fetch failed')) {
       console.log('  MiroFish/llama-server not running. Skipping analysis.')
       console.log('  Start with: /home/vg/dev/llama.cpp/build/bin/llama-server \\')
-      console.log('    -m /home/vg/models/Qwen3.5-9B-Q5_K_M.gguf --port 8080 --n-gpu-layers 99 --ctx-size 8192')
+      console.log('    -m /path/to/model.gguf --port 8080 --n-gpu-layers 99 --ctx-size 8192')
       return null
     }
     throw error

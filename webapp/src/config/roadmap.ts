@@ -18,7 +18,7 @@ export const roadmapPhases: RoadmapPhase[] = [
       'Explorador de grafo interactivo (Neo4j)',
       'Ingestion automatizada de datos legislativos',
       'Perfiles de politicos con historial de votos',
-      'Tres investigaciones publicadas (Libra, Epstein, Finanzas)',
+      'Siete investigaciones publicadas',
     ],
   },
   {
