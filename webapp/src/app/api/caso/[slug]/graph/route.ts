@@ -1,6 +1,7 @@
 import { NextRequest } from 'next/server'
 
 import { getInvestigationGraph } from '@/lib/caso-epstein/queries'
+import { getInvestigationGraph as getDictaduraGraph } from '@/lib/caso-dictadura/queries'
 import { getNuclearRiskGraph } from '@/lib/caso-nuclear-risk'
 
 const VALID_SLUGS = new Set([
@@ -9,6 +10,7 @@ const VALID_SLUGS = new Set([
   'finanzas-politicas',
   'caso-libra',
   'riesgo-nuclear',
+  'caso-dictadura',
 ])
 
 export async function GET(
@@ -28,10 +30,14 @@ export async function GET(
     const { searchParams } = new URL(request.url)
     const tiersParam = searchParams.get('tiers')
     const tiers = tiersParam ? tiersParam.split(',') as ('gold' | 'silver' | 'bronze')[] : undefined
+    const labelsParam = searchParams.get('labels')
+    const labels = labelsParam ? labelsParam.split(',') : undefined
 
     let data
     if (slug === 'riesgo-nuclear') {
       data = await getNuclearRiskGraph(tiers)
+    } else if (slug === 'caso-dictadura') {
+      data = await getDictaduraGraph('caso-dictadura', tiers, labels)
     } else {
       data = await getInvestigationGraph(slug, tiers)
     }

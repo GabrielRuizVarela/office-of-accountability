@@ -66,6 +66,14 @@ const t = {
   viewAll: { es: 'Ver todos', en: 'View all' },
 } satisfies Record<string, Record<Lang, string>>
 
+const DICTADURA_STATS = [
+  { value: 9743, label: 'Personas', color: '#facc15' },
+  { value: 774, label: 'Centros clandestinos', color: '#facc15' },
+  { value: 51, label: 'Eventos clave', color: '#facc15' },
+  { value: 10, label: 'Causas judiciales', color: '#facc15' },
+  { value: 30482, label: 'Relaciones mapeadas' },
+] as const
+
 interface Props {
   readonly slug: string
   readonly actors: readonly Record<string, unknown>[]
@@ -97,7 +105,7 @@ export function CasoLandingContent({ slug, actors, documents }: Props) {
       </section>
 
       {/* Key stats */}
-      <KeyStats />
+      <KeyStats stats={slug === 'caso-dictadura' ? DICTADURA_STATS : undefined} />
 
       {/* Primary CTA — read the full story */}
       <section className="flex flex-col gap-3 sm:flex-row">
