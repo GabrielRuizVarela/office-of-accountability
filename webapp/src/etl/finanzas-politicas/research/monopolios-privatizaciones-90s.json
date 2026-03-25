@@ -1,0 +1,759 @@
+{
+  "meta": {
+    "title": "Privatizaciones Argentina 1989-1999: De Monopolios Estatales a Monopolios Privados",
+    "description": "Investigacion exhaustiva del proceso de privatizaciones durante el gobierno de Carlos Menem (1989-1999), documentando como los monopolios estatales fueron transferidos a manos privadas a precios subvaluados, creando las estructuras monopolicas que persisten hasta hoy.",
+    "created": "2026-03-24",
+    "methodology": "Web research from Argentine government archives (mepriv.mecon.gob.ar), academic sources, investigative journalism, Wikipedia, and financial records.",
+    "legal_framework": {
+      "ley_23696": {
+        "name": "Ley de Reforma del Estado",
+        "date": "1989-08-17",
+        "description": "Habilitó la privatización de más de 60 empresas estatales, incluyendo servicios esenciales como agua, gas, electricidad y transporte.",
+        "architects": ["Roberto Dromi", "Rodolfo Barra"]
+      },
+      "ley_23697": {
+        "name": "Ley de Emergencia Económica",
+        "date": "1989-09-01",
+        "description": "Complementó la Ley de Reforma del Estado con medidas de desregulación y austeridad."
+      },
+      "total_revenue_estimated_usd": 24000000000,
+      "note": "Cifra oficial ~24.000 millones USD entre 1989-1999, aunque una parte significativa fue pagada con títulos de deuda a valor nominal (muy por encima de su valor de mercado)."
+    },
+    "sources_general": [
+      "https://mepriv.mecon.gob.ar/privatizaciones.htm",
+      "https://www.ambito.com/economia/carlos-menem/las-privatizaciones-la-era-menem-n5156834",
+      "https://www.eldestapeweb.com/politica/carlos-menem/cuales-son-las-empresas-que-fueron-privatizadas-durante-el-gobierno-de-carlos-menem-en-los-90-2025716152755",
+      "https://es.wikipedia.org/wiki/Presidencia_de_Carlos_Menem",
+      "https://ens9004-infd.mendoza.edu.ar/sitio/biblioteca-historia-argentina-reciente/upload/Aspiazu_Daniel_PrivatizacionesArgentinas90_CLACSO.pdf"
+    ]
+  },
+
+  "key_architects": {
+    "roberto_dromi": {
+      "role": "Ministro de Obras y Servicios Públicos (1989-1991)",
+      "famous_quote": "Nada de lo que deba ser del Estado permanecerá en manos del Estado",
+      "contribution": "Redactó la Ley 23.696 de Reforma del Estado junto a Rodolfo Barra. Diseñó el marco legal que habilitó la transferencia masiva de activos públicos al sector privado.",
+      "later_career": "Asesoró al gobierno de Milei en 2024 sobre nuevas privatizaciones, cerrando un ciclo de puerta giratoria de 35 años.",
+      "died": "2024-11-24, a los 79 años",
+      "sources": [
+        "https://eleconomista.com.ar/politica/roberto-dromi-arquitecto-reforma-estado-privatizaciones-anos-90-fallecio-79-anos-n79784",
+        "https://www.perfil.com/noticias/actualidad/fallecio-roberto-dromi-el-hombre-clave-de-las-privatizaciones-en-el-menemismo.phtml",
+        "https://www.agenciapacourondo.com.ar/politica/roberto-dromi-el-asesor-de-milei-que-fue-intendente-durante-la-dictadura-y-luego-ministro"
+      ]
+    },
+    "domingo_cavallo": {
+      "role": "Ministro de Economía (1991-1996)",
+      "contribution": "Implementó el Plan de Convertibilidad (1 peso = 1 dólar) que creó el marco macroeconómico para las privatizaciones. La necesidad de sostener la paridad cambiaria impulsó la venta acelerada de activos estatales para financiar el déficit. Diseñó la apertura comercial y la desregulación que acompañaron las privatizaciones.",
+      "convertibility_plan": {
+        "date": "1991-04-01",
+        "mechanism": "Ley 23.928 - Paridad fija 1 peso = 1 USD",
+        "effect_on_privatizations": "La necesidad de dólares para sostener la convertibilidad aceleró la venta de empresas estatales, muchas veces a precios subóptimos."
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Domingo_Cavallo",
+        "https://es.wikipedia.org/wiki/Ley_de_Convertibilidad_del_Austral"
+      ]
+    },
+    "maria_julia_alsogaray": {
+      "role": "Interventora de ENTel (1989-1990), luego Secretaria de Medio Ambiente",
+      "contribution": "Dirigió la privatización de ENTel. Antes de la venta, aumentó tarifas telefónicas más del 300% para hacer la empresa más atractiva a compradores. También intervino en la liquidación de SOMISA.",
+      "corruption_convictions": [
+        {
+          "charge": "Administración fraudulenta en perjuicio de la administración pública (privatización ENTel)",
+          "sentence": "4 años de prisión",
+          "details": "Terrenos de ENTel valuados en USD 180 millones fueron regalados a los compradores. Contrato irregular de USD 30 millones con empresa Meller para guías telefónicas."
+        },
+        {
+          "charge": "Enriquecimiento ilícito",
+          "sentence": "3 años y medio de prisión"
+        },
+        {
+          "charge": "Contratación irregular de personal en Secretaría de Medio Ambiente",
+          "sentence": "4 años de prisión"
+        },
+        {
+          "charge": "Irregularidades en obras de refacción en Secretaría de Medio Ambiente",
+          "sentence": "3 años y medio de prisión"
+        }
+      ],
+      "total_trials": 7,
+      "acquittals": 3,
+      "convictions": 4,
+      "died": "2017-09-24, a los 74 años",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/ratificaron-la-condena-de-cuatro-anos-de-carcel-para-maria-julia-alsogaray-por-la-privatizacion-de-entel-nid1830526/",
+        "https://en.wikipedia.org/wiki/Mar%C3%ADa_Julia_Alsogaray",
+        "https://www.fiscales.gob.ar/fiscalias/comenzo-un-nuevo-juicio-a-maria-julia-alsogaray-por-irregularidades-en-la-liquidacion-de-entel/"
+      ]
+    }
+  },
+
+  "privatizations": {
+    "telecomunicaciones": {
+      "sector": "Telecomunicaciones",
+      "original_company": "ENTel (Empresa Nacional de Telecomunicaciones)",
+      "privatization_date": "1990-11-08",
+      "mechanism": "División en dos zonas geográficas con monopolio garantizado por 7+2 años",
+      "interventor": "María Julia Alsogaray",
+      "minister": "Roberto Dromi",
+      "pre_sale_manipulation": {
+        "tariff_increases": "Aumentos del 112% en febrero 1990, llegando a más del 300% a fines de ese mes",
+        "purpose": "Hacer la empresa más rentable para los compradores privados"
+      },
+      "sale_price_usd": 1672000000,
+      "estimated_real_value_usd": 5000000000,
+      "underpricing_factor": "~3x (ENTel cotizada en USD 1.900M cuando su valor real triplicaba esa suma)",
+      "irregularities": [
+        "Terrenos de ENTel valuados en USD 180M regalados a compradores",
+        "Contrato irregular de USD 30M con empresa Meller para guías telefónicas",
+        "Aumentos tarifarios previos para inflar rentabilidad"
+      ],
+      "resulting_companies": {
+        "telefonica_de_argentina": {
+          "zone": "Sur (incluyendo Ciudad de Buenos Aires)",
+          "original_buyers": ["Telefónica de España", "Citicorp", "Techint"],
+          "ownership_evolution": [
+            {"period": "1990-2025", "owner": "Telefónica de España (mayoría)"},
+            {"period": "2025-presente", "owner": "Telecom Argentina (Grupo Clarín/Fintech) - comprada por USD 1.245M"}
+          ],
+          "current_owner": "Telecom Argentina (Grupo Clarín 33%, Fintech/David Martínez 41%)",
+          "sources": [
+            "https://www.lanacion.com.ar/economia/avanza-la-venta-de-telefonica-de-argentina-con-un-candidato-que-ya-hizo-una-oferta-y-otro-que-pidio-nid24022025/",
+            "https://www.infobae.com/america/mundo/2025/02/24/telefonica-vendio-su-filial-de-argentina-a-telecom/"
+          ]
+        },
+        "telecom_argentina": {
+          "zone": "Norte",
+          "original_buyers": ["Stet/Telecom Italia", "France Telecom", "Pérez Companc", "J.P. Morgan"],
+          "ownership_evolution": [
+            {"period": "1990-2003", "owner": "Nortel Inversora (Telecom Italia + France Telecom)"},
+            {"period": "2003", "event": "France Telecom vende su parte al Grupo Wertheim por USD 125M"},
+            {"period": "2005-2017", "owner": "Fintech (David Martínez) adquiere control"},
+            {"period": "2018", "event": "Fusión Telecom-Cablevisión. Grupo Clarín toma control operativo"},
+            {"period": "2025", "event": "Compra de Telefónica Argentina por USD 1.245M - reunificación del monopolio"}
+          ],
+          "current_owner": "Telecom Argentina: Fintech/David Martínez (~41%), Cablevisión Holding/Grupo Clarín (~33%), mercado (~26%)",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Telecom_Argentina",
+            "https://www.cronista.com/negocios/cablevision-y-telecom-se-fusionan-en-una-compania-de-us-11000-millones/"
+          ]
+        }
+      },
+      "monopoly_legacy": {
+        "description": "ENTel era un monopolio estatal. Se dividió en un duopolio privado (Telefónica Sur + Telecom Norte) con monopolio legal garantizado por 9 años (7 + prórroga de 2 firmada por Menem en 1998). En 2018 Telecom absorbió Cablevisión. En 2025 Telecom compró Telefónica Argentina, reunificando de facto el monopolio original bajo un solo grupo (Clarín/Fintech). El ciclo completo: monopolio estatal -> duopolio privado -> monopolio privado.",
+        "current_monopoly_holder": "Telecom Argentina (Grupo Clarín + Fintech)",
+        "market_value_2017": 11000000000
+      },
+      "sources": [
+        "https://es.wikipedia.org/wiki/Empresa_Nacional_de_Telecomunicaciones_(Argentina)",
+        "https://mepriv.mecon.gob.ar/entel/ResHist-entel.htm",
+        "https://www.laizquierdadiario.com/Privatizacion-de-Entel-historia-balance-y-lecciones",
+        "https://mepriv.mecon.gob.ar/entel/Origenyambitodeaccion-Telecom.htm"
+      ]
+    },
+
+    "electricidad": {
+      "sector": "Electricidad - Distribución Gran Buenos Aires",
+      "original_company": "SEGBA (Servicios Eléctricos del Gran Buenos Aires)",
+      "privatization_date": "1992-07",
+      "legal_framework": "Ley 24.065 - Marco Regulatorio Eléctrico",
+      "mechanism": "División horizontal en generación (competencia), transporte (monopolio regulado) y distribución (monopolios geográficos). La distribución del GBA se dividió en tres zonas exclusivas.",
+      "resulting_companies": {
+        "edenor": {
+          "zone": "Norte del GBA",
+          "original_buyers": ["Electricité de France (EDF)", "Endesa (España)"],
+          "ownership_evolution": [
+            {"period": "1992-2005", "owner": "EDF/Endesa"},
+            {"period": "2005-2014", "owner": "Pampa Energía (Marcelo Mindlin)"},
+            {"period": "2014-2020", "owner": "Pampa Energía (51%)"},
+            {"period": "2020-presente", "owner": "Integra Capital: José Luis Manzano, Daniel Vila, Mauricio Filiberti (51%)"}
+          ],
+          "current_owner": "José Luis Manzano, Daniel Vila, Mauricio Filiberti (vía Integra Capital)",
+          "note": "Manzano es ex-ministro del Interior de Menem (1991-1992) - caso emblematico de puerta giratoria."
+        },
+        "edesur": {
+          "zone": "Sur del GBA y parte de CABA",
+          "original_buyers": ["Enersis (Chile)", "Pérez Companc"],
+          "ownership_evolution": [
+            {"period": "1992-2001", "owner": "Enersis/Endesa"},
+            {"period": "2001-presente", "owner": "Enel (Italia, vía Distrilec y Enersis, 70%)"}
+          ],
+          "current_owner": "Enel SpA (Italia, 70%), RPE Distribución (Reca, Escasany/Banco Galicia, Pérez Moore, Miguens Bemberg)",
+          "sources": [
+            "https://www.lanacion.com.ar/economia/los-duenos-de-edenor-y-edesur-un-millonario-un-mediatico-un-expolitico-y-una-empresa-italiana-nid11012022/"
+          ]
+        },
+        "edelap": {
+          "zone": "La Plata y alrededores",
+          "original_buyers": ["AES Corporation (EEUU)"],
+          "current_owner": "Grupo Manzano-Vila"
+        }
+      },
+      "investment_deficit": {
+        "description": "En el período 1992-1997, las inversiones en generación fueron de USD 28M cuando deberían haber sido de USD 2.500M según la Asociación de Personal Superior de SEGBA.",
+        "required_investment_usd": 2500000000,
+        "actual_investment_usd": 28000000
+      },
+      "monopoly_legacy": "SEGBA era un monopolio estatal integrado. Se fragmentó en monopolios privados geográficos (Edenor, Edesur, Edelap) que operan sin competencia en sus zonas. La generación se abrió a competencia, pero la distribución sigue siendo monopolio de concesionarios privados que subinvirtieron sistemáticamente. Edenor hoy es propiedad del ex-ministro menemista Manzano.",
+      "revolving_door_case": "José Luis Manzano, ministro del Interior de Menem (1991-1992) y promotor de las privatizaciones, es hoy dueño de Edenor, la empresa que se creó en esas mismas privatizaciones.",
+      "sources": [
+        "https://es.wikipedia.org/wiki/Servicios_El%C3%A9ctricos_del_Gran_Buenos_Aires",
+        "https://mepriv.mecon.gob.ar/segba/index.htm",
+        "https://es.wikipedia.org/wiki/Historia_del_servicio_el%C3%A9ctrico_del_Gran_Buenos_Aires",
+        "https://www.laizquierdadiario.com/El-oscuro-mundo-de-las-empresas-electricas-privatizadas"
+      ]
+    },
+
+    "petroleo": {
+      "sector": "Petróleo y Gas - Exploración y Producción",
+      "original_company": "YPF (Yacimientos Petrolíferos Fiscales)",
+      "privatization_timeline": [
+        {"date": "1992-09-24", "event": "Ley 24.145 de Federalización de Hidrocarburos y Privatización de YPF"},
+        {"date": "1993-06", "event": "Venta del 43,5% de acciones en bolsa. Recaudación: USD 3.040M en efectivo + USD 1.271M en títulos de deuda"},
+        {"date": "1995", "event": "Ventas adicionales de acciones reducen participación estatal"},
+        {"date": "1999-01", "event": "Repsol compra 15% de acciones de YPF"},
+        {"date": "1999-04-30", "event": "Repsol lanza OPA por el resto de acciones"},
+        {"date": "1999-06-22", "event": "Gobierno autoriza venta por decreto. Repsol adquiere 85,01% por USD 13.439M"},
+        {"date": "2012-04", "event": "Gobierno de Cristina Kirchner expropia 51% a Repsol (Ley 26.741)"},
+        {"date": "2014", "event": "Argentina paga USD 5.000M a Repsol como indemnización"}
+      ],
+      "subvaluation_evidence": {
+        "description": "YPF fue subvaluada: solo se tuvo en cuenta el valor de reservas comprobadas en 4 yacimientos de áreas centrales, la infraestructura de pozos y un costo estimado de explotación. Se ignoraron reservas probables, activos inmobiliarios, marca, red de estaciones de servicio, y capacidad de refinación.",
+        "pre_sale_asset_stripping": "Antes de la privatización, se despidieron 35.689 trabajadores de una plantilla de 51.000 para abaratar costos y hacer la empresa más atractiva."
+      },
+      "current_status": {
+        "owner": "Estado argentino (51% vía Ley 26.741, operación estatal)",
+        "note": "En 2023, un tribunal de Nueva York condenó a Argentina a pagar USD 16.000M a accionistas minoritarios por la forma en que se realizó la expropiación."
+      },
+      "monopoly_legacy": "YPF pasó de monopolio estatal a empresa privada (Repsol) que dominó producción y refinación. La re-estatización de 2012 devolvió control al Estado pero generó un litigio de USD 16.000M. El caso demuestra el costo de privatizar y re-estatizar mal.",
+      "sources": [
+        "https://vocesenelfenix.economicas.uba.ar/a-20-anos-de-la-privatizacion-de-ypf-balance-y-perspectivas/",
+        "https://chequeado.com/el-explicador/fallo-contra-ypf-la-cronologia-del-caso-por-el-que-la-argentina-fue-condenada-a-pagar-us-16-mil-millones/",
+        "https://www.scielo.cl/scielo.php?script=sci_arttext&pid=S0719-37692016000200002",
+        "https://www.lanacion.com.ar/economia/cinco-hitos-de-la-historia-reciente-de-ypf-nid1464423/"
+      ]
+    },
+
+    "aerolineas": {
+      "sector": "Transporte Aéreo",
+      "original_company": "Aerolíneas Argentinas",
+      "privatization_date": "1990-11-21",
+      "sale_price_usd": 260000000,
+      "pre_sale_debt_absorbed_by_state_usd": 868000000,
+      "buyer": "Iberia (aerolínea estatal española)",
+      "timeline": [
+        {"date": "1990-11-21", "event": "Venta a Iberia por USD 260M. Estado absorbe USD 868M en deudas previas."},
+        {"date": "1990-2001", "event": "Iberia inicia vaciamiento: venta de aviones, edificios, simuladores de vuelo. Flota pasa de 28 aviones propios a pocos."},
+        {"date": "1996", "event": "Iberia reduce su participación al 8%"},
+        {"date": "2000", "event": "Aerolíneas entra en convocatoria de acreedores"},
+        {"date": "2001-10", "event": "Gobierno español regala Aerolíneas al Grupo Marsans + USD 750M para plan de negocios"},
+        {"date": "2001-2008", "event": "Marsans practica 'canibalismo': usa repuestos de aviones en tierra para otros. Flota se reduce a 2 aviones propios de largo alcance."},
+        {"date": "2008", "event": "Reestatización. Deuda acumulada: USD 890M. Patrimonio neto negativo: USD -2.500M."}
+      ],
+      "asset_stripping": {
+        "fleet_1990": "28 aviones propios + 1 alquilado",
+        "fleet_2008": "2 aviones propios internacionales + pocos de cabotaje + 30 alquilados",
+        "debt_at_renationalization_usd": 890000000,
+        "negative_net_worth_usd": -2500000000
+      },
+      "monopoly_legacy": "Considerada una de las privatizaciones más ruinosas. Iberia y Marsans vaciaron la empresa sistemáticamente. Tras la reestatización en 2008, el Estado debió reconstruir la aerolínea desde casi cero. En 2025-2026, el gobierno de Milei impulsa una nueva privatización.",
+      "sources": [
+        "https://www.pagina12.com.ar/768711-desguace-y-destruccion-como-funciono-aerolineas-argentinas-c/",
+        "https://aviones.com/aerolineas-argentinas-privatizacion-desguace-y-nueva-amenaza/",
+        "https://aeromarket.com.ar/aerolineas-argentina-iberia-y-marsans/",
+        "https://chequeado.com/el-explicador/aerolineas-argentinas-5-datos-claves-sobre-la-empresa-estatal-cuya-privatizacion-vuelve-a-estar-en-debate-en-medio-de-un-conflicto-gremial/"
+      ]
+    },
+
+    "gas": {
+      "sector": "Gas Natural - Transporte y Distribución",
+      "original_company": "Gas del Estado",
+      "privatization_date": "1992-12-28",
+      "sale_price_usd": 2077000000,
+      "sale_price_breakdown": {
+        "cash_usd": 680000000,
+        "debt_titles_usd": 1397000000
+      },
+      "mechanism": "División en 2 empresas de transporte troncal + 9 distribuidoras regionales, cada una con monopolio geográfico.",
+      "resulting_companies": {
+        "transporte": {
+          "tgs": {
+            "name": "Transportadora de Gas del Sur",
+            "share_of_transport": "60% del gas inyectado a gasoductos troncales",
+            "current_owner": "Pampa Energía/Marcelo Mindlin (25.5% directo, 50% de CIESA controlante), Grupo Safra (Brasil)",
+            "concession_expires": "2027-12-28"
+          },
+          "tgn": {
+            "name": "Transportadora de Gas del Norte",
+            "share_of_transport": "40% del gas inyectado",
+            "current_owner": "Gasinvest (56%): Tecpetrol-Techint (Paolo Rocca) + CGC (Corporación América/Eurnekian). SouthernCone Energy 24%. Mercado 20%.",
+            "concession_expires": "2027-12-28"
+          }
+        },
+        "distribucion": {
+          "metrogas": {
+            "name": "Metrogas",
+            "zone": "Capital Federal + 11 partidos GBA",
+            "description": "Mayor distribuidora de gas de Argentina en usuarios y volumen",
+            "original_buyers": ["British Gas (54.67% vía Gas Argentino)", "YPF (45.33%)"],
+            "ownership_evolution": [
+              {"period": "1992-2012", "owner": "British Gas (mayoría) + YPF (minoría)"},
+              {"period": "2012-presente", "owner": "YPF (70%, tras nacionalización adquirió parte de British Gas)"}
+            ],
+            "current_owner": "YPF (70%), Integra Gas Distribution (9%), ANSES (8%), mercado (13%)",
+            "concession_expires": "2027-12-28",
+            "note": "YPF busca vender Metrogas ya que la integración vertical (productor + distribuidor) está prohibida."
+          },
+          "other_distributors": [
+            "Camuzzi Gas Pampeana",
+            "Camuzzi Gas del Sur",
+            "Litoral Gas",
+            "Gas Natural BAN (Buenos Aires Norte)",
+            "Gasnor (Noroeste)",
+            "Centro (Córdoba)",
+            "Cuyana (Mendoza)",
+            "Gas NEA (Nordeste)"
+          ]
+        }
+      },
+      "monopoly_legacy": "Gas del Estado era un monopolio estatal integrado. Se fragmentó en monopolios privados regionales: 2 transportadoras (TGS de Mindlin, TGN de Techint/Eurnekian) y 9 distribuidoras con exclusividad geográfica. Las concesiones de 35 años vencen en 2027 y los concesionarios ya pidieron extensión por 20 años más. Estructura monopolica intacta desde 1992.",
+      "sources": [
+        "https://es.wikipedia.org/wiki/Gas_del_Estado",
+        "https://mepriv.mecon.gob.ar/gas/Index.htm",
+        "https://es.wikipedia.org/wiki/Metrogas_(Argentina)",
+        "https://www.infobae.com/economia/2024/10/22/las-dos-principales-transportadoras-de-gas-del-pais-pidieron-extender-sus-concesiones-por-20-anos-mas/"
+      ]
+    },
+
+    "agua": {
+      "sector": "Agua Potable y Saneamiento",
+      "original_company": "Obras Sanitarias de la Nación (OSN)",
+      "privatization_date": "1993-05-01",
+      "mechanism": "Concesión por 30 años al consorcio que ofreciera mayor descuento tarifario",
+      "legal_basis": "Decreto 787/93",
+      "winner_bid_discount": "26.9% de rebaja sobre tarifa vigente",
+      "concession_holder": "Aguas Argentinas S.A.",
+      "consortium_members": [
+        "Suez Lyonnaise des Eaux-Dumez (Francia, operador líder)",
+        "Sociedad Comercial del Plata (Grupo Soldati, Argentina)",
+        "Sociedad General de Aguas de Barcelona (España)",
+        "Meller S.A. (Argentina)",
+        "Banco de Galicia y Buenos Aires (Argentina)",
+        "Compagnie Générale des Eaux (Francia)",
+        "Anglian Water Plc (Reino Unido)"
+      ],
+      "problems": {
+        "tariff_increases": "Tarifas residenciales aumentaron 88% entre mayo 1993 y enero 2002, contradiciendo el descuento del 26.9% ofertado",
+        "water_treatment": "Solo 12% del agua residual fue tratada; el resto vertido al Río de la Plata en Berazategui (según Auditoría General de la Nación)",
+        "fraudulent_billing": "Se detectaron facturas fraudulentas por obras inexistentes y direcciones falsas"
+      },
+      "timeline": [
+        {"date": "1993-05-01", "event": "Aguas Argentinas toma control de la concesión"},
+        {"date": "1993-2002", "event": "Tarifas suben 88% pese a promesa de reducción. Inversiones incumplidas."},
+        {"date": "2006-03", "event": "Gobierno de Néstor Kirchner rescinde contrato por incumplimientos"},
+        {"date": "2006", "event": "Creación de AySA (Agua y Saneamientos Argentinos), 90% estatal"},
+        {"date": "2006-2022", "event": "Cobertura de agua potable sube de 76% a 85%. Cloacas de 57% a 72.6%."},
+        {"date": "2025", "event": "Gobierno de Milei inicia nueva privatización de AySA"}
+      ],
+      "monopoly_legacy": "Suez reemplazó al monopolio estatal OSN con una concesión monopolica que subinvirtió y aumentó tarifas. Tras la reestatización (AySA, 2006), la cobertura mejoró significativamente. En 2025 se repite el ciclo con nueva privatización bajo Milei.",
+      "sources": [
+        "https://journals.openedition.org/vertigo/9730?lang=en",
+        "https://cdi.mecon.gob.ar/bases/docelec/flacso/azpiazu.pdf",
+        "https://en.wikipedia.org/wiki/Agua_y_Saneamientos_Argentinos",
+        "https://metropolitana.org.ar/idm/la-privatizacion-de-aysa-entre-la-eficiencia-prometida-y-el-derecho-al-agua/"
+      ]
+    },
+
+    "ferrocarriles": {
+      "sector": "Transporte Ferroviario",
+      "original_company": "Ferrocarriles Argentinos",
+      "privatization_period": "1991-1995",
+      "mechanism": "Concesiones a operadores privados para líneas metropolitanas y de carga. El Estado mantenía la propiedad de la infraestructura pero subsidiaba la operación.",
+      "resulting_concessions": {
+        "metropolitanas": {
+          "metrovias_grupo_roggio": {
+            "operator": "Metrovías S.A. (luego Emova)",
+            "owner": "Grupo Roggio (Benito Roggio)",
+            "lines": ["Urquiza", "Subte de Buenos Aires"],
+            "concession_km_roads": 2500
+          },
+          "ferrovias_grupo_emepa": {
+            "operator": "Ferrovías S.A.",
+            "owner": "Grupo Emepa (Gabriel Romero)",
+            "lines": ["Belgrano Norte"]
+          },
+          "state_recovered_lines": {
+            "operator": "Trenes Argentinos Operaciones (SOFSE)",
+            "lines": ["Sarmiento (desde 2013)", "Mitre (desde 2015)", "Roca (desde 2015)", "San Martín (desde 2015)", "Belgrano Sur (desde 2015)", "Tren de la Costa (desde 2013)"],
+            "note": "Representan 85% de la demanda total de pasajeros del AMBA"
+          }
+        },
+        "carga": {
+          "note": "Concesiones de carga fueron entregadas a consorcios liderados por grandes empresas: NCA (Aceitera General Deheza/Urquía), Ferroexpreso Pampeano (Techint), ALL (grupo brasileño América Latina Logística)."
+        }
+      },
+      "road_concessions_1990": {
+        "decree": "Decreto 2.039/90",
+        "structure": "19 corredores viales, 14 concesionarios",
+        "major_concessionaires": {
+          "benito_roggio": "~2.500 km (a través de distintos consorcios)",
+          "techint": "~1.205 km",
+          "sideco_americana_macri": "~1.169 km"
+        }
+      },
+      "monopoly_legacy": "Ferrocarriles Argentinos fue fragmentado en concesiones que crearon monopolios de hecho por línea. La falta de inversión privada llevó a la tragedia de Once (2012, 52 muertos) y la gradual reestatización de la mayoría de las líneas. Solo Roggio (Metrovías/Emova) y Romero (Ferrovías) mantienen concesiones en el AMBA. En 2025-2026 Milei busca re-privatizar todas las líneas; Roggio y Emepa son los principales candidatos.",
+      "sources": [
+        "https://es.wikipedia.org/wiki/Privatizaci%C3%B3n_ferroviaria_en_Argentina",
+        "https://www.enelsubte.com/noticias/escandalo-el-gobierno-quiere-venderle-los-trenes-metropolitanos-a-roggio-y-romero/",
+        "https://chequeado.com/el-explicador/debaten-la-privatizacion-de-trenes-argentinos-transporta-a-mas-del-85-de-los-pasajeros-tiene-deficit-y-en-el-mundo-este-servicio-suele-ser-estatal/"
+      ]
+    },
+
+    "aeropuertos": {
+      "sector": "Infraestructura Aeroportuaria",
+      "original_status": "Administrados por Fuerza Aérea Argentina",
+      "privatization_date": "1998",
+      "concession_holder": "Aeropuertos Argentina 2000 S.A. (AA2000)",
+      "owner": "Eduardo Eurnekian (Corporación América, 51%)",
+      "airports_count": 33,
+      "original_concession_term": "30 años (1998-2028)",
+      "extensions": [
+        {"date": "2007", "event": "Renegociación bajo Kirchner: Estado obtiene 20% de AA2000"},
+        {"date": "2017", "event": "Gobierno de Macri confirma concesión hasta 2028"},
+        {"date": "2020", "event": "Gobierno de Alberto Fernández extiende hasta 2038 a cambio de USD 2.500M en inversiones comprometidas"}
+      ],
+      "monopoly_legacy": "Un solo empresario (Eurnekian) controla los 33 aeropuertos principales del país desde 1998, con la concesión extendida hasta 2038. No hay competencia posible en infraestructura aeroportuaria.",
+      "sources": [
+        "https://www.infobae.com/economia/2020/11/30/el-estado-extendio-la-concesion-de-aeropuertos-argentina-2000-hasta-2038-y-la-compania-invertira-usd-2500-millones/",
+        "https://www.cronista.com/negocios/Eurnekian-se-aseguro-la-concesion-de-los-aeropuertos-en-el-pais-hasta-2028-20171128-0037.html",
+        "https://www.argentinaenred.com/2023/08/27/aeropuertos-y-privatizaciones/"
+      ]
+    },
+
+    "siderurgia": {
+      "sector": "Siderurgia",
+      "original_company": "SOMISA (Sociedad Mixta Siderúrgica Argentina)",
+      "privatization_date": "1992",
+      "buyer": "Consorcio liderado por Techint (Paolo Rocca), con Usiminas (Brasil), Companhia Vale do Rio Doce (Brasil) y CAP (Chile)",
+      "sale_price": {
+        "cash_usd": 100000000,
+        "promissory_notes_usd": 40000000,
+        "debt_titles_nominal_usd": 12000000000,
+        "note": "Los títulos de deuda se tomaron a valor nominal pero su valor de mercado era una fracción"
+      },
+      "estimated_real_value": {
+        "braxton_consulting_usd": "1.800M (valor de empresa), recomendación de venta: USD 400-700M",
+        "balance_sheet": "Activos USD 5.000M, Pasivos USD 2.000M = Patrimonio neto USD 3.000M"
+      },
+      "underpricing_factor": "Vendida por ~1/7 de su valor libro según María Julia Alsogaray (USD 152M vs valor libro ~USD 1.000M+)",
+      "current_name": "Ternium Siderar (ex-Aceros Paraná, ex-Siderar)",
+      "current_owner": "Grupo Techint (familia Rocca)",
+      "monopoly_legacy": "Techint, que ya era un actor importante en siderurgia privada, adquirió SOMISA a precio de remate y consolidó un cuasi-monopolio en acero plano en Argentina. Hoy Ternium (Techint) controla la producción de acero del país.",
+      "sources": [
+        "https://es.wikipedia.org/wiki/Somisa",
+        "https://izquierdaweb.com/somisa-cronica-de-una-privatizacion-y-resistencia-obrera/",
+        "https://mepriv.mecon.gob.ar/somisa/marco.htm"
+      ]
+    },
+
+    "television": {
+      "sector": "Medios de Comunicación - Televisión",
+      "original_companies": "Canal 11 (LS 84) y Canal 13 (LS 85), operados por el Estado",
+      "privatization_date": "1989-12",
+      "start_private_broadcast": "1990-03-05",
+      "resulting_companies": {
+        "canal_13": {
+          "buyer": "Artear (Arte Radiotelevisivo Argentino) - Grupo Clarín",
+          "price_usd": "~7M (menos de la mitad que Canal 11)",
+          "current_owner": "Grupo Clarín",
+          "note": "Clarín formó Artear en 1989 específicamente para la licitación"
+        },
+        "canal_11_telefe": {
+          "buyer": "Televisión Federal S.A. (consorcio liderado por Editorial Atlántida, familia Vigil)",
+          "price_usd": 16000000,
+          "ownership_evolution": [
+            {"period": "1990-2000", "owner": "Editorial Atlántida/Vigil"},
+            {"period": "2000-2016", "owner": "Telefónica de España"},
+            {"period": "2016-presente", "owner": "Viacom/Paramount Global"}
+          ],
+          "current_owner": "Paramount Global"
+        }
+      },
+      "monopoly_legacy": "La privatización de canales fue la primera medida del menemismo y benefició directamente al Grupo Clarín, que consolidó su posición dominante en medios (Clarín diario + Canal 13 + Cablevisión + Radio Mitre). Esto creó la base del monopolio mediático que persiste hasta hoy.",
+      "sources": [
+        "https://es.wikipedia.org/wiki/Canal_13_(Buenos_Aires)",
+        "https://es.wikipedia.org/wiki/Canal_11_Argentina",
+        "https://resisteunarchivo.blogspot.com/2009/11/hace-20-anos-las-privatizaciones-de-los.html"
+      ]
+    },
+
+    "correo": {
+      "sector": "Servicio Postal",
+      "original_company": "ENCOTESA (Empresa Nacional de Correos y Telégrafos S.A.)",
+      "privatization_date": "1997-03-24",
+      "legal_basis": "Decreto 265/1997",
+      "concession_term_years": 30,
+      "buyer": "SOCMA (Sociedad Macri / Grupo Macri)",
+      "canonical_fee_semiannual_usd": 51600000,
+      "investment_commitment_annual_usd": 25000000,
+      "timeline": [
+        {"date": "1997-03", "event": "SOCMA (familia Macri) obtiene concesión por 30 años"},
+        {"date": "2000", "event": "SOCMA deja de pagar el canon semestral"},
+        {"date": "2001-09", "event": "Correo Argentino S.A. entra en concurso preventivo. Deuda acumulada: USD 257M"},
+        {"date": "2003-11-19", "event": "Néstor Kirchner rescinde contrato de concesión"},
+        {"date": "2003-presente", "event": "Correo Oficial de la República Argentina opera bajo control estatal"}
+      ],
+      "note": "Mauricio Macri, hijo del dueño de SOCMA (Franco Macri), fue presidente de Argentina 2015-2019. La causa judicial por la deuda del Correo Argentino se extendió 20 años y terminó en quiebra de la empresa concesionaria.",
+      "monopoly_legacy": "La familia Macri obtuvo el monopolio postal, dejó de pagar, acumuló deuda millonaria y el Estado debió reasumir el servicio. Caso emblemático de privatización como negocio para el concesionario a costa del Estado.",
+      "sources": [
+        "https://es.wikipedia.org/wiki/Causa_Correo_Argentino",
+        "https://es.wikipedia.org/wiki/Correo_Oficial_de_la_Rep%C3%BAblica_Argentina",
+        "https://www.laizquierdadiario.com/Los-Macri-y-el-millonario-negocio-de-la-privatizacion-del-Correo-Argentino",
+        "https://neahoy.com/2024/02/09/correo-argentino-el-vaiven-entre-la-estatizacion-y-la-familia-macri/"
+      ]
+    },
+
+    "hidroelectricas": {
+      "sector": "Generación Hidroeléctrica",
+      "original_company": "HIDRONOR S.A. (Hidroeléctrica Norpatagónica)",
+      "privatization_date": "1993-08-11",
+      "concession_term_years": 30,
+      "plants": ["El Chocón", "Cerros Colorados", "Alicurá", "Piedra del Águila"],
+      "capacity": "Generaban más del 40% de la electricidad del país",
+      "original_concession_holder": "Consorcio Hidroinvest S.A.",
+      "concession_expiry": "2023",
+      "re_privatization_2025": {
+        "date": "2025",
+        "revenue_usd": 706885298,
+        "note": "Gobierno de Milei re-privatizó las 4 represas tras vencimiento de concesión de 30 años"
+      },
+      "monopoly_legacy": "Hidronor fue un monopolio estatal de generación hidroeléctrica que se transfirió a concesionarios privados. Tras 30 años, la concesión venció y se re-licitó en 2025 por USD 707M, continuando el modelo de generación privada.",
+      "sources": [
+        "https://mepriv.mecon.gob.ar/Hidronor/ResenaHist-Chocon.htm",
+        "https://www.infobae.com/economia/2025/12/03/el-gobierno-capto-ingresos-por-mas-de-usd-700-millones-con-la-privatizacion-de-las-hidroelectricas-del-comahue/",
+        "https://eleconomista.com.ar/energia/el-botin-comahue-us-706-millones-sellan-privatizacion-grandes-represas-n91532"
+      ]
+    }
+  },
+
+  "underpricing_evidence": {
+    "summary": "Las privatizaciones se caracterizaron por la subvaluación sistemática de activos transferidos, la supervivencia y reforzamiento de monopolios legales, y amplios márgenes de libertad para fijación de tarifas.",
+    "cases": [
+      {
+        "company": "ENTel",
+        "sale_price_usd": 1672000000,
+        "estimated_value_usd": 5000000000,
+        "ratio": "Vendida a ~1/3 de su valor real",
+        "additional": "Terrenos por USD 180M regalados a compradores"
+      },
+      {
+        "company": "SOMISA",
+        "sale_price_effective_usd": 152000000,
+        "estimated_value_usd": "1.800M (Braxton) a 3.000M (balance)",
+        "ratio": "Vendida a ~1/7 de su valor libro"
+      },
+      {
+        "company": "YPF",
+        "method": "Solo se valuaron reservas comprobadas de 4 yacimientos, ignorando reservas probables, activos inmobiliarios, marca, red de distribución",
+        "pre_sale_layoffs": 35689
+      },
+      {
+        "company": "Aerolíneas Argentinas",
+        "sale_price_usd": 260000000,
+        "state_absorbed_debt_usd": 868000000,
+        "net_cost_to_state": "El Estado perdió USD 1.128M+ (deuda absorbida + valor de empresa regalado)"
+      }
+    ],
+    "mechanism_of_underpricing": [
+      "Aceptación de títulos de deuda externa a valor nominal (su valor de mercado era 15-20 centavos por dólar)",
+      "Absorción de deudas empresariales por el Estado antes de la venta",
+      "Despidos masivos previos para reducir costos (35.000 en YPF, miles en cada empresa)",
+      "Aumentos tarifarios previos para inflar rentabilidad (ENTel: 300%+)",
+      "Valuaciones que ignoraban activos intangibles, inmuebles, y reservas probables",
+      "Plazos de licitación cortos que limitaban la competencia"
+    ],
+    "sources": [
+      "https://www.ciepp.org.ar/images/Las_Privatizaciones_mod_1_1.pdf",
+      "https://www.pagina12.com.ar/700198-las-privatizaciones-de-los-90-entre-los-negociados-y-los-fra/"
+    ]
+  },
+
+  "revolving_door": {
+    "summary": "El fenómeno de 'puerta giratoria' entre funcionarios que diseñaron/ejecutaron las privatizaciones y las empresas que las compraron fue sistemático.",
+    "documented_cases": [
+      {
+        "name": "José Luis Manzano",
+        "government_role": "Ministro del Interior de Menem (1991-1992)",
+        "private_role": "Dueño de Edenor (principal distribuidora eléctrica del GBA) desde 2020",
+        "connection": "Ministro durante las privatizaciones energéticas -> dueño de la empresa privatizada",
+        "note": "Compró 51% de Edenor vía Integra Capital junto a Daniel Vila y Mauricio Filiberti"
+      },
+      {
+        "name": "Roberto Dromi",
+        "government_role": "Ministro de Obras y Servicios Públicos (1989-1991), arquitecto legal de las privatizaciones",
+        "private_role": "Abogado consultor de empresas privatizadas y del gobierno de Milei en 2024 para nueva ola de privatizaciones",
+        "connection": "Diseñó el marco legal -> asesoró a beneficiarios -> asesoró la repetición del proceso 35 años después"
+      },
+      {
+        "name": "María Julia Alsogaray",
+        "government_role": "Interventora de ENTel (1989-1990), interventora de SOMISA",
+        "corruption": "Condenada 4 veces: administración fraudulenta (ENTel), enriquecimiento ilícito, contrataciones irregulares",
+        "connection": "Manipuló tarifas y condiciones de venta en beneficio de los compradores"
+      },
+      {
+        "name": "Familia Macri",
+        "government_role": "Franco Macri fue empresario cercano al menemismo",
+        "private_role": "SOCMA/Sideco Americana obtuvo concesión del Correo (1997) y ~1.169 km de rutas",
+        "connection": "Mauricio Macri, hijo de Franco, fue luego presidente (2015-2019)"
+      }
+    ],
+    "structural_pattern": "Los mismos grupos económicos que financiaron campañas políticas obtuvieron las concesiones y luego colocaron ex-funcionarios en sus directorios. Este patrón se repite en 2024-2026 con Milei asesorado por Dromi y los mismos grupos (Roggio, Eurnekian, Mindlin) posicionándose para nuevas concesiones.",
+    "sources": [
+      "https://noticias.unsam.edu.ar/wp-content/uploads/2016/12/Puerta-Giratoria-en-Argentina-Analisis-del-gabinete-nacional-actual-y-la-experiencia-internacional-comparada.pdf",
+      "https://www.pagina12.com.ar/700198-las-privatizaciones-de-los-90-entre-los-negociados-y-los-fra/"
+    ]
+  },
+
+  "monopoly_legacy_map": {
+    "description": "Linea directa entre privatizaciones de los 90s y monopolios actuales (2026)",
+    "sectors": [
+      {
+        "sector": "Telecomunicaciones",
+        "1989_monopoly": "ENTel (estatal)",
+        "1990s_structure": "Duopolio: Telefónica (sur) + Telecom (norte)",
+        "2026_monopoly": "Telecom Argentina (Clarín/Fintech) - compró Telefónica en 2025, reunificando monopolio",
+        "concentration_trend": "monopolio -> duopolio -> monopolio"
+      },
+      {
+        "sector": "Electricidad GBA",
+        "1989_monopoly": "SEGBA (estatal)",
+        "1990s_structure": "Oligopolio: Edenor + Edesur + Edelap",
+        "2026_monopoly": "Edenor (Manzano/Vila), Edesur (Enel), cada una monopolio en su zona",
+        "concentration_trend": "monopolio integrado -> monopolios zonales privados"
+      },
+      {
+        "sector": "Gas Transporte",
+        "1989_monopoly": "Gas del Estado (estatal)",
+        "1990s_structure": "Duopolio: TGS (sur) + TGN (norte)",
+        "2026_monopoly": "TGS (Pampa Energía/Mindlin) + TGN (Techint/Eurnekian)",
+        "concentration_trend": "monopolio -> duopolio de los mismos grupos que dominan otros sectores"
+      },
+      {
+        "sector": "Gas Distribución",
+        "1989_monopoly": "Gas del Estado (estatal)",
+        "1990s_structure": "9 distribuidoras con monopolio zonal",
+        "2026_monopoly": "Metrogas (YPF, en venta), Camuzzi (2 zonas), etc.",
+        "concentration_trend": "monopolio -> monopolios zonales"
+      },
+      {
+        "sector": "Aeropuertos",
+        "1989_status": "Fuerza Aérea Argentina",
+        "1990s_structure": "AA2000 (Eurnekian, 33 aeropuertos)",
+        "2026_monopoly": "AA2000 (Eurnekian, concesión hasta 2038)",
+        "concentration_trend": "estatal -> monopolio privado de un solo empresario"
+      },
+      {
+        "sector": "Siderurgia",
+        "1989_monopoly": "SOMISA (estatal) + Acindar (privada)",
+        "1990s_structure": "Siderar/Techint absorbe SOMISA",
+        "2026_monopoly": "Ternium Siderar (Techint/Rocca) - cuasi-monopolio en acero plano",
+        "concentration_trend": "duopolio -> monopolio privado"
+      },
+      {
+        "sector": "Medios TV",
+        "1989_status": "Canales 11 y 13 estatales",
+        "1990s_structure": "Canal 13 (Clarín) + Telefé (Atlántida/Vigil)",
+        "2026_monopoly": "Canal 13 (Clarín) + Telecom/Cablevisión (Clarín) = dominio multimedios",
+        "concentration_trend": "La privatización de Canal 13 fue la semilla del monopolio mediático de Clarín"
+      },
+      {
+        "sector": "Transporte Ferroviario",
+        "1989_monopoly": "Ferrocarriles Argentinos (estatal)",
+        "1990s_structure": "Concesiones fragmentadas a Metrovías (Roggio), TBA, Ferrovías (Emepa/Romero)",
+        "2026_monopoly": "85% estatal (SOFSE), Roggio y Emepa mantienen 2 líneas. Milei busca re-privatizar.",
+        "concentration_trend": "monopolio estatal -> fragmentación fallida -> reestatización parcial -> nueva privatización en curso"
+      }
+    ],
+    "cross_sector_concentration": {
+      "description": "Un puñado de grupos económicos acumularon activos de múltiples privatizaciones, creando conglomerados multi-sectoriales",
+      "groups": [
+        {
+          "name": "Grupo Techint (familia Rocca)",
+          "assets_from_privatizations": ["SOMISA/Ternium Siderar (siderurgia)", "TGN (gas transporte, vía Tecpetrol)", "Concesiones viales (~1.205 km)"],
+          "other_assets": "Tenaris (tubos), Tecpetrol (petróleo), construcción pesada"
+        },
+        {
+          "name": "Grupo Clarín (Magnetto, Noble Herrera)",
+          "assets_from_privatizations": ["Canal 13 (TV)", "Cablevisión (cable)", "Telecom Argentina (tras fusión 2018)", "Telefónica Argentina (tras compra 2025)"],
+          "monopoly_scope": "TV + cable + telefonía fija + internet + móvil = monopolio de comunicaciones"
+        },
+        {
+          "name": "Corporación América (Eduardo Eurnekian)",
+          "assets_from_privatizations": ["AA2000 (33 aeropuertos)", "TGN (gas transporte, vía CGC)"],
+          "concession_through": 2038
+        },
+        {
+          "name": "Grupo Roggio (Benito Roggio)",
+          "assets_from_privatizations": ["Metrovías/Emova (subte + línea Urquiza)", "Concesiones viales (~2.500 km)"],
+          "current_bids": "Posicionado para nuevas concesiones ferroviarias y viales bajo Milei"
+        },
+        {
+          "name": "Pampa Energía (Marcelo Mindlin)",
+          "assets_from_privatizations": ["TGS (gas transporte, 60% del mercado)", "Central Piedra Buena, Güemes, Loma de la Lata (generación)"],
+          "note": "Mindlin adquirió estos activos en mercado secundario post-crisis 2001, comprando barato lo que se había privatizado caro"
+        },
+        {
+          "name": "Grupo Macri (Franco/Mauricio)",
+          "assets_from_privatizations": ["Correo Argentino (1997-2003, rescindida)", "Sideco Americana: rutas (~1.169 km)"],
+          "political_connection": "Mauricio Macri fue presidente 2015-2019"
+        },
+        {
+          "name": "Grupo Manzano-Vila-Filiberti",
+          "assets_from_privatizations": ["Edenor (distribución eléctrica norte GBA, desde 2020)"],
+          "revolving_door": "Manzano fue ministro del Interior de Menem durante las privatizaciones"
+        }
+      ]
+    }
+  },
+
+  "summary_statistics": {
+    "total_companies_privatized": "Más de 60 empresas estatales",
+    "total_revenue_official_usd": 24000000000,
+    "total_revenue_effective_estimate_usd": "~12.000M-15.000M (descontando títulos de deuda tomados a valor nominal inflado)",
+    "jobs_lost_estimated": "Más de 150.000 empleos directos eliminados en empresas privatizadas",
+    "key_years": {
+      "1989": "Ley de Reforma del Estado. Privatización de Canales 11 y 13.",
+      "1990": "ENTel (Telecom + Telefónica), Aerolíneas Argentinas (Iberia)",
+      "1991": "Concesiones ferroviarias metropolitanas y de carga",
+      "1992": "SEGBA (Edenor/Edesur/Edelap), Gas del Estado (TGS/TGN/9 distribuidoras), SOMISA (Techint), YPF (inicio)",
+      "1993": "Obras Sanitarias (Aguas Argentinas/Suez), HIDRONOR (hidroeléctricas), YPF (venta 43.5% en bolsa)",
+      "1997": "Correo Argentino (SOCMA/Macri)",
+      "1998": "Aeropuertos (AA2000/Eurnekian)",
+      "1999": "YPF (venta completa a Repsol)"
+    },
+    "renationalizations": [
+      {"company": "Correo Argentino", "year": 2003, "reason": "Incumplimiento de canon y concurso preventivo"},
+      {"company": "Aguas Argentinas", "year": 2006, "reason": "Incumplimiento de inversiones, facturas fraudulentas"},
+      {"company": "Aerolíneas Argentinas", "year": 2008, "reason": "Vaciamiento, deuda impagable, riesgo de desaparición"},
+      {"company": "YPF (51%)", "year": 2012, "reason": "Falta de inversión en exploración por Repsol"},
+      {"company": "Ferrocarriles (mayoría líneas)", "year": "2013-2015", "reason": "Tragedia de Once (2012), desinversión crónica"}
+    ],
+    "re_privatizations_2024_2026": {
+      "description": "El gobierno de Milei (2023-presente) está re-privatizando muchas de las empresas que fueron reestatizadas, con los mismos grupos empresarios posicionándose como compradores.",
+      "in_process": ["AySA", "Aerolíneas Argentinas", "Ferrocarriles", "Hidroeléctricas del Comahue", "Corredores Viales", "Metrogas"],
+      "completed": ["Hidroeléctricas Comahue (USD 707M, 2025)"]
+    }
+  },
+
+  "investigation_conclusions": [
+    "Las privatizaciones de 1989-1999 no eliminaron monopolios; los transfirieron del Estado a un puñado de grupos privados conectados al poder político.",
+    "La subvaluación fue sistemática: ENTel vendida a 1/3 de su valor, SOMISA a 1/7, YPF con reservas subcontabilizadas.",
+    "La aceptación de títulos de deuda externa a valor nominal (cuando cotizaban a 15-20 centavos) fue un mecanismo de transferencia de riqueza de lo público a lo privado.",
+    "El aumento de tarifas previo a las ventas (ENTel 300%+) y la absorción de deudas por el Estado (Aerolíneas USD 868M) fueron mecanismos para beneficiar a los compradores.",
+    "Los mismos grupos que compraron en los 90s (Techint, Clarín, Roggio, Eurnekian, Macri) siguen controlando esos sectores en 2026.",
+    "El fenómeno de puerta giratoria es estructural: Manzano (ministro -> dueño de Edenor), Dromi (arquitecto legal -> asesor de Milei para re-privatizar).",
+    "Las reestatizaciones (Correo 2003, Aguas 2006, Aerolíneas 2008, YPF 2012, trenes 2013-15) muestran el fracaso del modelo pero no resolvieron el problema de fondo.",
+    "En 2024-2026, el ciclo se repite: Milei re-privatiza con los mismos grupos posicionándose como compradores, asesorado por los mismos arquitectos (Dromi hasta su muerte en 2024).",
+    "La concentración económica resultante es cross-sectorial: Techint (acero + gas + rutas), Clarín (medios + telecom), Eurnekian (aeropuertos + gas), Roggio (trenes + rutas + subte)."
+  ]
+}

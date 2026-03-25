@@ -1,0 +1,652 @@
+{
+  "title": "Monopolios Mineros en Argentina — Litio, Cobre, Oro y la Concentracion Extractivista",
+  "date": "2026-03-24",
+  "summary": "Deep-dive investigation into the concentration of mining concessions in Argentina, covering the lithium triangle (Jujuy, Salta, Catamarca), gold/copper megaprojects, the provincial concession system that gives governors unchecked control, the RIGI tax incentive regime, royalty structures, environmental conflicts, and the near-total foreign ownership of Argentina's mineral extraction. Five multinational companies control nearly one million hectares of salt flats. Rio Tinto's $6.7B acquisition of Arcadium Lithium (2025) made it the dominant lithium player. Glencore plans $13.5B in copper investments. The glacier protection law is being gutted to unlock $40B in mining projects.",
+
+  "lithium_triangle": {
+    "overview": "Argentina is the world's 4th largest lithium producer and holds over 20% of global reserves. Together with Chile and Bolivia it forms the 'Lithium Triangle.' Production surged 66% in 2025 to 23,000 tonnes of lithium metal — the fastest growth rate globally. Lithium exports in Jan-Aug 2025 totaled USD 494M (+32% YoY value, +56% YoY volume), making it the 2nd most-exported mineral at 14% of mining exports.",
+    "provinces": {
+      "jujuy": {
+        "key_projects": [
+          {
+            "name": "Olaroz (Sales de Jujuy)",
+            "operator": "Rio Tinto Lithium (ex-Arcadium, ex-Allkem)",
+            "status": "Producing",
+            "notes": "Phase 1 operational since 2015. Phase 2 expansion underway."
+          },
+          {
+            "name": "Cauchari-Olaroz",
+            "operator": "Lithium Argentina (ex-Lithium Americas) / Ganfeng Lithium JV",
+            "status": "Producing",
+            "notes": "Phase 1 commenced 2023. Ganfeng holds 46.7% via EXAR subsidiary. 2025 production results announced."
+          },
+          {
+            "name": "Cauchari (Phase 2)",
+            "operator": "Rio Tinto Lithium",
+            "status": "On hold / Development"
+          },
+          {
+            "name": "Salinas Grandes / Guayatayoc",
+            "operator": "Multiple (Litica/Pluspetrol claims, contested by indigenous communities)",
+            "status": "Exploration — highly contested",
+            "notes": "Indigenous communities have resisted exploration. Site of major protests during 2023 constitutional reform."
+          }
+        ],
+        "political_context": "Governor Gerardo Morales (2015-2023) pushed expedited constitutional reform in June 2023 to facilitate lithium expansion: changed 66 of 212 articles, criminalized protest, stripped indigenous communal land rights by declaring territory 'public land destined for production,' claimed provincial ownership of all water sources. Reform approved in under a week, triggering massive protests and violent repression — 170+ injured (one with skull trauma), 68 detained (including 5 minors). National government filed unconstitutionality action. Successor Carlos Sadir (2023-present) continued pro-mining policies."
+      },
+      "salta": {
+        "key_projects": [
+          {
+            "name": "Centenario-Ratones",
+            "operator": "Eramet SA / Tsingshan Holding Group (Eramine SudAmerica)",
+            "status": "Producing — started July 2024",
+            "investment_usd": "Not disclosed",
+            "notes": "4th lithium project in Argentina to reach production. First in Salta province."
+          },
+          {
+            "name": "Sal de Oro (Phases 1-3)",
+            "operator": "POSCO Argentina (South Korea)",
+            "status": "Phase 1 producing (plant inaugurated Oct 2024). Phases 2-3 seeking RIGI.",
+            "investment_usd": 2000000000,
+            "rigi_application": "USD 633M for expansion phases"
+          },
+          {
+            "name": "Pozuelos-Pastos Grandes",
+            "operator": "Ganfeng Lithium (China)",
+            "status": "Under construction — DIA approved",
+            "investment_usd": 273000000,
+            "rigi_application": "USD 273M submitted",
+            "notes": "Ganfeng forming new JV with Lithium Argentina to consolidate Pozuelos and Pastos Grandes basins."
+          },
+          {
+            "name": "Rincon",
+            "operator": "Rio Tinto",
+            "status": "Development — exports begun",
+            "investment_usd": 2500000000,
+            "rigi_approved": true,
+            "rigi_investment": 2700000000,
+            "notes": "Rio Tinto secured USD 1.175B financing. First RIGI-approved lithium project. Total planned investment USD 2.5B."
+          },
+          {
+            "name": "Incahuasi-Arizaro",
+            "operator": "Ganfeng Lithium",
+            "status": "Advanced exploration"
+          }
+        ],
+        "political_context": "Governor Gustavo Saenz presided over the Mesa del Litio (Lithium Board) 2024-2025. Created the 'Region Minera del Litio' via interprovincial treaty. Declared mining a 'state policy.' Province adhered to RIGI, expecting USD 10B+ in mining capital. Salta hosts 3 of 6 producing lithium projects nationally — more than any other province. Saenz actively promotes Salta at international mining conferences (PDAC Toronto, etc.)."
+      },
+      "catamarca": {
+        "key_projects": [
+          {
+            "name": "Fenix (Salar del Hombre Muerto)",
+            "operator": "Rio Tinto Lithium (ex-Arcadium, ex-Livent/FMC)",
+            "status": "Producing since 1997 — oldest lithium operation in Argentina",
+            "notes": "Phase 1B expansion underway. Livent operated here since 1997, originally FMC Corporation subsidiary. Now fully under Rio Tinto."
+          },
+          {
+            "name": "Sal de Vida (Salar del Hombre Muerto)",
+            "operator": "Rio Tinto Lithium (ex-Arcadium, ex-Allkem/Galaxy Resources)",
+            "status": "Phase 1 under construction",
+            "notes": "Adjacent to Fenix. Combined with Fenix gives Rio Tinto massive control of Hombre Muerto salar."
+          },
+          {
+            "name": "Tres Quebradas (3Q)",
+            "operator": "Zijin Mining (China) via Liex SA",
+            "status": "Phase 1 completed (20,000 tpa LCE). Phase 2 under construction (additional 30,000 tpa).",
+            "investment_usd": 600000000,
+            "notes": "Zijin acquired via takeover of Neo Lithium (Canada) in 2022. Resources: 7.565M tonnes LCE."
+          },
+          {
+            "name": "HMW (Hombre Muerto West)",
+            "operator": "Posco/other",
+            "status": "Phase 1 development"
+          }
+        ],
+        "political_context": "Governor Raul Jalil assumed rotating presidency of the Lithium Board. Met directly with Glencore executives for MARA project. Signed technical cooperation with ECLAC (CEPAL) on lithium legislation harmonization. Province receives 3.5% royalties on total billing. Jalil frames approach as 'mining yes, but with controls and rules' — though critics note environmental oversight is weak."
+      }
+    },
+    "production_data": {
+      "2024_tonnes_lithium_metal": 13800,
+      "2025_tonnes_lithium_metal": 23000,
+      "yoy_growth_2025": "66%",
+      "global_rank": "4th largest producer",
+      "exports_jan_aug_2025_usd": 494000000,
+      "export_growth_value": "32%",
+      "export_growth_volume": "56%",
+      "share_of_mining_exports": "14%"
+    },
+    "sources": [
+      "https://buenosairesherald.com/business/mining/argentinas-new-10-year-lithium-plan-just-dropped",
+      "https://discoveryalert.com.au/argentinian-lithium-production-2026-resource-scalability/",
+      "https://dialogue.earth/en/business/392580-who-controls-argentinas-lithium/",
+      "https://www.bloomberglinea.com/english/these-are-the-41-companies-betting-on-argentinas-lithium-key-export-and-price-forecasts/",
+      "https://www.panorama-minero.com/en/news/lithium-argentina-announces-2025-production-results-for-cauchari-olaroz"
+    ]
+  },
+
+  "key_companies": {
+    "rio_tinto_lithium": {
+      "parent": "Rio Tinto (UK/Australia)",
+      "formed_via": "USD 6.7B acquisition of Arcadium Lithium completed March 2025. Arcadium itself was Jan 2024 merger of Allkem (Australia) + Livent (USA/FMC spin-off).",
+      "argentina_operations": [
+        "Fenix (Catamarca) — producing since 1997",
+        "Sal de Vida (Catamarca) — construction",
+        "Olaroz Phase 1 & 2 (Jujuy) — producing",
+        "Cauchari (Jujuy) — development",
+        "Rincon (Salta) — development/early exports"
+      ],
+      "hectares_controlled": 315637,
+      "hectares_breakdown": "Arcadium: 232,637 ha + Rincon: 83,000 ha in Salar del Rincon (Salta)",
+      "annual_investment_plan": "USD 1B/year for 3 years in Canada and Argentina",
+      "market_position": "3rd largest lithium producer globally. Dominant player in Argentina with operations in all 3 lithium provinces.",
+      "sources": [
+        "https://www.riotinto.com/en/news/releases/2025/rio-tinto-completes-acquisition-of-arcadium-lithium",
+        "https://www.compasslexecon.com/cases/rio-tinto-completes-6-7-billion-acquisition-of-arcadium-lithium",
+        "https://buenosairesherald.com/business/mining/rio-tinto-to-invest-us2-5-bn-to-boost-argentina-lithium-output",
+        "https://ir.arcadiumlithium.com/investors/news/news-details/2024/Arcadium-Lithium-Announces-Completion-of-Merger-of-Equals-between-Allkem-and-Livent/default.aspx"
+      ]
+    },
+    "litica_pluspetrol": {
+      "parent": "Pluspetrol (Argentina — Edith Rodriguez, widow of founder Luis Rey)",
+      "hectares_controlled": 320000,
+      "status": "Largest single concession holder in Argentina by hectares. All projects in exploration phase.",
+      "salt_flats": ["Rio Grande", "Arizaro", "Pocitos", "Diablillos", "Salinas Grandes", "Laguna de Guayatayoc", "Palar", "Pular"],
+      "provinces": ["Salta", "Jujuy", "Catamarca"],
+      "acquisition": "Acquired 234,500 ha via takeover of LSC Lithium for USD 83.5M in January 2019",
+      "notes": "Though Argentine-owned, Pluspetrol is incorporated in Netherlands (Pluspetrol Resources Corporation B.V.) for tax optimization. Largest lithium land bank but no production yet.",
+      "sources": [
+        "https://dialogue.earth/en/business/392580-who-controls-argentinas-lithium/",
+        "https://www.litica.com/en/proyectos"
+      ]
+    },
+    "ganfeng_lithium": {
+      "parent": "Ganfeng Lithium (China)",
+      "argentina_operations": [
+        "Cauchari-Olaroz JV (46.7% via EXAR) — Jujuy, producing",
+        "Pozuelos-Pastos Grandes — Salta, under construction (USD 273M RIGI application)",
+        "Incahuasi-Arizaro — Salta, advanced exploration",
+        "Industrial plant in General Guemes (Salta) — inaugurated 2024"
+      ],
+      "investment_usd": "Nearly USD 1B planned for new lithium project",
+      "notes": "Expanding rapidly. Forming new JV with Lithium Argentina to consolidate basins.",
+      "sources": [
+        "https://fundacionandresbello.org/en/news/argentina-%F0%9F%87%A6%F0%9F%87%B7-news/ganfeng-lithium-expands-in-argentina-with-new-plant-in-salta/",
+        "https://investors.lithium-argentina.com/news-releases/news-release-details/lithium-argentina-and-ganfeng-form-new-joint-venture-consolidate"
+      ]
+    },
+    "posco": {
+      "parent": "POSCO Holdings (South Korea)",
+      "project": "Sal de Oro — Salta province",
+      "total_investment_usd": 2000000000,
+      "status": "Phase 1 plant inaugurated October 2024 in General Guemes. Phases 2-3 seeking RIGI (USD 633M application).",
+      "sources": [
+        "https://newsroom.posco.com/en/posco-holdings-begins-construction-of-saltwater-lithium-plant-in-argentina/",
+        "https://rigiconnect.com/the-rigi-is-already-talking-about-19000-million-dollars-in-mining-investments/"
+      ]
+    },
+    "eramet_tsingshan": {
+      "parent": "Eramet SA (France) / Tsingshan Holding Group (China)",
+      "project": "Centenario-Ratones — Salta province",
+      "subsidiary": "Eramine SudAmerica",
+      "status": "Production started July 2024. 4th lithium project in Argentina to reach production.",
+      "sources": [
+        "https://www.mining.com/web/argentina-is-about-to-unleash-a-wave-of-lithium-in-a-global-glut/"
+      ]
+    },
+    "zijin_mining": {
+      "parent": "Zijin Mining Group (China)",
+      "project": "Tres Quebradas (3Q) — Catamarca (Fiambala)",
+      "subsidiary": "Liex SA (acquired via Neo Lithium takeover 2022)",
+      "investment_usd": 600000000,
+      "capacity": "Phase 1: 20,000 tpa LCE (completed). Phase 2: 30,000 tpa (under construction). Target: 40,000-60,000 tpa.",
+      "resources": "7.565M tonnes LCE, avg 621 mg/L lithium concentration, 1.68M tonnes high-grade at 926 mg/L",
+      "notes": "Zijin also seeking advanced gold and copper projects in Argentina.",
+      "sources": [
+        "https://www.zijinmining.com/global/program-detail-71747.htm",
+        "https://www.mining.com/web/zijin-mining-to-invest-380m-in-argentina-lithium-plant/"
+      ]
+    },
+    "sources_chinese_investment": {
+      "china_total_investment_2023": "USD 2.7B in Argentina's lithium sector",
+      "china_export_share": "40% of Argentina's lithium exports go to China",
+      "chinese_company_stakes": "13 of 47 active lithium projects",
+      "exclusive_control": "Zijin and Ganfeng have exclusive control over 2 salt mines",
+      "sources": [
+        "https://dialogue.earth/en/business/392580-who-controls-argentinas-lithium/",
+        "https://elruido.org/que-paises-controlan-la-produccion-de-litio-en-argentina-y-cual-es-el-rol-de-china/"
+      ]
+    }
+  },
+
+  "gold_copper_mining": {
+    "barrick_gold_veladero": {
+      "parent": "Barrick Gold (Canada) / Shandong Gold (China) JV",
+      "location": "San Juan province — Cordillera de los Andes",
+      "mineral": "Gold",
+      "production_2024": "505,000 oz gold (100% basis) — 22% increase from 2023",
+      "production_2025_guidance": "380,000-440,000 oz gold",
+      "investment_2025_2028": "USD 400M (Barrick + Shandong Gold JV)",
+      "mine_life_extension": "USD 271M through 2027 to extend to 2035, avg 400,000 oz/year",
+      "environmental_record": {
+        "spill_2015": "Over 1 million liters of cyanide solution leaked into 5+ rivers in September 2015 — largest mining spill in Argentine history. Community of Jachal only learned via employee WhatsApp message. Provincial government and Barrick acknowledged 6 days later.",
+        "spill_2016": "Additional spill incident",
+        "spill_2017": "Three ruptured 30-inch pipes caused 300% rise in mercury levels in river",
+        "health_impacts": "Independent monitoring confirmed mercury above safe levels for human consumption. Residents of Jachal fear permanent water contamination.",
+        "legal_status": "7+ years after officials charged with negligence, no trial held as of 2025. Multiple spills still under investigation.",
+        "transparency": "Barrick called contamination claims 'unfounded controversy.' Earthworks and Mining Watch Canada criticized lack of transparency."
+      },
+      "sources": [
+        "https://www.barrick.com/English/operations/veladero/default.aspx",
+        "https://discoveryalert.com.au/barrick-shandong-gold-veladero-2025-investment-expansion/",
+        "https://news.mongabay.com/2025/04/still-no-trial-over-argentina-cyanide-mine-spill-7-years-after-officials-were-charged/",
+        "https://miningwatch.ca/blog/2022/12/2/water-contamination-barricks-veladero-mine-threatens-health-and-human-rights",
+        "https://center-hre.org/new-book-slams-barrick-gold-in-argentina-2/"
+      ]
+    },
+    "barrick_lama_pascua_lama": {
+      "parent": "Barrick Gold (Canada)",
+      "location": "San Juan province (Argentine side of binational Pascua-Lama)",
+      "mineral": "Gold, Silver",
+      "potential_production": "800,000-850,000 oz gold + 35M oz silver per year (first 5 years of 25-year life)",
+      "status": "Exploring feasibility of 'Lama-Veladero complex.' USD 75M allocated for exploration. Barrick to decide fate in 2024-2025.",
+      "notes": "Chilean side (Pascua) suspended indefinitely due to environmental violations. Argentine side (Lama) being developed as standalone or integrated with Veladero.",
+      "sources": [
+        "https://www.mining.com/barrick-to-decide-fate-of-lama-gold-silver-project-in-2024/",
+        "https://www.mining-journal.com/precious-metals/news/4072009/barrick-exploring-pascua-lama-potential"
+      ]
+    },
+    "glencore_mara_alumbrera": {
+      "parent": "Glencore (Switzerland)",
+      "location": "Catamarca province",
+      "mineral": "Copper, Gold, Molybdenum",
+      "project_structure": "MARA = integration of Bajo de la Alumbrera infrastructure + Agua Rica deposit (35 km apart)",
+      "history": "Alumbrera operated 1997-2018, producing copper/gold for 20 years. Ceased operations 2018.",
+      "restart_plan": "Production restart targeted first half 2028. Expected output: 75,000 tonnes copper, 317,000 oz gold, 1,000 tonnes molybdenum over 4 years.",
+      "agua_rica_resources": "1.2 billion tonnes ore at 0.47% Cu, 0.20 g/t Au, 3.40 g/t Ag, 0.03% Mo",
+      "mara_reserves": "5.4M tonnes copper, 7.4M oz gold, 27-year mine life",
+      "investment_usd": 4000000000,
+      "rigi_application": "Submitted. Agua Rica: USD 4B. El Pachon (San Juan): USD 9.5B. Total Glencore RIGI: USD 13.5B.",
+      "ownership": "Glencore acquired Anglo American's 56.25% stake in 2023 for USD 475M, now 100% owner.",
+      "employment": "10,000+ construction jobs, 2,500 permanent operational roles",
+      "sources": [
+        "https://www.glencore.com/media-and-insights/news/glencore-submits-RIGI-applications-in-respect-of-its-argentine-copper-projects",
+        "https://www.miningweekly.com/article/glencore-considers-135bn-argentine-copper-investments-under-rigi-incentives-2025-08-19",
+        "https://www.panorama-minero.com/en/news/copper-glencore-and-the-government-of-catamarca-strengthen-the-future-of-mara",
+        "https://en.wikipedia.org/wiki/Bajo_de_la_Alumbrera_mine"
+      ]
+    },
+    "glencore_el_pachon": {
+      "parent": "Glencore (Switzerland)",
+      "location": "San Juan province",
+      "mineral": "Copper",
+      "investment_usd": 9500000000,
+      "rigi_application": "Submitted as RIGI Long-Term Strategic Export project (>USD 2B threshold for enhanced benefits)",
+      "status": "Blocked by glacier protection law. Senate approved reform Feb 2026. Awaiting Chamber of Deputies vote.",
+      "sources": [
+        "https://www.glencore.com/media-and-insights/news/glencore-submits-RIGI-applications-in-respect-of-its-argentine-copper-projects"
+      ]
+    },
+    "first_quantum_taca_taca": {
+      "parent": "First Quantum Minerals (Canada)",
+      "location": "Salta province — 230 km west of Salta city, 55 km from Chilean border",
+      "mineral": "Copper, Gold, Molybdenum",
+      "investment_usd": 5250000000,
+      "investment_breakdown": "USD 4.23B base development + USD 1.02B expansion",
+      "reserves": "1.99 Bt Proven & Probable at 0.42% Cu and 0.09 g/t Au — 35-year mine life",
+      "production": "Annual copper >200 kt, peak >320 kt (top quartile global producers)",
+      "npv_8pct": 5920000000,
+      "irr_after_tax": "19.3%",
+      "payback_years": 9,
+      "processing_capacity": "40 Mt/year initial, expanding to 60 Mt/year in year 5",
+      "employment": "4,000 construction + 2,000 operational",
+      "esia_target": "First half 2026",
+      "acquisition": "100% acquired from Lumina Copper Corporation in 2014 via Corriente Argentina S.A.",
+      "infrastructure": "122.5 km transmission line to 345 kV Argentina-Chile system, 5 km rail spur to trans-Andean logistics, Pacific port access via Chile",
+      "sources": [
+        "https://www.first-quantum.com/operations/taca-taca/",
+        "https://www.theassay.com/articles/first-quantum-minerals-commits-us5-25b-to-taca-taca-copper-project-in-argentina/",
+        "https://www.panorama-minero.com/en/news/first-quantum-minerals-presents-taca-taca-technical-report-and-projects-a-structural-leap-for-mining-in-salta-and-argentina"
+      ]
+    },
+    "mcewan_los_azules": {
+      "parent": "McEwen Mining (Canada) — McEwen Copper subsidiary",
+      "location": "San Juan province",
+      "mineral": "Copper",
+      "investment_usd": 2672000000,
+      "rigi_approved": true,
+      "notes": "First mining development approved under RIGI. Located in Andes near Chilean border.",
+      "sources": [
+        "https://www.mcewenmining.com/investor-relations/press-releases/press-release-details/2025/McEwen-Coppers-Los-Azules-Joins-Argentinas-Large-Investment-Incentive-Regime-RIGI/default.aspx"
+      ]
+    }
+  },
+
+  "provincial_concession_system": {
+    "constitutional_basis": "Argentine constitution grants provinces original ownership of natural resources in their territory (reform of 1994, Article 124).",
+    "how_it_works": [
+      "Provinces grant exploration permits and exploitation concessions — federal government has no direct role in granting mining rights",
+      "Mining Code provides a first-come, first-served system for exploration permits",
+      "Mining concessions are granted in perpetuity as long as annual fees are paid and investment commitments met",
+      "If conditions are not met, rights revert to the province, which can re-grant to next applicant",
+      "Each province can enact its own Mining Procedural Code on top of the federal Mining Code",
+      "Provinces charge royalties (capped at 3% by federal law, now raised to 5% max), collect canon fees, and approve environmental impact assessments",
+      "Provincial mining authorities (direcciones de mineria) process applications — staffing and independence vary enormously"
+    ],
+    "governor_power": "Governors effectively control who gets mining rights, at what pace permits are processed, whether environmental assessments are rigorous or rubber-stamped, and how royalties and trust fund moneys are spent. This creates enormous potential for patronage and regulatory capture.",
+    "structural_problems": [
+      "No meaningful federal oversight of provincial concession decisions",
+      "Environmental impact assessments conducted by same provincial agencies that benefit from mining revenue",
+      "Revolving door between mining companies and provincial mining authorities",
+      "Indigenous consultation (FPIC) requirements routinely ignored or performed as formality",
+      "Extremely opaque: no centralized public registry of all mining concessions and their beneficial owners",
+      "Foreign companies create local subsidiaries, obscuring true ownership chains"
+    ],
+    "sources": [
+      "https://practiceguides.chambers.com/practice-guides/mining-2025/argentina",
+      "https://www.argentina.gob.ar/sites/default/files/2.1._marco_legal_y_regimen_fiscal.pdf",
+      "https://www.lexology.com/library/detail.aspx?g=1f88ef90-4c61-460d-8870-2f9e8a0fa299",
+      "https://www.researchgate.net/publication/349926341_Modes_of_Lithium_Extraction_in_Argentina_Mining_Politics_in_Catamarca_Jujuy_and_Salta"
+    ]
+  },
+
+  "rigi_regime": {
+    "full_name": "Regimen de Incentivo para Grandes Inversiones (RIGI)",
+    "legal_basis": "Ley 27.742 — 'Ley de Bases y Puntos de Partida para la Libertad de los Argentinos' (2024), Title VII",
+    "minimum_investment": "USD 200M (mining sector)",
+    "strategic_export_threshold": "USD 2B+ qualifies as 'Long-Term Strategic Export Project' (PEELP) with enhanced benefits",
+    "sectors": ["Mining", "Oil & Gas", "Renewable Energy", "Forestry", "Steel", "Technology", "Infrastructure", "Tourism"],
+    "tax_benefits": {
+      "income_tax": "Reduced to 25% (vs standard 35% corporate rate) for Single Project Vehicles (VPU)",
+      "accelerated_depreciation": "Full accelerated depreciation of project assets",
+      "vat": "Cancelled via fiscal credit certificates — no prior authorization required",
+      "financial_transactions_tax": "Debits/credits tax 100% creditable against income tax",
+      "import_duties": "Elimination of import duties on capital goods",
+      "export_duties": "Progressive reduction: from current rates to 0% within 3 years",
+      "fiscal_stability": "30 years — no new taxes or tax increases can be applied to enrolled projects",
+      "forex": "Free availability of foreign currency for profit repatriation after year 3"
+    },
+    "total_submitted_usd": 33876000000,
+    "total_approved_usd": 15739000000,
+    "approval_rate": "46.5%",
+    "mining_share": "USD 21.953B (64.8% of total RIGI)",
+    "energy_share": "USD 11.337B (33.5% of total RIGI)",
+    "key_approved_projects": [
+      "Los Azules (McEwen Copper) — USD 2.672B — San Juan — Copper",
+      "Rincon de Litio (Rio Tinto) — USD 2.7B — Salta — Lithium"
+    ],
+    "key_pending_projects": [
+      "MARA / Agua Rica (Glencore) — USD 4B — Catamarca — Copper",
+      "El Pachon (Glencore) — USD 9.5B — San Juan — Copper",
+      "Taca Taca (First Quantum) — USD 5.25B — Salta — Copper",
+      "Sal de Oro Phase 2-3 (POSCO) — USD 633M — Salta — Lithium",
+      "Pozuelos-Pastos Grandes (Ganfeng) — USD 273M — Salta — Lithium"
+    ],
+    "adhered_provinces": ["Rio Negro", "Chubut", "Mendoza", "San Juan", "Salta", "Cordoba"],
+    "who_benefits": "Almost exclusively large foreign mining and energy multinationals. The USD 200M minimum investment threshold excludes all domestic SMEs. The 30-year fiscal stability locks in preferential treatment regardless of future democratic decisions. Export duty elimination means provinces lose potential revenue. The regime effectively creates a parallel fiscal system for the largest foreign investors while Argentine small businesses face the full tax burden.",
+    "sources": [
+      "https://servicios.infoleg.gob.ar/infolegInternet/anexos/400000-404999/403230/norma.htm",
+      "https://www.argentina.gob.ar/noticias/rigi-desde-hoy-las-empresas-podran-aplicar-al-regimen",
+      "https://www.auxadi.es/blog/2024/12/09/argentina-incentivos-grandes-inversiones/",
+      "https://rigiconnect.com/the-rigi-is-already-talking-about-19000-million-dollars-in-mining-investments/",
+      "https://www.panorama-minero.com/en/news/rigi-projects-reach-us-33-billion-in-mining-and-energy",
+      "https://buenosairesherald.com/business/mining/argentinas-rigi-committee-approves-first-lithium-mining-project"
+    ]
+  },
+
+  "royalty_structure": {
+    "federal_framework": {
+      "base_rate": "3% of boca de mina (mine-mouth) value — i.e., the raw mineral as extracted before any processing or transport costs are deducted",
+      "calculation_method": "Royalties are calculated on the declared value at the mine mouth, which allows companies to deduct transport, insurance, processing, and commercialization costs from the sale price, significantly reducing the effective royalty base",
+      "cap_change": "Federal law previously capped provincial royalties at 3%. Recent modification raised the cap to 5%, triggering industry backlash (CAEM warned it would 'scare away investments').",
+      "effective_rate": "After allowable deductions, effective royalty rates can fall well below the nominal 3%. Independent analyses suggest effective rates as low as 1-1.5% of actual sale value in some cases."
+    },
+    "by_province": {
+      "catamarca": {
+        "rate": "3.5% on total billing value",
+        "additional": "Mining trust fund contributions, canon fees, provincial taxes",
+        "notes": "Includes royalties plus additional provincial charges"
+      },
+      "jujuy": {
+        "rate": "3%",
+        "industrial_discount": "Companies promoting local industrialization can negotiate rate down to 2%",
+        "notes": "Province created JEMSE (Jujuy Energia y Mineria Sociedad del Estado) — state company that takes 8.5% equity stake in lithium projects. This is unique among Argentine provinces."
+      },
+      "salta": {
+        "rate": "3%",
+        "additional": "Provincial adhesion to RIGI may further reduce effective rates for large projects"
+      },
+      "san_juan": {
+        "rate": "3%",
+        "additional": "Trust funds for community development (e.g., USD 7.4B ARS from Veladero for Iglesia/Jachal infrastructure)"
+      }
+    },
+    "total_fiscal_pressure": "Argentina's total mining tax burden (all levels) is approximately 50% — among the highest globally. However, this headline number is misleading: RIGI projects enjoy 25% income tax (vs 35%), import duty exemption, export duty phase-out, and 30-year stability, so the effective burden on new mega-projects is substantially lower.",
+    "comparison": {
+      "chile": "Progressive royalty up to 46.5% (for largest producers) after 2023 mining royalty reform",
+      "bolivia": "State controls lithium via YLB (Yacimientos de Litio Bolivianos). Private participation highly restricted.",
+      "australia": "State royalties 2.5-5% plus 30% federal MRRT (repealed 2014, but state royalties remain)"
+    },
+    "structural_critique": "The mine-mouth valuation method systematically undervalues the royalty base. Argentina exports almost entirely raw lithium carbonate or chloride — no battery-grade processing, no cathode manufacturing, no cell assembly. The 3% royalty on raw material exports means Argentina captures a tiny fraction of the value chain. Chile by contrast extracts significantly higher rents via SQM/Codelco partnerships and higher royalty rates.",
+    "sources": [
+      "https://www.bloomberglinea.com/latinoamerica/argentina/litio-y-mineria-en-argentina-cuanto-dejan-en-recaudacion-a-provincias-y-a-nacion/",
+      "https://chequeado.com/el-explicador/litio-cuanto-pagan-las-mineras-y-que-pasa-en-chile-y-bolivia/",
+      "https://www.ambito.com/energia/caem-alerto-la-suba-regalias-mineria-espanta-inversiones-y-golpea-al-litio-cobre-oro-y-plata-n6007902",
+      "https://www.perfil.com/noticias/amp/economia/explotacion-de-litio-las-regalias-y-los-puestos-de-trabajo-son-los-dos-puntos-que-defienden-las-provincias.phtml"
+    ]
+  },
+
+  "key_political_actors": {
+    "national_level": {
+      "president": {
+        "name": "Javier Milei",
+        "party": "La Libertad Avanza",
+        "mining_stance": "Aggressively pro-mining. Pushed RIGI through Congress as part of Ley de Bases (2024). Sent glacier law reform to Congress (2025). Mining presented as key pillar of Argentina's economic recovery.",
+        "key_actions": [
+          "Ley de Bases with RIGI regime (2024)",
+          "Glacier protection law reform bill (2025-2026)",
+          "Removal of Secretary of Mining Flavia Royon for ties to opposition governors (Feb 2024)",
+          "International promotion of Argentina as mining investment destination"
+        ]
+      },
+      "secretary_of_mining": {
+        "name": "Luis Lucero",
+        "appointed": "March 2024 (2nd Secretary of Mining under Milei)",
+        "background": "Lawyer specialized in mining industry, natural resources law, project financing, arbitration",
+        "predecessor": "Flavia Royon — removed Feb 2024 for alleged ties to provincial governors who opposed omnibus law",
+        "notes": "Lucero leads international mining promotion alongside Karina Milei (Secretary General) and Pablo Quirno (Secretary of Finance)"
+      }
+    },
+    "provincial_governors": {
+      "jujuy": {
+        "current": "Carlos Sadir (since 2023)",
+        "predecessor": "Gerardo Morales (2015-2023, UCR/Cambiemos)",
+        "morales_legacy": "Pushed expedited constitutional reform to facilitate lithium mining, stripped indigenous communal land rights, criminalized protest. 170+ injured in repression of June 2023 protests. National government filed unconstitutionality action. Created JEMSE (state mining company) for provincial equity participation in lithium projects.",
+        "party": "UCR / Cambiemos coalition"
+      },
+      "salta": {
+        "current": "Gustavo Saenz",
+        "party": "Partido Renovador de Salta",
+        "mining_stance": "Mining declared 'state policy.' Presided over Mesa del Litio 2024-2025. Created Region Minera del Litio. Adhered province to RIGI. Active international promotion (PDAC Toronto). Province hosts 3 of 6 producing lithium projects nationally."
+      },
+      "catamarca": {
+        "current": "Raul Jalil",
+        "party": "Peronism / PJ",
+        "mining_stance": "Assumed rotating presidency of Lithium Board. Direct meetings with Glencore for MARA project. Signed CEPAL cooperation on lithium legislation. Receives 3.5% royalties. Publicly frames approach as 'mining with controls' but environmental enforcement questioned.",
+        "highlighted_investments": "15 countries investing in Catamarca mining"
+      },
+      "san_juan": {
+        "current": "Marcelo Orrego",
+        "party": "Produccion y Trabajo",
+        "mining_context": "Province of Veladero (Barrick), Los Azules (McEwen), El Pachon (Glencore), Lama (Barrick). Historically most dependent on large-scale mining. Three cyanide spills at Veladero (2015-2017) with no trial. Adhered to RIGI."
+      }
+    },
+    "sources": [
+      "https://minerandina.com/en/argentina-milei-appoints-new-secretary-of-mining-the-second-since-his-assumption/",
+      "https://www.panorama-minero.com/en/news/argentina-in-the-global-investor-spotlight-due-to-rigi-a-key-day-in-toronto",
+      "https://www.salta.gob.ar/prensa/noticias/el-gobernador-gustavo-saenz-asumio-la-presidencia-de-la-mesa-del-litio-94082",
+      "https://www.panorama-minero.com/en/news/raul-jalil-leads-the-lithium-board-with-new-strategic-agreements",
+      "https://agenciatierraviva.com.ar/movilizacion-indigena-contra-la-cuestionada-reforma-constitucional-en-jujuy/",
+      "https://www.cels.org.ar/web/opiniones/fiebre-del-litio-y-vulneraciones-de-derechos-en-jujuy-argentina-informe-de-organizaciones-internacionales-de-la-sociedad-civil-a-un-ano-de-la-represion/"
+    ]
+  },
+
+  "environmental_conflicts": {
+    "andalgala_catamarca": {
+      "project": "Agua Rica / MARA (Glencore)",
+      "community": "Andalgala — population ~17,000, located 17 km from mine site",
+      "conflict": "Weekly anti-mining marches since 2010. Community successfully blocked Agua Rica opening for 8+ years. Agua Rica is 3x the size of former Alumbrera mine.",
+      "environmental_impacts": "Two decades of Alumbrera mining caused drought and polluted water sources. Local pediatric hospital reported 63% increase in childhood respiratory diseases in first 4 years of Alumbrera operation.",
+      "water_concerns": "Residents fear Agua Rica will contaminate Andalgala River water supply",
+      "current_status": "Glencore plans restart via MARA with USD 4B investment and RIGI application. Community opposition continues.",
+      "sources": [
+        "https://center-hre.org/conflicts-grow-in-andean-region-around-mining-projects/",
+        "https://wagingnonviolence.org/2023/01/environmental-defenders-argentina-stop-mining-boom/"
+      ]
+    },
+    "famatina_la_rioja": {
+      "project": "Famatina gold mine (various companies over time)",
+      "conflict": "Mass uprising in 2012 against mega-mining led to project suspension. Canadian company Osisko halted exploration due to community protests. Famatina became a national symbol of anti-mining resistance.",
+      "outcome": "La Rioja attempted to declare lithium a 'strategic resource' in 2023, conflicting with governors and industrialists who want open private concessions.",
+      "sources": [
+        "https://theconversation.com/the-argentinian-fight-against-mega-mining-95672",
+        "https://www.zyri.net/2023/01/11/la-rioja-wants-to-declare-lithium-as-a-strategic-resource-and-opens-a-conflict-with-governors-and-industrialists/"
+      ]
+    },
+    "veladero_san_juan": {
+      "spills": [
+        {
+          "date": "September 2015",
+          "description": "1+ million liters of cyanide solution leaked into 5+ rivers via valve failure. Largest mining spill in Argentine history. Jachal residents learned via WhatsApp from mine employee. Government/Barrick acknowledged 6 days later."
+        },
+        {
+          "date": "2016",
+          "description": "Additional spill incident. Barrick claims no cyanide left facility."
+        },
+        {
+          "date": "March 2017",
+          "description": "Three ruptured 30-inch pipes caused 300% mercury level spike in river."
+        }
+      ],
+      "health_impacts": "Mercury levels above safe limits for human consumption confirmed by independent monitoring. Residents fear permanent contamination.",
+      "legal_status": "7+ years after officials charged with negligence — no trial held. All 3 spills still under investigation.",
+      "sources": [
+        "https://news.mongabay.com/2025/04/still-no-trial-over-argentina-cyanide-mine-spill-7-years-after-officials-were-charged/",
+        "https://miningwatch.ca/blog/2022/12/2/water-contamination-barricks-veladero-mine-threatens-health-and-human-rights",
+        "https://miningwatch.ca/blog/2026/2/17/ten-years-after-worst-spill-argentinas-history-communities-express-concern-about"
+      ]
+    },
+    "glacier_law_reform": {
+      "original_law": "Ley 26.639 (2010) — first glacier protection law in the world. Prohibits mining, oil drilling, and industrial activity on Argentina's ~17,000 glaciers and periglacial environments that supply water to millions.",
+      "reform_proposal": "Milei government sent reform bill to Congress (2025). Key change: ice cover would no longer be automatically protected by inclusion in National Glacier Inventory. Provinces would decide exemptions based on 'strategic water function.'",
+      "senate_vote": "Passed 40-31 (36 needed). Now in Chamber of Deputies.",
+      "projects_unlocked": "At least 4 large copper projects worth USD 40B+ have been blocked by glacier law: El Pachon (Glencore, USD 9.5B), Agua Rica/MARA (Glencore, USD 4B), Los Azules (McEwen, USD 2.7B), Josemaria (Lundin, San Juan).",
+      "opposition": "Protests in 35+ cities in February 2026. Environmental groups warn reform would destroy fragile Andean ecosystems, threaten water supply for agriculture and millions of people.",
+      "indigenous_impact": "Glaciers overlap with Indigenous community territories who depend on them for livelihoods.",
+      "sources": [
+        "https://news.mongabay.com/2026/02/argentina-considers-weakening-glacier-safeguards-in-pursuit-of-critical-minerals/",
+        "https://www.climatechangenews.com/2026/02/17/argentinas-pioneering-glacier-law-on-the-line-as-milei-bets-on-copper-rush/",
+        "https://www.mining.com/web/argentinas-senate-passes-glacier-law-reform-to-unlock-mining-projects/",
+        "https://miningwatch.ca/news/2025/6/17/defend-glacier-law-milei-acts-against-argentinian-water-reserves"
+      ]
+    },
+    "jujuy_indigenous_repression_2023": {
+      "context": "Governor Morales' constitutional reform to facilitate lithium mining",
+      "reforms_targeting_indigenous": [
+        "Declared indigenous communal territory 'public land destined for production'",
+        "Claimed provincial ownership of 'all water sources of provincial territory'",
+        "Did not recognize international treaties protecting indigenous rights in territorial disputes",
+        "No prior and informed consultation (FPIC) as required by ILO Convention 169"
+      ],
+      "repression": {
+        "date": "June 2023",
+        "injured": "170+ (one with skull trauma)",
+        "detained": "68 (45 men, 18 women, 5 minors)",
+        "participants": "400+ indigenous communities, unions, teachers, social organizations, left parties",
+        "aftermath": "Systematic political and judicial persecution of participants continuing as of 2024"
+      },
+      "sources": [
+        "https://agenciatierraviva.com.ar/movilizacion-indigena-contra-la-cuestionada-reforma-constitucional-en-jujuy/",
+        "https://www.cels.org.ar/web/opiniones/fiebre-del-litio-y-vulneraciones-de-derechos-en-jujuy-argentina-informe-de-organizaciones-internacionales-de-la-sociedad-civil-a-un-ano-de-la-represion/",
+        "https://www.earthisland.org/journal/index.php/magazine/entry/government-cracking-down-protests-against-lithium-mining-argentina",
+        "https://www.pagina12.com.ar/765869-la-nueva-constitucion-de-jujuy-huele-a-litio-y-a-entrega"
+      ]
+    }
+  },
+
+  "foreign_ownership_analysis": {
+    "overview": "Argentina is the only Lithium Triangle country that permits unrestricted private foreign ownership, exploration, development, and production of lithium resources. Unlike Chile (state partnerships via SQM/Codelco) or Bolivia (state monopoly via YLB), Argentina places no restrictions on foreign investment in mining.",
+    "concentration_data": {
+      "total_hectares_top_5_companies": "Nearly 1,000,000 hectares of salt flats controlled by 5 multinational companies",
+      "largest_holders": [
+        {"company": "Litica (Pluspetrol)", "hectares": 320000, "nationality": "Argentina (Netherlands-incorporated)", "status": "Exploration only"},
+        {"company": "Rio Tinto Lithium (ex-Arcadium)", "hectares": 315637, "nationality": "UK/Australia", "status": "Producing + development"},
+        {"company": "Rio Tinto (Rincon)", "hectares": 83000, "nationality": "UK/Australia", "status": "Development"},
+        {"company": "Ganfeng Lithium", "hectares": "Not disclosed", "nationality": "China", "status": "Producing + construction + exploration"},
+        {"company": "POSCO", "hectares": "Not disclosed", "nationality": "South Korea", "status": "Producing + expansion"}
+      ]
+    },
+    "ownership_structure": "Foreign mining companies create local subsidiaries domiciled in Argentina (e.g., Ganfeng operates through EXAR, Zijin through Liex SA). The real beneficial owners are foreign capital. This creates opacity in the concession system.",
+    "value_chain_position": "Argentina exports almost entirely raw lithium carbonate and chloride. No battery-grade lithium hydroxide processing, no cathode manufacturing, no cell assembly. The country captures a minimal share of the lithium value chain despite having world-class reserves.",
+    "national_companies_producing": "Zero. No Argentine-owned company currently produces lithium. The two original producers were Allkem (Australian, now Rio Tinto) and Livent (American/FMC, now Rio Tinto). All new projects are foreign-owned.",
+    "chinese_footprint": {
+      "investment_2023": "USD 2.7B",
+      "export_share": "40% of Argentina's lithium exports",
+      "project_stakes": "13 of 47 active lithium projects",
+      "exclusive_control": "Zijin and Ganfeng hold exclusive control over 2 salt mines",
+      "key_companies": ["Ganfeng Lithium", "Zijin Mining", "Tsingshan Holding Group (via Eramet JV)", "CATL (exploring)"]
+    },
+    "policy_implication": "Argentina has the weakest resource nationalism regime in the Lithium Triangle. Chile reformed to capture up to 46.5% royalties from largest producers. Bolivia maintains state monopoly. Argentina charges 3% mine-mouth royalties and is now offering 30-year fiscal stability with reduced tax rates via RIGI — effectively locking in extractivist terms for a generation.",
+    "sources": [
+      "https://dialogue.earth/en/business/392580-who-controls-argentinas-lithium/",
+      "https://latfem.org/no-todo-lo-que-brilla-es-litio-concentracion-de-empresas-y-falta-de-transparencia-en-la-explotacion-en-argentina/",
+      "https://www.eldiarioar.com/politica/duenos-litio-nombres-ocultos-fondos-inversion-bancos-extranjeros-detras-boom-minero-argentina_1_10080137.html",
+      "https://www.csis.org/analysis/leveraging-argentinas-mineral-resources-economic-growth",
+      "https://elruido.org/que-paises-controlan-la-produccion-de-litio-en-argentina-y-cual-es-el-rol-de-china/"
+    ]
+  },
+
+  "rigi_investment_by_province": {
+    "salta": {"investment_usd": 9000000000, "key_sectors": ["Lithium", "Copper"]},
+    "catamarca": {"investment_usd": 7000000000, "key_sectors": ["Copper", "Lithium", "Gold"]},
+    "jujuy": {"investment_usd": 3000000000, "key_sectors": ["Lithium"]},
+    "san_juan": {"investment_usd": "14B+ (Glencore El Pachon + Los Azules + Barrick Veladero/Lama)", "key_sectors": ["Copper", "Gold"]},
+    "sources": [
+      "https://rigiconnect.com/the-rigi-is-already-talking-about-19000-million-dollars-in-mining-investments/"
+    ]
+  },
+
+  "investigation_notes": {
+    "graph_entities_to_create": [
+      "Company: Rio Tinto, Glencore, Barrick Gold, First Quantum Minerals, POSCO Holdings, Ganfeng Lithium, Zijin Mining, Eramet, Tsingshan, McEwen Mining, Litica/Pluspetrol, Shandong Gold, Lithium Argentina",
+      "Person: Javier Milei, Luis Lucero, Gerardo Morales, Carlos Sadir, Gustavo Saenz, Raul Jalil, Marcelo Orrego, Edith Rodriguez, Mark Bristow (Barrick CEO), Gary Nagle (Glencore CEO)",
+      "MiningProject: Olaroz, Cauchari-Olaroz, Fenix, Sal de Vida, Rincon, Centenario-Ratones, Sal de Oro, Pozuelos-Pastos Grandes, Tres Quebradas, Veladero, Lama, MARA/Agua Rica, El Pachon, Taca Taca, Los Azules",
+      "Province: Jujuy, Salta, Catamarca, San Juan",
+      "Law: RIGI (Ley 27.742), Ley de Glaciares (26.639), Codigo de Mineria",
+      "EnvironmentalConflict: Andalgala, Famatina, Veladero cyanide spills, Jujuy indigenous repression 2023, Glacier law reform protests 2026"
+    ],
+    "relationships_to_map": [
+      "OPERATES_IN: Company -> Province",
+      "CONTROLS: Company -> MiningProject",
+      "GOVERNS: Person (governor) -> Province",
+      "GRANTED_CONCESSION: Province -> MiningProject",
+      "BENEFITS_FROM: Company -> RIGI",
+      "CONTESTED_BY: EnvironmentalConflict -> MiningProject",
+      "ACQUIRED: Rio Tinto -> Arcadium Lithium -> Allkem + Livent",
+      "JV_PARTNER: Ganfeng <-> Lithium Argentina (Cauchari-Olaroz)",
+      "JV_PARTNER: Barrick <-> Shandong Gold (Veladero)",
+      "SUBSIDIARY: Zijin -> Liex SA -> Tres Quebradas",
+      "SUBSIDIARY: Ganfeng -> EXAR -> Cauchari-Olaroz"
+    ],
+    "key_accountability_questions": [
+      "Why has no Argentine-owned company achieved lithium production despite 30+ years of industry development?",
+      "What is the actual effective royalty rate paid by each operating project after all deductions?",
+      "How much revenue do provincial governments receive vs. what they would under Chile's regime?",
+      "Who are the beneficial owners of the local subsidiaries holding mining concessions?",
+      "Why have the Veladero cyanide spill cases not gone to trial after 7+ years?",
+      "What are the financial flows between mining companies and political campaigns in mining provinces?",
+      "How does the RIGI 30-year fiscal stability affect Argentina's sovereign capacity to adjust resource rents?",
+      "What was the role of lobbying in the glacier law reform?",
+      "Are environmental impact assessments genuinely independent when conducted by revenue-dependent provincial agencies?"
+    ]
+  }
+}

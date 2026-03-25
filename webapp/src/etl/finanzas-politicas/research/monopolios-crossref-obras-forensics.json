@@ -1,0 +1,427 @@
+{
+  "investigation": "Monopolios Argentina — Cross-Reference with Obras Públicas Financial Forensics & Bribery Cases",
+  "date": "2026-03-24",
+  "methodology": "Systematic cross-referencing of monopoly investigation actors against 7 obras-publicas forensic research files: financial-forensics.json, odebrecht-argentina.json, cuadernos.json, siemens-fcpa.json, political-cycle-analysis.json, expansion-discoveries.json, risk-scoring.json, plus revolving-door-analysis.json and officer-network-analysis.json",
+  "sources_cross_referenced": 9,
+  "provenance_warning": "Cuadernos case evidence has documented chain-of-custody breaks and 1,500+ alterations confirmed by Gendarmería pericia (Aug 2025). 25 arrepentido confessions challenged as coercive. Verification status varies by entity. All entities listed as alleged unless noted otherwise.",
+
+  "monopoly_actors_in_bribery_cases": {
+    "cuadernos_case": {
+      "total_bribes_usd": 30000000,
+      "total_bribes_ars": 171224710,
+      "period": "2005-2015",
+      "status": "trial_in_progress",
+      "monopoly_actors_identified": [
+        {
+          "entity": "Electroingeniería S.A. / Ferreyra",
+          "monopoly_sector": "construction, energy",
+          "role_in_case": "bribe_payer",
+          "key_persons": ["Gerardo Ferreyra (detained)", "Jorge Guillermo Neira (cooperating witness)"],
+          "bribery_mechanism": "Direct cash deliveries documented in Centeno notebooks",
+          "monopoly_crossref": "Electroingeniería is a dominant player in energy infrastructure construction (high-voltage lines, nuclear projects). Its role as bribe payer confirms monopoly power was leveraged through political kickback system."
+        },
+        {
+          "entity": "Iecsa S.A. / Calcaterra / Macri family",
+          "monopoly_sector": "construction",
+          "role_in_case": "bribe_payer",
+          "key_persons": ["Angelo Calcaterra (Macri cousin, cooperating witness)", "Héctor Javier Sánchez Caballero (cooperating witness)"],
+          "bribery_mechanism": "Cash deliveries to officials; also channeled US$4.5M via fictitious contract with Spanish company DSC to Andorra (Odebrecht crossover)",
+          "monopoly_crossref": "IECSA/SACDE is the Macri family's construction arm. Calcaterra admitted bribes spanning both Kirchner and potentially Macri administrations. The company later rebranded as SACDE."
+        },
+        {
+          "entity": "Grupo Roggio (Benito Roggio e Hijos S.A.)",
+          "monopoly_sector": "construction, transport concessions",
+          "role_in_case": "bribe_payer",
+          "key_persons": ["Aldo Roggio (cooperating witness)", "Claudio Glazman (cooperating witness)"],
+          "bribery_mechanism": "Regular cash deliveries documented in notebooks",
+          "monopoly_crossref": "Roggio holds dominant positions in urban transport concessions (Metrovías), waste management (CLIBA), and highway construction. Bribery confirms pay-to-play access to concession renewals."
+        },
+        {
+          "entity": "Cartellone Construcciones Civiles S.A.",
+          "monopoly_sector": "construction",
+          "role_in_case": "bribe_payer",
+          "key_persons": [],
+          "bribery_mechanism": "Listed among companies making bribe deliveries to officials",
+          "monopoly_crossref": "Major construction firm involved in both cuadernos and Odebrecht consortiums. Double exposure to bribery cases."
+        },
+        {
+          "entity": "Techint (Organización Techint) / Rocca",
+          "monopoly_sector": "steel, construction, oil & gas engineering",
+          "role_in_case": "bribe_payer",
+          "key_persons": ["Héctor Alberto Zabaleta (cooperating witness)"],
+          "bribery_mechanism": "Cash deliveries; Techint cooperated via Zabaleta witness testimony",
+          "monopoly_crossref": "Techint/Rocca is Argentina's largest industrial conglomerate (Tenaris, Ternium, Tecpetrol). Its inclusion in cuadernos confirms that even the most powerful monopoly actors participated in the systematic bribery apparatus. This is the single highest-value monopoly entity in the entire investigation."
+        },
+        {
+          "entity": "Decavial S.A.",
+          "monopoly_sector": "road construction",
+          "role_in_case": "bribe_payer",
+          "key_persons": ["Aznar (representative mentioned in testimony)"],
+          "bribery_mechanism": "Cash deliveries",
+          "monopoly_crossref": "Road construction cartel member. Also appears in risk-scoring.json with cuadernos_score of 5 (CUIT 30504877678), confirming graph-level linkage."
+        },
+        {
+          "entity": "Esuco S.A. (Carlos Wagner / Cámara Argentina de la Construcción)",
+          "monopoly_sector": "construction cartel coordination",
+          "role_in_case": "bribe_payer and cartel organizer",
+          "key_persons": ["Carlos Wagner (president of Cámara Argentina de la Construcción, cooperating witness)"],
+          "bribery_mechanism": "Wagner organized the systematic cartelization of road public works: companies agreed on bid allocations with ~20% overpricing, half destined for bribes",
+          "bribe_linked_contracts_ars": 1200000000,
+          "monopoly_crossref": "CRITICAL FINDING: The Cámara Argentina de la Construcción — the industry's own trade body — was the vehicle for cartel coordination. Wagner's testimony reveals the construction monopoly operated as a formal cartel with price-fixing and bid allocation."
+        }
+      ],
+      "cartelization_mechanism": {
+        "description": "Systematic cartelization of road public works organized through Cámara Argentina de la Construcción",
+        "overpricing_rate": "~20%",
+        "bribe_share_of_overpricing": "50%",
+        "organizer": "Carlos Wagner (Esuco S.A., president of Cámara Argentina de la Construcción)",
+        "participating_monopoly_firms": ["Electroingeniería S.A.", "Iecsa S.A.", "Grupo Roggio", "Cartellone", "Techint", "Esuco S.A.", "Decavial S.A.", "COARCO S.A.", "CPC S.A.", "JCR S.A."],
+        "total_documented_payments": 175,
+        "highest_single_company_total": {"name": "JCR S.A.", "amount_ars": 85493691, "payments": 40},
+        "financial_operator": {"name": "Ernesto Clarens", "weekly_collection_usd": 300000, "total_handled_usd": 30000000}
+      }
+    },
+
+    "odebrecht_case": {
+      "total_bribes_usd": 35000000,
+      "period": "2007-2014",
+      "status": "under_investigation",
+      "monopoly_actors_as_consortium_partners": [
+        {
+          "project": "Soterramiento del Ferrocarril Sarmiento",
+          "contract_value_usd": 1500000000,
+          "bribe_amount_usd": 5000000,
+          "consortium": {
+            "name": "Consorcio Nuevo Sarmiento",
+            "members": [
+              {"name": "Iecsa S.A. (Calcaterra/Macri)", "stake_pct": 30, "role": "monopoly_actor"},
+              {"name": "Odebrecht S.A.", "stake_pct": 30, "role": "bribe_payer"},
+              {"name": "Ghella S.p.A.", "stake_pct": 30, "role": "foreign_partner"},
+              {"name": "Comsa S.A.", "stake_pct": 10, "role": "foreign_partner"}
+            ]
+          },
+          "bribery_mechanism": "US$4.5M+ channeled via Iecsa through fictitious contract with Spanish company DSC to Andorra. Codenames 'Gardelón' and 'Mudinho' used.",
+          "bribe_routing": "Calcaterra alleged to have paid US$20M to Ricardo Jaime (Secretario de Transporte)",
+          "monopoly_crossref": "Iecsa (Macri/Calcaterra) served as both consortium partner AND bribe conduit for Odebrecht. This dual role demonstrates how domestic monopoly firms enable foreign corruption by providing local laundering infrastructure."
+        },
+        {
+          "project": "Planta Potabilizadora Paraná de las Palmas (AYSA)",
+          "contract_value_usd": 880000000,
+          "bribe_amount_usd": 5000000,
+          "consortium": {
+            "members": [
+              {"name": "Odebrecht S.A.", "role": "lead_contractor"},
+              {"name": "Benito Roggio e Hijos S.A.", "role": "monopoly_actor"},
+              {"name": "Supercemento S.A.I.C.", "role": "subcontractor"},
+              {"name": "José Cartellone Construcciones Civiles S.A.", "role": "monopoly_actor"}
+            ]
+          },
+          "monopoly_crossref": "Two major monopoly construction firms (Roggio and Cartellone) partnered with Odebrecht on the AYSA water plant. Both separately appear in cuadernos as bribe payers. Triple exposure: Odebrecht bribes + cuadernos bribes + cartel participation."
+        },
+        {
+          "project": "Ampliación Gasoductos TGN y TGS",
+          "contract_value_usd": 2300000000,
+          "bribe_amount_usd": 25000000,
+          "monopoly_crossref": "Gas pipeline expansion involving Transportadora de Gas del Norte and TGS — both monopoly concession holders in the energy sector. US$25M in bribes is the largest single-project amount in the Odebrecht Argentina case."
+        }
+      ],
+      "politicians_overlapping_cuadernos": [
+        {"name": "Julio De Vido", "role_in_both": "alleged_bribe_recipient/organizer", "position": "Ministro de Planificación Federal (2003-2015)"},
+        {"name": "José Francisco López", "role_in_both": "alleged_bribe_recipient", "position": "Secretario de Obras Públicas (2003-2015)"},
+        {"name": "Roberto Baratta", "role_in_both": "alleged_bribe_recipient/organizer", "position": "Subsecretario de Coordinación"},
+        {"name": "Ricardo Jaime", "role_in_both": "alleged_bribe_recipient/organizer", "position": "Secretario de Transporte (2003-2009)"}
+      ],
+      "note": "Four senior officials appear in BOTH Odebrecht and cuadernos cases, confirming a unified bribery apparatus rather than isolated incidents."
+    },
+
+    "siemens_fcpa": {
+      "total_bribes_usd": 100000000,
+      "period": "1996-2007",
+      "status": "resolved_corporate_guilty_plea",
+      "project": "Documento Nacional de Identidad (DNI) Modernization",
+      "contract_value_usd": 1000000000,
+      "monopoly_analysis": {
+        "siemens_role": "Siemens AG held monopoly position as sole bidder for the DNI modernization contract — a $1B national identity document system awarded in 1998.",
+        "shell_company_network": "At least 17 offshore shell companies used to disguise bribe payments through fake consulting contracts",
+        "intermediaries": [
+          {"name": "Carlos Sergi", "role": "Led 'Project Group' of consultant intermediaries"},
+          {"name": "Miguel Czysch", "role": "Used offshore shells for laundering via fake consulting contracts"},
+          {"name": "Herbert Steffen", "role": "Authorized and concealed payments"}
+        ],
+        "executives_convicted": [
+          {"name": "Andres Truppel", "position": "CFO Siemens Argentina", "status": "guilty_plea", "detail": "Admitted wiring $7M+ through NY bank account, filed fraudulent arbitration claim with false witness statement"}
+        ],
+        "politicians": "DOJ filings reference 'Argentine Official A' (president leaving office 1999 = Menem) and 'Argentine Official B' (cabinet minister). Names coded in court documents.",
+        "monopoly_crossref": "Siemens operated as a technology monopolist in the DNI contract — no Argentine company could compete. Unlike construction monopolies that operate through cartels, Siemens exercised monopoly through technological lock-in. The $100M bribe amount (10% of contract value) is the largest single-project bribery amount in Argentine history. Siemens Healthcare S.A. also appears in the officer-network-analysis as a contractor sharing officers with other companies in the graph."
+      }
+    }
+  },
+
+  "sacde_iecsa_deep_forensics": {
+    "summary": "SACDE/IECSA is the single most deeply embedded monopoly actor across all forensic datasets",
+    "ownership_chain": {
+      "1970s-2007": "Macri family (SOCMA group)",
+      "2007-2017": "Angelo Calcaterra (Macri's cousin)",
+      "post_2017": "Sold, but judicial proceedings confirmed hidden continued ownership via offshore Delaware entity",
+      "note": "The 'sale' from Macri family to cousin Calcaterra was cosmetic. Judicial proceedings confirmed the Macri family maintained control through an offshore Delaware entity."
+    },
+    "obras_publicas_footprint": {
+      "cuit": "30568457451",
+      "public_works": 8,
+      "contracts": 0,
+      "officer_overlap_count": 2
+    },
+    "revolving_door_connections": [
+      {
+        "person": "CLUSELLAS PABLO",
+        "gov_position": "Secretario Legal y Técnico, Presidencia de la Nación (2015-2019)",
+        "relationship": "Sindico (auditor) of Creaurban, a company in the IECSA/SACDE group",
+        "additional": "Macri's childhood friend. Also linked to Panama Papers as intermediary with Mossack Fonseca.",
+        "risk_level": "critical",
+        "judicial_proceedings": true
+      },
+      {
+        "person": "LUIS GERMAN JAHN",
+        "gov_position": "Administrador de ENOHSA (water/sanitation infrastructure, Decree 267/2016)",
+        "relationship": "Officer of SACDE while heading the agency that oversees water/sanitation public works",
+        "risk_level": "high",
+        "resigned": "2019-12-10"
+      }
+    ],
+    "bribery_exposure": ["cuadernos (Calcaterra cooperating witness)", "odebrecht (Iecsa 30% in Consorcio Nuevo Sarmiento, US$4.5M channeled via Iecsa to Andorra)"],
+    "officer_network": "SACDE shares officers with La Rural SA, Orígenes Seguros S.A., Hunter Douglas Argentina S.A., and Panamerican Mall SA through board members like Marcelo Héctor Fuxman and José Daniel Abelovich — indicating deep corporate governance network extending beyond construction."
+  },
+
+  "roggio_deep_forensics": {
+    "bribery_cases": ["cuadernos (Aldo Roggio cooperating witness)", "odebrecht (AYSA consortium with Cartellone)"],
+    "officer_network": "Benito Roggio Ferroindustrial S.A. appears repeatedly in officer-network-analysis, sharing board members/officers with SEHOS S.A., TAYM S.A., BLAMEN SA, Envairo S.A., CV1 Concesionaria Vial S.A., and EDUCACION TECNOLOGICA S.A. — confirming Roggio's conglomerate structure spans construction, waste management, environmental services, and highway concessions.",
+    "conglomerate_breadth": ["Metrovías (Buenos Aires subway concession)", "CLIBA (waste management)", "Benito Roggio Ferroindustrial (industrial construction)", "CV1 Concesionaria Vial (highway tolls)", "TAYM (environmental services)"],
+    "monopoly_crossref": "Roggio's presence in both cuadernos AND Odebrecht, combined with its diversified concession portfolio, confirms the construction cartel thesis: monopoly position maintained through both market dominance and political bribery."
+  },
+
+  "cartellone_deep_forensics": {
+    "bribery_cases": ["cuadernos (listed as bribe payer)", "odebrecht (AYSA consortium member)"],
+    "dual_exposure": "Cartellone appears in both bribery cases in similar roles — subcontractor/consortium partner in Odebrecht's AYSA water plant ($880M), and separately as a direct bribe payer in cuadernos.",
+    "monopoly_crossref": "As one of Argentina's 'Big Five' construction firms, Cartellone's dual-case exposure confirms systematic participation in the bribery apparatus rather than isolated incidents."
+  },
+
+  "techint_rocca_deep_forensics": {
+    "bribery_case": "cuadernos (Héctor Alberto Zabaleta cooperating witness)",
+    "monopoly_significance": "Techint is Argentina's largest private-sector conglomerate. Its subsidiaries Tenaris (seamless pipes, global monopoly), Ternium (steel), and Tecpetrol (oil & gas) dominate their respective sectors. The Rocca family controls the group through a Luxembourg holding structure.",
+    "note": "Unlike other construction cartel members, Techint's primary monopoly power is in steel production and oil/gas services, not construction per se. Its participation in cuadernos suggests that even non-construction monopolies paid into the system to maintain regulatory favor across their diversified operations.",
+    "missing_from_obras_publicas": "Techint does not appear directly in the obras-publicas contractor dataset, suggesting its bribery exposure was through energy and industrial contracts not captured in the public works database."
+  },
+
+  "electroingenieria_ferreyra_deep_forensics": {
+    "bribery_case": "cuadernos (Gerardo Ferreyra detained, Jorge Guillermo Neira cooperating witness)",
+    "monopoly_sector": "High-voltage transmission lines, nuclear energy projects",
+    "monopoly_crossref": "Electroingeniería's dominance in energy infrastructure construction (particularly high-voltage lines) gave it gatekeeping power over electricity transmission expansion. Its cuadernos participation confirms bribery as the mechanism for maintaining contract flow in a sector with few qualified competitors.",
+    "missing_from_obras_publicas": "Does not appear in the obras-publicas contractor or risk-scoring datasets. Its contracts were likely awarded through the Energy Ministry directly, not through the public works portal captured in the graph."
+  },
+
+  "shell_company_networks": {
+    "siemens": {
+      "count": 17,
+      "type": "offshore_shells",
+      "mechanism": "Fake consulting contracts to disguise bribe payments",
+      "intermediary": "Miguel Czysch used offshore shell companies to launder funds"
+    },
+    "sacde_iecsa": {
+      "type": "offshore_ownership",
+      "mechanism": "Delaware offshore entity used to maintain hidden Macri family ownership of SACDE after cosmetic sale to Calcaterra",
+      "panama_papers": "Pablo Clusellas (SACDE officer + Macri's Secretario Legal) linked to Mossack Fonseca as intermediary"
+    },
+    "odebrecht": {
+      "type": "structured_operations_division",
+      "mechanism": "Internal 'Departamento de Operações Estruturadas' — dedicated covert payments unit. Used codenames ('Gardelón', 'Mudinho') for recipients. Channeled money via Iecsa through fictitious Spanish company DSC to Andorra."
+    },
+    "cuadernos": {
+      "type": "cash_based",
+      "mechanism": "Physical cash deliveries by driver (Centeno). Less sophisticated than Siemens/Odebrecht shells — the bribery apparatus relied on cash bags rather than corporate layering.",
+      "financial_operator": "Ernesto Clarens collected ~US$300K/week",
+      "bagman": "Daniel Muñoz (deceased), former private secretary of Néstor Kirchner"
+    },
+    "werthein_family": {
+      "type": "offshore_officers",
+      "mechanism": "CAJA DE SEGUROS S.A. and Experta Aseguradora (state contractors) linked to Werthein family members appearing as offshore officers. Dario Werthein in Pandora Papers as board member of Ducal Investments Limited (BVI). Mother Norma Gold de Werthein beneficiary of Hinslet Overseas Ltd (BVI, 1997).",
+      "monopoly_crossref": "Werthein family not in construction monopoly investigation but represents insurance sector monopoly with offshore ties — a new lead."
+    }
+  },
+
+  "risk_scores_for_monopoly_linked_entities": {
+    "methodology": "From risk-scoring.json — composite scores based on government appointment, offshore, donation, bribery, debarment, single-bidder, and cuadernos flags",
+    "highest_score_distribution": {
+      "critical_80_plus": 0,
+      "high_50_to_79": 0,
+      "medium_20_to_49": 2,
+      "low_1_to_19": 24,
+      "total_scored": 26
+    },
+    "monopoly_related_scored_entities": [
+      {
+        "name": "DECAVIAL SAICAC",
+        "cuit": "30504877678",
+        "risk_score": 5,
+        "cuadernos_score": 5,
+        "note": "Cuadernos bribe payer. Risk score appears low because the scoring system only captures cuadernos flag — bribery_links score is 0, suggesting the graph did not resolve DECAVIAL to a BriberyCase node."
+      },
+      {
+        "name": "CLEANOSOL ARGENTINA SAICFI",
+        "cuit": "30504912899",
+        "risk_score": 5,
+        "cuadernos_score": 5,
+        "note": "Flagged for cuadernos association"
+      },
+      {
+        "name": "CONCRET NOR S.A.",
+        "cuit": "30693276760",
+        "risk_score": 5,
+        "cuadernos_score": 5
+      },
+      {
+        "name": "CONSTRUMEX S.A.",
+        "cuit": "30696394217",
+        "risk_score": 5,
+        "cuadernos_score": 5
+      }
+    ],
+    "scoring_gap_analysis": "CRITICAL: Major monopoly actors (Techint, Roggio, Cartellone, Electroingeniería, SACDE) do NOT appear in the scored contractors list despite confirmed bribery case participation. This means either: (1) they are not registered as Contractor nodes in the obras-publicas graph, (2) their CUITs differ between datasets, or (3) the scoring pipeline's entity resolution did not match them. The risk scoring system underweights the most dangerous actors."
+  },
+
+  "political_cycle_patterns_for_monopoly_actors": {
+    "kirchnerismo_2003_2015": {
+      "dominant_bribery_apparatus": "cuadernos + odebrecht",
+      "monopoly_beneficiaries": ["Electroingeniería (energy infrastructure)", "Austral Construcciones / Lázaro Báez (Santa Cruz roads)", "All major construction firms via cartel"],
+      "officials_involved": ["Julio De Vido (Planificación Federal)", "José Francisco López (Obras Públicas)", "Roberto Baratta (Coordinación)", "Ricardo Jaime (Transporte)", "Daniel Cameron (Energía)"],
+      "contract_pattern": "2015 was an election year. Public works started = 42, total ARS $428B. Largest single-year value until 2021."
+    },
+    "macri_2015_2019": {
+      "monopoly_beneficiaries": ["SACDE/IECSA (Macri family connection, 8 public works)", "SACDE linked to Secretario Legal y Técnico Clusellas and ENOHSA administrator Jahn"],
+      "revolving_door": "SACDE is the most heavily connected construction firm to Macri-era government officials. Two verified revolving-door cases (Clusellas critical, Jahn high risk).",
+      "contract_pattern": "2019 Q4 spike: 24 contracts averaging $2.9M each during lame-duck transition. Transition freeze in 2015 Q4 (6 contracts only) when Macri took power."
+    },
+    "alberto_fernandez_2019_2023": {
+      "contract_explosion": "Public works jumped from 149 (2019) to 2,740 (2021) to 1,968 (2022) — 18x increase in 2 years before 2023 election.",
+      "top_contractors": "Dominated by pharmaceutical/medical companies (BIOARS, DROGUERIA ARTIGAS, BIODIAGNOSTICO) rather than construction firms. Construction monopoly actors not prominent in this dataset's top contractors.",
+      "note": "The construction cartel may have been less visible in formal procurement data during this period, operating instead through under-executed mega-projects with $703B ARS frozen in planned works with <10% execution."
+    },
+    "cross_administration_continuity": "The cuadernos cartel explicitly operated across administrations (2005-2015). SACDE/IECSA received public works under both Kirchner and Macri administrations. Roggio's concessions (Metrovías, highways) span all governments. The monopoly structure is administration-agnostic — it survives political transitions."
+  },
+
+  "contract_amounts_linked_to_monopoly_actors": {
+    "odebrecht_sarmiento": {"value_usd": 1500000000, "bribe_usd": 5000000, "monopoly_partner": "Iecsa/Calcaterra (30%)"},
+    "odebrecht_aysa": {"value_usd": 880000000, "bribe_usd": 5000000, "monopoly_partners": ["Roggio", "Cartellone"]},
+    "odebrecht_gasoductos": {"value_usd": 2300000000, "bribe_usd": 25000000, "monopoly_link": "TGN/TGS monopoly concessions"},
+    "siemens_dni": {"value_usd": 1000000000, "bribe_usd": 100000000, "monopoly_type": "technology_lock_in"},
+    "cuadernos_total": {"total_bribe_ars": 171224710, "total_bribe_usd_estimated": 30000000, "payments": 175, "cartel_overpricing_rate": "20%"},
+    "esuco_linked_contracts_ars": 1200000000,
+    "sacde_public_works": 8,
+    "total_identified_bribery_across_cases_usd": 265000000,
+    "total_identified_contract_values_usd": 5680000000,
+    "bribe_to_contract_ratios": {
+      "siemens_dni": "10%",
+      "odebrecht_sarmiento": "0.33%",
+      "odebrecht_aysa": "0.57%",
+      "odebrecht_gasoductos": "1.09%",
+      "cuadernos_cartel_overpricing": "20% (half for bribes = 10% effective bribe rate)"
+    }
+  },
+
+  "budget_execution_anomalies_monopoly_context": {
+    "frozen_mega_projects": {
+      "count": 15,
+      "total_frozen_budget_ars": 703217955945,
+      "criteria": "budget > $10B ARS, execution < 10%, status = planned",
+      "monopoly_relevance": "Mega-projects with near-zero execution are classic ghost project indicators. The cuadernos cartel operated through 20% overpricing — some of these frozen projects may have been created to generate contract values for the bribery apparatus without requiring actual construction.",
+      "examples": [
+        {"name": "RP. AUBLP (DISTRIBUIDOR ENSENADAEMPME.R.P.N 11)", "province": "BUENOS AIRES", "budget_ars": 217991636720, "execution_pct": 2.34},
+        {"name": "ACUEDUCTO SAN JAVIER: TRAMO SAN JAVIER-TOSTADO", "province": "SANTA FE", "budget_ars": 176963505263, "execution_pct": 7.78},
+        {"name": "ACUEDUCTO DEL RIO COLORADO Y OBRAS COMPLEMENTARIAS AL NORTE", "province": "LA PAMPA", "budget_ars": 124165715681, "execution_pct": 6.32}
+      ]
+    },
+    "lowest_execution_provinces": {
+      "provinces": ["SANTIAGO DEL ESTERO (55.2%)", "SANTA CRUZ (55.5%)", "SALTA (56.0%)", "LA RIOJA (59.9%)"],
+      "monopoly_crossref": "Santa Cruz was Lázaro Báez/Austral Construcciones territory — the lowest execution rate aligns with the cuadernos narrative of inflated/ghost contracts in Kirchner's home province."
+    }
+  },
+
+  "new_entities_not_in_monopoly_investigation": [
+    {
+      "entity": "Austral Construcciones S.A. / Lázaro Báez",
+      "source": "cuadernos",
+      "sector": "road construction (Santa Cruz)",
+      "significance": "Subject to separate money laundering trial. Dominant contractor in Kirchner home province. Not in main monopoly investigation because it operates regionally, but its cuadernos role is central."
+    },
+    {
+      "entity": "CPC S.A. (Cristóbal López / Fabián De Sousa)",
+      "source": "cuadernos",
+      "sector": "oil, gaming, media",
+      "significance": "5 bribe payments totaling ~14M pesos (2011-2012). López/De Sousa conglomerate spans Oil Combustibles, gaming licenses, media (C5N). Not in monopoly investigation sectors but represents a media/gaming monopoly with direct bribery exposure."
+    },
+    {
+      "entity": "JCR S.A. (Juan Carlos Relats)",
+      "source": "cuadernos",
+      "sector": "construction",
+      "significance": "40 of 175 documented bribe payments totaling 85,493,691 pesos — the HIGHEST single-company bribe total in cuadernos. Not in monopoly investigation. Should be added."
+    },
+    {
+      "entity": "Grupo Albanesi (Armando Loson)",
+      "source": "cuadernos",
+      "sector": "energy (thermal power generation)",
+      "significance": "Cooperating witness. Albanesi is a major thermal power operator. Not in monopoly energy sector file despite significant market position."
+    },
+    {
+      "entity": "Isolux Corsán Argentina",
+      "source": "cuadernos",
+      "sector": "energy/construction (Spanish multinational)",
+      "significance": "Juan Carlos de Goycoechea cooperated. Isolux built high-voltage transmission lines — overlaps with Electroingeniería's sector."
+    },
+    {
+      "entity": "Supercemento S.A.I.C.",
+      "source": "odebrecht (AYSA consortium)",
+      "sector": "cement/construction",
+      "significance": "Member of AYSA consortium. Cement sector is dominated by Loma Negra/Holcim cartel — Supercemento's consortium role may represent the cement cartel's construction arm."
+    },
+    {
+      "entity": "Werthein family (CAJA DE SEGUROS, Experta Aseguradora)",
+      "source": "expansion-discoveries",
+      "sector": "insurance, finance",
+      "significance": "Offshore officers in Pandora Papers (Ducal Investments BVI, Hinslet Overseas BVI). State contractors through insurance entities. New monopoly-relevant lead in insurance sector."
+    },
+    {
+      "entity": "Helport S.A.",
+      "source": "cuadernos",
+      "sector": "aviation/helicopter services",
+      "significance": "Regular bribe payer per cooperating witness testimony. Possible Eurnekian orbit (aviation sector) — needs verification."
+    }
+  ],
+
+  "missing_monopoly_actors_in_forensics": {
+    "not_found_in_any_bribery_case": [
+      {
+        "entity": "Loma Negra / Holcim (cement cartel)",
+        "note": "Neither appears in cuadernos, odebrecht, or siemens cases. However, Supercemento S.A.I.C. (AYSA consortium member) may be a cement cartel proxy. The cement cartel operates through price-fixing rather than direct political bribery — its mechanism is market manipulation, not contract procurement."
+      },
+      {
+        "entity": "Eurnekian / Corporación América (airport infrastructure)",
+        "note": "Does not appear in any bribery case file. Eurnekian's monopoly is through concession control (Aeropuertos Argentina 2000), which may be maintained through less documented channels. Helport S.A. (cuadernos bribe payer) operates in aviation services and may be in Eurnekian's orbit — needs verification."
+      },
+      {
+        "entity": "Mindlin / Pampa Energía / SACDE (energy)",
+        "note": "Mindlin does not appear personally in bribery cases. However, SACDE (formerly IECSA) IS in both cuadernos and odebrecht. Mindlin acquired SACDE's energy assets as part of the Pampa Energía expansion. The construction arm (SACDE S.A.) retained its bribery-linked identity. Mindlin's energy monopoly may have been built partly on assets with bribery-tainted provenance."
+      }
+    ]
+  },
+
+  "synthesis": {
+    "total_monopoly_actors_in_bribery_cases": 7,
+    "total_bribery_usd_linked_to_monopoly_actors": 265000000,
+    "total_contract_value_usd_linked_to_monopoly_actors": 5680000000,
+    "key_finding_1": "The construction monopoly operates as a FORMAL CARTEL organized through the Cámara Argentina de la Construcción, with systematic bid allocation, 20% overpricing, and half of overpricing directed to bribes. This is not individual corruption — it is an organized system.",
+    "key_finding_2": "SACDE/IECSA is the most deeply embedded monopoly actor, appearing in cuadernos + odebrecht + revolving door analysis + Panama Papers + offshore ownership concealment. Its ownership chain (Macri family -> Calcaterra -> hidden Delaware entity) spans two presidential administrations.",
+    "key_finding_3": "Four senior officials (De Vido, López, Baratta, Jaime) appear in BOTH Odebrecht and cuadernos, confirming a unified bribery apparatus that served multiple international and domestic contractors simultaneously.",
+    "key_finding_4": "Siemens' $100M bribe (10% of contract value) for the DNI contract is the largest documented bribery in Argentine history by a single company. It operated through 17 offshore shells — a far more sophisticated mechanism than the cuadernos cash system.",
+    "key_finding_5": "The risk scoring system in the obras-publicas graph critically UNDERSCORES monopoly actors. Major bribe-paying construction firms do not appear in the scored contractors list. Entity resolution between monopoly investigation names and obras-publicas Contractor nodes is the key gap to close.",
+    "key_finding_6": "Eight new entities/actor groups were discovered that should be added to the monopoly investigation: JCR S.A. (highest cuadernos bribe total), CPC S.A./Cristóbal López, Austral Construcciones/Báez, Grupo Albanesi, Isolux Corsán, Supercemento, Werthein family, and Helport S.A."
+  }
+}

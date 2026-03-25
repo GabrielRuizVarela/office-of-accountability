@@ -1,0 +1,573 @@
+{
+  "meta": {
+    "wave": 32,
+    "title": "New Leads: Argentine Monopoly Actors 2025-2026",
+    "description": "Web research findings on recent developments involving market concentration, privatizations, mergers, and antitrust enforcement in Argentina",
+    "date_researched": "2026-03-24",
+    "methodology": "Web search for 20 topic areas covering telecom, mining, privatization, agro, competition enforcement, and corporate consolidation",
+    "coverage_period": "2025-01 to 2026-03"
+  },
+  "findings": [
+    {
+      "id": "W32-001",
+      "topic": "Telecom-Telefonica Merger",
+      "headline": "Telecom-Telefonica merger stalled in regulatory limbo after CNDC objection; would create 58% mobile market share",
+      "date": "2026-03",
+      "sources": [
+        {
+          "title": "La fusion entre Telecom y Telefonica sigue en un limbo regulatorio",
+          "url": "https://www.iprofesional.com/tecnologia/448882-que-paso-al-final-con-la-historica-fusion-entre-telecom-y-telefonica"
+        },
+        {
+          "title": "Argentina prorroga intervencion del Enacom",
+          "url": "https://www.telesemana.com/blog/2026/01/06/argentina-prorroga-un-ano-mas-la-intervencion-del-enacom-que-aun-tiene-abierta-la-definicion-sobre-la-fusion-telecom-telefonica/"
+        },
+        {
+          "title": "CNDC Informe de objecion Telecom/Telefonica",
+          "url": "https://www.argentina.gob.ar/noticias/informe-de-objecion-operacion-telecom-telefonica"
+        }
+      ],
+      "relevance": "Critical monopoly formation. Acquisition announced Feb 2025 for USD 1.245B. CNDC objected June 2025: would eliminate one of three mobile operators, leaving duopoly (Telecom 58%, Claro 42%). Radio spectrum would exceed 140 MHz regulatory cap by up to 130 MHz. ENACOM intervention extended to Jan 2027 with no resolution. Telecom unifying all brands under single identity.",
+      "new_entities": [
+        { "name": "Telecom Argentina", "type": "Corporation", "role": "Acquirer, would-be monopolist in mobile" },
+        { "name": "Telefonica de Argentina", "type": "Corporation", "role": "Acquisition target" },
+        { "name": "AMX (Claro)", "type": "Corporation", "role": "Remaining competitor in duopoly scenario" },
+        { "name": "ENACOM", "type": "Government_Agency", "role": "Telecom regulator, intervention extended" }
+      ],
+      "investigation_tags": ["telecom_monopoly", "market_concentration", "regulatory_capture"]
+    },
+    {
+      "id": "W32-002",
+      "topic": "RIGI Mining/Lithium Approvals",
+      "headline": "RIGI extended to July 2027 with 12 approved projects worth USD 26B+; lithium production jumped 66% in 2025",
+      "date": "2026-02",
+      "sources": [
+        {
+          "title": "El Gobierno aprobo otros dos proyectos mineros bajo el RIGI",
+          "url": "https://www.infobae.com/economia/2026/02/27/el-gobierno-aprobo-otros-dos-proyectos-mineros-bajo-el-rigi-sumaran-usd-1140-millones-en-inversiones/"
+        },
+        {
+          "title": "RIGI revoluciona la mineria argentina - USD 47,000M en PDAC 2026",
+          "url": "https://cholilaonline.ar/2026/03/el-rigi-revoluciona-la-mineria-argentina-inversiones-record-por-usd-47-000-millones-en-el-pdac-2026.html"
+        },
+        {
+          "title": "US Geological Survey: litio argentino salto 66% en 2025",
+          "url": "https://www.shale24.com/oil-gas/us-geological-survey-litio-argentino-dio-salto-66-2025-registro-nuevo-record-n605"
+        }
+      ],
+      "relevance": "State capture vector. RIGI grants 30-year tax stability, customs exemptions, and free forex repatriation to mega-mining projects. Rio Tinto approved for USD 2.7B Rincon lithium project (53,000 TPA). Mining and energy concentrate 98% of RIGI investments. Seven lithium operations now active. Argentina produced 23,000 tonnes lithium in 2025 vs 13,800 in 2024.",
+      "new_entities": [
+        { "name": "Rio Tinto", "type": "Corporation", "role": "RIGI-approved lithium investor, USD 2.7B Salar de Rincon" },
+        { "name": "Galan Lithium (Minera Galan)", "type": "Corporation", "role": "RIGI-approved, USD 217M Hombre Muerto Oeste" },
+        { "name": "Lithium Argentina", "type": "Corporation", "role": "Record 34,100 TPA production in Jujuy" },
+        { "name": "Clean Elements Fund", "type": "Investment_Fund", "role": "CAD 10M investment in Galan Lithium" }
+      ],
+      "investigation_tags": ["rigi_regime", "lithium_extraction", "resource_sovereignty", "tax_exemptions"]
+    },
+    {
+      "id": "W32-003",
+      "topic": "Aerolineas Argentinas Privatization",
+      "headline": "Aerolineas privatization paused; government sounding out LATAM, Avianca, Air France-KLM for 51% sale",
+      "date": "2026-01",
+      "sources": [
+        {
+          "title": "El oficialismo insiste con privatizar pero no es urgencia para 2026",
+          "url": "https://www.lanacion.com.ar/politica/el-oficialismo-insiste-con-privatizar-aerolineas-argentinas-pero-asume-que-no-es-una-urgencia-para-nid07012026/"
+        },
+        {
+          "title": "Milei sondea entre grupos internacionales la privatizacion",
+          "url": "https://www.infobae.com/america/agencias/2026/01/15/milei-sondea-entre-grupos-internacionales-la-privatizacion-de-aerolineas-argentinas/"
+        }
+      ],
+      "relevance": "Key privatization target. In 2025 Aerolineas received zero Treasury subsidies for first time since renationalization and launched self-funded fleet expansion (18 new aircraft). Government exploring sale of 51% to LATAM Airlines, Avianca (Grupo Abra), or Air France-KLM consortium. Congress debate postponed to 2026.",
+      "new_entities": [
+        { "name": "Grupo Abra (Avianca)", "type": "Corporation", "role": "Potential buyer of Aerolineas" },
+        { "name": "LATAM Airlines", "type": "Corporation", "role": "Potential buyer of Aerolineas" },
+        { "name": "Air France-KLM", "type": "Corporation", "role": "Potential buyer of Aerolineas" }
+      ],
+      "investigation_tags": ["privatization", "aviation_monopoly", "milei_reforms"]
+    },
+    {
+      "id": "W32-004",
+      "topic": "AySA Water Privatization",
+      "headline": "Government selling 90% of AySA for ~USD 500M; bids launching March 2026, deadline April 2026",
+      "date": "2026-03",
+      "sources": [
+        {
+          "title": "El Gobierno apunta a este mes para lanzar pliegos de AySA",
+          "url": "https://www.lanacion.com.ar/economia/el-gobierno-apunta-a-este-mes-para-lanzar-los-pliegos-de-la-privatizacion-de-aysa-todos-los-detalles-nid01032026/"
+        },
+        {
+          "title": "Milei avanza en privatizacion de AySA, se podra cortar agua por falta de pago",
+          "url": "https://www.eldestapeweb.com/economia/privatizaciones/milei-avanza-en-la-privatizacion-de-aysa-y-actualiza-su-marco-normativo-para-la-venta-2025111382413"
+        },
+        {
+          "title": "Gobierno avanza con privatizacion total de AYSA - 90% paquete accionario",
+          "url": "https://www.ambito.com/economia/el-gobierno-avanza-la-privatizacion-total-aysa-y-autoriza-la-venta-del-90-del-paquete-accionario-n6170096"
+        }
+      ],
+      "relevance": "Water is a human right issue. Since nationalization in 2006, AySA received USD 13.4B in Treasury transfers. Government expects to raise only ~USD 500M (under 4% of those transfers). DNU 805/2025 authorized service cutoff for non-payment. 10% reserved for workers via Shared Property Program. Mekorot (Israeli water company) mentioned as potential interested party. Mixed sale: strategic operator + IPO.",
+      "new_entities": [
+        { "name": "AySA (Agua y Saneamientos Argentinos)", "type": "State_Enterprise", "role": "Privatization target, serves Buenos Aires metro" },
+        { "name": "Mekorot", "type": "Corporation", "role": "Potential bidder for water privatization (Israeli)" },
+        { "name": "DNU 805/2025", "type": "Regulation", "role": "Authorized water cutoff for non-payment" }
+      ],
+      "investigation_tags": ["water_privatization", "human_rights", "milei_reforms", "essential_services"]
+    },
+    {
+      "id": "W32-005",
+      "topic": "Hidrovia Concession",
+      "headline": "Three global dredging giants bid for 25-year, USD 10B Hidrovia concession; bids opened Feb 2026",
+      "date": "2026-02",
+      "sources": [
+        {
+          "title": "Tres gigantes del dragado buscan concesion por 25 anos",
+          "url": "https://www.conclusion.com.ar/politica/economia/hidrovia-tres-gigantes-del-dragado-buscan-quedarse-con-la-concesion-por-25-anos-en-la-mayor-licitacion-del-gobierno/02/2026/"
+        },
+        {
+          "title": "Claves de una licitacion estrategica - Infobae",
+          "url": "https://www.infobae.com/economia/2026/02/23/el-viernes-se-abren-los-sobres-de-la-concesion-de-la-hidrovia-claves-de-una-licitacion-estrategica/"
+        },
+        {
+          "title": "Licitacion de la Hidrovia: apertura de sobres en marzo 2026",
+          "url": "https://argenports.com/nota/licitacion-de-la-hidrovia-apertura-de-sobres-en-marzo-2026-y-firma-del-contrato-en-mayo/"
+        }
+      ],
+      "relevance": "Critical infrastructure monopoly. 80% of Argentine exports transit this waterway. Bidders: Jan De Nul NV (Belgian, former concession-holder), DEME (Belgian), DTA Engenharia (Brazilian). Previous 2024 tender voided after only one bid (DEME). Concession covers km 1238 of Rio Parana to Atlantic via Canal Punta Indio. Contract signature expected May 2026. Single operator will control toll and maintenance of Argentina's export jugular.",
+      "new_entities": [
+        { "name": "Jan De Nul NV", "type": "Corporation", "role": "Belgian dredging company, former concession-holder" },
+        { "name": "DEME (Dredging Environmental and Marine Engineering)", "type": "Corporation", "role": "Belgian dredging company, bidder" },
+        { "name": "DTA Engenharia", "type": "Corporation", "role": "Brazilian dredging company, bidder" },
+        { "name": "ANPYN (Agencia Nacional de Puertos y Navegacion)", "type": "Government_Agency", "role": "Concession grantor" }
+      ],
+      "investigation_tags": ["hidrovia", "export_infrastructure", "concession_monopoly", "foreign_control"]
+    },
+    {
+      "id": "W32-006",
+      "topic": "Vila-Manzano Telefe Acquisition",
+      "headline": "Grupo America shareholders buy Telefe for USD 95-104M from Paramount; media concentration deepens",
+      "date": "2025-10",
+      "sources": [
+        {
+          "title": "Un grupo de empresarios argentinos compra la totalidad de Telefe",
+          "url": "https://www.cronista.com/negocios/un-grupo-de-empresarios-lideres-argentinos-compra-la-totalidad-de-telefe/"
+        },
+        {
+          "title": "Telefe vendida por mas de 100 millones a Manzano, Vila, Scaglione",
+          "url": "https://mundoempresarial.ar/telefe-finalmente-fue-vendida-por-mas-de-100-millones-de-dolares-a-manzano-vila-scaglione-y-santa-maria/"
+        },
+        {
+          "title": "Nuevos duenos: Scaglione cerro compra de Telefe con Manzano",
+          "url": "https://www.lanacion.com.ar/economia/negocios/nuevos-duenos-el-empresario-rosarino-gustavo-scaglione-cerro-la-compra-de-telefe-asociado-con-jose-nid23102025/"
+        }
+      ],
+      "relevance": "Major media concentration event. Buyers: Claudio Belocopitt, Daniel Vila, Jose Luis Manzano, Gustavo Scaglione. Same group already owns Grupo America (A24, Canal 2, La Red, etc.). Now also controls Canal 11 Buenos Aires, Canal 8 Cordoba, Canal 5 Rosario, Canal 13 Santa Fe, plus 3 Uruguayan channels and 10+ affiliates. Telefe leads all Argentine TV in ratings, share, and ad revenue. Produces 5,000+ hours of original content annually.",
+      "new_entities": [
+        { "name": "Gustavo Scaglione", "type": "Person", "role": "Lead buyer of Telefe, Rosario businessman" },
+        { "name": "Claudio Belocopitt", "type": "Person", "role": "Telefe buyer, health insurance magnate (Swiss Medical)" },
+        { "name": "Dario Turovelzky", "type": "Person", "role": "Reconfirmed as Telefe CEO post-acquisition" },
+        { "name": "Paramount Global", "type": "Corporation", "role": "Seller of Telefe" }
+      ],
+      "investigation_tags": ["media_concentration", "vila_manzano", "political_media_nexus"]
+    },
+    {
+      "id": "W32-007",
+      "topic": "Mindlin-Loma Negra-InterCement",
+      "headline": "Marcelo Mindlin acquires InterCement/Loma Negra through Brazilian bankruptcy process; gains 45% of Argentine cement market",
+      "date": "2025-12",
+      "sources": [
+        {
+          "title": "Mindlin a fondo: por que compro Loma Negra - El Cronista",
+          "url": "https://www.cronista.com/negocios/marcelo-mindlin-a-fondo-los-20-anos-de-pampa-por-que-compro-loma-negra-y-el-desafio-de-milei-para-2026/"
+        },
+        {
+          "title": "Loma Negra controlada por consorcio de Mindlin - Infobae",
+          "url": "https://www.infobae.com/economia/2025/12/11/otra-empresa-pasara-a-manos-nacionales-loma-negra-va-a-ser-controlada-por-un-consorcio-que-lidera-marcelo-mindlin/"
+        },
+        {
+          "title": "Acreedores aprobaron plan para ingreso de Mindlin - La Nacion",
+          "url": "https://www.lanacion.com.ar/economia/negocios/los-acreedores-de-loma-negra-aprobaron-el-plan-que-permitira-el-ingreso-de-marcelo-mindlin-nid06102025/"
+        }
+      ],
+      "relevance": "Cross-sector conglomerate expansion. Mindlin (Pampa Energia - energy) now enters cement/construction via bankruptcy arbitrage. Bought 60% of InterCement debt from Itau bank for ~USD 45M. Brazilian court approved restructuring with 99.99% creditor support. Latcem (Mindlin vehicle) + Redwood Capital + Moneda-Patria Investments become new controllers. Loma Negra holds 45% of Argentine cement market. InterCement also has 15% of Brazilian market. Mindlin now spans energy, gas, cement, construction materials.",
+      "new_entities": [
+        { "name": "Latcem", "type": "Corporation", "role": "Mindlin acquisition vehicle for InterCement/Loma Negra" },
+        { "name": "Redwood Capital Management", "type": "Investment_Fund", "role": "Co-investor with Mindlin in InterCement" },
+        { "name": "Moneda-Patria Investments", "type": "Investment_Fund", "role": "Co-investor with Mindlin in InterCement" },
+        { "name": "InterCement", "type": "Corporation", "role": "Brazilian parent of Loma Negra, in restructuring" },
+        { "name": "Generacion Argentina S.A.", "type": "Corporation", "role": "Mindlin subsidiary that purchased Itau debt" }
+      ],
+      "investigation_tags": ["conglomerate_expansion", "cement_monopoly", "bankruptcy_arbitrage", "mindlin_empire"]
+    },
+    {
+      "id": "W32-008",
+      "topic": "Bunge-Viterra Merger Completed",
+      "headline": "Bunge completes USD 18B merger with Viterra in Argentina; controls 22% of agro exports and 25% of soy market",
+      "date": "2026-02",
+      "sources": [
+        {
+          "title": "Nacio un gigante del agro: Bunge cerro la fusion con Viterra - La Nacion",
+          "url": "https://www.lanacion.com.ar/economia/campo/nacio-un-gigante-del-agro-bunge-cerro-la-fusion-con-viterra-en-la-argentina-y-se-conocio-el-ceo-nid04022026/"
+        },
+        {
+          "title": "Bunge se quedo con el 25% del mercado de soja",
+          "url": "https://www.eldestapeweb.com/economia/soja/en-un-2026-con-necesidades-financieras-bunge-se-quedo-con-el-25-del-mercado-de-soja-202625194537"
+        },
+        {
+          "title": "Megafusion redefine el poder en puertos del Gran Rosario",
+          "url": "https://www.on24.com.ar/negocios/agro/megafusion-en-el-agro-bunge-viterra-redefine-el-poder-en-los-puertos-del-gran-rosario/"
+        }
+      ],
+      "relevance": "Dominant agro-export monopoly. China approved merger June 2025. Local integration completed Feb 2, 2026. Combined entity exported 23 million tonnes in 2025. Controls 61% of sunflower oil exports. 25% of soy market. Dominant position in Gran Rosario port complex (Argentina's main grain export corridor). Vladimir Barisic named Argentina Country Manager. This is the single largest concentration event in Argentine agricultural commodity trade.",
+      "new_entities": [
+        { "name": "Bunge Argentina (post-merger)", "type": "Corporation", "role": "Dominant agro-exporter, 22% market share" },
+        { "name": "Vladimir Barisic", "type": "Person", "role": "Country Manager of merged Bunge Argentina" },
+        { "name": "Viterra (ex-Glencore Agriculture)", "type": "Corporation", "role": "Merged into Bunge" }
+      ],
+      "investigation_tags": ["agro_monopoly", "port_control", "grain_trade", "food_sovereignty"]
+    },
+    {
+      "id": "W32-009",
+      "topic": "New Competition Authority (ANC)",
+      "headline": "Autoridad Nacional de la Competencia replaces CNDC after 45 years; ex-ante merger control delayed to Nov 2026",
+      "date": "2025-11",
+      "sources": [
+        {
+          "title": "Nueva Autoridad Nacional de la Competencia",
+          "url": "https://allende.com/defensa-de-la-competencia/nueva-autoridad-nacional-de-la-competencia-11-17-2025/"
+        },
+        {
+          "title": "Main Developments in Competition Law 2025 - Argentina",
+          "url": "https://legalblogs.wolterskluwer.com/competition-blog/main-developments-in-competition-law-and-policy-2025-argentina/"
+        },
+        {
+          "title": "Clemencia program launched",
+          "url": "https://www.argentina.gob.ar/noticias/el-gobierno-lanza-el-programa-de-clemencia-para-combatir-conductas-anticompetitivas"
+        }
+      ],
+      "relevance": "Institutional transition creates enforcement gap. ANC began operations Nov 2025. Ex-ante merger control (mandatory pre-approval) will not take effect until Nov 2026 -- a full year gap. Only one known fine in 2025 (Henkel AG, ~USD 25,000 for late filing). Clemency program launched for cartel whistleblowers. 608 ongoing cases (334 concentration, 221 anticompetitive conduct, 53 market investigations). The year-long gap means major mergers (Bunge-Viterra, Telecom-Telefonica, Visa-Prisma) proceed without mandatory pre-notification.",
+      "new_entities": [
+        { "name": "Autoridad Nacional de la Competencia (ANC)", "type": "Government_Agency", "role": "New competition authority replacing CNDC" }
+      ],
+      "investigation_tags": ["regulatory_gap", "competition_enforcement", "institutional_weakness"]
+    },
+    {
+      "id": "W32-010",
+      "topic": "Mercado Libre vs Banks Antitrust War",
+      "headline": "Cross-complaints between Mercado Libre and MODO/banks over payment monopoly; both filed with CNDC",
+      "date": "2024-08",
+      "sources": [
+        {
+          "title": "MODO denuncio a Mercado Libre por abuso de posicion dominante",
+          "url": "https://www.ambito.com/negocios/modo-denuncio-mercado-libre-abuso-posicion-dominante-n5993817"
+        },
+        {
+          "title": "Mercado Libre denuncia a 36 bancos por cartelizacion",
+          "url": "https://www.infobae.com/economia/2024/08/26/mercado-libre-presento-una-denuncia-por-cartelizacion-contra-36-bancos/"
+        }
+      ],
+      "relevance": "Payment ecosystem monopoly battle. MODO (bank consortium wallet) accused Mercado Libre of: refusing competing wallets in marketplace, forcing Mercado Pago exclusivity, blocking other payment processors. Mercado Libre counter-accused 36 banks of cartelization through MODO. Reveals structural concentration in Argentine digital payments. Ongoing at CNDC/ANC with 608 cases pending.",
+      "new_entities": [
+        { "name": "MODO", "type": "Corporation", "role": "Bank consortium digital wallet, complainant vs Mercado Libre" }
+      ],
+      "investigation_tags": ["fintech_monopoly", "payment_systems", "digital_platforms"]
+    },
+    {
+      "id": "W32-011",
+      "topic": "Visa Acquires Prisma (Monopoly Re-formation)",
+      "headline": "Visa completes acquisition of Prisma and Newpay from Advent International; reconstructs the monopoly broken in 2017",
+      "date": "2026-02",
+      "sources": [
+        {
+          "title": "Visa Completes Acquisition of Prisma and Newpay",
+          "url": "https://investor.visa.com/news/news-details/2026/Visa-Completes-Acquisition-of-Prisma-and-Newpay/default.aspx"
+        },
+        {
+          "title": "Fusion Visa-Prisma: gobierno festeja, mercado alerta monopolio",
+          "url": "https://www.iproup.com/finanzas/65094-fusion-visa-prisma-el-gobierno-apoya-pero-el-mercado-teme-monopolio"
+        },
+        {
+          "title": "Visa compro Prisma - Infobae",
+          "url": "https://www.infobae.com/economia/2026/02/19/visa-compra-prisma-y-expande-su-negocio-de-pagos-digitales-en-la-argentina/"
+        }
+      ],
+      "relevance": "CRITICAL monopoly re-formation. In 2017 courts and CNDC forced banks to sell Prisma to break the Visa network-brand-processing monopoly. Now Visa has re-acquired Prisma (card issuer processing) AND Newpay (Banelco ATM network + PagoMisCuentas bill payment). Visa now again controls the brand AND the infrastructure. Completed Feb 27, 2026. Payway (merchant acquiring) remained with Advent, partially limiting vertical integration. Government supports the deal despite market alarm.",
+      "new_entities": [
+        { "name": "Prisma Medios de Pago", "type": "Corporation", "role": "Card processing company re-acquired by Visa" },
+        { "name": "Newpay", "type": "Corporation", "role": "Banelco ATM network + PagoMisCuentas, acquired by Visa" },
+        { "name": "Advent International", "type": "Investment_Fund", "role": "Seller of Prisma/Newpay, retains Payway" },
+        { "name": "Payway", "type": "Corporation", "role": "Merchant acquiring, remains with Advent" }
+      ],
+      "investigation_tags": ["payment_monopoly", "visa_monopoly", "regulatory_reversal", "financial_infrastructure"]
+    },
+    {
+      "id": "W32-012",
+      "topic": "Aluar/Futaleufú Dam Concession Expiry",
+      "headline": "Aluar's Futaleufú dam concession expired; transitional extension to June 2026; seven hydroelectric plants up for re-privatization",
+      "date": "2025-12",
+      "sources": [
+        {
+          "title": "Futuro de Futaleufú atrapado entre gobierno y holding Madanes Quintanilla",
+          "url": "https://www.mejorenergia.com.ar/noticias/2026/03/11/5191-el-futuro-de-la-represa-de-futaleufu-atrapado-entre-el-cruce-del-gobierno-con-el-holding-de-los-madanes-quintanilla"
+        },
+        {
+          "title": "Prorrogan hasta junio 2026 periodo de transicion Futaleufú",
+          "url": "https://www.eldiarioweb.com/2025/12/prorrogan-hasta-junio-de-2026-el-periodo-de-transicion-de-la-central-hidroelectrica-futaleufu/"
+        },
+        {
+          "title": "Privatizacion de represas: gobierno licita cuatro centrales clave",
+          "url": "https://www.ambito.com/energia/privatizacion-represas-gobierno-licita-cuatro-centrales-clave-y-lanza-auditorias-otras-siete-n6211318"
+        },
+        {
+          "title": "Aluar adjudicado contrato de baterias en predio de FATE",
+          "url": "https://www.infobae.com/economia/2026/02/22/el-gobierno-ya-le-habia-adjudicado-a-aluar-un-contrato-para-instalar-grandes-baterias-en-el-predio-de-fate/"
+        }
+      ],
+      "relevance": "Energy-industrial monopoly nexus. Aluar (Madanes Quintanilla family) holds 60.2% of Hidroelectrica Futaleufú, controls 59% since 1995 privatization. Chubut province holds 33.51%. Concession expired after 30 years. Corte Suprema ruled in favor of Chubut governor Ignacio Torres on domain dispute. Meanwhile, government awarded Aluar a battery installation contract at the FATE factory site. Seven dams expiring Nov 2025 - Jul 2026: Futaleufú, Cabra Corral, El Tunal, Ullum, El Cadillal, Escaba, Pueblo Viejo.",
+      "new_entities": [
+        { "name": "Madanes Quintanilla family", "type": "Person_Group", "role": "Controlling family of Aluar/FATE group" },
+        { "name": "Ignacio Torres", "type": "Person", "role": "Governor of Chubut, won Supreme Court domain case" },
+        { "name": "Hidroelectrica Futaleufú S.A.", "type": "Corporation", "role": "Dam operating company, concession expired" }
+      ],
+      "investigation_tags": ["energy_concessions", "aluminum_monopoly", "dam_privatization", "madanes_quintanilla"]
+    },
+    {
+      "id": "W32-013",
+      "topic": "Cuadernos Trial Progress",
+      "headline": "Cuadernos oral trial underway since Nov 2025; Cristina Kirchner + 86 co-defendants; testimony phase began March 2026",
+      "date": "2026-03",
+      "sources": [
+        {
+          "title": "Causa Cuadernos: comienza juicio - Fiscales.gob.ar",
+          "url": "https://www.fiscales.gob.ar/fiscalias/causa-cuadernos-comienza-el-juicio-a-la-expresidenta-cristina-fernandez-y-otros-86-imputados-por-hechos-de-corrupcion/"
+        },
+        {
+          "title": "Cristina Kirchner declara en Comodoro Py",
+          "url": "https://www.urbanazapala.com.ar/2026/03/17/cristina-kirchner-declara-en-comodoro-py-y-arranca-una-etapa-clave-del-juicio-por-los-cuadernos/"
+        },
+        {
+          "title": "Cartelizacion de obra publica civil - acusacion CAEV",
+          "url": "https://www.fiscales.gob.ar/fiscalias/causa-cuadernos-comenzo-la-lectura-de-la-acusacion-por-la-cartelizacion-de-la-obra-publica-civil-en-cabeza-de-la-camara-argentina-de-empresas-viales/"
+        }
+      ],
+      "relevance": "Directly relevant to investigation. 87 defendants including CFK, 19 ex-officials, 64 businesspeople, 2 ex-drivers. Based on Oscar Centeno's notebooks documenting bribe collection routes 2005-2015. Corte Suprema cleared path Oct 2025 by rejecting defense appeals. Prosecution includes cartelization of public works by Camara Argentina de Empresas Viales (CAEV). Trial in virtual format; in-person for defendant statements. Questioning phase began March 2026.",
+      "new_entities": [
+        { "name": "Camara Argentina de Empresas Viales (CAEV)", "type": "Industry_Association", "role": "Accused of cartelizing public road construction" },
+        { "name": "Oscar Centeno", "type": "Person", "role": "Key witness, driver who kept bribe notebooks" },
+        { "name": "Roberto Baratta", "type": "Person", "role": "Ex-undersecretary of Planning, defendant" }
+      ],
+      "investigation_tags": ["cuadernos", "public_works_corruption", "bribery", "kirchnerism"]
+    },
+    {
+      "id": "W32-014",
+      "topic": "Correo Argentino / Macri Debt",
+      "headline": "Supreme Court rejects Macri group appeal to remove judges; bankruptcy could extend to Socma and Sideco",
+      "date": "2025-06",
+      "sources": [
+        {
+          "title": "Causa Correo Argentino - Lijo no avanzo con expediente sensible",
+          "url": "https://www.lanacion.com.ar/politica/la-causa-del-correo-argentino-ariel-lijo-no-avanzo-con-un-expediente-sensible-para-mauricio-macri-nid20062025/"
+        },
+        {
+          "title": "Corte Suprema reactivo causa y rechazo pedido del Grupo Macri",
+          "url": "https://www.perfil.com/noticias/politica/la-corte-suprema-reactivo-la-causa-del-correo-argentino-y-rechazo-un-pedido-del-grupo-macri.phtml"
+        },
+        {
+          "title": "Acuerdo secreto con banco austriaco - OCCRP investigation",
+          "url": "https://www.occrp.org/es/investigacion/el-acuerdo-secreto-que-franco-macri-firmo-con-un-alicaido-banco-austriaco-para-gestionar-las-deudas-de-correo-argentino"
+        }
+      ],
+      "relevance": "Ongoing Macri group liability. Original debt: ~USD 296M from unpaid postal concession fees (1997-2003). Macri government attempted 98.82% debt reduction. Fiscal Gabriela Boquin opposes as 'abusive'. Judge Ariel Lijo has case but hasn't advanced. Supreme Court Dec 2025 decision could extend bankruptcy to holding companies Socma and Sideco. OCCRP investigation revealed secret agreement between Franco Macri and Austrian bank for debt management.",
+      "new_entities": [
+        { "name": "Gabriela Boquin", "type": "Person", "role": "Fiscal opposing Correo debt reduction as abusive" },
+        { "name": "Ariel Lijo", "type": "Person", "role": "Federal Judge No. 4, handling Correo case (also Supreme Court nominee)" },
+        { "name": "Socma", "type": "Corporation", "role": "Macri family holding, could face bankruptcy extension" },
+        { "name": "Sideco", "type": "Corporation", "role": "Macri family holding, could face bankruptcy extension" }
+      ],
+      "investigation_tags": ["macri_group", "postal_concession", "state_debt", "judicial_delay"]
+    },
+    {
+      "id": "W32-015",
+      "topic": "Grupo Clarin Financial Results",
+      "headline": "Grupo Clarin returns to profitability in 2025; revenue up 61.8% to ARS 480.1B, 93.6% of debt in USD",
+      "date": "2026-01",
+      "sources": [
+        {
+          "title": "Grupo Clarin Q4 2025 Earnings Call",
+          "url": "https://finance.yahoo.com/news/grupo-clarin-sa-bue-gcla-230037596.html"
+        },
+        {
+          "title": "Grupo Clarin First Quarter 2025 Results",
+          "url": "https://finance.yahoo.com/news/grupo-clar-n-announces-first-234500961.html"
+        }
+      ],
+      "relevance": "Financial strength of dominant media group. Revenue grew 16% real (above inflation). Advertising represents ~70% of broadcasting revenues. Total debt decreased 13.8% to ARS 19.6B. 93.6% of debt denominated in USD. Return to profitability after 2024 losses. Strengthens Clarin's position as Argentina's most powerful media conglomerate.",
+      "new_entities": [],
+      "investigation_tags": ["media_monopoly", "clarin_group", "financial_strength"]
+    },
+    {
+      "id": "W32-016",
+      "topic": "OECD Argentina Competition Review",
+      "headline": "OECD projects 5.2% growth for 2025; ex-ante merger control delayed to Nov 2026; competition enforcement nearly absent",
+      "date": "2025-07",
+      "sources": [
+        {
+          "title": "Argentina should maintain reform momentum - OECD",
+          "url": "https://www.oecd.org/en/about/news/press-releases/2025/07/argentina-should-maintain-reform-momentum-to-boost-investment-and-productivity.html"
+        },
+        {
+          "title": "Main Developments in Competition Law 2025 - Argentina",
+          "url": "https://legalblogs.wolterskluwer.com/competition-blog/main-developments-in-competition-law-and-policy-2025-argentina/"
+        }
+      ],
+      "relevance": "International validation of enforcement gap. Only one fine imposed in all of 2025 (~USD 25,000 to Henkel AG for late filing). No cartel or abuse-of-dominance sanctions. OECD notes Argentina's inflation fell from 211% to 47%. Growth forecast downgraded from 4.3% to 3% for 2026. The combination of rapid privatization, major mergers, and absent competition enforcement creates a window for monopoly formation.",
+      "new_entities": [],
+      "investigation_tags": ["oecd_review", "enforcement_gap", "competition_policy"]
+    },
+    {
+      "id": "W32-017",
+      "topic": "Competition Enforcement Actions",
+      "headline": "ANC updated penalty unit to ARS 1,450.05; Bariloche nightclub cartel sanctioned ARS 240M; clemency program launched",
+      "date": "2026-01",
+      "sources": [
+        {
+          "title": "Sancion a discotecas de Bariloche por cartelizacion - ARS 240M",
+          "url": "https://www.argentina.gob.ar/noticias/sancion-discotecas-de-bariloche-por-240-millones-de-pesos-por-cartelizacion"
+        },
+        {
+          "title": "Desarrollos en Derecho de Competencia Argentina 2025",
+          "url": "https://centrocompetencia.com/principales-desarrollos-en-el-derecho-y-la-politica-de-la-competencia-de-argentina-durante-2025/"
+        }
+      ],
+      "relevance": "Contrast between enforcement rhetoric and reality. The only significant sanction in 2025 was against Bariloche nightclubs (ARS 240M for price-fixing), while mega-mergers in telecom, agro, cement, and payments proceed with minimal scrutiny. Penalty unit increased from ARS 506 to ARS 1,450. Clemency program launched but no known applicants yet.",
+      "new_entities": [],
+      "investigation_tags": ["competition_enforcement", "sanctions", "enforcement_asymmetry"]
+    },
+    {
+      "id": "W32-018",
+      "topic": "Techint vs State Conflict",
+      "headline": "Techint sues state for USD 96M over unpaid gas contracts; lost Vaca Muerta pipeline bid to Indian company at 40% lower price",
+      "date": "2026-03",
+      "sources": [
+        {
+          "title": "Techint escala conflicto con Milei: juicio por USD 96M",
+          "url": "https://www.eldiarioar.com/economia/techint-escala-conflicto-milei-le-inicia-juicio-us-96-millones_1_13066699.html"
+        },
+        {
+          "title": "Rocca defiende Techint y pide reglas claras para Vaca Muerta",
+          "url": "https://www.opinandosannicolas.ar/2026/02/rocca-salio-al-cruce-por-vaca-muerta-defendio-a-techint-y-pidio-reglas-claras-para-producir-en-argentina/"
+        },
+        {
+          "title": "Sturzenegger defiende contrato con empresa india",
+          "url": "https://www.bloomberglinea.com/latinoamerica/argentina/sturzenegger-defiende-contrato-de-gasoducto-con-empresa-india-techint-ofrecio-canos-40-mas-caros/"
+        },
+        {
+          "title": "Techint y Pampa Energia juicios millonarios contra Estado por Plan Gas",
+          "url": "https://www.infobae.com/economia/2026/03/16/techint-y-pampa-energia-mantienen-juicios-millonarios-contra-el-estado-por-incumplimientos-en-el-plan-gas/"
+        }
+      ],
+      "relevance": "Rare state-corporate conflict. Tecpetrol (Techint subsidiary) sued ENARSA for ARS 134.2B (USD 96M) over unpaid gas minimum purchase obligations (2023-2025). Techint invested USD 5.4B over 2024-2026. Lost strategic Vaca Muerta pipeline bid after offering pipes 40% more expensive than Indian competitor. Minister Sturzenegger defended cheaper foreign option. Milei called Rocca and other industrialists 'chorros' and 'prebendarios'. Also: Pampa Energia (Mindlin) has parallel lawsuit against state for Plan Gas breaches.",
+      "new_entities": [
+        { "name": "Tecpetrol", "type": "Corporation", "role": "Techint subsidiary, suing ENARSA for USD 96M" },
+        { "name": "ENARSA (Energia Argentina SA)", "type": "State_Enterprise", "role": "Defendant in Techint gas contract lawsuit" },
+        { "name": "SESA", "type": "Corporation", "role": "Entity that awarded pipeline to Indian competitor" },
+        { "name": "Tenaris", "type": "Corporation", "role": "Techint tube subsidiary, lost pipeline bid" },
+        { "name": "Federico Sturzenegger", "type": "Person", "role": "Minister defending foreign pipeline contractor" }
+      ],
+      "investigation_tags": ["techint_rocca", "state_contracts", "vaca_muerta", "industrial_policy"]
+    },
+    {
+      "id": "W32-019",
+      "topic": "Hugo Sigman / Insud Pharma Expansion",
+      "headline": "Insud Pharma acquires Viatris contraceptive business for USD 1.6B; becomes world's largest contraceptive manufacturer",
+      "date": "2025",
+      "sources": [
+        {
+          "title": "Fabricante del Viagra vende a Insud negocio clave - El Cronista",
+          "url": "https://www.cronista.com/negocios/fabricante-del-viagra-vende-a-insud-negocio-clave-laboratorio-de-hugo-sigman/"
+        },
+        {
+          "title": "Insud se convierte en mayor fabricante de medicamento clave",
+          "url": "https://www.cronista.com/negocios/insud-el-laboratorio-de-hugo-sigman-se-convierte-en-el-mayor-fabricante-de-un-medicamento-clave/"
+        }
+      ],
+      "relevance": "Pharmaceutical monopoly formation. Sigman (Argentina's 2nd richest, USD 6.3B fortune) acquired Viatris women's health business for USD 1.6B. Insud Pharma now has 7,000 employees in 50 countries, 18 production plants. Also signed agreements with Seqirus/PAHO for flu vaccine production and with Pfizer for pneumococcal vaccine supply to all Americas. mAbxience (biosimilar subsidiary) produces biologics. Sigman's empire spans pharma, biotech, vaccines, film production, agribusiness.",
+      "new_entities": [
+        { "name": "Insud Pharma", "type": "Corporation", "role": "Sigman conglomerate, world's largest contraceptive maker" },
+        { "name": "Viatris", "type": "Corporation", "role": "Seller of women's health business to Insud" },
+        { "name": "mAbxience", "type": "Corporation", "role": "Insud biosimilar subsidiary" },
+        { "name": "Silvia Gold", "type": "Person", "role": "Co-owner of Insud with Hugo Sigman" },
+        { "name": "Seqirus", "type": "Corporation", "role": "Flu vaccine partner for Insud" }
+      ],
+      "investigation_tags": ["pharma_monopoly", "sigman_empire", "vaccine_production", "global_expansion"]
+    },
+    {
+      "id": "W32-020",
+      "topic": "Hydroelectric Dam Privatizations (Comahue)",
+      "headline": "Four Comahue hydroelectric plants privatized for USD 706M; seven more dams in transition",
+      "date": "2025-12",
+      "sources": [
+        {
+          "title": "Firman concesion de represas del Comahue por USD 706M",
+          "url": "https://cholilaonline.ar/2025/12/firman-concesion-represas-comahue-706-millones.html"
+        },
+        {
+          "title": "Avanza privatizacion represas del Comahue - La Nacion",
+          "url": "https://www.lanacion.com.ar/economia/avanza-la-privatizacion-de-la-concesion-de-las-represas-del-comahue-nid27112025/"
+        }
+      ],
+      "relevance": "Energy infrastructure wave privatization. Four Comahue dams conceded for USD 706M. Seven additional plants (Futaleufú, Cabra Corral, El Tunal, Ullum, El Cadillal, Escaba, Pueblo Viejo) in transition with concessions expiring Nov 2025 - Jul 2026. This is the largest hydroelectric privatization wave since the 1990s Menem era. Follows same pattern: expiring concessions re-privatized without public debate on whether state should operate directly.",
+      "new_entities": [],
+      "investigation_tags": ["hydroelectric_privatization", "energy_concessions", "comahue", "milei_reforms"]
+    }
+  ],
+  "cross_cutting_themes": {
+    "enforcement_vacuum": "The transition from CNDC to ANC and the one-year delay of ex-ante merger control (until Nov 2026) creates a regulatory vacuum during which major monopoly-forming mergers proceed: Visa-Prisma, Bunge-Viterra, Telecom-Telefonica, and Mindlin-Loma Negra",
+    "privatization_wave": "Largest since Menem 1990s: AySA (water), Aerolineas Argentinas (aviation), 11+ hydroelectric plants, Hidrovia (waterway), all proceeding simultaneously under Milei",
+    "conglomerate_consolidation": "Mindlin now spans energy + cement. Vila-Manzano now control most of Argentine private TV. Bunge dominates grain exports. Visa re-monopolizes payments. Sigman builds global pharma empire.",
+    "state_corporate_tensions": "Unusual Milei-Techint conflict over pipeline pricing. Milei publicly attacked industrialists as 'prebendarios'. Techint suing for USD 96M. Suggests fracture in traditional state-business accommodation.",
+    "foreign_capital_entry": "RIGI regime attracting massive foreign mining investment (Rio Tinto USD 2.7B). Hidrovia bid by Belgian/Brazilian companies. Aerolineas courting LATAM/Avianca/Air France-KLM. Visa (US) acquiring payment infrastructure."
+  },
+  "priority_leads_for_investigation": [
+    {
+      "priority": 1,
+      "lead": "Visa-Prisma re-monopolization",
+      "why": "Courts forced divestiture in 2017; Visa now re-acquires the same assets with government blessing during ANC transition gap"
+    },
+    {
+      "priority": 2,
+      "lead": "Bunge-Viterra 61% sunflower oil, 25% soy dominance",
+      "why": "Largest agro-export concentration event in Argentine history, completed Feb 2026"
+    },
+    {
+      "priority": 3,
+      "lead": "AySA water privatization for USD 500M after USD 13.4B in state investment",
+      "why": "Human rights dimension; water cutoff authorized; potential fire-sale pricing"
+    },
+    {
+      "priority": 4,
+      "lead": "Hidrovia single-operator 25-year concession controlling 80% of exports",
+      "why": "Strategic chokepoint; foreign operators; USD 10B contract"
+    },
+    {
+      "priority": 5,
+      "lead": "Vila-Manzano-Scaglione-Belocopitt media concentration",
+      "why": "Same group now controls Grupo America + Telefe (top-rated network); unprecedented media concentration"
+    },
+    {
+      "priority": 6,
+      "lead": "Mindlin cross-sector empire: Pampa Energia + Loma Negra cement via bankruptcy arbitrage",
+      "why": "Bought USD 45M in distressed debt to control company with 45% cement market share"
+    },
+    {
+      "priority": 7,
+      "lead": "Cuadernos trial: 64 businesspeople + CAEV cartel accusation",
+      "why": "Direct evidence of public works cartelization; testimony phase just started"
+    },
+    {
+      "priority": 8,
+      "lead": "ANC enforcement gap: one fine of USD 25K in entire year of 2025",
+      "why": "De facto competition enforcement holiday during peak merger activity"
+    }
+  ]
+}

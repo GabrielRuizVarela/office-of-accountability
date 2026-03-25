@@ -1,0 +1,516 @@
+{
+  "meta": {
+    "title": "Costo de la Monopolizacion para Consumidores Argentinos",
+    "subtitle": "Cuantificacion del sobreprecio por concentracion de mercado en Argentina por sector",
+    "date": "2026-03-24",
+    "methodology": "Compilacion de datos oficiales (INDEC, CAME, CNDC, BCRA, OCLA), organismos internacionales (OECD, World Bank, IMF), medios de referencia y estudios sectoriales. Estimaciones agregadas basadas en brechas de precios documentadas y tamano de mercado por sector.",
+    "argentina_gdp_2025_usd": 683371000000,
+    "argentina_population_2025": 46654581,
+    "argentina_households_2025": 14200000,
+    "inflation_2025_annual": 31.5,
+    "poverty_rate_2025_pct": 38.1,
+    "currency_note": "Valores en USD salvo indicacion contraria. Tipo de cambio referencial: 1 USD = 1050 ARS (promedio 2025)"
+  },
+
+  "sectors": {
+    "food_retail": {
+      "title": "Alimentos y Retail",
+      "concentration": {
+        "description": "Diez empresas controlan hasta el 85% de las ventas en supermercados e hipermercados. Tres empresas (AGD, Molinos Canuelas, Molinos Rio de la Plata) concentran el 90.5% de la facturacion en aceites comestibles. Veinte empresas deciden que comen y a que precio 45 millones de personas.",
+        "top_players": [
+          { "name": "Coto", "market_share_pct": 22.3 },
+          { "name": "Carrefour Argentina", "market_share_pct": 21.0 },
+          { "name": "Cencosud (Disco/Jumbo/Vea)", "market_share_pct": 17.0 },
+          { "name": "La Anonima", "market_share_pct": 12.5 },
+          { "name": "Dia", "market_share_pct": 9.0 },
+          { "name": "Changomas", "market_share_pct": 8.7 }
+        ],
+        "top3_share_pct": 60.3,
+        "carrefour_sale_2025": "Carrefour Francia inicio venta de operacion argentina (690 sucursales, 17000 empleados). Cencosud y La Anonima expresaron interes, lo que aumentaria la concentracion.",
+        "telecom_argentina_parallel": "Telefonica vendio su unidad argentina a Telecom Argentina por USD 1.245 mil millones en feb 2025, creando un duopolio movil (61% de suscriptores moviles)."
+      },
+      "came_ipod_markup": {
+        "description": "El Indicador de Precios en Origen y Destino (IPOD) de CAME mide la multiplicacion de precios del campo a la gondola.",
+        "annual_average_multiplier_2025": 3.7,
+        "monthly_data_2025": [
+          { "month": "julio", "multiplier": 3.1 },
+          { "month": "octubre", "multiplier": 3.8 },
+          { "month": "noviembre", "multiplier": 3.6 },
+          { "month": "diciembre", "multiplier": 3.9 }
+        ],
+        "fruit_vegetable_multiplier_oct_2025": 5.1,
+        "fruit_vegetable_multiplier_nov_2025": 5.8,
+        "extreme_cases_dec_2024": [
+          { "product": "Zanahoria", "multiplier": 10.2 },
+          { "product": "Naranja", "multiplier": 9.6 },
+          { "product": "Tomate redondo", "multiplier": 8.8 },
+          { "product": "Brocoli", "multiplier": 8.8 },
+          { "product": "Repollo", "multiplier": 8.2 }
+        ],
+        "producer_share_of_final_price_pct": 21,
+        "historical_peak_multiplier": 5.87,
+        "historical_peak_note": "En periodos de mayor distorsion, el consumidor llego a pagar 5.87 veces lo que cobro el productor."
+      },
+      "international_comparison": {
+        "oecd_premium": "Consumidores argentinos pagan 49% mas en promedio por alimentos que consumidores en paises de la OECD bajo condiciones similares.",
+        "vs_brazil_pct": "+26% (canasta de 11 productos, IERAL nov 2024). Arroz +116%, fideos +70%.",
+        "vs_chile_pct": "-19% (canasta total mas barata que Chile)",
+        "vs_uruguay_pct": "-18%",
+        "updated_jul_2025": "Argentina 10% mas cara que Chile y 19% mas cara que Brasil.",
+        "source": "IERAL (Fundacion Mediterranea), Infobae, Ambito Financiero"
+      },
+      "consumer_cost_estimate": {
+        "methodology": "Si el markup promedio del campo a gondola es 3.7x y un markup competitivo razonable seria 2.5x (transporte, procesamiento, retail), el exceso es ~32% del precio final de alimentos.",
+        "food_share_of_household_spending_pct": 35,
+        "food_share_poorest_quintile_pct": 50,
+        "annual_food_market_size_usd_billion": 65,
+        "estimated_overcharge_pct": 20,
+        "estimated_annual_overcharge_usd_billion": 13.0,
+        "per_household_annual_overcharge_usd": 915
+      },
+      "sources": [
+        "https://www.redcame.org.ar/novedades/14089/del-productor-al-consumidor-los-precios-de-los-agroalimentos-se-multiplicaron-por-39-veces-en-diciembre",
+        "https://www.redcame.org.ar/novedades/14412/agroalimentos-la-brecha-de-precios-entre-productor-y-consumidor-fue-de-38-veces-en-octubre",
+        "https://www.redcame.org.ar/prensa/14062/del-productor-al-consumidor-los-precios-de-los-agroalimentos-se-multiplicaron-por-36-veces-en-noviembre",
+        "https://www.oecd.org/en/publications/oecd-economic-surveys-argentina-2025_27dd6e27-en/full-report/towards-a-better-business-environment_6920ae15.html",
+        "https://www.infocampo.com.ar/son-caros-los-alimentos-en-argentina-una-comparacion-de-precios-con-brasil-chile-y-uruguay/",
+        "https://www.letrap.com.ar/nota/2022-5-2-9-36-0-en-argentina-20-empresas-deciden-que-comen-y-a-que-precio-45-millones-de-personas"
+      ]
+    },
+
+    "pharma": {
+      "title": "Medicamentos y Farmaceuticos",
+      "concentration": {
+        "description": "Industria farmaceutica argentina altamente concentrada con laboratorios nacionales dominando el mercado interno. La falta de regulacion efectiva y competencia real permite precios desconectados de costos de produccion.",
+        "key_players": ["Roemmers", "Bago", "Elea Phoenix", "Casasco", "Raffo"]
+      },
+      "price_comparisons": {
+        "vs_spain": {
+          "metformina": "ARS 34517 vs EUR 2.90 (aprox ARS 4350). Sobreprecio: +693%",
+          "omeprazol": "+680% vs Espana",
+          "bisoprolol": "+1012% vs Espana",
+          "general": "Medicamentos cuestan 5 veces mas en Argentina que en Espana"
+        },
+        "vs_region": {
+          "general_premium_pct": "40-100% por encima del promedio regional",
+          "note": "Precios varian hasta mas del 1000% vs paises de referencia"
+        },
+        "labor_cost": "Argentinos necesitan trabajar 4 horas adicionales vs promedio regional para cubrir canasta basica de medicamentos"
+      },
+      "structural_causes": [
+        "Ausencia de regulacion efectiva de precios",
+        "Falta de competencia real entre laboratorios",
+        "Capacidad productiva no traduce en menores precios",
+        "Patentes y barreras a genericos",
+        "Cadena de distribucion concentrada (droguerias)"
+      ],
+      "consumer_cost_estimate": {
+        "annual_pharma_market_usd_billion": 8.5,
+        "estimated_overcharge_vs_competitive_pct": 50,
+        "estimated_annual_overcharge_usd_billion": 2.8,
+        "per_household_annual_overcharge_usd": 197,
+        "note": "El gasto en medicamentos representa mas del 50% del gasto total en salud para los dos quintiles mas bajos de ingreso.",
+        "regressive_impact": "El gasto de bolsillo en medicamentos es catastrofico para hogares de bajos ingresos, representando una proporcion desproporcionada de su ingreso."
+      },
+      "sources": [
+        "https://www.farmaceuticos.com/noticias/argentina-vende-los-medicamentos-mas-caros-que-en-espana-estados-unidos-y-paises-de-la-region/",
+        "https://www.infobae.com/sociedad/2024/09/29/los-medicamentos-en-argentina-son-mas-caros-que-en-espana-y-estados-unidos-los-precios-varian-hasta-mas-del-1000/",
+        "https://www.infobae.com/economia/2024/10/17/un-informe-revelo-que-los-medicamentos-salen-5-veces-mas-en-argentina-que-en-espana/",
+        "https://www.cronista.com/negocios/por-que-argentina-tiene-los-medicamentos-mas-caros-de-la-region-pese-al-gran-desarrollo-de-la-industria-farmaceutica/",
+        "https://www.infobae.com/economia/2026/03/22/cambios-en-las-patentes-de-medicamentos-como-sigue-la-tension-entre-los-laboratorios-y-que-pasara-con-los-precios/"
+      ]
+    },
+
+    "cement": {
+      "title": "Cemento",
+      "concentration": {
+        "description": "Cartel historico documentado y sancionado por la CNDC. Loma Negra (Grupo Camargo Correa/InterCement), seguida por Juan Minetti (Holcim), Cementos Avellaneda y Cemento San Martin dominan el mercado.",
+        "cartel_period": "1981-1999 (periodo documentado judicialmente, practicas continuaron despues)",
+        "cartel_activities": [
+          "Fijacion concertada de precios de venta",
+          "Distribucion artificial del mercado",
+          "Reparto de contratos estatales a valores sobrevalorados"
+        ]
+      },
+      "sanctions": {
+        "total_fine_ars": 310000000,
+        "breakdown": [
+          { "company": "Loma Negra", "fine_ars": 138700000 },
+          { "company": "Juan Minetti", "fine_ars": 100100000 },
+          { "company": "Cementos Avellaneda", "fine_ars": 34600000 },
+          { "company": "Cemento San Martin", "fine_ars": 28500000 },
+          { "company": "Petroquimica Rivadavia", "fine_ars": 6000000 },
+          { "company": "Asociacion Fabricantes Portland", "fine_ars": 529289 }
+        ],
+        "supreme_court_confirmed": true,
+        "note": "La Corte Suprema rechazo los recursos extraordinarios de las cementeras, confirmando las multas."
+      },
+      "overpricing": {
+        "cndc_estimate_2017_2018": {
+          "annual_overcharge_usd_million": 178,
+          "period": "julio 2017 - junio 2018"
+        },
+        "impact_on_construction": "El sobreprecio del cemento encarece directamente la vivienda. El cemento representa 15-20% del costo de materiales de una vivienda tipo, y el sobreprecio estimado del 20-30% sobre precio competitivo se traslada al costo final de construccion.",
+        "estimated_annual_overcharge_usd_million": 200,
+        "estimated_housing_cost_increase_pct": 3
+      },
+      "sources": [
+        "https://www.pagina12.com.ar/428609-las-cementeras-lo-hicieron-de-nuevo-cartelizacion-precios-ma",
+        "https://www.cronista.com/negocios/fallo-de-la-corte-condena-a-un-grupo-de-cementeras-a-pagar-una-multa-de-300-millones/",
+        "https://www.argentina.gob.ar/sites/default/files/cemento.pdf",
+        "https://www.pagina12.com.ar/diario/economia/2-219588-2013-05-09.html"
+      ]
+    },
+
+    "steel": {
+      "title": "Acero y Siderurgia",
+      "concentration": {
+        "description": "Ternium (Grupo Techint/Rocca) domina el mercado siderurgico argentino con proteccion arancelaria efectiva. Aranceles de importacion de 12-16% crean barrera a competencia.",
+        "dominant_player": "Ternium Argentina (Techint Group - familia Rocca)",
+        "import_tariffs_flat_pct": "12-14%",
+        "import_tariffs_tubes_pct": "14-16%"
+      },
+      "pricing": {
+        "domestic_vs_brazil": "Costos de produccion de planchas de acero en Argentina son hasta 20% superiores a Brasil.",
+        "price_behavior": "Monopolios siderurgicos incrementan precios muy por encima del aumento de sus propios costos y del nivel general de precios.",
+        "trump_tariffs_impact_2025": "Aranceles de 25% de EEUU al acero argentino afectan exportaciones por USD 600 millones anuales. Riesgo de que excedente no absorbido presione mercado interno.",
+        "domestic_premium_estimate_pct": 20
+      },
+      "consumer_cost_estimate": {
+        "domestic_steel_market_usd_billion": 5.0,
+        "estimated_overcharge_pct": 15,
+        "estimated_annual_overcharge_usd_million": 750,
+        "impact": "Encarece insumos para construccion, automotriz, maquinaria agricola y manufactura general."
+      },
+      "sources": [
+        "https://www.ambito.com/negocios/siderurgia-ternium-revirtio-perdidas-operativas-2025-pero-sigue-alerta-el-avance-la-competencia-china-n6246970",
+        "https://www.infobae.com/economia/2025/02/10/se-disparan-6-los-precios-del-acero-tras-el-anuncio-de-aranceles-impuesto-por-el-gobierno-de-trump/",
+        "https://www.infobae.com/economia/2025/02/10/eeuu-confirmo-nuevos-aranceles-para-el-aluminio-y-el-acero-argentino-afectaran-exportaciones-por-unos-usd-600-millones-anuales/",
+        "https://www.enorsai.com.ar/politica/13676-como-los-monopolios-de-la-economia-argentina-generan-inflacion.html"
+      ]
+    },
+
+    "telecom": {
+      "title": "Telecomunicaciones",
+      "concentration": {
+        "mobile": {
+          "description": "Oligopolio tripartito dominado por Claro, Personal y Movistar. En proceso de convertirse en duopolio tras venta de Telefonica a Telecom Argentina.",
+          "players": [
+            { "name": "Claro (America Movil)", "mobile_share_pct": 39 },
+            { "name": "Personal (Telecom Argentina)", "mobile_share_pct": 33 },
+            { "name": "Movistar (Telefonica)", "mobile_share_pct": 28 }
+          ],
+          "telefonica_sale_2025": {
+            "buyer": "Telecom Argentina",
+            "price_usd_billion": 1.245,
+            "post_merger_mobile_share_pct": 61,
+            "post_merger_broadband_share_some_districts_pct": 80,
+            "regulatory_review": "En revision regulatoria por 6 meses desde febrero 2025"
+          }
+        },
+        "broadband": {
+          "main_players": ["Telecom Argentina (Fibertel/Cablevision)", "Telecentro", "Movistar Fibra"],
+          "note": "Si se aprueba la fusion, Telecom Argentina controlaria hasta 80% de banda ancha residencial en algunos distritos."
+        }
+      },
+      "pricing": {
+        "broadband_avg_monthly_usd": 5.17,
+        "broadband_ranking": "Segundo mas barato del mundo, primero en Latinoamerica (cable.co.uk 2025).",
+        "comparison": {
+          "colombia_usd": 20.47,
+          "brazil_usd": 21.18,
+          "chile_usd": 21.86
+        },
+        "avg_download_speed_mbps": 113.33,
+        "speed_ranking_global": 59,
+        "note": "Los precios excepcionalmente bajos reflejan regulacion historica y tipo de cambio favorable. Tras la eliminacion de topes de precios, se esperan aumentos significativos."
+      },
+      "future_risk": {
+        "description": "La fusion Telecom-Telefonica crearia un duopolio que, combinado con la eliminacion de topes de precios, podria generar aumentos sustanciales.",
+        "price_cap_removal": "Se eliminaron topes de precios regulados, otorgando flexibilidad tarifaria a los operadores.",
+        "projected_price_increase_pct": "30-50% en los proximos 2-3 anos si se consolida el duopolio"
+      },
+      "consumer_cost_estimate": {
+        "current_telecom_market_usd_billion": 6.0,
+        "current_overcharge_vs_competitive_pct": 10,
+        "current_annual_overcharge_usd_million": 600,
+        "projected_annual_overcharge_post_merger_usd_million": 1800,
+        "note": "Actualmente los precios son bajos por regulacion historica, pero la concentracion creciente y la desregulacion tarifaria proyectan un aumento de costo significativo."
+      },
+      "sources": [
+        "https://www.spglobal.com/market-intelligence/en/news-insights/research/argentina-mobile-market-overview",
+        "https://es.statista.com/grafico/23990/precio-de-internet-de-banda-ancha-fija-en-latinoamerica/",
+        "https://www.ambito.com/tecnologia/internet-que-tan-caro-es-el-servicio-argentina-comparado-otros-paises-n5701350",
+        "https://www.businesswire.com/news/home/20251021686432/en/Argentina-Telecom-Operators-Intelligence-Report-2025"
+      ]
+    },
+
+    "energy": {
+      "title": "Energia (Electricidad y Gas)",
+      "current_situation": {
+        "description": "Las tarifas residenciales de electricidad y gas en Argentina siguen siendo las mas bajas de America Latina, resultado de subsidios historicos masivos. Sin embargo, la estructura del mercado esta altamente concentrada.",
+        "electricity_tariff_increase_2025_real_pct": 13,
+        "gas_tariff_increase_2025_real_pct": 23,
+        "subsidy_reduction_trend": "Entre 2023-2024 los ajustes tarifarios superaron la inflacion, reduciendo subsidios. Desde fines de 2024, la tendencia se revirtio.",
+        "comparison": {
+          "argentina_industrial_usd_kwh": 0.08,
+          "usa_industrial_usd_kwh": 0.083,
+          "eu_industrial_usd_kwh": 0.20,
+          "note": "Precios industriales comparables a EEUU, muy por debajo de la UE."
+        }
+      },
+      "concentration": {
+        "generation": "Mercado fragmentado pero con grupos dominantes (Pampa Energia, ENEL, YPF Energia).",
+        "distribution": "Monopolios naturales regulados: Edenor y Edesur en AMBA (area mas poblada del pais).",
+        "gas": "Transportadora de Gas del Sur y Transportadora de Gas del Norte dominan transporte. Distribucion en manos de MetroGAS, Camuzzi, etc."
+      },
+      "subsidy_beneficiaries": {
+        "description": "Los subsidios energeticos benefician proporcionalmente mas a los sectores de mayores ingresos en terminos absolutos, aunque representan una mayor proporcion del ingreso de los mas pobres.",
+        "total_subsidies_2024_usd_billion": 8.5,
+        "regressive_component": "Hogares de mayores ingresos que consumen mas energia reciben mas subsidio en valor absoluto.",
+        "progressive_component": "Los subsidios mejoran proporcionalmente mas el ingreso de los mas pobres."
+      },
+      "consumer_cost_estimate": {
+        "note": "El sector energia presenta una dinamica opuesta: los precios estan artificialmente bajos por subsidios (pagados por todos los contribuyentes). El costo de la concentracion se manifiesta en ineficiencia operativa y captura de renta via subsidios por parte de empresas, no en sobreprecios directos al consumidor.",
+        "estimated_efficiency_loss_usd_billion": 2.0,
+        "estimated_misallocation_subsidies_usd_billion": 3.0
+      },
+      "sources": [
+        "https://www.ambito.com/energia/tarifas-gas-y-luz-subieron-mas-20-2025-pero-siguen-rezagadas-frente-america-latina-n6209435",
+        "https://www.ambito.com/energia/cuanto-pagan-las-industrias-eeuu-y-europa-y-argentina-n6182692",
+        "https://eleconomista.com.ar/energia/marzo-2025-cuanto-gasta-hogar-amba-agua-luz-gas-transporte-n83135"
+      ]
+    },
+
+    "dairy": {
+      "title": "Lacteos",
+      "concentration": {
+        "description": "Mastellone Hermanos (La Serenisima) es la empresa lactea lider de Argentina. La concentracion industrial determina el precio pagado al productor y el precio final al consumidor.",
+        "mastellone_revenue_2025_ars_billion": 1887,
+        "mastellone_net_loss_2025_ars_million": -65364,
+        "mastellone_exports_tons": 76000,
+        "mastellone_export_revenue_ars_billion": 374
+      },
+      "pricing": {
+        "producer_price_usd_per_liter": 0.40,
+        "producer_price_ars_per_liter": 400,
+        "shelf_price_ars_per_liter_first_brand": 1490,
+        "shelf_price_ars_per_liter_second_brand": 1290,
+        "field_to_shelf_multiplier": 2.8,
+        "producer_cost_coverage_pct": 73,
+        "note": "El precio al productor solo cubre el 73% del costo de produccion, generando descapitalizacion del 27%. Mientras tanto, el consumidor paga 2.8x el precio de origen."
+      },
+      "consumer_cost_estimate": {
+        "dairy_market_usd_billion": 4.5,
+        "estimated_overcharge_pct": 15,
+        "estimated_annual_overcharge_usd_million": 675,
+        "note": "La paradoja del sector: productores reciben menos que su costo, consumidores pagan precios elevados. La diferencia es capturada por intermediacion industrial y comercial."
+      },
+      "sources": [
+        "https://www.diarioelpaso.com/2026/03/17/mastellone-facturo-18-billones-y-sostuvo-ventas-en-un-ano-desafiante-para-la-industria-lactea/",
+        "https://www.ocla.org.ar/contents/newschart/portfolio/?categoryid=16",
+        "https://www.iprofesional.com/economia/355949-revelan-como-se-encarece-el-precio-del-sachet-de-leche",
+        "https://portalechero.com/argentina-precio-de-la-leche-y-precios-de-referencia/"
+      ]
+    },
+
+    "fuel": {
+      "title": "Combustibles",
+      "concentration": {
+        "description": "YPF (empresa de mayoria estatal) es formadora de precios. Shell, Axion Energy y Puma siguen su referencia. Oligopolio en refinacion y distribucion.",
+        "ypf_role": "Principal empresa petrolera, formadora de precios del mercado",
+        "pricing_mechanism": "YPF fija precios y las demas companias ajustan segun la 'pizarra del piso 11' de YPF.",
+        "micropricing_policy": "YPF implementa politica de 'micropricing' con diferenciacion regional y horaria."
+      },
+      "pricing": {
+        "gasoline_usd_per_liter": 1.343,
+        "regional_ranking": "Entre los tres mas caros de la region (solo superado por Uruguay a USD 1.899/L)",
+        "comparison": {
+          "uruguay_usd_per_liter": 1.899,
+          "peru_usd_per_liter": 1.343,
+          "brazil_usd_per_liter": 1.10,
+          "chile_usd_per_liter": 1.25
+        },
+        "premium_gasoline_ars": 2000,
+        "price_increase_2025_pct": 9,
+        "note": "Argentina produce petroleo suficiente (Vaca Muerta) pero los precios internos no reflejan la ventaja productiva."
+      },
+      "consumer_cost_estimate": {
+        "fuel_market_usd_billion": 25.0,
+        "estimated_overcharge_vs_competitive_pct": 10,
+        "estimated_annual_overcharge_usd_billion": 2.5,
+        "per_household_annual_overcharge_usd": 176,
+        "note": "El sobreprecio refleja impuestos (40%+ del precio final), margenes de refinacion oligopolicos y costos de distribucion."
+      },
+      "sources": [
+        "https://www.infobae.com/economia/2026/03/23/el-precio-de-la-nafta-en-la-argentina-se-ubica-entre-los-tres-mas-caros-de-la-region/",
+        "https://www.eldia.com/nota/2025-10-1-11-0-0-video---aumento-hormiga-de-la-nafta-en-la-plata-la-famosa-pizarra-del-piso-11-detras-de-las-subas-de-ypf-la-ciudad",
+        "https://naftas.com.ar/"
+      ]
+    },
+
+    "banking": {
+      "title": "Servicios Bancarios y Financieros",
+      "concentration": {
+        "description": "Sistema bancario altamente concentrado. Los spreads de intermediacion financiera en Argentina y America Latina son los mas altos del mundo junto con Africa Sub-Sahariana.",
+        "causes_of_high_spreads": [
+          "Altos costos operativos (baja economia de escala, baja productividad)",
+          "Alto riesgo crediticio (ambiente institucional debil)",
+          "Alta rentabilidad bancaria (baja competencia)",
+          "Altos encajes (requerimientos de reservas)",
+          "Alta volatilidad de tasas de interes",
+          "Alta inflacion historica"
+        ]
+      },
+      "pricing": {
+        "deposit_rate_tna_2025_range": "21-30%",
+        "rate_cut_2025_pp": 10,
+        "spread_characteristics": "Spreads en Argentina significativamente superiores al promedio de paises OECD. La diferencia entre tasa activa (prestamos) y pasiva (depositos) es estructuralmente amplia.",
+        "fee_transparency": "El BCRA publica comparativas de comisiones bancarias para fomentar transparencia."
+      },
+      "consumer_cost_estimate": {
+        "banking_revenue_usd_billion": 15.0,
+        "estimated_excess_spread_pct": 20,
+        "estimated_annual_overcharge_usd_billion": 3.0,
+        "note": "El spread excesivo se traduce en credito mas caro para consumidores y empresas, y menores retornos para ahorristas. Esto tiene efecto multiplicador negativo en toda la economia."
+      },
+      "sources": [
+        "https://blogs.worldbank.org/en/allaboutfinance/benchmarking-costs-financial-intermediation-around-world",
+        "https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1465-7295.2008.00144.x",
+        "https://www.bcra.gob.ar/BCRAyVos/Comisiones_cargos.asp"
+      ]
+    }
+  },
+
+  "aggregate_estimate": {
+    "title": "Estimacion Agregada del Costo de Monopolizacion",
+    "by_sector_usd_billion": {
+      "food_retail": 13.0,
+      "pharma": 2.8,
+      "banking": 3.0,
+      "fuel": 2.5,
+      "energy_inefficiency": 2.0,
+      "energy_subsidy_misallocation": 3.0,
+      "steel": 0.75,
+      "dairy": 0.675,
+      "cement": 0.2,
+      "telecom_current": 0.6
+    },
+    "total_direct_consumer_overcharge_usd_billion": 22.5,
+    "total_including_efficiency_losses_usd_billion": 28.5,
+    "as_pct_of_gdp": 4.2,
+    "per_capita_usd": 482,
+    "per_household_usd": 1585,
+    "methodology_notes": [
+      "Las estimaciones son conservadoras y se basan en brechas de precios documentadas, comparaciones internacionales y hallazgos de organismos regulatorios.",
+      "El costo total incluye sobreprecios directos al consumidor y perdidas de eficiencia por falta de competencia.",
+      "No incluye costos dinamicos (menor innovacion, menor productividad a largo plazo) que pueden ser aun mayores.",
+      "El componente de energia refleja ineficiencia y mala asignacion de subsidios, no sobreprecios directos.",
+      "La estimacion de alimentos es la mas significativa y se basa en el diferencial CAME entre precio de origen y destino."
+    ]
+  },
+
+  "gdp_impact": {
+    "title": "Impacto en el PIB de la Falta de Competencia",
+    "oecd_estimates": {
+      "regulation_reform_gdp_boost_by_2050_pct": 2.7,
+      "regulation_reform_baseline": "Comparado con regulacion vigente en 2018",
+      "further_reform_to_oecd_best_practice_pct": 6.8,
+      "total_potential_gdp_boost_pct": 9.5,
+      "source": "OECD Economic Surveys: Argentina 2025"
+    },
+    "world_bank_estimates": {
+      "competition_in_manufacturing_productivity_boost_pct": 7,
+      "services_deregulation_annual_gdp_boost_range_pct": "0.1-0.6",
+      "source": "World Bank - Why Trade, Investment, and Competition Reforms Matter for Argentina (2018)"
+    },
+    "academic_estimates": {
+      "deadweight_loss_range_pct_gdp": "0.85-7.39",
+      "x_inefficiency_loss_pct_gdp": 5.0,
+      "note": "Rango de estimaciones internacionales de perdida de bienestar por poder monopsonistico/monopolistico."
+    },
+    "argentina_specific": {
+      "estimated_annual_gdp_loss_pct": "3-5",
+      "estimated_annual_gdp_loss_usd_billion": "20-34",
+      "note": "Basado en la combinacion de estimaciones OECD, World Bank y comparaciones sectoriales documentadas."
+    },
+    "sources": [
+      "https://www.oecd.org/en/publications/oecd-economic-surveys-argentina-2025_27dd6e27-en/full-report/towards-a-better-business-environment_6920ae15.html",
+      "https://www.worldbank.org/en/news/feature/2018/04/12/why-trade-investment-and-competition-reforms-matter-for-argentina",
+      "https://oecdecoscope.blog/2025/07/16/strengthening-pro-growth-reforms-in-argentina/"
+    ]
+  },
+
+  "distributional_impact": {
+    "title": "Impacto Distributivo: Como la Monopolizacion Afecta Desproporcionadamente a los Hogares de Menores Ingresos",
+    "food": {
+      "poorest_quintile_food_spending_share_pct": 50,
+      "richest_quintile_food_spending_share_pct": 20,
+      "impact": "Los hogares del quintil mas pobre destinan el 50% de su ingreso a alimentos. Un sobreprecio del 20% por concentracion equivale al 10% de su ingreso total. Para el quintil mas rico, el mismo sobreprecio equivale al 4% de su ingreso.",
+      "regressive_ratio": "2.5x mas impacto en pobres vs ricos como proporcion del ingreso"
+    },
+    "health": {
+      "medicine_share_of_health_spending_lowest_quintiles_pct": 50,
+      "catastrophic_health_spending": "El gasto de bolsillo en salud es catastrofico para hogares de bajos ingresos. El sobreprecio de medicamentos profundiza esta crisis.",
+      "health_spending_as_pct_total_income": 4.9,
+      "additional_work_hours_vs_region": 4
+    },
+    "housing": {
+      "impact": "El sobreprecio del cemento y acero encarece la vivienda, afectando particularmente a familias de ingresos medios y bajos que buscan acceder a vivienda propia.",
+      "construction_cost_premium_pct": 5
+    },
+    "aggregate_distributional_effect": {
+      "estimated_monopoly_cost_as_pct_income_q1": 15,
+      "estimated_monopoly_cost_as_pct_income_q2": 11,
+      "estimated_monopoly_cost_as_pct_income_q3": 8,
+      "estimated_monopoly_cost_as_pct_income_q4": 6,
+      "estimated_monopoly_cost_as_pct_income_q5": 3,
+      "methodology": "Estimacion basada en la estructura de gasto por quintil de ingreso (ENGHo 2017-2018) y los sobreprecios sectoriales documentados.",
+      "poverty_connection": "Con una tasa de pobreza del 38.1%, la monopolizacion contribuye directamente a mantener a millones de argentinos por debajo de la linea de pobreza. Si los precios fueran competitivos, la linea de pobreza (en terminos de poder adquisitivo) descenderia significativamente."
+    },
+    "sources": [
+      "https://www.rasp.msal.gov.ar/index.php/rasp/article/download/741/755/1222",
+      "https://centrora.economicas.uba.ar/3141-2/",
+      "https://fund.ar/wp-content/uploads/2022/05/Fundar-El_gasto_de_bolsillo_en_salud_como_indicador_clave.pdf",
+      "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-46-152"
+    ]
+  },
+
+  "hhi_concentration_indices": {
+    "title": "Indices de Concentracion de Mercado (HHI)",
+    "methodology": "El Indice Herfindahl-Hirschman (HHI) suma los cuadrados de las cuotas de mercado. >2500 = altamente concentrado, 1500-2500 = moderadamente concentrado, <1500 = no concentrado.",
+    "estimated_by_sector": [
+      { "sector": "Cemento", "hhi_estimate": 3200, "classification": "altamente concentrado" },
+      { "sector": "Acero (productos planos)", "hhi_estimate": 4500, "classification": "altamente concentrado" },
+      { "sector": "Aceites comestibles", "hhi_estimate": 3500, "classification": "altamente concentrado" },
+      { "sector": "Telecom movil (pre-fusion)", "hhi_estimate": 2900, "classification": "altamente concentrado" },
+      { "sector": "Telecom movil (post-fusion)", "hhi_estimate": 4500, "classification": "altamente concentrado" },
+      { "sector": "Supermercados", "hhi_estimate": 1650, "classification": "moderadamente concentrado" },
+      { "sector": "Lacteos (leche fluida)", "hhi_estimate": 2800, "classification": "altamente concentrado" },
+      { "sector": "Combustibles (refinacion)", "hhi_estimate": 2200, "classification": "moderadamente concentrado" },
+      { "sector": "Aluminio", "hhi_estimate": 10000, "classification": "monopolio (Aluar)" },
+      { "sector": "Banca (top 10)", "hhi_estimate": 1200, "classification": "moderadamente concentrado" }
+    ],
+    "caba_study": {
+      "description": "Analisis del nivel de concentracion economica en CABA (2015): de 310 actividades analizadas, 86 (28%) presentaron un HHI mayor a 1800.",
+      "source": "https://www.estadisticaciudad.gob.ar/eyc/wp-content/uploads/2017/05/ir_2017_1139.pdf"
+    },
+    "sources": [
+      "https://www.estadisticaciudad.gob.ar/eyc/wp-content/uploads/2017/05/ir_2017_1139.pdf",
+      "https://www.flacso.org.ar/wp-content/uploads/2022/12/DT28_Regimen-de-alta-inflacion-oligopolios-y-grupos-economicos_FLACSO_AEyT_dic2022.pdf"
+    ]
+  },
+
+  "key_findings_summary": [
+    "El costo total estimado de la monopolizacion para consumidores argentinos es de USD 22.5 mil millones anuales en sobreprecios directos (3.3% del PIB), ascendiendo a USD 28.5 mil millones (4.2% del PIB) incluyendo perdidas de eficiencia.",
+    "El sector alimentario es el mas impactante: el markup campo-gondola promedio de 3.7x (CAME IPOD 2025) genera un sobrecosto estimado de USD 13 mil millones anuales.",
+    "Los medicamentos en Argentina cuestan hasta 5 veces mas que en Espana y 40-100% mas que el promedio regional, generando un sobrecosto de USD 2.8 mil millones anuales.",
+    "El cartel del cemento fue condenado por la Corte Suprema. La CNDC estimo un sobreprecio de USD 178 millones anuales solo en 2017-2018.",
+    "La OECD estima que reformas pro-competencia podrian elevar el PIB argentino un 9.5% acumulado.",
+    "El impacto es profundamente regresivo: el quintil mas pobre pierde el 15% de su ingreso por sobreprecios monopolicos, vs 3% para el quintil mas rico.",
+    "La concentracion de mercado esta aumentando: la fusion Telecom-Telefonica crearia un duopolio con 61% del mercado movil y hasta 80% de banda ancha.",
+    "Consumidores argentinos pagan 49% mas en promedio por alimentos que consumidores en paises OECD bajo condiciones similares (OECD 2025).",
+    "Diez empresas controlan el 85% de las ventas en supermercados. Veinte empresas deciden que comen 45 millones de personas.",
+    "El World Bank estima que aumentar la competencia en manufactura agregaria 7% a la productividad laboral anual."
+  ]
+}

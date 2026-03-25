@@ -17,6 +17,18 @@ const CASE_META: Readonly<Record<string, { title: string; description: string; d
       'Trafficking and power network. 7,276 entities, court documents, flight records, and factchecking.',
     defaultLang: 'en',
   },
+  'finanzas-politicas': {
+    title: 'Finanzas Politicas Argentinas — Oficina de Rendicion de Cuentas',
+    description:
+      'Analisis de redes de relaciones institucionales entre entidades gubernamentales, corporativas, judiciales, financieras y mediaticas en Argentina.',
+    defaultLang: 'es',
+  },
+  'monopolios': {
+    title: 'Monopolios en Argentina — Oficina de Rendicion de Cuentas',
+    description:
+      'Investigacion sobre mercados monopolizados: 18 sectores, 44 archivos, 829+ cruces Neo4j. Costo al consumidor: USD 22.500M/año.',
+    defaultLang: 'es',
+  },
   'riesgo-nuclear': {
     title: 'Global Nuclear Risk — Office of Accountability',
     description:
