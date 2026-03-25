@@ -1,4 +1,6 @@
-import { createTranslator } from '@/i18n/messages'
+'use client'
+
+import { useTranslations } from 'next-intl'
 
 const FEATURE_KEYS = ['graph', 'timeline', 'evidence', 'community', 'network', 'money'] as const
 
@@ -16,7 +18,7 @@ const FEATURE_ICONS: Record<string, string> = {
 }
 
 export function FeatureShowcase() {
-  const t = createTranslator('features')
+  const t = useTranslations('features')
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-12">

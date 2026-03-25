@@ -1,5 +1,7 @@
-import Link from 'next/link'
-import { createTranslator } from '@/i18n/messages'
+'use client'
+
+import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import type { InvestigationConfig } from '@/config/investigations'
 
 const COLOR_MAP: Record<
@@ -78,7 +80,7 @@ interface InvestigationCardProps {
 }
 
 export function InvestigationCard({ config }: InvestigationCardProps) {
-  const t = createTranslator('investigations')
+  const t = useTranslations('investigations')
   const colors = COLOR_MAP[config.color] ?? DEFAULT_COLORS
 
   return (

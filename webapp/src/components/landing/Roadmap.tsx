@@ -1,4 +1,6 @@
-import { createTranslator } from '@/i18n/messages'
+'use client'
+
+import { useTranslations } from 'next-intl'
 import { roadmapPhases } from '@/config/roadmap'
 
 const STATUS_STYLES: Record<string, { badge: string; line: string }> = {
@@ -11,7 +13,7 @@ const STATUS_STYLES: Record<string, { badge: string; line: string }> = {
 const DEFAULT_STATUS = STATUS_STYLES['future']
 
 export function Roadmap() {
-  const t = createTranslator('roadmap')
+  const t = useTranslations('roadmap')
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-12">

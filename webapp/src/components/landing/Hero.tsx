@@ -1,8 +1,10 @@
-import Link from 'next/link'
-import { createTranslator } from '@/i18n/messages'
+'use client'
+
+import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 
 export function Hero() {
-  const t = createTranslator('hero')
+  const t = useTranslations('hero')
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-20 sm:py-28">
