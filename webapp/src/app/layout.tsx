@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 
+import { LanguageProvider } from '@/lib/language-context'
 import { SiteNav } from '@/components/layout/SiteNav'
 import { Footer } from '@/components/layout/Footer'
 import './globals.css'
@@ -29,11 +30,13 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className="flex min-h-screen flex-col bg-zinc-950">
-          <SiteNav />
-          <div className="flex-1">{children}</div>
-          <Footer />
-        </div>
+        <LanguageProvider defaultLang="es">
+          <div className="flex min-h-screen flex-col bg-zinc-950">
+            <SiteNav />
+            <div className="flex-1">{children}</div>
+            <Footer />
+          </div>
+        </LanguageProvider>
       </body>
     </html>
   )
