@@ -19,7 +19,7 @@ export function SiteNav() {
     <header className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link href="/" className="text-lg font-bold text-zinc-50">
-          ORC
+          {t('logo')}
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm sm:flex">
