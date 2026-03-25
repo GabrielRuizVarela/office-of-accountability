@@ -1,7 +1,11 @@
+'use client'
+
 import { createTranslator } from '@/i18n/messages'
+import { useLanguage } from '@/lib/language-context'
 
 export function CallToAction() {
-  const t = createTranslator('cta')
+  const { lang } = useLanguage()
+  const t = createTranslator('cta', lang)
 
   return (
     <section className="mx-auto max-w-xl border-t border-zinc-800 px-4 py-12 text-center">

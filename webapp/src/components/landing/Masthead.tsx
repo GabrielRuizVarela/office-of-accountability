@@ -1,7 +1,11 @@
+'use client'
+
 import { createTranslator } from '@/i18n/messages'
+import { useLanguage } from '@/lib/language-context'
 
 export function Masthead() {
-  const t = createTranslator('masthead')
+  const { lang } = useLanguage()
+  const t = createTranslator('masthead', lang)
 
   return (
     <header className="mx-auto max-w-3xl px-4 pt-16 pb-10 text-center sm:pt-24">

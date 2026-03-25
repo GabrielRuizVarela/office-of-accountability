@@ -1,4 +1,7 @@
+'use client'
+
 import { createTranslator } from '@/i18n/messages'
+import { useLanguage } from '@/lib/language-context'
 import { roadmapPhases } from '@/config/roadmap'
 
 const VISION_KEYS = ['platform', 'collaboration', 'consensus'] as const
@@ -18,7 +21,8 @@ const STATUS_TEXT: Record<string, string> = {
 }
 
 export function WhatsNext() {
-  const t = createTranslator('whatsNext')
+  const { lang } = useLanguage()
+  const t = createTranslator('whatsNext', lang)
 
   return (
     <section className="mx-auto max-w-xl border-t-[3px] border-double border-zinc-600 px-4 py-14 text-center">
