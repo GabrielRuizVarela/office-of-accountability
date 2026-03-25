@@ -50,5 +50,36 @@
   },
   "roadmap": {
     "title": "Hoja de ruta"
+  },
+  "masthead": {
+    "dateline": "Buenos Aires · 24 de Marzo 2026",
+    "title": "OFICINA DE RENDICIÓN DE CUENTAS",
+    "tagline": "Motor de investigación sobre grafos de conocimiento"
+  },
+  "narrative": {
+    "intro": "Construimos un motor de investigación con inteligencia artificial. Esto es lo que pasó.",
+    "subtitle": "Un sistema que busca, valida y consolida hallazgos a partir de datos públicos. Con revisión humana en cada paso. Lo probamos en un caso. Después en siete."
+  },
+  "whatsNext": {
+    "title": "Lo que viene",
+    "description": "Nuestra visión original es construir una plataforma donde cualquiera pueda crear investigaciones como estas — y construir a partir de ellas con mecanismos de consenso.",
+    "roadmapTitle": "Hoja de ruta",
+    "platform": {
+      "title": "Plataforma abierta",
+      "description": "ejecutar el motor sobre nuevos datasets y dominios"
+    },
+    "collaboration": {
+      "title": "Colaboración",
+      "description": "buscamos investigadores, periodistas y desarrolladores"
+    },
+    "consensus": {
+      "title": "Consenso",
+      "description": "mecanismos para validar hallazgos de forma comunitaria"
+    }
+  },
+  "cta": {
+    "title": "Probá el motor",
+    "description": "Si tu organización quiere investigar datos públicos con nuestro motor, escribinos.",
+    "ctaContact": "Contactanos"
   }
 }
