@@ -14,6 +14,7 @@ const DEFAULT_STATUS = STATUS_STYLES['future']
 
 export function Roadmap() {
   const t = useTranslations('roadmap')
+  const tPhases = useTranslations('roadmapPhases')
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-12">
@@ -30,21 +31,21 @@ export function Roadmap() {
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
                     <span className={`inline-block h-2 w-2 rounded-full ${styles.line}`} />
-                    <h3 className="text-base font-bold text-zinc-100">{phase.title}</h3>
+                    <h3 className="text-base font-bold text-zinc-100">{tPhases(`${phase.id}.title`)}</h3>
                     <span
                       className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${styles.badge}`}
                     >
-                      {phase.statusLabel}
+                      {tPhases(`${phase.id}.statusLabel`)}
                     </span>
                   </div>
-                  <p className="mt-2 text-sm text-zinc-400">{phase.goal}</p>
+                  <p className="mt-2 text-sm text-zinc-400">{tPhases(`${phase.id}.goal`)}</p>
                 </div>
               </div>
               <ul className="mt-4 grid gap-1.5 text-xs text-zinc-500 sm:grid-cols-2">
-                {phase.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-2">
+                {Array.from({ length: phase.featureCount }, (_, i) => (
+                  <li key={i} className="flex items-center gap-2">
                     <span className="text-zinc-600">—</span>
-                    {feature}
+                    {tPhases(`${phase.id}.features.${i}`)}
                   </li>
                 ))}
               </ul>

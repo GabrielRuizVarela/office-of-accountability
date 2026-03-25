@@ -80,7 +80,8 @@ interface InvestigationCardProps {
 }
 
 export function InvestigationCard({ config }: InvestigationCardProps) {
-  const t = useTranslations('investigations')
+  const t = useTranslations('investigationCards')
+  const tNav = useTranslations('investigations')
   const colors = COLOR_MAP[config.color] ?? DEFAULT_COLORS
 
   return (
@@ -90,24 +91,24 @@ export function InvestigationCard({ config }: InvestigationCardProps) {
     >
       <div className={`flex items-center gap-2 text-xs ${colors.accent}`}>
         <span className={`inline-block h-2 w-2 rounded-full ${colors.dot}`} />
-        {config.subtitle}
+        {t(`${config.slug}.subtitle`)}
       </div>
-      <h3 className={`text-xl font-bold text-zinc-50 ${colors.titleHover}`}>{config.title}</h3>
-      <p className="text-sm leading-relaxed text-zinc-400">{config.description}</p>
+      <h3 className={`text-xl font-bold text-zinc-50 ${colors.titleHover}`}>{t(`${config.slug}.title`)}</h3>
+      <p className="text-sm leading-relaxed text-zinc-400">{t(`${config.slug}.description`)}</p>
       {config.stats.length > 0 && (
         <div className="flex flex-wrap items-center gap-3 text-sm">
           {config.stats.map((stat, i) => (
-            <span key={stat.label} className="flex items-center gap-1">
+            <span key={stat.key} className="flex items-center gap-1">
               {i > 0 && <span className="mr-2 text-zinc-600">|</span>}
               <span className={i === 0 ? `font-semibold ${colors.accent}` : 'text-zinc-400'}>
                 {stat.value}
               </span>
-              <span className="text-zinc-500">{stat.label}</span>
+              <span className="text-zinc-500">{t(`${config.slug}.stats.${stat.key}`)}</span>
             </span>
           ))}
         </div>
       )}
-      <span className={`text-sm font-medium ${colors.accent}`}>{t('explore')} &rarr;</span>
+      <span className={`text-sm font-medium ${colors.accent}`}>{tNav('explore')} &rarr;</span>
     </Link>
   )
 }
