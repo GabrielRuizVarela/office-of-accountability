@@ -53,6 +53,15 @@ const CASE_TABS: Readonly<Record<string, readonly NavTab[]>> = {
     { href: '/cronologia', label: { en: 'Timeline', es: 'Cronologia' } },
     { href: '/evidencia', label: { en: 'Sources', es: 'Fuentes' } },
   ],
+  'caso-dictadura': [
+    { href: '', label: { en: 'Overview', es: 'Inicio' } },
+    { href: '/resumen', label: { en: 'Summary', es: 'Resumen' } },
+    { href: '/investigacion', label: { en: 'Investigation', es: 'Investigación' } },
+    { href: '/actores', label: { en: 'Actors', es: 'Actores' } },
+    { href: '/cronologia', label: { en: 'Timeline', es: 'Cronología' } },
+    { href: '/grafo', label: { en: 'Connections', es: 'Conexiones' } },
+    { href: '/evidencia', label: { en: 'Evidence', es: 'Evidencia' } },
+  ],
   'finanzas-politicas': [
     { href: '', label: { en: 'Home', es: 'Inicio' } },
     { href: '/resumen', label: { en: 'Summary', es: 'Resumen' } },

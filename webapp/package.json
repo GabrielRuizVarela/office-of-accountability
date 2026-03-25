@@ -38,7 +38,10 @@
     "obras:cross-ref": "npx tsx scripts/run-obras-cross-reference.ts",
     "etl:comprar-adjudicaciones": "npx tsx scripts/run-etl-comprar-adjudicaciones.ts",
     "ingest:debarment": "npx tsx scripts/ingest-debarment-lists.ts",
-    "etl:contratar-historico": "npx tsx scripts/run-etl-contratar-historico.ts"
+    "etl:contratar-historico": "npx tsx scripts/run-etl-contratar-historico.ts",
+    "ingest:dictadura:seed": "npx tsx scripts/seed-caso-dictadura.ts",
+    "ingest:dictadura:wave1": "npx tsx scripts/ingest-dictadura-wave-1.ts",
+    "ingest:dictadura:wave5": "npx tsx scripts/ingest-dictadura-wave-5.ts"
   },
   "dependencies": {
     "@auth/core": "^0.41.1",
