@@ -132,7 +132,7 @@ export const FACTCHECK_ITEMS: FactcheckItem[] = [
     claim_es: 'Grandes corporaciones como Ford y Mercedes-Benz colaboraron con los militares para desaparecer trabajadores sindicales.',
     status: 'confirmed',
     source: 'Sentencias judiciales, testimonios en causas de lesa humanidad',
-    source_url: '',
+    source_url: 'https://www.fiscales.gob.ar/lesa-humanidad/la-camara-federal-de-casacion-confirmo-las-condenas-por-crimenes-de-lesa-humanidad-a-dos-directivos-de-la-automotriz-ford/',
     detail_en: 'Court proceedings have established that Ford Motor Argentina allowed military forces to use its factory premises to detain and interrogate workers. Mercedes-Benz Argentina similarly cooperated with security forces in the disappearance of union delegates.',
     detail_es: 'Los procesos judiciales han establecido que Ford Motor Argentina permitió que las fuerzas militares usaran las instalaciones de su fábrica para detener e interrogar trabajadores. Mercedes-Benz Argentina cooperó de manera similar con las fuerzas de seguridad en la desaparición de delegados sindicales.',
   },
@@ -444,7 +444,7 @@ export const EVIDENCE_DOCS: EvidenceDoc[] = [
     date: '1985-12-09',
     summary_en: 'Landmark verdict convicting five of nine junta commanders. Videla and Massera received life sentences. Established jurisprudence for crimes against humanity in Argentine law.',
     summary_es: 'Sentencia histórica condenando a cinco de nueve comandantes de las juntas. Videla y Massera recibieron cadena perpetua. Estableció jurisprudencia para delitos de lesa humanidad en el derecho argentino.',
-    source_url: '',
+    source_url: 'https://www.mpf.gob.ar/lesa/jurisprudencia/sentencia-del-juicio-a-los-comandantes-causa-1384/',
     verification_status: 'verified',
   },
 ]
