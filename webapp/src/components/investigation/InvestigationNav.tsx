@@ -3,17 +3,18 @@
 /**
  * Sub-navigation tabs for the investigation layout.
  * Per-case tab configuration via CASE_TABS map.
- * Includes a language toggle that reads/writes from LanguageContext.
+ * Locale comes from the URL via next-intl.
  */
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useLocale } from 'next-intl'
 
-import { useLanguage, type Lang } from '@/lib/language-context'
+import { Link } from '@/i18n/navigation'
+import { usePathname } from '@/i18n/navigation'
+import type { Locale } from '@/i18n/config'
 
 interface NavTab {
   readonly href: string
-  readonly label: Record<Lang, string>
+  readonly label: Record<Locale, string>
 }
 
 interface InvestigationNavProps {
@@ -102,10 +103,10 @@ const DEFAULT_TABS: readonly NavTab[] = [
 
 export function InvestigationNav({ slug }: InvestigationNavProps) {
   const pathname = usePathname()
-  const { lang, setLang } = useLanguage()
+  const locale = useLocale() as Locale
   const base = `/caso/${slug}`
   const tabDefs = CASE_TABS[slug] ?? DEFAULT_TABS
-  const tabs = tabDefs.map((t) => ({ href: `${base}${t.href}`, label: t.label[lang] }))
+  const tabs = tabDefs.map((t) => ({ href: `${base}${t.href}`, label: t.label[locale] }))
 
   return (
     <nav className="scrollbar-none flex items-center gap-1 overflow-x-auto border-b border-zinc-800 px-4">
@@ -125,30 +126,6 @@ export function InvestigationNav({ slug }: InvestigationNavProps) {
           </Link>
         )
       })}
-
-      {/* Language toggle */}
-      <div className="ml-auto flex shrink-0 items-center gap-1 rounded-lg border border-zinc-800 p-0.5">
-        <button
-          onClick={() => setLang('en')}
-          className={`rounded-md px-2 py-0.5 text-xs font-medium transition-colors ${
-            lang === 'en'
-              ? 'bg-blue-600 text-white'
-              : 'text-zinc-400 hover:text-zinc-200'
-          }`}
-        >
-          EN
-        </button>
-        <button
-          onClick={() => setLang('es')}
-          className={`rounded-md px-2 py-0.5 text-xs font-medium transition-colors ${
-            lang === 'es'
-              ? 'bg-blue-600 text-white'
-              : 'text-zinc-400 hover:text-zinc-200'
-          }`}
-        >
-          ES
-        </button>
-      </div>
     </nav>
   )
 }

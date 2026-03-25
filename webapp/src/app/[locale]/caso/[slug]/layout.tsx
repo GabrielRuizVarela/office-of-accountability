@@ -1,59 +1,47 @@
 import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 
-import { LanguageProvider, type Lang } from '@/lib/language-context'
 import { InvestigationNav } from '@/components/investigation/InvestigationNav'
 import { BilingualLegalDisclaimer } from '@/components/investigation/LegalDisclaimer'
-
-const CASE_META: Readonly<Record<string, { title: string; description: string; defaultLang: Lang }>> = {
-  'caso-libra': {
-    title: 'Caso Libra — Oficina de Rendicion de Cuentas',
-    description:
-      'Investigacion comunitaria sobre el token $LIBRA promovido por el presidente Milei. Datos publicos, blockchain, y documentos parlamentarios.',
-    defaultLang: 'es',
-  },
-  'caso-epstein': {
-    title: 'Epstein Case — Office of Accountability',
-    description:
-      'Trafficking and power network. 7,276 entities, court documents, flight records, and factchecking.',
-    defaultLang: 'en',
-  },
-  'finanzas-politicas': {
-    title: 'Finanzas Politicas Argentinas — Oficina de Rendicion de Cuentas',
-    description:
-      'Analisis de redes de relaciones institucionales entre entidades gubernamentales, corporativas, judiciales, financieras y mediaticas en Argentina.',
-    defaultLang: 'es',
-  },
-  'monopolios': {
-    title: 'Monopolios en Argentina — Oficina de Rendicion de Cuentas',
-    description:
-      'Investigacion sobre mercados monopolizados: 18 sectores, 44 archivos, 829+ cruces Neo4j. Costo al consumidor: USD 22.500M/año.',
-    defaultLang: 'es',
-  },
-  'riesgo-nuclear': {
-    title: 'Global Nuclear Risk — Office of Accountability',
-    description:
-      'Daily monitoring of nuclear escalation signals across all theaters. 31 sources, LLM-powered analysis, risk scoring.',
-    defaultLang: 'en',
-  },
-  'caso-dictadura': {
-    title: 'Caso Dictadura — Oficina de Rendición de Cuentas',
-    description:
-      'Dictadura militar argentina 1976-1983. Desaparecidos, centros clandestinos, juicios de lesa humanidad y redes de complicidad.',
-    defaultLang: 'es',
-  },
-}
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ locale: string; slug: string }>
 }): Promise<Metadata> {
-  const { slug } = await params
-  const meta = CASE_META[slug]
+  const { locale, slug } = await params
+  const t = await getTranslations({ locale, namespace: 'metadata.cases' })
+
+  const fallbackTitle = locale === 'es'
+    ? 'Investigacion — Oficina de Rendicion de Cuentas'
+    : 'Investigation — Office of Accountability'
+
+  let title: string
+  try {
+    title = t(`${slug}.title`)
+    // next-intl returns the key path if not found — detect that
+    if (title === `${slug}.title`) title = fallbackTitle
+  } catch {
+    title = fallbackTitle
+  }
+
+  let description: string | undefined
+  try {
+    const desc = t(`${slug}.description`)
+    description = desc === `${slug}.description` ? undefined : desc
+  } catch {
+    description = undefined
+  }
 
   return {
-    title: meta?.title ?? 'Investigacion — Oficina de Rendicion de Cuentas',
-    description: meta?.description,
+    title,
+    description,
+    alternates: {
+      languages: {
+        es: `/es/caso/${slug}`,
+        en: `/en/caso/${slug}`,
+      },
+    },
   }
 }
 
@@ -62,13 +50,12 @@ export default async function CasoLayout({
   params,
 }: {
   readonly children: React.ReactNode
-  readonly params: Promise<{ slug: string }>
+  readonly params: Promise<{ locale: string; slug: string }>
 }) {
   const { slug } = await params
-  const defaultLang = CASE_META[slug]?.defaultLang ?? 'es'
 
   return (
-    <LanguageProvider defaultLang={defaultLang}>
+    <>
       <InvestigationNav slug={slug} />
       <main className="mx-auto max-w-6xl px-4 py-6 sm:py-8">
         {children}
@@ -76,6 +63,6 @@ export default async function CasoLayout({
           <BilingualLegalDisclaimer />
         </div>
       </main>
-    </LanguageProvider>
+    </>
   )
 }
