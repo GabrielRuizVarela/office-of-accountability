@@ -1,11 +1,12 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
-import { useLanguage, type Lang } from '@/lib/language-context'
 import { DocumentCard } from '@/components/investigation/DocumentCard'
 
 const t = {
   title: { es: 'Evidencia y Documentos', en: 'Evidence & Documents' },
-  subtitle: (count: number): Record<Lang, string> => ({
+  subtitle: (count: number): Record<Locale, string> => ({
     es: `${count} documentos de fuentes publicas vinculados a la investigacion.`,
     en: `${count} documents from public sources linked to the investigation.`,
   }),
@@ -21,14 +22,14 @@ interface Props {
 }
 
 export function EvidenciaContent({ slug, documents }: Props) {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-bold text-zinc-50">{t.title[lang]}</h1>
+        <h1 className="text-xl font-bold text-zinc-50">{t.title[locale]}</h1>
         <p className="mt-1 text-sm text-zinc-400">
-          {t.subtitle(documents.length)[lang]}
+          {t.subtitle(documents.length)[locale]}
         </p>
       </div>
 
@@ -47,7 +48,7 @@ export function EvidenciaContent({ slug, documents }: Props) {
       </div>
 
       {documents.length === 0 && (
-        <p className="py-12 text-center text-sm text-zinc-500">{t.empty[lang]}</p>
+        <p className="py-12 text-center text-sm text-zinc-500">{t.empty[locale]}</p>
       )}
     </div>
   )

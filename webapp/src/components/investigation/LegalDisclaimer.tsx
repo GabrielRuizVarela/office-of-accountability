@@ -1,28 +1,29 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 /**
  * Legal disclaimer shown on investigation pages.
- * LegalDisclaimer — static, pass lang prop directly.
- * BilingualLegalDisclaimer — reads lang from LanguageContext.
+ * LegalDisclaimer — static, pass locale prop directly.
+ * BilingualLegalDisclaimer — reads locale from LanguageContext.
  */
 
-import { useLanguage } from '@/lib/language-context'
 
 interface LegalDisclaimerProps {
-  readonly lang?: 'en' | 'es'
+  readonly locale?: 'en' | 'es'
 }
 
-export function LegalDisclaimer({ lang = 'es' }: LegalDisclaimerProps) {
-  return <DisclaimerContent lang={lang} />
+export function LegalDisclaimer({ locale = 'es' }: LegalDisclaimerProps) {
+  return <DisclaimerContent locale={locale} />
 }
 
 export function BilingualLegalDisclaimer() {
-  const { lang } = useLanguage()
-  return <DisclaimerContent lang={lang} />
+  const locale = useLocale() as Locale
+  return <DisclaimerContent locale={locale} />
 }
 
-function DisclaimerContent({ lang }: { readonly lang: 'en' | 'es' }) {
-  if (lang === 'en') {
+function DisclaimerContent({ locale }: { readonly locale: 'en' | 'es' }) {
+  if (locale === 'en') {
     return (
       <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 px-4 py-3 text-xs leading-relaxed text-zinc-500">
         <strong className="text-zinc-400">Legal notice:</strong> This is a community investigation

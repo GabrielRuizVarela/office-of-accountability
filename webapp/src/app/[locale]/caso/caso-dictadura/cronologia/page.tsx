@@ -1,6 +1,7 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
-import { useLanguage } from '@/lib/language-context'
 import { TIMELINE_EVENTS } from '@/lib/caso-dictadura/investigation-data'
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -22,7 +23,7 @@ const CATEGORY_LABELS: Record<string, Record<string, string>> = {
 }
 
 export default function CronologiaPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   const grouped = TIMELINE_EVENTS.reduce<Record<string, typeof TIMELINE_EVENTS>>((acc, evt) => {
     const year = evt.date.slice(0, 4)
@@ -37,10 +38,10 @@ export default function CronologiaPage() {
     <div className="mx-auto max-w-3xl space-y-8">
       <header className="text-center">
         <h1 className="text-2xl font-bold text-zinc-100 sm:text-3xl">
-          {lang === 'es' ? 'Cronologia' : 'Timeline'}
+          {locale === 'es' ? 'Cronologia' : 'Timeline'}
         </h1>
         <p className="mt-2 text-sm text-zinc-400">
-          {lang === 'es'
+          {locale === 'es'
             ? `${TIMELINE_EVENTS.length} eventos documentados — 1972 a 2016`
             : `${TIMELINE_EVENTS.length} documented events — 1972 to 2016`}
         </p>
@@ -67,7 +68,7 @@ export default function CronologiaPage() {
             <div className="space-y-4">
               {grouped[year].map((evt) => {
                 const color = CATEGORY_COLORS[evt.category] ?? '#71717a'
-                const catLabel = CATEGORY_LABELS[evt.category]?.[lang] ?? evt.category
+                const catLabel = CATEGORY_LABELS[evt.category]?.[locale] ?? evt.category
                 return (
                   <div key={evt.id} className="relative">
                     {/* Dot on timeline */}
@@ -86,10 +87,10 @@ export default function CronologiaPage() {
                         </span>
                       </div>
                       <h3 className="mt-1 text-sm font-semibold text-zinc-200">
-                        {lang === 'es' ? evt.title_es : evt.title_en}
+                        {locale === 'es' ? evt.title_es : evt.title_en}
                       </h3>
                       <p className="mt-1 text-xs leading-relaxed text-zinc-400">
-                        {lang === 'es' ? evt.description_es : evt.description_en}
+                        {locale === 'es' ? evt.description_es : evt.description_en}
                       </p>
                       {evt.sources.length > 0 && (
                         <p className="mt-2 text-xs text-zinc-600">

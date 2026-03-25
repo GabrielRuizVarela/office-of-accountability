@@ -1,9 +1,9 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
 
-import { useLanguage } from '@/lib/language-context'
-import type { Lang } from '@/lib/language-context'
 import {
   FACTCHECK_ITEMS,
   TIMELINE_EVENTS,
@@ -33,7 +33,7 @@ const STATUS_COLORS: Record<FactcheckStatus, string> = {
   unconfirmed: '#6b7280',
 }
 
-const STATUS_LABELS: Record<FactcheckStatus, Record<Lang, string>> = {
+const STATUS_LABELS: Record<FactcheckStatus, Record<Locale, string>> = {
   confirmed: { es: 'Confirmado', en: 'Confirmed' },
   alleged: { es: 'Presunto', en: 'Alleged' },
   confirmed_cleared: { es: 'Sobreseido', en: 'Cleared' },
@@ -47,7 +47,7 @@ const CATEGORY_COLORS: Record<InvestigationCategory, string> = {
   corporate: '#a855f7',
 }
 
-const CATEGORY_LABELS: Record<InvestigationCategory, Record<Lang, string>> = {
+const CATEGORY_LABELS: Record<InvestigationCategory, Record<Locale, string>> = {
   political: { es: 'Politico', en: 'Political' },
   financial: { es: 'Financiero', en: 'Financial' },
   legal: { es: 'Legal', en: 'Legal' },
@@ -79,18 +79,18 @@ function formatArs(amount: number): string {
   return `ARS ${amount.toLocaleString()}`
 }
 
-function formatDate(dateStr: string, lang: Lang): string {
+function formatDate(dateStr: string, locale: Locale): string {
   if (/^\d{4}[–-]\d{4}$/.test(dateStr)) return dateStr
   if (/^\d{4}$/.test(dateStr)) return dateStr
   if (/^\d{4}-\d{2}$/.test(dateStr)) {
     const d = new Date(dateStr + '-01T00:00:00')
-    return d.toLocaleDateString(lang === 'es' ? 'es-AR' : 'en-US', {
+    return d.toLocaleDateString(locale === 'es' ? 'es-AR' : 'en-US', {
       year: 'numeric',
       month: 'short',
     })
   }
   const d = new Date(dateStr + 'T00:00:00')
-  return d.toLocaleDateString(lang === 'es' ? 'es-AR' : 'en-US', {
+  return d.toLocaleDateString(locale === 'es' ? 'es-AR' : 'en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
@@ -102,7 +102,7 @@ function formatDate(dateStr: string, lang: Lang): string {
 // ---------------------------------------------------------------------------
 
 export default function InvestigacionPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
   const [activeSection, setActiveSection] = useState('hero')
   const [factcheckFilter, setFactcheckFilter] =
     useState<FactcheckStatus | null>(null)
@@ -196,7 +196,7 @@ export default function InvestigacionPage() {
                     : 'text-zinc-500 hover:text-zinc-300'
                 }`}
               >
-                {lang === 'es' ? s.label_es : s.label_en}
+                {locale === 'es' ? s.label_es : s.label_en}
               </button>
             ))}
           </div>
@@ -205,12 +205,12 @@ export default function InvestigacionPage() {
         {/* 1. HERO */}
         <section id="hero" ref={registerRef('hero')} className="pb-12">
           <h1 className="text-2xl font-extrabold tracking-tight text-zinc-50 sm:text-3xl">
-            {lang === 'es'
+            {locale === 'es'
               ? 'Finanzas Politicas Argentinas: Evidencia y Analisis'
               : 'Argentine Political Finance: Evidence & Analysis'}
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-400">
-            {lang === 'es'
+            {locale === 'es'
               ? 'Investigacion verificada sobre las conexiones entre poder politico, financiero, mediatico y judicial en Argentina. 63 actores criticos identificados. Cruce de nueve fuentes de datos publicos. Cada afirmacion tiene fuente verificada.'
               : 'Verified investigation into the connections between political, financial, media and judicial power in Argentina. 63 critical actors identified. Cross-referencing nine public data sources. Every claim has a verified source.'}
           </p>
@@ -219,10 +219,10 @@ export default function InvestigacionPage() {
         {/* 2. FACTCHECK TABLE */}
         <section id="factcheck" ref={registerRef('factcheck')} className="py-12">
           <h2 className="text-xl font-bold text-zinc-50">
-            {lang === 'es' ? 'Verificacion de Hechos' : 'Factcheck'}
+            {locale === 'es' ? 'Verificacion de Hechos' : 'Factcheck'}
           </h2>
           <p className="mt-1 text-sm text-zinc-400">
-            {lang === 'es'
+            {locale === 'es'
               ? `${FACTCHECK_ITEMS.length} afirmaciones verificadas contra fuentes publicas.`
               : `${FACTCHECK_ITEMS.length} claims verified against public sources.`}
           </p>
@@ -238,7 +238,7 @@ export default function InvestigacionPage() {
                   : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
               }`}
             >
-              {lang === 'es' ? 'Todos' : 'All'} ({FACTCHECK_ITEMS.length})
+              {locale === 'es' ? 'Todos' : 'All'} ({FACTCHECK_ITEMS.length})
             </button>
             {(Object.keys(STATUS_COLORS) as FactcheckStatus[]).map((status) => {
               const count = FACTCHECK_ITEMS.filter(
@@ -265,7 +265,7 @@ export default function InvestigacionPage() {
                       : undefined
                   }
                 >
-                  {STATUS_LABELS[status][lang]} ({count})
+                  {STATUS_LABELS[status][locale]} ({count})
                 </button>
               )
             })}
@@ -275,7 +275,7 @@ export default function InvestigacionPage() {
           <div className="mt-4 space-y-2">
             {filteredFactchecks.map((item) => {
               const isExpanded = expandedFactchecks.has(item.id)
-              const detail = lang === 'es' ? item.detail_es : item.detail_en
+              const detail = locale === 'es' ? item.detail_es : item.detail_en
               return (
                 <div
                   key={item.id}
@@ -292,18 +292,18 @@ export default function InvestigacionPage() {
                         backgroundColor: STATUS_COLORS[item.status],
                       }}
                     >
-                      {STATUS_LABELS[item.status][lang]}
+                      {STATUS_LABELS[item.status][locale]}
                     </span>
                     <div className="min-w-0 flex-1">
                       <p className="text-sm font-medium text-zinc-200">
-                        {lang === 'es' ? item.claim_es : item.claim_en}
+                        {locale === 'es' ? item.claim_es : item.claim_en}
                       </p>
                       <div className="mt-1 flex items-center gap-2 text-xs text-zinc-500">
                         <span className="rounded bg-zinc-800 px-1.5 py-0.5 text-xs">
                           Tier {item.tier}
                         </span>
                         <span>
-                          {lang === 'es' ? 'Fuente' : 'Source'}:{' '}
+                          {locale === 'es' ? 'Fuente' : 'Source'}:{' '}
                           <a
                             href={item.source_url}
                             target="_blank"
@@ -334,7 +334,7 @@ export default function InvestigacionPage() {
             })}
             {filteredFactchecks.length === 0 && (
               <p className="py-8 text-center text-sm text-zinc-500">
-                {lang === 'es'
+                {locale === 'es'
                   ? 'No hay afirmaciones para este filtro.'
                   : 'No claims for this filter.'}
               </p>
@@ -345,12 +345,12 @@ export default function InvestigacionPage() {
         {/* 3. TIMELINE */}
         <section id="timeline" ref={registerRef('timeline')} className="py-12">
           <h2 className="text-xl font-bold text-zinc-50">
-            {lang === 'es'
+            {locale === 'es'
               ? 'Cronologia de la Investigacion'
               : 'Investigation Timeline'}
           </h2>
           <p className="mt-1 text-sm text-zinc-400">
-            {lang === 'es'
+            {locale === 'es'
               ? `${TIMELINE_EVENTS.length} eventos documentados.`
               : `${TIMELINE_EVENTS.length} documented events.`}
           </p>
@@ -366,7 +366,7 @@ export default function InvestigacionPage() {
                   : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
               }`}
             >
-              {lang === 'es' ? 'Todos' : 'All'} ({TIMELINE_EVENTS.length})
+              {locale === 'es' ? 'Todos' : 'All'} ({TIMELINE_EVENTS.length})
             </button>
             {TIMELINE_CATEGORIES.map((cat) => {
               const count = TIMELINE_EVENTS.filter(
@@ -391,7 +391,7 @@ export default function InvestigacionPage() {
                       : undefined
                   }
                 >
-                  {CATEGORY_LABELS[cat]?.[lang] ?? cat} ({count})
+                  {CATEGORY_LABELS[cat]?.[locale] ?? cat} ({count})
                 </button>
               )
             })}
@@ -401,11 +401,11 @@ export default function InvestigacionPage() {
           <div className="relative mt-6 space-y-4 pl-6">
             <div className="absolute left-[7px] top-2 bottom-2 w-px bg-zinc-800" />
             {filteredTimeline.map((event) => (
-              <TimelineCard key={event.id} event={event} lang={lang} />
+              <TimelineCard key={event.id} event={event} locale={locale} />
             ))}
             {filteredTimeline.length === 0 && (
               <p className="py-8 text-center text-sm text-zinc-500">
-                {lang === 'es'
+                {locale === 'es'
                   ? 'No hay eventos para este filtro.'
                   : 'No events for this filter.'}
               </p>
@@ -416,10 +416,10 @@ export default function InvestigacionPage() {
         {/* 4. ACTOR NETWORK */}
         <section id="actors" ref={registerRef('actors')} className="py-12">
           <h2 className="text-xl font-bold text-zinc-50">
-            {lang === 'es' ? 'Actores Clave' : 'Key Actors'}
+            {locale === 'es' ? 'Actores Clave' : 'Key Actors'}
           </h2>
           <p className="mt-1 text-sm text-zinc-400">
-            {lang === 'es'
+            {locale === 'es'
               ? `${ACTORS.length} personas y organizaciones involucradas.`
               : `${ACTORS.length} individuals and organizations involved.`}
           </p>
@@ -442,17 +442,17 @@ export default function InvestigacionPage() {
                   </span>
                 </div>
                 <p className="mt-1 text-xs font-medium text-blue-400">
-                  {lang === 'es' ? actor.role_es : actor.role_en}
+                  {locale === 'es' ? actor.role_es : actor.role_en}
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-                  {lang === 'es' ? actor.description_es : actor.description_en}
+                  {locale === 'es' ? actor.description_es : actor.description_en}
                 </p>
                 {(actor.status_es || actor.status_en) && (
                   <p className="mt-3 border-t border-zinc-800 pt-2 text-xs text-zinc-500">
                     <span className="font-medium text-zinc-400">
-                      {lang === 'es' ? 'Estado' : 'Status'}:
+                      {locale === 'es' ? 'Estado' : 'Status'}:
                     </span>{' '}
-                    {lang === 'es' ? actor.status_es : actor.status_en}
+                    {locale === 'es' ? actor.status_es : actor.status_en}
                   </p>
                 )}
                 {actor.source_url && (
@@ -462,7 +462,7 @@ export default function InvestigacionPage() {
                     rel="noopener noreferrer"
                     className="mt-2 inline-flex items-center gap-1 text-xs text-blue-400 hover:text-blue-300 transition-colors"
                   >
-                    {lang === 'es' ? 'Fuente' : 'Source'} ↗
+                    {locale === 'es' ? 'Fuente' : 'Source'} ↗
                   </a>
                 )}
               </div>
@@ -473,10 +473,10 @@ export default function InvestigacionPage() {
         {/* 5. MONEY FLOW */}
         <section id="money" ref={registerRef('money')} className="py-12">
           <h2 className="text-xl font-bold text-zinc-50">
-            {lang === 'es' ? 'Flujo de Dinero' : 'Money Flow'}
+            {locale === 'es' ? 'Flujo de Dinero' : 'Money Flow'}
           </h2>
           <p className="mt-1 text-sm text-zinc-400">
-            {lang === 'es'
+            {locale === 'es'
               ? 'Rastreo de fondos basado en fuentes publicas verificadas.'
               : 'Fund tracing based on verified public sources.'}
           </p>
@@ -515,12 +515,12 @@ export default function InvestigacionPage() {
                       {formatArs(flow.amount_ars)}
                     </span>
                     <span className="text-xs text-zinc-500">
-                      {formatDate(flow.date, lang)}
+                      {formatDate(flow.date, locale)}
                     </span>
                   </div>
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-                  {lang === 'es' ? flow.description_es : flow.description_en}
+                  {locale === 'es' ? flow.description_es : flow.description_en}
                 </p>
                 <a
                   href={flow.source_url}
@@ -539,13 +539,13 @@ export default function InvestigacionPage() {
         <footer className="border-t border-zinc-800 py-10">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm leading-relaxed text-zinc-400">
-              {lang === 'es'
+              {locale === 'es'
                 ? 'Esta investigacion se basa en fuentes publicas verificadas: Como Voto, ICIJ Offshore Leaks, CNE, Boletin Oficial, IGJ, CNV, y declaraciones juradas patrimoniales.'
                 : 'This investigation is based on verified public sources: Como Voto, ICIJ Offshore Leaks, CNE, Boletin Oficial, IGJ, CNV, and sworn asset declarations.'}
             </p>
             <p className="mt-4 text-xs text-zinc-600">
-              {lang === 'es' ? 'Ultima actualizacion' : 'Last updated'}:{' '}
-              {formatDate('2026-03-21', lang)}
+              {locale === 'es' ? 'Ultima actualizacion' : 'Last updated'}:{' '}
+              {formatDate('2026-03-21', locale)}
             </p>
             <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs text-zinc-600">
               {[
@@ -584,13 +584,13 @@ export default function InvestigacionPage() {
 
 function TimelineCard({
   event,
-  lang,
+  locale,
 }: {
   readonly event: TimelineEvent
-  readonly lang: Lang
+  readonly locale: Locale
 }) {
   const catColor = CATEGORY_COLORS[event.category] ?? '#6b7280'
-  const catLabel = CATEGORY_LABELS[event.category]?.[lang] ?? event.category
+  const catLabel = CATEGORY_LABELS[event.category]?.[locale] ?? event.category
 
   return (
     <div className="relative">
@@ -601,7 +601,7 @@ function TimelineCard({
       <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 hover:border-zinc-700">
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs font-medium text-zinc-500">
-            {formatDate(event.date, lang)}
+            {formatDate(event.date, locale)}
           </span>
           <span
             className="rounded-full px-2 py-0.5 text-xs font-semibold text-white"
@@ -611,10 +611,10 @@ function TimelineCard({
           </span>
         </div>
         <h3 className="mt-1.5 text-sm font-semibold text-zinc-100">
-          {lang === 'es' ? event.title_es : event.title_en}
+          {locale === 'es' ? event.title_es : event.title_en}
         </h3>
         <p className="mt-1 text-sm leading-relaxed text-zinc-400">
-          {lang === 'es' ? event.description_es : event.description_en}
+          {locale === 'es' ? event.description_es : event.description_en}
         </p>
         {event.sources.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-2">
@@ -626,7 +626,7 @@ function TimelineCard({
                 rel="noopener noreferrer"
                 className="text-xs text-blue-400 hover:underline"
               >
-                {lang === 'es' ? 'Fuente' : 'Source'} ↗
+                {locale === 'es' ? 'Fuente' : 'Source'} ↗
               </a>
             ))}
           </div>

@@ -1,11 +1,11 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 import type { ForceGraphMethods, NodeObject } from 'react-force-graph-2d'
 
-import { useLanguage } from '@/lib/language-context'
-import type { Lang } from '@/lib/language-context'
 import { ACTORS, FACTCHECK_ITEMS } from '@/lib/caso-monopolios/investigation-data'
 
 // Lazy-load ForceGraph (uses canvas, SSR-incompatible)
@@ -151,7 +151,7 @@ function buildGraph() {
 // Legend
 // ---------------------------------------------------------------------------
 
-const LEGEND: { type: string; color: string; label: Record<Lang, string> }[] = [
+const LEGEND: { type: string; color: string; label: Record<Locale, string> }[] = [
   { type: 'family', color: '#f59e0b', label: { es: 'Familia / Grupo', en: 'Family / Group' } },
   { type: 'sector', color: '#3b82f6', label: { es: 'Sector', en: 'Sector' } },
   { type: 'offshore', color: '#ef4444', label: { es: 'Offshore', en: 'Offshore' } },
@@ -163,7 +163,7 @@ const LEGEND: { type: string; color: string; label: Record<Lang, string> }[] = [
 // ---------------------------------------------------------------------------
 
 export default function ConexionesPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
   const fgRef = useRef<ForceGraphMethods<NodeObject>>()
   const [hovered, setHovered] = useState<string | null>(null)
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 })
@@ -218,10 +218,10 @@ export default function ConexionesPage() {
     <div className="flex h-[calc(100vh-8rem)] flex-col">
       <div className="px-4 py-4">
         <h1 className="mb-1 text-2xl font-bold text-zinc-50">
-          {lang === 'es' ? 'Conexiones' : 'Connections'}
+          {locale === 'es' ? 'Conexiones' : 'Connections'}
         </h1>
         <p className="text-sm text-zinc-400">
-          {lang === 'es'
+          {locale === 'es'
             ? `${ACTORS.length} familias monopolicas, ${Object.keys(SECTOR_COLORS).length} sectores, ${ACTORS.reduce((s, a) => s + a.offshore_count, 0)} entidades offshore. Grafo interactivo construido desde los datos de investigacion.`
             : `${ACTORS.length} monopoly families, ${Object.keys(SECTOR_COLORS).length} sectors, ${ACTORS.reduce((s, a) => s + a.offshore_count, 0)} offshore entities. Interactive graph built from investigation data.`}
         </p>
@@ -230,7 +230,7 @@ export default function ConexionesPage() {
           {LEGEND.map((l) => (
             <div key={l.type} className="flex items-center gap-1.5">
               <span className="inline-block h-3 w-3 rounded-full" style={{ backgroundColor: l.color }} />
-              <span className="text-[11px] text-zinc-500">{l.label[lang]}</span>
+              <span className="text-[11px] text-zinc-500">{l.label[locale]}</span>
             </div>
           ))}
         </div>

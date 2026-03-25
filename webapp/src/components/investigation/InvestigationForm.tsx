@@ -7,7 +7,7 @@
  * All state is managed via useReducer for immutability.
  */
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { useCallback, useReducer, useRef } from 'react'
 
 import { InvestigationEditor } from './InvestigationEditor'

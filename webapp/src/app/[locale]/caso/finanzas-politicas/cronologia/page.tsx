@@ -1,6 +1,7 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
-import { useLanguage } from '@/lib/language-context'
 import { TIMELINE_EVENTS } from '@/lib/caso-finanzas-politicas/investigation-data'
 
 const t = {
@@ -27,16 +28,16 @@ const CATEGORY_LABELS: Record<string, Record<'en' | 'es', string>> = {
   corporate: { en: 'Corporate', es: 'Corporativo' },
 }
 
-function formatDate(dateStr: string, lang: 'en' | 'es'): string {
-  const locale = lang === 'es' ? 'es-AR' : 'en-US'
+function formatDate(dateStr: string, loc: 'en' | 'es'): string {
+  const dtLocale = loc === 'es' ? 'es-AR' : 'en-US'
   if (/^\d{4}[–-]\d{4}$/.test(dateStr)) return dateStr
   if (/^\d{4}$/.test(dateStr)) return dateStr
   if (/^\d{4}-\d{2}$/.test(dateStr)) {
     const d = new Date(dateStr + '-01T00:00:00')
-    return d.toLocaleDateString(locale, { year: 'numeric', month: 'short' })
+    return d.toLocaleDateString(dtLocale, { year: 'numeric', month: 'short' })
   }
   const d = new Date(dateStr + 'T00:00:00')
-  return d.toLocaleDateString(locale, {
+  return d.toLocaleDateString(dtLocale, {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
@@ -44,20 +45,20 @@ function formatDate(dateStr: string, lang: 'en' | 'es'): string {
 }
 
 export default function CronologiaPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
-      <h1 className="mb-2 text-3xl font-bold text-zinc-50">{t.title[lang]}</h1>
+      <h1 className="mb-2 text-3xl font-bold text-zinc-50">{t.title[locale]}</h1>
       <p className="mb-8 text-sm text-zinc-400">
-        {t.subtitle[lang]} {TIMELINE_EVENTS.length} {t.documentedEvents[lang]}.
+        {t.subtitle[locale]} {TIMELINE_EVENTS.length} {t.documentedEvents[locale]}.
       </p>
 
       <div className="relative space-y-4 pl-6">
         <div className="absolute left-[7px] top-2 bottom-2 w-px bg-zinc-800" />
         {TIMELINE_EVENTS.map((event) => {
           const catColor = CATEGORY_COLORS[event.category] ?? '#6b7280'
-          const catLabel = CATEGORY_LABELS[event.category]?.[lang] ?? event.category
+          const catLabel = CATEGORY_LABELS[event.category]?.[locale] ?? event.category
           return (
             <div key={event.id} className="relative">
               <div
@@ -67,7 +68,7 @@ export default function CronologiaPage() {
               <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 hover:border-zinc-700">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="text-xs font-medium text-zinc-500">
-                    {formatDate(event.date, lang)}
+                    {formatDate(event.date, locale)}
                   </span>
                   <span
                     className="rounded-full px-2 py-0.5 text-xs font-semibold text-white"
@@ -77,10 +78,10 @@ export default function CronologiaPage() {
                   </span>
                 </div>
                 <h3 className="mt-1.5 text-sm font-semibold text-zinc-100">
-                  {lang === 'en' ? event.title_en : event.title_es}
+                  {locale === 'en' ? event.title_en : event.title_es}
                 </h3>
                 <p className="mt-1 text-sm leading-relaxed text-zinc-400">
-                  {lang === 'en' ? event.description_en : event.description_es}
+                  {locale === 'en' ? event.description_en : event.description_es}
                 </p>
                 {event.sources.length > 0 && (
                   <div className="mt-2 flex flex-wrap gap-2">
@@ -92,7 +93,7 @@ export default function CronologiaPage() {
                         rel="noopener noreferrer"
                         className="text-xs text-blue-400 hover:underline"
                       >
-                        {t.source[lang]} ↗
+                        {t.source[locale]} ↗
                       </a>
                     ))}
                   </div>

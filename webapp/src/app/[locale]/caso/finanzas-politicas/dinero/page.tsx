@@ -1,6 +1,7 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
-import { useLanguage } from '@/lib/language-context'
 import { MONEY_FLOWS } from '@/lib/caso-finanzas-politicas/investigation-data'
 
 const t = {
@@ -17,8 +18,8 @@ const t = {
   unknownAmount: { en: 'Unknown amount', es: 'Monto desconocido' },
 } as const
 
-function formatArs(amount: number, lang: 'en' | 'es'): string {
-  if (amount === 0) return lang === 'en' ? 'Unknown amount' : 'Monto desconocido'
+function formatArs(amount: number, locale: 'en' | 'es'): string {
+  if (amount === 0) return locale === 'en' ? 'Unknown amount' : 'Monto desconocido'
   if (amount >= 1_000_000_000) {
     return `ARS ${(amount / 1_000_000_000).toFixed(1)}B`
   }
@@ -31,16 +32,16 @@ function formatArs(amount: number, lang: 'en' | 'es'): string {
   return `ARS ${amount.toLocaleString()}`
 }
 
-function formatDate(dateStr: string, lang: 'en' | 'es'): string {
-  const locale = lang === 'es' ? 'es-AR' : 'en-US'
+function formatDate(dateStr: string, loc: 'en' | 'es'): string {
+  const dtLocale = loc === 'es' ? 'es-AR' : 'en-US'
   if (/^\d{4}[–-]\d{4}$/.test(dateStr)) return dateStr
   if (/^\d{4}$/.test(dateStr)) return dateStr
   if (/^\d{4}-\d{2}$/.test(dateStr)) {
     const d = new Date(dateStr + '-01T00:00:00')
-    return d.toLocaleDateString(locale, { year: 'numeric', month: 'short' })
+    return d.toLocaleDateString(dtLocale, { year: 'numeric', month: 'short' })
   }
   const d = new Date(dateStr + 'T00:00:00')
-  return d.toLocaleDateString(locale, {
+  return d.toLocaleDateString(dtLocale, {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
@@ -48,26 +49,26 @@ function formatDate(dateStr: string, lang: 'en' | 'es'): string {
 }
 
 export default function DineroPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
   const totalTracked = MONEY_FLOWS.reduce((sum, f) => sum + f.amount_ars, 0)
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
-      <h1 className="mb-2 text-3xl font-bold text-zinc-50">{t.title[lang]}</h1>
+      <h1 className="mb-2 text-3xl font-bold text-zinc-50">{t.title[locale]}</h1>
       <p className="mb-8 text-sm text-zinc-400">
-        {t.subtitle[lang]}
+        {t.subtitle[locale]}
       </p>
 
       {/* Total tracked highlight */}
       <div className="mb-8 rounded-lg border border-emerald-900/50 bg-emerald-950/20 p-4 text-center">
         <p className="text-xs uppercase tracking-wider text-emerald-400">
-          {t.totalTracked[lang]}
+          {t.totalTracked[locale]}
         </p>
         <p className="mt-1 text-3xl font-bold text-emerald-300">
-          {formatArs(totalTracked, lang)}
+          {formatArs(totalTracked, locale)}
         </p>
         <p className="mt-1 text-xs text-zinc-500">
-          {t.totalNote[lang]}
+          {t.totalNote[locale]}
         </p>
       </div>
 
@@ -102,15 +103,15 @@ export default function DineroPage() {
               </div>
               <div className="flex items-center gap-4 text-right">
                 <span className="text-sm font-bold text-emerald-400">
-                  {formatArs(flow.amount_ars, lang)}
+                  {formatArs(flow.amount_ars, locale)}
                 </span>
                 <span className="text-xs text-zinc-500">
-                  {formatDate(flow.date, lang)}
+                  {formatDate(flow.date, locale)}
                 </span>
               </div>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-zinc-400">
-              {lang === 'en' ? flow.description_en : flow.description_es}
+              {locale === 'en' ? flow.description_en : flow.description_es}
             </p>
             <a
               href={flow.source_url}

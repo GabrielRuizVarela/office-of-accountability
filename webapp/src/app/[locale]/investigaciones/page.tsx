@@ -8,7 +8,7 @@
  * Paginated with load-more button.
  */
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import NextImage from 'next/image'
 import { useCallback, useEffect, useMemo, useReducer } from 'react'
 

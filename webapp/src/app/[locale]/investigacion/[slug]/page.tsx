@@ -11,7 +11,7 @@
 
 import type { Metadata } from 'next'
 import NextImage from 'next/image'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { notFound } from 'next/navigation'
 
 import { getInvestigationBySlug } from '@/lib/investigation'

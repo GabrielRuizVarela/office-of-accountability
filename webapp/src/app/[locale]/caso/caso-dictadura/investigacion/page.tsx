@@ -1,8 +1,9 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 
-import { useLanguage } from '@/lib/language-context'
 import type { GraphData, GraphNode } from '@/lib/neo4j/types'
 import {
   FACTCHECK_ITEMS,
@@ -32,14 +33,14 @@ const t = {
 type Tab = 'factcheck' | 'actors' | 'stats' | 'evidence' | 'judicial'
 
 export default function InvestigacionPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
   const [tab, setTab] = useState<Tab>('factcheck')
 
   return (
     <div className="space-y-6">
       <header className="text-center">
-        <h1 className="text-2xl font-bold text-zinc-100 sm:text-3xl">{t.title[lang]}</h1>
-        <p className="mt-2 text-sm text-zinc-400">{t.subtitle[lang]}</p>
+        <h1 className="text-2xl font-bold text-zinc-100 sm:text-3xl">{t.title[locale]}</h1>
+        <p className="mt-2 text-sm text-zinc-400">{t.subtitle[locale]}</p>
       </header>
 
       {/* Tabs */}
@@ -54,7 +55,7 @@ export default function InvestigacionPage() {
                 : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-200'
             }`}
           >
-            {t[id][lang]}
+            {t[id][locale]}
           </button>
         ))}
       </nav>
@@ -68,15 +69,15 @@ export default function InvestigacionPage() {
                 <span className={`mt-0.5 inline-block rounded-full px-2 py-0.5 text-xs font-medium ${
                   item.status === 'confirmed' ? 'bg-green-500/10 text-green-400' : 'bg-yellow-500/10 text-yellow-400'
                 }`}>
-                  {item.status === 'confirmed' ? t.confirmed[lang] : t.alleged[lang]}
+                  {item.status === 'confirmed' ? t.confirmed[locale] : t.alleged[locale]}
                 </span>
                 <div className="flex-1">
                   <p className="text-sm font-medium text-zinc-200">
-                    {lang === 'es' ? item.claim_es : item.claim_en}
+                    {locale === 'es' ? item.claim_es : item.claim_en}
                   </p>
-                  {(lang === 'es' ? item.detail_es : item.detail_en) && (
+                  {(locale === 'es' ? item.detail_es : item.detail_en) && (
                     <p className="mt-2 text-xs leading-relaxed text-zinc-500">
-                      {lang === 'es' ? item.detail_es : item.detail_en}
+                      {locale === 'es' ? item.detail_es : item.detail_en}
                     </p>
                   )}
                   <p className="mt-2 text-xs text-zinc-600">{item.source}</p>
@@ -91,7 +92,7 @@ export default function InvestigacionPage() {
       {tab === 'actors' && (
         <div className="space-y-4">
           {KEY_ACTORS.map((actor) => (
-            <ActorCard key={actor.id} actor={actor} lang={lang} />
+            <ActorCard key={actor.id} actor={actor} locale={locale} />
           ))}
         </div>
       )}
@@ -102,7 +103,7 @@ export default function InvestigacionPage() {
           {IMPACT_STATS.map((stat) => (
             <div key={stat.value} className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 text-center">
               <p className="text-2xl font-bold text-zinc-50">{stat.value}</p>
-              <p className="mt-1 text-xs text-zinc-400">{lang === 'es' ? stat.label_es : stat.label_en}</p>
+              <p className="mt-1 text-xs text-zinc-400">{locale === 'es' ? stat.label_es : stat.label_en}</p>
               <p className="mt-0.5 text-xs text-zinc-600">{stat.source}</p>
             </div>
           ))}
@@ -117,15 +118,15 @@ export default function InvestigacionPage() {
               <div className="flex items-start justify-between gap-3">
                 <div className="flex-1">
                   <h3 className="text-sm font-semibold text-zinc-200">{doc.title}</h3>
-                  <p className="mt-1 text-xs text-amber-400">{lang === 'es' ? doc.type_es : doc.type_en} &middot; {doc.date}</p>
+                  <p className="mt-1 text-xs text-amber-400">{locale === 'es' ? doc.type_es : doc.type_en} &middot; {doc.date}</p>
                   <p className="mt-2 text-xs leading-relaxed text-zinc-400">
-                    {lang === 'es' ? doc.summary_es : doc.summary_en}
+                    {locale === 'es' ? doc.summary_es : doc.summary_en}
                   </p>
                 </div>
                 <span className={`shrink-0 rounded-full px-2 py-0.5 text-xs font-medium ${
                   doc.verification_status === 'verified' ? 'bg-green-500/10 text-green-400' : 'bg-yellow-500/10 text-yellow-400'
                 }`}>
-                  {doc.verification_status === 'verified' ? t.verified[lang] : t.partial[lang]}
+                  {doc.verification_status === 'verified' ? t.verified[locale] : t.partial[locale]}
                 </span>
               </div>
             </div>
@@ -140,10 +141,10 @@ export default function InvestigacionPage() {
             <div key={jr.id} className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4">
               <p className="text-xs text-zinc-600">{jr.date}</p>
               <h3 className="mt-1 text-sm font-semibold text-zinc-200">
-                {lang === 'es' ? jr.action_es : jr.action_en}
+                {locale === 'es' ? jr.action_es : jr.action_en}
               </h3>
               <p className="mt-2 text-xs leading-relaxed text-zinc-400">
-                {lang === 'es' ? jr.effect_es : jr.effect_en}
+                {locale === 'es' ? jr.effect_es : jr.effect_en}
               </p>
             </div>
           ))}
@@ -174,9 +175,9 @@ function getNodeName(props: Record<string, unknown>): string {
   return (props.name ?? props.title ?? '') as string
 }
 
-function ActorCard({ actor, lang }: {
+function ActorCard({ actor, locale }: {
   readonly actor: (typeof KEY_ACTORS)[number]
-  readonly lang: 'en' | 'es'
+  readonly locale: 'en' | 'es'
 }) {
   const [expanded, setExpanded] = useState(false)
   const [graphData, setGraphData] = useState<GraphData | null>(null)
@@ -236,13 +237,13 @@ function ActorCard({ actor, lang }: {
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <h3 className="font-semibold text-zinc-100">{actor.name}</h3>
-            <p className="mt-1 text-xs text-amber-400">{lang === 'es' ? actor.role_es : actor.role_en}</p>
+            <p className="mt-1 text-xs text-amber-400">{locale === 'es' ? actor.role_es : actor.role_en}</p>
             <p className="mt-2 text-xs leading-relaxed text-zinc-400">
-              {lang === 'es' ? actor.description_es : actor.description_en}
+              {locale === 'es' ? actor.description_es : actor.description_en}
             </p>
-            {(lang === 'es' ? actor.status_es : actor.status_en) && (
+            {(locale === 'es' ? actor.status_es : actor.status_en) && (
               <p className="mt-1 text-xs text-zinc-600">
-                {lang === 'es' ? actor.status_es : actor.status_en}
+                {locale === 'es' ? actor.status_es : actor.status_en}
               </p>
             )}
           </div>
@@ -254,7 +255,7 @@ function ActorCard({ actor, lang }: {
                 : 'border-zinc-700 bg-zinc-800 text-zinc-400 hover:border-zinc-600 hover:text-zinc-200'
             }`}
           >
-            {loading ? '...' : expanded ? (lang === 'es' ? 'Ocultar grafo' : 'Hide graph') : (lang === 'es' ? 'Ver conexiones' : 'View connections')}
+            {loading ? '...' : expanded ? (locale === 'es' ? 'Ocultar grafo' : 'Hide graph') : (locale === 'es' ? 'Ver conexiones' : 'View connections')}
           </button>
         </div>
       </div>
@@ -264,7 +265,7 @@ function ActorCard({ actor, lang }: {
         <div className="border-t border-zinc-800">
           {loading && (
             <div className="flex items-center justify-center py-8 text-xs text-zinc-500">
-              {lang === 'es' ? 'Cargando conexiones...' : 'Loading connections...'}
+              {locale === 'es' ? 'Cargando conexiones...' : 'Loading connections...'}
             </div>
           )}
           {graphData && !loading && (
@@ -276,7 +277,7 @@ function ActorCard({ actor, lang }: {
               {/* Connection list */}
               <div className="w-full shrink-0 p-3 lg:w-64">
                 <p className="mb-2 text-xs font-medium text-zinc-400">
-                  {connections.length} {lang === 'es' ? 'conexiones' : 'connections'}
+                  {connections.length} {locale === 'es' ? 'conexiones' : 'connections'}
                 </p>
                 <div className="max-h-48 space-y-1 overflow-y-auto">
                   {connections.map((c, i) => (
@@ -291,7 +292,7 @@ function ActorCard({ actor, lang }: {
                   ))}
                   {connections.length === 0 && (
                     <p className="text-xs text-zinc-600">
-                      {lang === 'es' ? 'Sin conexiones encontradas' : 'No connections found'}
+                      {locale === 'es' ? 'Sin conexiones encontradas' : 'No connections found'}
                     </p>
                   )}
                 </div>
@@ -300,7 +301,7 @@ function ActorCard({ actor, lang }: {
           )}
           {!graphData && !loading && (
             <div className="py-6 text-center text-xs text-zinc-600">
-              {lang === 'es' ? 'No se encontro en el grafo' : 'Not found in graph'}
+              {locale === 'es' ? 'No se encontro en el grafo' : 'Not found in graph'}
             </div>
           )}
         </div>

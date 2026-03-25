@@ -7,7 +7,7 @@
  * the verify-email API endpoint to complete verification.
  */
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { useCallback, useEffect, useReducer } from 'react'
 import { useSearchParams } from 'next/navigation'
 

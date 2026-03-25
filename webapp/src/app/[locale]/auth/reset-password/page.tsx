@@ -7,7 +7,7 @@
  * Collects new password and calls the reset-password API endpoint.
  */
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { useCallback, useReducer } from 'react'
 import { useSearchParams } from 'next/navigation'
 

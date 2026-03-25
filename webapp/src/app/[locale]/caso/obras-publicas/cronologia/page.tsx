@@ -1,6 +1,7 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
-import { useLanguage } from '@/lib/language-context'
 import { TIMELINE_EVENTS } from '@/lib/caso-obras-publicas/investigation-data'
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -13,7 +14,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 }
 
 export default function CronologiaPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   const sorted = [...TIMELINE_EVENTS].sort(
     (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
@@ -23,10 +24,10 @@ export default function CronologiaPage() {
     <div className="mx-auto max-w-3xl space-y-8 pb-16">
       <header className="text-center">
         <h1 className="mb-1 text-2xl font-bold text-zinc-50 sm:text-3xl">
-          {lang === 'en' ? 'Timeline' : 'Cronologia'}
+          {locale === 'en' ? 'Timeline' : 'Cronologia'}
         </h1>
         <p className="text-sm text-zinc-400">
-          {lang === 'en'
+          {locale === 'en'
             ? `${sorted.length} key events from the investigation`
             : `${sorted.length} eventos clave de la investigacion`}
         </p>
@@ -56,12 +57,12 @@ export default function CronologiaPage() {
 
               {/* Title */}
               <h3 className="text-sm font-semibold text-zinc-100">
-                {lang === 'en' ? event.title_en : event.title_es}
+                {locale === 'en' ? event.title_en : event.title_es}
               </h3>
 
               {/* Description */}
               <p className="mt-1 text-xs leading-relaxed text-zinc-400">
-                {lang === 'en' ? event.description_en : event.description_es}
+                {locale === 'en' ? event.description_en : event.description_es}
               </p>
 
               {/* Sources */}

@@ -7,7 +7,7 @@
  * Always shows success to prevent email enumeration.
  */
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { useCallback, useReducer } from 'react'
 
 interface FormState {

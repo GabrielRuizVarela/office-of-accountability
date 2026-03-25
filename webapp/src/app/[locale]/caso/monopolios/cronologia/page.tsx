@@ -1,6 +1,7 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
-import { useLanguage } from '@/lib/language-context'
 import { TIMELINE_EVENTS } from '@/lib/caso-monopolios/investigation-data'
 
 const SECTOR_COLORS: Record<string, string> = {
@@ -18,28 +19,28 @@ const SECTOR_COLORS: Record<string, string> = {
   regulatory_capture: '#dc2626',
 }
 
-function formatDate(dateStr: string, lang: 'en' | 'es'): string {
-  const locale = lang === 'es' ? 'es-AR' : 'en-US'
+function formatDate(dateStr: string, loc: 'en' | 'es'): string {
+  const dtLocale = loc === 'es' ? 'es-AR' : 'en-US'
   if (/^\d{4}$/.test(dateStr)) return dateStr
   const d = new Date(dateStr + 'T00:00:00')
-  return d.toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' })
+  return d.toLocaleDateString(dtLocale, { year: 'numeric', month: 'short', day: 'numeric' })
 }
 
 export default function CronologiaPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <h1 className="text-2xl font-bold text-zinc-100">
-        {lang === 'es' ? 'Cronologia' : 'Timeline'}
+        {locale === 'es' ? 'Cronologia' : 'Timeline'}
       </h1>
       <p className="mt-2 text-sm text-zinc-400">
-        {lang === 'es'
+        {locale === 'es'
           ? 'Desde las privatizaciones de 1989 hasta la desregulacion Milei y la venta de Telefe en 2025.'
           : 'From the 1989 privatizations through Milei deregulation and the 2025 Telefe sale.'}
       </p>
       <p className="mt-1 text-xs text-zinc-500">
-        {TIMELINE_EVENTS.length} {lang === 'es' ? 'eventos documentados' : 'documented events'}
+        {TIMELINE_EVENTS.length} {locale === 'es' ? 'eventos documentados' : 'documented events'}
       </p>
 
       <div className="mt-8 space-y-0">
@@ -58,7 +59,7 @@ export default function CronologiaPage() {
             <div className="min-w-0 flex-1">
               <div className="flex items-baseline gap-2">
                 <span className="text-xs font-mono text-zinc-500">
-                  {formatDate(event.date, lang)}
+                  {formatDate(event.date, locale)}
                 </span>
                 <span
                   className="rounded px-1.5 py-0.5 text-[9px] font-medium uppercase"
@@ -71,10 +72,10 @@ export default function CronologiaPage() {
                 </span>
               </div>
               <h3 className="mt-1 text-sm font-semibold text-zinc-200">
-                {lang === 'es' ? event.title_es : event.title_en}
+                {locale === 'es' ? event.title_es : event.title_en}
               </h3>
               <p className="mt-1 text-xs leading-relaxed text-zinc-400">
-                {lang === 'es' ? event.description_es : event.description_en}
+                {locale === 'es' ? event.description_es : event.description_en}
               </p>
               {/* Source link */}
               <div className="mt-2 flex items-center gap-2">
@@ -86,7 +87,7 @@ export default function CronologiaPage() {
                     rel="noopener noreferrer"
                     className="text-[10px] text-amber-500/70 underline decoration-amber-500/30 hover:text-amber-400"
                   >
-                    {lang === 'es' ? 'fuente' : 'source'} ↗
+                    {locale === 'es' ? 'fuente' : 'source'} ↗
                   </a>
                 )}
               </div>

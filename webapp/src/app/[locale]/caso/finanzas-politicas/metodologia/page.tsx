@@ -1,17 +1,17 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
-import { useLanguage } from '@/lib/language-context'
-import type { Lang } from '@/lib/language-context'
 
-const TITLE: Record<Lang, string> = {
+const TITLE: Record<Locale, string> = {
   es: 'Metodologia de Investigacion',
   en: 'Investigation Methodology',
 }
 
 const sections: readonly {
   id: string
-  title: Record<Lang, string>
-  content: Record<Lang, readonly string[]>
+  title: Record<Locale, string>
+  content: Record<Locale, readonly string[]>
 }[] = [
   {
     id: 'how-built',
@@ -170,16 +170,16 @@ const sections: readonly {
 ]
 
 export default function MetodologiaPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <article className="mx-auto max-w-prose pb-20">
       <header className="py-12 text-center">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
-          {TITLE[lang]}
+          {TITLE[locale]}
         </h1>
         <p className="mt-4 text-sm text-zinc-500">
-          {lang === 'es'
+          {locale === 'es'
             ? 'Transparencia total sobre como se hizo esta investigacion, que datos se usaron, y donde estan las limitaciones.'
             : 'Full transparency on how this investigation was built, what data was used, and where the limitations are.'}
         </p>
@@ -193,10 +193,10 @@ export default function MetodologiaPage() {
             className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-6"
           >
             <h2 className="text-sm font-bold uppercase tracking-wider text-blue-400">
-              {section.title[lang]}
+              {section.title[locale]}
             </h2>
             <div className="mt-4 space-y-3">
-              {section.content[lang].map((p, i) => (
+              {section.content[locale].map((p, i) => (
                 <p key={i} className="text-sm leading-relaxed text-zinc-300">
                   {p}
                 </p>
@@ -208,7 +208,7 @@ export default function MetodologiaPage() {
 
       <div className="mt-12 rounded-lg border border-zinc-800 bg-zinc-900/40 p-6">
         <p className="text-sm leading-relaxed text-zinc-500">
-          {lang === 'es'
+          {locale === 'es'
             ? 'Esta investigacion se basa en fuentes publicas verificadas. Todos los pipelines ETL son idempotentes y reproducibles. Ninguna fuente privada fue utilizada. La inclusion no implica culpabilidad. Donde se indica "presunto," la conexion no ha sido verificada de forma independiente.'
             : 'This investigation is based on verified public sources. All ETL pipelines are idempotent and reproducible. No private sources were used. Inclusion does not imply guilt. Where "alleged" is indicated, the connection has not been independently verified.'}
         </p>

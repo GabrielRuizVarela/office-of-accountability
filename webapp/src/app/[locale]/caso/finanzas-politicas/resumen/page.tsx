@@ -1,4 +1,6 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 /**
  * Finanzas Politicas — Narrative summary page.
@@ -9,8 +11,6 @@
  * public datasets.
  */
 
-import { useLanguage } from '@/lib/language-context'
-import type { Lang } from '@/lib/language-context'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -18,7 +18,7 @@ import type { Lang } from '@/lib/language-context'
 
 interface StatCard {
   readonly value: string
-  readonly label: Record<Lang, string>
+  readonly label: Record<Locale, string>
 }
 
 interface Source {
@@ -34,9 +34,9 @@ interface Citation {
 
 interface Chapter {
   readonly id: string
-  readonly title: Record<Lang, string>
-  readonly paragraphs: Record<Lang, readonly string[]>
-  readonly pullQuote?: Record<Lang, string>
+  readonly title: Record<Locale, string>
+  readonly paragraphs: Record<Locale, readonly string[]>
+  readonly pullQuote?: Record<Locale, string>
   readonly citations?: readonly Citation[]
 }
 
@@ -44,27 +44,27 @@ interface Chapter {
 // Header content
 // ---------------------------------------------------------------------------
 
-const TITLE: Record<Lang, string> = {
+const TITLE: Record<Locale, string> = {
   es: 'El Sistema: Politica, Dinero y Poder en Argentina',
   en: 'The System: Politics, Money and Power in Argentina',
 }
 
-const SUBTITLE: Record<Lang, string> = {
+const SUBTITLE: Record<Locale, string> = {
   es: 'Diecisiete capitulos sobre como nueve bases de datos publicas revelan las conexiones entre el cargo publico, los directorios corporativos, las sociedades offshore, el financiamiento de campañas, las armas financieras, el escandalo de los seguros, la puerta giratoria, el poder judicial, la riqueza inexplicable, el imperio Macri, el cartel de la salud, la captura del Estado por JP Morgan, y el cruce CUIT/DNI que conecto 34.776 entidades',
   en: 'Seventeen chapters on how nine public datasets reveal the connections between public office, corporate boards, offshore entities, campaign financing, financial arms, the insurance scandal, the revolving door, the judiciary, unexplained wealth, the Macri empire, the health cartel, State capture by JP Morgan, and the CUIT/DNI cross-match that connected 34,776 entities',
 }
 
-const READING_TIME: Record<Lang, string> = {
+const READING_TIME: Record<Locale, string> = {
   es: '~50 min de lectura',
   en: '~50 min read',
 }
 
-const LAST_UPDATED: Record<Lang, string> = {
+const LAST_UPDATED: Record<Locale, string> = {
   es: 'Actualizado: marzo 2026',
   en: 'Last updated: March 2026',
 }
 
-const COMPILED_FROM: Record<Lang, string> = {
+const COMPILED_FROM: Record<Locale, string> = {
   es: 'Investigacion asistida por inteligencia artificial con verificacion humana. 14 fuentes de datos publicos procesadas por mas de 100 agentes autonomos en un grafo Neo4j de 294 nodos y 2.391 aristas. Cada hallazgo fue verificado contra fuentes primarias. La IA no acusa: revela patrones. Las conclusiones son del lector.',
   en: 'AI-assisted investigation with human verification. 14 public data sources processed by over 100 autonomous agents into a Neo4j graph of 294 nodes and 2,391 edges. Every finding was verified against primary sources. The AI does not accuse: it reveals patterns. The conclusions are the reader\'s.',
 }
@@ -776,24 +776,24 @@ function renderWithCitations(text: string, citations?: readonly Citation[]) {
 // ---------------------------------------------------------------------------
 
 export default function ResumenPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <article className="mx-auto max-w-prose pb-20">
       {/* Header */}
       <header className="py-12 text-center">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
-          {TITLE[lang]}
+          {TITLE[locale]}
         </h1>
-        <p className="mt-4 text-lg text-zinc-400">{SUBTITLE[lang]}</p>
+        <p className="mt-4 text-lg text-zinc-400">{SUBTITLE[locale]}</p>
 
         <div className="mt-6 flex items-center justify-center gap-4 text-sm text-zinc-500">
-          <span>{READING_TIME[lang]}</span>
+          <span>{READING_TIME[locale]}</span>
           <span className="text-zinc-700">|</span>
-          <span>{LAST_UPDATED[lang]}</span>
+          <span>{LAST_UPDATED[locale]}</span>
         </div>
         <p className="mt-4 text-xs text-zinc-600">
-          {COMPILED_FROM[lang]}
+          {COMPILED_FROM[locale]}
         </p>
       </header>
 
@@ -805,7 +805,7 @@ export default function ResumenPage() {
             className="rounded-lg border border-zinc-800 bg-zinc-900/60 p-4 text-center"
           >
             <p className="text-xl font-bold text-blue-400">{stat.value}</p>
-            <p className="mt-1 text-xs text-zinc-400">{stat.label[lang]}</p>
+            <p className="mt-1 text-xs text-zinc-400">{stat.label[locale]}</p>
           </div>
         ))}
       </div>
@@ -813,10 +813,10 @@ export default function ResumenPage() {
       {/* Methodology summary — links to full methodology tab */}
       <div className="mb-8 rounded-lg border border-blue-900/40 bg-blue-950/20 p-5">
         <h3 className="text-sm font-bold uppercase tracking-wider text-blue-400">
-          {lang === 'es' ? 'Metodologia' : 'Methodology'}
+          {locale === 'es' ? 'Metodologia' : 'Methodology'}
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-zinc-300">
-          {lang === 'es'
+          {locale === 'es'
             ? 'Investigacion construida mediante inteligencia artificial asistida con verificacion humana. 14 pipelines ETL ingestan datos publicos en una base de datos de grafo Neo4j. Un motor de cruce automatico conecta entidades por CUIT, DNI y nombre. El modelo de IA (ejecutado localmente, sin envio de datos externos) detecta patrones estructurales — cada hallazgo fue verificado independientemente contra fuentes primarias. Los sujetos no fueron contactados para descargo previo; la informacion se basa exclusivamente en fuentes publicas verificables.'
             : 'Investigation built through AI-assisted intelligence with human verification. 14 ETL pipelines ingest public data into a Neo4j graph database. An automated cross-reference engine connects entities by CUIT, DNI, and name. The AI model (running locally, no external data transmission) detects structural patterns — every finding was independently verified against primary sources. Subjects were not contacted for prior comment; information is based exclusively on verifiable public sources.'}
         </p>
@@ -824,7 +824,7 @@ export default function ResumenPage() {
           href="/caso/finanzas-politicas/metodologia"
           className="mt-3 inline-block text-xs font-semibold text-blue-400 underline decoration-blue-400/30 hover:text-blue-300"
         >
-          {lang === 'es' ? 'Ver metodologia completa, fuentes y marcos de cumplimiento →' : 'View full methodology, sources, and compliance frameworks →'}
+          {locale === 'es' ? 'Ver metodologia completa, fuentes y marcos de cumplimiento →' : 'View full methodology, sources, and compliance frameworks →'}
         </a>
       </div>
 
@@ -834,11 +834,11 @@ export default function ResumenPage() {
       {chapters.map((chapter) => (
         <section key={chapter.id} id={chapter.id} className="py-12">
           <h2 className="border-l-4 border-blue-500 pl-4 text-xl font-bold text-zinc-50">
-            {chapter.title[lang]}
+            {chapter.title[locale]}
           </h2>
 
           <div className="mt-6 space-y-4">
-            {chapter.paragraphs[lang].map((p, i) => (
+            {chapter.paragraphs[locale].map((p, i) => (
               <p key={i} className="text-base leading-relaxed text-zinc-300">
                 {renderWithCitations(p, chapter.citations)}
               </p>
@@ -847,7 +847,7 @@ export default function ResumenPage() {
 
           {chapter.pullQuote && (
             <blockquote className="my-6 border-l-2 border-blue-400 pl-4 text-lg italic text-zinc-200">
-              {chapter.pullQuote[lang]}
+              {chapter.pullQuote[locale]}
             </blockquote>
           )}
 
@@ -883,7 +883,7 @@ export default function ResumenPage() {
       {/* Sources */}
       <section className="py-12">
         <h2 className="border-l-4 border-blue-500 pl-4 text-xl font-bold text-zinc-50">
-          {lang === 'es' ? 'Fuentes' : 'Sources'}
+          {locale === 'es' ? 'Fuentes' : 'Sources'}
         </h2>
         <ul className="mt-6 space-y-2">
           {sources.map((src) => (
@@ -904,25 +904,25 @@ export default function ResumenPage() {
       {/* Methodology & Compliance */}
       <section className="py-12">
         <h2 className="border-l-4 border-blue-500 pl-4 text-xl font-bold text-zinc-50">
-          {lang === 'es' ? 'Metodologia y Cumplimiento Internacional' : 'Methodology & International Compliance'}
+          {locale === 'es' ? 'Metodologia y Cumplimiento Internacional' : 'Methodology & International Compliance'}
         </h2>
 
         <div className="mt-6 space-y-6">
           <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
             <h3 className="text-sm font-bold uppercase tracking-wider text-blue-400">
-              {lang === 'es' ? 'Como Se Hizo Esta Investigacion' : 'How This Investigation Was Built'}
+              {locale === 'es' ? 'Como Se Hizo Esta Investigacion' : 'How This Investigation Was Built'}
             </h3>
             <div className="mt-3 space-y-3 text-sm text-zinc-300">
-              <p>{lang === 'es'
+              <p>{locale === 'es'
                 ? 'Esta investigacion fue construida mediante inteligencia artificial asistida con verificacion humana. Mas de 100 agentes autonomos de investigacion fueron desplegados en paralelo para buscar informacion en la web, cruzar datos entre bases publicas, consultar la base de datos de grafo, y detectar patrones estructurales. Todo el procesamiento se realiza localmente, sin envio de datos a servicios externos.'
                 : 'This investigation was built through AI-assisted intelligence with human verification. Over 100 autonomous investigation agents were deployed in parallel to search the web, cross-reference public databases, query the graph database, and detect structural patterns. All processing runs locally, no data sent to external services.'}</p>
-              <p>{lang === 'es'
+              <p>{locale === 'es'
                 ? 'El proceso: 14 pipelines ETL (Extract-Transform-Load) ingestan datos publicos — votos legislativos, filtraciones offshore, donaciones electorales, nombramientos del Boletin Oficial, registros corporativos de la IGJ (951.000 directivos), declaraciones juradas, contratos publicos de Compr.ar, datos del BCRA — y los cargan en una base de datos de grafo Neo4j. Un motor de cruce automatico conecta entidades por CUIT (confianza 1.0), DNI/CUIL (0.95) y coincidencia de nombre (0.6-0.8). El grafo resultante — 294 nodos, 2.391 aristas — se consulta con Cypher para descubrir caminos, puentes, triangulos y anomalias que ningun dataset individual puede revelar.'
                 : 'The process: 14 ETL (Extract-Transform-Load) pipelines ingest public data — legislative votes, offshore leaks, electoral donations, Boletin Oficial appointments, IGJ corporate registries (951,000 officers), asset declarations, Compr.ar procurement contracts, BCRA data — and load them into a Neo4j graph database. An automated cross-reference engine connects entities by CUIT (confidence 1.0), DNI/CUIL (0.95), and name matching (0.6-0.8). The resulting graph — 294 nodes, 2,391 edges — is queried with Cypher to discover paths, bridges, triangles, and anomalies that no single dataset can reveal.'}</p>
-              <p>{lang === 'es'
+              <p>{locale === 'es'
                 ? 'Ejemplo de consulta: "Encontrar todos los caminos entre el Donante X y el Contrato Y en 5 saltos." Esa consulta cruza 3-4 fuentes de datos y revela conexiones literalmente invisibles sin el grafo. La resolucion de entidades conecto 247 donantes de campana con directivos de empresas contratistas del Estado, vinculando $207 millones en donaciones con $63.000 millones en contratos.'
                 : 'Example query: "Find all paths between Donor X and Contract Y within 5 hops." That query crosses 3-4 data sources and reveals connections literally invisible without the graph. Entity resolution connected 247 campaign donors to state contractor company officers, linking $207 million in donations to $63 billion in contracts.'}</p>
-              <p>{lang === 'es'
+              <p>{locale === 'es'
                 ? 'Cada hallazgo fue verificado independientemente contra fuentes publicas antes de ser incluido. La tecnologia detecta patrones; la verificacion humana confirma o descarta. La IA no acusa: revela patrones. Las conclusiones son del lector.'
                 : 'Every finding was independently verified against public sources before inclusion. The technology detects patterns; human verification confirms or discards. The AI does not accuse: it reveals patterns. The conclusions are the reader\'s.'}</p>
             </div>
@@ -930,25 +930,25 @@ export default function ResumenPage() {
 
           <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
             <h3 className="text-sm font-bold uppercase tracking-wider text-blue-400">
-              {lang === 'es' ? 'Marcos Internacionales' : 'International Frameworks'}
+              {locale === 'es' ? 'Marcos Internacionales' : 'International Frameworks'}
             </h3>
             <ul className="mt-3 space-y-2 text-sm text-zinc-300">
-              <li><span className="font-semibold text-zinc-200">FATF/GAFI:</span> {lang === 'es'
+              <li><span className="font-semibold text-zinc-200">FATF/GAFI:</span> {locale === 'es'
                 ? 'Identificacion de Personas Expuestas Politicamente (PEP), rastreo de beneficiarios finales, deteccion de sociedades fantasma, seguimiento de flujos transfronterizos.'
                 : 'Politically Exposed Persons (PEP) identification, beneficial ownership tracing, shell company detection, cross-border flow tracking.'}</li>
-              <li><span className="font-semibold text-zinc-200">OCDE:</span> {lang === 'es'
+              <li><span className="font-semibold text-zinc-200">OCDE:</span> {locale === 'es'
                 ? 'Documentacion de soborno extranjero, pagos facilitadores, puerta giratoria entre sector publico y privado.'
                 : 'Foreign bribery documentation, facilitation payments, public-private revolving door mapping.'}</li>
-              <li><span className="font-semibold text-zinc-200">UNCAC:</span> {lang === 'es'
+              <li><span className="font-semibold text-zinc-200">UNCAC:</span> {locale === 'es'
                 ? 'Analisis de declaraciones juradas patrimoniales, conflictos de intereses, deteccion de enriquecimiento ilicito.'
                 : 'Asset disclosure analysis, conflict of interest documentation, illicit enrichment detection.'}</li>
-              <li><span className="font-semibold text-zinc-200">Transparency International:</span> {lang === 'es'
+              <li><span className="font-semibold text-zinc-200">Transparency International:</span> {locale === 'es'
                 ? 'Verificacion con fuentes multiples, test de interes publico, independencia editorial.'
                 : 'Multi-source verification, public interest test, editorial independence.'}</li>
-              <li><span className="font-semibold text-zinc-200">ICIJ:</span> {lang === 'es'
+              <li><span className="font-semibold text-zinc-200">ICIJ:</span> {locale === 'es'
                 ? 'Cruce de registros publicos, investigacion basada en datos, verificacion colaborativa.'
                 : 'Public records cross-referencing, data-driven investigation, collaborative verification.'}</li>
-              <li><span className="font-semibold text-zinc-200">GIJN:</span> {lang === 'es'
+              <li><span className="font-semibold text-zinc-200">GIJN:</span> {locale === 'es'
                 ? 'Protocolos de verificacion, proteccion de fuentes, interes publico, transparencia metodologica.'
                 : 'Verification protocols, source protection, public interest, methodological transparency.'}</li>
             </ul>
@@ -956,25 +956,25 @@ export default function ResumenPage() {
 
           <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
             <h3 className="text-sm font-bold uppercase tracking-wider text-blue-400">
-              {lang === 'es' ? 'Protocolo de Verificacion' : 'Verification Protocol'}
+              {locale === 'es' ? 'Protocolo de Verificacion' : 'Verification Protocol'}
             </h3>
             <ul className="mt-3 space-y-2 text-sm text-zinc-300">
-              <li>{lang === 'es'
+              <li>{locale === 'es'
                 ? '97,4% de URLs verificadas con HTTP 200 (37/38 en ultima auditoria)'
                 : '97.4% URLs verified with HTTP 200 (37/38 in last audit)'}</li>
-              <li>{lang === 'es'
+              <li>{locale === 'es'
                 ? '87,5% de claims criticos verificados contra fuente primaria (14/16)'
                 : '87.5% critical claims verified against primary source (14/16)'}</li>
-              <li>{lang === 'es'
+              <li>{locale === 'es'
                 ? 'Tres niveles de confianza: gold (curado), silver (verificado web), bronze (sin verificar)'
                 : 'Three confidence tiers: gold (curated), silver (web-verified), bronze (unverified)'}</li>
-              <li>{lang === 'es'
+              <li>{locale === 'es'
                 ? 'Cada hallazgo enlazado a fuente publica verificable'
                 : 'Every finding linked to verifiable public source'}</li>
-              <li>{lang === 'es'
+              <li>{locale === 'es'
                 ? 'Proceso de control de calidad: coincidencias automaticas revisadas manualmente, homonimos sin evidencia descartados'
                 : 'Quality control process: automated matches manually reviewed, namesakes without evidence discarded'}</li>
-              <li>{lang === 'es'
+              <li>{locale === 'es'
                 ? 'Derecho a replica: los sujetos de esta investigacion no fueron contactados para descargo previo. La informacion se basa exclusivamente en fuentes publicas verificables. Esta es una limitacion reconocida.'
                 : 'Right of reply: subjects of this investigation were not contacted for prior comment. Information is based exclusively on verifiable public sources. This is an acknowledged limitation.'}</li>
             </ul>
@@ -982,7 +982,7 @@ export default function ResumenPage() {
 
           <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
             <h3 className="text-sm font-bold uppercase tracking-wider text-blue-400">
-              {lang === 'es' ? 'Fuentes de Datos (14 pipelines)' : 'Data Sources (14 pipelines)'}
+              {locale === 'es' ? 'Fuentes de Datos (14 pipelines)' : 'Data Sources (14 pipelines)'}
             </h3>
             <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-zinc-400">
               <span>Como Voto (legislativo)</span>
@@ -1007,7 +1007,7 @@ export default function ResumenPage() {
       {/* Disclaimer */}
       <section className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-6">
         <p className="text-sm leading-relaxed text-zinc-500">
-          {lang === 'es'
+          {locale === 'es'
             ? 'Esta investigacion se basa en fuentes publicas verificadas. Todos los pipelines ETL son idempotentes y reproducibles. Ninguna fuente privada fue utilizada. La inclusion no implica culpabilidad. Donde se indica "presunto," la conexion no ha sido verificada de forma independiente.'
             : 'This investigation is based on verified public sources. All ETL pipelines are idempotent and reproducible. No private sources were used. Inclusion does not imply guilt. Where "alleged" is indicated, the connection has not been independently verified.'}
         </p>
@@ -1016,7 +1016,7 @@ export default function ResumenPage() {
       {/* Closing */}
       <div className="mt-8 text-center">
         <p className="text-sm italic text-zinc-500">
-          {lang === 'es'
+          {locale === 'es'
             ? 'La investigacion continua. El grafo crece. Las preguntas permanecen.'
             : 'The investigation continues. The graph grows. The questions remain.'}
         </p>

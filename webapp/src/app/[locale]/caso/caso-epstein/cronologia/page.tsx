@@ -1,4 +1,6 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 /**
  * Caso Epstein — Timeline (full timeline page).
@@ -7,9 +9,8 @@
  * built from TIMELINE_EVENTS in investigation-data.ts.
  */
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 
-import { useLanguage, type Lang } from '@/lib/language-context'
 import {
   TIMELINE_EVENTS,
   type InvestigationCategory,
@@ -32,7 +33,7 @@ const t = {
   navEvidence: { en: 'Evidence \u2192', es: 'Evidencia \u2192' },
 } as const
 
-const CATEGORY_LABELS: Record<InvestigationCategory, Record<Lang, string>> = {
+const CATEGORY_LABELS: Record<InvestigationCategory, Record<Locale, string>> = {
   political: { en: 'Political', es: 'Politico' },
   financial: { en: 'Financial', es: 'Financiero' },
   legal: { en: 'Legal', es: 'Legal' },
@@ -53,7 +54,7 @@ const CATEGORY_CLS: Record<InvestigationCategory, { cls: string; dotCls: string 
 // ---------------------------------------------------------------------------
 
 export default function CronologiaPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   const eventsByYear = new Map<string, typeof TIMELINE_EVENTS>()
   for (const event of TIMELINE_EVENTS) {
@@ -70,13 +71,13 @@ export default function CronologiaPage() {
       {/* Header */}
       <header className="text-center">
         <p className="text-xs font-medium uppercase tracking-widest text-red-400">
-          {t.headerBadge[lang]}
+          {t.headerBadge[locale]}
         </p>
         <h1 className="mt-3 text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
-          {t.headerTitle[lang]}
+          {t.headerTitle[locale]}
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-sm text-zinc-400">
-          {t.headerDesc[lang](TIMELINE_EVENTS.length)}
+          {t.headerDesc[locale](TIMELINE_EVENTS.length)}
         </p>
       </header>
 
@@ -87,7 +88,7 @@ export default function CronologiaPage() {
             key={key}
             className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium ${CATEGORY_CLS[key as InvestigationCategory].cls}`}
           >
-            {labels[lang]}
+            {labels[locale]}
           </span>
         ))}
       </div>
@@ -113,23 +114,23 @@ export default function CronologiaPage() {
 
                       <div className="flex flex-wrap items-center gap-2">
                         <time className="text-xs font-medium text-zinc-500">
-                          {new Date(event.date).toLocaleDateString(lang === 'en' ? 'en-US' : 'es-ES', {
+                          {new Date(event.date).toLocaleDateString(locale === 'en' ? 'en-US' : 'es-ES', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric',
                           })}
                         </time>
                         <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium ${catCls.cls}`}>
-                          {CATEGORY_LABELS[event.category][lang]}
+                          {CATEGORY_LABELS[event.category][locale]}
                         </span>
                       </div>
 
                       <h3 className="mt-1.5 text-sm font-semibold text-zinc-100">
-                        {lang === 'en' ? event.title_en : event.title_es}
+                        {locale === 'en' ? event.title_en : event.title_es}
                       </h3>
 
                       <p className="mt-1 text-xs leading-relaxed text-zinc-400">
-                        {lang === 'en' ? event.description_en : event.description_es}
+                        {locale === 'en' ? event.description_en : event.description_es}
                       </p>
 
                       {event.sources.length > 0 && (
@@ -142,7 +143,7 @@ export default function CronologiaPage() {
                               rel="noopener noreferrer"
                               className="text-[10px] text-red-400/60 underline decoration-red-400/15 hover:text-red-300"
                             >
-                              {t.source[lang]} {event.sources.length > 1 ? i + 1 : ''}
+                              {t.source[locale]} {event.sources.length > 1 ? i + 1 : ''}
                             </a>
                           ))}
                         </div>
@@ -162,19 +163,19 @@ export default function CronologiaPage() {
           href="/caso/caso-epstein/resumen"
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          {t.navSummary[lang]}
+          {t.navSummary[locale]}
         </Link>
         <Link
           href="/caso/caso-epstein/investigacion"
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          {t.navInvestigation[lang]}
+          {t.navInvestigation[locale]}
         </Link>
         <Link
           href="/caso/caso-epstein/evidencia"
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          {t.navEvidence[lang]}
+          {t.navEvidence[locale]}
         </Link>
       </nav>
     </div>

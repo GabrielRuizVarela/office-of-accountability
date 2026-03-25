@@ -1,4 +1,6 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 /**
  * Obras Publicas — Money flow page.
@@ -7,9 +9,8 @@
  * and contract-level spending from the investigation data.
  */
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 
-import { useLanguage } from '@/lib/language-context'
 import { MONEY_FLOWS } from '@/lib/caso-obras-publicas/investigation-data'
 
 const SLUG = 'obras-publicas'
@@ -31,26 +32,26 @@ const t = {
   navConnections: { en: 'Connections \u2192', es: 'Conexiones \u2192' },
 } as const
 
-function formatUSD(amount: number, lang: 'en' | 'es'): string {
-  if (amount === 0) return lang === 'en' ? 'Under investigation' : 'En investigacion'
+function formatUSD(amount: number, locale: 'en' | 'es'): string {
+  if (amount === 0) return locale === 'en' ? 'Under investigation' : 'En investigacion'
   if (amount >= 1_000_000_000) return `USD ${(amount / 1_000_000_000).toFixed(1)}B`
   if (amount >= 1_000_000) return `USD ${(amount / 1_000_000).toFixed(0)}M`
   if (amount >= 1_000) return `USD ${(amount / 1_000).toFixed(0)}K`
   return `USD ${amount.toLocaleString()}`
 }
 
-function formatDate(dateStr: string, lang: 'en' | 'es'): string {
+function formatDate(dateStr: string, locale: 'en' | 'es'): string {
   if (/^\d{4}[–-]\d{4}$/.test(dateStr)) return dateStr
   if (/^\d{4}$/.test(dateStr)) return dateStr
   if (/^\d{4}-\d{2}$/.test(dateStr)) {
     const d = new Date(dateStr + '-01T00:00:00')
-    return d.toLocaleDateString(lang === 'es' ? 'es-AR' : 'en-US', {
+    return d.toLocaleDateString(locale === 'es' ? 'es-AR' : 'en-US', {
       year: 'numeric',
       month: 'short',
     })
   }
   const d = new Date(dateStr + 'T00:00:00')
-  return d.toLocaleDateString(lang === 'es' ? 'es-AR' : 'en-US', {
+  return d.toLocaleDateString(locale === 'es' ? 'es-AR' : 'en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
@@ -58,7 +59,7 @@ function formatDate(dateStr: string, lang: 'en' | 'es'): string {
 }
 
 export default function DineroPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   const totalUsd = MONEY_FLOWS.reduce((sum, f) => sum + f.amount_usd, 0)
 
@@ -67,18 +68,18 @@ export default function DineroPage() {
       {/* Header */}
       <header className="text-center">
         <h1 className="mb-1 text-2xl font-bold text-zinc-50 sm:text-3xl">
-          {t.title[lang]}
+          {t.title[locale]}
         </h1>
         <p className="mx-auto max-w-2xl text-sm text-zinc-400">
-          {t.subtitle[lang]}
+          {t.subtitle[locale]}
         </p>
       </header>
 
       {/* Total */}
       <div className="mx-auto max-w-sm rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 text-center">
-        <p className="text-3xl font-bold text-amber-400">{formatUSD(totalUsd, lang)}</p>
-        <p className="mt-1 text-xs text-zinc-400">{t.totalTracked[lang]}</p>
-        <p className="mt-0.5 text-[10px] text-zinc-600">{t.totalNote[lang]}</p>
+        <p className="text-3xl font-bold text-amber-400">{formatUSD(totalUsd, locale)}</p>
+        <p className="mt-1 text-xs text-zinc-400">{t.totalTracked[locale]}</p>
+        <p className="mt-0.5 text-[10px] text-zinc-600">{t.totalNote[locale]}</p>
       </div>
 
       {/* Flow list */}
@@ -112,10 +113,10 @@ export default function DineroPage() {
               </div>
               <div className="flex items-center gap-4 text-right">
                 <span className="text-sm font-bold text-amber-400">
-                  {formatUSD(flow.amount_usd, lang)}
+                  {formatUSD(flow.amount_usd, locale)}
                 </span>
                 <span className="text-xs text-zinc-500">
-                  {formatDate(flow.date, lang)}
+                  {formatDate(flow.date, locale)}
                 </span>
               </div>
             </div>
@@ -132,19 +133,19 @@ export default function DineroPage() {
           href={`/caso/${SLUG}/resumen`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          {t.navSummary[lang]}
+          {t.navSummary[locale]}
         </Link>
         <Link
           href={`/caso/${SLUG}/investigacion`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          {t.navInvestigation[lang]}
+          {t.navInvestigation[locale]}
         </Link>
         <Link
           href={`/caso/${SLUG}/conexiones`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          {t.navConnections[lang]}
+          {t.navConnections[locale]}
         </Link>
       </nav>
     </div>

@@ -1,4 +1,6 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 /**
  * Obras Publicas — Connections page with interactive graph.
@@ -8,10 +10,9 @@
  */
 
 import dynamic from 'next/dynamic'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { useEffect, useState } from 'react'
 
-import { useLanguage } from '@/lib/language-context'
 import {
   IMPACT_STATS,
   ACTORS,
@@ -68,7 +69,7 @@ interface GraphLink {
 }
 
 export default function ConexionesPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
   const [graphData, setGraphData] = useState<{ nodes: GraphNode[]; links: GraphLink[] } | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -116,10 +117,10 @@ export default function ConexionesPage() {
       {/* Header */}
       <header className="text-center">
         <h1 className="mb-1 text-2xl font-bold text-zinc-50 sm:text-3xl">
-          {t.title[lang]}
+          {t.title[locale]}
         </h1>
         <p className="mx-auto max-w-2xl text-sm text-zinc-400">
-          {t.subtitle[lang]}
+          {t.subtitle[locale]}
         </p>
       </header>
 
@@ -127,21 +128,21 @@ export default function ConexionesPage() {
       <div className="relative min-h-[500px] overflow-hidden rounded-xl border border-zinc-700 bg-zinc-950">
         {loading && (
           <div className="flex h-[500px] items-center justify-center">
-            <p className="text-sm text-zinc-400 animate-pulse">{t.loading[lang]}</p>
+            <p className="text-sm text-zinc-400 animate-pulse">{t.loading[locale]}</p>
           </div>
         )}
         {error && (
           <div className="flex h-[500px] items-center justify-center">
-            <p className="text-sm text-red-400">{t.error[lang]}: {error}</p>
+            <p className="text-sm text-red-400">{t.error[locale]}: {error}</p>
           </div>
         )}
         {graphData && (
           <>
             <div className="absolute top-3 left-3 z-10 rounded bg-zinc-900/80 px-3 py-1.5 text-xs text-zinc-400 backdrop-blur">
-              {graphData.nodes.length} {t.nodeCount[lang]} &middot; {graphData.links.length} {t.linkCount[lang]}
+              {graphData.nodes.length} {t.nodeCount[locale]} &middot; {graphData.links.length} {t.linkCount[locale]}
             </div>
             <div className="absolute top-3 right-3 z-10 rounded bg-zinc-900/80 px-3 py-1.5 text-xs text-zinc-500 backdrop-blur">
-              {t.tierFilter[lang]}
+              {t.tierFilter[locale]}
             </div>
             {/* Legend */}
             <div className="absolute bottom-3 left-3 z-10 flex flex-wrap gap-2 rounded bg-zinc-900/80 px-3 py-1.5 backdrop-blur">
@@ -172,7 +173,7 @@ export default function ConexionesPage() {
 
       {/* Stats */}
       <section>
-        <h2 className="mb-4 text-lg font-bold text-zinc-50">{t.statsTitle[lang]}</h2>
+        <h2 className="mb-4 text-lg font-bold text-zinc-50">{t.statsTitle[locale]}</h2>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {IMPACT_STATS.map((stat) => (
             <div
@@ -181,7 +182,7 @@ export default function ConexionesPage() {
             >
               <p className="text-xl font-bold text-amber-400">{stat.value}</p>
               <p className="mt-1 text-xs text-zinc-500">
-                {lang === 'en' ? stat.label_en : stat.label_es}
+                {locale === 'en' ? stat.label_en : stat.label_es}
               </p>
             </div>
           ))}
@@ -190,7 +191,7 @@ export default function ConexionesPage() {
 
       {/* Key entities */}
       <section>
-        <h2 className="mb-4 text-lg font-bold text-zinc-50">{t.actorsTitle[lang]}</h2>
+        <h2 className="mb-4 text-lg font-bold text-zinc-50">{t.actorsTitle[locale]}</h2>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {ACTORS.map((actor) => (
             <div
@@ -199,10 +200,10 @@ export default function ConexionesPage() {
             >
               <h3 className="text-sm font-semibold text-zinc-100">{actor.name}</h3>
               <p className="mt-1 text-xs font-medium text-amber-400/80">
-                {lang === 'en' ? actor.role_en : actor.role_es}
+                {locale === 'en' ? actor.role_en : actor.role_es}
               </p>
               <p className="mt-2 text-xs leading-relaxed text-zinc-400">
-                {lang === 'en' ? actor.description_en : actor.description_es}
+                {locale === 'en' ? actor.description_en : actor.description_es}
               </p>
             </div>
           ))}
@@ -215,13 +216,13 @@ export default function ConexionesPage() {
           href={`/caso/${SLUG}/investigacion`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          {t.navInvestigation[lang]}
+          {t.navInvestigation[locale]}
         </Link>
         <Link
           href={`/caso/${SLUG}/mapa`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          {t.navMap[lang]}
+          {t.navMap[locale]}
         </Link>
       </nav>
     </div>

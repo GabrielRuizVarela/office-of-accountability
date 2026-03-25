@@ -1,4 +1,6 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 /**
  * Monopolios en Argentina — Narrative summary page.
@@ -8,8 +10,6 @@
  * a 32-wave investigation cycle across 2.45M nodes and 44 research files.
  */
 
-import { useLanguage } from '@/lib/language-context'
-import type { Lang } from '@/lib/language-context'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -17,7 +17,7 @@ import type { Lang } from '@/lib/language-context'
 
 interface StatCard {
   readonly value: string
-  readonly label: Record<Lang, string>
+  readonly label: Record<Locale, string>
 }
 
 interface Citation {
@@ -28,9 +28,9 @@ interface Citation {
 
 interface Chapter {
   readonly id: string
-  readonly title: Record<Lang, string>
-  readonly paragraphs: Record<Lang, readonly string[]>
-  readonly pullQuote?: Record<Lang, string>
+  readonly title: Record<Locale, string>
+  readonly paragraphs: Record<Locale, readonly string[]>
+  readonly pullQuote?: Record<Locale, string>
   readonly citations?: readonly Citation[]
 }
 
@@ -38,20 +38,20 @@ interface Chapter {
 // Header
 // ---------------------------------------------------------------------------
 
-const TITLE: Record<Lang, string> = {
+const TITLE: Record<Locale, string> = {
   es: 'El Oligopolio: 10 Familias, 18 Sectores, Una Argentina Cautiva',
   en: 'The Oligopoly: 10 Families, 18 Sectors, A Captive Argentina',
 }
 
-const SUBTITLE: Record<Lang, string> = {
+const SUBTITLE: Record<Locale, string> = {
   es: 'Ocho capitulos sobre como diez grupos familiares controlan telecomunicaciones, energia, alimentos, medios, banca, mineria, agroexportacion, construccion, farmaceutica y transporte. 2,45 millones de nodos, 44 archivos de investigacion, 75 afirmaciones verificadas, 60 entidades offshore mapeadas.',
   en: 'Eight chapters on how ten family groups control telecommunications, energy, food, media, banking, mining, agro-export, construction, pharmaceuticals, and transport. 2.45 million nodes, 44 research files, 75 factchecked claims, 60 offshore entities mapped.',
 }
 
-const READING_TIME: Record<Lang, string> = { es: '~35 min de lectura', en: '~35 min read' }
-const LAST_UPDATED: Record<Lang, string> = { es: 'Actualizado: marzo 2026', en: 'Last updated: March 2026' }
+const READING_TIME: Record<Locale, string> = { es: '~35 min de lectura', en: '~35 min read' }
+const LAST_UPDATED: Record<Locale, string> = { es: 'Actualizado: marzo 2026', en: 'Last updated: March 2026' }
 
-const COMPILED_FROM: Record<Lang, string> = {
+const COMPILED_FROM: Record<Locale, string> = {
   es: 'Investigacion asistida por IA con verificacion humana. 44 archivos JSON de hallazgos. Grafo Neo4j de 2.447.572 nodos y 4.685.421 relaciones cruzado con registros IGJ, ICIJ offshore, CompraR, CNE, Boletin Oficial, y la investigacion de obras publicas (37.351 nodos). 75 afirmaciones fueron verificadas contra fuentes primarias: 55% confirmadas, 29% corregidas, 1% desmentida. La IA revela patrones. Las conclusiones son del lector.',
   en: 'AI-assisted investigation with human verification. 32 research waves. 44 JSON finding files. Neo4j graph of 2,447,572 nodes and 4,685,421 relationships cross-referenced against IGJ registry, ICIJ offshore leaks, CompraR procurement, CNE campaign finance, Boletin Oficial, and the public works investigation (37,351 nodes). 75 claims were factchecked against primary sources: 55% confirmed, 29% corrected, 1% debunked. AI reveals patterns. Conclusions are the reader\'s.',
 }
@@ -379,22 +379,22 @@ function renderWithCitations(text: string, citations?: readonly Citation[]) {
 // ---------------------------------------------------------------------------
 
 export default function ResumenPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <article className="mx-auto max-w-prose pb-20 text-justify">
       {/* Header */}
       <header className="py-12">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-50 text-left sm:text-4xl">
-          {TITLE[lang]}
+          {TITLE[locale]}
         </h1>
-        <p className="mt-4 text-lg text-zinc-400">{SUBTITLE[lang]}</p>
+        <p className="mt-4 text-lg text-zinc-400">{SUBTITLE[locale]}</p>
         <div className="mt-6 flex items-center gap-4 text-sm text-zinc-500">
-          <span>{READING_TIME[lang]}</span>
+          <span>{READING_TIME[locale]}</span>
           <span className="text-zinc-700">|</span>
-          <span>{LAST_UPDATED[lang]}</span>
+          <span>{LAST_UPDATED[locale]}</span>
         </div>
-        <p className="mt-4 text-xs text-zinc-600">{COMPILED_FROM[lang]}</p>
+        <p className="mt-4 text-xs text-zinc-600">{COMPILED_FROM[locale]}</p>
       </header>
 
       {/* Stat cards */}
@@ -402,7 +402,7 @@ export default function ResumenPage() {
         {stats.map((stat) => (
           <div key={stat.value} className="rounded-lg border border-zinc-800 bg-zinc-900/60 p-4 text-center">
             <p className="text-xl font-bold text-amber-400">{stat.value}</p>
-            <p className="mt-1 text-xs text-zinc-400">{stat.label[lang]}</p>
+            <p className="mt-1 text-xs text-zinc-400">{stat.label[locale]}</p>
           </div>
         ))}
       </div>
@@ -410,10 +410,10 @@ export default function ResumenPage() {
       {/* Methodology box */}
       <div className="mb-8 rounded-lg border border-amber-900/40 bg-amber-950/20 p-5">
         <h3 className="text-sm font-bold uppercase tracking-wider text-amber-400">
-          {lang === 'es' ? 'Metodologia' : 'Methodology'}
+          {locale === 'es' ? 'Metodologia' : 'Methodology'}
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-zinc-300">
-          {lang === 'es'
+          {locale === 'es'
             ? 'Investigacion automatizada en multiples fases. 9 fuentes de datos publicos ingestados en Neo4j (2,45M nodos). Motor de cruce por CUIT, DNI y nombre. IA local para deteccion de patrones — cada hallazgo verificado contra fuentes primarias. 75 afirmaciones verificadas: 55% confirmadas, 29% corregidas, 1% desmentida.'
             : 'Multi-phase automated investigation. 9 public data sources ingested into Neo4j (2.45M nodes). Cross-reference engine by CUIT, DNI, and name. Local AI for pattern detection — every finding verified against primary sources. 75 claims factchecked: 55% confirmed, 29% corrected, 1% debunked.'}
         </p>
@@ -425,11 +425,11 @@ export default function ResumenPage() {
       {chapters.map((chapter) => (
         <section key={chapter.id} id={chapter.id} className="py-12">
           <h2 className="border-l-4 border-amber-500 pl-4 text-xl font-bold text-zinc-50">
-            {chapter.title[lang]}
+            {chapter.title[locale]}
           </h2>
 
           <div className="mt-6 space-y-4">
-            {chapter.paragraphs[lang].map((p, i) => (
+            {chapter.paragraphs[locale].map((p, i) => (
               <p key={i} className="text-base leading-relaxed text-zinc-300">
                 {renderWithCitations(p, chapter.citations)}
               </p>
@@ -438,7 +438,7 @@ export default function ResumenPage() {
 
           {chapter.pullQuote && (
             <blockquote className="my-6 border-l-2 border-amber-400 pl-4 text-lg italic text-zinc-200">
-              {chapter.pullQuote[lang]}
+              {chapter.pullQuote[locale]}
             </blockquote>
           )}
         </section>

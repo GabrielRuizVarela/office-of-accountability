@@ -1,4 +1,6 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 /**
  * Caso Libra money flow page — wallet graph with transaction edges.
@@ -7,7 +9,6 @@
 
 import { useCallback, useEffect, useState } from 'react'
 
-import { useLanguage, type Lang } from '@/lib/language-context'
 import type { GraphData } from '@/lib/neo4j/types'
 import { ForceGraph } from '@/components/graph/ForceGraph'
 
@@ -27,10 +28,10 @@ const t = {
   wallet: { es: 'Billetera', en: 'Wallet' },
   owner: { es: 'Propietario', en: 'Owner' },
   txLabel: { es: 'Transacciones:', en: 'Transactions:' },
-} satisfies Record<string, Record<Lang, string>>
+} satisfies Record<string, Record<Locale, string>>
 
 export default function DineroPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
   const [data, setData] = useState<GraphData>({ nodes: [], links: [] })
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
@@ -40,11 +41,11 @@ export default function DineroPage() {
     async function load() {
       try {
         const res = await fetch('/api/caso-libra/wallets')
-        if (!res.ok) throw new Error(t.loadError[lang])
+        if (!res.ok) throw new Error(t.loadError[locale])
         const json = await res.json()
         setData(json)
       } catch (err) {
-        setError(err instanceof Error ? err.message : t.unknownError[lang])
+        setError(err instanceof Error ? err.message : t.unknownError[locale])
       } finally {
         setLoading(false)
       }
@@ -68,7 +69,7 @@ export default function DineroPage() {
   if (loading) {
     return (
       <div className="flex h-[60vh] items-center justify-center text-zinc-500">
-        {t.loading[lang]}
+        {t.loading[locale]}
       </div>
     )
   }
@@ -80,9 +81,9 @@ export default function DineroPage() {
   return (
     <div className="space-y-4">
       <div>
-        <h1 className="text-xl font-bold text-zinc-50">{t.title[lang]}</h1>
+        <h1 className="text-xl font-bold text-zinc-50">{t.title[locale]}</h1>
         <p className="mt-1 text-sm text-zinc-400">
-          {t.subtitle[lang]}
+          {t.subtitle[locale]}
         </p>
       </div>
 
@@ -90,15 +91,15 @@ export default function DineroPage() {
       <div className="grid grid-cols-3 gap-3">
         <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-3 text-center">
           <p className="text-lg font-bold text-emerald-400">${totalFlow.toLocaleString('en-US')}</p>
-          <p className="text-xs text-zinc-500">{t.totalTracked[lang]}</p>
+          <p className="text-xs text-zinc-500">{t.totalTracked[locale]}</p>
         </div>
         <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-3 text-center">
           <p className="text-lg font-bold text-zinc-100">{data.nodes.length}</p>
-          <p className="text-xs text-zinc-500">{t.wallets[lang]}</p>
+          <p className="text-xs text-zinc-500">{t.wallets[locale]}</p>
         </div>
         <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-3 text-center">
           <p className="text-lg font-bold text-zinc-100">{data.links.length}</p>
-          <p className="text-xs text-zinc-500">{t.transactions[lang]}</p>
+          <p className="text-xs text-zinc-500">{t.transactions[locale]}</p>
         </div>
       </div>
 
@@ -113,9 +114,9 @@ export default function DineroPage() {
               onClick={() => setSelectedNodeId(null)}
               className="mb-3 text-xs text-zinc-500 hover:text-zinc-300"
             >
-              {t.close[lang]}
+              {t.close[locale]}
             </button>
-            <WalletDetail node={selectedNode} links={data.links} lang={lang} />
+            <WalletDetail node={selectedNode} links={data.links} locale={locale} />
           </div>
         )}
       </div>
@@ -126,7 +127,7 @@ export default function DineroPage() {
 function WalletDetail({
   node,
   links,
-  lang,
+  locale,
 }: {
   readonly node: { readonly id: string; readonly properties: Readonly<Record<string, unknown>> }
   readonly links: readonly {
@@ -134,10 +135,10 @@ function WalletDetail({
     readonly target: string
     readonly properties: Readonly<Record<string, unknown>>
   }[]
-  readonly lang: Lang
+  readonly locale: Locale
 }) {
   const walletLabel =
-    typeof node.properties.label === 'string' ? node.properties.label : t.wallet[lang]
+    typeof node.properties.label === 'string' ? node.properties.label : t.wallet[locale]
   const ownerId = typeof node.properties.owner_id === 'string' ? node.properties.owner_id : null
   const relatedLinks = links.filter((l) => {
     const src = typeof l.source === 'string' ? l.source : (l.source as { id?: string })?.id
@@ -149,9 +150,9 @@ function WalletDetail({
     <div className="space-y-2">
       <h3 className="text-sm font-semibold text-emerald-400">{walletLabel}</h3>
       <p className="break-all font-mono text-[10px] text-zinc-500">{node.id}</p>
-      {ownerId && <p className="text-xs text-zinc-400">{t.owner[lang]}: {ownerId}</p>}
+      {ownerId && <p className="text-xs text-zinc-400">{t.owner[locale]}: {ownerId}</p>}
       <div className="mt-3 space-y-1">
-        <p className="text-[10px] font-medium text-zinc-400">{t.txLabel[lang]}</p>
+        <p className="text-[10px] font-medium text-zinc-400">{t.txLabel[locale]}</p>
         {relatedLinks.map((l, i) => {
           const amount = typeof l.properties.amount_usd === 'number' ? l.properties.amount_usd : 0
           const timestamp = typeof l.properties.timestamp === 'string' ? l.properties.timestamp : ''

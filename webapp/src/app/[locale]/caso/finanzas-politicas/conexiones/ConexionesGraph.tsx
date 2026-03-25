@@ -1,10 +1,10 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { ForceGraphMethods, NodeObject } from 'react-force-graph-2d'
 
-import { useLanguage } from '@/lib/language-context'
-import type { Lang } from '@/lib/language-context'
 
 // ---------------------------------------------------------------------------
 // Types for our API response
@@ -48,8 +48,8 @@ interface GraphApiResponse {
 
 const GRAPH_PRESETS: ReadonlyArray<{
   id: string
-  label: Record<Lang, string>
-  description: Record<Lang, string>
+  label: Record<Locale, string>
+  description: Record<Locale, string>
   showTypes: string[]
 }> = [
   {
@@ -88,7 +88,7 @@ const GRAPH_PRESETS: ReadonlyArray<{
 // Node type legend (bilingual)
 // ---------------------------------------------------------------------------
 
-const NODE_TYPE_LEGEND: ReadonlyArray<{ type: string; label: Record<Lang, string>; color: string }> = [
+const NODE_TYPE_LEGEND: ReadonlyArray<{ type: string; label: Record<Locale, string>; color: string }> = [
   { type: 'Politician', label: { en: 'Politician', es: 'Politico' }, color: '#3b82f6' },
   { type: 'OffshoreOfficer', label: { en: 'Offshore Officer', es: 'Offshore Officer' }, color: '#ef4444' },
   { type: 'OffshoreEntity', label: { en: 'Offshore Entity', es: 'Entidad Offshore' }, color: '#dc2626' },
@@ -116,7 +116,7 @@ const NODE_TYPE_LEGEND: ReadonlyArray<{ type: string; label: Record<Lang, string
 // Edge type legend (bilingual)
 // ---------------------------------------------------------------------------
 
-const EDGE_TYPE_LEGEND: ReadonlyArray<{ type: string; label: Record<Lang, string>; color: string }> = [
+const EDGE_TYPE_LEGEND: ReadonlyArray<{ type: string; label: Record<Locale, string>; color: string }> = [
   { type: 'MAYBE_SAME_AS', label: { en: 'Maybe Same As', es: 'Posible Mismo' }, color: '#475569' },
   { type: 'SAME_ENTITY', label: { en: 'Same Entity', es: 'Misma Entidad' }, color: '#475569' },
   { type: 'IS_DONOR', label: { en: 'Is Donor', es: 'Es Donante' }, color: '#22c55e' },
@@ -186,7 +186,7 @@ function getForceGraph2D(): Promise<ForceGraph2DComponent> {
 // ---------------------------------------------------------------------------
 
 export function ConexionesGraph() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
   const graphRef = useRef<ForceGraphMethods | undefined>(undefined)
   const containerRef = useRef<HTMLDivElement>(null)
   const frozenRef = useRef(false)
@@ -336,14 +336,14 @@ export function ConexionesGraph() {
         if (cancelled) return
 
         if (!json.success) {
-          setError(json.error ?? ui.errorLoading[lang])
+          setError(json.error ?? ui.errorLoading[locale])
           return
         }
 
         setGraphData(json.data)
       } catch {
         if (!cancelled) {
-          setError(ui.connectionError[lang])
+          setError(ui.connectionError[locale])
         }
       } finally {
         if (!cancelled) setLoading(false)
@@ -559,20 +559,20 @@ export function ConexionesGraph() {
       {/* Preset filter buttons */}
       <div className="flex flex-wrap items-center gap-2 border-b border-zinc-800 bg-zinc-950/80 px-4 py-2">
         <span className="mr-1 text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
-          {ui.presets[lang]}
+          {ui.presets[locale]}
         </span>
         {GRAPH_PRESETS.map((preset) => (
           <button
             key={preset.id}
             onClick={() => applyPreset(preset)}
-            title={preset.description[lang]}
+            title={preset.description[locale]}
             className={`rounded-full border px-3 py-1 text-xs transition-colors ${
               activePreset === preset.id
                 ? 'border-blue-500 bg-blue-500/20 text-blue-300'
                 : 'border-zinc-700 text-zinc-400 hover:border-zinc-500 hover:text-zinc-200'
             }`}
           >
-            {preset.label[lang]}
+            {preset.label[locale]}
           </button>
         ))}
       </div>
@@ -586,7 +586,7 @@ export function ConexionesGraph() {
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder={ui.searchPlaceholder[lang]}
+          placeholder={ui.searchPlaceholder[locale]}
           className="flex-1 bg-transparent text-sm text-zinc-200 placeholder-zinc-600 outline-none"
         />
         {searchQuery && (
@@ -628,7 +628,7 @@ export function ConexionesGraph() {
                   style={{ backgroundColor: item.color }}
                 />
                 <span className="text-xs text-zinc-400">
-                  {item.label[lang]} ({count})
+                  {item.label[locale]} ({count})
                 </span>
               </button>
             )
@@ -636,14 +636,14 @@ export function ConexionesGraph() {
         </div>
         {graphData && (
           <span className="text-xs text-zinc-500">
-            {filteredData ? filteredData.nodes.length : graphData.nodes.length} {ui.nodes[lang]} &middot;{' '}
-            {filteredData ? filteredData.links.length : graphData.links.length} {ui.connections[lang]}
+            {filteredData ? filteredData.nodes.length : graphData.nodes.length} {ui.nodes[locale]} &middot;{' '}
+            {filteredData ? filteredData.links.length : graphData.links.length} {ui.connections[locale]}
             {hiddenTypes.size > 0 && (
               <button
                 onClick={() => { setHiddenTypes(new Set()); setActivePreset('all') }}
                 className="ml-2 text-blue-400 hover:underline"
               >
-                {ui.showAll[lang]}
+                {ui.showAll[locale]}
               </button>
             )}
           </span>
@@ -666,7 +666,7 @@ export function ConexionesGraph() {
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
-            <span className="font-semibold uppercase tracking-wider">{ui.edgeTypes[lang]}</span>
+            <span className="font-semibold uppercase tracking-wider">{ui.edgeTypes[locale]}</span>
             {hiddenEdgeTypes.size > 0 && (
               <span className="text-zinc-600">
                 ({hiddenEdgeTypes.size} hidden)
@@ -692,7 +692,7 @@ export function ConexionesGraph() {
                       style={{ backgroundColor: item.color }}
                     />
                     <span className="text-xs text-zinc-400">
-                      {item.label[lang]} ({count})
+                      {item.label[locale]} ({count})
                     </span>
                   </button>
                 )
@@ -702,7 +702,7 @@ export function ConexionesGraph() {
                   onClick={() => setHiddenEdgeTypes(new Set())}
                   className="ml-1 text-xs text-blue-400 hover:underline"
                 >
-                  {ui.showAll[lang]}
+                  {ui.showAll[locale]}
                 </button>
               )}
             </div>
@@ -717,7 +717,7 @@ export function ConexionesGraph() {
             <div className="flex h-full items-center justify-center">
               <div className="text-center">
                 <div className="mb-3 inline-block h-8 w-8 animate-spin rounded-full border-2 border-zinc-600 border-t-blue-500" />
-                <p className="text-sm text-zinc-500">{ui.loadingGraph[lang]}</p>
+                <p className="text-sm text-zinc-500">{ui.loadingGraph[locale]}</p>
               </div>
             </div>
           )}
@@ -730,7 +730,7 @@ export function ConexionesGraph() {
                   onClick={() => window.location.reload()}
                   className="mt-3 rounded border border-zinc-700 px-3 py-1.5 text-xs text-zinc-300 hover:border-zinc-500"
                 >
-                  {ui.retry[lang]}
+                  {ui.retry[locale]}
                 </button>
               </div>
             </div>
@@ -773,7 +773,7 @@ export function ConexionesGraph() {
 
           {!loading && !error && graphData && !ForceGraph2D && (
             <div className="flex h-full items-center justify-center text-zinc-600">
-              {ui.loadingVisualization[lang]}
+              {ui.loadingVisualization[locale]}
             </div>
           )}
         </div>
@@ -784,21 +784,21 @@ export function ConexionesGraph() {
             <button
               onClick={zoomIn}
               className="rounded border border-zinc-700 bg-zinc-900/90 px-2.5 py-1.5 text-sm text-zinc-300 hover:border-zinc-500 hover:text-white"
-              aria-label={ui.zoomIn[lang]}
+              aria-label={ui.zoomIn[locale]}
             >
               +
             </button>
             <button
               onClick={zoomOut}
               className="rounded border border-zinc-700 bg-zinc-900/90 px-2.5 py-1.5 text-sm text-zinc-300 hover:border-zinc-500 hover:text-white"
-              aria-label={ui.zoomOut[lang]}
+              aria-label={ui.zoomOut[locale]}
             >
               −
             </button>
             <button
               onClick={zoomToFit}
               className="rounded border border-zinc-700 bg-zinc-900/90 px-2.5 py-1.5 text-xs text-zinc-300 hover:border-zinc-500 hover:text-white"
-              aria-label={ui.viewAll[lang]}
+              aria-label={ui.viewAll[locale]}
             >
               ⊞
             </button>
@@ -816,7 +816,7 @@ export function ConexionesGraph() {
                     style={{ backgroundColor: selectedNode.color }}
                   />
                   <span className="text-xs font-medium text-zinc-400">
-                    {getTypeLabel(selectedNode.type, lang)}
+                    {getTypeLabel(selectedNode.type, locale)}
                   </span>
                 </div>
                 <h3 className="mt-1 truncate text-sm font-semibold text-zinc-100">
@@ -826,7 +826,7 @@ export function ConexionesGraph() {
               <button
                 onClick={closeDetail}
                 className="ml-2 flex-shrink-0 text-zinc-500 hover:text-zinc-300"
-                aria-label={ui.closeDetail[lang]}
+                aria-label={ui.closeDetail[locale]}
               >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -838,7 +838,7 @@ export function ConexionesGraph() {
               {selectedNodeConnections && (
                 <div className="mb-3 rounded bg-zinc-800/60 px-3 py-2">
                   <div className="text-xs font-semibold text-zinc-200">
-                    {selectedNodeConnections.totalConnections} {ui.connectionCount[lang]}
+                    {selectedNodeConnections.totalConnections} {ui.connectionCount[locale]}
                   </div>
 
                   {/* Link type breakdown */}
@@ -859,7 +859,7 @@ export function ConexionesGraph() {
 
               {selectedNode.type === 'Politician' && (
                 <div className="mb-2 text-xs text-zinc-400">
-                  {ui.presentIn[lang]} <span className="font-semibold text-blue-400">{selectedNode.datasets}</span> {ui.dataSources[lang]}
+                  {ui.presentIn[locale]} <span className="font-semibold text-blue-400">{selectedNode.datasets}</span> {ui.dataSources[locale]}
                 </div>
               )}
 
@@ -867,7 +867,7 @@ export function ConexionesGraph() {
               {selectedNodeConnections && selectedNodeConnections.connectedNodes.length > 0 && (
                 <div className="mb-3">
                   <div className="mb-1 text-[10px] font-medium uppercase tracking-wider text-zinc-500">
-                    {ui.connectedTo[lang]}
+                    {ui.connectedTo[locale]}
                   </div>
                   <div className="space-y-0.5">
                     {selectedNodeConnections.connectedNodes.slice(0, 10).map((n) => (
@@ -898,7 +898,7 @@ export function ConexionesGraph() {
                         {key.replace(/_/g, ' ')}
                       </dt>
                       <dd className="text-xs text-zinc-300">
-                        {formatValue(value, lang)}
+                        {formatValue(value, locale)}
                       </dd>
                     </div>
                   ))}
@@ -915,8 +915,8 @@ export function ConexionesGraph() {
 // Helpers
 // ---------------------------------------------------------------------------
 
-function getTypeLabel(type: string, lang: Lang): string {
-  const labels: Record<string, Record<Lang, string>> = {
+function getTypeLabel(type: string, locale: Locale): string {
+  const labels: Record<string, Record<Locale, string>> = {
     Politician: { en: 'Politician', es: 'Politico' },
     OffshoreOfficer: { en: 'Offshore Officer', es: 'Oficial Offshore' },
     OffshoreEntity: { en: 'Offshore Entity', es: 'Entidad Offshore' },
@@ -926,13 +926,13 @@ function getTypeLabel(type: string, lang: Lang): string {
     BoardMember: { en: 'Board Member', es: 'Miembro del Directorio' },
     AssetDeclaration: { en: 'Asset Declaration', es: 'Declaracion Jurada' },
   }
-  return labels[type]?.[lang] ?? type
+  return labels[type]?.[locale] ?? type
 }
 
-function formatValue(value: unknown, lang: Lang): string {
+function formatValue(value: unknown, locale: Locale): string {
   if (value === null || value === undefined) return '-'
-  if (typeof value === 'boolean') return value ? (lang === 'en' ? 'Yes' : 'Si') : 'No'
-  if (typeof value === 'number') return value.toLocaleString(lang === 'es' ? 'es-AR' : 'en-US')
+  if (typeof value === 'boolean') return value ? (locale === 'en' ? 'Yes' : 'Si') : 'No'
+  if (typeof value === 'number') return value.toLocaleString(locale === 'es' ? 'es-AR' : 'en-US')
   if (Array.isArray(value)) return value.join(', ')
   return String(value)
 }

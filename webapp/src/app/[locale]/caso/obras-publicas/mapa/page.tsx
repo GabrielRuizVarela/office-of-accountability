@@ -1,4 +1,6 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 /**
  * Obras Publicas — Geographic map page.
@@ -7,10 +9,9 @@
  * Proper Mercator projection shared by outline and data points.
  */
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { useCallback, useEffect, useRef, useState, useMemo } from 'react'
 
-import { useLanguage } from '@/lib/language-context'
 
 const SLUG = 'obras-publicas'
 
@@ -110,7 +111,7 @@ function ringToPath(coords: number[][]): string {
 }
 
 export default function MapaPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
   const [provinces, setProvinces] = useState<ProvinceData[]>([])
   const [points, setPoints] = useState<PointData[]>([])
   const [geoPath, setGeoPath] = useState<string>('')
@@ -228,19 +229,19 @@ export default function MapaPage() {
   return (
     <div className="space-y-12 pb-16">
       <header className="text-center">
-        <h1 className="mb-1 text-2xl font-bold text-zinc-50 sm:text-3xl">{t.title[lang]}</h1>
-        <p className="mx-auto max-w-2xl text-sm text-zinc-400">{t.subtitle[lang]}</p>
+        <h1 className="mb-1 text-2xl font-bold text-zinc-50 sm:text-3xl">{t.title[locale]}</h1>
+        <p className="mx-auto max-w-2xl text-sm text-zinc-400">{t.subtitle[locale]}</p>
       </header>
 
       {loading && (
         <div className="flex h-[300px] items-center justify-center">
-          <p className="animate-pulse text-sm text-zinc-400">{t.loading[lang]}</p>
+          <p className="animate-pulse text-sm text-zinc-400">{t.loading[locale]}</p>
         </div>
       )}
 
       {error && (
         <div className="flex h-[300px] items-center justify-center">
-          <p className="text-sm text-red-400">{t.error[lang]}: {error}</p>
+          <p className="text-sm text-red-400">{t.error[locale]}: {error}</p>
         </div>
       )}
 
@@ -248,7 +249,7 @@ export default function MapaPage() {
         <>
           {/* Map */}
           <section>
-            <h2 className="mb-4 text-lg font-bold text-zinc-50">{t.pointsTitle[lang]}</h2>
+            <h2 className="mb-4 text-lg font-bold text-zinc-50">{t.pointsTitle[locale]}</h2>
             <div
               ref={containerRef}
               className="relative rounded-xl border border-zinc-700"
@@ -326,7 +327,7 @@ export default function MapaPage() {
 
               {/* Point count */}
               <div className="absolute top-3 left-3 z-10 rounded bg-zinc-900/80 px-2 py-1 text-xs text-zinc-400 backdrop-blur">
-                {projectedPoints.length} {lang === 'en' ? 'projects' : 'proyectos'}
+                {projectedPoints.length} {locale === 'en' ? 'projects' : 'proyectos'}
               </div>
 
               {/* Tooltip */}
@@ -370,17 +371,17 @@ export default function MapaPage() {
           {/* Province table */}
           <section>
             <h2 className="mb-4 text-lg font-bold text-zinc-50">
-              {lang === 'en' ? 'Province Breakdown' : 'Desglose por Provincia'}
+              {locale === 'en' ? 'Province Breakdown' : 'Desglose por Provincia'}
             </h2>
             <div className="overflow-x-auto rounded-xl border border-zinc-800">
               <table className="w-full text-left text-sm">
                 <thead>
                   <tr className="border-b border-zinc-800 bg-zinc-900/50">
-                    <th className="px-4 py-3 font-medium text-zinc-300">{t.province[lang]}</th>
-                    <th className="px-4 py-3 text-right font-medium text-zinc-300">{t.works[lang]}</th>
-                    <th className="px-4 py-3 text-right font-medium text-zinc-300">{t.budget[lang]}</th>
-                    <th className="px-4 py-3 text-right font-medium text-zinc-300">{t.avgExec[lang]}</th>
-                    <th className="px-4 py-3 text-right font-medium text-zinc-300">{t.ghostProjects[lang]}</th>
+                    <th className="px-4 py-3 font-medium text-zinc-300">{t.province[locale]}</th>
+                    <th className="px-4 py-3 text-right font-medium text-zinc-300">{t.works[locale]}</th>
+                    <th className="px-4 py-3 text-right font-medium text-zinc-300">{t.budget[locale]}</th>
+                    <th className="px-4 py-3 text-right font-medium text-zinc-300">{t.avgExec[locale]}</th>
+                    <th className="px-4 py-3 text-right font-medium text-zinc-300">{t.ghostProjects[locale]}</th>
                     <th className="px-4 py-3 font-medium text-zinc-300" />
                   </tr>
                 </thead>
@@ -422,10 +423,10 @@ export default function MapaPage() {
       {/* Navigation */}
       <nav className="flex flex-col gap-3 border-t border-zinc-800 pt-8 sm:flex-row">
         <Link href={`/caso/${SLUG}/conexiones`} className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500">
-          {t.navConnections[lang]}
+          {t.navConnections[locale]}
         </Link>
         <Link href={`/caso/${SLUG}/investigacion`} className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500">
-          {t.navInvestigation[lang]}
+          {t.navInvestigation[locale]}
         </Link>
       </nav>
     </div>

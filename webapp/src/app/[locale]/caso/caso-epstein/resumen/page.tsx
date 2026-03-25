@@ -1,4 +1,6 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 /**
  * Caso Epstein — Summary (narrative summary).
@@ -8,9 +10,8 @@
  * Chapter content is in English; UI chrome is bilingual.
  */
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 
-import { useLanguage } from '@/lib/language-context'
 
 const SLUG = 'caso-epstein'
 
@@ -159,33 +160,33 @@ const CHAPTERS: {
 // ---------------------------------------------------------------------------
 
 export default function ResumenPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-12">
       {/* Header */}
       <header className="mb-12 border-b border-zinc-800 pb-10 text-center">
         <p className="text-xs font-medium uppercase tracking-widest text-red-400">
-          {t.headerBadge[lang]}
+          {t.headerBadge[locale]}
         </p>
         <h1 className="mt-3 text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
-          {t.headerTitle[lang]}
+          {t.headerTitle[locale]}
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-400">
-          {t.headerDesc[lang]}
+          {t.headerDesc[locale]}
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
           <Link
             href={`/caso/${SLUG}/investigacion`}
             className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-500"
           >
-            {t.viewData[lang]}
+            {t.viewData[locale]}
           </Link>
           <Link
             href={`/caso/${SLUG}/cronologia`}
             className="rounded-lg border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500 hover:text-zinc-100"
           >
-            {t.timeline[lang]}
+            {t.timeline[locale]}
           </Link>
         </div>
       </header>
@@ -211,7 +212,7 @@ export default function ResumenPage() {
 
       {/* Sources */}
       <section className="mt-16 rounded-lg border border-zinc-800 bg-zinc-900/40 p-6">
-        <h3 className="mb-3 text-sm font-semibold text-zinc-200">{t.sources[lang]}</h3>
+        <h3 className="mb-3 text-sm font-semibold text-zinc-200">{t.sources[locale]}</h3>
         <p className="text-xs leading-relaxed text-zinc-500">
           Compiled from: rhowardstone/Epstein-research-data (DOJ flight logs), Epstein
           Exposed API, dleerdefi/epstein-network-data (handwritten pilot logbooks), manual
@@ -225,7 +226,7 @@ export default function ResumenPage() {
       {/* Disclaimer */}
       <section className="mt-6 rounded-lg border border-zinc-800 bg-zinc-900/40 p-6">
         <p className="text-xs leading-relaxed text-zinc-500">
-          {t.disclaimer[lang]}
+          {t.disclaimer[locale]}
         </p>
       </section>
 
@@ -235,13 +236,13 @@ export default function ResumenPage() {
           href={`/caso/${SLUG}`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          {t.navOverview[lang]}
+          {t.navOverview[locale]}
         </Link>
         <Link
           href={`/caso/${SLUG}/investigacion`}
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          {t.navData[lang]}
+          {t.navData[locale]}
         </Link>
       </nav>
     </article>

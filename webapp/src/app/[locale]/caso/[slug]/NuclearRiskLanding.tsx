@@ -1,8 +1,9 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 
-import { useLanguage, type Lang } from '@/lib/language-context'
 import { KeyStats } from '@/components/investigation/KeyStats'
 
 const t = {
@@ -47,7 +48,7 @@ const LEVEL_COLORS: Record<string, string> = {
   routine: 'bg-green-500',
 }
 
-const LEVEL_LABELS: Record<string, Record<Lang, string>> = {
+const LEVEL_LABELS: Record<string, Record<Locale, string>> = {
   critical: { en: 'Critical', es: 'Critico' },
   serious: { en: 'Serious', es: 'Serio' },
   elevated: { en: 'Elevated', es: 'Elevado' },
@@ -64,20 +65,20 @@ export function NuclearRiskLanding({
   readonly stats: { label: string; value: string | number; color: string }[]
   readonly theaters: readonly TheaterSummary[]
 }) {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <div className="space-y-8">
       {/* Hero */}
       <header className="space-y-4">
         <p className="text-sm font-medium tracking-wide text-yellow-400 uppercase">
-          {t.tagline[lang]}
+          {t.tagline[locale]}
         </p>
         <h1 className="text-3xl font-bold text-zinc-100 sm:text-4xl">
-          {t.title[lang]}
+          {t.title[locale]}
         </h1>
         <p className="max-w-3xl text-lg text-zinc-400">
-          {t.desc[lang]}
+          {t.desc[locale]}
         </p>
       </header>
 
@@ -87,7 +88,7 @@ export function NuclearRiskLanding({
       {/* Theater cards */}
       <section>
         <h2 className="mb-4 text-xl font-semibold text-zinc-200">
-          {t.theaters[lang]}
+          {t.theaters[locale]}
         </h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {theaters.map((th) => (
@@ -100,11 +101,11 @@ export function NuclearRiskLanding({
                 <span
                   className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium text-white ${LEVEL_COLORS[th.maxLevel] ?? 'bg-zinc-600'}`}
                 >
-                  {LEVEL_LABELS[th.maxLevel]?.[lang] ?? th.maxLevel}
+                  {LEVEL_LABELS[th.maxLevel]?.[locale] ?? th.maxLevel}
                 </span>
               </div>
               <div className="mt-2 text-sm text-zinc-400">
-                {th.signalCount} {t.signals[lang].toLowerCase()} · avg severity {th.avgSeverity}
+                {th.signalCount} {t.signals[locale].toLowerCase()} · avg severity {th.avgSeverity}
               </div>
               <div className="mt-2 h-2 rounded-full bg-zinc-700">
                 <div
@@ -123,15 +124,15 @@ export function NuclearRiskLanding({
           href={`/caso/${slug}/grafo`}
           className="rounded-lg border border-zinc-700 bg-zinc-800/60 p-5 transition hover:border-yellow-500/50"
         >
-          <h3 className="font-semibold text-zinc-200">{t.graph[lang]}</h3>
-          <p className="mt-1 text-sm text-zinc-400">{t.graphDesc[lang]}</p>
+          <h3 className="font-semibold text-zinc-200">{t.graph[locale]}</h3>
+          <p className="mt-1 text-sm text-zinc-400">{t.graphDesc[locale]}</p>
         </Link>
         <Link
           href={`/caso/${slug}/cronologia`}
           className="rounded-lg border border-zinc-700 bg-zinc-800/60 p-5 transition hover:border-yellow-500/50"
         >
-          <h3 className="font-semibold text-zinc-200">{t.timeline[lang]}</h3>
-          <p className="mt-1 text-sm text-zinc-400">{t.timelineDesc[lang]}</p>
+          <h3 className="font-semibold text-zinc-200">{t.timeline[locale]}</h3>
+          <p className="mt-1 text-sm text-zinc-400">{t.timelineDesc[locale]}</p>
         </Link>
       </section>
     </div>

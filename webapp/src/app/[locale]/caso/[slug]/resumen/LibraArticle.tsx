@@ -1,4 +1,6 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 /**
  * Caso Libra — Narrative summary page.
@@ -7,11 +9,10 @@
  * through the complete story of the $LIBRA token scandal.
  */
 
-import { useLanguage, type Lang } from '@/lib/language-context'
 
 interface StatCard {
   readonly value: string
-  readonly label: Record<Lang, string>
+  readonly label: Record<Locale, string>
 }
 
 interface Source {
@@ -23,22 +24,22 @@ interface Source {
 // Content
 // ---------------------------------------------------------------------------
 
-const TITLE: Record<Lang, string> = {
+const TITLE: Record<Locale, string> = {
   es: 'Caso Libra: La Historia Completa',
   en: 'The Libra Case: The Complete Story',
 }
 
-const SUBTITLE: Record<Lang, string> = {
+const SUBTITLE: Record<Locale, string> = {
   es: 'Como el presidente de Argentina promovio una estafa cripto de $251 millones',
   en: 'How the President of Argentina promoted a $251 million crypto scam',
 }
 
-const READING_TIME: Record<Lang, string> = {
+const READING_TIME: Record<Locale, string> = {
   es: '~15 min de lectura',
   en: '~15 min read',
 }
 
-const LAST_UPDATED: Record<Lang, string> = {
+const LAST_UPDATED: Record<Locale, string> = {
   es: 'Actualizado: marzo 2026',
   en: 'Last updated: March 2026',
 }
@@ -49,9 +50,9 @@ const LAST_UPDATED: Record<Lang, string> = {
 
 interface Chapter {
   readonly id: string
-  readonly title: Record<Lang, string>
-  readonly paragraphs: Record<Lang, readonly string[]>
-  readonly pullQuote?: Record<Lang, string>
+  readonly title: Record<Locale, string>
+  readonly paragraphs: Record<Locale, readonly string[]>
+  readonly pullQuote?: Record<Locale, string>
 }
 
 const chapters: readonly Chapter[] = [
@@ -326,7 +327,7 @@ const sources: readonly Source[] = [
 // ---------------------------------------------------------------------------
 
 export function LibraArticle() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <article className="mx-auto max-w-prose pb-20">
@@ -335,14 +336,14 @@ export function LibraArticle() {
       {/* ----------------------------------------------------------------- */}
       <header className="py-12 text-center">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
-          {TITLE[lang]}
+          {TITLE[locale]}
         </h1>
-        <p className="mt-4 text-lg text-zinc-400">{SUBTITLE[lang]}</p>
+        <p className="mt-4 text-lg text-zinc-400">{SUBTITLE[locale]}</p>
 
         <div className="mt-6 flex items-center justify-center gap-4 text-sm text-zinc-500">
-          <span>{READING_TIME[lang]}</span>
+          <span>{READING_TIME[locale]}</span>
           <span className="text-zinc-700">|</span>
-          <span>{LAST_UPDATED[lang]}</span>
+          <span>{LAST_UPDATED[locale]}</span>
         </div>
       </header>
 
@@ -354,11 +355,11 @@ export function LibraArticle() {
       {chapters.map((chapter) => (
         <section key={chapter.id} id={chapter.id} className="py-12">
           <h2 className="border-l-4 border-purple-500 pl-4 text-xl font-bold text-zinc-50">
-            {chapter.title[lang]}
+            {chapter.title[locale]}
           </h2>
 
           <div className="mt-6 space-y-4">
-            {chapter.paragraphs[lang].map((p, i) => (
+            {chapter.paragraphs[locale].map((p, i) => (
               <p key={i} className="text-base leading-relaxed text-zinc-300">
                 {p}
               </p>
@@ -367,7 +368,7 @@ export function LibraArticle() {
 
           {chapter.pullQuote && (
             <blockquote className="my-6 border-l-2 border-purple-400 pl-4 text-lg italic text-zinc-200">
-              {chapter.pullQuote[lang]}
+              {chapter.pullQuote[locale]}
             </blockquote>
           )}
 
@@ -380,7 +381,7 @@ export function LibraArticle() {
                   className="rounded-lg border border-zinc-800 bg-zinc-900/60 p-5 text-center"
                 >
                   <p className="text-2xl font-bold text-purple-400">{stat.value}</p>
-                  <p className="mt-1 text-sm text-zinc-400">{stat.label[lang]}</p>
+                  <p className="mt-1 text-sm text-zinc-400">{stat.label[locale]}</p>
                 </div>
               ))}
             </div>
@@ -396,7 +397,7 @@ export function LibraArticle() {
       {/* ----------------------------------------------------------------- */}
       <section className="py-12">
         <h2 className="border-l-4 border-purple-500 pl-4 text-xl font-bold text-zinc-50">
-          {lang === 'es' ? 'Fuentes' : 'Sources'}
+          {locale === 'es' ? 'Fuentes' : 'Sources'}
         </h2>
         <ul className="mt-6 space-y-2">
           {sources.map((src) => (
@@ -419,7 +420,7 @@ export function LibraArticle() {
       {/* ----------------------------------------------------------------- */}
       <section className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-6">
         <p className="text-sm leading-relaxed text-zinc-500">
-          {lang === 'es'
+          {locale === 'es'
             ? 'Esta investigacion se basa en fuentes publicas verificadas, incluyendo documentos judiciales, registros blockchain, informes parlamentarios y periodismo de investigacion. No constituye asesoramiento legal ni financiero.'
             : 'This investigation is based on verified public sources, including court documents, blockchain records, parliamentary reports, and investigative journalism. It does not constitute legal or financial advice.'}
         </p>
@@ -430,7 +431,7 @@ export function LibraArticle() {
       {/* ----------------------------------------------------------------- */}
       <div className="mt-8 text-center">
         <p className="text-sm text-zinc-500">
-          {lang === 'es'
+          {locale === 'es'
             ? 'Comparti esta investigacion para que la informacion llegue a quienes la necesitan.'
             : 'Share this investigation so the information reaches those who need it.'}
         </p>

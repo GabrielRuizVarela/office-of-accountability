@@ -7,7 +7,7 @@
 
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 
 import type { GraphData } from '@/lib/neo4j/types'
 import type { TimelineItem } from '@/lib/caso-libra/types'

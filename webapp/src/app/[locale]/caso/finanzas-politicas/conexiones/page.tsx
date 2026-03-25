@@ -1,6 +1,7 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
-import { useLanguage } from '@/lib/language-context'
 import { ConexionesGraph } from './ConexionesGraph'
 
 const t = {
@@ -12,14 +13,14 @@ const t = {
 } as const
 
 export default function ConexionesPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <div className="flex h-[calc(100vh-8rem)] flex-col">
       <div className="px-4 py-4">
-        <h1 className="mb-1 text-2xl font-bold text-zinc-50">{t.title[lang]}</h1>
+        <h1 className="mb-1 text-2xl font-bold text-zinc-50">{t.title[locale]}</h1>
         <p className="text-sm text-zinc-400">
-          {t.subtitle[lang]}
+          {t.subtitle[locale]}
         </p>
       </div>
       <div className="min-h-0 flex-1">

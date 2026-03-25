@@ -2,7 +2,7 @@
  * Document card for the evidence grid.
  */
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 
 interface DocumentCardProps {
   readonly slug: string

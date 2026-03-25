@@ -1,8 +1,9 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 
-import { useLanguage, type Lang } from '@/lib/language-context'
 import { KeyStats } from '../../../../components/investigation/KeyStats'
 
 interface Stat {
@@ -16,7 +17,7 @@ interface OverviewContentProps {
   readonly stats: readonly Stat[]
 }
 
-const STAT_LABELS: Record<string, Record<Lang, string>> = {
+const STAT_LABELS: Record<string, Record<Locale, string>> = {
   Persons: { en: 'Persons', es: 'Personas' },
   Events: { en: 'Events', es: 'Eventos' },
   Documents: { en: 'Documents', es: 'Documentos' },
@@ -103,12 +104,12 @@ const t = {
 } as const
 
 export function OverviewContent({ slug, stats }: OverviewContentProps) {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
   const basePath = `/caso/${slug}`
 
   const localizedStats = stats.map((s) => ({
     ...s,
-    label: STAT_LABELS[s.label]?.[lang] ?? s.label,
+    label: STAT_LABELS[s.label]?.[locale] ?? s.label,
   }))
 
   return (
@@ -116,13 +117,13 @@ export function OverviewContent({ slug, stats }: OverviewContentProps) {
       {/* Hero */}
       <section className="mb-12 text-center">
         <p className="text-xs font-medium uppercase tracking-widest text-blue-400">
-          {t.badge[lang]}
+          {t.badge[locale]}
         </p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl lg:text-5xl">
-          {t.title[lang]}
+          {t.title[locale]}
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
-          {t.subtitle[lang]}
+          {t.subtitle[locale]}
         </p>
       </section>
 
@@ -137,15 +138,15 @@ export function OverviewContent({ slug, stats }: OverviewContentProps) {
           href={`${basePath}/resumen`}
           className="flex-1 rounded-xl border border-blue-500/30 bg-blue-500/10 p-6 text-center transition-colors hover:border-blue-500/50 hover:bg-blue-500/15"
         >
-          <h3 className="text-lg font-bold text-blue-300">{t.readStory[lang]}</h3>
-          <p className="mt-1 text-sm text-zinc-400">{t.readStoryDesc[lang]}</p>
+          <h3 className="text-lg font-bold text-blue-300">{t.readStory[locale]}</h3>
+          <p className="mt-1 text-sm text-zinc-400">{t.readStoryDesc[locale]}</p>
         </Link>
         <Link
           href={`${basePath}/evidencia`}
           className="flex-1 rounded-xl border border-zinc-700 bg-zinc-900/50 p-6 text-center transition-colors hover:border-zinc-600"
         >
-          <h3 className="text-lg font-bold text-zinc-100">{t.browseEvidence[lang]}</h3>
-          <p className="mt-1 text-sm text-zinc-400">{t.browseEvidenceDesc[lang]}</p>
+          <h3 className="text-lg font-bold text-zinc-100">{t.browseEvidence[locale]}</h3>
+          <p className="mt-1 text-sm text-zinc-400">{t.browseEvidenceDesc[locale]}</p>
         </Link>
       </section>
 
@@ -155,17 +156,17 @@ export function OverviewContent({ slug, stats }: OverviewContentProps) {
           href={`${basePath}/investigacion`}
           className="block rounded-xl border border-blue-500/20 bg-blue-500/5 p-6 text-center transition-colors hover:border-blue-500/40 hover:bg-blue-500/10"
         >
-          <h3 className="text-lg font-bold text-blue-200">{t.investigation[lang]}</h3>
-          <p className="mt-1 text-sm text-zinc-400">{t.investigationDesc[lang]}</p>
+          <h3 className="text-lg font-bold text-blue-200">{t.investigation[locale]}</h3>
+          <p className="mt-1 text-sm text-zinc-400">{t.investigationDesc[locale]}</p>
         </Link>
       </section>
 
       {/* Entry Cards */}
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <EntryPoint href={`${basePath}/grafo`} title={t.networkGraph[lang]} description={t.networkGraphDesc[lang]} color="#3b82f6" />
-        <EntryPoint href={`${basePath}/cronologia`} title={t.timeline[lang]} description={t.timelineDesc[lang]} color="#f59e0b" />
-        <EntryPoint href={`${basePath}/vuelos`} title={t.flights[lang]} description={t.flightsDesc[lang]} color="#f97316" />
-        <EntryPoint href={`${basePath}/proximidad`} title={t.proximity[lang]} description={t.proximityDesc[lang]} color="#10b981" />
+        <EntryPoint href={`${basePath}/grafo`} title={t.networkGraph[locale]} description={t.networkGraphDesc[locale]} color="#3b82f6" />
+        <EntryPoint href={`${basePath}/cronologia`} title={t.timeline[locale]} description={t.timelineDesc[locale]} color="#f59e0b" />
+        <EntryPoint href={`${basePath}/vuelos`} title={t.flights[locale]} description={t.flightsDesc[locale]} color="#f97316" />
+        <EntryPoint href={`${basePath}/proximidad`} title={t.proximity[locale]} description={t.proximityDesc[locale]} color="#10b981" />
       </section>
 
       {/* Simulation CTA */}
@@ -174,8 +175,8 @@ export function OverviewContent({ slug, stats }: OverviewContentProps) {
           href={`${basePath}/simulacion`}
           className="block rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 transition-colors hover:border-zinc-700"
         >
-          <h3 className="text-lg font-semibold text-zinc-100">{t.simulation[lang]}</h3>
-          <p className="mt-1 text-sm text-zinc-400">{t.simulationDesc[lang]}</p>
+          <h3 className="text-lg font-semibold text-zinc-100">{t.simulation[locale]}</h3>
+          <p className="mt-1 text-sm text-zinc-400">{t.simulationDesc[locale]}</p>
         </Link>
       </section>
     </div>

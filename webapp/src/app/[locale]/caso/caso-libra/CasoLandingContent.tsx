@@ -1,8 +1,9 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 
-import { useLanguage, type Lang } from '@/lib/language-context'
 import { KeyStats } from '@/components/investigation/KeyStats'
 import { ActorCard } from '@/components/investigation/ActorCard'
 import { DocumentCard } from '@/components/investigation/DocumentCard'
@@ -64,7 +65,7 @@ const t = {
   keyActors: { es: 'Actores Clave', en: 'Key Actors' },
   docsAndEvidence: { es: 'Documentos y Evidencia', en: 'Documents & Evidence' },
   viewAll: { es: 'Ver todos', en: 'View all' },
-} satisfies Record<string, Record<Lang, string>>
+} satisfies Record<string, Record<Locale, string>>
 
 interface Props {
   readonly slug: string
@@ -73,24 +74,24 @@ interface Props {
 }
 
 export function CasoLandingContent({ slug, actors, documents }: Props) {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <div className="space-y-10">
       {/* Hero */}
       <section className="text-center">
         <p className="text-xs font-medium uppercase tracking-widest text-purple-400">
-          {t.tagline[lang]}
+          {t.tagline[locale]}
         </p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl lg:text-5xl">
-          {t.title[lang]}
+          {t.title[locale]}
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
-          {t.heroDesc[lang]}
+          {t.heroDesc[locale]}
         </p>
         <div className="mt-4">
           <ShareButton
-            text={t.shareText[lang]}
+            text={t.shareText[locale]}
             title="Caso Libra"
           />
         </div>
@@ -105,18 +106,18 @@ export function CasoLandingContent({ slug, actors, documents }: Props) {
           href={`/caso/${slug}/resumen`}
           className="flex-1 rounded-xl border border-purple-500/30 bg-purple-500/10 p-6 text-center transition-colors hover:border-purple-500/50 hover:bg-purple-500/15"
         >
-          <h3 className="text-lg font-bold text-purple-300">{t.readFullStory[lang]}</h3>
+          <h3 className="text-lg font-bold text-purple-300">{t.readFullStory[locale]}</h3>
           <p className="mt-1 text-sm text-zinc-400">
-            {t.readFullStoryDesc[lang]}
+            {t.readFullStoryDesc[locale]}
           </p>
         </Link>
         <Link
           href={`/caso/${slug}/investigacion`}
           className="flex-1 rounded-xl border border-zinc-700 bg-zinc-900/50 p-6 text-center transition-colors hover:border-zinc-600"
         >
-          <h3 className="text-lg font-bold text-zinc-100">{t.seeEvidence[lang]}</h3>
+          <h3 className="text-lg font-bold text-zinc-100">{t.seeEvidence[locale]}</h3>
           <p className="mt-1 text-sm text-zinc-400">
-            {t.seeEvidenceDesc[lang]}
+            {t.seeEvidenceDesc[locale]}
           </p>
         </Link>
       </section>
@@ -125,30 +126,30 @@ export function CasoLandingContent({ slug, actors, documents }: Props) {
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <EntryPoint
           href={`/caso/${slug}/cronologia`}
-          title={t.timeline[lang]}
-          description={t.timelineDesc[lang]}
+          title={t.timeline[locale]}
+          description={t.timelineDesc[locale]}
         />
         <EntryPoint
           href={`/caso/${slug}/dinero`}
-          title={t.money[lang]}
-          description={t.moneyDesc[lang]}
+          title={t.money[locale]}
+          description={t.moneyDesc[locale]}
         />
         <EntryPoint
           href={`/caso/${slug}/grafo`}
-          title={t.connections[lang]}
-          description={t.connectionsDesc[lang]}
+          title={t.connections[locale]}
+          description={t.connectionsDesc[locale]}
         />
         <EntryPoint
           href={`/caso/${slug}/investigacion#aportar`}
-          title={t.submitEvidence[lang]}
-          description={t.submitEvidenceDesc[lang]}
+          title={t.submitEvidence[locale]}
+          description={t.submitEvidenceDesc[locale]}
         />
       </section>
 
       {/* Actor grid */}
       {actors.length > 0 && (
         <section>
-          <h2 className="text-xl font-bold text-zinc-50">{t.keyActors[lang]}</h2>
+          <h2 className="text-xl font-bold text-zinc-50">{t.keyActors[locale]}</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {actors.map((actor) => (
               <ActorCard
@@ -168,12 +169,12 @@ export function CasoLandingContent({ slug, actors, documents }: Props) {
       {documents.length > 0 && (
         <section>
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-bold text-zinc-50">{t.docsAndEvidence[lang]}</h2>
+            <h2 className="text-xl font-bold text-zinc-50">{t.docsAndEvidence[locale]}</h2>
             <Link
               href={`/caso/${slug}/evidencia`}
               className="text-sm text-zinc-400 hover:text-zinc-200"
             >
-              {t.viewAll[lang]} &rarr;
+              {t.viewAll[locale]} &rarr;
             </Link>
           </div>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

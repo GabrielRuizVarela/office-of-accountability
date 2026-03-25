@@ -1,4 +1,6 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 /**
  * Nuclear Risk Assessment 2026 — Bilingual investigative article.
@@ -7,7 +9,6 @@
  * Yellow accent color theme. Named export (not default).
  */
 
-import { useLanguage, type Lang } from '@/lib/language-context'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -15,14 +16,14 @@ import { useLanguage, type Lang } from '@/lib/language-context'
 
 interface StatCard {
   readonly value: string
-  readonly label: Record<Lang, string>
+  readonly label: Record<Locale, string>
 }
 
 interface Chapter {
   readonly id: string
-  readonly title: Record<Lang, string>
-  readonly paragraphs: Record<Lang, readonly string[]>
-  readonly pullQuote?: Record<Lang, string>
+  readonly title: Record<Locale, string>
+  readonly paragraphs: Record<Locale, readonly string[]>
+  readonly pullQuote?: Record<Locale, string>
   readonly stats?: readonly StatCard[]
   readonly sourceTable?: boolean
 }
@@ -69,32 +70,32 @@ const ETL_SOURCES = [
 // Header content
 // ---------------------------------------------------------------------------
 
-const TITLE: Record<Lang, string> = {
+const TITLE: Record<Locale, string> = {
   en: 'Global Nuclear Risk Assessment 2026',
   es: 'Evaluacion Global de Riesgo Nuclear 2026',
 }
 
-const SUBTITLE: Record<Lang, string> = {
+const SUBTITLE: Record<Locale, string> = {
   en: 'Tracking escalation signals across all theaters with open-source intelligence and AI',
   es: 'Seguimiento de senales de escalada en todos los teatros con inteligencia de fuentes abiertas e IA',
 }
 
-const READING_TIME: Record<Lang, string> = {
+const READING_TIME: Record<Locale, string> = {
   en: '~12 min read',
   es: '~12 min de lectura',
 }
 
-const LAST_UPDATED: Record<Lang, string> = {
+const LAST_UPDATED: Record<Locale, string> = {
   en: 'Last updated: March 2026',
   es: 'Actualizado: marzo 2026',
 }
 
-const DISCLAIMER: Record<Lang, string> = {
+const DISCLAIMER: Record<Locale, string> = {
   en: 'This investigation uses automated analysis supplemented by human review. All data comes from publicly available sources. Signal classification is performed by a local AI model (Qwen 3.5 9B) and factchecked against known entity databases. The scoring model and methodology are open for inspection.',
   es: 'Esta investigacion utiliza analisis automatizado complementado por revision humana. Todos los datos provienen de fuentes publicamente disponibles. La clasificacion de senales es realizada por un modelo de IA local (Qwen 3.5 9B) y verificada contra bases de datos de entidades conocidas. El modelo de puntuacion y la metodologia estan disponibles para inspeccion.',
 }
 
-const SOURCE_TABLE_INTRO: Record<Lang, string> = {
+const SOURCE_TABLE_INTRO: Record<Locale, string> = {
   en: 'Full transparency: these are all 31 data sources our pipeline monitors or plans to monitor. Active sources are currently being ingested daily. Planned sources will be integrated in upcoming waves.',
   es: 'Transparencia total: estas son las 31 fuentes de datos que nuestro pipeline monitorea o planea monitorear. Las fuentes activas se ingestan diariamente. Las fuentes planificadas se integraran en proximas olas.',
 }
@@ -324,19 +325,19 @@ function StatusDot({ status }: { status: string }) {
 // Source table component
 // ---------------------------------------------------------------------------
 
-function SourceTable({ lang }: { lang: Lang }) {
+function SourceTable({ locale }: { locale: Locale }) {
   return (
     <div className="mt-6 overflow-x-auto">
       <p className="mb-4 text-sm leading-relaxed text-zinc-300">
-        {SOURCE_TABLE_INTRO[lang]}
+        {SOURCE_TABLE_INTRO[locale]}
       </p>
       <table className="w-full text-left text-sm">
         <thead>
           <tr className="border-b border-zinc-700 text-xs uppercase tracking-wider text-zinc-500">
             <th className="px-3 py-2">#</th>
-            <th className="px-3 py-2">{lang === 'en' ? 'Source' : 'Fuente'}</th>
+            <th className="px-3 py-2">{locale === 'en' ? 'Source' : 'Fuente'}</th>
             <th className="px-3 py-2">Tier</th>
-            <th className="px-3 py-2">{lang === 'en' ? 'Method' : 'Metodo'}</th>
+            <th className="px-3 py-2">{locale === 'en' ? 'Method' : 'Metodo'}</th>
             <th className="px-3 py-2">Status</th>
           </tr>
         </thead>
@@ -368,21 +369,21 @@ function SourceTable({ lang }: { lang: Lang }) {
 // ---------------------------------------------------------------------------
 
 export function NuclearRiskArticle() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <article className="mx-auto max-w-prose pb-20">
       {/* Header */}
       <header className="py-12 text-center">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
-          {TITLE[lang]}
+          {TITLE[locale]}
         </h1>
-        <p className="mt-4 text-lg text-zinc-400">{SUBTITLE[lang]}</p>
+        <p className="mt-4 text-lg text-zinc-400">{SUBTITLE[locale]}</p>
 
         <div className="mt-6 flex items-center justify-center gap-4 text-sm text-zinc-500">
-          <span>{READING_TIME[lang]}</span>
+          <span>{READING_TIME[locale]}</span>
           <span className="text-zinc-700">|</span>
-          <span>{LAST_UPDATED[lang]}</span>
+          <span>{LAST_UPDATED[locale]}</span>
         </div>
       </header>
 
@@ -392,13 +393,13 @@ export function NuclearRiskArticle() {
       {chapters.map((chapter) => (
         <section key={chapter.id} id={chapter.id} className="py-12">
           <h2 className="border-l-4 border-yellow-500 pl-4 text-xl font-bold text-zinc-50">
-            {chapter.title[lang]}
+            {chapter.title[locale]}
           </h2>
 
           {/* Paragraphs */}
-          {chapter.paragraphs[lang].length > 0 && (
+          {chapter.paragraphs[locale].length > 0 && (
             <div className="mt-6 space-y-4">
-              {chapter.paragraphs[lang].map((p, i) => (
+              {chapter.paragraphs[locale].map((p, i) => (
                 <p key={i} className="text-base leading-relaxed text-zinc-300">
                   {p}
                 </p>
@@ -409,7 +410,7 @@ export function NuclearRiskArticle() {
           {/* Pull quote */}
           {chapter.pullQuote && (
             <blockquote className="my-6 border-l-2 border-yellow-400 pl-4 text-lg italic text-zinc-200">
-              {chapter.pullQuote[lang]}
+              {chapter.pullQuote[locale]}
             </blockquote>
           )}
 
@@ -422,14 +423,14 @@ export function NuclearRiskArticle() {
                   className="rounded-lg border border-zinc-800 bg-zinc-900/60 p-4 text-center"
                 >
                   <p className="text-xl font-bold text-yellow-400">{stat.value}</p>
-                  <p className="mt-1 text-xs text-zinc-400">{stat.label[lang]}</p>
+                  <p className="mt-1 text-xs text-zinc-400">{stat.label[locale]}</p>
                 </div>
               ))}
             </div>
           )}
 
           {/* Source table */}
-          {chapter.sourceTable && <SourceTable lang={lang} />}
+          {chapter.sourceTable && <SourceTable locale={locale} />}
 
           <hr className="mt-12 border-zinc-800/60" />
         </section>
@@ -438,7 +439,7 @@ export function NuclearRiskArticle() {
       {/* Disclaimer */}
       <section className="mt-6 rounded-lg border border-zinc-800 bg-zinc-900/40 p-6">
         <p className="text-xs leading-relaxed text-zinc-500">
-          {DISCLAIMER[lang]}
+          {DISCLAIMER[locale]}
         </p>
       </section>
     </article>

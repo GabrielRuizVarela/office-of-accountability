@@ -1,19 +1,20 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
-import { useLanguage } from '@/lib/language-context'
 import { EVIDENCE_DOCS } from '@/lib/caso-dictadura/investigation-data'
 
 export default function EvidenciaPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <div className="mx-auto max-w-4xl space-y-6">
       <header className="text-center">
         <h1 className="text-2xl font-bold text-zinc-100 sm:text-3xl">
-          {lang === 'es' ? 'Evidencia' : 'Evidence'}
+          {locale === 'es' ? 'Evidencia' : 'Evidence'}
         </h1>
         <p className="mt-2 text-sm text-zinc-400">
-          {lang === 'es'
+          {locale === 'es'
             ? `${EVIDENCE_DOCS.length} documentos clave verificados contra fuentes publicas`
             : `${EVIDENCE_DOCS.length} key documents verified against public sources`}
         </p>
@@ -26,12 +27,12 @@ export default function EvidenciaPage() {
               <div className="flex-1">
                 <h2 className="text-base font-semibold text-zinc-100">{doc.title}</h2>
                 <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-zinc-500">
-                  <span>{lang === 'es' ? doc.type_es : doc.type_en}</span>
+                  <span>{locale === 'es' ? doc.type_es : doc.type_en}</span>
                   <span>&middot;</span>
                   <span>{doc.date}</span>
                 </div>
                 <p className="mt-3 text-sm leading-relaxed text-zinc-400">
-                  {lang === 'es' ? doc.summary_es : doc.summary_en}
+                  {locale === 'es' ? doc.summary_es : doc.summary_en}
                 </p>
                 {doc.source_url && (
                   <a
@@ -40,7 +41,7 @@ export default function EvidenciaPage() {
                     rel="noopener noreferrer"
                     className="mt-3 inline-block text-xs text-amber-400 hover:text-amber-300"
                   >
-                    {lang === 'es' ? 'Ver fuente' : 'View source'} &rarr;
+                    {locale === 'es' ? 'Ver fuente' : 'View source'} &rarr;
                   </a>
                 )}
               </div>
@@ -52,10 +53,10 @@ export default function EvidenciaPage() {
                     : 'bg-zinc-500/10 text-zinc-500'
               }`}>
                 {doc.verification_status === 'verified'
-                  ? (lang === 'es' ? 'Verificado' : 'Verified')
+                  ? (locale === 'es' ? 'Verificado' : 'Verified')
                   : doc.verification_status === 'partially_verified'
-                    ? (lang === 'es' ? 'Parcial' : 'Partial')
-                    : (lang === 'es' ? 'Sin verificar' : 'Unverified')}
+                    ? (locale === 'es' ? 'Parcial' : 'Partial')
+                    : (locale === 'es' ? 'Sin verificar' : 'Unverified')}
               </span>
             </div>
           </div>

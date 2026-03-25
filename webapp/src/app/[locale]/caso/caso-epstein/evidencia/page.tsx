@@ -1,4 +1,6 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 /**
  * Caso Epstein — Evidence (documents/evidence page).
@@ -6,9 +8,8 @@
  * Grid of document cards built from EVIDENCE_DOCS in investigation-data.ts.
  */
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 
-import { useLanguage, type Lang } from '@/lib/language-context'
 import {
   EVIDENCE_DOCS,
   type VerificationStatus,
@@ -42,7 +43,7 @@ const t = {
   navInvestigation: { en: 'Investigation', es: 'Investigacion' },
 } as const
 
-const VERIFICATION_LABELS: Record<VerificationStatus, Record<Lang, string>> = {
+const VERIFICATION_LABELS: Record<VerificationStatus, Record<Locale, string>> = {
   verified: { en: 'Verified', es: 'Verificado' },
   partially_verified: { en: 'Partially verified', es: 'Parcialmente verificado' },
   unverified: { en: 'Unverified', es: 'No verificado' },
@@ -59,7 +60,7 @@ const VERIFICATION_CLS: Record<VerificationStatus, string> = {
 // ---------------------------------------------------------------------------
 
 export default function EvidenciaPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   const sortedDocs = [...EVIDENCE_DOCS].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
@@ -74,13 +75,13 @@ export default function EvidenciaPage() {
       {/* Header */}
       <header className="text-center">
         <p className="text-xs font-medium uppercase tracking-widest text-red-400">
-          {t.headerBadge[lang]}
+          {t.headerBadge[locale]}
         </p>
         <h1 className="mt-3 text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
-          {t.headerTitle[lang]}
+          {t.headerTitle[locale]}
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-sm text-zinc-400">
-          {t.headerDesc[lang](EVIDENCE_DOCS.length, verifiedCount)}
+          {t.headerDesc[locale](EVIDENCE_DOCS.length, verifiedCount)}
         </p>
       </header>
 
@@ -88,19 +89,19 @@ export default function EvidenciaPage() {
       <div className="flex flex-wrap justify-center gap-6 text-center">
         <div>
           <p className="text-2xl font-bold text-red-400">{EVIDENCE_DOCS.length}</p>
-          <p className="text-xs text-zinc-500">{t.documents[lang]}</p>
+          <p className="text-xs text-zinc-500">{t.documents[locale]}</p>
         </div>
         <div className="h-10 w-px bg-zinc-800" />
         <div>
           <p className="text-2xl font-bold text-emerald-400">{verifiedCount}</p>
-          <p className="text-xs text-zinc-500">{t.verified[lang]}</p>
+          <p className="text-xs text-zinc-500">{t.verified[locale]}</p>
         </div>
         <div className="h-10 w-px bg-zinc-800" />
         <div>
           <p className="text-2xl font-bold text-amber-400">
             {EVIDENCE_DOCS.length - verifiedCount}
           </p>
-          <p className="text-xs text-zinc-500">{t.partiallyVerified[lang]}</p>
+          <p className="text-xs text-zinc-500">{t.partiallyVerified[locale]}</p>
         </div>
       </div>
 
@@ -121,16 +122,16 @@ export default function EvidenciaPage() {
               <span
                 className={`inline-flex shrink-0 items-center rounded-full border px-2.5 py-0.5 text-[10px] font-medium ${VERIFICATION_CLS[doc.verification_status]}`}
               >
-                {VERIFICATION_LABELS[doc.verification_status][lang]}
+                {VERIFICATION_LABELS[doc.verification_status][locale]}
               </span>
             </div>
 
             <div className="mt-2 flex items-center gap-2 text-xs text-zinc-500">
               <span className="rounded bg-zinc-800/60 px-2 py-0.5 font-medium">
-                {lang === 'en' ? doc.type_en : doc.type_es}
+                {locale === 'en' ? doc.type_en : doc.type_es}
               </span>
               <span>
-                {new Date(doc.date).toLocaleDateString(lang === 'en' ? 'en-US' : 'es-ES', {
+                {new Date(doc.date).toLocaleDateString(locale === 'en' ? 'en-US' : 'es-ES', {
                   year: 'numeric',
                   month: 'short',
                   day: 'numeric',
@@ -139,11 +140,11 @@ export default function EvidenciaPage() {
             </div>
 
             <p className="mt-3 flex-1 text-xs leading-relaxed text-zinc-400">
-              {lang === 'en' ? doc.summary_en : doc.summary_es}
+              {locale === 'en' ? doc.summary_en : doc.summary_es}
             </p>
 
             <p className="mt-3 text-xs text-red-400/60 group-hover:text-red-400">
-              {t.viewSource[lang]}
+              {t.viewSource[locale]}
             </p>
           </a>
         ))}
@@ -152,15 +153,15 @@ export default function EvidenciaPage() {
       {/* Note about Neo4j docs */}
       <section className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-6">
         <h3 className="text-sm font-semibold text-zinc-200">
-          {t.additionalTitle[lang]}
+          {t.additionalTitle[locale]}
         </h3>
         <p className="mt-2 text-xs leading-relaxed text-zinc-500">
-          {t.additionalDesc[lang]}{' '}
+          {t.additionalDesc[locale]}{' '}
           <Link
             href="/caso/caso-epstein/grafo"
             className="text-red-400 underline decoration-red-400/30 hover:text-red-300"
           >
-            {t.graphExplorer[lang]}
+            {t.graphExplorer[locale]}
           </Link>
           .
         </p>
@@ -172,19 +173,19 @@ export default function EvidenciaPage() {
           href="/caso/caso-epstein/resumen"
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          {t.navSummary[lang]}
+          {t.navSummary[locale]}
         </Link>
         <Link
           href="/caso/caso-epstein/cronologia"
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          {t.navTimeline[lang]}
+          {t.navTimeline[locale]}
         </Link>
         <Link
           href="/caso/caso-epstein/investigacion"
           className="flex-1 rounded-lg border border-zinc-700 p-4 text-center text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500"
         >
-          {t.navInvestigation[lang]}
+          {t.navInvestigation[locale]}
         </Link>
       </nav>
     </div>

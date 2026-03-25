@@ -1,8 +1,9 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 
-import { useLanguage } from '@/lib/language-context'
 import {
   IMPACT_STATS,
   FACTCHECK_ITEMS,
@@ -68,26 +69,26 @@ const STATUS_COLORS: Record<string, string> = {
 }
 
 export default function MonopoliosPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <div className="space-y-12">
       {/* Hero */}
       <header className="space-y-4">
         <p className="text-sm font-medium tracking-wider text-zinc-500 uppercase">
-          {t.badge[lang]}
+          {t.badge[locale]}
         </p>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
-          {t.title[lang]}
+          {t.title[locale]}
         </h1>
         <p className="max-w-3xl text-base leading-relaxed text-zinc-400">
-          {t.subtitle[lang]}
+          {t.subtitle[locale]}
         </p>
       </header>
 
       {/* Impact Stats */}
       <section>
-        <h2 className="mb-4 text-lg font-semibold text-zinc-200">{t.statsTitle[lang]}</h2>
+        <h2 className="mb-4 text-lg font-semibold text-zinc-200">{t.statsTitle[locale]}</h2>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {IMPACT_STATS.map((stat) => (
             <div
@@ -96,7 +97,7 @@ export default function MonopoliosPage() {
             >
               <p className="text-2xl font-bold text-zinc-100">{stat.value}</p>
               <p className="mt-1 text-xs text-zinc-500">
-                {lang === 'es' ? stat.label_es : stat.label_en}
+                {locale === 'es' ? stat.label_es : stat.label_en}
               </p>
             </div>
           ))}
@@ -106,20 +107,20 @@ export default function MonopoliosPage() {
       {/* Executive Summary */}
       <section className="rounded-lg border border-zinc-800 bg-zinc-900/30 p-6">
         <h2 className="mb-3 text-lg font-semibold text-zinc-200">
-          {t.executiveSummaryTitle[lang]}
+          {t.executiveSummaryTitle[locale]}
         </h2>
         <p className="text-sm leading-relaxed text-zinc-400">
-          {t.executiveSummary[lang]}
+          {t.executiveSummary[locale]}
         </p>
       </section>
 
       {/* Factcheck Items */}
       <section>
         <h2 className="mb-2 text-lg font-semibold text-zinc-200">
-          {t.factcheckTitle[lang]}
+          {t.factcheckTitle[locale]}
         </h2>
         <p className="mb-4 text-sm text-zinc-500">
-          {FACTCHECK_ITEMS.length}{t.factcheckDesc[lang]}
+          {FACTCHECK_ITEMS.length}{t.factcheckDesc[locale]}
         </p>
         <div className="space-y-3">
           {FACTCHECK_ITEMS.map((item) => (
@@ -131,21 +132,21 @@ export default function MonopoliosPage() {
                 <span
                   className={`rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase ${TIER_COLORS[item.tier] ?? TIER_COLORS[3]}`}
                 >
-                  {item.tier === 1 ? t.tier1[lang] : item.tier === 2 ? t.tier2[lang] : t.tier3[lang]}
+                  {item.tier === 1 ? t.tier1[locale] : item.tier === 2 ? t.tier2[locale] : t.tier3[locale]}
                 </span>
                 <span
                   className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${STATUS_COLORS[item.status] ?? STATUS_COLORS.unconfirmed}`}
                 >
-                  {item.status === 'confirmed' ? t.confirmed[lang] : t.alleged[lang]}
+                  {item.status === 'confirmed' ? t.confirmed[locale] : t.alleged[locale]}
                 </span>
                 <span className="text-[10px] text-zinc-600">{item.sector}</span>
               </div>
               <p className="text-sm leading-relaxed text-zinc-300">
-                {lang === 'es' ? item.claim_es : item.claim_en}
+                {locale === 'es' ? item.claim_es : item.claim_en}
               </p>
-              {((lang === 'es' ? item.detail_es : item.detail_en)) && (
+              {((locale === 'es' ? item.detail_es : item.detail_en)) && (
                 <p className="mt-2 text-xs leading-relaxed text-zinc-500">
-                  {lang === 'es' ? item.detail_es : item.detail_en}
+                  {locale === 'es' ? item.detail_es : item.detail_en}
                 </p>
               )}
               <p className="mt-2 text-[10px] text-zinc-600">
@@ -159,9 +160,9 @@ export default function MonopoliosPage() {
       {/* Timeline */}
       <section>
         <h2 className="mb-2 text-lg font-semibold text-zinc-200">
-          {t.timelineTitle[lang]}
+          {t.timelineTitle[locale]}
         </h2>
-        <p className="mb-4 text-sm text-zinc-500">{t.timelineDesc[lang]}</p>
+        <p className="mb-4 text-sm text-zinc-500">{t.timelineDesc[locale]}</p>
         <div className="space-y-3">
           {TIMELINE_EVENTS.map((event) => (
             <div
@@ -173,10 +174,10 @@ export default function MonopoliosPage() {
               </div>
               <div>
                 <h3 className="text-sm font-semibold text-zinc-200">
-                  {lang === 'es' ? event.title_es : event.title_en}
+                  {locale === 'es' ? event.title_es : event.title_en}
                 </h3>
                 <p className="mt-1 text-xs text-zinc-400">
-                  {lang === 'es' ? event.description_es : event.description_en}
+                  {locale === 'es' ? event.description_es : event.description_en}
                 </p>
               </div>
             </div>
@@ -187,10 +188,10 @@ export default function MonopoliosPage() {
       {/* Key Actors */}
       <section>
         <h2 className="mb-2 text-lg font-semibold text-zinc-200">
-          {t.actorsTitle[lang]}
+          {t.actorsTitle[locale]}
         </h2>
         <p className="mb-4 text-sm text-zinc-500">
-          {ACTORS.length}{t.actorsDesc[lang]}
+          {ACTORS.length}{t.actorsDesc[locale]}
         </p>
         <div className="grid gap-3 sm:grid-cols-2">
           {ACTORS.map((actor) => (
@@ -200,10 +201,10 @@ export default function MonopoliosPage() {
             >
               <h3 className="text-sm font-semibold text-zinc-200">{actor.name}</h3>
               <p className="text-xs font-medium text-zinc-500">
-                {lang === 'es' ? actor.role_es : actor.role_en}
+                {locale === 'es' ? actor.role_es : actor.role_en}
               </p>
               <p className="mt-2 text-xs text-zinc-400">
-                {lang === 'es' ? actor.description_es : actor.description_en}
+                {locale === 'es' ? actor.description_es : actor.description_en}
               </p>
               <div className="mt-2 flex gap-3 text-[10px] text-zinc-600">
                 <span>{actor.companies_count} empresas</span>

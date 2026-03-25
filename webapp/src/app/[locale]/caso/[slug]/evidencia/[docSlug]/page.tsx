@@ -6,7 +6,7 @@
 
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 
 import { ShareButton } from '@/components/ui/ShareButton'
 

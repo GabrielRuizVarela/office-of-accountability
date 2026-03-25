@@ -1,6 +1,7 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
-import { useLanguage } from '@/lib/language-context'
 import { ACTORS } from '@/lib/caso-monopolios/investigation-data'
 
 const SECTOR_COLORS: Record<string, string> = {
@@ -34,15 +35,15 @@ const SECTOR_LABELS: Record<string, Record<'es' | 'en', string>> = {
 }
 
 export default function ActoresPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <h1 className="text-2xl font-bold text-zinc-100">
-        {lang === 'es' ? 'Actores Clave' : 'Key Actors'}
+        {locale === 'es' ? 'Actores Clave' : 'Key Actors'}
       </h1>
       <p className="mt-2 text-sm text-zinc-400">
-        {ACTORS.length} {lang === 'es'
+        {ACTORS.length} {locale === 'es'
           ? 'familias y grupos monopolicos perfilados con empresas, entidades offshore y control sectorial.'
           : 'monopoly families and groups profiled with companies, offshore entities, and sector control.'}
       </p>
@@ -64,10 +65,10 @@ export default function ActoresPage() {
               <h3 className="text-base font-bold text-zinc-100">{actor.name}</h3>
             )}
             <p className="mt-1 text-xs font-medium text-zinc-400">
-              {lang === 'es' ? actor.role_es : actor.role_en}
+              {locale === 'es' ? actor.role_es : actor.role_en}
             </p>
             <p className="mt-3 text-xs leading-relaxed text-zinc-400">
-              {lang === 'es' ? actor.description_es : actor.description_en}
+              {locale === 'es' ? actor.description_es : actor.description_en}
             </p>
 
             {/* Stats row */}
@@ -75,7 +76,7 @@ export default function ActoresPage() {
               <div className="rounded bg-zinc-800/60 px-2 py-1">
                 <span className="text-sm font-bold text-zinc-200">{actor.companies_count}</span>
                 <span className="ml-1 text-[10px] text-zinc-500">
-                  {lang === 'es' ? 'empresas' : 'companies'}
+                  {locale === 'es' ? 'empresas' : 'companies'}
                 </span>
               </div>
               {actor.offshore_count > 0 && (
@@ -98,7 +99,7 @@ export default function ActoresPage() {
                     color: SECTOR_COLORS[s] ?? '#71717a',
                   }}
                 >
-                  {SECTOR_LABELS[s]?.[lang] ?? s}
+                  {SECTOR_LABELS[s]?.[locale] ?? s}
                 </a>
               ))}
             </div>

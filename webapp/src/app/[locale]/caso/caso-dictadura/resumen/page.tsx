@@ -1,4 +1,6 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 /**
  * Caso Dictadura — Resumen (narrative summary).
@@ -8,9 +10,8 @@
  * Primary language: Spanish. UI chrome is bilingual.
  */
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 
-import { useLanguage } from '@/lib/language-context'
 
 const SLUG = 'caso-dictadura'
 
@@ -201,33 +202,33 @@ const CHAPTERS: {
 // ---------------------------------------------------------------------------
 
 export default function ResumenPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <article className="mx-auto max-w-4xl space-y-10">
       {/* Header */}
       <header className="space-y-4 text-center">
         <span className="inline-block rounded-full bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-400">
-          {t.headerBadge[lang]}
+          {t.headerBadge[locale]}
         </span>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
-          {t.headerTitle[lang]}
+          {t.headerTitle[locale]}
         </h1>
         <p className="mx-auto max-w-2xl text-base leading-relaxed text-zinc-400">
-          {t.headerDesc[lang]}
+          {t.headerDesc[locale]}
         </p>
         <div className="flex flex-wrap justify-center gap-3 pt-2">
           <Link
             href={`/caso/${SLUG}/investigacion`}
             className="rounded bg-amber-600 px-4 py-2 text-sm font-medium text-white hover:bg-amber-500"
           >
-            {t.viewData[lang]}
+            {t.viewData[locale]}
           </Link>
           <Link
             href={`/caso/${SLUG}/cronologia`}
             className="rounded border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-300 hover:border-zinc-500"
           >
-            {t.timeline[lang]}
+            {t.timeline[locale]}
           </Link>
         </div>
       </header>
@@ -241,9 +242,9 @@ export default function ResumenPage() {
         >
           <h2 className="text-center text-xl font-semibold text-zinc-100">
             <span className="mr-2 text-amber-500">{ch.num}.</span>
-            {lang === 'es' ? ch.title_es : ch.title_en}
+            {locale === 'es' ? ch.title_es : ch.title_en}
           </h2>
-          {(lang === 'es' ? ch.paragraphs_es : ch.paragraphs_en).map((p, i) => (
+          {(locale === 'es' ? ch.paragraphs_es : ch.paragraphs_en).map((p, i) => (
             <p key={i} className="mx-auto max-w-3xl text-left leading-relaxed text-zinc-400">
               {p}
             </p>
@@ -253,7 +254,7 @@ export default function ResumenPage() {
 
       {/* Sources */}
       <section className="space-y-3 border-t border-zinc-800 pt-8 text-center">
-        <h2 className="text-lg font-semibold text-zinc-100">{t.sources[lang]}</h2>
+        <h2 className="text-lg font-semibold text-zinc-100">{t.sources[locale]}</h2>
         <ul className="mx-auto inline-block list-disc space-y-1 pl-5 text-left text-sm text-zinc-500">
           <li>RUVTE — Registro Unificado de Victimas del Terrorismo de Estado (datos.jus.gob.ar)</li>
           <li>presentes — R package, DiegoKoz/presentes (762 CCDs, coordinates)</li>
@@ -273,7 +274,7 @@ export default function ResumenPage() {
       {/* Disclaimer */}
       <section className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4">
         <p className="text-xs leading-relaxed text-zinc-500">
-          {t.disclaimer[lang]}
+          {t.disclaimer[locale]}
         </p>
       </section>
 
@@ -283,13 +284,13 @@ export default function ResumenPage() {
           href={`/caso/${SLUG}`}
           className="text-sm text-zinc-400 hover:text-zinc-200"
         >
-          {t.navOverview[lang]}
+          {t.navOverview[locale]}
         </Link>
         <Link
           href={`/caso/${SLUG}/investigacion`}
           className="text-sm text-zinc-400 hover:text-zinc-200"
         >
-          {t.navData[lang]}
+          {t.navData[locale]}
         </Link>
       </nav>
     </article>

@@ -7,7 +7,7 @@
  * Supports filtering by status and links to create/edit pages.
  */
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { useCallback, useEffect, useReducer } from 'react'
 
 import { SessionProvider, useSession } from '@/components/auth/SessionProvider'

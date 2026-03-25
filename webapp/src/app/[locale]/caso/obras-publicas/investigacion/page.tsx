@@ -1,4 +1,6 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 /**
  * Caso Libra — Comprehensive bilingual investigation page.
@@ -10,7 +12,6 @@
 
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
 
-import { useLanguage, type Lang } from '@/lib/language-context'
 import {
   FACTCHECK_ITEMS,
   TIMELINE_EVENTS,
@@ -48,7 +49,7 @@ const STATUS_COLORS: Record<FactcheckStatus, string> = {
   under_investigation: '#3b82f6',
 }
 
-const STATUS_LABELS: Record<FactcheckStatus, Record<Lang, string>> = {
+const STATUS_LABELS: Record<FactcheckStatus, Record<Locale, string>> = {
   confirmed: { es: 'Confirmado', en: 'Confirmed' },
   alleged: { es: 'Presunto', en: 'Alleged' },
   denied: { es: 'Negado', en: 'Denied' },
@@ -63,7 +64,7 @@ const CATEGORY_COLORS: Record<InvestigationCategory, string> = {
   coverup: '#dc2626',
 }
 
-const CATEGORY_LABELS: Record<InvestigationCategory, Record<Lang, string>> = {
+const CATEGORY_LABELS: Record<InvestigationCategory, Record<Locale, string>> = {
   political: { es: 'Politico', en: 'Political' },
   financial: { es: 'Financiero', en: 'Financial' },
   legal: { es: 'Legal', en: 'Legal' },
@@ -77,7 +78,7 @@ const VERIFICATION_COLORS: Record<VerificationStatus, string> = {
   unverified: '#ef4444',
 }
 
-const VERIFICATION_LABELS: Record<VerificationStatus, Record<Lang, string>> = {
+const VERIFICATION_LABELS: Record<VerificationStatus, Record<Locale, string>> = {
   verified: { es: 'Verificado', en: 'Verified' },
   partially_verified: { es: 'Parcialmente verificado', en: 'Partially verified' },
   unverified: { es: 'No verificado', en: 'Unverified' },
@@ -105,9 +106,9 @@ function formatUsd(amount: number): string {
   return `$${amount}`
 }
 
-function formatDate(dateStr: string, lang: Lang): string {
+function formatDate(dateStr: string, locale: Locale): string {
   const d = new Date(dateStr + 'T00:00:00')
-  return d.toLocaleDateString(lang === 'es' ? 'es-AR' : 'en-US', {
+  return d.toLocaleDateString(locale === 'es' ? 'es-AR' : 'en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
@@ -119,7 +120,7 @@ function formatDate(dateStr: string, lang: Lang): string {
 // ---------------------------------------------------------------------------
 
 export default function InvestigacionPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
   const [activeSection, setActiveSection] = useState('hero')
   const [factcheckFilter, setFactcheckFilter] = useState<FactcheckStatus | null>(null)
   const [expandedFactchecks, setExpandedFactchecks] = useState<Set<string>>(new Set())
@@ -208,7 +209,7 @@ export default function InvestigacionPage() {
                     : 'text-zinc-500 hover:text-zinc-300'
                 }`}
               >
-                {lang === 'es' ? s.label_es : s.label_en}
+                {locale === 'es' ? s.label_es : s.label_en}
               </button>
             ))}
           </div>
@@ -220,10 +221,10 @@ export default function InvestigacionPage() {
       {/* ================================================================== */}
       <section id="hero" ref={registerRef('hero')} className="pb-12">
         <h1 className="text-2xl font-extrabold tracking-tight text-zinc-50 sm:text-3xl">
-          {lang === 'es' ? 'La Investigacion Completa' : 'The Complete Investigation'}
+          {locale === 'es' ? 'La Investigacion Completa' : 'The Complete Investigation'}
         </h1>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-400">
-          {lang === 'es'
+          {locale === 'es'
             ? 'Una investigacion verificada y con fuentes sobre el escandalo del token $LIBRA promovido por el presidente Milei. Cada dato esta respaldado por evidencia on-chain, documentos publicos o reportajes periodisticos.'
             : 'A verified, sourced investigation into the $LIBRA token scandal promoted by President Milei. Every claim is backed by on-chain evidence, public documents, or journalistic reporting.'}
         </p>
@@ -237,7 +238,7 @@ export default function InvestigacionPage() {
             >
               <p className="text-2xl font-bold text-zinc-50 sm:text-3xl">{stat.value}</p>
               <p className="mt-1 text-xs text-zinc-400">
-                {lang === 'es' ? stat.label_es : stat.label_en}
+                {locale === 'es' ? stat.label_es : stat.label_en}
               </p>
               <p className="mt-0.5 text-xs text-zinc-600">{stat.source}</p>
             </div>
@@ -251,10 +252,10 @@ export default function InvestigacionPage() {
       <section id="resumen" ref={registerRef('resumen')} className="pb-12">
         <div className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-6 sm:p-8">
           <h2 className="text-lg font-bold text-zinc-50 mb-4">
-            {lang === 'es' ? 'Resumen Ejecutivo' : 'Executive Summary'}
+            {locale === 'es' ? 'Resumen Ejecutivo' : 'Executive Summary'}
           </h2>
 
-          {lang === 'es' ? (
+          {locale === 'es' ? (
             <>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
                 El 14 de febrero de 2025, a las 19:01, el Presidente de Argentina Javier Milei publico en X, Instagram y Facebook la direccion de contrato de un token llamado <strong className="text-zinc-100">$LIBRA</strong>, creado minutos antes en la blockchain de Solana. Con <strong className="text-zinc-100">19 millones de seguidores</strong>, el precio del token se disparo de <strong className="text-zinc-100">$0.000001</strong> a <strong className="text-zinc-100">$5.20</strong> en 40 minutos, alcanzando una capitalizacion de <strong className="text-zinc-100">$4.500 millones</strong>.
@@ -305,10 +306,10 @@ export default function InvestigacionPage() {
       {/* ================================================================== */}
       <section id="factcheck" ref={registerRef('factcheck')} className="py-12">
         <h2 className="text-xl font-bold text-zinc-50">
-          {lang === 'es' ? 'Verificacion de Hechos' : 'Factcheck'}
+          {locale === 'es' ? 'Verificacion de Hechos' : 'Factcheck'}
         </h2>
         <p className="mt-1 text-sm text-zinc-400">
-          {lang === 'es'
+          {locale === 'es'
             ? `${FACTCHECK_ITEMS.length} afirmaciones verificadas contra fuentes publicas.`
             : `${FACTCHECK_ITEMS.length} claims verified against public sources.`}
         </p>
@@ -324,7 +325,7 @@ export default function InvestigacionPage() {
                 : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
             }`}
           >
-            {lang === 'es' ? 'Todos' : 'All'} ({FACTCHECK_ITEMS.length})
+            {locale === 'es' ? 'Todos' : 'All'} ({FACTCHECK_ITEMS.length})
           </button>
           {(Object.keys(STATUS_COLORS) as FactcheckStatus[]).map((status) => {
             const count = FACTCHECK_ITEMS.filter((f) => f.status === status).length
@@ -347,7 +348,7 @@ export default function InvestigacionPage() {
                     : undefined
                 }
               >
-                {STATUS_LABELS[status][lang]} ({count})
+                {STATUS_LABELS[status][locale]} ({count})
               </button>
             )
           })}
@@ -357,7 +358,7 @@ export default function InvestigacionPage() {
         <div className="mt-4 space-y-2">
           {filteredFactchecks.map((item) => {
             const isExpanded = expandedFactchecks.has(item.id)
-            const detail = lang === 'es' ? item.detail_es : item.detail_en
+            const detail = locale === 'es' ? item.detail_es : item.detail_en
             return (
               <div
                 key={item.id}
@@ -372,14 +373,14 @@ export default function InvestigacionPage() {
                     className="mt-1 inline-block shrink-0 rounded-full px-2 py-0.5 text-xs font-bold uppercase tracking-wider text-white"
                     style={{ backgroundColor: STATUS_COLORS[item.status] }}
                   >
-                    {STATUS_LABELS[item.status][lang]}
+                    {STATUS_LABELS[item.status][locale]}
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-medium text-zinc-200">
-                      {lang === 'es' ? item.claim_es : item.claim_en}
+                      {locale === 'es' ? item.claim_es : item.claim_en}
                     </p>
                     <p className="mt-1 text-xs text-zinc-500">
-                      {lang === 'es' ? 'Fuente' : 'Source'}:{' '}
+                      {locale === 'es' ? 'Fuente' : 'Source'}:{' '}
                       <a
                         href={item.source_url}
                         target="_blank"
@@ -407,7 +408,7 @@ export default function InvestigacionPage() {
           })}
           {filteredFactchecks.length === 0 && (
             <p className="py-8 text-center text-sm text-zinc-500">
-              {lang === 'es'
+              {locale === 'es'
                 ? 'No hay afirmaciones para este filtro.'
                 : 'No claims for this filter.'}
             </p>
@@ -420,10 +421,10 @@ export default function InvestigacionPage() {
       {/* ================================================================== */}
       <section id="timeline" ref={registerRef('timeline')} className="py-12">
         <h2 className="text-xl font-bold text-zinc-50">
-          {lang === 'es' ? 'Cronologia de la Investigacion' : 'Investigation Timeline'}
+          {locale === 'es' ? 'Cronologia de la Investigacion' : 'Investigation Timeline'}
         </h2>
         <p className="mt-1 text-sm text-zinc-400">
-          {lang === 'es'
+          {locale === 'es'
             ? `${TIMELINE_EVENTS.length} eventos documentados.`
             : `${TIMELINE_EVENTS.length} documented events.`}
         </p>
@@ -439,7 +440,7 @@ export default function InvestigacionPage() {
                 : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
             }`}
           >
-            {lang === 'es' ? 'Todos' : 'All'} ({TIMELINE_EVENTS.length})
+            {locale === 'es' ? 'Todos' : 'All'} ({TIMELINE_EVENTS.length})
           </button>
           {TIMELINE_CATEGORIES.map((cat) => {
             const count = TIMELINE_EVENTS.filter((e) => e.category === cat).length
@@ -462,7 +463,7 @@ export default function InvestigacionPage() {
                     : undefined
                 }
               >
-                {CATEGORY_LABELS[cat]?.[lang] ?? cat} ({count})
+                {CATEGORY_LABELS[cat]?.[locale] ?? cat} ({count})
               </button>
             )
           })}
@@ -472,11 +473,11 @@ export default function InvestigacionPage() {
         <div className="relative mt-6 space-y-4 pl-6">
           <div className="absolute left-[7px] top-2 bottom-2 w-px bg-zinc-800" />
           {filteredTimeline.map((event) => (
-            <TimelineCard key={event.id} event={event} lang={lang} />
+            <TimelineCard key={event.id} event={event} locale={locale} />
           ))}
           {filteredTimeline.length === 0 && (
             <p className="py-8 text-center text-sm text-zinc-500">
-              {lang === 'es'
+              {locale === 'es'
                 ? 'No hay eventos para este filtro.'
                 : 'No events for this filter.'}
             </p>
@@ -489,10 +490,10 @@ export default function InvestigacionPage() {
       {/* ================================================================== */}
       <section id="actors" ref={registerRef('actors')} className="py-12">
         <h2 className="text-xl font-bold text-zinc-50">
-          {lang === 'es' ? 'Actores Clave' : 'Key Actors'}
+          {locale === 'es' ? 'Actores Clave' : 'Key Actors'}
         </h2>
         <p className="mt-1 text-sm text-zinc-400">
-          {lang === 'es'
+          {locale === 'es'
             ? `${ACTORS.length} personas y organizaciones involucradas.`
             : `${ACTORS.length} individuals and organizations involved.`}
         </p>
@@ -515,17 +516,17 @@ export default function InvestigacionPage() {
                 )}
               </div>
               <p className="mt-1 text-xs font-medium text-purple-400">
-                {lang === 'es' ? actor.role_es : actor.role_en}
+                {locale === 'es' ? actor.role_es : actor.role_en}
               </p>
               <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-                {lang === 'es' ? actor.description_es : actor.description_en}
+                {locale === 'es' ? actor.description_es : actor.description_en}
               </p>
               {(actor.status_es || actor.status_en) && (
                 <p className="mt-3 border-t border-zinc-800 pt-2 text-xs text-zinc-500">
                   <span className="font-medium text-zinc-400">
-                    {lang === 'es' ? 'Estado' : 'Status'}:
+                    {locale === 'es' ? 'Estado' : 'Status'}:
                   </span>{' '}
-                  {lang === 'es' ? actor.status_es : actor.status_en}
+                  {locale === 'es' ? actor.status_es : actor.status_en}
                 </p>
               )}
             </div>
@@ -538,10 +539,10 @@ export default function InvestigacionPage() {
       {/* ================================================================== */}
       <section id="money" ref={registerRef('money')} className="py-12">
         <h2 className="text-xl font-bold text-zinc-50">
-          {lang === 'es' ? 'Flujo de Dinero' : 'Money Flow'}
+          {locale === 'es' ? 'Flujo de Dinero' : 'Money Flow'}
         </h2>
         <p className="mt-1 text-sm text-zinc-400">
-          {lang === 'es'
+          {locale === 'es'
             ? 'Rastreo de fondos basado en analisis on-chain.'
             : 'Fund tracing based on on-chain analysis.'}
         </p>
@@ -549,7 +550,7 @@ export default function InvestigacionPage() {
         {/* Total extracted highlight */}
         <div className="mt-6 rounded-lg border border-red-900/50 bg-red-950/20 p-4 text-center">
           <p className="text-xs uppercase tracking-wider text-red-400">
-            {lang === 'es' ? 'Total movido rastreado' : 'Total tracked movement'}
+            {locale === 'es' ? 'Total movido rastreado' : 'Total tracked movement'}
           </p>
           <p className="mt-1 text-3xl font-bold text-red-300">{formatUsd(totalExtracted)}</p>
         </div>
@@ -578,7 +579,7 @@ export default function InvestigacionPage() {
                 <span className="text-sm font-bold text-emerald-400">
                   {formatUsd(flow.amount_usd)}
                 </span>
-                <span className="text-xs text-zinc-500">{formatDate(flow.date, lang)}</span>
+                <span className="text-xs text-zinc-500">{formatDate(flow.date, locale)}</span>
               </div>
               <p className="text-xs text-zinc-600 sm:ml-2">{flow.source}</p>
             </div>
@@ -591,10 +592,10 @@ export default function InvestigacionPage() {
       {/* ================================================================== */}
       <section id="evidence" ref={registerRef('evidence')} className="py-12">
         <h2 className="text-xl font-bold text-zinc-50">
-          {lang === 'es' ? 'Cadena de Evidencia' : 'Evidence Chain'}
+          {locale === 'es' ? 'Cadena de Evidencia' : 'Evidence Chain'}
         </h2>
         <p className="mt-1 text-sm text-zinc-400">
-          {lang === 'es'
+          {locale === 'es'
             ? `${EVIDENCE_DOCS.length} documentos y fuentes de evidencia.`
             : `${EVIDENCE_DOCS.length} documents and evidence sources.`}
         </p>
@@ -613,16 +614,16 @@ export default function InvestigacionPage() {
                     backgroundColor: VERIFICATION_COLORS[doc.verification_status],
                   }}
                 >
-                  {VERIFICATION_LABELS[doc.verification_status][lang]}
+                  {VERIFICATION_LABELS[doc.verification_status][locale]}
                 </span>
               </div>
               <div className="mt-1 flex items-center gap-2 text-xs text-zinc-500">
-                <span>{lang === 'es' ? doc.type_es : doc.type_en}</span>
+                <span>{locale === 'es' ? doc.type_es : doc.type_en}</span>
                 <span>·</span>
-                <span>{formatDate(doc.date, lang)}</span>
+                <span>{formatDate(doc.date, locale)}</span>
               </div>
               <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-                {lang === 'es' ? doc.summary_es : doc.summary_en}
+                {locale === 'es' ? doc.summary_es : doc.summary_en}
               </p>
               <a
                 href={doc.source_url}
@@ -630,7 +631,7 @@ export default function InvestigacionPage() {
                 rel="noopener noreferrer"
                 className="mt-3 inline-block text-xs text-purple-400 hover:underline"
               >
-                {lang === 'es' ? 'Ver fuente' : 'View source'} ↗
+                {locale === 'es' ? 'Ver fuente' : 'View source'} ↗
               </a>
             </div>
           ))}
@@ -642,12 +643,12 @@ export default function InvestigacionPage() {
       {/* ================================================================== */}
       <section id="government" ref={registerRef('government')} className="py-12">
         <h2 className="text-xl font-bold text-zinc-50">
-          {lang === 'es'
+          {locale === 'es'
             ? 'Respuesta del Gobierno y Obstruccion'
             : 'Government Response and Obstruction'}
         </h2>
         <p className="mt-1 text-sm text-zinc-400">
-          {lang === 'es'
+          {locale === 'es'
             ? 'Cronologia de las acciones gubernamentales para minimizar, desviar o bloquear la investigacion.'
             : 'Timeline of government actions to minimize, deflect, or block the investigation.'}
         </p>
@@ -664,17 +665,17 @@ export default function InvestigacionPage() {
               <div className="rounded-lg border border-red-900/40 bg-red-950/20 p-4 hover:border-red-800/60">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="text-xs font-medium text-zinc-500">
-                    {formatDate(gr.date, lang)}
+                    {formatDate(gr.date, locale)}
                   </span>
                   <span className="rounded-full bg-red-700 px-2 py-0.5 text-xs font-semibold text-white">
-                    {lang === 'es' ? 'Encubrimiento' : 'Coverup'}
+                    {locale === 'es' ? 'Encubrimiento' : 'Coverup'}
                   </span>
                 </div>
                 <h3 className="mt-1.5 text-sm font-semibold text-zinc-100">
-                  {lang === 'es' ? gr.action_es : gr.action_en}
+                  {locale === 'es' ? gr.action_es : gr.action_en}
                 </h3>
                 <p className="mt-1 text-sm leading-relaxed text-zinc-400">
-                  {lang === 'es' ? gr.effect_es : gr.effect_en}
+                  {locale === 'es' ? gr.effect_es : gr.effect_en}
                 </p>
                 <a
                   href={gr.source_url}
@@ -695,14 +696,14 @@ export default function InvestigacionPage() {
       {/* ================================================================== */}
       <section id="aportar" ref={(el) => { if (el) registerRef('aportar')(el) }} className="scroll-mt-28 pt-10">
         <h2 className="text-lg font-bold text-zinc-50">
-          {lang === 'es' ? 'Aportar pruebas' : 'Submit evidence'}
+          {locale === 'es' ? 'Aportar pruebas' : 'Submit evidence'}
         </h2>
         <p className="mt-1 text-sm text-zinc-400">
-          {lang === 'es'
+          {locale === 'es'
             ? 'Tenes informacion verificable sobre el caso $LIBRA? Envia datos, documentos o conexiones. Todo se revisa antes de publicarse.'
             : 'Do you have verifiable information about the $LIBRA case? Submit data, documents, or connections. Everything is reviewed before publishing.'}
         </p>
-        <SubmitEvidenceForm lang={lang} />
+        <SubmitEvidenceForm locale={locale} />
       </section>
 
       {/* ================================================================== */}
@@ -711,13 +712,13 @@ export default function InvestigacionPage() {
       <footer className="border-t border-zinc-800 py-10">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm leading-relaxed text-zinc-400">
-            {lang === 'es'
+            {locale === 'es'
               ? 'Esta investigacion se basa en fuentes publicas verificadas. Los datos on-chain provienen de Nansen, Bubblemaps y Chainalysis. Los documentos judiciales son del Centro de Informacion Judicial (CIJ). El reportaje periodistico fue contrastado con multiples medios.'
               : 'This investigation is based on verified public sources. On-chain data comes from Nansen, Bubblemaps, and Chainalysis. Court documents are from the Centro de Informacion Judicial (CIJ). Journalistic reporting was cross-referenced with multiple outlets.'}
           </p>
           <p className="mt-4 text-xs text-zinc-600">
-            {lang === 'es' ? 'Ultima actualizacion' : 'Last updated'}:{' '}
-            {formatDate('2026-03-18', lang)}
+            {locale === 'es' ? 'Ultima actualizacion' : 'Last updated'}:{' '}
+            {formatDate('2026-03-18', locale)}
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs text-zinc-600">
             {[
@@ -751,15 +752,15 @@ export default function InvestigacionPage() {
 
 function TimelineCard({
   event,
-  lang,
+  locale,
   tint,
 }: {
   readonly event: InvestigationTimelineEvent
-  readonly lang: Lang
+  readonly locale: Locale
   readonly tint?: 'red'
 }) {
   const catColor = CATEGORY_COLORS[event.category] ?? '#6b7280'
-  const catLabel = CATEGORY_LABELS[event.category]?.[lang] ?? event.category
+  const catLabel = CATEGORY_LABELS[event.category]?.[locale] ?? event.category
   const dotColor = tint === 'red' ? '#dc2626' : catColor
   const borderClass = tint === 'red'
     ? 'border-red-900/40 hover:border-red-800/60'
@@ -776,7 +777,7 @@ function TimelineCard({
       <div className={`rounded-lg border ${borderClass} ${bgClass} p-4`}>
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs font-medium text-zinc-500">
-            {formatDate(event.date, lang)}
+            {formatDate(event.date, locale)}
           </span>
           <span
             className="rounded-full px-2 py-0.5 text-xs font-semibold text-white"
@@ -791,10 +792,10 @@ function TimelineCard({
           )}
         </div>
         <h3 className="mt-1.5 text-sm font-semibold text-zinc-100">
-          {lang === 'es' ? event.title_es : event.title_en}
+          {locale === 'es' ? event.title_es : event.title_en}
         </h3>
         <p className="mt-1 text-sm leading-relaxed text-zinc-400">
-          {lang === 'es' ? event.description_es : event.description_en}
+          {locale === 'es' ? event.description_es : event.description_en}
         </p>
         {event.sources.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-2">
@@ -831,7 +832,7 @@ const ENTITY_TYPES = [
 
 type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error'
 
-function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
+function SubmitEvidenceForm({ locale }: { readonly locale: 'es' | 'en' }) {
   const [entityType, setEntityType] = useState('factcheck')
   const [formData, setFormData] = useState<Record<string, string>>({})
   const [status, setStatus] = useState<SubmitStatus>('idle')
@@ -848,10 +849,10 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
           { key: 'claim_en', label_es: 'Afirmacion (ingles)', label_en: 'Claim (English)', type: 'textarea', required: true },
           { key: 'status', label_es: 'Estado', label_en: 'Status', type: 'select', required: true,
             options: [
-              { value: 'confirmed', label: lang === 'es' ? 'Confirmado' : 'Confirmed' },
-              { value: 'alleged', label: lang === 'es' ? 'Presunto' : 'Alleged' },
-              { value: 'denied', label: lang === 'es' ? 'Negado' : 'Denied' },
-              { value: 'under_investigation', label: lang === 'es' ? 'En investigacion' : 'Under investigation' },
+              { value: 'confirmed', label: locale === 'es' ? 'Confirmado' : 'Confirmed' },
+              { value: 'alleged', label: locale === 'es' ? 'Presunto' : 'Alleged' },
+              { value: 'denied', label: locale === 'es' ? 'Negado' : 'Denied' },
+              { value: 'under_investigation', label: locale === 'es' ? 'En investigacion' : 'Under investigation' },
             ] },
           { key: 'source', label_es: 'Nombre de la fuente', label_en: 'Source name', type: 'text', required: true },
           ...common,
@@ -865,11 +866,11 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
           { key: 'description_en', label_es: 'Descripcion (ingles)', label_en: 'Description (English)', type: 'textarea', required: true },
           { key: 'category', label_es: 'Categoria', label_en: 'Category', type: 'select', required: true,
             options: [
-              { value: 'political', label: lang === 'es' ? 'Politico' : 'Political' },
-              { value: 'financial', label: lang === 'es' ? 'Financiero' : 'Financial' },
+              { value: 'political', label: locale === 'es' ? 'Politico' : 'Political' },
+              { value: 'financial', label: locale === 'es' ? 'Financiero' : 'Financial' },
               { value: 'legal', label: 'Legal' },
-              { value: 'media', label: lang === 'es' ? 'Medios' : 'Media' },
-              { value: 'coverup', label: lang === 'es' ? 'Encubrimiento' : 'Coverup' },
+              { value: 'media', label: locale === 'es' ? 'Medios' : 'Media' },
+              { value: 'coverup', label: locale === 'es' ? 'Encubrimiento' : 'Coverup' },
             ] },
           { key: 'source_name', label_es: 'Nombre de la fuente', label_en: 'Source name', type: 'text', required: true },
           ...common,
@@ -903,9 +904,9 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
           ...common,
           { key: 'verification_status', label_es: 'Estado de verificacion', label_en: 'Verification status', type: 'select', required: true,
             options: [
-              { value: 'verified', label: lang === 'es' ? 'Verificado' : 'Verified' },
-              { value: 'partially_verified', label: lang === 'es' ? 'Parcialmente verificado' : 'Partially verified' },
-              { value: 'unverified', label: lang === 'es' ? 'Sin verificar' : 'Unverified' },
+              { value: 'verified', label: locale === 'es' ? 'Verificado' : 'Verified' },
+              { value: 'partially_verified', label: locale === 'es' ? 'Parcialmente verificado' : 'Partially verified' },
+              { value: 'unverified', label: locale === 'es' ? 'Sin verificar' : 'Unverified' },
             ] },
         ]
       case 'government_response':
@@ -921,7 +922,7 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
       default:
         return common
     }
-  }, [entityType, lang])
+  }, [entityType, locale])
 
   function handleChange(key: string, value: string) {
     setFormData((prev) => ({ ...prev, [key]: value }))
@@ -938,7 +939,7 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
       const val = formData[field.key]
       if (field.required && (!val || val.trim() === '')) {
         setStatus('error')
-        setErrorMsg(lang === 'es' ? `Campo requerido: ${field.label_es}` : `Required field: ${field.label_en}`)
+        setErrorMsg(locale === 'es' ? `Campo requerido: ${field.label_es}` : `Required field: ${field.label_en}`)
         return
       }
       if (val) {
@@ -971,7 +972,7 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
       setFormData({})
     } catch {
       setStatus('error')
-      setErrorMsg(lang === 'es' ? 'Error de conexion' : 'Connection error')
+      setErrorMsg(locale === 'es' ? 'Error de conexion' : 'Connection error')
     }
   }
 
@@ -979,7 +980,7 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
     return (
       <div className="mt-4 rounded-lg border border-green-500/30 bg-green-500/5 p-6 text-center">
         <p className="text-sm font-medium text-green-400">
-          {lang === 'es'
+          {locale === 'es'
             ? 'Gracias. Tu aporte fue enviado y sera revisado antes de publicarse.'
             : 'Thank you. Your submission was sent and will be reviewed before publishing.'}
         </p>
@@ -988,7 +989,7 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
           onClick={() => { setStatus('idle'); setFormData({}) }}
           className="mt-3 text-xs text-green-400 underline hover:text-green-300"
         >
-          {lang === 'es' ? 'Enviar otro' : 'Submit another'}
+          {locale === 'es' ? 'Enviar otro' : 'Submit another'}
         </button>
       </div>
     )
@@ -999,7 +1000,7 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
       {/* Entity type selector */}
       <div>
         <label className="mb-1.5 block text-xs font-medium text-zinc-400">
-          {lang === 'es' ? 'Tipo de aporte' : 'Submission type'}
+          {locale === 'es' ? 'Tipo de aporte' : 'Submission type'}
         </label>
         <div className="flex flex-wrap gap-2">
           {ENTITY_TYPES.map((et) => (
@@ -1013,7 +1014,7 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
                   : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
               }`}
             >
-              {lang === 'es' ? et.label_es : et.label_en}
+              {locale === 'es' ? et.label_es : et.label_en}
             </button>
           ))}
         </div>
@@ -1023,7 +1024,7 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
       {fields.map((field) => (
         <div key={field.key}>
           <label htmlFor={`inv-${field.key}`} className="mb-1 block text-xs font-medium text-zinc-400">
-            {lang === 'es' ? field.label_es : field.label_en}
+            {locale === 'es' ? field.label_es : field.label_en}
             {field.required && <span className="ml-1 text-red-400">*</span>}
           </label>
           {'options' in field && field.options ? (
@@ -1033,7 +1034,7 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
               onChange={(e) => handleChange(field.key, e.target.value)}
               className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-200 focus:border-purple-500 focus:outline-none"
             >
-              <option value="">{lang === 'es' ? 'Seleccionar...' : 'Select...'}</option>
+              <option value="">{locale === 'es' ? 'Seleccionar...' : 'Select...'}</option>
               {field.options.map((opt) => (
                 <option key={opt.value} value={opt.value}>{opt.label}</option>
               ))}
@@ -1070,12 +1071,12 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
         className="rounded-lg bg-purple-600 px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-purple-500 disabled:opacity-50"
       >
         {status === 'submitting'
-          ? (lang === 'es' ? 'Enviando...' : 'Submitting...')
-          : (lang === 'es' ? 'Enviar aporte' : 'Submit evidence')}
+          ? (locale === 'es' ? 'Enviando...' : 'Submitting...')
+          : (locale === 'es' ? 'Enviar aporte' : 'Submit evidence')}
       </button>
 
       <p className="text-xs text-zinc-600">
-        {lang === 'es'
+        {locale === 'es'
           ? 'Todos los aportes son revisados por el equipo antes de publicarse. Se requiere una fuente verificable.'
           : 'All submissions are reviewed by the team before publishing. A verifiable source is required.'}
       </p>

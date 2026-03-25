@@ -1,8 +1,9 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 
-import { useLanguage } from '@/lib/language-context'
 import {
   IMPACT_STATS,
   FACTCHECK_ITEMS,
@@ -76,20 +77,20 @@ const t = {
 const BASE_PATH = '/caso/obras-publicas'
 
 export default function ObrasPublicasPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
       {/* Hero */}
       <section className="mb-12 text-center">
         <p className="text-xs font-medium uppercase tracking-widest text-amber-400">
-          {t.badge[lang]}
+          {t.badge[locale]}
         </p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl lg:text-5xl">
-          {t.title[lang]}
+          {t.title[locale]}
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
-          {t.subtitle[lang]}
+          {t.subtitle[locale]}
         </p>
       </section>
 
@@ -104,7 +105,7 @@ export default function ObrasPublicasPage() {
               {stat.value}
             </p>
             <p className="mt-1 text-xs text-zinc-400">
-              {lang === 'en' ? stat.label_en : stat.label_es}
+              {locale === 'en' ? stat.label_en : stat.label_es}
             </p>
             <p className="mt-0.5 text-xs text-zinc-600">{stat.source}</p>
           </div>
@@ -114,20 +115,20 @@ export default function ObrasPublicasPage() {
       {/* Summary */}
       <section className="mb-10 rounded-xl border border-zinc-800 bg-zinc-900/30 p-6 sm:p-8">
         <h2 className="mb-4 text-lg font-bold text-zinc-50">
-          {t.executiveSummaryTitle[lang]}
+          {t.executiveSummaryTitle[locale]}
         </h2>
         <p className="mb-3 text-sm leading-relaxed text-zinc-300">
-          {t.executiveSummaryP1[lang]}
+          {t.executiveSummaryP1[locale]}
         </p>
         <p className="mb-3 text-sm leading-relaxed text-zinc-300">
-          {t.executiveSummaryP2[lang]}
+          {t.executiveSummaryP2[locale]}
         </p>
         <div className="mt-4 flex flex-wrap gap-2 text-xs text-zinc-500">
-          <span>{FACTCHECK_ITEMS.length} {t.claimsVerified[lang]}</span>
+          <span>{FACTCHECK_ITEMS.length} {t.claimsVerified[locale]}</span>
           <span>&middot;</span>
-          <span>{TIMELINE_EVENTS.length} {t.documentedEvents[lang]}</span>
+          <span>{TIMELINE_EVENTS.length} {t.documentedEvents[locale]}</span>
           <span>&middot;</span>
-          <span>{ACTORS.length} {t.keyActors[lang]}</span>
+          <span>{ACTORS.length} {t.keyActors[locale]}</span>
         </div>
       </section>
 
@@ -138,10 +139,10 @@ export default function ObrasPublicasPage() {
           className="block rounded-xl border border-amber-500/20 bg-amber-500/5 p-6 text-center transition-colors hover:border-amber-500/40 hover:bg-amber-500/10"
         >
           <h3 className="text-lg font-bold text-amber-200">
-            {t.verifiedInvestigation[lang]}
+            {t.verifiedInvestigation[locale]}
           </h3>
           <p className="mt-1 text-sm text-zinc-400">
-            {FACTCHECK_ITEMS.length}{t.verifiedInvestigationDesc[lang]}
+            {FACTCHECK_ITEMS.length}{t.verifiedInvestigationDesc[locale]}
           </p>
         </Link>
       </section>
@@ -149,32 +150,32 @@ export default function ObrasPublicasPage() {
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         <EntryPoint
           href={`${BASE_PATH}/cronologia`}
-          title={t.chronologyTitle[lang]}
-          description={t.chronologyDesc[lang]}
+          title={t.chronologyTitle[locale]}
+          description={t.chronologyDesc[locale]}
           color="#f59e0b"
         />
         <EntryPoint
           href={`${BASE_PATH}/dinero`}
-          title={t.moneyTitle[lang]}
-          description={t.moneyDesc[lang]}
+          title={t.moneyTitle[locale]}
+          description={t.moneyDesc[locale]}
           color="#10b981"
         />
         <EntryPoint
           href={`${BASE_PATH}/conexiones`}
-          title={t.connectionsTitle[lang]}
-          description={t.connectionsDesc[lang]}
+          title={t.connectionsTitle[locale]}
+          description={t.connectionsDesc[locale]}
           color="#8b5cf6"
         />
         <EntryPoint
           href={`${BASE_PATH}/mapa`}
-          title={t.mapTitle[lang]}
-          description={t.mapDesc[lang]}
+          title={t.mapTitle[locale]}
+          description={t.mapDesc[locale]}
           color="#3b82f6"
         />
         <EntryPoint
           href={`${BASE_PATH}/investigacion`}
-          title={t.actorsTitle[lang]}
-          description={`${ACTORS.length}${t.actorsDesc[lang]}`}
+          title={t.actorsTitle[locale]}
+          description={`${ACTORS.length}${t.actorsDesc[locale]}`}
           color="#ef4444"
         />
       </section>

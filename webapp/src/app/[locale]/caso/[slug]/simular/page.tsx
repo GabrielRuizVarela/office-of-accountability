@@ -1,4 +1,6 @@
 'use client'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 /**
  * Caso Libra — Predictions page (coming soon).
@@ -8,7 +10,6 @@
  * swarm intelligence analysis.
  */
 
-import { useLanguage, type Lang } from '@/lib/language-context'
 
 const t = {
   comingSoon: { es: 'Proximamente', en: 'Coming Soon' },
@@ -30,7 +31,7 @@ const t = {
   simEngine: { es: 'Motor de simulacion', en: 'Simulation engine' },
   localExec: { es: 'ejecucion local', en: 'local execution' },
   data: { es: 'Datos', en: 'Data' },
-} satisfies Record<string, Record<Lang, string>>
+} satisfies Record<string, Record<Locale, string>>
 
 const STEPS = [
   {
@@ -103,27 +104,27 @@ const PREDICTIONS = [
 ]
 
 export default function PrediccionesPage() {
-  const { lang } = useLanguage()
+  const locale = useLocale() as Locale
 
   return (
     <div className="space-y-8">
       {/* Header */}
       <div className="text-center">
         <p className="text-xs font-medium uppercase tracking-widest text-purple-400">
-          {t.comingSoon[lang]}
+          {t.comingSoon[locale]}
         </p>
         <h1 className="mt-2 text-2xl font-bold text-zinc-50 sm:text-3xl">
-          {t.title[lang]}
+          {t.title[locale]}
         </h1>
         <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-zinc-400">
-          {t.subtitle[lang]}
+          {t.subtitle[locale]}
         </p>
       </div>
 
       {/* How it works */}
       <div className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-6">
         <h2 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
-          {t.howItWorks[lang]}
+          {t.howItWorks[locale]}
         </h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-3">
           {STEPS.map((s) => (
@@ -132,8 +133,8 @@ export default function PrediccionesPage() {
                 {s.step}
               </span>
               <div>
-                <p className="text-sm font-medium text-zinc-200">{s.title[lang]}</p>
-                <p className="mt-0.5 text-xs text-zinc-500">{s.desc[lang]}</p>
+                <p className="text-sm font-medium text-zinc-200">{s.title[locale]}</p>
+                <p className="mt-0.5 text-xs text-zinc-500">{s.desc[locale]}</p>
               </div>
             </div>
           ))}
@@ -142,9 +143,9 @@ export default function PrediccionesPage() {
 
       {/* Preview predictions */}
       <div>
-        <h2 className="text-lg font-bold text-zinc-50">{t.questionsInDev[lang]}</h2>
+        <h2 className="text-lg font-bold text-zinc-50">{t.questionsInDev[locale]}</h2>
         <p className="mt-1 text-sm text-zinc-400">
-          {t.questionsSubtitle[lang]}
+          {t.questionsSubtitle[locale]}
         </p>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           {PREDICTIONS.map((p, i) => (
@@ -153,14 +154,14 @@ export default function PrediccionesPage() {
               className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-5 transition-colors hover:border-zinc-700"
             >
               <h3 className="text-sm font-semibold text-zinc-100">
-                {p.question[lang]}
+                {p.question[locale]}
               </h3>
               <p className="mt-2 text-xs leading-relaxed text-zinc-400">
-                {p.preview[lang]}
+                {p.preview[locale]}
               </p>
               <div className="mt-3 flex items-center gap-2">
                 <span className="rounded-full bg-amber-500/20 px-2 py-0.5 text-xs font-medium text-amber-400">
-                  {t.inProgress[lang]}
+                  {t.inProgress[locale]}
                 </span>
                 <span className="text-xs text-zinc-600">11 agentes</span>
               </div>
@@ -172,15 +173,15 @@ export default function PrediccionesPage() {
       {/* Tech info */}
       <div className="rounded-lg border border-zinc-800/50 bg-zinc-900/20 p-5">
         <p className="text-xs leading-relaxed text-zinc-500">
-          {t.simEngine[lang]}:{' '}
+          {t.simEngine[locale]}:{' '}
           <span className="text-zinc-400">
-          {lang === 'es' ? 'Inteligencia de enjambre multi-agente' : 'Multi-agent swarm intelligence'}
+          {locale === 'es' ? 'Inteligencia de enjambre multi-agente' : 'Multi-agent swarm intelligence'}
           </span>
           {' · '}LLM:{' '}
-          <span className="text-zinc-400">{t.localExec[lang]}</span>
-          {' · '}{t.data[lang]}:{' '}
+          <span className="text-zinc-400">{t.localExec[locale]}</span>
+          {' · '}{t.data[locale]}:{' '}
           <span className="text-zinc-400">Neo4j knowledge graph</span>{' '}
-          {lang === 'es'
+          {locale === 'es'
             ? 'con 8 actores, 18 eventos, 40 relaciones'
             : 'with 8 actors, 18 events, 40 relationships'}
         </p>
