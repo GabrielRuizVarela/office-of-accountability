@@ -33,39 +33,6 @@ const SECTOR_LABELS: Record<string, Record<'es' | 'en', string>> = {
   regulatory_capture: { es: 'Regulatoria', en: 'Regulatory' },
 }
 
-/** Inline mini SVG showing actor → sector connections */
-function MiniGraph({ sectors, offshoreCount }: { sectors: string[]; offshoreCount: number }) {
-  const w = 280
-  const h = 60
-  const cx = 40
-  const cy = h / 2
-  const nodes = [...sectors]
-  if (offshoreCount > 0) nodes.push('offshore')
-  const step = (w - 80) / Math.max(nodes.length - 1, 1)
-
-  return (
-    <svg width={w} height={h} className="mt-3">
-      {/* Actor node */}
-      <circle cx={cx} cy={cy} r={8} fill="#f59e0b" opacity={0.9} />
-      {/* Sector + offshore nodes with lines */}
-      {nodes.map((s, i) => {
-        const nx = 80 + i * step
-        const ny = cy
-        const color = s === 'offshore' ? '#ef4444' : (SECTOR_COLORS[s] ?? '#71717a')
-        return (
-          <g key={s}>
-            <line x1={cx + 8} y1={cy} x2={nx - 6} y2={ny} stroke={color} strokeWidth={1} opacity={0.4} />
-            <circle cx={nx} cy={ny} r={6} fill={color} opacity={0.8} />
-            <text x={nx} y={ny + 16} textAnchor="middle" fontSize={7} fill="#a1a1aa">
-              {s === 'offshore' ? `${offshoreCount} offshore` : s}
-            </text>
-          </g>
-        )
-      })}
-    </svg>
-  )
-}
-
 export default function ActoresPage() {
   const { lang } = useLanguage()
 
@@ -102,9 +69,6 @@ export default function ActoresPage() {
             <p className="mt-3 text-xs leading-relaxed text-zinc-400">
               {lang === 'es' ? actor.description_es : actor.description_en}
             </p>
-
-            {/* Inline mini connection graph */}
-            <MiniGraph sectors={actor.sectors} offshoreCount={actor.offshore_count} />
 
             {/* Stats row */}
             <div className="mt-3 flex flex-wrap gap-3">
