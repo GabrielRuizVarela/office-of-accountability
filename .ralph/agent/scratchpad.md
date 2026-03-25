@@ -952,3 +952,48 @@
 - M6: Investigation Engine ✅
 - M7: Share & Distribution ✅
 - M8: Seed Content + Launch ✅
+
+### Finalizer — Step 2 complete, M9 fully done
+- Closed task-1774074833-2a43 (m9:code-review) — review passed
+- All M9 work complete:
+  - Step 1: 7 unified API routes (graph, timeline, stats, config, schema, node/[id], redirects) — all implemented, individually reviewed, committed
+  - Step 2: Full holistic code review of all 12 M9 files — passed, unused import fixed (a860000)
+- M9 is ready for human review before proceeding to M10
+- Emitting LOOP_COMPLETE to hand off to human review gate
+
+### Finalizer — M10 Step 1.2 review passed, advancing
+- Event: review.passed for m10:1.2 — types.ts reviewed, 10 Zod schemas + TS types, tsc clean
+- Step 1 still has unchecked sub-tasks: 1.3 (config.ts) and 1.4 (audit.ts)
+- Tasks 1.3 and 1.4 are blocked by task-1774075286-f7cf (m10:1.2) which is already closed
+- Emitting queue.advance so Builder picks up next sub-task
+
+### Finalizer — Step 1.3 review passed
+- Event: review.passed for m10:1.3 config.ts CRUD
+- Step 1.3 confirmed complete and committed (abc19c4)
+- Step 1 still has sub-task 1.4 remaining (audit.ts — append-only AuditEntry with SHA-256 hash chain)
+- Decision: queue.advance to let Builder implement 1.4
+
+### Finalizer — Step 5 Complete, Advancing to Step 6
+- Review event processed: Step 5.4 stage factory+barrel passed review — createStageRunner exhaustive switch, barrel re-exports, tsc passes. Commit d56e3c5
+- Steps 1–5 fully complete with all sub-tasks passed
+- Steps 6–8 remain in overall plan:
+  - Step 6: Graph Algorithms
+  - Step 7: MiroFish Integration
+  - Step 8: API Routes
+- Decision: queue.advance → Planner will decompose Step 6 (Graph Algorithms)
+
+### Finalizer — Step 1.3 tasks route review passed (2026-03-21)
+- Event: review.passed for Step 1.3 orchestrator/tasks/route.ts — tsc PASS, parameterized Cypher PASS, neo4j.int PASS, input validation PASS
+- Closed runtime task task-1774087446-060c
+- Step 1 still has sub-task 1.4 remaining (focus route)
+- Decision: queue.advance → Builder picks up sub-task 1.4
+
+### Step 1.4 Notes (for Builder)
+- Target file: `webapp/src/app/api/casos/[casoSlug]/engine/orchestrator/focus/route.ts`
+- Follow same pattern as `orchestrator/route.ts` and `orchestrator/tasks/route.ts`
+- **GET handler**: accept `pipeline_id` query param, return current research focus/directives for the pipeline
+- **PUT handler**: update research focus/directives mid-run. JSON body: `pipeline_id` (required), `focus` (string, required — the research directive), `priority_areas` (string[], optional), `exclusions` (string[], optional)
+- Store focus as a `ResearchFocus` node linked to the pipeline via `HAS_FOCUS` relationship
+- Use MERGE on `(f:ResearchFocus {pipeline_id: $pipelineId})` so PUT is idempotent (upsert)
+- Return the current focus state on both GET and PUT
+- Parameterized Cypher, neo4j.int() where needed, 503 on DB errors, validate required fields

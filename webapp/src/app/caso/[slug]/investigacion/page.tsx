@@ -56,7 +56,7 @@ const STATUS_LABELS: Record<FactcheckStatus, Record<Lang, string>> = {
   confirmed: { es: 'Confirmado', en: 'Confirmed' },
   alleged: { es: 'Presunto', en: 'Alleged' },
   denied: { es: 'Negado', en: 'Denied' },
-  under_investigation: { es: 'En investigacion', en: 'Under investigation' },
+  under_investigation: { es: 'En investigación', en: 'Under investigation' },
 }
 
 const CATEGORY_COLORS: Record<InvestigationCategory, string> = {
@@ -68,7 +68,7 @@ const CATEGORY_COLORS: Record<InvestigationCategory, string> = {
 }
 
 const CATEGORY_LABELS: Record<InvestigationCategory, Record<Lang, string>> = {
-  political: { es: 'Politico', en: 'Political' },
+  political: { es: 'Político', en: 'Political' },
   financial: { es: 'Financiero', en: 'Financial' },
   legal: { es: 'Legal', en: 'Legal' },
   media: { es: 'Medios', en: 'Media' },
@@ -856,14 +856,14 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
     switch (entityType) {
       case 'factcheck':
         return [
-          { key: 'claim_es', label_es: 'Afirmacion (espanol)', label_en: 'Claim (Spanish)', type: 'textarea', required: true },
-          { key: 'claim_en', label_es: 'Afirmacion (ingles)', label_en: 'Claim (English)', type: 'textarea', required: true },
+          { key: 'claim_es', label_es: 'Afirmación (español)', label_en: 'Claim (Spanish)', type: 'textarea', required: true },
+          { key: 'claim_en', label_es: 'Afirmación (inglés)', label_en: 'Claim (English)', type: 'textarea', required: true },
           { key: 'status', label_es: 'Estado', label_en: 'Status', type: 'select', required: true,
             options: [
               { value: 'confirmed', label: lang === 'es' ? 'Confirmado' : 'Confirmed' },
               { value: 'alleged', label: lang === 'es' ? 'Presunto' : 'Alleged' },
               { value: 'denied', label: lang === 'es' ? 'Negado' : 'Denied' },
-              { value: 'under_investigation', label: lang === 'es' ? 'En investigacion' : 'Under investigation' },
+              { value: 'under_investigation', label: lang === 'es' ? 'En investigación' : 'Under investigation' },
             ] },
           { key: 'source', label_es: 'Nombre de la fuente', label_en: 'Source name', type: 'text', required: true },
           ...common,
@@ -871,13 +871,13 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
       case 'event':
         return [
           { key: 'date', label_es: 'Fecha (YYYY-MM-DD)', label_en: 'Date (YYYY-MM-DD)', type: 'date', required: true },
-          { key: 'title_es', label_es: 'Titulo (espanol)', label_en: 'Title (Spanish)', type: 'text', required: true },
-          { key: 'title_en', label_es: 'Titulo (ingles)', label_en: 'Title (English)', type: 'text', required: true },
-          { key: 'description_es', label_es: 'Descripcion (espanol)', label_en: 'Description (Spanish)', type: 'textarea', required: true },
-          { key: 'description_en', label_es: 'Descripcion (ingles)', label_en: 'Description (English)', type: 'textarea', required: true },
-          { key: 'category', label_es: 'Categoria', label_en: 'Category', type: 'select', required: true,
+          { key: 'title_es', label_es: 'Título (español)', label_en: 'Title (Spanish)', type: 'text', required: true },
+          { key: 'title_en', label_es: 'Título (inglés)', label_en: 'Title (English)', type: 'text', required: true },
+          { key: 'description_es', label_es: 'Descripción (español)', label_en: 'Description (Spanish)', type: 'textarea', required: true },
+          { key: 'description_en', label_es: 'Descripción (inglés)', label_en: 'Description (English)', type: 'textarea', required: true },
+          { key: 'category', label_es: 'Categoría', label_en: 'Category', type: 'select', required: true,
             options: [
-              { value: 'political', label: lang === 'es' ? 'Politico' : 'Political' },
+              { value: 'political', label: lang === 'es' ? 'Político' : 'Political' },
               { value: 'financial', label: lang === 'es' ? 'Financiero' : 'Financial' },
               { value: 'legal', label: 'Legal' },
               { value: 'media', label: lang === 'es' ? 'Medios' : 'Media' },
@@ -889,10 +889,10 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
       case 'actor':
         return [
           { key: 'name', label_es: 'Nombre completo', label_en: 'Full name', type: 'text', required: true },
-          { key: 'role_es', label_es: 'Rol (espanol)', label_en: 'Role (Spanish)', type: 'text', required: true },
-          { key: 'role_en', label_es: 'Rol (ingles)', label_en: 'Role (English)', type: 'text', required: true },
-          { key: 'description_es', label_es: 'Descripcion (espanol)', label_en: 'Description (Spanish)', type: 'textarea', required: true },
-          { key: 'description_en', label_es: 'Descripcion (ingles)', label_en: 'Description (English)', type: 'textarea', required: true },
+          { key: 'role_es', label_es: 'Rol (español)', label_en: 'Role (Spanish)', type: 'text', required: true },
+          { key: 'role_en', label_es: 'Rol (inglés)', label_en: 'Role (English)', type: 'text', required: true },
+          { key: 'description_es', label_es: 'Descripción (español)', label_en: 'Description (Spanish)', type: 'textarea', required: true },
+          { key: 'description_en', label_es: 'Descripción (inglés)', label_en: 'Description (English)', type: 'textarea', required: true },
           { key: 'nationality', label_es: 'Nacionalidad', label_en: 'Nationality', type: 'text', required: true },
           ...common,
         ]
@@ -906,14 +906,14 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
         ]
       case 'evidence':
         return [
-          { key: 'title', label_es: 'Titulo del documento', label_en: 'Document title', type: 'text', required: true },
-          { key: 'type_es', label_es: 'Tipo (espanol)', label_en: 'Type (Spanish)', type: 'text', required: true },
-          { key: 'type_en', label_es: 'Tipo (ingles)', label_en: 'Type (English)', type: 'text', required: true },
+          { key: 'title', label_es: 'Título del documento', label_en: 'Document title', type: 'text', required: true },
+          { key: 'type_es', label_es: 'Tipo (español)', label_en: 'Type (Spanish)', type: 'text', required: true },
+          { key: 'type_en', label_es: 'Tipo (inglés)', label_en: 'Type (English)', type: 'text', required: true },
           { key: 'date', label_es: 'Fecha (YYYY-MM-DD)', label_en: 'Date (YYYY-MM-DD)', type: 'date', required: true },
-          { key: 'summary_es', label_es: 'Resumen (espanol)', label_en: 'Summary (Spanish)', type: 'textarea', required: true },
-          { key: 'summary_en', label_es: 'Resumen (ingles)', label_en: 'Summary (English)', type: 'textarea', required: true },
+          { key: 'summary_es', label_es: 'Resumen (español)', label_en: 'Summary (Spanish)', type: 'textarea', required: true },
+          { key: 'summary_en', label_es: 'Resumen (inglés)', label_en: 'Summary (English)', type: 'textarea', required: true },
           ...common,
-          { key: 'verification_status', label_es: 'Estado de verificacion', label_en: 'Verification status', type: 'select', required: true,
+          { key: 'verification_status', label_es: 'Estado de verificación', label_en: 'Verification status', type: 'select', required: true,
             options: [
               { value: 'verified', label: lang === 'es' ? 'Verificado' : 'Verified' },
               { value: 'partially_verified', label: lang === 'es' ? 'Parcialmente verificado' : 'Partially verified' },
@@ -923,10 +923,10 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
       case 'government_response':
         return [
           { key: 'date', label_es: 'Fecha (YYYY-MM-DD)', label_en: 'Date (YYYY-MM-DD)', type: 'date', required: true },
-          { key: 'action_es', label_es: 'Accion (espanol)', label_en: 'Action (Spanish)', type: 'textarea', required: true },
-          { key: 'action_en', label_es: 'Accion (ingles)', label_en: 'Action (English)', type: 'textarea', required: true },
-          { key: 'effect_es', label_es: 'Efecto (espanol)', label_en: 'Effect (Spanish)', type: 'textarea', required: true },
-          { key: 'effect_en', label_es: 'Efecto (ingles)', label_en: 'Effect (English)', type: 'textarea', required: true },
+          { key: 'action_es', label_es: 'Accion (español)', label_en: 'Action (Spanish)', type: 'textarea', required: true },
+          { key: 'action_en', label_es: 'Accion (inglés)', label_en: 'Action (English)', type: 'textarea', required: true },
+          { key: 'effect_es', label_es: 'Efecto (español)', label_en: 'Effect (Spanish)', type: 'textarea', required: true },
+          { key: 'effect_en', label_es: 'Efecto (inglés)', label_en: 'Effect (English)', type: 'textarea', required: true },
           { key: 'source', label_es: 'Fuente', label_en: 'Source', type: 'text', required: true },
           ...common,
         ]

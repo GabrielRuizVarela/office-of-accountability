@@ -50,7 +50,7 @@ const TITLE: Record<Lang, string> = {
 }
 
 const SUBTITLE: Record<Lang, string> = {
-  es: 'Diecisiete capitulos sobre como nueve bases de datos publicas revelan las conexiones entre el cargo publico, los directorios corporativos, las sociedades offshore, el financiamiento de campanas, las armas financieras, el escandalo de los seguros, la puerta giratoria, el poder judicial, la riqueza inexplicable, el imperio Macri, el cartel de la salud, la captura del Estado por JP Morgan, y el cruce CUIT/DNI que conecto 34.776 entidades',
+  es: 'Diecisiete capitulos sobre como nueve bases de datos publicas revelan las conexiones entre el cargo publico, los directorios corporativos, las sociedades offshore, el financiamiento de campañas, las armas financieras, el escandalo de los seguros, la puerta giratoria, el poder judicial, la riqueza inexplicable, el imperio Macri, el cartel de la salud, la captura del Estado por JP Morgan, y el cruce CUIT/DNI que conecto 34.776 entidades',
   en: 'Seventeen chapters on how nine public datasets reveal the connections between public office, corporate boards, offshore entities, campaign financing, financial arms, the insurance scandal, the revolving door, the judiciary, unexplained wealth, the Macri empire, the health cartel, State capture by JP Morgan, and the CUIT/DNI cross-match that connected 34,776 entities',
 }
 

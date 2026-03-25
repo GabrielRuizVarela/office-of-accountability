@@ -57,10 +57,10 @@ export const investigations: InvestigationConfig[] = [
   },
   {
     slug: 'finanzas-politicas',
-    title: 'Finanzas Politicas Argentinas',
-    subtitle: 'Investigacion activa',
+    title: 'Finanzas Políticas Argentinas',
+    subtitle: 'Investigación activa',
     description:
-      'Financiamiento de campañas, declaraciones juradas patrimoniales, sociedades offshore y conexiones entre politicos y empresas.',
+      'Financiamiento de campañas, declaraciones juradas patrimoniales, sociedades offshore y conexiones entre políticos y empresas.',
     status: 'active',
     color: 'emerald',
     stats: [
@@ -83,6 +83,21 @@ export const investigations: InvestigationConfig[] = [
       { label: 'Costo anual', value: 'USD 22.5B' },
     ],
     href: '/caso/monopolios',
+  },
+  {
+    slug: 'obras-publicas',
+    title: 'Obras Públicas Argentinas',
+    subtitle: 'Investigación activa — 30 olas de enriquecimiento',
+    description:
+      'Trazabilidad de contratos de obra pública: CONTRAT.AR, MapaInversiones, Odebrecht, Cuadernos, Siemens. 56,122 entidades, 13,277 cruces contra el grafo de finanzas políticas.',
+    status: 'active',
+    color: 'sky',
+    stats: [
+      { label: 'Entidades', value: '56,122' },
+      { label: 'Obras', value: '7,486' },
+      { label: 'Cruces', value: '13,277' },
+    ],
+    href: '/caso/obras-publicas',
   },
   {
     slug: 'riesgo-nuclear',

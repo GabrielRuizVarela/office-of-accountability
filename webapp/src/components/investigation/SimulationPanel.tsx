@@ -108,12 +108,12 @@ export function SimulationPanel({ casoSlug }: SimulationPanelProps) {
       {status === 'idle' && (
         <div className="flex flex-1 flex-col items-center justify-center gap-4 p-8">
           <div className="max-w-md text-center">
-            <h2 className="text-xl font-bold text-zinc-50">MiroFish Swarm Intelligence</h2>
+            <h2 className="text-xl font-bold text-zinc-50">Swarm Intelligence</h2>
             <p className="mt-2 text-sm text-zinc-400">
-              Connect to MiroFish to run AI-powered network analysis simulations using the Epstein investigation data.
+              Run AI-powered network analysis simulations using the investigation data.
             </p>
             <p className="mt-2 text-xs text-zinc-600">
-              Requires a running MiroFish instance with llama.cpp on a GPU machine.
+              Requires a running llama.cpp instance on a GPU machine.
             </p>
           </div>
           <button
@@ -127,7 +127,7 @@ export function SimulationPanel({ casoSlug }: SimulationPanelProps) {
 
       {status === 'connecting' && (
         <div className="flex flex-1 items-center justify-center text-zinc-500">
-          Connecting to MiroFish...
+          Connecting to LLM server...
         </div>
       )}
 

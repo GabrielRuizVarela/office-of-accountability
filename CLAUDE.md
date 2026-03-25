@@ -6,7 +6,7 @@ Civic knowledge platform for investigative research. Multiple active investigati
 - Next.js 16 + Vite + React 19 + TailwindCSS 4
 - Neo4j 5 Community (graph database, Docker)
 - neo4j-driver-lite (ESM/browser build)
-- Qwen 3.5 9B (local LLM via llama.cpp on GPU)
+- MiroFish (local LLM via llama.cpp on GPU)
 - TypeScript, Zod 4
 
 ## Key Commands
@@ -29,7 +29,7 @@ MIROFISH_API_URL=http://localhost:8080  # llama.cpp server
 - LIMIT clauses need `neo4j.int(n)` or `toInteger($limit)` — JS numbers are floats
 - Graph API uses two-pass queries to avoid O(n^2) cartesian products
 - Confidence tiers: gold (curated) > silver (web-verified) > bronze (raw ingested)
-- Qwen 3.5 uses mandatory thinking mode — check `reasoning_content` field, not just `content`
+- Local LLM uses thinking mode — check `reasoning_content` field, not just `content`
 - Investigation data files use bilingual (ES primary, EN secondary) typed arrays
 - ForceGraph components freeze nodes with fx/fy after layout converges (no animation)
 - Cross-reference engine uses in-memory Map joins (Cypher cartesian joins timeout on large sets)

@@ -97,8 +97,8 @@ const t = {
     es: 'Analisis de Red con IA',
   },
   simulationDesc: {
-    en: 'MiroFish swarm intelligence — simulate multi-agent analysis of the network using locally-hosted LLMs. Ask questions from the perspective of investigators, prosecutors, and analysts.',
-    es: 'Inteligencia de enjambre MiroFish — simula analisis multi-agente de la red usando LLMs locales. Haz preguntas desde la perspectiva de investigadores, fiscales y analistas.',
+    en: 'Simulate multi-agent analysis of the network using locally-hosted LLMs. Ask questions from the perspective of investigators, prosecutors, and analysts.',
+    es: 'Simula análisis multi-agente de la red usando LLMs locales. Haz preguntas desde la perspectiva de investigadores, fiscales y analistas.',
   },
 } as const
 
