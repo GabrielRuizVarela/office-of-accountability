@@ -10,6 +10,7 @@
 
 import { Link } from '@/i18n/navigation'
 import { useCallback, useReducer } from 'react'
+import { useTranslations } from 'next-intl'
 
 interface FormState {
   readonly email: string
@@ -45,6 +46,7 @@ const INITIAL_STATE: FormState = {
 }
 
 export default function SignInPage() {
+  const t = useTranslations('auth')
   const [state, dispatch] = useReducer(formReducer, INITIAL_STATE)
 
   const handleSubmit = useCallback(
@@ -69,19 +71,19 @@ export default function SignInPage() {
           // Check if the response indicates an error via URL
           const url = res.url || ''
           if (url.includes('error=')) {
-            dispatch({ type: 'SET_ERROR', error: 'Email o contraseña incorrectos' })
+            dispatch({ type: 'SET_ERROR', error: t('error') })
             return
           }
           window.location.href = '/'
           return
         }
 
-        dispatch({ type: 'SET_ERROR', error: 'Email o contraseña incorrectos' })
+        dispatch({ type: 'SET_ERROR', error: t('error') })
       } catch {
-        dispatch({ type: 'SET_ERROR', error: 'Error de conexión. Intenta de nuevo.' })
+        dispatch({ type: 'SET_ERROR', error: t('connectionError') })
       }
     },
-    [state.email, state.password],
+    [state.email, state.password, t],
   )
 
   const handleFieldChange = useCallback(
@@ -103,10 +105,10 @@ export default function SignInPage() {
             ORC
           </Link>
           <h1 className="mt-4 text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Iniciar sesión
+            {t('signIn')}
           </h1>
           <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-            Ingresá a tu cuenta para contribuir
+            {t('signInSubtitle')}
           </p>
         </div>
 
@@ -127,7 +129,7 @@ export default function SignInPage() {
               htmlFor="email"
               className="mb-1.5 block text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              Email
+              {t('email')}
             </label>
             <input
               id="email"
@@ -146,7 +148,7 @@ export default function SignInPage() {
               htmlFor="password"
               className="mb-1.5 block text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              Contraseña
+              {t('password')}
             </label>
             <input
               id="password"
@@ -165,7 +167,7 @@ export default function SignInPage() {
               href="/auth/forgot-password"
               className="text-xs font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
             >
-              ¿Olvidaste tu contraseña?
+              {t('forgotPassword')}
             </Link>
           </div>
 
@@ -174,14 +176,14 @@ export default function SignInPage() {
             disabled={state.isSubmitting}
             className="w-full rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
           >
-            {state.isSubmitting ? 'Ingresando...' : 'Ingresar'}
+            {state.isSubmitting ? t('submitting') : t('submit')}
           </button>
         </form>
 
         {/* Divider */}
         <div className="my-6 flex items-center gap-3">
           <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
-          <span className="text-xs text-zinc-500 dark:text-zinc-500">o</span>
+          <span className="text-xs text-zinc-500 dark:text-zinc-500">{t('or')}</span>
           <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
         </div>
 
@@ -209,17 +211,17 @@ export default function SignInPage() {
               d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
             />
           </svg>
-          Continuar con Google
+          {t('continueWithGoogle')}
         </a>
 
         {/* Sign up link */}
         <p className="mt-6 text-center text-sm text-zinc-600 dark:text-zinc-400">
-          ¿No tenés cuenta?{' '}
+          {t('dontHaveAccount')}{' '}
           <Link
             href="/auth/signup"
             className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
           >
-            Crear cuenta
+            {t('signUp')}
           </Link>
         </p>
       </div>

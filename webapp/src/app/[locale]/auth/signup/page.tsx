@@ -9,6 +9,7 @@
 
 import { Link } from '@/i18n/navigation'
 import { useCallback, useReducer } from 'react'
+import { useTranslations } from 'next-intl'
 
 interface FormState {
   readonly name: string
@@ -71,6 +72,7 @@ const INITIAL_STATE: FormState = {
 }
 
 export default function SignUpPage() {
+  const t = useTranslations('auth')
   const [state, dispatch] = useReducer(formReducer, INITIAL_STATE)
 
   const handleSubmit = useCallback(
@@ -100,11 +102,11 @@ export default function SignUpPage() {
             dispatch({
               type: 'SET_FIELD_ERRORS',
               errors,
-              error: data.error || 'Datos inválidos',
+              error: data.error || t('invalidData'),
             })
             return
           }
-          dispatch({ type: 'SET_ERROR', error: data.error || 'Error al crear la cuenta' })
+          dispatch({ type: 'SET_ERROR', error: data.error || t('accountCreationError') })
           return
         }
 
@@ -133,10 +135,10 @@ export default function SignUpPage() {
         // Registration succeeded but auto-signin failed — redirect to sign-in
         window.location.href = '/auth/signin?registered=true'
       } catch {
-        dispatch({ type: 'SET_ERROR', error: 'Error de conexión. Intenta de nuevo.' })
+        dispatch({ type: 'SET_ERROR', error: t('connectionError') })
       }
     },
-    [state.name, state.email, state.password],
+    [state.name, state.email, state.password, t],
   )
 
   const handleFieldChange = useCallback(
@@ -163,10 +165,10 @@ export default function SignUpPage() {
             ORC
           </Link>
           <h1 className="mt-4 text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Crear cuenta
+            {t('signUp')}
           </h1>
           <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-            Registrate para contribuir con investigaciones
+            {t('signUpSubtitle')}
           </p>
         </div>
 
@@ -187,7 +189,7 @@ export default function SignUpPage() {
               htmlFor="name"
               className="mb-1.5 block text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              Nombre
+              {t('name')}
             </label>
             <input
               id="name"
@@ -197,7 +199,7 @@ export default function SignUpPage() {
               value={state.name}
               onChange={handleFieldChange('name')}
               className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 outline-none transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder-zinc-500 dark:focus:border-blue-400 dark:focus:ring-blue-400/20"
-              placeholder="Tu nombre"
+              placeholder={t('namePlaceholder')}
             />
             {fieldError('name') && (
               <p className="mt-1 text-xs text-red-600 dark:text-red-400">{fieldError('name')}</p>
@@ -209,7 +211,7 @@ export default function SignUpPage() {
               htmlFor="email"
               className="mb-1.5 block text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              Email
+              {t('email')}
             </label>
             <input
               id="email"
@@ -231,7 +233,7 @@ export default function SignUpPage() {
               htmlFor="password"
               className="mb-1.5 block text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              Contraseña
+              {t('password')}
             </label>
             <input
               id="password"
@@ -242,7 +244,7 @@ export default function SignUpPage() {
               value={state.password}
               onChange={handleFieldChange('password')}
               className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 outline-none transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder-zinc-500 dark:focus:border-blue-400 dark:focus:ring-blue-400/20"
-              placeholder="Mínimo 8 caracteres"
+              placeholder={t('minChars')}
             />
             {fieldError('password') && (
               <p className="mt-1 text-xs text-red-600 dark:text-red-400">
@@ -256,14 +258,14 @@ export default function SignUpPage() {
             disabled={state.isSubmitting}
             className="w-full rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
           >
-            {state.isSubmitting ? 'Creando cuenta...' : 'Crear cuenta'}
+            {state.isSubmitting ? t('creatingAccount') : t('signUp')}
           </button>
         </form>
 
         {/* Divider */}
         <div className="my-6 flex items-center gap-3">
           <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
-          <span className="text-xs text-zinc-500 dark:text-zinc-500">o</span>
+          <span className="text-xs text-zinc-500 dark:text-zinc-500">{t('or')}</span>
           <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
         </div>
 
@@ -291,17 +293,17 @@ export default function SignUpPage() {
               d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
             />
           </svg>
-          Continuar con Google
+          {t('continueWithGoogle')}
         </a>
 
         {/* Sign in link */}
         <p className="mt-6 text-center text-sm text-zinc-600 dark:text-zinc-400">
-          ¿Ya tenés cuenta?{' '}
+          {t('alreadyHaveAccount')}{' '}
           <Link
             href="/auth/signin"
             className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
           >
-            Iniciar sesión
+            {t('signIn')}
           </Link>
         </p>
       </div>

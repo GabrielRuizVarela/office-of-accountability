@@ -9,6 +9,7 @@
 
 import { Link } from '@/i18n/navigation'
 import { useCallback, useReducer } from 'react'
+import { useTranslations } from 'next-intl'
 
 interface FormState {
   readonly email: string
@@ -36,6 +37,7 @@ function formReducer(state: FormState, action: FormAction): FormState {
 }
 
 export default function ForgotPasswordPage() {
+  const t = useTranslations('auth')
   const [state, dispatch] = useReducer(formReducer, {
     email: '',
     status: 'idle',
@@ -56,16 +58,16 @@ export default function ForgotPasswordPage() {
 
         if (!res.ok) {
           const data = await res.json()
-          dispatch({ type: 'SET_ERROR', error: data.error || 'Error al enviar el email' })
+          dispatch({ type: 'SET_ERROR', error: data.error || t('sendEmailError') })
           return
         }
 
         dispatch({ type: 'SET_SENT' })
       } catch {
-        dispatch({ type: 'SET_ERROR', error: 'Error de conexión. Intenta de nuevo.' })
+        dispatch({ type: 'SET_ERROR', error: t('connectionError') })
       }
     },
-    [state.email],
+    [state.email, t],
   )
 
   if (state.status === 'sent') {
@@ -85,16 +87,19 @@ export default function ForgotPasswordPage() {
               </svg>
             </div>
             <h1 className="mt-4 text-xl font-bold text-zinc-900 dark:text-zinc-50">
-              Revisá tu email
+              {t('checkYourEmail')}
             </h1>
             <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-              Si hay una cuenta asociada a <strong>{state.email}</strong>, te enviamos un enlace para restablecer tu contraseña.
+              {t.rich('resetEmailSent', {
+                email: state.email,
+                b: (chunks) => <strong>{chunks}</strong>,
+              })}
             </p>
             <Link
               href="/auth/signin"
               className="mt-6 inline-block text-sm font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
             >
-              Volver al inicio de sesión
+              {t('backToSignInPage')}
             </Link>
           </div>
         </div>
@@ -113,10 +118,10 @@ export default function ForgotPasswordPage() {
             ORC
           </Link>
           <h1 className="mt-4 text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Restablecer contraseña
+            {t('resetPassword')}
           </h1>
           <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-            Ingresá tu email y te enviaremos un enlace para restablecer tu contraseña
+            {t('forgotPasswordSubtitle')}
           </p>
         </div>
 
@@ -135,7 +140,7 @@ export default function ForgotPasswordPage() {
               htmlFor="email"
               className="mb-1.5 block text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              Email
+              {t('email')}
             </label>
             <input
               id="email"
@@ -154,7 +159,7 @@ export default function ForgotPasswordPage() {
             disabled={state.status === 'submitting'}
             className="w-full rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
           >
-            {state.status === 'submitting' ? 'Enviando...' : 'Enviar enlace'}
+            {state.status === 'submitting' ? t('sending') : t('sendResetLink')}
           </button>
         </form>
 
@@ -163,7 +168,7 @@ export default function ForgotPasswordPage() {
             href="/auth/signin"
             className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
           >
-            Volver al inicio de sesión
+            {t('backToSignInPage')}
           </Link>
         </p>
       </div>

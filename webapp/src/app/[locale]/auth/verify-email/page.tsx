@@ -10,6 +10,7 @@
 import { Link } from '@/i18n/navigation'
 import { useCallback, useEffect, useReducer } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 type Status = 'loading' | 'success' | 'error'
 
@@ -32,6 +33,7 @@ function pageReducer(state: PageState, action: PageAction): PageState {
 }
 
 export default function VerifyEmailPage() {
+  const t = useTranslations('auth')
   const searchParams = useSearchParams()
   const email = searchParams.get('email')
   const token = searchParams.get('token')
@@ -43,7 +45,7 @@ export default function VerifyEmailPage() {
 
   const verify = useCallback(async () => {
     if (!email || !token) {
-      dispatch({ type: 'SET_ERROR', error: 'Enlace de verificación inválido' })
+      dispatch({ type: 'SET_ERROR', error: t('invalidVerificationLink') })
       return
     }
 
@@ -59,7 +61,7 @@ export default function VerifyEmailPage() {
       if (!res.ok) {
         dispatch({
           type: 'SET_ERROR',
-          error: data.error || 'Error al verificar el email',
+          error: data.error || t('verifyEmailError'),
         })
         return
       }
@@ -68,10 +70,10 @@ export default function VerifyEmailPage() {
     } catch {
       dispatch({
         type: 'SET_ERROR',
-        error: 'Error de conexión. Intenta de nuevo.',
+        error: t('connectionError'),
       })
     }
-  }, [email, token])
+  }, [email, token, t])
 
   useEffect(() => {
     verify()
@@ -91,7 +93,7 @@ export default function VerifyEmailPage() {
           <div className="mt-8">
             <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-zinc-300 border-t-zinc-900 dark:border-zinc-700 dark:border-t-zinc-100" />
             <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
-              Verificando tu email...
+              {t('verifyingEmail')}
             </p>
           </div>
         )}
@@ -104,16 +106,16 @@ export default function VerifyEmailPage() {
               </svg>
             </div>
             <h1 className="mt-4 text-xl font-bold text-zinc-900 dark:text-zinc-50">
-              Email verificado
+              {t('emailVerified')}
             </h1>
             <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-              Tu cuenta fue verificada exitosamente. Ya podés contribuir con investigaciones.
+              {t('emailVerifiedSuccess')}
             </p>
             <Link
               href="/auth/signin"
               className="mt-6 inline-block rounded-lg bg-zinc-900 px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
-              Iniciar sesión
+              {t('signIn')}
             </Link>
           </div>
         )}
@@ -126,7 +128,7 @@ export default function VerifyEmailPage() {
               </svg>
             </div>
             <h1 className="mt-4 text-xl font-bold text-zinc-900 dark:text-zinc-50">
-              Error de verificación
+              {t('verificationError')}
             </h1>
             <p className="mt-2 text-sm text-red-600 dark:text-red-400">
               {state.error}
@@ -135,7 +137,7 @@ export default function VerifyEmailPage() {
               href="/auth/signin"
               className="mt-6 inline-block text-sm font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
             >
-              Volver al inicio de sesión
+              {t('backToSignInPage')}
             </Link>
           </div>
         )}
