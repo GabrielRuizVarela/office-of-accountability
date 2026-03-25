@@ -205,6 +205,9 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     frozenRef.current = false
   }, [data])
 
+  // Track whether we've done the initial zoomToFit
+  const hasAutoZoomed = useRef(false)
+
   // Freeze all nodes after layout converges — fx/fy pins make d3-force skip force calcs
   const handleEngineStop = useCallback(() => {
     if (frozenRef.current) return
@@ -216,7 +219,11 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       if (typeof node.y === 'number') node.fy = node.y
     }
     frozenRef.current = true
-    fg.zoomToFit(0, 40) // instant, no animation
+    // Only auto-zoomToFit on the very first convergence, not on subsequent data merges
+    if (!hasAutoZoomed.current) {
+      hasAutoZoomed.current = true
+      fg.zoomToFit(0, 40)
+    }
   }, [fgData.nodes])
 
   // Configure d3 forces (runs once on mount / data change)
@@ -228,13 +235,17 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     }
     try {
       const n = data.nodes.length
+      // Cap charge strength to avoid numerical overflow on large graphs
+      const chargeStrength = n > 2000 ? -300 : -Math.max(80, n * 2.5)
+      const linkDistance = n > 2000 ? 30 : Math.max(50, n * 1.5)
+
       const charge = fgAny.d3Force('charge')
       if (charge && typeof (charge as { strength: (v: number) => void }).strength === 'function') {
-        (charge as { strength: (v: number) => void }).strength(-Math.max(120, n * 4))
+        (charge as { strength: (v: number) => void }).strength(chargeStrength)
       }
       const link = fgAny.d3Force('link')
       if (link && typeof (link as { distance: (v: number) => void }).distance === 'function') {
-        (link as { distance: (v: number) => void }).distance(Math.max(80, n * 2.5))
+        (link as { distance: (v: number) => void }).distance(linkDistance)
       }
     } catch { /* */ }
   }, [data.nodes.length])
@@ -485,9 +496,6 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         nodeLabel=""
         onNodeClick={(node: NodeObject<FGNode>) => {
           handleNodeClick(node)
-          if (node.x != null && node.y != null) {
-            graphRef.current?.centerAt(node.x, node.y, 300)
-          }
         }}
         onNodeRightClick={handleNodeRightClick}
         onNodeHover={(node: NodeObject<FGNode> | null) => {
@@ -499,13 +507,13 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
         enableZoomInteraction={true}
         enablePanInteraction={true}
         enableNodeDrag={false}
-        warmupTicks={300}
-        cooldownTicks={0}
-        cooldownTime={0}
-        d3AlphaDecay={0.0228}
+        warmupTicks={0}
+        cooldownTicks={200}
+        cooldownTime={8000}
+        d3AlphaDecay={0.05}
         d3VelocityDecay={0.4}
         onEngineStop={handleEngineStop}
-        minZoom={0.3}
+        minZoom={0.01}
         maxZoom={20}
       />
     </div>

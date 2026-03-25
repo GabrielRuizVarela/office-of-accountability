@@ -20,24 +20,37 @@ import type { GraphData, GraphNode, GraphLink } from '../../../../lib/neo4j/type
 // Label config for the case graph
 // ---------------------------------------------------------------------------
 
-const EPSTEIN_LABELS: ReadonlyArray<{ label: string; color: string; name: string }> = [
-  { label: 'Person', color: '#3b82f6', name: 'People' },
-  { label: 'Organization', color: '#8b5cf6', name: 'Organizations' },
-  { label: 'Location', color: '#10b981', name: 'Locations' },
-  { label: 'Event', color: '#f59e0b', name: 'Events' },
-  { label: 'Document', color: '#ef4444', name: 'Documents' },
-  { label: 'LegalCase', color: '#ec4899', name: 'Legal Cases' },
-  { label: 'Flight', color: '#f97316', name: 'Flights' },
-]
-
-const NUCLEAR_LABELS: ReadonlyArray<{ label: string; color: string; name: string }> = [
-  { label: 'NuclearSignal', color: '#eab308', name: 'Signals' },
-  { label: 'NuclearActor', color: '#ef4444', name: 'Actors' },
-  { label: 'WeaponSystem', color: '#f97316', name: 'Weapons' },
-  { label: 'Treaty', color: '#3b82f6', name: 'Treaties' },
-  { label: 'NuclearFacility', color: '#10b981', name: 'Facilities' },
-  { label: 'RiskBriefing', color: '#a855f7', name: 'Briefings' },
-]
+const LABEL_CONFIGS: Record<string, ReadonlyArray<{ label: string; color: string; name: string }>> = {
+  default: [
+    { label: 'Person', color: '#3b82f6', name: 'People' },
+    { label: 'Organization', color: '#8b5cf6', name: 'Organizations' },
+    { label: 'Location', color: '#10b981', name: 'Locations' },
+    { label: 'Event', color: '#f59e0b', name: 'Events' },
+    { label: 'Document', color: '#ef4444', name: 'Documents' },
+    { label: 'LegalCase', color: '#ec4899', name: 'Legal Cases' },
+    { label: 'Flight', color: '#f97316', name: 'Flights' },
+  ],
+  'caso-dictadura': [
+    { label: 'DictaduraCCD', color: '#ef4444', name: 'CCDs' },
+    { label: 'DictaduraUnidadMilitar', color: '#f97316', name: 'Unidades' },
+    { label: 'DictaduraOrganizacion', color: '#8b5cf6', name: 'Organizaciones' },
+    { label: 'DictaduraCausa', color: '#06b6d4', name: 'Causas' },
+    { label: 'DictaduraEvento', color: '#f59e0b', name: 'Eventos' },
+    { label: 'DictaduraOperacion', color: '#a855f7', name: 'Operaciones' },
+    { label: 'DictaduraPersona', color: '#3b82f6', name: 'Personas' },
+    { label: 'DictaduraLugar', color: '#10b981', name: 'Lugares' },
+    { label: 'DictaduraDocumento', color: '#ec4899', name: 'Documentos' },
+    { label: 'DictaduraActa', color: '#64748b', name: 'Actas' },
+  ],
+  'riesgo-nuclear': [
+    { label: 'NuclearSignal', color: '#eab308', name: 'Signals' },
+    { label: 'NuclearActor', color: '#ef4444', name: 'Actors' },
+    { label: 'WeaponSystem', color: '#f97316', name: 'Weapons' },
+    { label: 'Treaty', color: '#3b82f6', name: 'Treaties' },
+    { label: 'NuclearFacility', color: '#10b981', name: 'Facilities' },
+    { label: 'RiskBriefing', color: '#a855f7', name: 'Briefings' },
+  ],
+}
 
 // ---------------------------------------------------------------------------
 // Component
@@ -45,8 +58,15 @@ const NUCLEAR_LABELS: ReadonlyArray<{ label: string; color: string; name: string
 
 export default function GrafoPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params)
-  const LABEL_CONFIG = slug === 'riesgo-nuclear' ? NUCLEAR_LABELS : EPSTEIN_LABELS
+  const LABEL_CONFIG = LABEL_CONFIGS[slug] ?? LABEL_CONFIGS.default
   const graphRef = useRef<ForceGraphHandle>(null)
+
+  // For dictadura: structural + personas ON by default, high-volume detail OFF
+  const DICTADURA_DEFAULT_ON = new Set([
+    'DictaduraPersona', 'DictaduraCCD', 'DictaduraUnidadMilitar',
+    'DictaduraOrganizacion', 'DictaduraCausa', 'DictaduraEvento',
+    'DictaduraOperacion',
+  ])
 
   // Graph data & UI state
   const [graphData, setGraphData] = useState<GraphData>({ nodes: [], links: [] })
@@ -54,8 +74,10 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null)
-  const [visibleLabels, setVisibleLabels] = useState<Set<string> | null>(null)
-  const [tierFilter, setTierFilter] = useState<string>('all')
+  const [visibleLabels, setVisibleLabels] = useState<Set<string> | null>(
+    slug === 'caso-dictadura' ? DICTADURA_DEFAULT_ON : null,
+  )
+  const [tierFilter, setTierFilter] = useState<string>(slug === 'caso-dictadura' ? 'verified' : 'all')
   const [hiddenCategories, setHiddenCategories] = useState<Set<string>>(new Set())
   const [pinnedNodeIds, setPinnedNodeIds] = useState<Set<string>>(new Set())
 
@@ -84,7 +106,14 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
   useEffect(() => {
     async function fetchGraph() {
       try {
-        const res = await fetch(`/api/caso/${slug}/graph`)
+        // For dictadura: load only structural labels + gold/silver to keep graph manageable
+        const params = new URLSearchParams()
+        if (slug === 'caso-dictadura') {
+          params.set('tiers', 'gold,silver')
+          params.set('labels', 'DictaduraPersona,DictaduraCCD,DictaduraUnidadMilitar,DictaduraOrganizacion,DictaduraCausa,DictaduraEvento,DictaduraOperacion')
+        }
+        const qs = params.toString() ? `?${params.toString()}` : ''
+        const res = await fetch(`/api/caso/${slug}/graph${qs}`)
         if (!res.ok) throw new Error('Failed to load graph data')
         const json = await res.json()
         setGraphData(json.data)
@@ -374,19 +403,43 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
 
   const closeContextMenu = useCallback(() => setContextMenu(null), [])
 
-  const toggleLabel = (label: string) => {
+  const toggleLabel = async (label: string) => {
+    let newVisible: Set<string> | null = null
+
     setVisibleLabels((prev) => {
       if (!prev) {
         const allLabels = new Set(LABEL_CONFIG.map((l) => l.label))
         allLabels.delete(label)
+        newVisible = allLabels
         return allLabels
       }
       const next = new Set(prev)
       if (next.has(label)) next.delete(label)
       else next.add(label)
-      if (next.size === LABEL_CONFIG.length) return null
+      if (next.size === LABEL_CONFIG.length) { newVisible = null; return null }
+      newVisible = next
       return next
     })
+
+    // For dictadura: when activating a label, fetch its nodes from server and merge
+    if (slug === 'caso-dictadura' && newVisible?.has(label)) {
+      const labelsInGraph = new Set(graphData.nodes.map((n) => n.label))
+      if (!labelsInGraph.has(label)) {
+        setIsLoading(true)
+        try {
+          const params = new URLSearchParams({ tiers: 'gold,silver', labels: label })
+          const res = await fetch(`/api/caso/${slug}/graph?${params.toString()}`)
+          if (res.ok) {
+            const json = await res.json()
+            if (json.data) {
+              setGraphData((prev) => mergeGraphData(prev, json.data))
+            }
+          }
+        } finally {
+          setIsLoading(false)
+        }
+      }
+    }
   }
 
   const hasData = filteredData.nodes.length > 0
@@ -397,7 +450,7 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
 
   if (isInitialLoading) {
     return (
-      <div className="flex h-[calc(100vh-8rem)] items-center justify-center text-zinc-500">
+      <div className="flex h-[calc(100vh-4rem)] items-center justify-center text-zinc-500">
         Loading network graph...
       </div>
     )
@@ -405,14 +458,14 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
 
   if (error) {
     return (
-      <div className="flex h-[calc(100vh-8rem)] items-center justify-center text-red-400">
+      <div className="flex h-[calc(100vh-4rem)] items-center justify-center text-red-400">
         {error}
       </div>
     )
   }
 
   return (
-    <div className="flex h-[calc(100vh-8rem)] flex-col">
+    <div className="flex h-[calc(100vh-4rem)] flex-col">
       {/* Filter controls */}
       <div className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-sm">
         {/* Primary row: Search + Label filters + Tier */}
@@ -514,6 +567,35 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
               pinnedNodeIds={pinnedNodeIds}
               pathHighlight={pathHighlight}
             />
+          )}
+
+          {/* Zoom controls */}
+          {hasData && (
+            <div className="absolute bottom-4 right-4 z-10 flex flex-col gap-1">
+              <button
+                onClick={() => graphRef.current?.zoomIn()}
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-700 bg-zinc-900/90 text-lg text-zinc-300 shadow-lg backdrop-blur-sm transition-colors hover:border-zinc-500 hover:text-white"
+                title="Zoom in"
+              >
+                +
+              </button>
+              <button
+                onClick={() => graphRef.current?.zoomOut()}
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-700 bg-zinc-900/90 text-lg text-zinc-300 shadow-lg backdrop-blur-sm transition-colors hover:border-zinc-500 hover:text-white"
+                title="Zoom out"
+              >
+                &minus;
+              </button>
+              <button
+                onClick={() => graphRef.current?.zoomToFit()}
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-700 bg-zinc-900/90 text-zinc-300 shadow-lg backdrop-blur-sm transition-colors hover:border-zinc-500 hover:text-white"
+                title="Fit to screen"
+              >
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                </svg>
+              </button>
+            </div>
           )}
 
           {/* Context menu */}

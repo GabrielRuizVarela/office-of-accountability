@@ -23,6 +23,12 @@ const CASE_META: Readonly<Record<string, { title: string; description: string; d
       'Daily monitoring of nuclear escalation signals across all theaters. 31 sources, LLM-powered analysis, risk scoring.',
     defaultLang: 'en',
   },
+  'caso-dictadura': {
+    title: 'Caso Dictadura — Oficina de Rendición de Cuentas',
+    description:
+      'Dictadura militar argentina 1976-1983. Desaparecidos, centros clandestinos, juicios de lesa humanidad y redes de complicidad.',
+    defaultLang: 'es',
+  },
 }
 
 export async function generateMetadata({
