@@ -5,7 +5,7 @@
  *
  * Will show pre-computed simulation results as predictions about
  * how key actors are likely to respond to new evidence, based on
- * swarm intelligence analysis with MiroFish.
+ * swarm intelligence analysis.
  */
 
 import { useLanguage, type Lang } from '@/lib/language-context'
@@ -173,11 +173,11 @@ export default function PrediccionesPage() {
       <div className="rounded-lg border border-zinc-800/50 bg-zinc-900/20 p-5">
         <p className="text-xs leading-relaxed text-zinc-500">
           {t.simEngine[lang]}:{' '}
-          <span className="text-zinc-400">MiroFish</span> (
-          {lang === 'es' ? 'inteligencia de enjambre multi-agente' : 'multi-agent swarm intelligence'}
-          )
+          <span className="text-zinc-400">
+          {lang === 'es' ? 'Inteligencia de enjambre multi-agente' : 'Multi-agent swarm intelligence'}
+          </span>
           {' · '}LLM:{' '}
-          <span className="text-zinc-400">Qwen 3.5 9B</span> ({t.localExec[lang]})
+          <span className="text-zinc-400">{t.localExec[lang]}</span>
           {' · '}{t.data[lang]}:{' '}
           <span className="text-zinc-400">Neo4j knowledge graph</span>{' '}
           {lang === 'es'

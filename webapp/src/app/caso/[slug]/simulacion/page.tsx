@@ -8,7 +8,7 @@ interface PageProps {
 
 export const metadata: Metadata = {
   title: 'Simulation',
-  description: 'AI-powered network analysis using MiroFish swarm intelligence.',
+  description: 'AI-powered network analysis using swarm intelligence.',
 }
 
 export default async function SimulacionPage({ params }: PageProps) {
