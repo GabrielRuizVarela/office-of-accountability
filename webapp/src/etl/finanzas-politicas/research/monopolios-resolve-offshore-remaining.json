@@ -1,0 +1,342 @@
+{
+  "metadata": {
+    "title": "Offshore Entity Resolution — Remaining 7 Entities from Argentine Monopoly Investigation",
+    "description": "ICIJ database and press verification for offshore entities that could not be verified in previous waves due to rate limiting. Each entity searched against ICIJ Offshore Leaks Database, Argentine investigative press (elDiarioAR, Infobae, La Nacion), and open corporate registries.",
+    "date": "2026-03-24",
+    "methodology": "Web search verification against ICIJ Offshore Leaks Database (offshoreleaks.icij.org), Argentine media (elDiarioAR Pandora Papers coverage, stripteasedelpoder.com), and OpenCorporates LEI data.",
+    "entities_queried": 7,
+    "entities_confirmed": 5,
+    "entities_partial": 1,
+    "entities_not_found_in_icij": 1,
+    "note": "One claimed entity name was misspelled in source data (TOMMA -> TAMMA). Three Blaquier subsidiaries not individually indexed in ICIJ but confirmed via press coverage of parent structure."
+  },
+
+  "entities": [
+    {
+      "entity_name": "SUNBIRD INTERNATIONAL HOLDINGS INC.",
+      "claimed_jurisdiction": "BVI",
+      "claimed_officer": "Santiago Blaquier",
+      "verification_status": "PARTIAL",
+      "explanation": "Not individually indexed in ICIJ Offshore Leaks Database. However, confirmed by elDiarioAR Pandora Papers reporting as one of seven BVI subsidiaries under Fishing Lodge Limited, a holding company in which Santiago Blaquier holds 40%. The parent structure was managed by Alcogal. Santiago Blaquier IS confirmed in ICIJ as UBO of related entities Brahmbari Holdings Inc. and Caribbean Lodges Limited.",
+      "icij_url": null,
+      "icij_parent_officer_url": "https://offshoreleaks.icij.org/nodes/240056490",
+      "press_coverage": [
+        {
+          "outlet": "elDiarioAR",
+          "title": "Carlos y Santiago Blaquier utilizaron firmas offshore para invertir en finanzas y empresas de pesca deportiva en el Caribe",
+          "url": "https://www.eldiarioar.com/politica/pandora-papers/carlos-santiago-blaquier-miembros-familias-ricas-pais-utilizaron-firmas-offshore-invertir-finanzas-empresas-pesca-deportiva-caribe_1_8639827.html",
+          "date": "2021-10-00",
+          "detail": "Lists Sunbird International Holdings Inc. as a BVI subsidiary of Fishing Lodge Limited, controlled by Santiago Blaquier (40% stake). Used for sports fishing operations in the Caribbean."
+        }
+      ],
+      "confidence_assessment": "High confidence entity exists — named in Pandora Papers reporting from ICIJ partner elDiarioAR, but not individually indexed in ICIJ database (only the parent officer Santiago Blaquier is indexed)."
+    },
+
+    {
+      "entity_name": "BRAHMBARI HOLDINGS INC.",
+      "claimed_jurisdiction": "BVI",
+      "claimed_officer": "Santiago Blaquier",
+      "verification_status": "CONFIRMED",
+      "explanation": "Confirmed in ICIJ Offshore Leaks Database. Santiago Blaquier listed as Ultimate Beneficial Owner. Entity incorporated 17-APR-2002, status: Struck Off. Part of Pandora Papers via Alcogal. Also confirmed by elDiarioAR as subsidiary of Fishing Lodge Limited.",
+      "icij_url": "https://offshoreleaks.icij.org/nodes/240056490",
+      "icij_data": {
+        "data_source": "Pandora Papers",
+        "registered_agent": "Alemán, Cordero, Galindo & Lee (Alcogal)",
+        "incorporation_date": "2002-04-17",
+        "status": "Struck Off",
+        "officer_role": "Ultimate beneficial owner",
+        "officer_address": "AV. CORRIENTES 415, 8 FLOOR BUENOS AIRES ARGENTINA"
+      },
+      "press_coverage": [
+        {
+          "outlet": "elDiarioAR",
+          "title": "Carlos y Santiago Blaquier utilizaron firmas offshore para invertir en finanzas y empresas de pesca deportiva en el Caribe",
+          "url": "https://www.eldiarioar.com/politica/pandora-papers/carlos-santiago-blaquier-miembros-familias-ricas-pais-utilizaron-firmas-offshore-invertir-finanzas-empresas-pesca-deportiva-caribe_1_8639827.html",
+          "date": "2021-10-00"
+        }
+      ],
+      "confidence_assessment": "Fully confirmed via ICIJ database and press."
+    },
+
+    {
+      "entity_name": "GLOBAL FISHING INVESTMENTS",
+      "claimed_jurisdiction": "BVI",
+      "claimed_officer": "Santiago Blaquier",
+      "verification_status": "PARTIAL",
+      "explanation": "Not individually indexed in ICIJ Offshore Leaks Database. Confirmed by elDiarioAR Pandora Papers reporting as one of seven BVI subsidiaries under Fishing Lodge Limited, controlled by Santiago Blaquier (40% stake). Same structure as Sunbird International and Brahmbari Holdings.",
+      "icij_url": null,
+      "icij_parent_officer_url": "https://offshoreleaks.icij.org/nodes/240056490",
+      "press_coverage": [
+        {
+          "outlet": "elDiarioAR",
+          "title": "Carlos y Santiago Blaquier utilizaron firmas offshore para invertir en finanzas y empresas de pesca deportiva en el Caribe",
+          "url": "https://www.eldiarioar.com/politica/pandora-papers/carlos-santiago-blaquier-miembros-familias-ricas-pais-utilizaron-firmas-offshore-invertir-finanzas-empresas-pesca-deportiva-caribe_1_8639827.html",
+          "date": "2021-10-00",
+          "detail": "Lists Global Fishing Investments as a BVI subsidiary of Fishing Lodge Limited."
+        }
+      ],
+      "related_blaquier_entities_in_icij": [
+        {
+          "entity": "Brahmbari Holdings Inc.",
+          "url": "https://offshoreleaks.icij.org/nodes/240056490",
+          "officer": "Santiago Blaquier",
+          "role": "UBO"
+        },
+        {
+          "entity": "Caribbean Lodges Limited",
+          "url": "https://offshoreleaks.icij.org/nodes/240056494",
+          "officer": "Santiago Blaquier",
+          "role": "UBO",
+          "status": "In Penalty"
+        },
+        {
+          "entity": "Cabonor International Corporation",
+          "url": "https://offshoreleaks.icij.org/nodes/13007765",
+          "officer": "Alejandro Blaquier",
+          "role": "Beneficiary",
+          "jurisdiction": "Panama",
+          "data_source": "Panama Papers"
+        }
+      ],
+      "confidence_assessment": "High confidence — named in Pandora Papers press coverage but not individually indexed in ICIJ."
+    },
+
+    {
+      "entity_name": "VERA LIMITED",
+      "claimed_jurisdiction": "Malta",
+      "claimed_officer": "Miguel Galuccio",
+      "verification_status": "CONFIRMED",
+      "explanation": "Fully confirmed in ICIJ Offshore Leaks Database (Paradise Papers — Malta corporate registry). Miguel Matias Galuccio listed as Shareholder, Director, Judicial Representative, and Legal Representative. Entity incorporated 10-NOV-2016, status: Active. Galuccio also appears in separate Offshore Leaks entry with wife Maria Veronica Nunez de Galuccio as shareholder of 4M International Investment Ltd (BVI).",
+      "icij_url": "https://offshoreleaks.icij.org/nodes/55075772",
+      "icij_officer_url": "https://offshoreleaks.icij.org/nodes/56071901",
+      "icij_data": {
+        "data_source": "Paradise Papers — Malta corporate registry",
+        "incorporation_date": "2016-11-10",
+        "status": "Active",
+        "jurisdiction": "Malta",
+        "registered_address": "123 MELITA STREET, VALLETTA VLT 12, MALTA",
+        "registry_number": "C78041",
+        "officers": [
+          {
+            "name": "Miguel Matias Galuccio",
+            "country": "Argentina",
+            "roles": ["Shareholder", "Director", "Judicial Representative", "Legal Representative"],
+            "address": "ALVEAR AV. 1425, 7 PISO, C1014AAB CAPITAL FEDERAL"
+          },
+          {
+            "name": "Larry John Gauci",
+            "country": "Malta",
+            "roles": ["Secretary"]
+          }
+        ]
+      },
+      "related_galuccio_entities": [
+        {
+          "entity": "4M International Investment Ltd",
+          "url": "https://offshoreleaks.icij.org/nodes/48522",
+          "officer": "Miguel Matias Galuccio & Maria Veronica Nunez de Galuccio",
+          "role": "Shareholder",
+          "jurisdiction": "BVI",
+          "incorporation_date": "2007-03-19",
+          "status": "Active",
+          "data_source": "Offshore Leaks",
+          "registered_agent": "Portcullis Trustnet"
+        }
+      ],
+      "press_coverage": [],
+      "confidence_assessment": "Fully confirmed via ICIJ database. Multiple roles held by Galuccio in Malta entity."
+    },
+
+    {
+      "entity_name": "CANROLD OVERSEAS LIMITED",
+      "claimed_jurisdiction": "BVI",
+      "claimed_officer": "Darío Werthein",
+      "verification_status": "CONFIRMED",
+      "explanation": "Confirmed via ICIJ Offshore Leaks Database officer entry (Dario Werthein listed as Beneficial Owner, Pandora Papers via Alcogal) and extensive Argentine press coverage. Entity not individually indexed as a node in ICIJ, but the officer-entity link is confirmed. Also confirmed via OpenCorporates LEI data (LEI: 5493003Y4KT7G8UYJV80, registered address PO Box 3175, Road Town, Tortola). Created April 1998 in BVI, status: Inactive.",
+      "icij_officer_url": "https://offshoreleaks.icij.org/nodes/240101089",
+      "icij_data": {
+        "data_source": "Pandora Papers",
+        "registered_agent": "Alemán, Cordero, Galindo & Lee (Alcogal)",
+        "status": "Inactive",
+        "officer_role": "Beneficial owner",
+        "officer_address": "C/O MERRILL LYNCH URUGUAY ZONA FRANCA MONTEVIDEO RUTA 8KM 17.500 MONTEVIDEO URUGUAY",
+        "data_current_through": "2017",
+        "incorporation_date_approx": "1998-04",
+        "linked_countries": ["Argentina", "Uruguay"]
+      },
+      "opencorp_lei": {
+        "lei": "5493003Y4KT7G8UYJV80",
+        "registered_address": "PO Box 3175, Tortola, Road Town, VG1110, VG",
+        "url": "https://opencorpdata.com/lei/5493003Y4KT7G8UYJV80"
+      },
+      "press_coverage": [
+        {
+          "outlet": "elDiarioAR",
+          "title": "Nueve de las diez familias más ricas de la Argentina figuran en los Pandora Papers con sociedades y fideicomisos offshore",
+          "url": "https://www.eldiarioar.com/politica/pandora-papers/nueve-diez-familias-ricas-argentina-figuran-pandora-papers-sociedades-fideicomisos-offshore_1_8425464.html",
+          "date": "2021-10-00",
+          "detail": "Canrold Overseas Limited created BVI April 1998. Directors: Leo Werthein, Darío Werthein, Cynthia Werthein, Alberto Martín Iribarne, Norma Gold de Werthein (1998-2013). Family response: created for 'business opportunities abroad that ultimately were not realized' and 'neither had any movement'."
+        },
+        {
+          "outlet": "La Letra P",
+          "title": "De Pandora a Tribunales: el Círculo Rojo offshore combate el aporte solidario",
+          "url": "https://www.letrap.com.ar/nota/2021-11-24-10-52-0-de-pandora-a-tribunales-el-circulo-rojo-offshore-combate-el-aporte-solidario",
+          "date": "2021-11-24",
+          "detail": "Darío Werthein linked to Ducal Investment, Canrold Overseas, and Hinslet — all BVI entities. Beneficial owner per Dec 2010 document, origin of funds: 'inheritance of father Leo Werthein', purpose: 'financial investments'."
+        }
+      ],
+      "related_werthein_entities": [
+        "Ducal Investments Limited (BVI)",
+        "Hinslet (BVI)"
+      ],
+      "confidence_assessment": "Fully confirmed via ICIJ officer record, OpenCorporates LEI, and multiple press sources."
+    },
+
+    {
+      "entity_name": "TAMMA INVESTMENTS LLC",
+      "original_claimed_name": "TOMMA INVESTMENTS LTD",
+      "name_correction": "Source data used 'TOMMA INVESTMENTS LTD' — actual entity name is 'TAMMA INVESTMENTS, LLC' per Florida corporate registry",
+      "claimed_jurisdiction": "BVI",
+      "actual_jurisdiction": "Florida, USA",
+      "claimed_officer": "Miguel Acevedo",
+      "verification_status": "CONFIRMED",
+      "explanation": "Entity confirmed via investigative reporting (stripteasedelpoder.com) as one of five Florida LLCs owned by Miguel Acevedo (UIA president) and spouse Adriana Urquía (AGD/Aceitera General Deheza family). NOT in ICIJ Offshore Leaks Database — these are Florida LLCs, not traditional offshore structures from leaked documents. Registered August 20, 2013 in Florida, shared Miami address with four other Acevedo entities. Note: the original claim misspelled the name as 'TOMMA' and misidentified jurisdiction as BVI.",
+      "icij_url": null,
+      "icij_note": "Not present in ICIJ database. Acevedo's offshore entities are US-based Florida LLCs, not BVI/Panama structures from Panama/Pandora Papers.",
+      "florida_corporate_data": {
+        "entity_name": "TAMMA INVESTMENTS, LLC",
+        "jurisdiction": "Florida, USA",
+        "registration_date": "2013-08-20",
+        "registered_address": "1390 Brickell Avenue, Suite 200, Miami, FL",
+        "registered_agent_advisor": "Álvaro Castillo"
+      },
+      "related_acevedo_entities": [
+        {
+          "entity": "JADE 2204 LLC",
+          "jurisdiction": "Florida, USA",
+          "registration_date": "2013-11-18"
+        },
+        {
+          "entity": "JADE 1002 LLC",
+          "jurisdiction": "Florida, USA",
+          "registration_date": "2013-11-19"
+        },
+        {
+          "entity": "OCEANA 906 B, LLC",
+          "jurisdiction": "Florida, USA",
+          "registration_date": "2013-08-01",
+          "status": "Dissolved 2014-09-29"
+        },
+        {
+          "entity": "OCEANA BAL HARBOUR 1202 SE-M, LLC",
+          "jurisdiction": "Florida, USA",
+          "registration_date": "2013-12-19"
+        }
+      ],
+      "press_coverage": [
+        {
+          "outlet": "Striptease del Poder",
+          "title": "Miguel Acevedo, el nuevo presidente de la UIA y sus empresas offshore",
+          "url": "https://stripteasedelpoder.com/2017/06/miguel-acevedo-offshore/",
+          "date": "2017-06-00",
+          "detail": "Five Florida LLCs owned by Acevedo and spouse Adriana Urquía, all created late 2013 during Argentine currency controls ('cepo cambiario'). All shared Miami Brickell address."
+        }
+      ],
+      "confidence_assessment": "Entity confirmed but with corrections: name was misspelled (TOMMA->TAMMA), jurisdiction was wrong (BVI->Florida USA). Not in ICIJ but documented in Argentine investigative press."
+    },
+
+    {
+      "entity_name": "MARÍA ROSA CARTELLONE — offshore entities",
+      "claimed_officer": "María Rosa Cartellone",
+      "verification_status": "CONFIRMED",
+      "explanation": "María Rosa Cartellone confirmed in ICIJ Offshore Leaks Database (Panama Papers) as officer of two Panamanian entities: STARLINK COMPANY S.A. and UNIMAS COMPANY S.A. Both managed by Mossack Fonseca, intermediated by PricewaterhouseCoopers International Business Services LTDA (Uruguay). Separately, Gerardo Cartellone (same family) confirmed as shareholder of CONFINO INVESTMENT S.A. (Panama, Panama Papers) via Swiss intermediary CISA Trust Company SA.",
+      "icij_officer_url": "https://offshoreleaks.icij.org/nodes/12196126",
+      "entities": [
+        {
+          "entity_name": "STARLINK COMPANY S.A.",
+          "icij_url": "https://offshoreleaks.icij.org/nodes/10167451",
+          "jurisdiction": "Panama",
+          "incorporation_date": "2014-07-28",
+          "status": "Struck Off (2017-01-15)",
+          "data_source": "Panama Papers",
+          "registered_agent": "Mossack Fonseca",
+          "intermediary": "PricewaterhouseCoopers International Business Services LTDA (Uruguay)",
+          "officer_role": "Shareholder (from 2014-10-02)",
+          "officer_address": "Peru 494, Mendoza, Argentina",
+          "prior_shareholder": "El Portador (bearer shares, 2014-07-29 to 2014-10-02)"
+        },
+        {
+          "entity_name": "UNIMAS COMPANY S.A.",
+          "icij_url": "https://offshoreleaks.icij.org/nodes/10168348",
+          "jurisdiction": "Panama",
+          "incorporation_date": "2014-03-07",
+          "status": "Struck Off (2016-07-15)",
+          "data_source": "Panama Papers",
+          "registered_agent": "Mossack Fonseca",
+          "intermediary": "PricewaterhouseCoopers International Business Services LTDA (Uruguay)",
+          "officer_role": "Beneficiary and Shareholder (from 2014-10-02)",
+          "officer_address": "Peru 494, Mendoza, Argentina",
+          "prior_shareholder": "El Portador (bearer shares, 2014-03-08 to 2014-10-02)"
+        }
+      ],
+      "related_cartellone_family_entities": [
+        {
+          "entity_name": "CONFINO INVESTMENT S.A.",
+          "icij_url": "https://offshoreleaks.icij.org/nodes/10156666",
+          "officer": "Gerardo Cartellone",
+          "officer_icij_url": "https://offshoreleaks.icij.org/nodes/12089291",
+          "officer_role": "Shareholder (from 2010-12-06)",
+          "jurisdiction": "Panama",
+          "incorporation_date": "2010-11-23",
+          "status": "Dissolved (struck off 2017-01-15)",
+          "data_source": "Panama Papers",
+          "registered_agent": "Mossack Fonseca",
+          "intermediary": "CISA Trust Company SA (Geneva, Switzerland)"
+        }
+      ],
+      "press_coverage": [],
+      "confidence_assessment": "Fully confirmed via ICIJ database. Two entities directly linked to María Rosa Cartellone, one to Gerardo Cartellone (family member). All Panama Papers via Mossack Fonseca."
+    }
+  ],
+
+  "summary": {
+    "blaquier_family": {
+      "total_offshore_entities_identified": 10,
+      "icij_indexed": 2,
+      "press_confirmed": 8,
+      "entities_in_icij": ["Brahmbari Holdings Inc. (BVI)", "Caribbean Lodges Limited (BVI)"],
+      "entities_in_press_only": ["Sunbird International Holdings Inc. (BVI)", "Global Fishing Investments (BVI)", "Fishing Lodge Limited (BVI)", "Fly Fishing Sales and Marketing Limited (BVI)", "Silver Stream Ventures (BVI)", "Forbes Holdings (BVI, dissolved 2017)"],
+      "entities_other_family_members": ["Yamary Business Ltd. (BVI, Carlos Herminio)", "EDG Group Ltd. (Marshall Islands, Carlos Herminio)", "Cabonor International Corp. (Panama, Alejandro)", "Qlatam LLC (Delaware, Santiago)"],
+      "data_sources": ["Pandora Papers (Alcogal)", "Panama Papers"],
+      "family_fortune_forbes_2020": "US$490 million",
+      "primary_business": "Ledesma (sugar, paper, agro)"
+    },
+    "galuccio": {
+      "total_offshore_entities_confirmed": 2,
+      "entities": ["VERA LIMITED (Malta)", "4M International Investment Ltd (BVI)"],
+      "data_sources": ["Paradise Papers — Malta corporate registry", "Offshore Leaks"],
+      "primary_business": "Vista Oil & Gas (ex-YPF CEO)"
+    },
+    "werthein": {
+      "total_offshore_entities_confirmed": 3,
+      "entities": ["Canrold Overseas Limited (BVI)", "Ducal Investments Limited (BVI)", "Hinslet (BVI)"],
+      "data_sources": ["Pandora Papers (Alcogal)"],
+      "family_fortune_forbes": "US$1.9 billion (7th richest in Argentina)",
+      "primary_business": "Insurance, agriculture, Cachamai brand"
+    },
+    "acevedo": {
+      "total_offshore_entities_confirmed": 5,
+      "entities": ["TAMMA INVESTMENTS LLC (FL)", "JADE 2204 LLC (FL)", "JADE 1002 LLC (FL)", "OCEANA 906 B LLC (FL, dissolved)", "OCEANA BAL HARBOUR 1202 SE-M LLC (FL)"],
+      "data_sources": ["Florida corporate registry (not ICIJ)"],
+      "note": "Original claim misspelled TAMMA as TOMMA and misidentified jurisdiction as BVI. These are US-based Florida LLCs, not traditional offshore structures.",
+      "primary_business": "AGD (Aceitera General Deheza), UIA president"
+    },
+    "cartellone": {
+      "total_offshore_entities_confirmed": 3,
+      "entities_maria_rosa": ["STARLINK COMPANY S.A. (Panama)", "UNIMAS COMPANY S.A. (Panama)"],
+      "entities_gerardo": ["CONFINO INVESTMENT S.A. (Panama)"],
+      "data_sources": ["Panama Papers (Mossack Fonseca)"],
+      "primary_business": "Cartellone Construcciones (construction)"
+    }
+  }
+}

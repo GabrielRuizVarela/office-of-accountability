@@ -1,0 +1,797 @@
+{
+  "investigation": "Wave 26: Monopoly × Political Donations + Voting Patterns",
+  "date": "2026-03-24T15:16:02.030Z",
+  "total_findings": 124,
+  "findings": {
+    "politicians_monopoly_voters": [
+      {
+        "politician": "LASPINA, Luciano Andres",
+        "chamber": "diputados",
+        "province": "Santa Fe",
+        "monopoly_companies": [
+          "MACROVISION CONSULTING"
+        ],
+        "total_votes": 1166
+      },
+      {
+        "politician": "FERNANDEZ, Carlos Alberto",
+        "chamber": "diputados",
+        "province": "Misiones",
+        "monopoly_companies": [
+          "DAVILA 138",
+          "TRES BALUARTES"
+        ],
+        "total_votes": 800
+      },
+      {
+        "politician": "ALARCON, María del Carmen",
+        "chamber": "diputados",
+        "province": "Santa Fe",
+        "monopoly_companies": [
+          "PAMPA SUR EL CAMPO EN ACCION"
+        ],
+        "total_votes": 758
+      },
+      {
+        "politician": "OBIGLIO, Julián Martín",
+        "chamber": "diputados",
+        "province": "CABA",
+        "monopoly_companies": [
+          "JAZZ TELECOM,S.A."
+        ],
+        "total_votes": 632
+      },
+      {
+        "politician": "LEDESMA, Tomas",
+        "chamber": "diputados",
+        "province": "Entre Ríos",
+        "monopoly_companies": [
+          "MECANICA LEDESMA"
+        ],
+        "total_votes": 419
+      },
+      {
+        "politician": "MACRI, Mauricio",
+        "chamber": "diputados",
+        "province": "CABA",
+        "monopoly_companies": [
+          "JORGE MACRI"
+        ],
+        "total_votes": 369
+      },
+      {
+        "politician": "PEREZ, Alberto José",
+        "chamber": "diputados",
+        "province": "San Luis",
+        "monopoly_companies": [
+          "EOLICA NUEVA PAMPA DE MALASPINA"
+        ],
+        "total_votes": 363
+      },
+      {
+        "politician": "FERNANDEZ, Eduardo",
+        "chamber": "diputados",
+        "province": "Córdoba",
+        "monopoly_companies": [
+          "CENTRO LALIN,AGOLADA Y SILLEDA DE GALICIA EN BS.AS.SOC.CUL.R"
+        ],
+        "total_votes": 311
+      },
+      {
+        "politician": "PEREZ, Jorge Telmo",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "monopoly_companies": [
+          "TROPA PAMPA"
+        ],
+        "total_votes": 281
+      },
+      {
+        "politician": "MARTINEZ, Carlos Alberto",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "monopoly_companies": [
+          "LAS PAMPAS"
+        ],
+        "total_votes": 205
+      },
+      {
+        "politician": "FERNANDEZ, Hector",
+        "chamber": "diputados",
+        "province": "Buenos Aires",
+        "monopoly_companies": [
+          "PAMPA GROUP"
+        ],
+        "total_votes": 169
+      }
+    ],
+    "monopoly_donors_detailed": [
+      {
+        "donor": "Aluar Aluminio Argentino SAIC",
+        "cuit": "30522780606",
+        "party": null,
+        "year": null,
+        "amount": 4500000
+      },
+      {
+        "donor": "Aluar Aluminio Argentino SAIC",
+        "cuit": "30522780606",
+        "party": null,
+        "year": null,
+        "amount": 900000
+      },
+      {
+        "donor": "Tomas Braun",
+        "cuit": "20277784964",
+        "party": null,
+        "year": null,
+        "amount": 400000
+      },
+      {
+        "donor": "Fernando Pablo Vilardo",
+        "cuit": "20277786894",
+        "party": null,
+        "year": null,
+        "amount": 200000
+      },
+      {
+        "donor": "Mauricio Macri",
+        "cuit": "20131204699",
+        "party": null,
+        "year": null,
+        "amount": 100000
+      },
+      {
+        "donor": "Fernando Pablo Vilardo",
+        "cuit": "20277786894",
+        "party": null,
+        "year": null,
+        "amount": 100000
+      },
+      {
+        "donor": "Fernando Pablo Vilardo",
+        "cuit": "20277786894",
+        "party": null,
+        "year": null,
+        "amount": 65000
+      },
+      {
+        "donor": "Pablo Antonio Fontdevila",
+        "cuit": "20077972936",
+        "party": null,
+        "year": null,
+        "amount": 14500
+      },
+      {
+        "donor": "Camila Daiana Avila",
+        "cuit": "23420011784",
+        "party": null,
+        "year": null,
+        "amount": 10000
+      },
+      {
+        "donor": "Daniela Marina Vilar",
+        "cuit": "27306671214",
+        "party": null,
+        "year": null,
+        "amount": 10000
+      },
+      {
+        "donor": "Micaela Soledad Avila",
+        "cuit": "27386362446",
+        "party": null,
+        "year": null,
+        "amount": 10000
+      },
+      {
+        "donor": "Pablo Vilas",
+        "cuit": "2318797523",
+        "party": null,
+        "year": null,
+        "amount": 10000
+      },
+      {
+        "donor": "Matias Emiliano Brito",
+        "cuit": "20348147790",
+        "party": null,
+        "year": null,
+        "amount": 10000
+      },
+      {
+        "donor": "Matias Emiliano Brito",
+        "cuit": "20348147790",
+        "party": null,
+        "year": null,
+        "amount": 10000
+      },
+      {
+        "donor": "Victor Hugo da Vila",
+        "cuit": "20283443710",
+        "party": null,
+        "year": null,
+        "amount": 7500
+      },
+      {
+        "donor": "Sergio Omar Ferreyra",
+        "cuit": "20267740535",
+        "party": null,
+        "year": null,
+        "amount": 6000
+      },
+      {
+        "donor": "Griselda Elsa Braun",
+        "cuit": "23205612904",
+        "party": null,
+        "year": null,
+        "amount": 3000
+      },
+      {
+        "donor": "Liliana Beatriz Ferreyra",
+        "cuit": "27205449146",
+        "party": null,
+        "year": null,
+        "amount": 2083
+      }
+    ],
+    "monopoly_legislation": [
+      {
+        "name": "Insistencia en la sanción original del proyecto de ley registrado bajo el número 27.795, que fuera vetado totalmente por",
+        "date": null
+      },
+      {
+        "name": "Insistencia en la sanción original del proyecto de ley registrado bajo el número 27.796, que declara la Emergencia Sanit",
+        "date": null
+      },
+      {
+        "name": "URTUBEY Y OTROS: PROYECTO DE LEY DE ORGANIZACION Y COMPETENCIA DE LA JUSTICIA FEDERAL Y NACIONAL PENAL.O.D. 242/2015",
+        "date": null
+      },
+      {
+        "name": "PROYECTO DE LEY EN REVISION ESTABLECIENDO LA GRATUIDAD DE TARIFAS DEL SERVICIO ELECTRICO PARA USUARIOS ELECTRODEPENDIENT",
+        "date": null
+      },
+      {
+        "name": "MENSAJE N° 81/17 Y PROYECTO DE LEY QUE AUTORIZA LA SALIDA DE PERSONAL Y MEDIOS DEL EJERCITO ARGENTINO , DE LA ARMADA ARG",
+        "date": null
+      },
+      {
+        "name": "Exp. 273-S-01 Aceptación Sanción Original Honorable Senado",
+        "date": null
+      },
+      {
+        "name": "Expediente 75-PE-03. Autorización para el ingreso al territorio nacional de medios y de tropas de la República Federativ",
+        "date": null
+      },
+      {
+        "name": "Expediente 155-PE-02  **  Orden del día 3146. Insistencia de la H. Cámara de Diputados en su sanción original. Decreto 2",
+        "date": null
+      },
+      {
+        "name": "Exp. 87-S-04 -- Orden del día 1237 -- Vot. en General . De ley. Energia Argentina Sociedad Anónima. Creación",
+        "date": null
+      },
+      {
+        "name": "Expediente 56-PE-03.Insistencia de la H.C.D.N. en su sanción original del proyecto de ley por el cual se establece un im",
+        "date": null
+      },
+      {
+        "name": "Insistencia de la HCDN en su sanción original del proyecto de Ley de Régimen para realizar tareas remuneradas en el terr",
+        "date": null
+      },
+      {
+        "name": "Insistencia de la HCDN en la sanción original del proyecto que Modifica la ley 23.848 de Pensiones a Ex-Soldados que par",
+        "date": null
+      },
+      {
+        "name": "Insistencia de la HCDN en la sanción original del proyecto que autoriza al PEN a incrementar la partida correspondiente",
+        "date": null
+      },
+      {
+        "name": "Privatizaciones",
+        "date": null
+      },
+      {
+        "name": "Insistencia de la HCDN en la sanción original, rechazando las modificaciones introducidas por el Senado en la ley de Acc",
+        "date": null
+      },
+      {
+        "name": "Insistencia de la HCDN en la sanción original, rechazando las modificaciones introducidas por la Cámara revisora en el R",
+        "date": null
+      },
+      {
+        "name": "Insistencia de la HCDN en la sanción original de la Ley 24.800. Régimen para la actividad teatral, en los incisos E) y F",
+        "date": null
+      },
+      {
+        "name": "Privatizaciones",
+        "date": null
+      },
+      {
+        "name": "Privatizaciones",
+        "date": null
+      },
+      {
+        "name": "Privatizaciones",
+        "date": null
+      },
+      {
+        "name": "Privatizaciones",
+        "date": null
+      },
+      {
+        "name": "Insistencia de la HCDN en la sanción original del proyecto de Ley de estabilidad fiscal por el plazo de 33 años para las",
+        "date": null
+      },
+      {
+        "name": "Insistencia de la HCDN en la sanción original del proyecto de Ley de Equiparación del tratamiento arancelario para la im",
+        "date": null
+      },
+      {
+        "name": "Insistencia de la HCDN en la sanción original del proyecto de Ley de Transferencia a título gratuito de un inmueble a fa",
+        "date": null
+      },
+      {
+        "name": "Privatizaciones",
+        "date": null
+      },
+      {
+        "name": "Insistencia de la HCDN, en la sanción original del Proyecto que Prorroga por 180 días la entrada en vigencia del Libro I",
+        "date": null
+      },
+      {
+        "name": "Insistencia de la HCDN en la sanción original de la Ley de Solidaridad Previsional Observada por el PEN por Decreto 417/",
+        "date": null
+      },
+      {
+        "name": "Insistencia de la HCDN en la sanción original de la Ley de Régimen de Patentes y Modelos de Utilidad observado por el PE",
+        "date": null
+      },
+      {
+        "name": "Insistencia de la HCDN en la sanción original del proyecto de ley que trata el Régimen de Normalización para los Trabaja",
+        "date": null
+      },
+      {
+        "name": "RIGI",
+        "date": null
+      }
+    ],
+    "monopoly_politician_votes": [
+      {
+        "politician": "MACRI, Mauricio",
+        "legislation": "Energias Renovables",
+        "vote": null,
+        "date": "31/05/2006 - 19:07"
+      },
+      {
+        "politician": "ALARCON, María del Carmen",
+        "legislation": "Energias Renovables",
+        "vote": null,
+        "date": "31/05/2006 - 19:07"
+      },
+      {
+        "politician": "PEREZ, Alberto José",
+        "legislation": "PROYECTO DE LEY EN REVISION QUE DECLARA LA EMERGENCIA TARIFARIA EN LOS SERVICIOS PUBLICOS.O.D. 219/2018",
+        "vote": null,
+        "date": "30/05/2018 - 03:26"
+      },
+      {
+        "politician": "OBIGLIO, Julián Martín",
+        "legislation": "PROYECTO DE LEY EN REVISION QUE DECLARA LA EMERGENCIA TARIFARIA EN LOS SERVICIOS PUBLICOS.O.D. 219/2018",
+        "vote": null,
+        "date": "30/05/2018 - 03:26"
+      },
+      {
+        "politician": "PEREZ, Alberto José",
+        "legislation": "Ley 24.660, sobre reincidencia y re inserción al medio social de condenados por delitos contra la integridad sexual. ace",
+        "vote": null,
+        "date": "29/11/2017 - 00:12"
+      },
+      {
+        "politician": "OBIGLIO, Julián Martín",
+        "legislation": "Ley 24.660, sobre reincidencia y re inserción al medio social de condenados por delitos contra la integridad sexual. ace",
+        "vote": null,
+        "date": "29/11/2017 - 00:12"
+      },
+      {
+        "politician": "LASPINA, Luciano Andres",
+        "legislation": "IBARRA : PROYECTO DE LEY GARANTIZANDO LA ACCESIBILIDAD A LOS MEDIOS DE COMUNICACION AUDIOVISUAL A PERSONAS AFECTADAS POR",
+        "vote": null,
+        "date": "29/11/2006 - 19:40"
+      },
+      {
+        "politician": "LASPINA, Luciano Andres",
+        "legislation": "Moción de Orden solicitada por el Diputado RECALDE, Héctor Pedro. Solicitud de pase a cuarto intermedio.",
+        "vote": null,
+        "date": "29/11/2006 - 19:30"
+      },
+      {
+        "politician": "LASPINA, Luciano Andres",
+        "legislation": "Ejercicio profesional de los guardavidas. Insistencia en su sanción original.",
+        "vote": null,
+        "date": "29/06/2016 - 23:14"
+      },
+      {
+        "politician": "LASPINA, Luciano Andres",
+        "legislation": "Organización y competencia de la Justicia Federal y Nacional Penal.",
+        "vote": null,
+        "date": "29/06/2016 - 23:07"
+      },
+      {
+        "politician": "MARTINEZ, Carlos Alberto",
+        "legislation": "Exp. 273-S-01 Aceptación Sanción Original Honorable Senado",
+        "vote": null,
+        "date": "28/11/2002 - 21:29"
+      },
+      {
+        "politician": "MARTINEZ, Carlos Alberto",
+        "legislation": "Exp. 273-S-01 Aceptación Sanción Original Honorable Senado",
+        "vote": null,
+        "date": "28/11/2002 - 21:29"
+      },
+      {
+        "politician": "ALARCON, María del Carmen",
+        "legislation": "Exp. 273-S-01 Aceptación Sanción Original Honorable Senado",
+        "vote": null,
+        "date": "28/11/2002 - 21:29"
+      },
+      {
+        "politician": "MARTINEZ, Carlos Alberto",
+        "legislation": "Exp. 273-S-01 Aceptación Sanción Original Honorable Senado",
+        "vote": null,
+        "date": "28/11/2002 - 21:18"
+      },
+      {
+        "politician": "MARTINEZ, Carlos Alberto",
+        "legislation": "Exp. 273-S-01 Aceptación Sanción Original Honorable Senado",
+        "vote": null,
+        "date": "28/11/2002 - 21:18"
+      },
+      {
+        "politician": "ALARCON, María del Carmen",
+        "legislation": "Exp. 273-S-01 Aceptación Sanción Original Honorable Senado",
+        "vote": null,
+        "date": "28/11/2002 - 21:18"
+      },
+      {
+        "politician": "PEREZ, Jorge Telmo",
+        "legislation": "Insistencia de la HCDN en la sanción original, rechazando las modificaciones introducidas por la Cámara revisora en el R",
+        "vote": null,
+        "date": "28/11/1996 - 03:16"
+      },
+      {
+        "politician": "PEREZ, Jorge Telmo",
+        "legislation": "Insistencia de la HCDN en la sanción original, rechazando las modificaciones introducidas por la Cámara revisora en el R",
+        "vote": null,
+        "date": "28/11/1996 - 03:15"
+      },
+      {
+        "politician": "PEREZ, Jorge Telmo",
+        "legislation": "Insistencia de la HCDN en la sanción original, rechazando las modificaciones introducidas por el Senado en la ley de Acc",
+        "vote": null,
+        "date": "28/11/1996 - 03:08"
+      },
+      {
+        "politician": "OBIGLIO, Julián Martín",
+        "legislation": "Exp. 249-S-07 - Orden del Día 54 - Votación en General. De Ley. Convenio de transferencia progresiva de Competencias Pen",
+        "vote": null,
+        "date": "27/10/2022 - 22:04"
+      },
+      {
+        "politician": "PEREZ, Alberto José",
+        "legislation": "URTUBEY Y OTROS: PROYECTO DE LEY DE ORGANIZACION Y COMPETENCIA DE LA JUSTICIA FEDERAL Y NACIONAL PENAL.O.D. 242/2015",
+        "vote": null,
+        "date": "27/05/2015 - 21:35"
+      },
+      {
+        "politician": "OBIGLIO, Julián Martín",
+        "legislation": "URTUBEY Y OTROS: PROYECTO DE LEY DE ORGANIZACION Y COMPETENCIA DE LA JUSTICIA FEDERAL Y NACIONAL PENAL.O.D. 242/2015",
+        "vote": null,
+        "date": "27/05/2015 - 21:35"
+      },
+      {
+        "politician": "PEREZ, Alberto José",
+        "legislation": "Ley 25.561 de Exportación de Hidrocarburos.",
+        "vote": null,
+        "date": "27/05/2015 - 17:46"
+      },
+      {
+        "politician": "OBIGLIO, Julián Martín",
+        "legislation": "Ley 25.561 de Exportación de Hidrocarburos.",
+        "vote": null,
+        "date": "27/05/2015 - 17:46"
+      },
+      {
+        "politician": "MACRI, Mauricio",
+        "legislation": "Exp. 893-D-06 -- Orden del Día 441 - Votación en General. Ley 25.156 De defensa de la competencia sobre creación del rol",
+        "vote": null,
+        "date": "26/12/2025 - 23:15"
+      },
+      {
+        "politician": "ALARCON, María del Carmen",
+        "legislation": "Exp. 893-D-06 -- Orden del Día 441 - Votación en General. Ley 25.156 De defensa de la competencia sobre creación del rol",
+        "vote": null,
+        "date": "26/12/2025 - 23:15"
+      },
+      {
+        "politician": "PEREZ, Alberto José",
+        "legislation": "Moción de orden solicitada por el Dip. SOLA, Felipe Carlos. Pedido de Cuarto Intermedio",
+        "vote": null,
+        "date": "26/11/2008 - 20:36"
+      },
+      {
+        "politician": "OBIGLIO, Julián Martín",
+        "legislation": "Moción de orden solicitada por el Dip. SOLA, Felipe Carlos. Pedido de Cuarto Intermedio",
+        "vote": null,
+        "date": "26/11/2008 - 20:36"
+      },
+      {
+        "politician": "MARTINEZ, Carlos Alberto",
+        "legislation": "Expediente 155-PE-02  **  Orden del día 3146. Insistencia de la H. Cámara de Diputados en su sanción original. Decreto 2",
+        "vote": null,
+        "date": "26/11/2003 - 19:49"
+      },
+      {
+        "politician": "MARTINEZ, Carlos Alberto",
+        "legislation": "Expediente 155-PE-02  **  Orden del día 3146. Insistencia de la H. Cámara de Diputados en su sanción original. Decreto 2",
+        "vote": null,
+        "date": "26/11/2003 - 19:49"
+      },
+      {
+        "politician": "ALARCON, María del Carmen",
+        "legislation": "Expediente 155-PE-02  **  Orden del día 3146. Insistencia de la H. Cámara de Diputados en su sanción original. Decreto 2",
+        "vote": null,
+        "date": "26/11/2003 - 19:49"
+      },
+      {
+        "politician": "PEREZ, Alberto José",
+        "legislation": "PROYECTO DE LEY EN REVISION ESTABLECIENDO LA GRATUIDAD DE TARIFAS DEL SERVICIO ELECTRICO PARA USUARIOS ELECTRODEPENDIENT",
+        "vote": null,
+        "date": "26/04/2017 - 18:17"
+      },
+      {
+        "politician": "OBIGLIO, Julián Martín",
+        "legislation": "PROYECTO DE LEY EN REVISION ESTABLECIENDO LA GRATUIDAD DE TARIFAS DEL SERVICIO ELECTRICO PARA USUARIOS ELECTRODEPENDIENT",
+        "vote": null,
+        "date": "26/04/2017 - 18:17"
+      },
+      {
+        "politician": "MACRI, Mauricio",
+        "legislation": "Habilitación de tratamiento sobre tablas - Exp. 6-PE-06. Decreto 303/06, por el cual se rescinde el contrato de concesió",
+        "vote": null,
+        "date": "26/02/2026 - 20:57"
+      },
+      {
+        "politician": "ALARCON, María del Carmen",
+        "legislation": "Habilitación de tratamiento sobre tablas - Exp. 6-PE-06. Decreto 303/06, por el cual se rescinde el contrato de concesió",
+        "vote": null,
+        "date": "26/02/2026 - 20:57"
+      },
+      {
+        "politician": "OBIGLIO, Julián Martín",
+        "legislation": "MENSAJE N° 889/08 Y PROYECTO DE LEY POR EL CUAL SE RENUEVA LA AUTORIZACION  DE SALIDA DEL TERRITORIO NACIONAL DE MEDIOS",
+        "vote": null,
+        "date": "25/06/2008 - 18:49"
+      },
+      {
+        "politician": "OBIGLIO, Julián Martín",
+        "legislation": "Procuración de Medios para la Defensa.",
+        "vote": null,
+        "date": "25/06/2008 - 16:58"
+      },
+      {
+        "politician": "LASPINA, Luciano Andres",
+        "legislation": "Habilitar el Tratamiento del Expediente 2310-D-2018. De ley. Sobre esquema tarifario previsible para el reequilibrio de",
+        "vote": null,
+        "date": "25/04/2018 - 16:57"
+      },
+      {
+        "politician": "FERNANDEZ, Carlos Alberto",
+        "legislation": "Habilitar el Tratamiento del Expediente 2310-D-2018. De ley. Sobre esquema tarifario previsible para el reequilibrio de",
+        "vote": null,
+        "date": "25/04/2018 - 16:57"
+      },
+      {
+        "politician": "FERNANDEZ, Carlos Alberto",
+        "legislation": "Habilitar el Tratamiento del Expediente 2310-D-2018. De ley. Sobre esquema tarifario previsible para el reequilibrio de",
+        "vote": null,
+        "date": "25/04/2018 - 16:57"
+      },
+      {
+        "politician": "PEREZ, Alberto José",
+        "legislation": "Acuerdos de cooperación de Energía Nuclear.",
+        "vote": null,
+        "date": "25/04/2018 - 16:54"
+      },
+      {
+        "politician": "OBIGLIO, Julián Martín",
+        "legislation": "Acuerdos de cooperación de Energía Nuclear.",
+        "vote": null,
+        "date": "25/04/2018 - 16:54"
+      },
+      {
+        "politician": "LASPINA, Luciano Andres",
+        "legislation": "Habilitar el Tratamiento del Expediente 2011-D-2018. De ley. Anulación de aumentos tarifarios en los servicios públicos",
+        "vote": null,
+        "date": "25/04/2018 - 16:47"
+      },
+      {
+        "politician": "FERNANDEZ, Carlos Alberto",
+        "legislation": "Habilitar el Tratamiento del Expediente 2011-D-2018. De ley. Anulación de aumentos tarifarios en los servicios públicos",
+        "vote": null,
+        "date": "25/04/2018 - 16:47"
+      },
+      {
+        "politician": "FERNANDEZ, Carlos Alberto",
+        "legislation": "Habilitar el Tratamiento del Expediente 2011-D-2018. De ley. Anulación de aumentos tarifarios en los servicios públicos",
+        "vote": null,
+        "date": "25/04/2018 - 16:47"
+      },
+      {
+        "politician": "LASPINA, Luciano Andres",
+        "legislation": "Habilitar el Tratamiento del Expediente 2094-D-2018. De ley. Declaráse la emergencia tarifaria durante 6 meses en todo e",
+        "vote": null,
+        "date": "25/04/2018 - 16:39"
+      },
+      {
+        "politician": "FERNANDEZ, Carlos Alberto",
+        "legislation": "Habilitar el Tratamiento del Expediente 2094-D-2018. De ley. Declaráse la emergencia tarifaria durante 6 meses en todo e",
+        "vote": null,
+        "date": "25/04/2018 - 16:39"
+      },
+      {
+        "politician": "FERNANDEZ, Carlos Alberto",
+        "legislation": "Habilitar el Tratamiento del Expediente 2094-D-2018. De ley. Declaráse la emergencia tarifaria durante 6 meses en todo e",
+        "vote": null,
+        "date": "25/04/2018 - 16:39"
+      },
+      {
+        "politician": "LASPINA, Luciano Andres",
+        "legislation": "Habilitar el Tratamiento del Expediente 0310-D-2018. De ley. Dejar sin efecto los aumentos tarifarios de los servicios\np",
+        "vote": null,
+        "date": "25/04/2018 - 15:15"
+      },
+      {
+        "politician": "FERNANDEZ, Carlos Alberto",
+        "legislation": "Habilitar el Tratamiento del Expediente 0310-D-2018. De ley. Dejar sin efecto los aumentos tarifarios de los servicios\np",
+        "vote": null,
+        "date": "25/04/2018 - 15:15"
+      }
+    ],
+    "multi_dataset_politicians": [
+      {
+        "politician": "MACRI, Mauricio",
+        "chamber": "diputados",
+        "datasets": [
+          "BoardMember",
+          "GovernmentAppointment",
+          "CompanyOfficer",
+          "AssetDeclaration"
+        ],
+        "count": 4
+      },
+      {
+        "politician": "AVILA, Jorge Antonio",
+        "chamber": "diputados",
+        "datasets": [
+          "AssetDeclaration",
+          "BoardMember",
+          "CompanyOfficer"
+        ],
+        "count": 3
+      },
+      {
+        "politician": "COTO, Alberto Agustín",
+        "chamber": "diputados",
+        "datasets": [
+          "AssetDeclaration",
+          "BoardMember",
+          "CompanyOfficer"
+        ],
+        "count": 3
+      },
+      {
+        "politician": "DE NARVAEZ, Francisco",
+        "chamber": "diputados",
+        "datasets": [
+          "AssetDeclaration",
+          "CompanyOfficer",
+          "BoardMember"
+        ],
+        "count": 3
+      },
+      {
+        "politician": "LEDESMA, Tomas",
+        "chamber": "diputados",
+        "datasets": [
+          "AssetDeclaration",
+          "BoardMember",
+          "CompanyOfficer"
+        ],
+        "count": 3
+      },
+      {
+        "politician": "AVILA, Eduardo Carlos",
+        "chamber": "diputados",
+        "datasets": [
+          "CompanyOfficer",
+          "BoardMember"
+        ],
+        "count": 2
+      },
+      {
+        "politician": "BRITOS, Oraldo Norvel",
+        "chamber": "diputados",
+        "datasets": [
+          "CompanyOfficer",
+          "BoardMember"
+        ],
+        "count": 2
+      },
+      {
+        "politician": "FONTDEVILA, Pablo Antonio",
+        "chamber": "diputados",
+        "datasets": [
+          "BoardMember",
+          "AssetDeclaration"
+        ],
+        "count": 2
+      },
+      {
+        "politician": "AVILA, Beatriz Luisa",
+        "chamber": "senadores",
+        "datasets": [
+          "AssetDeclaration"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "COTO, Agustín Pedro",
+        "chamber": "senadores",
+        "datasets": [
+          "AssetDeclaration"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "FERREYRA, Araceli Susana del Rosario",
+        "chamber": "diputados",
+        "datasets": [
+          "AssetDeclaration"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "FERREYRA, Daniel Julio",
+        "chamber": "diputados",
+        "datasets": [
+          "AssetDeclaration"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "FERREYRA, Mario Felix",
+        "chamber": "diputados",
+        "datasets": [
+          "AssetDeclaration"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "LORENZO BOROCOTO, Eduardo",
+        "chamber": "diputados",
+        "datasets": [
+          "BoardMember"
+        ],
+        "count": 1
+      },
+      {
+        "politician": "VILAR, Daniela Marina",
+        "chamber": "diputados",
+        "datasets": [
+          "AssetDeclaration"
+        ],
+        "count": 1
+      }
+    ]
+  }
+}

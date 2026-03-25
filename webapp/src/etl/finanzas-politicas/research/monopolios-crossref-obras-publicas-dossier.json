@@ -1,0 +1,870 @@
+{
+  "investigation": "Monopolios Argentina — Deep Cross-Reference with Obras Públicas Dossier & Research Files",
+  "date": "2026-03-24",
+  "methodology": "Systematic extraction of all monopoly actor references from DOSSIER-OBRAS-PUBLICAS.md and 8 research JSON files in the obras-publicas investigation. Cross-matched against monopoly investigation actor list covering construction, cement, energy, transport, and conglomerate sectors.",
+  "source_files": [
+    "DOSSIER-OBRAS-PUBLICAS.md",
+    "research/cartel-detection.json",
+    "research/shell-company-analysis.json",
+    "research/revolving-door-analysis.json",
+    "research/pay-to-play-analysis.json",
+    "research/offshore-connections.json",
+    "research/cross-investigation-analysis.json",
+    "research/officer-network-analysis.json",
+    "research/cuadernos.json",
+    "research/odebrecht-argentina.json"
+  ],
+  "obras_publicas_graph_summary": {
+    "total_nodes": 56122,
+    "total_relationships": 48415,
+    "contractors": 28695,
+    "public_works": 7486,
+    "bids": 13835,
+    "contracts": 3129,
+    "procedures": 2950,
+    "bribery_cases": 3,
+    "same_entity_cross_refs": 9385,
+    "dual_role_persons": 2155,
+    "shell_companies_flagged": 831,
+    "budget_underrun_projects": 128,
+    "cross_investigation_matches": 43615
+  },
+  "monopoly_actor_matches": {
+    "SACDE_IECSA_MACRI_CALCATERRA": {
+      "monopoly_group": "Macri / SOCMA / IECSA / Calcaterra",
+      "entities_found": ["SACDE S.A.", "IECSA S.A.", "CREAURBAN S.A.", "CINCOVIAL S.A."],
+      "cuit": "30568457451",
+      "contract_amounts": {
+        "total_awards_ars": 1900000000000,
+        "contracts": 3,
+        "note": "ARS 1.9 trillion — 3rd largest contractor by award amount"
+      },
+      "graph_connectivity": {
+        "connections": 20,
+        "rank": "9th most connected contractor"
+      },
+      "flags": ["repeat_winner", "cross_investigation"],
+      "bribery_cases": {
+        "cuadernos": {
+          "role": "bribe_payer",
+          "details": "Angelo Calcaterra (cousin of Mauricio Macri) became cooperating witness. Héctor Javier Sánchez Caballero also cooperated.",
+          "source": "cuadernos.json"
+        },
+        "odebrecht": {
+          "role": "contract_recipient",
+          "details": "Partner in Consorcio Nuevo Sarmiento for Soterramiento del Ferrocarril Sarmiento (US$1.5B contract). Formerly owned by Macri family, sold to Angelo Calcaterra in 2007. Alleged US$4.5M+ channeled via Iecsa through fictitious contract with Spanish company DSC to Andorra.",
+          "bribe_amount_usd": 5000000,
+          "contract_value_usd": 1500000000,
+          "codenames": ["Gardelón", "Mudinho"],
+          "source": "odebrecht-argentina.json"
+        }
+      },
+      "revolving_door": [
+        {
+          "person": "CLUSELLAS PABLO",
+          "gov_position": "Secretario Legal y Tecnico",
+          "ministry": "Presidencia de la Nacion",
+          "period": "2015-2019",
+          "works": 8,
+          "risk_level": "critical",
+          "details": "Macri's childhood friend. Appeared as sindico (auditor) of Creaurban, a company in the IECSA/SACDE group. Linked to Panama Papers as intermediary with Mossack Fonseca.",
+          "judicial_proceedings": true,
+          "source": "revolving-door-analysis.json"
+        },
+        {
+          "person": "LUIS GERMAN JAHN",
+          "gov_position": "Administrador de ENOHSA",
+          "ministry": "Ministerio del Interior, Obras Publicas y Vivienda",
+          "works": 8,
+          "risk_level": "high",
+          "details": "ENOHSA oversees water and sanitation infrastructure nationwide — directly related to public works contracting. Link to SACDE (Macri-family construction company with 8 works) represents significant conflict of interest.",
+          "source": "revolving-door-analysis.json"
+        }
+      ],
+      "officer_network": {
+        "interlocking_officers": [
+          {
+            "officer": "Marcelo Héctor FUXMAN",
+            "companies_count": 8,
+            "linked_contractors": ["SACDE S.A.", "La Rural SA", "Orígenes Seguros S.A.", "Hunter Douglas Argentina S.A.", "Panamerican Mall SA", "LLAO LLAO RESORTS S.A.", "CINCOVIAL S.A.", "CREAURBAN S.A."],
+            "note": "Bridges SACDE/IECSA group to insurance, hospitality, and other sectors",
+            "source": "officer-network-analysis.json"
+          },
+          {
+            "officer": "José Daniel ABELOVICH",
+            "companies_count": 7,
+            "linked_contractors": ["SACDE S.A.", "La Rural SA", "Orígenes Seguros S.A.", "Panamerican Mall SA", "LLAO LLAO RESORTS S.A.", "CINCOVIAL S.A.", "CREAURBAN S.A."],
+            "note": "Near-identical board membership pattern as FUXMAN — confirms SACDE-CINCOVIAL-CREAURBAN are a single corporate group",
+            "source": "officer-network-analysis.json"
+          }
+        ],
+        "sacde_group_companies_confirmed": ["SACDE S.A.", "CINCOVIAL S.A.", "CREAURBAN S.A.", "Panamerican Mall SA", "LLAO LLAO RESORTS S.A."]
+      },
+      "offshore_connections": {
+        "direct": false,
+        "via_panama_papers": true,
+        "details": "Clusellas linked to Panama Papers as Mossack Fonseca intermediary. Calcaterra's hidden continued ownership of SACDE confirmed via offshore Delaware entity per judicial proceedings.",
+        "source": "revolving-door-analysis.json"
+      },
+      "cross_investigation_classification": "CRITICAL — Highest-risk monopoly actor. ARS 1.9T in contracts, dual bribery case involvement (Cuadernos + Odebrecht), 2 critical revolving door cases, confirmed officer interlocking network, Panama Papers links, offshore hidden ownership."
+    },
+
+    "ROGGIO_GROUP": {
+      "monopoly_group": "Roggio / Benito Roggio / Metrovías",
+      "entities_found": ["Benito Roggio e Hijos S.A.", "Benito Roggio Ferroindustrial S.A.", "CV1 CONCESIONARIA VIAL S.A.", "EDUCACION TECNOLOGICA S.A.", "SUPERCEMENTO-ROGGIO-CARRANZA UTE"],
+      "contract_amounts": {
+        "supercemento_roggio_carranza_ute": {
+          "total_awards_ars": 5700000000000,
+          "contracts": 1,
+          "note": "ARS 5.7 TRILLION — single largest contract in entire dataset"
+        },
+        "components_note": "Roggio is one of three partners in the UTE alongside Supercemento and Cartellone"
+      },
+      "bribery_cases": {
+        "cuadernos": {
+          "role": "bribe_payer",
+          "details": "Aldo Roggio and Claudio Glazman became cooperating witnesses.",
+          "source": "cuadernos.json"
+        },
+        "odebrecht": {
+          "role": "subcontractor",
+          "details": "Member of AYSA Paraná de las Palmas water plant consortium (US$880M contract). Consortium included Odebrecht, Benito Roggio, Supercemento, and Cartellone. Estimated US$5M bribe allocation.",
+          "contract_value_usd": 880000000,
+          "bribe_amount_usd": 5000000,
+          "source": "odebrecht-argentina.json"
+        }
+      },
+      "officer_network": {
+        "interlocking_officers": [
+          {
+            "officer": "MENCARINI, JORGE ALBERTO",
+            "companies_count": 10,
+            "linked_contractors": ["SINERGIUM BIOTECH S.A.", "BIOGENESIS BAGO S.A.", "TAYM S.A", "SEHOS S.A.", "BLAMEN SA", "LABORATORIO ELEA PHOENIX S.A.", "Envairo S.A.", "Benito Roggio Ferroindustrial S.A.", "CV1 CONCESIONARIA VIAL S.A.", "EDUCACION TECNOLOGICA S.A."],
+            "source": "officer-network-analysis.json"
+          },
+          {
+            "officer": "Carlos Francisco TARSITANO",
+            "companies_count": 8,
+            "linked_contractors": ["SINERGIUM BIOTECH S.A.", "TAYM S.A", "SEHOS S.A.", "LABORATORIO ELEA PHOENIX S.A.", "Envairo S.A.", "Benito Roggio Ferroindustrial S.A.", "CV1 CONCESIONARIA VIAL S.A.", "EDUCACION TECNOLOGICA S.A."],
+            "source": "officer-network-analysis.json"
+          },
+          {
+            "officer": "Martin Alberto MENCARINI",
+            "companies_count": 8,
+            "linked_contractors": ["C.P.S. COMUNICACIONES S.A.", "TAYM S.A", "SEHOS S.A.", "BLAMEN SA", "Envairo S.A.", "Benito Roggio Ferroindustrial S.A.", "CV1 CONCESIONARIA VIAL S.A.", "EDUCACION TECNOLOGICA S.A."],
+            "source": "officer-network-analysis.json"
+          },
+          {
+            "officer": "VERRA ALBERTO ESTEBAN",
+            "companies_count": 7,
+            "linked_contractors": ["C.P.S. COMUNICACIONES S.A.", "TAYM S.A", "SEHOS S.A.", "Envairo S.A.", "Benito Roggio Ferroindustrial S.A.", "CV1 CONCESIONARIA VIAL S.A.", "EDUCACION TECNOLOGICA S.A."],
+            "source": "officer-network-analysis.json"
+          },
+          {
+            "officer": "CAMPANA ADALBERTO",
+            "companies_count": 7,
+            "linked_contractors": ["C.P.S. COMUNICACIONES S.A.", "TAYM S.A", "SEHOS S.A.", "Envairo S.A.", "Benito Roggio Ferroindustrial S.A.", "CV1 CONCESIONARIA VIAL S.A.", "EDUCACION TECNOLOGICA S.A."],
+            "source": "officer-network-analysis.json"
+          }
+        ],
+        "roggio_group_companies_confirmed": ["Benito Roggio Ferroindustrial S.A.", "CV1 CONCESIONARIA VIAL S.A.", "EDUCACION TECNOLOGICA S.A.", "TAYM S.A", "SEHOS S.A.", "Envairo S.A.", "BLAMEN SA", "C.P.S. COMUNICACIONES S.A."],
+        "note": "5 officers share near-identical board memberships across 7-10 companies, confirming these are all Grupo Roggio entities. The Roggio conglomerate spans construction, environmental services, education technology, and telecommunications."
+      },
+      "shell_company_connections": false,
+      "offshore_connections": false,
+      "revolving_door": [],
+      "cartel_detection": {
+        "ute_partner": true,
+        "details": "Partner in SUPERCEMENTO-ROGGIO-CARRANZA UTE — the ARS 5.7T contract. This UTE combines three monopoly actors (Roggio, Supercemento, Cartellone) into a single joint venture.",
+        "source": "DOSSIER-OBRAS-PUBLICAS.md"
+      },
+      "cross_investigation_classification": "HIGH — Dual bribery case involvement (Cuadernos + Odebrecht), ARS 5.7T UTE contract, extensive officer interlocking network (8+ confirmed group companies), cooperating witnesses in both cases."
+    },
+
+    "CARTELLONE": {
+      "monopoly_group": "Cartellone / José Cartellone",
+      "entities_found": ["José Cartellone Construcciones Civiles S.A.", "Cartellone Construcciones Civiles S.A.", "SUPERCEMENTO-ROGGIO-CARRANZA UTE"],
+      "contract_amounts": {
+        "supercemento_roggio_carranza_ute": {
+          "total_awards_ars": 5700000000000,
+          "contracts": 1,
+          "note": "Cartellone (Carranza) is one of three partners in the ARS 5.7T UTE"
+        }
+      },
+      "bribery_cases": {
+        "cuadernos": {
+          "role": "bribe_payer",
+          "details": "Listed among companies making deliveries to officials.",
+          "source": "cuadernos.json"
+        },
+        "odebrecht": {
+          "role": "subcontractor",
+          "details": "Member of AYSA Paraná de las Palmas water plant consortium (US$880M). Alongside Odebrecht, Roggio, Supercemento.",
+          "contract_value_usd": 880000000,
+          "source": "odebrecht-argentina.json"
+        }
+      },
+      "revolving_door": [],
+      "officer_network": {
+        "interlocking_officers": [],
+        "note": "No Cartellone-specific interlocking officers found in the officer-network-analysis top-50 super-connectors."
+      },
+      "cross_investigation_classification": "HIGH — Dual bribery case involvement, partner in ARS 5.7T UTE and US$880M AYSA consortium."
+    },
+
+    "SUPERCEMENTO": {
+      "monopoly_group": "SUPERCEMENTO / Loma Negra / Holcim / Camargo Corrêa",
+      "entities_found": ["Supercemento S.A.I.C.", "SUPERCEMENTO-ROGGIO-CARRANZA UTE"],
+      "contract_amounts": {
+        "supercemento_roggio_carranza_ute": {
+          "total_awards_ars": 5700000000000,
+          "contracts": 1,
+          "note": "ARS 5.7 TRILLION — Supercemento is one of three UTE partners"
+        }
+      },
+      "bribery_cases": {
+        "odebrecht": {
+          "role": "subcontractor",
+          "details": "Member of AYSA Paraná de las Palmas water plant consortium (US$880M) alongside Odebrecht, Roggio, and Cartellone.",
+          "contract_value_usd": 880000000,
+          "source": "odebrecht-argentina.json"
+        }
+      },
+      "revolving_door": [],
+      "officer_network": {
+        "note": "No Supercemento-specific interlocking officers in top-50 super-connectors."
+      },
+      "cross_investigation_classification": "HIGH — Partner in largest contract (ARS 5.7T UTE), Odebrecht consortium member, cement sector monopoly actor."
+    },
+
+    "TECHINT_ROCCA": {
+      "monopoly_group": "Techint / Rocca / Ternium / Tenaris / Tecpetrol / SACDE / Siderca",
+      "entities_found": ["Techint (Organización Techint)", "Siderca S.A.I.C.", "SIAT S.A."],
+      "bribery_cases": {
+        "cuadernos": {
+          "role": "bribe_payer",
+          "details": "Héctor Alberto Zabaleta became cooperating witness.",
+          "source": "cuadernos.json"
+        },
+        "odebrecht": {
+          "role": "alleged_intermediary",
+          "details": "Listed as 'key alleged intermediary company' in the Odebrecht Argentina case alongside Electroingenieria and CPC S.A.",
+          "source": "DOSSIER-OBRAS-PUBLICAS.md"
+        }
+      },
+      "officer_network": {
+        "interlocking_officers": [
+          {
+            "officer": "Guillermo Horacio HANG",
+            "companies_count": 7,
+            "linked_contractors": ["Siderca S.A.I.C.", "IMPRIPOST TECNOLOGIAS S.A.", "VEOLIA SERVICIOS Y GESTIÓN DE ENERGÍA ARGENTINA S.A.U.", "AMX ARGENTINA S.A", "LITORAL GAS S.A.", "ALCATEL-LUCENT DE ARGENTINA S.A.", "Santa Maria SAIF"],
+            "source": "officer-network-analysis.json"
+          },
+          {
+            "officer": "HORACIO RAMON DE LAS CARRERAS",
+            "companies_count": 7,
+            "linked_contractors": ["SIAT S.A.", "Siderca S.A.I.C.", "IMPRIPOST TECNOLOGIAS S.A.", "VEOLIA SERVICIOS Y GESTIÓN DE ENERGÍA ARGENTINA S.A.U.", "SCRAPSERVICE S.A.", "ALCATEL-LUCENT DE ARGENTINA S.A.", "Santa Maria SAIF"],
+            "note": "SIAT is a Techint group company (steel tubes). Co-board membership with Siderca confirms Techint group presence.",
+            "source": "officer-network-analysis.json"
+          }
+        ],
+        "techint_group_companies_in_graph": ["Siderca S.A.I.C.", "SIAT S.A."],
+        "note": "Siderca (now Tenaris) and SIAT are confirmed Techint group entities. Officers bridge to energy (VEOLIA, LITORAL GAS), telecom (ALCATEL-LUCENT, AMX), and media (IMPRIPOST) sectors."
+      },
+      "offshore_connections": {
+        "pandora_papers": true,
+        "details": "Rocca family mentioned in Bloomberg Linea Pandora Papers article alongside Bulgheroni, Pérez Companc, Roemmers, and Eurnekian. Referenced in offshore-connections.json sources.",
+        "source": "offshore-connections.json (sources section)"
+      },
+      "contract_amounts": {
+        "note": "Techint parent not directly listed as top contractor by amount. Siderca appears as contractor in government procurement. SACDE (formerly IECSA, Techint-adjacent via Macri family) is listed separately."
+      },
+      "cross_investigation_classification": "HIGH — Dual bribery case involvement (Cuadernos cooperating witness + Odebrecht intermediary), Pandora Papers family, Siderca/SIAT in contractor network with officer interlocks."
+    },
+
+    "ELECTROINGENIERIA_FERREYRA": {
+      "monopoly_group": "Electroingeniería / Ferreyra",
+      "entities_found": ["Electroingeniería S.A."],
+      "bribery_cases": {
+        "cuadernos": {
+          "role": "bribe_payer",
+          "details": "Executives Gerardo Ferreyra and Jorge Guillermo Neira detained. Neira became cooperating witness.",
+          "source": "cuadernos.json"
+        },
+        "odebrecht": {
+          "role": "alleged_intermediary",
+          "details": "Listed as 'key alleged intermediary company' in Odebrecht Argentina case.",
+          "source": "DOSSIER-OBRAS-PUBLICAS.md"
+        }
+      },
+      "contract_amounts": {
+        "note": "Not in top 5 contractors by amount. Contract values not separately enumerated in dossier."
+      },
+      "revolving_door": [],
+      "officer_network": {
+        "note": "No Electroingeniería-specific interlocking officers found in top-50 super-connectors."
+      },
+      "cross_investigation_classification": "HIGH — Dual bribery case involvement. Executive detained, cooperating witness produced."
+    },
+
+    "CPC_SA": {
+      "monopoly_group": "CPC S.A. (linked to Cristóbal López / Fabián De Sousa)",
+      "entities_found": ["CPC S.A."],
+      "contract_amounts": {
+        "total_awards_ars": 1800000000000,
+        "contracts": 4,
+        "note": "ARS 1.8 trillion — 4th largest contractor by award amount"
+      },
+      "graph_connectivity": {
+        "connections": 18,
+        "rank": "10th most connected contractor"
+      },
+      "flags": ["odebrecht_linked", "cuadernos_linked", "repeat_winner", "cross_investigation"],
+      "bribery_cases": {
+        "cuadernos": {
+          "role": "bribe_payer",
+          "details": "Linked to Cristóbal López and Fabián De Sousa. Attributed 5 bribe payments totaling approx. 14 million pesos (2011-2012).",
+          "source": "cuadernos.json"
+        },
+        "odebrecht": {
+          "role": "alleged_intermediary",
+          "details": "Listed as 'key alleged intermediary company' in Odebrecht Argentina case.",
+          "source": "DOSSIER-OBRAS-PUBLICAS.md"
+        }
+      },
+      "revolving_door": [],
+      "cross_investigation_classification": "HIGH — ARS 1.8T in contracts, dual bribery case involvement, dual flags (odebrecht + cuadernos)."
+    },
+
+    "ODEBRECHT": {
+      "monopoly_group": "Odebrecht",
+      "entities_found": ["Odebrecht S.A. (Sucursal Argentina)"],
+      "bribery_cases": {
+        "odebrecht": {
+          "role": "bribe_payer",
+          "total_bribes_usd": 35000000,
+          "period": "2007-2014",
+          "projects": [
+            {
+              "name": "Soterramiento del Ferrocarril Sarmiento",
+              "sector": "rail",
+              "contract_value_usd": 1500000000,
+              "bribe_amount_usd": 5000000,
+              "consortium": "Iecsa 30%, Odebrecht 30%, Ghella 30%, Comsa 10%"
+            },
+            {
+              "name": "Planta Potabilizadora Paraná de las Palmas (AYSA)",
+              "sector": "water",
+              "contract_value_usd": 880000000,
+              "bribe_amount_usd": 5000000,
+              "consortium": "Odebrecht, Benito Roggio, Supercemento, Cartellone"
+            },
+            {
+              "name": "Ampliación Gasoductos TGN y TGS",
+              "sector": "energy",
+              "contract_value_usd": 2300000000,
+              "bribe_amount_usd": 25000000
+            }
+          ],
+          "total_project_value_usd": 4680000000,
+          "source": "odebrecht-argentina.json",
+          "status": "DOJ plea agreement Dec 2016"
+        }
+      },
+      "cross_investigation_classification": "CRITICAL — US$35M total alleged bribes across US$4.68B in projects. DOJ plea agreement. Central to Soterramiento and AYSA water plant cases involving Roggio, Supercemento, Cartellone, and IECSA/SACDE."
+    },
+
+    "VIALMANI": {
+      "monopoly_group": "VIALMANI",
+      "entities_found": ["VIALMANI S.A."],
+      "contract_amounts": {
+        "note": "Not in top 5 by amount but highest connectivity"
+      },
+      "graph_connectivity": {
+        "connections": 38,
+        "rank": "1st — most connected contractor in entire graph"
+      },
+      "flags": ["repeat_winner", "geographic_concentration"],
+      "bribery_cases": {},
+      "cross_investigation_classification": "MEDIUM — Highest graph connectivity (38 connections), repeat winner, geographic concentration flag. No direct bribery case linkage found but dominant market position in road infrastructure."
+    },
+
+    "MARCALBA": {
+      "monopoly_group": "MARCALBA",
+      "entities_found": ["MARCALBA S.A."],
+      "graph_connectivity": {
+        "connections": 35,
+        "rank": "3rd most connected contractor"
+      },
+      "flags": ["repeat_winner"],
+      "bribery_cases": {},
+      "cross_investigation_classification": "MEDIUM — 3rd highest connectivity (35 connections), part of oligopoly cluster. No direct bribery case linkage."
+    },
+
+    "POSE": {
+      "monopoly_group": "POSE",
+      "entities_found": ["POSE S.A.", "POSE SA"],
+      "contract_amounts": {
+        "total_awards_ars": 1600000000000,
+        "contracts": 11,
+        "note": "ARS 1.6 trillion — 5th largest contractor by award amount"
+      },
+      "graph_connectivity": {
+        "connections": 32,
+        "rank": "4th most connected contractor"
+      },
+      "flags": ["repeat_winner"],
+      "bribery_cases": {},
+      "cross_investigation_classification": "MEDIUM — ARS 1.6T in awards, 4th highest connectivity, repeat winner. No direct bribery linkage but part of oligopoly cluster."
+    },
+
+    "ICF": {
+      "monopoly_group": "I.C.F.",
+      "entities_found": ["I.C.F. S.A."],
+      "graph_connectivity": {
+        "connections": 36,
+        "rank": "2nd most connected contractor"
+      },
+      "flags": ["repeat_winner"],
+      "bribery_cases": {},
+      "cross_investigation_classification": "MEDIUM — 2nd highest connectivity, part of oligopoly cluster."
+    },
+
+    "DECAVIAL": {
+      "monopoly_group": "DECAVIAL",
+      "entities_found": ["DECAVIAL SAICAC", "Decavial S.A."],
+      "contract_amounts": {
+        "total_awards_ars": 2000000000000,
+        "contracts": 6,
+        "note": "ARS 2.0 trillion — 2nd largest contractor by award amount"
+      },
+      "graph_connectivity": {
+        "connections": 24,
+        "rank": "8th most connected contractor"
+      },
+      "flags": ["repeat_winner"],
+      "bribery_cases": {
+        "cuadernos": {
+          "role": "bribe_payer",
+          "details": "Representative Aznar mentioned in bribe delivery testimony.",
+          "source": "cuadernos.json"
+        }
+      },
+      "cross_investigation_classification": "HIGH — ARS 2.0T in contracts (2nd largest), Cuadernos involvement, repeat winner."
+    },
+
+    "AUSTRAL_CONSTRUCCIONES_BAEZ": {
+      "monopoly_group": "Austral Construcciones / Lázaro Báez",
+      "entities_found": ["Austral Construcciones S.A."],
+      "bribery_cases": {
+        "cuadernos": {
+          "role": "bribe_payer",
+          "details": "Owned by Lázaro Báez. Also subject to separate money laundering trial.",
+          "source": "cuadernos.json"
+        }
+      },
+      "contract_amounts": {
+        "note": "Contract amounts not in top 5 by dossier listing. Báez is subject to separate Vialidad case (CFK convicted Dec 2022, under appeal)."
+      },
+      "cross_investigation_classification": "HIGH — Cuadernos bribe payer, Lázaro Báez money laundering trial, linked to Vialidad case and CFK conviction."
+    },
+
+    "EURNEKIAN_CORPORACION_AMERICA": {
+      "monopoly_group": "Eurnekian / Corporación América",
+      "entities_found": ["Aeropuertos Argentina 2000 S.A."],
+      "officer_network": {
+        "interlocking_officers": [
+          {
+            "officer": "Máximo Luis Bomchil",
+            "companies_count": 8,
+            "linked_contractors": ["Helport S.A.", "TELECOM PERSONAL S.A.", "CABLEVISION SA", "ADECCO RECURSOS HUMANOS ARGENTINA S.A.", "Schlumberger Argentina S.A.", "Aeropuertos Argentina 2000 S.A.", "MERSEN SAU", "TORNEOS Y COMPETENCIAS S.A"],
+            "note": "Aeropuertos Argentina 2000 is the Eurnekian-controlled airport concession. Bomchil bridges to telecom (Telecom Personal, Cablevision) and oil services (Schlumberger).",
+            "source": "officer-network-analysis.json"
+          }
+        ]
+      },
+      "offshore_connections": {
+        "pandora_papers": true,
+        "details": "Eurnekian listed in Bloomberg Linea Pandora Papers article as one of Argentina's richest families with offshore entities.",
+        "source": "offshore-connections.json (sources section)"
+      },
+      "bribery_cases": {},
+      "cross_investigation_classification": "MEDIUM — Airport concession in contractor network, officer interlocks to telecom sector, Pandora Papers mention. No direct bribery case linkage in obras-publicas data."
+    },
+
+    "MINDLIN_PAMPA_ENERGIA_SACDE": {
+      "monopoly_group": "Mindlin / Pampa Energía / SACDE",
+      "entities_found": [],
+      "note": "Mindlin acquired SACDE from Calcaterra post-Cuadernos. SACDE entries in this dossier predate the Mindlin acquisition. Pampa Energía not found as direct contractor in obras-publicas graph. Cross-reference with monopolios-energia.json for energy sector holdings.",
+      "cross_investigation_classification": "LOW (in obras-publicas) — Indirect connection through SACDE acquisition. Energy monopoly relevance tracked separately."
+    }
+  },
+
+  "supercemento_roggio_carranza_ute_detail": {
+    "type": "Union Transitoria de Empresas (joint venture)",
+    "total_awards_ars": 5700000000000,
+    "contracts": 1,
+    "significance": "LARGEST single contract in the entire obras-publicas dataset",
+    "components": [
+      {
+        "name": "Supercemento S.A.I.C.",
+        "sector": "cement/construction",
+        "monopoly_group": "SUPERCEMENTO / Loma Negra / Holcim / Camargo Corrêa",
+        "odebrecht_linked": true
+      },
+      {
+        "name": "Benito Roggio e Hijos S.A.",
+        "sector": "construction/services conglomerate",
+        "monopoly_group": "Roggio Group",
+        "cuadernos_linked": true,
+        "odebrecht_linked": true
+      },
+      {
+        "name": "Empresa Constructora José Cartellone (Carranza)",
+        "sector": "construction",
+        "monopoly_group": "Cartellone",
+        "cuadernos_linked": true,
+        "odebrecht_linked": true
+      }
+    ],
+    "geographic_presence": "Buenos Aires",
+    "flags": ["repeat_winner (component firms)"],
+    "bribery_nexus": "All three component firms appear in the Odebrecht AYSA consortium AND at least one appears in Cuadernos. This UTE concentrates three bribery-linked monopoly actors into a single ARS 5.7T contract.",
+    "source": "DOSSIER-OBRAS-PUBLICAS.md, Entity Profiles section"
+  },
+
+  "top_contractors_by_award_amount": [
+    { "contractor": "SUPERCEMENTO-ROGGIO-CARRANZA UTE", "total_awards_ars": 5700000000000, "contracts": 1, "monopoly_match": true },
+    { "contractor": "DECAVIAL SAICAC", "total_awards_ars": 2000000000000, "contracts": 6, "monopoly_match": true },
+    { "contractor": "SACDE (ex-IECSA)", "total_awards_ars": 1900000000000, "contracts": 3, "monopoly_match": true },
+    { "contractor": "CPC S.A.", "total_awards_ars": 1800000000000, "contracts": 4, "monopoly_match": true },
+    { "contractor": "POSE SA", "total_awards_ars": 1600000000000, "contracts": 11, "monopoly_match": true }
+  ],
+
+  "top_contractors_by_connectivity": [
+    { "contractor": "VIALMANI S.A.", "connections": 38, "monopoly_match": true },
+    { "contractor": "I.C.F. S.A.", "connections": 36, "monopoly_match": true },
+    { "contractor": "MARCALBA S.A.", "connections": 35, "monopoly_match": true },
+    { "contractor": "POSE S.A.", "connections": 32, "monopoly_match": true },
+    { "contractor": "TRANSREDES S.A.", "connections": 27, "monopoly_match": false },
+    { "contractor": "CONSTRUMEX S.A.", "connections": 26, "monopoly_match": false },
+    { "contractor": "C.N. SAPAG S.A.", "connections": 24, "monopoly_match": false },
+    { "contractor": "DECAVIAL SAICAC", "connections": 24, "monopoly_match": true },
+    { "contractor": "SACDE S.A. (ex-IECSA)", "connections": 20, "monopoly_match": true },
+    { "contractor": "CPC S.A.", "connections": 18, "monopoly_match": true }
+  ],
+
+  "shell_companies_summary": {
+    "total_flagged": 831,
+    "investigated": 10,
+    "genuine_shell_company": 0,
+    "suspicious": 1,
+    "inconclusive": 1,
+    "data_artifact": 8,
+    "key_finding": "The 0-1 officer heuristic produces ~80-90% false positive rate. Most 'shell companies' are legitimate businesses with incomplete OpenCorporates registry data. Only ROKEN CROSS (zero web presence, duplicate entity, 9 contracts) flagged suspicious.",
+    "monopoly_actor_overlap": "No monopoly actors from our target list appeared in the shell company analysis. Shell companies in this dataset are primarily small medical/laboratory suppliers, not construction monopoly entities.",
+    "source": "shell-company-analysis.json"
+  },
+
+  "revolving_door_summary": {
+    "total_dual_role_persons": 2155,
+    "linked_to_contractors": 217,
+    "distinct_contractors_with_overlap": 123,
+    "monopoly_actor_revolving_door": [
+      {
+        "actor": "SACDE/IECSA (Macri/Calcaterra)",
+        "persons": ["CLUSELLAS PABLO", "LUIS GERMAN JAHN"],
+        "risk_level": "critical",
+        "works": 8
+      }
+    ],
+    "highest_value_revolving_door": {
+      "contractor": "CORREO OFICIAL DE LA REPUBLICA ARGENTINA SA",
+      "contract_value_ars": 10468173407.90,
+      "officers_in_government": 5,
+      "note": "Not a monopoly actor from our list but highest-value revolving door case in the dataset",
+      "source": "cross-investigation-analysis.json"
+    },
+    "source": "revolving-door-analysis.json, cross-investigation-analysis.json"
+  },
+
+  "budget_underrun_projects": {
+    "total_flagged": 128,
+    "criteria": "Marked 'completed' with <30% budget execution",
+    "worst_cases": [
+      { "project": "Pavimentacion RP17 Chubut", "budget_ars": 12800000000, "execution_pct": 1.4, "gap_ars": 12621000000 },
+      { "project": "Pavimentacion RP13", "budget_ars": 30700000000, "execution_pct": 16.06, "gap_ars": 25770000000 },
+      { "project": "Autopista RN3 Canuelas-Azul", "budget_ars": 86700000000, "execution_pct": 19.2, "gap_ars": 70066000000 },
+      { "project": "RN9 Santiago del Estero", "budget_ars": 83800000000, "execution_pct": 27.17, "gap_ars": 61030000000 }
+    ],
+    "monopoly_actor_note": "Ghost projects correlate geographically with provinces where repeat-winner contractors (including monopoly actors VIALMANI, DECAVIAL) have highest concentration. Specific contractor-project mapping requires additional graph queries.",
+    "source": "DOSSIER-OBRAS-PUBLICAS.md"
+  },
+
+  "bribery_nexus_summary": {
+    "cases": [
+      {
+        "name": "Odebrecht Argentina (Lava Jato)",
+        "total_bribes_usd": 35000000,
+        "period": "2007-2014",
+        "monopoly_actors_involved": ["Odebrecht S.A.", "Iecsa/SACDE (Macri/Calcaterra)", "Benito Roggio e Hijos", "Supercemento S.A.I.C.", "José Cartellone", "Techint", "Electroingenieria", "CPC S.A."],
+        "projects_total_value_usd": 4680000000,
+        "source": "odebrecht-argentina.json"
+      },
+      {
+        "name": "Cuadernos de las Coimas",
+        "total_bribes_usd": 30000000,
+        "total_bribes_ars": 171224710,
+        "period": "2005-2015",
+        "monopoly_actors_involved": ["Electroingeniería S.A.", "Austral Construcciones (Lázaro Báez)", "CPC S.A.", "Iecsa/SACDE (Macri/Calcaterra)", "Grupo Roggio", "Cartellone", "Decavial", "Techint"],
+        "provenance_warning": "EVIDENCE ANOMALY: Chain of custody broken, 1,500+ alterations by non-Centeno hands, Notebook #5 permanently missing, Bacigalupo charged with falsifying names, Centeno refused to testify (March 2026). 25 arrepentido confessions obtained under detention-release mechanism challenged as coercive.",
+        "source": "cuadernos.json"
+      },
+      {
+        "name": "Siemens DNI",
+        "total_bribes_usd": 100000000,
+        "monopoly_actors_involved": [],
+        "note": "No monopoly actors from construction sector involved — this was a technology contract (DNI national identity system).",
+        "source": "DOSSIER-OBRAS-PUBLICAS.md"
+      }
+    ],
+    "politicians_linked_to_multiple_cases": [
+      { "name": "Julio De Vido", "position": "Ministro de Planificacion Federal", "cases": ["Odebrecht", "Cuadernos"] },
+      { "name": "Roberto Baratta", "position": "Subsecretario de Coordinacion", "cases": ["Odebrecht", "Cuadernos"] },
+      { "name": "Ricardo Jaime", "position": "Secretario de Transporte", "cases": ["Odebrecht", "Cuadernos"] },
+      { "name": "Jose Francisco Lopez", "position": "Secretario de Obras Publicas", "cases": ["Odebrecht", "Cuadernos"] }
+    ]
+  },
+
+  "offshore_connections_summary": {
+    "total_offshore_entities_in_graph": 2337,
+    "bvi_entities": 1556,
+    "monopoly_actors_with_offshore_links": {
+      "direct_graph_links": {
+        "werthein_family": {
+          "contractor": "CAJA DE SEGUROS S.A.",
+          "offshore_entities": ["CANROLD OVERSEAS LIMITED (BVI)", "HINSLET OVERSEAS LTD. (BVI)", "CONSINE DEVELOPMENT LLC (Nevada)"],
+          "note": "Not a construction monopoly actor — insurance sector. Included for completeness."
+        }
+      },
+      "pandora_papers_mentions": ["Rocca (Techint)", "Eurnekian (Corporación América)"],
+      "panama_papers_links": ["CLUSELLAS PABLO (SACDE/IECSA officer) — Mossack Fonseca intermediary"],
+      "delaware_entity": ["SACDE hidden ownership via offshore Delaware entity per judicial proceedings"]
+    },
+    "source": "offshore-connections.json, revolving-door-analysis.json"
+  },
+
+  "cartel_detection_summary": {
+    "clusters_detected": 5,
+    "monopoly_actor_overlap": "NONE — The 5 detected cartel clusters are in medical/laboratory/pharmaceutical supply sectors (surgical supplies, lab reagents, pharma distribution, droguerias, chemical reagents). No construction monopoly actors appear in the CABA OCDS cartel detection analysis.",
+    "construction_cartel_note": "The construction cartel operates through the UTE (joint venture) mechanism and the Cámara Argentina de la Construcción, not through CABA procurement. The Cuadernos case documents systematic cartelization of road public works: 'Companies agreed on bid allocations; ~20% overpricing with half allegedly destined for bribes. Organized through Cámara Argentina de la Construcción under Carlos Wagner (Esuco S.A.).'",
+    "single_bidder_high_value_total_ars": 6076427056,
+    "source": "cartel-detection.json, cuadernos.json"
+  },
+
+  "pay_to_play_summary": {
+    "total_contractor_donation_matches": 9,
+    "total_donation_amount_ars": 941462.5,
+    "monopoly_actor_overlap": "NONE — The 9 contractor-donor matches are all small-value individual donors and minor companies (PROVIDERS SA, TOMAS HNOS). No construction monopoly actors appear in the direct CUIT-matched pay-to-play analysis. NOTE: Major construction firms likely donate through officers/related parties rather than corporate CUITs, making direct matching insufficient.",
+    "source": "pay-to-play-analysis.json"
+  },
+
+  "cross_reference_matrix": {
+    "description": "Summary matrix showing which monopoly actors appear in which obras-publicas findings",
+    "actors": {
+      "SACDE/IECSA/Macri/Calcaterra": {
+        "top_contractor_by_amount": true,
+        "top_contractor_by_connectivity": true,
+        "cuadernos_case": true,
+        "odebrecht_case": true,
+        "revolving_door": true,
+        "officer_interlocks": true,
+        "offshore_links": true,
+        "shell_companies": false,
+        "cartel_detection": false,
+        "pay_to_play": false
+      },
+      "Roggio": {
+        "top_contractor_by_amount": true,
+        "top_contractor_by_connectivity": false,
+        "cuadernos_case": true,
+        "odebrecht_case": true,
+        "revolving_door": false,
+        "officer_interlocks": true,
+        "offshore_links": false,
+        "shell_companies": false,
+        "cartel_detection": false,
+        "pay_to_play": false
+      },
+      "Cartellone": {
+        "top_contractor_by_amount": true,
+        "top_contractor_by_connectivity": false,
+        "cuadernos_case": true,
+        "odebrecht_case": true,
+        "revolving_door": false,
+        "officer_interlocks": false,
+        "offshore_links": false,
+        "shell_companies": false,
+        "cartel_detection": false,
+        "pay_to_play": false
+      },
+      "Supercemento": {
+        "top_contractor_by_amount": true,
+        "top_contractor_by_connectivity": false,
+        "cuadernos_case": false,
+        "odebrecht_case": true,
+        "revolving_door": false,
+        "officer_interlocks": false,
+        "offshore_links": false,
+        "shell_companies": false,
+        "cartel_detection": false,
+        "pay_to_play": false
+      },
+      "Techint/Rocca/Siderca": {
+        "top_contractor_by_amount": false,
+        "top_contractor_by_connectivity": false,
+        "cuadernos_case": true,
+        "odebrecht_case": true,
+        "revolving_door": false,
+        "officer_interlocks": true,
+        "offshore_links": true,
+        "shell_companies": false,
+        "cartel_detection": false,
+        "pay_to_play": false
+      },
+      "Electroingeniería/Ferreyra": {
+        "top_contractor_by_amount": false,
+        "top_contractor_by_connectivity": false,
+        "cuadernos_case": true,
+        "odebrecht_case": true,
+        "revolving_door": false,
+        "officer_interlocks": false,
+        "offshore_links": false,
+        "shell_companies": false,
+        "cartel_detection": false,
+        "pay_to_play": false
+      },
+      "CPC": {
+        "top_contractor_by_amount": true,
+        "top_contractor_by_connectivity": true,
+        "cuadernos_case": true,
+        "odebrecht_case": true,
+        "revolving_door": false,
+        "officer_interlocks": false,
+        "offshore_links": false,
+        "shell_companies": false,
+        "cartel_detection": false,
+        "pay_to_play": false
+      },
+      "Odebrecht": {
+        "top_contractor_by_amount": false,
+        "top_contractor_by_connectivity": false,
+        "cuadernos_case": false,
+        "odebrecht_case": true,
+        "revolving_door": false,
+        "officer_interlocks": false,
+        "offshore_links": false,
+        "shell_companies": false,
+        "cartel_detection": false,
+        "pay_to_play": false
+      },
+      "DECAVIAL": {
+        "top_contractor_by_amount": true,
+        "top_contractor_by_connectivity": true,
+        "cuadernos_case": true,
+        "odebrecht_case": false,
+        "revolving_door": false,
+        "officer_interlocks": false,
+        "offshore_links": false,
+        "shell_companies": false,
+        "cartel_detection": false,
+        "pay_to_play": false
+      },
+      "Austral/Báez": {
+        "top_contractor_by_amount": false,
+        "top_contractor_by_connectivity": false,
+        "cuadernos_case": true,
+        "odebrecht_case": false,
+        "revolving_door": false,
+        "officer_interlocks": false,
+        "offshore_links": false,
+        "shell_companies": false,
+        "cartel_detection": false,
+        "pay_to_play": false
+      },
+      "VIALMANI": {
+        "top_contractor_by_amount": false,
+        "top_contractor_by_connectivity": true,
+        "cuadernos_case": false,
+        "odebrecht_case": false,
+        "revolving_door": false,
+        "officer_interlocks": false,
+        "offshore_links": false,
+        "shell_companies": false,
+        "cartel_detection": false,
+        "pay_to_play": false
+      },
+      "MARCALBA": {
+        "top_contractor_by_amount": false,
+        "top_contractor_by_connectivity": true,
+        "cuadernos_case": false,
+        "odebrecht_case": false,
+        "revolving_door": false,
+        "officer_interlocks": false,
+        "offshore_links": false,
+        "shell_companies": false,
+        "cartel_detection": false,
+        "pay_to_play": false
+      },
+      "POSE": {
+        "top_contractor_by_amount": true,
+        "top_contractor_by_connectivity": true,
+        "cuadernos_case": false,
+        "odebrecht_case": false,
+        "revolving_door": false,
+        "officer_interlocks": false,
+        "offshore_links": false,
+        "shell_companies": false,
+        "cartel_detection": false,
+        "pay_to_play": false
+      },
+      "ICF": {
+        "top_contractor_by_amount": false,
+        "top_contractor_by_connectivity": true,
+        "cuadernos_case": false,
+        "odebrecht_case": false,
+        "revolving_door": false,
+        "officer_interlocks": false,
+        "offshore_links": false,
+        "shell_companies": false,
+        "cartel_detection": false,
+        "pay_to_play": false
+      },
+      "Eurnekian/CorporaciónAmérica": {
+        "top_contractor_by_amount": false,
+        "top_contractor_by_connectivity": false,
+        "cuadernos_case": false,
+        "odebrecht_case": false,
+        "revolving_door": false,
+        "officer_interlocks": true,
+        "offshore_links": true,
+        "shell_companies": false,
+        "cartel_detection": false,
+        "pay_to_play": false
+      }
+    }
+  },
+
+  "key_findings": [
+    "ALL 5 top contractors by award amount (totaling ARS 13T) are monopoly actors from our target list: SUPERCEMENTO-ROGGIO-CARRANZA UTE (5.7T), DECAVIAL (2.0T), SACDE/IECSA (1.9T), CPC (1.8T), POSE (1.6T).",
+    "7 of 10 top contractors by graph connectivity are monopoly actors: VIALMANI (38), ICF (36), MARCALBA (35), POSE (32), DECAVIAL (24), SACDE (20), CPC (18).",
+    "The ARS 5.7T SUPERCEMENTO-ROGGIO-CARRANZA UTE contract combines THREE monopoly actors with DUAL bribery case involvement (both Odebrecht and Cuadernos). All three firms also participated in the US$880M AYSA water plant consortium with Odebrecht.",
+    "SACDE/IECSA is the highest-risk single entity: ARS 1.9T in contracts, dual bribery case involvement, 2 critical revolving door cases (Clusellas at Presidencia, Jahn at ENOHSA), officer interlocking network confirming hidden corporate group (CINCOVIAL, CREAURBAN, Panamerican Mall, Llao Llao Resorts), Panama Papers links, and judicial confirmation of hidden offshore ownership via Delaware entity.",
+    "The Roggio Group controls at least 8 confirmed companies via shared board members (5 officers with near-identical 7-10 company board memberships): Benito Roggio Ferroindustrial, CV1 Concesionaria Vial, Educacion Tecnologica, TAYM, SEHOS, Envairo, BLAMEN, C.P.S. Comunicaciones.",
+    "8 of 14 companies in the Cuadernos bribery case are monopoly actors from our list: Electroingeniería, Austral Construcciones, CPC, Iecsa/SACDE, Grupo Roggio, Cartellone, Decavial, Techint.",
+    "The Odebrecht case connects 8 monopoly actors through US$4.68B in projects with US$35M in alleged bribes, creating a documented nexus between international corruption and Argentine construction monopolies.",
+    "No monopoly actors appeared in the shell company analysis (831 companies) or the CABA cartel detection analysis (medical/pharma sectors). Construction cartelization operates through UTE mechanisms and the Cámara Argentina de la Construcción, not through standard procurement.",
+    "The construction cartel's modus operandi (per Cuadernos): companies agreed on bid allocations through the Cámara Argentina de la Construcción under Carlos Wagner (Esuco), with ~20% overpricing and half destined for bribes.",
+    "Offshore connections to monopoly actors are documented for Techint/Rocca (Pandora Papers), Eurnekian (Pandora Papers), and SACDE/Macri (Panama Papers via Clusellas, Delaware hidden ownership via Calcaterra)."
+  ]
+}

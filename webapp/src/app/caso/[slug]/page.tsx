@@ -2,12 +2,12 @@
  * Caso landing page — routes to the correct investigation component based on slug.
  */
 
+import { redirect } from 'next/navigation'
 import { getStats, getActors, getDocuments } from '@/lib/caso-libra'
 import { CasoLandingContent } from './CasoLandingContent'
 import { NuclearRiskLanding } from './NuclearRiskLanding'
 
 async function getNuclearStats() {
-  // Static stats for now — will be dynamic when API routes are built
   return {
     stats: [
       { label: 'Signals', value: '29', color: 'yellow' },
@@ -27,19 +27,28 @@ async function getNuclearStats() {
   }
 }
 
-export default async function CasoLandingPage({
+const KNOWN_SLUGS = new Set(['caso-epstein', 'caso-libra', 'finanzas-politicas', 'monopolios', 'obras-publicas'])
+
+export default async function CasoFallbackPage({
   params,
 }: {
   readonly params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
 
+  // Nuclear risk has its own component in [slug]
   if (slug === 'riesgo-nuclear') {
     const { stats, theaters } = await getNuclearStats()
     return <NuclearRiskLanding slug={slug} stats={stats} theaters={theaters} />
   }
 
-  // Default: Caso Libra / Epstein landing
+  // Known slugs with their own directories won't reach here.
+  // Unknown slugs redirect home.
+  if (!KNOWN_SLUGS.has(slug)) {
+    redirect('/')
+  }
+
+  // Fallback for caso-libra style landing (shouldn't normally be reached)
   const [_stats, actors, documents] = await Promise.all([getStats(), getActors(), getDocuments()])
   return <CasoLandingContent slug={slug} actors={actors} documents={documents} />
 }

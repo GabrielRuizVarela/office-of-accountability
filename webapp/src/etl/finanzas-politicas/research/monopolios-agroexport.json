@@ -1,0 +1,583 @@
+{
+  "title": "Monopolios Agroexportadores — Concentracion del Complejo Granario Argentino",
+  "date": "2026-03-24",
+  "summary": "Argentina is the world's largest exporter of soybean meal (33% of global exports) and soybean oil, yet the entire value chain — from crushing plants to port terminals to export logistics — is controlled by a handful of multinational and domestic firms. Five companies alone concentrate 60% of grain exports. The Rosario port belt (70km of Parana riverfront) handles 78% of all grain/oil/meal shipments through 19 private terminals owned by the same exporters. Transfer pricing through offshore subsidiaries, import over-invoicing triangulation via Paraguay, and the Vicentin fraud (USD 1.574B default with proven collusion with Banco Nacion officials) reveal a systemic pattern of extraction.",
+
+  "export_concentration": {
+    "overview": "In 2025, five multinational companies concentrated 60% of Argentine grain exports (64.85 Mt out of ~105 Mt total). The top 10 companies control over 90% of all agroexport shipments.",
+    "top_exporters_2024_25": [
+      {
+        "company": "Cargill S.A.",
+        "origin": "United States (Minneapolis, MN)",
+        "tonnes_mt": 17.3,
+        "market_share_approx": "16-17%",
+        "yoy_growth": "+81.5%",
+        "notes": "Led export ranking in 2024 and 2025. Operates multiple port terminals in Gran Rosario (Quebracho, Punta Alvear, Villa Gobernador Galvez)."
+      },
+      {
+        "company": "Viterra (now Bunge-Viterra)",
+        "origin": "Switzerland/Canada (Glencore subsidiary, merged into Bunge July 2025)",
+        "tonnes_mt": 13.55,
+        "market_share_approx": "13-15%",
+        "notes": "Led rankings 2021-2023. Post-merger with Bunge, combined entity controls ~18% of raw grain exports and 34% of oilseed oil/flour exports."
+      },
+      {
+        "company": "COFCO International",
+        "origin": "China (state-owned, via Nidera + Noble Agri acquisitions)",
+        "tonnes_mt": 10.35,
+        "market_share_approx": "10-12%",
+        "notes": "Built through USD 3B+ acquisitions of Nidera (Netherlands) and Noble Agri (Singapore) in 2014. Second-largest exporter some years."
+      },
+      {
+        "company": "Louis Dreyfus Company (LDC)",
+        "origin": "France/Netherlands",
+        "tonnes_mt": 8.57,
+        "market_share_approx": "8-9%",
+        "notes": "Port terminals in Timbues and General Lagos. Major soybean crusher."
+      },
+      {
+        "company": "Bunge Global S.A.",
+        "origin": "United States (St. Louis, MO) / Switzerland",
+        "tonnes_mt": 8.72,
+        "market_share_approx": "8-9%",
+        "notes": "Pre-merger figure. Post-Viterra merger (USD 8.2B, completed July 2025), combined entity is dominant force. Could control 40%+ of oilseed processing if Vicentin assets acquired."
+      },
+      {
+        "company": "ADM (Archer Daniels Midland)",
+        "origin": "United States (Chicago, IL)",
+        "tonnes_mt": 8.04,
+        "market_share_approx": "7-8%",
+        "notes": "Fourth ABCD trader. Major crusher and exporter."
+      },
+      {
+        "company": "AGD (Aceitera General Deheza)",
+        "origin": "Argentina (General Deheza, Cordoba)",
+        "tonnes_mt": null,
+        "market_share_approx": "5-7%",
+        "notes": "Largest domestically-owned agroexporter. Urquia family. Controls Terminal 6 (joint with Bunge), crushing plants, private port, even customs facility."
+      },
+      {
+        "company": "Molinos Agro S.A.",
+        "origin": "Argentina (Perez Companc group)",
+        "tonnes_mt": null,
+        "market_share_approx": "3-5%",
+        "notes": "Part of the Molinos Rio de la Plata group. Terminal in San Lorenzo."
+      }
+    ],
+    "combined_top5_share": "~60% of total grain exports",
+    "combined_top5_plus_agd_share": "Cargill + ADM + Bunge + COFCO + AGD exported 54% of grains, flours and oils",
+    "bunge_viterra_merger_impact": {
+      "combined_grain_share": "18% of total grain exports (9.8 Mt)",
+      "combined_oilseed_products_share": "34% of oilseed oil and flour exports (10.1 Mt)",
+      "potential_with_vicentin": "Could reach 40%+ of Argentina's oilseed processing capacity",
+      "antitrust_status": "Under investigation in Canada, Brazil, Argentina. Argentina allowed merger to complete with potential remedial action later.",
+      "sources": [
+        "https://www.foodandpower.net/latest/bunge-viterra-merger-june-23",
+        "https://www.puntal.com.ar/cargill/como-quedo-el-ranking-exportador-la-fusion-bunge-y-viterra-n193398",
+        "https://farmpolicynews.illinois.edu/2025/07/bunge-completes-8-billion-merger-with-grain-trader-viterra/"
+      ]
+    },
+    "sources": [
+      "https://paisproductivo.com.ar/solo-cinco-cerealeras-multinacionales-concentraron-el-60-de-las-exportaciones-de-granos-argentinos/",
+      "https://argenports.com/nota/diez-empresas-lideraron-las-exportaciones-de-granos-en-2025/",
+      "https://www.riotimesonline.com/brazil-news/mercosur/argentina/cargill-is-the-leading-exporter-of-grains-and-by-products-in-argentina/",
+      "https://millingmea.com/viterra-leads-argentinas-grain-export-rankings-for-third-straight-year/",
+      "https://www.linkedin.com/pulse/argentina-cargill-adm-bunge-cofco-agd-exported-54-grains-leporati"
+    ]
+  },
+
+  "crushing_capacity": {
+    "overview": "Argentina's crushing industry processes 38-40 million tonnes/year of raw soybeans, making it the world's largest exporter of soybean meal (27-29 MMT, ~33% of global exports) and a top exporter of soybean oil (5.3 MMT). The Gran Rosario belt alone has 22 crushing plants processing 157,500 tonnes/day.",
+    "global_position": {
+      "soybean_meal_exports": "World #1 — 27-29 MMT/year, 33% of global exports",
+      "soybean_oil_exports": "World #1 — 5.3 MMT (MY2024/25 forecast)",
+      "total_crushing": "38-40 million tonnes/year"
+    },
+    "major_crushers": [
+      {
+        "company": "Bunge (now Bunge-Viterra)",
+        "daily_capacity_tonnes": 18000,
+        "location": "Rosario area facilities",
+        "notes": "Post-merger potentially controls 40%+ of national oilseed processing"
+      },
+      {
+        "company": "AGD (Aceitera General Deheza)",
+        "daily_capacity_tonnes": 12500,
+        "facilities": [
+          {
+            "name": "General Deheza Complex (Reflex plant)",
+            "capacity_tonnes_day": 8000,
+            "opened": "November 2011",
+            "type": "Multi-seed extraction (soy, sunflower, peanut)"
+          },
+          {
+            "name": "Chabas Plant",
+            "capacity_tonnes_day": 4000,
+            "storage_tonnes": 420000,
+            "products": "Soybean oil, high protein soymeals, soya lecithins"
+          },
+          {
+            "name": "Dalmacio Velez Sarsfield Plant",
+            "capacity_tonnes_day": 500,
+            "location": "Cordoba province"
+          }
+        ]
+      },
+      {
+        "company": "Terminal 6 S.A. (AGD + Bunge joint venture)",
+        "daily_capacity_tonnes": 20000,
+        "location": "Puerto General San Martin",
+        "notes": "320 hectare plot, storage for 950,000t dry products and 110,000t vegetable oils"
+      },
+      {
+        "company": "Renova S.A. (Vicentin + Viterra/Glencore)",
+        "daily_capacity_tonnes": 20000,
+        "location": "Timbues",
+        "notes": "Largest extruder plant of its type in the world. Ownership: Viterra/Bunge 67%, Vicentin 33% (under judicial freeze)"
+      },
+      {
+        "company": "Molinos Rio de la Plata S.A.",
+        "daily_capacity_tonnes": 20000,
+        "location": "San Lorenzo"
+      }
+    ],
+    "recent_capacity_additions": {
+      "total_new_capacity_tonnes_day": 22500,
+      "details": [
+        "Nidera (COFCO) Puerto General San Martin: +4,500 t/day",
+        "Bunge Ramallo: +3,000 t/day",
+        "Viluco Frias: +3,000 t/day",
+        "AGD Deheza: +11,000 t/day"
+      ]
+    },
+    "sources": [
+      "https://www.bcr.com.ar/es/mercados/investigacion-y-desarrollo/bcr-weekly-news/news-informativo-semanal/last-decades-changes",
+      "https://www.agd.com.ar/en/industrial-plants/planta",
+      "https://www.agd.com.ar/en/general-deheza-complex",
+      "https://www.spglobal.com/commodity-insights/en/news-research/latest-news/agriculture/050423-argentinas-soybean-crushers-likely-to-face-headwinds-until-next-harvest-bunge",
+      "https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=Oilseeds+and+Products+Annual_Buenos+Aires_Argentina_AR2025-0006"
+    ]
+  },
+
+  "port_monopoly": {
+    "overview": "The Gran Rosario port complex (70km of Parana riverfront from Timbues to Arroyo Seco) is the world's most important agro-export port node. 78% of Argentina's grain, meal and oil exports leave from here through 19 private grain terminals owned by the same companies that dominate exports and crushing.",
+    "total_terminals": 29,
+    "grain_oil_terminals": 19,
+    "total_annual_capacity_mt": 140,
+    "share_of_national_exports": "78% of grains, meals, and oils",
+    "terminal_ownership": [
+      {
+        "company": "Cargill",
+        "terminals": [
+          "Quebracho (Puerto General San Martin)",
+          "Punta Alvear",
+          "Villa Gobernador Galvez (APG terminal)"
+        ]
+      },
+      {
+        "company": "Louis Dreyfus (LDC)",
+        "terminals": [
+          "Timbues terminal",
+          "General Lagos terminal"
+        ]
+      },
+      {
+        "company": "Bunge-Viterra (post-merger)",
+        "terminals": [
+          "Terminal 6 (Puerto General San Martin, joint with AGD)",
+          "Fertilizantes Argentinos (75% Bunge, 25% ACA, Puerto General San Martin)"
+        ]
+      },
+      {
+        "company": "AGD (Aceitera General Deheza)",
+        "terminals": [
+          "Terminal 6 (Puerto General San Martin, joint with Bunge)",
+          "Private port in General Deheza (inland, with own customs)"
+        ]
+      },
+      {
+        "company": "Renova (Viterra/Bunge 67% + Vicentin 33%)",
+        "terminals": [
+          "Timbues terminal (world's largest extruder port)"
+        ]
+      },
+      {
+        "company": "COFCO (ex-Nidera/Noble)",
+        "terminals": [
+          "Puerto General San Martin (ex-Nidera facility)"
+        ]
+      },
+      {
+        "company": "Molinos Agro (Perez Companc)",
+        "terminals": [
+          "San Lorenzo terminal"
+        ]
+      }
+    ],
+    "privatization_history": "During the 1980s, the State gradually withdrew from grain commerce. Private companies began constructing port terminals, replacing the old public grain elevator system. Today all major terminals are privately owned by the exporters themselves — creating vertical integration from purchase to crushing to shipping.",
+    "sources": [
+      "https://www.bcr.com.ar/es/mercados/mercado-de-granos/noticias/mapa-terminales-portuarias-del-gran-rosario",
+      "https://www.bcr.com.ar/es/mercados/investigacion-y-desarrollo/informativo-semanal/noticias-informativo-semanal/el-gran-0",
+      "https://www.bcr.com.ar/es/mercados/investigacion-y-desarrollo/informativo-semanal/noticias-informativo-semanal/las-terminales",
+      "https://www.expoagro.com.ar/gran-rosario-potencia-global-en-exportacion-de-alimentos/",
+      "https://www.bcr.com.ar/es/mercados/investigacion-y-desarrollo/informativo-semanal/noticias-informativo-semanal/la-notable-0"
+    ]
+  },
+
+  "vicentin_scandal": {
+    "overview": "Vicentin SAIC, one of Argentina's largest grain exporters, defaulted on USD 1.574 billion in December 2019 — the largest private bankruptcy in Argentine history. Judicial investigation revealed coordinated fraud between company directors and Banco Nacion officials during the Macri administration, with USD 105.5M in irregular loans granted in the final 18 days of Macri's presidency despite the company already being in payment default.",
+    "debt_total_usd": 1574000000,
+    "banco_nacion_fraud": {
+      "total_damage_usd": 264500000,
+      "diverted_abroad_usd": 20000000,
+      "irregular_loans_november_2019": {
+        "amount_usd": 105500000,
+        "number_of_loans": 28,
+        "period": "November 8-26, 2019",
+        "context": "Company already had overdue debt of USD 150M. Loans granted at rate of nearly one per day.",
+        "total_loans_2019": 72
+      },
+      "pre_default_overdue_debt_usd": 150000000,
+      "total_banco_nacion_exposure_ars": 18500000000
+    },
+    "political_connections": {
+      "campaign_financing": "Vicentin group (through 3 companies) was the largest donor to Juntos por el Cambio's 2019 presidential campaign: ARS 4.5M per entity, ARS 13.5M total for PASO primaries.",
+      "banco_nacion_officials_indicted": [
+        "Javier Antonio Gonzalez Fraga (president of Banco Nacion under Macri)",
+        "Lucas Llach (vice-president of Banco Nacion)",
+        "Carlos Alberto Castellani (director)"
+      ],
+      "company_directors_indicted": "26 former directors of Vicentin and Banco Nacion summoned to testify",
+      "judicial_finding": "Coordinated action between Banco Nacion officials and businessmen that patrimonially damaged the bank through irregular granting of 28 loans totaling USD 105.5M",
+      "judge": "Julian Ercolini",
+      "prosecutor": "Gerardo Pollicita"
+    },
+    "expropriation_attempt": {
+      "announced": "June 8, 2020 by President Alberto Fernandez",
+      "reversed": "June 2020, announced via Twitter",
+      "reason_for_reversal": "Political resistance, mobilizations by Nardelli and Padoan families in Avellaneda (Santa Fe), legal challenges"
+    },
+    "controlling_families": {
+      "nardelli_family": "Co-founders and co-owners of Vicentin",
+      "padoan_family": "Co-owners. Maximo Javier Padoan and Cristian Andres Padoan among those charged.",
+      "current_status": "Directors in prison. Family front broken. Management remains under same clan despite fraud charges."
+    },
+    "offshore_operations": {
+      "vicentin_uruguay": "Used for transfer pricing — subfactures to Vicentin Uruguay, reducing Argentine taxable income, paying less retenciones and Ganancias",
+      "vicentin_paraguay": "Active in financial operations with firms in Uruguay and Panama",
+      "panama_entities": "Nacadie Comercial S.A. created in Panama (July 1, 2005)",
+      "pre_default_asset_stripping": "Days before December 2019 default, sold 15% of Renova shares to Viterra through Paraguayan subsidiary, moving millions abroad beyond reach of creditors"
+    },
+    "renova_jv": {
+      "description": "Joint venture with Glencore/Viterra — world's largest extruder plant at Timbues with own port terminal",
+      "ownership_pre_default": "50% Vicentin, 50% Viterra/Glencore",
+      "ownership_post_stripping": "33% Vicentin, 67% Viterra/Glencore (now Bunge)",
+      "judicial_status": "Court froze share transfers to prevent further asset stripping"
+    },
+    "concurso_acreedores": {
+      "filed": "February 2020",
+      "status": "Five years without homologation as of February 2025. Largest creditors' proceeding in Argentine history.",
+      "key_creditors": "Banco Nacion (~USD 300M), foreign banks, agricultural producers, cooperatives",
+      "foreign_banks_accusation": "Foreign banks accused Vicentin of fraud, falsifying balance sheets, and diverting over USD 400M in credits"
+    },
+    "sources": [
+      "https://www.lanacion.com.ar/politica/vicentin-bancos-extranjeros-acusan-estafa-falsear-balances-nid2481583/",
+      "https://www.pagina12.com.ar/400487-dos-anos-de-la-estafa-mas-grande-y-contando",
+      "https://www.lanacion.com.ar/economia/campo/sin-homologacion-quiebra-se-cumplen-cinco-anos-del-millonario-concurso-de-vicentin-el-mayor-de-la-nid09022025/",
+      "https://www.lanacion.com.ar/politica/indagan-por-un-fraude-de-us-260-millones-a-26-exdirectores-de-vicentin-y-del-banco-nacion-nid16092025/",
+      "https://www.perfil.com/noticias/economia/banco-nacion-aprobo-credito-vicentin-ultimo-mes-gestion-mauricio-macri.phtml",
+      "https://agenciatierraviva.com.ar/vicentin-y-la-extranjerizacion-de-la-economia-cronica-de-una-estafa-del-agronegocio/",
+      "https://www.ellitoral.com/regionales/vicentin-frente-familiar-roto-directivos-prision_0_tFYgCTO3kK.html",
+      "https://www.rosario3.com/-economia-negocios-agro-/La-Justicia-define-hoy-el-futuro-de-la-principal-joya-de-la-abuela-que-tiene-Vicentin-la-aceitera-Renova-20241112-0011.html"
+    ]
+  },
+
+  "key_families_and_groups": {
+    "urquia_family_agd": {
+      "controller": "Roberto Daniel Urquia",
+      "company": "Aceitera General Deheza S.A. (AGD)",
+      "founded": "1948 by Adrian Pascual Urquia and 19 pioneers in General Deheza, Cordoba",
+      "forbes_ranking": "#17 in Argentina",
+      "political_career": {
+        "mayor_general_deheza": "3 consecutive terms (1987-1999), final two won unopposed",
+        "provincial_senate": "1999-2003, chaired economy and finance committee",
+        "national_senator": "2003-2009, Union por Cordoba alliance, Front for Victory bloc",
+        "political_alignment": "Supported Nestor Kirchner government; later met with Alberto Fernandez during 2019 campaign as first major business supporter"
+      },
+      "business_empire": {
+        "products": "Oils, meals, biofuels, seeds, agrochemicals",
+        "assets": "Land, transportation companies, gas companies, private port in Rosario, customs facility in General Deheza",
+        "terminal_6": "Joint venture with Bunge — one of Latin America's largest private ports",
+        "total_crushing_capacity": "12,500+ tonnes/day across multiple plants"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Roberto_Urqu%C3%ADa",
+        "https://www.agd.com.ar/en/our-identity/founder",
+        "https://www.pagina12.com.ar/diario/elpais/subnotas/106714-33670-2008-06-26.html",
+        "https://www.agrositio.com.ar/canal-agrositio/la-red-rural/231316-roberto-urquia-ceo-de-aceitera-general-deheza-ex-senador-nacional-por-cordoba.html"
+      ]
+    },
+    "nardelli_padoan_families_vicentin": {
+      "company": "Vicentin SAIC",
+      "base": "Avellaneda, Santa Fe",
+      "status": "Directors in prison, under criminal fraud charges",
+      "key_individuals": [
+        "Maximo Javier Padoan (charged)",
+        "Cristian Andres Padoan (charged)",
+        "Martin Sebastian Colombo Boschi (charged)",
+        "Omar Scarel (current board president, accused in criminal court)"
+      ],
+      "sources": [
+        "https://www.ellitoral.com/regionales/vicentin-frente-familiar-roto-directivos-prision_0_tFYgCTO3kK.html",
+        "https://www.rosarioplus.com/actualidad/economia-y-negocios/vicentin--pidieron-prision-preventiva-por-120-dias-para-los-cuatro-ex-directivos-detenidos_a67e72084640f62f019a3607b"
+      ]
+    },
+    "miguel_acevedo_agd_uia": {
+      "role": "President of UIA (Union Industrial Argentina), executive at AGD/Ciara",
+      "offshore_entities": "Member of 5 offshore companies created late 2013, including JADE 2204 LLC registered in Florida (Brickell Ave 1390, Suite 200, Miami)",
+      "political_significance": "As UIA president, represents industrial establishment while personally linked to offshore structures",
+      "sources": [
+        "https://stripteasedelpoder.com/2017/06/miguel-acevedo-offshore/",
+        "https://www.cronista.com/economiapolitica/Con-una-industria-en-caida-Miguel-Acevedo-de-AGD-sera-el-nuevo-presidente-de-la-UIA-20170426-0047.html"
+      ]
+    },
+    "cofco_china_state": {
+      "controller": "Chinese state (COFCO Corp is China's largest grain trader)",
+      "argentina_entry": "2014 — acquired 51% of Noble Agri for USD 1.5B, then 51% of Nidera. Full ownership by 2016 (remaining 49% of Noble for USD 750M). Total: USD 3B+",
+      "current_position": "Second or third largest grain exporter from Argentina",
+      "strategic_significance": "Chinese state entity now controls significant share of Argentine grain/oilseed supply chain — food security acquisition strategy",
+      "sources": [
+        "https://www.cofcointernational.com/who-we-are/our-story/",
+        "https://www.cliffordchance.com/news/news/2014/11/clifford-chance-advises-cofco-on-successful-closing-of-us-2-8-bi.html",
+        "https://asiatimes.com/2017/06/chinas-cofco-likely-sit-global-grains-race-digests-acquisitions/"
+      ]
+    },
+    "perez_companc_molinos": {
+      "company": "Molinos Agro S.A. / Molinos Rio de la Plata",
+      "controller": "Perez Companc family",
+      "notes": "Part of Renova joint venture (with Vicentin and Oleaginosa Moreno). Terminal in San Lorenzo with 20,000 t/day crushing capacity."
+    }
+  },
+
+  "transfer_pricing_and_evasion": {
+    "overview": "Systematic under-invoicing and transfer pricing manipulation by multinational grain exporters costs Argentina billions in lost tax revenue and foreign exchange. AFIP investigated 20 companies for a scheme reducing the taxable base by ARS 44,000 million. Seven major exporters were denounced by Customs for triangulation through Paraguay.",
+    "mechanisms": [
+      {
+        "name": "Intra-firm transfer pricing (subfacturacion de exportaciones)",
+        "description": "Exporter sells to own subsidiary in tax haven at below-market price. The difference stays offshore. Example: Cargill Argentina sells soybeans/derivatives to Cargill subsidiary in low-tax country at discounted price.",
+        "scale": "AFIP detected 1,400 cases of price manipulation by multinationals with their subsidiaries",
+        "impact": "Lower retenciones paid, lower Ganancias tax, fewer dollars liquidated in local market",
+        "academic_finding": "Largest deviations in transfer prices occur during periods of high international commodity prices, as exporters delay raising prices to offshore intermediaries",
+        "sources": [
+          "https://www.perfil.com/noticias/economia/como-es-rulo-subdeclaracion-ventas-externas-por-que-son-investigadas-20-empresas.phtml",
+          "https://dialnet.unirioja.es/servlet/articulo?codigo=8270387",
+          "https://www.pagina12.com.ar/435844-la-afip-detecto-1400-casos-de-manipulacion-de-precios-de-mul"
+        ]
+      },
+      {
+        "name": "Paraguay triangulation (over-invoicing imports)",
+        "description": "Companies import soybeans from Paraguay for re-export after processing. Through a Swiss intermediary linked to Argentine exporters, the input arrives with a 30% markup over origin price. Objective: obtain Central Bank dollars at official rate to pay for import, with the 30% surplus smuggled abroad.",
+        "companies_denounced": [
+          "Aceitera General Deheza (AGD)",
+          "Bunge Argentina",
+          "Cargill S.A.",
+          "COFCO International",
+          "LDC Argentina S.A. (Louis Dreyfus)",
+          "Molinos Agro S.A.",
+          "Viterra"
+        ],
+        "combined_share": "These 7 companies control 85% of total soybean complex exports",
+        "operations_analyzed": "3,000+ temporary import designations with corresponding exports",
+        "confirmation": "Paraguay's customs authority confirmed that commercial invoices showed values lower than what was declared at Argentine customs, confirming over-invoicing",
+        "penalties": "Vicentin and COFCO received millonarias multas (large fines)",
+        "sources": [
+          "https://www.pagina12.com.ar/689230-fuga-de-dolares-siete-cerealeras-denunciadas",
+          "https://news.agrofy.com.ar/noticia/207489/aduana-denuncio-siete-agroexportadoras-sobrefacturar-importaciones-soja",
+          "https://www.elliberal.com.ar/nota/9237/2023/11/soja-importada--paraguay-confirmo-la-denuncia-de-la-aduana-argentina",
+          "https://elciudadanoweb.com/millonarias-multas-a-vicentin-y-cofco-paraguay-mostro-numeros-y-ratifico-denuncias-por-maniobras-irregulares/"
+        ]
+      },
+      {
+        "name": "Uruguay triangulation (re-invoicing through shell)",
+        "description": "Merchandise shipped directly to Brazil but invoiced through an intermediary company in Uruguay. Reduces taxable base in Argentina.",
+        "example": "Vicentin Argentina subfactures to Vicentin Uruguay, reducing income declared in Argentina — less retenciones, less Ganancias, fewer dollars liquidated domestically",
+        "sources": [
+          "https://www.tiempoar.com.ar/ta_article/las-maniobras-de-elusion-de-vicentin-para-pagar-menos-impuestos/",
+          "https://www.infobae.com/economia/2020/03/02/como-funciona-la-compleja-operatoria-con-la-que-muchas-grandes-agroexportadoras-evitan-el-pago-de-impuestos-en-el-pais/"
+        ]
+      },
+      {
+        "name": "Soja argentina como paraguaya (smuggling via Parana)",
+        "description": "Barges depart Paraguay down the Parana river and load Argentine soybeans along the coast, passing them off as Paraguayan origin. Paraguay has no export retenciones on grains, so this evades Argentine export taxes entirely.",
+        "sources": [
+          "https://www.mdzol.com/dinero/2023/3/27/como-es-la-maniobra-de-subfacturacion-con-granos-que-investiga-la-afip-325320.html"
+        ]
+      }
+    ],
+    "total_estimated_losses": {
+      "subfacturacion_and_contrabando": "Nearly USD 10,000 million lost by Argentina",
+      "source": "https://www.ambito.com/economia/exportaciones/agropecuarias-subfacturacion-y-contrabando-la-argentina-perdio-casi-us10000-millones-n5197785"
+    },
+    "regulatory_response": {
+      "customs_focus": "Argentina Customs Director announced continued focus on customs valuations and transfer pricing, particularly related-party transactions involving intermediaries without substance",
+      "afip_investigation": "20 companies investigated since 2020, cases sent for inspection",
+      "source": "https://www.globalcompliancenews.com/2023/01/27/https-www-internationaltradecomplianceupdate-com-2023-01-25-argentina-customs-continues-to-focus-on-customs-valuation-and-transfer-pricing-issues-_01252023/"
+    }
+  },
+
+  "pools_de_siembra": {
+    "overview": "Financial vehicles that organize agricultural production through renting large tracts of land and contracting all services. They channel financial capital (from institutional investors to small savers) into soybean and grain production, concentrating land use and displacing small producers.",
+    "evolution": {
+      "1990s": "~400,000 hectares under pool management. Initially formed by producers seeking scale.",
+      "2000s": "After 2003, returned post-crisis as major profit centers. Adopted independent financial modality, open to capital from any origin.",
+      "peak": "~2 million hectares (20% of total soybean area) by 2002",
+      "current": "65 largest companies manage ~2.5 million hectares (~10% of total cultivated area)"
+    },
+    "megaempresas": [
+      {
+        "name": "Adecoagro",
+        "hectares": 225000,
+        "countries": "Argentina, Uruguay, Brazil",
+        "owner": "George Soros (Soros Fund Management)",
+        "notes": "Publicly traded agricultural company"
+      },
+      {
+        "name": "Los Grobo",
+        "hectares": 130000,
+        "base": "Argentina",
+        "model": "'Network model' — flexible management of third-party assets"
+      },
+      {
+        "name": "El Tejar",
+        "hectares": 150000,
+        "base": "Argentina, expanded to Brazil, Bolivia, Uruguay",
+        "model": "Pioneer of the pool de siembra financiarizado model"
+      },
+      {
+        "name": "Cresud",
+        "base": "Argentina",
+        "notes": "Eduardo Elsztain's IRSA group. Publicly traded."
+      },
+      {
+        "name": "Cazenave & Asociados",
+        "base": "Argentina",
+        "notes": "Traditional pool operator"
+      }
+    ],
+    "business_model": "Centralized management of production factors. Financial capital (from large investment funds to small savers) distributed across regions and crops to diversify risk. No permanent ownership of land — pure financial extraction.",
+    "criticisms": [
+      "Deforestation and loss of biodiversity",
+      "Soil nutrient depletion from monoculture",
+      "Economic concentration and expulsion of small producers",
+      "Air and water contamination (glyphosate)",
+      "Financialization of agriculture — disconnects production decisions from land stewardship",
+      "Rental pressure drives up land costs, pushing out family farmers"
+    ],
+    "sources": [
+      "https://es.wikipedia.org/wiki/Pool_de_siembra",
+      "https://www.teseopress.com/diccionarioagro/chapter/pools-de-siembra/",
+      "https://news.agrofy.com.ar/noticia/209754/negocio-agricola-cambio-secretos-gigantes-agro-que-siembran-220-mil-hectareas",
+      "https://www.scielo.org.ar/scielo.php?script=sci_arttext&pid=S1515-59942018000200860",
+      "https://www.memoria.fahce.unlp.edu.ar/art_revistas/pr.4537/pr.4537.pdf"
+    ]
+  },
+
+  "political_influence": {
+    "overview": "The agro-export sector exercises political influence through four main rural organizations (the 'Mesa de Enlace'), direct political participation by agro-industrialists, campaign financing, and the revolving door between industry and government.",
+    "organizations": [
+      {
+        "name": "Sociedad Rural Argentina (SRA)",
+        "founded": 1866,
+        "represents": "Large landowners, estancieros — historically the oligarquia terrateniente",
+        "political_history": "Founded as the organizational vehicle of Argentina's landed oligarchy. Members have served as presidents, ministers, and legislators throughout Argentine history.",
+        "source": "https://en.wikipedia.org/wiki/Sociedad_Rural_Argentina"
+      },
+      {
+        "name": "Confederaciones Rurales Argentinas (CRA)",
+        "founded": 1943,
+        "represents": "Medium-to-large rural bourgeoisie, third-degree organization (federations of federations)",
+        "political_history": "Led agrarian strikes in 1980s-90s against government policies. Key actor in 2008 Resolucion 125 conflict.",
+        "source": "https://www.teseopress.com/diccionarioagro/chapter/confederaciones-rurales-argentinas-cra/"
+      },
+      {
+        "name": "Federacion Agraria Argentina (FAA)",
+        "represents": "Small and medium producers"
+      },
+      {
+        "name": "CONINAGRO",
+        "represents": "Agricultural cooperatives"
+      }
+    ],
+    "mesa_de_enlace_2008": {
+      "event": "Resolucion 125 conflict — government attempted to raise export taxes on grains with a sliding scale",
+      "response": "Four organizations united in Mesa de Enlace, organized massive agrarian strikes and road blockades for 4+ months",
+      "outcome": "Resolution defeated in Senate by VP Julio Cobos's tie-breaking vote against his own government",
+      "significance": "Demonstrated the agrarian sector's capacity to paralyze the economy and override government policy"
+    },
+    "consejo_agroindustrial_argentino": {
+      "criticism": "Accused of directing interests of oilseed crushers and some agro-exporters, particularly regarding differential retenciones policy",
+      "source": "https://consejoagroindustrialargentino.org.ar/"
+    },
+    "direct_political_participation": {
+      "roberto_urquia": "AGD CEO served as national senator (2003-2009), provincial senator, mayor — simultaneously running one of Argentina's largest agro-industrial empires",
+      "vicentin_campaign_finance": "Largest donor to Macri's Juntos por el Cambio 2019 campaign. Received irregular Banco Nacion loans worth USD 105.5M in final month of Macri presidency."
+    },
+    "sources": [
+      "https://elestadista.com.ar/el-estadista/la-sociedad-rural-frente-politica-traves-anos-n460",
+      "https://www.izquierdadiario.es/Sociedad-Rural-Argentina-la-organizacion-de-la-oligarquia-terrateniente",
+      "https://www.scielo.org.ar/scielo.php?script=sci_arttext&pid=S2545-82992024000200249"
+    ]
+  },
+
+  "retenciones_and_tax_policy": {
+    "overview": "Export taxes (retenciones) on agricultural commodities have been the central fiscal and political battleground in Argentina. Rates fluctuate dramatically with each government. The Milei administration eliminated or reduced retenciones in January 2025 but re-imposed them months later.",
+    "current_rates_2025_2026": {
+      "soybeans_and_derivatives": "Originally 33%, reduced under Milei, then partially reinstated",
+      "wheat_and_barley": "9.5% (permanently fixed, down from 12%)",
+      "corn": "Reduced under Milei reforms",
+      "source": "https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=Argentina+Permanently+Lowers+Ag+Export+Taxes_Buenos+Aires_Argentina_AR2025-0012.pdf"
+    },
+    "evasion_mechanisms": [
+      "Transfer pricing through offshore subsidiaries (see transfer_pricing_and_evasion section)",
+      "Under-invoicing exports to reduce retenciones base",
+      "Over-invoicing imports to obtain cheap official dollars",
+      "Passing Argentine soy as Paraguayan to avoid retenciones entirely",
+      "Triangulation through Uruguay to reduce Ganancias and retenciones"
+    ],
+    "milei_era_controversy": {
+      "description": "Milei's temporary elimination of retenciones in January 2025 led to accusations that 'ten guys took USD 2,000 million' as exporters liquidated stockpiled grains at zero tax",
+      "source": "https://www.lapoliticaonline.com/campo/furia-del-campo-por-el-pacto-caputo-cerealeras-diez-tipos-se-llevaron-2-000-millones-de-dolares/"
+    },
+    "sources": [
+      "https://chequeado.com/el-explicador/retenciones-agropecuarias-que-son-como-variaron-desde-1983-y-que-modificaciones-estan-en-discusion/",
+      "https://es.wikipedia.org/wiki/Retenciones_a_las_exportaciones_(Argentina)",
+      "https://www.tandfonline.com/doi/full/10.1080/03085147.2023.2268415"
+    ]
+  },
+
+  "structural_analysis": {
+    "vertical_integration": "The same companies that buy grain from producers also own the crushing plants, the port terminals, the export logistics, and the offshore trading desks. This vertical integration gives them price-setting power at every stage of the chain.",
+    "oligopsony_at_origin": "Producers face a concentrated buyer market. A handful of companies set farm-gate prices, with producers lacking alternative channels to export.",
+    "information_asymmetry": "Exporters know global prices in real time through their trading desks. Producers rely on delayed public information. This asymmetry enables systematic underpayment at origin.",
+    "regulatory_capture": "The same firms investigated for transfer pricing and triangulation control 85% of soybean complex exports. Their economic weight makes aggressive enforcement politically difficult.",
+    "foreign_ownership_trend": "Chinese state (COFCO), Swiss/British (Glencore/Viterra now Bunge), American (Cargill, ADM, Bunge), French (LDC) — the majority of Argentina's agricultural surplus is extracted by foreign capital, with profit centers located offshore.",
+    "concentration_trend": "The Bunge-Viterra merger further reduces the number of independent actors. If Bunge acquires Vicentin's Renova stake, a single company would control ~40% of Argentina's oilseed processing."
+  },
+
+  "neo4j_import_hints": {
+    "entity_types": ["Company", "Person", "Port", "CrushingPlant", "PoliticalOrganization", "OffshoreEntity", "LegalCase"],
+    "key_relationships": [
+      "CONTROLS (family -> company)",
+      "OWNS_TERMINAL (company -> port terminal)",
+      "OPERATES_PLANT (company -> crushing plant)",
+      "EXPORTED_VIA (company -> port)",
+      "SUBSIDIARY_OF (offshore entity -> company)",
+      "TRIANGULATES_THROUGH (company -> offshore entity -> destination)",
+      "DONATED_TO (company -> political campaign)",
+      "RECEIVED_IRREGULAR_LOAN (company -> bank)",
+      "JOINT_VENTURE (company <-> company, via entity like Terminal 6, Renova)",
+      "INDICTED_IN (person -> legal case)",
+      "MEMBER_OF (company -> political organization)"
+    ]
+  }
+}

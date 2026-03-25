@@ -60,7 +60,7 @@ export const investigations: InvestigationConfig[] = [
     title: 'Finanzas Politicas Argentinas',
     subtitle: 'Investigacion activa',
     description:
-      'Financiamiento de campanas, declaraciones juradas patrimoniales, sociedades offshore y conexiones entre politicos y empresas.',
+      'Financiamiento de campañas, declaraciones juradas patrimoniales, sociedades offshore y conexiones entre politicos y empresas.',
     status: 'active',
     color: 'emerald',
     stats: [
@@ -68,6 +68,21 @@ export const investigations: InvestigationConfig[] = [
       { label: 'Fuentes ETL', value: '7' },
     ],
     href: '/caso/finanzas-politicas',
+  },
+  {
+    slug: 'monopolios',
+    title: 'Monopolios en Argentina',
+    subtitle: 'Investigacion activa — 18 sectores',
+    description:
+      'Mercados monopolizados: telecomunicaciones, energia, alimentos, medios, banca, mineria, agroexportacion, construccion, farmaceutica. 829+ cruces Neo4j, 75 afirmaciones verificadas.',
+    status: 'active',
+    color: 'amber',
+    stats: [
+      { label: 'Sectores', value: '18' },
+      { label: 'Cruces Neo4j', value: '829+' },
+      { label: 'Costo anual', value: 'USD 22.5B' },
+    ],
+    href: '/caso/monopolios',
   },
   {
     slug: 'riesgo-nuclear',

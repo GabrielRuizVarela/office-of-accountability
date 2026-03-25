@@ -1,0 +1,238 @@
+{
+  "investigation": "Monopolios Argentina — LLM Pattern Analysis (Qwen 3.5)",
+  "date": "2026-03-24T05:33:23.753Z",
+  "model": "Qwen3.5-9B-Q5_K_M.gguf",
+  "note": "Qwen 3.5 mandatory thinking mode puts analysis in reasoning_content. Content field contains the shorter response from first pass.",
+  "analysis_sections": {
+    "cross_sector_empires": [
+      {
+        "rank": 1,
+        "group": "Grupo Clarín/Magnetto",
+        "sectors": [
+          "media",
+          "telecom",
+          "internet",
+          "print"
+        ],
+        "companies": 35,
+        "threat": "Convergence of media + telecom = information + infrastructure monopoly"
+      },
+      {
+        "rank": 2,
+        "group": "Techint/Rocca",
+        "sectors": [
+          "steel",
+          "oil_gas",
+          "construction",
+          "pipes"
+        ],
+        "companies": 20,
+        "threat": "Vertical integration: builds infrastructure with own steel, extracts own oil"
+      },
+      {
+        "rank": 3,
+        "group": "Mindlin/Pampa Energía",
+        "sectors": [
+          "electricity_distribution",
+          "generation",
+          "gas",
+          "insurance"
+        ],
+        "companies": 52,
+        "threat": "Controls both generation and distribution = captive market"
+      },
+      {
+        "rank": 4,
+        "group": "Vila-Manzano",
+        "sectors": [
+          "media",
+          "energy",
+          "wine",
+          "real_estate"
+        ],
+        "companies": 62,
+        "threat": "Media influence + energy profits = political leverage"
+      },
+      {
+        "rank": 5,
+        "group": "Roggio",
+        "sectors": [
+          "construction",
+          "waste_management",
+          "transit",
+          "offshore"
+        ],
+        "companies": 33,
+        "threat": "Public service monopolies + 3 BVI entities = accountability gap"
+      },
+      {
+        "rank": 6,
+        "group": "Blaquier/Ledesma",
+        "sectors": [
+          "sugar",
+          "paper",
+          "agriculture",
+          "offshore"
+        ],
+        "companies": 28,
+        "threat": "7 offshore entities. Sugar/paper near-monopoly in NOA"
+      },
+      {
+        "rank": 7,
+        "group": "Werthein",
+        "sectors": [
+          "insurance",
+          "banking",
+          "agriculture",
+          "offshore"
+        ],
+        "companies": 30,
+        "threat": "Financial sector diversification + offshore"
+      },
+      {
+        "rank": 8,
+        "group": "Coto",
+        "sectors": [
+          "retail",
+          "meatpacking",
+          "real_estate",
+          "offshore"
+        ],
+        "companies": 26,
+        "threat": "AMBA retail dominance + Panama entity"
+      },
+      {
+        "rank": 9,
+        "group": "Braun/Lewis/La Anónima",
+        "sectors": [
+          "retail",
+          "agriculture",
+          "banking"
+        ],
+        "companies": 26,
+        "threat": "Regional Patagonia monopoly"
+      },
+      {
+        "rank": 10,
+        "group": "Pérez Companc/Molinos",
+        "sectors": [
+          "food_processing",
+          "energy",
+          "agriculture"
+        ],
+        "companies": 23,
+        "threat": "Packaged food market dominance"
+      }
+    ],
+    "interlocking_directorates_analysis": {
+      "finding": "Board-level bridges connect finance to extraction to construction",
+      "key_links": [
+        {
+          "person": "Jorge Perez Alati",
+          "bridge": "Dreyfus ↔ Santander",
+          "implication": "Agro-export financing channeled through same decision-maker"
+        },
+        {
+          "person": "María Lucila Winschel",
+          "bridge": "Barrick Gold ↔ HSBC",
+          "implication": "Mining profits and banking oversight connected"
+        },
+        {
+          "person": "Guillermo Hang",
+          "bridge": "Techint ↔ AMX",
+          "implication": "Steel/construction conglomerate linked to telecom"
+        },
+        {
+          "person": "Claudio Cesario",
+          "bridge": "Santander ↔ Techint",
+          "implication": "Bank financing for construction group"
+        },
+        {
+          "person": "Pablo Llauro",
+          "bridge": "12 Telefónica entities",
+          "implication": "Single point of corporate governance for telecom monopoly"
+        },
+        {
+          "person": "Ricardo Martelli",
+          "bridge": "8 Cargill entities globally",
+          "implication": "Grain export cartel centralized governance"
+        }
+      ],
+      "pattern": "Banking sector (Santander, HSBC, Galicia) serves as nexus connecting extractive industries (mining, oil, agro) with construction and media. Finance is the glue."
+    },
+    "offshore_investigation_priorities": [
+      {
+        "priority": 1,
+        "group": "Blaquier/Ledesma",
+        "offshore_count": 7,
+        "jurisdictions": [
+          "BVI",
+          "Panama"
+        ],
+        "risk": "Largest offshore footprint + 125 govt contracts via Ledesma SAAI. Potential tax base erosion from sugar/paper monopoly profits"
+      },
+      {
+        "priority": 2,
+        "group": "Roggio",
+        "offshore_count": 3,
+        "jurisdictions": [
+          "BVI"
+        ],
+        "risk": "Public infrastructure monopolist (metro, waste, roads) + offshore entities. Public money → private offshore"
+      },
+      {
+        "priority": 3,
+        "group": "Coto",
+        "offshore_count": 1,
+        "jurisdictions": [
+          "Panama"
+        ],
+        "risk": "Retail monopolist with offshore entity. Cash-intensive business = money laundering risk"
+      },
+      {
+        "priority": 4,
+        "group": "Werthein",
+        "offshore_count": 1,
+        "jurisdictions": [
+          "unknown"
+        ],
+        "risk": "Insurance/banking group with offshore. Regulatory arbitrage potential"
+      },
+      {
+        "priority": 5,
+        "group": "Galuccio/Vista",
+        "offshore_count": 1,
+        "jurisdictions": [
+          "Malta"
+        ],
+        "risk": "Former YPF CEO with oil company + Malta offshore entity. EU tax haven"
+      },
+      {
+        "priority": 6,
+        "group": "Cartellone",
+        "offshore_count": 2,
+        "jurisdictions": [
+          "unknown"
+        ],
+        "risk": "Construction contractor + offshore entities. Cuadernos case connection"
+      }
+    ],
+    "hidden_connections": [
+      "ABCD grain cartel + Santander banking: shared board members create a pipeline from agricultural extraction to international finance",
+      "Clarín media + Telecom infrastructure: post-2018 merger, information access monopoly reinforced by physical infrastructure control",
+      "Mindlin energy + Roggio construction: Pampa Energía builds power plants, Roggio builds the infrastructure. Both have offshore footprints",
+      "Blaquier sugar + Papel Prensa + Clarín: Ledesma paper production supplies Papel Prensa which supplies Clarín. Vertical supply chain across monopolies",
+      "Mining (Barrick) + Banking (HSBC) + Energy (Pampa): all interconnected through shared board members. A resource-extraction-to-finance pipeline"
+    ],
+    "consumer_cost_estimate": {
+      "note": "Conservative estimates based on sector research",
+      "telecom": "Broadband prices 40-60% above regional average due to Telecom-Cablevisión monopoly",
+      "food": "Producer-to-shelf markup 300-500% on staples. Concentrated retail passes costs to consumers",
+      "energy": "Edenor/Edesur distribution duopoly + generation concentration = higher tariffs despite subsidies",
+      "pharma": "Drug prices 40-100% above Latin American average. PAMI procurement favors major labs",
+      "cement": "Loma Negra near-monopoly = construction cost premium passed to housing",
+      "steel": "Ternium/Techint domestic monopoly + import protection = industrial input cost premium",
+      "grain": "ABCD export cartel captures 80%+ of grain trade margins, reducing returns to farmers"
+    }
+  }
+}

@@ -1,0 +1,1360 @@
+{
+  "investigation": "Monopolios y Mercados Concentrados en Argentina",
+  "date": "2026-03-24",
+  "methodology": "Web research + public source cross-reference",
+  "summary": {
+    "total_sectors_analyzed": 14,
+    "key_finding": "Argentina exhibits extreme market concentration across virtually all strategic sectors. A handful of economic groups — Techint/Rocca, Grupo Clarin/Magnetto-Noble Herrera, Madanes/Aluar, Roemmers, Mastellone — control disproportionate market power. The CNDC (now replaced by NCA as of Nov 2025) has identified 11 markets with serious competition failures but investigations average 5+ years to resolve.",
+    "cndc_status": "The Comision Nacional de Defensa de la Competencia (CNDC) ceased to exist after 45 years on November 17, 2025, replaced by the National Competition Authority (NCA). At dissolution, 608 active cases: 334 concentration, 221 anticompetitive conduct, 53 market investigations. Average delay: 2.6 years (law mandates 45 days). Antitrust investigations average 5 years; market investigations 6.5 years.",
+    "eleven_cndc_investigated_markets": [
+      "Aluminio",
+      "Acero",
+      "Petroquimica",
+      "Comunicaciones moviles",
+      "Tarjetas de credito y medios de pago electronico",
+      "Aceite",
+      "Leche",
+      "Carne",
+      "Detergentes",
+      "Transporte aereo",
+      "Transporte terrestre"
+    ]
+  },
+  "sectors": [
+    {
+      "id": "telecom",
+      "name_es": "Telecomunicaciones",
+      "name_en": "Telecommunications",
+      "dominant_companies": [
+        {
+          "name": "Telecom Argentina (Personal + Movistar post-acquisition)",
+          "brands": ["Personal", "Movistar", "Flow", "Cablevision"],
+          "market_share_mobile": "~61% (post-Telefonica acquisition)",
+          "market_share_broadband": "~56% of fixed broadband",
+          "market_share_tv_paga": "39%",
+          "notes": "In Feb 2025, Telecom agreed to acquire Telefonica Argentina (Movistar) for USD 1.245 billion. Pending regulatory review. CNDC issued objection report citing competition risks."
+        },
+        {
+          "name": "Claro (America Movil / Carlos Slim)",
+          "market_share_mobile": "~41% (post-Telecom-Movistar merger scenario)",
+          "market_share_convergent": "19% of billing",
+          "notes": "Only remaining major competitor in mobile after Telecom-Telefonica merger"
+        },
+        {
+          "name": "DirecTV (Vrio Corp / AT&T legacy)",
+          "market_share_tv_paga": "32%",
+          "notes": "Expanding into fiber optic in Buenos Aires. Planning Amazon Kuiper satellite internet launch."
+        }
+      ],
+      "market_structure": "Transitioning from tripoly to duopoly in mobile (Telecom vs Claro). Telecom dominance in broadband (56%) and TV paga (39%). Market was USD 10+ billion convergent market.",
+      "controlling_groups": [
+        {
+          "group": "Grupo Clarin / Cablevision Holding",
+          "stake_in_telecom": "39% via Cablevision Holding",
+          "key_people": ["Hector Magnetto (29.8% of Clarin)", "Herederos Noble Herrera (24.85%)", "Jose Antonio Aranda (10.3%)", "Lucio Pagliaro (10.2%)"],
+          "vehicle": "GC Dominio S.A. -> Cablevision Holding -> Telecom Argentina"
+        },
+        {
+          "group": "Fintech (David Martinez, Mexican entrepreneur)",
+          "stake_in_telecom": "34% of Telecom via Cablevision Holding structure"
+        },
+        {
+          "group": "ANSES (Argentine state pension fund)",
+          "stake_in_telecom": "25% of Telecom"
+        },
+        {
+          "group": "America Movil (Carlos Slim)",
+          "controls": "Claro Argentina"
+        }
+      ],
+      "regulatory_body": "ENACOM (Ente Nacional de Comunicaciones)",
+      "antitrust_cases": [
+        {
+          "case": "Telecom-Telefonica acquisition objection",
+          "year": 2025,
+          "status": "CNDC issued Informe de Objecion. Under regulatory review (6-month period).",
+          "detail": "CNDC identified significant risks to competition across multiple telecom markets"
+        },
+        {
+          "case": "Cablevision-Telecom merger (2018)",
+          "status": "Approved with conditions. Critics argued it created extreme concentration.",
+          "detail": "Merged entity controls 56% of broadband, 39% TV paga"
+        }
+      ],
+      "consumer_impact": "Post-merger scenario would create a near-duopoly. Telecom would control ~61% mobile, ~56% broadband, and 39% pay TV. Historically, 70% of telecoms revenue concentrated in one economic group (Grupo Clarin ecosystem). Limited price competition expected.",
+      "hhi_estimate": 4200,
+      "hhi_notes": "Estimated post-Telecom/Movistar merger for mobile: ~61^2 + ~39^2 = 3721 + 1521 = ~5242. Pre-merger tripoly HHI approximately 3400-3600.",
+      "sources": [
+        "https://www.telesemana.com/blog/2025/02/24/telecom-compro-telefonica-de-argentina-alcanza-posicion-dominante-y-disputara-con-claro-el-liderazgo-de-las-telecomunicaciones/",
+        "https://infonegocios.info/nota-principal/telecom-ya-empieza-a-contar-los-numeros-de-movistar-como-queda-el-boca-river-con-claro-datos-de-carrier",
+        "https://josecrettaz.com/telecomunicaciones/argentina-convergente-nace-un-mercado-unico-de-mas-de-10-000-millones-de-dolares/",
+        "https://www.argentina.gob.ar/noticias/informe-de-objecion-operacion-telecom-telefonica",
+        "https://www.anred.org/concentracion-extrema-cablevision-telecom/"
+      ]
+    },
+    {
+      "id": "energia_electrica",
+      "name_es": "Energia Electrica",
+      "name_en": "Electricity",
+      "dominant_companies": [
+        {
+          "name": "Edenor (Empresa Distribuidora Norte)",
+          "segment": "Distribution - Buenos Aires north",
+          "owner": "Pampa Energia S.A.",
+          "market_share_distribution": "Largest distributor in Argentina"
+        },
+        {
+          "name": "Edesur (Electricidad Distribuidora Sur)",
+          "segment": "Distribution - Buenos Aires south",
+          "owner": "Enel Americas (Italian multinational)",
+          "notes": "Second largest distributor"
+        },
+        {
+          "name": "Pampa Energia S.A.",
+          "segment": "Generation + Distribution",
+          "market_share_generation": "15% of installed capacity",
+          "controlling_family": "Marcelo Mindlin",
+          "notes": "Largest private energy company. Controls Edenor distribution + significant generation assets."
+        },
+        {
+          "name": "Central Puerto S.A. (CEPU)",
+          "segment": "Generation",
+          "notes": "Major generation competitor to Pampa Energia"
+        },
+        {
+          "name": "YPF Energia Electrica (YPF Luz)",
+          "segment": "Generation (renewables + thermal)",
+          "owner": "YPF S.A. (state-controlled)"
+        },
+        {
+          "name": "Genneia",
+          "segment": "Renewables",
+          "notes": "Argentina's largest renewable energy company, 1+ GW installed capacity"
+        }
+      ],
+      "market_structure": "Generation is moderately fragmented (top 4 hold ~33% of installed capacity). Distribution is a natural monopoly by concession area — Edenor and Edesur together with Edelap control 40%+ of total electricity distributed. Three ex-SEGBA distributors control majority of Buenos Aires metro area.",
+      "controlling_groups": [
+        {
+          "group": "Pampa Energia / Marcelo Mindlin",
+          "controls": ["Edenor (distribution)", "Pampa Energia generation plants", "Transener (transmission)"],
+          "notes": "Vertically integrated from generation to distribution"
+        },
+        {
+          "group": "Enel Americas (Italy)",
+          "controls": ["Edesur"]
+        }
+      ],
+      "regulatory_body": "ENRE (Ente Nacional Regulador de la Electricidad) for distribution; CAMMESA for wholesale market",
+      "antitrust_cases": [
+        {
+          "case": "Tariff freeze disputes (2002-2024)",
+          "detail": "Prolonged tariff freeze under kirchnerismo led to infrastructure deterioration. Milei government began tariff normalization in 2024."
+        }
+      ],
+      "consumer_impact": "Distribution is a regulated natural monopoly — consumers have no choice of distributor. Generation market more competitive but transmission bottlenecks limit real competition. Tariff increases of 300-400% in 2024 under Milei subsidy removal.",
+      "hhi_estimate": 2500,
+      "hhi_notes": "Generation market HHI moderate (~1500-2000). Distribution effectively infinite HHI per concession zone (monopoly). Blended estimate.",
+      "sources": [
+        "https://ri.pampa.com/en/our-assets/electricity-power/the-argentine-electricity-sector/",
+        "https://en.wikipedia.org/wiki/Electricity_sector_in_Argentina",
+        "https://en.wikipedia.org/wiki/Edenor",
+        "https://www.mordorintelligence.com/industry-reports/argentina-power-market"
+      ]
+    },
+    {
+      "id": "gas_petroleo",
+      "name_es": "Gas y Petroleo",
+      "name_en": "Oil and Gas",
+      "dominant_companies": [
+        {
+          "name": "YPF S.A.",
+          "ownership": "51% state-controlled",
+          "market_share_oil_vaca_muerta": "31%",
+          "market_share_gas_vaca_muerta": "31%",
+          "notes": "Dominant in both conventional and unconventional. Led Vaca Muerta Sur pipeline project ($3B). Production up 26% in oil and 17% in gas in 2024."
+        },
+        {
+          "name": "Pan American Energy (PAE)",
+          "ownership": "BP + Bridas (Bulgheroni family)",
+          "position": "Second in total crude oil, fifth in Vaca Muerta oil, fourth in total gas, second in Vaca Muerta gas",
+          "key_asset": "Cerro Dragon conventional field"
+        },
+        {
+          "name": "Tecpetrol (Techint Group / Rocca family)",
+          "position": "Major Vaca Muerta gas producer",
+          "key_asset": "Fortin de Piedra gas field",
+          "notes": "Part of Techint Group. Significant gas producer."
+        },
+        {
+          "name": "TotalEnergies SE (France)",
+          "position": "Close second to YPF in gas production",
+          "key_asset": "Fenix offshore platform (Austral Basin)",
+          "notes": "Production within 3 million m3/day of YPF in gas"
+        },
+        {
+          "name": "Vista Energy",
+          "position": "Growing Vaca Muerta shale oil producer",
+          "controlling_person": "Miguel Galuccio (ex-YPF CEO)"
+        },
+        {
+          "name": "Pluspetrol",
+          "ownership": "Rey family (Argentine)",
+          "position": "Significant conventional gas producer"
+        }
+      ],
+      "market_structure": "Oligopoly with state-controlled YPF as dominant player (~31% Vaca Muerta). Top 7 companies control Vaca Muerta Sur pipeline consortium. Vaca Muerta is world's second-largest shale gas and fourth-largest shale oil formation.",
+      "controlling_groups": [
+        {
+          "group": "Argentine State",
+          "controls": "YPF (51%)",
+          "notes": "Re-nationalized from Repsol in 2012"
+        },
+        {
+          "group": "Bulgheroni family",
+          "controls": "Pan American Energy (via Bridas Corp, 50% BP partner)"
+        },
+        {
+          "group": "Techint / Rocca family",
+          "controls": "Tecpetrol"
+        },
+        {
+          "group": "Miguel Galuccio",
+          "controls": "Vista Energy"
+        },
+        {
+          "group": "Rey family",
+          "controls": "Pluspetrol"
+        }
+      ],
+      "regulatory_body": "Secretaria de Energia; ENARGAS (gas distribution)",
+      "antitrust_cases": [
+        {
+          "case": "Fuel price coordination allegations",
+          "detail": "Periodic accusations of coordinated pricing among fuel station networks. YPF typically sets reference price."
+        },
+        {
+          "case": "Vaca Muerta Sur pipeline consortium",
+          "detail": "Seven companies consortium raises concentration concerns for export infrastructure"
+        }
+      ],
+      "consumer_impact": "Fuel prices loosely tracked by YPF's pricing decisions. Limited retail competition despite multiple brands. Gas distribution regulated by concession (Metrogas, Camuzzi dominate). Vaca Muerta development expected to transform Argentina into net energy exporter.",
+      "hhi_estimate": 1800,
+      "hhi_notes": "Production-weighted HHI moderate due to YPF dominance (~31%) but 5+ other significant players. Refining/retail more concentrated.",
+      "sources": [
+        "https://www.bloomberglinea.com/latinoamerica/argentina/este-es-el-ranking-de-empresas-lideres-en-petroleo-y-gas-de-argentina-ypf-domino-en-2024/",
+        "https://www.eia.gov/international/analysis/country/ARG",
+        "https://www.tecpetrol.com/en/news/2024/potential-and-acceleration",
+        "https://en.wikipedia.org/wiki/YPF"
+      ]
+    },
+    {
+      "id": "distribucion_alimentaria",
+      "name_es": "Distribucion Alimentaria (Supermercados)",
+      "name_en": "Food Distribution (Supermarkets)",
+      "dominant_companies": [
+        {
+          "name": "Coto CICSA",
+          "market_share": "22.3%",
+          "ownership": "Alfredo Coto (Argentine)",
+          "notes": "Market leader in supermarket sales"
+        },
+        {
+          "name": "Carrefour Argentina",
+          "market_share": "21%",
+          "ownership": "Carrefour S.A. (France) — sale process ongoing since 2024",
+          "notes": "Second largest. Parent company attempting to sell Argentine operation."
+        },
+        {
+          "name": "Cencosud (Disco, Jumbo, Vea)",
+          "market_share": "17%",
+          "ownership": "Horst Paulmann family (Chile)",
+          "notes": "Three brands under one group"
+        },
+        {
+          "name": "La Anonima",
+          "market_share": "12.5%",
+          "ownership": "Braun-Menendez Behety family (Argentine Patagonia)",
+          "notes": "Largest chain in interior provinces. Aggressive expansion strategy."
+        },
+        {
+          "name": "Dia Argentina",
+          "market_share": "9%",
+          "ownership": "Dia S.A. (Spain)",
+          "notes": "Discount format"
+        },
+        {
+          "name": "Changomas (ex-Walmart Argentina)",
+          "market_share": "8.7%",
+          "ownership": "De Narvaez family (acquired from Walmart)",
+          "notes": "Rebranded after Walmart exit"
+        }
+      ],
+      "market_structure": "Oligopoly: six chains control ~89% of formal supermarket sales. Additionally, 74% of shelf product revenue comes from just 20 supplier companies, creating dual concentration (retail + supplier). Duopolies exist in most consumer product categories on the shelf.",
+      "controlling_groups": [
+        {
+          "group": "Alfredo Coto",
+          "controls": "Coto CICSA"
+        },
+        {
+          "group": "Horst Paulmann / Cencosud (Chile)",
+          "controls": "Disco, Jumbo, Vea"
+        },
+        {
+          "group": "Braun-Menendez Behety family",
+          "controls": "La Anonima",
+          "notes": "Historic Patagonian landowning family"
+        },
+        {
+          "group": "De Narvaez family",
+          "controls": "Changomas"
+        }
+      ],
+      "regulatory_body": "Secretaria de Comercio Interior; CNDC/NCA for mergers",
+      "antitrust_cases": [
+        {
+          "case": "Cartelization accusations",
+          "detail": "Periodic accusations of coordinated pricing among major chains. Investigations into price-fixing in concentrated product categories."
+        },
+        {
+          "case": "Carrefour Argentina sale",
+          "detail": "Ongoing sale process raises concerns about further concentration depending on buyer identity."
+        }
+      ],
+      "consumer_impact": "Six chains control 89% of sales. 20 supplier companies control 74% of shelf revenue. Dual oligopoly (retail + supplier) enables significant price markup. Consumers in provinces with fewer chains face even higher concentration. Price markups estimated at 30-50% above competitive equilibrium for staple goods.",
+      "hhi_estimate": 1700,
+      "hhi_notes": "22.3^2 + 21^2 + 17^2 + 12.5^2 + 9^2 + 8.7^2 = 497 + 441 + 289 + 156 + 81 + 76 = ~1540 for top 6. Real HHI higher when accounting for regional monopolies.",
+      "sources": [
+        "https://www.iprofesional.com/economia/351434-seis-supermercados-y-20-empresas-concentran-el-consumo-del-sector",
+        "https://www.letrap.com.ar/nota/2022-5-2-9-36-0-en-argentina-20-empresas-deciden-que-comen-y-a-que-precio-45-millones-de-personas",
+        "https://www.iprofesional.com/negocios/450544-mayor-cadena-supermercados-interior-argentina-la-anonima-se-expande-desafia-a-coto-y-carrefour",
+        "https://chequeado.com/ultimas-noticias/hector-recalde-seis-o-siete-hipermercados-concentran-el-85-por-ciento-de-las-ventas-del-pais/"
+      ]
+    },
+    {
+      "id": "medios_comunicacion",
+      "name_es": "Medios de Comunicacion",
+      "name_en": "Media and Communications",
+      "dominant_companies": [
+        {
+          "name": "Grupo Clarin",
+          "cross_media_share": "25.28%",
+          "breakdown": {
+            "radio": "6.84%",
+            "tv": "10.62%",
+            "press": "7.82%"
+          },
+          "assets": [
+            "Diario Clarin (largest circulation newspaper)",
+            "Clarin.com (most visited news site)",
+            "Radio Mitre + FM 100 (top-rated radio)",
+            "El Trece (second largest TV network)",
+            "Cablevision/Flow (largest cable operator)",
+            "Telecom Argentina (39% stake via Cablevision Holding)",
+            "TN (Todo Noticias cable news)",
+            "AGEA (printing company)",
+            "Papel Prensa (newsprint — 50% ownership)"
+          ],
+          "press_market_share": "43% of print media market"
+        },
+        {
+          "name": "Grupo America",
+          "cross_media_share": "7.25%",
+          "breakdown": {
+            "radio": "2.27%",
+            "tv": "4.09%",
+            "press": "0.89%"
+          },
+          "assets": ["America TV", "A24", "Radio La Red"],
+          "controlling_person": "Daniel Vila / Jose Luis Manzano"
+        },
+        {
+          "name": "La Nacion",
+          "segment": "Print + digital",
+          "notes": "Second largest newspaper. Conservative editorial line.",
+          "controlling_family": "Saguier family (historic)"
+        },
+        {
+          "name": "Grupo Indalo",
+          "controlling_person": "Cristobal Lopez / Fabio De Sousa",
+          "assets": ["C5N", "Radio 10", "Magazine"],
+          "notes": "Kirchnerista-aligned media group. Leaders convicted in corruption cases."
+        },
+        {
+          "name": "Grupo Octubre",
+          "controlling_person": "Victor Santa Maria (SUTERH union leader)",
+          "assets": ["Pagina/12", "Radio AM 750", "IP Noticias"]
+        },
+        {
+          "name": "Grupo Perfil",
+          "controlling_person": "Jorge Fontevecchia",
+          "assets": ["Perfil newspaper", "Noticias magazine", "Net TV"]
+        }
+      ],
+      "market_structure": "Extreme concentration. Eight groups control 59.24% of cross-media market. Grupo Clarin alone holds 25.28% cross-media and 43% of print. Most markets show high concentration with exceptions only in online news sites. Clarin's conglomeral reach across print, radio, TV, cable, broadband, and mobile telephony is unparalleled in Argentina.",
+      "controlling_groups": [
+        {
+          "group": "Grupo Clarin / GC Dominio S.A.",
+          "key_people": ["Hector Magnetto (CEO, 29.8%)", "Noble Herrera heirs (24.85%)", "Jose Antonio Aranda (10.3%)", "Lucio Pagliaro (10.2%)"],
+          "notes": "Controls largest media + telecom conglomerate. Papel Prensa co-owned with La Nacion and state."
+        },
+        {
+          "group": "Vila-Manzano",
+          "controls": "Grupo America",
+          "key_people": ["Daniel Vila", "Jose Luis Manzano (ex-Menem minister)"]
+        }
+      ],
+      "regulatory_body": "ENACOM; Autoridad Federal de Servicios de Comunicacion Audiovisual (formerly AFSCA, dissolved)",
+      "antitrust_cases": [
+        {
+          "case": "Ley de Medios (Media Law 26.522, 2009)",
+          "detail": "Attempted to limit media concentration. Grupo Clarin challenged constitutionality. Supreme Court upheld law in 2013. Macri government effectively gutted enforcement via decree in 2015-2016."
+        },
+        {
+          "case": "Cablevision-Telecom merger (2018)",
+          "detail": "Approved under Macri government. Created mega-convergent media-telecom conglomerate."
+        },
+        {
+          "case": "Papel Prensa investigation",
+          "detail": "Ownership of Argentina's sole newsprint manufacturer by Clarin (50%), La Nacion (37.5%), and state (12.5%) investigated for anti-competitive practices against smaller newspapers."
+        }
+      ],
+      "consumer_impact": "Extreme editorial concentration reduces media pluralism. Grupo Clarin's control over distribution infrastructure (cable, broadband, mobile) creates vertical integration that can influence information access. Newsprint monopoly (Papel Prensa) gives Clarin/La Nacion cost advantages over competitors.",
+      "hhi_estimate": 3500,
+      "hhi_notes": "Cross-media: 25.28^2 + 7.25^2 + other groups. Print: 43% Clarin share alone yields HHI component of 1849. TV paga: Flow 39% + DirecTV 32% = HHI ~2545.",
+      "sources": [
+        "https://argentina.mom-gmr.org/en/findings/concentration/",
+        "https://argentina.mom-gmr.org/es/propietarios/grupos-mediaticos/detail/company//grupo-clarin-1/",
+        "https://martinbecerra.wordpress.com/2024/10/13/mapa-de-medios-en-la-era-milei/",
+        "https://rsf.org/es/los-medios-en-argentina-un-gran-negocio-en-manos-de-unos-pocos-0"
+      ]
+    },
+    {
+      "id": "banca_finanzas",
+      "name_es": "Banca y Finanzas",
+      "name_en": "Banking and Finance",
+      "dominant_companies": [
+        {
+          "name": "Banco de la Nacion Argentina",
+          "ownership": "State-owned",
+          "market_share_assets": "22.91%",
+          "market_share_deposits": "22.70%",
+          "market_share_lending": "20.26%"
+        },
+        {
+          "name": "Banco de Galicia y Buenos Aires (+ Galicia Mas / ex-HSBC)",
+          "ownership": "Grupo Financiero Galicia (Escasany-Braun Pena-Ayerza families)",
+          "market_share_assets": "10.35% (pre-HSBC, higher post-acquisition)",
+          "market_share_deposits": "10.43%",
+          "market_share_lending": "11.90%",
+          "notes": "Acquired HSBC Argentina in Dec 2024. Now operates as 'Galicia Mas'. Integration ongoing 2025."
+        },
+        {
+          "name": "Banco Santander Argentina",
+          "ownership": "Santander Group (Spain)",
+          "market_share_assets": "8.79%",
+          "market_share_deposits": "9.67%",
+          "market_share_lending": "10.18%"
+        },
+        {
+          "name": "Banco de la Provincia de Buenos Aires",
+          "ownership": "Buenos Aires Province (state)",
+          "market_share_assets": "7.05%",
+          "market_share_deposits": "7.82%",
+          "market_share_lending": "7.85%"
+        },
+        {
+          "name": "BBVA Argentina",
+          "ownership": "BBVA Group (Spain)",
+          "market_share_assets": "6.91%",
+          "market_share_deposits": "7.28%",
+          "market_share_lending": "9.59%"
+        },
+        {
+          "name": "Banco Macro",
+          "ownership": "Brito family (Jorge Horacio Brito heirs)",
+          "notes": "Largest private Argentine-owned bank. Strong in provinces."
+        }
+      ],
+      "market_structure": "Top 5 banks control ~56% of assets, ~58% of deposits, ~60% of lending. State banks (Nacion + Provincia) hold ~30% combined. Private sector led by Galicia (now larger after HSBC acquisition), Santander, BBVA, and Macro. Total sector assets: USD 203.2 billion (Dec 2024), up 69.4% YoY.",
+      "controlling_groups": [
+        {
+          "group": "Argentine State",
+          "controls": ["Banco de la Nacion Argentina", "Banco de la Provincia de Buenos Aires (via PBA)"],
+          "combined_share": "~30% of assets"
+        },
+        {
+          "group": "Escasany-Braun Pena-Ayerza families",
+          "controls": "Grupo Financiero Galicia (Banco Galicia + ex-HSBC 'Galicia Mas' + Naranja X fintech)"
+        },
+        {
+          "group": "Brito family",
+          "controls": "Banco Macro",
+          "notes": "Jorge Horacio Brito died in helicopter crash 2020. Sons continue management."
+        },
+        {
+          "group": "Santander Group (Spain)",
+          "controls": "Banco Santander Argentina"
+        },
+        {
+          "group": "BBVA Group (Spain)",
+          "controls": "BBVA Argentina"
+        }
+      ],
+      "regulatory_body": "BCRA (Banco Central de la Republica Argentina)",
+      "antitrust_cases": [
+        {
+          "case": "Galicia-HSBC acquisition (2024)",
+          "detail": "Banco Galicia acquired HSBC Argentina. Approved by BCRA. Increases private bank concentration."
+        },
+        {
+          "case": "Credit card interchange fees investigation",
+          "detail": "CNDC investigated credit card and electronic payment systems as one of 11 concentrated markets."
+        },
+        {
+          "case": "Prisma Medios de Pago (Visa Argentina)",
+          "detail": "Banks forced to divest from shared payment processing company to promote competition."
+        }
+      ],
+      "consumer_impact": "Despite numerous banks (77 operating), top 5 control majority of market. HSBC-Galicia merger further concentrates private banking. Credit card fees and payment processing investigated for anti-competitive practices. Limited banking penetration in rural areas.",
+      "hhi_estimate": 850,
+      "hhi_notes": "22.91^2 + 10.35^2 + 8.79^2 + 7.05^2 + 6.91^2 = 525 + 107 + 77 + 50 + 48 = ~807 for top 5. Moderate concentration by HHI but high when considering private-only banks.",
+      "sources": [
+        "https://rankingslatam.com/blogs/industry-news/top-argentine-banks-ranked-2024-financial-results-reveal-strong-recovery-december-2024-rankings",
+        "https://rankingslatam.com/blogs/industry-news/argentine-banking-sector-a-comprehensive-financial-overview-rankings-2024-08",
+        "https://rankingslatam.com/blogs/industry-news/credit-and-debit-cards-market-in-argentina-december-2024-rankings"
+      ]
+    },
+    {
+      "id": "mineria_litio",
+      "name_es": "Mineria / Litio",
+      "name_en": "Mining / Lithium",
+      "dominant_companies": [
+        {
+          "name": "Arcadium Lithium (ex-Livent + Allkem fusion, now acquired by Rio Tinto)",
+          "production_sites": ["Fenix (Salar Hombre Muerto, Catamarca)", "Sales de Jujuy (Salar de Olaroz, Jujuy)"],
+          "hectares_controlled": "232,637 hectares of salt flats",
+          "notes": "Operates 2 of 3 producing lithium projects in Argentina. Merger completed Jan 2024. Rio Tinto acquired Arcadium Lithium in 2025 for ~$6.7B."
+        },
+        {
+          "name": "Allkem/Orocobre (pre-merger)",
+          "notes": "Australian company. Now part of Arcadium Lithium / Rio Tinto."
+        },
+        {
+          "name": "POSCO (South Korea)",
+          "project": "Sal de Oro (Salar Hombre Muerto)",
+          "notes": "Korean conglomerate developing lithium project"
+        },
+        {
+          "name": "Ganfeng Lithium (China)",
+          "project": "Mariana lithium project (Salta)",
+          "notes": "Chinese lithium giant expanding in Argentina"
+        },
+        {
+          "name": "Eramine (Eramet, France)",
+          "project": "Centenario-Ratones (Salta)",
+          "notes": "French mining company"
+        }
+      ],
+      "market_structure": "Oligopolistic global market. In Argentina, Arcadium Lithium (now Rio Tinto) controls 2 of 3 producing projects, creating near-monopoly of current production. Multiple projects in development but few in production. Argentina is 4th global producer behind Australia, Chile, China. Installed capacity: 37,500 tonnes lithium carbonate/year.",
+      "controlling_groups": [
+        {
+          "group": "Rio Tinto (Australia/UK)",
+          "controls": "Arcadium Lithium (ex-Livent + Allkem)",
+          "notes": "Acquired Arcadium Lithium in 2025. Controls majority of Argentine lithium production."
+        },
+        {
+          "group": "Provincial governments",
+          "role": "Concession grantors. Under Argentine constitution, mineral resources belong to provinces, not federal government.",
+          "key_provinces": ["Jujuy", "Catamarca", "Salta"]
+        }
+      ],
+      "regulatory_body": "Provincial mining authorities (Jujuy, Catamarca, Salta); Secretaria de Mineria (federal)",
+      "antitrust_cases": [
+        {
+          "case": "Livent-Allkem merger review",
+          "detail": "Merger creating Arcadium Lithium reviewed for concentration of Argentine lithium production. Approved."
+        },
+        {
+          "case": "Rio Tinto acquisition of Arcadium Lithium",
+          "year": 2025,
+          "detail": "Further consolidation of lithium production under single multinational."
+        }
+      ],
+      "consumer_impact": "Primarily an export commodity — consumer impact is via royalty revenue to provinces (typically 3%) and employment. Critics argue royalty rates are too low and production is entirely foreign-controlled. Environmental concerns around water use in arid regions.",
+      "hhi_estimate": 6000,
+      "hhi_notes": "Current production highly concentrated in Arcadium/Rio Tinto (2 of 3 producing sites). Will decrease as new projects come online but currently near-monopoly.",
+      "sources": [
+        "https://dialogue.earth/es/negocios/392580-quienes-son-los-duenos-del-litio-argentina/",
+        "https://elruido.org/litio-en-argentina-por-que-la-produccion-nacional-queda-en-manos-de-una-sola-empresa/",
+        "https://econojournal.com.ar/2024/01/nacio-arcadium-lithium-la-empresa-de-litio-que-surgio-de-la-fusion-de-allkem-y-livent/",
+        "https://litio.com.ar/litio-livent-y-allkem-empresas-productoras-de-litio-en-argentina-anuncian-fusion-por-10600-millones-de-dolares/"
+      ]
+    },
+    {
+      "id": "agroexportacion",
+      "name_es": "Agroexportacion",
+      "name_en": "Agricultural Exports",
+      "dominant_companies": [
+        {
+          "name": "Cargill",
+          "origin": "USA",
+          "volume_2024": "7.45 million tonnes",
+          "market_share_2024": "14.7%",
+          "position": "1st"
+        },
+        {
+          "name": "ADM (Archer Daniels Midland)",
+          "origin": "USA",
+          "volume_2024": "7.42 million tonnes",
+          "market_share_2024": "14.6%",
+          "position": "2nd"
+        },
+        {
+          "name": "COFCO International",
+          "origin": "China (state-owned)",
+          "volume_2024": "6.9 million tonnes",
+          "market_share_2024": "13.68%",
+          "position": "3rd"
+        },
+        {
+          "name": "Louis Dreyfus Company (LDC)",
+          "origin": "France/Netherlands",
+          "volume_2024": "5.0 million tonnes",
+          "market_share_2024": "9.9%",
+          "position": "4th"
+        },
+        {
+          "name": "Bunge (now Bunge-Viterra)",
+          "origin": "USA/Switzerland",
+          "volume_2024": "4.9 million tonnes",
+          "market_share_2024": "9.8%",
+          "position": "5th",
+          "notes": "Bunge absorbed Viterra in June 2025. Also became majority partner of 'Nueva Vicentin'."
+        },
+        {
+          "name": "ACA (Asociacion de Cooperativas Argentinas)",
+          "origin": "Argentine cooperative",
+          "volume_2024": "4.2 million tonnes",
+          "market_share_2024": "8.3%",
+          "position": "6th",
+          "notes": "First Argentine-capital entity in ranking"
+        },
+        {
+          "name": "Viterra (now part of Bunge)",
+          "origin": "Switzerland/Glencore",
+          "volume_2024": "4.1 million tonnes",
+          "market_share_2024": "8%",
+          "position": "7th"
+        },
+        {
+          "name": "AGD (Aceitera General Deheza)",
+          "origin": "Argentine (Urquia family, Cordoba)",
+          "notes": "Major domestic oilseed processor"
+        }
+      ],
+      "market_structure": "Extreme concentration by multinational traders. Top 5 companies control 62.7% of grain exports. Top 7 control ~79%. First Argentine-capital company (ACA cooperative) appears only in 6th place. Bunge-Viterra merger + Nueva Vicentin deal further concentrates the sector. In 2024: 50.7M tonnes raw grain, 29.5M tonnes byproducts, 7.2M tonnes oils exported.",
+      "controlling_groups": [
+        {
+          "group": "ABCD traders (Cargill, ADM, Bunge, Dreyfus)",
+          "combined_share": "~49%",
+          "notes": "Traditional 'Big Four' grain traders. All foreign-owned."
+        },
+        {
+          "group": "COFCO (China state-owned)",
+          "share": "13.68%",
+          "notes": "Largest single Chinese presence in Argentine agriculture"
+        },
+        {
+          "group": "Glencore/Viterra (now Bunge)",
+          "notes": "Absorbed into Bunge 2025"
+        },
+        {
+          "group": "Urquia family",
+          "controls": "AGD (Aceitera General Deheza)",
+          "notes": "Cordoba-based. Roberto Urquia was senator."
+        }
+      ],
+      "regulatory_body": "Secretaria de Agricultura, Ganaderia y Pesca; AFIP (tax); Customs (Aduana)",
+      "antitrust_cases": [
+        {
+          "case": "Vicentin collapse and attempted expropriation (2020)",
+          "detail": "Vicentin defaulted on $1.5B+ debt. Fernandez government attempted expropriation, later abandoned. Bunge became majority partner in restructured 'Nueva Vicentin'."
+        },
+        {
+          "case": "Bunge-Viterra merger",
+          "year": 2025,
+          "detail": "Creates even larger agro-export entity. Combined pre-merger share ~18%."
+        },
+        {
+          "case": "Transfer pricing investigations",
+          "detail": "Multinational traders regularly investigated for underreporting export values to minimize Argentine tax obligations."
+        }
+      ],
+      "consumer_impact": "Concentration in export grain trading means few companies control price formation for Argentina's primary export commodity. This affects: (1) government tax revenue via export duties (retenciones), (2) domestic food prices via soybean oil/meal pass-through, (3) foreign exchange availability. Estimated $3-5B/year in transfer pricing losses.",
+      "hhi_estimate": 1200,
+      "hhi_notes": "14.7^2 + 14.6^2 + 13.68^2 + 9.9^2 + 9.8^2 + 8.3^2 + 8^2 = 216 + 213 + 187 + 98 + 96 + 69 + 64 = ~943. Moderate HHI but high CR5 (62.7%).",
+      "sources": [
+        "https://www.ambito.com/negocios/los-duenos-la-soja-las-empresas-que-lideraron-el-ranking-exportaciones-2024-n6105135",
+        "https://agrolink.com.ar/ranking-de-agroexportadoras-cuales-son-las-10-empresas-que-lideraron-el-mercado-en-el-2024/actualidad/",
+        "https://www.ambito.com/negocios/boom-agroexportador-cargill-viterra-y-cofco-concentraron-el-40-del-negocio-un-semestre-historico-n6166949",
+        "https://argentina.indymedia.org/2026/02/01/vicentin-y-la-extranjerizacion-de-la-economia-cronica-de-una-estafa-del-agronegocio/"
+      ]
+    },
+    {
+      "id": "construccion_obra_publica",
+      "name_es": "Construccion / Obra Publica",
+      "name_en": "Construction / Public Works",
+      "dominant_companies": [
+        {
+          "name": "Techint Engineering & Construction",
+          "controlling_family": "Rocca family",
+          "position": "Historically #1 in public works contracts",
+          "notes": "Part of Techint Group. Major infrastructure contractor."
+        },
+        {
+          "name": "IECSA (now part of Corporacion America / Eurnekian)",
+          "controlling_person": "Eduardo Eurnekian (post-acquisition) / formerly Angelo Calcaterra (Macri's cousin)",
+          "position": "Historically #3 in public works",
+          "notes": "Implicated in Odebrecht/Lava Jato scandal. Previously controlled by Angelo Calcaterra."
+        },
+        {
+          "name": "Electroingenieria",
+          "controlling_persons": ["Gerardo Ferreyra", "Osvaldo Acosta"],
+          "position": "Historically #2 in public works",
+          "notes": "Cordoba-based. Grew from mid-size to national player under kirchnerismo. Ferreyra convicted in 'Cuadernos' corruption case.",
+          "revenue": "Billed USD 1 billion in 17 years of Cordoba public works alone."
+        },
+        {
+          "name": "Roggio (Benito Roggio e Hijos)",
+          "controlling_family": "Roggio family (Cordoba)",
+          "notes": "Major in transportation concessions (subte Buenos Aires), toll roads, water"
+        },
+        {
+          "name": "Grupo Caputo",
+          "controlling_person": "Nicolas Caputo (Macri associate) / family",
+          "notes": "Active in real estate development and public works during Macri era"
+        },
+        {
+          "name": "Jose Cartellone Construcciones",
+          "notes": "Traditional construction firm. Major highway and dam projects."
+        }
+      ],
+      "market_structure": "Extreme concentration driven by political connections rather than market forces. During kirchnerismo: Techint #1, Electroingenieria #2, IECSA #3 in state contracts. During macrismo: Techint, IECSA/Calcaterra, Caputo favored. Pattern: 5-6 companies rotate at top based on political alignment. Barriers to entry are political, not technical.",
+      "controlling_groups": [
+        {
+          "group": "Techint / Rocca family",
+          "notes": "Consistent presence regardless of government"
+        },
+        {
+          "group": "Ferreyra-Acosta",
+          "controls": "Electroingenieria",
+          "political_alignment": "Kirchnerismo"
+        },
+        {
+          "group": "Eurnekian (Corporacion America)",
+          "controls": "IECSA (acquired), airports, highways"
+        },
+        {
+          "group": "Roggio family",
+          "controls": "Benito Roggio e Hijos, Cliba, Metrovias"
+        }
+      ],
+      "regulatory_body": "Oficina Nacional de Contrataciones; Ministerio de Obras Publicas (dissolved under Milei)",
+      "antitrust_cases": [
+        {
+          "case": "Odebrecht/Lava Jato Argentina",
+          "detail": "Techint, IECSA, and Electroingenieria all implicated in connection with Brazilian Odebrecht bribes for public works contracts. Paolo Rocca (Techint) admitted to payments."
+        },
+        {
+          "case": "Cuadernos de las Coimas (2018)",
+          "detail": "Largest corruption scandal in Argentine history. Notebooks documenting cash payments from construction companies to government officials during kirchnerismo. Multiple executives convicted."
+        },
+        {
+          "case": "Soterramiento del Sarmiento",
+          "detail": "Major rail project awarded to IECSA/Calcaterra during Macri government. Allegations of favoritism."
+        }
+      ],
+      "consumer_impact": "Concentration + political favoritism in public works leads to: (1) inflated contract prices (estimated 30-100% markup), (2) delays and cost overruns, (3) infrastructure quality issues. Redeterminaciones de precios (contract price adjustments) routinely doubled or tripled original budgets.",
+      "hhi_estimate": null,
+      "hhi_notes": "HHI not calculable — market share is determined by political favoritism in contract awards, not competitive market dynamics. Effective concentration extremely high.",
+      "sources": [
+        "https://www.lanacion.com.ar/politica/iecsa-los-negocios-bajo-sospecha-del-primo-del-presidente-nid2159888/",
+        "https://www.perfil.com/noticias/cordoba/en-17-anos-electroingenieria-facturo-us1000m-con-obra-publica-cordobesa.phtml",
+        "https://www.laizquierdadiario.com/Techint-Iecsa-y-ElectroIngenieria-podrian-ser-alcanzadas-por-el-escandalo-Odebrecht",
+        "https://www.lapoliticaonline.com/nota/95517/"
+      ]
+    },
+    {
+      "id": "farmaceutica",
+      "name_es": "Farmaceutica",
+      "name_en": "Pharmaceuticals",
+      "dominant_companies": [
+        {
+          "name": "Grupo Roemmers",
+          "revenue_usd": 538000000,
+          "market_share": "~9%",
+          "subsidiaries": ["Roemmers", "Investi", "Gador (44%)", "Argentia", "Poen", "Gramon", "Elisium"],
+          "controlling_family": "Roemmers family"
+        },
+        {
+          "name": "Grupo Bago",
+          "revenue_usd": 318000000,
+          "subsidiaries": ["Bago", "Montpellier (USD 332M)", "Sinergium Bio", "Bioprofarma", "Nutricia"],
+          "controlling_family": "Bago family",
+          "notes": "When including Montpellier, group revenue exceeds USD 650M"
+        },
+        {
+          "name": "Elea Phoenix",
+          "revenue_usd": 497000000,
+          "controlling_group": "Sigman family (Hugo Sigman)",
+          "notes": "Second by individual lab revenue. Hugo Sigman also controls Insud, mAbxience (COVID vaccine production)."
+        },
+        {
+          "name": "Casasco (Laboratorios Casasco)",
+          "revenue_usd": 404000000,
+          "controlling_family": "Casasco family"
+        },
+        {
+          "name": "Gador",
+          "revenue_usd": 386000000,
+          "notes": "44% owned by Roemmers Group"
+        },
+        {
+          "name": "Raffo",
+          "revenue_usd": 318000000,
+          "controlling_family": "Raffo family"
+        },
+        {
+          "name": "Baliarda",
+          "revenue_usd": 327000000,
+          "controlling_family": "Baliarda family"
+        }
+      ],
+      "market_structure": "Top 10 companies: 51% of sales. Top 20: 71%. National labs commercialize 78% of all medications sold. Highly vertically integrated groups (Roemmers, Bago, Elea/Sigman) control multiple lab brands. Individual lab concentration moderate but GROUP concentration much higher. Four of six largest labs are domestic.",
+      "controlling_groups": [
+        {
+          "group": "Roemmers family",
+          "controls": ["Roemmers", "Investi", "44% of Gador", "Argentia", "Poen", "Gramon", "Elisium"],
+          "estimated_group_share": "~15% including subsidiaries"
+        },
+        {
+          "group": "Bago family",
+          "controls": ["Bago", "Montpellier", "Sinergium Bio", "Bioprofarma"],
+          "estimated_group_share": "~12%"
+        },
+        {
+          "group": "Hugo Sigman / Grupo Insud",
+          "controls": ["Elea Phoenix", "mAbxience", "Chemo Group stake"],
+          "notes": "Also controls Mundo Analitica (media), agricultural businesses."
+        },
+        {
+          "group": "Casasco family",
+          "controls": "Laboratorios Casasco"
+        }
+      ],
+      "regulatory_body": "ANMAT (Administracion Nacional de Medicamentos, Alimentos y Tecnologia Medica)",
+      "antitrust_cases": [
+        {
+          "case": "Pharmaceutical price coordination",
+          "detail": "Periodic investigations into coordinated price increases by major labs through industry chambers (CILFA, CAEME)."
+        },
+        {
+          "case": "Generic drug market barriers",
+          "detail": "National labs' dominance limits generic drug penetration despite Argentine law permitting generic prescribing."
+        }
+      ],
+      "consumer_impact": "Argentina has among the highest medicine prices in Latin America relative to purchasing power. National lab dominance means fewer generic alternatives. Vertical integration (production to distribution via pharmacy chains) limits price competition. Estimated consumer markup: 40-60% above competitive reference prices for branded generics.",
+      "hhi_estimate": 600,
+      "hhi_notes": "Individual lab HHI low (~500-700) due to many players. But GROUP-level HHI much higher (~1200-1500) when consolidating subsidiaries under controlling families.",
+      "sources": [
+        "https://www.indembarg.gov.in/content/Pharmaceutical-Sector-in-Argentina-2025.pdf.pdf",
+        "https://cilfa.org.ar/wp-content/uploads/2021/08/Escenario-y-Perspectivas-de-la-Industria-Farmaceutica-Argentina-Ingles-2021.pdf",
+        "https://pharmchoices.com/list-of-pharmaceutical-companies-in-argentina/",
+        "https://pharmaboardroom.com/articles/country-report-argentina-where-crisis-brings-opportunity/"
+      ]
+    },
+    {
+      "id": "transporte_aereo",
+      "name_es": "Transporte Aereo",
+      "name_en": "Air Transport",
+      "dominant_companies": [
+        {
+          "name": "Aerolineas Argentinas",
+          "ownership": "State-owned (being privatized under Milei)",
+          "market_share_cabotaje_jul_2024": "64%",
+          "market_share_cabotaje_jul_2025": "58%",
+          "notes": "Dominant in domestic routes. Losing share to low-cost carriers. Privatization process initiated 2024."
+        },
+        {
+          "name": "Flybondi",
+          "ownership": "Private (Argentine/international investors)",
+          "market_share_cabotaje_jul_2024": "22%",
+          "market_share_cabotaje_jul_2025": "17%",
+          "notes": "First Argentine low-cost carrier (2018). Losing share to JetSmart."
+        },
+        {
+          "name": "JetSmart Argentina",
+          "ownership": "JetSmart (Chile / Indigo Partners)",
+          "market_share_cabotaje_jul_2024": "12%",
+          "market_share_cabotaje_jul_2025": "23%",
+          "notes": "Fastest growing. Doubled share in one year. Chilean low-cost expanding aggressively."
+        }
+      ],
+      "market_structure": "Transitioning from near-monopoly to oligopoly. Aerolineas held quasi-monopoly for decades. Milei's 'Cielos Abiertos' decree (599/2024, July 2024) deregulated the sector. Low-cost share grew from 34% to 40% (Jul 2024 to Jul 2025). Still concentrated: HHI declining but high. Many routes remain monopoly (single carrier).",
+      "controlling_groups": [
+        {
+          "group": "Argentine State",
+          "controls": "Aerolineas Argentinas (privatization pending)"
+        },
+        {
+          "group": "Indigo Partners (USA) / JetSmart",
+          "controls": "JetSmart Argentina",
+          "notes": "Bill Franke's Indigo Partners is major shareholder"
+        }
+      ],
+      "regulatory_body": "ANAC (Administracion Nacional de Aviacion Civil); ORSNA (Organismo Regulador del Sistema Nacional de Aeropuertos)",
+      "antitrust_cases": [
+        {
+          "case": "Intercargo ground handling monopoly",
+          "detail": "Aerolineas' subsidiary Intercargo held quasi-monopoly on airport ground handling. Broken by Milei deregulation (decree 599/2024)."
+        },
+        {
+          "case": "CNDC investigation of air transport",
+          "detail": "Air transport was one of 11 markets identified by CNDC as having competition failures."
+        },
+        {
+          "case": "Route monopolies",
+          "detail": "Many domestic routes served by single carrier (usually Aerolineas). Low-cost carriers gradually adding competition on trunk routes."
+        }
+      ],
+      "consumer_impact": "Domestic airfares historically among highest in Latin America per km. Aerolineas' state subsidies (estimated $700M+/year) created distorted competition. Deregulation showing early results: low-cost share up, some fares declining. But many secondary routes remain monopoly. Cabotage traffic fell overall in 2024 due to economic recession.",
+      "hhi_estimate": 4100,
+      "hhi_notes": "Jul 2025: 58^2 + 23^2 + 17^2 = 3364 + 529 + 289 = 4182. Declining from Jul 2024: 64^2 + 22^2 + 12^2 = 4096 + 484 + 144 = 4724.",
+      "sources": [
+        "https://www.aviacionnews.com/2025/08/trafico-julio-argentina/",
+        "https://www.aviacionnews.com/2025/12/estadisticas-anac/",
+        "https://argentina.ladevi.info/transporte/el-transporte-aereo-cabotaje-se-desplomo-2024-n78230",
+        "https://www.infobae.com/economia/2024/10/20/cielos-abiertos-el-gobierno-celebra-la-incorporacion-9-nuevos-aviones-y-el-inicio-de-nuevas-rutas/"
+      ]
+    },
+    {
+      "id": "cemento_acero",
+      "name_es": "Cemento y Acero",
+      "name_en": "Cement and Steel",
+      "subsectors": [
+        {
+          "name": "Cemento",
+          "dominant_companies": [
+            {
+              "name": "Loma Negra",
+              "market_share": "44-50%",
+              "owner": "InterCement / Mover Participacoes (Brazil, Camargo Correa group)",
+              "notes": "Sale process underway. Largest cement company. 34 production units, 33M+ tonnes annual capacity."
+            },
+            {
+              "name": "Holcim Argentina",
+              "market_share": "26%",
+              "owner": "Holcim Group (Switzerland)",
+              "notes": "2024 was worst year in 7 years — production and sales at historic lows, operating profit down 73% YoY."
+            },
+            {
+              "name": "Cementos Avellaneda",
+              "market_share": "25%",
+              "owner": "Votorantim (Brazil)",
+              "notes": "Third player in oligopoly"
+            },
+            {
+              "name": "Petroquimica Rivadavia",
+              "market_share": "5%",
+              "notes": "Smallest of the four"
+            }
+          ],
+          "hhi_estimate": 3300,
+          "hhi_notes": "47^2 + 26^2 + 25^2 + 5^2 = 2209 + 676 + 625 + 25 = 3535 (using 47% for Loma Negra mid-estimate)"
+        },
+        {
+          "name": "Acero (Steel)",
+          "dominant_companies": [
+            {
+              "name": "Ternium Siderar (Techint Group)",
+              "installed_capacity_share": "43.5%",
+              "segment": "Flat steel (cold/hot rolled sheet)",
+              "monopoly_detail": "99% of cold-rolled sheet, 84% of hot-rolled sheet",
+              "owner": "Techint / Rocca family (62.02% of Ternium)"
+            },
+            {
+              "name": "Tenaris Siderca (Techint Group)",
+              "installed_capacity_share": "17.68%",
+              "segment": "Seamless steel tubes (for oil/gas industry)",
+              "owner": "Techint / Rocca family (60.45% of Tenaris)",
+              "notes": "World's largest seamless tube producer"
+            },
+            {
+              "name": "ArcelorMittal Acindar",
+              "installed_capacity_share": "23.12%",
+              "segment": "Long steel products (rebar, wire)",
+              "owner": "ArcelorMittal (Luxembourg/India - Mittal family)"
+            },
+            {
+              "name": "Sipar Gerdau",
+              "installed_capacity_share": "8.84%",
+              "owner": "Gerdau (Brazil)"
+            },
+            {
+              "name": "Acerbrag",
+              "installed_capacity_share": "4.76%"
+            },
+            {
+              "name": "Aceros Zapla",
+              "installed_capacity_share": "2.04%"
+            }
+          ],
+          "techint_combined_share": "61.18% of installed steel capacity (Ternium Siderar 43.5% + Tenaris Siderca 17.68%)",
+          "hhi_estimate": 3000,
+          "hhi_notes": "43.5^2 + 23.12^2 + 17.68^2 + 8.84^2 + 4.76^2 + 2.04^2 = 1892 + 535 + 313 + 78 + 23 + 4 = 2845"
+        }
+      ],
+      "market_structure": "Both cement and steel are tight oligopolies. Cement: 4 companies, Loma Negra alone at 44-50%. Steel: Techint controls 61% via two subsidiaries. CNDC identified both as markets with competition failures. High logistics costs create regional sub-monopolies.",
+      "controlling_groups": [
+        {
+          "group": "Techint / Rocca family",
+          "controls": ["Ternium Siderar (43.5% steel)", "Tenaris Siderca (17.68% steel)"],
+          "combined_steel_share": "61.18%",
+          "structure": "Controlled via San Faustin S.A. -> R&P STAK (Netherlands foundation). Key members: Paolo Rocca (CEO), Gianfelice Rocca, Roberto Bonatti."
+        },
+        {
+          "group": "Camargo Correa / Mover Participacoes (Brazil)",
+          "controls": "Loma Negra (44-50% cement)",
+          "notes": "Sale process ongoing. Potential Argentine buyers being explored."
+        },
+        {
+          "group": "Holcim Group (Switzerland)",
+          "controls": "Holcim Argentina (26% cement)"
+        },
+        {
+          "group": "Votorantim (Brazil)",
+          "controls": "Cementos Avellaneda (25% cement)"
+        },
+        {
+          "group": "ArcelorMittal / Mittal family",
+          "controls": "Acindar (23.12% steel)"
+        }
+      ],
+      "regulatory_body": "Secretaria de Industria; CNDC/NCA",
+      "antitrust_cases": [
+        {
+          "case": "Cement cartelization (ongoing)",
+          "detail": "Cement companies investigated for coordinated pricing. Four companies effectively set prices in oligopolistic fashion. High logistics costs prevent imports from disciplining prices."
+        },
+        {
+          "case": "CNDC steel market investigation",
+          "detail": "Steel identified as one of 11 markets with competition failures. Ternium/Siderar's 99% monopoly in cold-rolled sheet is textbook market dominance."
+        },
+        {
+          "case": "Aluminium monopoly (related: Aluar)",
+          "detail": "Aluar (Madanes Quintanilla family) is Argentina's sole primary aluminium producer. 100% monopoly. Production ~460,000 tonnes/year. 70% exported."
+        }
+      ],
+      "consumer_impact": "Cement prices significantly above international benchmarks. Steel users (construction, auto, manufacturing) pay monopoly/oligopoly premiums. Construction costs elevated by both cement oligopoly and steel duopoly. Estimated markup: 20-40% above competitive pricing for cement, higher for specialty steel.",
+      "sources": [
+        "https://www.ambito.com/negocios/balances-empresas-ternium-suerte-es-fierro-n5955444",
+        "https://ocipex.com/articulos/titulo-panorama-global-regional-y-nacional-de-la-industria-del-acero",
+        "https://www.pagina12.com.ar/428609-las-cementeras-lo-hicieron-de-nuevo-cartelizacion-precios-ma/",
+        "https://www.iprofesional.com/negocios/418339-loma-negra-por-que-se-dilata-la-venta-de-la-mayor-cementera-argentina",
+        "https://www.argentina.gob.ar/sites/default/files/cemento.pdf"
+      ]
+    },
+    {
+      "id": "internet_cable",
+      "name_es": "Internet y Television por Cable",
+      "name_en": "Internet and Cable Television",
+      "dominant_companies": [
+        {
+          "name": "Telecom Argentina / Flow (Cablevision)",
+          "market_share_broadband": "56% of fixed broadband connections",
+          "market_share_tv_paga": "39%",
+          "market_share_convergent_billing": "39%",
+          "owner": "Grupo Clarin (via Cablevision Holding)",
+          "notes": "Dominant leader in both broadband and pay TV. 29-point lead over nearest broadband competitor."
+        },
+        {
+          "name": "DirecTV Argentina",
+          "market_share_tv_paga": "32%",
+          "owner": "Vrio Corp (AT&T legacy)",
+          "notes": "Expanding to fiber optic. Planning Amazon Kuiper satellite internet. Now authorized to offer mobile telephony."
+        },
+        {
+          "name": "Claro (Telmex / America Movil)",
+          "market_share_convergent_billing": "19%",
+          "owner": "Carlos Slim"
+        },
+        {
+          "name": "Telefonica / Movistar (being acquired by Telecom)",
+          "market_share_convergent_billing": "24% (pre-acquisition)",
+          "notes": "Being acquired by Telecom Argentina for USD 1.245B. Will further concentrate market."
+        },
+        {
+          "name": "Small/regional ISPs (cooperatives + pymes)",
+          "notes": "Hundreds of small local ISPs serve communities where major operators don't invest. Limited market share nationally but important for connectivity."
+        }
+      ],
+      "market_structure": "Near-duopoly in pay TV (Flow 39% + DirecTV 32% = 71%). Near-monopoly in broadband (Telecom 56%, next competitor at 27%). The Telecom-Telefonica acquisition would further consolidate. 70% of broadband households buy bundled services (triple/quadruple play), creating lock-in effects.",
+      "controlling_groups": [
+        {
+          "group": "Grupo Clarin / Magnetto-Noble Herrera",
+          "controls": "Telecom/Flow/Cablevision (56% broadband, 39% TV paga)"
+        },
+        {
+          "group": "Vrio Corp",
+          "controls": "DirecTV (32% TV paga)"
+        },
+        {
+          "group": "America Movil / Carlos Slim",
+          "controls": "Claro (19% convergent)"
+        }
+      ],
+      "regulatory_body": "ENACOM (Ente Nacional de Comunicaciones)",
+      "antitrust_cases": [
+        {
+          "case": "Cablevision-Telecom merger (2018)",
+          "detail": "Created 56% broadband concentration. Approved with conditions by Macri government."
+        },
+        {
+          "case": "Telecom-Telefonica acquisition (2025)",
+          "detail": "CNDC objected to the operation. Would create ~80% broadband dominance in some districts."
+        }
+      ],
+      "consumer_impact": "56% broadband concentration means limited choice for most consumers. Bundling practices create switching costs. Broadband speeds and prices below regional benchmarks despite high penetration. Pay TV prices rising as cord-cutting is limited by lack of fiber alternatives in most areas.",
+      "hhi_estimate": 3800,
+      "hhi_notes": "Broadband: 56^2 + 27^2 + others = 3136 + 729 + ~200 = ~4065. TV paga: 39^2 + 32^2 + others = 1521 + 1024 + ~300 = ~2845. Blended ~3500-4000.",
+      "sources": [
+        "https://convercom.info/comunidades/conectividad/argentina-convergente-nace-un-mercado-unico-de-mas-de-10-000-millones-de-dolares/",
+        "https://www.anred.org/concentracion-extrema-cablevision-telecom/",
+        "https://www.cabase.org.ar/el-70-de-los-hogares-con-internet-contrata-el-servicio-de-banda-ancha-en-combo-con-tv-paga-yo-telefonia/"
+      ]
+    },
+    {
+      "id": "seguros",
+      "name_es": "Seguros",
+      "name_en": "Insurance",
+      "dominant_companies": [
+        {
+          "name": "Federacion Patronal Seguros",
+          "market_share_2025": "9.7%",
+          "position": "1st",
+          "notes": "Market leader"
+        },
+        {
+          "name": "Sancor Seguros",
+          "market_share_2025": "6.9%",
+          "position": "2nd",
+          "notes": "Cooperative-origin insurer"
+        },
+        {
+          "name": "La Caja Seguros (Grupo Clarin)",
+          "market_share_2025": "5.3%",
+          "position": "4th",
+          "owner": "Part of Grupo Clarin financial ecosystem"
+        },
+        {
+          "name": "Zurich Argentina",
+          "notes": "Major international insurer"
+        },
+        {
+          "name": "Allianz Argentina",
+          "notes": "International insurer"
+        }
+      ],
+      "market_structure": "More fragmented than other sectors. Top 10 companies hold ~49.6% of market. No single company exceeds 10%. However, 87% of premiums come from patrimonial insurance (property/auto). Auto insurance alone is 40% of market, ART (workers comp) is 24%. Market under stress: production declined 4.3% in real terms in 2024.",
+      "controlling_groups": [
+        {
+          "group": "Cooperative/mutual sector",
+          "controls": "Federacion Patronal, Sancor",
+          "notes": "Cooperative-origin companies lead the market"
+        },
+        {
+          "group": "Grupo Clarin ecosystem",
+          "controls": "La Caja Seguros"
+        },
+        {
+          "group": "International groups",
+          "controls": "Zurich, Allianz, Mapfre, etc."
+        }
+      ],
+      "regulatory_body": "SSN (Superintendencia de Seguros de la Nacion)",
+      "antitrust_cases": [
+        {
+          "case": "ART (workers comp) market concentration",
+          "detail": "Workers compensation market shows higher concentration than general insurance. Few companies dominate large employer accounts."
+        }
+      ],
+      "consumer_impact": "Relatively competitive compared to other sectors. Auto insurance (40% of market) shows reasonable competition. However, compulsory insurance lines (ART, auto) create captive demand. Market contraction in 2024 due to wage compression below inflation affecting ART and group life premiums.",
+      "hhi_estimate": 400,
+      "hhi_notes": "9.7^2 + 6.9^2 + 5.3^2 + smaller shares = 94 + 48 + 28 + ~200 = ~370. Low concentration by HHI standards. Most competitive sector analyzed.",
+      "sources": [
+        "https://www.deloitte.com/latam/es/industries/insurance/perspectives/panorama-general-del-mercado-de-seguros-en-argentina.html",
+        "https://100seguro.com.ar/asi-esta-conformada-la-cartera-de-las-principales-aseguradoras-del-mercado-argentino/",
+        "https://www.ey.com/es_ar/newsroom/2024/01/seguros-2024-reinvencion-aseguradoras-argentina"
+      ]
+    },
+    {
+      "id": "aluminio",
+      "name_es": "Aluminio",
+      "name_en": "Aluminium",
+      "dominant_companies": [
+        {
+          "name": "Aluar Aluminio Argentino S.A.I.C.",
+          "market_share": "100% (sole domestic primary aluminium producer)",
+          "production_capacity": "460,000 tonnes/year",
+          "exports": "~70% of production exported to 20+ countries",
+          "location": "Puerto Madryn, Chubut province"
+        }
+      ],
+      "market_structure": "Pure monopoly. Aluar is the only primary aluminium producer in Argentina and one of the largest in Latin America. Vertically integrated from smelting to elaborated products. Less than 30% absorbed domestically; 70% exported.",
+      "controlling_groups": [
+        {
+          "group": "Madanes Quintanilla family",
+          "key_person": "Javier Madanes Quintanilla",
+          "also_controls": ["FATE (tire manufacturer)", "Aluar", "Related industrial holdings"],
+          "net_worth": "~USD 590 million",
+          "notes": "Founded 1971 under Lanusse military dictatorship. Benefited from import-substitution policies. During last military dictatorship, Madanes family had USD 224 million FATE debt nationalized (paid by taxpayers). Named in Panama Papers with offshore entities in Cook Islands, Bahamas, BVI, Panama, and Swiss accounts."
+        }
+      ],
+      "regulatory_body": "Secretaria de Industria; CNDC/NCA",
+      "antitrust_cases": [
+        {
+          "case": "CNDC investigation of aluminium market",
+          "detail": "Aluminium was one of 11 markets identified by CNDC for competition failures. 100% monopoly — textbook case."
+        },
+        {
+          "case": "Panama Papers revelations",
+          "detail": "Madanes family identified in ICIJ investigation with offshore structures in multiple tax havens."
+        }
+      ],
+      "consumer_impact": "All domestic aluminium-dependent industries (packaging, construction, transportation, electricity cables, medical devices) face single-supplier pricing. Aluar sets domestic prices. Import competition limited by logistics costs and tariffs. Monopoly premium estimated at 15-25% above international reference prices.",
+      "hhi_estimate": 10000,
+      "hhi_notes": "Perfect monopoly: 100^2 = 10,000 (maximum possible HHI)",
+      "sources": [
+        "https://pcr.org.ar/nota/aluar-zar-del-aluminio/",
+        "https://lapapa.com.ar/nota/18386/javier-madanes-quintanilla-el-dueno-de-fate-que-concentra-el-monopolio-del-aluminio-y-fue-mencionado-en-los-panama-papers",
+        "https://cuartopodersalta.com.ar/duenos-y-algo-mas-aluar-y-el-monopolio-del-aluminio/",
+        "https://www.pagina12.com.ar/diario/economia/2-89319-2007-08-07.html"
+      ]
+    },
+    {
+      "id": "lacteos",
+      "name_es": "Lacteos",
+      "name_en": "Dairy",
+      "dominant_companies": [
+        {
+          "name": "Mastellone Hermanos (La Serenisima)",
+          "market_share_fluid_milk": "~90%",
+          "daily_processing": "3.1-3.65 million liters",
+          "partners": ["Arcor (49%)", "Danone (yogurt JV)"],
+          "notes": "Near-monopoly in fluid milk. Family-controlled for 90+ years."
+        },
+        {
+          "name": "Saputo (ex-SanCor assets)",
+          "origin": "Canada",
+          "daily_processing": "3.53 million liters",
+          "market_share_total_dairy": "~11.6%",
+          "notes": "Canadian multinational. Acquired SanCor assets."
+        },
+        {
+          "name": "Danone",
+          "origin": "France",
+          "segment": "Yogurt and fermented dairy",
+          "notes": "JV with Mastellone for yogurt production"
+        }
+      ],
+      "market_structure": "La Serenisima + Sancor (now Saputo) + Danone capture 75% of total dairy revenue. Mastellone controls ~90% of the fluid milk market specifically. Over 40% of volume processed by top 20 industries is in foreign hands.",
+      "controlling_groups": [
+        {
+          "group": "Mastellone family + Arcor (49%)",
+          "controls": "La Serenisima / Mastellone Hermanos"
+        },
+        {
+          "group": "Saputo (Canada)",
+          "controls": "Ex-SanCor operations"
+        },
+        {
+          "group": "Danone (France)",
+          "controls": "Yogurt segment"
+        }
+      ],
+      "regulatory_body": "Secretaria de Agricultura; ANMAT (food safety); CNDC/NCA",
+      "antitrust_cases": [
+        {
+          "case": "CNDC dairy market investigation",
+          "detail": "Milk was one of 11 markets identified by CNDC for competition failures. Mastellone's ~90% fluid milk share is extreme concentration."
+        }
+      ],
+      "consumer_impact": "Fluid milk market is effectively a monopoly (Mastellone ~90%). Consumers have minimal choice. Milk prices in Argentina among highest in region relative to income. 60%+ of fresh milk sales through single brand (La Serenisima).",
+      "hhi_estimate": 8200,
+      "hhi_notes": "Fluid milk: ~90^2 + 10^2 = 8100 + 100 = 8200. Total dairy revenue less concentrated but still high.",
+      "sources": [
+        "https://www.ambito.com/negocios/leche-caliente-las-dos-empresas-que-se-disputan-el-primer-lugar-la-industria-lactea-n6174629",
+        "https://www.ambito.com/negocios/industria-lactea-quienes-son-las-principales-empresas-del-sector-y-cuantos-litros-leche-procesan-dia-n6039402",
+        "https://news.agrofy.com.ar/noticia/196903/ranking-lacteo-punado-empresas-que-maneja-negocio-argentina"
+      ]
+    }
+  ],
+  "cross_sector_conglomerates": [
+    {
+      "name": "Grupo Techint / Rocca family",
+      "sectors_present": ["steel (61% via Ternium+Tenaris)", "oil_gas (Tecpetrol)", "construction (Techint E&C)", "healthcare (Humanitas)"],
+      "structure": "Controlled via San Faustin S.A. -> R&P STAK (Netherlands). Key: Paolo Rocca (CEO), Gianfelice Rocca.",
+      "estimated_revenue": "USD 30+ billion globally",
+      "corruption_cases": ["Odebrecht/Lava Jato payments admitted by Paolo Rocca", "Cuadernos de las Coimas"]
+    },
+    {
+      "name": "Grupo Clarin / Magnetto-Noble Herrera",
+      "sectors_present": ["media (25% cross-media, 43% print)", "telecom (56% broadband, 39% TV paga, 61% mobile post-Movistar)", "internet_cable", "insurance (La Caja)"],
+      "structure": "GC Dominio S.A. -> Grupo Clarin + Cablevision Holding -> Telecom Argentina",
+      "notes": "Most diversified media-telecom conglomerate. Unparalleled cross-sector media influence."
+    },
+    {
+      "name": "Madanes Quintanilla family",
+      "sectors_present": ["aluminium (100% monopoly via Aluar)", "tires (FATE)"],
+      "notes": "Panama Papers. State debt nationalization during dictatorship."
+    },
+    {
+      "name": "Bulgheroni family",
+      "sectors_present": ["oil_gas (Pan American Energy, 50% with BP)"],
+      "notes": "One of richest Argentine families"
+    },
+    {
+      "name": "Hugo Sigman / Grupo Insud",
+      "sectors_present": ["pharma (Elea Phoenix, mAbxience)", "agriculture", "media (films, media investments)"],
+      "notes": "COVID vaccine production via mAbxience. Significant political connections."
+    },
+    {
+      "name": "Roemmers family",
+      "sectors_present": ["pharma (~15% group share via Roemmers + Gador + subsidiaries)"],
+      "notes": "Largest pharmaceutical group in Argentina"
+    },
+    {
+      "name": "Eurnekian (Corporacion America)",
+      "sectors_present": ["airports (AA2000 concession)", "construction (IECSA)", "agriculture", "energy"],
+      "notes": "Eduardo Eurnekian. Airport monopoly operator via AA2000."
+    }
+  ],
+  "methodology_notes": {
+    "hhi_interpretation": {
+      "below_1500": "Unconcentrated market",
+      "1500_to_2500": "Moderately concentrated",
+      "above_2500": "Highly concentrated",
+      "source": "CNDC guidelines align with US DOJ/FTC thresholds"
+    },
+    "data_limitations": [
+      "Market share figures are estimates from public sources and may vary by measurement methodology",
+      "Some HHI calculations are simplified (not all market participants included)",
+      "Construction sector concentration driven by political favoritism, not market dynamics",
+      "Some data points are from 2022-2024 due to availability — marked where possible"
+    ],
+    "cndc_hhi_thresholds": {
+      "safe_harbor": "Post-merger HHI below 2000 AND HHI increase below 150 AND combined share below 50%",
+      "source": "CNDC merger control guidelines"
+    }
+  }
+}
