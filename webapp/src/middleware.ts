@@ -10,6 +10,8 @@
  */
 
 import { NextResponse, type NextRequest } from 'next/server'
+import createMiddleware from 'next-intl/middleware'
+import { routing } from '@/i18n/routing'
 import { checkRateLimit, rateLimitHeaders, RATE_LIMITS } from '@/lib/rate-limit'
 import {
   CSRF_COOKIE_NAME,
@@ -21,6 +23,8 @@ import {
   buildCsrfCookieValue,
   buildCsrfSetCookie,
 } from '@/lib/auth/csrf'
+
+const intlMiddleware = createMiddleware(routing)
 
 /** Extract client IP from request headers */
 function getClientIp(request: NextRequest): string {
@@ -189,8 +193,8 @@ export async function middleware(request: NextRequest) {
     return response
   }
 
-  // For non-API routes, add security headers + CSRF cookie
-  const response = NextResponse.next()
+  // For non-API routes, run intl middleware first, then layer security headers + CSRF cookie
+  const response = intlMiddleware(request)
   for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
     response.headers.set(name, value)
   }
