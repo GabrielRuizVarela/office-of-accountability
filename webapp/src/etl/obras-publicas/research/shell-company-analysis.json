@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "wave": 23,
+    "date": "2026-03-24",
+    "description": "Deep dive into 831 shell companies flagged in obras-publicas graph (0-1 officers receiving government contracts)",
+    "methodology": "Cross-referenced Company nodes with 0-1 OFFICER_OF_COMPANY relationships that are SAME_ENTITY with Contractor nodes in caso_slug='obras-publicas'. Verified top companies via web search for corporate presence, registration data, and employee counts."
+  },
+  "statistics": {
+    "total_flagged_companies": 831,
+    "zero_officer_companies": 121,
+    "one_officer_companies": 567,
+    "companies_with_no_contracts": "143 (831 - 688 with contracts; only 11 of the SAME_ENTITY-linked companies had contracts in query results)",
+    "zero_officer_total_contract_value": 71194914.61,
+    "one_officer_total_contract_value": 3868118.50,
+    "combined_total_contract_value": 75063033.11,
+    "currency": "ARS (nominal, mixed years)"
+  },
+  "top_companies_investigated": [
+    {
+      "name": "FOC S.R.L.",
+      "graph_name": "FOC",
+      "cuit": "30-65700224-7",
+      "officer_count": 0,
+      "contracts": 18,
+      "total_value": 58336354.61,
+      "classification": "data_artifact",
+      "confidence": "high",
+      "rationale": "Real company. SRL incorporated 1992-09-16 at Caldas 1448, CABA. Active in import/export trade (Veritrade records). Won Argentine Navy Hospital Naval procurement (items 3 & 4, lowest price). Listed as AFIP retention agent (RG 2854). Zero officers in our Company data is a coverage gap — OpenCorporates/company registry data likely incomplete for older SRLs.",
+      "web_presence": "cuitonline.com listing, Veritrade trade records, Boletin Oficial procurement awards",
+      "sources": [
+        "https://www.cuitonline.com/detalle/30657002247/f-o-c-srl.html",
+        "https://www.veritradecorp.com/es/argentina/importaciones-y-exportaciones-foc-sociedad-de-responsabilidad-limitada/cuit-3065700224"
+      ]
+    },
+    {
+      "name": "NEWLINK ARGENTINA S.R.L.",
+      "graph_name": "NEWLINK ARGENTINA",
+      "cuit": "33-71040560-9",
+      "officer_count": 0,
+      "contracts": 1,
+      "total_value": 7000000,
+      "classification": "data_artifact",
+      "confidence": "high",
+      "rationale": "Legitimate international consulting firm. Subsidiary of Newlink Group (Miami, founded 1998 by Sergio Roitberg). Offices at Libertad 1133, CABA. IT consulting and communications services since 2007. LinkedIn, Facebook, RocketReach profiles. Zero officers is a data gap — company has full management structure.",
+      "web_presence": "LinkedIn company page, Facebook page, multiple business directories, international consulting firm website",
+      "sources": [
+        "https://www.cuitonline.com/detalle/33710405609/newlink-argentina-s.r.l.html",
+        "https://ar.linkedin.com/company/newlinkglobal"
+      ]
+    },
+    {
+      "name": "MED CARE S.R.L.",
+      "graph_name": "MED CARE",
+      "cuit": "30-71008167-7",
+      "officer_count": 0,
+      "contracts": 2,
+      "total_value": 4404000,
+      "classification": "inconclusive",
+      "confidence": "low",
+      "rationale": "Minimal web presence. Single listing in Empresas de Córdoba directory for surgical/dental instruments and orthopedic articles. No LinkedIn, no import/export records found, no officer data. Could be a small legitimate medical supply firm or could warrant further investigation. The Córdoba listing suggests a real business but the lack of digital footprint for a company receiving $4.4M in contracts is notable.",
+      "web_presence": "Single business directory listing (empresasdecordoba.com)",
+      "sources": [
+        "https://empresasdecordoba.com/pagina/Med-Care-SRL/"
+      ]
+    },
+    {
+      "name": "BARRIER INSUMOS",
+      "graph_name": "BARRIER INSUMOS",
+      "cuit": null,
+      "officer_count": 1,
+      "officers": ["PALOMEQUE LUCAS"],
+      "contracts": 4,
+      "total_value": 3333112.50,
+      "classification": "data_artifact",
+      "confidence": "high",
+      "rationale": "Legitimate medical supply company with 30+ years in the market. Has official website (barrierinsumos.com). Sells medical supplies to health institutions and professionals. Single officer in graph is a data gap — real companies often have sparse OpenCorporates data. Palomeque Lucas not directly confirmed on web but company is clearly operational.",
+      "web_presence": "Official website, business directories",
+      "sources": [
+        "https://www.barrierinsumos.com/"
+      ]
+    },
+    {
+      "name": "ROKEN CROSS / ROKEN",
+      "graph_name": "ROKEN CROSS / ROKEN",
+      "cuit": "30-71511619-3",
+      "officer_count": 0,
+      "contracts": 9,
+      "total_value": 727280,
+      "classification": "suspicious",
+      "confidence": "medium",
+      "rationale": "No web presence found whatsoever. Two separate Company nodes (ROKEN CROSS and ROKEN) share the same CUIT 30715116193, suggesting a duplicate or alias. 9 contracts but zero officers and zero digital footprint. The dual-entity pattern and complete absence from web/trade databases is a red flag. Note: both nodes map to the same Contractor, so this is likely one entity counted twice. Warrants deeper investigation via AFIP/IGJ records.",
+      "web_presence": "None found",
+      "sources": []
+    },
+    {
+      "name": "CONMIL S.R.L.",
+      "graph_name": "CONMIL",
+      "cuit": "30-66115333-0",
+      "officer_count": 1,
+      "officers": ["VERONICA PULIZZI"],
+      "contracts": 6,
+      "total_value": 268958,
+      "classification": "data_artifact",
+      "confidence": "high",
+      "rationale": "Established medical equipment company with 30+ years in market. Argentine representative of Welch Allyn and Schiller AG. Office at Santiago Del Estero 736, CABA. 11-50 employees. Veronica Pulizzi confirmed as General Manager (Gerente General) via LinkedIn and RocketReach. Single officer in graph is simply because only one person appears in OpenCorporates data.",
+      "web_presence": "LinkedIn company page, ZoomInfo profile, RocketReach, multiple business directories",
+      "sources": [
+        "https://www.linkedin.com/company/conmil-srl",
+        "https://www.zoominfo.com/c/conmil/460152815",
+        "https://www.dateas.com/en-us/empresa/conmil-srl-30661153330"
+      ]
+    },
+    {
+      "name": "BIOTRACOM S.R.L.",
+      "graph_name": "BIOTRACOM",
+      "cuit": null,
+      "officer_count": 1,
+      "officers": ["SAPIA CARLOS NORBERTO"],
+      "contracts": 1,
+      "total_value": 165000,
+      "classification": "data_artifact",
+      "confidence": "high",
+      "rationale": "Legitimate medical equipment company with 30+ years of experience. Has website (biotracom.com) with e-commerce. Office at Alfredo R. Bufano 2041, Buenos Aires. 11-50 employees. Multiple named employees found (Santiago Sapia as GM, Carlos Sapia as Director, Mara Diaz, Candela Ponce). Single officer in graph is a data coverage issue.",
+      "web_presence": "Official website with e-commerce, LinkedIn, ZoomInfo, multiple employee profiles",
+      "sources": [
+        "https://biotracom.com/",
+        "https://www.zoominfo.com/c/biotracom/476942217",
+        "https://www.linkedin.com/in/carlos-sapia-88aa0121/"
+      ]
+    },
+    {
+      "name": "TECNATOM S.A.",
+      "graph_name": "TECNATOM,S.A.",
+      "cuit": null,
+      "officer_count": 1,
+      "officers": ["ANTONIO FRANCISCO ALONSO RAMOS"],
+      "contracts": 1,
+      "total_value": 85960,
+      "classification": "data_artifact",
+      "confidence": "high",
+      "rationale": "Major Spanish nuclear engineering firm founded 1957. Now owned by Westinghouse Electric Company (acquired 2023). Builds simulators for Argentine nuclear power plants. Wikipedia article, Bloomberg profile, LinkedIn. Single officer in graph is because only the local Argentine representative appears in company registry data — parent company has hundreds of employees globally.",
+      "web_presence": "Wikipedia, Bloomberg, LinkedIn, corporate website (tecnatom.es), Devex",
+      "sources": [
+        "https://es.wikipedia.org/wiki/Tecnatom",
+        "https://www.tecnatom.es/en/tecnatom-group/"
+      ]
+    },
+    {
+      "name": "BIO PROTEC S.R.L.",
+      "graph_name": "BIO PROTEC",
+      "cuit": "30-71172973-5",
+      "officer_count": 1,
+      "officers": ["Silvina Cecilia, LANESTOSA"],
+      "contracts": 1,
+      "total_value": 10200,
+      "classification": "data_artifact",
+      "confidence": "high",
+      "rationale": "Real company manufacturing disposable medical clothing and hospital supplies. ANMAT-certified manufacturer. Silvina Lanestosa confirmed as Asesor via LinkedIn and ZoomInfo. 1-10 employees — legitimately small company, so single officer is expected. Has bioprotec.com.ar domain with company email addresses.",
+      "web_presence": "LinkedIn, ZoomInfo, Dateas.com, company email domain",
+      "sources": [
+        "https://www.zoominfo.com/c/bio-protec-argentina/513482533",
+        "https://ar.linkedin.com/company/bio-protec-argentina",
+        "https://www.dateas.com/es/empresa/bio-protec-srl-30711729735"
+      ]
+    },
+    {
+      "name": "MATAFUEGOS DONNY S.R.L.",
+      "graph_name": "MATAFUEGOS DONNY",
+      "cuit": "30-62702896-9",
+      "officer_count": 1,
+      "officers": ["VICTOR DANIEL VERNIK"],
+      "contracts": 1,
+      "total_value": 4888,
+      "classification": "data_artifact",
+      "confidence": "high",
+      "rationale": "Well-established fire safety company, part of Grupo Georgia (operating since 1967). ISO 9001:2015 certified. 130-150 employees. Revenue $70-350M ARS. Member of Cámara Argentina de Seguridad. Import/export records in Veritrade, Panjiva, Nosis. Single officer is a data artifact — company is large and well-known in fire safety sector.",
+      "web_presence": "ISO certification, Cámara Argentina de Seguridad membership, multiple trade databases, judicial supplier registry",
+      "sources": [
+        "https://www.georgia.com.ar/certificaciones/normas/certificado-iso-9001-2015-matafuegos-donny-s-r-l/",
+        "https://www.cas-seguridad.org.ar/socio/matafuegos-donny-s-r-l/"
+      ]
+    }
+  ],
+  "summary": {
+    "investigated": 10,
+    "genuine_shell_company": 0,
+    "suspicious": 1,
+    "inconclusive": 1,
+    "data_artifact": 8,
+    "key_finding": "The vast majority of 'shell companies' flagged by the 0-1 officer heuristic are legitimate businesses with incomplete officer data in our company registry sources (primarily OpenCorporates). The heuristic produces a very high false-positive rate (~80-90%) for identifying actual shell companies. Only ROKEN CROSS (zero web presence, duplicate entity, 9 contracts) is suspicious. MED CARE requires further investigation due to minimal digital footprint relative to contract value ($4.4M).",
+    "recommendations": [
+      "Do NOT label companies as 'shell' based solely on officer count — this metric reflects data coverage, not corporate structure",
+      "Investigate ROKEN CROSS / ROKEN (CUIT 30715116193) further via AFIP/IGJ direct query — zero web presence with 9 contracts is anomalous",
+      "Investigate MED CARE (CUIT 30710081677) — $4.4M in contracts with minimal verifiable presence warrants closer look",
+      "Deduplicate ROKEN CROSS and ROKEN — same CUIT, likely same entity counted twice (inflating shell company count)",
+      "Consider raising the officer threshold or combining with other signals (web presence, trade records, incorporation age) for a more reliable shell company detection model",
+      "The 831 figure likely includes ~688+ legitimate companies with sparse registry data"
+    ]
+  }
+}

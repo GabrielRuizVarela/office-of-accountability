@@ -1,0 +1,137 @@
+{
+  "case_name": "odebrecht_argentina",
+  "source_case": "lava_jato",
+  "jurisdiction": "Argentina",
+  "total_bribes_usd": 35000000,
+  "period": { "start": "2007", "end": "2014" },
+  "status": "under_investigation",
+  "notes": "All entities listed as alleged unless a court conviction is noted. Amounts from DOJ plea agreement and Brazilian Lava Jato cooperation records.",
+  "companies": [
+    {
+      "name": "Odebrecht S.A. (Sucursal Argentina)",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "Brazilian parent pled guilty to FCPA conspiracy (Dec 2016). Argentine subsidiary under investigation."
+    },
+    {
+      "name": "Iecsa S.A.",
+      "role": "contract_recipient",
+      "cuit": "",
+      "notes": "Partner in Consorcio Nuevo Sarmiento for soterramiento. Formerly owned by Macri family, sold to Angelo Calcaterra in 2007."
+    },
+    {
+      "name": "Benito Roggio e Hijos S.A.",
+      "role": "subcontractor",
+      "cuit": "",
+      "notes": "Member of AYSA Paraná de las Palmas water plant consortium."
+    },
+    {
+      "name": "Supercemento S.A.I.C.",
+      "role": "subcontractor",
+      "cuit": "",
+      "notes": "Member of AYSA Paraná de las Palmas water plant consortium."
+    },
+    {
+      "name": "José Cartellone Construcciones Civiles S.A.",
+      "role": "subcontractor",
+      "cuit": "",
+      "notes": "Member of AYSA Paraná de las Palmas water plant consortium."
+    },
+    {
+      "name": "Ghella S.p.A.",
+      "role": "subcontractor",
+      "cuit": "",
+      "notes": "Italian firm, 30% stake in Consorcio Nuevo Sarmiento."
+    },
+    {
+      "name": "Comsa S.A.",
+      "role": "subcontractor",
+      "cuit": "",
+      "notes": "Spanish firm, 10% stake in Consorcio Nuevo Sarmiento."
+    }
+  ],
+  "intermediaries": [
+    {
+      "name": "Structured Operations Division (Odebrecht)",
+      "role": "bribe_logistics",
+      "cuit": "",
+      "dni": "",
+      "notes": "Internal Odebrecht unit dedicated to covert bribe payments, known as 'Departamento de Operações Estruturadas'. Used codenames for recipients."
+    }
+  ],
+  "projects": [
+    {
+      "name": "Soterramiento del Ferrocarril Sarmiento",
+      "sector": "rail",
+      "province": "Buenos Aires",
+      "contract_value_usd": 1500000000,
+      "bribe_amount_usd": 5000000,
+      "notes": "Awarded Jan 2008 to Consorcio Nuevo Sarmiento (Iecsa 30%, Odebrecht 30%, Ghella 30%, Comsa 10%). Alleged US$4.5M+ channeled via Iecsa through fictitious contract with Spanish company DSC to Andorra. Codenames 'Gardelón' and 'Mudinho' used for alleged recipients."
+    },
+    {
+      "name": "Planta Potabilizadora Paraná de las Palmas (AYSA)",
+      "sector": "water",
+      "province": "Buenos Aires",
+      "contract_value_usd": 880000000,
+      "bribe_amount_usd": 5000000,
+      "notes": "Awarded to consortium of Odebrecht, Benito Roggio, Supercemento, and Cartellone. Original value US$880M, costs reportedly escalated significantly. Bribe amount estimated from DOJ total allocation."
+    },
+    {
+      "name": "Ampliación Gasoductos TGN y TGS",
+      "sector": "energy",
+      "province": "multiple",
+      "contract_value_usd": 2300000000,
+      "bribe_amount_usd": 25000000,
+      "notes": "Expansion of Transportadora de Gas del Norte and Transportadora de Gas del Sur networks. Odebrecht acknowledged US$25M in bribes for gas pipeline contracts in Brazil cooperation records. De Vido and Cameron prosecuted."
+    }
+  ],
+  "politicians": [
+    {
+      "name": "Julio De Vido",
+      "role": "alleged_bribe_recipient",
+      "position": "Ministro de Planificación Federal",
+      "period": "2003-2015",
+      "notes": "Prosecuted for alleged irregular favoritism toward Odebrecht in gas pipeline and AYSA contracts. Charges pending."
+    },
+    {
+      "name": "José Francisco López",
+      "role": "alleged_bribe_recipient",
+      "position": "Secretario de Obras Públicas",
+      "period": "2003-2015",
+      "notes": "Accused in connection with AYSA water treatment plant irregularities."
+    },
+    {
+      "name": "Roberto Baratta",
+      "role": "alleged_bribe_recipient",
+      "position": "Subsecretario de Coordinación, Ministerio de Planificación",
+      "period": "2003-2015",
+      "notes": "Accused in connection with AYSA water treatment plant irregularities."
+    },
+    {
+      "name": "Daniel Cameron",
+      "role": "alleged_bribe_recipient",
+      "position": "Secretario de Energía",
+      "period": "2003-2015",
+      "notes": "Prosecuted alongside De Vido for alleged favoritism in gas pipeline contracts with Odebrecht."
+    },
+    {
+      "name": "Ricardo Jaime",
+      "role": "alleged_bribe_recipient",
+      "position": "Secretario de Transporte",
+      "period": "2003-2009",
+      "notes": "An Odebrecht cooperating witness alleged US$20M in bribes paid via Calcaterra to Jaime for the Sarmiento burial project."
+    }
+  ],
+  "source_urls": [
+    "https://www.justice.gov/opa/press-release/file/919911/download",
+    "https://www.sec.gov/news/press/2008/2008-294.htm",
+    "https://en.wikipedia.org/wiki/Odebrecht_Case",
+    "https://chequeado.com/el-explicador/como-surgio-y-cual-es-el-impacto-del-caso-odebrecht-en-la-argentina/",
+    "https://www.perfil.com/noticias/politica/las-ocho-obras-de-odebrecht-en-argentina-que-la-justicia-investiga.phtml",
+    "https://www.eldiarioar.com/politica/documentos-departamento-sobornos-odebrecht-revelan-nuevos-pagos-gasoductos-soterramiento-sarmiento-destinados-nombres-clave_1_8454099.html",
+    "https://www.lanacion.com.ar/politica/un-ex-ejecutivo-de-odebrecht-admitio-el-pago-de-sobornos-por-gasoductos-en-la-argentina-nid2016068/",
+    "https://www.pagina12.com.ar/247420-soterramiento-del-sarmiento-como-fue-la-maniobra-de-iecsa-y-/",
+    "https://www.lanacion.com.ar/politica/un-arrepentido-acuso-calcaterra-pago-millonarios-sobornos-nid2224319/",
+    "https://www.argentina.gob.ar/noticias/pedimos-ser-querellantes-en-cuatro-causas-vinculadas-odebrecht"
+  ]
+}

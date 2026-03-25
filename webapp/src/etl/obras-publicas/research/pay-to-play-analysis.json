@@ -1,0 +1,173 @@
+{
+  "wave": 27,
+  "description": "Obras publicas contractor vs campaign donation CUIT cross-reference",
+  "run_date": "2026-03-24T14:49:40.531Z",
+  "summary": {
+    "total_contractor_donation_matches": 9,
+    "distinct_contractors_matched": 8,
+    "donated_and_contracted_rels_created": 9,
+    "same_entity_rels_created": 0,
+    "total_donation_amount": 941462.5,
+    "parties_receiving_contractor_donations": 4
+  },
+  "parties_summary": [
+    {
+      "party": "(136) FRENTE DE TODOS 2019",
+      "contractors": 4,
+      "donations": 4,
+      "total_amount": 648000
+    },
+    {
+      "party": "(502) JUNTOS POR EL CAMBIO 2019",
+      "contractors": 2,
+      "donations": 2,
+      "total_amount": 272000
+    },
+    {
+      "party": "(13) MOVIMIENTO AL SOCIALISMO",
+      "contractors": 1,
+      "donations": 2,
+      "total_amount": 20000
+    },
+    {
+      "party": "(50) PARTIDO SOCIALISTA",
+      "contractors": 1,
+      "donations": 1,
+      "total_amount": 1462.5
+    }
+  ],
+  "contractor_donation_matches": [
+    {
+      "contractor": "PROVIDERS SA",
+      "cuit": "30714140252",
+      "donor_name": "Providers Providers S.A.",
+      "party": "(136) FRENTE DE TODOS 2019",
+      "amount": 525000,
+      "date": "21 de Enero de 2020",
+      "district": "Orden Nacional"
+    },
+    {
+      "contractor": "TOMAS HNOS Y CIA S.A.",
+      "cuit": "30537721274",
+      "donor_name": "Tomas Hnos. y Cia S.A. Tomas Hnos. y Cia S.A",
+      "party": "(502) JUNTOS POR EL CAMBIO 2019",
+      "amount": 250000,
+      "date": "30 de Julio de 2019",
+      "district": "Buenos Aires"
+    },
+    {
+      "contractor": "Esteban Manuel Rodriguez",
+      "cuit": "20264565414",
+      "donor_name": "Esteban Manuel Rodriguez",
+      "party": "(136) FRENTE DE TODOS 2019",
+      "amount": 70000,
+      "date": "13 de Agosto de 2019",
+      "district": "Orden Nacional"
+    },
+    {
+      "contractor": "Alberto Rios",
+      "cuit": "20286810684",
+      "donor_name": "Diego Alberto Rios",
+      "party": "(136) FRENTE DE TODOS 2019",
+      "amount": 48000,
+      "date": "20 de Diciembre de 2019",
+      "district": "Orden Nacional"
+    },
+    {
+      "contractor": "ADRIANA ELIZABETH TISIOTTO",
+      "cuit": "27221904252",
+      "donor_name": "Adriana Elizabeth Tisiotto",
+      "party": "(502) JUNTOS POR EL CAMBIO 2019",
+      "amount": 22000,
+      "date": "7 de Agosto de 2019",
+      "district": "San Luis"
+    },
+    {
+      "contractor": "Matías Emiliano Brito",
+      "cuit": "20348147790",
+      "donor_name": "Matias Emiliano Brito",
+      "party": "(13) MOVIMIENTO AL SOCIALISMO",
+      "amount": 10000,
+      "date": "27 de Noviembre de 2020",
+      "district": "La Rioja"
+    },
+    {
+      "contractor": "Matías Emiliano Brito",
+      "cuit": "20348147790",
+      "donor_name": "Matias Emiliano Brito",
+      "party": "(13) MOVIMIENTO AL SOCIALISMO",
+      "amount": 10000,
+      "date": "11 de Febrero de 2021",
+      "district": "San Luis"
+    },
+    {
+      "contractor": "ILEANA LETICIA AGUIRRE",
+      "cuit": "27242970182",
+      "donor_name": "Ileana Leticia Aguirre",
+      "party": "(136) FRENTE DE TODOS 2019",
+      "amount": 5000,
+      "date": "20 de Agosto de 2019",
+      "district": "Orden Nacional"
+    },
+    {
+      "contractor": "DANIEL OSVALDO SARTORIO",
+      "cuit": "20122226167",
+      "donor_name": "Daniel Osvaldo Sartorio",
+      "party": "(50) PARTIDO SOCIALISTA",
+      "amount": 1462.5,
+      "date": "21 de Septiembre de 2019",
+      "district": "Santa Fe"
+    }
+  ],
+  "contractor_donor_node_matches": [
+    {
+      "contractor": "DANIEL OSVALDO SARTORIO",
+      "cuit": "20122226167",
+      "donor_name": "Daniel Osvaldo Sartorio",
+      "type": "Humana"
+    },
+    {
+      "contractor": "Esteban Manuel Rodriguez",
+      "cuit": "20264565414",
+      "donor_name": "Esteban Manuel Rodriguez",
+      "type": "Humana"
+    },
+    {
+      "contractor": "Alberto Rios",
+      "cuit": "20286810684",
+      "donor_name": "Diego Alberto Rios",
+      "type": "Humana"
+    },
+    {
+      "contractor": "Matías Emiliano Brito",
+      "cuit": "20348147790",
+      "donor_name": "Matias Emiliano Brito",
+      "type": "Humana"
+    },
+    {
+      "contractor": "ADRIANA ELIZABETH TISIOTTO",
+      "cuit": "27221904252",
+      "donor_name": "Adriana Elizabeth Tisiotto",
+      "type": "Humana"
+    },
+    {
+      "contractor": "ILEANA LETICIA AGUIRRE",
+      "cuit": "27242970182",
+      "donor_name": "Ileana Leticia Aguirre",
+      "type": "Humana"
+    },
+    {
+      "contractor": "TOMAS HNOS Y CIA S.A.",
+      "cuit": "30537721274",
+      "donor_name": "Tomas Hnos. y Cia S.A. Tomas Hnos. y Cia S.A",
+      "type": "Juridica"
+    },
+    {
+      "contractor": "PROVIDERS SA",
+      "cuit": "30714140252",
+      "donor_name": "Providers Providers S.A.",
+      "type": "Juridica"
+    }
+  ],
+  "pay_to_play": []
+}

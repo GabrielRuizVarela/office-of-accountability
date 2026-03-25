@@ -6,8 +6,12 @@
  * Renders a complete, factchecked, sourced investigation of the $LIBRA
  * token scandal with timeline, actor network, money flows, evidence chain,
  * government response tracking, and impact statistics.
+ *
+ * NOTE: This page only renders for caso-libra. Other slugs (obras-publicas,
+ * finanzas-politicas, etc.) have their own dedicated pages that take priority.
  */
 
+import { useParams } from 'next/navigation'
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
 
 import { useLanguage, type Lang } from '@/lib/language-context'
@@ -119,6 +123,14 @@ function formatDate(dateStr: string, lang: Lang): string {
 // ---------------------------------------------------------------------------
 
 export default function InvestigacionPage() {
+  const params = useParams()
+  const slug = typeof params?.slug === 'string' ? params.slug : ''
+
+  // This page is for caso-libra only. Other slugs have dedicated pages.
+  if (slug && slug !== 'caso-libra') {
+    return null
+  }
+
   const { lang } = useLanguage()
   const [activeSection, setActiveSection] = useState('hero')
   const [factcheckFilter, setFactcheckFilter] = useState<FactcheckStatus | null>(null)

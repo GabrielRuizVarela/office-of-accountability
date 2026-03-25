@@ -1,11 +1,33 @@
 /**
- * Dynamic caso landing page — fallback for slugs without their own directory.
- * Case-specific pages: caso-epstein/, caso-libra/, finanzas-politicas/.
+ * Caso landing page — routes to the correct investigation component based on slug.
  */
 
 import { redirect } from 'next/navigation'
+import { getStats, getActors, getDocuments } from '@/lib/caso-libra'
+import { CasoLandingContent } from './CasoLandingContent'
+import { NuclearRiskLanding } from './NuclearRiskLanding'
 
-const KNOWN_SLUGS = new Set(['caso-epstein', 'caso-libra', 'finanzas-politicas', 'monopolios'])
+async function getNuclearStats() {
+  return {
+    stats: [
+      { label: 'Signals', value: '29', color: 'yellow' },
+      { label: 'Actors', value: '14', color: 'red' },
+      { label: 'Weapons', value: '29', color: 'orange' },
+      { label: 'Treaties', value: '8', color: 'blue' },
+      { label: 'Facilities', value: '28', color: 'emerald' },
+    ],
+    theaters: [
+      { theater: 'Korean Peninsula', signalCount: 5, avgSeverity: 87, maxLevel: 'critical' },
+      { theater: 'Middle East', signalCount: 9, avgSeverity: 70, maxLevel: 'critical' },
+      { theater: 'South Asia', signalCount: 2, avgSeverity: 70, maxLevel: 'critical' },
+      { theater: 'US-Russia', signalCount: 2, avgSeverity: 53, maxLevel: 'serious' },
+      { theater: 'Global', signalCount: 9, avgSeverity: 51, maxLevel: 'critical' },
+      { theater: 'Europe', signalCount: 2, avgSeverity: 50, maxLevel: 'elevated' },
+    ],
+  }
+}
+
+const KNOWN_SLUGS = new Set(['caso-epstein', 'caso-libra', 'finanzas-politicas', 'monopolios', 'obras-publicas'])
 
 export default async function CasoFallbackPage({
   params,
@@ -14,12 +36,19 @@ export default async function CasoFallbackPage({
 }) {
   const { slug } = await params
 
-  // Known slugs have their own directories and won't hit this fallback.
-  // Unknown slugs redirect to the homepage.
+  // Nuclear risk has its own component in [slug]
+  if (slug === 'riesgo-nuclear') {
+    const { stats, theaters } = await getNuclearStats()
+    return <NuclearRiskLanding slug={slug} stats={stats} theaters={theaters} />
+  }
+
+  // Known slugs with their own directories won't reach here.
+  // Unknown slugs redirect home.
   if (!KNOWN_SLUGS.has(slug)) {
     redirect('/')
   }
 
-  // This shouldn't be reached — known slugs match their own directory first.
-  redirect(`/caso/${slug}`)
+  // Fallback for caso-libra style landing (shouldn't normally be reached)
+  const [_stats, actors, documents] = await Promise.all([getStats(), getActors(), getDocuments()])
+  return <CasoLandingContent slug={slug} actors={actors} documents={documents} />
 }

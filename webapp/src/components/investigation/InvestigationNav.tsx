@@ -46,6 +46,13 @@ const CASE_TABS: Readonly<Record<string, readonly NavTab[]>> = {
     { href: '/grafo', label: { en: 'Connections', es: 'Conexiones' } },
     { href: '/simular', label: { en: 'Predictions', es: 'Predicciones' } },
   ],
+  'riesgo-nuclear': [
+    { href: '', label: { en: 'Dashboard', es: 'Panel' } },
+    { href: '/resumen', label: { en: 'Report', es: 'Informe' } },
+    { href: '/grafo', label: { en: 'Graph', es: 'Grafo' } },
+    { href: '/cronologia', label: { en: 'Timeline', es: 'Cronologia' } },
+    { href: '/evidencia', label: { en: 'Sources', es: 'Fuentes' } },
+  ],
   'finanzas-politicas': [
     { href: '', label: { en: 'Home', es: 'Inicio' } },
     { href: '/resumen', label: { en: 'Summary', es: 'Resumen' } },
@@ -61,6 +68,15 @@ const CASE_TABS: Readonly<Record<string, readonly NavTab[]>> = {
     { href: '/cronologia', label: { en: 'Timeline', es: 'Cronologia' } },
     { href: '/actores', label: { en: 'Actors', es: 'Actores' } },
     { href: '/conexiones', label: { en: 'Connections', es: 'Conexiones' } },
+  ],
+  'obras-publicas': [
+    { href: '', label: { en: 'Home', es: 'Inicio' } },
+    { href: '/resumen', label: { en: 'Summary', es: 'Resumen' } },
+    { href: '/investigacion', label: { en: 'Investigation', es: 'Investigacion' } },
+    { href: '/cronologia', label: { en: 'Timeline', es: 'Cronologia' } },
+    { href: '/dinero', label: { en: 'The Money', es: 'El Dinero' } },
+    { href: '/conexiones', label: { en: 'Connections', es: 'Conexiones' } },
+    { href: '/mapa', label: { en: 'Map', es: 'Mapa' } },
   ],
 }
 

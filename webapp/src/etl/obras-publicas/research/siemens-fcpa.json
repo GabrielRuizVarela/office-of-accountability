@@ -1,0 +1,115 @@
+{
+  "case_name": "siemens_argentina_dni",
+  "source_case": "siemens_fcpa",
+  "jurisdiction": "Argentina",
+  "total_bribes_usd": 100000000,
+  "period": { "start": "1996", "end": "2007" },
+  "status": "resolved_corporate_guilty_plea",
+  "notes": "All entities listed as alleged unless a court conviction or guilty plea is noted. Siemens AG and Siemens Argentina pled guilty in Dec 2008. Bribes paid to officials in two presidential administrations, including two presidents. Over $100M in total bribes; $31.3M paid after Mar 2001 when Siemens became a US issuer.",
+  "companies": [
+    {
+      "name": "Siemens AG",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "German parent company. Pled guilty Dec 2008 to FCPA conspiracy. Paid $448.5M criminal fine plus $350M SEC disgorgement. Total global settlement ~$1.6B."
+    },
+    {
+      "name": "Siemens S.A. (Argentina)",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "Argentine subsidiary. Pled guilty Dec 2008 to FCPA violation. Paid $500,000 criminal fine."
+    }
+  ],
+  "intermediaries": [
+    {
+      "name": "Carlos Sergi",
+      "role": "intermediary",
+      "cuit": "",
+      "dni": "",
+      "notes": "Led the 'Project Group' of consultants that served as payment intermediaries between Siemens and Argentine officials. Charged by DOJ and SEC (Dec 2011)."
+    },
+    {
+      "name": "Miguel Czysch",
+      "role": "intermediary",
+      "cuit": "",
+      "dni": "",
+      "notes": "Served as intermediary and agent of Siemens in the bribe scheme. Used offshore shell companies to disguise and launder funds through fake consulting contracts. Charges pending."
+    },
+    {
+      "name": "Herbert Steffen",
+      "role": "intermediary",
+      "cuit": "",
+      "dni": "",
+      "notes": "Charged by DOJ and SEC (Dec 2011) for role in authorizing and concealing bribe payments."
+    }
+  ],
+  "projects": [
+    {
+      "name": "Documento Nacional de Identidad (DNI) Modernization",
+      "sector": "technology",
+      "province": "national",
+      "contract_value_usd": 1000000000,
+      "bribe_amount_usd": 100000000,
+      "notes": "Contract to replace manually created national identity booklets with state-of-the-art national identity cards for every Argentine citizen. Awarded to Siemens subsidiary in 1998. At least 17 offshore shell companies used to disguise bribe payments through fake consulting contracts."
+    }
+  ],
+  "politicians": [
+    {
+      "name": "Argentine Official A (unnamed in DOJ filings)",
+      "role": "alleged_bribe_recipient",
+      "position": "President of Argentina (left office 1999)",
+      "period": "1989-1999",
+      "notes": "SEC complaint references a president who left office in 1999. DOJ filings use coded designations. Bribes allegedly paid to secure the initial DNI contract award."
+    },
+    {
+      "name": "Argentine Official B (unnamed in DOJ filings)",
+      "role": "alleged_bribe_recipient",
+      "position": "Senior government official",
+      "period": "1996-2007",
+      "notes": "DOJ filings reference cabinet ministers in two presidential administrations as bribe recipients. Specific names coded in court documents."
+    }
+  ],
+  "executives_charged": [
+    {
+      "name": "Uriel Sharef",
+      "role": "authorizer",
+      "position": "Member of Siemens AG Central Board",
+      "notes": "Charged by DOJ and SEC (Dec 2011) for authorizing bribe payments."
+    },
+    {
+      "name": "Ulrich Bock",
+      "role": "authorizer",
+      "position": "Siemens AG executive",
+      "notes": "Charged by DOJ and SEC (Dec 2011)."
+    },
+    {
+      "name": "Andres Truppel",
+      "role": "facilitator",
+      "position": "CFO, Siemens Argentina",
+      "notes": "First individual to plead guilty. Admitted to conspiring to funnel ~$100M in bribes, including wiring $7M+ through a New York bank account. Also filed a fraudulent arbitration claim with a false witness statement."
+    },
+    {
+      "name": "Stephan Signer",
+      "role": "facilitator",
+      "position": "Siemens AG executive",
+      "notes": "Charged by DOJ and SEC (Dec 2011)."
+    },
+    {
+      "name": "Bernd Regendantz",
+      "role": "concealer",
+      "position": "Siemens AG executive",
+      "notes": "Charged by DOJ and SEC (Dec 2011) for role in concealing bribe payments."
+    }
+  ],
+  "source_urls": [
+    "https://www.justice.gov/archive/opa/pr/2008/December/08-crm-1105.html",
+    "https://www.sec.gov/news/press/2008/2008-294.htm",
+    "https://www.sec.gov/litigation/litreleases/2011/lr22190.htm",
+    "https://www.justice.gov/archives/opa/pr/eight-former-senior-executives-and-agents-siemens-charged-alleged-100-million-foreign-bribe",
+    "https://www.justice.gov/usao-sdny/pr/former-siemens-executive-pleads-guilty-manhattan-federal-court-100-million-foreign",
+    "https://www.justice.gov/archives/opa/pr/former-chief-financial-officer-siemens-argentina-pleads-guilty-role-multimillion-dollar",
+    "https://www.fbi.gov/contact-us/field-offices/newyork/news/press-releases/former-siemens-chief-financial-officer-pleads-guilty-in-manhattan-federal-court-to-100-million-foreign-bribery-scheme",
+    "https://fcpaprofessor.com/in-depth-on-the-siemens-argentina-enforcement-action/",
+    "https://fcpa.stanford.edu/investigation.html?id=202"
+  ]
+}

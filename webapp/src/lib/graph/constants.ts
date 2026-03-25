@@ -21,6 +21,14 @@ export const LABEL_COLORS: Readonly<Record<string, string>> = {
   Event: '#f59e0b', // amber-500
   Organization: '#8b5cf6', // violet-500
   LegalCase: '#ec4899', // pink-500
+  // Nuclear Risk Tracking node types
+  NuclearSignal: '#eab308', // yellow-500
+  NuclearActor: '#ef4444', // red-500
+  WeaponSystem: '#f97316', // orange-500
+  Treaty: '#3b82f6', // blue-500
+  NuclearFacility: '#10b981', // emerald-500
+  RiskBriefing: '#a855f7', // violet-500
+  SignalSource: '#6b7280', // gray-500
 }
 
 export const DEFAULT_NODE_COLOR = '#94a3b8' // slate-400
@@ -131,6 +139,14 @@ export const LABEL_DISPLAY: Readonly<Record<string, string>> = {
   Event: 'Evento',
   Organization: 'Organizacion',
   LegalCase: 'Caso Legal',
+  // Nuclear Risk Tracking
+  NuclearSignal: 'Signal',
+  NuclearActor: 'Actor',
+  WeaponSystem: 'Weapon',
+  Treaty: 'Treaty',
+  NuclearFacility: 'Facility',
+  RiskBriefing: 'Briefing',
+  SignalSource: 'Source',
 }
 
 // ---------------------------------------------------------------------------
@@ -154,6 +170,17 @@ export const LINK_COLORS: Readonly<Record<string, string>> = {
   FILED_IN: '#ec4899', // pink-500
   DOCUMENTED_BY: '#ec4899', // pink-500
   FINANCED: '#22c55e', // green-500
+  // Nuclear Risk Tracking relationship types
+  INVOLVES: '#eab308', // yellow-500
+  ESCALATES: '#ef4444', // red-500
+  REFERENCES_SYSTEM: '#f97316', // orange-500
+  REFERENCES_TREATY: '#3b82f6', // blue-500
+  LOCATED_AT: '#10b981', // emerald-500
+  POSSESSES: '#f97316', // orange-500
+  OPERATES: '#10b981', // emerald-500
+  PARTY_TO: '#3b82f6', // blue-500
+  SYNTHESIZES: '#a855f7', // violet-500
+  SOURCED_FROM: '#6b7280', // gray-500
 }
 
 export const DEFAULT_LINK_COLOR = '#334155' // slate-700
@@ -179,6 +206,7 @@ export function getNodeColor(node: GraphNode): string {
 export function getNodeLabel(node: GraphNode): string {
   const props = node.properties
   if (typeof props.name === 'string') return props.name
+  if (typeof props.title_en === 'string') return props.title_en.slice(0, 60)
   if (typeof props.title === 'string') return props.title
   if (typeof props.full_name === 'string') return props.full_name
   return node.id
