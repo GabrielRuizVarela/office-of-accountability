@@ -12,8 +12,8 @@ export const roadmapPhases: RoadmapPhase[] = [
     id: 'phase-1',
     title: 'Fase 1 — Grafo de conocimiento + Investigaciones',
     goal: 'Base de datos en grafo con datos publicos verificados, explorador visual y primeras investigaciones publicadas.',
-    status: 'in-progress',
-    statusLabel: 'En progreso',
+    status: 'completed',
+    statusLabel: 'Completada',
     features: [
       'Explorador de grafo interactivo (Neo4j)',
       'Ingestion automatizada de datos legislativos',
@@ -25,8 +25,8 @@ export const roadmapPhases: RoadmapPhase[] = [
     id: 'phase-2',
     title: 'Fase 2 — Motor de investigacion autonomo',
     goal: 'Pipeline automatizado: el motor busca, valida, consolida y reporta hallazgos con revision humana en cada paso.',
-    status: 'next',
-    statusLabel: 'Proximo',
+    status: 'in-progress',
+    statusLabel: 'En progreso',
     features: [
       'Pipeline de ingestion → verificacion → enriquecimiento → reporte',
       'LLM asistido con revision humana en cada etapa (human-at-the-gates)',

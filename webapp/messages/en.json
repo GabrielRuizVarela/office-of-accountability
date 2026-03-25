@@ -50,5 +50,36 @@
   },
   "roadmap": {
     "title": "Roadmap"
+  },
+  "masthead": {
+    "dateline": "Buenos Aires · March 24, 2026",
+    "title": "OFFICE OF ACCOUNTABILITY",
+    "tagline": "Investigation engine on knowledge graphs"
+  },
+  "narrative": {
+    "intro": "We built an investigation engine with artificial intelligence. This is what happened.",
+    "subtitle": "A system that searches, validates, and consolidates findings from public data. With human review at every step. We tested it on one case. Then on seven."
+  },
+  "whatsNext": {
+    "title": "What's next",
+    "description": "Our original vision is to build a platform where anyone can create investigations like these — and build on top of them with consensus mechanisms.",
+    "roadmapTitle": "Roadmap",
+    "platform": {
+      "title": "Open platform",
+      "description": "run the engine on new datasets and domains"
+    },
+    "collaboration": {
+      "title": "Collaboration",
+      "description": "looking for researchers, journalists, and developers"
+    },
+    "consensus": {
+      "title": "Consensus",
+      "description": "mechanisms to validate findings as a community"
+    }
+  },
+  "cta": {
+    "title": "Test the engine",
+    "description": "If your organization wants to investigate public data with our engine, get in touch.",
+    "ctaContact": "Contact us"
   }
 }

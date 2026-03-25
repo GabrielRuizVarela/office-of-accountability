@@ -69,6 +69,14 @@ const COLOR_MAP: Record<
     titleHover: 'group-hover:text-yellow-300',
     dot: 'bg-yellow-500',
   },
+  stone: {
+    border: 'border-stone-500/20',
+    borderHover: 'hover:border-stone-500/40',
+    bg: 'from-zinc-900 to-stone-950/20',
+    accent: 'text-stone-400',
+    titleHover: 'group-hover:text-stone-300',
+    dot: 'bg-stone-500',
+  },
 }
 
 const DEFAULT_COLORS = COLOR_MAP.purple
