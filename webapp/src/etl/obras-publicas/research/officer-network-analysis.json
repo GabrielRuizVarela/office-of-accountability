@@ -1,0 +1,2534 @@
+{
+  "wave": 29,
+  "title": "Officer Network Analysis",
+  "date": "2026-03-24",
+  "summary": {
+    "unique_interlocking_officers": 3257,
+    "total_contractor_pairs": 8386,
+    "super_connectors_3plus": 50,
+    "revolving_door_count": 50,
+    "donor_officers_count": 42,
+    "officers_with_ddjj": 30,
+    "offshore_officers": 0
+  },
+  "super_connectors": [
+    {
+      "officer": "MARIA ELENA DUHAU DE SANGUINETTI",
+      "companies": 36,
+      "sample_contractors": [
+        "Algieri S.A.",
+        "DRAGADOS Y OBRAS PORTUARIAS S.A.",
+        "PROVINCIA SEGUROS S.A.",
+        "SULIMP S.A.",
+        "LIEFRINK Y MARX S.A.",
+        "EDICIONES SANTILLANA SA",
+        "BECHER Y ASOCIADOS SRL.",
+        "TINTA FRESCA EDICIONES S.A.",
+        "ID GROUP SA",
+        "Edificio Chacabuco SA"
+      ]
+    },
+    {
+      "officer": "ZEIZYS ESTEBAN",
+      "companies": 28,
+      "sample_contractors": [
+        "LONGONI ELECTRONICA SRL",
+        "MACOR INSUMOS HOSPITALARIOS S.R.L.",
+        "EMPRENDIMIENTOS LATINOAMERICANOS S.R.L.",
+        "Legion Creativa SRL",
+        "BECHER Y ASOCIADOS SRL.",
+        "ORTOPEDIA SAN JUAN SRL",
+        "SIDESYS SRL",
+        "AGIMED SRL",
+        "JET SERVICE INSTRUMENTS S.R.L.",
+        "DISTRIBUCION PRODUCTOS MEDICOS SRL"
+      ]
+    },
+    {
+      "officer": "MAHIA VANESA FERNANDA",
+      "companies": 13,
+      "sample_contractors": [
+        "ARROW ARGENTINA SA",
+        "Macmillan Publishers S.A.",
+        "HALLMARK SALES CORPORATION",
+        "COMERCIALIZADORA EMERSON NETWORK POWER",
+        "GENTHERM GLOBAL POWER TECHNOLOGIES",
+        "ROSEN EUROPE BV"
+      ]
+    },
+    {
+      "officer": "ORTIZ JORGE DANIEL",
+      "companies": 12,
+      "sample_contractors": [
+        "ARROW ARGENTINA SA",
+        "HALLMARK SALES CORPORATION",
+        "COMERCIALIZADORA EMERSON NETWORK POWER",
+        "PM Group S.p.a.",
+        "GENTHERM GLOBAL POWER TECHNOLOGIES",
+        "ROSEN EUROPE BV"
+      ]
+    },
+    {
+      "officer": "Gerardo, Croissant",
+      "companies": 11,
+      "sample_contractors": [
+        "GRUPO LINDE GAS ARGENTINA S.A.",
+        "CENCOSUD S.A.",
+        "SIEMENS SA",
+        "ATOS IT SOLUTIONS AND SERVICES S.A",
+        "Allianz Argentina Compañía de Seguros S.A.",
+        "BOEHRINGER INGELHEIM S.A.",
+        "MERCK S.A.",
+        "UNIFY COMMUNICATIONS SA",
+        "Salentein Fruit SA",
+        "MANOHAY ARGENTINA SA"
+      ]
+    },
+    {
+      "officer": "MARSILI MIGUEL ANGEL",
+      "companies": 10,
+      "sample_contractors": [
+        "Manuli Fluiconnecto SRL",
+        "ST. JUDE MEDICAL ARGENTINA SA",
+        "China Machinery Engineering Argentina S.A.",
+        "POINTER ARGENTINA",
+        "PRISMA MEDIOS DE PAGO S.A.",
+        "KARL STORZ ENDOSCOPIA ARGENTINA SA",
+        "WILDEN ARGENTINA S.R.L",
+        "SHIRE HUMAN GENETIC THERAPIES SA",
+        "HELLMANN WORLWIDE LOGISTICS SA",
+        "KENNAMETAL HERTEL ARG. S.A."
+      ]
+    },
+    {
+      "officer": "MENCARINI, JORGE ALBERTO",
+      "companies": 10,
+      "sample_contractors": [
+        "SINERGIUM BIOTECH S.A.",
+        "BIOGENESIS BAGO S.A.",
+        "TAYM S.A",
+        "SEHOS S.A.",
+        "BLAMEN SA",
+        "LABORATORIO ELEA PHOENIX S.A.",
+        "Envairo S.A.",
+        "Benito Roggio Ferroindustrial S.A.",
+        "CV1 CONCESIONARIA VIAL S.A.",
+        "EDUCACION TECNOLOGICA S.A."
+      ]
+    },
+    {
+      "officer": "QUIÑOA GUILLERMO EDUARDO",
+      "companies": 9,
+      "sample_contractors": [
+        "ABELEDO PERROT S.A.",
+        "Young & Rubicam S.A.",
+        "FALABELLA S.A.",
+        "Talbot Hotels SA",
+        "AGORA ASUNTOS PÚBLICOS S.A.",
+        "GLOBAL FARM S.A.",
+        "IVAX ARGENTINA SOCIEDAD ANONIMA",
+        "SYNAPSIS ARGENTINA S.R.L.",
+        "UBS TRADING S.A."
+      ]
+    },
+    {
+      "officer": "ARMANDO LUIS RIOPEDRE",
+      "companies": 9,
+      "sample_contractors": [
+        "CAJA DE SEGUROS S.A.",
+        "Peugeot Citroen Argentina S.A.",
+        "Experta Aseguradora de Riesgos del Trabajo",
+        "LABORATORIO ELEA S.A.C.I.F. y A.",
+        "Chemotecnica S.A.",
+        "LA MERIDIONAL COMPAÃ‘IA ARGENTINA DE SEGUROS S.A",
+        "SMG Compañía de Seguros SA",
+        "SMG LIFE Seguros de Vida SA",
+        "Farmanet S.A."
+      ]
+    },
+    {
+      "officer": "Emilio, Beccar Varela",
+      "companies": 9,
+      "sample_contractors": [
+        "SOUTH CONVENTION CENTER S.A.",
+        "INVITROGEN ARGENTINA S.A.",
+        "Automotores del Atlántico S.A.",
+        "MEGATRANS S.A.",
+        "CONCESIONARIA AUTOMOTORES PESADOS SA",
+        "Motorcam SA",
+        "SCANIA ARGENTINA SAU",
+        "SOLARTEC SA",
+        "TORNEOS Y COMPETENCIAS S.A"
+      ]
+    },
+    {
+      "officer": "PETRANTONIO JAVIER MARTIN",
+      "companies": 9,
+      "sample_contractors": [
+        "TELECOM PERSONAL S.A.",
+        "NEXTEL COMMUNICATIONS ARGENTINA SRL",
+        "CABLEVISION SA",
+        "RENAULT ARGENTINA S.A.",
+        "Cnp Assurances Cia de Seguros S.A",
+        "ADECCO RECURSOS HUMANOS ARGENTINA S.A.",
+        "TOTAL ESPECIALIDADES ARGENTINA SA",
+        "TORNEOS Y COMPETENCIAS S.A",
+        "SODEXO SOLUCIONES DE MOTIVACION ARG. S.A."
+      ]
+    },
+    {
+      "officer": "AGUIRRE, GASPAR A.",
+      "companies": 8,
+      "sample_contractors": [
+        "TELEFONICA MOVILES ARGENTINA S.A.",
+        "INVITROGEN ARGENTINA S.A.",
+        "SAMSONITE ARGENTINA SA",
+        "BIOFACTOR S.A",
+        "SCANIA ARGENTINA SAU",
+        "SOLARTEC SA",
+        "ENERSYSTEM ARGENTINA S.A",
+        "VALVTRONIC S.A."
+      ]
+    },
+    {
+      "officer": "PABLO LUIS LLAURO",
+      "companies": 8,
+      "sample_contractors": [
+        "SGD La Granja Vidriería S.L.",
+        "HALLMARK SALES CORPORATION",
+        "NEWPOWER SISTEMAS DE ENERGIA S/A",
+        "ROSEN EUROPE BV"
+      ]
+    },
+    {
+      "officer": "Rubén Juan, González",
+      "companies": 8,
+      "sample_contractors": [
+        "Tech Data Argentina S.A.",
+        "ST. JUDE MEDICAL ARGENTINA SA",
+        "ICU MEDICAL ARGENTINA SRL",
+        "PRISMA MEDIOS DE PAGO S.A.",
+        "EATON INDUSTRIES (ARGENTINA) S.A",
+        "Fayser SRL",
+        "SHIRE HUMAN GENETIC THERAPIES SA",
+        "TYCO ELECTRONICS ARGENTINA S.A."
+      ]
+    },
+    {
+      "officer": "BOMBAU MARCELO",
+      "companies": 8,
+      "sample_contractors": [
+        "CABLEVISION SA",
+        "RENAULT ARGENTINA S.A.",
+        "Cnp Assurances Cia de Seguros S.A",
+        "ADECCO RECURSOS HUMANOS ARGENTINA S.A.",
+        "C.H. ROBINSON WORLDWIDE ARGENTINA S.A.",
+        "FYN S.A.",
+        "TORNEOS Y COMPETENCIAS S.A",
+        "SODEXO SOLUCIONES DE MOTIVACION ARG. S.A."
+      ]
+    },
+    {
+      "officer": "FINSTERBUSCH JUAN DIEGO",
+      "companies": 8,
+      "sample_contractors": [
+        "GRUPO LINDE GAS ARGENTINA S.A.",
+        "EDITORIAL SUDAMERICANA S.A.",
+        "SIEMENS SA",
+        "ATOS IT SOLUTIONS AND SERVICES S.A",
+        "Allianz Argentina Compañía de Seguros S.A.",
+        "MERCK S.A.",
+        "UNIFY COMMUNICATIONS SA",
+        "Siemens Healthcare S.A."
+      ]
+    },
+    {
+      "officer": "Marcelo Héctor, FUXMAN",
+      "companies": 8,
+      "sample_contractors": [
+        "SACDE S.A.",
+        "La Rural SA",
+        "Orígenes Seguros S.A.",
+        "Hunter Douglas Argentina S.A.",
+        "Panamerican Mall SA",
+        "LLAO LLAO RESORTS S.A.",
+        "CINCOVIAL S.A.",
+        "CREAURBAN S.A."
+      ]
+    },
+    {
+      "officer": "Carlos Francisco, TARSITANO",
+      "companies": 8,
+      "sample_contractors": [
+        "SINERGIUM BIOTECH S.A.",
+        "TAYM S.A",
+        "SEHOS S.A.",
+        "LABORATORIO ELEA PHOENIX S.A.",
+        "Envairo S.A.",
+        "Benito Roggio Ferroindustrial S.A.",
+        "CV1 CONCESIONARIA VIAL S.A.",
+        "EDUCACION TECNOLOGICA S.A."
+      ]
+    },
+    {
+      "officer": "Máximo Luis, Bomchil",
+      "companies": 8,
+      "sample_contractors": [
+        "Helport S.A.",
+        "TELECOM PERSONAL S.A.",
+        "CABLEVISION SA",
+        "ADECCO RECURSOS HUMANOS ARGENTINA S.A.",
+        "Schlumberger Argentina S.A.",
+        "Aeropuertos Argentina 2000 S.A.",
+        "MERSEN SAU",
+        "TORNEOS Y COMPETENCIAS S.A"
+      ]
+    },
+    {
+      "officer": "Martin Alberto, MENCARINI",
+      "companies": 8,
+      "sample_contractors": [
+        "C.P.S. COMUNICACIONES S.A.",
+        "TAYM S.A",
+        "SEHOS S.A.",
+        "BLAMEN SA",
+        "Envairo S.A.",
+        "Benito Roggio Ferroindustrial S.A.",
+        "CV1 CONCESIONARIA VIAL S.A.",
+        "EDUCACION TECNOLOGICA S.A."
+      ]
+    },
+    {
+      "officer": "O'FARRELL ALFREDO M",
+      "companies": 8,
+      "sample_contractors": [
+        "MSD ARGENTINA SRL",
+        "HILTI ARGENTINA SRL",
+        "One Minetta Media S.A",
+        "FUTUREBRAND S.A",
+        "Molfino Hnos. S.A.",
+        "Cushman and Wakefield Argentina SRL",
+        "Brinks Argentina S.A",
+        "LECO ARGENTINA S.A."
+      ]
+    },
+    {
+      "officer": "Juan Ernesto, Curutchet",
+      "companies": 7,
+      "sample_contractors": [
+        "AEROTERRA S.A.",
+        "PRODUCTOS ROCHE S.A.Q. e I.",
+        "La Rural SA",
+        "PRISMA MEDIOS DE PAGO S.A.",
+        "RICOH ARGENTINA SA",
+        "Banco de la Ciudad de Buenos Aires",
+        "CABOT ARGENTINA SAIC"
+      ]
+    },
+    {
+      "officer": "PICCINNA JOSÉ FRANCISCO",
+      "companies": 7,
+      "sample_contractors": [
+        "Peugeot Citroen Argentina S.A.",
+        "PRODUCTOS ROCHE S.A.Q. e I.",
+        "Automotores del Atlántico S.A.",
+        "CONCESIONARIA AUTOMOTORES PESADOS SA",
+        "DuPont Argentina SRL",
+        "Motorcam SA",
+        "SCANIA ARGENTINA SAU"
+      ]
+    },
+    {
+      "officer": "BLANCO MIGUEL CARLOS",
+      "companies": 7,
+      "sample_contractors": [
+        "First Data Cono Sur SRL",
+        "ORGANIZACION COORDINADORA ARGENTINA S.R.L.",
+        "Havanna SA",
+        "SWISS MEDICAL S.A.",
+        "Swiss Medical ART SA",
+        "SMG Compañía de Seguros SA",
+        "SMG LIFE Seguros de Vida SA"
+      ]
+    },
+    {
+      "officer": "ARANOVICH JUAN EDUARDO",
+      "companies": 7,
+      "sample_contractors": [
+        "Emepa SA",
+        "Provisión Siderúrgica y Electromecánica SA",
+        "OMNIGRAPHICS COMMERCIAL ARGENTINA S.A.",
+        "PC PUBLICIDAD S.A.",
+        "e.a. carnevale y cia s.a.",
+        "HORIZONTES DEL SOL S.A.",
+        "SCRAPSERVICE S.A."
+      ]
+    },
+    {
+      "officer": "SAPONARA MARIA CRISTINA",
+      "companies": 7,
+      "sample_contractors": [
+        "FUNDACION DE INVESTIGACIONES ECONOMICAS LATINOAMERICANAS - FIEL",
+        "Sociedad Alemana de Gimnasia",
+        "Asociación Conciencia",
+        "CENTRO DE GRADUADOS DEL LICEO NAVAL ALTE. G.",
+        "Asociación Civil Crisol Proyectos Sociales",
+        "CRUZ ROJA ARGENTINA",
+        "ASOCIACIÓN ARGENTINA DE ARQUITECTURA E INGENIERÍA HOSPITALARIA"
+      ]
+    },
+    {
+      "officer": "Francisco Iván, Acevedo",
+      "companies": 7,
+      "sample_contractors": [
+        "GC GESTION COMPARTIDA S.A.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "TINTA FRESCA EDICIONES S.A.",
+        "Unir SA",
+        "CUSPIDE LIBROS S.A.",
+        "URBANO EXPRESS ARGENTINA S.A.",
+        "OPORTUNIDADES S.A."
+      ]
+    },
+    {
+      "officer": "Guillermo Horacio, HANG",
+      "companies": 7,
+      "sample_contractors": [
+        "Siderca S.A.I.C.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "VEOLIA SERVICIOS Y GESTIÓN DE ENERGÍA ARGENTINA S.A.U.",
+        "AMX ARGENTINA S.A ",
+        "LITORAL GAS S.A.",
+        "ALCATEL-LUCENT DE ARGENTINA S.A.",
+        "Santa Maria SAIF"
+      ]
+    },
+    {
+      "officer": "SAN MARTIN, PABLO",
+      "companies": 7,
+      "sample_contractors": [
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "Microglobal Argentina",
+        "EMPRENDEDORES ARGENTINOS ASOCIACIÓN CIVIL",
+        "SMS S.A.",
+        "VOLVO TRUCKS Y BUSES ARGENTINA S.A.",
+        "SMS SISTEMAS S.R.L.",
+        "DISTRIBUIDORA DE GAS CUYANA SA"
+      ]
+    },
+    {
+      "officer": "Saúl, Zang",
+      "companies": 7,
+      "sample_contractors": [
+        "Chemotecnica S.A.",
+        "La Rural SA",
+        "Panamerican Mall SA",
+        "Hoteles Argentinos SA",
+        "AGRO URANGA SA",
+        "LLAO LLAO RESORTS S.A.",
+        "Nuevas Fronteras SA"
+      ]
+    },
+    {
+      "officer": "CARLOS JORGE SCHULZ",
+      "companies": 7,
+      "sample_contractors": [
+        "ROFINA SAICF",
+        "ATOS IT SOLUTIONS AND SERVICES S.A",
+        "ENGI DA ARGENTINA S.A.",
+        "B-GAMING SOCIEDAD ANÓNIMA",
+        "Rich. Klinger S.A.A.C.I. y F.",
+        "ASTATEC",
+        "KSB COMPAÑIA SUDAMERICANA DE BOMBAS S.A."
+      ]
+    },
+    {
+      "officer": "José Daniel, ABELOVICH",
+      "companies": 7,
+      "sample_contractors": [
+        "SACDE S.A.",
+        "La Rural SA",
+        "Orígenes Seguros S.A.",
+        "Panamerican Mall SA",
+        "LLAO LLAO RESORTS S.A.",
+        "CINCOVIAL S.A.",
+        "CREAURBAN S.A."
+      ]
+    },
+    {
+      "officer": "Norberto Oscar, NITTO",
+      "companies": 7,
+      "sample_contractors": [
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "PROSEGUR SA",
+        "TRANSPORTADORA DE CAUDALES JUNCADELLA S.A.",
+        "PROSEGUR ACTIVA ARGENTINA SA",
+        "XIDEN SACI",
+        "SERVIN SEGURIDAD SA",
+        "PROSEGUR TECNOLOGIA"
+      ]
+    },
+    {
+      "officer": "Hugo Ernesto, López",
+      "companies": 7,
+      "sample_contractors": [
+        "DIARIOS Y NOTICIAS S.A.",
+        "GC GESTION COMPARTIDA S.A.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "TINTA FRESCA EDICIONES S.A.",
+        "Unir SA",
+        "CUSPIDE LIBROS S.A.",
+        "OPORTUNIDADES S.A."
+      ]
+    },
+    {
+      "officer": "HORACIO RAMON DE LAS CARRERAS",
+      "companies": 7,
+      "sample_contractors": [
+        "SIAT S.A.",
+        "Siderca S.A.I.C.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "VEOLIA SERVICIOS Y GESTIÓN DE ENERGÍA ARGENTINA S.A.U.",
+        "SCRAPSERVICE S.A.",
+        "ALCATEL-LUCENT DE ARGENTINA S.A.",
+        "Santa Maria SAIF"
+      ]
+    },
+    {
+      "officer": "JOSE MARIA SAENZ VALIENTE (H)",
+      "companies": 7,
+      "sample_contractors": [
+        "GC GESTION COMPARTIDA S.A.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "TINTA FRESCA EDICIONES S.A.",
+        "VER TV SA",
+        "Unir SA",
+        "TELE RED IMAGEN SA",
+        "OPORTUNIDADES S.A."
+      ]
+    },
+    {
+      "officer": "María del Rosario, Mazzei",
+      "companies": 7,
+      "sample_contractors": [
+        "Unidigital S.A.",
+        "ROFINA SAICF",
+        "Gador S.A.",
+        "ROEMMERS S.A.I.C.F.",
+        "INVESTI FARMA S.A.",
+        "NOVA ARGENTIA S.A.",
+        "GEMABIOTECH SAU"
+      ]
+    },
+    {
+      "officer": "ANTONIO ANGEL, RODRIGUEZ",
+      "companies": 7,
+      "sample_contractors": [
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "PROSEGUR SA",
+        "TRANSPORTADORA DE CAUDALES JUNCADELLA S.A.",
+        "PROSEGUR ACTIVA ARGENTINA SA",
+        "XIDEN SACI",
+        "SERVIN SEGURIDAD SA",
+        "PROSEGUR TECNOLOGIA"
+      ]
+    },
+    {
+      "officer": "VERRA ALBERTO ESTEBAN",
+      "companies": 7,
+      "sample_contractors": [
+        "C.P.S. COMUNICACIONES S.A.",
+        "TAYM S.A",
+        "SEHOS S.A.",
+        "Envairo S.A.",
+        "Benito Roggio Ferroindustrial S.A.",
+        "CV1 CONCESIONARIA VIAL S.A.",
+        "EDUCACION TECNOLOGICA S.A."
+      ]
+    },
+    {
+      "officer": "ALVARO RODRIGO MARI HERNANDEZ",
+      "companies": 7,
+      "sample_contractors": [
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "PROSEGUR SA",
+        "TRANSPORTADORA DE CAUDALES JUNCADELLA S.A.",
+        "PROSEGUR ACTIVA ARGENTINA SA",
+        "XIDEN SACI",
+        "SERVIN SEGURIDAD SA",
+        "PROSEGUR TECNOLOGIA"
+      ]
+    },
+    {
+      "officer": "VEGA RUBEN OSCAR",
+      "companies": 7,
+      "sample_contractors": [
+        "SIAT S.A.",
+        "PRICE WATERHOUSE & CO ASESORES DE EMPRESAS SRL",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "VEOLIA SERVICIOS Y GESTIÓN DE ENERGÍA ARGENTINA S.A.U.",
+        "FIAT AUTO ARGENTINA S.A.",
+        "SCRAPSERVICE S.A.",
+        "Santa Maria SAIF"
+      ]
+    },
+    {
+      "officer": "BARRIENTOS, MARIO ROBERTO",
+      "companies": 7,
+      "sample_contractors": [
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "PROSEGUR SA",
+        "TRANSPORTADORA DE CAUDALES JUNCADELLA S.A.",
+        "PROSEGUR ACTIVA ARGENTINA SA",
+        "XIDEN SACI",
+        "SERVIN SEGURIDAD SA",
+        "PROSEGUR TECNOLOGIA"
+      ]
+    },
+    {
+      "officer": "Jorge, Araujo Müller",
+      "companies": 7,
+      "sample_contractors": [
+        "Bain & Company Argentina S.R.L.",
+        "China Machinery Engineering Argentina S.A.",
+        "SANOFI - AVENTIS ARGENTINA S.A.",
+        "KARL STORZ ENDOSCOPIA ARGENTINA SA",
+        "Fayser SRL",
+        "SOLFLIX",
+        "TYCO ELECTRONICS ARGENTINA S.A."
+      ]
+    },
+    {
+      "officer": "CAMPANA ADALBERTO",
+      "companies": 7,
+      "sample_contractors": [
+        "C.P.S. COMUNICACIONES S.A.",
+        "TAYM S.A",
+        "SEHOS S.A.",
+        "Envairo S.A.",
+        "Benito Roggio Ferroindustrial S.A.",
+        "CV1 CONCESIONARIA VIAL S.A.",
+        "EDUCACION TECNOLOGICA S.A."
+      ]
+    },
+    {
+      "officer": "TORCIDA, JOAQUIN",
+      "companies": 7,
+      "sample_contractors": [
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "PROSEGUR SA",
+        "TRANSPORTADORA DE CAUDALES JUNCADELLA S.A.",
+        "PROSEGUR ACTIVA ARGENTINA SA",
+        "XIDEN SACI",
+        "SERVIN SEGURIDAD SA",
+        "PROSEGUR TECNOLOGIA"
+      ]
+    },
+    {
+      "officer": "NIEBUHR DIEGO MARIO",
+      "companies": 7,
+      "sample_contractors": [
+        "CAJA DE SEGUROS S.A.",
+        "PRICE WATERHOUSE & CO ASESORES DE EMPRESAS SRL",
+        "Experta Aseguradora de Riesgos del Trabajo",
+        "NOVARTIS ARGENTINA S.A.",
+        "YAMAHA MOTOR ARGENTINA S.A.",
+        "LA MERIDIONAL COMPAÃ‘IA ARGENTINA DE SEGUROS S.A",
+        "Farmanet S.A."
+      ]
+    },
+    {
+      "officer": "Ana Maria, Moran",
+      "companies": 7,
+      "sample_contractors": [
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "PROSEGUR SA",
+        "TRANSPORTADORA DE CAUDALES JUNCADELLA S.A.",
+        "PROSEGUR ACTIVA ARGENTINA SA",
+        "XIDEN SACI",
+        "SERVIN SEGURIDAD SA",
+        "PROSEGUR TECNOLOGIA"
+      ]
+    },
+    {
+      "officer": "JUAN COCCI",
+      "companies": 7,
+      "sample_contractors": [
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "PROSEGUR SA",
+        "TRANSPORTADORA DE CAUDALES JUNCADELLA S.A.",
+        "PROSEGUR ACTIVA ARGENTINA SA",
+        "XIDEN SACI",
+        "SERVIN SEGURIDAD SA",
+        "PROSEGUR TECNOLOGIA"
+      ]
+    },
+    {
+      "officer": "VAZQUEZ MARIANA",
+      "companies": 7,
+      "sample_contractors": [
+        "NEXTEL COMMUNICATIONS ARGENTINA SRL",
+        "CABLEVISION SA",
+        "Cnp Assurances Cia de Seguros S.A",
+        "ADECCO RECURSOS HUMANOS ARGENTINA S.A.",
+        "C.H. ROBINSON WORLDWIDE ARGENTINA S.A.",
+        "FYN S.A.",
+        "TORNEOS Y COMPETENCIAS S.A"
+      ]
+    },
+    {
+      "officer": "SEEBER, RICARDO VICENTE",
+      "companies": 6,
+      "sample_contractors": [
+        "LA LEY S.A.Y/O FONDO COOPERADOR LEY 23412",
+        "Etertin S.A.",
+        "INVITROGEN ARGENTINA S.A.",
+        "Fayser SRL",
+        "BIOFACTOR S.A",
+        "HONEYWELL S.A.I.C."
+      ]
+    }
+  ],
+  "board_interlocks": [
+    {
+      "officer": "MARIA ELENA DUHAU DE SANGUINETTI",
+      "contractor_count": 36,
+      "sample_contractors": [
+        "Algieri S.A.",
+        "DRAGADOS Y OBRAS PORTUARIAS S.A.",
+        "PROVINCIA SEGUROS S.A.",
+        "SULIMP S.A.",
+        "LIEFRINK Y MARX S.A.",
+        "EDICIONES SANTILLANA SA",
+        "BECHER Y ASOCIADOS SRL.",
+        "TINTA FRESCA EDICIONES S.A.",
+        "ID GROUP SA",
+        "Edificio Chacabuco SA"
+      ]
+    },
+    {
+      "officer": "ZEIZYS ESTEBAN",
+      "contractor_count": 28,
+      "sample_contractors": [
+        "LONGONI ELECTRONICA SRL",
+        "MACOR INSUMOS HOSPITALARIOS S.R.L.",
+        "EMPRENDIMIENTOS LATINOAMERICANOS S.R.L.",
+        "Legion Creativa SRL",
+        "BECHER Y ASOCIADOS SRL.",
+        "ORTOPEDIA SAN JUAN SRL",
+        "SIDESYS SRL",
+        "AGIMED SRL",
+        "JET SERVICE INSTRUMENTS S.R.L.",
+        "DISTRIBUCION PRODUCTOS MEDICOS SRL"
+      ]
+    },
+    {
+      "officer": "MAHIA VANESA FERNANDA",
+      "contractor_count": 13,
+      "sample_contractors": [
+        "ARROW ARGENTINA SA",
+        "Macmillan Publishers S.A.",
+        "HALLMARK SALES CORPORATION",
+        "COMERCIALIZADORA EMERSON NETWORK POWER",
+        "GENTHERM GLOBAL POWER TECHNOLOGIES",
+        "ROSEN EUROPE BV"
+      ]
+    },
+    {
+      "officer": "ORTIZ JORGE DANIEL",
+      "contractor_count": 12,
+      "sample_contractors": [
+        "ARROW ARGENTINA SA",
+        "HALLMARK SALES CORPORATION",
+        "COMERCIALIZADORA EMERSON NETWORK POWER",
+        "PM Group S.p.a.",
+        "GENTHERM GLOBAL POWER TECHNOLOGIES",
+        "ROSEN EUROPE BV"
+      ]
+    },
+    {
+      "officer": "Gerardo, Croissant",
+      "contractor_count": 11,
+      "sample_contractors": [
+        "GRUPO LINDE GAS ARGENTINA S.A.",
+        "CENCOSUD S.A.",
+        "SIEMENS SA",
+        "ATOS IT SOLUTIONS AND SERVICES S.A",
+        "Allianz Argentina Compañía de Seguros S.A.",
+        "BOEHRINGER INGELHEIM S.A.",
+        "MERCK S.A.",
+        "UNIFY COMMUNICATIONS SA",
+        "Salentein Fruit SA",
+        "MANOHAY ARGENTINA SA"
+      ]
+    },
+    {
+      "officer": "MARSILI MIGUEL ANGEL",
+      "contractor_count": 10,
+      "sample_contractors": [
+        "Manuli Fluiconnecto SRL",
+        "ST. JUDE MEDICAL ARGENTINA SA",
+        "China Machinery Engineering Argentina S.A.",
+        "POINTER ARGENTINA",
+        "PRISMA MEDIOS DE PAGO S.A.",
+        "KARL STORZ ENDOSCOPIA ARGENTINA SA",
+        "WILDEN ARGENTINA S.R.L",
+        "SHIRE HUMAN GENETIC THERAPIES SA",
+        "HELLMANN WORLWIDE LOGISTICS SA",
+        "KENNAMETAL HERTEL ARG. S.A."
+      ]
+    },
+    {
+      "officer": "MENCARINI, JORGE ALBERTO",
+      "contractor_count": 10,
+      "sample_contractors": [
+        "SINERGIUM BIOTECH S.A.",
+        "BIOGENESIS BAGO S.A.",
+        "TAYM S.A",
+        "SEHOS S.A.",
+        "BLAMEN SA",
+        "LABORATORIO ELEA PHOENIX S.A.",
+        "Envairo S.A.",
+        "Benito Roggio Ferroindustrial S.A.",
+        "CV1 CONCESIONARIA VIAL S.A.",
+        "EDUCACION TECNOLOGICA S.A."
+      ]
+    },
+    {
+      "officer": "ARMANDO LUIS RIOPEDRE",
+      "contractor_count": 9,
+      "sample_contractors": [
+        "CAJA DE SEGUROS S.A.",
+        "Peugeot Citroen Argentina S.A.",
+        "Experta Aseguradora de Riesgos del Trabajo",
+        "LABORATORIO ELEA S.A.C.I.F. y A.",
+        "Chemotecnica S.A.",
+        "LA MERIDIONAL COMPAÃ‘IA ARGENTINA DE SEGUROS S.A",
+        "SMG Compañía de Seguros SA",
+        "SMG LIFE Seguros de Vida SA",
+        "Farmanet S.A."
+      ]
+    },
+    {
+      "officer": "PETRANTONIO JAVIER MARTIN",
+      "contractor_count": 9,
+      "sample_contractors": [
+        "TELECOM PERSONAL S.A.",
+        "NEXTEL COMMUNICATIONS ARGENTINA SRL",
+        "CABLEVISION SA",
+        "RENAULT ARGENTINA S.A.",
+        "Cnp Assurances Cia de Seguros S.A",
+        "ADECCO RECURSOS HUMANOS ARGENTINA S.A.",
+        "TOTAL ESPECIALIDADES ARGENTINA SA",
+        "TORNEOS Y COMPETENCIAS S.A",
+        "SODEXO SOLUCIONES DE MOTIVACION ARG. S.A."
+      ]
+    },
+    {
+      "officer": "Emilio, Beccar Varela",
+      "contractor_count": 9,
+      "sample_contractors": [
+        "SOUTH CONVENTION CENTER S.A.",
+        "INVITROGEN ARGENTINA S.A.",
+        "Automotores del Atlántico S.A.",
+        "MEGATRANS S.A.",
+        "CONCESIONARIA AUTOMOTORES PESADOS SA",
+        "Motorcam SA",
+        "SCANIA ARGENTINA SAU",
+        "SOLARTEC SA",
+        "TORNEOS Y COMPETENCIAS S.A"
+      ]
+    },
+    {
+      "officer": "QUIÑOA GUILLERMO EDUARDO",
+      "contractor_count": 9,
+      "sample_contractors": [
+        "ABELEDO PERROT S.A.",
+        "Young & Rubicam S.A.",
+        "FALABELLA S.A.",
+        "Talbot Hotels SA",
+        "AGORA ASUNTOS PÚBLICOS S.A.",
+        "GLOBAL FARM S.A.",
+        "IVAX ARGENTINA SOCIEDAD ANONIMA",
+        "SYNAPSIS ARGENTINA S.R.L.",
+        "UBS TRADING S.A."
+      ]
+    },
+    {
+      "officer": "Marcelo Héctor, FUXMAN",
+      "contractor_count": 8,
+      "sample_contractors": [
+        "SACDE S.A.",
+        "La Rural SA",
+        "Orígenes Seguros S.A.",
+        "Hunter Douglas Argentina S.A.",
+        "Panamerican Mall SA",
+        "LLAO LLAO RESORTS S.A.",
+        "CINCOVIAL S.A.",
+        "CREAURBAN S.A."
+      ]
+    },
+    {
+      "officer": "AGUIRRE, GASPAR A.",
+      "contractor_count": 8,
+      "sample_contractors": [
+        "TELEFONICA MOVILES ARGENTINA S.A.",
+        "INVITROGEN ARGENTINA S.A.",
+        "SAMSONITE ARGENTINA SA",
+        "BIOFACTOR S.A",
+        "SCANIA ARGENTINA SAU",
+        "SOLARTEC SA",
+        "ENERSYSTEM ARGENTINA S.A",
+        "VALVTRONIC S.A."
+      ]
+    },
+    {
+      "officer": "FINSTERBUSCH JUAN DIEGO",
+      "contractor_count": 8,
+      "sample_contractors": [
+        "GRUPO LINDE GAS ARGENTINA S.A.",
+        "EDITORIAL SUDAMERICANA S.A.",
+        "SIEMENS SA",
+        "ATOS IT SOLUTIONS AND SERVICES S.A",
+        "Allianz Argentina Compañía de Seguros S.A.",
+        "MERCK S.A.",
+        "UNIFY COMMUNICATIONS SA",
+        "Siemens Healthcare S.A."
+      ]
+    },
+    {
+      "officer": "Máximo Luis, Bomchil",
+      "contractor_count": 8,
+      "sample_contractors": [
+        "Helport S.A.",
+        "TELECOM PERSONAL S.A.",
+        "CABLEVISION SA",
+        "ADECCO RECURSOS HUMANOS ARGENTINA S.A.",
+        "Schlumberger Argentina S.A.",
+        "Aeropuertos Argentina 2000 S.A.",
+        "MERSEN SAU",
+        "TORNEOS Y COMPETENCIAS S.A"
+      ]
+    },
+    {
+      "officer": "BOMBAU MARCELO",
+      "contractor_count": 8,
+      "sample_contractors": [
+        "CABLEVISION SA",
+        "RENAULT ARGENTINA S.A.",
+        "Cnp Assurances Cia de Seguros S.A",
+        "ADECCO RECURSOS HUMANOS ARGENTINA S.A.",
+        "C.H. ROBINSON WORLDWIDE ARGENTINA S.A.",
+        "FYN S.A.",
+        "TORNEOS Y COMPETENCIAS S.A",
+        "SODEXO SOLUCIONES DE MOTIVACION ARG. S.A."
+      ]
+    },
+    {
+      "officer": "Carlos Francisco, TARSITANO",
+      "contractor_count": 8,
+      "sample_contractors": [
+        "SINERGIUM BIOTECH S.A.",
+        "TAYM S.A",
+        "SEHOS S.A.",
+        "LABORATORIO ELEA PHOENIX S.A.",
+        "Envairo S.A.",
+        "Benito Roggio Ferroindustrial S.A.",
+        "CV1 CONCESIONARIA VIAL S.A.",
+        "EDUCACION TECNOLOGICA S.A."
+      ]
+    },
+    {
+      "officer": "PABLO LUIS LLAURO",
+      "contractor_count": 8,
+      "sample_contractors": [
+        "SGD La Granja Vidriería S.L.",
+        "HALLMARK SALES CORPORATION",
+        "NEWPOWER SISTEMAS DE ENERGIA S/A",
+        "ROSEN EUROPE BV"
+      ]
+    },
+    {
+      "officer": "Rubén Juan, González",
+      "contractor_count": 8,
+      "sample_contractors": [
+        "Tech Data Argentina S.A.",
+        "ST. JUDE MEDICAL ARGENTINA SA",
+        "ICU MEDICAL ARGENTINA SRL",
+        "PRISMA MEDIOS DE PAGO S.A.",
+        "EATON INDUSTRIES (ARGENTINA) S.A",
+        "Fayser SRL",
+        "SHIRE HUMAN GENETIC THERAPIES SA",
+        "TYCO ELECTRONICS ARGENTINA S.A."
+      ]
+    },
+    {
+      "officer": "O'FARRELL ALFREDO M",
+      "contractor_count": 8,
+      "sample_contractors": [
+        "MSD ARGENTINA SRL",
+        "HILTI ARGENTINA SRL",
+        "One Minetta Media S.A",
+        "FUTUREBRAND S.A",
+        "Molfino Hnos. S.A.",
+        "Cushman and Wakefield Argentina SRL",
+        "Brinks Argentina S.A",
+        "LECO ARGENTINA S.A."
+      ]
+    },
+    {
+      "officer": "Martin Alberto, MENCARINI",
+      "contractor_count": 8,
+      "sample_contractors": [
+        "C.P.S. COMUNICACIONES S.A.",
+        "TAYM S.A",
+        "SEHOS S.A.",
+        "BLAMEN SA",
+        "Envairo S.A.",
+        "Benito Roggio Ferroindustrial S.A.",
+        "CV1 CONCESIONARIA VIAL S.A.",
+        "EDUCACION TECNOLOGICA S.A."
+      ]
+    },
+    {
+      "officer": "Hugo Ernesto, López",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "DIARIOS Y NOTICIAS S.A.",
+        "GC GESTION COMPARTIDA S.A.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "TINTA FRESCA EDICIONES S.A.",
+        "Unir SA",
+        "CUSPIDE LIBROS S.A.",
+        "OPORTUNIDADES S.A."
+      ]
+    },
+    {
+      "officer": "SAN MARTIN, PABLO",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "Microglobal Argentina",
+        "EMPRENDEDORES ARGENTINOS ASOCIACIÓN CIVIL",
+        "SMS S.A.",
+        "VOLVO TRUCKS Y BUSES ARGENTINA S.A.",
+        "SMS SISTEMAS S.R.L.",
+        "DISTRIBUIDORA DE GAS CUYANA SA"
+      ]
+    },
+    {
+      "officer": "JOSE MARIA SAENZ VALIENTE (H)",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "GC GESTION COMPARTIDA S.A.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "TINTA FRESCA EDICIONES S.A.",
+        "VER TV SA",
+        "Unir SA",
+        "TELE RED IMAGEN SA",
+        "OPORTUNIDADES S.A."
+      ]
+    },
+    {
+      "officer": "Francisco Iván, Acevedo",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "GC GESTION COMPARTIDA S.A.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "TINTA FRESCA EDICIONES S.A.",
+        "Unir SA",
+        "CUSPIDE LIBROS S.A.",
+        "URBANO EXPRESS ARGENTINA S.A.",
+        "OPORTUNIDADES S.A."
+      ]
+    },
+    {
+      "officer": "BLANCO MIGUEL CARLOS",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "First Data Cono Sur SRL",
+        "ORGANIZACION COORDINADORA ARGENTINA S.R.L.",
+        "Havanna SA",
+        "SWISS MEDICAL S.A.",
+        "Swiss Medical ART SA",
+        "SMG Compañía de Seguros SA",
+        "SMG LIFE Seguros de Vida SA"
+      ]
+    },
+    {
+      "officer": "José Daniel, ABELOVICH",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "SACDE S.A.",
+        "La Rural SA",
+        "Orígenes Seguros S.A.",
+        "Panamerican Mall SA",
+        "LLAO LLAO RESORTS S.A.",
+        "CINCOVIAL S.A.",
+        "CREAURBAN S.A."
+      ]
+    },
+    {
+      "officer": "ARANOVICH JUAN EDUARDO",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "Emepa SA",
+        "Provisión Siderúrgica y Electromecánica SA",
+        "OMNIGRAPHICS COMMERCIAL ARGENTINA S.A.",
+        "PC PUBLICIDAD S.A.",
+        "e.a. carnevale y cia s.a.",
+        "HORIZONTES DEL SOL S.A.",
+        "SCRAPSERVICE S.A."
+      ]
+    },
+    {
+      "officer": "CARLOS JORGE SCHULZ",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "ROFINA SAICF",
+        "ATOS IT SOLUTIONS AND SERVICES S.A",
+        "ENGI DA ARGENTINA S.A.",
+        "B-GAMING SOCIEDAD ANÓNIMA",
+        "Rich. Klinger S.A.A.C.I. y F.",
+        "ASTATEC",
+        "KSB COMPAÑIA SUDAMERICANA DE BOMBAS S.A."
+      ]
+    },
+    {
+      "officer": "Jorge, Araujo Müller",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "Bain & Company Argentina S.R.L.",
+        "China Machinery Engineering Argentina S.A.",
+        "SANOFI - AVENTIS ARGENTINA S.A.",
+        "KARL STORZ ENDOSCOPIA ARGENTINA SA",
+        "Fayser SRL",
+        "SOLFLIX",
+        "TYCO ELECTRONICS ARGENTINA S.A."
+      ]
+    },
+    {
+      "officer": "PICCINNA JOSÉ FRANCISCO",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "Peugeot Citroen Argentina S.A.",
+        "PRODUCTOS ROCHE S.A.Q. e I.",
+        "Automotores del Atlántico S.A.",
+        "CONCESIONARIA AUTOMOTORES PESADOS SA",
+        "DuPont Argentina SRL",
+        "Motorcam SA",
+        "SCANIA ARGENTINA SAU"
+      ]
+    },
+    {
+      "officer": "ALVARO RODRIGO MARI HERNANDEZ",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "PROSEGUR SA",
+        "TRANSPORTADORA DE CAUDALES JUNCADELLA S.A.",
+        "PROSEGUR ACTIVA ARGENTINA SA",
+        "XIDEN SACI",
+        "SERVIN SEGURIDAD SA",
+        "PROSEGUR TECNOLOGIA"
+      ]
+    },
+    {
+      "officer": "Guillermo Horacio, HANG",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "Siderca S.A.I.C.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "VEOLIA SERVICIOS Y GESTIÓN DE ENERGÍA ARGENTINA S.A.U.",
+        "AMX ARGENTINA S.A ",
+        "LITORAL GAS S.A.",
+        "ALCATEL-LUCENT DE ARGENTINA S.A.",
+        "Santa Maria SAIF"
+      ]
+    },
+    {
+      "officer": "Juan Ernesto, Curutchet",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "AEROTERRA S.A.",
+        "PRODUCTOS ROCHE S.A.Q. e I.",
+        "La Rural SA",
+        "PRISMA MEDIOS DE PAGO S.A.",
+        "RICOH ARGENTINA SA",
+        "Banco de la Ciudad de Buenos Aires",
+        "CABOT ARGENTINA SAIC"
+      ]
+    },
+    {
+      "officer": "VAZQUEZ MARIANA",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "NEXTEL COMMUNICATIONS ARGENTINA SRL",
+        "CABLEVISION SA",
+        "Cnp Assurances Cia de Seguros S.A",
+        "ADECCO RECURSOS HUMANOS ARGENTINA S.A.",
+        "C.H. ROBINSON WORLDWIDE ARGENTINA S.A.",
+        "FYN S.A.",
+        "TORNEOS Y COMPETENCIAS S.A"
+      ]
+    },
+    {
+      "officer": "HORACIO RAMON DE LAS CARRERAS",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "SIAT S.A.",
+        "Siderca S.A.I.C.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "VEOLIA SERVICIOS Y GESTIÓN DE ENERGÍA ARGENTINA S.A.U.",
+        "SCRAPSERVICE S.A.",
+        "ALCATEL-LUCENT DE ARGENTINA S.A.",
+        "Santa Maria SAIF"
+      ]
+    },
+    {
+      "officer": "SAPONARA MARIA CRISTINA",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "FUNDACION DE INVESTIGACIONES ECONOMICAS LATINOAMERICANAS - FIEL",
+        "Sociedad Alemana de Gimnasia",
+        "Asociación Conciencia",
+        "CENTRO DE GRADUADOS DEL LICEO NAVAL ALTE. G.",
+        "Asociación Civil Crisol Proyectos Sociales",
+        "CRUZ ROJA ARGENTINA",
+        "ASOCIACIÓN ARGENTINA DE ARQUITECTURA E INGENIERÍA HOSPITALARIA"
+      ]
+    },
+    {
+      "officer": "BARRIENTOS, MARIO ROBERTO",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "PROSEGUR SA",
+        "TRANSPORTADORA DE CAUDALES JUNCADELLA S.A.",
+        "PROSEGUR ACTIVA ARGENTINA SA",
+        "XIDEN SACI",
+        "SERVIN SEGURIDAD SA",
+        "PROSEGUR TECNOLOGIA"
+      ]
+    },
+    {
+      "officer": "María del Rosario, Mazzei",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "Unidigital S.A.",
+        "ROFINA SAICF",
+        "Gador S.A.",
+        "ROEMMERS S.A.I.C.F.",
+        "INVESTI FARMA S.A.",
+        "NOVA ARGENTIA S.A.",
+        "GEMABIOTECH SAU"
+      ]
+    },
+    {
+      "officer": "NIEBUHR DIEGO MARIO",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "CAJA DE SEGUROS S.A.",
+        "PRICE WATERHOUSE & CO ASESORES DE EMPRESAS SRL",
+        "Experta Aseguradora de Riesgos del Trabajo",
+        "NOVARTIS ARGENTINA S.A.",
+        "YAMAHA MOTOR ARGENTINA S.A.",
+        "LA MERIDIONAL COMPAÃ‘IA ARGENTINA DE SEGUROS S.A",
+        "Farmanet S.A."
+      ]
+    },
+    {
+      "officer": "TORCIDA, JOAQUIN",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "PROSEGUR SA",
+        "TRANSPORTADORA DE CAUDALES JUNCADELLA S.A.",
+        "PROSEGUR ACTIVA ARGENTINA SA",
+        "XIDEN SACI",
+        "SERVIN SEGURIDAD SA",
+        "PROSEGUR TECNOLOGIA"
+      ]
+    },
+    {
+      "officer": "JUAN COCCI",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "PROSEGUR SA",
+        "TRANSPORTADORA DE CAUDALES JUNCADELLA S.A.",
+        "PROSEGUR ACTIVA ARGENTINA SA",
+        "XIDEN SACI",
+        "SERVIN SEGURIDAD SA",
+        "PROSEGUR TECNOLOGIA"
+      ]
+    },
+    {
+      "officer": "VEGA RUBEN OSCAR",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "SIAT S.A.",
+        "PRICE WATERHOUSE & CO ASESORES DE EMPRESAS SRL",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "VEOLIA SERVICIOS Y GESTIÓN DE ENERGÍA ARGENTINA S.A.U.",
+        "FIAT AUTO ARGENTINA S.A.",
+        "SCRAPSERVICE S.A.",
+        "Santa Maria SAIF"
+      ]
+    },
+    {
+      "officer": "Saúl, Zang",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "Chemotecnica S.A.",
+        "La Rural SA",
+        "Panamerican Mall SA",
+        "Hoteles Argentinos SA",
+        "AGRO URANGA SA",
+        "LLAO LLAO RESORTS S.A.",
+        "Nuevas Fronteras SA"
+      ]
+    },
+    {
+      "officer": "Norberto Oscar, NITTO",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "PROSEGUR SA",
+        "TRANSPORTADORA DE CAUDALES JUNCADELLA S.A.",
+        "PROSEGUR ACTIVA ARGENTINA SA",
+        "XIDEN SACI",
+        "SERVIN SEGURIDAD SA",
+        "PROSEGUR TECNOLOGIA"
+      ]
+    },
+    {
+      "officer": "VERRA ALBERTO ESTEBAN",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "C.P.S. COMUNICACIONES S.A.",
+        "TAYM S.A",
+        "SEHOS S.A.",
+        "Envairo S.A.",
+        "Benito Roggio Ferroindustrial S.A.",
+        "CV1 CONCESIONARIA VIAL S.A.",
+        "EDUCACION TECNOLOGICA S.A."
+      ]
+    },
+    {
+      "officer": "CAMPANA ADALBERTO",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "C.P.S. COMUNICACIONES S.A.",
+        "TAYM S.A",
+        "SEHOS S.A.",
+        "Envairo S.A.",
+        "Benito Roggio Ferroindustrial S.A.",
+        "CV1 CONCESIONARIA VIAL S.A.",
+        "EDUCACION TECNOLOGICA S.A."
+      ]
+    },
+    {
+      "officer": "Ana Maria, Moran",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "PROSEGUR SA",
+        "TRANSPORTADORA DE CAUDALES JUNCADELLA S.A.",
+        "PROSEGUR ACTIVA ARGENTINA SA",
+        "XIDEN SACI",
+        "SERVIN SEGURIDAD SA",
+        "PROSEGUR TECNOLOGIA"
+      ]
+    },
+    {
+      "officer": "ANTONIO ANGEL, RODRIGUEZ",
+      "contractor_count": 7,
+      "sample_contractors": [
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "PROSEGUR SA",
+        "TRANSPORTADORA DE CAUDALES JUNCADELLA S.A.",
+        "PROSEGUR ACTIVA ARGENTINA SA",
+        "XIDEN SACI",
+        "SERVIN SEGURIDAD SA",
+        "PROSEGUR TECNOLOGIA"
+      ]
+    },
+    {
+      "officer": "TABANELLI, ANTONIO EDUARDO",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "Servicios para el transporte de Información S.A.U",
+        "American Traffic S.A.",
+        "BOLDT IMPRESORES S. A.",
+        "B-GAMING SOCIEDAD ANÓNIMA",
+        "BOLDT SOCIEDAD ANÓNIMA",
+        "Orbith SA"
+      ]
+    },
+    {
+      "officer": "Alejandro Gustavo, ELSZTAIN",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "La Rural SA",
+        "Panamerican Mall SA",
+        "Hoteles Argentinos SA",
+        "AGRO URANGA SA",
+        "LLAO LLAO RESORTS S.A.",
+        "Nuevas Fronteras SA"
+      ]
+    },
+    {
+      "officer": "CASARES IGNACIO MARIA",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "SIAT S.A.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "VEOLIA SERVICIOS Y GESTIÓN DE ENERGÍA ARGENTINA S.A.U.",
+        "LITORAL GAS S.A.",
+        "SCRAPSERVICE S.A.",
+        "Santa Maria SAIF"
+      ]
+    },
+    {
+      "officer": "VALDEZ FOLLINO JUAN JOSE",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "SIAT S.A.",
+        "Siderca S.A.I.C.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "VEOLIA SERVICIOS Y GESTIÓN DE ENERGÍA ARGENTINA S.A.U.",
+        "SCRAPSERVICE S.A.",
+        "ALCATEL-LUCENT DE ARGENTINA S.A."
+      ]
+    },
+    {
+      "officer": "ADRIANA CECILIA SCHUTH",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "CONTROL Y SEGURIDAD S.A.",
+        "GEFCO ARGENTINA SA",
+        "Panamerican Mall SA",
+        "KIA ARGENTINA SA",
+        "AIR SEA BROKER S.A",
+        "SA ESTABLECIMIENTOS VITIVINICOLAS ESCORIHUELA"
+      ]
+    },
+    {
+      "officer": "PINEDO ALEJANDRO",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "SGD La Granja Vidriería S.L.",
+        "TELEFONICA ON THE SPOT SERVICES S.A.U.",
+        "HALLMARK SALES CORPORATION",
+        "ROSEN EUROPE BV"
+      ]
+    },
+    {
+      "officer": "HENKE HORACIO",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "EDITORIAL SUDAMERICANA S.A.",
+        "CENCOSUD S.A.",
+        "ATOS IT SOLUTIONS AND SERVICES S.A",
+        "Allianz Argentina Compañía de Seguros S.A.",
+        "MANOHAY ARGENTINA SA",
+        "HOSPITAL ALEMÁN ASOCIACIÓN CIVIL"
+      ]
+    },
+    {
+      "officer": "Facundo, Fernandez de Oliveira",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "URS CORPORATION S.A.",
+        "UBS TRADING S.A.",
+        "Servicios de Vaijes y Turismo Biblos SA",
+        "ALAS ING S.A",
+        "Glenmark Generics S.A.",
+        "RECAUDADORA S.A"
+      ]
+    },
+    {
+      "officer": "Horacio Eduardo, Quirós",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "GC GESTION COMPARTIDA S.A.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "TINTA FRESCA EDICIONES S.A.",
+        "Unir SA",
+        "CUSPIDE LIBROS S.A.",
+        "OPORTUNIDADES S.A."
+      ]
+    },
+    {
+      "officer": "CARLOS ALBERTO P, DI CANDIA",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "GC GESTION COMPARTIDA S.A.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "TINTA FRESCA EDICIONES S.A.",
+        "Unir SA",
+        "CUSPIDE LIBROS S.A.",
+        "OPORTUNIDADES S.A."
+      ]
+    },
+    {
+      "officer": "Juan Pablo Maria, Abascal Vilar",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "Provisión Siderúrgica y Electromecánica SA",
+        "OMNIGRAPHICS COMMERCIAL ARGENTINA S.A.",
+        "PC PUBLICIDAD S.A.",
+        "e.a. carnevale y cia s.a.",
+        "HORIZONTES DEL SOL S.A.",
+        "SCRAPSERVICE S.A."
+      ]
+    },
+    {
+      "officer": "Santiago Daniel, Fernández Madero",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "ROFINA SAICF",
+        "Gador S.A.",
+        "ROEMMERS S.A.I.C.F.",
+        "INVESTI FARMA S.A.",
+        "NOVA ARGENTIA S.A.",
+        "GEMABIOTECH SAU"
+      ]
+    },
+    {
+      "officer": "Sarnari, Santos Oscar",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "SACDE S.A.",
+        "SILICA NETWORKS ARGENTINA S.A.",
+        "SYNGENTA AGRO SA",
+        "DISTRIBUIDORA DE GAS CUYANA SA",
+        "CREAURBAN S.A.",
+        "EVOLUCION SEGUROS S.A."
+      ]
+    },
+    {
+      "officer": "Eduardo Arturo, MACCHIAVELLO",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "ROFINA SAICF",
+        "Gador S.A.",
+        "TUTEUR S.A.C.I.F.I.A.",
+        "ROEMMERS S.A.I.C.F.",
+        "INVESTI FARMA S.A.",
+        "NOVA ARGENTIA S.A."
+      ]
+    },
+    {
+      "officer": "Alejandro, Morales",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "DIARIOS Y NOTICIAS S.A.",
+        "GC GESTION COMPARTIDA S.A.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "TINTA FRESCA EDICIONES S.A.",
+        "CUSPIDE LIBROS S.A.",
+        "OPORTUNIDADES S.A."
+      ]
+    },
+    {
+      "officer": "Saturnino, Herrero Mitjans",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "DIARIOS Y NOTICIAS S.A.",
+        "GC GESTION COMPARTIDA S.A.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "TINTA FRESCA EDICIONES S.A.",
+        "Unir SA",
+        "OPORTUNIDADES S.A."
+      ]
+    },
+    {
+      "officer": "EDUARDO ALBERTO, LOHIDOY",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "GC GESTION COMPARTIDA S.A.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "TINTA FRESCA EDICIONES S.A.",
+        "Unir SA",
+        "TELE RED IMAGEN SA",
+        "OPORTUNIDADES S.A."
+      ]
+    },
+    {
+      "officer": "SOSA ALEJANDRO ARNALDO",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "PROSEGUR SA",
+        "PROSEGUR ACTIVA ARGENTINA SA",
+        "XIDEN SACI",
+        "SERVIN SEGURIDAD SA",
+        "PROSEGUR TECNOLOGIA"
+      ]
+    },
+    {
+      "officer": "Joaquín, Sorroche",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "Unidigital S.A.",
+        "ROFINA SAICF",
+        "Gador S.A.",
+        "ROEMMERS S.A.I.C.F.",
+        "INVESTI FARMA S.A.",
+        "NOVA ARGENTIA S.A."
+      ]
+    },
+    {
+      "officer": "Marcos, Podesta",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "LABORATORIO INTERNATIONAL ARGENTINO SA",
+        "GEMEPE S.A.",
+        "INSTITUTO BIOLOGICO CONTEMPORANEO S.A.",
+        "Droguería Varadero",
+        "RIO VARADERO S.A.",
+        "FOMS COMPAÑÍA ARGENTINA DE SEGUROS S.A."
+      ]
+    },
+    {
+      "officer": "DEL CASALE, SERGIO MIGUEL",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "PROSEGUR SA",
+        "XIDEN SACI",
+        "SERVIN SEGURIDAD SA",
+        "DHL EXPRESS ( ARGENTINA SA",
+        "PROSEGUR TECNOLOGIA"
+      ]
+    },
+    {
+      "officer": "Alberto Guillermo, MAQUIEIRA",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "CAJA DE SEGUROS S.A.",
+        "TELECOM PERSONAL S.A.",
+        "COLOR CELLS S.A.",
+        "RENAULT ARGENTINA S.A.",
+        "PRISMA MEDIOS DE PAGO S.A.",
+        "Cia Papelera Sarandi SA"
+      ]
+    },
+    {
+      "officer": "SEEBER, RICARDO VICENTE",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "LA LEY S.A.Y/O FONDO COOPERADOR LEY 23412",
+        "Etertin S.A.",
+        "INVITROGEN ARGENTINA S.A.",
+        "Fayser SRL",
+        "BIOFACTOR S.A",
+        "HONEYWELL S.A.I.C."
+      ]
+    },
+    {
+      "officer": "ZANDONA CARLOS ENRIQUE",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "SIAT S.A.",
+        "Siderca S.A.I.C.",
+        "VEOLIA SERVICIOS Y GESTIÓN DE ENERGÍA ARGENTINA S.A.U.",
+        "SGD La Granja Vidriería S.L.",
+        "Santa Maria SAIF"
+      ]
+    },
+    {
+      "officer": "CABADINI NESTOR",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "LABORATORIOS BERNABO S.A.",
+        "FONDO DE CULTURA ECONOMICA DE ARGENTINA",
+        "NESTLE WATERS ARGENTINA S.A.",
+        "Nestlé Argentina S.A."
+      ]
+    },
+    {
+      "officer": "Hector Alfredo, López",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "CAJA DE SEGUROS S.A.",
+        "PRODUCTOS ROCHE S.A.Q. e I.",
+        "LA MERIDIONAL COMPAÃ‘IA ARGENTINA DE SEGUROS S.A",
+        "SMG Compañía de Seguros SA",
+        "SMG LIFE Seguros de Vida SA",
+        "MEXICHEM ARGENTINA S.A."
+      ]
+    },
+    {
+      "officer": "MIRTA SILVIA MALETTA",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "CAJA DE SEGUROS S.A.",
+        "Experta Aseguradora de Riesgos del Trabajo",
+        "SWISS MEDICAL S.A.",
+        "LA MERIDIONAL COMPAÃ‘IA ARGENTINA DE SEGUROS S.A",
+        "SMG Compañía de Seguros SA",
+        "SMG LIFE Seguros de Vida SA"
+      ]
+    },
+    {
+      "officer": "GARCIA VILARIÑO AQNTONIO",
+      "contractor_count": 6,
+      "sample_contractors": [
+        "TPC COMPAÑIA DE SEGUROS S.A.",
+        "ASOCIART SA ART",
+        "La Holando Sudamericana Cia de Seguros S.A",
+        "SANTA LUCIA S.A. COMPAÑIA DE SEGUROS",
+        "FOMS COMPAÑÍA ARGENTINA DE SEGUROS S.A.",
+        "Assekuransa Compañía de Seguros SA"
+      ]
+    },
+    {
+      "officer": "Jorge Christian, Faría",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "FUEGO RED S.A.",
+        "SECURITAS SA",
+        "SEGURIDAD ARGENTINA S.A.",
+        "TRANSPORTADORA DE CAUDALES VIGENCIA SA",
+        "Securitas Sur S.A."
+      ]
+    },
+    {
+      "officer": "Lázara, Adolfo",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "SACDE S.A.",
+        "Peugeot Citroen Argentina S.A.",
+        "ATOS IT SOLUTIONS AND SERVICES S.A",
+        "Molfino Hnos. S.A.",
+        "DISTRIBUIDORA DE GAS CUYANA SA"
+      ]
+    },
+    {
+      "officer": "Alberto Mario, Alesci",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "FUEGO RED S.A.",
+        "SECURITAS SA",
+        "SEGURIDAD ARGENTINA S.A.",
+        "TECNOSEG S. A.",
+        "Securitas Sur S.A."
+      ]
+    },
+    {
+      "officer": "JORGE DANIEL ORTIZ",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "TELMEX ARGENTINA SA",
+        "TNT Argentina SRL",
+        "Editorial Estrada S.A.",
+        "EDITORIAL PUERTO DE PALOS",
+        "Macmillan Publishers S.A."
+      ]
+    },
+    {
+      "officer": "TABANELLI, ANTONIO ANGEL",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "Servicios para el transporte de Información S.A.U",
+        "BOLDT IMPRESORES S. A.",
+        "B-GAMING SOCIEDAD ANÓNIMA",
+        "BOLDT SOCIEDAD ANÓNIMA",
+        "Orbith SA"
+      ]
+    },
+    {
+      "officer": "ROSANA BEATRIZ MARTINA TABANELLI",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "Servicios para el transporte de Información S.A.U",
+        "BOLDT IMPRESORES S. A.",
+        "B-GAMING SOCIEDAD ANÓNIMA",
+        "BOLDT SOCIEDAD ANÓNIMA",
+        "Orbith SA"
+      ]
+    },
+    {
+      "officer": "ZARICH MARTIN",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "GALENO ART S.A.",
+        "PRISMA MEDIOS DE PAGO S.A.",
+        "BBVA Banco Frances S.A.",
+        "BBVA CONSOLIDAR SEGUROS SA",
+        "PEUGEOT CITROEN ARGENTINA S.A"
+      ]
+    },
+    {
+      "officer": "MANTILLA FERNANDO RICARDO",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "SIAT S.A.",
+        "Siderca S.A.I.C.",
+        "SGD La Granja Vidriería S.L.",
+        "Santa Maria SAIF"
+      ]
+    },
+    {
+      "officer": "MESSINEO,ALEJANDRO ESTEBAN",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "NEXTEL COMMUNICATIONS ARGENTINA SRL",
+        "Cnp Assurances Cia de Seguros S.A",
+        "C.H. ROBINSON WORLDWIDE ARGENTINA S.A.",
+        "TORNEOS Y COMPETENCIAS S.A",
+        "ITRON ARGENTINA S.A."
+      ]
+    },
+    {
+      "officer": "Veronica Alejandra, Beratz",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "TINTA FRESCA EDICIONES S.A.",
+        "Unir SA",
+        "CUSPIDE LIBROS S.A.",
+        "URBANO EXPRESS ARGENTINA S.A.",
+        "OPORTUNIDADES S.A."
+      ]
+    },
+    {
+      "officer": "EDUARDO JORGE PESTARINO",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "HORWATH CAPITAL INTELECTUAL S.A.",
+        "Horwath Consulting S.A",
+        "ACCION POINT S.A.",
+        "HMSI S.A.",
+        "KRM INGENIERIA S.A.C.I.A.F.S."
+      ]
+    },
+    {
+      "officer": "SUAREZ ANDRES",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "Peugeot Citroen Argentina S.A.",
+        "CENCOSUD S.A.",
+        "GLAXOSMITHKLINE ARGENTINA S.A.",
+        "SCANIA ARGENTINA SAU",
+        "PEUGEOT CITROEN ARGENTINA S.A"
+      ]
+    },
+    {
+      "officer": "Orts, Mario",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "WCI DE ARGENTINA S.A.",
+        "El Rosario S.A.",
+        "ENAEX ARGENTINA SRL",
+        "BOLLAND & CIA. S.A."
+      ]
+    },
+    {
+      "officer": "SONNANTE MARCELO DANIEL",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "SIAT S.A.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "VEOLIA SERVICIOS Y GESTIÓN DE ENERGÍA ARGENTINA S.A.U.",
+        "SCRAPSERVICE S.A.",
+        "ALCATEL-LUCENT DE ARGENTINA S.A."
+      ]
+    },
+    {
+      "officer": "Alejandro, Finsterbusch",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "EDITORIAL SUDAMERICANA S.A.",
+        "CENCOSUD S.A.",
+        "Allianz Argentina Compañía de Seguros S.A.",
+        "BOEHRINGER INGELHEIM S.A.",
+        "Salentein Fruit SA"
+      ]
+    },
+    {
+      "officer": "Roberto Horacio, Crouzel",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "TELEFONICA MOVILES ARGENTINA S.A.",
+        "SOUTH CONVENTION CENTER S.A.",
+        "INVITROGEN ARGENTINA S.A.",
+        "SCANIA ARGENTINA SAU",
+        "SOLARTEC SA"
+      ]
+    },
+    {
+      "officer": "German, wetzler Malbran",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "SACDE S.A.",
+        "Metlife Seguros S.A.",
+        "Orígenes Seguros S.A.",
+        "CINCOVIAL S.A.",
+        "CREAURBAN S.A."
+      ]
+    },
+    {
+      "officer": "LOPEZ LADO DANIEL ALEJANDRO",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "SIAT S.A.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "VEOLIA SERVICIOS Y GESTIÓN DE ENERGÍA ARGENTINA S.A.U.",
+        "SCRAPSERVICE S.A.",
+        "ALCATEL-LUCENT DE ARGENTINA S.A."
+      ]
+    },
+    {
+      "officer": "Gustavo, Vidal",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "TPC COMPAÑIA DE SEGUROS S.A.",
+        "La Holando Sudamericana Cia de Seguros S.A",
+        "SANTA LUCIA S.A. COMPAÑIA DE SEGUROS",
+        "SOTYL S.A.",
+        "FOMS COMPAÑÍA ARGENTINA DE SEGUROS S.A."
+      ]
+    },
+    {
+      "officer": "MARTINEZ CARLOS",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "INDRA SI S.A.",
+        "LA MERIDIONAL COMPAÃ‘IA ARGENTINA DE SEGUROS S.A",
+        "SCANIA ARGENTINA SAU",
+        "Novo Nordisk Pharma Argentina SA",
+        "MEXICHEM ARGENTINA S.A."
+      ]
+    },
+    {
+      "officer": "Raúl Antonio, Morán",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "GC GESTION COMPARTIDA S.A.",
+        "IMPRIPOST TECNOLOGIAS S.A.",
+        "TINTA FRESCA EDICIONES S.A.",
+        "Unir SA",
+        "OPORTUNIDADES S.A."
+      ]
+    },
+    {
+      "officer": "GRASSI JUAN CARLOS",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "SIAT S.A.",
+        "NOVARED S.A.",
+        "GENERAL INDUSTRIES ARGENTINA S.A.",
+        "SURELY S. A.",
+        "ALCATEL-LUCENT DE ARGENTINA S.A."
+      ]
+    },
+    {
+      "officer": "MARIA LUCILA, ROMERO",
+      "contractor_count": 5,
+      "sample_contractors": [
+        "GC GESTION COMPARTIDA S.A.",
+        "TINTA FRESCA EDICIONES S.A.",
+        "Unir SA",
+        "TELE RED IMAGEN SA",
+        "OPORTUNIDADES S.A."
+      ]
+    }
+  ],
+  "revolving_door": [
+    {
+      "officer": "Jose Luis, Yofre",
+      "contractor": "ASOCIACION ARGENTINA DE POLO",
+      "government_role": "Jefe de la Casa Militar"
+    },
+    {
+      "officer": "GALLI VILLAFAÑE PABLO",
+      "contractor": "CAPITAL INTELECTUAL SA",
+      "government_role": "Vocal por la SecrerarÃ­a de Gobierno de Ambiente y Desarrollo Sustentable"
+    },
+    {
+      "officer": "ORTIZ DE MARCO AGUSTIN",
+      "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELIT.",
+      "government_role": "Director"
+    },
+    {
+      "officer": "VILLAREAL, Sebastian Pablo",
+      "contractor": "Talleres Navales Darsena Norte SA",
+      "government_role": "Director General"
+    },
+    {
+      "officer": "Analia Cecilia, CANOBA",
+      "contractor": "Sociedad Argentina de Radioproteccion",
+      "government_role": "Gerente"
+    },
+    {
+      "officer": "ANA MARÍA, ROJO",
+      "contractor": "Sociedad Argentina de Radioproteccion",
+      "government_role": "Jefe de Departamento"
+    },
+    {
+      "officer": "Stella Maris, Zarate",
+      "contractor": "Sociedad Argentina de Radioproteccion",
+      "government_role": "Jefe de Departamento"
+    },
+    {
+      "officer": "Beatriz Norma, Gregori",
+      "contractor": "Sociedad Argentina de Radioproteccion",
+      "government_role": "Subgerente"
+    },
+    {
+      "officer": "Diógenes, De Urquiza Anchorena",
+      "contractor": "CONSTRUIR S.A.",
+      "government_role": "Director Ejecutivo"
+    },
+    {
+      "officer": "VIGNE, GERMAN",
+      "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELIT.",
+      "government_role": "Director"
+    },
+    {
+      "officer": "Hernán  Santiago, Lombardi",
+      "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+      "government_role": "Secretario de Gobierno"
+    },
+    {
+      "officer": "Gabriela Bárbara, Ricardes",
+      "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+      "government_role": "Secretario"
+    },
+    {
+      "officer": "Hernán  Santiago, Lombardi",
+      "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+      "government_role": "Titular"
+    },
+    {
+      "officer": "Gabriela Bárbara, Ricardes",
+      "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+      "government_role": "Director Titular"
+    },
+    {
+      "officer": "Hernán  Santiago, Lombardi",
+      "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+      "government_role": "Director Titular"
+    },
+    {
+      "officer": "SIGAL JORGE LUIS",
+      "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+      "government_role": "Director Titular"
+    },
+    {
+      "officer": "SIGAL JORGE LUIS",
+      "contractor": "CAPITAL INTELECTUAL SA",
+      "government_role": "Director Titular"
+    },
+    {
+      "officer": "JULIO CESAR, BALDERRAMA",
+      "contractor": "FSA LATINOAMERICA S.R.L.",
+      "government_role": "Auditor Adjunto"
+    },
+    {
+      "officer": "GONZALO MARIO, DIAZ",
+      "contractor": "CORREO OFICIAL DE LA REPUBLICA ARGENTINA SA",
+      "government_role": "Director Nacional"
+    },
+    {
+      "officer": "TEMERLIN, Malena",
+      "contractor": "Impacto Social Positivo AC S.A.",
+      "government_role": "Director Nacional"
+    },
+    {
+      "officer": "TOMASETTI FABIAN",
+      "contractor": "Next latinoamerica  S.A",
+      "government_role": "Director Nacional"
+    },
+    {
+      "officer": "Patricia, Mac Culloch",
+      "contractor": "IQ4B SA",
+      "government_role": "Director Nacional"
+    },
+    {
+      "officer": "EDUARDO NICOLAS MARTELLI",
+      "contractor": "CORREO OFICIAL DE LA REPUBLICA ARGENTINA SA",
+      "government_role": "Secretario"
+    },
+    {
+      "officer": "GENTILE SILVANA MARIA",
+      "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELIT.",
+      "government_role": "SÃ­ndico Titular"
+    },
+    {
+      "officer": "GENTILE SILVANA MARIA",
+      "contractor": "NACION LEASING S.A.",
+      "government_role": "SÃ­ndico Titular"
+    },
+    {
+      "officer": "GENTILE SILVANA MARIA",
+      "contractor": "BANCO HIPOTECARIO SOCIEDAD ANONIMA",
+      "government_role": "SÃ­ndico Titular"
+    },
+    {
+      "officer": "SICILIANO CLAUDIA INES",
+      "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELIT.",
+      "government_role": "SÃ­ndico Titular"
+    },
+    {
+      "officer": "SICILIANO CLAUDIA INES",
+      "contractor": "NACION LEASING S.A.",
+      "government_role": "SÃ­ndico Titular"
+    },
+    {
+      "officer": "SICILIANO CLAUDIA INES",
+      "contractor": "Talleres Navales Darsena Norte SA",
+      "government_role": "SÃ­ndico Titular"
+    },
+    {
+      "officer": "Ana María, Gonzalez",
+      "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELIT.",
+      "government_role": "SÃ­ndico Titular"
+    },
+    {
+      "officer": "Ana María, Gonzalez",
+      "contractor": "TELAM S.E.",
+      "government_role": "SÃ­ndico Titular"
+    },
+    {
+      "officer": "Ana María, Gonzalez",
+      "contractor": "Talleres Navales Darsena Norte SA",
+      "government_role": "SÃ­ndico Titular"
+    },
+    {
+      "officer": "María Angélica, VÁZQUEZ",
+      "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELIT.",
+      "government_role": "SÃ­ndico Suplente"
+    },
+    {
+      "officer": "María Angélica, VÁZQUEZ",
+      "contractor": "CONUAR S.A. (Combustibles Nucleares Argentinos)",
+      "government_role": "SÃ­ndico Suplente"
+    },
+    {
+      "officer": "MARTINEZ, RAUL",
+      "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELIT.",
+      "government_role": "Vicepresidente del Directorio"
+    },
+    {
+      "officer": "Marcelo Fabian, Tesoro",
+      "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELIT.",
+      "government_role": "Director Titular"
+    },
+    {
+      "officer": "Heber Damian, Martinez",
+      "contractor": "FUEGO RED S.A.",
+      "government_role": "Director"
+    },
+    {
+      "officer": "Heber Damian, Martinez",
+      "contractor": "SECURITAS SA",
+      "government_role": "Director"
+    },
+    {
+      "officer": "Heber Damian, Martinez",
+      "contractor": "Securitas Sur S.A.",
+      "government_role": "Director"
+    },
+    {
+      "officer": "Heber Damian, Martinez",
+      "contractor": "SEGURIDAD ARGENTINA S.A.",
+      "government_role": "Director"
+    },
+    {
+      "officer": "GONZALEZ, ADRIAN HUGO",
+      "contractor": "CORREO OFICIAL DE LA REPUBLICA ARGENTINA SA",
+      "government_role": "Director"
+    },
+    {
+      "officer": "LANUS RAMON MARIA",
+      "contractor": "ADMINISTRACION DE INFRAESTRUCTURAS FERROVIARIA SOCIEDAD DEL ESTADO",
+      "government_role": "Presidente"
+    },
+    {
+      "officer": "LANUS RAMON MARIA",
+      "contractor": "Camuzzi Gas del Sur S.A.",
+      "government_role": "Presidente"
+    },
+    {
+      "officer": "EDUARDO HERNAN, CIMATO",
+      "contractor": "PROVINCIA SEGUROS S.A.",
+      "government_role": "Director Nacional"
+    },
+    {
+      "officer": "Adrián Gustavo, Gimenez",
+      "contractor": "Dridco S.A.U.",
+      "government_role": "Gerente General"
+    },
+    {
+      "officer": "SEBASTIAN, HORTON",
+      "contractor": "CENTRO DE GRADUADOS DEL LICEO NAVAL ALTE. G.",
+      "government_role": "DIrector General"
+    },
+    {
+      "officer": "PAREJA, SEBASTIAN M",
+      "contractor": "Supercongelados Marambio",
+      "government_role": "Director General"
+    },
+    {
+      "officer": "JUAN MARTIN, KOUTOUDJIAN",
+      "contractor": "Asociación Argentina de Ingeniería Sanitaria y Ciencias del Ambiente - AIDIS",
+      "government_role": "Director Nacional"
+    },
+    {
+      "officer": "LUIS GERMAN JAHN",
+      "contractor": "SACDE S.A.",
+      "government_role": "Administrador"
+    },
+    {
+      "officer": "JOSE MANUEL, CARLLINNI",
+      "contractor": "Asociación SADIO; Sociedad Argentina de Informática e Investigación Operativa",
+      "government_role": "Director"
+    }
+  ],
+  "donor_officers": [
+    {
+      "officer": "MORENO CROTTO NICANOR",
+      "contractor": "SAN GERMAN SEGUROS S.A.",
+      "donor_name": "Nicanor Moreno Crotto"
+    },
+    {
+      "officer": "RUSSO, Laura",
+      "contractor": "PROVINCIA LEASING S.A.",
+      "donor_name": "Laura Russo"
+    },
+    {
+      "officer": "Recalde, Mariano",
+      "contractor": "Optar Operador Mayorista de Servicios Turisticos S. A.",
+      "donor_name": "Mariano Recalde"
+    },
+    {
+      "officer": "Recalde, Mariano",
+      "contractor": "AEROLÍNEAS ARGENTINAS S.A.",
+      "donor_name": "Mariano Recalde"
+    },
+    {
+      "officer": "Federico José, Basualdo Richards",
+      "contractor": "YPF GAS SOCIEDAD ANONIMA",
+      "donor_name": "Federico Jose Basualdo Richards"
+    },
+    {
+      "officer": "Guillermo, Rus",
+      "contractor": "SUR EMPRENDIMIENTOS TECNOLÓGICOS S.R.L",
+      "donor_name": "Guillermo Jorge Rus"
+    },
+    {
+      "officer": "Guillermo, Rus",
+      "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELIT.",
+      "donor_name": "Guillermo Jorge Rus"
+    },
+    {
+      "officer": "SEBASTIAN, DIAZ BANCALARI",
+      "contractor": "NACION SEGUROS S.A.",
+      "donor_name": "Sebastian Diaz Bancalari"
+    },
+    {
+      "officer": "Roberto Javier, Arana",
+      "contractor": "SUSTENTATOR S.A.",
+      "donor_name": "Roberto Javier Arana"
+    },
+    {
+      "officer": "Roberto Javier, Arana",
+      "contractor": "HERMES MANAGEMENT CONSULTING S.A.",
+      "donor_name": "Roberto Javier Arana"
+    },
+    {
+      "officer": "Roberto Javier, Arana",
+      "contractor": "Borg Argentina S.A.",
+      "donor_name": "Roberto Javier Arana"
+    },
+    {
+      "officer": "REYSER HORACIO",
+      "contractor": "TRANSPORTADORA DE CAUDALES JUNCADELLA S.A.",
+      "donor_name": "Horacio Reyser Travers"
+    },
+    {
+      "officer": "REYSER HORACIO",
+      "contractor": "PROSEGUR SA",
+      "donor_name": "Horacio Reyser Travers"
+    },
+    {
+      "officer": "Andrés, Civetta",
+      "contractor": "IRAM Instituto Argentino de Normalización y Certificación",
+      "donor_name": "Andres Martin Civetta"
+    },
+    {
+      "officer": "Hernán  Santiago, Lombardi",
+      "contractor": "EDUCAR SOCIEDAD DEL ESTADO",
+      "donor_name": "Hernan Santiago Lombardi"
+    },
+    {
+      "officer": "Emiliano Pedro Manuel, BALOIRA",
+      "contractor": "FARMA KD S.A.",
+      "donor_name": "Emiliano Pedro Manuel Baloira"
+    },
+    {
+      "officer": "RODOLFO ADRIAN, IRIART",
+      "contractor": "CORREO OFICIAL DE LA REPUBLICA ARGENTINA SA",
+      "donor_name": "Rodolfo Adrian Iriart"
+    },
+    {
+      "officer": "STUART, MILNE, JORGE GUILLERMO",
+      "contractor": "Banco Patagonia",
+      "donor_name": "Jorge Guillermo Stuart Milne"
+    },
+    {
+      "officer": "ORTEU EDUARDO R",
+      "contractor": "Fundación Universidad de San Andrés",
+      "donor_name": "Eduardo Ruben Orteu"
+    },
+    {
+      "officer": "Eduardo Rubén, Orteu",
+      "contractor": "Fundación Universidad de San Andrés",
+      "donor_name": "Eduardo Ruben Orteu"
+    },
+    {
+      "officer": "CRISTOFANI ENRIQUE",
+      "contractor": "BANCO SANTANDER RIO SA",
+      "donor_name": "Jose Luis Enrique Cristofani"
+    },
+    {
+      "officer": "Alejandro Carlos, Oxenford",
+      "contractor": "SULLAIR ARGENTINA S.A.",
+      "donor_name": "Alejandro Carlos Francisco Oxenford"
+    },
+    {
+      "officer": "Alejandro Carlos, Oxenford",
+      "contractor": "SULLAIR S.A.",
+      "donor_name": "Alejandro Carlos Francisco Oxenford"
+    },
+    {
+      "officer": "ROBERTO FRANCISCO DI LORENZO",
+      "contractor": "IICES INSTITUTO DE INTERCAMBIO CULTURAL ENSAMBLE AL SUR",
+      "donor_name": "Roberto Francisco Di Lorenzo"
+    },
+    {
+      "officer": "Aguirre, Manuel",
+      "contractor": "Ch2m Hill Argentina SA",
+      "donor_name": "Manuel Ernesto Aguirre"
+    },
+    {
+      "officer": "GONZALEZ FISCHER FRANCISCO GUILLERMO JOSE",
+      "contractor": "Orígenes Seguros S.A.",
+      "donor_name": "Francisco Guillermo Jose Gonzalez Fischer"
+    },
+    {
+      "officer": "GONZALEZ FISCHER FRANCISCO GUILLERMO JOSE",
+      "contractor": "QM Asset Management Sociedad Gerente de FCI SA",
+      "donor_name": "Francisco Guillermo Jose Gonzalez Fischer"
+    },
+    {
+      "officer": "GONZALEZ FISCHER FRANCISCO GUILLERMO JOSE",
+      "contractor": "GONZALEZ FISCHER & ASOCIADOS S.A.",
+      "donor_name": "Francisco Guillermo Jose Gonzalez Fischer"
+    },
+    {
+      "officer": "GONZALEZ FISCHER FRANCISCO GUILLERMO JOSE",
+      "contractor": "Gestión de Préstamos y Cobranzas S.A.",
+      "donor_name": "Francisco Guillermo Jose Gonzalez Fischer"
+    },
+    {
+      "officer": "Biller, Luis Horacio",
+      "contractor": "Gestión de Préstamos y Cobranzas S.A.",
+      "donor_name": "Luis Horacio Biller"
+    },
+    {
+      "officer": "Biller, Luis Horacio",
+      "contractor": "GONZALEZ FISCHER & ASOCIADOS S.A.",
+      "donor_name": "Luis Horacio Biller"
+    },
+    {
+      "officer": "Biller, Luis Horacio",
+      "contractor": "QM Asset Management Sociedad Gerente de FCI SA",
+      "donor_name": "Luis Horacio Biller"
+    },
+    {
+      "officer": "Biller, Luis Horacio",
+      "contractor": "CONTRERAS HERMANOS S.A.I.C.I.F.A.G.yM.",
+      "donor_name": "Luis Horacio Biller"
+    },
+    {
+      "officer": "GONZALEZ RAFAEL ALFREDO",
+      "contractor": "NACION SEGUROS S.A.",
+      "donor_name": "Rafael Alfredo Gonzalez"
+    },
+    {
+      "officer": "Gabriel, Orden",
+      "contractor": "Gestión de Préstamos y Cobranzas S.A.",
+      "donor_name": "Gabriel Orden"
+    },
+    {
+      "officer": "Gabriel, Orden",
+      "contractor": "GONZALEZ FISCHER & ASOCIADOS S.A.",
+      "donor_name": "Gabriel Orden"
+    },
+    {
+      "officer": "Gabriel, Orden",
+      "contractor": "QM Asset Management Sociedad Gerente de FCI SA",
+      "donor_name": "Gabriel Orden"
+    },
+    {
+      "officer": "Gabriel, Orden",
+      "contractor": "CONTRERAS HERMANOS S.A.I.C.I.F.A.G.yM.",
+      "donor_name": "Gabriel Orden"
+    },
+    {
+      "officer": "MATIAS RAUL, TOMBOLINI",
+      "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELIT.",
+      "donor_name": "Matias Raul Tombolini"
+    },
+    {
+      "officer": "PAULA VALENZUELA",
+      "contractor": "INCLUIR INSTITUTO PARA LA INCLUSION SOCIAL Y EL DESARROLLO HUMANO ASOCIACION CIVIL",
+      "donor_name": "Paula Andrea Valenzuela"
+    },
+    {
+      "officer": "SILBERSTEIN RICARDO ISIDORO",
+      "contractor": "ASOCIART SERVICIOS SA",
+      "donor_name": "Ricardo Isidoro Silberstein"
+    },
+    {
+      "officer": "SILBERSTEIN RICARDO ISIDORO",
+      "contractor": "ASOCIART SA ART",
+      "donor_name": "Ricardo Isidoro Silberstein"
+    }
+  ],
+  "officers_with_ddjj": [
+    {
+      "officer": "CLUSELLAS PABLO",
+      "contractor": "SACDE S.A."
+    },
+    {
+      "officer": "Alejandra Alcira, CABALLERO",
+      "contractor": "NACION SEGUROS S.A."
+    },
+    {
+      "officer": "GUILLERMO PEDRO, PLATE",
+      "contractor": "PROVINCIA ASEGURADORA DE RIESGOS DEL TABAJO SA"
+    },
+    {
+      "officer": "KATZ ALEJANDRO GUSTAVO",
+      "contractor": "PROVINCIA ASEGURADORA DE RIESGOS DEL TABAJO SA"
+    },
+    {
+      "officer": "BROWN, CARLOS",
+      "contractor": "PROVINCIA ASEGURADORA DE RIESGOS DEL TABAJO SA"
+    },
+    {
+      "officer": "KATZ ALEJANDRO GUSTAVO",
+      "contractor": "PROVINCIA SEGUROS S.A."
+    },
+    {
+      "officer": "MELISA PAULA, MARTIN",
+      "contractor": "PROVINCIA SEGUROS S.A."
+    },
+    {
+      "officer": "TODESCA JORGE",
+      "contractor": "PROVINCIA SEGUROS S.A."
+    },
+    {
+      "officer": "Catalán, Lisandro",
+      "contractor": "PROVINCIA SEGUROS S.A."
+    },
+    {
+      "officer": "CASILLAS, SUSANA BEATRIZ",
+      "contractor": "CAJA DE SEGUROS S.A."
+    },
+    {
+      "officer": "DIEGO CESAR SANTILLI",
+      "contractor": "MARKETING Y COMUNICACION POLITICA S.A."
+    },
+    {
+      "officer": "ROSSI CARLOS ALBERTO",
+      "contractor": "CORREO OFICIAL DE LA REPUBLICA ARGENTINA SA"
+    },
+    {
+      "officer": "ROCA, Guillermo Federico",
+      "contractor": "CORREO OFICIAL DE LA REPUBLICA ARGENTINA SA"
+    },
+    {
+      "officer": "Catalán, Lisandro",
+      "contractor": "CORREO OFICIAL DE LA REPUBLICA ARGENTINA SA"
+    },
+    {
+      "officer": "MARIA BEATRIZ LENZ",
+      "contractor": "IICES INSTITUTO DE INTERCAMBIO CULTURAL ENSAMBLE AL SUR"
+    },
+    {
+      "officer": "Julio Argentino, Ríos Gómez",
+      "contractor": "IRAM Instituto Argentino de Normalización y Certificación"
+    },
+    {
+      "officer": "Manuel, Fernández Arocena",
+      "contractor": "IRAM Instituto Argentino de Normalización y Certificación"
+    },
+    {
+      "officer": "Juan Javier, Negri",
+      "contractor": "BGH S.A."
+    },
+    {
+      "officer": "DANTE, SICA",
+      "contractor": "Consultora de Estudios Bonaerense S.A."
+    },
+    {
+      "officer": "Roberto Domingo, Niez",
+      "contractor": "Prades SA"
+    },
+    {
+      "officer": "GIANNOTTI GABRIEL AUGUSTO",
+      "contractor": "Certant S.A."
+    },
+    {
+      "officer": "LUIS ANTONIO, MALVIDO",
+      "contractor": "TELEFONICA MOVILES ARGENTINA S.A."
+    },
+    {
+      "officer": "GABRIELLI, Rodolfo Federico",
+      "contractor": "SOCIEDAD DEL ESTADO CASA DE MONEDA"
+    },
+    {
+      "officer": "MOLINARI, Vanina Lorena",
+      "contractor": "SOCIEDAD DEL ESTADO CASA DE MONEDA"
+    },
+    {
+      "officer": "PEREYRO, Fernando Ernesto",
+      "contractor": "SOCIEDAD DEL ESTADO CASA DE MONEDA"
+    },
+    {
+      "officer": "Jesus, RODRIGUEZ",
+      "contractor": "FUNDACIÓN CENTRO DE IMPLEMENTACIÒN DE POLÍTICAS PÚBLICAS PARA LA EQUIDAD Y EL CRECIMIENTO (CIPPEC)"
+    },
+    {
+      "officer": "DANTE, SICA",
+      "contractor": "Peugeot Citroen Argentina S.A."
+    },
+    {
+      "officer": "GASPARI ERNESTO",
+      "contractor": "Peugeot Citroen Argentina S.A."
+    },
+    {
+      "officer": "FEDERICI MARIANO",
+      "contractor": "TELECOM PERSONAL S.A."
+    },
+    {
+      "officer": "ORFILA MARCELA",
+      "contractor": "TRANSFARMACO S.A."
+    }
+  ],
+  "network_summary": {
+    "Company": 7623,
+    "Contractor": 3335,
+    "CompanyOfficer": 2267,
+    "AssetDeclaration": 30,
+    "GovernmentAppointment": 13,
+    "Donor": 8
+  }
+}

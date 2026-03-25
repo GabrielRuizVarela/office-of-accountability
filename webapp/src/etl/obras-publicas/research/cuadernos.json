@@ -1,0 +1,207 @@
+{
+  "case_name": "cuadernos_de_las_coimas",
+  "source_case": "causa_cuadernos",
+  "jurisdiction": "Argentina",
+  "total_bribes_usd": 30000000,
+  "total_bribes_ars": 171224710,
+  "period": { "start": "2005", "end": "2015" },
+  "status": "trial_in_progress",
+  "notes": "All entities listed as alleged unless noted. Trial began Nov 2025 before Tribunal Oral Federal No. 7. 87 defendants: 22 ex-officials, 65 businessmen. 175 documented bribe payments. Notebooks written by Oscar Centeno, driver of Roberto Baratta.",
+  "provenance_warning": "EVIDENCE ANOMALY (audited 2026-03-24): (1) Chain of custody BROKEN — originals lost 18+ months, Notebook #5 permanently missing, originals resurfaced from unidentified source 4 days before 2019 elections. (2) Gendarmería pericia (Aug 2025, 312 pages) confirmed 1,500+ alterations by 2-4 non-Centeno hands. (3) Jorge Bacigalupo charged (Nov 2025) with falsifying names — specifically crossing out real names to implicate other individuals. (4) Centeno refused to testify at trial (March 19, 2026). (5) 25 arrepentido confessions obtained under detention-release mechanism challenged as coercive. (6) CNDC cartelization investigation archived Sept 2023 finding no conclusive evidence. Independent corroboration varies by entity — see verification_status on individual nodes.",
+  "companies": [
+    {
+      "name": "Electroingeniería S.A.",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "Executives Gerardo Ferreyra and Jorge Guillermo Neira detained. Neira became cooperating witness."
+    },
+    {
+      "name": "Austral Construcciones S.A.",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "Owned by Lázaro Báez. Also subject to separate money laundering trial."
+    },
+    {
+      "name": "CPC S.A.",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "Linked to Cristóbal López and Fabián De Sousa. Attributed 5 bribe payments totaling approx. 14 million pesos (2011-2012)."
+    },
+    {
+      "name": "Esuco S.A.",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "Carlos Wagner, president of Cámara Argentina de la Construcción, was its director. Cooperating witness. Alleged ~1.2 billion pesos in contract values linked to bribes."
+    },
+    {
+      "name": "JCR S.A.",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "Owned by Juan Carlos Relats. Attributed 40 of the 175 bribe payments, totaling 85,493,691 pesos — the highest single-company total."
+    },
+    {
+      "name": "Iecsa S.A.",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "Angelo Calcaterra (cousin of Mauricio Macri) became cooperating witness. Héctor Javier Sánchez Caballero also cooperated."
+    },
+    {
+      "name": "Grupo Roggio (Benito Roggio e Hijos S.A.)",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "Aldo Roggio and Claudio Glazman became cooperating witnesses."
+    },
+    {
+      "name": "Helport S.A.",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "Mentioned by cooperating witnesses as regular bribe payer."
+    },
+    {
+      "name": "Cartellone Construcciones Civiles S.A.",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "Listed among companies making deliveries to officials."
+    },
+    {
+      "name": "Decavial S.A.",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "Representative Aznar mentioned in bribe delivery testimony."
+    },
+    {
+      "name": "COARCO S.A.",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "Representative Gerbi mentioned in bribe delivery testimony."
+    },
+    {
+      "name": "Grupo Albanesi",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "Armando Loson became cooperating witness."
+    },
+    {
+      "name": "Isolux Corsán Argentina",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "Juan Carlos de Goycoechea became cooperating witness."
+    },
+    {
+      "name": "Techint (Organización Techint)",
+      "role": "bribe_payer",
+      "cuit": "",
+      "notes": "Héctor Alberto Zabaleta became cooperating witness."
+    }
+  ],
+  "intermediaries": [
+    {
+      "name": "Ernesto Clarens",
+      "role": "financier",
+      "cuit": "",
+      "dni": "",
+      "notes": "Described as the financial operator of the bribe system. Testified he collected approx. US$300,000 per week on orders from Néstor Kirchner. Estimated total handled: ~US$30 million."
+    },
+    {
+      "name": "Oscar Centeno",
+      "role": "driver_witness",
+      "cuit": "",
+      "dni": "",
+      "notes": "Driver of Roberto Baratta. Author of the notebooks that originated the case. Cooperating witness."
+    },
+    {
+      "name": "Daniel Muñoz",
+      "role": "bagman",
+      "cuit": "",
+      "dni": "",
+      "notes": "Deceased former private secretary of Néstor Kirchner. Alleged recipient of bribe deliveries between Jan 2008 and Sep 2010."
+    },
+    {
+      "name": "Claudio Uberti",
+      "role": "intermediary",
+      "cuit": "",
+      "dni": "",
+      "notes": "Former head of OCCOVI (Órgano de Control de Concesiones Viales). Cooperating witness."
+    }
+  ],
+  "projects": [
+    {
+      "name": "Obra pública vial (cartelización)",
+      "sector": "road",
+      "province": "multiple",
+      "contract_value_usd": 0,
+      "bribe_amount_usd": 0,
+      "notes": "Systematic cartelization of road public works. Companies agreed on bid allocations; ~20% overpricing with half allegedly destined for bribes. Organized through Cámara Argentina de la Construcción under Carlos Wagner."
+    }
+  ],
+  "politicians": [
+    {
+      "name": "Cristina Fernández de Kirchner",
+      "role": "alleged_bribe_recipient",
+      "position": "Presidenta de la Nación",
+      "period": "2007-2015",
+      "notes": "Tribunal attributed 175 bribe payments to her totaling 171,224,710 pesos and US$613,000. Trial in progress."
+    },
+    {
+      "name": "Julio De Vido",
+      "role": "alleged_organizer",
+      "position": "Ministro de Planificación Federal",
+      "period": "2003-2015",
+      "notes": "Accused as organizer of the illicit association."
+    },
+    {
+      "name": "Roberto Baratta",
+      "role": "alleged_organizer",
+      "position": "Subsecretario de Coordinación, Ministerio de Planificación",
+      "period": "2003-2015",
+      "notes": "Accused as organizer. His secretary was accused of collecting 68 bribe payments."
+    },
+    {
+      "name": "José Francisco López",
+      "role": "alleged_bribe_recipient",
+      "position": "Secretario de Obras Públicas",
+      "period": "2003-2015",
+      "notes": "Cooperating witness. Previously detained with bags of cash at a monastery."
+    },
+    {
+      "name": "Ricardo Jaime",
+      "role": "alleged_organizer",
+      "position": "Secretario de Transporte",
+      "period": "2003-2009",
+      "notes": "Accused as organizer of the illicit association."
+    },
+    {
+      "name": "Juan Pablo Schiavi",
+      "role": "alleged_bribe_recipient",
+      "position": "Secretario de Transporte",
+      "period": "2009-2012",
+      "notes": "Accused in the cartelization scheme."
+    },
+    {
+      "name": "Rafael Llorens",
+      "role": "alleged_bribe_recipient",
+      "position": "Subsecretario de Asuntos Legales",
+      "period": "2003-2015",
+      "notes": "Accused in the overall scheme."
+    },
+    {
+      "name": "Carlos Santiago Kirchner",
+      "role": "alleged_bribe_recipient",
+      "position": "Secretario de Obras Públicas",
+      "period": "2003-2015",
+      "notes": "Accused as member of the illicit association."
+    }
+  ],
+  "source_urls": [
+    "https://www.infobae.com/judiciales/2025/11/06/hoy-comienza-el-juicio-a-los-cuadernos-de-las-coimas-las-claves-para-entender-el-mayor-caso-de-corrupcion-de-la-historia-argentina/",
+    "https://chequeado.com/el-explicador/causa-cuadernos-las-5-claves-del-juicio-contra-cristina-fernandez-de-kirchner-ex-funcionarios-y-empresarios/",
+    "https://www.lanacion.com.ar/politica/las-constructoras-mas-grandes-complicadas-nid2161436/",
+    "https://eleconomista.com.ar/politica/causa-cuadernos-lista-completa-empresarios-confesaron-coimas-n90218",
+    "https://www.fiscales.gob.ar/fiscalias/causa-cuadernos-con-la-lectura-de-parte-de-la-acusacion-comenzo-el-juicio-contra-la-expresidenta-cristina-fernandez-y-otros-86-imputados/",
+    "https://www.infobae.com/judiciales/2025/12/11/sigue-el-juicio-por-los-cuadernos-de-las-coimas-las-confesiones-que-revelan-los-vinculos-entre-politicos-y-empresarios/",
+    "https://elchorrillero.com/nota/2025/12/18/590392-juicio-cuadernos-de-las-coimas-el-tribunal-dio-a-conocer-el-monto-de-las-175-coimas-que-les-pagaron-los-empresarios-a-cristina-kirchner/amp/",
+    "https://es.wikipedia.org/wiki/Causa_de_los_cuadernos",
+    "https://www.infobae.com/judiciales/2025/11/22/causa-cuadernos-el-financista-ernesto-clarens-revelo-que-recaudaba-usd-300-mil-por-semana-por-orden-de-nestor-kirchner/",
+    "https://www.fiscales.gob.ar/fiscalias/causa-cuadernos-comenzo-la-lectura-de-la-acusacion-por-la-cartelizacion-de-la-obra-publica-civil-en-cabeza-de-la-camara-argentina-de-empresas-viales/"
+  ]
+}

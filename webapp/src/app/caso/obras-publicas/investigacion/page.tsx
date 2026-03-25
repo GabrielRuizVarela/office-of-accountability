@@ -6,12 +6,8 @@
  * Renders a complete, factchecked, sourced investigation of the $LIBRA
  * token scandal with timeline, actor network, money flows, evidence chain,
  * government response tracking, and impact statistics.
- *
- * NOTE: This page only renders for caso-libra. Other slugs (obras-publicas,
- * finanzas-politicas, etc.) have their own dedicated pages that take priority.
  */
 
-import { useParams } from 'next/navigation'
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
 
 import { useLanguage, type Lang } from '@/lib/language-context'
@@ -27,7 +23,7 @@ import {
   type InvestigationCategory,
   type InvestigationTimelineEvent,
   type VerificationStatus,
-} from '@/lib/caso-libra/investigation-data'
+} from '@/lib/caso-obras-publicas/investigation-data'
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -123,14 +119,6 @@ function formatDate(dateStr: string, lang: Lang): string {
 // ---------------------------------------------------------------------------
 
 export default function InvestigacionPage() {
-  const params = useParams()
-  const slug = typeof params?.slug === 'string' ? params.slug : ''
-
-  // This page is for caso-libra only. Other slugs have dedicated pages.
-  if (slug && slug !== 'caso-libra') {
-    return null
-  }
-
   const { lang } = useLanguage()
   const [activeSection, setActiveSection] = useState('hero')
   const [factcheckFilter, setFactcheckFilter] = useState<FactcheckStatus | null>(null)
@@ -520,7 +508,7 @@ export default function InvestigacionPage() {
                   <span className="text-lg">{actor.nationality}</span>
                   <h3 className="font-semibold text-zinc-100">{actor.name}</h3>
                 </div>
-                {actor.is_new && (
+                {false && (
                   <span className="shrink-0 rounded-full bg-purple-600 px-2 py-0.5 text-xs font-bold uppercase tracking-wider text-white">
                     NEW
                   </span>
@@ -796,7 +784,7 @@ function TimelineCard({
           >
             {catLabel}
           </span>
-          {event.is_new && (
+          {false && (
             <span className="rounded-full bg-purple-600 px-2 py-0.5 text-xs font-bold uppercase tracking-wider text-white">
               NEW
             </span>
@@ -966,7 +954,7 @@ function SubmitEvidenceForm({ lang }: { readonly lang: 'es' | 'en' }) {
     }
 
     try {
-      const response = await fetch('/api/caso-libra/investigation', {
+      const response = await fetch('/api/caso/obras-publicas/investigation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ type: entityType, data }),
