@@ -47,7 +47,7 @@ export const investigations: InvestigationConfig[] = [
     description:
       'Dictadura militar argentina. 9.415 victimas documentadas, 774 centros clandestinos, 987 paginas SIDE desclasificadas, 54 brechas de rendicion de cuentas senaladas.',
     status: 'active',
-    color: 'amber',
+    color: 'stone',
     stats: [
       { label: 'Victimas', value: '9.415' },
       { label: 'CCDs', value: '774' },
