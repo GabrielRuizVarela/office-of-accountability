@@ -2,7 +2,7 @@
  * Caso Epstein — Overview (landing page).
  */
 
-import { OverviewContent } from '@/app/caso/[slug]/OverviewContent'
+import { OverviewContent } from '@/app/[locale]/caso/[slug]/OverviewContent'
 
 const EPSTEIN_STATS = [
   { label: 'Persons', value: '374', color: '#ef4444' },

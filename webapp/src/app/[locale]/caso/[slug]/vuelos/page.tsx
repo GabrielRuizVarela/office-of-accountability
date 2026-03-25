@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState, use } from 'react'
 
-import { ForceGraph } from '../../../../components/graph/ForceGraph'
-import type { ForceGraphHandle } from '../../../../components/graph/ForceGraph'
-import type { GraphData } from '../../../../lib/neo4j/types'
+import { ForceGraph } from '../../../../../components/graph/ForceGraph'
+import type { ForceGraphHandle } from '../../../../../components/graph/ForceGraph'
+import type { GraphData } from '../../../../../lib/neo4j/types'
 
 export default function VuelosPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params)

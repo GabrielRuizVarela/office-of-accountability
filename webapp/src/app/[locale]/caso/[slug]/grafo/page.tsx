@@ -2,19 +2,19 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, use } from 'react'
 
-import { CategoryFilter, isNodeHiddenByCategory } from '../../../../components/graph/CategoryFilter'
-import { ForceGraph } from '../../../../components/graph/ForceGraph'
-import type { ForceGraphHandle } from '../../../../components/graph/ForceGraph'
-import { GraphToolbar } from '../../../../components/graph/GraphToolbar'
-import { NodeContextMenu } from '../../../../components/graph/NodeContextMenu'
-import { NodeDetailPanel } from '../../../../components/graph/NodeDetailPanel'
-import { PathFinder } from '../../../../components/graph/PathFinder'
-import { SearchBar } from '../../../../components/graph/SearchBar'
-import { bfsShortestPath, pathLinkKeys } from '../../../../lib/graph/algorithms'
-import { getLabelColor, getLabelDisplayName } from '../../../../lib/graph/constants'
-import { listInvestigations, saveInvestigation } from '../../../../lib/graph/investigation'
-import { mergeGraphData } from '../../../../lib/graph/transform'
-import type { GraphData, GraphNode, GraphLink } from '../../../../lib/neo4j/types'
+import { CategoryFilter, isNodeHiddenByCategory } from '../../../../../components/graph/CategoryFilter'
+import { ForceGraph } from '../../../../../components/graph/ForceGraph'
+import type { ForceGraphHandle } from '../../../../../components/graph/ForceGraph'
+import { GraphToolbar } from '../../../../../components/graph/GraphToolbar'
+import { NodeContextMenu } from '../../../../../components/graph/NodeContextMenu'
+import { NodeDetailPanel } from '../../../../../components/graph/NodeDetailPanel'
+import { PathFinder } from '../../../../../components/graph/PathFinder'
+import { SearchBar } from '../../../../../components/graph/SearchBar'
+import { bfsShortestPath, pathLinkKeys } from '../../../../../lib/graph/algorithms'
+import { getLabelColor, getLabelDisplayName } from '../../../../../lib/graph/constants'
+import { listInvestigations, saveInvestigation } from '../../../../../lib/graph/investigation'
+import { mergeGraphData } from '../../../../../lib/graph/transform'
+import type { GraphData, GraphNode, GraphLink } from '../../../../../lib/neo4j/types'
 
 // ---------------------------------------------------------------------------
 // Label config for the case graph

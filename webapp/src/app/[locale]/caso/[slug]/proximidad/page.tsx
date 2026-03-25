@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { ProximityPanel } from '../../../../components/investigation/ProximityPanel'
+import { ProximityPanel } from '../../../../../components/investigation/ProximityPanel'
 
 interface PageProps {
   readonly params: Promise<{ slug: string }>

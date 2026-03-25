@@ -11,7 +11,7 @@
  * Cached for 1 hour via Cache-Control.
  */
 
-import { getAllPoliticianSlugs, getAllProvinces } from '../../lib/graph/politician-queries'
+import { getAllPoliticianSlugs, getAllProvinces } from '../../../lib/graph/politician-queries'
 
 const BASE_URL = 'https://oficina.ar'
 

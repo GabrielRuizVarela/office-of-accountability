@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { SimulationPanel } from '../../../../components/investigation/SimulationPanel'
+import { SimulationPanel } from '../../../../../components/investigation/SimulationPanel'
 
 interface PageProps {
   readonly params: Promise<{ slug: string }>

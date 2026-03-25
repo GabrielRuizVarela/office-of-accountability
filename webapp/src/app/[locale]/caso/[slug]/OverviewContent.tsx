@@ -3,7 +3,7 @@
 import Link from 'next/link'
 
 import { useLanguage, type Lang } from '@/lib/language-context'
-import { KeyStats } from '../../../components/investigation/KeyStats'
+import { KeyStats } from '../../../../components/investigation/KeyStats'
 
 interface Stat {
   readonly label: string
