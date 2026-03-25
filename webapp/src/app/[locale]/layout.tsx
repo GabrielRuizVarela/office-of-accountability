@@ -11,28 +11,20 @@ import { Footer } from '@/components/layout/Footer'
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] })
 
-// TODO: generateMetadata depends on 'metadata' namespace in message files (Task 4)
-// Uncomment once messages/es.json and messages/en.json have the metadata namespace
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: Promise<{ locale: string }>
-// }): Promise<Metadata> {
-//   const { locale } = await params
-//   const t = await getTranslations({ locale, namespace: 'metadata' })
-//   return {
-//     title: t('siteTitle'),
-//     description: t('siteDescription'),
-//     alternates: {
-//       languages: { es: '/es', en: '/en' },
-//     },
-//   }
-// }
-
-export const metadata: Metadata = {
-  title: 'Oficina de Rendición de Cuentas',
-  description:
-    'Plataforma de conocimiento cívico para la política argentina. Explorá las conexiones entre legisladores, votaciones y legislación.',
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'metadata' })
+  return {
+    title: t('siteTitle'),
+    description: t('siteDescription'),
+    alternates: {
+      languages: { es: '/es', en: '/en' },
+    },
+  }
 }
 
 export default async function LocaleLayout({
