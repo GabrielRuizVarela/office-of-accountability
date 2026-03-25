@@ -1,6 +1,8 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useRef, useState, use } from 'react'
+import { useLocale } from 'next-intl'
+import type { Locale } from '@/i18n/config'
 
 import { CategoryFilter, isNodeHiddenByCategory } from '../../../../../components/graph/CategoryFilter'
 import { ForceGraph } from '../../../../../components/graph/ForceGraph'
@@ -20,37 +22,57 @@ import type { GraphData, GraphNode, GraphLink } from '../../../../../lib/neo4j/t
 // Label config for the case graph
 // ---------------------------------------------------------------------------
 
-const LABEL_CONFIGS: Record<string, ReadonlyArray<{ label: string; color: string; name: string }>> = {
+const LABEL_CONFIGS: Record<string, ReadonlyArray<{ label: string; color: string; name: Record<Locale, string> }>> = {
   default: [
-    { label: 'Person', color: '#3b82f6', name: 'People' },
-    { label: 'Organization', color: '#8b5cf6', name: 'Organizations' },
-    { label: 'Location', color: '#10b981', name: 'Locations' },
-    { label: 'Event', color: '#f59e0b', name: 'Events' },
-    { label: 'Document', color: '#ef4444', name: 'Documents' },
-    { label: 'LegalCase', color: '#ec4899', name: 'Legal Cases' },
-    { label: 'Flight', color: '#f97316', name: 'Flights' },
+    { label: 'Person', color: '#3b82f6', name: { en: 'People', es: 'Personas' } },
+    { label: 'Organization', color: '#8b5cf6', name: { en: 'Organizations', es: 'Organizaciones' } },
+    { label: 'Location', color: '#10b981', name: { en: 'Locations', es: 'Ubicaciones' } },
+    { label: 'Event', color: '#f59e0b', name: { en: 'Events', es: 'Eventos' } },
+    { label: 'Document', color: '#ef4444', name: { en: 'Documents', es: 'Documentos' } },
+    { label: 'LegalCase', color: '#ec4899', name: { en: 'Legal Cases', es: 'Causas Judiciales' } },
+    { label: 'Flight', color: '#f97316', name: { en: 'Flights', es: 'Vuelos' } },
   ],
   'caso-dictadura': [
-    { label: 'DictaduraCCD', color: '#ef4444', name: 'CCDs' },
-    { label: 'DictaduraUnidadMilitar', color: '#f97316', name: 'Unidades' },
-    { label: 'DictaduraOrganizacion', color: '#8b5cf6', name: 'Organizaciones' },
-    { label: 'DictaduraCausa', color: '#06b6d4', name: 'Causas' },
-    { label: 'DictaduraEvento', color: '#f59e0b', name: 'Eventos' },
-    { label: 'DictaduraOperacion', color: '#a855f7', name: 'Operaciones' },
-    { label: 'DictaduraPersona', color: '#3b82f6', name: 'Personas' },
-    { label: 'DictaduraLugar', color: '#10b981', name: 'Lugares' },
-    { label: 'DictaduraDocumento', color: '#ec4899', name: 'Documentos' },
-    { label: 'DictaduraActa', color: '#64748b', name: 'Actas' },
+    { label: 'DictaduraCCD', color: '#ef4444', name: { en: 'CCDs', es: 'CCDs' } },
+    { label: 'DictaduraUnidadMilitar', color: '#f97316', name: { en: 'Military Units', es: 'Unidades' } },
+    { label: 'DictaduraOrganizacion', color: '#8b5cf6', name: { en: 'Organizations', es: 'Organizaciones' } },
+    { label: 'DictaduraCausa', color: '#06b6d4', name: { en: 'Cases', es: 'Causas' } },
+    { label: 'DictaduraEvento', color: '#f59e0b', name: { en: 'Events', es: 'Eventos' } },
+    { label: 'DictaduraOperacion', color: '#a855f7', name: { en: 'Operations', es: 'Operaciones' } },
+    { label: 'DictaduraPersona', color: '#3b82f6', name: { en: 'People', es: 'Personas' } },
+    { label: 'DictaduraLugar', color: '#10b981', name: { en: 'Places', es: 'Lugares' } },
+    { label: 'DictaduraDocumento', color: '#ec4899', name: { en: 'Documents', es: 'Documentos' } },
+    { label: 'DictaduraActa', color: '#64748b', name: { en: 'Records', es: 'Actas' } },
   ],
   'riesgo-nuclear': [
-    { label: 'NuclearSignal', color: '#eab308', name: 'Signals' },
-    { label: 'NuclearActor', color: '#ef4444', name: 'Actors' },
-    { label: 'WeaponSystem', color: '#f97316', name: 'Weapons' },
-    { label: 'Treaty', color: '#3b82f6', name: 'Treaties' },
-    { label: 'NuclearFacility', color: '#10b981', name: 'Facilities' },
-    { label: 'RiskBriefing', color: '#a855f7', name: 'Briefings' },
+    { label: 'NuclearSignal', color: '#eab308', name: { en: 'Signals', es: 'Senales' } },
+    { label: 'NuclearActor', color: '#ef4444', name: { en: 'Actors', es: 'Actores' } },
+    { label: 'WeaponSystem', color: '#f97316', name: { en: 'Weapons', es: 'Armas' } },
+    { label: 'Treaty', color: '#3b82f6', name: { en: 'Treaties', es: 'Tratados' } },
+    { label: 'NuclearFacility', color: '#10b981', name: { en: 'Facilities', es: 'Instalaciones' } },
+    { label: 'RiskBriefing', color: '#a855f7', name: { en: 'Briefings', es: 'Informes' } },
   ],
 }
+
+const grafoMessages = {
+  loading: { en: 'Loading network graph...', es: 'Cargando grafo de red...' },
+  noData: { en: 'No graph data found', es: 'No se encontraron datos del grafo' },
+  loadingShort: { en: 'Loading...', es: 'Cargando...' },
+  fetchError: { en: 'Failed to load graph data', es: 'Error al cargar datos del grafo' },
+  nodes: { en: 'nodes', es: 'nodos' },
+  connections: { en: 'connections', es: 'conexiones' },
+  filtered: { en: 'filtered', es: 'filtrado' },
+  verified: { en: 'verified', es: 'verificado' },
+  categoriesHidden: (n: number): Record<Locale, string> => ({
+    en: `${n} categories hidden`,
+    es: `${n} categorias ocultas`,
+  }),
+  pinned: { en: 'pinned', es: 'fijados' },
+  tierAll: { en: 'All data', es: 'Todos los datos' },
+  tierVerified: { en: 'Verified only', es: 'Solo verificados' },
+  tierGold: { en: 'Gold only', es: 'Solo gold' },
+  searchPlaceholder: { en: 'Search nodes...', es: 'Buscar nodos...' },
+} as const
 
 // ---------------------------------------------------------------------------
 // Component
@@ -58,6 +80,7 @@ const LABEL_CONFIGS: Record<string, ReadonlyArray<{ label: string; color: string
 
 export default function GrafoPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params)
+  const locale = useLocale() as Locale
   const LABEL_CONFIG = LABEL_CONFIGS[slug] ?? LABEL_CONFIGS.default
   const graphRef = useRef<ForceGraphHandle>(null)
 
@@ -114,25 +137,25 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
         }
         const qs = params.toString() ? `?${params.toString()}` : ''
         const res = await fetch(`/api/caso/${slug}/graph${qs}`)
-        if (!res.ok) throw new Error('Failed to load graph data')
+        if (!res.ok) throw new Error(grafoMessages.fetchError[locale])
         const json = await res.json()
         const data = json.data ?? json
         console.log('[grafo] fetched', data?.nodes?.length, 'nodes', data?.links?.length, 'links')
         if (!data?.nodes?.length) {
           console.warn('[grafo] No graph data returned', json)
-          setError('No graph data found')
+          setError(grafoMessages.noData[locale])
           return
         }
         setGraphData(data)
       } catch (err) {
         console.error('[grafo] fetch error', err)
-        setError(err instanceof Error ? err.message : 'Failed to load graph')
+        setError(err instanceof Error ? err.message : grafoMessages.fetchError[locale])
       } finally {
         setIsInitialLoading(false)
       }
     }
     fetchGraph()
-  }, [slug])
+  }, [slug, locale])
 
   // Zoom to fit after initial load
   useEffect(() => {
@@ -459,7 +482,7 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
   if (isInitialLoading) {
     return (
       <div className="flex h-[calc(100vh-4rem)] items-center justify-center text-zinc-500">
-        Loading network graph...
+        {grafoMessages.loading[locale]}
       </div>
     )
   }
@@ -479,7 +502,7 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
         {/* Primary row: Search + Label filters + Tier */}
         <div className="flex items-center gap-2 px-4 py-2">
           <div className="w-64 shrink-0">
-            <SearchBar onSelect={handleSearchSelect} placeholder="Search nodes..." />
+            <SearchBar onSelect={handleSearchSelect} placeholder={grafoMessages.searchPlaceholder[locale]} />
           </div>
 
           <div className="flex flex-1 flex-wrap items-center gap-1.5">
@@ -499,7 +522,7 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
                     className="inline-block h-2 w-2 rounded-full transition-colors"
                     style={{ backgroundColor: isActive ? color : '#3f3f46' }}
                   />
-                  {name}
+                  {name[locale]}
                 </button>
               )
             })}
@@ -510,9 +533,9 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
             onChange={(e) => setTierFilter(e.target.value)}
             className="shrink-0 rounded border border-zinc-700 bg-zinc-800 px-2 py-1 text-xs text-zinc-100"
           >
-            <option value="all">All data</option>
-            <option value="verified">Verified only</option>
-            <option value="gold">Gold only</option>
+            <option value="all">{grafoMessages.tierAll[locale]}</option>
+            <option value="verified">{grafoMessages.tierVerified[locale]}</option>
+            <option value="gold">{grafoMessages.tierGold[locale]}</option>
           </select>
         </div>
 
@@ -559,7 +582,7 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
             <div className="absolute left-1/2 top-4 z-10 -translate-x-1/2">
               <div className="flex items-center gap-2 rounded-full bg-zinc-900/90 px-4 py-2 text-sm text-zinc-400 shadow-lg backdrop-blur-sm">
                 <div className="h-3 w-3 animate-spin rounded-full border-2 border-zinc-600 border-t-blue-500" />
-                Loading...
+                {grafoMessages.loadingShort[locale]}
               </div>
             </div>
           )}
@@ -646,15 +669,15 @@ export default function GrafoPage({ params }: { params: Promise<{ slug: string }
 
       {/* Status bar */}
       <div className="border-t border-zinc-800 px-4 py-1.5 text-xs text-zinc-500">
-        {filteredData.nodes.length} nodes · {filteredData.links.length} connections
+        {filteredData.nodes.length} {grafoMessages.nodes[locale]} · {filteredData.links.length} {grafoMessages.connections[locale]}
         {(tierFilter !== 'all' || hiddenCategories.size > 0) && (
           <span className="ml-2 text-amber-400">
-            (filtered{tierFilter !== 'all' ? ` · ${tierFilter === 'verified' ? 'verified' : 'gold'}` : ''}
-            {hiddenCategories.size > 0 ? ` · ${hiddenCategories.size} categories hidden` : ''})
+            ({grafoMessages.filtered[locale]}{tierFilter !== 'all' ? ` · ${tierFilter === 'verified' ? grafoMessages.verified[locale] : 'gold'}` : ''}
+            {hiddenCategories.size > 0 ? ` · ${grafoMessages.categoriesHidden(hiddenCategories.size)[locale]}` : ''})
           </span>
         )}
         {pinnedNodeIds.size > 0 && (
-          <span className="ml-2">{pinnedNodeIds.size} pinned</span>
+          <span className="ml-2">{pinnedNodeIds.size} {grafoMessages.pinned[locale]}</span>
         )}
       </div>
     </div>

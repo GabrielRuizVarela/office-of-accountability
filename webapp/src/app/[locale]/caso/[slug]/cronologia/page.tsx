@@ -21,9 +21,9 @@ export default async function CronologiaPage({
 
   if (slug === 'riesgo-nuclear') {
     const events = await getNuclearTimeline()
-    return <CronologiaContent events={events} />
+    return <CronologiaContent events={events} slug={slug} />
   }
 
   const events = await getTimeline()
-  return <CronologiaContent events={events} />
+  return <CronologiaContent events={events} slug={slug} />
 }

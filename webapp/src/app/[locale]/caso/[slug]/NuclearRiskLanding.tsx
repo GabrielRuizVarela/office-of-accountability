@@ -21,6 +21,7 @@ const t = {
   },
   theaters: { en: 'Theaters', es: 'Teatros' },
   signals: { en: 'Signals', es: 'Senales' },
+  avgSeverity: { en: 'avg severity', es: 'severidad prom.' },
   graph: { en: 'Explore the graph', es: 'Explorar el grafo' },
   graphDesc: {
     en: 'Visualize connections between actors, weapons, treaties, and signals',
@@ -105,7 +106,7 @@ export function NuclearRiskLanding({
                 </span>
               </div>
               <div className="mt-2 text-sm text-zinc-400">
-                {th.signalCount} {t.signals[locale].toLowerCase()} · avg severity {th.avgSeverity}
+                {th.signalCount} {t.signals[locale].toLowerCase()} · {t.avgSeverity[locale]} {th.avgSeverity}
               </div>
               <div className="mt-2 h-2 rounded-full bg-zinc-700">
                 <div
