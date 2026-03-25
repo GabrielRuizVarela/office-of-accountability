@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "wave": 19,
+    "title": "Political Cycle Correlation with Public Works Contract Awards",
+    "date": "2026-03-24",
+    "methodology": "Aggregated PublicContract fecha_perfeccionamiento and PublicWork start_date by year and quarter, cross-referenced with Argentine presidential election years (2015, 2019, 2023) and term boundaries. Contractor continuity analyzed across administrations.",
+    "confidence_tier": "bronze",
+    "hypothesis": "Contract awards spike before elections and at the start/end of presidential terms"
+  },
+  "contracts_by_year": [
+    { "year": 2010, "contracts": 1, "total_ars": 27600 },
+    { "year": 2012, "contracts": 4, "total_ars": 1839188 },
+    { "year": 2013, "contracts": 3, "total_ars": 529752 },
+    { "year": 2014, "contracts": 41, "total_ars": 12441477 },
+    { "year": 2015, "contracts": 148, "total_ars": 19471629, "note": "election_year" },
+    { "year": 2016, "contracts": 185, "total_ars": 25916812 },
+    { "year": 2017, "contracts": 215, "total_ars": 22431838 },
+    { "year": 2018, "contracts": 221, "total_ars": 85233768 },
+    { "year": 2019, "contracts": 279, "total_ars": 190604549, "note": "election_year" },
+    { "year": 2020, "contracts": 302, "total_ars": 210261558 },
+    { "year": 2021, "contracts": 373, "total_ars": 771740243, "note": "midterm_election_year" },
+    { "year": 2022, "contracts": 1357, "total_ars": 1860105338, "note": "pre_election_year, data_ends_Q2" }
+  ],
+  "quarterly_contracts": [
+    { "year": 2015, "Q1": 29, "Q2": 79, "Q3": 34, "Q4": 6 },
+    { "year": 2016, "Q1": 22, "Q2": 94, "Q3": 43, "Q4": 26 },
+    { "year": 2017, "Q1": 59, "Q2": 102, "Q3": 39, "Q4": 15 },
+    { "year": 2018, "Q1": 57, "Q2": 105, "Q3": 42, "Q4": 17 },
+    { "year": 2019, "Q1": 86, "Q2": 119, "Q3": 50, "Q4": 24, "note": "Q4_value_spike_70M" },
+    { "year": 2020, "Q1": 95, "Q2": 143, "Q3": 48, "Q4": 16 },
+    { "year": 2021, "Q1": 105, "Q2": 186, "Q3": 55, "Q4": 27, "note": "Q2_value_404M_midterm_year" },
+    { "year": 2022, "Q1": 392, "Q2": 965, "note": "data_ends_Q2_value_1.1B" }
+  ],
+  "public_works_by_start_year": [
+    { "year": 2008, "works": 3, "total_ars": 3512010405 },
+    { "year": 2009, "works": 1, "total_ars": 2755490518 },
+    { "year": 2010, "works": 7, "total_ars": 175807677703 },
+    { "year": 2011, "works": 16, "total_ars": 169258887848 },
+    { "year": 2012, "works": 8, "total_ars": 65785391215 },
+    { "year": 2013, "works": 15, "total_ars": 298416806341 },
+    { "year": 2014, "works": 14, "total_ars": 143176531493 },
+    { "year": 2015, "works": 42, "total_ars": 427954166060, "note": "election_year" },
+    { "year": 2016, "works": 44, "total_ars": 79028638760 },
+    { "year": 2017, "works": 100, "total_ars": 304186640678 },
+    { "year": 2018, "works": 99, "total_ars": 254429589707 },
+    { "year": 2019, "works": 149, "total_ars": 71431856744, "note": "election_year" },
+    { "year": 2020, "works": 668, "total_ars": 61271779597 },
+    { "year": 2021, "works": 2740, "total_ars": 841929792302, "note": "midterm_election_year" },
+    { "year": 2022, "works": 1968, "total_ars": 1607036213307, "note": "pre_election_year" },
+    { "year": 2023, "works": 1393, "total_ars": 1831780933940, "note": "election_year" },
+    { "year": 2024, "works": 18, "total_ars": 2531560749, "note": "milei_austerity" }
+  ],
+  "top_contractors_by_administration": {
+    "cfk_term_2_2011_2015": [
+      { "name": "LECTUS S.A.", "contracts": 1, "total_ars": 6199960 },
+      { "name": "FARMED S.A.", "contracts": 2, "total_ars": 1949200 },
+      { "name": "HEXACTA S.A.", "contracts": 1, "total_ars": 1089000 }
+    ],
+    "macri_2015_2019": [
+      { "name": "ARMORING SYSTEMS SA", "contracts": 1, "total_ars": 16197600 },
+      { "name": "DROGUERIA ARTIGAS S.A.", "contracts": 19, "total_ars": 13610479 },
+      { "name": "SUCESORES DE ALFREDO WILLINER SA", "contracts": 1, "total_ars": 9300000 },
+      { "name": "SAP ARGENTINA S.A.", "contracts": 1, "total_ars": 7756100 },
+      { "name": "DEALER MEDICA SRL", "contracts": 2, "total_ars": 7607000 }
+    ],
+    "alberto_fernandez_2019_2023": [
+      { "name": "BIOARS S.A.", "contracts": 9, "total_ars": 360476985 },
+      { "name": "DROGUERIA ARTIGAS S.A.", "contracts": 27, "total_ars": 138072454 },
+      { "name": "BIODIAGNOSTICO S.A.", "contracts": 32, "total_ars": 128505363 },
+      { "name": "Laboratorios Jayor SRL", "contracts": 1, "total_ars": 97800000 },
+      { "name": "DATASTAR ARGENTINA SA", "contracts": 2, "total_ars": 64757120 }
+    ]
+  },
+  "cross_administration_contractors": [
+    { "name": "BIOARS S.A.", "administrations": ["AlbertoF", "Macri", "Kirchnerismo"], "contracts": 12, "total_ars": 360506015, "note": "97% of value under Alberto Fernandez" },
+    { "name": "DROGUERIA ARTIGAS S.A.", "administrations": ["AlbertoF", "Macri"], "contracts": 46, "total_ars": 151682933, "note": "91% of value under Alberto Fernandez" },
+    { "name": "BIODIAGNOSTICO S.A.", "administrations": ["AlbertoF", "Macri", "Kirchnerismo"], "contracts": 55, "total_ars": 131558350, "note": "98% of value under Alberto Fernandez" },
+    { "name": "FOC S.R.L.", "administrations": ["Macri", "AlbertoF", "Kirchnerismo"], "contracts": 18, "total_ars": 58336355 },
+    { "name": "DROGUERIA DISVAL S.R.L.", "administrations": ["AlbertoF", "Macri"], "contracts": 3, "total_ars": 57452989 },
+    { "name": "MONTEBIO S.R.L.", "administrations": ["AlbertoF", "Macri"], "contracts": 40, "total_ars": 45195559 },
+    { "name": "MEDI SISTEM S.R.L.", "administrations": ["Macri", "AlbertoF", "Kirchnerismo"], "contracts": 70, "total_ars": 44033255 },
+    { "name": "ARGENTINA MEDICAL PRODUCTS SRL.", "administrations": ["Macri", "Kirchnerismo", "AlbertoF"], "contracts": 11, "total_ars": 40614185 },
+    { "name": "FRESENIUS KABI S.A.", "administrations": ["AlbertoF", "Macri"], "contracts": 38, "total_ars": 32496462 },
+    { "name": "BECTON DICKINSON ARGENTINA SRL", "administrations": ["AlbertoF", "Kirchnerismo", "Macri"], "contracts": 18, "total_ars": 31237271 },
+    { "name": "IBM ARGENTINA S.R.L.", "administrations": ["AlbertoF", "Macri"], "contracts": 2, "total_ars": 25413998 },
+    { "name": "BIOMÉRIEUX ARGENTINA SA", "administrations": ["AlbertoF", "Macri"], "contracts": 21, "total_ars": 23809278 },
+    { "name": "ALPHA MEDICAL GROUP S.R.L.", "administrations": ["AlbertoF", "Macri"], "contracts": 88, "total_ars": 17139054 },
+    { "name": "MACOR INSUMOS HOSPITALARIOS SRL", "administrations": ["AlbertoF", "Macri", "Kirchnerismo"], "contracts": 22, "total_ars": 16875045 },
+    { "name": "TECNOLAB S.A.", "administrations": ["AlbertoF", "Macri", "Kirchnerismo"], "contracts": 33, "total_ars": 16011147 }
+  ],
+  "findings": {
+    "hypothesis_status": "partially_confirmed",
+    "political_cycle_patterns": [
+      {
+        "pattern": "Q2 seasonal concentration",
+        "description": "Q2 consistently has the highest contract volume across all years (2015-2022). This aligns with Argentina's fiscal cycle: budget approved in Q4/Q1, procurement processes initiated in Q1, contracts perfected in Q2. This is a fiscal-bureaucratic pattern, not directly political.",
+        "confidence": "high"
+      },
+      {
+        "pattern": "Pre-election spending acceleration (2021-2022)",
+        "description": "Public works started jumped from 149 (2019) to 668 (2020) to 2,740 (2021) to 1,968 (2022), an 18x increase in 2 years. Contracts similarly exploded from 373 (2021) to 1,357 (2022 H1 only). This massive acceleration ahead of the 2023 election is the strongest political cycle signal in the data.",
+        "confidence": "high"
+      },
+      {
+        "pattern": "2019 Q4 value spike",
+        "description": "Only 24 contracts were signed in 2019 Q4 but totaling $70.4M — average $2.9M per contract vs $178K avg in Q2 of the same year. This coincides with the lame-duck period between Macri's election loss (Oct 27) and Fernandez inauguration (Dec 10). High-value last-minute awards during transition.",
+        "confidence": "medium"
+      },
+      {
+        "pattern": "2015 Q4 collapse",
+        "description": "Contract volume dropped from 34 (Q3) to 6 (Q4) in the 2015 election year, consistent with transition freeze as Macri took over from CFK.",
+        "confidence": "medium"
+      },
+      {
+        "pattern": "Milei austerity shock",
+        "description": "Public works started collapsed from 1,393 (2023) to 18 (2024), a 99% reduction, confirming the new administration's fiscal austerity policy and abrupt halt of the previous cycle's spending spree.",
+        "confidence": "high"
+      }
+    ],
+    "contractor_favoritism_indicators": [
+      {
+        "contractor": "BIOARS S.A.",
+        "finding": "Received $360M in 9 contracts under Alberto Fernandez (avg $40M each) vs negligible amounts under Macri and Kirchnerismo. This 12,000x value increase between administrations is the most extreme favoritism signal in the dataset.",
+        "risk_level": "high"
+      },
+      {
+        "contractor": "DROGUERIA ARTIGAS S.A.",
+        "finding": "Consistent presence across Macri and Alberto Fernandez, but value jumped 10x from $14M (Macri, 19 contracts) to $138M (AlbertoF, 27 contracts). The contract count only increased 42% but value increased 915%, suggesting inflated contract values under Fernandez.",
+        "risk_level": "high"
+      },
+      {
+        "contractor": "BIODIAGNOSTICO S.A.",
+        "finding": "Present across 3 administrations but 98% of $132M value concentrated under Alberto Fernandez. Volume also concentrated: 32 of 55 total contracts under one administration.",
+        "risk_level": "medium"
+      },
+      {
+        "contractor": "Laboratorios Jayor SRL",
+        "finding": "Single contract worth $97.8M under Alberto Fernandez. Single large-value contracts are a common procurement fraud vector.",
+        "risk_level": "medium"
+      }
+    ],
+    "sector_observation": "Top contractors are overwhelmingly pharmaceutical/medical supply companies (BIOARS, DROGUERIA ARTIGAS, BIODIAGNOSTICO, FRESENIUS KABI, BECTON DICKINSON, BIOMÉRIEUX). The COVID-19 pandemic (2020-2021) likely amplified medical procurement but does not fully explain the favoritism patterns — BIOARS's $40M average contract value far exceeds industry norms.",
+    "limitations": [
+      "Contract data appears to start around 2014, limiting pre-2015 election cycle analysis",
+      "2022 data ends at Q2, making full-year comparison impossible",
+      "Amounts are in nominal ARS — high inflation distorts year-over-year comparisons without deflation",
+      "PublicWork start_date values cluster in Q4, possibly due to data recording conventions rather than actual start dates",
+      "COVID-19 pandemic (2020-2021) is a confounding variable for the spending acceleration pattern"
+    ]
+  }
+}

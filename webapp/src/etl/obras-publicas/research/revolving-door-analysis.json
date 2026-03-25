@@ -1,0 +1,492 @@
+{
+  "meta": {
+    "wave": 18,
+    "title": "Revolving Door Analysis: Government-Contractor Officer Overlap in Obras Publicas",
+    "date": "2026-03-24",
+    "methodology": "Cross-referenced CompanyOfficer nodes linked via SAME_ENTITY to GovernmentAppointment nodes, then filtered to those whose companies match obras-publicas Contractor nodes. Top cases verified via web search.",
+    "confidence_tier": "bronze"
+  },
+  "summary": {
+    "total_revolving_door_persons": 2052,
+    "total_revolving_door_links": 2155,
+    "linked_to_obras_publicas_contractors": 217,
+    "distinct_contractors_with_officer_overlap": 123,
+    "contractors_with_active_works_or_contracts": 9,
+    "high_risk_senior_officials": 7
+  },
+  "ministry_rankings": [
+    { "ministry": "Ministerio de Hacienda", "revolving_door_count": 370 },
+    { "ministry": "Presidencia de la Nacion", "revolving_door_count": 252 },
+    { "ministry": "Jefatura de Gabinete de Ministros", "revolving_door_count": 242 },
+    { "ministry": "Ministerio de Salud y Desarrollo Social", "revolving_door_count": 220 },
+    { "ministry": "Ministerio de Educacion, Cultura, Ciencia y Tecnologia", "revolving_door_count": 211 },
+    { "ministry": "Ministerio de Agricultura, Ganaderia y Pesca", "revolving_door_count": 191 },
+    { "ministry": "Ministerio de Produccion y Trabajo", "revolving_door_count": 167 },
+    { "ministry": "Ministerio del Interior, Obras Publicas y Vivienda", "revolving_door_count": 153 },
+    { "ministry": "Ministerio de Justicia y Derechos Humanos", "revolving_door_count": 116 },
+    { "ministry": "Ministerio de Transporte", "revolving_door_count": 81 },
+    { "ministry": "Ministerio de Seguridad", "revolving_door_count": 66 },
+    { "ministry": "Ministerio de Defensa", "revolving_door_count": 54 },
+    { "ministry": "Ministerio de Relaciones Exteriores y Culto", "revolving_door_count": 32 }
+  ],
+  "top_contractors_by_officer_overlap": [
+    {
+      "contractor": "TALLERES NAVALES DARSENA NORTE S A C I Y N TANDANOR SACI Y N",
+      "cuit": "30506885597",
+      "officer_count": 7,
+      "works": 1,
+      "contracts": 0,
+      "note": "State-owned shipyard under Ministerio de Defensa. Officers include appointed government directors — overlap is structural since the state owns the company."
+    },
+    {
+      "contractor": "IRAM- INSTITUTO ARGENTINO DE NORMALIZACION Y CERTIFICACION",
+      "cuit": "30525562782",
+      "officer_count": 6,
+      "works": 0,
+      "contracts": 1,
+      "note": "Private non-profit standards body. Government officials sit on its board by design per Decree 1474/94 (National Quality System). Overlap is institutional rather than corrupt."
+    },
+    {
+      "contractor": "SACDE S.A.",
+      "cuit": "30568457451",
+      "officer_count": 2,
+      "works": 8,
+      "contracts": 0,
+      "note": "Formerly IECSA, owned by Macri family until 2007, then by cousin Angelo Calcaterra until 2017. Calcaterra admitted paying bribes in the 'cuadernos' case. Judicial proceedings confirmed hidden continued ownership via offshore Delaware entity."
+    },
+    {
+      "contractor": "SOCIEDAD CENTRAL DE ARQUITECTOS",
+      "cuit": "30525709511",
+      "officer_count": 2,
+      "works": 0,
+      "contracts": 1,
+      "note": "Professional association of architects, founded 1886. Government representatives serve on its board institutionally."
+    },
+    {
+      "contractor": "ABBOTT LABORATORIES ARGENTINA SA",
+      "cuit": "30500846301",
+      "officer_count": 1,
+      "works": 0,
+      "contracts": 2,
+      "note": "Multinational pharmaceutical. Received government sanctions for hospital supply delivery delays. Officer Pablo Trevisan held a 'Vocal' position at Min. de Produccion y Trabajo."
+    },
+    {
+      "contractor": "LA RURAL SA",
+      "cuit": "30697583048",
+      "officer_count": 1,
+      "works": 0,
+      "contracts": 1,
+      "note": "Exposition venue linked to Sociedad Rural Argentina. Abel Guerrieri served as Tesorero at Min. de Produccion y Trabajo and was designated president of RENATRE (rural workers registry) by the SRA."
+    },
+    {
+      "contractor": "TELEFONICA MOVILES ARGENTINA S.A.",
+      "cuit": "30678814357",
+      "officer_count": 1,
+      "works": 0,
+      "contracts": 1,
+      "note": "Telecom giant. Luis Malvido was VP/CEO of Telefonica Moviles, then appointed president of Aerolineas Argentinas (state airline) in 2018 — a textbook revolving door case, reportedly to mediate between government and Telefonica during the Telecom-Cablevision merger dispute."
+    },
+    {
+      "contractor": "CAMARA ARGENTINA DE INTERNET - CABASE",
+      "cuit": "30659161350",
+      "officer_count": 1,
+      "works": 0,
+      "contracts": 1,
+      "note": "Internet industry chamber. Leonardo Waingarten served as Director at Min. de Transporte."
+    },
+    {
+      "contractor": "CORREDOR CENTRAL S.A.",
+      "cuit": "30711344248",
+      "officer_count": 1,
+      "works": 1,
+      "contracts": 0,
+      "note": "Highway toll concession operator (Corredor Vial No. 8, Ruta Nacional 8 Buenos Aires-San Luis). Conceded by Decree 543/2010. Government later took over management via Corredores Viales S.A."
+    }
+  ],
+  "high_risk_cases": [
+    {
+      "person": "CLUSELLAS PABLO",
+      "gov_position": "Secretario Legal y Tecnico",
+      "ministry": "Presidencia de la Nacion",
+      "company": "SACDE S.A. (ex-IECSA)",
+      "cuit": "30568457451",
+      "works": 8,
+      "contracts": 0,
+      "risk_level": "critical",
+      "verification": {
+        "dual_role_confirmed": true,
+        "conflict_of_interest": "high",
+        "media_coverage": true,
+        "judicial_proceedings": true,
+        "details": "Pablo Clusellas was Macri's childhood friend and served as Secretario Legal y Tecnico (2015-2019), responsible for vetting everything the president signs. He appeared as sindico (auditor) of Creaurban, a company in the IECSA/SACDE group. IECSA/SACDE was owned by Macri family (until 2007) then cousin Angelo Calcaterra. Calcaterra admitted paying bribes in the 'cuadernos' case. Clusellas also linked to Panama Papers as intermediary with Mossack Fonseca.",
+        "sources": [
+          "https://es.wikipedia.org/wiki/Pablo_Clusellas",
+          "https://www.lanacion.com.ar/politica/pablo-clusellas-un-amigo-de-la-infancia-de-mauricio-macri-sera-el-secretario-legal-y-tecnico-nid1849121/",
+          "https://infonews.com/panama-papers/panama-papers-el-secretario-legal-y-tecnico-macri-fue-un-intermediario-vip-n235387.html",
+          "https://www.tiempoar.com.ar/politica/la-constructora-de-los-macri-no-se-vendio-calcaterra-continua-detras-de-iecsa/"
+        ]
+      }
+    },
+    {
+      "person": "LUIS GERMAN JAHN",
+      "gov_position": "Administrador de ENOHSA",
+      "ministry": "Ministerio del Interior, Obras Publicas y Vivienda",
+      "company": "SACDE S.A. (ex-IECSA)",
+      "cuit": "30568457451",
+      "works": 8,
+      "contracts": 0,
+      "risk_level": "high",
+      "verification": {
+        "dual_role_confirmed": true,
+        "conflict_of_interest": "high",
+        "media_coverage": true,
+        "judicial_proceedings": false,
+        "details": "Luis German Jahn was designated Administrador of ENOHSA (Ente Nacional de Obras Hidricas de Saneamiento) by Decree 267/2016. ENOHSA oversees water and sanitation infrastructure works nationwide — a role directly related to public works contracting. His link to SACDE (the Macri-family construction company with 8 works in the system) represents a significant conflict of interest. He resigned effective December 10, 2019.",
+        "sources": [
+          "https://www.construar.com.ar/2016/02/ing-d-luis-german-jahn-nuevo-administrador-del-enohsa/",
+          "https://www.boletinoficial.gob.ar/detalleAviso/primera/224703/20200122"
+        ]
+      }
+    },
+    {
+      "person": "LUIS ANTONIO MALVIDO",
+      "gov_position": "Presidente de Aerolineas Argentinas",
+      "ministry": "Ministerio de Transporte",
+      "company": "TELEFONICA MOVILES ARGENTINA S.A.",
+      "cuit": "30678814357",
+      "works": 0,
+      "contracts": 1,
+      "risk_level": "high",
+      "verification": {
+        "dual_role_confirmed": true,
+        "conflict_of_interest": "high",
+        "media_coverage": true,
+        "judicial_proceedings": false,
+        "details": "Luis Malvido was VP/CEO of Telefonica Moviles Argentina (since 1998), then Executive Director for Telefonica Hispanic South America (2015-2017). In July 2018 he was appointed president of Aerolineas Argentinas. Media reported this was explicitly to leverage his good relationship with Telefonica executives to mediate the government-Telefonica conflict over the Telecom-Cablevision merger — a textbook revolving door where a private telecom executive was placed in charge of the state airline to serve as diplomatic conduit to his former employer.",
+        "sources": [
+          "https://www.politicargentina.com/notas/201807/26342-el-gobierno-busca-calmar-a-telefonica-por-la-fusion-telecom-cablevision-y-entrega-a-aerolineas-a-uno-de-sus-ex-directivos.html",
+          "https://www.cronista.com/economia-politica/designan-a-malvido-ex-telefonica-al-frente-de-aerolineas-argentinas/",
+          "https://cuartopodersalta.com.ar/luis-malvido-el-nuevo-ceo-de-aerolineas-argentinas-que-antes-fue-vicepresidente-de-telefonica/"
+        ]
+      }
+    },
+    {
+      "person": "Jorge Daniel AROSA",
+      "gov_position": "Presidente de TANDANOR",
+      "ministry": "Ministerio de Defensa",
+      "company": "TALLERES NAVALES DARSENA NORTE S A C I Y N TANDANOR SACI Y N",
+      "cuit": "30506885597",
+      "works": 1,
+      "contracts": 0,
+      "risk_level": "medium",
+      "verification": {
+        "dual_role_confirmed": true,
+        "conflict_of_interest": "structural",
+        "media_coverage": true,
+        "judicial_proceedings": false,
+        "details": "Jorge Arosa is a retired naval officer (son of Admiral Ramon Arosa, first Navy chief post-democracy) and former Coca-Cola executive in Brazil. He served as president of TANDANOR (state-owned shipyard, 90% owned by Ministerio de Defensa). This is a structural overlap: the government appoints the shipyard's leadership. Also served simultaneously as president of the Argentine Naval League. TANDANOR was praised for transforming from a deficit-ridden entity to a productive shipyard under his management.",
+        "sources": [
+          "https://liganaval.org.ar/nota-140-entrevista-al-presidente-del-complejo-industrial-cinar-lic-jorge-arosa-realizada-por-el-vicepresidente-de-la-liga-naval-argentina",
+          "https://www.infobae.com/politica/2018/09/15/el-extrano-caso-de-tandanor-de-empresa-estatal-deficitaria-a-astillero-con-sobreproduccion-naval/"
+        ]
+      }
+    },
+    {
+      "person": "Julio Argentino RIOS GOMEZ",
+      "gov_position": "Presidente de SEGEMAR / Vicepresidente (IRAM board)",
+      "ministry": "Ministerio de Produccion y Trabajo / Ministerio de Educacion",
+      "company": "IRAM- INSTITUTO ARGENTINO DE NORMALIZACION Y CERTIFICACION",
+      "cuit": "30525562782",
+      "works": 0,
+      "contracts": 1,
+      "risk_level": "medium",
+      "verification": {
+        "dual_role_confirmed": true,
+        "conflict_of_interest": "institutional",
+        "media_coverage": false,
+        "judicial_proceedings": false,
+        "details": "Julio Argentino Rios Gomez was designated President of SEGEMAR (Servicio Geologico Minero Argentino) by Decree 515/2016. He also held board positions at IRAM (Presidente and Vicepresidente roles). IRAM is a private non-profit standards body that receives government contracts for certification services — the overlap is institutional (government representatives sit on IRAM's board by decree) rather than corrupt.",
+        "sources": [
+          "http://www.editorialrn.com.ar/index.php?option=com_content&view=article&id=4959",
+          "https://www.iram.org.ar/en/governing-board-and-staff/"
+        ]
+      }
+    },
+    {
+      "person": "Abel Francisco GUERRIERI",
+      "gov_position": "Tesorero / Presidente de RENATRE",
+      "ministry": "Ministerio de Produccion y Trabajo",
+      "company": "LA RURAL SA",
+      "cuit": "30697583048",
+      "works": 0,
+      "contracts": 1,
+      "risk_level": "medium",
+      "verification": {
+        "dual_role_confirmed": true,
+        "conflict_of_interest": "medium",
+        "media_coverage": true,
+        "judicial_proceedings": false,
+        "details": "Abel Guerrieri is a Sociedad Rural Argentina (SRA) leader who was designated president of RENATRE (national registry of rural workers) — described in media as 'another fox guarding the henhouse' (Pagina/12). He simultaneously held a government position (Tesorero at Min. de Produccion y Trabajo) while being an officer of La Rural SA, which holds government contracts. The SRA's capture of RENATRE was widely criticized in Argentine media.",
+        "sources": [
+          "https://www.pagina12.com.ar/90171-otro-zorro-de-la-rural-para-cuidar-el-gallinero",
+          "https://www.infobae.com/campo/2017/12/28/un-representante-de-la-sociedad-rural-es-el-nuevo-presidente-del-renatre/",
+          "https://www.agrositio.com.ar/canal-agrositio/la-red-rural/218365-abel-guerrieri-director-del-renatre-por-la-sociedad-rural-argentina.html"
+        ]
+      }
+    },
+    {
+      "person": "Andres CIVETTA",
+      "gov_position": "Director Nacional",
+      "ministry": "Ministerio de Produccion y Trabajo",
+      "company": "IRAM- INSTITUTO ARGENTINO DE NORMALIZACION Y CERTIFICACION",
+      "cuit": "30525562782",
+      "works": 0,
+      "contracts": 1,
+      "risk_level": "low",
+      "verification": {
+        "dual_role_confirmed": true,
+        "conflict_of_interest": "institutional",
+        "media_coverage": false,
+        "judicial_proceedings": false,
+        "details": "Director Nacional at Min. de Produccion y Trabajo and IRAM board member. Institutional overlap: government representatives are designated to IRAM's board by decree as part of the National Quality System."
+      }
+    }
+  ],
+  "revolving_door_records": [
+    {
+      "person": "Pablo Trevisan",
+      "gov_position": "Vocal",
+      "ministry": "Ministerio de Produccion y Trabajo",
+      "company": "ABBOTT LABORATORIES ARGENTINA",
+      "contractor": "ABBOTT LABORATORIES ARGENTINA SA",
+      "cuit": "30500846301",
+      "works": 0,
+      "contracts": 2
+    },
+    {
+      "person": "CLUSELLAS PABLO",
+      "gov_position": "Secretario",
+      "ministry": "Presidencia de la Nacion",
+      "company": "SACDE SOCIEDAD ARGENTINA DE CONSTRUC Y DESARRO ESTRATEGICO",
+      "contractor": "SACDE S.A.",
+      "cuit": "30568457451",
+      "works": 8,
+      "contracts": 0
+    },
+    {
+      "person": "LUIS GERMAN JAHN",
+      "gov_position": "Administrador",
+      "ministry": "Ministerio del Interior, Obras Publicas y Vivienda",
+      "company": "SACDE SOCIEDAD ARGENTINA DE CONSTRUC Y DESARRO ESTRATEGICO",
+      "contractor": "SACDE S.A.",
+      "cuit": "30568457451",
+      "works": 8,
+      "contracts": 0
+    },
+    {
+      "person": "LUIS ANTONIO MALVIDO",
+      "gov_position": "Presidente",
+      "ministry": "Ministerio de Transporte",
+      "company": "TELEFONICA MOVILES ARGENTINA",
+      "contractor": "TELEFONICA MOVILES ARGENTINA S.A.",
+      "cuit": "30678814357",
+      "works": 0,
+      "contracts": 1
+    },
+    {
+      "person": "Jorge Daniel AROSA",
+      "gov_position": "Presidente",
+      "ministry": "Ministerio de Defensa",
+      "company": "TALLERES NAVALES DARSENA NORTE",
+      "contractor": "TALLERES NAVALES DARSENA NORTE S A C I Y N TANDANOR SACI Y N",
+      "cuit": "30506885597",
+      "works": 1,
+      "contracts": 0
+    },
+    {
+      "person": "VILLAREAL Sebastian Pablo",
+      "gov_position": "Director General",
+      "ministry": "Presidencia de la Nacion",
+      "company": "TALLERES NAVALES DARSENA NORTE",
+      "contractor": "TALLERES NAVALES DARSENA NORTE S A C I Y N TANDANOR SACI Y N",
+      "cuit": "30506885597",
+      "works": 1,
+      "contracts": 0
+    },
+    {
+      "person": "SICILIANO CLAUDIA INES",
+      "gov_position": "Sindico Titular",
+      "ministry": "Jefatura de Gabinete de Ministros",
+      "company": "TALLERES NAVALES DARSENA NORTE",
+      "contractor": "TALLERES NAVALES DARSENA NORTE S A C I Y N TANDANOR SACI Y N",
+      "cuit": "30506885597",
+      "works": 1,
+      "contracts": 0
+    },
+    {
+      "person": "Ana Maria GONZALEZ",
+      "gov_position": "Sindico Titular",
+      "ministry": "Jefatura de Gabinete de Ministros",
+      "company": "TALLERES NAVALES DARSENA NORTE",
+      "contractor": "TALLERES NAVALES DARSENA NORTE S A C I Y N TANDANOR SACI Y N",
+      "cuit": "30506885597",
+      "works": 1,
+      "contracts": 0
+    },
+    {
+      "person": "Alejandro Jorge GERETTO",
+      "gov_position": "Director Nacional",
+      "ministry": "Presidencia de la Nacion",
+      "company": "TALLERES NAVALES DARSENA NORTE",
+      "contractor": "TALLERES NAVALES DARSENA NORTE S A C I Y N TANDANOR SACI Y N",
+      "cuit": "30506885597",
+      "works": 1,
+      "contracts": 0
+    },
+    {
+      "person": "PINCETI Marcelo Daniel",
+      "gov_position": "Coordinador de Departamento",
+      "ministry": "Presidencia de la Nacion",
+      "company": "TALLERES NAVALES DARSENA NORTE",
+      "contractor": "TALLERES NAVALES DARSENA NORTE S A C I Y N TANDANOR SACI Y N",
+      "cuit": "30506885597",
+      "works": 1,
+      "contracts": 0
+    },
+    {
+      "person": "Walter RABBIA",
+      "gov_position": "Subgerente",
+      "ministry": "Ministerio de Educacion, Cultura, Ciencia y Tecnologia",
+      "company": "TALLERES NAVALES DARSENA NORTE",
+      "contractor": "TALLERES NAVALES DARSENA NORTE S A C I Y N TANDANOR SACI Y N",
+      "cuit": "30506885597",
+      "works": 1,
+      "contracts": 0
+    },
+    {
+      "person": "DANIELLE ALICIA MARIANA",
+      "gov_position": "Coordinador de Departamento",
+      "ministry": "Presidencia de la Nacion",
+      "company": "CORREDOR CENTRAL",
+      "contractor": "CORREDOR CENTRAL S.A.",
+      "cuit": "30711344248",
+      "works": 1,
+      "contracts": 0
+    },
+    {
+      "person": "WAINGARTEN LEONARDO",
+      "gov_position": "Director",
+      "ministry": "Ministerio de Transporte",
+      "company": "ARGENTINA DE INTERNET-CABASE",
+      "contractor": "CAMARA ARGENTINA DE INTERNET - CABASE",
+      "cuit": "30659161350",
+      "works": 0,
+      "contracts": 1
+    },
+    {
+      "person": "GUERRIERI ABEL FRANCISCO",
+      "gov_position": "Tesorero",
+      "ministry": "Ministerio de Produccion y Trabajo",
+      "company": "LA RURAL",
+      "contractor": "LA RURAL SA",
+      "cuit": "30697583048",
+      "works": 0,
+      "contracts": 1
+    },
+    {
+      "person": "Nicolas Francisco RONA",
+      "gov_position": "Gerente",
+      "ministry": "Ministerio de Hacienda",
+      "company": "IRAM",
+      "contractor": "IRAM- INSTITUTO ARGENTINO DE NORMALIZACION Y CERTIFICACION",
+      "cuit": "30525562782",
+      "works": 0,
+      "contracts": 1
+    },
+    {
+      "person": "Victor Javier BALESTRA",
+      "gov_position": "Director",
+      "ministry": "Ministerio de Produccion y Trabajo",
+      "company": "IRAM",
+      "contractor": "IRAM- INSTITUTO ARGENTINO DE NORMALIZACION Y CERTIFICACION",
+      "cuit": "30525562782",
+      "works": 0,
+      "contracts": 1
+    },
+    {
+      "person": "Andres CIVETTA",
+      "gov_position": "Director Nacional",
+      "ministry": "Ministerio de Produccion y Trabajo",
+      "company": "IRAM",
+      "contractor": "IRAM- INSTITUTO ARGENTINO DE NORMALIZACION Y CERTIFICACION",
+      "cuit": "30525562782",
+      "works": 0,
+      "contracts": 1
+    },
+    {
+      "person": "Pablo Daniel SALATINO",
+      "gov_position": "Jefe de Division",
+      "ministry": "Ministerio de Hacienda",
+      "company": "IRAM",
+      "contractor": "IRAM- INSTITUTO ARGENTINO DE NORMALIZACION Y CERTIFICACION",
+      "cuit": "30525562782",
+      "works": 0,
+      "contracts": 1
+    },
+    {
+      "person": "Julio Argentino RIOS GOMEZ",
+      "gov_position": "Presidente (SEGEMAR) / Vicepresidente (IRAM)",
+      "ministry": "Ministerio de Produccion y Trabajo / Ministerio de Educacion",
+      "company": "IRAM",
+      "contractor": "IRAM- INSTITUTO ARGENTINO DE NORMALIZACION Y CERTIFICACION",
+      "cuit": "30525562782",
+      "works": 0,
+      "contracts": 1
+    },
+    {
+      "person": "Manuel FERNANDEZ AROCENA",
+      "gov_position": "Director General",
+      "ministry": "Ministerio de Agricultura, Ganaderia y Pesca",
+      "company": "IRAM",
+      "contractor": "IRAM- INSTITUTO ARGENTINO DE NORMALIZACION Y CERTIFICACION",
+      "cuit": "30525562782",
+      "works": 0,
+      "contracts": 1
+    },
+    {
+      "person": "Marcos MARTIN",
+      "gov_position": "Titular",
+      "ministry": "Ministerio de Educacion, Cultura, Ciencia y Tecnologia",
+      "company": "SOCIEDAD CENTRAL DE ARQUITECTOS",
+      "contractor": "SOCIEDAD CENTRAL DE ARQUITECTOS",
+      "cuit": "30525709511",
+      "works": 0,
+      "contracts": 1
+    },
+    {
+      "person": "Espil Enrique GARCIA",
+      "gov_position": "Vocal Ministerio de Cultura",
+      "ministry": "Ministerio de Educacion, Cultura, Ciencia y Tecnologia",
+      "company": "SOCIEDAD CENTRAL DE ARQUITECTOS",
+      "contractor": "SOCIEDAD CENTRAL DE ARQUITECTOS",
+      "cuit": "30525709511",
+      "works": 0,
+      "contracts": 1
+    }
+  ],
+  "classification": {
+    "critical_conflicts": [
+      "CLUSELLAS-SACDE: Presidential secretary with corporate link to Macri-family construction company receiving 8 public works. Panama Papers involvement. Cuadernos bribery case connection.",
+      "JAHN-SACDE: ENOHSA administrator (water/sanitation infrastructure) linked to same Macri-family construction company with 8 works."
+    ],
+    "confirmed_revolving_door": [
+      "MALVIDO: Telefonica VP -> Aerolineas Argentinas president. Explicitly appointed to mediate government-Telefonica dispute over Telecom-Cablevision merger.",
+      "GUERRIERI: SRA leader -> RENATRE president + government Tesorero. Media described it as 'fox guarding henhouse.'"
+    ],
+    "structural_overlap_not_corrupt": [
+      "TANDANOR: State-owned shipyard. Government officials serve as board members by design (90% state ownership).",
+      "IRAM: Standards body with government-designated board seats per Decree 1474/94.",
+      "SOCIEDAD CENTRAL DE ARQUITECTOS: Professional association with government-designated cultural representatives."
+    ]
+  }
+}

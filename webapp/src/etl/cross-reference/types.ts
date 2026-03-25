@@ -30,6 +30,15 @@ export type FlagType =
   | 'officer_appointment'
   | 'repeat_winner'
   | 'shell_company'
+  // obras-publicas flags
+  | 'debarred_active'
+  | 'budget_overrun'
+  | 'budget_underrun'
+  | 'odebrecht_linked'
+  | 'cuadernos_linked'
+  | 'cross_investigation'
+  | 'multilateral_national'
+  | 'geographic_concentration'
 
 export interface InvestigationFlag {
   entity_id: string
