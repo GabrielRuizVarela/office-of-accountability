@@ -20,7 +20,7 @@ import type { GraphData, GraphNode, GraphLink } from '../../../../lib/neo4j/type
 // Label config for the case graph
 // ---------------------------------------------------------------------------
 
-const LABEL_CONFIG: ReadonlyArray<{ label: string; color: string; name: string }> = [
+const EPSTEIN_LABELS: ReadonlyArray<{ label: string; color: string; name: string }> = [
   { label: 'Person', color: '#3b82f6', name: 'People' },
   { label: 'Organization', color: '#8b5cf6', name: 'Organizations' },
   { label: 'Location', color: '#10b981', name: 'Locations' },
@@ -30,12 +30,22 @@ const LABEL_CONFIG: ReadonlyArray<{ label: string; color: string; name: string }
   { label: 'Flight', color: '#f97316', name: 'Flights' },
 ]
 
+const NUCLEAR_LABELS: ReadonlyArray<{ label: string; color: string; name: string }> = [
+  { label: 'NuclearSignal', color: '#eab308', name: 'Signals' },
+  { label: 'NuclearActor', color: '#ef4444', name: 'Actors' },
+  { label: 'WeaponSystem', color: '#f97316', name: 'Weapons' },
+  { label: 'Treaty', color: '#3b82f6', name: 'Treaties' },
+  { label: 'NuclearFacility', color: '#10b981', name: 'Facilities' },
+  { label: 'RiskBriefing', color: '#a855f7', name: 'Briefings' },
+]
+
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
 
 export default function GrafoPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params)
+  const LABEL_CONFIG = slug === 'riesgo-nuclear' ? NUCLEAR_LABELS : EPSTEIN_LABELS
   const graphRef = useRef<ForceGraphHandle>(null)
 
   // Graph data & UI state

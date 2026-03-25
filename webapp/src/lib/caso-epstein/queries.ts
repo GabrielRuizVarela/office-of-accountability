@@ -167,7 +167,7 @@ export async function getInvestigationGraph(casoSlug: string, tiers?: Confidence
     const nodeResult = await session.run(
       `MATCH (n)
        WHERE n.caso_slug = $casoSlug
-         AND (size($tiers) = 0 OR n.confidence_tier IN $tiers)
+         AND (size($tiers) = 0 OR n.confidence_tier IN $tiers OR n.tier IN $tiers)
        RETURN n`,
       { casoSlug, tiers: tiers ?? [] },
       { timeout: 30_000 },
@@ -184,8 +184,8 @@ export async function getInvestigationGraph(casoSlug: string, tiers?: Confidence
     const relResult = await session.run(
       `MATCH (a)-[r]->(b)
        WHERE a.caso_slug = $casoSlug AND b.caso_slug = $casoSlug
-         AND (size($tiers) = 0 OR a.confidence_tier IN $tiers)
-         AND (size($tiers) = 0 OR b.confidence_tier IN $tiers)
+         AND (size($tiers) = 0 OR a.confidence_tier IN $tiers OR a.tier IN $tiers)
+         AND (size($tiers) = 0 OR b.confidence_tier IN $tiers OR b.tier IN $tiers)
        RETURN r`,
       { casoSlug, tiers: tiers ?? [] },
       { timeout: 30_000 },

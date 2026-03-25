@@ -29,6 +29,12 @@ const CASE_META: Readonly<Record<string, { title: string; description: string; d
       'Investigacion sobre mercados monopolizados: 18 sectores, 44 archivos, 829+ cruces Neo4j. Costo al consumidor: USD 22.500M/año.',
     defaultLang: 'es',
   },
+  'riesgo-nuclear': {
+    title: 'Global Nuclear Risk — Office of Accountability',
+    description:
+      'Daily monitoring of nuclear escalation signals across all theaters. 31 sources, LLM-powered analysis, risk scoring.',
+    defaultLang: 'en',
+  },
 }
 
 export async function generateMetadata({

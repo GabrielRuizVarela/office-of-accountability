@@ -230,11 +230,11 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
       const n = data.nodes.length
       const charge = fgAny.d3Force('charge')
       if (charge && typeof (charge as { strength: (v: number) => void }).strength === 'function') {
-        (charge as { strength: (v: number) => void }).strength(-Math.max(80, n * 2.5))
+        (charge as { strength: (v: number) => void }).strength(-Math.max(120, n * 4))
       }
       const link = fgAny.d3Force('link')
       if (link && typeof (link as { distance: (v: number) => void }).distance === 'function') {
-        (link as { distance: (v: number) => void }).distance(Math.max(50, n * 1.5))
+        (link as { distance: (v: number) => void }).distance(Math.max(80, n * 2.5))
       }
     } catch { /* */ }
   }, [data.nodes.length])
