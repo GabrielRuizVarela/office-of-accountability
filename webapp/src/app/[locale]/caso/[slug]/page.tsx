@@ -2,7 +2,7 @@
  * Caso landing page — routes to the correct investigation component based on slug.
  */
 
-import { redirect } from 'next/navigation'
+import { redirect } from '@/i18n/navigation'
 import { getStats, getActors, getDocuments } from '@/lib/caso-libra'
 import { CasoLandingContent } from './CasoLandingContent'
 import { NuclearRiskLanding } from './NuclearRiskLanding'
