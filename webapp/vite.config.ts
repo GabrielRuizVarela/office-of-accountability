@@ -69,4 +69,7 @@ export default defineConfig({
   resolve: {
     alias: tiptapAliases(),
   },
+  optimizeDeps: {
+    exclude: ['next-intl'],
+  },
 })
