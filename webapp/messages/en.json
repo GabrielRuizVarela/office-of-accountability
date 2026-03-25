@@ -50,5 +50,243 @@
   },
   "roadmap": {
     "title": "Roadmap"
+  },
+  "metadata": {
+    "siteTitle": "Office of Accountability",
+    "siteDescription": "Civic knowledge platform for Argentine politics. Investigation engine on knowledge graphs with automated verification and human review.",
+    "cases": {
+      "caso-libra": {
+        "title": "Libra Case: The President's Memecoin",
+        "description": "Milei promoted $LIBRA to 19M followers. The price collapsed 94% in hours. 114,000+ wallets lost $251M+."
+      },
+      "caso-epstein": {
+        "title": "Epstein Case: Trafficking and power network",
+        "description": "7,276 entities and 11,040 documented relationships. Court documents, flight records, 77 fact checks."
+      },
+      "caso-dictadura": {
+        "title": "Dictatorship Case: 1976-1983",
+        "description": "Argentine military dictatorship. 9,415 documented victims, 774 clandestine detention centers, 987 declassified SIDE pages."
+      },
+      "finanzas-politicas": {
+        "title": "Argentine Political Finance",
+        "description": "Campaign financing, sworn asset declarations, offshore companies, and connections between politicians and corporations."
+      },
+      "monopolios": {
+        "title": "Monopolies in Argentina",
+        "description": "Monopolized markets: telecommunications, energy, food, media, banking, mining, agro-exports, construction, pharmaceuticals."
+      },
+      "obras-publicas": {
+        "title": "Argentine Public Works",
+        "description": "Public works contract traceability: CONTRAT.AR, MapaInversiones, Odebrecht, Cuadernos, Siemens."
+      },
+      "riesgo-nuclear": {
+        "title": "Global Nuclear Risk",
+        "description": "Tracking signals that could indicate nuclear risk escalation: military developments, official statements, treaties."
+      }
+    }
+  },
+  "investigationCards": {
+    "caso-libra": {
+      "title": "Libra Case: The President's Memecoin",
+      "subtitle": "Active investigation",
+      "description": "Milei promoted $LIBRA to 19M followers. The price collapsed 94% in hours. 114,000+ wallets lost $251M+.",
+      "stats": {
+        "losses": "Losses",
+        "walletsAffected": "Wallets affected",
+        "drop": "Drop"
+      }
+    },
+    "caso-epstein": {
+      "title": "Epstein Case: Trafficking and power network",
+      "subtitle": "Active investigation",
+      "description": "7,276 entities and 11,040 documented relationships. Court documents, flight records, 77 fact checks.",
+      "stats": {
+        "entities": "Entities",
+        "actors": "Actors",
+        "documents": "Documents"
+      }
+    },
+    "caso-dictadura": {
+      "title": "Dictatorship Case: 1976-1983",
+      "subtitle": "Active investigation",
+      "description": "Argentine military dictatorship. 9,415 documented victims, 774 clandestine detention centers, 987 declassified SIDE pages, 54 accountability gaps flagged.",
+      "stats": {
+        "victims": "Victims",
+        "ccds": "CDCs",
+        "nodes": "Nodes"
+      }
+    },
+    "finanzas-politicas": {
+      "title": "Argentine Political Finance",
+      "subtitle": "Active investigation",
+      "description": "Campaign financing, sworn asset declarations, offshore companies, and connections between politicians and corporations.",
+      "stats": {
+        "legislators": "Legislators",
+        "etlSources": "ETL sources"
+      }
+    },
+    "monopolios": {
+      "title": "Monopolies in Argentina",
+      "subtitle": "Active investigation — 18 sectors",
+      "description": "Monopolized markets: telecommunications, energy, food, media, banking, mining, agro-exports, construction, pharmaceuticals. 829+ Neo4j cross-references, 75 verified claims.",
+      "stats": {
+        "sectors": "Sectors",
+        "crossRefs": "Neo4j cross-refs",
+        "annualCost": "Annual cost"
+      }
+    },
+    "obras-publicas": {
+      "title": "Argentine Public Works",
+      "subtitle": "Active investigation — 30 waves of enrichment",
+      "description": "Public works contract traceability: CONTRAT.AR, MapaInversiones, Odebrecht, Cuadernos, Siemens. 56,122 entities, 13,277 cross-references against the political finance graph.",
+      "stats": {
+        "entities": "Entities",
+        "projects": "Projects",
+        "crossRefs": "Cross-refs"
+      }
+    },
+    "riesgo-nuclear": {
+      "title": "Global Nuclear Risk",
+      "subtitle": "Daily monitoring of nuclear escalation signals",
+      "description": "Tracking signals that could indicate nuclear risk escalation: military developments, official statements, treaties, missile tests, and OSINT data from 31 sources.",
+      "stats": {
+        "sources": "Sources",
+        "theaters": "Theaters",
+        "nuclearStates": "Nuclear states"
+      }
+    }
+  },
+  "chapters": {
+    "i": {
+      "label": "The first test",
+      "title": "Libra Case: The President's Memecoin",
+      "body": "Milei promoted $LIBRA to 19 million followers. The price collapsed 94% in hours. The engine processed blockchain transactions, parliamentary documents, and social media. $251M+ in losses, 114K wallets affected.",
+      "link": "View investigation →"
+    },
+    "ii": {
+      "label": "Scaling test",
+      "title": "Epstein Case: Trafficking and power network",
+      "body": "A case with thousands of documents, hundreds of actors, decades of history. 7,276 entities, 374 actors, 1,044 court documents processed. The engine scaled.",
+      "link": "View investigation →"
+    },
+    "iii": {
+      "label": "The discovery",
+      "title": "Argentine Political Finance",
+      "body": "We started with the Como Voto datasets. We expanded to sworn declarations, offshore companies, campaign financing. 329 legislators, 7 cross-referenced data sources.",
+      "link": "View investigation →"
+    },
+    "iv": {
+      "label": "Open data",
+      "title": "Public Works and Monopolies",
+      "body": "Public works contracts: CONTRAT.AR, MapaInversiones, Odebrecht, Cuadernos. 56,122 entities, 7,486 projects, 13,277 cross-references. In parallel, 18 monopolized sectors. USD 22.5B in estimated annual cost.",
+      "linkObras": "Public Works →",
+      "linkMonopolios": "Monopolies →"
+    },
+    "v": {
+      "label": "March 24, 2026",
+      "title": "Dictatorship Case: 1976–1983",
+      "body": "Argentine military dictatorship. Multiple ingestion pipelines consolidated into a unified graph. 9,415 victims, 774 clandestine detention centers, 14,512 nodes.",
+      "link": "View investigation →"
+    },
+    "vi": {
+      "label": "In development",
+      "title": "Global Nuclear Risk",
+      "body": "Daily monitoring of nuclear escalation signals. 31 sources, 9 monitored nuclear states.",
+      "link": "View progress →"
+    },
+    "transitions": {
+      "1": "The engine worked. But we needed to test it with something bigger.",
+      "2": "Results improved with each new data source. We decided to expand.",
+      "3": "The results were surprising. But public works and monopolies were still missing.",
+      "4": "March 24th brought new information. The Argentine military dictatorship deserved its own investigation."
+    }
+  },
+  "roadmapPhases": {
+    "phase-1": {
+      "title": "Phase 1 — Knowledge graph + Investigations",
+      "goal": "Graph database with verified public data, visual explorer, and first published investigations.",
+      "statusLabel": "In progress",
+      "features": [
+        "Interactive graph explorer (Neo4j)",
+        "Automated legislative data ingestion",
+        "Politician profiles with voting records",
+        "Seven published investigations"
+      ]
+    },
+    "phase-2": {
+      "title": "Phase 2 — Autonomous investigation engine",
+      "goal": "Automated pipeline: the engine searches, validates, consolidates, and reports findings with human review at every step.",
+      "statusLabel": "Next",
+      "features": [
+        "Ingestion → verification → enrichment → report pipeline",
+        "LLM-assisted with human review at each stage (human-at-the-gates)",
+        "Reusable templates for new domains",
+        "Data connectors: APIs, scrapers, court documents"
+      ]
+    },
+    "phase-3": {
+      "title": "Phase 3 — Advanced AI + Public API",
+      "goal": "Advanced graph queries, automated suggestions, and API for journalists and researchers.",
+      "statusLabel": "Future",
+      "features": [
+        "Multi-hop queries and sub-graph extraction",
+        "AI to suggest related nodes and summarize documents",
+        "Public API for journalists and researchers",
+        "Investigation export (PDF, open data)"
+      ]
+    },
+    "phase-4": {
+      "title": "Phase 4 — Community + Governance",
+      "goal": "Community investigations, coalitions, endorsements, and consensus mechanisms.",
+      "statusLabel": "Future",
+      "features": [
+        "Collaborative investigation editor with graph embeds",
+        "Investigation coalitions with roles and reputation",
+        "Endorsement system for claims and evidence",
+        "Identity verification (DNI/CUIL)"
+      ]
+    },
+    "phase-5": {
+      "title": "Phase 5 — Accountability",
+      "goal": "Algorithmic scoring, citizen mandates, and provincial coverage.",
+      "statusLabel": "Future",
+      "features": [
+        "Accountability scoring (A/B/C/D per politician)",
+        "Citizen mandates linked to the graph",
+        "Liquid democracy and quadratic voting",
+        "Provincial legislative coverage"
+      ]
+    }
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signUp": "Create account",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "forgotPassword": "Forgot your password?",
+    "resetPassword": "Reset password",
+    "verifyEmail": "Verify email",
+    "continueWithGoogle": "Continue with Google",
+    "error": "Incorrect email or password",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?",
+    "sendResetLink": "Send reset link",
+    "backToSignIn": "Back to sign in"
+  },
+  "case": {
+    "status": {
+      "confirmed": "Confirmed",
+      "alleged": "Alleged",
+      "denied": "Denied",
+      "under_investigation": "Under investigation"
+    },
+    "categories": {
+      "political": "Political",
+      "financial": "Financial",
+      "legal": "Legal",
+      "media": "Media",
+      "coverup": "Cover-up"
+    }
   }
 }

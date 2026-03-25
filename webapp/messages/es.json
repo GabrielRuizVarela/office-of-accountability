@@ -50,5 +50,243 @@
   },
   "roadmap": {
     "title": "Hoja de ruta"
+  },
+  "metadata": {
+    "siteTitle": "Oficina de Rendición de Cuentas",
+    "siteDescription": "Plataforma de conocimiento cívico para la política argentina. Motor de investigación sobre grafos de conocimiento con verificación automatizada y revisión humana.",
+    "cases": {
+      "caso-libra": {
+        "title": "Caso Libra: La Memecoin del Presidente",
+        "description": "Milei promovió $LIBRA a 19M de seguidores. El precio colapsó 94% en horas. 114,000+ billeteras perdieron $251M+."
+      },
+      "caso-epstein": {
+        "title": "Caso Epstein: Red de tráfico y poder",
+        "description": "7,276 entidades y 11,040 relaciones documentadas. Documentos judiciales, registros de vuelo, 77 verificaciones de hechos."
+      },
+      "caso-dictadura": {
+        "title": "Caso Dictadura: 1976-1983",
+        "description": "Dictadura militar argentina. 9.415 víctimas documentadas, 774 centros clandestinos, 987 páginas SIDE desclasificadas."
+      },
+      "finanzas-politicas": {
+        "title": "Finanzas Políticas Argentinas",
+        "description": "Financiamiento de campañas, declaraciones juradas patrimoniales, sociedades offshore y conexiones entre políticos y empresas."
+      },
+      "monopolios": {
+        "title": "Monopolios en Argentina",
+        "description": "Mercados monopolizados: telecomunicaciones, energía, alimentos, medios, banca, minería, agroexportación, construcción, farmacéutica."
+      },
+      "obras-publicas": {
+        "title": "Obras Públicas Argentinas",
+        "description": "Trazabilidad de contratos de obra pública: CONTRAT.AR, MapaInversiones, Odebrecht, Cuadernos, Siemens."
+      },
+      "riesgo-nuclear": {
+        "title": "Riesgo Nuclear Global",
+        "description": "Seguimiento de señales que podrían indicar escalada del riesgo nuclear: desarrollos militares, declaraciones oficiales, tratados."
+      }
+    }
+  },
+  "investigationCards": {
+    "caso-libra": {
+      "title": "Caso Libra: La Memecoin del Presidente",
+      "subtitle": "Investigación activa",
+      "description": "Milei promovió $LIBRA a 19M de seguidores. El precio colapsó 94% en horas. 114,000+ billeteras perdieron $251M+.",
+      "stats": {
+        "losses": "Pérdidas",
+        "walletsAffected": "Billeteras afectadas",
+        "drop": "Caída"
+      }
+    },
+    "caso-epstein": {
+      "title": "Caso Epstein: Red de tráfico y poder",
+      "subtitle": "Investigación activa",
+      "description": "7,276 entidades y 11,040 relaciones documentadas. Documentos judiciales, registros de vuelo, 77 verificaciones de hechos.",
+      "stats": {
+        "entities": "Entidades",
+        "actors": "Actores",
+        "documents": "Documentos"
+      }
+    },
+    "caso-dictadura": {
+      "title": "Caso Dictadura: 1976-1983",
+      "subtitle": "Investigación activa",
+      "description": "Dictadura militar argentina. 9.415 víctimas documentadas, 774 centros clandestinos, 987 páginas SIDE desclasificadas, 54 brechas de rendición de cuentas señaladas.",
+      "stats": {
+        "victims": "Víctimas",
+        "ccds": "CCDs",
+        "nodes": "Nodos"
+      }
+    },
+    "finanzas-politicas": {
+      "title": "Finanzas Políticas Argentinas",
+      "subtitle": "Investigación activa",
+      "description": "Financiamiento de campañas, declaraciones juradas patrimoniales, sociedades offshore y conexiones entre políticos y empresas.",
+      "stats": {
+        "legislators": "Legisladores",
+        "etlSources": "Fuentes ETL"
+      }
+    },
+    "monopolios": {
+      "title": "Monopolios en Argentina",
+      "subtitle": "Investigación activa — 18 sectores",
+      "description": "Mercados monopolizados: telecomunicaciones, energía, alimentos, medios, banca, minería, agroexportación, construcción, farmacéutica. 829+ cruces Neo4j, 75 afirmaciones verificadas.",
+      "stats": {
+        "sectors": "Sectores",
+        "crossRefs": "Cruces Neo4j",
+        "annualCost": "Costo anual"
+      }
+    },
+    "obras-publicas": {
+      "title": "Obras Públicas Argentinas",
+      "subtitle": "Investigación activa — 30 olas de enriquecimiento",
+      "description": "Trazabilidad de contratos de obra pública: CONTRAT.AR, MapaInversiones, Odebrecht, Cuadernos, Siemens. 56,122 entidades, 13,277 cruces contra el grafo de finanzas políticas.",
+      "stats": {
+        "entities": "Entidades",
+        "projects": "Obras",
+        "crossRefs": "Cruces"
+      }
+    },
+    "riesgo-nuclear": {
+      "title": "Riesgo Nuclear Global",
+      "subtitle": "Monitoreo diario de señales de escalada nuclear",
+      "description": "Seguimiento de señales que podrían indicar escalada del riesgo nuclear: desarrollos militares, declaraciones oficiales, tratados, pruebas de misiles y datos OSINT de 31 fuentes.",
+      "stats": {
+        "sources": "Fuentes",
+        "theaters": "Teatros",
+        "nuclearStates": "Estados nucleares"
+      }
+    }
+  },
+  "chapters": {
+    "i": {
+      "label": "La primera prueba",
+      "title": "Caso Libra: La Memecoin del Presidente",
+      "body": "Milei promovió $LIBRA a 19 millones de seguidores. El precio colapsó 94% en horas. El motor procesó transacciones blockchain, documentos parlamentarios y redes sociales. $251M+ en pérdidas, 114K billeteras afectadas.",
+      "link": "Ver investigación →"
+    },
+    "ii": {
+      "label": "Prueba de escala",
+      "title": "Caso Epstein: Red de tráfico y poder",
+      "body": "Un caso con miles de documentos, cientos de actores, décadas de historia. 7,276 entidades, 374 actores, 1,044 documentos judiciales procesados. El motor escaló.",
+      "link": "Ver investigación →"
+    },
+    "iii": {
+      "label": "El descubrimiento",
+      "title": "Finanzas Políticas Argentinas",
+      "body": "Empezamos con los datasets de Como Voto. Expandimos a declaraciones juradas, sociedades offshore, financiamiento de campañas. 329 legisladores, 7 fuentes de datos cruzadas.",
+      "link": "Ver investigación →"
+    },
+    "iv": {
+      "label": "Datos abiertos",
+      "title": "Obras Públicas y Monopolios",
+      "body": "Contratos de obra pública: CONTRAT.AR, MapaInversiones, Odebrecht, Cuadernos. 56,122 entidades, 7,486 obras, 13,277 cruces. En paralelo, 18 sectores monopolizados. USD 22.5B en costo anual estimado.",
+      "linkObras": "Obras Públicas →",
+      "linkMonopolios": "Monopolios →"
+    },
+    "v": {
+      "label": "24 de Marzo 2026",
+      "title": "Caso Dictadura: 1976–1983",
+      "body": "Dictadura militar argentina. Múltiples pipelines de ingesta consolidados en un grafo unificado. 9,415 víctimas, 774 centros clandestinos, 14,512 nodos.",
+      "link": "Ver investigación →"
+    },
+    "vi": {
+      "label": "En desarrollo",
+      "title": "Riesgo Nuclear Global",
+      "body": "Monitoreo diario de señales de escalada nuclear. 31 fuentes, 9 estados nucleares monitoreados.",
+      "link": "Ver progreso →"
+    },
+    "transitions": {
+      "1": "El motor funcionó. Pero necesitábamos probarlo con algo más grande.",
+      "2": "Los resultados mejoraban con cada nueva fuente de datos. Decidimos expandir.",
+      "3": "Los resultados fueron sorprendentes. Pero faltaban las obras públicas y los monopolios.",
+      "4": "El 24 de marzo trajo nueva información. La dictadura militar argentina merecía su propia investigación."
+    }
+  },
+  "roadmapPhases": {
+    "phase-1": {
+      "title": "Fase 1 — Grafo de conocimiento + Investigaciones",
+      "goal": "Base de datos en grafo con datos públicos verificados, explorador visual y primeras investigaciones publicadas.",
+      "statusLabel": "En progreso",
+      "features": [
+        "Explorador de grafo interactivo (Neo4j)",
+        "Ingestión automatizada de datos legislativos",
+        "Perfiles de políticos con historial de votos",
+        "Siete investigaciones publicadas"
+      ]
+    },
+    "phase-2": {
+      "title": "Fase 2 — Motor de investigación autónomo",
+      "goal": "Pipeline automatizado: el motor busca, valida, consolida y reporta hallazgos con revisión humana en cada paso.",
+      "statusLabel": "Próximo",
+      "features": [
+        "Pipeline de ingestión → verificación → enriquecimiento → reporte",
+        "LLM asistido con revisión humana en cada etapa (human-at-the-gates)",
+        "Templates reutilizables para nuevos dominios",
+        "Conectores de datos: APIs, scrapers, documentos judiciales"
+      ]
+    },
+    "phase-3": {
+      "title": "Fase 3 — IA avanzada + API pública",
+      "goal": "Consultas avanzadas sobre el grafo, sugerencias automáticas y API para periodistas e investigadores.",
+      "statusLabel": "Futuro",
+      "features": [
+        "Consultas multi-hop y extracción de sub-grafos",
+        "IA para sugerir nodos relacionados y resumir documentos",
+        "API pública para periodistas e investigadores",
+        "Exportación de investigaciones (PDF, datos abiertos)"
+      ]
+    },
+    "phase-4": {
+      "title": "Fase 4 — Comunidad + Gobernanza",
+      "goal": "Investigaciones comunitarias, coaliciones, endorsements y mecanismos de consenso.",
+      "statusLabel": "Futuro",
+      "features": [
+        "Editor colaborativo de investigaciones con embeds de grafo",
+        "Coaliciones de investigación con roles y reputación",
+        "Sistema de endorsement para claims y evidencia",
+        "Verificación de identidad (DNI/CUIL)"
+      ]
+    },
+    "phase-5": {
+      "title": "Fase 5 — Rendición de cuentas",
+      "goal": "Scoring algorítmico, mandatos ciudadanos y cobertura provincial.",
+      "statusLabel": "Futuro",
+      "features": [
+        "Scoring de rendición de cuentas (A/B/C/D por político)",
+        "Mandatos ciudadanos vinculados al grafo",
+        "Democracia líquida y votación cuadrática",
+        "Cobertura legislativa provincial"
+      ]
+    }
+  },
+  "auth": {
+    "signIn": "Iniciar sesión",
+    "signUp": "Crear cuenta",
+    "email": "Email",
+    "password": "Contraseña",
+    "name": "Nombre",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "resetPassword": "Restablecer contraseña",
+    "verifyEmail": "Verificar email",
+    "continueWithGoogle": "Continuar con Google",
+    "error": "Email o contraseña incorrectos",
+    "alreadyHaveAccount": "¿Ya tenés cuenta?",
+    "dontHaveAccount": "¿No tenés cuenta?",
+    "sendResetLink": "Enviar enlace",
+    "backToSignIn": "Volver a iniciar sesión"
+  },
+  "case": {
+    "status": {
+      "confirmed": "Confirmado",
+      "alleged": "Presunto",
+      "denied": "Desmentido",
+      "under_investigation": "En investigación"
+    },
+    "categories": {
+      "political": "Político",
+      "financial": "Financiero",
+      "legal": "Legal",
+      "media": "Medios",
+      "coverup": "Encubrimiento"
+    }
   }
 }
