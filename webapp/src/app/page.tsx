@@ -218,7 +218,7 @@ export default function Home() {
   const { lang } = useLanguage()
 
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="bg-pattern-dots mx-auto max-w-3xl">
       <Masthead />
       <NarrativeIntro />
 
