@@ -27,6 +27,148 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
+ * Subtle dot-grid pattern background — editorial / graph-paper feel
+ * --------------------------------------------------------------------------- */
+
+.bg-pattern-dots {
+  background-image: radial-gradient(circle, rgba(161, 161, 170, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Scroll-reveal animations
+ * --------------------------------------------------------------------------- */
+
+.sr-hidden {
+  will-change: transform, opacity;
+}
+
+/* Fade up variant */
+.sr-fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sr-fade-up.sr-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade only variant */
+.sr-fade {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sr-fade.sr-visible {
+  opacity: 1;
+}
+
+/* Draw-down variant (for connector lines) */
+.sr-draw-down {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sr-draw-down.sr-visible {
+  transform: scaleY(1);
+}
+
+/* Chapter dot glow pulse */
+@keyframes dot-glow {
+  0%, 100% { box-shadow: 0 0 0 0 currentColor; }
+  50% { box-shadow: 0 0 8px 2px currentColor; }
+}
+.dot-glow {
+  animation: dot-glow 3s ease-in-out infinite;
+}
+
+/* Masthead letter-spacing entrance */
+@keyframes tracking-tighten {
+  from {
+    letter-spacing: 0.15em;
+    opacity: 0;
+  }
+  to {
+    letter-spacing: -0.025em;
+    opacity: 1;
+  }
+}
+.animate-tracking-tighten {
+  animation: tracking-tighten 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Tagline fade-in */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+}
+
+/* CTA button press effect */
+.btn-press {
+  transition: transform 0.1s ease, box-shadow 0.15s ease;
+}
+.btn-press:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+.btn-press:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+/* Stat number highlight shimmer */
+@keyframes stat-shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+.stat-highlight {
+  background: linear-gradient(
+    90deg,
+    currentColor 0%,
+    rgba(255, 255, 255, 0.9) 50%,
+    currentColor 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat-highlight.sr-visible {
+  animation: stat-shimmer 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+/* Reduced motion: skip all animations */
+@media (prefers-reduced-motion: reduce) {
+  .sr-hidden,
+  .sr-fade-up,
+  .sr-fade,
+  .sr-draw-down {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-tracking-tighten,
+  .animate-fade-in-up {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  .dot-glow {
+    animation: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
  * Print styles — converts dark theme to clean printable layout for PDF export
  * --------------------------------------------------------------------------- */
 

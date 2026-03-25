@@ -63,14 +63,13 @@ export const roadmapPhases: RoadmapPhase[] = [
   {
     id: 'phase-5',
     title: 'Fase 5 — Rendicion de cuentas',
-    goal: 'Scoring algoritmico, mandatos ciudadanos y cobertura provincial.',
+    goal: 'Scoring algoritmico y mandatos ciudadanos.',
     status: 'future',
     statusLabel: 'Futuro',
     features: [
       'Scoring de rendicion de cuentas (A/B/C/D por politico)',
       'Mandatos ciudadanos vinculados al grafo',
       'Democracia liquida y votacion cuadratica',
-      'Cobertura legislativa provincial',
     ],
   },
 ]
