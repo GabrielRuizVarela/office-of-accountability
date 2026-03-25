@@ -30,8 +30,8 @@ const t = {
     en: 'Read the full story',
   },
   readFullStoryDesc: {
-    es: '8 capitulos que cuentan como el presidente promovio una estafa de $251 millones',
-    en: '8 chapters telling how the president promoted a $251 million scam',
+    es: '8 capitulos sobre el token cripto promocionado por el presidente que causo perdidas de $251 millones',
+    en: '8 chapters on the crypto token promoted by the president that caused $251 million in losses',
   },
   seeEvidence: {
     es: 'Ver las pruebas',
