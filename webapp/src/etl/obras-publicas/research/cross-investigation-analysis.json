@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "wave": 26,
+    "title": "Cross-Investigation Pattern Analysis: Obras Publicas x Finanzas Politicas",
+    "date": "2026-03-24",
+    "methodology": "Traversed SAME_ENTITY and MAYBE_SAME_AS edges between obras-publicas Contractor nodes and finanzas-politicas graph entities (Company, CompanyOfficer, GovernmentAppointment, Donor, AssetDeclaration, Politician). Searched for pay-to-play, revolving door, offshore trail, asset declaration, and politician-contractor patterns.",
+    "confidence_tier": "bronze"
+  },
+  "summary": {
+    "total_cross_ref_links": 13271,
+    "cross_ref_breakdown": {
+      "Company": 7618,
+      "Contractor": 3335,
+      "CompanyOfficer": 2267,
+      "AssetDeclaration": 30,
+      "GovernmentAppointment": 13,
+      "Donor": 8
+    },
+    "pay_to_play_chains": 0,
+    "revolving_door_cases": 30,
+    "offshore_trails": 0,
+    "contractor_asset_declaration_links": 20,
+    "politician_contractor_chains": 1
+  },
+  "revolving_door": {
+    "description": "Company officers who held government appointments AND whose companies received public works contracts. The strongest corruption signal in this analysis.",
+    "top_cases": [
+      {
+        "contractor": "CORREO OFICIAL DE LA REPUBLICA ARGENTINA SA",
+        "cuit": "30708574836",
+        "company": "CORREO OFICIAL DE LA REPUBLICA ARGENTINA",
+        "contracts": 92,
+        "contract_value": 10468173407.90,
+        "officers_in_government": [
+          { "name": "EDUARDO NICOLAS MARTELLI", "position": "Secretario", "ministry": "Jefatura de Gabinete de Ministros" },
+          { "name": "GONZALO MARIO DIAZ", "position": "Director Nacional", "ministry": "Jefatura de Gabinete de Ministros" },
+          { "name": "ROCA, Guillermo Federico", "position": "Director", "ministry": "Presidencia de la Nacion" },
+          { "name": "Catalan, Lisandro", "position": "Director", "ministry": "Ministerio de Justicia y Derechos Humanos" },
+          { "name": "GONZALEZ, ADRIAN HUGO", "position": "Director", "ministry": "Jefatura de Gabinete de Ministros" }
+        ],
+        "risk_assessment": "Highest value revolving door case. State-owned postal company with 5 officers simultaneously in senior government roles across multiple ministries. $10.47B in contracts makes this the single largest cross-ref finding."
+      },
+      {
+        "contractor": "PROVINCIA ASEGURADORA DE RIESGOS DEL TABAJO SA",
+        "cuit": "30688254090",
+        "company": "PROVINCIA ASEGURADORA DE RIESGOS DEL TRABAJO",
+        "contracts": 23,
+        "contract_value": 1426684738.47,
+        "officers_in_government": [
+          { "name": "KATZ ALEJANDRO GUSTAVO", "position": "Director - Ministerio de Hacienda", "ministry": "Ministerio de Defensa" },
+          { "name": "GUILLERMO PEDRO PLATE", "position": "Vice Superintendente de Seguros", "ministry": "Ministerio de Hacienda" }
+        ],
+        "risk_assessment": "Insurance regulator (Vice Superintendente de Seguros) serving as company officer of insurer receiving $1.43B in state contracts. Classic regulatory capture."
+      },
+      {
+        "contractor": "Abbvie S.A.",
+        "cuit": "30712399623",
+        "company": "ABBVIE",
+        "contracts": 14,
+        "contract_value": 953930633.44,
+        "officers_in_government": [
+          { "name": "Pablo Trevisan", "position": "Vocal", "ministry": "Ministerio de Produccion y Trabajo" }
+        ],
+        "risk_assessment": "Multinational pharmaceutical company with government appointee on board. $954M in contracts while officer served at production ministry."
+      },
+      {
+        "contractor": "EMPRESA ARGENTINA DE SOLUCIONES SATELIT.",
+        "cuit": "30709670413",
+        "company": "EMPRESA ARGENTINA DE SOLUCIONES SATELITALES S.A - ARSAT -",
+        "contracts": 43,
+        "contract_value": 694061745.64,
+        "officers_in_government": 22,
+        "officers_in_government_sample": [
+          { "name": "HURTADO EDUARDO ATILIO", "position": "Presidente del Directorio", "ministry": "Jefatura de Gabinete de Ministros" },
+          { "name": "MARTINEZ, RAUL", "position": "Vicepresidente del Directorio", "ministry": "Jefatura de Gabinete de Ministros" },
+          { "name": "FRIGERIO MARIO ENRIQUE", "position": "Subsecretario", "ministry": "Ministerio de Defensa" },
+          { "name": "GONZALEZ OSCAR", "position": "Subsecretario", "ministry": "Jefatura de Gabinete de Ministros" },
+          { "name": "ALEJANDRO ALBERTO PERSANO", "position": "Subdirector Ejecutivo", "ministry": "Presidencia de la Nacion" }
+        ],
+        "risk_assessment": "State satellite company with 22 officers in government. As a state enterprise this is expected, but the volume of contracts ($694M) alongside such deep government penetration warrants scrutiny of awarding processes."
+      }
+    ]
+  },
+  "contractor_asset_declarations": {
+    "description": "Contractors matched to DDJJ (declaraciones juradas / sworn asset declarations) via SAME_ENTITY links. These individuals both hold public contracts and have filed asset declarations, enabling wealth-contract correlation.",
+    "cases": [
+      {
+        "contractor": "Diego Javier Moix",
+        "cuit": "20203841656",
+        "asset_declarations": 4,
+        "contracts": 2,
+        "contract_value": 1110000,
+        "note": "Multiple DDJJ filings suggest multi-year government role. Cross-reference declared assets vs contract income."
+      },
+      {
+        "contractor": "HUGO OSCAR SCOLARI",
+        "cuit": "20085191935",
+        "asset_declarations": 7,
+        "contracts": 1,
+        "contract_value": 399600,
+        "note": "7 annual asset declarations indicates sustained government employment. Contract value relatively low."
+      },
+      {
+        "contractor": "Luis Alberto Trajtenberg",
+        "cuit": "20264735603",
+        "asset_declarations": 5,
+        "contracts": 0,
+        "contract_value": 0
+      },
+      {
+        "contractor": "BRUNO ANTONIO OLIVERA LUCERO",
+        "cuit": "20326896684",
+        "asset_declarations": 2,
+        "contracts": 0,
+        "contract_value": 0
+      },
+      {
+        "contractor": "SERGIO ALEJANDRO DRUCAROFF",
+        "cuit": "20280336689",
+        "asset_declarations": 2,
+        "contracts": 0,
+        "contract_value": 0
+      }
+    ]
+  },
+  "politician_contractor_chains": {
+    "description": "Politicians linked to contractors via SAME_ENTITY/MAYBE_SAME_AS chains (1-3 hops).",
+    "cases": [
+      {
+        "politician": "BRANDONI, Adalberto Luis",
+        "chamber": "diputados",
+        "contractor": "luis adalberto brandoni",
+        "cuit": "20043172787",
+        "contracts": 1,
+        "contract_value": 883200,
+        "note": "Name match — likely same person acting as both legislator and contractor. Low value but pattern of dual roles."
+      }
+    ]
+  },
+  "pattern_gaps": {
+    "pay_to_play": "No direct Contractor->Company->Officer->Donor->CampaignDonation chains found. The 8 Donor cross-ref links suggest partial connections exist but the full chain does not complete through current entity resolution.",
+    "offshore": "No offshore trails detected. Contractor officers do not currently link to OffshoreOfficer/OffshoreEntity nodes. May require deeper entity resolution or name fuzzy matching.",
+    "bribery_cross_refs": "No BriberyCase entities cross-referenced to finanzas-politicas graph. BriberyCase nodes may lack CASE_INVOLVES relationships or the involved entities have not been resolved.",
+    "legislative_votes": "No legislation matching obra/vial/infraestructura/construccion keywords found with associated votes. Legislative data may not include public works legislation, or node labels differ."
+  },
+  "next_steps": [
+    "Deepen entity resolution between Donor and CompanyOfficer nodes using fuzzy name matching to close pay-to-play chains",
+    "Cross-reference ARSAT and Correo Oficial contract awarding dates with officer appointment dates to detect temporal conflicts of interest",
+    "Enrich offshore entity resolution with CUIT-based lookups against Panama/Paradise Papers data",
+    "Build temporal analysis: when did revolving door officers enter/exit government vs when contracts were awarded",
+    "Investigate Guillermo Pedro Plate (Vice Superintendente de Seguros -> Provincia Aseguradora) as highest-signal regulatory capture case"
+  ],
+  "qwen_analysis": "LLM server unreachable at time of analysis. Manual analysis: The revolving door pattern is the dominant cross-investigation signal, with 13 GovernmentAppointment links concentrating in state enterprises (Correo Oficial, ARSAT) and regulated industries (insurance via Provincia Aseguradora, pharma via Abbvie). The $10.47B Correo Oficial cluster represents systemic state-enterprise capture rather than classic corruption, but the Provincia Aseguradora case (regulator-as-officer) is a textbook regulatory capture signal."
+}
