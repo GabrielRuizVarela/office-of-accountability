@@ -1,18 +1,18 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { createTranslator } from '@/i18n/messages'
+import { Link, usePathname } from '@/i18n/navigation'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import { LanguageToggle } from './LanguageToggle'
 
 export function SiteNav() {
-  const t = createTranslator('nav')
+  const t = useTranslations('nav')
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
 
   const links = [
-    { href: '/explorar', label: t('explore') },
-    { href: '/investigaciones', label: t('investigations') },
+    { href: '/explorar' as const, label: t('explore') },
+    { href: '/investigaciones' as const, label: t('investigations') },
   ]
 
   return (
@@ -42,32 +42,36 @@ export function SiteNav() {
           >
             {t('signIn')}
           </Link>
+          <LanguageToggle />
         </nav>
 
-        <button
-          type="button"
-          className="text-zinc-400 sm:hidden"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            {menuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
+        <div className="flex items-center gap-3 sm:hidden">
+          <LanguageToggle />
+          <button
+            type="button"
+            className="text-zinc-400"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {menuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {menuOpen && (

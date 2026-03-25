@@ -1,8 +1,10 @@
-import Link from 'next/link'
-import { createTranslator } from '@/i18n/messages'
+'use client'
+
+import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 
 export function Footer() {
-  const t = createTranslator('footer')
+  const t = useTranslations('footer')
 
   return (
     <footer className="border-t border-zinc-800">
