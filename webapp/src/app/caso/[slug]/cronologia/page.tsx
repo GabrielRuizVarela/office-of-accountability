@@ -14,6 +14,11 @@ export default async function CronologiaPage({
 }) {
   const { slug } = await params
 
+  // obras-publicas has its own dedicated cronologia page
+  if (slug === 'obras-publicas' || slug === 'finanzas-politicas') {
+    return null
+  }
+
   if (slug === 'riesgo-nuclear') {
     const events = await getNuclearTimeline()
     return <CronologiaContent events={events} />
