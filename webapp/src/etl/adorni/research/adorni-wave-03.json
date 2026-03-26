@@ -1,0 +1,17 @@
+{
+  "investigation": "caso-adorni",
+  "wave": 3,
+  "title": "Media Baseline — Press Conference Claims & Fact-Checks",
+  "date": "2026-03-26",
+  "summary": "Ingested 16 disputed/false statements made by Adorni in press conferences (2024-2026). Topics: hunger denial, university defamation, poverty data, healthcare cuts, food hoarding, science budget, retiree purchasing power, journalist attacks, China embassy correction, March 2026 walkout. All sourced from Chequeado, AFP Factual, and primary media. Tier: bronze (pending individual source URL verification).",
+  "entities_ingested": { "statements": 16, "new_relationships": 16 },
+  "key_findings": [
+    "16 disputed statements catalogued spanning Feb 2024 - Mar 2026",
+    "China embassy publicly corrected Adorni on false COVID truck claim",
+    "March 25 2026 press conference: Adorni walked out after 19 min presentation + 30 min Q&A, refused to answer about undeclared properties",
+    "Pattern: systematic denial of social impact (hunger, poverty, healthcare, education, pensions) contradicted by INDEC/UCA data",
+    "Chequeado profile page confirmed at chequeado.com/personajes/quien-es-manuel-adorni/",
+    "Adorni launched 'FAKE 7,8' streaming show to counter negative coverage"
+  ],
+  "feeds_next_wave": ["YouTube video URLs for transcript ingestion", "Media outlet list for ecosystem mapping"]
+}
