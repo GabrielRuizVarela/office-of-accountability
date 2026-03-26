@@ -1,8 +1,8 @@
 /**
  * Engine node types — autonomous investigation pipeline (M10).
  *
- * 10 node types: SourceConnector, PipelineConfig, PipelineStage, Gate,
- * PipelineState, Proposal, AuditEntry, Snapshot, ModelConfig, MiroFishConfig.
+ * Node types: SourceConnector, PipelineConfig, PipelineStage, Gate,
+ * PipelineState, Proposal, AuditEntry, Snapshot, ModelConfig.
  *
  * Each type has a Zod schema and an inferred TypeScript type.
  */
@@ -209,26 +209,7 @@ export const modelConfigSchema = z.object({
 export type ModelConfig = z.infer<typeof modelConfigSchema>
 
 // ---------------------------------------------------------------------------
-// 10. MiroFishConfig — MiroFish/llama.cpp specific configuration
-// ---------------------------------------------------------------------------
-
-export const miroFishConfigSchema = z.object({
-  id: z.string().min(1),
-  caso_slug: z.string().min(1),
-  model_config_id: z.string().min(1),
-  api_url: z.string().url(),
-  n_predict: z.number().int().min(1).optional(),
-  top_k: z.number().int().min(1).optional(),
-  top_p: z.number().min(0).max(1).optional(),
-  repeat_penalty: z.number().min(0).optional(),
-  created_at: z.string(),
-  updated_at: z.string(),
-})
-
-export type MiroFishConfig = z.infer<typeof miroFishConfigSchema>
-
-// ---------------------------------------------------------------------------
-// 11. OrchestratorTask — work item in the investigation orchestrator queue
+// 10. OrchestratorTask — work item in the investigation orchestrator queue
 // ---------------------------------------------------------------------------
 
 export const orchestratorTaskStatuses = [

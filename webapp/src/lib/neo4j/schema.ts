@@ -206,11 +206,6 @@ const UNIQUE_CONSTRAINTS = [
     property: 'id',
   },
   {
-    name: 'mirofish_config_id_unique',
-    label: 'MiroFishConfig',
-    property: 'id',
-  },
-  {
     name: 'orchestrator_task_id_unique',
     label: 'OrchestratorTask',
     property: 'id',

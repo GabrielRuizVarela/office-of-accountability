@@ -1,8 +1,8 @@
 /**
  * Engine config node CRUD — M10.
  *
- * Covers 6 config node types: SourceConnector, PipelineConfig, PipelineStage,
- * Gate, ModelConfig, MiroFishConfig.
+ * Covers 5 config node types: SourceConnector, PipelineConfig, PipelineStage,
+ * Gate, ModelConfig.
  *
  * Each type exposes: create, getById, update, delete, listByCaso.
  */
@@ -17,13 +17,11 @@ import {
   pipelineStageSchema,
   gateSchema,
   modelConfigSchema,
-  miroFishConfigSchema,
   type SourceConnector,
   type PipelineConfig,
   type PipelineStage,
   type Gate,
   type ModelConfig,
-  type MiroFishConfig,
 } from './types'
 
 // ---------------------------------------------------------------------------
@@ -219,17 +217,3 @@ export const updateModelConfig = modelConfigCrud.update
 export const deleteModelConfig = modelConfigCrud.delete
 export const listModelConfigsByCaso = modelConfigCrud.listByCaso
 
-// ---------------------------------------------------------------------------
-// 6. MiroFishConfig
-// ---------------------------------------------------------------------------
-
-const miroFishConfigCrud = makeCrud<MiroFishConfig>(
-  'MiroFishConfig',
-  (raw) => miroFishConfigSchema.parse(raw),
-)
-
-export const createMiroFishConfig = miroFishConfigCrud.create
-export const getMiroFishConfigById = miroFishConfigCrud.getById
-export const updateMiroFishConfig = miroFishConfigCrud.update
-export const deleteMiroFishConfig = miroFishConfigCrud.delete
-export const listMiroFishConfigsByCaso = miroFishConfigCrud.listByCaso

@@ -3,7 +3,6 @@ import { headers } from 'next/headers'
 
 import { detectLang } from '@/lib/i18n'
 import type { Lang } from '@/lib/language-context'
-import { SimulationPanel } from '../../../../components/investigation/SimulationPanel'
 
 interface PageProps {
   readonly params: Promise<{ slug: string }>
@@ -11,12 +10,12 @@ interface PageProps {
 
 const PAGE_META: Record<Lang, { title: string; description: string }> = {
   es: {
-    title: 'Simulación',
-    description: 'Análisis de redes impulsado por IA usando inteligencia de enjambre MiroFish.',
+    title: 'Análisis',
+    description: 'Análisis de redes impulsado por IA.',
   },
   en: {
-    title: 'Simulation',
-    description: 'AI-powered network analysis using MiroFish swarm intelligence.',
+    title: 'Analysis',
+    description: 'AI-powered network analysis.',
   },
 }
 
@@ -28,11 +27,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function SimulacionPage({ params }: PageProps) {
-  const { slug } = await params
+  const { slug: _slug } = await params
 
   return (
-    <div className="flex h-[calc(100vh-8rem)] flex-col">
-      <SimulationPanel casoSlug={slug} />
+    <div className="flex h-[calc(100vh-8rem)] flex-col items-center justify-center">
+      <p className="text-zinc-500">Coming soon.</p>
     </div>
   )
 }

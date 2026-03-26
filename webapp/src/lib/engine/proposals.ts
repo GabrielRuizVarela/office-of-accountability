@@ -43,7 +43,7 @@ const ALLOWED_NODE_LABELS = new Set([
   // Engine (M10)
   'SourceConnector', 'PipelineConfig', 'PipelineStage', 'Gate',
   'PipelineState', 'Proposal', 'AuditEntry', 'Snapshot',
-  'ModelConfig', 'MiroFishConfig', 'OrchestratorTask', 'OrchestratorState',
+  'ModelConfig', 'OrchestratorTask', 'OrchestratorState',
   // Investigation config
   'InvestigationConfig', 'SchemaDefinition', 'NodeTypeDefinition', 'RelTypeDefinition',
   // Compliance (M11)
