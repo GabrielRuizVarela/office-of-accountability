@@ -36,8 +36,8 @@ const sections: Section[] = [
       es: 'Como Se Construyo Esta Investigacion',
     },
     content: {
-      en: `This investigation was built using an AI-assisted 13-wave methodology. Each wave targets a specific data layer — from open-source intelligence seeds to cross-referenced entity networks. All AI-generated analysis is verified locally, ensuring no investigation data leaves the local machine. The system combines automated data ingestion with human editorial review at every verification gate.`,
-      es: `Esta investigacion fue construida usando una metodologia de 13 olas asistida por IA. Cada ola apunta a una capa de datos especifica — desde semillas de inteligencia de fuentes abiertas hasta redes de entidades cruzadas. Todo el analisis generado por IA es verificado localmente, asegurando que ningun dato de investigacion salga de la maquina local. El sistema combina ingesta automatizada de datos con revision editorial humana en cada punto de verificacion.`,
+      en: `This investigation was built using an AI-assisted 13-wave methodology. Each wave targets a specific data layer - from open-source intelligence seeds to cross-referenced entity networks. All AI-generated analysis is verified locally, ensuring no investigation data leaves the local machine. The system combines automated data ingestion with human editorial review at every verification gate.`,
+      es: `Esta investigacion fue construida usando una metodologia de 13 olas asistida por IA. Cada ola apunta a una capa de datos especifica - desde semillas de inteligencia de fuentes abiertas hasta redes de entidades cruzadas. Todo el analisis generado por IA es verificado localmente, asegurando que ningun dato de investigacion salga de la maquina local. El sistema combina ingesta automatizada de datos con revision editorial humana en cada punto de verificacion.`,
     },
   },
   {
@@ -47,32 +47,32 @@ const sections: Section[] = [
       es: 'Pipeline de Datos (13 Olas)',
     },
     content: {
-      en: `Wave 1: OSINT Seed — initial open-source intelligence gathering from public records.
-Wave 2: Government Records — appointment decrees, official gazette entries, legislative records.
-Wave 3: Corporate Registry — company filings, officer appointments, shareholder structures.
-Wave 4: Media Mapping — press conference transcripts, media outlet ownership, pauta oficial records.
-Wave 5: Financial Disclosures — sworn asset declarations, income statements.
-Wave 6: Judicial Records — court filings, judicial appointments, ongoing proceedings.
-Wave 7: Procurement Data — government contracts, direct awards, purchase orders.
-Wave 8: Property Records — real estate registrations, property transfers.
-Wave 9: International Links — offshore entities, foreign company ties, cross-border connections.
-Wave 10: Social Network — organizational affiliations, board memberships, political ties.
-Wave 11: Cross-Reference — entity resolution across all prior waves using CUIT/DNI matching.
-Wave 12: Anomaly Detection — pattern analysis, timeline inconsistencies, wealth evolution flags.
-Wave 13: Synthesis — narrative construction, confidence scoring, editorial review.`,
-      es: `Ola 1: Semilla OSINT — recopilacion inicial de inteligencia de fuentes abiertas a partir de registros publicos.
-Ola 2: Registros Gubernamentales — decretos de nombramiento, entradas del boletin oficial, registros legislativos.
-Ola 3: Registro Corporativo — presentaciones societarias, nombramientos de directivos, estructuras accionarias.
-Ola 4: Mapeo Mediatico — transcripciones de conferencias de prensa, propiedad de medios, registros de pauta oficial.
-Ola 5: Declaraciones Patrimoniales — declaraciones juradas de bienes, estados de ingresos.
-Ola 6: Registros Judiciales — presentaciones judiciales, nombramientos judiciales, procesos en curso.
-Ola 7: Datos de Contrataciones — contratos gubernamentales, adjudicaciones directas, ordenes de compra.
-Ola 8: Registros de Propiedad — registraciones inmobiliarias, transferencias de propiedad.
-Ola 9: Vinculos Internacionales — entidades offshore, vinculos societarios extranjeros, conexiones transfronterizas.
-Ola 10: Red Social — afiliaciones organizacionales, membresías en directorios, vinculos politicos.
-Ola 11: Cruce de Datos — resolucion de entidades a traves de todas las olas previas usando CUIT/DNI.
-Ola 12: Deteccion de Anomalias — analisis de patrones, inconsistencias temporales, alertas de evolucion patrimonial.
-Ola 13: Sintesis — construccion narrativa, puntaje de confianza, revision editorial.`,
+      en: `Wave 1: OSINT Seed - initial open-source intelligence gathering from public records.
+Wave 2: Government Records - appointment decrees, official gazette entries, legislative records.
+Wave 3: Corporate Registry - company filings, officer appointments, shareholder structures.
+Wave 4: Media Mapping - press conference transcripts, media outlet ownership, pauta oficial records.
+Wave 5: Financial Disclosures - sworn asset declarations, income statements.
+Wave 6: Judicial Records - court filings, judicial appointments, ongoing proceedings.
+Wave 7: Procurement Data - government contracts, direct awards, purchase orders.
+Wave 8: Property Records - real estate registrations, property transfers.
+Wave 9: International Links - offshore entities, foreign company ties, cross-border connections.
+Wave 10: Social Network - organizational affiliations, board memberships, political ties.
+Wave 11: Cross-Reference - entity resolution across all prior waves using CUIT/DNI matching.
+Wave 12: Anomaly Detection - pattern analysis, timeline inconsistencies, wealth evolution flags.
+Wave 13: Synthesis - narrative construction, confidence scoring, editorial review.`,
+      es: `Ola 1: Semilla OSINT - recopilacion inicial de inteligencia de fuentes abiertas a partir de registros publicos.
+Ola 2: Registros Gubernamentales - decretos de nombramiento, entradas del boletin oficial, registros legislativos.
+Ola 3: Registro Corporativo - presentaciones societarias, nombramientos de directivos, estructuras accionarias.
+Ola 4: Mapeo Mediatico - transcripciones de conferencias de prensa, propiedad de medios, registros de pauta oficial.
+Ola 5: Declaraciones Patrimoniales - declaraciones juradas de bienes, estados de ingresos.
+Ola 6: Registros Judiciales - presentaciones judiciales, nombramientos judiciales, procesos en curso.
+Ola 7: Datos de Contrataciones - contratos gubernamentales, adjudicaciones directas, ordenes de compra.
+Ola 8: Registros de Propiedad - registraciones inmobiliarias, transferencias de propiedad.
+Ola 9: Vinculos Internacionales - entidades offshore, vinculos societarios extranjeros, conexiones transfronterizas.
+Ola 10: Red Social - afiliaciones organizacionales, membresías en directorios, vinculos politicos.
+Ola 11: Cruce de Datos - resolucion de entidades a traves de todas las olas previas usando CUIT/DNI.
+Ola 12: Deteccion de Anomalias - analisis de patrones, inconsistencias temporales, alertas de evolucion patrimonial.
+Ola 13: Sintesis - construccion narrativa, puntaje de confianza, revision editorial.`,
     },
   },
   {
@@ -101,7 +101,7 @@ Silver (Web-Verified): Cross-referenced against at least two independent public 
 
 Bronze (Raw Ingested): Single-source data pending verification. Flagged for review. Not used in published narratives without upgrade.
 
-All AI verification runs locally — no investigation data is sent to external services or cloud APIs.`,
+All AI verification runs locally - no investigation data is sent to external services or cloud APIs.`,
       es: `Cada dato en la investigacion lleva un nivel de confianza:
 
 Oro (Curado): Verificado manualmente contra documentos fuente primarios. URL de fuente validada y archivada. Aprobacion editorial humana.
@@ -110,7 +110,7 @@ Plata (Verificado Web): Cruzado contra al menos dos fuentes publicas independien
 
 Bronce (Ingesta Cruda): Datos de fuente unica pendientes de verificacion. Marcados para revision. No se usan en narrativas publicadas sin actualizacion de nivel.
 
-Toda la verificacion por IA se ejecuta localmente — no se envian datos de investigacion a servicios externos ni APIs en la nube.`,
+Toda la verificacion por IA se ejecuta localmente - no se envian datos de investigacion a servicios externos ni APIs en la nube.`,
     },
   },
   {

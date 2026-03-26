@@ -51,7 +51,7 @@ export const ADORNI_SUBGRAPH = `
   LIMIT toInteger($limit)
 `
 
-/** Cross-investigation links — entities shared with other cases */
+/** Cross-investigation links - entities shared with other cases */
 export const CROSS_INVESTIGATION_LINKS = `
   MATCH (a {caso_slug: 'caso-adorni'})-[:SAME_ENTITY]-(b)
   WHERE b.caso_slug <> 'caso-adorni'
