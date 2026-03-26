@@ -89,6 +89,7 @@ const chapters: readonly Chapter[] = [
         'Ruben Santiago Ward (DNI 24.676.344) es presidente de ATX. Pablo Javier Casal es presidente de Area Tech. Ambos fueron socios en Lugalu S.A. Ward y Casal comparten la misma direccion comercial: Pedro Chutro 3135, CABA. Area Tech no presento la garantia de oferta — un patron clasico de licitacion arreglada donde un oferente se descalifica deliberadamente. [2]',
         'La prueba clave: Rodrigo Paez Canosa (DNI 25.896.026) es director suplente de ATX, ex-empleado de Area Tech, Y ex-empleado de Movilgate. Un solo individuo conecta las tres "competidoras." La IGJ confirma que Paez Canosa es ademas directivo de Lugalu y Neutronica — ambas tambien de Ward. [3]',
         'ATX cobro $0,045 por SMS en el primer contrato pero $0,076 en el segundo — un aumento del 69% por servicio identico.',
+        'Nota: la conexion basica Adorni-ATX-Ward y el vinculo Casal-Lugalu fueron reportados primero por el diputado Rodolfo Tailhade y cubiertos por Sumario, Canal de las Noticias y DataClave. Lo que esta investigacion aporta es la confirmacion via IGJ por DNI de que Paez Canosa es director registrado (no solo ex-empleado) en ATX, Lugalu y Neutronica simultaneamente — y que la red de Ward abarca 11 empresas, no las 2-3 reportadas por los medios.',
       ],
       en: [
         'On May 14, 2025, Adorni — then Communications Secretary — launched a tender for mass messaging: 36 million SMS, 600 million emails, and 12 million automated calls for 2026. On December 30, 2025, now as Chief of Cabinet, he signed the award to ATX S.A. for $3,650,226,300 pesos. [1]',
@@ -96,9 +97,10 @@ const chapters: readonly Chapter[] = [
         'Ruben Santiago Ward (DNI 24,676,344) is ATX president. Pablo Javier Casal is Area Tech president. Both were partners in Lugalu S.A. Ward and Casal share the same business address: Pedro Chutro 3135, CABA. Area Tech failed to present the bid guarantee — a classic rigged-tender pattern where a bidder deliberately disqualifies itself. [2]',
         'The smoking gun: Rodrigo Paez Canosa (DNI 25,896,026) is ATX substitute director, former Area Tech employee, AND former Movilgate employee. A single individual connects all three "competitors." IGJ confirms Paez Canosa is also a director at Lugalu and Neutronica — both also Ward companies. [3]',
         'ATX charged $0.045 per SMS in Contract 1 but $0.076 in Contract 2 — a 69% increase for identical service.',
+        'Note: the basic Adorni-ATX-Ward connection and the Casal-Lugalu link were first reported by Diputado Rodolfo Tailhade and covered by Sumario, Canal de las Noticias, and DataClave. What this investigation adds is the IGJ-confirmed DNI match proving Paez Canosa is a registered director (not just a former employee) at ATX, Lugalu, and Neutronica simultaneously — and that Ward\'s network extends to 11 companies, not the 2-3 reported in media.',
       ],
     },
-    pullQuote: { es: 'Ward controla 11 empresas. Paez Canosa aparece en 4 de ellas. Las tres "competidoras" comparten directivos, direcciones y socios.', en: 'Ward controls 11 companies. Paez Canosa appears in 4 of them. The three "competitors" share directors, addresses, and partners.' },
+    pullQuote: { es: 'Ward controla 11 empresas. Paez Canosa aparece en 4 de ellas. Las tres "competidoras" comparten directivos, direcciones y socios. La prensa reporto 2-3 empresas de Ward — la IGJ revela 11.', en: 'Ward controls 11 companies. Paez Canosa appears in 4 of them. The three "competitors" share directors, addresses, and partners. Media reported 2-3 Ward companies — IGJ reveals 11.' },
     citations: [
       { id: 1, text: 'Canal de las Noticias — Adorni licitacion SMS ATX', url: 'https://www.canaldelasnoticias.com/adorni-licitacion-sms-atx-sa-ward-millones-dolares/' },
       { id: 2, text: 'Ambito — Irregularidades y conflictos de interes', url: 'https://www.ambito.com/politica/denuncian-manuel-adorni-irregularidades-sospechas-conflicto-intereses-y-licitaciones-la-lupa-n6257361' },
@@ -113,13 +115,15 @@ const chapters: readonly Chapter[] = [
         'La consulta a la base de datos de la IGJ revela que Ruben Santiago Ward no es simplemente el presidente de ATX. Es director de 11 empresas: ATX, 5 On Line (5OL), Exi Group, Lugalu, Doru Inversiones, Neutronica, PW Producciones, Impakto, Wazzup, Unicall y WC.',
         'Diego Paez (DNI 92.297.127) aparece como directivo en 5 de las empresas de Ward: ATX, Impakto, PW Producciones, Neutronica y Lugalu. Juan Ignacio Ward (DNI 44.096.749) — hijo de Ruben — es directivo en Exi y Wazzup.',
         'Exi Group y 5OL son empresas de cobro de deudas con miles de denuncias de consumidores por hostigamiento telefonico, reclamo de deudas prescriptas y colocacion fraudulenta de personas en Situacion 5 del BCRA. [1]',
-        'ATX ya tenia 9 contratos gubernamentales previos (desde 2015) con RENAPER y el Ministerio de Educacion, por un total de al menos $244 millones de pesos. No es una empresa nueva — es un contratista serial del Estado.',
+        'ATX ya tenia 9 contratos gubernamentales previos (desde 2015) con RENAPER y el Ministerio de Educacion, por un total de al menos $244 millones de pesos. No es una empresa nueva — es un contratista serial del Estado. Este dato no fue reportado por ningun medio — fue descubierto mediante cruce por CUIT con la base de datos de contratistas existente.',
+        'Hallazgo exclusivo de esta investigacion: la amplitud de la red de Ward (11 empresas), la superposicion de directivos (Diego Paez en 5, Paez Canosa en 4, Juan Ignacio Ward en 2), y la existencia de contratos previos de ATX y Lugalu en la base de datos de obras publicas no habian sido reportados por ningun medio ni incluidos en las denuncias penales existentes.',
       ],
       en: [
         'Querying the IGJ database reveals that Ruben Santiago Ward is not simply ATX\'s president. He is a director of 11 companies: ATX, 5 On Line (5OL), Exi Group, Lugalu, Doru Inversiones, Neutronica, PW Producciones, Impakto, Wazzup, Unicall, and WC.',
         'Diego Paez (DNI 92,297,127) appears as director at 5 Ward companies: ATX, Impakto, PW Producciones, Neutronica, and Lugalu. Juan Ignacio Ward (DNI 44,096,749) — Ruben\'s son — is a director at Exi and Wazzup.',
         'Exi Group and 5OL are debt collection companies with thousands of consumer complaints for telephone harassment, claiming prescribed debts, and fraudulently placing people in BCRA Situation 5. [1]',
-        'ATX already had 9 prior government contracts (since 2015) with RENAPER and the Ministry of Education, totaling at least $244 million pesos. This is not a new company — it is a serial government contractor.',
+        'ATX already had 9 prior government contracts (since 2015) with RENAPER and the Ministry of Education, totaling at least $244 million pesos. This is not a new company — it is a serial government contractor. This fact was not reported by any media outlet — it was discovered by cross-referencing ATX\'s CUIT against the existing contractor database.',
+        'Exclusive finding: the breadth of Ward\'s network (11 companies), the officer overlap (Diego Paez at 5, Paez Canosa at 4, Juan Ignacio Ward at 2), and the existence of prior ATX and Lugalu contracts in the public works database had not been reported by any media outlet or included in existing criminal complaints.',
       ],
     },
     citations: [
