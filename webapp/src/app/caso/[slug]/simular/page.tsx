@@ -1,190 +1,345 @@
 'use client'
 
-/**
- * Caso Libra — Predictions page (coming soon).
- *
- * Will show pre-computed simulation results as predictions about
- * how key actors are likely to respond to new evidence, based on
- * swarm intelligence analysis with MiroFish.
- */
+import { use, useEffect, useState } from 'react'
 
 import { useLanguage, type Lang } from '@/lib/language-context'
+import type { CentralityResult } from '@/lib/engine/algorithms/centrality'
+import type { Anomaly } from '@/lib/engine/algorithms/anomaly'
+import type { InvestigationStats } from '@/lib/investigations/types'
+
+// ---------------------------------------------------------------------------
+// i18n
+// ---------------------------------------------------------------------------
 
 const t = {
-  comingSoon: { es: 'Proximamente', en: 'Coming Soon' },
-  title: {
-    es: 'Predicciones con Inteligencia de Enjambre',
-    en: 'Swarm Intelligence Predictions',
-  },
+  title: { es: 'Analisis Hipotetico', en: 'What-If Analysis' },
   subtitle: {
-    es: 'Usamos simulacion multi-agente para explorar escenarios hipoteticos del caso $LIBRA. Agentes autonomos con las personalidades de los actores reales simulan como se desarrollarian eventos alternativos en redes sociales.',
-    en: 'We use multi-agent simulation to explore hypothetical scenarios in the $LIBRA case. Autonomous agents with the personalities of real actors simulate how alternative events would unfold on social media.',
+    es: 'Insights sobre la red de actores clave, anomalias estadisticas y estadisticas del grafo de conocimiento.',
+    en: 'Insights into the key actor network, statistical anomalies, and knowledge graph statistics.',
   },
-  howItWorks: { es: 'Como funciona', en: 'How it works' },
-  questionsInDev: { es: 'Preguntas en desarrollo', en: 'Questions in development' },
-  questionsSubtitle: {
-    es: 'Estas son las predicciones que estamos generando. Los resultados completos estaran disponibles proximamente.',
-    en: 'These are the predictions we are generating. Full results will be available soon.',
+  keyActors: { es: 'Actores Clave', en: 'Key Actors' },
+  keyActorsSubtitle: {
+    es: 'Los 10 nodos con mayor centralidad de grado en el grafo de investigacion.',
+    en: 'Top 10 nodes by degree centrality in the investigation graph.',
   },
-  inProgress: { es: 'En progreso', en: 'In progress' },
-  simEngine: { es: 'Motor de simulacion', en: 'Simulation engine' },
-  localExec: { es: 'ejecucion local', en: 'local execution' },
-  data: { es: 'Datos', en: 'Data' },
+  connections: { es: 'conexiones', en: 'connections' },
+  anomalies: { es: 'Anomalias Detectadas', en: 'Detected Anomalies' },
+  anomaliesSubtitle: {
+    es: 'Nodos con comportamiento estadisticamente inusual en la red.',
+    en: 'Nodes with statistically unusual behavior in the network.',
+  },
+  graphStats: { es: 'Estadisticas del Grafo', en: 'Graph Statistics' },
+  graphStatsSubtitle: {
+    es: 'Conteo de nodos por tipo en el grafo de conocimiento.',
+    en: 'Node counts by type in the knowledge graph.',
+  },
+  totalNodes: { es: 'Total nodos', en: 'Total nodes' },
+  totalRels: { es: 'Total relaciones', en: 'Total relationships' },
+  loading: { es: 'Cargando...', en: 'Loading...' },
+  error: { es: 'Error al cargar datos', en: 'Failed to load data' },
+  noData: { es: 'Sin datos disponibles', en: 'No data available' },
+  highDegree: { es: 'Alta centralidad', en: 'High centrality' },
+  tierMismatch: { es: 'Desajuste de tier', en: 'Tier mismatch' },
+  isolatedCluster: { es: 'Cluster aislado', en: 'Isolated cluster' },
+  temporalGap: { es: 'Brecha temporal', en: 'Temporal gap' },
+  severityHigh: { es: 'Alto', en: 'High' },
+  severityMed: { es: 'Medio', en: 'Medium' },
+  severityLow: { es: 'Bajo', en: 'Low' },
 } satisfies Record<string, Record<Lang, string>>
 
-const STEPS = [
-  {
-    step: '1',
-    title: { es: 'Escenario', en: 'Scenario' },
-    desc: {
-      es: 'Se plantea una pregunta hipotetica sobre el caso',
-      en: 'A hypothetical question about the case is posed',
-    },
-  },
-  {
-    step: '2',
-    title: { es: 'Simulacion', en: 'Simulation' },
-    desc: {
-      es: '11 agentes con IA simulan las reacciones de cada actor clave',
-      en: '11 AI agents simulate each key actor\'s reactions',
-    },
-  },
-  {
-    step: '3',
-    title: { es: 'Prediccion', en: 'Prediction' },
-    desc: {
-      es: 'Se genera un informe con las consecuencias mas probables',
-      en: 'A report is generated with the most likely consequences',
-    },
-  },
-]
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
 
-const PREDICTIONS = [
-  {
-    question: {
-      es: 'Que pasa si Hayden Davis coopera con la justicia argentina?',
-      en: 'What happens if Hayden Davis cooperates with Argentine justice?',
-    },
-    preview: {
-      es: 'Simulacion de 11 agentes sugiere que la cooperacion de Davis desencadenaria acusaciones en cadena contra intermediarios locales, forzando al gobierno a distanciarse publicamente.',
-      en: 'Simulation of 11 agents suggests Davis cooperation would trigger chain accusations against local intermediaries, forcing the government to publicly distance itself.',
-    },
-  },
-  {
-    question: {
-      es: 'Como reaccionaria el mercado si Milei enfrenta juicio politico?',
-      en: 'How would the market react if Milei faces impeachment?',
-    },
-    preview: {
-      es: 'El analisis predice una caida del 15-25% en activos argentinos con recuperacion parcial en 72 horas, mientras actores cripto aceleran la salida de fondos del pais.',
-      en: 'Analysis predicts a 15-25% drop in Argentine assets with partial recovery within 72 hours, as crypto actors accelerate fund exits from the country.',
-    },
-  },
-  {
-    question: {
-      es: 'Que pasaria si se publican los registros completos de llamadas de Santiago Caputo?',
-      en: 'What would happen if Santiago Caputo\'s complete call records are published?',
-    },
-    preview: {
-      es: 'Los agentes simulados muestran que la publicacion forzaria la renuncia de al menos un funcionario y activaria nuevas lineas de investigacion judicial.',
-      en: 'Simulated agents show publication would force at least one official\'s resignation and activate new lines of judicial investigation.',
-    },
-  },
-  {
-    question: {
-      es: 'Que pasa si aparecen mas billeteras vinculadas a funcionarios?',
-      en: 'What happens if more wallets linked to officials are discovered?',
-    },
-    preview: {
-      es: 'La simulacion indica que nuevas billeteras generarian un ciclo mediatico de 2 semanas con impacto directo en la aprobacion presidencial, llevandola por debajo del 35%.',
-      en: 'Simulation indicates new wallets would generate a 2-week media cycle with direct impact on presidential approval, pushing it below 35%.',
-    },
-  },
-]
+function anomalyTypeLabel(type: Anomaly['type'], lang: Lang): string {
+  const map: Record<Anomaly['type'], Record<Lang, string>> = {
+    high_degree: t.highDegree,
+    tier_mismatch: t.tierMismatch,
+    isolated_cluster: t.isolatedCluster,
+    temporal_gap: t.temporalGap,
+  }
+  return map[type]?.[lang] ?? type
+}
 
-export default function PrediccionesPage() {
+function severityBadgeClass(severity: number): string {
+  if (severity > 0.7) return 'bg-red-500/20 text-red-400 border border-red-500/30'
+  if (severity > 0.4) return 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+  return 'bg-zinc-700/40 text-zinc-400 border border-zinc-600/30'
+}
+
+function severityLabel(severity: number, lang: Lang): string {
+  if (severity > 0.7) return t.severityHigh[lang]
+  if (severity > 0.4) return t.severityMed[lang]
+  return t.severityLow[lang]
+}
+
+// ---------------------------------------------------------------------------
+// Component
+// ---------------------------------------------------------------------------
+
+export default function SimularPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params)
   const { lang } = useLanguage()
 
+  // Centrality data
+  const [centrality, setCentrality] = useState<CentralityResult[] | null>(null)
+  const [centralityError, setCentralityError] = useState<string | null>(null)
+  const [centralityLoading, setCentralityLoading] = useState(true)
+
+  // Anomaly data
+  const [anomalies, setAnomalies] = useState<Anomaly[] | null>(null)
+  const [anomalyError, setAnomalyError] = useState<string | null>(null)
+  const [anomalyLoading, setAnomalyLoading] = useState(true)
+
+  // Graph stats
+  const [stats, setStats] = useState<InvestigationStats | null>(null)
+  const [statsError, setStatsError] = useState<string | null>(null)
+  const [statsLoading, setStatsLoading] = useState(true)
+
+  // Fetch centrality
+  useEffect(() => {
+    async function fetchCentrality() {
+      try {
+        const res = await fetch(`/api/casos/${slug}/engine/analyze/run`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ type: 'centrality' }),
+        })
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        const json = await res.json()
+        if (!json.success) throw new Error(json.error ?? 'Unknown error')
+        setCentrality((json.data?.results as CentralityResult[]) ?? [])
+      } catch (err) {
+        setCentralityError(err instanceof Error ? err.message : String(err))
+      } finally {
+        setCentralityLoading(false)
+      }
+    }
+    fetchCentrality()
+  }, [slug])
+
+  // Fetch anomalies
+  useEffect(() => {
+    async function fetchAnomalies() {
+      try {
+        const res = await fetch(`/api/casos/${slug}/engine/analyze/run`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ type: 'anomaly' }),
+        })
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        const json = await res.json()
+        if (!json.success) throw new Error(json.error ?? 'Unknown error')
+        setAnomalies((json.data?.anomalies as Anomaly[]) ?? [])
+      } catch (err) {
+        setAnomalyError(err instanceof Error ? err.message : String(err))
+      } finally {
+        setAnomalyLoading(false)
+      }
+    }
+    fetchAnomalies()
+  }, [slug])
+
+  // Fetch graph stats
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const res = await fetch(`/api/caso/${slug}/stats`)
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        const json = await res.json()
+        if (!json.success) throw new Error(json.error ?? 'Unknown error')
+        setStats(json.data as InvestigationStats)
+      } catch (err) {
+        setStatsError(err instanceof Error ? err.message : String(err))
+      } finally {
+        setStatsLoading(false)
+      }
+    }
+    fetchStats()
+  }, [slug])
+
+  // Max degree for bar chart scaling
+  const maxDegree = centrality && centrality.length > 0 ? centrality[0].degree : 1
+
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="text-center">
-        <p className="text-xs font-medium uppercase tracking-widest text-purple-400">
-          {t.comingSoon[lang]}
-        </p>
-        <h1 className="mt-2 text-2xl font-bold text-zinc-50 sm:text-3xl">
-          {t.title[lang]}
-        </h1>
-        <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-zinc-400">
+    <div className="space-y-8 pb-16">
+      {/* ------------------------------------------------------------------ */}
+      {/* Header                                                              */}
+      {/* ------------------------------------------------------------------ */}
+      <div>
+        <h1 className="text-2xl font-bold text-zinc-50 sm:text-3xl">{t.title[lang]}</h1>
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-400">
           {t.subtitle[lang]}
         </p>
       </div>
 
-      {/* How it works */}
-      <div className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-6">
-        <h2 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
-          {t.howItWorks[lang]}
-        </h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-3">
-          {STEPS.map((s) => (
-            <div key={s.step} className="flex gap-3">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-purple-600/20 text-sm font-bold text-purple-400">
-                {s.step}
-              </span>
-              <div>
-                <p className="text-sm font-medium text-zinc-200">{s.title[lang]}</p>
-                <p className="mt-0.5 text-xs text-zinc-500">{s.desc[lang]}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* ------------------------------------------------------------------ */}
+      {/* Key Actors (centrality)                                             */}
+      {/* ------------------------------------------------------------------ */}
+      <section>
+        <h2 className="text-base font-semibold text-zinc-200">{t.keyActors[lang]}</h2>
+        <p className="mt-1 text-xs text-zinc-500">{t.keyActorsSubtitle[lang]}</p>
 
-      {/* Preview predictions */}
-      <div>
-        <h2 className="text-lg font-bold text-zinc-50">{t.questionsInDev[lang]}</h2>
-        <p className="mt-1 text-sm text-zinc-400">
-          {t.questionsSubtitle[lang]}
-        </p>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          {PREDICTIONS.map((p, i) => (
-            <div
-              key={i}
-              className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-5 transition-colors hover:border-zinc-700"
-            >
-              <h3 className="text-sm font-semibold text-zinc-100">
-                {p.question[lang]}
-              </h3>
-              <p className="mt-2 text-xs leading-relaxed text-zinc-400">
-                {p.preview[lang]}
-              </p>
-              <div className="mt-3 flex items-center gap-2">
-                <span className="rounded-full bg-amber-500/20 px-2 py-0.5 text-xs font-medium text-amber-400">
-                  {t.inProgress[lang]}
-                </span>
-                <span className="text-xs text-zinc-600">11 agentes</span>
-              </div>
+        <div className="mt-4 rounded-xl border border-zinc-800 bg-zinc-900/40 overflow-hidden">
+          {centralityLoading && (
+            <div className="flex items-center justify-center py-12 text-sm text-zinc-500">
+              {t.loading[lang]}
             </div>
-          ))}
-        </div>
-      </div>
+          )}
+          {!centralityLoading && centralityError && (
+            <div className="flex items-center justify-center py-12 text-sm text-red-400">
+              {t.error[lang]}: {centralityError}
+            </div>
+          )}
+          {!centralityLoading && !centralityError && (!centrality || centrality.length === 0) && (
+            <div className="flex items-center justify-center py-12 text-sm text-zinc-500">
+              {t.noData[lang]}
+            </div>
+          )}
+          {!centralityLoading && !centralityError && centrality && centrality.length > 0 && (
+            <ol className="divide-y divide-zinc-800/60">
+              {centrality.slice(0, 10).map((actor, i) => (
+                <li key={actor.id ?? i} className="flex items-center gap-4 px-5 py-3">
+                  {/* Rank */}
+                  <span className="w-6 shrink-0 text-right text-xs font-bold text-zinc-500">
+                    #{i + 1}
+                  </span>
 
-      {/* Tech info */}
-      <div className="rounded-lg border border-zinc-800/50 bg-zinc-900/20 p-5">
-        <p className="text-xs leading-relaxed text-zinc-500">
-          {t.simEngine[lang]}:{' '}
-          <span className="text-zinc-400">MiroFish</span> (
-          {lang === 'es' ? 'inteligencia de enjambre multi-agente' : 'multi-agent swarm intelligence'}
-          )
-          {' · '}LLM:{' '}
-          <span className="text-zinc-400">Qwen 3.5 9B</span> ({t.localExec[lang]})
-          {' · '}{t.data[lang]}:{' '}
-          <span className="text-zinc-400">Neo4j knowledge graph</span>{' '}
-          {lang === 'es'
-            ? 'con 8 actores, 18 eventos, 40 relaciones'
-            : 'with 8 actors, 18 events, 40 relationships'}
-        </p>
-      </div>
+                  {/* Name + label */}
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium text-zinc-100">
+                      {actor.name ?? actor.id}
+                    </p>
+                    <p className="text-xs text-zinc-500">{actor.label}</p>
+                  </div>
+
+                  {/* Bar chart */}
+                  <div className="flex items-center gap-2 shrink-0">
+                    <div className="h-2 w-24 overflow-hidden rounded-full bg-zinc-800">
+                      <div
+                        className="h-full rounded-full bg-blue-500"
+                        style={{ width: `${Math.round((actor.degree / maxDegree) * 100)}%` }}
+                      />
+                    </div>
+                    <span className="w-20 text-right text-xs text-zinc-400">
+                      {actor.degree} {t.connections[lang]}
+                    </span>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          )}
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* Anomalies                                                           */}
+      {/* ------------------------------------------------------------------ */}
+      <section>
+        <h2 className="text-base font-semibold text-zinc-200">{t.anomalies[lang]}</h2>
+        <p className="mt-1 text-xs text-zinc-500">{t.anomaliesSubtitle[lang]}</p>
+
+        <div className="mt-4">
+          {anomalyLoading && (
+            <div className="flex items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900/40 py-12 text-sm text-zinc-500">
+              {t.loading[lang]}
+            </div>
+          )}
+          {!anomalyLoading && anomalyError && (
+            <div className="flex items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900/40 py-12 text-sm text-red-400">
+              {t.error[lang]}: {anomalyError}
+            </div>
+          )}
+          {!anomalyLoading && !anomalyError && (!anomalies || anomalies.length === 0) && (
+            <div className="flex items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900/40 py-12 text-sm text-zinc-500">
+              {t.noData[lang]}
+            </div>
+          )}
+          {!anomalyLoading && !anomalyError && anomalies && anomalies.length > 0 && (
+            <div className="grid gap-3 sm:grid-cols-2">
+              {anomalies.map((anomaly, i) => (
+                <div
+                  key={i}
+                  className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 transition-colors hover:border-zinc-700"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <p className="text-sm leading-snug text-zinc-200">{anomaly.description}</p>
+                    <span
+                      className={`shrink-0 rounded-full px-2 py-0.5 text-xs font-medium ${severityBadgeClass(anomaly.severity)}`}
+                    >
+                      {severityLabel(anomaly.severity, lang)}
+                    </span>
+                  </div>
+                  <div className="mt-2 flex items-center gap-2">
+                    <span className="rounded bg-zinc-800/80 px-1.5 py-0.5 text-xs text-zinc-400">
+                      {anomalyTypeLabel(anomaly.type, lang)}
+                    </span>
+                    <span className="text-xs text-zinc-600">
+                      {(anomaly.severity * 100).toFixed(0)}%
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* Graph Stats                                                         */}
+      {/* ------------------------------------------------------------------ */}
+      <section>
+        <h2 className="text-base font-semibold text-zinc-200">{t.graphStats[lang]}</h2>
+        <p className="mt-1 text-xs text-zinc-500">{t.graphStatsSubtitle[lang]}</p>
+
+        <div className="mt-4 rounded-xl border border-zinc-800 bg-zinc-900/40 p-5">
+          {statsLoading && (
+            <div className="flex items-center justify-center py-8 text-sm text-zinc-500">
+              {t.loading[lang]}
+            </div>
+          )}
+          {!statsLoading && statsError && (
+            <div className="flex items-center justify-center py-8 text-sm text-red-400">
+              {t.error[lang]}: {statsError}
+            </div>
+          )}
+          {!statsLoading && !statsError && !stats && (
+            <div className="flex items-center justify-center py-8 text-sm text-zinc-500">
+              {t.noData[lang]}
+            </div>
+          )}
+          {!statsLoading && !statsError && stats && (
+            <>
+              {/* Totals row */}
+              <div className="flex gap-8 border-b border-zinc-800 pb-4 mb-4">
+                <div>
+                  <p className="text-2xl font-bold text-zinc-50">{stats.totalNodes.toLocaleString()}</p>
+                  <p className="text-xs text-zinc-500">{t.totalNodes[lang]}</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-zinc-50">{stats.totalRelationships.toLocaleString()}</p>
+                  <p className="text-xs text-zinc-500">{t.totalRels[lang]}</p>
+                </div>
+              </div>
+
+              {/* By type */}
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+                {Object.entries(stats.nodeCountsByType)
+                  .sort(([, a], [, b]) => b - a)
+                  .map(([type, count]) => (
+                    <div
+                      key={type}
+                      className="rounded-lg border border-zinc-800/60 bg-zinc-900/60 px-3 py-2"
+                    >
+                      <p className="text-lg font-semibold text-zinc-100">{count.toLocaleString()}</p>
+                      <p className="text-xs text-zinc-500">{type}</p>
+                    </div>
+                  ))}
+              </div>
+            </>
+          )}
+        </div>
+      </section>
     </div>
   )
 }
