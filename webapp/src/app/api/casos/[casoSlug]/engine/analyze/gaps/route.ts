@@ -112,22 +112,11 @@ export async function GET(
     })
   } catch (error) {
     console.error('[engine/analyze/gaps]', error)
-    const message = error instanceof Error ? error.message : String(error)
-
-    if (
-      message.includes('connect') ||
-      message.includes('ECONNREFUSED') ||
-      message.includes('ServiceUnavailable')
-    ) {
-      return Response.json(
-        { success: false, error: 'Database unavailable' },
-        { status: 503 },
-      )
-    }
-
+    // All errors in this route stem from DB queries — return 503 so callers
+    // can treat it uniformly as "database unavailable / service degraded"
     return Response.json(
-      { success: false, error: 'Failed to detect structural gaps' },
-      { status: 500 },
+      { success: false, error: 'Database unavailable' },
+      { status: 503 },
     )
   }
 }
