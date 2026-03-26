@@ -258,7 +258,7 @@ async function runCrossReferencePhase() {
 async function runAnalysisPhase() {
   try {
     const { analyzeProcurementAnomalies, analyzeOwnershipChains, analyzePoliticalConnections } =
-      await import('../src/lib/mirofish/analysis')
+      await import('../src/lib/engine/analysis')
 
     // Extract subgraph data for analysis
     const subgraph = await readQuery(
