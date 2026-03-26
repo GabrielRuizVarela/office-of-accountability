@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 
-import { listByPipelineState, batchReview } from '@/lib/engine/proposals'
+import { listByPipelineState, batchReview, applyProposal } from '@/lib/engine/proposals'
 import type { ProposalStatus } from '@/lib/engine/types'
 import { checkRateLimit, ENGINE_RATE_LIMITS } from '@/lib/engine/rate-limit'
 
@@ -104,7 +104,24 @@ export async function POST(
   try {
     const reviewed = await batchReview(body.ids, body.action, body.reviewed_by)
 
-    return Response.json({ success: true, data: { reviewed } })
+    // Apply approved proposals to the graph (materialize nodes/edges)
+    let applied = 0
+    const applyErrors: string[] = []
+    if (body.action === 'approved') {
+      for (const id of body.ids) {
+        try {
+          await applyProposal(id)
+          applied++
+        } catch (err) {
+          applyErrors.push(`${id}: ${err instanceof Error ? err.message : String(err)}`)
+        }
+      }
+    }
+
+    return Response.json({
+      success: true,
+      data: { reviewed, applied, errors: applyErrors.length > 0 ? applyErrors : undefined },
+    })
   } catch (error) {
     console.error('[engine/proposals]', error)
     const message = error instanceof Error ? error.message : String(error)

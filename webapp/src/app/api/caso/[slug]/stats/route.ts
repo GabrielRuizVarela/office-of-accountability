@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 
-import { getClientConfig } from '@/lib/investigations/registry'
+import { getClientConfig, getClientConfigDynamic } from '@/lib/investigations/registry'
 import { getQueryBuilder } from '@/lib/investigations/query-builder'
 
 export async function GET(
@@ -9,8 +9,8 @@ export async function GET(
 ) {
   const { slug } = await params
 
-  // Validate slug against the registry
-  const config = getClientConfig(slug)
+  // Validate slug against static registry, then dynamic
+  const config = getClientConfig(slug) ?? await getClientConfigDynamic(slug)
   if (!config) {
     return Response.json(
       { success: false, error: 'Unknown investigation' },

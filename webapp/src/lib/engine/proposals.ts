@@ -292,20 +292,42 @@ export async function batchReview(
 // ---------------------------------------------------------------------------
 
 export async function applyProposal(id: string): Promise<void> {
-  const proposal = await getProposal(id)
+  // Read raw node properties (bypasses strict Zod schema to support
+  // both pipeline-created and MCP/ingest-created proposals)
+  const rawResult = await readQuery<Record<string, unknown>>(
+    `MATCH (n:Proposal {id: $id}) RETURN n`,
+    { id },
+    (r) => {
+      const node = r.get('n') as { properties: Record<string, unknown> }
+      const props = { ...node.properties }
+      // Parse payload_json if stored as string
+      if (typeof props.payload_json === 'string') {
+        props.payload = JSON.parse(props.payload_json)
+      } else if (typeof props.payload === 'string') {
+        props.payload = JSON.parse(props.payload)
+      }
+      return props
+    },
+  )
+
+  const proposal = rawResult.records[0]
   if (!proposal) throw new Error(`Proposal not found: ${id}`)
   if (proposal.status !== 'approved') {
     throw new Error(`Proposal ${id} is not approved (status: ${proposal.status})`)
   }
 
-  const payload = proposal.payload as Record<string, unknown>
-  const type = proposal.type as ProposalType
+  const payload = (proposal.payload ?? {}) as Record<string, unknown>
+  const type = (proposal.type ?? '') as ProposalType
 
   switch (type) {
     case 'create_node': {
       const label = payload.label as string
       assertSafeLabel(label)
-      const properties = payload.properties as Record<string, unknown>
+      const properties = { ...(payload.properties as Record<string, unknown>) }
+      // Ensure the node ID from the payload is included in properties
+      if (payload.id && !properties.id) {
+        properties.id = payload.id
+      }
       await executeWrite(
         `CREATE (n:\`${label}\` $props)`,
         { props: properties },

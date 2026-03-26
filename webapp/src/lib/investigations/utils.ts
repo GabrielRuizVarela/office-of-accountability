@@ -58,5 +58,8 @@ export const VALID_CASO_SLUGS = [
 export type CasoSlug = (typeof VALID_CASO_SLUGS)[number]
 
 export function isValidCasoSlug(slug: string): slug is CasoSlug {
-  return (VALID_CASO_SLUGS as readonly string[]).includes(slug)
+  // Accept static slugs directly
+  if ((VALID_CASO_SLUGS as readonly string[]).includes(slug)) return true
+  // Accept any slug matching the caso- prefix pattern (dynamic investigations)
+  return /^caso-[a-z0-9-]+$/.test(slug)
 }
