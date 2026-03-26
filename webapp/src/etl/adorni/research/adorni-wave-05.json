@@ -1,0 +1,20 @@
+{
+  "investigation": "caso-adorni",
+  "wave": 5,
+  "title": "Document Cross-Referencing — Court Filings, Procurement, Corporate",
+  "date": "2026-03-26",
+  "summary": "Ingested 3 legal cases (CFP 1003/2026, Juzgado Federal N.11, Rafecas), 8 new persons (ATX directors Ward/Casal/Paez Canosa, pilot Issin, Gorini/Karina advisor, judges Rafecas/Mangano, lawyer Dalbon), 7 new organizations (Lugalu, Datco, YPF, AySA, Aerolineas, ARCA, Banco Nacion). Key finding: Rodrigo Paez Canosa was employee at ALL THREE SMS tender bidders (ATX, Area Tech, Movilgate) — smoking gun for simulated competition. Datco triangulation confirmed: state entities → Datco → +Be → Angeletti.",
+  "entities_ingested": { "persons": 8, "organizations": 7, "legal_cases": 3, "relationships": 23 },
+  "key_findings": [
+    "SMOKING GUN: Rodrigo Paez Canosa was ATX substitute director + former Area Tech employee + former Movilgate employee = simulated competition",
+    "Ward and Casal were partners in Lugalu S.A. before founding competing ATX and Area Tech",
+    "Area Tech deliberately failed to present bid guarantee (classic rigged-tender disqualification pattern)",
+    "ATX charged $0.045/SMS in Contract 1 but $0.076/SMS in Contract 2 — 69% increase for identical service",
+    "Datco triangulation path confirmed: ARCA/AySA/Banco Nacion/Aerolineas → Datco → +Be (Angeletti)",
+    "National Shipping: YPF contractor for 28 years (~$140M USD/year) contracted +Be for $6.37M ARS",
+    "Adorni is YPF board member (state representative) while wife's firm profits from YPF contractor",
+    "Mara Gorini: Karina Milei advisor AND former Grupo Foggia director → links Tecnopolis bid to presidency",
+    "3 parallel judicial cases: Lijo (enrichment + flights), Rafecas (presidential aircraft misuse)",
+    "Tecnopolis: 25-year concession, $611M/month canon, $183B ARS total. Adorni controls AABE which oversees it"
+  ]
+}
