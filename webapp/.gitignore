@@ -41,3 +41,9 @@ yarn-error.log*
 next-env.d.ts
 /dist/
 .claude/worktrees/
+
+# raw ingestion data (large CSVs)
+_ingestion_data/
+
+# plugin artifacts
+.superpowers/
