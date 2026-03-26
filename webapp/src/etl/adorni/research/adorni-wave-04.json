@@ -1,0 +1,24 @@
+{
+  "investigation": "caso-adorni",
+  "wave": 4,
+  "title": "YouTube Source Curation + MiroFish Propaganda Analysis",
+  "date": "2026-03-26",
+  "summary": "Curated YouTube source list for transcript ingestion. MiroFish analyzed 16 statements and identified 4 recurring propaganda techniques: denial (6 instances), deflection (6), selective data (6), ad hominem (2). Factchecked MiroFish output — all patterns verified against source data, no hallucinations detected.",
+  "youtube_sources": [
+    {"url": "https://www.casarosada.gob.ar/informacion/conferencias/51206-conferencia-de-prensa-del-jefe-de-gabinete-de-ministros-manuel-adorni-desde-casa-rosada-25-03-2026", "title": "Conferencia de prensa Adorni 25-03-2026 (walkout)", "type": "conference"},
+    {"url": "https://www.lanacion.com.ar/politica/el-video-completo-que-dijo-manuel-adorni-en-la-conferencia-de-prensa-nid25032026/", "title": "Video completo conferencia 25-03-2026 (La Nacion)", "type": "conference"},
+    {"url": "https://www.minutouno.com/politica/video-manuel-adorni-perdio-los-estribos-y-se-fue-la-conferencia-prensa-un-pregunta-n6259603", "title": "Adorni pierde estribos y se va (MinutoUno)", "type": "news"}
+  ],
+  "mirofish_verification": {
+    "model": "Qwen3.5-9B-Q5_K_M.gguf",
+    "thinking_mode": false,
+    "factcheck_notes": "All 4 propaganda techniques verified against source data. Pattern classification matches Chequeado verdicts. No hallucinations detected in this run."
+  },
+  "propaganda_patterns": {
+    "denial": {"count": 6, "topics": ["hunger", "poverty", "healthcare", "science budget", "pensions", "China trucks"]},
+    "deflection": {"count": 6, "topics": ["university attacks", "audit claims", "austerity framing", "patrimony defense", "money defense", "fiscal framing"]},
+    "selective_data": {"count": 6, "topics": ["food distribution", "public works", "hunger data", "poverty data", "fiscal narrative", "China"]},
+    "ad_hominem": {"count": 2, "topics": ["journalist attacks", "university march delegitimization"]}
+  },
+  "feeds_next_wave": ["Court filings for document cross-referencing", "Compr.ar procurement records", "BCRA debtor records"]
+}
