@@ -3,7 +3,7 @@
  *
  * Bilingual (ES primary, EN secondary) factcheck items, timeline events,
  * actors, money flows, and impact stats — built through a 13-wave
- * investigation loop with MiroFish/Qwen verification at each stage.
+ * investigation loop with local AI verification at each stage.
  *
  * Investigation covers: crypto/LIBRA connections, pauta oficial,
  * asset declarations, corporate ties, revolving door, media ecosystem,
