@@ -263,18 +263,58 @@ const chapters: readonly Chapter[] = [
     ],
   },
   {
-    id: 'el-mapa',
-    title: { es: 'X. El Mapa', en: 'X. The Map' },
+    id: 'las-productoras',
+    title: { es: 'X. Las Dos Productoras', en: 'X. The Two Producers' },
     paragraphs: {
       es: [
-        'Al cierre de esta investigacion, el grafo Neo4j contiene 97 nodos y 129 relaciones. 37 personas, 34 organizaciones, 16 declaraciones disputadas, 5 flujos de dinero y 5 causas judiciales (3 federales argentinas, 1 FBI/DOJ, 1 ANDIS/Karina Milei). 11 relaciones SAME_ENTITY cruzan con otras investigaciones: caso-libra (Karina Milei, Santiago Caputo, Julian Peh, Mauricio Novelli) y obras-publicas (ATX, Datco, Foggia, Movilgate, Lugalu).',
-        'Todas las verificaciones ICIJ (Panama Papers, Pandora Papers) resultaron negativas para Adorni y todos sus asociados. Ninguna sancion del gobierno de Estados Unidos (OFAC, Engel List, Global Magnitsky) aplica a la red. Pero el FBI y el DOJ investigan activamente el escandalo LIBRA en el que Adorni tiene vinculos documentados.',
-        'Esta investigacion fue construida mediante inteligencia artificial asistida con verificacion humana. Cada hallazgo fue verificado contra fuentes primarias. La IA no acusa: revela patrones. Las conclusiones son del lector.',
+        'El registro publico de ENACOM revela un dato que no habia sido reportado: las unicas dos empresas del entorno de Adorni registradas como productoras audiovisuales son Imhouse S.A. (codigo PR0ACC15A0000, inscripta febrero 2018) y Foggia Group S.A. (codigo PR0ACB60A0000, inscripta abril 2018). Ambas registradas como "Independientes" con dos meses de diferencia. Ninguna otra empresa de la red (Cabosch, ATX, PW Producciones, Wazzup, Alphacentauri) tiene registro ENACOM. [1]',
+        'Imhouse produce contenido para TV Publica (bajo control de Adorni) y pago el vuelo privado de Adorni. Foggia es licitante de Tecnopolis (bajo control de Adorni via AABE) y cliente de la consultora de la esposa de Adorni. Las dos unicas productoras registradas de la red son, precisamente, las dos que tienen negocios directos con areas que Adorni controla.',
+        'Hallazgo exclusivo de esta investigacion: el registro ENACOM vincula a ambas empresas en el mismo sector regulado (produccion audiovisual), ampliando el presunto conflicto de interes mas alla de las licitaciones individuales.',
       ],
       en: [
-        'At the close of this investigation, the Neo4j graph contains 97 nodes and 129 relationships. 37 persons, 34 organizations, 16 disputed statements, 5 money flows, and 5 legal cases (3 Argentine federal, 1 FBI/DOJ, 1 ANDIS/Karina Milei). 11 SAME_ENTITY relationships cross-reference with other investigations: caso-libra (Karina Milei, Santiago Caputo, Julian Peh, Mauricio Novelli) and obras-publicas (ATX, Datco, Foggia, Movilgate, Lugalu).',
-        'All ICIJ checks (Panama Papers, Pandora Papers) came back negative for Adorni and all associates. No US government sanctions (OFAC, Engel List, Global Magnitsky) apply to the network. But the FBI and DOJ are actively investigating the LIBRA scandal in which Adorni has documented links.',
-        'This investigation was built through AI-assisted intelligence with human verification. Every finding was verified against primary sources. The AI does not accuse: it reveals patterns. The conclusions are the reader\'s.',
+        'The ENACOM public registry reveals a previously unreported finding: the only two companies in Adorni\'s network registered as audiovisual producers are Imhouse S.A. (code PR0ACC15A0000, registered February 2018) and Foggia Group S.A. (code PR0ACB60A0000, registered April 2018). Both registered as "Independent" two months apart. No other network company (Cabosch, ATX, PW Producciones, Wazzup, Alphacentauri) has ENACOM registration. [1]',
+        'Imhouse produces content for TV Publica (under Adorni\'s control) and paid for Adorni\'s private flight. Foggia is a Tecnopolis bidder (under Adorni\'s control via AABE) and a client of Adorni\'s wife\'s consulting firm. The only two registered producers in the network are precisely the two that have direct business with areas Adorni controls.',
+        'Exclusive finding: the ENACOM registry links both companies in the same regulated sector (audiovisual production), expanding the alleged conflict of interest beyond individual tenders.',
+      ],
+    },
+    citations: [
+      { id: 1, text: 'ENACOM — Registro Publico de Senales y Productoras', url: 'https://registros-sca.enacom.gob.ar/productoras/' },
+    ],
+  },
+  {
+    id: 'las-direcciones',
+    title: { es: 'XI. Las Direcciones', en: 'XI. The Addresses' },
+    paragraphs: {
+      es: [
+        'El cruce del Registro Nacional de Sociedades (951.000 empresas, datos abiertos del Ministerio de Justicia) con la base de datos IGJ revela agrupamientos de direcciones que refuerzan la estructura de red:',
+        'San Martin 551, CABA: ATX S.A. + Lugalu S.A. + Impakto S.A. — tres empresas de Ward comparten domicilio fiscal. Pedro Chutro 3135, CABA: Area Tech S.A. + Neutronica S.A. — la empresa "competidora" eliminada de la licitacion SMS comparte direccion con otra empresa de Ward donde Paez Canosa tambien es directivo. Esmeralda 288, CABA: Alphacentauri S.A. + Omega Centauri S.A. — la empresa propietaria del Honda Jet comparte direccion con una sociedad creada en septiembre 2025 (un mes antes de que Adorni asumiera como Jefe de Gabinete), con Augusto Bunge como unico directivo en ambas.',
+        'La existencia de estos agrupamientos no implica conducta ilicita por si misma — muchas empresas comparten domicilios fiscales. Pero en el contexto de una licitacion donde las tres oferentes comparten directivos, socios y direcciones, los agrupamientos constituyen evidencia circunstancial relevante para la investigacion judicial en curso.',
+      ],
+      en: [
+        'Cross-referencing the National Registry of Companies (951,000 companies, Justice Ministry open data) with the IGJ database reveals address clusters that reinforce the network structure:',
+        'San Martin 551, CABA: ATX S.A. + Lugalu S.A. + Impakto S.A. — three Ward companies share a fiscal address. Pedro Chutro 3135, CABA: Area Tech S.A. + Neutronica S.A. — the "competing" company eliminated from the SMS tender shares an address with another Ward company where Paez Canosa is also a director. Esmeralda 288, CABA: Alphacentauri S.A. + Omega Centauri S.A. — the Honda Jet owner company shares an address with a company created in September 2025 (one month before Adorni became Chief of Cabinet), with Augusto Bunge as the sole director of both.',
+        'The existence of these clusters does not by itself imply unlawful conduct — many companies share fiscal addresses. But in the context of a tender where all three bidders share directors, partners, and addresses, the clusters constitute circumstantial evidence relevant to the ongoing judicial investigation.',
+      ],
+    },
+    citations: [
+      { id: 1, text: 'Registro Nacional de Sociedades — Datos Abiertos', url: 'https://datos.jus.gob.ar/dataset/registro-nacional-de-sociedades' },
+    ],
+  },
+  {
+    id: 'el-mapa',
+    title: { es: 'XII. El Mapa', en: 'XII. The Map' },
+    paragraphs: {
+      es: [
+        'Al cierre de esta investigacion, el grafo contiene 102 nodos y 133 relaciones. 37 personas, 38 organizaciones, 17 declaraciones disputadas, 5 flujos de dinero y 6 causas judiciales (CFP 1003/2026 ante Lijo, causa Rafecas por avion presidencial, investigacion Lijo por vuelo privado, denuncia ATX/Tecnopolis, ANDIS CFP 3402/2025, y LIBRA CFP 574/2025 con FBI/DOJ). 11 relaciones SAME_ENTITY cruzan con otras investigaciones: caso-libra (Karina Milei, Santiago Caputo, Julian Peh, Mauricio Novelli) y obras-publicas (ATX, Datco, Foggia, Movilgate, Lugalu).',
+        'Se verificaron 20 CUITs de personas y organizaciones. Se consultaron 14 fuentes de datos publicos incluyendo IGJ (951K directivos), Registro Nacional de Sociedades (951K empresas), ICIJ Offshore Leaks, ENACOM, ANAC, AFIP, FinCEN Files, OpenSanctions, y las bases de datos de contratistas, donantes y declaraciones juradas existentes. Todas las verificaciones ICIJ y de sanciones estadounidenses resultaron negativas.',
+        'Preguntas pendientes que solo la justicia puede responder: (1) Si los registros bancarios de Imhouse muestran pagos a Adorni, lo que probaria una participacion societaria oculta. (2) Quien compro el paquete de 10 vuelos facturado a Agustin Issin Hansen en Uruguay. (3) Los montos de los contratos de +Be canalizados a traves de Datco. (4) El proposito de Omega Centauri S.A., creada en septiembre 2025 en la misma direccion y con el mismo directivo que la empresa propietaria del jet.',
+        'Esta investigacion fue construida mediante inteligencia artificial asistida con verificacion humana. Cada hallazgo fue verificado contra fuentes primarias. Donde se encontraron errores en el analisis automatizado, fueron corregidos y documentados. La IA no acusa: revela patrones. Las conclusiones son del lector.',
+      ],
+      en: [
+        'At the close of this investigation, the graph contains 102 nodes and 133 relationships. 37 persons, 38 organizations, 17 disputed statements, 5 money flows, and 6 legal cases (CFP 1003/2026 before Lijo, Rafecas presidential aircraft case, Lijo private flight investigation, ATX/Tecnopolis complaint, ANDIS CFP 3402/2025, and LIBRA CFP 574/2025 with FBI/DOJ). 11 SAME_ENTITY relationships cross-reference with other investigations: caso-libra (Karina Milei, Santiago Caputo, Julian Peh, Mauricio Novelli) and obras-publicas (ATX, Datco, Foggia, Movilgate, Lugalu).',
+        'Twenty CUITs for persons and organizations were verified. Fourteen public data sources were queried including IGJ (951K officers), National Registry of Companies (951K companies), ICIJ Offshore Leaks, ENACOM, ANAC, AFIP, FinCEN Files, OpenSanctions, and existing contractor, donor, and asset declaration databases. All ICIJ and US sanctions checks came back negative.',
+        'Pending questions that only the judiciary can answer: (1) Whether Imhouse bank records show payments to Adorni, which would prove a hidden partnership. (2) Who purchased the 10-flight package billed to Agustin Issin Hansen in Uruguay. (3) The amounts of +Be contracts channeled through Datco. (4) The purpose of Omega Centauri S.A., created September 2025 at the same address and with the same director as the jet owner company.',
+        'This investigation was built through AI-assisted intelligence with human verification. Every finding was verified against primary sources. Where errors were found in automated analysis, they were corrected and documented. The AI does not accuse: it reveals patterns. The conclusions are the reader\'s.',
       ],
     },
   },
