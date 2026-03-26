@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import type { PipelineState } from '@/lib/engine/types'
 import { GateApproval } from '@/components/engine/GateApproval'
@@ -11,6 +11,48 @@ export interface PipelineStatusProps {
   casoSlug: string
   pipelineStateId: string | null
   pipelineId: string | null
+}
+
+// ─── Poll-stop statuses ───────────────────────────────────────────────────────
+
+const STOP_POLLING_STATUSES = new Set(['completed', 'stopped', 'gate_pending', 'failed', 'paused'])
+
+// ─── Progress JSON shape (best-effort) ────────────────────────────────────────
+
+interface ProgressJson {
+  stage?: string
+  percent?: number
+}
+
+function parseProgress(raw: unknown): ProgressJson | null {
+  if (!raw) return null
+  try {
+    const obj = typeof raw === 'string' ? (JSON.parse(raw) as unknown) : raw
+    if (obj && typeof obj === 'object') return obj as ProgressJson
+  } catch {
+    // ignore parse errors
+  }
+  return null
+}
+
+// ─── Spinner ──────────────────────────────────────────────────────────────────
+
+function Spinner() {
+  return (
+    <svg
+      className="h-4 w-4 animate-spin text-white"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+      />
+    </svg>
+  )
 }
 
 // ─── Status helpers ───────────────────────────────────────────────────────────
@@ -47,40 +89,67 @@ export function PipelineStatus({ casoSlug, pipelineStateId, pipelineId }: Pipeli
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [runLoading, setRunLoading] = useState(false)
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
-  // Fetch latest pipeline state
-  const fetchState = useCallback(async () => {
-    if (!pipelineId) return
-    setLoading(true)
-    setError(null)
-    try {
-      const res = await fetch(
-        `/api/casos/${casoSlug}/engine/state?pipeline_id=${encodeURIComponent(pipelineId)}`,
-      )
-      if (!res.ok) {
-        setError(`Failed to fetch state (${res.status})`)
-        return
+  // Fetch latest pipeline state (silent = skip setLoading, used by poller)
+  const fetchState = useCallback(
+    async (silent = false) => {
+      if (!pipelineId) return
+      if (!silent) setLoading(true)
+      setError(null)
+      try {
+        const res = await fetch(
+          `/api/casos/${casoSlug}/engine/state?pipeline_id=${encodeURIComponent(pipelineId)}`,
+        )
+        if (!res.ok) {
+          setError(`Failed to fetch state (${res.status})`)
+          return
+        }
+        const json = (await res.json()) as { success: boolean; data: (PipelineState & { progress_json?: unknown })[] }
+        if (json.success && json.data.length > 0) {
+          // Use the most recent state (first — ordered DESC by created_at)
+          const match = pipelineStateId
+            ? json.data.find((s) => s.id === pipelineStateId) ?? json.data[0]
+            : json.data[0]
+          setState(match)
+        } else {
+          setState(null)
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error')
+      } finally {
+        if (!silent) setLoading(false)
       }
-      const json = (await res.json()) as { success: boolean; data: PipelineState[] }
-      if (json.success && json.data.length > 0) {
-        // Use the most recent state (first — ordered DESC by created_at)
-        const match = pipelineStateId
-          ? json.data.find((s) => s.id === pipelineStateId) ?? json.data[0]
-          : json.data[0]
-        setState(match)
-      } else {
-        setState(null)
-      }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unknown error')
-    } finally {
-      setLoading(false)
-    }
-  }, [casoSlug, pipelineId, pipelineStateId])
+    },
+    [casoSlug, pipelineId, pipelineStateId],
+  )
 
+  // Initial fetch
   useEffect(() => {
     fetchState()
   }, [fetchState])
+
+  // Polling: start when running, stop when terminal status reached
+  useEffect(() => {
+    const stopPolling = () => {
+      if (pollRef.current !== null) {
+        clearInterval(pollRef.current)
+        pollRef.current = null
+      }
+    }
+
+    if (state?.status === 'running') {
+      if (pollRef.current === null) {
+        pollRef.current = setInterval(() => {
+          void fetchState(true)
+        }, 5000)
+      }
+    } else if (state?.status && STOP_POLLING_STATUSES.has(state.status)) {
+      stopPolling()
+    }
+
+    return stopPolling
+  }, [state?.status, fetchState])
 
   // Run pipeline
   async function handleRun() {
@@ -98,7 +167,7 @@ export function PipelineStatus({ casoSlug, pipelineStateId, pipelineId }: Pipeli
         setError(json.error ?? `Run failed (${res.status})`)
         return
       }
-      // Refetch state after run
+      // Refetch state after run (will trigger polling via status effect)
       await fetchState()
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error')
@@ -146,8 +215,9 @@ export function PipelineStatus({ casoSlug, pipelineStateId, pipelineId }: Pipeli
         <button
           onClick={handleRun}
           disabled={!canRun(state?.status) || runLoading}
-          className="rounded-md bg-purple-600 px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-purple-500 disabled:cursor-not-allowed disabled:opacity-40"
+          className="flex items-center gap-2 rounded-md bg-purple-600 px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-purple-500 disabled:cursor-not-allowed disabled:opacity-40"
         >
+          {runLoading && <Spinner />}
           {runLoading ? 'Starting\u2026' : 'Run Pipeline'}
         </button>
       </div>
@@ -185,6 +255,35 @@ export function PipelineStatus({ casoSlug, pipelineStateId, pipelineId }: Pipeli
           </dl>
         </div>
       )}
+
+      {/* Stage progress */}
+      {state && (() => {
+        const prog = parseProgress((state as PipelineState & { progress_json?: unknown }).progress_json)
+        if (!prog) return null
+        return (
+          <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4">
+            <h3 className="mb-2 text-sm font-medium text-zinc-300">Stage Progress</h3>
+            {prog.stage && (
+              <p className="mb-2 text-sm text-zinc-400">
+                Current stage: <span className="font-mono text-zinc-200">{prog.stage}</span>
+              </p>
+            )}
+            {typeof prog.percent === 'number' && (
+              <div className="flex items-center gap-3">
+                <div className="relative h-2 flex-1 overflow-hidden rounded-full bg-zinc-700">
+                  <div
+                    className="h-full rounded-full bg-blue-500 transition-all duration-500"
+                    style={{ width: `${Math.min(100, Math.max(0, prog.percent))}%` }}
+                  />
+                </div>
+                <span className="w-10 text-right text-xs text-zinc-400">
+                  {Math.round(prog.percent)}%
+                </span>
+              </div>
+            )}
+          </div>
+        )
+      })()}
 
       {/* Gate approval */}
       {state?.status === 'paused' && state.current_stage_id && (
