@@ -1,0 +1,47 @@
+{
+  "investigation": "caso-adorni",
+  "wave": 1,
+  "title": "OSINT Seed — Public Profile, Career, and Network",
+  "date": "2026-03-26",
+  "summary": "Initial seed data for Manuel Adorni investigation. CUIT 20-28052206-7. 13 persons and 9 organizations ingested into Neo4j with 22 relationships. MiroFish assessed risk level as HIGH based on 8 key findings: private flights paid by contractor, undeclared assets (500% patrimony increase), wife's triangulated state contracts, Tecnopolis conflict of interest, simulated SMS tender competition, LIBRA scandal connection, unexplained cash, and extreme income-spending gap.",
+  "mirofish_verification": {
+    "risk_level": "high",
+    "model": "Qwen3.5-9B-Q5_K_M.gguf",
+    "thinking_mode": false,
+    "factcheck_notes": "MiroFish incorrectly referred to Karina Milei as 'Vice President' — she is Secretary General of the Presidency. All other findings verified against source URLs."
+  },
+  "entities_ingested": {
+    "persons": 13,
+    "organizations": 9,
+    "relationships": 22
+  },
+  "key_findings": [
+    "CUIT: 20-28052206-7 (gold tier, from AFIP via CuitOnline)",
+    "AFIP activities: personal services (2013), business advisory (2020), accounting (2020)",
+    "Company: AS Innovacion Profesional SRL — 50/50 with wife (Boletin Oficial source)",
+    "Career: UNLP Economics → UADE CPA → media commentator → Macri Culture Min (2017) → LLA Spokesperson (2023) → Jefe Gabinete (2025)",
+    "Private flights: Punta del Este Feb 2026, paid by Imhouse S.A. ($6.98M ARS). Judge Lijo investigating.",
+    "Undeclared assets: Country house Indio Cua (wife, Nov 2024), Caballito apartment. 500% patrimony increase 2023-2024.",
+    "Wife contracts: +Be consulting with YPF, AySA, Banco Nacion, Aerolineas, ARCA via triangulation.",
+    "SMS tender: $3.65B ARS to ATX S.A. with alleged simulated competition.",
+    "LIBRA connection: Attended Hotel Libertador meeting (Oct 2024) with Milei, Karina, Novelli, Peh.",
+    "Income gap: Salary $3.5M/month vs family spending $17-20M/month on credit cards."
+  ],
+  "sources": [
+    "https://www.cuitonline.com/detalle/20280522067/adorni-manuel.html",
+    "https://en.wikipedia.org/wiki/Manuel_Adorni",
+    "https://chequeado.com/personajes/quien-es-manuel-adorni/",
+    "https://www.lanacion.com.ar/politica/revelan-los-detalles-del-vuelo-privado-que-tomo-manuel-adorni-con-su-familia-en-el-feriado-de-nid11032026/",
+    "https://www.lapoliticaonline.com/politica/denuncian-que-ypf-y-arca-contrataron-a-la-esposa-de-adorni/",
+    "https://chequeado.com/el-explicador/polemica-por-los-viajes-de-manuel-adorni-que-bienes-declaro-el-jefe-de-gabinete/",
+    "https://www.perfil.com/noticias/judiciales/manuel-adorni-suma-otra-polemica-ahora-le-adjudican-una-casa-en-un-country-de-exaltacion-de-la-cruz.phtml",
+    "https://noticias.perfil.com/noticias/politica/lo-que-le-faltaba-a-adorni-despues-de-nueva-york-tambien-es-parte-del-caso-libra.phtml",
+    "https://www.boletinoficial.gob.ar/pdf/linkQR/elgyazJaYndib2QreFpJZ1U0d1UwZz09"
+  ],
+  "feeds_next_wave": [
+    "CUIT 20-28052206-7 for public records queries (DDJJ, Boletin Oficial, IGJ)",
+    "Associate names for Wave 2 expansion: Lanari, Devitt, Sicilia, Vignale, Grandio",
+    "Companies for IGJ tracing: AS Innovacion Profesional, Imhouse S.A., ATX S.A., +Be",
+    "Cross-reference targets: Karina Milei, Santiago Caputo, Julian Peh (already in caso-libra)"
+  ]
+}
