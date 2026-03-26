@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server'
 import { z } from 'zod/v4'
 import neo4j from 'neo4j-driver-lite'
 
-import { writeQuery, withWriteTransaction } from '@/lib/neo4j/client'
+import { writeQuery } from '@/lib/neo4j/client'
 
 const bodySchema = z.object({
   node_ids: z.array(z.string().min(1)).min(1).max(100),

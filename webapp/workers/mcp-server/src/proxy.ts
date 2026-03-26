@@ -8,7 +8,7 @@
 import type { AuthContext, Env, MCPToolResult } from './types'
 
 interface ProxyOptions {
-  method: 'GET' | 'POST' | 'PATCH' | 'DELETE'
+  method: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE'
   path: string
   body?: Record<string, unknown>
   query?: Record<string, string>
@@ -42,7 +42,7 @@ export async function proxyToApi(
     signal: AbortSignal.timeout(30_000),
   }
 
-  if (options.body && (options.method === 'POST' || options.method === 'PATCH')) {
+  if (options.body && (options.method === 'POST' || options.method === 'PATCH' || options.method === 'PUT')) {
     fetchOptions.body = JSON.stringify(options.body)
   }
 

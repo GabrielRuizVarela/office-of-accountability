@@ -10,7 +10,7 @@ const MAX_ROWS = 500
 const bodySchema = z.object({
   csv_content: z.string().max(MAX_CSV_BYTES),
   column_mapping: z.record(z.string(), z.string()),
-  label: z.string().min(1),
+  label: z.string().min(1).max(50).regex(/^[A-Za-z][A-Za-z0-9_]*$/, 'Label must be alphanumeric (letters, numbers, underscores, starting with a letter)'),
   proposed_by: z.string().optional(),
   id_column: z.string().optional(),
 })

@@ -4,7 +4,7 @@ import { z } from 'zod/v4'
 import { readQuery, writeQuery } from '@/lib/neo4j/client'
 
 const bodySchema = z.object({
-  label: z.string().min(1),
+  label: z.string().min(1).max(50).regex(/^[A-Za-z][A-Za-z0-9_]*$/, 'Label must be alphanumeric (letters, numbers, underscores, starting with a letter)'),
   properties: z.record(z.string(), z.unknown()),
   source_url: z.string().optional(),
   confidence: z.number().min(0).max(1).default(0.5),
