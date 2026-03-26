@@ -1,0 +1,34 @@
+{
+  "investigation": "caso-adorni",
+  "wave": 2,
+  "title": "Public Records Ingestion + Cross-Investigation Links",
+  "date": "2026-03-26",
+  "summary": "Expanded network with government structure (Sicilia, Vignale, Pettovello, Santilli, Luis Caputo), family links (Silvia Pais, Norma Zuccolo as declared cash lenders), media associates (Horacio Silva, Juan Grandio), and 6 new organizations. Created 4 SAME_ENTITY cross-investigation links to caso-libra (Karina Milei, Santiago Caputo, Julian Peh, Mauricio Novelli).",
+  "entities_ingested": {
+    "new_persons": 10,
+    "new_organizations": 6,
+    "new_relationships": 17,
+    "cross_investigation_links": 4
+  },
+  "cross_references": [
+    {"from": "Karina Milei (caso-adorni)", "to": "Karina Milei (caso-libra)", "confidence": 1.0},
+    {"from": "Santiago Caputo (caso-adorni)", "to": "Santiago Caputo (caso-libra)", "confidence": 1.0},
+    {"from": "Julian Peh (caso-adorni)", "to": "Julian Peh (caso-libra)", "confidence": 1.0},
+    {"from": "Mauricio Novelli (caso-adorni)", "to": "Mauricio Novelli (caso-libra)", "confidence": 1.0}
+  ],
+  "key_findings": [
+    "Decreto 86/2023: Adorni designated Vocero Presidencial with rank of Secretary of State",
+    "Decreto 834/2024: Promoted to Secretario de Comunicacion y Medios, gaining control over pauta oficial",
+    "Decreto 784/2025: Named Jefe de Gabinete (Chief of Cabinet)",
+    "DDJJ filed late (Nov 7 2024) — shows $107.9M assets, $95.4M debts, $42.5K USD cash from mother/retiree loans",
+    "AS Innovacion Profesional SRL: 50/50 Adorni-Angeletti, AFIP activities since 2020 (advisory + accounting)",
+    "No GovernmentAppointment nodes exist in DB for Adorni — CUIT not yet in the general appointments dataset",
+    "4 cross-investigation SAME_ENTITY links created to caso-libra",
+    "SMS tender triad: ATX S.A., Area Tech S.A., Movilgate S.R.L. — alleged corporate links between all three bidders"
+  ],
+  "feeds_next_wave": [
+    "Press conference claims for statement verification (Wave 3)",
+    "YouTube video discovery for transcript ingestion (Wave 4)",
+    "Luis Caputo CompanyOfficer nodes for potential cross-ref with finanzas-politicas"
+  ]
+}

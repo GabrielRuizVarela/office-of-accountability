@@ -13,10 +13,7 @@ Generic orchestration loop that enriches any investigation case. Discovers case 
 ## Prerequisites
 
 1. **Neo4j** running (port 7687)
-2. **llama.cpp** running with Qwen on GPU (port 8080). If not:
-   ```bash
-   /home/vg/dev/llama.cpp/build/bin/llama-server -m /home/vg/models/Qwen3.5-9B-Q5_K_M.gguf --port 8080 --n-gpu-layers 99 --ctx-size 8192
-   ```
+2. **Local LLM** running on GPU (port 8080). Check with `curl -s http://localhost:8080/v1/models`
 
 ## Phase 0: Discover Case
 
@@ -101,18 +98,18 @@ Dispatch 2-4 agents in parallel, adapted to what the case contains:
 
 ## Phase 4: Analyze with LLM (parallel agents)
 
-Dispatch 2-3 agents using the GPU Qwen model:
+Dispatch 2-3 agents using the local LLM (port 8080, OpenAI-compatible API):
 
 ```bash
 curl -s http://localhost:8080/v1/chat/completions \
   -H "Content-Type: application/json" \
-  -d '{"model": "Qwen3.5-9B-Q5_K_M.gguf", "messages": [...], "temperature": 0.3, "max_tokens": 4096}'
+  -d '{"messages": [...], "temperature": 0.3, "max_tokens": 4096}'
 ```
 
 **Agent E — Network analysis:**
 - Extract the most connected entities and cross-dataset links from Neo4j
-- Send to Qwen for pattern identification
-- NOTE: Check both `reasoning_content` and `content` fields in Qwen response
+- Send to local LLM for pattern identification
+- NOTE: Check both `reasoning_content` and `content` fields in response (thinking mode)
 
 **Agent F — Domain-specific analysis:**
 - Adapt to what the case is about (financial flows, trafficking patterns, token movements, etc.)
