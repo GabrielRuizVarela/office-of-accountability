@@ -51,6 +51,12 @@ export async function POST(
       }
     }
 
+    // Auto-generate slug from name if not provided
+    const nameVal = body.properties.name as string | undefined
+    const autoSlug = nameVal
+      ? nameVal.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+      : undefined
+
     const nodeId = `${casoSlug}:${body.label.toLowerCase()}-${Date.now()}`
     const proposalId = crypto.randomUUID()
     const payloadJson = JSON.stringify({
@@ -58,6 +64,7 @@ export async function POST(
       id: nodeId,
       properties: {
         ...body.properties,
+        ...(autoSlug ? { slug: autoSlug } : {}),
         caso_slug: casoSlug,
         confidence_tier: 'bronze',
         source_url: body.source_url ?? null,

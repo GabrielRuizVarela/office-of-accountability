@@ -153,9 +153,9 @@ export function CasoLandingContent({ slug, actors, documents, config, stats }: P
             {actors.map((actor) => (
               <ActorCard
                 key={actor.id as string}
-                slug={actor.slug as string}
+                slug={(actor.slug ?? actor.id ?? '') as string}
                 investigationSlug={slug}
-                name={actor.name as string}
+                name={(actor.name ?? 'Unknown') as string}
                 role={actor.role as string | undefined}
                 nationality={actor.nationality as string | undefined}
               />
@@ -180,9 +180,9 @@ export function CasoLandingContent({ slug, actors, documents, config, stats }: P
             {documents.slice(0, 6).map((doc) => (
               <DocumentCard
                 key={doc.id as string}
-                slug={doc.slug as string}
+                slug={(doc.slug ?? doc.id ?? '') as string}
                 investigationSlug={slug}
-                title={doc.title as string}
+                title={(doc.title ?? doc.name ?? 'Untitled') as string}
                 docType={doc.doc_type as string}
                 summary={doc.summary as string | undefined}
                 datePublished={doc.date_published as string | undefined}

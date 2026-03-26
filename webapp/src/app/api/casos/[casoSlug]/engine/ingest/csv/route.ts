@@ -114,8 +114,11 @@ export async function POST(
         }
       }
 
-      // Determine name for dedup
+      // Auto-generate slug from name
       const name = (properties.name as string | undefined) ?? ''
+      if (name && !properties.slug) {
+        properties.slug = name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+      }
 
       if (name && existingNames.has(name)) {
         skippedDuplicates++
