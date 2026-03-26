@@ -57,12 +57,12 @@
     "tagline": "Motor de investigación sobre grafos de conocimiento"
   },
   "narrative": {
-    "intro": "Construimos un motor de investigación con inteligencia artificial. Esto es lo que pasó.",
-    "subtitle": "Un sistema que busca, valida y consolida hallazgos a partir de datos públicos. Con revisión humana en cada paso. Lo probamos en un caso. Después en siete."
+    "intro": "Construimos un motor de investigación con inteligencia artificial. Esto es lo que encontramos.",
+    "subtitle": "Un sistema que busca, valida y consolida hallazgos a partir de datos públicos. Con revisión humana en cada paso."
   },
   "whatsNext": {
     "title": "Lo que viene",
-    "description": "Nuestra visión original es construir una plataforma donde cualquiera pueda crear investigaciones como estas — y construir a partir de ellas con mecanismos de consenso.",
+    "description": "El objetivo es construir una plataforma donde cualquiera pueda crear investigaciones como estas — y construir a partir de ellas con mecanismos de consenso.",
     "roadmapTitle": "Hoja de ruta",
     "platform": {
       "title": "Plataforma abierta",

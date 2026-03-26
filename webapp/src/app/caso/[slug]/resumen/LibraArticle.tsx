@@ -71,13 +71,13 @@ const chapters: readonly Chapter[] = [
     paragraphs: {
       es: [
         'El 14 de febrero de 2025, Dia de San Valentin, a las 19:01 hora argentina, el presidente Javier Milei publico un tweet ante sus 19 millones de seguidores promocionando un token de criptomoneda llamado $LIBRA. El token habia sido creado apenas minutos antes.',
-        'En los siguientes 40 minutos, el precio del token se disparo de $0.000001 a $5.20, alcanzando una capitalizacion de mercado de $4.500 millones. A los ojos del mundo, el presidente de la octava economia mas grande del mundo acababa de respaldar una criptomoneda recien creada a traves de su cuenta personal.',
-        'Lo que los compradores no sabian era que el 82% del suministro del token estaba desbloqueado desde el lanzamiento — un detalle que la firma de analisis blockchain Bubblemaps documentaria mas tarde. [1] Las fichas ya estaban puestas. La unica pregunta era cuanto tardarian en caer.',
+        'En los siguientes 40 minutos, el precio del token se disparo de $0.000001 a $5.20, alcanzando una capitalizacion de mercado de $4.500 millones. El presidente de la octava economia mas grande del mundo acababa de respaldar una criptomoneda recien creada a traves de su cuenta personal.',
+        'Lo que los compradores no sabian era que el 82% del suministro del token estaba desbloqueado desde el lanzamiento — un detalle que la firma de analisis blockchain Bubblemaps documentaria mas tarde. [1]',
       ],
       en: [
         'On February 14, 2025 — Valentine\'s Day — at 7:01 PM Argentina time, President Javier Milei posted a tweet to his 19 million followers promoting a cryptocurrency token called $LIBRA. The token had been created just minutes earlier.',
-        'Over the next 40 minutes, the token\'s price surged from $0.000001 to $5.20, reaching a market capitalization of $4.5 billion. To the world, the president of the eighth-largest economy had just endorsed a freshly minted cryptocurrency from his personal account.',
-        'What buyers didn\'t know was that 82% of the token\'s supply was unlocked from launch — a detail blockchain forensics firm Bubblemaps would later document. [1] The chips were already placed. The only question was how long before they fell.',
+        'Over the next 40 minutes, the token\'s price surged from $0.000001 to $5.20, reaching a market capitalization of $4.5 billion. The president of the eighth-largest economy had just endorsed a freshly minted cryptocurrency from his personal account.',
+        'What buyers didn\'t know was that 82% of the token\'s supply was unlocked from launch — a detail blockchain forensics firm Bubblemaps would later document. [1]',
       ],
     },
     pullQuote: {
@@ -97,13 +97,13 @@ const chapters: readonly Chapter[] = [
     paragraphs: {
       es: [
         'Mientras miles de argentinos y traders internacionales compraban $LIBRA confiando en el respaldo presidencial, ocho billeteras vinculadas a los organizadores comenzaron a extraer fondos. En apenas tres horas, $107 millones fueron drenados del pool de liquidez. [1]',
-        'El precio se desplomo un 94%. Lo que habia sido un token de $4.500 millones se convirtio en polvo digital. Un analisis posterior revelo que 114.410 billeteras perdieron un total de $251 millones. [2] Solo 36 billeteras obtuvieron ganancias superiores al millon de dolares.',
-        'La matematica era brutal: por cada dolar que alguien gano, docenas de personas perdieron. El patron era clasico — un esquema de pump-and-dump ejecutado con la precision de una operacion financiera sofisticada, pero con la escala que solo el endorsement presidencial podia proporcionar.',
+        'El precio se desplomo un 94%. En tres horas, la capitalización pasó de $4.500 millones a menos de $300 millones. Un analisis posterior revelo que 114.410 billeteras perdieron un total de $251 millones. [2] Solo 36 billeteras obtuvieron ganancias superiores al millon de dolares.',
+        'Los números no dejan margen de interpretación: por cada dolar que alguien gano, docenas de personas perdieron. El patron era clasico — un esquema de pump-and-dump: insiders compraron antes del tweet, vendieron en el pico, y drenaron la liquidez, pero con la escala que solo el endorsement presidencial podia proporcionar.',
       ],
       en: [
         'While thousands of Argentines and international traders bought $LIBRA trusting the presidential endorsement, eight wallets linked to the organizers began extracting funds. In just three hours, $107 million was drained from the liquidity pool. [1]',
-        'The price crashed 94%. What had been a $4.5 billion token became digital dust. Later analysis revealed that 114,410 wallets lost a combined $251 million. [2] Only 36 wallets made profits exceeding one million dollars.',
-        'The math was brutal: for every dollar someone gained, dozens lost. The pattern was classic — a pump-and-dump scheme executed with the precision of a sophisticated financial operation, but at a scale only a presidential endorsement could provide.',
+        'The price crashed 94%. In three hours, market cap went from $4.5 billion to under $300 million. Later analysis revealed that 114,410 wallets lost a combined $251 million. [2] Only 36 wallets made profits exceeding one million dollars.',
+        'The numbers leave no room for interpretation: for every dollar someone gained, dozens lost. The pattern was classic — a pump-and-dump scheme: insiders bought before the tweet, sold at the peak, and drained the liquidity, but at a scale only a presidential endorsement could provide.',
       ],
     },
     pullQuote: {
@@ -235,13 +235,13 @@ const chapters: readonly Chapter[] = [
         'La respuesta del gobierno siguio un patron reconocible. Milei elimino su publicacion y declaro ignorancia sobre la naturaleza del token. Luego cambio de estrategia, defendiendo su accion como un esfuerzo por "impulsar el sector privado".',
         'En mayo de 2025, mediante el Decreto 332/2025, el gobierno disolvio la UTI (Unidad de Transparencia e Investigacion), eliminando uno de los mecanismos de control interno. [1] Un mes despues, la Oficina Anticorrupcion emitio un dictamen exonerando a Milei de responsabilidad.',
         'Una grabacion filtrada revelo al ministro Caputo advirtiendo sobre el "dolor de cabeza judicial" que el caso representaba. [2] Mientras tanto, el fiscal a cargo, Eduardo Taiano, fue acusado de obstruccion por su manejo de la investigacion.',
-        'Al cumplirse un ano del escandalo en febrero de 2026, el balance era desolador: cero testigos citados a declarar, cero procesamientos, cero detenidos.',
+        'Al cumplirse un ano del escandalo en febrero de 2026, cero testigos citados a declarar, cero procesamientos, cero detenidos.',
       ],
       en: [
         'The government\'s response followed a recognizable pattern. Milei deleted his post and claimed ignorance about the token\'s nature. He then shifted strategy, defending his action as an effort to "boost the private sector."',
         'In May 2025, through Decree 332/2025, the government disbanded the UTI (Transparency and Investigation Unit), eliminating one of the internal oversight mechanisms. [1] A month later, the Anti-Corruption Office issued a ruling clearing Milei of responsibility.',
         'A leaked recording revealed Minister Caputo warning about the "judicial headache" the case represented. [2] Meanwhile, the prosecutor in charge, Eduardo Taiano, was accused of obstruction for his handling of the investigation.',
-        'At the one-year anniversary of the scandal in February 2026, the tally was devastating: zero witnesses summoned, zero indictments, zero arrests.',
+        'At the one-year anniversary of the scandal in February 2026, zero witnesses summoned, zero indictments, zero arrests.',
       ],
     },
     pullQuote: {
@@ -272,8 +272,8 @@ const chapters: readonly Chapter[] = [
       ],
     },
     pullQuote: {
-      es: '"A pesar de la montana de evidencia, la justicia argentina no ha producido un solo procesamiento."',
-      en: '"Despite the mountain of evidence, Argentine justice has not produced a single indictment."',
+      es: '"Registros telefónicos, blockchain, documentos, testimonios — y la justicia argentina no ha producido un solo procesamiento."',
+      en: '"Phone records, blockchain, documents, testimony — and Argentine justice has not produced a single indictment."',
     },
     citations: [
       { id: 1, text: 'Hurlock v. Kelsier Ventures — Class action filing, SDNY', url: 'https://www.courtlistener.com' },
@@ -308,17 +308,17 @@ const chapters: readonly Chapter[] = [
       es: [
         'En marzo de 2026, la comision congressional ha sido reactivada y exige explicaciones con nueva evidencia forense extraida del telefono de Novelli. La denuncia por obstruccion contra el fiscal Taiano abre un segundo frente judicial.',
         'Las preguntas fundamentales siguen sin respuesta: Quien autorizo la publicacion presidencial? Quienes son los beneficiarios de las 26 billeteras no rastreadas? Se concreto el pago de $5 millones documentado en el iPhone de Novelli? Cual fue el rol real de Julian Peh, cuya centralidad en la red supera a la de Milei y Davis?',
-        'Esta investigacion de la Oficina de Rendicion de Cuentas ha verificado 43 items contra fuentes judiciales, parlamentarias, blockchain y periodisticas. [1] El grafo de conocimiento contiene 102 nodos y 141 aristas, todos verificados. La evidencia esta ahi. Los numeros estan ahi. Lo que falta es la voluntad de actuar.',
+        'Esta investigacion de la Oficina de Rendicion de Cuentas ha verificado 43 items contra fuentes judiciales, parlamentarias, blockchain y periodisticas. [1] El grafo de conocimiento contiene 102 nodos y 141 aristas, todos verificados. La evidencia está ahí. Los números están ahí. Cero procesamientos.',
       ],
       en: [
         'In March 2026, the congressional commission has been revived and is demanding explanations with new forensic evidence extracted from Novelli\'s phone. The obstruction complaint against Prosecutor Taiano opens a second judicial front.',
         'The fundamental questions remain unanswered: Who authorized the presidential post? Who are the beneficiaries behind the 26 untraced wallets? Was the $5 million payment documented on Novelli\'s iPhone ever executed? What was the real role of Julian Peh, whose network centrality exceeds that of both Milei and Davis?',
-        'This Office of Accountability investigation has verified 43 items against judicial, parliamentary, blockchain, and journalistic sources. [1] The knowledge graph contains 102 nodes and 141 edges, all verified. The evidence is there. The numbers are there. What\'s missing is the will to act.',
+        'This Office of Accountability investigation has verified 43 items against judicial, parliamentary, blockchain, and journalistic sources. [1] The knowledge graph contains 102 nodes and 141 edges, all verified. The evidence is there. The numbers are there. Zero indictments.',
       ],
     },
     pullQuote: {
-      es: '"La evidencia esta ahi. Los numeros estan ahi. Lo que falta es la voluntad de actuar."',
-      en: '"The evidence is there. The numbers are there. What\'s missing is the will to act."',
+      es: '"La evidencia está ahí. Los números están ahí. Cero procesamientos."',
+      en: '"The evidence is there. The numbers are there. Zero indictments."',
     },
     citations: [
       { id: 1, text: 'Burwick Law — Class action: 43 verified claims against $LIBRA organizers', url: 'https://www.burwick.law/active-cases/libra-token-lawsuit' },
@@ -597,14 +597,6 @@ export function LibraArticle() {
         </p>
       </section>
 
-      {/* Closing */}
-      <div className="mt-8 text-center">
-        <p className="text-sm italic text-zinc-500">
-          {lang === 'es'
-            ? 'La investigación continúa. El grafo crece. Las preguntas permanecen.'
-            : 'The investigation continues. The graph grows. The questions remain.'}
-        </p>
-      </div>
     </article>
   )
 }

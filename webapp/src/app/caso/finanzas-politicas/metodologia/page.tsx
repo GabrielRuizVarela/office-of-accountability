@@ -21,12 +21,12 @@ const sections: readonly {
     },
     content: {
       es: [
-        'Esta investigacion fue construida mediante inteligencia artificial asistida con verificacion humana. Mas de 100 agentes autonomos de investigacion fueron desplegados en paralelo para buscar informacion en la web, cruzar datos entre bases publicas, consultar la base de datos de grafo Neo4j, y detectar patrones estructurales.',
+        'Procesamiento asistido por LLM con verificación humana. 14 fuentes de datos públicos.',
         'Todo el procesamiento de datos se realiza localmente — ningun dato de la investigacion fue enviado a servicios externos. Cada hallazgo fue verificado independientemente contra fuentes publicas primarias antes de ser incluido.',
         'La IA no acusa: revela patrones. Las conclusiones son del lector.',
       ],
       en: [
-        'This investigation was built through AI-assisted intelligence with human verification. Over 100 autonomous investigation agents were deployed in parallel to search the web, cross-reference public databases, query the Neo4j graph database, and detect structural patterns.',
+        'LLM-assisted processing with human verification. 14 public data sources.',
         'All data processing runs locally — no investigation data was sent to external services. Every finding was independently verified against primary public sources before inclusion.',
         'The AI does not accuse: it reveals patterns. The conclusions are the reader\'s.',
       ],
@@ -192,7 +192,7 @@ export default function MetodologiaPage() {
             id={section.id}
             className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-6"
           >
-            <h2 className="text-sm font-bold uppercase tracking-wider text-blue-400">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-emerald-400">
               {section.title[lang]}
             </h2>
             <div className="mt-4 space-y-3">

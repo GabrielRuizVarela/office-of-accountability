@@ -179,7 +179,7 @@ export default function ConexionesPage() {
               key={stat.label_en}
               className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 text-center"
             >
-              <p className="text-xl font-bold text-amber-400">{stat.value}</p>
+              <p className="text-xl font-bold text-sky-400">{stat.value}</p>
               <p className="mt-1 text-xs text-zinc-500">
                 {lang === 'en' ? stat.label_en : stat.label_es}
               </p>
@@ -198,7 +198,7 @@ export default function ConexionesPage() {
               className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4"
             >
               <h3 className="text-sm font-semibold text-zinc-100">{actor.name}</h3>
-              <p className="mt-1 text-xs font-medium text-amber-400/80">
+              <p className="mt-1 text-xs font-medium text-sky-400/80">
                 {lang === 'en' ? actor.role_en : actor.role_es}
               </p>
               <p className="mt-2 text-xs leading-relaxed text-zinc-400">

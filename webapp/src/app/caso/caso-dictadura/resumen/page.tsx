@@ -47,7 +47,7 @@ function renderWithCitations(text: string, citations?: readonly Citation[]) {
           target="_blank"
           rel="noopener noreferrer"
           title={citation.text}
-          className="ml-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-500/20 text-[10px] font-bold text-amber-400 no-underline hover:bg-amber-500/30 hover:text-amber-300"
+          className="ml-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full bg-stone-500/20 text-[10px] font-bold text-stone-400 no-underline hover:bg-stone-500/30 hover:text-stone-300"
         >
           {id}
         </a>
@@ -73,8 +73,8 @@ function renderWithCitations(text: string, citations?: readonly Citation[]) {
 const t = {
   headerBadge: { en: 'Investigation summary', es: 'Resumen de la investigacion' },
   headerTitle: {
-    en: 'Argentine Dictatorship: What 14,512 nodes reveal',
-    es: 'Dictadura Argentina: Lo que revelan 14.512 nodos',
+    en: 'Argentine Dictatorship: 14,512 nodes, 31,607 relationships',
+    es: 'Dictadura Argentina: 14.512 nodos, 31.607 relaciones',
   },
   headerDesc: {
     en: 'An evidence-based investigation compiled from 9,415 RUVTE victims, 774 clandestine detention centers, 987 pages of declassified SIDE intelligence documents, 281 Junta meeting minutes, and 31,607 mapped relationships across 12 data sources.',
@@ -109,12 +109,12 @@ const CHAPTERS: {
     title_en: 'The Apparatus',
     title_es: 'El Aparato',
     paragraphs_en: [
-      'The Argentine military dictatorship (1976-1983) built a state terror apparatus of industrial scale. The knowledge graph maps 14,512 entities and 31,607 relationships — from the Junta Militar at the apex down through 5 Army Corps, 14 military units, 774 clandestine detention centers, and the intelligence service (SIDE) with its 881 documented departments.[1]',
+      'The Argentine military dictatorship (1976-1983) built a state terror apparatus spanning 774 detention centers and 5 Army Corps. The knowledge graph maps 14,512 entities and 31,607 relationships — from the Junta Militar at the apex down through 5 Army Corps, 14 military units, 774 clandestine detention centers, and the intelligence service (SIDE) with its 881 documented departments.[1]',
       'The chain of command flowed through three branches: the Army (Ejército) controlled Zones 1 through 5 via Corps commands, the Navy (Armada) operated the ESMA through Task Force 3.3.2, and the Air Force operated sites like Mansión Seré.[2] Below this military structure, the Buenos Aires Provincial Police under Ramón Camps ran a parallel detention network of at least 4 major CCDs, and the Federal Police (PFA) operated the ABO circuit (Club Atlético, El Banco, El Olimpo).',
       'The SIDE (Secretaría de Inteligencia de Estado) operated Automotores Orletti — the nerve center of Plan Cóndor in Argentina — with 71 documented cross-border victims.[3] Declassified documents from 2026 reveal 98 named SIDE agents, a codification system using numerical codes to hide department identities, and a mandatory cover-name system for all personnel.',
     ],
     paragraphs_es: [
-      'La dictadura militar argentina (1976-1983) construyo un aparato de terrorismo de Estado de escala industrial. El grafo de conocimiento mapea 14.512 entidades y 31.607 relaciones — desde la Junta Militar en la cupula hasta 5 Cuerpos de Ejercito, 14 unidades militares, 774 centros clandestinos de detencion y el servicio de inteligencia (SIDE) con sus 881 departamentos documentados.[1]',
+      'La dictadura militar argentina (1976-1983) construyó un aparato de terrorismo de Estado que abarcó 774 centros de detención y 5 Cuerpos de Ejército. El grafo de conocimiento mapea 14.512 entidades y 31.607 relaciones — desde la Junta Militar en la cupula hasta 5 Cuerpos de Ejercito, 14 unidades militares, 774 centros clandestinos de detencion y el servicio de inteligencia (SIDE) con sus 881 departamentos documentados.[1]',
       'La cadena de mando fluia a traves de tres fuerzas: el Ejercito controlaba las Zonas 1 a 5 mediante los Cuerpos, la Armada operaba la ESMA a traves del Grupo de Tareas 3.3.2, y la Fuerza Aerea operaba sitios como Mansion Sere.[2] Por debajo de esta estructura militar, la Policia de la Provincia de Buenos Aires bajo Ramon Camps manejaba una red paralela de detencion con al menos 4 CCD principales, y la Policia Federal (PFA) operaba el circuito ABO (Club Atletico, El Banco, El Olimpo).',
       'La SIDE (Secretaria de Inteligencia de Estado) operaba Automotores Orletti — el centro neuralgico del Plan Condor en Argentina — con 71 victimas transfronterizas documentadas.[3] Los documentos desclasificados de 2026 revelan 98 agentes de la SIDE nombrados, un sistema de codificacion con numeros para ocultar la identidad de los departamentos, y un sistema obligatorio de nombres de encubrimiento para todo el personal.',
     ],
@@ -211,12 +211,12 @@ const CHAPTERS: {
     title_es: 'La Complicidad Empresarial',
     paragraphs_en: [
       'The graph documents 7 corporations with explicit collaboration relationships linking them to CCDs and military units: Ford Motor Argentina, Mercedes-Benz Argentina, Acindar, Ledesma SAAI, Techint, Loma Negra, and Ingenio La Fronterita.[13] These COLABORO_CON and ENTREGO_A relationships represent the direct handover of workers to the repressive apparatus.',
-      'After 50 years, the corporate accountability scorecard is devastating: only Ford has produced a conviction (2018, executives Müller and Sibilla).[14] Acindar saw all 17 defendants acquitted in November 2025. Ledesma\'s Carlos Pedro Blaquier died at 95 in 2023 without ever being tried — "biological impunity." Techint has never been charged despite having the highest documented count of disappeared workers. La Fronterita\'s trial was suspended hours before it was to begin in 2026.',
+      'After 50 years, the corporate accountability scorecard: 1 conviction out of 7 corporations in 50 years: only Ford has produced a conviction (2018, executives Müller and Sibilla).[14] Acindar saw all 17 defendants acquitted in November 2025. Ledesma\'s Carlos Pedro Blaquier died at 95 in 2023 without ever being tried — "biological impunity." Techint has never been charged despite having the highest documented count of disappeared workers. La Fronterita\'s trial was suspended hours before it was to begin in 2026.',
       'The pattern across all corporate cases is consistent: judicial delays, biological impunity through defendants dying before trial, narrow framing of charges, and institutional reluctance to hold economic actors accountable for their role in state terrorism.',
     ],
     paragraphs_es: [
       'El grafo documenta 7 corporaciones con relaciones explicitas de colaboracion vinculandolas a CCD y unidades militares: Ford Motor Argentina, Mercedes-Benz Argentina, Acindar, Ledesma SAAI, Techint, Loma Negra e Ingenio La Fronterita.[13] Las relaciones COLABORO_CON y ENTREGO_A representan la entrega directa de trabajadores al aparato represivo.',
-      'Despues de 50 anos, el balance de rendicion de cuentas corporativa es devastador: solo Ford ha producido una condena (2018, ejecutivos Muller y Sibilla).[14] Acindar vio a sus 17 imputados absueltos en noviembre de 2025. Carlos Pedro Blaquier de Ledesma murio a los 95 en 2023 sin haber sido juzgado — "impunidad biologica." Techint jamas fue imputada a pesar de tener el mayor numero documentado de trabajadores desaparecidos. El juicio de La Fronterita fue suspendido horas antes de comenzar en 2026.',
+      'Despues de 50 anos, el balance de rendición de cuentas corporativa: 1 condena de 7 corporaciones en 50 años: solo Ford ha producido una condena (2018, ejecutivos Muller y Sibilla).[14] Acindar vio a sus 17 imputados absueltos en noviembre de 2025. Carlos Pedro Blaquier de Ledesma murio a los 95 en 2023 sin haber sido juzgado — "impunidad biologica." Techint jamas fue imputada a pesar de tener el mayor numero documentado de trabajadores desaparecidos. El juicio de La Fronterita fue suspendido horas antes de comenzar en 2026.',
       'El patron en todos los casos corporativos es consistente: demoras judiciales, impunidad biologica por muerte de imputados antes del juicio, encuadre restrictivo de cargos y renuencia institucional a responsabilizar a los actores economicos por su rol en el terrorismo de Estado.',
     ],
     citations: [
@@ -270,14 +270,14 @@ const CHAPTERS: {
       'This investigation was conducted through 25 automated ingestion waves using the Office of Accountability\'s investigation loop: ingest → verify → deduplicate → analyze (LLM) → promote → update → commit. Each wave builds on findings from the previous wave.',
       'Data sources: (1) RUVTE government victim registry from datos.jus.gob.ar — 9,415 records.[19] (2) presentes R package CCD dataset with 762 GPS-located detention centers. (3) Judicial records from SNEEP census and causas penales. (4) Declassified US intelligence from desclasificados.org.ar — CIA, FBI, State Department cables.[20] (5) Plan Cóndor victim database from plancondor.org. (6) Abuelas de Plaza de Mayo nietos restituidos data. (7) Junta meeting minutes from datos.gob.ar. (8) Nunca Más testimonies and Memoria Abierta archives. (9) PCCH Dossier de Sentencias. (10) Wikidata SPARQL cross-reference. (11) Military archives from Archivos Defensa. (12) Declassified SIDE documents from ManuelR-D/datos-desclasificados-prn (987 pages, released 2026-03-24).',
       'Confidence tiers: Gold (164 nodes) = manually curated seed data from established historical sources. Silver (10,564 nodes) = government-sourced or multi-source confirmed. Bronze (3,550 nodes) = single-source, unverified. 88.4% of nodes are verified (gold + silver).',
-      'Entity resolution merged 86 duplicate entries across datasets. Fuzzy name matching (Levenshtein, token overlap, province matching) produced 2,528 victim-to-CCD links. LLM analysis (Qwen 3.5 9B on local GPU) provided network analysis, temporal pattern detection, and accountability gap identification. Web verification confirmed prosecution status for SIDE officials and corporate defendants.',
+      'Entity resolution merged 86 duplicate entries across datasets. Fuzzy name matching (Levenshtein, token overlap, province matching) produced 2,528 victim-to-CCD links. LLM analysis provided network analysis, temporal pattern detection, and accountability gap identification. Web verification confirmed prosecution status for SIDE officials and corporate defendants.',
       'Quality score: 77.9% (weighted: 60% tier quality + 40% connectivity). Average 5.02 relationships per node. 40 distinct relationship types across 14 node types.',
     ],
     paragraphs_es: [
       'Esta investigacion fue conducida a traves de 25 olas automatizadas de ingestion usando el bucle de investigacion de la Oficina de Rendicion de Cuentas: ingerir → verificar → deduplicar → analizar (LLM) → promover → actualizar → commit. Cada ola construye sobre los hallazgos de la ola anterior.',
       'Fuentes de datos: (1) RUVTE registro gubernamental de victimas de datos.jus.gob.ar — 9.415 registros.[19] (2) Dataset de CCD del paquete R presentes con 762 centros de detencion geolocalizados. (3) Registros judiciales del censo SNEEP y causas penales. (4) Inteligencia desclasificada de EE.UU. de desclasificados.org.ar — cables de CIA, FBI, Departamento de Estado.[20] (5) Base de datos de victimas del Plan Condor de plancondor.org. (6) Datos de nietos restituidos de Abuelas de Plaza de Mayo. (7) Actas de la Junta Militar de datos.gob.ar. (8) Testimonios del Nunca Mas y archivos de Memoria Abierta. (9) Dossier de Sentencias del PCCH. (10) Cruce de referencia SPARQL de Wikidata. (11) Archivos militares de Archivos Defensa. (12) Documentos desclasificados de la SIDE de ManuelR-D/datos-desclasificados-prn (987 paginas, liberados 2026-03-24).',
       'Niveles de confianza: Oro (164 nodos) = datos semilla curados manualmente de fuentes historicas establecidas. Plata (10.564 nodos) = fuentes gubernamentales o confirmados por multiples fuentes. Bronce (3.550 nodos) = fuente unica, sin verificar. El 88,4% de los nodos estan verificados (oro + plata).',
-      'La resolucion de entidades fusiono 86 entradas duplicadas entre datasets. El matching difuso de nombres (Levenshtein, solapamiento de tokens, matching por provincia) produjo 2.528 vinculos victima-a-CCD. El analisis con LLM (Qwen 3.5 9B en GPU local) proporciono analisis de redes, deteccion de patrones temporales e identificacion de brechas de rendicion de cuentas. La verificacion web confirmo el estado de procesamiento de funcionarios de la SIDE e imputados corporativos.',
+      'La resolucion de entidades fusiono 86 entradas duplicadas entre datasets. El matching difuso de nombres (Levenshtein, solapamiento de tokens, matching por provincia) produjo 2.528 vinculos victima-a-CCD. El análisis automatizado proporcionó analisis de redes, deteccion de patrones temporales e identificacion de brechas de rendicion de cuentas. La verificacion web confirmo el estado de procesamiento de funcionarios de la SIDE e imputados corporativos.',
       'Puntaje de calidad: 77,9% (ponderado: 60% calidad de tier + 40% conectividad). Promedio de 5,02 relaciones por nodo. 40 tipos de relacion distintos a traves de 14 tipos de nodos.',
     ],
     citations: [
@@ -298,7 +298,7 @@ export default function ResumenPage() {
     <article className="mx-auto max-w-4xl space-y-10">
       {/* Header */}
       <header className="space-y-4 text-center">
-        <span className="inline-block rounded-full bg-amber-500/10 px-3 py-1 text-xs font-medium text-amber-400">
+        <span className="inline-block rounded-full bg-stone-500/10 px-3 py-1 text-xs font-medium text-stone-400">
           {t.headerBadge[lang]}
         </span>
         <h1 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
@@ -310,7 +310,7 @@ export default function ResumenPage() {
         <div className="flex flex-wrap justify-center gap-3 pt-2">
           <Link
             href={`/caso/${SLUG}/investigacion`}
-            className="rounded bg-amber-600 px-4 py-2 text-sm font-medium text-white hover:bg-amber-500"
+            className="rounded bg-stone-600 px-4 py-2 text-sm font-medium text-white hover:bg-stone-500"
           >
             {t.viewData[lang]}
           </Link>
@@ -331,7 +331,7 @@ export default function ResumenPage() {
           className="scroll-mt-24 space-y-4 border-t border-zinc-800 pt-8"
         >
           <h2 className="text-center text-xl font-semibold text-zinc-100">
-            <span className="mr-2 text-amber-500">{ch.num}.</span>
+            <span className="mr-2 text-stone-500">{ch.num}.</span>
             {lang === 'es' ? ch.title_es : ch.title_en}
           </h2>
           {(lang === 'es' ? ch.paragraphs_es : ch.paragraphs_en).map((p, i) => (
@@ -352,7 +352,7 @@ export default function ResumenPage() {
                         href={c.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-amber-400/70 underline decoration-amber-400/20 hover:text-amber-300"
+                        className="text-stone-400/70 underline decoration-stone-400/20 hover:text-stone-300"
                       >
                         {c.text}
                       </a>
@@ -369,33 +369,33 @@ export default function ResumenPage() {
 
       {/* Sources */}
       <section className="py-12">
-        <h2 className="border-l-4 border-amber-500 pl-4 text-xl font-bold text-zinc-50">
+        <h2 className="border-l-4 border-stone-500 pl-4 text-xl font-bold text-zinc-50">
           {t.sources[lang]}
         </h2>
         <ul className="mt-6 space-y-2">
-          <li><a href="https://datos.jus.gob.ar" target="_blank" rel="noopener noreferrer" className="text-sm text-amber-400 underline decoration-amber-400/30 hover:text-amber-300">RUVTE — Registro Unificado de Víctimas del Terrorismo de Estado</a></li>
-          <li><a href="https://github.com/DiegoKoz/presentes" target="_blank" rel="noopener noreferrer" className="text-sm text-amber-400 underline decoration-amber-400/30 hover:text-amber-300">presentes — R package, DiegoKoz/presentes (762 CCDs)</a></li>
-          <li><a href="https://datos.jus.gob.ar" target="_blank" rel="noopener noreferrer" className="text-sm text-amber-400 underline decoration-amber-400/30 hover:text-amber-300">SNEEP — Sistema Nacional de Estadísticas sobre Ejecución de la Pena</a></li>
-          <li><a href="https://desclasificados.org.ar" target="_blank" rel="noopener noreferrer" className="text-sm text-amber-400 underline decoration-amber-400/30 hover:text-amber-300">desclasificados.org.ar — 3,200+ declassified US intelligence documents</a></li>
-          <li><a href="https://plancondor.org" target="_blank" rel="noopener noreferrer" className="text-sm text-amber-400 underline decoration-amber-400/30 hover:text-amber-300">plancondor.org — Plan Cóndor victims database (805 victims)</a></li>
+          <li><a href="https://datos.jus.gob.ar" target="_blank" rel="noopener noreferrer" className="text-sm text-stone-400 underline decoration-stone-400/30 hover:text-stone-300">RUVTE — Registro Unificado de Víctimas del Terrorismo de Estado</a></li>
+          <li><a href="https://github.com/DiegoKoz/presentes" target="_blank" rel="noopener noreferrer" className="text-sm text-stone-400 underline decoration-stone-400/30 hover:text-stone-300">presentes — R package, DiegoKoz/presentes (762 CCDs)</a></li>
+          <li><a href="https://datos.jus.gob.ar" target="_blank" rel="noopener noreferrer" className="text-sm text-stone-400 underline decoration-stone-400/30 hover:text-stone-300">SNEEP — Sistema Nacional de Estadísticas sobre Ejecución de la Pena</a></li>
+          <li><a href="https://desclasificados.org.ar" target="_blank" rel="noopener noreferrer" className="text-sm text-stone-400 underline decoration-stone-400/30 hover:text-stone-300">desclasificados.org.ar — 3,200+ declassified US intelligence documents</a></li>
+          <li><a href="https://plancondor.org" target="_blank" rel="noopener noreferrer" className="text-sm text-stone-400 underline decoration-stone-400/30 hover:text-stone-300">plancondor.org — Plan Cóndor victims database (805 victims)</a></li>
           <li><span className="text-sm text-zinc-400">Abuelas de Plaza de Mayo — nietos restituidos registry</span></li>
           <li><span className="text-sm text-zinc-400">datos.gob.ar — Actas Junta Militar, Archivos Defensa</span></li>
-          <li><a href="https://desaparecidos.org" target="_blank" rel="noopener noreferrer" className="text-sm text-amber-400 underline decoration-amber-400/30 hover:text-amber-300">desaparecidos.org — Nunca Más full text</a></li>
+          <li><a href="https://desaparecidos.org" target="_blank" rel="noopener noreferrer" className="text-sm text-stone-400 underline decoration-stone-400/30 hover:text-stone-300">desaparecidos.org — Nunca Más full text</a></li>
           <li><span className="text-sm text-zinc-400">PCCH — Procuraduría de Crímenes contra la Humanidad</span></li>
           <li><span className="text-sm text-zinc-400">Wikidata — Argentine enforced disappearance SPARQL query</span></li>
-          <li><a href="https://github.com/ManuelR-D/datos-desclasificados-prn" target="_blank" rel="noopener noreferrer" className="text-sm text-amber-400 underline decoration-amber-400/30 hover:text-amber-300">ManuelR-D/datos-desclasificados-prn — 987 pages SIDE documents</a></li>
+          <li><a href="https://github.com/ManuelR-D/datos-desclasificados-prn" target="_blank" rel="noopener noreferrer" className="text-sm text-stone-400 underline decoration-stone-400/30 hover:text-stone-300">ManuelR-D/datos-desclasificados-prn — 987 pages SIDE documents</a></li>
           <li><span className="text-sm text-zinc-400">CONADEP — Informe Nunca Más (1984)</span></li>
         </ul>
       </section>
 
       {/* Methodology */}
       <section className="py-12">
-        <h2 className="border-l-4 border-amber-500 pl-4 text-xl font-bold text-zinc-50">
+        <h2 className="border-l-4 border-stone-500 pl-4 text-xl font-bold text-zinc-50">
           {lang === 'es' ? 'Metodología' : 'Methodology'}
         </h2>
         <div className="mt-6 space-y-6">
           <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-amber-400">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-stone-400">
               {lang === 'es' ? 'Cómo Se Hizo Esta Investigación' : 'How This Investigation Was Built'}
             </h3>
             <div className="mt-3 space-y-3 text-sm text-zinc-300">
@@ -409,7 +409,7 @@ export default function ResumenPage() {
           </div>
 
           <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-amber-400">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-stone-400">
               {lang === 'es' ? 'Protocolo de Verificación' : 'Verification Protocol'}
             </h3>
             <ul className="mt-3 space-y-2 text-sm text-zinc-300">
@@ -429,7 +429,7 @@ export default function ResumenPage() {
           </div>
 
           <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-amber-400">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-stone-400">
               {lang === 'es' ? 'Fuentes de Datos (12 pipelines)' : 'Data Sources (12 pipelines)'}
             </h3>
             <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-zinc-400">
@@ -457,14 +457,6 @@ export default function ResumenPage() {
         </p>
       </section>
 
-      {/* Closing */}
-      <div className="mt-8 text-center">
-        <p className="text-sm italic text-zinc-500">
-          {lang === 'es'
-            ? 'La investigación continúa. El grafo crece. Las preguntas permanecen.'
-            : 'The investigation continues. The graph grows. The questions remain.'}
-        </p>
-      </div>
     </article>
   )
 }

@@ -10,6 +10,8 @@
 
 import { useLanguage } from '@/lib/language-context'
 import type { Lang } from '@/lib/language-context'
+import { CitedText, type Citation } from '@/components/investigation/CitedText'
+import { CitationFooter } from '@/components/investigation/CitationFooter'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -20,11 +22,6 @@ interface StatCard {
   readonly label: Record<Lang, string>
 }
 
-interface Citation {
-  readonly id: number
-  readonly text: string
-  readonly url?: string
-}
 
 interface Chapter {
   readonly id: string
@@ -39,13 +36,13 @@ interface Chapter {
 // ---------------------------------------------------------------------------
 
 const TITLE: Record<Lang, string> = {
-  es: 'El Oligopolio: 10 Familias, 18 Sectores, Una Argentina Cautiva',
-  en: 'The Oligopoly: 10 Families, 18 Sectors, A Captive Argentina',
+  es: 'El Oligopolio: 10 Familias, 18 Sectores, 829 Cruces',
+  en: 'The Oligopoly: 10 Families, 18 Sectors, 829 Cross-References',
 }
 
 const SUBTITLE: Record<Lang, string> = {
-  es: 'Ocho capitulos sobre como diez grupos familiares controlan telecomunicaciones, energia, alimentos, medios, banca, mineria, agroexportacion, construccion, farmaceutica y transporte. 2,45 millones de nodos, 44 archivos de investigacion, 75 afirmaciones verificadas, 60 entidades offshore mapeadas.',
-  en: 'Eight chapters on how ten family groups control telecommunications, energy, food, media, banking, mining, agro-export, construction, pharmaceuticals, and transport. 2.45 million nodes, 44 research files, 75 factchecked claims, 60 offshore entities mapped.',
+  es: 'USD 22.500 millones por año. El costo de la monopolización en 18 sectores de la economía argentina.',
+  en: 'USD 22.5 billion per year. The cost of monopolization across 18 sectors of the Argentine economy.',
 }
 
 const READING_TIME: Record<Lang, string> = { es: '~35 min de lectura', en: '~35 min read' }
@@ -77,7 +74,6 @@ const chapters: readonly Chapter[] = [
     title: { es: 'I. Metodologia: Como Se Hizo Esta Investigacion', en: 'I. Methodology: How This Investigation Was Built' },
     paragraphs: {
       es: [
-        'Esta investigacion no parte de una hipotesis ni de una denuncia. Parte de datos.',
         'El proceso comenzo con un ciclo automatizado de investigacion en multiples fases. Cada fase sigue el patron ingest → verify → cross-reference → analyze → factcheck. Las primeras 10 fases realizaron inmersiones profundas en sectores especificos: telecomunicaciones, energia, alimentos, medios, banca, mineria, agroexportacion, construccion, farmaceutica y transporte. Cada fase despacho agentes de investigacion en paralelo que realizaron busquedas web exhaustivas, consultaron bases de datos publicas, y escribieron archivos JSON estructurados con fuentes para cada afirmacion.',
         'Las fases 11-14 cruzaron los hallazgos sectoriales contra el grafo Neo4j existente de 2,45 millones de nodos. Este grafo fue construido a partir de 9 fuentes de datos publicos: el registro corporativo IGJ (951.868 officers) [19], las filtraciones offshore ICIJ (Panama Papers, Pandora Papers, Paradise Papers) [20], los datos de campaña CNE, los nombramientos del Boletin Oficial, el sistema de contrataciones CompraR, las declaraciones juradas patrimoniales DDJJ, el registro CNV, el sistema Como Voto, y las sanciones internacionales OpenSanctions. El motor de cruce opera en tres capas: coincidencia exacta de CUIT (confianza 0.95-1.0), coincidencia de DNI/CUIL (0.9-0.95), y coincidencia difusa de nombres normalizados (0.6-0.8, Levenshtein ≤ 2).',
         'Las fases 15-22 expandieron la investigacion a sectores adicionales: aluminio (monopolio puro, HHI 10.000), lacteos (Mastellone 75-80% leche fluida), seguros (top 5 ART controlan 70,9%), concesiones de infraestructura (aeropuertos, peajes, Hidrovia), monopolios digitales (MercadoLibre 60%+), la historia de las privatizaciones 1989-1999, el impacto de la desregulacion Milei, y la cuantificacion del costo al consumidor.',
@@ -87,7 +83,6 @@ const chapters: readonly Chapter[] = [
         'Cada hallazgo generado por IA fue verificado independientemente contra fuentes primarias. Ningun dato salio del servidor local durante el proceso de analisis.',
       ],
       en: [
-        'This investigation does not start from a hypothesis or a complaint. It starts from data.',
         'The process began with an automated multi-phase investigation cycle. Each phase follows the pattern ingest → verify → cross-reference → analyze → factcheck. The first 10 phases performed deep dives into specific sectors: telecommunications, energy, food, media, banking, mining, agro-export, construction, pharmaceuticals, and transport. Each phase dispatched parallel research agents that performed exhaustive web searches, queried public databases, and wrote structured JSON files with sources for every claim.',
         'Phases 11-14 cross-referenced sectoral findings against the existing Neo4j graph of 2.45 million nodes. This graph was built from 9 public data sources: IGJ corporate registry (951,868 officers) [19], ICIJ offshore leaks (Panama Papers, Pandora Papers, Paradise Papers) [20], CNE campaign data, Boletin Oficial appointments, CompraR procurement system, DDJJ asset declarations, CNV registry, Como Voto legislative records, and OpenSanctions. The cross-reference engine operates in three layers: exact CUIT matching (confidence 0.95-1.0), DNI/CUIL matching (0.9-0.95), and fuzzy normalized name matching (0.6-0.8, Levenshtein ≤ 2).',
         'Phases 15-22 expanded the investigation to additional sectors: aluminium (pure monopoly, HHI 10,000), dairy (Mastellone 75-80% fluid milk), insurance (top 5 ART control 70.9%), infrastructure concessions (airports, tolls, waterway), digital monopolies (MercadoLibre 60%+), the 1989-1999 privatization history, Milei deregulation impact, and consumer cost quantification.',
@@ -119,7 +114,7 @@ const chapters: readonly Chapter[] = [
         'Gas del Estado fue fracturada en TGS y TGN para el transporte, mas 9 distribuidoras regionales. TGS quedo bajo Mindlin/Pampa Energia. TGN bajo Techint/Eurnekian. Las licencias fueron extendidas hasta 2047 — medio siglo de monopolio garantizado sin licitacion competitiva.',
         'SOMISA — la siderurgica estatal — fue vendida a Techint por aproximadamente un septimo de su valor libros. Hoy es Ternium/Siderar, con ~80% del mercado domestico de acero plano y proteccion arancelaria que impide la competencia de importaciones.',
         'Aerolineas Argentinas fue vendida a Iberia, que la desinvirtio sistematicamente. La flota cayo de 28 aviones propios a 2. Paso por Marsans (otra desguazadora) antes de ser renacionalizada en 2008 con un patrimonio neto negativo de USD 2.500 millones.',
-        'Maria Julia Alsogaray — la funcionaria a cargo de varias privatizaciones — fue procesada por enriquecimiento ilicito. La cadena que estas privatizaciones crearon fue: ley → privatizacion → concesion → renegociacion → beneficio perpetuo. Las mismas seis familias que compraron estos activos en los 90s siguen controlandolos en 2026.',
+        'Maria Julia Alsogaray — la funcionaria a cargo de varias privatizaciones — fue procesada por enriquecimiento ilicito. La cadena que estas privatizaciones crearon fue: ley → privatizacion → concesion → renegociacion → beneficio perpetuo.',
       ],
       en: [
         'Every private monopoly operating in Argentina today was created by a political decision between 1989 and 1999.',
@@ -129,7 +124,7 @@ const chapters: readonly Chapter[] = [
         'Gas del Estado was fractured into TGS and TGN for transport, plus 9 regional distributors. TGS went to Mindlin/Pampa Energia. TGN to Techint/Eurnekian. Licenses were extended to 2047 — half a century of guaranteed monopoly without competitive bidding.',
         'SOMISA — the state steel company — was sold to Techint for approximately one-seventh of book value. Today it is Ternium/Siderar, with ~80% of the domestic flat steel market and tariff protection preventing import competition.',
         'Aerolineas Argentinas was sold to Iberia, which systematically stripped it. The fleet fell from 28 owned planes to 2. It passed through Marsans (another stripper) before being renationalized in 2008 with a negative net worth of USD 2.5 billion.',
-        'Maria Julia Alsogaray — the official in charge of several privatizations — was prosecuted for illicit enrichment. The chain these privatizations created was: law → privatization → concession → renegotiation → perpetual benefit. The same six families that bought these assets in the 1990s still control them in 2026.',
+        'Maria Julia Alsogaray — the official in charge of several privatizations — was prosecuted for illicit enrichment. The chain these privatizations created was: law → privatization → concession → renegotiation → perpetual benefit.',
       ],
     },
     pullQuote: {
@@ -243,18 +238,18 @@ const chapters: readonly Chapter[] = [
     title: { es: 'VI. El Costo: USD 22.500 Millones Por Ano', en: 'VI. The Cost: USD 22.5 Billion Per Year' },
     paragraphs: {
       es: [
-        'La monopolizacion tiene un precio. Lo paga cada argentino, cada dia, en cada compra.',
+        'USD 22.500 millones por ano. Eso paga el consumidor argentino por la concentracion de mercado — 3,3% del PIB.',
         'Nuestro analisis sector por sector estima el costo anual de la concentracion de mercado en USD 22.500 millones — equivalente al 3,3% del PIB. Incluyendo perdidas de eficiencia, el total sube a USD 28.500 millones (4,2% del PIB). Esto equivale a USD 1.585 por hogar por ano. NOTA: esta cifra es una estimacion compilada a partir de datos sectoriales, no una cifra publicada por un organismo unico.',
-        'El impacto es profundamente regresivo. El quintil mas pobre pierde el 15% de sus ingresos por precios monopolicos. El quintil mas rico pierde solo el 3%. La monopolizacion es un impuesto invisible que cae desproporcionadamente sobre los que menos tienen.',
+        'El impacto es profundamente regresivo. El quintil mas pobre pierde el 15% de sus ingresos por precios monopolicos. El quintil mas rico pierde solo el 3%.',
         'Los precios de medicamentos en Argentina son 26% superiores al promedio latinoamericano. PAMI — el sistema de salud para jubilados — documento sobreprecios de hasta 1.327% en anastrozol (oncologico): $13.192 contra $924 en licitacion abierta. [11] Las reformas desde 2016 lograron ahorros del 68-80% donde se implementaron, pero la estructura oligopolica persiste.',
         'En alimentos, la brecha productor-gondola promedio es de 3,7x segun CAME (enero 2025) [10], con extremos de 14,5x en limon y 9,5x en mandarina. Los productores reciben entre 24,7% y 35,7% del precio final. 8.900 tambos activos — minimo historico. 1.024 tambos cerraron bajo la administracion Milei.',
         'El aluminio de Aluar — monopolio puro, HHI 10.000 — se produce con energia subsidiada al 63-80% de descuento (USD 16-26/MWh vs mercado $70-80/MWh). La represa Futaleufú fue construida con USD 474,5 millones de fondos publicos; Aluar posee el 60,2%. La concesion vence en junio 2026.',
         'La OCDE estima que reformas pro-competencia podrian impulsar el PIB argentino un 9,5% acumulado para 2050 (Encuesta Economica Argentina 2025, Capitulo 4: 2,7% por reformas ya realizadas + 6,8% adicional por reformas al primer cuartil PMR de la OCDE). [12]',
       ],
       en: [
-        'Monopolization has a price. Every Argentine pays it, every day, in every purchase.',
+        'USD 22.5 billion per year. That is what the Argentine consumer pays for market concentration — 3.3% of GDP.',
         'Our sector-by-sector analysis estimates the annual cost of market concentration at USD 22.5 billion — equivalent to 3.3% of GDP. Including efficiency losses, the total rises to USD 28.5 billion (4.2% of GDP). This equals USD 1,585 per household per year. NOTE: this figure is a compiled estimate from sectoral data, not a single published figure.',
-        'The impact is deeply regressive. The poorest quintile loses 15% of income to monopoly pricing. The richest quintile loses only 3%. Monopolization is an invisible tax that falls disproportionately on those who have the least.',
+        'The impact is deeply regressive. The poorest quintile loses 15% of income to monopoly pricing. The richest quintile loses only 3%.',
         'Drug prices in Argentina are 26% above the Latin American average. PAMI — the health system for retirees — documented markups up to 1,327% on anastrozol (oncology drug): $13,192 vs $924 in open tender. [11] Reforms since 2016 achieved 68-80% savings where implemented, but the oligopolistic structure persists.',
         'In food, the average farm-to-shelf markup is 3.7x per CAME (January 2025) [10], with extremes of 14.5x for lemons and 9.5x for mandarins. Producers receive between 24.7% and 35.7% of the final price. 8,900 active dairy farms — historic low. 1,024 farms closed under the Milei administration.',
         'Aluar\'s aluminium — pure monopoly, HHI 10,000 — is produced with energy subsidized at 63-80% discount (USD 16-26/MWh vs market $70-80/MWh). The Futaleufu dam was built with USD 474.5 million in public funds; Aluar owns 60.2%. The concession expires in June 2026.',
@@ -280,19 +275,19 @@ const chapters: readonly Chapter[] = [
         'El efecto inmediato: las fusiones mas grandes desde las privatizaciones de los 90s se aceleraron sin contrapeso regulatorio. Vila-Manzano compro Telefe. Telecom/Clarin compro Telefonica (USD 1.245 millones). Visa readquirio Prisma (80% del procesamiento de tarjetas). Mindlin adquirio Loma Negra. Todo durante una ventana en la que la CNDC habia sido reemplazada por la ANC (noviembre 2025) pero el control previo de fusiones no se activa hasta noviembre 2026.',
         'El RIGI — Regimen de Incentivo a Grandes Inversiones [14] — otorga 30 anos de estabilidad fiscal, regalias del 3%, y libre repatriacion de ganancias a inversiones de USD 200M+. El 64,8% de los USD 33.900 millones presentados bajo RIGI son proyectos mineros. Argentina no tiene un solo productor de litio de capital nacional — el 100% de la extraccion es extranjera, ahora blindada por 30 anos.',
         '20 empresas oligopolicas controlan el 74% del espacio de gondola en supermercados — sin restriccion alguna tras la derogacion de la Ley de Gondolas. Edenor + Edesur generaron ARS 274.000 millones de ganancia en 9 meses, 44% por encima de la inflacion. Telecom/Clarin aumento ganancias un 2.080%.',
-        'La paradoja: un gobierno ideologicamente pro-mercado esta creando las condiciones para una concentracion de mercado sin precedentes documentados en la historia argentina. Desregular sin garantizar competencia plantea la pregunta de si el resultado es libre mercado o consolidacion del poder economico existente.',
+        '73 leyes derogadas. La ventana de fusiones sin control previo cierra en noviembre 2026.',
       ],
       en: [
         'On December 20, 2023, DNU 70/2023 [13] — a 366-article mega-decree — eliminated media license caps, the shelf-space law, price controls, and dozens of sector regulations. 73 laws modified or repealed by decree in a single day.',
         'The immediate effect: the largest mergers since the 1990s privatizations accelerated without regulatory counterweight. Vila-Manzano bought Telefe. Telecom/Clarin bought Telefonica (USD 1.245 billion). Visa reacquired Prisma (80% card processing). Mindlin acquired Loma Negra. All during a window in which CNDC had been replaced by ANC (November 2025) but ex-ante merger control doesn\'t activate until November 2026.',
         'RIGI — the Large Investment Incentive Regime [14] — grants 30-year tax stability, 3% royalties, and free profit repatriation for USD 200M+ investments. 64.8% of the USD 33.9 billion submitted under RIGI are mining projects. Argentina has zero domestic lithium producers — 100% of extraction is foreign, now shielded for 30 years.',
         '20 oligopolistic companies control 74% of supermarket shelf space — without any restriction after the shelf-space law repeal. Edenor + Edesur generated ARS 274 billion in profit in 9 months, 44% above inflation. Telecom/Clarin increased profits by 2,080%.',
-        'The paradox: an ideologically pro-market government is creating the conditions for unprecedented market concentration in documented Argentine history. Deregulating without ensuring competition raises the question of whether the result is a free market or a consolidation of existing economic power.',
+        '73 laws repealed. The merger window without ex-ante control closes in November 2026.',
       ],
     },
     pullQuote: {
-      es: 'Desregular sin competencia plantea la pregunta: libre mercado o consolidacion del poder existente.',
-      en: 'Deregulating without competition raises the question: free market or consolidation of existing power.',
+      es: '73 leyes derogadas por decreto. La ventana de fusiones sin control previo cierra en noviembre 2026.',
+      en: '73 laws repealed by decree. The merger window without ex-ante control closes in November 2026.',
     },
     citations: [
       { id: 13, text: 'DNU 70/2023 — Boletin Oficial', url: 'https://www.boletinoficial.gob.ar/' },
@@ -304,24 +299,22 @@ const chapters: readonly Chapter[] = [
     title: { es: 'VIII. Aluar: Anatomia de un Monopolio Perfecto', en: 'VIII. Aluar: Anatomy of a Perfect Monopoly' },
     paragraphs: {
       es: [
-        'Si hay un caso que encapsula todo lo que esta investigacion documenta, es Aluar.',
         'Aluar Aluminio Argentino SAIC es el unico productor de aluminio primario en Argentina. [15] HHI 10.000 — monopolio puro. 460.000 toneladas anuales de capacidad. USD 550 millones en exportaciones. Controlado por la familia Madanes Quintanilla desde 1970.',
         'La represa de Futaleufú — construida con USD 474,5 millones de fondos publicos — genera el 95% de su electricidad exclusivamente para Aluar. [16] La empresa paga USD 16-26/MWh. El precio de mercado es USD 70-80/MWh. Un descuento del 63-80% durante 28 anos, financiado por el Estado.',
         'Seis miembros de la familia Madanes Quintanilla aparecen en la base ICIJ [17]: Javier Santiago Madanes Quintanilla (DQ Assets Limited, BVI), y Carmen, Judith, Leiser, Martin, Micaela, Susana y Tomas Madanes en The Hastings Trust (Islas Cook). Panama Papers.',
         'Segun registros de la CNE [18], Aluar es la unica empresa identificada en esta investigacion que dono a ambas coaliciones en las elecciones 2019: ARS 4.500.000 a Juntos por el Cambio y ARS 900.000 al Frente de Todos. Total verificado: ARS 11.150.000 entre 2017 y 2019.',
         'El detalle juridico: el Art. 15 de la Ley 26.215 prohibe las donaciones de concesionarios del Estado. Aluar posee el 60,2% de Futaleufu SA, que tiene una concesion estatal. El Frente de Todos inicialmente RECHAZO la donacion de ARS 900.000 alegando esta prohibicion. Luego la acepto cuando Aluar argumento que la concesion es de la subsidiaria, no de Aluar directamente.',
         'Cuando el gobierno Milei elimino los aranceles antidumping sobre el aluminio chino en febrero 2026, FATE — la fabrica de neumaticos de la misma familia — cerro permanentemente, dejando 920 trabajadores sin empleo. Mientras tanto, durante los anos de proteccion arancelaria (2020-2025), Aluar habia SUBIDO los precios un 5-7% mientras el precio internacional CAIA un 16%.',
-        'La concesion de Futaleufu vence en junio 2026. Es el primer test real de voluntad politica para desmantelar un monopolio. La historia sugiere que sera renegociada y extendida, como todas las demas concesiones. El patron es: ley → privatizacion → concesion → renegociacion → beneficio perpetuo. Cincuenta y seis anos despues de su fundacion, Aluar sigue siendo el ejemplo perfecto.',
+        'La concesion de Futaleufu vence en junio 2026. Es el primer test real de voluntad politica para desmantelar un monopolio. La historia sugiere que sera renegociada y extendida, como todas las demas concesiones. El patron es: ley → privatizacion → concesion → renegociacion → beneficio perpetuo.',
       ],
       en: [
-        'If there is one case that encapsulates everything this investigation documents, it is Aluar.',
         'Aluar Aluminio Argentino SAIC is the only primary aluminium producer in Argentina. [15] HHI 10,000 — pure monopoly. 460,000 tons annual capacity. USD 550 million in exports. Controlled by the Madanes Quintanilla family since 1970.',
         'The Futaleufu dam — built with USD 474.5 million in public funds — generates 95% of its electricity exclusively for Aluar. [16] The company pays USD 16-26/MWh. The market price is USD 70-80/MWh. A 63-80% discount for 28 years, funded by the State.',
         'Six Madanes Quintanilla family members appear in the ICIJ database [17]: Javier Santiago Madanes Quintanilla (DQ Assets Limited, BVI), and Carmen, Judith, Leiser, Martin, Micaela, Susana, and Tomas Madanes in The Hastings Trust (Cook Islands). Panama Papers.',
         'According to CNE records [18], Aluar is the only company identified in this investigation that donated to both coalitions in the 2019 elections: ARS 4,500,000 to Juntos por el Cambio and ARS 900,000 to Frente de Todos. Total verified: ARS 11,150,000 between 2017 and 2019.',
         'The legal detail: Art. 15 of Law 26,215 prohibits donations from state concessionaires. Aluar owns 60.2% of Futaleufu SA, which holds a state concession. Frente de Todos initially REJECTED the ARS 900,000 donation citing this prohibition. They later accepted it when Aluar argued the concession belongs to the subsidiary, not Aluar directly.',
         'When the Milei government eliminated anti-dumping tariffs on Chinese aluminium in February 2026, FATE — the tire factory owned by the same family — permanently closed, leaving 920 workers unemployed. Meanwhile, during the years of tariff protection (2020-2025), Aluar had RAISED prices 5-7% while the international price FELL 16%.',
-        'The Futaleufu concession expires in June 2026. It is the first real test of political will to dismantle a monopoly. History suggests it will be renegotiated and extended, like every other concession. The pattern is: law → privatization → concession → renegotiation → perpetual benefit. Fifty-six years after its founding, Aluar remains the perfect example.',
+        'The Futaleufu concession expires in June 2026. It is the first real test of political will to dismantle a monopoly. History suggests it will be renegotiated and extended, like every other concession. The pattern is: law → privatization → concession → renegotiation → perpetual benefit.',
       ],
     },
     pullQuote: {
@@ -337,32 +330,6 @@ const chapters: readonly Chapter[] = [
   },
 ]
 
-// ---------------------------------------------------------------------------
-// Citation rendering
-// ---------------------------------------------------------------------------
-
-function renderWithCitations(text: string, citations?: readonly Citation[]) {
-  if (!citations || citations.length === 0) return text
-  const citationMap = new Map(citations.map((c) => [c.id, c]))
-  const parts = text.split(/(\[\d+\])/)
-  return parts.map((part, i) => {
-    const match = part.match(/^\[(\d+)\]$/)
-    if (!match) return part
-    const id = parseInt(match[1], 10)
-    const citation = citationMap.get(id)
-    if (!citation) return part
-    if (citation.url) {
-      return (
-        <a key={i} href={citation.url} target="_blank" rel="noopener noreferrer" title={citation.text}
-          className="ml-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-500/20 text-[10px] font-bold text-amber-400 no-underline hover:bg-amber-500/30 hover:text-amber-300">{id}</a>
-      )
-    }
-    return (
-      <span key={i} title={citation.text}
-        className="ml-0.5 inline-flex h-4 w-4 cursor-help items-center justify-center rounded-full bg-zinc-700/50 text-[10px] font-bold text-zinc-400">{id}</span>
-    )
-  })
-}
 
 // ---------------------------------------------------------------------------
 // Component
@@ -397,18 +364,6 @@ export default function ResumenPage() {
         ))}
       </div>
 
-      {/* Methodology box */}
-      <div className="mb-8 rounded-lg border border-amber-900/40 bg-amber-950/20 p-5">
-        <h3 className="text-sm font-bold uppercase tracking-wider text-amber-400">
-          {lang === 'es' ? 'Metodologia' : 'Methodology'}
-        </h3>
-        <p className="mt-2 text-sm leading-relaxed text-zinc-300">
-          {lang === 'es'
-            ? 'Investigacion automatizada en multiples fases. 9 fuentes de datos publicos ingestados en Neo4j (2,45M nodos). Motor de cruce por CUIT, DNI y nombre. IA local para deteccion de patrones — cada hallazgo verificado contra fuentes primarias. 75 afirmaciones verificadas: 55% confirmadas, 29% corregidas, 1% desmentida.'
-            : 'Multi-phase automated investigation. 9 public data sources ingested into Neo4j (2.45M nodes). Cross-reference engine by CUIT, DNI, and name. Local AI for pattern detection — every finding verified against primary sources. 75 claims factchecked: 55% confirmed, 29% corrected, 1% debunked.'}
-        </p>
-      </div>
-
       <hr className="border-zinc-800" />
 
       {/* Chapters */}
@@ -421,7 +376,7 @@ export default function ResumenPage() {
           <div className="mt-6 space-y-4">
             {chapter.paragraphs[lang].map((p, i) => (
               <p key={i} className="text-base leading-relaxed text-zinc-300">
-                {renderWithCitations(p, chapter.citations)}
+                <CitedText text={p} citations={chapter.citations} accentColor="amber" />
               </p>
             ))}
           </div>
@@ -433,29 +388,7 @@ export default function ResumenPage() {
           )}
 
           {/* Chapter citations footnotes */}
-          {chapter.citations && chapter.citations.length > 0 && (
-            <div className="mt-4 rounded border border-zinc-800/50 bg-zinc-900/30 px-4 py-3">
-              <ul className="space-y-1">
-                {chapter.citations.map((c) => (
-                  <li key={c.id} className="text-xs text-zinc-500">
-                    <span className="mr-1.5 font-bold text-zinc-400">[{c.id}]</span>
-                    {c.url ? (
-                      <a
-                        href={c.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-amber-400/70 underline decoration-amber-400/20 hover:text-amber-300"
-                      >
-                        {c.text}
-                      </a>
-                    ) : (
-                      c.text
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          <CitationFooter citations={chapter.citations} accentColor="amber" />
         </section>
       ))}
 
@@ -477,65 +410,6 @@ export default function ResumenPage() {
         </ul>
       </section>
 
-      {/* Methodology */}
-      <section className="py-12">
-        <h2 className="border-l-4 border-amber-500 pl-4 text-xl font-bold text-zinc-50">
-          {lang === 'es' ? 'Metodología' : 'Methodology'}
-        </h2>
-        <div className="mt-6 space-y-6">
-          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-amber-400">
-              {lang === 'es' ? 'Cómo Se Hizo Esta Investigación' : 'How This Investigation Was Built'}
-            </h3>
-            <div className="mt-3 space-y-3 text-sm text-zinc-300">
-              <p>{lang === 'es'
-                ? 'Investigación automatizada en múltiples fases. 9 fuentes de datos públicos ingestados en Neo4j (2,45M nodos). Motor de cruce por CUIT, DNI y nombre. IA local para detección de patrones — cada hallazgo verificado contra fuentes primarias. 75 afirmaciones verificadas: 55% confirmadas, 29% corregidas, 1% desmentida.'
-                : 'Multi-phase automated investigation. 9 public data sources ingested into Neo4j (2.45M nodes). Cross-reference engine by CUIT, DNI, and name. Local AI for pattern detection — every finding verified against primary sources. 75 claims factchecked: 55% confirmed, 29% corrected, 1% debunked.'}</p>
-              <p>{lang === 'es'
-                ? 'Análisis de 18 sectores monopolizados de la economía argentina con 829+ cruces Neo4j documentados. Costo anual estimado: USD 22.5B.'
-                : 'Analysis of 18 monopolized sectors of the Argentine economy with 829+ documented Neo4j crosses. Estimated annual cost: USD 22.5B.'}</p>
-            </div>
-          </div>
-
-          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-amber-400">
-              {lang === 'es' ? 'Protocolo de Verificación' : 'Verification Protocol'}
-            </h3>
-            <ul className="mt-3 space-y-2 text-sm text-zinc-300">
-              <li>{lang === 'es'
-                ? 'Tres niveles de confianza: gold (curado), silver (verificado web), bronze (sin verificar)'
-                : 'Three confidence tiers: gold (curated), silver (web-verified), bronze (unverified)'}</li>
-              <li>{lang === 'es'
-                ? '75 afirmaciones verificadas contra fuentes primarias'
-                : '75 claims verified against primary sources'}</li>
-              <li>{lang === 'es'
-                ? '55% confirmadas, 29% corregidas con matices, 1% desmentida'
-                : '55% confirmed, 29% corrected with nuances, 1% debunked'}</li>
-              <li>{lang === 'es'
-                ? 'Cada hallazgo enlazado a fuente pública verificable'
-                : 'Every finding linked to verifiable public source'}</li>
-            </ul>
-          </div>
-
-          <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-amber-400">
-              {lang === 'es' ? 'Fuentes de Datos (9 pipelines)' : 'Data Sources (9 pipelines)'}
-            </h3>
-            <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-zinc-400">
-              <span>CNDC (competencia)</span>
-              <span>ENACOM (telecomunicaciones)</span>
-              <span>ENARGAS (gas)</span>
-              <span>ENRE (electricidad)</span>
-              <span>INDEC (comercio/precios)</span>
-              <span>BCRA (finanzas)</span>
-              <span>IGJ (corporativo)</span>
-              <span>CNV (valores)</span>
-              <span>Neo4j graph database</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Disclaimer */}
       <section className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-6">
         <p className="text-sm leading-relaxed text-zinc-500">
@@ -545,14 +419,6 @@ export default function ResumenPage() {
         </p>
       </section>
 
-      {/* Closing */}
-      <div className="mt-8 text-center">
-        <p className="text-sm italic text-zinc-500">
-          {lang === 'es'
-            ? 'La investigación continúa. El grafo crece. Las preguntas permanecen.'
-            : 'The investigation continues. The graph grows. The questions remain.'}
-        </p>
-      </div>
     </article>
   )
 }

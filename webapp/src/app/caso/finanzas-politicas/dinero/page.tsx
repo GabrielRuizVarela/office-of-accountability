@@ -116,7 +116,7 @@ export default function DineroPage() {
               href={flow.source_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 inline-block text-xs text-blue-400 hover:underline"
+              className="mt-2 inline-block text-xs text-emerald-400 hover:underline"
             >
               {flow.source} ↗
             </a>
