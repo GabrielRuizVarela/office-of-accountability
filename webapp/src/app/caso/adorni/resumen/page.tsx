@@ -178,17 +178,18 @@ const chapters: readonly Chapter[] = [
       es: [
         'En febrero de 2026, durante el feriado de Carnaval, Adorni viajo con su familia en un jet privado Honda Jet (matricula LVHWA83, operado por Alphacentauri S.A.) a Punta del Este. El vuelo de ida costo $6.984.180 pesos. Fue pagado por Imhouse S.A. — la productora de Marcelo Grandio, amigo personal de Adorni. [1]',
         'Grandio conducia "Giros en linea recta" en TV Publica, que habia quedado bajo la orbita de Adorni tres meses antes de que Imhouse consiguiera su primer contrato con el canal estatal. El juez federal Ariel Lijo ordeno el levantamiento del secreto fiscal y bancario de Imhouse S.A. [2]',
-        'En marzo de 2026, Angeletti viajo en el avion presidencial ARG-01 a Nueva York durante la Argentina Week. Adorni dijo que ella habia comprado un pasaje comercial de mas de USD $5.000 pero fue "invitada" a unirse a la delegacion oficial por un cambio de agenda. Un tercer caso judicial fue abierto por el juez Daniel Rafecas.',
+        'En marzo de 2026, Angeletti viajo en el avion presidencial ARG-01 a Nueva York durante la Argentina Week. Adorni lo justifico diciendo "vengo una semana a deslomarme a Nueva York, queria que me acompane" — luego admitio que la expresion fue "desafortunada." Despues dijo que ella habia comprado un pasaje comercial de mas de USD $5.000 pero fue "invitada" por el presidente Milei a unirse a la delegacion oficial. No pudo explicar quien pago sus gastos de viaje. Un tercer caso judicial fue abierto por el juez Daniel Rafecas. [3]',
       ],
       en: [
         'In February 2026, during the Carnival holiday, Adorni traveled with his family on a private Honda Jet (registration LVHWA83, operated by Alphacentauri S.A.) to Punta del Este. The outbound flight cost $6,984,180 pesos. It was paid by Imhouse S.A. — the production company of Marcelo Grandio, Adorni\'s personal friend. [1]',
         'Grandio hosted "Giros en linea recta" on TV Publica, which had come under Adorni\'s oversight three months before Imhouse secured its first contract with the state channel. Federal judge Ariel Lijo ordered the lifting of fiscal and banking secrecy for Imhouse S.A. [2]',
-        'In March 2026, Angeletti traveled on presidential aircraft ARG-01 to New York during Argentina Week. Adorni claimed she had bought a commercial ticket for over USD $5,000 but was "invited" to join the official delegation due to a schedule change. A third judicial case was opened by judge Daniel Rafecas.',
+        'In March 2026, Angeletti traveled on presidential aircraft ARG-01 to New York during Argentina Week. Adorni justified it saying "I come to break my back for a week in New York, I wanted her to come with me" — later admitting the phrasing was "unfortunate." He then claimed she had bought a commercial ticket for over USD $5,000 but was "invited" by President Milei himself to join the official delegation. He could not explain who paid for her travel expenses. A third judicial case was opened by judge Daniel Rafecas. [3]',
       ],
     },
     citations: [
       { id: 1, text: 'La Nacion — Detalles del vuelo privado', url: 'https://www.lanacion.com.ar/politica/revelan-los-detalles-del-vuelo-privado-que-tomo-manuel-adorni-con-su-familia-en-el-feriado-de-nid11032026/' },
       { id: 2, text: 'Canal 26 — Lijo ordena abrir cuentas de Imhouse', url: 'https://www.canal26.com/politica/2026/03/21/investigacion-a-manuel-adorni-el-juez-federal-ariel-lijo-ordeno-abrir-las-cuentas-de-la-empresa-que-pago-su-viaje/' },
+      { id: 3, text: 'elDiarioAR — Adorni dijo que su esposa viajo "invitada" por Milei', url: 'https://www.eldiarioar.com/politica/escandalo-avion-presidencial-adorni-dijo-esposa-viajo-invitada-javier-milei_1_13068858.html' },
     ],
   },
   {
