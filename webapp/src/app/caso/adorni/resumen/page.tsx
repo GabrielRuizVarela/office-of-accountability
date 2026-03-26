@@ -65,12 +65,12 @@ const chapters: readonly Chapter[] = [
       es: [
         'Manuel Adorni llego al gobierno de Javier Milei como comentarista economico de television. En diciembre de 2023, el Decreto 86/2023 lo designo Vocero Presidencial con rango de Secretario de Estado. En septiembre de 2024, el Decreto 834/2024 lo ascendio a Secretario de Comunicacion y Medios, dandole control sobre la pauta oficial y los medios estatales. En octubre de 2025, se convirtio en Jefe de Gabinete de Ministros — el cargo mas alto del gabinete argentino. [1]',
         'Su CUIT (20-28052206-7) revela una trayectoria empresarial anterior: actividades de servicios personales desde 2013, asesoria empresarial y contabilidad desde 2020, y una sociedad al 50% con su esposa Bettina Julieta Angeletti en AS Innovacion Profesional S.R.L., registrada en el Boletin Oficial. [2]',
-        'Lo que esta investigacion de 13 olas descubrio no es la historia de un vocero que comete un error. Es un mapa de conflictos de interes sistematicos que conectan al Jefe de Gabinete con una red de licitaciones simuladas, contratos triangulados, patrimonio no declarado, y vinculos directos con el escandalo cripto LIBRA.',
+        'Lo que esta investigacion de 13 olas descubrio no es la historia de un vocero que comete un error. Es un mapa de presuntos conflictos de interes que, segun denuncias penales y registros publicos, vincularian al Jefe de Gabinete con licitaciones de presunta competencia simulada, contratos presuntamente triangulados, bienes no incluidos en sus declaraciones juradas, y conexiones documentadas con personas investigadas en el caso cripto LIBRA.',
       ],
       en: [
         'Manuel Adorni arrived in Javier Milei\'s government as a television economic commentator. In December 2023, Decree 86/2023 designated him Presidential Spokesperson with rank of Secretary of State. In September 2024, Decree 834/2024 promoted him to Secretary of Communication and Media, granting him control over official advertising and state media. In October 2025, he became Chief of Cabinet — the highest cabinet position in Argentina. [1]',
         'His CUIT (20-28052206-7) reveals a prior business trajectory: personal services since 2013, business advisory and accounting since 2020, and a 50/50 partnership with his wife Bettina Julieta Angeletti in AS Innovacion Profesional S.R.L., registered in the Boletin Oficial. [2]',
-        'What this 13-wave investigation uncovered is not the story of a spokesperson making a mistake. It is a map of systemic conflicts of interest connecting the Chief of Cabinet to a network of simulated tenders, triangulated contracts, undeclared assets, and direct links to the LIBRA crypto scandal.',
+        'What this 13-wave investigation uncovered is not the story of a spokesperson making a mistake. It is a map of alleged conflicts of interest that, according to criminal complaints and public records, would connect the Chief of Cabinet to tenders with alleged simulated competition, allegedly triangulated contracts, assets not included in his sworn declarations, and documented connections to persons under investigation in the LIBRA crypto scandal.',
       ],
     },
     pullQuote: { es: 'Con mi dinero hago lo que quiero. — Manuel Adorni, 25 de marzo de 2026', en: 'I do whatever I want with my money. — Manuel Adorni, March 25, 2026' },
@@ -81,21 +81,21 @@ const chapters: readonly Chapter[] = [
   },
   {
     id: 'la-licitacion-fantasma',
-    title: { es: 'II. La Licitacion Fantasma', en: 'II. The Phantom Tender' },
+    title: { es: 'II. La Licitacion Bajo Sospecha', en: 'II. The Tender Under Scrutiny' },
     paragraphs: {
       es: [
         'El 14 de mayo de 2025, Adorni — entonces Secretario de Comunicacion — lanzo una licitacion para servicios de mensajeria masiva: 36 millones de SMS, 600 millones de emails y 12 millones de llamadas automaticas para 2026. El 30 de diciembre de 2025, ya como Jefe de Gabinete, firmo la adjudicacion a ATX S.A. por $3.650.226.300 de pesos. [1]',
-        'Tres empresas participaron: ATX S.A. (ganadora), Area Tech S.A. (eliminada) y Movilgate S.R.L. (segunda). Pero los datos de la Inspeccion General de Justicia (IGJ) revelan que las tres son la misma red.',
-        'Ruben Santiago Ward (DNI 24.676.344) es presidente de ATX. Pablo Javier Casal es presidente de Area Tech. Ambos fueron socios en Lugalu S.A. Ward y Casal comparten la misma direccion comercial: Pedro Chutro 3135, CABA. Area Tech no presento la garantia de oferta — un patron clasico de licitacion arreglada donde un oferente se descalifica deliberadamente. [2]',
-        'La prueba clave: Rodrigo Paez Canosa (DNI 25.896.026) es director suplente de ATX, ex-empleado de Area Tech, Y ex-empleado de Movilgate. Un solo individuo conecta las tres "competidoras." La IGJ confirma que Paez Canosa es ademas directivo de Lugalu y Neutronica — ambas tambien de Ward. [3]',
+        'Tres empresas participaron: ATX S.A. (ganadora), Area Tech S.A. (eliminada) y Movilgate S.R.L. (segunda). Los datos de la Inspeccion General de Justicia (IGJ) revelan que las tres empresas comparten directivos y direcciones, lo que sugiere posibles vinculos societarios.',
+        'Ruben Santiago Ward (DNI 24.676.344) es presidente de ATX. Pablo Javier Casal es presidente de Area Tech. Ambos fueron socios en Lugalu S.A. Ward y Casal comparten la misma direccion comercial: Pedro Chutro 3135, CABA. Area Tech no presento la garantia de oferta — un patron que, segun especialistas en contratacion publica, puede ser indicativo de competencia simulada. [2]',
+        'El hallazgo mas significativo: Rodrigo Paez Canosa (DNI 25.896.026) es director suplente de ATX, ex-empleado de Area Tech, Y ex-empleado de Movilgate. Un solo individuo conecta las tres "competidoras." La IGJ confirma que Paez Canosa es ademas directivo de Lugalu y Neutronica — ambas tambien de Ward. [3]',
         'ATX cobro $0,045 por SMS en el primer contrato pero $0,076 en el segundo — un aumento del 69% por servicio identico.',
         'Nota: la conexion basica Adorni-ATX-Ward y el vinculo Casal-Lugalu fueron reportados primero por el diputado Rodolfo Tailhade y cubiertos por Sumario, Canal de las Noticias y DataClave. Lo que esta investigacion aporta es la confirmacion via IGJ por DNI de que Paez Canosa es director registrado (no solo ex-empleado) en ATX, Lugalu y Neutronica simultaneamente — y que la red de Ward abarca 11 empresas, no las 2-3 reportadas por los medios.',
       ],
       en: [
         'On May 14, 2025, Adorni — then Communications Secretary — launched a tender for mass messaging: 36 million SMS, 600 million emails, and 12 million automated calls for 2026. On December 30, 2025, now as Chief of Cabinet, he signed the award to ATX S.A. for $3,650,226,300 pesos. [1]',
-        'Three companies bid: ATX S.A. (winner), Area Tech S.A. (eliminated), and Movilgate S.R.L. (second place). But IGJ (corporate registry) data reveals all three are the same network.',
-        'Ruben Santiago Ward (DNI 24,676,344) is ATX president. Pablo Javier Casal is Area Tech president. Both were partners in Lugalu S.A. Ward and Casal share the same business address: Pedro Chutro 3135, CABA. Area Tech failed to present the bid guarantee — a classic rigged-tender pattern where a bidder deliberately disqualifies itself. [2]',
-        'The smoking gun: Rodrigo Paez Canosa (DNI 25,896,026) is ATX substitute director, former Area Tech employee, AND former Movilgate employee. A single individual connects all three "competitors." IGJ confirms Paez Canosa is also a director at Lugalu and Neutronica — both also Ward companies. [3]',
+        'Three companies bid: ATX S.A. (winner), Area Tech S.A. (eliminated), and Movilgate S.R.L. (second place). IGJ (corporate registry) data reveals the three companies share directors and addresses, suggesting possible corporate links.',
+        'Ruben Santiago Ward (DNI 24,676,344) is ATX president. Pablo Javier Casal is Area Tech president. Both were partners in Lugalu S.A. Ward and Casal share the same business address: Pedro Chutro 3135, CABA. Area Tech failed to present the bid guarantee — a pattern that, according to public procurement experts, may indicate simulated competition. [2]',
+        'The most significant finding: Rodrigo Paez Canosa (DNI 25,896,026) is ATX substitute director, former Area Tech employee, AND former Movilgate employee. A single individual connects all three "competitors." IGJ confirms Paez Canosa is also a director at Lugalu and Neutronica — both also Ward companies. [3]',
         'ATX charged $0.045 per SMS in Contract 1 but $0.076 in Contract 2 — a 69% increase for identical service.',
         'Note: the basic Adorni-ATX-Ward connection and the Casal-Lugalu link were first reported by Diputado Rodolfo Tailhade and covered by Sumario, Canal de las Noticias, and DataClave. What this investigation adds is the IGJ-confirmed DNI match proving Paez Canosa is a registered director (not just a former employee) at ATX, Lugalu, and Neutronica simultaneously — and that Ward\'s network extends to 11 companies, not the 2-3 reported in media.',
       ],
@@ -137,13 +137,13 @@ const chapters: readonly Chapter[] = [
       es: [
         'Bettina Julieta Angeletti (CUIT 27-29865407-0), esposa de Adorni, fundo la consultora +Be en julio de 2024. No es una entidad juridica separada — opera bajo su CUIT personal como monotributista.',
         '+Be cobro $6.370.000 de pesos a National Shipping S.A. por "capacitacion de ejecutivos." National Shipping es contratista de YPF desde hace 28 anos, con contratos anuales de aproximadamente USD $140 millones. Manuel Adorni es miembro del directorio de YPF como representante del Estado. [1]',
-        'El mecanismo de triangulacion funciona asi: entidades estatales (ARCA, AySA, Banco Nacion, Aerolineas Argentinas) contratan a Datco Group (CUIT 30-59611620-1). Datco subcontrata a +Be. Los fondos fluyen indirectamente del Estado a la familia del Jefe de Gabinete. [2]',
+        'Segun la denuncia de la diputada Pagano y registros publicos, el presunto mecanismo de triangulacion operaria de la siguiente manera: entidades estatales (ARCA, AySA, Banco Nacion, Aerolineas Argentinas) contratan a Datco Group (CUIT 30-59611620-1). Datco habria subcontratado a +Be. De confirmarse, los fondos fluirian indirectamente del Estado a la familia del Jefe de Gabinete. [2]',
         'Datco tiene 5 contratos gubernamentales y 6 licitaciones en la base de datos existente, incluyendo un contrato de $11.4 millones con la Jefatura de Gabinete de Ministros — la misma dependencia que ahora dirige Adorni.',
       ],
       en: [
         'Bettina Julieta Angeletti (CUIT 27-29865407-0), Adorni\'s wife, founded +Be consulting in July 2024. It is not a separate legal entity — it operates under her personal CUIT as a sole proprietorship.',
         '+Be charged $6,370,000 pesos to National Shipping S.A. for "executive training." National Shipping has been a YPF contractor for 28 years, with annual contracts of approximately USD $140 million. Manuel Adorni is a YPF board member as state representative. [1]',
-        'The triangulation mechanism works like this: state entities (ARCA, AySA, Banco Nacion, Aerolineas Argentinas) contract Datco Group (CUIT 30-59611620-1). Datco subcontracts +Be. Funds flow indirectly from the State to the Chief of Cabinet\'s family. [2]',
+        'According to Deputy Pagano\'s complaint and public records, the alleged triangulation mechanism would work as follows: state entities (ARCA, AySA, Banco Nacion, Aerolineas Argentinas) contract Datco Group (CUIT 30-59611620-1). Datco allegedly subcontracts +Be. If confirmed, funds would flow indirectly from the State to the Chief of Cabinet\'s family. [2]',
         'Datco holds 5 government contracts and 6 bids in the existing database, including an $11.4 million contract with the Chief of Cabinet\'s Office — the same agency Adorni now runs.',
       ],
     },
@@ -159,12 +159,12 @@ const chapters: readonly Chapter[] = [
       es: [
         'La concesion de Tecnopolis es un contrato de 25 anos valorado en $183.300 millones de pesos ($611 millones mensuales). La AABE (Agencia de Administracion de Bienes del Estado) supervisa la licitacion — y la AABE reporta al Jefe de Gabinete, es decir, a Adorni.',
         'Entre los licitantes pre-seleccionados esta DirecTV Argentina, asociada con Grupo Foggia (CUIT 30-71448507-1). La IGJ confirma que Mara Natalia Gorini (DNI 24.128.338) es directiva de Grupo Foggia. Gorini es simultaneamente asesora de Karina Milei, Secretaria General de la Presidencia. [1]',
-        'Grupo Foggia es ademas cliente de +Be, la consultora de Angeletti. El circuito se cierra: Adorni controla AABE → AABE supervisa la concesion → un licitante (Foggia) es cliente de la esposa de Adorni → y Foggia esta conectado a Karina Milei via Gorini.',
+        'Grupo Foggia es ademas cliente de +Be, la consultora de Angeletti. Los registros publicos muestran las siguientes conexiones: Adorni preside AABE, que supervisa la concesion; uno de los licitantes (Foggia) es cliente de la consultora de la esposa de Adorni; y Foggia esta vinculado a Karina Milei a traves de Gorini. Esta configuracion plantea interrogantes sobre posibles conflictos de interes.',
       ],
       en: [
         'The Tecnopolis concession is a 25-year contract valued at $183.3 billion pesos ($611 million monthly). AABE (State Asset Administration Agency) oversees the tender — and AABE reports to the Chief of Cabinet, i.e., Adorni.',
         'Among pre-selected bidders is DirecTV Argentina, associated with Grupo Foggia (CUIT 30-71448507-1). IGJ confirms Mara Natalia Gorini (DNI 24,128,338) is a Grupo Foggia director. Gorini simultaneously serves as advisor to Karina Milei, Secretary General of the Presidency. [1]',
-        'Grupo Foggia is also a client of +Be, Angeletti\'s consulting firm. The circuit closes: Adorni controls AABE → AABE oversees the concession → a bidder (Foggia) is a client of Adorni\'s wife → and Foggia is connected to Karina Milei via Gorini.',
+        'Grupo Foggia is also a client of +Be, Angeletti\'s consulting firm. Public records show the following connections: Adorni heads AABE, which oversees the concession; one bidder (Foggia) is a client of Adorni\'s wife\'s consulting firm; and Foggia is linked to Karina Milei through Gorini. This configuration raises questions about potential conflicts of interest.',
       ],
     },
     citations: [
@@ -198,13 +198,13 @@ const chapters: readonly Chapter[] = [
     paragraphs: {
       es: [
         'La declaracion jurada patrimonial de Adorni, presentada fuera de termino el 7 de noviembre de 2024, muestra un patrimonio de $107.9 millones de pesos con deudas de $95.4 millones. Su patrimonio anterior era de $11.6 millones — un aumento de aproximadamente 500% en terminos nominales, aunque la inflacion del 211% en 2023 explica parte del crecimiento. [1]',
-        'Declaro USD $42.500 en efectivo, justificados como prestamos de su madre Silvia Pais y una jubilada de 95 anos llamada Norma Zuccolo. Ex-funcionarios de la Oficina Anticorrupcion describieron esto como una tactica comun para blanquear dinero no declarado.',
+        'Declaro USD $42.500 en efectivo, justificados como prestamos de su madre Silvia Pais y una jubilada de 95 anos llamada Norma Zuccolo. Segun analistas consultados por medios nacionales, este tipo de justificacion ha sido senalado en otros casos como potencialmente inconsistente con el origen declarado de los fondos.',
         'Su esposa Angeletti compro una casa de dos pisos en el Country Club Indio Cua Golf Club (Unidad Funcional 380, Exaltacion de la Cruz) el 15 de noviembre de 2024. Esta propiedad no fue declarada. Tambien se detecto un departamento en Caballito no declarado. [2]',
         'Su sueldo como Jefe de Gabinete era de $3.584.006 brutos mensuales (pre-aumento). Los gastos familiares en tarjeta de credito ascienden a $17-20 millones mensuales, llegando a $30 millones en algunos bimestres. [3]',
       ],
       en: [
         'Adorni\'s sworn asset declaration, filed late on November 7, 2024, shows assets of $107.9 million pesos with $95.4 million in debts. His previous patrimony was $11.6 million — an increase of approximately 500% in nominal terms, though 211% inflation in 2023 explains part of the growth. [1]',
-        'He declared USD $42,500 in cash, justified as loans from his mother Silvia Pais and a 95-year-old retiree named Norma Zuccolo. Former Anti-Corruption Office officials described this as a common tactic for laundering undeclared money.',
+        'He declared USD $42,500 in cash, justified as loans from his mother Silvia Pais and a 95-year-old retiree named Norma Zuccolo. According to analysts consulted by national media, this type of justification has been flagged in other cases as potentially inconsistent with the declared origin of funds.',
         'His wife Angeletti purchased a two-story house at Indio Cua Golf Club (Functional Unit 380, Exaltacion de la Cruz) on November 15, 2024. This property was not declared. An undeclared apartment in Caballito was also detected. [2]',
         'His salary as Chief of Cabinet was $3,584,006 gross monthly (pre-increase). Family credit card spending amounts to $17-20 million monthly, reaching $30 million in some two-month periods. [3]',
       ],
@@ -345,6 +345,15 @@ export default function ResumenPage() {
           <span>{LAST_UPDATED[lang]}</span>
         </div>
       </header>
+
+      {/* Legal disclaimer — must appear BEFORE narrative content */}
+      <div className="mb-6 rounded-lg border border-amber-900/30 bg-amber-950/10 px-4 py-3">
+        <p className="text-xs leading-relaxed text-amber-200/70">
+          {lang === 'es'
+            ? 'Todas las personas mencionadas gozan de la presuncion de inocencia. Los hechos descritos se basan en fuentes publicas, registros gubernamentales y denuncias judiciales. Ninguna conclusion de culpabilidad ha sido establecida por tribunal alguno. Las conexiones descritas son hallazgos de registros publicos y no implican necesariamente conducta ilicita.'
+            : 'All persons mentioned enjoy the presumption of innocence. The facts described are based on public sources, government records, and judicial complaints. No finding of guilt has been established by any court. The connections described are findings from public records and do not necessarily imply unlawful conduct.'}
+        </p>
+      </div>
 
       <hr className="border-zinc-800" />
 
