@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import { fetchWithCsrf } from '@/lib/fetch-with-csrf'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -120,7 +121,7 @@ function CsvTab({ casoSlug }: { casoSlug: string }) {
     setResult(null)
 
     try {
-      const res = await fetch(`/api/casos/${casoSlug}/engine/ingest/csv`, {
+      const res = await fetchWithCsrf(`/api/casos/${casoSlug}/engine/ingest/csv`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -265,7 +266,7 @@ function UrlTab({ casoSlug }: { casoSlug: string }) {
     setResult(null)
 
     try {
-      const res = await fetch(`/api/casos/${casoSlug}/engine/ingest/url`, {
+      const res = await fetchWithCsrf(`/api/casos/${casoSlug}/engine/ingest/url`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url: url.trim(), extract_entities: extractEntities }),
@@ -369,7 +370,7 @@ function AddEntityTab({ casoSlug }: { casoSlug: string }) {
     }
 
     try {
-      const res = await fetch(`/api/casos/${casoSlug}/engine/ingest/entity`, {
+      const res = await fetchWithCsrf(`/api/casos/${casoSlug}/engine/ingest/entity`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ label: entityType, properties }),

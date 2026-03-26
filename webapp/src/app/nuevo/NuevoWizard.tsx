@@ -14,6 +14,7 @@ import { useCallback, useState } from 'react'
 
 import { ScopeSelector } from '@/components/investigation/ScopeSelector'
 import { SeedEntitySearch, type SeedEntity } from '@/components/investigation/SeedEntitySearch'
+import { fetchWithCsrf } from '@/lib/fetch-with-csrf'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -125,7 +126,7 @@ export function NuevoWizard() {
         s.seedEntity && !s.seedEntity.id.startsWith('new:') ? s.seedEntity.id : undefined
 
       try {
-        const res = await fetch('/api/casos/create', {
+        const res = await fetchWithCsrf('/api/casos/create', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

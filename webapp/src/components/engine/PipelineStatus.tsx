@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 import type { PipelineState } from '@/lib/engine/types'
+import { fetchWithCsrf } from '@/lib/fetch-with-csrf'
 import { GateApproval } from '@/components/engine/GateApproval'
 
 // ─── Props ────────────────────────────────────────────────────────────────────
@@ -157,7 +158,7 @@ export function PipelineStatus({ casoSlug, pipelineStateId, pipelineId }: Pipeli
     setRunLoading(true)
     setError(null)
     try {
-      const res = await fetch(`/api/casos/${casoSlug}/engine/run`, {
+      const res = await fetchWithCsrf(`/api/casos/${casoSlug}/engine/run`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pipeline_id: pipelineId }),
