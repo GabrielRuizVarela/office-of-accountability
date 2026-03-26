@@ -105,7 +105,7 @@ export interface Statement {
 export const IMPACT_STATS: readonly ImpactStat[] = [
   { value: '102', label_es: 'Nodos de investigacion', label_en: 'Investigation nodes', source: 'Neo4j graph (13 waves + enrichment)' },
   { value: '133', label_es: 'Relaciones mapeadas', label_en: 'Relationships mapped', source: 'Neo4j graph' },
-  { value: '11', label_es: 'Cruces con otras investigaciones', label_en: 'Cross-investigation links', source: 'SAME_ENTITY relationships (caso-libra + obras-publicas)' },
+  { value: '11', label_es: 'Cruces con otras investigaciones', label_en: 'Cross-investigation links', source: 'Entidades compartidas con investigacion LIBRA y base de contratistas' },
   { value: '~500%', label_es: 'Aumento patrimonial 2023 (nominal)', label_en: 'Patrimony increase 2023 (nominal)', source: 'DDJJ Oficina Anticorrupcion ($11.6M→$61M, inflacion 211%)' },
   { value: '$15B', label_es: 'Licitaciones de mensajeria (presunta competencia simulada)', label_en: 'Messaging tenders (alleged simulated competition)', source: 'Compr.ar / Boletin Oficial (ATX $3.65B + Bidone $857K + otros)' },
   { value: '6', label_es: 'Causas judiciales activas', label_en: 'Active judicial cases', source: 'CFP 1003/2026, Rafecas, Lijo, ATX/Tecnopolis, ANDIS CFP 3402/2025, LIBRA CFP 574/2025' },
