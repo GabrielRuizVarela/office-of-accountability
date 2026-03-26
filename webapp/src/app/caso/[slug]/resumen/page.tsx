@@ -1,14 +1,15 @@
 'use client'
 
 /**
- * Caso Libra - Narrative summary page.
+ * Resumen page - narrative summary for static cases, stats view for dynamic cases.
  *
- * A long-form, bilingual investigative journalism piece that walks readers
- * through the complete story of the $LIBRA token scandal.
+ * For static cases (caso-libra, caso-epstein): full narrative.
+ * For dynamic cases: investigation name, graph stats, entity type breakdown, links.
  */
 
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 import { useLanguage, type Lang } from '@/lib/language-context'
 
@@ -328,38 +329,138 @@ const sources: readonly Source[] = [
 // Component
 // ---------------------------------------------------------------------------
 
+// ---------------------------------------------------------------------------
+// Dynamic case stats component
+// ---------------------------------------------------------------------------
+
+interface InvestigationStats {
+  totalNodes: number
+  totalRelationships: number
+  nodeCountsByType: Record<string, number>
+}
+
+function DynamicResumen({ slug }: { slug: string }) {
+  const { lang } = useLanguage()
+  const [stats, setStats] = useState<InvestigationStats | null>(null)
+  const [investigationName, setInvestigationName] = useState<string>(slug)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const [statsRes, configRes] = await Promise.all([
+          fetch(`/api/caso/${slug}/stats`),
+          fetch(`/api/caso/${slug}/config`),
+        ])
+        if (statsRes.ok) {
+          const json = await statsRes.json()
+          if (json.success && json.data) setStats(json.data as InvestigationStats)
+        }
+        if (configRes.ok) {
+          const json = await configRes.json()
+          const name = json.name?.[lang] ?? json.name?.es ?? slug
+          if (name) setInvestigationName(name)
+        }
+      } finally {
+        setLoading(false)
+      }
+    }
+    void load()
+  }, [slug, lang])
+
+  if (loading) {
+    return (
+      <div className="flex h-40 items-center justify-center text-zinc-500">
+        {lang === 'es' ? 'Cargando...' : 'Loading...'}
+      </div>
+    )
+  }
+
+  const entityTypes = stats ? Object.entries(stats.nodeCountsByType).sort((a, b) => b[1] - a[1]) : []
+
+  return (
+    <div className="mx-auto max-w-2xl space-y-8 py-10">
+      <header>
+        <h1 className="text-2xl font-bold text-zinc-50">{investigationName}</h1>
+        <p className="mt-2 text-sm text-zinc-400">
+          {lang === 'es' ? 'Resumen de la investigacion' : 'Investigation summary'}
+        </p>
+      </header>
+
+      {stats && (
+        <section className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          <div className="rounded-lg border border-zinc-800 bg-zinc-900/60 p-5 text-center">
+            <p className="text-2xl font-bold text-purple-400">{stats.totalNodes}</p>
+            <p className="mt-1 text-sm text-zinc-400">
+              {lang === 'es' ? 'Entidades' : 'Entities'}
+            </p>
+          </div>
+          <div className="rounded-lg border border-zinc-800 bg-zinc-900/60 p-5 text-center">
+            <p className="text-2xl font-bold text-purple-400">{stats.totalRelationships}</p>
+            <p className="mt-1 text-sm text-zinc-400">
+              {lang === 'es' ? 'Conexiones' : 'Connections'}
+            </p>
+          </div>
+          <div className="rounded-lg border border-zinc-800 bg-zinc-900/60 p-5 text-center">
+            <p className="text-2xl font-bold text-purple-400">{entityTypes.length}</p>
+            <p className="mt-1 text-sm text-zinc-400">
+              {lang === 'es' ? 'Tipos de entidad' : 'Entity types'}
+            </p>
+          </div>
+        </section>
+      )}
+
+      {entityTypes.length > 0 && (
+        <section>
+          <h2 className="border-l-4 border-purple-500 pl-4 text-base font-bold text-zinc-50">
+            {lang === 'es' ? 'Entidades por tipo' : 'Entities by type'}
+          </h2>
+          <ul className="mt-4 space-y-2">
+            {entityTypes.map(([type, count]) => (
+              <li key={type} className="flex items-center justify-between rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-2">
+                <span className="text-sm text-zinc-300">{type}</span>
+                <span className="text-sm font-bold text-purple-400">{count}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section className="flex flex-wrap gap-3">
+        <Link
+          href={`/caso/${slug}/grafo`}
+          className="rounded-lg bg-purple-700 px-4 py-2 text-sm font-medium text-white hover:bg-purple-600"
+        >
+          {lang === 'es' ? 'Explorar grafo' : 'Explore graph'}
+        </Link>
+        <Link
+          href={`/caso/${slug}/cronologia`}
+          className="rounded-lg bg-zinc-800 px-4 py-2 text-sm text-zinc-200 hover:bg-zinc-700"
+        >
+          {lang === 'es' ? 'Ver cronologia' : 'View timeline'}
+        </Link>
+        <Link
+          href={`/caso/${slug}/evidencia`}
+          className="rounded-lg bg-zinc-800 px-4 py-2 text-sm text-zinc-200 hover:bg-zinc-700"
+        >
+          {lang === 'es' ? 'Ver evidencia' : 'View evidence'}
+        </Link>
+      </section>
+    </div>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// Main page component
+// ---------------------------------------------------------------------------
+
 export default function ResumenPage() {
   const { lang } = useLanguage()
   const params = useParams()
   const slug = params.slug as string
 
   if (slug !== 'caso-libra' && slug !== 'caso-epstein') {
-    return (
-      <div className="mx-auto max-w-2xl py-20 text-center">
-        <h1 className="text-xl font-bold text-zinc-50">
-          {lang === 'es' ? 'Resumen de la investigacion' : 'Investigation summary'}
-        </h1>
-        <p className="mt-4 text-zinc-400">
-          {lang === 'es'
-            ? 'El resumen narrativo para esta investigacion no esta disponible aun. Explore el grafo o la cronologia para ver los datos.'
-            : 'The narrative summary for this investigation is not available yet. Explore the graph or timeline to view data.'}
-        </p>
-        <div className="mt-6 flex items-center justify-center gap-3">
-          <Link
-            href={`/caso/${slug}/grafo`}
-            className="rounded-lg bg-zinc-800 px-4 py-2 text-sm text-zinc-200 hover:bg-zinc-700"
-          >
-            {lang === 'es' ? 'Ver grafo' : 'View graph'}
-          </Link>
-          <Link
-            href={`/caso/${slug}/cronologia`}
-            className="rounded-lg bg-zinc-800 px-4 py-2 text-sm text-zinc-200 hover:bg-zinc-700"
-          >
-            {lang === 'es' ? 'Ver cronologia' : 'View timeline'}
-          </Link>
-        </div>
-      </div>
-    )
+    return <DynamicResumen slug={slug} />
   }
 
   return (

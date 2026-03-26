@@ -1,7 +1,6 @@
 import { NextRequest } from 'next/server'
 
-import { getClientConfig } from '@/lib/investigations/registry'
-import { getQueryBuilder } from '@/lib/investigations/query-builder'
+import { getClientConfig, getClientConfigDynamic } from '@/lib/investigations/registry'
 
 export async function GET(
   request: NextRequest,
@@ -9,8 +8,8 @@ export async function GET(
 ) {
   const { slug } = await params
 
-  // Validate slug against the registry
-  const config = getClientConfig(slug)
+  // Validate slug against static registry, then dynamic
+  const config = getClientConfig(slug) ?? await getClientConfigDynamic(slug)
   if (!config) {
     return Response.json(
       { success: false, error: 'Unknown investigation' },
@@ -18,27 +17,12 @@ export async function GET(
     )
   }
 
-  try {
-    const data = await getQueryBuilder().getConfig(slug)
-    return Response.json({ success: true, data })
-  } catch (error) {
-    const message = error instanceof Error ? error.message : String(error)
-
-    // Check for Neo4j connection errors
-    if (
-      message.includes('connect') ||
-      message.includes('ECONNREFUSED') ||
-      message.includes('ServiceUnavailable')
-    ) {
-      return Response.json(
-        { success: false, error: 'Database unavailable' },
-        { status: 503 },
-      )
-    }
-
-    return Response.json(
-      { success: false, error: 'Failed to load config' },
-      { status: 500 },
-    )
-  }
+  return Response.json({
+    success: true,
+    name: config.name,
+    description: config.description,
+    casoSlug: config.casoSlug,
+    tabs: config.tabs,
+    features: config.features,
+  })
 }

@@ -3,7 +3,7 @@
  * Returns document data with connected entities.
  */
 
-import { getClientConfig } from '@/lib/investigations/registry'
+import { getClientConfig, getClientConfigDynamic } from '@/lib/investigations/registry'
 import { getQueryBuilder } from '@/lib/investigations/query-builder'
 
 export async function GET(
@@ -12,7 +12,7 @@ export async function GET(
 ): Promise<Response> {
   const { slug, docSlug } = await params
 
-  const config = getClientConfig(slug)
+  const config = getClientConfig(slug) ?? await getClientConfigDynamic(slug)
   if (!config) {
     return Response.json(
       { success: false, error: 'Unknown investigation' },

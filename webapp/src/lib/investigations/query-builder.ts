@@ -388,12 +388,20 @@ export function createQueryBuilder(): InvestigationQueryBuilder {
               name: String(a.name),
             }))
 
+          const rawEventType = typeof props.event_type === 'string' ? props.event_type : undefined
+          const validEventTypes = ['political', 'financial', 'legal', 'media', 'corporate'] as const
+          type ValidEventType = (typeof validEventTypes)[number]
+          const eventType: ValidEventType | undefined = (validEventTypes as readonly string[]).includes(rawEventType ?? '')
+            ? (rawEventType as ValidEventType)
+            : undefined
+
           return {
             id: typeof props.id === 'string' ? props.id : '',
             title: typeof props.title === 'string' ? props.title : (props.title as string),
             description: typeof props.description === 'string' ? props.description : '',
             date: typeof props.date === 'string' ? props.date : '',
-            category: typeof props.event_type === 'string' ? props.event_type : undefined,
+            event_type: eventType,
+            category: rawEventType,
             source_url: typeof props.source_url === 'string' ? props.source_url : undefined,
             actors: actors.length > 0 ? actors : undefined,
           } satisfies TimelineItem
