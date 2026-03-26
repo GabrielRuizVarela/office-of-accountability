@@ -4,6 +4,8 @@
  * Queries Neo4j for degree distribution within a caso_slug namespace,
  * computes mean + stddev, and flags statistically anomalous nodes
  * (high-degree outliers and isolated nodes) as hypothesis Proposals.
+ *
+ * Also exports a standalone detectAnomalies() function for API routes.
  */
 
 import neo4j from 'neo4j-driver-lite'
@@ -19,6 +21,103 @@ import type { Algorithm, AlgorithmContext, AlgorithmResult } from './types'
 
 /** Nodes with degree > mean + ZSCORE_THRESHOLD * stddev are flagged */
 const ZSCORE_THRESHOLD = 2
+
+// ---------------------------------------------------------------------------
+// Standalone data types
+// ---------------------------------------------------------------------------
+
+export interface Anomaly {
+  type: 'high_degree' | 'isolated_cluster' | 'temporal_gap' | 'tier_mismatch'
+  description: string
+  node_ids: string[]
+  severity: number // 0–1
+}
+
+// ---------------------------------------------------------------------------
+// Standalone query function
+// ---------------------------------------------------------------------------
+
+/**
+ * Detect anomalies in the investigation graph.
+ *
+ * - high_degree: nodes with degree > mean + 3*stddev
+ * - tier_mismatch: bronze nodes with > 5 connections (should be promoted)
+ *
+ * Returns Anomaly[] sorted by severity descending.
+ */
+export async function detectAnomalies(casoSlug: string): Promise<Anomaly[]> {
+  // Query degree for all nodes
+  const degreeResult = await readQuery<{
+    id: string
+    name: string
+    label: string
+    tier: string
+    degree: number
+  }>(
+    `MATCH (n {caso_slug: $casoSlug})
+     OPTIONAL MATCH (n)-[r]-()
+     WITH n, count(r) AS degree
+     RETURN n.id AS id,
+            n.name AS name,
+            labels(n)[0] AS label,
+            coalesce(n.confidence_tier, 'bronze') AS tier,
+            degree`,
+    { casoSlug },
+    (record) => ({
+      id: record.get('id') as string,
+      name: record.get('name') as string,
+      label: record.get('label') as string,
+      tier: record.get('tier') as string,
+      degree: neo4j.isInt(record.get('degree'))
+        ? (record.get('degree') as { toNumber(): number }).toNumber()
+        : (record.get('degree') as number),
+    }),
+  )
+
+  const rows = degreeResult.records
+  if (rows.length === 0) return []
+
+  const anomalies: Anomaly[] = []
+
+  // Compute mean and stddev
+  const degrees = rows.map((r) => r.degree)
+  const mean = degrees.reduce((sum, d) => sum + d, 0) / degrees.length
+  const variance = degrees.reduce((sum, d) => sum + (d - mean) ** 2, 0) / degrees.length
+  const stddev = Math.sqrt(variance)
+  const highDegreeThreshold = mean + 3 * stddev
+
+  // High-degree outliers
+  if (stddev > 0) {
+    const outliers = rows.filter((r) => r.degree > highDegreeThreshold)
+    for (const node of outliers) {
+      const zScore = (node.degree - mean) / stddev
+      const severity = Math.min(1, (zScore - 3) / 3 + 0.5) // 0.5 at z=3, 1 at z=6
+      anomalies.push({
+        type: 'high_degree',
+        description: `"${node.name}" (${node.label}) has ${node.degree} connections — ${zScore.toFixed(1)}σ above mean`,
+        node_ids: [node.id],
+        severity: Math.max(0, Math.min(1, severity)),
+      })
+    }
+  }
+
+  // Tier mismatch: bronze nodes with > 5 connections
+  const tierMismatches = rows.filter((r) => r.tier === 'bronze' && r.degree > 5)
+  for (const node of tierMismatches) {
+    const severity = Math.min(1, node.degree / 20) // scale 0–1 for degree 0–20
+    anomalies.push({
+      type: 'tier_mismatch',
+      description: `Bronze node "${node.name}" (${node.label}) has ${node.degree} connections and should be promoted`,
+      node_ids: [node.id],
+      severity,
+    })
+  }
+
+  // Sort by severity descending
+  anomalies.sort((a, b) => b.severity - a.severity)
+
+  return anomalies
+}
 
 // ---------------------------------------------------------------------------
 // AnomalyAlgorithm

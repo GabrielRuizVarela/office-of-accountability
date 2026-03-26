@@ -29,3 +29,15 @@ export { CentralityAlgorithm } from './centrality'
 export { CommunityAlgorithm } from './community'
 export { AnomalyAlgorithm } from './anomaly'
 export { TemporalAlgorithm } from './temporal'
+
+// Standalone function exports
+export { degreeCentrality, betweennessCentrality } from './centrality'
+export { detectCommunities } from './community'
+export { findTemporalClusters } from './temporal'
+export { detectAnomalies } from './anomaly'
+
+// Standalone type exports
+export type { CentralityResult, BetweennessResult } from './centrality'
+export type { Community } from './community'
+export type { TemporalCluster } from './temporal'
+export type { Anomaly } from './anomaly'

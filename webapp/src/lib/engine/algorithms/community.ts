@@ -4,7 +4,11 @@
  * Queries Neo4j for edges within a caso_slug namespace, runs label
  * propagation in JS to detect communities, then creates hypothesis
  * Proposals for communities with 3+ members.
+ *
+ * Also exports a standalone detectCommunities() function for API routes.
  */
+
+import neo4j from 'neo4j-driver-lite'
 
 import type { AlgorithmKind } from './types'
 import { readQuery } from '../../neo4j/client'
@@ -17,6 +21,137 @@ import type { Algorithm, AlgorithmContext, AlgorithmResult } from './types'
 
 const MAX_ITERATIONS = 10
 const MIN_COMMUNITY_SIZE = 3
+
+// ---------------------------------------------------------------------------
+// Standalone data types
+// ---------------------------------------------------------------------------
+
+export interface Community {
+  id: number
+  members: Array<{ id: string; name: string; label: string }>
+  size: number
+}
+
+// ---------------------------------------------------------------------------
+// Standalone query function
+// ---------------------------------------------------------------------------
+
+/**
+ * Detect communities in the graph using label propagation.
+ *
+ * Fetches up to 5000 nodes and 20000 edges, runs label propagation for
+ * up to maxIterations, and returns communities with size > 1 sorted by
+ * size descending.
+ */
+export async function detectCommunities(
+  casoSlug: string,
+  maxIterations = 20,
+): Promise<Community[]> {
+  // Fetch nodes
+  const nodeResult = await readQuery<{ id: string; name: string; label: string }>(
+    `MATCH (n {caso_slug: $casoSlug})
+     WHERE n.id IS NOT NULL
+     RETURN n.id AS id, n.name AS name, labels(n)[0] AS label
+     LIMIT $nodeLimit`,
+    { casoSlug, nodeLimit: neo4j.int(5000) },
+    (record) => ({
+      id: record.get('id') as string,
+      name: record.get('name') as string,
+      label: record.get('label') as string,
+    }),
+  )
+
+  const nodeMap = new Map<string, { name: string; label: string }>()
+  for (const n of nodeResult.records) {
+    nodeMap.set(n.id, { name: n.name, label: n.label })
+  }
+
+  if (nodeMap.size === 0) return []
+
+  // Fetch edges
+  const edgeResult = await readQuery<{ sourceId: string; targetId: string }>(
+    `MATCH (a {caso_slug: $casoSlug})-[r]-(b {caso_slug: $casoSlug})
+     WHERE a.id IS NOT NULL AND b.id IS NOT NULL AND id(a) < id(b)
+     RETURN a.id AS sourceId, b.id AS targetId
+     LIMIT $edgeLimit`,
+    { casoSlug, edgeLimit: neo4j.int(20000) },
+    (record) => ({
+      sourceId: record.get('sourceId') as string,
+      targetId: record.get('targetId') as string,
+    }),
+  )
+
+  // Build adjacency list
+  const adjacency = new Map<string, Set<string>>()
+  for (const nodeId of nodeMap.keys()) {
+    adjacency.set(nodeId, new Set())
+  }
+  for (const edge of edgeResult.records) {
+    if (!adjacency.has(edge.sourceId) || !adjacency.has(edge.targetId)) continue
+    adjacency.get(edge.sourceId)!.add(edge.targetId)
+    adjacency.get(edge.targetId)!.add(edge.sourceId)
+  }
+
+  const nodeIds = [...nodeMap.keys()]
+
+  // Label propagation — each node starts with its own label (index)
+  const labels = new Map<string, number>()
+  for (let i = 0; i < nodeIds.length; i++) {
+    labels.set(nodeIds[i], i)
+  }
+
+  for (let iter = 0; iter < maxIterations; iter++) {
+    let changed = false
+
+    for (const nodeId of nodeIds) {
+      const neighbors = adjacency.get(nodeId)
+      if (!neighbors || neighbors.size === 0) continue
+
+      const labelCounts = new Map<number, number>()
+      for (const neighborId of neighbors) {
+        const neighborLabel = labels.get(neighborId)!
+        labelCounts.set(neighborLabel, (labelCounts.get(neighborLabel) ?? 0) + 1)
+      }
+
+      let maxCount = 0
+      let bestLabel = labels.get(nodeId)!
+      for (const [lbl, count] of labelCounts) {
+        if (count > maxCount) {
+          maxCount = count
+          bestLabel = lbl
+        }
+      }
+
+      if (bestLabel !== labels.get(nodeId)) {
+        labels.set(nodeId, bestLabel)
+        changed = true
+      }
+    }
+
+    if (!changed) break
+  }
+
+  // Group nodes by community label
+  const communityMap = new Map<number, Array<{ id: string; name: string; label: string }>>()
+  for (const nodeId of nodeIds) {
+    const communityLabel = labels.get(nodeId)!
+    if (!communityMap.has(communityLabel)) communityMap.set(communityLabel, [])
+    const info = nodeMap.get(nodeId) ?? { name: nodeId, label: 'Unknown' }
+    communityMap.get(communityLabel)!.push({ id: nodeId, name: info.name, label: info.label })
+  }
+
+  // Build result: communities with size > 1, sorted by size desc
+  let communityId = 0
+  const communities: Community[] = []
+  for (const members of communityMap.values()) {
+    if (members.length > 1) {
+      communities.push({ id: communityId++, members, size: members.length })
+    }
+  }
+  communities.sort((a, b) => b.size - a.size)
+
+  return communities
+}
 
 // ---------------------------------------------------------------------------
 // CommunityAlgorithm

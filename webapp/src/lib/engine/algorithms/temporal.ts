@@ -4,6 +4,8 @@
  * Queries Neo4j for nodes with date properties within a caso_slug namespace,
  * buckets events by month, detects temporal clusters (>mean+2σ),
  * and creates hypothesis Proposals for anomalous time periods.
+ *
+ * Also exports a standalone findTemporalClusters() function for API routes.
  */
 
 import type { AlgorithmKind } from './types'
@@ -17,6 +19,85 @@ import type { Algorithm, AlgorithmContext, AlgorithmResult } from './types'
 
 /** Months with event count > mean + ZSCORE_THRESHOLD * stddev are flagged */
 const ZSCORE_THRESHOLD = 2
+
+// ---------------------------------------------------------------------------
+// Standalone data types
+// ---------------------------------------------------------------------------
+
+export interface TemporalCluster {
+  window_start: string
+  window_end: string
+  events: Array<{ id: string; title: string; date: string }>
+}
+
+// ---------------------------------------------------------------------------
+// Standalone query function
+// ---------------------------------------------------------------------------
+
+/**
+ * Find temporal clusters of Event nodes using a sliding window.
+ *
+ * Fetches all Event nodes with dates, sorts by date, then groups events
+ * that fall within windowDays of each other. Returns clusters with at
+ * least minClusterSize events.
+ */
+export async function findTemporalClusters(
+  casoSlug: string,
+  windowDays = 7,
+  minClusterSize = 2,
+): Promise<TemporalCluster[]> {
+  const result = await readQuery<{ id: string; title: string; date: string }>(
+    `MATCH (e:Event {caso_slug: $casoSlug})
+     WHERE e.date IS NOT NULL
+     RETURN e.id AS id,
+            coalesce(e.title, e.name, e.id) AS title,
+            e.date AS date
+     ORDER BY e.date ASC`,
+    { casoSlug },
+    (record) => ({
+      id: record.get('id') as string,
+      title: record.get('title') as string,
+      date: record.get('date') as string,
+    }),
+  )
+
+  const events = result.records.filter((e) => {
+    const d = new Date(e.date)
+    return !isNaN(d.getTime())
+  })
+
+  if (events.length === 0) return []
+
+  const windowMs = windowDays * 24 * 60 * 60 * 1000
+  const clusters: TemporalCluster[] = []
+
+  // Sliding window: for each event, find all events within windowDays
+  let i = 0
+  while (i < events.length) {
+    const anchor = new Date(events[i].date).getTime()
+    const group: typeof events = []
+
+    let j = i
+    while (j < events.length && new Date(events[j].date).getTime() - anchor <= windowMs) {
+      group.push(events[j])
+      j++
+    }
+
+    if (group.length >= minClusterSize) {
+      clusters.push({
+        window_start: events[i].date,
+        window_end: events[j - 1].date,
+        events: group,
+      })
+      // Advance past this cluster to avoid overlapping windows
+      i = j
+    } else {
+      i++
+    }
+  }
+
+  return clusters
+}
 
 // ---------------------------------------------------------------------------
 // TemporalAlgorithm
@@ -142,3 +223,4 @@ function toYearMonth(dateStr: string): string | null {
   const month = String(d.getMonth() + 1).padStart(2, '0')
   return `${year}-${month}`
 }
+
