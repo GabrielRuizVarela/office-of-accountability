@@ -7,6 +7,9 @@
  * through the complete story of the $LIBRA token scandal.
  */
 
+import { useParams } from 'next/navigation'
+import Link from 'next/link'
+
 import { useLanguage, type Lang } from '@/lib/language-context'
 
 interface StatCard {
@@ -327,6 +330,37 @@ const sources: readonly Source[] = [
 
 export default function ResumenPage() {
   const { lang } = useLanguage()
+  const params = useParams()
+  const slug = params.slug as string
+
+  if (slug !== 'caso-libra' && slug !== 'caso-epstein') {
+    return (
+      <div className="mx-auto max-w-2xl py-20 text-center">
+        <h1 className="text-xl font-bold text-zinc-50">
+          {lang === 'es' ? 'Resumen de la investigacion' : 'Investigation summary'}
+        </h1>
+        <p className="mt-4 text-zinc-400">
+          {lang === 'es'
+            ? 'El resumen narrativo para esta investigacion no esta disponible aun. Explore el grafo o la cronologia para ver los datos.'
+            : 'The narrative summary for this investigation is not available yet. Explore the graph or timeline to view data.'}
+        </p>
+        <div className="mt-6 flex items-center justify-center gap-3">
+          <Link
+            href={`/caso/${slug}/grafo`}
+            className="rounded-lg bg-zinc-800 px-4 py-2 text-sm text-zinc-200 hover:bg-zinc-700"
+          >
+            {lang === 'es' ? 'Ver grafo' : 'View graph'}
+          </Link>
+          <Link
+            href={`/caso/${slug}/cronologia`}
+            className="rounded-lg bg-zinc-800 px-4 py-2 text-sm text-zinc-200 hover:bg-zinc-700"
+          >
+            {lang === 'es' ? 'Ver cronologia' : 'View timeline'}
+          </Link>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <article className="mx-auto max-w-prose pb-20">

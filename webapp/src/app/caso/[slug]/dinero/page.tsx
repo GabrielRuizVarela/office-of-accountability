@@ -1,11 +1,15 @@
 'use client'
 
 /**
- * Caso Libra money flow page - wallet graph with transaction edges.
- * Wallet nodes sized by volume, edge width by amount.
+ * Dinero (money flow) page.
+ *
+ * For caso-libra: full wallet graph with transaction edges.
+ * For other investigations: generic fallback message.
  */
 
 import { useCallback, useEffect, useState } from 'react'
+import { useParams } from 'next/navigation'
+import Link from 'next/link'
 
 import { useLanguage, type Lang } from '@/lib/language-context'
 import type { GraphData } from '@/lib/neo4j/types'
@@ -31,6 +35,34 @@ const t = {
 
 export default function DineroPage() {
   const { lang } = useLanguage()
+  const params = useParams()
+  const slug = params.slug as string
+
+  if (slug !== 'caso-libra') {
+    return (
+      <div className="mx-auto max-w-2xl py-20 text-center">
+        <h1 className="text-xl font-bold text-zinc-50">
+          {lang === 'es' ? 'Analisis financiero' : 'Financial analysis'}
+        </h1>
+        <p className="mt-4 text-zinc-400">
+          {lang === 'es'
+            ? 'El analisis financiero no esta configurado para esta investigacion aun.'
+            : 'Financial analysis is not yet configured for this investigation.'}
+        </p>
+        <Link
+          href={`/caso/${slug}/grafo`}
+          className="mt-6 inline-block rounded-lg bg-zinc-800 px-4 py-2 text-sm text-zinc-200 hover:bg-zinc-700"
+        >
+          {lang === 'es' ? 'Ver grafo de relaciones' : 'View relationship graph'}
+        </Link>
+      </div>
+    )
+  }
+
+  return <LibraDineroContent lang={lang} />
+}
+
+function LibraDineroContent({ lang }: { readonly lang: Lang }) {
   const [data, setData] = useState<GraphData>({ nodes: [], links: [] })
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)

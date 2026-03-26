@@ -90,7 +90,7 @@ export default function DocumentDetailPage() {
         </a>
       )}
 
-      <ShareButton text={`Caso Libra - ${docTitle}`} title={docTitle} />
+      <ShareButton text={docTitle} title={docTitle} />
 
       {/* Connected entities */}
       {data.mentionedEntities.length > 0 && (

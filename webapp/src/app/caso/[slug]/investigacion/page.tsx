@@ -9,6 +9,8 @@
  */
 
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
+import { useParams } from 'next/navigation'
+import Link from 'next/link'
 
 import { useLanguage, type Lang } from '@/lib/language-context'
 import {
@@ -119,6 +121,49 @@ function formatDate(dateStr: string, lang: Lang): string {
 // ---------------------------------------------------------------------------
 
 export default function InvestigacionPage() {
+  const { lang } = useLanguage()
+  const params = useParams()
+  const slug = params.slug as string
+
+  if (slug !== 'caso-libra') {
+    return (
+      <div className="mx-auto max-w-2xl py-20 text-center">
+        <h1 className="text-xl font-bold text-zinc-50">
+          {lang === 'es' ? 'Datos de investigacion' : 'Investigation data'}
+        </h1>
+        <p className="mt-4 text-zinc-400">
+          {lang === 'es'
+            ? `Datos de investigacion para esta investigacion.`
+            : `Investigation data for this investigation.`}
+        </p>
+        <div className="mt-6 flex items-center justify-center gap-3">
+          <Link
+            href={`/caso/${slug}/grafo`}
+            className="rounded-lg bg-zinc-800 px-4 py-2 text-sm text-zinc-200 hover:bg-zinc-700"
+          >
+            {lang === 'es' ? 'Explorar grafo' : 'Explore graph'}
+          </Link>
+          <Link
+            href={`/caso/${slug}/cronologia`}
+            className="rounded-lg bg-zinc-800 px-4 py-2 text-sm text-zinc-200 hover:bg-zinc-700"
+          >
+            {lang === 'es' ? 'Ver cronologia' : 'View timeline'}
+          </Link>
+          <Link
+            href={`/caso/${slug}/evidencia`}
+            className="rounded-lg bg-zinc-800 px-4 py-2 text-sm text-zinc-200 hover:bg-zinc-700"
+          >
+            {lang === 'es' ? 'Ver evidencia' : 'View evidence'}
+          </Link>
+        </div>
+      </div>
+    )
+  }
+
+  return <LibraInvestigacionContent />
+}
+
+function LibraInvestigacionContent() {
   const { lang } = useLanguage()
   const [activeSection, setActiveSection] = useState('hero')
   const [factcheckFilter, setFactcheckFilter] = useState<FactcheckStatus | null>(null)
