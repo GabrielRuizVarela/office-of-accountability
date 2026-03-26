@@ -70,10 +70,17 @@ interface Props {
   readonly slug: string
   readonly actors: readonly Record<string, unknown>[]
   readonly documents: readonly Record<string, unknown>[]
+  readonly config?: { name: { es: string; en: string }; description: { es: string; en: string } }
+  readonly stats?: { totalNodes: number; totalRelationships: number; nodeCountsByType: Record<string, number> }
 }
 
-export function CasoLandingContent({ slug, actors, documents }: Props) {
+export function CasoLandingContent({ slug, actors, documents, config, stats }: Props) {
   const { lang } = useLanguage()
+
+  // Use dynamic config if available, fall back to hardcoded Libra content
+  const isLibra = slug === 'caso-libra'
+  const title = config ? config.name[lang] : t.title[lang]
+  const description = config?.description?.[lang] || (isLibra ? t.heroDesc[lang] : '')
 
   return (
     <div className="space-y-10">
@@ -83,65 +90,58 @@ export function CasoLandingContent({ slug, actors, documents }: Props) {
           {t.tagline[lang]}
         </p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl lg:text-5xl">
-          {t.title[lang]}
+          {title}
         </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
-          {t.heroDesc[lang]}
-        </p>
+        {description && (
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
+            {description}
+          </p>
+        )}
         <div className="mt-4">
           <ShareButton
-            text={t.shareText[lang]}
-            title="Caso Libra"
+            text={config ? config.name[lang] : t.shareText[lang]}
+            title={title}
           />
         </div>
       </section>
 
-      {/* Key stats */}
-      <KeyStats />
+      {/* Key stats — dynamic for all cases */}
+      {stats && stats.totalNodes > 0 ? (
+        <section className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <StatCard label={lang === 'es' ? 'Nodos' : 'Nodes'} value={String(stats.totalNodes)} />
+          <StatCard label={lang === 'es' ? 'Relaciones' : 'Relationships'} value={String(stats.totalRelationships)} />
+          {Object.entries(stats.nodeCountsByType)
+            .filter(([label]) => !['InvestigationConfig', 'PipelineState', 'SchemaDefinition', 'NodeTypeDefinition', 'RelTypeDefinition', 'Proposal'].includes(label))
+            .slice(0, 2)
+            .map(([label, count]) => (
+              <StatCard key={label} label={label} value={String(count)} />
+            ))}
+        </section>
+      ) : isLibra ? (
+        <KeyStats />
+      ) : null}
 
-      {/* Primary CTA - read the full story */}
-      <section className="flex flex-col gap-3 sm:flex-row">
-        <Link
-          href={`/caso/${slug}/resumen`}
-          className="flex-1 rounded-xl border border-purple-500/30 bg-purple-500/10 p-6 text-center transition-colors hover:border-purple-500/50 hover:bg-purple-500/15"
-        >
-          <h3 className="text-lg font-bold text-purple-300">{t.readFullStory[lang]}</h3>
-          <p className="mt-1 text-sm text-zinc-400">
-            {t.readFullStoryDesc[lang]}
-          </p>
-        </Link>
-        <Link
-          href={`/caso/${slug}/investigacion`}
-          className="flex-1 rounded-xl border border-zinc-700 bg-zinc-900/50 p-6 text-center transition-colors hover:border-zinc-600"
-        >
-          <h3 className="text-lg font-bold text-zinc-100">{t.seeEvidence[lang]}</h3>
-          <p className="mt-1 text-sm text-zinc-400">
-            {t.seeEvidenceDesc[lang]}
-          </p>
-        </Link>
-      </section>
-
-      {/* Entry points */}
+      {/* Entry points — universal for all investigations */}
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <EntryPoint
+          href={`/caso/${slug}/grafo`}
+          title={t.connections[lang]}
+          description={lang === 'es' ? 'Explora la red de conexiones' : 'Explore the connections network'}
+        />
         <EntryPoint
           href={`/caso/${slug}/cronologia`}
           title={t.timeline[lang]}
           description={t.timelineDesc[lang]}
         />
         <EntryPoint
-          href={`/caso/${slug}/dinero`}
-          title={t.money[lang]}
-          description={t.moneyDesc[lang]}
+          href={`/caso/${slug}/evidencia`}
+          title={lang === 'es' ? 'Evidencia' : 'Evidence'}
+          description={lang === 'es' ? 'Documentos y pruebas' : 'Documents and evidence'}
         />
         <EntryPoint
-          href={`/caso/${slug}/grafo`}
-          title={t.connections[lang]}
-          description={t.connectionsDesc[lang]}
-        />
-        <EntryPoint
-          href={`/caso/${slug}/investigacion#aportar`}
-          title={t.submitEvidence[lang]}
-          description={t.submitEvidenceDesc[lang]}
+          href={`/caso/${slug}/motor`}
+          title={lang === 'es' ? 'Motor' : 'Engine'}
+          description={lang === 'es' ? 'Pipeline de investigacion, propuestas, datos' : 'Investigation pipeline, proposals, data'}
         />
       </section>
 
@@ -191,6 +191,15 @@ export function CasoLandingContent({ slug, actors, documents }: Props) {
           </div>
         </section>
       )}
+    </div>
+  )
+}
+
+function StatCard({ label, value }: { readonly label: string; readonly value: string }) {
+  return (
+    <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 text-center">
+      <p className="text-2xl font-bold text-zinc-100">{value}</p>
+      <p className="mt-1 text-xs text-zinc-500">{label}</p>
     </div>
   )
 }

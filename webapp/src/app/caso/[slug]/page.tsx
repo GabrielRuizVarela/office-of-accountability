@@ -3,6 +3,7 @@
  */
 
 import { getQueryBuilder } from '@/lib/investigations/query-builder'
+import { getClientConfig, getClientConfigDynamic } from '@/lib/investigations/registry'
 
 import { CasoLandingContent } from './CasoLandingContent'
 
@@ -13,12 +14,22 @@ export default async function CasoLandingPage({
 }) {
   const { slug } = await params
   const qb = getQueryBuilder()
-  const [actorNodes, docNodes] = await Promise.all([
+  const config = getClientConfig(slug) ?? await getClientConfigDynamic(slug)
+  const [actorNodes, docNodes, stats] = await Promise.all([
     qb.getNodesByType(slug, 'Person', { limit: 20 }),
     qb.getNodesByType(slug, 'Document', { limit: 10 }),
+    qb.getStats(slug),
   ])
   const actors = actorNodes.map((n) => ({ id: n.id, slug: n.slug, ...n.properties }))
   const documents = docNodes.map((n) => ({ id: n.id, slug: n.slug, ...n.properties }))
 
-  return <CasoLandingContent slug={slug} actors={actors} documents={documents} />
+  return (
+    <CasoLandingContent
+      slug={slug}
+      actors={actors}
+      documents={documents}
+      config={config ? { name: config.name, description: config.description } : undefined}
+      stats={stats}
+    />
+  )
 }

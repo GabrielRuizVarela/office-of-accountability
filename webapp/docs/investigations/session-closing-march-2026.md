@@ -5,7 +5,7 @@
 
 ## 1. Executive Summary
 
-This document is the definitive record of the finanzas-politicas investigation session conducted in March 2026. Over the course of this session, the Office of Accountability platform mapped 40 years of Argentine power structures (1983-2026) into a fully connected graph database, producing the most comprehensive open-source cross-reference of Argentine political finance ever assembled.
+This document is the definitive record of the finanzas-politicas investigation session conducted in March 2026. Over the course of this session, the Office of Accountability platform mapped 40 years of Argentine power structures (1983-2026) into a fully connected graph database, producing the most thorough open-source cross-reference of Argentine political finance ever assembled.
 
 ### Session by the Numbers
 

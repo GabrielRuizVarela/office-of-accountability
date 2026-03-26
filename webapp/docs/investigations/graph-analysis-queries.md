@@ -334,7 +334,7 @@ LIMIT 20
 
 ## Query 10: Camano Deep Dive -- Full Career Timeline
 
-**Goal:** Build a comprehensive profile of Graciela Camano, who appears in offshore data AND has 30+ years in Congress.
+**Goal:** Build a full profile of Graciela Camano, who appears in offshore data AND has 30+ years in Congress.
 
 ```cypher
 MATCH (p:Politician {id: "camano-graciela"})
@@ -423,7 +423,7 @@ LIMIT 20
 
 ## Query 12: Ibanez Deep Dive -- Full Profile
 
-**Goal:** Build a comprehensive profile of Maria Cecilia Ibanez, a current La Libertad Avanza legislator linked to offshore entities.
+**Goal:** Build a full profile of Maria Cecilia Ibanez, a current La Libertad Avanza legislator linked to offshore entities.
 
 ```cypher
 MATCH (p:Politician {id: "ibanez-maria-cecilia"})

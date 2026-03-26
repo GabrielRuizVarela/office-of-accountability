@@ -1,4 +1,4 @@
-# Argentine Political Finance Investigation - Comprehensive Summary
+# Argentine Political Finance Investigation - Full Summary
 
 **Date:** 2026-03-19
 **Graph:** 113,283 nodes, 975,909 relationships

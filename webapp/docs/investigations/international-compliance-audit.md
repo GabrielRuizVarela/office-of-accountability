@@ -317,7 +317,7 @@ Every factcheck item includes:
 
 Every timeline event includes a `sources` array with URLs. Every money flow includes `source` and `source_url`. Every actor card includes `source_url`.
 
-**Compliance Status:** PASS - comprehensive source attribution throughout.
+**Compliance Status:** PASS - full source attribution throughout.
 
 ---
 
@@ -342,7 +342,7 @@ Every timeline event includes a `sources` array with URLs. Every money flow incl
 - Legal framework citations are accurate
 - International standards alignment is strong
 - Bilingual coverage (EN/ES) is complete
-- Source attribution is comprehensive
+- Source attribution is thorough
 
 ---
 
@@ -375,7 +375,7 @@ Every timeline event includes a `sources` array with URLs. Every money flow incl
 - Exclusive use of public data sources
 - Appropriate language distinguishing confirmed facts from alleged patterns
 - Adequate legal disclaimers with presumption of innocence
-- Comprehensive bilingual source attribution
+- Full bilingual source attribution
 
 ---
 
