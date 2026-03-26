@@ -12,8 +12,8 @@ import {
 
 const t = {
   badge: {
-    en: 'Data-driven investigation — Office of Accountability',
-    es: 'Investigacion basada en datos — Oficina de Rendicion de Cuentas',
+    en: 'Data-driven investigation - Office of Accountability',
+    es: 'Investigacion basada en datos - Oficina de Rendicion de Cuentas',
   },
   title: {
     en: 'Manuel Adorni Investigation',
@@ -28,8 +28,8 @@ const t = {
     es: 'Resumen Ejecutivo',
   },
   executiveSummaryP1: {
-    en: 'This investigation applies the same cross-referencing methodology used in the Argentine Political Finance case to Manuel Adorni, Presidential Spokesperson under Javier Milei. Thirteen investigation waves — each verified by local AI analysis — systematically build a network graph from public records, YouTube transcripts, court filings, corporate registries, and asset declarations.',
-    es: 'Esta investigacion aplica la misma metodologia de cruce de datos utilizada en el caso de Finanzas Politicas Argentinas a Manuel Adorni, Vocero Presidencial bajo Javier Milei. Trece olas de investigacion — cada una verificada por analisis de IA local — construyen sistematicamente un grafo de redes a partir de registros publicos, transcripciones de YouTube, expedientes judiciales, registros corporativos y declaraciones juradas.',
+    en: 'This investigation applies the same cross-referencing methodology used in the Argentine Political Finance case to Manuel Adorni, Presidential Spokesperson under Javier Milei. Thirteen investigation waves - each verified by local AI analysis - systematically build a network graph from public records, YouTube transcripts, court filings, corporate registries, and asset declarations.',
+    es: 'Esta investigacion aplica la misma metodologia de cruce de datos utilizada en el caso de Finanzas Politicas Argentinas a Manuel Adorni, Vocero Presidencial bajo Javier Milei. Trece olas de investigacion - cada una verificada por analisis de IA local - construyen sistematicamente un grafo de redes a partir de registros publicos, transcripciones de YouTube, expedientes judiciales, registros corporativos y declaraciones juradas.',
   },
   executiveSummaryP2: {
     en: 'The investigation cross-references findings with existing cases (finanzas-politicas, obras-publicas, monopolios, libra) using CUIT/DNI entity resolution to detect shared entities, revolving door patterns, and contractor-donor overlaps across the full accountability database.',
