@@ -108,7 +108,7 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
   { value: '9', label_es: 'Cruces con otras investigaciones', label_en: 'Cross-investigation links', source: 'SAME_ENTITY relationships' },
   { value: '~500%', label_es: 'Aumento patrimonial 2023-2024', label_en: 'Patrimony increase 2023-2024', source: 'DDJJ Oficina Anticorrupcion ($11.6M→$61M→$107.9M)' },
   { value: '$3.65B', label_es: 'Licitacion SMS (competencia simulada)', label_en: 'SMS tender (simulated competition)', source: 'Compr.ar / Boletin Oficial' },
-  { value: '3', label_es: 'Causas judiciales activas', label_en: 'Active judicial cases', source: 'Juzgados Federales Comodoro Py' },
+  { value: '5', label_es: 'Causas judiciales activas', label_en: 'Active judicial cases', source: 'Juzgados Federales + FBI/DOJ + ANDIS' },
   { value: '16', label_es: 'Declaraciones disputadas', label_en: 'Disputed statements', source: 'Chequeado / AFP Factual' },
   { value: '$183B', label_es: 'Concesion Tecnopolis (25 anos ARS)', label_en: 'Tecnopolis concession (25yr ARS)', source: 'AABE Resolucion 98/2025' },
 ]
