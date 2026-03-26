@@ -1,43 +1,36 @@
 'use client'
 
 import Link from 'next/link'
-
 import { useLanguage, type Lang } from '@/lib/language-context'
-import { KeyStats } from '@/components/investigation/KeyStats'
 
 const t = {
-  tagline: {
-    en: 'Daily nuclear risk monitoring — Office of Accountability',
-    es: 'Monitoreo diario de riesgo nuclear — Oficina de Rendicion de Cuentas',
+  badge: {
+    es: 'Monitoreo diario · Oficina de Rendición de Cuentas',
+    en: 'Daily monitoring · Office of Accountability',
   },
   title: {
-    en: 'Global Nuclear Risk Tracker',
-    es: 'Rastreador Global de Riesgo Nuclear',
+    es: 'Riesgo Nuclear Global',
+    en: 'Global Nuclear Risk',
   },
-  desc: {
-    en: 'Real-time monitoring of signals that could indicate escalation of nuclear risk. Tracking military developments, official statements, treaty status, and open-source intelligence across all nuclear-armed states.',
-    es: 'Monitoreo en tiempo real de senales que podrian indicar escalada del riesgo nuclear. Seguimiento de desarrollos militares, declaraciones oficiales, estado de tratados e inteligencia de fuentes abiertas.',
+  hook: {
+    es: 'Monitoreo de señales de escalada nuclear en todos los estados con armas nucleares. Desarrollos militares, declaraciones oficiales, estado de tratados e inteligencia de fuentes abiertas.',
+    en: 'Monitoring nuclear escalation signals across all nuclear-armed states. Military developments, official statements, treaty status, and open-source intelligence.',
   },
-  theaters: { en: 'Theaters', es: 'Teatros' },
-  signals: { en: 'Signals', es: 'Senales' },
-  graph: { en: 'Explore the graph', es: 'Explorar el grafo' },
-  graphDesc: {
-    en: 'Visualize connections between actors, weapons, treaties, and signals',
-    es: 'Visualizar conexiones entre actores, armas, tratados y senales',
+  theatersTitle: {
+    es: 'Teatros activos',
+    en: 'Active theaters',
   },
-  timeline: { en: 'Timeline', es: 'Cronologia' },
-  timelineDesc: {
-    en: 'Chronological view of nuclear escalation signals',
-    es: 'Vista cronologica de senales de escalada nuclear',
+  signals: { en: 'signals', es: 'señales' },
+  severity: { en: 'severity', es: 'severidad' },
+  cta: {
+    es: 'Leer análisis completo',
+    en: 'Read full analysis',
+  },
+  ctaDesc: {
+    es: '7 teatros analizados · 31 fuentes · evaluación de riesgo con metodología publicada',
+    en: '7 theaters analyzed · 31 sources · risk assessment with published methodology',
   },
 } as const
-
-interface TheaterSummary {
-  readonly theater: string
-  readonly signalCount: number
-  readonly avgSeverity: number
-  readonly maxLevel: string
-}
 
 const LEVEL_COLORS: Record<string, string> = {
   critical: 'bg-red-500',
@@ -47,13 +40,63 @@ const LEVEL_COLORS: Record<string, string> = {
   routine: 'bg-green-500',
 }
 
+const LEVEL_DOT: Record<string, string> = {
+  critical: 'bg-red-400',
+  serious: 'bg-orange-400',
+  elevated: 'bg-yellow-400',
+  notable: 'bg-blue-400',
+  routine: 'bg-green-400',
+}
+
+const LEVEL_TEXT: Record<string, string> = {
+  critical: 'text-red-400',
+  serious: 'text-orange-400',
+  elevated: 'text-yellow-400',
+  notable: 'text-blue-400',
+  routine: 'text-green-400',
+}
+
 const LEVEL_LABELS: Record<string, Record<Lang, string>> = {
-  critical: { en: 'Critical', es: 'Critico' },
+  critical: { en: 'Critical', es: 'Crítico' },
   serious: { en: 'Serious', es: 'Serio' },
   elevated: { en: 'Elevated', es: 'Elevado' },
   notable: { en: 'Notable', es: 'Notable' },
   routine: { en: 'Routine', es: 'Rutina' },
 }
+
+interface TheaterSummary {
+  readonly theater: string
+  readonly signalCount: number
+  readonly avgSeverity: number
+  readonly maxLevel: string
+}
+
+const LINKS = [
+  {
+    href: '/caso/riesgo-nuclear/grafo',
+    label: { es: 'Grafo', en: 'Graph' },
+    desc: {
+      es: 'Actores, armas, tratados y señales — mapeados',
+      en: 'Actors, weapons, treaties, and signals — mapped',
+    },
+  },
+  {
+    href: '/caso/riesgo-nuclear/cronologia',
+    label: { es: 'Cronología', en: 'Chronology' },
+    desc: {
+      es: 'Señales de escalada en orden cronológico',
+      en: 'Escalation signals in chronological order',
+    },
+  },
+  {
+    href: '/caso/riesgo-nuclear/evidencia',
+    label: { es: 'Evidencia', en: 'Evidence' },
+    desc: {
+      es: 'Documentos fuente y verificación de señales',
+      en: 'Source documents and signal verification',
+    },
+  },
+]
 
 export function NuclearRiskLanding({
   slug,
@@ -66,74 +109,103 @@ export function NuclearRiskLanding({
 }) {
   const { lang } = useLanguage()
 
+  // Pick 4 key stats for the big numbers
+  const bigStats = stats.slice(0, 4)
+
   return (
-    <div className="space-y-8">
-      {/* Hero */}
-      <header className="space-y-4">
-        <p className="text-sm font-medium tracking-wide text-yellow-400 uppercase">
-          {t.tagline[lang]}
-        </p>
-        <h1 className="text-3xl font-bold text-zinc-100 sm:text-4xl">
-          {t.title[lang]}
-        </h1>
-        <p className="max-w-3xl text-lg text-zinc-400">
-          {t.desc[lang]}
-        </p>
-      </header>
+    <div className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
+      <p className="reveal-on-mount reveal-d1 text-center text-[11px] tracking-[3px] text-yellow-400/80 uppercase">
+        {t.badge[lang]}
+      </p>
 
-      {/* Stats */}
-      <KeyStats stats={stats} />
+      <h1 className="reveal-on-mount reveal-d2 mt-5 text-center font-serif text-4xl font-black leading-tight text-zinc-50 sm:text-5xl lg:text-[48px]">
+        {t.title[lang]}
+      </h1>
 
-      {/* Theater cards */}
-      <section>
-        <h2 className="mb-4 text-xl font-semibold text-zinc-200">
-          {t.theaters[lang]}
+      <p className="reveal-on-mount reveal-d3 mx-auto mt-6 max-w-lg text-center text-base leading-relaxed text-zinc-400 sm:text-lg">
+        {t.hook[lang]}
+      </p>
+
+      <div className="reveal-on-mount reveal-d4 mt-14 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
+        {bigStats.map((stat) => (
+          <div key={stat.label} className="text-center">
+            <p className="font-serif text-3xl font-black text-zinc-50 sm:text-4xl">
+              {stat.value}
+            </p>
+            <p className="mt-1 text-[11px] leading-tight tracking-wide text-zinc-500 uppercase">
+              {stat.label}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div className="reveal-on-mount reveal-d5 mx-auto mt-14 mb-10 border-t border-double border-zinc-700" />
+
+      <div className="reveal-on-mount reveal-d5">
+        <h2 className="mb-6 text-center font-serif text-xl font-bold text-zinc-200 sm:text-2xl">
+          {t.theatersTitle[lang]}
         </h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+        <div className="space-y-0">
           {theaters.map((th) => (
-            <div
-              key={th.theater}
-              className="rounded-lg border border-zinc-700 bg-zinc-800/60 p-4"
-            >
-              <div className="flex items-center justify-between">
-                <h3 className="font-medium text-zinc-200">{th.theater}</h3>
-                <span
-                  className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium text-white ${LEVEL_COLORS[th.maxLevel] ?? 'bg-zinc-600'}`}
-                >
+              <div key={th.theater} className="flex items-center gap-4 border-b border-zinc-800/40 py-4">
+                <span className={`block h-2.5 w-2.5 shrink-0 rounded-full ${LEVEL_DOT[th.maxLevel] ?? 'bg-zinc-500'}`} />
+                <span className="min-w-[140px] font-serif text-base font-bold text-zinc-100 sm:text-lg">
+                  {th.theater}
+                </span>
+                <span className={`text-xs font-semibold uppercase tracking-wider ${LEVEL_TEXT[th.maxLevel] ?? 'text-zinc-500'}`}>
                   {LEVEL_LABELS[th.maxLevel]?.[lang] ?? th.maxLevel}
                 </span>
+                <span className="flex-1" />
+                <span className="text-right text-xs text-zinc-500">
+                  {th.signalCount} {t.signals[lang]} · {t.severity[lang]} {th.avgSeverity}
+                </span>
+                <div className="h-1.5 w-16 shrink-0 overflow-hidden rounded-full bg-zinc-800">
+                  <div
+                    className={`h-full rounded-full ${LEVEL_COLORS[th.maxLevel] ?? 'bg-zinc-500'}`}
+                    style={{ width: `${Math.min(100, th.avgSeverity)}%` }}
+                  />
+                </div>
               </div>
-              <div className="mt-2 text-sm text-zinc-400">
-                {th.signalCount} {t.signals[lang].toLowerCase()} · avg severity {th.avgSeverity}
-              </div>
-              <div className="mt-2 h-2 rounded-full bg-zinc-700">
-                <div
-                  className={`h-2 rounded-full ${LEVEL_COLORS[th.maxLevel] ?? 'bg-zinc-500'}`}
-                  style={{ width: `${Math.min(100, th.avgSeverity)}%` }}
-                />
-              </div>
-            </div>
           ))}
         </div>
-      </section>
+      </div>
 
-      {/* Entry points */}
-      <section className="grid gap-4 sm:grid-cols-2">
-        <Link
-          href={`/caso/${slug}/grafo`}
-          className="rounded-lg border border-zinc-700 bg-zinc-800/60 p-5 transition hover:border-yellow-500/50"
-        >
-          <h3 className="font-semibold text-zinc-200">{t.graph[lang]}</h3>
-          <p className="mt-1 text-sm text-zinc-400">{t.graphDesc[lang]}</p>
-        </Link>
-        <Link
-          href={`/caso/${slug}/cronologia`}
-          className="rounded-lg border border-zinc-700 bg-zinc-800/60 p-5 transition hover:border-yellow-500/50"
-        >
-          <h3 className="font-semibold text-zinc-200">{t.timeline[lang]}</h3>
-          <p className="mt-1 text-sm text-zinc-400">{t.timelineDesc[lang]}</p>
-        </Link>
-      </section>
+      <div className="reveal-on-mount reveal-d6 mx-auto mt-10 mb-10 border-t border-zinc-800/60" />
+
+      <Link
+        href={`/caso/${slug}/resumen`}
+        className="reveal-on-mount reveal-d7 group block py-6 text-center"
+      >
+        <span className="font-serif text-2xl font-bold text-zinc-50 transition-colors group-hover:text-yellow-400 sm:text-3xl">
+          {t.cta[lang]} →
+        </span>
+        <p className="mt-2 text-sm tracking-wide text-zinc-500">
+          {t.ctaDesc[lang]}
+        </p>
+      </Link>
+
+      <div className="reveal-on-mount reveal-d7 mx-auto mt-2 mb-2 border-t border-zinc-800/60" />
+
+      <nav className="reveal-on-mount reveal-d8 mt-8">
+        {LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="group flex items-start gap-4 border-b border-zinc-800/40 py-7 transition-colors hover:border-yellow-500/30"
+            >
+              <span className="mt-2.5 block h-2 w-2 shrink-0 rounded-full bg-yellow-500/50 transition-colors group-hover:bg-yellow-400" />
+              <div>
+                <span className="font-serif text-lg font-bold text-zinc-100 transition-colors group-hover:text-yellow-400 sm:text-xl">
+                  {link.label[lang]}
+                </span>
+                <p className="mt-1 text-sm leading-relaxed text-zinc-500 sm:text-base">
+                  {link.desc[lang]}
+                </p>
+              </div>
+            </Link>
+        ))}
+      </nav>
     </div>
   )
 }

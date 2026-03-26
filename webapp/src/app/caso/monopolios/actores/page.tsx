@@ -42,9 +42,9 @@ export default function ActoresPage() {
         {lang === 'es' ? 'Actores Clave' : 'Key Actors'}
       </h1>
       <p className="mt-2 text-sm text-zinc-400">
-        {ACTORS.length} {lang === 'es'
-          ? 'familias y grupos monopolicos perfilados con empresas, entidades offshore y control sectorial.'
-          : 'monopoly families and groups profiled with companies, offshore entities, and sector control.'}
+        {lang === 'es'
+          ? 'Trece grupos. Sesenta entidades offshore. Todos los gobiernos desde 1989.'
+          : 'Thirteen groups. Sixty offshore entities. Every government since 1989.'}
       </p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2">

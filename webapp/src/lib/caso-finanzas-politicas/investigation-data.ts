@@ -400,9 +400,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'nacion-seguros-monopoly',
     claim_es:
-      'El Decreto 823/2021 firmado por Alberto Fernández obligó a todo el sector público a contratar seguros exclusivamente con Nación Seguros S.A., creando un monopolio que fue explotado por brokers amigos del presidente.',
+      'El Decreto 823/2021 firmado por Alberto Fernández obligó a todo el sector público a contratar seguros exclusivamente con Nación Seguros S.A., creando un monopolio a través del cual brokers con vínculos documentados con el presidente cobraron $3.500M en comisiones.',
     claim_en:
-      'Decree 823/2021 signed by Alberto Fernández mandated all public sector entities to contract insurance exclusively through Nación Seguros S.A., creating a monopoly exploited by brokers close to the president.',
+      'Decree 823/2021 signed by Alberto Fernández mandated all public sector entities to contract insurance exclusively through Nación Seguros S.A., creating a monopoly through which brokers with documented ties to the president collected $3.5B in commissions.',
     status: 'confirmed',
     tier: 1,
     source: 'Infobae / Noticias Argentinas',
@@ -417,18 +417,18 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'plate-revolving-door',
     claim_es:
-      'Guillermo Pedro Plate pasó de ser Vicepresidente de Provincia ART a Superintendente de Seguros, regulando el mismo mercado donde fue ejecutivo. Protege selectivamente a Liderar Seguros (de Franco Ortolano) mientras sanciona a competidores.',
+      'Guillermo Pedro Plate pasó de ser Vicepresidente de Provincia ART a Superintendente de Seguros, regulando el mismo mercado donde fue ejecutivo. Liderar Seguros (Franco Ortolano) fue eximida de inspecciones mientras Boston Seguros, TPC y Orbis fueron sancionadas.',
     claim_en:
-      'Guillermo Pedro Plate went from VP of Provincia ART to Superintendent of Insurance, regulating the same market where he was an executive. He selectively shields Liderar Seguros (Franco Ortolano) while sanctioning competitors.',
+      'Guillermo Pedro Plate went from VP of Provincia ART to Superintendent of Insurance, regulating the same market where he was an executive. Liderar Seguros (Franco Ortolano) was exempt from inspections while Boston Seguros, TPC and Orbis were sanctioned.',
     status: 'confirmed',
     tier: 1,
     source: 'La Letra P',
     source_url:
       'https://www.letrap.com.ar/politica/como-funciona-el-blindaje-oficial-las-aseguradoras-protegidas-el-gobierno-n5416266',
     detail_es:
-      'Plate fue VP de Provincia ART (mayor ART estatal) y asesor del Banco Provincia, luego nombrado Superintendente de Seguros. Medios documentan "blindaje oficial": protege a Liderar Seguros (exenta de inspecciones) y a Libra Seguros (cuyo ex-director legal, Mariano Cúneo Libarona, es ahora Ministro de Justicia, creando "doble blindaje"). Sanciona duramente a Boston Seguros, TPC y Orbis.',
+      'Plate fue VP de Provincia ART (mayor ART estatal) y asesor del Banco Provincia, luego nombrado Superintendente de Seguros. Medios documentan "blindaje oficial": protege a Liderar Seguros (exenta de inspecciones) y a Libra Seguros (cuyo ex-director legal, Mariano Cúneo Libarona, es ahora Ministro de Justicia, creando "doble blindaje"). Sanciona a Boston Seguros, TPC y Orbis.',
     detail_en:
-      'Plate was VP of Provincia ART (largest state workers comp insurer) and Banco Provincia board advisor, then appointed Insurance Superintendent. Media documents "official shielding": shields Liderar Seguros (exempt from inspections) and Libra Seguros (whose ex-legal director, Mariano Cúneo Libarona, is now Justice Minister, creating "double shielding"). Harshly sanctions Boston Seguros, TPC and Orbis.',
+      'Plate was VP of Provincia ART (largest state workers comp insurer) and Banco Provincia board advisor, then appointed Insurance Superintendent. Media documents "official shielding": shields Liderar Seguros (exempt from inspections) and Libra Seguros (whose ex-legal director, Mariano Cúneo Libarona, is now Justice Minister, creating "double shielding"). Sanctions Boston Seguros, TPC and Orbis.',
   },
   // --- Tier 1: Catalán revolving door ---
   {
@@ -1684,9 +1684,9 @@ export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
     title_es: 'Decreto 823/2021: monopolio de seguros estatales',
     title_en: 'Decree 823/2021: state insurance monopoly',
     description_es:
-      'Alberto Fernández firma el Decreto 823/2021 que obliga a todo el sector público nacional a contratar seguros exclusivamente con Nación Seguros S.A. Crea el monopolio que será explotado por brokers cercanos al presidente.',
+      'Alberto Fernández firma el Decreto 823/2021 que obliga a todo el sector público nacional a contratar seguros exclusivamente con Nación Seguros S.A. Crea el monopolio a través del cual brokers con vínculos documentados con el presidente cobraron $3.500M en comisiones.',
     description_en:
-      'Alberto Fernández signs Decree 823/2021 mandating all national public sector entities to contract insurance exclusively through Nación Seguros S.A. Creates the monopoly that would be exploited by brokers close to the president.',
+      'Alberto Fernández signs Decree 823/2021 mandating all national public sector entities to contract insurance exclusively through Nación Seguros S.A. Creates the monopoly through which brokers with documented ties to the president collected $3.5B in commissions.',
     category: 'financial',
     sources: ['https://www.argentina.gob.ar/normativa/nacional/decreto-823-2021-357558'],
   },
@@ -2372,9 +2372,9 @@ export const ACTORS: readonly Actor[] = [
     role_es: 'Superintendente de Seguros — ex VP Provincia ART',
     role_en: 'Insurance Superintendent — former VP Provincia ART',
     description_es:
-      'Pasó de VP de Provincia ART y asesor del Banco Provincia a Superintendente de Seguros, regulando el mercado donde fue ejecutivo. Protege selectivamente a Liderar Seguros y Libra Seguros. Su ex-jefe Juan Pazo (ARCA) rompió relación por el "pacto con Liderar".',
+      'Pasó de VP de Provincia ART y asesor del Banco Provincia a Superintendente de Seguros, regulando el mercado donde fue ejecutivo. Liderar Seguros y Libra Seguros fueron eximidas de inspecciones. Su ex-jefe Juan Pazo (ARCA) rompió relación por el "pacto con Liderar".',
     description_en:
-      'Went from VP of Provincia ART and Banco Provincia board advisor to Insurance Superintendent, regulating the market where he was executive. Selectively shields Liderar and Libra Seguros. Former boss Juan Pazo (ARCA) broke relationship over "Liderar pact".',
+      'Went from VP of Provincia ART and Banco Provincia board advisor to Insurance Superintendent, regulating the market where he was executive. Liderar and Libra Seguros were exempt from inspections. Former boss Juan Pazo (ARCA) broke relationship over "Liderar pact".',
     party: 'PRO / LLA',
     datasets: 4,
     status_es: 'Puerta giratoria — conflicto de interés documentado',

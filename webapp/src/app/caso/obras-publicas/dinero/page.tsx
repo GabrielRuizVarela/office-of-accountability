@@ -76,7 +76,7 @@ export default function DineroPage() {
 
       {/* Total */}
       <div className="mx-auto max-w-sm rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 text-center">
-        <p className="text-3xl font-bold text-amber-400">{formatUSD(totalUsd, lang)}</p>
+        <p className="text-3xl font-bold text-sky-400">{formatUSD(totalUsd, lang)}</p>
         <p className="mt-1 text-xs text-zinc-400">{t.totalTracked[lang]}</p>
         <p className="mt-0.5 text-[10px] text-zinc-600">{t.totalNote[lang]}</p>
       </div>
@@ -111,7 +111,7 @@ export default function DineroPage() {
                 </span>
               </div>
               <div className="flex items-center gap-4 text-right">
-                <span className="text-sm font-bold text-amber-400">
+                <span className="text-sm font-bold text-sky-400">
                   {formatUSD(flow.amount_usd, lang)}
                 </span>
                 <span className="text-xs text-zinc-500">

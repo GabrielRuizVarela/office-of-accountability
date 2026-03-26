@@ -82,8 +82,8 @@ const TITLE: Record<Lang, string> = {
 }
 
 const SUBTITLE: Record<Lang, string> = {
-  en: 'Tracking escalation signals across all theaters with open-source intelligence and AI',
-  es: 'Seguimiento de senales de escalada en todos los teatros con inteligencia de fuentes abiertas e IA',
+  en: 'Monitoring nuclear escalation signals across seven active theaters',
+  es: 'Monitoreo de senales de escalada nuclear en siete teatros activos',
 }
 
 const READING_TIME: Record<Lang, string> = {
@@ -97,13 +97,13 @@ const LAST_UPDATED: Record<Lang, string> = {
 }
 
 const DISCLAIMER: Record<Lang, string> = {
-  en: 'This investigation uses automated analysis supplemented by human review. All data comes from publicly available sources. Signal classification is performed by a local AI model (Qwen 3.5 9B) and factchecked against known entity databases. The scoring model and methodology are open for inspection.',
-  es: 'Esta investigacion utiliza analisis automatizado complementado por revision humana. Todos los datos provienen de fuentes publicamente disponibles. La clasificacion de senales es realizada por un modelo de IA local (Qwen 3.5 9B) y verificada contra bases de datos de entidades conocidas. El modelo de puntuacion y la metodologia estan disponibles para inspeccion.',
+  en: 'This investigation uses automated analysis supplemented by human review. All data comes from publicly available sources. Signal classification is performed by a local LLM and factchecked against known entity databases. The scoring model and methodology are published alongside this investigation.',
+  es: 'Esta investigacion utiliza analisis automatizado complementado por revision humana. Todos los datos provienen de fuentes publicamente disponibles. La clasificacion de senales es realizada por un LLM local y verificada contra bases de datos de entidades conocidas. El modelo de puntuacion y la metodologia se publican junto con esta investigacion.',
 }
 
 const SOURCE_TABLE_INTRO: Record<Lang, string> = {
-  en: 'Full transparency: these are all 31 data sources our pipeline monitors or plans to monitor. Active sources are currently being ingested daily. Planned sources will be integrated in upcoming waves.',
-  es: 'Transparencia total: estas son las 31 fuentes de datos que nuestro pipeline monitorea o planea monitorear. Las fuentes activas se ingestan diariamente. Las fuentes planificadas se integraran en proximas olas.',
+  en: 'These are the 31 data sources our pipeline monitors or plans to monitor. Active sources are currently being ingested daily. Planned sources will be integrated in upcoming waves.',
+  es: 'Estas son las 31 fuentes de datos que nuestro pipeline monitorea o planea monitorear. Las fuentes activas se ingestan diariamente. Las fuentes planificadas se integraran en proximas olas.',
 }
 
 // ---------------------------------------------------------------------------
@@ -150,15 +150,15 @@ const chapters: readonly Chapter[] = [
     paragraphs: {
       en: [
         'This investigation uses an automated pipeline to collect, classify, and analyze nuclear risk signals from open sources. We monitor 31 data sources across three confidence tiers: gold (institutional sources like IAEA [6], CTBTO, NATO), silver (government press offices, policy think tanks, wire services), and bronze (OSINT, flight tracking, seismic data).',
-        'Each signal passes through a four-phase daily pipeline: ingestion from RSS feeds and APIs, cross-referencing to deduplicate and link entities, AI-powered classification using a local Qwen 3.5 9B language model, and risk briefing generation. The AI assigns each signal a severity score (0-100), an escalation level, a theater of conflict, and links to known actors, weapons systems, and treaties.',
+        'Each signal passes through a four-phase daily pipeline: ingestion from RSS feeds and APIs, cross-referencing to deduplicate and link entities, AI-powered classification using a local LLM, and risk briefing generation. The AI assigns each signal a severity score (0-100), an escalation level, a theater of conflict, and links to known actors, weapons systems, and treaties.',
         'Our scoring model weights five factors: source tier reliability (20%), event type severity (30%), actor nuclear status (15%), signal novelty (15%), and multi-source corroboration (20%). The escalation ladder maps scores to five levels: routine (0-20), notable (21-40), elevated (41-60), serious (61-80), and critical (81-100). [7]',
-        'All classification output is factchecked against known entity databases. The AI\u2019s actor references are validated against 14 known nuclear states. Severity scores are cross-checked against escalation levels. Hallucinated entities are rejected and logged. The full methodology and scoring weights are open for inspection.',
+        'All classification output is factchecked against known entity databases. The AI\u2019s actor references are validated against 14 known nuclear states. Severity scores are cross-checked against escalation levels. Hallucinated entities are rejected and logged.',
       ],
       es: [
         'Esta investigacion utiliza un pipeline automatizado para recopilar, clasificar y analizar senales de riesgo nuclear de fuentes abiertas. Monitoreamos 31 fuentes de datos en tres niveles de confianza: oro (fuentes institucionales como OIEA [6], OTPCE, OTAN), plata (oficinas de prensa gubernamentales, think tanks, agencias de noticias) y bronce (OSINT, seguimiento de vuelos, datos sismicos).',
-        'Cada senal pasa por un pipeline diario de cuatro fases: ingestion desde feeds RSS y APIs, referencias cruzadas para deduplicar y vincular entidades, clasificacion con IA usando un modelo de lenguaje local Qwen 3.5 9B, y generacion de informes de riesgo. La IA asigna a cada senal una puntuacion de severidad (0-100), un nivel de escalada, un teatro de conflicto, y vinculos a actores conocidos, sistemas de armas y tratados.',
+        'Cada senal pasa por un pipeline diario de cuatro fases: ingestion desde feeds RSS y APIs, referencias cruzadas para deduplicar y vincular entidades, clasificacion con IA usando un LLM local, y generacion de informes de riesgo. La IA asigna a cada senal una puntuacion de severidad (0-100), un nivel de escalada, un teatro de conflicto, y vinculos a actores conocidos, sistemas de armas y tratados.',
         'Nuestro modelo de puntuacion pondera cinco factores: fiabilidad del nivel de fuente (20%), severidad del tipo de evento (30%), estatus nuclear del actor (15%), novedad de la senal (15%) y corroboracion multi-fuente (20%). La escalera de escalada mapea puntuaciones a cinco niveles: rutina (0-20), notable (21-40), elevado (41-60), serio (61-80) y critico (81-100). [7]',
-        'Toda la salida de clasificacion es verificada contra bases de datos de entidades conocidas. Las referencias de actores de la IA se validan contra 14 estados nucleares conocidos. Las puntuaciones de severidad se cruzan con los niveles de escalada. Las entidades alucinadas son rechazadas y registradas. La metodologia completa y los pesos de puntuacion estan disponibles para inspeccion.',
+        'Toda la salida de clasificacion es verificada contra bases de datos de entidades conocidas. Las referencias de actores de la IA se validan contra 14 estados nucleares conocidos. Las puntuaciones de severidad se cruzan con los niveles de escalada. Las entidades alucinadas son rechazadas y registradas.',
       ],
     },
     pullQuote: {
@@ -300,12 +300,12 @@ const chapters: readonly Chapter[] = [
     paragraphs: {
       en: [
         'This investigation is ongoing. Wave 1 will add 10 additional sources including the UN Security Council, SIPRI yearbook data [24], UK and French defense ministries, and USGS seismic data for cross-referencing with nuclear test monitoring. Wave 2 will integrate government press offices from Russia, China, India, Pakistan, and North Korea.',
-        'We are building automated pattern detection to identify when multiple independent signals converge on the same theater \u2014 a potential indicator of escalation. Daily risk briefings will be generated automatically, with historical trend tracking to identify whether nuclear risk is rising or falling over time.',
+        'The pipeline will flag when multiple independent signals converge on the same theater \u2014 a potential indicator of escalation.',
         'The knowledge graph will be expanded with cross-referencing between signals from different sources about the same event, escalation chains tracking how one development leads to another, and facility-level geospatial analysis. [25]',
       ],
       es: [
         'Esta investigacion esta en curso. La Ola 1 agregara 10 fuentes adicionales incluyendo el Consejo de Seguridad de la ONU, datos del anuario de SIPRI [24], ministerios de defensa del Reino Unido y Francia, y datos sismicos del USGS para referencias cruzadas con el monitoreo de pruebas nucleares. La Ola 2 integrara oficinas de prensa gubernamentales de Rusia, China, India, Pakistan y Corea del Norte.',
-        'Estamos construyendo deteccion automatica de patrones para identificar cuando multiples senales independientes convergen en el mismo teatro \u2014 un indicador potencial de escalada. Los informes de riesgo diarios se generaran automaticamente, con seguimiento historico de tendencias para identificar si el riesgo nuclear esta subiendo o bajando con el tiempo.',
+        'El pipeline marcara cuando multiples senales independientes converjan en el mismo teatro \u2014 un indicador potencial de escalada.',
         'El grafo de conocimiento se expandira con referencias cruzadas entre senales de diferentes fuentes sobre el mismo evento, cadenas de escalada que rastrean como un desarrollo lleva a otro, y analisis geoespacial a nivel de instalaciones. [25]',
       ],
     },
@@ -562,8 +562,8 @@ export function NuclearRiskArticle() {
             </h3>
             <div className="mt-3 space-y-3 text-sm text-zinc-300">
               <p>{lang === 'es'
-                ? 'Esta investigación monitorea diariamente señales de escalada nuclear a partir de 31 fuentes OSINT. Agentes autónomos procesan desarrollos militares, declaraciones oficiales, tratados, pruebas de misiles y datos abiertos para evaluar el nivel de riesgo en 7 teatros de operaciones.'
-                : 'This investigation monitors daily nuclear escalation signals from 31 OSINT sources. Autonomous agents process military developments, official statements, treaties, missile tests, and open data to assess risk levels across 7 theaters of operation.'}</p>
+                ? 'Esta investigación monitorea diariamente señales de escalada nuclear a partir de 31 fuentes OSINT. El pipeline procesa desarrollos militares, declaraciones oficiales, tratados, pruebas de misiles y datos abiertos para evaluar el nivel de riesgo en 7 teatros de operaciones.'
+                : 'This investigation monitors daily nuclear escalation signals from 31 OSINT sources. The pipeline processes military developments, official statements, treaties, missile tests, and open data to assess risk levels across 7 theaters of operation.'}</p>
               <p>{lang === 'es'
                 ? 'Cada hallazgo es verificado contra fuentes primarias. La IA detecta patrones; la verificación humana confirma o descarta. Las conclusiones son del lector.'
                 : 'Every finding is verified against primary sources. AI detects patterns; human verification confirms or discards. The conclusions are the reader\'s.'}</p>
@@ -574,20 +574,9 @@ export function NuclearRiskArticle() {
             <h3 className="text-sm font-bold uppercase tracking-wider text-yellow-400">
               {lang === 'es' ? 'Protocolo de Verificación' : 'Verification Protocol'}
             </h3>
-            <ul className="mt-3 space-y-2 text-sm text-zinc-300">
-              <li>{lang === 'es'
-                ? 'Tres niveles de confianza: gold (curado), silver (verificado web), bronze (sin verificar)'
-                : 'Three confidence tiers: gold (curated), silver (web-verified), bronze (unverified)'}</li>
-              <li>{lang === 'es'
-                ? 'Scoring de riesgo por teatro con decaimiento temporal'
-                : 'Risk scoring per theater with time decay'}</li>
-              <li>{lang === 'es'
-                ? '9 estados nucleares monitoreados continuamente'
-                : '9 nuclear states monitored continuously'}</li>
-              <li>{lang === 'es'
-                ? 'Cada señal enlazada a fuente pública verificable'
-                : 'Every signal linked to verifiable public source'}</li>
-            </ul>
+            <p className="mt-3 text-sm text-zinc-300">{lang === 'es'
+                ? 'Las fuentes se clasifican en tres niveles de confianza: gold (curado), silver (verificado web) y bronze (sin verificar). El riesgo se puntua por teatro con decaimiento temporal, monitoreando continuamente 9 estados nucleares. Cada senal esta enlazada a una fuente publica verificable.'
+                : 'Sources are classified into three confidence tiers: gold (curated), silver (web-verified), and bronze (unverified). Risk is scored per theater with time decay, continuously monitoring 9 nuclear states. Every signal is linked to a verifiable public source.'}</p>
           </div>
         </div>
       </section>
@@ -599,14 +588,6 @@ export function NuclearRiskArticle() {
         </p>
       </section>
 
-      {/* Closing */}
-      <div className="mt-8 text-center">
-        <p className="text-sm italic text-zinc-500">
-          {lang === 'es'
-            ? 'La investigación continúa. El grafo crece. Las preguntas permanecen.'
-            : 'The investigation continues. The graph grows. The questions remain.'}
-        </p>
-      </div>
     </article>
   )
 }

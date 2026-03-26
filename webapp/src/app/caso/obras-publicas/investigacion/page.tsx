@@ -1,11 +1,12 @@
 'use client'
 
 /**
- * Caso Libra — Comprehensive bilingual investigation page.
+ * Caso Obras Públicas — Comprehensive bilingual investigation page.
  *
- * Renders a complete, factchecked, sourced investigation of the $LIBRA
- * token scandal with timeline, actor network, money flows, evidence chain,
- * government response tracking, and impact statistics.
+ * Renders a complete, factchecked, sourced investigation of Argentine
+ * public works procurement corruption with timeline, actor network,
+ * money flows, evidence chain, government response tracking, and
+ * impact statistics.
  */
 
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
@@ -224,8 +225,8 @@ export default function InvestigacionPage() {
         </h1>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-400">
           {lang === 'es'
-            ? 'Una investigacion verificada y con fuentes sobre el escandalo del token $LIBRA promovido por el presidente Milei. Cada dato esta respaldado por evidencia on-chain, documentos publicos o reportajes periodisticos.'
-            : 'A verified, sourced investigation into the $LIBRA token scandal promoted by President Milei. Every claim is backed by on-chain evidence, public documents, or journalistic reporting.'}
+            ? 'Una investigacion verificada y con fuentes sobre la corrupcion en contrataciones de obras publicas argentinas. 13.277 contratistas, 7.481 obras en 24 provincias, cruzados con datos de soborno de Odebrecht, Siemens y Cuadernos. Cada dato esta respaldado por registros gubernamentales, expedientes judiciales o reportajes periodisticos.'
+            : 'A verified, sourced investigation into corruption in Argentine public works procurement. 13,277 contractors, 7,481 works across 24 provinces, cross-referenced with Odebrecht, Siemens, and Cuadernos bribery data. Every claim is backed by government records, court filings, or journalistic reporting.'}
         </p>
 
         {/* Impact stats */}
@@ -257,43 +258,37 @@ export default function InvestigacionPage() {
           {lang === 'es' ? (
             <>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                El 14 de febrero de 2025, a las 19:01, el Presidente de Argentina Javier Milei publico en X, Instagram y Facebook la direccion de contrato de un token llamado <strong className="text-zinc-100">$LIBRA</strong>, creado minutos antes en la blockchain de Solana. Con <strong className="text-zinc-100">19 millones de seguidores</strong>, el precio del token se disparo de <strong className="text-zinc-100">$0.000001</strong> a <strong className="text-zinc-100">$5.20</strong> en 40 minutos, alcanzando una capitalizacion de <strong className="text-zinc-100">$4.500 millones</strong>.
+                Entre 2019 y 2021, las obras publicas argentinas saltaron de 149 a 2.740 proyectos — un aumento de 18 veces antes de las elecciones de 2023. Bajo Milei, colapsaron a 18 — una caida del 99%. Esta investigacion rastreo <strong className="text-zinc-100">56.122 entidades</strong> a traves de 7 fuentes de datos gubernamentales, 3 casos internacionales de soborno, y 2 sistemas de contrataciones provinciales.
               </p>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                En las siguientes 3 horas, <strong className="text-zinc-100">8 billeteras</strong> vinculadas a los organizadores extrajeron <strong className="text-zinc-100">$107 millones</strong> en liquidez. El precio colapso un <strong className="text-zinc-100">94%</strong>. Aproximadamente <strong className="text-zinc-100">114.410 billeteras</strong> sufrieron perdidas por un total de <strong className="text-zinc-100">$251 millones</strong>. Solo <strong className="text-zinc-100">36 individuos</strong> obtuvieron ganancias superiores a $1 millon.
+                Mediante el cruce por CUIT, conectamos <strong className="text-zinc-100">13.277 contratistas</strong> con el grafo de finanzas politicas — vinculando contrataciones con donaciones de campana, directivos de empresas, entidades offshore y designaciones gubernamentales. El dataset cubre <strong className="text-zinc-100">7.481 obras</strong> en <strong className="text-zinc-100">24 provincias</strong>, con $703.000 millones ARS congelados en megaproyectos con menos de 10% de ejecucion presupuestaria.
               </p>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                La investigacion revelo que no fue un accidente. Un documento encontrado en el telefono de <strong className="text-zinc-100">Mauricio Novelli</strong>, fechado el 11 de febrero — tres dias antes del lanzamiento — detallaba un acuerdo de <strong className="text-zinc-100">$5 millones</strong> para Milei a cambio de la promocion. Analisis forense del telefono de Novelli registro mas de <strong className="text-zinc-100">30 contactos telefonicos</strong> entre Milei, su hermana <strong className="text-zinc-100">Karina Milei</strong>, su asesor <strong className="text-zinc-100">Santiago Caputo</strong> y Novelli en la noche del lanzamiento. De las <strong className="text-zinc-100">16 reuniones</strong> documentadas entre el presidente y los promotores, solo <strong className="text-zinc-100">4</strong> fueron declaradas oficialmente.
+                Los tres casos internacionales de soborno — <strong className="text-zinc-100">Odebrecht</strong> ($35M en sobornos documentados por el DOJ), <strong className="text-zinc-100">Siemens</strong> ($100M+ via 17 sociedades pantalla offshore), y los <strong className="text-zinc-100">Cuadernos de las Coimas</strong> (87 imputados, evidencia comprometida por adulteraciones confirmadas por pericia de Gendarmeria) — se intersectan con el grafo de obras publicas. SACDE (ex IECSA), la constructora de la familia Macri, aparece en los tres.
               </p>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                Los organizadores, liderados por <strong className="text-zinc-100">Hayden Davis</strong> de <strong className="text-zinc-100">Kelsier Ventures</strong> (la misma empresa vinculada al token $MELANIA), operaron un esquema clasico de pump-and-dump con respaldo presidencial. Bubblemaps confirmo que el <strong className="text-zinc-100">82% del suministro</strong> estaba desbloqueado desde el lanzamiento, concentrado en un unico cluster de billeteras.
+                Lo que revelan los datos no es corrupcion individual sino captura estructural: las mismas empresas ganan contratos sin importar que partido gobierna, las mismas familias controlan tanto los contratistas como los vehiculos offshore, y los organismos reguladores estan integrados por las personas que deberian regular. 3.257 directivos integran los directorios de 2 o mas contratistas del Estado simultaneamente.
               </p>
-              <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                Un año despues, la respuesta del gobierno ha sido sistematica: disolucion de la unidad investigadora (mayo 2025), exoneracion por la Oficina Anticorrupcion (junio 2025), y un proceso judicial que al 14 de febrero de 2026 no habia citado a un solo testigo ni sospechoso. Legisladores opositores han denunciado al fiscal por obstruccion. La comision investigadora del Congreso concluyo que Milei presto &lsquo;colaboracion esencial&rsquo; al esquema y que su conducta es &lsquo;compatible con un presunto fraude&rsquo;.
-              </p>
-              <p className="text-sm leading-relaxed text-zinc-400 italic border-l-2 border-purple-500/50 pl-4">
-                Esta investigacion reune todas las pruebas verificadas de fuentes publicas: analisis blockchain de <strong className="text-zinc-100">Nansen</strong>, <strong className="text-zinc-100">Bubblemaps</strong> y <strong className="text-zinc-100">Lookonchain</strong>; documentos judiciales; informes parlamentarios; y reportajes de <strong className="text-zinc-100">Buenos Aires Herald</strong>, <strong className="text-zinc-100">Bloomberg</strong>, <strong className="text-zinc-100">Financial Times</strong> y otros medios internacionales. Cada dato esta verificado y enlazado a su fuente.
+              <p className="text-sm leading-relaxed text-zinc-400 italic border-l-2 border-sky-500/50 pl-4">
+                Esta investigacion reune evidencia verificada de fuentes publicas: portales de contrataciones gubernamentales (CONTRAT.AR, COMPR.AR, MapaInversiones), expedientes judiciales (DOJ, SEC, CIJ), bases de datos de organismos multilaterales (Banco Mundial, BID), y periodismo investigativo. Cada dato esta verificado y enlazado a su fuente.
               </p>
             </>
           ) : (
             <>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                On February 14, 2025, at 7:01 PM, Argentine President Javier Milei posted on X, Instagram, and Facebook the contract address of a token called <strong className="text-zinc-100">$LIBRA</strong>, created minutes earlier on the Solana blockchain. With <strong className="text-zinc-100">19 million followers</strong>, the token price surged from <strong className="text-zinc-100">$0.000001</strong> to <strong className="text-zinc-100">$5.20</strong> in 40 minutes, reaching a market cap of <strong className="text-zinc-100">$4.5 billion</strong>.
+                Between 2019 and 2021, Argentine public works jumped from 149 to 2,740 projects — an 18-fold increase ahead of the 2023 elections. Under Milei, they collapsed to 18 — a 99% drop. This investigation traced <strong className="text-zinc-100">56,122 entities</strong> across 7 government data sources, 3 international bribery cases, and 2 provincial procurement systems.
               </p>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                Within 3 hours, <strong className="text-zinc-100">8 wallets</strong> linked to the organizers extracted <strong className="text-zinc-100">$107 million</strong> in liquidity. The price crashed <strong className="text-zinc-100">94%</strong>. Approximately <strong className="text-zinc-100">114,410 wallets</strong> suffered losses totaling <strong className="text-zinc-100">$251 million</strong>. Only <strong className="text-zinc-100">36 individuals</strong> made profits exceeding $1 million.
+                Through CUIT tax identification matching, we connected <strong className="text-zinc-100">13,277 contractors</strong> to the political finance graph — linking procurement to campaign donations, corporate officers, offshore entities, and government appointments. The dataset covers <strong className="text-zinc-100">7,481 works</strong> across <strong className="text-zinc-100">24 provinces</strong>, with $703 billion ARS frozen in mega-projects with less than 10% budget execution.
               </p>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                The investigation revealed this was no accident. A document found on <strong className="text-zinc-100">Mauricio Novelli&apos;s</strong> phone, dated February 11 — three days before the launch — detailed a <strong className="text-zinc-100">$5 million agreement</strong> for Milei in exchange for the promotion. Forensic analysis of Novelli&apos;s phone recorded over <strong className="text-zinc-100">30 phone contacts</strong> between Milei, his sister <strong className="text-zinc-100">Karina Milei</strong>, adviser <strong className="text-zinc-100">Santiago Caputo</strong>, and Novelli on the night of the launch. Of the <strong className="text-zinc-100">16 documented meetings</strong> between the president and promoters, only <strong className="text-zinc-100">4</strong> were officially declared.
+                Three international bribery cases — <strong className="text-zinc-100">Odebrecht</strong> ($35M in bribes documented by DOJ), <strong className="text-zinc-100">Siemens</strong> ($100M+ via 17 offshore shell companies), and the <strong className="text-zinc-100">Cuadernos de las Coimas</strong> (87 defendants, evidence compromised by alterations confirmed by Gendarmeria forensic report) — intersect with the public works graph. SACDE (formerly IECSA), the Macri family construction company, appears in all three.
               </p>
               <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                The organizers, led by <strong className="text-zinc-100">Hayden Davis</strong> of <strong className="text-zinc-100">Kelsier Ventures</strong> (the same company linked to the $MELANIA token), operated a classic pump-and-dump scheme with presidential backing. Bubblemaps confirmed that <strong className="text-zinc-100">82% of the supply</strong> was unlocked from launch, concentrated in a single wallet cluster.
+                What the data reveals is not individual corruption but structural capture: the same companies win contracts regardless of which party governs, the same families control both the contractors and the offshore vehicles, and the regulatory bodies are staffed by the people they are supposed to regulate. 3,257 company officers sit on the boards of 2 or more government contractor companies simultaneously.
               </p>
-              <p className="text-sm leading-relaxed text-zinc-300 mb-3">
-                One year later, the government&apos;s response has been systematic: dissolution of the investigation task unit (May 2025), exoneration by the Anti-Corruption Office (June 2025), and a judicial process that by February 14, 2026 had not summoned a single witness or suspect. Opposition lawmakers have filed a complaint against the prosecutor for obstruction. The congressional investigative commission concluded that Milei provided &lsquo;essential collaboration&rsquo; to the scheme and that his conduct is &lsquo;compatible with an alleged fraud.&rsquo;
-              </p>
-              <p className="text-sm leading-relaxed text-zinc-400 italic border-l-2 border-purple-500/50 pl-4">
-                This investigation compiles all verified evidence from public sources: blockchain analysis from <strong className="text-zinc-100">Nansen</strong>, <strong className="text-zinc-100">Bubblemaps</strong>, and <strong className="text-zinc-100">Lookonchain</strong>; court documents; parliamentary reports; and reporting from <strong className="text-zinc-100">Buenos Aires Herald</strong>, <strong className="text-zinc-100">Bloomberg</strong>, <strong className="text-zinc-100">Financial Times</strong> and other international media. Every data point is verified and linked to its source.
+              <p className="text-sm leading-relaxed text-zinc-400 italic border-l-2 border-sky-500/50 pl-4">
+                This investigation compiles verified evidence from public sources: government procurement portals (CONTRAT.AR, COMPR.AR, MapaInversiones), court filings (DOJ, SEC, CIJ), multilateral institution databases (World Bank, IDB), and investigative journalism. Every data point is verified and linked to its source.
               </p>
             </>
           )}
@@ -542,8 +537,8 @@ export default function InvestigacionPage() {
         </h2>
         <p className="mt-1 text-sm text-zinc-400">
           {lang === 'es'
-            ? 'Rastreo de fondos basado en analisis on-chain.'
-            : 'Fund tracing based on on-chain analysis.'}
+            ? 'Rastreo de fondos basado en registros de contrataciones y fuentes judiciales.'
+            : 'Fund tracing based on procurement records and court filings.'}
         </p>
 
         {/* Total extracted highlight */}
@@ -699,8 +694,8 @@ export default function InvestigacionPage() {
         </h2>
         <p className="mt-1 text-sm text-zinc-400">
           {lang === 'es'
-            ? 'Tenes informacion verificable sobre el caso $LIBRA? Envia datos, documentos o conexiones. Todo se revisa antes de publicarse.'
-            : 'Do you have verifiable information about the $LIBRA case? Submit data, documents, or connections. Everything is reviewed before publishing.'}
+            ? 'Tenes informacion verificable sobre contrataciones de obras publicas? Envia datos, documentos o conexiones. Todo se revisa antes de publicarse.'
+            : 'Do you have verifiable information about public works procurement? Submit data, documents, or connections. Everything is reviewed before publishing.'}
         </p>
         <SubmitEvidenceForm lang={lang} />
       </section>
@@ -712,8 +707,8 @@ export default function InvestigacionPage() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm leading-relaxed text-zinc-400">
             {lang === 'es'
-              ? 'Esta investigacion se basa en fuentes publicas verificadas. Los datos on-chain provienen de Nansen, Bubblemaps y Chainalysis. Los documentos judiciales son del Centro de Informacion Judicial (CIJ). El reportaje periodistico fue contrastado con multiples medios.'
-              : 'This investigation is based on verified public sources. On-chain data comes from Nansen, Bubblemaps, and Chainalysis. Court documents are from the Centro de Informacion Judicial (CIJ). Journalistic reporting was cross-referenced with multiple outlets.'}
+              ? 'Esta investigacion se basa en fuentes publicas verificadas. Los datos de contrataciones provienen de CONTRAT.AR, COMPR.AR y MapaInversiones. Los documentos judiciales son del DOJ, SEC y Centro de Informacion Judicial (CIJ). El reportaje periodistico fue contrastado con multiples medios.'
+              : 'This investigation is based on verified public sources. Procurement data comes from CONTRAT.AR, COMPR.AR, and MapaInversiones. Court documents are from DOJ, SEC, and the Centro de Informacion Judicial (CIJ). Journalistic reporting was cross-referenced with multiple outlets.'}
           </p>
           <p className="mt-4 text-xs text-zinc-600">
             {lang === 'es' ? 'Ultima actualizacion' : 'Last updated'}:{' '}
@@ -721,12 +716,12 @@ export default function InvestigacionPage() {
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs text-zinc-600">
             {[
-              { name: 'Nansen', url: 'https://www.nansen.ai/' },
-              { name: 'Bubblemaps', url: 'https://bubblemaps.io/' },
-              { name: 'Chainalysis', url: 'https://www.chainalysis.com/' },
+              { name: 'CONTRAT.AR', url: 'https://infra.datos.gob.ar' },
+              { name: 'COMPR.AR', url: 'https://comprar.gob.ar/' },
+              { name: 'MapaInversiones', url: 'https://www.mapainversiones.mecon.gob.ar/' },
               { name: 'CIJ', url: 'https://www.cij.gov.ar/' },
+              { name: 'DOJ', url: 'https://www.justice.gov/' },
               { name: 'Infobae', url: 'https://www.infobae.com/' },
-              { name: 'Coffeezilla', url: 'https://www.youtube.com/coffeezilla' },
             ].map((src) => (
               <a
                 key={src.name}

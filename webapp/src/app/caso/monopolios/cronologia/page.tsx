@@ -35,8 +35,8 @@ export default function CronologiaPage() {
       </h1>
       <p className="mt-2 text-sm text-zinc-400">
         {lang === 'es'
-          ? 'Desde las privatizaciones de 1989 hasta la desregulacion Milei y la venta de Telefe en 2025.'
-          : 'From the 1989 privatizations through Milei deregulation and the 2025 Telefe sale.'}
+          ? 'Desde las privatizaciones de 1989 hasta la venta de Telefe en 2025. Las mismas familias aparecen en cada punto de inflexión.'
+          : 'From the 1989 privatizations to the 2025 Telefe sale. The same families appear at every turning point.'}
       </p>
       <p className="mt-1 text-xs text-zinc-500">
         {TIMELINE_EVENTS.length} {lang === 'es' ? 'eventos documentados' : 'documented events'}

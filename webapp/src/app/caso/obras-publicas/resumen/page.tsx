@@ -253,7 +253,7 @@ function renderWithCitations(text: string, citations?: readonly Citation[]) {
           target="_blank"
           rel="noopener noreferrer"
           title={citation.text}
-          className="ml-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-500/20 text-[10px] font-bold text-amber-400 no-underline hover:bg-amber-500/30 hover:text-amber-300"
+          className="ml-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full bg-sky-500/20 text-[10px] font-bold text-sky-400 no-underline hover:bg-sky-500/30 hover:text-sky-300"
         >
           {id}
         </a>
@@ -283,7 +283,7 @@ export default function ResumenPage() {
     <article className="mx-auto max-w-3xl px-4 py-12">
       {/* Header */}
       <header className="mb-12 border-b border-zinc-800 pb-10 text-center">
-        <p className="text-xs font-medium uppercase tracking-widest text-amber-400">
+        <p className="text-xs font-medium uppercase tracking-widest text-sky-400">
           {t.headerBadge[lang]}
         </p>
         <h1 className="mt-3 text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
@@ -295,7 +295,7 @@ export default function ResumenPage() {
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
           <Link
             href={`/caso/${SLUG}/investigacion`}
-            className="rounded-lg bg-amber-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-amber-500"
+            className="rounded-lg bg-sky-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-sky-500"
           >
             {t.viewData[lang]}
           </Link>
@@ -312,7 +312,7 @@ export default function ResumenPage() {
       <div className="space-y-12">
         {CHAPTERS.map((chapter) => (
           <section key={chapter.num}>
-            <h2 className="mb-4 border-l-4 border-amber-500 pl-4 text-lg font-bold text-zinc-50">
+            <h2 className="mb-4 border-l-4 border-sky-500 pl-4 text-lg font-bold text-zinc-50">
               {chapter.num}. {chapter.title[lang]}
             </h2>
             {chapter.paragraphs[lang].map((p, i) => (
@@ -336,7 +336,7 @@ export default function ResumenPage() {
                           href={c.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-amber-400/70 underline decoration-amber-400/20 hover:text-amber-300"
+                          className="text-sky-400/70 underline decoration-sky-400/20 hover:text-sky-300"
                         >
                           {c.text}
                         </a>
@@ -354,11 +354,11 @@ export default function ResumenPage() {
 
       {/* Sources */}
       <section className="py-12">
-        <h2 className="border-l-4 border-amber-500 pl-4 text-xl font-bold text-zinc-50">
+        <h2 className="border-l-4 border-sky-500 pl-4 text-xl font-bold text-zinc-50">
           {t.sources[lang]}
         </h2>
         <ul className="mt-6 space-y-2">
-          <li><a href="https://infra.datos.gob.ar" target="_blank" rel="noopener noreferrer" className="text-sm text-amber-400 underline decoration-amber-400/30 hover:text-amber-300">CONTRAT.AR — infra.datos.gob.ar</a></li>
+          <li><a href="https://infra.datos.gob.ar" target="_blank" rel="noopener noreferrer" className="text-sm text-sky-400 underline decoration-sky-400/30 hover:text-sky-300">CONTRAT.AR — infra.datos.gob.ar</a></li>
           <li><span className="text-sm text-zinc-400">COMPR.AR SIPRO</span></li>
           <li><span className="text-sm text-zinc-400">MapaInversiones</span></li>
           <li><span className="text-sm text-zinc-400">Presupuesto Abierto</span></li>
@@ -367,7 +367,7 @@ export default function ResumenPage() {
           <li><span className="text-sm text-zinc-400">CABA BAC_OCDS / Mendoza OCDS</span></li>
           <li><span className="text-sm text-zinc-400">Banco Mundial (Major Contract Awards + debarment lists)</span></li>
           <li><span className="text-sm text-zinc-400">BID (sanciones + proyectos)</span></li>
-          <li><a href="https://www.justice.gov/criminal-fraud/file/1011186/dl" target="_blank" rel="noopener noreferrer" className="text-sm text-amber-400 underline decoration-amber-400/30 hover:text-amber-300">Odebrecht/DOJ plea agreement</a></li>
+          <li><a href="https://www.justice.gov/criminal-fraud/file/1011186/dl" target="_blank" rel="noopener noreferrer" className="text-sm text-sky-400 underline decoration-sky-400/30 hover:text-sky-300">Odebrecht/DOJ plea agreement</a></li>
           <li><span className="text-sm text-zinc-400">Siemens/SEC FCPA settlement</span></li>
           <li><span className="text-sm text-zinc-400">Centro de Información Judicial (causa Cuadernos)</span></li>
           <li><span className="text-sm text-zinc-400">La Nación</span></li>
@@ -376,46 +376,40 @@ export default function ResumenPage() {
 
       {/* Methodology */}
       <section className="py-12">
-        <h2 className="border-l-4 border-amber-500 pl-4 text-xl font-bold text-zinc-50">
+        <h2 className="border-l-4 border-sky-500 pl-4 text-xl font-bold text-zinc-50">
           {lang === 'es' ? 'Metodología' : 'Methodology'}
         </h2>
         <div className="mt-6 space-y-6">
           <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-amber-400">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-sky-400">
               {lang === 'es' ? 'Cómo Se Hizo Esta Investigación' : 'How This Investigation Was Built'}
             </h3>
             <div className="mt-3 space-y-3 text-sm text-zinc-300">
               <p>{lang === 'es'
-                ? 'Esta investigación fue construida mediante inteligencia artificial asistida con verificación humana. 30 olas de enriquecimiento procesaron contratos de obra pública de múltiples fuentes y los cruzaron contra el grafo de finanzas políticas. 56,122 entidades, 7,486 obras y 13,277 cruces documentados.'
-                : 'This investigation was built through AI-assisted intelligence with human verification. 30 enrichment waves processed public works contracts from multiple sources and cross-referenced them against the political finance graph. 56,122 entities, 7,486 works, and 13,277 crosses documented.'}</p>
+                ? 'Esta investigación fue construida mediante procesamiento automatizado con verificación humana. 30 olas de enriquecimiento procesaron contratos de obra pública de múltiples fuentes y los cruzaron contra el grafo de finanzas políticas. 56,122 entidades, 7,486 obras y 13,277 cruces documentados.'
+                : 'This investigation was built through automated processing with human verification. 30 enrichment waves processed public works contracts from multiple sources and cross-referenced them against the political finance graph. 56,122 entities, 7,486 works, and 13,277 crosses documented.'}</p>
               <p>{lang === 'es'
-                ? 'Cada hallazgo fue verificado contra fuentes primarias. La IA detecta patrones; la verificación humana confirma o descarta. Las conclusiones son del lector.'
-                : 'Every finding was verified against primary sources. AI detects patterns; human verification confirms or discards. The conclusions are the reader\'s.'}</p>
+                ? 'Cada hallazgo fue verificado contra fuentes primarias. El LLM detecta patrones; la verificacion humana confirma o descarta. Las conclusiones son del lector.'
+                : 'Every finding was verified against primary sources. The LLM detects patterns; human verification confirms or discards. The conclusions are the reader\'s.'}</p>
             </div>
           </div>
 
           <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-amber-400">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-sky-400">
               {lang === 'es' ? 'Protocolo de Verificación' : 'Verification Protocol'}
             </h3>
-            <ul className="mt-3 space-y-2 text-sm text-zinc-300">
-              <li>{lang === 'es'
-                ? 'Tres niveles de confianza: gold (curado), silver (verificado web), bronze (sin verificar)'
-                : 'Three confidence tiers: gold (curated), silver (web-verified), bronze (unverified)'}</li>
-              <li>{lang === 'es'
-                ? 'Cada hallazgo enlazado a fuente pública verificable'
-                : 'Every finding linked to verifiable public source'}</li>
-              <li>{lang === 'es'
-                ? '13,277 cruces contra el grafo de finanzas políticas verificados por motor de resolución de entidades'
-                : '13,277 crosses against the political finance graph verified by entity resolution engine'}</li>
-              <li>{lang === 'es'
-                ? 'La inclusión no implica culpabilidad. Donde se indica "presunto", la conexión no ha sido verificada independientemente.'
-                : 'Inclusion does not imply guilt. Where "alleged" is indicated, the connection has not been independently verified.'}</li>
-            </ul>
+            <div className="mt-3 space-y-3 text-sm text-zinc-300">
+              <p>{lang === 'es'
+                ? 'Todos los hallazgos se clasifican en tres niveles de confianza: gold (curado manualmente), silver (verificado contra fuentes web), y bronze (sin verificar). Cada hallazgo esta enlazado a una fuente publica verificable.'
+                : 'All findings are classified into three confidence tiers: gold (manually curated), silver (web-verified), and bronze (unverified). Every finding is linked to a verifiable public source.'}</p>
+              <p>{lang === 'es'
+                ? 'Los 13,277 cruces contra el grafo de finanzas politicas fueron verificados por el motor de resolucion de entidades mediante CUIT. La inclusion de una persona o empresa no implica culpabilidad. Donde se indica "presunto", la conexion no ha sido verificada independientemente.'
+                : 'The 13,277 crosses against the political finance graph were verified by the entity resolution engine via CUIT matching. Inclusion of a person or company does not imply guilt. Where "alleged" is indicated, the connection has not been independently verified.'}</p>
+            </div>
           </div>
 
           <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-amber-400">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-sky-400">
               {lang === 'es' ? 'Fuentes de Datos (13 pipelines)' : 'Data Sources (13 pipelines)'}
             </h3>
             <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-zinc-400">
@@ -445,13 +439,6 @@ export default function ResumenPage() {
       </section>
 
       {/* Closing */}
-      <div className="mt-8 text-center">
-        <p className="text-sm italic text-zinc-500">
-          {lang === 'es'
-            ? 'La investigación continúa. El grafo crece. Las preguntas permanecen.'
-            : 'The investigation continues. The graph grows. The questions remain.'}
-        </p>
-      </div>
     </article>
   )
 }

@@ -17,8 +17,8 @@ const SLUG = 'obras-publicas'
 const t = {
   title: { en: 'Geographic Map', es: 'Mapa Geografico' },
   subtitle: {
-    en: '7,455 public works across 24 provinces. 194 with GPS coordinates. Hover for details.',
-    es: '7.455 obras publicas en 24 provincias. 194 con coordenadas GPS. Pase el cursor para detalles.',
+    en: '7,455 public works across 24 provinces. 194 with GPS coordinates.',
+    es: '7.455 obras publicas en 24 provincias. 194 con coordenadas GPS.',
   },
   loading: { en: 'Loading map data...', es: 'Cargando datos del mapa...' },
   error: { en: 'Could not load map data', es: 'No se pudieron cargar los datos del mapa' },
@@ -339,7 +339,7 @@ export default function MapaPage() {
                     {hoveredPoint.status}
                   </p>
                   {hoveredPoint.contractor && (
-                    <p className="mt-1 text-xs text-amber-400">
+                    <p className="mt-1 text-xs text-sky-400">
                       Contratista: {hoveredPoint.contractor}
                     </p>
                   )}
@@ -406,7 +406,7 @@ export default function MapaPage() {
                         </td>
                         <td className="px-4 py-2.5">
                           <div className="h-2 w-24 overflow-hidden rounded-full bg-zinc-800">
-                            <div className="h-full rounded-full bg-amber-500/70" style={{ width: `${intensity}%` }} />
+                            <div className="h-full rounded-full bg-sky-500/70" style={{ width: `${intensity}%` }} />
                           </div>
                         </td>
                       </tr>

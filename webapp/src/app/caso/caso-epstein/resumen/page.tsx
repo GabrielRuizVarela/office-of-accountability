@@ -85,7 +85,7 @@ const CHAPTERS: {
     title: 'The Machine',
     paragraphs: [
       'Jeffrey Epstein built a trafficking operation that masqueraded as a legitimate financial advisory business. At its peak between 2000 and 2005, his planes flew 264 times in a single year, shuttling between a triangle of properties — the Palm Beach mansion, the Manhattan townhouse, and Little St. James Island in the US Virgin Islands. The Boeing 727 "Lolita Express" (N908JE) made 939 documented flights. [1] Two Gulfstream jets added another 1,300.',
-      'The operation was not a one-man show. The graph identifies 5 principals with FACILITATED_ABUSE relationships: Epstein (1,345 connections), Ghislaine Maxwell (685), Sarah Kellen (211), Jean-Luc Brunel (59), and Virginia Giuffre (57, who was both victim and, under coercion, facilitator). [2] Below them, a staff of pilots, schedulers, and property managers kept the infrastructure running.',
+      'The graph identifies 5 principals with FACILITATED_ABUSE relationships: Epstein (1,345 connections), Ghislaine Maxwell (685), Sarah Kellen (211), Jean-Luc Brunel (59), and Virginia Giuffre (57, who was both victim and, under coercion, facilitator). [2]',
     ],
     citations: [
       { id: 1, text: 'FAA flight records compiled from pilot logbooks (rhowardstone/Epstein-research-data)', url: 'https://github.com/rhowardstone/Epstein-research-data' },
@@ -96,7 +96,7 @@ const CHAPTERS: {
     num: 'II',
     title: 'The Money',
     paragraphs: [
-      'The financial architecture was designed to obscure. Epstein controlled 9+ shell companies — Great St. Jim LLC, Plan D LLC, Hyperion Air Inc/LLC, JSC Interiors LLC, Financial Strategy Group Ltd, Southern Trust Company — each serving a specific function. Behind these sat 4 trust firewalls: the 1953 Trust (signed 2 days before his death, $577M+), the Insurance Trust, the Caterpillar Trust (where Epstein was simultaneously grantor AND beneficiary), and the Haze Trust ($49.5M at Deutsche Bank for Leon Black art deals).',
+      'The financial architecture was designed to obscure. Epstein controlled 9+ shell companies — Great St. Jim LLC, Plan D LLC, Hyperion Air Inc/LLC, JSC Interiors LLC, Financial Strategy Group Ltd, Southern Trust Company — each serving a specific function. Behind these sat 4 trust structures: the 1953 Trust (signed 2 days before his death, $577M+), the Insurance Trust, the Caterpillar Trust (where Epstein was simultaneously grantor AND beneficiary), and the Haze Trust ($49.5M at Deutsche Bank for Leon Black art deals).',
       'According to Congressional testimony, Leslie Wexner transferred approximately $1 billion through a sweeping power of attorney (1987-2007). [1] Wexner has stated he was deceived by Epstein and severed ties in 2007. Leon Black of Apollo Global Management paid $170 million in bidirectional "financial advice" fees — the Senate Finance Committee found this money was "used to finance trafficking operations." [2] Black denied knowledge of any trafficking. Neither Wexner nor Black has been charged. Deutsche Bank and JPMorgan Chase settled for a combined $365 million. [3]',
       'The single most important forensic target is Darren K. Indyke — Epstein\'s personal lawyer who appears across the Insurance Trust, Caterpillar Trust 2, Deutsche Bank, AND Hyperion Air. He had 17 graph connections and controlled the estate documents. Richard D. Kahn, the accountant and estate co-executor, had 16 verified communication partners including Bill Clinton, Noam Chomsky, and Marvin Minsky.',
     ],
@@ -187,7 +187,7 @@ const CHAPTERS: {
     num: 'IX',
     title: 'The Abuse Chains — Documented Victims and Financiers',
     paragraphs: [
-      'The most complete documented abuse chain runs from Virginia Giuffre. Ghislaine Maxwell recruited Giuffre from Mar-a-Lago, trained her as a "masseuse," arranged her as a gift to Prince Andrew. [1] Glenn Dubin — triple-layer node: paid Epstein $15M as a financial broker, named Epstein godfather to his daughter, and Giuffre named him in sworn testimony as an abuser.',
+      'The most complete documented abuse chain runs from Virginia Giuffre. Ghislaine Maxwell recruited Giuffre from Mar-a-Lago, trained her as a "masseuse," arranged her as a gift to Prince Andrew. [1] Glenn Dubin — simultaneously financial broker ($15M paid to Epstein), personal associate (named Epstein godfather to his daughter), and accused abuser (named by Giuffre in sworn testimony).',
       'Jes Staley — former JPMorgan executive who managed the Epstein account — sent 1,100 emails and, according to regulatory findings, visited the island in 2009 while Epstein was serving his sentence; the FCA permanently banned him from banking in 2025. [2] Leon Black — paid $170M in advisory fees; the Senate Finance Committee found the money "financed trafficking operations." Black denied knowledge of any trafficking and has not been charged. Leslie Wexner — transferred approximately $1B according to Congressional testimony; confirmed visiting Little St. James in his 2026 Congressional deposition. Wexner has stated he was a victim of Epstein\'s deception.',
     ],
     citations: [
@@ -212,7 +212,7 @@ const CHAPTERS: {
     title: 'The Reckoning',
     paragraphs: [
       'Document unsealing (January 2024). Epstein Files Transparency Act (November 2025). [1] DOJ releases totaling 3.5 million pages. Prince Andrew arrested (February 2026). Peter Mandelson arrested. Thorbjorn Jagland charged with aggravated corruption. Financial settlements exceeding $470 million.',
-      'Virginia Giuffre, the most prominent accuser, died by suicide on April 25, 2025, at age 41. [2] She had achieved more systemic change than the entire justice system combined: NDA reform, statute of limitations tolling, mandatory victim impact statements, and corporate due diligence overhaul.',
+      'Virginia Giuffre, the most prominent accuser, died by suicide on April 25, 2025, at age 41. [2] Her lawsuits produced NDA reform, statute of limitations tolling, mandatory victim impact statements, and corporate due diligence overhaul.',
     ],
     citations: [
       { id: 1, text: 'U.S. Congress — Epstein Files Transparency Act, S.4132 / H.R.9081 (signed November 2025)' },
@@ -236,7 +236,7 @@ const CHAPTERS: {
     title: 'What Remains',
     paragraphs: [
       '7,258 connected nodes. 10,916 edges. 4,153 flights. 367 verified persons. 1,044 documents. 9 shell companies mapped. 15 documented victim relationships. [1] But: 99.6% of flights lack passenger names. The Insurance Trust and Caterpillar Trust have never been forensically audited. The "Caterpillar Trust 2" implies a predecessor trust that has never been located. The CIA\'s Glomar response is unresolved. Darren K. Indyke\'s financial records — connecting Deutsche Bank, Insurance Trust, and Caterpillar Trust 2 — remain the single key that would unravel the architecture.',
-      'Network analysis identified Boris Nikolic as the most structurally significant bridge node: he connects four otherwise-separate clusters — tech (Gates, Kimbal Musk), politics (Ehud Barak), trafficking operations (Jean-Luc Brunel), and financial management (Richard Kahn, Lesley Groff). Named backup executor in Epstein\'s will two days before his death. Never deposed or charged. [2] The Korshunova-Zinoviev-Kellen triangle — linking a model who died in 2008 (ruled suicide) to an MMA fighter who flew with both VIPs and young women — remains uninvestigated. Andrea Mitrovich, with 54 co-flyers including Clinton, Spacey, and Secret Service, appears more frequently than most named associates yet is rarely mentioned in reporting. The investigation continues.',
+      'Network analysis identified Boris Nikolic as the most structurally significant bridge node: he connects four otherwise-separate clusters — tech (Gates, Kimbal Musk), politics (Ehud Barak), trafficking operations (Jean-Luc Brunel), and financial management (Richard Kahn, Lesley Groff). Named backup executor in Epstein\'s will two days before his death. Never deposed or charged. [2] The Korshunova-Zinoviev-Kellen triangle — linking a model who died in 2008 (ruled suicide) to an MMA fighter who flew with both VIPs and young women — remains uninvestigated. Andrea Mitrovich, with 54 co-flyers including Clinton, Spacey, and Secret Service, appears more frequently than most named associates yet is rarely mentioned in reporting.',
     ],
     citations: [
       { id: 1, text: 'Office of Accountability — Neo4j knowledge graph statistics, caso-epstein dataset (2026)' },
@@ -345,11 +345,11 @@ export default function ResumenPage() {
             </h3>
             <div className="mt-3 space-y-3 text-sm text-zinc-300">
               <p>{lang === 'es'
-                ? 'Esta investigación fue construida mediante inteligencia artificial asistida con verificación humana. Agentes autónomos procesaron registros de vuelo, documentos judiciales, testimonios y datos de red para construir un grafo de 7,276 entidades y 11,040 relaciones.'
-                : 'This investigation was built through AI-assisted intelligence with human verification. Autonomous agents processed flight logs, court documents, testimonies, and network data to build a graph of 7,276 entities and 11,040 relationships.'}</p>
+                ? 'Esta investigación fue construida mediante inteligencia artificial asistida con verificación humana. Pipelines de procesamiento automatizado procesaron registros de vuelo, documentos judiciales, testimonios y datos de red para construir un grafo de 7,276 entidades y 11,040 relaciones.'
+                : 'This investigation was built through AI-assisted intelligence with human verification. Automated pipelines processed flight logs, court documents, testimonies, and network data to build a graph of 7,276 entities and 11,040 relationships.'}</p>
               <p>{lang === 'es'
-                ? 'Cada hallazgo fue verificado contra fuentes primarias antes de ser incluido. La tecnología detecta patrones; la verificación humana confirma o descarta.'
-                : 'Every finding was verified against primary sources before inclusion. Technology detects patterns; human verification confirms or discards.'}</p>
+                ? 'Cada hallazgo fue verificado contra fuentes primarias antes de ser incluido. Los registros de vuelo, documentos judiciales, testimonios y datos de red fueron procesados mediante resolución automatizada de entidades y verificados contra fuentes primarias.'
+                : 'Every finding was verified against primary sources before inclusion. Flight logs, court documents, testimonies, and network data were processed through automated entity resolution and verified against primary sources.'}</p>
             </div>
           </div>
 
@@ -386,7 +386,7 @@ export default function ResumenPage() {
               <span>Palm Beach PD evidence</span>
               <span>FCA records</span>
               <span>Neo4j graph database</span>
-              <span>Claude + Qwen 3.5 9B (local GPU)</span>
+              <span>Claude + LLM (local GPU)</span>
               <span>Web-verified research</span>
             </div>
           </div>
@@ -401,13 +401,6 @@ export default function ResumenPage() {
       </section>
 
       {/* Closing */}
-      <div className="mt-8 text-center">
-        <p className="text-sm italic text-zinc-500">
-          {lang === 'es'
-            ? 'La investigación continúa. El grafo crece. Las preguntas permanecen.'
-            : 'The investigation continues. The graph grows. The questions remain.'}
-        </p>
-      </div>
     </article>
   )
 }

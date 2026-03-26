@@ -29,9 +29,9 @@ export const nuclearActors: NuclearActor[] = [
     actor_type: 'state',
     nuclear_status: 'armed',
     description_en:
-      'Largest nuclear arsenal alongside Russia; maintains a triad of ICBMs, SLBMs, and strategic bombers.',
+      'Maintains approximately 5,044 warheads (FAS 2025) alongside Russia; operates a triad of ICBMs, SLBMs, and strategic bombers.',
     description_es:
-      'Mayor arsenal nuclear junto con Rusia; mantiene una triada de ICBMs, SLBMs y bombarderos estrategicos.',
+      'Mantiene aproximadamente 5.044 ojivas (FAS 2025) junto con Rusia; opera una triada de ICBMs, SLBMs y bombarderos estrategicos.',
   },
   {
     id: 'russia',
@@ -51,9 +51,9 @@ export const nuclearActors: NuclearActor[] = [
     actor_type: 'state',
     nuclear_status: 'armed',
     description_en:
-      'Rapidly expanding nuclear arsenal with new silo fields, MIRVed ICBMs, and sea-based deterrent capabilities.',
+      'Arsenal grew from ~200 to 600+ warheads (2020-2025) with new silo fields, MIRVed ICBMs, and sea-based deterrent capabilities.',
     description_es:
-      'Arsenal nuclear en rapida expansion con nuevos campos de silos, ICBMs con MIRV y capacidades de disuasion maritima.',
+      'Arsenal crecio de ~200 a 600+ ojivas (2020-2025) con nuevos campos de silos, ICBMs con MIRV y capacidades de disuasion maritima.',
   },
   {
     id: 'uk',
@@ -95,9 +95,9 @@ export const nuclearActors: NuclearActor[] = [
     actor_type: 'state',
     nuclear_status: 'armed',
     description_en:
-      'Fastest-growing nuclear arsenal; focuses on tactical and strategic weapons to counter Indian conventional superiority.',
+      'Arsenal expanding; focused on tactical and strategic weapons to counter Indian conventional superiority.',
     description_es:
-      'Arsenal nuclear de mas rapido crecimiento; se centra en armas tacticas y estrategicas para contrarrestar la superioridad convencional india.',
+      'Arsenal en expansion; enfocado en armas tacticas y estrategicas para contrarrestar la superioridad convencional india.',
   },
   {
     id: 'israel',
@@ -106,9 +106,9 @@ export const nuclearActors: NuclearActor[] = [
     actor_type: 'state',
     nuclear_status: 'armed',
     description_en:
-      'Maintains a policy of nuclear ambiguity; widely assessed to possess a significant undeclared arsenal.',
+      'Maintains a policy of nuclear ambiguity; widely assessed to possess 80-90 warheads (SIPRI est.).',
     description_es:
-      'Mantiene una politica de ambiguedad nuclear; ampliamente evaluado como poseedor de un arsenal significativo no declarado.',
+      'Mantiene una politica de ambiguedad nuclear; ampliamente evaluado como poseedor de 80-90 ojivas (est. SIPRI).',
   },
   {
     id: 'north-korea',
@@ -130,9 +130,9 @@ export const nuclearActors: NuclearActor[] = [
     actor_type: 'state',
     nuclear_status: 'threshold',
     description_en:
-      'Advanced enrichment capability; JCPOA suspension has allowed stockpile growth near weapons-grade levels.',
+      'Enrichment capability up to 60% U-235; stockpile of 440.9 kg near weapons-grade. JCPOA suspension has allowed continued growth.',
     description_es:
-      'Capacidad avanzada de enriquecimiento; la suspension del JCPOA ha permitido el crecimiento del inventario cerca de niveles de grado militar.',
+      'Capacidad de enriquecimiento hasta 60% U-235; inventario de 440,9 kg cerca de grado armamentistico. La suspension del JCPOA ha permitido el crecimiento continuo.',
   },
   {
     id: 'saudi-arabia',

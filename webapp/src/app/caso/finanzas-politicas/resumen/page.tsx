@@ -50,8 +50,8 @@ const TITLE: Record<Lang, string> = {
 }
 
 const SUBTITLE: Record<Lang, string> = {
-  es: 'Diecisiete capitulos sobre como nueve bases de datos publicas revelan las conexiones entre el cargo publico, los directorios corporativos, las sociedades offshore, el financiamiento de campañas, las armas financieras, el escandalo de los seguros, la puerta giratoria, el poder judicial, la riqueza inexplicable, el imperio Macri, el cartel de la salud, la concentracion de exfuncionarios de JP Morgan en el gabinete, y el cruce CUIT/DNI que conecto 34.776 entidades',
-  en: 'Seventeen chapters on how nine public datasets reveal the connections between public office, corporate boards, offshore entities, campaign financing, financial arms, the insurance scandal, the revolving door, the judiciary, unexplained wealth, the Macri empire, the health cartel, the concentration of former JP Morgan officials in the cabinet, and the CUIT/DNI cross-match that connected 34,776 entities',
+  es: 'Nueve bases de datos públicas. 34.776 identidades cruzadas. Cuarenta años de democracia.',
+  en: 'Nine public databases. 34,776 identities cross-referenced. Forty years of democracy.',
 }
 
 const READING_TIME: Record<Lang, string> = {
@@ -65,8 +65,8 @@ const LAST_UPDATED: Record<Lang, string> = {
 }
 
 const COMPILED_FROM: Record<Lang, string> = {
-  es: 'Investigacion asistida por inteligencia artificial con verificacion humana. 14 fuentes de datos publicos procesadas por mas de 100 agentes autonomos en un grafo Neo4j de 294 nodos y 2.391 aristas. Cada hallazgo fue verificado contra fuentes primarias. La IA no acusa: revela patrones. Las conclusiones son del lector.',
-  en: 'AI-assisted investigation with human verification. 14 public data sources processed by over 100 autonomous agents into a Neo4j graph of 294 nodes and 2,391 edges. Every finding was verified against primary sources. The AI does not accuse: it reveals patterns. The conclusions are the reader\'s.',
+  es: 'Procesamiento asistido por LLM con verificación humana. 14 fuentes de datos públicos. Grafo Neo4j de 294 nodos y 2.391 aristas. Cada hallazgo fue verificado contra fuentes primarias. La IA no acusa: revela patrones. Las conclusiones son del lector.',
+  en: 'LLM-assisted processing with human verification. 14 public data sources. Neo4j graph of 294 nodes and 2,391 edges. Every finding was verified against primary sources. The AI does not accuse: it reveals patterns. The conclusions are the reader\'s.',
 }
 
 // ---------------------------------------------------------------------------
@@ -85,20 +85,20 @@ const chapters: readonly Chapter[] = [
         'En diciembre de 2024, el senador entrerriano Edgardo Kueider fue detenido intentando cruzar a Paraguay con USD 211.000 en efectivo no declarado.',
         'Meses antes, Kueider habia emitido uno de los 36 votos afirmativos que aprobaron la Ley de Bases — la legislacion de desregulacion economica mas importante del gobierno de Milei. El desempate lo resolvio la vicepresidenta Villarruel. Sin ese voto, la ley no existiria.',
         'Lo que la justicia encontro despues dibujo el circuito completo: dos empresas fantasma — BETAIL SA y EDEKOM SA — registradas en la IGJ con domicilios legales falsos. Departamentos de lujo en Parana adquiridos a traves de esas pantallas. En marzo de 2025, siete testaferros arrestados. En los allanamientos, videos de Kueider manipulando fajos de billetes en efectivo. Fue expulsado del Senado.',
-        'Kueider no es una anomalia. Es un sintoma.',
-        'Esta investigacion cruzo catorce fuentes de datos publicos — votos legislativos, filtraciones offshore, donaciones de campana, nombramientos del Boletin Oficial, registros corporativos de la IGJ, directivos de la CNV, declaraciones juradas patrimoniales, contratos de Compr.ar, datos del BCRA, sanciones internacionales, registros de propiedad intelectual de medios, y la base del Registro Nacional de Sociedades — y construyo un grafo de 294 nodos y 2.391 aristas que mapea 126 personas a lo largo de 40 anos de democracia. Mas de cien agentes autonomos procesaron los cruces. El resultado: seis familias que adquirieron activos del Estado hace 35 anos siguen controlando las mismas concesiones. Un ministro que emite un bono lo compra a traves de su fondo offshore no declarado. 247 donantes de campana resultan ser directivos de empresas que reciben $63.000 millones en contratos. Y los medios que deberian investigar todo esto son propiedad de las mismas familias que lo protagonizan.',
+        'El patron que rodea a Kueider aparece en multiples casos documentados a lo largo de esta investigacion.',
+        'Esta investigacion cruzo catorce fuentes de datos publicos — votos legislativos, filtraciones offshore, donaciones de campana, nombramientos del Boletin Oficial, registros corporativos de la IGJ, directivos de la CNV, declaraciones juradas patrimoniales, contratos de Compr.ar, datos del BCRA, sanciones internacionales, registros de propiedad intelectual de medios, y la base del Registro Nacional de Sociedades — y construyo un grafo de 294 nodos y 2.391 aristas que mapea 126 personas a lo largo de 40 anos de democracia. Mas de cien agentes autonomos procesaron los cruces. El resultado: seis familias que adquirieron activos del Estado hace 35 anos siguen controlando las mismas concesiones. Un ministro que emite un bono lo compra a traves de su fondo offshore no declarado. 247 donantes de campana resultan ser directivos de empresas que reciben $63.000 millones en contratos. Los cuatro principales grupos mediáticos son propiedad de familias que aparecen en los mismos datasets.',
       ],
       en: [
         'In December 2024, Senator Edgardo Kueider from Entre Rios was detained while trying to cross into Paraguay carrying USD 211,000 in undeclared cash.',
         'Months earlier, Kueider had cast one of 36 affirmative votes that approved the Ley de Bases — the Milei government\'s most significant economic deregulation legislation. Vice President Villarruel broke the tie. Without that vote, the law would not exist.',
         'What prosecutors found afterward drew the complete circuit: two shell companies — BETAIL SA and EDEKOM SA — registered at the IGJ with fake legal addresses. Luxury apartments in Parana acquired through those fronts. In March 2025, seven front men arrested. During raids, videos of Kueider handling stacks of cash. He was expelled from the Senate.',
-        'Kueider is not an anomaly. He is a symptom.',
-        'This investigation cross-referenced fourteen public data sources — legislative votes (Como Voto, 33 years), ICIJ offshore leaks (Panama/Pandora Papers), campaign donations (CNE), Boletin Oficial appointments, IGJ corporate registry (951,000 officers), CNV board members, asset declarations (DDJJ), Compr.ar procurement contracts, BCRA Central de Deudores, OpenSanctions (PEP/Interpol), Registro Nacional de Sociedades, media ownership records, CAMMESA energy data, and INDEC trade statistics — and built a graph of 294 nodes and 2,391 edges tracking 126 persons across 40 years of democracy. Over one hundred autonomous agents processed the cross-references. The result: six families that acquired state assets 35 years ago still control the same concessions. A minister who issues a bond buys it through his undeclared offshore fund. 247 campaign donors turn out to be officers of companies receiving $63 billion in contracts. And the media that should investigate all of this is owned by the same families who are its protagonists.',
+        'The pattern surrounding Kueider appears in multiple documented cases throughout this investigation.',
+        'This investigation cross-referenced fourteen public data sources — legislative votes (Como Voto, 33 years), ICIJ offshore leaks (Panama/Pandora Papers), campaign donations (CNE), Boletin Oficial appointments, IGJ corporate registry (951,000 officers), CNV board members, asset declarations (DDJJ), Compr.ar procurement contracts, BCRA Central de Deudores, OpenSanctions (PEP/Interpol), Registro Nacional de Sociedades, media ownership records, CAMMESA energy data, and INDEC trade statistics — and built a graph of 294 nodes and 2,391 edges tracking 126 persons across 40 years of democracy. Over one hundred autonomous agents processed the cross-references. The result: six families that acquired state assets 35 years ago still control the same concessions. A minister who issues a bond buys it through his undeclared offshore fund. 247 campaign donors turn out to be officers of companies receiving $63 billion in contracts. The four major media groups are owned by families that appear in the same datasets.',
       ],
     },
     pullQuote: {
-      es: 'Kueider no es una anomalia. Es un sintoma.',
-      en: 'Kueider is not an anomaly. He is a symptom.',
+      es: 'El patron que rodea a Kueider aparece en multiples casos documentados a lo largo de esta investigacion.',
+      en: 'The pattern surrounding Kueider appears in multiple documented cases throughout this investigation.',
     },
     citations: [
       { id: 1, text: 'Kueider detenido con USD 211.000 — Infobae', url: 'https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-edgardo-kueider-en-paraguay-llevaba-mas-de-usd-200-mil/' },
@@ -118,7 +118,7 @@ const chapters: readonly Chapter[] = [
         'Las politicas publicas que emergian de PENSAR fluian directamente al Poder Ejecutivo, sin intermediacion. Los mismos miembros del directorio que disenaban las politicas las implementaban desde el gobierno.',
         'El caso de Laura Alonso merece atencion particular. Paso de legisladora a Secretaria de Etica Publica — la funcionaria encargada de supervisar las declaraciones juradas de sus propios excolegas de bancada y correligionarios de PENSAR ARGENTINA. El organismo de control estaba dirigido por alguien del mismo directorio corporativo que los controlados.',
         'Pero la maquina legislativa es mas profunda de lo que sugiere un solo think tank. El motor de analisis proceso 1.839 relaciones VOTED_ON que conectan a 14 personas de la investigacion con 479 leyes a lo largo de 33 anos de datos parlamentarios (1993-2026). Ese tejido de votos revela alianzas que cruzan partidos y decadas. Pichetto — senador peronista que se convirtio en candidato a vicepresidente de Macri — voto a FAVOR de la mayoria de las privatizaciones de los anos noventa. No fue el unico: el grafo muestra que las coaliciones legislativas que aprobaron las reformas estructurales rara vez coincidieron con las etiquetas partidarias.',
-        'De 20 politicos que pasaron del Congreso al Poder Ejecutivo y viceversa, 13 son del espacio PRO. Macri como diputado (2005-2007) tuvo una presencia del 17,6% — entre las mas bajas del dataset. Sin embargo, aparece en 5 datasets simultaneamente, mas que cualquier otro politico. Era el legislador que menos legislaba y el que mas conexiones externas tenia.',
+        'De 20 politicos que pasaron del Congreso al Poder Ejecutivo y viceversa, 13 son del espacio PRO. Macri como diputado (2005-2007) tuvo una presencia del 17,6% — entre las mas bajas del dataset. Sin embargo, aparece en 5 datasets simultaneamente, mas que cualquier otro politico. Su presencia legislativa fue del 17,6%, y sin embargo aparece en 5 datasets — más que cualquier otro político del universo investigado.',
       ],
       en: [
         'To understand how the system works, start with a civil association registered at the General Inspection of Justice (IGJ): PENSAR ARGENTINA.',
@@ -126,7 +126,7 @@ const chapters: readonly Chapter[] = [
         'Public policies emerging from PENSAR flowed directly into the Executive Branch without intermediation. The same board members who designed the policies implemented them from government.',
         'Laura Alonso\'s case deserves particular attention. She went from legislator to Secretary of Public Ethics — the official responsible for overseeing the asset declarations of her own former caucus colleagues and PENSAR ARGENTINA co-directors. The oversight body was run by someone from the same corporate board as those being overseen.',
         'But the legislative machine runs deeper than a single think tank. The analysis engine processed 1,839 VOTED_ON relationships connecting 14 investigation persons to 479 laws across 33 years of parliamentary data (1993-2026). That voting fabric reveals alliances that cross parties and decades. Pichetto — a Peronist senator who became Macri\'s vice-presidential candidate — voted FOR most of the 1990s privatizations. He was not alone: the graph shows that the legislative coalitions that approved structural reforms rarely aligned with party labels.',
-        'Of 20 politicians who moved between Congress and the Executive Branch, 13 were from the PRO party. Macri as a deputy (2005-2007) had a 17.6% attendance rate — among the lowest in the dataset. Yet he appears in 5 datasets simultaneously, more than any other politician. He was the legislator who legislated least and had the most external connections.',
+        'Of 20 politicians who moved between Congress and the Executive Branch, 13 were from the PRO party. Macri as a deputy (2005-2007) had a 17.6% attendance rate — among the lowest in the dataset. Yet he appears in 5 datasets simultaneously, more than any other politician. His legislative attendance was 17.6%, yet he appears in 5 datasets — more than any other politician in the investigation universe.',
       ],
     },
     pullQuote: {
@@ -147,20 +147,20 @@ const chapters: readonly Chapter[] = [
     },
     paragraphs: {
       es: [
-        'Hay un numero que resume cuarenta anos de fracaso economico argentino: USD 483.000 millones. Es el stock estimado de activos argentinos en el exterior — equivalente al PBI del pais. Una nacion entera duplicada en cuentas offshore, fideicomisos opacos y propiedades en Miami. A eso se suman USD 91.000 millones anuales en fuga de capitales a traves de criptomonedas — un ducto que no existia hace una decada y que hoy supera el presupuesto de defensa.',
+        'Hay un número que contextualiza la dimensión de la fuga de capitales: USD 483.000 millones en activos argentinos en el exterior, equivalentes al PBI. Una nacion entera duplicada en cuentas offshore, fideicomisos opacos y propiedades en Miami. A eso se suman USD 91.000 millones anuales en fuga de capitales a traves de criptomonedas — un ducto que no existia hace una decada y que hoy supera el presupuesto de defensa.',
         'El FMI presto USD 57.000 millones entre 2018 y 2019 — el mayor prestamo de su historia. La Auditoria General de la Nacion y analisis independientes estiman que el 82% de esos fondos salio del pais como fuga de capitales en los primeros meses. El prestamo no estabilizo la economia; financio la salida de dolares hacia las mismas jurisdicciones opacas donde ya operaban los funcionarios que lo solicitaron.',
         'Seis ductos de contratacion publica canalizan billones de pesos por ano. CAMMESA — el organismo que administra el mercado electrico mayorista — distribuyo mas de USD 104.000 millones en subsidios energeticos en las ultimas dos decadas, un flujo que alimenta directamente a las seis familias concesionarias que controlan la generacion y distribucion de energia. Las compras de PAMI, los contratos de obra publica del Ministerio de Infraestructura, las adquisiciones de defensa, las licitaciones de telecomunicaciones y el sistema de seguros del Estado completan un circuito donde el dinero publico entra por un extremo y emerge como patrimonio privado por el otro.',
         'En las elecciones de 2019, las 1.714 donaciones registradas ante la Camara Nacional Electoral revelan la asimetria: Juntos por el Cambio recibio ARS 46,9 millones de 75 donaciones. Frente de Todos recibio ARS 29,2 millones de 459 donaciones. El promedio por donacion de JxC fue casi diez veces mayor. Una coalicion dependia de grandes aportes corporativos; la otra, de una base fragmentada.',
-        'De los 20 mayores donantes, 13 dieron exclusivamente a Juntos por el Cambio. Solo uno — Aluar Aluminio Argentino — aposto a ambos lados: ARS 5.400.000 divididos entre JxC y Frente de Todos. Aluar es el mayor productor de aluminio de Argentina. Depende de subsidios energeticos del Estado y de protecciones arancelarias. Financiar a ambos bandos no es generosidad civica: es un seguro de acceso al poder sin importar quien gane.',
+        'De los 20 mayores donantes, 13 dieron exclusivamente a Juntos por el Cambio. Solo uno — Aluar Aluminio Argentino — aposto a ambos lados: ARS 5.400.000 divididos entre JxC y Frente de Todos. Aluar es el mayor productor de aluminio de Argentina. Depende de subsidios energeticos del Estado y de protecciones arancelarias. Aluar es el único de los 20 mayores donantes que financió a ambas coaliciones.',
         'Chequeado documento que Macri recibio aproximadamente ARS 3 millones en donaciones de empleados de empresas contratistas del Estado — una forma de eludir la prohibicion del Art. 15 de la Ley 26.215. La empresa no dona directamente; sus empleados lo hacen. El efecto es el mismo.',
         'Pero el hallazgo mas revelador vino del cruce automatico de bases de datos. La resolucion de entidades por CUIT y DNI conecto 247 donantes de campana con directivos de empresas contratistas del Estado. 13 rutas completas vinculan $207 millones en donaciones declaradas con $63.000 millones en contratos publicos. Nacion Seguros — el mayor contratista del Estado con $28.500 millones en 164 contratos — tiene dos directivos que donaron al Frente de Todos, la coalicion opositora al gobierno que le otorgo los contratos. Prosegur ($2.700 millones) tiene un directivo que dono a Juntos por el Cambio y que simultaneamente es Secretario de gobierno con 26 empresas a su nombre. El patron no es ideologico. Es transaccional.',
       ],
       en: [
-        'There is one number that summarizes forty years of Argentine economic failure: USD 483 billion. That is the estimated stock of Argentine assets held abroad — equal to the country\'s GDP. An entire nation duplicated in offshore accounts, opaque trusts, and Miami real estate. Add to that USD 91 billion per year in capital flight through cryptocurrencies — a pipeline that did not exist a decade ago and now exceeds the defense budget.',
+        'There is one number that contextualizes the scale of capital flight: USD 483 billion in Argentine assets held abroad, equivalent to GDP. An entire nation duplicated in offshore accounts, opaque trusts, and Miami real estate. Add to that USD 91 billion per year in capital flight through cryptocurrencies — a pipeline that did not exist a decade ago and now exceeds the defense budget.',
         'The IMF lent USD 57 billion between 2018 and 2019 — the largest loan in its history. The National Audit Office and independent analyses estimate that 82% of those funds left the country as capital flight within the first months. The loan did not stabilize the economy; it financed the dollar exit toward the same opaque jurisdictions where the officials who requested it were already operating.',
         'Six public procurement pipelines channel trillions of pesos per year. CAMMESA — the agency that administers the wholesale electricity market — distributed over USD 104 billion in energy subsidies over the past two decades, a flow that directly feeds the six concessionary families controlling power generation and distribution. PAMI purchases, Ministry of Infrastructure public works contracts, defense acquisitions, telecommunications tenders, and the state insurance system complete a circuit where public money enters at one end and emerges as private wealth at the other.',
         'In the 2019 elections, the 1,714 donations registered with the National Electoral Chamber reveal the asymmetry: Juntos por el Cambio received ARS 46.9 million from 75 donations. Frente de Todos received ARS 29.2 million from 459 donations. The average JxC donation was nearly ten times larger. One coalition depended on large corporate contributions; the other, on a fragmented base.',
-        'Of the 20 largest donors, 13 gave exclusively to Juntos por el Cambio. Only one — Aluar Aluminio Argentino — bet on both sides: ARS 5,400,000 split between JxC and Frente de Todos. Aluar is Argentina\'s largest aluminum producer. It depends on state energy subsidies and tariff protections. Funding both sides is not civic generosity: it is an insurance policy for access to power regardless of who wins.',
+        'Of the 20 largest donors, 13 gave exclusively to Juntos por el Cambio. Only one — Aluar Aluminio Argentino — bet on both sides: ARS 5,400,000 split between JxC and Frente de Todos. Aluar is Argentina\'s largest aluminum producer. It depends on state energy subsidies and tariff protections. Aluar is the only top-20 donor that financed both coalitions.',
         'Chequeado documented that Macri received approximately ARS 3 million in donations from employees of government contractor companies — a way to circumvent Art. 15 of Law 26,215. The company doesn\'t donate directly; its employees do. The effect is the same.',
         'But the most revealing finding came from automated database cross-referencing. Entity resolution by CUIT and DNI connected 247 campaign donors to officers of state contractor companies. 13 complete trails link $207 million in declared donations to $63 billion in public contracts. Nacion Seguros — the largest state contractor at $28.5 billion across 164 contracts — has two officers who donated to the opposing coalition. Prosegur ($2.7 billion) has an officer who donated to Juntos por el Cambio while simultaneously serving as a government Secretary with 26 companies in his name. The pattern is not ideological. It is transactional.',
       ],
@@ -187,23 +187,23 @@ const chapters: readonly Chapter[] = [
       es: [
         'Las filtraciones del Consorcio Internacional de Periodistas de Investigacion expusieron una huella offshore argentina masiva: 4.347 argentinos vinculados a 2.419 entidades en jurisdicciones opacas. Solo los Pandora Papers (a traves del estudio juridico Alcogal) expusieron a 2.637 argentinos — mas que todas las demas filtraciones combinadas. Las Islas Virgenes Britanicas son la jurisdiccion abrumadoramente preferida.',
         'Pero la pieza mas explosiva vino de los Paradise Papers. Segun los documentos filtrados [59], Luis Caputo — hoy Ministro de Economia de Milei — figuraba como titular del 75% de Princess International Global Ltd (Islas Caiman), que controlaba entre el 50% y el 74% de Affinis Partners II, que a su vez controlaba Noctua International (Miami/Delaware), administradora de Alto Global Fund — un fondo caiman con mas de USD 100 millones en activos. Ninguna de estas cuatro capas de sociedades figuro en su declaracion jurada obligatoria, segun los registros publicos de la Oficina Anticorrupcion. Cuando fue consultado por la prensa, se presento como "un mero administrador." Los documentos de los Paradise Papers lo identifican como beneficiario final.',
-        'Los cuatro grupos mediaticos del establishment argentino aparecen en los Pandora Papers: Magnetto (Clarin), Saguier (La Nacion), Fontevecchia (Perfil) y Hadad (Infobae). Los mismos medios que cubren las filtraciones offshore tienen sus propias sociedades en las mismas jurisdicciones. Quien vigila a los vigilantes cuando los vigilantes operan desde las Islas Virgenes Britanicas.',
+        'Los cuatro grupos mediaticos del establishment argentino aparecen en los Pandora Papers: Magnetto (Clarin), Saguier (La Nacion), Fontevecchia (Perfil) y Hadad (Infobae). Los mismos medios que cubren las filtraciones offshore tienen sus propias sociedades en las mismas jurisdicciones. Los mismos medios que cubren las filtraciones offshore aparecen en los documentos filtrados.',
         'Daniel Manzano — intermediario clave en operaciones de deuda soberana y privatizaciones — opera desde Ginebra, fuera de la jurisdiccion argentina. Su rol conecta los flujos financieros del Capitulo III con las estructuras offshore de este capitulo: el dinero que sale del Estado por los ductos de contratacion publica necesita una infraestructura para desaparecer, y esa infraestructura tiene domicilio en Suiza.',
         'Graciela Camano — 30 anos en politica, 6 partidos — aparece en la base de datos ICIJ como vinculada a TT 41 CORP, constituida en las BVI durante su mandato como Diputada Nacional. Segun registros publicos de declaraciones juradas, su patrimonio declarado crecio 14 veces en diez anos. Maria Cecilia Ibanez — Diputada de La Libertad Avanza — aparece en la base de datos ICIJ [8] como titular de PELMOND COMPANY LTD. en las BVI. Voto AFIRMATIVO en el Presupuesto Nacional 2025 mientras figuraba como titular de esa sociedad offshore.',
-        'Entre los miles de nombres cruzados entre el Boletin Oficial y las filtraciones del ICIJ, aparecio Ferrari Facundo — agente de la AFIP, la autoridad encargada de perseguir la evasion fiscal — como oficial de una entidad offshore en los Panama Papers. El zorro cuidando el gallinero.',
+        'Entre los miles de nombres cruzados entre el Boletin Oficial y las filtraciones del ICIJ, aparecio Ferrari Facundo — agente de la AFIP, la autoridad encargada de perseguir la evasion fiscal — como oficial de una entidad offshore en los Panama Papers.',
       ],
       en: [
         'Leaks from the International Consortium of Investigative Journalists exposed a massive Argentine offshore footprint: 4,347 Argentines linked to 2,419 entities in opaque jurisdictions. The Pandora Papers alone (through law firm Alcogal) exposed 2,637 Argentines — more than all other leaks combined. The British Virgin Islands is the overwhelmingly preferred jurisdiction.',
         'But the most explosive piece came from the Paradise Papers. According to the leaked documents [59], Luis Caputo — now Milei\'s Economy Minister — was listed as 75% owner of Princess International Global Ltd (Cayman Islands), which controlled 50-74% of Affinis Partners II, which in turn controlled Noctua International (Miami/Delaware), manager of Alto Global Fund — a Cayman fund with over USD 100 million in assets. None of these four layers of entities appeared in his mandatory financial disclosure, according to public records from the Anti-Corruption Office. When asked by the press, he presented himself as "merely an administrator." The Paradise Papers documents identify him as the ultimate beneficial owner.',
-        'All four Argentine establishment media groups appear in the Pandora Papers: Magnetto (Clarin), Saguier (La Nacion), Fontevecchia (Perfil), and Hadad (Infobae). The same media outlets that cover offshore leaks have their own companies in the same jurisdictions. Who watches the watchmen when the watchmen operate from the British Virgin Islands.',
+        'All four Argentine establishment media groups appear in the Pandora Papers: Magnetto (Clarin), Saguier (La Nacion), Fontevecchia (Perfil), and Hadad (Infobae). The same media outlets that cover offshore leaks have their own companies in the same jurisdictions. The same media outlets that cover offshore leaks appear in the leaked documents.',
         'Daniel Manzano — a key intermediary in sovereign debt operations and privatizations — operates from Geneva, outside Argentine jurisdiction. His role connects the financial flows of Chapter III with this chapter\'s offshore structures: the money that exits the State through public procurement pipelines needs infrastructure to disappear, and that infrastructure is domiciled in Switzerland.',
         'Graciela Camano — 30 years in politics, 6 parties — appears in the ICIJ database as linked to TT 41 CORP, incorporated in the BVI during her term as National Deputy. According to public asset declaration records, her declared assets grew 14-fold in ten years. Maria Cecilia Ibanez — a La Libertad Avanza deputy — appears in the ICIJ database [8] as owner of PELMOND COMPANY LTD. in the BVI. She voted YES on the 2025 National Budget while listed as owner of that offshore company.',
-        'Among thousands of names cross-referenced between the Boletin Oficial and ICIJ leaks, Ferrari Facundo appeared — an AFIP agent, the authority responsible for prosecuting tax evasion — as an officer of an offshore entity in the Panama Papers. The fox guarding the henhouse.',
+        'Among thousands of names cross-referenced between the Boletin Oficial and ICIJ leaks, Ferrari Facundo appeared — an AFIP agent, the authority responsible for prosecuting tax evasion — as an officer of an offshore entity in the Panama Papers.',
       ],
     },
     pullQuote: {
-      es: 'Los cuatro grupos mediaticos del establishment aparecen en los Pandora Papers. Quien vigila a los vigilantes cuando los vigilantes operan desde las BVI.',
-      en: 'All four establishment media groups appear in the Pandora Papers. Who watches the watchmen when the watchmen operate from the BVI.',
+      es: 'Los cuatro grupos mediaticos del establishment aparecen en los Pandora Papers. Los mismos medios que cubren las filtraciones offshore aparecen en los documentos filtrados.',
+      en: 'All four establishment media groups appear in the Pandora Papers. The same media outlets that cover offshore leaks appear in the leaked documents.',
     },
     citations: [
       { id: 7, text: 'ICIJ Offshore Leaks Database', url: 'https://offshoreleaks.icij.org' },
@@ -221,7 +221,7 @@ const chapters: readonly Chapter[] = [
     paragraphs: {
       es: [
         'La busqueda del apellido "Macri" en el registro de la IGJ devuelve 153 personas vinculadas a 398 empresas distribuidas en Argentina, Brasil, Panama, Hong Kong, Reino Unido, Islas Virgenes Britanicas, Dubai y Luxemburgo. El nucleo es SOCMA — Sociedad Macri S.A. — fundada por Franco Macri el 19 de enero de 1976, dos meses antes del golpe militar. Durante la dictadura, el grupo crecio de 7 a 47 empresas.',
-        'Pero los Macri no son una anomalia. Son la pieza central de un patron: seis familias concesionarias controlan la infraestructura critica argentina. Los Macri (obra publica, correos, autopistas), los Eurnekian (aeropuertos, energia), los Mindlin (energia, telecomunicaciones), los Werthein (telecomunicaciones, finanzas), los Rocca-Techint (acero, infraestructura) y los Perez Companc (energia, alimentos). Las privatizaciones de Menem en los anos noventa — 11 empresas estrategicas mapeadas completas en el grafo — transfirieron el patrimonio publico a estas seis familias. La cadena fue: ley de Reforma del Estado -> privatizacion -> concesion -> renegociacion -> beneficio perpetuo.',
+        'Pero los Macri no son una anomalia. Son la pieza central de un patron: seis familias concesionarias controlan la infraestructura critica argentina. Los Macri (obra publica, correos, autopistas), los Eurnekian (aeropuertos, energia), los Mindlin (energia, telecomunicaciones), los Werthein (telecomunicaciones, finanzas), los Rocca-Techint (acero, infraestructura) y los Perez Companc (energia, alimentos). Las privatizaciones de Menem en los anos noventa — 11 empresas estrategicas mapeadas completas en el grafo — transfirieron el patrimonio publico a estas seis familias. La cadena fue: ley de Reforma del Estado -> privatizacion -> concesion -> renegociacion -> renegociación sucesiva.',
         'Eduardo Eurnekian merece atencion particular. Controla Aeropuertos Argentina 2000 (la concesion aeroportuaria mas grande del pais), tiene 35 empresas en el registro de la IGJ, y segun multiples reportes periodisticos [62], funciona como mentor de Javier Milei. Eurnekian fue identificado por medios como el nexo que presento a Milei a circulos empresariales antes de su candidatura.',
         'Correo Argentino: privatizado en 1997, la concesion fue a SOCMA. Pago el canon solo el primer ano. En junio de 2016, el gobierno de Macri acepto una reduccion del 98,82% de la deuda. La fiscal Boquin dictamino que era "equivalente a una condonacion." Siete anos despues, la familia aun no habia pagado.',
         'AUSOL: la concesion fue renegociada durante la presidencia de Macri. El Estado quedo comprometido en un impacto estimado de ~USD 2.000 millones. Despues de los aumentos de peaje, Macri vendio sus acciones con una prima del 400%.',
@@ -230,7 +230,7 @@ const chapters: readonly Chapter[] = [
       ],
       en: [
         'Searching the surname "Macri" in the IGJ registry returns 153 individuals linked to 398 companies across Argentina, Brazil, Panama, Hong Kong, UK, British Virgin Islands, Dubai, and Luxembourg. The core is SOCMA — Sociedad Macri S.A. — founded by Franco Macri on January 19, 1976, two months before the military coup. During the dictatorship, the group grew from 7 to 47 companies.',
-        'But the Macris are not an anomaly. They are the centerpiece of a pattern: six concessionary families control Argentina\'s critical infrastructure. The Macris (public works, post office, highways), the Eurnekians (airports, energy), the Mindlins (energy, telecommunications), the Wertheins (telecommunications, finance), the Rocca-Techint family (steel, infrastructure), and the Perez Compancs (energy, food). Menem\'s 1990s privatizations — 11 strategic companies fully mapped in the graph — transferred public patrimony to these six families. The chain was: State Reform law -> privatization -> concession -> renegotiation -> perpetual benefit.',
+        'But the Macris are not an anomaly. They are the centerpiece of a pattern: six concessionary families control Argentina\'s critical infrastructure. The Macris (public works, post office, highways), the Eurnekians (airports, energy), the Mindlins (energy, telecommunications), the Wertheins (telecommunications, finance), the Rocca-Techint family (steel, infrastructure), and the Perez Compancs (energy, food). Menem\'s 1990s privatizations — 11 strategic companies fully mapped in the graph — transferred public patrimony to these six families. The chain was: State Reform law -> privatization -> concession -> renegotiation -> successive renegotiation.',
         'Eduardo Eurnekian deserves particular attention. He controls Aeropuertos Argentina 2000 (the country\'s largest airport concession), has 35 companies in the IGJ registry, and according to multiple press reports [62], functions as Javier Milei\'s mentor. Eurnekian was identified by media as the nexus who introduced Milei to business circles before his candidacy.',
         'Correo Argentino: privatized in 1997, the concession went to SOCMA. They paid the fee only the first year. In June 2016, the Macri government accepted a 98.82% debt reduction. Prosecutor Boquin ruled it "equivalent to a pardon." Seven years later, the family still had not paid.',
         'AUSOL: the highway concession was renegotiated during Macri\'s presidency. The state was committed to an estimated impact of ~USD 2 billion. After toll increases, Macri sold his shares at a 400% premium.',
@@ -301,14 +301,14 @@ const chapters: readonly Chapter[] = [
         'Pero las armas financieras mas devastadoras las manejo el propio Estado. Segun registros de la IGJ y la CNV, en marzo de 2012 Luis Caputo fundo AXIS SGFCI S.A. con el 60% de la sociedad. Como Secretario de Finanzas en 2015, integro el Comite Ejecutivo del Fondo de Garantia de Sustentabilidad del ANSES, que aprobo la inversion de $500 millones de fondos jubilatorios en AXIS Ahorro Plus FCI — su propio fondo de inversion, segun la denuncia penal presentada por la UFISES [67]. El dinero de los jubilados fue canalizado al fondo del funcionario que integro el comite que aprobo la inversion.',
         'La deuda oculta es otra dimension del arsenal. La Resolucion 147/2017 — firmada por Caputo — creo USD 7.368 millones en deuda indirecta mediante Letras del Tesoro Nacional que garantizaban el programa de energias renovables. Esa deuda quedo fuera de las estadisticas oficiales. No se la reporto al Congreso. No aparece en los informes de la Secretaria de Finanzas. Simplemente no existe en los libros — pero compromete al Tesoro.',
         'En 2017, Caputo emitio el bono a 100 anos: USD 2.750 millones que la AGN califico como "poco transparente e ineficiente, comprometiendo generaciones futuras." [68] Argentina pagaria mas del 900% del neto recibido a lo largo de la vida del bono — una transferencia intergeneracional de riqueza hacia los tenedores de bonos. Segun la investigacion de Pagina 12 [66], Noctua International — la administradora del fondo offshore vinculado a Caputo en los Paradise Papers [59] — habria adquirido el Century Bond que Caputo autorizo como funcionario publico. De confirmarse, el funcionario que autorizo la emision y el beneficiario de la compra serian la misma persona.',
-        'La concentracion no es solo vertical sino transversal. Los directorios cruzados entre familias revelan la arquitectura real del poder economico: en MINERA GEOMETALES confluyen los Macri con la elite minera chilena. En el Buenos Aires Golf Club se cruzan directorios de familias que compiten en el mercado pero cooperan en la gobernanza. En el CEADS, ejecutivos de grupos rivales comparten mesa. Estas 500+ empresas comparten directores, domicilios legales y los mismos estudios juridicos. Es una red, no una coleccion de empresas aisladas.',
+        'La concentracion no es solo vertical sino transversal. Los directorios cruzados entre familias revelan la arquitectura real del poder economico: en MINERA GEOMETALES confluyen los Macri con la elite minera chilena. En el Buenos Aires Golf Club se cruzan directorios de familias que compiten en el mercado pero cooperan en la gobernanza. En el CEADS, ejecutivos de grupos rivales comparten mesa. Estas 500+ empresas comparten directores, domicilios legales y los mismos estudios juridicos.',
       ],
       en: [
         'IGJ corporate registry analysis revealed 12 oligarchic families controlling 500+ companies. The Mindlin family leads with 52 companies, followed by Magnetto (35), Eurnekian (35), De Narvaez (35), Werthein (29) and Blaquier (27). They dominate entire sectors: energy, media, insurance, agroindustry. Cross-referencing found 72 financial company officers simultaneously holding national government appointments.',
         'But the most devastating financial arms were wielded by the State itself. According to IGJ and CNV records, in March 2012 Luis Caputo founded AXIS SGFCI S.A. with 60% ownership. As Finance Secretary in 2015, he sat on the Executive Committee of ANSES\'s Sustainability Guarantee Fund, which approved investing $500 million in pension funds into AXIS Ahorro Plus FCI — his own mutual fund, according to the criminal complaint filed by UFISES [67]. Retirees\' money was channeled into the fund of the official who sat on the committee that approved the investment.',
         'Hidden debt is another dimension of the arsenal. Resolution 147/2017 — bearing Caputo\'s signature — created USD 7.368 billion in indirect debt through National Treasury Notes guaranteeing the renewable energy program. That debt was kept out of official statistics. It was not reported to Congress. It does not appear in Finance Secretariat reports. It simply does not exist on the books — but it commits the Treasury.',
         'In 2017, Caputo issued the 100-year bond: USD 2.75 billion that the AGN qualified as "little transparent and inefficient, compromising future generations." [68] Argentina would repay over 900% of the net received over the bond\'s life — an intergenerational wealth transfer to bondholders. According to reporting by Pagina 12 [66], Noctua International — the manager of the offshore fund linked to Caputo in the Paradise Papers [59] — allegedly purchased the Century Bond that Caputo authorized as a public official. If confirmed, the official who authorized the issuance and the beneficiary of the purchase would be the same person.',
-        'The concentration is not just vertical but cross-cutting. Cross-family boards reveal the real architecture of economic power: at MINERA GEOMETALES, the Macris converge with Chilean mining elite. At the Buenos Aires Golf Club, boards of families that compete in the market but cooperate in governance intersect. At CEADS, executives from rival groups share the same table. These 500+ companies share directors, legal addresses, and the same law firms. It is a network, not a collection of isolated companies.',
+        'The concentration is not just vertical but cross-cutting. Cross-family boards reveal the real architecture of economic power: at MINERA GEOMETALES, the Macris converge with Chilean mining elite. At the Buenos Aires Golf Club, boards of families that compete in the market but cooperate in governance intersect. At CEADS, executives from rival groups share the same table. These 500+ companies share directors, legal addresses, and the same law firms.',
       ],
     },
     pullQuote: {
@@ -328,23 +328,23 @@ const chapters: readonly Chapter[] = [
   {
     id: 'el-escandalo-de-los-seguros',
     title: {
-      es: 'VIII. El Escandalo de los Seguros',
-      en: 'VIII. The Insurance Scandal',
+      es: 'VIII. El Sistema de Seguros',
+      en: 'VIII. The Insurance System',
     },
     paragraphs: {
       es: [
-        'El Decreto 823/2021, firmado por Alberto Fernandez, obligo a todo el sector publico nacional a contratar seguros exclusivamente con Nacion Seguros S.A. De un plumazo, se creo un monopolio cautivo de $28.500 millones. La Superintendencia de Seguros, que deberia haber intervenido, estaba dirigida por un exejecutivo de la misma industria.',
+        'El Decreto 823/2021, firmado por Alberto Fernandez, obligo a todo el sector publico nacional a contratar seguros exclusivamente con Nacion Seguros S.A. El decreto creó un monopolio de $28.500 millones en seguros estatales. La Superintendencia de Seguros, que deberia haber intervenido, estaba dirigida por un exejecutivo de la misma industria.',
         'El monopolio fue explotado por brokers cercanos al presidente. Bachellier S.A. fue el principal beneficiario: facturo $1.665 millones en comisiones. En febrero de 2026, el embargo contra Bachellier alcanzo los $9.669 millones — una cifra que sugiere que los flujos totales desviados superan ampliamente las comisiones declaradas. Hector Martinez Sosa — esposo de Maria Cantero, la secretaria privada del presidente Fernandez — cobro $366 millones en comisiones. El circuito era simple pero efectivo: el decreto obligaba a todas las dependencias del Estado a contratar con una unica empresa, que delegaba la intermediacion en brokers seleccionados a dedo.',
         'Los 25 principales brokers cobraron $3.500 millones en comisiones de fondos publicos — un margen que no tiene justificacion tecnica ni de mercado. En abril de 2024, el juez Ercolini ordeno 24 allanamientos simultaneos. Se incautaron documentos, dispositivos y registros financieros.',
         'En marzo de 2025, la justicia logro desbloquear el telefono de Martinez Sosa — un avance critico, dado que la evidencia digital de los chats y transferencias puede reconstruir la cadena completa de intermediacion que conecta al presidente con los brokers. Alberto Fernandez fue procesado en la causa. Ya no es testigo ni imputado marginal: es un acusado formal en una causa por defraudacion al Estado a traves del sistema de seguros que el mismo creo por decreto.',
-        'El escandalo de los seguros no es un caso aislado de corrupcion kirchnerista. Es la demostracion de que el sistema de seguros del Estado — el mismo sector donde se concentran 48 de los 72 casos documentados de puerta giratoria financiera — es el instrumento preferido para la extraccion sistematica de fondos publicos. Cualquier gobierno que controle la SSN controla el grifo.',
+        'El caso de los seguros no es un hecho aislado. El sector asegurador concentra 48 de los 72 casos de puerta giratoria financiera documentados — el mayor cluster sectorial del grafo.',
       ],
       en: [
-        'Decree 823/2021, signed by Alberto Fernandez, mandated all national public sector entities to contract insurance exclusively through Nacion Seguros S.A. With a single stroke, a $28.5B captive monopoly was created. The Superintendency of Insurance, which should have intervened, was headed by a former executive from the same industry.',
+        'Decree 823/2021, signed by Alberto Fernandez, mandated all national public sector entities to contract insurance exclusively through Nacion Seguros S.A. The decree created a $28.5 billion state insurance monopoly. The Superintendency of Insurance, which should have intervened, was headed by a former executive from the same industry.',
         'The monopoly was exploited by brokers close to the president. Bachellier S.A. was the main beneficiary: it invoiced $1.665B in commissions. In February 2026, the embargo against Bachellier reached $9.669 billion — a figure suggesting that total diverted flows far exceed the declared commissions. Hector Martinez Sosa — husband of Maria Cantero, President Fernandez\'s private secretary — collected $366M in commissions. The circuit was simple but effective: the decree forced all state agencies to contract with a single company, which delegated brokerage to hand-picked intermediaries.',
         'The top 25 brokers collected $3.5 billion in commissions from public funds — a margin with no technical or market justification. In April 2024, Judge Ercolini ordered 24 simultaneous raids. Documents, devices and financial records were seized.',
         'In March 2025, investigators succeeded in unlocking Martinez Sosa\'s phone — a critical breakthrough, since the digital evidence from chats and transfers can reconstruct the full intermediation chain connecting the president to the brokers. Alberto Fernandez was formally processed in the case. He is no longer a witness or marginal suspect: he is a formal defendant in a case of state fraud through the insurance system he himself created by decree.',
-        'The insurance scandal is not an isolated case of Kirchnerist corruption. It is the demonstration that the state insurance system — the same sector where 48 of the 72 documented financial revolving door cases are concentrated — is the preferred instrument for the systematic extraction of public funds. Any government that controls the SSN controls the tap.',
+        'The insurance case is not an isolated event. The insurance sector concentrates 48 of 72 documented financial revolving-door cases — the largest sectoral cluster in the graph.',
       ],
     },
     pullQuote: {
@@ -401,20 +401,20 @@ const chapters: readonly Chapter[] = [
     },
     paragraphs: {
       es: [
-        'Comodoro Py es el edificio de tribunales federales de Buenos Aires. Doce juzgados, los mismos jueces, todas las causas politicas del pais. En el grafo, es el mayor broker estructural de la red: 66 pares conectados exclusivamente a traves de sus jueces y fiscales — mas que cualquier otro nodo institucional. No es un tribunal. Es una central de distribucion del poder judicial.',
+        'Comodoro Py es el edificio de tribunales federales de Buenos Aires. Doce juzgados, los mismos jueces, todas las causas politicas del pais. En el grafo, es el mayor broker estructural de la red: 66 pares conectados exclusivamente a traves de sus jueces y fiscales — mas que cualquier otro nodo institucional. En el grafo, Comodoro Py es el mayor broker estructural: 66 pares conectados exclusivamente a través de sus jueces y fiscales.',
         'Una auditoria del Consejo de la Magistratura confirmo la tasa de condena por corrupcion: 2%.[26] De cada cien causas que ingresan a Comodoro Py por delitos contra la administracion publica, noventa y ocho terminan en sobreseimiento, prescripcion o archivo. Entre los 10 jueces mas interconectados del grafo, el motor detecto 30 triangulos de poder — triadas donde tres jueces comparten vinculos con las mismas personas, empresas o causas.',
         'El juez Ercolini volo a Lago Escondido en un avion pagado por el Grupo Clarin. Despues, sobreseyo a Frigerio en una causa por enriquecimiento ilicito. Despues, fue asignado a la causa del escandalo de los seguros contra Fernandez. El mismo juez que acepto un vuelo corporativo, libero a un funcionario vinculado a ese grupo, y luego investigo al presidente que estaba en conflicto con ese mismo grupo.',
         'Los camaristas Hornos y Borinsky realizaron 15 visitas documentadas a la Quinta de Olivos durante el gobierno de Macri — entre 2016 y 2019, mientras juzgaban causas que involucraban al gobierno.[28] La cronologia es precisa: visitas previas a resoluciones favorables al oficialismo. No son reuniones institucionales. Son encuentros privados en la residencia presidencial con jueces que tenian causas del presidente en sus despachos.',
         'Ariel Lijo lleva decadas en Comodoro Py. Su historial: 89 causas, 14 llegaron a juicio oral. El 3 de abril de 2025, el Senado voto 43 a 27 en contra de su designacion a la Corte Suprema — el primer rechazo desde el retorno de la democracia en 1983.[27] Un departamento de USD 2 millones no declarado en sus presentaciones patrimoniales. El gobierno lo designo igualmente por decreto.',
-        'Carlos Rosenkrantz — presidente de la Corte Suprema — fue abogado del Grupo Clarin. Se excuso en 85 causas por conflicto de intereses, pero no en las que involucraban a Clarin. Resultado: mas de 25 fallos sobre casos que involucraban directamente a sus antiguos clientes.[29] Cuando el conflicto de intereses es selectivo, la excusacion se convierte en coartada.',
+        'Carlos Rosenkrantz — presidente de la Corte Suprema — fue abogado del Grupo Clarin. Se excuso en 85 causas por conflicto de intereses, pero no en las que involucraban a Clarin. Resultado: mas de 25 fallos sobre casos que involucraban directamente a sus antiguos clientes.[29] Se excusó en 85 causas, pero no en las que involucraban a Clarín. Emitió más de 25 fallos sobre causas de sus antiguos clientes.',
       ],
       en: [
-        'Comodoro Py is the federal courthouse in Buenos Aires. Twelve courts, the same judges, all of the country\'s political cases. In the graph, it is the largest structural broker in the network: 66 bridged pairs connected exclusively through its judges and prosecutors — more than any other institutional node. It is not a courthouse. It is a distribution hub for judicial power.',
+        'Comodoro Py is the federal courthouse in Buenos Aires. Twelve courts, the same judges, all of the country\'s political cases. In the graph, it is the largest structural broker in the network: 66 bridged pairs connected exclusively through its judges and prosecutors — more than any other institutional node. In the graph, Comodoro Py is the largest structural broker: 66 pairs connected exclusively through its judges and prosecutors.',
         'An audit by the Consejo de la Magistratura confirmed the corruption conviction rate: 2%.[26] Of every hundred cases that enter Comodoro Py for crimes against public administration, ninety-eight end in acquittal, expiration, or dismissal. Among the 10 most interconnected judges in the graph, the engine detected 30 power triangles — triads where three judges share ties to the same persons, companies, or cases.',
         'Judge Ercolini flew to Lago Escondido on a plane paid for by the Clarin Group. Afterward, he cleared Frigerio in an illicit enrichment case. Then, he was assigned to the insurance scandal case against Fernandez. The same judge who accepted a corporate flight, cleared an official linked to that group, and then investigated the president who was in conflict with that same group.',
         'Appellate judges Hornos and Borinsky made 15 documented visits to the Olivos presidential residence during the Macri administration — between 2016 and 2019, while judging cases involving the government.[28] The chronology is precise: visits preceding rulings favorable to the ruling party. These are not institutional meetings. They are private encounters at the presidential residence with judges who had the president\'s cases on their desks.',
         'Ariel Lijo has spent decades at Comodoro Py. His record: 89 cases, 14 reached oral trial. On April 3, 2025, the Senate voted 43 to 27 against his Supreme Court nomination — the first rejection since the return of democracy in 1983.[27] An undeclared USD 2 million apartment not included in his asset declarations. The government appointed him by decree regardless.',
-        'Carlos Rosenkrantz — Supreme Court president — was a lawyer for the Clarin Group. He recused himself from 85 cases for conflict of interest, but not from those involving Clarin. Result: more than 25 rulings on cases directly involving his former clients.[29] When the conflict of interest is selective, recusal becomes an alibi.',
+        'Carlos Rosenkrantz — Supreme Court president — was a lawyer for the Clarin Group. He recused himself from 85 cases for conflict of interest, but not from those involving Clarin. Result: more than 25 rulings on cases directly involving his former clients.[29] He recused from 85 cases, but not those involving Clarín. He issued over 25 rulings on cases involving his former clients.',
       ],
     },
     pullQuote: {
@@ -524,18 +524,18 @@ const chapters: readonly Chapter[] = [
   {
     id: 'el-cartel-de-la-salud',
     title: {
-      es: 'XIV. El Cartel de la Salud',
-      en: 'XIV. The Health Cartel',
+      es: 'XIV. El Sector Salud',
+      en: 'XIV. The Health Sector',
     },
     paragraphs: {
       es: [
         'En diciembre de 2024, la CNDC imputo por cartelizacion a Swiss Medical, OSDE, Galeno, Medife, Omint, Hospital Britanico, Hospital Aleman y a Claudio Belocopitt personalmente.[42] Las prepagas habian coordinado aumentos de ~150% cuando la inflacion era ~70%. Belocopitt controla el 76% de Swiss Medical Group (53 subsidiarias) mientras simultaneamente posee el 40% de Grupo America (America TV, A24, La Red) — un conflicto de intereses entre salud y medios sin precedentes.',
-        'El caso PAMI es demoledor: el Anastrozol se pago a $13.192 por unidad cuando la licitacion publica lo ofrecia a $924 — un sobreprecio de 14,3 veces.[43] En la ANDIS, el Macitentan fue adjudicado a $411.764 y vendido tres dias despues a $8.290.000 — un markup del 2.013%. Cuatro droguerias recibieron $37.000 millones. La Drogueria Suizo Argentina vio sus contratos estatales crecer 2.678% en un anio bajo el gobierno de Milei.',
+        'Los datos de PAMI: el Anastrozol se pago a $13.192 por unidad cuando la licitacion publica lo ofrecia a $924 — un sobreprecio de 14,3 veces.[43] En la ANDIS, el Macitentan fue adjudicado a $411.764 y vendido tres dias despues a $8.290.000 — un markup del 2.013%. Cuatro droguerias recibieron $37.000 millones. La Drogueria Suizo Argentina vio sus contratos estatales crecer 2.678% en un anio bajo el gobierno de Milei.',
         'Durante la pandemia, Swiss Medical recibio $2.417 millones en subsidios ATP del Estado — mientras Belocopitt cobraba parte de su salario con fondos publicos y simultaneamente adquiria competidores.[44] Forbes estima la fortuna de Belocopitt en USD 440 millones. El ICIJ documenta cinco entidades offshore en Islas Virgenes Britanicas: Karima Portfolio, Tiago Global, Ragnar Portfolio, Elyanne Business, Pensford Business.',
       ],
       en: [
         'In December 2024, the CNDC charged Swiss Medical, OSDE, Galeno, Medife, Omint, Hospital Britanico, Hospital Aleman, and Claudio Belocopitt personally for cartelization.[42] The prepaid health companies had coordinated increases of ~150% when inflation was ~70%. Belocopitt controls 76% of Swiss Medical Group (53 subsidiaries) while simultaneously owning 40% of Grupo America (America TV, A24, La Red) — an unprecedented health-media conflict of interest.',
-        'The PAMI case is devastating: Anastrozol was paid at $13,192 per unit when public bidding offered it at $924 — a 14.3x markup.[43] At ANDIS, Macitentan was awarded at $411,764 and sold three days later at $8,290,000 — a 2,013% markup. Four drugstores received $37 billion. Drogueria Suizo Argentina saw its state contracts grow 2,678% in one year under the Milei government.',
+        'The PAMI data: Anastrozol was paid at $13,192 per unit when public bidding offered it at $924 — a 14.3x markup.[43] At ANDIS, Macitentan was awarded at $411,764 and sold three days later at $8,290,000 — a 2,013% markup. Four drugstores received $37 billion. Drogueria Suizo Argentina saw its state contracts grow 2,678% in one year under the Milei government.',
         'During the pandemic, Swiss Medical received $2.417 billion in state ATP subsidies — while Belocopitt collected part of his salary with public funds and simultaneously acquired competitors.[44] Forbes estimates Belocopitt\'s fortune at USD 440 million. The ICIJ documents five BVI offshore entities: Karima Portfolio, Tiago Global, Ragnar Portfolio, Elyanne Business, Pensford Business.',
       ],
     },
@@ -608,21 +608,13 @@ const chapters: readonly Chapter[] = [
         'El ciclo es: acumulacion de riqueza -> colega cierra la causa -> abogado se convierte en Ministro de Justicia -> gobierno nomina juez a la Corte Suprema. No es una teoria. Es la secuencia de hechos documentada en estas paginas.',
         'Lo que esta sesion descubrio: el motor de resolucion de entidades cruzo 34.776 coincidencias CUIT/DNI entre 9 datasets. 2.155 casos de puerta giratoria — funcionarios que simultaneamente dirigen empresas privadas. 146 empresas fantasma sin directivos registrados que reciben contratos publicos. 29.602 declaraciones juradas patrimoniales vinculadas a directivos y funcionarios. El caso mas extremo: un Vocal PEN en Educacion que dirige 115 empresas incluyendo LLCs en Delaware. El grafo de AMIA conecta a Stiuso con el gabinete actual en 5 saltos. Cristina Fernandez de Kirchner fue sancionada por Estados Unidos el 21 de marzo de 2025 — primera jefa de estado argentina sancionada. Y los 7 imperios mediaticos argentinos aparecen todos en los Pandora Papers.',
         'Lo que falta — y lo decimos porque la transparencia es la primera obligacion de quien investiga: los vinculos offshore-juez no estan resueltos. La cadena donante-juez permanece opaca. Datos provinciales: las provincias con menor transparencia son precisamente las mas relevantes para la investigacion. Sectores como mineria, sindicatos y transporte no estan incluidos en esta version. El periodo 1983-2007 tiene cobertura delgada. La investigacion reconoce estas limitaciones y trabaja para resolverlas.',
-        'La investigacion continua. Nuevas fuentes de datos, nuevos cruces, nuevas conexiones. Este grafo crece con cada ciclo de analisis.',
-        'Los datos preguntan. Y en un pais donde 6 familias adquirieron los activos del Estado hace 35 anios y siguen controlando las mismas concesiones, donde un juez vuela en el avion de un grupo mediatico, donde $483.000 millones — el equivalente al PBI — estan en el exterior, donde el funcionario que emite el bono compra ese mismo bono a traves de su fondo offshore no declarado, donde 2.155 funcionarios dirigen empresas privadas mientras ocupan cargos publicos, donde 146 empresas fantasma reciben contratos millonarios sin un solo directivo registrado — en ese pais, los datos no solo preguntan. Exigen respuestas.',
       ],
       en: [
         'What is confirmed spans the entire systemic cycle: unexplained wealth protected by a colleague who closes the case, a lawyer from that industry who becomes Justice Minister, and a government that nominates a judge to the Supreme Court by decree. Each link has been documented with public sources in the preceding chapters.',
         'The cycle is: wealth accumulation -> colleague closes the case -> lawyer becomes Justice Minister -> government nominates judge to Supreme Court. It is not a theory. It is the sequence of facts documented in these pages.',
         'What this session discovered: the entity resolution engine crossed 34,776 CUIT/DNI matches across 9 datasets. 2,155 revolving door cases — officials simultaneously directing private companies. 146 shell companies with zero registered officers receiving public contracts. 29,602 sworn asset declarations linked to corporate officers and government appointees. The most extreme case: a PEN Board Member in Education directing 115 companies including Delaware LLCs. The AMIA graph connects Stiuso to the current cabinet in 5 hops. Cristina Fernandez de Kirchner was U.S. sanctioned on March 21, 2025 — the first Argentine head of state ever sanctioned. And all 7 Argentine media empires appear in the Pandora Papers.',
         'What is missing — and we state this because transparency is the first obligation of those who investigate: offshore-judge links remain unresolved. The donor-judge chain remains opaque. Provincial data: the least transparent provinces are precisely the most investigation-relevant. Sectors such as mining, unions, and transport are not included in this version. The 1983-2007 period has thin coverage. The investigation acknowledges these limitations and works to address them.',
-        'The investigation continues. New data sources, new cross-references, new connections. This graph grows with every analysis cycle.',
-        'The data asks questions. And in a country where 6 families acquired state assets 35 years ago and still control the same concessions, where a judge flies on a media group\'s plane, where $483 billion — equal to GDP — sits abroad, where the official who issues a bond buys that same bond through his undeclared offshore fund, where 2,155 officials direct private companies while holding public office, where 146 shell companies with zero registered officers receive million-dollar contracts — in that country, the data doesn\'t just ask questions. It demands answers.',
       ],
-    },
-    pullQuote: {
-      es: 'Los datos no solo preguntan. Exigen respuestas.',
-      en: 'The data doesn\'t just ask questions. It demands answers.',
     },
   },
   {
@@ -752,7 +744,7 @@ function renderWithCitations(text: string, citations?: readonly Citation[]) {
           target="_blank"
           rel="noopener noreferrer"
           title={citation.text}
-          className="ml-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full bg-blue-500/20 text-[10px] font-bold text-blue-400 no-underline hover:bg-blue-500/30 hover:text-blue-300"
+          className="ml-0.5 inline-flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] font-bold text-emerald-400 no-underline hover:bg-emerald-500/30 hover:text-emerald-300"
         >
           {id}
         </a>
@@ -804,15 +796,15 @@ export default function ResumenPage() {
             key={stat.value}
             className="rounded-lg border border-zinc-800 bg-zinc-900/60 p-4 text-center"
           >
-            <p className="text-xl font-bold text-blue-400">{stat.value}</p>
+            <p className="text-xl font-bold text-emerald-400">{stat.value}</p>
             <p className="mt-1 text-xs text-zinc-400">{stat.label[lang]}</p>
           </div>
         ))}
       </div>
 
       {/* Methodology summary — links to full methodology tab */}
-      <div className="mb-8 rounded-lg border border-blue-900/40 bg-blue-950/20 p-5">
-        <h3 className="text-sm font-bold uppercase tracking-wider text-blue-400">
+      <div className="mb-8 rounded-lg border border-emerald-900/40 bg-emerald-950/20 p-5">
+        <h3 className="text-sm font-bold uppercase tracking-wider text-emerald-400">
           {lang === 'es' ? 'Metodologia' : 'Methodology'}
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-zinc-300">
@@ -822,7 +814,7 @@ export default function ResumenPage() {
         </p>
         <a
           href="/caso/finanzas-politicas/metodologia"
-          className="mt-3 inline-block text-xs font-semibold text-blue-400 underline decoration-blue-400/30 hover:text-blue-300"
+          className="mt-3 inline-block text-xs font-semibold text-emerald-400 underline decoration-emerald-400/30 hover:text-emerald-300"
         >
           {lang === 'es' ? 'Ver metodologia completa, fuentes y marcos de cumplimiento →' : 'View full methodology, sources, and compliance frameworks →'}
         </a>
@@ -833,7 +825,7 @@ export default function ResumenPage() {
       {/* Chapters */}
       {chapters.map((chapter) => (
         <section key={chapter.id} id={chapter.id} className="py-12">
-          <h2 className="border-l-4 border-blue-500 pl-4 text-xl font-bold text-zinc-50">
+          <h2 className="border-l-4 border-emerald-500 pl-4 text-xl font-bold text-zinc-50">
             {chapter.title[lang]}
           </h2>
 
@@ -846,7 +838,7 @@ export default function ResumenPage() {
           </div>
 
           {chapter.pullQuote && (
-            <blockquote className="my-6 border-l-2 border-blue-400 pl-4 text-lg italic text-zinc-200">
+            <blockquote className="my-6 border-l-2 border-emerald-400 pl-4 text-lg italic text-zinc-200">
               {chapter.pullQuote[lang]}
             </blockquote>
           )}
@@ -863,7 +855,7 @@ export default function ResumenPage() {
                         href={c.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-400/70 underline decoration-blue-400/20 hover:text-blue-300"
+                        className="text-emerald-400/70 underline decoration-emerald-400/20 hover:text-emerald-300"
                       >
                         {c.text}
                       </a>
@@ -882,7 +874,7 @@ export default function ResumenPage() {
 
       {/* Sources */}
       <section className="py-12">
-        <h2 className="border-l-4 border-blue-500 pl-4 text-xl font-bold text-zinc-50">
+        <h2 className="border-l-4 border-emerald-500 pl-4 text-xl font-bold text-zinc-50">
           {lang === 'es' ? 'Fuentes' : 'Sources'}
         </h2>
         <ul className="mt-6 space-y-2">
@@ -892,7 +884,7 @@ export default function ResumenPage() {
                 href={src.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-blue-400 underline decoration-blue-400/30 hover:text-blue-300 hover:decoration-blue-300/50"
+                className="text-sm text-emerald-400 underline decoration-emerald-400/30 hover:text-emerald-300 hover:decoration-emerald-300/50"
               >
                 {src.name}
               </a>
@@ -903,19 +895,19 @@ export default function ResumenPage() {
 
       {/* Methodology & Compliance */}
       <section className="py-12">
-        <h2 className="border-l-4 border-blue-500 pl-4 text-xl font-bold text-zinc-50">
+        <h2 className="border-l-4 border-emerald-500 pl-4 text-xl font-bold text-zinc-50">
           {lang === 'es' ? 'Metodologia y Cumplimiento Internacional' : 'Methodology & International Compliance'}
         </h2>
 
         <div className="mt-6 space-y-6">
           <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-blue-400">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-emerald-400">
               {lang === 'es' ? 'Como Se Hizo Esta Investigacion' : 'How This Investigation Was Built'}
             </h3>
             <div className="mt-3 space-y-3 text-sm text-zinc-300">
               <p>{lang === 'es'
-                ? 'Esta investigacion fue construida mediante inteligencia artificial asistida con verificacion humana. Mas de 100 agentes autonomos de investigacion fueron desplegados en paralelo para buscar informacion en la web, cruzar datos entre bases publicas, consultar la base de datos de grafo, y detectar patrones estructurales. Todo el procesamiento se realiza localmente, sin envio de datos a servicios externos.'
-                : 'This investigation was built through AI-assisted intelligence with human verification. Over 100 autonomous investigation agents were deployed in parallel to search the web, cross-reference public databases, query the graph database, and detect structural patterns. All processing runs locally, no data sent to external services.'}</p>
+                ? 'Procesamiento asistido por LLM con verificación humana. 14 fuentes de datos públicos. Todo el procesamiento se realiza localmente, sin envio de datos a servicios externos.'
+                : 'LLM-assisted processing with human verification. 14 public data sources. All processing runs locally, no data sent to external services.'}</p>
               <p>{lang === 'es'
                 ? 'El proceso: 14 pipelines ETL (Extract-Transform-Load) ingestan datos publicos — votos legislativos, filtraciones offshore, donaciones electorales, nombramientos del Boletin Oficial, registros corporativos de la IGJ (951.000 directivos), declaraciones juradas, contratos publicos de Compr.ar, datos del BCRA — y los cargan en una base de datos de grafo Neo4j. Un motor de cruce automatico conecta entidades por CUIT (confianza 1.0), DNI/CUIL (0.95) y coincidencia de nombre (0.6-0.8). El grafo resultante — 294 nodos, 2.391 aristas — se consulta con Cypher para descubrir caminos, puentes, triangulos y anomalias que ningun dataset individual puede revelar.'
                 : 'The process: 14 ETL (Extract-Transform-Load) pipelines ingest public data — legislative votes, offshore leaks, electoral donations, Boletin Oficial appointments, IGJ corporate registries (951,000 officers), asset declarations, Compr.ar procurement contracts, BCRA data — and load them into a Neo4j graph database. An automated cross-reference engine connects entities by CUIT (confidence 1.0), DNI/CUIL (0.95), and name matching (0.6-0.8). The resulting graph — 294 nodes, 2,391 edges — is queried with Cypher to discover paths, bridges, triangles, and anomalies that no single dataset can reveal.'}</p>
@@ -929,7 +921,7 @@ export default function ResumenPage() {
           </div>
 
           <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-blue-400">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-emerald-400">
               {lang === 'es' ? 'Marcos Internacionales' : 'International Frameworks'}
             </h3>
             <ul className="mt-3 space-y-2 text-sm text-zinc-300">
@@ -955,7 +947,7 @@ export default function ResumenPage() {
           </div>
 
           <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-blue-400">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-emerald-400">
               {lang === 'es' ? 'Protocolo de Verificacion' : 'Verification Protocol'}
             </h3>
             <ul className="mt-3 space-y-2 text-sm text-zinc-300">
@@ -981,7 +973,7 @@ export default function ResumenPage() {
           </div>
 
           <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-5">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-blue-400">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-emerald-400">
               {lang === 'es' ? 'Fuentes de Datos (14 pipelines)' : 'Data Sources (14 pipelines)'}
             </h3>
             <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-zinc-400">
@@ -1014,13 +1006,6 @@ export default function ResumenPage() {
       </section>
 
       {/* Closing */}
-      <div className="mt-8 text-center">
-        <p className="text-sm italic text-zinc-500">
-          {lang === 'es'
-            ? 'La investigacion continua. El grafo crece. Las preguntas permanecen.'
-            : 'The investigation continues. The graph grows. The questions remain.'}
-        </p>
-      </div>
     </article>
   )
 }
