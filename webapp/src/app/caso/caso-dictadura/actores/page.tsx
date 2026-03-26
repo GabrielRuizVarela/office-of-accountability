@@ -121,7 +121,7 @@ function ActorCard({ actor, lang }: {
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <h3 className="text-base font-semibold text-zinc-100">{actor.name}</h3>
-            <p className="mt-1 text-xs text-amber-400">{lang === 'es' ? actor.role_es : actor.role_en}</p>
+            <p className="mt-1 text-xs text-stone-400">{lang === 'es' ? actor.role_es : actor.role_en}</p>
             <p className="mt-2 text-sm leading-relaxed text-zinc-400">
               {lang === 'es' ? actor.description_es : actor.description_en}
             </p>
@@ -135,7 +135,7 @@ function ActorCard({ actor, lang }: {
             onClick={loadGraph}
             className={`ml-3 shrink-0 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
               expanded
-                ? 'border-amber-500/30 bg-amber-500/10 text-amber-400'
+                ? 'border-stone-500/30 bg-stone-500/10 text-stone-400'
                 : 'border-zinc-700 bg-zinc-800 text-zinc-400 hover:border-zinc-600 hover:text-zinc-200'
             }`}
           >

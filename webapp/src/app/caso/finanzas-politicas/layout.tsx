@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     default: 'Finanzas Politicas Argentinas',
   },
   description:
-    'Investigacion sobre conexiones entre poder politico y dinero en Argentina. 617 politicos en 2+ datasets, 8 fuentes cruzadas.',
+    'Investigacion sobre conexiones entre poder politico y dinero en Argentina. 294 entidades, 14 fuentes cruzadas.',
   openGraph: {
     type: 'website',
     siteName: 'Oficina de Rendicion de Cuentas',

@@ -33,8 +33,8 @@ const t = {
     es: 'La Red Epstein',
   },
   subtitle: {
-    en: 'How a single financial relationship built a trafficking empire shielded by wealth, power, and institutional failure. 7,276 connected nodes, 11,040 edges, 0 orphans. Built from court records, DOJ file releases, flight logs, and investigative reporting. 374 verified persons, 39 organizations mapped, 15 documented victim relationships.',
-    es: 'Como una sola relacion financiera construyo un imperio de trafico protegido por riqueza, poder y fracaso institucional. 7,276 nodos conectados, 11,040 aristas, 0 huerfanos. Basado en registros judiciales, archivos del DOJ, bitacoras de vuelo y periodismo de investigacion. 374 personas verificadas, 39 organizaciones mapeadas, 15 relaciones de victimas documentadas.',
+    en: 'One financial relationship connected 374 verified persons across 39 organizations. 7,276 nodes, 11,040 edges. Built from court records, DOJ file releases, flight logs, and investigative reporting.',
+    es: 'Una relación financiera conectó 374 personas verificadas en 39 organizaciones. 7,276 nodos, 11,040 aristas. Basado en registros judiciales, archivos del DOJ, bitácoras de vuelo y periodismo de investigación.',
   },
   readStory: {
     en: 'Read the full story',
@@ -97,8 +97,8 @@ const t = {
     es: 'Analisis de Red con IA',
   },
   simulationDesc: {
-    en: 'Simulate multi-agent analysis of the network using locally-hosted LLMs. Ask questions from the perspective of investigators, prosecutors, and analysts.',
-    es: 'Simula análisis multi-agente de la red usando LLMs locales. Haz preguntas desde la perspectiva de investigadores, fiscales y analistas.',
+    en: 'Multi-agent network analysis using LLMs. Query the graph as investigator, prosecutor, or analyst.',
+    es: 'Análisis multi-agente de la red usando LLMs. Consultá el grafo como investigador, fiscal o analista.',
   },
 } as const
 

@@ -568,7 +568,7 @@ export function ConexionesGraph() {
             title={preset.description[lang]}
             className={`rounded-full border px-3 py-1 text-xs transition-colors ${
               activePreset === preset.id
-                ? 'border-blue-500 bg-blue-500/20 text-blue-300'
+                ? 'border-emerald-500 bg-emerald-500/20 text-emerald-300'
                 : 'border-zinc-700 text-zinc-400 hover:border-zinc-500 hover:text-zinc-200'
             }`}
           >
@@ -641,7 +641,7 @@ export function ConexionesGraph() {
             {hiddenTypes.size > 0 && (
               <button
                 onClick={() => { setHiddenTypes(new Set()); setActivePreset('all') }}
-                className="ml-2 text-blue-400 hover:underline"
+                className="ml-2 text-emerald-400 hover:underline"
               >
                 {ui.showAll[lang]}
               </button>
@@ -700,7 +700,7 @@ export function ConexionesGraph() {
               {hiddenEdgeTypes.size > 0 && (
                 <button
                   onClick={() => setHiddenEdgeTypes(new Set())}
-                  className="ml-1 text-xs text-blue-400 hover:underline"
+                  className="ml-1 text-xs text-emerald-400 hover:underline"
                 >
                   {ui.showAll[lang]}
                 </button>
@@ -716,7 +716,7 @@ export function ConexionesGraph() {
           {loading && (
             <div className="flex h-full items-center justify-center">
               <div className="text-center">
-                <div className="mb-3 inline-block h-8 w-8 animate-spin rounded-full border-2 border-zinc-600 border-t-blue-500" />
+                <div className="mb-3 inline-block h-8 w-8 animate-spin rounded-full border-2 border-zinc-600 border-t-emerald-500" />
                 <p className="text-sm text-zinc-500">{ui.loadingGraph[lang]}</p>
               </div>
             </div>
@@ -859,7 +859,7 @@ export function ConexionesGraph() {
 
               {selectedNode.type === 'Politician' && (
                 <div className="mb-2 text-xs text-zinc-400">
-                  {ui.presentIn[lang]} <span className="font-semibold text-blue-400">{selectedNode.datasets}</span> {ui.dataSources[lang]}
+                  {ui.presentIn[lang]} <span className="font-semibold text-emerald-400">{selectedNode.datasets}</span> {ui.dataSources[lang]}
                 </div>
               )}
 

@@ -57,12 +57,12 @@
     "tagline": "Investigation engine on knowledge graphs"
   },
   "narrative": {
-    "intro": "We built an investigation engine with artificial intelligence. This is what happened.",
-    "subtitle": "A system that searches, validates, and consolidates findings from public data. With human review at every step. We tested it on one case. Then on seven."
+    "intro": "We built an investigation engine with artificial intelligence. This is what we found.",
+    "subtitle": "A system that searches, validates, and consolidates findings from public data. With human review at every step."
   },
   "whatsNext": {
     "title": "What's next",
-    "description": "Our original vision is to build a platform where anyone can create investigations like these — and build on top of them with consensus mechanisms.",
+    "description": "The goal is to build a platform where anyone can create investigations like these — and build on top of them with consensus mechanisms.",
     "roadmapTitle": "Roadmap",
     "platform": {
       "title": "Open platform",

@@ -192,7 +192,7 @@ export default function InvestigacionPage() {
                 onClick={() => scrollTo(s.id)}
                 className={`whitespace-nowrap rounded px-2.5 py-1.5 text-xs font-medium transition-colors ${
                   activeSection === s.id
-                    ? 'bg-blue-600/20 text-blue-400'
+                    ? 'bg-emerald-600/20 text-emerald-400'
                     : 'text-zinc-500 hover:text-zinc-300'
                 }`}
               >
@@ -234,7 +234,7 @@ export default function InvestigacionPage() {
               onClick={() => setFactcheckFilter(null)}
               className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                 factcheckFilter === null
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-emerald-600 text-white'
                   : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
               }`}
             >
@@ -308,7 +308,7 @@ export default function InvestigacionPage() {
                             href={item.source_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-400 hover:underline"
+                            className="text-emerald-400 hover:underline"
                             onClick={(e) => e.stopPropagation()}
                           >
                             {item.source}
@@ -362,7 +362,7 @@ export default function InvestigacionPage() {
               onClick={() => setTimelineFilter(null)}
               className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                 timelineFilter === null
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-emerald-600 text-white'
                   : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
               }`}
             >
@@ -437,11 +437,11 @@ export default function InvestigacionPage() {
                     </h3>
                     <p className="text-xs text-zinc-500">{actor.party}</p>
                   </div>
-                  <span className="shrink-0 rounded-full bg-blue-600/20 px-2 py-0.5 text-xs font-medium text-blue-300">
+                  <span className="shrink-0 rounded-full bg-emerald-600/20 px-2 py-0.5 text-xs font-medium text-emerald-300">
                     {actor.datasets} datasets
                   </span>
                 </div>
-                <p className="mt-1 text-xs font-medium text-blue-400">
+                <p className="mt-1 text-xs font-medium text-emerald-400">
                   {lang === 'es' ? actor.role_es : actor.role_en}
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-zinc-400">
@@ -460,7 +460,7 @@ export default function InvestigacionPage() {
                     href={actor.source_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-2 inline-flex items-center gap-1 text-xs text-blue-400 hover:text-blue-300 transition-colors"
+                    className="mt-2 inline-flex items-center gap-1 text-xs text-emerald-400 hover:text-emerald-300 transition-colors"
                   >
                     {lang === 'es' ? 'Fuente' : 'Source'} ↗
                   </a>
@@ -526,7 +526,7 @@ export default function InvestigacionPage() {
                   href={flow.source_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 inline-block text-xs text-blue-400 hover:underline"
+                  className="mt-2 inline-block text-xs text-emerald-400 hover:underline"
                 >
                   {flow.source} ↗
                 </a>
@@ -565,7 +565,7 @@ export default function InvestigacionPage() {
                   href={src.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-500 hover:text-blue-400 hover:underline"
+                  className="text-zinc-500 hover:text-emerald-400 hover:underline"
                 >
                   {src.name}
                 </a>
@@ -624,7 +624,7 @@ function TimelineCard({
                 href={src}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-blue-400 hover:underline"
+                className="text-xs text-emerald-400 hover:underline"
               >
                 {lang === 'es' ? 'Fuente' : 'Source'} ↗
               </a>

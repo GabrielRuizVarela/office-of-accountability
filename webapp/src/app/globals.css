@@ -114,6 +114,20 @@ body {
   animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
 }
 
+/* Staggered mount reveal — no scroll trigger, plays once on load */
+.reveal-on-mount {
+  opacity: 0;
+  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.reveal-d1 { animation-delay: 0ms; }
+.reveal-d2 { animation-delay: 60ms; }
+.reveal-d3 { animation-delay: 120ms; }
+.reveal-d4 { animation-delay: 180ms; }
+.reveal-d5 { animation-delay: 240ms; }
+.reveal-d6 { animation-delay: 300ms; }
+.reveal-d7 { animation-delay: 360ms; }
+.reveal-d8 { animation-delay: 420ms; }
+
 /* CTA button press effect */
 .btn-press {
   transition: transform 0.1s ease, box-shadow 0.15s ease;

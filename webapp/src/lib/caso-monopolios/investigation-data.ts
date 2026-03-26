@@ -2,7 +2,7 @@
  * Monopolized Markets in Argentina — Investigation structured data.
  *
  * Bilingual (ES primary, EN secondary) factcheck items, timeline events,
- * actors, money flows, and impact stats — sourced from 24-wave investigation
+ * actors, money flows, and impact stats — sourced from 32-wave investigation
  * cycle cross-referencing Neo4j graph (2.5M+ nodes), web research, ICIJ
  * offshore leaks, IGJ corporate registry, CompraR procurement, CNE campaign
  * finance data, privatization records, and regulatory body analysis.
@@ -131,12 +131,6 @@ export const IMPACT_STATS: readonly ImpactStat[] = [
     label_en: 'Cross-sector interlocking directorates',
     source: 'Board members sitting on companies across monopolized sectors (IGJ registry)',
   },
-  {
-    value: '44',
-    label_es: 'Archivos de investigación JSON',
-    label_en: 'Investigation JSON research files',
-    source: '44 research JSON files — sectors, cross-refs, factchecks, resolutions, obras-públicas (1.5MB total)',
-  },
 ] as const
 
 // ---------------------------------------------------------------------------
@@ -205,9 +199,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source: 'IGJ Registry / Neo4j CompanyOfficer',
     source_url: 'https://www.americatv.com.ar/',
     detail_es:
-      'Vila-Manzano operan el segundo conglomerado de medios del país. La combinación de poder mediático + negocios energéticos + conexiones políticas directas (Manzano fue ministro) constituye un caso paradigmático de captura político-empresarial.',
+      'Vila-Manzano operan el segundo conglomerado de medios del país. Un ex-ministro del Interior como accionista controlante de la mayor distribuidora eléctrica y dos canales de TV.',
     detail_en:
-      'Vila-Manzano operate the country\'s second-largest media conglomerate. The combination of media power + energy business + direct political connections (Manzano was minister) constitutes a paradigmatic case of political-corporate capture.',
+      'Vila-Manzano operate the country\'s second-largest media conglomerate. A former Interior Minister as controlling shareholder of the largest electricity distributor and two TV channels.',
   },
   {
     id: 'blaquier-offshore-empire',
@@ -253,9 +247,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source: 'ICIJ Offshore Leaks / Neo4j CompanyOfficer',
     source_url: 'https://offshoreleaks.icij.org/',
     detail_es:
-      'Negocio de alto flujo de efectivo + entidad panameña = riesgo de lavado. Germán Alfredo Coto también aparece como officer en las mismas 18 empresas.',
+      'Negocio de alto flujo de efectivo + entidad panameña. Sin causa judicial identificada. Germán Alfredo Coto también aparece como officer en las mismas 18 empresas.',
     detail_en:
-      'Cash-intensive retail business + Panama entity = money laundering risk. Germán Alfredo Coto also appears as officer in the same 18 companies.',
+      'Cash-intensive retail business + Panama entity. No identified judicial case. Germán Alfredo Coto also appears as officer in the same 18 companies.',
   },
   {
     id: 'abcd-grain-cartel',
@@ -286,9 +280,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source: 'Boletín Oficial / PAGBAM firm profile',
     source_url: 'https://pagbam.com/',
     detail_es:
-      'CORRECCIÓN: No son directorios cruzados en sentido antimonopolio (Art. 3(l) Ley 27.442 solo prohíbe entre empresas competidoras para directores). Son roles de síndico/asesor legal. Sin embargo, crean redes de información privilegiada entre sectores.',
+      'Estos no son directorios cruzados en sentido antimonopolio (Art. 3(l) Ley 27.442 solo prohíbe entre empresas competidoras para directores). Son roles de síndico/asesor legal que crean redes de información privilegiada entre sectores.',
     detail_en:
-      'CORRECTION: These are NOT antitrust-relevant interlocking directorates (Art. 3(l) Ley 27.442 only prohibits between competing companies for directors). They are síndico/legal counsel roles. However, they create privileged information networks across sectors.',
+      'These are not antitrust-relevant interlocking directorates (Art. 3(l) Ley 27.442 only prohibits between competing companies for directors). They are síndico/legal counsel roles that create privileged information networks across sectors.',
   },
   {
     id: 'aluar-dual-donor-concession',
@@ -302,9 +296,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source: 'CNE campaign finance records / Ley 26.215',
     source_url: 'https://www.electoral.gob.ar/',
     detail_es:
-      'FdT inicialmente RECHAZÓ la donación de ARS 900K alegando que Aluar es concesionario estatal. Luego la aceptó cuando Aluar argumentó que la concesión es de la subsidiaria Futaleufú SA, no de Aluar directamente. Donación hedging clásica de monopolista dependiente de concesiones.',
+      'FdT inicialmente RECHAZÓ la donación de ARS 900K alegando que Aluar es concesionario estatal. Luego la aceptó cuando Aluar argumentó que la concesión es de la subsidiaria Futaleufú SA, no de Aluar directamente. Aluar donó a ambas coaliciones — el único donante top-20 en hacerlo.',
     detail_en:
-      'FdT initially REJECTED the ARS 900K donation arguing Aluar is a state concessionaire. Later accepted when Aluar argued the concession is held by subsidiary Futaleufú SA, not Aluar directly. Classic hedging donation by a monopolist dependent on concessions.',
+      'FdT initially REJECTED the ARS 900K donation arguing Aluar is a state concessionaire. Later accepted when Aluar argued the concession is held by subsidiary Futaleufú SA, not Aluar directly. Aluar donated to both coalitions — the only top-20 donor to do so.',
   },
   {
     id: 'igj-cumulative-records-caveat',
@@ -378,9 +372,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'pharma-pricing-premium',
     claim_es:
-      'Los precios de medicamentos en Argentina son 40-100% superiores al promedio regional latinoamericano. Roemmers (líder de mercado) y Bagó dominan las licitaciones de PAMI. La penetración de genéricos es baja.',
+      'Los precios de medicamentos en Argentina son 26% superiores al promedio regional latinoamericano. Roemmers (líder de mercado) y Bagó dominan las licitaciones de PAMI. La penetración de genéricos es baja.',
     claim_en:
-      'Drug prices in Argentina are 40-100% above Latin American regional average. Roemmers (market leader) and Bagó dominate PAMI tenders. Generic drug penetration is low.',
+      'Drug prices in Argentina are 26% above Latin American regional average. Roemmers (market leader) and Bagó dominate PAMI tenders. Generic drug penetration is low.',
     status: 'confirmed',
     tier: 2,
     sector: 'pharma',

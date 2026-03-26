@@ -90,7 +90,7 @@ export default function CronologiaPage() {
                         href={src}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs text-blue-400 hover:underline"
+                        className="text-xs text-emerald-400 hover:underline"
                       >
                         {t.source[lang]} ↗
                       </a>

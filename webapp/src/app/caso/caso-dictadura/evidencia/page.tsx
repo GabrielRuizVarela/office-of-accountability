@@ -38,7 +38,7 @@ export default function EvidenciaPage() {
                     href={doc.source_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-block text-xs text-amber-400 hover:text-amber-300"
+                    className="mt-3 inline-block text-xs text-stone-400 hover:text-stone-300"
                   >
                     {lang === 'es' ? 'Ver fuente' : 'View source'} &rarr;
                   </a>

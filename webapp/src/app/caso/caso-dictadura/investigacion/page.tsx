@@ -50,7 +50,7 @@ export default function InvestigacionPage() {
             onClick={() => setTab(id)}
             className={`rounded-full px-4 py-1.5 text-xs font-medium transition-colors ${
               tab === id
-                ? 'bg-amber-600 text-white'
+                ? 'bg-stone-600 text-white'
                 : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-200'
             }`}
           >
@@ -117,7 +117,7 @@ export default function InvestigacionPage() {
               <div className="flex items-start justify-between gap-3">
                 <div className="flex-1">
                   <h3 className="text-sm font-semibold text-zinc-200">{doc.title}</h3>
-                  <p className="mt-1 text-xs text-amber-400">{lang === 'es' ? doc.type_es : doc.type_en} &middot; {doc.date}</p>
+                  <p className="mt-1 text-xs text-stone-400">{lang === 'es' ? doc.type_es : doc.type_en} &middot; {doc.date}</p>
                   <p className="mt-2 text-xs leading-relaxed text-zinc-400">
                     {lang === 'es' ? doc.summary_es : doc.summary_en}
                   </p>
@@ -236,7 +236,7 @@ function ActorCard({ actor, lang }: {
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <h3 className="font-semibold text-zinc-100">{actor.name}</h3>
-            <p className="mt-1 text-xs text-amber-400">{lang === 'es' ? actor.role_es : actor.role_en}</p>
+            <p className="mt-1 text-xs text-stone-400">{lang === 'es' ? actor.role_es : actor.role_en}</p>
             <p className="mt-2 text-xs leading-relaxed text-zinc-400">
               {lang === 'es' ? actor.description_es : actor.description_en}
             </p>
@@ -250,7 +250,7 @@ function ActorCard({ actor, lang }: {
             onClick={loadGraph}
             className={`ml-3 shrink-0 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
               expanded
-                ? 'border-amber-500/30 bg-amber-500/10 text-amber-400'
+                ? 'border-stone-500/30 bg-stone-500/10 text-stone-400'
                 : 'border-zinc-700 bg-zinc-800 text-zinc-400 hover:border-zinc-600 hover:text-zinc-200'
             }`}
           >
