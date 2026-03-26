@@ -59,12 +59,15 @@ function isMutationMethod(method: string): boolean {
   return method === 'POST' || method === 'PATCH' || method === 'PUT' || method === 'DELETE'
 }
 
-/** Routes exempt from CSRF validation (they handle their own CSRF) */
-function isCsrfExempt(pathname: string): boolean {
+/** Routes exempt from CSRF validation (they handle their own CSRF or use API key auth) */
+function isCsrfExempt(pathname: string, request: NextRequest): boolean {
   // Auth.js routes handle their own CSRF tokens
   if (pathname.startsWith('/api/auth/')) return true
   // Investigation API — uses x-api-key header auth instead of CSRF (for MCP agent access)
   if (pathname.startsWith('/api/caso-libra/investigation')) return true
+  // MCP-proxied requests are authenticated via Bearer API key, not CSRF
+  // The MCP Worker sends X-MCP-User-Id after validating the API key
+  if (request.headers.get('x-mcp-user-id')) return true
   return false
 }
 
@@ -144,7 +147,7 @@ export async function middleware(request: NextRequest) {
   if (
     pathname.startsWith('/api/') &&
     isMutationMethod(method) &&
-    !isCsrfExempt(pathname)
+    !isCsrfExempt(pathname, request)
   ) {
     const csrfValid = await validateCsrf(request)
     if (!csrfValid) {
