@@ -56,10 +56,12 @@ const chapters: readonly Chapter[] = [
       es: [
         'Decreto 86/2023: Manuel Adorni designado Vocero Presidencial. Decreto 834/2024: ascendido a Secretario de Comunicacion y Medios, con control sobre la pauta oficial y los medios estatales. Decreto 784/2025: Jefe de Gabinete de Ministros. [1]',
         'CUIT 20-28052206-7. Actividades registradas en AFIP: servicios personales (2013), asesoria empresarial (2020), contabilidad (2020). Sociedad al 50% con su esposa Bettina Julieta Angeletti en AS Innovacion Profesional S.R.L. (Boletin Oficial, febrero 2020). [2]',
+        'Tres anos: de panelista de television a controlar la pauta oficial, los medios estatales y la Jefatura de Gabinete. Su esposa mantuvo actividad comercial con contratistas del Estado durante todo ese recorrido.',
       ],
       en: [
         'Decree 86/2023: Manuel Adorni designated Presidential Spokesperson. Decree 834/2024: promoted to Secretary of Communication and Media, with control over official advertising and state media. Decree 784/2025: Chief of Cabinet. [1]',
         'CUIT 20-28052206-7. AFIP-registered activities: personal services (2013), business advisory (2020), accounting (2020). 50/50 partnership with wife Bettina Julieta Angeletti in AS Innovacion Profesional S.R.L. (Boletin Oficial, February 2020). [2]',
+        'Three years: from television panelist to controlling official advertising, state media, and the Chief of Cabinet office. His wife maintained commercial activity with state contractors throughout.',
       ],
     },
     citations: [
@@ -77,6 +79,7 @@ const chapters: readonly Chapter[] = [
         'Ruben Santiago Ward (DNI 24.676.344), presidente de ATX, y Pablo Javier Casal, presidente de Area Tech, fueron socios en Lugalu S.A. Ambas empresas comparten domicilio fiscal: San Martin 551, CABA. Area Tech no presento garantia de oferta y fue eliminada. [2]',
         'Rodrigo Paez Canosa (DNI 25.896.026) es director suplente de ATX, ex-empleado de Area Tech y ex-empleado de Movilgate. La IGJ lo registra ademas como directivo de Lugalu y Neutronica, ambas de Ward. [3]',
         'ATX cobro $0,045 por SMS en un contrato y $0,076 en otro: 69% de diferencia por servicio identico. [1]',
+        'Un solo individuo aparece como directivo o empleado de las tres empresas que compitieron por una licitacion de $3.650 millones. La licitacion fue lanzada y adjudicada por la misma persona: Manuel Adorni.',
         'Nota de atribucion: la conexion Adorni-ATX-Ward y el vinculo Casal-Lugalu fueron reportados por el diputado Tailhade y cubiertos por Sumario, Canal de las Noticias y DataClave. Esta investigacion aporta la confirmacion IGJ por DNI de que Paez Canosa es director registrado en ATX, Lugalu y Neutronica simultaneamente, y que la red de Ward abarca 11 empresas.',
       ],
       en: [
@@ -85,6 +88,7 @@ const chapters: readonly Chapter[] = [
         'Ruben Santiago Ward (DNI 24,676,344), ATX president, and Pablo Javier Casal, Area Tech president, were partners in Lugalu S.A. Both companies share fiscal address: San Martin 551, CABA. Area Tech did not present a bid guarantee and was eliminated. [2]',
         'Rodrigo Paez Canosa (DNI 25,896,026) is ATX substitute director, former Area Tech employee, and former Movilgate employee. IGJ also records him as director at Lugalu and Neutronica, both Ward companies. [3]',
         'ATX charged $0.045 per SMS in one contract and $0.076 in another: 69% difference for identical service. [1]',
+        'A single individual appears as director or employee at all three companies that competed for a $3.65 billion tender. The tender was launched and awarded by the same person: Manuel Adorni.',
         'Attribution note: the Adorni-ATX-Ward connection and the Casal-Lugalu link were reported by Deputy Tailhade and covered by Sumario, Canal de las Noticias, and DataClave. This investigation adds IGJ-confirmed DNI proof that Paez Canosa is a registered director at ATX, Lugalu, and Neutronica simultaneously, and that Ward\'s network spans 11 companies.',
       ],
     },
@@ -103,12 +107,14 @@ const chapters: readonly Chapter[] = [
         'Diego Paez (DNI 92.297.127) aparece en 5 de ellas: ATX, Impakto, PW Producciones, Neutronica y Lugalu. Juan Ignacio Ward (DNI 44.096.749), hijo de Ruben, en Exi y Wazzup. [1]',
         'Exi Group y 5OL son empresas de cobro de deudas con miles de denuncias de consumidores. [2]',
         'ATX tenia 9 contratos gubernamentales previos (desde 2015) con RENAPER y el Ministerio de Educacion, por un total de al menos $244 millones. Dato descubierto mediante cruce por CUIT contra la base de datos de contratistas de obras publicas. [3]',
+        'Once sociedades, tres directivos compartidos, 9 contratos previos con el Estado. La estructura societaria estaba en la base de datos antes de que Adorni adjudicara la licitacion.',
       ],
       en: [
         'Ward is director at 11 companies per IGJ: ATX, 5 On Line, Exi Group, Lugalu, Doru Inversiones, Neutronica, PW Producciones, Impakto, Wazzup, Unicall, and WC. [1]',
         'Diego Paez (DNI 92,297,127) appears at 5 of them: ATX, Impakto, PW Producciones, Neutronica, and Lugalu. Juan Ignacio Ward (DNI 44,096,749), Ruben\'s son, at Exi and Wazzup. [1]',
         'Exi Group and 5OL are debt collection companies with thousands of consumer complaints. [2]',
         'ATX had 9 prior government contracts (since 2015) with RENAPER and the Ministry of Education, totaling at least $244 million. Discovered by cross-referencing ATX CUIT against the public works contractor database. [3]',
+        'Eleven companies, three shared directors, 9 prior state contracts. The corporate structure was in the database before Adorni signed the award.',
       ],
     },
     citations: [
@@ -126,12 +132,14 @@ const chapters: readonly Chapter[] = [
         '+Be cobro $6.370.000 a National Shipping S.A. por capacitacion de ejecutivos. National Shipping es contratista de YPF desde hace 28 anos (~USD $140M anuales). Adorni es miembro del directorio de YPF como representante del Estado. [1]',
         'Segun la denuncia de la diputada Pagano: entidades estatales (ARCA, AySA, Banco Nacion, Aerolineas Argentinas) contratan a Datco Group (CUIT 30-59611620-1). Datco habria subcontratado a +Be. Los montos no fueron divulgados publicamente. [2]',
         'Datco tiene 5 contratos gubernamentales en la base de datos existente, incluyendo uno de $11.4 millones con la Jefatura de Gabinete de Ministros. [3]',
+        'El funcionario que dirige la Jefatura de Gabinete es director de YPF. Su esposa factura a un contratista de YPF. La entidad que intermedia tiene contratos con la misma Jefatura de Gabinete.',
       ],
       en: [
         'Bettina Julieta Angeletti (CUIT 27-29865407-0) founded +Be consulting in July 2024. Operates under her personal CUIT as sole proprietor. [1]',
         '+Be charged $6,370,000 to National Shipping S.A. for executive training. National Shipping has been a YPF contractor for 28 years (~USD $140M annually). Adorni is a YPF board member as state representative. [1]',
         'Per Deputy Pagano\'s complaint: state entities (ARCA, AySA, Banco Nacion, Aerolineas Argentinas) contract Datco Group (CUIT 30-59611620-1). Datco allegedly subcontracted +Be. Amounts were not publicly disclosed. [2]',
         'Datco holds 5 government contracts in the existing database, including one for $11.4 million with the Chief of Cabinet\'s Office. [3]',
+        'The official who runs the Chief of Cabinet\'s Office is a YPF board member. His wife bills a YPF contractor. The intermediary entity holds contracts with the same Chief of Cabinet\'s Office.',
       ],
     },
     citations: [
@@ -148,11 +156,13 @@ const chapters: readonly Chapter[] = [
         'Concesion de 25 anos. Canon mensual: $611 millones segun el Tribunal de Tasaciones. La AABE supervisa la licitacion. La AABE reporta al Jefe de Gabinete. [1]',
         'Grupo Foggia (CUIT 30-71448507-1) participa del proceso junto a DirecTV Argentina. La IGJ registra a Mara Natalia Gorini (DNI 24.128.338) como directiva de Grupo Foggia. Gorini es asesora de Karina Milei, Secretaria General de la Presidencia. [1]',
         'Grupo Foggia es ademas cliente de +Be, la consultora de Angeletti, segun la denuncia de la diputada Pagano. [1]',
+        'Adorni controla la agencia que adjudica la concesion. Una asesora de la hermana del presidente es directiva del licitante. La esposa de Adorni factura al mismo licitante.',
       ],
       en: [
         '25-year concession. Monthly canon: $611 million per the Appraisal Tribunal. AABE oversees the tender. AABE reports to the Chief of Cabinet. [1]',
         'Grupo Foggia (CUIT 30-71448507-1) participates in the process alongside DirecTV Argentina. IGJ records Mara Natalia Gorini (DNI 24,128,338) as a Grupo Foggia director. Gorini is an advisor to Karina Milei, Secretary General of the Presidency. [1]',
         'Grupo Foggia is also a client of +Be, Angeletti\'s consulting firm, per Deputy Pagano\'s complaint. [1]',
+        'Adorni controls the agency that awards the concession. An advisor to the president\'s sister is a director at the bidder. Adorni\'s wife bills that same bidder.',
       ],
     },
     citations: [
@@ -192,12 +202,14 @@ const chapters: readonly Chapter[] = [
         'USD $42.500 en efectivo, justificados como prestamos de Silvia Pais (madre) y Norma Zuccolo (jubilada de 95 anos). El origen de estos fondos es materia de la causa CFP 1003/2026. [1]',
         'Angeletti compro la Unidad Funcional 380 en el Country Club Indio Cua Golf Club, Exaltacion de la Cruz, el 15 de noviembre de 2024. No declarada en la DDJJ. Un departamento en Caballito tampoco fue declarado. [2]',
         'Sueldo bruto como Jefe de Gabinete: $3.584.006 mensuales (pre-aumento de enero 2026). Gastos familiares en tarjeta de credito: $17-20 millones mensuales segun MinutoUno, con picos de $30 millones bimestrales. [3]',
+        'El sueldo cubre una quinta parte de los gastos declarados en tarjeta. La diferencia no esta explicada en ninguna fuente publica.',
       ],
       en: [
         'DDJJ filed late on November 7, 2024. Declared patrimony: $107.9 million. Debts: $95.4 million. Previous declaration: $11.6 million. Nominal increase: ~500%. 2023 inflation was 211%. [1]',
         'USD $42,500 in cash, justified as loans from Silvia Pais (mother) and Norma Zuccolo (95-year-old retiree). The origin of these funds is part of case CFP 1003/2026. [1]',
         'Angeletti purchased Functional Unit 380 at Indio Cua Golf Club, Exaltacion de la Cruz, on November 15, 2024. Not declared in the DDJJ. A Caballito apartment was also not declared. [2]',
         'Gross salary as Chief of Cabinet: $3,584,006 monthly (pre-January 2026 increase). Family credit card spending: $17-20 million monthly per MinutoUno, with peaks of $30 million bimonthly. [3]',
+        'The salary covers one fifth of declared credit card spending. The difference is not explained in any public source.',
       ],
     },
     citations: [
@@ -214,11 +226,13 @@ const chapters: readonly Chapter[] = [
         '19 de octubre de 2024: reunion en el Hotel Libertador. Presentes: Milei, Karina Milei, Adorni, Mauricio Novelli (trader cripto) y Julian Peh (CEO de KIP Protocol, Singapur). Cuatro meses despues, Milei promociono $LIBRA en redes sociales. El token colapso. Perdidas estimadas: USD $251 millones. [1]',
         'El analisis forense del telefono de Novelli revelo flyers con Adorni como orador confirmado del "Tech Forum 2", un evento cancelado tras el escandalo. Adorni nego haber aceptado. [2]',
         'El FBI y el DOJ abrieron investigacion. Un juez argentino congelo activos por USD $100 millones en la causa CFP 574/2025. [1]',
+        'Adorni estuvo en la reunion donde se presento la empresa cuyo token el presidente promociono cuatro meses despues. La justicia argentina y el DOJ investigan el mismo hecho.',
       ],
       en: [
         'October 19, 2024: meeting at Hotel Libertador. Present: Milei, Karina Milei, Adorni, Mauricio Novelli (crypto trader), and Julian Peh (CEO of KIP Protocol, Singapore). Four months later, Milei promoted $LIBRA on social media. The token collapsed. Estimated losses: USD $251 million. [1]',
         'Forensic analysis of Novelli\'s phone revealed flyers listing Adorni as confirmed speaker at "Tech Forum 2", an event cancelled after the scandal. Adorni denied having accepted. [2]',
         'The FBI and DOJ opened an investigation. An Argentine judge froze USD $100 million in assets in case CFP 574/2025. [1]',
+        'Adorni was at the meeting where the company was presented whose token the president promoted four months later. Argentine courts and the DOJ are investigating the same event.',
       ],
     },
     citations: [
