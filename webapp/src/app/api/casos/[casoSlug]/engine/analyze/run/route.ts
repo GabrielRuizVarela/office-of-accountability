@@ -3,9 +3,23 @@ import { z } from 'zod/v4'
 import neo4j from 'neo4j-driver-lite'
 
 import { readQuery } from '@/lib/neo4j/client'
+import {
+  degreeCentrality,
+  detectCommunities,
+  findTemporalClusters,
+  detectAnomalies,
+} from '@/lib/engine/algorithms'
 
 const bodySchema = z.object({
-  type: z.enum(['procurement', 'ownership', 'connections', 'temporal', 'centrality']),
+  type: z.enum([
+    'procurement',
+    'ownership',
+    'connections',
+    'temporal',
+    'centrality',
+    'community',
+    'anomaly',
+  ]),
 })
 
 export async function POST(
@@ -28,79 +42,23 @@ export async function POST(
 
   try {
     if (body.type === 'centrality') {
-      // COUNT relationships per node, rank by degree
-      const result = await readQuery<{
-        id: string
-        name: string | null
-        label: string
-        degree: number
-      }>(
-        `MATCH (n {caso_slug: $casoSlug})
-         WITH n, labels(n)[0] AS label, size([(n)-[]-() | 1]) AS degree
-         ORDER BY degree DESC
-         LIMIT 50
-         RETURN n.id AS id, n.name AS name, label, degree`,
-        { casoSlug },
-        (r) => ({
-          id: r.get('id') as string,
-          name: r.get('name') as string | null,
-          label: r.get('label') as string,
-          degree: neo4j.isInt(r.get('degree'))
-            ? (r.get('degree') as { toNumber(): number }).toNumber()
-            : (r.get('degree') as number),
-        }),
-      )
+      const results = await degreeCentrality(casoSlug)
+      return Response.json({ success: true, data: { type: 'centrality', results } })
+    }
 
-      return Response.json({
-        success: true,
-        data: {
-          type: body.type,
-          results: result.records,
-        },
-      })
+    if (body.type === 'community') {
+      const communities = await detectCommunities(casoSlug)
+      return Response.json({ success: true, data: { type: 'community', communities } })
     }
 
     if (body.type === 'temporal') {
-      // Find Event pairs within 7-day windows
-      const result = await readQuery<{
-        e1_id: string
-        e1_name: string | null
-        e1_date: string | null
-        e2_id: string
-        e2_name: string | null
-        e2_date: string | null
-        days_apart: number
-      }>(
-        `MATCH (e1:Event {caso_slug: $casoSlug}), (e2:Event {caso_slug: $casoSlug})
-         WHERE e1.date IS NOT NULL
-           AND e2.date IS NOT NULL
-           AND id(e1) < id(e2)
-           AND abs(duration.between(date(e1.date), date(e2.date)).days) <= 7
-         RETURN e1.id AS e1_id, e1.name AS e1_name, e1.date AS e1_date,
-                e2.id AS e2_id, e2.name AS e2_name, e2.date AS e2_date,
-                abs(duration.between(date(e1.date), date(e2.date)).days) AS days_apart
-         LIMIT 30`,
-        { casoSlug },
-        (r) => ({
-          e1_id: r.get('e1_id') as string,
-          e1_name: r.get('e1_name') as string | null,
-          e1_date: r.get('e1_date') as string | null,
-          e2_id: r.get('e2_id') as string,
-          e2_name: r.get('e2_name') as string | null,
-          e2_date: r.get('e2_date') as string | null,
-          days_apart: neo4j.isInt(r.get('days_apart'))
-            ? (r.get('days_apart') as { toNumber(): number }).toNumber()
-            : (r.get('days_apart') as number),
-        }),
-      )
+      const clusters = await findTemporalClusters(casoSlug)
+      return Response.json({ success: true, data: { type: 'temporal', clusters } })
+    }
 
-      return Response.json({
-        success: true,
-        data: {
-          type: body.type,
-          co_occurrences: result.records,
-        },
-      })
+    if (body.type === 'anomaly') {
+      const anomalies = await detectAnomalies(casoSlug)
+      return Response.json({ success: true, data: { type: 'anomaly', anomalies } })
     }
 
     // For procurement, ownership, connections — return graph summary
