@@ -5,6 +5,7 @@ import { detectLang } from '@/lib/i18n'
 import { LanguageProvider, type Lang } from '@/lib/language-context'
 import { InvestigationNav } from '@/components/investigation/InvestigationNav'
 import { BilingualLegalDisclaimer } from '@/components/investigation/LegalDisclaimer'
+import { getClientConfigDynamic } from '@/lib/investigations/registry'
 
 const CASE_META: Readonly<
   Record<string, { defaultLang: Lang; es: { title: string; description: string }; en: { title: string; description: string } }>
@@ -45,18 +46,27 @@ export async function generateMetadata({
   const { slug } = await params
   const caseMeta = CASE_META[slug]
 
-  if (!caseMeta) {
-    return { title: 'Investigación — Oficina de Rendición de Cuentas' }
-  }
-
   const h = await headers()
   const lang = detectLang(h.get('accept-language'))
-  const meta = caseMeta[lang] ?? caseMeta[caseMeta.defaultLang]
 
-  return {
-    title: meta.title,
-    description: meta.description,
+  if (caseMeta) {
+    const meta = caseMeta[lang] ?? caseMeta[caseMeta.defaultLang]
+    return {
+      title: meta.title,
+      description: meta.description,
+    }
   }
+
+  // Fallback: try dynamic registry (Neo4j-backed investigations)
+  const dynamicConfig = await getClientConfigDynamic(slug)
+  if (dynamicConfig) {
+    return {
+      title: `${dynamicConfig.name[lang]} — Oficina de Rendición de Cuentas`,
+      description: dynamicConfig.description[lang] || undefined,
+    }
+  }
+
+  return { title: 'Investigación — Oficina de Rendición de Cuentas' }
 }
 
 export default async function CasoLayout({
