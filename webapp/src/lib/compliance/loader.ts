@@ -1,5 +1,5 @@
 /**
- * Compliance Framework Loader — M11 Phase 2b.
+ * Compliance Framework Loader - M11 Phase 2b.
  *
  * Reads YAML framework definitions, validates against Zod schemas,
  * and MERGEs ComplianceFramework / ComplianceRule / ChecklistItem
@@ -147,7 +147,7 @@ export async function mergeFramework(fw: ComplianceFramework): Promise<LoadFrame
 }
 
 // ---------------------------------------------------------------------------
-// Public API — load all frameworks into Neo4j
+// Public API - load all frameworks into Neo4j
 // ---------------------------------------------------------------------------
 
 export interface LoadAllResult {

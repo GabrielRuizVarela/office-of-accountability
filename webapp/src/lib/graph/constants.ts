@@ -39,7 +39,7 @@ export const LABEL_COLORS: Readonly<Record<string, string>> = {
 export const DEFAULT_NODE_COLOR = '#94a3b8' // slate-400
 
 // ---------------------------------------------------------------------------
-// Node subcategories — fine-grained categories within large groups (Person, etc.)
+// Node subcategories - fine-grained categories within large groups (Person, etc.)
 // ---------------------------------------------------------------------------
 
 /** Canonical subcategories for Person nodes */
@@ -78,7 +78,7 @@ export const SUBCATEGORY_CONFIGS: Readonly<Record<string, {
 }
 
 // ---------------------------------------------------------------------------
-// Category extraction — normalises category/person_type/role → canonical name
+// Category extraction - normalises category/person_type/role → canonical name
 // ---------------------------------------------------------------------------
 
 const PERSON_CATEGORY_KEYWORDS: ReadonlyArray<[string, readonly string[]]> = [

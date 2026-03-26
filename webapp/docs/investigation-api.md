@@ -197,6 +197,6 @@ All submissions start as `pending_review`. A human reviewer approves or rejects 
 
 1. **Read the schema first**: `GET /api/caso-libra/investigation?schema=true`
 2. **Submit findings**: `POST /api/caso-libra/investigation` with `{type, data}`
-3. **All fields are validated** — you'll get specific error messages if something is wrong
-4. **Bilingual required** — every text field needs both `_es` (Spanish) and `_en` (English) versions
-5. **Sources required** — every claim must have a verifiable source URL
+3. **All fields are validated** - you'll get specific error messages if something is wrong
+4. **Bilingual required** - every text field needs both `_es` (Spanish) and `_en` (English) versions
+5. **Sources required** - every claim must have a verifiable source URL

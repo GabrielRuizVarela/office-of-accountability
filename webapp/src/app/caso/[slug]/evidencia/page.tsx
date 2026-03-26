@@ -1,5 +1,5 @@
 /**
- * Evidence/documents list page — works for any investigation case.
+ * Evidence/documents list page - works for any investigation case.
  */
 
 import { getQueryBuilder } from '@/lib/investigations/query-builder'

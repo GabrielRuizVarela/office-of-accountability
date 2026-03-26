@@ -8,7 +8,7 @@
  * and prefixed IDs (caso-finanzas-politicas:{local_id}) per the
  * investigation standardization convention.
  *
- * Idempotent — uses MERGE for all operations. Safe to run multiple times.
+ * Idempotent - uses MERGE for all operations. Safe to run multiple times.
  * All data is curated from public sources documented in
  * docs/investigations/narrative-finanzas-politicas.md
  */
@@ -25,7 +25,7 @@ function pid(localId: string): string {
 }
 
 // ---------------------------------------------------------------------------
-// Data — Persons
+// Data - Persons
 // ---------------------------------------------------------------------------
 
 const PERSONS = [
@@ -97,7 +97,7 @@ const PERSONS = [
     party: 'PRO',
     datasets: 2,
     description:
-      'Paso de legisladora a Secretaria de Etica Publica — supervisando a sus correligionarios de PENSAR ARGENTINA. Presencia legislativa del 55,4%.',
+      'Paso de legisladora a Secretaria de Etica Publica - supervisando a sus correligionarios de PENSAR ARGENTINA. Presencia legislativa del 55,4%.',
   },
   {
     id: pid('person-bullrich'),
@@ -147,7 +147,7 @@ const PERSONS = [
     party: 'Frente PRO',
     datasets: 2,
     description:
-      'Miembro del directorio de PENSAR ARGENTINA. Voto afirmativo en Ley de Bases — la misma fundacion que presumiblemente contribuyo al diseño de la ley.',
+      'Miembro del directorio de PENSAR ARGENTINA. Voto afirmativo en Ley de Bases - la misma fundacion que presumiblemente contribuyo al diseño de la ley.',
   },
   {
     id: pid('person-frigerio'),
@@ -217,7 +217,7 @@ const PERSONS = [
     party: '',
     datasets: 1,
     description:
-      'Socio comercial mas cercano de Mauricio Macri. Miembro del directorio de PENSAR ARGENTINA — unico no-politico en el directorio.',
+      'Socio comercial mas cercano de Mauricio Macri. Miembro del directorio de PENSAR ARGENTINA - unico no-politico en el directorio.',
   },
   {
     id: pid('person-cordero'),
@@ -242,7 +242,7 @@ const PERSONS = [
 ]
 
 // ---------------------------------------------------------------------------
-// Data — Organizations
+// Data - Organizations
 // ---------------------------------------------------------------------------
 
 const ORGANIZATIONS = [
@@ -257,7 +257,7 @@ const ORGANIZATIONS = [
   },
   {
     id: pid('org-socma'),
-    name: 'SOCMA — Sociedad Macri SA',
+    name: 'SOCMA - Sociedad Macri SA',
     slug: 'socma',
     type: 'holding',
     jurisdiction: 'argentina',
@@ -316,7 +316,7 @@ const ORGANIZATIONS = [
     type: 'offshore',
     jurisdiction: 'islas-virgenes-britanicas',
     description:
-      'Constituida 31-Oct-2014. ACTIVA — confirmada en base publica del ICIJ. Titular: Maria Cecilia Ibañez.',
+      'Constituida 31-Oct-2014. ACTIVA - confirmada en base publica del ICIJ. Titular: Maria Cecilia Ibañez.',
   },
   {
     id: pid('org-bf-corporation'),
@@ -411,7 +411,7 @@ const ORGANIZATIONS = [
 ]
 
 // ---------------------------------------------------------------------------
-// Data — Events
+// Data - Events
 // ---------------------------------------------------------------------------
 
 const EVENTS = [
@@ -499,7 +499,7 @@ const EVENTS = [
 ]
 
 // ---------------------------------------------------------------------------
-// Data — MoneyFlows
+// Data - MoneyFlows
 // ---------------------------------------------------------------------------
 
 const MONEY_FLOWS = [
@@ -576,7 +576,7 @@ const MONEY_FLOWS = [
 ]
 
 // ---------------------------------------------------------------------------
-// Data — Claims
+// Data - Claims
 // ---------------------------------------------------------------------------
 
 const CLAIMS = [

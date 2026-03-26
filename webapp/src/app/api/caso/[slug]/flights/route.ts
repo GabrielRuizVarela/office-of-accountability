@@ -7,7 +7,7 @@ export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ slug: string }> },
 ) {
-  // Currently only the Epstein case is supported — accept any slug
+  // Currently only the Epstein case is supported - accept any slug
   try {
     const data = await getFlightLog(CASO_EPSTEIN_SLUG)
     return Response.json({ success: true, data })

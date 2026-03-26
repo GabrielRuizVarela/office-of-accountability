@@ -16,7 +16,7 @@
 import { z } from 'zod/v4'
 
 // ---------------------------------------------------------------------------
-// CSV row schemas — match column headers from IGJ CSVs
+// CSV row schemas - match column headers from IGJ CSVs
 // ---------------------------------------------------------------------------
 
 export const EntityRowSchema = z.object({

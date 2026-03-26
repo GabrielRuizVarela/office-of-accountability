@@ -1,5 +1,5 @@
 /**
- * Enrich stage runner — M10 Stage Implementations.
+ * Enrich stage runner - M10 Stage Implementations.
  *
  * Fetches document URLs associated with nodes, uses LLM with tool calls
  * for entity extraction, and proposes new nodes/edges.

@@ -1,5 +1,5 @@
 /**
- * Investigation query functions — Cypher queries for CRUD operations.
+ * Investigation query functions - Cypher queries for CRUD operations.
  *
  * All queries use parameterized Cypher (no string interpolation).
  * On publish, REFERENCES edges are created to embedded graph nodes.

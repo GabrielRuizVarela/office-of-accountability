@@ -1,12 +1,12 @@
 /**
- * Caso Finanzas Politicas Cypher queries — graph, timeline, actor,
+ * Caso Finanzas Politicas Cypher queries - graph, timeline, actor,
  * document, and money flow queries.
  *
  * All queries use parameterized Cypher via getDriver from lib/neo4j/client.
  * Never interpolate user input into the cypher string.
  *
  * Generic labels (Person, Event, Document, etc.) with caso_slug namespace
- * isolation — same pattern as caso-libra/queries.ts.
+ * isolation - same pattern as caso-libra/queries.ts.
  */
 
 import { type Record as Neo4jRecord, type Node, type Relationship } from 'neo4j-driver-lite'

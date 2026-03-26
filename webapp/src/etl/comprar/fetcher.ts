@@ -15,7 +15,7 @@ import { parse } from 'csv-parse'
 import type { ComprarOcRow } from './types'
 
 // ---------------------------------------------------------------------------
-// Data source URLs — Ordenes de Compra by year
+// Data source URLs - Ordenes de Compra by year
 // ---------------------------------------------------------------------------
 
 const OC_URLS: Record<string, string> = {

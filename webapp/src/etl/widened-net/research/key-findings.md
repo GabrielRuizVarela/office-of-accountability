@@ -1,4 +1,4 @@
-# Widened Net Investigation — Key Findings
+# Widened Net Investigation - Key Findings
 
 ## NEW CRITICAL ANGLES
 

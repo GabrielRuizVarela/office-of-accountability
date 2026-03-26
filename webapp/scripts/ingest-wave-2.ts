@@ -1,5 +1,5 @@
 /**
- * Wave 2 Ingestion Script — epsteinexposed.com API v2
+ * Wave 2 Ingestion Script - epsteinexposed.com API v2
  * Run with: npx tsx scripts/ingest-wave-2.ts
  *
  * Imports persons, flights, and documents from the Epstein Exposed public API
@@ -60,7 +60,7 @@ const MAX_DOCUMENT_PAGES = 20
 const PAGE_SIZE = 50
 
 // ---------------------------------------------------------------------------
-// Helpers — node ID generation
+// Helpers - node ID generation
 // ---------------------------------------------------------------------------
 
 function toWave2Id(name: string): string {
@@ -118,7 +118,7 @@ async function ingestPersons(
         source: SOURCE,
         wave: WAVE,
       })
-      // Fall through — still create the bronze node
+      // Fall through - still create the bronze node
     }
 
     const neo4jId = toWave2Id(person.name)
@@ -347,7 +347,7 @@ async function ingestDocuments(
           source: SOURCE,
           wave: WAVE,
         })
-        // Fall through — still create the bronze node
+        // Fall through - still create the bronze node
       }
 
       const neo4jId = toDocumentId(doc.id)
@@ -437,7 +437,7 @@ async function createDocumentNode(id: string, doc: EpsteinDocument): Promise<voi
 async function main(): Promise<void> {
   const startMs = Date.now()
 
-  console.log('Wave 2 Ingestion — Epstein Exposed API')
+  console.log('Wave 2 Ingestion - Epstein Exposed API')
   console.log('=========================================')
   console.log(`Rate limit delay: ${RATE_LIMIT_DELAY_MS / 1000}s between pages`)
   console.log(`Page size: ${PAGE_SIZE}`)

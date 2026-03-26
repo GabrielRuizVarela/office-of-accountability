@@ -1,7 +1,7 @@
 /**
  * Transforms Como Voto raw data into Neo4j node/relationship parameters.
  *
- * Pure functions — no side effects, no mutations.
+ * Pure functions - no side effects, no mutations.
  * Input: validated Como Voto types from fetcher
  * Output: typed parameter objects ready for Neo4j MERGE queries
  */

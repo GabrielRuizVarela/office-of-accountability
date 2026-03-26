@@ -1,5 +1,5 @@
 /**
- * Connector factory + barrel exports — M10 Source Connectors (Phase 4).
+ * Connector factory + barrel exports - M10 Source Connectors (Phase 4).
  */
 
 import type { ConnectorKind } from '../types'

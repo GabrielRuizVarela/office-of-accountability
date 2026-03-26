@@ -1,5 +1,5 @@
 /**
- * Caso Libra — factchecked investigation data.
+ * Caso Libra - factchecked investigation data.
  *
  * All data is bilingual (Spanish / English) and sourced from
  * court filings, blockchain forensics, congressional reports,
@@ -377,9 +377,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source_url:
       'https://www.youtube.com/watch?v=Ud6GuH7gSDw',
     detail_es:
-      'Davis declaró: "Me dijeron: no reinyectes nada hasta el segundo video de Milei". El segundo video nunca llegó — Milei borró la publicación original. Esto contradice la defensa de Milei de que solo "compartió" información.',
+      'Davis declaró: "Me dijeron: no reinyectes nada hasta el segundo video de Milei". El segundo video nunca llegó - Milei borró la publicación original. Esto contradice la defensa de Milei de que solo "compartió" información.',
     detail_en:
-      'Davis stated: "I was instructed: don\'t inject anything back in until Milei\'s second video." The second video never came — Milei deleted the original post. This contradicts Milei\'s defense that he merely "shared" information.',
+      'Davis stated: "I was instructed: don\'t inject anything back in until Milei\'s second video." The second video never came - Milei deleted the original post. This contradicts Milei\'s defense that he merely "shared" information.',
   },
   {
     id: 'fc-davis-sniping-admission',
@@ -789,8 +789,8 @@ export const TIMELINE_EVENTS: readonly InvestigationTimelineEvent[] = [
   {
     id: 'tl-price-peak',
     date: '2025-02-14',
-    title_es: 'Precio alcanza $5,20 — capitalización de $4.500M',
-    title_en: 'Price hits $5.20 — $4.5B market cap',
+    title_es: 'Precio alcanza $5,20 - capitalización de $4.500M',
+    title_en: 'Price hits $5.20 - $4.5B market cap',
     description_es:
       'En 40 minutos el precio subió de ~$0,000001 a $5,20. La capitalización de mercado alcanzó $4.500–4.600 millones.',
     description_en:
@@ -1621,8 +1621,8 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-maria-servini',
     name: 'María Servini',
-    role_es: 'Jueza federal — primera investigación penal',
-    role_en: 'Federal judge — initial criminal investigation',
+    role_es: 'Jueza federal - primera investigación penal',
+    role_en: 'Federal judge - initial criminal investigation',
     description_es:
       'Jueza federal que emitió las primeras órdenes de congelamiento de activos de Novelli, Terrones Godoy y Morales. Levantó el secreto bancario de Javier y Karina Milei. Davis le ofreció devolver $100M como gesto de "buena fe".',
     description_en:
@@ -1649,8 +1649,8 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-gregorio-dalbon',
     name: 'Gregorio Dalbón',
-    role_es: 'Abogado — solicitó notificación roja de Interpol',
-    role_en: 'Lawyer — filed Interpol Red Notice request',
+    role_es: 'Abogado - solicitó notificación roja de Interpol',
+    role_en: 'Lawyer - filed Interpol Red Notice request',
     description_es:
       'Abogado argentino que presentó la solicitud formal de notificación roja de Interpol para la captura internacional de Hayden Davis.',
     description_en:
@@ -1773,7 +1773,7 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
   },
   {
     id: 'mf-davis-return-proposal',
-    from_label: 'Hayden Davis (proposed — never executed)',
+    from_label: 'Hayden Davis (proposed - never executed)',
     to_label: 'Victims fund (offered to Judge Servini)',
     amount_usd: 100_000_000,
     date: '2025-03-01',
@@ -1828,14 +1828,14 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
 export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-wikipedia',
-    title: '$Libra cryptocurrency scandal — Wikipedia',
+    title: '$Libra cryptocurrency scandal - Wikipedia',
     type_es: 'Enciclopedia',
     type_en: 'Encyclopedia',
     date: '2025-02-15',
     summary_es:
       'Artículo enciclopédico completo con cronología, actores y fuentes verificadas sobre el escándalo.',
     summary_en:
-      'Comprehensive encyclopedia article with timeline, actors, and verified sources on the scandal.',
+      'Encyclopedia article with timeline, actors, and verified sources on the scandal.',
     source_url:
       'https://en.wikipedia.org/wiki/$Libra_cryptocurrency_scandal',
     verification_status: 'verified',
@@ -1843,7 +1843,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-trm-labs',
     title:
-      'The Libra Affair: Tracking the Memecoin — TRM Labs',
+      'The Libra Affair: Tracking the Memecoin - TRM Labs',
     type_es: 'Análisis forense blockchain',
     type_en: 'Blockchain forensic analysis',
     date: '2025-02-20',
@@ -1857,7 +1857,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   },
   {
     id: 'doc-nansen',
-    title: 'LIBRA: The Aftermath — Nansen Research',
+    title: 'LIBRA: The Aftermath - Nansen Research',
     type_es: 'Análisis de mercado',
     type_en: 'Market analysis',
     date: '2025-02-17',
@@ -1872,7 +1872,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-herald-leaked-evidence',
     title:
-      'Leaked evidence shows calls incriminating Milei — Buenos Aires Herald',
+      'Leaked evidence shows calls incriminating Milei - Buenos Aires Herald',
     type_es: 'Filtración de evidencia judicial',
     type_en: 'Leaked court evidence',
     date: '2025-03-10',
@@ -1887,7 +1887,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-herald-congress-report',
     title:
-      'Milei used presidential role to spread alleged scam — Buenos Aires Herald',
+      'Milei used presidential role to spread alleged scam - Buenos Aires Herald',
     type_es: 'Informe del Congreso',
     type_en: 'Congressional report',
     date: '2025-11-01',
@@ -1902,7 +1902,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-mercopress-5m',
     title:
-      'Alleged US$5 million deal tied to Milei promotion — MercoPress',
+      'Alleged US$5 million deal tied to Milei promotion - MercoPress',
     type_es: 'Investigación judicial',
     type_en: 'Court investigation',
     date: '2026-03-16',
@@ -1917,7 +1917,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-dlnews-forensics',
     title:
-      'Argentina forensics: payments from Libra lobbyist to Milei — DL News',
+      'Argentina forensics: payments from Libra lobbyist to Milei - DL News',
     type_es: 'Investigación periodística',
     type_en: 'Investigative journalism',
     date: '2026-03-16',
@@ -1932,7 +1932,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-cointelegraph-107m',
     title:
-      'Milei LIBRA token scandal: $107M rug pull — Cointelegraph',
+      'Milei LIBRA token scandal: $107M rug pull - Cointelegraph',
     type_es: 'Análisis cripto',
     type_en: 'Crypto analysis',
     date: '2025-02-15',
@@ -1947,7 +1947,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-cointelegraph-251m',
     title:
-      'Libra investors lost $251 million — Cointelegraph',
+      'Libra investors lost $251 million - Cointelegraph',
     type_es: 'Análisis de impacto',
     type_en: 'Impact analysis',
     date: '2025-02-17',
@@ -1962,7 +1962,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-bloomberg-uti',
     title:
-      'Milei shuts down unit investigating crypto scandal — Bloomberg',
+      'Milei shuts down unit investigating crypto scandal - Bloomberg',
     type_es: 'Investigación periodística',
     type_en: 'Investigative journalism',
     date: '2025-05-20',
@@ -1977,7 +1977,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-decrypt-unfrozen',
     title:
-      'Libra promoters regain access to $57.6M — Decrypt',
+      'Libra promoters regain access to $57.6M - Decrypt',
     type_es: 'Decisión judicial',
     type_en: 'Court ruling',
     date: '2025-08-15',
@@ -1992,7 +1992,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-coffeezilla-investigation',
     title:
-      "Argentina's Memecoin Disaster Is Worse Than You Think — Coffeezilla",
+      "Argentina's Memecoin Disaster Is Worse Than You Think - Coffeezilla",
     type_es: 'Investigación periodística (video)',
     type_en: 'Investigative journalism (video)',
     date: '2025-02-17',
@@ -2006,7 +2006,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-bubblemaps-analysis',
     title:
-      'How Hayden Davis Rugged LIBRA for $100M with President Milei — Bubblemaps',
+      'How Hayden Davis Rugged LIBRA for $100M with President Milei - Bubblemaps',
     type_es: 'Análisis forense blockchain',
     type_en: 'Blockchain forensic analysis',
     date: '2025-02-15',
@@ -2021,7 +2021,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-theblock-5m-contract',
     title:
-      'Probe reveals $5M deal linking Milei to Libra promotion — The Block',
+      'Probe reveals $5M deal linking Milei to Libra promotion - The Block',
     type_es: 'Investigación periodística',
     type_en: 'Investigative journalism',
     date: '2026-03-16',
@@ -2036,7 +2036,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-infobae-commission-revelations',
     title:
-      'Comisión investigadora revela transferencias y contratos — Infobae',
+      'Comisión investigadora revela transferencias y contratos - Infobae',
     type_es: 'Informe del Congreso',
     type_en: 'Congressional report',
     date: '2026-03-16',
@@ -2051,7 +2051,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-mercopress-payments-2021',
     title:
-      'Forensic report points to payments from Novelli to Milei since 2021 — MercoPress',
+      'Forensic report points to payments from Novelli to Milei since 2021 - MercoPress',
     type_es: 'Investigación judicial',
     type_en: 'Court investigation',
     date: '2026-03-17',
@@ -2066,7 +2066,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-ccn-wolf-token',
     title:
-      'Davis launches new memecoin despite Interpol Red Notice — CCN',
+      'Davis launches new memecoin despite Interpol Red Notice - CCN',
     type_es: 'Investigación periodística',
     type_en: 'Investigative journalism',
     date: '2025-03-08',
@@ -2081,7 +2081,7 @@ export const EVIDENCE_DOCS: readonly EvidenceDoc[] = [
   {
     id: 'doc-batimes-one-year',
     title:
-      'A year on, courts have yet to summon witnesses or suspects — Buenos Aires Times',
+      'A year on, courts have yet to summon witnesses or suspects - Buenos Aires Times',
     type_es: 'Investigación periodística',
     type_en: 'Investigative journalism',
     date: '2026-02-14',

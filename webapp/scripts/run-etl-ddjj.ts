@@ -3,7 +3,7 @@
  * Run with: npx tsx scripts/run-etl-ddjj.ts
  *
  * Pipeline: Download CSVs -> Parse -> Transform -> Match Politicians -> Load -> Cross-reference
- * Idempotent — safe to re-run (uses MERGE, not CREATE).
+ * Idempotent - safe to re-run (uses MERGE, not CREATE).
  */
 
 import 'dotenv/config'
@@ -106,7 +106,7 @@ async function findOffshoreCrossReferences(): Promise<void> {
       const assets = typeof r.declaredAssets === 'number'
         ? r.declaredAssets.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' })
         : r.declaredAssets
-      console.log(`    DDJJ ${r.ddjjYear}: ${assets} — ${r.position} @ ${r.agency}`)
+      console.log(`    DDJJ ${r.ddjjYear}: ${assets} - ${r.position} @ ${r.agency}`)
     }
     console.log('\n  ' + '-'.repeat(80))
   } catch (error) {

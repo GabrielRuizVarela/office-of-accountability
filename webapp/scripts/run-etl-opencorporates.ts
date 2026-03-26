@@ -3,9 +3,9 @@
  * Run with: npx tsx scripts/run-etl-opencorporates.ts
  *
  * Pipeline: Download -> Parse -> Transform -> Match Politicians -> Load
- * Idempotent — safe to re-run (uses MERGE, not CREATE).
+ * Idempotent - safe to re-run (uses MERGE, not CREATE).
  *
- * Data source: https://datos.gob.ar — IGJ (Inspeccion General de Justicia)
+ * Data source: https://datos.gob.ar - IGJ (Inspeccion General de Justicia)
  * License: Creative Commons Attribution 4.0
  */
 

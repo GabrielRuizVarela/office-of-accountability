@@ -3,7 +3,7 @@
  * Run with: NEO4J_QUERY_TIMEOUT_MS=60000 npx tsx scripts/run-etl-judiciary.ts
  *
  * Pipeline: Download CSV -> Transform -> Match (Politicians, DDJJ, Companies) -> Load
- * Idempotent — safe to re-run (uses MERGE, not CREATE).
+ * Idempotent - safe to re-run (uses MERGE, not CREATE).
  */
 
 import 'dotenv/config'
@@ -169,7 +169,7 @@ async function runInvestigationQueries(): Promise<void> {
     }),
   )
   if (keyJudges.records.length === 0) {
-    console.log('  (none found — check name variants)')
+    console.log('  (none found - check name variants)')
   }
   for (const r of keyJudges.records) {
     console.log(`  ${r.name} | ${r.court} | appointed: ${r.date} | DNI: ${r.dni}`)
@@ -234,7 +234,7 @@ async function runInvestigationQueries(): Promise<void> {
     }),
   )
   if (ddjjMatches.records.length === 0) {
-    console.log('  (none found — DDJJ may not have matching CUITs)')
+    console.log('  (none found - DDJJ may not have matching CUITs)')
   }
   for (const r of ddjjMatches.records) {
     const nw = typeof r.net_worth === 'number' ? r.net_worth.toLocaleString() : r.net_worth

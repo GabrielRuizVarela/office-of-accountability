@@ -1,5 +1,5 @@
 /**
- * Politician profile page — server-rendered at /politico/[slug].
+ * Politician profile page - server-rendered at /politico/[slug].
  *
  * Features:
  * - SSR with data fetched at request time
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Politico no encontrado' }
   }
 
-  const title = `${politician.name} — Votaciones y perfil | ORC`
+  const title = `${politician.name} - Votaciones y perfil | ORC`
   const description = buildDescription(politician)
 
   const ogImage = `/api/og/politician/${slug}`
@@ -161,7 +161,7 @@ export default async function PoliticianPage({ params }: PageProps) {
         <div className="mb-8">
           <ShareButton
             text={`Mirá el perfil de ${politician.name} en la Oficina de Rendición de Cuentas`}
-            title={`${politician.name} — ORC`}
+            title={`${politician.name} - ORC`}
           />
         </div>
 
@@ -258,9 +258,9 @@ function buildDescription(politician: PoliticianProfile): string {
   const parts = [
     `Perfil de ${politician.name}`,
     politician.party ? `(${politician.party.name})` : null,
-    politician.chamber ? `— ${formatChamber(politician.chamber)}` : null,
+    politician.chamber ? `- ${formatChamber(politician.chamber)}` : null,
     politician.province ? `por ${politician.province}` : null,
-    politician.totalVotes > 0 ? `— ${politician.totalVotes} votaciones registradas` : null,
+    politician.totalVotes > 0 ? `- ${politician.totalVotes} votaciones registradas` : null,
   ]
 
   return parts.filter(Boolean).join(' ')

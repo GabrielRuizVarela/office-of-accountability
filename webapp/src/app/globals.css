@@ -26,7 +26,7 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
- * Print styles — converts dark theme to clean printable layout for PDF export
+ * Print styles - converts dark theme to clean printable layout for PDF export
  * --------------------------------------------------------------------------- */
 
 @media print {

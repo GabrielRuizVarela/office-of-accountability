@@ -1,5 +1,5 @@
 /**
- * Seed script — ingests YouTube transcript entity mentions into the Neo4j knowledge graph.
+ * Seed script - ingests YouTube transcript entity mentions into the Neo4j knowledge graph.
  * Run with: NEO4J_URI=bolt://localhost:7687 NEO4J_USER=neo4j npx tsx scripts/seed-youtube-mentions.ts
  *
  * For each video in the transcript JSON:
@@ -7,7 +7,7 @@
  *   2. Creates MENTIONED_IN_VIDEO relationships from existing entity nodes to the Source,
  *      with mention_count, first_mention_timestamp, and timestamps properties.
  *
- * Uses MERGE for idempotency — safe to re-run.
+ * Uses MERGE for idempotency - safe to re-run.
  *
  * Requires NEO4J_URI, NEO4J_USER environment variables (see .env.example).
  */

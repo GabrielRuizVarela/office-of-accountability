@@ -1,7 +1,7 @@
 /**
  * Transforms judiciary designation CSV data into Neo4j node/relationship parameters.
  *
- * Pure functions — no side effects, no mutations.
+ * Pure functions - no side effects, no mutations.
  * Matches judges to existing Politician, AssetDeclaration, CompanyOfficer,
  * and BoardMember nodes.
  */
@@ -394,7 +394,7 @@ export interface JudiciaryTransformInput {
 }
 
 export function transformJudiciaryAll(input: JudiciaryTransformInput): JudiciaryTransformResult {
-  // Build judges — deduplicate by DNI (keep latest appointment)
+  // Build judges - deduplicate by DNI (keep latest appointment)
   const judgeMap = new Map<string, JudgeParams>()
   const courtMap = new Map<string, CourtParams>()
 

@@ -1,4 +1,4 @@
-# Macri Family Financial Network — Investigation Dossier
+# Macri Family Financial Network - Investigation Dossier
 
 **Date:** 2026-03-19
 **Source:** Cross-referencing IGJ corporate registry (50+ Macri BoardMember nodes), DDJJ asset declarations, ICIJ offshore leaks, campaign finance records, government appointments, and independent press investigations.
@@ -11,7 +11,7 @@
 
 | Company | Sector | Investigation relevance |
 |---------|--------|------------------------|
-| Sideco Americana | Construction | Flagship — toll roads, infrastructure |
+| Sideco Americana | Construction | Flagship - toll roads, infrastructure |
 | Correo Argentino | Postal services | 98.82% debt forgiveness scandal |
 | Autopistas del Sol (AUSOL) | Toll roads | Shares sold at 400% premium after gov decisions |
 | IECSA | Engineering | Sold to cousin Calcaterra, implicated in Cuadernos |
@@ -35,7 +35,7 @@
 
 - **1997:** Menem privatized postal service, concession to SOCMA
 - **1998-2001:** SOCMA paid canon only first year; debt reached **ARS 296M**
-- **June 2016:** Macri's government accepted settlement — **98.82% reduction** of the debt (ARS 70B adjusted)
+- **June 2016:** Macri's government accepted settlement - **98.82% reduction** of the debt (ARS 70B adjusted)
 - **2017:** Prosecutor Boquin ruled it "equivalent to a condonation" and "abusive"
 - **2017:** Prosecutor Zoni **charged President Macri** and Minister Aguad
 - **2024:** Seven years later, family had still paid nothing
@@ -74,9 +74,9 @@ Gianfranco also declared a trust belonging to **Alicia Blanco Villegas** (Mauric
 | 2018 | 151M | Presidente |
 | 2019 (exit) | 273.3M | Presidente |
 
-Nominally +148% increase. Adjusted for 297% cumulative inflation, patrimony **decreased 37.6% in real terms** — but blind trust structure made full verification impossible. Chequeado found he **did not include certain assets** in declarations.
+Nominally +148% increase. Adjusted for 297% cumulative inflation, patrimony **decreased 37.6% in real terms** - but blind trust structure made full verification impossible. Chequeado found he **did not include certain assets** in declarations.
 
-## Angelo Calcaterra (Cousin) — IECSA and Cuadernos
+## Angelo Calcaterra (Cousin) - IECSA and Cuadernos
 
 - Bought IECSA from Franco Macri in 2007
 - **Confessed to delivering ~USD 8M in cash** to Kirchnerist officials (Cuadernos de la Corrupción)
@@ -90,7 +90,7 @@ In August 2024, Mariano Macri filed criminal complaints against SOCMA naming Gia
 ## Legislative Record
 
 As Diputado Nacional (2005-2007):
-- **17.6% presence** — among the lowest of any legislator
+- **17.6% presence** - among the lowest of any legislator
 - Top votes almost all AUSENTE: Presupuesto (29 absent), Reforma Laboral (20 absent), Código Penal (14 absent)
 
 ## Graph Enrichment Recommendations
@@ -109,15 +109,15 @@ As Diputado Nacional (2005-2007):
 
 ## Sources
 
-- [Grupo Macri — Wikipedia](https://es.wikipedia.org/wiki/Grupo_Macri)
-- [SOCMA hoy — LA NACION](https://www.lanacion.com.ar/politica/como-esta-hoy-grupo-socma-emporio-familia-nid2201340/)
-- [Causa Correo Argentino — Wikipedia](https://es.wikipedia.org/wiki/Causa_Correo_Argentino)
-- [Correo claves — Chequeado](https://chequeado.com/el-explicador/claves-para-entender-la-polemica-por-la-deuda-del-correo-argentino-con-el-estado/)
-- [AUSOL negocio — Página/12](https://www.pagina12.com.ar/54129-el-negocio-de-los-macri-con-autopistas-del-sol)
-- [BF Corporation Suiza — Perfil](https://www.perfil.com/noticias/politica/una-off-shore-de-los-macri-movio-fondos-a-suiza-y-destruyo-pruebas.phtml)
-- [Gianfranco blanqueo — Perfil](https://www.perfil.com/noticias/politica/gianfranco-macri-blanqueo-us-4-millones-de-una-offshore-oculta-tras-ser-denunciado.phtml)
-- [SOCMA blanqueo — Perfil](https://noticias.perfil.com/noticias/politica/2018-12-18-quienes-son-los-integrantes-de-socma-que-adhirieron-al-blanqueo.phtml)
-- [Macri patrimonio — Infobae](https://www.infobae.com/politica/2020/02/15/el-patrimonio-de-macri-se-enriquecio-o-empobrecio-luego-de-su-paso-por-el-poder/)
-- [Mariano Macri denuncia — Infobae](https://www.infobae.com/judiciales/2024/08/07/el-hermano-de-mauricio-macri-denuncio-al-grupo-empresarial-de-la-familia-por-defraudacion-y-lavado-de-activos/)
-- [Calcaterra IECSA — LA NACION](https://www.lanacion.com.ar/politica/iecsa-los-negocios-bajo-sospecha-del-primo-del-presidente-nid2159888/)
-- [Panama Papers Macri — Buenos Aires Times](https://www.batimes.com.ar/news/argentina/panama-papers-macri-cleared-of-wrongdoing.phtml)
+- [Grupo Macri - Wikipedia](https://es.wikipedia.org/wiki/Grupo_Macri)
+- [SOCMA hoy - LA NACION](https://www.lanacion.com.ar/politica/como-esta-hoy-grupo-socma-emporio-familia-nid2201340/)
+- [Causa Correo Argentino - Wikipedia](https://es.wikipedia.org/wiki/Causa_Correo_Argentino)
+- [Correo claves - Chequeado](https://chequeado.com/el-explicador/claves-para-entender-la-polemica-por-la-deuda-del-correo-argentino-con-el-estado/)
+- [AUSOL negocio - Página/12](https://www.pagina12.com.ar/54129-el-negocio-de-los-macri-con-autopistas-del-sol)
+- [BF Corporation Suiza - Perfil](https://www.perfil.com/noticias/politica/una-off-shore-de-los-macri-movio-fondos-a-suiza-y-destruyo-pruebas.phtml)
+- [Gianfranco blanqueo - Perfil](https://www.perfil.com/noticias/politica/gianfranco-macri-blanqueo-us-4-millones-de-una-offshore-oculta-tras-ser-denunciado.phtml)
+- [SOCMA blanqueo - Perfil](https://noticias.perfil.com/noticias/politica/2018-12-18-quienes-son-los-integrantes-de-socma-que-adhirieron-al-blanqueo.phtml)
+- [Macri patrimonio - Infobae](https://www.infobae.com/politica/2020/02/15/el-patrimonio-de-macri-se-enriquecio-o-empobrecio-luego-de-su-paso-por-el-poder/)
+- [Mariano Macri denuncia - Infobae](https://www.infobae.com/judiciales/2024/08/07/el-hermano-de-mauricio-macri-denuncio-al-grupo-empresarial-de-la-familia-por-defraudacion-y-lavado-de-activos/)
+- [Calcaterra IECSA - LA NACION](https://www.lanacion.com.ar/politica/iecsa-los-negocios-bajo-sospecha-del-primo-del-presidente-nid2159888/)
+- [Panama Papers Macri - Buenos Aires Times](https://www.batimes.com.ar/news/argentina/panama-papers-macri-cleared-of-wrongdoing.phtml)

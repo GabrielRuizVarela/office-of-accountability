@@ -1,5 +1,5 @@
 /**
- * Compliance check dispatcher — M11 Phase 3.
+ * Compliance check dispatcher - M11 Phase 3.
  *
  * Maps CheckConfig.type → handler function and dispatches evaluation.
  * All 5 check types: cypher, property_exists, min_count, tier_minimum, llm.

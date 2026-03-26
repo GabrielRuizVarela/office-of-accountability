@@ -1,5 +1,5 @@
 /**
- * Caso Epstein — Overview (landing page).
+ * Caso Epstein - Overview (landing page).
  */
 
 import { OverviewContent } from '@/app/caso/[slug]/OverviewContent'

@@ -1,5 +1,5 @@
 /**
- * Compliance check handler interface — M11 Phase 3.
+ * Compliance check handler interface - M11 Phase 3.
  *
  * All check handlers implement this interface. The dispatcher
  * maps CheckConfig.type → handler and invokes it.

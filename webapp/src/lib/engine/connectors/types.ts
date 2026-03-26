@@ -1,5 +1,5 @@
 /**
- * Connector types — M10 Source Connectors (Phase 4).
+ * Connector types - M10 Source Connectors (Phase 4).
  *
  * Shared Connector interface, ConnectorResult, and per-kind config
  * Zod schemas for runtime validation.
@@ -9,7 +9,7 @@ import { z } from 'zod/v4'
 import type { ConnectorKind } from '../types'
 
 // ---------------------------------------------------------------------------
-// ConnectorResult — what every connector returns
+// ConnectorResult - what every connector returns
 // ---------------------------------------------------------------------------
 
 export interface ConnectorResult {
@@ -22,7 +22,7 @@ export interface ConnectorResult {
 }
 
 // ---------------------------------------------------------------------------
-// Connector interface — implemented by each kind
+// Connector interface - implemented by each kind
 // ---------------------------------------------------------------------------
 
 export interface Connector {

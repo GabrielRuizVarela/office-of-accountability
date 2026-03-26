@@ -92,7 +92,7 @@ export function GateApproval({ casoSlug, stageId, pipelineStateId, onAction }: G
         >
           Stage{' '}
           <code className="rounded bg-zinc-800 px-1 py-0.5 text-xs font-mono">{stageId}</code>{' '}
-          has been {isApproved ? 'approved — pipeline resumed' : 'rejected — pipeline failed'}.
+          has been {isApproved ? 'approved - pipeline resumed' : 'rejected - pipeline failed'}.
         </p>
       </div>
     )

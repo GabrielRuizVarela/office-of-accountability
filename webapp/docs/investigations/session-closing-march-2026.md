@@ -1,4 +1,4 @@
-# Session Closing Report — Finanzas Politicas Investigation
+# Session Closing Report - Finanzas Politicas Investigation
 ## March 2026 | Office of Accountability
 
 ---
@@ -315,7 +315,7 @@ Full compliance audit: `docs/investigations/international-compliance-audit.md`
 ### What Could Not Be Verified
 
 - 4 factcheck items remain at `alleged` status: Ibanez-Pelmond, Camano-TT41, Cordero offshore pipeline, De Narvaez offshore
-- 0 items explicitly marked `unconfirmed` (suspicious — some alleged items should be)
+- 0 items explicitly marked `unconfirmed` (suspicious - some alleged items should be)
 - 12 of 35 money flows lack quantified amounts (10 are fixable from existing sources)
 
 ### Where Data Quality Is Weakest

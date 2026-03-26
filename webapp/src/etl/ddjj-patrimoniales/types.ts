@@ -10,7 +10,7 @@
 import { z } from 'zod/v4'
 
 // ---------------------------------------------------------------------------
-// CSV row schema — matches column headers from the consolidated DDJJ CSV
+// CSV row schema - matches column headers from the consolidated DDJJ CSV
 // ---------------------------------------------------------------------------
 
 export const DdjjRowSchema = z.object({

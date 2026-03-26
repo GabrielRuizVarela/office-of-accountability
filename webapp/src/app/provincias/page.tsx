@@ -1,5 +1,5 @@
 /**
- * Province index page — lists all Argentine provinces with politician counts.
+ * Province index page - lists all Argentine provinces with politician counts.
  *
  * Server-rendered at /provincias for province-first browsing.
  */
@@ -18,13 +18,13 @@ import { getAllProvinces } from '@/lib/graph'
 
 const PAGE_META: Record<Lang, { title: string; description: string; siteName: string }> = {
   es: {
-    title: 'Provincias — Legisladores por provincia | ORC',
+    title: 'Provincias - Legisladores por provincia | ORC',
     description:
       'Explorar legisladores argentinos por provincia. Ver diputados y senadores de cada jurisdicción.',
     siteName: 'Oficina de Rendición de Cuentas',
   },
   en: {
-    title: 'Provinces — Legislators by Province | ORC',
+    title: 'Provinces - Legislators by Province | ORC',
     description:
       'Explore Argentine legislators by province. View representatives and senators from each jurisdiction.',
     siteName: 'Office of Accountability',

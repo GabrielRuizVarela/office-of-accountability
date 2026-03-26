@@ -60,7 +60,7 @@ const TRAIL_5 = `
   LIMIT 20
 `
 
-// Trail 6: Revolving door — persons with both govt appointments AND company roles
+// Trail 6: Revolving door - persons with both govt appointments AND company roles
 const TRAIL_6 = `
   MATCH (co:CompanyOfficer)-[:OFFICER_OF_COMPANY]->(c:Company)
   MATCH (ga:GovernmentAppointment)
@@ -74,7 +74,7 @@ const TRAIL_6 = `
   LIMIT 20
 `
 
-// Trail 7: Investigation graph — key paths
+// Trail 7: Investigation graph - key paths
 const TRAIL_7 = `
   MATCH (p:Person {caso_slug: "caso-finanzas-politicas"})-[r]-()
   WITH p, count(r) AS degree

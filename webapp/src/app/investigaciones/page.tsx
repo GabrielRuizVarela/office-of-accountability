@@ -172,7 +172,7 @@ export default function InvestigacionesPage() {
         dispatch({ type: 'SET_TAGS', tags: json.data })
       }
     } catch {
-      // Tags are non-critical — fail silently
+      // Tags are non-critical - fail silently
     }
   }, [])
 

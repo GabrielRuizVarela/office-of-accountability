@@ -1,4 +1,4 @@
-# Como Voto ETL Extension — Design Spec
+# Como Voto ETL Extension - Design Spec
 
 **Date:** 2026-03-19
 **Branch:** worktree-epstein
@@ -10,13 +10,13 @@ The Como Voto ETL pipeline (`webapp/src/etl/como-voto/`) ingests Argentine legis
 
 Three data sources are available but not yet ingested:
 
-1. **Terms** — career timeline per legislator (already fetched in detail files, not loaded)
-2. **Law names** — `law_names.json` with ~2,400 named laws; plus `gk`/`ln` fields in vote detail data
-3. **Election data** — `election_legislators.json` with legislators by election year since 1983
+1. **Terms** - career timeline per legislator (already fetched in detail files, not loaded)
+2. **Law names** - `law_names.json` with ~2,400 named laws; plus `gk`/`ln` fields in vote detail data
+3. **Election data** - `election_legislators.json` with legislators by election year since 1983
 
 ## Approach
 
-Extend the existing pipeline in-place. No new entry points — `npm run etl:como-voto` continues to run everything in one idempotent pass.
+Extend the existing pipeline in-place. No new entry points - `npm run etl:como-voto` continues to run everything in one idempotent pass.
 
 ## New Neo4j Schema
 
@@ -25,16 +25,16 @@ Extend the existing pipeline in-place. No new entry points — `npm run etl:como
 | Label | Primary Key | Properties |
 |-------|-------------|------------|
 | `Term` | `id` (`{politician-slug}--{chamber}-{yearFrom}-{yearTo}`) | `chamber`, `year_from`, `year_to`, `bloc`, `province`, `coalition`, + provenance |
-| `Legislation` | `id` (slugified from `group_key` — always canonical) | `name`, `group_key`, `slug`, + provenance |
+| `Legislation` | `id` (slugified from `group_key` - always canonical) | `name`, `group_key`, `slug`, + provenance |
 | `Election` | `id` (`election-{year}`) | `year`, `slug`, + provenance |
 
 ### New Relationships
 
 | Type | Direction | Properties |
 |------|-----------|------------|
-| `SERVED_TERM` | Politician → Term | — |
-| `TERM_PARTY` | Term → Party | — |
-| `TERM_PROVINCE` | Term → Province | — |
+| `SERVED_TERM` | Politician → Term | - |
+| `TERM_PARTY` | Term → Party | - |
+| `TERM_PROVINCE` | Term → Province | - |
 | `VOTE_ON` | LegislativeVote → Legislation | (matched via `acta_id`) |
 | `RAN_IN` | Politician → Election | `alliance`, `province`, `coalition`, `party_code` |
 
@@ -54,7 +54,7 @@ Create uniqueness constraints for `Term(id)`, `Legislation(id)`, `Election(id)` 
 
 URL: `https://raw.githubusercontent.com/rquiroga7/Como_voto/main/docs/data/law_names.json`
 
-Structure: `string[]` — a flat array of ~2,400 law name strings. These are display names only; mapping to specific votes is done via the `gk` (group key) and `ln` (law name) fields in per-legislator vote detail data, not via this file directly. This file serves as a fallback lookup when a vote's `ln` field is missing but its `gk` matches a known law.
+Structure: `string[]` - a flat array of ~2,400 law name strings. These are display names only; mapping to specific votes is done via the `gk` (group key) and `ln` (law name) fields in per-legislator vote detail data, not via this file directly. This file serves as a fallback lookup when a vote's `ln` field is missing but its `gk` matches a known law.
 
 Zod schema: `z.array(z.string())`
 
@@ -64,7 +64,7 @@ URL: `https://raw.githubusercontent.com/rquiroga7/Como_voto/main/data/election_l
 
 **Note:** This file lives under `data/`, not `docs/data/`. Different directory from the existing fetcher's `BASE_URL`.
 
-Structure: `Record<string, Record<string, ElectionEntry[]>>` — keyed by election year, then by chamber (`"diputados"`, `"senadores"`).
+Structure: `Record<string, Record<string, ElectionEntry[]>>` - keyed by election year, then by chamber (`"diputados"`, `"senadores"`).
 
 ```typescript
 interface ElectionEntry {
@@ -92,7 +92,7 @@ const ElectionLegislatorsFileSchema = z.record(
 )
 ```
 
-### Terms (existing — `LegislatorDetail.terms[]`)
+### Terms (existing - `LegislatorDetail.terms[]`)
 
 Already defined in `types.ts` as `TermSchema`. Each entry: `{ch, yf, yt, b, p, co}`.
 
@@ -100,10 +100,10 @@ Already defined in `types.ts` as `TermSchema`. Each entry: `{ch, yf, yt, b, p, c
 
 ### Fetcher Additions
 
-- `fetchLawNames(signal?)` — `GET docs/data/law_names.json` via existing `BASE_URL`
-- `fetchElectionLegislators(signal?)` — `GET data/election_legislators.json` via a separate URL (different base path: `https://raw.githubusercontent.com/rquiroga7/Como_voto/main/data/election_legislators.json`)
+- `fetchLawNames(signal?)` - `GET docs/data/law_names.json` via existing `BASE_URL`
+- `fetchElectionLegislators(signal?)` - `GET data/election_legislators.json` via a separate URL (different base path: `https://raw.githubusercontent.com/rquiroga7/Como_voto/main/data/election_legislators.json`)
 
-Terms require no new fetching — already present in `LegislatorDetail.terms[]`.
+Terms require no new fetching - already present in `LegislatorDetail.terms[]`.
 
 ### Transformer Additions
 
@@ -129,7 +129,7 @@ interface TransformInput {
 If a term's `bloc` or `province` value doesn't match an existing Party/Province slug from the compact legislator list, the transformer also emits new Party/Province params to ensure the target nodes exist.
 
 **`transformLegislation(details, lawNames)`** → Scans all vote detail `gk` fields to build Legislation nodes:
-- `Legislation.id` = `slugify(gk)` — always derived from `gk`, never from law name (avoids duplicate nodes)
+- `Legislation.id` = `slugify(gk)` - always derived from `gk`, never from law name (avoids duplicate nodes)
 - `Legislation.name` = first non-empty `ln` value found for that `gk`, or fall back to matching entry in `lawNames` array
 - Produces `VoteOnRelParams` linking `LegislativeVote` (via `acta_id`) → `Legislation` (via `id`)
 - Produces `LawNamePatchParams` mapping `acta_id` → `law_name` string for the patch step
@@ -170,26 +170,26 @@ Everything runs in one `loadAll()` call. `TransformResult` is extended with the 
 
 Election data uses display names (`"Roberto Pedro Álvarez"`) while Politician nodes use uppercase name keys (`"ALVAREZ, ROBERTO PEDRO"`). Matching strategy:
 
-1. **Name + Province** — normalize both sides (strip diacritics, lowercase, sort name parts). Most collisions resolve here.
-2. **Name + Province + Year overlap** — if province also collides, check if election year falls within a politician's known term range.
-3. **Unresolved** — skip with warning log. Don't create a wrong relationship.
+1. **Name + Province** - normalize both sides (strip diacritics, lowercase, sort name parts). Most collisions resolve here.
+2. **Name + Province + Year overlap** - if province also collides, check if election year falls within a politician's known term range.
+3. **Unresolved** - skip with warning log. Don't create a wrong relationship.
 
 Existing data has zero name_key or slug collisions among 2,258 politicians (verified). But election data uses a different name format, so compound matching (name + province) is essential to avoid false matches.
 
 ### Legislation Grouping
 
-- Canonical key: always `slugify(gk)` — the `gk` (group key) is the single source of truth for Legislation identity
+- Canonical key: always `slugify(gk)` - the `gk` (group key) is the single source of truth for Legislation identity
 - Display name: `ln` field from vote data (first non-empty value per `gk`), with `law_names.json` as fallback
 - Votes without `gk`: no `VOTE_ON` relationship (standalone procedural votes), but may still get `law_name` property if their `ln` field is populated
 
 ### Edge Cases
 
-- `gk` and `ln` are optional fields on votes — many votes won't have them, that's expected
-- Overlapping terms (e.g. diputados 2015-2019 then senadores 2019-2023) — handled by compound key including chamber
-- Pre-1993 election entries with no matching Politician node — skip `RAN_IN` rel, log warning
-- Term bloc values not in existing Party list — transformer emits additional Party nodes
-- Term province values not in existing Province list — transformer emits additional Province nodes
-- `party_code` on `RAN_IN` is an electoral code, distinct from the legislative bloc/Party node — stored as relationship property, not linked to a Party node
+- `gk` and `ln` are optional fields on votes - many votes won't have them, that's expected
+- Overlapping terms (e.g. diputados 2015-2019 then senadores 2019-2023) - handled by compound key including chamber
+- Pre-1993 election entries with no matching Politician node - skip `RAN_IN` rel, log warning
+- Term bloc values not in existing Party list - transformer emits additional Party nodes
+- Term province values not in existing Province list - transformer emits additional Province nodes
+- `party_code` on `RAN_IN` is an electoral code, distinct from the legislative bloc/Party node - stored as relationship property, not linked to a Party node
 
 ## Files Modified
 

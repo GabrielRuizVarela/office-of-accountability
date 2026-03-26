@@ -1,7 +1,7 @@
 /**
  * /api/investigations/images
  *
- * POST — Upload an image for use in investigation documents (auth required)
+ * POST - Upload an image for use in investigation documents (auth required)
  *
  * Accepts multipart/form-data with a single "file" field.
  *

@@ -22,128 +22,128 @@
 
 ## I. Source URL Verification
 
-### 1. ICIJ Offshore Leaks — PELMOND COMPANY LTD
+### 1. ICIJ Offshore Leaks - PELMOND COMPANY LTD
 - **URL:** `https://offshoreleaks.icij.org/nodes/10158328`
 - **Status:** VERIFIED (HTTP 200)
 - **Notes:** Page confirms PELMOND COMPANY LTD (BVI), incorporated 31-Oct-2014, status active. Maria Cecilia Ibanez listed as shareholder. Service provider: Mossack Fonseca. Data from Panama Papers. Second shareholder Martin Alejandro Sommer also shown.
 
-### 2. Buenos Aires Times — Macri cleared (Panama Papers)
+### 2. Buenos Aires Times - Macri cleared (Panama Papers)
 - **URL:** `https://www.batimes.com.ar/news/argentina/panama-papers-macri-cleared-of-wrongdoing.phtml`
 - **Status:** VERIFIED (HTTP 200)
 - **Notes:** Article confirms Judge Andres Fraga closed the case, ruling Macri was "not a partner nor shareholder" in Fleg Trading and Kagemusha. Confirms he served on boards "at the request of his tycoon father Franco."
 
-### 3. Chequeado — Correo Argentino debt
+### 3. Chequeado - Correo Argentino debt
 - **URL:** `https://chequeado.com/el-explicador/claves-para-entender-la-polemica-por-la-deuda-del-correo-argentino-con-el-estado/`
 - **Status:** VERIFIED (HTTP 200)
 - **Notes:** Article confirms 98.82% debt reduction (Procuracion calculation), Fiscal Boquin's rejection calling it "abusiva," original debt of $296M, and indexed figure of $70B. All figures in the investigation data match.
 
-### 4. Pagina/12 — AUSOL shares
+### 4. Pagina/12 - AUSOL shares
 - **URL:** `https://www.pagina12.com.ar/54129-el-negocio-de-los-macri-con-autopistas-del-sol`
 - **Status:** VERIFIED (HTTP 200)
-- **Notes:** Article states shares increased 394%, sold to Natal Inversiones. The investigation data says "400% premium" — see correction note below. Article confirms toll increases (50% Jan 2016, 100% 2017) and sale for 19.7M pesos.
+- **Notes:** Article states shares increased 394%, sold to Natal Inversiones. The investigation data says "400% premium" - see correction note below. Article confirms toll increases (50% Jan 2016, 100% 2017) and sale for 19.7M pesos.
 
-### 5. Perfil — SOCMA blanqueo
+### 5. Perfil - SOCMA blanqueo
 - **URL:** `https://noticias.perfil.com/noticias/politica/2018-12-18-quienes-son-los-integrantes-de-socma-que-adhirieron-al-blanqueo.phtml`
 - **Status:** VERIFIED (HTTP 200)
-- **Notes:** Article confirms Gianfranco Macri ($622M), Maffioli ($76M), Amasanti ($93M), Composto ($67M). Total in article: ~$858M. Does NOT include Libedinsky ($61.9M) — that figure comes from El Destape and other sources. Combined total across sources: $920.9M, consistent with "ARS 900M+" claim.
+- **Notes:** Article confirms Gianfranco Macri ($622M), Maffioli ($76M), Amasanti ($93M), Composto ($67M). Total in article: ~$858M. Does NOT include Libedinsky ($61.9M) - that figure comes from El Destape and other sources. Combined total across sources: $920.9M, consistent with "ARS 900M+" claim.
 
-### 6. Perfil — BF Corporation Swiss transfers
+### 6. Perfil - BF Corporation Swiss transfers
 - **URL:** `https://www.perfil.com/noticias/politica/una-off-shore-de-los-macri-movio-fondos-a-suiza-y-destruyo-pruebas.phtml`
 - **Status:** VERIFIED (HTTP 200)
 - **Notes:** Article confirms BF Corporation (Panama) linked to Gianfranco and Mariano Macri, fund transfer to Safra Bank (Switzerland) on Oct 19, 2015, and "Destroy all correspondence" order from UBS Deutschland AG.
 
-### 7. Infobae — Kueider detention
+### 7. Infobae - Kueider detention
 - **URL:** `https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-kueider-en-paraguay-con-211000-dolares/`
 - **Status:** BROKEN_URL (HTTP 404)
 - **Alternative URL:** `https://www.infobae.com/politica/2024/12/04/detuvieron-al-senador-edgardo-kueider-en-paraguay-llevaba-mas-de-usd-200-mil/`
 - **Notes:** The original URL slug appears to have been changed by Infobae. The alternative URL is accessible and confirms: USD 211,102, $646,000 ARS, and 3,900,000 guaranies. Multiple other sources (La Nacion, Ambito, SWI/swissinfo, El Siglo Futuro) confirm USD 211,000 figure.
 
-### 8. Noticias Argentinas — Decreto 823/2021
+### 8. Noticias Argentinas - Decreto 823/2021
 - **URL:** `https://noticiasargentinas.com/politica/investigacion-sobre-seguros--alberto-fernandez-debera-explicar-el-decreto-823-2021-que-dio-millones-del-estado-a-sus-amigo-brokers_a6729edb7955e3f568c0df2a2`
 - **Status:** VERIFIED (HTTP 200)
 - **Notes:** Article confirms Decreto 823/2021 centralized insurance contracting in Nacion Seguros, discusses brokers receiving 87% of commissions totaling over 3.4B pesos, confirms Hector Martinez Sosa as "intimate friend of Fernandez," and confirms Judge Ercolini summoned Fernandez.
 
-### 9. La Letra P — Insurance revolving door (Plate)
+### 9. La Letra P - Insurance revolving door (Plate)
 - **URL:** `https://www.letrap.com.ar/politica/como-funciona-el-blindaje-oficial-las-aseguradoras-protegidas-el-gobierno-n5416266`
 - **Status:** VERIFIED (HTTP 200)
-- **Notes:** Article confirms Plate as Superintendent, discusses "blindaje oficial." Confirms Cuneo Libarona was legal director of Libra Seguros creating "blindaje doble." Article mentions Libra Seguros shielding but does NOT specifically mention Liderar Seguros by name in the shielding context — the article discusses Gabriel Bussola and Libra. See correction note below regarding Liderar vs Libra.
+- **Notes:** Article confirms Plate as Superintendent, discusses "blindaje oficial." Confirms Cuneo Libarona was legal director of Libra Seguros creating "blindaje doble." Article mentions Libra Seguros shielding but does NOT specifically mention Liderar Seguros by name in the shielding context - the article discusses Gabriel Bussola and Libra. See correction note below regarding Liderar vs Libra.
 
-### 10. iProfesional — Catalan YPF appointment
+### 10. iProfesional - Catalan YPF appointment
 - **URL:** `https://www.iprofesional.com/negocios/442238-de-ministro-interior-a-petrolero-lisandro-catalan-se-suma-directorio-ypf`
 - **Status:** VERIFIED (HTTP 200, but article body not fully rendered in fetch)
 - **Notes:** Headline confirms transition. Cross-verified via multiple sources (LPO, Infocielo, El Ancasti, Enterate Noticias): Catalan left Interior Ministry Nov 3 2025, appointed YPF Director two weeks later, salary ~140M pesos/month. Confirmed he replaced Carlos Bastos and joins Guillermo Francos on the board.
 
-### 11. Infobae — Frigerio indagatoria
+### 11. Infobae - Frigerio indagatoria
 - **URL:** `https://www.infobae.com/politica/2022/04/25/pidieron-citar-a-indagatoria-a-rogelio-frigerio-por-irregularidades-en-operaciones-inmobiliarias/`
 - **Status:** VERIFIED (HTTP 200)
 - **Notes:** Article confirms USD 776,000 investment in Koolhaas SA real estate project on transferred fiscal lands. Article clarifies Frigerio endorsed the AABE transfer as Interior Minister (AABE formally under Jefatura de Gabinete).
 
-### 12. Infobae — Insurance broker commissions
+### 12. Infobae - Insurance broker commissions
 - **URL:** `https://www.infobae.com/politica/2024/03/18/escandalo-de-los-seguros-las-empresas-del-broker-amigo-de-alberto-fernandez-y-sus-satelites-cobraron-mas-de-2000-millones-por-comisiones/`
 - **Status:** VERIFIED (HTTP 200)
 - **Notes:** Article confirms Martinez Sosa collected $366,635,744 in commissions, Bachellier SA collected $1,665,741,081. Confirms top 25 brokers collected ~$3.5B total. All figures match investigation data.
 
-### 13. Infobae — 24 raids / government bans intermediaries
+### 13. Infobae - 24 raids / government bans intermediaries
 - **URL:** `https://www.infobae.com/politica/2024/04/11/tras-el-escandalo-de-los-seguros-el-gobierno-prohibio-a-los-intermediarios-en-todas-las-polizas-con-organismos-del-estado/`
 - **Status:** VERIFIED (HTTP 200)
-- **Notes:** Article confirms government banned intermediaries in state insurance policies, confirms raids conducted by PFA. The timeline entry says "Judge Ercolini orders 24 raids" — this is confirmed by a separate Infobae article from April 5, 2024 and multiple other outlets (La Nueva, La Prensa, Rio Negro).
+- **Notes:** Article confirms government banned intermediaries in state insurance policies, confirms raids conducted by PFA. The timeline entry says "Judge Ercolini orders 24 raids" - this is confirmed by a separate Infobae article from April 5, 2024 and multiple other outlets (La Nueva, La Prensa, Rio Negro).
 
-### 14. La Nacion — Decreto 747/2024 revocation
+### 14. La Nacion - Decreto 747/2024 revocation
 - **URL:** `https://www.lanacion.com.ar/politica/el-gobierno-derogo-el-decreto-de-alberto-fernandez-que-obligaba-a-contratar-a-nacion-seguros-nid21082024/`
 - **Status:** VERIFIED (HTTP 200)
 - **Notes:** Article confirms revocation of Decreto 823/2021 but does not explicitly name "Decreto 747/2024" in the text. However, the Boletin Oficial (https://www.boletinoficial.gob.ar/detalleAviso/primera/312565/20240821) and argentina.gob.ar confirm the revocation decree number is 747/2024, effective August 21, 2024.
 
-### 15. Infobae — Martinez Sosa prosecution (Feb 2026)
+### 15. Infobae - Martinez Sosa prosecution (Feb 2026)
 - **URL:** `https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/`
 - **Status:** VERIFIED (HTTP 200)
 - **Notes:** Confirms Judge Casanello prosecuted "Hector Martinez Sosa y Cia. S.A." on Feb 10, 2026. Confirms Bachellier SA also processed with embargo of $9,669,697,257.25. Article mentions company commissions of $416,546,348.81 (total including additional periods beyond the $366M figure).
 
-### 16. Infobae — Mariano Macri criminal complaint
+### 16. Infobae - Mariano Macri criminal complaint
 - **URL:** `https://www.infobae.com/judiciales/2024/08/07/el-hermano-de-mauricio-macri-denuncio-al-grupo-empresarial-de-la-familia-por-defraudacion-y-lavado-de-activos/`
 - **Status:** VERIFIED (HTTP 200)
 - **Notes:** Confirms Mariano Macri filed criminal complaint against SOCMA, naming Gianfranco, Florencia, and CEO Leonardo Maffioli. Charges: administracion fraudulenta, falsificacion de documento, evasion tributaria, balances falsos, lavado de activos. Case assigned to Judge Lijo (Federal Court 6).
 
-### 17. Chequeado — Macri contractor donations
+### 17. Chequeado - Macri contractor donations
 - **URL:** `https://chequeado.com/investigaciones/macri-recibio-3-millones-de-contratistas-del-estado-para-su-campana-electoral/`
 - **Status:** VERIFIED (HTTP 200)
 - **Notes:** Confirms ~ARS 3M from contractor employees. Breakdown: security firms $875K, advertising $1M+, waste $180K, maritime $265K. Total documented ~$2.7M in primaries alone. Notes some listed donors denied making contributions.
 
-### 18. Argentina.gob.ar — Decreto 823/2021 official text
+### 18. Argentina.gob.ar - Decreto 823/2021 official text
 - **URL:** `https://www.argentina.gob.ar/normativa/nacional/decreto-823-2021-357558`
 - **Status:** VERIFIED (HTTP 200)
 - **Notes:** Official summary page confirms decree mandated entities under Ley 24.156 Art. 8 to contract through Nacion Seguros S.A. Page notes decree was abrogated by Decreto 747/2024.
 
-### 19. datos.gob.ar — Argentine open data portal
+### 19. datos.gob.ar - Argentine open data portal
 - **URL:** `https://datos.gob.ar`
 - **Status:** VERIFIED (HTTP 200)
 - **Notes:** Portal accessible with 1,226 datasets across 42 organizations. Used as source for multiple cross-dataset analysis items (Rodriguez contractor-donor, Cordero offshore, LCG-Lousteau, PENSAR ARGENTINA, vote-corporate conflicts, interlocking directorates, Camano wealth).
 
-### 20. datos.gob.ar — Procurement dataset
+### 20. datos.gob.ar - Procurement dataset
 - **URL:** `https://datos.gob.ar/dataset/jgm-sistema-contrataciones-electronicas`
 - **Status:** VERIFIED (HTTP 200)
 - **Notes:** Electronic Contracting System dataset, CC BY 4.0, CSV format. Covers 2015-2020 convocations and adjudications.
 
-### 21. aportantes.electoral.gob.ar — Campaign finance portal
+### 21. aportantes.electoral.gob.ar - Campaign finance portal
 - **URL:** `https://aportantes.electoral.gob.ar`
 - **Status:** VERIFIED (HTTP 200)
 - **Notes:** National Electoral Chamber political donation disclosure platform. Requires registration/login to search.
 
-### 22. senado.gob.ar — Argentine Senate
+### 22. senado.gob.ar - Argentine Senate
 - **URL:** `https://www.senado.gob.ar`
 - **Status:** VERIFIED (HTTP 200)
 - **Notes:** Official Argentine Senate website. Used as source for Ley de Bases vote (36-36, Villarruel tiebreak).
 
-### 23. offshoreleaks.icij.org — ICIJ main portal
+### 23. offshoreleaks.icij.org - ICIJ main portal
 - **URL:** `https://offshoreleaks.icij.org`
 - **Status:** VERIFIED (HTTP 200)
-- **Notes:** Used as generic source for Camano/TT 41 CORP, Cordero/BETHAN INVESTMENTS, De Narvaez entities, Grindetti/Mercier International, De Narvaez Walmart. Specific entity links not provided for all — acceptable for general ICIJ database references.
+- **Notes:** Used as generic source for Camano/TT 41 CORP, Cordero/BETHAN INVESTMENTS, De Narvaez entities, Grindetti/Mercier International, De Narvaez Walmart. Specific entity links not provided for all - acceptable for general ICIJ database references.
 
-### 24. Wikipedia — Grupo Macri
+### 24. Wikipedia - Grupo Macri
 - **URL:** `https://es.wikipedia.org/wiki/Grupo_Macri`
 - **Status:** WIKIPEDIA_403 (exists, blocks automated fetch, but article exists and is publicly accessible)
 - **Notes:** Cross-verified via web search: SOCMA founded January 1976 by Franco Macri. Group grew from 7 to 47 companies during the military dictatorship (1976-1983). Confirmed by multiple academic and journalistic sources.
 
-### 25. Wikipedia — Causa Correo Argentino
+### 25. Wikipedia - Causa Correo Argentino
 - **URL:** `https://es.wikipedia.org/wiki/Causa_Correo_Argentino`
 - **Status:** WIKIPEDIA_403 (exists, blocks automated fetch, but article exists and is publicly accessible)
 - **Notes:** Well-known Wikipedia article covering the full Correo Argentino case history. Cross-verified via Chequeado and other sources.
@@ -195,7 +195,7 @@
 ### Claim 9: "Correo Argentino 98.82% debt forgiveness"
 - **Status:** VERIFIED
 - **Sources:** Chequeado, Wikipedia (Causa Correo Argentino), El Destape, ANRed, Primera Fuente, multiple others
-- **Details:** Chequeado confirms the Procuracion calculated a "quita del 98,82 por ciento." Fiscal Boquin called it "abusiva" and "equivalent to a forgiveness." Some sources cite 98.87% — both figures appear in different calculations. The 98.82% figure is the one used by the Procuracion and Chequeado.
+- **Details:** Chequeado confirms the Procuracion calculated a "quita del 98,82 por ciento." Fiscal Boquin called it "abusiva" and "equivalent to a forgiveness." Some sources cite 98.87% - both figures appear in different calculations. The 98.82% figure is the one used by the Procuracion and Chequeado.
 
 ### Claim 10: "AUSOL shares sold at 400% premium"
 - **Status:** NEEDS_CORRECTION (minor)

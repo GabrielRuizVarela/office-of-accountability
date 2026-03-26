@@ -1,5 +1,5 @@
 /**
- * Min-count check handler — verifies nodes have minimum relationship count.
+ * Min-count check handler - verifies nodes have minimum relationship count.
  *
  * Counts nodes of the given label with fewer than `min` relationships
  * of the specified type. Passes if count === 0.

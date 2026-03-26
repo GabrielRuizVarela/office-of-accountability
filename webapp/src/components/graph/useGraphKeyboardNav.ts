@@ -59,7 +59,7 @@ export function useGraphKeyboardNav({
         return
       }
 
-      // Ctrl+Z / Cmd+Z — undo
+      // Ctrl+Z / Cmd+Z - undo
       if (event.key === 'z' && (event.ctrlKey || event.metaKey)) {
         event.preventDefault()
         onUndo?.()

@@ -17,9 +17,9 @@
       },
       "judicial_status": {
         "causa_vialidad": {
-          "status": "CONVICTED — FINAL",
+          "status": "CONVICTED - FINAL",
           "sentence": "6 years prison + perpetual disqualification from public office",
-          "crime": "Fraudulent administration — irregular assignment of 51 road works in Santa Cruz to Lazaro Baez",
+          "crime": "Fraudulent administration - irregular assignment of 51 road works in Santa Cruz to Lazaro Baez",
           "confirmed_by": "Supreme Court, June 10, 2025",
           "asset_forfeiture": "Up to USD 640M ordered",
           "current_situation": "House arrest at San Jose 1111, CABA",
@@ -27,8 +27,8 @@
         },
         "causa_hotesur_los_sauces": {
           "status": "ORAL TRIAL PENDING",
-          "crime": "Money laundering, criminal association — fictitious hotel/property rentals through family companies Hotesur and Los Sauces",
-          "supreme_court_decision": "December 2024 — revoked dismissal, ordered oral trial",
+          "crime": "Money laundering, criminal association - fictitious hotel/property rentals through family companies Hotesur and Los Sauces",
+          "supreme_court_decision": "December 2024 - revoked dismissal, ordered oral trial",
           "source": "https://www.infobae.com/judiciales/2024/12/16/la-corte-suprema-ordeno-que-cristina-kirchner-vaya-a-juicio-oral-por-la-causa-los-sauces-hotesur/"
         }
       },
@@ -49,14 +49,14 @@
       },
       "judicial_status": {
         "causa_seguros": {
-          "status": "PROSECUTED — CASSATION REVIEW",
-          "crime": "Incompatible negotiations — Decree 823/2021 created insurance monopoly benefiting broker Martinez Sosa",
+          "status": "PROSECUTED - CASSATION REVIEW",
+          "crime": "Incompatible negotiations - Decree 823/2021 created insurance monopoly benefiting broker Martinez Sosa",
           "detail": "Martinez Sosa (husband of AF's secretary Maria Cantero) received 59.6% of all commissions from Nacion Seguros. Confirmed by Federal Chamber Nov 2025. Cassation review Feb 2026.",
           "source": "https://www.lanacion.com.ar/politica/procesaron-a-alberto-fernandez-en-el-caso-de-los-seguros-por-negociaciones-incompatibles-con-su-nid10072025/"
         },
         "causa_violencia_genero": {
-          "status": "PROSECUTED — NEAR ORAL TRIAL",
-          "charges": "Aggravated minor injuries (2 occasions), aggravated serious injuries, coercive threats — all in context of gender violence against partner Fabiola Yanez",
+          "status": "PROSECUTED - NEAR ORAL TRIAL",
+          "charges": "Aggravated minor injuries (2 occasions), aggravated serious injuries, coercive threats - all in context of gender violence against partner Fabiola Yanez",
           "expected_sentence": "Up to 18 years",
           "period": "Systematic violence from 2016 onward",
           "detail": "Judge Rafecas rejected challenge March 2026, case near oral trial",
@@ -81,7 +81,7 @@
         "malena_galmarini": {
           "role": "Wife, AySA president (2019-2023)",
           "controversy": "Denounced for irregular $127M USD contract with Mauricio Filiberti (Transclor, 'Rey del Cloro') for chlorine supply. Price $504/ton vs possible $390-430/ton. Complaint judicially dismissed.",
-          "conflict_of_interest": "Massa authorized AySA deficit by decree — company his wife chaired"
+          "conflict_of_interest": "Massa authorized AySA deficit by decree - company his wife chaired"
         },
         "father_in_law": "Fernando 'Pato' Galmarini, ex-Menemist official"
       },
@@ -127,16 +127,16 @@
       "party": "PJ / Kirchnerismo",
       "judicial_status": {
         "causa_once": {
-          "status": "CONVICTED — FINAL",
+          "status": "CONVICTED - FINAL",
           "sentence": "4 years prison + perpetual disqualification",
-          "crime": "Fraudulent administration — tolerated misuse of funds by TBA concessionaire",
+          "crime": "Fraudulent administration - tolerated misuse of funds by TBA concessionaire",
           "confirmed_by": "Supreme Court, November 2025",
           "context": "Once train tragedy: 52 dead, 789 injured, February 2012"
         },
         "causa_gnl": {
           "status": "CONVICTED",
           "sentence": "4 years prison",
-          "crime": "Fraud in LNG purchases — USD 5.5M paid unnecessarily to intermediaries with overpricing",
+          "crime": "Fraud in LNG purchases - USD 5.5M paid unnecessarily to intermediaries with overpricing",
           "restitution": "USD 5,523,345 ordered returned"
         },
         "causa_skanska": {
@@ -145,7 +145,7 @@
           "crime": "Fraudulent administration and bribery in gas pipeline contracts. Overpricing: 11.72% on loops, 125% on compressor plants, USD 34M on TGS works"
         },
         "causa_enriquecimiento": {
-          "status": "PROSECUTED — February 2026",
+          "status": "PROSECUTED - February 2026",
           "unjustified_amount": "USD 690,000",
           "detail": "18 years unable to justify asset growth"
         },
@@ -165,13 +165,13 @@
       "role": "Former Secretary of Public Works",
       "party": "PJ / Kirchnerismo",
       "judicial_status": {
-        "unified_sentence": "13 years prison (final — Cassation Dec 2025)",
+        "unified_sentence": "13 years prison (final - Cassation Dec 2025)",
         "components": [
-          "2019: 6 years for illicit enrichment (convent bags — USD 9M)",
+          "2019: 6 years for illicit enrichment (convent bags - USD 9M)",
           "2022: Vialidad case conviction for fraudulent administration",
           "2017: Illegal civilian weapon possession"
         ],
-        "seized_assets": "USD 8,982,047 + EUR 153,610 + ARS 159,114 — donated to Hospital Garrahan and Hospital Gutierrez"
+        "seized_assets": "USD 8,982,047 + EUR 153,610 + ARS 159,114 - donated to Hospital Garrahan and Hospital Gutierrez"
       },
       "key_event": "June 14, 2016: caught at Monastery of Our Lady of Fatima in General Rodriguez hiding bags with nearly USD 9M, jewels and a firearm",
       "sources": [
@@ -185,9 +185,9 @@
       "party": "PJ / Kirchnerismo",
       "judicial_status": {
         "causa_ciccone": {
-          "status": "CONVICTED — FINAL",
+          "status": "CONVICTED - FINAL",
           "sentence": "5 years 10 months prison",
-          "crime": "Passive bribery and incompatible negotiations — covertly acquired Ciccone Calcografica printing press (only private currency printer) through front man Alejandro Vandenbroele (The Old Fund)",
+          "crime": "Passive bribery and incompatible negotiations - covertly acquired Ciccone Calcografica printing press (only private currency printer) through front man Alejandro Vandenbroele (The Old Fund)",
           "confirmed_by": "Supreme Court",
           "distinction": "First VP in Argentine history with final corruption conviction"
         }
@@ -203,14 +203,14 @@
       "party": "PJ / Kirchnerismo",
       "judicial_status": {
         "causa_enriquecimiento": {
-          "status": "CONVICTED — 8 years prison",
-          "crime": "Illicit enrichment and bribery — could not justify asset growth",
+          "status": "CONVICTED - 8 years prison",
+          "crime": "Illicit enrichment and bribery - could not justify asset growth",
           "assets_found": "Airplane (USD 4M), yacht, cars, apartments, hotel",
           "front_people": "Daughter Julieta Jaime, ex-partner Silvia Reyss, Manuel Vazquez",
           "fine": "ARS 14,991,385 + perpetual disqualification"
         },
         "causa_once": {
-          "status": "CONVICTED — 6 years (confirmed by Supreme Court)",
+          "status": "CONVICTED - 6 years (confirmed by Supreme Court)",
           "crime": "Responsibility in Once tragedy"
         },
         "trenes_chatarra": {
@@ -229,7 +229,7 @@
       "party": "PJ / Kirchnerismo",
       "judicial_status": {
         "causa_gnl": {
-          "status": "CONVICTED — 3 years 6 months",
+          "status": "CONVICTED - 3 years 6 months",
           "crime": "Fraud in LNG purchases with overpricing"
         },
         "causa_cuadernos": {
@@ -268,9 +268,9 @@
       "patrimonio_declared": {
         "total_ars": 85000000,
         "composition": {
-          "properties": "4 properties (2 in Mercedes, 2 in CABA) — ARS 26M",
-          "dos_luceros_sa": "95% stake — ARS 637M — soy, corn, cattle. 890,000 m2 inherited field in Mercedes",
-          "ustare_sa": "25% stake — ARS 43M — rural real estate services. Shared with cousins Ustarroz"
+          "properties": "4 properties (2 in Mercedes, 2 in CABA) - ARS 26M",
+          "dos_luceros_sa": "95% stake - ARS 637M - soy, corn, cattle. 890,000 m2 inherited field in Mercedes",
+          "ustare_sa": "25% stake - ARS 43M - rural real estate services. Shared with cousins Ustarroz"
         }
       },
       "state_roles": "VP of Aerolineas Argentinas, Telecom board member (state representative)",
@@ -302,7 +302,7 @@
       "judicial_status": {
         "suenos_compartidos": {
           "status": "CASE EXTINGUISHED BY DEATH (Nov 2022)",
-          "crime": "Fraud against State — Suenos Compartidos social housing program",
+          "crime": "Fraud against State - Suenos Compartidos social housing program",
           "amount_collected": "ARS 749M",
           "amount_diverted": "ARS 206M by Schoklender brothers (properties, cars, motorcycles, yachts)",
           "political_financing": "Sergio Schoklender alleged funds used to finance campaigns of Cristina Kirchner and Amado Boudou"

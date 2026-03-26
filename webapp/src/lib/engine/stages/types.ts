@@ -1,5 +1,5 @@
 /**
- * Stage types — M10 Stage Implementations (Phase 5).
+ * Stage types - M10 Stage Implementations (Phase 5).
  *
  * StageRunner interface, StageContext, and StageResult for the
  * autonomous investigation pipeline stage runners.
@@ -8,7 +8,7 @@
 import type { PipelineState, PipelineStage, StageKind } from '../types'
 
 // ---------------------------------------------------------------------------
-// StageContext — runtime context passed to every stage runner
+// StageContext - runtime context passed to every stage runner
 // ---------------------------------------------------------------------------
 
 export interface StageContext {
@@ -18,7 +18,7 @@ export interface StageContext {
 }
 
 // ---------------------------------------------------------------------------
-// StageResult — what every stage runner returns
+// StageResult - what every stage runner returns
 // ---------------------------------------------------------------------------
 
 export interface TokenUsage {
@@ -36,7 +36,7 @@ export interface StageResult {
 }
 
 // ---------------------------------------------------------------------------
-// StageRunner interface — implemented by each stage kind
+// StageRunner interface - implemented by each stage kind
 // ---------------------------------------------------------------------------
 
 export interface StageRunner {

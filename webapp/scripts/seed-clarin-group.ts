@@ -6,7 +6,7 @@
  * discover their connections to government contracts via CUIT matching.
  *
  * Run with: npx tsx scripts/seed-clarin-group.ts
- * Idempotent — safe to re-run (uses MERGE, not CREATE).
+ * Idempotent - safe to re-run (uses MERGE, not CREATE).
  */
 
 import 'dotenv/config'
@@ -16,7 +16,7 @@ process.env.NEO4J_QUERY_TIMEOUT_MS = process.env.NEO4J_QUERY_TIMEOUT_MS || '6000
 import { executeWrite, closeDriver, verifyConnectivity } from '../src/lib/neo4j/client'
 
 // ---------------------------------------------------------------------------
-// Seed data — Grupo Clarín corporate structure
+// Seed data - Grupo Clarín corporate structure
 // ---------------------------------------------------------------------------
 
 interface SeedCompany {

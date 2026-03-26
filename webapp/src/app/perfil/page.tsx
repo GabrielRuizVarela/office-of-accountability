@@ -3,7 +3,7 @@
 /**
  * User profile page at /perfil.
  *
- * Auth required — view and edit display name.
+ * Auth required - view and edit display name.
  * Uses fetchWithCsrf for PATCH mutation.
  */
 

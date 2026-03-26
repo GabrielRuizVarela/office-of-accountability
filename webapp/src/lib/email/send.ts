@@ -4,7 +4,7 @@
  * Uses Resend in production (RESEND_API_KEY env var).
  * Falls back to console logging in development.
  *
- * Workers-compatible — uses fetch(), no Node.js dependencies.
+ * Workers-compatible - uses fetch(), no Node.js dependencies.
  */
 
 const RESEND_API_URL = 'https://api.resend.com/emails'

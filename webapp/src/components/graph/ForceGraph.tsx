@@ -7,7 +7,7 @@ import type { GraphData, GraphNode } from '../../lib/neo4j/types'
 import { getNodeColor, getNodeLabel, getLinkColor, getLabelDisplayName } from '../../lib/graph/constants'
 
 // ---------------------------------------------------------------------------
-// Graph data conversion — our GraphData → react-force-graph format
+// Graph data conversion - our GraphData → react-force-graph format
 // ---------------------------------------------------------------------------
 
 interface FGNode {
@@ -75,7 +75,7 @@ export interface ForceGraphProps {
 // Component
 // ---------------------------------------------------------------------------
 
-// Lazy-loaded ForceGraph2D — the library accesses `window` at import time,
+// Lazy-loaded ForceGraph2D - the library accesses `window` at import time,
 // so it cannot be imported during SSR.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ForceGraph2DComponent = React.ComponentType<any>
@@ -115,7 +115,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
   }, [])
 
   // Access internal force simulation nodes via d3Force
-  // graphData() is NOT exposed on the ref — use d3Force('link').links() for links
+  // graphData() is NOT exposed on the ref - use d3Force('link').links() for links
   // and traverse the simulation's nodes array for node state (x, y, fx, fy)
   function getInternalNodes(): NodeObject<FGNode>[] {
     const fg = graphRef.current
@@ -176,7 +176,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     getInternalNodes,
   }))
 
-  // Responsive sizing — ignore tiny heights that occur before flex layout settles
+  // Responsive sizing - ignore tiny heights that occur before flex layout settles
   useEffect(() => {
     if (width && height) return
 
@@ -198,7 +198,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     return () => observer.disconnect()
   }, [width, height])
 
-  // Convert to force graph format — memoize to avoid restarting simulation on re-renders
+  // Convert to force graph format - memoize to avoid restarting simulation on re-renders
   const fgData = useMemo(() => toFGData(data), [data])
 
   // Reset frozen state when data changes so new layouts can converge
@@ -206,7 +206,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     frozenRef.current = false
   }, [data])
 
-  // Freeze all nodes after layout converges — fx/fy pins make d3-force skip force calcs
+  // Freeze all nodes after layout converges - fx/fy pins make d3-force skip force calcs
   const handleEngineStop = useCallback(() => {
     if (frozenRef.current) return
     const fg = graphRef.current
@@ -264,7 +264,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     state.showImportant = zoom > 0.4
   }, [])
 
-  // Node click handler — use ref so the callback identity never changes
+  // Node click handler - use ref so the callback identity never changes
   // (ForceGraph2D kapsule may not update callbacks reliably on re-renders)
   const onNodeClickRef = useRef(onNodeClick)
   onNodeClickRef.current = onNodeClick
@@ -277,7 +277,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     [],
   )
 
-  // Node visibility — returns whether a node should be drawn
+  // Node visibility - returns whether a node should be drawn
   const isNodeVisible = useCallback(
     (fgNode: FGNode) => {
       if ((degreeMap.get(fgNode.id) ?? 0) === 0) return false
@@ -311,7 +311,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     [visibleNodeIds],
   )
 
-  // Custom node canvas render — colored circle + label text
+  // Custom node canvas render - colored circle + label text
   const paintNode = useCallback(
     (node: NodeObject<FGNode>, ctx: CanvasRenderingContext2D, globalScale: number) => {
       const fgNode = node as FGNode
@@ -438,7 +438,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     return `${fgNode._label} (${getLabelDisplayName(label)})`
   }, [])
 
-  // Link color based on type — highlight path links when active
+  // Link color based on type - highlight path links when active
   const linkColor = useCallback((link: FGLink) => {
     if (pathHighlight) {
       const src = typeof link.source === 'string' ? link.source : (link.source as unknown as {id:string}).id
@@ -460,7 +460,7 @@ export const ForceGraph = forwardRef<ForceGraphHandle, ForceGraphProps>(function
     return link.type
   }, [])
 
-  // Right-click handler — use ref for stable callback + library's built-in onNodeRightClick
+  // Right-click handler - use ref for stable callback + library's built-in onNodeRightClick
   const onNodeRightClickRef = useRef(onNodeRightClick)
   onNodeRightClickRef.current = onNodeRightClick
 

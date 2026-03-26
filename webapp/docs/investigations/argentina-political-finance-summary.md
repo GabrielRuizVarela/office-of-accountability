@@ -1,4 +1,4 @@
-# Argentine Political Finance Investigation — Comprehensive Summary
+# Argentine Political Finance Investigation - Comprehensive Summary
 
 **Date:** 2026-03-19
 **Graph:** 113,283 nodes, 975,909 relationships
@@ -9,21 +9,21 @@
 
 ## Resumen ejecutivo
 
-Esta investigacion cruzo ocho fuentes de datos publicos — registros de votacion legislativa (Como Voto), filtraciones offshore (ICIJ Panama Papers y Pandora Papers), declaraciones de aportes de campana (CNE), nombramientos y contratos del Boletin Oficial, el registro societario de la IGJ, directores de empresas (CNV/IGJ), declaraciones juradas patrimoniales (DDJJ), y un proceso de enriquecimiento cruzado — para identificar patrones de opacidad financiera en la politica argentina. El resultado: 617 politicos aparecen en dos o mas bases de datos externas, lo que permite detectar conflictos de interes, violaciones legales y flujos de dinero que de otro modo permanecerian invisibles.
+Esta investigacion cruzo ocho fuentes de datos publicos - registros de votacion legislativa (Como Voto), filtraciones offshore (ICIJ Panama Papers y Pandora Papers), declaraciones de aportes de campana (CNE), nombramientos y contratos del Boletin Oficial, el registro societario de la IGJ, directores de empresas (CNV/IGJ), declaraciones juradas patrimoniales (DDJJ), y un proceso de enriquecimiento cruzado - para identificar patrones de opacidad financiera en la politica argentina. El resultado: 617 politicos aparecen en dos o mas bases de datos externas, lo que permite detectar conflictos de interes, violaciones legales y flujos de dinero que de otro modo permanecerian invisibles.
 
 Los hallazgos mas graves involucran a legisladores en ejercicio con entidades offshore activas no declaradas. Maria Cecilia Ibanez (La Libertad Avanza, Cordoba) figura como officer de PELMOND COMPANY LTD, una entidad de las Islas Virgenes Britanicas que permanece activa mientras ella ejerce como diputada nacional. Graciela Camano (Consenso Federal, Buenos Aires), con seis cambios de partido documentados en su carrera, aparece vinculada a TT 41 CORP, otra entidad BVI creada a traves de Trident Trust durante su mandato 2014-2018. Su patrimonio declarado crecio de ARS 2,8 millones (2013) a ARS 39,2 millones (2023), y su tasa de ausencia en votaciones sobre legislacion financiera es notablemente alta.
 
-Se identificaron ademas violaciones directas a la Ley 26.215 de Financiamiento de Partidos Politicos: dos contratistas del Estado — Rodriguez y Gonzalez — realizaron donaciones a campanas electorales, algo explicitamente prohibido por el Articulo 15 de dicha ley. Maria Eugenia Cordero representa un caso estructuralmente peligroso: contratista del Estado y simultaneamente officer de una entidad offshore (BETHAN INVESTMENTS LIMITED), configurando un potencial conducto de fondos publicos hacia jurisdicciones opacas.
+Se identificaron ademas violaciones directas a la Ley 26.215 de Financiamiento de Partidos Politicos: dos contratistas del Estado - Rodriguez y Gonzalez - realizaron donaciones a campanas electorales, algo explicitamente prohibido por el Articulo 15 de dicha ley. Maria Eugenia Cordero representa un caso estructuralmente peligroso: contratista del Estado y simultaneamente officer de una entidad offshore (BETHAN INVESTMENTS LIMITED), configurando un potencial conducto de fondos publicos hacia jurisdicciones opacas.
 
 El caso Macri merece atencion particular: aparece en cinco bases de datos simultaneamente (donante, director de empresas, officer societario, declaraciones juradas y nombramiento de gobierno), con antecedentes offshore documentados (Fleg Trading, Kagemusha) y campanas financiadas por contratistas del Estado segun lo documentado por Chequeado. Una investigacion dedicada esta en curso.
 
 ## Executive Summary
 
-This investigation cross-referenced eight public data sources — legislative voting records (Como Voto), offshore leaks (ICIJ Panama Papers and Pandora Papers), campaign finance declarations (CNE), government appointments and contracts from the Boletin Oficial, the IGJ corporate registry, CNV/IGJ board members, sworn asset declarations (DDJJ), and a cross-enrichment pipeline — to identify patterns of financial opacity in Argentine politics. The result: 617 politicians appear in two or more external datasets, enabling detection of conflicts of interest, legal violations, and money flows that would otherwise remain invisible.
+This investigation cross-referenced eight public data sources - legislative voting records (Como Voto), offshore leaks (ICIJ Panama Papers and Pandora Papers), campaign finance declarations (CNE), government appointments and contracts from the Boletin Oficial, the IGJ corporate registry, CNV/IGJ board members, sworn asset declarations (DDJJ), and a cross-enrichment pipeline - to identify patterns of financial opacity in Argentine politics. The result: 617 politicians appear in two or more external datasets, enabling detection of conflicts of interest, legal violations, and money flows that would otherwise remain invisible.
 
 The most serious findings involve sitting legislators with active, undeclared offshore entities. Maria Cecilia Ibanez (La Libertad Avanza, Cordoba) is listed as an officer of PELMOND COMPANY LTD, a British Virgin Islands entity that remains active while she serves as a national deputy. Graciela Camano (Consenso Federal, Buenos Aires), who has switched parties six times over her career, is linked to TT 41 CORP, another BVI entity created through Trident Trust during her 2014-2018 term. Her declared wealth grew from ARS 2.8M (2013) to ARS 39.2M (2023), and she shows an unusually high absence rate on votes related to financial legislation.
 
-The investigation also identified direct violations of Ley 26.215 (Campaign Finance Law): two government contractors — Rodriguez and Gonzalez — made campaign donations, which is explicitly prohibited by Article 15 of that law. Maria Eugenia Cordero represents a structurally dangerous case: a government contractor who simultaneously serves as an officer of an offshore entity (BETHAN INVESTMENTS LIMITED), creating a potential pipeline from public funds to opaque jurisdictions.
+The investigation also identified direct violations of Ley 26.215 (Campaign Finance Law): two government contractors - Rodriguez and Gonzalez - made campaign donations, which is explicitly prohibited by Article 15 of that law. Maria Eugenia Cordero represents a structurally dangerous case: a government contractor who simultaneously serves as an officer of an offshore entity (BETHAN INVESTMENTS LIMITED), creating a potential pipeline from public funds to opaque jurisdictions.
 
 The Macri case warrants particular attention: he appears across five datasets simultaneously (donor, board member, company officer, asset declarations, government appointment), with documented offshore history (Fleg Trading, Kagemusha) and campaigns funded by state contractors as documented by Chequeado. A dedicated deep investigation is underway.
 
@@ -35,14 +35,14 @@ The Macri case warrants particular attention: he appears across five datasets si
 
 Eight pipelines were ingested into a Neo4j graph database containing 113,283 nodes and 975,909 relationships:
 
-1. **Como Voto** — 2,258 Argentine legislators, 920,261 individual votes, 2,997 legislative terms, 3,827 pieces of legislation
-2. **ICIJ Offshore Leaks** — 4,349 Argentine officers linked to 2,422 offshore entities (Panama Papers + Pandora Papers)
-3. **CNE Campaign Finance** — 1,714 campaign donations from 1,467 unique donors
-4. **Boletin Oficial** — 6,044 government appointments and 22,280 public contracts
-5. **IGJ Corporate Registry** — 951,863 company officers across 1,060,769 companies
-6. **CNV/IGJ Board Members** — 1,528,931 corporate board member records
-7. **DDJJ Asset Declarations** — 718,865 sworn asset declarations spanning 2012-2024
-8. **Cross-enrichment** — 617 politicians identified as appearing in 2+ external datasets
+1. **Como Voto** - 2,258 Argentine legislators, 920,261 individual votes, 2,997 legislative terms, 3,827 pieces of legislation
+2. **ICIJ Offshore Leaks** - 4,349 Argentine officers linked to 2,422 offshore entities (Panama Papers + Pandora Papers)
+3. **CNE Campaign Finance** - 1,714 campaign donations from 1,467 unique donors
+4. **Boletin Oficial** - 6,044 government appointments and 22,280 public contracts
+5. **IGJ Corporate Registry** - 951,863 company officers across 1,060,769 companies
+6. **CNV/IGJ Board Members** - 1,528,931 corporate board member records
+7. **DDJJ Asset Declarations** - 718,865 sworn asset declarations spanning 2012-2024
+8. **Cross-enrichment** - 617 politicians identified as appearing in 2+ external datasets
 
 ### Matching Strategy
 
@@ -67,9 +67,9 @@ All cross-dataset matches were stored as `MAYBE_SAME_AS` relationships with conf
 
 ### Tier 1: Offshore Entities + Public Office
 
-These findings represent the most serious potential violations — sitting legislators or recent officeholders linked to offshore entities in leaked financial databases.
+These findings represent the most serious potential violations - sitting legislators or recent officeholders linked to offshore entities in leaked financial databases.
 
-#### 1.1 Ibanez — PELMOND COMPANY LTD
+#### 1.1 Ibanez - PELMOND COMPANY LTD
 
 | Field | Detail |
 |-------|--------|
@@ -77,28 +77,28 @@ These findings represent the most serious potential violations — sitting legis
 | **Party** | La Libertad Avanza (Cordoba) |
 | **Offshore entity** | PELMOND COMPANY LTD (BVI, incorporated 31-Oct-2014, **active**) |
 | **Leak source** | Panama Papers |
-| **Confirmation** | [ICIJ database — Node 10158328](https://offshoreleaks.icij.org/nodes/10158328) |
+| **Confirmation** | [ICIJ database - Node 10158328](https://offshoreleaks.icij.org/nodes/10158328) |
 | **Legal exposure** | Ley 25.188 Art. 6 requires declaration of all assets, domestic and foreign. If PELMOND is undeclared, this constitutes criminal omission (Art. 268(2) Codigo Penal). |
-| **Confidence** | HIGH — exact name match confirmed in ICIJ database; entity remains active during current term (2024-2026) |
+| **Confidence** | HIGH - exact name match confirmed in ICIJ database; entity remains active during current term (2024-2026) |
 
 **What is confirmed:** Ibanez's name appears as an officer of PELMOND COMPANY LTD in the ICIJ Panama Papers database. The entity is incorporated in the British Virgin Islands and listed as active. She currently serves as a national deputy.
 
 **What is unconfirmed:** Whether this offshore interest was declared in her sworn asset declarations (DDJJ). Whether the entity holds assets or has been used for financial transactions. Whether this is the same Maria Cecilia Ibanez (the name is not common, and geographic/temporal alignment supports the match).
 
-#### 1.2 Camano — TT 41 CORP
+#### 1.2 Camano - TT 41 CORP
 
 | Field | Detail |
 |-------|--------|
 | **Subject** | Graciela Camano |
-| **Party** | Consenso Federal (Buenos Aires) — 6 party affiliations over career |
+| **Party** | Consenso Federal (Buenos Aires) - 6 party affiliations over career |
 | **Offshore entity** | TT 41 CORP (BVI, incorporated 23-Jun-2016) |
 | **Leak source** | Pandora Papers (Trident Trust provider) |
 | **Legal exposure** | Ley 25.188 Art. 6 (asset declaration); potential Ley 25.246 (anti-money laundering) |
-| **Confidence** | PROBABLE — exact name match, consistent with Trident Trust/Argentina pattern |
+| **Confidence** | PROBABLE - exact name match, consistent with Trident Trust/Argentina pattern |
 
 **Behavioral anomalies from Como Voto data:**
-- **6 party switches** over a 30-year career — the highest in the dataset
-- **62.9% presence rate** — below average for national deputies
+- **6 party switches** over a 30-year career - the highest in the dataset
+- **62.9% presence rate** - below average for national deputies
 - **Systematic absence on financial legislation:**
   - Presupuesto (budget): 35 absent votes
   - Impuesto a las Ganancias (income tax): 19 absent votes
@@ -108,34 +108,34 @@ The pattern of high absences specifically on financial legislation, combined wit
 
 ### Tier 2: Contractor-Donor Violations (Ley 26.215 Art. 15)
 
-Argentine campaign finance law (Ley 26.215, Article 15) explicitly prohibits campaign contributions from individuals or entities that hold government contracts. These are not gray areas — they are black-letter law violations.
+Argentine campaign finance law (Ley 26.215, Article 15) explicitly prohibits campaign contributions from individuals or entities that hold government contracts. These are not gray areas - they are black-letter law violations.
 
-#### 2.1 Rodriguez — Government Contractor + Campaign Donor
+#### 2.1 Rodriguez - Government Contractor + Campaign Donor
 
 Juan Pablo Rodriguez held four government contracts during 2018-2020 (via Boletin Oficial) and simultaneously appears as a campaign donor in the CNE database. Under Ley 26.215 Art. 15, this is a prohibited contribution. The number of contracts (four) suggests an ongoing relationship with the state, not a one-time transaction.
 
 **Status:** Confirmed match (name + temporal overlap). Contract amounts not yet available in graph data.
 
-#### 2.2 Gonzalez — Government Contractor + Campaign Donor
+#### 2.2 Gonzalez - Government Contractor + Campaign Donor
 
 Jorge Omar Gonzalez held one government contract during 2018-2020 and also made campaign donations. Same legal violation as Rodriguez.
 
 **Status:** Confirmed match. Note that "Gonzalez" is a common surname; match was validated through additional identifying information beyond name alone.
 
-#### 2.3 Cordero — The State-to-Offshore Pipeline
+#### 2.3 Cordero - The State-to-Offshore Pipeline
 
 Maria Eugenia Cordero represents the most structurally dangerous finding in this tier. She is simultaneously:
 
 1. A **government contractor** (Boletin Oficial)
 2. An **officer of BETHAN INVESTMENTS LIMITED** (offshore entity, ICIJ database)
 
-This creates a direct potential pipeline: public contract funds flow to an individual who has the infrastructure to move money offshore. This pattern — state contractor with offshore holdings — is the foundational structure of embezzlement schemes and constitutes a potential violation of **Ley 25.246** (anti-money laundering law).
+This creates a direct potential pipeline: public contract funds flow to an individual who has the infrastructure to move money offshore. This pattern - state contractor with offshore holdings - is the foundational structure of embezzlement schemes and constitutes a potential violation of **Ley 25.246** (anti-money laundering law).
 
 **What is confirmed:** The name match across both datasets. **What is unconfirmed:** Whether the same individual, and whether any public funds actually moved through the offshore entity.
 
 ### Tier 3: Multi-Dataset Overlap
 
-617 politicians appear in two or more external datasets beyond Como Voto. While multi-dataset presence is not inherently incriminating, it identifies individuals with the most complex webs of public and private interests — and therefore the highest potential for undisclosed conflicts.
+617 politicians appear in two or more external datasets beyond Como Voto. While multi-dataset presence is not inherently incriminating, it identifies individuals with the most complex webs of public and private interests - and therefore the highest potential for undisclosed conflicts.
 
 #### Notable Multi-Dataset Subjects
 
@@ -152,14 +152,14 @@ This creates a direct potential pipeline: public contract funds flow to an indiv
 
 All 50 verified politician-donor matches show the same pattern: politicians donating exclusively to their own party or coalition. No cross-party financing was detected. Notable self-donors include:
 
-- Mauricio Macri — ARS 100,000 to Juntos por el Cambio (2019)
-- Maximo Kirchner — ARS 50,000 to Frente de Todos (2019)
+- Mauricio Macri - ARS 100,000 to Juntos por el Cambio (2019)
+- Maximo Kirchner - ARS 50,000 to Frente de Todos (2019)
 
 While self-donation is legal, the 100% rate (zero cross-party donations) and the zero false-positive rate confirm the reliability of the matching methodology.
 
 #### 4.2 Revolving Door Cluster
 
-A distinct cluster of individuals — Macri, Sanchez, Bullrich — follow the same career trajectory: legislator, then executive government appointment, then return to politics. This revolving door pattern is not illegal, but it creates opacity around the boundary between public service and private interest, particularly when combined with offshore holdings (Macri) or allegations of fictitious donations (Sanchez / CC-ARI).
+A distinct cluster of individuals - Macri, Sanchez, Bullrich - follow the same career trajectory: legislator, then executive government appointment, then return to politics. This revolving door pattern is not illegal, but it creates opacity around the boundary between public service and private interest, particularly when combined with offshore holdings (Macri) or allegations of fictitious donations (Sanchez / CC-ARI).
 
 ---
 
@@ -169,24 +169,24 @@ Mauricio Macri is the only individual in this investigation who appears across f
 
 ### Multi-Dataset Footprint
 
-1. **Como Voto** — Served as Diputado Nacional with a documented 17.6% presence rate (extremely low)
-2. **CNE Campaign Donor** — ARS 100,000 donation to Juntos por el Cambio (2019)
-3. **Board Member / Company Officer** — Appears in IGJ/CNV corporate databases
-4. **DDJJ Asset Declarations** — Sworn asset declarations on file (2012-2024 window)
-5. **Government Appointment** — Presidente de la Nacion (Boletin Oficial)
+1. **Como Voto** - Served as Diputado Nacional with a documented 17.6% presence rate (extremely low)
+2. **CNE Campaign Donor** - ARS 100,000 donation to Juntos por el Cambio (2019)
+3. **Board Member / Company Officer** - Appears in IGJ/CNV corporate databases
+4. **DDJJ Asset Declarations** - Sworn asset declarations on file (2012-2024 window)
+5. **Government Appointment** - Presidente de la Nacion (Boletin Oficial)
 
 ### Documented Offshore History (External Sources)
 
 Macri's offshore connections are documented in prior ICIJ investigations and Argentine judicial proceedings, though they predate or fall outside the current graph's ICIJ data:
 
-- **Fleg Trading Ltd** (Bahamas) — Macri was listed as director. This entity appeared in the Panama Papers. He claimed to have been an inactive director and resigned before assuming the presidency.
-- **Kagemusha SA** — An offshore entity linked to the Macri family business group.
+- **Fleg Trading Ltd** (Bahamas) - Macri was listed as director. This entity appeared in the Panama Papers. He claimed to have been an inactive director and resigned before assuming the presidency.
+- **Kagemusha SA** - An offshore entity linked to the Macri family business group.
 
 These entities are documented by [El Cronista](https://www.cronista.com/economia-politica/panama-papers-que-declaro-el-periodista-alconada-en-la-causa-por-la-offshore-de-macri/) and [Infobae's Pandora Papers coverage](https://www.infobae.com/america/pandora-papers/2021/10/03/).
 
 ### Contractor-Funded Campaigns
 
-[Chequeado](https://chequeado.com/investigaciones/macri-recibio-3-millones-de-contratistas-del-estado-para-su-campana-electoral/) documented that Macri received approximately ARS 3 million in campaign contributions from state contractors — a pattern that, if confirmed in the current dataset, would constitute systematic violation of Ley 26.215 Art. 15.
+[Chequeado](https://chequeado.com/investigaciones/macri-recibio-3-millones-de-contratistas-del-estado-para-su-campana-electoral/) documented that Macri received approximately ARS 3 million in campaign contributions from state contractors - a pattern that, if confirmed in the current dataset, would constitute systematic violation of Ley 26.215 Art. 15.
 
 ### What the Deep Investigation Will Examine
 
@@ -201,25 +201,25 @@ These entities are documented by [El Cronista](https://www.cronista.com/economia
 
 Three Argentine laws are potentially implicated by the findings in this investigation:
 
-### Ley 25.188 — Etica en el Ejercicio de la Funcion Publica (1999)
+### Ley 25.188 - Etica en el Ejercicio de la Funcion Publica (1999)
 
 **Article 6** requires all public officials to file sworn asset declarations (declaraciones juradas patrimoniales) that include domestic and foreign assets, including interests in companies and trusts. Failure to declare an offshore entity while serving in public office constitutes criminal omission under Article 268(2) of the Codigo Penal.
 
 **Relevant findings:** Ibanez (PELMOND COMPANY LTD, active, undeclared status unknown), Camano (TT 41 CORP, undeclared status unknown).
 
-### Ley 26.215 — Financiamiento de los Partidos Politicos (2007)
+### Ley 26.215 - Financiamiento de los Partidos Politicos (2007)
 
-**Article 15** prohibits campaign contributions from persons or entities that hold contracts with the national, provincial, or municipal government. This prohibition is absolute — it does not matter whether the contribution is small or whether the contract is unrelated to the campaign.
+**Article 15** prohibits campaign contributions from persons or entities that hold contracts with the national, provincial, or municipal government. This prohibition is absolute - it does not matter whether the contribution is small or whether the contract is unrelated to the campaign.
 
 **Article 15 bis** establishes penalties for violations, including fines of 10 to 20 times the illegal contribution amount, and potential criminal prosecution.
 
 **Relevant findings:** Rodriguez (4 contracts + donor), Gonzalez (1 contract + donor), and potentially Macri's campaigns as documented by Chequeado.
 
-### Ley 25.246 — Encubrimiento y Lavado de Activos de Origen Delictivo (2000)
+### Ley 25.246 - Encubrimiento y Lavado de Activos de Origen Delictivo (2000)
 
 **Article 303** criminalizes the conversion, transfer, or management of assets that are the proceeds of crime, with aggravated penalties when public officials are involved or when offshore jurisdictions are used.
 
-**Relevant findings:** Cordero (government contractor + offshore officer) represents the structural pattern — public funds flowing to an individual with offshore infrastructure — that this law is designed to address. No direct evidence of laundering has been established; the structural risk is flagged for further investigation.
+**Relevant findings:** Cordero (government contractor + offshore officer) represents the structural pattern - public funds flowing to an individual with offshore infrastructure - that this law is designed to address. No direct evidence of laundering has been established; the structural risk is flagged for further investigation.
 
 ---
 
@@ -239,14 +239,14 @@ Three Argentine laws are potentially implicated by the findings in this investig
 
 6. **Missing company nodes.** Some offshore entities referenced in ICIJ data lack corresponding company nodes in the graph, limiting the ability to trace corporate networks.
 
-7. **DDJJ cross-verification pending.** The critical question — whether Ibanez and Camano declared their offshore entities in sworn asset declarations — requires cross-referencing the DDJJ dataset against the ICIJ matches. This comparison has not yet been performed.
+7. **DDJJ cross-verification pending.** The critical question - whether Ibanez and Camano declared their offshore entities in sworn asset declarations - requires cross-referencing the DDJJ dataset against the ICIJ matches. This comparison has not yet been performed.
 
 8. **Temporal coverage gaps.** The Boletin Oficial dataset covers a specific time window (centered on 2018-2020). Contracts and appointments outside this window are not captured.
 
 ### False Positive Assessment
 
 - **Politician-Donor:** 0% false positive rate (50/50 confirmed)
-- **Politician-Offshore:** ~33% false positive rate (1/3 rejected — Nunez/SURPLAY FINANCIAL)
+- **Politician-Offshore:** ~33% false positive rate (1/3 rejected - Nunez/SURPLAY FINANCIAL)
 - **Politician-Appointment:** 0% false positive rate (24/24 confirmed)
 - **Contractor-Donor:** Confirmed for Rodriguez and Gonzalez; note common surname risk for Gonzalez
 
@@ -281,9 +281,9 @@ Three Argentine laws are potentially implicated by the findings in this investig
 
 ### Investigation Expansion
 
-9. **Complete the Macri deep investigation** — cross-reference DDJJ declarations with known offshore entities, map contractor-donor networks around his campaigns, and analyze corporate board memberships for conflicts during his presidency.
-10. **Temporal analysis** — map the timeline of donations relative to contract awards to identify potential quid pro quo patterns.
-11. **Network analysis** — use the graph structure to identify clusters of individuals who share offshore intermediaries, corporate boards, and campaign funding sources.
+9. **Complete the Macri deep investigation** - cross-reference DDJJ declarations with known offshore entities, map contractor-donor networks around his campaigns, and analyze corporate board memberships for conflicts during his presidency.
+10. **Temporal analysis** - map the timeline of donations relative to contract awards to identify potential quid pro quo patterns.
+11. **Network analysis** - use the graph structure to identify clusters of individuals who share offshore intermediaries, corporate boards, and campaign funding sources.
 
 ---
 
@@ -315,10 +315,10 @@ Three Argentine laws are potentially implicated by the findings in this investig
 ### External References
 
 - [ICIJ Offshore Leaks Database](https://offshoreleaks.icij.org)
-- [PELMOND COMPANY LTD — ICIJ Node 10158328](https://offshoreleaks.icij.org/nodes/10158328)
-- [Manuel Lucio Torino — ICIJ Node 56052663](https://offshoreleaks.icij.org/nodes/56052663)
-- [Aportantes Electorales — CNE](https://aportantes.electoral.gob.ar)
+- [PELMOND COMPANY LTD - ICIJ Node 10158328](https://offshoreleaks.icij.org/nodes/10158328)
+- [Manuel Lucio Torino - ICIJ Node 56052663](https://offshoreleaks.icij.org/nodes/56052663)
+- [Aportantes Electorales - CNE](https://aportantes.electoral.gob.ar)
 - [datos.gob.ar](https://datos.gob.ar)
-- [Macri contractor donations — Chequeado](https://chequeado.com/investigaciones/macri-recibio-3-millones-de-contratistas-del-estado-para-su-campana-electoral/)
-- [Pandora Papers Argentina — Infobae](https://www.infobae.com/america/pandora-papers/2021/10/03/)
-- [Panama Papers / Macri offshore — El Cronista](https://www.cronista.com/economia-politica/panama-papers-que-declaro-el-periodista-alconada-en-la-causa-por-la-offshore-de-macri/)
+- [Macri contractor donations - Chequeado](https://chequeado.com/investigaciones/macri-recibio-3-millones-de-contratistas-del-estado-para-su-campana-electoral/)
+- [Pandora Papers Argentina - Infobae](https://www.infobae.com/america/pandora-papers/2021/10/03/)
+- [Panama Papers / Macri offshore - El Cronista](https://www.cronista.com/economia-politica/panama-papers-que-declaro-el-periodista-alconada-en-la-causa-por-la-offshore-de-macri/)

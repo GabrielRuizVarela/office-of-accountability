@@ -1,5 +1,5 @@
 /**
- * Iterate stage runner — autonomous research iteration loop.
+ * Iterate stage runner - autonomous research iteration loop.
  *
  * First real stage with logic (existing stages are stubs or simple connectors).
  * Loops LLM calls with gap detection until convergence or max iterations.
@@ -50,7 +50,7 @@ export class IterateStageRunner implements StageRunner {
 
     log.info('stage.start', { max_iterations: maxIterations, token_budget: tokenBudget })
 
-    // Fresh research program per run — directives seeded from gap detection
+    // Fresh research program per run - directives seeded from gap detection
     const program = new ResearchProgram()
 
     // Resolve LLM provider
@@ -63,7 +63,7 @@ export class IterateStageRunner implements StageRunner {
       if (tokensUsed.total_tokens >= tokenBudget) {
         log.warn('token_budget.exhausted', { used: tokensUsed.total_tokens, budget: tokenBudget, iteration })
         errors.push(
-          `Token budget exhausted (${tokensUsed.total_tokens}/${tokenBudget}) — stopping at iteration ${iteration}`,
+          `Token budget exhausted (${tokensUsed.total_tokens}/${tokenBudget}) - stopping at iteration ${iteration}`,
         )
         break
       }

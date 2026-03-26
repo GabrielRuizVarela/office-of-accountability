@@ -13,12 +13,12 @@ const CASE_META: Readonly<
   'caso-libra': {
     defaultLang: 'es',
     es: {
-      title: 'Caso Libra — Oficina de Rendición de Cuentas',
+      title: 'Caso Libra - Oficina de Rendición de Cuentas',
       description:
         'Investigación comunitaria sobre el token $LIBRA promovido por el presidente Milei. Datos públicos, blockchain y documentos parlamentarios.',
     },
     en: {
-      title: 'Libra Case — Office of Accountability',
+      title: 'Libra Case - Office of Accountability',
       description:
         'Community investigation into the $LIBRA token promoted by President Milei. Public data, blockchain, and parliamentary documents.',
     },
@@ -26,12 +26,12 @@ const CASE_META: Readonly<
   'caso-epstein': {
     defaultLang: 'en',
     en: {
-      title: 'Epstein Case — Office of Accountability',
+      title: 'Epstein Case - Office of Accountability',
       description:
         'Trafficking and power network. 7,287 entities, court documents, flight records, and factchecking.',
     },
     es: {
-      title: 'Caso Epstein — Oficina de Rendición de Cuentas',
+      title: 'Caso Epstein - Oficina de Rendición de Cuentas',
       description:
         'Red de tráfico y poder. 7.287 entidades, documentos judiciales, registros de vuelos y verificación de datos.',
     },
@@ -61,12 +61,12 @@ export async function generateMetadata({
   const dynamicConfig = await getClientConfigDynamic(slug)
   if (dynamicConfig) {
     return {
-      title: `${dynamicConfig.name[lang]} — Oficina de Rendición de Cuentas`,
+      title: `${dynamicConfig.name[lang]} - Oficina de Rendición de Cuentas`,
       description: dynamicConfig.description[lang] || undefined,
     }
   }
 
-  return { title: 'Investigación — Oficina de Rendición de Cuentas' }
+  return { title: 'Investigación - Oficina de Rendición de Cuentas' }
 }
 
 export default async function CasoLayout({

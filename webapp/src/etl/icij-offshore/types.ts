@@ -9,7 +9,7 @@
 import { z } from 'zod/v4'
 
 // ---------------------------------------------------------------------------
-// CSV row schemas — match the column headers from ICIJ CSVs
+// CSV row schemas - match the column headers from ICIJ CSVs
 // ---------------------------------------------------------------------------
 
 export const OfficerRowSchema = z.object({

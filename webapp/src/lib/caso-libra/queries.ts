@@ -1,11 +1,11 @@
 /**
- * Caso Libra Cypher queries — graph, timeline, actor, and document queries.
+ * Caso Libra Cypher queries - graph, timeline, actor, and document queries.
  *
  * All queries use parameterized Cypher via getDriver from lib/neo4j/client.
  * Never interpolate user input into the cypher string.
  *
  * Generic labels (Person, Event, Document, etc.) with caso_slug namespace
- * isolation — no more CasoLibra* prefixed labels.
+ * isolation - no more CasoLibra* prefixed labels.
  */
 
 import { type Record as Neo4jRecord, type Node, type Relationship } from 'neo4j-driver-lite'
@@ -36,12 +36,12 @@ function serializeValue(value: unknown): unknown {
   if (value === null || value === undefined) return value
   if (typeof value !== 'object') return value
   const obj = value as Record<string, unknown>
-  // Neo4j DateTime/Date/LocalDateTime — has year, month, day
+  // Neo4j DateTime/Date/LocalDateTime - has year, month, day
   if ('year' in obj && 'month' in obj && 'day' in obj) {
     const num = (v: unknown) => (v && typeof v === 'object' && 'toNumber' in v) ? (v as { toNumber(): number }).toNumber() : Number(v)
     return `${num(obj.year)}-${String(num(obj.month)).padStart(2, '0')}-${String(num(obj.day)).padStart(2, '0')}`
   }
-  // Neo4j Integer — has toNumber
+  // Neo4j Integer - has toNumber
   if ('toNumber' in obj && typeof obj.toNumber === 'function') {
     return (obj as { toNumber(): number }).toNumber()
   }

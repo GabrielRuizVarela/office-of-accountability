@@ -75,7 +75,7 @@ async function main(): Promise<void> {
   // ── Events ───────────────────────────────────────────────
   const events = [
     { id: 'fp-side-funds-explosion', date: '2025-01-01', title: 'SIDE secret funds grew 2,838% under Milei: ARS 3.8B → 13.4B (2025)' },
-    { id: 'fp-belocopitt-panama', date: '2016-04-03', title: 'Belocopitt: 6 offshore entities in Panama Papers — most of any Argentine' },
+    { id: 'fp-belocopitt-panama', date: '2016-04-03', title: 'Belocopitt: 6 offshore entities in Panama Papers - most of any Argentine' },
     { id: 'fp-health-cartel', date: '2025-06-01', title: 'Health sector concentration: PHARMOS $14.9B in 4 contracts, SUIZO dual CUITs' },
   ]
 

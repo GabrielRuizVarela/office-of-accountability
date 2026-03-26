@@ -403,7 +403,7 @@ async function handleCompareTimelines(
   const windowDays = parseInt(windowStr) || 30
 
   try {
-    // Query events for both timelines — timeline_a/b are entity names or IDs
+    // Query events for both timelines - timeline_a/b are entity names or IDs
     const cypher = `
       UNWIND [$entityA, $entityB] AS entityRef
       MATCH (n)

@@ -4,7 +4,7 @@
  *
  * Data source: IGJ (Inspeccion General de Justicia) via datos.jus.gob.ar
  * Pipeline: Download -> Parse -> Transform -> Match Politicians -> Load
- * Idempotent — safe to re-run (uses MERGE, not CREATE).
+ * Idempotent - safe to re-run (uses MERGE, not CREATE).
  */
 
 import 'dotenv/config'

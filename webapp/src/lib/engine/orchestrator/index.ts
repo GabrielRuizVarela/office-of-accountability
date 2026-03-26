@@ -1,5 +1,5 @@
 /**
- * Orchestrator module — barrel re-exports.
+ * Orchestrator module - barrel re-exports.
  */
 
 export { runOrchestrationCycle } from './orchestrator'

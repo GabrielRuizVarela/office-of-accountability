@@ -1,7 +1,7 @@
 /**
  * Transforms IGJ corporate registry CSV data into Neo4j node/relationship parameters.
  *
- * Pure functions — no side effects, no mutations.
+ * Pure functions - no side effects, no mutations.
  * Matches IGJ company officers to existing Politician nodes via normalizeName.
  */
 

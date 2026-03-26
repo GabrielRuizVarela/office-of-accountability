@@ -2,7 +2,7 @@
 
 **Date:** 2026-03-26
 **Status:** Draft
-**Scope:** Complete the "front door" — MCP tool surface for orchestration, webapp review UI, MiroFish consolidation, investigation creation flow
+**Scope:** Complete the "front door" - MCP tool surface for orchestration, webapp review UI, MiroFish consolidation, investigation creation flow
 
 ---
 
@@ -10,7 +10,7 @@
 
 The Office of Accountability has a sophisticated investigation engine (7,287 Epstein nodes, 50K+ Finanzas Politicas ETL nodes, Libra forensics) but **no way for users or LLM orchestrators to create investigations, import data, or run the discovery loop without writing seed scripts and CLI commands.**
 
-Ralph built 139 tasks worth of engine internals. The pipeline stages work (ingest, verify, enrich, analyze, iterate). The MCP server has 14 tools. But the critical path — from "I want to investigate X" to "data is flowing through the pipeline" — requires a developer.
+Ralph built 139 tasks worth of engine internals. The pipeline stages work (ingest, verify, enrich, analyze, iterate). The MCP server has 14 tools. But the critical path - from "I want to investigate X" to "data is flowing through the pipeline" - requires a developer.
 
 ---
 
@@ -55,7 +55,7 @@ Two-layer system. External LLM does heavy orchestration via MCP. Webapp provides
 
 ### Tools to Add
 
-#### Group: Ingest (4 tools) — NEW
+#### Group: Ingest (4 tools) - NEW
 The missing front door. These let an orchestrating LLM feed data into the system.
 
 | Tool | Input | Output | Notes |
@@ -67,7 +67,7 @@ The missing front door. These let an orchestrating LLM feed data into the system
 
 **Design decision:** All ingest tools create Proposals, never direct nodes. This preserves the human-review gate. The orchestrating LLM proposes; the webapp user approves.
 
-#### Group: Pipeline (7 tools) — Wire existing APIs to MCP
+#### Group: Pipeline (7 tools) - Wire existing APIs to MCP
 
 | Tool | Input | Output | Notes |
 |---|---|---|---|
@@ -79,7 +79,7 @@ The missing front door. These let an orchestrating LLM feed data into the system
 | `pipeline.reject` | `{proposal_ids[], rationale}` | `{rejected_count}` | Batch reject. Creates AuditEntry. |
 | `pipeline.gate_action` | `{caso_slug, stage_id, action: "approve"\|"reject"\|"back"}` | `{next_stage}` | Gate decision. Advances or loops pipeline. |
 
-#### Group: Verify (3 tools) — NEW
+#### Group: Verify (3 tools) - NEW
 
 | Tool | Input | Output | Notes |
 |---|---|---|---|
@@ -87,7 +87,7 @@ The missing front door. These let an orchestrating LLM feed data into the system
 | `verify.promote_tier` | `{node_ids[], from_tier, to_tier, evidence_url?}` | `{promoted_count}` | Promote bronze→silver or silver→gold. Creates AuditEntry with evidence. Requires rationale. |
 | `verify.cross_reference` | `{caso_slug, match_type: "cuit"\|"dni"\|"name_fuzzy"}` | `{matches_found, same_entity_created}` | Run cross-reference pass. Uses existing dedup.ts engine. |
 
-#### Group: Analyze (3 tools) — Wire existing code to MCP
+#### Group: Analyze (3 tools) - Wire existing code to MCP
 
 | Tool | Input | Output | Notes |
 |---|---|---|---|
@@ -95,7 +95,7 @@ The missing front door. These let an orchestrating LLM feed data into the system
 | `analyze.hypothesize` | `{caso_slug, hypothesis, evidence_ids[], confidence}` | `{proposal_id}` | Create hypothesis Proposal. Links to evidence nodes. |
 | `analyze.run_analysis` | `{caso_slug, type: "procurement"\|"ownership"\|"connections"\|"temporal"\|"centrality"}` | `{findings[]}` | Runs existing MiroFish analysis functions (procurement anomalies, ownership chains, political connections) + new graph algorithm implementations. Uses webapp LLM. |
 
-#### Group: Audit & Snapshots (4 tools) — Wire existing code to MCP
+#### Group: Audit & Snapshots (4 tools) - Wire existing code to MCP
 
 | Tool | Input | Output | Notes |
 |---|---|---|---|
@@ -104,7 +104,7 @@ The missing front door. These let an orchestrating LLM feed data into the system
 | `audit.verify_chain` | `{caso_slug}` | `{valid: boolean, break_at?}` | Validate SHA-256 chain integrity. |
 | `snapshot.create` | `{caso_slug, name}` | `{snapshot_id, node_count, edge_count}` | Capture graph state. |
 
-#### Group: Orchestrator (3 tools) — Wire existing code to MCP
+#### Group: Orchestrator (3 tools) - Wire existing code to MCP
 
 | Tool | Input | Output | Notes |
 |---|---|---|---|
@@ -112,7 +112,7 @@ The missing front door. These let an orchestrating LLM feed data into the system
 | `orchestrator.set_focus` | `{caso_slug, directives[]}` | `{updated: true}` | Set/update research directives. Directives guide which hypotheses get priority in iterate stage. |
 | `orchestrator.tasks` | `{caso_slug, status?}` | `{tasks[]}` | List orchestrator task queue. |
 
-### MCP Resources (5 resources) — NEW
+### MCP Resources (5 resources) - NEW
 
 Context injection for LLM clients. These provide investigation context without tool calls.
 
@@ -124,7 +124,7 @@ Context injection for LLM clients. These provide investigation context without t
 | `investigation://{slug}/directives` | Active research directives and their status |
 | `investigation://{slug}/pipeline` | Pipeline state, pending proposals count, last gate decision |
 
-### Cypher Sandbox — REQUIRED before exposing graph.query
+### Cypher Sandbox - REQUIRED before exposing graph.query
 
 The existing `graph.query` tool passes raw Cypher. Before external clients use it:
 
@@ -150,14 +150,14 @@ The existing `graph.query` tool passes raw Cypher. Before external clients use i
     → Tags (free text, autocomplete from existing)
     → Status: draft (default)
     ↓
-[Step 2: Seed Entity — "Who or what are you investigating?"]
+[Step 2: Seed Entity - "Who or what are you investigating?"]
     → Text input
     → System searches existing Neo4j graph across ALL investigations
     → Shows matches: "Jeffrey Epstein (caso-epstein, 1,345 connections)"
     → User can: select existing entity, or create new
     → If new: pick type (Person, Organization, Event) from palette
     ↓
-[Step 3: Scope — "Include nearby connections?"]
+[Step 3: Scope - "Include nearby connections?"]
     → Shows 1-hop neighbors of seed entity
     → Checkboxes to include/exclude
     → "Include all" / "Start minimal" shortcuts
@@ -168,7 +168,7 @@ The existing `graph.query` tool passes raw Cypher. Before external clients use i
     → Each creates bronze Proposals (not direct nodes)
     → Preview before submit
     ↓
-[Step 5: Landing — Investigation Dashboard]
+[Step 5: Landing - Investigation Dashboard]
     → Graph view with selected nodes
     → Sidebar: "Add more data", "Run pipeline", "Configure"
     → Pipeline status panel
@@ -260,7 +260,7 @@ The engine dashboard exists (`/caso/[slug]/motor/`) with tabs: Pipeline, Proposa
    - Remove `HAS_MIROFISH` relationship from schema
    - Simplify engine config: just `ModelConfig` for LLM provider selection
 
-**Why:** The swarm simulation was a cool idea but adds complexity without value. The MCP architecture already enables multi-agent orchestration — any LLM client connecting via MCP *is* the multi-agent system. No need for a separate simulation backend.
+**Why:** The swarm simulation was a cool idea but adds complexity without value. The MCP architecture already enables multi-agent orchestration - any LLM client connecting via MCP *is* the multi-agent system. No need for a separate simulation backend.
 
 ---
 

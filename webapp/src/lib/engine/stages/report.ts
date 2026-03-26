@@ -1,5 +1,5 @@
 /**
- * Report stage runner — M10 Stage Implementations.
+ * Report stage runner - M10 Stage Implementations.
  *
  * Synthesizes verified data and hypotheses into structured report sections
  * using LLM analysis via draft_section tool calls, creating report_section proposals.
@@ -25,11 +25,11 @@ Available tools:
 - draft_section: Create a report section with a title, content, and evidence references
 
 Create sections covering:
-1. Key findings — the most significant verified facts and connections
-2. Timeline of events — chronological sequence of key events
-3. Network analysis — important relationships and patterns between entities
-4. Unresolved questions — gaps in the data and areas needing further investigation
-5. Recommended next steps — prioritized actions for advancing the investigation
+1. Key findings - the most significant verified facts and connections
+2. Timeline of events - chronological sequence of key events
+3. Network analysis - important relationships and patterns between entities
+4. Unresolved questions - gaps in the data and areas needing further investigation
+5. Recommended next steps - prioritized actions for advancing the investigation
 
 Each section should reference specific evidence by node ID where possible.`
 
@@ -69,7 +69,7 @@ export class ReportStageRunner implements StageRunner {
         { role: 'system', content: SYSTEM_PROMPT },
         {
           role: 'user',
-          content: `Draft a comprehensive investigation report based on the following data.\n\nGraph summary:\n${JSON.stringify(graphSummary, null, 2)}\n\nVerified nodes and hypotheses (${nodes.length} total):\n\n${JSON.stringify(nodes, null, 2)}`,
+          content: `Draft an investigation report based on the following data.\n\nGraph summary:\n${JSON.stringify(graphSummary, null, 2)}\n\nVerified nodes and hypotheses (${nodes.length} total):\n\n${JSON.stringify(nodes, null, 2)}`,
         },
       ]
 

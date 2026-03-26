@@ -6,7 +6,7 @@
  * Connects them to existing nodes (Báez, De Vido, Máximo, Alberto Fernández, etc.)
  *
  * Run with: NEO4J_URI=bolt://localhost:7687 NEO4J_USER=neo4j npx tsx scripts/ingest-missing-actors.ts
- * Idempotent — safe to re-run (uses MERGE, not CREATE).
+ * Idempotent - safe to re-run (uses MERGE, not CREATE).
  */
 
 import neo4j from 'neo4j-driver-lite'
@@ -73,12 +73,12 @@ const PERSONS = [
     name: 'JAIME RICARDO',
     description_en:
       'Secretary of Transport 2003-2009 under De Vido. ' +
-      'Convicted to 8 years for illicit enrichment — acquired LearJet 31A (USD 4M), yacht (USD 1M+), ' +
+      'Convicted to 8 years for illicit enrichment - acquired LearJet 31A (USD 4M), yacht (USD 1M+), ' +
       'ARS 12M+ in unexplained assets. Fine of ARS 15M. Perpetual disqualification from office. ' +
       '6 total convictions for corruption. Also convicted alongside De Vido for Once tragedy negligence.',
     description_es:
       'Secretario de Transporte 2003-2009 bajo De Vido. ' +
-      'Condenado a 8 años por enriquecimiento ilícito — adquirió LearJet 31A (USD 4M), yate (USD 1M+), ' +
+      'Condenado a 8 años por enriquecimiento ilícito - adquirió LearJet 31A (USD 4M), yate (USD 1M+), ' +
       '$12M+ en bienes inexplicados. Multa de $15M. Inhabilitación perpetua para cargos públicos. ' +
       '6 condenas por corrupción. También condenado junto a De Vido por negligencia en tragedia de Once.',
   },
@@ -103,13 +103,13 @@ const PERSONS = [
     name: 'CENTENO OSCAR',
     description_en:
       'Driver for Roberto Baratta at the Ministry of Planning. ' +
-      'Author of the "Cuadernos de las coimas" (bribe notebooks) — 8 notebooks documenting ' +
+      'Author of the "Cuadernos de las coimas" (bribe notebooks) - 8 notebooks documenting ' +
       'cash deliveries from businessmen to officials 2005-2015. ' +
       'Became cooperating witness (arrepentido) 2018, under protected witness regime. ' +
       'Notebooks digitized by journalist Diego Cabot, published by La Nación Aug 2018.',
     description_es:
       'Chofer de Roberto Baratta en el Ministerio de Planificación. ' +
-      'Autor de los "Cuadernos de las coimas" — 8 cuadernos documentando entregas de ' +
+      'Autor de los "Cuadernos de las coimas" - 8 cuadernos documentando entregas de ' +
       'dinero de empresarios a funcionarios 2005-2015. ' +
       'Se convirtió en arrepentido 2018, bajo régimen de testigo protegido. ' +
       'Cuadernos digitalizados por periodista Diego Cabot, publicados por La Nación ago 2018.',
@@ -182,7 +182,7 @@ const ORGANIZATIONS = [
 const EVENTS = [
   {
     id: 'fp-vialidad-conviction-2022',
-    title: 'Cristina Kirchner convicted — Vialidad case',
+    title: 'Cristina Kirchner convicted - Vialidad case',
     date: '2022-12-06',
     description_en: 'TOF 2 convicted Cristina Kirchner to 6 years for fraud in Santa Cruz public works. Also convicted Báez (6yr), De Vido, and others.',
     description_es: 'TOF 2 condenó a Cristina Kirchner a 6 años por defraudación en obra pública de Santa Cruz. También condenó a Báez (6 años), De Vido y otros.',
@@ -196,28 +196,28 @@ const EVENTS = [
   },
   {
     id: 'fp-cuadernos-trial-2025',
-    title: 'Cuadernos trial begins — TOF 7',
+    title: 'Cuadernos trial begins - TOF 7',
     date: '2025-09-09',
     description_en: 'Oral trial for Cuadernos case begins before TOF 7. Defendants include Cristina Kirchner, De Vido, Baratta, and dozens of businessmen.',
     description_es: 'Juicio oral por causa Cuadernos comienza ante TOF 7. Imputados incluyen Cristina Kirchner, De Vido, Baratta y decenas de empresarios.',
   },
   {
     id: 'fp-once-tragedy-2012',
-    title: 'Once railway tragedy — 52 dead',
+    title: 'Once railway tragedy - 52 dead',
     date: '2012-02-22',
     description_en: 'Sarmiento line train crash at Once station killed 52 people. Jaime and De Vido later convicted for negligent homicide related to transport subsidy diversion.',
     description_es: 'Choque de tren línea Sarmiento en estación Once mató 52 personas. Jaime y De Vido luego condenados por homicidio culposo por desvío de subsidios de transporte.',
   },
   {
     id: 'fp-jaime-enrichment-conviction',
-    title: 'Ricardo Jaime convicted — illicit enrichment',
+    title: 'Ricardo Jaime convicted - illicit enrichment',
     date: '2021-12-17',
     description_en: 'TOF 6 convicted Ricardo Jaime to 8 years for illicit enrichment. LearJet, yacht, ARS 12M unexplained assets.',
     description_es: 'TOF 6 condenó a Ricardo Jaime a 8 años por enriquecimiento ilícito. LearJet, yate, $12M en bienes inexplicados.',
   },
   {
     id: 'fp-baratta-gnl-conviction-2025',
-    title: 'Roberto Baratta convicted — GNL case',
+    title: 'Roberto Baratta convicted - GNL case',
     date: '2025-09-15',
     description_en: 'Baratta convicted in GNL (liquefied natural gas) import fraud case.',
     description_es: 'Baratta condenado en causa GNL (fraude en importación de gas natural licuado).',
@@ -457,7 +457,7 @@ async function ingestRelationships() {
     [
       `MATCH (a:Person {id: 'fp-jaime-ricardo'}), (b:Event {event_id: 'fp-once-tragedy-2012'})`,
       `MERGE (a)-[r:INVOLVED_IN]->(b) ON CREATE SET r += $props`,
-      { props: { context: 'Convicted for negligent homicide — transport subsidy diversion.', caso_slug: CASO_SLUG, created_at: NOW } },
+      { props: { context: 'Convicted for negligent homicide - transport subsidy diversion.', caso_slug: CASO_SLUG, created_at: NOW } },
       'Jaime -[INVOLVED_IN]-> Once tragedy',
     ],
     [
@@ -491,7 +491,7 @@ async function ingestRelationships() {
     [
       `MATCH (a:Person {id: 'fp-baratta-roberto'}), (b:Event {event_id: 'fp-cuadernos-trial-2025'})`,
       `MERGE (a)-[r:INVOLVED_IN]->(b) ON CREATE SET r += $props`,
-      { props: { context: 'Key defendant — the bribe collector.', caso_slug: CASO_SLUG, created_at: NOW } },
+      { props: { context: 'Key defendant - the bribe collector.', caso_slug: CASO_SLUG, created_at: NOW } },
       'Baratta -[INVOLVED_IN]-> Cuadernos trial',
     ],
     [
@@ -530,7 +530,7 @@ async function ingestRelationships() {
     ],
 
     // ---------------------------------------------------------------
-    // Caputo Nicolás — update existing node and add connections
+    // Caputo Nicolás - update existing node and add connections
     // ---------------------------------------------------------------
     [
       `MATCH (a:Person {id: 'fn-caputo-nicolas'}), (b:Person {id: 'fp-macri-mauricio'})`,
@@ -552,7 +552,7 @@ async function ingestRelationships() {
     ],
 
     // ---------------------------------------------------------------
-    // Calcaterra Angelo — connect existing node
+    // Calcaterra Angelo - connect existing node
     // ---------------------------------------------------------------
     [
       `MATCH (a:Person {name: 'CALCATERRA ANGELO', caso_slug: $caso}), (b:Organization {id: 'fp-iecsa-sa'})`,
@@ -599,13 +599,13 @@ async function updateCaputoNicolas() {
     {
       desc_en:
         'Argentine businessman. Head of Caputo Group (construction, AC, energy). Fortune USD 340M (Forbes #34 Argentina). ' +
-        'Lifelong friend of Macri — schoolmates at Cardenal Newman, first VP of PRO. ' +
+        'Lifelong friend of Macri - schoolmates at Cardenal Newman, first VP of PRO. ' +
         'Controls Caputo SA, SES SA, Mirgor, Sadesa via holding Il Tevere. ' +
         'SES obtained ARS 1.023B in CABA public works under Macri 2008-2015. ' +
         'Pandora Papers: opened secret Swiss account, controlled offshore, later whitened under Macri blanqueo.',
       desc_es:
         'Empresario argentino. Cabeza del Grupo Caputo (construcción, AA, energía). Fortuna USD 340M (Forbes #34 Argentina). ' +
-        'Amigo de toda la vida de Macri — compañeros en Cardenal Newman, primer VP de PRO. ' +
+        'Amigo de toda la vida de Macri - compañeros en Cardenal Newman, primer VP de PRO. ' +
         'Controla Caputo SA, SES SA, Mirgor, Sadesa vía holding Il Tevere. ' +
         'SES obtuvo $1.023M en obra pública CABA bajo Macri 2008-2015. ' +
         'Pandora Papers: abrió cuenta secreta en Suiza, controló offshore, luego blanqueó bajo blanqueo macrista.',

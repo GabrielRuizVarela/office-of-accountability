@@ -1,6 +1,6 @@
 /**
  * Password hashing using Web Crypto API (SubtleCrypto).
- * Workers-compatible — no Node.js crypto dependency.
+ * Workers-compatible - no Node.js crypto dependency.
  *
  * Uses PBKDF2 with SHA-256, 100k iterations, 32-byte salt.
  */

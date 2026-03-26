@@ -93,7 +93,7 @@
     "severity": "high",
     "new_entities": [
       {"name": "White Pablo Guillermo", "cuit": "20-30664494-8", "location": "Lanús, Buenos Aires"},
-      {"name": "Agrupación Camponuevo S.A.", "cuit": "30-70867926-3", "location": "Carhué, Buenos Aires", "note": "Different entity, cattle/grain/transport since 2003 — may or may not be related"}
+      {"name": "Agrupación Camponuevo S.A.", "cuit": "30-70867926-3", "location": "Carhué, Buenos Aires", "note": "Different entity, cattle/grain/transport since 2003 - may or may not be related"}
     ]
   },
   {

@@ -1,5 +1,5 @@
 /**
- * Client config registry — maps caso slugs to InvestigationClientConfig.
+ * Client config registry - maps caso slugs to InvestigationClientConfig.
  *
  * Central lookup for static frontend configuration per investigation.
  * Import caso-specific configs and register them here.
@@ -36,7 +36,7 @@ export function listClientConfigs(): InvestigationClientConfig[] {
 }
 
 // ---------------------------------------------------------------------------
-// Dynamic registry — Neo4j fallback with in-memory TTL cache
+// Dynamic registry - Neo4j fallback with in-memory TTL cache
 // ---------------------------------------------------------------------------
 
 interface CacheEntry {

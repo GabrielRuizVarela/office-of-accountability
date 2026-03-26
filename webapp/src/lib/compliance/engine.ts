@@ -1,5 +1,5 @@
 /**
- * Compliance Engine — M11 Phase 4.
+ * Compliance Engine - M11 Phase 4.
  *
  * Orchestrates rule evaluation for a framework against an investigation.
  * Produces a ComplianceReport with:
@@ -184,7 +184,7 @@ export interface EvaluateOptions {
   framework: ComplianceFramework
   /** Investigation ID (caso_slug) to evaluate */
   investigationId: string
-  /** Phase to evaluate — 'any' evaluates all rules */
+  /** Phase to evaluate - 'any' evaluates all rules */
   phase?: CompliancePhase
 }
 
@@ -213,7 +213,7 @@ export async function evaluateFramework(opts: EvaluateOptions): Promise<Complian
   // 3. Compute score
   const overallScore = computeScore(gate, auditor, checklist)
 
-  // 4. Gate pass/fail — all gate checks must pass
+  // 4. Gate pass/fail - all gate checks must pass
   const gatePassed = gate.every((r) => r.passed)
 
   // 5. Total violations across all results

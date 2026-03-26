@@ -1,5 +1,5 @@
 /**
- * Gap detector — identifies structural gaps in the investigation graph.
+ * Gap detector - identifies structural gaps in the investigation graph.
  * Used by iterate.ts to focus autonomous research on weak areas.
  */
 
@@ -69,7 +69,7 @@ export async function detectGaps(casoSlug: string): Promise<GapReport> {
 // Query helpers
 // ---------------------------------------------------------------------------
 
-/** Nodes with zero relationships — disconnected from the graph. */
+/** Nodes with zero relationships - disconnected from the graph. */
 async function findIsolatedNodes(casoSlug: string): Promise<IsolatedNode[]> {
   const cypher = `
     MATCH (n)
@@ -90,7 +90,7 @@ async function findIsolatedNodes(casoSlug: string): Promise<IsolatedNode[]> {
   return result.records as IsolatedNode[]
 }
 
-/** Nodes below the bronze confidence threshold — need verification. */
+/** Nodes below the bronze confidence threshold - need verification. */
 async function findLowConfidenceNodes(casoSlug: string): Promise<LowConfidenceCluster[]> {
   const cypher = `
     MATCH (n)

@@ -1,8 +1,8 @@
 /**
- * Engine audit log — M10.
+ * Engine audit log - M10.
  *
  * Append-only AuditEntry nodes with SHA-256 hash chain.
- * No update or delete — entries are immutable.
+ * No update or delete - entries are immutable.
  *
  * Functions: appendEntry, getChain, validateChain.
  */
@@ -52,7 +52,7 @@ function computeHash(fields: {
 }
 
 // ---------------------------------------------------------------------------
-// appendEntry — create a new audit entry in the hash chain
+// appendEntry - create a new audit entry in the hash chain
 // ---------------------------------------------------------------------------
 
 export async function appendEntry(input: {
@@ -104,7 +104,7 @@ export async function appendEntry(input: {
 }
 
 // ---------------------------------------------------------------------------
-// getChain — retrieve all entries for a pipeline state, ordered chronologically
+// getChain - retrieve all entries for a pipeline state, ordered chronologically
 // ---------------------------------------------------------------------------
 
 export async function getChain(
@@ -121,7 +121,7 @@ export async function getChain(
 }
 
 // ---------------------------------------------------------------------------
-// validateChain — verify integrity of the hash chain
+// validateChain - verify integrity of the hash chain
 // ---------------------------------------------------------------------------
 
 export interface ChainValidation {
@@ -165,7 +165,7 @@ export async function validateChain(
       return {
         valid: false,
         entries: chain.length,
-        error: `Entry ${i} (${entry.id}): hash mismatch — stored ${entry.hash.slice(0, 16)}... vs computed ${expected.slice(0, 16)}...`,
+        error: `Entry ${i} (${entry.id}): hash mismatch - stored ${entry.hash.slice(0, 16)}... vs computed ${expected.slice(0, 16)}...`,
       }
     }
 

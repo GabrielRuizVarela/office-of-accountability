@@ -1,5 +1,5 @@
 /**
- * ETL Loader — batch MERGE of CNE campaign finance data into Neo4j.
+ * ETL Loader - batch MERGE of CNE campaign finance data into Neo4j.
  *
  * Uses UNWIND for efficient batching. Idempotent via MERGE.
  */
@@ -166,7 +166,7 @@ export async function loadCneAll(data: CneTransformResult): Promise<CneLoadResul
   const start = Date.now()
   const steps: LoadStepResult[] = []
 
-  // Phase 1: Nodes (order matters — donors and parties before donations)
+  // Phase 1: Nodes (order matters - donors and parties before donations)
   steps.push(await loadDonors(data.donors))
   steps.push(await loadPartyFinanceNodes(data.partyFinanceNodes))
   steps.push(await loadDonations(data.donations))

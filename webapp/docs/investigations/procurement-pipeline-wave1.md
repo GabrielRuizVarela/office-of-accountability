@@ -1,4 +1,4 @@
-# Finanzas Politicas: Wave 1 — The Procurement Pipeline
+# Finanzas Politicas: Wave 1 - The Procurement Pipeline
 
 **Date:** 2026-03-21
 **Status:** Research complete, ready for graph ingestion
@@ -20,7 +20,7 @@ Sources:
 
 ---
 
-## 2. CONTRATACION DIRECTA — THE STRUCTURAL LOOPHOLE
+## 2. CONTRATACION DIRECTA - THE STRUCTURAL LOOPHOLE
 
 | Metric | Value | Period |
 |--------|-------|--------|
@@ -34,10 +34,10 @@ Sources:
 **Key finding:** Direct contracting is the dominant procurement method, not the exception. It grew 3x faster than public bidding. 94% of contractors surveyed believe corruption exists in the process.
 
 Sources:
-- [Gordillo — Licitacion Publica vs Contratacion Directa](https://www.gordillo.com/pdf_tomo7/capitulo25.pdf)
-- [UNRN — Licitacion Publica vs Contratacion Directa](https://rid.unrn.edu.ar/bitstream/20.500.12049/5830/1/Casasola_Madarieta-2020.pdf)
-- [Poder Ciudadano — Integridad en compras publicas 2023](https://poderciudadano.org/wp-content/uploads/2023/03/Integridad-en-compras-y-contrataciones-publicas-en-Argentina-2023.pdf)
-- [SIGEN — Irregularidades limpieza](https://www.argentina.gob.ar/noticias/un-informe-de-sigen-detecto-diversas-irregularidades-en-la-contratacion-de-servicios-de)
+- [Gordillo - Licitacion Publica vs Contratacion Directa](https://www.gordillo.com/pdf_tomo7/capitulo25.pdf)
+- [UNRN - Licitacion Publica vs Contratacion Directa](https://rid.unrn.edu.ar/bitstream/20.500.12049/5830/1/Casasola_Madarieta-2020.pdf)
+- [Poder Ciudadano - Integridad en compras publicas 2023](https://poderciudadano.org/wp-content/uploads/2023/03/Integridad-en-compras-y-contrataciones-publicas-en-Argentina-2023.pdf)
+- [SIGEN - Irregularidades limpieza](https://www.argentina.gob.ar/noticias/un-informe-de-sigen-detecto-diversas-irregularidades-en-la-contratacion-de-servicios-de)
 
 ---
 
@@ -73,11 +73,11 @@ Sources:
 - **Real-terms change:** +79% nominal, -20% real vs 2024
 
 Sources:
-- [La Nacion — Suizo Argentina 2,678% increase](https://www.lanacion.com.ar/politica/aumento-exponencial-suizo-argentina-paso-de-3900-millones-a-108000-millones-en-contratos-con-el-nid24082025/)
-- [Perfil — 600+ ANDIS-Suizo contracts investigated](https://www.perfil.com/noticias/politica/la-justicia-federal-investiga-mas-de-600-contratos-entre-la-andis-y-la-drogueria-suizo-argentina-de-la-familia-kovalivker.phtml)
-- [Chequeado — 9 provinces with Suizo](https://chequeado.com/el-explicador/presuntas-coimas-en-discapacidad-al-menos-9-provincias-tienen-contratos-con-suizo-argentina-por-casi-54-000-millones/)
-- [La Nacion — Health budget 2025](https://www.lanacion.com.ar/sociedad/el-presupuesto-para-salud-item-por-item-asi-asigno-milei-los-fondos-2025-para-un-area-clave-nid19092024/)
-- [Soberania Sanitaria — PAMI pricing](https://soberaniasanitaria.org.ar/pami-aumento-de-precios-y-recortes-en-la-cobertura-de-medicamentos/)
+- [La Nacion - Suizo Argentina 2,678% increase](https://www.lanacion.com.ar/politica/aumento-exponencial-suizo-argentina-paso-de-3900-millones-a-108000-millones-en-contratos-con-el-nid24082025/)
+- [Perfil - 600+ ANDIS-Suizo contracts investigated](https://www.perfil.com/noticias/politica/la-justicia-federal-investiga-mas-de-600-contratos-entre-la-andis-y-la-drogueria-suizo-argentina-de-la-familia-kovalivker.phtml)
+- [Chequeado - 9 provinces with Suizo](https://chequeado.com/el-explicador/presuntas-coimas-en-discapacidad-al-menos-9-provincias-tienen-contratos-con-suizo-argentina-por-casi-54-000-millones/)
+- [La Nacion - Health budget 2025](https://www.lanacion.com.ar/sociedad/el-presupuesto-para-salud-item-por-item-asi-asigno-milei-los-fondos-2025-para-un-area-clave-nid19092024/)
+- [Soberania Sanitaria - PAMI pricing](https://soberaniasanitaria.org.ar/pami-aumento-de-precios-y-recortes-en-la-cobertura-de-medicamentos/)
 
 ---
 
@@ -99,15 +99,15 @@ Decreto 823/2021 (Alberto Fernandez)
 | Martinez Sosa personal co. | ARS $366M+ | 2021-2023 |
 | Total top 5 brokers | ARS $2,800M | 2020-2023 |
 | Total top 25 brokers | ARS $3,500M | 2020-2023 |
-| Gendarmeria contract alone | ARS $1,363M in commissions | — |
+| Gendarmeria contract alone | ARS $1,363M in commissions | - |
 | Monthly ART commissions (April 2024) | ARS $114M/month | 2024 |
 
 ### Key Actors
-- **Hector Martinez Sosa** — controlled 42% of state insurance business. Husband of Alberto Fernandez's secretary.
-- **Bachellier SA** — satellite company of Martinez Sosa
-- **Castello Mercuri SA** — top 5 broker
-- **San Ignacio Sociedad de Productores** — top 5, ANSES contracts
-- **Torres Garcia Brokers** — top 5, ANSES contracts
+- **Hector Martinez Sosa** - controlled 42% of state insurance business. Husband of Alberto Fernandez's secretary.
+- **Bachellier SA** - satellite company of Martinez Sosa
+- **Castello Mercuri SA** - top 5 broker
+- **San Ignacio Sociedad de Productores** - top 5, ANSES contracts
+- **Torres Garcia Brokers** - top 5, ANSES contracts
 - **Scheme replicated in 20+ state organisms** (ANSES confirmed)
 
 ### Judicial Status
@@ -117,12 +117,12 @@ Decreto 823/2021 (Alberto Fernandez)
 - Milei government refused to pay final ARS $125M invoice
 
 Sources:
-- [Infobae — Bachellier/satellites $2,000M+](https://www.infobae.com/politica/2024/03/18/escandalo-de-los-seguros-las-empresas-del-broker-amigo-de-alberto-fernandez-y-sus-satelites-cobraron-mas-de-2000-millones-por-comisiones/)
-- [Notiar — Martinez Sosa 42% control](https://notiar.com.ar/index.php/mas/justicia/132622-escandalo-de-los-seguros-prueban-que-martinez-sosa-era-el-principal-beneficiario-y-controlaba-el-42-del-negocio-con-el-estado-por-lucia-salinas)
-- [La Nacion — $114M monthly ART commissions](https://www.lanacion.com.ar/politica/nuevo-capitulo-en-la-trama-de-los-brokers-solo-el-mes-pasado-se-pagaron-por-lo-menos-114-millones-en-nid17042024/)
-- [La Nacion — Martinez Sosa $2,060M over 4 years](https://www.lanacion.com.ar/economia/el-escandalo-de-los-seguros-el-esposo-de-la-exsecretaria-de-alberto-fernandez-facturo-mas-de-360-nid05082024/)
-- [Infobae — 27 brokers identified](https://www.infobae.com/politica/2024/03/07/quienes-son-los-27-brokers-que-actuaron-como-intermediarios-con-nacion-seguros-y-estan-en-la-mira-de-la-justicia/)
-- [Infobae — scheme in 20+ organisms](https://www.infobae.com/politica/2024/11/02/seguros-descubren-que-la-maniobra-para-elegir-a-los-brokers-en-la-anses-se-repitio-en-mas-de-20-organismos/)
+- [Infobae - Bachellier/satellites $2,000M+](https://www.infobae.com/politica/2024/03/18/escandalo-de-los-seguros-las-empresas-del-broker-amigo-de-alberto-fernandez-y-sus-satelites-cobraron-mas-de-2000-millones-por-comisiones/)
+- [Notiar - Martinez Sosa 42% control](https://notiar.com.ar/index.php/mas/justicia/132622-escandalo-de-los-seguros-prueban-que-martinez-sosa-era-el-principal-beneficiario-y-controlaba-el-42-del-negocio-con-el-estado-por-lucia-salinas)
+- [La Nacion - $114M monthly ART commissions](https://www.lanacion.com.ar/politica/nuevo-capitulo-en-la-trama-de-los-brokers-solo-el-mes-pasado-se-pagaron-por-lo-menos-114-millones-en-nid17042024/)
+- [La Nacion - Martinez Sosa $2,060M over 4 years](https://www.lanacion.com.ar/economia/el-escandalo-de-los-seguros-el-esposo-de-la-exsecretaria-de-alberto-fernandez-facturo-mas-de-360-nid05082024/)
+- [Infobae - 27 brokers identified](https://www.infobae.com/politica/2024/03/07/quienes-son-los-27-brokers-que-actuaron-como-intermediarios-con-nacion-seguros-y-estan-en-la-mira-de-la-justicia/)
+- [Infobae - scheme in 20+ organisms](https://www.infobae.com/politica/2024/11/02/seguros-descubren-que-la-maniobra-para-elegir-a-los-brokers-en-la-anses-se-repitio-en-mas-de-20-organismos/)
 
 ---
 
@@ -132,9 +132,9 @@ Sources:
 | Year | Subsidies (USD) | % of GDP |
 |------|----------------|----------|
 | 2023 | ~$10,000M | ~1.5% |
-| 2024 | ~$7,024M | — |
-| Change | -37.6% | — |
-| 20-year total (electricity only) | $104,000M | — |
+| 2024 | ~$7,024M | - |
+| Change | -37.6% | - |
+| 20-year total (electricity only) | $104,000M | - |
 
 ### CAMMESA Debt Crisis
 - **Total debt to generators:** USD $2,000M+ (April 2024)
@@ -150,11 +150,11 @@ Sources:
 - **Distributors:** MetroGAS, Naturgy, Camuzzi Gas Pampeana, Camuzzi Gas del Sur, Distribuidora de Gas Cuyana
 
 Sources:
-- [Mejor Energia — subsidios -37.6% in 2024](https://www.mejorenergia.com.ar/noticias/2025/04/14/4011-los-subsidios-energeticos-cayeron-37_6por_ciento-en-2024)
-- [Infobae — $104,000M over 20 years](https://www.infobae.com/economia/2024/02/08/el-estado-gasto-mas-de-usd-104000-millones-en-los-ultimos-20-anos-para-subsidiar-las-tarifas-de-electricidad/)
-- [Ambito — CAMMESA $2,000M debt](https://www.ambito.com/energia/maxima-tension-generadores-la-deuda-cammesa-facturas-pagar-superan-us2000-millones-n5987617)
-- [La Nacion — AE38 bond solution](https://www.lanacion.com.ar/economia/deuda-millonaria-caputo-les-torcio-el-brazo-a-las-empresas-de-energia-y-lespagara-con-un-bono-que-nid23052024/)
-- [FARN — Fossil fuel subsidies 2023-2024](https://farn.org.ar/wp-content/uploads/2024/02/Los-subsidios-a-los-combustibles-fosiles-2022-2023.-El-embudo.-1.pdf)
+- [Mejor Energia - subsidios -37.6% in 2024](https://www.mejorenergia.com.ar/noticias/2025/04/14/4011-los-subsidios-energeticos-cayeron-37_6por_ciento-en-2024)
+- [Infobae - $104,000M over 20 years](https://www.infobae.com/economia/2024/02/08/el-estado-gasto-mas-de-usd-104000-millones-en-los-ultimos-20-anos-para-subsidiar-las-tarifas-de-electricidad/)
+- [Ambito - CAMMESA $2,000M debt](https://www.ambito.com/energia/maxima-tension-generadores-la-deuda-cammesa-facturas-pagar-superan-us2000-millones-n5987617)
+- [La Nacion - AE38 bond solution](https://www.lanacion.com.ar/economia/deuda-millonaria-caputo-les-torcio-el-brazo-a-las-empresas-de-energia-y-lespagara-con-un-bono-que-nid23052024/)
+- [FARN - Fossil fuel subsidies 2023-2024](https://farn.org.ar/wp-content/uploads/2024/02/Los-subsidios-a-los-combustibles-fosiles-2022-2023.-El-embudo.-1.pdf)
 
 ---
 
@@ -179,7 +179,7 @@ Sources:
 - **Contract:** 12 tugboats for Navy (Sept 2021, Alberto Fernandez)
 - **Price:** USD $63M (materials) + ARS $2,186M (labor)
 - **Status:** $23M+ paid, 0 boats delivered. Only 3 under construction.
-- **Paid vs contracted:** 40% in USD, 89% in ARS — for zero deliveries
+- **Paid vs contracted:** 40% in USD, 89% in ARS - for zero deliveries
 - **Polar vessel:** $220M contract with Aker Arctic Technologies (Finland), 5-6 years
 - **Privatization:** Under analysis, CGS Defence (Czech Republic) and Hispania Group (Spain) interested
 
@@ -190,11 +190,11 @@ Sources:
 - **Strategic value:** Large-scale ammunition and explosives production capacity
 
 Sources:
-- [CNN — Milei defense spending increase](https://cnnespanol.cnn.com/2024/09/16/argentina-gasto-defensa-milei-orix/)
-- [Pucara — Defense budget 2025 analysis](https://www.pucara.org/post/proyecto-de-presupuesto-de-defensa-de-argentina-2025-menos-gasto-pero-m%C3%A1s-ambiciones)
-- [InfoDefensa — Equipment acquisition plans](https://www.infodefensa.com/texto-diario/mostrar/5003299/presupuesto-2025-planes-compra-modernizacion)
-- [Neuquen.com — TANDANOR $23M paid, 0 delivered](https://www.neuquen.com/el-gobierno-investiga-un-contrato-con-el-astillero-estatal-pago-mas-de-us23-millones-y-no-recibio-ningun-buque/)
-- [Zona Militar — Navy breaking TANDANOR contract](https://www.zona-militar.com/2024/12/10/la-armada-argentina-habria-tomado-la-desicion-de-terminar-su-relacion-contractual-con-el-astillero-tandanor/)
+- [CNN - Milei defense spending increase](https://cnnespanol.cnn.com/2024/09/16/argentina-gasto-defensa-milei-orix/)
+- [Pucara - Defense budget 2025 analysis](https://www.pucara.org/post/proyecto-de-presupuesto-de-defensa-de-argentina-2025-menos-gasto-pero-m%C3%A1s-ambiciones)
+- [InfoDefensa - Equipment acquisition plans](https://www.infodefensa.com/texto-diario/mostrar/5003299/presupuesto-2025-planes-compra-modernizacion)
+- [Neuquen.com - TANDANOR $23M paid, 0 delivered](https://www.neuquen.com/el-gobierno-investiga-un-contrato-con-el-astillero-estatal-pago-mas-de-us23-millones-y-no-recibio-ningun-buque/)
+- [Zona Militar - Navy breaking TANDANOR contract](https://www.zona-militar.com/2024/12/10/la-armada-argentina-habria-tomado-la-desicion-de-terminar-su-relacion-contractual-con-el-astillero-tandanor/)
 
 ---
 
@@ -209,7 +209,7 @@ Sources:
 - **2025 policy:** Only projects at 80%+ completion get funded
 
 ### Road Concessions (Vialidad Nacional)
-- **New model:** Red Federal de Concesiones — private operation and maintenance
+- **New model:** Red Federal de Concesiones - private operation and maintenance
 - **Under tender:** 4,400km of strategic national routes
 - **South-Atlantic sector:** 1,325km (Routes 3, 205, 226 + Ezeiza-Canuelas, Riccheri, Newbery highways)
 - **Pampa sector:** 546km (Route 5)
@@ -217,10 +217,10 @@ Sources:
 - **Vialidad budget 2025:** >ARS $1 billion (+68% nominal), 75% for construction/maintenance
 
 Sources:
-- [Infobae — 25% execution rate 2024](https://www.infobae.com/economia/2024/11/28/el-gobierno-ejecuto-solo-el-25-del-gasto-para-obra-publica-la-partida-con-mayor-ajuste-de-todo-el-presupuesto/)
-- [Infobae — Constructor debt bond](https://www.infobae.com/economia/2026/02/27/obra-publica-el-gobierno-prepara-un-bono-para-saldar-la-deuda-que-tiene-con-las-empresas-constructoras/)
-- [Infobae — 4,400km concession tender](https://www.infobae.com/politica/2025/07/28/el-gobierno-prepara-una-licitacion-para-concesionar-4400-kilometros-de-rutas-nacionales-estrategicas/)
-- [InfoRegion — 15 companies bidding](https://www.inforegion.com.ar/2026/02/27/privatizacion-de-rutas-nacionales-15-empresas-compiten-por-corredores-en-buenos-aires-y-la-pampa/)
+- [Infobae - 25% execution rate 2024](https://www.infobae.com/economia/2024/11/28/el-gobierno-ejecuto-solo-el-25-del-gasto-para-obra-publica-la-partida-con-mayor-ajuste-de-todo-el-presupuesto/)
+- [Infobae - Constructor debt bond](https://www.infobae.com/economia/2026/02/27/obra-publica-el-gobierno-prepara-un-bono-para-saldar-la-deuda-que-tiene-con-las-empresas-constructoras/)
+- [Infobae - 4,400km concession tender](https://www.infobae.com/politica/2025/07/28/el-gobierno-prepara-una-licitacion-para-concesionar-4400-kilometros-de-rutas-nacionales-estrategicas/)
+- [InfoRegion - 15 companies bidding](https://www.inforegion.com.ar/2026/02/27/privatizacion-de-rutas-nacionales-15-empresas-compiten-por-corredores-en-buenos-aires-y-la-pampa/)
 
 ---
 
@@ -259,13 +259,13 @@ Suizo Argentina SA
 - **Officials implicated:** Karina Milei, Eduardo "Lule" Menem
 
 Sources:
-- [La Nacion — Scatturice 21 contracts](https://www.lanacion.com.ar/economia/el-empresario-que-actua-como-nexo-con-trump-sumo-al-menos-21-contratos-con-el-estado-desde-que-milei-nid08082025/)
-- [La Nacion — SIDE Tactic contract](https://www.lanacion.com.ar/economia/la-side-apela-al-lobby-de-scatturice-para-abrir-puertas-en-el-gobierno-de-trump-nid19062025/)
-- [Pagina 12 — Scatturice Min. Economia contracts](https://www.pagina12.com.ar/840904-los-millonarios-contratos-de-scatturice-con-el-ministerio-de/)
+- [La Nacion - Scatturice 21 contracts](https://www.lanacion.com.ar/economia/el-empresario-que-actua-como-nexo-con-trump-sumo-al-menos-21-contratos-con-el-estado-desde-que-milei-nid08082025/)
+- [La Nacion - SIDE Tactic contract](https://www.lanacion.com.ar/economia/la-side-apela-al-lobby-de-scatturice-para-abrir-puertas-en-el-gobierno-de-trump-nid19062025/)
+- [Pagina 12 - Scatturice Min. Economia contracts](https://www.pagina12.com.ar/840904-los-millonarios-contratos-de-scatturice-con-el-ministerio-de/)
 
 ---
 
-## 9. MONEY FLOW MAP — SUMMARY
+## 9. MONEY FLOW MAP - SUMMARY
 
 ```
 PRESUPUESTO NACIONAL (~$8.22T superavit primario)

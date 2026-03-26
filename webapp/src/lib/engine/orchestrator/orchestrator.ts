@@ -1,5 +1,5 @@
 /**
- * Orchestrator coordinator — ties together dispatch, synthesis, and priority
+ * Orchestrator coordinator - ties together dispatch, synthesis, and priority
  * into a single orchestration cycle. Pure orchestration logic, no direct DB access.
  */
 
@@ -26,7 +26,7 @@ export interface OrchestratorCycleResult {
 }
 
 // ---------------------------------------------------------------------------
-// runOrchestrationCycle — single cycle of plan → dispatch → synthesize → rebalance
+// runOrchestrationCycle - single cycle of plan → dispatch → synthesize → rebalance
 // ---------------------------------------------------------------------------
 
 /**

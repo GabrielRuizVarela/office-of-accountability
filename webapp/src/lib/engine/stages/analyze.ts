@@ -1,5 +1,5 @@
 /**
- * Analyze stage runner — M10 Stage Implementations.
+ * Analyze stage runner - M10 Stage Implementations.
  *
  * Identifies gaps, patterns, and anomalies in verified data using LLM
  * analysis via tool calls, and proposes hypotheses and missing edges.

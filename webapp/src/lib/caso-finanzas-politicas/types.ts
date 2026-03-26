@@ -1,5 +1,5 @@
 /**
- * Caso Finanzas Politicas — Zod schemas and TypeScript interfaces.
+ * Caso Finanzas Politicas - Zod schemas and TypeScript interfaces.
  *
  * Neo4j graph query result types for the Argentine Political Finance
  * investigation. These are distinct from the seed data types in

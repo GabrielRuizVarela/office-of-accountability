@@ -1,5 +1,5 @@
 /**
- * Centrality algorithm — M10 Graph Algorithms (Phase 6).
+ * Centrality algorithm - M10 Graph Algorithms (Phase 6).
  *
  * Queries Neo4j for degree centrality within a caso_slug namespace,
  * then creates hypothesis Proposals for high-centrality nodes.

@@ -134,7 +134,7 @@
         }
       ],
       "amounts": {
-        "note": "Pending accounting expert report (peritaje contable) — key evidence not yet completed"
+        "note": "Pending accounting expert report (peritaje contable) - key evidence not yet completed"
       },
       "connections": "Direct kickback channel from Causa Vialidad contractors. Hotesur managed Hotel Alto Calafate; Los Sauces managed other Kirchner properties.",
       "sources": [
@@ -197,7 +197,7 @@
       "connections": "Overlaps significantly with Causa Vialidad (same corruption network) and Hotesur/Los Sauces (kickback recipients). The cartelization of public works through the Camara Argentina de Empresas Viales is a key element.",
       "sources": [
         {"title": "Juicio historico 87 imputados 304 hechos", "url": "https://www.lanacion.com.ar/politica/cuadernos-de-las-coimas-se-inicia-un-juicio-historico-que-demorara-anos-nid02112025/"},
-        {"title": "Fiscales.gob.ar — inicio del juicio", "url": "https://www.fiscales.gob.ar/fiscalias/causa-cuadernos-con-la-lectura-de-parte-de-la-acusacion-comenzo-el-juicio-contra-la-expresidenta-cristina-fernandez-y-otros-86-imputados/"},
+        {"title": "Fiscales.gob.ar - inicio del juicio", "url": "https://www.fiscales.gob.ar/fiscalias/causa-cuadernos-con-la-lectura-de-parte-de-la-acusacion-comenzo-el-juicio-contra-la-expresidenta-cristina-fernandez-y-otros-86-imputados/"},
         {"title": "Arrepentidos relatos recaudacion ilegal", "url": "https://www.infobae.com/judiciales/2025/11/20/los-relatos-de-los-arrepentidos-en-la-causa-de-los-cuadernos-y-los-detalles-del-esquena-de-recaudacion-ilegal/"},
         {"title": "63 empresarios del juicio", "url": "https://www.lanacion.com.ar/politica/los-63-empresarios-que-seran-juzgados-por-coimas-arrepentidos-amenazas-recibidas-y-maniobras-para-nid06112025/"},
         {"title": "TOF 7 define si empresarios pagan para evitar juicio", "url": "https://www.infobae.com/judiciales/2025/09/22/causa-cuadernos-el-tribunal-oral-federal-7-define-si-los-empresarios-podran-pagar-para-evitar-el-juicio/"},
@@ -256,7 +256,7 @@
         "victims": "52 muertos, 789 heridos",
         "note": "Subsidios millonarios a TBA desviados, no utilizados en mantenimiento"
       },
-      "connections": "De Vido is the common thread — also defendant in Cuadernos, Suenos Compartidos, and convicted for 'trenes chatarra'. Demonstrates pattern of criminal negligence in transport policy for political/financial gain.",
+      "connections": "De Vido is the common thread - also defendant in Cuadernos, Suenos Compartidos, and convicted for 'trenes chatarra'. Demonstrates pattern of criminal negligence in transport policy for political/financial gain.",
       "sources": [
         {"title": "Corte confirmo condena De Vido 4 anos", "url": "https://www.perfil.com/noticias/judiciales/la-corte-suprema-confirmo-la-condena-de-cuatro-anos-de-prision-a-julio-de-vido-por-su-responsabilidad-en-la-tragedia-de-once.phtml"},
         {"title": "De Vido se entrego, trasladado a Ezeiza", "url": "https://www.infobae.com/judiciales/2025/11/13/julio-de-vido-se-entrego-en-comodoro-py-y-quedo-detenido-por-la-tragedia-de-once/"},
@@ -269,7 +269,7 @@
     {
       "case_name": "Causa Ciccone / Boudou",
       "court": "TOF 4",
-      "status": "CONDENA FIRME — LIBERTAD CONDICIONAL",
+      "status": "CONDENA FIRME - LIBERTAD CONDICIONAL",
       "summary": "Former Vice President Amado Boudou orchestrated a scheme to acquire the bankrupt Ciccone Calcografica printing company through front men, then used his position to secure government contracts for printing banknotes and official documents. First vice president in Argentine history convicted of corruption.",
       "key_dates": {
         "primera_instancia": "2018-08 (5 anos 10 meses)",
@@ -292,7 +292,7 @@
       "connections": "Boudou was CFK's vice president. The scheme shows the reach of corruption into state monetary functions (printing of currency).",
       "sources": [
         {"title": "Corte confirmo condena Boudou", "url": "https://www.infobae.com/politica/2020/12/03/la-corte-suprema-confirmo-la-condena-de-amado-boudou-por-el-caso-ciccone-y-el-ex-vicepresidente-quedo-a-un-paso-de-volver-a-prision/"},
-        {"title": "Chequeado — primer vicepresidente condenado", "url": "https://chequeado.com/el-explicador/causa-ciccone-la-corte-confirmo-la-sentencia-de-boudou-y-se-convirtio-en-el-primer-vicepresidente-condenado-por-corrupcion/"},
+        {"title": "Chequeado - primer vicepresidente condenado", "url": "https://chequeado.com/el-explicador/causa-ciccone-la-corte-confirmo-la-sentencia-de-boudou-y-se-convirtio-en-el-primer-vicepresidente-condenado-por-corrupcion/"},
         {"title": "Libertad condicional Boudou", "url": "https://www.pagina12.com.ar/356645-causa-ciccone-ordenan-la-libertad-condicional-de-amado-boudo"},
         {"title": "Reduccion condena", "url": "https://www.cronista.com/economia-politica/boudou-por-que-le-bajan-otro-mes-de-condena-y-podria-salir-en-libertad-condicional-la-semana-que-viene/"}
       ]
@@ -345,7 +345,7 @@
         "fondos_desviados": "ARS 206,438,454 (23.54%)",
         "viviendas_no_construidas": "Miles de viviendas sociales prometidas"
       },
-      "connections": "De Vido and Lopez appear here too — same officials from Vialidad and Cuadernos. Bonafini's Madres foundation served as a conduit for political patronage. Schoklender accused Bonafini of channeling funds to CFK/Boudou campaigns.",
+      "connections": "De Vido and Lopez appear here too - same officials from Vialidad and Cuadernos. Bonafini's Madres foundation served as a conduit for political patronage. Schoklender accused Bonafini of channeling funds to CFK/Boudou campaigns.",
       "sources": [
         {"title": "Comenzo juicio Schoklender, Lopez, De Vido", "url": "https://www.revistalarealidad.com.ar/comenzo-el-juicio-contra-los-schoklender-lopez-y-de-vido-por-el-fraude-en-suenos-compartidos/"},
         {"title": "Schoklender se sentaran en banquillo", "url": "https://www.infobae.com/judiciales/2026/02/02/suenos-compartidos-tras-anos-de-demora-los-schoklender-se-sentaran-en-el-banquillo/"},
@@ -354,7 +354,7 @@
     },
 
     {
-      "case_name": "Jose Lopez — Bolsos del Convento",
+      "case_name": "Jose Lopez - Bolsos del Convento",
       "court": "TOF 1 (enriquecimiento) / TOF 2 (Vialidad) / unificacion",
       "status": "CONDENA FIRME",
       "summary": "On June 14, 2016, former Secretary of Public Works Jose Lopez was arrested at Monasterio Nuestra Senora de Fatima in General Rodriguez while attempting to hide bags containing nearly USD 9 million in cash, jewelry, and a firearm. The case demonstrated the scale of illicit enrichment by K-era officials.",
@@ -452,7 +452,7 @@
         {"title": "Justicia pondra fecha juicio oral memorandum", "url": "https://www.perfil.com/noticias/politica/otro-reves-para-cristina-kirchner-la-justicia-pone-fecha-para-el-inicio-del-juicio-oral-por-el-memorandum-con-iran.phtml"},
         {"title": "TOF 8 anunciara fecha despues de feria", "url": "https://www.lanacion.com.ar/politica/avanza-el-caso-del-memorandum-con-iran-contra-cristina-kirchner-el-tribunal-oral-anunciara-la-fecha-nid28072025/"},
         {"title": "CFK ira a juicio por encubrimiento AMIA", "url": "https://www.infobae.com/judiciales/2023/09/18/memorandum-con-iran-cristina-kirchner-tambien-ira-a-juicio-por-el-encubrimiento-del-ataque-a-la-amia/"},
-        {"title": "Rol de Iran en AMIA — batalla judicial", "url": "https://www.infobae.com/judiciales/2026/03/01/el-rol-de-iran-en-el-atentado-a-la-amia-el-plan-de-la-cupula-estatal-y-la-batalla-judicial-por-el-juicio-a-los-profugos/"}
+        {"title": "Rol de Iran en AMIA - batalla judicial", "url": "https://www.infobae.com/judiciales/2026/03/01/el-rol-de-iran-en-el-atentado-a-la-amia-el-plan-de-la-cupula-estatal-y-la-batalla-judicial-por-el-juicio-a-los-profugos/"}
       ]
     },
 
@@ -471,13 +471,13 @@
         {
           "name": "Cristina Fernandez de Kirchner",
           "charge": "Administracion fraudulenta (original)",
-          "status": "SOBRESEIDA — firme por Corte Suprema"
+          "status": "SOBRESEIDA - firme por Corte Suprema"
         },
         {
           "name": "Axel Kicillof",
           "role": "Ex-Ministro de Economia, actual Gobernador de Buenos Aires",
           "charge": "Administracion fraudulenta (original)",
-          "status": "SOBRESEIDO — firme por Corte Suprema"
+          "status": "SOBRESEIDO - firme por Corte Suprema"
         },
         {
           "name": "Alejandro Vanoli",
@@ -494,10 +494,10 @@
         "perjuicio_alegado": "No demostrado",
         "pericia_resultado": "Ganancia BCRA: ARS 147,116,000,000 (2015) + ARS 67,448,000,000 (2016)"
       },
-      "connections": "Often cited by Kirchnerism as evidence of 'lawfare' — political use of the judiciary. The case collapsed when expert evidence showed no financial damage to the state.",
+      "connections": "Often cited by Kirchnerism as evidence of 'lawfare' - political use of the judiciary. The case collapsed when expert evidence showed no financial damage to the state.",
       "sources": [
         {"title": "Corte Suprema sobreseimiento firme", "url": "https://www.infobae.com/judiciales/2024/12/05/la-corte-suprema-dejo-firme-el-sobreseimiento-de-cristina-kirchner-y-axel-kicillof-por-la-causa-dolar-futuro/"},
-        {"title": "SAIJ — Corte confirmo sobreseimiento", "url": "https://www.saij.gob.ar/corte-confirmo-sobreseimiento-cristina-fernandez-kirchner-axel-kicillof-causa-dolar-futuro-nv44839-2024-12-05/123456789-0abc-938-44ti-lpssedadevon"},
+        {"title": "SAIJ - Corte confirmo sobreseimiento", "url": "https://www.saij.gob.ar/corte-confirmo-sobreseimiento-cristina-fernandez-kirchner-axel-kicillof-causa-dolar-futuro-nv44839-2024-12-05/123456789-0abc-938-44ti-lpssedadevon"},
         {"title": "Kicillof libre de cargos", "url": "https://infocielo.com/politica-y-economia/kicillof-libre-cargos-la-justicia-confirmo-que-no-hubo-perjuicio-la-causa-dolar-futuro-n797489"}
       ]
     }
@@ -515,7 +515,7 @@
       {"case": "Suenos Compartidos",  "primary_defendant": "Schoklender, De Vido, Lopez", "status": "EN JUICIO ORAL",     "sentence": "Pendiente (inicio feb 2026)"},
       {"case": "Bolsos del Convento", "primary_defendant": "Lopez",                    "status": "CONDENA FIRME",         "sentence": "13a (pena unica)"},
       {"case": "Memorandum Iran/AMIA","primary_defendant": "CFK, Zannini, Parrilli",   "status": "ESPERA JUICIO ORAL",    "sentence": "Pendiente"},
-      {"case": "Dolar Futuro",        "primary_defendant": "CFK, Kicillof",            "status": "SOBRESEIMIENTO FIRME",  "sentence": "N/A — sin perjuicio demostrado"}
+      {"case": "Dolar Futuro",        "primary_defendant": "CFK, Kicillof",            "status": "SOBRESEIMIENTO FIRME",  "sentence": "N/A - sin perjuicio demostrado"}
     ]
   },
 

@@ -129,12 +129,12 @@ export default function SignUpPage() {
           signInRes.status === 302 ||
           signInRes.status === 200
         ) {
-          // Redirect to home — verification email was sent
+          // Redirect to home - verification email was sent
           window.location.href = '/?registered=true'
           return
         }
 
-        // Registration succeeded but auto-signin failed — redirect to sign-in
+        // Registration succeeded but auto-signin failed - redirect to sign-in
         window.location.href = '/auth/signin?registered=true'
       } catch {
         dispatch({ type: 'SET_ERROR', error: 'Error de conexión. Intenta de nuevo.' })
@@ -271,7 +271,7 @@ export default function SignUpPage() {
           <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
         </div>
 
-        {/* Google OAuth — <a> intentional: API route triggers full-page OAuth redirect */}
+        {/* Google OAuth - <a> intentional: API route triggers full-page OAuth redirect */}
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a
           href="/api/auth/signin/google"

@@ -50,7 +50,7 @@ function useNodeSearch() {
         )
         setResults(items)
       } catch {
-        // abort or network error — ignore
+        // abort or network error - ignore
       } finally {
         setLoading(false)
       }

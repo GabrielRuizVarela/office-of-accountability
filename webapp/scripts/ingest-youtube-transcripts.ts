@@ -95,7 +95,7 @@ function extractVideoId(url: string): string | null {
  *  2. Parse out the timedtext URL from the playerCaptionsTracklistRenderer
  *  3. Fetch the XML transcript and parse segments
  */
-/** Find yt-dlp binary — check common locations */
+/** Find yt-dlp binary - check common locations */
 async function findYtDlp(): Promise<string> {
   const candidates = [
     join(process.env.HOME ?? '', '.local/bin/yt-dlp'),
@@ -113,7 +113,7 @@ async function findYtDlp(): Promise<string> {
 }
 
 async function fetchTranscript(videoId: string): Promise<TranscriptSegment[]> {
-  // Use yt-dlp to extract subtitles — handles all YouTube edge cases reliably
+  // Use yt-dlp to extract subtitles - handles all YouTube edge cases reliably
   const outTemplate = join(tmpdir(), `yt-sub-${videoId}`)
 
   try {
@@ -388,7 +388,7 @@ function buildMatchers(
     }
   }
 
-  // Sort longest aliases first — prefer "Jeffrey Epstein" over "Epstein"
+  // Sort longest aliases first - prefer "Jeffrey Epstein" over "Epstein"
   matchers.sort((a, b) => b.alias.length - a.alias.length)
 
   return matchers
@@ -438,7 +438,7 @@ async function processVideo(
     return null
   }
 
-  console.log(`\n[process] ${videoId} — ${source.title}`)
+  console.log(`\n[process] ${videoId} - ${source.title}`)
 
   let segments: TranscriptSegment[]
   try {

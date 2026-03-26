@@ -4,7 +4,7 @@
  * Print/PDF export button for investigations.
  *
  * Triggers the browser's native print dialog which allows
- * saving as PDF — zero-dependency, works on all browsers.
+ * saving as PDF - zero-dependency, works on all browsers.
  */
 
 export function PrintButton() {

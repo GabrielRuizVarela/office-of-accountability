@@ -275,7 +275,7 @@ function MiniGraphCanvas({
 }
 
 // ---------------------------------------------------------------------------
-// Sub-graph embed view (editor mode — with delete)
+// Sub-graph embed view (editor mode - with delete)
 // ---------------------------------------------------------------------------
 
 function SubGraphEmbedEditorView(props: {
@@ -368,7 +368,7 @@ function SubGraphEmbedEditorView(props: {
 }
 
 // ---------------------------------------------------------------------------
-// Sub-graph embed view (read-only — clickable link to explorer)
+// Sub-graph embed view (read-only - clickable link to explorer)
 // ---------------------------------------------------------------------------
 
 function SubGraphEmbedReadView(props: {
@@ -392,7 +392,7 @@ function SubGraphEmbedReadView(props: {
           setGraphData(json.data as GraphData)
         }
       } catch {
-        // Silently fail — empty state is fine
+        // Silently fail - empty state is fine
       } finally {
         if (!cancelled) setIsLoading(false)
       }

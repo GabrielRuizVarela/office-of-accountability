@@ -1,5 +1,5 @@
 {
-  "title": "Club de la Obra Publica — Argentine Construction Cartel",
+  "title": "Club de la Obra Publica - Argentine Construction Cartel",
   "date": "2026-03-21",
   "summary": "Map of Argentine construction companies that systematically divided public works contracts, paid kickbacks to officials, and rotated across administrations from the military dictatorship (1976-83) through Milei (2024-present). The 'Cuadernos de las Coimas' case (2018-present, trial ongoing 2025-26) exposed the mechanism in detail.",
 
@@ -50,7 +50,7 @@
         "Industrial promotion regime subsidies with tax exemptions",
         "Export incentives",
         "Foreign debt insurance (seguros de cambio) that socialized private debt",
-        "Compre Nacional law — State paid premium prices for domestic suppliers",
+        "Compre Nacional law - State paid premium prices for domestic suppliers",
         "22% of first road concessions (1988, Alfonsin era)"
       ],
       "gasoducto_nestor_kirchner": {
@@ -107,7 +107,7 @@
         {"period": "2007-2017", "owner": "Angelo Calcaterra (Macri's cousin)", "notes": "Bought to avoid conflict of interest when Mauricio Macri became Buenos Aires Mayor. Ranked 3rd largest state contractor under Kirchner (behind Techint and Electroingenieria)."},
         {"period": "2017-present", "owner": "Marcelo Mindlin + partners", "notes": "Purchased via MBD-Lazard auction. Renamed to SACDE. Payment dispute: Calcaterra sued Mindlin over unpaid installments (6 annual payments 2019-2024)."}
       ],
-      "key_project": "Sarmiento train burial (soterramiento) — won during Kirchner era in consortium with Odebrecht, Ghella, Comsa",
+      "key_project": "Sarmiento train burial (soterramiento) - won during Kirchner era in consortium with Odebrecht, Ghella, Comsa",
       "cuadernos_case": {
         "calcaterra_status": "Declared as arrepentido before Judge Bonadio. Admitted payments to Roberto Baratta for 2013/2015 Kirchnerist campaigns.",
         "contradictions": "Before Judge Martinez de Giorgi (Odebrecht case): denied paying bribes. Before Judge Bonadio (Cuadernos): admitted payments.",
@@ -139,7 +139,7 @@
           "original_cost": "USD 300 million",
           "final_cost": "USD 565 million (after 13 months)",
           "maintenance": "USD 372.8 million",
-          "irregularity": "No public bidding — only bid (2007) was for repowering old plant, abandoned, then awarded to Electroingenieria-Sener UTE in 2008 without new call"
+          "irregularity": "No public bidding - only bid (2007) was for repowering old plant, abandoned, then awarded to Electroingenieria-Sener UTE in 2008 without new call"
         }
       },
       "cuadernos_case": {
@@ -201,25 +201,25 @@
     "trial_status": "Oral trial began late 2025. Ongoing as of March 2026. Centeno returned to court March 19, 2026 but refused to testify.",
     "key_figures": {
       "political": [
-        "Cristina Fernandez de Kirchner — principal imputada (main defendant)",
-        "Roberto Baratta — Secretary of Energy, recipient of bribes",
-        "Jose Lopez — Planning Ministry official, received cash deliveries",
-        "Ricardo Jaime — Transport Secretary, received 5% kickbacks on subsidies",
-        "Julio De Vido — Planning Minister, oversaw contract distribution"
+        "Cristina Fernandez de Kirchner - principal imputada (main defendant)",
+        "Roberto Baratta - Secretary of Energy, recipient of bribes",
+        "Jose Lopez - Planning Ministry official, received cash deliveries",
+        "Ricardo Jaime - Transport Secretary, received 5% kickbacks on subsidies",
+        "Julio De Vido - Planning Minister, oversaw contract distribution"
       ],
       "financial_operators": [
-        "Ernesto Clarens — financier, converted cash to USD, delivered to officials",
-        "Oscar Centeno — driver who kept the notebooks documenting deliveries"
+        "Ernesto Clarens - financier, converted cash to USD, delivered to officials",
+        "Oscar Centeno - driver who kept the notebooks documenting deliveries"
       ],
       "empresarios_arrepentidos": [
-        "Carlos Enrique Wagner (Chamber of Construction president) — confessed cartel mechanism",
-        "Aldo Roggio — admitted 5% kickbacks on transport subsidies",
-        "Angelo Calcaterra — admitted payments to Baratta for campaigns",
+        "Carlos Enrique Wagner (Chamber of Construction president) - confessed cartel mechanism",
+        "Aldo Roggio - admitted 5% kickbacks on transport subsidies",
+        "Angelo Calcaterra - admitted payments to Baratta for campaigns",
         "Multiple executives from Decavial, Supercemento, Losi, Panedile, Coarco, Equimac"
       ],
       "empresarios_who_refused_cooperation": [
-        "Gerardo Ferreyra (Electroingenieria) — imprisoned, maintains innocence",
-        "Paolo Rocca (Techint) — implicated but did not become arrepentido"
+        "Gerardo Ferreyra (Electroingenieria) - imprisoned, maintains innocence",
+        "Paolo Rocca (Techint) - implicated but did not become arrepentido"
       ]
     },
     "kickback_rate": "10-20% of contract value (per Wagner confession)",

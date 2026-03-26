@@ -182,7 +182,7 @@ export function SnapshotManager({ casoSlug, pipelineStateId }: SnapshotManagerPr
               <div className="truncate font-mono text-xs text-zinc-500">{snap.snapshot_slug}</div>
               <div className="text-right font-mono text-xs text-emerald-400">{snap.node_count}</div>
               <div className="text-right font-mono text-xs text-blue-400">{snap.relationship_count}</div>
-              <div className="truncate font-mono text-xs text-zinc-500">{snap.stage_id ?? '—'}</div>
+              <div className="truncate font-mono text-xs text-zinc-500">{snap.stage_id ?? '-'}</div>
               <div className="text-xs text-zinc-500">{formatRelativeTime(snap.created_at)}</div>
               <div className="flex justify-end">
                 {confirmDeleteId === snap.id ? (

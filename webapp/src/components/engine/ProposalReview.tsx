@@ -29,7 +29,7 @@ function confidenceColor(c: number): string {
 }
 
 function formatTimestamp(iso: string | undefined): string {
-  if (!iso) return '—'
+  if (!iso) return '-'
   try {
     return new Date(iso).toLocaleString()
   } catch {

@@ -10,7 +10,7 @@ export interface RoadmapPhase {
 export const roadmapPhases: RoadmapPhase[] = [
   {
     id: 'phase-1',
-    title: 'Fase 1 — Grafo de conocimiento + Investigaciones',
+    title: 'Fase 1 - Grafo de conocimiento + Investigaciones',
     goal: 'Base de datos en grafo con datos publicos verificados, explorador visual y primeras investigaciones publicadas.',
     status: 'in-progress',
     statusLabel: 'En progreso',
@@ -23,7 +23,7 @@ export const roadmapPhases: RoadmapPhase[] = [
   },
   {
     id: 'phase-2',
-    title: 'Fase 2 — Motor de investigacion autonomo',
+    title: 'Fase 2 - Motor de investigacion autonomo',
     goal: 'Pipeline automatizado: el motor busca, valida, consolida y reporta hallazgos con revision humana en cada paso.',
     status: 'next',
     statusLabel: 'Proximo',
@@ -36,7 +36,7 @@ export const roadmapPhases: RoadmapPhase[] = [
   },
   {
     id: 'phase-3',
-    title: 'Fase 3 — IA avanzada + API publica',
+    title: 'Fase 3 - IA avanzada + API publica',
     goal: 'Consultas avanzadas sobre el grafo, sugerencias automaticas y API para periodistas e investigadores.',
     status: 'future',
     statusLabel: 'Futuro',
@@ -49,7 +49,7 @@ export const roadmapPhases: RoadmapPhase[] = [
   },
   {
     id: 'phase-4',
-    title: 'Fase 4 — Comunidad + Gobernanza',
+    title: 'Fase 4 - Comunidad + Gobernanza',
     goal: 'Investigaciones comunitarias, coaliciones, endorsements y mecanismos de consenso.',
     status: 'future',
     statusLabel: 'Futuro',
@@ -62,7 +62,7 @@ export const roadmapPhases: RoadmapPhase[] = [
   },
   {
     id: 'phase-5',
-    title: 'Fase 5 — Rendicion de cuentas',
+    title: 'Fase 5 - Rendicion de cuentas',
     goal: 'Scoring algoritmico, mandatos ciudadanos y cobertura provincial.',
     status: 'future',
     statusLabel: 'Futuro',

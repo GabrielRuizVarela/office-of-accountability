@@ -25,8 +25,8 @@ const STAT_LABELS: Record<string, Record<Lang, string>> = {
 
 const t = {
   badge: {
-    en: 'Open-source investigation — Office of Accountability',
-    es: 'Investigacion de datos abiertos — Oficina de Rendicion de Cuentas',
+    en: 'Open-source investigation - Office of Accountability',
+    es: 'Investigacion de datos abiertos - Oficina de Rendicion de Cuentas',
   },
   title: {
     en: 'The Epstein Network',
@@ -41,16 +41,16 @@ const t = {
     es: 'Leer la historia completa',
   },
   readStoryDesc: {
-    en: '13 chapters tracing the network from origin to 2026 arrests — with 35 citations',
-    es: '13 capitulos trazando la red desde su origen hasta los arrestos de 2026 — con 35 citas',
+    en: '13 chapters tracing the network from origin to 2026 arrests - with 35 citations',
+    es: '13 capitulos trazando la red desde su origen hasta los arrestos de 2026 - con 35 citas',
   },
   browseEvidence: {
     en: 'Browse the evidence',
     es: 'Ver la evidencia',
   },
   browseEvidenceDesc: {
-    en: 'Court filings, depositions, FBI records, flight logs — all verified and sourced',
-    es: 'Expedientes judiciales, deposiciones, registros del FBI, bitacoras de vuelo — todo verificado y con fuentes',
+    en: 'Court filings, depositions, FBI records, flight logs - all verified and sourced',
+    es: 'Expedientes judiciales, deposiciones, registros del FBI, bitacoras de vuelo - todo verificado y con fuentes',
   },
   investigation: {
     en: 'Verified investigation',
@@ -89,16 +89,16 @@ const t = {
     es: 'Analisis de Proximidad',
   },
   proximityDesc: {
-    en: 'Where and when timelines of key persons overlap — locations, events, documents.',
-    es: 'Donde y cuando se superponen las lineas de tiempo de personas clave — ubicaciones, eventos, documentos.',
+    en: 'Where and when timelines of key persons overlap - locations, events, documents.',
+    es: 'Donde y cuando se superponen las lineas de tiempo de personas clave - ubicaciones, eventos, documentos.',
   },
   simulation: {
     en: 'AI-Powered Network Analysis',
     es: 'Analisis de Red con IA',
   },
   simulationDesc: {
-    en: 'MiroFish swarm intelligence — simulate multi-agent analysis of the network using locally-hosted LLMs. Ask questions from the perspective of investigators, prosecutors, and analysts.',
-    es: 'Inteligencia de enjambre MiroFish — simula analisis multi-agente de la red usando LLMs locales. Haz preguntas desde la perspectiva de investigadores, fiscales y analistas.',
+    en: 'MiroFish swarm intelligence - simulate multi-agent analysis of the network using locally-hosted LLMs. Ask questions from the perspective of investigators, prosecutors, and analysts.',
+    es: 'Inteligencia de enjambre MiroFish - simula analisis multi-agente de la red usando LLMs locales. Haz preguntas desde la perspectiva de investigadores, fiscales y analistas.',
   },
 } as const
 

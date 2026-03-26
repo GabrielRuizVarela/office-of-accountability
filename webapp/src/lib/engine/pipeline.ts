@@ -1,8 +1,8 @@
 /**
- * Pipeline runner — M10.
+ * Pipeline runner - M10.
  *
  * PipelineState CRUD + orchestrator functions for state transitions.
- * No stage execution logic — only manages: start → [advance/gate/resume] → complete/fail.
+ * No stage execution logic - only manages: start → [advance/gate/resume] → complete/fail.
  */
 
 import crypto from 'node:crypto'
@@ -231,12 +231,12 @@ export async function advanceStage(pipelineStateId: string): Promise<PipelineSta
     }
   }
 
-  // Compliance gate — evaluate framework rules for the current stage phase
+  // Compliance gate - evaluate framework rules for the current stage phase
   const stagePhase = (currentStage?.kind ?? 'any') as CompliancePhase
   const complianceResult = await runComplianceGate(state.caso_slug, stagePhase)
 
   if (!complianceResult.passed) {
-    // Compliance gate blocked — pause pipeline
+    // Compliance gate blocked - pause pipeline
     await captureSnapshot(
       pipelineStateId,
       currentStage?.id ?? state.current_stage_id!,
@@ -270,10 +270,10 @@ export async function advanceStage(pipelineStateId: string): Promise<PipelineSta
     })
   }
 
-  // No gate or gate not required — advance to next stage or complete
+  // No gate or gate not required - advance to next stage or complete
   const nextIndex = currentIndex + 1
   if (nextIndex >= config.stage_ids.length) {
-    // No more stages — complete
+    // No more stages - complete
     const updated = await updatePipelineState(pipelineStateId, {
       status: 'completed',
       completed_at: nowISO(),
@@ -341,7 +341,7 @@ export async function resumeAfterGate(pipelineStateId: string): Promise<Pipeline
 
   const nextIndex = currentIndex + 1
   if (nextIndex >= config.stage_ids.length) {
-    // No more stages — complete
+    // No more stages - complete
     const updated = await updatePipelineState(pipelineStateId, {
       status: 'completed',
       completed_at: nowISO(),

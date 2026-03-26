@@ -1,5 +1,5 @@
 /**
- * ETL Loader — batch MERGE of Como Voto data into Neo4j.
+ * ETL Loader - batch MERGE of Como Voto data into Neo4j.
  *
  * Uses UNWIND for efficient batching. All queries are parameterized
  * to prevent Cypher injection. Idempotent via MERGE (safe to re-run).

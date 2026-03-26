@@ -238,7 +238,7 @@ export async function POST(request: NextRequest) {
         }
       })
     } catch (error) {
-      // Seed copy failure is non-fatal — investigation was already created
+      // Seed copy failure is non-fatal - investigation was already created
       console.warn('[casos/create] seed entity copy failed (non-fatal):', error)
     }
   }

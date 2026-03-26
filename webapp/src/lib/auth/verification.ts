@@ -76,7 +76,7 @@ export async function consumeVerificationToken(
 ): Promise<boolean> {
   const identifier = `${purpose}:${email}`
 
-  // Read token first, then delete — Neo4j can't access properties after DELETE
+  // Read token first, then delete - Neo4j can't access properties after DELETE
   const result = await writeQuery(
     `MATCH (vt:VerificationToken {identifier: $identifier})
      WITH vt, vt.token AS token, vt.expires AS expires

@@ -3,7 +3,7 @@ import { InvestigationNav } from '@/components/investigation/InvestigationNav'
 import { BilingualLegalDisclaimer } from '@/components/investigation/LegalDisclaimer'
 
 export const metadata = {
-  title: 'Finanzas Políticas — Oficina de Rendición de Cuentas',
+  title: 'Finanzas Políticas - Oficina de Rendición de Cuentas',
   description:
     'Análisis de redes de relaciones institucionales en Argentina. 14 fuentes de datos públicos, 40 años de gobernanza democrática.',
 }

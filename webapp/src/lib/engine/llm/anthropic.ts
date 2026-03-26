@@ -1,5 +1,5 @@
 /**
- * Anthropic LLM provider — Messages API adapter.
+ * Anthropic LLM provider - Messages API adapter.
  *
  * Uses raw fetch against the Anthropic /v1/messages endpoint.
  * Maps thinking blocks → normalized `reasoning` field.

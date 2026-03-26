@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * Actor profile page — person details, mini timeline,
+ * Actor profile page - person details, mini timeline,
  * connections, related documents, and mini graph.
  */
 
@@ -91,7 +91,7 @@ export default function ActorPage() {
 
       {description && <p className="text-sm leading-relaxed text-zinc-400">{description}</p>}
 
-      <ShareButton text={`Caso Libra — Perfil de ${name}`} title={`${name} — Caso Libra`} />
+      <ShareButton text={`Caso Libra - Perfil de ${name}`} title={`${name} - Caso Libra`} />
 
       {/* Mini graph */}
       {graph.nodes.length > 1 && (

@@ -1,4 +1,4 @@
-# Plan C: Engine Consolidation — MiroFish Absorption + Graph Algorithms + Cleanup
+# Plan C: Engine Consolidation - MiroFish Absorption + Graph Algorithms + Cleanup
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
@@ -14,7 +14,7 @@
 
 ## File Map
 
-### Files to Delete (MiroFish Simulation — Dead Code)
+### Files to Delete (MiroFish Simulation - Dead Code)
 
 | File | Reason |
 |---|---|
@@ -213,7 +213,7 @@ export interface CentralityResult {
 }
 
 /**
- * Degree centrality — count relationships per node.
+ * Degree centrality - count relationships per node.
  * Returns top N nodes by connection count.
  */
 export async function degreeCentrality(
@@ -572,7 +572,7 @@ export async function detectAnomalies(casoSlug: string): Promise<Anomaly[]> {
       }
     }
 
-    // 2. Tier mismatch — nodes with many connections but still bronze
+    // 2. Tier mismatch - nodes with many connections but still bronze
     const tierMismatch = await session.run(
       `MATCH (n {caso_slug: $casoSlug, confidence_tier: 'bronze'})-[r]-()
        WITH n, count(r) AS degree
@@ -660,7 +660,7 @@ Replace the static content with an interactive page:
 - Show top 5 centrality nodes as "Key Actors"
 - Show detected anomalies as "Patterns Found"
 
-Keep it simple — this is a stepping stone. The real analysis happens through MCP tools where the external LLM does the heavy lifting.
+Keep it simple - this is a stepping stone. The real analysis happens through MCP tools where the external LLM does the heavy lifting.
 
 - [ ] **Step 2: Verify and commit**
 
@@ -679,4 +679,4 @@ Commit: `git commit -am "feat: repurpose /simular from 'Coming Soon' to 'What-If
 | 4. Wire algorithms | 1 modified | analyze/run route calls real algorithms |
 | 5. Repurpose /simular | 1 modified | Interactive analysis page replaces dead "Coming Soon" |
 
-**Delegation note:** All 5 tasks in this plan are suitable for Ralph — they're well-scoped, follow existing patterns, and have clear acceptance criteria.
+**Delegation note:** All 5 tasks in this plan are suitable for Ralph - they're well-scoped, follow existing patterns, and have clear acceptance criteria.

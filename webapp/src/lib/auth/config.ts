@@ -2,7 +2,7 @@
  * Auth.js configuration for @auth/core.
  *
  * Framework-agnostic setup using Credentials (email/password)
- * and Google OAuth providers. JWT sessions — no session storage in Neo4j.
+ * and Google OAuth providers. JWT sessions - no session storage in Neo4j.
  *
  * Uses custom Neo4j adapter for User/Account/VerificationToken persistence.
  */
@@ -36,7 +36,7 @@ function getAuthConfig(): AuthConfig {
       throw new Error('AUTH_SECRET must be at least 32 characters in production (use: openssl rand -base64 32)')
     }
     if (KNOWN_WEAK_SECRETS.includes(secret)) {
-      throw new Error('AUTH_SECRET is a known weak value — generate a secure secret for production')
+      throw new Error('AUTH_SECRET is a known weak value - generate a secure secret for production')
     }
   }
 

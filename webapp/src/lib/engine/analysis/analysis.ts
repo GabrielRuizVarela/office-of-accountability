@@ -4,7 +4,7 @@
  * Calls the llama.cpp OpenAI-compatible endpoint directly (port 8080)
  * for cross-referenced procurement, ownership, and political analysis.
  *
- * NOT the MiroFish swarm API (port 5000) — this talks to the LLM server
+ * NOT the MiroFish swarm API (port 5000) - this talks to the LLM server
  * itself for structured analysis tasks.
  */
 
@@ -229,6 +229,6 @@ function parseJsonResponse(text: string): unknown {
     }
   }
 
-  // Give up — return the raw text so the caller still has something
+  // Give up - return the raw text so the caller still has something
   return text
 }

@@ -1,5 +1,5 @@
 /**
- * Wave 3 Ingestion Script — Document Content Enrichment
+ * Wave 3 Ingestion Script - Document Content Enrichment
  * Run with: npx tsx scripts/ingest-wave-3.ts [--limit N]
  *
  * Enriches existing Document nodes with full text content fetched from:
@@ -136,7 +136,7 @@ async function tryCourtListener(title: string): Promise<ContentResult | null> {
     console.log(`    CourtListener: found content (${content.length} chars)`)
     return { content: content.trim(), source: 'courtlistener' }
   } catch (err) {
-    console.log(`    CourtListener: error — ${(err as Error).message}`)
+    console.log(`    CourtListener: error - ${(err as Error).message}`)
     return null
   }
 }
@@ -195,7 +195,7 @@ async function tryDocumentCloud(title: string): Promise<ContentResult | null> {
     console.log(`    DocumentCloud: found content (${content.length} chars)`)
     return { content: content.trim(), source: 'documentcloud' }
   } catch (err) {
-    console.log(`    DocumentCloud: error — ${(err as Error).message}`)
+    console.log(`    DocumentCloud: error - ${(err as Error).message}`)
     return null
   }
 }
@@ -249,7 +249,7 @@ async function tryDojPdf(sourceUrl: string): Promise<ContentResult | null> {
     console.log(`    DOJ PDF: unsupported content-type ${contentType}`)
     return null
   } catch (err) {
-    console.log(`    DOJ PDF: error — ${(err as Error).message}`)
+    console.log(`    DOJ PDF: error - ${(err as Error).message}`)
     return null
   }
 }
@@ -310,7 +310,7 @@ async function main(): Promise<void> {
   const resume = loadResumeState(WAVE)
   const processedIds = new Set<string>((resume?.processedIds as string[]) ?? [])
   if (processedIds.size > 0) {
-    console.log(`Resuming Wave 3 — ${processedIds.size} documents already processed.\n`)
+    console.log(`Resuming Wave 3 - ${processedIds.size} documents already processed.\n`)
   }
 
   // Connect
@@ -387,7 +387,7 @@ async function main(): Promise<void> {
         stats.failed++
       }
     } else {
-      console.log('  No content found — skipping')
+      console.log('  No content found - skipping')
       stats.skipped++
     }
 

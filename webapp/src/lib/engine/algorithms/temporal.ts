@@ -1,5 +1,5 @@
 /**
- * Temporal pattern detection algorithm — M10 Graph Algorithms (Phase 6).
+ * Temporal pattern detection algorithm - M10 Graph Algorithms (Phase 6).
  *
  * Queries Neo4j for nodes with date properties within a caso_slug namespace,
  * buckets events by month, detects temporal clusters (>mean+2σ),

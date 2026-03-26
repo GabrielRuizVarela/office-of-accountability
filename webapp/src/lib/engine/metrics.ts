@@ -1,5 +1,5 @@
 /**
- * Engine observability counters — in-memory counters for pipeline runs,
+ * Engine observability counters - in-memory counters for pipeline runs,
  * LLM calls, and proposals created. Exposed via /engine/metrics endpoint.
  */
 

@@ -2,7 +2,7 @@
  * Standalone script to initialize Neo4j schema.
  * Run with: npx tsx scripts/init-schema.ts
  *
- * Idempotent — safe to run multiple times.
+ * Idempotent - safe to run multiple times.
  * Requires NEO4J_URI, NEO4J_USER environment variables (see .env.example).
  */
 

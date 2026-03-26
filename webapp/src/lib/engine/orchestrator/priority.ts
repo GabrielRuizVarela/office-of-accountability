@@ -1,5 +1,5 @@
 /**
- * Orchestrator priority — scoring, rebalancing, diminishing returns, and focus suggestions.
+ * Orchestrator priority - scoring, rebalancing, diminishing returns, and focus suggestions.
  * No orchestrator loop logic here (that's orchestrator.ts in Step 3.2).
  */
 
@@ -10,7 +10,7 @@ import type { IterationMetrics } from '../research-metrics'
 import { readQuery, executeWrite } from '../../neo4j/client'
 
 // ---------------------------------------------------------------------------
-// scorePriority — weighted priority score (pure function)
+// scorePriority - weighted priority score (pure function)
 // ---------------------------------------------------------------------------
 
 /**
@@ -43,7 +43,7 @@ export function scorePriority(task: OrchestratorTask, metrics: IterationMetrics)
 }
 
 // ---------------------------------------------------------------------------
-// rebalance — reprioritize pending tasks based on synthesis results
+// rebalance - reprioritize pending tasks based on synthesis results
 // ---------------------------------------------------------------------------
 
 /**
@@ -64,7 +64,7 @@ export async function rebalance(investigation_id: string, synthesis: SynthesisRe
   // Reduce for duplicate targets (already covered)
   for (const dup of synthesis.duplicates) {
     // duplicates don't have a "target" field, skip adjustment for canonical
-    // We reduce priority on tasks matching duplicate groups — but since
+    // We reduce priority on tasks matching duplicate groups - but since
     // DuplicateGroup only has proposal IDs, not task targets, we skip this
     // if we can't map back. In practice, rebalance operates on corroborations.
   }
@@ -95,12 +95,12 @@ export async function rebalance(investigation_id: string, synthesis: SynthesisRe
 }
 
 // ---------------------------------------------------------------------------
-// detectDiminishingReturns — check for declining novelty (pure function)
+// detectDiminishingReturns - check for declining novelty (pure function)
 // ---------------------------------------------------------------------------
 
 /**
  * Returns true if the last 3+ iterations show declining novelty_score
- * AND declining coverage_delta — signals the investigation is stalling.
+ * AND declining coverage_delta - signals the investigation is stalling.
  */
 export function detectDiminishingReturns(metricsHistory: IterationMetrics[]): boolean {
   if (metricsHistory.length < 3) return false
@@ -121,7 +121,7 @@ export function detectDiminishingReturns(metricsHistory: IterationMetrics[]): bo
 }
 
 // ---------------------------------------------------------------------------
-// suggestNewFocus — find uncovered graph regions
+// suggestNewFocus - find uncovered graph regions
 // ---------------------------------------------------------------------------
 
 /**

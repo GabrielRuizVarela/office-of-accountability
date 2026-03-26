@@ -153,7 +153,7 @@ export function OrchestratorPanel({ casoSlug, pipelineId }: OrchestratorPanelPro
               <StatCard label="Agents" value={state.agent_count} color="text-blue-400" />
               <StatCard
                 label="Last Synthesis"
-                value={state.last_synthesis_at ? formatRelativeTime(state.last_synthesis_at) : '—'}
+                value={state.last_synthesis_at ? formatRelativeTime(state.last_synthesis_at) : '-'}
                 color="text-zinc-400"
               />
             </div>

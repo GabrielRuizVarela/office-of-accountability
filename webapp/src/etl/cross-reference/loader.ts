@@ -1,5 +1,5 @@
 /**
- * Cross-reference loader — writes SAME_ENTITY relationships to Neo4j.
+ * Cross-reference loader - writes SAME_ENTITY relationships to Neo4j.
  *
  * Uses per-label-pair MERGE queries (Neo4j Community doesn't support
  * parameterized labels). Follows the batch MERGE pattern from boletin-oficial.

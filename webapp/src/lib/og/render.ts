@@ -44,7 +44,7 @@ async function fetchGoogleFont(weight: number): Promise<ArrayBuffer> {
     `https://fonts.googleapis.com/css2?family=Inter:wght@${weight}&display=swap`,
     {
       headers: {
-        // Request TTF format — satori does not support WOFF2.
+        // Request TTF format - satori does not support WOFF2.
         // An older IE User-Agent tricks Google Fonts into serving TTF.
         'User-Agent':
           'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)',
@@ -105,7 +105,7 @@ async function ensureWasm(): Promise<void> {
     const arrayBuffer = buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength)
     await initWasm(arrayBuffer)
   } catch (err: unknown) {
-    // initWasm throws if called twice — safe to ignore
+    // initWasm throws if called twice - safe to ignore
     if (err instanceof Error && err.message.includes('Already initialized')) {
       // no-op
     } else {

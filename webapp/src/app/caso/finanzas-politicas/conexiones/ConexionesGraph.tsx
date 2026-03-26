@@ -43,7 +43,7 @@ interface GraphApiResponse {
 }
 
 // ---------------------------------------------------------------------------
-// Graph presets — compelling pre-configured views
+// Graph presets - compelling pre-configured views
 // ---------------------------------------------------------------------------
 
 const GRAPH_PRESETS: ReadonlyArray<{
@@ -100,7 +100,7 @@ const NODE_TYPE_LEGEND: ReadonlyArray<{ type: string; label: Record<Lang, string
   { type: 'Company', label: { en: 'Company', es: 'Empresa' }, color: '#10b981' },
   { type: 'Organization', label: { en: 'Organization', es: 'Organizacion' }, color: '#10b981' },
   { type: 'SAME_COALITION', label: { en: 'Coalition', es: 'Coalicion' }, color: '#f59e0b' },
-  // Province nodes hidden by default — reference data, not investigation entities
+  // Province nodes hidden by default - reference data, not investigation entities
   { type: 'BOTH_OFFSHORE', label: { en: 'Offshore Network', es: 'Red Offshore' }, color: '#ef4444' },
   { type: 'SHARED_ORG', label: { en: 'Shared Org.', es: 'Org. Compartida' }, color: '#10b981' },
   { type: 'Contractor', label: { en: 'Contractor', es: 'Contratista' }, color: '#8b5cf6' },
@@ -196,7 +196,7 @@ export function ConexionesGraph() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [selectedNode, setSelectedNode] = useState<GraphNodeData | null>(null)
-  // Hide reference/jurisdiction nodes by default — Province, Party, etc. are not investigation entities
+  // Hide reference/jurisdiction nodes by default - Province, Party, etc. are not investigation entities
   const [hiddenTypes, setHiddenTypes] = useState<Set<string>>(new Set(['Province', 'SAME_PROVINCE', 'Party', 'PoliticalParty']))
   const [hiddenEdgeTypes, setHiddenEdgeTypes] = useState<Set<string>>(new Set())
   const [searchQuery, setSearchQuery] = useState('')
@@ -227,7 +227,7 @@ export function ConexionesGraph() {
   const applyPreset = useCallback((preset: typeof GRAPH_PRESETS[number]) => {
     setActivePreset(preset.id)
     if (preset.showTypes.length === 0) {
-      // "all" preset — clear all hidden types
+      // "all" preset - clear all hidden types
       setHiddenTypes(new Set())
     } else {
       // Hide all types NOT in the preset's showTypes
@@ -378,7 +378,7 @@ export function ConexionesGraph() {
     frozenRef.current = false
   }, [filteredData])
 
-  // Freeze all nodes after layout converges — fx/fy pins make d3-force skip force calcs
+  // Freeze all nodes after layout converges - fx/fy pins make d3-force skip force calcs
   const handleEngineStop = useCallback(() => {
     if (frozenRef.current) return
     const fg = graphRef.current

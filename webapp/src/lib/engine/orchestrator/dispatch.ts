@@ -1,5 +1,5 @@
 /**
- * Orchestrator dispatch — plan, persist, collect, and reassign investigation tasks.
+ * Orchestrator dispatch - plan, persist, collect, and reassign investigation tasks.
  * No orchestrator loop logic here (that's orchestrator.ts in Step 3.2).
  */
 
@@ -10,12 +10,12 @@ import type { ResearchDirective } from '../research-program'
 import { readQuery, executeWrite } from '../../neo4j/client'
 
 // ---------------------------------------------------------------------------
-// planBatch — create in-memory tasks from gaps + directives
+// planBatch - create in-memory tasks from gaps + directives
 // ---------------------------------------------------------------------------
 
 /**
  * Creates OrchestratorTask objects from structural gaps and research directives.
- * Returns in-memory task objects — no DB write (use dispatchBatch for that).
+ * Returns in-memory task objects - no DB write (use dispatchBatch for that).
  */
 export function planBatch(
   investigation_id: string,
@@ -25,7 +25,7 @@ export function planBatch(
   const now = new Date().toISOString()
   const tasks: OrchestratorTask[] = []
 
-  // Tasks from isolated nodes (priority 7 — need connections)
+  // Tasks from isolated nodes (priority 7 - need connections)
   for (const node of gaps.isolated_nodes) {
     tasks.push({
       id: crypto.randomUUID(),
@@ -39,7 +39,7 @@ export function planBatch(
     })
   }
 
-  // Tasks from low-confidence clusters (priority 8 — need corroboration)
+  // Tasks from low-confidence clusters (priority 8 - need corroboration)
   for (const cluster of gaps.low_confidence_clusters) {
     tasks.push({
       id: crypto.randomUUID(),
@@ -53,7 +53,7 @@ export function planBatch(
     })
   }
 
-  // Tasks from missing relationships (priority 6 — potential links)
+  // Tasks from missing relationships (priority 6 - potential links)
   for (const rel of gaps.missing_relationships) {
     tasks.push({
       id: crypto.randomUUID(),
@@ -85,7 +85,7 @@ export function planBatch(
 }
 
 // ---------------------------------------------------------------------------
-// dispatchBatch — persist tasks to Neo4j in a single UNWIND query
+// dispatchBatch - persist tasks to Neo4j in a single UNWIND query
 // ---------------------------------------------------------------------------
 
 /**
@@ -126,7 +126,7 @@ export async function dispatchBatch(tasks: OrchestratorTask[]): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
-// collectResults — fetch completed tasks for an investigation
+// collectResults - fetch completed tasks for an investigation
 // ---------------------------------------------------------------------------
 
 /**
@@ -170,7 +170,7 @@ export async function collectResults(investigation_id: string): Promise<Orchestr
 }
 
 // ---------------------------------------------------------------------------
-// reassign — change task assignment and set status to 'assigned'
+// reassign - change task assignment and set status to 'assigned'
 // ---------------------------------------------------------------------------
 
 /**

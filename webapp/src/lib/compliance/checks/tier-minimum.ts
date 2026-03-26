@@ -1,5 +1,5 @@
 /**
- * Tier-minimum check handler — verifies nodes meet a minimum confidence tier.
+ * Tier-minimum check handler - verifies nodes meet a minimum confidence tier.
  *
  * Tier ordering: gold > silver > bronze.
  * Counts nodes below the specified minimum tier. Passes if count === 0.

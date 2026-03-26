@@ -1,7 +1,7 @@
 /**
  * Transforms IGJ company registry CSV data into Neo4j node/relationship parameters.
  *
- * Pure functions — no side effects, no mutations.
+ * Pure functions - no side effects, no mutations.
  * Matches IGJ authorities to existing Politician nodes via normalizeName.
  */
 
@@ -178,7 +178,7 @@ export interface IgjTransformInput {
 }
 
 export function transformIgjAll(input: IgjTransformInput): IgjTransformResult {
-  // Transform entities (all of them — includes SA, SRL, etc.)
+  // Transform entities (all of them - includes SA, SRL, etc.)
   const companies = input.entities.map(transformEntity)
   const entityIds = new Set(input.entities.map((e) => e.numero_correlativo))
 

@@ -1,5 +1,5 @@
 /**
- * MCP tool parameter and response schemas — shared between
+ * MCP tool parameter and response schemas - shared between
  * the MCP server (Cloudflare Worker) and the Next.js API.
  *
  * Zod 4 schemas validate tool inputs before proxying to the API.

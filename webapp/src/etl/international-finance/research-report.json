@@ -4,7 +4,7 @@
   "areas": [
     {
       "id": "glencore",
-      "name": "Glencore — Mining + Transfer Pricing",
+      "name": "Glencore - Mining + Transfer Pricing",
       "verified_facts": [
         "Glencore operates/owns El Pachon (San Juan, $9B investment) and MARA (Catamarca, $4.5B investment) copper projects in Argentina",
         "Glencore acquired 56.25% of MARA project from Pan American Silver for $475M plus 0.75% NSR royalty (2023)",
@@ -42,7 +42,7 @@
     },
     {
       "id": "joe-lewis",
-      "name": "Joe Lewis — Lago Escondido + Land",
+      "name": "Joe Lewis - Lago Escondido + Land",
       "verified_facts": [
         "Joe Lewis acquired 12,000 hectares surrounding Lago Escondido in Patagonia (Rio Negro) in 1996-1997",
         "Purchase violated Law 15.385 (Frontier Security): foreigners cannot own land within 150km of national borders",
@@ -81,7 +81,7 @@
     },
     {
       "id": "imf-macri",
-      "name": "IMF — Macri Loan + Caputo",
+      "name": "IMF - Macri Loan + Caputo",
       "verified_facts": [
         "IMF lent Argentina $57.1B (largest loan in Fund history) under Macri government (2018)",
         "Only $44.5B was disbursed before program was halted after Macri's electoral defeat",
@@ -437,7 +437,7 @@
       "status": "Partially addressed by Corporate Transparency Act (2024) but enforcement pending"
     },
     {
-      "gap": "Delaware corporate secrecy — no ownership reporting required at state level",
+      "gap": "Delaware corporate secrecy - no ownership reporting required at state level",
       "exploited_by": ["GS Unidos LLC / Clarin", "Various Argentine politicians"],
       "status": "Federal CTA beneficial ownership registry being implemented"
     },
@@ -463,7 +463,7 @@
     },
     {
       "gap": "FATF finding: insufficient ML prosecution relative to corruption risk profile",
-      "exploited_by": ["Systemic — corruption proceeds rarely result in money laundering convictions"],
+      "exploited_by": ["Systemic - corruption proceeds rarely result in money laundering convictions"],
       "status": "FATF 2024 evaluation flagged; Argentina must increase prosecutions"
     },
     {
@@ -509,14 +509,14 @@
       "Paul Oswald Morani network"
     ],
     "data_sources_for_enrichment": [
-      "ICIJ Offshore Leaks Database (offshoreleaks.icij.org) — filter by ARG",
-      "Florida Sunbiz LLC registry — TourProdEnter and associated shells",
-      "Delaware Division of Corporations — GS Unidos LLC",
-      "Luxembourg RCS (Registre de Commerce et des Societes) — Lares Corporation",
-      "PACER/CourtListener — NML Capital and Burford YPF cases",
-      "DOJ press releases — Glencore guilty pleas",
+      "ICIJ Offshore Leaks Database (offshoreleaks.icij.org) - filter by ARG",
+      "Florida Sunbiz LLC registry - TourProdEnter and associated shells",
+      "Delaware Division of Corporations - GS Unidos LLC",
+      "Luxembourg RCS (Registre de Commerce et des Societes) - Lares Corporation",
+      "PACER/CourtListener - NML Capital and Burford YPF cases",
+      "DOJ press releases - Glencore guilty pleas",
       "FATF Argentina MER 2024 PDF",
-      "AidData China database — Belgrano Cargas and Atucha III records"
+      "AidData China database - Belgrano Cargas and Atucha III records"
     ]
   }
 }

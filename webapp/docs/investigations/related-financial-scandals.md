@@ -2,7 +2,7 @@
 
 **Oficina de Rendicion de Cuentas**
 **Fecha:** 2026-03-21
-**Estado:** Exploratorio — datos verificados contra fuentes publicas, requiere profundizacion
+**Estado:** Exploratorio - datos verificados contra fuentes publicas, requiere profundizacion
 
 ---
 
@@ -26,7 +26,7 @@ Kenya, Espana y Portugal ordenaron la suspension de la recoleccion de datos biom
 
 ### Relevancia para finanzas-politicas
 
-El gobierno de Milei no restringio las operaciones de Worldcoin en Argentina a pesar de las acciones regulatorias en otros paises. La vulnerabilidad economica de la poblacion fue explotada como motor de adopcion — el mismo patron que hizo posible la estafa de $LIBRA.
+El gobierno de Milei no restringio las operaciones de Worldcoin en Argentina a pesar de las acciones regulatorias en otros paises. La vulnerabilidad economica de la poblacion fue explotada como motor de adopcion - el mismo patron que hizo posible la estafa de $LIBRA.
 
 ### Fuentes
 
@@ -87,7 +87,7 @@ El destino: una cuenta del Banco Internacional de Pagos (BIS) en Londres. Se est
 
 ### Relevancia para finanzas-politicas
 
-El traslado del oro soberano a una jurisdiccion donde puede ser embargado por acreedores litigantes (Burford Capital, caso YPF por USD 16.000M+) es una decision de politica economica con consecuencias potencialmente catastroficas para las reservas argentinas. La opacidad del BCRA — negandose a revelar cantidades y condiciones — agrava la preocupacion.
+El traslado del oro soberano a una jurisdiccion donde puede ser embargado por acreedores litigantes (Burford Capital, caso YPF por USD 16.000M+) es una decision de politica economica con consecuencias potencialmente catastroficas para las reservas argentinas. La opacidad del BCRA - negandose a revelar cantidades y condiciones - agrava la preocupacion.
 
 ### Fuentes
 
@@ -103,7 +103,7 @@ El traslado del oro soberano a una jurisdiccion donde puede ser embargado por ac
 
 ### Los hechos
 
-En junio de 2025, Leonardo Scatturice — ex agente de inteligencia (SIDE), asesor de Santiago Caputo, y enlace entre el gobierno de Milei y el trumpismo en Washington — adquirio Flybondi, la primera aerolinea low cost de Argentina, a traves de su fondo COC Global Enterprise.
+En junio de 2025, Leonardo Scatturice - ex agente de inteligencia (SIDE), asesor de Santiago Caputo, y enlace entre el gobierno de Milei y el trumpismo en Washington - adquirio Flybondi, la primera aerolinea low cost de Argentina, a traves de su fondo COC Global Enterprise.
 
 ### Perfil de Scatturice
 
@@ -122,7 +122,7 @@ En junio de 2025, Leonardo Scatturice — ex agente de inteligencia (SIDE), ases
 
 ### Relevancia para finanzas-politicas
 
-La adquisicion de una aerolinea por un ex espia con vinculos directos al circulo intimo del poder ejecutivo, sumada a la interferencia en controles aduaneros, configura un patron de captura estatal del sector transporte. Scatturice es simultaneamente proveedor del Estado, asesor del gobierno y dueno de una aerolinea — un conflicto de intereses estructural.
+La adquisicion de una aerolinea por un ex espia con vinculos directos al circulo intimo del poder ejecutivo, sumada a la interferencia en controles aduaneros, configura un patron de captura estatal del sector transporte. Scatturice es simultaneamente proveedor del Estado, asesor del gobierno y dueno de una aerolinea - un conflicto de intereses estructural.
 
 ### Fuentes
 
@@ -148,7 +148,7 @@ En 2026, la CNV avanzo con la Resolucion General N 1081 (segunda etapa del Regim
 
 ### Relevancia
 
-La regulacion entro en vigencia plena 10 meses despues de la estafa de $LIBRA. Al momento del lanzamiento del token (febrero 2025), Kelsier Ventures no estaba registrada como PSAV — pero el registro ya existia y era obligatorio. La CNV justifico la no-accion con "falta de regulacion complementaria," a pesar de que 136 entidades ya estaban registradas. El caso $LIBRA fue, en parte, una consecuencia de la brecha entre la obligacion legal de registro y la falta de enforcement.
+La regulacion entro en vigencia plena 10 meses despues de la estafa de $LIBRA. Al momento del lanzamiento del token (febrero 2025), Kelsier Ventures no estaba registrada como PSAV - pero el registro ya existia y era obligatorio. La CNV justifico la no-accion con "falta de regulacion complementaria," a pesar de que 136 entidades ya estaban registradas. El caso $LIBRA fue, en parte, una consecuencia de la brecha entre la obligacion legal de registro y la falta de enforcement.
 
 ### Fuentes
 
@@ -175,4 +175,4 @@ Los cinco escandalos comparten un patron estructural:
 
 ---
 
-*Oficina de Rendicion de Cuentas — Datos abiertos para la democracia argentina*
+*Oficina de Rendicion de Cuentas - Datos abiertos para la democracia argentina*

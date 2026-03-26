@@ -6,7 +6,7 @@ export async function GET(
   request: Request,
   { params }: { params: Promise<{ slug: string }> },
 ) {
-  // Currently only the Epstein case is supported — accept any slug
+  // Currently only the Epstein case is supported - accept any slug
   const url = new URL(request.url)
   const personsParam = url.searchParams.get('persons')
   const driver = getDriver()

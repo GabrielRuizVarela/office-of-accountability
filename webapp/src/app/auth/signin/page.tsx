@@ -190,7 +190,7 @@ export default function SignInPage() {
           <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
         </div>
 
-        {/* Google OAuth — <a> intentional: API route triggers full-page OAuth redirect */}
+        {/* Google OAuth - <a> intentional: API route triggers full-page OAuth redirect */}
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a
           href="/api/auth/signin/google"

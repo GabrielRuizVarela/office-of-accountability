@@ -1,5 +1,5 @@
 /**
- * LLM check handler — uses local Qwen 3.5 via llama.cpp to evaluate compliance.
+ * LLM check handler - uses local Qwen 3.5 via llama.cpp to evaluate compliance.
  *
  * Fetches nodes of the specified label, sends them to the LLM with the
  * compliance prompt, and parses the structured JSON response.
@@ -109,7 +109,7 @@ ${nodesJson}`
       reasoning,
     }
   } catch (error) {
-    // LLM unavailable or bad response — fail open with details
+    // LLM unavailable or bad response - fail open with details
     const message = error instanceof Error ? error.message : String(error)
     return {
       rule_code: rule.code,

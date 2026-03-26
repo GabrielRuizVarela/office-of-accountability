@@ -1,5 +1,5 @@
 /**
- * Wave 4 Ingestion Script — dleerdefi/epstein-network-data flight logs
+ * Wave 4 Ingestion Script - dleerdefi/epstein-network-data flight logs
  * Run with: npx tsx scripts/ingest-wave-4.ts
  *
  * Imports handwritten pilot logbook data (153 parsed JSON pages) from the
@@ -103,7 +103,7 @@ interface LogbookPage {
 }
 
 // ---------------------------------------------------------------------------
-// Helpers — node ID generation
+// Helpers - node ID generation
 // ---------------------------------------------------------------------------
 
 function toFlightId(flightNumber: string): string {
@@ -287,7 +287,7 @@ async function createFlewWithEdge(
 async function main(): Promise<void> {
   const startMs = Date.now()
 
-  console.log('Wave 4 Ingestion — dleerdefi Flight Log Data')
+  console.log('Wave 4 Ingestion - dleerdefi Flight Log Data')
   console.log('=============================================')
 
   // ── Check data directory exists ─────────────────────────────────────────
@@ -409,7 +409,7 @@ async function main(): Promise<void> {
               source: SOURCE,
               wave: WAVE,
             })
-            // Fall through — still create the silver node
+            // Fall through - still create the silver node
           }
 
           personNeo4jId = toPersonId(name)
@@ -454,7 +454,7 @@ async function main(): Promise<void> {
     if (pageNumber % 5 === 0 || pageNumber === 1) {
       console.log(
         `  Page ${String(pageNumber).padStart(3, '0')}: ` +
-          `${flights.length} flights — ` +
+          `${flights.length} flights - ` +
           `${flightNodesCreated} flights, ${personNodesCreated} persons created so far`,
       )
     }

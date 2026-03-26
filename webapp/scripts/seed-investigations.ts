@@ -1,8 +1,8 @@
 /**
- * Seed script — creates sample investigations with realistic content.
+ * Seed script - creates sample investigations with realistic content.
  * Run with: npx tsx scripts/seed-investigations.ts
  *
- * Creates a system author user (MERGE — idempotent) and 4 published
+ * Creates a system author user (MERGE - idempotent) and 4 published
  * investigations covering different aspects of Argentine legislative
  * data. Safe to re-run: uses MERGE on investigation slugs.
  *

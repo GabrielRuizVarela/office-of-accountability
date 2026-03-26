@@ -18,7 +18,7 @@
     "effect": "Mandated all national public sector entities (under Ley 24.156 Art. 8) to contract insurance exclusively through Nación Seguros S.A. in all branches where it operates",
     "justification_claimed": "State should contract with its own provider entities; retain premiums domestically rather than paying international reinsurers",
     "actual_effect": "Created a captive monopoly that was exploited by politically-connected brokers who inserted themselves as intermediaries to collect billions in commissions",
-    "predecessor_law": "Ley 16.793 — historically required state insurance through Caja Nacional de Ahorro y Seguro",
+    "predecessor_law": "Ley 16.793 - historically required state insurance through Caja Nacional de Ahorro y Seguro",
     "revoked_by": "Decreto 747/2024 (published 2024-08-21, Milei government)",
     "source_url": "https://www.argentina.gob.ar/normativa/nacional/decreto-823-2021-357558"
   },
@@ -32,7 +32,7 @@
     "agencies_affected": "20+ public organisms including ANSES, Gendarmería, National Highways, the Mint, Road Operators SA, Fund for the Arts, Supreme Court, and four ministries",
     "judicial_case": {
       "judges": ["Julián Ercolini (initial investigation)", "Sebastián Casanello (prosecutions)"],
-      "status": "Active — prosecutions ongoing as of February 2026",
+      "status": "Active - prosecutions ongoing as of February 2026",
       "raids": "24 raids ordered by Judge Ercolini in April 2024"
     },
     "government_response": {
@@ -85,7 +85,7 @@
     {
       "person": "Hugo Rodríguez",
       "role": "Former General Administrator of the Quinta de Olivos presidential residence",
-      "entity": "Presidencia de la Nación — Quinta de Olivos",
+      "entity": "Presidencia de la Nación - Quinta de Olivos",
       "political_affiliation": "Frente de Todos",
       "evidence_es": "Procesado por facilitar reuniones repetidas entre el broker Martínez Sosa y el presidente Fernández en la Quinta de Olivos sin dejar registro, a sabiendas del plan criminal",
       "evidence_en": "Prosecuted for facilitating repeated unrecorded meetings between broker Martínez Sosa and President Fernández at the Olivos presidential residence, with knowledge of the criminal plan",
@@ -126,8 +126,8 @@
       "role": "Current President of Nación Seguros (since February 2024)",
       "entity": "Nación Seguros S.A.",
       "political_affiliation": "La Libertad Avanza / linked to Martín Menem (Chamber of Deputies President)",
-      "evidence_es": "Designado presidente de Nación Seguros en febrero 2024 gracias a sus vínculos con Martín Menem. Abogado egresado de Universidad de Belgrano (misma universidad que Menem). Antes de su designación, su presencia en registros públicos era casi inexistente — sin fotos ni apariciones en medios. Enigmático nombramiento político",
-      "evidence_en": "Designated president of Nación Seguros in February 2024 through his links to Martín Menem (Chamber of Deputies President). Lawyer from Universidad de Belgrano (same university as Menem). Before his appointment, his public record presence was nearly nonexistent — no photos or media appearances. Enigmatic political appointment",
+      "evidence_es": "Designado presidente de Nación Seguros en febrero 2024 gracias a sus vínculos con Martín Menem. Abogado egresado de Universidad de Belgrano (misma universidad que Menem). Antes de su designación, su presencia en registros públicos era casi inexistente - sin fotos ni apariciones en medios. Enigmático nombramiento político",
+      "evidence_en": "Designated president of Nación Seguros in February 2024 through his links to Martín Menem (Chamber of Deputies President). Lawyer from Universidad de Belgrano (same university as Menem). Before his appointment, his public record presence was nearly nonexistent - no photos or media appearances. Enigmatic political appointment",
       "source_urls": [
         "https://www.eldestapeweb.com/informacion-general/martin-menem/alfonso-jose-torres-el-enigmatico-presidente-de-nacion-seguros-y-su-vinculo-con-menem-2025102122030"
       ],
@@ -175,8 +175,8 @@
       "role": "Former Vice President of Nación Seguros board (Macri era); later appointed to AGN",
       "entity": "Nación Seguros S.A. / Auditoría General de la Nación",
       "political_affiliation": "Cambiemos / PRO",
-      "evidence_es": "Vicepresidenta del directorio de Nación Seguros durante el gobierno de Macri (2016-2019). Posteriormente designada como autoridad de la AGN (Auditoría General de la Nación) — el mismo organismo que debería controlar externamente a Nación Seguros. Puerta giratoria entre la empresa auditada y el auditor",
-      "evidence_en": "Vice president of Nación Seguros board during the Macri government (2016-2019). Subsequently appointed as an authority at AGN (National Audit Office) — the same body responsible for external oversight of Nación Seguros. Revolving door between the audited entity and the auditor",
+      "evidence_es": "Vicepresidenta del directorio de Nación Seguros durante el gobierno de Macri (2016-2019). Posteriormente designada como autoridad de la AGN (Auditoría General de la Nación) - el mismo organismo que debería controlar externamente a Nación Seguros. Puerta giratoria entre la empresa auditada y el auditor",
+      "evidence_en": "Vice president of Nación Seguros board during the Macri government (2016-2019). Subsequently appointed as an authority at AGN (National Audit Office) - the same body responsible for external oversight of Nación Seguros. Revolving door between the audited entity and the auditor",
       "source_urls": [
         "https://www.nacion-seguros.com.ar/wp-content/uploads/2021/08/TA-SEGUROS-2018.pdf",
         "https://www.baenegocios.com/politica/agn-7312/"
@@ -190,7 +190,7 @@
     "description_en": "The Argentine State has a historical pattern of direct contracting with state-owned insurers, bypassing open tenders. Law 16,793 originally established the obligation. Fernández's Decree 823/2021 modernized it, mandating all national public sector bodies to contract exclusively with Nación Seguros. This was combined with the insertion of politically-connected broker intermediaries who charged massive commissions without adding value. Municipalities and provinces replicate the pattern with Provincia Seguros and Provincia ART under the Municipal Organic Law that permits direct contracting with entities where the State holds majority participation",
     "legal_basis": [
       "Ley 16.793 (historical mandate for state insurance)",
-      "Decreto 823/2021 (Fernández mandate — revoked 2024)",
+      "Decreto 823/2021 (Fernández mandate - revoked 2024)",
       "Ley 24.156 Art. 8 (entities covered)",
       "Ley 27.444 Art. 114 (collective life insurance exclusion)",
       "Decreto-Ley 9507/80 (obligatory collective life insurance)",
@@ -230,12 +230,12 @@
   "audit_oversight": {
     "SIGEN": {
       "role": "Internal control body (reports to President)",
-      "finding": "Held audit committee meetings with Nación Seguros — analyzed regulatory background, internal audit unit composition, verified execution of annual plans",
+      "finding": "Held audit committee meetings with Nación Seguros - analyzed regulatory background, internal audit unit composition, verified execution of annual plans",
       "concern": "As internal control dependent on the President, independence is compromised when the President himself is implicated in the scheme"
     },
     "AGN": {
       "role": "External control body (subsequent audit of legality, transparency, efficiency)",
-      "finding": "Rita Almada, former Nación Seguros VP, was later appointed as AGN authority — revolving door concern",
+      "finding": "Rita Almada, former Nación Seguros VP, was later appointed as AGN authority - revolving door concern",
       "concern": "Revolving door between audited entity and auditor undermines external oversight"
     }
   },
@@ -243,7 +243,7 @@
   "metadata": {
     "research_date": "2026-03-21",
     "researcher": "Office of Accountability automated investigation",
-    "confidence": "high — based on judicial proceedings, official decrees, and investigative journalism from Infobae, La Nación, and Clarín",
+    "confidence": "high - based on judicial proceedings, official decrees, and investigative journalism from Infobae, La Nación, and Clarín",
     "status": "active_judicial_case"
   }
 }

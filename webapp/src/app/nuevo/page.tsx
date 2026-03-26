@@ -1,5 +1,5 @@
 /**
- * /nuevo — Investigation creation wizard.
+ * /nuevo - Investigation creation wizard.
  *
  * Server component wrapper. All wizard logic lives in the client component below.
  * Steps:
@@ -12,7 +12,7 @@
 import { NuevoWizard } from './NuevoWizard'
 
 export const metadata = {
-  title: 'New Investigation — Office of Accountability',
+  title: 'New Investigation - Office of Accountability',
 }
 
 export default function NuevoPage() {

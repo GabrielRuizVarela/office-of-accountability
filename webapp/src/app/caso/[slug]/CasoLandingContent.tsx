@@ -10,8 +10,8 @@ import { ShareButton } from '@/components/ui/ShareButton'
 
 const t = {
   tagline: {
-    es: 'Investigacion de datos abiertos — Oficina de Rendicion de Cuentas',
-    en: 'Open data investigation — Office of Accountability',
+    es: 'Investigacion de datos abiertos - Oficina de Rendicion de Cuentas',
+    en: 'Open data investigation - Office of Accountability',
   },
   title: {
     es: 'Caso Libra: La Memecoin del Presidente',
@@ -38,8 +38,8 @@ const t = {
     en: 'See the evidence',
   },
   seeEvidenceDesc: {
-    es: '26 hechos verificados, 27 eventos, 14 actores, flujos de dinero — todo con fuentes',
-    en: '26 verified facts, 27 events, 14 actors, money flows — all with sources',
+    es: '26 hechos verificados, 27 eventos, 14 actores, flujos de dinero - todo con fuentes',
+    en: '26 verified facts, 27 events, 14 actors, money flows - all with sources',
   },
   timeline: { es: 'Cronologia', en: 'Timeline' },
   timelineDesc: {
@@ -99,7 +99,7 @@ export function CasoLandingContent({ slug, actors, documents }: Props) {
       {/* Key stats */}
       <KeyStats />
 
-      {/* Primary CTA — read the full story */}
+      {/* Primary CTA - read the full story */}
       <section className="flex flex-col gap-3 sm:flex-row">
         <Link
           href={`/caso/${slug}/resumen`}

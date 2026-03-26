@@ -1,5 +1,5 @@
 /**
- * Orchestrator synthesis — corroboration, contradiction detection, dedup, and result synthesis.
+ * Orchestrator synthesis - corroboration, contradiction detection, dedup, and result synthesis.
  * No orchestrator loop logic here (that's orchestrator.ts in Step 3.2).
  */
 
@@ -39,7 +39,7 @@ export interface SynthesisReport {
 }
 
 // ---------------------------------------------------------------------------
-// findCorroborations — proposals referencing the same target entity
+// findCorroborations - proposals referencing the same target entity
 // ---------------------------------------------------------------------------
 
 /**
@@ -86,7 +86,7 @@ export async function findCorroborations(investigation_id: string): Promise<Corr
 }
 
 // ---------------------------------------------------------------------------
-// findContradictions — conflicting proposals for same target
+// findContradictions - conflicting proposals for same target
 // ---------------------------------------------------------------------------
 
 /**
@@ -128,7 +128,7 @@ export async function findContradictions(investigation_id: string): Promise<Cont
 }
 
 // ---------------------------------------------------------------------------
-// deduplicateProposals — find proposals with identical type + target
+// deduplicateProposals - find proposals with identical type + target
 // ---------------------------------------------------------------------------
 
 /**
@@ -165,7 +165,7 @@ export async function deduplicateProposals(investigation_id: string): Promise<Du
 }
 
 // ---------------------------------------------------------------------------
-// synthesizeResults — combine all synthesis analyses
+// synthesizeResults - combine all synthesis analyses
 // ---------------------------------------------------------------------------
 
 /**

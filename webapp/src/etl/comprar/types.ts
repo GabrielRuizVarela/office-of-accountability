@@ -2,14 +2,14 @@
  * Types for Compr.ar ETL pipeline.
  *
  * Data source:
- * - Sistema de Contrataciones Electronicas — Ordenes de Compra
+ * - Sistema de Contrataciones Electronicas - Ordenes de Compra
  *   https://datos.gob.ar/dataset/jgm-sistema-contrataciones-electronicas
  */
 
 import { z } from 'zod/v4'
 
 // ---------------------------------------------------------------------------
-// CSV row schema — Ordenes de Compra (comma-delimited)
+// CSV row schema - Ordenes de Compra (comma-delimited)
 // Columns:
 //   Número Procedimiento, Estado, Ejercicio, Tipo de Procedimiento,
 //   Modalidad, Descripcion SAF, Unidad Ejecutora, Rubros,

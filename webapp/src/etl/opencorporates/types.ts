@@ -1,7 +1,7 @@
 /**
  * Types for Argentine corporate registry ETL pipeline.
  *
- * Data source: https://datos.gob.ar — IGJ (Inspeccion General de Justicia)
+ * Data source: https://datos.gob.ar - IGJ (Inspeccion General de Justicia)
  * CSV files: igj-entidades.csv, igj-autoridades.csv
  *
  * Note: Named "opencorporates" for the ETL module path, but the actual data
@@ -13,7 +13,7 @@
 import { z } from 'zod/v4'
 
 // ---------------------------------------------------------------------------
-// CSV row schemas — match the column headers from IGJ CSVs
+// CSV row schemas - match the column headers from IGJ CSVs
 // ---------------------------------------------------------------------------
 
 /**

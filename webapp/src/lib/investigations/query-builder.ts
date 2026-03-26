@@ -2,7 +2,7 @@
  * Schema-aware generic query builder for investigations.
  *
  * Generates Cypher queries dynamically using `caso_slug` namespace isolation.
- * All queries are parameterized — no user input is interpolated into Cypher.
+ * All queries are parameterized - no user input is interpolated into Cypher.
  *
  * Two-pass pattern for graph queries avoids O(n²) cartesian products.
  */

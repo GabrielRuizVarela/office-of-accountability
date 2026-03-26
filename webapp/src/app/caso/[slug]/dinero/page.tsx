@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * Caso Libra money flow page — wallet graph with transaction edges.
+ * Caso Libra money flow page - wallet graph with transaction edges.
  * Wallet nodes sized by volume, edge width by amount.
  */
 

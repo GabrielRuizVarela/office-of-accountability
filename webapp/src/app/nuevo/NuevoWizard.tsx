@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * Investigation creation wizard — client component.
+ * Investigation creation wizard - client component.
  *
  * Step 1: Name & Describe
  * Step 2: Seed Entity (optional)
@@ -84,7 +84,7 @@ export function NuevoWizard() {
   }, [])
 
   const handleCreateNew = useCallback((entity: { name: string; type: string }) => {
-    // Treat as a virtual seed — no real graph ID yet, mark with a prefix
+    // Treat as a virtual seed - no real graph ID yet, mark with a prefix
     setState((prev) => ({
       ...prev,
       seedEntity: { id: `new:${entity.type}:${entity.name}`, name: entity.name, label: entity.type },
@@ -275,7 +275,7 @@ export function NuevoWizard() {
               onClick={handleSkipSeed}
               className="ml-auto text-sm text-zinc-400 transition-colors hover:text-zinc-200"
             >
-              Skip — start empty
+              Skip - start empty
             </button>
           </div>
         </div>
@@ -314,7 +314,7 @@ export function NuevoWizard() {
             />
           ) : (
             <p className="text-sm text-zinc-500">
-              New entity — no existing neighbors to include.
+              New entity - no existing neighbors to include.
             </p>
           )}
 

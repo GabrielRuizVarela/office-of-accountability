@@ -35,7 +35,7 @@ function getClientIp(request: NextRequest): string {
 /** Determine which rate limit tier applies to a request */
 function getRateLimitTier(pathname: string, method: string) {
   if (pathname.startsWith('/api/auth/')) {
-    // CSRF token + session reads are lightweight GETs — use general API tier
+    // CSRF token + session reads are lightweight GETs - use general API tier
     // so they don't eat into the stricter auth budget meant for sign-in/sign-up
     if (method === 'GET') {
       return { config: RATE_LIMITS.api, prefix: 'api' }
@@ -63,7 +63,7 @@ function isMutationMethod(method: string): boolean {
 function isCsrfExempt(pathname: string, request: NextRequest): boolean {
   // Auth.js routes handle their own CSRF tokens
   if (pathname.startsWith('/api/auth/')) return true
-  // Investigation API — uses x-api-key header auth instead of CSRF (for MCP agent access)
+  // Investigation API - uses x-api-key header auth instead of CSRF (for MCP agent access)
   if (pathname.startsWith('/api/caso-libra/investigation')) return true
   // MCP-proxied requests are authenticated via Bearer API key, not CSRF
   // The MCP Worker sends X-MCP-User-Id after validating the API key

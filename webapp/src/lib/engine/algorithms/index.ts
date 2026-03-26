@@ -1,5 +1,5 @@
 /**
- * Algorithm factory + barrel exports — M10 Graph Algorithms (Phase 6).
+ * Algorithm factory + barrel exports - M10 Graph Algorithms (Phase 6).
  */
 
 import type { AlgorithmKind } from './types'

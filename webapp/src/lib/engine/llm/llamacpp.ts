@@ -1,5 +1,5 @@
 /**
- * llama.cpp LLM provider — OpenAI-compatible HTTP adapter for local Qwen 3.5.
+ * llama.cpp LLM provider - OpenAI-compatible HTTP adapter for local Qwen 3.5.
  *
  * Uses raw fetch against llama.cpp's /v1/chat/completions endpoint.
  * Maps Qwen-specific `reasoning_content` field to the normalized `reasoning` field.

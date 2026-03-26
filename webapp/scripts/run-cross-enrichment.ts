@@ -1,5 +1,5 @@
 /**
- * Cross-enrichment script — links entities across datasets.
+ * Cross-enrichment script - links entities across datasets.
  *
  * Finds people/organizations appearing in multiple data sources and creates
  * CROSS_REFERENCED relationships to flag high-priority investigation targets.

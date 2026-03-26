@@ -1,5 +1,5 @@
 /**
- * LLM provider factory — resolves a ModelConfig node to an LLMProvider instance.
+ * LLM provider factory - resolves a ModelConfig node to an LLMProvider instance.
  */
 
 import type { ModelConfig } from '../types'
@@ -12,7 +12,7 @@ import { createAnthropicProvider } from './anthropic'
  * Resolve API key from ModelConfig's api_key_env field.
  * Falls back to conventional env var names if api_key_env is not set.
  * Note: In Cloudflare Workers, keys are passed via env bindings (not process.env).
- * The MCP proxy passes the key in the API call — this factory is for Node.js/Next.js only.
+ * The MCP proxy passes the key in the API call - this factory is for Node.js/Next.js only.
  */
 function resolveApiKey(config: ModelConfig): string | undefined {
   if (config.api_key_env) {

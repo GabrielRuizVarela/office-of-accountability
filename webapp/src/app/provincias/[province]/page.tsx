@@ -1,5 +1,5 @@
 /**
- * Province page — lists all politicians representing a given province.
+ * Province page - lists all politicians representing a given province.
  *
  * Server-rendered at /provincias/[province] (province slug, e.g. "buenos-aires").
  */
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const title = `Legisladores de ${data.province.name} | ORC`
-  const description = `${data.province.politicianCount} legisladores de ${data.province.name} — votaciones, perfiles y conexiones.`
+  const description = `${data.province.politicianCount} legisladores de ${data.province.name} - votaciones, perfiles y conexiones.`
 
   return {
     title,
@@ -107,7 +107,7 @@ export default async function ProvincePage({ params }: PageProps) {
 
         <div className="mt-4">
           <ShareButton
-            text={`Legisladores de ${province.name} — Oficina de Rendición de Cuentas`}
+            text={`Legisladores de ${province.name} - Oficina de Rendición de Cuentas`}
             title={`Legisladores de ${province.name} | ORC`}
           />
         </div>

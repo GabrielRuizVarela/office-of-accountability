@@ -1,5 +1,5 @@
 /**
- * Caso Libra investigation — Zod schemas and TypeScript interfaces.
+ * Caso Libra investigation - Zod schemas and TypeScript interfaces.
  *
  * Covers all node types and relationships for the Milei $LIBRA
  * memecoin investigation knowledge graph.

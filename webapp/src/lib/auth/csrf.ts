@@ -85,7 +85,7 @@ export function buildCsrfSetCookie(cookieValue: string, isSecure: boolean): stri
   if (isSecure) {
     parts.push('Secure')
   }
-  // Deliberately NOT HttpOnly — JS needs to read it
+  // Deliberately NOT HttpOnly - JS needs to read it
   return parts.join('; ')
 }
 

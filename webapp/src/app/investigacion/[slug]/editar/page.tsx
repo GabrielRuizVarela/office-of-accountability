@@ -3,7 +3,7 @@
 /**
  * Edit investigation page at /investigacion/[slug]/editar.
  *
- * Auth required — redirects to sign-in if unauthenticated.
+ * Auth required - redirects to sign-in if unauthenticated.
  * Loads existing investigation by slug, then wraps InvestigationForm
  * with update/delete logic.
  */

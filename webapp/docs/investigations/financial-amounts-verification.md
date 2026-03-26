@@ -8,7 +8,7 @@
 
 ## 1. Nacion Seguros Total Contracts: $28.5B ARS
 
-**Status: UNVERIFIABLE — likely overstated or aggregated estimate**
+**Status: UNVERIFIABLE - likely overstated or aggregated estimate**
 
 - The codebase claims ARS 28.5B in total direct contracts between the State and Nacion Seguros (2020-2024).
 - La Nacion reports the total commissions paid to brokers during all four years of Fernandez were ARS $3,500M (La Nacion, March 2024). With typical commission rates of 10-15%, that would imply total premiums of roughly ARS $23B-$35B.
@@ -69,12 +69,12 @@
 
 ## 5. SIDE Reserved Funds: 2,838% Growth and ARS 13.4B
 
-**Status: CORRECTED — growth percentage differs by source**
+**Status: CORRECTED - growth percentage differs by source**
 
 - **ARS 13.4B figure: VERIFIED.** Perfil confirms reserved funds reached $13,436M by 2025.
 - **Baseline: CORRECTED.** The 2023 baseline was ARS $650M in reserved funds (not ARS 3.8B as stated in the timeline).
 - **Growth percentage: CORRECTED.** Perfil reports 1,967% growth (from $650M to $13,436M), not 2,838%.
-- The codebase's timeline (line 912) states "grew from ARS 3.8B (4.1% of budget in 2023) to ARS 13.4B" — the $3.8B figure appears to refer to an intermediate 2024 figure, not the 2023 baseline.
+- The codebase's timeline (line 912) states "grew from ARS 3.8B (4.1% of budget in 2023) to ARS 13.4B" - the $3.8B figure appears to refer to an intermediate 2024 figure, not the 2023 baseline.
 - The 2,838% figure used in the codebase is not corroborated by any source found. Perfil says 1,967%.
 
 **Correction needed in codebase:**
@@ -89,7 +89,7 @@
 
 ## 6. $LIBRA Cashout: USD $107M and $4B Peak
 
-**Status: CORRECTED — market cap was $4.5B, not $4B; $107M is one of several estimates**
+**Status: CORRECTED - market cap was $4.5B, not $4B; $107M is one of several estimates**
 
 - **$107M cashout: VERIFIED** by multiple sources. The Block and CoinGape confirm "insiders cashed out $107 million." Eight wallets linked to the project were identified.
 - **$4B peak: CORRECTED to $4.5B.** OKX and multiple sources report the peak market cap was USD $4.5B, not $4B.
@@ -168,7 +168,7 @@
 
 ## 11. PAMI Anastrozol Overpricing: 16x ($13,192 vs $924)
 
-**Status: CORRECTED — the ratio is 14x, not 16x, for the specific anastrozol comparison**
+**Status: CORRECTED - the ratio is 14x, not 16x, for the specific anastrozol comparison**
 
 - La Nacion and Infobae confirm: during Q4 2023, GP-Pharm sold 1,098 units of anastrozol 1mg at $13,192 per unit through the Convenio Marco.
 - The same product from the same supplier in the same quarter was $924 per unit through public tender (Licitacion LP N 44/22).
@@ -190,7 +190,7 @@
 
 - La Nacion (August 2025) confirms: Suizo Argentina SA went from ARS $3,900M in contracts in 2024 to ARS $108,300M in 2025.
 - Multiple outlets (Minuto Uno, Agencia Hoy, Diario San Rafael) all confirm the 2,678% increase.
-- During the same period, accumulated inflation was 117.8% in 2024 and 17.3% through July 2025 — far below the contract growth.
+- During the same period, accumulated inflation was 117.8% in 2024 and 17.3% through July 2025 - far below the contract growth.
 - The Ministry of Health authorized a single contract of $78,267M (over 70% of the total).
 - Connected to the Spagnuolo/ANDIS scandal implicating Karina Milei.
 
@@ -222,7 +222,7 @@
 - Pagina/12 confirms: AUSOL shares increased 394% in value between Macri's inauguration and the sale in May 2017.
 - Sideco Americana sold 7% of AUSOL shares to Natal Inversiones for ARS $551M (USD $19.7M).
 - Prior toll increases authorized by the Macri government: 50% in January 2016, 100% in January-February 2017.
-- One source mentions "397%" — the ~394% figure in the codebase is consistent.
+- One source mentions "397%" - the ~394% figure in the codebase is consistent.
 
 **Sources:**
 - [Pagina/12 - El negocio de los Macri con Autopistas del Sol](https://www.pagina12.com.ar/54129-el-negocio-de-los-macri-con-autopistas-del-sol)

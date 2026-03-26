@@ -1,8 +1,8 @@
-# Exploratory Run — Closing Summary
+# Exploratory Run - Closing Summary
 
 **Date:** 2026-03-19
-**Status:** Exploratory — findings require verification before formal investigation
-**Graph:** 2,165,322 nodes — 4,495,502 relationships
+**Status:** Exploratory - findings require verification before formal investigation
+**Graph:** 2,165,322 nodes - 4,495,502 relationships
 
 ## Scope
 
@@ -45,43 +45,43 @@ This was an exploratory data integration run to test the feasibility of cross-re
 ### Orphan Analysis
 
 2,049,987 orphan nodes (nodes with zero relationships):
-- 712,809 AssetDeclarations (government officials not matched to any politician — expected, most are not legislators)
-- 662,582 Company + 662,582 PublicCompany (companies without matched officers — key mismatch from BOM bug)
+- 712,809 AssetDeclarations (government officials not matched to any politician - expected, most are not legislators)
+- 662,582 Company + 662,582 PublicCompany (companies without matched officers - key mismatch from BOM bug)
 - 6,020 GovernmentAppointments (appointments not matched to politicians)
 
-## Key Findings (Exploratory — Require Verification)
+## Key Findings (Exploratory - Require Verification)
 
 ### Tier 1: Highest Investigation Value
 
-1. **PENSAR ARGENTINA** — PRO think tank registered in IGJ with 50+ politicians and Nicolás Caputo (Macri's business partner) as formal board members. This is the structural backbone of the PRO governing network.
+1. **PENSAR ARGENTINA** - PRO think tank registered in IGJ with 50+ politicians and Nicolás Caputo (Macri's business partner) as formal board members. This is the structural backbone of the PRO governing network.
 
-2. **Camaño, Graciela** — 4 datasets (offshore + corporate + DDJJ). BVI entity (TT 41 CORP) created during her 2014-2018 term. 326 financial votes. 6 party switches. Wealth ARS 2.8M → 39.2M (2013-2023). This is the strongest single-target case in the dataset.
+2. **Camaño, Graciela** - 4 datasets (offshore + corporate + DDJJ). BVI entity (TT 41 CORP) created during her 2014-2018 term. 326 financial votes. 6 party switches. Wealth ARS 2.8M → 39.2M (2013-2023). This is the strongest single-target case in the dataset.
 
-3. **Macri/SOCMA** — 153 family members across 211 companies. Correo Argentino 98.82% debt forgiveness. AUSOL shares sold at 400% premium. Blanqueo law exploited by family (ARS 900M+). BF Corporation funds moved to Swiss bank with records destroyed.
+3. **Macri/SOCMA** - 153 family members across 211 companies. Correo Argentino 98.82% debt forgiveness. AUSOL shares sold at 400% premium. Blanqueo law exploited by family (ARS 900M+). BF Corporation funds moved to Swiss bank with records destroyed.
 
-4. **Ibañez, Maria Cecilia** — Active BVI offshore (PELMOND) while serving as LLA deputy. Wealth doubled in one year (ARS 15.5M → 33.5M).
+4. **Ibañez, Maria Cecilia** - Active BVI offshore (PELMOND) while serving as LLA deputy. Wealth doubled in one year (ARS 15.5M → 33.5M).
 
 ### Tier 2: Structural Patterns
 
-5. **PRO revolving door** — 13/20 documented cases are PRO-affiliated
-6. **Corporate politicians vote pro-deregulation** — board seats correlate with YES votes on Ley Bases
+5. **PRO revolving door** - 13/20 documented cases are PRO-affiliated
+6. **Corporate politicians vote pro-deregulation** - board seats correlate with YES votes on Ley Bases
 7. **GRUPO PROVINCIA** bridges 5 PJ politicians to Jorge Macri
 8. **Aluar Aluminio** donated ARS 5.4M to both major coalitions
 
 ### Tier 3: Leads Requiring Further Investigation
 
-9. **Ferrari Facundo** — AFIP tax agent with Panama Papers offshore entity (the tax authority investigating offshore evasion)
-10. **Reale Jose Maria** — government Fiscalizador Principal with Panama Papers entity
-11. **Contractor-donor violations** — Rodriguez and Gonzalez (illegal under Ley 26.215)
-12. **Cordero** — government contractor + offshore officer (state-to-offshore pipeline)
+9. **Ferrari Facundo** - AFIP tax agent with Panama Papers offshore entity (the tax authority investigating offshore evasion)
+10. **Reale Jose Maria** - government Fiscalizador Principal with Panama Papers entity
+11. **Contractor-donor violations** - Rodriguez and Gonzalez (illegal under Ley 26.215)
+12. **Cordero** - government contractor + offshore officer (state-to-offshore pipeline)
 
 ## Limitations
 
 1. **Name matching** produces false positives for common names (Garcia, Rodriguez, Martinez, Fernandez). The 108-board "Fernandez Carlos Alberto" was confirmed as multiple different people.
-2. **Asset totals are null** in most DDJJ records — the `total_assets` field is unpopulated, blocking wealth trajectory analysis. Individual asset items exist in separate CSV files not yet ingested.
+2. **Asset totals are null** in most DDJJ records - the `total_assets` field is unpopulated, blocking wealth trajectory analysis. Individual asset items exist in separate CSV files not yet ingested.
 3. **BOM bug** in CSV parsing caused key mismatches between CompanyOfficer/BoardMember IDs and Company IDs, leaving 662K companies orphaned.
 4. **Temporal gaps**: Boletín Oficial is a Dec 2019 snapshot only. CNE covers recent elections. Historical campaign finance is limited.
-5. **No CUIT/DNI cross-matching** — all matching is by normalized name. Adding CUIT (tax ID) or DNI (national ID) matching would dramatically reduce false positives.
+5. **No CUIT/DNI cross-matching** - all matching is by normalized name. Adding CUIT (tax ID) or DNI (national ID) matching would dramatically reduce false positives.
 
 ## Recommendations for Next Phase
 
@@ -106,7 +106,7 @@ This investigation used exclusively public, freely available data sources under 
 
 No data was fabricated, modified, or scraped from private sources. All findings are exploratory and require independent verification before any legal or journalistic action.
 
-## Session Complete — Final Statistics
+## Session Complete - Final Statistics
 
 **Date completed:** 2026-03-19
 **Investigation cycles:** 5
@@ -134,16 +134,16 @@ No data was fabricated, modified, or scraped from private sources. All findings 
 ### Fact-Checked Claims (Cycle 5)
 
 All four web-verified claims confirmed:
-1. **De Narváez / Walmart Argentina** — Confirmed. Grupo De Narváez acquired 100% of Walmart Argentina in Nov 2020 for ~USD 80M (Infobae, La Nación, Walmart corporate).
-2. **Grindetti / Mercier International / Clariden Leu** — Confirmed. Grindetti held power of attorney for Mercier International SA (Panama) to operate account at Clariden Leu AG, Zurich. Charged with illicit enrichment (La Nación, Página/12, El Cronista).
-3. **Minera Geometales / Malargüe / Macri** — Confirmed. Franco Macri's company with 16 mining properties in Malargüe, Mendoza. Concession restored by Gov. Cornejo via Decree 304/2018 (Los Andes, EnerNews, BBL).
-4. **Grindetti / Brazilian cases / IECSA** — Confirmed. 9 pending cases (6 criminal, 3 labor) in Paraná State courts. International arrest warrant issued Dec 2012 by 6th Criminal Court of Curitiba, revoked March 2016 (La Política Online, Código Baires, Agencia Paco Urondo).
+1. **De Narváez / Walmart Argentina** - Confirmed. Grupo De Narváez acquired 100% of Walmart Argentina in Nov 2020 for ~USD 80M (Infobae, La Nación, Walmart corporate).
+2. **Grindetti / Mercier International / Clariden Leu** - Confirmed. Grindetti held power of attorney for Mercier International SA (Panama) to operate account at Clariden Leu AG, Zurich. Charged with illicit enrichment (La Nación, Página/12, El Cronista).
+3. **Minera Geometales / Malargüe / Macri** - Confirmed. Franco Macri's company with 16 mining properties in Malargüe, Mendoza. Concession restored by Gov. Cornejo via Decree 304/2018 (Los Andes, EnerNews, BBL).
+4. **Grindetti / Brazilian cases / IECSA** - Confirmed. 9 pending cases (6 criminal, 3 labor) in Paraná State courts. International arrest warrant issued Dec 2012 by 6th Criminal Court of Curitiba, revoked March 2016 (La Política Online, Código Baires, Agencia Paco Urondo).
 
 ### Confirmed False Positives Cleaned
-- Fernández Carlos Alberto (208 companies) — multiple people with same name
-- López Juan Carlos (131 companies) — same issue
-- Martínez Luis Alberto / Carlos Alberto — same issue
-- García Carlos (79 companies) — same issue
+- Fernández Carlos Alberto (208 companies) - multiple people with same name
+- López Juan Carlos (131 companies) - same issue
+- Martínez Luis Alberto / Carlos Alberto - same issue
+- García Carlos (79 companies) - same issue
 
 ### Investigation Priority Ranking (Final)
 
@@ -163,14 +163,14 @@ All four web-verified claims confirmed:
 ### Next Steps
 
 **Immediate (data quality):**
-- Fix BOM bug in CSV parsers — will connect 662K orphaned company nodes
+- Fix BOM bug in CSV parsers - will connect 662K orphaned company nodes
 - Ingest DDJJ individual asset tables (bienes, deudas) for wealth trajectory analysis
 - Add CUIT/DNI-based matching to replace name-only matching
 
 **Investigation (follow-up):**
 - File OA information requests for Ibañez and Camaño sworn declarations
 - Cross-reference PENSAR ARGENTINA board list against government contract recipients
-- Investigate Ferrari Facundo (AFIP agent + Panama Papers — the fox guarding the henhouse)
+- Investigate Ferrari Facundo (AFIP agent + Panama Papers - the fox guarding the henhouse)
 - Map Retrato Partners Limited (De Narváez active BVI entity) through ICIJ intermediary data
 - Trace Grindetti's Clariden Leu account through Credit Suisse absorption (2012)
 

@@ -214,7 +214,7 @@ export function ProximityPanel({ casoSlug }: ProximityPanelProps) {
         >
           {selected.length === 0
             ? 'Click to select persons...'
-            : `${selected.length} selected — click to modify`}
+            : `${selected.length} selected - click to modify`}
         </button>
 
         {/* Dropdown panel */}

@@ -1,4 +1,4 @@
-# Caputo Deep Dive — Structured Findings for Graph Ingestion
+# Caputo Deep Dive - Structured Findings for Graph Ingestion
 
 **Date:** 2026-03-21
 **Research scope:** Deutsche Bank operations, AXIS Fund, Sacha Rupaska, Palmeral Chico, Ancora Investments, Century Bond, Bausili judicial proceedings, Anker Latinoamerica network, Nicolas Caputo (Nicky), JP Morgan cabinet
@@ -36,19 +36,19 @@
 | Entity | CUIT / ID | Type | Notes |
 |--------|-----------|------|-------|
 | AXIS Sociedad Gerente de Fondos Comunes de Inversion SA | 30-71224145-0 | Fund management | Founded Mar 8, 2012. Reconquista 458, 7th floor, CABA. CNV Registration #36. CAFCI member. |
-| AXIS Ahorro Plus FCI | — | Mutual fund | Vehicle through which FGS/ANSES invested ~$302M in LEBACs. |
-| Sacha Rupaska SA | — | Agropecuaria (shell) | IGJ declared "totally fictitious company" — no real activity, no capital, no dividends. Caputo 60% shareholder. Fined via Res. 1448/2022. |
+| AXIS Ahorro Plus FCI | - | Mutual fund | Vehicle through which FGS/ANSES invested ~$302M in LEBACs. |
+| Sacha Rupaska SA | - | Agropecuaria (shell) | IGJ declared "totally fictitious company" - no real activity, no capital, no dividends. Caputo 60% shareholder. Fined via Res. 1448/2022. |
 | Palmeral Chico SA | 30-71026604-9 | Agropecuaria | Incorporated Jun 4, 2007. CABA. Agricultural, livestock, forestry. Caputo was alternate director. Fined >$10M ARS in Aug 2013 for native forest destruction. |
-| Ancora Investments LP | — | Investment fund (Canada) | 100% owned by Caputo per sworn declaration. Valued at $388M ARS (2024 declaration). Private wealth advisory and institutional asset management. |
-| Noctua International WMG LLC | — | Offshore fund manager | Controlled via Princess International Global Ltd (Cayman) -> Affinis Partners II (Cayman). Caputo 75% of Princess. Connected to AXIS via SEC filings. |
-| Princess International Global Ltd | — | Offshore (Cayman Islands) | 75% owned by Caputo. Controls Affinis Partners II. |
-| Affinis Partners II | — | Offshore (Cayman Islands) | Controlled 50-74% by Princess. Controls 75%+ of Noctua. |
-| Anker Latinoamerica SA | — | Consulting firm | Founded ~2020 by Caputo. Suspended Dec 2023. Partners: Caputo, Bausili, Furiase, Vauthier, Beron. |
-| BSD Grupo Asesor SA | — | Real estate advisory | Partners with Anker on Paseo Gigena (40,000 sqm Buenos Aires development). |
-| Caputo Hermanos | — | Construction | IGJ imposed "fiscalizacion estatal" and fine. Related to Caputo family. |
-| Il Tevere | — | Holding company | Controls Nicolas Caputo's group (99.995% family-owned). Controls Mirgor SA. |
-| Mirgor SA | — | Electronics/autoparts | Nicolas Caputo's flagship. Created 1983 by Macri and Nicolas Caputo. Controls IATEC and Interclima. |
-| SES SA | — | Construction | Nicolas Caputo's company. ~$1,023M ARS in Buenos Aires public works contracts (2008-2015). |
+| Ancora Investments LP | - | Investment fund (Canada) | 100% owned by Caputo per sworn declaration. Valued at $388M ARS (2024 declaration). Private wealth advisory and institutional asset management. |
+| Noctua International WMG LLC | - | Offshore fund manager | Controlled via Princess International Global Ltd (Cayman) -> Affinis Partners II (Cayman). Caputo 75% of Princess. Connected to AXIS via SEC filings. |
+| Princess International Global Ltd | - | Offshore (Cayman Islands) | 75% owned by Caputo. Controls Affinis Partners II. |
+| Affinis Partners II | - | Offshore (Cayman Islands) | Controlled 50-74% by Princess. Controls 75%+ of Noctua. |
+| Anker Latinoamerica SA | - | Consulting firm | Founded ~2020 by Caputo. Suspended Dec 2023. Partners: Caputo, Bausili, Furiase, Vauthier, Beron. |
+| BSD Grupo Asesor SA | - | Real estate advisory | Partners with Anker on Paseo Gigena (40,000 sqm Buenos Aires development). |
+| Caputo Hermanos | - | Construction | IGJ imposed "fiscalizacion estatal" and fine. Related to Caputo family. |
+| Il Tevere | - | Holding company | Controls Nicolas Caputo's group (99.995% family-owned). Controls Mirgor SA. |
+| Mirgor SA | - | Electronics/autoparts | Nicolas Caputo's flagship. Created 1983 by Macri and Nicolas Caputo. Controls IATEC and Interclima. |
+| SES SA | - | Construction | Nicolas Caputo's company. ~$1,023M ARS in Buenos Aires public works contracts (2008-2015). |
 
 ---
 
@@ -189,12 +189,12 @@
 ## 4. Conflicts of Interest Not Yet Documented
 
 ### A. AXIS / FGS Pension Fund Drain
-Caputo founded AXIS SGFCI in 2012, resigned Dec 4, 2015 (days before joining government). In April 2016, the FGS pension fund invested $302M ARS in AXIS Ahorro Plus — a fund that merely bought LEBACs that FGS could have purchased directly from BCRA with zero commission. AXIS collected $540K ARS in commissions for unnecessary intermediation. Criminal charges filed by UFISES for negociaciones incompatibles, incumplimiento de deberes, and administracion infiel.
+Caputo founded AXIS SGFCI in 2012, resigned Dec 4, 2015 (days before joining government). In April 2016, the FGS pension fund invested $302M ARS in AXIS Ahorro Plus - a fund that merely bought LEBACs that FGS could have purchased directly from BCRA with zero commission. AXIS collected $540K ARS in commissions for unnecessary intermediation. Criminal charges filed by UFISES for negociaciones incompatibles, incumplimiento de deberes, and administracion infiel.
 
 **Source:** [Fiscales.gob.ar](https://www.fiscales.gob.ar/fiscalias/la-ufises-denuncio-al-ministro-luis-caputo-por-presuntas-operaciones-irregulares-en-el-fondo-de-garantia-de-sustentabilidad/)
 
 ### B. Noctua Offshore Purchased Century Bond
-The offshore fund management entity Noctua — controlled by Caputo through Princess International (Cayman) and Affinis Partners II (Cayman) — reportedly purchased the same Century Bond that Caputo authorized as Finance Minister. Self-dealing across sovereign/private boundary.
+The offshore fund management entity Noctua - controlled by Caputo through Princess International (Cayman) and Affinis Partners II (Cayman) - reportedly purchased the same Century Bond that Caputo authorized as Finance Minister. Self-dealing across sovereign/private boundary.
 
 **Source:** [Offshore Planet](https://offshoreplanet.wordpress.com/2018/01/10/la-offshore-que-administro-caputo-compro-deuda-a-100-anos/)
 
@@ -223,7 +223,7 @@ IGJ declared Sacha Rupaska SA a simulated entity (no real meetings, no capital, 
 
 **Source:** [Noticias La Insuperable](https://noticiaslainsuperable.com.ar/2022/12/16/la-igj-multo-y-demandara-judicialmente-a-otra-empresa-de-los-caputo/)
 
-### H. Nicolas Caputo (Nicky) — Parallel Caputo Network
+### H. Nicolas Caputo (Nicky) - Parallel Caputo Network
 Not directly related to Luis "Toto" Caputo by confirmed family ties, but Nicolas "Nicky" Caputo is Macri's closest friend and business partner since childhood (Newman school). Forbes #34 in Argentina ($340M USD). Controls: Mirgor SA (electronics/autoparts), SES SA ($1.023B ARS in Buenos Aires public works 2008-2015), Caputo SA (construction, sold 82.32% for $109M USD), IATEC, Interclima. All controlled through holding company Il Tevere (99.995% family-owned). Opened secret Swiss bank accounts and offshore entities per Pandora Papers.
 
 **Source:** [Wikipedia](https://es.wikipedia.org/wiki/Nicol%C3%A1s_Caputo), [ElDiarioAR](https://www.eldiarioar.com/politica/pandora-papers/nicolas-caputo-abrio-cuenta-secreta-suiza-controlada-offshore-luego-blanqueo-macri_1_9313781.html)

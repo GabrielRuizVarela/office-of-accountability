@@ -21,7 +21,7 @@ const HIBP_TIMEOUT_MS = 5_000
  * using the HaveIBeenPwned k-anonymity API.
  *
  * Returns the breach count if found, 0 if not found,
- * or -1 if the API is unreachable (fail-open — don't block signups).
+ * or -1 if the API is unreachable (fail-open - don't block signups).
  */
 export async function checkBreachedPassword(password: string): Promise<number> {
   try {
@@ -65,7 +65,7 @@ export async function checkBreachedPassword(password: string): Promise<number> {
       clearTimeout(timeoutId)
     }
   } catch {
-    // Fail open — don't block signup if HIBP is unreachable
+    // Fail open - don't block signup if HIBP is unreachable
     return -1
   }
 }

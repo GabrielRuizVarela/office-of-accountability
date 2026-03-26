@@ -1,5 +1,5 @@
 /**
- * Caso Libra — InvestigationClientConfig.
+ * Caso Libra - InvestigationClientConfig.
  *
  * Static frontend configuration for the Libra investigation.
  * Tabs, feature flags, hero text, and sources.

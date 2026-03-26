@@ -5,7 +5,7 @@ import { InvestigationNav } from '@/components/investigation/InvestigationNav'
 import { BilingualLegalDisclaimer } from '@/components/investigation/LegalDisclaimer'
 
 export const metadata: Metadata = {
-  title: 'Epstein Case — Office of Accountability',
+  title: 'Epstein Case - Office of Accountability',
   description:
     'Trafficking and power network. 7,276 entities, court documents, flight records, and factchecking.',
 }

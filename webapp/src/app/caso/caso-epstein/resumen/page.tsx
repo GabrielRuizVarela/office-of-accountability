@@ -1,10 +1,10 @@
 'use client'
 
 /**
- * Caso Epstein — Summary (narrative summary).
+ * Caso Epstein - Summary (narrative summary).
  *
  * The story from NARRATIVE-EPSTEIN.md presented as 12 readable chapters.
- * Pure prose — no data grids, stat boxes, or factcheck badges.
+ * Pure prose - no data grids, stat boxes, or factcheck badges.
  * Chapter content is in English; UI chrome is bilingual.
  */
 
@@ -37,7 +37,7 @@ const t = {
 } as const
 
 // ---------------------------------------------------------------------------
-// Chapters — adapted from NARRATIVE-EPSTEIN.md
+// Chapters - adapted from NARRATIVE-EPSTEIN.md
 // ---------------------------------------------------------------------------
 
 const CHAPTERS: {
@@ -49,7 +49,7 @@ const CHAPTERS: {
     num: 'I',
     title: 'The Machine',
     paragraphs: [
-      'Jeffrey Epstein built a trafficking operation that masqueraded as a legitimate financial advisory business. At its peak between 2000 and 2005, his planes flew 264 times in a single year, shuttling between a triangle of properties — the Palm Beach mansion, the Manhattan townhouse, and Little St. James Island in the US Virgin Islands. The Boeing 727 "Lolita Express" (N908JE) made 939 documented flights. Two Gulfstream jets added another 1,300.',
+      'Jeffrey Epstein built a trafficking operation that masqueraded as a legitimate financial advisory business. At its peak between 2000 and 2005, his planes flew 264 times in a single year, shuttling between a triangle of properties - the Palm Beach mansion, the Manhattan townhouse, and Little St. James Island in the US Virgin Islands. The Boeing 727 "Lolita Express" (N908JE) made 939 documented flights. Two Gulfstream jets added another 1,300.',
       'The operation was not a one-man show. The graph identifies 5 principals with FACILITATED_ABUSE relationships: Epstein (1,345 connections), Ghislaine Maxwell (685), Sarah Kellen (211), Jean-Luc Brunel (59), and Virginia Giuffre (57, who was both victim and, under coercion, facilitator). Below them, a staff of pilots, schedulers, and property managers kept the infrastructure running.',
     ],
   },
@@ -57,9 +57,9 @@ const CHAPTERS: {
     num: 'II',
     title: 'The Money',
     paragraphs: [
-      'The financial architecture was designed to obscure. Epstein controlled 9+ shell companies — Great St. Jim LLC, Plan D LLC, Hyperion Air Inc/LLC, JSC Interiors LLC, Financial Strategy Group Ltd, Southern Trust Company — each serving a specific function. Behind these sat 4 trust firewalls: the 1953 Trust (signed 2 days before his death, $577M+), the Insurance Trust, the Caterpillar Trust (where Epstein was simultaneously grantor AND beneficiary), and the Haze Trust ($49.5M at Deutsche Bank for Leon Black art deals).',
-      'Leslie Wexner transferred approximately $1 billion through a sweeping power of attorney (1987-2007). Leon Black of Apollo Global Management paid $170 million in bidirectional "financial advice" fees — the Senate found this money was "used to finance trafficking operations." Deutsche Bank and JPMorgan Chase settled for a combined $365 million.',
-      'The single most important forensic target is Darren K. Indyke — Epstein\'s personal lawyer who appears across the Insurance Trust, Caterpillar Trust 2, Deutsche Bank, AND Hyperion Air. He had 17 graph connections and controlled the estate documents. Richard D. Kahn, the accountant and estate co-executor, had 16 verified communication partners including Bill Clinton, Noam Chomsky, and Marvin Minsky.',
+      'The financial architecture was designed to obscure. Epstein controlled 9+ shell companies - Great St. Jim LLC, Plan D LLC, Hyperion Air Inc/LLC, JSC Interiors LLC, Financial Strategy Group Ltd, Southern Trust Company - each serving a specific function. Behind these sat 4 trust firewalls: the 1953 Trust (signed 2 days before his death, $577M+), the Insurance Trust, the Caterpillar Trust (where Epstein was simultaneously grantor AND beneficiary), and the Haze Trust ($49.5M at Deutsche Bank for Leon Black art deals).',
+      'Leslie Wexner transferred approximately $1 billion through a sweeping power of attorney (1987-2007). Leon Black of Apollo Global Management paid $170 million in bidirectional "financial advice" fees - the Senate found this money was "used to finance trafficking operations." Deutsche Bank and JPMorgan Chase settled for a combined $365 million.',
+      'The single most important forensic target is Darren K. Indyke - Epstein\'s personal lawyer who appears across the Insurance Trust, Caterpillar Trust 2, Deutsche Bank, AND Hyperion Air. He had 17 graph connections and controlled the estate documents. Richard D. Kahn, the accountant and estate co-executor, had 16 verified communication partners including Bill Clinton, Noam Chomsky, and Marvin Minsky.',
     ],
   },
   {
@@ -67,32 +67,32 @@ const CHAPTERS: {
     title: 'The Recruitment',
     paragraphs: [
       'Victims entered the network through three pipelines. The modeling pipeline: Epstein funded Jean-Luc Brunel\'s MC2 Model Management with $1 million, sponsoring P-1 visas that made models\' legal status dependent on the agency. Cindy Lopez flew 37 times between 2000-2003, a pattern characteristic of the MC2 pipeline. The direct recruitment pipeline: Maxwell recruited Virginia Giuffre from the Mar-a-Lago spa at age 16. Haley Robson recruited victims in Palm Beach for $200 per referral, identified by Palm Beach PD. The Eastern European pipeline traced names like Kovylina, Malyshov, and Marcinko across a geographic pattern consistent with model agency sourcing from former Soviet states.',
-      'Sarah Kellen was the gatekeeper — and a victim herself. The NPA "Core 4" (Kellen, Nadia Marcinko, Adriana Ross, Lesley Groff) all received immunity in the 2008 agreement. Network analysis reveals all four were both victims and operational facilitators: Kellen had 148 co-flyers for someone described as a "personal assistant"; Marcinko, originally from former Yugoslavia, was documented as a trafficking victim before becoming an associate; Ross invoked the 5th Amendment over 100 times in her deposition; Groff\'s name appears 150,000+ times in DOJ files. Handwritten notes signed by Kellen contained phrases: "I have girls for him." She bridged 10,367 otherwise-unconnected pairs in the network — connecting victims to financiers, academics to politicians. None of the Core 4 were ever charged.',
+      'Sarah Kellen was the gatekeeper - and a victim herself. The NPA "Core 4" (Kellen, Nadia Marcinko, Adriana Ross, Lesley Groff) all received immunity in the 2008 agreement. Network analysis reveals all four were both victims and operational facilitators: Kellen had 148 co-flyers for someone described as a "personal assistant"; Marcinko, originally from former Yugoslavia, was documented as a trafficking victim before becoming an associate; Ross invoked the 5th Amendment over 100 times in her deposition; Groff\'s name appears 150,000+ times in DOJ files. Handwritten notes signed by Kellen contained phrases: "I have girls for him." She bridged 10,367 otherwise-unconnected pairs in the network - connecting victims to financiers, academics to politicians. None of the Core 4 were ever charged.',
     ],
   },
   {
     num: 'IV',
-    title: 'The Cover — Academic Pipeline',
+    title: 'The Cover - Academic Pipeline',
     paragraphs: [
       'Epstein donated $9.1 million to Harvard, including $6.5M for Martin Nowak\'s Program for Evolutionary Dynamics. Nowak gave Epstein a personal office in his lab for 9 years, visited 40+ times post-conviction. MIT Media Lab received $525K through Joi Ito. Staff called Epstein "Voldemort."',
-      'Melanie Walker systematically bridged Epstein to the science/tech world — introducing Caltech faculty, then Boris Nikolic (who introduced Gates), while holding positions at the Gates Foundation and World Bank. She met Epstein circa 1992 at the Plaza Hotel — Donald Trump made the introduction.',
+      'Melanie Walker systematically bridged Epstein to the science/tech world - introducing Caltech faculty, then Boris Nikolic (who introduced Gates), while holding positions at the Gates Foundation and World Bank. She met Epstein circa 1992 at the Plaza Hotel - Donald Trump made the introduction.',
       'Bedford/Hanscom Field was the gateway: 170 flights, the third most-used airport, 20 miles from Harvard. Larry Summers flew Bedford to St. Thomas for his December 2005 honeymoon with Maxwell aboard.',
     ],
   },
   {
     num: 'V',
-    title: 'The Kompromat Operation — Gates, Nikolic, and Antonova',
+    title: 'The Kompromat Operation - Gates, Nikolic, and Antonova',
     paragraphs: [
-      'The Walker-Nikolic-Gates introduction chain is documented across DOJ files: (1) Trump introduced Melanie Walker to Epstein (~1992). (2) Walker introduced Boris Nikolic to Epstein. (3) Nikolic introduced Gates to Epstein (first meeting 2011). (4) Nikolic also introduced Mila Antonova — a Russian-born chess player with whom Gates was having an extramarital affair. (5) Epstein began paying Antonova $7,000/month through Richard D. Kahn\'s accounts. (6) Epstein demanded reimbursement from Gates — leveraging knowledge of a private affair as financial leverage.',
-      'This constitutes a documented kompromat operation: a third party introduced to the principal, quietly placed on payroll, and used to extract money and potentially compliance. Nikolic was named successor executor in Epstein\'s will, signed August 8, 2019 — two days before Epstein\'s death.',
+      'The Walker-Nikolic-Gates introduction chain is documented across DOJ files: (1) Trump introduced Melanie Walker to Epstein (~1992). (2) Walker introduced Boris Nikolic to Epstein. (3) Nikolic introduced Gates to Epstein (first meeting 2011). (4) Nikolic also introduced Mila Antonova - a Russian-born chess player with whom Gates was having an extramarital affair. (5) Epstein began paying Antonova $7,000/month through Richard D. Kahn\'s accounts. (6) Epstein demanded reimbursement from Gates - leveraging knowledge of a private affair as financial leverage.',
+      'This constitutes a documented kompromat operation: a third party introduced to the principal, quietly placed on payroll, and used to extract money and potentially compliance. Nikolic was named successor executor in Epstein\'s will, signed August 8, 2019 - two days before Epstein\'s death.',
     ],
   },
   {
     num: 'VI',
     title: 'Social Capital and Intelligence',
     paragraphs: [
-      'The MEGA Group, co-founded by Wexner and Charles Bronfman, was a secret organization of ~50 wealthy businessmen providing access to billionaire circles. In October 1995, CFR president Leslie Gelb arranged a private daylong CIA briefing for Epstein with Director John Deutch — confirmed in Princeton University archives.',
-      'Carbyne — co-invested by Nicole Junkermann ($500K), Epstein ($1M via Southern Trust), and Ehud Barak (chairman) — had a board that included a former director of Unit 8200, Israel\'s signals intelligence directorate. The combination of Unit 8200 leadership, Epstein capital, and law enforcement data access is structurally consistent with a surveillance and intelligence-gathering operation.',
+      'The MEGA Group, co-founded by Wexner and Charles Bronfman, was a secret organization of ~50 wealthy businessmen providing access to billionaire circles. In October 1995, CFR president Leslie Gelb arranged a private daylong CIA briefing for Epstein with Director John Deutch - confirmed in Princeton University archives.',
+      'Carbyne - co-invested by Nicole Junkermann ($500K), Epstein ($1M via Southern Trust), and Ehud Barak (chairman) - had a board that included a former director of Unit 8200, Israel\'s signals intelligence directorate. The combination of Unit 8200 leadership, Epstein capital, and law enforcement data access is structurally consistent with a surveillance and intelligence-gathering operation.',
       'During the 2016-2017 Trump transition, Alexander Acosta reportedly told transition team members that Epstein "belonged to intelligence" and to "leave it alone," citing that the matter was "above my pay grade."',
     ],
   },
@@ -108,23 +108,23 @@ const CHAPTERS: {
     num: 'VIII',
     title: 'The Flight Patterns',
     paragraphs: [
-      'Pre-conviction (2000-2008): 1,565 flights (196/year). Post-conviction (2008-2019): 945 flights (86/year) — the operation continued at 44% capacity. Most damning: USVI flights INCREASED from 29 (2004) to 69 (2007) during the FBI investigation.',
+      'Pre-conviction (2000-2008): 1,565 flights (196/year). Post-conviction (2008-2019): 945 flights (86/year) - the operation continued at 44% capacity. Most damning: USVI flights INCREASED from 29 (2004) to 69 (2007) during the FBI investigation.',
       'The 2002 Africa trip included Bill Clinton, Kevin Spacey, Ron Tucker, Sarah Kellen, and Chauntae Davies (massage therapist/victim). FBI victim documents describe: a 14-year-old who visited Epstein 100+ times; a Chilean witness who reported Trump speaking on speakerphone during an Epstein session; and a massage therapist who described giving Trump a foot massage at Epstein\'s direction.',
     ],
   },
   {
     num: 'IX',
-    title: 'The Abuse Chains — Documented Victims and Financiers',
+    title: 'The Abuse Chains - Documented Victims and Financiers',
     paragraphs: [
-      'The most complete documented abuse chain runs from Virginia Giuffre. Ghislaine Maxwell recruited Giuffre from Mar-a-Lago, trained her as a "masseuse," arranged her as a gift to Prince Andrew. Glenn Dubin — triple-layer node: paid Epstein $15M as a financial broker, named Epstein godfather to his daughter, and Giuffre named him in sworn testimony as an abuser.',
-      'Jes Staley — JPMorgan executive who managed the Epstein account, sent 1,100 emails, visited the island in 2009 while Epstein was serving his sentence; FCA permanently banned from banking in 2025. Leon Black — paid $170M; Senate found the money "financed trafficking operations." Leslie Wexner — transferred ~$1B; confirmed visiting Little St. James in his 2026 Congressional deposition.',
+      'The most complete documented abuse chain runs from Virginia Giuffre. Ghislaine Maxwell recruited Giuffre from Mar-a-Lago, trained her as a "masseuse," arranged her as a gift to Prince Andrew. Glenn Dubin - triple-layer node: paid Epstein $15M as a financial broker, named Epstein godfather to his daughter, and Giuffre named him in sworn testimony as an abuser.',
+      'Jes Staley - JPMorgan executive who managed the Epstein account, sent 1,100 emails, visited the island in 2009 while Epstein was serving his sentence; FCA permanently banned from banking in 2025. Leon Black - paid $170M; Senate found the money "financed trafficking operations." Leslie Wexner - transferred ~$1B; confirmed visiting Little St. James in his 2026 Congressional deposition.',
     ],
   },
   {
     num: 'X',
     title: 'The Silence',
     paragraphs: [
-      'The 2008 NPA — negotiated by Acosta with Dershowitz — gave immunity to the Core 4 and sealed the evidence. A 5-year black hole followed (2010-2015) with zero legal events while Epstein rebuilt to 50% capacity.',
+      'The 2008 NPA - negotiated by Acosta with Dershowitz - gave immunity to the Core 4 and sealed the evidence. A 5-year black hole followed (2010-2015) with zero legal events while Epstein rebuilt to 50% capacity.',
       'The silence was broken by Julie K. Brown\'s Miami Herald investigation (November 2018), leading to the 2019 arrest, Epstein\'s death (with guard Tovah Noel charged with falsifying records), and the 2021 Maxwell conviction.',
     ],
   },
@@ -140,16 +140,16 @@ const CHAPTERS: {
     num: 'XII',
     title: 'The Shell Architecture',
     paragraphs: [
-      'Forensic analysis of the graph reveals a three-stage money laundering structure. Placement: funds entered through J. Epstein & Co and Southern Trust Company into banking relationships at JPMorgan Chase and Deutsche Bank. Layering: capital moved through 9 mapped shell entities — The 1953 Trust, Financial Trust Inc, Hyperion Air LLC/Inc (dual entities suggesting jurisdictional layering for liability vs. asset ownership), JSC Interiors LLC, Plan D LLC, Great St. Jim LLC, Financial Strategy Group Ltd (the "Ltd" suffix indicating offshore BVI/UK jurisdiction). Integration: clean capital deployed into real estate across 4 jurisdictions, 4 aircraft, and legitimate-appearing ventures including MIT Media Lab donations and MC2 Model Management funding.',
-      'Jes Staley is the human bridge between Epstein\'s two banking relationships — employed at both JPMorgan Chase AND Deutsche Bank, the only person in the graph spanning both institutions. Leon Black is the only person outside the core trafficking group who appears in both financial AND abuse relationship types: he paid Epstein $158M+ in advisory fees while an anonymous victim named him in court filings. The bidirectional nature of the Black-Epstein financial relationship — Epstein also financed Black — suggests a mutual dependency structure rather than simple client-advisor arrangement.',
+      'Forensic analysis of the graph reveals a three-stage money laundering structure. Placement: funds entered through J. Epstein & Co and Southern Trust Company into banking relationships at JPMorgan Chase and Deutsche Bank. Layering: capital moved through 9 mapped shell entities - The 1953 Trust, Financial Trust Inc, Hyperion Air LLC/Inc (dual entities suggesting jurisdictional layering for liability vs. asset ownership), JSC Interiors LLC, Plan D LLC, Great St. Jim LLC, Financial Strategy Group Ltd (the "Ltd" suffix indicating offshore BVI/UK jurisdiction). Integration: clean capital deployed into real estate across 4 jurisdictions, 4 aircraft, and legitimate-appearing ventures including MIT Media Lab donations and MC2 Model Management funding.',
+      'Jes Staley is the human bridge between Epstein\'s two banking relationships - employed at both JPMorgan Chase AND Deutsche Bank, the only person in the graph spanning both institutions. Leon Black is the only person outside the core trafficking group who appears in both financial AND abuse relationship types: he paid Epstein $158M+ in advisory fees while an anonymous victim named him in court filings. The bidirectional nature of the Black-Epstein financial relationship - Epstein also financed Black - suggests a mutual dependency structure rather than simple client-advisor arrangement.',
     ],
   },
   {
     num: 'XIII',
     title: 'What Remains',
     paragraphs: [
-      '7,258 connected nodes. 10,916 edges. 4,153 flights. 367 verified persons. 1,044 documents. 9 shell companies mapped. 15 documented victim relationships. But: 99.6% of flights lack passenger names. The Insurance Trust and Caterpillar Trust have never been forensically audited. The "Caterpillar Trust 2" implies a predecessor trust that has never been located. The CIA\'s Glomar response is unresolved. Darren K. Indyke\'s financial records — connecting Deutsche Bank, Insurance Trust, and Caterpillar Trust 2 — remain the single key that would unravel the architecture.',
-      'Network analysis identified Boris Nikolic as the most structurally significant bridge node: he connects four otherwise-separate clusters — tech (Gates, Kimbal Musk), politics (Ehud Barak), trafficking operations (Jean-Luc Brunel), and financial management (Richard Kahn, Lesley Groff). Named backup executor in Epstein\'s will two days before his death. Never deposed or charged. The Korshunova-Zinoviev-Kellen triangle — linking a model who died in 2008 (ruled suicide) to an MMA fighter who flew with both VIPs and young women — remains uninvestigated. Andrea Mitrovich, with 54 co-flyers including Clinton, Spacey, and Secret Service, appears more frequently than most named associates yet is rarely mentioned in reporting. The investigation continues.',
+      '7,258 connected nodes. 10,916 edges. 4,153 flights. 367 verified persons. 1,044 documents. 9 shell companies mapped. 15 documented victim relationships. But: 99.6% of flights lack passenger names. The Insurance Trust and Caterpillar Trust have never been forensically audited. The "Caterpillar Trust 2" implies a predecessor trust that has never been located. The CIA\'s Glomar response is unresolved. Darren K. Indyke\'s financial records - connecting Deutsche Bank, Insurance Trust, and Caterpillar Trust 2 - remain the single key that would unravel the architecture.',
+      'Network analysis identified Boris Nikolic as the most structurally significant bridge node: he connects four otherwise-separate clusters - tech (Gates, Kimbal Musk), politics (Ehud Barak), trafficking operations (Jean-Luc Brunel), and financial management (Richard Kahn, Lesley Groff). Named backup executor in Epstein\'s will two days before his death. Never deposed or charged. The Korshunova-Zinoviev-Kellen triangle - linking a model who died in 2008 (ruled suicide) to an MMA fighter who flew with both VIPs and young women - remains uninvestigated. Andrea Mitrovich, with 54 co-flyers including Clinton, Spacey, and Secret Service, appears more frequently than most named associates yet is rarely mentioned in reporting. The investigation continues.',
     ],
   },
 ]

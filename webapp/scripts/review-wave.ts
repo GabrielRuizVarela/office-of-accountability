@@ -75,7 +75,7 @@ async function main(): Promise<void> {
       const label = record.get('label') as string
       const name = record.get('name') as string
       const desc = (record.get('desc') as string)?.slice(0, 60) ?? ''
-      console.log(`  [${label}] ${name}${desc ? ` — ${desc}...` : ''}`)
+      console.log(`  [${label}] ${name}${desc ? ` - ${desc}...` : ''}`)
     }
   } finally {
     await session.close()

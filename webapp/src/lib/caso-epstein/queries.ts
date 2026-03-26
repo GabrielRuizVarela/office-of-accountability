@@ -1,5 +1,5 @@
 /**
- * Caso Epstein query functions — Cypher queries for the Epstein
+ * Caso Epstein query functions - Cypher queries for the Epstein
  * investigation knowledge graph.
  *
  * All queries use parameterized Cypher (no string interpolation).

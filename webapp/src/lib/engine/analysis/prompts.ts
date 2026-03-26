@@ -8,10 +8,10 @@
 export const PROCUREMENT_ANOMALY_PROMPT = `You are an Argentine public procurement analyst. Analyze the following government contract data and identify anomalies.
 
 Look for:
-1. Split contracts — multiple small contracts to same supplier avoiding thresholds
-2. Repeat winners — same CUIT winning disproportionate share of contracts
-3. Shell companies — IGJ companies with minimal officers receiving large contracts
-4. Timing patterns — contracts clustered around elections or political transitions
+1. Split contracts - multiple small contracts to same supplier avoiding thresholds
+2. Repeat winners - same CUIT winning disproportionate share of contracts
+3. Shell companies - IGJ companies with minimal officers receiving large contracts
+4. Timing patterns - contracts clustered around elections or political transitions
 
 Respond with structured JSON:
 {
@@ -33,8 +33,8 @@ export const OWNERSHIP_CHAIN_PROMPT = `You are an investigative analyst speciali
 
 Identify:
 1. Circular ownership patterns
-2. Nominee directors — same person across many companies
-3. Companies with political connections — officers who are also government appointees
+2. Nominee directors - same person across many companies
+3. Companies with political connections - officers who are also government appointees
 4. Hidden beneficial owners through layered corporate structures
 
 Respond with structured JSON:

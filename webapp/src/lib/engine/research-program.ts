@@ -1,6 +1,6 @@
 /**
  * Research directive management for autonomous investigation iterations.
- * Pure TS — no DB dependency. State serialized to PipelineState.progress_json.
+ * Pure TS - no DB dependency. State serialized to PipelineState.progress_json.
  */
 
 export type DirectiveStatus = 'pending' | 'active' | 'completed' | 'abandoned'

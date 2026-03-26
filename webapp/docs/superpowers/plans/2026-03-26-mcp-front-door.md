@@ -4,7 +4,7 @@
 
 **Goal:** Complete the MCP tool surface (16 new tools + 5 resources) so an external LLM can run the full investigate-loop through MCP instead of direct Neo4j/CLI scripts. Add 4 new Next.js API routes for ingest/verify operations that don't exist yet.
 
-**Architecture:** Pure proxy pattern — MCP Worker routes tool calls to Next.js API routes. New ingest/verify API routes handle the actual Neo4j writes. All writes create Proposals (never direct nodes). Cypher sandbox validates graph.query before forwarding.
+**Architecture:** Pure proxy pattern - MCP Worker routes tool calls to Next.js API routes. New ingest/verify API routes handle the actual Neo4j writes. All writes create Proposals (never direct nodes). Cypher sandbox validates graph.query before forwarding.
 
 **Tech Stack:** Cloudflare Workers (MCP server), Next.js 16 API routes, Neo4j 5 (Bolt/WS), Zod 4 validation, TypeScript
 
@@ -12,7 +12,7 @@
 
 ## File Map
 
-### MCP Server (Workers) — New tool handler files
+### MCP Server (Workers) - New tool handler files
 
 | File | Responsibility |
 |---|---|
@@ -25,7 +25,7 @@
 | `workers/mcp-server/src/tools/resources.ts` | 5 MCP resources: summary, schema, gaps, directives, pipeline |
 | `workers/mcp-server/src/tools/index.ts` | Update imports to register all new tool files |
 
-### Next.js API Routes — New endpoints for operations that have no route yet
+### Next.js API Routes - New endpoints for operations that have no route yet
 
 | File | Responsibility |
 |---|---|
@@ -697,7 +697,7 @@ export async function POST(
     if (body.extract_entities) {
       const entities = extractEntities(text)
       result.entities_found = entities
-      // Don't auto-create proposals for extracted entities — return them for the LLM to decide
+      // Don't auto-create proposals for extracted entities - return them for the LLM to decide
     }
 
     return NextResponse.json({ success: true, data: result })
@@ -897,7 +897,7 @@ export async function POST(
       )
       matchCount = (result.records[0]?.get('matches') as { toNumber(): number })?.toNumber() ?? 0
     } else {
-      // Name fuzzy — use existing fulltext index
+      // Name fuzzy - use existing fulltext index
       const result = await session.run(
         `MATCH (a {caso_slug: $casoSlug}), (b {caso_slug: $casoSlug})
          WHERE a.name IS NOT NULL AND b.name IS NOT NULL
@@ -1083,7 +1083,7 @@ export async function POST(
 }
 ```
 
-- [ ] **Step 5: Create analysis run route (placeholder — delegates to MiroFish analysis functions)**
+- [ ] **Step 5: Create analysis run route (placeholder - delegates to MiroFish analysis functions)**
 
 ```typescript
 // src/app/api/casos/[casoSlug]/engine/analyze/run/route.ts
@@ -1117,7 +1117,7 @@ export async function POST(
 
   try {
     if (body.type === 'centrality') {
-      // Degree centrality — count relationships per node
+      // Degree centrality - count relationships per node
       const result = await session.run(
         `MATCH (n {caso_slug: $casoSlug})-[r]-()
          RETURN n.id AS id, n.name AS name, labels(n)[0] AS label, count(r) AS degree
@@ -1141,7 +1141,7 @@ export async function POST(
     }
 
     if (body.type === 'temporal') {
-      // Temporal analysis — events within 7-day windows
+      // Temporal analysis - events within 7-day windows
       const result = await session.run(
         `MATCH (e1:Event {caso_slug: $casoSlug}), (e2:Event {caso_slug: $casoSlug})
          WHERE e1.date IS NOT NULL AND e2.date IS NOT NULL
@@ -1167,7 +1167,7 @@ export async function POST(
       })
     }
 
-    // For procurement, ownership, connections — these will be wired to
+    // For procurement, ownership, connections - these will be wired to
     // the MiroFish analysis functions after absorption (Plan C).
     // For now, return a structured query that gives the LLM client raw data to analyze.
     const statsResult = await session.run(
@@ -1412,7 +1412,7 @@ registerTool(
       type: 'object',
       properties: {
         caso_slug: { type: 'string', description: 'Investigation slug' },
-        pipeline_id: { type: 'string', description: 'Pipeline config ID (optional — returns all states if omitted)' },
+        pipeline_id: { type: 'string', description: 'Pipeline config ID (optional - returns all states if omitted)' },
       },
       required: ['caso_slug'],
     },
@@ -1948,7 +1948,7 @@ registerTool(
 
 ```bash
 git add workers/mcp-server/src/tools/verify.ts workers/mcp-server/src/tools/analyze.ts workers/mcp-server/src/tools/audit.ts workers/mcp-server/src/tools/orchestrator.ts
-git commit -m "feat(mcp): add verify (2), analyze (3), audit (4), orchestrator (3) tools — 12 total"
+git commit -m "feat(mcp): add verify (2), analyze (3), audit (4), orchestrator (3) tools - 12 total"
 ```
 
 ---

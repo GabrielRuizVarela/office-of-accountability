@@ -11,7 +11,7 @@
 import { z } from 'zod/v4'
 
 // ---------------------------------------------------------------------------
-// CSV row schemas — Estructura Organica (appointments / authorities)
+// CSV row schemas - Estructura Organica (appointments / authorities)
 // Pipe-delimited CSV with columns:
 //   jurisdiccion, subjurisdiccion, unidad_de_nivel_politico, unidad,
 //   reporta_a, nombre_corto, tipo_administracion, unidad_rango,
@@ -53,7 +53,7 @@ export const AuthorityRowSchema = z.object({
 export type AuthorityRow = z.infer<typeof AuthorityRowSchema>
 
 // ---------------------------------------------------------------------------
-// CSV row schemas — Contrataciones Adjudicaciones (procurement awards)
+// CSV row schemas - Contrataciones Adjudicaciones (procurement awards)
 // Comma-delimited CSV with columns:
 //   Número Procedimiento, Nro SAF, Descripcion SAF, Nro UOC,
 //   Descripcion UOC, Unidad Ejecutora, Tipo de Procedimiento,

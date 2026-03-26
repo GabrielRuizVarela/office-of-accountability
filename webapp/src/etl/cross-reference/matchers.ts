@@ -1,9 +1,9 @@
 /**
- * Cross-reference matchers — three tiers of entity matching.
+ * Cross-reference matchers - three tiers of entity matching.
  *
- * Tier 1: CUIT (tax ID) — exact match + DNI extraction, confidence 0.95-1.0
- * Tier 2: DNI/CUIL (national ID) — exact after normalization, confidence 0.9-0.95
- * Tier 3: Name — normalized or fuzzy, confidence 0.6-0.8
+ * Tier 1: CUIT (tax ID) - exact match + DNI extraction, confidence 0.95-1.0
+ * Tier 2: DNI/CUIL (national ID) - exact after normalization, confidence 0.9-0.95
+ * Tier 3: Name - normalized or fuzzy, confidence 0.6-0.8
  *
  * Tier 1 & 2 use in-memory Map joins (fast, <1s).
  * Tier 3 uses in-memory normalized name + Levenshtein fallback.
@@ -122,7 +122,7 @@ async function fetchAllDniEntities(): Promise<DniEntity[]> {
 }
 
 // ---------------------------------------------------------------------------
-// Tier 1: CUIT matching — all CUIT-bearing labels, in-memory Map join
+// Tier 1: CUIT matching - all CUIT-bearing labels, in-memory Map join
 // ---------------------------------------------------------------------------
 
 /**
@@ -399,7 +399,7 @@ function matchNamePair(
 
   const skipFuzzy = targetByNorm.size > FUZZY_TARGET_CAP
   if (skipFuzzy) {
-    console.log(`    [name-match] Target set too large (${targetByNorm.size} unique names > ${FUZZY_TARGET_CAP}), skipping Levenshtein — exact only`)
+    console.log(`    [name-match] Target set too large (${targetByNorm.size} unique names > ${FUZZY_TARGET_CAP}), skipping Levenshtein - exact only`)
   }
 
   let processed = 0
@@ -412,7 +412,7 @@ function matchNamePair(
     }
     if (!source.normalized) continue
 
-    // Exact normalized match (Map lookup — O(1))
+    // Exact normalized match (Map lookup - O(1))
     const exactMatch = targetByNorm.get(source.normalized)
     if (exactMatch && exactMatch.length === 1) {
       const pairKey = `${source.id}::${exactMatch[0].id}`

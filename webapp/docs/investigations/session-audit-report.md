@@ -96,13 +96,13 @@
 | Bapro Mandatos y Negocios SAU | Catalán was president, Estrella del Sur scandal | revolving-door-findings.json |
 | Fideicomiso Estrella del Sur | Housing trust fraud linked to Catalán tenure | revolving-door-findings.json |
 | ACE Oncología | Cartel with labs for PAMI overpricing | recent-scandals-2024-2026.json |
-| Glencore El Pachón Limited (Bermuda) | In graph ✓ | — |
+| Glencore El Pachón Limited (Bermuda) | In graph ✓ | - |
 | Glencore South America Limited (Cayman) | Paradise Papers offshore structure | recent-scandals-2024-2026.json |
 | Glencore Finance Limited (Bermuda) | Paradise Papers offshore structure | recent-scandals-2024-2026.json |
 | Glencore SA Holdings Limited (Bermuda) | Paradise Papers offshore structure | recent-scandals-2024-2026.json |
 | KARIMA PORTFOLIO et al. (6 Belocopitt BVI entities) | Panama Papers offshore entities | side-belocopitt-health-findings.json |
 
-**Note:** Nación Seguros SA is the single largest finding gap — it is the #1 government contractor by value (ARS 28.5B) and central to the Causa Seguros, yet has no graph node.
+**Note:** Nación Seguros SA is the single largest finding gap - it is the #1 government contractor by value (ARS 28.5B) and central to the Causa Seguros, yet has no graph node.
 
 ---
 
@@ -110,25 +110,25 @@
 
 ### Missing Factchecks
 
-1. **Frigerio Banco Ciudad irregularities** — $35M loan to Lethe (1500% of equity, company with zero construction experience). Not in factchecks despite being sourced from Página/12.
+1. **Frigerio Banco Ciudad irregularities** - $35M loan to Lethe (1500% of equity, company with zero construction experience). Not in factchecks despite being sourced from Página/12.
 
-2. **Frigerio ATN discretionary distribution** — Rosario (1M pop, socialist) received 3% ($12M) vs Santa Fe capital (400K pop, Cambiemos) received $152M. Documented by La Nación but no factcheck.
+2. **Frigerio ATN discretionary distribution** - Rosario (1M pop, socialist) received 3% ($12M) vs Santa Fe capital (400K pop, Cambiemos) received $152M. Documented by La Nación but no factcheck.
 
-3. **Frigerio nepotism network** — Wife (Victoria Costoya) at Min. Social Development, father (Octavio) at YPF board, uncle (Mario) at ENACOM, all during his ministry. No factcheck despite 3+ sources.
+3. **Frigerio nepotism network** - Wife (Victoria Costoya) at Min. Social Development, father (Octavio) at YPF board, uncle (Mario) at ENACOM, all during his ministry. No factcheck despite 3+ sources.
 
-4. **SUIZO dual CUIT anomaly** — Suizo Argentina SA has two CUITs (data manipulation flag), combined $13.2B in contracts, 2,678% increase year-over-year. Mentioned in key-findings.md but no dedicated factcheck.
+4. **SUIZO dual CUIT anomaly** - Suizo Argentina SA has two CUITs (data manipulation flag), combined $13.2B in contracts, 2,678% increase year-over-year. Mentioned in key-findings.md but no dedicated factcheck.
 
-5. **Belocopitt COVID ATP collection** — Received USD 13M in state salary subsidies while being one of Argentina's 50 richest people (USD 440M fortune). Has factcheck `belocopitt-health-media` but the COVID ATP figure is not in money flows.
+5. **Belocopitt COVID ATP collection** - Received USD 13M in state salary subsidies while being one of Argentina's 50 richest people (USD 440M fortune). Has factcheck `belocopitt-health-media` but the COVID ATP figure is not in money flows.
 
-6. **PAMI pharmaceutical cartel** — ACE Oncología + Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo coordinated pricing, PAMI overpaid $273M in 2023 alone. Has factcheck `pami-16x-overpricing` but cartel members not named.
+6. **PAMI pharmaceutical cartel** - ACE Oncología + Elea Phoenix, GP Pharm, Kemex, Biosidus, Raffo coordinated pricing, PAMI overpaid $273M in 2023 alone. Has factcheck `pami-16x-overpricing` but cartel members not named.
 
-7. **Glencore royalty discrepancy** — Reported paying USD 525M to Argentina in 2015, independent records show only USD 45M. Paradise Papers revealed 6 Bermuda/Cayman entities. No factcheck at all.
+7. **Glencore royalty discrepancy** - Reported paying USD 525M to Argentina in 2015, independent records show only USD 45M. Paradise Papers revealed 6 Bermuda/Cayman entities. No factcheck at all.
 
-8. **Ercolini clearing pattern** — Cleared Frigerio "express" in Koolhaas case, cleared Techint/Rocca in Cuadernos ("state of necessity" defense for USD 1M bribery), cleared all Lago Escondido participants. Pattern documented across 3 research files but no aggregate factcheck.
+8. **Ercolini clearing pattern** - Cleared Frigerio "express" in Koolhaas case, cleared Techint/Rocca in Cuadernos ("state of necessity" defense for USD 1M bribery), cleared all Lago Escondido participants. Pattern documented across 3 research files but no aggregate factcheck.
 
-9. **Macri systematic clearances** — 6+ cases (Mesa Judicial, ARA San Juan espionage, GCBA wiretapping, Sevel smuggling, Boca Juniors fraud) all resulted in dismissal. Documented in judicial-cases-findings.json, no factcheck.
+9. **Macri systematic clearances** - 6+ cases (Mesa Judicial, ARA San Juan espionage, GCBA wiretapping, Sevel smuggling, Boca Juniors fraud) all resulted in dismissal. Documented in judicial-cases-findings.json, no factcheck.
 
-10. **Accusatory system reform** — August 2025 transition transfers power from judges to prosecutors at Comodoro Py, described by INECIP as "altering the ecosystem." No factcheck or timeline event.
+10. **Accusatory system reform** - August 2025 transition transfers power from judges to prosecutors at Comodoro Py, described by INECIP as "altering the ecosystem." No factcheck or timeline event.
 
 ---
 
@@ -159,11 +159,11 @@
 
 ## E. Data Gaps Identified in Research but Not Addressed
 
-1. **Politician-Donor cross-reference NOT BUILT** — 1,467 campaign donors remain unlinked to politician recipients (key-findings.md)
-2. **CompanyOfficer-OffshoreOfficer cross-reference NOT BUILT** — No systematic cross-match between IGJ company officers and ICIJ offshore officers
-3. **Glencore/Mining offshore structures** — Marun → Bermuda entities chain not mapped
-4. **CONSEJO EMPRESARIO ARGENTINO as central hub** — Identified as most connected organization in graph analysis but not featured in frontend narrative
-5. **Blaquier Hub** — Identified as most connected cross-family figure in graph analysis but not featured
+1. **Politician-Donor cross-reference NOT BUILT** - 1,467 campaign donors remain unlinked to politician recipients (key-findings.md)
+2. **CompanyOfficer-OffshoreOfficer cross-reference NOT BUILT** - No systematic cross-match between IGJ company officers and ICIJ offshore officers
+3. **Glencore/Mining offshore structures** - Marun → Bermuda entities chain not mapped
+4. **CONSEJO EMPRESARIO ARGENTINO as central hub** - Identified as most connected organization in graph analysis but not featured in frontend narrative
+5. **Blaquier Hub** - Identified as most connected cross-family figure in graph analysis but not featured
 
 ---
 
@@ -188,7 +188,7 @@
 
 ## G. Priority Integration Recommendations
 
-### Tier 1 — Immediate (critical gaps in active judicial cases)
+### Tier 1 - Immediate (critical gaps in active judicial cases)
 
 1. Add Nación Seguros SA as Organization node with all relationships
 2. Add María Cantero, Hugo Rodríguez, Mauro Tanos (Causa Seguros central figures)
@@ -197,7 +197,7 @@
 5. Add money flows for Bachellier embargo ($9.67B), Martínez Sosa embargo ($2.87B), Fernández embargo ($14.63B)
 6. Add Karina Milei + Diego Spagnuolo + Suizo Argentina (active ANDIS scandal)
 
-### Tier 2 — High (pattern-completing nodes)
+### Tier 2 - High (pattern-completing nodes)
 
 7. Add Lago Escondido participants: Casey, Magnetto, Yadarola, Cayssials, Mahiques (judges-corporate nexus)
 8. Add Frigerio family network: Victoria Costoya, Octavio Frigerio, Mario Frigerio
@@ -206,7 +206,7 @@
 11. Create factcheck for Ercolini systematic clearing pattern
 12. Create factcheck for Macri systematic acquittals
 
-### Tier 3 — Enrichment (depth and completeness)
+### Tier 3 - Enrichment (depth and completeness)
 
 13. Build Politician-Donor cross-reference (1,467 donors)
 14. Build CompanyOfficer-OffshoreOfficer cross-reference

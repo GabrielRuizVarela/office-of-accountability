@@ -1,5 +1,5 @@
 /**
- * Engine config node CRUD — M10.
+ * Engine config node CRUD - M10.
  *
  * Covers 5 config node types: SourceConnector, PipelineConfig, PipelineStage,
  * Gate, ModelConfig.
@@ -148,7 +148,7 @@ export const listPipelineConfigsByCaso = pipelineConfigCrud.listByCaso
 // 3. PipelineStage
 // ---------------------------------------------------------------------------
 
-// PipelineStage has pipeline_id instead of caso_slug — provide a custom list.
+// PipelineStage has pipeline_id instead of caso_slug - provide a custom list.
 const pipelineStageCrud = makeCrud<PipelineStage>(
   'PipelineStage',
   (raw) => pipelineStageSchema.parse(raw),
@@ -177,7 +177,7 @@ export async function listPipelineStagesByPipeline(
 // 4. Gate
 // ---------------------------------------------------------------------------
 
-// Gate has stage_id instead of caso_slug — provide a custom list.
+// Gate has stage_id instead of caso_slug - provide a custom list.
 const gateCrud = makeCrud<Gate>(
   'Gate',
   (raw) => gateSchema.parse(raw),

@@ -23,11 +23,11 @@ import type { AuthorityRow, AwardRow } from './types'
 // Data source URLs
 // ---------------------------------------------------------------------------
 
-/** Pipe-delimited CSV — Estructura Organica y Autoridades del PEN (2019-12-09 snapshot) */
+/** Pipe-delimited CSV - Estructura Organica y Autoridades del PEN (2019-12-09 snapshot) */
 const AUTHORITIES_URL =
   'http://infra.datos.gob.ar/catalog/jgm/dataset/2/distribution/2.1/download/estructura-20191209.csv'
 
-/** Comma-delimited CSV — Adjudicaciones (procurement awards) by year */
+/** Comma-delimited CSV - Adjudicaciones (procurement awards) by year */
 const AWARD_URLS: Record<string, string> = {
   '2020': 'https://infra.datos.gob.ar/catalog/jgm/dataset/4/distribution/4.20/download/adjudicaciones-2020.csv',
   '2019': 'https://infra.datos.gob.ar/catalog/modernizacion/dataset/2/distribution/2.18/download/adjudicaciones-2019.csv',

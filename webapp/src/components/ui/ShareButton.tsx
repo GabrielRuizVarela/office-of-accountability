@@ -63,7 +63,7 @@ export function ShareButton({ url, text, title }: ShareButtonProps) {
         url: shareUrl,
       })
     } catch {
-      // User cancelled or API not available — no-op
+      // User cancelled or API not available - no-op
     }
   }, [getShareUrl, text, title])
 
@@ -71,7 +71,7 @@ export function ShareButton({ url, text, title }: ShareButtonProps) {
 
   return (
     <div className="flex items-center gap-2 print:hidden">
-      {/* WhatsApp button — always visible, primary CTA */}
+      {/* WhatsApp button - always visible, primary CTA */}
       <button
         type="button"
         onClick={handleWhatsApp}

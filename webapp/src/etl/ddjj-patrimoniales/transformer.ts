@@ -1,7 +1,7 @@
 /**
  * Transforms DDJJ Patrimoniales CSV data into Neo4j node/relationship parameters.
  *
- * Pure functions — no side effects, no mutations.
+ * Pure functions - no side effects, no mutations.
  * Matches DDJJ officials to existing Politician nodes via normalizeName.
  */
 

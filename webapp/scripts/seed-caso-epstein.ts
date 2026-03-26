@@ -7,7 +7,7 @@
  * with caso_slug: "caso-epstein" for namespace isolation, and prefixed IDs
  * (caso-epstein:{local_id}) per the investigation standardization convention.
  *
- * Idempotent — uses MERGE for all operations. Safe to run multiple times.
+ * Idempotent - uses MERGE for all operations. Safe to run multiple times.
  * Requires NEO4J_URI, NEO4J_USER environment variables (see .env.example).
  */
 
@@ -62,7 +62,7 @@ const events = [
   { id: pid('ep-evt-guilty-plea'), title: 'Epstein pleads guilty to state charges', date: '2008-06-30', event_type: 'legal', description: 'Epstein pleads guilty to Florida state charges of soliciting prostitution from a minor. Sentenced to 18 months, served 13 months with work release.' },
   { id: pid('ep-evt-sex-offender'), title: 'Epstein registers as sex offender', date: '2010-01-01', event_type: 'legal', description: 'After release, Epstein registers as a Level 3 (high risk) sex offender in New York and as a sex offender in the US Virgin Islands.' },
   { id: pid('ep-evt-giuffre-v-maxwell'), title: 'Giuffre v. Maxwell filed', date: '2015-01-01', event_type: 'legal', description: 'Virginia Giuffre files defamation lawsuit against Ghislaine Maxwell in the Southern District of New York.' },
-  { id: pid('ep-evt-miami-herald'), title: 'Miami Herald "Perversion of Justice" published', date: '2018-11-28', event_type: 'media', description: 'Julie K. Brown publishes groundbreaking investigation in the Miami Herald, exposing the 2008 plea deal and identifying over 80 victims.' },
+  { id: pid('ep-evt-miami-herald'), title: 'Miami Herald "Perversion of Justice" published', date: '2018-11-28', event_type: 'media', description: 'Julie K. Brown publishes her "Perversion of Justice" investigation in the Miami Herald, exposing the 2008 plea deal and identifying over 80 victims.' },
   { id: pid('ep-evt-arrest'), title: 'Epstein arrested at Teterboro Airport', date: '2019-07-06', event_type: 'arrest', description: 'Jeffrey Epstein arrested by FBI-NYPD Crimes Against Children Task Force upon landing at Teterboro Airport, New Jersey.' },
   { id: pid('ep-evt-indictment'), title: 'SDNY indictment unsealed', date: '2019-07-08', event_type: 'legal', description: 'Federal indictment unsealed in the Southern District of New York charging Epstein with sex trafficking of minors and conspiracy.' },
   { id: pid('ep-evt-death'), title: 'Epstein found dead in MCC cell', date: '2019-08-10', event_type: 'death', description: 'Jeffrey Epstein found unresponsive in his cell at the Metropolitan Correctional Center in Manhattan. Pronounced dead at New York Presbyterian-Lower Manhattan Hospital.' },
@@ -109,7 +109,7 @@ const documents = [
       'Frequent routes between Teterboro, Palm Beach, St. Thomas, and international destinations',
       'Multiple entries list passengers identified only by first name or initials',
     ],
-    excerpt: 'Passenger manifest for N908JE departing Teterboro, NJ — destination St. Thomas, USVI.',
+    excerpt: 'Passenger manifest for N908JE departing Teterboro, NJ - destination St. Thomas, USVI.',
     page_count: 73,
   },
   {
@@ -205,7 +205,7 @@ const documents = [
     slug: 'perversion-of-justice',
     doc_type: 'media_investigation',
     source_url: 'https://www.miamiherald.com/news/local/article220097825.html',
-    summary: 'Julie K. Brown\'s groundbreaking investigative series for the Miami Herald that reignited public interest and led to Epstein\'s 2019 arrest.',
+    summary: 'Julie K. Brown\'s investigative series for the Miami Herald that reignited public interest and led to Epstein\'s 2019 arrest.',
     date: '2018-11-28',
     key_findings: [
       'Identified nearly 80 victims of Epstein\'s trafficking operation',
@@ -247,7 +247,7 @@ const documents = [
       'Baden noted fractures in hyoid bone more consistent with homicidal strangulation',
       'Cameras outside cell malfunctioned; guards were sleeping during death',
     ],
-    excerpt: 'The cause of death is hanging. The manner of death is suicide. — Barbara Sampson, M.D., Chief Medical Examiner, City of New York',
+    excerpt: 'The cause of death is hanging. The manner of death is suicide. - Barbara Sampson, M.D., Chief Medical Examiner, City of New York',
     page_count: 6,
   },
 
@@ -544,7 +544,7 @@ const documents = [
       'Passenger lists showed names not appearing on 727 logs',
       'Released as part of DOJ Phase 1 file release',
     ],
-    excerpt: 'Gulfstream II — N986JE. Route: KPBI [Palm Beach] to TIST [St. Thomas]. Crew: Visoski, Capt.',
+    excerpt: 'Gulfstream II - N986JE. Route: KPBI [Palm Beach] to TIST [St. Thomas]. Crew: Visoski, Capt.',
     page_count: 41,
   },
   {
@@ -689,7 +689,7 @@ const documents = [
   },
   {
     id: pid('ep-doc-fca-staley'),
-    title: 'FCA Final Notice — Jes Staley',
+    title: 'FCA Final Notice - Jes Staley',
     slug: 'fca-staley-notice',
     doc_type: 'financial',
     source_url: 'https://www.fca.org.uk/news/press-releases/fca-bans-jes-staley-2025',
@@ -797,7 +797,7 @@ const documents = [
     slug: 'doj-phase2-reporting',
     doc_type: 'media_investigation',
     source_url: 'https://www.justice.gov/epstein-files/phase2',
-    summary: 'Comprehensive reporting on the DOJ Phase 2 release of 3 million pages, 2,000 videos, and 180,000 images that triggered a cascade of arrests.',
+    summary: 'Reporting on the DOJ Phase 2 release of 3 million pages, 2,000 videos, and 180,000 images that triggered a cascade of arrests.',
     date: '2026-01-30',
     key_findings: [
       'Release contained 3 million pages, 2,000 videos, and 180,000 images',
@@ -837,7 +837,7 @@ const documents = [
     date: '2019-08-10',
     key_findings: [
       'Epstein was placed on suicide watch on July 23, 2019 after an apparent suicide attempt',
-      'Removed from suicide watch on July 29, 2019 — just 12 days before his death',
+      'Removed from suicide watch on July 29, 2019 - just 12 days before his death',
       'Psychological assessment deemed him not at imminent risk of self-harm',
       'Cellmate was transferred out, leaving Epstein alone, hours before his death',
     ],
@@ -1033,7 +1033,7 @@ const mentionedIn = [
   { personId: pid('ep-leon-black'), docId: pid('ep-doc-jpmorgan-comms') },
   { personId: pid('ep-leon-black'), docId: pid('ep-doc-leon-black-records') },
 
-  // ─── New documents — MENTIONED_IN ──────────────────────────────────────
+  // ─── New documents - MENTIONED_IN ──────────────────────────────────────
   // SDNY Indictment
   { personId: pid('ep-jeffrey-epstein'), docId: pid('ep-doc-sdny-indictment') },
   { personId: pid('ep-ghislaine-maxwell'), docId: pid('ep-doc-sdny-indictment') },

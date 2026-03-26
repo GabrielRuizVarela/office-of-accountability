@@ -1,5 +1,5 @@
 /**
- * Wave 1 Ingestion Script — rhowardstone/Epstein-research-data
+ * Wave 1 Ingestion Script - rhowardstone/Epstein-research-data
  * Run with: npx tsx scripts/ingest-wave-1.ts
  *
  * Imports entities and relationships from the rhowardstone GitHub dataset
@@ -347,7 +347,7 @@ async function main(): Promise<void> {
     const targetNeo4jId = rhIdToNeo4jId.get(rel.target_entity_id)
 
     if (!sourceNeo4jId || !targetNeo4jId) {
-      // One or both endpoints unresolved — skip
+      // One or both endpoints unresolved - skip
       edgesSkipped++
       continue
     }

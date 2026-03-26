@@ -1,5 +1,5 @@
 /**
- * Cross-reference runner — links entities across all ETL data sources.
+ * Cross-reference runner - links entities across all ETL data sources.
  *
  * Runs CUIT, DNI/CUIL, and name matching in sequence, generates
  * investigation flags, and loads SAME_ENTITY relationships into Neo4j.
@@ -43,7 +43,7 @@ async function main(): Promise<void> {
 
   const allMatches: CrossRefMatch[] = []
 
-  // Step 2: Phase 1 — CUIT matching
+  // Step 2: Phase 1 - CUIT matching
   console.log('=== Phase 1: CUIT Matching (Contractor <-> Company) ===')
   const cuitMatches = await matchByCuit()
   allMatches.push(...cuitMatches)
@@ -55,7 +55,7 @@ async function main(): Promise<void> {
     console.log(`    ... and ${cuitMatches.length - 5} more`)
   }
 
-  // Step 3: Phase 2 — DNI/CUIL matching
+  // Step 3: Phase 2 - DNI/CUIL matching
   console.log('\n=== Phase 2: DNI/CUIL Matching (GovernmentAppointment <-> CompanyOfficer) ===')
   const dniMatches = await matchByDni()
   allMatches.push(...dniMatches)
@@ -67,7 +67,7 @@ async function main(): Promise<void> {
     console.log(`    ... and ${dniMatches.length - 5} more`)
   }
 
-  // Step 4: Phase 3 — Name matching (unmatched only)
+  // Step 4: Phase 3 - Name matching (unmatched only)
   console.log('\n=== Phase 3: Name Matching (unmatched entities only) ===')
   const alreadyMatchedIds = new Set<string>()
   for (const m of cuitMatches) {

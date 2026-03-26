@@ -23,7 +23,7 @@ export interface InvestigationConfig {
   readonly id: string // "caso-libra", "caso-finanzas-politicas", "caso-epstein"
   readonly name: string
   readonly description: string
-  readonly caso_slug: string // Namespace key — matches caso_slug on all data nodes
+  readonly caso_slug: string // Namespace key - matches caso_slug on all data nodes
   readonly status: 'active' | 'draft' | 'archived'
   readonly created_at: string
   readonly tags: string[]

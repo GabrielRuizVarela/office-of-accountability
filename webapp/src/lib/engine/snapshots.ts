@@ -1,5 +1,5 @@
 /**
- * Snapshot CRUD — M10.
+ * Snapshot CRUD - M10.
  *
  * Snapshots capture graph state at pipeline gates for rollback capability.
  * Immutable after creation (no update). Can be deleted to save space.

@@ -1,5 +1,5 @@
 /**
- * Community detection algorithm — M10 Graph Algorithms (Phase 6).
+ * Community detection algorithm - M10 Graph Algorithms (Phase 6).
  *
  * Queries Neo4j for edges within a caso_slug namespace, runs label
  * propagation in JS to detect communities, then creates hypothesis
@@ -94,7 +94,7 @@ export async function detectCommunities(
 
   const nodeIds = [...nodeMap.keys()]
 
-  // Label propagation — each node starts with its own label (index)
+  // Label propagation - each node starts with its own label (index)
   const labels = new Map<string, number>()
   for (let i = 0; i < nodeIds.length; i++) {
     labels.set(nodeIds[i], i)
@@ -212,7 +212,7 @@ export class CommunityAlgorithm implements Algorithm {
     const nodeIds = [...adjacency.keys()]
     nodesAnalyzed = nodeIds.length
 
-    // Step 3: Label propagation — each node starts with its own label
+    // Step 3: Label propagation - each node starts with its own label
     const labels = new Map<string, number>()
     for (let i = 0; i < nodeIds.length; i++) {
       labels.set(nodeIds[i], i)

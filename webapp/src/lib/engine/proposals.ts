@@ -1,5 +1,5 @@
 /**
- * Proposal CRUD — M10.
+ * Proposal CRUD - M10.
  *
  * Proposals are LLM-generated graph mutations that require human review
  * before applying. Immutable after creation (no update/delete).
@@ -22,7 +22,7 @@ import {
 // Label & relationship type whitelist (prevents Cypher injection via dynamic labels)
 // ---------------------------------------------------------------------------
 
-/** Safe identifier pattern — only alphanumeric + underscore, must start with letter */
+/** Safe identifier pattern - only alphanumeric + underscore, must start with letter */
 const SAFE_IDENTIFIER_RE = /^[A-Za-z][A-Za-z0-9_]*$/
 
 /** Known node labels from schema.ts constraints + investigation node types */
@@ -73,19 +73,19 @@ const ALLOWED_REL_TYPES = new Set([
 
 function assertSafeLabel(label: string): void {
   if (!SAFE_IDENTIFIER_RE.test(label)) {
-    throw new Error(`Invalid label: "${label}" — must match ${SAFE_IDENTIFIER_RE}`)
+    throw new Error(`Invalid label: "${label}" - must match ${SAFE_IDENTIFIER_RE}`)
   }
   if (!ALLOWED_NODE_LABELS.has(label)) {
-    throw new Error(`Unknown node label: "${label}" — not in schema whitelist`)
+    throw new Error(`Unknown node label: "${label}" - not in schema whitelist`)
   }
 }
 
 function assertSafeRelType(relType: string): void {
   if (!SAFE_IDENTIFIER_RE.test(relType)) {
-    throw new Error(`Invalid relationship type: "${relType}" — must match ${SAFE_IDENTIFIER_RE}`)
+    throw new Error(`Invalid relationship type: "${relType}" - must match ${SAFE_IDENTIFIER_RE}`)
   }
   if (!ALLOWED_REL_TYPES.has(relType)) {
-    throw new Error(`Unknown relationship type: "${relType}" — not in schema whitelist`)
+    throw new Error(`Unknown relationship type: "${relType}" - not in schema whitelist`)
   }
 }
 
@@ -382,7 +382,7 @@ export async function applyProposal(id: string): Promise<void> {
 
     case 'hypothesis':
     case 'report_section':
-      // Informational only — no graph mutation
+      // Informational only - no graph mutation
       break
   }
 }

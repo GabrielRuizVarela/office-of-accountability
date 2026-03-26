@@ -1,5 +1,5 @@
 /**
- * Cypher check handler — runs an arbitrary Cypher query against Neo4j.
+ * Cypher check handler - runs an arbitrary Cypher query against Neo4j.
  *
  * The query MUST return a single `violations` integer column.
  * Passes if violations === 0.
@@ -33,7 +33,7 @@ export async function cypherCheck(
     passed: violations === 0,
     violations,
     details: violations === 0
-      ? 'Cypher check passed — no violations'
+      ? 'Cypher check passed - no violations'
       : `Cypher check found ${violations} violation(s)`,
   }
 }

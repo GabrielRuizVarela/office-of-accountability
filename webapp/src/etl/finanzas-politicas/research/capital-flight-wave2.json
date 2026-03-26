@@ -15,7 +15,7 @@
         "debt_securities_portfolio": "42,448,000,000",
         "reserve_assets": "40,374,000,000"
       },
-      "source": "INDEC — Posicion de Inversion Internacional, Q3 2025",
+      "source": "INDEC - Posicion de Inversion Internacional, Q3 2025",
       "url": "https://www.indec.gob.ar/uploads/informesdeprensa/bal_12_25A30CCDCD2C.pdf"
     },
     "net_creditor_position_usd": "50,464,000,000",
@@ -102,7 +102,7 @@
       "data": {
         "non_resident_deposits_peak": {
           "usd": "21,381,000,000",
-          "note": "Total non-resident deposits (majority Argentine) — peak before 2023 drawdown"
+          "note": "Total non-resident deposits (majority Argentine) - peak before 2023 drawdown"
         },
         "argentines_direct_deposits": {
           "usd_approx": "3,500,000,000",
@@ -197,13 +197,13 @@
           ]
         },
         "soy_complex_transfer_pricing": {
-          "note": "Research on 2004-2020 period found largest deviations during rising international prices — exporters delayed price adjustments to extend subfacturing windows",
+          "note": "Research on 2004-2020 period found largest deviations during rising international prices - exporters delayed price adjustments to extend subfacturing windows",
           "source": "https://dialnet.unirioja.es/servlet/articulo?codigo=8270387"
         },
         "glencore_rigi_applications": {
           "capex_usd": "13,000,000,000",
           "projects": ["El Pachon (San Juan)", "Agua Rica (Catamarca)"],
-          "note": "Glencore seeking RIGI tax incentives for $13B in projects — further reducing fiscal capture",
+          "note": "Glencore seeking RIGI tax incentives for $13B in projects - further reducing fiscal capture",
           "source": "https://www.mining.com/web/glencore-seeks-13-billion-in-incentives-for-argentina-copper-projects/"
         }
       }
@@ -242,7 +242,7 @@
   },
 
   "blanqueo_as_indicator": {
-    "description": "Tax amnesty programs reveal the scale of hidden wealth. The 2024 Milei blanqueo collected USD 32B in declarations — but this is a fraction of the estimated USD 250-480B held offshore or outside the system.",
+    "description": "Tax amnesty programs reveal the scale of hidden wealth. The 2024 Milei blanqueo collected USD 32B in declarations - but this is a fraction of the estimated USD 250-480B held offshore or outside the system.",
     "blanqueo_milei_2024": {
       "total_declared_usd": "32,151,000,000",
       "cash_in_cera_accounts": "22,165,000,000",
@@ -272,7 +272,7 @@
       "first_stage_rate": "10%",
       "source": "https://www.infobae.com/economia/2024/10/05/anatomia-de-dos-blanqueos-un-estudio-comparo-los-resultados-del-que-realizo-macri-en-2016-con-la-marcha-del-actual/"
     },
-    "comparison_note": "Macri 2016 declared 3.6x more but at higher tax rates. Milei 2024 had faster cash inflow velocity. Combined, both blanqueos declared USD 149B — still less than half the estimated offshore stock."
+    "comparison_note": "Macri 2016 declared 3.6x more but at higher tax rates. Milei 2024 had faster cash inflow velocity. Combined, both blanqueos declared USD 149B - still less than half the estimated offshore stock."
   },
 
   "balance_of_payments_shift": {
@@ -348,11 +348,11 @@
   },
 
   "key_findings": [
-    "Argentina's residents hold USD 483B in external assets (INDEC Q3 2025) — roughly equal to the country's GDP. The country is a net international creditor by USD 50B despite having USD 44B in sovereign external debt.",
-    "In just 4 months after exchange rate unification (Apr-Jul 2025), FAE outflows of USD 14.7B exceeded total IMF disbursements of USD 12B — the IMF loan effectively financed capital flight.",
+    "Argentina's residents hold USD 483B in external assets (INDEC Q3 2025) - roughly equal to the country's GDP. The country is a net international creditor by USD 50B despite having USD 44B in sovereign external debt.",
+    "In just 4 months after exchange rate unification (Apr-Jul 2025), FAE outflows of USD 14.7B exceeded total IMF disbursements of USD 12B - the IMF loan effectively financed capital flight.",
     "The crypto channel moved USD 91B through Argentine users in one year, with 61.8% in stablecoins. P2P trading makes much of this invisible to BCRA and ARCA.",
-    "Two blanqueos (2016 + 2024) declared a combined USD 149B — but this is less than half the estimated USD 250-480B held outside the system, indicating the declared amount is a floor, not a ceiling.",
-    "The Ley de Inocencia Fiscal raised evasion prosecution thresholds by 66x and dropped 4,199 pending cases — effectively decriminalizing most tax evasion during a period of record capital outflows.",
+    "Two blanqueos (2016 + 2024) declared a combined USD 149B - but this is less than half the estimated USD 250-480B held outside the system, indicating the declared amount is a floor, not a ceiling.",
+    "The Ley de Inocencia Fiscal raised evasion prosecution thresholds by 66x and dropped 4,199 pending cases - effectively decriminalizing most tax evasion during a period of record capital outflows.",
     "Lithium export subfacturing alone cost USD 403M in 2024. With mining royalties capped at 3% and RIGI incentives reducing it further, the fiscal capture on a USD 13B Glencore investment pipeline is structurally minimal.",
     "The blanqueo origin countries (US, Uruguay, Spain, Switzerland) map precisely to the offshore destination network: Miami real estate, Montevideo/Punta del Este deposits, and Swiss banking."
   ]

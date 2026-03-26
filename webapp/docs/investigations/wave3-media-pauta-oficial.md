@@ -1,18 +1,18 @@
 # Wave 3: Follow the Money in Media
 
 **Research date:** 2026-03-21
-**Status:** Research complete — sourced findings ready for graph ingestion and narrative integration.
+**Status:** Research complete - sourced findings ready for graph ingestion and narrative integration.
 
 ---
 
-## 1. PAUTA OFICIAL (State Advertising) — Distribution Map
+## 1. PAUTA OFICIAL (State Advertising) - Distribution Map
 
 ### 1.1 National Level: Fernandez Government (2019-2023)
 
 - **Total spend 2023:** ~$40 billion ARS (~$120 billion at Sept 2024 values)
 - **Media recipients:** Expanded from 1,400 (Macri era) to 3,800 in 2023
 - **Top 3 groups by spend (2023):**
-  - Grupo Clarin: $4,100M ARS (~USD 11M) — largest single recipient
+  - Grupo Clarin: $4,100M ARS (~USD 11M) - largest single recipient
   - Grupo Indalo (Cristobal Lopez)
   - Grupo Octubre (Victor Santa Maria)
 - **YouTube** was the single largest individual recipient: $1,079M ARS
@@ -37,9 +37,9 @@ Sources:
 - **Suspension extended for 2025** via Resolution 7147/2024
 
 **BUT: The "paraestatal" channel via state companies:**
-- **YPF 2024:** $97,110M ARS in advertising — **39.9% increase** vs. last year of Fernandez
+- **YPF 2024:** $97,110M ARS in advertising - **39.9% increase** vs. last year of Fernandez
 - YPF **refuses to disclose** which media outlets receive funds (defying Agencia de Acceso a la Informacion Publica rulings)
-- **Guillermo "Guillo" Garat** — VP of Institutional Relations, Communication and Marketing at YPF; partner of Santiago Caputo and Rodrigo Lugones at consultancy **Move**
+- **Guillermo "Guillo" Garat** - VP of Institutional Relations, Communication and Marketing at YPF; partner of Santiago Caputo and Rodrigo Lugones at consultancy **Move**
 - **Banco Nacion:** advertising spend up 40% in real terms
 - **Aerolineas Argentinas:** down 82.5% (from USD 3.4M to USD 618K)
 
@@ -57,10 +57,10 @@ Sources:
 
 - **22 of 24 provinces** do not disclose advertising spending or recipients
 - Only **Santa Fe** and **CABA** publish allocation data
-- **Provincia de Buenos Aires (Kicillof):** $28,000M ARS in first 6 months of 2025; Grupo Indalo and Grupo Octubre lead (Clarin drops to 3rd — political alignment drives distribution)
+- **Provincia de Buenos Aires (Kicillof):** $28,000M ARS in first 6 months of 2025; Grupo Indalo and Grupo Octubre lead (Clarin drops to 3rd - political alignment drives distribution)
 - **CABA (Jorge Macri):** Grupo Clarin received 10.7% of total
 
-**Case study — Salta (Romero family):**
+**Case study - Salta (Romero family):**
 - **El Tribuno** (owned by Horizontes SA, family of Senator Juan Carlos Romero) received **71% of all provincial advertising** in 2021
 - **83.05% of print newspaper advertising** in 2020 went to El Tribuno
 - **Bettina Romero** (mayor of Salta Capital, same family) spent $167M in first year; El Tribuno group received $80M across 2021-2022
@@ -86,13 +86,13 @@ Sources:
 Sources:
 - [Pauta oficial el debate es ahora (FARCO)](https://agencia.farco.org.ar/noticias/pauta-oficial-el-debate-es-ahora/)
 - [Que es la pauta oficial (La Nacion)](https://www.lanacion.com.ar/politica/que-es-la-pauta-oficial-la-inversion-del-estado-que-suspendio-el-gobierno-de-javier-milei-nid12122023/)
-- [Poder Ciudadano — De que hablamos (PDF)](https://poderciudadano.org/sitio/wp-content/uploads/2015/07/De-que-hablamos-cuando-hablamos-de-publicidad-oficial-art.-del-libro-Tiempos-Turbulentos.pdf)
+- [Poder Ciudadano - De que hablamos (PDF)](https://poderciudadano.org/sitio/wp-content/uploads/2015/07/De-que-hablamos-cuando-hablamos-de-publicidad-oficial-art.-del-libro-Tiempos-Turbulentos.pdf)
 
 ---
 
-## 2. LEY DE MEDIOS (Media Law) — Regulatory History
+## 2. LEY DE MEDIOS (Media Law) - Regulatory History
 
-### 2.1 Law 26,522 (2009) — Ley de Servicios de Comunicacion Audiovisual
+### 2.1 Law 26,522 (2009) - Ley de Servicios de Comunicacion Audiovisual
 
 - Enacted October 10, 2009 under Cristina Fernandez de Kirchner
 - Conceived communication as a **human right**
@@ -103,17 +103,17 @@ Sources:
   - One-year deadline to divest excess licenses
 - **Grupo Clarin** challenged articles 41, 45, 48, and 161 as unconstitutional
 - Obtained precautionary injunction exempting it from compliance
-- **"7D" (Dec 7, 2012):** Government deadline for voluntary divestment plans — blocked by court ruling on Dec 6
+- **"7D" (Dec 7, 2012):** Government deadline for voluntary divestment plans - blocked by court ruling on Dec 6
 - **Supreme Court (Oct 29, 2013):** Ruled articles 41 and 45 **constitutional** (6 votes in favor)
 - Despite ruling, Clarin never fully divested
 
 Sources:
 - [Judicializacion LSCA (CONICET)](https://ri.conicet.gov.ar/handle/11336/77559)
-- [Wikipedia — Ley de Servicios de Comunicacion Audiovisual](https://es.wikipedia.org/wiki/Ley_de_Servicios_de_Comunicaci%C3%B3n_Audiovisual)
+- [Wikipedia - Ley de Servicios de Comunicacion Audiovisual](https://es.wikipedia.org/wiki/Ley_de_Servicios_de_Comunicaci%C3%B3n_Audiovisual)
 - [Sintesis fallo Grupo Clarin (Microjuris)](https://aldiaargentina.microjuris.com/2013/11/01/sintesis-del-fallo-grupo-clarin-s-a-y-otros-c-poder-ejecutivo-nacional-y-otro-s-accion-meramente-declarativa-csjn-29102013/)
 - [Triste final madre de las batallas (iProfesional)](https://www.iprofesional.com/legales/230762-dividio-a-los-argentinos-y-ya-nadie-se-acuerda-ley-de-medios-y-el-triste-final-para-la-madre-de-las-batallas)
 
-### 2.2 Macri Decree 267/2015 — Gutting the Law
+### 2.2 Macri Decree 267/2015 - Gutting the Law
 
 - **DNU (Decreto de Necesidad y Urgencia) 267/2015** published Dec 31, 2015
 - **Merged AFSCA + AFTIC** into new entity **ENACOM**
@@ -122,7 +122,7 @@ Sources:
   - Allowed license transfers (previously non-transferable)
   - Eliminated cross-ownership restrictions between pay TV and radio/open TV
   - Extended all existing licenses by 10 years
-  - Archived all pending divestment plans — **no obligation to sell signals**
+  - Archived all pending divestment plans - **no obligation to sell signals**
 - **Ratified by Congress** April 2016
 - **Effect:** Legalized Clarin's existing concentration and enabled further expansion
 
@@ -133,7 +133,7 @@ Sources:
 - [Congreso punto final ley medios (Infobae)](https://www.infobae.com/2016/04/06/1802437-el-congreso-puso-punto-final-la-ley-medios-del-kirchnerismo/)
 - [Fin ley medios archivaron planes adecuacion (El Cronista)](https://www.cronista.com/negocios/fin-de-la-ley-de-medios-archivaron-todos-los-planes-de-adecuacion-y-no-hay-obligacion-de-vender-senales/)
 
-### 2.3 Milei Era — ENACOM Intervention and Deregulation (2024-present)
+### 2.3 Milei Era - ENACOM Intervention and Deregulation (2024-present)
 
 - **Decree 89/2024:** ENACOM intervened for 180 days (renewable); **Martin Ozores** as interventor
 - **~300 ENACOM employees fired** by March 2024
@@ -152,7 +152,7 @@ Sources:
 
 ---
 
-## 3. TELECOM-CLARIN MONOPOLY — Telecommunications Concentration
+## 3. TELECOM-CLARIN MONOPOLY - Telecommunications Concentration
 
 ### 3.1 The Acquisition
 
@@ -164,7 +164,7 @@ Sources:
 | Service | Combined Telecom+Telefonica share |
 |---------|----------------------------------|
 | Fixed telephone | 79% |
-| Mobile telephone | 61% (58% Telecom + 42% Claro — only 2 players left) |
+| Mobile telephone | 61% (58% Telecom + 42% Claro - only 2 players left) |
 | Broadband internet | 48% |
 | Pay TV | 42% |
 
@@ -200,11 +200,11 @@ Sources:
 - **Digital revenue for Argentine media** grew 132.2% since 2022
 - **Globally:** Google, Meta, and Amazon capture **60%+** of digital advertising revenue
 
-### 4.2 Fundacion Faro — Dark Money in Digital Political Advertising
+### 4.2 Fundacion Faro - Dark Money in Digital Political Advertising
 
 - **Think tank** led by **Agustin Laje**, launched Nov 13, 2024 with Milei in attendance
 - **3 registered brands:** Fundacion Faro Argentina, Academia Libres del Mundo, **Ratio Oficial**
-- **Ratio Oficial** spent **$1,079 million ARS (~USD 821,000)** on Meta political ads (March 2025-March 2026) — over 15,000 posts
+- **Ratio Oficial** spent **$1,079 million ARS (~USD 821,000)** on Meta political ads (March 2025-March 2026) - over 15,000 posts
 - **Second-largest political advertiser on Meta** in Argentina (behind Cabinet Secretariat)
 - **Has not filed financial statements** with IGJ (Inspeccion General de Justicia)
 - **Will not disclose** origin of funds for advertising
@@ -245,10 +245,10 @@ Sources:
 
 ### 5.2 Attacks on Journalists (FOPEA Data)
 
-- **2024:** 179 attacks documented — **53% increase** over 2023, **103% increase** over 2022
+- **2024:** 179 attacks documented - **53% increase** over 2023, **103% increase** over 2022
 - **52.5% of attacks** caused by political actors
 - **Milei personally** mentioned in 56 cases (stigmatizing discourse, insults)
-- **240,000 pejorative mentions** of journalism by Milei and allied accounts in 2024 — **2,000% increase** over 2023
+- **240,000 pejorative mentions** of journalism by Milei and allied accounts in 2024 - **2,000% increase** over 2023
 - **Attack types:** Stigmatizing discourse (45.25%), physical attacks (25.14%), access restrictions (11.73%)
 - **2025:** Attacks grew **60%+ more**
 - **Resolution 1319/25:** Restricted journalist access to Casa Rosada with discretionary accreditation system, dress code, and circulation limits
@@ -281,7 +281,7 @@ Sources:
 
 ---
 
-## 6. SYNTHESIS — How the System Works
+## 6. SYNTHESIS - How the System Works
 
 ### The Pauta-Media-Politics Triangle
 

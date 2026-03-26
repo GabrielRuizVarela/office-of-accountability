@@ -31,7 +31,7 @@ export function saveInvestigation(investigation: SavedInvestigation): { ok: bool
     localStorage.setItem(STORAGE_KEY, json)
     return { ok: true }
   } catch {
-    return { ok: false, warning: 'No se pudo guardar — almacenamiento lleno.' }
+    return { ok: false, warning: 'No se pudo guardar - almacenamiento lleno.' }
   }
 }
 

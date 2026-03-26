@@ -1569,6 +1569,50 @@ registerTool(
 // src/tools/ingest.ts
 registerTool(
   {
+    name: "caso.create",
+    description: "Create a new investigation case with full schema (InvestigationConfig, SchemaDefinition, default node/rel types). Returns the caso_slug for use with all other tools.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        name_es: { type: "string", description: "Investigation title in Spanish" },
+        name_en: { type: "string", description: "Investigation title in English" },
+        description_es: { type: "string", description: "Description in Spanish (optional)" },
+        description_en: { type: "string", description: "Description in English (optional)" },
+        tags: { type: "array", items: { type: "string" }, description: "Tags for categorization" },
+        node_types: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              name: { type: "string" },
+              color: { type: "string" },
+              icon: { type: "string" }
+            }
+          },
+          description: "Custom node types beyond defaults (Person, Organization, Event, Document, Location)"
+        }
+      },
+      required: ["name_es", "name_en"]
+    }
+  },
+  async (args, auth, env2) => {
+    return proxyToApi({
+      method: "POST",
+      path: "/api/casos/create",
+      body: {
+        name_es: args.name_es,
+        name_en: args.name_en,
+        description_es: args.description_es ?? "",
+        description_en: args.description_en ?? "",
+        tags: args.tags ?? [],
+        node_types: args.node_types ?? []
+      }
+    }, auth, env2);
+  },
+  "investigation:write"
+);
+registerTool(
+  {
     name: "ingest.add_entity",
     description: "Add a single entity node to the case graph. The entity is staged with the given label and properties, attributed to the calling MCP key.",
     inputSchema: {

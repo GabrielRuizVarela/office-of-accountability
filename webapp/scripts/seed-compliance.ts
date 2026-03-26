@@ -1,11 +1,11 @@
 /**
- * Seed compliance frameworks into Neo4j — M11 Phase 2c.
+ * Seed compliance frameworks into Neo4j - M11 Phase 2c.
  * Run with: npx tsx scripts/seed-compliance.ts
  *
  * Reads all YAML framework definitions from src/lib/compliance/frameworks/,
  * validates against Zod schemas, and MERGEs into Neo4j.
  *
- * Idempotent — safe to run multiple times.
+ * Idempotent - safe to run multiple times.
  * Requires NEO4J_URI, NEO4J_USER environment variables (see .env.example).
  */
 

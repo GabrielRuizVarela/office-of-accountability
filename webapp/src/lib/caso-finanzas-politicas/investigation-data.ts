@@ -2,7 +2,7 @@
  * Argentine Political Finance investigation structured data.
  *
  * Bilingual (ES primary, EN secondary) factcheck items, timeline events,
- * actors, and money flows — sourced from the cross-referencing of nine
+ * actors, and money flows - sourced from the cross-referencing of nine
  * public datasets: Como Voto, ICIJ, CNE, Boletin Oficial, IGJ, CNV,
  * DDJJ, cross-enrichment pipeline, and Poder Judicial.
  */
@@ -186,9 +186,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'macri-fleg-trading',
     claim_es:
-      'Mauricio Macri fue director de Fleg Trading Ltd (Bahamas), una entidad que aparecio en los Panama Papers. La justicia lo sobreseyo — el juez Fraga determino que no era "socio ni accionista".',
+      'Mauricio Macri fue director de Fleg Trading Ltd (Bahamas), una entidad que aparecio en los Panama Papers. La justicia lo sobreseyo - el juez Fraga determino que no era "socio ni accionista".',
     claim_en:
-      'Mauricio Macri was a director of Fleg Trading Ltd (Bahamas), an entity that appeared in the Panama Papers. He was judicially cleared — Judge Fraga determined he was "not a partner nor shareholder".',
+      'Mauricio Macri was a director of Fleg Trading Ltd (Bahamas), an entity that appeared in the Panama Papers. He was judicially cleared - Judge Fraga determined he was "not a partner nor shareholder".',
     status: 'confirmed_cleared',
     tier: 1,
     source: 'Buenos Aires Times / El Cronista',
@@ -261,9 +261,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source: 'Cross-dataset analysis (Boletin Oficial + ICIJ)',
     source_url: 'https://offshoreleaks.icij.org/search?q=BETHAN+INVESTMENTS&cat=0',
     detail_es:
-      'Este patron — contratista estatal con holdings offshore — constituye una estructura de riesgo bajo la Ley 25.246 (lavado de activos). Confirmado: la coincidencia de nombre en ambos datasets. No confirmado: si es la misma persona, y si fondos publicos pasaron por la entidad offshore.',
+      'Este patron - contratista estatal con holdings offshore - constituye una estructura de riesgo bajo la Ley 25.246 (lavado de activos). Confirmado: la coincidencia de nombre en ambos datasets. No confirmado: si es la misma persona, y si fondos publicos pasaron por la entidad offshore.',
     detail_en:
-      'This pattern — state contractor with offshore holdings — represents a risk structure under Ley 25.246 (anti-money laundering). Confirmed: the name match across both datasets. Unconfirmed: whether the same individual, and whether public funds moved through the offshore entity.',
+      'This pattern - state contractor with offshore holdings - represents a risk structure under Ley 25.246 (anti-money laundering). Confirmed: the name match across both datasets. Unconfirmed: whether the same individual, and whether public funds moved through the offshore entity.',
   },
   // --- Tier 2: SOCMA blanqueo ---
   {
@@ -392,9 +392,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source: 'Cross-dataset analysis (Como Voto + IGJ + CNV)',
     source_url: 'https://datos.gob.ar/dataset/justicia-entidades-constituidas-inspeccion-general-justicia',
     detail_es:
-      'Hallazgo analitico derivado del grafo de coincidencias. La potencial coincidencia entre el rol legislativo y el interes corporativo en el sector financiero abarca a 69 individuos identificados. No se confirma causalidad — se documenta la coincidencia estructural.',
+      'Hallazgo analitico derivado del grafo de coincidencias. La potencial coincidencia entre el rol legislativo y el interes corporativo en el sector financiero abarca a 69 individuos identificados. No se confirma causalidad - se documenta la coincidencia estructural.',
     detail_en:
-      'Analytical finding derived from the match graph. The potential overlap between legislative role and corporate interest in the financial sector spans 69 identified individuals. Causality is not confirmed — the structural coincidence is documented.',
+      'Analytical finding derived from the match graph. The potential overlap between legislative role and corporate interest in the financial sector spans 69 identified individuals. Causality is not confirmed - the structural coincidence is documented.',
   },
   // --- Tier 1: Nación Seguros scandal ---
   {
@@ -480,7 +480,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     detail_en:
       'The Werthein family controls the Caja de Seguros cluster (32 shared officers). Pampa Energía operates Buenos Aires electricity infrastructure with 81 identical officers between CITELEC and EDELAP. MetLife operates 5 separate legal entities (insurance, pension, investment) with 29-40 shared officers.',
   },
-  // --- Tier 1: Judicial Branch — Lijo Supreme Court ---
+  // --- Tier 1: Judicial Branch - Lijo Supreme Court ---
   {
     id: 'lijo-supreme-court',
     claim_es:
@@ -493,7 +493,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source_url:
       'https://www.infobae.com/politica/2025/02/25/javier-milei-designo-por-decreto-en-la-corte-suprema-a-ariel-lijo-y-manuel-garcia-mansilla/',
   },
-  // --- Tier 1: Judicial Branch — Ercolini Lago Escondido ---
+  // --- Tier 1: Judicial Branch - Ercolini Lago Escondido ---
   {
     id: 'ercolini-lago-escondido',
     claim_es:
@@ -506,7 +506,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source_url:
       'https://www.eldestapeweb.com/politica/los-jueces-de-clarin/clarin-invito-a-jueces-del-lawfare-a-lago-escondido-y-buscaron-encubrirlo-con-facturas-truchas-y-el-direccionamiento-de-una-causa-judicial-202212419450',
   },
-  // --- Tier 1: Judicial Branch — Hornos/Borinsky Olivos visits ---
+  // --- Tier 1: Judicial Branch - Hornos/Borinsky Olivos visits ---
   {
     id: 'hornos-borinsky-olivos',
     claim_es:
@@ -519,7 +519,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source_url:
       'https://www.eldestapeweb.com/politica/operacion-olivos/el-juez-hornos-tambien-estuvo-con-macri-en-olivos-20214118034',
   },
-  // --- Tier 1: Judicial Branch — Wealth anomalies ---
+  // --- Tier 1: Judicial Branch - Wealth anomalies ---
   {
     id: 'judicial-wealth-anomalies',
     claim_es:
@@ -531,7 +531,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source: 'DDJJ / Cross-dataset analysis',
     source_url: 'https://datos.gob.ar/dataset/justicia-declaraciones-juradas-patrimoniales-integrales-caracter-publico',
   },
-  // --- Tier 1: Judicial Branch — 2% conviction rate ---
+  // --- Tier 1: Judicial Branch - 2% conviction rate ---
   {
     id: '2pct-conviction-rate',
     claim_es:
@@ -930,8 +930,8 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   },
   {
     id: 'caputo-axis-anses-self-dealing',
-    claim_es: 'Caputo fundo AXIS SGFCI (2012, 60% dueno). Como Secretario de Finanzas, aprobo inversion de AR$500M del fondo de pensiones ANSES/FGS en AXIS Ahorro Plus FCI — SU PROPIO fondo mutual. Comisiones a AXIS (AR$1,4M) y Deutsche Bank (AR$500K). Denuncia penal de UFISES.',
-    claim_en: 'Caputo founded AXIS SGFCI (2012, 60% owner). As Finance Secretary, approved AR$500M pension fund investment into AXIS Ahorro Plus FCI — HIS OWN mutual fund. Commissions to AXIS (AR$1.4M) and Deutsche Bank (AR$500K). Criminal complaint by UFISES.',
+    claim_es: 'Caputo fundo AXIS SGFCI (2012, 60% dueno). Como Secretario de Finanzas, aprobo inversion de AR$500M del fondo de pensiones ANSES/FGS en AXIS Ahorro Plus FCI - SU PROPIO fondo mutual. Comisiones a AXIS (AR$1,4M) y Deutsche Bank (AR$500K). Denuncia penal de UFISES.',
+    claim_en: 'Caputo founded AXIS SGFCI (2012, 60% owner). As Finance Secretary, approved AR$500M pension fund investment into AXIS Ahorro Plus FCI - HIS OWN mutual fund. Commissions to AXIS (AR$1.4M) and Deutsche Bank (AR$500K). Criminal complaint by UFISES.',
     status: 'confirmed',
     tier: 1,
     source: 'Pagina/12 / Fiscales.gob.ar',
@@ -939,8 +939,8 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   },
   {
     id: 'caputo-hidden-7b-debt',
-    claim_es: 'La AGN verifico que la Resolucion 147/2017 (firma de Caputo) creo USD 7.368M en deuda indirecta mediante Letras del Tesoro Nacional garantizando el programa de energia renovable — oculta de las estadisticas oficiales de deuda.',
-    claim_en: 'AGN verified that Resolution 147/2017 (Caputo signature) created USD 7.368B in indirect debt through National Treasury Notes guaranteeing the renewable energy program — hidden from official debt statistics.',
+    claim_es: 'La AGN verifico que la Resolucion 147/2017 (firma de Caputo) creo USD 7.368M en deuda indirecta mediante Letras del Tesoro Nacional garantizando el programa de energia renovable - oculta de las estadisticas oficiales de deuda.',
+    claim_en: 'AGN verified that Resolution 147/2017 (Caputo signature) created USD 7.368B in indirect debt through National Treasury Notes guaranteeing the renewable energy program - hidden from official debt statistics.',
     status: 'confirmed',
     tier: 1,
     source: 'AGN / El Cronista',
@@ -1163,7 +1163,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'massa-aysa-conflicto-interes',
     claim_es: 'Sergio Massa (Ministro de Economía) autorizó por decreto el déficit de AySA, empresa estatal presidida por su esposa Malena Galmarini. AySA contrató por $127M USD con Mauricio Filiberti ("Rey del Cloro") en condiciones denunciadas como irregulares. Massa no figura en Panama Papers (verificado).',
-    claim_en: 'Sergio Massa (Economy Minister) authorized AySA deficit by decree — the state company chaired by his wife Malena Galmarini. AySA contracted for $127M USD with Mauricio Filiberti ("Chlorine King") under conditions denounced as irregular. Massa not in Panama Papers (verified).',
+    claim_en: 'Sergio Massa (Economy Minister) authorized AySA deficit by decree - the state company chaired by his wife Malena Galmarini. AySA contracted for $127M USD with Mauricio Filiberti ("Chlorine King") under conditions denounced as irregular. Massa not in Panama Papers (verified).',
     status: 'confirmed',
     tier: 2,
     source: 'LA NACION / Chequeado',
@@ -1210,8 +1210,8 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   },
   {
     id: 'cfk-us-sanctioned',
-    claim_es: 'Cristina Fernandez de Kirchner fue sancionada por Estados Unidos el 21 de marzo de 2025 (Seccion 7031(c)) — primera jefa de estado argentina sancionada. Prohibida la entrada a EEUU junto con su familia. Co-designado: Julio De Vido.',
-    claim_en: 'Cristina Fernandez de Kirchner was U.S. sanctioned on March 21, 2025 (Section 7031(c)) — first Argentine head of state sanctioned. Barred from U.S. entry with family. Co-designated: Julio De Vido.',
+    claim_es: 'Cristina Fernandez de Kirchner fue sancionada por Estados Unidos el 21 de marzo de 2025 (Seccion 7031(c)) - primera jefa de estado argentina sancionada. Prohibida la entrada a EEUU junto con su familia. Co-designado: Julio De Vido.',
+    claim_en: 'Cristina Fernandez de Kirchner was U.S. sanctioned on March 21, 2025 (Section 7031(c)) - first Argentine head of state sanctioned. Barred from U.S. entry with family. Co-designated: Julio De Vido.',
     status: 'confirmed',
     tier: 1,
     source: 'Buenos Aires Times',
@@ -1221,9 +1221,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'crossref-negri-115-companies',
     claim_es:
-      'Juan Javier Negri, Vocal PEN en Educacion, figura como directivo en 115 empresas registradas en IGJ — incluyendo LLCs en Delaware (Regency-Wyndclyff, Cristal Delaware). El funcionario con mas empresas en todo el cruce de datasets.',
+      'Juan Javier Negri, Vocal PEN en Educacion, figura como directivo en 115 empresas registradas en IGJ - incluyendo LLCs en Delaware (Regency-Wyndclyff, Cristal Delaware). El funcionario con mas empresas en todo el cruce de datasets.',
     claim_en:
-      'Juan Javier Negri, PEN Board Member in Education, appears as officer of 115 companies registered in IGJ — including Delaware LLCs (Regency-Wyndclyff, Cristal Delaware). The official with the most companies across all dataset cross-references.',
+      'Juan Javier Negri, PEN Board Member in Education, appears as officer of 115 companies registered in IGJ - including Delaware LLCs (Regency-Wyndclyff, Cristal Delaware). The official with the most companies across all dataset cross-references.',
     status: 'confirmed',
     tier: 1,
     source: 'IGJ + GovernmentAppointment cross-ref (CUIT→DNI)',
@@ -1236,9 +1236,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'crossref-clusellas-51-companies',
     claim_es:
-      'Pablo Clusellas, Secretario de Presidencia de la Nacion, figura como directivo en 51 empresas IGJ — incluyendo SACDE (megaconstructora ligada a Calcaterra/Macri). Puerta giratoria directa entre Casa Rosada y sector privado.',
+      'Pablo Clusellas, Secretario de Presidencia de la Nacion, figura como directivo en 51 empresas IGJ - incluyendo SACDE (megaconstructora ligada a Calcaterra/Macri). Puerta giratoria directa entre Casa Rosada y sector privado.',
     claim_en:
-      'Pablo Clusellas, Secretary to the Presidency, appears as officer of 51 IGJ companies — including SACDE (mega-constructor linked to Calcaterra/Macri). Direct revolving door between Casa Rosada and private sector.',
+      'Pablo Clusellas, Secretary to the Presidency, appears as officer of 51 IGJ companies - including SACDE (mega-constructor linked to Calcaterra/Macri). Direct revolving door between Casa Rosada and private sector.',
     status: 'confirmed',
     tier: 1,
     source: 'IGJ + GovernmentAppointment cross-ref (CUIT→DNI)',
@@ -1269,9 +1269,9 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
   {
     id: 'crossref-trigemios-246-contracts',
     claim_es:
-      'Trigemios S.R.L. (CUIT 30-71154458-1) gano 246 contratos publicos — el mayor ganador repetido. Seguido por personas fisicas como Diego Alberto Moral (206) y Federico Pablo Campolongo (189). Patron de concentracion anormal de contratacion.',
+      'Trigemios S.R.L. (CUIT 30-71154458-1) gano 246 contratos publicos - el mayor ganador repetido. Seguido por personas fisicas como Diego Alberto Moral (206) y Federico Pablo Campolongo (189). Patron de concentracion anormal de contratacion.',
     claim_en:
-      'Trigemios S.R.L. (CUIT 30-71154458-1) won 246 public contracts — the top repeat winner. Followed by individuals like Diego Alberto Moral (206) and Federico Pablo Campolongo (189). Abnormal procurement concentration pattern.',
+      'Trigemios S.R.L. (CUIT 30-71154458-1) won 246 public contracts - the top repeat winner. Followed by individuals like Diego Alberto Moral (206) and Federico Pablo Campolongo (189). Abnormal procurement concentration pattern.',
     status: 'confirmed',
     tier: 2,
     source: 'Compr.ar / Boletin Oficial',
@@ -1310,7 +1310,7 @@ export const FACTCHECK_ITEMS: readonly FactcheckItem[] = [
     source: 'Cross-reference engine (CUIT + DNI + Name matching)',
     source_url: 'https://datos.gob.ar',
   },
-  // NOTE: Tinelli/Pinelli was a false positive (fuzzy match, different DNIs) — removed
+  // NOTE: Tinelli/Pinelli was a false positive (fuzzy match, different DNIs) - removed
   {
     id: 'crossref-frigerio-minister-9-companies',
     claim_es:
@@ -2144,8 +2144,8 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-macri',
     name: 'Mauricio Macri',
-    role_es: 'Expresidente, PRO — 5 datasets',
-    role_en: 'Former President, PRO — 5 datasets',
+    role_es: 'Expresidente, PRO - 5 datasets',
+    role_en: 'Former President, PRO - 5 datasets',
     description_es:
       'Aparece en 5 datasets: donante, director de empresa, officer societario, DDJJ y nombramiento de gobierno. Offshore documentada (Fleg Trading, Kagemusha), campanas financiadas por contratistas (documentado por Chequeado), presencia legislativa del 17,6%. Correo Argentino: quita del 98,82% de deuda familiar. AUSOL: venta de acciones con prima de ~394%.',
     description_en:
@@ -2159,46 +2159,46 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-ibanez',
     name: 'Maria Cecilia Ibanez',
-    role_es: 'Diputada Nacional, La Libertad Avanza — 4 datasets',
-    role_en: 'National Deputy, La Libertad Avanza — 4 datasets',
+    role_es: 'Diputada Nacional, La Libertad Avanza - 4 datasets',
+    role_en: 'National Deputy, La Libertad Avanza - 4 datasets',
     description_es:
       'Diputada en ejercicio con entidad offshore activa (PELMOND COMPANY LTD, BVI). Coincidencia exacta confirmada en base ICIJ. Bajo Ley 25.188, debe declarar todos los activos offshore.',
     description_en:
       'Sitting deputy with active offshore entity (PELMOND COMPANY LTD, BVI). Exact name match confirmed in ICIJ database. Under Ley 25.188, must declare all offshore assets.',
     party: 'La Libertad Avanza',
     datasets: 4,
-    status_es: 'No confirmado — Alta confianza',
-    status_en: 'Unconfirmed — High confidence',
+    status_es: 'No confirmado - Alta confianza',
+    status_en: 'Unconfirmed - High confidence',
     source_url: 'https://offshoreleaks.icij.org/nodes/10158328',
   },
   {
     id: 'actor-camano',
     name: 'Graciela Camano',
-    role_es: 'Exdiputada Nacional, Consenso Federal — 4 datasets',
-    role_en: 'Former National Deputy, Consenso Federal — 4 datasets',
+    role_es: 'Exdiputada Nacional, Consenso Federal - 4 datasets',
+    role_en: 'Former National Deputy, Consenso Federal - 4 datasets',
     description_es:
       'Vinculada a TT 41 CORP (BVI, Pandora Papers). 6 cambios de partido en 30 anos. Presencia del 62,9%. Ausencias sistematicas en votaciones financieras. Patrimonio: ARS 2,8M (2013) a ARS 39,2M (2023).',
     description_en:
       'Linked to TT 41 CORP (BVI, Pandora Papers). 6 party switches over 30 years. 62.9% presence rate. Systematic absences on financial votes. Wealth: ARS 2.8M (2013) to ARS 39.2M (2023).',
     party: 'Consenso Federal',
     datasets: 4,
-    status_es: 'No confirmado — Probable',
-    status_en: 'Unconfirmed — Probable',
+    status_es: 'No confirmado - Probable',
+    status_en: 'Unconfirmed - Probable',
     source_url: 'https://offshoreleaks.icij.org/search?q=Camano&cat=0',
   },
   {
     id: 'actor-bullrich',
     name: 'Patricia Bullrich',
-    role_es: 'Ministra de Seguridad, PRO — 4 datasets',
-    role_en: 'Minister of Security, PRO — 4 datasets',
+    role_es: 'Ministra de Seguridad, PRO - 4 datasets',
+    role_en: 'Minister of Security, PRO - 4 datasets',
     description_es:
       'Parte del cluster de puerta giratoria con Macri y Sanchez: legisladora, luego funcionaria de gobierno, luego regreso a la politica. Sin offshore detectada pero multiples solapamientos dataset.',
     description_en:
       'Part of the revolving-door cluster with Macri and Sanchez: legislator, then government appointee, then back to politics. No offshore detected but multiple dataset overlaps.',
     party: 'PRO',
     datasets: 4,
-    status_es: 'Puerta giratoria — sin hallazgo penal',
-    status_en: 'Revolving door — no criminal finding',
+    status_es: 'Puerta giratoria - sin hallazgo penal',
+    status_en: 'Revolving door - no criminal finding',
     source_url: 'https://chequeado.com/el-explicador/la-declaracion-jurada-de-patricia-bullrich-informo-en-2024-un-patrimonio-de-188-millones/',
   },
   {
@@ -2212,8 +2212,8 @@ export const ACTORS: readonly Actor[] = [
       'Government contractor and officer of BETHAN INVESTMENTS LIMITED (offshore). Possible overlap between public funds and opaque jurisdictions. Case referred for investigation under Ley 25.246.',
     party: '-',
     datasets: 2,
-    status_es: 'Presunto — Referido a UIF',
-    status_en: 'Alleged — Referred to UIF',
+    status_es: 'Presunto - Referido a UIF',
+    status_en: 'Alleged - Referred to UIF',
     source_url: 'https://offshoreleaks.icij.org/search?q=BETHAN+INVESTMENTS&cat=0',
   },
   {
@@ -2227,30 +2227,30 @@ export const ACTORS: readonly Actor[] = [
       '4 government contracts (2018-2020) and campaign donor. Direct coincidence with the prohibition in Ley 26.215 Art. 15.',
     party: '-',
     datasets: 2,
-    status_es: 'Confirmado — Coincidencia con prohibicion legal',
-    status_en: 'Confirmed — Coincidence with legal prohibition',
+    status_es: 'Confirmado - Coincidencia con prohibicion legal',
+    status_en: 'Confirmed - Coincidence with legal prohibition',
     source_url: 'https://aportantes.electoral.gob.ar/aportes/',
   },
   {
     id: 'actor-sanchez',
     name: 'Fernando Sanchez',
-    role_es: 'Exdiputado, Coalicion Civica — 2+ datasets',
-    role_en: 'Former Deputy, Coalicion Civica — 2+ datasets',
+    role_es: 'Exdiputado, Coalicion Civica - 2+ datasets',
+    role_en: 'Former Deputy, Coalicion Civica - 2+ datasets',
     description_es:
       'Puerta giratoria: legislador a funcionario de gobierno. CC-ARI enfrento alegaciones de donaciones ficticias.',
     description_en:
       'Revolving door: legislator to government appointee. CC-ARI faced allegations of fictitious donations.',
     party: 'Coalicion Civica',
     datasets: 2,
-    status_es: 'Puerta giratoria — alegaciones pendientes',
-    status_en: 'Revolving door — allegations pending',
+    status_es: 'Puerta giratoria - alegaciones pendientes',
+    status_en: 'Revolving door - allegations pending',
     source_url: 'https://datos.gob.ar/dataset/justicia-declaraciones-juradas-patrimoniales-integrales-caracter-publico',
   },
   {
     id: 'actor-macri-gianfranco',
     name: 'Gianfranco Macri',
-    role_es: 'Cabeza operativa de SOCMA — 12 empresas, BF Corporation Panamá',
-    role_en: 'Operational head of SOCMA — 12 companies, BF Corporation Panama',
+    role_es: 'Cabeza operativa de SOCMA - 12 empresas, BF Corporation Panamá',
+    role_en: 'Operational head of SOCMA - 12 companies, BF Corporation Panama',
     description_es:
       'Cabeza operativa del grupo SOCMA, 12 empresas vinculadas. Copropietario de BF Corporation (Panamá). Declaró ARS 622M a través del blanqueo 2016. Fondos transferidos a Safra Bank (Suiza). Denunciado penalmente por su hermano Mariano en 2024.',
     description_en:
@@ -2264,8 +2264,8 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-kueider',
     name: 'Kueider, Edgardo',
-    role_es: 'Ex Senador Nacional — 2 datasets',
-    role_en: 'Former National Senator — 2 datasets',
+    role_es: 'Ex Senador Nacional - 2 datasets',
+    role_en: 'Former National Senator - 2 datasets',
     description_es:
       'Detenido en el cruce fronterizo de Paraguay con USD 211.000 en efectivo no declarado. Expulsado del Senado. Figura en datasets GovernmentAppointment y CompanyOfficer (BETAIL, EDEKOM).',
     description_en:
@@ -2279,8 +2279,8 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-lousteau',
     name: 'Lousteau, Martin',
-    role_es: 'Senador Nacional, UCR — 4 datasets',
-    role_en: 'National Senator, UCR — 4 datasets',
+    role_es: 'Senador Nacional, UCR - 4 datasets',
+    role_en: 'National Senator, UCR - 4 datasets',
     description_es:
       'LCG SA, consultora vinculada a su nombre, habria facturado al Congreso ARS 1.690.000 entre 2020 y 2022 durante su mandato. La causa judicial continua activa.',
     description_en:
@@ -2294,8 +2294,8 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-denarvaez',
     name: 'De Narvaez, Francisco',
-    role_es: 'Empresario / Ex Diputado — 4 datasets',
-    role_en: 'Businessman / Former Deputy — 4 datasets',
+    role_es: 'Empresario / Ex Diputado - 4 datasets',
+    role_en: 'Businessman / Former Deputy - 4 datasets',
     description_es:
       'Figura en 5 entidades offshore (ICIJ): Titan Consulting, Retrato Partners y otras. Fortuna estimada en USD 920M. Adquirio Walmart Argentina en noviembre de 2020.',
     description_en:
@@ -2309,8 +2309,8 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-grindetti',
     name: 'Grindetti, Nestor',
-    role_es: 'Ex Funcionario / Empresario — 3 datasets',
-    role_en: 'Former Official / Businessman — 3 datasets',
+    role_es: 'Ex Funcionario / Empresario - 3 datasets',
+    role_en: 'Former Official / Businessman - 3 datasets',
     description_es:
       'Vinculado a Mercier International (Panama) y cuenta en Clariden Leu (Suiza). 9 causas tributarias en Brasil. Aparece en 3 datasets.',
     description_en:
@@ -2324,31 +2324,31 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-heller',
     name: 'Heller, Carlos',
-    role_es: 'Diputado Nacional, Frente de Todos — 3 datasets',
-    role_en: 'National Deputy, Frente de Todos — 3 datasets',
+    role_es: 'Diputado Nacional, Frente de Todos - 3 datasets',
+    role_en: 'National Deputy, Frente de Todos - 3 datasets',
     description_es:
       'Presidente de Banco Credicoop. Legislo sobre regulacion bancaria y financiera mientras ejercia como presidente de una entidad bancaria. Coincidencia confirmada entre rol legislativo e interes corporativo.',
     description_en:
       'President of Banco Credicoop. Legislated on banking and financial regulation while serving as president of a banking entity. Confirmed coincidence between legislative role and corporate interest.',
     party: 'Frente de Todos',
     datasets: 3,
-    status_es: 'Conflicto de interes confirmado — sin causa penal',
-    status_en: 'Confirmed conflict of interest — no criminal case',
+    status_es: 'Conflicto de interes confirmado - sin causa penal',
+    status_en: 'Confirmed conflict of interest - no criminal case',
     source_url: 'https://datos.gob.ar/dataset/justicia-entidades-constituidas-inspeccion-general-justicia',
   },
   {
     id: 'actor-lijo',
     name: 'Lijo, Ariel Oscar',
-    role_es: 'Poder Judicial — Corte Suprema (decreto) — 3 datasets',
-    role_en: 'Judiciary — Supreme Court (by decree) — 3 datasets',
+    role_es: 'Poder Judicial - Corte Suprema (decreto) - 3 datasets',
+    role_en: 'Judiciary - Supreme Court (by decree) - 3 datasets',
     description_es:
       'Nombrado a la Corte Suprema por decreto 137/2025, eludiendo rechazo del Senado (43 en contra, 27 a favor, 1 abstención). Maneja la causa Correo Argentino contra la familia Macri. 89 causas de corrupción con solo 14 elevadas a juicio. Vive en departamento de USD 2M no declarado en DDJJ.',
     description_en:
       'Appointed to the Supreme Court by decree 137/2025, bypassing Senate rejection (43 against, 27 for, 1 abstention). Handles the Correo Argentino case against the Macri family. 89 corruption cases with only 14 sent to trial. Lives in a USD 2M apartment not declared in sworn assets.',
     party: 'Poder Judicial',
     datasets: 3,
-    status_es: 'Designación por decreto — conflictos documentados',
-    status_en: 'Decree appointment — documented conflicts',
+    status_es: 'Designación por decreto - conflictos documentados',
+    status_en: 'Decree appointment - documented conflicts',
     source_url: 'https://www.infobae.com/politica/2025/02/25/javier-milei-designo-por-decreto-en-la-corte-suprema-a-ariel-lijo-y-manuel-garcia-mansilla/',
   },
   {
@@ -2362,23 +2362,23 @@ export const ACTORS: readonly Actor[] = [
       'Second broker by Nación Seguros commissions ($366M ARS). Husband of María Cantero (Fernández secretary). Fernández advisor 2010-2019. Met at Olivos without records. Company prosecuted and embargoed for $2.87B ARS.',
     party: 'Peronismo / FdT',
     datasets: 3,
-    status_es: 'Procesado — Causa Seguros activa',
-    status_en: 'Prosecuted — Causa Seguros active',
+    status_es: 'Procesado - Causa Seguros activa',
+    status_en: 'Prosecuted - Causa Seguros active',
     source_url: 'https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/',
   },
   {
     id: 'actor-plate',
     name: 'Guillermo Pedro Plate',
-    role_es: 'Superintendente de Seguros — ex VP Provincia ART',
-    role_en: 'Insurance Superintendent — former VP Provincia ART',
+    role_es: 'Superintendente de Seguros - ex VP Provincia ART',
+    role_en: 'Insurance Superintendent - former VP Provincia ART',
     description_es:
       'Pasó de VP de Provincia ART y asesor del Banco Provincia a Superintendente de Seguros, regulando el mercado donde fue ejecutivo. Protege selectivamente a Liderar Seguros y Libra Seguros. Su ex-jefe Juan Pazo (ARCA) rompió relación por el "pacto con Liderar".',
     description_en:
       'Went from VP of Provincia ART and Banco Provincia board advisor to Insurance Superintendent, regulating the market where he was executive. Selectively shields Liderar and Libra Seguros. Former boss Juan Pazo (ARCA) broke relationship over "Liderar pact".',
     party: 'PRO / LLA',
     datasets: 4,
-    status_es: 'Puerta giratoria — conflicto de interés documentado',
-    status_en: 'Revolving door — documented conflict of interest',
+    status_es: 'Puerta giratoria - conflicto de interés documentado',
+    status_en: 'Revolving door - documented conflict of interest',
     source_url: 'https://www.letrap.com.ar/politica/como-funciona-el-blindaje-oficial-las-aseguradoras-protegidas-el-gobierno-n5416266',
   },
   {
@@ -2392,15 +2392,15 @@ export const ACTORS: readonly Actor[] = [
       'Left Interior Ministry on 3/11/2025 and was appointed YPF Director two weeks later (~$140M/month). Previously president of Bapro Mandatos (housing trust scandal "Estrella del Sur"), officer at Provincia Bursátil, Provincia Seguros and Grupo Bapro (2007-2015).',
     party: 'PRO / LLA',
     datasets: 5,
-    status_es: 'Puerta giratoria — sin causa penal',
-    status_en: 'Revolving door — no criminal case',
+    status_es: 'Puerta giratoria - sin causa penal',
+    status_en: 'Revolving door - no criminal case',
     source_url: 'https://www.iprofesional.com/negocios/442238-de-ministro-interior-a-petrolero-lisandro-catalan-se-suma-directorio-ypf',
   },
   {
     id: 'actor-frigerio',
     name: 'Rogelio Frigerio',
-    role_es: 'Gobernador Entre Ríos — ex Ministro Interior',
-    role_en: 'Governor of Entre Ríos — former Interior Minister',
+    role_es: 'Gobernador Entre Ríos - ex Ministro Interior',
+    role_en: 'Governor of Entre Ríos - former Interior Minister',
     description_es:
       'Dinastia político-empresarial. Denunciado por la OA por invertir USD 776.000 en tierras fiscales que transfirió como titular de AABE (sobreseído 2022). Padre Octavio fue director de YPF mientras Rogelio era Ministro. Esposa designada en Desarrollo Social. Banco Ciudad: préstamo irregular a Lethe ($35M, 1500% de patrimonio).',
     description_en:
@@ -2414,160 +2414,160 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-cuneo-libarona',
     name: 'Mariano Cúneo Libarona',
-    role_es: 'Ministro de Justicia — ex director legal Libra Seguros',
-    role_en: 'Justice Minister — former legal director Libra Seguros',
+    role_es: 'Ministro de Justicia - ex director legal Libra Seguros',
+    role_en: 'Justice Minister - former legal director Libra Seguros',
     description_es:
       'Ministro de Justicia del gobierno de Milei. Fue director legal de Libra Seguros antes de asumir. Medios reportan "doble blindaje" para Libra: el Superintendente Plate la protege y el Ministro de Justicia que debería investigarla es su ex-abogado.',
     description_en:
       'Justice Minister in the Milei government. Was legal director of Libra Seguros before taking office. Media reports "double shielding" for Libra: Superintendent Plate protects it and the Justice Minister who should investigate is its former lawyer.',
     party: 'La Libertad Avanza',
     datasets: 3,
-    status_es: 'Conflicto de interés — "doble blindaje"',
-    status_en: 'Conflict of interest — "double shielding"',
+    status_es: 'Conflicto de interés - "doble blindaje"',
+    status_en: 'Conflict of interest - "double shielding"',
     source_url: 'https://www.letrap.com.ar/politica/como-funciona-el-blindaje-oficial-las-aseguradoras-protegidas-el-gobierno-n5416266',
   },
   {
     id: 'actor-ercolini',
     name: 'Ercolini, Julián Daniel',
-    role_es: 'Poder Judicial — Juez Federal Comodoro Py — 3 datasets',
-    role_en: 'Judiciary — Federal Judge Comodoro Py — 3 datasets',
+    role_es: 'Poder Judicial - Juez Federal Comodoro Py - 3 datasets',
+    role_en: 'Judiciary - Federal Judge Comodoro Py - 3 datasets',
     description_es:
       'Voló en avión pagado por Clarín a Lago Escondido (estancia de Joe Lewis) junto a otros jueces, funcionarios macristas y agentes de inteligencia. Sobreyó a Frigerio en el caso Koolhaas. Chats de Telegram filtrados muestran coordinación para fabricar coartadas. Ordenó 24 allanamientos en la Causa Seguros.',
     description_en:
       'Flew on a Clarín-paid flight to Lago Escondido (Joe Lewis\'s estate) with other judges, Macri officials and intelligence agents. Cleared Frigerio in the Koolhaas case. Leaked Telegram chats show coordination to fabricate alibis. Ordered 24 raids in the Causa Seguros.',
     party: 'Poder Judicial',
     datasets: 3,
-    status_es: 'Conflictos documentados — Lago Escondido',
-    status_en: 'Documented conflicts — Lago Escondido',
+    status_es: 'Conflictos documentados - Lago Escondido',
+    status_en: 'Documented conflicts - Lago Escondido',
     source_url: 'https://www.eldestapeweb.com/politica/los-jueces-de-clarin/clarin-invito-a-jueces-del-lawfare-a-lago-escondido-y-buscaron-encubrirlo-con-facturas-truchas-y-el-direccionamiento-de-una-causa-judicial-202212419450',
   },
   {
     id: 'actor-rosenkrantz',
     name: 'Rosenkrantz, Carlos',
-    role_es: 'Corte Suprema — Presidente — 2 datasets',
-    role_en: 'Supreme Court — President — 2 datasets',
+    role_es: 'Corte Suprema - Presidente - 2 datasets',
+    role_en: 'Supreme Court - President - 2 datasets',
     description_es:
       'Presidente de la Corte Suprema. Fue abogado de Clarín, La Nación, McDonald\'s, YPF y Repsol. En 2021 revirtió su política de recusación y comenzó a fallar en casos de ex clientes: al menos 56 fallos involucrando antiguos clientes.',
     description_en:
       'Supreme Court president. Was lawyer for Clarín, La Nación, McDonald\'s, YPF and Repsol. In 2021 reversed his recusal policy and began ruling on former clients\' cases: at least 56 rulings involving former clients.',
     party: 'Corte Suprema',
     datasets: 2,
-    status_es: 'Conflicto de interés — 56 fallos con ex clientes',
-    status_en: 'Conflict of interest — 56 rulings on former clients',
+    status_es: 'Conflicto de interés - 56 fallos con ex clientes',
+    status_en: 'Conflict of interest - 56 rulings on former clients',
     source_url: 'https://www.pagina12.com.ar/204884-rosenkrantz-una-larga-historia-de-conflictos',
   },
   {
     id: 'actor-hornos-borinsky',
     name: 'Hornos, Gustavo / Borinsky, Mariano',
-    role_es: 'Casación Penal — 2 datasets',
-    role_en: 'Criminal Cassation Court — 2 datasets',
+    role_es: 'Casación Penal - 2 datasets',
+    role_en: 'Criminal Cassation Court - 2 datasets',
     description_es:
       'Visitaron a Macri en Olivos y Casa Rosada (6+ y 15+ veces respectivamente) mientras presidían causas contra dirigentes kirchneristas. Borinsky admitió que iba "a jugar al pádel". Las visitas coinciden con momentos clave de las causas.',
     description_en:
       'Visited Macri at Olivos and Casa Rosada (6+ and 15+ times respectively) while presiding over cases against Kirchnerist leaders. Borinsky claimed he went "to play paddle tennis". Visits coincide with key moments in the cases.',
     party: 'Casación',
     datasets: 2,
-    status_es: 'Visitas a Olivos documentadas — conflicto de interés',
-    status_en: 'Olivos visits documented — conflict of interest',
+    status_es: 'Visitas a Olivos documentadas - conflicto de interés',
+    status_en: 'Olivos visits documented - conflict of interest',
     source_url: 'https://www.eldestapeweb.com/politica/operacion-olivos/las-15-reuniones-de-macri-con-un-juez-clave-en-la-persecucion-a-cfk-20214118034',
   },
   {
     id: 'actor-seijas',
     name: 'Seijas, Alberto',
-    role_es: 'Poder Judicial — Asesor ad honorem — 1 dataset',
-    role_en: 'Judiciary — Ad honorem advisor — 1 dataset',
+    role_es: 'Poder Judicial - Asesor ad honorem - 1 dataset',
+    role_en: 'Judiciary - Ad honorem advisor - 1 dataset',
     description_es:
       'Declaró ARS 1.750 millones en activos en 2024 siendo asesor ad honorem (no remunerado). La anomalía patrimonial fue detectada en el cruce de datos DDJJ.',
     description_en:
       'Declared ARS 1.75 billion in assets in 2024 as an ad honorem (unpaid) advisor. The wealth anomaly was detected in the DDJJ cross-dataset analysis.',
     party: 'Poder Judicial',
     datasets: 1,
-    status_es: 'Anomalía patrimonial — ARS 1.75B declarados',
-    status_en: 'Wealth anomaly — ARS 1.75B declared',
+    status_es: 'Anomalía patrimonial - ARS 1.75B declarados',
+    status_en: 'Wealth anomaly - ARS 1.75B declared',
     source_url: 'https://datos.gob.ar/dataset/justicia-declaraciones-juradas-patrimoniales-integrales-caracter-publico',
   },
   // --- Milei-era key actors ---
   {
     id: 'actor-belocopitt',
     name: 'Belocopitt, Claudio',
-    role_es: 'Empresario — Swiss Medical + Grupo América — 6 offshore',
-    role_en: 'Businessman — Swiss Medical + Grupo America — 6 offshore',
+    role_es: 'Empresario - Swiss Medical + Grupo América - 6 offshore',
+    role_en: 'Businessman - Swiss Medical + Grupo America - 6 offshore',
     description_es:
       'Posee 76% de Swiss Medical y 40% de Grupo América (América TV, A24, La Red). Tiene 6 entidades offshore en BVI (Panama Papers). Red de 53 empresas. Cobró USD 13M en ayuda COVID estatal siendo top-50 más ricos.',
     description_en:
       'Owns 76% of Swiss Medical and 40% of Grupo America (America TV, A24, La Red). Has 6 BVI offshore entities (Panama Papers). 53-company network. Collected USD 13M COVID state aid while being top-50 richest.',
     party: 'Independiente',
     datasets: 3,
-    status_es: 'Offshore confirmado (ICIJ) — Conflicto salud-medios',
-    status_en: 'Offshore confirmed (ICIJ) — Health-media conflict',
+    status_es: 'Offshore confirmado (ICIJ) - Conflicto salud-medios',
+    status_en: 'Offshore confirmed (ICIJ) - Health-media conflict',
     source_url: 'https://offshoreleaks.icij.org/nodes/12170966',
   },
   {
     id: 'actor-caputo-santiago',
     name: 'Caputo, Santiago',
-    role_es: 'Asesor presidencial — Controlador SIDE — sin cargo formal',
-    role_en: 'Presidential advisor — SIDE controller — no formal role',
+    role_es: 'Asesor presidencial - Controlador SIDE - sin cargo formal',
+    role_en: 'Presidential advisor - SIDE controller - no formal role',
     description_es:
       'Sobrino segundo de Luis "Toto" Caputo (Ministro de Economía). Controla la SIDE a través del designado Cristian Auguadra sin ser funcionario público. Los fondos reservados de inteligencia crecieron ~2.000% bajo su gestión.',
     description_en:
       'Second cousin of Luis "Toto" Caputo (Economy Minister). Controls SIDE through appointee Cristian Auguadra without being a public official. Intelligence reserved funds grew ~2,000% under his management.',
     party: 'La Libertad Avanza',
     datasets: 1,
-    status_es: 'Control SIDE documentado — sin cargo público formal',
-    status_en: 'SIDE control documented — no formal public role',
+    status_es: 'Control SIDE documentado - sin cargo público formal',
+    status_en: 'SIDE control documented - no formal public role',
     source_url: 'https://www.perfil.com/noticias/politica/quien-es-quien-en-el-clan-caputo-una-familia-siempre-vinculada-a-la-politica-y-el-poder.phtml',
   },
   {
     id: 'actor-pettovello',
     name: 'Pettovello, Sandra',
-    role_es: 'Ministra de Capital Humano — ARS 8.3B sin rendir',
-    role_en: 'Minister of Capital Humano — ARS 8.3B unaccounted',
+    role_es: 'Ministra de Capital Humano - ARS 8.3B sin rendir',
+    role_en: 'Minister of Capital Humano - ARS 8.3B unaccounted',
     description_es:
       'Ministra de Capital Humano bajo Milei. Retuvo 5.000 toneladas de alimentos durante crisis alimentaria. ARS 8.300 millones en gastos sin rendición de cuentas.',
     description_en:
       'Minister of Capital Humano under Milei. Withheld 5,000 tonnes of food during food crisis. ARS 8.3 billion in unaccounted spending.',
     party: 'La Libertad Avanza',
     datasets: 1,
-    status_es: 'Investigación activa — retención de alimentos',
-    status_en: 'Active investigation — food withholding',
+    status_es: 'Investigación activa - retención de alimentos',
+    status_en: 'Active investigation - food withholding',
     source_url: 'https://www.infobae.com/politica/2024/02/16/cartelizacion-y-sobreprecios-que-revelo-una-auditoria-de-capital-humano-sobre-la-compra-de-alimentos-para-los-comedores/',
   },
   // --- Missing critical persons ---
   {
     id: 'actor-fernandez-alberto',
     name: 'Alberto Fernández',
-    role_es: 'Expresidente — Causa Seguros + Violencia de género',
-    role_en: 'Former President — Insurance Case + Gender violence',
+    role_es: 'Expresidente - Causa Seguros + Violencia de género',
+    role_en: 'Former President - Insurance Case + Gender violence',
     description_es:
       'Firmó Decreto 823/2021 que obligó al Estado a contratar con Nación Seguros, creando monopolio explotado por broker Martínez Sosa (59,6% de comisiones). Procesado y confirmado en Causa Seguros por negociaciones incompatibles. Procesado por violencia de género contra Fabiola Yañez (3 delitos, pena esperada 18 años). Patrimonio declarado: $14M ARS al salir de la presidencia. Bienes inhibidos por orden judicial.',
     description_en:
       'Signed Decree 823/2021 mandating state contracting with Nación Seguros, creating monopoly exploited by broker Martínez Sosa (59.6% of commissions). Prosecuted and confirmed in Insurance Case for incompatible negotiations. Prosecuted for gender violence against Fabiola Yañez (3 charges, expected sentence 18 years). Declared assets: ARS $14M upon leaving presidency. Assets frozen by court order.',
     party: 'Frente de Todos',
     datasets: 3,
-    status_es: 'Procesado — Causa Seguros (Casación en revisión, Feb 2026) + Violencia de género (a un paso del juicio oral)',
-    status_en: 'Prosecuted — Insurance Case (Cassation review, Feb 2026) + Gender violence (near oral trial)',
+    status_es: 'Procesado - Causa Seguros (Casación en revisión, Feb 2026) + Violencia de género (a un paso del juicio oral)',
+    status_en: 'Prosecuted - Insurance Case (Cassation review, Feb 2026) + Gender violence (near oral trial)',
     source_url: 'https://www.lanacion.com.ar/politica/procesaron-a-alberto-fernandez-en-el-caso-de-los-seguros-por-negociaciones-incompatibles-con-su-nid10072025/',
   },
   {
     id: 'actor-macri-francisco',
     name: 'Francisco Macri',
-    role_es: 'Patriarca Macri — fundador SOCMA — 17 empresas',
-    role_en: 'Macri patriarch — SOCMA founder — 17 companies',
+    role_es: 'Patriarca Macri - fundador SOCMA - 17 empresas',
+    role_en: 'Macri patriarch - SOCMA founder - 17 companies',
     description_es:
       'Fundador de SOCMA y patriarca del clan Macri. Red de 17 empresas. Base del emporio familiar que incluye Correo Argentino, IECSA, SIDECO y múltiples offshore. Pilar del esquema empresarial que se entrelaza con el poder político.',
     description_en:
       'Founder of SOCMA and patriarch of the Macri clan. Network of 17 companies. Foundation of the family empire including Correo Argentino, IECSA, SIDECO and multiple offshore entities. Pillar of the business structure intertwined with political power.',
     party: 'PRO',
     datasets: 4,
-    status_es: 'Red empresarial documentada — 17 empresas',
-    status_en: 'Business network documented — 17 companies',
+    status_es: 'Red empresarial documentada - 17 empresas',
+    status_en: 'Business network documented - 17 companies',
     source_url: 'https://es.wikipedia.org/wiki/Franco_Macri',
   },
   {
     id: 'actor-macri-jorge',
     name: 'Jorge Macri',
-    role_es: 'Jefe de Gobierno CABA — 4 empresas',
-    role_en: 'Head of Government CABA — 4 companies',
+    role_es: 'Jefe de Gobierno CABA - 4 empresas',
+    role_en: 'Head of Government CABA - 4 companies',
     description_es:
       'Jefe de Gobierno de la Ciudad de Buenos Aires. Vinculado a 4 empresas. Absolución por lavado de dinero revocada en febrero de 2026. Primo de Mauricio Macri.',
     description_en:
@@ -2581,61 +2581,61 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-caputo-luis',
     name: 'Luis Andrés Caputo',
-    role_es: 'Ministro de Economía — 13 empresas (Anker), primo de Nicky',
-    role_en: 'Economy Minister — 13 companies (Anker), Nicky\'s first cousin',
+    role_es: 'Ministro de Economía - 13 empresas (Anker), primo de Nicky',
+    role_en: 'Economy Minister - 13 companies (Anker), Nicky\'s first cousin',
     description_es:
       'Ministro de Economía bajo Milei. Red de 13 empresas vinculadas incluyendo Anker Latinoamérica. Primo hermano de Nicolás Caputo (empresario PRO). Previamente presidente del BCRA y Ministro de Finanzas bajo Macri.',
     description_en:
       'Economy Minister under Milei. Network of 13 linked companies including Anker Latinoamérica. First cousin of Nicolás Caputo (PRO businessman). Previously BCRA president and Finance Minister under Macri.',
     party: 'La Libertad Avanza',
     datasets: 4,
-    status_es: 'Conflicto de interés — 13 empresas vinculadas',
-    status_en: 'Conflict of interest — 13 linked companies',
+    status_es: 'Conflicto de interés - 13 empresas vinculadas',
+    status_en: 'Conflict of interest - 13 linked companies',
     source_url: 'https://www.perfil.com/noticias/politica/quien-es-quien-en-el-clan-caputo-una-familia-siempre-vinculada-a-la-politica-y-el-poder.phtml',
   },
   {
     id: 'actor-caputo-nicolas',
     name: 'Nicolás Caputo',
-    role_es: 'Empresario — íntimo de Macri, fundador PENSAR — 13 empresas',
-    role_en: 'Businessman — Macri intimate, PENSAR founder — 13 companies',
+    role_es: 'Empresario - íntimo de Macri, fundador PENSAR - 13 empresas',
+    role_en: 'Businessman - Macri intimate, PENSAR founder - 13 companies',
     description_es:
       'Amigo íntimo de Mauricio Macri y fundador de la Fundación PENSAR (think tank PRO). Red de 13 empresas. Beneficiario de contratos estatales durante la presidencia de Macri. Primo de Luis "Toto" Caputo.',
     description_en:
       'Intimate friend of Mauricio Macri and founder of Fundación PENSAR (PRO think tank). Network of 13 companies. Beneficiary of state contracts during Macri\'s presidency. Cousin of Luis "Toto" Caputo.',
     party: 'PRO',
     datasets: 4,
-    status_es: 'Contratos estatales documentados — red de 13 empresas',
-    status_en: 'State contracts documented — 13-company network',
+    status_es: 'Contratos estatales documentados - red de 13 empresas',
+    status_en: 'State contracts documented - 13-company network',
     source_url: 'https://www.perfil.com/noticias/politica/quien-es-quien-en-el-clan-caputo-una-familia-siempre-vinculada-a-la-politica-y-el-poder.phtml',
   },
   {
     id: 'actor-mindlin',
     name: 'Marcos Mindlin',
-    role_es: 'CEO Pampa Energía — 52 empresas, monopolio eléctrico Buenos Aires',
-    role_en: 'CEO Pampa Energía — 52 companies, Buenos Aires electricity monopoly',
+    role_es: 'CEO Pampa Energía - 52 empresas, monopolio eléctrico Buenos Aires',
+    role_en: 'CEO Pampa Energía - 52 companies, Buenos Aires electricity monopoly',
     description_es:
       'Controla Pampa Energía con red de 52 empresas. CITELEC-EDELAP con 81 officers compartidos. Monopolio eléctrico de la Provincia de Buenos Aires. Nexo entre sector energético y poder político.',
     description_en:
       'Controls Pampa Energía with a 52-company network. CITELEC-EDELAP with 81 shared officers. Buenos Aires Province electricity monopoly. Nexus between energy sector and political power.',
     party: '-',
     datasets: 3,
-    status_es: 'Monopolio eléctrico documentado — 81 officers compartidos',
-    status_en: 'Electricity monopoly documented — 81 shared officers',
+    status_es: 'Monopolio eléctrico documentado - 81 officers compartidos',
+    status_en: 'Electricity monopoly documented - 81 shared officers',
     source_url: 'https://www.infobae.com/economia/2019/06/16/marcelo-mindlin-como-se-transformo-con-pampa-en-uno-de-los-duenos-de-la-energia-de-argentina/',
   },
   {
     id: 'actor-werthein',
     name: 'Darío Werthein',
-    role_es: 'Imperio asegurador — 29 empresas, Caja de Seguros',
-    role_en: 'Insurance empire — 29 companies, Caja de Seguros',
+    role_es: 'Imperio asegurador - 29 empresas, Caja de Seguros',
+    role_en: 'Insurance empire - 29 companies, Caja de Seguros',
     description_es:
       'Cabeza del imperio asegurador Werthein. Red de 29 empresas. Caja de Seguros con 32 officers compartidos. Concentración de mercado en seguros y finanzas.',
     description_en:
       'Head of the Werthein insurance empire. Network of 29 companies. Caja de Seguros with 32 shared officers. Market concentration in insurance and finance.',
     party: '-',
     datasets: 3,
-    status_es: 'Concentración de mercado documentada — 32 officers compartidos',
-    status_en: 'Market concentration documented — 32 shared officers',
+    status_es: 'Concentración de mercado documentada - 32 officers compartidos',
+    status_en: 'Market concentration documented - 32 shared officers',
     source_url: 'https://noticias.perfil.com/noticias/informacion-general/el-retorno-de-los-werthein.phtml',
   },
   {
@@ -2656,114 +2656,114 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-davis',
     name: 'Hayden Davis',
-    role_es: 'Kelsier Ventures — $LIBRA cashout de $107M',
-    role_en: 'Kelsier Ventures — $LIBRA $107M insider cashout',
+    role_es: 'Kelsier Ventures - $LIBRA cashout de $107M',
+    role_en: 'Kelsier Ventures - $LIBRA $107M insider cashout',
     description_es:
       'Fundador de Kelsier Ventures. Organizador del token $LIBRA promovido por Milei. Cashout insider de $107M USD. Investigación penal activa en Argentina.',
     description_en:
       'Founder of Kelsier Ventures. Organizer of $LIBRA token promoted by Milei. $107M USD insider cashout. Active criminal investigation in Argentina.',
     party: '-',
     datasets: 2,
-    status_es: 'Investigación penal activa — $107M cashout',
-    status_en: 'Active criminal investigation — $107M cashout',
+    status_es: 'Investigación penal activa - $107M cashout',
+    status_en: 'Active criminal investigation - $107M cashout',
     source_url: 'https://www.infobae.com/politica/2025/02/16/la-fallida-cripto-libra-provoco-un-fuerte-impacto-politico-y-el-gobierno-enfrenta-una-ofensiva-opositora/',
   },
   {
     id: 'actor-hornos',
     name: 'Gustavo Hornos',
-    role_es: 'Juez de Casación Penal — 6+ reuniones en Casa Rosada con Macri',
-    role_en: 'Criminal Cassation judge — 6+ meetings at Casa Rosada with Macri',
+    role_es: 'Juez de Casación Penal - 6+ reuniones en Casa Rosada con Macri',
+    role_en: 'Criminal Cassation judge - 6+ meetings at Casa Rosada with Macri',
     description_es:
       'Juez de la Cámara Federal de Casación Penal. Se reunió con Macri en Olivos y Casa Rosada al menos 6 veces mientras presidía causas contra dirigentes kirchneristas. Visitas coinciden con momentos clave de las causas.',
     description_en:
       'Judge of the Federal Criminal Cassation Court. Met with Macri at Olivos and Casa Rosada at least 6 times while presiding over cases against Kirchnerist leaders. Visits coincide with key moments in the cases.',
     party: 'Poder Judicial',
     datasets: 2,
-    status_es: 'Visitas a Casa Rosada documentadas — conflicto de interés',
-    status_en: 'Casa Rosada visits documented — conflict of interest',
+    status_es: 'Visitas a Casa Rosada documentadas - conflicto de interés',
+    status_en: 'Casa Rosada visits documented - conflict of interest',
     source_url: 'https://www.eldestapeweb.com/politica/operacion-olivos/las-15-reuniones-de-macri-con-un-juez-clave-en-la-persecucion-a-cfk-20214118034',
   },
   {
     id: 'actor-borinsky',
     name: 'Mariano Borinsky',
-    role_es: 'Juez de Casación Penal — 15+ visitas a Olivos',
-    role_en: 'Criminal Cassation judge — 15+ Olivos visits',
+    role_es: 'Juez de Casación Penal - 15+ visitas a Olivos',
+    role_en: 'Criminal Cassation judge - 15+ Olivos visits',
     description_es:
       'Juez de la Cámara Federal de Casación Penal. Visitó a Macri en Olivos al menos 15 veces mientras presidía causas contra dirigentes kirchneristas. Admitió que iba "a jugar al pádel". Las visitas coinciden con momentos clave de las causas.',
     description_en:
       'Judge of the Federal Criminal Cassation Court. Visited Macri at Olivos at least 15 times while presiding over cases against Kirchnerist leaders. Claimed he went "to play paddle tennis". Visits coincide with key moments in the cases.',
     party: 'Poder Judicial',
     datasets: 2,
-    status_es: 'Visitas a Olivos documentadas — conflicto de interés',
-    status_en: 'Olivos visits documented — conflict of interest',
+    status_es: 'Visitas a Olivos documentadas - conflicto de interés',
+    status_en: 'Olivos visits documented - conflict of interest',
     source_url: 'https://www.eldestapeweb.com/politica/operacion-olivos/las-15-reuniones-de-macri-con-un-juez-clave-en-la-persecucion-a-cfk-20214118034',
   },
   // --- Missing high-severity persons ---
   {
     id: 'actor-kirchner-maximo',
     name: 'Máximo Kirchner',
-    role_es: 'Diputado Nacional — $8.31B declarados, Los Sauces/Hotesur',
-    role_en: 'National Deputy — $8.31B declared, Los Sauces/Hotesur',
+    role_es: 'Diputado Nacional - $8.31B declarados, Los Sauces/Hotesur',
+    role_en: 'National Deputy - $8.31B declared, Los Sauces/Hotesur',
     description_es:
       'Diputado Nacional y líder de La Cámpora. Patrimonio declarado de $8.310 millones ARS. Vinculado a las causas Los Sauces y Hotesur por presunto lavado de dinero a través de alquileres ficticios.',
     description_en:
       'National Deputy and La Cámpora leader. Declared wealth of ARS $8.31 billion. Linked to Los Sauces and Hotesur cases for alleged money laundering through fictitious rentals.',
     party: 'Unión por la Patria',
     datasets: 3,
-    status_es: 'Causas Los Sauces/Hotesur — vinculado',
-    status_en: 'Los Sauces/Hotesur cases — linked',
+    status_es: 'Causas Los Sauces/Hotesur - vinculado',
+    status_en: 'Los Sauces/Hotesur cases - linked',
     source_url: 'https://www.lanacion.com.ar/politica/el-patrimonio-de-maximo-kirchner-crecio-un-75-por-la-revaluacion-de-sus-inmuebles-y-acciones-nid23072025/',
   },
   {
     id: 'actor-sturzenegger',
     name: 'Federico Sturzenegger',
-    role_es: 'Ministro de Desregulación — $2.37B, crecimiento 45x, miembro PENSAR',
-    role_en: 'Deregulation Minister — $2.37B, 45x growth, PENSAR member',
+    role_es: 'Ministro de Desregulación - $2.37B, crecimiento 45x, miembro PENSAR',
+    role_en: 'Deregulation Minister - $2.37B, 45x growth, PENSAR member',
     description_es:
       'Ministro de Desregulación y Transformación del Estado bajo Milei. Patrimonio declarado de $2.370 millones ARS con crecimiento de 45x. Miembro de la Fundación PENSAR (think tank PRO). Ex presidente del BCRA bajo Macri.',
     description_en:
       'Deregulation and State Transformation Minister under Milei. Declared wealth of ARS $2.37 billion with 45x growth. PENSAR Foundation member (PRO think tank). Former BCRA president under Macri.',
     party: 'La Libertad Avanza',
     datasets: 3,
-    status_es: 'Crecimiento patrimonial anómalo — 45x',
-    status_en: 'Anomalous wealth growth — 45x',
+    status_es: 'Crecimiento patrimonial anómalo - 45x',
+    status_en: 'Anomalous wealth growth - 45x',
     source_url: 'https://www.perfil.com/noticias/politica/federico-sturzenegger-declaro-un-salto-patrimonial-de-casi-970-millones-en-2024.phtml',
   },
   {
     id: 'actor-closs',
     name: 'Maurice Closs',
-    role_es: 'Senador Nacional — $8.82B declarados, crecimiento 367x',
-    role_en: 'National Senator — $8.82B declared, 367x growth',
+    role_es: 'Senador Nacional - $8.82B declarados, crecimiento 367x',
+    role_en: 'National Senator - $8.82B declared, 367x growth',
     description_es:
       'Senador Nacional por Misiones. Patrimonio declarado de $8.820 millones ARS con crecimiento de 367x. Una de las mayores anomalías patrimoniales detectadas en el cruce de DDJJ.',
     description_en:
       'National Senator for Misiones. Declared wealth of ARS $8.82 billion with 367x growth. One of the largest wealth anomalies detected in the DDJJ cross-reference.',
     party: 'Frente Nacional y Popular',
     datasets: 2,
-    status_es: 'Anomalía patrimonial — crecimiento 367x',
-    status_en: 'Wealth anomaly — 367x growth',
+    status_es: 'Anomalía patrimonial - crecimiento 367x',
+    status_en: 'Wealth anomaly - 367x growth',
     source_url: 'https://www.perfil.com/noticias/politica/closs-y-kirchner-al-frente-de-los-mas-ricos-del-congreso.phtml',
   },
   {
     id: 'actor-carrizo',
     name: 'Ana Carla Carrizo',
-    role_es: 'Diputada Nacional — $7.07B, crecimiento 1577x',
-    role_en: 'National Deputy — $7.07B, 1577x growth',
+    role_es: 'Diputada Nacional - $7.07B, crecimiento 1577x',
+    role_en: 'National Deputy - $7.07B, 1577x growth',
     description_es:
       'Diputada Nacional. Patrimonio declarado de $7.070 millones ARS con crecimiento de 1577x. La mayor anomalía patrimonial porcentual detectada entre legisladores.',
     description_en:
       'National Deputy. Declared wealth of ARS $7.07 billion with 1577x growth. The largest percentage wealth anomaly detected among legislators.',
     party: 'Democracia para Siempre',
     datasets: 2,
-    status_es: 'Anomalía patrimonial — crecimiento 1577x',
-    status_en: 'Wealth anomaly — 1577x growth',
+    status_es: 'Anomalía patrimonial - crecimiento 1577x',
+    status_en: 'Wealth anomaly - 1577x growth',
     source_url: 'https://chequeado.com/el-explicador/las-declaraciones-juradas-de-los-diputados-nacionales-quienes-son-los-10-legisladores-con-mas-patrimonio/',
   },
   {
     id: 'actor-casanello',
     name: 'Sebastián Casanello',
-    role_es: 'Juez Federal — a cargo de la Causa Seguros',
-    role_en: 'Federal Judge — prosecuting Causa Seguros',
+    role_es: 'Juez Federal - a cargo de la Causa Seguros',
+    role_en: 'Federal Judge - prosecuting Causa Seguros',
     description_es:
       'Juez Federal a cargo de la Causa Seguros contra Alberto Fernández y Martínez Sosa. Ordenó procesamientos y embargos en la causa por el monopolio de seguros estatales.',
     description_en:
@@ -2777,38 +2777,38 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-francos',
     name: 'Guillermo Francos',
-    role_es: 'Ex Jefe de Gabinete — Director YPF',
-    role_en: 'Former Chief of Staff — YPF Director',
+    role_es: 'Ex Jefe de Gabinete - Director YPF',
+    role_en: 'Former Chief of Staff - YPF Director',
     description_es:
       'Ex Jefe de Gabinete bajo Milei. Designado Director de YPF tras dejar el cargo. Puerta giratoria entre gobierno y empresa estatal energética.',
     description_en:
       'Former Chief of Staff under Milei. Appointed YPF Director after leaving office. Revolving door between government and state energy company.',
     party: 'La Libertad Avanza',
     datasets: 2,
-    status_es: 'Puerta giratoria — gobierno a YPF',
-    status_en: 'Revolving door — government to YPF',
+    status_es: 'Puerta giratoria - gobierno a YPF',
+    status_en: 'Revolving door - government to YPF',
     source_url: 'https://www.iprofesional.com/negocios/442238-de-ministro-interior-a-petrolero-lisandro-catalan-se-suma-directorio-ypf',
   },
   {
     id: 'actor-auguadra',
     name: 'Cristian Auguadra',
-    role_es: 'Jefe de la SIDE — proxy de Santiago Caputo',
-    role_en: 'SIDE head — Santiago Caputo proxy',
+    role_es: 'Jefe de la SIDE - proxy de Santiago Caputo',
+    role_en: 'SIDE head - Santiago Caputo proxy',
     description_es:
       'Designado jefe de la SIDE (inteligencia). Actúa como proxy de Santiago Caputo. Los fondos reservados de inteligencia crecieron ~2.000% bajo su gestión. Sin experiencia previa en inteligencia.',
     description_en:
       'Appointed SIDE (intelligence) head. Acts as proxy for Santiago Caputo. Intelligence reserved funds grew ~2,000% under his management. No prior intelligence experience.',
     party: 'La Libertad Avanza',
     datasets: 1,
-    status_es: 'Fondos reservados +2838% — proxy documentado',
-    status_en: 'Reserved funds +2838% — documented proxy',
+    status_es: 'Fondos reservados +2838% - proxy documentado',
+    status_en: 'Reserved funds +2838% - documented proxy',
     source_url: 'https://chequeado.com/el-explicador/los-fondos-reservados-de-la-secretaria-de-inteligencia-el-gobierno-de-milei-los-amplio-por-tercera-vez/',
   },
   {
     id: 'actor-scatturice',
     name: 'Leonardo Scatturice',
-    role_es: 'Asociado de Caputo — comprador de Flybondi',
-    role_en: 'Caputo associate — Flybondi buyer',
+    role_es: 'Asociado de Caputo - comprador de Flybondi',
+    role_en: 'Caputo associate - Flybondi buyer',
     description_es:
       'Asociado de los Caputo. Compró Flybondi (aerolínea low-cost) con posible beneficio de desregulación aérea impulsada por el gobierno de Milei.',
     description_en:
@@ -2822,16 +2822,16 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-rubinstein',
     name: 'Adolfo Rubinstein',
-    role_es: 'Ex Secretario de Salud — aumentos post-licitación del 40%',
-    role_en: 'Former Health Secretary — 40% post-bid increases',
+    role_es: 'Ex Secretario de Salud - aumentos post-licitación del 40%',
+    role_en: 'Former Health Secretary - 40% post-bid increases',
     description_es:
       'Ex Secretario de Salud. Autorizó aumentos del 40% en contratos de salud después de las licitaciones, beneficiando a proveedores seleccionados. Patrón sistemático de sobrecostos.',
     description_en:
       'Former Health Secretary. Authorized 40% increases in health contracts after bidding, benefiting selected providers. Systematic pattern of cost overruns.',
     party: '-',
     datasets: 2,
-    status_es: 'Sobrecostos post-licitación documentados — 40%',
-    status_en: 'Post-bid cost overruns documented — 40%',
+    status_es: 'Sobrecostos post-licitación documentados - 40%',
+    status_en: 'Post-bid cost overruns documented - 40%',
     source_url: 'https://www.tiempoar.com.ar/ta_article/denuncian-a-rubinstein-por-contrataciones-irregulares-por-1400-millones-de-pesos/amp/',
   },
   {
@@ -2845,8 +2845,8 @@ export const ACTORS: readonly Actor[] = [
       'Milei ally. 1,066% overpricing on SAP system. Paid personal debts of $880M to Banco Macro in 18 days. Resigned 2/9/2026.',
     party: 'La Libertad Avanza',
     datasets: 3,
-    status_es: 'Renunció — sobreprecio 1.066% documentado',
-    status_en: 'Resigned — 1,066% overpricing documented',
+    status_es: 'Renunció - sobreprecio 1.066% documentado',
+    status_en: 'Resigned - 1,066% overpricing documented',
     source_url: 'https://www.infobae.com/politica/2026/02/09/demian-reidel-renuncio-a-la-presidencia-de-nucleoelectrica/',
   },
   {
@@ -2860,8 +2860,8 @@ export const ACTORS: readonly Actor[] = [
       'AFAGate: ~USD 400M diverted through Florida shell companies. $19.353B in unpaid taxes. Summoned for fraud and laundering.',
     party: 'Independiente',
     datasets: 2,
-    status_es: 'Procesado — citado por fraude y lavado (AFAGate)',
-    status_en: 'Processed — summoned for fraud and laundering (AFAGate)',
+    status_es: 'Procesado - citado por fraude y lavado (AFAGate)',
+    status_en: 'Processed - summoned for fraud and laundering (AFAGate)',
     source_url: 'https://www.lanacion.com.ar/politica/investigacion-exclusiva-desde-la-cuenta-que-administra-los-fondos-de-la-afa-en-eeuu-se-desviaron-al-nid28122025/',
   },
   {
@@ -2875,8 +2875,8 @@ export const ACTORS: readonly Actor[] = [
       'Ex-Montonero. Father of Fernanda Raverta (ex-ANSES). Sole ankle bracelet provider at 4x international price.',
     party: 'Independiente',
     datasets: 2,
-    status_es: 'Denunciado — sobreprecios 4x en contrato estatal',
-    status_en: 'Denounced — 4x overpricing on state contract',
+    status_es: 'Denunciado - sobreprecios 4x en contrato estatal',
+    status_en: 'Denounced - 4x overpricing on state contract',
     source_url: 'https://www.lanacion.com.ar/politica/polemica-y-denuncias-por-el-contrato-de-tobilleras-electronicas-que-se-encamina-a-ganar-montoto-por-nid27042025/',
   },
   {
@@ -2890,8 +2890,8 @@ export const ACTORS: readonly Actor[] = [
       'Milei dark money operator. Foundation spent $1.079B on political ads without disclosing donors.',
     party: 'La Libertad Avanza',
     datasets: 2,
-    status_es: 'En funciones — financiamiento no declarado documentado',
-    status_en: 'In office — undisclosed financing documented',
+    status_es: 'En funciones - financiamiento no declarado documentado',
+    status_en: 'In office - undisclosed financing documented',
     source_url: 'https://chequeado.com/investigaciones/fundacion-faro-el-think-tank-libertario-que-mas-pauta-electoral-puso-en-2025-y-que-no-declara-el-origen-de-sus-fondos/',
   },
   {
@@ -2905,8 +2905,8 @@ export const ACTORS: readonly Actor[] = [
       'Ex-Deutsche Bank (9 years). Received ~USD 200K from DB while Finance Secretary. Processed for incompatible negotiations.',
     party: 'La Libertad Avanza',
     datasets: 3,
-    status_es: 'Procesado — negociaciones incompatibles',
-    status_en: 'Processed — incompatible negotiations',
+    status_es: 'Procesado - negociaciones incompatibles',
+    status_en: 'Processed - incompatible negotiations',
     source_url: 'https://www.pagina12.com.ar/780526-bausili-investigado-por-corrupcion/',
   },
   {
@@ -2920,8 +2920,8 @@ export const ACTORS: readonly Actor[] = [
       'Revolving door: Government Director + officer of Nación Reaseguros, Red Link, Prisma Medios de Pago, BICE.',
     party: 'Independiente',
     datasets: 4,
-    status_es: 'Puerta giratoria — sin causa penal',
-    status_en: 'Revolving door — no criminal case',
+    status_es: 'Puerta giratoria - sin causa penal',
+    status_en: 'Revolving door - no criminal case',
     source_url: 'https://www.ambito.com/economia/el-gobierno-designo-agustin-pesce-el-bice-su-paso-el-bcra-n6020992',
   },
   {
@@ -2933,8 +2933,8 @@ export const ACTORS: readonly Actor[] = [
     description_en: 'Fortune USD 1.9B. Corporacion America: 35 airports, CGC energy, Wilobank. Milei worked as his chief economist 10+ years. Posse (ex-exec) became Chief of Staff.',
     party: 'Independiente',
     datasets: 3,
-    status_es: 'Conflicto de interés — vínculo directo con presidente',
-    status_en: 'Conflict of interest — direct link to president',
+    status_es: 'Conflicto de interés - vínculo directo con presidente',
+    status_en: 'Conflict of interest - direct link to president',
     source_url: 'https://www.lanacion.com.ar/politica/milei-eurnekian-la-historia-detras-de-un-vinculo-que-define-el-nuevo-poder-nid10092023/',
   },
   {
@@ -2959,8 +2959,8 @@ export const ACTORS: readonly Actor[] = [
     description_en: 'Carlos Menem nephew. Chairs Deputies under Milei. Owns Gentech (supplements). La Rioja political dynasty.',
     party: 'La Libertad Avanza',
     datasets: 2,
-    status_es: 'En funciones — Presidente Diputados',
-    status_en: 'In office — Chamber President',
+    status_es: 'En funciones - Presidente Diputados',
+    status_en: 'In office - Chamber President',
     source_url: 'https://www.izquierdadiario.es/Martin-Menem-el-hijo-dilecto-de-la-casta-politica-empresarial-que-presidira-Diputados',
   },
 
@@ -3000,8 +3000,8 @@ export const ACTORS: readonly Actor[] = [
     description_en: 'Historical partner of Manzano. Co-controls Grupo America (America TV, America 24, El Cronista, Radio La Red) and Edenor. From Mendoza media he built the second-largest national media group.',
     party: 'Independiente (empresario)',
     datasets: 3,
-    status_es: 'Concentración mediática documentada — sin causa penal',
-    status_en: 'Media concentration documented — no criminal case',
+    status_es: 'Concentración mediática documentada - sin causa penal',
+    status_en: 'Media concentration documented - no criminal case',
     source_url: 'https://www.iprofesional.com/negocios/343752-como-vila-y-manzano-compraron-edenor-sin-violar-la-ley-de-medios',
   },
   {
@@ -3039,8 +3039,8 @@ export const ACTORS: readonly Actor[] = [
     description_en: 'Estimated net worth USD 40M. Chaired San Lorenzo (2019-2022) and Professional Football League. AFA 4th Vice President. LaFlia production company. Decisive factor in electoral campaigns since 1995 as media gatekeeper. Explored provincial political candidacy multiple times.',
     party: 'Independiente (influencer politico)',
     datasets: 2,
-    status_es: 'Influencia mediático-política documentada — sin causa penal',
-    status_en: 'Media-political influence documented — no criminal case',
+    status_es: 'Influencia mediático-política documentada - sin causa penal',
+    status_en: 'Media-political influence documented - no criminal case',
     source_url: 'https://en.wikipedia.org/wiki/Marcelo_Tinelli',
   },
   {
@@ -3073,27 +3073,27 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-cristina-kirchner',
     name: 'Cristina Fernández de Kirchner',
-    role_es: 'Expresidenta/Vicepresidenta — condena firme Vialidad, Hotesur/Los Sauces pendiente',
-    role_en: 'Former President/VP — final Vialidad conviction, Hotesur/Los Sauces pending',
+    role_es: 'Expresidenta/Vicepresidenta - condena firme Vialidad, Hotesur/Los Sauces pendiente',
+    role_en: 'Former President/VP - final Vialidad conviction, Hotesur/Los Sauces pending',
     description_es:
       'Condena firme a 6 años de prisión e inhabilitación perpetua para cargos públicos por administración fraudulenta (Causa Vialidad, confirmada por Corte Suprema jun 2025). Decomiso de bienes por hasta USD 640M. Cumple prisión domiciliaria. Causa Hotesur-Los Sauces enviada a juicio oral por la Corte Suprema (dic 2024) por lavado de dinero. Patrimonio declarado: $249M ARS (2023), incluye acciones de Mercado Libre y Apple. Cedió propiedades a hijos Máximo y Florencia en 2016.',
     description_en:
       'Final conviction: 6 years prison and perpetual disqualification from public office for fraudulent administration (Vialidad Case, confirmed by Supreme Court Jun 2025). Asset forfeiture up to USD 640M. Serving house arrest. Hotesur-Los Sauces case sent to oral trial by Supreme Court (Dec 2024) for money laundering. Declared assets: ARS $249M (2023), includes Mercado Libre and Apple shares. Transferred properties to children Máximo and Florencia in 2016.',
     party: 'PJ / Kirchnerismo',
     datasets: 4,
-    status_es: 'Condenada — 6 años prisión + inhabilitación perpetua (firme). Hotesur-Los Sauces: juicio oral pendiente',
-    status_en: 'Convicted — 6 years prison + perpetual disqualification (final). Hotesur-Los Sauces: oral trial pending',
+    status_es: 'Condenada - 6 años prisión + inhabilitación perpetua (firme). Hotesur-Los Sauces: juicio oral pendiente',
+    status_en: 'Convicted - 6 years prison + perpetual disqualification (final). Hotesur-Los Sauces: oral trial pending',
     source_url: 'https://www.lanacion.com.ar/politica/la-corte-suprema-confirmo-la-condena-a-cristina-kirchner-a-prision-y-no-podra-ser-candidata-nid10062025/',
   },
   {
     id: 'actor-massa-sergio',
     name: 'Sergio Massa',
-    role_es: 'Ex Ministro de Economía — AySA (Galmarini), conflicto de interés',
-    role_en: 'Former Economy Minister — AySA (Galmarini), conflict of interest',
+    role_es: 'Ex Ministro de Economía - AySA (Galmarini), conflicto de interés',
+    role_en: 'Former Economy Minister - AySA (Galmarini), conflict of interest',
     description_es:
       'Ministro de Economía (2022-2023) y candidato presidencial FdT. Patrimonio declarado: $19,3M ARS; con esposa Malena Galmarini: $41,2M ARS conjunto. Galmarini presidió AySA (2019-2023); denunciada por contrato irregular de $127M USD con Mauricio Filiberti ("Rey del Cloro"). Massa autorizó por decreto el déficit de AySA, empresa que presidía su esposa. No figura en Panama Papers (verificado por Chequeado). Brecha cambiaria: asumió con 102% de brecha, dejó con el dólar blue en espiral.',
     description_en:
-      'Economy Minister (2022-2023) and FdT presidential candidate. Declared assets: ARS $19.3M; with wife Malena Galmarini: ARS $41.2M combined. Galmarini chaired AySA (2019-2023); denounced for irregular $127M USD contract with Mauricio Filiberti ("Chlorine King"). Massa authorized AySA deficit by decree — the company his wife chaired. Not in Panama Papers (verified by Chequeado). Exchange gap: took over at 102%, left with spiraling blue dollar.',
+      'Economy Minister (2022-2023) and FdT presidential candidate. Declared assets: ARS $19.3M; with wife Malena Galmarini: ARS $41.2M combined. Galmarini chaired AySA (2019-2023); denounced for irregular $127M USD contract with Mauricio Filiberti ("Chlorine King"). Massa authorized AySA deficit by decree - the company his wife chaired. Not in Panama Papers (verified by Chequeado). Exchange gap: took over at 102%, left with spiraling blue dollar.',
     party: 'Frente de Todos',
     datasets: 3,
     status_es: 'Conflicto de interés AySA documentado. Denuncia Filiberti: desestimada judicialmente',
@@ -3103,98 +3103,98 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-baez-lazaro',
     name: 'Lázaro Báez',
-    role_es: 'Empresario — condena unificada 15 años, multa USD 329M',
-    role_en: 'Businessman — unified 15-year sentence, USD 329M fine',
+    role_es: 'Empresario - condena unificada 15 años, multa USD 329M',
+    role_en: 'Businessman - unified 15-year sentence, USD 329M fine',
     description_es:
       'Dueño de Austral Construcciones. Monopolizó 80% de obra vial en Santa Cruz (2003-2015). De 51 obras adjudicadas, solo 26 completadas; sobreprecios de hasta 387%. Condena unificada: 15 años de prisión por lavado de USD 54,87M (Ruta del Dinero K) y fraude en obra pública (Vialidad). Multa: USD 329,2M. Decomiso de activos por USD 65M. Perdió instalaciones de Austral Construcciones a manos del gobierno de Santa Cruz.',
     description_en:
       'Owner of Austral Construcciones. Monopolized 80% of road works in Santa Cruz (2003-2015). Of 51 works awarded, only 26 completed; overpricing up to 387%. Unified sentence: 15 years prison for laundering USD 54.87M (Ruta del Dinero K) and public works fraud (Vialidad). Fine: USD 329.2M. Asset forfeiture of USD 65M. Lost Austral Construcciones facilities to Santa Cruz government.',
     party: 'PJ / Kirchnerismo (alineado)',
     datasets: 3,
-    status_es: 'Condenado — 15 años prisión (firme). Multa USD 329M',
-    status_en: 'Convicted — 15 years prison (final). USD 329M fine',
+    status_es: 'Condenado - 15 años prisión (firme). Multa USD 329M',
+    status_en: 'Convicted - 15 years prison (final). USD 329M fine',
     source_url: 'https://www.lanacion.com.ar/politica/la-corte-confirmo-la-condena-a-diez-anos-de-prision-contra-lazaro-baez-por-lavado-de-dinero-nid29052025/',
   },
   {
     id: 'actor-devido-julio',
     name: 'Julio De Vido',
-    role_es: 'Ex Ministro de Planificación — múltiples condenas',
-    role_en: 'Former Planning Minister — multiple convictions',
+    role_es: 'Ex Ministro de Planificación - múltiples condenas',
+    role_en: 'Former Planning Minister - multiple convictions',
     description_es:
       'Ministro de Planificación Federal (2003-2015). Condenado a 4 años por tragedia de Once (52 muertos, firme Corte Suprema nov 2025). Condenado a 4 años por fraude en compra de GNL con sobreprecios (USD 5,5M en comisiones). Procesado por enriquecimiento ilícito: $690.000 USD injustificados (feb 2026). Caso Skanska: fiscalía pidió 5 años. Caso TV Digital: sobreprecios de 56,2%.',
     description_en:
       'Federal Planning Minister (2003-2015). Convicted to 4 years for Once tragedy (52 dead, Supreme Court final Nov 2025). Convicted to 4 years for GNL purchase fraud with overpricing (USD 5.5M in commissions). Prosecuted for illicit enrichment: USD 690K unjustified (Feb 2026). Skanska case: prosecution sought 5 years. Digital TV case: 56.2% overpricing.',
     party: 'PJ / Kirchnerismo',
     datasets: 3,
-    status_es: 'Condenado — Once (4 años, firme) + GNL (4 años). Procesado: enriquecimiento ilícito',
-    status_en: 'Convicted — Once (4 years, final) + LNG (4 years). Prosecuted: illicit enrichment',
+    status_es: 'Condenado - Once (4 años, firme) + GNL (4 años). Procesado: enriquecimiento ilícito',
+    status_en: 'Convicted - Once (4 years, final) + LNG (4 years). Prosecuted: illicit enrichment',
     source_url: 'https://www.lanacion.com.ar/politica/la-corte-confirmo-la-condena-contra-julio-de-vido-por-la-tragedia-de-once-nid11112025/',
   },
   {
     id: 'actor-lopez-jose',
     name: 'José López',
-    role_es: 'Ex Secretario de Obras Públicas — bolsos del convento, 13 años',
-    role_en: 'Former Public Works Secretary — convent bags, 13 years',
+    role_es: 'Ex Secretario de Obras Públicas - bolsos del convento, 13 años',
+    role_en: 'Former Public Works Secretary - convent bags, 13 years',
     description_es:
       'Secretario de Obras Públicas durante kirchnerismo. Detenido en junio 2016 intentando ocultar bolsos con USD 9M, joyas y un arma en convento de General Rodríguez. Condena unificada: 13 años de prisión (enriquecimiento ilícito + causa Vialidad + tenencia de arma). Dinero decomisado (USD 8,98M + EUR 153.610) donado al Hospital Garrahan y al Hospital Gutiérrez.',
     description_en:
       'Public Works Secretary during Kirchnerism. Arrested June 2016 trying to hide bags with USD 9M, jewels and a firearm in General Rodríguez convent. Unified sentence: 13 years prison (illicit enrichment + Vialidad case + weapon possession). Seized money (USD 8.98M + EUR 153,610) donated to Hospital Garrahan and Hospital Gutiérrez.',
     party: 'PJ / Kirchnerismo',
     datasets: 2,
-    status_es: 'Condenado — 13 años prisión (firme)',
-    status_en: 'Convicted — 13 years prison (final)',
+    status_es: 'Condenado - 13 años prisión (firme)',
+    status_en: 'Convicted - 13 years prison (final)',
     source_url: 'https://www.infobae.com/judiciales/2025/12/11/casacion-dejo-firme-la-pena-de-13-anos-de-carcel-contra-jose-lopez-por-corrupcion-y-el-caso-de-los-bolsos-del-convento/',
   },
   {
     id: 'actor-boudou-amado',
     name: 'Amado Boudou',
-    role_es: 'Ex Vicepresidente — condena firme Ciccone, 5 años 10 meses',
-    role_en: 'Former Vice President — final Ciccone conviction, 5 years 10 months',
+    role_es: 'Ex Vicepresidente - condena firme Ciccone, 5 años 10 meses',
+    role_en: 'Former Vice President - final Ciccone conviction, 5 years 10 months',
     description_es:
       'Vicepresidente (2011-2015). Primer vicepresidente condenado por corrupción con sentencia firme. Compró Ciccone Calcográfica (única imprenta privada capaz de imprimir billetes) mediante testaferro Vandenbroele. Condena: 5 años y 10 meses por cohecho pasivo y negociaciones incompatibles. Confirmada por Corte Suprema.',
     description_en:
       'Vice President (2011-2015). First VP convicted of corruption with final sentence. Purchased Ciccone Calcográfica (only private currency printing press) through front man Vandenbroele. Sentence: 5 years 10 months for passive bribery and incompatible negotiations. Confirmed by Supreme Court.',
     party: 'PJ / Kirchnerismo',
     datasets: 2,
-    status_es: 'Condenado — 5 años 10 meses (firme)',
-    status_en: 'Convicted — 5 years 10 months (final)',
+    status_es: 'Condenado - 5 años 10 meses (firme)',
+    status_en: 'Convicted - 5 years 10 months (final)',
     source_url: 'https://chequeado.com/el-explicador/causa-ciccone-la-corte-confirmo-la-sentencia-de-boudou-y-se-convirtio-en-el-primer-vicepresidente-condenado-por-corrupcion/',
   },
   {
     id: 'actor-jaime-ricardo',
     name: 'Ricardo Jaime',
-    role_es: 'Ex Secretario de Transporte — condenado 8 años, preso en Ezeiza',
-    role_en: 'Former Transport Secretary — 8-year sentence, imprisoned at Ezeiza',
+    role_es: 'Ex Secretario de Transporte - condenado 8 años, preso en Ezeiza',
+    role_en: 'Former Transport Secretary - 8-year sentence, imprisoned at Ezeiza',
     description_es:
       'Secretario de Transporte (2003-2009). Condenado a 8 años por enriquecimiento ilícito y cohecho: no justificó crecimiento patrimonial (avión, yate, autos, departamentos, hotel). Usó testaferros: hija, ex pareja y terceros. También condenado en causa Once. Preso en Ezeiza desde noviembre 2024.',
     description_en:
       'Transport Secretary (2003-2009). Sentenced to 8 years for illicit enrichment and bribery: could not justify asset growth (airplane, yacht, cars, apartments, hotel). Used front people: daughter, ex-partner and others. Also convicted in Once case. Imprisoned at Ezeiza since November 2024.',
     party: 'PJ / Kirchnerismo',
     datasets: 2,
-    status_es: 'Condenado — 8 años prisión (preso en Ezeiza)',
-    status_en: 'Convicted — 8 years prison (imprisoned at Ezeiza)',
+    status_es: 'Condenado - 8 años prisión (preso en Ezeiza)',
+    status_en: 'Convicted - 8 years prison (imprisoned at Ezeiza)',
     source_url: 'https://www.fiscales.gob.ar/fiscalias/condenaron-al-ex-secretario-de-transporte-ricardo-jaime-a-8-anos-de-prision-por-enriquecimiento-ilicito-y-debera-pagar-una-multa-de-15-millones-de-pesos/',
   },
   {
     id: 'actor-baratta-roberto',
     name: 'Roberto Baratta',
-    role_es: 'Ex Subsecretario Planificación — recaudador, Cuadernos en juicio',
-    role_en: 'Former Planning Undersecretary — collector, Cuadernos on trial',
+    role_es: 'Ex Subsecretario Planificación - recaudador, Cuadernos en juicio',
+    role_en: 'Former Planning Undersecretary - collector, Cuadernos on trial',
     description_es:
       'Subsecretario de Coordinación del Ministerio de Planificación. Señalado como principal recaudador de coimas del kirchnerismo. Condenado a 3 años y 6 meses en causa GNL. Juicio oral en curso por Causa Cuadernos: acusado de cobrar al menos USD 1,5M en sobornos de empresarios. Su secretario Nelson Lazarte acusado de cobrar 68 coimas.',
     description_en:
       'Coordination Undersecretary of Planning Ministry. Identified as main bribe collector for Kirchnerism. Sentenced to 3.5 years in LNG case. Oral trial underway for Cuadernos Case: accused of collecting at least USD 1.5M in bribes from businessmen. His secretary Nelson Lazarte accused of collecting 68 bribes.',
     party: 'PJ / Kirchnerismo',
     datasets: 2,
-    status_es: 'Condenado — GNL (3 años 6 meses). Cuadernos: juicio oral en curso',
-    status_en: 'Convicted — LNG (3.5 years). Cuadernos: oral trial underway',
+    status_es: 'Condenado - GNL (3 años 6 meses). Cuadernos: juicio oral en curso',
+    status_en: 'Convicted - LNG (3.5 years). Cuadernos: oral trial underway',
     source_url: 'https://www.infobae.com/judiciales/2025/11/01/los-cuadernos-de-las-coimas-cuan-fuerte-aprieta-roberto-baratta/',
   },
   {
     id: 'actor-kicillof-axel',
     name: 'Axel Kicillof',
-    role_es: 'Gobernador Buenos Aires — patrimonio triplicado en 2020',
-    role_en: 'Buenos Aires Governor — assets tripled in 2020',
+    role_es: 'Gobernador Buenos Aires - patrimonio triplicado en 2020',
+    role_en: 'Buenos Aires Governor - assets tripled in 2020',
     description_es:
       'Gobernador de Buenos Aires (desde 2019). Patrimonio triplicado en 2020 en plena crisis: de $7,7M a $23,3M ARS. Posee 4 propiedades (2 en Buenos Aires, 2 en Pilar). Declaró USD en ahorros. Sin causas judiciales directas por corrupción.',
     description_en:
@@ -3208,46 +3208,46 @@ export const ACTORS: readonly Actor[] = [
   {
     id: 'actor-depedro-wado',
     name: 'Eduardo "Wado" de Pedro',
-    role_es: 'Ex Ministro del Interior — empresas agropecuarias Dos Luceros/Ustare',
-    role_en: 'Former Interior Minister — agricultural companies Dos Luceros/Ustare',
+    role_es: 'Ex Ministro del Interior - empresas agropecuarias Dos Luceros/Ustare',
+    role_en: 'Former Interior Minister - agricultural companies Dos Luceros/Ustare',
     description_es:
       'Ministro del Interior (2019-2023). Patrimonio: $85M ARS incluyendo 4 inmuebles ($26M) y participaciones en Dos Luceros SA (95%, $637M, soja/maíz/ganadería) y Ustare SA (25%, $43M, servicios inmobiliarios rurales). Campo heredado de 890.000 m² en Mercedes. Fue vicepresidente de Aerolíneas Argentinas y directivo de Telecom en representación del Estado.',
     description_en:
       'Interior Minister (2019-2023). Assets: ARS $85M including 4 properties (ARS $26M) and stakes in Dos Luceros SA (95%, ARS $637M, soy/corn/cattle) and Ustare SA (25%, ARS $43M, rural real estate). Inherited 890,000 m² field in Mercedes. Was VP of Aerolíneas Argentinas and Telecom board member representing the State.',
     party: 'Frente de Todos',
     datasets: 2,
-    status_es: 'Sin causas judiciales directas — empresas agropecuarias documentadas',
-    status_en: 'No direct judicial cases — agricultural companies documented',
+    status_es: 'Sin causas judiciales directas - empresas agropecuarias documentadas',
+    status_en: 'No direct judicial cases - agricultural companies documented',
     source_url: 'https://www.infobae.com/politica/2021/09/21/que-patrimonio-declararon-17-ministros-de-alberto-fernandez-ante-la-oficina-anticorrupcion/',
   },
   {
     id: 'actor-anibal-fernandez',
     name: 'Aníbal Fernández',
-    role_es: 'Ex Ministro de Seguridad — vinculado a tráfico de efedrina',
-    role_en: 'Former Security Minister — linked to ephedrine trafficking',
+    role_es: 'Ex Ministro de Seguridad - vinculado a tráfico de efedrina',
+    role_en: 'Former Security Minister - linked to ephedrine trafficking',
     description_es:
       'Ministro de Seguridad (2021-2023), previamente Jefe de Gabinete. Vinculado al tráfico de efedrina por declaraciones de Martín Lanatta (condenado por triple crimen de Gral. Rodríguez). Investigado por enriquecimiento ilícito por fiscalía federal. Importaciones de efedrina crecieron de 4.000 a 15.000 kg entre 2005-2006 durante su gestión.',
     description_en:
       'Security Minister (2021-2023), previously Cabinet Chief. Linked to ephedrine trafficking by statements of Martín Lanatta (convicted for General Rodríguez triple murder). Investigated for illicit enrichment by federal prosecutors. Ephedrine imports grew from 4,000 to 15,000 kg between 2005-2006 during his tenure.',
     party: 'PJ / Kirchnerismo',
     datasets: 2,
-    status_es: 'Investigado — enriquecimiento ilícito, vinculación efedrina',
-    status_en: 'Investigated — illicit enrichment, ephedrine link',
+    status_es: 'Investigado - enriquecimiento ilícito, vinculación efedrina',
+    status_en: 'Investigated - illicit enrichment, ephedrine link',
     source_url: 'https://www.fiscales.gob.ar/fiscalias/impulsaron-la-accion-penal-para-determinar-si-anibal-fernandez-se-enriquecio-ilegitimamente/',
   },
   {
     id: 'actor-bonafini-hebe',
     name: 'Hebe de Bonafini',
-    role_es: 'Madres de Plaza de Mayo — fraude Sueños Compartidos, $749M',
-    role_en: 'Madres de Plaza de Mayo — Sueños Compartidos fraud, $749M',
+    role_es: 'Madres de Plaza de Mayo - fraude Sueños Compartidos, $749M',
+    role_en: 'Madres de Plaza de Mayo - Sueños Compartidos fraud, $749M',
     description_es:
       'Presidenta de Madres de Plaza de Mayo. Procesada por fraude al Estado en programa Sueños Compartidos (viviendas sociales). De $749M recaudados, $206M desviados por hermanos Schoklender para comprar inmuebles, autos, motos y yates. Bonafini otorgó poder amplio a los Schoklender. Falleció en noviembre 2022 antes del juicio oral.',
     description_en:
       'President of Madres de Plaza de Mayo. Prosecuted for state fraud in Sueños Compartidos social housing program. Of $749M collected, $206M diverted by Schoklender brothers to buy properties, cars, motorcycles and yachts. Bonafini granted broad power to the Schoklenders. Died November 2022 before oral trial.',
     party: 'PJ / Kirchnerismo (alineada)',
     datasets: 2,
-    status_es: 'Procesada — causa extinguida por fallecimiento (nov 2022)',
-    status_en: 'Prosecuted — case extinguished by death (Nov 2022)',
+    status_es: 'Procesada - causa extinguida por fallecimiento (nov 2022)',
+    status_en: 'Prosecuted - case extinguished by death (Nov 2022)',
     source_url: 'https://www.lanacion.com.ar/politica/bonafini-y-los-schoklender-fueron-procesados-por-el-caso-suenos-compartidos-nid2024192/',
   },
   {
@@ -3261,8 +3261,8 @@ export const ACTORS: readonly Actor[] = [
       'Legal and Technical Secretary (2003-2015) under Néstor and Cristina Kirchner. Treasury Prosecutor (2019-2023). Investigated for illicit enrichment through alleged front man in Córdoba (case closed). As Prosecutor, controlled State legal strategy in hundreds of thousands of cases.',
     party: 'PJ / Kirchnerismo',
     datasets: 2,
-    status_es: 'Causa enriquecimiento cerrada — sobreseído',
-    status_en: 'Enrichment case closed — dismissed',
+    status_es: 'Causa enriquecimiento cerrada - sobreseído',
+    status_en: 'Enrichment case closed - dismissed',
     source_url: 'https://www.lanacion.com.ar/politica/la-justicia-cerro-causa-zannini-presunto-enriquecimiento-nid2312890/',
   },
 ] as const
@@ -3664,9 +3664,9 @@ export const MONEY_FLOWS: readonly MoneyFlow[] = [
     to_label: 'Héctor Martínez Sosa (broker)',
     amount_ars: 366000000,
     description_es:
-      '$366M en comisiones — Martínez Sosa recibió 59,6% de todas las comisiones pagadas por Nación Seguros a intermediarios. Es esposo de la secretaria de Alberto Fernández.',
+      '$366M en comisiones - Martínez Sosa recibió 59,6% de todas las comisiones pagadas por Nación Seguros a intermediarios. Es esposo de la secretaria de Alberto Fernández.',
     description_en:
-      '$366M in commissions — Martínez Sosa received 59.6% of all commissions paid by Nación Seguros to intermediaries. He is the husband of Alberto Fernández\'s secretary.',
+      '$366M in commissions - Martínez Sosa received 59.6% of all commissions paid by Nación Seguros to intermediaries. He is the husband of Alberto Fernández\'s secretary.',
     date: '2020-2023',
     source: 'Infobae',
     source_url: 'https://www.infobae.com/politica/2025/07/10/procesaron-al-ex-presidente-alberto-fernandez-en-la-causa-seguros/',

@@ -1,5 +1,5 @@
 /**
- * Research iteration metrics — pure computation, no side effects.
+ * Research iteration metrics - pure computation, no side effects.
  * Used by iterate.ts to evaluate convergence and decide whether to continue.
  */
 

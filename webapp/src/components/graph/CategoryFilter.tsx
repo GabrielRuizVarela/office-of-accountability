@@ -15,7 +15,7 @@ import {
 // ---------------------------------------------------------------------------
 
 export interface CategoryFilterProps {
-  /** Current graph data — used to compute available categories */
+  /** Current graph data - used to compute available categories */
   readonly data: GraphData
   /** Set of hidden category keys (e.g. "Person:Victim", "Document:Court Filing") */
   readonly hiddenCategories: ReadonlySet<string>
@@ -187,7 +187,7 @@ export function CategoryFilter({ data, hiddenCategories, onChange, visibleLabels
                       ? { backgroundColor: `${color}20`, borderColor: `${color}40`, color }
                       : undefined
                   }
-                  title={`${display} (${count}) — doble click para aislar`}
+                  title={`${display} (${count}) - doble click para aislar`}
                 >
                   <span
                     className="inline-block h-1.5 w-1.5 rounded-full transition-colors"

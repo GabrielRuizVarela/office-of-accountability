@@ -28,7 +28,7 @@ const DATA_DIR = join(process.cwd(), '_ingestion_data', 'ddjj')
 const CSV_2024_URL =
   'https://datos.jus.gob.ar/dataset/4680199f-6234-4262-8a2a-8f7993bf784d/resource/a331ccb8-5c13-447f-9bd6-d8018a4b8a62/download/declaraciones-juradas-2024-consolidado-al-20251222.csv'
 
-/** Cumulative ZIP for 2023 — contains consolidado CSVs for 2012-2023 */
+/** Cumulative ZIP for 2023 - contains consolidado CSVs for 2012-2023 */
 const ZIP_2023_URL =
   'https://datos.jus.gob.ar/dataset/4680199f-6234-4262-8a2a-8f7993bf784d/resource/15b9566d-f5b6-4bd1-a60b-fa9040fc0c2b/download/declaraciones-juradas-2023.zip'
 
@@ -65,7 +65,7 @@ async function downloadFile(url: string, destPath: string): Promise<void> {
 
   const response = await fetch(url)
   if (!response.ok || !response.body) {
-    throw new Error(`Failed to download: ${response.status} ${response.statusText} — ${url}`)
+    throw new Error(`Failed to download: ${response.status} ${response.statusText} - ${url}`)
   }
 
   const fileStream = createWriteStream(destPath)

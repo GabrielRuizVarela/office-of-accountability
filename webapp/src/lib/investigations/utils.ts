@@ -1,5 +1,5 @@
 /**
- * Investigation utilities — ID generation and slug helpers.
+ * Investigation utilities - ID generation and slug helpers.
  *
  * Neo4j Community Edition lacks composite uniqueness constraints,
  * so node IDs are prefixed with the caso_slug for global uniqueness.

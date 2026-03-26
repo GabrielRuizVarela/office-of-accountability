@@ -1,5 +1,5 @@
 /**
- * Compliance Framework Engine types — M11.
+ * Compliance Framework Engine types - M11.
  *
  * 5 node types: ComplianceFramework, ComplianceRule, ChecklistItem,
  * ComplianceAttestation, ComplianceEvaluation.
@@ -34,12 +34,12 @@ export const compliancePhases = [
 ] as const
 export type CompliancePhase = (typeof compliancePhases)[number]
 
-/** Check types — each has its own handler */
+/** Check types - each has its own handler */
 export const checkTypes = ['cypher', 'property_exists', 'min_count', 'tier_minimum', 'llm'] as const
 export type CheckType = (typeof checkTypes)[number]
 
 // ---------------------------------------------------------------------------
-// Check config schemas — per check_type
+// Check config schemas - per check_type
 // ---------------------------------------------------------------------------
 
 export const cypherCheckConfigSchema = z.object({
@@ -89,7 +89,7 @@ export const checkConfigSchema = z.discriminatedUnion('type', [
 export type CheckConfig = z.infer<typeof checkConfigSchema>
 
 // ---------------------------------------------------------------------------
-// 1. ComplianceRule — single rule within a framework (YAML input)
+// 1. ComplianceRule - single rule within a framework (YAML input)
 // ---------------------------------------------------------------------------
 
 export const complianceRuleSchema = z.object({
@@ -105,7 +105,7 @@ export const complianceRuleSchema = z.object({
 export type ComplianceRule = z.infer<typeof complianceRuleSchema>
 
 // ---------------------------------------------------------------------------
-// 2. ChecklistItem — manual attestation requirement (YAML input)
+// 2. ChecklistItem - manual attestation requirement (YAML input)
 // ---------------------------------------------------------------------------
 
 export const checklistItemSchema = z.object({
@@ -119,7 +119,7 @@ export const checklistItemSchema = z.object({
 export type ChecklistItem = z.infer<typeof checklistItemSchema>
 
 // ---------------------------------------------------------------------------
-// 3. ComplianceFramework — top-level framework definition (YAML input)
+// 3. ComplianceFramework - top-level framework definition (YAML input)
 // ---------------------------------------------------------------------------
 
 export const complianceFrameworkSchema = z.object({
@@ -135,7 +135,7 @@ export const complianceFrameworkSchema = z.object({
 export type ComplianceFramework = z.infer<typeof complianceFrameworkSchema>
 
 // ---------------------------------------------------------------------------
-// 4. ComplianceAttestation — Neo4j node for manual checklist attestation
+// 4. ComplianceAttestation - Neo4j node for manual checklist attestation
 // ---------------------------------------------------------------------------
 
 export const complianceAttestationSchema = z.object({
@@ -151,7 +151,7 @@ export const complianceAttestationSchema = z.object({
 export type ComplianceAttestation = z.infer<typeof complianceAttestationSchema>
 
 // ---------------------------------------------------------------------------
-// 5. ComplianceEvaluation — Neo4j node for evaluation results
+// 5. ComplianceEvaluation - Neo4j node for evaluation results
 // ---------------------------------------------------------------------------
 
 export const complianceEvaluationSchema = z.object({
@@ -167,7 +167,7 @@ export const complianceEvaluationSchema = z.object({
 export type ComplianceEvaluation = z.infer<typeof complianceEvaluationSchema>
 
 // ---------------------------------------------------------------------------
-// Runtime types — check results and reports (not persisted as nodes)
+// Runtime types - check results and reports (not persisted as nodes)
 // ---------------------------------------------------------------------------
 
 /** Result of evaluating a single compliance rule */
@@ -212,7 +212,7 @@ export interface ComplianceReport {
   total_violations: number
 }
 
-/** LLM compliance check response — expected JSON from the LLM */
+/** LLM compliance check response - expected JSON from the LLM */
 export const llmComplianceResponseSchema = z.object({
   findings: z.array(
     z.object({

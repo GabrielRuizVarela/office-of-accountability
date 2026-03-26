@@ -10,7 +10,7 @@
 import { z } from 'zod/v4'
 
 // ---------------------------------------------------------------------------
-// CSV row schema — matches column headers from CNE aportes CSV
+// CSV row schema - matches column headers from CNE aportes CSV
 // ---------------------------------------------------------------------------
 
 export const DonationRowSchema = z.object({

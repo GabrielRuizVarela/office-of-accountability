@@ -3,9 +3,9 @@ import type { Metadata } from 'next'
 import { EngineDashboard } from '@/components/engine/EngineDashboard'
 
 export const metadata: Metadata = {
-  title: 'Motor de Investigación — Finanzas Políticas',
+  title: 'Motor de Investigación - Finanzas Políticas',
   description:
-    'Panel de control del motor de investigación autónomo — pipeline, propuestas, auditoría y snapshots.',
+    'Panel de control del motor de investigación autónomo - pipeline, propuestas, auditoría y snapshots.',
 }
 
 export default function MotorPage() {

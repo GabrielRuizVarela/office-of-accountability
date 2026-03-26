@@ -1,5 +1,5 @@
 # The 7 Money Trails Engine
-## Architecture Document — Office of Accountability
+## Architecture Document - Office of Accountability
 
 **Date:** 2026-03-21
 **Status:** Architecture Specification
@@ -10,17 +10,17 @@
 
 ## Executive Summary
 
-The Office of Accountability platform connects **7 public money trails** into a single Neo4j graph database where cross-trail queries reveal connections invisible in any individual dataset. This is the core commercial and investigative value proposition: no single government agency, compliance vendor, or journalist has the infrastructure to traverse from a campaign donation through a government contract through a corporate ownership chain through an offshore entity and back to a sworn wealth declaration — in a single query.
+The Office of Accountability platform connects **7 public money trails** into a single Neo4j graph database where cross-trail queries reveal connections invisible in any individual dataset. This is the core commercial and investigative value proposition: no single government agency, compliance vendor, or journalist has the infrastructure to traverse from a campaign donation through a government contract through a corporate ownership chain through an offshore entity and back to a sworn wealth declaration - in a single query.
 
 The 7 trails are:
 
-1. **Campaign Donations** — who funds whom
-2. **Government Contracts** — who gets paid by the state
-3. **Corporate Ownership** — who controls companies (and shells)
-4. **Public Budget** — where public money is allocated vs. actually spent
-5. **Crypto Fund Flows** — on-chain movement of value
-6. **Import/Export Trade** — cross-border commercial flows and sanctions exposure
-7. **Personal Wealth** — declared vs. actual assets of public officials
+1. **Campaign Donations** - who funds whom
+2. **Government Contracts** - who gets paid by the state
+3. **Corporate Ownership** - who controls companies (and shells)
+4. **Public Budget** - where public money is allocated vs. actually spent
+5. **Crypto Fund Flows** - on-chain movement of value
+6. **Import/Export Trade** - cross-border commercial flows and sanctions exposure
+7. **Personal Wealth** - declared vs. actual assets of public officials
 
 Each trail has independent commercial value. Combined, they create a forensic graph that automates investigations that currently cost $5K-$100K+ in manual due diligence per case.
 
@@ -79,7 +79,7 @@ graph TB
 ## Trail 1: Campaign Donations → Politicians → Votes
 
 ### Data Source
-**CNE aportantes.electoral.gob.ar** — Argentina's National Electoral Chamber publishes campaign finance donor records. ETL module: `src/etl/cne-finance/`.
+**CNE aportantes.electoral.gob.ar** - Argentina's National Electoral Chamber publishes campaign finance donor records. ETL module: `src/etl/cne-finance/`.
 
 ### Current State
 | Metric | Value |
@@ -131,10 +131,10 @@ Informal and undeclared donations are estimated at ~60% of real campaign spendin
 ## Trail 2: Government Contracts → Companies → Owners
 
 ### Data Sources
-- **Compr.ar** — Federal procurement platform. ETL module: `src/etl/comprar/`. Bulk CSV from datos.gob.ar.
-- **Boletín Oficial** — Official gazette adjudicaciones (2018-2020 ingested). ETL: `src/etl/boletin-oficial/`.
-- **RNS** — Registro Nacional de Sociedades. Bulk CSV available from datos.jus.gob.ar.
-- **IGJ** — Inspección General de Justicia. 951K company officers from 5 relational tables.
+- **Compr.ar** - Federal procurement platform. ETL module: `src/etl/comprar/`. Bulk CSV from datos.gob.ar.
+- **Boletín Oficial** - Official gazette adjudicaciones (2018-2020 ingested). ETL: `src/etl/boletin-oficial/`.
+- **RNS** - Registro Nacional de Sociedades. Bulk CSV available from datos.jus.gob.ar.
+- **IGJ** - Inspección General de Justicia. 951K company officers from 5 relational tables.
 
 ### Current State
 | Metric | Value |
@@ -168,7 +168,7 @@ ORDER BY contract.amount DESC
 
 ### Commercial Value
 - **Procurement due diligence:** Before bidding on or awarding a contract, check if the contractor has undisclosed connections to the awarding agency.
-- **Conflict of interest detection:** 1,428 revolving door matches — government appointees who are simultaneously company officers of firms winning contracts.
+- **Conflict of interest detection:** 1,428 revolving door matches - government appointees who are simultaneously company officers of firms winning contracts.
 - **Vendor risk assessment:** Identify contractors with offshore connections (via Trail 3 bridge) or sanctions exposure (via Trail 6).
 
 ### Key Finding
@@ -192,11 +192,11 @@ Contractor → SAME_ENTITY → Company → OFFICER_OF_COMPANY → CompanyOfficer
 ## Trail 3: Corporate Ownership Chains → Beneficial Owner
 
 ### Data Sources
-- **RNS** — National company registry, 27 fields per entity. Bulk CSV from datos.jus.gob.ar.
-- **IGJ** — Company officers (autoridades), balances, corporate acts. ETL: `src/etl/opencorporates/`.
-- **OpenCorporates** — International corporate registry aggregator.
-- **ICIJ Offshore Leaks** — 2M+ nodes from Panama Papers, Paradise Papers, Pandora Papers. ETL: `src/etl/icij-offshore/`.
-- **UK Companies House** — British company filings (for entities with UK subsidiaries).
+- **RNS** - National company registry, 27 fields per entity. Bulk CSV from datos.jus.gob.ar.
+- **IGJ** - Company officers (autoridades), balances, corporate acts. ETL: `src/etl/opencorporates/`.
+- **OpenCorporates** - International corporate registry aggregator.
+- **ICIJ Offshore Leaks** - 2M+ nodes from Panama Papers, Paradise Papers, Pandora Papers. ETL: `src/etl/icij-offshore/`.
+- **UK Companies House** - British company filings (for entities with UK subsidiaries).
 
 ### Current State
 | Metric | Value |
@@ -237,7 +237,7 @@ RETURN officer.name, officer.company_name,
 - **Real estate AML:** Cross-reference with Trail 7 to identify undeclared offshore ownership by public officials.
 
 ### Key Findings
-- **Caputo's 4-tier Cayman chain:** The investigation traced Luis "Toto" Caputo's corporate structure through 4 tiers of Cayman Islands entities — never declared in his DDJJ (sworn declaration). This is a Trail 3 + Trail 7 cross-trail finding.
+- **Caputo's 4-tier Cayman chain:** The investigation traced Luis "Toto" Caputo's corporate structure through 4 tiers of Cayman Islands entities - never declared in his DDJJ (sworn declaration). This is a Trail 3 + Trail 7 cross-trail finding.
 - **Belocopitt's 6 BVI entities:** Alberto Belocopitt (Swiss Medical) connected to 6 British Virgin Islands companies via ICIJ Offshore Leaks match.
 - **`detectContractorOffshoreFlags()`:** The cross-reference engine automatically detects contractors whose officers appear in offshore records.
 
@@ -255,10 +255,10 @@ RETURN officer.name, officer.company_name,
 ## Trail 4: Public Budget → Actual Spending → Beneficiaries
 
 ### Data Sources
-- **Presupuesto Abierto** — Federal budget allocations by program, jurisdiction, and line item. Open data portal.
-- **Compr.ar** — Procurement contracts (already ingested, provides the "actual spending" side).
-- **Cuenta de Inversión** — Annual federal spending execution report. PDFs and partial open data.
-- **SIDIF** — Integrated Financial Information System. Partially public.
+- **Presupuesto Abierto** - Federal budget allocations by program, jurisdiction, and line item. Open data portal.
+- **Compr.ar** - Procurement contracts (already ingested, provides the "actual spending" side).
+- **Cuenta de Inversión** - Annual federal spending execution report. PDFs and partial open data.
+- **SIDIF** - Integrated Financial Information System. Partially public.
 
 ### Current State
 | Metric | Value |
@@ -295,7 +295,7 @@ RETURN program.name, budget.allocated_amount,
 
 ### Gap Analysis
 - **SIDIF** data is only partially public. The Cuenta de Inversión provides aggregate data but not transaction-level detail.
-- **Compr.ar** covers procurement but not transfers, subsidies, or social programs — which constitute the majority of federal spending.
+- **Compr.ar** covers procurement but not transfers, subsidies, or social programs - which constitute the majority of federal spending.
 - **Priority:** Medium. Budget data adds context to Trail 2 findings but does not generate new entity connections on its own.
 
 ### Implementation Plan
@@ -309,11 +309,11 @@ RETURN program.name, budget.allocated_amount,
 ## Trail 5: Crypto Fund Flows (On-Chain)
 
 ### Data Sources
-- **Solana public ledger** — Transaction history for all wallets (free, permissionless).
-- **Ethereum public ledger** — Same, via Etherscan or direct node query.
-- **OFAC sanctions list** — SDN list with wallet addresses.
-- **Etherscan labels** — Community-labeled exchange and protocol addresses.
-- **DEX analytics** — Raydium, Meteora, Orca pool creation and trading data.
+- **Solana public ledger** - Transaction history for all wallets (free, permissionless).
+- **Ethereum public ledger** - Same, via Etherscan or direct node query.
+- **OFAC sanctions list** - SDN list with wallet addresses.
+- **Etherscan labels** - Community-labeled exchange and protocol addresses.
+- **DEX analytics** - Raydium, Meteora, Orca pool creation and trading data.
 
 ### Current State
 | Metric | Value |
@@ -373,10 +373,10 @@ The $LIBRA memecoin (promoted by President Milei in February 2025) was fully map
 ## Trail 6: Import/Export → Companies → Sanctions
 
 ### Data Sources
-- **INDEC COMEX** — Argentine import/export statistics by company, product, and destination.
-- **Aduana (AFIP)** — Customs declarations (partially public via open data initiatives).
-- **SENASA** — Phytosanitary export certificates (agricultural exports).
-- **OpenSanctions** — Consolidated sanctions and PEP database (OFAC, EU, UN, national lists).
+- **INDEC COMEX** - Argentine import/export statistics by company, product, and destination.
+- **Aduana (AFIP)** - Customs declarations (partially public via open data initiatives).
+- **SENASA** - Phytosanitary export certificates (agricultural exports).
+- **OpenSanctions** - Consolidated sanctions and PEP database (OFAC, EU, UN, national lists).
 
 ### Current State
 | Metric | Value |
@@ -428,14 +428,14 @@ RETURN pol.name, co.name, fe.name, auth.list_name
 
 ---
 
-## Trail 7: Personal Wealth — Declared vs. Actual
+## Trail 7: Personal Wealth - Declared vs. Actual
 
 ### Data Sources
-- **DDJJ** — Declaraciones Juradas Patrimoniales from the Oficina Anticorrupción. 27,720 entries ingested. ETL: `src/etl/ddjj-patrimoniales/`.
-- **Registro de la Propiedad** — Real estate ownership records (no public API; manual lookup).
-- **RNS/IGJ** — Corporate directorships (already in graph via Trail 3).
-- **CNV** — Securities holdings declarations.
-- **BCRA Central de Deudores** — Debtor status per CUIT. Free, unauthenticated REST API at `api.bcra.gob.ar`.
+- **DDJJ** - Declaraciones Juradas Patrimoniales from the Oficina Anticorrupción. 27,720 entries ingested. ETL: `src/etl/ddjj-patrimoniales/`.
+- **Registro de la Propiedad** - Real estate ownership records (no public API; manual lookup).
+- **RNS/IGJ** - Corporate directorships (already in graph via Trail 3).
+- **CNV** - Securities holdings declarations.
+- **BCRA Central de Deudores** - Debtor status per CUIT. Free, unauthenticated REST API at `api.bcra.gob.ar`.
 
 ### Current State
 | Metric | Value |
@@ -502,7 +502,7 @@ ORDER BY growth_factor DESC
 
 ## Cross-Trail Queries: The Power
 
-The commercial and investigative value of the platform is not in any single trail — it is in cross-trail queries that traverse the unified graph. Below are four canonical cross-trail queries that demonstrate capabilities unavailable in any single dataset.
+The commercial and investigative value of the platform is not in any single trail - it is in cross-trail queries that traverse the unified graph. Below are four canonical cross-trail queries that demonstrate capabilities unavailable in any single dataset.
 
 ### Query 1: Donor-to-Contract Path Discovery
 
@@ -536,7 +536,7 @@ RETURN contractor.name, donor.name, party.name,
 ORDER BY contract.amount DESC
 ```
 
-**Use case:** Compliance officers screening for circular corruption — donations flowing in, contracts flowing back.
+**Use case:** Compliance officers screening for circular corruption - donations flowing in, contracts flowing back.
 
 ### Query 3: Undeclared Conflict of Interest
 
@@ -627,7 +627,7 @@ The cross-reference engine (`src/etl/cross-reference/engine.ts`) operates in thr
 |------|-----------|:---:|:---:|
 | 1 | CUIT (tax ID) | 1,110 | 1.0 |
 | 2 | DNI (national ID) | 715 | 0.9-0.95 |
-| 3 | Name (fuzzy) | Skipped | — |
+| 3 | Name (fuzzy) | Skipped | - |
 
 **Why name matching is skipped:** O(n*m) on 2.3M entities without a fulltext index. Requires Neo4j fulltext index creation before it can run in reasonable time.
 
@@ -735,31 +735,31 @@ The graph uses `caso_slug` namespacing to isolate investigation-specific entitie
 
 ```
 Platform scope (no caso_slug):
-  (:Company)           — 398K nodes, from IGJ/RNS/OpenCorporates
-  (:CompanyOfficer)    — 951K nodes, from IGJ
-  (:OffshoreEntity)    — from ICIJ Offshore Leaks
-  (:OffshoreOfficer)   — from ICIJ Offshore Leaks
+  (:Company)           - 398K nodes, from IGJ/RNS/OpenCorporates
+  (:CompanyOfficer)    - 951K nodes, from IGJ
+  (:OffshoreEntity)    - from ICIJ Offshore Leaks
+  (:OffshoreOfficer)   - from ICIJ Offshore Leaks
 
 Investigation scope (caso_slug: "caso-finanzas-politicas"):
-  (:Person)            — investigation targets
-  (:MoneyFlow)         — documented money movements
-  (:Event)             — timeline events
+  (:Person)            - investigation targets
+  (:MoneyFlow)         - documented money movements
+  (:Event)             - timeline events
 
 Trail-specific (no caso_slug, but trail-identified):
-  (:Donor)             — Trail 1, from CNE
-  (:Party)             — Trail 1, from CNE
-  (:Politician)        — Trail 1, from ComoVoto
-  (:Vote)              — Trail 1, from ComoVoto
-  (:Legislation)       — Trail 1, from ComoVoto
-  (:Contractor)        — Trail 2, from Compr.ar
-  (:Contract)          — Trail 2, from Compr.ar
-  (:SwornDeclaration)  — Trail 7, from DDJJ
-  (:Wallet)            — Trail 5 (planned)
-  (:BudgetLine)        — Trail 4 (planned)
+  (:Donor)             - Trail 1, from CNE
+  (:Party)             - Trail 1, from CNE
+  (:Politician)        - Trail 1, from ComoVoto
+  (:Vote)              - Trail 1, from ComoVoto
+  (:Legislation)       - Trail 1, from ComoVoto
+  (:Contractor)        - Trail 2, from Compr.ar
+  (:Contract)          - Trail 2, from Compr.ar
+  (:SwornDeclaration)  - Trail 7, from DDJJ
+  (:Wallet)            - Trail 5 (planned)
+  (:BudgetLine)        - Trail 4 (planned)
 
 Cross-reference relationships:
-  [:SAME_ENTITY]       — CUIT match (confidence 1.0)
-  [:MAYBE_SAME_AS]     — DNI or name match (confidence 0.8-0.95)
+  [:SAME_ENTITY]       - CUIT match (confidence 1.0)
+  [:MAYBE_SAME_AS]     - DNI or name match (confidence 0.8-0.95)
 ```
 
 ### Confidence Tier System
@@ -784,21 +784,21 @@ flowchart LR
 ```
 
 All 10 existing ETL modules follow this pattern:
-- `src/etl/{source}/fetcher.ts` — data acquisition
-- `src/etl/{source}/transformer.ts` — normalization and validation
-- `src/etl/{source}/loader.ts` — Neo4j ingestion with parameterized Cypher
+- `src/etl/{source}/fetcher.ts` - data acquisition
+- `src/etl/{source}/transformer.ts` - normalization and validation
+- `src/etl/{source}/loader.ts` - Neo4j ingestion with parameterized Cypher
 
 ### Cross-Reference Engine
 
 The engine (`src/etl/cross-reference/engine.ts`) runs three matching tiers sequentially, then generates investigation flags:
 
-1. **CUIT matching** (Tier 1) — exact tax ID match, confidence 1.0
-2. **DNI matching** (Tier 2) — national ID match, confidence 0.9-0.95
-3. **Name matching** (Tier 3) — fuzzy string match, requires fulltext index (not yet active)
+1. **CUIT matching** (Tier 1) - exact tax ID match, confidence 1.0
+2. **DNI matching** (Tier 2) - national ID match, confidence 0.9-0.95
+3. **Name matching** (Tier 3) - fuzzy string match, requires fulltext index (not yet active)
 
 Flag detectors:
-- `detectContractorDonorFlags()` — Contractor → Company → Officer → Politician → Donor chain
-- `detectContractorOffshoreFlags()` — Contractor → Company → Officer → OffshoreOfficer chain
+- `detectContractorDonorFlags()` - Contractor → Company → Officer → Politician → Donor chain
+- `detectContractorOffshoreFlags()` - Contractor → Company → Officer → OffshoreOfficer chain
 
 ### MiroFish / Qwen Analysis Layer
 
@@ -834,7 +834,7 @@ Query security: 15-second timeout (`QUERY_TIMEOUT_MS`), max 3 expansion depth, m
 
 ```mermaid
 gantt
-    title 7 Money Trails — Implementation Roadmap
+    title 7 Money Trails - Implementation Roadmap
     dateFormat YYYY-MM-DD
 
     section Trail Completion
@@ -862,26 +862,26 @@ gantt
 ```
 
 ### Phase 1: Complete Core Trails (March-April 2026)
-- Build BCRA API wrapper (Trail 7 enrichment) — 3 days
-- Create Neo4j fulltext index for name matching — 2 days
-- Build donor-contractor cross-reference bridge (Trail 1↔2) — 2 days
-- Build ownership-vs-declared bridge (Trail 3↔7) — 3 days
+- Build BCRA API wrapper (Trail 7 enrichment) - 3 days
+- Create Neo4j fulltext index for name matching - 2 days
+- Build donor-contractor cross-reference bridge (Trail 1↔2) - 2 days
+- Build ownership-vs-declared bridge (Trail 3↔7) - 3 days
 
 ### Phase 2: Expand Coverage (April 2026)
-- Budget ETL from Presupuesto Abierto (Trail 4) — 5 days
-- Solana transaction fetcher (Trail 5) — 7 days
-- OpenSanctions integration (Trail 6) — 3 days
-- COMEX aggregate data ingestion (Trail 6) — 5 days
+- Budget ETL from Presupuesto Abierto (Trail 4) - 5 days
+- Solana transaction fetcher (Trail 5) - 7 days
+- OpenSanctions integration (Trail 6) - 3 days
+- COMEX aggregate data ingestion (Trail 6) - 5 days
 
 ### Phase 3: Commercial API Layer (April-May 2026)
-- Political risk API endpoint — 10 days
-- Procurement due diligence API — 10 days
-- AML screening API — 10 days
+- Political risk API endpoint - 10 days
+- Procurement due diligence API - 10 days
+- AML screening API - 10 days
 
 ### Phase 4: Autonomous Operation (Ongoing)
-- Investigation engine (see [Assessment doc](2026-03-21-investigation-engine-assessment.md) Phases 1-6) — 18 days
-- Scheduled ETL via cron (BCRA daily, Boletín weekly, RNS/IGJ monthly) — 5 days
-- Human review gateway — 5 days
+- Investigation engine (see [Assessment doc](2026-03-21-investigation-engine-assessment.md) Phases 1-6) - 18 days
+- Scheduled ETL via cron (BCRA daily, Boletín weekly, RNS/IGJ monthly) - 5 days
+- Human review gateway - 5 days
 
 ---
 
@@ -927,9 +927,9 @@ Each trail operates under specific Argentine and international regulatory author
 | 6 Trade | Aduana (AFIP) + SENASA | Código Aduanero, Ley 22.415 |
 | 7 Wealth | OA (Oficina Anticorrupción) | Ley 25.188 Ética en la Función Pública |
 
-**Art. 268 (Código Penal):** Illicit enrichment — Trail 7 directly supports detection of unjustified wealth growth by public officials.
+**Art. 268 (Código Penal):** Illicit enrichment - Trail 7 directly supports detection of unjustified wealth growth by public officials.
 
-**CSDDD (EU Directive 2024):** Corporate sustainability due diligence — Trail 6 + Trail 3 combination provides the data foundation for compliance.
+**CSDDD (EU Directive 2024):** Corporate sustainability due diligence - Trail 6 + Trail 3 combination provides the data foundation for compliance.
 
 ---
 

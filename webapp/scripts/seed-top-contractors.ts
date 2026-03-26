@@ -1,9 +1,9 @@
 /**
- * Seed top contractors — discovers the top 50 government contractors by
+ * Seed top contractors - discovers the top 50 government contractors by
  * total contract value and creates SAME_ENTITY links to matching Company nodes.
  *
  * Run with: npx tsx scripts/seed-top-contractors.ts
- * Idempotent — safe to re-run (uses MERGE, not CREATE).
+ * Idempotent - safe to re-run (uses MERGE, not CREATE).
  */
 
 import 'dotenv/config'
@@ -147,7 +147,7 @@ async function main(): Promise<void> {
         {
           contractor_id: contractor.contractor_id,
           cuit: normalizedCuit,
-          evidence: `CUIT match: ${contractor.cuit} — Contractor "${contractor.name}" ↔ Company "${match.company_name}"`,
+          evidence: `CUIT match: ${contractor.cuit} - Contractor "${contractor.name}" ↔ Company "${match.company_name}"`,
           now,
         },
       )

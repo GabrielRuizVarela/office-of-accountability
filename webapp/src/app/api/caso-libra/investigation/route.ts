@@ -49,7 +49,7 @@ import {
 } from '@/lib/caso-libra/investigation-schema'
 
 // ---------------------------------------------------------------------------
-// Auth — API key for MCP agent access
+// Auth - API key for MCP agent access
 // ---------------------------------------------------------------------------
 
 const INVESTIGATION_API_KEY = process.env.INVESTIGATION_API_KEY
@@ -65,7 +65,7 @@ function isAuthorized(request: NextRequest): boolean {
 }
 
 // ---------------------------------------------------------------------------
-// Storage — async file I/O with write lock
+// Storage - async file I/O with write lock
 // ---------------------------------------------------------------------------
 
 const STORE_DIR = join(process.cwd(), 'data')
@@ -128,16 +128,16 @@ const SCHEMA_DOCS = {
     factcheck: {
       description: 'A factchecked claim about the $LIBRA scandal',
       required_fields: {
-        claim_es: 'string — The claim in Spanish (min 10 chars)',
-        claim_en: 'string — The claim in English (min 10 chars)',
-        status: 'enum — "confirmed" | "alleged" | "denied" | "under_investigation"',
-        source: 'string — Source name (e.g. "Nansen Research")',
-        source_url: 'string — URL to the source',
+        claim_es: 'string - The claim in Spanish (min 10 chars)',
+        claim_en: 'string - The claim in English (min 10 chars)',
+        status: 'enum - "confirmed" | "alleged" | "denied" | "under_investigation"',
+        source: 'string - Source name (e.g. "Nansen Research")',
+        source_url: 'string - URL to the source',
       },
       optional_fields: {
-        id: 'string — Auto-generated if omitted',
-        detail_es: 'string — Additional detail in Spanish',
-        detail_en: 'string — Additional detail in English',
+        id: 'string - Auto-generated if omitted',
+        detail_es: 'string - Additional detail in Spanish',
+        detail_en: 'string - Additional detail in English',
       },
       example: {
         type: 'factcheck',
@@ -153,78 +153,78 @@ const SCHEMA_DOCS = {
     event: {
       description: 'A timeline event in the investigation',
       required_fields: {
-        date: 'string — YYYY-MM-DD format',
-        title_es: 'string — Event title in Spanish',
-        title_en: 'string — Event title in English',
-        description_es: 'string — Event description in Spanish',
-        description_en: 'string — Event description in English',
-        category: 'enum — "political" | "financial" | "legal" | "media" | "coverup"',
-        sources: 'array — [{ name: string, url: string }] (min 1)',
+        date: 'string - YYYY-MM-DD format',
+        title_es: 'string - Event title in Spanish',
+        title_en: 'string - Event title in English',
+        description_es: 'string - Event description in Spanish',
+        description_en: 'string - Event description in English',
+        category: 'enum - "political" | "financial" | "legal" | "media" | "coverup"',
+        sources: 'array - [{ name: string, url: string }] (min 1)',
       },
       optional_fields: {
         id: 'string',
-        is_new: 'boolean — Mark as newly discovered evidence',
+        is_new: 'boolean - Mark as newly discovered evidence',
       },
     },
     actor: {
       description: 'A person or organization involved in the case',
       required_fields: {
-        name: 'string — Full name',
-        role_es: 'string — Role in Spanish',
-        role_en: 'string — Role in English',
-        description_es: 'string — Description in Spanish',
-        description_en: 'string — Description in English',
-        nationality: 'string — e.g. "argentina", "estadounidense"',
+        name: 'string - Full name',
+        role_es: 'string - Role in Spanish',
+        role_en: 'string - Role in English',
+        description_es: 'string - Description in Spanish',
+        description_en: 'string - Description in English',
+        nationality: 'string - e.g. "argentina", "estadounidense"',
       },
       optional_fields: {
         id: 'string',
-        is_new: 'boolean — Newly discovered actor',
-        status_es: 'string — Current legal/political status in Spanish',
-        status_en: 'string — Current legal/political status in English',
+        is_new: 'boolean - Newly discovered actor',
+        status_es: 'string - Current legal/political status in Spanish',
+        status_en: 'string - Current legal/political status in English',
       },
     },
     money_flow: {
       description: 'A financial flow between wallets/entities',
       required_fields: {
-        from_label: 'string — Source entity',
-        to_label: 'string — Destination entity',
-        amount_usd: 'number — Amount in USD',
-        date: 'string — YYYY-MM-DD format',
-        source: 'string — Source of this data',
+        from_label: 'string - Source entity',
+        to_label: 'string - Destination entity',
+        amount_usd: 'number - Amount in USD',
+        date: 'string - YYYY-MM-DD format',
+        source: 'string - Source of this data',
       },
     },
     evidence: {
       description: 'A source document or report',
       required_fields: {
-        title: 'string — Document title',
-        type_es: 'string — Document type in Spanish',
-        type_en: 'string — Document type in English',
-        date: 'string — YYYY-MM-DD format',
-        summary_es: 'string — Summary in Spanish',
-        summary_en: 'string — Summary in English',
-        source_url: 'string — URL to the document',
-        verification_status: 'enum — "verified" | "partially_verified" | "unverified"',
+        title: 'string - Document title',
+        type_es: 'string - Document type in Spanish',
+        type_en: 'string - Document type in English',
+        date: 'string - YYYY-MM-DD format',
+        summary_es: 'string - Summary in Spanish',
+        summary_en: 'string - Summary in English',
+        source_url: 'string - URL to the document',
+        verification_status: 'enum - "verified" | "partially_verified" | "unverified"',
       },
     },
     stat: {
       description: 'An impact statistic',
       required_fields: {
-        value: 'string — The stat value (e.g. "$251M")',
-        label_es: 'string — Label in Spanish',
-        label_en: 'string — Label in English',
-        source: 'string — Data source',
+        value: 'string - The stat value (e.g. "$251M")',
+        label_es: 'string - Label in Spanish',
+        label_en: 'string - Label in English',
+        source: 'string - Data source',
       },
     },
     government_response: {
       description: 'A government action to obstruct, deflect, or minimize the investigation',
       required_fields: {
-        date: 'string — YYYY-MM-DD format',
-        action_es: 'string — What the government did in Spanish',
-        action_en: 'string — What the government did in English',
-        effect_es: 'string — The effect/consequence in Spanish',
-        effect_en: 'string — The effect/consequence in English',
-        source: 'string — Source name',
-        source_url: 'string — URL to the source',
+        date: 'string - YYYY-MM-DD format',
+        action_es: 'string - What the government did in Spanish',
+        action_en: 'string - What the government did in English',
+        effect_es: 'string - The effect/consequence in Spanish',
+        effect_en: 'string - The effect/consequence in English',
+        source: 'string - Source name',
+        source_url: 'string - URL to the source',
       },
     },
   },
@@ -235,7 +235,7 @@ const SCHEMA_DOCS = {
 }
 
 // ---------------------------------------------------------------------------
-// GET — Read investigation data or schema
+// GET - Read investigation data or schema
 // ---------------------------------------------------------------------------
 
 export async function GET(request: NextRequest): Promise<Response> {
@@ -265,11 +265,11 @@ export async function GET(request: NextRequest): Promise<Response> {
 }
 
 // ---------------------------------------------------------------------------
-// POST — Submit new investigation data
+// POST - Submit new investigation data
 // ---------------------------------------------------------------------------
 
 export async function POST(request: NextRequest): Promise<Response> {
-  // Auth check — require API key in production
+  // Auth check - require API key in production
   if (!isAuthorized(request)) {
     return NextResponse.json(
       { error: 'Unauthorized. Provide x-api-key header or Authorization: Bearer <key>.' },

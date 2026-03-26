@@ -52,7 +52,7 @@ export async function GET(
       }),
     )
 
-    // Query 3: Sparse types — node labels where relationship count < node count
+    // Query 3: Sparse types - node labels where relationship count < node count
     const sparseResult = await readQuery<{
       label: string
       node_count: number
@@ -86,18 +86,18 @@ export async function GET(
     const questions: string[] = []
     if (isolatedNodes.length > 0) {
       questions.push(
-        `${isolatedNodes.length} isolated nodes found — what relationships might connect them?`,
+        `${isolatedNodes.length} isolated nodes found - what relationships might connect them?`,
       )
     }
     if (lowConfidence.length > 0) {
       questions.push(
-        `${lowConfidence.length} bronze-tier nodes need verification — which sources can confirm them?`,
+        `${lowConfidence.length} bronze-tier nodes need verification - which sources can confirm them?`,
       )
     }
     if (sparseTypes.length > 0) {
       const labels = sparseTypes.map((t) => t.label).join(', ')
       questions.push(
-        `Sparse relationship coverage for: ${labels} — are there missing connections?`,
+        `Sparse relationship coverage for: ${labels} - are there missing connections?`,
       )
     }
 
@@ -112,7 +112,7 @@ export async function GET(
     })
   } catch (error) {
     console.error('[engine/analyze/gaps]', error)
-    // All errors in this route stem from DB queries — return 503 so callers
+    // All errors in this route stem from DB queries - return 503 so callers
     // can treat it uniformly as "database unavailable / service degraded"
     return Response.json(
       { success: false, error: 'Database unavailable' },

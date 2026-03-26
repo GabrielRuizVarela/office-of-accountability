@@ -1,5 +1,5 @@
 /**
- * OpenAI LLM provider — chat completions adapter.
+ * OpenAI LLM provider - chat completions adapter.
  *
  * Uses raw fetch against the OpenAI /v1/chat/completions endpoint.
  * Maps standard OpenAI response format to the normalized LLMResponse.

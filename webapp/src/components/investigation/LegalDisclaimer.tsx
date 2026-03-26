@@ -2,8 +2,8 @@
 
 /**
  * Legal disclaimer shown on investigation pages.
- * LegalDisclaimer — static, pass lang prop directly.
- * BilingualLegalDisclaimer — reads lang from LanguageContext.
+ * LegalDisclaimer - static, pass lang prop directly.
+ * BilingualLegalDisclaimer - reads lang from LanguageContext.
  */
 
 import { useLanguage } from '@/lib/language-context'

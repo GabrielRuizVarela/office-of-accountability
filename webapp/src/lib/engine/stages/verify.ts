@@ -1,5 +1,5 @@
 /**
- * Verify stage runner — M10 Stage Implementations.
+ * Verify stage runner - M10 Stage Implementations.
  *
  * Queries bronze-tier nodes, uses LLM with tool calls to cross-reference
  * against available sources, and proposes tier promotions to silver.

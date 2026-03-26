@@ -11,7 +11,7 @@
 
 The finanzas-politicas investigation has reached a point where a single user hint ("check Eurnekian-Milei connection", "add the Menems") triggers 30+ agent dispatches across research, verification, ingestion, and graph bridging. Today this loop is orchestrated manually by Claude Code: the user provides a seed, Claude dispatches parallel agents, each agent calls WebSearch/WebFetch/Neo4j, and findings are consolidated into `investigation-data.ts` and the Neo4j graph.
 
-This document assesses what exists, what an autonomous investigation engine would look like, how MiroFish/Qwen 3.5 fits into that architecture, and what is missing to get there. The goal is a system where a user types a seed input and the engine autonomously produces verified, graph-connected, source-backed findings — with a human review gateway before anything goes live.
+This document assesses what exists, what an autonomous investigation engine would look like, how MiroFish/Qwen 3.5 fits into that architecture, and what is missing to get there. The goal is a system where a user types a seed input and the engine autonomously produces verified, graph-connected, source-backed findings - with a human review gateway before anything goes live.
 
 **Key conclusion:** ~60% of the pipeline components already exist (ETL modules, cross-reference engine, MiroFish analysis, ingestion scripts). What is missing is the orchestration glue, API wrappers for BCRA/RNS/AFIP, scheduled ETL, and the human review gateway.
 
@@ -25,12 +25,12 @@ This document assesses what exists, what an autonomous investigation engine woul
 |-----------|---------------|--------|
 | 10 ETL pipelines | `src/etl/{boletin-oficial,cne-finance,cnv-securities,como-voto,ddjj-patrimoniales,icij-offshore,judiciary,opencorporates,comprar,cross-reference}/` | Operational |
 | Cross-reference engine | CUIT (1,110 matches) + DNI (715 matches), `SAME_ENTITY` relationships | Operational |
-| MiroFish/Qwen analysis | `src/lib/mirofish/analysis.ts` — 4 analysis functions, structured JSON output | Operational |
-| 4-phase investigation loop | `scripts/run-investigation-loop.ts` — ingest, cross-ref, analyze, report | Operational |
-| 14 ingestion scripts | `scripts/ingest-*.ts` — financial, judicial, family, health, scandals, consolidation | Operational |
+| MiroFish/Qwen analysis | `src/lib/mirofish/analysis.ts` - 4 analysis functions, structured JSON output | Operational |
+| 4-phase investigation loop | `scripts/run-investigation-loop.ts` - ingest, cross-ref, analyze, report | Operational |
+| 14 ingestion scripts | `scripts/ingest-*.ts` - financial, judicial, family, health, scandals, consolidation | Operational |
 | Confidence tier system | gold > silver > bronze, `caso_slug` namespace isolation | Operational |
 | Source verification protocol | WebFetch HTTP 200 checks, second-source confirmation | Manual |
-| Bilingual data output | `investigation-data.ts` — 2,404 lines, ES/EN factchecks, timeline, actors, money flows | Operational |
+| Bilingual data output | `investigation-data.ts` - 2,404 lines, ES/EN factchecks, timeline, actors, money flows | Operational |
 | Graph database | Neo4j 5 Community, 227 nodes / 341 edges (investigation), 398K companies platform-wide | Operational |
 
 ### 1.2 What Requires Manual Intervention
@@ -194,7 +194,7 @@ interface VerificationResult {
 
 - MERGE entities with `caso_slug: "caso-finanzas-politicas"`, tier: bronze
 - Create relationships with `source`, `confidence`, `created_at` properties
-- All new entities start as bronze — promotion requires human review
+- All new entities start as bronze - promotion requires human review
 
 ```typescript
 interface IngestionPlan {
@@ -243,17 +243,17 @@ RETURN officer, officer.company_name
 
 Run existing analysis functions on the subgraph containing new + connected entities:
 
-1. `analyzeProcurementAnomalies()` — if new entities have contract connections
-2. `analyzeOwnershipChains()` — if new entities have corporate connections
-3. `analyzePoliticalConnections()` — always run
-4. New: `analyzeNewFindings()` — compare new findings against existing investigation data for novelty
+1. `analyzeProcurementAnomalies()` - if new entities have contract connections
+2. `analyzeOwnershipChains()` - if new entities have corporate connections
+3. `analyzePoliticalConnections()` - always run
+4. New: `analyzeNewFindings()` - compare new findings against existing investigation data for novelty
 
 #### Phase 7: Output Phase
 
 Three outputs generated:
-1. **Structured JSON** — machine-readable findings for API consumption
-2. **investigation-data.ts updates** — new factchecks, actors, timeline events, money flows appended
-3. **Narrative markdown** — bilingual investigation narrative for the chapter
+1. **Structured JSON** - machine-readable findings for API consumption
+2. **investigation-data.ts updates** - new factchecks, actors, timeline events, money flows appended
+3. **Narrative markdown** - bilingual investigation narrative for the chapter
 
 ---
 
@@ -267,7 +267,7 @@ Three outputs generated:
 | Hardware | NVIDIA RTX 4060 Ti (8GB or 16GB VRAM) |
 | Server | llama.cpp (llama-server) on localhost:8080 |
 | Context window | 8K tokens |
-| `enable_thinking` | `false` (mandatory — with `true`, model exhausts tokens on reasoning, returns empty output) |
+| `enable_thinking` | `false` (mandatory - with `true`, model exhausts tokens on reasoning, returns empty output) |
 | `--reasoning-budget` | 0 (server-side flag) |
 | Temperature | 0.3 for analytical tasks |
 | max_tokens | 4096 |
@@ -287,9 +287,9 @@ Three outputs generated:
 
 ### 3.3 What MiroFish/Qwen CANNOT Do
 
-- **Web research:** No internet access, no tool use — needs external WebSearch/WebFetch
+- **Web research:** No internet access, no tool use - needs external WebSearch/WebFetch
 - **URL verification:** Cannot make HTTP requests
-- **Graph queries:** Cannot execute Cypher — needs orchestrator to extract subgraphs and pass as JSON
+- **Graph queries:** Cannot execute Cypher - needs orchestrator to extract subgraphs and pass as JSON
 - **Large context analysis:** 8K context limits the size of subgraphs it can process at once
 - **Real-time data:** No access to live databases, APIs, or current news
 - **Long documents:** Cannot process documents exceeding ~6K tokens of input (leaving room for output)
@@ -356,16 +356,16 @@ flowchart LR
 
 ### 4.2 Data Source Priorities for Automation
 
-**Tier 1 — High value, low effort (API wrappers needed):**
+**Tier 1 - High value, low effort (API wrappers needed):**
 - BCRA Central de Deudores: free, unauthenticated REST API, per-CUIT. Reveals debtor status of companies and individuals.
 - RNS bulk CSV: monthly download, 27 fields per company. Complements IGJ with national-scope company data.
 
-**Tier 2 — High value, medium effort (ETL + scraping):**
+**Tier 2 - High value, medium effort (ETL + scraping):**
 - AFIP public CUIT lookup: enriches entity profiles with activity codes, tax status.
 - SSN open data: insurance sector connections (relevant for Belocopitt/Swiss Medical investigation).
 - Provincial procurement: each province has own system. Start with Buenos Aires Province (largest).
 
-**Tier 3 — High value, high effort (restricted or complex):**
+**Tier 3 - High value, high effort (restricted or complex):**
 - UIF (Financial Intelligence Unit): restricted access, but public sanctions lists are available.
 - Registro de la Propiedad: real estate ownership, no public API.
 - ANSES/PAMI contract data: FOIA requests needed for detailed breakdowns.
@@ -376,7 +376,7 @@ flowchart LR
 Current:
   CUIT matching:  1,110 SAME_ENTITY relationships (confidence 1.0)
   DNI matching:     715 SAME_ENTITY relationships (confidence 0.9-0.95)
-  Name matching:  SKIPPED (O(n*m) on 2.3M entities — needs fulltext index)
+  Name matching:  SKIPPED (O(n*m) on 2.3M entities - needs fulltext index)
 
 Pending:
   Offshore-Judge matching:     not attempted
@@ -509,13 +509,13 @@ Implementation: a simple CLI review tool that presents findings one-by-one with 
 - Calls MiroFish to parse seed, generates search queries
 - Executes WebSearch queries (via tool or future HTTP client)
 - Outputs structured dossier to `docs/investigations/dossiers/`
-- Does NOT auto-ingest — just produces research for human review
+- Does NOT auto-ingest - just produces research for human review
 
 ### Phase 2: BCRA API + RNS Bulk ETL Integration
 **Effort:** 2-3 days | **Dependencies:** None
 
-- `src/etl/bcra-deudores/` — API wrapper + Neo4j ingestion
-- `src/etl/rns-sociedades/` — CSV download, parse, MERGE
+- `src/etl/bcra-deudores/` - API wrapper + Neo4j ingestion
+- `src/etl/rns-sociedades/` - CSV download, parse, MERGE
 - New node enrichment: companies get `bcra_situacion`, `bcra_monto` properties
 - Package scripts: `pnpm run etl:bcra`, `pnpm run etl:rns`
 
@@ -713,9 +713,9 @@ interface IngestionBatch {
 
 The four existing templates in `src/lib/mirofish/prompts.ts`:
 
-1. **`PROCUREMENT_ANOMALY_PROMPT`** — Detects split contracts, repeat winners, shell companies, timing patterns
-2. **`OWNERSHIP_CHAIN_PROMPT`** — Traces beneficial ownership through IGJ corporate layers
-3. **`POLITICAL_CONNECTION_PROMPT`** — Maps contractor-donor, officer-appointee, family network, conflict of interest
-4. **`INVESTIGATION_SUMMARY_PROMPT`** — Bilingual executive summary generation
+1. **`PROCUREMENT_ANOMALY_PROMPT`** - Detects split contracts, repeat winners, shell companies, timing patterns
+2. **`OWNERSHIP_CHAIN_PROMPT`** - Traces beneficial ownership through IGJ corporate layers
+3. **`POLITICAL_CONNECTION_PROMPT`** - Maps contractor-donor, officer-appointee, family network, conflict of interest
+4. **`INVESTIGATION_SUMMARY_PROMPT`** - Bilingual executive summary generation
 
 All prompts request structured JSON output with bilingual (ES/EN) evidence descriptions.

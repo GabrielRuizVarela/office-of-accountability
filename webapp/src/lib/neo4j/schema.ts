@@ -1,5 +1,5 @@
 /**
- * Neo4j schema initialization — constraints and indexes for the
+ * Neo4j schema initialization - constraints and indexes for the
  * Office of Accountability graph model.
  *
  * Constraints and indexes are idempotent (IF NOT EXISTS).
@@ -50,7 +50,7 @@ const UNIQUE_CONSTRAINTS = [
     label: 'User',
     property: 'email',
   },
-  // Caso Libra nodes (legacy — kept until label migration completes)
+  // Caso Libra nodes (legacy - kept until label migration completes)
   {
     name: 'caso_libra_person_id_unique',
     label: 'CasoLibraPerson',
@@ -142,7 +142,7 @@ const UNIQUE_CONSTRAINTS = [
     label: 'GovernmentAction',
     property: 'id',
   },
-  // Cross-reference engine — platform-level entity deduplication
+  // Cross-reference engine - platform-level entity deduplication
   {
     name: 'contractor_cuit_unique',
     label: 'Contractor',
@@ -159,7 +159,7 @@ const UNIQUE_CONSTRAINTS = [
     label: 'InvestigationConfig',
     property: 'id',
   },
-  // Engine node types (M10 — autonomous investigation pipeline)
+  // Engine node types (M10 - autonomous investigation pipeline)
   {
     name: 'source_connector_id_unique',
     label: 'SourceConnector',
@@ -241,7 +241,7 @@ const UNIQUE_CONSTRAINTS = [
     label: 'ComplianceEvaluation',
     property: 'id',
   },
-  // MCP API keys (M13 — investigation MCP server)
+  // MCP API keys (M13 - investigation MCP server)
   {
     name: 'mcp_api_key_id_unique',
     label: 'MCPApiKey',
@@ -266,7 +266,7 @@ const FULLTEXT_INDEXES: readonly { name: string; labels: readonly string[]; prop
     labels: ['Investigation'],
     properties: ['title', 'summary'],
   },
-  // Caso Libra fulltext (legacy — kept until label migration completes)
+  // Caso Libra fulltext (legacy - kept until label migration completes)
   {
     name: 'caso_libra_person_name_fulltext',
     labels: ['CasoLibraPerson'],
@@ -308,7 +308,7 @@ const FULLTEXT_INDEXES: readonly { name: string; labels: readonly string[]; prop
     labels: ['Claim'],
     properties: ['title', 'description'],
   },
-  // Cross-reference engine — platform-level entity search
+  // Cross-reference engine - platform-level entity search
   {
     name: 'contractor_name_fulltext',
     labels: ['Contractor'],
@@ -319,13 +319,13 @@ const FULLTEXT_INDEXES: readonly { name: string; labels: readonly string[]; prop
     labels: ['Company'],
     properties: ['name'],
   },
-  // Cross-reference engine — CUIT fulltext for multi-label matching
+  // Cross-reference engine - CUIT fulltext for multi-label matching
   {
     name: 'entity_cuit_fulltext',
     labels: ['Contractor', 'Company', 'Donor', 'AssetDeclaration'],
     properties: ['cuit'],
   },
-  // Cross-reference engine — multi-label name search for fuzzy matching
+  // Cross-reference engine - multi-label name search for fuzzy matching
   {
     name: 'entity_name_fulltext',
     labels: ['Contractor', 'Company', 'CompanyOfficer', 'GovernmentAppointment'],
@@ -360,7 +360,7 @@ const BTREE_INDEXES = [
     label: 'User',
     property: 'verification_tier',
   },
-  // Caso Libra range indexes (legacy — kept until label migration completes)
+  // Caso Libra range indexes (legacy - kept until label migration completes)
   {
     name: 'caso_libra_person_slug_index',
     label: 'CasoLibraPerson',
@@ -386,7 +386,7 @@ const BTREE_INDEXES = [
     label: 'CasoLibraOrganization',
     property: 'slug',
   },
-  // Generic investigation labels — caso_slug range indexes for namespace filtering
+  // Generic investigation labels - caso_slug range indexes for namespace filtering
   // Investigation entity indexes (Person, Organization, Event)
   {
     name: 'person_name_index',
@@ -463,7 +463,7 @@ const BTREE_INDEXES = [
     label: 'GovernmentAction',
     property: 'caso_slug',
   },
-  // Generic labels — slug indexes for lookups
+  // Generic labels - slug indexes for lookups
   {
     name: 'person_slug_index',
     label: 'Person',
@@ -489,7 +489,7 @@ const BTREE_INDEXES = [
     label: 'Organization',
     property: 'slug',
   },
-  // Orchestrator indexes (M10 — investigation orchestrator)
+  // Orchestrator indexes (M10 - investigation orchestrator)
   {
     name: 'orchestrator_task_investigation_id_index',
     label: 'OrchestratorTask',
@@ -505,7 +505,7 @@ const BTREE_INDEXES = [
     label: 'OrchestratorState',
     property: 'investigation_id',
   },
-  // Cross-reference engine — platform-level lookup indexes
+  // Cross-reference engine - platform-level lookup indexes
   {
     name: 'appointment_dni_index',
     label: 'GovernmentAppointment',
@@ -572,7 +572,7 @@ const BTREE_INDEXES = [
     label: 'ComplianceEvaluation',
     property: 'investigation_id',
   },
-  // MCP API keys (M13 — investigation MCP server)
+  // MCP API keys (M13 - investigation MCP server)
   {
     name: 'mcp_api_key_hash_index',
     label: 'MCPApiKey',
@@ -624,7 +624,7 @@ export interface SchemaInitResult {
 
 /**
  * Initialize the Neo4j schema with all constraints and indexes.
- * Idempotent — safe to call on every startup.
+ * Idempotent - safe to call on every startup.
  *
  * Each statement runs in its own implicit transaction because
  * Neo4j does not allow schema commands inside explicit transactions

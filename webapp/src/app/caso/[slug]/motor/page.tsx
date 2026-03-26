@@ -12,11 +12,11 @@ interface PageProps {
 const PAGE_META: Record<Lang, { title: string; description: string }> = {
   es: {
     title: 'Motor de Investigación',
-    description: 'Panel de control del motor de investigación autónomo — pipeline, propuestas, auditoría y snapshots.',
+    description: 'Panel de control del motor de investigación autónomo - pipeline, propuestas, auditoría y snapshots.',
   },
   en: {
     title: 'Investigation Engine',
-    description: 'Autonomous investigation engine dashboard — pipeline, proposals, audit trail and snapshots.',
+    description: 'Autonomous investigation engine dashboard - pipeline, proposals, audit trail and snapshots.',
   },
 }
 

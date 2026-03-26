@@ -55,7 +55,7 @@ export async function GET(
           }}
         />
         <span style={{ fontSize: '20px', fontWeight: 400, color: '#a1a1aa' }}>
-          Caso Libra — Oficina de Rendicion de Cuentas
+          Caso Libra - Oficina de Rendicion de Cuentas
         </span>
       </div>
 

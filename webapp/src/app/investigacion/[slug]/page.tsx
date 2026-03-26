@@ -1,5 +1,5 @@
 /**
- * Investigation reading page — server-rendered at /investigacion/[slug].
+ * Investigation reading page - server-rendered at /investigacion/[slug].
  *
  * Features:
  * - SSR with data fetched at request time
@@ -140,7 +140,7 @@ export default async function InvestigationPage({ params }: PageProps) {
         {/* Actions */}
         <div className="mt-6 flex items-center gap-3 print:hidden">
           <ShareButton
-            text={`${investigation.title} — Investigación en la Oficina de Rendición de Cuentas`}
+            text={`${investigation.title} - Investigación en la Oficina de Rendición de Cuentas`}
             title={investigation.title}
           />
           <PrintButton />

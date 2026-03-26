@@ -6,7 +6,7 @@
  * Idempotent -- safe to re-run (uses MERGE, not CREATE).
  *
  * Data source:
- * - Sistema de Contrataciones Electronicas — Ordenes de Compra
+ * - Sistema de Contrataciones Electronicas - Ordenes de Compra
  *   https://datos.gob.ar/dataset/jgm-sistema-contrataciones-electronicas
  */
 

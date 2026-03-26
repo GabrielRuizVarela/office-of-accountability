@@ -1,5 +1,5 @@
 /**
- * Stage factory + barrel exports — M10 Stage Implementations (Phase 5).
+ * Stage factory + barrel exports - M10 Stage Implementations (Phase 5).
  */
 
 import type { StageKind } from '../types'

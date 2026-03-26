@@ -1,5 +1,5 @@
 /**
- * Graph query service — Cypher queries for node neighborhood and search.
+ * Graph query service - Cypher queries for node neighborhood and search.
  *
  * All queries use parameterized Cypher (no string interpolation).
  * Results are transformed into the { nodes, links } GraphData format
@@ -604,7 +604,7 @@ function buildWhereClause(filters: StructuredQueryFilters): {
 
 /**
  * Ensure relationship type contains only safe characters.
- * This is a defense-in-depth measure — the route validates via Zod enum.
+ * This is a defense-in-depth measure - the route validates via Zod enum.
  */
 function sanitizeRelType(relType: string): string {
   return relType.replace(/[^A-Z_]/g, '')

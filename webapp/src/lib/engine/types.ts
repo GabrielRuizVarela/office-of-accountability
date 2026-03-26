@@ -1,5 +1,5 @@
 /**
- * Engine node types — autonomous investigation pipeline (M10).
+ * Engine node types - autonomous investigation pipeline (M10).
  *
  * Node types: SourceConnector, PipelineConfig, PipelineStage, Gate,
  * PipelineState, Proposal, AuditEntry, Snapshot, ModelConfig.
@@ -43,7 +43,7 @@ export const confidenceTiers = ['gold', 'silver', 'bronze'] as const
 export type ConfidenceTier = (typeof confidenceTiers)[number]
 
 // ---------------------------------------------------------------------------
-// 1. SourceConnector — external data source configuration
+// 1. SourceConnector - external data source configuration
 // ---------------------------------------------------------------------------
 
 export const sourceConnectorSchema = z.object({
@@ -60,7 +60,7 @@ export const sourceConnectorSchema = z.object({
 export type SourceConnector = z.infer<typeof sourceConnectorSchema>
 
 // ---------------------------------------------------------------------------
-// 2. PipelineConfig — overall pipeline definition
+// 2. PipelineConfig - overall pipeline definition
 // ---------------------------------------------------------------------------
 
 export const pipelineConfigSchema = z.object({
@@ -76,7 +76,7 @@ export const pipelineConfigSchema = z.object({
 export type PipelineConfig = z.infer<typeof pipelineConfigSchema>
 
 // ---------------------------------------------------------------------------
-// 3. PipelineStage — individual stage in the pipeline
+// 3. PipelineStage - individual stage in the pipeline
 // ---------------------------------------------------------------------------
 
 export const pipelineStageSchema = z.object({
@@ -95,7 +95,7 @@ export const pipelineStageSchema = z.object({
 export type PipelineStage = z.infer<typeof pipelineStageSchema>
 
 // ---------------------------------------------------------------------------
-// 4. Gate — human review checkpoint between stages
+// 4. Gate - human review checkpoint between stages
 // ---------------------------------------------------------------------------
 
 export const gateSchema = z.object({
@@ -113,7 +113,7 @@ export const gateSchema = z.object({
 export type Gate = z.infer<typeof gateSchema>
 
 // ---------------------------------------------------------------------------
-// 5. PipelineState — runtime state of a pipeline execution
+// 5. PipelineState - runtime state of a pipeline execution
 // ---------------------------------------------------------------------------
 
 export const pipelineStateSchema = z.object({
@@ -132,7 +132,7 @@ export const pipelineStateSchema = z.object({
 export type PipelineState = z.infer<typeof pipelineStateSchema>
 
 // ---------------------------------------------------------------------------
-// 6. Proposal — LLM-generated change for human review
+// 6. Proposal - LLM-generated change for human review
 // ---------------------------------------------------------------------------
 
 export const proposalSchema = z.object({
@@ -152,7 +152,7 @@ export const proposalSchema = z.object({
 export type Proposal = z.infer<typeof proposalSchema>
 
 // ---------------------------------------------------------------------------
-// 7. AuditEntry — append-only log with SHA-256 hash chain
+// 7. AuditEntry - append-only log with SHA-256 hash chain
 // ---------------------------------------------------------------------------
 
 export const auditEntrySchema = z.object({
@@ -169,7 +169,7 @@ export const auditEntrySchema = z.object({
 export type AuditEntry = z.infer<typeof auditEntrySchema>
 
 // ---------------------------------------------------------------------------
-// 8. Snapshot — graph state capture at a point in time
+// 8. Snapshot - graph state capture at a point in time
 // ---------------------------------------------------------------------------
 
 export const snapshotSchema = z.object({
@@ -187,7 +187,7 @@ export const snapshotSchema = z.object({
 export type Snapshot = z.infer<typeof snapshotSchema>
 
 // ---------------------------------------------------------------------------
-// 9. ModelConfig — LLM model configuration
+// 9. ModelConfig - LLM model configuration
 // ---------------------------------------------------------------------------
 
 export const modelConfigSchema = z.object({
@@ -209,7 +209,7 @@ export const modelConfigSchema = z.object({
 export type ModelConfig = z.infer<typeof modelConfigSchema>
 
 // ---------------------------------------------------------------------------
-// 10. OrchestratorTask — work item in the investigation orchestrator queue
+// 10. OrchestratorTask - work item in the investigation orchestrator queue
 // ---------------------------------------------------------------------------
 
 export const orchestratorTaskStatuses = [
@@ -238,7 +238,7 @@ export const orchestratorTaskSchema = z.object({
 export type OrchestratorTask = z.infer<typeof orchestratorTaskSchema>
 
 // ---------------------------------------------------------------------------
-// 12. OrchestratorState — runtime state of the investigation orchestrator
+// 12. OrchestratorState - runtime state of the investigation orchestrator
 // ---------------------------------------------------------------------------
 
 export const orchestratorStateSchema = z.object({

@@ -5,7 +5,7 @@
  * and silver tier. Also creates relationships between entities.
  *
  * Run with: npx tsx scripts/ingest-recent-scandals.ts
- * Idempotent — safe to re-run (uses MERGE, not CREATE).
+ * Idempotent - safe to re-run (uses MERGE, not CREATE).
  */
 
 import 'dotenv/config'

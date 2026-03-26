@@ -1,10 +1,10 @@
-# MiroFish Integration Plan — Caso Libra Scenario Simulation
+# MiroFish Integration Plan - Caso Libra Scenario Simulation
 
 ## Overview
 
 Integrate [MiroFish](https://github.com/666ghj/MiroFish) as a scenario simulation engine for the Caso Libra investigation. MiroFish uses swarm intelligence (multi-agent simulation + GraphRAG knowledge graphs) to create "digital parallel worlds" where thousands of autonomous agents simulate how events could unfold.
 
-**Goal**: Allow users to ask "what if?" questions about the Caso Libra case and see AI-simulated outcomes — e.g., "What happens if Hayden Davis cooperates with the investigation?" or "How would markets react if phone forensics prove direct presidential involvement?"
+**Goal**: Allow users to ask "what if?" questions about the Caso Libra case and see AI-simulated outcomes - e.g., "What happens if Hayden Davis cooperates with the investigation?" or "How would markets react if phone forensics prove direct presidential involvement?"
 
 ## Architecture
 
@@ -35,9 +35,9 @@ Integrate [MiroFish](https://github.com/666ghj/MiroFish) as a scenario simulatio
 
 - **GPU machine** (user-provided) running MiroFish backend
 - **Python** >= 3.11, <= 3.12
-- **Node.js** 18+ (for MiroFish frontend, optional — we use our own UI)
-- **LLM API key** — OpenAI-compatible (tested with Alibaba Qwen `qwen-plus`)
-- **Zep Cloud API key** — for agent memory persistence
+- **Node.js** 18+ (for MiroFish frontend, optional - we use our own UI)
+- **LLM API key** - OpenAI-compatible (tested with Alibaba Qwen `qwen-plus`)
+- **Zep Cloud API key** - for agent memory persistence
 
 ## Implementation Phases
 
@@ -79,9 +79,9 @@ What it does:
 - Generates agent personality profiles from our Person nodes (role, description, affiliations)
 - Outputs a JSON/text file ready for MiroFish's seed data input
 
-**Seed data structure** (approximate — adapt to MiroFish's expected format):
+**Seed data structure** (approximate - adapt to MiroFish's expected format):
 ```
-# Caso Libra — Seed Data for Simulation
+# Caso Libra - Seed Data for Simulation
 
 ## Actors
 - Javier Milei: Presidente de la Nacion. Promoted $LIBRA token to 19M followers...
@@ -112,29 +112,29 @@ What it does:
 
 ### Phase C: ORC Platform Integration
 
-#### C.1 — New route: `/caso/[slug]/simular`
+#### C.1 - New route: `/caso/[slug]/simular`
 
 Add a "Simular" tab to the investigation nav. Page contains:
 - **Scenario input**: Text field where user describes a "what if" scenario in natural language
 - **Simulation config**: Number of rounds (start with max 40), agent count
-- **Results panel**: Streaming simulation output — prediction report + key agent decisions
+- **Results panel**: Streaming simulation output - prediction report + key agent decisions
 - **Chat interface**: Talk to simulated agents or the ReportAgent after simulation completes
 
-#### C.2 — API proxy route: `/api/caso-libra/simulate`
+#### C.2 - API proxy route: `/api/caso-libra/simulate`
 
 Proxies requests to the MiroFish backend on the GPU machine:
-- `POST /api/caso-libra/simulate` — start a new simulation with scenario description
-- `GET /api/caso-libra/simulate/[sessionId]` — poll simulation status/results
-- `POST /api/caso-libra/simulate/[sessionId]/chat` — chat with agents post-simulation
+- `POST /api/caso-libra/simulate` - start a new simulation with scenario description
+- `GET /api/caso-libra/simulate/[sessionId]` - poll simulation status/results
+- `POST /api/caso-libra/simulate/[sessionId]/chat` - chat with agents post-simulation
 
 Environment variable: `MIROFISH_API_URL` pointing to the GPU machine.
 
-#### C.3 — UI components
+#### C.3 - UI components
 
 New components:
-- `components/investigation/ScenarioInput.tsx` — scenario description + config form
-- `components/investigation/SimulationResults.tsx` — report display + agent decision timeline
-- `components/investigation/AgentChat.tsx` — post-simulation chat with agents
+- `components/investigation/ScenarioInput.tsx` - scenario description + config form
+- `components/investigation/SimulationResults.tsx` - report display + agent decision timeline
+- `components/investigation/AgentChat.tsx` - post-simulation chat with agents
 
 ### Phase D: Agent Personality Mapping
 
@@ -156,16 +156,16 @@ These get injected as agent parameters during MiroFish environment setup.
 ## Example Scenarios to Simulate
 
 1. **"Que pasa si Hayden Davis coopera con la justicia argentina?"**
-   — Simulate Davis providing testimony, who gets exposed, political fallout
+   - Simulate Davis providing testimony, who gets exposed, political fallout
 
 2. **"Que pasaria si se publican los registros completos de llamadas de Santiago Caputo?"**
-   — Simulate media cycle, political responses, legal proceedings
+   - Simulate media cycle, political responses, legal proceedings
 
 3. **"Como reaccionaria el mercado cripto argentino si Milei enfrenta juicio politico por esto?"**
-   — Simulate economic/political/social ripple effects
+   - Simulate economic/political/social ripple effects
 
 4. **"Que pasa si aparecen mas billeteras vinculadas a funcionarios?"**
-   — Simulate escalation, new actors entering the investigation
+   - Simulate escalation, new actors entering the investigation
 
 ## Environment Variables (ORC Platform)
 
@@ -179,18 +179,18 @@ MIROFISH_LLM_API_KEY=<key>
 
 ## Security Considerations
 
-- MiroFish backend should NOT be publicly exposed — access only from ORC backend via private network or SSH tunnel
-- Simulation results are AI-generated speculation, not evidence — UI must clearly label them as such
+- MiroFish backend should NOT be publicly exposed - access only from ORC backend via private network or SSH tunnel
+- Simulation results are AI-generated speculation, not evidence - UI must clearly label them as such
 - Rate-limit simulation requests (GPU-intensive)
 - Add disclaimer: "Los resultados de simulacion son generados por IA y no constituyen evidencia ni predicciones factuales"
 
 ## Open Questions
 
-- [ ] MiroFish seed data format — need to test exact input format the API expects
-- [ ] Streaming vs polling — does MiroFish support SSE/WebSocket for live simulation updates?
-- [ ] Agent memory persistence — do we want simulations to build on each other or start fresh?
-- [ ] Cost — LLM API costs for multi-agent simulation with thousands of agents can be significant
-- [ ] MiroFish API stability — it's a research project, may need to pin to a specific commit
+- [ ] MiroFish seed data format - need to test exact input format the API expects
+- [ ] Streaming vs polling - does MiroFish support SSE/WebSocket for live simulation updates?
+- [ ] Agent memory persistence - do we want simulations to build on each other or start fresh?
+- [ ] Cost - LLM API costs for multi-agent simulation with thousands of agents can be significant
+- [ ] MiroFish API stability - it's a research project, may need to pin to a specific commit
 
 ## Timeline Estimate
 

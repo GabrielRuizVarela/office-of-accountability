@@ -56,7 +56,7 @@ export async function POST(
         RETURN count(*) AS matches_found
       `
     } else {
-      // name_fuzzy — exact name match as approximation
+      // name_fuzzy - exact name match as approximation
       confidence = 0.9
       cypher = `
         MATCH (a {caso_slug: $casoSlug}), (b {caso_slug: $casoSlug})

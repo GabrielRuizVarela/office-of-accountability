@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * Display simulation results from MiroFish — prediction report + agent decisions.
+ * Display simulation results from MiroFish - prediction report + agent decisions.
  */
 
 interface AgentDecision {

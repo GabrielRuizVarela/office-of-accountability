@@ -3,7 +3,7 @@
  * Run with: npx tsx scripts/run-etl-cne.ts
  *
  * Pipeline: Download CSVs → Parse → Transform → Match Politicians → Load
- * Idempotent — safe to re-run (uses MERGE, not CREATE).
+ * Idempotent - safe to re-run (uses MERGE, not CREATE).
  *
  * Data source: https://aportantes.electoral.gob.ar
  */

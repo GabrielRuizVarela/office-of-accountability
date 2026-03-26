@@ -1,5 +1,5 @@
 /**
- * Timeline page — events ordered chronologically for any investigation.
+ * Timeline page - events ordered chronologically for any investigation.
  */
 
 import { getQueryBuilder } from '@/lib/investigations/query-builder'

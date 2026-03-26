@@ -181,7 +181,7 @@ export function extractEmbeddedNodeIds(bodyJson: string): readonly string[] {
   try {
     walk(JSON.parse(bodyJson) as TipTapNode)
   } catch {
-    // Invalid JSON — no embeds
+    // Invalid JSON - no embeds
   }
 
   return Array.from(ids)

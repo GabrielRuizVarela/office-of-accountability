@@ -1,5 +1,5 @@
 /**
- * REST API connector — M10 Source Connectors (Phase 4).
+ * REST API connector - M10 Source Connectors (Phase 4).
  *
  * Fetches records from paginated REST endpoints.
  * Supports offset and cursor pagination modes.

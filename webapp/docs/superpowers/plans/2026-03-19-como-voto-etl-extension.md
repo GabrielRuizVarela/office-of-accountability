@@ -1,10 +1,10 @@
-# Como Voto ETL Extension — Implementation Plan
+# Como Voto ETL Extension - Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Extend the Como Voto ETL pipeline to ingest Terms, Legislation, and Election data into Neo4j.
 
-**Architecture:** Add new types, fetchers, transformers, and loaders to the existing `webapp/src/etl/como-voto/` module. The runner script fetches two new JSON files alongside existing data, transforms everything in one pass, and loads in dependency order. No new entry points — `npm run etl:como-voto` runs everything.
+**Architecture:** Add new types, fetchers, transformers, and loaders to the existing `webapp/src/etl/como-voto/` module. The runner script fetches two new JSON files alongside existing data, transforms everything in one pass, and loads in dependency order. No new entry points - `npm run etl:como-voto` runs everything.
 
 **Tech Stack:** TypeScript, Zod v4, neo4j-driver-lite, Node.js fetch API
 
@@ -30,14 +30,14 @@
 **Files:**
 - Modify: `webapp/src/etl/como-voto/types.ts`
 
-**Note:** Find insertion points by searching for the content markers (e.g., `VotingSessionsFileSchema`), not by line numbers — line numbers shift after each insertion.
+**Note:** Find insertion points by searching for the content markers (e.g., `VotingSessionsFileSchema`), not by line numbers - line numbers shift after each insertion.
 
 - [ ] **Step 1: Add LawNamesFileSchema**
 
 After the `VotingSessionsFileSchema` definition, add:
 
 ```typescript
-/** Law names file — flat array of law name strings */
+/** Law names file - flat array of law name strings */
 export const LawNamesFileSchema = z.array(z.string())
 ```
 
@@ -54,7 +54,7 @@ export const ElectionEntrySchema = z.object({
 })
 export type ElectionEntry = z.infer<typeof ElectionEntrySchema>
 
-/** Election legislators file — keyed by year, then chamber */
+/** Election legislators file - keyed by year, then chamber */
 export const ElectionLegislatorsFileSchema = z.record(
   z.string(),
   z.record(z.string(), z.array(ElectionEntrySchema)),
@@ -467,7 +467,7 @@ export function transformLegislation(
     // Name resolution: ln field > lawNames fallback > raw gk
     let name = gkToName.get(gk)
     if (!name && lawNameSet.has(gk)) {
-      name = gk // gk itself appears in lawNames — use it as display name
+      name = gk // gk itself appears in lawNames - use it as display name
     }
 
     legislation.push({
@@ -639,7 +639,7 @@ export function transformElections(
           if (matching.length === 1) {
             politicianId = matching[0]
           }
-          // else: still ambiguous or no term overlap — skip
+          // else: still ambiguous or no term overlap - skip
         }
 
         if (!politicianId) {
@@ -696,16 +696,16 @@ export interface TransformResult {
   readonly castVotes: readonly CastVoteRelParams[]
   readonly memberOfRels: readonly MemberOfRelParams[]
   readonly representsRels: readonly RepresentsRelParams[]
-  // New — Terms
+  // New - Terms
   readonly terms: readonly TermNodeParams[]
   readonly servedTermRels: readonly ServedTermRelParams[]
   readonly termPartyRels: readonly TermPartyRelParams[]
   readonly termProvinceRels: readonly TermProvinceRelParams[]
-  // New — Legislation
+  // New - Legislation
   readonly legislation: readonly LegislationParams[]
   readonly voteOnRels: readonly VoteOnRelParams[]
   readonly lawNamePatches: readonly LawNamePatchParams[]
-  // New — Elections
+  // New - Elections
   readonly elections: readonly ElectionParams[]
   readonly ranInRels: readonly RanInRelParams[]
 }
@@ -813,7 +813,7 @@ export function transformAll(input: TransformInput): TransformResult {
 - [ ] **Step 4: Verify it compiles**
 
 Run: `cd webapp && npx tsc --noEmit --pretty 2>&1 | head -30`
-Expected: Errors only from `loader.ts` (which still uses old TransformResult) and `run-etl-como-voto.ts` (missing new input fields) — these are fixed in Tasks 7 and 8.
+Expected: Errors only from `loader.ts` (which still uses old TransformResult) and `run-etl-como-voto.ts` (missing new input fields) - these are fixed in Tasks 7 and 8.
 
 - [ ] **Step 5: Commit**
 
@@ -1007,7 +1007,7 @@ export async function loadAll(
 
   const steps: LoadStepResult[] = []
 
-  // Phase 1: Nodes (order matters — politicians first since rels reference them)
+  // Phase 1: Nodes (order matters - politicians first since rels reference them)
   steps.push(await loadPoliticians(data.politicians, nodeBatchSize))
   steps.push(await loadParties(data.parties, nodeBatchSize))
   steps.push(await loadProvinces(data.provinces, nodeBatchSize))
@@ -1042,7 +1042,7 @@ export async function loadAll(
 - [ ] **Step 5: Verify it compiles**
 
 Run: `cd webapp && npx tsc --noEmit --pretty 2>&1 | head -20`
-Expected: Only errors from runner script (missing new input fields) — fixed in Task 8.
+Expected: Only errors from runner script (missing new input fields) - fixed in Task 8.
 
 - [ ] **Step 6: Commit**
 

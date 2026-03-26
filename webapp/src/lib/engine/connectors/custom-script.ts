@@ -1,5 +1,5 @@
 /**
- * Custom script connector — M10 Source Connectors (Phase 4).
+ * Custom script connector - M10 Source Connectors (Phase 4).
  *
  * Runs a server-side Node script via execFile (no shell) and
  * parses its stdout as JSONL (one JSON object per line).

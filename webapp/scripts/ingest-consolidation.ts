@@ -5,7 +5,7 @@
  * discovered by deep-dive research but not yet in the graph.
  *
  * Run with: npx tsx scripts/ingest-consolidation.ts
- * Idempotent — safe to re-run (uses MERGE, not CREATE).
+ * Idempotent - safe to re-run (uses MERGE, not CREATE).
  */
 
 import 'dotenv/config'
@@ -168,7 +168,7 @@ const EVENTS = [
   },
   {
     id: 'blanqueo-phase1-completion-2024',
-    title: 'Blanqueo Phase 1 completion — USD 22.5B',
+    title: 'Blanqueo Phase 1 completion - USD 22.5B',
     date: '2024-11-30',
     description_en: 'First phase of tax amnesty (blanqueo) completed with USD 22.5B declared. Record capital repatriation.',
     description_es: 'Primera fase de blanqueo completada con USD 22.5B declarados. Repatriación de capital récord.',
@@ -453,7 +453,7 @@ async function connectOrphans() {
     console.log(`  ✓ ${orphanId} -> InvestigationConfig (fallback)`)
   }
 
-  // RODRIGUEZ HUGO, TANOS MAURO, TORRES ALFONSO JOSE — connect to investigation
+  // RODRIGUEZ HUGO, TANOS MAURO, TORRES ALFONSO JOSE - connect to investigation
   for (const orphanId of ['fp-rodriguez-hugo', 'fp-tanos-mauro', 'fp-torres-alfonso-jose']) {
     await executeWrite(
       `MATCH (n:Person {id: $id, caso_slug: $caso})

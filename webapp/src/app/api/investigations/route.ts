@@ -1,8 +1,8 @@
 /**
  * /api/investigations
  *
- * POST — Create a new investigation (auth required)
- * GET  — List published investigations (public)
+ * POST - Create a new investigation (auth required)
+ * GET  - List published investigations (public)
  *
  * Responses:
  *   POST 201: created investigation
@@ -58,7 +58,7 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   try {
-    // Sanitize TipTap body — strip dangerous HTML, event handlers, javascript: URIs
+    // Sanitize TipTap body - strip dangerous HTML, event handlers, javascript: URIs
     let sanitizedBody: string
     try {
       sanitizedBody = sanitizeTipTapBody(parsed.data.body)

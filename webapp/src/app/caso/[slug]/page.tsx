@@ -1,5 +1,5 @@
 /**
- * Case landing page — investigation overview with actor grid and latest documents.
+ * Case landing page - investigation overview with actor grid and latest documents.
  */
 
 import { getQueryBuilder } from '@/lib/investigations/query-builder'

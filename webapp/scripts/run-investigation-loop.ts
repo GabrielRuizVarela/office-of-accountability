@@ -1,5 +1,5 @@
 /**
- * Investigation Loop — Finanzas Políticas cross-referencing engine.
+ * Investigation Loop - Finanzas Políticas cross-referencing engine.
  *
  * Orchestrates a four-phase cycle:
  *   Phase 1: Ingest (Compr.ar, Boletín Oficial, IGJ)
@@ -329,7 +329,7 @@ function printReport(
   cycleDurationMs: number,
 ) {
   console.log('\n' + '═'.repeat(70))
-  console.log('  INVESTIGATION LOOP — CYCLE REPORT')
+  console.log('  INVESTIGATION LOOP - CYCLE REPORT')
   console.log('  Finanzas Políticas / Argentine Political Finance')
   console.log('═'.repeat(70))
 
@@ -361,9 +361,9 @@ function printReport(
     for (const r of analysisResults) {
       const result = r as { label: string; success: boolean; error?: string }
       if (result.success) {
-        console.log(`  ✓ ${result.label} — completed`)
+        console.log(`  ✓ ${result.label} - completed`)
       } else {
-        console.log(`  ✗ ${result.label} — ${result.error ?? 'failed'}`)
+        console.log(`  ✗ ${result.label} - ${result.error ?? 'failed'}`)
       }
     }
   }
@@ -448,7 +448,7 @@ async function runCycle(): Promise<void> {
 
 async function main(): Promise<void> {
   console.log('╔══════════════════════════════════════════════════════╗')
-  console.log('║  Investigation Loop Engine — Finanzas Políticas     ║')
+  console.log('║  Investigation Loop Engine - Finanzas Políticas     ║')
   console.log('║  Compr.ar × AFIP/IGJ × Boletín Oficial             ║')
   console.log('╚══════════════════════════════════════════════════════╝')
 

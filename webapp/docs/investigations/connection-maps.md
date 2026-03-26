@@ -19,9 +19,9 @@ Key actors:
 
 ## Connection Map 2: The Offshore-Legislation Nexus
 
-### Camaño — Maximum Overlap
+### Camaño - Maximum Overlap
 
-- **Offshore:** TT 41 CORP (BVI, incorporated June 2016 — DURING her 2014-2018 term)
+- **Offshore:** TT 41 CORP (BVI, incorporated June 2016 - DURING her 2014-2018 term)
 - **Financial votes:** 326 total on Presupuesto, Ganancias, Blanqueo, etc.
 - **High absence:** 35 absent votes on Presupuesto alone
 - **Party switching:** 6 parties over 30 years (maximizing cross-coalition access)
@@ -29,7 +29,7 @@ Key actors:
 - **Graph centrality:** 4th highest (2,364 connections)
 - **Datasets:** 4 (OffshoreOfficer + BoardMember + CompanyOfficer + AssetDeclaration)
 
-### Ibañez — Active Violation
+### Ibañez - Active Violation
 
 - **Offshore:** PELMOND COMPANY LTD (BVI, incorporated Oct 2014, status: **ACTIVE**)
 - **Current deputy:** La Libertad Avanza, Córdoba
@@ -52,7 +52,7 @@ Senate vote on Ley de Bases (June 12, 2024):
 
 **The opposition had MORE corporate connections than government supporters.** Possible interpretations:
 1. PJ senators voted against because deregulation threatened their business interests
-2. Corporate connections don't predict voting — ideology does
+2. Corporate connections don't predict voting - ideology does
 3. JxC's corporate network operates through different channels not captured in this data
 
 ## Connection Map 5: The Macri Web
@@ -80,7 +80,7 @@ Mauricio Macri appears in **5 datasets** (maximum): Donor + BoardMember + Compan
 | Offshore Leaks | 127 | ~50 | BVI |
 | Paradise Papers | 87 | ~30 | Malta, Bermuda |
 
-**2,637 Argentines exposed by Pandora Papers alone** — the largest single leak for Argentina.
+**2,637 Argentines exposed by Pandora Papers alone** - the largest single leak for Argentina.
 
 ## Investigation Priority Ranking
 
@@ -89,7 +89,7 @@ Mauricio Macri appears in **5 datasets** (maximum): Donor + BoardMember + Compan
 | 1 | Camaño | Offshore (Pandora/Trident) + Bellota SA + financial votes + 14x wealth + 6 parties | Highest single-target value |
 | 2 | Macri/SOCMA/Geometales | Correo + AUSOL + blanqueo + Minera Geometales board (Aguado, Grindetti, Luksic, Mindlin) | Most documented, new mining nexus |
 | 3 | Ibañez/PELMOND | Active offshore while deputy | Most actionable current violation |
-| 4 | Santoro sand empire | 11 sand/aggregate companies while sitting deputy, vertically integrated | New finding — undisclosed business empire |
+| 4 | Santoro sand empire | 11 sand/aggregate companies while sitting deputy, vertically integrated | New finding - undisclosed business empire |
 | 5 | Grindetti/Panama Papers | On Geometales board + Panama Papers charges + SOCMA cadre | Bridges corporate and offshore |
 | 6 | De Narváez | 37 boards, $500M fortune, Timberhill/Willowbrook trading cos | Offshore vehicle investigation needed |
 | 7 | PRO revolving door | 13/20 cases = institutional capture | Systemic pattern |
@@ -97,7 +97,7 @@ Mauricio Macri appears in **5 datasets** (maximum): Donor + BoardMember + Compan
 
 ## Data Quality Notes
 
-- **False positive risk:** FERNANDEZ Carlos Alberto (Misiones) shows 234 external links — almost certainly name-collision artifacts. Common Argentine names (Garcia, Rodriguez, Martinez, Fernandez) inflate match counts.
+- **False positive risk:** FERNANDEZ Carlos Alberto (Misiones) shows 234 external links - almost certainly name-collision artifacts. Common Argentine names (Garcia, Rodriguez, Martinez, Fernandez) inflate match counts.
 - **Asset totals null:** DDJJ `total_assets` field is unpopulated for most declarations, blocking wealth trajectory analysis. Individual asset items exist in separate CSV files not yet ingested.
 - **Donation amounts loaded:** CNE donation amounts now correctly loaded (bugs fixed: 100x inflation, empty dates, missing relationship amounts).
 - **Company nodes missing:** 1M+ Company/PublicCompany nodes not yet loaded (timeout issues). Officer/board member nodes are loaded but lack company linkage.
@@ -116,7 +116,7 @@ Mauricio Macri appears in **5 datasets** (maximum): Donor + BoardMember + Compan
 | Anibal Leguizamon | Peronismo | TOTAL SUPPLY SUDAMERICANA | Maria Laura Macri |
 | Antonio Rattin | Unidad Federalista | LA XENEIZE | Mauricio Macri |
 
-**GRUPO PROVINCIA bridges 5 PJ politicians to Jorge Macri** — cross-party corporate entanglement at the board level.
+**GRUPO PROVINCIA bridges 5 PJ politicians to Jorge Macri** - cross-party corporate entanglement at the board level.
 
 ## Connection Map 8: The Influence Triangle
 
@@ -126,8 +126,8 @@ Politicians who are simultaneously donors + board members + government appointee
 |-----------|-------|-----------|-----------|----------|
 | Sánchez, Fernando | CC | 13 | Secretario | 5 |
 | Macri, Mauricio | PRO | 6 | Presidente | 5 |
-| Recalde, Mariano | PJ | 8 | — | 4 |
-| Máximo Kirchner | UP | 1 | — | 4 |
+| Recalde, Mariano | PJ | 8 | - | 4 |
+| Máximo Kirchner | UP | 1 | - | 4 |
 
 ## Connection Map 9: Corporate Politicians Vote Pro-Deregulation
 
@@ -142,13 +142,13 @@ Politicians who voted on mining legislation AND sit on mining company boards:
 
 | Politician | Party | Mining Legislation | Mining Company | Vote |
 |-----------|-------|-------------------|---------------|------|
-| **MACRI, Mauricio** | PRO | Código de Minería — Modificación (Sept 2024) | MINERA GEOMETALES | Absent/null |
+| **MACRI, Mauricio** | PRO | Código de Minería - Modificación (Sept 2024) | MINERA GEOMETALES | Absent/null |
 | **MORALES, Gerardo Rubén** | UCR | Exploración y explotación del carbón mineral | NUEVO NORTE ENERGIA Y MINERIA | (recorded) |
-| **YARADE, Rodolfo Fernando** | — | Día del proveedor minero nacional | BOLERA MINERA | (recorded) |
+| **YARADE, Rodolfo Fernando** | - | Día del proveedor minero nacional | BOLERA MINERA | (recorded) |
 
-**Macri finding:** Mauricio Macri was absent for the Mining Code modification vote on 12/09/2024, while simultaneously sitting on the board of Minera Geometales SA — a copper exploration company in Malargüe, Mendoza, originally owned by the Macri Group via IECSA. Web search confirms: Governor Cornejo returned the mining concession to the Macri Group via Decree 304/2018, and Geometales has 16 mining properties in Malargüe. The company names its deposits after Franco Macri's grandchildren (Francesca, Valentina, Joaquina, Florencia).
+**Macri finding:** Mauricio Macri was absent for the Mining Code modification vote on 12/09/2024, while simultaneously sitting on the board of Minera Geometales SA - a copper exploration company in Malargüe, Mendoza, originally owned by the Macri Group via IECSA. Web search confirms: Governor Cornejo returned the mining concession to the Macri Group via Decree 304/2018, and Geometales has 16 mining properties in Malargüe. The company names its deposits after Franco Macri's grandchildren (Francesca, Valentina, Joaquina, Florencia).
 
-**Morales finding:** Gerardo Morales (UCR, Governor of Jujuy) voted on a coal mining exploration law while sitting on the board of NUEVO NORTE ENERGIA Y MINERIA — a direct conflict of interest for a politician from Argentina's mining-heavy northwest.
+**Morales finding:** Gerardo Morales (UCR, Governor of Jujuy) voted on a coal mining exploration law while sitting on the board of NUEVO NORTE ENERGIA Y MINERIA - a direct conflict of interest for a politician from Argentina's mining-heavy northwest.
 
 ## Connection Map 16: De Narváez Offshore Network (ICIJ)
 
@@ -159,22 +159,22 @@ Francisco De Narváez appears in **both** Panama Papers and Pandora Papers:
 | FRANCISCO DE NARVAEZ STEUER | Panama Papers | Titan Consulting Ltd. | BVI | Active |
 | MARIA ISABEL DE NARVAEZ STEUER | Panama Papers | Titan Consulting Ltd. | BVI | Active |
 | JUANITA DE NARVAEZ STEUER | Panama Papers | Titan Consulting Ltd. | BVI | Active |
-| FRANCISCO DE NARVAEZ FECCHINO | Pandora Papers (Alcogal) | BANDA ORIENTAL S.A | — | Inactive |
+| FRANCISCO DE NARVAEZ FECCHINO | Pandora Papers (Alcogal) | BANDA ORIENTAL S.A | - | Inactive |
 | FRANCISCO DE NARVAEZ FECCHINO | Pandora Papers (Alcogal) | RETRATO PARTNERS LIMITED | BVI | Active |
 
 **Key distinctions:** Two different Francisco De Narváez:
-- **STEUER** = siblings (Francisco, Maria Isabel, Juanita), registered with Titan Consulting in the Panama Papers — likely the children of the politician
+- **STEUER** = siblings (Francisco, Maria Isabel, Juanita), registered with Titan Consulting in the Panama Papers - likely the children of the politician
 - **FECCHINO** = the politician himself (maiden name variant), with two Pandora Papers entities through Alcogal law firm
 
-**RETRATO PARTNERS LIMITED** (BVI, Active) is the most significant — an active offshore entity linked to the politician who purchased Walmart Argentina for ~USD 80M in 2020 and whose personal fortune exceeds USD 500M. The name "Retrato" (portrait) may reference the art/gallery world (De Narváez is a known art collector).
+**RETRATO PARTNERS LIMITED** (BVI, Active) is the most significant - an active offshore entity linked to the politician who purchased Walmart Argentina for ~USD 80M in 2020 and whose personal fortune exceeds USD 500M. The name "Retrato" (portrait) may reference the art/gallery world (De Narváez is a known art collector).
 
-**BANDA ORIENTAL S.A** — the name references the historical territory of Uruguay/Río de la Plata, suggesting Uruguayan operations. Status: Inactive.
+**BANDA ORIENTAL S.A** - the name references the historical territory of Uruguay/Río de la Plata, suggesting Uruguayan operations. Status: Inactive.
 
 ## Data Quality: Confirmed False Positives
 
-Fernandez Carlos Alberto (108 boards) is confirmed as **multiple different people** sharing a common name — simultaneously "inspector," "jefe de sección," "Director de Planificación de Seguridad de Frontera," and "Diputado Nacional." Name-only matching inflates common names.
+Fernandez Carlos Alberto (108 boards) is confirmed as **multiple different people** sharing a common name - simultaneously "inspector," "jefe de sección," "Director de Planificación de Seguridad de Frontera," and "Diputado Nacional." Name-only matching inflates common names.
 
-## Connection Map 10: PENSAR ARGENTINA — The PRO Policy Factory
+## Connection Map 10: PENSAR ARGENTINA - The PRO Policy Factory
 
 **Most significant structural finding.** PENSAR ARGENTINA is registered as a formal civil association in the IGJ corporate registry with 50+ PRO politicians and technocrats as board members/socios:
 
@@ -192,7 +192,7 @@ Key members (from IGJ BoardMember data):
 - Nicolás Caputo (Macri's closest business partner)
 - Pablo Lombardi (Media Secretary)
 
-**Significance:** This is not a loose political alliance — it's a **formally registered corporate entity** where the entire PRO governing elite sat on the same board alongside Macri's personal business partner. Policy decisions flowed from this think tank directly to the executive branch.
+**Significance:** This is not a loose political alliance - it's a **formally registered corporate entity** where the entire PRO governing elite sat on the same board alongside Macri's personal business partner. Policy decisions flowed from this think tank directly to the executive branch.
 
 Also co-founded: **SUMA PARA EL DISEÑO DE POLITICAS PUBLICAS** (Michetti + Pinedo).
 
@@ -206,7 +206,7 @@ Also co-founded: **SUMA PARA EL DISEÑO DE POLITICAS PUBLICAS** (Michetti + Pine
 | Amadeo | Capitanich | FONCAP | Cross-party microfinance |
 | Brown | De Mendiguren | BICE | National investment bank |
 
-## Connection Map 12: SAME_PERSON Bridge — New Corporate Connections (Cycle 3)
+## Connection Map 12: SAME_PERSON Bridge - New Corporate Connections (Cycle 3)
 
 The SAME_PERSON relationship (1.78M DNI-matched links between CompanyOfficer and BoardMember nodes) created new traversal paths revealing politicians' full corporate footprints.
 
@@ -231,27 +231,27 @@ The SAME_PERSON relationship (1.78M DNI-matched links between CompanyOfficer and
 Leandro Santoro (UP, CABA) DNI-confirmed across 11 sand extraction and aggregate companies: Aridos Cañuelas, Arenas Building, Arenera Sarthou, Arenera Pueyrredón, Silos Areneros Buenos Aires, Arenas Shipping, CADEAR (industry association), Arenas Studios, Marymar, SABA. Web search confirms he is Managing Director involved in dredging, sand extraction, transport and commercialization. This is a **vertically integrated sand/aggregate business** operated by a sitting deputy.
 
 ### Key New Lead: De Narváez offshore vehicles
-Timberhill Trading Inc. and Willowbrook Trading Inc. — associated with a politician-businessman who purchased El Cronista Comercial and owned TIA supermarkets (sold for $638M). Web search confirms personal fortune exceeding $500M, Walmart Argentina acquisition (2020), La Rural exhibition center, América TV. These trading companies warrant offshore investigation.
+Timberhill Trading Inc. and Willowbrook Trading Inc. - associated with a politician-businessman who purchased El Cronista Comercial and owned TIA supermarkets (sold for $638M). Web search confirms personal fortune exceeding $500M, Walmart Argentina acquisition (2020), La Rural exhibition center, América TV. These trading companies warrant offshore investigation.
 
-### Camaño — Bellota SA bridge to Barrionuevo
+### Camaño - Bellota SA bridge to Barrionuevo
 Only politician at the intersection of offshore records AND company boards. Confirmed: she and husband Luis Barrionuevo co-direct Bellota SA. The Camaño-Barrionuevo-Bellota link is the only InvestigationTarget→Politician bridge found via shared companies.
 
-## Connection Map 13: Minera Geometales — The SOCMA Mining Nexus
+## Connection Map 13: Minera Geometales - The SOCMA Mining Nexus
 
 Minera Geometales SA is the **single richest board-level connection** found in the graph. It links:
 
 **Politicians on board:**
-- **MACRI, Mauricio** (PRO) — board member, company originally acquired by IECSA/Macri Group from Chile's Luksic Group
-- **MACRI, Francisco** — Franco Macri, patriarch of the Macri empire
-- **AGUADO, Jorge** (UCeDé, Buenos Aires) — ex-governor of Buenos Aires province (military era), later VP of SOCMA Group
-- **GRINDETTI, Néstor Osvaldo** — PRO mayor of Lanús, former SOCMA cadre, **charged in Panama Papers** (2016, illicit enrichment)
+- **MACRI, Mauricio** (PRO) - board member, company originally acquired by IECSA/Macri Group from Chile's Luksic Group
+- **MACRI, Francisco** - Franco Macri, patriarch of the Macri empire
+- **AGUADO, Jorge** (UCeDé, Buenos Aires) - ex-governor of Buenos Aires province (military era), later VP of SOCMA Group
+- **GRINDETTI, Néstor Osvaldo** - PRO mayor of Lanús, former SOCMA cadre, **charged in Panama Papers** (2016, illicit enrichment)
 
 **Corporate figures on the same board:**
-- Jean Paul Luksic Fontbona / Andrónico Luksic Abaroa — Chilean Luksic mining dynasty (original owners)
-- Damián Mindlin — Emes Group (acquired the company in 2017 along with all IECSA assets)
-- Felipe Suar — TV producer, Macri associate
-- Pablo Clusellas — Macri's Legal Secretary during presidency
-- Martín Blaquier — Ledesma sugar dynasty
+- Jean Paul Luksic Fontbona / Andrónico Luksic Abaroa - Chilean Luksic mining dynasty (original owners)
+- Damián Mindlin - Emes Group (acquired the company in 2017 along with all IECSA assets)
+- Felipe Suar - TV producer, Macri associate
+- Pablo Clusellas - Macri's Legal Secretary during presidency
+- Martín Blaquier - Ledesma sugar dynasty
 
 **Timeline:** Originally Luksic Group → acquired by IECSA (Macri Group) in late 1990s → Calcaterra (Macri cousin) as president 2001-2004 → fined for illegal water use 2008 → sold to Emes Group (Mindlin) 2017.
 
@@ -267,7 +267,7 @@ Only 3 connections found between InvestigationTargets and other politicians via 
 | MACRI, Mauricio | AGUADO, Jorge Rubén | UCeDé | MINERA GEOMETALES |
 | MACRI, Mauricio | RATTIN, Antonio Ubaldo | Unidad Federalista | LA XENEIZE SOC. GERENTE FCI |
 
-**La Xeneize** is a Boca Juniors-linked investment fund management company — Macri was Boca president (1995-2007), Rattin was the legendary Boca player-turned-politician.
+**La Xeneize** is a Boca Juniors-linked investment fund management company - Macri was Boca president (1995-2007), Rattin was the legendary Boca player-turned-politician.
 
 ### Offshore Politicians (MAYBE_SAME_AS to OffshoreOfficer)
 
@@ -280,14 +280,14 @@ Only 3 politicians have direct offshore links in the ICIJ data:
 | NUÑEZ, Jose | Provincias Unidas | Panama Papers | (unspecified) |
 
 ### False positives confirmed
-- Fernández Carlos Alberto (208 companies via MAYBE_SAME_AS) — common name collision, multiple different people
-- López Juan Carlos (131 companies) — same issue
-- Martínez Luis Alberto / Carlos Alberto — same issue
-- García Carlos (79 companies, includes SEED HOLDINGS/SEED PARTNERS) — likely name collision with corporate Carlos García
+- Fernández Carlos Alberto (208 companies via MAYBE_SAME_AS) - common name collision, multiple different people
+- López Juan Carlos (131 companies) - same issue
+- Martínez Luis Alberto / Carlos Alberto - same issue
+- García Carlos (79 companies, includes SEED HOLDINGS/SEED PARTNERS) - likely name collision with corporate Carlos García
 
 ## Connection Map 17: Vote-Corporate Conflicts of Interest
 
-528 Legislation nodes and 85,205 Company nodes tagged by sector. Cross-referencing reveals potential conflicts (note: Argentine legislators are NOT legally required to recuse from votes on legislation related to their business interests — this is a known gap in Ley 25.188, which applies primarily to the executive branch):
+528 Legislation nodes and 85,205 Company nodes tagged by sector. Cross-referencing reveals potential conflicts (note: Argentine legislators are NOT legally required to recuse from votes on legislation related to their business interests - this is a known gap in Ley 25.188, which applies primarily to the executive branch):
 
 | Sector | Politicians with conflicts | Total votes on sector | Companies held |
 |--------|--------------------------|----------------------|----------------|
@@ -300,7 +300,7 @@ Only 3 politicians have direct offshore links in the ICIJ data:
 | Mining | 7 | 44 | 7 |
 
 ### Verified high-signal conflicts:
-- **Heller** — 173 votes on financial legislation as president of Banco Credicoop
-- **Costa** — 16 votes on hydrocarbons while owning Costa Hidrocarburos y Energía
-- **Macri** — voted on mining code reform while on Minera Geometales board
-- **Lousteau** — voted YES on Ley Bases while linked to LCG Inversora (finance)
+- **Heller** - 173 votes on financial legislation as president of Banco Credicoop
+- **Costa** - 16 votes on hydrocarbons while owning Costa Hidrocarburos y Energía
+- **Macri** - voted on mining code reform while on Minera Geometales board
+- **Lousteau** - voted YES on Ley Bases while linked to LCG Inversora (finance)

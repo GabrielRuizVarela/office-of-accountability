@@ -1,5 +1,5 @@
 /**
- * ETL Loader — batch MERGE of IGJ corporate registry data into Neo4j.
+ * ETL Loader - batch MERGE of IGJ corporate registry data into Neo4j.
  *
  * Uses UNWIND for efficient batching. Idempotent via MERGE.
  */

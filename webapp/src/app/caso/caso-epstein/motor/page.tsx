@@ -3,9 +3,9 @@ import type { Metadata } from 'next'
 import { EngineDashboard } from '@/components/engine/EngineDashboard'
 
 export const metadata: Metadata = {
-  title: 'Investigation Engine — Epstein Case',
+  title: 'Investigation Engine - Epstein Case',
   description:
-    'Autonomous investigation engine dashboard — pipeline, proposals, audit trail and snapshots.',
+    'Autonomous investigation engine dashboard - pipeline, proposals, audit trail and snapshots.',
 }
 
 export default function MotorPage() {

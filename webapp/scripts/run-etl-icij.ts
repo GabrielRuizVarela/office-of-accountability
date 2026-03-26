@@ -3,7 +3,7 @@
  * Run with: npx tsx scripts/run-etl-icij.ts
  *
  * Pipeline: Download → Filter (Argentina) → Transform → Match Politicians → Load
- * Idempotent — safe to re-run (uses MERGE, not CREATE).
+ * Idempotent - safe to re-run (uses MERGE, not CREATE).
  */
 
 import 'dotenv/config'

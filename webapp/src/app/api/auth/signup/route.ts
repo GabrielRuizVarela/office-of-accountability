@@ -103,7 +103,7 @@ export async function POST(request: Request): Promise<Response> {
       }),
     )
 
-    // Send verification email (non-blocking — don't fail signup if email fails)
+    // Send verification email (non-blocking - don't fail signup if email fails)
     try {
       const { token: verifyToken } = await createVerificationToken(email, 'email-verification')
       const appUrl = process.env.APP_URL ?? 'http://localhost:3000'
@@ -112,7 +112,7 @@ export async function POST(request: Request): Promise<Response> {
       const template = verificationEmail(name, verifyUrl)
       await sendEmail({ to: email, ...template })
     } catch {
-      // Log but don't fail signup — user can request resend later
+      // Log but don't fail signup - user can request resend later
       console.error('Failed to send verification email for', email)
     }
 

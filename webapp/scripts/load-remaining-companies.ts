@@ -141,7 +141,7 @@ async function runBatched(
       created += batch.length
       if ((i + 1) % 50 === 0 || i === batches.length - 1) {
         const pct = (((i + 1) / batches.length) * 100).toFixed(0)
-        console.log(`  [${label}] ${i + 1}/${batches.length} batches (${pct}%) — ${created} items`)
+        console.log(`  [${label}] ${i + 1}/${batches.length} batches (${pct}%) - ${created} items`)
       }
     } catch (error) {
       errors++

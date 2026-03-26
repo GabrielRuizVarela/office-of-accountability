@@ -1,4 +1,4 @@
-# Voting Pattern Analysis — 33 Years of Argentine Legislative Data
+# Voting Pattern Analysis - 33 Years of Argentine Legislative Data
 
 ## Data Coverage
 - **Diputados:** 2,901 voting sessions (1993-2026)
@@ -41,11 +41,11 @@
 ## Expansion Targets (Top Connected, Not Yet Investigated)
 | Politician | Connections | Priority |
 |-----------|------------|----------|
-| PICHETTO Miguel Angel | 2,738 | HIGH — Kirchner→Macri pivot |
-| MAYANS José Miguel | 2,595 | MEDIUM — Formosa dynasty |
-| RODRÍGUEZ SAÁ Adolfo | 2,253 | HIGH — San Luis dynasty, defaulted on debt |
-| REUTEMANN Carlos Alberto | 2,243 | MEDIUM — Santa Fe, deceased |
-| NEGRI Mario Raúl | 2,135 | MEDIUM — UCR leader |
+| PICHETTO Miguel Angel | 2,738 | HIGH - Kirchner→Macri pivot |
+| MAYANS José Miguel | 2,595 | MEDIUM - Formosa dynasty |
+| RODRÍGUEZ SAÁ Adolfo | 2,253 | HIGH - San Luis dynasty, defaulted on debt |
+| REUTEMANN Carlos Alberto | 2,243 | MEDIUM - Santa Fe, deceased |
+| NEGRI Mario Raúl | 2,135 | MEDIUM - UCR leader |
 
 ## Technical Notes
 - Vote values are on CAST_VOTE relationship (`cv.vote_value`), not vote node

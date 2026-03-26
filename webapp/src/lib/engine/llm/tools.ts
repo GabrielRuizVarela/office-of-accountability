@@ -2,7 +2,7 @@
  * Scoped tool definitions per pipeline stage.
  *
  * Each stage only sees the tools relevant to its work.
- * These are schema definitions — execution logic lives in the stage runners.
+ * These are schema definitions - execution logic lives in the stage runners.
  */
 
 import type { ToolDefinition } from './types.ts'

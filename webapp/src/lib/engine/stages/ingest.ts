@@ -1,5 +1,5 @@
 /**
- * Ingest stage runner — M10 Stage Implementations (Phase 5).
+ * Ingest stage runner - M10 Stage Implementations (Phase 5).
  *
  * Runs source connectors, computes SHA-256 ingestion hashes for dedup,
  * and creates bronze-tier Proposals for human review.

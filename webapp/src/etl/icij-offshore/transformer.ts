@@ -1,7 +1,7 @@
 /**
  * Transforms ICIJ Offshore Leaks CSV data into Neo4j node/relationship parameters.
  *
- * Pure functions — no side effects, no mutations.
+ * Pure functions - no side effects, no mutations.
  * Matches ICIJ officers to existing Politician nodes via normalizeName.
  */
 

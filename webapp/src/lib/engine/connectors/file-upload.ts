@@ -1,5 +1,5 @@
 /**
- * File upload connector — M10 Source Connectors (Phase 4).
+ * File upload connector - M10 Source Connectors (Phase 4).
  *
  * Reads records from local CSV or JSON files.
  */

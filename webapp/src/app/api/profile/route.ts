@@ -1,6 +1,6 @@
 /**
- * GET /api/profile — Fetch current user's full profile
- * PATCH /api/profile — Update current user's name
+ * GET /api/profile - Fetch current user's full profile
+ * PATCH /api/profile - Update current user's name
  *
  * Requires authenticated session (JWT).
  * PATCH is CSRF-protected by middleware (outside /api/auth/ exemption).

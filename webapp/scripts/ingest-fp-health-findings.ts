@@ -9,7 +9,7 @@
  * Events: fp-pami-16x, fp-suizo-2678pct, fp-glencore-discrepancy, fp-side-dnu941
  * Relationships: BELOCOPITT → Swiss Medical COVID aid, RUBINSTEIN → PHARMOS
  *
- * Idempotent — uses MERGE on (name, caso_slug) for Person/Organization
+ * Idempotent - uses MERGE on (name, caso_slug) for Person/Organization
  * and (id, caso_slug) for Event.
  *
  * Run with: npx tsx scripts/ingest-fp-health-findings.ts
@@ -94,57 +94,57 @@ const ORGANIZATIONS: SeedOrg[] = [
   {
     name: 'ELEA PHOENIX',
     org_type: 'company',
-    description_en: 'Part of oncological drug cartel — PAMI overpricing complaint before CNDC',
-    description_es: 'Parte del cartel de medicamentos oncológicos — denuncia de sobreprecios en PAMI ante la CNDC',
+    description_en: 'Part of oncological drug cartel - PAMI overpricing complaint before CNDC',
+    description_es: 'Parte del cartel de medicamentos oncológicos - denuncia de sobreprecios en PAMI ante la CNDC',
     source_url: 'https://www.infobae.com/politica/2025/01/23/denuncian-al-pami-y-a-un-grupo-de-laboratorios-por-sobreprecios-en-la-compra-de-remedios-oncologicos/',
   },
   {
     name: 'GP PHARM',
     org_type: 'company',
-    description_en: 'Drug cartel member — PAMI oncological drug overpricing',
-    description_es: 'Miembro del cartel farmacéutico — sobreprecios en medicamentos oncológicos del PAMI',
+    description_en: 'Drug cartel member - PAMI oncological drug overpricing',
+    description_es: 'Miembro del cartel farmacéutico - sobreprecios en medicamentos oncológicos del PAMI',
     source_url: 'https://www.infobae.com/politica/2025/01/23/denuncian-al-pami-y-a-un-grupo-de-laboratorios-por-sobreprecios-en-la-compra-de-remedios-oncologicos/',
   },
   {
     name: 'KEMEX',
     org_type: 'company',
-    description_en: 'Drug cartel member — PAMI oncological drug overpricing',
-    description_es: 'Miembro del cartel farmacéutico — sobreprecios en medicamentos oncológicos del PAMI',
+    description_en: 'Drug cartel member - PAMI oncological drug overpricing',
+    description_es: 'Miembro del cartel farmacéutico - sobreprecios en medicamentos oncológicos del PAMI',
     source_url: 'https://www.infobae.com/politica/2025/01/23/denuncian-al-pami-y-a-un-grupo-de-laboratorios-por-sobreprecios-en-la-compra-de-remedios-oncologicos/',
   },
   {
     name: 'BIOSIDUS',
     org_type: 'company',
-    description_en: 'Drug cartel member — PAMI oncological drug overpricing',
-    description_es: 'Miembro del cartel farmacéutico — sobreprecios en medicamentos oncológicos del PAMI',
+    description_en: 'Drug cartel member - PAMI oncological drug overpricing',
+    description_es: 'Miembro del cartel farmacéutico - sobreprecios en medicamentos oncológicos del PAMI',
     source_url: 'https://www.infobae.com/politica/2025/01/23/denuncian-al-pami-y-a-un-grupo-de-laboratorios-por-sobreprecios-en-la-compra-de-remedios-oncologicos/',
   },
   {
     name: 'LABORATORIO RAFFO',
     org_type: 'company',
-    description_en: 'Drug cartel member — PAMI oncological drug overpricing',
-    description_es: 'Miembro del cartel farmacéutico — sobreprecios en medicamentos oncológicos del PAMI',
+    description_en: 'Drug cartel member - PAMI oncological drug overpricing',
+    description_es: 'Miembro del cartel farmacéutico - sobreprecios en medicamentos oncológicos del PAMI',
     source_url: 'https://www.infobae.com/politica/2025/01/23/denuncian-al-pami-y-a-un-grupo-de-laboratorios-por-sobreprecios-en-la-compra-de-remedios-oncologicos/',
   },
   {
     name: 'ACE ONCOLOGIA',
     org_type: 'company',
-    description_en: 'Drug cartel coordinator — coordinated pricing of oncological drugs with PAMI overpricing',
-    description_es: 'Coordinador del cartel farmacéutico — fijación coordinada de precios en medicamentos oncológicos con sobreprecios del PAMI',
+    description_en: 'Drug cartel coordinator - coordinated pricing of oncological drugs with PAMI overpricing',
+    description_es: 'Coordinador del cartel farmacéutico - fijación coordinada de precios en medicamentos oncológicos con sobreprecios del PAMI',
     source_url: 'https://www.infobae.com/politica/2025/01/23/denuncian-al-pami-y-a-un-grupo-de-laboratorios-por-sobreprecios-en-la-compra-de-remedios-oncologicos/',
   },
   {
     name: 'GLENCORE INVESTMENTS ANTAMINA LIMITED',
     org_type: 'company',
-    description_en: 'Bermuda offshore entity for Argentine mining operations — Paradise Papers',
-    description_es: 'Sociedad offshore en Bermuda para operaciones mineras argentinas — Paradise Papers',
+    description_en: 'Bermuda offshore entity for Argentine mining operations - Paradise Papers',
+    description_es: 'Sociedad offshore en Bermuda para operaciones mineras argentinas - Paradise Papers',
     source_url: 'https://convoca.pe/investigacion/paradise-papers-los-negocios-de-glencore-en-argentina',
   },
   {
     name: 'GLENCORE EL PACHON LIMITED',
     org_type: 'company',
-    description_en: 'Bermuda offshore entity for El Pachón copper project — Paradise Papers',
-    description_es: 'Sociedad offshore en Bermuda para el proyecto de cobre El Pachón — Paradise Papers',
+    description_en: 'Bermuda offshore entity for El Pachón copper project - Paradise Papers',
+    description_es: 'Sociedad offshore en Bermuda para el proyecto de cobre El Pachón - Paradise Papers',
     source_url: 'https://convoca.pe/investigacion/paradise-papers-los-negocios-de-glencore-en-argentina',
   },
 ]
@@ -343,7 +343,7 @@ async function main(): Promise<void> {
           now,
         },
       )
-      console.log(`  + Event: ${e.id} — ${e.title.slice(0, 60)}...`)
+      console.log(`  + Event: ${e.id} - ${e.title.slice(0, 60)}...`)
     } catch (error) {
       console.error(`  x Event ${e.id}: ${error instanceof Error ? error.message : error}`)
     }

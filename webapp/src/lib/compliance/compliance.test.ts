@@ -1,10 +1,10 @@
 /**
- * M11 Compliance Framework — E2E tests (Phase 7).
+ * M11 Compliance Framework - E2E tests (Phase 7).
  *
  * Tests cover:
  * 1. Zod schema validation (types.ts)
  * 2. YAML framework parsing (loader.ts)
- * 3. Engine scoring logic (engine.ts — computeScore via evaluateFramework)
+ * 3. Engine scoring logic (engine.ts - computeScore via evaluateFramework)
  */
 
 import { resolve, dirname } from 'node:path'

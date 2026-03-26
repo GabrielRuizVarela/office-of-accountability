@@ -1,5 +1,5 @@
 /**
- * Caso Finanzas Politicas — barrel exports.
+ * Caso Finanzas Politicas - barrel exports.
  */
 
 // Types and schemas

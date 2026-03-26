@@ -1,11 +1,11 @@
 /**
- * Compliance Pipeline Integration — M11 Phase 5.
+ * Compliance Pipeline Integration - M11 Phase 5.
  *
  * Hooks the compliance engine into the investigation pipeline:
- * - runComplianceGate() — evaluates all frameworks' gate rules for a stage phase,
+ * - runComplianceGate() - evaluates all frameworks' gate rules for a stage phase,
  *   persists ComplianceEvaluation nodes, and returns a pass/fail verdict.
- * - persistEvaluation() — saves a ComplianceReport as a ComplianceEvaluation node in Neo4j.
- * - loadFrameworksFromNeo4j() — reads persisted ComplianceFramework definitions from Neo4j
+ * - persistEvaluation() - saves a ComplianceReport as a ComplianceEvaluation node in Neo4j.
+ * - loadFrameworksFromNeo4j() - reads persisted ComplianceFramework definitions from Neo4j
  *   (YAML files are loaded at seed time; at runtime we reconstruct from graph nodes).
  */
 
@@ -24,7 +24,7 @@ import type {
 import { evaluateFramework } from './engine'
 
 // ---------------------------------------------------------------------------
-// Load frameworks from Neo4j (runtime — no YAML/fs dependency)
+// Load frameworks from Neo4j (runtime - no YAML/fs dependency)
 // ---------------------------------------------------------------------------
 
 /**
@@ -163,7 +163,7 @@ export interface ComplianceGateResult {
  * 1. Loads all ComplianceFramework definitions from Neo4j
  * 2. Evaluates each framework for the given phase + investigation
  * 3. Persists a ComplianceEvaluation node per framework
- * 4. Returns pass/fail verdict — all frameworks must pass gate checks
+ * 4. Returns pass/fail verdict - all frameworks must pass gate checks
  *
  * If no frameworks are loaded (compliance not seeded), gate passes by default.
  */
@@ -208,7 +208,7 @@ export async function runComplianceGate(
         failures.push(`[${fw.name}] ${failedGates.join('; ')}`)
       }
     } catch (error) {
-      // Framework evaluation failed entirely — treat as gate failure
+      // Framework evaluation failed entirely - treat as gate failure
       const msg = error instanceof Error ? error.message : String(error)
       failures.push(`[${fw.name}] evaluation error: ${msg}`)
     }

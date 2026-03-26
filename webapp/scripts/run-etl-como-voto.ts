@@ -8,7 +8,7 @@
  * 3. Transforms raw data into Neo4j node/relationship params
  * 4. Batch MERGEs everything into Neo4j
  *
- * Idempotent — safe to re-run (uses MERGE, not CREATE).
+ * Idempotent - safe to re-run (uses MERGE, not CREATE).
  * Requires NEO4J_URI, NEO4J_USER environment variables (see .env.example).
  */
 

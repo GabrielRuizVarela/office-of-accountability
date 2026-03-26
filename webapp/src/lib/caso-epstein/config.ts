@@ -1,5 +1,5 @@
 /**
- * Caso Epstein — InvestigationClientConfig.
+ * Caso Epstein - InvestigationClientConfig.
  *
  * Static frontend configuration for the Epstein investigation.
  * Tabs, feature flags, hero text, and sources.

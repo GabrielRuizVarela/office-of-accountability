@@ -11,7 +11,7 @@
 import { z } from 'zod/v4'
 
 // ---------------------------------------------------------------------------
-// Como Voto raw schemas — match the JSON structure from the source
+// Como Voto raw schemas - match the JSON structure from the source
 // ---------------------------------------------------------------------------
 
 /** Chamber identifier */
@@ -148,13 +148,13 @@ export const VotingSessionSchema = z.object({
 })
 export type VotingSession = z.infer<typeof VotingSessionSchema>
 
-/** Voting sessions file — dict keyed by chamber, each value is an array of sessions */
+/** Voting sessions file - dict keyed by chamber, each value is an array of sessions */
 export const VotingSessionsFileSchema = z.object({
   diputados: z.array(VotingSessionSchema),
   senadores: z.array(VotingSessionSchema),
 })
 
-/** Law names file — flat array of law name strings */
+/** Law names file - flat array of law name strings */
 export const LawNamesFileSchema = z.array(z.string())
 
 /** Individual entry in election_legislators.json */
@@ -167,7 +167,7 @@ export const ElectionEntrySchema = z.object({
 })
 export type ElectionEntry = z.infer<typeof ElectionEntrySchema>
 
-/** Election legislators file — keyed by year, then chamber */
+/** Election legislators file - keyed by year, then chamber */
 export const ElectionLegislatorsFileSchema = z.record(
   z.string(),
   z.record(z.string(), z.array(ElectionEntrySchema)),
@@ -175,7 +175,7 @@ export const ElectionLegislatorsFileSchema = z.record(
 export type ElectionLegislatorsFile = z.infer<typeof ElectionLegislatorsFileSchema>
 
 // ---------------------------------------------------------------------------
-// Neo4j node parameter types — used by the loader to MERGE nodes
+// Neo4j node parameter types - used by the loader to MERGE nodes
 // ---------------------------------------------------------------------------
 
 /** Provenance fields attached to every ingested node */

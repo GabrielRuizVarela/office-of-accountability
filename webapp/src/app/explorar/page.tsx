@@ -141,7 +141,7 @@ export default function ExplorarPage() {
       setSelectedNodeId(nodeId)
     } catch (error) {
       if (error instanceof DOMException && error.name === 'AbortError') return
-      // Silently handle — graph stays as-is
+      // Silently handle - graph stays as-is
     } finally {
       setIsLoading(false)
     }
@@ -339,7 +339,7 @@ export default function ExplorarPage() {
     } finally { setIsLoading(false) }
   }, [])
 
-  // Search result selected — expand that node into the graph
+  // Search result selected - expand that node into the graph
   const handleSearchSelect = useCallback(
     (nodeId: string) => {
       expandNode(nodeId)
@@ -347,7 +347,7 @@ export default function ExplorarPage() {
     [expandNode],
   )
 
-  // Node clicked in the graph — select it (no load), clear path highlight
+  // Node clicked in the graph - select it (no load), clear path highlight
   const handleNodeClick = useCallback(
     (nodeId: string) => {
       setSelectedNodeId(nodeId)
@@ -356,7 +356,7 @@ export default function ExplorarPage() {
     [showPathFinder],
   )
 
-  // Navigate from detail panel — expand the target node
+  // Navigate from detail panel - expand the target node
   const handleNavigate = useCallback(
     (nodeId: string) => {
       expandNode(nodeId)

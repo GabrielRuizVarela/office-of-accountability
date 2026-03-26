@@ -7,7 +7,7 @@
  * with caso_slug: "caso-libra" for namespace isolation, and prefixed IDs
  * (caso-libra:{local_id}) per the investigation standardization convention.
  *
- * Idempotent — uses MERGE for all operations. Safe to run multiple times.
+ * Idempotent - uses MERGE for all operations. Safe to run multiple times.
  * All data is manually curated from public sources:
  * - Congressional reports
  * - TRM Labs blockchain analysis
@@ -233,7 +233,7 @@ const EVENTS = [
   },
   {
     id: pid('cl-event-congressional-hearing-2'),
-    title: 'Segunda audiencia — Hayden Davis citado',
+    title: 'Segunda audiencia - Hayden Davis citado',
     slug: 'audiencia-congreso-2',
     description: 'El Congreso cita a Hayden Davis a declarar. Davis no comparece.',
     date: '2025-03-10T14:00:00Z',
@@ -352,7 +352,7 @@ const DOCUMENTS = [
   },
   {
     id: pid('cl-doc-court-filing'),
-    title: 'Denuncia Penal — Caso $LIBRA',
+    title: 'Denuncia Penal - Caso $LIBRA',
     slug: 'denuncia-penal-libra',
     doc_type: 'documento-judicial',
     summary:
@@ -361,7 +361,7 @@ const DOCUMENTS = [
   },
   {
     id: pid('cl-doc-phone-forensics'),
-    title: 'Pericias Telefonicas — Comunicaciones Pre-Lanzamiento',
+    title: 'Pericias Telefonicas - Comunicaciones Pre-Lanzamiento',
     slug: 'pericias-telefonicas-libra',
     doc_type: 'documento-judicial',
     summary:
@@ -370,7 +370,7 @@ const DOCUMENTS = [
   },
   {
     id: pid('cl-doc-visitor-logs'),
-    title: 'Registros de Visitas a Casa Rosada — Enero/Febrero 2025',
+    title: 'Registros de Visitas a Casa Rosada - Enero/Febrero 2025',
     slug: 'registros-visitas-casa-rosada',
     doc_type: 'registro-publico',
     summary:

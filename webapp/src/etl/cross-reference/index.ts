@@ -1,5 +1,5 @@
 /**
- * Cross-reference engine — links entities across all ETL data sources
+ * Cross-reference engine - links entities across all ETL data sources
  * using CUIT/DNI/name matching.
  */
 

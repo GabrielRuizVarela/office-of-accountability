@@ -1,5 +1,5 @@
 /**
- * Caso Libra Investigation — Input Schemas
+ * Caso Libra Investigation - Input Schemas
  *
  * Zod schemas for validating investigation data submissions.
  * Used by both the API routes and CLI import scripts.

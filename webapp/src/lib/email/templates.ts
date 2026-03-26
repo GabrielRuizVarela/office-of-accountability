@@ -1,7 +1,7 @@
 /**
  * Email HTML templates for auth flows.
  *
- * Returns plain HTML strings — no template engine dependency.
+ * Returns plain HTML strings - no template engine dependency.
  * All user-provided values are HTML-escaped to prevent XSS.
  */
 
@@ -40,7 +40,7 @@ function buttonHtml(url: string, label: string): string {
 
 export function verificationEmail(name: string, verifyUrl: string): { subject: string; html: string } {
   return {
-    subject: 'Verificá tu email — ORC',
+    subject: 'Verificá tu email - ORC',
     html: baseLayout(`
       <h1 style="font-size:20px;font-weight:700;color:#18181b;margin:0 0 12px;">Verificá tu email</h1>
       <p style="font-size:14px;color:#52525b;line-height:1.6;">
@@ -58,7 +58,7 @@ export function verificationEmail(name: string, verifyUrl: string): { subject: s
 
 export function passwordResetEmail(name: string, resetUrl: string): { subject: string; html: string } {
   return {
-    subject: 'Restablecer contraseña — ORC',
+    subject: 'Restablecer contraseña - ORC',
     html: baseLayout(`
       <h1 style="font-size:20px;font-weight:700;color:#18181b;margin:0 0 12px;">Restablecer contraseña</h1>
       <p style="font-size:14px;color:#52525b;line-height:1.6;">
@@ -67,7 +67,7 @@ export function passwordResetEmail(name: string, resetUrl: string): { subject: s
       ${buttonHtml(resetUrl, 'Restablecer contraseña')}
       <p style="font-size:12px;color:#a1a1aa;line-height:1.5;">
         Este enlace expira en 1 hora y solo puede usarse una vez.
-        Si no solicitaste esto, podés ignorar este email — tu contraseña no cambiará.
+        Si no solicitaste esto, podés ignorar este email - tu contraseña no cambiará.
       </p>
       <p style="font-size:11px;color:#d4d4d8;word-break:break-all;">${escapeHtml(resetUrl)}</p>
     `),

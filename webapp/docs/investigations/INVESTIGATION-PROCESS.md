@@ -1,5 +1,5 @@
 # Investigation Process Documentation
-## Finanzas Politicas — Argentine Political Finance Investigation
+## Finanzas Politicas - Argentine Political Finance Investigation
 
 This document consolidates the architecture, methodology, findings, and technical lessons from the Argentine political finance investigation. Use it as a reference to continue or replicate the investigation workflow in future sessions.
 
@@ -38,7 +38,7 @@ Results: 1,840 `SAME_ENTITY` relationships | 10,393 `MAYBE_SAME_AS` relationship
 - **Temperature**: 0.3 for analytical tasks
 - **max_tokens**: 4096
 - **Timeout**: 10 minutes per analysis call
-- **Analysis passes this session**: 6 total — procurement anomalies, ownership chains, political connections (x2), family networks, judicial nexus
+- **Analysis passes this session**: 6 total - procurement anomalies, ownership chains, political connections (x2), family networks, judicial nexus
 
 Always parse both `reasoning_content` and `content` fields from the response. Structured JSON prompts produce the best results.
 
@@ -50,10 +50,10 @@ Always parse both `reasoning_content` and `content` fields from the response. St
 
 Each investigation runs in 4 sequential waves:
 
-1. **Research** — WebSearch + Neo4j queries to discover entities and establish context.
-2. **Deep queries** — Targeted Neo4j queries on discovered entities; follow leads from wave 1.
-3. **Cross-reference** — Link new findings to existing graph via CUIT/DNI/name matching.
-4. **Consolidation** — Ingest findings into Neo4j, verify sources, update frontend data.
+1. **Research** - WebSearch + Neo4j queries to discover entities and establish context.
+2. **Deep queries** - Targeted Neo4j queries on discovered entities; follow leads from wave 1.
+3. **Cross-reference** - Link new findings to existing graph via CUIT/DNI/name matching.
+4. **Consolidation** - Ingest findings into Neo4j, verify sources, update frontend data.
 
 #### Agent Dispatch Pattern
 
@@ -106,7 +106,7 @@ Do not skip verification. Fabricated or dead URLs undermine the entire investiga
 
 #### The Systemic Cycle
 
-This is the core finding — a repeating pattern across multiple administrations:
+This is the core finding - a repeating pattern across multiple administrations:
 
 1. Judge accumulates unexplained wealth.
 2. A colleague quietly closes the enrichment investigation.
@@ -143,7 +143,7 @@ This is the core finding — a repeating pattern across multiple administrations
 #### MiroFish / Qwen
 
 - **`enable_thinking: false` is required.** With thinking enabled, Qwen 3.5 exhausts all tokens on internal reasoning and returns empty or truncated output.
-- **Parse both response fields.** Check `reasoning_content` AND `content` — the model sometimes splits output across both.
+- **Parse both response fields.** Check `reasoning_content` AND `content` - the model sometimes splits output across both.
 - **Structured JSON prompts work best.** Provide input data as JSON objects and request JSON output with a defined schema.
 - **Temperature 0.3** for analytical and factual tasks. Higher temperatures introduce hallucination risk.
 - **10-minute timeout** for complex analysis calls (ownership chain tracing, multi-entity correlation).

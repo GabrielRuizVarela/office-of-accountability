@@ -3,7 +3,7 @@
 /**
  * My investigations dashboard at /mis-investigaciones.
  *
- * Auth required — shows the user's drafts, published, and archived investigations.
+ * Auth required - shows the user's drafts, published, and archived investigations.
  * Supports filtering by status and links to create/edit pages.
  */
 

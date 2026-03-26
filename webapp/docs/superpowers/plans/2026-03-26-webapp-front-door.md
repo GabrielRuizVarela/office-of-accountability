@@ -1,8 +1,8 @@
-# Plan B: Webapp Front Door — Investigation Creation + Review UI
+# Plan B: Webapp Front Door - Investigation Creation + Review UI
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Users can create new investigations from the webapp (no CLI), upload data, and review pipeline proposals — all without code changes or deploys.
+**Goal:** Users can create new investigations from the webapp (no CLI), upload data, and review pipeline proposals - all without code changes or deploys.
 
 **Architecture:** Dynamic investigation registry replaces hardcoded Map. New creation wizard + data import UI. Existing engine dashboard gets usability improvements.
 
@@ -171,12 +171,12 @@ Client component that:
 
 - [ ] **Step 3: Create wizard page**
 
-`src/app/nuevo/page.tsx` — a 4-step wizard:
+`src/app/nuevo/page.tsx` - a 4-step wizard:
 
 **Step 1: Name & Describe**
-- Title (ES), Title (EN) — text inputs
-- Description (optional) — textarea
-- Tags — comma-separated input
+- Title (ES), Title (EN) - text inputs
+- Description (optional) - textarea
+- Tags - comma-separated input
 - "Next" button
 
 **Step 2: Seed Entity**

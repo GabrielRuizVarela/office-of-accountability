@@ -1,14 +1,14 @@
 {
   "metadata": {
     "date": "2026-03-21",
-    "source": "Deep dive expansion leads — corporate registry, Neo4j cross-reference, media investigation",
+    "source": "Deep dive expansion leads - corporate registry, Neo4j cross-reference, media investigation",
     "agents": ["RNS + Corporate Registry", "CNV + BCRA + Bankruptcy", "Neo4j Cross-Reference"],
     "scope": "Nucleoeléctrica, Fundación Faro, AFA Gate, SURELY SA, Romero, Dicroce, shadow contractors"
   },
   "findings": [
     {
       "id": "nucleoelectrica_energy_monopoly",
-      "title": "Nucleoeléctrica Argentina — Energy Sector Opacity",
+      "title": "Nucleoeléctrica Argentina - Energy Sector Opacity",
       "description": "Nucleoeléctrica Argentina SA (NASA) operates Atucha I, Atucha II, and Embalse nuclear plants. State-owned under Secretaría de Energía. Cross-referenced with energy monopoly clusters: CENTRAL DOCK SUD, INVERSORA DOCK SUD (82 shared officers), CITELEC/TRANSBA (81 shared, transmission monopoly), TERMOELECTRICA BELGRANO/SAN MARTIN (71 shared, generation). Pattern of interlocking directorates across the entire Argentine energy grid, with nuclear operations at the apex of opacity.",
       "source_urls": [
         "https://www.na-sa.com.ar/",
@@ -20,7 +20,7 @@
     },
     {
       "id": "fundacion_faro_caputo_network",
-      "title": "Fundación Faro — Santiago Caputo Shadow Influence Network",
+      "title": "Fundación Faro - Santiago Caputo Shadow Influence Network",
       "description": "Fundación Faro operated as a think-tank and political consulting vehicle linked to Santiago Caputo (CUIT 20-43446124-4), Milei's top political advisor. Caputo controls a network of shell companies (Bachellier SA, CUIT 30-70836479-3; Koolhaas SA, CUIT 30-71552747-9) used for media consulting, political communications, and government contracting. Faro provided the intellectual framework for deregulation policies while Caputo's companies secured related contracts.",
       "source_urls": [
         "https://www.infobae.com/politica/2024/08/15/quien-es-santiago-caputo-el-asesor-en-las-sombras-de-milei/",
@@ -34,7 +34,7 @@
     },
     {
       "id": "afa_gate_insurance_football",
-      "title": "AFA Gate — Football Federation Insurance Kickbacks",
+      "title": "AFA Gate - Football Federation Insurance Kickbacks",
       "description": "AFA (Asociación del Fútbol Argentino) insurance contracts channeled through Martinez Sosa's brokerage (CUIT 30-57288356-2). Martinez Sosa captured 60% of ALL state insurance commissions ($416M+, 2019-2023). AFA contracts routed to SMG Cia Argentina de Seguros (CUIT 30-50003196-0) and Nación Seguros through Martinez Sosa as exclusive broker. Pattern mirrors the broader Caso Seguros where state entities were forced to use a single broker with direct presidential access (17+ calls with Alberto Fernandez).",
       "source_urls": [
         "https://www.infobae.com/judiciales/2026/02/10/causa-seguros-procesaron-a-la-empresa-de-hector-martinez-sosa-el-broker-amigo-de-alberto-fernandez/",
@@ -47,8 +47,8 @@
     },
     {
       "id": "surely_sa_shadow_contractor",
-      "title": "SURELY SA — $4.3B Single Contract, Unknown Company",
-      "description": "SURELY SA (CUIT 30-67970230-7) received $4.3B in a single state contract. No IGJ registration found. No public corporate officers identifiable. No CNV filings. No SSN presence. Company does not appear in RNS bulk CSV. Pattern consistent with shell company created specifically for contract extraction — single large contract, no corporate footprint, no traceable beneficial ownership.",
+      "title": "SURELY SA - $4.3B Single Contract, Unknown Company",
+      "description": "SURELY SA (CUIT 30-67970230-7) received $4.3B in a single state contract. No IGJ registration found. No public corporate officers identifiable. No CNV filings. No SSN presence. Company does not appear in RNS bulk CSV. Pattern consistent with shell company created specifically for contract extraction - single large contract, no corporate footprint, no traceable beneficial ownership.",
       "source_urls": [
         "https://comprar.gob.ar/",
         "https://datos.jus.gob.ar/dataset/registro-nacional-de-sociedades"
@@ -58,8 +58,8 @@
     },
     {
       "id": "romero_juan_carlos_wealth_explosion",
-      "title": "Romero Juan Carlos — 26,760x Wealth Growth",
-      "description": "Senator Juan Carlos Romero (Cambio Federal, Salta) declared assets of $163K in 2017, jumping to $4.36 BILLION by 2024 — a 26,760x increase that far exceeds any inflation-based explanation. Connected to 20 companies in Neo4j graph. Former Governor of Salta (1995-2007). Family controls Salta media (El Tribuno) and agribusiness. Wealth growth pattern suggests massive undeclared income or asset revaluation fraud in sworn declarations.",
+      "title": "Romero Juan Carlos - 26,760x Wealth Growth",
+      "description": "Senator Juan Carlos Romero (Cambio Federal, Salta) declared assets of $163K in 2017, jumping to $4.36 BILLION by 2024 - a 26,760x increase that far exceeds any inflation-based explanation. Connected to 20 companies in Neo4j graph. Former Governor of Salta (1995-2007). Family controls Salta media (El Tribuno) and agribusiness. Wealth growth pattern suggests massive undeclared income or asset revaluation fraud in sworn declarations.",
       "source_urls": [
         "https://www.argentina.gob.ar/oficina-anticorrupcion/declaraciones-juradas",
         "https://www.perfil.com/noticias/politica/juan-carlos-romero-patrimonio-declaracion-jurada.phtml",
@@ -71,8 +71,8 @@
     },
     {
       "id": "dicroce_gervasio_individual_billions",
-      "title": "Dicroce Gervasio — Individual Receiving $9.57B in State Contracts",
-      "description": "Gervasio Dicroce (CUIT 20-24891908-7) — a personal CUIT, not a corporate one — received $9.57 BILLION across 6 state contracts. Operating as an individual, not through any registered company. No IGJ corporate match found. This is the single largest individual (non-corporate) recipient discovered in the dataset. The use of a personal CUIT for billion-dollar contracts is a major red flag for money laundering or front-person operations.",
+      "title": "Dicroce Gervasio - Individual Receiving $9.57B in State Contracts",
+      "description": "Gervasio Dicroce (CUIT 20-24891908-7) - a personal CUIT, not a corporate one - received $9.57 BILLION across 6 state contracts. Operating as an individual, not through any registered company. No IGJ corporate match found. This is the single largest individual (non-corporate) recipient discovered in the dataset. The use of a personal CUIT for billion-dollar contracts is a major red flag for money laundering or front-person operations.",
       "source_urls": [
         "https://comprar.gob.ar/",
         "https://www.cuitonline.com/detalle/20248919087/dicroce-gervasio.html"
@@ -82,8 +82,8 @@
     },
     {
       "id": "shadow_contractors_cluster",
-      "title": "Shadow Contractors — Billions with No Corporate Registration",
-      "description": "Cluster of entities receiving massive state contracts with no verifiable corporate registration in IGJ, RNS, or CNV. Includes: GRUPOVALBER SRL (CUIT 30-70920493-5, $6.8B in ONE contract, no IGJ), Construcciones Mafalda SRL (CUIT 33-71555011-9, $6.25B single contract, no IGJ), SURELY SA (CUIT 30-67970230-7, $4.3B single contract), Cookery SA ($4.7B single contract, no traceable structure), CORREO OFICIAL with dual CUITs ($15.3B combined — possible data manipulation), Provincia ART with malformed CUIT (too many digits). Combined value exceeds $37B in contracts to entities with no verifiable corporate existence.",
+      "title": "Shadow Contractors - Billions with No Corporate Registration",
+      "description": "Cluster of entities receiving massive state contracts with no verifiable corporate registration in IGJ, RNS, or CNV. Includes: GRUPOVALBER SRL (CUIT 30-70920493-5, $6.8B in ONE contract, no IGJ), Construcciones Mafalda SRL (CUIT 33-71555011-9, $6.25B single contract, no IGJ), SURELY SA (CUIT 30-67970230-7, $4.3B single contract), Cookery SA ($4.7B single contract, no traceable structure), CORREO OFICIAL with dual CUITs ($15.3B combined - possible data manipulation), Provincia ART with malformed CUIT (too many digits). Combined value exceeds $37B in contracts to entities with no verifiable corporate existence.",
       "source_urls": [
         "https://comprar.gob.ar/",
         "https://datos.jus.gob.ar/dataset/registro-nacional-de-sociedades",
@@ -95,8 +95,8 @@
     },
     {
       "id": "vemerkiper_gendarmeria",
-      "title": "VEMERKIPER — 1-Officer Company with 33 Military Contracts",
-      "description": "VEMERKIPER has a single registered officer but holds 33 contracts exclusively with Gendarmería Nacional. Gendarmería itself has 1,070 direct contracts (81% of its total 1,317 contracts are Contratación Directa — bypassing competitive bidding). VEMERKIPER pattern suggests purpose-built shell for military procurement extraction.",
+      "title": "VEMERKIPER - 1-Officer Company with 33 Military Contracts",
+      "description": "VEMERKIPER has a single registered officer but holds 33 contracts exclusively with Gendarmería Nacional. Gendarmería itself has 1,070 direct contracts (81% of its total 1,317 contracts are Contratación Directa - bypassing competitive bidding). VEMERKIPER pattern suggests purpose-built shell for military procurement extraction.",
       "source_urls": [
         "https://comprar.gob.ar/",
         "https://www.argentina.gob.ar/gendarmeria"

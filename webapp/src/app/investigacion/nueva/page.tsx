@@ -3,7 +3,7 @@
 /**
  * Create investigation page at /investigacion/nueva.
  *
- * Auth required — redirects to sign-in if unauthenticated.
+ * Auth required - redirects to sign-in if unauthenticated.
  * Wraps InvestigationForm with create-specific save logic.
  */
 

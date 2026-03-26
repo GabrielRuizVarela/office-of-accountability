@@ -61,7 +61,7 @@ function Spinner() {
 const STATUS_LABELS: Record<string, { label: string; color: string; dot: string }> = {
   idle: { label: 'Idle', color: 'text-zinc-400', dot: 'bg-zinc-400' },
   running: { label: 'Running', color: 'text-green-400', dot: 'bg-green-400' },
-  paused: { label: 'Paused — Gate Pending', color: 'text-yellow-400', dot: 'bg-yellow-400' },
+  paused: { label: 'Paused - Gate Pending', color: 'text-yellow-400', dot: 'bg-yellow-400' },
   completed: { label: 'Completed', color: 'text-blue-400', dot: 'bg-blue-400' },
   failed: { label: 'Failed', color: 'text-red-400', dot: 'bg-red-400' },
 }
@@ -75,7 +75,7 @@ function canRun(status: string | undefined): boolean {
 }
 
 function formatTimestamp(iso: string | undefined): string {
-  if (!iso) return '—'
+  if (!iso) return '-'
   try {
     return new Date(iso).toLocaleString()
   } catch {
@@ -108,7 +108,7 @@ export function PipelineStatus({ casoSlug, pipelineStateId, pipelineId }: Pipeli
         }
         const json = (await res.json()) as { success: boolean; data: (PipelineState & { progress_json?: unknown })[] }
         if (json.success && json.data.length > 0) {
-          // Use the most recent state (first — ordered DESC by created_at)
+          // Use the most recent state (first - ordered DESC by created_at)
           const match = pipelineStateId
             ? json.data.find((s) => s.id === pipelineStateId) ?? json.data[0]
             : json.data[0]

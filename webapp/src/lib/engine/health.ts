@@ -1,5 +1,5 @@
 /**
- * Engine health checks — M10.
+ * Engine health checks - M10.
  *
  * Checks: neo4j_connectivity, stuck_pipelines, audit_chain.
  */

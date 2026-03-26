@@ -1,5 +1,5 @@
 /**
- * Parallel agent dispatch — bridges OrchestratorTasks to StageRunners.
+ * Parallel agent dispatch - bridges OrchestratorTasks to StageRunners.
  *
  * Groups tasks by stage kind, creates scoped StageContexts, and runs all
  * via Promise.allSettled for concurrent non-fail-fast execution.

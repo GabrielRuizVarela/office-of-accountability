@@ -1,4 +1,4 @@
-/** Data provenance tier — reflects source reliability */
+/** Data provenance tier - reflects source reliability */
 export type DataTier = 'gold' | 'silver' | 'bronze'
 
 /** Provenance metadata attached to every node and relationship */

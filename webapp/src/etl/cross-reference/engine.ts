@@ -1,5 +1,5 @@
 /**
- * Cross-reference engine — orchestrates entity matching across all ETL sources.
+ * Cross-reference engine - orchestrates entity matching across all ETL sources.
  *
  * Runs three matching tiers sequentially (CUIT -> DNI/CUIL -> Name),
  * then generates investigation flags for suspicious patterns.

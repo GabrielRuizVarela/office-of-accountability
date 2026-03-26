@@ -88,7 +88,7 @@ ORDER BY size(datasets) DESC
 LIMIT 80
 `
 
-/** Offshore entities — skip the OffshoreOfficer node (same person as Politician), connect politician directly to entity */
+/** Offshore entities - skip the OffshoreOfficer node (same person as Politician), connect politician directly to entity */
 const OFFSHORE_ENTITIES_CYPHER = `
 MATCH (p:Politician)-[:HAS_OFFSHORE_LINK]->(o:OffshoreOfficer)-[:OFFICER_OF]->(e:OffshoreEntity)
 RETURN p.id AS pid, p.name AS pname,
@@ -106,7 +106,7 @@ RETURN j.name AS judge, toString(elementId(j)) AS jid,
        p.id AS appointedBy, p.name AS presidentName
 `
 
-/** Top party switchers — politicians who changed parties 3+ times */
+/** Top party switchers - politicians who changed parties 3+ times */
 const SWITCHERS_CYPHER = `
 MATCH (p:Politician)-[:SERVED_TERM]->(t:Term)-[:TERM_PARTY]->(party:Party)
 WITH p, collect(DISTINCT party) AS parties
@@ -117,7 +117,7 @@ ORDER BY size(parties) DESC
 LIMIT 100
 `
 
-/** Key legislation — show which politicians voted on it */
+/** Key legislation - show which politicians voted on it */
 const LEGISLATION_CONFLICTS_CYPHER = `
 MATCH (p:Politician)-[:CAST_VOTE]->(v:LegislativeVote)-[:VOTE_ON]->(l:Legislation)
 WHERE l.name IN ['Ley Bases', 'Presupuesto', 'Impuesto a las Ganancias', 'Reforma Laboral', 'Ley de Medios', 'Codigo Penal']
@@ -127,12 +127,12 @@ WITH l, collect({pid: p.id, pname: p.name, votes: votes})[..8] AS topVoters
 RETURN toString(elementId(l)) AS lid, l.name AS lname, COALESCE(l.sector, '') AS sector, topVoters
 `
 
-// Cross-referenced entities removed from viz — they create duplicate identity nodes
+// Cross-referenced entities removed from viz - they create duplicate identity nodes
 // The underlying data (donor↔offshore, contractor↔offshore) is in the DB but
 // showing "Manuel Torino" (Donor) linked to "MANUEL TORINO" (Offshore) as two
 // nodes is confusing. The connection is noted in the investigation narrative instead.
 
-/** PENSAR ARGENTINA + affiliated orgs — include politicians who are IS_DONOR or HAS_APPOINTMENT to bridge clusters */
+/** PENSAR ARGENTINA + affiliated orgs - include politicians who are IS_DONOR or HAS_APPOINTMENT to bridge clusters */
 const PENSAR_CYPHER = `
 MATCH (p:Politician)-[:AFFILIATED_WITH]->(org)
 OPTIONAL MATCH (p)-[:IS_DONOR]->(:Donor)-[:DONATED_TO]->(pf:PoliticalPartyFinance)
@@ -163,7 +163,7 @@ ORDER BY amount DESC
 LIMIT 15
 `
 
-/** Key investigation companies — only show if connected to a politician in the graph */
+/** Key investigation companies - only show if connected to a politician in the graph */
 const KEY_COMPANIES_CYPHER = `
 MATCH (p:Politician)-[:MAYBE_SAME_AS]->(b:BoardMember)-[:BOARD_MEMBER_OF]->(c:Company)
 WHERE c.name IN ["SOCMA AMERICANA", "CORREO ARGENTINO", "AUTOPISTAS DEL SOL",
@@ -182,7 +182,7 @@ RETURN sector, cnt
 `
 
 /**
- * Bridge queries — connect politician clusters through shared attributes.
+ * Bridge queries - connect politician clusters through shared attributes.
  */
 
 // Politicians in same coalition who both have 3+ datasets
@@ -330,7 +330,7 @@ export async function GET(): Promise<Response> {
       }
     }
 
-    // Phase 2: Add offshore entities — politician directly to entity (no officer node)
+    // Phase 2: Add offshore entities - politician directly to entity (no officer node)
     try {
       const offshore = await readQuery(OFFSHORE_ENTITIES_CYPHER, {}, (r: Neo4jRecord) => ({
         pid: r.get('pid') as string, pname: r.get('pname') as string,
@@ -374,7 +374,7 @@ export async function GET(): Promise<Response> {
       }
     } catch { /* timeout ok */ }
 
-    // Phase 4a: Party switchers — show politicians who changed parties with their party nodes
+    // Phase 4a: Party switchers - show politicians who changed parties with their party nodes
     try {
       const switchers = await readQuery(SWITCHERS_CYPHER, {}, (r: Neo4jRecord) => ({
         pid: r.get('pid') as string, pname: r.get('pname') as string,
@@ -437,7 +437,7 @@ export async function GET(): Promise<Response> {
       }
     } catch { /* timeout ok */ }
 
-    // Phase 4: Cross-referenced entities removed — they create duplicate identity nodes
+    // Phase 4: Cross-referenced entities removed - they create duplicate identity nodes
 
     // Phase 5: Add PENSAR ARGENTINA network
     try {
@@ -448,7 +448,7 @@ export async function GET(): Promise<Response> {
       for (const p of pensar.records) {
         const pId = politicianElementIds.get(p.pid)
         if (!pId) {
-          // Politician not in main query — add them
+          // Politician not in main query - add them
           const pensarPolId = 'pensar-pol-' + p.pid
           if (!nodeMap.has(pensarPolId)) {
             nodeMap.set(pensarPolId, {
@@ -478,7 +478,7 @@ export async function GET(): Promise<Response> {
       }
     } catch { /* timeout ok */ }
 
-    // Phase 5b: Politician-donors — show politician donating directly to party (merged identity)
+    // Phase 5b: Politician-donors - show politician donating directly to party (merged identity)
     try {
       const polDonors = await readQuery(POLITICIAN_DONORS_CYPHER, {}, (r: Neo4jRecord) => ({
         pid: r.get('pid') as string, pname: r.get('pname') as string,
@@ -615,7 +615,7 @@ export async function GET(): Promise<Response> {
           })
         }
       } catch {
-        // Individual bridge query may timeout — continue with others
+        // Individual bridge query may timeout - continue with others
       }
     }
 
@@ -682,7 +682,7 @@ export async function GET(): Promise<Response> {
       }
     } catch { /* investigation query may timeout */ }
 
-    // Phase 11: Money trail — Donor -> Officer -> Company -> Contractor
+    // Phase 11: Money trail - Donor -> Officer -> Company -> Contractor
     try {
       const MONEY_TRAIL_CYPHER = `
         MATCH (d:Donor)-[ms:MAYBE_SAME_AS]->(co:CompanyOfficer)-[:OFFICER_OF_COMPANY]->(c:Company)-[:SAME_ENTITY]-(ct:Contractor)-[:AWARDED_TO]-(pc:PublicContract)
@@ -743,7 +743,7 @@ export async function GET(): Promise<Response> {
       }
     }
 
-    // Phase 12: Deduplicate — merge investigation Person nodes into matching Politician nodes
+    // Phase 12: Deduplicate - merge investigation Person nodes into matching Politician nodes
     // When same person exists as both Politician (platform) and Person (investigation),
     // transfer all investigation links to the Politician node and remove the Person duplicate
     const mergedIds = new Map<string, string>() // invId -> polId
@@ -801,7 +801,7 @@ export async function GET(): Promise<Response> {
       }
     }
 
-    // Post-processing: remove small components (< 3 nodes) — they clutter the viz
+    // Post-processing: remove small components (< 3 nodes) - they clutter the viz
     const adj = new Map<string, Set<string>>()
     for (const link of links) {
       const s = typeof link.source === 'string' ? link.source : (link.source as any)?.id

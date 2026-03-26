@@ -1,7 +1,7 @@
 /**
- * LLM abstraction layer — provider-agnostic interfaces for the engine pipeline.
+ * LLM abstraction layer - provider-agnostic interfaces for the engine pipeline.
  *
- * Plain TypeScript interfaces (no Zod — these are internal, not persisted).
+ * Plain TypeScript interfaces (no Zod - these are internal, not persisted).
  * Covers: messages, tool use, provider contract, and response normalization.
  */
 

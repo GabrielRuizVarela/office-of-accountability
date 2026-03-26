@@ -10,7 +10,7 @@
 import { z } from 'zod/v4'
 
 // ---------------------------------------------------------------------------
-// CSV row schema — matches column headers from the designations CSV
+// CSV row schema - matches column headers from the designations CSV
 // ---------------------------------------------------------------------------
 
 export const DesignationRowSchema = z.object({

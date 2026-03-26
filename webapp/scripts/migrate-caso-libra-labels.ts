@@ -8,7 +8,7 @@
  *
  * Run with: npx tsx scripts/migrate-caso-libra-labels.ts [--phase 1|2|both]
  *
- * Idempotent — uses MERGE for Phase 1. Phase 2 only runs after verification.
+ * Idempotent - uses MERGE for Phase 1. Phase 2 only runs after verification.
  */
 
 import { getDriver, closeDriver } from '../src/lib/neo4j/client'

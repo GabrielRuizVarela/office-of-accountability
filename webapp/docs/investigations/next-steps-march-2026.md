@@ -1,4 +1,4 @@
-# Next Steps — Finanzas Politicas Investigation
+# Next Steps - Finanzas Politicas Investigation
 ## Assessment Date: 2026-03-21
 
 ---
@@ -80,7 +80,7 @@ The investigation covers the major K-era cases (Vialidad, Ruta del Dinero K, Cic
 | **Agriculture / soy** | Zero coverage | Soy export tax disputes, Vicentin (CFK expropriation attempt), Cargill/Bunge/Dreyfus oligopoly, glyphosate controversy |
 | **Real estate** | Zero coverage | Undeclared property is #1 wealth-hiding method. No Registro de la Propiedad data. |
 | **Transport** | Jaime conviction only | Missing full transport mafia: Roggio/Emepa/Metrovias, colectivos subsidies, SUBE data |
-| **Unions** | Zero coverage | Moyano (Teamsters), UOCRA (construction), Barrionuevo (gastronomy) — major political/financial power brokers |
+| **Unions** | Zero coverage | Moyano (Teamsters), UOCRA (construction), Barrionuevo (gastronomy) - major political/financial power brokers |
 | **Provincial corruption** | 1 entry (Romero/Salta advertising) | Missing: Gildo Insfran (Formosa 30 years), Alicia Kirchner (Santa Cruz), Gerardo Zamora (Santiago del Estero) |
 | **Military/defense procurement** | Zero coverage | Missing: arms deals, border security contracts, INVAP nuclear tech exports |
 | **Sports** | Tinelli + AFA entries | Missing: Grondona era (FIFA corruption), barras bravas, football club money laundering |
@@ -114,13 +114,13 @@ These money flows lack quantified amounts, reducing their analytical value:
 
 35 actors have `datasets: 2` or fewer, meaning they appear in at most 2 of the 9 data sources. Most critically:
 
-- **`datasets: 1`**: Seijas (judiciary only), Santiago Caputo (1), Pettovello (1), Auguadra (1) — these are current government officials who should appear in Boletin Oficial and DDJJ at minimum.
+- **`datasets: 1`**: Seijas (judiciary only), Santiago Caputo (1), Pettovello (1), Auguadra (1) - these are current government officials who should appear in Boletin Oficial and DDJJ at minimum.
 - Several actors with `datasets: 2` could be enriched by running cross-reference against IGJ (company directorships), CNE (campaign donations), and DDJJ (asset declarations).
 
 ### 2.3 Factcheck Items Needing Attention
 
 - **4 items with status `alleged`**: Ibanez-Pelmond, Camano-TT41, Cordero offshore pipeline, De Narvaez offshore. These need either confirmation (upgrade to `confirmed`) or explicit "unverified" labeling.
-- **0 items with status `unconfirmed`**: This is suspicious — some alleged items should be explicitly marked unconfirmed if verification failed.
+- **0 items with status `unconfirmed`**: This is suspicious - some alleged items should be explicitly marked unconfirmed if verification failed.
 - All factcheck items have `source_url` populated (no empty strings found).
 
 ### 2.4 Timeline Ordering
@@ -135,9 +135,9 @@ Two timeline events share the same ID `tl-2022-lago-escondido` (lines 1453 and 1
 
 127 of 263 nodes have only a single connection. This is the investigation's biggest structural weakness. Breakdown:
 
-- **42 Events** with degree 1 — most events connect to only one entity. Events should link to 2+ participants (person, organization, or both).
-- **49 Organizations** with degree 1 — organizations connected to only 1 person or entity. These need corporate officer links, contract relationships, or ownership chains.
-- **36 Persons** with degree 1 — persons connected to only 1 entity. These need cross-references to additional organizations, events, and relationships.
+- **42 Events** with degree 1 - most events connect to only one entity. Events should link to 2+ participants (person, organization, or both).
+- **49 Organizations** with degree 1 - organizations connected to only 1 person or entity. These need corporate officer links, contract relationships, or ownership chains.
+- **36 Persons** with degree 1 - persons connected to only 1 entity. These need cross-references to additional organizations, events, and relationships.
 
 **Priority fix:** The top 20 most important degree-1 persons (by public prominence) should each get at least 2-3 additional relationships.
 
@@ -218,7 +218,7 @@ These actions most improve the investigation's credibility and defensibility:
 
 4. **Add Nestor Kirchner actor entry.** The investigation covers 2003-2026 but omits the president who built the system. This is the most obvious gap for any reader.
 
-5. **Source verification pass on all 87 factcheck URLs.** The last pass achieved 97.4% — run again to catch any URLs that have since gone dead.
+5. **Source verification pass on all 87 factcheck URLs.** The last pass achieved 97.4% - run again to catch any URLs that have since gone dead.
 
 ### 4.2 Graph Analytical Power (High Impact)
 
@@ -281,14 +281,14 @@ CREATE FULLTEXT INDEX officerNameIndex FOR (n:CompanyOfficer) ON EACH [n.name]
 
 | Improvement | Effort | Impact |
 |-------------|--------|--------|
-| **Graph preset filters** (Judicial, Financial, Media, K-era) | 1-2 days | High — lets users explore subgraphs |
-| **Timeline filtering by chapter** | 1 day | Medium — 85 events overwhelm without filtering |
-| **Actor profile pages** with embedded subgraph | 2-3 days | High — deep dive into individual actors |
-| **Money flow Sankey diagram** | 2-3 days | High — visualizes financial flows |
-| **Search/filter across factcheck items** | 0.5 day | Medium — 87 items need search |
-| **Export investigation as PDF** | 1-2 days | Medium — shareability for journalists/prosecutors |
-| **Mobile responsive graph view** | 1-2 days | Medium — current graph may not work well on mobile |
-| **Confidence tier badges** on factcheck items | 0.5 day | Low-medium — transparency about evidence quality |
+| **Graph preset filters** (Judicial, Financial, Media, K-era) | 1-2 days | High - lets users explore subgraphs |
+| **Timeline filtering by chapter** | 1 day | Medium - 85 events overwhelm without filtering |
+| **Actor profile pages** with embedded subgraph | 2-3 days | High - deep dive into individual actors |
+| **Money flow Sankey diagram** | 2-3 days | High - visualizes financial flows |
+| **Search/filter across factcheck items** | 0.5 day | Medium - 87 items need search |
+| **Export investigation as PDF** | 1-2 days | Medium - shareability for journalists/prosecutors |
+| **Mobile responsive graph view** | 1-2 days | Medium - current graph may not work well on mobile |
+| **Confidence tier badges** on factcheck items | 0.5 day | Low-medium - transparency about evidence quality |
 
 ### 5.3 ETL Pipeline Automation
 
@@ -305,9 +305,9 @@ CREATE FULLTEXT INDEX officerNameIndex FOR (n:CompanyOfficer) ON EACH [n.name]
 
 The `2026-03-21-investigation-engine-assessment.md` proposes a 6-phase autonomous pipeline. Current readiness: ~60%. The highest-ROI phases to build first:
 
-1. **Phase 1: Seed Parser CLI** (`pnpm run investigate "topic"`) — 1-2 days. Immediately useful for expanding coverage.
-2. **Phase 2: BCRA + RNS ETL** — 2-3 days. Unlocks debtor data and national company registry.
-3. **Phase 5: Frontend auto-update** (`pnpm run generate:investigation-data`) — 2-3 days. Eliminates manual investigation-data.ts editing.
+1. **Phase 1: Seed Parser CLI** (`pnpm run investigate "topic"`) - 1-2 days. Immediately useful for expanding coverage.
+2. **Phase 2: BCRA + RNS ETL** - 2-3 days. Unlocks debtor data and national company registry.
+3. **Phase 5: Frontend auto-update** (`pnpm run generate:investigation-data`) - 2-3 days. Eliminates manual investigation-data.ts editing.
 
 ---
 

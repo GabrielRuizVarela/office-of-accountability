@@ -151,8 +151,8 @@ export function AuditLog({ casoSlug, pipelineStateId }: AuditLogProps) {
         >
           <p className={`text-sm font-medium ${chainResult.valid ? 'text-green-400' : 'text-red-400'}`}>
             {chainResult.valid
-              ? `Chain Valid — ${entries.length} entries verified`
-              : `Chain Broken — break detected at entry ${(chainResult.brokenAt ?? 0) + 1}`}
+              ? `Chain Valid - ${entries.length} entries verified`
+              : `Chain Broken - break detected at entry ${(chainResult.brokenAt ?? 0) + 1}`}
           </p>
         </div>
       )}

@@ -41,7 +41,7 @@ export function Roadmap() {
               <ul className="mt-4 grid gap-1.5 text-xs text-zinc-500 sm:grid-cols-2">
                 {phase.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-2">
-                    <span className="text-zinc-600">—</span>
+                    <span className="text-zinc-600">-</span>
                     {feature}
                   </li>
                 ))}

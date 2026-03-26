@@ -1,5 +1,5 @@
 /**
- * Property-exists check handler — verifies all nodes of a label have a property.
+ * Property-exists check handler - verifies all nodes of a label have a property.
  *
  * Counts nodes where the property IS NULL. Passes if count === 0.
  */
@@ -14,7 +14,7 @@ export async function propertyExistsCheck(
   config: PropertyExistsCheckConfig,
   ctx: CheckContext,
 ): Promise<CheckResult> {
-  // Build a safe Cypher query — label and property come from validated YAML, not user input
+  // Build a safe Cypher query - label and property come from validated YAML, not user input
   const cypher = config.scope
     ? `MATCH (n:\`${config.label}\`) WHERE n.caso_slug = $caso_slug AND n.\`${config.property}\` IS NULL RETURN count(n) AS violations`
     : `MATCH (n:\`${config.label}\`) WHERE n.\`${config.property}\` IS NULL RETURN count(n) AS violations`

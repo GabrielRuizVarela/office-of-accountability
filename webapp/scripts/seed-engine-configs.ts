@@ -6,7 +6,7 @@
  *
  * Run with: NEO4J_URI=bolt://localhost:7687 NEO4J_USER=neo4j NEO4J_PASSWORD="" npx tsx scripts/seed-engine-configs.ts
  *
- * Idempotent — uses MERGE on all operations.
+ * Idempotent - uses MERGE on all operations.
  */
 
 import { getDriver, closeDriver } from '../src/lib/neo4j/client'
@@ -26,7 +26,7 @@ async function seed() {
     for (const caso of CASOS) {
       console.log(`--- ${caso} ---`)
 
-      // 1. ModelConfig — MiroFish/Qwen local LLM
+      // 1. ModelConfig - MiroFish/Qwen local LLM
       const modelId = `${caso}:model-qwen`
       await session.run(
         `MERGE (m:ModelConfig {id: $id})
@@ -52,7 +52,7 @@ async function seed() {
       )
       console.log(`  ModelConfig: ${modelId}`)
 
-      // 2. MiroFishConfig — llama.cpp specific settings
+      // 2. MiroFishConfig - llama.cpp specific settings
       const mfId = `${caso}:mirofish`
       await session.run(
         `MERGE (mf:MiroFishConfig {id: $id})
@@ -78,7 +78,7 @@ async function seed() {
       )
       console.log(`  MiroFishConfig: ${mfId}`)
 
-      // 3. SourceConnector — graph data connector (reads existing Neo4j data)
+      // 3. SourceConnector - graph data connector (reads existing Neo4j data)
       const connectorId = `${caso}:connector-graph`
       await session.run(
         `MERGE (sc:SourceConnector {id: $id})
@@ -102,7 +102,7 @@ async function seed() {
       )
       console.log(`  SourceConnector: ${connectorId}`)
 
-      // 4. PipelineConfig — full 6-stage pipeline
+      // 4. PipelineConfig - full 6-stage pipeline
       const pipelineId = `${caso}:pipeline-main`
       const stageIds = STAGES.map((s) => `${caso}:stage-${s}`)
 

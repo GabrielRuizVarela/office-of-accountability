@@ -1,7 +1,7 @@
 /**
  * Transforms CNE campaign finance CSV data into Neo4j node/relationship parameters.
  *
- * Pure functions — no side effects, no mutations.
+ * Pure functions - no side effects, no mutations.
  * Matches donors to existing Politician nodes via normalizeName.
  */
 
@@ -128,7 +128,7 @@ function parseAmount(amountStr: string): number {
     // European format: dots are thousands separators, comma is decimal
     cleaned = trimmed.replace(/\./g, '').replace(',', '.')
   } else {
-    // Plain decimal: dot is the decimal separator — preserve it
+    // Plain decimal: dot is the decimal separator - preserve it
     cleaned = trimmed
   }
 

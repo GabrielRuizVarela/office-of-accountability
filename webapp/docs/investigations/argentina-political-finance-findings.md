@@ -1,4 +1,4 @@
-# Argentine Political Finance Investigation — Findings
+# Argentine Political Finance Investigation - Findings
 
 **Date:** 2026-03-19
 **Investigation cycle:** 1
@@ -6,11 +6,11 @@
 
 ## Executive Summary
 
-Cross-referencing five datasets — legislative voting records (Como Voto), offshore leaks (ICIJ), campaign finance declarations (CNE), government appointments (Boletín Oficial), and corporate registry (IGJ) — we identified politicians with undeclared offshore entities, contractors who illegally donated to campaigns, and individuals whose public funds flow through offshore structures.
+Cross-referencing five datasets - legislative voting records (Como Voto), offshore leaks (ICIJ), campaign finance declarations (CNE), government appointments (Boletín Oficial), and corporate registry (IGJ) - we identified politicians with undeclared offshore entities, contractors who illegally donated to campaigns, and individuals whose public funds flow through offshore structures.
 
 ## High-Priority Findings
 
-### 1. IBAÑEZ, Maria Cecilia — Active offshore entity while serving as deputy
+### 1. IBAÑEZ, Maria Cecilia - Active offshore entity while serving as deputy
 
 | Field | Detail |
 |-------|--------|
@@ -19,17 +19,17 @@ Cross-referencing five datasets — legislative voting records (Como Voto), offs
 | **Source** | Panama Papers |
 | **Overlap** | Entity active during her current term (2024-2026) |
 | **Legal risk** | Under Ley 25.188, officials must declare all assets including offshore interests. If undeclared, criminal omission. |
-| **Status** | UNCONFIRMED — High Confidence. Confirmed in [ICIJ database](https://offshoreleaks.icij.org/nodes/10158328). |
+| **Status** | UNCONFIRMED - High Confidence. Confirmed in [ICIJ database](https://offshoreleaks.icij.org/nodes/10158328). |
 
-### 2. CAMAÑO, Graciela — Offshore entity created during active term
+### 2. CAMAÑO, Graciela - Offshore entity created during active term
 
 | Field | Detail |
 |-------|--------|
-| **Politician** | Graciela Camaño (Consenso Federal, Buenos Aires) — 6 parties over career |
+| **Politician** | Graciela Camaño (Consenso Federal, Buenos Aires) - 6 parties over career |
 | **Offshore entity** | TT 41 CORP (BVI, incorporated 23-Jun-2016) |
 | **Source** | Pandora Papers (Trident Trust) |
 | **Overlap** | Entity created during her 2014-2018 term as National Deputy |
-| **Status** | UNCONFIRMED — Probable. Exact name match, consistent with Trident Trust/Argentina pattern. |
+| **Status** | UNCONFIRMED - Probable. Exact name match, consistent with Trident Trust/Argentina pattern. |
 
 ### 3. Contractor-Donor violations (Ley 26.215)
 
@@ -40,11 +40,11 @@ Under Argentine law, government contractors are **prohibited** from making campa
 | Juan Pablo Rodriguez | Government contractor (2018-2020) | Campaign donor | Illegal under Ley 26.215 |
 | Jorge Omar Gonzalez | Government contractor (2018-2020) | Campaign donor | Illegal under Ley 26.215 |
 
-### 4. Maria Eugenia Cordero — Triple overlap
+### 4. Maria Eugenia Cordero - Triple overlap
 
 Government contractor + offshore officer. Public funds potentially cycling through offshore structures.
 
-### 5. Manuel Lucio Torino — Donor with offshore holdings
+### 5. Manuel Lucio Torino - Donor with offshore holdings
 
 Campaign donor confirmed in [ICIJ Panama Papers database](https://offshoreleaks.icij.org/nodes/56052663). Undeclared offshore assets while making political contributions.
 
@@ -55,8 +55,8 @@ Campaign donor confirmed in [ICIJ Panama Papers database](https://offshoreleaks.
 All 50 MAYBE_SAME_AS matches between politicians and campaign donors were verified as the same person. All donations go to the politician's own party/coalition. No cross-party financing detected.
 
 Notable self-donors:
-- Mauricio Macri — ARS 100,000 to Juntos por el Cambio 2019
-- Máximo Kirchner — ARS 50,000 to Frente de Todos 2019
+- Mauricio Macri - ARS 100,000 to Juntos por el Cambio 2019
+- Máximo Kirchner - ARS 50,000 to Frente de Todos 2019
 
 **Data gap resolved:** Donation amounts now loaded (cycle 2 fix).
 
@@ -78,7 +78,7 @@ Politicians appearing in 2+ external datasets:
 
 | Politician | Party | Datasets | Notes |
 |-----------|-------|----------|-------|
-| Mauricio Macri | PRO | Donor, GovernmentAppointment | Documented offshore history (Fleg Trading, Kagemusha — judicially cleared for Fleg Trading but entities confirmed). Chequeado found ~ARS 3M in donations from *employees of contractor companies* (circumventing Art. 15 prohibition on corporate donations). |
+| Mauricio Macri | PRO | Donor, GovernmentAppointment | Documented offshore history (Fleg Trading, Kagemusha - judicially cleared for Fleg Trading but entities confirmed). Chequeado found ~ARS 3M in donations from *employees of contractor companies* (circumventing Art. 15 prohibition on corporate donations). |
 | Fernando Sánchez | Coalición Cívica | Donor, GovernmentAppointment | Legislator → government appointee revolving door. CC-ARI faced allegations of fictitious donations. |
 | Graciela Susana Villata | Frente Cívico - Córdoba | Donor, GovernmentAppointment | Lower risk without additional evidence. |
 
@@ -94,13 +94,13 @@ Politicians appearing in 2+ external datasets:
 
 ## Methodology
 
-- Entity matching via `normalizeName()` — strips diacritics, lowercases, sorts name parts alphabetically
+- Entity matching via `normalizeName()` - strips diacritics, lowercases, sorts name parts alphabetically
 - All matches stored as `MAYBE_SAME_AS` relationships with confidence scores
 - Cross-dataset links stored as `CROSS_REFERENCED` relationships
 - Verification via WebSearch for press coverage and ICIJ database confirmation
 - False positive rate: 0% for donor matches (50/50 confirmed), ~33% for offshore matches (1/3 likely false positive)
 
-## Deep Analysis — Multi-Source Convergence
+## Deep Analysis - Multi-Source Convergence
 
 Three independent analyses (manual verification, subagent web research, Qwen 9B LLM) converge on the same priority rankings:
 
@@ -115,7 +115,7 @@ Pattern: absent on financial votes while holding an offshore entity raises quest
 
 ### Cordero: The State-to-Offshore Pipeline
 
-María Eugenia Cordero is the most structurally dangerous finding — a government contractor who is also an officer of **BETHAN INVESTMENTS LIMITED** (offshore). This creates a direct state-funds-to-offshore pipeline: public contract money → individual → offshore entity. This pattern is the foundation of embezzlement schemes and a potential violation of **Ley 25.246** (anti-money laundering).
+María Eugenia Cordero is the most structurally dangerous finding - a government contractor who is also an officer of **BETHAN INVESTMENTS LIMITED** (offshore). This creates a direct state-funds-to-offshore pipeline: public contract money → individual → offshore entity. This pattern is the foundation of embezzlement schemes and a potential violation of **Ley 25.246** (anti-money laundering).
 
 ### Contractor-Donor Violations: Black-Letter Law
 
@@ -127,12 +127,12 @@ Macri, Sánchez, and Bullrich form a revolving-door cluster: legislators → gov
 
 ## Data Gaps (Priority for Next Cycle)
 
-1. **Donation amounts** — present in CNE source but not loaded. Critical for proportionality analysis.
-2. **Contract amounts** — Rodriguez had 4 contracts but values unknown.
-3. **GovernmentAppointment details** — position/org/decree fields null in MAYBE_SAME_AS queries (schema issue).
-4. **IGJ corporate data** — 1,479 politician-company matches pending (still loading).
-5. **AFIP sworn declarations** — would confirm/deny whether offshore entities were declared.
-6. **Temporal analysis** — when did donations happen relative to contract awards?
+1. **Donation amounts** - present in CNE source but not loaded. Critical for proportionality analysis.
+2. **Contract amounts** - Rodriguez had 4 contracts but values unknown.
+3. **GovernmentAppointment details** - position/org/decree fields null in MAYBE_SAME_AS queries (schema issue).
+4. **IGJ corporate data** - 1,479 politician-company matches pending (still loading).
+5. **AFIP sworn declarations** - would confirm/deny whether offshore entities were declared.
+6. **Temporal analysis** - when did donations happen relative to contract awards?
 
 ## Next Steps
 
@@ -148,9 +148,9 @@ Macri, Sánchez, and Bullrich form a revolving-door cluster: legislators → gov
 ## Sources
 
 - [ICIJ Offshore Leaks Database](https://offshoreleaks.icij.org)
-- [Aportantes Electorales — CNE](https://aportantes.electoral.gob.ar)
+- [Aportantes Electorales - CNE](https://aportantes.electoral.gob.ar)
 - [datos.gob.ar](https://datos.gob.ar)
-- [PELMOND COMPANY LTD — ICIJ](https://offshoreleaks.icij.org/nodes/10158328)
-- [Macri — contratistas donation — Chequeado](https://chequeado.com/investigaciones/macri-recibio-3-millones-de-contratistas-del-estado-para-su-campana-electoral/)
-- [Pandora Papers Argentina — Infobae](https://www.infobae.com/america/pandora-papers/2021/10/03/)
-- [Panama Papers Macri — El Cronista](https://www.cronista.com/economia-politica/panama-papers-que-declaro-el-periodista-alconada-en-la-causa-por-la-offshore-de-macri/)
+- [PELMOND COMPANY LTD - ICIJ](https://offshoreleaks.icij.org/nodes/10158328)
+- [Macri - contratistas donation - Chequeado](https://chequeado.com/investigaciones/macri-recibio-3-millones-de-contratistas-del-estado-para-su-campana-electoral/)
+- [Pandora Papers Argentina - Infobae](https://www.infobae.com/america/pandora-papers/2021/10/03/)
+- [Panama Papers Macri - El Cronista](https://www.cronista.com/economia-politica/panama-papers-que-declaro-el-periodista-alconada-en-la-causa-por-la-offshore-de-macri/)

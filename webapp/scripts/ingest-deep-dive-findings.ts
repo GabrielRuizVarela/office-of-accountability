@@ -6,7 +6,7 @@
  * Finaig/Lijo connection, Correo Argentino.
  *
  * Run with: npx tsx scripts/ingest-deep-dive-findings.ts
- * Idempotent — safe to re-run (uses MERGE, not CREATE).
+ * Idempotent - safe to re-run (uses MERGE, not CREATE).
  */
 
 import 'dotenv/config'

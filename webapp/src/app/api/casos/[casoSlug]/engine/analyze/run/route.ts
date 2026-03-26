@@ -61,7 +61,7 @@ export async function POST(
       return Response.json({ success: true, data: { type: 'anomaly', anomalies } })
     }
 
-    // For procurement, ownership, connections — return graph summary
+    // For procurement, ownership, connections - return graph summary
     const summaryResult = await readQuery<{ label: string; count: number }>(
       `MATCH (n {caso_slug: $casoSlug})
        RETURN labels(n)[0] AS label, count(n) AS count

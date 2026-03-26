@@ -1,5 +1,5 @@
 /**
- * Caso Finanzas Politicas — InvestigationClientConfig.
+ * Caso Finanzas Politicas - InvestigationClientConfig.
  *
  * Static frontend configuration for the Argentine Political Finance investigation.
  * Tabs, feature flags, hero text, and sources.

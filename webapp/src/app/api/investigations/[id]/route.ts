@@ -1,9 +1,9 @@
 /**
  * /api/investigations/[id]
  *
- * GET    — Get investigation by ID (public for published, auth for drafts)
- * PATCH  — Update investigation (auth required, author only)
- * DELETE — Delete investigation (auth required, author only)
+ * GET    - Get investigation by ID (public for published, auth for drafts)
+ * PATCH  - Update investigation (auth required, author only)
+ * DELETE - Delete investigation (auth required, author only)
  *
  * Responses:
  *   GET    200: investigation with author

@@ -1,10 +1,10 @@
 /**
- * Seed script — creates InvestigationConfig + SchemaDefinition subgraphs
+ * Seed script - creates InvestigationConfig + SchemaDefinition subgraphs
  * for all three investigations.
  *
  * Run with: npx tsx scripts/seed-investigation-configs.ts
  *
- * Idempotent — uses MERGE on all nodes and relationships.
+ * Idempotent - uses MERGE on all nodes and relationships.
  * Creates the following graph structure per investigation:
  *
  *   (InvestigationConfig) -[:HAS_SCHEMA]-> (SchemaDefinition)
@@ -352,7 +352,7 @@ async function verifySeed(): Promise<boolean> {
       const expected = expectedCounts[id]
 
       if (!expected) {
-        console.log(`  ? ${id} (slug: ${slug}) — unexpected config`)
+        console.log(`  ? ${id} (slug: ${slug}) - unexpected config`)
         continue
       }
 
@@ -401,7 +401,7 @@ async function main(): Promise<void> {
   console.log(`Seed complete in ${duration}ms`)
 
   if (!valid) {
-    console.error('Verification FAILED — check output above')
+    console.error('Verification FAILED - check output above')
     await closeDriver()
     process.exit(1)
   }

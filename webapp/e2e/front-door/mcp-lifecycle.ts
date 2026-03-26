@@ -84,6 +84,7 @@ async function main() {
 
   // Verify our new tools exist
   const requiredTools = [
+    'caso.create',
     'ingest.add_entity', 'ingest.add_relationship', 'ingest.import_csv',
     'pipeline.run', 'pipeline.proposals', 'pipeline.approve',
     'verify.promote_tier', 'analyze.detect_gaps', 'analyze.hypothesize',
@@ -105,14 +106,22 @@ async function main() {
   console.log('\n═══ Phase 1: Create Investigation via MCP ═══\n')
   // =========================================================================
 
-  // Use investigation.create to make a new caso
-  // Note: investigation.create creates a TipTap investigation (article),
-  // not a caso. For caso creation we use the ingest tools on a new slug.
-  // The caso was already created via the API. Let's use a fresh one.
-  const casoSlug = `caso-mcp-nucleoelectrica-${ts}`
+  const createResult = await callTool('caso.create', {
+    name_es: `Nucleoeléctrica: Sobreprecios ${ts}`,
+    name_en: `Nucleoeléctrica: Overpricing ${ts}`,
+    description_es: 'Investigación sobre presuntos sobreprecios del 140% en contratos de Nucleoeléctrica Argentina SA bajo Demian Reidel.',
+    description_en: 'Investigation into alleged 140% overpricing in Nucleoeléctrica Argentina SA contracts under Demian Reidel.',
+    tags: ['argentina', 'nuclear', 'corruption', 'overpricing', 'milei'],
+  })
 
-  // Create entities directly — the MCP ingest tools will create the caso context
-  // First entity creates the namespace implicitly
+  let casoSlug: string
+  if (createResult?.success) {
+    casoSlug = createResult.data.caso_slug
+    pass(`Investigation created: ${casoSlug} (id: ${createResult.data.investigation_config_id})`)
+  } else {
+    fail('caso.create', JSON.stringify(createResult).slice(0, 200))
+    process.exit(1)
+  }
 
   // =========================================================================
   console.log('\n═══ Phase 2: Add Entities via MCP Tools ═══\n')
@@ -331,21 +340,18 @@ Fiscal Federal (unnamed),Prosecutor,Investigating overpricing claims`,
   }
 
   // =========================================================================
-  await printSummary()
-
-  async function printSummary() {
-    console.log(`\n${'═'.repeat(60)}`)
-    console.log(`  MCP E2E RESULTS: ${passed} passed, ${failed} failed`)
-    console.log(`  Investigation: ${casoSlug}`)
-    console.log(`  Protocol: JSON-RPC 2.0 over HTTP POST`)
-    console.log(`  Auth: Bearer token → SHA-256 → KV lookup`)
-    console.log(`  Tools used: ingest.add_entity, ingest.add_relationship,`)
-    console.log(`    ingest.import_csv, pipeline.run, pipeline.approve,`)
-    console.log(`    analyze.detect_gaps, analyze.run_analysis,`)
-    console.log(`    analyze.hypothesize, verify.promote_tier`)
-    console.log(`${'═'.repeat(60)}\n`)
-    if (failed > 0) process.exit(1)
-  }
+  console.log(`\n${'═'.repeat(60)}`)
+  console.log(`  MCP E2E RESULTS: ${passed} passed, ${failed} failed`)
+  console.log(`  Investigation: ${casoSlug}`)
+  console.log(``)
+  console.log(`  VIEW IT: http://localhost:5181/caso/${casoSlug}`)
+  console.log(`  ENGINE:  http://localhost:5181/caso/${casoSlug}/motor`)
+  console.log(`  GRAPH:   http://localhost:5181/caso/${casoSlug}/grafo`)
+  console.log(``)
+  console.log(`  Protocol: JSON-RPC 2.0 over HTTP POST`)
+  console.log(`  Auth: Bearer token → SHA-256 → KV lookup`)
+  console.log(`${'═'.repeat(60)}\n`)
+  if (failed > 0) process.exit(1)
 }
 
 main().catch(err => {

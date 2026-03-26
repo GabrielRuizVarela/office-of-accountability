@@ -1,5 +1,5 @@
 /**
- * Anomaly detection algorithm — M10 Graph Algorithms (Phase 6).
+ * Anomaly detection algorithm - M10 Graph Algorithms (Phase 6).
  *
  * Queries Neo4j for degree distribution within a caso_slug namespace,
  * computes mean + stddev, and flags statistically anomalous nodes
@@ -94,7 +94,7 @@ export async function detectAnomalies(casoSlug: string): Promise<Anomaly[]> {
       const severity = Math.min(1, (zScore - 3) / 3 + 0.5) // 0.5 at z=3, 1 at z=6
       anomalies.push({
         type: 'high_degree',
-        description: `"${node.name}" (${node.label}) has ${node.degree} connections — ${zScore.toFixed(1)}σ above mean`,
+        description: `"${node.name}" (${node.label}) has ${node.degree} connections - ${zScore.toFixed(1)}σ above mean`,
         node_ids: [node.id],
         severity: Math.max(0, Math.min(1, severity)),
       })

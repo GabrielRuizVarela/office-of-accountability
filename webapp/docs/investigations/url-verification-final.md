@@ -58,7 +58,7 @@
 
 ---
 
-## WIKIPEDIA URLs (403 — Bot Protection, Content Verified Stable)
+## WIKIPEDIA URLs (403 - Bot Protection, Content Verified Stable)
 
 These return 403 to automated fetchers but are well-known, stable encyclopedia pages:
 
@@ -71,7 +71,7 @@ These return 403 to automated fetchers but are well-known, stable encyclopedia p
 | `https://es.wikipedia.org/wiki/Caso_IBM-Banco_Naci%C3%B3n` | 403 | Stable Wikipedia article |
 | `https://es.wikipedia.org/wiki/Rodolfo_Urtubey` | 403 | Stable Wikipedia article |
 | `https://en.wikipedia.org/wiki/$Libra_cryptocurrency_scandal` | 403 | Stable Wikipedia article |
-| `https://es.wikipedia.org/wiki/Consejo_de_la_Magistratura_(Argentina` | 403 | Malformed URL (missing `)`) — fix to `https://es.wikipedia.org/wiki/Consejo_de_la_Magistratura_(Argentina)` |
+| `https://es.wikipedia.org/wiki/Consejo_de_la_Magistratura_(Argentina` | 403 | Malformed URL (missing `)`) - fix to `https://es.wikipedia.org/wiki/Consejo_de_la_Magistratura_(Argentina)` |
 
 ---
 
@@ -79,8 +79,8 @@ These return 403 to automated fetchers but are well-known, stable encyclopedia p
 
 | URL | STATUS | NOTES |
 |-----|--------|-------|
-| `https://www.cij.gov.ar/nota-22621-...` | 301 | Redirects to `https://www.csjn.gov.ar/archivo-cij/nota-22621-...` — valid content at new location |
-| `https://www.pagina12.com.ar/377456-rosenkrantz-el-juez-de-clarin` | 302 | Broken redirect to `pagina12.com.arundefined/` — needs replacement |
+| `https://www.cij.gov.ar/nota-22621-...` | 301 | Redirects to `https://www.csjn.gov.ar/archivo-cij/nota-22621-...` - valid content at new location |
+| `https://www.pagina12.com.ar/377456-rosenkrantz-el-juez-de-clarin` | 302 | Broken redirect to `pagina12.com.arundefined/` - needs replacement |
 
 ---
 

@@ -67,7 +67,7 @@ export async function GET(
           Oficina de Rendicion de Cuentas
         </span>
         <span style={{ fontSize: '20px', fontWeight: 400, color: '#52525b', marginLeft: '8px' }}>
-          — Investigación
+          - Investigación
         </span>
       </div>
 

@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * Document detail page — full summary, source link, connected entities.
+ * Document detail page - full summary, source link, connected entities.
  */
 
 import { useEffect, useState } from 'react'
@@ -90,7 +90,7 @@ export default function DocumentDetailPage() {
         </a>
       )}
 
-      <ShareButton text={`Caso Libra — ${docTitle}`} title={docTitle} />
+      <ShareButton text={`Caso Libra - ${docTitle}`} title={docTitle} />
 
       {/* Connected entities */}
       {data.mentionedEntities.length > 0 && (

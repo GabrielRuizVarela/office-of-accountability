@@ -1,5 +1,5 @@
 /**
- * LLM abstraction layer — barrel export.
+ * LLM abstraction layer - barrel export.
  */
 
 export type {
