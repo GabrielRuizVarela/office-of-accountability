@@ -36,8 +36,8 @@ const sections: Section[] = [
       es: 'Como Se Construyo Esta Investigacion',
     },
     content: {
-      en: `This investigation was built using an AI-assisted 13-wave methodology. Each wave targets a specific data layer — from open-source intelligence seeds to cross-referenced entity networks. All AI-generated analysis is verified locally using MiroFish (llama.cpp with Qwen models running on GPU), ensuring no investigation data leaves the local machine. The system combines automated data ingestion with human editorial review at every verification gate.`,
-      es: `Esta investigacion fue construida usando una metodologia de 13 olas asistida por IA. Cada ola apunta a una capa de datos especifica — desde semillas de inteligencia de fuentes abiertas hasta redes de entidades cruzadas. Todo el analisis generado por IA es verificado localmente usando MiroFish (llama.cpp con modelos Qwen ejecutandose en GPU), asegurando que ningun dato de investigacion salga de la maquina local. El sistema combina ingesta automatizada de datos con revision editorial humana en cada punto de verificacion.`,
+      en: `This investigation was built using an AI-assisted 13-wave methodology. Each wave targets a specific data layer — from open-source intelligence seeds to cross-referenced entity networks. All AI-generated analysis is verified locally, ensuring no investigation data leaves the local machine. The system combines automated data ingestion with human editorial review at every verification gate.`,
+      es: `Esta investigacion fue construida usando una metodologia de 13 olas asistida por IA. Cada ola apunta a una capa de datos especifica — desde semillas de inteligencia de fuentes abiertas hasta redes de entidades cruzadas. Todo el analisis generado por IA es verificado localmente, asegurando que ningun dato de investigacion salga de la maquina local. El sistema combina ingesta automatizada de datos con revision editorial humana en cada punto de verificacion.`,
     },
   },
   {
@@ -97,20 +97,20 @@ Ola 13: Sintesis — construccion narrativa, puntaje de confianza, revision edit
 
 Gold (Curated): Manually verified against primary source documents. Source URL validated and archived. Human editorial sign-off.
 
-Silver (Web-Verified): Cross-referenced against at least two independent public sources. AI-assisted verification with local LLM (MiroFish/Qwen). Source URLs validated.
+Silver (Web-Verified): Cross-referenced against at least two independent public sources. AI-assisted verification with local language model. Source URLs validated.
 
 Bronze (Raw Ingested): Single-source data pending verification. Flagged for review. Not used in published narratives without upgrade.
 
-All AI verification runs locally — no data is sent to external APIs. The MiroFish engine uses Qwen models via llama.cpp, leveraging GPU acceleration for real-time analysis.`,
+All AI verification runs locally — no investigation data is sent to external services or cloud APIs.`,
       es: `Cada dato en la investigacion lleva un nivel de confianza:
 
 Oro (Curado): Verificado manualmente contra documentos fuente primarios. URL de fuente validada y archivada. Aprobacion editorial humana.
 
-Plata (Verificado Web): Cruzado contra al menos dos fuentes publicas independientes. Verificacion asistida por IA con LLM local (MiroFish/Qwen). URLs de fuente validadas.
+Plata (Verificado Web): Cruzado contra al menos dos fuentes publicas independientes. Verificacion asistida por IA con modelo de lenguaje local. URLs de fuente validadas.
 
 Bronce (Ingesta Cruda): Datos de fuente unica pendientes de verificacion. Marcados para revision. No se usan en narrativas publicadas sin actualizacion de nivel.
 
-Toda la verificacion por IA se ejecuta localmente — no se envian datos a APIs externas. El motor MiroFish usa modelos Qwen via llama.cpp, aprovechando aceleracion GPU para analisis en tiempo real.`,
+Toda la verificacion por IA se ejecuta localmente — no se envian datos de investigacion a servicios externos ni APIs en la nube.`,
     },
   },
   {
