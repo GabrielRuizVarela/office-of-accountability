@@ -1,6 +1,57 @@
+# Environment
 .env
 .env.local
+.env.production
+
+# Dependencies
 node_modules/
-webapp/data/
+
+# Build output
 .next/
-webapp/_ingestion_data/ocds-provincial/BAC_OCDS/
+dist/
+build/
+
+# Data (large CSVs, JSONLs)
+webapp/data/
+webapp/_ingestion_data/
+
+# Test artifacts
+webapp/test-results/
+
+# Agent/tool state
+.ralph/
+.playwright-mcp/
+.superpowers/
+.claude/
+webapp/.ralph/
+webapp/.impeccable.md
+ralph.yml
+
+# Internal documentation (kept locally, not public)
+CLAUDE.md
+PRD.md
+PROMPT.md
+TASKS.md
+USERS.md
+USER-SUMMARY.md
+LAUNCH-CHECKLIST.md
+AUDIT_SCRATCHPAD.md
+SCRATCHPAD-*.md
+DOSSIER-*.md
+NARRATIVE-*.md
+PLAN-*.md
+docs/superpowers/
+webapp/docs/superpowers/
+webapp/docs/investigations/
+webapp/docs/PR-SUMMARY.md
+webapp/docs/mirofish-integration-plan.md
+
+# Root screenshots (copies in docs/images/ for README)
+*.png
+!docs/images/*.png
+!webapp/public/*.png
+
+# Misc
+*.log
+.DS_Store
+*.pem
