@@ -33,31 +33,9 @@ export async function GET() {
   try {
     // Get investigative core + their immediate neighbors for a connected graph
     const nodeResult = await session.run(
-      `// Core: bribery cases, politicians, intermediaries
+      `// All nodes in the obras-publicas case
        MATCH (n)
        WHERE n.caso_slug = 'obras-publicas'
-         AND (n:BriberyCase OR n:Politician OR n:Intermediary)
-       WITH collect(n) AS core
-
-       // Flagged/verified contractors
-       MATCH (c:Contractor)
-       WHERE c.caso_slug = 'obras-publicas'
-         AND (c.verification_status IS NOT NULL OR c.finding_status IS NOT NULL)
-       WITH core, collect(c) AS flagged
-
-       // Top contractors by contract count
-       MATCH (top:Contractor)<-[:AWARDED_TO]-(pc:PublicContract)
-       WHERE top.caso_slug = 'obras-publicas'
-       WITH core, flagged, top, count(pc) AS cnt ORDER BY cnt DESC LIMIT 30
-       WITH core, flagged, collect(top) AS topC
-
-       // PublicWorks linked to bribery cases
-       MATCH (bc:BriberyCase)-[:CASE_INVOLVES]->(pw:PublicWork)
-       WITH core, flagged, topC, collect(pw) AS works
-
-       // Merge all
-       WITH core + flagged + topC + works AS all_nodes
-       UNWIND all_nodes AS n
        RETURN DISTINCT n`,
       {},
       { timeout: 30_000 },
