@@ -100,6 +100,17 @@ export const investigations: InvestigationConfig[] = [
     href: '/caso/obras-publicas',
   },
   {
+    slug: 'adorni',
+    title: 'Caso Adorni',
+    subtitle: 'Investigacion activa',
+    description:
+      'Investigacion sobre Manuel Adorni, Vocero Presidencial. Declaraciones publicas, patrimonio, conexiones corporativas, pauta oficial y cruces con otras investigaciones.',
+    status: 'active',
+    color: 'sky',
+    stats: [],
+    href: '/caso/adorni',
+  },
+  {
     slug: 'riesgo-nuclear',
     title: 'Riesgo Nuclear Global',
     subtitle: 'Monitoreo diario de senales de escalada nuclear',

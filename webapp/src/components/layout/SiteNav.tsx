@@ -18,6 +18,10 @@ const DOT_COLORS: Record<string, string> = {
   stone: 'bg-stone-400',
 }
 
+function displayName(title: string): string {
+  return title.replace(/^Caso /, '').split(':')[0]
+}
+
 export function SiteNav() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { lang } = useLanguage()
@@ -38,7 +42,7 @@ export function SiteNav() {
               className="flex items-center gap-1.5 text-zinc-400 transition-colors hover:text-zinc-100"
             >
               <span className={`inline-block h-1.5 w-1.5 rounded-full ${DOT_COLORS[inv.color] ?? 'bg-zinc-500'}`} />
-              {inv.title.replace(/^Caso /, '').split(':')[0]}
+              {displayName(inv.title)}
             </Link>
           ))}
 
@@ -80,7 +84,7 @@ export function SiteNav() {
                 onClick={() => setMenuOpen(false)}
               >
                 <span className={`inline-block h-1.5 w-1.5 rounded-full ${DOT_COLORS[inv.color] ?? 'bg-zinc-500'}`} />
-                {inv.title.replace(/^Caso /, '').split(':')[0]}
+                {displayName(inv.title)}
               </Link>
             ))}
           </div>
