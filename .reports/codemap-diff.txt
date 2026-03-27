@@ -1,0 +1,21 @@
+Codemap Diff Report — 2026-03-27
+=================================
+
+Status: INITIAL GENERATION (no previous version)
+Change: 100% (new files)
+
+Files generated:
+  docs/codemaps/architecture.md  — System overview, request flow, data flow, investigation pattern
+  docs/codemaps/frontend.md      — 30+ page routes, 50+ components, 28+ API routes, i18n
+  docs/codemaps/backend.md       — 8 lib modules, 15+ ETL modules, middleware, 70+ scripts
+  docs/codemaps/data.md          — 24 node labels, 40+ relationships, 25 constraints, Zod schemas
+
+Summary:
+  - 24 Neo4j node labels across 5 domains (political, caso-libra, cross-case, nuclear, system)
+  - 40+ relationship types
+  - 25 unique constraints, 13 fulltext indexes, 29 range indexes
+  - 8 case modules with consistent investigation-data exports
+  - 15+ ETL modules covering 10+ public data sources
+  - 28+ API endpoints
+  - 50+ React components
+  - 30+ page routes

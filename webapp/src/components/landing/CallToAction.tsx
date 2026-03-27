@@ -17,12 +17,12 @@ export function CallToAction() {
         </p>
         <div className="mt-6 flex flex-col items-center gap-4">
           <a
-            href="mailto:contact@officeofaccountability.org"
+            href="mailto:officeofaccountability@proton.me"
             className="btn-press rounded bg-zinc-50 px-6 py-2.5 text-[13px] font-semibold text-zinc-950"
           >
             {t('ctaContact')}
           </a>
-          <span className="text-[13px] text-zinc-500 select-all">contact@officeofaccountability.org</span>
+          <span className="text-[13px] text-zinc-500 select-all">officeofaccountability@proton.me</span>
         </div>
       </ScrollReveal>
     </section>
