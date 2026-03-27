@@ -34,10 +34,6 @@ function getClientIp(request: NextRequest): string {
 
 /** Determine which rate limit tier applies to a request */
 function getRateLimitTier(pathname: string, method: string) {
-  if (pathname.startsWith('/api/auth/')) {
-    return { config: RATE_LIMITS.auth, prefix: 'auth' }
-  }
-
   if (pathname.startsWith('/api/og/')) {
     return { config: RATE_LIMITS.og, prefix: 'og' }
   }
@@ -54,10 +50,8 @@ function isMutationMethod(method: string): boolean {
   return method === 'POST' || method === 'PATCH' || method === 'PUT' || method === 'DELETE'
 }
 
-/** Routes exempt from CSRF validation (they handle their own CSRF) */
+/** Routes exempt from CSRF validation */
 function isCsrfExempt(pathname: string): boolean {
-  // Auth.js routes handle their own CSRF tokens
-  if (pathname.startsWith('/api/auth/')) return true
   // Investigation API — uses x-api-key header auth instead of CSRF (for MCP agent access)
   if (pathname.startsWith('/api/caso-libra/investigation')) return true
   return false
