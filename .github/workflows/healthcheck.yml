@@ -11,33 +11,39 @@ jobs:
     timeout-minutes: 5
 
     steps:
-      - name: Check site health
-        id: health
+      - name: Setup SSH key
         run: |
-          HTTP_CODE=$(curl -sf -o /dev/null -w "%{http_code}" --max-time 15 https://office-of-accountability.org/ 2>/dev/null || echo "000")
-          echo "status=$HTTP_CODE" >> "$GITHUB_OUTPUT"
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "$SERVER_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+        env:
+          SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+
+      - name: Check health and rescue if needed
+        run: |
+          # Check directly via server (bypass Cloudflare)
+          HTTP_CODE=$(ssh root@"$SERVER_HOST" 'curl -sf -o /dev/null -w "%{http_code}" --max-time 10 http://localhost:5174/ 2>/dev/null || echo "000"')
+          echo "Server HTTP status: $HTTP_CODE"
+
           if [ "$HTTP_CODE" = "200" ]; then
-            echo "Site is healthy (HTTP $HTTP_CODE)"
-          else
-            echo "Site is DOWN (HTTP $HTTP_CODE)"
+            echo "Site is healthy"
+            exit 0
           fi
 
-      - name: Rescue via SSH
-        if: steps.health.outputs.status != '200'
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: root
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          script_stop: false
-          script: |
-            echo "=== Rescue triggered ==="
-            date
-            free -h
-            docker ps | grep -q neo4j || docker start neo4j
-            sleep 5
-            grep -q 'mode === "production"' /opt/ooa/webapp/node_modules/vinext/dist/index.js || \
-              sed -i 's/env?.command === "build"/env?.command === "build" || mode === "production"/' /opt/ooa/webapp/node_modules/vinext/dist/index.js
-            systemctl restart ooa
-            sleep 5
-            curl -sf -o /dev/null http://localhost:5174/ && echo "Rescue successful" || echo "Rescue FAILED"
+          echo "Site is DOWN — attempting rescue..."
+          ssh root@"$SERVER_HOST" 'bash -s' << 'SCRIPT'
+          echo "=== Rescue triggered ==="
+          date
+          free -h
+          docker ps | grep -q neo4j || docker start neo4j
+          sleep 5
+          grep -q 'mode === "production"' /opt/ooa/webapp/node_modules/vinext/dist/index.js || \
+            sed -i 's/env?.command === "build"/env?.command === "build" || mode === "production"/' /opt/ooa/webapp/node_modules/vinext/dist/index.js
+          systemctl restart ooa
+          sleep 5
+          curl -sf -o /dev/null http://localhost:5174/ && echo "Rescue successful" || echo "Rescue FAILED"
+          SCRIPT
+        env:
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}

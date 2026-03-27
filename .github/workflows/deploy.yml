@@ -15,21 +15,29 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: root
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          script_stop: true
-          script: |
-            cd /opt/ooa
-            git pull origin main
-            cd webapp
-            pnpm install --frozen-lockfile
-            sed -i 's/env?.command === "build"/env?.command === "build" || mode === "production"/' node_modules/vinext/dist/index.js
-            pnpm run build
-            systemctl restart ooa
-            sleep 3
-            curl -sf -o /dev/null http://localhost:5174/ || (systemctl status ooa --no-pager && exit 1)
-            echo "Deploy successful"
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "$SERVER_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+        env:
+          SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+
+      - name: Deploy
+        run: |
+          ssh root@"$SERVER_HOST" 'bash -s' << 'SCRIPT'
+          cd /opt/ooa
+          git pull origin main
+          cd webapp
+          pnpm install --frozen-lockfile
+          sed -i 's/env?.command === "build"/env?.command === "build" || mode === "production"/' node_modules/vinext/dist/index.js
+          pnpm run build
+          systemctl restart ooa
+          sleep 3
+          curl -sf -o /dev/null http://localhost:5174/ || (systemctl status ooa --no-pager && exit 1)
+          echo "Deploy successful"
+          SCRIPT
+        env:
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
