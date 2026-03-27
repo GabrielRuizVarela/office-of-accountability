@@ -1,45 +1,38 @@
 import type { Metadata } from 'next'
 
-import { LanguageProvider, type Lang } from '@/lib/language-context'
 import { InvestigationNav } from '@/components/investigation/InvestigationNav'
 import { BilingualLegalDisclaimer } from '@/components/investigation/LegalDisclaimer'
 
-const CASE_META: Readonly<Record<string, { title: string; description: string; defaultLang: Lang }>> = {
+const CASE_META: Readonly<Record<string, { title: string; description: string }>> = {
   'caso-libra': {
     title: 'Caso Libra — Oficina de Rendicion de Cuentas',
     description:
       'Investigacion comunitaria sobre el token $LIBRA promovido por el presidente Milei. Datos publicos, blockchain, y documentos parlamentarios.',
-    defaultLang: 'es',
   },
   'caso-epstein': {
     title: 'Epstein Case — Office of Accountability',
     description:
       'Trafficking and power network. 7,276 entities, court documents, flight records, and factchecking.',
-    defaultLang: 'en',
   },
   'finanzas-politicas': {
     title: 'Finanzas Politicas Argentinas — Oficina de Rendicion de Cuentas',
     description:
       'Analisis de redes de relaciones institucionales entre entidades gubernamentales, corporativas, judiciales, financieras y mediaticas en Argentina.',
-    defaultLang: 'es',
   },
   'monopolios': {
     title: 'Monopolios en Argentina — Oficina de Rendicion de Cuentas',
     description:
       'Investigacion sobre mercados monopolizados: 18 sectores, 44 archivos, 829+ cruces Neo4j. Costo al consumidor: USD 22.500M/año.',
-    defaultLang: 'es',
   },
   'riesgo-nuclear': {
     title: 'Global Nuclear Risk — Office of Accountability',
     description:
       'Daily monitoring of nuclear escalation signals across all theaters. 31 sources, LLM-powered analysis, risk scoring.',
-    defaultLang: 'en',
   },
   'caso-dictadura': {
     title: 'Caso Dictadura — Oficina de Rendición de Cuentas',
     description:
       'Dictadura militar argentina 1976-1983. Desaparecidos, centros clandestinos, juicios de lesa humanidad y redes de complicidad.',
-    defaultLang: 'es',
   },
 }
 
@@ -65,10 +58,9 @@ export default async function CasoLayout({
   readonly params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const defaultLang = CASE_META[slug]?.defaultLang ?? 'es'
 
   return (
-    <LanguageProvider defaultLang={defaultLang}>
+    <>
       <InvestigationNav slug={slug} />
       <main className="mx-auto max-w-6xl px-4 py-6 sm:py-8">
         {children}
@@ -76,6 +68,6 @@ export default async function CasoLayout({
           <BilingualLegalDisclaimer />
         </div>
       </main>
-    </LanguageProvider>
+    </>
   )
 }
