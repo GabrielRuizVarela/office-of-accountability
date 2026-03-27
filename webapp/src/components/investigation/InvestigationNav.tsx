@@ -11,6 +11,7 @@ import { usePathname } from 'next/navigation'
 
 import { useLanguage, type Lang } from '@/lib/language-context'
 
+
 interface NavTab {
   readonly href: string
   readonly label: Record<Lang, string>
@@ -111,7 +112,7 @@ const DEFAULT_TABS: readonly NavTab[] = [
 
 export function InvestigationNav({ slug }: InvestigationNavProps) {
   const pathname = usePathname()
-  const { lang, setLang } = useLanguage()
+  const { lang } = useLanguage()
   const base = `/caso/${slug}`
   const tabDefs = CASE_TABS[slug] ?? DEFAULT_TABS
   const tabs = tabDefs.map((t) => ({ href: `${base}${t.href}`, label: t.label[lang] }))
@@ -135,29 +136,6 @@ export function InvestigationNav({ slug }: InvestigationNavProps) {
         )
       })}
 
-      {/* Language toggle */}
-      <div className="ml-auto flex shrink-0 items-center gap-1 rounded-lg border border-zinc-800 p-0.5">
-        <button
-          onClick={() => setLang('en')}
-          className={`rounded-md px-2 py-0.5 text-xs font-medium transition-colors ${
-            lang === 'en'
-              ? 'bg-blue-600 text-white'
-              : 'text-zinc-400 hover:text-zinc-200'
-          }`}
-        >
-          EN
-        </button>
-        <button
-          onClick={() => setLang('es')}
-          className={`rounded-md px-2 py-0.5 text-xs font-medium transition-colors ${
-            lang === 'es'
-              ? 'bg-blue-600 text-white'
-              : 'text-zinc-400 hover:text-zinc-200'
-          }`}
-        >
-          ES
-        </button>
-      </div>
     </nav>
   )
 }
