@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { investigations } from '@/config/investigations'
 import { useLanguage } from '@/lib/language-context'
+import { LanguageToggle } from '@/components/ui/LanguageToggle'
 import { useState } from 'react'
 
 const ACTIVE = investigations.filter((i) => i.status === 'active')
@@ -19,7 +20,7 @@ const DOT_COLORS: Record<string, string> = {
 
 export function SiteNav() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const { lang, setLang } = useLanguage()
+  const { lang } = useLanguage()
 
   return (
     <header className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-sm">
@@ -42,46 +43,14 @@ export function SiteNav() {
           ))}
 
           {/* Language toggle */}
-          <div className="ml-2 flex items-center gap-1 rounded-lg border border-zinc-800 p-0.5">
-            <button
-              onClick={() => setLang('en')}
-              className={`rounded-md px-2 py-0.5 text-xs font-medium transition-colors ${
-                lang === 'en' ? 'bg-zinc-700 text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'
-              }`}
-            >
-              EN
-            </button>
-            <button
-              onClick={() => setLang('es')}
-              className={`rounded-md px-2 py-0.5 text-xs font-medium transition-colors ${
-                lang === 'es' ? 'bg-zinc-700 text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'
-              }`}
-            >
-              ES
-            </button>
+          <div className="ml-2">
+            <LanguageToggle />
           </div>
         </nav>
 
         {/* Mobile: lang toggle + hamburger */}
         <div className="flex items-center gap-2 sm:hidden">
-          <div className="flex items-center gap-1 rounded-lg border border-zinc-800 p-0.5">
-            <button
-              onClick={() => setLang('en')}
-              className={`rounded-md px-1.5 py-0.5 text-[10px] font-medium transition-colors ${
-                lang === 'en' ? 'bg-zinc-700 text-zinc-100' : 'text-zinc-500'
-              }`}
-            >
-              EN
-            </button>
-            <button
-              onClick={() => setLang('es')}
-              className={`rounded-md px-1.5 py-0.5 text-[10px] font-medium transition-colors ${
-                lang === 'es' ? 'bg-zinc-700 text-zinc-100' : 'text-zinc-500'
-              }`}
-            >
-              ES
-            </button>
-          </div>
+          <LanguageToggle size="sm" />
           <button
             type="button"
             className="text-zinc-400"

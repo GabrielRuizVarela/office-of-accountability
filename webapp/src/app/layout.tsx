@@ -33,7 +33,7 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <LanguageProvider defaultLang="es">
+        <LanguageProvider>
           <div className="flex min-h-screen flex-col bg-zinc-950">
             <SiteNav />
             <div className="flex-1">{children}</div>
