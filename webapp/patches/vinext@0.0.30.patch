@@ -1,0 +1,13 @@
+diff --git a/dist/index.js b/dist/index.js
+index e6740ff9ef28c2a0141576e1375207b1de156669..5b8d15c3af69c98f3c16bd7620e5dbfe33d6755e 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -706,7 +706,7 @@ export default function vinext(options = {}) {
+                 if (mode === "test") {
+                     resolvedNodeEnv = "test";
+                 }
+-                else if (env?.command === "build") {
++                else if (env?.command === "build" || mode === "production") {
+                     resolvedNodeEnv = "production";
+                 }
+                 else {

@@ -64,7 +64,7 @@ function tiptapAliases(): Array<{ find: RegExp; replacement: string }> {
 export default defineConfig({
   plugins: [vinext()],
   server: {
-    allowedHosts: ['demoooa.lutie.app'],
+    allowedHosts: ['office-of-accountability.org', 'www.office-of-accountability.org'],
   },
   resolve: {
     alias: tiptapAliases(),
