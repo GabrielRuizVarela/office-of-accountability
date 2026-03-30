@@ -51,7 +51,11 @@ webapp/docs/mirofish-integration-plan.md
 !docs/images/*.png
 !webapp/public/*.png
 
+# Lockfiles (pnpm only)
+package-lock.json
+
 # Misc
 *.log
 .DS_Store
 *.pem
+.reports/
